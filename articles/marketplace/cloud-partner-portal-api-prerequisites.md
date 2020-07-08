@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1a20abf72ca25ba7c4b5600953766be4d62c708d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.openlocfilehash: c435e171c7e3cabea4007c7b78cf60727bf55efd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516349"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958238"
 ---
 <a name="api-prerequisites"></a>API önkoşulları
 ================
@@ -26,7 +25,7 @@ Bulut İş Ortağı Portalı API 'Leri kullanmanız gereken iki adet gerekli pro
 <a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Azure Active Directory kiracınızda hizmet sorumlusu oluşturma
 ----------------------------------------------------------------
 
-İlk olarak, Azure AD kiracınızda bir hizmet sorumlusu oluşturmanız gerekir. Bu kiracıya, Bulut İş Ortağı Portalı kendi izin kümesi atanır. Kodunuz, kişisel kimlik bilgilerinizi kullanmak yerine bu kiracı olarak kullanan API 'Leri çağırır.  Hizmet sorumlusu oluşturma hakkında tam bir açıklama için bkz. [Portal 'ı kullanarak kaynaklara erişebilen Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+İlk olarak, Azure AD kiracınızda bir hizmet sorumlusu oluşturmanız gerekir. Bu kiracıya, Bulut İş Ortağı Portalı kendi izin kümesi atanır. Kodunuz, kişisel kimlik bilgilerinizi kullanmak yerine bu kiracı olarak kullanan API 'Leri çağırır.  Hizmet sorumlusu oluşturma hakkında tam bir açıklama için bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
 
 <a name="add-the-service-principal-to-your-account"></a>Hizmet sorumlusunu hesabınıza ekleyin
@@ -63,7 +62,7 @@ Bulut İş Ortağı Portalı API 'Leri, kimlik doğrulaması sırasında aşağ�
 
 - Kaynaklara erişim istemek için bir JSON Web Token (JWT) taşıyıcı belirteci
 - Kimliği doğrulamak için [OpenID Connect](https://openid.net/connect/) (OIDC) protokolü
-- Kimlik yetkilisi olarak [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+- Kimlik yetkilisi olarak [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md)
 
 Program aracılığıyla JWT belirtecini almak için iki prensibi yaklaşım vardır:
 

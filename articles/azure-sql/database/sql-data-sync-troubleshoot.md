@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84188254"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL Data Sync ile ilgili sorunları giderme
@@ -181,7 +180,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
     d. **SQL Data Sync** hizmetine sağ tıklayın.  
     e. Hizmet çalışıyorsa, uygulamayı durdurun.  
     f. Hizmete sağ tıklayın ve ardından **Başlat**' ı seçin.  
-    g. Veritabanının hala kayıtlı olup olmadığını denetleyin. Artık kayıtlı değilse işiniz yapılır. Aksi halde, bir sonraki adımla devam edin.
+    örneğin: Veritabanının hala kayıtlı olup olmadığını denetleyin. Artık kayıtlı değilse işiniz yapılır. Aksi halde, bir sonraki adımla devam edin.
   1. İstemci Aracısı uygulamasını açın (SqlAzureDataSyncAgent).
   1. **Kimlik bilgilerini düzenle**' yi seçin ve ardından veritabanı için kimlik bilgilerini girin.
   1. Kayıt silme işlemine devam edin.

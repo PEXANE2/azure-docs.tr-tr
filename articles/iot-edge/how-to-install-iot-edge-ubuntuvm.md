@@ -7,14 +7,13 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 64e2787aa282e75893fa34e6de1373e6afed09fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800571"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
 
@@ -63,7 +62,7 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
 
     Tüm alanlar doldurulduktan sonra, koşulları kabul etmek için sayfanın altındaki onay kutusunu seçin ve dağıtımı başlatmak için **satın al** ' ı seçin.
 
-1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Bir sanal makine kaynağı seçili kaynak grubuna dağıtılmış olmalıdır.  Makine adını, bu biçimde `vm-0000000000000`olmalıdır. Ayrıca, ilişkili **DNS adını**, biçiminde `<dnsLabelPrefix>`olması gereken bir yere göz atın. `<location>`. cloudapp.Azure.com.
+1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Bir sanal makine kaynağı seçili kaynak grubuna dağıtılmış olmalıdır.  Makine adını, bu biçimde olmalıdır `vm-0000000000000` . Ayrıca, ilişkili **DNS adını**, biçiminde olması gereken bir yere göz atın `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
 
     **DNS adı** , Azure Portal içindeki yeni dağıtılan sanal makinenin **genel bakış** bölümünden elde edilebilir.
 
@@ -108,11 +107,10 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
 
 1. Yeni bir sanal makine oluşturun:
 
-    Bir **AuthenticationType** `password`kullanmak için aşağıdaki örneğe bakın:
+    Bir **AuthenticationType** kullanmak için `password` aşağıdaki örneğe bakın:
 
    ```azurecli-interactive
-   az group deployment create \
-   --name edgeVm \
+   az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -122,15 +120,14 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
    --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-    Bir SSH anahtarıyla kimlik doğrulaması yapmak için, bir **AuthenticationType** belirterek bunu yapabilirsiniz `sshPublicKey`ve sonra **ADMINPASSWORDORKEY** parametresinde SSH anahtarının değerini sağlayın.  Aşağıda bir örnek gösterilmiştir.
+    Bir SSH anahtarıyla kimlik doğrulaması yapmak için, bir **AuthenticationType** belirterek bunu yapabilirsiniz `sshPublicKey` ve sonra **adminpasswordorkey** parametresinde SSH anahtarının değerini sağlayın.  Aşağıda bir örnek gösterilmiştir.
 
     ```azurecli-interactive
     #Generate the SSH Key
     ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
 
     #Create a VM using the iotedge-vm-deploy script
-    az group deployment create \
-    --name edgeVm \
+    az deployment group create \
     --resource-group IoTEdgeResources \
     --template-uri "https://aka.ms/iotedge-vm-deploy" \
     --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -138,10 +135,9 @@ Bu makalede, önceden sağlanmış bir cihaz bağlantı dizesi kullanılarak yü
     --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
     --parameters authenticationType='sshPublicKey' \
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
-     
     ```
 
-1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Bir sanal makine kaynağı seçili kaynak grubuna dağıtılmış olmalıdır.  Makine adını, bu biçimde `vm-0000000000000`olmalıdır. Ayrıca, ilişkili **DNS adını**, biçiminde `<dnsLabelPrefix>`olması gereken bir yere göz atın. `<location>`. cloudapp.Azure.com.
+1. Dağıtımın başarıyla tamamlandığını doğrulayın.  Bir sanal makine kaynağı seçili kaynak grubuna dağıtılmış olmalıdır.  Makine adını, bu biçimde olmalıdır `vm-0000000000000` . Ayrıca, ilişkili **DNS adını**, biçiminde olması gereken bir yere göz atın `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
 
     **DNS adı** , önceki ADıMDA bulunan JSON biçimli çıktısından, **Genel SSH** girişinin bir parçası olarak **çıktılar** bölümünde elde edilebilir.  Bu girdinin değeri, yeni dağıtılan makineye SSH eklemek için kullanılabilir.
 

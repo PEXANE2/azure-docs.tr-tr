@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437058"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958404"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme 
 
@@ -43,7 +42,7 @@ Bir yedekleme anlık görüntüsü oluşturmak için, [bir diskte anlık görün
 
 VM 'ye uzaktan bağlanmak için, [Azure VM sorunlarını gidermek üzere uzak araçları kullanma](remote-tools-troubleshoot-azure-vm-issues.md)bölümündeki yöntemlerden birini kullanın.
 
-## <a name="scenario-1"></a>Senaryo 1
+## <a name="scenario-1"></a>1\. Senaryo
 
 ### <a name="event-logs"></a>Olay günlükleri
 
@@ -138,8 +137,8 @@ Bu sorunu gidermek için, aşağıdaki adımları kullanarak RDP sertifikasında
 
 Betiği çalıştırdıktan sonra, izin sorunları yaşayan aşağıdaki dosyaları kontrol edebilirsiniz:
 
-* c:\Temp\ BeforeScript_permissions. txt
-* c:\Temp\ AfterScript_permissions. txt
+* c:\temp\BeforeScript_permissions.txt
+* c:\temp\AfterScript_permissions.txt
 
 #### <a name="renew-rdp-self-signed-certificate"></a>RDP otomatik olarak imzalanan sertifikayı Yenile
 
@@ -206,7 +205,7 @@ RDP için otomatik olarak imzalanan sertifika kullanması için anahtarı silmey
 reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
 ```
 
-## <a name="scenario-2"></a>Senaryo 2
+## <a name="scenario-2"></a>2\. Senaryo
 
 ### <a name="event-log"></a>Olay günlüğü
 
@@ -237,7 +236,7 @@ RDP, varsayılan protokol olarak TLS 1,0 kullanır. Ancak protokol, yeni standar
 
 Bu sorunu gidermek için bkz. [Azure VM 'ye bağlanmak IÇIN RDP kullanırken kimlik doğrulama hatalarında sorun giderme](troubleshoot-authentication-error-rdp-vm.md#tls-version).
 
-## <a name="scenario-3"></a>3. Senaryo
+## <a name="scenario-3"></a>3\. Senaryo
 
 VM 'ye **Uzak Masaüstü Bağlantı Aracısı** rolünü yüklediyseniz, son 24 saat içinde olay 2056 veya olay 1296 ' nin olup olmadığını kontrol edin. Bir CMD örneğinde aşağıdaki komutları çalıştırın: 
 

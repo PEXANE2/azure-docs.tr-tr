@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781965"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
@@ -116,7 +115,7 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 
 
 ## <a name="common-scoping-filters"></a>Ortak kapsam filtreleri
-| Target özniteliği| Operatör | Değer | Description|
+| Target özniteliği| İşleç | Değer | Açıklama|
 |----|----|----|----|
 |userPrincipalName|REGEX EŞLEŞMESI|.\*@domain.com |Etki alanı olan userPrincipal 'a sahip tüm kullanıcılar @domain.com sağlama kapsamında olacaktır|
 |userPrincipalName|REGEX EŞLEŞMIYOR|.\*@domain.com|Etki alanı olan userPrincipal 'a sahip tüm kullanıcılar, @domain.com sağlama için kapsam dışı olacaktır|

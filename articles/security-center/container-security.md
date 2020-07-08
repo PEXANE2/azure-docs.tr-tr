@@ -10,24 +10,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80125137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800621"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
-Azure Güvenlik Merkezi, kapsayıcı güvenliği için Azure Native çözümüdür. Güvenlik Merkezi Ayrıca, bulut iş yüklerinizin, VM 'lerinin, sunucularınızın ve kapsayıcılarınızın güvenliği için en iyi cam deneyim bölmesidir.
+Azure Güvenlik Merkezi, kapsayıcılarınızın güvenliğini sağlamaya yönelik Azure Native çözümüdür. Güvenlik Merkezi aşağıdaki kapsayıcı kaynak türlerini koruyabilir:
 
-Bu makalede Güvenlik Merkezi 'nin kapsayıcılarınızın ve uygulamalarının güvenliğini iyileştirmenize, izlemenize ve bunların güvenliğini sağlamanıza nasıl yardımcı olduğu açıklanır. Güvenlik Merkezi 'nin kapsayıcı güvenliğinin bu temel yönlerini nasıl yardımcı olduğunu öğreneceksiniz:
 
-* Güvenlik açığı yönetimi
-* Kapsayıcının ortamını sağlamlaştırma
-* Çalışma zamanı koruması
+
+|Kaynak |Name  |Ayrıntılar  |
+|:---------:|---------|---------|
+|![Kapsayıcı Konağı](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|Kapsayıcı Konakları (Docker çalıştıran sanal makineler)|Güvenlik Merkezi, Docker yapılandırmalarınızı tarar ve değerlendirilen başarısız kuralların listesini sunarak hatalı yapılandırmalar konusunda görünürlük sağlar. Güvenlik Merkezi, bu sorunları hızlı bir şekilde çözmenize ve zamandan tasarruf etmenize yardımcı olacak yönergeler sağlar. Güvenlik Merkezi, Docker yapılandırmalarını sürekli değerlendirir ve son durumlar hakkında bilgi verir.|
+|![Kubernetes hizmeti](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|Azure Kubernetes hizmeti (AKS) kümeleri|Standart katman kullanıcıları için [Güvenlik Merkezi 'nin isteğe bağlı aks paketiyle](azure-kubernetes-service-integration.md) aks düğümleriniz, bulut trafiğiniz ve güvenlik denetimleriniz hakkında daha ayrıntılı bir görünürlük elde edin.|
+|![Kapsayıcı kayıt defteri](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)|Azure Container Registry (ACR) kayıt defterleri|Standart katman kullanıcıları için [Güvenlik Merkezi 'nin isteğe bağlı ACR](azure-kubernetes-service-integration.md) grubu ile ARM tabanlı ACR kayıt defterlerinden görüntülerin güvenlik açıklarına ilişkin daha derin görünürlük elde edin.|
+||||
+
+
+Bu makalede, kapsayıcılarınızın ve uygulamalarının güvenliğini artırmak, izlemek ve korumak için bu paketleri nasıl kullanabileceğiniz açıklanır. Güvenlik Merkezi 'nin kapsayıcı güvenliğinin bu temel yönlerini nasıl yardımcı olduğunu öğreneceksiniz:
+
+- [Güvenlik açığı yönetimi-kapsayıcı görüntülerini tarama](#vulnerability-management---scanning-container-images)
+- [Ortam sağlamlaştırma-Docker yapılandırmanızın ve Kubernetes kümelerinin sürekli izlenmesi](#environment-hardening)
+- [Çalışma zamanı koruması-gerçek zamanlı tehdit algılama](#run-time-protection---real-time-threat-detection)
 
 [![Azure Güvenlik Merkezi 'nin kapsayıcı güvenlik sekmesi](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
@@ -65,36 +74,13 @@ Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntı
 
 ## <a name="run-time-protection---real-time-threat-detection"></a>Çalışma zamanı koruması-gerçek zamanlı tehdit algılama
 
-Güvenlik Merkezi, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit algılama sağlar ve şüpheli etkinlikler için uyarı oluşturur. Bu bilgileri kullanarak güvenlik sorunlarını hızlı bir şekilde çözebilir ve kapsayıcılarınızın güvenlik düzeyini artırabilirsiniz.
-
-Konuk ve AKS küme düzeyindeki tehditleri tespit ediyoruz. Tüm ayrıntılar için bkz. [Azure kapsayıcıları için tehdit algılama](threat-protection.md#azure-containers).
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
-## <a name="container-security-faq"></a>Kapsayıcı güvenliği SSS
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure Güvenlik Merkezi tarayabilmesi gereken görüntü türleri nelerdir?
-Güvenlik Merkezi, kabuk erişimi sağlayan Linux işletim sistemi tabanlı görüntüleri tarar. 
-
-Qualys tarayıcısı, [Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüleri veya yalnızca uygulamanızı ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk ya da işletim sistemi olmadan Içeren "distrouz" görüntüleri desteklemez.
-
-### <a name="how-does-azure-security-center-scan-an-image"></a>Azure Güvenlik Merkezi bir görüntüyü nasıl tarar?
-Görüntü kayıt defterinden çekilir. Daha sonra, bilinen güvenlik açıklarının listesini ayıklayan Qualys tarayıcısı ile yalıtılmış bir korumalı alanda çalıştırılır.
-
-Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
-
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure Güvenlik Merkezi görüntülerimi ne sıklıkla taraysın?
-Yansıma taramaları her gönderim üzerinde tetiklenir.
-
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>Tarama sonuçlarını REST API aracılığıyla alabilir miyim?
-Evet. Sonuçlar [alt değerlendirmeler REST API 'si](/rest/api/securitycenter/subassessments/list/)altındadır. Ayrıca, tüm kaynaklarınız için kusto benzeri API olan Azure Kaynak Grafiği 'ni (ARG) kullanabilirsiniz: bir sorgu belirli bir taramayı getirebilir.
- 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Güvenlik Merkezi 'nde kapsayıcı güvenliği hakkında daha fazla bilgi edinmek için aşağıdaki ilgili makalelere göz atın:
-
-* Kapsayıcılarla ilgili kaynaklarınızın güvenlik duruşunu görüntülemek için, [makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md#containers)konusunun kapsayıcılar bölümüne bakın.
-
-* [Azure Kubernetes hizmeti ile tümleştirmenin](azure-kubernetes-service-integration.md) ayrıntıları
-
-* [Azure Container Registry ile tümleştirmenin](azure-container-registry-integration.md) ayrıntıları
+Bu genel bakışta, Azure Güvenlik Merkezi 'nde kapsayıcı güvenliğinin temel öğeleri hakkında bilgi edindiniz. [Kapsayıcılarınızın güvenliğini izlemeye](monitor-container-security.md)devam edin.
+> [!div class="nextstepaction"]
+> [Kapsayıcılarınızın güvenliğini izleme](monitor-container-security.md)

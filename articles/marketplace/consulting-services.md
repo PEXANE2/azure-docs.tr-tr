@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: fb2031072ce93fcacdf52f8f0fad68f836049b22
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 1267225f6b8557efc7ce36a973daef0a46aaba2d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560902"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957999"
 ---
 # <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
@@ -22,11 +21,11 @@ Danışmanlık hizmeti teklifleri müşterilere özgü görevlendirmelerdir. Yay
 
 ## <a name="compare-consulting-services"></a>Danışmanlık hizmetlerini karşılaştırın
 
-Ticari Market storets, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki storefronts arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+Ticari Market storets, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki storefronts arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](comparing-appsource-azure-marketplace.md).
 
 Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetleri teklifleri AppSource 'ta listelenmeye uygundur. Daha fazla bilgi için [Microsoft AppSource danışmanlık hizmetleri liste yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF dosyasını indirin.
 
-Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Azure Marketi 'nde listelenmeye uygundur. Daha fazla bilgi için bkz. Azure [danışmanlık hizmeti teklifi yayımlama](./partner-center-portal/create-consulting-service-offer.md) ve [Azure Market 'te yönetilen hizmet teklifi yayımlama](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
+Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Azure Marketi 'nde listelenmeye uygundur. Daha fazla bilgi için bkz. Azure [danışmanlık hizmeti teklifi yayımlama](./partner-center-portal/create-consulting-service-offer.md) ve [Azure Market 'te yönetilen hizmet teklifi yayımlama](../lighthouse/how-to/publish-managed-services-offers.md).
 
 > [!Note]
 > Azure Marketi 'ndeki Danışmanlık Hizmetleri, teknik bir hedef kitle için tekliflere odaklanmalı ve Azure teknik çözümlerini ve hizmetlerini vurgulamalıdır.
@@ -72,7 +71,7 @@ Uzmanlıklar hakkında daha fazla bilgi için [Microsoft iş ortağı ağı yetk
 
 Sistem Tümleştirici İş ortakları, aşağıdaki 20 ülkede/bölgede Danışmanlık Servisi teklifleri gönderebilir:
 
-|   |   |   |   |
+| Ülkeler  | (devamı..)   | (devamı..)  | (devamı..)  |
 |---------|----------|----------|----------|
 | Avustralya | Belçika | Kanada | Danimarka |
 | Finlandiya  | Fransa | Almanya  | Hindistan   |
@@ -83,7 +82,7 @@ Sistem Tümleştirici İş ortakları, aşağıdaki 20 ülkede/bölgede Danışm
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Ticari Market 'te danışmanlık hizmetleri için kaydolun
 
-Şirket bilgilerinizi Market 'e [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) başlayın. Kayıt gereksinimlerinin tüm denetim listesi için bkz. [Market 'te yayımcı olma](https://docs.microsoft.com/azure/marketplace/become-publisher). 
+Şirket bilgilerinizi Market 'e [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) başlayın. Kayıt gereksinimlerinin tüm denetim listesi için bkz. [Market 'te yayımcı olma](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Yayımlama yapılarınızı hazırlama
 Kaydolmadan önce, listelemesine yardımcı olacak içeriği toplamaya ve hazırlamaya başlayabilmeniz için, hedef müşterinizin hizmet ve çözümünüzün değerini ifade edin. 
@@ -152,7 +151,7 @@ Başlık alanı 50 karakterlik bir sınıra sahiptir ve arama motoru iyileştirm
 
 |Teklif türü  |Gerekli |Önerilen  |
 |---------|---------|---------|
-|**Değerlendirmesini**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin.      |    En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.     |
+|**Değerlendirme**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin.      |    En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.     |
 |**Bilgilendirme istemek**    |   Müşterinin beklediği teslim edilebilirini ifade edebilir. Kişi içinde *Brit* 'in sağlanması gerektiğini unutmayın. Bir sanal hizmet sağlıyorsanız, farklı bir teklif türü seçin.    |  En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.       |
 |**Uygulama**    |  Çok günlü veya çok haftaya yönelik uygulamalar için ayrıntılı bir gündem ekleyin ve müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edin.       |    En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.     |
 |**Kavram kanıtı**    |    Müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edebilir.     | En iyi SEO anahtar sözcüklerinizle teklif özetinizi iyileştirin.        |

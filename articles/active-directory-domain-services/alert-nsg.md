@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/19/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6d0cde3d3615350658a06cf118ff38cebf8952c9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735022"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040461"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services ağ yapılandırması uyarıları
 
-Uygulama ve hizmetlerin Azure Active Directory Domain Services (Azure AD DS) ile doğru iletişim kurmasına izin vermek için belirli ağ bağlantı noktalarının açık olması gerekir. Azure 'da ağ güvenlik gruplarını kullanarak trafik akışını kontrol edersiniz. Azure AD DS yönetilen bir etki alanının sistem durumu, gerekli ağ güvenlik grubu kuralları yerinde değilse bir uyarı gösterir.
+Uygulamaların ve hizmetlerin Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanıyla doğru iletişim kurmasına izin vermek için, trafiğin akışa izin vermek üzere belirli ağ bağlantı noktalarının açık olması gerekir. Azure 'da ağ güvenlik gruplarını kullanarak trafik akışını kontrol edersiniz. Azure AD DS yönetilen bir etki alanının sistem durumu, gerekli ağ güvenlik grubu kuralları yerinde değilse bir uyarı gösterir.
 
 Bu makale, ağ güvenlik grubu yapılandırma sorunları için genel uyarıları anlamanıza ve çözmenize yardımcı olur.
 
@@ -34,7 +33,7 @@ Azure AD DS için ağ hatalarının en yaygın nedeni geçersiz ağ güvenlik gr
 
 ## <a name="default-security-rules"></a>Varsayılan güvenlik kuralları
 
-Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etki alanı için ağ güvenlik grubuna uygulanır. Bu kurallar Azure AD DS güvende tutar ve Azure platformunun yönetilen etki alanını izlemesine, yönetmesine ve güncelleştirmesine izin verir. Ayrıca, [GÜVENLI LDAP yapılandırırsanız][configure-ldaps]gelen trafiğe izin veren ek bir kuralınız olabilir.
+Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etki alanı için ağ güvenlik grubuna uygulanır. Bu kurallar Azure AD DS güvende tutar ve Azure platformunun yönetilen etki alanını izlemesine, yönetmesine ve güncelleştirmesine izin verir.
 
 ### <a name="inbound-security-rules"></a>Gelen güvenlik kuralları
 
@@ -46,6 +45,9 @@ Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etk
 | 65000    | Allvnetınbound | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
 | 65001    | AllowAzureLoadBalancerInBound | Herhangi biri | Herhangi biri | AzureLoadBalancer | Herhangi biri | İzin Ver |
 | 65500    | DenyAllInBound | Herhangi biri | Herhangi biri | Herhangi biri | Herhangi biri | Reddet |
+
+> [!NOTE]
+> Ayrıca, [GÜVENLI LDAP yapılandırırsanız][configure-ldaps]gelen trafiğe izin veren ek bir kuralınız olabilir. Bu ek kural doğru LDAPS iletişimi için gereklidir.
 
 ### <a name="outbound-security-rules"></a>Giden güvenlik kuralları
 

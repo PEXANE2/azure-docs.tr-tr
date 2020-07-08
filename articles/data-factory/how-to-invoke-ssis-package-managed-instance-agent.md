@@ -10,10 +10,9 @@ ms.author: lle
 author: lle
 ms.date: 04/14/2020
 ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84191078"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
@@ -105,12 +104,12 @@ Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için 
 ## <a name="cancel-ssis-package-execution"></a>SSIS paketi yürütmeyi iptal et
 Bir SQL yönetilen örnek Aracısı işinden paket yürütmeyi iptal etmek için, aracı işini doğrudan durdurmak yerine aşağıdaki adımları uygulayın:
 
-1. **Msdb. dbo. sysjobs**öğesinden SQL Agent iş **kimliği** ' ni bulun.
+1. **msdb.dbo.sysIŞLERDEN**SQL Agent iş **kimliği** ' ni bulun.
 1. Bu sorguyu kullanarak, iş KIMLIĞINE göre karşılık gelen SSIS **ExecutionID** 'sini bulun:
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   SSIS paketleriniz SSSıSDB 'leriyse, iş yürütmesi için tablo olarak **SSISDB. Internal. execution_parameter_values** kullanın. SSIS paketleriniz dosya sistemiyse **SSISDB. Internal. execution_parameter_values_noncatalog**kullanın.
+   SSIS paketleriniz SSSıSDB 'de ise, iş yürütmesi için tablo olarak **ssisdb.internal.execution_parameter_values** kullanın. SSIS paketleriniz dosya sistemiyse **ssisdb.internal.execution_parameter_values_noncatalog**kullanın.
 1. SSıSDB kataloğuna sağ tıklayın ve ardından **etkin işlemler**' i seçin.
 
    ![SSSıSDB kataloğunun kısayol menüsünde "Etkin Işlemler"](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84431916"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
@@ -181,7 +180,7 @@ Etiket kuralına bir örnek için bkz. IoT Edge sıralı etiketleri ve sürümle
 | [Azure IoT Edge Aracısı](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb 'ı](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-Ardından, edgeAgent ve edgeHub sistem modülleri için Deployment. Template. JSON dosyasındaki görüntü başvurularını güncelleştirdiğinizden emin olun. `mcr.microsoft.com`Her iki modül için kayıt defteri adınızla ve sunucu ile değiştirin.
+Ardından, edgeAgent ve edgeHub sistem modülleri için dosyadaki deployment.template.jsgörüntü başvurularını güncelleştirdiğinizden emin olun. `mcr.microsoft.com`Her iki modül için kayıt defteri adınızla ve sunucu ile değiştirin.
 
 * edgeAgent:
 
@@ -282,7 +281,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
 
 ```yml
 "createOptions": {

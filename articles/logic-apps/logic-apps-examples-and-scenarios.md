@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84190729"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps için genel senaryolar, örnekler, öğreticiler ve izlenecek yollar
@@ -86,7 +85,7 @@ Yayımlanmış bağlayıcılar bulunmayan sistemler ve hizmetler için Logic App
 Kuruluşlar arasında kurumsal tümleştirme çözümleri ve sorunsuz iletişim için, Azure Logic Apps ile Enterprise Integration Pack (EıP) kullanarak bu senaryolar için otomatik ölçeklendirilebilir iş akışları oluşturabilirsiniz. Kuruluşlar farklı protokoller ve biçimler kullanmasına karşın, iletileri elektronik olarak değiş tokuş edebilirler. EıP, farklı biçimleri, kuruluşların sistemlerinin AS2, x12, EDIOLGU ve RosettaNet gibi sektör standardı protokolleri işleyebildiğine ve desteklediğinden bir biçime dönüştürür. Bu çözümleri derlemek için, tanımladığınız ve mantıksal uygulama iş akışlarınızla kullandığınız yapıtlar için güvenli, ölçeklenebilir ve yönetilebilir bir kapsayıcı sağlayan ayrı bir Azure kaynağı olan bir tümleştirme hesabı oluşturursunuz. Örneğin, yapıtlar ticari iş ortakları, anlaşmalar, Haritalar, şemalar, sertifikalar ve toplu iş yapılandırması içerir.
 
 * [Genel Bakış: Azure Logic Apps ve Enterprise Integration Pack B2B kurumsal tümleştirme çözümleri](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* [Azure Logic Apps 'de B2B kurumsal Tümleştirmeler için tümleştirme hesapları oluşturun ve yönetin](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [Azure Logic Apps'te B2B kurumsal tümleştirmeleri için tümleştirme hesabı oluşturma ve yönetme](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 ## <a name="access-azure-virtual-network-resources"></a>Azure sanal ağ kaynaklarına erişin
 
@@ -103,8 +102,8 @@ Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilm
 
 * [Hızlı başlangıç: Azure Logic Apps Visual Studio kullanarak otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Genel Bakış: mantıksal uygulama dağıtımını otomatikleştirme](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonları oluşturun](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Azure Logic Apps için Azure Resource Manager şablonları dağıtma](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Logic Apps dağıtımını otomatikleştirmek için Azure Resource Manager şablonu oluşturma](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+* [Azure Logic Apps için Azure Resource Manager şablonu oluşturma](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 * [Örnek: Azure DevOps 'da Azure Logic Apps Azure Service Bus kuyruklara bağlanma ve Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Logic Apps 'den Azure Storage hesaplarına bağlanma ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Logic Apps için bir işlev uygulama eylemi ayarlama ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -119,9 +118,9 @@ Visual Studio, Azure DevOps veya diğer kaynak denetimleri ve otomatikleştirilm
 
 ### <a name="monitor"></a>İzleme
 
-* [Çalışma durumunu izleyin, tetikleyici geçmişini gözden geçirin ve Azure Logic Apps uyarılarını ayarlayın](../logic-apps/monitor-logic-apps.md)
+* [Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama](../logic-apps/monitor-logic-apps.md)
 * [Azure Izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama](../logic-apps/monitor-logic-apps-log-analytics.md)
-* [Azure Logic Apps 'de Azure Izleyici günlüklerini ayarlama ve B2B iletileri için tanılama verileri toplama](../logic-apps/monitor-b2b-messages-log-analytics.md)
+* [Azure Logic Apps'te Azure İzleyici günlüklerini ayarlama ve B2B iletileri için tanılama verilerini toplama](../logic-apps/monitor-b2b-messages-log-analytics.md)
 * [Azure Logic Apps için Azure Izleyici günlüklerinde izleme ve izleme sorguları görüntüleyin ve oluşturun](../logic-apps/create-monitoring-tracking-queries.md)
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>İçerik türlerini, dönüştürmeleri ve dönüştürmeleri işleme
@@ -141,7 +140,7 @@ Azure Logic Apps, Azure Işlevleri, Azure API Management, Azure App Service ve �
 * [Öğretici: Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Öğretici: Twitter gönderisini çözümlemek için Azure Logic Apps ve Azure bilişsel hizmetler ile tümleşen bir işlev oluşturma](../azure-functions/functions-twitter-email.md)
 * [Öğretici: Power BI ve Azure Logic Apps kullanarak AI destekli sosyal pano oluşturma](https://aka.ms/logicappsdemo)
-* [Öğretici: Azure Event Grid ve Logic Apps kullanarak sanal makine değişikliklerini Izleme](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [Öğretici: Azure Event Grid ve Logic Apps'i kullanarak sanal makine değişikliklerini izleme](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Öğretici: IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: Azure Logic Apps kullanarak SOAP hizmetlerini çağırma](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: d5c0878a5999f1d7d716d8caaf9f3fffa5e401dc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982381"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040342"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Güven ilişkilerinin Azure Active Directory Domain Services içindeki kaynak ormanları için nasıl çalıştığı
 
@@ -26,6 +25,10 @@ Bu güven ilişkisini denetlemek için Windows güvenlik sistemi, isteği alan s
 AD DS tarafından sunulan erişim denetim mekanizmaları ve Windows dağıtılmış güvenlik modeli, etki alanı ve orman güvenleri 'nin çalışması için bir ortam sağlar. Bu güvenin düzgün çalışması için, her kaynak veya bilgisayarın, bulunduğu etki alanındaki bir DC 'ye yönelik doğrudan güven yoluna sahip olması gerekir.
 
 Güven yolu, güvenilen etki alanı yetkilisine kimliği doğrulanmış bir uzak yordam çağrısı (RPC) bağlantısı kullanılarak net oturum açma hizmeti tarafından uygulanır. Güvenli kanal, etki alanları arası güven ilişkileri aracılığıyla diğer AD DS etki alanlarına da genişletilir. Bu güvenli kanal, kullanıcılar ve gruplar için güvenlik tanımlayıcıları (SID 'Ler) dahil olmak üzere güvenlik bilgilerini almak ve doğrulamak için kullanılır.
+
+Güvenin Azure AD DS için nasıl uygulandıkları hakkında genel bir bakış için bkz. [kaynak ormanı kavramları ve özellikleri][create-forest-trust].
+
+Azure AD DS 'de güvenleri kullanmaya başlamak için, [orman güvenlerini kullanan bir yönetilen etki alanı oluşturun][tutorial-create-advanced].
 
 ## <a name="trust-relationship-flows"></a>Güven ilişkisi akışları
 
@@ -58,7 +61,7 @@ Geçişlilik, bir güvenin oluşturulduğu iki etki alanının dışında uzatı
 
 Bir ormanda yeni bir etki alanı oluşturduğunuzda, yeni etki alanı ve onun üst etki alanı arasında iki yönlü, geçişli bir güven ilişkisi otomatik olarak oluşturulur. Yeni etki alanına alt etki alanları eklenirse, güven yolu, yeni etki alanı ve onun üst etki alanı arasında oluşturulan ilk güven yolunu genişleterek etki alanı hiyerarşisinde yukarı doğru akar. Geçişli güven ilişkileri, etki alanı ağacındaki tüm etki alanları arasında geçişli güvenler oluşturarak, bir etki alanı ağacı aracılığıyla yukarı doğru akar.
 
-Kimlik doğrulama istekleri bu güven yollarını izler, bu nedenle ormandaki herhangi bir etki alanının hesaplarının kimliği, ormandaki başka bir etki alanı tarafından doğrulanabilir. Tek bir oturum açma işlemiyle, uygun izinlere sahip hesaplar ormandaki herhangi bir etki alanındaki kaynaklara erişebilir.
+Kimlik doğrulama istekleri bu güven yollarını izler, bu nedenle ormandaki herhangi bir etki alanının hesaplarının kimliği, ormandaki başka bir etki alanı tarafından doğrulanabilir. Çoklu oturum açma işlemiyle, uygun izinlere sahip hesaplar ormandaki herhangi bir etki alanındaki kaynaklara erişebilir.
 
 ## <a name="forest-trusts"></a>Ormanlar güvenleri
 
@@ -128,7 +131,7 @@ Kerberos protokolü Ayrıca, siteler arası Bilet sağlama hizmetleri (TGS) içi
 
 2. Geçerli etki alanı ile güven yolundaki bir sonraki etki alanı arasında geçişli bir güven ilişkisi var mı?
     * Yanıt Evet ise, istemciye güven yolundaki sonraki etki alanına bir başvuru gönderir.
-    * Hayır ise, istemciyi bir oturum açma reddedildi iletisi gönderin.
+    * Hayır ise, istemciye bir oturum açma reddedildi iletisi gönderin.
 
 ### <a name="ntlm-referral-processing"></a>NTLM başvuru işleme
 
@@ -152,7 +155,7 @@ Hesap veritabanında yoksa, etki alanı denetleyicisi doğrudan kimlik doğrulam
 
 Bir orman güveni ilk kez oluşturulduğunda, her orman ortak ormanındaki tüm güvenilir ad alanlarını toplar ve bilgileri [Güvenilen bir etki alanı nesnesine](#trusted-domain-object)depolar. Güvenilen ad alanları, diğer ormanda kullanılan etki alanı ağacı adlarını, Kullanıcı asıl adı (UPN) soneklerini, hizmet asıl adı (SPN) soneklerini ve güvenlik KIMLIĞI (SID) ad alanlarını içerir. TDO nesneleri genel kataloğa çoğaltılır.
 
-Kimlik doğrulama protokollerinin orman güven yolunu izleyebilmesi için, kaynak bilgisayarın hizmet asıl adı (SPN) diğer ormandaki bir konuma çözümlenmelidir. SPN aşağıdakilerden biri olabilir:
+Kimlik doğrulama protokollerinin orman güven yolunu izleyebilmesi için, kaynak bilgisayarın hizmet asıl adı (SPN) diğer ormandaki bir konuma çözümlenmelidir. SPN aşağıdaki adlardan biri olabilir:
 
 * Bir konağın DNS adı.
 * Bir etki alanının DNS adı.
@@ -164,7 +167,7 @@ Aşağıdaki diyagram ve adımlar, Windows çalıştıran bilgisayarlar başka b
 
 ![Bir orman güveni üzerinden Kerberos işleminin diyagramı](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
-1. *Kullanıcı1* , *Europe.tailspintoys.com* etki alanındaki kimlik bilgilerini kullanarak *işistasyonda* oturum açar. Kullanıcı daha sonra *USA.wingtiptoys.com* ormanında bulunan *FileServer1* üzerinde paylaşılan bir kaynağa erişmeyi dener.
+1. *Kullanıcı1* , *Europe.tailspintoys.com* etki alanındaki kimlik bilgilerini kullanarak *işistasyona* oturum açar. Kullanıcı daha sonra *USA.wingtiptoys.com* ormanında bulunan *FileServer1* üzerinde paylaşılan bir kaynağa erişmeyi dener.
 
 2. *Işistasyonu* , etki alanındaki bir etki alanı DENETLEYICISINDEKI Kerberos KDC ile iletişim kurar, *ChildDC1*ve *FileServer1* SPN için bir hizmet bileti ister.
 

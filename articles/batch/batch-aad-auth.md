@@ -4,12 +4,11 @@ description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi de
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757600"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958217"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -20,7 +19,7 @@ Azure AD kimlik doğrulamasını Azure Batch ile kullanırken, iki şekilde kiml
 - Uygulamayla etkileşim kuran bir kullanıcının kimliğini doğrulamak için **Tümleşik kimlik doğrulaması** kullanarak. Tümleşik kimlik doğrulaması kullanan bir uygulama, bir kullanıcının kimlik bilgilerini toplar ve Batch kaynaklarına erişimin kimliğini doğrulamak için bu kimlik bilgilerini kullanır.
 - Katılımsız bir uygulamanın kimliğini doğrulamak için bir **hizmet sorumlusu** kullanarak. Hizmet sorumlusu, çalışma zamanında kaynaklara erişirken uygulamayı temsil etmek üzere bir uygulama için ilke ve izinleri tanımlar.
 
-Azure AD hakkında daha fazla bilgi edinmek için [Azure Active Directory belgelerine](https://docs.microsoft.com/azure/active-directory/)bakın.
+Azure AD hakkında daha fazla bilgi edinmek için [Azure Active Directory belgelerine](../active-directory/index.yml)bakın.
 
 ## <a name="endpoints-for-authentication"></a>Kimlik doğrulaması için uç noktalar
 
@@ -140,20 +139,20 @@ Uygulamanız artık erişim denetimi ayarlarınızda bir RBAC rolü atanmış ol
 
 Aşağıdaki RBAC işlemleri için bir Azure AD kullanıcısına, gruba veya hizmet sorumlusuna izin vermek üzere özel bir rol kullanabilirsiniz:
 
-- Microsoft. Batch/batchAccounts/havuzlar/Write
-- Microsoft. Batch/batchAccounts/havuzlar/Delete
-- Microsoft. Batch/batchAccounts/havuzlar/Read
-- Microsoft. Batch/batchAccounts/Jobzamanlamalar/yazma
-- Microsoft. Batch/batchAccounts/Jobzamanlamalar/silme
-- Microsoft. Batch/batchAccounts/Jobzamanlamalar/okuma
-- Microsoft. Batch/batchAccounts/Jobs/Write
-- Microsoft. Batch/batchAccounts/Jobs/Delete
-- Microsoft. Batch/batchAccounts/Jobs/okuma
-- Microsoft. Batch/batchAccounts/sertifikalar/yazma
-- Microsoft. Batch/batchAccounts/sertifikalar/Sil
-- Microsoft. Batch/batchAccounts/sertifikalar/okuma
-- Microsoft. Batch/batchAccounts/Read (herhangi bir okuma işlemi için)
-- Microsoft. Batch/batchAccounts/listKeys/Action (herhangi bir işlem için)
+- Microsoft.Batch/batchAccounts/havuzlar/Write
+- Microsoft.Batch/batchAccounts/havuzlar/Delete
+- Microsoft.Batch/batchAccounts/havuzlar/Read
+- Microsoft.Batch/batchAccounts/Jobzamanlamalar/Write
+- Microsoft.Batch/batchAccounts/Jobzamanlamaları/Delete
+- Microsoft.Batch/batchAccounts/Jobzamanlamaları/Read
+- Microsoft.Batch/batchAccounts/Jobs/Write
+- Microsoft.Batch/batchAccounts/Jobs/Delete
+- Microsoft.Batch/batchAccounts/Jobs/Read
+- Microsoft.Batch/batchAccounts/sertifikalar/yaz
+- Microsoft.Batch/batchAccounts/sertifikalar/Sil
+- Microsoft.Batch/batchAccounts/Certificates/Read
+- Microsoft.Batch/batchAccounts/Read (herhangi bir okuma işlemi için)
+- Microsoft.Batch/batchAccounts/listKeys/Action (herhangi bir işlem için)
 
 Özel roller, Batch hesabı kimlik bilgileri (paylaşılan anahtar) değil, Azure AD tarafından kimliği doğrulanmış kullanıcılar içindir. Batch hesabı kimlik bilgilerinin Batch hesabına tam izin vermesini unutmayın. Ayrıca, oto havuzunu kullanan işlerin havuz düzeyi izinleri gerektirdiğini de unutmayın.
 
@@ -419,7 +418,7 @@ Hizmet sorumlusu kimlik bilgilerini kullanarak bir **BatchServiceClient** nesnes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure AD hakkında daha fazla bilgi edinmek için [Azure Active Directory belgelerine](https://docs.microsoft.com/azure/active-directory/)bakın. ADAL 'in nasıl kullanılacağını gösteren ayrıntılı örnekler, [Azure kod örnekleri](https://azure.microsoft.com/resources/samples/?service=active-directory) kitaplığı 'nda bulunabilir.
+- Azure AD hakkında daha fazla bilgi edinmek için [Azure Active Directory belgelerine](../active-directory/index.yml)bakın. ADAL 'in nasıl kullanılacağını gösteren ayrıntılı örnekler, [Azure kod örnekleri](https://azure.microsoft.com/resources/samples/?service=active-directory) kitaplığı 'nda bulunabilir.
 
 - Hizmet sorumluları hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md)bölümüne bakın. Azure portal kullanarak bir hizmet sorumlusu oluşturmak için, bkz. [kaynaklara erişebilen Active Directory uygulama ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md). PowerShell veya Azure CLı ile bir hizmet sorumlusu da oluşturabilirsiniz.
 

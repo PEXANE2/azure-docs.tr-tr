@@ -4,13 +4,12 @@ description: Azure kaynaklarınızın kullanılamadığı durumlarda size bildir
 ms.topic: conceptual
 ms.date: 6/23/2020
 ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85218077"
 ---
-# <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portal kullanarak kaynak sistem durumu uyarılarını yapılandırma
+# <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portalı kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
 Bu makalede, Azure portal kullanarak kaynak sistem durumu bildirimleri için etkinlik günlüğü uyarılarını ayarlama konusu gösterilmektedir.
 
@@ -77,4 +76,4 @@ Hizmet durumu uyarıları oluşturma:
 
 * [Hizmet durumu için uyarıları yapılandırma](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
 * [Azure etkinlik günlüğü olay şeması](../azure-monitor/platform/activity-log-schema.md)
-* [Kaynak Yöneticisi şablonları kullanarak kaynak sistem durumu uyarılarını yapılandırma](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Resource Manager şablonlarını kullanarak kaynak sistem durumu uyarılarını yapılandırma](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)

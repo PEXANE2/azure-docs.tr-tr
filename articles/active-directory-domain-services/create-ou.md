@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f0bc803c8f05f34a46f9e496446a3ce07bad179
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734903"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040291"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında kuruluş birimi (OU) oluşturma
 
-Active Directory Domain Services (AD DS) içindeki kuruluş birimleri (OU), Kullanıcı hesapları, hizmet hesapları veya bilgisayar hesapları gibi nesneleri mantıksal olarak gruplandırmanıza olanak tanır. Daha sonra belirli OU 'Lara Yöneticiler atayabilir ve hedeflenen yapılandırma ayarlarını zorlamak için Grup ilkesi uygulayabilirsiniz.
+Active Directory Domain Services (AD DS) yönetilen bir etki alanındaki kuruluş birimleri (OU), Kullanıcı hesapları, hizmet hesapları veya bilgisayar hesapları gibi nesneleri mantıksal olarak gruplandırmanıza olanak tanır. Daha sonra belirli OU 'Lara Yöneticiler atayabilir ve hedeflenen yapılandırma ayarlarını zorlamak için Grup ilkesi uygulayabilirsiniz.
 
 Azure AD DS yönetilen etki alanları aşağıdaki iki yerleşik OU içerir:
 
@@ -29,7 +28,7 @@ Azure AD DS yönetilen etki alanları aşağıdaki iki yerleşik OU içerir:
 
 Azure AD DS kullanan iş yükleri oluşturup çalıştırdığınızda, uygulamaların kimliğini doğrulamak için hizmet hesapları oluşturmanız gerekebilir. Bu hizmet hesaplarını düzenlemek için genellikle yönetilen etki alanında özel bir OU oluşturup bu OU içinde hizmet hesapları oluşturursunuz.
 
-Karma bir ortamda, şirket içi AD DS ortamında oluşturulan OU 'Lar Azure AD DS ile eşitlenmez. Yönetilen etki alanları düz bir OU yapısını kullanır. Her Kullanıcı hesabı ve grubu, farklı şirket içi etki alanlarından veya ormanlardan eşitlendiğinde, burada bir hiyerarşik OU yapısını yapılandırmış olsanız bile, *Aaddc kullanıcıları* kapsayıcısında depolanır.
+Karma bir ortamda, şirket içi AD DS ortamda oluşturulan OU 'Lar yönetilen etki alanı ile eşitlenmez. Yönetilen etki alanları düz bir OU yapısını kullanır. Her Kullanıcı hesabı ve grubu, farklı şirket içi etki alanlarından veya ormanlardan eşitlendiğinde, burada bir hiyerarşik OU yapısını yapılandırmış olsanız bile, *Aaddc kullanıcıları* kapsayıcısında depolanır.
 
 Bu makalede, yönetilen etki alanında bir OU oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -49,7 +48,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 
 ## <a name="custom-ou-considerations-and-limitations"></a>Özel OU konuları ve sınırlamaları
 
-Yönetilen bir etki alanında özel OU 'Lar oluşturduğunuzda, Kullanıcı yönetimi için ek yönetim esnekliği elde edersiniz ve Grup ilkesi uygulanıyor. Şirket içi AD DS ortamıyla karşılaştırıldığında, Azure AD DS özel bir OU yapısını oluştururken ve yönetirken bazı sınırlamalar ve önemli noktalar vardır:
+Yönetilen bir etki alanında özel OU 'Lar oluşturduğunuzda, Kullanıcı yönetimi için ek yönetim esnekliği elde edersiniz ve Grup ilkesi uygulanıyor. Şirket içi AD DS ortamıyla karşılaştırıldığında, yönetilen bir etki alanında özel bir OU yapısı oluştururken ve yönetirken bazı sınırlamalar ve önemli noktalar vardır:
 
 * Özel OU 'Lar oluşturmak için, kullanıcıların *AAD DC Yöneticiler* grubunun bir üyesi olması gerekir.
 * Özel bir OU oluşturan bir kullanıcıya, bu OU üzerinden yönetim ayrıcalıkları (tam denetim) verilir ve kaynak sahibidir.

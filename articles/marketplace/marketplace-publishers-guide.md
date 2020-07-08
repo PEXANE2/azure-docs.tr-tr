@@ -7,19 +7,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657864"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958183"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Ticari Market Yayımlama Kılavuzu
 
 Bu Yayımlama Kılavuzu, yeni ve mevcut yayımcıların, Microsoft ile iş ortaklığına iş ortaklığı sağlamak için ticari Market stokörleri, [Azure Marketi](https://azuremarketplace.microsoft.com) ve [Microsoft AppSource](https://appsource.microsoft.com)uygulamaları ve hizmetleri nasıl listeleyeceğinizi öğrenmesine yardımcı olmak üzere tasarlanmıştır.
 
 >[!Note]
->Burada Market, Azure Marketi ve AppSource 'a başvurur.  Daha fazla bilgi için bkz. [bir market, iki stotrefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
+>Burada Market, Azure Marketi ve AppSource 'a başvurur.  Daha fazla bilgi için bkz. [bir market, iki stotrefronts](comparing-appsource-azure-marketplace.md) .
 
 Bu kılavuzda aşağıdaki konular ele alınmaktadır: 
 *   Market 'in ne olduğu ve nasıl çalıştığı 
@@ -62,7 +61,7 @@ Market 'teki yeni listeler, iş ortaklarının Market 'te işletmelerini büyüt
 
 *   Ortak satış: Market üzerinden Microsoft ile satış yapmak için yolculuğa başlayın veya hızlandırın. Microsoft ekipleriyle Birleşik satışları sağlamak için programlar ve desteğe erişin.
 
-Çözümünüzü Market 'e [gönderdikten](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) sonra, ekleme ekibimiz yayımlama deneyiminizi desteklemek için sizi iletişim kurar.  Daha fazla bilgi için bkz. [Iş Ortağı Merkezi hesabı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
+Çözümünüzü Market 'e [gönderdikten](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) sonra, ekleme ekibimiz yayımlama deneyiminizi desteklemek için sizi iletişim kurar.  Daha fazla bilgi için bkz. [Iş Ortağı Merkezi hesabı oluşturma](partner-center-portal/create-account.md) .
 
 [Ticari Market avantajlarınız](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)hakkında daha fazla bilgi edinin.
 

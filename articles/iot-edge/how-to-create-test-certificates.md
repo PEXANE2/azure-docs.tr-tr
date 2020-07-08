@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84430670"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge cihaz özelliklerini sınamak için tanıtım sertifikaları oluşturma
@@ -36,7 +35,7 @@ IoT Edge senaryonuzu test etmek için tanıtım sertifikaları oluşturmak için
    * Üretim senaryolarını veya ağ geçidi senaryolarını test etmek için [IoT Edge CIHAZ CA sertifikaları oluşturun](#create-iot-edge-device-ca-certificates) .
    * Bir ağ geçidi senaryosunda IoT Hub için aşağı akış cihazları kimlik doğrulamasını test etmek üzere [aşağı akış cihaz sertifikaları oluşturun](#create-downstream-device-certificates) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Git yüklü bir geliştirme makinesi.
 
@@ -53,11 +52,11 @@ Bir Windows cihazında tanıtım sertifikaları oluşturmak için, OpenSSL yükl
 #### <a name="install-openssl"></a>OpenSSL 'yi yükler
 
 Sertifikaları oluşturmak için kullandığınız makinede Windows için OpenSSL 'i yükleyebilirsiniz.
-Windows cihazınızda OpenSSL zaten yüklüyse, bu adımı atlayabilirsiniz, ancak PATH ortam değişkeninizdeki OpenSSL. exe ' nin kullanılabilir olduğundan emin olabilirsiniz.
+Windows cihazınızda OpenSSL zaten yüklüyse, bu adımı atlayabilirsiniz, ancak yol ortam değişkeninizdeki openssl.exe kullanılabilir olduğundan emin olabilirsiniz.
 
 OpenSSL 'nin yüklenmesi için aşağıdaki seçenekler de dahil olmak üzere çeşitli yollar vardır:
 
-* **Daha kolay:** [Üçüncü taraf OpenSSL ikililerini](https://wiki.openssl.org/index.php/Binaries)indirin ve yükleyin, örneğin, [SourceForge üzerinde OpenSSL](https://sourceforge.net/projects/openssl/). OpenSSL. exe ' ye PATH ortam değişkeninizin tam yolunu ekleyin.
+* **Daha kolay:** [Üçüncü taraf OpenSSL ikililerini](https://wiki.openssl.org/index.php/Binaries)indirin ve yükleyin, örneğin, [SourceForge üzerinde OpenSSL](https://sourceforge.net/projects/openssl/). PATH ortam değişkeninizin openssl.exe tam yolunu ekleyin.
 
 * **Önerilen:** OpenSSL kaynak kodunu indirin ve ikili dosyaları kendi makinenizde veya [vcpkg](https://github.com/Microsoft/vcpkg)aracılığıyla derleyin. Aşağıda listelenen yönergeler, kaynak kodu indirmek, derlemek ve Windows makinenizde OpenSSL 'yi kolay adımlarla yüklemek için vcpkg kullanır.
 
@@ -69,7 +68,7 @@ OpenSSL 'nin yüklenmesi için aşağıdaki seçenekler de dahil olmak üzere ç
       .\vcpkg install openssl:x64-windows
       ```
 
-   3. `<vcpkg path>\installed\x64-windows\tools\openssl`OpenSSL. exe dosyasının çağrılması için kullanılabilir olması IÇIN PATH ortam değişkenine ekleyin.
+   3. `<vcpkg path>\installed\x64-windows\tools\openssl`openssl.exe dosyanın çağrılması için kullanılabilir olması IÇIN PATH ortam değişkenine ekleyin.
 
 #### <a name="prepare-scripts-in-powershell"></a>PowerShell 'de betikleri hazırlama
 
@@ -293,7 +292,7 @@ IoT cihazınız, IoT Hub kimlik doğrulaması yapabilmesi için cihaz sertifikal
 
 1. Sertifika oluşturma betikleri ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örnek:
+2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örneğin:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -323,7 +322,7 @@ IoT cihazınız, IoT Hub kimlik doğrulaması yapabilmesi için cihaz sertifikal
 
 1. Sertifika oluşturma betikleri ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örnek:
+2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örneğin:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

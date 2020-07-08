@@ -4,10 +4,9 @@ description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CL
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: a2a1c1fe63d0a841f57407ed5402d7ddca3fcea4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84432071"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
@@ -145,7 +144,7 @@ az deployment group create \
 
 Bir dosyadan parametre değeri alma, yapılandırma değerleri sağlamanız gerektiğinde faydalıdır. Örneğin, [bir Linux sanal makinesi için Cloud-init değerleri](../../virtual-machines/linux/using-cloud-init.md)sağlayabilirsiniz.
 
-ArrayContent. JSON biçimi:
+Biçimdeki arrayContent.js:
 
 ```json
 [
@@ -160,7 +159,7 @@ Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre
 
 Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](parameter-files.md).
 
-Yerel bir parametre dosyasını geçirmek için, `@` depolama. Parameters. JSON adlı yerel bir dosya belirtmek için öğesini kullanın.
+Yerel bir parametre dosyasını geçirmek için, `@` üzerinde storage.parameters.jsadlı yerel bir dosya belirtmek için kullanın.
 
 ```azurecli-interactive
 az deployment group create \
@@ -172,7 +171,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Genişletilmiş JSON biçimini işle
 
-Azure CLı 'yi sürüm 2.3.0 veya daha eski bir sürümle kullanarak çok satırlı dizeler veya yorumlarla bir şablon dağıtmak için anahtarını kullanmanız gerekir `--handle-extended-json-format` .  Örnek:
+Azure CLı 'yi sürüm 2.3.0 veya daha eski bir sürümle kullanarak çok satırlı dizeler veya yorumlarla bir şablon dağıtmak için anahtarını kullanmanız gerekir `--handle-extended-json-format` .  Örneğin:
 
 ```json
 {

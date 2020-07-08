@@ -10,28 +10,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 3f58afa41a27427f8deabb945261d96763edb4bc
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: 94d1bccc9a7f45d24d8c5b92aecba54d9f7f630a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800195"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Güvenlik Merkezi ile Azure Kubernetes Hizmetleri Tümleştirmesi
 
 Azure Kubernetes Service (AKS), Kapsayıcılı uygulamalar geliştirmeye, dağıtmaya ve yönetmeye yönelik Microsoft tarafından yönetilen bir hizmettir. 
 
-AKS düğümleriniz, bulut trafiğiniz ve güvenlik denetimlerine daha derin bir görünürlük elde etmek için Azure Güvenlik Merkezi 'nin standart katmanı (bkz. [fiyatlandırma](security-center-pricing.md)) ile birlikte aks kullanın.
+Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız aks, bulut trafiğinizi ve güvenlik denetimlerinizi daha derin bir görünürlük elde etmek için AKS paketini (bkz. [fiyatlandırma](security-center-pricing.md)) ekleyebilirsiniz.
 
-Güvenlik Merkezi, aks ana düğümü tarafından zaten toplanan verileri kullanarak AKS kümelerinize yönelik güvenlik avantajları sunar. 
+Bir arada, güvenlik merkezi ve AKS, en iyi bulut Yerel Kubernetes güvenlik teklifini oluşturur.
 
-![Azure Güvenlik Merkezi ve Azure Kubernetes hizmeti (AKS) üst düzey genel bakış](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+## <a name="what-are-the-components-of-security-centers-kubernetes-protection"></a>Güvenlik Merkezi 'nin Kubernetes korumasının bileşenleri nelerdir?
 
-Bu iki araç birlikte, en iyi bulut Yerel Kubernetes güvenlik sunumunu oluşturur. 
+Kubernetes için Güvenlik Merkezi 'nin korumaları iki öğe birleşimi tarafından sağlanır:
 
-## <a name="benefits-of-integration"></a>Tümleştirmenin avantajları
+- **Azure Güvenlik Merkezi 'nin sanal makineler için tehdit koruması** -Güvenlik Merkezi 'Nin diğer VM 'lerde kullandığı aynı Log Analytics aracısını kullanarak, güvenlik merkezi aks düğümleriniz üzerinde oluşan güvenlik sorunlarını gösterebilir. Aracı Ayrıca kapsayıcıya özgü analiz için de izler.
+
+- **Azure Güvenlik Merkezi 'nin isteğe bağlı Kubernetes paketi** -Kubernetes demeti, aks hizmeti aracılığıyla Kubernetes alt sisteminden Günlükler ve bilgiler alır. Bu Günlükler Azure 'da AKS hizmeti aracılığıyla zaten kullanılabilir. Güvenlik Merkezi 'nin Kubernetes paketini etkinleştirdiğinizde, günlüklere güvenlik merkezi erişimi verirsiniz. Bu nedenle, güvenlik merkezi aks ana düğümü tarafından zaten toplanan verileri kullanarak AKS kümelerinize yönelik güvenlik avantajları sunar. Azure Güvenlik Merkezi tarafından Kubernetes ortamınızdan taranan bazı veriler hassas bilgiler içerebilir.
+
+    ![Azure Güvenlik Merkezi ve Azure Kubernetes hizmeti (AKS) üst düzey genel bakış](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+
+## <a name="what-protections-are-provided"></a>Hangi korumalar sunulmaktadır?
 
 İki hizmetin birlikte kullanılması aşağıdakileri sağlar:
 
@@ -39,18 +44,25 @@ Bu iki araç birlikte, en iyi bulut Yerel Kubernetes güvenlik sunumunu oluştur
 
 * **Ortam sağlamlaştırma** -Güvenlik Merkezi, Kubernetes kümelerinizin ve Docker yapılandırmalarının yapılandırmasını sürekli izler. Daha sonra sektör standartlarını yansıtan güvenlik önerileri oluşturur.
 
-* **Çalışma zamanı koruması** -aşağıdaki aks kaynaklarının sürekli analizine sahip Güvenlik Merkezi, ana bilgisayar *ve* aks kümesi düzeyinde algılanan tehditler ve kötü amaçlı etkinlikler hakkında sizi uyarır:
-    * Ağ verileri ve işlem oluşturma gibi ham güvenlik olayları
-    * Kubernetes denetim günlüğü
+* **Çalışma zamanı koruması** -aşağıdaki aks kaynaklarının sürekli Analizi Ile Güvenlik Merkezi, ana bilgisayar *ve* aks kümesi düzeyinde algılanan tehditler ve kötü amaçlı etkinlikler hakkında sizi uyarır. [Kapsayıcılar için tehdit koruması hakkında daha fazla bilgi edinin](threat-protection.md#azure-containers).
 
-    Daha fazla bilgi için bkz. [Azure kapsayıcıları için tehdit koruması](threat-protection.md#azure-containers)
 
-    Olası uyarıların listesi için, uyarılar başvuru tablosundaki şu bölümlere bakın: [aks küme düzeyi uyarıları](alerts-reference.md#alerts-akscluster) ve [kapsayıcı ana bilgisayar düzeyi uyarıları](alerts-reference.md#alerts-containerhost).  
+     
 
 ![Azure Güvenlik Merkezi ve Azure Kubernetes hizmeti (AKS) daha ayrıntılı](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
-> [!NOTE]
-> Azure Güvenlik Merkezi tarafından Kubernetes ortamınızdan taranan bazı veriler hassas bilgiler içerebilir.
+
+
+## <a name="aks-with-security-center-faq"></a>Güvenlik Merkezi ile AKS SSS
+
+### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Log Analytics Aracısı olmadan AKS korumalarını almaya devam edebilir miyim?
+
+Yukarıda belirtildiği gibi, isteğe bağlı Kubernetes paketi, küme düzeyinde koruma sağlar, Azure Güvenlik Merkezi Standart katmanının Log Analytics Aracısı düğümlerinizi korur. 
+
+Mümkün olan en iyi koruma için her ikisini de dağıtmanız önerilir.
+
+Aracıyı konaklarınıza yüklememeyi seçerseniz, yalnızca tehdit koruması avantajları ve güvenlik uyarılarının bir alt kümesini alacaksınız. Hala kötü amaçlı sunucularla ağ analizi ve iletişimlerle ilgili uyarılar alacaksınız.
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -17,10 +17,9 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85077900"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Uygulama proxy 'Si ve PingAccess ile çoklu oturum açma için üst bilgi tabanlı kimlik doğrulaması
@@ -113,7 +112,7 @@ Kendi şirket içi uygulamanızı yayımlamak için:
 
    ![Üst bilgi tabanlı oturum açma ekranını ve PingAccess 'i gösterir](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Yeniden yönlendirme URL 'nizin dış URL 'niz olarak ayarlandığından emin olun:
 
@@ -168,7 +167,7 @@ Bu bilgileri toplamak için:
 1. Uygulamanızı seçin.
 1. Uygulamanızın **uygulama kayıtları** sayfasının kenar çubuğundan **bildirim**' ı seçin. Uygulamanızın kaydı için bildirim JSON kodu görüntülenir.
 1. `acceptMappedClaims`Alanı arayın ve değerini olarak değiştirin `True` .
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="use-of-optional-claims-optional"></a>İsteğe bağlı talepler kullanımı (isteğe bağlı)
 

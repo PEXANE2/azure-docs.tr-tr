@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 ms.date: 06/16/2020
-ms.openlocfilehash: dcf687a369b32b2055f579f2599a0c3097f9f9f3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: MT
+ms.openlocfilehash: 7bd3f1a5b242ee5196e92456cb3fc8c97f8f5b27
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977791"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958540"
 ---
 # <a name="virtual-machine-certification---issues-and-solutions"></a>Sanal makine sertifikasyonu - sorunlar ve çözümler
 
@@ -31,8 +30,8 @@ Bu hata, başka bir yayımcıya ait olan ve görüntüyü güncelleştirdiğiniz
 
 Bu sorunu onarmak için Azure Marketi 'nden en son görüntünüzü alın ve bu görüntüde değişiklik yapın. Görüntünüzü arayabilecek onaylanan temel görüntüleri görüntülemek için aşağıdakilere bakın:
 
-- [Linux-görüntüler](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows-görüntüler](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base)
+- [Linux-görüntüler](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
+- [Windows-görüntüler](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base))
 
 ## <a name="vm-extension-failure"></a>VM Uzantısı hatası
 
@@ -43,7 +42,7 @@ VM uzantılarını etkinleştir:
 1. Linux VM 'yi seçin.
 2. **Tanılama ayarları**' na gidin.
 3. **Depolama hesabını**güncelleştirerek taban matrislerini etkinleştirin.
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
    ![Konuk düzeyinde izlemeyi etkinleştir](./media/vm-certification-issues-solutions-1.png)
 
@@ -55,11 +54,11 @@ VM uzantılarının düzgün etkinleştirilip etkinleştirilmediğini denetleyin
 
    ![Sağlama başarılı oldu](./media/vm-certification-issues-solutions-2.png)
 
-   VM Uzantısı başarısız olursa, etkinleştirmek üzere [ölçümleri ve günlükleri izlemek Için Linux Tanılama uzantısı 'Nı kullanın](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux) bölümüne gidin. VM uzantısının etkinleştirilmesini istemiyorsanız, destek ekibine başvurun ve uzantıyı devre dışı bırakamalarını isteyin.
+   VM Uzantısı başarısız olursa, etkinleştirmek üzere [ölçümleri ve günlükleri izlemek Için Linux Tanılama uzantısı 'Nı kullanın](../../virtual-machines/extensions/diagnostics-linux.md) bölümüne gidin. VM uzantısının etkinleştirilmesini istemiyorsanız, destek ekibine başvurun ve uzantıyı devre dışı bırakamalarını isteyin.
 
 ## <a name="virtual-machine-provisioning-issue"></a>Sanal makine sağlama sorunu
 
-Teklifinizi göndermeden önce, sağlama işleminin VM için gerekli olduğundan emin olun. VM 'yi sağlamaya yönelik JSON biçimini görüntülemek için [Azure sanal makine (VM) görüntü sertifikası](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template)' na gidin.
+Teklifinizi göndermeden önce, sağlama işleminin VM için gerekli olduğundan emin olun. VM 'yi sağlamaya yönelik JSON biçimini görüntülemek için [Azure sanal makine (VM) görüntü sertifikası](azure-vm-image-certification.md)' na gidin.
 
 Sağlama sorunları aşağıdaki başarısızlık senaryolarını içerebilir:
 
@@ -71,8 +70,8 @@ Sağlama sorunları aşağıdaki başarısızlık senaryolarını içerebilir:
 
 > [!NOTE]
 > VM Genelleştirme ile ilgili belgeler için bu bağlantıları izleyin:
-> - [Linux](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-configure-vm#generalize-the-image)
-> - [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
+> - [Linux](create-azure-vm-technical-asset.md#generalize-the-image))
+> - [Windows](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep))
 
 ## <a name="software-compliance-for-windows"></a>Windows için yazılım uyumluluğu
 
@@ -82,13 +81,13 @@ Windows görüntü isteğiniz yazılım uyumluluğu nedeniyle reddedildiyse, Azu
 
 Visual Studio 'yu veya Office lisanslı herhangi bir ürünü yüklemeye çalışıyorsanız, önceki onay için destek ekibine başvurun.
 
-Daha fazla bilgi için, onaylanan bir temel seçmek üzere [Azure sanal makineli teknik varlıklarınızı oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base) makalesini ziyaret edin.
+Daha fazla bilgi için, onaylanan bir temel seçmek üzere [Azure sanal makineli teknik varlıklarınızı oluşturma](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)makalesini ziyaret edin.
 
 ## <a name="tool-kit-test-case-execution-failed"></a>Araç seti test çalışması yürütülemedi
 
 Microsoft sertifika araç seti, VHD/görüntünüzün Azure ortamıyla uyumlu olduğunu doğrulamak için test çalışmalarını yürütmelerine yardımcı olur.
 
-[Microsoft sertifika araç setini](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm)indirin.
+[Microsoft sertifika araç setini](azure-vm-image-certification.md)indirin.
 
 ## <a name="linux-test-cases"></a>Linux test çalışmaları
 
@@ -249,7 +248,7 @@ Resminiz aşağıdaki çekirdek sürümlerinden biriyle yüklenmediyse görünt�
 
 Azure 'daki tüm VHD 'Lerde 1 MB 'a kadar bir sanal boyut hizalanmış olmalıdır. VHD 'niz önerilen sanal boyuta bağlı değilse isteğiniz reddedilebilir.
 
-ham diskten VHD 'ye dönüştürme yaparken yönergeleri izleyin ve ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [onaylamayan dağıtımlar Için bilgi](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)
+ham diskten VHD 'ye dönüştürme yaparken yönergeleri izleyin ve ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [onaylamayan dağıtımlar Için bilgi](../../virtual-machines/linux/create-upload-generic.md)
 
 ## <a name="vm-access-denied"></a>VM erişimi reddedildi
 

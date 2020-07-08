@@ -2,13 +2,12 @@
 title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 519238837831a67714894ee44f4694321fb999d4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800639"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -54,6 +53,8 @@ Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun
 - AKS küme kaynağında [ *sahip* grubunun](../../role-based-access-control/built-in-roles.md#owner) bir üyesisiniz.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+
+- İzleme verilerini görüntülemek için, kapsayıcılar için Azure Izleyici ile yapılandırılmış Log Analytics çalışma alanında [*Log Analytics okuyucu*](../platform/manage-access.md#manage-access-using-azure-permissions) rolüne sahip olmanız gerekir.
 
 - Prometheus ölçümleri varsayılan olarak toplanmaz. Bir aracıyı ölçümleri toplayacak şekilde [yapılandırmadan](container-insights-prometheus-integration.md) önce, hangi verilerin hangi verileri desteklebileceğini ve hangi yöntemlerin desteklendiğini anlamak Için [Prometheus belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
 

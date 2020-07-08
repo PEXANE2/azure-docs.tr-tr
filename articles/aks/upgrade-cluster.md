@@ -4,12 +4,11 @@ description: En son özellikleri ve güvenlik güncelleştirmelerini almak için
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 5f0391c10a99173e7a2d87c1dd08a36852fc0450
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800503"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
@@ -53,6 +52,8 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 
 > [!Important]
 > Düğüm dalgalanmalarına, her yükseltme işlemi için istenen en fazla aşırı gerilim sayısı için abonelik kotası gerekir. Örneğin, 5 düğüm havuzu olan, her birinde 4 düğüm sayısına sahip bir kümede toplam 20 düğüm vardır. Her düğüm havuzunda en fazla %50 bir aşırı gerilim değeri varsa, yükseltmeyi tamamlaması için 10 düğümün ek işlem ve IP kotası (2 düğüm * 5 havuz) gereklidir.
+>
+> Azure CNı kullanıyorsanız, alt ağda kullanılabilir IP 'Lerin yanı sıra [Azure CNI 'nin IP gereksinimlerini karşılayacak](configure-azure-cni.md)şekilde doğrulayın.
 
 Varsayılan olarak, AKS, bir ek düğüm ile aşırı gerilim yükseltmeleri yapılandırır. En fazla aşırı gerilim ayarı için bir varsayılan değeri, bir önceki sürümlü düğümü değiştirmek için mevcut uygulamaların eşinden önce ek bir düğüm oluşturarak iş yükü kesintisini en aza indirmenize olanak sağlar. Yükseltme hızı ve yükseltme kesintisi arasında bir denge sağlamak için, en fazla dalgalanma değeri düğüm havuzu başına özelleştirilebilir. En fazla dalgalanma değeri arttırılarak, yükseltme işlemi daha hızlı tamamlanır, ancak en fazla aşırı gerilim için büyük bir değer ayarlamak yükseltme işlemi sırasında kesintiler oluşmasına neden olabilir. 
 

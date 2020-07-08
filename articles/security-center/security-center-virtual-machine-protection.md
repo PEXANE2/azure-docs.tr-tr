@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799743"
 ---
 # <a name="protect-your-machines-and-applications"></a>Makinelerinizi ve uygulamalarınızı koruyun
 Azure Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızın güvenliğini sağlamak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
@@ -163,15 +162,13 @@ Ortamınıza bağlı olarak **kapsayıcılar** sekmesini açtığınızda, üç 
 
 ![Kapsayıcı Konağı](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Kapsayıcı Konakları-Docker çalıştıran VM 'Ler 
 
-![Kubernetes hizmeti](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes hizmeti (AKS) kümeleri
+![Kubernetes hizmeti ](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes hizmeti (AKS) kümeleri. [Güvenlik Merkezi 'nin AKS paketi hakkında bilgi edinin](azure-kubernetes-service-integration.md)
 
-![Kapsayıcı kayıt defteri](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) kayıt defterleri-yalnızca standart fiyatlandırma katmanında olduğunuzda ve Azure Container Registry paketi etkinleştirildiğinde gösterilir.
+![Kapsayıcı kayıt defteri ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) kayıt defterleri. [Güvenlik Merkezi 'nin ACR paketi hakkında bilgi edinin](azure-container-registry-integration.md)
 
 Kapsayıcı güvenlik özelliklerinin nasıl kullanılacağına ilişkin yönergeler için bkz. [kapsayıcılarınızın güvenliğini izleme](monitor-container-security.md).
 
-Azure Container Registry paketi 'nin avantajları [burada](azure-container-registry-integration.md) açıklanmıştır
 
-Kubernetes Services paketinin avantajları [burada](azure-kubernetes-service-integration.md) açıklanmıştır
 
 [![Kapsayıcılar sekmesi](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 
