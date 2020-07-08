@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080830"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Görüntü analizi Bilişsel Beceri
@@ -32,7 +31,7 @@ Microsoft. yetenekler. Vision. ımageanalysisbeceri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre adı     | Description |
+| Parametre adı     | Açıklama |
 |--------------------|-------------|
 | `defaultLanguageCode` |  Döndürülecek dili gösteren bir dize. Hizmet, belirtilen bir dilde tanıma sonuçları döndürür. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/><br/>Desteklenen diller şunlardır: <br/>*en* -İngilizce (varsayılan) <br/> *es* -İspanyolca <br/> *ja* -Japonca <br/> *PT* -Portekizce <br/> *zh* -Basitleştirilmiş Çince|
 | `visualFeatures` |    Döndürülecek görsel özellik türlerini gösteren dizeler dizisi. Geçerli görsel özellik türleri şunlardır:  <ul><li>*yetişkin* -görüntünün pornografik (çıplaklık veya bir sex Yasası gösterir) ya da Gori (Extreme şiddet veya kan) olup olmadığını algılar. Cinsel, kışkırtıcı içerik (Ayrıca, kcy içeriği olarak da bilinir) de algılanır.</li><li>*markalar* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli markalarını algılar. *Markalar* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Kategoriler* -bilişsel Hizmetler [görüntü işleme belgelerinde](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)tanımlanan bir sınıflandırmaya göre görüntü içeriğini kategorilere ayırır. </li><li>*Açıklama* -desteklenen dillerde tam bir cümle içeren görüntü içeriğini açıklar.</li><li>*yüzler* -yüzlerin mevcut olup olmadığını algılar. Varsa, koordinatlar, cinsiyet ve yaş üretir.</li><li>   *nesneler* -yaklaşık konum da dahil olmak üzere bir görüntüdeki çeşitli nesneleri algılar. *Nesneler* görsel özelliği yalnızca İngilizce olarak kullanılabilir.</li><li> *Etiketler* -görüntüyü, resim içeriğiyle ilgili ayrıntılı bir sözcük listesiyle Etiketler.</li></ul> Görsel özelliklerin adları büyük/küçük harfe duyarlıdır. *Color* ve *ImageType* görsel özelliklerinin kullanım dışı olduğuna, ancak bu işlevselliğe [özel bir yetenek](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)aracılığıyla erişilebildiğinden emin olun.|
@@ -40,7 +39,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Description                                          |
+| Giriş adı      | Açıklama                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Karmaşık tür. Şu anda yalnızca, ' ```imageAction``` den farklı bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_images" alanı ile birlikte çalışıyor ```none``` . Daha fazla bilgi için [örneğe](#sample-output) bakın.|
 
@@ -512,7 +511,7 @@ Yalnızca yer işaretleri veya ünlüler gibi alt düzey özelliklerle çıkış
 ## <a name="error-cases"></a>Hata durumları
 Aşağıdaki hata durumlarında hiçbir öğe ayıklanmaz.
 
-| Hata Kodu | Description |
+| Hata Kodu | Açıklama |
 |------------|-------------|
 | `NotSupportedLanguage` | Belirtilen dil desteklenmiyor. |
 | `InvalidImageUrl` | Görüntü URL 'SI hatalı biçimlendirildi veya erişilebilir durumda değil.|

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: bac2f86f4134cc8d22e9f388b46bc76ab2d0e5ff
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080808"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Dil algılama Bilişsel Beceri
@@ -39,13 +38,13 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdı
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Girişler     | Description |
+| Girişler     | Açıklama |
 |--------------------|-------------|
 | `text` | Çözümlenecek metin.|
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı    | Description |
+| Çıkış adı    | Açıklama |
 |--------------------|-------------|
 | `languageCode` | Tanımlanan dilin ISO 6391 dil kodu. Örneğin, "en". |
 | `languageName` | Dilin adı. Örneğin, "Ingilizce". |

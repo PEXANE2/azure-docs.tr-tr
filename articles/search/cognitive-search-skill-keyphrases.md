@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080818"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Bilişsel Beceri Anahtar İfade Ayıklama
@@ -37,21 +36,21 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdı
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Girişler                | Description |
+| Girişler                | Açıklama |
 |---------------------|-------------|
 | `defaultLanguageCode` | Seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu.  Varsayılan dil kodu belirtilmemişse, varsayılan dil kodu olarak Ingilizce (en) kullanılır. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)görüntüleyin. |
 | `maxKeyPhraseCount`   | Seçim Üretilecek anahtar tümceciklerin en fazla sayısı. |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş  | Description |
+| Giriş  | Açıklama |
 |--------------------|-------------|
 | `text` | Çözümlenecek metin.|
 | `languageCode`    |  Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, kayıtları çözümlemek için varsayılan dil kodu kullanılacaktır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) görün|
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış     | Description |
+| Çıktı     | Açıklama |
 |--------------------|-------------|
 | `keyPhrases` | Giriş metninde ayıklanan anahtar tümceciklerin listesi. Anahtar tümceleri önem sırasına göre döndürülür. |
 

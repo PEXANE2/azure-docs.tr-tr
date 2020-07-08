@@ -10,15 +10,14 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515023"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
-Bir depolama hesabını taşımak için, başka bir bölgede depolama hesabınızın bir kopyasını oluşturun. Daha sonra, AzCopy veya seçtiğiniz başka bir aracı kullanarak verilerinizi bu hesaba taşıyın.
+Bir depolama hesabını taşımak için diğer bölgede depolama hesabının bir kopyasını oluşturun. Daha sonra, AzCopy veya seçtiğiniz başka bir aracı kullanarak verilerinizi bu hesaba taşıyın.
 
 Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
@@ -33,9 +32,9 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Hesabınızın kullandığı hizmet ve özelliklerin hedef bölgede desteklendiğinden emin olun.
+- Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
 
-- Önizleme özellikleri için, aboneliğinizin hedef bölge için beyaz listeye kaydedildiğinden emin olun.
+- Önizleme özellikleri için aboneliğinizin hedef bölgede beyaz listeye eklendiğinden emin olun.
 
 <a id="prepare"></a>
 
@@ -43,15 +42,15 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 Başlamak için Kaynak Yöneticisi şablonu dışarı aktarın ve değiştirin. 
 
-### <a name="export-a-template"></a>Şablonu dışarı aktar
+### <a name="export-a-template"></a>Şablonu dışarı aktarma
 
-Bu şablon, depolama hesabınızı tanımlayan ayarları içerir. 
+Bu şablon, depolama hesabınızı tanımlayan ayarlar içerir. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak bir şablonu dışarı aktarmak için:
+Şablonu Azure portalını kullanarak dışarı aktarmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
@@ -95,23 +94,23 @@ Bir şablonu PowerShell kullanarak dışarı aktarmak için:
 
 ### <a name="modify-the-template"></a>Şablonu değiştirme 
 
-Depolama hesabı adını ve bölgesini değiştirerek şablonu değiştirin.
+Depolama hesabı adını ve bölgesini değiştirerek şablonu düzenleyin.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak şablonu dağıtmak için:
 
-1. Azure portalda **Kaynak oluştur**’u seçin.
+1. Azure portal **kaynak oluştur**' u seçin.
 
-2. **Market içinde ara** alanına **şablon dağıtımı** yazın ve **ENTER** tuşuna basın.
+2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
 
-3. **Şablon dağıtımı**'nı seçin.
+3. **Şablon dağıtımı**seçin.
 
     ![Azure Resource Manager şablon kitaplığı](./media/storage-account-move/azure-resource-manager-template-library.png)
 
 4. **Oluştur**'u seçin.
 
-5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
+5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
 
 6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 
@@ -215,9 +214,9 @@ Hedef bölgede yeni bir depolama hesabı oluşturmak için şablonu dağıtın.
 
 ### <a name="configure-the-new-storage-account"></a>Yeni depolama hesabını yapılandırma
 
-Bazı özellikler bir şablona aktarmayacaktır, bu nedenle bunları yeni depolama hesabına eklemeniz gerekecektir. 
+Bazı özellikler şablona aktarılmayacağından onları yeni depolama hesabına ayrıca eklemeniz gerekir. 
 
-Aşağıdaki tablo, bu özellikleri yeni depolama hesabınıza ekleme kılavuzlarıyla birlikte listelemektedir.
+Aşağıdaki tabloda bu özelliklerin yanı sıra bunları yeni depolama hesabınıza ekleme konusunda yönergeler verilmiştir.
 
 | Özellik    | Rehber    |
 |--------|-----------|
@@ -230,28 +229,28 @@ Aşağıdaki tablo, bu özellikleri yeni depolama hesabınıza ekleme kılavuzla
 > [!NOTE] 
 > Kaynak depolama hesabı için bir CDN ayarlarsanız, mevcut CDN 'nizin kaynağını yeni hesabınızın birincil blob hizmeti uç noktası (veya birincil statik Web sitesi uç noktası) olarak değiştirmeniz yeterlidir. 
 
-### <a name="move-data-to-the-new-storage-account"></a>Verileri yeni depolama hesabına taşı
+### <a name="move-data-to-the-new-storage-account"></a>Verileri yeni depolama hesabına taşıma
 
-AzCopy, verilerinizi üzerine taşımak için tercih edilen bir araçtır. Performans için en iyi duruma getirilmiştir.  Daha hızlı bir şekilde, verilerin doğrudan depolama sunucuları arasında kopyalandığı, AzCopy 'in bilgisayarınızın ağ bant genişliğini kullanmadığı bir yoldur. Komut satırında veya özel bir betiğin parçası olarak AzCopy kullanın. Bkz. [AzCopy ile çalışmaya başlama](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy, verilerinizi üzerine taşımak için tercih edilen bir araçtır. Performans için iyileştirilmiştir.  AzCopy'nin daha hızlı olmasının nedenlerinden biri, verilerin doğrudan depolama sunucuları arasında kopyalanması ve bu sayede bilgisayarınızın ağ bant genişliğinin harcanmamasıdır. AzCopy'yi komut satırında veya özel betik içinde kullanabilirsiniz. Bkz. [AzCopy ile çalışmaya başlama](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Verilerinizi üzerine taşımak için Azure Data Factory de kullanabilirsiniz. Sezgisel bir kullanıcı arabirimi sağlar. Azure Data Factory kullanmak için şu bağlantılardan herhangi birine bakın:. 
 
-  - [Azure Data Factory kullanarak Azure Blob depolama alanına veya veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Azure Data Factory kullanarak Azure Data Lake Storage 2. veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Azure Data Factory kullanarak Azure dosya depolamadan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Azure Data Factory kullanarak Azure Tablo depolamadan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Azure Data Factory kullanarak Azure Blob depolama alanına veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [Azure Data Factory kullanarak Azure Data Lake Storage 2. Nesil'e veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
+  - [Azure Data Factory kullanarak Azure Dosyalar depolama alanına veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
+  - [Azure Data Factory kullanarak Azure Tablo depolama alanına veya oradan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
 
 ---
 
-## <a name="discard-or-clean-up"></a>Atın veya temizleyin
+## <a name="discard-or-clean-up"></a>Atma veya temizleme
 
 Dağıtımdan sonra, baştan başlamak istiyorsanız, hedef depolama hesabını silebilir ve bu makalenin [hazırlama](#prepare) ve [taşıma](#move) bölümünde açıklanan adımları yineleyebilirsiniz.
 
-Değişiklikleri uygulamak ve depolama hesabını taşımayı tamamlamak için, kaynak depolama hesabını silin.
+Değişiklikleri göndermek ve depolama hesabını taşıma işlemini tamamlamak için kaynak depolama hesabını silin.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak bir depolama hesabını kaldırmak için:
+Azure portalını kullanarak depolama hesabını kaldırma:
 
 1. Azure portal, sol taraftaki menüyü genişleterek hizmet menüsünü açın **ve depolama hesapları ' nı seçerek depolama** hesaplarınızın listesini görüntüleyin.
 

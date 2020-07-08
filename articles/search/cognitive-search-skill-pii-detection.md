@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080758"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>PII algılama Bilişsel Beceri
@@ -38,7 +37,7 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdı
 
 Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
-| Parametre adı     | Description |
+| Parametre adı     | Açıklama |
 |--------------------|-------------|
 | `defaultLanguageCode` |    Giriş metninin dil kodu. Şimdilik yalnızca `en` desteklenir. |
 | `minimumPrecision` | 0,0 ile 1,0 arasında bir değer. Güven puanı ( `piiEntities` çıktıda), ayarlanan `minimumPrecision` değerden düşükse, varlık döndürülmez veya maskelenmez. Varsayılan değer 0,0 ' dir. |
@@ -48,14 +47,14 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Description                   |
+| Giriş adı      | Açıklama                   |
 |---------------|-------------------------------|
 | `languageCode`    | İsteğe bağlı. `en` varsayılan değerdir.  |
 | `text`          | Çözümlenecek metin.          |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı      | Description                   |
+| Çıkış adı      | Açıklama                   |
 |---------------|-------------------------------|
 | `piiEntities` | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>metin (ayıklanan olarak gerçek PII)</li> <li>tür</li><li>subType</li><li>Score (daha yüksek değer, gerçek bir varlık olma olasılığı daha yüksektir)</li><li>fark (giriş metnine)</li><li>length</li></ul> </br> [Olası türler ve alt türler burada bulunabilir.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
 | `maskedText` | , Dışında `maskingMode` bir değere ayarlanırsa `none` , bu çıktı, seçili tarafından açıklandığı şekilde giriş metninde gerçekleştirilen maskelemenin dize sonucu olacaktır `maskingMode` .  `maskingMode`Olarak ayarlanırsa `none` , bu çıkış mevcut olmayacaktır. |

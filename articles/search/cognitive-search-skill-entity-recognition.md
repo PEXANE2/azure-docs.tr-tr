@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080850"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Varlık tanıma Bilişsel Beceri
@@ -35,7 +34,7 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdı
 
 Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
-| Parametre adı     | Description |
+| Parametre adı     | Açıklama |
 |--------------------|-------------|
 | `categories`    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"` , `"Location"` , `"Organization"` , `"Quantity"` , `"Datetime"` , `"URL"` , `"Email"` . Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
 | `defaultLanguageCode` |    Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Tüm diller için tüm varlık kategorileri desteklenmez; Aşağıdaki nota bakın.|
@@ -45,7 +44,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Description                   |
+| Giriş adı      | Açıklama                   |
 |---------------|-------------------------------|
 | `languageCode`    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
 | `text`          | Çözümlenecek metin.          |
@@ -55,7 +54,7 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 > [!NOTE]
 > Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"` , Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ve _zh-Hans_ ,,, `"Quantity"` `"Datetime"` `"URL"` ve türlerinin ayıklanmasını destekler `"Email"` . Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
-| Çıkış adı      | Description                   |
+| Çıkış adı      | Açıklama                   |
 |---------------|-------------------------------|
 | `persons`       | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
 | `locations`  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |

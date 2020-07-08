@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080075"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Metin çevirisi Bilişsel Beceri
@@ -38,7 +37,7 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdı
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Girişler                | Description |
+| Girişler                | Açıklama |
 |---------------------|-------------|
 | defaultToLanguageCode | Istenir Kendisine açık olarak belirtmeyen belgeler için belgeleri içine çevirecek dil kodu. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)görüntüleyin. |
 | defaultFromLanguageCode | Seçim Özel olarak kimden dilini belirtmeyen belgeler için belge çeviren dil kodu.  DefaultFromLanguageCode belirtilmemişse, kimden dilini saptamak için Translator Metin Çevirisi API'si tarafından sunulan otomatik dil algılama kullanılır. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)görüntüleyin. |
@@ -46,7 +45,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı     | Description |
+| Giriş adı     | Açıklama |
 |--------------------|-------------|
 | metin | Çevrilecek metin.|
 | toLanguageCode    | Metnin çevrilmesi gereken dili belirten dize. Bu giriş belirtilmemişse, metni çevirmek için defaultToLanguageCode kullanılır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) görün|
@@ -54,7 +53,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı    | Description |
+| Çıkış adı    | Açıklama |
 |--------------------|-------------|
 | translatedText | TranslatedFromLanguageCode öğesinden translatedToLanguageCode öğesine metin çevirisinin dize sonucu.|
 | translatedToLanguageCode  | Metnin çevrildiği dil kodunu belirten dize. Birden çok dile çeviriyor ve hangi metnin hangi dilde olduğunu takip etmek istiyorsanız yararlı olur.|
