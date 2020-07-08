@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: ea8c13e134eceeb27bd064e794d46d711092a867
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450734"
 ---
 # <a name="resnet"></a>ResNet
@@ -46,7 +45,7 @@ ResNet hakkında daha fazla bilgi için [Bu incelemeye](https://pytorch.org/docs
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Adı       | Aralık | Tür    | Varsayılan           | Açıklama                              |
+| Name       | Aralık | Tür    | Varsayılan           | Açıklama                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Model adı | Herhangi biri   | Mod    | resnext101 \_ 32x8d | Belirli bir ResNet yapısının adı       |
 | Önceden eğitilen | Herhangi biri   | Boole | True              | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
@@ -54,7 +53,7 @@ ResNet hakkında daha fazla bilgi için [Bu incelemeye](https://pytorch.org/docs
 
 ###  <a name="output"></a>Çıktı  
 
-| Adı            | Tür                    | Açıklama                              |
+| Name            | Tür                    | Açıklama                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Eğitilen model | Untraınedmodeldirectory | Pytorch modelini eğitebilmeniz için bağlanmayan bir eğitilen ResNet modeli. |
 

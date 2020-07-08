@@ -9,10 +9,9 @@ ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193500"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma

@@ -1,5 +1,5 @@
 ---
-title: Görüntü dönüşümünü Uygula
+title: Görüntü Dönüşümü Uygulama
 titleSuffix: Azure Machine Learning
 description: Görüntü dizinine görüntü dönüştürme uygulamak için görüntü dönüştürme dönüştürme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -10,13 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: 7ff135911742c49c2c52ce30d1dca00bc89b3a56
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450727"
 ---
-# <a name="apply-image-transformation"></a>Görüntü dönüşümünü Uygula 
+# <a name="apply-image-transformation"></a>Görüntü Dönüşümü Uygulama 
 
 Bu makalede, daha önce belirtilen bir görüntü dönüşümünü temel alan bir giriş görüntü dizinini değiştirmek için Azure Machine Learning Designer 'da (Önizleme) görüntü dönüştürme modülünün nasıl kullanılacağı açıklanır.  
 
@@ -47,20 +46,20 @@ Dönüştürmeyi belirtmek için bir [Init Image dönüşüm](init-image-transfo
 
 ### <a name="module-parameters"></a>Modül parametreleri
 
-| Adı | Aralık | Tür | Varsayılan                   | Açıklama                              |
+| Name | Aralık | Tür | Varsayılan                   | Açıklama                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
 | Mod | Herhangi biri   | Mod | (Kullanıcının belirtmesini gerektir) | Hangi amaçla giriş dönüşümünü kullanıyorsunuz? ' Rastgele ' dönüştürme işlemlerini çıkarımı hariç tutmanız gerekir, ancak bu işlemleri eğitimine karşı tutun |
 
 ### <a name="expected-inputs"></a>Beklenen girişler  
 
-| Adı                       | Tür                    | Açıklama                       |
+| Name                       | Tür                    | Açıklama                       |
 | -------------------------- | ----------------------- | --------------------------------- |
 | Giriş resmi dönüşümü | Dönüştürme Tiondirectory | Giriş resmi dönüşümü        |
 | Giriş resmi dizini      | ImageDirectory          | Dönüştürülecek görüntü dizini |
 
 ### <a name="outputs"></a>Çıkışlar  
 
-| Adı                   | Tür           | Açıklama            |
+| Name                   | Tür           | Açıklama            |
 | ---------------------- | -------------- | ---------------------- |
 | Çıkış resmi dizini | ImageDirectory | Çıkış resmi dizini |
 

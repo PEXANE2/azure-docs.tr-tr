@@ -11,10 +11,9 @@ author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
 ms.openlocfilehash: 53f8fb79e965c09ad59ada085b9cfd27014bd140
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433062"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
@@ -67,7 +66,7 @@ Modellerinizi eğitmek ve yeni CLı ve SDK kullanarak çalıştırma geçmişler
 
 Hiçbir kodu veya çalışmayı kaybetmeyeceksiniz. Eski sürümde projeler yerel dizini olan bulut varlıklarıydı. En son sürümde, yerel bir yapılandırma dosyası kullanarak Azure Machine Learning çalışma alanına yerel dizinler iliştirerek. [En son mimarinin diyagramını](concept-azure-machine-learning-architecture.md)görüntüleyin.
 
-Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python komutunda veya CLI komutunu kullanarak dizinin adını belirtin `az ml project attach` .  Örnek:
+Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python komutunda veya CLI komutunu kullanarak dizinin adını belirtin `az ml project attach` .  Örneğin:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)

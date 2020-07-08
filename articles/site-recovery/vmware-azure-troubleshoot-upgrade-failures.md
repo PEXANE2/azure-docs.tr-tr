@@ -8,10 +8,9 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84434378"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery Sağlayıcısını yükseltme hatalarını giderme
@@ -30,17 +29,17 @@ Yükseltmek için aşağıdaki adımları kullanın:
    1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md#links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
 
-2. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin. Aşağıdaki komutu kullanarak kurulum dosyalarını indirden ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt; ayıklanan dosyalar için klasör yolu &gt; .
+2. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin. Aşağıdaki komutu kullanarak kurulum dosyalarını indirme dosyasından ayıklayın MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: &lt; ayıklanan dosyalar için klasör yolu &gt; .
     
     Örnek komut:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\temp\ayıklanmış
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: C:\temp\ayıklanmış
 
 3. Komut isteminde, dosyaları ayıkladığınız klasöre gidin ve aşağıdaki yükleme komutlarını çalıştırın:
    
-    CX_THIRDPARTY_SETUP. EXE/VERYSILENT/SUPPRESSMSGKUTULAR/NORESTART UCX_SERVER_SETUP. EXE/VERYSILENT/SUPPRESSMSGKUTULAR/NORESTART/UPGRADE
+    CX_THIRDPARTY_SETUP.EXE/VERYSILENT/SUPPRESSMSGKUTULAR/NORESTART UCX_SERVER_SETUP.EXE/VERYSILENT/SUPPRESSMSGKUTULAR/NORESTART/UPGRADE
 
-1. Birleşik kurulumu indirdiğiniz klasöre dönün ve yükseltme işleminin ardından MicrosoftAzureSiteRecoveryUnifiedSetup. exe ' yi çalıştırın. 
+1. Birleşik kurulumu indirdiğiniz klasöre dönün ve yükseltme işleminin tamamlanabilmesi için MicrosoftAzureSiteRecoveryUnifiedSetup.exe çalıştırın. 
 
 ## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>Yeniden adlandırılmakta olan üçüncü taraf klasör nedeniyle yükseltme hatası
 
@@ -48,24 +47,24 @@ Yükseltmenin başarılı olması için 3. taraf klasörü yeniden adlandırılm
 
 Sorunu gidermek için.
 
-1. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\10 dalını açın.
+1. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\10 dalını açın.
 1. `Build_Version`Anahtar değerini inceleyin. En son sürüme ayarlanırsa sürüm numarasını küçültün. Örneğin, en son sürüm 9,22 ise. \* ve `Build_Version` bu değere ayarlanan anahtar, 9,21 olarak azaltılmasını sağlar. \*
 1. Birleşik kurulum Site Recovery en son Microsoft Azure indirin:
    1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md#links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
-1. Bir komut istemi açın ve birleştirilmiş kurulum dosyasını indirdiğiniz klasöre gidin ve aşağıdaki komutu kullanarak kurulum dosyalarını indirme dosyasından ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt; ayıklanan dosyalar için klasör yolu &gt; .
+1. Bir komut istemi açın ve birleştirilmiş kurulum dosyasını indirdiğiniz klasöre gidin ve aşağıdaki komutu kullanarak kurulum dosyalarını indirmeden ayıklayın MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: &lt; ayıklanan dosyalar için klasör yolu &gt; .
 
     Örnek komut:
 
-    MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: C:\temp\ayıklanmış
+    MicrosoftAzureSiteRecoveryUnifiedSetup.exe/q/x: C:\temp\ayıklanmış
 
 1. Komut isteminde, dosyaları ayıkladığınız klasöre gidin ve aşağıdaki yükleme komutlarını çalıştırın:
    
-    CX_THIRDPARTY_SETUP. EXE/VERYSILENT/SUPPRESSMSGKUTULAR/NORESTART
+    CX_THIRDPARTY_SETUP.EXE/VERYSILENT/SUPPRESSMSGKUTULAR/NORESTART
 
-1. Yüklemenin ilerlemesini izlemek için Görev Yöneticisi 'ni kullanın. CX_THIRDPARTY_SETUP için işlem. EXE artık görev yöneticisi 'nde görünmez, sonraki adıma geçin.
+1. Yüklemenin ilerlemesini izlemek için Görev Yöneticisi 'ni kullanın. CX_THIRDPARTY_SETUP.EXE işlemi artık görev yöneticisi 'nde görünür olmadığında, sonraki adıma geçin.
 1. C:\üçüncü taraf olduğunu ve klasörün RRD kitaplıklarını içerdiğini doğrulayın.
-1. Birleşik kurulumu indirdiğiniz klasöre dönün ve yükseltme işleminin ardından MicrosoftAzureSiteRecoveryUnifiedSetup. exe ' yi çalıştırın.
+1. Birleşik kurulumu indirdiğiniz klasöre dönün ve yükseltme işleminin tamamlanabilmesi için MicrosoftAzureSiteRecoveryUnifiedSetup.exe çalıştırın.
 
 ## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>Ana hedef yükleme hatası nedeniyle yükseltme hatası
 
@@ -73,7 +72,7 @@ Microsoft Azure Site Recovery sağlayıcısı (DRA) yükseltilirken, ana hedef y
 
 Bunun nedeni, kayıt defteri anahtarındaki bir parametre için null değer olabilir. Sorunu çözmek için-
 
-1. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\4 dalını açın.
+1. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\4 dalını açın.
 1. ' InstallDirectory ' anahtar değerini inceleyin.Null ise, geçerli install dizin değerini ekleyin.
 1. Benzer şekilde, kayıt defteri düzenleyicisinde \Software\wow6432node\ınmage Systems\yüklü Products\5 dalını HKEY_LOCAL_MACHINE açın.
 1. ' InstallDirectory ' anahtar değerini inceleyin ve geçerli install Directory değerini ekleyin.

@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856720"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958591"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge modülünüzü hazırlayın teknik varlıkları hazırlama
 
@@ -22,8 +21,8 @@ Bu makalede, Azure Marketi 'nde yayınlanmadan önce Nesnelerin İnterneti (IoT)
 
 IoT Edge modülü, bir IoT Edge cihazında çalışan Docker ile uyumlu bir kapsayıcıdır.
 
-- IoT Edge modüller hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge modülleri anlama](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
-- IoT Edge modülünüzü geliştirmeye başlamak için bkz. [kendi IoT Edge modüllerinizi geliştirme](https://docs.microsoft.com/azure/iot-edge/module-development).
+- IoT Edge modüller hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge modülleri anlama](../../iot-edge/iot-edge-modules.md).
+- IoT Edge modülünüzü geliştirmeye başlamak için bkz. [kendi IoT Edge modüllerinizi geliştirme](../../iot-edge/module-development.md).
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
@@ -35,7 +34,7 @@ IoT Edge modülünüzün aşağıdaki platform seçeneklerinden birini desteklem
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen katman 1 platformları
 
-Modülünüzün IoT Edge tarafından desteklenen tüm katman 1 platformlarını desteklemesi gerekir ( [Azure IoT Edge destek](https://docs.microsoft.com/azure/iot-edge/support)'te kaydedilir). Daha iyi bir müşteri deneyimi sağladığından bu seçeneği öneririz. Bu ölçütleri karşılayan modüller görüntülenir. Bu platform seçeneğini kullanan bir modül şunları içermelidir:
+Modülünüzün IoT Edge tarafından desteklenen tüm katman 1 platformlarını desteklemesi gerekir ( [Azure IoT Edge destek](../../iot-edge/support.md)'te kaydedilir). Daha iyi bir müşteri deneyimi sağladığından bu seçeneği öneririz. Bu ölçütleri karşılayan modüller görüntülenir. Bu platform seçeneğini kullanan bir modül şunları içermelidir:
 
 - [GitHub bildirim aracı](https://github.com/estesp/manifest-tool)ile oluşturulmuş bildirim etiketleri olan en son bir etiketi ve sürüm etiketini (örneğin, 1.0.1) belirtin.
 
@@ -43,7 +42,7 @@ Modülünüzün IoT Edge tarafından desteklenen tüm katman 1 platformlarını 
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen katman 1 platformların bir alt kümesi
 
-Modülünüzün IoT Edge tarafından desteklenen katman 1 platformların bir alt kümesini (en az bir adet) desteklemesi gerekir ( [Azure IoT Edge destek](https://docs.microsoft.com/azure/iot-edge/support)'te kaydedilir). Bu platform seçeneğini kullanan bir modül şunları içermelidir:
+Modülünüzün IoT Edge tarafından desteklenen katman 1 platformların bir alt kümesini (en az bir adet) desteklemesi gerekir ( [Azure IoT Edge destek](../../iot-edge/support.md)'te kaydedilir). Bu platform seçeneğini kullanan bir modül şunları içermelidir:
 
 - Birden fazla platform destekleniyorsa, GitHub [bildirim aracı](https://github.com/estesp/manifest-tool) ile oluşturulmuş bildirim etiketleri olan en son bir etiketi ve sürüm etiketini (örneğin, 1.0.1) belirtin. Bildirim etiketleri yalnızca bir platform desteklensırada isteğe bağlıdır.
 - **Faydalı bağlantılar** bölümünün altında, [Azure IoT Edge sertifikalı cihaz kataloğundan](https://catalog.azureiotsolutions.com/)en az bir IoT Edge cihaza bir bağlantı eklemek için [iş ortağı merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace) ' ndeki teklif listesi sekmesini kullanın.
@@ -107,7 +106,7 @@ IoT modülü SDK 'sını kullanan modüller, telemetri amaçları için benzersi
 
 ProductInfo 'yu bu tanımlayıcıya ayarlamak için IoT modülü SDK 'larında aşağıdaki yöntemlerden birini kullanın:
 
-- [, #](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
 - [,](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
@@ -139,8 +138,8 @@ Ayrıca, yeni resim etiketleri ekleme gibi bir güncelleştirme yaparsanız tekl
 
 ## <a name="host-module-in-azure-container-registry"></a>Azure Container Registry 'de ana bilgisayar modülü
 
-IoT Edge modülünüzü Azure Market 'e yüklemek için, önce bunu bir [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) barındıralmanız gerekir. Modül, bir bildirim etiketi tarafından başvurulan görüntü etiketleri dahil olmak üzere yayımlamak istediğiniz tüm etiketleri içermelidir. Daha fazla bilgi için bkz. [Azure Container Registry oluşturma ve kapsayıcı görüntüsü gönderme](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr)öğreticisi.
+IoT Edge modülünüzü Azure Market 'e yüklemek için, önce bunu bir [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) barındıralmanız gerekir. Modül, bir bildirim etiketi tarafından başvurulan görüntü etiketleri dahil olmak üzere yayımlamak istediğiniz tüm etiketleri içermelidir. Daha fazla bilgi için bkz. [Azure Container Registry oluşturma ve kapsayıcı görüntüsü gönderme](../../container-instances/container-instances-tutorial-prepare-acr.md)öğreticisi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [IoT Edge modül teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [IoT Edge modül teklifi oluşturma](azure-iot-edge-module-creation.md)

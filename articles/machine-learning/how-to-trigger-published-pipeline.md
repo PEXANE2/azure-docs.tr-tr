@@ -12,17 +12,16 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.custom: contperfq4
 ms.openlocfilehash: b56b07bce558a65df79a23eaf1948aac8e4fabad
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433758"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Bir mantıksal uygulamadan Machine Learning işlem hattının çalıştırılmasını tetikleme
 
 Yeni veriler göründüğünde Azure Machine Learning işlem hattının çalıştırılmasını tetikleyin. Örneğin, BLOB depolama hesabında yeni veriler göründüğünde yeni bir modeli eğitemak üzere işlem hattını tetiklemek isteyebilirsiniz. Tetikleyiciyi [Azure Logic Apps](../logic-apps/logic-apps-overview.md)ayarlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 

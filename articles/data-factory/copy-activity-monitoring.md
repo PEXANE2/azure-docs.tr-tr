@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249729"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
@@ -50,7 +49,7 @@ En son **yürütme ayrıntıları ve süreleri** , kopyalama etkinliğinizin üz
 
 Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy Activity run result**  >  Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan etkinlik çalıştırma sonucu**çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
 
-| Özellik adı  | Description | Çıkışdaki birim |
+| Özellik adı  | Açıklama | Çıkışdaki birim |
 |:--- |:--- |:--- |
 | dataRead | Kaynaktaki okunan gerçek veri miktarı. | Int64 değeri, bayt cinsinden |
 | Veri yazıldı | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, `dataRead` her veri deposunun verileri nasıl depoladığını birbirleriyle ilişkilendiren şekilde boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
@@ -75,7 +74,7 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 | executionDetails | Kopyalama etkinliğinin aşamaları hakkında daha fazla ayrıntı ve ilgili adımlar, süreler, konfigürasyonlar vb. Bu bölümü değiştirebileceğinden, bu bölümü ayrıştırmayı önermiyoruz. Kopyalama performansını anlamanıza ve sorunlarını gidermenize nasıl yardımcı olduğunu daha iyi anlamak için, [görsel izleme](#monitor-visually) bölümüne bakın. | Dizi |
 | Perfönerisi | Performans ayarlama ipuçlarını kopyalayın. Ayrıntılar için [performans ayarlama ipuçlarına](copy-activity-performance-troubleshooting.md#performance-tuning-tips) bakın. | Dizi |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "output": {

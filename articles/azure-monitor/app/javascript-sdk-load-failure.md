@@ -6,10 +6,9 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84451070"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web uygulamaları için SDK yükleme hatası giderme
@@ -29,7 +28,7 @@ SDK yükleme hatası özel durumu, SDK betiğinin indirileceği veya başlatıla
 
 Yığın ayrıntıları, son kullanıcı tarafından kullanılan URL 'lerle ilgili temel bilgileri içerir.
 
-| Adı                      | Açıklama                                                                                                  |
+| Name                      | Açıklama                                                                                                  |
 |---------------------------|--------------------------------------------------------------------------------------------------------------|
 | &lt;CDN &nbsp; uç noktası&gt; | SDK 'Yı indirmek için kullanılan URL (ve başarısız).                                                      |
 | &lt;Yardım &nbsp; bağlantısı&gt;    | Sorun giderme belgelerine (Bu sayfa) bağlanan bir URL.                                              |
@@ -101,7 +100,7 @@ Aşağıdaki bölümlerde farklı raporlama seçenekleri bulunur. Bu, bir destek
 
 İlk olarak, geliştirici araçlarını destekleyen bir tarayıcı kullanarak (F12) JavaScript özel durumlarını kontrol etmenizi sağlar.
 
-SDK komut dosyasında (örneğin, AI. 2. min. js) bildirilen özel durumlar varsa, bu, SDK 'ya geçirilen yapılandırmanın beklenmeyen veya eksik gerekli yapılandırmayı içerdiğini veya CDN 'e hatalı bir yayın dağıtıldığını gösterebilir.
+SDK komut dosyasında (örneğin ai.2.min.js) bildirilen özel durumlar varsa, bu, SDK 'ya geçirilen yapılandırmanın beklenmeyen veya eksik gerekli yapılandırmayı içerdiğini ya da CDN 'ye hatalı bir yayın dağıtıldığını gösteriyor olabilir.
 
 Hatalı yapılandırmayı denetlemek için, kod parçacığına geçirilen yapılandırmayı değiştirin (henüz yoksa) ve yalnızca izleme anahtarınızı bir dize değeri olarak içerecek şekilde değiştirin.
 
@@ -128,7 +127,7 @@ Oluşturulan bir özel durum olmadığı varsayılarak, bir sonraki adımda ayar
 > [!NOTE]
 > Başlatma sırasında SDK, bilinen ana bağımlılıklar için bazı temel denetimler gerçekleştirir. Bunlar geçerli çalışma zamanı tarafından sağlanmadıysa, hata iletisini konsola uyarı iletileri olarak bildirir, ancak yalnızca, `loggingLevelConsole` sıfırdan büyükse olur.
 
-Hala başlatılamıyorsa, ```enableDebug``` yapılandırma ayarını etkinleştirmeyi deneyin. Bu, tüm iç hataların özel durum olarak oluşturulmasına neden olur (Bu, telemetrinin kaybolmasına neden olur). Bu yalnızca bir geliştirici olduğundan, bazı iç denetimlerin parçası olarak oluşan özel durumlarla birlikte çok gürültülü bir şekilde yararlanacaktır. bu nedenle, hangi sorunun SDK 'nın başarısız olmasına neden olduğunu anlamak için her bir özel durumu gözden geçirmeniz gerekir. Betiğin küçültülmüş olmayan sürümünü kullanın (". js" öğesinin altındaki uzantıyı not edin ve ". min. js" değil), aksi takdirde özel durumlar okunamaz olur.
+Hala başlatılamıyorsa, ```enableDebug``` yapılandırma ayarını etkinleştirmeyi deneyin. Bu, tüm iç hataların özel durum olarak oluşturulmasına neden olur (Bu, telemetrinin kaybolmasına neden olur). Bu yalnızca bir geliştirici olduğundan, bazı iç denetimlerin parçası olarak oluşan özel durumlarla birlikte çok gürültülü bir şekilde yararlanacaktır. bu nedenle, hangi sorunun SDK 'nın başarısız olmasına neden olduğunu anlamak için her bir özel durumu gözden geçirmeniz gerekir. Betiğin küçültülmüş olmayan sürümünü kullanın (". js" öğesinin altındaki uzantıyı not edin ve ".min.js" değil), aksi takdirde özel durumlar okunamaz olur.
 
 > [!WARNING]
 > Bu yalnızca geliştirici ayarıdır ve Telemetriyi yitideceğinizi tam bir üretim ortamında hıç etkinleştirilmemelidir.
@@ -194,7 +193,7 @@ Son kullanıcılarınız bir kurumsal ağ üzerinde ise, büyük olasılıkla g�
 
 #### <a name="host-the-sdk-on-your-own-cdn"></a>SDK 'sını kendi CDN 'niz üzerinde barındırın
 
- Son kullanıcılarınız Application Insights SDK 'sını genel CDN 'den indirmekle, Application Insights SDK 'sını kendi CDN uç noktanıza barındırabilmeniz gerekir. Hangi sürümü kullandığınızı daha kolay tanımlamak için belirli bir sürüm (AI. 2. #. #. min. js) kullanmanız önerilir. Ayrıca, tüm hata düzeltmelerinden ve kullanılabilir yeni özelliklerden yararlanabilmeniz için, bu sürümü düzenli olarak geçerli sürüme (AI. 2. min. js) güncelleştirin.
+ Son kullanıcılarınız Application Insights SDK 'sını genel CDN 'den indirmekle, Application Insights SDK 'sını kendi CDN uç noktanıza barındırabilmeniz gerekir. Hangi sürümü kullandığınızı daha kolay bir şekilde belirlemek için belirli bir sürüm (AI. 2. #. # .min.js) kullanmanız önerilir. Ayrıca, tüm hata düzeltmelerinden ve kullanılabilir yeni özelliklerden yararlanabilmeniz için, onu düzenli olarak geçerli sürüme (ai.2.min.js) güncelleştirin.
 
 #### <a name="use-npm-packages-to-embed-the-application-insight-sdk"></a>Application Insight SDK 'sını eklemek için NPM paketlerini kullanma
 

@@ -9,17 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84434205"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
 Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azure Maps ınkapısı* modülü, Azure haritalar Oluşturucu 'da oluşturulan ınkapıların işlemesini sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)
 2. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)

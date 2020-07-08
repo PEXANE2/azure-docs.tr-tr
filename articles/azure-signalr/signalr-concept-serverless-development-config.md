@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457142"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma
@@ -215,7 +214,7 @@ JavaScript/TypeScript istemcisi, bağlantı anlaşmasını başlatmak için Nego
 
 #### <a name="localhost"></a>E
 
-Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken `Host` CORS 'yi etkinleştirmek için *yerel. Settings. JSON* öğesine bir bölüm ekleyebilirsiniz. `Host`Bölümünde iki özellik ekleyin:
+Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken `Host` CORS 'yi etkinleştirmek için *local.settings.js* bölümüne bir bölüm ekleyebilirsiniz. `Host`Bölümünde iki özellik ekleyin:
 
 * `CORS`-istemci uygulamanın kaynağı olan temel URL 'YI girin
 * `CORSCredentials`-Bunu `true` "withCredentials" isteklerine izin verecek şekilde ayarlayın

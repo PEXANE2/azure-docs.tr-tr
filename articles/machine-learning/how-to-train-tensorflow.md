@@ -11,10 +11,9 @@ author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
 ms.openlocfilehash: 679e44a8949f283c0e01c47ca3e602ae6fc0eacf
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433786"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile bir TensorFlow derin öğrenme modeli oluşturun
@@ -26,7 +25,7 @@ Baştan sona bir iş akışı modeli geliştirmenize veya [mevcut bir modeli](ho
 
 [Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 

@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
 ms.openlocfilehash: 5449bb335232d3c7a6f2b97c5cce41a8bd2cf0f4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249780"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
@@ -245,7 +244,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 > [!IMPORTANT]
 > Bu Transact-SQL komutları yalnızca etkin coğrafi çoğaltma için geçerlidir ve yük devretme grupları için geçerli değildir. Bu nedenle, yalnızca yük devretme gruplarını desteklediklerinden, SQL yönetilen örnek örnekleri için de uygulanmazlar.
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Var olan bir veritabanı için ikincil bir veritabanı oluşturmak ve veri çoğaltmasını açmak için sunucu bağımsız değişkeni Ekle öğesini kullanın |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Yük devretmeyi başlatmak için ikincil bir veritabanını birincil olacak şekilde değiştirmek için yük devretme veya FORCE_FAILOVER_ALLOW_DATA_LOSS kullanma |
@@ -262,7 +261,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Bir veya daha fazla veritabanını alır. |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Mevcut bir veritabanı için ikincil bir veritabanı oluşturur ve veri çoğaltmaya başlar. |
@@ -276,7 +275,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: tek ve havuza alınmış veritabanlarının yük devretmesini yönetme
 
-| API | Description |
+| API | Açıklama |
 | --- | --- |
 | [Veritabanı oluştur veya güncelleştir (createMode = restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Birincil veya ikincil bir veritabanını oluşturur, güncelleştirir veya geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Oluşturma işlemi sırasında durumu döndürür. |

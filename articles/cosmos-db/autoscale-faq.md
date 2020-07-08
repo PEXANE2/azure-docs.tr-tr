@@ -7,10 +7,9 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
 ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84449524"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 'de otomatik ölçeklendirme sağlanan aktarım hızı hakkında sık sorulan sorular
@@ -97,7 +96,7 @@ Her Max RU/sn için GB cinsinden depolama sınırı: en fazla RU/s/veritabanı v
 ### <a name="what-happens-if-i-exceed-the-storage-limit-associated-with-my-max-throughput"></a>En yüksek aktarım hızı ile ilişkili depolama sınırını aşarsam ne olur?
 Veritabanının veya kapsayıcının en fazla üretilen işi ile ilişkili depolama sınırı aşılırsa, Azure Cosmos DB, bu depolama düzeyini destekleyebilen bir sonraki en yüksek RU/sn 'ye en fazla üretilen işi otomatik olarak arttırır.
 
-Örneğin, 50.000 RU/sn 'nin (5000-50.000 RU/s arasında ölçekleme) en fazla RU/sn ile başlatırsanız, en fazla 500 GB veri saklayabilirsiniz. 500 GB 'ı aşarsanız (örneğin, depolama 600 GB ise), yeni en büyük RU/sn değeri 60.000 RU/sn olacaktır (6000-60.000 RU/s arasında ölçeklendirme).
+Örneğin, 50.000 RU/sn 'nin (5000-50.000 RU/s arasında ölçekleme) en fazla RU/sn ile başlatırsanız, en fazla 500 GB veri saklayabilirsiniz. 500 GB düzeyini aşarsanız (örneğin depolama alanı 600 GB olursa) yeni maksimum RU/sn değeri 60.000 RU/sn (6000 ile 60.000 RU/sn arasında ölçeklendirilir) olacaktır.
 
 ### <a name="can-i-change-the-max-rus-on-the-database-or-container"></a>Veritabanı veya kapsayıcıda en büyük RU/sn 'yi değiştirebilir miyim? 
 Evet. En fazla RU/sn 'yi değiştirme hakkında bu [makaleye](how-to-provision-autoscale-throughput.md) bakın. En fazla RU/sn 'yi, istenen değere bağlı olarak değiştirdiğinizde, bu işlem tamamlanması biraz zaman alabilir (seçili olan RU/s 'ye bağlı olarak 4-6 saat kadar sürebilir)
@@ -136,9 +135,9 @@ Toplam kullanılan RU/s, veritabanının veya kapsayıcının en fazla RU/sn de�
 > Azure Cosmos DB istemci SDK 'Ları ve veri içe aktarma araçları (Azure Data Factory, toplu yürütücü kitaplığı) otomatik olarak 429s üzerinde yeniden denense de, zaman zaman 429s iyi durumda. Sürekli olarak yüksek sayıda 429s, en fazla RU/sn 'yi artırmanız veya bir [sık kullanılan bölüm](#autoscale-rate-limiting)için bölümleme stratejinizi gözden geçirmeniz gerektiğini gösteriyor olabilir.
 
 ### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a>Otomatik ölçeklendirme etkinleştirildiğinde 429s (daraltma/hız sınırlaması) görmeyi hala mümkün mü? 
-Evet. 429s 'yi iki senaryoda görmek mümkündür. İlk olarak, genel olarak tüketilen RU/s, veritabanının veya kapsayıcının en fazla RU/sn boyutunu aşarsa, hizmet istekleri buna uygun şekilde azaltır. 
+Evet. 429 hatalarını görmenizin iki farklı nedeni olabilir. İlk olarak, genel olarak tüketilen RU/s, veritabanının veya kapsayıcının en fazla RU/sn boyutunu aşarsa, hizmet istekleri buna uygun şekilde azaltır. 
 
-İkinci olarak, bir sıcak bölüm varsa (yani, diğer bölüm anahtarı değerleriyle karşılaştırılan daha yüksek bir istek miktarına sahip bir mantıksal bölüm anahtarı değeri), temeldeki fiziksel bölümün RU/s bütçesini aşması mümkündür. En iyi uygulama olarak, sık kullanılan bölümlerin önüne geçmek için, depolama ve aktarım hızı için eşit bir dağıtım ile sonuçlanan [iyi bir bölüm anahtarı seçin](partitioning-overview.md#choose-partitionkey) . 
+İkinci olarak, bir sıcak bölüm varsa (yani, diğer bölüm anahtarı değerleriyle karşılaştırılan daha yüksek bir istek miktarına sahip bir mantıksal bölüm anahtarı değeri), temeldeki fiziksel bölümün RU/s bütçesini aşması mümkündür. Sık erişimli bölümlerle karşılaşmamak için kullanabileceğiniz en iyi yöntemlerden biri, depolama ve işlem hızı konusunda eşit dağıtım sağlayan [iyi bir bölüm anahtarı seçmektir](partitioning-overview.md#choose-partitionkey). 
 
 Örneğin, 20.000 RU/s en fazla aktarım hızı seçeneğini belirlerseniz ve dört fiziksel bölümden oluşan 200 GB depolama alanı varsa, her fiziksel bölüm, 5000 RU/sn 'ye kadar hızla ölçeklendirilebilir. Belirli bir mantıksal bölüm anahtarında sık erişimli bir bölüm varsa, içindeki temeldeki fiziksel bölüm 5000 RU/s 'yi aşarsa, bu, %100 normalleştirilmiş kullanımı aşmaktadır.
 

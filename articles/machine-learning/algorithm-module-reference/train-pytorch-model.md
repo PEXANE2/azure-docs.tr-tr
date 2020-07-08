@@ -1,5 +1,5 @@
 ---
-title: Pytorch modelini eğitme
+title: PyTorch Modelini eğitme
 titleSuffix: Azure Machine Learning
 description: Pytorch modelini sıfırdan veya Finetune 'dan nasıl eğeceğinizi öğrenin.
 services: machine-learning
@@ -10,13 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450664"
 ---
-# <a name="train-pytorch-model"></a>Pytorch modelini eğitme
+# <a name="train-pytorch-model"></a>PyTorch Modelini eğitme
 
 Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learning tasarımcısında (Önizleme) **Pytorch model** modülünün nasıl kullanılacağı açıklanır. Bir modeli tanımladıktan ve parametrelerini ayarladıktan sonra ve etiketli veriler gerektirdiğinde eğitim gerçekleşir. 
 
@@ -58,7 +57,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 ## <a name="technical-notes"></a>Teknik notlar
 ###  <a name="expected-inputs"></a>Beklenen girişler  
 
-| Adı               | Tür                    | Açıklama                              |
+| Name               | Tür                    | Açıklama                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Eğitilen model    | Untraınedmodeldirectory | Eğitilen model, pytorch gerektir         |
 | Eğitim veri kümesi   | ImageDirectory          | Eğitim veri kümesi                         |
@@ -66,7 +65,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Adı          | Aralık            | Tür    | Varsayılan | Açıklama                              |
+| Name          | Aralık            | Tür    | Varsayılan | Açıklama                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Dönemler        | >0               | Tamsayı | 5       | Etiket veya sonuç sütununu içeren sütunu seçin |
 | Toplu iş boyutu    | >0               | Tamsayı | 16      | Bir toplu işte eğiten örnek sayısı   |
@@ -76,7 +75,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 
 ###  <a name="outputs"></a>Çıkışlar  
 
-| Adı          | Tür           | Açıklama   |
+| Name          | Tür           | Açıklama   |
 | ------------- | -------------- | ------------- |
 | Eğitilen model | ModelDirectory | Eğitilen model |
 

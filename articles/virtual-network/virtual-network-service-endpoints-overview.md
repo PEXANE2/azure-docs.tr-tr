@@ -14,10 +14,9 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85444463"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
@@ -88,7 +87,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 - Uç noktanın yapılandırıldığı sanal ağ, Azure hizmet kaynağıyla aynı veya ondan farklı abonelikte olabilir. Uç noktaları ayarlamak ve Azure hizmetlerinin güvenliğini sağlamak için gerekli olan izinler hakkında daha fazla bilgi için [Sağlama](#provisioning) bölümüne bakın.
 - Desteklenen hizmetler için yeni veya mevcut kaynaklar ile sanal ağlar arasındaki güvenliği hizmet uç noktaları kullanarak sağlayabilirsiniz.
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 - Hizmet uç noktasını etkinleştirdikten sonra, kaynak IP adresleri genel IPv4 adreslerini kullanarak bu alt ağdaki hizmetle iletişim kurarken özel IPv4 adreslerini kullanmaya geçiş yapar. Hizmete giden mevcut açık TCP bağlantıları bu geçiş sırasında kapatılır. Bir alt ağ için hizmete yönelik hizmet uç noktasını etkinleştirmeden veya devre dışı bırakmadan önce çalışan kritik görev olmadığından emin olun. Ayrıca uygulamalarınızın IP adresi değişikliğinin ardından Azure hizmetlerine otomatik olarak bağlanabildiğinden emin olun.
 

@@ -2,20 +2,16 @@
 title: Azure Otomasyonu özelliği dağıtım sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu özellikleri dağıtıldığında ortaya çıkan sorunların nasıl giderileceği ve çözüleceği açıklanır.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/22/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 4c4c43d8522c6f507d458c56abc445e2da35fa6d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739388"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801038"
 ---
-# <a name="troubleshoot-feature-deployment-issues"></a>Özellik dağıtım sorunlarını giderme
+# <a name="troubleshoot-feature-deployment-issues"></a>Özellik dağıtımı sorunlarını giderme
 
 Azure Otomasyonu Güncelleştirme Yönetimi özelliğini veya Değişiklik İzleme ve envanter özelliğini sanal makinelerinize dağıtırken hata iletileri alabilirsiniz. Bu makalede oluşabilecek hatalar ve bunların nasıl çözümleneceği açıklanır.
 
@@ -71,7 +67,7 @@ Bu hata, VM veya çalışma alanında ya da Kullanıcı için hatalı veya eksik
 
 #### <a name="resolution"></a>Çözüm
 
-Doğru [özellik dağıtım izinlerine](../automation-role-based-access-control.md#feature-setup-permissions)sahip olduğunuzdan emin olun ve sonra özelliği yeniden dağıtmayı deneyin. Hata iletisini alırsanız `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , `Microsoft.OperationalInsights/workspaces/read` VM 'nin bir çalışma alanı için etkinleştirilip etkinleştirilmediğini bulmak için izninizin olduğundan emin olun.
+Doğru [özellik dağıtım izinlerine](../automation-role-based-access-control.md#feature-setup-permissions)sahip olduğunuzdan emin olun ve sonra özelliği yeniden dağıtmayı deneyin. Hata iletisini alırsanız `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , aşağıdaki [sorun giderme bilgilerine](update-management.md#failed-to-enable-error)bakın.
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Senaryo: Özellik dağıtımı "tanılama günlüğü için Otomasyon hesabı yapılandırılamadı" iletisiyle başarısız oluyor
 

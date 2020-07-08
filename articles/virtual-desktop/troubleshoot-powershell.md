@@ -9,10 +9,9 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84456989"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
@@ -25,7 +24,7 @@ ms.locfileid: "84456989"
 
 PowerShell 'i Windows sanal masaüstü ile kullanırken oluşan hataları ve sorunları gidermek için bu makaleyi kullanın. PowerShell Uzak Masaüstü Hizmetleri hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü PowerShell](/powershell/module/windowsvirtualdesktop/).
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 

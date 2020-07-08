@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700973"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958608"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container teklifi oluşturma
 
@@ -20,7 +19,7 @@ Bu makalede, Azure Marketi 'nde bir kapsayıcı teklifi oluşturmanıza yardımc
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Hızlı başlangıç, öğreticiler ve örnekler için [Azure Container Instances belgelerine](https://docs.microsoft.com/azure/container-instances)bakın.
+Hızlı başlangıç, öğreticiler ve örnekler için [Azure Container Instances belgelerine](../../container-instances/index.yml)bakın.
 
 ## <a name="fundamental-technical-knowledge"></a>Temel teknik bilgi
 
@@ -43,7 +42,7 @@ Kapsayıcı görüntünüzü yönetmeye yardımcı olması için aşağıdaki ko
 
 Bu araçları geliştirme ortamınıza eklemeniz önerilir:
 
-- [Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Uzantı: [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Uzantı: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +54,9 @@ Bu araçları geliştirme ortamınıza eklemeniz önerilir:
 
 Daha fazla bilgi için aşağıdaki öğreticilere bakın:
 
-- [Öğretici: Azure Container Instances dağıtım için bir kapsayıcı görüntüsü oluşturma](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [Öğretici: Azure Container Registry görevlerle bulutta kapsayıcı görüntüleri oluşturun ve dağıtın](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
+- [Öğretici: Azure Container Instances dağıtım için bir kapsayıcı görüntüsü oluşturma](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [Öğretici: Azure Container Registry görevlerle bulutta kapsayıcı görüntüleri oluşturun ve dağıtın](../../container-registry/container-registry-tutorial-quick-task.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kapsayıcı teklifinizi oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
+- [Kapsayıcı teklifinizi oluşturun](create-azure-container-offer.md).

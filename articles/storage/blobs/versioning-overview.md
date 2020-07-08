@@ -10,10 +10,9 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433598"
 ---
 # <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
@@ -176,7 +175,7 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Description | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
+| Açıklama | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blobu veri Katılımcısı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blobu veri sahibi |

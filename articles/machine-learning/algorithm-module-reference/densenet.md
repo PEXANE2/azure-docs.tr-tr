@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450650"
 ---
 # <a name="densenet"></a>DenseNet
@@ -49,7 +48,7 @@ Daha fazla ayrıntı için, daha [seyrek bağlantılı](https://arxiv.org/abs/16
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Adı             | Aralık | Tür    | Varsayılan     | Açıklama                              |
+| Name             | Aralık | Tür    | Varsayılan     | Açıklama                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir densenet yapısının adı     |
 | Önceden eğitilen       | Herhangi biri   | Boole | True        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
@@ -57,7 +56,7 @@ Daha fazla ayrıntı için, daha [seyrek bağlantılı](https://arxiv.org/abs/16
 
 ###  <a name="output"></a>Çıktı  
 
-| Adı            | Tür                    | Açıklama                              |
+| Name            | Tür                    | Açıklama                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Eğitilen model | Untraınedmodeldirectory | Pytorch modelini eğitebilmeniz için bağlanmayan eğitilen bir model. |
 

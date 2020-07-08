@@ -5,12 +5,11 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 4ab42509930e76989a67f45deb33e370e6e9adf4
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
-ms.translationtype: MT
+ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800656"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Hava durumu ortaklarından Hava durumu verileri alın
 
@@ -140,10 +139,7 @@ Farmtts veri hub 'ında Hava durumu verilerini almaya başlamak için aşağıda
 
 ## <a name="query-ingested-weather-data"></a>Sorgu alınan hava durumu verileri
 
-Hava durumu işleri tamamlandıktan sonra modeller veya eyleme dönüştürülebilir içgörüler oluşturmak için alınan hava durumu verilerini sorgulayabilirsiniz. Farmman 'daki Hava durumu verilerine erişmek ve bunları sorgulamak için iki yol vardır:
-
-- API ve
-- Time Series Insights (TSI).
+Hava durumu işleri tamamlandıktan sonra, veri merkezi REST API 'Lerini kullanarak modeller veya eyleme dönüştürülebilir içgörüler oluşturmak için alınan hava durumu verilerini sorgulayabilirsiniz.
 
 ### <a name="query-using-rest-api"></a>REST API kullanarak sorgulama
 
@@ -209,20 +205,6 @@ REST API kullanarak hava durumu verilerini sorgulamak için aşağıdaki adımla
 
 Yukarıdaki örnekte, yanıtın iki zaman damgalarına ilişkin veriler, ölçü adı ("sıcaklık") ve raporlanan Hava durumu verilerinin iki zaman damgalarıyla birlikte verileri vardır. Bildirilen değerlerin türünü ve birimini yorumlamak için ilgili hava durumu veri modeline (yukarıdaki 2. adım bölümünde açıklandığı gibi) başvurmanız gerekir.
 
-### <a name="query-using-azure-time-series-insights-tsi"></a>Azure Time Series Insights kullanarak sorgulama (TSI)
-
-Farmınts, IoT ölçeğinde verileri almak, depolamak, sorgulamak ve görselleştirmek için [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) kullanır. Bu, zaman serisi için en iyi duruma getirilen ve en iyileştirilmiş veri.
-
-Hava durumu verileri bir EventHub üzerinde alınır ve ardından Farmtts kaynak grubu içindeki bir TSI ortamına gönderilir. Veriler daha sonra doğrudan TSI 'dan sorgulanabilir. Daha fazla bilgi için bkz. [TSI belgeleri](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
-
-TSI üzerinde verileri görselleştirmek için adımları izleyin:
-
-1. **Azure Portal**  >  **farmrets Datahub kaynak grubuna** gidin > **Time Series Insights** ortamı (TSİ-xxxx >) **veri erişim ilkeleri**' ni seçin. Okuyucu veya katkıda bulunan erişimi olan kullanıcı ekleyin.
-
-2. **Time Series Insights** ortamının (TSİ-xxxx) **genel bakış** sayfasına gidin ve **Time Series Insights Explorer URL 'sini**seçin. Artık alınan hava durumu verilerini görselleştirebilirsiniz.
-
-Hava durumu verilerini depolama, sorgulama ve görselleştirmenin yanı sıra, TSI Power BI panosu ile tümleştirmeyi de sağlar. Daha fazla bilgi için bkz. [Power BI Time Series Insights verileri görselleştirme](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
-
 ## <a name="appendix"></a>Ek
 
 |        İş Ortağı   |  Ayrıntılar   |
@@ -236,7 +218,7 @@ Hava durumu verilerini depolama, sorgulama ve görselleştirmenin yanı sıra, T
 | DockerDetails-partnerCredentials | Docker 'da iş ortağı API 'sini çağırma için kimlik bilgileri. Ortağın, bu bilgileri, desteklenen kimlik doğrulama mekanizmasına bağlı olarak müşterilerine vermesi gerekir. Kullanıcı adı/parola veya API anahtarları. |
 | partnerType | "Hava durumu" (Farmtörlerde diğer iş ortağı türleri "algılayıcı" ve "Imagery")  |
 |  name   |   Farmtempts sisteminde ortağın istenen adı   |
-|  açıklama |  Description   |
+|  açıklama |  Açıklama   |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

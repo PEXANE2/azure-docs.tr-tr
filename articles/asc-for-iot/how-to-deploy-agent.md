@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84456802"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
@@ -52,15 +51,15 @@ C tabanlı güvenlik aracısının daha düşük bir bellek parmak izi vardır v
 | Linux önkoşulları | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-eklentiler | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-Eklentiler, sudo, netstat, Iptables |
 | Disk ayak izi | 10,5 MB | 90 MB |
 | Bellek ayak izi (Ortalama) | 5,5 MB | 33 MB |
-| IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md) | Yes | Yes |
-| Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events) | Yes | Yes |
-| Olay toplama | Yes | Yes |
-| [Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma | Yes | Yes |
+| IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md) | Evet | Yes |
+| Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events) | Evet | Yes |
+| Olay toplama | Evet | Yes |
+| [Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma | Evet | Yes |
 |
 
 ## <a name="security-agent-installation-guidelines"></a>Güvenlik Aracısı yükleme yönergeleri
 
-**Windows**Için: Install securityagent. ps1 komut dosyasının bir yönetici PowerShell penceresinden yürütülmesi gerekir.
+**Windows**Için: Install SecurityAgent.ps1 betiğinin bir yönetici PowerShell penceresinden yürütülmesi gerekir.
 
 **Linux**için: InstallSecurityAgent.sh, süper kullanıcı olarak çalıştırılmalıdır. "Sudo" ile yükleme komutunun önek olarak önerilmenizi öneririz.
 

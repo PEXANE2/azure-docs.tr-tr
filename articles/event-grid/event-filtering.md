@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
 ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84456855"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
@@ -61,7 +60,7 @@ Veri alanlarındaki değerlere göre filtrelemek ve karşılaştırma işlecini 
 * anahtar-filtreleme için kullanmakta olduğunuz olay verileri alanı. Bir sayı, Boolean veya dize olabilir.
 * Values-anahtarla karşılaştırılacak değer veya değerler.
 
-Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem gerçekleştirilir, bu nedenle anahtar alanının değeri bu değerlerden biri olmalıdır. Aşağıda bir örnek verilmiştir:
+Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem gerçekleştirilir, bu nedenle anahtar alanının değeri bu değerlerden biri olmalıdır. Örnek aşağıda verilmiştir:
 
 ```json
 "advancedFilters": [
@@ -76,7 +75,7 @@ Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem ge
 ]
 ```
 
-Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, bu nedenle her filtre koşulu karşılanmalıdır. Aşağıda bir örnek verilmiştir: 
+Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, bu nedenle her filtre koşulu karşılanmalıdır. Örnek aşağıda verilmiştir: 
 
 ```json
 "advancedFilters": [

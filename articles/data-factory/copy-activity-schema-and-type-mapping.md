@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
 ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249661"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema ve veri türü eşleme
@@ -49,18 +48,18 @@ Eşlemeyi Data Factory yazma Kullanıcı arabirimi-> kopyalama etkinliği > eşl
 
 | Özellik | Açıklama                                                  | Gerekli |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | Kaynak veya havuz sütununun/alanının adı. Tablosal kaynak ve havuz için geçerlidir. | Yes      |
-| numarasını  | Sütun dizini. 1 ' den başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | No       |
-| yol     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik kaynak ve havuz için, örneğin Cosmos DB, MongoDB veya REST bağlayıcıları için geçerlidir.<br>Kök nesnesi altındaki alanlar için JSON yolu root ile başlar `$` ; özelliği tarafından seçilen dizi içindeki alanlar IÇIN `collectionReference` JSON yolu, olmadan dizi öğesinden başlar `$` . | No       |
-| tür     | Kaynak veya havuz sütununun geçici veri türü Data Factory. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | No       |
-| kültür  | Kaynak veya havuz sütununun kültürü. Tür veya olduğunda geçerlidir `Datetime` `Datetimeoffset` . Varsayılan değer: `en-us`.<br>Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | No       |
-| biçim   | Tür veya olduğunda kullanılacak biçim dizesi `Datetime` `Datetimeoffset` . Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | No       |
+| name     | Kaynak veya havuz sütununun/alanının adı. Tablosal kaynak ve havuz için geçerlidir. | Evet      |
+| numarasını  | Sütun dizini. 1 ' den başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | Hayır       |
+| yol     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik kaynak ve havuz için, örneğin Cosmos DB, MongoDB veya REST bağlayıcıları için geçerlidir.<br>Kök nesnesi altındaki alanlar için JSON yolu root ile başlar `$` ; özelliği tarafından seçilen dizi içindeki alanlar IÇIN `collectionReference` JSON yolu, olmadan dizi öğesinden başlar `$` . | Hayır       |
+| tür     | Kaynak veya havuz sütununun geçici veri türü Data Factory. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | Hayır       |
+| kültür  | Kaynak veya havuz sütununun kültürü. Tür veya olduğunda geçerlidir `Datetime` `Datetimeoffset` . Varsayılan değer: `en-us`.<br>Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | Hayır       |
+| biçim   | Tür veya olduğunda kullanılacak biçim dizesi `Datetime` `Datetimeoffset` . Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | Hayır       |
 
 Aşağıdaki özellikler aşağıdakilere ek olarak desteklenir `translator` `mappings` :
 
 | Özellik            | Açıklama                                                  | Gerekli |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | Hiyerarşik kaynaktaki verileri kopyalarken uygulayın, örneğin, Cosmos DB, MongoDB veya REST bağlayıcıları.<br>Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. | No       |
+| collectionReference | Hiyerarşik kaynaktaki verileri kopyalarken uygulayın, örneğin, Cosmos DB, MongoDB veya REST bağlayıcıları.<br>Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. | Hayır       |
 
 #### <a name="tabular-source-to-tabular-sink"></a>Tablosal kaynaktan tablolu havuz
 
@@ -309,17 +308,17 @@ Aşağıdaki özellikler veri türü dönüştürmesi için kopyalama etkinliği
 
 | Özellik                         | Açıklama                                                  | Gerekli |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| Tür dönüştürme                   | Yeni veri türü dönüştürme deneyimini etkinleştirin. <br>Geriye dönük uyumluluk nedeniyle varsayılan değer false 'tur.<br><br>Data Factory yazma Kullanıcı arabirimi aracılığıyla, geç Haziran 2020 ' den sonra oluşturulan yeni kopyalama etkinlikleri için, bu veri türü dönüştürmesi en iyi deneyim için varsayılan olarak etkindir ve ilgili senaryolar için kopyalama etkinliği ' ne > eşleme sekmesinde aşağıdaki tür dönüştürme ayarlarını görebilirsiniz. <br>Programlı olarak işlem hattı oluşturmak için özelliği etkinleştirmek üzere açıkça `typeConversion` true olarak ayarlamanız gerekir.<br>Bu özellik yayınlanmadan önce oluşturulan mevcut kopyalama etkinlikleri için, geriye dönük uyumluluk için Data Factory yazma Kullanıcı arabirimine tür dönüştürme seçeneklerini görmezsiniz. | No       |
-| typeConversionSettings           | Tür dönüştürme ayarları grubu. `typeConversion`Olarak ayarlandığında Uygula `true` . Aşağıdaki özellikler bu grubun altında bulunur. | No       |
+| Tür dönüştürme                   | Yeni veri türü dönüştürme deneyimini etkinleştirin. <br>Geriye dönük uyumluluk nedeniyle varsayılan değer false 'tur.<br><br>Data Factory yazma Kullanıcı arabirimi aracılığıyla, geç Haziran 2020 ' den sonra oluşturulan yeni kopyalama etkinlikleri için, bu veri türü dönüştürmesi en iyi deneyim için varsayılan olarak etkindir ve ilgili senaryolar için kopyalama etkinliği ' ne > eşleme sekmesinde aşağıdaki tür dönüştürme ayarlarını görebilirsiniz. <br>Programlı olarak işlem hattı oluşturmak için özelliği etkinleştirmek üzere açıkça `typeConversion` true olarak ayarlamanız gerekir.<br>Bu özellik yayınlanmadan önce oluşturulan mevcut kopyalama etkinlikleri için, geriye dönük uyumluluk için Data Factory yazma Kullanıcı arabirimine tür dönüştürme seçeneklerini görmezsiniz. | Hayır       |
+| typeConversionSettings           | Tür dönüştürme ayarları grubu. `typeConversion`Olarak ayarlandığında Uygula `true` . Aşağıdaki özellikler bu grubun altında bulunur. | Hayır       |
 | *Altındaki`typeConversionSettings`* |                                                              |          |
-| Allowdatakesilme              | Kaynak verileri kopyalama sırasında farklı tür ile havuza dönüştürürken veri kesilmesine izin ver, örneğin Decimal 'den integer 'e, DatetimeOffset 'den TarihSaat 'e kadar. <br>True varsayılan değerdir. | No       |
-| treatBooleanAsNumber             | Boolean değerlerini sayı olarak değerlendirin, örneğin, true, 1.<br>Varsayılan değer false 'dur. | No       |
-| dateTimeFormat                   | Örneğin, saat dilimi boşluğu ve dizeleri olmadan tarihler arasında dönüştürme yaparken dize biçimlendirme `yyyy-MM-dd HH:mm:ss.fff` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | No       |
-| dateTimeOffsetFormat             | Saat dilimi boşluğu ve dizeleri ile tarihler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `yyyy-MM-dd HH:mm:ss.fff zzz` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | No       |
-| timeSpanFormat                   | Zaman dönemleri ve dizeler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `dd\.hh\:mm` . Ayrıntılı bilgi için [Özel TimeSpan Biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) bakın. | No       |
-| kültür                          | Türler dönüştürülürken kullanılacak kültür bilgileri, örneğin `en-us` veya `fr-fr` . | No       |
+| Allowdatakesilme              | Kaynak verileri kopyalama sırasında farklı tür ile havuza dönüştürürken veri kesilmesine izin ver, örneğin Decimal 'den integer 'e, DatetimeOffset 'den TarihSaat 'e kadar. <br>True varsayılan değerdir. | Hayır       |
+| treatBooleanAsNumber             | Boolean değerlerini sayı olarak değerlendirin, örneğin, true, 1.<br>Varsayılan değer false 'dur. | Hayır       |
+| dateTimeFormat                   | Örneğin, saat dilimi boşluğu ve dizeleri olmadan tarihler arasında dönüştürme yaparken dize biçimlendirme `yyyy-MM-dd HH:mm:ss.fff` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
+| dateTimeOffsetFormat             | Saat dilimi boşluğu ve dizeleri ile tarihler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `yyyy-MM-dd HH:mm:ss.fff zzz` .  Ayrıntılı bilgi için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
+| timeSpanFormat                   | Zaman dönemleri ve dizeler arasında dönüştürme sırasında dize biçimlendirme (örneğin,) `dd\.hh\:mm` . Ayrıntılı bilgi için [Özel TimeSpan Biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) bakın. | Hayır       |
+| kültür                          | Türler dönüştürülürken kullanılacak kültür bilgileri, örneğin `en-us` veya `fr-fr` . | Hayır       |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -454,9 +453,9 @@ Aşağıdaki JSON bir işlem hattındaki kopyalama etkinliğini tanımlar. **Çe
 
 | Özellik            | Açıklama                                                  | Gerekli |
 | :------------------ | :----------------------------------------------------------- | :------- |
-| tür                | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Yes      |
-| schemaMapping       | **Kaynak taraftan havuz tarafına**olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **Anahtar:** kaynağı temsil eder. **Tablo kaynağı**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **Değer:** havuzu temsil eder. **Tablo havuzu**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar özelliği tarafından seçilen dizi içindeki alanlar için `collectionReference` JSON yolu dizi öğesinden başlar. | Yes      |
-| collectionReference | Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. Bu özellik yalnızca hiyerarşik veriler kaynak olduğunda desteklenir. | No       |
+| tür                | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Evet      |
+| schemaMapping       | **Kaynak taraftan havuz tarafına**olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **Anahtar:** kaynağı temsil eder. **Tablo kaynağı**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **Değer:** havuzu temsil eder. **Tablo havuzu**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar özelliği tarafından seçilen dizi içindeki alanlar için `collectionReference` JSON yolu dizi öğesinden başlar. | Evet      |
+| collectionReference | Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. Bu özellik yalnızca hiyerarşik veriler kaynak olduğunda desteklenir. | Hayır       |
 
 **Örnek: MongoDB 'den Oracle 'a kopyalama:**
 

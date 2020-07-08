@@ -9,17 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8c854a503e3c949be0165d9dda046e0169686c67
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84434149"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator ınkapımaps için dinamik stil uygulama
 
 Azure haritalar Creator [özelliği durum hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate) , ınkapımap veri özelliklerinin dinamik özelliklerine göre stiller uygulamanıza olanak tanır.  Örneğin, hizmet toplantısı odalarını, doluluk durumunu yansıtmak için belirli bir renkle işleyebilirsiniz. Bu makalede, iç hat eşleme özelliklerinin [özellik durum hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate) ve [ınkapılı web modülü](how-to-use-indoor-module.md)ile dinamik olarak nasıl işleneceğini göstereceğiz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure Haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
