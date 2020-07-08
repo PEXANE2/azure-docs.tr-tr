@@ -2,13 +2,13 @@
 title: Azure Application Insights veri saklama ve depolama | Microsoft Docs
 description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: d77eaa32c8487d1aa87626683b4c29bf1cee0e75
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/30/2020
+ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601369"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
 
@@ -18,8 +18,8 @@ Uygulamanıza [Azure Application Insights][start] SDK 'yı yüklediğinizde, uyg
 
 * "Kutudan çıkar" olarak çalışan standart telemetri modülleri, önemli verileri hizmete gönderemeyebilir. Telemetri, yük, performans ve kullanım ölçümleri, özel durum raporları ve diğer tanılama verileri ile ilgilidir. Tanılama raporlarında görünen ana Kullanıcı verileri URL 'lardır; ancak uygulamanız herhangi bir durumda gizli verileri bir URL 'de düz metin olarak yerleştirmemelidir.
 * Tanılama ve izleme kullanımı konusunda size yardımcı olmak için ek özel telemetri gönderen bir kod yazabilirsiniz. (Bu genişletilebilirlik Application Insights harika bir özelliğidir.) Bu kod yanlışlıkla, kişisel ve diğer hassas verileri içerecek şekilde yazmak mümkündür. Uygulamanız bu tür verilerle çalışıyorsa, yazdığınız tüm koda tam bir gözden geçirme işlemi uygulamanız gerekir.
-* Uygulamanızı geliştirirken ve test ederken, SDK tarafından gönderilen işlemleri kolayca inceleyebilirsiniz. Veriler, IDE ve tarayıcının hata ayıklama çıkışı penceresinde görüntülenir. 
-* Veriler, ABD veya Avrupa 'daki [Microsoft Azure](https://azure.com) sunucularında tutulur. (Ancak, uygulamanız her yerde çalışabilir.) Azure [güçlü güvenlik işlemlerine sahiptir ve çok çeşitli uyumluluk standartlarını karşılar](https://azure.microsoft.com/support/trust-center/). Yalnızca siz ve belirlediğiniz takımınızın verilerinize erişimi vardır. Microsoft personeli, yalnızca bilginiz ile sınırlı belirli koşullar altında buna sınırlı erişim sağlayabilir. Aktarım sırasında ve bekleyen sırada şifrelenir.
+* Uygulamanızı geliştirirken ve test ederken, SDK tarafından gönderilen işlemleri kolayca inceleyebilirsiniz. Veriler, IDE ve tarayıcının hata ayıklama çıkışı penceresinde görüntülenir.
+* Yeni bir Application Insights kaynağı oluştururken konum ' u seçebilirsiniz. [Burada](https://azure.microsoft.com/global-infrastructure/services/?products=all)bölge başına Application Insights kullanılabilirliği hakkında daha fazla bilgi edinebilirsiniz.
 *   Toplanan verileri gözden geçirin. Bu, bazı durumlarda izin verilen ancak diğerlerini olmayan verileri de içerebilir.  Cihaz adı buna iyi bir örnektir. Bir sunucudaki cihaz adı gizlilik etkisine sahip değildir ve faydalıdır, ancak bir telefondan veya dizüstü bilgisayardan bir cihaz adının gizlilik etkisi olabilir ve daha az kullanışlı olabilir. Birincil olarak sunucuları hedeflemek için geliştirilmiş bir SDK, varsayılan olarak cihaz adı toplar ve hem normal olaylar hem de özel durumlar içinde üzerine yazılması gerekebilir.
 
 Bu makalenin geri kalanı, bu yanıtlara daha fazla elaborates. Bu, kendi ekibinizin parçası olmayan iş arkadaşlarınıza gösterebilmeniz için kendine dahil olmak üzere tasarlanmıştır.
@@ -213,7 +213,7 @@ Bunun gerekli olmadığı sürece uygulamanızı yalnızca TLS 1,2 ' i kullanaca
 | Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
 | Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfası.  |
 | Windows Server 2008 SP2 | TLS 1,2 desteği için bir güncelleştirme gerekiyor. | Bkz. Windows Server 2008 SP2 'de [TLS 1,2 için destek eklemek Için güncelleştirme](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) . |
-|Windows Vista | Desteklenmiyor. | Yok
+|Windows Vista | Desteklenmiyor. | YOK
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Linux dağılımının hangi OpenSSL sürümünü çalıştırdığından emin olun
 
@@ -270,7 +270,7 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Sunucubağlamı |Makine adı, yerel ayar, işletim sistemi, cihaz, Kullanıcı oturumu, Kullanıcı bağlamı, işlem |
 | Temsilc |IP adresi, zaman damgası, işletim sistemi, tarayıcıdan coğrafi konum |
 | Ölçümler |Ölçüm adı ve değeri |
-| Ekinlikler |Olay adı ve değeri |
+| Olaylar |Olay adı ve değeri |
 | PageViews |URL ve sayfa adı ya da ekran adı |
 | İstemci perf |URL/sayfa adı, tarayıcı yükleme süresi |
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |

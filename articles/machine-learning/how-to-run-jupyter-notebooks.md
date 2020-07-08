@@ -9,15 +9,15 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 04/21/2020
-ms.openlocfilehash: b8869eee4e44001f5d4aeafbbdb32f93f0a7e0c8
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/27/2020
+ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601471"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Çalışma alanınızda Jupyıter not defterlerini çalıştırma (Önizleme)
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Jupyıter not defterlerinizi Azure Machine Learning Studio 'daki çalışma alanınızda doğrudan çalıştırmayı öğrenin. [Jupi](https://jupyter.org/) veya [Jupyıterlab](https://jupyterlab.readthedocs.io)'ı başlatabilmeniz sırasında, çalışma alanından çıkmadan not defterlerinizi düzenleyebilir ve çalıştırabilirsiniz.
@@ -29,7 +29,7 @@ Nasıl kullanabileceğinizi öğrenin:
 * Not defteri ortamını değiştirme
 * Not defterlerinizi çalıştırmak için kullanılan işlem örneklerinin ayrıntılarını bulun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 * Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -51,10 +51,12 @@ Yeni bir not defteri oluşturmak için:
 1. Bir dosya dizini seçin.
 1. **Oluştur**'u seçin.
 
-> [!TIP]
-> Metin dosyaları da oluşturabilirsiniz.  Dosya türü olarak **metin** ' i seçin ve uzantıyı ada ekleyin (örneğin, MyFile.py veya dosyam. txt)  
+Metin dosyaları da oluşturabilirsiniz.  Dosya türü olarak **metin** ' i seçin ve uzantıyı ada ekleyin (örneğin, myfile.py veya myfile.txt)  
 
 Ayrıca, Not defterleri sayfasının en üstünde bulunan araçlarla Not defterleri de dahil olmak üzere klasörleri ve dosyaları karşıya yükleyebilirsiniz.  Not defterleri ve çoğu metin dosya türleri Önizleme bölümünde görüntülenir.  Diğer dosya türleri için Önizleme yoktur.
+
+> [!IMPORTANT]
+> Not defterlerinde ve betiklerde bulunan içerikler, oturumlarınızdan verileri okuyabilir ve Azure 'da kuruluşunuz olmadan verilere erişebilir.  Yalnızca güvenilir kaynaklardan gelen dosyaları yükleyin. Daha fazla bilgi için bkz. [güvenli kod en iyi uygulamaları](concept-secure-code-best-practice.md#azure-ml-studio-notebooks).
 
 ### <a name="clone-samples"></a>Örnek kopyalama
 
@@ -95,15 +97,37 @@ Bir not defteri veya dosyayı paylaşmak için URL 'YI kopyalayıp yapıştırı
 
 Bir not defteri düzenlemek için, çalışma alanınızın **Kullanıcı dosyaları** bölümünde yer alan herhangi bir not defterini açın. Düzenlemek istediğiniz hücreye tıklayın. 
 
-Çalıştıran bir işlem örneği çalışırken, herhangi bir Python not defterinde [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)tarafından desteklenen kod tamamlamayı da kullanabilirsiniz.
+Bir işlem örneğine bağlanmadan Not defterini düzenleyebilirsiniz.  Not defterindeki hücreleri çalıştırmak istediğinizde, bir işlem örneği seçin veya oluşturun.  Durdurulmuş bir işlem örneği seçerseniz, ilk hücreyi çalıştırdığınızda otomatik olarak başlatılır.
+
+Bir işlem örneği çalışırken, herhangi bir Python not defterinde [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)tarafından desteklenen kod tamamlamayı da kullanabilirsiniz.
 
 Ayrıca, Not defteri araç çubuğundan Jupyter veya JupyterLab ' i de başlatabilirsiniz.  Azure Machine Learning, Microsoft Desteği sınırının dışında açık kaynak ürünleri olduklarından jupi veya jupi 'nın hata ve hatalarını düzeltir.
+
+### <a name="use-intellisense"></a>IntelliSense kullanma
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) , bir dizi özelliği içeren bir kod tamamlama yardımıdır: liste üyeleri, parametre bilgileri, hızlı bilgi ve tam sözcük. Bu özellikler, kullanmakta olduğunuz kod hakkında daha fazla bilgi edinmenize, yazmakta olduğunuz parametreleri izlemenize ve yalnızca birkaç tuş vuruşu ile özelliklere ve yöntemlere çağrılar eklemenize yardımcı olur.  
+
+Kod yazarken, IntelliSense 'i tetiklemek için Ctrl + Space tuşlarını kullanın.
+
+### <a name="save-and-checkpoint-a-notebook"></a>Not defteri kaydetme ve kontrol noktası
+
+Azure Machine Learning, bir *ıpynb*dosyası oluşturduğunuzda bir denetim noktası dosyası oluşturur   .
+
+Not defteri araç çubuğunda, menüyü seçin ve ardından not defterini el ile kaydetmek için ** &gt; Kaydet ve kontrol noktası dosya** ve not defteriyle ilişkili bir kontrol noktası dosyası eklenir.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Not defteri araç çubuğunda kaydetme aracının ekran görüntüsü":::
+
+Her bir not defteri, her 30 saniyede bir otomatik kaydedilir.Otomatik kaydetme, denetim noktası dosyasını değil yalnızca ilk *ipynb*   dosyasını güncelleştirir.
+ 
+Adlandırılmış bir kontrol noktası oluşturmak ve Not defterini kaydedilmiş bir denetim noktasına dönüştürmek için Not defteri menüsünde **kontrol noktaları** ' nı seçin.
+
 
 ### <a name="useful-keyboard-shortcuts"></a>Faydalı klavye kısayolları
 
 |Klavye  |Eylem  |
 |---------|---------|
 |Shift+Enter     |  Bir hücre Çalıştır       |
+|Ctrl+Ara Çubuğu | IntelliSense 'i etkinleştir |
 |CTRL + a (Windows)     |  Not defterinde sekme yakalamayı etkinleştirin/devre dışı bırakın.       |
 |CTRL + SHIFT + d (Mac & Linux)     |    Not defterinde sekme yakalamayı etkinleştirin/devre dışı bırakın.     |
 |Sekme (sekme tuzağı etkin olduğunda) | ' \T ' karakteri ekle (Girintile)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570223"
 ---
 Bu adımda, kaç tane Azure dosya paylaşımının gerekli olduğunu değerlendirirsiniz. Tek bir Windows Server örneği (veya kümesi), 30 adede kadar Azure dosya paylaşımını eşitleyebilir.
 
@@ -58,7 +58,7 @@ Azure Dosya Eşitleme ve dengeli bir performans ve deneyimin diğer önemli bir 
 > [!IMPORTANT]
 > Azure Dosya Eşitleme için en önemli ölçekli vektör, eşitlenmesi gereken öğe (dosya ve klasör) sayısıdır.
 
-Azure Dosya Eşitleme, en fazla 100.000 öğenin tek bir Azure dosya paylaşımında eşitlenmesini destekler. Bu sınır aşılıyor ve yalnızca Azure Dosya Eşitleme takım testlerin düzenli olarak ne şekilde test gösterdiğini gösterir.
+Azure Dosya Eşitleme, en fazla 100.000.000 öğenin tek bir Azure dosya paylaşımında eşitlenmesini destekler. Bu sınır aşılıyor ve yalnızca Azure Dosya Eşitleme takım testlerin düzenli olarak ne şekilde test gösterdiğini gösterir.
 
 Her eşitleme kapsamı için öğe sayısını düşük tutmak en iyi uygulamadır. Bu, klasörleri Azure dosya paylaşımlarına eşleştirmenizde dikkate alınması gereken önemli bir faktördür.
 

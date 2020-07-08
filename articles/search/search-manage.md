@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565904"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 
@@ -28,7 +28,6 @@ ms.locfileid: "85368286"
 
 Azure Bilişsel Arama, özel uygulamalara zengin arama deneyimi oluşturmak için kullanılan, tam olarak yönetilen, bulut tabanlı bir arama hizmetidir. Bu makalede, önceden sağladığınız bir arama hizmeti için [Azure Portal](https://portal.azure.com) gerçekleştirebileceğiniz hizmet yönetim görevleri ele alınmaktadır. Hizmet yönetimi, tasarım açısından hafif ve aşağıdaki görevlerle sınırlıdır:
 
-* **Genel bakış** giriş sayfasında hizmetinize ve içeriklerinizi hakkında bilgi edinin.
 * Orta sayfa **kullanım** bağlantısını kullanarak depolamayı denetleyin.
 * Orta sayfa **izleme** bağlantısını kullanarak sorgu birimlerini ve gecikme süresini ve isteklerin kısıtlanıp kısıtlanmadığını denetleyin.
 * Sol taraftaki **anahtarlar** sayfasını kullanarak erişimi yönetin.

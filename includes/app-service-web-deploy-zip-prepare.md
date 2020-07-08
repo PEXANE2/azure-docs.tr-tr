@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 6b5aa4f409b8c2f5a9125ab01e8587f4ac9c4ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570161"
 ---
 ## <a name="create-a-project-zip-file"></a>Proje ZIP dosyası oluşturma
 
@@ -23,11 +23,11 @@ ms.locfileid: "75945148"
 
 Yerel bir Terminal penceresinde, uygulama projenizin kök dizinine gidin. 
 
-Bu dizin, Web uygulamanıza, _Dizin. html_, _index. php_ve _app. js_gibi giriş dosyasını içermelidir. Ayrıca, _Project. JSON_, _besteci. JSON_, _Package. JSON_, _Bower. JSON_ve _requirements. txt_gibi paket yönetim dosyalarını da içerebilir.
+Bu dizin, _index.html_, _index. php_ve _app.js_gibi Web uygulamanıza giriş dosyasını içermelidir. Ayrıca, _project.json_, _composer.jsüzerinde_ _package.js_, üzerinde _bower.js_ve _requirements.txt_gibi paket yönetim dosyalarını da içerebilir.
 
-Dağıtım otomasyonunu sizin için çalıştırmak App Service istemiyorsanız, tüm derleme görevlerini çalıştırın ( `npm`örneğin `bower` `gulp` `composer`,,,, ve `pip`) ve uygulamayı çalıştırmak için ihtiyacınız olan tüm dosyalara sahip olduğunuzdan emin olun. [Paketinizi doğrudan çalıştırmak](../articles/app-service/deploy-run-package.md)istiyorsanız bu adım gereklidir.
+Dağıtım otomasyonunu sizin için çalıştırmak App Service istemiyorsanız, tüm derleme görevlerini çalıştırın (örneğin,,,, `npm` `bower` `gulp` `composer` ve `pip` ) ve uygulamayı çalıştırmak için ihtiyacınız olan tüm dosyalara sahip olduğunuzdan emin olun. [Paketinizi doğrudan çalıştırmak](../articles/app-service/deploy-run-package.md)istiyorsanız bu adım gereklidir.
 
-Projenizdeki tüm öğeleri içeren bir ZIP arşivi oluşturun. Aşağıdaki komut terminalinizdeki varsayılan aracı kullanmaktadır:
+Projenizdeki tüm öğeleri içeren bir ZIP arşivi oluşturun. `dotnet`Projeler için, bu klasör komutun çıkış klasörüdür `dotnet publish` . Aşağıdaki komut terminalinizdeki varsayılan aracı kullanmaktadır:
 
 ```
 # Bash

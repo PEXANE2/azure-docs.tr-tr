@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 97b13118eb0299f042bdadfebecbc1a23d1ce59f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 8cfa7a7b251f2aa74230d8883a0335582387aa06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602525"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -62,7 +62,7 @@ Bu araçları Azure Machine Learning için kullanın:
             * [Yapılandırmayı Çalıştır](#run-configurations)
             * [Anlık Görüntü](#snapshots)
             * [Git izleme](#github-tracking-and-integration)
-            * [Günlüğe Kaydetme](#logging)
+            * [Açmak](#logging)
     * [ML işlem hatları](#ml-pipelines)
     * [Modeller](#models)
         * [Ortamlar](#environments)
@@ -212,7 +212,7 @@ Dağıtılan bir IoT modülü uç noktası, modelinizi ve ilişkili betiği ya d
 Azure IoT Edge modülünüzün çalıştığından emin olur ve bunu barındıran cihazı izler.
 
 
-### <a name="compute-instance-preview"></a><a name="compute-instance"></a>İşlem örneği (Önizleme)
+### <a name="compute-instance"></a><a name="compute-instance"></a>İşlem örneği
 
 Bir **Azure Machine Learning işlem örneği** (eski adıyla Not defteri VM), makine öğrenimi için yüklenmiş birden çok araç ve ortamı içeren tam olarak yönetilen bir bulut tabanlı iş istasyonudur. İşlem örnekleri, eğitim ve ınişsiz işler için işlem hedefi olarak kullanılabilir. Büyük görevler için, çok düğümlü ölçekleme özelliklerine sahip [işlem kümeleri Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
 

@@ -8,24 +8,23 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/13/2019
-ms.openlocfilehash: 8713e7538ae65fc8e750d5b3244482a5503b0e37
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.date: 06/22/2020
+ms.openlocfilehash: b53a2c0cb3c709a6f22b57b45bef8b2894594a4d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483270"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602473"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
-Azure Machine Learning işlem örneği (Önizleme), veri bilimcileri için tam olarak yönetilen bulut tabanlı bir iş istasyonudur. 
+Azure Machine Learning işlem örneği, veri bilimcileri için yönetilen bulut tabanlı bir iş istasyonudur.
 
 İşlem örnekleri, Azure Machine Learning geliştirmeye başlamanızı kolaylaştırır ve BT yöneticileri için yönetim ve kurumsal hazırlık özellikleri sağlar.  
 
-Bulutta tam olarak yapılandırılmış ve yönetilen geliştirme ortamınız olarak bir işlem örneği kullanın.
+Makine öğrenimi için bulutta tam olarak yapılandırılmış ve yönetilen geliştirme ortamınız olarak bir işlem örneği kullanın. Ayrıca, geliştirme ve test amacıyla bilgi işlem hedefi olarak da kullanılabilir.  
 
-İşlem örnekleri genellikle geliştirme ortamları olarak kullanılır.  Ayrıca, geliştirme ve test için bilgi işlem hedefi olarak da kullanılabilir.  Büyük görevler için çok düğümlü ölçekleme özelliklerine sahip bir [Azure Machine Learning işlem kümesi](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
-
+Üretim sınıfı modeli eğitimi için çok düğümlü ölçeklendirme özelliklerine sahip bir [Azure Machine Learning işlem kümesi](how-to-set-up-training-targets.md#amlcompute) kullanın. Üretim sınıfı modeli dağıtımı için [Azure Kubernetes hizmet kümesi](how-to-deploy-azure-kubernetes-service.md)' ni kullanın.
 
 ## <a name="why-use-a-compute-instance"></a>Neden bir işlem örneği kullanılmalıdır?
 
@@ -33,9 +32,9 @@ Bulutta tam olarak yapılandırılmış ve yönetilen geliştirme ortamınız ol
 
 |Önemli avantajlar||
 |----|----|
-|Üretkenlik|Veri bilimcileri, tümleşik not defterlerini ve Web tarayıcılarında aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilir:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio (Önizleme)|
-|Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan otomatik sağlama<br/>- [Rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview)<br/>- [Sanal ağ desteği](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi|
-|Önceden yapılandırılmış &nbsp; veya &nbsp; ml|Önceden yapılandırılmış ve güncel ML paketleri, derin öğrenme çerçeveleri, GPU sürücüleri ile kurulum görevlerinde zaman kazanın.|
+|Üretkenlik|Tümleşik not defterlerini ve Azure Machine Learning Studio 'daki aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilirsiniz:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio (Önizleme)<br/>İşlem örneği, Azure Machine Learning çalışma alanı ve Studio ile tamamen tümleşiktir. Çalışma alanındaki diğer veri bilimcileri ile not defterlerini ve verileri paylaşabilirsiniz. [SSH](how-to-set-up-vs-code-remote.md) kullanarak uzaktan geliştirme vs Code de ayarlayabilirsiniz |
+|Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan otomatik sağlama<br/>- [Rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview)<br/>- [Sanal ağ desteği](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi<br/>TLS 1,2 etkin |
+|&nbsp;Ml için önceden yapılandırılmış &nbsp;|Önceden yapılandırılmış ve güncel ML paketleri, derin öğrenme çerçeveleri, GPU sürücüleri ile kurulum görevlerinde zaman kazanın.|
 |Tamamen özelleştirilebilir|GPU 'Lar ve kalıcı alt düzey özelleştirme dahil olmak üzere Azure VM türleri için kapsamlı destek; Örneğin, paket ve sürücü yükleme, gelişmiş senaryolar için bir Breeze sağlar. |
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Araçlar ve ortamlar
@@ -76,8 +75,6 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 
 Python paketlerinin hepsi **python 3,6-AzureML** ortamında yüklüdür.  
 
-İşlem örnekleri genellikle geliştirme ortamları olarak kullanılır.  Ayrıca, geliştirme ve test için bilgi işlem hedefi olarak da kullanılabilir.  Büyük görevler için çok düğümlü ölçekleme özelliklerine sahip bir [Azure Machine Learning işlem kümesi](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
-
 ### <a name="installing-packages"></a>Paketleri yükleme
 
 Paketleri doğrudan bir Jupyter Not defteri 'ne veya rstudio 'Ya yükleyebilirsiniz:
@@ -96,13 +93,15 @@ Ya da bir Terminal penceresine şu yollarla erişebilirsiniz:
 
 Not defterleri ve R betikleri, Azure dosya paylaşımında çalışma alanınızın varsayılan depolama hesabında depolanır.  Bu dosyalar "Kullanıcı dosyaları" dizininizin altında bulunur. Bu depolama, işlem örnekleri arasında Not defterlerinin paylaşılmasını kolaylaştırır. Depolama hesabı Ayrıca bir işlem örneğini durdurduğunuzda veya sildiğinizde Not defterlerinizin güvenle korunmalarını önler.
 
-Çalışma alanınızın Azure dosya paylaşma hesabı, işlem örneğine bir sürücü olarak bağlanır. Bu sürücü, jupi, Jupyıter Labs ve RStudio için varsayılan çalışma dizinidir.
+Çalışma alanınızın Azure dosya paylaşma hesabı, işlem örneğine bir sürücü olarak bağlanır. Bu sürücü, jupi, Jupyıter Labs ve RStudio için varsayılan çalışma dizinidir. Diğer bir deyişle, Jupiter, Jupiterlab veya RStudio 'da oluşturduğunuz Not defterleri ve diğer dosyalar otomatik olarak dosya paylaşımında depolanır ve diğer işlem örneklerinde kullanılabilir.
 
 Dosya paylaşımındaki dosyalara aynı çalışma alanındaki tüm işlem örneklerinden erişilebilir. İşlem örneğindeki bu dosyalarda yapılan tüm değişiklikler, dosya paylaşımında güvenilir bir şekilde kalıcı olarak kalıcı hale getirilir.
 
 Ayrıca, en son Azure Machine Learning örnekleri çalışma alanı dosya paylaşımındaki Kullanıcı dosyaları dizini altında klasörünüze kopyalayabilirsiniz.
 
-Küçük dosyaların yazılması, ağ sürücülerinde VM 'nin kendine yazılmasından daha yavaş olabilir.  Çok sayıda küçük dosya yazıyorsanız, Dizin gibi işlem örneğinde doğrudan bir dizin kullanmayı deneyin `/tmp` . Lütfen bu dosyalara çalışma alanındaki diğer işlem örneklerinden erişilemeyecek.
+Küçük dosyaların yazılması, ağ sürücülerinde, işlem örneği yerel diskinin üzerine yazılmasından daha yavaş olabilir.  Çok sayıda küçük dosya yazıyorsanız, Dizin gibi işlem örneğinde doğrudan bir dizin kullanmayı deneyin `/tmp` . Lütfen bu dosyalara diğer işlem örneklerinden erişilemeyecek. 
+
+`/tmp`Geçici verileriniz için işlem örneğindeki dizini kullanabilirsiniz.  Ancak, işlem örneğinin işletim sistemi diskine büyük veri dosyaları eklemeyin.  Bunun yerine [veri depoları](concept-azure-machine-learning-architecture.md#datasets-and-datastores) kullanın. Jupyıterlab git uzantısını yüklediyseniz, işlem örneği performansının yavaşmasına de yol açabilir.
 
 ## <a name="managing-a-compute-instance"></a>İşlem örneğini yönetme
 
@@ -112,38 +111,75 @@ Azure Machine Learning Studio 'daki çalışma alanınızda **işlem**' ı seçi
 
 Aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
-* İşlem örneği oluşturma. GPU 'Lar dahil olmak üzere Azure VM türünü belirtin (lütfen not VM türü oluşturulduktan sonra değiştirilemez), SSH erişimini etkinleştirin/devre dışı bırakın ve sanal ağ ayarlarını isteğe bağlı olarak yapılandırın. Ayrıca, tümleşik not defterlerinden, Azure portal, Kaynak Yöneticisi şablondan veya Azure Machine Learning SDK 'dan doğrudan bir örnek oluşturabilirsiniz. İşlem örneği oluşturma için geçerli olan bölge başına adanmış çekirdekler, Azure Machine Learning işlem kümesi kotasıyla birleştirilmiştir ve paylaşılır.
-* İşlem örnekleri sekmesini Yenile
-* Bir işlem örneğini başlatın, durdurun ve yeniden başlatın. Maliyeti azaltmak için kullanmadığınız sanal makineyi durdurun. Daha sonra ihtiyacınız olduğunda yeniden başlatın.
-* İşlem örneğini silme
+* [Bir işlem örneği oluşturun](#create). 
+* İşlem örnekleri sekmesini yenileyin.
+* Bir işlem örneğini başlatın, durdurun ve yeniden başlatın.  Her çalıştığında örnek için ödeme yaparsınız. Maliyeti azaltmak için kullanmıyorsanız, işlem örneğini durdurun. Bir işlem örneğinin durdurulması onu kaldırır. Daha sonra ihtiyacınız olduğunda yeniden başlatın. 
+* Bir işlem örneğini silin.
+* İşlem örnekleri listesini, oluşturduğunuz olanlarla filtreleyin.  Bunlar, erişebileceğiniz işlem örnekleridir.
 
-Çalışma alanınızdaki her bir işlem örneği için şunları yapabilirsiniz:
+Erişiminiz olan çalışma alanınızdaki her bir işlem örneği için şunları yapabilirsiniz:
 
 * Jupyıter, Jupiterlab, RStudio 'yu işlem örneği üzerinde erişme
 * İşlem örneğine SSH. SSH erişimi varsayılan olarak devre dışıdır ancak işlem örneği oluşturma sırasında etkinleştirilebilir. SSH erişimi, ortak/özel anahtar mekanizmasıyla gerçekleştirilir. Sekmesi, IP adresi, Kullanıcı adı ve bağlantı noktası numarası gibi SSH bağlantısı için Ayrıntılar verecektir.
 * IP adresi ve bölge gibi belirli bir işlem örneği hakkındaki ayrıntıları alın.
 
-[RBAC](/azure/role-based-access-control/overview) , çalışma alanındaki hangi kullanıcıların bir bilgi işlem örneği oluşturabileceğinizi, silebileceği, başlatabileceği, durdurabileceğinizi denetlemenize olanak tanır. Çalışma alanı katılımcısı ve sahip rolündeki tüm kullanıcılar çalışma alanı genelinde işlem örnekleri oluşturabilir, silebilir, başlatabilir, durdurabilir ve yeniden başlatabilir. Ancak, yalnızca belirli bir işlem örneğinin Oluşturucusu, bu işlem örneği üzerinde Jupiter, Jupiterlab ve RStudio erişimine izin verilir. İşlem örneğinin Oluşturucusu kendisine adanmış bir işlem örneğine sahiptir, kök erişimi vardır ve Jupyıter aracılığıyla Terminal üzerinde oturum açabilir. İşlem örneği, Oluşturucu kullanıcı için tek kullanıcılı oturum açmaya sahip olur ve tüm eylemler bu kullanıcının kimliğini, Deneme çalıştırmalarının RBAC ve atısyonu için kullanır. SSH erişimi, ortak/özel anahtar mekanizması aracılığıyla denetlenir.
+[RBAC](/azure/role-based-access-control/overview) , çalışma alanındaki hangi kullanıcıların bir bilgi işlem örneği oluşturabileceğinizi, silebileceği, başlatabileceği, durdurabileceğinizi denetlemenize olanak tanır. Çalışma alanı katılımcısı ve sahip rolündeki tüm kullanıcılar çalışma alanı genelinde işlem örnekleri oluşturabilir, silebilir, başlatabilir, durdurabilir ve yeniden başlatabilir. Ancak, yalnızca belirli bir işlem örneğinin Oluşturucusu, bu işlem örneği üzerinde Jupiter, Jupiterlab ve RStudio erişimine izin verilir. İşlem örneğinin Oluşturucusu kendisine adanmış bir işlem örneğidir, kök erişimi vardır ve jupi/Jupiterlab/RStudio aracılığıyla oturum açabilir. İşlem örneği, Oluşturucu kullanıcı için tek kullanıcılı oturum açmaya sahip olur ve tüm eylemler bu kullanıcının kimliğini, Deneme çalıştırmalarının RBAC ve atısyonu için kullanır. SSH erişimi, ortak/özel anahtar mekanizması aracılığıyla denetlenir.
+
+Bu eylemler RBAC tarafından denetlenebilir:
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/okundu*
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/yaz*
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Sil*
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Başlat/eylem*
+* *Microsoft. MachineLearningServices/Workspaces/hesaplar/durdur/eylem*
+* *Microsoft. MachineLearningServices/Workspaces/hesaplar/yeniden Başlat/eylem*
+
+### <a name="create-a-compute-instance"></a><a name="create"></a>İşlem örneği oluşturma
+
+Azure Machine Learning Studio 'daki çalışma alanınızda, Not defterlerinizden birini çalıştırmaya hazırsanız **işlem** bölümünden veya **Not defterleri** bölümünde yeni bir işlem örneği oluşturun.
+
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Yeni bir işlem örneği oluştur":::
+
+
+|Alan  |Açıklama  |
+|---------|---------|
+|İşlem adı     |  <li>Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.</li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
+|Sanal makine türü |  CPU veya GPU seçin. Bu tür, oluşturulduktan sonra değiştirilemez     |
+|Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
+|SSH erişimini etkinleştirme/devre dışı bırakma     |   SSH erişimi varsayılan olarak devre dışıdır.  SSH erişimi olamaz. oluşturulduktan sonra değiştirildi. [Vs Code uzak](how-to-set-up-vs-code-remote.md) ile etkileşimli olarak hata ayıklamayı planlıyorsanız erişimi etkinleştirdiğinizden emin olun   |
+|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu**, **sanal ağ**ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](how-to-enable-virtual-network.md#compute-instance) bakın.        |
 
 Ayrıca, bir örnek oluşturabilirsiniz
-* Doğrudan tümleşik Not defteri deneyiminden
+* Doğrudan [Tümleşik Not defteri deneyiminden](tutorial-1st-experiment-sdk-setup.md#azure)
 * Azure portal
 * Azure Resource Manager şablondan
-* Azure Machine Learning SDK ile
+* [Azure MACHINE LEARNING SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb) ile
+* [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md#computeinstance)
 
-İşlem örneği oluşturma için geçerli olan bölge başına adanmış çekirdekler, Azure Machine Learning eğitim kümesi kotasıyla birleştirilmiştir ve paylaşılır. 
+VM ailesi kotası başına bölge başına adanmış çekirdek ve işlem örneği oluşturma için geçerli olan toplam bölgesel kota. Birleşik ve Azure Machine Learning eğitim işlem kümesi kotasıyla paylaşılır. İşlem örneği durdurulduğunda, işlem örneğini yeniden başlatabileceksiniz emin olmak için kota serbest bırakılır.
 
-## <a name="compute-target"></a>İşlem Hedefi
+## <a name="compute-target"></a>İşlem hedefi
 
-İşlem örnekleri, Azure Machine Learning işlem eğitimi kümelerine benzer bir [eğitim işlem hedefi](concept-compute-target.md#train) olarak kullanılabilir. TensorFlow/PyTorch estimators kullanarak dağıtılmış eğitim işlerini çalıştırmak için bir çok GPU VM sağlayın. Ayrıca, bir çalıştırma yapılandırması oluşturup bu yapılandırmayı kullanarak denemenizin işlem örneği üzerinde çalıştırılmasını sağlayabilirsiniz. Test/hata ayıklama senaryoları için, işlem örneğini yerel bir ınırm dağıtım hedefi olarak kullanabilirsiniz.
+İşlem örnekleri, Azure Machine Learning işlem eğitimi kümelerine benzer bir [eğitim işlem hedefi](concept-compute-target.md#train) olarak kullanılabilir. 
+
+İşlem örneği:
+* İş kuyruğu vardır.
+* Bir sanal ağ ortamında, kuruluşların SSH bağlantı noktasını açmasına gerek olmadan işleri güvenli bir şekilde çalıştırır. İş kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir Docker kapsayıcısında paketleyebilir.
+* Birden çok küçük işi paralel olarak çalıştırabilir (Önizleme).  Çekirdek başına iki iş paralel olarak çalışabilir, ancak işlerin geri kalanı sıraya alınır.
+
+Test/hata ayıklama senaryoları için, işlem örneğini yerel bir ınırm dağıtım hedefi olarak kullanabilirsiniz.
+
+> [!NOTE]
+> Dağıtılmış eğitim işleri, işlem örneği üzerinde desteklenmez.  Dağıtılmış eğitim için (işlem kümeleri] (nasıl yapılır-ayarla---------------------
+
+Daha ayrıntılı bilgi için bkz. [computeinstance-on-](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)Not Bu not defteri, *eğitim/eğitme-on-computeinstance*Içindeki Studio **örnekleri** klasöründe de mevcuttur.
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Not defteri VM 'sine ne oldu?
 
 İşlem örnekleri, Not defteri VM 'sini değiştiriyor.  
 
-Çalışma alanı dosya paylaşımında depolanan tüm not defteri dosyalarına ve çalışma alanı veri depolarındaki verilere bir işlem örneğinden erişilebilecektir. Ancak, daha önce bir not defteri sanal makinesine yüklenmiş olan tüm özel paketlerin, işlem örneğinde yeniden yüklenmesi gerekir. İşlem kümeleri oluşturma için uygulanan kota sınırlamaları, işlem örneği oluşturma için de geçerlidir. 
+Çalışma alanı dosya paylaşımında depolanan tüm not defteri dosyalarına ve çalışma alanı veri depolarındaki verilere bir işlem örneğinden erişilebilecektir. Ancak, daha önce bir not defteri sanal makinesine yüklenmiş olan tüm özel paketlerin, işlem örneğinde yeniden yüklenmesi gerekir. İşlem kümeleri oluşturma için uygulanan kota sınırlamaları, işlem örneği oluşturma için de geçerlidir.
 
-Yeni Not defteri VM 'Leri oluşturulamıyor. Ancak, tam işlevsellikle oluşturmuş olduğunuz not defteri VM 'lerine erişmeye ve bunları kullanmaya devam edebilirsiniz. İşlem örnekleri, mevcut not defteri VM 'leriyle aynı çalışma alanında oluşturulabilir. 
+Yeni Not defteri VM 'Leri oluşturulamıyor. Ancak, tam işlevsellikle oluşturmuş olduğunuz not defteri VM 'lerine erişmeye ve bunları kullanmaya devam edebilirsiniz. İşlem örnekleri, mevcut not defteri VM 'leriyle aynı çalışma alanında oluşturulabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
 title: Denetim noktası verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Denetim noktası verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Syslog Aracısı aracılığıyla CEF biçimindeki syslog iletilerini Azure Sentinel çalışma alanınıza iletmek için denetim noktası gerecinizi yapılandırın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 70836ec557eff1be035d92e8e7db30a882e05fc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588425"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566056"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>Denetim noktasını Azure Sentinel 'e bağlama
 

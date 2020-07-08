@@ -1,26 +1,24 @@
 ---
-title: PowerShell kullanarak Azure Güvenlik Duvarı yapılandırmasını Azure Güvenlik duvarı ilkesi 'ne (Önizleme) geçirme
-description: Azure Güvenlik duvarı yapılandırmalarının Azure Güvenlik Duvarı ilkesine nasıl geçirileceğinizi öğrenin (Önizleme)
+title: PowerShell kullanarak Azure Güvenlik Duvarı yapılandırmasını Azure Güvenlik Duvarı ilkesine geçirme
+description: Azure Güvenlik duvarı yapılandırmalarının Azure Güvenlik Duvarı ilkesine nasıl geçirileceğinizi öğrenin
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443117"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601335"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Duvarı yapılandırmasını Azure Güvenlik duvarı ilkesi 'ne (Önizleme) geçirme
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Duvarı yapılandırmasını Azure Güvenlik Duvarı ilkesine geçirme
 
 Mevcut Azure Güvenlik duvarı yapılandırmalarının bir Azure Güvenlik duvarı ilkesi kaynağına geçirilmesi için bir Azure PowerShell komut dosyası kullanabilirsiniz. Ardından, ilkeyi dağıtmak için Azure Güvenlik Duvarı Yöneticisi 'ni kullanabilirsiniz.
 
-`AZFWMigrationScript.ps1` Betik, sırasıyla Applicationrulecollections, Networkrulecollections ve Natrutacollections Için üç RuleCollectionGroup nesnesine sahip bir FirewallPolicy oluşturur. 
+`AZFWMigrationScript.ps1`Betik, sırasıyla ApplicationRuleCollections, NetworkRuleCollections ve Natrutacollections için üç RuleCollectionGroup nesnesine sahip bir FirewallPolicy oluşturur. 
 
 RuleCollectionGroup, gelecekteki genişletilebilirlik için kural koleksiyonları için yeni bir üst düzey gruplandırmadır. Yukarıdaki varsayılanlar kullanılması önerilir ve portaldan otomatik olarak yapılır.
 
@@ -161,4 +159,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Firewall Manager dağıtımı hakkında daha fazla bilgi edinin: [Azure Güvenlik Duvarı Yöneticisi önizleme dağıtımına genel bakış](deployment-overview.md).
+Azure Firewall Manager dağıtımı hakkında daha fazla bilgi edinin: [Azure Güvenlik Duvarı Yöneticisi dağıtımına genel bakış](deployment-overview.md).

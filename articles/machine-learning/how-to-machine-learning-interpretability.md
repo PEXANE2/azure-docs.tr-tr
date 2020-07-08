@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: b39c935af1215445f4cd0e68df04b86254f1fe31
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.date: 06/30/2020
+ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816601"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601692"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning model yorumlenebilirliği
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,8 +44,6 @@ Yorumlenebilirlik sınıfları birden çok SDK paketi aracılığıyla kullanıl
 
 * `azureml.contrib.interpret`, önizleme ve deneyebilecek deneysel işlevleri.
 
-* `azureml.train.automl.automlexplainer`otomatik makine öğrenimi modellerini yorumlama paketi.
-
 `pip install azureml-interpret`Ve için `pip install azureml-interpret-contrib` Genel Kullanım Için ve `pip install azureml-contrib-interpret` oto ml 'yi kullanarak yorumlenebilirliği paketlerini alın.
 
 
@@ -72,7 +70,7 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
  `azureml-interpret`, eğitim yorumlanmış ve kara kutu AI sistemlerinin açıklanmasına yardımcı olmak üzere açık kaynaklı bir Python paketi olan [yorumlama-topluluk](https://github.com/interpretml/interpret-community/)' da geliştirilmiş yorumlanmış teknikleri kullanır. [Yorumlama-topluluk](https://github.com/interpretml/interpret-community/) , bu SDK 'nın desteklenen explainers ana bilgisayarı olarak görev yapar ve şu anda aşağıdaki yorumlamış teknikleri destekler:
 
-|Yorumlenebilirlik tekniği|Description|Tür|
+|Yorumlenebilirlik tekniği|Açıklama|Tür|
 |--|--|--------------------|
 |SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
 |SHAP derin açıklama| SHAP 'nin açıklamasına göre, derin açıklama ", Shap [NıP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'Lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme MODELLERINDEKI Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|

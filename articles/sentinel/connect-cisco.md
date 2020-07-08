@@ -1,6 +1,6 @@
 ---
 title: Cisco verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Cisco verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı geliştirmek için Cisco ASA gerecinizi Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566037"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>Cisco ASA 'yi Azure Sentinel 'e bağlama
 
@@ -38,7 +38,7 @@ Cisco ASA, CEF 'yi desteklemez, bu nedenle Günlükler Syslog olarak gönderilir
     - **Bağlantı noktasını** 514 olarak veya aracıda ayarladığınız bağlantı noktasını ayarlayın.
     - Aracının IP adresine **syslog_ip** ayarlayın.
 
-1. Cisco olayları için Log Analytics ilgili şemayı kullanmak için arama yapın `CommonSecurityLog`.
+1. Cisco olayları için Log Analytics ilgili şemayı kullanmak için arama yapın `CommonSecurityLog` .
 
 1. 3. [Adım: bağlantıyı doğrulama adımına](connect-cef-verify.md)geçin.
 

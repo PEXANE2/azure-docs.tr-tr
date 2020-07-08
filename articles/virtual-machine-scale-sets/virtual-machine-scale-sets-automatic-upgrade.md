@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 04/14/2020
+ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: c06ad5ab2688bd62fdf898950a8f64cd655a9fcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601352"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -46,11 +46,11 @@ Yükseltme işlemi aşağıdaki gibi kullanılabilir:
 Ölçek kümesi işletim sistemi yükseltme Orchestrator, her toplu işi yükseltmeden önce tüm ölçek kümesi sistem durumunu denetler. Toplu işi yükseltirken, ölçek kümesi örneklerinizin sistem durumunu etkileyebilecek diğer eşzamanlı planlı veya planlanmamış bakım etkinlikleri olabilir. Bu gibi durumlarda, ölçek kümesinin örneklerinin %20 ' si sağlıksız hale gelirse, ölçek kümesi yükseltmesi geçerli toplu işin sonunda duraklar.
 
 ## <a name="supported-os-images"></a>Desteklenen işletim sistemi görüntüleri
-Şu anda yalnızca belirli işletim sistemi platformu görüntüleri destekleniyor. Özel görüntü desteği, [paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla özel görüntülerin [önizlemelerinde](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview) kullanılabilir.
+Şu anda yalnızca belirli işletim sistemi platformu görüntüleri destekleniyor. Ölçek kümesi, [paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla özel görüntüler kullanıyorsa, özel görüntüler [desteklenir](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) .
 
 Aşağıdaki platform SKU 'Ları Şu anda desteklenmektedir (ve daha fazla düzenli olarak eklenir):
 
-| Yayımcı               | İşletim sistemi teklifi      |  Sku               |
+| Publisher               | İşletim sistemi teklifi      |  Sku               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04-LTS          |
@@ -77,90 +77,25 @@ Aşağıdaki platform SKU 'Ları Şu anda desteklenmektedir (ve daha fazla düze
 ### <a name="service-fabric-requirements"></a>Service Fabric gereksinimleri
 
 Service Fabric kullanıyorsanız, aşağıdaki koşulların karşılandığından emin olun:
--   Service Fabric [dayanıklılık düzeyi](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) gümüş veya altın, bronz değildir.
+-   Service Fabric [dayanıklılık düzeyi](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) gümüş veya altın, bronz değildir.
 -   Ölçek kümesi modeli tanımındaki Service Fabric uzantısının TypeHandlerVersion 1,1 veya üzeri olması gerekir.
 -   Dayanıklılık düzeyi, ölçek kümesi modeli tanımındaki Service Fabric kümesinde ve Service Fabric uzantısında aynı olmalıdır.
+- Ek bir sistem durumu araştırması veya uygulama durumu uzantısının kullanımı gerekli değildir.
 
 Uyuşmazlık ayarlarının Service Fabric kümesinde ve Service Fabric uzantısında eşleşmediğinden emin olun, bunun eşleşmemesi da yükseltme hatalarına neden olur. Dayanıklılık düzeyleri [Bu sayfada](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)özetlenen yönergeler başına değiştirilebilir.
 
 
-## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>Özel görüntüler için otomatik işletim sistemi görüntüsü yükseltmesi (Önizleme)
+## <a name="automatic-os-image-upgrade-for-custom-images"></a>Özel görüntüler için otomatik işletim sistemi görüntüsü yükseltmesi
 
-> [!IMPORTANT]
-> Özel görüntüler için otomatik işletim sistemi görüntüsü yükseltmesi şu anda genel önizlemededir. Aşağıda açıklanan genel önizleme işlevlerini kullanmak için bir katılım prosedürü gereklidir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Otomatik işletim sistemi görüntüsü yükseltmesi, [paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla dağıtılan özel görüntüler için önizlemede kullanılabilir. Diğer özel görüntüler otomatik işletim sistemi görüntüsü yükseltmeleri için desteklenmez.
-
-Önizleme işlevselliğinin etkinleştirilmesi, aşağıda açıklandığı gibi, abonelik başına *Automatıcosupgradewithgallerımage* özelliği için bir kerelik bir katılım gerektirir.
-
-### <a name="rest-api"></a>REST API
-Aşağıdaki örnekte, aboneliğiniz için önizlemenin nasıl etkinleştirileceği açıklanmaktadır:
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
-```
-
-Özellik kaydı 15 dakikaya kadar sürebilir. Kayıt durumunu denetlemek için:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
-```
-
-Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak sağlayıcısına yayarak katılım işlemini doldurun.
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 'ini kullanın.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Özellik kaydı 15 dakikaya kadar sürebilir. Kayıt durumunu denetlemek için:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak sağlayıcısına yayarak katılım işlemini doldurun.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Aboneliğiniz için Önizlemeyi etkinleştirmek üzere [az Feature Register](/cli/azure/feature#az-feature-register) kullanın.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Özellik kaydı 15 dakikaya kadar sürebilir. Kayıt durumunu denetlemek için:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Aboneliğiniz için özellik kaydedildikten sonra, değişikliği işlem kaynak sağlayıcısına yayarak katılım işlemini doldurun.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+[Paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla dağıtılan özel görüntüler için otomatik işletim sistemi görüntüsü yükseltmesi desteklenir. Diğer özel görüntüler otomatik işletim sistemi görüntüsü yükseltmeleri için desteklenmez.
 
 ### <a name="additional-requirements-for-custom-images"></a>Özel görüntüler için ek gereksinimler
-- Yukarıda açıklanan kabul etme işleminin, her abonelik için yalnızca bir kez tamamlanması gerekir. Kabul etme sonrası tamamlandığında, Bu abonelikteki tüm ölçek kümesi için otomatik işletim sistemi yükseltmeleri etkinleştirilebilir.
-- Paylaşılan görüntü Galerisi herhangi bir abonelikte olabilir ve bunların ayrı olarak kabul edilebilir olması gerekmez. Yalnızca ölçek kümesi aboneliği özelliği kabul etmek için gereklidir.
-- Otomatik işletim sistemi görüntüsü yükseltmesi için yapılandırma işlemi, bu sayfanın [yapılandırma bölümünde](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) ayrıntılı olarak tüm ölçek kümeleri için aynıdır.
+- Otomatik işletim sistemi görüntüsü yükseltmesi için kurulum ve yapılandırma işlemi, bu sayfanın [yapılandırma bölümünde](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) ayrıntılı olarak tüm ölçek kümeleri için aynıdır.
 - Ölçek Kümeleri, otomatik işletim sistemi görüntüsü yükseltmeleri için yapılandırılan örnekleri, görüntünün yeni bir sürümü yayımlandığında ve bu ölçek kümesinin bölgesine [çoğaltıldığında](shared-image-galleries.md#replication) paylaşılan görüntü Galerisi görüntüsünün en son sürümüne yükseltilir. Yeni görüntü ölçeğin dağıtıldığı bölgeye çoğaltılmamışsa, ölçek kümesi örnekleri en son sürüme yükseltilmeyecektir. Bölgesel görüntü çoğaltma, ölçek kümeleriniz için yeni görüntünün dağıtımını denetlemenize olanak tanır.
 - Yeni görüntü sürümü, bu Galeri görüntüsü için en son sürümden dışlanmamalıdır. Galeri görüntüsünün en son sürümünden dışlanan görüntü sürümleri, otomatik işletim sistemi görüntüsü yükseltmesinde ölçek kümesine alınmaz.
 
 > [!NOTE]
->Ölçek kümesi otomatik işletim sistemi yükseltmeleri için yapılandırıldıktan sonra, ölçek kümesinin ilk görüntü yükseltme dağıtımını tetiklemesi için 3 saate kadar zaman alabilir. Bu, ölçek kümesi başına tek seferlik bir gecikme olur. Sonraki görüntü piyasaya çıkarma 30 dakika içinde ölçek kümesinde tetiklenir.
+>Ölçek kümesi, otomatik işletim sistemi yükseltmeleri için ilk kez yapılandırıldıktan sonra, ölçek kümesinin ilk görüntü yükseltme dağıtımı tetiklenmesi 3 saate kadar sürebilir. Bu, ölçek kümesi başına tek seferlik bir gecikme olur. Sonraki görüntü piyasaya çıkarma, 30-60 dakika içinde ölçek kümesinde tetiklenir.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Otomatik işletim sistemi görüntüsünü yükseltmeyi yapılandırma
@@ -193,11 +128,14 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
+`[az vmss update](/cli/azure/vmss#az-vmss-update)`Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak için kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
+
+> [!NOTE]
+>Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırdıktan sonra, ölçek kümesinde ' El Ile ' [yükseltme ilkesi](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)kullanılıyorsa ölçek kümesi VM 'lerini en son ölçek kümesi modeline de getirmeniz gerekir.
 
 ## <a name="using-application-health-probes"></a>Uygulama durumu araştırmalarını kullanma
 
