@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482575"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>SOIL Moisture heatmap oluştur
@@ -51,7 +50,7 @@ Kimlik bilgilerinizi girdikten ve iş ortağı uygulamasına **Gönder** ' i se�
 Algılayıcı hesabınızı Azure farmınts 'e bağladıktan sonra, SOIL nemi sensörlerinden ilgi grubuna atamanız gerekir.
 
 1.  Giriş sayfasında, menüden **gruplar** ' ı seçin, **gruplar** listesi sayfası görüntülenir.
-2.  **Myfarm** > **Cihaz Ekle**' yi seçin.
+2.  **Myfarm**  >  **Cihaz Ekle**' yi seçin.
 3.  **Cihaz Ekle** penceresi görüntülenir. Grubunuz için SOIL nemi sensörlerinden bağlantılı herhangi bir cihaz seçin.
 
     ![Proje grubu ları](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)

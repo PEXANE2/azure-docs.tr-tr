@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75466260"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors kullanmaya başlama
@@ -41,17 +40,17 @@ Oluşturulan proje aşağıdaki yapıyı gösterir:
 
 Çözüm üç proje içerir:
 
-* **Uygulama Projesi (MyApplication)**. Bu proje, tüm hizmetleri dağıtım için birlikte paketler. Uygulamayı yönetmeye yönelik *ApplicationManifest. xml* ve PowerShell betiklerini içerir.
+* **Uygulama Projesi (MyApplication)**. Bu proje, tüm hizmetleri dağıtım için birlikte paketler. Uygulamayı yönetmeye yönelik *ApplicationManifest.xml* ve PowerShell betikleri içerir.
 
 * **Arabirim projesi (HelloWorld. Interfaces)**. Bu proje aktör için arabirim tanımını içerir. Aktör arabirimleri, herhangi bir ada sahip herhangi bir projede tanımlanabilir.  Arabirim, aktör uygulamasıyla paylaşılan aktör sözleşmesini ve aktör çağıran istemcileri tanımlar.  İstemci projeleri kendisine bağlı olabileceğinden, genellikle onu aktör uygulamasından ayrı bir derlemede tanımlamak mantıklı olur.
 
-* **Aktör hizmeti projesi (HelloWorld)**. Bu proje, aktöri barındıracak Service Fabric hizmetini tanımlar. Aktör, *HelloWorld.cs*uygulamasını içerir. Aktör uygulama, temel türden `Actor` türetilen ve *myactor. Interfaces* projesinde tanımlanan arabirimleri uygulayan bir sınıftır. Aktör sınıfı ayrıca bir `ActorService` örneği kabul eden bir Oluşturucu ve bir `ActorId` de uygular ve bunları temel `Actor` sınıfa geçirir.
+* **Aktör hizmeti projesi (HelloWorld)**. Bu proje, aktöri barındıracak Service Fabric hizmetini tanımlar. Aktör, *HelloWorld.cs*uygulamasını içerir. Aktör uygulama, temel türden türetilen `Actor` ve *Myactor. Interfaces* projesinde tanımlanan arabirimleri uygulayan bir sınıftır. Aktör sınıfı ayrıca bir örneği kabul eden bir Oluşturucu ve bir de uygular `ActorService` `ActorId` ve bunları temel `Actor` sınıfa geçirir.
     
-    Bu proje Ayrıca, *Program.cs*kullanarak `ActorRuntime.RegisterActorAsync<T>()`aktör sınıflarını Service Fabric çalışma zamanına kaydeden program.cs de içerir. `HelloWorld` Sınıf zaten kayıtlı. Projeye eklenen diğer aktör uygulamalarının de `Main()` yönteminde kayıtlı olması gerekir.
+    Bu proje Ayrıca, kullanarak aktör sınıflarını Service Fabric çalışma zamanına kaydeden *program.cs*de içerir `ActorRuntime.RegisterActorAsync<T>()` . `HelloWorld`Sınıf zaten kayıtlı. Projeye eklenen diğer aktör uygulamalarının de yönteminde kayıtlı olması gerekir `Main()` .
 
 ## <a name="customize-the-helloworld-actor"></a>HelloWorld aktör 'i özelleştirme
 
-Proje şablonu, `IHelloWorld` arabirimdeki bazı yöntemleri tanımlar ve bunları `HelloWorld` aktör uygulamasında uygular.  Aktör hizmetinin basit bir "Merhaba Dünya" dizesi döndürmesi için bu yöntemleri değiştirin.
+Proje şablonu, arabirimdeki bazı yöntemleri tanımlar `IHelloWorld` ve bunları `HelloWorld` aktör uygulamasında uygular.  Aktör hizmetinin basit bir "Merhaba Dünya" dizesi döndürmesi için bu yöntemleri değiştirin.
 
 *HelloWorld. Interfaces* projesinde, *IHelloWorld.cs* dosyasında, arabirim tanımını aşağıdaki gibi değiştirin:
 
@@ -86,7 +85,7 @@ Projeyi derlemek için **Ctrl-Shift-B** tuşlarına basın ve her şeyin derlend
 
 Aktör hizmetini çağırmak için basit bir konsol uygulaması oluşturun.
 
-1. Çözüm Gezgini > yeni proje **Ekle** > **...** öğesine sağ tıklayın.
+1. Çözüm Gezgini > **Add**  >  **Yeni Proje Ekle...** öğesine sağ tıklayın.
 
 2. **.NET Core** proje türleri altında **konsol uygulaması (.NET Core)** öğesini seçin.  Projeyi *Actorclient*olarak adlandırın.
     
@@ -99,7 +98,7 @@ Aktör hizmetini çağırmak için basit bir konsol uygulaması oluşturun.
     
     ![Derleme özellikleri][8]
 
-4. İstemci projesi, güvenilir aktör NuGet paketini gerektirir.  **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' na tıklayın.  Paket Yöneticisi konsolunda aşağıdaki komutu girin:
+4. İstemci projesi, güvenilir aktör NuGet paketini gerektirir.  **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' na tıklayın.  Paket Yöneticisi konsolunda aşağıdaki komutu girin:
     
     ```powershell
     Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
@@ -141,7 +140,7 @@ Uygulamayı Service Fabric geliştirme kümesinde yerel olarak derlemek, dağıt
 
 ![Hata ayıklama çıkışı penceresi Service Fabric][3]
 
-Çıktı metin içerdiğinde, *uygulama hazırsa*, ActorClient uygulamasını kullanarak hizmeti test etmek mümkündür.  Çözüm Gezgini, **actorclient** projesine sağ tıklayın ve ardından **Hata Ayıkla** > **Yeni örnek Başlat**' a tıklayın.  Komut satırı uygulaması, aktör hizmetindeki çıktıyı görüntülemelidir.
+Çıktı metin içerdiğinde, *uygulama hazırsa*, ActorClient uygulamasını kullanarak hizmeti test etmek mümkündür.  Çözüm Gezgini, **actorclient** projesine sağ tıklayın ve ardından **Hata Ayıkla**  >  **Yeni örnek Başlat**' a tıklayın.  Komut satırı uygulaması, aktör hizmetindeki çıktıyı görüntülemelidir.
 
 ![Uygulama çıkışı][9]
 

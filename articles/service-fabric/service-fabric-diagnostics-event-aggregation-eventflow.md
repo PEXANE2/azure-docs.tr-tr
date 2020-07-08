@@ -6,19 +6,18 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463082"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow kullanarak olay toplama ve toplama
 
-[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) , olayları bir düğümden bir veya daha fazla izleme hedefine yönlendirebilir. Hizmet projenizde bir NuGet paketi olarak eklendiğinden, EventFlow kodu ve yapılandırması hizmetle birlikte gezinir ve Azure Tanılama hakkında daha önce bahsedilen düğüm başına yapılandırma sorununu ortadan kaldırır. EventFlow hizmeti işleminiz dahilinde çalışır ve doğrudan yapılandırılan çıkışlara bağlanır. Doğrudan bağlantı nedeniyle Azure, Container ve şirket içi hizmet dağıtımları için EventFlow geçerlidir. Her EventFlow işlem hattı bir dış bağlantı yaptığından, EventFlow ' ı bir kapsayıcıda olduğu gibi yüksek yoğunluklu senaryolarda çalıştırırsanız dikkatli olun. Bu nedenle, birkaç işlem barındırdıysanız, birkaç giden bağlantı alırsınız! Aynı işlemde bir `ServiceType` çalıştırmanın tüm çoğaltmaları olduğundan ve bu, giden bağlantı sayısını sınırladığından, bu, Service Fabric uygulamalarda çok önemli değildir. EventFlow, yalnızca belirtilen filtreyle eşleşen olayların gönderilmesi için olay filtreleme olanağı da sunar.
+[Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) , olayları bir düğümden bir veya daha fazla izleme hedefine yönlendirebilir. Hizmet projenizde bir NuGet paketi olarak eklendiğinden, EventFlow kodu ve yapılandırması hizmetle birlikte gezinir ve Azure Tanılama hakkında daha önce bahsedilen düğüm başına yapılandırma sorununu ortadan kaldırır. EventFlow hizmeti işleminiz dahilinde çalışır ve doğrudan yapılandırılan çıkışlara bağlanır. Doğrudan bağlantı nedeniyle Azure, Container ve şirket içi hizmet dağıtımları için EventFlow geçerlidir. Her EventFlow işlem hattı bir dış bağlantı yaptığından, EventFlow ' ı bir kapsayıcıda olduğu gibi yüksek yoğunluklu senaryolarda çalıştırırsanız dikkatli olun. Bu nedenle, birkaç işlem barındırdıysanız, birkaç giden bağlantı alırsınız! Aynı işlemde bir çalıştırmanın tüm çoğaltmaları olduğundan `ServiceType` ve bu, giden bağlantı sayısını sınırladığından, bu, Service Fabric uygulamalarda çok önemli değildir. EventFlow, yalnızca belirtilen filtreyle eşleşen olayların gönderilmesi için olay filtreleme olanağı da sunar.
 
 ## <a name="set-up-eventflow"></a>EventFlow ayarlama
 
-EventFlow ikilileri, bir NuGet paketleri kümesi olarak kullanılabilir. Service Fabric bir hizmet projesine EventFlow eklemek için, Çözüm Gezgini projeye sağ tıklayın ve "NuGet Paketlerini Yönet" i seçin. "Araştır" sekmesine geçin ve "`Diagnostics.EventFlow`" araması yapın:
+EventFlow ikilileri, bir NuGet paketleri kümesi olarak kullanılabilir. Service Fabric bir hizmet projesine EventFlow eklemek için, Çözüm Gezgini projeye sağ tıklayın ve "NuGet Paketlerini Yönet" i seçin. "Araştır" sekmesine geçin ve "" araması yapın `Diagnostics.EventFlow` :
 
 ![Visual Studio NuGet Paket Yöneticisi Kullanıcı arabirimindeki EventFlow NuGet paketleri](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
@@ -34,12 +33,12 @@ EventFlow ikilileri, bir NuGet paketleri kümesi olarak kullanılabilir. Service
 Tüm paketler yüklendikten sonra, bir sonraki adım hizmette EventFlow öğesini yapılandırmak ve etkinleştirmek olur.
 
 ## <a name="configure-and-enable-log-collection"></a>Günlük toplamayı yapılandırma ve etkinleştirme
-Günlükleri gönderdikten sorumlu EventFlow işlem hattı, bir yapılandırma dosyasında depolanan bir belirtiden oluşturulur. `Microsoft.Diagnostics.EventFlow.ServiceFabric` Paket, adlı `eventFlowConfig.json`çözüm klasörü altına `PackageRoot\Config` bir başlangıç EventFlow yapılandırma dosyası yüklüyor. Bu yapılandırma dosyasının, varsayılan hizmet `EventSource` sınıfından verileri, yapılandırmak istediğiniz diğer girişleri ve verileri uygun yere göndermesini sağlamak için değiştirilmesi gerekir.
+Günlükleri gönderdikten sorumlu EventFlow işlem hattı, bir yapılandırma dosyasında depolanan bir belirtiden oluşturulur. `Microsoft.Diagnostics.EventFlow.ServiceFabric`Paket `PackageRoot\Config` , adlı çözüm klasörü altına bir başlangıç EventFlow yapılandırma dosyası yüklüyor `eventFlowConfig.json` . Bu yapılandırma dosyasının, varsayılan hizmet `EventSource` sınıfından verileri, yapılandırmak istediğiniz diğer girişleri ve verileri uygun yere göndermesini sağlamak için değiştirilmesi gerekir.
 
 >[!NOTE]
->Proje dosyanızda VisualStudio 2017 biçimi varsa `eventFlowConfig.json` dosya otomatik olarak eklenmez. Bu işlemi onarmak için, `Config` klasörde dosyayı oluşturun ve derleme eylemini olarak `Copy if newer`ayarlayın. 
+>Proje dosyanızda VisualStudio 2017 biçimi varsa `eventFlowConfig.json` dosya otomatik olarak eklenmez. Bu işlemi onarmak için, klasörde dosyayı oluşturun `Config` ve derleme eylemini olarak ayarlayın `Copy if newer` . 
 
-Aşağıda belirtilen NuGet paketlerine göre örnek bir *Eventflowconfig. JSON* dosyası verilmiştir:
+Aşağıda belirtilen NuGet paketlerini temel alan örnek bir *eventFlowConfig.js* aşağıda verilmiştir:
 ```json
 {
   "inputs": [
@@ -70,7 +69,7 @@ Aşağıda belirtilen NuGet paketlerine göre örnek bir *Eventflowconfig. JSON*
 }
 ```
 
-Hizmetin ServiceEventSource öğesinin adı, ServiceEventSource sınıfına `EventSourceAttribute` uygulanan öğesinin Name özelliğinin değeridir. Bu, hizmet kodunun bir parçası `ServiceEventSource.cs` olan dosyasında belirtilmiştir. Örneğin, aşağıdaki kod parçacığında ServiceEventSource adı *MyCompany-Application1-Stateless1*:
+Hizmetin ServiceEventSource öğesinin adı, `EventSourceAttribute` serviceeventsource sınıfına uygulanan öğesinin Name özelliğinin değeridir. Bu, `ServiceEventSource.cs` hizmet kodunun bir parçası olan dosyasında belirtilmiştir. Örneğin, aşağıdaki kod parçacığında ServiceEventSource adı *MyCompany-Application1-Stateless1*:
 
 ```csharp
 [EventSource(Name = "MyCompany-Application1-Stateless1")]
@@ -84,7 +83,7 @@ Bu `eventFlowConfig.json` dosyanın hizmet yapılandırma paketinin bir parças�
 
 Config 'in *Filters* bölümü, çıkışlara EventFlow işlem hattı üzerinden gideceğim bilgileri daha fazla özelleştirmenizi sağlar ve belirli bilgileri bırakıp dahil etmenize ya da olay verilerinin yapısını değiştirmenize izin verir. Filtreleme hakkında daha fazla bilgi için bkz. [EventFlow Filters](https://github.com/Azure/diagnostics-eventflow#filters).
 
-Son adım, hizmetin başlangıç kodunda, `Program.cs` dosyasında bulunan EventFlow işlem hattının örneklendirilecek:
+Son adım, hizmetin başlangıç kodunda, dosyasında bulunan EventFlow işlem hattının örneklendirilecek `Program.cs` :
 
 ```csharp
 using System;
@@ -129,7 +128,7 @@ namespace Stateless1
 }
 ```
 
-Yönteminin parametresi olarak geçirilen ad, EventFlow günlük koleksiyonu ardışık düzenini temsil eden *sistem durumu varlığının* adıdır. `ServiceFabricDiagnosticsPipelineFactory` `CreatePipeline` Bu ad, EventFlow ile karşılaştığında ve Service Fabric sistem durumu alt sistemi üzerinden raporladığında kullanılır.
+Yönteminin parametresi olarak geçirilen ad, `CreatePipeline` `ServiceFabricDiagnosticsPipelineFactory` EventFlow günlük koleksiyonu ardışık düzenini temsil eden *sistem durumu varlığının* adıdır. Bu ad, EventFlow ile karşılaştığında ve Service Fabric sistem durumu alt sistemi üzerinden raporladığında kullanılır.
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>EventFlowConfig içindeki Service Fabric ayarlarını ve uygulama parametrelerini kullanma
 

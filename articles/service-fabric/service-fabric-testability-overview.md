@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465577"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Hata analiz hizmetine giriş
@@ -79,7 +78,7 @@ Service Fabric, hata analizi hizmeti aracılığıyla bunu açıp geliştirici o
 Service Fabric ile, hataların ölçeği farklı ortamlarda farklı olabilir, ancak gerçek mekanizmalar aynı olur. Bu, çok daha hızlı bir dağıtım işlem hattının ve gerçek hayatta yükleme altında hizmetleri test etmenize olanak tanır.
 
 ## <a name="using-the-fault-analysis-service"></a>Hata analiz hizmetini kullanma
-**, #**
+**C#**
 
 Hata çözümleme hizmeti özellikleri, Microsoft. ServiceFabric NuGet paketindeki System. Fabric ad alanıdır. Hata analiz hizmeti özelliklerini kullanmak için, NuGet paketini projenize bir başvuru olarak ekleyin.
 

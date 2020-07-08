@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458427"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric isteğe bağlı yedekleme
 
 Güvenilir durum bilgisi olan hizmetleri ve Reliable Actors olağanüstü durum veya veri kaybı senaryolarına yönelik verileri yedekleyebilirsiniz.
 
-Azure Service Fabric, verilerin düzenli olarak [yedeklenmesi](service-fabric-backuprestoreservice-quickstart-azurecluster.md) ve verilerin yedeklenmesi için gerekli özelliklere sahiptir. İsteğe bağlı yedekleme, temel hizmette veya ortamındaki planlı değişiklikler nedeniyle _veri kaybı_/_verisinin bozulmasına_ karşı koruma sağladığından yararlıdır.
+Azure Service Fabric, verilerin düzenli olarak [yedeklenmesi](service-fabric-backuprestoreservice-quickstart-azurecluster.md) ve verilerin yedeklenmesi için gerekli özelliklere sahiptir. İsteğe bağlı yedekleme, _data loss_ / temel hizmette veya ortamındaki planlı değişiklikler nedeniyle veri kaybı_verisinin bozulmasına_ karşı koruma sağladığından yararlıdır.
 
 İsteğe bağlı yedekleme özellikleri, bir hizmet veya hizmet ortamı işlemini el ile tetiklemeniz için hizmetlerin durumunu yakalamaya yardımcı olur. Örneğin, hizmeti yükseltirken veya eski sürüme düşürme sırasında hizmet ikili dosyalarında değişiklik yaparsanız. Böyle bir durumda, isteğe bağlı yedekleme, uygulama kodu hataları ile verileri bozulmaya karşı korumanıza yardımcı olabilir.
 ## <a name="prerequisites"></a>Ön koşullar
@@ -27,7 +26,7 @@ Azure Service Fabric, verilerin düzenli olarak [yedeklenmesi](service-fabric-ba
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Microsoft. ServiceFabric. PowerShell. http `Connect-SFCluster` modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
+- `Connect-SFCluster`Microsoft. ServiceFabric. PowerShell. http modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
 ```powershell
 
@@ -56,7 +55,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Bölüm KIMLIĞI `974bd92a-b395-4631-8a7f-53bd4ae9cf22`için isteğe bağlı yedekleme için [tetiklemeyi ayarlamak üzere backuppartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API 'sini kullanın.
+Bölüm KIMLIĞI için isteğe bağlı yedekleme için [tetiklemeyi ayarlamak üzere Backuppartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API 'sini kullanın `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -81,7 +80,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Bölüm KIMLIĞI `974bd92a-b395-4631-8a7f-53bd4ae9cf22`için isteğe bağlı yedekleme için [tetiklemeyi ayarlamak üzere backuppartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API 'sini kullanın. Aşağıdaki Azure depolama bilgilerini ekleyin:
+Bölüm KIMLIĞI için isteğe bağlı yedekleme için [tetiklemeyi ayarlamak üzere Backuppartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API 'sini kullanın `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . Aşağıdaki Azure depolama bilgilerini ekleyin:
 
 ```powershell
 $StorageInfo = @{

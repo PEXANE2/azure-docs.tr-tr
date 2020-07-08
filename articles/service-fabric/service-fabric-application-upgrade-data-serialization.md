@@ -5,17 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457488"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Veri serileştirmesi bir uygulama yükseltmesini nasıl etkiler
 Bir sıralı [uygulama yükseltmesinde](service-fabric-application-upgrade.md), yükseltme bir tek seferde bir yükseltme etki alanı olmak üzere düğümlerin bir alt kümesine uygulanır. Bu işlem sırasında, bazı yükseltme etki alanları uygulamanızın daha yeni bir sürümüdür ve bazı yükseltme etki alanları uygulamanızın eski bir sürümüdür. Dağıtım sırasında, uygulamanızın yeni sürümü verilerinizin eski sürümünü okuyabilmelidir ve uygulamanızın eski sürümü verilerinizin yeni sürümünü okuyabilmelidir olması gerekir. Veri biçimi ileri ve geri uyumlu değilse, yükseltme başarısız olabilir veya daha kötü, veriler kaybolabilir veya bozulabilir. Bu makalede, veri biçiminizi ne oluşturduğunu ve verilerinizin ileriye ve geriye dönük olarak uyumlu olmasını sağlamak için en iyi yöntemleri sunan açıklanır.
 
 ## <a name="what-makes-up-your-data-format"></a>Veri biçiminizi ne yapar?
-Azure Service Fabric 'de kalıcı ve çoğaltılan veriler C# sınıflarınızdan gelir. [Güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)kullanan uygulamalar için, bu veriler güvenilir sözlüklerdeki ve kuyruklardaki nesnelerdir. [Reliable Actors](service-fabric-reliable-actors-introduction.md)kullanan uygulamalar için, aktör için yedekleme durumudur. Bu C# sınıflarının kalıcı olması ve çoğaltılması için seri hale getirilebilir olması gerekir. Bu nedenle, veri biçimi serileştirilmiş olan alanlar ve özellikler tarafından ve nasıl serileştirildikleri gibi tanımlanır. Örneğin, bir `IReliableDictionary<int, MyClass>` veri seri hale getirilebilir `int` ve serileştirilmiş `MyClass`olur.
+Azure Service Fabric 'de kalıcı ve çoğaltılan veriler C# sınıflarınızdan gelir. [Güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)kullanan uygulamalar için, bu veriler güvenilir sözlüklerdeki ve kuyruklardaki nesnelerdir. [Reliable Actors](service-fabric-reliable-actors-introduction.md)kullanan uygulamalar için, aktör için yedekleme durumudur. Bu C# sınıflarının kalıcı olması ve çoğaltılması için seri hale getirilebilir olması gerekir. Bu nedenle, veri biçimi serileştirilmiş olan alanlar ve özellikler tarafından ve nasıl serileştirildikleri gibi tanımlanır. Örneğin, bir `IReliableDictionary<int, MyClass>` veri seri hale getirilebilir `int` ve serileştirilmiş olur `MyClass` .
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>Veri biçimi değişikliğine neden olan kod değişiklikleri
 Veri biçimi C# sınıfları tarafından belirlendiği için sınıflardaki değişiklikler bir veri biçimi değişikliğine neden olabilir. Sıralı bir yükseltmenin veri biçimi değişikliğini işleyebileceğini güvence altına almak için dikkatli olunmalıdır. Veri biçimi değişikliklerine neden olabilecek örnekler:

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463334"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Durum bilgisi olmayan hizmetlere Service Fabric Web ve çalışan rollerini dönüştürmeye yönelik kılavuz
@@ -34,8 +33,8 @@ Kavramsal olarak, bir çalışan rolü durum bilgisiz iş yükünü temsil eder,
 | --- | --- | --- |
 | ASP.NET Web Forms |Hayır |ASP.NET Core 1 MVC 'ye Dönüştür |
 | ASP.NET MVC |Geçişle |ASP.NET Core 1 MVC 'ye yükselt |
-| ASP.NET Web API'si |Geçişle |Şirket içinde barındırılan sunucu veya ASP.NET Core 1 kullanın |
-| ASP.NET Core 1 |Yes |Yok |
+| ASP.NET Web API |Geçişle |Şirket içinde barındırılan sunucu veya ASP.NET Core 1 kullanın |
+| ASP.NET Core 1 |Evet |YOK |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Giriş noktası API 'SI ve yaşam döngüsü
 Çalışan rolü ve Service Fabric hizmeti API 'Leri benzer giriş noktaları sunar: 
@@ -43,9 +42,9 @@ Kavramsal olarak, bir çalışan rolü durum bilgisiz iş yükünü temsil eder,
 | **Girdi Noktası** | **Çalışan rolü** | **Service Fabric hizmeti** |
 | --- | --- | --- |
 | İşleniyor |`Run()` |`RunAsync()` |
-| VM başlatma |`OnStart()` |Yok |
-| VM durdur |`OnStop()` |Yok |
-| İstemci istekleri için açık dinleyicisi |Yok |<ul><li> `CreateServiceInstanceListener()`durum bilgisiz için</li><li>`CreateServiceReplicaListener()`durum bilgisi için</li></ul> |
+| VM başlatma |`OnStart()` |YOK |
+| VM durdur |`OnStop()` |YOK |
+| İstemci istekleri için açık dinleyicisi |YOK |<ul><li> `CreateServiceInstanceListener()`durum bilgisiz için</li><li>`CreateServiceReplicaListener()`durum bilgisi için</li></ul> |
 
 ### <a name="worker-role"></a>Çalışan rolü
 ```csharp
@@ -97,12 +96,12 @@ namespace Stateless1
 
 ```
 
-Her ikisinde de işlemeye başlamak için bir birincil "Çalıştır" geçersiz kılması vardır. Service Fabric Hizmetleri, `Run`ve `Start` `Stop` tek bir giriş noktasına birleştirir `RunAsync`. Hizmetiniz `RunAsync` başladığında çalışmaya başlayabilir ve `RunAsync` yöntemin CancellationToken 'a sinyal geldiğinde çalışmayı durdurmalıdır. 
+Her ikisinde de işlemeye başlamak için bir birincil "Çalıştır" geçersiz kılması vardır. Service Fabric Hizmetleri, `Run` `Start` ve `Stop` tek bir giriş noktasına birleştirir `RunAsync` . Hizmetiniz başladığında çalışmaya başlayabilir `RunAsync` ve `RunAsync` yöntemin CancellationToken 'a sinyal geldiğinde çalışmayı durdurmalıdır. 
 
 Çalışan rollerinin yaşam döngüsü ve yaşam süresi ile Service Fabric hizmetleri arasında birkaç temel fark vardır:
 
 * **Yaşam döngüsü:** En büyük fark, bir çalışan rolünün bir sanal makine olduğu ve bu nedenle yaşam döngüsünün VM 'nin başladığı ve durdurduğu olayları içeren VM 'ye bağlı olması gerektiğidir. Bir Service Fabric hizmeti VM yaşam döngüsüyle ayrı bir yaşam döngüsüne sahiptir, bu nedenle, ilişkili olmadıkları için konak VM veya makinenin başladığı ve durdurulacağı olayları içermez.
-* **Ömür:** `Run` Yöntem çıkış olursa bir çalışan rolü örneği geri dönüştürülecek. Service Fabric `RunAsync` bir hizmette yöntemi, ancak tamamlanmayı çalıştırabilir ve hizmet örneği kalır. 
+* **Ömür:** Yöntem çıkış olursa bir çalışan rolü örneği geri dönüştürülecek `Run` . `RunAsync`Service Fabric bir hizmette yöntemi, ancak tamamlanmayı çalıştırabilir ve hizmet örneği kalır. 
 
 Service Fabric, istemci isteklerini dinleyen hizmetler için isteğe bağlı bir iletişim kurulum giriş noktası sağlar. RunAsync ve Communication giriş noktası, Service Fabric Hizmetleri 'nde isteğe bağlı geçersiz kılmalardır. hizmetiniz yalnızca istemci isteklerini dinleyebilir veya yalnızca bir işleme döngüsü çalıştırabilir ya da her ikisi de çalıştırılabilir, çünkü istemci isteklerini dinlemeye devam edebilir.
 
@@ -114,8 +113,8 @@ Cloud Services Environment API 'SI, geçerli sanal makine örneği ve diğer VM 
 | Yapılandırma ayarları ve değişiklik bildirimi |`RoleEnvironment` |`CodePackageActivationContext` |
 | Yerel depolama |`RoleEnvironment` |`CodePackageActivationContext` |
 | Uç nokta bilgileri |`RoleInstance` <ul><li>Geçerli örnek:`RoleEnvironment.CurrentRoleInstance`</li><li>Diğer roller ve örnek:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`Geçerli düğüm adresi için</li><li>`FabricClient`ve `ServicePartitionResolver` hizmet uç noktası bulma için</li> |
-| Ortam öykünmesi |`RoleEnvironment.IsEmulated` |Yok |
-| Eşzamanlı değişiklik olayı |`RoleEnvironment` |Yok |
+| Ortam öykünmesi |`RoleEnvironment.IsEmulated` |YOK |
+| Eşzamanlı değişiklik olayı |`RoleEnvironment` |YOK |
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 Cloud Services içindeki yapılandırma ayarları bir VM rolü için ayarlanır ve bu VM rolünün tüm örneklerine uygulanır. Bu ayarlar, ServiceConfiguration. *. cscfg dosyalarında ayarlanan anahtar-değer çiftleridir ve doğrudan RoleEnvironment üzerinden erişilebilir. Service Fabric, bir sanal makine birden çok hizmet ve uygulamayı barındırabildiğinden, ayarlar her bir hizmete ve her bir uygulamaya tek tek uygulanır. Bir hizmet üç paketten oluşur:
@@ -124,11 +123,11 @@ Cloud Services içindeki yapılandırma ayarları bir VM rolü için ayarlanır 
 * **Yapılandırma:** bir hizmetin tüm yapılandırma dosyaları ve ayarları.
 * **Veri:** hizmetle ilişkili statik veri dosyaları.
 
-Bu paketlerin her biri bağımsız olarak sürümlenebilir ve yükseltilebilir. Cloud Services benzer şekilde, bir yapılandırma paketi bir API aracılığıyla programlı olarak erişilebilir ve bir yapılandırma paketi değişikliği hizmetine bildirimde bulunan olaylar kullanılabilir. Bir Settings. xml dosyası, anahtar-değer yapılandırması ve bir App. config dosyasının uygulama ayarları bölümüne benzer programlı erişim için kullanılabilir. Ancak, Cloud Services aksine, bir Service Fabric yapılandırma paketi herhangi bir biçimde herhangi bir biçimde, XML, JSON, YAML veya özel bir ikili biçimi olmak üzere herhangi bir biçimde herhangi bir yapılandırma dosyası içerebilir. 
+Bu paketlerin her biri bağımsız olarak sürümlenebilir ve yükseltilebilir. Cloud Services benzer şekilde, bir yapılandırma paketi bir API aracılığıyla programlı olarak erişilebilir ve bir yapılandırma paketi değişikliği hizmetine bildirimde bulunan olaylar kullanılabilir. Bir Settings.xml dosyası, anahtar-değer yapılandırması ve bir App.config dosyasının uygulama ayarları bölümüne benzer programlı erişim için kullanılabilir. Ancak, Cloud Services aksine, bir Service Fabric yapılandırma paketi herhangi bir biçimde herhangi bir biçimde, XML, JSON, YAML veya özel bir ikili biçimi olmak üzere herhangi bir biçimde herhangi bir yapılandırma dosyası içerebilir. 
 
 ### <a name="accessing-configuration"></a>Yapılandırmaya erişme
 #### <a name="cloud-services"></a>Cloud Services
-ServiceConfiguration. *. cscfg öğesinden yapılandırma ayarlarına aracılığıyla `RoleEnvironment`erişilebilir. Bu ayarlar, aynı bulut hizmeti dağıtımında tüm rol örnekleri için genel kullanıma sunulmuştur.
+ServiceConfiguration. *. cscfg öğesinden yapılandırma ayarlarına aracılığıyla erişilebilir `RoleEnvironment` . Bu ayarlar, aynı bulut hizmeti dağıtımında tüm rol örnekleri için genel kullanıma sunulmuştur.
 
 ```csharp
 
@@ -137,9 +136,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Her hizmet kendi kendine ait ayrı yapılandırma paketine sahiptir. Genel yapılandırma ayarları için bir kümedeki tüm uygulamalar tarafından erişilebilen yerleşik bir mekanizma yoktur. Service Fabric özel Settings. xml yapılandırma dosyasını bir yapılandırma paketi içinde kullanırken, Settings. xml dosyasındaki değerler uygulama düzeyinde üzerine yazılabilir ve uygulama düzeyi yapılandırma ayarları mümkün hale getirebilirsiniz.
+Her hizmet kendi kendine ait ayrı yapılandırma paketine sahiptir. Genel yapılandırma ayarları için bir kümedeki tüm uygulamalar tarafından erişilebilen yerleşik bir mekanizma yoktur. Bir yapılandırma paketi içinde Service Fabric özel Settings.xml yapılandırma dosyasını kullanırken, Settings.xml değerlerinin uygulama düzeyinde üzerine yazılabilir ve uygulama düzeyinde yapılandırma ayarları mümkün hale getirebilirsiniz.
 
-Yapılandırma ayarlarına, her hizmet örneği içinde hizmet aracılığıyla erişilir `CodePackageActivationContext`.
+Yapılandırma ayarlarına, her hizmet örneği içinde hizmet aracılığıyla erişilir `CodePackageActivationContext` .
 
 ```csharp
 
@@ -160,7 +159,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 
 ### <a name="configuration-update-events"></a>Yapılandırma güncelleştirme olayları
 #### <a name="cloud-services"></a>Cloud Services
-Bu `RoleEnvironment.Changed` olay, bir yapılandırma değişikliği gibi, ortamda bir değişiklik olduğunda tüm rol örneklerine bildirimde bildirmek için kullanılır. Bu, yapılandırma güncelleştirmelerini, rol örneklerini geri dönüşüme açmadan veya bir çalışan işlemi yeniden başlatmadan kullanmak için kullanılır.
+`RoleEnvironment.Changed`Bu olay, bir yapılandırma değişikliği gibi, ortamda bir değişiklik olduğunda tüm rol örneklerine bildirimde bildirmek için kullanılır. Bu, yapılandırma güncelleştirmelerini, rol örneklerini geri dönüşüme açmadan veya bir çalışan işlemi yeniden başlatmadan kullanmak için kullanılır.
 
 ```csharp
 
@@ -224,7 +223,7 @@ Cloud Services, ServiceDefinition. csdef içindeki her rol için bir başlangı�
 ```
 
 ### <a name="service-fabric"></a>Service Fabric
-Service Fabric, ServiceManifest. xml dosyasında hizmet başına bir başlangıç giriş noktası yapılandırılmıştır:
+Service Fabric, ServiceManifest.xml hizmetinde hizmet başına bir başlangıç giriş noktası yapılandırılır:
 
 ```xml
 

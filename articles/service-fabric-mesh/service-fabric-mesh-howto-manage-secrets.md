@@ -4,10 +4,9 @@ description: Service Fabric bir kafes uygulamasını güvenli bir şekilde oluş
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461924"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric kafes uygulama gizli dizilerini yönetme
@@ -95,7 +94,7 @@ Aşağıda, bir YAML dosyasında ağ parolaları kaynaklarının nasıl bildiril
 ## <a name="declare-mesh-secretsvalues-resources"></a>Ağ gizli dizileri/değerleri kaynaklarını bildirin
 Ağ parolaları/değerler kaynakları, önceki adımda tanımlanan ağ parolaları kaynaklarına bağımlıdır.
 
-"Resources" bölümü "Value:" ve "Name:" alanları arasındaki ilişkiyle ilgili ilişki: "Name:" dizesinin iki nokta ile ayrılmış ikinci bölümü, bir gizli anahtar için kullanılan sürüm numarasıdır ve iki nokta üst üste, bağımlılığı olan ağ gizli anahtarı ile eşleşmesi gerekir. Örneğin, öğesi ```name: mysecret:1.0```için sürüm numarası 1,0, ad ```mysecret``` ise daha önce tanımlanan ```"value": "mysecret"```ile aynı olmalıdır.
+"Resources" bölümü "Value:" ve "Name:" alanları arasındaki ilişkiyle ilgili ilişki: "Name:" dizesinin iki nokta ile ayrılmış ikinci bölümü, bir gizli anahtar için kullanılan sürüm numarasıdır ve iki nokta üst üste, bağımlılığı olan ağ gizli anahtarı ile eşleşmesi gerekir. Örneğin, öğesi için ```name: mysecret:1.0``` sürüm numarası 1,0, ad ise ```mysecret``` daha önce tanımlanan ile aynı olmalıdır ```"value": "mysecret"``` .
 
 >
 Aşağıda, bir JSON dosyasında ağ gizli dizileri/değerleri kaynaklarının nasıl bildirilelelebir örnektir:
@@ -201,8 +200,8 @@ az mesh deployment create –-<template-file> or --<template-uri>
 **Şablon dosyası** ya da **şablon-URI** (her ikisi değil) geçirin.
 
 Örneğin:
-- az kafes Deployment Create--c:\MyMeshTemplates\SecretTemplate1.txt
-- az kafes Deployment Create--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az kafes Deployment Create --c:\MyMeshTemplates\SecretTemplate1.txt
+- az kafes Deployment Create--https: \/ /www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Gizli dizi göster
 Gizli anahtar açıklamasını döndürür (ancak değeri değil).

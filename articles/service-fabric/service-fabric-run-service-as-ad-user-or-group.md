@@ -6,18 +6,17 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464254"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Bir hizmeti Active Directory Kullanıcı veya grup olarak çalıştırma
-Windows Server tek başına kümesinde, RunAs ilkesini kullanarak bir hizmeti Active Directory Kullanıcı veya grup olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamalar yapı. exe işleminin altında çalıştığı hesap altında çalışır. Uygulamaları, paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, bunları diğerinden daha güvenli hale getirir. Bunun Active Directory Azure Active Directory (Azure AD) değil, etki alanınız içinde şirket içinde kullandığını unutmayın.  Ayrıca, bir hizmeti [Grup yönetilen hizmet hesabı (gMSA)](service-fabric-run-service-as-gmsa.md)olarak da çalıştırabilirsiniz.
+Windows Server tek başına kümesinde, RunAs ilkesini kullanarak bir hizmeti Active Directory Kullanıcı veya grup olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamalar Fabric.exe işleminin altında çalıştığı hesap altında çalışır. Uygulamaları, paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, bunları diğerinden daha güvenli hale getirir. Bunun Active Directory Azure Active Directory (Azure AD) değil, etki alanınız içinde şirket içinde kullandığını unutmayın.  Ayrıca, bir hizmeti [Grup yönetilen hizmet hesabı (gMSA)](service-fabric-run-service-as-gmsa.md)olarak da çalıştırabilirsiniz.
 
 Bir etki alanı kullanıcısı veya grubu kullanarak, izin verilen etki alanındaki diğer kaynaklara (örneğin, dosya paylaşımları) erişebilirsiniz.
 
-Aşağıdaki örnek, *Benimcert*adlı bir sertifika kullanarak etki alanı parolalarını şifreleyen *testuser* adlı bir Kullanıcı Active Directory gösterir. Gizli şifreleme metnini oluşturmak `Invoke-ServiceFabricEncryptText` için PowerShell komutunu kullanabilirsiniz. Ayrıntılar için bkz. [Service Fabric uygulamalarında gizli dizileri yönetme](service-fabric-application-secret-management.md) .
+Aşağıdaki örnek, *Benimcert*adlı bir sertifika kullanarak etki alanı parolalarını şifreleyen *testuser* adlı bir Kullanıcı Active Directory gösterir. `Invoke-ServiceFabricEncryptText`Gizli şifreleme metnini oluşturmak için PowerShell komutunu kullanabilirsiniz. Ayrıntılar için bkz. [Service Fabric uygulamalarında gizli dizileri yönetme](service-fabric-application-secret-management.md) .
 
 Bant dışı bir yöntem kullanarak yerel makineye parolanın şifresini çözmek için sertifikanın özel anahtarını dağıtmanız gerekir (Azure 'da bu, Azure Resource Manager aracılığıyla yapılır). Daha sonra, Service Fabric hizmet paketini makineye dağıttığında, bu kimlik bilgileri altında çalıştırmak için Active Directory ve (Kullanıcı adıyla birlikte) kimlik doğrulaması yapabilir.
 

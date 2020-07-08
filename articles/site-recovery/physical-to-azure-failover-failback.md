@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497865"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Yük devretme ve geri dönme fiziksel sunucuları Azure 'a çoğaltma
@@ -42,14 +41,14 @@ Sunucu özelliklerini doğrulayın ve Azure VM 'Leri için [Azure gereksinimleri
 
 ### <a name="fail-over-to-azure"></a>Azure'a yük devretme
 
-1. **Ayarlar** > **çoğaltılan öğeler** ' de **Yük devretme**> makine ' ye tıklayın.
+1. **Ayarlar**  >  **çoğaltılan öğeler** ' de **Yük devretme**> makine ' ye tıklayın.
 2. **Yük devretme**’de yük devretmenin yapılacağı bir **Kurtarma Noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
    - **Varsayılan**: Bu seçenekte öncelikle Site Recovery’ye gönderilen tüm veriler işlenir. Yük devretmeden sonra oluşturulan Azure VM, yük devretme tetiklendiğinde Site Recovery’ye çoğaltılan tüm verilere sahip olduğundan en düşük RPO (Kurtarma Noktası Hedefi) sağlanır.
    - **En son işlenen**: Bu seçenek makineyi Site Recovery tarafından işlenen en son kurtarma noktasına devreder. İşlenmemiş verileri işlemek için zaman harcanmadığından bu seçenekte düşük bir RTO (Kurtarma Süresi Hedefi) sağlanır.
    - **En son uygulamayla tutarlı**: Bu seçenek, makineyi Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına devreder.
    - **Özel**: Bir kurtarma noktası belirtin.
 
-3. Yük devretmeyi tetiklemeden önce Site Recovery kaynak makineyi kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+3. Yük devretmeyi tetiklemeden önce Site Recovery kaynak makineyi kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Kapatma işlemi başarısız olsa bile yük devretme devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 4. Azure VM’ye bağlanmaya hazırsanız, yük devretmeden sonra VM’yi doğrulamak için bağlanın.
 5. Doğruladıktan sonra yük devretmeyi **Yürütün**. Bu, tüm kullanılabilir kurtarma noktalarını siler.
 
@@ -95,7 +94,7 @@ Azure 'a yük devrettikten sonra, Azure VM 'lerini şirket içi siteye çoğalta
 
 Bu yordam, şirket içi VM 'nin kullanılabilir olmadığını varsayar.
 
-1. Kasa > **ayarları** > **çoğaltılan öğeler**' de, yük devredilecek makineye sağ tıklayın > **yeniden koruyun**.
+1. Kasa > **ayarları**  >  **çoğaltılan öğeler**' de, yük devredilecek makineye sağ tıklayın > **yeniden koruyun**.
 2. **Yeniden koru** bölümünde **Azure’dan Şirket içine** seçeneğinin belirlendiğinden emin olun.
 3. Şirket içi ana hedef sunucuyu ve işlem sunucusunu belirtin.
 4. **Veri deposu**’nda şirket içi diskleri kurtarmak istediğiniz ana hedef veri deposunu seçin.

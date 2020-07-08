@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494918"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight kümeleri için performans iyileştirme
@@ -40,17 +39,17 @@ Aşağıdaki bölümler, Kafka üreticileri 'in performansını iyileştirmek i�
 
 ### <a name="batch-size"></a>Toplu iş boyutu
 
-Apache Kafka üreticileri, tek bir depolama bölümünde depolanacak bir birim olarak gönderilen ileti gruplarını (toplu işler olarak adlandırılır) birleştirir. Toplu iş boyutu, Grup iletilmeden önce bulunması gereken bayt sayısını gösterir. Ağ ve `batch.size` GÇ isteklerinden işlem yükünü azalttığından, parametrenin artırılması üretilen işi artırabilir. Bir toplu işin hazırlanmasını beklediği için, hafif yük altında artan toplu iş boyutu Kafka gönderme gecikmesini artırabilir. Ağır yük altında, toplu iş boyutunu artırmanız ve gecikme süresini artırmak için önerilir.
+Apache Kafka üreticileri, tek bir depolama bölümünde depolanacak bir birim olarak gönderilen ileti gruplarını (toplu işler olarak adlandırılır) birleştirir. Toplu iş boyutu, Grup iletilmeden önce bulunması gereken bayt sayısını gösterir. `batch.size`Ağ ve GÇ isteklerinden işlem yükünü azalttığından, parametrenin artırılması üretilen işi artırabilir. Bir toplu işin hazırlanmasını beklediği için, hafif yük altında artan toplu iş boyutu Kafka gönderme gecikmesini artırabilir. Ağır yük altında, toplu iş boyutunu artırmanız ve gecikme süresini artırmak için önerilir.
 
 ### <a name="producer-required-acknowledgments"></a>Üretici gerekli bildirimleri
 
-Üretici tarafından gereken `acks` yapılandırma, bir yazma isteğinin tamamlandığı kabul edilmeden önce bölüm lideri için gereken bildirimler sayısını belirler. Bu ayar `0`, veri güvenilirliğini etkiler ve, `1`veya `-1`değerlerini alır. Değeri, yazma `-1` işlemi tamamlanmadan önce tüm çoğaltmalardan bir bildirim alınması gerektiği anlamına gelir. Ayar `acks = -1` , veri kaybına karşı daha güçlü garantiler sağlar, ancak daha yüksek gecikme süresine ve düşük aktarım hızına neden olur. Uygulama gereksinimleriniz daha yüksek verimlilik talebinde bulunursa, veya `acks = 0` `acks = 1`ayarını deneyin. Tüm çoğaltmaları bildirmeden veri güvenilirliğini azaltamayacağınızı göz önünde bulundurun.
+Üretici tarafından gereken `acks` yapılandırma, bir yazma isteğinin tamamlandığı kabul edilmeden önce bölüm lideri için gereken bildirimler sayısını belirler. Bu ayar, veri güvenilirliğini etkiler ve `0` , veya değerlerini alır `1` `-1` . Değeri, `-1` yazma işlemi tamamlanmadan önce tüm çoğaltmalardan bir bildirim alınması gerektiği anlamına gelir. Ayar `acks = -1` , veri kaybına karşı daha güçlü garantiler sağlar, ancak daha yüksek gecikme süresine ve düşük aktarım hızına neden olur. Uygulama gereksinimleriniz daha yüksek verimlilik talebinde bulunursa, veya ayarını `acks = 0` deneyin `acks = 1` . Tüm çoğaltmaları bildirmeden veri güvenilirliğini azaltamayacağınızı göz önünde bulundurun.
 
 ### <a name="compression"></a>Sıkıştırma
 
-Bir Kafka üreticisi, aracıları aracılarına göndermeden önce iletileri sıkıştırmak üzere yapılandırılabilir. Ayar `compression.type` , kullanılacak sıkıştırma codec 'ini belirtir. Desteklenen sıkıştırma codec bileşenleri şunlardır "gzip," "Snappy," ve "lz4." Sıkıştırma yararlı olur ve disk kapasitesinde bir kısıtlama varsa göz önünde bulundurulmalıdır.
+Bir Kafka üreticisi, aracıları aracılarına göndermeden önce iletileri sıkıştırmak üzere yapılandırılabilir. `compression.type`Ayar, kullanılacak sıkıştırma codec 'ini belirtir. Desteklenen sıkıştırma codec bileşenleri şunlardır "gzip," "Snappy," ve "lz4." Sıkıştırma yararlı olur ve disk kapasitesinde bir kısıtlama varsa göz önünde bulundurulmalıdır.
 
-Yaygın olarak kullanılan iki sıkıştırma codec bileşeni arasında `gzip` daha `snappy`yüksek `gzip` bir sıkıştırma oranına sahiptir ve bu da daha yüksek CPU yükü maliyetinde daha düşük disk kullanımı elde olur. Codec `snappy` , daha az CPU ek yükü ile daha az sıkıştırma sağlar. Aracı diskine veya üretici CPU kısıtlamalarına göre hangi codec bileşeninin kullanılacağına karar verebilirsiniz. `gzip`verileri beş kat daha yüksek bir hızda sıkıştırabilirler `snappy`.
+Yaygın olarak kullanılan iki sıkıştırma codec bileşeni arasında `gzip` daha `snappy` `gzip` yüksek bir sıkıştırma oranına sahiptir ve bu da daha yüksek CPU yükü maliyetinde daha düşük disk kullanımı elde olur. `snappy`Codec, daha az CPU ek yükü ile daha az sıkıştırma sağlar. Aracı diskine veya üretici CPU kısıtlamalarına göre hangi codec bileşeninin kullanılacağına karar verebilirsiniz. `gzip`verileri beş kat daha yüksek bir hızda sıkıştırabilirler `snappy` .
 
 Veri sıkıştırmayı kullanmak, bir diskte depolanabilecek kayıt sayısını artırır. Ayrıca, üretici ve aracı tarafından kullanılan sıkıştırma biçimleri arasında uyuşmazlık olduğu durumlarda CPU yükünü artırabilir. verilerin gönderilmeden önce sıkıştırılması ve sonra, işlenmeden önce sıkıştırması açılması gerekir.
 

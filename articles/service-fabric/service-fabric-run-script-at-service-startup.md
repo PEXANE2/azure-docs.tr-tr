@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464279"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Yerel kullanıcı veya sistem hesabı olarak bir hizmet başlangıcı komut dosyası çalıştırma
@@ -18,7 +17,7 @@ Bir Service Fabric hizmeti yürütülebilir dosyası başlamadan önce, bazı ya
 Kurulum giriş noktası ( [hizmet bildiriminde](service-fabric-application-and-service-manifests.md)**setupentrypoint** ), varsayılan olarak, diğer herhangi bir giriş noktasından önce Service Fabric (genellikle *NetworkService* hesabı) ile aynı kimlik bilgileriyle çalışan ayrıcalıklı bir giriş noktasıdır. **Giriş noktası** tarafından belirtilen yürütülebilir dosya genellikle uzun süre çalışan hizmet ana bilgisayarı olur. **Setupentrypoint** yürütülebilir dosyası başarıyla çıktıktan sonra **entryPoint** çalıştırılabilir dosyası çalıştırılır. Ortaya çıkan işlem izlenir ve yeniden başlatılır ve sonlandırıldığında veya kilitlenirse **Setupentrypoint** ile yeniden başlar. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Hizmet kurulumu giriş noktasını yapılandırma
-Aşağıda, Service **Setupentrypoint**Içindeki *MySetup. bat* kurulum betiğini belirten, durum bilgisi olmayan bir hizmet için basit bir hizmet bildirimi örneği verilmiştir.  **Bağımsız değişkenler** çalıştırıldığında bağımsız değişkenleri komut dosyasına geçirmek için kullanılır.
+Aşağıda, Service **Setupentrypoint**içinde *MySetup.bat* bir kurulum betiği belirten, durum bilgisi olmayan bir hizmet için basit bir hizmet bildirimi örneği verilmiştir.  **Bağımsız değişkenler** çalıştırıldığında bağımsız değişkenleri komut dosyasına geçirmek için kullanılır.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -97,7 +96,7 @@ Aşağıdaki uygulama bildirimi örneği, Service Setup giriş noktasının Kull
 
 İlk olarak, SetupAdminUser gibi bir Kullanıcı adı ile bir **sorumlular** bölümü oluşturun. SetupAdminUser Kullanıcı hesabı, Administrators sistem grubunun bir üyesidir.
 
-Ardından, **servicemanifestımport** bölümünün altında, bu sorumluyu **setupentrypoint**'ye uygulamak için bir ilke yapılandırın. Bu ilke, **MySetup. bat** dosyası çalıştırıldığında SetupAdminUser (yönetici ayrıcalıklarıyla) olarak çalışmalıdır Service Fabric söyler. Ana giriş noktasına bir ilke *uygulanmadığımızdan* , **MyServiceHost. exe** dosyasındaki kod, sistem **NetworkService** hesabı altında çalışır. Bu, tüm hizmet giriş noktalarının çalıştırıldığı varsayılan hesaptır.
+Ardından, **servicemanifestımport** bölümünün altında, bu sorumluyu **setupentrypoint**'ye uygulamak için bir ilke yapılandırın. Bu ilke, **MySetup.bat** dosya çalıştırıldığında SetupAdminUser (yönetici ayrıcalıklarıyla) olarak çalışmalıdır Service Fabric söyler. Ana giriş noktasına bir ilke *uygulanmadığımızdan* **MyServiceHost.exe** kod, sistem **NetworkService** hesabı altında çalışır. Bu, tüm hizmet giriş noktalarının çalıştırıldığı varsayılan hesaptır.
 
 ### <a name="configure-the-policy-by-using-local-system-accounts"></a>İlkeyi yerel sistem hesapları kullanarak yapılandırma
 Genellikle, başlangıç betiğini yönetici hesabı yerine yerel bir sistem hesabı kullanılarak çalıştırmak tercih edilir. RunAs ilkesini Yöneticiler grubunun bir üyesi olarak çalıştırmak, bilgisayarların Kullanıcı Access Control (UAC) varsayılan olarak etkinleştirildiği için genellikle iyi çalışmaz. Bu gibi durumlarda, Administrators grubuna yerel kullanıcı eklemek yerine SetupEntryPoint 'yi LocalSystem olarak çalıştırmanız önerilir. Aşağıdaki örnek, SetupEntryPoint 'in LocalSystem olarak çalışacağı ayarı gösterir:
@@ -136,13 +135,13 @@ Genellikle, başlangıç betiğini yönetici hesabı yerine yerel bir sistem hes
 ## <a name="run-a-script-from-the-setup-entry-point"></a>Kurulum giriş noktasından komut dosyası çalıştırma
 Şimdi, yönetici ayrıcalıkları altında çalıştırmak için projeye bir başlangıç betiği ekleyin. 
 
-Visual Studio 'da, hizmet projesine sağ tıklayın ve *MySetup. bat*adlı yeni bir dosya ekleyin.
+Visual Studio 'da, hizmet projesine sağ tıklayın ve *MySetup.bat*adlı yeni bir dosya ekleyin.
 
-Daha sonra, *MySetup. bat* dosyasının hizmet paketine eklendiğinden emin olun. Varsayılan olarak, bu değildir. Dosyayı seçin, bağlam menüsünü almak için sağ tıklayın ve **Özellikler**' i seçin. Özellikler iletişim kutusunda, **Çıkış Dizinine Kopyala** ' nın **daha yeniyse kopyala**olarak ayarlandığından emin olun. Aşağıdaki ekran görüntüsüne bakın.
+Daha sonra, *MySetup.bat* dosyasının hizmet paketine eklendiğinden emin olun. Varsayılan olarak, bu değildir. Dosyayı seçin, bağlam menüsünü almak için sağ tıklayın ve **Özellikler**' i seçin. Özellikler iletişim kutusunda, **Çıkış Dizinine Kopyala** ' nın **daha yeniyse kopyala**olarak ayarlandığından emin olun. Aşağıdaki ekran görüntüsüne bakın.
 
 ![SetupEntryPoint toplu iş dosyası için Visual Studio CopyToOutput][image1]
 
-Şimdi *MySetup. bat* dosyasını düzenleyin ve aşağıdaki komutları ekleyerek bir sistem ortam değişkeni ayarlayın ve bir metin dosyası çıkışı yapın:
+Şimdi *MySetup.bat* dosyasını düzenleyin ve aşağıdaki komutları ekleyerek bir sistem ortam değişkeni ayarlayın ve bir metin dosyası çıkışı yapın:
 
 ```
 REM Set a system environment variable. This requires administrator privilege
@@ -154,23 +153,23 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-Ardından, çözümü derleyin ve yerel bir geliştirme kümesine dağıtın. Hizmet başladıktan sonra, [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)gösterildiği gibi, MySetup. bat dosyasının başarılı olduğunu iki şekilde görebilirsiniz. Bir PowerShell komut istemi açın ve şunu yazın:
+Ardından, çözümü derleyin ve yerel bir geliştirme kümesine dağıtın. Hizmet başladıktan sonra, [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)gösterildiği gibi, MySetup.bat dosyasının başarılı olduğunu iki şekilde görebilirsiniz. Bir PowerShell komut istemi açın ve şunu yazın:
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-Ardından, hizmetin dağıtıldığına ve [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)başlatıldığı düğümün adına göz önünde. Örneğin, düğüm 2. Ardından, **testvariable**değerini gösteren out. txt dosyasını bulmak için uygulama örneği çalışma klasörüne gidin. Örneğin, bu hizmet düğüm 2 ' ye dağıtılmışsa, **MyApplicationType**için bu yola gidebilirsiniz:
+Ardından, hizmetin dağıtıldığına ve [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)başlatıldığı düğümün adına göz önünde. Örneğin, düğüm 2. Ardından, **testvariable**değerini gösteren out.txt dosyasını bulmak için uygulama örneği çalışma klasörüne gidin. Örneğin, bu hizmet düğüm 2 ' ye dağıtılmışsa, **MyApplicationType**için bu yola gidebilirsiniz:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>Bir kurulum giriş noktasından PowerShell komutlarını çalıştırma
-PowerShell 'i **Setupentrypoint** noktasından çalıştırmak için PowerShell **. exe** ' yi bir PowerShell dosyasına işaret eden bir toplu iş dosyasında çalıştırabilirsiniz. İlk olarak, hizmet projesine bir PowerShell dosyası ekleyin--örneğin, **MySetup. ps1**. Dosyanın hizmet paketine da dahil olması için *daha yeni bir özellik varsa kopyayı* ayarlamayı unutmayın. Aşağıdaki örnek, **testvariable**adlı bir sistem ortam değişkenini ayarlayan MySetup. ps1 adlı bir PowerShell dosyasını Başlatan bir örnek toplu iş dosyası gösterir.
+PowerShell 'i **Setupentrypoint** noktasından çalıştırmak için, bir PowerShell dosyasına işaret eden bir toplu iş dosyasında **PowerShell.exe** çalıştırabilirsiniz. İlk olarak, hizmet projesine bir PowerShell dosyası ekleyin; örneğin, **MySetup.ps1**. Dosyanın hizmet paketine da dahil olması için *daha yeni bir özellik varsa kopyayı* ayarlamayı unutmayın. Aşağıdaki örnek, **testvariable**adlı bir sistem ortam değişkenini ayarlayan MySetup.ps1 adlı bir PowerShell dosyasını Başlatan bir örnek toplu iş dosyası gösterir.
 
-PowerShell dosyasını başlatmak için MySetup. bat:
+Bir PowerShell dosyası başlatmak için MySetup.bat:
 
 ```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
@@ -184,7 +183,7 @@ PowerShell dosyasında, bir sistem ortam değişkeni ayarlamak için aşağıdak
 ```
 
 > [!NOTE]
-> Varsayılan olarak, toplu iş dosyası çalıştırıldığında dosyalar için **iş** adlı uygulama klasörüne bakar. Bu durumda, MySetup. bat dosyası çalıştırıldığında, bunun, uygulama **kodu paketi** klasörü olan aynı klasörde MySetup. ps1 dosyasını bulmasını istiyoruz. Bu klasörü değiştirmek için çalışma klasörünü ayarlayın:
+> Varsayılan olarak, toplu iş dosyası çalıştırıldığında dosyalar için **iş** adlı uygulama klasörüne bakar. Bu durumda MySetup.bat çalıştığında, bu dosyanın, uygulama **kodu paketi** klasörü olan aynı klasörde MySetup.ps1 dosyasını bulmasını istiyoruz. Bu klasörü değiştirmek için çalışma klasörünü ayarlayın:
 > 
 > 
 
@@ -217,7 +216,7 @@ Aşağıdaki hizmet bildirimi örneği, bir FileRetentionCount değeri ile konso
 </SetupEntryPoint>
 ```
 
-Şimdi bir **echo** komutu yazmak Için MySetup. ps1 dosyasını değiştirirseniz, bu işlem hata ayıklama amacıyla çıktı dosyasına yazılır:
+Şimdi bir **echo** komutu yazmak için MySetup.ps1 dosyasını değiştirirseniz, bu işlem hata ayıklama amacıyla çıktı dosyasına yazılır:
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"

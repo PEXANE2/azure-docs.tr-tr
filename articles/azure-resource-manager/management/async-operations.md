@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75485448"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Zaman uyumsuz Azure işlemlerini izleme
@@ -36,7 +35,7 @@ Zaman uyumsuz REST işlemleri, işlemin durumunu belirlemede kullandığınız �
 
 Ancak, her zaman uyumsuz işlem bu değerlerin tümünü döndürmez. Örneğin, bir işlem için Azure-AsyncOperation üst bilgi değerini ve başka bir işlemin konum üst bilgi değerini değerlendirmeniz gerekebilir. 
 
-Bir istek için herhangi bir üst bilgi değerini alarak üst bilgi değerlerini alırsınız. Örneğin, C# ' de, başlık değerini aşağıdaki kodla adlı `HttpWebResponse` `response` bir nesneden alırsınız:
+Bir istek için herhangi bir üst bilgi değerini alarak üst bilgi değerlerini alırsınız. Örneğin, C# ' de, başlık değerini `HttpWebResponse` aşağıdaki kodla adlı bir nesneden alırsınız `response` :
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)

@@ -7,10 +7,9 @@ ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75459142"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric kafes uygulamalarında ağa giriş
@@ -30,7 +29,7 @@ Ağ Geçidi, iki ağı köprülemek için kullanılır. Ağ Geçidi kaynağı, g
 
 ![Ağ ve ağ geçidi][Image1]
 
-Ağ kaynağı ile `ingressConfig`oluşturulduğunda, ağ kaynağına genel bir IP atanır. Genel IP, ağ kaynağının kullanım ömrüne bağlı olacaktır.
+Ağ kaynağı ile oluşturulduğunda `ingressConfig` , ağ kaynağına genel BIR IP atanır. Genel IP, ağ kaynağının kullanım ömrüne bağlı olacaktır.
 
 Bir kafes uygulaması oluşturulduğunda, var olan bir ağ kaynağına başvurmalıdır. Yeni genel bağlantı noktaları eklenebilir veya mevcut bağlantı noktaları giriş yapılandırmasından kaldırılabilir. Bir uygulama kaynağına başvuruyorsa bir ağ kaynağına yönelik silme işlemi başarısız olur. Uygulama silindiğinde, ağ kaynağı kaldırılır.
 

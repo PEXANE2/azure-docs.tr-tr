@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465555"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric test edilebilir senaryolar: hizmet iletişimi
@@ -79,7 +78,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-Bu örnekte, tüm çoğaltmaları kapatmadan `QuorumLossMode` önce `QuorumReplicas` çekirdek kaybına ulaşılmasını istediğinizi belirtmek için olarak ayarlandık. Bu şekilde, okuma işlemleri yine de mümkündür. Bölümün tamamının kullanılamadığı bir senaryoyu test etmek için, bu anahtarı olarak `AllReplicas`ayarlayabilirsiniz.
+Bu örnekte, `QuorumLossMode` `QuorumReplicas` tüm çoğaltmaları kapatmadan önce çekirdek kaybına ulaşılmasını istediğinizi belirtmek için olarak ayarlandık. Bu şekilde, okuma işlemleri yine de mümkündür. Bölümün tamamının kullanılamadığı bir senaryoyu test etmek için, bu anahtarı olarak ayarlayabilirsiniz `AllReplicas` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Test edilebilirlik eylemleri hakkında daha fazla bilgi edinin](service-fabric-testability-actions.md)

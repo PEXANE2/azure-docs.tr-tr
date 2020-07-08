@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75477674"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure Kaynak ilkesi ile RequestDisallowedByPolicy hatası
@@ -37,7 +36,7 @@ Dağıtımınızı engelleyen ilkeyle ilgili ayrıntıları almak için aşağı
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell 'de, dağıtımınızı engelleyen ilkeyle ilgili ayrıntıları almak `Id` için bu ilke tanımlayıcısını parametre olarak belirtin.
+PowerShell 'de, `Id` dağıtımınızı engelleyen ilkeyle ilgili ayrıntıları almak için bu ilke tanımlayıcısını parametre olarak belirtin.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -56,7 +55,7 @@ az policy definition show --name regionPolicyAssignment
 Güvenlik veya uyumluluk için abonelik yöneticileri, kaynakların nasıl dağıtıldığını sınırlayan ilkeler atayabilir. Örneğin, aboneliğiniz genel IP adresleri, ağ güvenlik grupları, Kullanıcı tanımlı yollar veya yol tabloları oluşturmayı önleyen bir ilkeye sahip olabilir. **Belirtiler** bölümündeki hata mesajı ilkenin adını gösterir.
 Bu sorunu çözmek için, kaynak ilkelerini gözden geçirin ve bu ilkelerle uyumlu kaynakların nasıl dağıtılacağını saptayın.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure İlkesi nedir?](../../governance/policy/overview.md)
 - [Uyumluluğu zorunlu tutmak için ilkeleri oluşturma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)

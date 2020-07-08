@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/31/2019
 ms.author: vaaga
 ms.openlocfilehash: e049a2b914cbf9c4f0ca0f3a1dd0281d58f881b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75486826"
 ---
 # <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>Ayrılmış diskler nedeniyle sanal makine dağıtımı sorunlarını giderme
@@ -83,7 +82,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>2. Adım: başarısız disklerin bayrağını "true" olarak ayarlayın.
 
-Adım 1 ' de döndürülen yükte hatalı disk için **Tobeayrılan** bayrağını doğru olarak ayarlayın. Lütfen unutmayın: get ve put çağrıları için belirtilen API sürümünün olması veya daha büyük `2019-03-01` olması gerekir.
+Adım 1 ' de döndürülen yükte hatalı disk için **Tobeayrılan** bayrağını doğru olarak ayarlayın. Lütfen unutmayın: get ve put çağrıları için belirtilen API sürümünün olması `2019-03-01` veya daha büyük olması gerekir.
 
 **Örnek Istek gövdesi**
 

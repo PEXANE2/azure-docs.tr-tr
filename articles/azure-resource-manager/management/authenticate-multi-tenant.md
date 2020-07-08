@@ -4,10 +4,9 @@ description: Azure Resource Manager kiracılar genelinde kimlik doğrulama istek
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478831"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Kiracılar genelinde isteklerin kimliğini doğrulama
@@ -20,8 +19,8 @@ ms.locfileid: "75478831"
 
 | Üst bilgi adı | Açıklama | Örnek değer |
 | ----------- | ----------- | ------------ |
-| Yetkilendirme | Birincil belirteç | Taşıyıcı &lt;birincil belirteç&gt; |
-| x-MS-yetkilendirme-yardımcı | Yardımcı belirteçler | Taşıyıcı &lt;yardımcı-token1&gt;, encryptedtaşıyıcı &lt;yardımcı-token2&gt;, taşıyıcı &lt;yardımcı-token3&gt; |
+| Yetkilendirme | Birincil belirteç | Taşıyıcı &lt; birincil belirteç&gt; |
+| x-MS-yetkilendirme-yardımcı | Yardımcı belirteçler | Taşıyıcı &lt; yardımcı-token1 &gt; , encryptedtaşıyıcı &lt; yardımcı-token2 &gt; , taşıyıcı &lt; yardımcı-token3&gt; |
 
 Yardımcı üst bilgi en fazla üç yardımcı belirteç tutabilir. 
 

@@ -4,10 +4,9 @@ description: Bir ölçek kümesi örneğine (Service Fabric küme düğümü) uz
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458324"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Sanal makine ölçek kümesi örneğine veya bir küme düğümüne uzaktan Bağlan
@@ -19,7 +18,7 @@ Belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi 
 
     Genellikle, kümenizde tanımlanan her düğüm türünün kendi sanal IP adresi ve ayrılmış yük dengeleyici vardır. Varsayılan olarak, bir düğüm türü için yük dengeleyici şu biçimde adlandırılır: *lb-{Cluster-Name}-{Node-Type}*; Örneğin, *lb-MyCluster-ön uç*. 
     
-    Yük dengeleyicinizin Azure Portal sayfasında, **Ayarlar** > **gelen NAT kuralları**' nı seçin: 
+    Yük dengeleyicinizin Azure Portal sayfasında, **Ayarlar**  >  **gelen NAT kuralları**' nı seçin: 
 
     ![Yük dengeleyici gelen NAT kuralları](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -29,7 +28,7 @@ Belirli bir örneğe uzaktan bağlanmak için kullanabileceğiniz bir IP adresi 
 
     Her düğüm için, IP adresi **hedef** sütununda görünür, **hedef** sütunu ölçek kümesi örneğine verir ve **hizmet** sütunu bağlantı noktası numarasını sağlar. Uzak bağlantı için bağlantı noktaları, bağlantı noktası 3389 ' den başlayarak her bir düğüme artan düzende ayrılır.
 
-    Ayrıca, gelen NAT kurallarını kümeniz için Kaynak Yöneticisi şablonunun `Microsoft.Network/loadBalancers` bölümünde bulabilirsiniz.
+    Ayrıca, gelen NAT kurallarını `Microsoft.Network/loadBalancers` kümeniz için Kaynak Yöneticisi şablonunun bölümünde bulabilirsiniz.
     
 2. Bir düğüm için bağlantı noktası eşlemeyi hedeflemek üzere gelen bağlantı noktasını onaylamak için, kuralına tıklayıp **hedef bağlantı noktası** değerine bakabilirsiniz. Aşağıdaki ekran görüntüsünde, önceki adımda **ön uç (örnek 1)** düğümü IÇIN gelen NAT kuralı gösterilmektedir. (Gelen) bağlantı noktası numarası 3390 olmasına karşın hedef bağlantı noktasının hedefteki RDP hizmetinin bağlantı noktası 3389 ' e eşlendiğine dikkat edin.  
 

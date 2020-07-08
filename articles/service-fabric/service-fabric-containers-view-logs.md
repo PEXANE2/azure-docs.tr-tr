@@ -4,21 +4,20 @@ description: Service Fabric Explorer kullanılarak çalışan bir Service Fabric
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458192"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric kapsayıcı hizmeti için günlükleri görüntüleme
 Azure Service Fabric bir kapsayıcı Orchestrator ve hem [Linux hem de Windows kapsayıcılarını](service-fabric-containers-overview.md)destekler.  Bu makalede, sorunları tanılamanıza ve giderebilmeniz için çalışan bir kapsayıcı hizmetinin veya ölü kapsayıcının kapsayıcı günlüklerinin nasıl görüntüleneceği açıklanır.
 
 ## <a name="access-the-logs-of-a-running-container"></a>Çalışan bir kapsayıcının günlüklerine erişin
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanılarak kapsayıcı günlüklerine erişilebilir.  Bir Web tarayıcısında, ' a giderek kümenin yönetim uç noktasından Service Fabric Explorer açın `http://mycluster.region.cloudapp.azure.com:19080/Explorer`.  
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanılarak kapsayıcı günlüklerine erişilebilir.  Bir Web tarayıcısında, ' a giderek kümenin yönetim uç noktasından Service Fabric Explorer açın `http://mycluster.region.cloudapp.azure.com:19080/Explorer` .  
 
-Kapsayıcı günlükleri, kapsayıcı hizmeti örneğinin üzerinde çalıştığı küme düğümünde bulunur. Örnek olarak, [Linux oylama örnek uygulamasının](service-fabric-quickstart-containers-linux.md)Web ön uç kapsayıcısının günlüklerini alın. Ağaç görünümünde, **küme**>**uygulamaları**>**votingtype**>**Fabric:/oylama/azuiptal tefront**' ı genişletin.  Sonra bölümü genişletin (Bu örnekte d1aa737e-f22a-e347-be16-eec90be24bc1) ve kapsayıcının *_lnxvm_0*küme düğümünde çalıştığını görün.
+Kapsayıcı günlükleri, kapsayıcı hizmeti örneğinin üzerinde çalıştığı küme düğümünde bulunur. Örnek olarak, [Linux oylama örnek uygulamasının](service-fabric-quickstart-containers-linux.md)Web ön uç kapsayıcısının günlüklerini alın. Ağaç görünümünde, **küme** > **uygulamaları** > **votingtype** > **Fabric:/oylama/azuiptal tefront**' ı genişletin.  Sonra bölümü genişletin (Bu örnekte d1aa737e-f22a-e347-be16-eec90be24bc1) ve kapsayıcının *_lnxvm_0*küme düğümünde çalıştığını görün.
 
-Ağaç görünümünde **düğümleri**>genişleterek *_lnxvm_0* düğümündeki kod paketini bulun **_lnxvm_0**>**Fabric:/oylama**>**azuiptal tfrontptpkg**>**kod paketleri**>**kodu**.  Ardından kapsayıcı günlüklerini göstermek için **kapsayıcı günlükleri** seçeneğini belirleyin.
+Ağaç görünümünde **düğümleri**genişleterek *_lnxvm_0* düğümündeki kod paketini bulun > **_lnxvm_0** > **Fabric:/oylama** > **azuiptal tfrontptpkg** > **kod paketleri** > **kodu**.  Ardından kapsayıcı günlüklerini göstermek için **kapsayıcı günlükleri** seçeneğini belirleyin.
 
 ![Service Fabric platformu][Image1]
 
@@ -55,7 +54,7 @@ GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-Çökmeyle ilgili bir kapsayıcı için günlükleri getirmek üzere [sfctl hizmeti Get-Container-logs](service-fabric-sfctl-service.md) komutunu kullanın.  Kapsayıcının üzerinde çalıştığı düğümün adını, uygulama adını, hizmet bildirimi adını ve kod paketi adını belirtin. `--previous` Bayrağı belirtin.  Yanıt, kod paketi örneğinin ölü kapsayıcısının kapsayıcı günlüklerini içerecektir.
+Çökmeyle ilgili bir kapsayıcı için günlükleri getirmek üzere [sfctl hizmeti Get-Container-logs](service-fabric-sfctl-service.md) komutunu kullanın.  Kapsayıcının üzerinde çalıştığı düğümün adını, uygulama adını, hizmet bildirimi adını ve kod paketi adını belirtin. Bayrağı belirtin `--previous` .  Yanıt, kod paketi örneğinin ölü kapsayıcısının kapsayıcı günlüklerini içerecektir.
 
 ```
 sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –-previous

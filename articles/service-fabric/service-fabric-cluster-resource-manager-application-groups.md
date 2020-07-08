@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452143"
 ---
 # <a name="introduction-to-application-groups"></a>Uygulama gruplarına giriş
@@ -184,7 +183,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 
 ```
 
-Bu komut uygulama örneğinden tüm uygulama kapasite yönetimi parametrelerini kaldırır. Bu, MinimumNodes, Maximumnode ve varsa uygulamanın ölçümlerini içerir. Komutun etkisi anında gerçekleşir. Bu komut tamamlandıktan sonra Küme Kaynak Yöneticisi, uygulamaları yönetmek için varsayılan davranışı kullanır. Uygulama kapasitesi parametreleri aracılığıyla `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`yeniden belirtilebilir.
+Bu komut uygulama örneğinden tüm uygulama kapasite yönetimi parametrelerini kaldırır. Bu, MinimumNodes, Maximumnode ve varsa uygulamanın ölçümlerini içerir. Komutun etkisi anında gerçekleşir. Bu komut tamamlandıktan sonra Küme Kaynak Yöneticisi, uygulamaları yönetmek için varsayılan davranışı kullanır. Uygulama kapasitesi parametreleri aracılığıyla yeniden belirtilebilir `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()` .
 
 ### <a name="restrictions-on-application-capacity"></a>Uygulama kapasitesinde kısıtlamalar
 Uygulama kapasitesi parametrelerinde kullanılması gereken çeşitli kısıtlamalar vardır. Doğrulama hataları varsa, hiçbir değişiklik gerçekleşmiyor.

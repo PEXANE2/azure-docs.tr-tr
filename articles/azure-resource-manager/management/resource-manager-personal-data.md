@@ -4,10 +4,9 @@ description: Azure Resource Manager işlemleriyle ilişkili kişisel verileri y�
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75485266"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Manager ilişkili kişisel verileri yönetme
@@ -40,7 +39,7 @@ Kaynak grubunun adı, kaynak grubunu silene kadar devam ettirir. Adlarında kiş
 
 **Kaynak gruplarını**listelemek için şunu kullanın:
 
-* [Listele](/rest/api/resources/resourcegroups/list)
+* [Liste](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [az Group List](/cli/azure/group#az-group-list)
 
@@ -56,7 +55,7 @@ Etiket adları ve değerleri, etiketi silene veya değiştirene kadar kalır. Et
 
 **Etiketleri**listelemek için şunu kullanın:
 
-* [Listele](/rest/api/resources/tags/list)
+* [Liste](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [az Tag List](/cli/azure/tag#az-tag-list)
 

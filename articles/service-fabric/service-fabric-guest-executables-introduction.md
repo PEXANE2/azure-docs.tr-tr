@@ -4,14 +4,13 @@ description: Mevcut bir uygulamayı Konuk yürütülebilir dosyası olarak paket
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457824"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Service Fabric için mevcut bir yürütülebiliri dağıtın
-Azure Service Fabric bir hizmet olarak Node. js, Java veya C++ gibi herhangi bir tür kodu çalıştırabilirsiniz. Service Fabric Konuk yürütülebilir dosyaları olan bu hizmet türlerine başvurur.
+Azure Service Fabric hizmet olarak Node.js, Java veya C++ gibi herhangi bir tür kodu çalıştırabilirsiniz. Service Fabric Konuk yürütülebilir dosyaları olan bu hizmet türlerine başvurur.
 
 Konuk yürütülebilir dosyaları, durum bilgisi olmayan hizmetler gibi Service Fabric tarafından işlenir. Sonuç olarak, kullanılabilirlik ve diğer ölçümlere göre bir kümedeki düğümlere yerleştirilir. Bu makalede, Visual Studio veya komut satırı yardımcı programını kullanarak bir Service Fabric kümesine Konuk yürütülebilir dosyası paketleme ve dağıtma açıklanır.
 
@@ -29,7 +28,7 @@ Service Fabric kümesinde Konuk yürütülebilir dosyası çalıştırmanın çe
 * [REST kullanarak adlandırma hizmeti üzerinden iletişim kuran iki konuk yürütülebilir dosya (C# ve NodeJS) örneği](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="overview-of-application-and-service-manifest-files"></a>Uygulama ve hizmet bildirim dosyalarına genel bakış
-Konuk yürütülebiliri dağıtmanın bir parçası olarak, Service Fabric paketleme ve dağıtım modelinin [uygulama modeli](service-fabric-application-model.md)bölümünde açıklandığı gibi anlaşılması yararlı olur. Service Fabric paketleme modeli iki XML dosyasına dayanır: uygulama ve hizmet bildirimleri. ApplicationManifest. xml ve ServiceManifest. xml dosyaları için şema tanımı, Service Fabric SDK 'Sı ile *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*içine yüklenir.
+Konuk yürütülebiliri dağıtmanın bir parçası olarak, Service Fabric paketleme ve dağıtım modelinin [uygulama modeli](service-fabric-application-model.md)bölümünde açıklandığı gibi anlaşılması yararlı olur. Service Fabric paketleme modeli iki XML dosyasına dayanır: uygulama ve hizmet bildirimleri. ApplicationManifest.xml ve ServiceManifest.xml dosyaları için şema tanımı, Service Fabric SDK 'Sı ile *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*'e yüklenir.
 
 * **Uygulama bildirimi** Uygulama bildirimi, uygulamayı tanımlamakta kullanılır. Bu, oluşturan Hizmetleri ve örnek sayısı gibi bir veya daha fazla hizmetin nasıl dağıtılması gerektiğini tanımlamak için kullanılan diğer parametreleri listeler.
 
@@ -51,14 +50,14 @@ Bir uygulamayı Service Fabric dağıtmak için uygulama önceden tanımlanmış
     |-- ApplicationManifest.xml
 ```
 
-ApplicationPackageRoot, uygulamayı tanımlayan ApplicationManifest. xml dosyasını içerir. Uygulamanın içerdiği her hizmet için bir alt dizin, hizmetin gerektirdiği tüm yapıtları içermesi için kullanılır. Bu alt dizinler ServiceManifest. xml ' dir ve genellikle aşağıdaki gibi:
+ApplicationPackageRoot, uygulamayı tanımlayan ApplicationManifest.xml dosyasını içerir. Uygulamanın içerdiği her hizmet için bir alt dizin, hizmetin gerektirdiği tüm yapıtları içermesi için kullanılır. Bu alt dizinler ServiceManifest.xml ve genellikle aşağıdakiler şunlardır:
 
 * *Kod*. Bu dizin, hizmet kodunu içerir.
-* *Yapılandırma*. Bu dizin, belirli yapılandırma ayarlarını almak için hizmetin çalışma zamanında erişebileceği bir Settings. xml dosyası (ve gerekirse diğer dosyalar) içerir.
+* *Yapılandırma*. Bu dizin, belirli yapılandırma ayarlarını almak için hizmetin çalışma zamanında erişebileceği bir Settings.xml dosyası (ve gerekirse diğer dosyaları) içerir.
 * *Veri*. Bu, hizmetin ihtiyacı olabilecek ek yerel verileri depolamak için ek bir dizindir. Verilerin yalnızca kısa ömürlü verileri depolamak için kullanılması gerekir. Service Fabric, hizmetin yeniden konumlandırılması gerekiyorsa (örneğin, yük devretme sırasında) veri dizinine değişiklikleri kopyalamaz veya çoğaltmaz.
 
 > [!NOTE]
-> İhtiyacınız yoksa `config` ve `data` dizinleri oluşturmanız gerekmez.
+> İhtiyacınız yoksa ve dizinleri oluşturmanız gerekmez `config` `data` .
 >
 >
 

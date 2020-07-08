@@ -4,10 +4,9 @@ description: Kullanıcı eylemlerini ve hataları gözden geçirmek için etkinl
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478142"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme
@@ -20,7 +19,7 @@ Etkinlik günlükleri ile aşağıdakileri belirleyebilirsiniz:
 * işlemin durumu
 * işlemi araştırmanıza yardımcı olabilecek diğer özelliklerin değerleri
 
-Etkinlik günlüğü, kaynaklarınız için tüm yazma işlemlerini (PUT, POST, SIL) içerir. Okuma işlemlerini (GET) içermez. Kaynak eylemlerinin bir listesi için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Sorun giderme sırasında bir hata bulmak veya kuruluşunuzdaki kullanıcının bir kaynağı nasıl değiştirdiğini izlemek için etkinlik günlüklerini kullanabilirsiniz.
+Etkinlik günlüğü, kaynaklarınız için tüm yazma işlemlerini (PUT, POST, DELETE) içerir. Okuma işlemlerini (GET) içermez. Kaynak eylemlerinin bir listesi için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Sorun giderme sırasında bir hata bulmak veya kuruluşunuzdaki kullanıcının bir kaynağı nasıl değiştirdiğini izlemek için etkinlik günlüklerini kullanabilirsiniz.
 
 Etkinlik günlükleri 90 gün boyunca tutulur. Başlangıç tarihi 90 günden eski olmamak şartıyla istediğiniz tarih aralığını sorgulayabilirsiniz.
 
@@ -186,7 +185,7 @@ Kaynak grafiğini, bir kaynağın değişiklik geçmişini görmek için kullana
 
 ## <a name="rest-api"></a>REST API
 
-Etkinlik günlüğü ile çalışmaya yönelik REST işlemleri [öngörülerin](/rest/api/monitor/)bir parçasıdır REST API. Etkinlik günlüğü olaylarını almak için bkz. [bir abonelikteki yönetim olaylarını listeleme](/rest/api/monitor/activitylogs).
+Etkinlik günlüğüyle çalışmak için kullanılması gereken REST işlemleri, [Insights REST API'sinin](/rest/api/monitor/) bir parçasıdır. Etkinlik günlüğü olaylarını almak için bkz. [Abonelikteki yönetim olaylarını listeleme](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

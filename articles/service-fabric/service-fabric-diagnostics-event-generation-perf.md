@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464709"
 ---
 # <a name="performance-metrics"></a>Performans ölçümleri
@@ -42,7 +41,7 @@ Kümenizdeki makineler için, her makinede yükü daha iyi anlamak ve uygun küm
 | İşlem (hizmet başına) | Çalışma Kümesi |
 | İşlem (hizmet başına) | Çalışma kümesi-özel |
 | Ağ arabirimi (tüm örnekler) | Bayt recd |
-| Ağ arabirimi (tüm örnekler) | Gönderilen Bayt |
+| Ağ arabirimi (tüm örnekler) | Gönderilen bayt |
 | Ağ arabirimi (tüm örnekler) | Toplam bayt |
 | Ağ arabirimi (tüm örnekler) | Çıkış sırası uzunluğu |
 | Ağ arabirimi (tüm örnekler) | Atılan giden paketler |
@@ -71,11 +70,11 @@ Kümenize .NET Hizmetleri dağıtıyorsanız, aşağıdaki sayaçları toplayın
 
 Service Fabric, önemli miktarda özel performans sayacı üretir. SDK yüklü ise, performans Izleyicisi uygulamanızda Windows makinenizde kapsamlı listeyi görebilirsiniz (> performans Izleyicisini başlatın). 
 
-Kümenize dağıttığınız uygulamalarda, Reliable Actors kullanıyorsanız, `Service Fabric Actor` ve `Service Fabric Actor Method` kategorisinden sayaçlar ekleyin (bkz. [Service Fabric Reliable Actors tanılama](service-fabric-reliable-actors-diagnostics.md)).
+Kümenize dağıttığınız uygulamalarda, Reliable Actors kullanıyorsanız, `Service Fabric Actor` ve kategorisinden sayaçlar ekleyin `Service Fabric Actor Method` (bkz. [Service Fabric Reliable Actors tanılama](service-fabric-reliable-actors-diagnostics.md)).
 
-Reliable Services veya hizmet uzaktan Iletişim kullanıyorsanız, sayaçlarını toplamanız gereken `Service Fabric Service` ve `Service Fabric Service Method` sayaç kategorilerimiz, bkz. [hizmet uzaktan iletişim](service-fabric-reliable-serviceremoting-diagnostics.md) ve [güvenilir hizmetler performans sayaçları](service-fabric-reliable-services-diagnostics.md#performance-counters)ile izleme. 
+Reliable Services veya hizmet uzaktan Iletişim kullanıyorsanız, `Service Fabric Service` `Service Fabric Service Method` sayaçlarını toplamanız gereken ve sayaç kategorilerimiz, bkz. [hizmet uzaktan iletişim](service-fabric-reliable-serviceremoting-diagnostics.md) ve [güvenilir hizmetler performans sayaçları](service-fabric-reliable-services-diagnostics.md#performance-counters)ile izleme. 
 
-Güvenilir koleksiyonlar kullanıyorsanız, işlem ölçümü başına ortalama işleme gecikme `Avg. Transaction ms/Commit` süresini toplamak `Service Fabric Transactional Replicator` için kaynağından ' dan eklenmesini öneririz.
+Güvenilir koleksiyonlar kullanıyorsanız, `Avg. Transaction ms/Commit` `Service Fabric Transactional Replicator` işlem ölçümü başına ortalama işleme gecikme süresini toplamak için kaynağından ' dan eklenmesini öneririz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

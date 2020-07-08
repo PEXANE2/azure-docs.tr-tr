@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
 ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75466176"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows'da Service Fabric Reliable Services ve Reliable Actors kapsayıcıları
@@ -47,7 +46,7 @@ Bu belge, hizmetinizi bir Windows kapsayıcısı içinde çalıştırmaya yönel
 
 4. Projenizi derleyin ve [paketleyin](service-fabric-package-apps.md#Package-App) . Bir paket oluşturup oluşturmak için Çözüm Gezgini ' de uygulama projesine sağ tıklayın ve **paket** komutunu seçin.
 
-5. Kapsayıcılı yapmanız gereken her kod paketi için [Createdockerpackage. ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)PowerShell betiğini çalıştırın. Kullanım aşağıdaki gibidir:
+5. Kapsayıcılı yapmanız gereken her kod paketi için [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)PowerShell betiğini çalıştırın. Kullanım aşağıdaki gibidir:
 
     Tam .NET
       ```powershell
@@ -63,11 +62,11 @@ Bu belge, hizmetinizi bir Windows kapsayıcısı içinde çalıştırmaya yönel
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Betik, $dockerPackageOutputDirectoryPath 'da Docker yapıtlarına sahip bir klasör oluşturur. Oluşturulan Dockerfile 'ı herhangi bir `expose` bağlantı noktası olarak değiştirin, kurulum betiklerini çalıştırın ve bu şekilde devam edin. gereksinimlerinize göre.
+      Betik, $dockerPackageOutputDirectoryPath 'da Docker yapıtlarına sahip bir klasör oluşturur. Oluşturulan Dockerfile `expose` 'ı herhangi bir bağlantı noktası olarak değiştirin, kurulum betiklerini çalıştırın ve bu şekilde devam edin. gereksinimlerinize göre.
 
 6. Sonraki adımda, Docker kapsayıcı paketinizi [derleyip](service-fabric-get-started-containers.md#Build-Containers) [deponuza göndermeniz](service-fabric-get-started-containers.md#Push-Containers) gerekir.
 
-7. Container Image, depo bilgileriniz, kayıt defteri kimlik doğrulaması ve bağlantı noktası arasında eşleme eklemek için ApplicationManifest. xml ve ServiceManifest. xml dosyasını değiştirin. Bildirimleri değiştirmek için bkz. [Azure Service Fabric kapsayıcı uygulaması oluşturma](service-fabric-get-started-containers.md). Hizmet bildirimindeki kod paketi tanımının karşılık gelen kapsayıcı görüntüsüyle değiştirilmeleri gerekir. Giriş noktasını ContainerHost türüne değiştirdiğinizden emin olun.
+7. Kapsayıcı görüntünüzü, depo bilgilerinizi, kayıt defteri kimlik doğrulamasını ve bağlantı noktasından konağa eşlemeyi eklemek için ApplicationManifest.xml ve ServiceManifest.xml değiştirin. Bildirimleri değiştirmek için bkz. [Azure Service Fabric kapsayıcı uygulaması oluşturma](service-fabric-get-started-containers.md). Hizmet bildirimindeki kod paketi tanımının karşılık gelen kapsayıcı görüntüsüyle değiştirilmeleri gerekir. Giriş noktasını ContainerHost türüne değiştirdiğinizden emin olun.
 
    ```xml
    <!-- Code package is your service executable. -->

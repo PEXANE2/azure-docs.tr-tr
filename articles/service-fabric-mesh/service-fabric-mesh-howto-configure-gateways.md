@@ -7,10 +7,9 @@ ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461959"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>İstekleri yönlendirmek için bir ağ geçidi kaynağı yapılandırma
@@ -21,7 +20,7 @@ Ağ Geçidi kaynaklarının, dağıtım şablonunuzun (JSON veya YAML) bir parç
 
 ## <a name="options-for-configuring-your-gateway-resource"></a>Ağ Geçidi kaynağınızı yapılandırma seçenekleri
 
-Ağ Geçidi kaynağı, uygulamanızın ağı ile temeldeki altyapının ağı ( `open` ağ) arasında bir köprü görevi görür. Yalnızca bir tane yapılandırmanız gerekir (ağ önizlemesinde, uygulama başına bir ağ geçidi sınırı vardır). Kaynak bildirimi iki ana bölümden oluşur: kaynak meta verileri ve özellikleri. 
+Ağ Geçidi kaynağı, uygulamanızın ağı ile temeldeki altyapının ağı (ağ) arasında bir köprü görevi görür `open` . Yalnızca bir tane yapılandırmanız gerekir (ağ önizlemesinde, uygulama başına bir ağ geçidi sınırı vardır). Kaynak bildirimi iki ana bölümden oluşur: kaynak meta verileri ve özellikleri. 
 
 ### <a name="gateway-resource-metadata"></a>Ağ Geçidi kaynak meta verileri
 
@@ -55,7 +54,7 @@ Azure Resource Manager (JSON) dağıtım şablonunda şöyle görünür:
 
 #### <a name="source-and-destination-network"></a>Kaynak ve hedef ağ 
 
-Her ağ geçidi `sourceNetwork` , ve `destinationNetwork`gerektirir. Kaynak ağ, uygulamanızın gelen istekleri alacağı ağ olarak tanımlanır. Name özelliği her zaman "Open" olarak ayarlanmalıdır. Hedef ağ, isteklerin hedeflediği bir ağ. Bunun için ad değeri, uygulamanızın yerel ağının kaynak adı olarak ayarlanmalıdır (kaynağa tam başvuru dahil edilmelidir). "MyNetwork" adlı bir ağda bir dağıtım için bunun nasıl görüneceğine ilişkin örnek bir yapılandırma için aşağıya bakın.
+Her ağ geçidi `sourceNetwork` , ve gerektirir `destinationNetwork` . Kaynak ağ, uygulamanızın gelen istekleri alacağı ağ olarak tanımlanır. Name özelliği her zaman "Open" olarak ayarlanmalıdır. Hedef ağ, isteklerin hedeflediği bir ağ. Bunun için ad değeri, uygulamanızın yerel ağının kaynak adı olarak ayarlanmalıdır (kaynağa tam başvuru dahil edilmelidir). "MyNetwork" adlı bir ağda bir dağıtım için bunun nasıl görüneceğine ilişkin örnek bir yapılandırma için aşağıya bakın.
 
 ```json 
 "properties": {
@@ -81,7 +80,7 @@ Yönlendirme kuralları her bağlantı noktası temelinde belirtilir. Her giriş
 TCP yönlendirme kuralı aşağıdaki özelliklerden oluşur: 
 * `name`-seçtiğiniz herhangi bir dize olabilecek kurala başvuru 
 * `port`-gelen istekler için dinlemek için bağlantı noktası 
-* `destination`-isteklerin yönlendirilmek zorunda `applicationName`olduğu `serviceName`yerde, `endpointName`, ve içeren uç nokta belirtimi
+* `destination`- `applicationName` `serviceName` `endpointName` isteklerin yönlendirilmek zorunda olduğu yerde,, ve içeren uç nokta belirtimi
 
 Örnek bir TCP yönlendirme kuralı aşağıda verilmiştir:
 
@@ -115,9 +114,9 @@ Bir HTTP yönlendirme kuralı aşağıdaki özelliklerden oluşur:
             * `path`-bir `value` (gelen URI), `rewrite` (isteğin iletilmesini istediğiniz) ve a `type` (Şu anda yalnızca "önek" olabilir) içerir
             * `header`-isteğin, yol belirtimiyle (yukarıda) eşleşiyorsa, isteğin üst bilgisinde eşleşmesi için isteğe bağlı bir üst bilgi dizisi değeri.
               * her giriş `name` (eşleştirilecek üstbilginin dize adı), `value` (istekteki üstbilginin dize değeri) ve a `type` (Şu anda yalnızca "tam" olabilir)
-        * `destination`-istek eşleşiyorsa,, ve kullanılarak `applicationName` `serviceName`belirtilen bu hedefe yönlendirilir.`endpointName`
+        * `destination`-istek eşleşiyorsa,, ve kullanılarak belirtilen bu hedefe yönlendirilir. `applicationName` `serviceName``endpointName`
 
-Bu ağdaki uygulamalar tarafından sunulan tüm konaklara 80 numaralı bağlantı noktası üzerinden gelen istekler için uygulanacak örnek bir HTTP yönlendirme kuralı aşağıda verilmiştir. İstek URL 'SI yol belirtimiyle eşleşen bir yapıya sahipse, yani `<IPAddress>:80/pickme/<requestContent>`, `myListener` uç noktaya yönlendirilir.  
+Bu ağdaki uygulamalar tarafından sunulan tüm konaklara 80 numaralı bağlantı noktası üzerinden gelen istekler için uygulanacak örnek bir HTTP yönlendirme kuralı aşağıda verilmiştir. İstek URL 'SI yol belirtimiyle eşleşen bir yapıya sahipse, yani, `<IPAddress>:80/pickme/<requestContent>` `myListener` uç noktaya yönlendirilir.  
 
 ```json
 "properties": {
@@ -219,8 +218,8 @@ Tam ağ geçidi kaynak yapılandırması şöyle görünür (Bu durum, [kafes ö
 ```
 
 Bu ağ geçidi, 80 bağlantı noktasını dinleyen "Merhaba Dünya hizmeti" ve "counterService" olmak üzere en az iki hizmetten oluşan "Mesetlinux" bir Linux uygulaması için yapılandırılmıştır. Gelen isteğin URL yapısına bağlı olarak, isteği bu hizmetlerden birine yönlendirir. 
-* "\<IPAddress>:80/HelloWorld/\<Request\>", bir Isteğin HelloWorldService 'teki "helloworldlistener" öğesine yönlendirilme oluşmasına neden olur. 
-* "\<IPAddress>:80/Counter/\<Request\>" bir Isteğin, CounterService 'teki "counterlistener" öğesine yönlendirilme oluşmasına neden olur. 
+* " \<IPAddress> : 80/HelloWorld/ \<request\> ", bir Isteğin helloWorldService 'Teki "Merhaba Dünya dinleyicisi" öğesine yönlendirilme oluşmasına neden olur. 
+* " \<IPAddress> : 80/Counter/ \<request\> " Isteğin, CounterService 'Teki "counterlistener" öğesine yönlendirilme sonucu olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Ağ geçitlerini eylemde görmek için giriş [örneğini](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) dağıtın

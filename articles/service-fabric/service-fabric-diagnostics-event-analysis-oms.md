@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464745"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile olay Analizi ve görselleştirme
@@ -34,9 +33,9 @@ Azure Izleyici günlükleri tarafından veriler alındıktan sonra Azure, çok s
 
 [Azure portalında](https://portal.azure.com), Service Fabric Analytics çözümünü oluşturduğunuz kaynak grubuna gidin.
 
-**Servicefabric\<nameofomsworkspace\>** kaynağını seçin.
+Kaynak **Servicefabric \<nameOfOMSWorkspace\> **' i seçin.
 
-İçinde `Summary`, Service Fabric için bir de dahil olmak üzere her bir çözümün etkin olduğu bir grafik biçiminde kutucuklar görürsünüz. Service Fabric Analytics çözümüne devam etmek için **Service Fabric** grafiğine tıklayın.
+İçinde `Summary` , Service Fabric için bir de dahil olmak üzere her bir çözümün etkin olduğu bir grafik biçiminde kutucuklar görürsünüz. Service Fabric Analytics çözümüne devam etmek için **Service Fabric** grafiğine tıklayın.
 
 ![Service Fabric çözümü](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
@@ -82,7 +81,7 @@ Bir listedeki olayları görüntülemek için **Listele** ' ye tıklayın. Burad
 
 ![Sorgu Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Güvenilir aktör olayları benzer bir biçimde görüntülenebilir. Güvenilir aktörler için daha ayrıntılı olaylar yapılandırmak üzere, tanı uzantısının (aşağıda gösterilen `scheduledTransferKeywordFilter` ) yapılandırmasında öğesini değiştirmeniz gerekir. Bunların değerlerinin ayrıntıları, [güvenilir aktör olayları başvurusunda](service-fabric-reliable-actors-diagnostics.md#keywords)bulunur.
+Güvenilir aktör olayları benzer bir biçimde görüntülenebilir. Güvenilir aktörler için daha ayrıntılı olaylar yapılandırmak üzere, `scheduledTransferKeywordFilter` tanı uzantısının (aşağıda gösterilen) yapılandırmasında öğesini değiştirmeniz gerekir. Bunların değerlerinin ayrıntıları, [güvenilir aktör olayları başvurusunda](service-fabric-reliable-actors-diagnostics.md#keywords)bulunur.
 
 ```json
 "EtwEventSourceProviderConfiguration": [

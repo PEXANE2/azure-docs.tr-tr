@@ -6,10 +6,9 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75459011"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric ağı için Maven eklentisi
@@ -24,10 +23,10 @@ ms.locfileid: "75459011"
 ## <a name="goals"></a>Hedefler
 
 ### `azure-sfmesh:init`
-- Dosyasına sahip `servicefabric` bir `appresources` klasörü içeren bir klasör oluşturur. `application.yaml` 
+- `servicefabric`Dosyasına sahip bir klasörü içeren bir klasör oluşturur `appresources` `application.yaml` . 
 
 ### `azure-sfmesh:addservice`
-- Hizmet adı ile klasörün `servicefabric` içinde bir klasör oluşturur ve hizmetin YAML dosyasını oluşturur. 
+- `servicefabric`Hizmet adı ile klasörün içinde bir klasör oluşturur ve hizmetin YAML dosyasını oluşturur. 
 
 ### `azure-sfmesh:addnetwork`
 - Klasörde, `network` belirtilen ağ adı ile bir YAML oluşturur `appresources` 
@@ -36,7 +35,7 @@ ms.locfileid: "75459011"
 - Klasörde, `gateway` belirtilen ağ geçidi adıyla bir YAML oluşturur `appresources` 
 
 #### `azure-sfmesh:addvolume`
-- Klasörde, `volume` belirtilen birim adıyla bir YAML oluşturur. `appresources`
+- Klasörde, `volume` belirtilen birim adıyla bir YAML oluşturur `appresources` .
 
 ### `azure-sfmesh:addsecret`
 - Klasörde, `secret` belirtilen gizli dizi adıyla bir YAML oluşturur `appresources` 
@@ -45,17 +44,17 @@ ms.locfileid: "75459011"
 - Klasörde, `secretvalue` belirtilen gizli anahtar ve gizli değer adı ile bir YAML oluşturur `appresources` 
 
 ### `azure-sfmesh:deploy`
-- `servicefabric` Klasörden yamls 'yi birleştirir ve geçerlI klasörde JSON Azure Resource Manager şablon oluşturur.
+- Klasörden yamls 'yi birleştirir `servicefabric` ve geçerli KLASÖRDE JSON Azure Resource Manager şablon oluşturur.
 - Tüm kaynakları Azure Service Fabric kafes ortamına dağıtır 
 
 ### `azure-sfmesh:deploytocluster`
-- Service Fabric kümeleri için geçerli`meshDeploy`olan yamls 'lerden oluşturulan dağıtım jlerini içeren bir klasör () oluşturur
+- `meshDeploy`Service Fabric kümeleri için geçerli olan yamls 'lerden oluşturulan dağıtım jlerini içeren bir klasör () oluşturur
 - Tüm kaynakları Service Fabric kümesine dağıtır
  
 
 ## <a name="usage"></a>Kullanım
 
-Maven Java uygulamanızda Maven eklentisini kullanmak için, potm. xml dosyanıza aşağıdaki kod parçacığını ekleyin:
+Maven Java uygulamanızda Maven eklentisini kullanmak için, pom.xml dosyanıza aşağıdaki kod parçacığını ekleyin:
 
 ```XML
 <project>
@@ -98,7 +97,7 @@ Bir ağ kaynağı YAML oluşturmak için aşağıdaki komutu çalıştırın.
 mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
-- Adlı klasörde `servicefabric->appresources` BIR ağ YAML oluşturur`network_helloworldservicenetwork`
+- Adlı klasörde bir ağ YAML oluşturur `servicefabric->appresources``network_helloworldservicenetwork`
 
 #### <a name="add-a-new-service-to-your-application"></a>Uygulamanıza yeni bir hizmet ekleyin
 Bir hizmet YAML oluşturmak için aşağıdaki komutu çalıştırın. 
@@ -107,7 +106,7 @@ Bir hizmet YAML oluşturmak için aşağıdaki komutu çalıştırın.
 mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=helloworldservice -DimageName=helloworldserver:latest -DlistenerPort=8080 -DnetworkRef=helloworldservicenetwork
 ```
 
-- Uygulamanın & başvurduğu `servicefabric->helloworldservice` `service_helloworldservice` `helloworldservicenetwork` adlı klasörde bir Service YAML oluşturur `helloworldserver`
+- `servicefabric->helloworldservice` `service_helloworldservice` `helloworldservicenetwork` Uygulamanın & başvurduğu adlı klasörde bir Service YAML oluşturur `helloworldserver`
 - Hizmet, 8080 numaralı bağlantı noktasını dinler
 - Hizmet, bir ***helloworldserver: en son*** kapsayıcı görüntüsü olarak kullanılıyor.
 
@@ -118,8 +117,8 @@ Bir ağ geçidi kaynağı YAML oluşturmak için aşağıdaki komutu çalıştı
 mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetwork=helloworldservicenetwork -DgatewayName=helloworldgateway -DlistenerName=helloworldserviceListener -DserviceName=helloworldservice -DsourceNetwork=open -DtcpPort=80
 ```
 
-- Adlı klasörde `servicefabric->appresources` yeni bir ağ GEÇIDI YAML oluşturur`gateway_helloworldgateway`
-- Bu `helloworldservicelistener` ağ geçidinden gelen çağrıları dinleyen hizmet dinleyicisi olarak başvurular. Ayrıca hizmet `helloworldservice` `helloworldservicenetwork` olarak, ağ ve `helloworldserver` uygulama olarak da başvurur. 
+- Adlı klasörde yeni bir ağ geçidi YAML oluşturur `servicefabric->appresources``gateway_helloworldgateway`
+- `helloworldservicelistener`Bu ağ geçidinden gelen çağrıları dinleyen hizmet dinleyicisi olarak başvurular. Ayrıca `helloworldservice` hizmet olarak, `helloworldservicenetwork` Ağ ve uygulama olarak da başvurur `helloworldserver` . 
 - 80 numaralı bağlantı noktasında istekleri dinler
 
 #### <a name="add-a-new-volume-to-your-application"></a>Uygulamanıza yeni bir birim ekleyin
@@ -129,8 +128,8 @@ Bir birim kaynağı YAML oluşturmak için aşağıdaki komutu çalıştırın.
 mvn azure-sfmesh:addvolume -DvolumeAccountKey=key -DvolumeAccountName=name -DvolumeName=vol1 -DvolumeShareName=share
 ```
 
-- Adlı klasörde `servicefabric->appresources` bır bırım YAML oluşturur`volume_vol1`
-- Gerekli parametreler `volumeAccountKey`için ve `volumeShareName` yukarıdaki gibi özellikleri ayarlar
+- Adlı klasörde bir birim YAML oluşturur `servicefabric->appresources``volume_vol1`
+- Gerekli parametreler için `volumeAccountKey` ve yukarıdaki gibi özellikleri ayarlar `volumeShareName`
 - Oluşturulan bu birime nasıl başvurulacağını hakkında daha fazla bilgi için, [Azure dosyalarını kullanarak uygulamayı dağıtma](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md) bölümünü ziyaret edin.
 
 #### <a name="add-a-new-secret-resource-to-your-application"></a>Uygulamanıza yeni bir gizli kaynak ekleyin
@@ -140,7 +139,7 @@ Gizli bir kaynak kaynağı oluşturmak için aşağıdaki komutu çalıştırın
 mvn azure-sfmesh:addsecret -DsecretName=secret1
 ```
 
-- Adlı klasörde `servicefabric->appresources` BIR gızlı YAML oluşturur`secret_secret1`
+- Adlı klasörde bir gizli YAML oluşturur `servicefabric->appresources``secret_secret1`
 - Oluşturulan bu gizliliğe başvurma hakkında daha fazla bilgi için aşağıdakileri ziyaret edin, [gizli dizileri yönetin](service-fabric-mesh-howto-manage-secrets.md)
 
 #### <a name="add-a-new-secretvalue-resource-to-your-application"></a>Uygulamanıza yeni bir secretvalue kaynağı ekleyin
@@ -150,11 +149,11 @@ Bir secretvalue kaynağı YAML oluşturmak için aşağıdaki komutu çalıştı
 mvn azure-sfmesh:addsecretvalue -DsecretValue=someVal -DsecretValueName=secret1/v1
 ```
 
-- Adlı klasörde `servicefabric->appresources` bir secretvalue YAML oluşturun`secretvalue_secret1_v1`
+- Adlı klasörde bir secretvalue YAML oluşturun `servicefabric->appresources``secretvalue_secret1_v1`
 
 ### <a name="run-the-application-locally"></a>Uygulamayı yerel olarak çalıştırma
 
-Hedefe `azure-sfmesh:deploytocluster`ilişkin yardım ile uygulamayı aşağıdaki komutu kullanarak yerel olarak çalıştırabilirsiniz:
+Hedefe ilişkin yardım ile `azure-sfmesh:deploytocluster` uygulamayı aşağıdaki komutu kullanarak yerel olarak çalıştırabilirsiniz:
 
 ```cmd
 mvn azure-sfmesh:deploytocluster
@@ -167,12 +166,12 @@ Varsayılan olarak bu hedef, kaynakları yerel kümeye dağıtır. Yerel kümeye
 
 ### <a name="deploy-application-to-azure-service-fabric-mesh"></a>Azure Service Fabric ağı 'na uygulama dağıtma
 
-Hedef `azure-sfmesh:deploy`yardımı ile aşağıdaki komutu çalıştırarak Service Fabric ağ ortamına dağıtabilirsiniz:
+Hedef yardımı ile `azure-sfmesh:deploy` aşağıdaki komutu çalıştırarak Service Fabric ağ ortamına dağıtabilirsiniz:
 
 ```cmd
 mvn azure-sfmesh:deploy -DresourceGroup=todoapprg -Dlocation=eastus
 ```
 
-- Mevcut değilse adlı `todoapprg` bir kaynak grubu oluşturur.
+- Mevcut değilse adlı bir kaynak grubu oluşturur `todoapprg` .
 - YAMLs 'Leri birleştirerek JSON Azure Resource Manager şablon oluşturur. 
 - JSON 'ı Azure Service Fabric kafes ortamına dağıtır.
