@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3195f1f409ab5cb87cd0520192a3dd362e188a3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610243"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Tek başına kümeler Service Fabric ölçeklendirme
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Kümeler potansiyel binlerce düğüm içerebilir. Service Fabric kümesi oluşturduktan sonra, kümeyi yatay olarak ölçeklendirebilirsiniz (düğüm sayısını değiştirebilir) veya dikey (düğümlerin kaynaklarını değiştirebilirsiniz).  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -25,10 +25,10 @@ Kümedeki düğümlerin sayısını değiştirir.  Yeni düğümler kümeye kat�
 
 Tek başına kümeler, şirket içinde veya istediğiniz bulut sağlayıcısında Service Fabric kümesi dağıtmanıza olanak tanır.  Düğüm türleri, dağıtımınıza bağlı olarak fiziksel makinelerden veya sanal makinelerden oluşur. Azure 'da çalışan kümelerle karşılaştırıldığında, tek başına kümeyi ölçekleme işlemi biraz daha karmaşıktır.  Kümedeki düğümlerin sayısını el ile değiştirmeniz ve sonra bir küme yapılandırma yükseltmesi çalıştırmanız gerekir.
 
-Düğümlerin kaldırılması, birden çok yükseltme başlatabilir. Bazı düğümler `IsSeedNode=”true”` etiketiyle Işaretlenir ve [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest)kullanılarak küme bildirimi sorgulanarak belirlenebilir. Çekirdek düğümlerin bu tür senaryolarda taşınması gerektiğinden, bu tür düğümlerin kaldırılması diğerlerinden daha uzun sürebilir. Küme, en az üç birincil düğüm türü düğümü korumalıdır.
+Düğümlerin kaldırılması, birden çok yükseltme başlatabilir. Bazı düğümler `IsSeedNode=”true”` etiketiyle işaretlenir ve [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest)kullanılarak küme bildirimi sorgulanarak belirlenebilir. Çekirdek düğümlerin bu tür senaryolarda taşınması gerektiğinden, bu tür düğümlerin kaldırılması diğerlerinden daha uzun sürebilir. Küme, en az üç birincil düğüm türü düğümü korumalıdır.
 
 > [!WARNING]
-> Düğüm sayısını kümenin [güvenilirlik katmanının küme boyutunun](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) altında düşürmenizi öneririz. Bu, Service Fabric sistem hizmetlerinin küme genelinde çoğaltılmasına engel olur ve kümeyi kaldırır veya büyük olasılıkla yok eder.
+> Düğüm sayısını kümenin [güvenilirlik katmanının küme boyutunun](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) altında düşürmenizi öneririz. Bu, Service Fabric sistem hizmetlerinin küme genelinde çoğaltılmasına engel olur ve kümeyi kaldırır veya büyük olasılıkla yok eder.
 >
 
 Tek başına kümeyi ölçeklendirirken aşağıdaki yönergeleri göz önünde bulundurun:

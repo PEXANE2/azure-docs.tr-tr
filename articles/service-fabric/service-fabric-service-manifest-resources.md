@@ -3,16 +3,16 @@ title: Service Fabric hizmet uç noktalarını belirtme
 description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bildiriminde uç nokta kaynaklarını açıklama
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610753"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
-Hizmet bildirimi, derlenen kodu değiştirmeden, hizmet tarafından kullanılan kaynakların bildirilmesini veya değiştirilmesini sağlar. Service Fabric, hizmet için uç nokta kaynaklarının yapılandırılmasını destekler. Hizmet bildiriminde belirtilen kaynaklara erişimi, uygulama bildirimindeki SecurityGroup aracılığıyla denetlenebilir. Kaynak bildirimi, bu kaynakların dağıtım zamanında değiştirilmesini sağlar, yani hizmetin yeni bir yapılandırma mekanizması tanıtılmasına gerek kalmaz. ServiceManifest. xml dosyası için şema tanımı, Service Fabric SDK ve araçlar ile birlikte *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*ile yüklenir.
+Hizmet bildirimi, derlenen kodu değiştirmeden, hizmet tarafından kullanılan kaynakların bildirilmesini veya değiştirilmesini sağlar. Service Fabric, hizmet için uç nokta kaynaklarının yapılandırılmasını destekler. Hizmet bildiriminde belirtilen kaynaklara erişimi, uygulama bildirimindeki SecurityGroup aracılığıyla denetlenebilir. Kaynak bildirimi, bu kaynakların dağıtım zamanında değiştirilmesini sağlar, yani hizmetin yeni bir yapılandırma mekanizması tanıtılmasına gerek kalmaz. ServiceManifest.xml dosyası için şema tanımı, Service Fabric SDK ve araçlar ile birlikte *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*ile yüklenir.
 
 ## <a name="endpoints"></a>Uç Noktalar
 Hizmet bildiriminde bir uç nokta kaynağı tanımlandığında Service Fabric, bir bağlantı noktası açıkça belirtilmediğinde, ayrılmış uygulama bağlantı noktası aralığından bağlantı noktaları atar. Örneğin, bu paragraftan sonra sunulan bildirim parçacığında belirtilen uç nokta *ServiceEndpoint1* bakın. Ayrıca, hizmetler bir kaynakta belirli bir bağlantı noktası da talep edebilir. Farklı küme düğümlerinde çalışan hizmet Çoğaltmalarından farklı bağlantı noktası numaraları atanabilir, ancak aynı düğümde çalışan bir hizmetin çoğaltmaları bağlantı noktasını paylaşır. Hizmet çoğaltmaları daha sonra bu bağlantı noktalarını, çoğaltma ve istemci isteklerini dinlemek için gereken şekilde kullanabilir.
@@ -48,12 +48,10 @@ Tek bir hizmet paketinde birden çok kod paketi varsa, kod paketinin **uç nokta
 </Resources>
 ```
 
-Yapılandırma paketi ayarları dosyasından (Settings. xml) bulunan uç noktalar hakkında daha fazla bilgi edinmek için [durum bilgisi olan Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) konusuna bakın.
+Yapılandırma paketi ayarları dosyasından (settings.xml) bulunan uç noktalar hakkında daha fazla bilgi edinmek için [durum bilgisi olan Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) konusuna bakın.
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Örnek: hizmetiniz için bir HTTP uç noktası belirtme
-Aşağıdaki hizmet bildirimi &lt;Resources&gt; öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı tanımlar.
-
-HTTP uç noktaları, Service Fabric tarafından otomatik olarak ACL ' dir.
+Aşağıdaki hizmet bildirimi Resources öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı &lt; tanımlar &gt; .
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -157,8 +155,10 @@ Bir HTTPS uç noktası için gereken yapılandırmayı gösteren örnek bir Appl
 
 Linux kümeleri için **My mağazam** , **/var/lib/sfcerts**klasörünü varsayılan olarak alır.
 
+## <a name="port-acling-for-http-endpoints"></a>HTTP uç noktaları için bağlantı noktası
+Service Fabric otomatik olarak varsayılan olarak belirtilen ACL HTTP uç noktaları olur. Bir uç noktanın kendisiyle ilişkili bir [Securityaccesspolicy](service-fabric-assign-policy-to-endpoint.md) yoksa ve Service Fabric yönetici ayrıcalıklarına sahip bir hesap kullanılarak çalışacak şekilde yapılandırıldıysa, **otomatik olarak erişim yapmaz.**
 
-## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest. xml dosyasında uç noktaları geçersiz kılma
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml uç noktaları geçersiz kılma
 
 ApplicationManifest içinde, bir Resourcekılmalar ekleyin bölümü, bu, Configkıkılatıon için eşdüzey bir bölüm olacaktır. Bu bölümde, hizmet bildiriminde belirtilen kaynaklar bölümündeki uç noktalar bölümünde geçersiz kılma seçeneğini belirtebilirsiniz. Çalışma zamanı 5.7.217/SDK 2.7.217 ve üzeri için uç noktaların geçersiz kılınması desteklenir.
 

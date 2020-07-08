@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: afbf0bee86a3d600892ed562ee939d48168ddfdc
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85112949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610736"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 
@@ -155,7 +155,7 @@ Aşağıdaki adımlar Azure Cosmos DB kullanırken çözümlerinizi yüksek düz
 
 1. Kapsayıcılar ve veritabanları genelinde sağlanan aktarım hızına önemli ölçüde sahipseniz, RUs ile sağlanan ru 'ları gözden geçirmeniz ve iş yüklerini ince ayar yapmanız gerekir.  
 
-2. Uygulamanız için gerekli olan ayrılmış aktarım hızı miktarını tahmin etmek için bir yöntem, genellikle uygulamanız tarafından kullanılan bir Azure Cosmos kapsayıcısına veya veritabanına karşı tipik işlemleri çalıştırmaya ilişkin bir istek birimi RU ücreti kaydetmek ve sonra her saniye gerçekleştirmeyi tahmin ettiğiniz işlem sayısını tahmin etmek içindir. Tipik sorguları ve bunların kullanımlarını de ölçdiğinizden ve dahil ettiğinizden emin olun. Program aracılığıyla veya Portal kullanarak sorguların RU maliyetlerini nasıl tahmin edebileceğiniz hakkında bilgi edinmek için bkz. [sorguların maliyetini En Iyi duruma getirme](online-backup-and-restore.md). 
+2. Uygulamanız için gerekli olan ayrılmış aktarım hızı miktarını tahmin etmek için bir yöntem, genellikle uygulamanız tarafından kullanılan bir Azure Cosmos kapsayıcısına veya veritabanına karşı tipik işlemleri çalıştırmaya ilişkin bir istek birimi RU ücreti kaydetmek ve sonra her saniye gerçekleştirmeyi tahmin ettiğiniz işlem sayısını tahmin etmek içindir. Tipik sorguları ve bunların kullanımlarını de ölçdiğinizden ve dahil ettiğinizden emin olun. Program aracılığıyla veya Portal kullanarak sorguların RU maliyetlerini nasıl tahmin edebileceğiniz hakkında bilgi edinmek için bkz. [sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md). 
 
 3. İşlem/süre ve istek ücreti dökümünü sunan Azure Izleyici günlüklerini etkinleştirerek, işlemleri ve bunların maliyetlerini bir diğer şekilde almanın bir başka yolu da vardır. Azure Cosmos DB her işlem için istek ücreti sağlar, bu nedenle her işlem ücreti yanıttan geri depolanabilir ve daha sonra analiz için kullanılır. 
 

@@ -1,7 +1,7 @@
 ---
 title: Veri içeri aktarma
 titleSuffix: Azure Machine Learning
-description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning tasarımcı 'ya aktarmayı öğrenin.
+description: Çeşitli veri kaynaklarından verileri Azure Machine Learning tasarımcısına aktarmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 386da835c239953066bf47ee670f7fb27c7b04f4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610957"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Verilerinizi Azure Machine Learning tasarımcı 'ya aktarma (Önizleme)
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısına veri aktarma (Önizleme)
 
 Bu makalede, özel çözümler oluşturmak için kendi verilerinizi tasarımcıda nasıl içeri aktaracağınızı öğreneceksiniz. Verileri tasarımcıya içeri aktarabilmeniz için kullanabileceğiniz iki yol vardır: 
 
@@ -89,6 +89,10 @@ Tasarımcı, modüller arasında veri geçirmek için bir iç veri türü kullan
 ## <a name="data-constraints"></a>Veri kısıtlamaları
 
 Tasarlayıcıdaki modüller, işlem hedefinin boyutuyla sınırlıdır. Daha büyük veri kümelerinde daha büyük bir Azure Machine Learning işlem kaynağı kullanmanız gerekir. Azure Machine Learning işlem hakkında daha fazla bilgi için bkz. [Azure Machine Learning işlem hedefleri nelerdir?](concept-compute-target.md#azure-machine-learning-compute-managed)
+
+## <a name="access-data-in-a-virtual-network"></a>Bir sanal ağdaki verilere erişme
+
+Çalışma alanınız bir sanal ağda ise, tasarımcıda verileri görselleştirmek için ek yapılandırma adımları gerçekleştirmeniz gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [özel sanal ağlarla eğitim sırasında ağ yalıtımı &](how-to-enable-virtual-network.md#machine-learning-studio).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

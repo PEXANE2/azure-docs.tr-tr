@@ -4,12 +4,12 @@ description: Azure Service Fabric kümelerini içinde veya dışarı ve yukarı 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610209"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric kümelerini ölçeklendirme
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Kümeler potansiyel binlerce düğüm içerebilir. Service Fabric kümesi oluşturduktan sonra, kümeyi yatay olarak ölçeklendirebilirsiniz (düğüm sayısını değiştirebilir) veya dikey (düğümlerin kaynaklarını değiştirebilirsiniz).  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -28,7 +28,7 @@ Bir Azure kümesini ölçeklendirirken aşağıdaki yönergeleri göz önünde b
 - üretim iş yüklerini çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
 - durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
 - durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
-- Altın veya gümüş herhangi bir düğüm [türü, her](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) zaman beş veya daha fazla düğüme sahip olmalıdır.
+- Altın veya gümüş herhangi bir düğüm [türü, her](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) zaman beş veya daha fazla düğüme sahip olmalıdır.
 - Bir düğüm türünden rastgele VM örnekleri/düğümleri kaldırmayın, her zaman özelliğindeki sanal makine ölçek kümesi ölçeğini kullanın. Rastgele sanal makine örneklerinin silinmesi, sistemin doğru şekilde yük dengeleyebilme yeteneğini olumsuz etkileyebilir.
 - Otomatik ölçeklendirme kuralları kullanıyorsanız, kuralları ölçeklendirmek için (sanal makine örneklerini kaldırma) tek seferde bir düğüm yapılır. Aynı anda birden fazla örneğin ölçeğini azaltma güvenli değildir.
 
@@ -46,11 +46,11 @@ Service Fabric ölçeklendirmeye nasıl yaklaşımınız, senaryonuza bağlıdı
 
 Azure API 'Leri, uygulamaların sanal makine ölçek kümeleri ve Service Fabric kümeleriyle programlı bir şekilde çalışmasına olanak tanır. Mevcut otomatik ölçeklendirme seçenekleri senaryonuz için çalışmazsa, bu API 'Ler özel ölçeklendirme mantığı uygulamayı mümkün kılar. 
 
-Bu ' giriş haline getirilen ' otomatik ölçeklendirme işlevlerini uygulamaya yönelik bir yaklaşım, ölçeklendirme işlemlerini yönetmek için Service Fabric uygulamasına yeni bir durum bilgisi olmayan hizmet eklemektir. Kendi ölçeklendirme hizmetinizi oluşturmak, uygulamanızın ölçeklendirme davranışı üzerinde en yüksek düzeyde denetim ve özelleştirme sağlar. Bu, bir uygulamanın ne zaman veya nasıl ölçeklendirilen üzerinde kesin denetim gerektiren senaryolar için yararlı olabilir. Ancak, bu denetim bir zorunluluğunu getirir kod karmaşıklığı ile birlikte gelir. Bu yaklaşımın kullanılması, basit olmayan bir ölçeklendirme koduna sahip olmanız gerektiği anlamına gelir. Hizmetin yönteminde, bir `RunAsync` tetikleyici kümesi, ölçeklendirmenin gerekip gerekmediğini (en fazla küme boyutu ve coolazaltmalar gibi parametreleri denetleme dahil) tespit edebilir.   
+Bu ' giriş haline getirilen ' otomatik ölçeklendirme işlevlerini uygulamaya yönelik bir yaklaşım, ölçeklendirme işlemlerini yönetmek için Service Fabric uygulamasına yeni bir durum bilgisi olmayan hizmet eklemektir. Kendi ölçeklendirme hizmetinizi oluşturmak, uygulamanızın ölçeklendirme davranışı üzerinde en yüksek düzeyde denetim ve özelleştirme sağlar. Bu, bir uygulamanın ne zaman veya nasıl ölçeklendirilen üzerinde kesin denetim gerektiren senaryolar için yararlı olabilir. Ancak, bu denetim bir zorunluluğunu getirir kod karmaşıklığı ile birlikte gelir. Bu yaklaşımın kullanılması, basit olmayan bir ölçeklendirme koduna sahip olmanız gerektiği anlamına gelir. Hizmetin `RunAsync` yönteminde, bir tetikleyici kümesi, ölçeklendirmenin gerekip gerekmediğini (en fazla küme boyutu ve coolazaltmalar gibi parametreleri denetleme dahil) tespit edebilir.   
 
 Sanal makine ölçek kümesi etkileşimleri için kullanılan API (her ikisi de sanal makine örneklerinin geçerli sayısını kontrol etmek ve değiştirmek için), [akıcı Azure Yönetim işlem kitaplığıdır](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Akıcı işlem kitaplığı, sanal makine ölçek kümeleriyle etkileşim kurmak için kullanımı kolay bir API sağlar.  Service Fabric kümeyle etkileşim kurmak için [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient)kullanın.
 
-Ölçeklendirme kodunun ölçeklenmesi için kümede bir hizmet olarak çalıştırılması gerekmez, ancak. `FabricClient` Hem hem de `IAzure` ilişkili Azure kaynaklarına uzaktan bağlanıp, ölçeklendirme hizmeti kolayca bir konsol uygulaması veya Service Fabric uygulamasının dışından çalışan bir Windows hizmeti olabilir.
+Ölçeklendirme kodunun ölçeklenmesi için kümede bir hizmet olarak çalıştırılması gerekmez, ancak. Hem hem de `IAzure` `FabricClient` ilişkili Azure kaynaklarına uzaktan bağlanıp, ölçeklendirme hizmeti kolayca bir konsol uygulaması veya Service Fabric uygulamasının dışından çalışan bir Windows hizmeti olabilir.
 
 Bu sınırlamalara göre, [daha özelleştirilmiş otomatik ölçeklendirme modellerini uygulamak](service-fabric-cluster-programmatic-scaling.md)isteyebilirsiniz.
 
@@ -59,14 +59,10 @@ Kümedeki düğümlerin kaynaklarını (CPU, bellek veya depolama) değiştirir.
 - Avantajlar: yazılım ve uygulama mimarisi aynı kalır.
 - Dezavantajları: bağımsız düğümlerde kaynakları ne kadar artırabileceğiniz için bir sınır olduğundan, sınırlı ölçek. Kapalı kalma süresi, kaynak eklemek veya kaldırmak için fiziksel veya sanal makineleri çevrimdışına almanız gerekir.
 
-Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullanabileceğiniz bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir.  Düğüm türü ölçeğini yukarı veya aşağı ölçeklendirmek, ölçek kümesindeki sanal makine örneklerinin SKU 'sunu değiştirmeyi içerir. 
-
-> [!WARNING]
-> Bir ölçek kümesi/düğüm türünün sanal makine SKU 'sunu, [gümüş dayanıklılık veya daha büyük](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)bir zamanda çalışmadığı takdirde değiştirmenizi öneririz. VM SKU 'SU boyutunun değiştirilmesi, veri bozucu bir yerinde altyapı işlemidir. Bu değişikliği gecikme veya izlemeye yönelik bir özellik olmadan, işlem durum bilgisi olmayan hizmetler için veri kaybına neden olabilir veya durum bilgisiz iş yükleri için bile öngörülemeyen çalışma sorunlarına neden olabilir. 
->
+Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullanabileceğiniz bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir.  Düğüm türünü yukarı veya aşağı ölçeklendirmek, yeni bir düğüm türünün (güncelleştirilmiş VM SKU 'SU ile) eklenmesini ve eski düğüm türünün kaldırılmasını içerir.
 
 Bir Azure kümesini ölçeklendirirken aşağıdaki kılavuzu aklınızda bulundurun:
-- Birincil düğüm türünü ölçeklendirirseniz, [güvenilirlik katmanının](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) izin verdiği sayıdan daha fazla ölçeklenmez.
+- Birincil düğüm türünü ölçeklendirirseniz, [güvenilirlik katmanının](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) izin verdiği sayıdan daha fazla ölçeklenmez.
 
 Bir düğüm türünü yukarı veya aşağı ölçeklendirmeye yönelik işlem, birincil olmayan veya birincil düğüm türü olmasına bağlı olarak farklılık belirtir.
 
@@ -74,9 +70,9 @@ Bir düğüm türünü yukarı veya aşağı ölçeklendirmeye yönelik işlem, 
 İhtiyacınız olan kaynaklarla yeni bir düğüm türü oluşturun.  Çalışan hizmetlerin yerleştirme kısıtlamalarını yeni düğüm türünü içerecek şekilde güncelleştirin.  Yavaş yavaş (tek seferde), kümenin güvenilirliği etkilenmemesi için eski düğüm türü örnek sayısının örnek sayısını sıfıra küçültün.  Eski düğüm türü kullanımdan kaldırılan için hizmetler, aşamalı olarak yeni düğüm türüne geçirilir.
 
 ### <a name="scaling-the-primary-node-type"></a>Birincil düğüm türünü ölçekleme
-Birincil düğüm türünün VM SKU 'sunu değiştirmenizi öneririz. Daha fazla küme kapasitesine ihtiyacınız varsa, daha fazla örnek eklemeniz önerilir. 
+Güncelleştirilmiş VM SKU 'SU ile yeni bir birincil düğüm türü dağıtın, sonra sistem hizmetleri yeni ölçek kümesine geçiş yapmak için özgün birincil düğüm türü örneklerini birer birer devre dışı bırakın. Kümenin ve yeni düğümlerin sağlıklı olduğunu doğrulayın, sonra silinen düğümlerin orijinal ölçek kümesini ve düğüm durumunu kaldırın.
 
-Bu mümkün değilse, yeni bir küme oluşturabilir ve eski kümenizdeki uygulama durumunu (varsa) [geri yükleyebilirsiniz](service-fabric-reliable-services-backup-restore.md) . Her türlü sistem hizmeti durumunu geri yüklemeniz gerekmez, uygulamalarınızı yeni kümenize dağıttığınızda yeniden oluşturulur. Kümenizde yalnızca durum bilgisi olmayan uygulamalar çalıştırıyorsanız, uygulamalarınızı yeni kümeye dağıtırsınız, geri yükleme yapamazsınız. Desteklenmeyen yola geçmeye karar verirseniz ve VM SKU 'sunu değiştirmek istiyorsanız, sanal makine ölçek kümesi model tanımında değişiklikleri yeni SKU 'YU yansıtacak şekilde yapın. Kümenizin yalnızca bir düğüm türü varsa, tüm durum bilgisi olmayan uygulamalarınızın tüm [hizmet çoğaltması yaşam döngüsü olaylarına](service-fabric-reliable-services-lifecycle.md) (derleme içindeki çoğaltma gibi) zamanında yanıt vermesini ve hizmet çoğaltmalarınızın yeniden oluşturma süresinin beş dakikadan kısa olduğundan emin olun (gümüş dayanıklılık düzeyi için). 
+Bu mümkün değilse, yeni bir küme oluşturabilir ve eski kümenizdeki uygulama durumunu (varsa) [geri yükleyebilirsiniz](service-fabric-reliable-services-backup-restore.md) . Her türlü sistem hizmeti durumunu geri yüklemeniz gerekmez, uygulamalarınızı yeni kümenize dağıttığınızda yeniden oluşturulur. Kümenizde yalnızca durum bilgisi olmayan uygulamalar çalıştırıyorsanız, uygulamalarınızı yeni kümeye dağıtırsınız, geri yükleme yapamazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Uygulama ölçeklenebilirliği](service-fabric-concepts-scalability.md)hakkında bilgi edinin.

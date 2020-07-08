@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: a6e7e01917ac6499b9836b460077a5513782a4ce
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610855"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -34,7 +34,7 @@ Veri eşitleme, verileri eşitlemek için bir hub ve bağlı bileşen topolojisi
 
 - **Merkez veritabanı** BIR Azure SQL veritabanı olmalıdır.
 - **Üye veritabanları** , Azure SQL veritabanı 'nda ya da SQL Server örneklerinde veritabanları olabilir.
-- **Eşitleme veritabanı** , veri eşitleme için meta verileri ve günlüğü içerir. Eşitleme veritabanı, hub veritabanıyla aynı bölgede bulunan bir Azure SQL veritabanı olmalıdır. Eşitleme veritabanı müşteri tarafından oluşturulur ve müşterinin sahibi olur.
+- **Eşitleme meta verileri veritabanı** , veri eşitleme için meta verileri ve günlüğü içerir. Eşitleme meta verileri veritabanı, hub veritabanıyla aynı bölgede bulunan bir Azure SQL veritabanı olmalıdır. Eşitleme meta verileri veritabanı, müşteri tarafından oluşturulmuştur ve müşteriye aittir. Her bölge ve abonelik için yalnızca bir eşitleme meta veri veritabanınız olabilir. Eşitleme grupları veya eşitleme aracıları mevcut durumdayken eşitleme meta verileri veritabanı silinemez veya yeniden adlandırılamaz. Microsoft, eşitleme meta verileri veritabanı olarak kullanılmak üzere yeni, boş bir veritabanı oluşturmayı önerir. Veri eşitleme, bu veritabanında tabloları oluşturur ve sık sık iş yükü çalıştırır.
 
 > [!NOTE]
 > Bir şirket içi veritabanını üye veritabanı olarak kullanıyorsanız, [yerel bir eşitleme Aracısı yükleyip yapılandırmanız](sql-data-sync-sql-server-configure.md#add-on-prem)gerekir.
@@ -155,7 +155,7 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Hizmet ve veritabanı boyutlarına ilişkin sınırlamalar
 
-| **Boyutlarına**                                                  | **Sınırlı**              | **Sorunu**              |
+| **Boyutlarına**                                                  | **Sınırlı**              | **Geçici çözüm**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Herhangi bir veritabanının ait olduğu en fazla eşitleme grubu sayısı.       | 5                      |                             |
 | Tek bir eşitleme grubundaki en fazla uç nokta sayısı              | 30                     |                             |
@@ -235,6 +235,10 @@ Evet. SQL Data Sync, aşağıdaki senaryolarda harmanlamayı destekler:
 ### <a name="is-federation-supported-in-sql-data-sync"></a>SQL Data Sync sürümünde Federasyon destekleniyor
 
 Federasyon kök veritabanı SQL Data Sync hizmetinde herhangi bir kısıtlama olmadan kullanılabilir. Federasyon veritabanı uç noktasını geçerli SQL Data Sync sürümüne ekleyemezsiniz.
+
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kendi veritabanınızı getir (BYOD) özelliğini kullanarak Dynamics 365 ' den aktarılmış verileri eşitlemek için veri eşitlemeyi kullanabilir miyim?
+
+Dynamics 365 kendi veritabanınızı getir özelliği, yöneticilerin veri varlıklarını uygulamadan kendi Microsoft Azure SQL veritabanı 'na dışarı aktarmanıza olanak tanır. Veri eşitleme, veriler **artımlı gönderim** kullanılarak aktarılıyorsa (tam gönderim desteklenmez) ve **hedef veritabanında Tetikleyicileri etkinleştir** **Evet**olarak ayarlanırsa, bu verileri diğer veritabanlarına eşitlemek için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

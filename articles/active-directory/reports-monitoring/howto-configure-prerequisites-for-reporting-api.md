@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608271"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory Raporlama API 'sine erişim önkoşulları
 
@@ -32,13 +32,13 @@ Raporlama API 'SI, Web API 'Lerine erişim yetkisi vermek için [OAuth](https://
 
 Raporlama API 'sine erişiminizi hazırlamak için şunları yapmanız gerekir:
 
-1. [Rolleri atama](#assign-roles)
+1. [Rol atama](#assign-roles)
 2. [Lisans gereksinimleri](#license-requirements)
-3. [Bir uygulamayı kaydetme](#register-an-application)
+3. [Uygulamayı kaydetme](#register-an-application)
 4. [İzinleri verme](#grant-permissions)
 5. [Yapılandırma ayarlarını topla](#gather-configuration-settings)
 
-## <a name="assign-roles"></a>Rolleri atama
+## <a name="assign-roles"></a>Rol atama
 
 API aracılığıyla raporlama verilerine erişim sağlamak için, aşağıdaki rollerden birine atanmış olması gerekir:
 
@@ -53,7 +53,7 @@ API aracılığıyla raporlama verilerine erişim sağlamak için, aşağıdaki 
 Bir kiracının oturum açma raporlarına erişebilmek için bir Azure AD kiracısının ilişkili Azure AD Premium lisansı olması gerekir. Azure AD Premium P1 (veya üzeri), herhangi bir Azure AD kiracısına yönelik oturum açma raporlarına erişmek için gereklidir. Alternatif olarak, Dizin türü Azure AD B2C ise, oturum açma raporlarına ek lisans gereksinimi olmadan API aracılığıyla erişilebilir. 
 
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Uygulamaları kaydetme
 
 Raporlama API 'sine bir betik kullanarak erişiyorsanız bile kayıt gereklidir. Kayıt, yetkilendirme çağrıları için gerekli olan bir **uygulama kimliği**sağlar ve kodunuzun belirteçleri almasını sağlar.
 
@@ -81,11 +81,11 @@ Dizininizi Azure AD Raporlama API 'sine erişecek şekilde yapılandırmak için
 
     ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a. **Ad** metin kutusuna yazın `Reporting API application`.
+    a. **Ad** metin kutusuna yazın `Reporting API application` .
 
     b. **Desteklenen hesap türü**için **yalnızca bu kuruluştaki hesaplar**' ı seçin.
 
-    c. **Yeniden yönlendirme URL 'si** ' nde **Web** metin kutusu `https://localhost`seçin yazın.
+    c. **Yeniden yönlendirme URL 'si** ' nde **Web** metin kutusu seçin yazın `https://localhost` .
 
     d. **Kaydol**’u seçin. 
 
@@ -184,7 +184,7 @@ Raporlama API 'sine yapılan çağrıları yapılandırırken bu değerlere ihti
 
 5. **İstemci parolası Ekle** sayfasında şunları ekleyin:
 
-    a. **Açıklama** metin kutusuna yazın `Reporting API`.
+    a. **Açıklama** metin kutusuna yazın `Reporting API` .
 
     b. **Süresi sona erdiğinde** **2 yıl içinde**öğesini seçin.
 

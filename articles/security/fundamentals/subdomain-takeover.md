@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 4e5969b4c3a42fc8a2c4b1cd537c22a4422ca131
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85269094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610872"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
@@ -53,11 +53,11 @@ Bir alt etki alanı için ortak senaryo:
 
 
 
-## <a name="the-risks-of-dangling-dns-records"></a>DNS kayıtlarının tehlikeleri
+## <a name="the-risks-of-subdomain-takeover"></a>Alt etki alanının riskleri
 
-Bir DNS kaydı, kullanılamayan bir kaynağı işaret ediyorsa, kaydın kendisi DNS bölgeinizden kaldırılmış olmalıdır. Silinmemişse, bu bir "Dangling DNS" kaydı ve güvenlik riski oluşturur.
+Bir DNS kaydı, kullanılamayan bir kaynağı işaret ediyorsa, kaydın kendisi DNS bölgeinizden kaldırılmış olmalıdır. Silinmemişse, bu bir "dangze DNS" kaydıdır ve alt etki alanı için bir olasılık oluşturur.
 
-Kuruluşa yönelik risk, bir tehdit aktörün kötü amaçlı bir Web sitesi veya hizmeti barındırmak üzere ilişkili DNS adının denetimini almasını sağlar. Kuruluşun alt etki alanındaki bu kötü amaçlı Web sitesi şu şekilde olabilir:
+Saldırgan DNS girişleri, tehdit aktörlerini kötü amaçlı bir Web sitesi veya hizmeti barındırmak üzere ilişkili DNS adının denetimini ele geçirmesine olanak tanır. Bir kuruluşun alt etki alanındaki kötü amaçlı sayfalar ve hizmetler şu şekilde olabilir:
 
 - Alt **etki alanının içeriği üzerinde denetim kaybı** -kuruluşunuzun içeriğini güvenli hale getirme sorunu, Ayrıca marka hasarı ve güven kaybı hakkında daha fazla bilgi.
 
@@ -65,7 +65,7 @@ Kuruluşa yönelik risk, bir tehdit aktörün kötü amaçlı bir Web sitesi vey
 
 - **Kimlik avı kampanyaları** -gerçek-arayan alt etki alanları, kimlik avı kampanyalarda kullanılabilir. Bu, kötü amaçlı siteler için ve ayrıca, tehdit aktörün bilinen bir markasının meşru bir alt etki alanıyla ilgili e-postaları almasına imkan tanıyan MX kayıtları için geçerlidir.
 
-- **Daha fazla risk** -XSS, CSRF, CORS atlama ve daha fazlası gibi diğer klasik saldırılara karşı ilerletin.
+- **Daha fazla risk** -kötü amaçlı sıteler, XSS, CSRF, CORS atlama ve daha fazlası gibi diğer klasik saldırılara yönelik olarak kullanılabilir.
 
 
 
@@ -78,7 +78,7 @@ Bugün size sunulan önleyici ölçüler aşağıda listelenmiştir.
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS diğer ad kayıtlarını kullanma
 
-Azure kaynağına sahip bir DNS kaydı yaşam döngüsünün sıkı bir şekilde eşlenmesiyle Azure DNS [diğer ad kayıtları](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) özelliği, sallaştırılmış başvuruların oluşmasını engelleyebilir. Örneğin, bir genel IP adresini veya bir Traffic Manager profilini işaret etmek için bir diğer ad kaydı olarak nitelenen bir DNS kaydını göz önünde bulundurun. Bu temel alınan kaynakları silerseniz, DNS diğer ad kaydı boş bir kayıt kümesi haline gelir. Artık silinen kaynağa başvurmuyor. Diğer ad kayıtlarıyla neleri koruyabileceğiniz sınırlandırmalar olduğunu unutmayın. Bugün, liste şu şekilde sınırlıdır:
+Bir Azure kaynağına sahip bir DNS kaydının yaşam döngüsünü yakından bağlayarak Azure DNS [diğer ad kayıtları](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) , sallaştırılmış başvuruların oluşmasını engelleyebilir. Örneğin, bir genel IP adresini veya bir Traffic Manager profilini işaret etmek için bir diğer ad kaydı olarak nitelenen bir DNS kaydını göz önünde bulundurun. Bu temel alınan kaynakları silerseniz, DNS diğer ad kaydı boş bir kayıt kümesi haline gelir. Artık silinen kaynağa başvurmuyor. Diğer ad kayıtlarıyla neleri koruyabileceğiniz sınırlandırmalar olduğunu unutmayın. Bugün, liste şu şekilde sınırlıdır:
 
 - Azure Front Door
 - Traffic Manager profilleri
@@ -95,7 +95,7 @@ Azure DNS diğer ad kayıtlarının özellikleri hakkında [daha fazla bilgi edi
 
 Azure App Service için DNS girişleri oluştururken bir asuıd oluşturun. alanınızın Etki alanı doğrulama KIMLIĞIYLE TXT kaydı. Böyle bir TXT kaydı olduğunda, başka hiçbir Azure aboneliği, diğer özel etki alanını doğrulayabilirler. 
 
-Bu kayıtlar, birisinin CNAME girişinizdeki ile aynı ada sahip Azure App Service oluşturmasını engellemez, ancak etki alanı adının sahipliğini kanıtlayamayacağından trafiği alamaz veya içeriği denetleyemez.
+Bu kayıtlar, birisinin CNAME girişinizdeki aynı ada sahip Azure App Service oluşturmasını engellemez. Etki alanı adının sahipliğini kanıtlayabilme özelliği olmadan, tehdit aktörleri trafiği alamaz veya içeriği denetleyebilir.
 
 Mevcut bir özel DNS adını Azure App Service eşleme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) .
 
@@ -111,7 +111,7 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
 
     - Bir hizmetin yetkisini alırken gerekli denetimler listesinde "DNS girişini kaldır" öğesini yerleştir.
 
-    - Özel bir DNS girişi olan herhangi bir kaynağa [silme kilitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) koyun. Bu, kaynağın sağlanması tamamlanmadan önce eşlemenin kaldırılması gereken bir gösterge olarak kullanılmalıdır. Buna benzer ölçüler yalnızca dahili eğitim programları ile birleştirildiğinde çalışır.
+    - Özel bir DNS girişi olan herhangi bir kaynağa [silme kilitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) koyun. Silme kilidi, kaynağın sağlanması tamamlanmadan önce eşlemenin kaldırılması gerektiğini belirten bir gösterge görevi görür. Buna benzer ölçüler yalnızca dahili eğitim programları ile birleştirildiğinde çalışır.
 
 - **Bulma için yordamlar oluşturun:**
 

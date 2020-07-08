@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/06/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: eaa78637a2a88c1fceddf5b7ac9cd928ed8a444a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609257"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,6 +62,11 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 > [!NOTE]
 > "az ml çalışma alanı paylaşma" komutu, Azure Active Directory B2B tarafından Federal hesap için çalışmıyor. Lütfen komut yerine Azure UI portalını kullanın.
 
+
+## <a name="azure-machine-learning-operations"></a>Azure Machine Learning işlemler
+
+Birçok işlem ve görev için yerleşik Eylemler Azure Machine Learning. Tüm liste için bkz. [Azure kaynak sağlayıcıları işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
 ## <a name="create-custom-role"></a>Özel rol oluştur
 
 Yerleşik roller yetersizse, özel roller oluşturabilirsiniz. Özel rollerin bu çalışma alanında okuma, yazma, silme ve hesaplama kaynağı izinleri olabilir. Rolü belirli bir çalışma alanı düzeyinde, belirli bir kaynak grubu düzeyinde veya belirli bir abonelik düzeyinde kullanılabilir hale getirebilirsiniz.
@@ -90,7 +95,8 @@ Yerleşik roller yetersizse, özel roller oluşturabilirsiniz. Özel rollerin bu
 }
 ```
 
-`AssignableScopes`Bu özel rolün kapsamını abonelik düzeyinde, kaynak grubu düzeyinde veya belirli bir çalışma alanı düzeyinde ayarlamak için alanı değiştirebilirsiniz.
+> [!TIP]
+> `AssignableScopes`Bu özel rolün kapsamını abonelik düzeyinde, kaynak grubu düzeyinde veya belirli bir çalışma alanı düzeyinde ayarlamak için alanı değiştirebilirsiniz.
 
 Bu özel rol, aşağıdaki eylemler hariç çalışma alanındaki her şeyi gerçekleştirebilir:
 
@@ -113,9 +119,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](/azure/role-based-access-control/custom-roles).
 
-Özel rollerle kullanılabilen işlemler (Eylemler) hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
-
-
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 
@@ -129,7 +132,7 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 | Yeni işlem kümesi oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`workspaces/computes/write` |
 | Yeni Not defteri VM 'si oluşturma | Gerekli değil | Sahip veya katkıda bulunan | Mümkün değil |
 | Yeni işlem örneği oluştur | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`workspaces/computes/write` |
-| Çalıştırma, verilere erişme, model dağıtma veya yayımlama işlem hattı gibi veri düzlemi etkinliği | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`workspaces/*/write` <br/> Ayrıca, MSI 'ın Depolama hesabınızdaki verilere erişmesine izin vermek için çalışma alanına kayıtlı bir veri deposuna ihtiyacınız olduğunu unutmayın. |
+| Çalıştırma, verilere erişme, model dağıtma veya yayımlama işlem hattı gibi veri düzlemi etkinliği | Gerekli değil | Gerekli değil | Sahibi, katkıda bulunan veya özel rol şunları sağlar:`workspaces/*/write` <br/> Ayrıca, MSI 'ın Depolama hesabınızdaki verilere erişmesine izin vermek için çalışma alanına kayıtlı bir veri deposuna ihtiyacınız vardır. |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>S. Aboneliğimde tüm özel rolleri listelemek Nasıl yaparım? mı?
@@ -142,7 +145,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>S. Nasıl yaparım? Aboneliğimde bir rolün rol tanımını bulamıyor musunuz?
 
-Azure CLı 'de aşağıdaki komutu çalıştırın. `<role-name>`Yukarıdaki komutun döndürdüğü biçimde olması gerektiğini unutmayın.
+Azure CLı 'de aşağıdaki komutu çalıştırın. `<role-name>`Yukarıdaki komutla döndürülen biçimde olmalıdır.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -156,7 +159,7 @@ Azure CLı 'de aşağıdaki komutu çalıştırın.
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-Yeni rol tanımınızın tüm kapsamı üzerinde izinleriniz olması gerektiğini unutmayın. Örneğin, bu yeni rolün üç abonelik arasında bir kapsamı varsa, üç abonelik için de izinleriniz olması gerekir. 
+Yeni rol tanımınızın tüm kapsamındaki izinlere sahip olmanız gerekir. Örneğin, bu yeni rolün üç abonelik arasında bir kapsamı varsa, üç abonelik için de izinleriniz olması gerekir. 
 
 > [!NOTE]
 > Rol güncelleştirmelerinin, bu kapsamdaki tüm rol atamaları üzerinde uygulanması 15 dakika ila saat arasında sürebilir.
@@ -168,7 +171,7 @@ Evet, çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol 
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>S. Bir çalışma alanında kota işlemleri gerçekleştirmek için hangi izinler gereklidir? 
 
-Çalışma alanındaki kota ile ilgili herhangi bir işlemi gerçekleştirmek için abonelik düzeyi izinlerine sahip olmanız gerekir. Bu, yönetilen işlem kaynaklarınız için abonelik düzeyi kotasının veya çalışma alanı düzeyi kotasının ayarlanması, yalnızca abonelik kapsamında yazma izinleriniz varsa meydana gelebileceği anlamına gelir. 
+Çalışma alanında kotayla ilgili herhangi bir işlemi gerçekleştirmek için abonelik düzeyinde izinlere ihtiyacınız vardır. Bu, yönetilen işlem kaynaklarınız için abonelik düzeyi kotasının veya çalışma alanı düzeyi kotasının ayarlanması, yalnızca abonelik kapsamında yazma izinleriniz varsa meydana gelebileceği anlamına gelir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 5323e54a81c7123e3e60f69d05accef9a63c7bc4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611382"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -47,8 +47,14 @@ Gerekli çekirdek ve bellek içeren VM bulunamadı | Azure uygun bir VM türü b
 Bir iç hata nedeniyle VM uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 Bir iç hata nedeniyle bir veya daha fazla disk için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 Bir iç hata nedeniyle bir veya daha fazla ağ bağdaştırıcısı için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
+Teklif para birimi ayrılmış örneği için VM boyutu bulunamadı | Seçilen RI, teklif ve para birimi birleşimi için VM boyutu bulunamadığı için makine uygun değil olarak işaretlendi. Geçerli birleşimleri seçmek ve değerlendirmeyi yeniden hesaplamak için değerlendirme özelliklerini düzenleyin. 
+Koşullu olarak Ready Internet Protokolü | Yalnızca Azure VMware Çözüm (AVS) değerlendirmelerinde geçerlidir. AVS, IPv6 Internet adresi faktörünü desteklemez.Makineniz IPv6 ile algılanıyorsa düzeltme kılavuzu için AVS ekibine başvurun.
 
-## <a name="linux-vms-are-conditionally-ready"></a>Linux VM 'Leri "koşullu olarak hazırlanıyor"
+## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>İçeri aktarma temelli AVS değerlendirmesi bilinmeyen olarak işaretlenmiş olan önerilen geçiş aracı
+
+Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, ve AVS değerlendirmesi için varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+
+## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux VM 'Leri, bir Azure VM değerlendirmesinde "koşullu olarak hazırlanıyor"
 
 VMware ve Hyper-V VM 'lerinde sunucu değerlendirmesi, sunucu değerlendirmesinde bilinen bir boşluk nedeniyle Linux sanal makinelerini "koşullu olarak hazırlanıyor" olarak işaretler. 
 
@@ -61,7 +67,7 @@ VMware ve Hyper-V VM 'lerinde sunucu değerlendirmesi, sunucu değerlendirmesind
 Bu boşluk, VMware VM 'lerinde [uygulama bulma](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) etkinleştirilerek çözülebilir. Sunucu değerlendirmesi, belirtilen konuk kimlik bilgilerini kullanarak VM 'den algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
 
 
-## <a name="azure-skus-bigger-than-on-premises"></a>Azure SKU 'Ları Şirket içinden daha büyük
+## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure VM değerlendirmesinde Azure SKU 'Ları Şirket içinden daha büyük
 
 Azure geçişi sunucu değerlendirmesi, Azure VM SKU 'Larını, değerlendirme türüne göre geçerli şirket içi ayırmadan daha fazla çekirdek ve bellek ile önerebilir:
 
@@ -79,7 +85,7 @@ Dört çekirdekli ve sekiz GB bellek içeren, %50 CPU kullanımı ve %50 bellek 
 - Değerlendirme, etkin CPU ve bellek kullanımı 50 (4 çekirdek * 1,3 = 2,6 çekirdekler 50 ve 8 GB bellek * 1,3 = 5,3-GB bellek) temel alınarak, dört çekirdekli sanal makine SKU 'SU (en yakın desteklenen çekirdek sayısı) ve sekiz GB bellek (en yakın desteklenen bellek boyutu) önerilir.
 - Değerlendirme boyutlandırma hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md#types-of-assessments) .
 
-## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure disk SKU 'Ları Şirket içinden daha büyük
+## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure disk SKU 'Ları, Azure VM değerlendirmesinde Şirket içinden daha büyük
 
 Azure geçişi sunucu değerlendirmesi, değerlendirme türüne göre daha büyük bir disk önerebilir.
 - Sunucu değerlendirmesinde disk boyutlandırma iki değerlendirme özelliklerine bağlıdır: boyutlandırma ölçütleri ve depolama türü.
@@ -97,16 +103,37 @@ Sunucu değerlendirmesi, "PercentageOfCoresUtilizedMissing" veya "PercentageOfMe
 - Performans sayaçlarından herhangi biri eksikse, Azure geçişi sunucu değerlendirmesi ayrılmış çekirdeğe ve belleğe geri döner ve buna karşılık gelen VM boyutunu önerir.
 - Tüm performans sayaçları eksikse, değerlendirme için bağlantı noktası erişim gereksinimlerinin karşılandığından emin olun. [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) ve [fiziksel](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) sunucu değerlendirmesi için bağlantı noktası erişim gereksinimleri hakkında daha fazla bilgi edinin.
 
-## <a name="is-the-operating-system-license-included"></a>İşletim sistemi lisansı dahil mi?
+## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>İşletim sistemi lisansı bir Azure VM değerlendirmesine dahil midir?
 
 Azure geçişi sunucu değerlendirmesi Şu anda yalnızca Windows makineler için işletim sistemi lisans maliyetini dikkate alır. Linux makineleri için lisans maliyetleri Şu anda dikkate alınmamaktadır.
 
-## <a name="how-does-performance-based-sizing-work"></a>Performans tabanlı boyutlandırma nasıl çalışır?
+## <a name="how-does-performance-based-sizing-work-in-an-azure-vm-assessment"></a>Performans tabanlı boyutlandırma bir Azure VM değerlendirmesi ile nasıl çalışır?
 
 Sunucu Değerlendirmesi şirket içi makinelerin performans verilerini sürekli toplar ve bunları Azure’da VM SKU'su ile disk SKU'su önermek için kullanır. Performans tabanlı verilerin nasıl toplandığını [öğrenin](concepts-assessment-calculation.md#calculate-sizing-performance-based) .
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Değerlendirmem neden ayrılmış örneklerin, VM çalışma süresinin ve Iskontonun (%) bir birleşimi ile oluşturulduğunu belirten bir uyarı gösteriyor?
 ' Ayrılmış örnekler ' seçtiğinizde, ' Discount (%) ' ve ' VM çalışma süresi ' özellikleri geçerli değil. Değerlendirmenizi bu özelliklerin geçersiz bir birleşimiyle oluşturulduğundan, Düzenle ve yeniden hesapla düğmeleri devre dışı bırakılır. Lütfen yeni bir değerlendirme oluşturun. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2131554).
+
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Fiziksel sunucularım üzerinde bazı ağ bağdaştırıcılarının performans verilerini görmüyorum
+
+Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Bu sunucularda, bir ürün boşluğu nedeniyle Azure geçişi Şu anda hem fiziksel hem de sanal ağ bağdaştırıcılarını bulur. Ağ aktarım hızı yalnızca bulunan sanal ağ bağdaştırıcılarında yakalanır.
+
+## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>Fiziksel sunucum için önerilen Azure VM SKU 'SU büyük
+
+Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Azure geçişi Şu anda bu sunucularda fiziksel ve sanal ağ bağdaştırıcılarını tespit eder. Bu nedenle, hayır. bulunan ağ bağdaştırıcılarının sayısı, gerçek değerden daha yüksek. Sunucu değerlendirmesi gereken sayıda ağ bağdaştırıcısını destekleyebilen bir Azure VM 'si çekirse, bu muhtemelen büyük olasılıkla büyük bir VM 'nin oluşmasına neden olabilir. Hayır 'ın etkisi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) . ağ bağdaştırıcılarının boyutunu boyutlandırmadır. Bu, ileride gönderilecek bir ürün eksikmidir.
+
+## <a name="readiness-category-not-ready-for-my-physical-server"></a>Fiziksel sunucum için hazırlık kategorisi "hazır değil"
+
+Hyper-V Sanallaştırması etkin olan bir fiziksel sunucu söz konusu olduğunda, hazırlık kategorisi yanlış bir şekilde "hazır değil" olarak işaretlenmiş olabilir. Bu sunucularda, bir ürün boşluğu nedeniyle Azure geçişi Şu anda fiziksel ve Sanal bağdaştırıcıları bulur. Bu nedenle, hayır. bulunan ağ bağdaştırıcılarının sayısı, gerçek değerden daha yüksek. Hem şirket içinde hem de performans tabanlı değerlendirmelerinde, sunucu değerlendirmesi gereken sayıda ağ bağdaştırıcısını destekleyebilen bir Azure VM 'si seçer. Ağ bağdaştırıcılarının sayısının 32 ' den yüksek olduğu tespit edildiğinde, en fazla No. Azure VM 'lerde desteklenen NIC 'Ler, makine "Ready" olarak işaretlenir.  Hayır 'ın etkisi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) . , boyutlandırmanın bulunduğu NIC 'ler.
+
+
+## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Fiziksel sunucular için gerçek sayıdan yüksek bulunan NIC sayısı
+
+Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Azure geçişi Şu anda bu sunucularda fiziksel ve Sanal bağdaştırıcıları tespit eder. Bu nedenle, hayır. bulunan NIC 'ler gerçek değerden daha yüksek.
+
+
+## <a name="low-confidence-rating-on-physical-server-assessments"></a>Fiziksel sunucu değerlendirmelerinde düşük güvenilirlikli derecelendirme
+Derecelendirme, değerlendirmeyi hesaplamak için gereken veri noktalarının kullanılabilirliğine göre atanır. Hyper-V Sanallaştırması 'nın etkin olduğu fiziksel sunucular söz konusu olduğunda, fiziksel sunucu değerlendirmelerine doğru şekilde en düşük güvenilirlik derecelendirmesinin atanabileceği bilinen bir ürün boşluğu vardır. Azure geçişi Şu anda bu sunucularda fiziksel ve Sanal bağdaştırıcıları tespit eder. Ağ aktarım hızı, bulunan ancak fiziksel ağ bağdaştırıcılarında bulunmayan sanal ağ bağdaştırıcılarında yakalanır. Fiziksel ağ bağdaştırıcılarında veri noktalarının yokluğu nedeniyle, güven derecelendirmesi etkilenerek düşük bir derecelendirmeye neden olabilir. Bu, ileride gönderilecek bir ürün eksikmidir.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Kamu 'da bağımlılık görselleştirmesi
 
@@ -159,7 +186,7 @@ Aracısız bağımlılık analizinde, işlem adları en iyi çaba temelinde yaka
 
 Ağ trafiği günlüklerini aşağıda gösterildiği gibi toplayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse, **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
    - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.

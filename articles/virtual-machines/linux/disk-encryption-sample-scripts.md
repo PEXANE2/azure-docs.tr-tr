@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610362"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Şifrelemesi örnek betikleri 
 
@@ -104,7 +104,7 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 4. İşletim sistemini şifrelemek için, şifrelemeyi etkinleştirdiğiniz sırada volumeType 'ı **All** veya **OS** olarak belirtin.
 
    > [!NOTE]
-   > Hizmet olarak `systemd` çalıştırmayan tüm Kullanıcı alanı işlemlerinin bir `SIGKILL`ile sonlandırılmalıdır. VM 'yi yeniden başlatın. Çalışan bir sanal makinede işletim sistemi disk şifrelemesini etkinleştirdiğinizde, VM kapalı kalma süresini planlayın.
+   > Hizmet olarak çalıştırmayan tüm Kullanıcı alanı işlemlerinin `systemd` bir ile sonlandırılmalıdır `SIGKILL` . VM 'yi yeniden başlatın. Çalışan bir sanal makinede işletim sistemi disk şifrelemesini etkinleştirdiğinizde, VM kapalı kalma süresini planlayın.
 
 5. Bir [sonraki bölümdeki](#monitoring-os-encryption-progress)yönergeleri kullanarak şifreleme ilerlemesini düzenli olarak izleyin.
 
@@ -123,7 +123,7 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 ## <a name="monitoring-os-encryption-progress"></a>İşletim sistemi şifreleme ilerlemesini izleme
 İşletim sistemi şifreleme ilerlemesini üç şekilde izleyebilirsiniz:
 
-* `Get-AzVmDiskEncryptionStatus` Cmdlet 'ini kullanın ve ilerlemedurumuiletisi alanını inceleyin:
+* `Get-AzVmDiskEncryptionStatus`Cmdlet 'ini kullanın ve ilerlemedurumuiletisi alanını inceleyin:
     ```powershell
     OsVolumeEncrypted          : EncryptionInProgress
     DataVolumesEncrypted       : NotMounted
@@ -132,7 +132,7 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
     ```
   VM "işletim sistemi disk şifrelemesi başlatıldı" değerine ulaştıktan sonra, Premium Depolama ile desteklenen bir VM 'de 40 dakika 50 dakika sürer.
 
-  Walınuxagent içindeki [sorun #388](https://github.com/Azure/WALinuxAgent/issues/388) `OsVolumeEncrypted` ve `DataVolumesEncrypted` bazı dağıtımlarda olarak `Unknown` göster. Walınuxagent sürüm 2.1.5 ve sonrasında bu sorun otomatik olarak düzeltilir. Çıktıda görürseniz `Unknown` , Azure Kaynak Gezgini kullanarak disk şifreleme durumunu doğrulayabilirsiniz.
+  Walınuxagent içindeki [sorun #388](https://github.com/Azure/WALinuxAgent/issues/388) `OsVolumeEncrypted` ve `DataVolumesEncrypted` bazı dağıtımlarda olarak göster `Unknown` . Walınuxagent sürüm 2.1.5 ve sonrasında bu sorun otomatik olarak düzeltilir. `Unknown`Çıktıda görürseniz, Azure Kaynak Gezgini kullanarak disk şifreleme durumunu doğrulayabilirsiniz.
 
   [Azure Kaynak Gezgini](https://resources.azure.com/)gidin ve sol taraftaki seçim panelinde bu hiyerarşiyi genişletin:
 
@@ -152,7 +152,7 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 
   ![VM örnek görünümü](./media/disk-encryption/vm-instanceview.png)
 
-* [Önyükleme tanılarına](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)bakın. ADE uzantısından gelen iletiler ön eki olmalıdır `[AzureDiskEncryption]`.
+* [Önyükleme tanılarına](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)bakın. ADE uzantısından gelen iletiler ön eki olmalıdır `[AzureDiskEncryption]` .
 
 * SSH aracılığıyla VM 'de oturum açın ve şu kaynaktan uzantı günlüğünü alın:
 
@@ -244,7 +244,7 @@ Aşağıdaki adımları uygulayarak şifrelemeyi Azure ile çalışacak şekilde
     nls_utf8
     nls_iso8859-1
    ```
-6. Bir `update-initramfs -u -k all` `keyscript` işlem yapmak için initramfs 'yi güncelleştirmek üzere çalıştırın.
+6. Bir `update-initramfs -u -k all` işlem yapmak için initramfs 'yi güncelleştirmek üzere çalıştırın `keyscript` .
 
 7. Artık VM 'yi sağlamayı seçebilirsiniz.
 
@@ -290,7 +290,7 @@ Dağıtım yüklemesi sırasında şifrelemeyi yapılandırmak için aşağıdak
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   yerine şunu yazın:
+   Yeni değer:
    ```bash
     if [ 1 ]; then
    ```
@@ -316,11 +316,11 @@ Dağıtım yüklemesi sırasında şifrelemeyi yapılandırmak için aşağıdak
     fi
     done
     ```
-5. Initrd öğesini güncelleştirmek için ' i çalıştırın `/usr/sbin/dracut -f -v` .
+5. `/usr/sbin/dracut -f -v`Initrd öğesini güncelleştirmek için ' i çalıştırın.
 
 6. Artık VM 'nin sağlamasını yapabilir ve VHD 'nizi Azure 'a yükleyebilirsiniz.
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 ve RHEL 8,1
+### <a name="centos-7-and-rhel-7"></a>CentOS 7 ve RHEL 7
 
 Dağıtım yüklemesi sırasında şifrelemeyi yapılandırmak için aşağıdaki adımları uygulayın:
 1. Diskleri bölümlediğinizde verilerimi **şifreleyin** ' ı seçin.
@@ -439,7 +439,7 @@ Anahtar kasasında gizli dizi ayarlamak için [set-AzKeyVaultSecret](/powershell
 `$secretUrl` [Kek kullanmadan işletim sistemi diski eklemek](#without-using-a-kek)için bir sonraki adımda kullanın.
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Disk şifrelemesi gizli anahtarı bir KEK ile şifrelendi
-Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtarını kullanarak isteğe bağlı olarak şifreleyebilirsiniz. Anahtar şifreleme anahtarını kullanarak parolayı ilk kez şifrelemek için wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 'sini kullanın. Bu Wrap işleminin çıktısı Base64 URL kodlamalı bir dizedir ve [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 'ini kullanarak bir gizli dizi olarak karşıya yükleyebilirsiniz.
+Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtarını kullanarak isteğe bağlı olarak şifreleyebilirsiniz. Anahtar şifreleme anahtarını kullanarak parolayı ilk kez şifrelemek için wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 'sini kullanın. Bu Wrap işleminin çıktısı Base64 URL kodlamalı bir dizedir ve cmdlet 'ini kullanarak bir gizli dizi olarak karşıya yükleyebilirsiniz [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) .
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -529,12 +529,12 @@ Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtar�
     $secretUrl = $response.id
 ```
 
-`$KeyEncryptionKey` [Kek kullanarak işletim sistemi diskini eklemek](#using-a-kek)için bir sonraki adımda ve `$secretUrl` kullanın.
+`$KeyEncryptionKey` `$secretUrl` [Kek kullanarak işletim sistemi diskini eklemek](#using-a-kek)için bir sonraki adımda ve kullanın.
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Bir işletim sistemi diski iliştirmeye çalıştığınızda gizli bir URL belirtin
 
 ###  <a name="without-using-a-kek"></a>KEK kullanmadan
-İşletim sistemi diskini iliştirirken geçirmeniz `$secretUrl`gerekir. URL, "bir KEK ile şifrelenmemiş disk şifrelemesi" bölümünde oluşturulmuştur.
+İşletim sistemi diskini iliştirirken geçirmeniz gerekir `$secretUrl` . URL, "bir KEK ile şifrelenmemiş disk şifrelemesi" bölümünde oluşturulmuştur.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -547,7 +547,7 @@ Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtar�
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>KEK kullanma
-İşletim sistemi diskini iliştirmeniz durumunda, ve `$KeyEncryptionKey` `$secretUrl`geçirin. URL, "bir KEK ile şifrelenen disk şifreleme gizli dizisi" bölümünde oluşturulmuştur.
+İşletim sistemi diskini iliştirmeniz durumunda, `$KeyEncryptionKey` ve geçirin `$secretUrl` . URL, "bir KEK ile şifrelenen disk şifreleme gizli dizisi" bölümünde oluşturulmuştur.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

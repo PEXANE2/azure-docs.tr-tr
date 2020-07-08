@@ -11,21 +11,22 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608526"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory Kullanıcı asıl adı değişikliklerini planlayın ve sorun giderin
 
 Kullanıcı asıl adı (UPN), Kullanıcı hesapları için internet iletişim standardı olan bir özniteliktir. UPN, bir UPN öneki (Kullanıcı hesabı adı) ve bir UPN soneki (bir DNS etki alanı adı) içerir. Ön ek, "@" sembolünü kullanarak soneki birleştirir. Örneğin, someone@example.com. Bir UPN, bir Dizin ormanı içindeki tüm güvenlik sorumlusu nesneleri arasında benzersiz olmalıdır. 
 
-> [!NOTE]
-> Geliştiriciler için Kullanıcı ObjectID 'yi, UPN yerine sabit tanımlayıcı olarak kullanmanızı öneririz. Uygulamalarınız Şu anda UPN kullanıyorsa, kendi deneyimlerini geliştirmek için UPN 'nin kullanıcının birincil e-posta adresiyle eşleşecek şekilde ayarlanmasını öneririz.<br> **Karma bir ortamda, bir Kullanıcı IÇIN UPN 'nin şirket içi dizin ve Azure Active Directory aynı olması önemlidir**.
-
 **Bu makale, Kullanıcı tanımlayıcısı olarak UPN kullandığınızı varsayar. Bu, UPN değişikliklerinin planlanmasına ve UPN değişikliklerinden kaynaklanan sorunlardan kurtarılmasını ele alınmaktadır.**
+
+> [!NOTE]
+> Geliştiriciler için, Kullanıcı ObjectID 'yi, değerlerinin değiştirebildiği UPN veya e-posta adresleri yerine sabit tanımlayıcı olarak kullanmanızı öneririz.
+
 
 ## <a name="learn-about-upns-and-upn-changes"></a>UPN 'ler ve UPN değişiklikleri hakkında bilgi edinin
 Oturum açma sayfaları genellikle, gerekli değer aslında UPN 'si olduğunda kullanıcılardan kendi e-posta adreslerini girmesini ister. Bu nedenle, kullanıcıların UPN 'sini her zaman birincil e-posta adresi değişikliklerine göre değiştirdiğinizden emin olmalısınız.
@@ -47,10 +48,10 @@ Kullanıcıların birincil e-posta adresleri birçok nedenden dolayı değişebi
 * **Ön ek değiştiriliyor**.
 
    *  Örneğin, bir kişinin adı değiştiyse, hesap adını değiştirebilirsiniz:  
-BSimon@contoso.com içinBJohnson@contoso.com
+BSimon@contoso.comiçinBJohnson@contoso.com
 
    * Ayrıca, ön ekler için Kurumsal standarda de değişiklik yapabilirsiniz:  
-Bsimon@contoso.com içinBritta.Simon@contoso.com
+Bsimon@contoso.comiçinBritta.Simon@contoso.com
 
 * **Son ek değiştiriliyor**. <br>
 
@@ -60,7 +61,7 @@ Bsimon@contoso.com içinBritta.Simon@contoso.com
      Veya<br>
     * Britta.Simon@corp.contoso.comHedefBritta.Simon@labs.contoso.com 
 
-Kullanıcının birincil e-posta adresi her güncelleştirildiği sırada kullanıcının UPN 'sini değiştirin. E-posta değişikliğinin nedenine bakılmaksızın, UPN 'nin her zaman eşleşecek şekilde güncellenmesi gerekir.
+Birincil e-posta adresleri her güncelleştirildiği sırada kullanıcıların UPN 'sini değiştirmenizi öneririz.
 
 Active Directory 'den Azure AD 'ye ilk eşitleme sırasında, kullanıcıların e-postalarının UPN 'lerine özdeş olduğundan emin olun.
 
@@ -77,7 +78,7 @@ username@contoso.com
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> Active Directory ve Azure Active Directory 'de UPN 'ler eşleşmezse, sorunlar oluşur. [Active Directory soneki değiştiriyorsanız](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), Azure AD 'de eşleşen bir özel etki alanı adının [eklendiğinden ve doğrulandığından](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)emin olmanız gerekir. 
+> [Active Directory soneki değiştiriyorsanız](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), Azure AD 'de eşleşen bir özel etki alanı adının [eklendiğinden ve doğrulandığından](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)emin olmanız gerekir. 
 
 ![Doğrulanan etki alanlarının ekran görüntüsü](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -115,7 +116,7 @@ Aşağıdaki bölümler, UPN 'ler değiştirildiğinde olası bilinen sorunları
 **Bilinen sorun**<br>
 Bir kullanıcının UPN 'sini değiştirmek, Azure AD kullanıcısı ve uygulamada oluşturulan kullanıcı profili arasındaki ilişkiyi bozabilir. Uygulama [tam zamanında sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)kullanıyorsa, yeni bir kullanıcı profili oluşturabilir. Bu, uygulama yöneticisinin bu ilişkiyi onarmak için el ile değişiklikler yapmasını gerektirir.
 
-**Sorunu**<br>
+**Geçici çözüm**<br>
 [Azure AD otomatik Kullanıcı sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) , desteklenen bulut uygulamalarında kullanıcı kimliklerinizi otomatik olarak oluşturmanıza, korumanıza ve kaldırmanıza olanak sağlar. Uygulamalarınızda otomatik Kullanıcı sağlamayı yapılandırmak, uygulamalardaki UPN 'leri otomatik olarak güncelleştirir. , UPN değişikliklerinden etkilenmediğinden emin olmak için uygulamaları aşamalı dağıtım kapsamında test edin.
 Geliştiricisiyseniz, Azure Active Directory otomatik Kullanıcı sağlamayı etkinleştirmek için [uygulamanıza SCIM desteği eklemeyi](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) göz önünde bulundurun. 
 
@@ -130,10 +131,14 @@ Geliştiricisiyseniz, Azure Active Directory otomatik Kullanıcı sağlamayı et
 **Bilinen sorunlar** <br>
 Kullanıcılar, kimlik doğrulaması için Azure AD 'ye bağlı olan uygulamalarla çoklu oturum açma sorunları yaşayabilir.
 
-**Sorunu** <br>
+**Çözünürlük** <br>
+Bu bölümde bahsedilen sorunlar Windows 10 Mayıs 2020 Güncelleştirmesi (2004) üzerinde düzeltildi.
+
+**Geçici çözüm** <br>
 UPN değişikliğinin Azure AD ile eşitlenmesi için yeterli zaman bekleyin. Yeni UPN 'nin Azure AD portalında yansıtıldığını doğruladıktan sonra, kullanıcıdan yeni UPN 'si ile oturum açmak için "diğer Kullanıcı" kutucuğunu seçmesini isteyin. [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)aracılığıyla da doğrulayabilirsiniz. Yeni UPN 'si ile oturum açtıktan sonra eski UPN başvuruları "iş veya okul erişimi" Windows ayarında görünmeye devam edebilir.
 
 ![Doğrulanan etki alanlarının ekran görüntüsü](./media/howto-troubleshoot-upn-changes/other-user.png)
+
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrit Azure AD’ye katılmış cihazlar
 
@@ -149,13 +154,17 @@ Ayrıca, bir dakika sonra yeniden başlatmaya zorlamak için aşağıdaki ileti 
 
 "Bilgisayarınız bir dakika içinde otomatik olarak yeniden başlatılacak. Windows bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Bu iletiyi şimdi kapatmanız ve çalışmalarınızı kaydetmeniz gerekir.
 
-**Sorunu** 
+**Çözünürlük** <br>
+Bu bölümde bahsedilen sorunlar Windows 10 Mayıs 2020 Güncelleştirmesi (2004) üzerinde düzeltildi.
+
+**Geçici çözüm** 
 
 Cihazın Azure AD 'den katılmamış ve yeniden başlatılması gerekiyor. Yeniden başlattıktan sonra cihaz otomatik olarak Azure AD 'ye katılır ve kullanıcının "diğer Kullanıcı" kutucuğunu seçerek yeni UPN 'yi kullanarak oturum açması gerekir. Bir cihazın Azure AD 'den katılmayı kaldırmak için komut isteminde aşağıdaki komutu çalıştırın:
 
 **dsregcmd/Leave**
 
 Kullanıcının kullanılıyorsa Iş için Windows Hello 'ya [yeniden kaydolması](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) gerekecektir. Windows 7 ve 8,1 cihazları, UPN değişikliklerinden sonra bu sorundan etkilenmez.
+
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Bilinen sorunları ve geçici çözümleri Microsoft Authenticator
 
@@ -179,7 +188,7 @@ Microsoft Authenticator uygulama bant dışı doğrulama seçeneği sunar. Oturu
 
 Bir kullanıcının UPN 'sini değiştirdiğinizde, eski UPN hala Kullanıcı hesabında görüntülenir ve bir bildirim alınmayabilir. [Doğrulama kodları](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) çalışmaya devam eder.
 
-**Sorunu**
+**Geçici çözüm**
 
 Bir bildirim alındığında, kullanıcıdan bildirimi yok saymasını isteyin, Authenticator uygulamasını açın, "bildirimleri denetle" seçeneğine dokunun ve MFA isteğini onaylayın. Bundan sonra hesapta görüntülenecek UPN güncelleştirilir. Güncelleştirilmiş UPN 'nin yeni bir hesap olarak görüntülenebileceğini, bunun nedeni kullanılan diğer kimlik doğrulayıcı işlevlerinden kaynaklanıyor olduğunu aklınızda olun. Daha fazla bilgi için bu makaledeki diğer bilinen sorunlara bakın.
 
@@ -198,7 +207,7 @@ Ayrıca, uygulamaların [koşullu erişim](https://docs.microsoft.com/azure/acti
 **Bilinen sorunlar**<br>
 Kullanıcıya, uygulama tarafından geçirilen login_hint ile aracıda depolanan UPN arasında uyuşmazlık olduğundan, aracı destekli oturum açma kullanan yeni uygulamalarda daha etkileşimli kimlik doğrulama istemleri sunulur.
 
-**Sorunu** <br> Kullanıcının hesabı Microsoft Authenticator ' dan el ile kaldırması ve aracı yardımlı bir uygulamadan yeni bir oturum açma başlatması gerekir. Hesap ilk kimlik doğrulamasından sonra otomatik olarak eklenir.
+**Geçici çözüm** <br> Kullanıcının hesabı Microsoft Authenticator ' dan el ile kaldırması ve aracı yardımlı bir uygulamadan yeni bir oturum açma başlatması gerekir. Hesap ilk kimlik doğrulamasından sonra otomatik olarak eklenir.
 
 ### <a name="device-registration"></a>Cihaz kaydı
 
@@ -213,7 +222,7 @@ Microsoft Authenticator uygulaması, cihazın Azure AD 'ye kaydedilmesinden soru
 **Bilinen sorunlar**<br>
 UPN 'yi değiştirdiğinizde Microsoft Authenticator uygulamasında yeni UPN 'ye sahip yeni bir hesap görüntülenir, eski UPN 'ye sahip hesap hala listelenmeye devam eder. Ayrıca, eski UPN, uygulama ayarlarındaki cihaz kaydı bölümünde görüntülenir. Cihaz kaydı veya bağımlı senaryolar normal işlevselliğinde değişiklik yapılmaz.
 
-**Sorunu** <br> Microsoft Authenticator uygulamasındaki eski UPN 'nin tüm başvurularını kaldırmak için, kullanıcıya Microsoft Authenticator hem eski hem de yeni hesapları el ile kaldırmasını isteyin, MFA için yeniden kaydolun ve cihaza yeniden katılın.
+**Geçici çözüm** <br> Microsoft Authenticator uygulamasındaki eski UPN 'nin tüm başvurularını kaldırmak için, kullanıcıya Microsoft Authenticator hem eski hem de yeni hesapları el ile kaldırmasını isteyin, MFA için yeniden kaydolun ve cihaza yeniden katılın.
 
 ### <a name="phone-sign-in"></a>Telefonla oturum açma
 
@@ -222,7 +231,7 @@ Telefonla oturum açma, kullanıcıların Azure AD 'de parola olmadan oturum aç
 **Bilinen sorunlar** <br>
 Kullanıcılar, herhangi bir bildirim almadıkları için telefonla oturum açmayı kullanamaz. Kullanıcı bildirimlerin denetimine dokunursa bir hata alırlar.
 
-**Sorunu**<br>
+**Geçici çözüm**<br>
 Kullanıcının telefon oturumu açmak için etkinleştirilen hesapta açılan menüyü seçmesini ve telefonla oturum açmayı devre dışı bırakması gerekir. İsterseniz, telefonla oturum açma yeniden etkinleştirilebilir.
 
 ## <a name="security-key-fido2-known-issues-and-workarounds"></a>Güvenlik anahtarı (FIDO2) bilinen sorunlar ve geçici çözümler
@@ -230,7 +239,7 @@ Kullanıcının telefon oturumu açmak için etkinleştirilen hesapta açılan m
 **Bilinen sorunlar** <br>
 Aynı anahtara birden çok Kullanıcı kaydedildiğinde, oturum açma ekranında eski UPN 'nin görüntülendiği bir hesap seçim sayfası gösterilir. Güvenlik anahtarlarını kullanarak oturum açma, UPN değişikliklerinden etkilenmez.  
 
-**Sorunu**<br>
+**Geçici çözüm**<br>
 Eski UPN başvurularını kaldırmak için, kullanıcıların [güvenlik anahtarını sıfırlaması ve yeniden kaydedilmesi](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key#known-issues)gerekir.
 
 ## <a name="onedrive-known-issues-and-workarounds"></a>OneDrive bilinen sorunlar ve geçici çözümler

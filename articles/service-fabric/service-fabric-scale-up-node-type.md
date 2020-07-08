@@ -3,22 +3,19 @@ title: Azure Service Fabric düğüm türünü büyütme
 description: Bir sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmeyi öğrenin.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610702"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric kümesi birincil düğüm türünün ölçeğini artırma
 Bu makalede, sanal makine kaynaklarını artırarak Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir. Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM 'lerinin işletim sistemini yükseltebilirsiniz.  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
 
 > [!WARNING]
-> Küme durumu uygun değilse, birincil NodeType VM SKU 'sunu değiştirmeye başlamaın. Küme durumu uygun değilse, VM SKU 'sunu değiştirmeye çalışırsanız kümeyi yalnızca daha fazla sabitleyecaksınız.
+> Küme durumu sağlıksız ise, birincil düğüm türü ölçeği artırma yordamını denemeyin, çünkü bu durum yalnızca kümenin daha fazla kararlı hale gelmesine sebep olur.
 >
-> Bir ölçek kümesi/düğüm türünün sanal makine SKU 'sunu, [gümüş dayanıklılık veya daha büyük](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)bir zamanda çalışmadığı takdirde değiştirmenizi öneririz. VM SKU 'SU boyutunun değiştirilmesi, veri bozucu bir yerinde altyapı işlemidir. Bu değişikliği gecikme veya izlemeye yönelik bir özellik olmadan, işlem durum bilgisi olmayan hizmetler için veri kaybına neden olabilir veya durum bilgisiz iş yükleri için bile öngörülemeyen çalışma sorunlarına neden olabilir. Bu, durum bilgisi olmayan Service Fabric sistem hizmetlerini çalıştıran birincil düğüm türü ya da durum bilgisi olan uygulama iş yüklerinizi çalıştıran herhangi bir düğüm türü anlamına gelir.
->
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,7 +68,7 @@ $parameterFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.parameters.json"
 > [!NOTE]
 > `certOutputFolder`Yeni bir Service Fabric kümesi dağıtmak için komutunu çalıştırmadan önce, konumun yerel makinenizde mevcut olduğundan emin olun.
 
-Sonra *Deploy-2NodeTypes-2ScaleSets. Parameters. JSON* dosyasını açın ve değerlerini, `clusterName` `dnsName` PowerShell 'de ayarladığınız dinamik değerlere karşılık gelen ve ile değiştirin ve değişikliklerinizi kaydedin.
+Sonra, *Deploy-2NodeTypes-2ScaleSets.parameters.jsdosya üzerinde* açın ve değerlerini, `clusterName` `dnsName` PowerShell 'de ayarladığınız dinamik değerlere karşılık gelecek şekilde ayarlayın ve değişikliklerinizi kaydedin.
 
 Sonra Service Fabric test kümesini dağıtın:
 
@@ -159,6 +156,8 @@ Get-ServiceFabricClusterHealth
 ## <a name="migrate-nodes-to-the-new-scale-set"></a>Düğümleri yeni ölçek kümesine geçirme
 
 Artık orijinal ölçek kümesinin düğümlerini devre dışı bırakmaya başlamaya hazırsınız. Bu düğümler devre dışı bırakıldığı için, sistem hizmetleri ve çekirdek düğümleri, birincil düğüm türü olarak da işaretlendiğinden, yeni ölçek kümesinin VM 'lerine geçirilir.
+
+Birincil olmayan düğüm türlerini ölçeklendirmek için, bu adımda hizmet yerleştirme kısıtlamasını yeni sanal makine ölçek kümesi/düğüm türünü içerecek şekilde değiştirir ve ardından eski sanal makine ölçek kümesi örnek sayısını sıfıra, tek seferde bir düğüm (düğüm kaldırma işleminin küme güvenilirliğini etkilememesini sağlamak için) azaltabilirsiniz.
 
 ```powershell
 # Disable the nodes in the original scale set.

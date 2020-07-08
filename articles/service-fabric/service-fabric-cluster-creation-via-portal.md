@@ -3,17 +3,17 @@ title: Azure portalında bir Service Fabric kümesi oluşturma
 description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Service Fabric kümesi ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611161"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalındaki](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -30,7 +30,7 @@ Bu, Azure portal kullanarak Azure 'da Service Fabric kümesi (Linux veya Windows
 ## <a name="cluster-security"></a>Küme güvenliği 
 Sertifikalar, Service Fabric’te bir küme ile uygulamalarının çeşitli yönlerini güvenli hale getirmek üzere kimlik doğrulaması ve şifreleme sağlamak için kullanılır. Sertifikaların Service Fabric’te kullanılmasıyla ilgili daha fazla bilgi için bkz. [Service Fabric kümesi güvenlik senaryoları][service-fabric-cluster-security].
 
-İlk kez bir Service Fabric kümesi oluşturuyorsanız veya test iş yükleri için bir küme dağıtıyorsanız, sonraki bölüme atlayabilirsiniz (**Azure portalında küme oluşturun**) ve sistemin test iş yüklerini çalıştıran kümeleriniz için gereken sertifikaları oluşturmasını sağlayabilirsiniz. Üretim iş yükleri için bir küme ayarlıyorsanız okumaya devam edin.
+İlk kez bir Service Fabric kümesi oluşturuyorsanız veya test iş yükleri için bir küme dağıtıyorsanız, sonraki bölüme atlayabilirsiniz (**Azure Portal küme oluşturun**) ve sistemin test iş yüklerini çalıştıran kümeleriniz için gereken sertifikaları oluşturmasını sağlayabilirsiniz. Üretim iş yükleri için bir küme ayarlıyorsanız okumaya devam edin.
 
 #### <a name="cluster-and-server-certificate-required"></a>Küme ve sunucu sertifikası (gerekli)
 Bu sertifika, bir kümenin güvenliğini sağlamak ve bu sertifikaya yetkisiz erişimi engellemek için gereklidir. Küme güvenliğini birkaç yolla sağlar:
@@ -42,7 +42,7 @@ Bu amaçlarla kullanılmak üzere, sertifika aşağıdaki gereksinimlere uymalı
 
 * Sertifika bir özel anahtar içermelidir.
 * Sertifika, anahtar değişimi için, kişisel bilgi değişimi (. pfx) dosyasına verilebilir şekilde oluşturulmalıdır.
-* Sertifikanın konu adı, Service Fabric kümesine erişmek için kullanılan **etki alanı ile aynı olmalıdır** . Bu, kümenin HTTPS yönetim uç noktaları ve Service Fabric Explorer için TLS sağlamak için gereklidir. `.cloudapp.azure.com` Etki alanı için bir sertifika YETKILISINDEN (CA) bir TLS/SSL sertifikası edinemezsiniz. Kümeniz için özel bir etki alanı adı alın. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı kümeniz için kullanılan özel etki alanı adıyla aynı olmalıdır.
+* Sertifikanın konu adı, Service Fabric kümesine erişmek için kullanılan **etki alanı ile aynı olmalıdır** . Bu, kümenin HTTPS yönetim uç noktaları ve Service Fabric Explorer için TLS sağlamak için gereklidir. Etki alanı için bir sertifika yetkilisinden (CA) bir TLS/SSL sertifikası edinemezsiniz `.cloudapp.azure.com` . Kümeniz için özel bir etki alanı adı alın. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı kümeniz için kullanılan özel etki alanı adıyla aynı olmalıdır.
 
 #### <a name="client-authentication-certificates"></a>İstemci kimlik doğrulama sertifikaları
 Ek istemci sertifikaları, küme yönetim görevleri için yöneticilerin kimliğini doğrular. Service Fabric iki erişim düzeyine sahiptir: **yönetici** ve **salt okuma Kullanıcı**. En azından, yönetim erişimi için tek bir sertifika kullanılmalıdır. Ek Kullanıcı düzeyinde erişim için ayrı bir sertifika sağlanmalıdır. Erişim rolleri hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri için rol tabanlı erişim denetimi][service-fabric-cluster-security-roles].
@@ -68,7 +68,7 @@ Uygulama gereksinimlerinizi karşılamak için bir üretim kümesi oluşturmak b
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric kümesi kaynağını arayın
 
-[Azure Portal][azure-portal] oturum açın.
+[Azure portalında][azure-portal] oturum açın.
 Yeni kaynak şablonu eklemek için **kaynak oluştur** ' a tıklayın. **Market** 'Teki Service Fabric kümesi şablonunu **her şey**için arayın.
 Listeden **Service Fabric kümesi** seçin.
 
@@ -107,7 +107,7 @@ Küme düğümlerinizi yapılandırın. Düğüm türleri, VM boyutlarını, VM 
 2. Birincil düğüm türü için en düşük sanal makine **boyutu** , küme Için seçtiğiniz **dayanıklılık katmanı** ile çalıştırılır. Dayanıklılık katmanı için varsayılan değer bronz ' dir. Dayanıklılık hakkında daha fazla bilgi için bkz. [Service Fabric kümesi dayanıklılığı seçme][service-fabric-cluster-durability].
 3. **Sanal makine boyutunu**seçin. D serisi VM 'Ler SSD sürücülerine sahiptir ve durum bilgisi olan uygulamalar için önemle önerilir. Kısmi çekirdekleri olan veya 10 GB 'den az kullanılabilir disk kapasitesi olan herhangi bir VM SKU 'SU kullanmayın. VM boyutunu seçerken yardım almak için bkz. [Service Fabric küme planlama değerlendirmesi belgesi][service-fabric-cluster-capacity] .
 4.  **Tek düğümlü küme ve üç düğümlü kümeler** yalnızca test kullanımı için tasarlanmıştır. Bunlar çalışan tüm üretim iş yükleri için desteklenmez.
-5. Düğüm türü için **Ilk VM Ölçek kümesi kapasitesini** seçin. Üzerinde daha sonra bir düğüm türündeki sanal makine sayısını ölçeklendirebilir veya izleyebilirsiniz, ancak birincil düğüm türünde üretim iş yükleri için en az beş olur. Diğer düğüm türlerinde en az bir VM olabilir. Birincil düğüm türü için en az sanal makine **sayısı** , kümenizin **güvenilirliğini artırır** .  
+5. Düğüm türü için **ilk sanal makine ölçek kümesi kapasitesini** seçin. Üzerinde daha sonra bir düğüm türündeki sanal makine sayısını ölçeklendirebilir veya izleyebilirsiniz, ancak birincil düğüm türünde üretim iş yükleri için en az beş olur. Diğer düğüm türlerinde en az bir VM olabilir. Birincil düğüm türü için en az sanal makine **sayısı** , kümenizin **güvenilirliğini artırır** .  
 6. **Özel uç noktaları**yapılandırın. Bu alan, uygulamalarınız için genel Internet 'e Azure Load Balancer göstermek istediğiniz, virgülle ayrılmış bağlantı noktalarının bir listesini girmenize olanak sağlar. Örneğin, kümenize bir Web uygulaması dağıtmayı planlıyorsanız, "80" girerek kümenize bağlantı noktası 80 üzerinde trafiğe izin verin. Uç noktalar hakkında daha fazla bilgi için bkz. [uygulamalarla iletişim kurma][service-fabric-connect-and-communicate-with-services]
 7. **Ters proxy 'Yi etkinleştirin**.  [Ters proxy Service Fabric](service-fabric-reverseproxy.md) , bir Service Fabric kümesinde çalışan mikro hizmetlerin, HTTP uç noktalarına sahip diğer hizmetlerle bulmasına ve iletişim kurmasına yardımcı olur.
 8. **Küme yapılandırması** dikey penceresine geri dönün ve **+ Isteğe bağlı ayarları göster**altında küme **tanılamayı**yapılandırın. Varsayılan olarak, tanılama, sorun giderme sorunlarını gidermeye yardımcı olmak için kümenizde etkinleştirilir. Tanılamayı devre dışı bırakmak istiyorsanız, **durumu** **kapalı**olarak değiştirin. Tanılamayı **kapatmak önerilmez.** Zaten Application Insights projesi oluşturduysanız, uygulama izlemelerinin kendisine yönlendirilmesi için anahtarını sağlayın.
@@ -209,7 +209,7 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güven
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
 [service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
-[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md

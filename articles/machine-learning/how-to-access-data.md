@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 07d2326d6677ccba93e2d3173bf8abccf309fe70
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609274"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -93,7 +93,7 @@ Veri deposu oluşturulduktan sonra, bu doğrulama yalnızca, veri deposu nesnele
 
 Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıfta bulunur ve formundadır `register_azure_*` .
 > [!IMPORTANT]
-> Depolama hesabınız bir sanal ağda ise, yalnızca **SDK aracılığıyla** veri depolarının oluşturulması desteklenir.
+> Bir sanal ağ içindeki depolama hesapları için bir veri deposu oluşturmayı planlıyorsanız, sanal ağ içindeki verilere erişim bölümüne bakın.
 
 Yöntemi Azure portal doldurmanız için gereken bilgileri bulabilirsiniz `register_azure_*()` . [Azure portal](https://portal.azure.com)
 
@@ -185,14 +185,14 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Azure Machine Learning Studio 'da birkaç adımda yeni bir veri deposu oluşturun:
 
 > [!IMPORTANT]
-> Depolama hesabınız bir sanal ağda ise, yalnızca [SDK aracılığıyla](#python-sdk) veri depolarının oluşturulması desteklenir. 
+> Veri depolama hesabınız bir sanal ağda ise, Studio 'nun verilerinize erişebildiğinden emin olmak için ek yapılandırma adımları gereklidir. Uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [ağ yalıtımı & gizliliği] (nasıl yapılır-etkinleştirme-sanal-ağ. MD # Machine-Learning-Studio). 
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. **Yönet**altında sol bölmedeki **veri depoları** ' nı seçin.
 1. **+ Yeni veri deposu**seçin.
 1. Yeni bir veri deposu için formu doldurun. Form, Azure depolama türü ve kimlik doğrulama türü seçimlerinize göre kendisini akıllıca güncelleştirir.
   
-Formu [Azure Portal](https://portal.azure.com)doldurmanız için gereken bilgileri bulabilirsiniz. Sol bölmede **depolama hesapları** ' nı seçin ve kaydetmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası hesap adı, kapsayıcı ve dosya paylaşma adı gibi bilgiler sağlar. 
+Formu [Azure Portal](https://portal.azure.com)doldurmanız için gereken bilgileri bulabilirsiniz. Sol bölmede **depolama hesapları** ' nı seçin ve kaydetmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası, hesap adı, kapsayıcı ve dosya paylaşımının adı gibi bilgiler sağlar. 
 
 * Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için, **Ayarlar** bölmesinde **erişim tuşları** ' na gidin. 
 
@@ -201,7 +201,7 @@ Formu [Azure Portal](https://portal.azure.com)doldurmanız için gereken bilgile
 > [!IMPORTANT]
 > Güvenlik nedenleriyle, bir Azure depolama hesabı (hesap anahtarı veya SAS belirteci) için erişim anahtarlarınızı değiştirmeniz gerekebilir. Bunu yaparken, yeni kimlik bilgilerini çalışma alanım ve ona bağlı veri depolarıyla eşitlediğinizden emin olun. Güncelleştirilmiş kimlik bilgilerinizi [Bu adımlarla](how-to-change-storage-access-key.md)eşitlemeyi öğrenin. 
 
-Aşağıdaki örnek, bir Azure blob veri deposu oluştururken formun nasıl göründüğünü göstermektedir: 
+Aşağıdaki örnek, bir **Azure blob veri deposu**oluştururken formun nasıl göründüğünü göstermektedir: 
     
 ![Yeni veri deposu için form](media/how-to-access-data/new-datastore-form.png)
 
@@ -299,6 +299,11 @@ Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu
 | [Azure IoT Edge modülü](how-to-deploy-and-where.md) | &nbsp; | Modelleri IoT Edge cihazlara dağıtın. |
 
 SDK 'nın veri depolarına erişim sağlamadığı durumlarda, verilere erişmek için ilgili Azure SDK 'sını kullanarak özel kod oluşturabilirsiniz. Örneğin, [Python Için Azure depolama SDK 'sı](https://github.com/Azure/azure-storage-python) , bloblarda veya dosyalarda depolanan verilere erişmek için kullanabileceğiniz bir istemci kitaplığıdır.
+
+
+## <a name="access-data-in-a-virtual-network"></a>Bir sanal ağdaki verilere erişme
+
+Depolama alanınız bir sanal ağın arkasındaysa verilerinize erişmek için çalışma alanınızın ve veri deposundaki ek yapılandırma adımlarını gerçekleştirmeniz gerekir. Bir sanal ağda veri depoları ve veri kümelerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [özel sanal ağlarla eğitim sırasında ağ yalıtımı &](how-to-enable-virtual-network.md#use-datastores-and-datasets).
 
 <a name="move"></a>
 

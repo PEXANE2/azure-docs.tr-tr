@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: a4cbe49efd605e2104dbbc9f389a85e8fc4c468e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611365"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -98,7 +98,7 @@ Hata 60028: "bir hata nedeniyle bulma başlatılamadı. Belirtilen konaklar veya
 - Doğrulama hatası varsa, hataları onarmak için düzeltme kılavuzunu gözden geçirin ve sonra **bulmayı Kaydet ve Başlat** seçeneğini tekrar deneyin.
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>Hata 60025: Azure AD işlemi başarısız oldu 
-Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturulurken veya güncelleştirilirken oluşan hata oluştu "bulmayı başlatmak için kullanılan Azure Kullanıcı hesabı gereci kaydetmek için kullanılan hesaptan farklı olduğunda gerçekleşir. Aşağıdakilerden birini yapın:
+Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturulurken veya güncelleştirilirken oluşan hata oluştu "bulmayı başlatmak için kullanılan Azure Kullanıcı hesabı gereci kaydetmek için kullanılan hesaptan farklı olduğunda gerçekleşir. Şunlardan birini yapın:
 
 - Keşfi başlatan kullanıcı hesabının gereci kaydetmek için kullanılan ile aynı olduğundan emin olun.
 - Bulma işleminin başarısız olduğu Kullanıcı hesabına Azure Active Directory Uygulama erişim izinleri sağlayın.
@@ -144,6 +144,10 @@ Bulunan VM 'Ler portalda görünmezse veya VM verileri güncel değilse, birkaç
 
 VM 'Leri silerseniz ve portalda hala görünüyorsa 30 dakika bekleyin. Hala görünüyorsa, yukarıda açıklandığı gibi yenileyin.
 
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Fiziksel sunucularım üzerinde bazı ağ bağdaştırıcılarının performans verilerini görmüyorum
+
+Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Bir ürün boşluğu nedeniyle, ağ aktarım hızı bulunan sanal ağ bağdaştırıcılarında yakalanır.
+
 ## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Hata: Yüklenen dosya beklenen biçimde değil
 Bazı araçların bölgesel ayarları, sınırlayıcı olarak noktalı virgül kullanan CSV dosyaları oluşturur. Ayarların sınırlayıcı olarak virgül kullandığından emin olun.
 
@@ -167,7 +171,7 @@ Azure geçişi, Azure geçişi: Sunucu değerlendirmesi kullanılarak uygulama, 
 
 Tipik uygulama bulma hataları tabloda özetlenir. 
 
-**Hata** | **Sağlamak** | **Eylem**
+**Hata** | **Neden** | **Eylem**
 --- | --- | ---
 9000: VMware araç durumu algılanamıyor.     |   VMWare araçları yüklenmemiş veya bozuk olabilir.    |   VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun.
 9001: VMware araçları yüklü değil.     |   VMWare araçları yüklenmemiş veya bozuk olabilir.    |   VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun.

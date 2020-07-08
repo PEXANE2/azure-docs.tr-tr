@@ -3,12 +3,12 @@ title: Azure Service Fabric küme dağıtımını planlayın
 description: Azure 'da bir üretim Service Fabric küme dağıtımını planlama ve hazırlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610600"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımını planlayın ve hazırlayın
 
@@ -28,7 +28,7 @@ Herhangi bir üretim dağıtımı için kapsite planlaması önemli bir adımdı
 * Kümenin güvenilirlik ve dayanıklılık özellikleri
 
 ### <a name="select-the-initial-number-of-node-types"></a>Düğüm türlerinin başlangıç sayısını seçin
-İlk olarak, oluşturduğunuz kümenin ne için kullanılacağını belirlemeniz gerekir. Bu kümeye dağıtmayı planladığınız uygulama türleri nelerdir? Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu? Hizmetlerinizin (uygulamanızı oluşturan) daha büyük RAM veya daha yüksek CPU döngüleri gibi farklı altyapı gereksinimlerine sahip olması gerekir mi? Service Fabric kümesi birden fazla düğüm türünden oluşabilir: birincil düğüm türü ve bir veya daha fazla birincil düğüm türü. Her düğüm türü bir sanal makine ölçek kümesi ile eşleştirilir. Daha sonra, her düğüm türünün ölçeği birbirinden bağımsız olarak artırılabilir veya azaltılabilir, her düğüm türünde farklı bağlantı noktası kümeleri açık olabilir ve farklı kapasite ölçümleri yapılabilir. Belirli hizmetleri belirli düğüm türlerine kısıtlamak için [düğüm özellikleri ve yerleştirme kısıtlamaları][placementconstraints] ayarlanabilir.  Daha fazla bilgi için, [kümenizin başlamak için gereken düğüm türlerinin sayısını](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)okuyun.
+İlk olarak, oluşturduğunuz kümenin ne için kullanılacağını belirlemeniz gerekir. Bu kümeye dağıtmayı planladığınız uygulama türleri nelerdir? Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu? Hizmetlerinizin (uygulamanızı oluşturan) daha büyük RAM veya daha yüksek CPU döngüleri gibi farklı altyapı gereksinimlerine sahip olması gerekir mi? Service Fabric kümesi birden fazla düğüm türünden oluşabilir: birincil düğüm türü ve bir veya daha fazla birincil düğüm türü. Her düğüm türü bir sanal makine ölçek kümesi ile eşleştirilir. Daha sonra, her düğüm türünün ölçeği birbirinden bağımsız olarak artırılabilir veya azaltılabilir, her düğüm türünde farklı bağlantı noktası kümeleri açık olabilir ve farklı kapasite ölçümleri yapılabilir. Belirli hizmetleri belirli düğüm türlerine kısıtlamak için [düğüm özellikleri ve yerleştirme kısıtlamaları][placementconstraints] ayarlanabilir.  Daha fazla bilgi için bkz. [küme kapasitesi planlamasını Service Fabric](service-fabric-cluster-capacity.md).
 
 ### <a name="select-node-properties-for-each-node-type"></a>Her düğüm türü için düğüm özelliklerini seçin
 Düğüm türleri, ilişkili ölçek kümesindeki VM 'lerin SKU 'sunu, numarasını ve özelliklerini tanımlar.
@@ -37,7 +37,7 @@ Her düğüm türü için en az sanal makine boyutu, düğüm türü için seçt
 
 Birincil düğüm türü için en az sanal makine sayısı, seçtiğiniz [güvenilirlik katmanına][reliability] göre belirlenir.
 
-Birincil düğüm [türleri](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)için en düşük önerilere, [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)ve [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)bakın.
+Birincil düğüm [türleri](service-fabric-cluster-capacity.md#primary-node-type)için en düşük önerilere, [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#stateful-workloads)ve [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#stateless-workloads)bakın.
 
 Düğüm sayısının alt sınırı, bu düğüm türünde çalıştırmak istediğiniz uygulama/hizmetlerin çoğaltmaları sayısını temel almalıdır.  [Service Fabric uygulamalar Için kapasite planlaması](service-fabric-capacity-planning.md) , uygulamalarınızı çalıştırmak için ihtiyacınız olan kaynakları tahmin etmenize yardımcı olur. Daha sonra değişen uygulama iş yükünü ayarlamak için kümenin ölçeğini değiştirebilir veya azaltabilirsiniz. 
 
@@ -62,14 +62,14 @@ Kısa ömürlü işletim sistemi diskleri, belirli bir Service Fabric özelliği
     > [!NOTE]
     > Bir sanal makine boyutunu, sanal makinenin işletim sistemi disk boyutundan büyük veya buna eşit bir önbellek boyutu seçtiğinizden emin olun, aksi takdirde Azure dağıtımınız hataya neden olabilir (başlangıçta kabul edilse bile).
 
-2. Veya üzeri bir sanal makine ölçek kümesi sürümü`vmssApiVersion`() belirtin: `2018-06-01`
+2. Veya üzeri bir sanal makine ölçek kümesi sürümü ( `vmssApiVersion` ) belirtin `2018-06-01` :
 
     ```xml
     "variables": {
         "vmssApiVersion": "2018-06-01",
     ```
 
-3. Dağıtım şablonunuzun sanal makine ölçek kümesi bölümünde, şu seçeneği belirtin `Local` `diffDiskSettings`:
+3. Dağıtım şablonunuzun sanal makine ölçek kümesi bölümünde, şu `Local` seçeneği belirtin `diffDiskSettings` :
 
     ```xml
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -123,5 +123,5 @@ Uygulamanız ve kümeniz üretim trafiği almaya hazırlanıyor mi? Kümenizin �
 * [Linux çalıştıran bir Service Fabric kümesi oluşturma](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster

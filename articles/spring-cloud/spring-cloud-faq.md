@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: e3c38a67b13a6b5c12767d38ecf2297d2417ebdb
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 9cdbe0630060c9155187e1f62aba3d7a40ceae98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610481"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -21,17 +21,17 @@ Bu makalede, Azure Spring Cloud hakkında sık sorulan sorular yanıtlanmaktadı
 
 ### <a name="why-azure-spring-cloud"></a>Neden Azure yay bulutu?
 
-Azure Spring Cloud, Spring Cloud geliştiricileri için hizmet olarak platform (PaaS) sağlar. Azure Spring Cloud, uygulama altyapınızı, uygulama kodu ve iş mantığına odaklanabilmeniz için yönetir. Azure yay bulutu 'nda yerleşik olarak bulunan temel özellikler Eureka, config Server, hizmet kayıt defteri sunucusu, özetleme oluşturma hizmeti, mavi-yeşil dağıtımlar ve daha fazlasını içerir. Bu hizmet, geliştiricilerin uygulamalarını Azure Cosmos DB, MySQL için Azure veritabanı ve Redsıs için Azure önbelleği gibi diğer Azure hizmetleriyle bağlamasını da sağlar.
+Azure Spring Cloud, Spring Cloud geliştiricileri için hizmet olarak platform (PaaS) sağlar. Azure Spring Cloud, uygulama altyapınızı, uygulama kodu ve iş mantığına odaklanabilmeniz için yönetir. Azure yay bulutu 'nda yerleşik olarak bulunan temel özellikler Eureka, config Server, hizmet kayıt defteri sunucusu, özetleme oluşturma hizmeti, mavi-yeşil dağıtım ve daha fazlasını içerir. Bu hizmet, geliştiricilerin uygulamalarını Azure Cosmos DB, MySQL için Azure veritabanı ve Redsıs için Azure önbelleği gibi diğer Azure hizmetleriyle bağlamasını da sağlar.
 
 Azure Spring Cloud, Azure Izleyici, Application Insights ve Log Analytics tümleştirerek geliştiriciler ve işleçler için uygulama tanılama deneyimini geliştirir.
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure yay bulutu ne kadar güvenlidir?
 
-Güvenlik ve gizlilik, Azure ve Azure Spring bulut müşterileri için en önemli önceliklerdir. Azure, tüm bu verileri güvenli bir şekilde şifreleyerek yalnızca müşterilerin uygulama verilerine, günlüklerine veya yapılandırmasına erişmesini sağlamaya yardımcı olur. Azure Spring Cloud 'daki tüm hizmet örnekleri birbirinden yalıtılmıştır.
+Güvenlik ve gizlilik, Azure ve Azure Spring bulut müşterileri için en önemli önceliklerdir. Azure, tüm bu verileri güvenli bir şekilde şifreleyerek yalnızca müşterilerin uygulama verilerine, günlüklerine veya yapılandırmasına erişmesini sağlamaya yardımcı olur. 
 
-Azure yay bulutu, tüm TLS/SSL ve sertifika yönetimi sağlar.
-
-OpenJDK ve Spring Cloud çalışma zamanları için kritik güvenlik düzeltme ekleri, Azure Spring Cloud 'a mümkün olan en kısa sürede uygulanır.
+* Azure Spring Cloud 'daki hizmet örnekleri birbirinden yalıtılmıştır.
+* Azure yay bulutu, tüm TLS/SSL ve sertifika yönetimi sağlar.
+* OpenJDK ve Spring Cloud çalışma zamanları için kritik güvenlik düzeltme ekleri, Azure Spring Cloud 'a mümkün olan en kısa sürede uygulanır.
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure yay bulutu hangi bölgelerde kullanılabilir?
 
@@ -42,7 +42,7 @@ Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya.
 Önizleme sürümü sırasında, Azure yay bulutu aşağıdaki bilinen sınırlamalara sahiptir:
 
 * `spring.application.name`, her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
-* `server.port`Git deposundan yapılandırma dosyasında izin verilmez. Bunu yapılandırma dosyasına eklemek, büyük olasılıkla uygulamanızı diğer uygulamalardan veya internet 'ten ulaşılamaz hale işleyecek.
+* `server.port`Varsayılan bağlantı noktaları 80/443 ' dir. Başka herhangi bir değer uygulanırsa, 80/443 olarak geçersiz kılınır.
 * Azure portal ve Azure Resource Manager şablonları uygulama paketlerinin yüklenmesini desteklemez. Uygulama paketlerini yalnızca uygulamayı Azure CLı aracılığıyla dağıtarak yükleyebilirsiniz.
 
 ### <a name="what-pricing-tiers-are-available"></a>Hangi fiyatlandırma katmanları kullanılabilir? 
@@ -61,7 +61,7 @@ Azure Spring Cloud ile çalışmaya başlamanın en hızlı yolu için [hızlı 
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure yay bulutu hangi Java çalışma zamanına destekler?
 
-Azure yay bulutu, Java 8 ve 11 ' i destekler.
+Azure yay bulutu, Java 8 ve 11 ' i destekler. Bkz. [Java çalışma zamanı ve işletim sistemi sürümleri](#java-runtime-and-os-versions)
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Yay bulutu uygulama Günlüklerimi ve ölçümlerini nereden görüntüleyebilirim?
 
@@ -75,7 +75,10 @@ Evet. Daha fazla bilgi için bkz. [öğretici: Azure Spring Cloud Ile dağıtıl
 
 ### <a name="what-resource-types-does-service-binding-support"></a>Hizmet bağlama hangi kaynak türlerini destekler?
 
-Şu anda üç hizmet desteklenmektedir: Azure Cosmos DB, MySQL için Azure veritabanı ve Redsıs için Azure önbelleği.
+Şu anda üç hizmet desteklenmektedir:
+* Azure Cosmos DB
+* MySQL için Azure Veritabanı
+* Redsıs için Azure önbelleği.
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Uygulamalarım içinden kalıcı birimleri görüntüleyebilir, ekleyebilir veya taşıyabilir miyim?
 
@@ -83,7 +86,52 @@ Evet.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure yay bulut hizmeti örneğini sildiğimde/taşırken, uzantı kaynakları da silinir/taşınır mi?
 
-Bu, uzantı kaynaklarının ait olduğu kaynak sağlayıcılarının günlüğe bağlı olarak değişir. Bir örneğin uzantı kaynakları `Microsoft.AppPlatform` aynı ad alanına ait değildir, bu nedenle davranışlar farklı kaynak sağlayıcılarına göre farklılık gösterir. Örneğin, silme/taşıma işlemi, **Tanılama ayarları** kaynakları için basamaklanmaz. Silinen bir kaynak KIMLIĞIYLE yeni bir Azure yay bulutu örneği sağlandıysa veya önceki Azure yay bulutu örneği geri taşınırsa, önceki **Tanılama ayarları** kaynakları genişlemeye devam eder.
+Bu, uzantı kaynaklarına sahip olan kaynak sağlayıcılarının mantığına bağlıdır. Bir örneğin uzantı kaynakları `Microsoft.AppPlatform` aynı ad alanına ait değildir, bu nedenle davranış kaynak sağlayıcısına göre değişir. Örneğin, silme/taşıma işlemi, **Tanılama ayarları** kaynakları için basamaklanmaz. Silinen bir kaynak KIMLIĞIYLE yeni bir Azure yay bulutu örneği sağlandıysa veya önceki Azure yay bulutu örneği geri taşınırsa, önceki **Tanılama ayarları** kaynakları genişlemeye devam eder.
+
+## <a name="java-runtime-and-os-versions"></a>Java çalışma zamanı ve işletim sistemi sürümleri
+
+### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud 'da hangi Java çalışma zamanı sürümleri desteklenir?
+
+Azure Spring Cloud, en son Derlemelerle Java LTS sürümlerini destekler, şu anda 2020 Haziran, Java 8 derleme 252 ve Java 11 derleme 7 destekleniyor. Bkz [. Azure için JDK 'yi ve Azure Stack yüklemeyi](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+
+### <a name="who-built-these-java-runtimes"></a>Bu Java çalışma zamanlarını kim derlediniz?
+
+Azul sistemleri. Microsoft ile Azul Systems’ın desteklediği Azul Zulu for Azure - Enterprise Edition JDK, OpenJDK’nın Azure ve Azure Stack’e yönelik çok platformlu, üretime hazır bir dağıtımıdır. Java SE uygulamalarını oluşturmak ve çalıştırmak için gereken tüm bileşenleri içerir.
+
+### <a name="how-often-will-java-runtimes-get-updated"></a>Java çalışma zamanları ne sıklıkla güncelleştirilir?
+
+LTS ve MTS JDK sürümleri, gerektiğinde üç aylık güvenlik güncelleştirmeleri, hata düzeltmeleri ve kritik bant dışı güncelleştirmeler ve düzeltme ekleri vardır. Bu destek, Java 7 ve 8 güvenlik güncelleştirmelerinin ve Java 11 gibi daha yeni Java sürümlerinde bildirilen hata düzeltmelerinin geri bağlantı noktalarını içerir.
+
+### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 ve Java 11 LTS sürümleri ne kadar süreyle destekleniyor?
+
+Bkz. [Azure ve Azure Stack için uzun süreli Java desteği](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+
+* Java 8 LTS, Aralık 2030 ' ye kadar desteklenecektir.
+* Java 11 LTS, 2027 Eylül tarihine kadar desteklenecektir.
+
+### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Yerel geliştirme için desteklenen bir Java çalışma zamanını nasıl indirebilirim?
+
+Bkz. [Azure için JDK 'Yi yükleyip Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+
+### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Eski Java çalışma zamanları için devre dışı bırakma ilkesi nedir?
+
+Genel bildirim, herhangi bir eski çalışma zamanı sürümü kullanımdan kaldırıldıktan sonra 12 ay sonra gönderilir. Sonraki bir sürüme geçiş yapmak için 12 aya sahip olursunuz.
+
+* Bir Java sürümünü devre dışı bırakacağız, abonelik yöneticileri e-posta bildirimi alır.
+* Devre dışı bırakma bilgileri belgelerde yayımlanacak.
+
+### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Java çalışma zamanı düzeyinde sorunlar için nasıl destek alabilirim?
+
+Azure desteği ile bir destek bileti açabilirsiniz.  Bkz. [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+### <a name="what-is-the-operation-system-to-run-my-apps"></a>Uygulamalarımı çalıştırmak için işletim sistemi nedir?
+
+En son Ubuntu LTS sürümü kullanılır; Şu anda [ubuntu 20,04 LTS (odak)](https://releases.ubuntu.com/focal/) varsayılan işletim sistemi.
+
+### <a name="how-often-will-os-security-patches-be-applied"></a>İşletim sistemi güvenlik düzeltme eklerinin ne sıklıkta uygulanması gerekir?
+
+Azure Spring Cloud için geçerli olan güvenlik düzeltme ekleri, aylık olarak üretime alınacaktır.
+Azure Spring Cloud için geçerli olan kritik güvenlik düzeltme ekleri (CVE puanı >= 9), mümkün olan en kısa sürede kullanıma sunulacaktır.
 
 ## <a name="deployment"></a>Dağıtım
 

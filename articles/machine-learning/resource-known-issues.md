@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 678a605ce1585b58cfc5f9aaea3423efa8d53ad3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610089"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -46,16 +46,16 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 
    Tek bir satır olarak yüklediğinizde çalışan bir bağımlılık Çözümleyicisi olmadığından, bu, PIP 'nin bilinen bir sınırlamasıdır. İlk benzersiz bağımlılık, tek bir baktığı tek. 
 
-   Aşağıdaki kodda `azure-ml-datadrift` ve `azureml-train-automl` tek satırlı bir pınstall kullanılarak yüklenir. 
+   Aşağıdaki kodda `azureml-datadrift` ve `azureml-train-automl` tek satırlı bir pınstall kullanılarak yüklenir. 
      ```
-       pip install azure-ml-datadrift, azureml-train-automl
+       pip install azureml-datadrift, azureml-train-automl
      ```
-   Bu örnekte, diyelim ki `azure-ml-datadrift` 1,0 sürüm > ve `azureml-train-automl` < 1,2 sürümünü gerektiriyor. En son sürümü `azure-ml-datadrift` 1,3 ise, `azureml-train-automl` daha eski bir sürümün paket gereksiniminden bağımsız olarak her iki paket de 1,3 ' e yükseltilir. 
+   Bu örnekte, diyelim ki `azureml-datadrift` 1,0 sürüm > ve `azureml-train-automl` < 1,2 sürümünü gerektiriyor. En son sürümü `azureml-datadrift` 1,3 ise, `azureml-train-automl` daha eski bir sürümün paket gereksiniminden bağımsız olarak her iki paket de 1,3 ' e yükseltilir. 
 
    Paketleriniz için uygun sürümlerin yüklendiğinden emin olmak için aşağıdaki kodda gibi birden çok satır kullanarak yükleme yapın. Burada sıra bir sorun değildir, çünkü PIP bir sonraki satır çağrısının parçası olarak açıkça indirgendiğinden. Bu nedenle, uygun sürüm bağımlılıkları uygulanır.
     
      ```
-        pip install azure-ml-datadrift
+        pip install azureml-datadrift
         pip install azureml-train-automl 
      ```
      

@@ -4,21 +4,21 @@ description: Azure Güvenlik Duvarı 'nı kullanarak Windows sanal masaüstü da
 author: vhorne
 ms.service: firewall
 services: firewall
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 86b30b644da929f10f5d7c9642d5f89fbd29a7fa
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611144"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Azure Güvenlik Duvarı 'nı kullanarak Windows sanal masaüstü dağıtımlarını koruma
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Sanal Masaüstü dağıtımlarını korumak için Azure Güvenlik Duvarı kullanma
 
 Windows sanal masaüstü, Azure 'da çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir. Bir son kullanıcı Windows sanal masaüstü ortamına bağlandığında, oturumları bir konak havuzu tarafından çalıştırılır. Konak havuzu, oturum ana bilgisayarları olarak Windows sanal masaüstüne kaydeden Azure sanal makineleri koleksiyonudur. Bu sanal makineler sanal ağınızda çalışır ve sanal ağ güvenlik denetimlerine tabidir. Windows sanal masaüstü hizmetine giden Internet erişiminin düzgün çalışması ve son kullanıcılar için giden Internet erişimi de gerekebilir. Azure Güvenlik Duvarı, ortamınızı kilitlemenize ve giden trafiği filtrelemenize yardımcı olabilir.
 
-[![Windows sanal masaüstü mimarisi](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png)](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
+[![Windows sanal masaüstü mimarisi ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png)](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
 
 Azure Güvenlik Duvarı 'nı kullanarak Windows sanal masaüstü ana bilgisayar havuzunuza ek koruma sağlamak için bu makaledeki yönergeleri izleyin.
 

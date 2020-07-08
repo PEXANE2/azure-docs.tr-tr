@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d754b02566c3026b908ab0a3254db3113cd225
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611297"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -120,7 +120,7 @@ Bir kullanıcının lisans atamasını güncelleştirme, proxy adresi hesaplamas
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>Denetim günlüklerinde LicenseAssignmentAttributeConcurrencyException
 
 **Sorun:** Kullanıcı, denetim günlüklerinde lisans ataması için LicenseAssignmentAttributeConcurrencyException sahiptir.
-Grup tabanlı lisanslama, bir kullanıcıya aynı lisansın eşzamanlı lisans atamasını işlemeye çalıştığında, bu özel durum kullanıcıya kaydedilir. Bu genellikle bir kullanıcı aynı atanmış lisansa sahip birden fazla grubun üyesi olduğunda gerçekleşir. AZure AD Kullanıcı lisansını işlemeyi yeniden deneyecek ve sorunu çözmeyecektir. Müşterinin bu sorunu çözmesi için gerekli bir işlem yoktur.
+Grup tabanlı lisanslama, bir kullanıcıya aynı lisansın eşzamanlı lisans atamasını işlemeye çalıştığında, bu özel durum kullanıcıya kaydedilir. Bu genellikle bir kullanıcı aynı atanmış lisansa sahip birden fazla grubun üyesi olduğunda gerçekleşir. Azure AD Kullanıcı lisansını işlemeyi yeniden deneyecek ve sorunu çözmeyecektir. Müşterinin bu sorunu çözmesi için gerekli bir işlem yoktur.
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Bir gruba birden fazla ürün lisansı atandı
 
