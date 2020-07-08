@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c17847546ace558d367aed6d935db0fed6d817f9
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84742207"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Privileged Identity Management yönetmek için diğer yöneticilere erişim izni verin
@@ -32,7 +32,7 @@ Bir kullanıcının kilitli olması veya hesaplarının silinmesi durumunda, ayr
 
 ## <a name="grant-access-to-manage-pim"></a>PıM 'yi yönetmek için erişim izni verme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Azure AD 'de **Privileged Identity Management**açın.
 
@@ -70,7 +70,7 @@ Bir kullanıcının kilitli olması veya hesaplarının silinmesi durumunda, ayr
 
 Ayrıcalıklı rol Yöneticisi rolünden birini kaldırmadan önce, en az iki kullanıcı atanmış olduğundan emin olun.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 

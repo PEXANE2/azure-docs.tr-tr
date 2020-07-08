@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8091890d174ae68f012a6ec24685a0e705100f8b
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743686"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rollerine erişimi gözden geçirin
@@ -37,7 +37,7 @@ Bu rolü kullanmaya devam etmenize bağlı olarak erişimi onaylayabilir veya re
 
 Erişim gözden geçirmesini bulmak ve gerçekleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. **Azure Active Directory** seçin ve **Privileged Identity Management**açın.
 1. **Erişimi gözden geçir**' i seçin.
 

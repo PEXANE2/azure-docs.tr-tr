@@ -1,5 +1,5 @@
 ---
-title: Bilişsel Arama ile kullanmak için bir model dağıtma
+title: Bilişsel Arama ile kullanmak üzere bir model dağıtma
 titleSuffix: Azure Machine Learning
 description: Bu makalede, Azure Bilişsel Arama ile kullanmak üzere bir modeli dağıtmak için Azure Machine Learning kullanma öğretilir. Bilişsel Arama, arama deneyimini zenginleştirmek için Azure Machine Learning özel bir beceri olarak dağıtılan modelleri kullanabilir.
 services: machine-learning
@@ -11,13 +11,13 @@ author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.openlocfilehash: c8b25e1d3ef2d2b780d88fbf2ba6c6568b4a804d
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84744962"
 ---
-# <a name="deploy-a-model-for-use-with-cognitive-search"></a>Bilişsel Arama ile kullanmak için bir model dağıtma
+# <a name="deploy-a-model-for-use-with-cognitive-search"></a>Bilişsel Arama ile kullanmak üzere bir model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, [Azure bilişsel arama](../search/search-what-is-azure-search.md)ile kullanmak üzere bir modeli dağıtmak için Azure Machine Learning kullanma öğretilir.

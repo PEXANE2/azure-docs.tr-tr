@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cad6c41b465e14b11d4fa7b8e7fa6037d49e8eae
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84742921"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management'ı kullanmaya başlama
@@ -63,7 +63,7 @@ Privileged Identity Management kurulduktan sonra, bunun nasıl yapılacağını 
 
 ![Görevleri gösterme ve seçenekleri yönetme Privileged Identity Management gezinti penceresi](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Görev + Yönet | Description |
+| Görev + Yönet | Açıklama |
 | --- | --- |
 | **Rollerim**  | Size atanan uygun ve etkin rollerin listesini görüntüler. Burada atanan uygun rolleri etkinleştirebilirsiniz. |
 | **İsteklerim** | Uygun rol atamalarını etkinleştirmek için bekleyen isteklerinizi görüntüler. |
@@ -76,7 +76,7 @@ Privileged Identity Management kurulduktan sonra, bunun nasıl yapılacağını 
 
 Privileged Identity Management açmayı kolaylaştırmak için Azure portal panonuza bir PıM kutucuğu ekleyin.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management** hizmeti bulun.
 

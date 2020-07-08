@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
 ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743601"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Ön kapıya bir kök veya tepesinde etki alanı ekleme
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Front Door’unuza kök veya apex etki alanı ekleme
 Azure ön kapısı, özel etki alanlarını eklemek için etki alanı sahipliğini doğrulamak üzere CNAME kayıtlarını kullanır. Ayrıca, ön kapı, ön kapı profilinizle ilişkili ön uç IP adresini kullanıma sunmaz ve amaç Azure ön kapısına eklemek için tepesinde etki alanınızı bir IP adresiyle eşleyemezsiniz.
 
 DNS protokolü, CNAME kayıtlarının tepesinde bölgesinde atanmasını engeller. Örneğin, etki alanınız ise `contoso.com` ; IÇIN CNAME kayıtları oluşturabilirsiniz, `somelabel.contoso.com` ancak kendısı için CNAME oluşturamazsınız `contoso.com` . Bu kısıtlama, Azure ön kapısının arkasında yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bir ön kapı profili kullanmak için bir CNAME kaydı oluşturulması gerektiğinden, bölge tepesinde ön kapı profilini işaret etmek mümkün değildir.

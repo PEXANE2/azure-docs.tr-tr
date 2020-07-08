@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738660"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
@@ -49,34 +49,34 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 
 | Hata Türü | Nedeni | Günlük|
 |---|---|---|
-| NoFault | Hiçbir hata algılanmadığında |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |No|
-| PlannedMaintenance |  Ağ Geçidi örneği bakımda  |No|
-| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | No |
-| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | No |
-| PlatformInActive | Platform ile ilgili bir sorun var. | No|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
-| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| No|
-| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
+| NoFault | Hiçbir hata algılanmadığında |Evet|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
+| PlannedMaintenance |  Ağ Geçidi örneği bakımda  |Hayır|
+| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | Hayır |
+| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
+| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
+| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
+| ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Evet|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Evet |
 
 ### <a name="connection"></a>Bağlantı
 
 | Hata Türü | Nedeni | Günlük|
 |---|---|---|
-| NoFault | Hiçbir hata algılanmadığında |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |No|
-| PlannedMaintenance | Ağ Geçidi örneği bakımda  |No|
-| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | No |
-| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | No |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | No |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |No|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
-| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
+| NoFault | Hiçbir hata algılanmadığında |Evet|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
+| PlannedMaintenance | Ağ Geçidi örneği bakımda  |Hayır|
+| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
+| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
+| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Evet|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
+| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="supported-gateway-types"></a>Desteklenen ağ geçidi türleri
 

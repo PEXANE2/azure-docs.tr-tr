@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 87af50c5b5e5b69fd175ac4a570c4b6f659b97e6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84731051"
 ---
 Azure Işlevleri, [Azure Portal]bir işlev uygulamasına Application Insights tümleştirme eklemeyi kolaylaştırır.
@@ -25,7 +25,7 @@ Azure Işlevleri, [Azure Portal]bir işlev uygulamasına Application Insights t�
 
 1. Aşağıdaki tabloda belirtilen ayarları kullanarak **kaynağınızın değiştirme** ve bir Application Insights kaynağı oluşturma ' yı genişletin.  
 
-    | Ayar      | Önerilen değer  | Description                                        |
+    | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Yeni kaynak adı** | Benzersiz uygulama adı | Kendi aboneliğinizde benzersiz olması gereken işlev uygulamanız ile aynı adı kullanmak en kolay yoldur. | 
     | **Konum** | Batı Avrupa | Mümkünse, işlev uygulamanız ile aynı [bölgeyi](https://azure.microsoft.com/regions/) veya bu bölgeye yakın olanı kullanın. |
@@ -38,4 +38,4 @@ Azure Işlevleri, [Azure Portal]bir işlev uygulamasına Application Insights t�
 
 1. İşlev uygulamanızda **Ayarlar**' ın altında **yapılandırma** ' yı seçin ve ardından **uygulama ayarları**' nı seçin. Adlı bir ayar görürseniz `APPINSIGHTS_INSTRUMENTATIONKEY` , Azure 'da çalışan işlev uygulamanız için Application Insights tümleştirme etkinleştirilir.
 
-[Azure portalı]: https://portal.azure.com
+[Azure Portalı]: https://portal.azure.com

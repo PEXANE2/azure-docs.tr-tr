@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738762"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
@@ -82,33 +82,33 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 
 | Hata Türü | Nedeni | Günlük|
 |---|---|---|
-| NoFault | Hata saptanmadı. |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |No|
-| PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |No|
-| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | No |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | No |
-| PlatformInActive | Platform ile ilgili bir sorun var. | No|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
-| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| No|
-| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Yes|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Yes |
+| NoFault | Hata saptanmadı. |Evet|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
+| PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |Hayır|
+| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
+| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
+| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
+| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Evet|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Evet |
 
 ### <a name="connection"></a>Bağlantı
 
 | Hata Türü | Nedeni | Günlük|
 |---|---|---|
-| NoFault | Hata saptanmadı. |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |No|
-| PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |No|
-| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | No |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | No |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | No |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |No|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
+| NoFault | Hata saptanmadı. |Evet|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
+| PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |Hayır|
+| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
+| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Evet|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
 | WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar
