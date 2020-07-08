@@ -4,10 +4,9 @@ description: Bu makalede, sınırsız sayıda ilişkili ileti dizisinin Birleşi
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341181"
 ---
 # <a name="message-sessions"></a>İleti oturumları
@@ -78,8 +77,8 @@ Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğund
 
 | Senaryo | İletinin teslim sayısı arttırılır |
 |----------|---------------------------------------------|
-| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Yes |
-| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | No |
+| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Evet |
+| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | Hayır |
 | Oturum kabul edildi, iletiler tamamlandı, sonra oturum açık olarak kapalı | Yok (Standart akışdır. Buradan iletiler oturumdan kaldırılır) |
 
 ## <a name="request-response-pattern"></a>İstek-yanıt deseninin

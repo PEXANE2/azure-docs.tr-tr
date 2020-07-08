@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
 ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85081073"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda fiziksel sunucuyu değerlendirin
@@ -73,7 +72,7 @@ Planlama gereksinimlerinize uygun olarak şunları yapın:
 1. Bir Azure Geçişi projesi oluşturun.
 2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
 
-[Daha fazla bilgi edinin](how-to-add-tool-first-time.md)
+[Daha fazla bilgi](how-to-add-tool-first-time.md)
 
 ## <a name="create-and-review-an-assessment"></a>Değerlendirme oluşturma ve gözden geçirme
 

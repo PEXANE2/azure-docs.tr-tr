@@ -4,10 +4,9 @@ description: Dağıtım bilgilerini almak için bir Azure Resource Manager şabl
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677823"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM şablonları için dağıtım işlevleri
@@ -264,9 +263,9 @@ Bir parametre değeri döndürür. Belirtilen parametre adı, şablonun parametr
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |string |Döndürülecek parametrenin adı. |
+| parameterName |Evet |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -369,9 +368,9 @@ Değişkenin değerini döndürür. Belirtilen değişken adının şablonun de�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| variableName |Yes |Dize |Döndürülecek değişkenin adı. |
+| variableName |Evet |Dize |Döndürülecek değişkenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

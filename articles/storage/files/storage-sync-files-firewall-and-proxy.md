@@ -8,10 +8,9 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515286"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
@@ -24,7 +23,7 @@ Bu nasıl yapılır Kılavuzu ' nu okumadan önce [Azure dosya eşitleme ağ kon
 ## <a name="overview"></a>Genel Bakış
 Azure Dosya Eşitleme, Windows sunucunuz, Azure dosya paylaşımınız ve diğer birçok Azure hizmeti arasında, eşitleme grubunuzda açıklandığı gibi verileri eşitlemek için bir Orchestration hizmeti görevi görür. Azure Dosya Eşitleme düzgün şekilde çalışması için sunucularınızı aşağıdaki Azure hizmetleriyle iletişim kuracak şekilde yapılandırmanız gerekecektir:
 
-- Azure Depolama
+- Azure Storage
 - Azure Dosya Eşitleme
 - Azure Resource Manager
 - Kimlik doğrulama hizmetleri
@@ -46,14 +45,14 @@ Azure Dosya Eşitleme, uygulamaya özgü ve makine genelindeki proxy ayarların�
 
 **Uygulamaya özgü ara sunucu ayarları** , bir proxy 'nin özel olarak Azure dosya eşitleme trafiği yapılandırmasına izin verir. Uygulamaya özgü ara sunucu ayarları, aracı sürümü 4.0.1.0 veya daha yeni bir sürümde desteklenir ve aracı yüklemesi sırasında veya set-StorageSyncProxyConfiguration PowerShell cmdlet 'i kullanılarak yapılandırılabilir.
 
-Uygulamaya özgü ara sunucu ayarlarını yapılandırmak için PowerShell komutları:
+uygulamaya özgü ara sunucu ayarlarını yapılandırmaya yönelik PowerShell komutlarıyla yapılandırılabilir:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
 Sunucunun tüm trafiği proxy üzerinden yönlendirilirken, **makine genelindeki proxy ayarları** Azure dosya eşitleme aracısına saydamdır.
 
-Makine genelindeki proxy ayarlarını yapılandırmak için aşağıdaki adımları izleyin: 
+Makine genelindeki ara sunucu ayarlarını yapılandırmak için aşağıdaki adımları izleyin: 
 
 1. .NET uygulamaları için proxy ayarlarını yapılandırma 
 
@@ -86,7 +85,7 @@ Makine genelindeki proxy ayarlarını yapılandırmak için aşağıdaki adımla
 
       Note: depolama eşitleme Aracısı (filesyncsvc) hizmeti durdurulduktan sonra otomatik olarak başlayacak.
 
-## <a name="firewall"></a>Güvenlik duvarı
+## <a name="firewall"></a>Güvenlik Duvarı
 Önceki bölümde belirtildiği gibi, 443 numaralı bağlantı noktasının giden trafik açık olması gerekir. Veri merkezinizdeki, dalınızdaki veya bölgenizdeki ilkelere bağlı olarak, bu bağlantı noktası üzerinden trafiği belirli etki alanlarına kısıtlamak istenebilir veya gerekli olabilir.
 
 Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:

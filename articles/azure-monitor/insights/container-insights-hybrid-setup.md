@@ -2,13 +2,12 @@
 title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 063da61c28a67f26d03c7072c0587fdae679d28f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801470"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
@@ -16,7 +15,7 @@ Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan kendinden yöneti
 
 ## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
-Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
+Aşağıdaki konfigürasyonlar, kapsayıcılar için Azure Izleyici ile resmi olarak desteklenir.
 
 - Lý
 
@@ -38,7 +37,7 @@ Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
-- Log Analytics çalışma alanı.
+- [Log Analytics çalışma alanı](../platform/design-logs-deployment.md).
 
     Kapsayıcılar için Azure Izleyici, [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler. Kendi çalışma alanınızı oluşturmak için [Azure Resource Manager](../platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md)aracılığıyla oluşturulabilir.
 
@@ -46,7 +45,9 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
     >Aynı küme adına sahip birden çok kümeyi aynı Log Analytics çalışma alanına izlemenin etkinleştirilmesi desteklenmez. Küme adları benzersiz olmalıdır.
     >
 
-- Kapsayıcı izlemeyi etkinleştirmek için **Log Analytics katkıda bulunan rolünün** bir üyesisiniz. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanına erişimi yönetme ve günlük verileri](../platform/manage-access.md)
+- Kapsayıcı izlemeyi etkinleştirmek için **Log Analytics katkıda bulunan rolünün** bir üyesisiniz. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanına erişimi yönetme ve günlük verileri](../platform/manage-access.md).
+
+- İzleme verilerini görüntülemek için, kapsayıcılar için Azure Izleyici ile yapılandırılmış Log Analytics çalışma alanında [*Log Analytics okuyucu*](../platform/manage-access.md#manage-access-using-azure-permissions) rolüne sahip olmanız gerekir.
 
 - Belirtilen Kubernetes kümesine yönelik kapsayıcılar için Azure Izleyici grafiğini eklemek için [Helm istemcisi](https://helm.sh/docs/using_helm/) .
 
@@ -248,46 +249,58 @@ DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Ana
 
        İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
-## <a name="install-the-chart"></a>Grafiği yükler
+## <a name="install-the-helm-chart"></a>Held grafiğini yükler
+
+Bu bölümde, kapsayıcılar için Azure Izleyici için Kapsayıcılı aracıyı yüklersiniz. Devam etmeden önce, parametresi için gereken çalışma alanı KIMLIĞINI `omsagent.secret.wsid` ve parametresi için gereken birincil anahtarı belirlemeniz gerekir `omsagent.secret.key` . Aşağıdaki adımları gerçekleştirerek bu bilgileri tanımlayabilir ve ardından hele grafiğini kullanarak aracıyı yüklemek için komutları çalıştırın.
+
+1. Çalışma alanı KIMLIĞINI tanımlamak için aşağıdaki komutu çalıştırın:
+
+    `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
+
+    Çıktıda, alan **adı**altında çalışma alanı adını bulun ve sonra bu Log Analytics çalışma alanının çalışma alanı kimliğini **CustomerID**alanı altında kopyalayın.
+
+2. Çalışma alanı için birincil anahtarı tanımlamak üzere aşağıdaki komutu çalıştırın:
+
+    `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
+
+    Çıktıda, **Primarysharedkey**alanının altındaki birincil anahtarı bulun ve değeri kopyalayın.
 
 >[!NOTE]
->Aşağıdaki komutlar yalnızca Held sürüm 2 için geçerlidir. `--name`Parametresinin kullanımı, Held sürüm 3 ile geçerli değildir.
-
-HELı grafiğini etkinleştirmek için aşağıdakileri yapın:
+>Aşağıdaki komutlar yalnızca Held sürüm 2 için geçerlidir. `--name`Parametresinin kullanımı, Held sürüm 3 ile geçerli değildir. 
 
 >[!NOTE]
 >Kubernetes kümeniz bir ara sunucu üzerinden iletişim kuruyorsa, parametreyi `omsagent.proxy` proxy sunucusunun URL 'siyle yapılandırın. Küme bir ara sunucu üzerinden iletişim kurmazsanız bu parametreyi belirtmeniz gerekmez. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [proxy uç noktasını yapılandırma](#configure-proxy-endpoint) konusuna bakın.
 
-1. Aşağıdaki komutu çalıştırarak Azure grafik deposunu yerel listenize ekleyin:
+3. Aşağıdaki komutu çalıştırarak Azure grafik deposunu yerel listenize ekleyin:
 
     ```
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
     ````
 
-2. Aşağıdaki komutu çalıştırarak grafiği yüklersiniz:
+4. Aşağıdaki komutu çalıştırarak grafiği yüklersiniz:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
     ```
 
     Log Analytics çalışma alanı Azure Çin 21Vianet ' de ise aşağıdaki komutu çalıştırın:
 
     ```
     $ helm install --name myrelease-1 \
-     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
     Log Analytics çalışma alanı Azure ABD kamu 'da ise aşağıdaki komutu çalıştırın:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
 ### <a name="enable-the-helm-chart-using-the-api-model"></a>API modelini kullanarak Held grafiğini etkinleştirme
 
-AKS motoru küme belirtimi json dosyasında API modeli olarak da adlandırılan bir eklenti belirtebilirsiniz. Bu eklenti içinde, `WorkspaceGUID` `WorkspaceKey` toplanan izleme verilerinin depolandığı Log Analytics çalışma alanının Base64 kodlamalı sürümünü sağlayın.
+AKS motoru küme belirtimi json dosyasında API modeli olarak da adlandırılan bir eklenti belirtebilirsiniz. Bu eklenti içinde, `WorkspaceGUID` `WorkspaceKey` toplanan izleme verilerinin depolandığı Log Analytics çalışma alanının Base64 kodlamalı sürümünü sağlayın. `WorkspaceGUID` `WorkspaceKey` Önceki bölümde 1 ve 2. adımları kullanarak ve ' i bulabilirsiniz.
 
 Azure Stack hub kümesi için desteklenen API tanımları, bu örnekte [kubernetes-container-monitoring_existing_workspace_id_and_key.js](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)bulunabilir. Özellikle, **Kubernetesconfig**içinde **addons** özelliğini bulabilirsiniz:
 
@@ -299,7 +312,7 @@ Azure Stack hub kümesi için desteklenen API tanımları, bu örnekte [kubernet
              "name": "container-monitoring",
              "enabled": true,
              "config": {
-               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceGuid": "<Azure Log Analytics Workspace Id in Base-64 encoded>",
                "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
              }
            }

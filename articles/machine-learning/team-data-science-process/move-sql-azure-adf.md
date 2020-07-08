@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194399"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>SQL Server veritabanından SQL veritabanı 'na veri taşıma Azure Data Factory
@@ -61,7 +60,7 @@ Bu öğreticide şunları kabul edersiniz:
 >
 
 ## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Verileri SQL Server örneğine yükleme
-Geçiş işlemini göstermek için [NYC TAXI veri kümesini](https://chriswhong.com/open-data/foil_nyc_taxi/) kullanıyoruz. NYC TAXI veri kümesi, Azure Blob Storage [NYC TAXI verilerinde](https://www.andresmh.com/nyctaxitrips/)bu gönderde belirtildiği gibi kullanılabilir. Verilerin iki dosyası vardır; seyahat ayrıntılarını içeren trip_data. csv dosyası ve her yolculuğa yönelik tarifeli havayolu ayrıntılarını içeren trip_far. csv dosyası. Bu dosyaların bir örneği ve açıklaması [NYC TAXI gezme veri kümesi açıklamasında](sql-walkthrough.md#dataset)verilmiştir.
+Geçiş işlemini göstermek için [NYC TAXI veri kümesini](https://chriswhong.com/open-data/foil_nyc_taxi/) kullanıyoruz. NYC TAXI veri kümesi, Azure Blob Storage [NYC TAXI verilerinde](https://www.andresmh.com/nyctaxitrips/)bu gönderde belirtildiği gibi kullanılabilir. Verilerin iki dosyası vardır, seyahat ayrıntılarını içeren trip_data.csv dosyası ve her seyahat için ödenen tarifeli havayolu ayrıntılarını içeren trip_far.csv dosyası. Bu dosyaların bir örneği ve açıklaması [NYC TAXI gezme veri kümesi açıklamasında](sql-walkthrough.md#dataset)verilmiştir.
 
 Burada belirtilen yordamı kendi verilerinizin kümesine uyarlayabilir veya NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin.
 
@@ -138,7 +137,7 @@ SQL Server için tablo tanımı aşağıdaki JSON dosyasında belirtilmiştir:
 
 Sütun adları buraya eklenmedi. Sütun adlarında bunları buraya ekleyerek seçebilirsiniz (Ayrıntılar için [ADF belgelerinin](../../data-factory/copy-activity-overview.md) konusunu inceleyin.
 
-Tablonun JSON tanımını *onpremtabledef. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\onpremtabledef.exe*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
+Tablonun JSON tanımını dosyada *onpremtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\onpremtabledef.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
@@ -171,7 +170,7 @@ Tablonun JSON tanımını *onpremtabledef. JSON* dosyası adlı bir dosyaya kopy
 }
 ```
 
-Tablonun JSON tanımını *bloi puttabledef. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\blomaputtabledef.exe*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
+Tablonun JSON tanımını dosyada *bloboutputtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\bloboutputtabledef.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
@@ -203,7 +202,7 @@ SQL Azure çıktısı için olan tablonun tanımı aşağıda verilmiştir (Bu �
 }
 ```
 
-Tablonun JSON tanımını *Azurestabtable. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada, *C:\temp\azuresoptable.exe*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
+Tablonun JSON tanımını dosyada *AzureSqlTable.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\AzureSqlTable.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
@@ -288,7 +287,7 @@ Daha önce sunulan tablo tanımlarını kullanarak ADF 'nin işlem hattı tanım
 }
 ```
 
-İşlem hattının bu JSON tanımını, *pipelinedef. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\pipelinedef.exe*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet 'ini kullanarak ADF 'de işlem hattı oluşturun:
+İşlem hattının bu JSON tanımını dosyada *pipelinedef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\pipelinedef.js*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet 'ini kullanarak ADF 'de işlem hattı oluşturun:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 

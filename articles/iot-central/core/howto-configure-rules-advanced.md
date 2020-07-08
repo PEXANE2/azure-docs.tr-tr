@@ -7,12 +7,11 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e2018f4d6f8e0813892a43c66975961356333bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801368"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Azure IoT Central uygulamanızı diğer bulut hizmetleriyle bütünleştirmek için iş akışlarını kullanma
 
@@ -20,27 +19,36 @@ ms.locfileid: "83665008"
 
 Bir eşiği aşan cihaz sıcaklığı gibi telemetri tabanlı koşullara yanıt olarak, e-posta gönderme gibi eylemleri tetikleyen IoT Central kurallar oluşturabilirsiniz.
 
-Power otomatikleştirmek ve Azure Logic Apps için IoT Central Bağlayıcısı, IoT Central işlemleri otomatikleştirmek için daha gelişmiş kurallar oluşturmanıza olanak sağlar:
+Power otomatikleştirmek ve Azure Logic Apps için Azure IoT Central v3 Bağlayıcısı, IoT Central işlemleri otomatik hale getirmek için daha gelişmiş kurallar oluşturmanıza olanak sağlar:
 
 - Azure IoT Central uygulamanızda bir kural tetiklendiğinde, Power otomatikleştirin veya Azure Logic Apps içinde bir iş akışı tetiklenebilir. Bu iş akışları, Office 365 gibi diğer bulut hizmetlerinde veya üçüncü taraf bir hizmette eylemler çalıştırabilir.
 - Office 365 gibi başka bir bulut hizmetindeki bir olay, Power otomatikleştirebileceğiniz veya Azure Logic Apps bir iş akışını tetikleyebilir. Bu iş akışları, IoT Central uygulamanızdaki eylemleri çalıştırabilir veya veri alabilir.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+Çözümü ayarlamak için sürüm 3 IoT Central uygulaması gerekir. Uygulamanızın sürümünü nasıl denetleyeceğinizi öğrenmek için, bkz. [uygulamanız hakkında](./howto-get-app-info.md). IoT Central uygulama oluşturmayı öğrenmek için bkz. [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md).
+
+> [!NOTE]
+> Sürüm 2 IoT Central uygulaması kullanıyorsanız, önceki sürümler belge sitesinde [Azure Logic Apps IoT Central Bağlayıcısı ile iş akışlarını derleme](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) ve Azure IoT Central v2 bağlayıcısını kullanma makalesine bakın.
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>Bir kuraldan iş akışı tetikleyin
 
 Power otomatikleştirin veya Azure Logic Apps bir iş akışını tetikleyebilmeniz için, IoT Central uygulamanızda bir kural gerekir. Daha fazla bilgi için bkz. [Azure IoT Central kuralları ve eylemleri yapılandırma](./howto-configure-rules.md).
 
-**Azure IoT Central-Preview** bağlayıcısını Power otomatikleştirmede bir tetikleyici olarak eklemek için:
+**Azure IoT Central v3-önizleme** bağlayıcısını Power otomatikleştirmede bir tetikleyici olarak eklemek için:
 
 1. Güç otomatikleştirme ' de **+ Oluştur**' u seçin, **özel** sekmesini seçin.
-1. *IoT Central*arayın ve **Azure IoT Central-Preview** bağlayıcısını seçin.
+1. *IoT Central*arayın ve **Azure IoT Central v3-önizleme** bağlayıcısını seçin.
 1. Tetikleyiciler listesinde **bir kural tetiklendiğinde (Önizleme)** öğesini seçin.
 1. **Bir kural harekete geçirildiğinde** , IoT Central uygulamanızı ve kullanmakta olduğunuz kuralı seçin.
 
-**Azure IoT Central-Preview** bağlayıcısını Azure Logic Apps bir tetikleyici olarak eklemek için:
+**Azure IoT Central v3-önizleme** bağlayıcısını Azure Logic Apps bir tetikleyici olarak eklemek için:
 
 1. **Logic Apps tasarımcısında** **boş mantıksal uygulama** şablonunu seçin.
 1. Tasarımcıda **özel** sekmesini seçin.
-1. *IoT Central*arayın ve **Azure IoT Central-Preview** bağlayıcısını seçin.
+1. *IoT Central*arayın ve **Azure IoT Central v3-önizleme** bağlayıcısını seçin.
 1. Tetikleyiciler listesinde **bir kural tetiklendiğinde (Önizleme)** öğesini seçin.
 1. **Bir kural harekete geçirildiğinde** , IoT Central uygulamanızı ve kullanmakta olduğunuz kuralı seçin.
 
@@ -50,27 +58,27 @@ Power otomatikleştirin veya Azure Logic Apps bir iş akışını tetikleyebilme
 
 ## <a name="run-an-action"></a>Eylem çalıştırma
 
-IoT Central bir uygulamada eylemleri, Power otomatikleştirin ve Azure Logic Apps iş akışlarıyla çalıştırabilirsiniz. İlk olarak, iş akışınızı oluşturun ve iş akışını başlatmak için bir tetikleyici tanımlamak üzere bir bağlayıcı kullanın. Ardından bir eylem olarak **Azure IoT Central-Preview** bağlayıcısını kullanın.
+IoT Central bir uygulamada eylemleri, Power otomatikleştirin ve Azure Logic Apps iş akışlarıyla çalıştırabilirsiniz. İlk olarak, iş akışınızı oluşturun ve iş akışını başlatmak için bir tetikleyici tanımlamak üzere bir bağlayıcı kullanın. Ardından bir eylem olarak **Azure IoT Central v3-önizleme** bağlayıcısını kullanın.
 
-**Azure IoT Central-Preview** bağlayıcısını Power otomatikleştirmede bir eylem olarak eklemek için:
+**Azure IoT Central v3-önizleme** bağlayıcısını Power otomatikleştirmede bir eylem olarak eklemek için:
 
 1. Güç otomatikleştirme ' de **Eylem Seç** panelinde **özel** sekmesini seçin.
-1. *IoT Central* arayın ve **Azure IoT Central-Preview** bağlayıcısını seçin.
+1. *IoT Central* arayın ve **Azure IoT Central v3-önizleme** bağlayıcısını seçin.
 1. Eylemler listesinde, kullanmak istediğiniz IoT Central eylemi seçin.
-1. Eylem adımında, seçtiğiniz eylem için yapılandırmayı doldurun. Sonra **Kaydet**' i seçin.
+1. Eylem adımında, seçtiğiniz eylem için yapılandırmayı doldurun. Sonra **Kaydet**'i seçin.
 
-**Azure IoT Central-Preview** bağlayıcısını Azure Logic Apps bir eylem olarak eklemek için:
+**Azure IoT Central v3-önizleme** bağlayıcısını Azure Logic Apps bir eylem olarak eklemek için:
 
 1. **Logic Apps tasarımcısında**, **Eylem Seç** panelinde **özel** sekmesini seçin.
-1. *IoT Central*arayın ve **Azure IoT Central-Preview** bağlayıcısını seçin.
+1. *IoT Central*arayın ve **Azure IoT Central v3-önizleme** bağlayıcısını seçin.
 1. Eylemler listesinde, kullanmak istediğiniz IoT Central eylemi seçin.
-1. Eylem adımında, seçtiğiniz eylem için yapılandırmayı doldurun. Sonra **Kaydet**' i seçin.
+1. Eylem adımında, seçtiğiniz eylem için yapılandırmayı doldurun. Sonra **Kaydet**'i seçin.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central-Preview bağlayıcısını bulun ve bir eylem seçin":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central v3 bağlayıcısını bulun ve bir eylem seçin":::
 
 ## <a name="list-of-actions"></a>Eylemler listesi
 
-Aşağıdaki listede, **Azure IoT Central-Preview** Bağlayıcısı 'ndaki tüm kullanılabilir IoT Central eylemleri ve bunların yapılandırma seçenekleri gösterilmektedir. Alanların birçoğu dinamik olarak oluşturulan içeriğe sahip olabilir. Örneğin, önceki bir adım geçerli adımın üzerinde hareket eden cihaz KIMLIĞINI belirleyebilir.
+Aşağıdaki listede, **Azure IoT Central v3-önizleme** Bağlayıcısı ve yapılandırma seçeneklerinde bulunan tüm IoT Central eylemleri gösterilmektedir. Alanların birçoğu dinamik olarak oluşturulan içeriğe sahip olabilir. Örneğin, önceki bir adım geçerli adımın üzerinde hareket eden cihaz KIMLIĞINI belirleyebilir.
 
 ### <a name="create-or-update-a-device"></a>Cihaz oluşturma veya güncelleştirme
 

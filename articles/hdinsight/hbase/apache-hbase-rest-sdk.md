@@ -8,28 +8,29 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e769d33db0a8f28ed22ba3c284a1e9b23ea6d11
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74806669"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959169"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase için .NET SDK 'sını kullanma
 
-[Apache HBase](apache-hbase-overview.md) , verileriniz ile çalışmak için iki birincil seçenek sunar: [sorgular Apache Hive ve HBase 'in tekrar eden API 'si çağrıları](apache-hbase-tutorial-get-started-linux.md). `curl` Komutunu veya benzer bir yardımcı programını kullanarak doğrudan REST API çalışabilirsiniz.
+[Apache HBase](apache-hbase-overview.md) , verileriniz ile çalışmak için iki birincil seçenek sunar: [sorgular Apache Hive ve HBase 'in tekrar eden API 'si çağrıları](apache-hbase-tutorial-get-started-linux.md). `curl`Komutunu veya benzer bir yardımcı programını kullanarak doğrudan REST API çalışabilirsiniz.
 
 C# ve .NET uygulamaları için, [.net Için Microsoft HBASE Rest Istemci kitaplığı](https://www.nuget.org/packages/Microsoft.HBase.Client/) , hbase REST API en üstünde bir istemci kitaplığı sağlar.
 
-## <a name="install-the-sdk"></a>SDK yükle
+## <a name="install-the-sdk"></a>SDK Yükleme
 
 HBase .NET SDK 'Sı, Visual Studio **NuGet paket yöneticisi konsolundan** aşağıdaki komutla yüklenebilen bir NuGet paketi olarak sunulmaktadır:
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Yeni bir HBaseClient nesnesi örneği oluştur
 
-SDK 'yı kullanmak için, yeni `HBaseClient` bir nesne örneği oluşturun, kümelerinizi kümenize geçirerek `Uri` `ClusterCredentials` , Hadoop Kullanıcı adını ve parolasını kullanın.
+SDK 'yı kullanmak için, yeni bir nesne örneği oluşturun, `HBaseClient` `ClusterCredentials` `Uri` kümelerinizi kümenize geçirerek, Hadoop Kullanıcı adını ve parolasını kullanın.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -70,7 +71,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Veri ekleme
 
-Veri eklemek için, satır tanımlayıcısı olarak benzersiz bir satır anahtarı belirtirsiniz. Tüm veriler bir `byte[]` dizide depolanır. Aşağıdaki kod, en sık erişilen sütunlar `title`olduğundan `director`T1 sütun `release_date` ailesine, ve sütunlarını tanımlar ve ekler. `description` Ve `tagline` sütunları T2 sütun ailesine eklenir. Verilerinizi gerektiği gibi sütun ailelerine göre bölümleyebilirsiniz.
+Veri eklemek için, satır tanımlayıcısı olarak benzersiz bir satır anahtarı belirtirsiniz. Tüm veriler bir `byte[]` dizide depolanır. Aşağıdaki kod, `title` `director` `release_date` en sık erişilen sütunlar olduğundan T1 sütun ailesine, ve sütunlarını tanımlar ve ekler. `description`Ve `tagline` sütunları T2 sütun ailesine eklenir. Verilerinizi gerektiği gibi sütun ailelerine göre bölümleyebilirsiniz.
 
 ```csharp
 var key = "fifth_element";
@@ -118,7 +119,7 @@ HBase, [Cloud BigTable](https://cloud.google.com/bigtable/)' ı uygular, bu nede
 
 ## <a name="select-data"></a>Verileri seçme
 
-Bir HBase tablosundan veri okumak için, tablo adını ve satır anahtarını döndürmek üzere `GetCellsAsync` yöntemine geçirin. `CellSet`
+Bir HBase tablosundan veri okumak için, tablo adını ve satır anahtarını `GetCellsAsync` döndürmek üzere yöntemine geçirin `CellSet` .
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +133,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-Bu durumda, yalnızca benzersiz bir anahtar için yalnızca bir satır olması gerektiği için kod yalnızca ilk eşleşen satırı döndürür. Döndürülen değer `string` `byte[]` diziden biçim olarak değiştirildi. Ayrıca, filmin Yayın tarihi için bir tamsayı gibi diğer türlere de değeri dönüştürebilirsiniz:
+Bu durumda, yalnızca benzersiz bir anahtar için yalnızca bir satır olması gerektiği için kod yalnızca ilk eşleşen satırı döndürür. Döndürülen değer diziden biçim olarak değiştirildi `string` `byte[]` . Ayrıca, filmin Yayın tarihi için bir tamsayı gibi diğer türlere de değeri dönüştürebilirsiniz:
 
 ```csharp
 var releaseDateField = cells.rows[0].values

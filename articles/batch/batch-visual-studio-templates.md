@@ -4,12 +4,11 @@ description: Visual Studio proje şablonlarının Azure Batch üzerinde yoğun i
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: c4cdc3fa7b3238a83d55113c5f7dc551d637c8e2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779509"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959781"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Toplu Iş çözümlerini başlatmak için Visual Studio proje şablonlarını kullanın
 
@@ -90,7 +89,7 @@ Iş Yöneticisi şablonunu kullanarak bir proje oluşturduğunuzda, üç kod dos
 
 Elbette, iş ayırma mantığının karmaşıklığına bağlı olarak iş Bölümlendirici kodunuzu desteklemek için gereken ek dosyalar ekleyebilirsiniz.
 
-Şablon,. csproj dosyası, App. config, Packages. config vb. gibi standart .NET proje dosyaları da oluşturur.
+Şablon Ayrıca,. csproj dosyası, app.config, packages.config vb. gibi standart .NET proje dosyaları da oluşturur.
 
 Bu bölümün geri kalanı farklı dosyaları ve kod yapılarını açıklar ve her bir sınıfın ne yaptığını açıklar.
 
@@ -186,7 +185,7 @@ Iş Yöneticisi şablonuyla uygulanan bir iş Yöneticisi görevi olası üç ç
 
 İş Yöneticisi görev hatası durumunda, bazı görevler yine de hata yapılmadan önce hizmete eklenmiş olabilir. Bu görevler normal olarak çalışır. Bu kod yolu hakkında tartışmak için yukarıdaki "Iş Bölümlendirici hatası" başlığına bakın.
 
-Özel durumlar tarafından döndürülen tüm bilgiler stdout. txt ve stderr. txt dosyalarına yazılır. Daha fazla bilgi için bkz. [hata işleme](error-handling.md).
+Özel durumlar tarafından döndürülen tüm bilgiler stdout.txt ve stderr.txt dosyalarına yazılır. Daha fazla bilgi için bkz. [hata işleme](error-handling.md).
 
 ### <a name="client-considerations"></a>İstemci konuları
 Bu bölümde, bu şablona dayalı bir iş Yöneticisi çağrılırken bazı istemci uygulama gereksinimleri açıklanmaktadır. Parametreleri ve ortam ayarlarını geçirme hakkında ayrıntılı bilgi için [istemci kodundan parametreleri ve ortam değişkenlerini](#pass-environment-settings) geçirme konusuna bakın.
@@ -259,7 +258,7 @@ Görev işlemcisi şablonunu kullanarak bir proje oluşturduğunuzda, üç kod d
 
 Tabii ki, iş bölme mantığının karmaşıklığına bağlı olarak, görev işlemcisi kodunuzu desteklemek için gereken ek dosyalar ekleyebilirsiniz.
 
-Şablon,. csproj dosyası, App. config, Packages. config vb. gibi standart .NET proje dosyaları da oluşturur.
+Şablon Ayrıca,. csproj dosyası, app.config, packages.config vb. gibi standart .NET proje dosyaları da oluşturur.
 
 Bu bölümün geri kalanı farklı dosyaları ve kod yapılarını açıklar ve her bir sınıfın ne yaptığını açıklar.
 
@@ -367,7 +366,7 @@ Görev Işlemcisi şablonuyla uygulanan bir görev işlemcisi görevi, olası ü
 > 
 > 
 
-Özel durumlar tarafından döndürülen tüm bilgiler stdout. txt ve stderr. txt dosyalarına yazılır. Daha fazla bilgi için bkz. Batch belgelerindeki hata Işleme.
+Özel durumlar tarafından döndürülen tüm bilgiler stdout.txt ve stderr.txt dosyalarına yazılır. Daha fazla bilgi için bkz. Batch belgelerindeki hata Işleme.
 
 ### <a name="client-considerations"></a>İstemci konuları
 **Depolama kimlik bilgileri**
@@ -397,12 +396,12 @@ Görevleri işe eklemeden önce, istemci veya iş yöneticisi görevinin görevl
 * Batch hesabı URL 'SI
 * Batch hesabı anahtarı
 
-Batch hizmeti, `EnvironmentSettings` [Microsoft. Azure. Batch. jobmanagertask][net_jobmanagertask]özelliğini kullanarak ortam ayarlarını bir iş Yöneticisi görevine geçirmek için basit bir mekanizmaya sahiptir.
+Batch hizmeti, `EnvironmentSettings`Microsoft.Azure.Batch içindeki özelliğini kullanarak ortam ayarlarını bir iş Yöneticisi görevine geçirmek için basit bir mekanizmaya sahiptir [. JobManagerTask][net_jobmanagertask].
 
 Örneğin, `BatchClient` bir Batch hesabının örneğini almak için, istemci kodundan ortam değişkenleri olarak, Batch hesabının URL 'sini ve paylaşılan anahtar kimlik bilgilerini aktarabilirsiniz. Benzer şekilde, Batch hesabına bağlı depolama hesabına erişmek için, depolama hesabı adını ve depolama hesabı anahtarını ortam değişkenleri olarak geçirebilirsiniz.
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>Parametreleri Iş Yöneticisi şablonuna geçirme
-Çoğu durumda, iş ayırma işlemini denetlemek veya iş için görevleri yapılandırmak üzere iş başına parametreleri iş Yöneticisi görevine geçirmek yararlı olur. Bunu, İş Yöneticisi görevi için bir kaynak dosyası olarak Parameters. JSON adlı bir JSON dosyasını karşıya yükleyerek yapabilirsiniz. Parametreler daha sonra `JobSplitter._parameters` Iş Yöneticisi şablonundaki alanda kullanılabilir hale gelebilir.
+Çoğu durumda, iş ayırma işlemini denetlemek veya iş için görevleri yapılandırmak üzere iş başına parametreleri iş Yöneticisi görevine geçirmek yararlı olur. Bunu, İş Yöneticisi görevi için kaynak dosyası olarak parameters.jsadlı bir JSON dosyasını karşıya yükleyerek yapabilirsiniz. Parametreler daha sonra `JobSplitter._parameters` Iş Yöneticisi şablonundaki alanda kullanılabilir hale gelebilir.
 
 > [!NOTE]
 > Yerleşik parametre işleyicisi yalnızca dize-dize sözlüklerini destekler. Karmaşık JSON değerlerini parametre değerleri olarak geçirmek istiyorsanız, bunları dizeler olarak iletmeniz ve bunları iş bölümlendiriculaşarak ayrıştırabilmeniz ya da Framework metodunu değiştirmeniz gerekir `Configuration.GetJobParameters` .
@@ -412,10 +411,10 @@ Batch hizmeti, `EnvironmentSettings` [Microsoft. Azure. Batch. jobmanagertask][n
 ### <a name="pass-parameters-to-the-task-processor-template"></a>Parametreleri görev Işlemcisi şablonuna geçirme
 Ayrıca, parametreleri görev Işlemcisi şablonu kullanarak uygulanan tek tek görevlere geçirebilirsiniz. İş Yöneticisi şablonunda olduğu gibi, görev işlemcisi şablonu, adlı bir kaynak dosyasını arar
 
-Parameters. JSON, ve bulunursa parametre sözlüğü olarak yükler. Parametreleri görev işlemcisi görevlerine geçirmeye yönelik birkaç seçenek vardır:
+parameters.js, ve bulunursa parametre sözlüğü olarak yükler. Parametreleri görev işlemcisi görevlerine geçirmeye yönelik birkaç seçenek vardır:
 
-* JSON iş parametrelerini yeniden kullanın. Yalnızca parametreler iş genelinde ise (örneğin, bir işleme yüksekliği ve genişliği), bu işlem iyi bir şekilde gerçekleşir. Bunu yapmak için, iş bölümlendiricbir CloudTask oluştururken, iş yöneticisi görevinin ResourceFiles () öğesine Parameters. JSON kaynak dosyası nesnesine bir başvuru ekleyin `JobSplitter._jobManagerTask.ResourceFiles` .
-* Göreve özgü parametreler. JSON belgesini iş Bölümlendirici yürütmesinin parçası olarak oluşturup karşıya yükleyin ve görevin kaynak dosyaları koleksiyonunda blob 'a başvurun. Farklı görevler farklı parametrelere sahip ise bu gereklidir. Örnek, çerçeve dizininin bir parametre olarak göreve geçirildiği bir 3B işleme senaryosu olabilir.
+* JSON iş parametrelerini yeniden kullanın. Yalnızca parametreler iş genelinde ise (örneğin, bir işleme yüksekliği ve genişliği), bu işlem iyi bir şekilde gerçekleşir. Bunu yapmak için, iş bölümlendiricbir CloudTask oluştururken, iş yöneticisi görevinin ResourceFiles () kaynak dosyası nesnesindeki parameters.js`JobSplitter._jobManagerTask.ResourceFiles` CloudTask 'ın ResourceFiles koleksiyonuna bir başvuru ekleyin.
+* İş Bölümlendirici yürütme işleminin bir parçası olarak belgeye özgü parameters.jsoluşturup karşıya yükleyin ve görevin kaynak dosyaları koleksiyonunda blob 'a başvurun. Farklı görevler farklı parametrelere sahip ise bu gereklidir. Örnek, çerçeve dizininin bir parametre olarak göreve geçirildiği bir 3B işleme senaryosu olabilir.
 
 > [!NOTE]
 > Yerleşik parametre işleyicisi yalnızca dize-dize sözlüklerini destekler. Karmaşık JSON değerlerini parametre değerleri olarak geçirmek istiyorsanız, bunları dizeler olarak iletmeniz ve bunları görev işlemcisinde ayrıştırabilmeniz ya da Framework metodunu değiştirmeniz gerekir `Configuration.GetTaskParameters` .
@@ -427,13 +426,13 @@ Parameters. JSON, ve bulunursa parametre sözlüğü olarak yükler. Parametrele
 Batch çözüm geliştirmede başka bir yararlı araç [Azure Batch dosya kuralları][nuget_package]. Azure depolama 'ya ve Azure Storage 'a yönelik görev çıkışlarını kolayca depolamak ve almak için Batch .NET uygulamalarınızda bu .NET sınıf kitaplığını (Şu anda önizleme aşamasında) kullanın. [Kalıcı Azure Batch işi ve görev çıktısı](batch-task-output.md) , kitaplığın ve kullanımının tam bir tartışmasını içerir.
 
 
-[net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
+[net_jobmanagertask]: /dotnet/api/microsoft.azure.batch.jobmanagertask
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
-[process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
+[process_exitcode]: /dotnet/api/system.diagnostics.process.exitcode
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
 [vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
-[vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
+[vs_find_use_ext]: /visualstudio/ide/finding-and-using-visual-studio-extensions
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png

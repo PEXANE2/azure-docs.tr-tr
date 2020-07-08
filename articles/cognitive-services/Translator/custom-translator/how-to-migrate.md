@@ -9,12 +9,11 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992918"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958931"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
 
@@ -134,14 +133,14 @@ Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri k
 |:-----|:----:|:----:|
 |Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
 | Metin API 'SI sürümü    | V2     | Yüklemesinde  |
-| SMT özelleştirmesi    | Yes    | Hayır |
-| NMT özelleştirmesi    | Hayır    | Yes |
-| Yeni Birleşik konuşma Hizmetleri özelleştirmesi    | Hayır    | Yes |
+| SMT özelleştirmesi    | Evet    | Hayır |
+| NMT özelleştirmesi    | Hayır    | Evet |
+| Yeni Birleşik konuşma Hizmetleri özelleştirmesi    | Hayır    | Evet |
 | Izleme yok | Yes | Yes |
 
 ## <a name="new-languages"></a>Yeni diller
 
-Microsoft Translator için yeni bir dil sistemi oluşturma konusunda çalışan bir topluluk veya kuruluşunuzda [custommt@microsoft.com](mailto:custommt@microsoft.com) daha fazla bilgi edinmek için ' e ulaşın.
+Çevirmen için yeni bir dil sistemi oluşturma konusunda çalışan bir topluluk veya kuruluşunuzda [custommt@microsoft.com](mailto:custommt@microsoft.com) daha fazla bilgi edinmek için ' e ulaşın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

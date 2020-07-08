@@ -9,10 +9,9 @@ ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193528"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
@@ -123,12 +122,12 @@ Data Lake Storage 2. tarafından kullanılan POSIX stili modelde bir öğe için
 
 Aşağıdaki tabloda, bir depolama hesabında belirli işlemleri gerçekleştirmek için hangi izinlerin gerekli olduğunu anlamanıza yardımcı olacak bazı yaygın senaryolar listelenmektedir.
 
-|    Çalışma             |    /    | 'Daki | Portland | Data. txt     |
+|    Çalışma             |    /    | 'Daki | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Data. txt dosyasını oku            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Data. txt dosyasına Ekle       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Data. txt dosyasını Sil          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Data. txt oluşturma          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt oku            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Data.txt sonuna ekle       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Data.txt Sil          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt oluştur          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Listele                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Liste/Oregon/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Liste/Oregon/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |

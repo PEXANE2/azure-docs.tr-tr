@@ -10,12 +10,11 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f59ee4a21581310a0729079cd25afa1c683071cd
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552707"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959288"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi yapabileceğiniz on işlem
 
@@ -130,9 +129,9 @@ IrisPredictor(3,2,3,4)
 ```
 
 ### <a name="build-and-operationalize-r-models"></a>R modellerini derleme ve operationleştir
-Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Adımlar şunlardır:
+Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Uygulamanız gereken adımlar:
 
-1. Çalışma alanı KIMLIĞINIZI ve kimlik doğrulama belirtecinizi sağlamak için bir Settings. JSON dosyası oluşturun. 
+1. Çalışma alanı KIMLIĞINIZI ve kimlik doğrulama belirtecinizi sağlamak için dosyada bir settings.jsoluşturun. 
 2. Modelin tahmin işlevi için bir sarmalayıcı yazın.
 3. ```publishWebService```İşlev sarmalayıcısında geçirilecek Azure Machine Learning kitaplığındaki çağrısı.  
 
@@ -140,9 +139,9 @@ Azure Machine Learning bir modeli bir Web hizmeti olarak ayarlamak, derlemek, ya
 
 #### <a name="set-up"></a>Kurulum
 
-Giriş dizininiz altında adlı bir dizin altında bir Settings. JSON dosyası oluşturun ```.azureml``` . Azure Machine Learning çalışma alanınızdan parametreleri girin.
+Giriş dizininiz altında adlı bir dizin altında dosya settings.jsoluşturun ```.azureml``` . Azure Machine Learning çalışma alanınızdan parametreleri girin.
 
-Settings. JSON dosya yapısı aşağıda verilmiştir:
+Dosya yapısında settings.jsaşağıda verilmiştir:
 
 ```json
 {"workspace":{
@@ -249,7 +248,9 @@ DSVM, GitHub deposuna erişmek için komut satırında ve GUI 'de istemci araçl
 
 Bir GitHub deposundan kodu indirmek için ```git clone``` komutunu kullanın. Örneğin, Microsoft tarafından yayınlanan veri bilimi deposunu geçerli dizine indirmek için, git Bash ' de aşağıdaki komutu çalıştırabilirsiniz:
 
-    git clone https://github.com/Azure/DataScienceVM.git
+```bash
+git clone https://github.com/Azure/DataScienceVM.git
+```
 
 Visual Studio 'da aynı kopyalama işlemini gerçekleştirebilirsiniz. Aşağıdaki ekran görüntüsünde, Visual Studio 'da git ve GitHub araçlarına nasıl erişebileceğiniz gösterilmektedir:
 
@@ -267,7 +268,7 @@ Azure Blob depolama, büyük ve küçük veriler için güvenilir, ekonomik bir 
 
    ![Azure portal depolama hesabı oluşturma işleminin ekran görüntüsü](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Komut satırı AzCopy aracının önceden yüklü olduğunu doğrulayın: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . AzCopy. exe ' yi içeren dizin, PATH ortam değişkeninizden zaten bulunur, bu nedenle bu aracı çalıştırırken tam komut yolunu yazmaktan kaçınabilirsiniz. AzCopy aracı hakkında daha fazla bilgi için bkz. [AzCopy belgeleri](../../storage/common/storage-use-azcopy.md).
+* Komut satırı AzCopy aracının önceden yüklü olduğunu doğrulayın: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . azcopy.exe içeren dizin, PATH ortam değişkeninizden zaten bulunur, bu nedenle bu aracı çalıştırırken tam komut yolunu yazmaktan kaçınabilirsiniz. AzCopy aracı hakkında daha fazla bilgi için bkz. [AzCopy belgeleri](../../storage/common/storage-use-azcopy.md).
 * Azure Depolama Gezgini aracını başlatın. [Depolama Gezgini Web sayfasından](https://storageexplorer.com/)indirebilirsiniz. 
 
    ![Bir depolama hesabına erişen Azure Depolama Gezgini ekran görüntüsü](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -276,7 +277,9 @@ Azure Blob depolama, büyük ve küçük veriler için güvenilir, ekonomik bir 
 
 Yerel dosyalarınız ve BLOB depolama alanı arasında veri taşımak için, komut satırında veya PowerShell 'de AzCopy komutunu kullanabilirsiniz:
 
-    AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```powershell
+AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```
 
 **C:\folder** ' ı, dosyanızın depolandığı yol, BLOB depolama hesabı adınızla **mystorageaccount** , kapsayıcı adı ile **myContainer** ve **depolama hesabı anahtarı** ile BLOB depolama erişim anahtarınızla değiştirin. Depolama hesabı kimlik bilgilerinizi [Azure Portal](https://portal.azure.com)bulabilirsiniz.
 
@@ -437,7 +440,7 @@ Sorgunuz sunucuya gönderildikten sonra, bir diyagram işinizin durumunu göster
 
 Veri kümesi Azure Data Lake alındıktan sonra, verileri sorgulamak ve araştırmak için [U-SQL dilini](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) kullanabilirsiniz. U-SQL dili T-SQL ile benzerdir, ancak kullanıcıların özelleştirilmiş modüller ve Kullanıcı tanımlı işlevler yazabilmesi için C# ' deki bazı özellikleri birleştirir. Önceki adımda betikleri kullanabilirsiniz.
 
-Sorgu sunucuya gönderildikten sonra, tripdata_summary. CSV Azure Data Lake Explorer 'da görünür. Dosyaya sağ tıklayarak verilerin önizlemesini yapabilirsiniz.
+Sorgu sunucuya gönderildikten sonra, tripdata_summary.CSV Azure Data Lake Gezgini 'nde görünür. Dosyaya sağ tıklayarak verilerin önizlemesini yapabilirsiniz.
 
 ![Data Lake Explorer 'da CSV dosyasının ekran görüntüsü](./media/vm-do-ten-things/USQL_create_summary.png)
 
@@ -458,7 +461,7 @@ DSVM 'den Azure Cosmos DB erişmek için aşağıdaki önkoşul adımlarını ku
 1. Azure Cosmos DB Python SDK, DSVM üzerinde zaten yüklü. Güncelleştirmek için ```pip install pydocumentdb --upgrade``` bir komut isteminden çalıştırın.
 2. [Azure Portal](https://portal.azure.com)bir Azure Cosmos DB hesabı ve veritabanı oluşturun.
 3. Azure Cosmos DB veri geçiş aracı 'nı [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=53595) ' nden indirin ve seçtiğiniz bir dizine ayıklayın.
-4. Bir [genel Blobun](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) IÇINDE depolanan JSON verilerini (Volcano verileri), geçiş aracına aşağıdaki komut parametreleriyle Azure Cosmos DB içine aktarın. (Azure Cosmos DB Data Migration aracını yüklediğiniz dizinden dtuı. exe ' yi kullanın.) Şu parametrelerle kaynak ve hedef konumu girin:
+4. Bir [genel Blobun](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) IÇINDE depolanan JSON verilerini (Volcano verileri), geçiş aracına aşağıdaki komut parametreleriyle Azure Cosmos DB içine aktarın. (Azure Cosmos DB veri geçiş aracı 'nı yüklediğiniz dizinden dtui.exe kullanın.) Şu parametrelerle kaynak ve hedef konumu girin:
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

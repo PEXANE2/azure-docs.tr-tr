@@ -14,10 +14,9 @@ ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
 ms.openlocfilehash: 20a158aac6a03dfe0bd8929de9fa66ea215aa29c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194113"
 ---
 # <a name="national-clouds"></a>Ulusal bulutlar
@@ -28,7 +27,7 @@ Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutla
 
 - Azure Kamu
 - Azure Almanya
-- Azure Çin 21Vianet
+- Azure China 21Vianet
 
 Ulusal bulutlar benzersizdir ve Azure Global 'in ayrı bir ortamıdır. Uygulamanızı bu ortamlar için geliştirirken önemli farklılıkları bilmeniz önemlidir. Farklı uygulamalar kaydetme, belirteçleri alma ve uç noktaların yapılandırılması dahildir.
 
@@ -79,6 +78,6 @@ Microsoft Identity platformunu kullanarak bir uygulama oluşturmayı öğrenmek 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 - [Azure Devlet Kurumları](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure Almanya](https://docs.microsoft.com/azure/germany/)
 - [Azure AD kimlik doğrulaması temelleri](authentication-scenarios.md)

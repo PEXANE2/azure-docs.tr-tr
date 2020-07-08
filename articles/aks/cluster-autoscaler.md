@@ -5,10 +5,9 @@ services: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84730025"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme
@@ -107,7 +106,7 @@ Uygulamalarınızın ve hizmetlerinizin performansını izleyin ve küme otomati
 
 Küme genelindeki otomatik Scaler profilindeki varsayılan değerleri değiştirerek küme otomatik Scaler ' inin daha ayrıntılı ayrıntılarını da yapılandırabilirsiniz. Örneğin, düğümler 10 dakika sonra kullanıldıktan sonra bir ölçek azaltma olayı oluşur. 15 dakikada bir çalışan iş yükleriniz varsa, otomatik Scaler profilini, kullanılan düğümler altında 15 veya 20 dakika sonra ölçeklendirmek üzere değiştirmek isteyebilirsiniz. Küme otomatik ayarlarını etkinleştirdiğinizde, farklı ayarlar belirtmediğiniz takdirde varsayılan bir profil kullanılır. Küme otomatik Scaler profili, güncelleştirebilmeniz için aşağıdaki ayarlara sahiptir:
 
-| Ayar                          | Description                                                                              | Varsayılan değer |
+| Ayar                          | Açıklama                                                                              | Varsayılan değer |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | tarama-Aralık                    | Kümenin ölçeği artırma veya azaltma için ne sıklıkta yeniden değerlendirildiğinde                                    | 10 saniye    |
 | ölçeği azaltma-sonrası-ekleme       | Ölçek azaltma sonrasında ölçeği izleyen ölçeği artırma sonrasında ne kadar süre sonra                               | 10 dakika    |

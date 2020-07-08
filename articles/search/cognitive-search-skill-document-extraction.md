@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
 ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080877"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Belge ayıklama bilişsel yeteneği
@@ -34,13 +33,13 @@ Microsoft.Skills.Util.DocUmentextractionbeceri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Girişler            | İzin Verilen Değerler | Description |
+| Girişler            | İzin Verilen Değerler | Açıklama |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | `default`Saf metin veya JSON olmayan dosyalardan belge ayıklama için olarak ayarlayın. `text`Düz metin dosyalarındaki performansı artırmak için olarak ayarlayın. `json`JSON dosyalarından yapılandırılmış içeriği ayıklamak için olarak ayarlayın. `parsingMode`Açıkça tanımlanmamışsa, olarak ayarlanır `default` . |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Her bir `contentAndMetadata` dosyanın tüm meta verilerini ve metin içeriğini ayıklamak için olarak ayarlayın. `allMetadata`Yalnızca [içerik türü belirli meta verileri](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) ayıklamak için olarak ayarlanır (örneğin, yalnızca. png dosyalarına özgü meta veriler). `dataToExtract`Açıkça tanımlanmamışsa, olarak ayarlanır `contentAndMetadata` . |
 | `configuration` | Aşağıya bakın. | Belge ayıklamanın nasıl gerçekleştirileceğini belirten isteğe bağlı parametrelerin bir sözlüğü. Desteklenen yapılandırma özelliklerinin açıklamaları için aşağıdaki tabloya bakın. |
 
-| Yapılandırma parametresi   | İzin Verilen Değerler | Description |
+| Yapılandırma parametresi   | İzin Verilen Değerler | Açıklama |
 |-------------------------|----------------|-------------|
 | `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | `none`Veri kümesindeki katıştırılmış görüntüleri veya resim dosyalarını yoksaymak için olarak ayarlayın. Bu varsayılandır. <br/>Bilişsel [becerileri kullanan görüntü analizi](cognitive-search-concept-image-scenarios.md)için, `generateNormalizedImages` niteliğin belge çözme kapsamında normalleştirilmiş görüntülerin bir dizisini oluşturmasını sağlamak için olarak ayarlayın. Bu eylem, `parsingMode` olarak ayarlanmış `default` ve `dataToExtract` olarak ayarlanmış olmasını gerektirir `contentAndMetadata` . Normalleştirilmiş bir görüntü, görsel arama sonuçlarına görüntü eklediğinizde (örneğin, [JFK demo](https://github.com/Microsoft/AzureSearch_JFK_Files)bölümünde görüldüğü gibi bir grafik denetimindeki aynı boyutlu fotoğraflar gibi) tutarlı işleme sağlamak için boyutlandırılmış ve döndürülen Tekdüzen görüntü çıkışına neden olan diğer işleme başvurur. Bu bilgi, bu seçeneği kullandığınızda her bir görüntü için oluşturulur.  <br/>' A ayarlarsanız `generateNormalizedImagePerPage` , PDF dosyaları gömülü görüntüleri ayıklamak yerine farklı şekilde değerlendirilir, her sayfa bir görüntü olarak işlenir ve buna göre normalleştirilirler.  PDF olmayan dosya türleri, ayarlandığı gibi kabul edilir `generateNormalizedImages` .
 | `normalizedImageMaxWidth` | 50-10000 arasında herhangi bir tamsayı | Oluşturulan normalleştirilmiş görüntülerin en büyük genişliği (piksel cinsinden). Varsayılan değer 2000’dir. | 
@@ -50,7 +49,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 > Normalleştirilmiş görüntüler için varsayılan değer olan 2000 piksel en fazla genişlik ve yükseklik, [OCR becerisi](cognitive-search-skill-ocr.md) ve [görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)tarafından desteklenen boyut üst sınırını temel alır. [OCR becerisi](cognitive-search-skill-ocr.md) , İngilizce dışındaki diller için maksimum genişlik ve yükseklik 4200 ve ingilizce için 10000 ' i destekler.  Maksimum sınırları artırırsanız, Beceri tanımınıza ve belgelerin diline bağlı olarak daha büyük görüntülerde işleme başarısız olabilir. 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı     | Description |
+| Giriş adı     | Açıklama |
 |--------------------|-------------|
 | `file_data` | İçeriğin ayıklanabilmesi gereken dosya. |
 
@@ -73,7 +72,7 @@ Bu dosya başvuru nesnesi 3 farklı bir şekilde oluşturulabilir:
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı    | Description |
+| Çıkış adı    | Açıklama |
 |--------------|-------------|
 | `content` | Belgenin metinsel içeriği. |
 | `normalized_images`   | `imageAction`Daha sonra diğer bir değere ayarlandığında `none` , yeni *normalized_images* alanı bir görüntü dizisi içerir. Her bir görüntünün çıkış biçimi hakkında daha fazla bilgi için bkz. [görüntü ayıklama belgeleri](cognitive-search-concept-image-scenarios.md) . |

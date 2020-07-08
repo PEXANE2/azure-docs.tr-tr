@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.openlocfilehash: 0d16a2fa91b498888ae5dafd1b254b51eca94ebc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801419"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Ticari Market için lider yönetimi
 
@@ -91,7 +90,7 @@ Müşteri adayları, ürünlerinizi Market 'ten dağıtan müşterilerdir. Ürü
 **Market 'te teklif yayımlamak için bir lider hedefi yapılandırmak istiyorum mu?**
 
 Evet, bir benimle Iletişim kurun SaaS uygulaması veya danışmanlık hizmetleri yayımlıyorsanız.  
- 
+
 **Müşteri adayı yapılandırmasının doğru olduğunu nasıl doğrulayabilirim?**
 
 Teklifinizi ve lider hedefini ayarladıktan sonra teklifinizi yayımlayın. Müşteri adayı doğrulama adımında Market, teklifiniz tarafından yapılandırılan lider hedefine bir test lideri gönderecek. 
@@ -100,80 +99,67 @@ Teklifinizi ve lider hedefini ayarladıktan sonra teklifinizi yayımlayın. Mü�
 
 Müşteri adayı Hedefinizdeki "MSFT_TEST" araması yapın, örnek bir test lideri verileri aşağıda verilmiştir: 
 
-Şirket = MSFT_TEST_636573304831318844 
+```text
+company = MSFT_TEST_636573304831318844 
 
-ülke = ABD 
+country = US 
 
-Açıklama = MSFT_TEST_636573304831318844 
+description = MSFT_TEST_636573304831318844 
 
-e-posta =MSFT_TEST_636573304831318844@test.com
+email = MSFT_TEST_636573304831318844@test.com
 
-kodlama = UTF-8 
+encoding = UTF-8 
 
-kodlama = UTF-8 
+encoding = UTF-8 
 
 first_name = MSFT_TEST_636573304831318844 
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \< Teklif adı> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<Offer Name> 
 
-OID = 00Do0000000ZHog 
+oid = 00Do0000000ZHog 
 
-telefon = 1234567890 
+phone = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
+```
 
 **Canlı bir teklifim var, ancak hiçbir müşteri adayı görmüyorum?**
 
-Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geçirilmesi, müşteri adayları şu biçimde olacaktır: **Kaynak-eylem | Teklif** 
+Her müşteri adayının seçtiğiniz müşteri adayı hedefindeki alanlara geçirilmesi, müşteri adayları şu biçimde olacaktır: **Kaynak-eylem | Teklif**
 
-  *Ğına*
+- *Ğına*
+  - AzureMarketplace
+  - AzurePortal
+  - TestDrive  
+  - SPZA (AppSource kısaltması)
 
-    "AzureMarketplace", 
-    "AzurePortal", 
-    "TestDrive",  
-    "SPZA" (acronym for AppSource) 
+- *Eylem*
+  - "INS"-yükleme anlamına gelir. Bu, bir müşteri, ürününüzü almak için düğmeyi her ziyaret eden Azure Market veya AppSource 'ta bulunur.
+  - "PLT"-Iş ortağı LED deneme sürümünü temsil eder. Bu, bir müşteri benimle Iletişim kurma düğmesine her geldiğinde AppSource 'ta bulunur.
+  - "DNC"-başvurmayın için temsil eder. Bu, uygulama sayfanızda çapraz olarak listelenen bir Iş ortağı ile iletişim kurulması istendiği her seferinde AppSource 'ta yer alır. Bu müşterinin uygulamanızda çapraz olarak listelenme kafalarını paylaşıyoruz, ancak bunlara başvurulmaları gerekmez.
+  - "Oluştur"-Bu yalnızca Azure portal içindedir ve bir müşterinin kendi hesabına teklifinizi satın aldığı her zaman.
+  - "StartTestDrive"-Bu yalnızca test sürücülerine yöneliktir ve bir müşterinin test sürücüsünü her başlattığında olur.
 
-  *Eylem*
+- *Sunar*
+  - "Checkpoint. Check-Point-r77-10sg-KLG",
+  - "bitnamı. openedxcypress",
+  - "Docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a"
 
-    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+*Müşteri bilgilerinin örnek verileri aşağıda verilmiştir*
 
-    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
-
-    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
-
-    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
-
-
-  *Sunar*
-
-    "checkpoint.check-point-r77-10sg-byol", 
-    "bitnami.openedxcypress", 
-    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
-
- 
-
-  *Müşteri bilgilerinin örnek verileri aşağıda verilmiştir*
-
-    { 
-
-    "FirstName":"John", 
-
-    "LastName":"Smith", 
-
-    "Email":"jsmith@microsoft.com", 
-
-    "Phone":"1234567890", 
-
-    "Country":"US", 
-
-    "Company":"Microsoft", 
-
-    "Title":"CTO" 
-
-    } 
+```json
+{ 
+"FirstName":"John",
+"LastName":"Smith",
+"Email":"jsmith@microsoft.com",
+"Phone":"1234567890",
+"Country":"US",
+"Company":"Microsoft",
+"Title":"CTO"
+}
+```
 
 [Müşteri adayı bilgileri](./partner-center-portal/commercial-marketplace-get-customer-leads.md)altında daha fazla bilgi edinin. 
 

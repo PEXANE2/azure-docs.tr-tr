@@ -1,5 +1,5 @@
 ---
-title: Python
+title: Tasarımcıda Python betiğini yürütme
 titleSuffix: Azure Machine Learning
 description: Verileri dönüştürmek için Azure Machine Learning tasarımcısında Python kullanmayı öğrenin.
 services: machine-learning
@@ -10,14 +10,13 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer, tracking-python
-ms.openlocfilehash: af26dce03c0dcf5226c52dcdd8af4408186aa343
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557044"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041022"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodu yürütme
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodu çalıştırma
 
 Bu makalede, Azure Machine Learning tasarımcısına özel mantık eklemek için [Python betiği yürütme](algorithm-module-reference/execute-python-script.md) modülünü nasıl kullanacağınızı öğreneceksiniz. Aşağıdaki nasıl yapılır, basit özellik Mühendisliği yapmak için Pandas kitaplığını kullanırsınız.
 

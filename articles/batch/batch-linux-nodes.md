@@ -4,12 +4,11 @@ description: Azure Batch içindeki Linux sanal makinelerinin havuzlarında paral
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, tracking-python
-ms.openlocfilehash: 6a834e433c86eaa85b6d313d7e49020804cd69de
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 1a87b72b16c1d41e5569c4ce9e5e1a6e2c51a2e0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559636"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960087"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -33,7 +32,7 @@ Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak i
 
 Bir sanal makine görüntü başvurusunu yapılandırdığınızda, sanal makine görüntüsünün özelliklerini belirtirsiniz. Bir sanal makine görüntü başvurusu oluştururken aşağıdaki özellikler gereklidir:
 
-| **Görüntü başvurusu özellikleri** | **Örneğinde** |
+| **Görüntü başvurusu özellikleri** | **Örnek** |
 | --- | --- |
 | Publisher |Canonical |
 | Sunduğu |UbuntuServer |
@@ -58,7 +57,7 @@ Batch düğüm Aracısı, havuzdaki her düğüm üzerinde çalışan ve düğü
 >
 
 ## <a name="create-a-linux-pool-batch-python"></a>Linux havuzu oluşturma: Batch Python
-Aşağıdaki kod parçacığı, bir Ubuntu sunucu işlem düğümleri havuzu oluşturmak için [Python için Microsoft Azure Batch Istemci kitaplığının][py_batch_package] nasıl kullanılacağına ilişkin bir örnek gösterir. Batch Python modülü için başvuru belgeleri Azure 'da bulunabilir. belgeleri okurken [batch paketi][py_batch_docs] .
+Aşağıdaki kod parçacığı, bir Ubuntu sunucu işlem düğümleri havuzu oluşturmak için [Python için Microsoft Azure Batch Istemci kitaplığının][py_batch_package] nasıl kullanılacağına ilişkin bir örnek gösterir. Batch Python modülü için başvuru belgeleri belgeleri okurken [azure.batch paketinde][py_batch_docs] bulunabilir.
 
 Bu kod parçacığı açıkça bir [ImageReference][py_imagereference] oluşturur ve her bir özelliğini (yayımcı, TEKLIF, SKU, sürüm) belirtir. Ancak üretim kodunda, çalışma zamanında kullanılabilir görüntü ve düğüm Aracısı SKU kombinasyonlarını belirlemek ve seçmek için [list_supported_images][py_list_supported_images] yöntemini kullanmanızı öneririz.
 
@@ -284,29 +283,29 @@ Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşt
 
 GitHub 'daki [Azure-Batch-Samples][github_samples] deposundaki [Python kodu örnekleri][github_samples_py] , havuz, iş ve görev oluşturma gibi yaygın toplu işlemlerin nasıl gerçekleştirileceğini gösteren betikler içerir. Python örneklerine eşlik eden [Benioku dosyası][github_py_readme] , gerekli paketlerin nasıl yükleneceğine ilişkin ayrıntılara sahiptir.
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_net_mgmt]: /dotnet/api/overview/azure/batch
+[api_rest]: /rest/api/batchservice/
 [cloud_services_pricing]: https://azure.microsoft.com/pricing/details/cloud-services/
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
 [github_samples_pyclient]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/python_tutorial_client.py
 [portal]: https://portal.azure.com
-[net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
+[net_cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
 [net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser?view=azure-dotnet
-[net_imagereference]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.imagereference.aspx
-[net_list_supported_images]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
-[net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
+[net_imagereference]: /dotnet/api/microsoft.azure.batch.imagereference
+[net_list_supported_images]: /dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
+[net_pool_ops]: /dotnet/api/microsoft.azure.batch.pooloperations
 [net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey?view=azure-dotnet#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
 [nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_add_pool]: /rest/api/batchservice/pool/add
 [py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
 [py_batch_docs]: https://azure.github.io/azure-sdk-for-python/ref/Batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
 [py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
-[py_list_supported_images]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
+[py_list_supported_images]: /python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

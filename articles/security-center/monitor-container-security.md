@@ -6,30 +6,18 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801385"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>Kapsayıcılarınızın güvenliğini izleme
+# <a name="monitor-the-security-of-your-containers"></a>Kapsayıcılarınızın güvenliğini izleyin
 
 Bu sayfada, kavramlar bölümümüzde [kapsayıcı güvenlik makalesinde](container-security.md) açıklanan kapsayıcı güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır.
 
-Azure Güvenlik Merkezi, kapsayıcı güvenliğinin aşağıdaki üç yönlerini ele almaktadır:
-
-- **Güvenlik açığı yönetimi** -Güvenlik Merkezi 'nin standart Fiyatlandırma Katmanı (bkz. [fiyatlandırma](/azure/security-center/security-center-pricing)) kullanıyorsanız, her yeni görüntü gönderildiğinde ARM tabanlı Azure Container Registry tarayabilirsiniz. Tarayıcı (Qualys tarafından desteklenir), bulguları Güvenlik Merkezi önerileri olarak sunar.
-    Ayrıntılı yönergeler için bkz. aşağıdaki [güvenlik açıkları için kapsayıcı kayıt defterlerinden tarama](#scanning-your-arm-based-container-registries-for-vulnerabilities) .
-
-- **Kapsayıcılarınızın Docker konaklarını sağlamlaştırma** -Güvenlik Merkezi, IaaS Linux sanal makinelerinde veya Docker çalıştıran diğer Linux makinelerde barındırılan yönetilmeyen kapsayıcıları bulur ve kapsayıcıların yapılandırmalarının Internet GÜVENLIĞI (CIS) Docker kıyaslaması için merkezi ile sürekli olarak karşılaştırılmasını ister. Güvenlik Merkezi, kapsayıcılarınız denetimlerden herhangi birini karşılamadığı takdirde sizi uyarır. Güvenlik risklerine yönelik sürekli izleme, yapılandırma hataları nedeniyle herhangi bir güvenlik programının önemli bir bileşenidir. 
-    Ayrıntılı yönergeler için bkz. [kapsayıcılarınızın Docker konaklarını artırma](#hardening-your-containers-docker-hosts) .
-
-- **Azure Kubernetes hizmet kümelerinizi sağlamlaştırma** -Güvenlik Merkezi, Azure Kubernetes hizmet kümelerinizin yapılandırmasında güvenlik açıkları bulduğunda öneriler sağlar. Görünebilen belirli önerilerin ayrıntıları için bkz. [Kubernetes hizmet önerileri](recommendations-reference.md#recs-containers).
-
-- **Çalışma zamanı koruması** -Güvenlik Merkezi 'nin standart fiyatlandırma katmanında çalışıyorsanız, Kapsayıcılı ortamlarınız için gerçek zamanlı tehdit koruması alacaksınız. Güvenlik Merkezi, ana bilgisayar ve AKS kümesi düzeyinde şüpheli etkinlikler için uyarı oluşturur. Görünebilen ilgili güvenlik uyarılarının ayrıntıları için uyarılar başvuru tablosunun [Azure Kubernetes hizmet kümeleri](alerts-reference.md#alerts-akscluster) ve [kapsayıcılar için uyarılar-konak düzeyi](alerts-reference.md#alerts-containerhost) bölümlerine bakın.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Güvenlik açıkları için ARM tabanlı kapsayıcı kayıt defterlerinden tarama 
 
@@ -37,7 +25,7 @@ Azure Güvenlik Merkezi, kapsayıcı güvenliğinin aşağıdaki üç yönlerini
 
     1. Azure Güvenlik Merkezi 'nin standart fiyatlandırma katmanında olduğunuzdan emin olun.
 
-    1. **Fiyatlandırma & ayarları** sayfasında, aboneliğiniz için Isteğe bağlı kapsayıcı kayıt defterleri grubunu etkinleştirin: ![kapsayıcı kayıt defterleri paketini etkinleştirme](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. **Fiyatlandırma & ayarları** sayfasında, aboneliğiniz için Isteğe bağlı kapsayıcı kayıt defterleri grubunu etkinleştirin: ![ kapsayıcı kayıt defterleri paketini etkinleştirme](media/monitor-container-security/enabling-container-registries-bundle.png)
 
         Güvenlik Merkezi artık kayıt defterine gönderilen görüntüleri taramaya hazırdır. 
 

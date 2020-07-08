@@ -12,10 +12,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194481"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi için sürüm notları
@@ -26,7 +25,7 @@ Modern veri tümleştirmesinin güçlüklerinden biri, verileri Şirket içinden
 
 Veri Yönetimi ağ geçidi ve nasıl kullanılacağı hakkında ayrıntılı bilgi için aşağıdaki makalelere bakın:
 
-*  [Veri Yönetimi Ağ Geçidi](data-factory-data-management-gateway.md)
+*  [Veri Yönetimi ağ geçidi](data-factory-data-management-gateway.md)
 *  [Azure Data Factory kullanarak şirket içi ve bulut arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md)
 
 

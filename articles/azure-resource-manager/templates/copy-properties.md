@@ -4,10 +4,9 @@ description: Bir kaynak üzerinde bir özellik oluştururken birden çok kez yin
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678469"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM şablonlarındaki Özellik yinelemesi
@@ -16,7 +15,7 @@ Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir özelliğin birden f
 
 Ayrıca [kaynakları](copy-resources.md), [değişkenleri](copy-variables.md)ve [çıkışları](copy-outputs.md)kullanarak kopyalamayı kullanabilirsiniz.
 
-## <a name="syntax"></a>Söz dizimi
+## <a name="syntax"></a>Syntax
 
 Copy öğesi aşağıdaki genel biçime sahiptir:
 
@@ -252,7 +251,7 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
 
 Aşağıdaki örnek, bir özellik için birden fazla değer oluşturmak için ortak bir senaryoyu gösterir.
 
-|Şablon  |Description  |
+|Şablon  |Açıklama  |
 |---------|---------|
 |[Değişken sayıda veri diskine sahip VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Bir sanal makine ile birden fazla veri diski dağıtır. |
 

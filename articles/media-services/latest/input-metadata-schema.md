@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: juliako
 ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85095599"
 ---
 # <a name="input-metadata"></a>Giriş meta verileri 
@@ -41,7 +40,7 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 > 
 > 
 
-| Name  | Description |
+| Name  | Açıklama |
 | --- | --- | 
 | **Videoizler**|Her fiziksel varlık dosyası sıfır veya daha fazla video, araya eklemeli bir şekilde uygun bir kapsayıcı biçimine sahip olabilir. Daha fazla bilgi için bkz. [Videoiz](#videotracks). |
 | **Ses Izleri**|Her fiziksel varlık dosyası, uygun bir kapsayıcı biçiminde araya eklemeli sıfır veya daha fazla ses parçası içerebilir. Daha fazla bilgi için bkz. [ses izleri](#audiotracks) |
@@ -49,7 +48,7 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 
 ### <a name="other-child-elements"></a>Diğer alt öğeler
 
-| Name | Description |
+| Name | Açıklama |
 | --- | --- |
 | **Adı**<br />Gerekli |Varlık dosya adı. <br /><br />Örnek: `"Name": "Ignite-short.mp4"` |
 | **Kullanılmamışsa**<br />Gerekli |Giriş varlığının bulunduğu URL. Çıkış varlığının ait olduğu giriş varlığını belirlemek için, `Uri` kimlik yerine alanını kullanın.|
@@ -63,7 +62,7 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 
 ## <a name="videotracks"></a>Videoizler
 
-| Name |  | Description |
+| Name |  | Açıklama |
 | --- | --- |
 | **FourCC**<br />Gerekli |FFmpeg tarafından raporlanan video codec FourCC kodu.<br /><br />Örnek: `"FourCC": "avc1"` |
 | **Profil** |Video izleme profili. <br /><br />Örnek: `"Profile": "Main"`|
@@ -90,7 +89,7 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 
 ## <a name="audiotracks"></a>Ses Izleri
 
-| Name  | Description |
+| Name  | Açıklama |
 | --- | --- | 
 | **SampleFormat** |Örnek biçim. <br /><br />Örnek: `"SampleFormat": "fltp"`|
 | **ChannelLayout** |Kanal düzeni. <br /><br />Örnek: `"ChannelLayout": "stereo"`|
@@ -108,7 +107,7 @@ Kodlama işi için Assetdosya öğelerinin bir koleksiyonunu içerir.
 
 ## <a name="metadata"></a>Meta veri
 
-| Name | Description |
+| Name | Açıklama |
 | --- | --- |
 | **anahtar**<br />Gerekli |Anahtar/değer çiftindeki anahtar. |
 | **deeri**<br /> Gerekli |Anahtar/değer çiftindeki değer. |

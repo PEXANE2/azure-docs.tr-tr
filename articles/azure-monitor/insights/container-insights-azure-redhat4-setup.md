@@ -2,13 +2,12 @@
 title: Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi için izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 7eee7ba6ba01679f72d1249058e4101b38d8461d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: 49097d96ecf58d7c5bf7d1a60ff01fc7182587c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801487"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yapılandırma
 
@@ -39,6 +38,10 @@ Kapsayıcılar için Azure Izleyici, Azure Red Hat OpenShift v4. x ' i [kapsayı
 
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) komut satırı aracı
 
+- [Log Analytics çalışma alanı](../platform/design-logs-deployment.md).
+
+    Kapsayıcılar için Azure Izleyici, [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler. Kendi çalışma alanınızı oluşturmak için [Azure Resource Manager](../platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md)aracılığıyla oluşturulabilir.
+
 - Kapsayıcılar için Azure Izleyici 'deki özellikleri etkinleştirmek ve bu özelliklere erişmek için Azure aboneliğindeki bir Azure *katılımcısı* rolüne ve kapsayıcılar Için Azure izleyici ile yapılandırılmış Log Analytics çalışma alanında bir [*Log Analytics katılımcısı*](../platform/manage-access.md#manage-access-using-azure-permissions) rolüne sahip olmanız gerekir.
 
 - İzleme verilerini görüntülemek için, kapsayıcılar için Azure Izleyici ile yapılandırılmış Log Analytics çalışma alanında [*Log Analytics okuyucu*](../platform/manage-access.md#manage-access-using-azure-permissions) rolüne sahip olmanız gerekir.
@@ -55,17 +58,27 @@ Azure Red Hat OpenShift sürüm 4 veya sonraki bir küme için izlemeyi etkinle�
 
 1. Aşağıdaki komutu çalıştırarak kümenizi izleme eklentisi ile yapılandıran betiği yerel bir klasöre indirip kaydedin:
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aroV4/onboarding_azuremonitor_for_containers.sh.`
+    `curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script`
 
-1. Kümenizin *kuin bağlamını* belirlemek için, kümenizde başarılı bir *OC oturum* açtıktan sonra aşağıdaki komutu çalıştırın:
+1. Kümenizin *Kubebağlamını* belirlemek için aşağıdaki komutları çalıştırın
 
-    `kubectl config current-context`
-    
+    ```
+    adminUserName=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminUsername' -o tsv)
+    adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
+    apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
+    oc login $apiServer -u $adminUserName -p $adminPassword
+    # openshift project name for azure monitor for containers
+    openshiftProjectName="azure-monitor-for-containers"
+    oc new-project $openshiftProjectName
+    # get the kube config context
+    kubeContext=$(oc config current-context)
+    ```
+
 1. Daha sonra kullanmak için değeri kopyalayın.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Mevcut bir çalışma alanıyla tümleştirin
 
-Bu bölümde, daha önce indirdiğiniz Bash betiğini kullanarak kümenizin izlenmesini etkinleştirirsiniz. Mevcut bir Log Analytics çalışma alanıyla tümleştirmek için, parametresi için gereken Log Analytics çalışma alanınızın tam kaynak KIMLIĞINI tanımlayarak başlayın `workspaceResourceId` ve ardından İzleme eklentisini belirtilen çalışma alanına karşı etkinleştirmek için komutunu çalıştırın. 
+Bu bölümde, daha önce indirdiğiniz Bash betiğini kullanarak kümenizin izlenmesini etkinleştirirsiniz. Mevcut bir Log Analytics çalışma alanıyla tümleştirmek için, parametresi için gereken Log Analytics çalışma alanınızın tam kaynak KIMLIĞINI tanımlayarak başlayın `logAnalyticsWorkspaceResourceId` ve ardından İzleme eklentisini belirtilen çalışma alanına karşı etkinleştirmek için komutunu çalıştırın.
 
 Belirtmek için bir çalışma alanınız yoksa, [varsayılan çalışma alanı Ile tümleştir](#integrate-with-the-default-workspace) bölümüne atlayabilirsiniz ve betiğin sizin için yeni bir çalışma alanı oluşturmasına izin verebilirsiniz.
 
@@ -99,45 +112,54 @@ Belirtmek için bir çalışma alanınız yoksa, [varsayılan çalışma alanı 
 
 1. Çıktıda, çalışma alanı adını bulun ve alan **kimliği**altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
 
-1. İzlemeyi etkinleştirmek için aşağıdaki komutu çalıştırın. `azureAroV4ResourceId`Ve parametrelerinin değerlerini değiştirin `workspaceResourceId` . 
+1. İzlemeyi etkinleştirmek için aşağıdaki komutu çalıştırın. `azureAroV4ClusterResourceId`, `logAnalyticsWorkspaceResourceId` Ve parametrelerinin değerlerini değiştirin `kubeContext` .
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <workspaceResourceId>`
+    ```bash
+    export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
+    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    export kubeContext="<kubeContext name of your ARO v4 cluster>"  
+    ```
 
     Örnek:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4 /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
+    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
 ### <a name="integrate-with-the-default-workspace"></a>Varsayılan çalışma alanıyla tümleştirin
 
-Bu bölümde, indirdiğiniz Bash betiğini kullanarak Azure Red Hat OpenShift v4. x kümeniz için izlemeyi etkinleştirirsiniz. 
+Bu bölümde, indirdiğiniz Bash betiğini kullanarak Azure Red Hat OpenShift v4. x kümeniz için izlemeyi etkinleştirirsiniz.
 
-Bu örnekte, var olan bir çalışma alanını önceden oluşturmanız veya belirtmeniz gerekmez. Bu komut, bölge içinde zaten mevcut değilse, küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir. 
+Bu örnekte, var olan bir çalışma alanını önceden oluşturmanız veya belirtmeniz gerekmez. Bu komut, bölge içinde zaten mevcut değilse, küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir.
 
 Oluşturulan varsayılan çalışma alanı *defaultworkspace- \<GUID> - \<Region> *biçimindedir.  
 
-`bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
+`azureAroV4ClusterResourceId`Ve parametrelerinin değerlerini değiştirin `kubeContext` .
+
+```bash
+export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
+export kubeContext="<kubeContext name of your ARO v4 cluster>"
+```
 
 Örneğin:
 
-`bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
+`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
-### <a name="from-the-azure-portal"></a>Azure portalından
+### <a name="enable-monitoring-from-the-azure-portal"></a>Azure portal izlemeyi etkinleştir
 
-Kapsayıcılar için Azure Izleyici 'de birden çok küme görünümü, **izlenen kümeler** sekmesinde izleme etkinleştirilmemiş olan Azure Red Hat OpenShift kümelerinizi vurgular. Kümenizin yanındaki **Etkinleştir** seçeneği, portaldan izleme ekleme işlemini başlatmaz. Bu makalenin önceki kısımlarında açıklanan adımları izleyerek el ile izlemeyi etkinleştirmek için bu makaleye yönlendirilirsiniz.
+Kapsayıcılar için Azure Izleyici 'de çok küme görünümü, **izlenmeyen kümeler** sekmesi altında izleme özelliği etkinleştirilmemiş olan Azure Red Hat OpenShift kümelerinizi vurgular. Kümenizin yanındaki **Etkinleştir** seçeneği, portaldan izleme ekleme işlemini başlatmaz. Bu makalenin önceki kısımlarında açıklanan adımları izleyerek el ile izlemeyi etkinleştirmek için bu makaleye yönlendirilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Sol bölmedeki veya giriş sayfasından **Azure izleyici**' yi seçin. 
+1. Sol bölmedeki veya giriş sayfasından **Azure izleyici**' yi seçin.
 
 1. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin.
 
-1. **İzleyici-kapsayıcılar** sayfasında, **izlenmeyen kümeler**' ı seçin.
+1. **İzleme kapsayıcıları** sayfasında, **izlenmeyen kümeler**' ı seçin.
 
-1. İzlenmeyen kümeler listesinde kümeyi seçin ve ardından **Etkinleştir**' i seçin. 
+1. İzlenmeyen kümeler listesinde kümeyi seçin ve ardından **Etkinleştir**' i seçin.
 
     **Küme türü** sütununda, **Aro** değerini arayarak listedeki sonuçları belirleyebilirsiniz. **Etkinleştir**' i seçtikten sonra bu makaleye yönlendirilirsiniz.
 

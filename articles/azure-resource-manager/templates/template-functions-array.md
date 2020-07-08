@@ -4,10 +4,9 @@ description: Diziler ile çalışmak için bir Azure Resource Manager şablonund
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677857"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM şablonları için dizi işlevleri
@@ -40,9 +39,9 @@ Değeri bir diziye dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Yes |int, String, array veya Object |Bir diziye dönüştürülecek değer. |
+| convertToArray |Evet |int, String, array veya Object |Bir diziye dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -93,7 +92,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 | Name | Tür | Değer |
 | ---- | ---- | ----- |
-| ıntoutput | Dizi | 1 |
+| ıntoutput | Dizi |  [1] |
 | stringOutput | Dizi | ["EFGH"] |
 | objectOutput | Dizi | [{"a": "b", "c": "d"}] |
 
@@ -105,10 +104,10 @@ Birden çok diziyi birleştirir ve birleştirilmiş diziyi döndürür ya da bir
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |Birleştirme için ilk dizi veya dize. |
-| ek bağımsız değişkenler |No |dizi veya dize |Birleştirme için sıralı sırada ek diziler veya dizeler. |
+| arg1 |Evet |dizi veya dize |Birleştirme için ilk dizi veya dize. |
+| ek bağımsız değişkenler |Hayır |dizi veya dize |Birleştirme için sıralı sırada ek diziler veya dizeler. |
 
 Bu işlev herhangi bir sayıda bağımsız değişken alabilir ve parametreler için dizeleri ya da dizileri kabul edebilir. Ancak, parametreleri için hem diziler hem de dizeler sağlayamıyoruz. Diziler yalnızca diğer dizilerle birleştirilir.
 
@@ -187,7 +186,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | ---- | ---- | ----- |
 | Içtoutput | Dize | önek-5yıj4yıjf5mbg72 |
 
-## <a name="contains"></a>içerir
+## <a name="contains"></a>şunu içerir
 
 `contains(container, itemToFind)`
 
@@ -195,10 +194,10 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -276,10 +275,10 @@ Parametrelerden bir dizi oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |String, Integer, array veya Object |Dizideki ilk değer. |
-| ek bağımsız değişkenler |No |String, Integer, array veya Object |Dizideki ek değerler. |
+| arg1 |Evet |String, Integer, array veya Object |Dizideki ilk değer. |
+| ek bağımsız değişkenler |Hayır |String, Integer, array veya Object |Dizideki ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -343,9 +342,9 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -408,9 +407,9 @@ Dizinin ilk öğesini veya dizenin ilk karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |İlk öğe veya karakteri alma değeri. |
+| arg1 |Evet |dizi veya dize |İlk öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -460,11 +459,11 @@ Parametrelerden ortak öğelerle tek bir dizi veya nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
-| arg2 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
-| ek bağımsız değişkenler |No |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
+| arg1 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
+| arg2 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
+| ek bağımsız değişkenler |Hayır |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -526,9 +525,9 @@ Dizinin son öğesini veya dizenin son karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |Son öğe veya karakteri alma değeri. |
+| arg1 |Evet |dizi veya dize |Son öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -578,9 +577,9 @@ Bir dizideki öğelerin sayısını, bir dizedeki karakterleri veya bir nesnedek
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -665,9 +664,9 @@ Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -716,9 +715,9 @@ Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayıla
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -767,10 +766,10 @@ Bir başlangıç tamnoktasından tamsayılar dizisi oluşturur ve bir dizi öğe
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| startIndex |Yes |int |Dizideki ilk tamsayı. StartIndex ve Count toplamı 2147483647 değerinden büyük olmamalıdır. |
-| count |Yes |int |Dizideki tamsayıların sayısı. 10000 kadar negatif olmayan bir tamsayı olmalıdır. |
+| startIndex |Evet |int |Dizideki ilk tamsayı. StartIndex ve Count toplamı 2147483647 değerinden büyük olmamalıdır. |
+| count |Evet |int |Dizideki tamsayıların sayısı. 10000 kadar negatif olmayan bir tamsayı olmalıdır. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -818,10 +817,10 @@ Dizide belirtilen sayıdan sonraki tüm öğeleri içeren bir dizi döndürür v
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
-| numberToSkip |Yes |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
+| originalValue |Evet |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
+| numberToSkip |Evet |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -886,10 +885,10 @@ Dizinin başından itibaren belirtilen sayıda öğe içeren bir dizi veya dizen
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
-| numberToTake |Yes |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
+| originalValue |Evet |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
+| numberToTake |Evet |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -954,11 +953,11 @@ Parametrelerden tüm öğeleri içeren tek bir dizi veya nesne döndürür. Yine
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
-| arg2 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
-| ek bağımsız değişkenler |No |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
+| arg1 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
+| arg2 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
+| ek bağımsız değişkenler |Hayır |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

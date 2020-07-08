@@ -15,10 +15,9 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84790255"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure reddetme atamalarını listeleyin
@@ -90,7 +89,7 @@ Reddetme atama hakkında ek ayrıntıları listelemek için aşağıdaki adımla
 
     ![Atama reddi Izinlerini Reddet](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Eylem türü | Description |
+    | Eylem türü | Açıklama |
     | --- | --- |
     | **Eylemler**  | Yönetim işlemleri reddedildi. |
     | **NotActions** | Yönetim işlemleri Reddedilenler yönetim işleminden dışlandı. |

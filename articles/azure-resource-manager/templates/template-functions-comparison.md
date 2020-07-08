@@ -4,10 +4,9 @@ description: Değerleri karşılaştırmak için Azure Resource Manager şablond
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84677840"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM şablonları için karşılaştırma işlevleri
@@ -15,7 +14,7 @@ ms.locfileid: "84677840"
 Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
 * [Coalesce](#coalesce)
-* [equals](#equals)
+* [eşittir](#equals)
 * [büyüktür](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [büyüktür](#less)
@@ -29,10 +28,10 @@ Parametrelerden null olmayan ilk değeri döndürür. Boş dizeler, boş diziler
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, String, array veya Object |Null için sınanacak ilk değer. |
-| ek bağımsız değişkenler |No |int, String, array veya Object |Null için sınanacak ek değerler. |
+| arg1 |Evet |int, String, array veya Object |Null için sınanacak ilk değer. |
+| ek bağımsız değişkenler |Hayır |int, String, array veya Object |Null için sınanacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -93,10 +92,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | stringOutput | Dize | default |
 | ıntoutput | int | 1 |
 | objectOutput | Nesne | {"First": "varsayılan"} |
-| arrayOutput | Dizi | 1 |
+| arrayOutput | Dizi |  [1] |
 | Emptızput | Bool | True |
 
-## <a name="equals"></a>equals
+## <a name="equals"></a>eşittir
 
 `equals(arg1, arg2)`
 
@@ -104,10 +103,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ilk değer. |
-| arg2 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ikinci değer. |
+| arg1 |Evet |int, String, array veya Object |Eşitlik için denetlenecek ilk değer. |
+| arg2 |Evet |int, String, array veya Object |Eşitlik için denetlenecek ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -237,10 +236,10 @@ Yukarıdaki örnekteki çıktı:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Daha büyük karşılaştırma için ilk değer. |
-| arg2 |Yes |int veya String |Daha büyük karşılaştırma için ikinci değer. |
+| arg1 |Evet |int veya String |Daha büyük karşılaştırma için ilk değer. |
+| arg2 |Evet |int veya String |Daha büyük karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -302,10 +301,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ilk değer. |
-| arg2 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ikinci değer. |
+| arg1 |Evet |int veya String |Daha büyük veya eşit karşılaştırma için ilk değer. |
+| arg2 |Evet |int veya String |Daha büyük veya eşit karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -367,10 +366,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Daha az karşılaştırma için ilk değer. |
-| arg2 |Yes |int veya String |Daha az karşılaştırma için ikinci değer. |
+| arg1 |Evet |int veya String |Daha az karşılaştırma için ilk değer. |
+| arg2 |Evet |int veya String |Daha az karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -432,10 +431,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Less veya eşittir karşılaştırması için ilk değer. |
-| arg2 |Yes |int veya String |Less veya eşittir karşılaştırması için ikinci değer. |
+| arg1 |Evet |int veya String |Less veya eşittir karşılaştırması için ilk değer. |
+| arg2 |Evet |int veya String |Less veya eşittir karşılaştırması için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 

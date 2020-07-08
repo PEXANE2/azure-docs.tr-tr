@@ -7,18 +7,17 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142070"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960308"
 ---
-# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizleme 'de özel etki alanı ayarlama
+# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesinde özel etki alanı ayarlama
 
 Varsayılan olarak, Azure statik Web Apps otomatik olarak oluşturulan bir etki alanı adı sağlar. Bu makalede bir Azure statik Web Apps uygulamasına özel bir etki alanı adı eşleme gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Satın alınan etki alanı adı
 - Etki alanınız için DNS yapılandırma özelliklerine erişim
@@ -29,11 +28,11 @@ Etki alanı adlarını yapılandırırken, "A" kayıtları, kök etki alanların
 
 Bir uygulama için kullanılabilir birkaç farklı DNS yapılandırması türü vardır.
 
-| İsterseniz                            | Ardından                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| Support`www.example.com`                 | [CNAME kaydını eşleme](#map-a-cname-record)           |
-| Support`example.com`                     | [Kök etki alanı yapılandırma](#configure-a-root-domain) |
-| Tüm alt etki alanlarını işaret edin`www.example.com` | [Joker karakterle eşleme](#map-a-wildcard-domain)                   |
+| İsterseniz                                 | Ardından                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| Destek `www.example.com` veya`blog.example.net`| [CNAME kaydını eşleme](#map-a-cname-record)           |
+| Support`example.com`                          | [Kök etki alanı yapılandırma](#configure-a-root-domain) |
+| Tüm alt etki alanlarını işaret edin`www.example.com`      | [Joker karakterle eşleme](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>CNAME kaydını eşleme
 

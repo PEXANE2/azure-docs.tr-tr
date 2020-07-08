@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84790526"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
@@ -41,7 +40,7 @@ Her ileti, yönlendirme sorguları eşleşen tüm uç noktalara yönlendirilir. 
 IoT Hub Şu anda aşağıdaki uç noktaları desteklemektedir:
 
  - Yerleşik uç nokta
- - Azure Depolama
+ - Azure Storage
  - Service Bus kuyrukları ve Service Bus konuları
  - Event Hubs
 
@@ -49,7 +48,7 @@ IoT Hub Şu anda aşağıdaki uç noktaları desteklemektedir:
 
 Yerleşik uç noktadan (**iletiler/olaylar**) cihazdan buluta iletileri almak için standart [Event Hubs tümleştirme ve SDK](iot-hub-devguide-messages-read-builtin.md) 'lar kullanabilirsiniz. Bir yol oluşturulduktan sonra, bu uç nokta için bir yol oluşturulmadığı takdirde veriler yerleşik uç noktaya akar.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 İki depolama hizmeti vardır IoT Hub-- [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md) ve [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md) (ADLS 2.) hesaplarına iletileri yönlendirebilir. Azure Data Lake Storage hesapları, BLOB depolama alanı üzerinde oluşturulmuş [hiyerarşik ad alanı](../storage/blobs/data-lake-storage-namespace.md)etkinleştirilmiş depolama hesaplarıdır. Bunların her ikisi de depolama alanı için blob 'ları kullanır.
 

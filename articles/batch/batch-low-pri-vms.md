@@ -5,12 +5,11 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780192"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960002"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch ile düşük öncelikli VM’ler kullanma
 
@@ -23,11 +22,11 @@ Düşük öncelikli VM 'Lerin kullanılması için zorunluluğunu getirir, kulla
 Düşük öncelikli VM 'Ler, ayrılmış VM 'lerle karşılaştırıldığında önemli ölçüde azaltılan bir fiyatla sunulur. Fiyatlandırma ayrıntıları için bkz. [Batch fiyatlandırması](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
-> Artık [tek örnekli VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) ve [VM Ölçek Kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)için [spot VM 'ler](https://azure.microsoft.com/pricing/spot/) kullanılabilir. Spot VM 'ler düşük öncelikli VM 'lerin bir gelişmesidir, ancak bu fiyatlandırmayla farklılık gösterebilir ve spot VM 'Ler ayrılırken isteğe bağlı bir en yüksek fiyat ayarlanabilir.
+> Artık [tek örnekli VM 'ler](../virtual-machines/linux/spot-vms.md) ve [VM Ölçek Kümeleri](../virtual-machine-scale-sets/use-spot.md)için [spot VM 'ler](https://azure.microsoft.com/pricing/spot/) kullanılabilir. Spot VM 'ler düşük öncelikli VM 'lerin bir gelişmesidir, ancak bu fiyatlandırmayla farklılık gösterebilir ve spot VM 'Ler ayrılırken isteğe bağlı bir en yüksek fiyat ayarlanabilir.
 >
-> Azure Batch havuzları, [toplu API 'lerin ve araçların](https://docs.microsoft.com/azure/batch/batch-apis-tools)yeni sürümleriyle birlikte genel kullanıma sunulmakta olan birkaç ay Içinde spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduğunda, düşük öncelikli VM 'Ler kullanım dışı olacaktır, ancak sanal makinelere geçiş için yeterli zamana izin vermek üzere en az 12 ay boyunca geçerli API 'Ler ve araç sürümleri kullanılarak desteklenmeye devam edecektir. 
+> Azure Batch havuzları, [toplu API 'lerin ve araçların](./batch-apis-tools.md)yeni sürümleriyle birlikte genel kullanıma sunulmakta olan birkaç ay Içinde spot VM 'leri desteklemeye başlar. Spot VM desteği kullanılabilir olduğunda, düşük öncelikli VM 'Ler kullanım dışı olacaktır, ancak sanal makinelere geçiş için yeterli zamana izin vermek üzere en az 12 ay boyunca geçerli API 'Ler ve araç sürümleri kullanılarak desteklenmeye devam edecektir. 
 >
-> [Bulut hizmeti yapılandırma](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzları Için Spot VM 'ler desteklenmez. Spot VM 'Leri kullanmak için, bulut hizmeti havuzlarının [sanal makine yapılandırma](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzlarına geçirilmesi gerekir.
+> [Bulut hizmeti yapılandırma](/rest/api/batchservice/pool/add#cloudserviceconfiguration) havuzları Için Spot VM 'ler desteklenmez. Spot VM 'Leri kullanmak için, bulut hizmeti havuzlarının [sanal makine yapılandırma](/rest/api/batchservice/pool/add#virtualmachineconfiguration) havuzlarına geçirilmesi gerekir.
 
 ## <a name="use-cases-for-low-priority-vms"></a>Düşük öncelikli VM 'Ler için kullanım örnekleri
 

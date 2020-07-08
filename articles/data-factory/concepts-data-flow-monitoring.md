@@ -7,13 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/17/2020
-ms.openlocfilehash: 9594a2ddfaa0103e171618925ba6974bf9ad7f00
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.date: 07/03/2020
+ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833991"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958914"
 ---
 # <a name="monitor-data-flows"></a>Veri akışlarını izleme
 
@@ -56,12 +55,31 @@ Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akış
   * Küme başlangıç zamanı: veri akışı yürütmenizle ilgili JıT Spark işlem ortamının elde edilecek süre miktarı
   * Dönüşüm sayısı: akışınızda kaç dönüştürme adımı yürütüldüğü
   
-![Veri akışı Izleme](media/data-flow/monitornew.png "Veri akışı Izleme yeni")  
+![Veri akışı Izleme](media/data-flow/monitornew.png "Veri akışı Izleme yeni")
+
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Toplam Havuz Işleme süresi ile dönüşüm Işleme süresi karşılaştırması
+
+Her bir dönüştürme aşaması, her bir bölüm yürütme süresi toplandığında bu aşamanın tamamlanacağı toplam süreyi içerir. Havuza tıkladığınızda, "havuz Işleme süresi" görüntülenir. Bu süre, *dönüştürme süresinin toplamını ve verilerinizi* hedef deponuza yazmak için geçen g/ç süresini içerir. Havuz Işleme süresi ve dönüşümün Toplam arasındaki fark, verileri yazmak için g/ç zamanı olur.
+
+Ayrıca, ADF ardışık düzen izleme görünümündeki veri akışı etkinliğinizden JSON çıkışını açarsanız her bölüm dönüştürme adımı için ayrıntılı zamanlamayı görebilirsiniz. JSON, her bölüm için milisaniyelik zamanlama içerir, ancak UX izleme görünümü birlikte eklenen bölümlerin toplam zamanlamadır:
+
+```
+ {
+     "stage": 4,
+     "partitionTimes": [
+          14353,
+          14914,
+          14246,
+          14912,
+          ...
+         ]
+}
+```
   
 ## <a name="monitor-icons"></a>Simgeleri izle
 
 Bu simge, dönüştürme verilerinin kümede zaten önbelleğe alındığı anlamına gelir; bu nedenle zamanlamalar ve yürütme yolu şu hesaba alınır:
 
-![Veri akışı Izleme](media/data-flow/mon004.png "Veri Akışını İzleme")
+![Veri akışı Izleme](media/data-flow/mon005.png "Veri Akışını İzleme")
 
 Ayrıca, dönüşümde yeşil daire simgeleri görürsünüz. Bunlar, verilerin akan havuz sayısını temsil eder.
