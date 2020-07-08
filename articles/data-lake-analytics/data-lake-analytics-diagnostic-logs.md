@@ -5,15 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: ba0311da88f1fe0cbc0bf885197785db10b1bac2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60616526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564843"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics’te tanılama günlüklerine erişim
 
@@ -60,32 +59,34 @@ Tanılama günlüğü, veri erişim denetim izlerini toplamanıza olanak tanır.
 
 2. Kapsayıcılar içinde Günlükler aşağıdaki dosya yapısı altında depolanır:
 
-        resourceId=/
-          SUBSCRIPTIONS/
-            <<SUBSCRIPTION_ID>>/
-              RESOURCEGROUPS/
-                <<RESOURCE_GRP_NAME>>/
-                  PROVIDERS/
-                    MICROSOFT.DATALAKEANALYTICS/
-                      ACCOUNTS/
-                        <DATA_LAKE_ANALYTICS_NAME>>/
-                          y=####/
-                            m=##/
-                              d=##/
-                                h=##/
-                                  m=00/
-                                    PT1H.json
+   ```text
+   resourceId=/
+     SUBSCRIPTIONS/
+       <<SUBSCRIPTION_ID>>/
+         RESOURCEGROUPS/
+           <<RESOURCE_GRP_NAME>>/
+             PROVIDERS/
+               MICROSOFT.DATALAKEANALYTICS/
+                 ACCOUNTS/
+                   <DATA_LAKE_ANALYTICS_NAME>>/
+                     y=####/
+                       m=##/
+                         d=##/
+                           h=##/
+                             m=00/
+                               PT1H.json
+   ```
 
    > [!NOTE]
-   > Yoldaki `##` girişler, günlüğün oluşturulduğu yılı, ayı, günü ve saati içerir. Data Lake Analytics her saat bir dosya oluşturur, bu `m=` nedenle her zaman bir değeri `00`içerir.
+   > `##`Yoldaki girişler, günlüğün oluşturulduğu yılı, ayı, günü ve saati içerir. Data Lake Analytics her saat bir dosya oluşturur, bu nedenle `m=` her zaman bir değeri içerir `00` .
 
     Örnek olarak, bir denetim günlüğüne yönelik yolun tamamı şöyle olabilir:
 
-        https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
 
     Benzer şekilde, bir istek günlüğüne yönelik yolun tamamı şu olabilir:
 
-        https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
+    `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="log-structure"></a>Günlük yapısı
 
@@ -95,37 +96,39 @@ Denetim ve istek günlükleri yapılandırılmış bir JSON biçimindedir.
 
 JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. Her Blobun, bir dizi günlük nesnesi içeren **kayıtlar** adlı bir kök nesnesi vardır.
 
+```json
+{
+"records":
+  [
+    . . . .
+    ,
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
-             "category": "Requests",
-             "operationName": "GetAggregatedJobHistory",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {
-                 "HttpMethod":"POST",
-                 "Path":"/JobAggregatedHistory",
-                 "RequestContentLength":122,
-                 "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
-                 "StartTime":"2016-07-07T21:02:52.472Z",
-                 "EndTime":"2016-07-07T21:02:53.456Z"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-07T21:02:53.456Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
+         "category": "Requests",
+         "operationName": "GetAggregatedJobHistory",
+         "resultType": "200",
+         "callerIpAddress": "::ffff:1.1.1.1",
+         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+         "properties": {
+             "HttpMethod":"POST",
+             "Path":"/JobAggregatedHistory",
+             "RequestContentLength":122,
+             "ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8",
+             "StartTime":"2016-07-07T21:02:52.472Z",
+             "EndTime":"2016-07-07T21:02:53.456Z"
+             }
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
 
-| Adı | Tür | Açıklama |
+| Name | Tür | Açıklama |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -139,7 +142,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
 
-| Adı | Tür | Açıklama |
+| Name | Tür | Açıklama |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -152,32 +155,30 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. Her Blobun, bir dizi günlük nesnesi içeren **kayıtlar** adlı bir kök nesnesi vardır.
 
+```json
+{
+"records":
+  [
     {
-    "records":
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-28T19:15:16.245Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
-             "category": "Audit",
-             "operationName": "JobSubmitted",
-             "identity": "user@somewhere.com",
-             "properties": {
-                 "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
-                 "JobName": "New Job",
-                 "JobRuntimeName": "default",
-                 "SubmitTime": "7/28/2016 7:14:57 PM"
-                 }
-        }
-        ,
-        . . . .
-      ]
+         "time": "2016-07-28T19:15:16.245Z",
+         "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
+         "category": "Audit",
+         "operationName": "JobSubmitted",
+         "identity": "user@somewhere.com",
+         "properties": {
+             "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
+             "JobName": "New Job",
+             "JobRuntimeName": "default",
+             "SubmitTime": "7/28/2016 7:14:57 PM"
+             }
     }
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
 
-| Adı | Tür | Açıklama |
+| Name | Tür | Açıklama |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -195,7 +196,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
 
-| Adı | Tür | Açıklama |
+| Name | Tür | Açıklama |
 | --- | --- | --- |
 | JobId |Dize |İşe atanan KIMLIK |
 | JobName |Dize |İş için belirtilen ad |
@@ -210,7 +211,8 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 ## <a name="process-the-log-data"></a>Günlük verilerini işleme
 
-Azure Data Lake Analytics günlük verilerini işleme ve çözümleme hakkında bir örnek sağlar. Örneği adresinde [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)bulabilirsiniz.
+Azure Data Lake Analytics günlük verilerini işleme ve çözümleme hakkında bir örnek sağlar. Örneği adresinde bulabilirsiniz [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Data Lake Analytics’e Genel Bakış](data-lake-analytics-overview.md)
+
+[Azure Data Lake Analytics’e Genel Bakış](data-lake-analytics-overview.md)

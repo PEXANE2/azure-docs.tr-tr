@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6e32a0a876928e9430f9127299e6b7e657d7743c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563134"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Tablo depolamadaki tabloları dizin oluşturma
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Tablo depolamada depolanan verileri indekslemek için Azure B
 
 Şu kaynakları kullanarak bir Azure Tablo depolama Dizin Oluşturucu oluşturabilirsiniz:
 
-* [Azure portal](https://ms.portal.azure.com)
+* [Azure portalındaki](https://ms.portal.azure.com)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Bilişsel Arama [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -49,7 +49,7 @@ Tablo dizini oluşturma için, veri kaynağı aşağıdaki özelliklere sahip ol
 
 Bir veri kaynağı oluşturmak için:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ Dizin, bir belgedeki alanları, öznitelikleri ve arama deneyimini şekillendiri
 
 Bir dizin oluşturmak için:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Dizin Oluşturucu bir veri kaynağını hedef arama diziniyle bağlar ve veri ye
 
 Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya hazırsınız:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -135,7 +135,7 @@ Bir zamanlamaya göre çalıştırılacak bir tablo dizin oluşturucuyu ayarlark
 
 Belirli belgelerin dizinden kaldırılması gerektiğini belirtmek için, bir geçici silme stratejisi kullanabilirsiniz. Bir satırı silmek yerine, silindiğini göstermek için bir özellik ekleyin ve DataSource üzerinde bir geçici silme algılama ilkesi ayarlayın. Örneğin, aşağıdaki ilke, satırın değeri olan bir özelliği varsa, bir satırın silindiğini kabul eder `IsDeleted` `"true"` :
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

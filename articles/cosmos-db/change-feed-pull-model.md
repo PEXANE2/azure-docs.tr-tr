@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: c47016d0b82a4e4ed084f5d82394d91fd2b46be1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8916f4b9824f88361fdeb9d866f84adb71e8138e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563788"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB akış çekme modelini değiştirme
 
@@ -164,13 +164,13 @@ Bu senaryolarda çekme modelini kullanmayı göz önünde bulundurmanız gerekir
 
 Aşağıda, değişiklik akışı işlemcisi ve çekme modeli arasındaki bazı önemli farklılıklar verilmiştir:
 
-|  | Değişiklik akışı işlemcisi| Çekme modeli |
+|Özellik  | Değişiklik akışı işlemcisi| Çekme modeli |
 | --- | --- | --- |
 | Değişiklik akışındaki geçerli noktayı takip tutma | Kira (Azure Cosmos DB kapsayıcısında depolanır) | Devamlılık belirteci (bellekte depolanan veya el ile kalıcı) |
 | Geçmiş değişiklikleri yeniden oynatma yeteneği | Evet, gönderim modeliyle | Evet, çekme modeliyle|
 | Gelecekteki değişiklikler için yoklama | Kullanıcı tarafından belirtilen değişiklikleri otomatik olarak denetler`WithPollInterval` | El ile |
 | Tüm kapsayıcılardan değişiklikleri işle | Evet ve aynı kapsayıcıdan birden çok iş parçacığı/makine tarafından otomatik olarak paralelleştirildi| Evet ve Feedtoken kullanarak manuel olarak paralelleştirildi |
-| Yalnızca tek bir bölüm anahtarından değişiklikleri işle | Desteklenmiyor | Yes|
+| Yalnızca tek bir bölüm anahtarından değişiklikleri işle | Desteklenmiyor | Evet|
 | Destek düzeyi | Genel kullanıma sunuldu | Önizleme |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 2f9f0e164f7ab0a6b146aad3a2809bf85e5aa4be
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e55589a388a1883f42284f2e20c6d5619b63f48f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565478"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Unity oyun nesneleri ve bileşenleriyle etkileşim kurma
 
@@ -122,4 +122,4 @@ if (cutplane != null)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Unity için Remote Rendering’i ayarlama](unity-setup.md)
-* [Öğretici: Unity 'de uzak varlıklarla çalışma](../../tutorials/unity/working-with-remote-entities.md)
+* [Öğretici: Unity 'de uzak varlıkları Işleme](../../tutorials/unity/manipulate-models/manipulate-models.md)

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 413f8d02420b5442b5ffa1491f4312292e8b3a0e
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6c7e1fcaebd415fcacfffcef62ca25cccde3e476
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563166"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Blob depolamada belge dizin oluşturma
 
@@ -31,7 +31,7 @@ Blob Indexer aşağıdaki belge biçimlerinden metin ayıklayabilir:
 ## <a name="setting-up-blob-indexing"></a>Blob dizinlemeyi ayarlama
 Kullanarak bir Azure Blob depolama Dizin Oluşturucu ayarlayabilirsiniz:
 
-* [Azure portal](https://ms.portal.azure.com)
+* [Azure portalındaki](https://ms.portal.azure.com)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Bilişsel Arama [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -53,7 +53,7 @@ Blob dizin oluşturma için veri kaynağı aşağıdaki gerekli özelliklere sah
 
 Bir veri kaynağı oluşturmak için:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -85,7 +85,7 @@ Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapılar�
 
 `content`Bloblardan ayıklanan metni depolamak için aranabilir bir alanla dizin oluşturma:   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -104,7 +104,7 @@ Bir Dizin Oluşturucu bir veri kaynağını hedef arama diziniyle bağlar ve ver
 
 Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya hazırsınız:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -181,7 +181,7 @@ Bu örnekte, `metadata_storage_name` alanı belge anahtarı olarak seçelim. Ayr
 
 Bunu bir araya getirmek için, alan eşlemelerini nasıl ekleyebileceğiniz ve mevcut bir dizin oluşturucunun anahtarlarının Base-64 kodlamasını nasıl etkinleştirebileceğiniz aşağıda verilmiştir:
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -207,7 +207,7 @@ Hangi Blobların dizine alınacağını ve hangilerinin atlandığını denetley
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Yalnızca belirli dosya uzantılarına sahip Blobları dizine oluştur
 Dizin Oluşturucu yapılandırma parametresini kullanarak yalnızca belirttiğiniz dosya adı uzantılarına sahip Blobları dizinleyerek dizin oluşturabilirsiniz `indexedFileNameExtensions` . Değer, dosya uzantılarının virgülle ayrılmış bir listesini içeren bir dizedir (önde gelen noktayla). Örneğin, yalnızca ' ı dizine eklemek için. PDF ve. DOCX blob 'ları, bunu yapın:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -219,7 +219,7 @@ Dizin Oluşturucu yapılandırma parametresini kullanarak yalnızca belirttiğin
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Belirli dosya uzantılarına sahip Blobları Dışla
 Yapılandırma parametresini kullanarak, dizin oluşturma işleminden belirli dosya adı uzantılarına sahip Blobları dışlayabilirsiniz `excludedFileNameExtensions` . Değer, dosya uzantılarının virgülle ayrılmış bir listesini içeren bir dizedir (önde gelen noktayla). Örneğin, tüm Blobları hariç tüm Blobları dizine eklemek için. PNG ve. JPEG uzantıları, bunu yapın:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -241,7 +241,7 @@ Yapılandırma parametresi kullanılarak Blobların hangi bölümlerinin dizine 
 
 Örneğin, yalnızca depolama meta verilerini indekslemek için şunu kullanın:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -264,7 +264,7 @@ Yukarıda açıklanan yapılandırma parametreleri tüm Bloblar için geçerlidi
 
 Varsayılan olarak, blob Indexer, desteklenmeyen içerik türü (örneğin, bir görüntü) ile bir blob ile karşılaştığında yanıt vermez. Tabii ki, `excludedFileNameExtensions` belirli içerik türlerini atlamak için parametresini kullanabilirsiniz. Ancak, tüm olası içerik türlerini önceden bilmeden blob 'ları dizinleyebilirsiniz. Desteklenmeyen bir içerik türüyle karşılaşıldığında dizine almaya devam etmek için `failOnUnsupportedContentType` yapılandırma parametresini şu şekilde ayarlayın `false` :
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -302,7 +302,7 @@ Geçici silme yaklaşımını uygulamak için iki yol vardır. Her ikisi de aşa
 ### <a name="native-blob-soft-delete-preview"></a>Yerel blob geçici silme (Önizleme)
 
 > [!IMPORTANT]
-> Yerel blob geçici silme desteği önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](https://docs.microsoft.com/azure/search/search-api-preview) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+> Yerel blob geçici silme desteği önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2020-06-30-önizleme](https://docs.microsoft.com/azure/search/search-api-preview) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 > [!NOTE]
 > Yerel blob geçici silme ilkesini kullanırken, dizininizdeki belgelerin belge anahtarlarının bir blob özelliği veya blob meta verileri olması gerekir.
@@ -315,7 +315,7 @@ Aşağıdaki adımları kullanın:
 1. Dizin oluşturucuyu çalıştırın veya dizin Oluşturucuyu bir zamanlamaya göre çalışacak şekilde ayarlayın. Dizin Oluşturucu çalıştırıldığında ve blobu işlediğinde belge dizinden kaldırılır.
 
     ```
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30-Preview
     Content-Type: application/json
     api-key: [admin key]
     {
@@ -345,7 +345,7 @@ Aşağıdaki adımları kullanın:
 
 Örneğin, aşağıdaki ilke, bir blob 'un şu değere sahip bir meta veri özelliği varsa silineceğini kabul eder `IsDeleted` `true` :
 
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -396,7 +396,7 @@ Bunun çalışması için, tüm dizin oluşturucularının ve diğer bileşenler
 
 Tüm bloblarınız aynı kodlamada düz metin içeriyorsa, **metin ayrıştırma modunu**kullanarak dizin oluşturma performansını önemli ölçüde artırabilirsiniz. Metin ayrıştırma modunu kullanmak için `parsingMode` yapılandırma özelliğini şu şekilde ayarlayın `text` :
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

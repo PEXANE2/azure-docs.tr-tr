@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 69b6c4e81446cf6a922fe9a1d0da8452e5ec164d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564295"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazındaki bir donanım bileşenini değiştirme
 
@@ -28,10 +28,10 @@ ms.locfileid: "85513193"
 Donanım bileşeni değiştirme öğreticileri Microsoft Azure StorSimple 8000 serisi cihazınızın donanım bileşenlerini ve bunları kaldırmak ve değiştirmek için gereken adımları anlatmaktadır. Bu makalede güvenlik simgeleri açıklanmakta, ayrıntılı öğreticilere işaretçiler sağlanmıştır ve değiştirilebilen bileşenler listelenir.
 
 > [!IMPORTANT]
-> Herhangi bir StorSimple bileşenini kaldırmaya veya değiştirmeye çalışmadan önce, [Güvenlik simgesi kurallarını](#safety-icon-conventions) ve diğer [güvenlik önlemlerini](storsimple-safety.md)gözden geçirdiğinizden emin olun.
-
+> Herhangi bir StorSimple bileşenini kaldırmaya veya değiştirmeye çalışmadan önce, [Güvenlik simgesi kurallarını](#safety-icon-conventions) ve diğer [güvenlik önlemlerini](storsimple-8000-safety.md)gözden geçirdiğinizden emin olun.
 
 ### <a name="safety-icon-conventions"></a>Güvenlik simgesi kuralları
+
 Aşağıdaki tabloda, bu öğreticilerde kullanılan güvenlik simgeleri açıklanmaktadır. Cihaz bileşenlerini kaldırma ve değiştirme adımlarını izleyerek bu güvenlik simgelerine yakın bir şekilde dikkat edin.
 
 | Simge | Metin | Ek bilgiler |
@@ -47,7 +47,8 @@ Aşağıdaki tabloda, bu öğreticilerde kullanılan güvenlik simgeleri açıkl
 | ![İpucu rastlantı simgesi](./media/storsimple-hardware-component-replacement/TipHazard.png) |**İpucu hasar** | |
 
 ### <a name="before-you-begin"></a>Başlamadan önce
-Bu öğreticide, cihazınız ve güvenlik Simgeleriniz hakkındaki güvenlik bilgilerini öğrenmeye çalışın. Tüm bilgiler için [, güvenli bir şekilde yüklemek ve StorSimple cihazınızı çalıştırmak](storsimple-safety.md) sayfasına gidin. StorSimple cihazınızı oluşturmadan önce [güvenlik önlemlerinizi](storsimple-safety.md#handling-precautions) gözden geçirdiğinizden emin olun.
+
+Bu öğreticide, cihazınız ve güvenlik Simgeleriniz hakkındaki güvenlik bilgilerini öğrenmeye çalışın. Tüm bilgiler için [, güvenli bir şekilde yüklemek ve StorSimple cihazınızı çalıştırmak](storsimple-8000-safety.md) sayfasına gidin. StorSimple cihazınızı oluşturmadan önce [güvenlik önlemlerinizi](storsimple-8000-safety.md#handling-precautions) gözden geçirdiğinizden emin olun.
 
 Bir bileşeni değiştirmeyi denemeden önce aşağıdaki bilgileri göz önünde bulundurun.
 
@@ -61,17 +62,18 @@ Bir bileşeni değiştirmeyi denemeden önce aşağıdaki bilgileri göz önünd
 Bir modülü değiştirdiğinizde, **hiçbir zaman kutunun arkada boş bir yuva bırakmayın**. Sorun parçasını kaldırmadan önce bir değiştirme veya boş modül alın.
 
 ## <a name="hardware-component-replacement-procedures"></a>Donanım bileşeni değiştirme yordamları
+
 StorSimple 8000 serisi cihazınız, birincil ve/veya EBOD kasaları içindeki çeşitli eklenti modüllerinden oluşur. 8100, tek bir birincil muhafaza içerir, ancak 8600 birincil bir kutu ve EBOD kasası içeren çift bir muhafaza aygıtıdır.
 
 Cihazınızdaki ana donanım bileşenleri aşağıdaki tablolarda özetlenmektedir. İlgili öğreticiye gitmek için **değiştirme yordamı** sütunundaki bağlantıya tıklayın.
 
 | Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |No |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
-| Birincil denetleyiciler |2 |Yes |[StorSimple cihazınızda bir denetleyici modülünü değiştirme](storsimple-8000-controller-replacement.md) |
-| 764W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
-| Yedekleme pili |2 |Yes |[StorSimple cihazınızın yedek pil modülünü değiştirme](storsimple-8000-battery-replacement.md) |
-| Disk sürücüleri |12 |Yes |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
+| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| Birincil denetleyiciler |2 |Evet |[StorSimple cihazınızda bir denetleyici modülünü değiştirme](storsimple-8000-controller-replacement.md) |
+| 764W güç ve soğutma modülleri (PCMs) |2 |Evet |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
+| Yedekleme pili |2 |Evet |[StorSimple cihazınızın yedek pil modülünü değiştirme](storsimple-8000-battery-replacement.md) |
+| Disk sürücüleri |12 |Evet |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
 
 **Tablo 1** Birincil kasada donanım bileşenleri
 
@@ -79,10 +81,10 @@ Birincil kutu ve EBOD Kasası, g/ç modülleriyle farklılık gösterir. Ayrıca
 
 | Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |No |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
-| EBOD denetleyicileri |2 |Yes |[StorSimple cihazınızda bir EBOD denetleyicisini değiştirme](storsimple-8000-ebod-controller-replacement.md) |
-| 580W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
-| Disk sürücüleri |12 |Yes |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
+| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| EBOD denetleyicileri |2 |Evet |[StorSimple cihazınızda bir EBOD denetleyicisini değiştirme](storsimple-8000-ebod-controller-replacement.md) |
+| 580W güç ve soğutma modülleri (PCMs) |2 |Evet |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
+| Disk sürücüleri |12 |Evet |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
 
 **Tablo 2** EBOD muhafazasında donanım bileşenleri
 
@@ -121,6 +123,7 @@ Hem birincil kutu hem de EBOD Kasası, sürücü taşıyıcı modüllerdir. Kasa
 | 4 |EBOD denetleyicisi 1 |
 
 ## <a name="field-replaceable-units"></a>Alan değiştirilebilir birimler
+
 StorSimple cihazınız için aşağıdaki alan değiştirilebilir birimler (FRU) kullanılabilir:
 
 * Kasa (tümleşik işlemler paneli dahil)
@@ -135,5 +138,5 @@ StorSimple cihazınız için aşağıdaki alan değiştirilebilir birimler (FRU)
 Bu değiştirme birimlerinden herhangi birini sıralamak için lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-StorSimple donanım bileşenini değiştirmeyi denemeden önce tüm [güvenlik bilgilerini](storsimple-safety.md) gözden geçirin.
 
+StorSimple donanım bileşenini değiştirmeyi denemeden önce tüm [güvenlik bilgilerini](storsimple-8000-safety.md) gözden geçirin.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72326413d463d449d339b1f3fd241ba2c27b4b6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a0812f8064174b539a1ea39fc0017a4e00a341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565773"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizinleyicileri zamanlama
 
@@ -68,7 +68,7 @@ Bir Dizin Oluşturucu oluşturulduktan sonra, dizin oluşturucunun düzenleme pa
 
 REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsiniz. Bunu yapmak için, Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin. Aşağıdaki örnekte, var olan bir dizin oluşturucuyu güncelleştirmek için bir PUT isteği gösterilmektedir:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -78,7 +78,7 @@ REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsini
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))`. Örnekler: `PT15M` her 2 saat `PT2H` için 15 dakikada bir.
+**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))` . Örnekler: her `PT15M` `PT2H` 2 saat için 15 dakikada bir.
 
 İsteğe bağlı **StartTime** , zamanlanan yürütmelerin ne zaman başlaması gerektiğini gösterir. Atlanırsa, geçerli UTC saati kullanılır. Bu süre geçmişte olabilir, bu durumda ilk yürütme, dizin oluşturucunun özgün **başlangıçzamanından**bu yana sürekli olarak çalışıp çalışmadığını olarak zamanlanır.
 

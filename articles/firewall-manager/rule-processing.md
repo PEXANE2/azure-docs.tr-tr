@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74e58c316651a1604984ac14c70a3a65d46d6d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70026173d1cb932d30a59ea2b876ef22217a81bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73518209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563684"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Güvenlik Duvarı kural işleme mantığı
 
@@ -20,7 +20,7 @@ Azure Güvenlik duvarında NAT kuralları, ağ kuralları ve uygulamalar kuralla
 
 ## <a name="network-rules-and-applications-rules"></a>Ağ kuralları ve uygulama kuralları
 
-Ağ kuralları önce uygulanır, sonra uygulama kuralları. Kurallar sonlandırılıyor. Bu nedenle, ağ kurallarında bir eşleşme bulunursa uygulama kuralları işlenmez.  Ağ kuralı eşleşmesi yoksa ve paket protokolü HTTP/HTTPS ise bu durumda paket uygulama kuralları tarafından değerlendirilir. Hala eşleşme bulunamazsa paket, altyapı kuralı koleksiyonuna göre değerlendirilir. Ardından hala eşleşme yoksa paket varsayılan olarak reddedilir.
+Ağ kuralları önce uygulanır, sonra uygulama kuralları. Kurallar sonlandırılıyor. Bu nedenle, ağ kurallarında bir eşleşme bulunursa uygulama kuralları işlenmez.  Ağ kuralı eşleşmesi yoksa ve paket Protokolü HTTP/HTTPS ise, paket daha sonra uygulama kuralları tarafından değerlendirilir. Hala eşleşme bulunamazsa paket, altyapı kuralı koleksiyonuna göre değerlendirilir. Hala eşleşme yoksa, paket varsayılan olarak reddedilir.
 
 ## <a name="nat-rules"></a>NAT kuralları
 
@@ -28,10 +28,10 @@ Gelen bağlantı [, öğretici: Azure Güvenlik Duvarı ile gelen trafiği Azure
 
 ## <a name="inherited-rules"></a>Devralınan kurallar
 
-Bir üst ilkeden devralınan ağ kuralı koleksiyonları, yeni ilkenizin kapsamında tanımlanan ağ kuralı koleksiyonlarının üzerine her zaman öncelik atanır. Aynı mantık uygulama kuralı koleksiyonları için de geçerlidir. Bununla birlikte, devralma ne olursa olsun, ağ kuralı koleksiyonları her zaman uygulama kuralı koleksiyonlarından önce işlenir.
+Bir üst ilkeden devralınan ağ kuralı koleksiyonları, yeni ilkenizin kapsamında tanımlanan ağ kuralı koleksiyonlarının üzerine her zaman öncelik atanır. Aynı mantık, uygulama kuralı koleksiyonları için de geçerlidir. Bununla birlikte, devralma ne olursa olsun, ağ kuralı koleksiyonları her zaman uygulama kuralı koleksiyonlarından önce işlenir.
 
-Varsayılan olarak, ilkeniz, ana ilke tehdit zekası modunu devralır. Tehdit bilgileri modinizi ilke ayarları sayfasında farklı bir değere ayarlayarak bunu geçersiz kılabilirsiniz. Yalnızca daha sıkı bir değerle geçersiz kılınabilir. Örneğin, üst ilke *yalnızca uyarı*olarak ayarlandıysa, bu yerel ilkeyi *uyarı ve reddetme*için yapılandırabilirsiniz, ancak kapatamaz.
+Varsayılan olarak, ilkeniz ana ilke tehdit zekası modunu devralır. Tehdit bilgileri modinizi ilke ayarları sayfasında farklı bir değere ayarlayarak bunu geçersiz kılabilirsiniz. Yalnızca daha sıkı bir değerle geçersiz kılmak mümkündür. Örneğin, üst ilke *yalnızca uyarı*olarak ayarlandıysa, bu yerel ilkeyi *uyarı ve reddetme*için yapılandırabilirsiniz, ancak kapatamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Güvenlik Duvarı Yöneticisi önizlemesi hakkında daha fazla bilgi edinin](overview.md)
+- [Azure Güvenlik Duvarı Yöneticisi hakkında daha fazla bilgi](overview.md)

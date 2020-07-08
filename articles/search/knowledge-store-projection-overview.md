@@ -1,24 +1,21 @@
 ---
-title: Projeksiyon kavramları (Önizleme)
+title: Projeksiyon kavramları
 titleSuffix: Azure Cognitive Search
-description: Zenginleştirme veri dizini oluşturma işlem hattından zenginleştirilmiş verilerinizi tam metin arama dışındaki senaryolarda kullanmak üzere bir bilgi deposuna kaydedin ve şekillendirin. Bilgi deposu Şu anda genel önizleme aşamasındadır.
+description: Zenginleştirme veri dizini oluşturma işlem hattından zenginleştirilmiş verilerinizi tam metin arama dışındaki senaryolarda kullanmak üzere bir bilgi deposuna kaydedin ve şekillendirin.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 894fc6efc99eb7fcc17f2199270c08bc3cee8e8e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565189"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi deposu "projeksiyonlarını"
-
-> [!IMPORTANT] 
-> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Azure Bilişsel Arama, dizin oluşturmanın bir parçası olarak yerleşik bilişsel yetenekler ve özel yetenekler aracılığıyla içerik zenginleştirme imkanı sunar. Zenginleştirme, daha önce hiçbir yerde bulunmayan yeni bilgiler oluşturur: görüntülerden bilgi ayıklama, yaklaşım, anahtar ifadeler ve metinden varlıkları birkaç kez adlandırma. Zenginleştirme Ayrıca, ayırt edilmemiş metne yapı ekler. Bu işlemlerin tümü, tam metin araması yapan belgelerde oluşur. Birçok örnekte, bilgi madenciliği gibi arama dışındaki senaryolar için zenginleştirilmiş belgeler yararlıdır.
 

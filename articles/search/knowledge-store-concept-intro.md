@@ -1,28 +1,25 @@
 ---
-title: Bilgi deposu kavramları (Önizleme)
+title: Bilgi deposu kavramları
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin. Bu özellik genel önizleme aşamasındadır.
+description: Azure Bilişsel Arama ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: a8f7aa18598dba41b33ea4964bd2967a8c2670ac
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 06/30/2020
+ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565274"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi deposu
 
-> [!IMPORTANT] 
-> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
+Bilgi deposu, bağımsız analiz veya aşağı akış işleme için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıkışın devam eden bir Azure bilişsel arama özelliğidir. *Zenginleştirilmiş bir belge* , yapay, yapılandırılmış ve AI süreçlerini kullanılarak çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu oluşturmayı seçmek, zenginleştirilmiş belgeleri korumanıza olanak sağlar. 
 
-Bilgi deposu, bağımsız analiz veya aşağı akış işleme için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıkışın devam eden bir Azure bilişsel arama özelliğidir. *Zenginleştirilmiş bir belge* , yapay, yapılandırılmış ve AI süreçlerini kullanılarak çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. 
-
-Daha önce bilişsel becerileri kullandıysanız, *becerileri* bir belgeyi bir dizi enzenginleştirme aracılığıyla taşıyabileceğinizi zaten anlarsınız. Sonuç bir bilgi deposundaki bir arama dizini veya (Bu önizlemede yeni) projeksiyonu olabilir. İki çıkış, arama dizini ve bilgi deposu, aynı işlem hattının çarpımlarından oluşur; aynı girdilerden türetilmiş, ancak aynı şekilde yapılandırılmış, depolanmış ve çok farklı yollarla kullanılan çıktının sonucu.
+Daha önce bilişsel becerileri kullandıysanız, *becerileri* bir belgeyi bir dizi enzenginleştirme aracılığıyla taşıyabileceğinizi zaten anlarsınız. Sonuç, bir arama dizini veya bir bilgi deposundaki projeksiyonlar olabilir. İki çıkış, arama dizini ve bilgi deposu, aynı işlem hattının çarpımlarından oluşur; aynı girdilerden türetilmiş, ancak aynı şekilde yapılandırılmış, depolanmış ve çok farklı yollarla kullanılan çıktının sonucu.
 
 Azure [depolama](https://docs.microsoft.com/azure/storage/common/storage-account-overview), Azure Tablo depolama, Azure Blob depolama ya da her ikisi de fiziksel olarak bir bilgi deposu. Azure depolama 'ya bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
 
@@ -103,7 +100,7 @@ Ancak, birden çok `table` - `object` - `file` projeksiyonun kümesi oluşturmak
 
 ## <a name="how-to-create-a-knowledge-store"></a>Bilgi deposu oluşturma
 
-Bilgi deposu oluşturmak için portalı veya önizleme REST API ( `api-version=2019-05-06-Preview` ) kullanın.
+Bilgi deposu oluşturmak için portalı veya REST API ( `api-version=2020-06-30` ) kullanın.
 
 ### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
@@ -117,13 +114,11 @@ Bilgi deposu oluşturmak için portalı veya önizleme REST API ( `api-version=2
 
 1. Sihirbazı çalıştırın. Ayıklama, zenginleştirme ve depolama bu son adımda oluşur.
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>Create beceri ve Preview REST API kullanın
+### <a name="use-create-skillset-rest-api"></a>Create beceri kullanın (REST API)]
 
 Bir `knowledgeStore` [beceri](cognitive-search-working-with-skillsets.md)içinde tanımlanır, bu, sırasıyla bir [Dizin Oluşturucu](search-indexer-overview.md)tarafından çağırılır. Zenginleştirme sırasında Azure Bilişsel Arama, Azure depolama hesabınızda bir alan oluşturur ve yapılandırmanıza bağlı olarak, belgeleri Bloblar veya tablolar olarak zenginleştirir.
 
-Şu anda önizleme REST API, programlama yoluyla bilgi deposu oluşturabileceğiniz tek mekanizmadır. Araştırmanın kolay bir yolu, [Postman ve REST API kullanarak ilk bilgi deponuzi oluşturmaktır](knowledge-store-create-rest.md).
-
-Bu önizleme özelliği için başvuru içeriği, bu makalenin [API başvurusu](#kstore-rest-api) bölümünde bulunur. 
+REST API, programlama yoluyla bir bilgi deposu oluşturabileceğiniz bir mekanizmadır. Araştırmanın kolay bir yolu, [Postman ve REST API kullanarak ilk bilgi deponuzi oluşturmaktır](knowledge-store-create-rest.md).
 
 <a name="tools-and-apps"></a>
 
@@ -141,10 +136,10 @@ Depolarda enzenginler varsa, Azure Blob veya tablo depolama 'ya bağlanan herhan
 
 ## <a name="api-reference"></a>API başvurusu
 
-REST API sürüm `2019-05-06-Preview` , becerileri üzerinde ek tanımlar aracılığıyla bilgi deposu sağlar. Başvuruya ek olarak, API 'Leri çağırma hakkında ayrıntılı bilgi için bkz. [Postman kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md) .
+REST API sürüm `2020-06-30` , becerileri üzerinde ek tanımlar aracılığıyla bilgi deposu sağlar. Başvuruya ek olarak, API 'Leri çağırma hakkında ayrıntılı bilgi için bkz. [Postman kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md) .
 
-+ [Beceri oluşturma (api-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [Güncelleştirme beceri (api-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [Beceri oluşturma (api-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
++ [Güncelleştirme beceri (api-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

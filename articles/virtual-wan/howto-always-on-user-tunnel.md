@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/13/2020
+ms.date: 06/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72287403e8406e0cfce83a69a5b9d3f58c693b8b
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 03f67053a5a199c8c64efb05d2b6a65ad6707650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564058"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Sanal WAN için Always on VPN Kullanıcı tüneli yapılandırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "84750503"
 Noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Yönergeler için aşağıdaki bölümlere bakın:
 
 * [P2S yapılandırması oluşturma](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [Hub atamasını düzenleme](virtual-wan-point-to-site-portal.md#edit)
+* [P2S ağ geçidi ile hub oluşturma](virtual-wan-point-to-site-portal.md#hub)
 
 ## <a name="configure-a-user-tunnel"></a>Kullanıcı tüneli yapılandırma
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564462"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -135,7 +135,7 @@ Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış b
 
 Ekipler, sanallaştırılmış ortamlarla ilgili olmayan bilinen sorunlar için bkz. [kuruluşunuzdaki destek takımları](/microsoftteams/known-issues/)
 
-## <a name="feedback"></a>Geri Bildirim
+## <a name="uservoice-site"></a>UserVoice sitesi
 
 Takımlar [UserVoice sitesindeki](https://microsoftteams.uservoice.com/)Windows sanal masaüstündeki Microsoft ekipleri için geri bildirim sağlayın.
 

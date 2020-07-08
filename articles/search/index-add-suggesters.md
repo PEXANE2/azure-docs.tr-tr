@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565321"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
@@ -41,7 +41,7 @@ Bir öneri aracı oluşturmak için bir [dizin şemasına](https://docs.microsof
 
 + Yalnızca dize alanlarını kullan
 
-+ Alanda varsayılan standart Lucene Analyzer (`"analyzer": null`) veya bir [dil Çözümleyicisi](index-add-language-analyzers.md) (örneğin, `"analyzer": "en.Microsoft"`) kullanın
++ Alanda varsayılan standart Lucene Analyzer ( `"analyzer": null` ) veya bir [dil Çözümleyicisi](index-add-language-analyzers.md) (örneğin,) kullanın `"analyzer": "en.Microsoft"`
 
 ### <a name="choose-fields"></a>Alanları seçin
 
@@ -136,8 +136,8 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |Özellik      |Açıklama      |
 |--------------|-----------------|
 |`name`        |Öneri aracı adı.|
-|`searchMode`  |Aday tümcecikleri aramak için kullanılan strateji. Şu anda desteklenen `analyzingInfixMatching`tek mod, bir terimin başlangıcında Şu anda eşleşen.|
-|`sourceFields`|Önerilerin içerik kaynağı olan bir veya daha fazla alanın listesi. Alanların ve `Edm.String` `Collection(Edm.String)`türünde olması gerekir. Alanda bir çözümleyici belirtilmişse, [Bu listeden](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) bir adlandırılmış çözümleyici olmalıdır (özel çözümleyici değil).<p/> En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
+|`searchMode`  |Aday tümcecikleri aramak için kullanılan strateji. Şu anda desteklenen tek mod, `analyzingInfixMatching` bir terimin başlangıcında Şu anda eşleşen.|
+|`sourceFields`|Önerilerin içerik kaynağı olan bir veya daha fazla alanın listesi. Alanların ve türünde olması gerekir `Edm.String` `Collection(Edm.String)` . Alanda bir çözümleyici belirtilmişse, [Bu listeden](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) bir adlandırılmış çözümleyici olmalıdır (özel çözümleyici değil).<p/> En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -155,7 +155,7 @@ Bir arama uygulamasında, istemci kodu, kısmi sorguyu toplamak ve eşleşmeyi s
 API kullanımı, AutoComplete REST API aşağıdaki çağrısında gösterilmiştir. Bu örnekte iki örnek vardır. İlk olarak, tüm sorgularda olduğu gibi, işlem bir dizinin belgeler koleksiyonuna karşı yapılır ve sorgu, bu örnekte kısmi sorgu sağlayan bir **arama** parametresi içerir. İkinci olarak, isteğe **suggesterName** eklemeniz gerekir. Dizinde tanımlı bir öneri aracı yoksa otomatik tamamlama veya önerilere çağrı başarısız olur.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

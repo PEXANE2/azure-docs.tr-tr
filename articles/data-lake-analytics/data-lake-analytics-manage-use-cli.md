@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 090945a8bedad4a3d39f3f7fb16cae83f4e3f5bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564791"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak Azure Data Lake Analytics yönetme
 
@@ -22,7 +22,7 @@ ms.locfileid: "79454372"
 Azure CLı kullanarak Azure Data Lake Analytics hesaplarını, veri kaynaklarını, kullanıcıları ve işleri yönetmeyi öğrenin. Diğer araçları kullanarak yönetim konularını görmek için yukarıdaki sekmeye tıklayın.
 
 
-**Ön koşullar**
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir:
 
@@ -30,9 +30,9 @@ Bu öğreticiye başlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir
 
 * Azure CLı. Bkz. [Azure CLI'yı yükleme ve yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-   * Bu demoyu tamamlamak için **yayın öncesi sürüm** [Azure CLI araçlarını](https://github.com/MicrosoftBigData/AzureDataLake/releases) indirip yükleyin.
+  * Bu demoyu tamamlamak için **yayın öncesi sürüm** [Azure CLI araçlarını](https://github.com/MicrosoftBigData/AzureDataLake/releases) indirip yükleyin.
 
-* `az login` Komutunu kullanarak kimlik doğrulaması yapın ve kullanmak istediğiniz aboneliği seçin. Bir iş veya okul hesabı kullanarak kimlik doğrulama gerçekleştirme konusunda daha fazla bilgi için bkz. [Azure CLI'dan Azure aboneliğine bağlanma](/cli/azure/authenticate-azure-cli).
+* Komutunu kullanarak kimlik doğrulaması yapın `az login` ve kullanmak istediğiniz aboneliği seçin. Bir iş veya okul hesabı kullanarak kimlik doğrulama gerçekleştirme konusunda daha fazla bilgi için bkz. [Azure CLI'dan Azure aboneliğine bağlanma](/cli/azure/authenticate-azure-cli).
 
    ```azurecli
    az login
@@ -91,13 +91,13 @@ Belirli bir kaynak grubu içindeki Data Lake Analytics hesaplarını listeleme
 Data Lake Analytics Şu anda aşağıdaki iki veri kaynağını desteklemektedir:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/common/storage-introduction.md)
+* [Azure Depolama](../storage/common/storage-introduction.md)
 
 Bir analiz hesabı oluşturduğunuzda, bir Azure Data Lake Storage hesabını varsayılan depolama hesabı olacak şekilde atamanız gerekir. Varsayılan Data Lake depolama hesabı, iş meta verilerini ve iş denetim günlüklerini depolamak için kullanılır. Bir analiz hesabı oluşturduktan sonra, ek Data Lake Storage hesapları ve/veya Azure depolama hesabı ekleyebilirsiniz. 
 
 ### <a name="find-the-default-data-lake-store-account"></a>Varsayılan Data Lake Store hesabını bulun
 
-`az dla account show` Komutunu çalıştırarak kullanılan varsayılan Data Lake Store hesabını görüntüleyebilirsiniz. Varsayılan hesap adı defaultDataLakeStoreAccount özelliği altında listelenir.
+Komutunu çalıştırarak kullanılan varsayılan Data Lake Store hesabını görüntüleyebilirsiniz `az dla account show` . Varsayılan hesap adı defaultDataLakeStoreAccount özelliği altında listelenir.
 
    ```azurecli
    az dla account show --account "<Data Lake Analytics account name>"
@@ -111,7 +111,7 @@ Bir analiz hesabı oluşturduğunuzda, bir Azure Data Lake Storage hesabını va
 
 > [!NOTE]
 > Yalnızca BLOB depolama kısa adları desteklenir. FQDN kullanmayın, örneğin "myblob.blob.core.windows.net".
-> 
+>
 
 ### <a name="add-additional-data-lake-store-accounts"></a>Ek Data Lake Store hesapları ekleme
 
@@ -146,6 +146,7 @@ BLOB depolama hesabını listelemek için:
 ![Data Lake Analytics listesi veri kaynağı](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>Veri kaynaklarını Sil:
+
 Bir Data Lake Store hesabını silmek için:
 
    ```azurecli
@@ -159,6 +160,7 @@ BLOB depolama hesabını silmek için:
    ```
 
 ## <a name="manage-jobs"></a>İşleri yönetme
+
 Bir iş oluşturabilmeniz için önce bir Data Lake Analytics hesabınızın olması gerekir.  Daha fazla bilgi için bkz. [Data Lake Analytics hesaplarını yönetme](#manage-accounts).
 
 ### <a name="list-jobs"></a>İşleri listeleme
@@ -179,7 +181,7 @@ Bir iş oluşturabilmeniz için önce bir Data Lake Analytics hesabınızın olm
 
 > [!NOTE]
 > Bir işin varsayılan önceliği 1000 ' dir ve bir iş için varsayılan paralellik derecesi 1 ' dir.
-> 
+>
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
@@ -193,7 +195,7 @@ Bir iş oluşturabilmeniz için önce bir Data Lake Analytics hesabınızın olm
 
 ## <a name="pipelines-and-recurrences"></a>İşlem hatları ve tekrarlar
 
-**İşlem hatları ve tekrarlar hakkında bilgi edinin**
+### <a name="get-information-about-pipelines-and-recurrences"></a>İşlem hatları ve tekrarlar hakkında bilgi edinin
 
 Önceden gönderilmiş işler hakkında işlem hatları bilgilerini görmek için `az dla job pipeline` komutlarını kullanın.
 
@@ -211,9 +213,8 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 * [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
 * [Azure portal kullanarak Data Lake Analytics kullanmaya başlama](data-lake-analytics-get-started-portal.md)
 * [Azure portal kullanarak Azure Data Lake Analytics yönetme](data-lake-analytics-manage-use-portal.md)
 * [Azure portal kullanarak Azure Data Lake Analytics işleri izleme ve sorunlarını giderme](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-

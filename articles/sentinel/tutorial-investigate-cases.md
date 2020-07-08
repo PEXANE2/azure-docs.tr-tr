@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel ile olayları araştırın | Microsoft Docs
-description: Azure Sentinel ile olayları araştırmayla ilgili bilgi edinmek için bu öğreticiyi kullanın.
+description: Bu öğreticide, atayabileceğiniz ve araştırmanız gereken olayları oluşturan gelişmiş uyarı kuralları oluşturmak için Azure Sentinel 'i nasıl kullanacağınızı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: c4118ef8de6d9289b67dd76c710fc11758768262
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331855"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565239"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Öğretici: Azure Sentinel ile olayları araştırın
 
@@ -39,7 +39,7 @@ Bu makalede şunları ele alınmaktadır:
 
 Bir olay birden çok uyarı içerebilir. Bu, belirli bir araştırma için ilgili tüm kanıtın bir toplamadır. **Analiz** sayfasında oluşturduğunuz analitik kurallara göre bir olay oluşturulur. Önem derecesi ve durum gibi uyarılarla ilgili özellikler olay düzeyinde ayarlanır. Azure Sentinel 'e hangi tür tehditleri aradığınızı ve bunların nasıl bulunacağını öğrendikten sonra, olayları inceleyerek algılanan tehditleri izleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Yalnızca analitik kuralınızı ayarlarken varlık eşleme alanlarını kullandıysanız olayı araştırabileceksiniz. Araştırma grafiğinde, özgün olaylarınızın varlıkları içermesi gerekir.
 
 ## <a name="how-to-investigate-incidents"></a>Olayları araştırma

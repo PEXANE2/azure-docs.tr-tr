@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565889"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub terimlerin sözlüğü
 
@@ -222,7 +222,7 @@ IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve gü
 
 ## <a name="iot-hub-query-language"></a>IoT Hub sorgu dili
 
-[IoT Hub sorgu dili](iot-hub-devguide-query-language.md) , ve cihaz iklerinizi [](#job) SORGULAMANıZı sağlayan bir SQL benzeri dildir.
+[IoT Hub sorgu dili](iot-hub-devguide-query-language.md) , [işinizi](#job) ve cihaz iklerinizi SORGULAMANıZı sağlayan bir SQL benzeri dildir.
 
 ## <a name="iot-hub-resource-rest-api"></a>Kaynak REST API IoT Hub
 
@@ -240,7 +240,7 @@ Azure IoT Çözüm Hızlandırıcıları, çözümlerle birden çok Azure hizmet
 
 Çözüm arka ucu, IoT Hub 'ınıza kayıtlı bir dizi cihazda etkinlikleri zamanlamak ve izlemek için [işleri](iot-hub-devguide-jobs.md) kullanabilir. Etkinlikler, cihaz ikizi [istenen özellikleri](#desired-properties)güncelleştirmek, Device ikizi [etiketlerini](#tags)güncelleştirmek ve [doğrudan yöntemleri](#direct-method)çağırmak içerir. [IoT Hub](#iot-hub) , [kimlik kayıt defterinden](#identity-registry) [içeri ve dışarı aktarmak](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) için de kullanılır.
 
-## <a name="modules"></a>Modüller
+## <a name="modules"></a>Modül
 
 Cihaz tarafında IoT Hub cihaz SDK 'Ları, her birinin IoT Hub için bağımsız bir bağlantı açtığı [modüller](iot-hub-devguide-module-twins.md) oluşturmanızı sağlar. Bu işlevsellik, cihazınızdaki farklı bileşenler için ayrı ad alanları kullanmanıza olanak sağlar.
 
@@ -343,7 +343,7 @@ Cihazlarınız için bir kimlik doğrulama mekanizması uygulamak üzere bir bel
 
 ## <a name="twin-queries"></a>İkizi sorguları
 
-[Cihaz ve modül ikizi sorguları](iot-hub-devguide-query-language.md) , cihaz ikiklerine veya modül TWINS 'inizden bilgi almak için SQL benzeri IoT Hub sorgu dilini kullanır. IoT Hub 'ınızda çalışan hakkında [](#job) bilgi almak için aynı IoT Hub sorgu dilini kullanabilirsiniz.
+[Cihaz ve modül ikizi sorguları](iot-hub-devguide-query-language.md) , cihaz ikiklerine veya modül TWINS 'inizden bilgi almak için SQL benzeri IoT Hub sorgu dilini kullanır. IoT Hub 'ınızda çalışan bir [iş](#job) hakkında bilgi almak için aynı IoT Hub sorgu dilini kullanabilirsiniz.
 
 ## <a name="twin-synchronization"></a>İkizi eşitleme
 

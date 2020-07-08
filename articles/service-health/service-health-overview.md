@@ -3,12 +3,12 @@ title: Hizmet durumuna genel bakış | Microsoft Docs
 description: Azure uygulamalarınızın geçerli ve gelecekteki Azure hizmet sorunlarından ve bakımda nasıl etkilendiğine ilişkin kişiselleştirilmiş bilgiler.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563396"
 ---
 # <a name="service-health-overview"></a>Hizmet durumuna genel bakış
 
@@ -21,7 +21,7 @@ Hizmet durumu, kaynaklarınızı etkileyebilecek dört sistem durumu olayı tür
 1. **Hizmet sorunları** -Şu anda sizi etkileyen Azure hizmetlerinde sorunlar. 
 2. **Planlı bakım** -gelecekte hizmetlerinizin kullanılabilirliğini etkileyebilecek yaklaşan bakım.  
 3. **Durum Danışma belgeleri** -Azure hizmetlerinde ilgilenmeniz gereken değişiklikler. Örnek olarak, Azure özelliklerinin veya yükseltme gereksinimlerinin kullanım dışı bırakılması (örneğin, desteklenen bir PHP çerçevesine yükseltme) verilebilir.
-4. **Güvenlik Danışma belgeleri (Önizleme)** -Azure hizmetlerinizin kullanılabilirliğini etkileyebilecek güvenlikle ilgili bildirimler.
+4. **Güvenlik Danışma belgeleri** -Azure hizmetlerinizin kullanılabilirliğini etkileyebilecek güvenlikle ilgili bildirimler veya ihlaller.
 
 > [!NOTE]
 > Hizmet durumu olaylarını görüntülemek için kullanıcılara bir abonelik üzerinde [okuyucu rolü verilmelidir](../role-based-access-control/role-assignments-portal.md) .
@@ -36,11 +36,11 @@ Hizmet sistem durumu panonuzu başlatmak için Portal panonuzda hizmet durumu ku
 
 **Hizmet sorunları** görünümü, Azure Hizmetlerindeki kaynakları etkileyen devam eden sorunları gösterir. Sorunun başladığı zamanı ve hangi hizmet ve bölgelerin etkilendiğini anlayabilirsiniz. Sorunu çözmek için Azure 'un ne yaptığını anlamak için en son güncelleştirmeyi de okuyabilirsiniz. 
 
-![Hizmet sorununu yönetme](./media/service-health-overview/azure-service-health-overview-2.png)
+[![Hizmet sorununu yönetme](./media/service-health-overview/azure-service-health-overview-2.png)](./media/service-health-overview/azure-service-health-overview-2.png#lightbox)
 
 Sahip olduğunuz ve sorundan etkilenmiş olabileceğiniz kaynakların belirli bir listesini görmek için **olası etki** sekmesini seçin. Takımınızla paylaşmak için bu kaynakların CSV listesini indirebilirsiniz.
 
-![Hizmet sorununu yönetme-etki](./media/service-health-overview/azure-service-health-overview-4.png)
+[![Hizmet sorununu yönetme-etki](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>Hizmetleri etkileyebilecek sorunları ortaya çıkan sorunlara bakın
 
@@ -52,7 +52,7 @@ Etkilenen müşterilere hedeflenen iletişimin gönderilebilmesi için, yaygın 
 
 Sorun yönetim sisteminizde kullanmak için sorun için bir bağlantı edinebilirsiniz. Azure portal erişimi olmayan kişilerle paylaşmak için PDF ve bazen CSV dosyalarını indirebilirsiniz.   
 
-![Hizmet sorununu yönetme-sorun yönetimi](./media/service-health-overview/azure-service-health-overview-3.png)
+[![Hizmet sorununu yönetme-sorun yönetimi](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
 ## <a name="get-support-from-microsoft"></a>Microsoft 'tan destek alın
 
@@ -62,7 +62,7 @@ Sorun çözümlendikten sonra bile kaynağınız hatalı bir durumda bırakılı
 
 İş açısından kritik abonelikleri, bölgeleri ve kaynak türlerinizi göstermek için hizmet durumunu filtreleyin. Filtreyi kaydedin ve sistem durumunu gösteren kişiselleştirilmiş dünya haritasını portal panonuza sabitleyin. 
 
-![Kişiselleştirilmiş sistem durumu haritasını filtrele](./media/service-health-overview/azure-service-health-overview-6a.png)
+[![Kişiselleştirilmiş sistem durumu haritasını filtrele](./media/service-health-overview/azure-service-health-overview-6a.png)](./media/service-health-overview/azure-service-health-overview-6a.png#lightbox)
 
 ![Kişiselleştirilmiş bir sistem durumu haritasını sabitleme](./media/service-health-overview/azure-service-health-overview-6b.png)
 

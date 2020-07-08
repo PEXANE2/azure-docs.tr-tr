@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565551"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>Azure Güvenlik duvarında IP grupları (Önizleme)
-
-> [!IMPORTANT]
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="ip-groups-in-azure-firewall"></a>Azure Güvenlik duvarında IP grupları
 
 IP grupları, Azure Güvenlik duvarı kuralları için IP adreslerini aşağıdaki yollarla Grupve yönetmenize olanak sağlar:
 
@@ -40,7 +37,7 @@ Aşağıdaki IPv4 adresi biçimi örnekleri IP gruplarında kullanılmak üzere 
 
 ## <a name="create-an-ip-group"></a>IP grubu oluştur
 
-Azure portal, Azure CLı veya REST API kullanılarak bir IP grubu oluşturulabilir. Daha fazla bilgi için bkz. [IP grubu oluşturma (Önizleme)](create-ip-group.md).
+Azure portal, Azure CLı veya REST API kullanılarak bir IP grubu oluşturulabilir. Daha fazla bilgi için bkz. [IP grubu oluşturma](create-ip-group.md).
 
 ## <a name="browse-ip-groups"></a>IP gruplarına gözatamıyorum
 1. Azure portal arama çubuğunda **IP grupları** yazın ve seçin. IP gruplarının listesini görebilir veya yeni bir IP grubu oluşturmak için **Ekle** ' yi seçebilirsiniz.
@@ -64,9 +61,6 @@ IP grubundaki tüm IP adreslerini ve onunla ilişkili kuralları ya da kaynaklar
 ## <a name="use-an-ip-group"></a>Bir IP grubu kullan
 
 Artık Azure Güvenlik Duvarı DNAT, uygulama veya ağ kuralları oluştururken IP adresleri için **kaynak türü** veya **hedef türü** olarak **IP grubu** ' nu seçebilirsiniz.
-
-> [!NOTE]
-> Güvenlik Duvarı Ilkesinde IP grupları desteklenmez. Şu anda yalnızca geleneksel güvenlik duvarı kuralları ile desteklenir.
 
 ![Güvenlik duvarında IP grupları](media/ip-groups/fw-ipgroup.png)
 

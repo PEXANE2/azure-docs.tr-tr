@@ -9,12 +9,12 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564980"
 ---
 # <a name="graphics-binding"></a>Grafik bağlama
 
@@ -27,7 +27,7 @@ Ayarladıktan sonra grafik bağlama, işlenen görüntüyü etkileyen çeşitli 
 Unity 'de, tüm bağlama `RemoteUnityClientInit` geçirilen yapı tarafından işlenir `RemoteManagerUnity.InitializeManager` . Grafik modunu ayarlamak için `GraphicsApiType` alanın seçilen bağlamaya ayarlanması gerekir. Alan, bir XRDevice var olup olmadığına bağlı olarak otomatik olarak doldurulur. Davranışın aşağıdaki davranışlar ile el ile geçersiz kılınabilmesi:
 
 * **HoloLens 2**: [Windows Mixed Reality](#windows-mixed-reality) grafik bağlaması her zaman kullanılır.
-* **Düz UWP masaüstü uygulaması**: [Benzetim](#simulation) her zaman kullanılır. Bu modu kullanmak için öğreticideki adımları izlediğinizden emin olun [: bir Unity projesini sıfırdan ayarlama](../tutorials/unity/project-setup.md).
+* **Düz UWP masaüstü uygulaması**: [Benzetim](#simulation) her zaman kullanılır.
 * **Unity Düzenleyicisi**: BIR WMR VR kulaklık bağlantısı yoksa [simülasyon](#simulation) her zaman kullanılır ve bu durumda, uygulamanın ARR ile ilgili olmayan bölümlerinin hata ayıklamasına izin vermek için ARR 'nin devre dışı bırakılması gerekir. Ayrıca bkz. [holographic Remoting](../how-tos/unity/holographic-remoting.md).
 
 Unity 'nin yalnızca diğer ilgili bölümü [temel bağlamaya](#access)erişiyor, aşağıdaki diğer tüm bölümler atlanabilir.
@@ -233,4 +233,4 @@ else
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: sıfırdan Unity projesi ayarlama](../tutorials/unity/project-setup.md)
+* [Öğretici: uzaktan işlenmiş modelleri görüntüleme](../tutorials/unity/view-remote-models/view-remote-models.md)

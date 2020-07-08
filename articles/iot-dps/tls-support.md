@@ -5,14 +5,14 @@ services: iot-dps
 author: wesmc7777
 ms.service: iot-dps
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 06/18/2020
 ms.author: wesmc
-ms.openlocfilehash: fefae4ad1f4e10598fcc67d65155c3b13efc9ff4
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 9a90180fa606b14b06c94d3211fdf492add0350d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564973"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT Hub cihaz sağlama hizmeti 'nde (DPS) TLS desteği
 
@@ -70,12 +70,38 @@ Bu yapılandırma kullanılarak oluşturulan DPS kaynağı, 1,0 ve 1,1 TLS sür�
 
 ## <a name="recommended-ciphers"></a>Önerilen şifrelemeler
 
-Yalnızca TLS 1,2 kabul edecek şekilde yapılandırılan DPS örnekleri, aşağıdaki önerilen şifrelemelerin kullanımını da zorunlu tutar:
+Yalnızca TLS 1,2 kabul edecek şekilde yapılandırılan DPS örnekleri, aşağıdaki şifre paketlerinin kullanımını da zorunlu tutar:
 
-* `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
-* `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
-* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
-* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+### <a name="tls-12-cipher-suites"></a>TLS 1,2 şifre paketleri
+
+| Minimum çubuk |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384` |
+
+| Mükemmellik için fırsat |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256` |
+
+### <a name="cipher-suite-ordering-prior-to-windows-10"></a>Windows 10 ' dan önceki şifre paketi sıralaması
+
+| Minimum çubuk |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384` |
+
+| Mükemmellik için fırsat |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256` |
+
+### <a name="legacy-cipher-suites"></a>Eski şifre paketleri 
+
+| Seçenek #1 (daha iyi güvenlik) |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384 (uses SHA-1)`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256 (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
+
+| Seçenek #2 (daha iyi performans) |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256 (uses SHA-1)`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384 (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
+
 
 ## <a name="use-tls-12-in-the-iot-sdks"></a>IoT SDK 'lerinde TLS 1,2 kullanma
 

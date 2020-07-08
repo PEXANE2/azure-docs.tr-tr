@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 3524f55f70ff42bd5ff800fb2bd7ab7b0e732596
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c67a5537a74e37473280fbd44fa47c65f2a37806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664686"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563157"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak Cosmos DB veritabanına Dizin Oluşturucu bağlantısı kurma
 
@@ -65,7 +65,7 @@ Veri kaynağında kimlik doğrulaması yapmak için Yönetilen kimlikler kullan�
 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)kullanarak Cosmos DB veri kaynağı nesnesi oluşturma örneği:
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [Search service admin key]
 
@@ -89,7 +89,7 @@ api-key: [Search service admin key]
 |---------|-------------|
 | **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
 |**türüyle**| Gereklidir. Olmalıdır `cosmosdb` . |
-|**Credentials** | Gereklidir. <br/><br/>Yönetilen bir kimlik kullanılarak bağlanırken, **kimlik bilgileri** biçimi şu şekilde olmalıdır: *veritabanı = [veritabanı-adı]; RESOURCEID = [kaynak-kimliği-dize];(Apıkind = [api-Kind];)*<br/> <br/>RESOURCEID biçimi: *RESOURCEID =/Subscriptions/**abonelik kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.DocumentDB/databaseAccounts/**Cosmos DB hesabınızın adı**/;*<br/><br/>SQL koleksiyonları için bağlantı dizesi bir ApiKind gerektirmez.<br/><br/>MongoDB koleksiyonları için bağlantı dizesine **Apikind = MongoDb** ekleyin. <br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/>|
+|**Credentials** | Gereklidir. <br/><br/>Yönetilen bir kimlik kullanılarak bağlanırken, **kimlik bilgileri** biçimi şu şekilde olmalıdır: *veritabanı = [veritabanı-adı]; RESOURCEID = [kaynak-kimliği-dize];(Apıkind = [api-Kind];)*<br/> <br/>RESOURCEID biçimi: *RESOURCEID =/Subscriptions/**abonelik kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.DocUmentdb/databaseaccounts/**Cosmos DB hesabınızın adı**/;*<br/><br/>SQL koleksiyonları için bağlantı dizesi bir ApiKind gerektirmez.<br/><br/>MongoDB koleksiyonları için bağlantı dizesine **Apikind = MongoDb** ekleyin. <br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/>|
 | **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
 | **dataChangeDetectionPolicy** | Önerilen |
 |**dataDeletionDetectionPolicy** | İsteğe Bağlı |
@@ -103,7 +103,7 @@ Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapılar�
 Aranabilir bir alanla dizin oluşturma `booktitle` :
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -126,7 +126,7 @@ Dizin ve veri kaynağı oluşturulduktan sonra Dizin oluşturucuyu oluşturmaya 
 
 Örnek Dizin Oluşturucu tanımı:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

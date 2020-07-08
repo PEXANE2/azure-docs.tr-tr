@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 196562d376b8268ecf47f8133a5b1c8a122c38c5
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564419"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme
 
@@ -83,7 +83,7 @@ Dahili olarak, işlem hattı zenginleştirilmiş bir belge koleksiyonu oluşturu
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Zenginleştirmelerin kaydedileceği bir knowledgeStore öğesi ekleme
 
-[Arama REST API-sürüm = 2019-05 -06-Preview](search-api-preview.md) , becerileri 'Yi `knowledgeStore` , Azure depolama bağlantısı ve zenginlerin nasıl depolandığını tanımlayan projeksiyonlar sağlayan bir tanım ile genişletir. Bu, dizininiz için de bir ektir. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. Daha fazla bilgi için bkz. [bilgi deposu (Önizleme)](knowledge-store-concept-intro.md).
+[Arama Rest api-Version = 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) `knowledgeStore` , becerileri ' i, zenginleştirmeleri 'in nasıl depolandığını tanımlayan bir Azure depolama bağlantısı ve projeksiyonu sağlayan bir tanım ile genişletiyor. Bu, dizininiz için de bir ektir. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. Daha fazla bilgi için bkz. [bilgi deposu](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>3. Adım: arama dizini ve sorgu tabanlı erişim
 
@@ -121,6 +121,6 @@ Dizinler, Puanlama profilleri ve eş anlamlı haritalar gibi belirli bir dizine 
 + [Örnek: AI zenginleştirme için özel bir yetenek oluşturma (C#)](cognitive-search-create-custom-skill-example.md)
 + [Hızlı başlangıç: bir portalda AI zenginleştirme yapmayı deneyin](cognitive-search-quickstart-blob.md)
 + [Öğretici: AI zenginleştirme API 'Leri hakkında bilgi edinin](cognitive-search-tutorial-blob.md)
-+ [Bilgi deposu (Önizleme)](knowledge-store-concept-intro.md)
++ [Bilgi deposu](knowledge-store-concept-intro.md)
 + [REST 'te bilgi deposu oluşturma](knowledge-store-create-rest.md)
 + [Sorun giderme ipuçları](cognitive-search-concept-troubleshooting.md)

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565464"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Unity için Remote Rendering’i ayarlama
 
@@ -18,7 +18,7 @@ Unity 'de Azure uzaktan oluşturma 'yı (ARR) etkinleştirmek için, Unity 'ye �
 
 ## <a name="startup-and-shutdown"></a>Başlatma ve kapatmadan
 
-Uzaktan Işlemeyi başlatmak için kullanın `RemoteManagerUnity`. Bu sınıf genel `RemoteManager` ' i çağırır, ancak sizin için Unity 'ye özgü ayrıntıları zaten uygular. Örneğin, Unity belirli bir koordinat sistemi kullanır. Çağrılırken `RemoteManagerUnity.Initialize`, uygun kural ayarlanır. Çağrı Ayrıca, uzaktan işlenmiş içeriği görüntülemek için kullanılması gereken Unity kamerayı sağlamanızı gerektirir.
+Uzaktan Işlemeyi başlatmak için kullanın `RemoteManagerUnity` . Bu sınıf genel ' i çağırır, `RemoteManager` ancak sizin Için Unity 'ye özgü ayrıntıları zaten uygular. Örneğin, Unity belirli bir koordinat sistemi kullanır. Çağrılırken `RemoteManagerUnity.Initialize` , uygun kural ayarlanır. Çağrı Ayrıca, uzaktan işlenmiş içeriği görüntülemek için kullanılması gereken Unity kamerayı sağlamanızı gerektirir.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -27,9 +27,9 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 ```
 
-Uzaktan Işlemeyi kapatmak için çağrısı `RemoteManagerStatic.ShutdownRemoteRendering()`yapın.
+Uzaktan Işlemeyi kapatmak için çağrısı yapın `RemoteManagerStatic.ShutdownRemoteRendering()` .
 
-Bir `AzureSession` oluşturup, birincil işleme oturumu olarak seçildikten sonra, ile `RemoteManagerUnity`kaydolmalıdır:
+Bir `AzureSession` oluşturup, birincil işleme oturumu olarak seçildikten sonra, ile kaydolmalıdır `RemoteManagerUnity` :
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
@@ -72,11 +72,11 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 `ARRServiceUnity`, kurulum ve oturum yönetimini kolaylaştırmak için isteğe bağlı bir bileşendir. Uygulamanın çıkış sırasında veya yürütme modunun düzenleyicide çıkış yapıldığında oturumunu otomatik olarak durdurma ve gerektiğinde oturum kiralamasını otomatik olarak yenileme seçeneklerini içerir. Oturum özellikleri gibi verileri önbelleğe alır (kendi `LastProperties` değişkenine bakın) ve oturum durumu değişiklikleri ve oturum hataları için olayları ortaya koyar.
 
-Tek seferde birden fazla örneği `ARRServiceUnity` olamaz. Bazı yaygın işlevleri uygulayarak daha hızlı bir şekilde başlamanıza yöneliktir. Daha büyük bir uygulama için, bu şeyleri sizin yapmanız tercih edilebilir, ancak.
+Tek seferde birden fazla örneği olamaz `ARRServiceUnity` . Bazı yaygın işlevleri uygulayarak daha hızlı bir şekilde başlamanıza yöneliktir. Daha büyük bir uygulama için, bu şeyleri sizin yapmanız tercih edilebilir, ancak.
 
-Bir örnek için `ARRServiceUnity` bkz. [öğretici: bir Unity projesini sıfırdan ayarlama](../../tutorials/unity/project-setup.md).
+Nasıl ayarlanacağı ve kullanılacağı bir örnek için `ARRServiceUnity` bkz. [öğretici: uzaktan Işlenmiş modelleri görüntüleme](../../tutorials/unity/view-remote-models/view-remote-models.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Unity için Remote Rendering paketini yükleme](install-remote-rendering-unity-package.md)
-* [Öğretici: sıfırdan Unity projesi ayarlama](../../tutorials/unity/project-setup.md)
+* [Öğretici: uzaktan işlenmiş modelleri görüntüleme](../../tutorials/unity/view-remote-models/view-remote-models.md)

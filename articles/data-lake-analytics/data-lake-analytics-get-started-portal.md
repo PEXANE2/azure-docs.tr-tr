@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c78889c8d910edb5111c18b9cbb77387d2693f87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315751"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564783"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portalı kullanarak Azure Data Lake Analytics ile çalışmaya başlama
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -29,7 +29,7 @@ Bu öğreticiye başlamadan önce bir **Azure aboneliğinizin**olması gerekir. 
 Şimdi aynı anda bir Data Lake Analytics ve Azure Data Lake Storage 1. hesabı oluşturacaksınız.  Bu basit bir adımdır ve tamamlanması yaklaşık olarak 60 saniye sürer.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
-2.  > Veri ve analiz **kaynak** >  **Data + Analytics**oluştur ' a tıklayın**Data Lake Analytics**.
+2. Veri ve analiz **kaynak oluştur ' a**tıklayın  >   **Data + Analytics**  >  **Data Lake Analytics**.
 3. Aşağıdaki öğeler için değerleri seçin:
    * **Ad**: Data Lake Analytics hesabınızı adlandırın (Yalnızca küçük harf ve sayı kullanılabilir).
    * **Abonelik**: Analytics hesabı için kullanılan Azure aboneliğini seçin.
@@ -37,14 +37,14 @@ Bu öğreticiye başlamadan önce bir **Azure aboneliğinizin**olması gerekir. 
    * **Konum**. Data Lake Analytics hesabı için bir Azure veri merkezi seçin.
    * **Data Lake Storage 1.**: yeni bir Data Lake Storage 1. hesabı oluşturmak için yönergeyi uygulayın veya var olan bir hesabı seçin. 
 4. İsteğe bağlı olarak Data Lake Analytics hesabınıza yönelik bir fiyatlandırma katmanı seçebilirsiniz.
-5. **Oluştur**' a tıklayın. 
+5. **Oluştur**'a tıklayın. 
 
 
 ## <a name="your-first-u-sql-script"></a>İlk U-SQL betiğiniz
 
-Aşağıda basit bir U-SQL betiği gösterilmiştir. Tüm bu, komut dosyası içinde küçük bir veri kümesi tanımlar ve ardından bu veri kümesini varsayılan Data Lake Storage 1. hesabına, adlı `/data.csv`bir dosya olarak yazar.
+Aşağıda basit bir U-SQL betiği gösterilmiştir. Tüm bu, komut dosyası içinde küçük bir veri kümesi tanımlar ve ardından bu veri kümesini varsayılan Data Lake Storage 1. hesabına, adlı bir dosya olarak yazar `/data.csv` .
 
-```
+```usql
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -63,7 +63,7 @@ OUTPUT @a
 2. Yukarıdaki U-SQL betiğinin metnine yapıştırın. İşin adı. 
 3. İşi başlatmak için **Gönder** düğmesini seçin.   
 4. İşin **Durumunu** izleyin ve iş durumu **Başarılı** olana kadar bekleyin.
-5. **Veri** sekmesini seçin, sonra **çıktılar** sekmesini seçin. adlı `data.csv` çıkış dosyasını seçin ve çıktı verilerini görüntüleyin.
+5. **Veri** sekmesini seçin, sonra **çıktılar** sekmesini seçin. adlı çıkış dosyasını seçin `data.csv` ve çıktı verilerini görüntüleyin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

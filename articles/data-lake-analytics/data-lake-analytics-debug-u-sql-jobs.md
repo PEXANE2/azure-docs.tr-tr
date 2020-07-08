@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 292ceccd5a3687488c0e8b03f4a8cd351d611dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564895"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Başarısız U-SQL işleri için Kullanıcı tanımlı C# kodunda hata ayıklama
 
@@ -58,7 +58,7 @@ Yeni başlatılan Visual Studio örneğinde, Kullanıcı tanımlı C# kaynak kod
 
 C# kaynak kodunun yakalandığı iki durum vardır:
 
-1. Kullanıcı kodu, arka plan kod dosyasında tanımlanır (genellikle bir U- `Script.usql.cs` SQL projesinde adlandırılır).
+1. Kullanıcı kodu, arka plan kod dosyasında tanımlanır (genellikle `Script.usql.cs` bir U-SQL projesinde adlandırılır).
 
 2. Kullanıcı kodu, U-SQL uygulaması için C# sınıf kitaplığı projesinde tanımlanır ve **hata ayıklama bilgileri**ile derleme olarak kaydedilir.
 
@@ -80,7 +80,7 @@ Kullanıcı kodu, arka plan kod dosyasına dahil edilmediyseniz veya derlemeyi *
 
 2. **Failedvertexdebughost** projesi için proje klasörü yolunu alın. 
 
-3. **Eklenen derleme kaynak kodu projesi > Özellikler**' e sağ tıklayın, soldaki **derleme** sekmesini seçin ve sonra da \bin\Debug Ile biten kopyalanmış yolu **Çıkış > çıkış yolu**olarak yapıştırın. Son çıkış yolu gibidir `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
+3. **Eklenen derleme kaynak kodu projesi > Özellikler**' e sağ tıklayın, soldaki **derleme** sekmesini seçin ve sonra da \bin\Debug Ile biten kopyalanmış yolu **Çıkış > çıkış yolu**olarak yapıştırın. Son çıkış yolu gibidir `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Azure Data Lake Analytics U-SQL hata ayıklama pdb yolunu ayarla](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -93,13 +93,13 @@ Bu ayarlardan sonra, **F5** ve kesme noktalarıyla hata ayıklamaya başlayın. 
 
 Hata ayıkladıktan sonra, proje başarıyla tamamlanırsa çıkış penceresinde aşağıdaki ileti görüntülenir:
 
-    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+`The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).`
 
 ![Azure Data Lake Analytics U-SQL hata ayıklama başarılı](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
 Başarısız işi yeniden göndermek için:
 
-1. Arka plan kod çözümleri olan işler için C# kodunu arka plan kod kaynak dosyasına (genellikle `Script.usql.cs`) kopyalayın.
+1. Arka plan kod çözümleri olan işler için C# kodunu arka plan kod kaynak dosyasına (genellikle `Script.usql.cs` ) kopyalayın.
 
 2. Derlemeleri olan işler için, hata ayıklama çözümünde derleme kaynak kodu projesine sağ tıklayın ve güncelleştirilmiş. dll derlemelerini Azure Data Lake kataloğunuza kaydedin.
 

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 737587ccf46d4af292dc11d37567249c13260f51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565497"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -66,8 +66,11 @@ Azure Active Directory kimlik doğrulaması, Azure AD kimliklerini kullanarak bi
 - Azure Active Directory tümleşik
 - MFA ile evrensel Azure Active Directory
 - Active Directory Uygulama sertifikaları veya istemci gizli dizileri kullanma
+- [Yönetilen Kimlik](howto-connect-with-managed-identity.md)
 
 Active Directory göre kimlik doğrulamasından sonra bir belirteç alırsınız. Bu belirteç oturum açmak için parolanız.
+
+Lütfen yeni kullanıcı ekleme gibi yönetim işlemlerinin bu noktada yalnızca Azure AD Kullanıcı rolleri için desteklendiğini unutmayın.
 
 > [!NOTE]
 > Active Directory belirteciyle bağlanma hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı Için Azure AD Ile yapılandırma ve oturum açma](howto-configure-sign-in-aad-authentication.md).

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 48a23c483ab4338492a407b60f3a5dfc95c0e680
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565000"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Azure Data Box Disk doğrulama sorunlarını gidermek için günlükleri kullanma
 
@@ -21,7 +21,7 @@ Bu makale, Microsoft Azure Data Box Disk için geçerlidir. Makalesinde, bu çö
 
 ## <a name="validation-tool-log-files"></a>Doğrulama aracı günlük dosyaları
 
-[Doğrulama aracını](data-box-disk-deploy-copy-data.md#validate-data)kullanarak disklerdeki verileri doğruladığınızda, hataları günlüğe kaydetmek için bir *Error. xml* oluşturulur. Günlük dosyası `Drive:\DataBoxDiskImport\logs` sürücünüzün klasöründe bulunur. Doğrulama çalıştırdığınızda hata günlüğüne bir bağlantı sağlanır.
+[Doğrulama aracını](data-box-disk-deploy-copy-data.md#validate-data)kullanarak disklerdeki verileri doğruladığınızda, tüm hataları günlüğe kaydetmek için bir *error.xml* oluşturulur. Günlük dosyası `Drive:\DataBoxDiskImport\logs` sürücünüzün klasöründe bulunur. Doğrulama çalıştırdığınızda hata günlüğüne bir bağlantı sağlanır.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -71,7 +71,7 @@ Doğrulama için birden çok oturum çalıştırırsanız, oturum başına bir h
 
 ## <a name="validation-tool-errors"></a>Doğrulama aracı hataları
 
-*Error. xml* dosyasında, karşılık gelen önerilen eylemlerle birlikte bulunan hatalar aşağıdaki tabloda özetlenmiştir.
+*error.xml* bulunan hatalar, ilgili önerilen eylemlerle birlikte aşağıdaki tabloda özetlenmiştir.
 
 | Hata kodu| Açıklama                       | Önerilen Eylemler               |
 |------------|--------------------------|-----------------------------------|

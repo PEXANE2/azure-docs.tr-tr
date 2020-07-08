@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: f1a093b85c832adaf5f810913dcbe8ecb46a305a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 050da712df6dad872fc03bd6ca79bbdf2a3e1753
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563195"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 
 Azure Cosmos DB, veritabanlarınızda ve kapsayıcılarınızda sağlanan aktarım hızını ayarlamanıza olanak sağlar. İki tür sağlanan aktarım hızı, standart (el ile) veya otomatik ölçeklendirme. Bu makaleler, sağlanan iş üretiminin nasıl çalıştığına ilişkin bir genel bakış sunar. 
 
-Azure Cosmos veritabanı, bir kapsayıcı kümesi için bir yönetim birimidir. Bir veritabanı, bir şema belirsiz kapsayıcılar kümesinden oluşur. Azure Cosmos kapsayıcısı, aktarım hızı ve depolama için ölçeklenebilirlik birimidir. Bir kapsayıcı, bir Azure bölgesindeki bir makine kümesi arasında yatay olarak bölümlenmiştir ve Azure Cosmos hesabınızla ilişkili tüm Azure bölgelerinde dağıtılır.
+Azure Cosmos veritabanı bir dizi kapsayıcı için yönetim birimidir. Veritabanı şemadan bağımsız bir dizi kapsayıcıdan oluşur. Azure Cosmos kapsayıcısı hem aktarım hızı hem de depolama alanı için ölçeklenebilirlik birimidir. Bir kapsayıcı Azure bölgesinin içindeki bir dizi makine arasında dikey olarak bölümlenir ve Azure Cosmos hesabınızla ilişkilendirilmiş tüm Azure bölgelerine dağıtılır.
 
 Azure Cosmos DB, aktarım hızını iki ayrı şekilde sağlayabilirsiniz:
  
@@ -67,7 +67,7 @@ Sağlanan aktarım hızı ile bir veritabanı içinde oluşturulan tüm kapsayı
 
 Mantıksal bir bölümdeki iş yükü, belirli bir mantıksal bölüme ayrılan aktarım hızına göre daha fazla tüketir, işlemlerinizin hızı sınırlıdır. Oran sınırlaması gerçekleştiğinde, veritabanının tamamı için üretilen işi artırabilir veya işlemleri yeniden deneyebilirsiniz. Bölümlendirme hakkında daha fazla bilgi için bkz. [mantıksal bölümler](partition-data.md).
 
-Paylaşılan bir üretilen iş veritabanındaki kapsayıcılar, bu veritabanına ayrılan üretilen işi (RU/s) paylaşır. Veritabanında en az 400 RU/sn olan en fazla dört kapsayıcı olabilir. Standart (el ile) sağlanan aktarım hızı sayesinde, ilk dört değerden sonraki her yeni kapsayıcı için ek olarak 100 RU/sn gerekir. Örneğin, sekiz kapsayıcı içeren paylaşılan bir işleme veritabanınız varsa, veritabanında en az RU/sn 800 RU/sn olacaktır. Otomatik ölçeklendirme sağlanan aktarım hızı sayesinde bir veritabanında en fazla 25 kapsayıcı, otomatik ölçeklendirme en fazla RU/sn 4000 RU/sn (400-4000 RU/s arasında ölçeklendirme) olabilir.
+Paylaşılan aktarım hızı veritabanındaki kapsayıcılar, söz konusu veritabanına ayrılmış olan aktarım hızını (RU/sn) paylaşır. Veritabanında en az 400 RU/sn hızında en çok dört kapsayıcınız olabilir. Standart (el ile) sağlanan aktarım hızı sayesinde, ilk dört değerden sonraki her yeni kapsayıcı için ek olarak 100 RU/sn gerekir. Örneğin sekiz kapsayıcılı bir paylaşılan aktarım hızı veritabanınız varsa, veritabanındaki en düşük RU/sn 800 RU/sn olacaktır. Otomatik ölçeklendirme sağlanan aktarım hızı sayesinde, bir veritabanında en fazla %4000 RU/sn (400-4000 RU/sn arasında ölçekleme) ile en fazla 25 kapsayıcı olabilir.
 
 > [!NOTE]
 > 2020 Şubat 'de, paylaşılan bir üretilen iş veritabanında en fazla 25 kapsayıcı kullanmanıza izin veren bir değişiklik geliştirdik ve bu değişiklikler, kapsayıcılar arasında üretilen iş aktarımını daha iyi bir şekilde olanaklı hale getirmiştir. İlk 25 kapsayıcıdan sonra veritabanına daha fazla kapsayıcı ekleyebilirsiniz ve bu, veritabanının paylaşılan iş verimini birbirinden ayrı olan [ayrılmış aktarım hızı ile sağlanırlar](#set-throughput-on-a-database-and-a-container).<br>

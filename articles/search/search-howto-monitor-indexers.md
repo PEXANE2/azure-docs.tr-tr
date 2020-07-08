@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 699b5a4e5a7f10c883667ca5030dd971855467f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02a0de7760c660a7cce1bbd9cd36d4bb2a1180e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565792"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Bilişsel Arama Dizin Oluşturucu durumunu ve sonuçlarını izleme
 
@@ -82,7 +82,7 @@ Dizin Oluşturucu hatalarını ve uyarılarını araştırma hakkında daha fazl
 
 Dizin Oluşturucu [durumunu Al komutunu](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kullanarak bir dizin oluşturucunun durum ve yürütme geçmişini alabilirsiniz:
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
     api-key: [Search service admin key]
 
 Yanıt genel Dizin Oluşturucu durumunu, son (veya sürmekte olan) Dizin Oluşturucu çağrısını ve son Dizin Oluşturucu etkinleştirmeleri geçmişini içerir.
@@ -180,6 +180,6 @@ Bir Dizin Oluşturucu değişiklik izleme durumunu yenilemek üzere sıfırland�
 
 Durum kodları ve Dizin Oluşturucu izleme bilgileri hakkında daha fazla bilgi için REST API [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) bakın.
 
-Belgeye özgü hatalar veya uyarılar ile ilgili ayrıntılar, listeler `IndexerExecutionResult.Errors` ve `IndexerExecutionResult.Warnings`numaralandırarak alınabilir.
+Belgeye özgü hatalar veya uyarılar ile ilgili ayrıntılar, listeler ve numaralandırarak alınabilir `IndexerExecutionResult.Errors` `IndexerExecutionResult.Warnings` .
 
 Dizin oluşturucuyu izlemek için kullanılan .NET SDK sınıfları hakkında daha fazla bilgi için bkz. [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) and [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

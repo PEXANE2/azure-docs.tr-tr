@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/13/2020
+ms.date: 06/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e911bf6e3736c931ca5c1563ab42f52ecb5cf3c1
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 7adeb9682336b19cc87d8c73a7f9ad8bda5e7828
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564070"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Sanal WAN için Always on VPN cihaz tüneli yapılandırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "84750575"
 Noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Yönergeler için aşağıdaki bölümlere bakın:
 
 * [P2S yapılandırması oluşturma](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [Hub atamasını düzenleme](virtual-wan-point-to-site-portal.md#edit)
+* [P2S ağ geçidi ile hub oluşturma](virtual-wan-point-to-site-portal.md#hub)
 
 ## <a name="configure-the-device-tunnel"></a>Cihaz tüneli yapılandırma
 

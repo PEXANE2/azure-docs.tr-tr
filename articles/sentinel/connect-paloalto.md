@@ -1,6 +1,6 @@
 ---
 title: Palo Alto Networks verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Palo Alto Networks verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Azure Sentinel ile Palo Alto ağları günlüklerine kolayca bağlanmak için Palo Alto Networks veri bağlayıcısını nasıl kullanacağınızı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 337575a85b899b918162ad59c0bbbbaf742a83fe
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564553"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Palo Alto ağlarını Azure Sentinel 'e bağlama
 

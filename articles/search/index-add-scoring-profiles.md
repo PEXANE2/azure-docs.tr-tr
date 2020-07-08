@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565366"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine puanlama profilleri ekleme
 
@@ -29,7 +29,7 @@ ms.locfileid: "82890173"
 
  Puanlama profili, Dizin tanımının ağırlıklı alanlar, işlevler ve parametrelerden oluşan bir parçasıdır.  
 
- Bir Puanlama profilinin nasıl görüneceğine ilişkin bir fikir vermek için aşağıdaki örnekte ' coğrafi ' adlı basit bir profil gösterilmektedir. Bu bir tane, **Hotelname** alanında arama terimi olan öğeleri alır. Ayrıca, geçerli konumun `distance` on kilometre içindeki öğeleri tercih etmek için işlevini kullanır. Birisi ' Inn ' terimini aradığında ve ' inn ', otel adının bir parçası olduğunda, geçerli konumun 10 KM yarıçapı içindeki ' Inn ' ile oteller içeren belgeler, arama sonuçlarında daha yüksek görünür.  
+ Bir Puanlama profilinin nasıl görüneceğine ilişkin bir fikir vermek için aşağıdaki örnekte ' coğrafi ' adlı basit bir profil gösterilmektedir. Bu bir tane, **Hotelname** alanında arama terimi olan öğeleri alır. Ayrıca, `distance` geçerli konumun on kilometre içindeki öğeleri tercih etmek için işlevini kullanır. Birisi ' Inn ' terimini aradığında ve ' inn ', otel adının bir parçası olduğunda, geçerli konumun 10 KM yarıçapı içindeki ' Inn ' ile oteller içeren belgeler, arama sonuçlarında daha yüksek görünür.  
 
 
 ```json
@@ -58,26 +58,26 @@ ms.locfileid: "82890173"
 ```  
 
 
- Bu puanlama profilini kullanmak için sorgunuz Sorgu dizesinde profil belirlemek üzere formüle eklenir. Aşağıdaki sorguda, istekteki sorgu parametresine `scoringProfile=geo` dikkat edin.  
+ Bu puanlama profilini kullanmak için sorgunuz Sorgu dizesinde profil belirlemek üzere formüle eklenir. Aşağıdaki sorguda, istekteki sorgu parametresine dikkat edin `scoringProfile=geo` .  
 
 ```  
-GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
+GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2020-06-30 
 ```  
 
- Bu sorgu, ' Inn ' terimini arar ve geçerli konumda geçirir. Bu sorgunun gibi `scoringParameter`diğer parametreleri içerdiğine dikkat edin. Sorgu parametreleri, [Azure Bilişsel Arama REST API&#41;&#40;arama belgelerinde ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)açıklanmıştır.  
+ Bu sorgu, ' Inn ' terimini arar ve geçerli konumda geçirir. Bu sorgunun gibi diğer parametreleri içerdiğine dikkat edin `scoringParameter` . Sorgu parametreleri, [Azure Bilişsel Arama REST API&#41;&#40;arama belgelerinde ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)açıklanmıştır.  
 
  Puanlama profilinin daha ayrıntılı bir örneğini gözden geçirmek için [örnek](#bkmk_ex) ' e tıklayın.  
 
 ## <a name="what-is-default-scoring"></a>Varsayılan skor nedir?  
- Puanlama, sıralı bir sonuç kümesindeki her öğe için bir arama puanı hesaplar. Bir arama sonuç kümesindeki her öğeye bir arama puanı atanır ve en yüksek düzeye en düşüğe göre sıralanır. Daha yüksek puanları olan öğeler uygulamaya döndürülür. Varsayılan olarak, ilk 50 döndürülür, ancak daha küçük veya daha fazla sayıda `$top` öğe (tek bir yanıtta 1000 ' e kadar) döndürmek için parametresini kullanabilirsiniz.  
+ Puanlama, sıralı bir sonuç kümesindeki her öğe için bir arama puanı hesaplar. Bir arama sonuç kümesindeki her öğeye bir arama puanı atanır ve en yüksek düzeye en düşüğe göre sıralanır. Daha yüksek puanları olan öğeler uygulamaya döndürülür. Varsayılan olarak, ilk 50 döndürülür, ancak `$top` daha küçük veya daha fazla sayıda öğe (tek bir yanıtta 1000 ' e kadar) döndürmek için parametresini kullanabilirsiniz.  
 
-Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplanır. Azure Bilişsel Arama, arama terimlerinin çok sayıda örneğini içeren belgeleri sorgu dizesinde (bazıları veya tümü, bağlı olarak `searchMode`) içeren belgeleri bulur. Terim veri dizini genelinde nadir ise ve belge içinde ortak olduğunda arama puanı daha da artar. Bu yaklaşıma yönelik bu yaklaşımın temelini, [tf-ıDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) veya Term Frequency-ters belge sıklığı olarak bilinir.  
+Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplanır. Azure Bilişsel Arama, arama terimlerinin çok sayıda örneğini içeren belgeleri sorgu dizesinde (bazıları veya tümü, bağlı olarak) içeren belgeleri bulur `searchMode` . Terim veri dizini genelinde nadir ise ve belge içinde ortak olduğunda arama puanı daha da artar. Bu yaklaşıma yönelik bu yaklaşımın temelini, [tf-ıDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) veya Term Frequency-ters belge sıklığı olarak bilinir.  
 
  Özel sıralama olmadığı varsayılarak, sonuçlar çağıran uygulamaya döndürülmeden önce arama puanına göre sıralanır. $Top belirtilmemişse, en yüksek arama puanına sahip 50 öğe döndürülür.  
 
  Arama puanı değerleri, bir sonuç kümesi boyunca yinelenebilir. Örneğin, 1,2 puanı olan 10 öğe, 1,0 puanına sahip 20 öğe ve 0,5 puanı ile 20 öğe olabilir. Birden çok isabetle aynı arama puanı varsa, aynı puanlanmış öğelerin sıralaması tanımlanmamıştır ve kararlı değildir. Sorguyu yeniden çalıştırın ve öğelerin vardiya konumunu görebilirsiniz. Aynı puan ile iki öğe verildiğinde, ilk olarak bir tane görünecek garanti yoktur.  
 
-## <a name="when-to-use-custom-scoring"></a>Özel Puanlama ne zaman kullanılır?  
+## <a name="when-to-add-scoring-logic"></a>Puanlama mantığı ne zaman eklenir 
  Varsayılan derecelendirme davranışı iş amaçlarınızı toplantıda yeterince fazla olmadığında bir veya daha fazla Puanlama profili oluşturmanız gerekir. Örneğin, arama ilgisi yeni eklenen öğeleri tercih etmelidir. Benzer şekilde, kar marjı içeren bir alanınız ya da gelir potansiyelini belirten başka bir alan olabilir. İşletmenizin avantajlarından faydalanmaya yönelik isabet artırma, Puanlama profillerinin kullanılmasına karar verirken önemli bir faktör olabilir.  
 
  Relet tabanlı sıralama, Puanlama profilleri aracılığıyla da uygulanır. Geçmişte kullandığınız arama sonuçları sayfalarını fiyata, tarihe, derecelendirmeye veya ilgiye göre sıralamanıza izin veren şekilde değerlendirin. Azure Bilişsel Arama 'de, Puanlama profilleri ' ilgi ' seçeneğini sürücüdür. İlgi tanımı sizin tarafınızdan denetlenir, iş hedeflerine ve teslim etmek istediğiniz arama deneyimi türüne göre belirlenir.  
@@ -85,7 +85,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 ##  <a name="example"></a><a name="bkmk_ex"></a>Örneğinde  
  Daha önce belirtildiği gibi, özelleştirilmiş Puanlama bir dizin şemasında tanımlanan bir veya daha fazla Puanlama profili aracılığıyla uygulanır.  
 
- Bu örnekte, iki Puanlama profili (`boostGenre`, `newAndHighlyRated`) olan bir dizinin şeması gösterilmektedir. Bir sorgu parametresi olarak profil içeren bu dizine yönelik herhangi bir sorgu, sonuç kümesini Puanlama için profili kullanır.  
+ Bu örnekte, iki Puanlama profili (,) olan bir dizinin şeması `boostGenre` gösterilmektedir `newAndHighlyRated` . Bir sorgu parametresi olarak profil içeren bu dizine yönelik herhangi bir sorgu, sonuç kümesini Puanlama için profili kullanır.  
 
 ```json
 {  
@@ -163,8 +163,8 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 
 |||  
 |-|-|  
-|**Çizgi**|Bir alana göreli ağırlık atayan ad-değer çiftlerini belirtin. [Örnekte](#bkmk_ex), albümbaşlık, tarz ve artistName alanları sırasıyla 1,5, 5 ve 2 ' dir. Tarzı neden diğerlerinden çok daha yüksek maliyetli? Arama, biraz hogenou olan veriler üzerinde yürütülmüştür (' de ' tarz ' ile ilgili olduğu gibi `musicstoreindex`), göreli ağırlıklarla daha büyük bir varyans olması gerekebilir. Örneğin, ' Rock ' `musicstoreindex`içinde hem bir tarz hem de özdeş phrased tarzı açıklamalarıyla birlikte görünür. Tarz 'ın tarz açıklamasına göre daha yüksek bir değere sahip olmasını istiyorsanız, tarz alanı için çok daha yüksek bir göreli ağırlık gerekir.|  
-|**İşlevler**|Belirli bağlamlar için ek hesaplamalar gerektiğinde kullanılır. Geçerli değerler `freshness`, `magnitude` `distance`, ve. `tag` Her işlevin benzersiz parametreleri vardır.<br /><br /> -   `freshness`bir öğenin yeni mi yoksa eski mi olduğunu artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca alanlarla birlikte `datetime` kullanılabilir (EDM. Veri Timesapmayı). `boostingDuration` Özniteliğin yalnızca `freshness` işleviyle kullanıldığını unutmayın.<br />-   `magnitude`bir sayısal değerin yüksek veya düşük olduğu bir değere göre artırmak istediğinizde kullanılmalıdır. Bu işlevi çağıran senaryolar, kar marjına, en yüksek fiyata, en düşük fiyata veya bir indirme sayısına göre yükseltme içerir. Bu işlev yalnızca Double ve Integer alanları ile kullanılabilir.<br />     Bu `magnitude` işlev için, ters deseninin (örneğin, daha yüksek fiyatlı öğelerden daha fazlasını artırmak için) (örneğin, daha fazla fiyatlandırıltı olan öğelerden daha fazla) isterseniz aralığı ters çevirebilirsiniz. $100 ile $1 arasında bir dizi fiyat verildiğinde, düşük fiyatlı öğeleri artırmak `boostingRangeStart` için 100 ve `boostingRangeEnd` 1 ' de ayarlanır.<br />-   `distance`yakınlığa veya coğrafi konuma göre artırmak istediğinizde kullanılmalıdır. Bu işlev, yalnızca alanlarla birlikte `Edm.GeographyPoint` kullanılabilir.<br />-   `tag`belgeler ve arama sorguları arasında ortak olan etiketlere göre artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca ve `Edm.String` `Collection(Edm.String)` alanları ile kullanılabilir.<br /><br /> **İşlevleri kullanma kuralları**<br /><br /> İşlev türü (`freshness`, `magnitude`, `distance`), `tag` küçük harf olmalıdır.<br /><br /> İşlevler null veya boş değerler içeremez. Özellikle, FieldName eklerseniz, onu bir şeye ayarlamanız gerekir.<br /><br /> İşlevler yalnızca filtrelenebilir alanlara uygulanabilir. Filtrelenebilir alanlar hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) .<br /><br /> İşlevler, yalnızca bir dizinin alanlar koleksiyonunda tanımlanan alanlara uygulanabilir.|  
+|**Çizgi**|Bir alana göreli ağırlık atayan ad-değer çiftlerini belirtin. [Örnekte](#bkmk_ex), albümbaşlık, tarz ve artistName alanları sırasıyla 1,5, 5 ve 2 ' dir. Tarzı neden diğerlerinden çok daha yüksek maliyetli? Arama, biraz hogenou olan veriler üzerinde yürütülmüştür (' de ' tarz ' ile ilgili olduğu gibi `musicstoreindex` ), göreli ağırlıklarla daha büyük bir varyans olması gerekebilir. Örneğin, `musicstoreindex` ' Rock ' içinde hem bir tarz hem de özdeş phrased tarzı açıklamalarıyla birlikte görünür. Tarz 'ın tarz açıklamasına göre daha yüksek bir değere sahip olmasını istiyorsanız, tarz alanı için çok daha yüksek bir göreli ağırlık gerekir.|  
+|**İşlevler**|Belirli bağlamlar için ek hesaplamalar gerektiğinde kullanılır. Geçerli değerler `freshness` ,, `magnitude` `distance` ve `tag` . Her işlevin benzersiz parametreleri vardır.<br /><br /> -   `freshness`bir öğenin yeni mi yoksa eski mi olduğunu artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca alanlarla birlikte kullanılabilir `datetime` (EDM. Veri Timesapmayı). `boostingDuration`Özniteliğin yalnızca işleviyle kullanıldığını unutmayın `freshness` .<br />-   `magnitude`bir sayısal değerin yüksek veya düşük olduğu bir değere göre artırmak istediğinizde kullanılmalıdır. Bu işlevi çağıran senaryolar, kar marjına, en yüksek fiyata, en düşük fiyata veya bir indirme sayısına göre yükseltme içerir. Bu işlev yalnızca Double ve Integer alanları ile kullanılabilir.<br />     Bu işlev için, `magnitude` ters deseninin (örneğin, daha yüksek fiyatlı öğelerden daha fazlasını artırmak için) (örneğin, daha fazla fiyatlandırıltı olan öğelerden daha fazla) isterseniz aralığı ters çevirebilirsiniz. $100 ile $1 arasında bir dizi fiyat verildiğinde, `boostingRangeStart` `boostingRangeEnd` düşük fiyatlı öğeleri artırmak için 100 ve 1 ' de ayarlanır.<br />-   `distance`yakınlığa veya coğrafi konuma göre artırmak istediğinizde kullanılmalıdır. Bu işlev, yalnızca alanlarla birlikte kullanılabilir `Edm.GeographyPoint` .<br />-   `tag`belgeler ve arama sorguları arasında ortak olan etiketlere göre artırmak istediğinizde kullanılmalıdır. Bu işlev yalnızca ve alanları ile kullanılabilir `Edm.String` `Collection(Edm.String)` .<br /><br /> **İşlevleri kullanma kuralları**<br /><br /> İşlev türü ( `freshness` , `magnitude` , `distance` ), `tag` küçük harf olmalıdır.<br /><br /> İşlevler null veya boş değerler içeremez. Özellikle, FieldName eklerseniz, onu bir şeye ayarlamanız gerekir.<br /><br /> İşlevler yalnızca filtrelenebilir alanlara uygulanabilir. Filtrelenebilir alanlar hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) .<br /><br /> İşlevler, yalnızca bir dizinin alanlar koleksiyonunda tanımlanan alanlara uygulanabilir.|  
 
  Dizin tanımlandıktan sonra, Dizin şemasını karşıya yükleyerek ve ardından belgeler ile dizini oluşturun. Bu işlemler hakkında yönergeler için bkz. [azure Bilişsel Arama&#41;REST API dizin oluşturma &#40;](https://docs.microsoft.com/rest/api/searchservice/create-index) ve Azure &#40;bilişsel arama REST API Için [belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) . Dizin oluşturulduktan sonra, arama verileriyle birlikte çalışan işlevsel bir Puanlama profiline sahip olmanız gerekir.  
 
@@ -241,7 +241,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
 |`magnitude`&#124;`boostingRangeStart`|Aralığın puanlanması için başlangıç değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 1 olur. %50 üzerindeki kenar boşlukları için bu 50 olacaktır.|  
 |`magnitude`&#124;`boostingRangeEnd`|Büyüklük puanlanması gereken aralığın bitiş değerini ayarlar. Değer bir tamsayı veya kayan noktalı sayı olmalıdır. 1 ile 4 arasında yıldız dereceleri için bu 4 olur.|  
 |`magnitude`&#124;`constantBoostBeyondRange`|Geçerli değerler true veya false (varsayılan) şeklindedir. True olarak ayarlandığında, tam artırma, aralığın üst ucundan daha yüksek olan hedef alan için bir değer olan belgelere uygulanmaya devam edecektir. False ise, bu işlevin artışı aralığın dışında kalan hedef alan için bir değere sahip belgelere uygulanmaz.|  
-|`freshness`|Yenilik Puanlama işlevi, `DateTimeOffset` alanlardaki değerlere göre öğelerin derecelendirme puanlarını değiştirmek için kullanılır. Örneğin, son tarihi daha eski öğelerden daha yüksek bir öğe olabilir.<br /><br /> Ayrıca, gelecekteki tarihlerle birlikte takvim olayları gibi öğeleri derecelendirmek de mümkündür. bu öğeler, gelecekte de daha fazla öğeden daha fazla derecelendirilir.<br /><br /> Geçerli hizmet sürümünde, aralığın bir sonu geçerli saate göre düzeltilecektir. Diğer son, ' a göre geçmişte bir zaman olur `boostingDuration`. Gelecekte bir zaman aralığını artırmak için negatif bir değer `boostingDuration`kullanın.<br /><br /> En yüksek ve en düşük aralıktan yükseltme yaptığı oran, Puanlama profiline uygulanan enterpolasyon tarafından belirlenir (aşağıdaki şekle bakın). Uygulanan yükseltme faktörünü tersine çevirmek için 1 ' den küçük bir artırma faktörü seçin.|  
+|`freshness`|Yenilik Puanlama işlevi, alanlardaki değerlere göre öğelerin derecelendirme puanlarını değiştirmek için kullanılır `DateTimeOffset` . Örneğin, son tarihi daha eski öğelerden daha yüksek bir öğe olabilir.<br /><br /> Ayrıca, gelecekteki tarihlerle birlikte takvim olayları gibi öğeleri derecelendirmek de mümkündür. bu öğeler, gelecekte de daha fazla öğeden daha fazla derecelendirilir.<br /><br /> Geçerli hizmet sürümünde, aralığın bir sonu geçerli saate göre düzeltilecektir. Diğer son, ' a göre geçmişte bir zaman olur `boostingDuration` . Gelecekte bir zaman aralığını artırmak için negatif bir değer kullanın `boostingDuration` .<br /><br /> En yüksek ve en düşük aralıktan yükseltme yaptığı oran, Puanlama profiline uygulanan enterpolasyon tarafından belirlenir (aşağıdaki şekle bakın). Uygulanan yükseltme faktörünü tersine çevirmek için 1 ' den küçük bir artırma faktörü seçin.|  
 |`freshness`&#124;`boostingDuration`|Belirli bir belge için yükseltme durdurulacak süre sonu süresini ayarlar. Sözdizimi ve örnekler için aşağıdaki bölümde bulunan [boostingDuration ayarlama](#bkmk_boostdur) bölümüne bakın.|  
 |`distance`|Uzaklık Puanlama işlevi, bir başvuru coğrafi konumuyla ne kadar yakın ve ne kadar ilerleeceğine göre belgelerin Puanını etkilemek için kullanılır. Başvuru konumu, bir parametresindeki sorgunun parçası olarak ( `scoringParameterquery` dize seçeneği kullanılarak) bir Lon, Lat bağımsız değişkeni olarak verilir.|  
 |`distance`&#124;`referencePointParameter`|Başvuru konumu olarak kullanılacak sorgularda geçirilecek bir parametre. `scoringParameter`bir sorgu parametresidir. Sorgu parametrelerinin açıklamaları için bkz. [Azure Bilişsel Arama &#40;arama belgeleri REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .|  
@@ -264,7 +264,7 @@ Arama puanı, verilerin istatistiksel özelliklerine ve sorgusuna göre hesaplan
  ![Grafik üzerinde sabit, doğrusal, karesel, log10 çizgileri](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
 ##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a>BoostingDuration 'ı ayarlama  
- `boostingDuration`, `freshness` işlevinin bir özniteliğidir. Belirli bir belge için yükseltme durdurulacak bir süre sonu dönemi ayarlamak için bunu kullanırsınız. Örneğin, 10 günlük promosyon dönemi için bir ürün satırını veya markasını artırmak üzere, bu belgeler için 10 günlük dönemi "P10D" olarak belirtmeniz gerekir.  
+ `boostingDuration`, işlevinin bir özniteliğidir `freshness` . Belirli bir belge için yükseltme durdurulacak bir süre sonu dönemi ayarlamak için bunu kullanırsınız. Örneğin, 10 günlük promosyon dönemi için bir ürün satırını veya markasını artırmak üzere, bu belgeler için 10 günlük dönemi "P10D" olarak belirtmeniz gerekir.  
 
  `boostingDuration`XSD "dayTimeDuration" değeri (ISO 8601 Duration değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için model: "P [nD] [T [nH] [nM] [nS]]".  
 

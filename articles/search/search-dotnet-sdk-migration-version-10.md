@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 32d77b82b30411bd5b423f903c25392fd8e09e44
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562392"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
 
@@ -22,7 +22,7 @@ ms.locfileid: "85080947"
 
 Azure Search, sürüm 10 ' da Azure Bilişsel Arama olarak yeniden adlandırıldı, ancak ad alanları ve paket adları değiştirilmez. SDK 'nın önceki sürümleri (9,0 ve öncesi), eski adı kullanmaya devam eder. SDK 'yı kullanma hakkında daha fazla bilgi için örnekler de dahil olmak üzere [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md)konusuna bakın.
 
-Sürüm 10, çeşitli özellikler ve hata düzeltmeleri ekleyerek REST API sürümünün en son sürümüyle aynı işlev düzeyine getirir `2019-05-06` . Bir değişikliğin mevcut kodu kesen durumlarda, [sorunu çözmek için gereken adımlarda](#UpgradeSteps)size yol göstereceğiz.
+Sürüm 10, çeşitli özellikler ve hata düzeltmeleri sunarak REST API sürümü ile aynı işlevsel düzeye getirir `2019-05-06` . Bir değişikliğin mevcut kodu kesen durumlarda, [sorunu çözmek için gereken adımlarda](#UpgradeSteps)size yol göstereceğiz.
 
 > [!NOTE]
 > Sürüm 8,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, önce sürüm 9 ' a yükseltmeniz ve sonra sürüm 10 ' a yükseltmeniz gerekir. Yönergeler için bkz. [Azure Search .NET SDK sürüm 9](search-dotnet-sdk-migration-version-9.md) ' a yükseltme.
@@ -32,7 +32,7 @@ Sürüm 10, çeşitli özellikler ve hata düzeltmeleri ekleyerek REST API sür�
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Sürüm 10 ' daki yenilikler
-Azure Bilişsel Arama .NET SDK 'sının 10. sürümü, bu güncelleştirmelerle birlikte sunulan en son genel sürümü REST API ( `2019-05-06` ) hedefliyor:
+Azure Bilişsel Arama .NET SDK 'sının sürüm 10 ' un bu güncelleştirmelerle REST API hedeflendiği `2019-05-06` :
 
 * İki yeni becerinin tanıtımı- [koşullu yetenek](cognitive-search-skill-conditional.md) ve [metin çeviri yeteneği](cognitive-search-skill-text-translation.md).
 * [Tek tek beceri](cognitive-search-skill-shaper.md) girişleri, iç içe bağlamlardan birleştirmeye uyum sağlayacak şekilde yeniden yapılandırılmış. Daha fazla bilgi için bu [örnek JSON tanımına](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)bakın.

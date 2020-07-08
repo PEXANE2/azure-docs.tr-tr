@@ -1,6 +1,6 @@
 ---
 title: Cloud App Security verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Cloud App Security verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: MCAS 'den Azure Sentinel 'e uyarıları ve Cloud Discovery günlüklerini akışa almak için Microsoft Cloud App Security (MCAS) bağlayıcısını kullanmayı öğrenin. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: b2a48b3990afc5fb4ecfb8d40738b18873846459
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563953"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security verileri bağlama 
 

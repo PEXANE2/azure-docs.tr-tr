@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 004f1ea55bcda68485d8b11ed472b6cab2ca7545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562484"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>İstemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
@@ -34,7 +34,7 @@ Bu makalenin geri kalanı sorgulara ve istemci koduna odaklanılmıştır. Anaht
 Bir isteğin öğeleri, arama türü API 'Lerinden, kısmi bir sorgudan ve bir öneri aracı oluşur. Aşağıdaki betik, bir isteğin bileşenlerini bir örnek olarak otomatik tamamlama REST API kullanarak gösterir.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"
@@ -68,10 +68,10 @@ Yanıtlar istekteki parametrelere göre şekillendirilir. Otomatik tamamlama iç
 
 | Parametre | Kullanım |
 |-----------|-------|
-| **$select** | Bir öneri aracı içinde birden çok **Sourcefields** varsa, hangi alanın **$select** (`$select=GameTitle`) değer katkıda bulunduğunu seçmek için $Select kullanın. |
+| **$select** | Bir öneri aracı içinde birden çok **Sourcefields** varsa, hangi alanın () değer katkıda bulunduğunu seçmek için **$Select** kullanın `$select=GameTitle` . |
 | **searchFields** | Sorguyu belirli alanlarla sınırlayın. |
-| **$filter** | Sonuç kümesinde (`$filter=Category eq 'ActionAdventure'`) eşleşme ölçütlerini uygulayın. |
-| **$top** | Sonuçları belirli bir sayıyla (`$top=5`) sınırlayın.|
+| **$filter** | Sonuç kümesinde () eşleşme ölçütlerini uygulayın `$filter=Category eq 'ActionAdventure'` . |
+| **$top** | Sonuçları belirli bir sayıyla ( `$top=5` ) sınırlayın.|
 
 ## <a name="add-user-interaction-code"></a>Kullanıcı etkileşimi kodu ekle
 
@@ -116,7 +116,7 @@ $(function () {
 });
 ```
 
-JQuery `source` Kullanıcı arabirimi otomatik tamamlama işlevine, arama kutusu altında gösterilecek öğelerin listesinin nereden alınacağını söyler. Bu proje bir MVC projesi olduğundan, sorgu önerilerini döndürme mantığını içeren **HomeController.cs** içinde **önerme** işlevini çağırır. Bu işlev, vurguları, belirsiz eşleştirmeyi ve terimi denetlemek için birkaç parametreyi de geçirir. AutoComplete JavaScript API 'SI, term parametresini ekler.
+`source`JQuery kullanıcı arabirimi otomatik tamamlama işlevine, arama kutusu altında gösterilecek öğelerin listesinin nereden alınacağını söyler. Bu proje bir MVC projesi olduğundan, sorgu önerilerini döndürme mantığını içeren **HomeController.cs** içinde **önerme** işlevini çağırır. Bu işlev, vurguları, belirsiz eşleştirmeyi ve terimi denetlemek için birkaç parametreyi de geçirir. AutoComplete JavaScript API 'SI, term parametresini ekler.
 
 , `minLength: 3` Arama kutusunda yalnızca en az üç karakter olduğunda önerilerin gösterilmesi sağlanır.
 
@@ -140,7 +140,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 C# ve MVC uygulaması kullanıyorsanız, **HomeController.cs** dosyası denetleyiciler dizini altında, önerilen sonuçlar için bir sınıf oluşturabileceğiniz yerdir. .NET ' te, bir önerme işlevi [Documentsoperationsextensions. önerme metodunu](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)temel alır.
 
-Yöntemi `InitSearch` , Azure bilişsel arama hizmetine kimliği DOĞRULANMıŞ bir http Dizin istemcisi oluşturur. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+`InitSearch`Yöntemi, Azure bilişsel arama hizmetine kimliği doğrulanmış BIR http Dizin istemcisi oluşturur. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)

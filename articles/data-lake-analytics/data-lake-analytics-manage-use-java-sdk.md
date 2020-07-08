@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 883b2895966d71b91554e8978df6876b0edcef88
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70813629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564765"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java uygulaması kullanarak Azure Data Lake Analytics yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,9 +33,9 @@ Aşağıdaki kod parçacığı, uygulamanın kendi kimlik bilgilerini sağladı�
 ## <a name="create-a-java-application"></a>Java uygulaması oluşturma
 1. IntelliJ 'yi açın ve **komut satırı uygulama** şablonunu kullanarak bir Java projesi oluşturun.
 2. Ekranınızın sol tarafında projeye sağ tıklayın ve **Add Framework Support (Framework Desteği Ekle)** seçeneğine tıklayın. **Maven**'ı seçip **OK (Tamam)** seçeneğine tıklayın.
-3. Yeni oluşturulan **"pom.xml"** dosyasını açın ve **\</version>** etiketi ile **\</project>** etiketi arasına şu metin parçacığını ekleyin:
+3. Yeni oluşturulan **"pom.xml"** dosyasını açın ve **\</version>** Tag ve Tag arasına aşağıdaki metin parçacığını ekleyin **\</project>** :
 
-```
+```xml
 <dependencies>
     <dependency>
         <groupId>com.microsoft.azure</groupId>

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8d3ddffc52bd351b21351b53e8a1be5a674fe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562863"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir IoT cihaz türü tanımlama
 
@@ -66,7 +66,7 @@ Bir cihaz şablonu şunları içerir:
 IoT Central bir cihaz şablonu oluşturmak için:
 
 1. IoT Central uygulamanızda **cihaz şablonları** sayfasına gidin.
-1. **+ Yeni** > **özel**' i seçin.
+1. **+ Yeni**  >  **özel**' i seçin.
 1. Şablonunuz için **ortam algılayıcısı**gibi bir ad girin.
 1. **Enter**'a basın. IoT Central boş bir cihaz şablonu oluşturur.
 
@@ -119,15 +119,15 @@ Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları göster
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan telemetri değeri için görünen ad. |
-| Adı | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Name | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Telemetri. |
 | Anlamsal tür | Telemetrinin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi telemetri veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
 | Severity | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
-| Birim | Bir telemetri değeri için **mph**, **%** veya ** &deg;C**gibi bir birim. |
+| Birim | Bir telemetri değeri için **mph**, **%** veya ** &deg; C**gibi bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
-| Açıklama | Telemetri yeteneği hakkında herhangi bir yorum. |
+| Yorum | Telemetri yeteneği hakkında herhangi bir yorum. |
 | Açıklama | Telemetri yeteneğinin açıklaması. |
 
 ### <a name="properties"></a>Özellikler
@@ -139,16 +139,16 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan özellik değeri için görünen ad. |
-| Adı | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Name | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Özelliði. |
 | Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
 | Yazılabilir | Özellik yazılabilir değilse, cihaz özellik değerlerini IoT Central rapor edebilir. Özellik yazılabilir ise, cihaz özellik değerlerini IoT Central rapor edebilir ve IoT Central Özellik güncelleştirmelerini cihaza gönderebilir.
 | Severity | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
-| Birim | **Mph**, **%** veya ** &deg;C**gibi özellik değeri için bir birim. |
+| Birim | **Mph**, **%** veya ** &deg; C**gibi özellik değeri için bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
-| Açıklama | Özellik yeteneği hakkında herhangi bir açıklama. |
+| Yorum | Özellik yeteneği hakkında herhangi bir açıklama. |
 | Açıklama | Özellik yeteneğinin açıklaması. |
 
 ### <a name="commands"></a>Komutlar
@@ -160,10 +160,10 @@ Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları göste
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan komutun görünen adı. |
-| Adı | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Name | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. |
 | Yetenek Türü | Komutundaki. |
 | Komut | `SynchronousExecutionType`. |
-| Açıklama | Komut özelliğiyle ilgili herhangi bir yorum. |
+| Yorum | Komut özelliğiyle ilgili herhangi bir yorum. |
 | Açıklama | Komut yeteneğinin açıklaması. |
 | İstek | Etkinleştirilirse, istek parametresinin tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
 | Yanıt | Etkinleştirilirse, komut yanıtının tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
@@ -183,7 +183,7 @@ Aşağıdaki tabloda bir bulut özelliğinin yapılandırma ayarları gösterilm
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan bulut özelliği değeri için görünen ad. |
-| Adı | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Name | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
 | Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi bulut özelliği veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. |
 

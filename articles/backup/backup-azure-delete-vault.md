@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Backup Recovery Services kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563118"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -16,10 +16,10 @@ Bu makalede [Azure Backup](backup-overview.md) kurtarma hizmetleri kasasının n
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Aşağıdaki bağımlılıklardan herhangi biriyle bir kurtarma hizmetleri kasasını silemezsiniz:
+Aşağıdaki bağımlılıklara sahip Kurtarma Hizmetleri kasalarını silemezsiniz:
 
 - Korumalı veri kaynakları (örneğin IaaS VM 'Leri, SQL veritabanları, Azure dosya paylaşımları vb.) içeren bir kasayı silemezsiniz.  
-- Yedekleme verileri içeren bir kasayı silemezsiniz. Yedekleme verileri silindikten sonra, geçici olarak silinen duruma geçer.
+- Yedekleme verileri içeren bir kasayı silemezsiniz. Yedekleme verileri silindikten sonra geçici silme durumuna geçer.
 - Geçici olarak silinen durumunda yedekleme verileri içeren bir kasayı silemezsiniz.
 - Kayıtlı depolama hesapları olan bir kasayı silemezsiniz.
 
@@ -90,7 +90,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 
       - MABS veya DPM için **yedekleme yönetim sunucuları**' nı seçin. Ardından, silmek istediğiniz sunucuyu seçin.
 
-          ![MABS için, kendi panosunu açmak için kasanızı seçin.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![MABS veya DPM için, kendi panosunu açmak için kasanızı seçin.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. **Silme** bölmesi bir uyarı iletisiyle birlikte görüntülenir.
 
@@ -114,7 +114,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan silebilirsiniz:
 
 - [MARS yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mars-management-console)
-- [MABS yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mabs-management-console)
+- [MABS veya DPM Yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>MARS yönetim konsolundan yedekleme öğelerini silme
 
@@ -142,12 +142,12 @@ Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan sile
 
 Şirket içi yedekleme öğelerini sildikten sonra, portaldan sonraki adımları izleyin.
 
-### <a name="delete-backup-items-from-the-mabs-management-console"></a>MABS yönetim konsolundan yedekleme öğelerini silme
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>MABS veya DPM Yönetim konsolundan yedekleme öğelerini silme
 
 >[!NOTE]
 >Yedeklemeyi durdurmadan kaynak makineyi sildiyseniz veya kaybettiyseniz, sonraki zamanlanmış yedekleme başarısız olur. Eski kurtarma noktası ilkeye göre sona erer, ancak yedeklemeyi durdurup verileri silinceye kadar son tek kurtarma noktası her zaman tutulur. Bunu, [Bu bölümdeki](#delete-protected-items-on-premises)adımları izleyerek yapabilirsiniz.
 
-MABS yönetim konsolundan yedekleme öğelerini silmek için kullanabileceğiniz iki yöntem vardır.
+MABS veya DPM Yönetim konsolundan yedekleme öğelerini silmek için kullanabileceğiniz iki yöntem vardır.
 
 #### <a name="method-1"></a>Yöntem 1
 
@@ -171,7 +171,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 
 #### <a name="method-2"></a>2. Yöntem
 
-**Mabs yönetim** konsolunu açın. **Veri koruma yöntemini seçin**altında, **çevrimiçi koruma** istiyorum onay kutusunu temizleyin.
+**Mabs yönetimi** veya **DPM Yönetim** konsolunu açın. **Veri koruma yöntemini seçin**altında, **çevrimiçi koruma** istiyorum onay kutusunu temizleyin.
 
   ![Veri koruma yöntemini seçin.](./media/backup-azure-delete-vault/data-protection-method.png)
 

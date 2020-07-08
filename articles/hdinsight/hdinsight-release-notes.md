@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: c7bc818133a0bd708f9f850f0ad258dccc6c02cc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a4faab9ac6d5e1c39c1120e09dae792b95892d60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564409"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -58,6 +58,9 @@ Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek k
  
 ### <a name="create-new-service-principal-through-hdinsight"></a>HDInsight ile yeni hizmet sorumlusu oluşturma
 Daha önce, küme oluşturma ile müşteriler, Azure portal bağlı ADLS Gen 1 hesabına erişmek için yeni bir hizmet sorumlusu oluşturabilir. 15 2020 Haziran 'dan itibaren müşteriler HDInsight oluşturma iş akışında yeni hizmet sorumlusu oluşturamaz, yalnızca mevcut hizmet sorumlusu desteklenir. Bkz. [Azure Active Directory kullanarak hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+### <a name="time-out-for-script-actions-with-cluster-creation"></a>Küme oluşturma ile betik eylemleri için zaman aşımı
+HDInsight, küme oluşturma ile betik eylemlerinin çalıştırılmasını destekler. Bu sürümden, küme oluşturma ile birlikte tüm betik eylemlerinin **60 dakika**içinde tamamlaması veya zaman aşımına geçmesi gerekir. Çalışan kümelere gönderilen betik eylemleri etkilenmez. Ayrıntılar hakkında daha [fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process).
  
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Dikkat etmeniz gereken yaklaşan Son değişiklik yok.
@@ -77,3 +80,7 @@ Kafka sürümü 2.1.0 sürümünden 2.1.1 sürümüne yükseltilir.
  
 HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) bulabilirsiniz
 
+## <a name="known-issues"></a>Bilinen sorunlar
+
+### <a name="hive-warehouse-connector-issue"></a>Hive ambarı bağlayıcı sorunu
+Bu sürümde Hive ambar Bağlayıcısı için bir sorun var. Bu çözüm bir sonraki sürüme eklenecektir. Bu sürümden önce oluşturulan mevcut kümeler etkilenmiyor. Mümkün olduğunda, önlemeyi ve kümeyi yeniden oluşturmayı önleyin. Bu konuda daha fazla yardıma ihtiyacınız varsa lütfen destek bileti 'ni açın.

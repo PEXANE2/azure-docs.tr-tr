@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 28f5bac80529306fc11eb7eb059b6f25071efd41
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a728eff7addc7f835f82e795457e722fd60d2e30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564594"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -77,7 +77,7 @@ Dizin Oluşturucu tanımı, veri alımı ile ilgili tüm öğeleri birlikte geti
 
 Dizin oluşturma zamanlaması yaygın olsa da, [Çalıştır komutu](https://docs.microsoft.com/rest/api/searchservice/run-indexer)kullanılarak bir Dizin Oluşturucu da isteğe bağlı olarak çağrılabilir:
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Dizin Oluşturucu durumunu portalda veya Dizin Oluşturucu durumunu Al API 'SI a
 Bir dizin oluşturucunun durum ve yürütme geçmişini [Get Indexer durum komutuyla](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)alabilirsiniz:
 
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
     api-key: [Search service admin key]
 
 Yanıt genel Dizin Oluşturucu durumunu, son (veya sürmekte olan) Dizin Oluşturucu çağrısını ve son Dizin Oluşturucu etkinleştirmeleri geçmişini içerir.

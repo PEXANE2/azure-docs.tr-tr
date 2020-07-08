@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565285"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de derecelendirme algoritması
 
 > [!IMPORTANT]
 > 15 Temmuz 2020 ' den itibaren, yeni oluşturulan arama hizmetleri otomatik olarak BM25 derecelendirme işlevini kullanır. Bu, çoğu durumda, geçerli varsayılan derecelendirmeden Kullanıcı beklentileriyle daha iyi uyum sağlayan arama derecelendirmelerini sağlar. Üst düzey derecelendirmenin ötesinde, BM25, belge boyutu gibi faktörlere bağlı olarak ayarlama sonuçları için yapılandırma seçenekleri de sunar.  
 >
-> Bu değişiklik ile, büyük olasılıkla arama sonuçlarının sıralamasına göre küçük değişiklikler görecaksınız. Bu değişikliğin etkisini test etmek isteyen kişiler için, BM25 algoritması API-Version 2019-05-06-Preview ' da kullanılabilir.  
+> Bu değişiklik ile, büyük olasılıkla arama sonuçlarının sıralamasına göre küçük değişiklikler görecaksınız. Bu değişikliğin etkisini test etmek isteyen kişiler için BM25 algoritması, API-Version 2019-05-06-Preview ve 2020-06-30 ' de bulunur.  
 
 Bu makalede, Preview API kullanılarak oluşturulan ve sorgulanan yeni dizinler için mevcut Arama hizmetlerinde yeni BM25 derecelendirme algoritmasını nasıl kullanabileceğiniz açıklanır.
 
@@ -30,7 +30,7 @@ BM25, klasik daha eski benzerlik algoritmasına benzer olsa da, bunun üzerinde 
 
 ## <a name="how-to-test-bm25-today"></a>BM25 'i bugün test etme
 
-Yeni bir dizin oluşturduğunuzda, algoritmayı belirtmek için bir **benzerlik** özelliği ayarlayabilirsiniz. Aşağıda gösterildiği gibi `api-version=2019-05-06-Preview`öğesini kullanmanız gerekir.
+Yeni bir dizin oluşturduğunuzda, algoritmayı belirtmek için bir **benzerlik** özelliği ayarlayabilirsiniz. `api-version=2019-05-06-Preview`' Yi aşağıda gösterildiği gibi kullanabilirsiniz `api-version=2020-06-30` .
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -63,9 +63,9 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 | Özellik | Açıklama |
 |----------|-------------|
-| liği | İsteğe bağlı. Geçerli değerler şunlardır *"#Microsoft. Azure. Search. Classicbenzerlik"* veya *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> 15 `api-version=2019-05-06-Preview` Temmuz 2020 ' den önce oluşturulan bir arama hizmetinde veya sonraki bir sürümünü gerektirir. |
+| liği | İsteğe bağlı. Geçerli değerler şunlardır *"#Microsoft. Azure. Search. Classicbenzerlik"* veya *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> `api-version=2019-05-06-Preview`15 temmuz 2020 ' den önce oluşturulan bir arama hizmetinde veya sonraki bir sürümünü gerektirir. |
 
-15 Temmuz 2020 ' den sonra oluşturulan yeni hizmetler için, BM25 otomatik olarak kullanılır ve tek benzerlik algoritmadır. Yeni bir hizmette **benzerliği** `ClassicSimilarity` ayarlamaya çalışırsanız, bu algoritma yeni bir hizmette desteklenmediğinden 400 hatası döndürülür.
+15 Temmuz 2020 ' den sonra oluşturulan yeni hizmetler için, BM25 otomatik olarak kullanılır ve tek benzerlik algoritmadır. Yeni bir hizmette **benzerliği** ayarlamaya çalışırsanız `ClassicSimilarity` , bu algoritma yeni bir hizmette desteklenmediğinden 400 hatası döndürülür.
 
 15 Temmuz 2020 tarihinden önce oluşturulan mevcut hizmetler için klasik benzerlik varsayılan algoritmayı sürdürür. **Benzerlik** özelliği atlanırsa veya null olarak ayarlandıysa, Dizin klasik algoritmayı kullanır. Yeni algoritmayı kullanmak istiyorsanız, yukarıda açıklandığı gibi **benzerliği** ayarlamanız gerekecektir.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfff2a1278bc31dc9bc130941985aed2cfb74362
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562352"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK sürümü 9 ' a yükselt
 
@@ -35,7 +35,7 @@ Azure Search .NET SDK 'sının 9. sürümü, önceki sürümlerden çok sayıda 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>Sürüm 9 ' daki yenilikler
-Azure Search .NET SDK 'sının 9. sürümü, Azure Search REST API, özellikle 2019-05-06 olan en son genel kullanılabilir sürümünü hedefler. Bu, aşağıdakiler de dahil olmak üzere bir .NET uygulamasından Azure Search yeni özelliklerini kullanmayı mümkün kılar:
+Azure Search .NET SDK 'sının 9 sürümü, aşağıdaki özelliklerle Azure Search REST API 2019-05-06 sürümünü hedefliyor:
 
 * [AI zenginleştirme](cognitive-search-concept-intro.md) , görüntülerden, bloblardan ve diğer yapılandırılmamış veri kaynaklarından metin ayıklayarak, bir Azure Search dizininde daha fazla aranabilir olmasını sağlamak için içeriği zenginleştirir.
 * [Karmaşık türler](search-howto-complex-data-types.md) için destek, Azure Search bir dizinde neredeyse tüm iç Içe geçmiş JSON yapısını modeletmenizi sağlar.

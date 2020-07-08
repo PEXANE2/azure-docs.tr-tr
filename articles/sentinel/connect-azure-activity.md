@@ -1,6 +1,6 @@
 ---
 title: Azure etkinlik verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Azure etkinlik verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Azure etkinlik günlüklerini tek bir tıklama ile Azure Sentinel 'e akışla birleştirin. Etkinlik günlüğü, Azure genelinde abonelik düzeyindeki olayları kaydeder ve görüntüler.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564500"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure etkinlik günlüğünden veri bağlama
 
@@ -41,7 +41,7 @@ Günlükleri [Azure etkinlik günlüğünden](../azure-monitor/platform/platform
 
 4. Sağ tarafta açılan abonelik bölmesinde, **Bağlan**' a tıklayın.
 
-5. Azure etkinlik uyarıları için Log Analytics ilgili şemayı kullanmak için, sorgu penceresine yazın `AzureActivity` .
+5. Azure etkinlik uyarıları için Log Analytics ilgili şemayı kullanmak için, `AzureActivity` sorgu penceresine yazın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede Azure etkinlik günlüğü 'nü Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

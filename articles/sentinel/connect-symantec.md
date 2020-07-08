@@ -1,6 +1,6 @@
 ---
 title: Symantec IDX verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Symantec IDX verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Symantec güvenlik çözüm günlüklerinizi Azure Sentinel ile kolayca bağlamak için Symantec IDX bağlayıcısını nasıl kullanacağınızı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564924"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDX gerecinizi bağlama 
 
@@ -50,7 +50,7 @@ Symantec IDX, günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dı�
       > [!NOTE]
       > ICDX alıcı arşivleri, ada göre ayrı olarak listelenir. 
  
-    - **Filtre**: iletilecek olayların alt kümesini belirten bir filtre ekleyin. Aşağıdakilerden birini yapın:
+    - **Filtre**: iletilecek olayların alt kümesini belirten bir filtre ekleyin. Şunlardan birini yapın:
         - Bir filtre koşulu seçmek için, bir tür, öznitelik, Işleç ve değer ' e tıklayın. 
         - Filtre alanında, filtre koşullarınızı gözden geçirin. Bunu doğrudan alanda düzenleyebilir veya gerektiğinde silebilirsiniz.
         - Filtre koşullarınızı eklemek için ve veya ya tıklayın.

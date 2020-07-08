@@ -1,31 +1,28 @@
 ---
-title: Azure Güvenlik Duvarı Yöneticisi güvenlik iş ortağı sağlayıcıları (Önizleme)
+title: Azure Güvenlik Duvarı Yöneticisi güvenlik iş ortağı sağlayıcıları nelerdir?
 description: Azure Güvenlik Duvarı Yöneticisi güvenlik iş ortağı sağlayıcıları hakkında bilgi edinin
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 3d430deae191fbc9f9ab5bbbc2b83ee4640dd831
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791544"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563615"
 ---
-# <a name="what-are-security-partner-providers-preview"></a>Güvenlik iş ortağı sağlayıcıları (Önizleme) nedir?
+# <a name="what-are-security-partner-providers"></a>Güvenlik iş ortağı sağlayıcıları nedir?
 
-> [!IMPORTANT]
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Azure Güvenlik Duvarı Yöneticisi 'ndeki *güvenlik iş ortağı sağlayıcıları* , kullanıcılarınız için Internet erişimini korumak üzere tanıdık, en uygun, yerleşik, üçüncü taraf güvenlik hizmeti (SECaaS) tekliflerini kullanmanıza olanak sağlar.
 
-Azure Güvenlik Duvarı Yöneticisi 'nde *güvenlik iş ortakları sağlayıcıları (Önizleme)* , kullanıcılarınız için Internet erişimini korumak üzere tanıdık, en uygun, kümelenen, üçüncü taraf güvenlik (SECaaS) tekliflerini kullanmanıza olanak sağlar.
-
-Hızlı yapılandırmayla, desteklenen bir güvenlik ortağıyla bir hub 'ı güvenli hale getirebilirsiniz ve Internet trafiğini sanal ağlarınızdan (VNet) veya bir bölgedeki dal konumlarından yönlendirebilir ve filtreleyebilirsiniz. Bu işlem, Kullanıcı tanımlı yollar (UDRs) ayarlamadan ve yönetilmeden otomatik rota Yönetimi kullanılarak yapılır.
+Hızlı yapılandırmayla, desteklenen bir güvenlik ortağıyla bir hub 'ı güvenli hale getirebilirsiniz ve Internet trafiğini sanal ağlarınızdan (VNet) veya bir bölgedeki dal konumlarından yönlendirebilir ve filtreleyebilirsiniz. Bunu otomatik yönlendirme yönetimi ile, Kullanıcı tanımlı yollar (UDRs) ayarlamadan ve yönetmeden yapabilirsiniz.
 
 Kullanıcılarınızın bu bölgelerdeki dünya genelinde her yerde bağlantı ve güvenlik sağlamak için birden fazla Azure bölgesinde tercih ettiğiniz güvenlik ortağıyla yapılandırılmış güvenli hub 'ları dağıtabilirsiniz. Güvenlik iş ortağının Internet/SaaS uygulama trafiği ve güvenli hub 'larda özel trafik için Azure Güvenlik Duvarı tekliflerini kullanma olanağı sayesinde, artık Azure 'da, genel olarak dağıtılmış kullanıcılarınıza ve uygulamalarınıza yakın olan güvenlik ucunu oluşturmaya başlayabilirsiniz.
 
-Bu önizleme için, desteklenen güvenlik iş ortakları **Zscaler**, **Check Point**ve **ıpatron**. Desteklenen bölgeler şunlardır WestCentralUS, kuzeydoğu, WestUS, WestUS2 ve EastUS.
+Desteklenen güvenlik iş ortakları **Zscaler**, **Check Point** (Preview) ve **ıpatron** (Önizleme).
 
 ![Güvenlik iş ortağı sağlayıcıları](media/trusted-security-partners/trusted-security-partners.png)
 
@@ -42,18 +39,8 @@ Aşağıdaki senaryolarda Internet trafiğini filtrelemek için güvenlik iş or
    Şube için üçüncü taraf NSaaS filtrelemesini kolayca Internet senaryolarına eklemek için Azure bağlantınız ve küresel dağıtım özelliğinden yararlanın. Azure sanal WAN kullanarak küresel transit ağınızı ve güvenlik ucunu oluşturabilirsiniz.
 
 Aşağıdaki senaryolar desteklenir:
--   Üçüncü taraf iş ortağı sunumu aracılığıyla VNet 'Ten Internet 'e.
--   Üçüncü taraf iş ortağı sunumu aracılığıyla Internet 'e dallan.
--   Bir üçüncü taraf iş ortağı teklifi aracılığıyla Internet 'e dallan, Özel trafiğin geri kalanı (bağlı olan tarafa bağlı bileşen, bağlı bileşen, Dalla dallar) Azure Güvenlik Duvarı aracılığıyla.
-
-Aşağıdaki senaryo desteklenmez:
-
-- Bir iş ortağı sunumu aracılığıyla Internet 'e VNet, özel trafik için Azure Güvenlik Duvarı ile birleştirilemez. Aşağıdaki sınırlamalara bakın.
-
-## <a name="current-limitations"></a>Geçerli sınırlamalar
-
-- VNet 'Ten Internet 'e yönelik olarak, özel trafik için Azure Güvenlik Duvarı ve Internet trafiği için bir iş ortağı teklifi ekleme karıştıramazsınız. Güvenli sanal hub 'da Azure Güvenlik Duvarı 'na veya bir üçüncü taraf güvenlik iş ortağı teklifine Internet trafiği gönderebilirsiniz, ancak ikisini birden kullanamazsınız. 
-- Her sanal hub için en çok bir güvenlik ortağı dağıtabilirsiniz. Sağlayıcıyı değiştirmeniz gerekiyorsa, mevcut ortağı kaldırmalı ve yeni bir tane eklemeniz gerekir.
+- Azure Güvenlik Duvarı aracılığıyla bir güvenlik iş ortağı sağlayıcısı ve diğer trafik (bağlı ağa bağlı, dala bağlı, şube ve şube) aracılığıyla Internet 'e VNet/dalı.
+- Güvenlik iş ortağı sağlayıcısı aracılığıyla VNet/Internet 'e dallan
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Güvenli sanal hub 'larda Internet trafiği Filtreleme için en iyi uygulamalar
 
@@ -75,8 +62,7 @@ Office 365 için, başarılı bir kullanıcı deneyimi için ağ gecikme süresi
 
 [Office 365 ağ bağlantısı ilkeleri](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) , anahtar Office 365 ağ bağlantılarının Kullanıcı dalından veya mobil cihazdan yerel olarak yönlendirilmesi için çağrı ve doğrudan Internet üzerinden Microsoft 'un sahip olduğu en yakın Microsoft ağ iletişim noktası.
 
-Ayrıca, Office 365 bağlantılarının gizlilik açısından güçlü şekilde şifrelenmesi ve performans nedenleriyle verimli, özel protokoller kullanılması gerekir. Bu, bu bağlantıları geleneksel ağ düzeyi güvenlik çözümlerine tabi hale getirir. Bu nedenlerden dolayı, müşterilerin Azure üzerinden trafiği geri göndermeden önce doğrudan dallardan Office 365 trafiği göndermesini öneririz. Microsoft, Azure ve Office 365 ile tümleşen birçok SD-WAN çözümü sağlayıcısıyla işbirliği yaptı ve müşterilerin Office 365 Direct ve yerel Internet kırılımı etkinleştirmesini kolaylaştırır. Ayrıntılar için bkz. [sanal WAN aracılığıyla O365 ilkelermi ayarlamak nasıl yaparım??](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
-
+Ayrıca, Office 365 bağlantılarının gizliliği için şifrelenmesi ve performans nedenleriyle verimli, özel protokoller kullanılması gerekir. Bu, bu bağlantıları geleneksel ağ düzeyi güvenlik çözümlerine tabi hale getirir. Bu nedenlerden dolayı, müşterilerin Azure üzerinden trafiği geri göndermeden önce doğrudan dallardan Office 365 trafiği göndermesini öneririz. Microsoft, Azure ve Office 365 ile tümleşen birçok SD-WAN çözümü sağlayıcısıyla işbirliği yaptı ve müşterilerin Office 365 Direct ve yerel Internet kırılımı etkinleştirmesini kolaylaştırır. Ayrıntılar için bkz. [sanal WAN aracılığıyla O365 ilkelermi ayarlamak nasıl yaparım??](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

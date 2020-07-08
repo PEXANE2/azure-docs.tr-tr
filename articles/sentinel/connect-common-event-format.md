@@ -1,6 +1,6 @@
 ---
 title: CEF verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
-description: CEF verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Bir Linux makinesini proxy olarak kullanarak Azure Sentinel 'e ortak olay biçimi (CEF) iletileri gönderen bir dış çözümü bağlayın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563938"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -42,7 +42,7 @@ Alternatif olarak, başka bir bulutta veya şirket içi bir makinede bir VM kull
  ![Şirket içi CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/linux/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
 

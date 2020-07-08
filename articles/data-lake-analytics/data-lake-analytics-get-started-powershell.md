@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: 8b176434ce450382cc6463e7d21d341a74581ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f59a8df1031affb7cd3ca3c64ad67514e91f1c9d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71316604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564815"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell'i kullanarak Azure Data Lake Analytics ile çalışmaya başlama
 
@@ -48,7 +48,7 @@ Connect-AzAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 Başarılı olması halinde bu komutun çıkışı şu metin gibi görünür:
 
-```
+```text
 Environment           : AzureCloud
 Account               : joe@contoso.com
 TenantId              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

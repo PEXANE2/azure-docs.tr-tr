@@ -1,24 +1,21 @@
 ---
-title: Power BI ile bir bilgi deposuna (Önizleme) bağlanma
+title: Power BI ile bir bilgi deposuna bağlanma
 titleSuffix: Azure Cognitive Search
-description: Analiz ve araştırma için Power BI bir Azure Bilişsel Arama bilgi deposu (Önizleme) bağlayın.
+description: Analiz ve araştırma için Power BI bir Azure Bilişsel Arama bilgi deposu bağlayın.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/30/2020
+ms.openlocfilehash: 438d8cbc4bf03fa9e03d0d2e1920522768ba9127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858824"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565334"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
-
-> [!IMPORTANT] 
-> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğrenin. Şablonlarla daha hızlı çalışmaya başlayabilir veya sıfırdan özel bir pano oluşturabilirsiniz. Aşağıdaki kısa videoda, Azure Bilişsel Arama Power BI ile birlikte kullanarak deneyiminizi nasıl zenginleştirebilirsiniz.
 

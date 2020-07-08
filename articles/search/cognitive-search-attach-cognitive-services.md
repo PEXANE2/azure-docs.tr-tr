@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 301f77d4eba7b1a63dd49de280de252bd9af1956
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564438"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir beceri bilişsel hizmetler kaynağı iliştirme 
 
@@ -113,7 +113,7 @@ Program aracılığıyla beceri tanımlarken, `cognitiveServices` beceri öğesi
 Aşağıdaki örnekte bu desenler gösterilmektedir. `cognitiveServices`Tanımın sonundaki bölüme dikkat edin.
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```

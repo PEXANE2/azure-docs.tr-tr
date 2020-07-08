@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Azure Active Directory verilerini Azure Sentinel 'e bağlamayı öğrenin.
+description: Azure Active Directory verileri nasıl toplayacağınızı ve Azure AD oturum açma günlüklerini ve denetim günlüklerini Azure Sentinel 'de nasıl toplayacağınızı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5ec8a37a0c782a5426b87f785af2d047ca35aa22
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 37106517c47c86f4a4a562eebd6d120e31e22334
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564531"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Azure Active Directory verileri bağlama (Azure AD)
 
