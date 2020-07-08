@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84047527"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Ölçeği genişletilen bulut veritabanları arasında veri taşıma
@@ -141,7 +140,7 @@ Bölünmüş birleştirme hizmeti paketi bir çalışan rolü ve bir Web rolü i
 
 - **Kaynak aralığı (bölme ve birleştirme)**
 
-  Bölünmüş ve birleştirme işlemi, düşük ve yüksek anahtarını kullanarak bir aralığı işler. Sınırsız bir yüksek anahtar değeri olan bir işlem belirtmek için, "yüksek anahtar en yüksek" onay kutusunu işaretleyin ve yüksek anahtar alanını boş bırakın. Belirttiğiniz Aralık anahtarı değerlerinin, parça Haritalarınızın eşlemesiyle bir eşleme ve sınırlarının tam olarak eşleşmesi gerekmez. Tüm hizmette herhangi bir Aralık sınırı belirtmezseniz, en yakın aralığı sizin için otomatik olarak çıkarmaz. Belirli bir parça eşlemesindeki geçerli eşlemeleri almak için GetMappings. ps1 PowerShell betiğini kullanabilirsiniz.
+  Bölünmüş ve birleştirme işlemi, düşük ve yüksek anahtarını kullanarak bir aralığı işler. Sınırsız bir yüksek anahtar değeri olan bir işlem belirtmek için, "yüksek anahtar en yüksek" onay kutusunu işaretleyin ve yüksek anahtar alanını boş bırakın. Belirttiğiniz Aralık anahtarı değerlerinin, parça Haritalarınızın eşlemesiyle bir eşleme ve sınırlarının tam olarak eşleşmesi gerekmez. Tüm hizmette herhangi bir Aralık sınırı belirtmezseniz, en yakın aralığı sizin için otomatik olarak çıkarmaz. Belirli bir parça eşlemesindeki geçerli eşlemeleri almak için GetMappings.ps1 PowerShell betiğini kullanabilirsiniz.
 
 - **Bölünmüş kaynak davranışı (bölünmüş)**
 

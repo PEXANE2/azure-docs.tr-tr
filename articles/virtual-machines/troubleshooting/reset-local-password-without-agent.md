@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021271"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Çevrimdışı Azure VM için yerel Windows parolasını sıfırlama
@@ -45,7 +44,7 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](res
 
 1. Etkilenen VM 'nin işletim sistemi diski için bir anlık görüntü alın, anlık görüntüden bir disk oluşturun ve ardından diski bir sorun giderme VM 'sine bağlayın. Daha fazla bilgi için, [Azure Portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek WINDOWS VM sorunlarını giderme](troubleshoot-recovery-disks-portal-windows.md)bölümüne bakın.
 2. Uzak Masaüstü kullanarak sorun giderme sanal makinesine bağlanın.
-3. `gpt.ini` `\Windows\System32\GroupPolicy` Kaynak sanal makinenin sürücüsünde oluşturun (GPT. ini varsa, GPT. ini. bak olarak yeniden adlandırın):
+3. `gpt.ini` `\Windows\System32\GroupPolicy` Kaynak sanal makinenin sürücüsünde oluşturun (gpt.ini varsa, gpt.ini. bak olarak yeniden adlandırın):
    
    > [!WARNING]
    > Sorun giderme sanal makinesi için işletim sistemi sürücüsü olan C:\Windows ' da aşağıdaki dosyaları yanlışlıkla oluşturduğunuzdan emin olun. Kaynak VM 'niz için bir veri diski olarak bağlı olan işletim sistemi sürücüsünde aşağıdaki dosyaları oluşturun.
@@ -59,7 +58,7 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](res
      Version=1
      ```
      
-     ![GPT. ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     ![gpt.ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
 4. `scripts.ini`İçinde oluşturun `\Windows\System32\GroupPolicy\Machine\Scripts\` . Gizli klasörlerin gösterildiğinden emin olun. Gerekirse, `Machine` veya `Scripts` klasörlerini oluşturun.
    
@@ -71,7 +70,7 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](res
      0Parameters=
      ```
      
-     ![Scripts. ini oluşturma](./media/reset-local-password-without-agent/create-scripts-ini.png)
+     ![scripts.ini oluştur](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
 5. `FixAzureVM.cmd` `\Windows\System32` `<username>` Ve `<newpassword>` değerlerini kendi değerlerinizle değiştirerek aşağıdaki içeriklerle oluşturun:
    
@@ -96,9 +95,9 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](res
     * %Windir%\System32 adresinden
       * FixAzureVM. cmd dosyasını Kaldır
     * %Windir%\system32\groupilkemachıne\ KomutDosyaları
-      * Scripts. ini dosyasını Kaldır
+      * scripts.ini kaldır
     * %Windir%\System32\GroupPolicy öğesinden
-      * GPT. ini dosyasını kaldırın (GPT. ini daha önce vardı ve GPT. ini. bak olarak yeniden adlandırdıysanız,. bak dosyasını tekrar GPT. ini olarak yeniden adlandırın)
+      * gpt.ini kaldırın (gpt.ini daha önce varsa ve gpt.ini. bak olarak yeniden adlandırdıysanız,. bak dosyasını tekrar gpt.ini olarak yeniden adlandırın)
 
 ## <a name="detailed-steps-for-classic-vm"></a>Klasik VM için ayrıntılı adımlar
 
@@ -163,7 +162,7 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](htt
      Version=1
      ```
      
-     ![GPT. ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     ![gpt.ini oluştur](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
 5. `scripts.ini`İçinde oluşturun `\Windows\System32\GroupPolicy\Machines\Scripts\` . Gizli klasörlerin gösterildiğinden emin olun. Gerekirse, `Machine` veya `Scripts` klasörlerini oluşturun.
    
@@ -175,7 +174,7 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](htt
      0Parameters=
      ```
      
-     ![Scripts. ini oluşturma](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
+     ![scripts.ini oluştur](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
 6. `FixAzureVM.cmd` `\Windows\System32` `<username>` Ve `<newpassword>` değerlerini kendi değerlerinizle değiştirerek aşağıdaki içeriklerle oluşturun:
    

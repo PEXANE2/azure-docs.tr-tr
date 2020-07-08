@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84046988"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu
@@ -47,8 +46,8 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 * İçinde tablo oluşturabileceğiniz herhangi bir veritabanı.
   
   * İsteğe bağlı olarak, dakikalar içinde [bir **AdventureWorksLT** demo veritabanı oluşturabilirsiniz](single-database-create-quickstart.md) .
-* SQL Server Management Studio (SSMS. exe), en son aylık güncelleştirme sürümünü idealdir.
-  En son SSMS. exe ' yi şuradan indirebilirsiniz:
+* SQL Server Management Studio (ssms.exe), ideal olarak en son aylık güncelleştirme sürümü.
+  En son ssms.exe şuradan indirebilirsiniz:
   
   * [SQL Server Management Studio indirme](https://msdn.microsoft.com/library/mt238290.aspx)başlıklı konu.
   * [İndirmenin doğrudan bağlantısı.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -220,7 +219,7 @@ GO
 
 Sonuçları görüntülemek için **target_data_XML**sütun başlığı altındaki hücreyi tıkladık.
 
-Ardından sonuçlar bölmesinde, sütun üst bilgisi **target_data_XML**altındaki hücreyi tıkladık. Bu, SSMS. exe ' de, sonuç hücresinin içeriğinin XML olarak görüntülendiği başka bir dosya sekmesi oluşturmuştur.
+Ardından sonuçlar bölmesinde, sütun üst bilgisi **target_data_XML**altındaki hücreyi tıkladık. Bu, sonuç hücresinin içeriğinin XML olarak görüntülendiği ssms.exe başka bir dosya sekmesi oluşturulmasını ister.
 
 Çıktı aşağıdaki blokta gösterilmiştir. Uzun görünüyor ancak yalnızca iki **\<event>** öğe.
 

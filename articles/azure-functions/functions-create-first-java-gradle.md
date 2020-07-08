@@ -6,10 +6,9 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996661"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle kullanma
@@ -175,4 +174,4 @@ HTTP ile tetiklenen bir işlev içeren bir Java işlevleri projesi oluşturdunuz
 
 
 [Azure CLI]: /cli/azure
-[Azure portalı]: https://portal.azure.com
+[Azure portalındaki]: https://portal.azure.com

@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017673"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory Web etkinliği
@@ -27,7 +26,7 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 > [!NOTE]
 > Web etkinliği, yalnızca genel olarak gösterilen URL 'Leri çağırabilir. Özel bir sanal ağda barındırılan URL 'Ler için desteklenmez.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -68,15 +67,15 @@ Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | Web etkinliğinin adı | Dize | Yes
-tür | **Webactivity**olarak ayarlanmalıdır. | Dize | Yes
-method | Hedef uç nokta için REST API yöntemi. | Dize. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Yes
-url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır. | Yes
+name | Web etkinliğinin adı | Dize | Evet
+tür | **Webactivity**olarak ayarlanmalıdır. | Dize | Evet
+method | Hedef uç nokta için REST API yöntemi. | Dize. <br/><br/>Desteklenen türler: "GET", "POST", "PUT" | Evet
+url | Hedef uç nokta ve yol | Dize (veya dize resultType 'ı olan ifade). Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır. | Evet
 bilgisinde | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Dize (veya dize resultType 'ı olan ifade) | Evet, Content-Type üst bilgisi gereklidir. `"headers":{ "Content-Type":"application/json"}`
 body | Uç noktaya gönderilen yükü temsil eder.  | Dize (veya dize resultType 'ı olan ifade). <br/><br/>İstek [yükü şeması](#request-payload-schema) 'nda istek yükü şeması bölümüne bakın. | POST/PUT yöntemleri için gereklidir.
-kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | No
-veri kümeleri | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Yes
-linkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Yes
+kimlik doğrulaması | Uç noktayı çağırmak için kullanılan kimlik doğrulama yöntemi. Desteklenen türler "Basic, or ClientCertificate" dir. Daha fazla bilgi için bkz. [kimlik doğrulama](#authentication) bölümü. Kimlik doğrulaması gerekmiyorsa, bu özelliği dışlayın. | Dize (veya dize resultType 'ı olan ifade) | Hayır
+veri kümeleri | Uç noktaya geçirilen veri kümelerinin listesi. | Veri kümesi başvuruları dizisi. Boş bir dizi olabilir. | Evet
+linkedServices | Uç noktaya geçirilen bağlı hizmetlerin listesi. | Bağlı hizmet başvuruları dizisi. Boş bir dizi olabilir. | Evet
 
 > [!NOTE]
 > Web etkinliğinin çağırdığı REST uç noktaları JSON türünde bir yanıt döndürmelidir. Bitiş noktasından yanıt almadıysanız etkinlik, bir hatayla 1 dakika sonra zaman aşımına uğrayacaktır.
@@ -95,7 +94,7 @@ Aşağıdaki tabloda JSON içeriği için gereksinimler gösterilmektedir:
 
 Aşağıda, Web etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
 
-### <a name="none"></a>Yok
+### <a name="none"></a>Hiçbiri
 
 Kimlik doğrulaması gerekmiyorsa, "Authentication" özelliğini eklemeyin.
 

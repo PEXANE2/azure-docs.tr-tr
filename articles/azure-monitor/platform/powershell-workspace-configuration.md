@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: a03fcf5748eaa215aa90b70dbd11e788e8beb3e4
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83860979"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanı oluşturma ve yapılandırma
@@ -197,7 +196,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 
 Yukarıdaki örnekte regexDelimiter, \\ yeni satır için "n" olarak tanımlandı. Günlük sınırlayıcısı de bir zaman damgası olabilir.  Desteklenen biçimler şunlardır:
 
-| Biçimlendir | \\Bir Regex uygulamasında test etmek \ ' a düşürüyorsam, JSON Regex biçimi her bir Standart Regex için iki tane kullanır. \\ | | |
+| Biçim | \\Bir Regex uygulamasında test etmek \ ' a düşürüyorsam, JSON Regex biçimi her bir Standart Regex için iki tane kullanır. \\ | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |

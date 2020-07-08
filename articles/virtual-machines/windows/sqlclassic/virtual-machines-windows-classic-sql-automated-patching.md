@@ -16,10 +16,9 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014664"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure sanal makinelerinde SQL Server için otomatik düzeltme eki uygulama (klasik)
@@ -82,7 +81,7 @@ Aşağıdaki örnekte, PowerShell, mevcut bir SQL Server VM otomatik düzeltme e
 
 Bu örneğe bağlı olarak, aşağıdaki tabloda hedef Azure VM üzerinde pratik etki açıklanmaktadır:
 
-| Parametre | Etki |
+| Parametre | Efekt |
 | --- | --- |
 | **DayOfWeek** |Her Perşembe için düzeltme eki yüklendi. |
 | **MaintenanceWindowStartingHour** |Güncelleştirmeler 11:00:00:00 ile başlatılır. |

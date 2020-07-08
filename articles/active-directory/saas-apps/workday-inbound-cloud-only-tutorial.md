@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041816"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Öğretici: Workday 'yi Azure AD Kullanıcı sağlaması için yapılandırma
@@ -119,9 +118,9 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Evet |
 
       > [!NOTE]
      > URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri (WWS) v 21.1 kullanır ve uygulamayla birlikte gelen varsayılan XPATH API ifadelerinde hiçbir değişiklik yapılması gerekmez. Belirli bir WWS API sürümünü kullanmak için, URL 'de sürüm numarasını belirtin <br>

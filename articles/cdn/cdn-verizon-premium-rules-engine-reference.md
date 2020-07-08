@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83872538"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Verizon Premium kuralları altyapı başvurusundan Azure CDN
@@ -75,7 +74,7 @@ Bir ilkenin üretim veya hazırlama ortamına uygulanabileceğini içeren iş ak
 |Dağıtım Isteği Incelemesi   |    <br>Dağıtım isteği, otomatik doğrulama ve hata algılamayı daha düşük hale gelir.</br><br>Dağıtım isteklerinin çoğunluğu otomatik olarak onaylansa da, daha karmaşık ilkeler için el ile gözden geçirme gerekir.</br>   |
 |İlke dağıtımı ([hazırlama](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging))   |  <br> Hazırlama ortamına bir dağıtım isteği onaylanınca, hazırlama ortamına bir ilke uygulanır. Bu ortam, bir ilkenin sahte site trafiğine karşı sınanmasını sağlar.</br><br>İlke canlı site trafiğine uygulanmaya hazırsa, üretim ortamı için yeni bir dağıtım isteği gönderilmesi gerekir.</br>      |
 |İlke dağıtımı ([Üretim](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti))   |  Üretim ortamına bir dağıtım isteği onaylandıktan sonra, üretim ortamına bir ilke uygulanır. Bu ortam, bir ilkenin CDN 'nin canlı trafiği nasıl işleyeceğini belirlemek için son yetkili görevi görmesini sağlar.     |
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Özel karakterlerin ele alındığı şekilde, eşleşme koşulunun veya özelliğin metin değerlerini nasıl işleydiğine göre farklılık gösterir. Bir eşleştirme koşulu veya özelliği, aşağıdaki yollarla metni yorumlayabilir:
 
@@ -99,7 +98,7 @@ Karakter | Açıklama
 % | Bir yüzde sembolü, URL kodlamasını göstermek için kullanılır (örneğin, `%20` ).
 \* | Yıldız işareti bir veya daha fazla karakteri temsil eden bir joker karakterdir.
 Alan | Boşluk karakteri, bir eşleşme koşulunun belirtilen değerlerden veya desenlerden herhangi biri tarafından karşılanamayacağını gösterir.
-deeri | Tek bir teklifin özel anlamı yoktur. Ancak, bir değerin değişmez değer olarak değerlendirilip değerlendirilmeyeceğini göstermek için bir dizi tek tırnak kullanılır. Aşağıdaki yollarla kullanılabilir:<br><br/>-Belirtilen değerin karşılaştırma değerinin herhangi bir bölümüyle eşleşmesi durumunda eşleşme koşulunun karşılanmasına izin verir.  Örneğin, `'ma'` aşağıdaki dizelerin herhangi biriyle eşleşir: <br/><br/>/Business/**ma**rathon/Asset.htm<br/>**ma**p. gif<br/>/Business/Template. **ma**p<br /><br />-Özel bir karakterin sabit karakter olarak belirtilmesini sağlar. Örneğin, bir boşluk karakterini tek tırnak (yani, veya) kümesi içinde çevreleyerek bir sabit boşluk karakteri belirtebilirsiniz `' '` `'sample value'` .<br/>-Boş değer belirtilmesini sağlar. Bir dizi tek tırnak (' ') belirterek boş bir değer belirtin.<br /><br/>**Önemli**<br/>-Belirtilen değer bir joker karakter içermiyorsa, otomatik olarak değişmez değer olarak değerlendirilir, bu da tek tırnak kümesini belirtmek için gerekli değildir.<br/>-Ters eğik çizgi bu tablodaki başka bir karakterle eşleşmezse, bir dizi tek tırnak içinde belirtildiğinde yok sayılır.<br/>-Sabit karakter olarak özel bir karakter belirtmenin diğer bir yolu da bir ters eğik çizgi (yani,) kullanarak kaçış yöntemidir `\` .
+deeri | Tek bir teklifin özel anlamı yoktur. Ancak, bir değerin değişmez değer olarak değerlendirilip değerlendirilmeyeceğini göstermek için bir dizi tek tırnak kullanılır. Aşağıdaki yollarla kullanılabilir:<br><br/>-Belirtilen değerin karşılaştırma değerinin herhangi bir bölümüyle eşleşmesi durumunda eşleşme koşulunun karşılanmasına izin verir.  Örneğin, `'ma'` aşağıdaki dizelerin herhangi biriyle eşleşir: <br/><br/>/Business/**ma**oython/asset.htm<br/>**ma**p.gif<br/>/Business/Template. **ma**p<br /><br />-Özel bir karakterin sabit karakter olarak belirtilmesini sağlar. Örneğin, bir boşluk karakterini tek tırnak (yani, veya) kümesi içinde çevreleyerek bir sabit boşluk karakteri belirtebilirsiniz `' '` `'sample value'` .<br/>-Boş değer belirtilmesini sağlar. Bir dizi tek tırnak (' ') belirterek boş bir değer belirtin.<br /><br/>**Önemli:**<br/>-Belirtilen değer bir joker karakter içermiyorsa, otomatik olarak değişmez değer olarak değerlendirilir, bu da tek tırnak kümesini belirtmek için gerekli değildir.<br/>-Ters eğik çizgi bu tablodaki başka bir karakterle eşleşmezse, bir dizi tek tırnak içinde belirtildiğinde yok sayılır.<br/>-Sabit karakter olarak özel bir karakter belirtmenin diğer bir yolu da bir ters eğik çizgi (yani,) kullanarak kaçış yöntemidir `\` .
 
 ### <a name="regular-expressions"></a>Normal ifadeler
 

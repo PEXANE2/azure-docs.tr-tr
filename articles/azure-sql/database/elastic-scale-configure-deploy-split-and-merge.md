@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045651"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Parçalı veritabanları arasında veri taşımak için bölünmüş birleştirme hizmeti dağıtma
@@ -27,7 +26,7 @@ Bölünmüş birleştirme aracı, verileri parçalı veritabanları arasında ta
 
 1. [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)'den en son NuGet sürümünü indirin.
 
-1. Bir komut istemi açın ve NuGet. exe dosyasını indirdiğiniz dizine gidin. İndirme, PowerShell komutlarını içerir.
+1. Bir komut istemi açın ve nuget.exe indirdiğiniz dizine gidin. İndirme, PowerShell komutlarını içerir.
 
 1. En son bölünmüş birleştirme paketini şu komutla güncel dizine indirin:
 
@@ -176,9 +175,9 @@ Dağıtım ve ortamınız, eklenen örnek PowerShell betikleri çalıştırılar
 
 Dahil edilen betik dosyaları şunlardır:
 
-1. *Setupsamplesplitmergeenvironment. ps1* -bir test veri katmanını bölünmüş/birleştirme için ayarlar (ayrıntılı açıklama için aşağıdaki tabloya bakın)
-2. *Executesamplesplitmerge. ps1* -test işlemlerini test veri katmanında yürütür (ayrıntılı açıklama için aşağıdaki tabloya bakın)
-3. *GetMappings. ps1* -parça eşlemelerinin geçerli durumunu yazdıran en üst düzey örnek komut dosyası.
+1. *SetupSampleSplitMergeEnvironment.ps1* -bir test veri katmanını bölünmüş/birleştirme için ayarlar (ayrıntılı açıklama için aşağıdaki tabloya bakın)
+2. *ExecuteSampleSplitMerge.ps1* -test verileri katmanında test işlemlerini yürütür (ayrıntılı açıklama için aşağıdaki tabloya bakın)
+3. Parçalı eşlemelerin geçerli durumunu yazdıran *GetMappings.ps1* üst düzey örnek betiği.
 4. Shardmanagement *. psm1* -SHARDMANAGEMENT API 'sini sarmalayan yardım betiği
 5. SQL veritabanında veritabanı oluşturmak ve yönetmek için *Sqldatabaseyardımcıları. psm1* -yardımcı betiği
 
@@ -188,7 +187,7 @@ Dahil edilen betik dosyaları şunlardır:
        <th>Adımlar</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
        <td>1. Parça eşleme Yöneticisi veritabanı oluşturur</td>
      </tr>
      <tr>
@@ -210,7 +209,7 @@ Dahil edilen betik dosyaları şunlardır:
        <th>Adımlar</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
        <td>1. Bölünmüş birleştirme hizmeti Web ön ucu için bölünmüş bir istek gönderir ve bu, verileri ilk parçadan ikinci parçaya böler.</td>
      </tr>
      <tr>
@@ -231,13 +230,13 @@ Dahil edilen betik dosyaları şunlardır:
 2. Parça eşleme Yöneticisi ve parçaları oluşturulacak bir sunucu (veya var olan bir sunucu seçin) oluşturun.
 
    > [!NOTE]
-   > *Setupsamplesplitmergeenvironment. ps1* betiği, betiği basit tutmak için bu veritabanlarını varsayılan olarak aynı sunucuda oluşturur. Bu, bölünmüş birleştirme hizmetinin kendisi için bir kısıtlamadır.
+   > *SetupSampleSplitMergeEnvironment.ps1* betiği, betiği basit tutmak için bu veritabanlarını varsayılan olarak aynı sunucuda oluşturur. Bu, bölünmüş birleştirme hizmetinin kendisi için bir kısıtlamadır.
 
    Bölünmüş birleştirme hizmetinin verileri taşıması ve parça haritasını güncelleştirmesi için, DBs 'ye okuma/yazma erişimiyle birlikte bir SQL kimlik doğrulaması oturum açma gerekir. Bölünmüş birleştirme hizmeti bulutta çalıştığından, bu, şu anda tümleşik kimlik doğrulamasını desteklememektedir.
 
    Sunucunun, bu betikleri çalıştıran makinenin IP adresinden erişime izin verecek şekilde yapılandırıldığından emin olun. Bu ayarı, SQL Server/güvenlik duvarları ve sanal ağlar/Istemci IP adresleri altında bulabilirsiniz.
 
-3. Örnek ortamı oluşturmak için *Setupsamplesplitmergeenvironment. ps1* betiğini yürütün.
+3. Örnek ortamı oluşturmak için *SetupSampleSplitMergeEnvironment.ps1* betiği yürütün.
 
    Bu betiği çalıştırmak, parça eşleme Yöneticisi veritabanında ve parçalardaki tüm mevcut parça eşleme yönetimi veri yapılarını temizler. Parça haritasını veya parçaları yeniden başlatmak isterseniz betiği yeniden çalıştırmak yararlı olabilir.
 
@@ -248,14 +247,14 @@ Dahil edilen betik dosyaları şunlardır:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-4. Örnek ortamda mevcut olan eşlemeleri görüntülemek için GetMappings. ps1 betiğini yürütün.
+4. Örnek ortamda mevcut olan eşlemeleri görüntülemek için Getmappings.ps1 betiğini yürütün.
 
    ```cmd
    .\GetMappings.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Bölünmüş bir işlem yürütmek için *Executesamplesplitmerge. ps1* betiğini yürütün (ilk parça üzerindeki verilerin ikinci parçaya taşınması) ve ardından bir birleştirme işlemi (verileri ilk parça üzerine geri taşıyarak). TLS 'yi yapılandırdıysanız ve HTTP uç noktasını devre dışı bıraktıysanız, bunun yerine https://uç noktasını kullandığınızdan emin olun.
+5. Bölünmüş bir işlem yürütmek için *ExecuteSampleSplitMerge.ps1* betiğini yürütün (ilk parça üzerindeki verilerin ikinci parçaya taşınması) ve ardından bir birleştirme işlemi (verileri ilk parçaya geri taşıyarak). TLS 'yi yapılandırdıysanız ve HTTP uç noktasını devre dışı bıraktıysanız, bunun yerine https://uç noktasını kullandığınızdan emin olun.
 
     Örnek komut satırı:
 
@@ -324,7 +323,7 @@ Bölünmüş birleştirme işlemi gerçekleştirmek için, taşınmasını isted
 4. Bir **Shardmapmanager** nesnesine bir başvuru alın ve **Getıfermainfocollection**' ı çağırın.
 5. Parça eşleme adını sağlayarak, **Fermainınfo** ' ı bir **Fermainfocollection**öğesine ekleyin.
 
-SetupSampleSplitMergeEnvironment. ps1 betiğiyle buna örnek olarak görünebilirler.
+SetupSampleSplitMergeEnvironment.ps1 betiğiyle Bu örnek görünebilir.
 
 Bölünmüş birleştirme hizmeti, sizin için hedef veritabanını (veya veritabanındaki herhangi bir tablo için şemayı) oluşturmaz. Hizmete bir istek gönderilmeden önce bunların önceden oluşturulması gerekir.
 

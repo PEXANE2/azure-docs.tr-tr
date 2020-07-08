@@ -16,10 +16,9 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020889"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Sanal Makineler’de SQL Server ile Azure Premium Depolama kullanma
@@ -1249,7 +1248,7 @@ IP adresini eklemek için bkz. ek, 14. adım.
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Azure Premium Depolama](../disks-types.md)
-* [Sanal makineler](https://azure.microsoft.com/services/virtual-machines/)
+* [Sanal Makineler](https://azure.microsoft.com/services/virtual-machines/)
 * [Azure sanal makineler 'de SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->

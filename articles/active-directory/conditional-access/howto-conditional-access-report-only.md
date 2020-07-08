@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83994978"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma
@@ -30,7 +29,7 @@ Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırmak için:
 1. **Yeni ilke**' yi seçin.
 1. İlke koşullarını ve gereken izin denetimlerini gerekli şekilde yapılandırın.
 1. **Ilkeyi etkinleştir** altında, değiştirme modunu **yalnızca rapor** moduna ayarlayın.
-1. **Kaydet** 'i seçin
+1. **Kaydet**'i seçin
 
 > [!TIP]
 > Mevcut bir ilkenin **ilke** durumunu **Açık** iken **yalnızca rapor** olarak düzenleyebilirsiniz ancak bunu yaptığınızda ilke zorlaması devre dışı bırakılır. 

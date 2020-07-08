@@ -13,10 +13,9 @@ ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
 ms.openlocfilehash: 3acbdd5c933bc2010a26e2039ece378774055d30
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84050404"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>DNS diğer adı için PowerShell Azure SQL veritabanı
@@ -59,7 +58,7 @@ Kullanılan cmdlet 'ler şunlardır:
 
 Yüklemek veya yükseltmek için bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps).
 
-`Get-Module -ListAvailable Az`Sürümü bulmak için *PowerShell \_ Ise. exe*' de kullanın.
+`Get-Module -ListAvailable Az`Sürümü bulmak için *PowerShell \_ise.exe*içinde kullanın.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';

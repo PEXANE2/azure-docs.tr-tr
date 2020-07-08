@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1adbb0961ab610db936107f2fff210f4acecf2ed
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83883103"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için HootSuite yapılandırma
@@ -98,7 +97,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
 

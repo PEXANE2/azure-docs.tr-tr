@@ -9,10 +9,9 @@ description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş s�
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996933"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma
@@ -67,7 +66,7 @@ Bu komutları çalıştırdıktan sonra, seçilen küme ve dev alanı sonraki CL
 
 Visual Studio kullanıyorsanız, mevcut bir proje tarafından kullanılan kümeyi aşağıdaki adımlarla değiştirebilirsiniz:
 
-1. Projenizi Visual Studio 'da açın.
+1. Projenizi Visual Studio’da açın.
 1. Çözüm Gezgini ' de proje adına sağ tıklayın ve **Özellikler** ' e tıklayın.
 1. Sol bölmede **Hata Ayıkla** ' ya tıklayın.
 1. Hata ayıklama özellikleri sayfasında, **profil** açılır listesine tıklayın ve **Azure dev Spaces**' yi seçin.

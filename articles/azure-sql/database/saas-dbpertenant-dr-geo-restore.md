@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043131"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Bir çok kiracılı SaaS uygulamasını veritabanı yedeklemelerinden kurtarmak için coğrafi geri yükleme kullanın
@@ -172,7 +171,7 @@ Kurtarma işlemi şunları yapar:
 
 Uygulamanın dağıtıldığı bölgede bir kesinti olduğunu düşünün ve kurtarma betiğini çalıştırın:
 
-1. PowerShell ıSE 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiğine aşağıdaki değeri ayarlayın:
+1. PowerShell ıSE 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiği içinde aşağıdaki değeri ayarlayın:
 
     $DemoScenario = 2: coğrafi olarak yedekli yedeklerden geri yükleyerek uygulamayı bir kurtarma bölgesine kurtarın.
 
@@ -207,7 +206,7 @@ Uygulama uç noktası Traffic Manager devre dışı bırakılsa da, uygulama kul
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Kurtarma bölgesinde yeni bir kiracı sağlayın
 Kiracı veritabanları geri yüklenmeden önce bile, kurtarma bölgesinde yeni kiracılar sağlayabilirsiniz. Kurtarma bölgesinde sağlanan yeni kiracı veritabanları, kurtarılan veritabanlarıyla daha sonra yeniden boyar.   
 
-1. PowerShell ıSE 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiğine aşağıdaki özelliği ayarlayın:
+1. PowerShell ıSE 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiği içinde aşağıdaki özelliği ayarlayın:
 
     $DemoScenario = 3: kurtarma bölgesinde yeni bir kiracı sağlayın.
 
@@ -260,7 +259,7 @@ Bu görevde, geri yüklenen kiracı veritabanlarından birini güncelleştirin. 
 
 1. Tarayıcınızda, contoso Concert salonu için olaylar listesini bulun, olaylar arasında ilerleyin ve son olaya, önemli ölçüde dikkat edin.
 
-2. PowerShell ıSE 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiğine aşağıdaki değeri ayarlayın:
+2. PowerShell ıSE 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiği içinde aşağıdaki değeri ayarlayın:
 
     $DemoScenario = 4: kurtarma bölgesindeki bir kiracıdan bir olayı silin.
 
@@ -318,7 +317,7 @@ Kesinti çözümlendiğini ve repama betiğini çalıştırmayı düşünün.
 
 Öğreticiyi takip ediyorsanız, komut dosyası değiştirilmeden oldukları için, özgün bölgedeki fabrikam Cakkkkkisini ve Dogwood Dojo 'yı hemen yeniden etkinleştirir. Daha sonra, değiştirilmiş olduğu için yeni kiracıyı ve contoso Concert salonu 'u yeniden boyar. Komut dosyası aynı zamanda, Havunsalya salonu sağlandığında güncelleştirilmiş olan kataloğu de boyar.
   
-1. PowerShell ıSE 'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiği içinde, katalog eşitleme işleminin hala PowerShell örneğinde çalıştığını doğrulayın. Gerekirse, şu ayarları yaparak yeniden başlatın:
+1. PowerShell ıSE 'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 betiği içinde, katalog eşitleme işleminin hala PowerShell örneğinde çalıştığını doğrulayın. Gerekirse, şu ayarları yaparak yeniden başlatın:
 
     $DemoScenario = 1: kiracı sunucusu, havuz ve veritabanı yapılandırma bilgilerini katalogla eşitlemeye başlayın.
 

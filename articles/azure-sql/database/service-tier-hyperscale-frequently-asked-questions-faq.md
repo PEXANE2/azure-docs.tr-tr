@@ -12,10 +12,9 @@ ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
 ms.openlocfilehash: d5faa08b0b493ac9b7fc03cd15c4747c3e602f02
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84049921"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
@@ -45,12 +44,12 @@ Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığ
 | **En iyisi** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türü** ||Tek veritabanı/elastik havuz/yönetilen örnek | Tek veritabanı | Tek veritabanı/elastik havuz/yönetilen örnek |
 | **İşlem boyutu**|Tek veritabanı/elastik havuz * | 1-80 sanal çekirdek | 1-80 sanal çekirdek * | 1-80 sanal çekirdek |
-| |SQL Yönetilen Örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | Yok | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
+| |SQL Yönetilen Örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | YOK | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
 | **Depolama türü** | Tümü |Premium uzak depolama (örnek başına) | Yerel SSD Önbelleği (örnek başına) ile birlikte bağlanmış depolama | Süper hızlı yerel SSD depolaması (örnek başına) |
 | **Depolama boyutu** | Tek veritabanı/elastik havuz *| 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
-| | SQL Yönetilen Örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
+| | SQL Yönetilen Örnek  | 32 GB – 8 TB | YOK | 32 GB – 4 TB |
 | **IOPS** | Tek veritabanı | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
-| | SQL Yönetilen Örnek | Dosya boyutuna bağlıdır | Yok | 1375 ıOPS/sanal çekirdek |
+| | SQL Yönetilen Örnek | Dosya boyutuna bağlıdır | YOK | 1375 ıOPS/sanal çekirdek |
 |**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, en fazla 4 okuma ölçeği genişletme, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği genişletme, bölge yedekli HA, tam yerel depolama |
 |**Yedeklemeler**|Tümü|RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün)| RA-GRS, 7 günlük bekletme, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün) |
 

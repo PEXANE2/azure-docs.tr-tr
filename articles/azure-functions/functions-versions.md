@@ -4,10 +4,9 @@ description: Azure Işlevleri, çalışma zamanının birden çok sürümünü d
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996729"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
@@ -27,7 +26,7 @@ Aşağıdaki tablo, her çalışma zamanı sürümünde hangi programlama diller
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Daha fazla bilgi için bkz. [Desteklenen diller](supported-languages.md).
+Daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md).
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Belirli bir sürümde Çalıştır
 
@@ -43,7 +42,7 @@ Uygulama yapılandırmasını el ile güncelleştirerek bir "yerinde" yükseltme
 
 Sürüm 2. x ile başlayarak, uygulamanızdaki işlevler tarafından kullanılan belirli Tetikleyiciler ve bağlamalar için uzantıları yüklemelisiniz. Bu HTTP ve Zamanlayıcı Tetikleyicileri için uzantı gerektirmeyen tek özel durum.  Daha fazla bilgi için bkz. [bağlama uzantılarını kaydetme ve yüklemeyi bağlama](./functions-bindings-register.md).
 
-Ayrıca, *function. JSON* veya özellikler arasındaki işlevin öznitelikleri için birkaç değişiklik de vardır. Örneğin, Olay Hub 'ı `path` özelliği şu anda `eventHubName` . Her bağlamaya yönelik belgelerin bağlantıları için [mevcut bağlama tablosuna](#bindings) bakın.
+Ayrıca, *function.jsüzerinde* veya sürümler arasındaki işlevin özniteliklerinde birkaç değişiklik de vardır. Örneğin, Olay Hub 'ı `path` özelliği şu anda `eventHubName` . Her bağlamaya yönelik belgelerin bağlantıları için [mevcut bağlama tablosuna](#bindings) bakın.
 
 ### <a name="changes-in-features-and-functionality-after-version-1x"></a>Sürüm 1. x ' den sonraki özelliklerde ve işlevlerde yapılan değişiklikler
 
@@ -55,15 +54,15 @@ Sürüm 1. x 'ten sonra bazı özellikler kaldırıldı, güncelleştirildi veya
 
 * Sürüm 2. x çalışma zamanı, Web kancası sağlayıcıları için yerleşik destek içermez. Bu değişiklik performansı artırmak için yapılmıştır. HTTP tetikleyicilerini Web kancaları için uç nokta olarak kullanmaya devam edebilirsiniz.
 
-* Ana bilgisayar yapılandırma dosyası (Host. JSON) boş olmalıdır veya dize olmalıdır `"version": "2.0"` .
+* Ana bilgisayar yapılandırma dosyası (host.json) boş olmalıdır veya dizeyi içermelidir `"version": "2.0"` .
 
 * İzlemeyi geliştirmek için, bu ayarı kullanan portaldaki Web Işleri panosu, [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) ayarı kullanılan Azure Application Insights ile değiştirilmiştir [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) . Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
-* Bir işlev uygulamasındaki tüm işlevler aynı dili paylaşmalıdır. Bir işlev uygulaması oluşturduğunuzda, uygulama için bir çalışma zamanı yığını seçmeniz gerekir. Çalışma zamanı yığını, [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) uygulama ayarlarındaki değerle belirtilir. Bu gereksinim, parmak izini ve başlangıç süresini artırmak için eklenmiştir. Yerel olarak geliştirilirken, bu ayarı [Local. Settings. JSON dosyasına](functions-run-local.md#local-settings-file)da dahil etmeniz gerekir.
+* Bir işlev uygulamasındaki tüm işlevler aynı dili paylaşmalıdır. Bir işlev uygulaması oluşturduğunuzda, uygulama için bir çalışma zamanı yığını seçmeniz gerekir. Çalışma zamanı yığını, [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) uygulama ayarlarındaki değerle belirtilir. Bu gereksinim, parmak izini ve başlangıç süresini artırmak için eklenmiştir. Yerel olarak geliştirilirken, bu ayarı [dosyalocal.settings.js](functions-run-local.md#local-settings-file)da dahil etmeniz gerekir.
 
-* Bir App Service planındaki işlevler için varsayılan zaman aşımı 30 dakikaya dönüştürülür. Host. json ' daki [functiontimeout](functions-host-json.md#functiontimeout) ayarını kullanarak, zaman aşımını tekrar sınırsız olarak değiştirebilirsiniz.
+* Bir App Service planındaki işlevler için varsayılan zaman aşımı 30 dakikaya dönüştürülür. host.jsüzerindeki [functiontimeout](functions-host-json.md#functiontimeout) ayarını kullanarak, zaman aşımını tekrar sınırsız olarak değiştirebilirsiniz.
 
-* HTTP eşzamanlılık kısıtlılığı, örnek başına 100 eşzamanlı istek içeren tüketim planı işlevleri için varsayılan olarak uygulanır. Bunu, [`maxConcurrentRequests`](functions-host-json.md#http) Host. JSON dosyasındaki ayarda değiştirebilirsiniz.
+* HTTP eşzamanlılık kısıtlılığı, örnek başına 100 eşzamanlı istek içeren tüketim planı işlevleri için varsayılan olarak uygulanır. Bunu [`maxConcurrentRequests`](functions-host-json.md#http) dosyadaki host.jsayarda değiştirebilirsiniz.
 
 * [.NET Core sınırlamaları](https://github.com/Azure/azure-functions-host/issues/3414)nedeniyle F # Script (. FSX) işlevleri için destek kaldırılmıştır. Derlenen F # işlevleri (. FS) hala desteklenmektedir.
 
@@ -87,7 +86,7 @@ Bir 2. x uygulamasını 3. x ' e yükseltmeden önce dikkat edilecek değişikli
 
 * HTTP istek yüküne artık aracılığıyla erişilemez `context.bindingData.req` .  Bir giriş parametresi olarak, ve ' de erişilebilir olmaya devam edebilir `context.req` `context.bindings` .
 
-* Node. js 8 artık desteklenmemektedir ve 3. x işlevlerinde yürütülecektir.
+* Node.js 8 artık desteklenmemektedir ve 3. x işlevleri içinde yürütülecektir.
 
 #### <a name="net"></a>.NET
 

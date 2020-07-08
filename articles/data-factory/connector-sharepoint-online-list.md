@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83871927"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SharePoint Online listesinden veri kopyalama
@@ -81,14 +80,14 @@ Aşağıdaki özellikler bir SharePoint Online listesi bağlı hizmeti için des
 
 | **Özellik**        | **Açıklama**                                              | **Gerekli** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| tür                | Type özelliği: **Sharepointonlinelist**olarak ayarlanmalıdır.  | Yes          |
-| siteUrl             | SharePoint Online site URL 'si, `https://contoso.sharepoint.com/sites/siteName` ör. | Yes          |
-| Serviceprincipalıd  | Azure Active Directory kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. | Yes          |
-| Servicesprincipalkey | Uygulamanın anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes          |
-| Değerine            | Uygulamanızın bulunduğu kiracı KIMLIĞI.          | Yes          |
-| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | No           |
+| tür                | Type özelliği: **Sharepointonlinelist**olarak ayarlanmalıdır.  | Evet          |
+| siteUrl             | SharePoint Online site URL 'si, `https://contoso.sharepoint.com/sites/siteName` ör. | Evet          |
+| Serviceprincipalıd  | Azure Active Directory kayıtlı uygulamanın uygulama (istemci) KIMLIĞI. | Evet          |
+| Servicesprincipalkey | Uygulamanın anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet          |
+| Değerine            | Uygulamanızın bulunduğu kiracı KIMLIĞI.          | Evet          |
+| connectVia          | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Bu makalenin önceki kısımlarında yer alarak [önkoşulları](#prerequisites)öğrenin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. | Hayır           |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -114,10 +113,10 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin **Type** özelliği, **Sharepointonlinelresource**olarak ayarlanmalıdır. | Yes |
-| tanımlamalıdır | SharePoint Online listesinin adı. | Yes |
+| tür | Veri kümesinin **Type** özelliği, **Sharepointonlinelresource**olarak ayarlanmalıdır. | Evet |
+| tanımlamalıdır | SharePoint Online listesinin adı. | Evet |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -147,11 +146,11 @@ SharePoint Online listesinden veri kopyalamak için, etkinlik **kaynağını** k
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının **Type** özelliği, **Sharepointonlinelistsource**olarak ayarlanmalıdır. | Yes |
-| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | No |
-| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | No |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği, **Sharepointonlinelistsource**olarak ayarlanmalıdır. | Evet |
+| sorgu | Verileri filtrelemek için özel OData sorgu seçenekleri. Örnek: `"$top=10&$select=Title,Number"`. | Hayır |
+| httpRequestTimeout | HTTP isteğinin yanıt alması için zaman aşımı (saniye olarak). Varsayılan değer 300 ' dir (5 dakikadır). | Hayır |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 "activities":[

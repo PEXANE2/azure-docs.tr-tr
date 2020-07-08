@@ -15,10 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014868"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell ile her zaman açık kullanılabilirlik grubunu bir Azure VM üzerinde yapılandırma
@@ -179,7 +178,7 @@ Etki alanı denetleyicisi sunucusu artık başarıyla sağlandı. Ardından, bu 
 ## <a name="configure-the-domain-controller"></a>Etki alanı denetleyicisini yapılandırma
 1. Uzak Masaüstü dosyasını başlatarak etki alanı denetleyicisi sunucusuna bağlanın. Yeni VM oluştururken belirttiğiniz makine yöneticisinin Kullanıcı adı AzureAdmin ve Password **contoso! 000**kullanın.
 2. Yönetici modunda bir PowerShell penceresi açın.
-3. Aşağıdaki **dcpromo 'yu çalıştırın. ** **Corp.contoso.com** etki ALANıNı ayarlamak için exe komutu, d sürücüsündeki veri dizinleriyle birlikte.
+3. **Corp.contoso.com** etki alanını, d sürücüsündeki veri dizinleri ile ayarlamak için aşağıdaki **DCPROMO.EXE** komutunu çalıştırın.
 
         dcpromo.exe `
             /unattend `
@@ -481,7 +480,7 @@ Son olarak, kullanılabilirlik grubunu yapılandırmaya hazırsınız demektir. 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. [Azure VM 'Deki her zaman açık kullanılabilirlik grupları Için yük devretme kümesi oluşturmak Için](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) **CreateAzureFailoverCluster. ps1** öğesini yerel çalışma dizinine indirin. İşlevsel yük devretme kümesi oluşturmanıza yardımcı olması için bu betiği kullanacaksınız. Windows Yük Devretme Kümelemesi 'nin Azure ağıyla nasıl etkileşime girdiği hakkında önemli bilgiler için bkz. [Azure sanal makinelerinde SQL Server Için yüksek kullanılabilirlik ve olağanüstü durum kurtarma](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+7. [Azure VM 'Deki her zaman açık kullanılabilirlik grupları Için yük devretme kümesi oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) **CreateAzureFailoverCluster.ps1** , yerel çalışma dizinine indirin. İşlevsel yük devretme kümesi oluşturmanıza yardımcı olması için bu betiği kullanacaksınız. Windows Yük Devretme Kümelemesi 'nin Azure ağıyla nasıl etkileşime girdiği hakkında önemli bilgiler için bkz. [Azure sanal makinelerinde SQL Server Için yüksek kullanılabilirlik ve olağanüstü durum kurtarma](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 8. Çalışma dizininizi değiştirin ve indirilen betiği kullanarak yük devretme kümesini oluşturun.
 
         Set-ExecutionPolicy Unrestricted -Force

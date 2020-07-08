@@ -4,10 +4,9 @@ description: ("Beyaz listeye") REST API ve veri uç noktası etki alanı adları
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83850003"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
@@ -133,7 +132,7 @@ Portalı kullanarak veri uç noktalarını etkinleştirmek için:
 1. Kapsayıcı Kayıt defterinize gidin.
 1. **Ağ**  >  **genel erişimini**seçin.
 1. **Adanmış veri uç noktası etkinleştir** onay kutusunu seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Veri uç noktası veya uç noktalar portalda görüntülenir.
 

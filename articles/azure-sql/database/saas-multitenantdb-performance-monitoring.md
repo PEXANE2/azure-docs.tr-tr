@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: e4f26b21ad7458b4f5bcad9a902f4e048d726f1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042438"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Çok kiracılı bir SaaS uygulamasında parçalı, çok kiracılı Azure SQL veritabanı 'nın performansını izleme ve yönetme
@@ -64,7 +63,7 @@ Performans izleme ve yönetiminin ölçekli olarak nasıl çalıştığını anl
 
 Önceki bir öğreticide bir grup kiracıyı zaten sağladıysanız, [Tüm kiracı veritabanlarında kullanım benzetimi yap](#simulate-usage-on-all-tenant-databases) bölümüne atlayın.
 
-1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve Yönetimi \\ *demo-PerformanceMonitoringAndManagement. ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
 1. **$DemoScenario**  =  **1**ayarlama, _kiracı grubu sağlama_
 1. Betiği çalıştırmak için **F5**'e basın.
 
@@ -74,7 +73,7 @@ Betik, 17 kiracıları çok kiracılı veritabanına birkaç dakika içinde dağ
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Tüm kiracı veritabanlarındaki kullanımın benzetimini gerçekleştirme
 
-*Demo-PerformanceMonitoringAndManagement. ps1* betiği, çok kiracılı veritabanına karşı çalışan bir iş yükünün benzetimini yapar. Yük, kullanılabilir yükleme senaryolarından biri kullanılarak oluşturulur:
+*Demo-PerformanceMonitoringAndManagement.ps1* betiği, çok kiracılı veritabanına karşı çalışan bir iş yükünün benzetimini yapar. Yük, kullanılabilir yükleme senaryolarından biri kullanılarak oluşturulur:
 
 | Tanıtım | Senaryo |
 |:--|:--|
@@ -85,7 +84,7 @@ Betik, 17 kiracıları çok kiracılı veritabanına birkaç dakika içinde dağ
 
 Yük oluşturucu her kiracı veritabanına *yapay* bir yalnızca CPU yükü uygular. Oluşturucu her kiracı veritabanı için yükü oluşturan saklı yordamı düzenli olarak çağıran bir iş başlatır. Yük düzeyleri (DTU 'Lar), süre ve aralıklar tüm veritabanları genelinde farklılık gösterir ve bu da öngörülemeyen kiracı etkinliğinin benzetimini yapılır.
 
-1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve Yönetimi \\ *demo-PerformanceMonitoringAndManagement. ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ performans izleme ve yönetim \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğretici sırasında birkaç senaryo çalıştıracağından bu betiği açık tutun.
 1. **$DemoScenario**  =  **2**ayarla, _Normal yoğunluk yükü oluştur_
 1. Tüm kiracılarınıza bir yük uygulamak için **F5** tuşuna basın.
 
@@ -154,7 +153,7 @@ Parçalı çok kiracılı model, diğer kiracıların yanı sıra çok kiracıl�
 
 Kendi veritabanında zaten yeni bir kiracı sağladıysanız, sonraki birkaç adımı atlayın.
 
-1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *demo-ProvisionTenants. ps1*. 
+1. **PowerShell ISE**'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1*. 
 1. Değiştirin **$TenantName = "SALX salsa"** ve **$VenueType = "dans"**
 1. **$Scenario**  =  **2**ayarlama, _Yeni bir tek kiracılı veritabanında kiracı sağlama_
 1. Betiği çalıştırmak için **F5**'e basın.
@@ -167,7 +166,7 @@ Betik bu kiracıyı ayrı bir veritabanında hazırlar, veritabanını ve kirac�
 
 Bu alıştırma, popüler bir olay için bilet satışa geldiğinde yüksek bir yük yaşayan SALX salsa 'nın etkisinin benzetimini yapar.
 
-1. Açın. \\ .. *Demo-PerformanceMonitoringAndManagement. ps1* betiği.
+1. Açın. \\ .. *Demo-PerformanceMonitoringAndManagement.ps1* betiği.
 1. **$DemoScenario = 5**olarak ayarlayın, _tek bir kiracı üzerinde normal yük ve yüksek yük oluşturun (yaklaşık 90 DTU)._
 1. **$SingleTenantName = SALX salsa** ayarla
 1. **F5**’i kullanarak betiği yürütün.

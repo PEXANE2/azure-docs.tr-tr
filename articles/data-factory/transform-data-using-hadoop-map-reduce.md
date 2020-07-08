@@ -11,17 +11,16 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 48afff71d4b5241ede1783a270658e56e4b8c242
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849255"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop MapReduce etkinliğini kullanarak verileri dönüştürme
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-map-reduce.md)
-> * [Geçerli sürüm](transform-data-using-hadoop-map-reduce.md)
+> * [Güncel sürüm](transform-data-using-hadoop-map-reduce.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -31,7 +30,7 @@ Azure Data Factory yeni bir deyişle, [Azure Data Factory 'ye giriş](introducti
 
 HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından HDInsight kümesinde Pig/Hive betikleri çalıştırmaya ilişkin ayrıntılar için bkz. [Pig](transform-data-using-hadoop-pig.md) and [Hive](transform-data-using-hadoop-hive.md) .
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -64,17 +63,17 @@ HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından HDInsight 
 
 | Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | Etkinliğin adı                     | Yes      |
-| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | No       |
-| tür              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce | Yes      |
-| linkedServiceName | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| Sınıf         | Yürütülecek sınıfın adı         | Yes      |
-| jarLinkedService  | Jar dosyalarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Burada yalnızca **[Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** ve **[ADLS 2.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | No       |
-| jarFilePath       | JarLinkedService tarafından başvurulan Azure Storage 'da depolanan jar dosyalarının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Yes      |
-| jarlibs           | JarLinkedService içinde tanımlanan Azure depolama alanında depolanan iş tarafından başvurulan jar kitaplık dosyalarının yolunun dize dizisi. Dosya adı büyük/küçük harfe duyarlıdır. | No       |
-| GetDebugInfo      | Günlük dosyalarının HDInsight kümesi tarafından kullanılan Azure depolama 'ya (veya) jarLinkedService tarafından belirtilen şekilde kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | No       |
-| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | No       |
-| tanımlar           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | No       |
+| name              | Etkinliğin adı                     | Evet      |
+| açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
+| tür              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce | Evet      |
+| linkedServiceName | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
+| Sınıf         | Yürütülecek sınıfın adı         | Evet      |
+| jarLinkedService  | Jar dosyalarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Burada yalnızca **[Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** ve **[ADLS 2.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** bağlı hizmetleri desteklenir. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | Hayır       |
+| jarFilePath       | JarLinkedService tarafından başvurulan Azure Storage 'da depolanan jar dosyalarının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Evet      |
+| jarlibs           | JarLinkedService içinde tanımlanan Azure depolama alanında depolanan iş tarafından başvurulan jar kitaplık dosyalarının yolunun dize dizisi. Dosya adı büyük/küçük harfe duyarlıdır. | Hayır       |
+| GetDebugInfo      | Günlük dosyalarının HDInsight kümesi tarafından kullanılan Azure depolama 'ya (veya) jarLinkedService tarafından belirtilen şekilde kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
+| değişkenlerinden         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | Hayır       |
+| tanımlar           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       |
 
 
 

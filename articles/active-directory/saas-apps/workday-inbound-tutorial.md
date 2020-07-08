@@ -16,10 +16,9 @@ ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84013610"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
@@ -395,9 +394,9 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Evet |
 
       > [!NOTE]
      > URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri (WWS) v 21.1 kullanır ve uygulamayla birlikte gelen varsayılan XPATH API ifadelerinde hiçbir değişiklik yapılması gerekmez. Belirli bir WWS API sürümünü kullanmak için, URL 'de sürüm numarasını belirtin <br>
@@ -511,7 +510,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 | **Businestıtle**   |  başlık     |     |  Oluştur + güncelleştir | 
 | **AddressLineData**    |  streetAddress  |     |   Oluştur + güncelleştir |
 | **Belediye**   |   l   |     | Oluştur + güncelleştir |
-| **CountryReferenceTwoLetter**      |   \ |     |   Oluştur + güncelleştir |
+| **CountryReferenceTwoLetter**      |   co |     |   Oluştur + güncelleştir |
 | **CountryReferenceTwoLetter**    |  c  |     |         Oluştur + güncelleştir |
 | **CountryRegionReference** |  st     |     | Oluştur + güncelleştir |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Oluştur + güncelleştir |
@@ -668,7 +667,7 @@ Yapılandırma sırasında, sağlama Aracısı Azure AD yönetici kimlik bilgile
 #### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>Nasıl yaparım? sağlama aracısını giden HTTP iletişimi için bir proxy sunucu kullanacak şekilde yapılandırmak istiyor musunuz?
 
 Sağlama Aracısı giden ara sunucu kullanımını destekler. Bunu, **C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config**aracı yapılandırma dosyasını düzenleyerek yapılandırabilirsiniz. Aşağıdaki satırları, kapanış etiketinden hemen önceki dosyanın sonuna doğru bir şekilde ekleyin `</configuration>` .
-[Proxy-Server] ve [proxy-port] değişkenlerini ara sunucu adı ve bağlantı noktası değerlerinizle değiştirin.
+[proxy-server] ve [proxy-port] değişkenlerini ara sunucunuzun adı ve bağlantı noktası değerleriyle değiştirin.
 
 ```xml
     <system.net>

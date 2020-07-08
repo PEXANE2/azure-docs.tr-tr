@@ -15,10 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017588"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Şirket içi AlwaysOn Kullanılabilirlik Grupları’nı Azure’a Genişletme

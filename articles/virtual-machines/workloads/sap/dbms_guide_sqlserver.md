@@ -16,10 +16,9 @@ ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014528"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
@@ -448,7 +447,7 @@ Azure Marketi 'ndeki SQL Server görüntüleri, SAP NetWeaver uygulamaları içi
 
 * Yönetici olarak bir Windows komut penceresi açın.
 * Dizini C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\sqlserver2012olarak değiştirin.
-* Komutu yürütün: Setup. exe/QUIET/ACTION = REBUILDDATABASE/ıNSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS = `<local_admin_account_name` >/SQLHARMANLAMA = SQL_Latin1_General_Cp850_BIN2   
+* Komutu yürütün: Setup.exe/QUIET/ACTION = REBUILDDATABASE/ıNSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS = `<local_admin_account_name`>/SQLHARMANLAMA = SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`>, sanal makine Galeri aracılığıyla ilk kez dağıtıldığında yönetici hesabı olarak tanımlanan hesaptır.
 
 İşlem yalnızca birkaç dakika sürer. Adımın doğru sonuçla sonlandırıp sonlanmadığını doğrulamak için aşağıdaki adımları gerçekleştirin:

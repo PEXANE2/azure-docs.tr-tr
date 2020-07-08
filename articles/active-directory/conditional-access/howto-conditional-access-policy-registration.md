@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83993754"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Koşullu erişim: güvenlik bilgilerini kaydettirme güvenliğini sağlama
@@ -46,7 +45,7 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı den
    1. **Erişimi engelle**' yi seçin.
    1. Ardından **Seç**'e tıklayın.
 1. **İlkeyi etkinleştir**’i **Açık** duruma getirin.
-1. Sonra **Kaydet**' i seçin.
+1. Sonra **Kaydet**'i seçin.
 
 Bu ilkedeki 6. adımda, kuruluşların yapabilecekleri seçimler vardır. Yukarıdaki ilke, güvenilir bir ağ konumundan kayıt gerektiriyor. Kuruluşlar, **konumların**yerine tüm kullanılabilir koşulları kullanmayı seçebilir. Bu ilkenin bir blok ilkesi olduğunu, bu nedenle dahil edilen herhangi bir şeyin engellenmesini ve dahil etme ile eşleşmeyen herhangi bir şeye izin verildiğini unutmayın. 
 

@@ -11,16 +11,15 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
 ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84019903"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-ml-batch-execution-activity.md)
-> * [Geçerli sürüm](transform-data-using-machine-learning.md)
+> * [Güncel sürüm](transform-data-using-machine-learning.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -127,13 +126,13 @@ Aşağıdaki JSON kod parçacığı bir Azure Machine Learning Batch yürütme e
 
 | Özellik          | Açıklama                              | Gerekli |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | İşlem hattındaki etkinliğin adı     | Yes      |
-| açıklama       | Etkinliğin ne yaptığını açıklayan metin.  | No       |
-| tür              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution**' dir. | Yes      |
-| linkedServiceName | Azure Machine Learning bağlı hizmetine bağlı hizmetler. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| Webservicegirişlerinde  | Azure Machine Learning Web hizmeti girişlerinin adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Web hizmetinde tanımlanan giriş parametreleriyle eşleşmelidir. Değer, giriş blobu konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | No       |
-| Webserviceçıktılar | Azure Machine Learning Web hizmeti çıktılarının adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Web hizmetinde tanımlanan çıkış parametreleriyle eşleşmelidir. Değer, çıkış blob konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | No       |
-| globalParameters  | Azure Machine Learning Studio (klasik) toplu yürütme hizmeti uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan Web hizmeti parametrelerinin adlarıyla eşleşmesi gerekir. Değerler Azure Machine Learning Studio (klasik) toplu yürütme isteğinin GlobalParameters özelliğinde geçirilir | No       |
+| name              | İşlem hattındaki etkinliğin adı     | Evet      |
+| açıklama       | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
+| tür              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution**' dir. | Evet      |
+| linkedServiceName | Azure Machine Learning bağlı hizmetine bağlı hizmetler. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
+| Webservicegirişlerinde  | Azure Machine Learning Web hizmeti girişlerinin adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Web hizmetinde tanımlanan giriş parametreleriyle eşleşmelidir. Değer, giriş blobu konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
+| Webserviceçıktılar | Azure Machine Learning Web hizmeti çıktılarının adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Web hizmetinde tanımlanan çıkış parametreleriyle eşleşmelidir. Değer, çıkış blob konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
+| globalParameters  | Azure Machine Learning Studio (klasik) toplu yürütme hizmeti uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Azure Machine Learning Studio (klasik) Web hizmetinde tanımlanan Web hizmeti parametrelerinin adlarıyla eşleşmesi gerekir. Değerler Azure Machine Learning Studio (klasik) toplu yürütme isteğinin GlobalParameters özelliğinde geçirilir | Hayır       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Senaryo 1: Azure Blob depolama alanındaki verilere başvuran Web hizmeti girişlerini/çıkışlarını kullanarak denemeleri
 

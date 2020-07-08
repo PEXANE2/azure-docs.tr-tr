@@ -13,10 +13,9 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020141"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
@@ -372,14 +371,14 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
     > .NET Framework 4.5.2 sürümünü projeniz için hedef çerçeve olarak ayarlayın: projeye sağ tıklayın ve **Özellikler** ' e tıklayarak hedef Framework 'ü ayarlayın. Data Factory, 4.5.2 ' den sonraki sürümlere .NET Framework göre derlenen özel etkinlikleri desteklemez.
 
 11. **Windows Gezgini**'ni başlatın ve derleme türüne göre **bin\Debug** veya **bin\release** klasörüne gidin.
-12. \Bin\debug klasöründeki tüm ikili dosyaları içeren bir **MyDotNetActivity. zip** dosyası oluşturun \<project folder\> . Hata oluştuğunda soruna neden olan kaynak kodundaki satır numarası gibi ek ayrıntılar almak için **MyDotNetActivity. pdb** dosyasını dahil edin.
+12. \Bin\debug klasöründeki tüm ikilileri içeren bir ZIP dosyası **MyDotNetActivity.zip** oluşturun \<project folder\> . Hata oluştuğunda soruna neden olan kaynak kodundaki satır numarası gibi ek ayrıntılar almak için **MyDotNetActivity. pdb** dosyasını dahil edin.
 
     > [!IMPORTANT]
     > Özel etkinliğin zip dosyasındaki tüm dosyalar alt klasör olmadan **en üst düzeyde** olmalıdır.
 
     ![İkili çıktı dosyaları](./media/data-factory-use-custom-activities/Binaries.png)
 14. Zaten mevcut değilse, **customactivitycontainer** adlı bir blob kapsayıcısı oluşturun.
-15. MyDotNetActivity. zip ' i, AzureStorageLinkedService tarafından başvurulan **genel amaçlı** bir Azure Blob depolama (etkin/seyrek erişimli BLOB depolama) olarak, customactivitycontainer 'a yükleyin.
+15. AzureStorageLinkedService tarafından başvurulan **genel amaçlı** bir Azure Blob depolama alanına (etkin/seyrek erişimli BLOB depolama alanı değil) bir blob olarak MyDotNetActivity.zip yükleyin.
 
 > [!IMPORTANT]
 > Bu .NET etkinliği projesini Visual Studio 'da bir Data Factory projesi içeren bir çözüme ekler ve Data Factory uygulama projesinden .NET etkinlik projesine bir başvuru eklerseniz, ZIP dosyasını el ile oluşturma ve genel amaçlı Azure Blob depolamaya yükleme konusunda son iki adımı gerçekleştirmeniz gerekmez. Visual Studio 'Yu kullanarak Data Factory varlıkları yayımladığınızda, bu adımlar yayımlama işlemi tarafından otomatik olarak yapılır. Daha fazla bilgi için bkz. [Visual Studio 'da Data Factory projesi](#data-factory-project-in-visual-studio) bölümü.
@@ -389,7 +388,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
 
 Özel etkinlik için giriş veri kümesi blob depolamada adföğreticisi kapsayıcısının customactivityınput klasöründe Blobları (dosyalar) temsil eder. Etkinliğin çıkış veri kümesi, blob depolamada adföğreticisi kapsayıcısının customactivityoutput klasöründe çıktı bloblarını temsil eder.
 
-Aşağıdaki içerikle **File. txt** dosyası oluşturun ve bunu **adföğreticisi** kapsayıcısının **customactivityınput** klasörüne yükleyin. Henüz yoksa adföğreticisi kapsayıcısını oluşturun.
+Aşağıdaki içerikle **file.txt** dosya oluşturun ve bunu **adföğreticisi** kapsayıcısının **customactivityınput** klasörüne yükleyin. Henüz yoksa adföğreticisi kapsayıcısını oluşturun.
 
 ```
 test custom activity Microsoft test custom activity Microsoft
@@ -412,7 +411,7 @@ Bu bölümde gerçekleştirdiğiniz adımlar aşağıda verilmiştir:
 4. Özel etkinliği kullanan bir işlem **hattı** oluşturun.
 
 > [!NOTE]
-> **Dosya. txt dosyasını** oluşturun ve henüz yapmadıysanız bir blob kapsayıcısına yükleyin. Yukarıdaki bölümdeki yönergelere bakın.
+> **file.txt** oluşturun ve henüz yapmadıysanız bir blob kapsayıcısına yükleyin. Yukarıdaki bölümdeki yönergelere bakın.
 
 ### <a name="step-1-create-the-data-factory"></a>1. Adım: Veri Fabrikası oluşturma
 1. Azure portal oturum açtıktan sonra aşağıdaki adımları uygulayın:
@@ -506,7 +505,7 @@ Bu adımda, girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturac
 
    Başlangıç zamanı ile bu kılavuzda daha sonra bir işlem hattı oluşturursunuz: 2016-11-16T00:00:00Z ve bitiş zamanı: 2016-11-16T05:00:00Z. Saatlik olarak veri üretmek üzere zamanlandı. bu nedenle beş giriş/çıkış dilimi vardır ( **00**: 00:00-> **05**: 00:00).
 
-   Giriş veri kümesi için **Sıklık** ve **Aralık** **saat** ve **1**olarak ayarlanır, bu da giriş diliminin saatlik olarak kullanılabildiği anlamına gelir. Bu örnekte, intputfolder dosyasında aynı dosya (File. txt).
+   Giriş veri kümesi için **Sıklık** ve **Aralık** **saat** ve **1**olarak ayarlanır, bu da giriş diliminin saatlik olarak kullanılabildiği anlamına gelir. Bu örnekte, intputfolder dosyasında aynı dosya (file.txt) vardır.
 
    Yukarıdaki JSON kod parçacığında, bu sistem değişkeni ile temsil edilen her bir dilimin başlangıç zamanları aşağıda verilmiştir.
 3. **Inputdataset**'i oluşturmak ve dağıtmak için araç çubuğunda **Dağıt** ' a tıklayın. Düzenleyici’nin başlık çubuğunda **TABLO BAŞARIYLA OLUŞTURULDU** iletisini gördüğünüzü onaylayın.
@@ -543,19 +542,19 @@ Bu adımda, girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturac
     }
     ```
 
-     Çıkış konumu **adföğreticisi/customactivityoutput/** ve çıkış dosyası adı yyyy-mm-dd-hh. txt ' dir. burada yyyy-aa-gg-hh, üretilmekte olan dilimin yıl, ay, tarih ve saattir. Ayrıntılar için bkz. [Geliştirici başvurusu][adf-developer-reference] .
+     Çıkış konumu **adföğreticisi/customactivityoutput/** ve çıkış dosyası adı yyyy-MM-dd-HH.txt, yyyy-aa-gg-hh, üretilen dilimin yıl, ay, tarih ve saat olduğu yerdir. Ayrıntılar için bkz. [Geliştirici başvurusu][adf-developer-reference] .
 
     Her giriş dilimi için bir çıktı blobu/dosyası oluşturulur. Her bir dilim için bir çıktı dosyası adı verilmiştir. Tüm çıkış dosyaları bir çıkış klasöründe oluşturulur: **adftutorial\customactivityoutput**.
 
    | 'In | Başlangıç saati | Çıktı dosyası |
    |:--- |:--- |:--- |
-   | 1 |2016-11-16T00:00:00 |2016-11-16 -00. txt |
-   | 2 |2016-11-16T01:00:00 |2016-11-16 -01. txt |
-   | 3 |2016-11-16T02:00:00 |2016-11-16 -02. txt |
-   | 4 |2016-11-16T03:00:00 |2016-11-16 -03. txt |
-   | 5 |2016-11-16T04:00:00 |2016-11-16 -04. txt |
+   | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
+   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
+   | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
+   | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    Bir giriş klasöründeki tüm dosyaların yukarıda belirtilen başlangıç zamanlarını içeren bir dilimin parçası olduğunu unutmayın. Bu dilim işlendiğinde, özel etkinlik her bir dosya boyunca tarar ve çıkış dosyasında arama teriminin ("Microsoft") oluşum sayısıyla birlikte bir satır üretir. Giriş klasöründe üç dosya varsa, her saatlik dilimin çıkış dosyasında üç satır vardır: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt, vb.
+    Bir giriş klasöründeki tüm dosyaların yukarıda belirtilen başlangıç zamanlarını içeren bir dilimin parçası olduğunu unutmayın. Bu dilim işlendiğinde, özel etkinlik her bir dosya boyunca tarar ve çıkış dosyasında arama teriminin ("Microsoft") oluşum sayısıyla birlikte bir satır üretir. Giriş klasöründe üç dosya varsa, her saatlik dilimin çıkış dosyasında üç satır vardır: 2016-11-16-00.txt, 2016-11-16:01:00:00.txt, vb.
 3. **Outputdataset**'i dağıtmak için komut çubuğunda **Dağıt** ' a tıklayın.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Özel etkinliği kullanan bir işlem hattı oluşturma ve çalıştırma
@@ -611,10 +610,10 @@ Bu adımda, girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturac
 
    * **Eşzamanlılık** **2** olarak ayarlanır, böylece iki dilim Azure Batch havuzundaki 2 VM 'ye paralel olarak işlenir.
    * Etkinlikler bölümünde bir etkinlik vardır ve bu tür: **Dotnetactivity**.
-   * **AssemblyName** , DLL adı olarak ayarlanır: **MyDotnetActivity. dll**.
+   * **AssemblyName** , dll adına ayarlanır: **MyDotnetActivity.dll**.
    * **EntryPoint** , **MyDotNetActivityNS. MyDotNetActivity**olarak ayarlanır.
    * **PackageLinkedService** , özel etkinlik ZIP dosyasını içeren BLOB depolama alanına Işaret eden **AzureStorageLinkedService** olarak ayarlanır. Giriş/çıkış dosyaları ve özel etkinlik ZIP dosyası için farklı Azure depolama hesapları kullanıyorsanız, başka bir Azure depolama bağlı hizmeti oluşturursunuz. Bu makalede aynı Azure Depolama hesabını kullandığınız varsayılır.
-   * **PackageFile** , **customactivitycontainer/MyDotNetActivity. zip**olarak ayarlanır. Şu biçimdedir: containerforthezip/nameofthezip. zip.
+   * **PackageFile** , **customactivitycontainer/MyDotNetActivity.zip**olarak ayarlandı. Şu biçimdedir: containerforthezip/nameofthezip.zip.
    * Özel etkinlik **ınputdataset** 'i giriş ve **outputdataset** olarak çıktı olarak alır.
    * Özel etkinliğin linkedServiceName özelliği, özel etkinliğin Azure Batch VM 'lerde çalıştırılması gerektiğini Azure Data Factory bildiren **AzureBatchLinkedService**'e işaret eder.
    * **ısduraklatılan** özelliği varsayılan olarak **false** olarak ayarlanır. Dilimler geçmişte çalışmaya başlayacağı için işlem hattı Bu örnekte hemen çalışır. İşlem hattını duraklatmak ve yeniden başlatmak için false olarak ayarlamak için bu özelliği true olarak ayarlayabilirsiniz.
@@ -686,7 +685,7 @@ Sorun giderme birkaç temel teknikten oluşur:
     ```
 
    Adlar eşleşiyorsa, tüm ikili dosyaların ZIP dosyasının **kök klasöründe** olduğunu doğrulayın. Diğer bir deyişle, ZIP dosyasını açtığınızda, herhangi bir alt klasörde değil kök klasördeki tüm dosyaları görmeniz gerekir.
-3. Giriş Dilimi **Ready**olarak ayarlanmamışsa, giriş klasörü yapısının doğru olduğunu ve giriş klasörlerinde **File. txt dosyasının** bulunduğunu doğrulayın.
+3. Giriş Dilimi **Ready**olarak ayarlanmamışsa, giriş klasörü yapısının doğru olduğundan ve giriş klasörlerinde **file.txt** bulunduğundan emin olun.
 3. Özel etkinliğinizin **Execute** yönteminde, sorunları gidermenize yardımcı olan bilgileri günlüğe kaydetmek Için **ıactivitygünlükçü** nesnesini kullanın. Günlüğe kaydedilen iletiler Kullanıcı günlük dosyalarında görünür (bir veya daha fazla dosya: user-0. log, User-1. log, User-2. log, vb.).
 
    **Outputdataset** dikey penceresinde, bu DILIMIN **veri dilimi** dikey penceresini görmek için dilime tıklayın. Bu dilim için **etkinlik çalıştırmaları** görürsünüz. Dilim için bir etkinlik çalıştırması görmeniz gerekir. Komut çubuğunda Çalıştır ' a tıklarsanız, aynı dilim için başka bir etkinlik çalıştırması başlatabilirsiniz.
@@ -698,7 +697,7 @@ Sorun giderme birkaç temel teknikten oluşur:
    Ayrıca, tüm sistem hata iletileri ve özel durumlar için **System-0. log** ' u denetleyin.
 4. Hata ayrıntılarının bir hata oluştuğunda **çağrı yığını** gibi bilgileri Içermesi için **pdb** dosyasını ZIP dosyasına ekleyin.
 5. Özel etkinliğin zip dosyasındaki tüm dosyalar alt klasör olmadan **en üst düzeyde** olmalıdır.
-6. **AssemblyName** (MyDotNetActivity. dll), **entryPoint**(MyDotNetActivityNS. MyDotNetActivity), **PackageFile** (customactivitycontainer/MyDotNetActivity. zip) ve **packageLinkedService** (ZIP dosyasını içeren **genel amaçlı**Azure Blob depolama 'ya işaret etmelidir) doğru değerlere ayarlandığından emin olun.
+6. **AssemblyName** (MyDotNetActivity.dll), **entryPoint**(MyDotNetActivityNS. MyDotNetActivity), **PackageFile** (customactivitycontainer/MyDotNetActivity.zip) ve **packageLinkedService** (ZIP dosyasını içeren **genel amaçlı**Azure Blob depolama alanına işaret etmelidir) değerlerinin doğru değerlere ayarlandığından emin olun.
 7. Bir hatayı düzelttiyseniz ve dilimi yeniden işlemek istiyorsanız **OutputDataset** dikey penceresindeki dilime sağ tıklayın ve **Çalıştır**’a tıklayın.
 8. Aşağıdaki hatayı görürseniz, > 4.3.0 sürümünün Azure depolama paketini kullanıyorsunuz. Data Factory hizmet başlatıcısı, WindowsAzure. Storage 'un 4,3 sürümünü gerektirir. Azure Storage derlemesinin sonraki sürümünü kullanmanız gerekiyorsa, bir iş için [AppDomain yalıtım](#appdomain-isolation) bölümüne bakın.
 
@@ -713,7 +712,7 @@ Sorun giderme birkaç temel teknikten oluşur:
     ```
 
     Projeyi derleyin. Bin\Debug klasöründen sürüm > 4.3.0 Azure. Storage derlemesini silin. İkili dosyaları ve PDB dosyasını içeren bir zip dosyası oluşturun. Eski ZIP dosyasını blob kapsayıcısında (customactivitycontainer) Bu dosyayla değiştirin. Başarısız olan dilimleri yeniden çalıştırın (dilimi sağ tıklatın ve Çalıştır ' a tıklayın).
-8. Özel etkinlik, paketinizin **app. config** dosyasını kullanmaz. Bu nedenle, kodunuz yapılandırma dosyasından herhangi bir bağlantı dizesini okuduğunda, çalışma zamanında çalışmaz. Azure Batch kullanmanın en iyi uygulaması, **Azure keykasasındaki**gizli dizileri tutmak, **anahtar kasasını**korumak için sertifika tabanlı hizmet sorumlusu kullanmak ve sertifikayı Azure Batch havuzuna dağıtmaktır. Böylece .NET özel etkinliği çalıştırma sırasında KeyVault’tan parolalara erişebilir. Bu çözüm, genel bir çözümdür ve yalnızca bağlantı dizesinde değil, herhangi bir gizli dizi türüne ölçeklendirebilir.
+8. Özel etkinlik, paketinizin **app.config** dosyasını kullanmaz. Bu nedenle, kodunuz yapılandırma dosyasından herhangi bir bağlantı dizesini okuduğunda, çalışma zamanında çalışmaz. Azure Batch kullanmanın en iyi uygulaması, **Azure keykasasındaki**gizli dizileri tutmak, **anahtar kasasını**korumak için sertifika tabanlı hizmet sorumlusu kullanmak ve sertifikayı Azure Batch havuzuna dağıtmaktır. Böylece .NET özel etkinliği çalıştırma sırasında KeyVault’tan parolalara erişebilir. Bu çözüm, genel bir çözümdür ve yalnızca bağlantı dizesinde değil, herhangi bir gizli dizi türüne ölçeklendirebilir.
 
    Daha kolay bir geçici çözüm vardır (ancak en iyi yöntem değildir): bağlantı dizesi ayarları ile bir **Azure SQL bağlı hizmeti** oluşturabilir, bağlı hizmeti kullanan bir veri kümesi oluşturabilir ve veri kümesini özel .net etkinliğine bir kukla giriş veri kümesi olarak zincirleyebilirsiniz. Ardından, bağlantılı hizmetin bağlantı dizesine özel etkinlik kodunda erişebilirsiniz.
 
@@ -721,7 +720,7 @@ Sorun giderme birkaç temel teknikten oluşur:
 Özel etkinlik için kodu güncelleştirirseniz, derleyin ve yeni ikili dosyaları içeren zip dosyasını blob depolamaya yükleyin.
 
 ## <a name="appdomain-isolation"></a>AppDomain yalıtımı
-Data Factory başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir etkinlik oluşturmayı gösteren [çapraz AppDomain örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) bakın (örnek: WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x, vb.).
+Data Factory başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan bir özel etkinlik oluşturma (örnek: WindowsAzure. Storage v 4.3.0 Newtonsoft.Js, v 6.0. x, vb.) için bkz. [çapraz AppDomain örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) .
 
 ## <a name="access-extended-properties"></a>Genişletilmiş özelliklere erişin
 Aşağıdaki örnekte gösterildiği gibi, etkinlik JSON içinde genişletilmiş özellikler bildirebilirsiniz:
@@ -1025,7 +1024,7 @@ GitHub 'daki [Azure Data Factory yerel ortam](https://github.com/gbrueckl/Azure.
 | --- | --- |
 | [Http veri yükleyici](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Data Factory 'daki özel C# etkinliğini kullanarak bir HTTP uç noktasından Azure Blob depolama alanına veri indirir. |
 | [Twitter Yaklaşım Analizi örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Azure Machine Learning Studio modelini çağırır ve yaklaşım analizi, Puanlama, tahmin vb. |
-| [R betiğini çalıştırın](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Zaten R 'nin yüklü olduğu HDInsight kümenizde RScript. exe ' yi çalıştırarak R betiğini çağırır. |
+| [R betiğini çalıştırın](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Zaten R 'nin yüklü olduğu HDInsight kümenizde RScript.exe çalıştırarak R betiğini çağırır. |
 | [Çapraz AppDomain .NET etkinliği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Data Factory başlatıcısı tarafından kullanılan farklı derleme sürümlerini kullanır |
 | [Azure Analysis Services bir modeli yeniden işleme](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Azure Analysis Services bir modeli yeniden işler. |
 
