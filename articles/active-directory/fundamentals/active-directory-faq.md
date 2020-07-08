@@ -8,17 +8,17 @@ ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f77304beb598094e8dbbc51ebf624acd71b554b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 775b71dd88c26dfe3ee62326615f6a81ee237deb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604429"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory hakkında sık sorulan sorular
 Azure Active Directory (Azure AD), kimlik, erişim yönetimi ve güvenliği tüm yönleriyle kapsayan bir hizmet olarak kimlik (IDaaS) çözümüdür.
@@ -130,7 +130,7 @@ Office 365 kullanıcıları için yöneticiniz [Kullanıcı parolalarını sıf�
 Azure AD hesapları için yöneticiler aşağıdakilerden birini kullanarak parolaları sıfırlayabilir:
 
 - [Azure portalda hesapları sıfırlama](active-directory-users-reset-password-azure-portal.md)
-- [PowerShell’i kullanma](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [PowerShell'i kullanma](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
 ---

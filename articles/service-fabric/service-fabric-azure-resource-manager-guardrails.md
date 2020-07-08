@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602712"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrayları 
 Bir Service Fabric kümesi dağıtımında, guardrayları yerinde konur, bu da geçersiz bir küme yapılandırması durumunda Azure Resource Manager dağıtımı başarısız olur. Aşağıdaki bölümler, yaygın küme yapılandırma sorunlarına ve bu sorunları azaltmak için gereken adımlara genel bir bakış sağlar. 
@@ -68,12 +68,12 @@ Yukarıdaki hata iletilerinin herhangi biri tarafından belirtilen bir dayanıkl
 
 ## <a name="seed-node-deletion"></a>Çekirdek düğüm silme 
 ### <a name="overview"></a>Genel Bakış
-Service Fabric kümenin, kümenin birincil düğüm türünde çalışan sistem hizmetleri çoğaltmaları sayısını belirlemede kullanılan bir [güvenilirlik katmanı](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) özelliği vardır. Gerekli çoğaltmaların sayısı, kümenin birincil düğüm türünde tutulması gereken düğüm sayısı alt sınırını belirleyecek. Birincil düğüm türündeki düğümlerin sayısı güvenilirlik katmanı için gerekli en düşük değerin altına gittiğinde, küme kararsız hale gelir.  
+Service Fabric kümenin, kümenin birincil düğüm türünde çalışan sistem hizmetleri çoğaltmaları sayısını belirlemede kullanılan bir [güvenilirlik katmanı](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) özelliği vardır. Gerekli çoğaltmaların sayısı, kümenin birincil düğüm türünde tutulması gereken düğüm sayısı alt sınırını belirleyecek. Birincil düğüm türündeki düğümlerin sayısı güvenilirlik katmanı için gerekli en düşük değerin altına gittiğinde, küme kararsız hale gelir.  
 
 ### <a name="error-messages"></a>Hata iletileri 
 Çekirdek düğüm kaldırma işlemi algılandı ve reddedilecek. 
-* Bu işlem yalnızca {0} olası çekirdek düğümlerinin kümede kalmasına neden olur, {1} ancak en az bir değer gerekir.
-* Çekirdek {0} düğümlerin dışına kaldırılması, {1} çekirdek düğüm çekirdeği kaybı nedeniyle kümenin düşmesine neden olur. Tek seferde kaldırılabileceği en fazla çekirdek düğüm sayısı {2}.
+* Bu işlem yalnızca {0} olası çekirdek düğümlerinin kümede kalmasına neden olur, ancak {1} en az bir değer gerekir.
+* {0}Çekirdek düğümlerin dışına kaldırılması {1} , çekirdek düğüm çekirdeği kaybı nedeniyle kümenin düşmesine neden olur. Tek seferde kaldırılabileceği en fazla çekirdek düğüm sayısı {2} .
  
 ### <a name="mitigation"></a>Risk azaltma 
 Birincil düğüm türü, kümenizde belirtilen güvenilirlik için yeterli sanal makineye sahip olduğundan emin olun. Sanal makine ölçek kümesini, belirtilen güvenilirlik katmanı için en az sayıda düğüm altına getirecek şekilde bir sanal makineyi kaldıracaksınız.

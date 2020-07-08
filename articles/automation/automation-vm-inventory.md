@@ -4,14 +4,14 @@ description: Bu makalede, VM 'lerden envanter toplamayı yönetme konusu açıkl
 services: automation
 ms.subservice: change-inventory-management
 keywords: stok, otomasyon, değişiklik, izleme
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603120"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>VM’lerden stok koleksiyonunu yönetme
 
@@ -75,7 +75,7 @@ Aşağıdaki bölümlerde, çeşitli kategoriler için yapılandırılabilecek h
 |Etkin     | Ayar uygulanmışsa true, aksi takdirde false.        |
 |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.       |
-|Yolu girin     | Dosyayı denetme yolu, örneğin, **c:\temp\mydosya.txt**.
+|Yolu girin     | Dosyanın denetlenecek yol (örneğin, **c:\temp\myfile.txt**).
 
 ### <a name="linux-files"></a>Linux dosyaları
 
@@ -87,7 +87,7 @@ Aşağıdaki bölümlerde, çeşitli kategoriler için yapılandırılabilecek h
 |Yolu girin     | Dosyayı denetlenecek yol, örneğin, **/etc/*. conf**.       |
 |Yol Türü     | İzlenecek öğenin türü. Değerler dosya ve dizindir.        |
 |Özyineleme     | Bu öğeyi izlenecek öğe ararken, aksi takdirde false ise true.        |
-|Sudo Kullan     | Eğer, öğe denetlenirken, aksi takdirde false olduğunda true.         |
+|Sudo kullan     | Eğer, öğe denetlenirken, aksi takdirde false olduğunda true.         |
 |Bağlantılar     | Dizin aktarılırken sembolik bağlantıların nasıl ele alınacağını gösteren değer. Olası değerler şunlardır: <br> Yoksay - Sembolik bağlantıları yoksayar ve başvurulan dosyaları veya dizinleri içermez<br>İzle - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları veya dizinleri de içerir<br>Yönet - Sembolik bağlantıları izler ve döndürülen içeriğin işlenmesinde değişiklik yapılmasına olanak sağlar      |
 
 ## <a name="manage-machine-groups"></a>Makine gruplarını yönetme
@@ -100,7 +100,7 @@ Makine gruplarınızı görüntülemek için, envanter sayfasında **makine grup
 
 ![Envanter sayfasında makine gruplarını görüntüleme](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-Listeden bir makine grubu seçildiğinde makine grupları sayfası açılır. Bu sayfa makine grubuyla ilgili ayrıntıları gösterir. Bu ayrıntılar, grubu tanımlamak için kullanılan Log Analytics sorgusunu içerir. Sayfanın alt kısmında, bu grubun parçası olan makinelerin Sayfalanmış bir listesidir.
+Listeden bir makine grubu seçildiğinde makine grupları sayfası açılır. Bu sayfa makine grubuyla ilgili ayrıntıları gösterir. Bu ayrıntılar, grubu tanımlamak için kullanılan Azure Izleyici günlük sorgusunu içerir. Sayfanın alt kısmında, bu grubun parçası olan makinelerin Sayfalanmış bir listesidir.
 
 ![Makine grubu sayfasını görüntüle](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,15 +115,18 @@ Yeni bir makine grubu oluşturmak istiyorsanız **+ makine grubu oluştur ' a**t
 VM 'nizi Değişiklik İzleme ve stok yönetiminden kaldırmak için:
 
 1. Azure portal sol bölmesinde **Log Analytics**' i seçin ve ardından VM 'nizi değişiklik izleme ve envanter için etkinleştirirken kullandığınız çalışma alanını seçin.
-2. Log Analytics sayfasında, **kaynak** menüsünü açın.
+2. **Log Analytics** sayfasında, **kaynak** menüsünü açın.
 3. **Çalışma alanı veri kaynakları**altında **sanal makineler** ' i seçin.
 4. Listede, bağlantısını kesmek istediğiniz VM 'yi seçin. Makinenin, **OMS bağlantı** sütununda **Bu çalışma alanının** yanında yeşil bir onay işareti vardır.
 
    >[!NOTE]
    >Operations Management Suite (OMS) artık Azure Izleyici günlükleri olarak adlandırılır.
-   
+
 5. Sonraki sayfanın en üstünde **bağlantıyı kes**' e tıklayın.
 6. Onay penceresinde, makinenin yönetimi bağlantısını kesmek için **Evet** ' i tıklatın.
+
+>[!NOTE]
+>Son 24 saat içinde Envantere kaydedilen tüm makinelere rapor verdiğimiz için, makineler kaydolduktan sonra gösterilmeye devam eder. Makinenin bağlantısı kesildikten sonra, artık listelenmemesi için 24 saat beklemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,25 +7,25 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df52969ea79e5d1af132aa82c2ec1ceedb92b82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87b063a4d51d5d5d1e3d7949be3754ccbe74acca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604123"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory sahip kullanıcılara yönetici ve yönetici olmayan roller atama
 Kuruluşunuzdaki bir kullanıcının Azure Active Directory (Azure AD) kaynaklarını yönetmek için izne ihtiyacı varsa, kullanıcının gerçekleştirmesi gereken eylemlere göre kullanıcıyı Azure AD 'de uygun bir rol atamanız gerekir.
 
 Kullanılabilir roller hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolleri atama](../users-groups-roles/directory-assign-admin-roles.md). Kullanıcı ekleme hakkında daha fazla bilgi için bkz. [Azure Active Directory yeni kullanıcı ekleme](add-users-azure-active-directory.md).
 
-## <a name="assign-roles"></a>Rolleri atama
+## <a name="assign-roles"></a>Rol atama
 Bir kullanıcıya Azure AD rolleri atama yapmanın yaygın bir yolu, bir kullanıcı için **Dizin rolü** sayfasıdır.
 
 Ayrıca, Privileged Identity Management (PıM) kullanarak roller de atayabilirsiniz. PıM kullanma hakkında daha ayrıntılı bilgi için bkz. [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
@@ -38,7 +38,7 @@ Ayrıca, Privileged Identity Management (PıM) kullanarak roller de atayabilirsi
       ![Azure Active Directory arama Azure portal](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
 
 
-3. **Kullanıcılar**’ı seçin.
+3. **Kullanıcıları**seçin.
 
 4. Rol atamasını almak için arama yapın ve kullanıcıyı seçin. Örneğin, _Charon_.
 

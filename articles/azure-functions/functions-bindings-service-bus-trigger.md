@@ -1,5 +1,5 @@
 ---
-title: Azure Işlevleri için Azure Service Bus bağlamaları
+title: Azure Işlevleri için Azure Service Bus tetikleyicisi
 description: Azure Service Bus iletileri oluşturulduğunda bir Azure Işlevi çalıştırmayı öğrenin.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: c15fe311b331592a54c61a5cddb29d4b467ca550
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ee4961c6c1bb8cafe25ec2c84affdf0f1789e9f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603035"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
 
@@ -45,9 +45,9 @@ public static void Run(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus tetikleyicisi bağlamasını ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi [ileti meta verilerini](#message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder.
+Aşağıdaki örnek, bir *function.js* bir Service Bus tetikleyici bağlamasını ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi [ileti meta verilerini](#message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -85,9 +85,9 @@ public static void Run(string myQueueItem,
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi [ileti meta verilerini](#message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder. 
+Aşağıdaki örnek, bir *function.js* bir Service Bus tetikleyici bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi [ileti meta verilerini](#message-metadata) okur ve bir Service Bus kuyruğu iletisi kaydeder. 
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -120,7 +120,7 @@ module.exports = function(context, myQueueItem) {
 
 Aşağıdaki örnek, bir tetikleyici aracılığıyla Service Bus kuyruğu iletisinin nasıl okunacağını gösterir.
 
-Service Bus bağlama, *türü* olarak ayarlandığı *function. JSON* içinde tanımlanır `serviceBusTrigger` .
+Service Bus bağlama, *türünün türü* olarak ayarlandığı *function.js* tanımlanmıştır `serviceBusTrigger` .
 
 ```json
 {
@@ -287,9 +287,9 @@ Daha fazla ayrıntı için bkz. tetikleyici [örneği](#example) .
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBusTrigger` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBusTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBusTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -313,6 +313,7 @@ Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 * `byte[]`-İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
 * `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* [`MessageReceiver`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-İleti kapsayıcısından iletileri almak ve doğrulamak için kullanılır ( [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) olarak ayarlandığında gereklidir `false` )
 
 Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 
@@ -351,13 +352,13 @@ Azure Işlevleri 'nde zehirli ileti işleme denetlenemez veya yapılandırılama
 
 Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)bir ileti alır. `Complete`İşlev başarıyla tamamlandığında iletiye çağrı yapılır veya `Abandon` işlev başarısız olursa çağırır. İşlev zaman aşımından daha uzun çalışırsa `PeekLock` , işlev çalıştığı sürece kilit otomatik olarak yenilenir. 
 
-, `maxAutoRenewDuration` [Onmessageoptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)ile eşleşen *Host. JSON*' da yapılandırılabilir. Bu ayar için izin verilen en yüksek değer, Service Bus belgelerine göre 5 dakikadır, ancak Işlevlerin zaman sınırını varsayılan 5 dakikadan 10 dakikaya artırabilirsiniz. Service Bus yenileme sınırını aştığınız için bunu yapmak istemediğiniz Service Bus işlevleri için.
+, `maxAutoRenewDuration` [Onmessageoptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)ile eşleşen *host.jsüzerinde*yapılandırılabilir. Bu ayar için izin verilen en yüksek değer, Service Bus belgelerine göre 5 dakikadır, ancak Işlevlerin zaman sınırını varsayılan 5 dakikadan 10 dakikaya artırabilirsiniz. Service Bus yenileme sınırını aştığınız için bunu yapmak istemediğiniz Service Bus işlevleri için.
 
 ## <a name="message-metadata"></a>İleti meta verileri
 
 Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu özellikler [ileti](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) sınıfının üyeleridir.
 
-|Özellik|Tür|Description|
+|Özellik|Tür|Açıklama|
 |--------|----|-----------|
 |`ContentType`|`string`|Uygulamaya özgü mantık için gönderen ve alıcı tarafından kullanılan bir içerik türü tanımlayıcısı.|
 |`CorrelationId`|`string`|Bağıntı KIMLIĞI.|

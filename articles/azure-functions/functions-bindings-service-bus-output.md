@@ -1,5 +1,5 @@
 ---
-title: Azure Işlevleri için Azure Service Bus bağlamaları
+title: Azure Işlevleri için çıkış bağlamalarını Azure Service Bus
 description: Azure Işlevlerinden Azure Service Bus iletileri gönderme hakkında bilgi edinin.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1d3441847fc47146418265804457c37c693bd60b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6159ea7c9e00e822019a0d6542be2e84dbbdc335
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603647"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
@@ -280,7 +280,7 @@ Tam bir örnek için bkz. [Çıkış-örnek](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBus` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBus" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -381,13 +381,14 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
     }
 }
 ```
+
 `isSessionsEnabled`' A ayarlarsanız `true` , kabul edilir `sessionHandlerOptions` .  `isSessionsEnabled`' A ayarlarsanız `false` , kabul edilir `messageHandlerOptions` .
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |prefetchCount|0|İleti alıcısının eşzamanlı olarak isteyebildiği ileti sayısını alır veya ayarlar.|
 |maxAutoRenewDuration|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.|
-|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.|
+|'Nın|true|Tetikleyicinin işlemden sonra otomatik olarak tamamlanmalı veya işlev kodu el ile tamamlanacaktır.<br><br>Ayarı `false` yalnızca C# dilinde desteklenir.<br><br>Olarak ayarlanırsa `true` , işlev yürütmesi başarıyla tamamlanırsa, tetikleyici iletiyi otomatik olarak tamamlar ve aksi takdirde iletiyi terk edin.<br><br>Olarak ayarlandığında `false` , iletiyi tamamlamaya, bırakmaya veya atılacak şekilde [MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) Yöntemler çağrılmadan siz sorumlusunuz. Bir özel durum oluşturulursa (ve `MessageReceiver` yöntemlerin hiçbiri çağrılmadığında), kilit kalır. Kilidin süresi dolduktan sonra ileti, artdıktan sonra yeniden kuyruğa alınır `DeliveryCount` ve kilit otomatik olarak yenilenir.<br><br>C olmayan işlevlerde işlevlerdeki özel durumlar, arka planda çalışma zamanı çağrılarına neden olur `abandonAsync` . Özel durum oluşursa, `completeAsync` arka planda çağırılır. |
 |Maxconcurrentçağrıları|16|İleti göndericisinin ölçeklendirilmiş örnek başına başlatılması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler.|
 |maxConcurrentSessions|2000|Ölçeklendirilen örnek başına eşzamanlı olarak işlenebilecek en fazla oturum sayısı.|
 
