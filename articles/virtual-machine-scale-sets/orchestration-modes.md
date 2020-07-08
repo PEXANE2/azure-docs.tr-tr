@@ -10,10 +10,10 @@ ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737011"
 ---
 # <a name="orchestration-modes-preview"></a>Düzenleme modları (Önizleme)
@@ -44,7 +44,7 @@ Sanal Makine Ölçek Kümeleri 2 farklı düzenleme modunu destekleyecektir:
 
 |                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| VM yapılandırma modeli      | Yok                                       | Gerekli |
+| VM yapılandırma modeli      | Hiçbiri                                       | Gerekli |
 | Ölçek kümesine yeni VM ekleniyor  | VM oluşturulduğunda, sanal makineler ölçek kümesine açıkça eklenir. | VM 'Ler örtük olarak oluşturulur ve VM yapılandırma modeli, örnek sayısı ve otomatik ölçeklendirme kuralları temelinde ölçek kümesine eklenir | |
 | VM Silme                   | VM 'Lerin tek tek silinmesi gerekir, ölçek kümesi içinde herhangi bir VM varsa silinmeyecektir. | VM 'Ler tek tek silinebilir, ölçek kümesini silmek tüm sanal makine örneklerini siler.  |
 | VM 'Leri iliştirme/ayır           | Desteklenmiyor                              | Desteklenmiyor |

@@ -9,6 +9,7 @@ ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: b1710d239d1aa6c75c83c23c247e22ab452f7ea9
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84735328"

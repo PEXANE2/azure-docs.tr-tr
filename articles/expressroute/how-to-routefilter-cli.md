@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: anzaman
 ms.openlocfilehash: 269cabae276712a1f5b51c09705b7cd3eee5fb9d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738354"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft eşlemesi için rota filtrelerini yapılandırma: Azure CLı
 
 > [!div class="op_single_selector"]
-> * [Azure portalı](how-to-routefilter-portal.md)
+> * [Azure Portalı](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 

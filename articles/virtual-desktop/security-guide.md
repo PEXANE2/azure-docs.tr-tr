@@ -9,10 +9,10 @@ ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84736681"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
@@ -31,16 +31,16 @@ Windows sanal masaüstü dağıtımınızda sorumlu olduğunuz güvenlik ihtiya�
 
 | Güvenlik gereksinimi | Müşteri bundan sorumlu mi? |
 |---------------|:-------------------------:|
-|Kimlik|Yes|
-|Kullanıcı cihazları (mobil ve bılgısayar)|Yes|
-|Uygulama güvenliği|Yes|
-|Oturum Ana Bilgisayarı işletim sistemi|Yes|
-|Dağıtım yapılandırması|Yes|
-|Ağ denetimleri|Yes|
-|Sanallaştırma denetim düzlemi|No|
-|Fiziksel konaklar|No|
-|Fiziksel ağ|No|
-|Fiziksel veri merkezi|No|
+|Kimlik|Evet|
+|Kullanıcı cihazları (mobil ve bılgısayar)|Evet|
+|Uygulama güvenliği|Evet|
+|Oturum Ana Bilgisayarı işletim sistemi|Evet|
+|Dağıtım yapılandırması|Evet|
+|Ağ denetimleri|Evet|
+|Sanallaştırma denetim düzlemi|Hayır|
+|Fiziksel konaklar|Hayır|
+|Fiziksel ağ|Hayır|
+|Fiziksel veri merkezi|Hayır|
 
 Müşterinin sorumlu olmadığı güvenlik ihtiyaçları Microsoft tarafından işlenir.
 

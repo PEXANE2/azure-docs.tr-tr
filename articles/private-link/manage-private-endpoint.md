@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737504"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Özel Uç Nokta bağlantısını yönetme
@@ -26,9 +26,9 @@ Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüke
 Aşağıdaki tabloda, çeşitli hizmet sağlayıcısı eylemleri ve özel uç noktalar için ortaya çıkan bağlantı durumları gösterilmektedir.  Hizmet sağlayıcı ayrıca, Özel uç nokta bağlantısının bağlantı durumunu daha sonra tüketici müdahalesi olmadan değiştirebilir. Bu eylem, tüketici tarafındaki uç noktanın durumunu güncelleştirir. 
 
 
-|Hizmet sağlayıcı eylemi   |Hizmet tüketicisi özel uç nokta durumu   |Description   |
+|Hizmet sağlayıcı eylemi   |Hizmet tüketicisi özel uç nokta durumu   |Açıklama   |
 |---------|---------|---------|
-|Yok    |    Beklemede     |    Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.       |
+|Hiçbiri    |    Beklemede     |    Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.       |
 |Onaylama    |  Onaylandı       |  Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.     |
 |Reddet     | Reddedildi        | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.        |
 |Kaldır    |  Bağlantı kesildi       | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizleme için silinmelidir.        |

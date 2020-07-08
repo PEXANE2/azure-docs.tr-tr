@@ -10,6 +10,7 @@ ms.date: 01/09/2019
 ms.author: vikancha
 ms.openlocfilehash: 1d463242c923d766b500c1ede796e399e7af9c54
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84735940"

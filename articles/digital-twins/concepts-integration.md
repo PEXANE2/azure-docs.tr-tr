@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e266e9f8738a0c7d06c1f3b3f7213ad807e179fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737181"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure dijital TWINS 'i diğer hizmetlerle tümleştirme
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS genellikle diğer hizmetlerle birlikte kullanılır. Azure dijital TWINS, [**olay yollarını**](concepts-route-events.md)kullanarak telemetri ve bildirimler sunmak için kullanılan [IoT Hub](../iot-hub/about-iot-hub.md)gibi yukarı akış hizmetlerinden veri alır. Azure dijital TWINS Ayrıca depolama, iş akışı tümleştirme, analiz ve diğer kullanımlar için aşağı akış hizmetlerine veri yönlendirebilir. 
 

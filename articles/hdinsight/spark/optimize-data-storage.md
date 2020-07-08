@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737640"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark için veri depolama iyileştirmesi
@@ -28,7 +28,7 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
 
 Önceki Spark sürümleri, verileri, Spark 1,3 ve 1,6 ' nin sırasıyla veri çerçeveleri ve veri kümelerini kullanıma sunmuştur. Aşağıdaki göreli birleşmenizi göz önünde bulundurun:
 
-* **Veri çerçeveleri**
+* **DataFrames**
     * Çoğu durumda en iyi seçim.
     * Catalyst aracılığıyla sorgu iyileştirmesi sağlar.
     * Tam aşamalı kod oluşturma.
@@ -56,11 +56,11 @@ Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alan�
 
 | Mağaza Türü | Dosya Sistemi | Hız | Larsa | Kullanım Örnekleri |
 | --- | --- | --- | --- | --- |
-| Azure Blob Depolama | fazla **b:**// | **Standart** | Yes | Geçici küme |
-| Azure Blob depolama (güvenli) | fazla **BS:**// | **Standart** | Yes | Geçici küme |
-| Azure Data Lake Storage 2. Nesil| **ABFS:**// | **Lýdýr** | Yes | Geçici küme |
-| Azure Data Lake Storage Gen 1| **adl:**// | **Lýdýr** | Yes | Geçici küme |
-| Yerel olarak | Bu **:**// | **En hızlı** | No | Etkileşimli 24/7 kümesi |
+| Azure Blob Depolama | fazla **b:**// | **Standart** | Evet | Geçici küme |
+| Azure Blob depolama (güvenli) | fazla **BS:**// | **Standart** | Evet | Geçici küme |
+| Azure Data Lake Storage 2. Nesil| **ABFS:**// | **Lýdýr** | Evet | Geçici küme |
+| Azure Data Lake Storage Gen 1| **adl:**// | **Lýdýr** | Evet | Geçici küme |
+| Yerel olarak | Bu **:**// | **En hızlı** | Hayır | Etkileşimli 24/7 kümesi |
 
 Depolama seçeneklerinin tam açıklaması için bkz. [Azure HDInsight kümeleri ile kullanım için depolama seçeneklerini karşılaştırma](../hdinsight-hadoop-compare-storage-options.md).
 
@@ -88,7 +88,7 @@ Spark işleri dağıtılır, bu nedenle en iyi performans için uygun veri seril
 * Java serileştirme varsayılandır.
 * `Kryo`serileştirme daha yeni bir biçimdir ve Java 'dan daha hızlı ve daha küçük seri hale getirme oluşmasına neden olabilir.  `Kryo`, sınıfları programınıza kaydetmenizi gerektirir ve henüz tüm serileştirilebilir türleri desteklemez.
 
-## <a name="use-bucketing"></a>Demetlenmesidir kullanma
+## <a name="use-bucketing"></a>Gruplandırmayı kullanma
 
 Demetlenmesidir, veri bölümlemeye benzer. Ancak her demet yalnızca bir tane yerine bir sütun değerleri kümesi tutabilir. Bu yöntem, ürün tanımlayıcıları gibi büyük (milyonlarca veya daha fazla) değer üzerinde bölümlendirme için iyi bir sonuç verir. Bir demet, satırın demet anahtarı karma tarafından belirlenir. Bulaştırılmış tablolar, verilerin nasıl kullanıldığı ve sıralandığı hakkında meta verileri depoladıklarından benzersiz iyileştirmeler sunmaktadır.
 

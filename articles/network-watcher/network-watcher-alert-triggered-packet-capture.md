@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738065"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Uyarılar ve Azure Işlevleri ile öngörülü ağ izleme için paket yakalamayı kullanma
@@ -78,10 +78,10 @@ Bu senaryo şunları yapar:
     |---|---|---|
     |**Uygulama adı**|PacketCaptureExample|İşlev uygulamasının adı.|
     |**Abonelik**|[Aboneliğiniz] İşlev uygulamasının oluşturulacağı abonelik.||
-    |**Kaynak grubu**|PacketCaptureRG|İşlev uygulamasını içerecek kaynak grubu.|
+    |**Kaynak Grubu**|PacketCaptureRG|İşlev uygulamasını içerecek kaynak grubu.|
     |**Barındırma Planı**|Tüketim Planı| İşlev uygulamanızın kullandığı planın türü. Seçenekler, tüketim veya Azure App Service planlardır. |
     |**Konum**|Orta ABD| İşlev uygulamasının oluşturulacağı bölge.|
-    |**Depolama hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
+    |**Depolama Hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
 
 3. **Packetcaptureexample işlevi uygulamalar** dikey penceresinde **işlevler**  >  **özel işlev**' i seçin  > **+** .
 
@@ -148,7 +148,7 @@ Ağ Izleyicisi PowerShell cmdlet 'lerini kullanmak için, işlev uygulamasına e
 
     ![PowerShell dosyaları][functions7]
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 PowerShell cmdlet 'lerini kullanmak için kimlik doğrulaması yapmanız gerekir. İşlev uygulamasında kimlik doğrulamasını yapılandırırsınız. Kimlik doğrulamasını yapılandırmak için, ortam değişkenlerini yapılandırmanız ve şifrelenmiş bir anahtar dosyasını işlev uygulamasına yüklemeniz gerekir.
 

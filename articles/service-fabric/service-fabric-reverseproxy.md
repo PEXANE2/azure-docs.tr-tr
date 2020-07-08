@@ -7,6 +7,7 @@ ms.date: 11/03/2017
 ms.author: bharatn
 ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84735345"
