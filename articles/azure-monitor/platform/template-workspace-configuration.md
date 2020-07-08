@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768121"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
@@ -51,13 +50,13 @@ Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma al
 > [!WARNING]
 > Aşağıdaki şablon bir Log Analytics çalışma alanı oluşturur ve veri toplamayı yapılandırır. Bu, faturalandırma ayarlarınızı değiştirebilir. Azure ortamınızda uygulamadan önce bir Log Analytics çalışma alanında toplanan verilerin faturalandırmasını anlamak için [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](manage-cost-storage.md) konusunu gözden geçirin.
 
-Kapasite ayırma için, SKU `CapacityReservation` ve ÖZELLIK `capacityReservationLevel`için GB cinsinden bir değer belirterek verileri almak için seçilen bir kapasite rezervasyonu tanımlarsınız. Aşağıdaki listede, yapılandırma sırasında desteklenen değerlerin ve davranışın ayrıntıları verilmiştir.
+Kapasite ayırma için, SKU `CapacityReservation` ve özellik IÇIN GB cinsinden bir değer belirterek verileri almak için seçilen bir kapasite rezervasyonu tanımlarsınız `capacityReservationLevel` . Aşağıdaki listede, yapılandırma sırasında desteklenen değerlerin ve davranışın ayrıntıları verilmiştir.
 
 - Ayırma sınırını ayarladıktan sonra, 31 gün içinde farklı bir SKU 'ya geçiş yapılamaz.
 
 - Rezervasyon değerini ayarladıktan sonra yalnızca 31 gün içinde artırabilirsiniz.
 
-- En yüksek değeri 50000 olan 100 katları `capacityReservationLevel` olarak yalnızca değerini ayarlayabilirsiniz.
+- `capacityReservationLevel`En yüksek değeri 50000 olan 100 katları olarak yalnızca değerini ayarlayabilirsiniz.
 
 - Ayırma düzeyini artırırsanız, süreölçer sıfırlanır ve bu güncelleştirmeden başka bir 31 gün için değiştiremezsiniz.  
 
@@ -155,7 +154,7 @@ Kapasite ayırma için, SKU `CapacityReservation` ve ÖZELLIK `capacityReservati
 
 2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Parametreleri satır içi değerler olarak geçirmek yerine bir [Kaynak Yöneticisi Parameters dosyası](../../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) başvurusunu gözden geçirin. 
 
-3. Bu dosyayı bir yerel klasöre **deploylaworkspace Template. JSON** olarak kaydedin.
+3. Bu dosyayı yerel bir klasöre **deploylaworkspacetemplate.js** olarak kaydedin.
 
 4. Bu şablonu dağıtmaya hazırsınız. Çalışma alanını oluşturmak için PowerShell veya komut satırı kullanın, bu durumda, komutun bir parçası olarak çalışma alanı adı ve konumu belirtin. Çalışma alanı adı tüm Azure abonelikleri genelinde genel olarak benzersiz olmalıdır.
 

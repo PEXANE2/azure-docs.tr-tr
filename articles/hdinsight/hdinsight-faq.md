@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022223"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
@@ -85,7 +84,7 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
    ![Ambarı Kullanıcı ayarları](media/hdinsight-faq/ambari-user-settings.png)
 
-## <a name="metastore"></a>Meta Veri Deposu
+## <a name="metastore"></a>Meta veri deposu
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>Mevcut meta veri deposunu Azure SQL veritabanı 'na nasıl geçirebilirim? 
 
@@ -249,7 +248,7 @@ done
 ```
  
 > [!NOTE]
-> Dosya *adları. txt* dosyası blob kapsayıcılarındaki dosyaların mutlak yoluna sahip olur.
+> Dosya *filenames.txt* , blob kapsayıcılarındaki dosyaların mutlak yoluna sahip olacaktır.
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Depolama için bir Ranger eklentileri var mı?
 

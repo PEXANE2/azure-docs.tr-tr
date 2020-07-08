@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 53d12510c4960b16d56ee32f07ca96bc398f999a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043159"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Veritabanı coğrafi çoğaltma kullanarak çok kiracılı SaaS uygulaması için olağanüstü durum kurtarma
@@ -110,7 +109,7 @@ Bu görevde, sunucuların, elastik havuzların ve veritabanlarının yapılandı
 
 1. _PowerShell ISE_'de. ..\Learning Modules\userconfig.exe dosyasını açın. `<resourcegroup>` `<user>` 10 ve 11. satırları, uygulamayı dağıtırken kullanılan değerle değiştirin.  Dosyayı kaydedin!
 
-2. *PowerShell ISE*'de. ..\Learning Modules\Business Continuity ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe ve set ' i açın:
+2. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği açın ve şunları ayarlayın:
     * **$DemoScenario = 1**, kiracı sunucusunu eşitlenen bir arka plan işi başlatın ve yapılandırma bilgilerini katalogla havuzlayın
 
 3. Eşitleme betiğini çalıştırmak için **F5** tuşuna basın. Kiracı kaynaklarının yapılandırmasını eşitlemek için yeni bir PowerShell oturumu açılır.
@@ -128,7 +127,7 @@ Bu görevde, yinelenen bir uygulama örneği dağıtan ve kataloğu ve tüm kira
 > [!Note]
 > Bu öğretici, Wingtip bilet örnek uygulamasına coğrafi çoğaltma koruması ekler. Coğrafi çoğaltma kullanan bir uygulama için bir üretim senaryosunda, her kiracı, coğrafi olarak çoğaltılan bir veritabanıyla birlikte kaynak olarak sağlanabilir. Bkz. [Azure SQL veritabanı 'nı kullanarak yüksek oranda kullanılabilir hizmetler tasarlama](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe. ps1 betiğini açın ve aşağıdaki değerleri ayarlayın:
+1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği ' ni açın ve aşağıdaki değerleri ayarlayın:
     * **$DemoScenario = 2**, yansıtma görüntüsü kurtarma ortamı oluşturma ve Katalog ve kiracı veritabanlarını çoğaltma
 
 2. Betiği çalıştırmak için **F5**'e basın. Çoğaltmaları oluşturmak için yeni bir PowerShell oturumu açıldı.
@@ -181,7 +180,7 @@ Kurtarma betiği aşağıdaki görevleri gerçekleştirir:
 
 Şimdi uygulamanın dağıtıldığı bölgede bir kesinti olduğunu ve kurtarma betiğini çalıştırmayı düşünün:
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe. ps1 betiğini açın ve aşağıdaki değerleri ayarlayın:
+1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği ' ni açın ve aşağıdaki değerleri ayarlayın:
     * **$DemoScenario = 3**, çoğaltmaya yük devreterek uygulamayı bir kurtarma bölgesine kurtarın
 
 2. Betiği çalıştırmak için **F5**'e basın.  
@@ -212,7 +211,7 @@ Uygulama uç noktası Traffic Manager devre dışı bırakılsa da, uygulama kul
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Kurtarma bölgesinde yeni bir kiracı sağlayın
 Tüm mevcut kiracı veritabanlarının yük devretmemesine karşın, kurtarma bölgesinde yeni kiracılar sağlayabilirsiniz.  
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe. ps1 betiğini açın ve aşağıdaki özelliği ayarlayın:
+1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiğini açın ve aşağıdaki özelliği ayarlayın:
     * **$DemoScenario = 4**, kurtarma bölgesinde yeni bir kiracı sağlayın
 
 2. Betiği çalıştırmak ve yeni kiracıyı sağlamak için **F5** tuşuna basın. 
@@ -253,7 +252,7 @@ Kurtarma işlemi tamamlandığında, uygulama ve tüm kiracılar kurtarma bölge
 Bu görevde, kiracı veritabanlarından birini güncelleştirin. 
 
 1. Tarayıcınızda, contoso Concert salonu için olaylar listesini bulun ve son olay adını göz önünde bulun.
-2. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe. ps1 komut dosyasında aşağıdaki değeri ayarlayın:
+2. *PowerShell ISE*'de,. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği içinde aşağıdaki değeri ayarlayın:
     * **$DemoScenario = 5** Kurtarma bölgesindeki bir kiracıdan bir olayı silme
 3. Betiği yürütmek için **F5** 'e basın
 4. Contoso Concert salyamı olayları sayfasını ( http://events.wingtip-dpt.&lt ; user &gt; . trafficmanager.net/contosoconcerthall- &lt; Kullanıcı &gt; , dağıtımınızın Kullanıcı değeri ile değiştirin) yenileyip son olayın silindiğini görürsünüz.
@@ -278,7 +277,7 @@ Yük devretme, veritabanını özgün bölgeye etkin bir şekilde taşıdıkça.
 ### <a name="run-the-repatriation-script"></a>Repama betiğini çalıştırma
 Şimdi kesinti çözümlendiğini ve repama betiğini çalıştırmayı düşünün.
 
-1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\dr-failovertoreplica\demo-failovertoreplica.exe.
+1. *PowerShell ISE*'de. ..\Learning Modules\iş sürekliliği ve olağanüstü durum Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 betiği.
 
 2. Katalog eşitleme işleminin hala PowerShell örneğinde çalıştığını doğrulayın.  Gerekirse, şu ayarları yaparak yeniden başlatın:
     * **$DemoScenario = 1**, kiracı sunucusu, havuz ve veritabanı yapılandırma bilgilerini katalogla eşitlemeye başlayın

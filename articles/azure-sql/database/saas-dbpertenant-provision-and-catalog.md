@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042816"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Yeni kiracılar sağlamayı ve bunları kataloğa kaydetmeyi öğrenin
@@ -78,7 +77,7 @@ Wingtip bilet SaaS betikleri ve uygulama kaynak kodu [Wingtipbilet ssaas-DbPerTe
 
 Wingtip bilet uygulamasının yeni kiracı sağlaması uygulayıp uygulamadığını anlamak için bir kesme noktası ekleyin ve bir kiracı sağladığınızda iş akışını izleyin.
 
-1. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ provisionandcatalog \\ _demo-ProvisionAndCatalog. ps1_ ve aşağıdaki parametreleri ayarla:
+1. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ provisionandcatalog \\ _Demo-ProvisionAndCatalog.ps1_ ve aşağıdaki parametreleri ayarlar:
 
    * **$TenantName** = yeni mekanın adı (örneğin, *Bushwillow Blues*).
    * **$VenueType** = önceden tanımlanmış mekan türlerinden biri: _maves, classicalmusic, dans, CAI, judo, motor yarış, çok amaçlı, Opera, rockmusic, futbol_.
@@ -92,7 +91,7 @@ Wingtip bilet uygulamasının yeni kiracı sağlaması uygulayıp uygulamadığ�
 
 4. Komut dosyası yürütme kesme noktasında durduktan sonra, koda dönmek için F11 tuşuna basın.
 
-   ![Hata ayıklama](./media/saas-dbpertenant-provision-and-catalog/debug.png)
+   ![Hata Ayıklama](./media/saas-dbpertenant-provision-and-catalog/debug.png)
 
 
 
@@ -116,7 +115,7 @@ Bu iş akışını açık bir şekilde izlemeniz gerekmez. Betikte hata ayıklam
 
     Veritabanı adı, hangi parçanın hangi kiracıya ait olduğunu netleştirmek üzere kiracı adından oluşturulur. Diğer veritabanı adlandırma kurallarını da kullanabilirsiniz. Kaynak Yöneticisi şablonu, Katalog sunucusundaki bir şablon veritabanını (_Basetenantdb_) kopyalayarak bir kiracı veritabanı oluşturur. Alternatif olarak, bir veritabanı oluşturup bir bacpac içeri aktararak onu başlatabilirsiniz. Alternatif olarak bilinen bir konumdan başlatma betiği de çalıştırabilirsiniz.
 
-    Kaynak Yöneticisi şablonu. ..\Learning Modules\Common\ klasöründe bulunur: *tenantdatabasecopytemplate. JSON*
+    Kaynak Yöneticisi şablonu. ..\Learning Modules\Common\ klasöründedir: *tenantdatabasecopytemplate.json*
 
 * **Kiracı veritabanı daha fazla başlatılmış.** Mekan (kiracı) adı ve mekan türü eklenir. Ayrıca, burada başka başlatma da yapabilirsiniz.
 
@@ -136,7 +135,7 @@ Sağlama tamamlandıktan sonra, yürütme özgün *demo-ProvisionAndCatalog* bet
 
 Bu alıştırma, 17 kiracılar toplu işi sağlar. Diğer Wingtip bilet SaaS veritabanı-Kiracı öğreticilerine başlamadan önce Bu kiracı toplu iş örneğini sağlamanızı öneririz. Birlikte çalışmak için birkaç veritabanı daha vardır.
 
-1. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ provisionandcatalog \\ *demo-ProvisionAndCatalog. ps1*. *$DemoScenario* parametresini 3 olarak değiştirin:
+1. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ provisionandcatalog \\ *Demo-ProvisionAndCatalog.ps1*. *$DemoScenario* parametresini 3 olarak değiştirin:
 
    * **$DemoScenario**  =  **3**, *kiracı grubu sağlayın*.
 2. Betiği çalıştırmak için F5 tuşuna basın.

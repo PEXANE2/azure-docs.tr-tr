@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 89d7e46563182bf7808eb118f4526571c631fa23
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262523"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027778"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI bağlayıcısını kullanarak Azure Cosmos DB verilerini görselleştirme
 
@@ -51,22 +50,24 @@ Raporlarınızı PowerBI.com ' de paylaşmak için, PowerBI.com ' de bir hesabı
 ## <a name="lets-get-started"></a>Haydi başlayalım
 Bu öğreticide, dünyanın dört bir yanındaki bir tologist verdikcızı olduğunu düşünelim. Volcano verileri bir Azure Cosmos DB hesabında depolanır ve JSON belge biçimi aşağıdaki gibidir:
 
-    {
-        "Volcano Name": "Rainier",
-           "Country": "United States",
-          "Region": "US-Washington",
-          "Location": {
-            "type": "Point",
-            "coordinates": [
-              -121.758,
-              46.87
-            ]
-          },
-          "Elevation": 4392,
-          "Type": "Stratovolcano",
-          "Status": "Dendrochronology",
-          "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-    }
+```json
+{
+    "Volcano Name": "Rainier",
+        "Country": "United States",
+        "Region": "US-Washington",
+        "Location": {
+          "type": "Point",
+          "coordinates": [
+            -121.758,
+            46.87
+          ]
+        },
+        "Elevation": 4392,
+        "Type": "Stratovolcano",
+        "Status": "Dendrochronology",
+        "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
+}
+```
 
 Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI raporundaki verileri görselleştirebilirsiniz.
 
@@ -74,13 +75,13 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 2. **Veri alabilir**, **en son kaynaklara**bakabilirsiniz veya **diğer raporları** doğrudan hoş geldiniz ekranından açabilirsiniz. Ekranı kapatmak için sağ üst köşedeki "X" i seçin. Power BI Desktop **rapor** görünümü görüntülenir.
    
-   ![Power BI Desktop rapor görünümü-Power BI Bağlayıcısı](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
 3. **Giriş** şeritini seçin ve **veri al**' a tıklayın.  **Veri al** penceresi görünmelidir.
 
 4. **Azure**' a tıklayın, **Azure Cosmos DB (Beta)** öğesini seçin ve ardından **Bağlan**' a tıklayın. 
 
-    ![Veri Al-Power BI Bağlayıcısı Power BI Desktop](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Veri Al-Power BI Bağlayıcısı Power BI Desktop":::
 
 5. **Önizleme Bağlayıcısı** sayfasında **devam**' a tıklayın. **Azure Cosmos DB** penceresi görüntülenir.
 
@@ -98,37 +99,48 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
     
     Önizleme bölmesi, **kayıt** öğelerinin bir listesini gösterir.  Belge, Power BI bir **kayıt** türü olarak gösterilir. Benzer şekilde, bir belge içinde iç içe geçmiş bir JSON bloğu da bir **kayıttır**.
     
-    ![Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-Gezgin penceresi](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-Gezgin penceresi":::
+
 12. Verileri dönüştürmek için sorgu düzenleyicisini yeni bir pencerede başlatmak üzere **Düzenle** ' ye tıklayın.
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON belgelerini düzleştirme ve dönüştürme
 1. Orta bölmedeki **belge** sütununun bulunduğu Power BI Sorgu Düzenleyicisi penceresine geçin.
-   ![Power BI Desktop Sorgu Düzenleyicisi](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. **Belge** sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Bir alan listesi ile bağlam menüsü görüntülenir.  Raporunuz için ihtiyacınız olan alanları seçin; örneğin, Volcano adı, ülke, bölge, konum, yükseltme, tür, durum ve son bilgi alma. **Özgün sütun adını önek olarak kullan** kutusunun işaretini kaldırın ve ardından **Tamam**' a tıklayın.
-   
-    ![Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-Belgeleri Genişlet](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. Orta bölmede, seçili alanlarla sonucun önizlemesi görüntülenir.
-   
-    ![Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-sonuçları Düzleştir](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
-4. Örneğimizde Location özelliği bir belgedeki GeoJSON bloğudur.  Görebileceğiniz gibi, konum Power BI Desktop bir **kayıt** türü olarak gösterilir.  
-5. Belge. Location sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Tür ve koordinat alanları içeren bağlam menüsü görüntülenir.  Koordinatlar alanını seçelim, **ön ek seçili olmadığından özgün sütun adını kullan** ' ın seçili olduğundan emin olun ve **Tamam**' a tıklayın.
-   
-    ![Azure Cosmos DB Power BI Bağlayıcısı-konum kaydı için Power BI öğreticisi](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
-6. Orta bölmede artık **liste** türü bir koordinat sütunu gösteriliyor.  Öğreticinin başlangıcında gösterildiği gibi, bu öğreticideki GeoJSON verileri, koordinatlar dizisine kaydedilmiş Enlem ve boylam değerlerini içeren nokta türüdür.
-   
-    Koordinatlar [0] öğesi, [1] koordinatları enlem temsil ettiğinde Boylam temsil ediyor.
-    ![Azure Cosmos DB Power BI bağlayıcı koordinatları listesi için Power BI öğreticisi](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. Koordinatları dizisini düzleştirmek için, LatLong adlı **özel bir sütun** oluşturun.  **Sütun Ekle** şeridini seçin ve **özel sütun**' a tıklayın.  **Özel sütun** penceresi görüntülenir.
-8. Yeni sütun için bir ad girin, örneğin, LatLong.
-9. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam**'a tıklayın.
-   
-    DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
-   
-    ![Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-özel sütun Ekle](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
-10. Şimdi, Orta bölmede, değerlerle doldurulan yeni bir ve daha fazla sütun gösterilmektedir.
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop Sorgu Düzenleyicisi":::
+
+1. **Belge** sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Bir alan listesi ile bağlam menüsü görüntülenir.  Raporunuz için ihtiyacınız olan alanları seçin; örneğin, Volcano adı, ülke, bölge, konum, yükseltme, tür, durum ve son bilgi alma. **Özgün sütun adını önek olarak kullan** kutusunun işaretini kaldırın ve ardından **Tamam**' a tıklayın.
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-Belgeleri Genişlet":::
+
+1. Orta bölmede, seçili alanlarla sonucun önizlemesi görüntülenir.
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-sonuçları Düzleştir":::
+
+1. Örneğimizde Location özelliği bir belgedeki GeoJSON bloğudur.  Görebileceğiniz gibi, konum Power BI Desktop bir **kayıt** türü olarak gösterilir.  
+
+1. Belge. Location sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Tür ve koordinat alanları içeren bağlam menüsü görüntülenir.  Koordinatlar alanını seçelim, **ön ek seçili olmadığından özgün sütun adını kullan** ' ın seçili olduğundan emin olun ve **Tamam**' a tıklayın.
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı-konum kaydı için Power BI öğreticisi":::
+
+1. Orta bölmede artık **liste** türü bir koordinat sütunu gösteriliyor.  Öğreticinin başlangıcında gösterildiği gibi, bu öğreticideki GeoJSON verileri, koordinatlar dizisine kaydedilmiş Enlem ve boylam değerlerini içeren nokta türüdür.
+   
+   Koordinatlar [0] öğesi, [1] koordinatları enlem temsil ettiğinde Boylam temsil ediyor.
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Azure Cosmos DB Power BI bağlayıcı koordinatları listesi için Power BI öğreticisi":::
+
+1. Koordinatları dizisini düzleştirmek için, LatLong adlı **özel bir sütun** oluşturun.  **Sütun Ekle** şeridini seçin ve **özel sütun**' a tıklayın.  **Özel sütun** penceresi görüntülenir.
+
+1. Yeni sütun için bir ad girin, örneğin, LatLong.
+
+1. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam**'a tıklayın.
+   
+   DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-özel sütun Ekle":::
+
+1. Şimdi, Orta bölmede, değerlerle doldurulan yeni bir ve daha fazla sütun gösterilmektedir.
     
-    ![Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-özel LatLong sütunu](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-özel LatLong sütunu":::
     
     Yeni sütunda bir hata alırsanız, sorgu ayarları altındaki uygulanan adımların aşağıdaki şekilde eşleştiğinden emin olun:
     
@@ -136,43 +148,44 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
     
     Adımlarınız farklıysa, ek adımları silip özel sütunu yeniden eklemeyi deneyin. 
 
-11. Veri modelini kaydetmek için **Kapat ve Uygula** ' ya tıklayın.
-    
-    ![Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-kapat & Uygula](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
+1. Veri modelini kaydetmek için **Kapat ve Uygula** ' ya tıklayın.
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-kapat & Uygula":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>Raporları oluşturma
+
 Power BI Desktop rapor görünümü, verileri görselleştirmek için rapor oluşturmaya başlayabileceğiniz yerdir.  **Rapor** tuvalinde alanları sürükleyip bırakarak raporlar oluşturabilirsiniz.
 
-![Power BI Desktop rapor görünümü-Power BI Bağlayıcısı](./media/powerbi-visualize/power_bi_connector_pbireportview2.png)
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
 Rapor görünümünde şunları bulmanız gerekir:
 
 1. **Alanlar** bölmesinde, raporlarınız için kullanabileceğiniz alanlarla birlikte veri modellerinin bir listesini görebileceğiniz yerdir.
-2. **Görsel öğeler** bölmesi. Bir rapor, tek veya birden çok görselleştirmeler içerebilir.  Görsel **öğeler** bölmesinden ihtiyaçlarınıza uygun görsel türleri seçin.
-3. Rapor **tuvali,** raporunuzun görsellerini oluşturduğunuz yerdir.
-4. **Rapor** sayfası. Power BI Desktop birden çok rapor sayfası ekleyebilirsiniz.
+1. **Görsel öğeler** bölmesi. Bir rapor, tek veya birden çok görselleştirmeler içerebilir.  Görsel **öğeler** bölmesinden ihtiyaçlarınıza uygun görsel türleri seçin.
+1. Rapor **tuvali,** raporunuzun görsellerini oluşturduğunuz yerdir.
+1. **Rapor** sayfası. Power BI Desktop birden çok rapor sayfası ekleyebilirsiniz.
 
 Aşağıda basit bir etkileşimli harita görünümü raporu oluşturmanın temel adımları gösterilmektedir.
 
 1. Bizim örneğimizde, her bir Volcano 'nun konumunu gösteren bir harita görünümü oluşturacağız.  **Görsel öğeler** bölmesinde, yukarıdaki ekran görüntüsünde vurgulanan şekilde harita görsel türüne tıklayın.  Harita görsel türünün **rapor** tuvalinde boyanmış olduğunu görmeniz gerekir.  **Görselleştirme** bölmesi, harita görsel türüyle ilişkili bir özellikler kümesi de görüntülemelidir.
-2. Şimdi, **alanlar** bölmesindeki iade eden alanını **görsel öğeler** bölmesindeki **konum** özelliğine sürükleyip bırakın.
-3. Sonra, Vocano Name alanını sürükleyin ve **gösterge** özelliğine bırakın.  
-4. Ardından, yükseltme alanını sürükleyin ve **Boyut** özelliğine bırakın.  
-5. Şimdi, her bir Volcano 'ın, Volcano 'ın yükseltmesinde bulunan kabarcığun boyutuyla ilgili bir kabarcık kümesini gösteren bir kabarcık kümesini gösteren harita görselini görmeniz gerekir.
-6. Artık temel bir rapor oluşturdunuz.  Daha fazla görselleştirme ekleyerek raporu daha ayrıntılı bir şekilde özelleştirebilirsiniz.  Bu durumda, raporu etkileşimli hale getirmek için bir Volcano türü dilimleyici ekledik.  
+1. Şimdi, **alanlar** bölmesindeki iade eden alanını **görsel öğeler** bölmesindeki **konum** özelliğine sürükleyip bırakın.
+1. Sonra, Vocano Name alanını sürükleyin ve **gösterge** özelliğine bırakın.  
+1. Ardından, yükseltme alanını sürükleyin ve **Boyut** özelliğine bırakın.  
+1. Şimdi, her bir Volcano 'ın, Volcano 'ın yükseltmesinde bulunan kabarcığun boyutuyla ilgili bir kabarcık kümesini gösteren bir kabarcık kümesini gösteren harita görselini görmeniz gerekir.
+1. Artık temel bir rapor oluşturdunuz.  Daha fazla görselleştirme ekleyerek raporu daha ayrıntılı bir şekilde özelleştirebilirsiniz.  Bu durumda, raporu etkileşimli hale getirmek için bir Volcano türü dilimleyici ekledik.  
    
-7. Dosya menüsünde **Kaydet** ' e tıklayın ve dosyayı Powerbitusel. pbix olarak kaydedin.
+1. Dosya menüsünde **Kaydet** ' e tıklayın ve dosyayı Powerbitusel. pbix olarak kaydedin.
 
 ## <a name="publish-and-share-your-report"></a>Raporunuzu yayımlayın ve paylaşabilirsiniz
 Raporunuzu paylaşmak için PowerBI.com içinde bir hesabınız olması gerekir.
 
 1. Power BI Desktop, **giriş** şeridi ' ne tıklayın.
-2. **Yayımla**’ta tıklayın.  PowerBI.com hesabınız için Kullanıcı adı ve parola girmeniz istenir.
-3. Kimlik bilgisinin kimliği doğrulandıktan sonra, rapor seçtiğiniz hedefe yayımlanır.
-4. Raporunuzu PowerBI.com üzerinde görmek ve paylaşmak için **Power BI içinde ' Powerbituon. pbix ' öğesini aç** ' a tıklayın.
+1. **Yayımla**’ta tıklayın.  PowerBI.com hesabınız için Kullanıcı adı ve parola girmeniz istenir.
+1. Kimlik bilgisinin kimliği doğrulandıktan sonra, rapor seçtiğiniz hedefe yayımlanır.
+1. Raporunuzu PowerBI.com üzerinde görmek ve paylaşmak için **Power BI içinde ' Powerbituon. pbix ' öğesini aç** ' a tıklayın.
    
-    ![Power BI başarılı bir şekilde yayımlanıyor! Öğreticiyi Power BI açın](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI başarılı bir şekilde yayımlanıyor! Öğreticiyi Power BI açın":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>Power BI.com'da bir pano oluşturun
 Artık bir raporunuz olduğuna göre, PowerBI.com 'de paylaşma olanağı sağlar

@@ -16,10 +16,9 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 15f94e93c270c8d62436b81a7caedbf181c1aeb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022551"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
@@ -372,12 +371,12 @@ Desteklenen Azure VM türlerini belirlemek için bkz. SAP Note [1928533].
 
 En düşük yapılandırma aşağıdaki gibidir: 
 
-| Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
+| Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 
@@ -385,15 +384,15 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 Performans yapılandırması aşağıdaki gibidir:
 
-| Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
+| Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Yok | Kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium | Yok | Kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium | Hiçbiri | Kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium | Hiçbiri | Kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium | Yok | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -462,12 +461,12 @@ Desteklenen Azure VM türlerini belirlemek için bkz. SAP Note [1928533].
 
 En düşük yapılandırma:
 
-| Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
+| Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -476,15 +475,15 @@ Oracle 'ın çevrimiçi yineleme günlüklerinin barındırılmasına yönelik d
 
 Performans yapılandırması:
 
-| Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
+| Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Yok | Kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium | Hiçbiri | Kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium | Hiçbiri | Kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium | Hiçbiri | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM

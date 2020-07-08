@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042627"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Parçalı bir çok kiracılı Azure SQL veritabanı kullanarak bir SaaS uygulamasında yeni kiracılar sağlama ve kataloglandırın
@@ -156,7 +155,7 @@ Aşağıda adım adım iş akışının temel öğeleri verilmiştir:
 
 Wingtip uygulamasının paylaşılan bir veritabanında yeni kiracı sağlamayı nasıl uyguladığını anlamak için, bir kesme noktası ekleyin ve iş akışında adım adım ilerleyin:
 
-1. *PowerShell ISE*'de açın... \\ Learning modülleri \\ provisionkiracılar \\ *demo-ProvisionTenants. ps1* ve aşağıdaki parametreleri ayarlar:
+1. *PowerShell ISE*'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* ve aşağıdaki parametreleri ayarladı:
    - **$TenantName**  =  **Bushwillow Maves**, yeni bir mekanın adı.
    - **$VenueType**  =  **mavilere**, önceden tanımlanmış yer türlerinden biri: maves, classicalmusic, dans, CAI, judo, otobisiklet, çok amaçlı, Opera, rockmusic, futbol (küçük harf, boşluk yok).
    - **$DemoScenario**  =  **1**, diğer kiracılarla paylaşılan bir veritabanında kiracı sağlamak için.
@@ -196,7 +195,7 @@ Aşağıda, betiği izlerken adım adım iş akışının temel öğeleri verilm
 
 Şimdi kendi veritabanında bir kiracı oluştururken betik sürecini gözden geçir:
 
-1. Hala devam ediyor... \\ Öğrenme modülleri \\ provisionkiracılar \\ *demo-ProvisionTenants. ps1* aşağıdaki parametreleri ayarla:
+1. Hala devam ediyor... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* aşağıdaki parametreleri ayarladı:
    - **$TenantName**  =  **Sequoia futbol**, yeni bir mekanın adı.
    - **$VenueType**  =  **futbol**, önceden tanımlanmış yer türlerinden biri: maves, classicalmusic, dans, CAI, judo, otobisiklet, çok amaçlı, Opera, rockmusic, futbol (küçük harf, boşluk yok).
    - **$DemoScenario**  =  **2**, bir kiracıyı kendi veritabanına sağlamak için.
@@ -213,7 +212,7 @@ Aşağıda, betiği izlerken adım adım iş akışının temel öğeleri verilm
 
 Bu alıştırma, 17 kiracılar toplu işi sağlar. Diğer Wingtip bilet öğreticilerini başlatmadan önce bu toplu iş topluluğunu sağlamanız önerilir. bu nedenle, birlikte çalışmak için daha fazla veritabanı vardır.
 
-1. *PowerShell ISE*'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *demo-ProvisionTenants. ps1* ve *$DemoScenario* parametresini 4 olarak değiştirir:
+1. *PowerShell ISE*'de açın... \\ Öğrenme modülleri \\ provisionkiracılar \\ *Demo-ProvisionTenants.ps1* ve *$DemoScenario* parametresini 4 olarak değiştirir:
    - **$DemoScenario**  =  **4**, paylaşılan bir veritabanına kiracıların bir toplu iş sağlamasını sağlamak.
 
 2. **F5** tuşuna basıp betiği çalıştırın.

@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920360"
 ---
 # <a name="responsible-machine-learning-ml"></a>Sorumlu Machine Learning (ML)
 
@@ -36,7 +35,7 @@ Yapay zeka ve özerk sistemler topluluğu dokusuna daha fazlasını tümleştirm
 
 ## <a name="interpret-and-explain-model-behavior"></a>Model davranışını yorumlama ve açıklama
 
-Sistem geliştiricileri, düzenleyiciler, kullanıcılar ve iş karar mekanizmalarının, sistemlerin neden belirli kararlar vermesini anlayabilmesi için zor olan veya kara kutu sistemleri sorunlu olabilir. Bazı AI sistemleri diğerlerinden daha explainable ve bazı durumlarda, daha yüksek doğruluk ve daha fazla explainable olan bir sistem arasında bir zorunluluğunu getirir.
+Sistem geliştiricileri, düzenleyiciler, kullanıcılar ve iş karar mekanizmalarının, sistemlerin neden belirli kararlar vermesini anlayabilmesi için zor olan sistemler, sistem geliştiricileri, düzenleyiciciler, kullanıcılar ve iş karar mekanizmaları gibi paydaşların sorun oluşturabileceğinden sorunlu olabilir. Bazı AI sistemleri diğerlerinden daha explainable ve bazı durumlarda, daha yüksek doğruluk ve daha fazla explainable olan bir sistem arasında bir zorunluluğunu getirir.
 
 Intertable AI sistemleri oluşturmak için, Microsoft tarafından oluşturulan açık kaynaklı bir paket olan [ınterbir](https://github.com/interpretml/interpret)Package kullanın. Inter, [otomatik makine öğrenimi modelleri](how-to-machine-learning-interpretability-automl.md)de dahil olmak üzere [makine öğrenimi modellerinizi yorumlamak ve açıklamak](how-to-machine-learning-interpretability-aml.md)için, [Azure Machine Learning içinde yorumbir şekilde kullanılabilir](how-to-machine-learning-interpretability.md) .
 
@@ -68,7 +67,7 @@ Farklı şekilde özel sistemlerin uygulanması zordur. [Whitenoıse](https://gi
 
 Machine Learning işleminde doğru bilgilerin belgelenerek, her aşamada sorumlu kararlar alma anahtarıdır. Veri sayfaları, makine öğrenimi yaşam döngüsünün bir parçası olarak kullanılan ve oluşturulan makine öğrenimi varlıklarını belgelemek için bir yoldur.
 
-Modeller "kara kutular" olarak düşünüldük ve genellikle bunlar hakkında çok az bilgi vardır. Machine Learning sistemleri daha fazla bilgi edintiğinden ve karar vermek için kullanıldığından, veri sayfalarını kullanmak, daha sorumlu makine öğrenimi sistemleri geliştirmeye yönelik bir adımdır.
+Modeller "donuk kutular" olarak düşünüldük ve genellikle bunlar hakkında çok az bilgi vardır. Machine Learning sistemleri daha fazla bilgi edintiğinden ve karar vermek için kullanıldığından, veri sayfalarını kullanmak, daha sorumlu makine öğrenimi sistemleri geliştirmeye yönelik bir adımdır.
 
 Bir veri sayfasının parçası olarak belgelemek isteyebileceğiniz bazı model bilgileri:
 

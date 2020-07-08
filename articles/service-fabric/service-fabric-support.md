@@ -5,12 +5,11 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ee602b3aa6c701eb10730f4c5c387175bb070ef3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: f2da9fbb04f9d1fa696250967db404864a3cce82
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921829"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric destek seçenekleri
 
@@ -26,7 +25,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 - [Microsoft Premier desteği](https://support.microsoft.com/en-us/premier).
 
 > [!Note]
-> Bir bronz güvenilirlik katmanında veya tek düğümlü kümede çalışan kümeler yalnızca test iş yüklerini çalıştırmanıza izin verir. Bronz güvenilirlik veya tek düğümlü küme üzerinde çalışan bir küme ile ilgili sorunlarla karşılaşırsanız, Microsoft destek ekibi bu sorunu azaltmaya yardımcı olur, ancak bir kök neden analizi gerçekleştirmeyecektir. Daha fazla ayrıntı için lütfen [kümenin güvenilirlik özelliklerine](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) bakın.
+> Bir bronz güvenilirlik katmanında veya tek düğümlü kümede çalışan kümeler yalnızca test iş yüklerini çalıştırmanıza izin verir. Bronz güvenilirlik veya tek düğümlü küme üzerinde çalışan bir küme ile ilgili sorunlarla karşılaşırsanız, Microsoft destek ekibi bu sorunu azaltmaya yardımcı olur, ancak bir kök neden analizi gerçekleştirmeyecektir. Daha fazla ayrıntı için lütfen [kümenin güvenilirlik özelliklerine](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) bakın.
 >
 > Üretime hazır bir küme için gerekli olanlar hakkında daha fazla bilgi için lütfen [Üretim hazırlığı denetim listesine](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)bakın.
 
@@ -51,7 +50,7 @@ Service Fabric sorunları bildirmek için bir GitHub deposu ayarladık.  Ayrıca
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow ve MSDN forumları
 
-[StackOverflow üzerindeki Service Fabric etiketi][stackoverflow] ve Service Fabric [MSDN-Forum], platformun nasıl çalıştığı ve bununla ilgili bazı görevleri nasıl gerçekleştirebileceğiniz hakkında sorular sormak için en iyi seçenektir.
+[StackOverflow üzerindeki Service Fabric etiketi][stackoverflow] ve [MSDN 'deki Service Fabric Forumu][msdn-forum] , platformun nasıl çalıştığı ve bununla ilgili görevleri nasıl gerçekleştirebileceğiniz hakkında sorular sormak için en iyi seçenektir.
 
 ### <a name="azure-feedback-forum"></a>Azure geri bildirim Forumu
 
@@ -72,3 +71,4 @@ Bu önizleme sürümleri için ücretli destek seçeneği yoktur. Soru sormak ve
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs
 [sample-repos]: https://aka.ms/servicefabricsamples
+[msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

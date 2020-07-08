@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 65513b3cd5813d7d127ca9cbabdcd038f11beee9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042872"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>Azure Izleyici günlüklerini çok kiracılı bir Azure SQL veritabanı SaaS uygulamasıyla ayarlama ve kullanma
@@ -48,7 +47,7 @@ OMS çalışma alanları artık Log Analytics çalışma alanları olarak adland
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Kiracılarınız üzerinde bir iş yükünü taklit ederek Performans Tanılama verileri oluşturun 
 
-1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modülleri \\ performans Izleme ve Yönetim \\ demo-PerformanceMonitoringAndManagement. ps1*. Bu öğreticide yük oluşturma senaryolarından birkaçını çalıştırmak isteyebileceğiniz için bu betiği açık tutun.
+1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modülleri \\ performans Izleme ve Yönetim \\Demo-PerformanceMonitoringAndManagement.ps1*. Bu öğreticide yük oluşturma senaryolarından birkaçını çalıştırmak isteyebileceğiniz için bu betiği açık tutun.
 1. Daha önce yapmadıysanız, izleme bağlamını daha ilginç hale getirmek için bir Grup kiracı sağlayın. Bu işlem birkaç dakika sürer.
 
    a. **$DemoScenario = 1**ayarlayın, _kiracı grubu sağlayın_.
@@ -69,7 +68,7 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Azure Izleyici, yapılandırılması gereken ayrı bir hizmettir. Azure Izleyici günlükleri bir Log Analytics çalışma alanında günlük verilerini, telemetri ve ölçümleri toplar. Azure 'daki diğer kaynaklarda olduğu gibi, bir Log Analytics çalışma alanı oluşturulmalıdır. Çalışma alanının, izlediği uygulamalarla aynı kaynak grubunda oluşturulması gerekmez. Bunun yapılması genellikle en mantıklı hale gelir. Wingtip bilet uygulaması için, çalışma alanının uygulamayla silindiğinden emin olmak için tek bir kaynak grubu kullanın.
 
-1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-ana \\ öğrenme modülleri \\ performans Izleme ve Yönetim \\ Log Analytics \\ demo-LogAnalytics. ps1*.
+1. PowerShell ıSE 'de öğesini açın *. \\ Wingtipbilet ssaas-MultiTenantDb-Master \\ Learning modülleri \\ performans Izleme ve yönetim \\ Log Analytics \\Demo-LogAnalytics.ps1*.
 1. Betiği çalıştırmak için F5 tuşuna basın.
 
 Artık Azure portal Azure Izleyici günlüklerini açabilirsiniz. Log Analytics çalışma alanında telemetri toplamak ve görünür hale getirmek birkaç dakika sürer. Sistemi tanılama verilerini toplama işlemi ne kadar uzun olursa, deneyim daha ilginç olur. 

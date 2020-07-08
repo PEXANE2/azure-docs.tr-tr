@@ -13,10 +13,9 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
 ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708816"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL yönetilen örneğini bir örnek havuzuna dağıtma
@@ -35,15 +34,15 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 |Örnek havuzu kullanımını ve özelliklerini denetleme|Hayır|Evet |
 |Örnek havuzu silme|Hayır|Evet|
 |Örnek havuzu içinde yönetilen bir örnek oluşturma|Hayır|Evet|
-|Yönetilen örnek için kaynak kullanımını güncelleştirme|Yes |Yes|
-|Yönetilen örnek için kullanımı ve özellikleri denetleyin|Yes|Yes|
-|Yönetilen bir örneği havuzdan silme|Yes|Yes|
-|Havuzda bir örnek içinde veritabanı oluşturma|Yes|Yes|
-|SQL yönetilen örneğinden bir veritabanını silme|Yes|Yes|
+|Yönetilen örnek için kaynak kullanımını güncelleştirme|Evet |Yes|
+|Yönetilen örnek için kullanımı ve özellikleri denetleyin|Evet|Yes|
+|Yönetilen bir örneği havuzdan silme|Evet|Yes|
+|Havuzda bir örnek içinde veritabanı oluşturma|Evet|Yes|
+|SQL yönetilen örneğinden bir veritabanını silme|Evet|Yes|
 
 Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Cmdlet |Description |
+|Cmdlet |Açıklama |
 |:---|:---|
 |[New-Azsqlınstancepool](/powershell/module/az.sql/new-azsqlinstancepool/) | SQL yönetilen örnek havuzu oluşturur. |
 |[Get-Azsqlınstancepool](/powershell/module/az.sql/get-azsqlinstancepool/) | Örnek havuz hakkında bilgi döndürür. |

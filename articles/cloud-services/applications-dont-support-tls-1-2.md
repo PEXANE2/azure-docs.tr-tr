@@ -13,10 +13,9 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683797"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1,2 desteklemeyen uygulamaların sorunlarını giderme
@@ -51,7 +50,7 @@ Sunucu Ayrıca sınırlı bir şifre paketleri kümesiyle birlikte gelir:
 
 ## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>1. Adım: TLS 1,0 ve TLS 1,1 ' i etkinleştirmek için PowerShell betiğini oluşturma 
 
-Eski protokolleri ve şifre paketlerini sağlayan bir komut dosyası oluşturmak için aşağıdaki kodu örnek olarak kullanın. Bu belgenin amaçları doğrultusunda, bu betiğin adı: **Tlssettings. ps1**. Sonraki adımlarda kolay erişim için bu betiği yerel masaüstünüzde depolayın. 
+Eski protokolleri ve şifre paketlerini sağlayan bir komut dosyası oluşturmak için aşağıdaki kodu örnek olarak kullanın. Bu belgenin amaçları doğrultusunda, bu betiğin adı: **TLSsettings.ps1**. Sonraki adımlarda kolay erişim için bu betiği yerel masaüstünüzde depolayın. 
 
 
 ```Powershell
@@ -344,7 +343,7 @@ Aşağıdaki kod parçacığını mevcut hizmet tanımı dosyanıza ekleyin.
 1) Visual Studio 'da WebRole veya WorkerRole öğesine sağ tıklayın
 2) **Ekle** 'yi seçin
 3) **Varolan öğeyi** Seç
-4) Dosya Gezgini 'nde, **Tlssettings. ps1** ve **runtlssettings. cmd** dosyalarını depoladığınız masaüstünüzde gezinin 
+4) Dosya Gezgini 'nde, **TLSsettings.ps1** ve **Runtlssettings. cmd** dosyalarını depoladığınız masaüstünüzde gezinin 
 5) Cloud Services projenize eklemek için iki dosyayı seçin
 
 ## <a name="step-5-enable-copy-to-output-directory"></a>5. Adım: çıkış dizinine kopyalamayı etkinleştirme
@@ -354,7 +353,7 @@ Betiklerin Visual Studio 'dan gönderilen her güncelleştirme ile karşıya yü
 1) WebRole veya WorkerRole altında RunTLSSettings. cmd öğesine sağ tıklayın
 2) **Özellikleri** seçin
 3) Özellikler sekmesinde, *her zaman kopyalamak* Için *Çıkış Dizinine Kopyala* ' yı değiştirin.
-4) **Tlssettings. ps1** için adımları yineleyin
+4) **TLSsettings.ps1** için adımları yineleyin
 
 ## <a name="step-6-publish--validate"></a>6. Adım: yayımlama & doğrulama
 

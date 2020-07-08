@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83677804"
 ---
 # <a name="creator-for-indoor-maps"></a>Inkapı haritaları için Oluşturucu
@@ -95,7 +94,7 @@ Azure haritalar [Işleme v2 hizmeti-Get Map kutucuğu API 'si](https://docs.micr
 
 Veri kümeleri, [Web özelliği hizmeti (WFS) API 'si](https://docs.microsoft.com/rest/api/maps/wfs)kullanılarak sorgulanabilir. WFS, [Open GEOSPATIAL CONSORTIUM API özelliklerini](http://docs.opengeospatial.org/DRAFTS/17-069r1.html)izler. WFS API 'SI, veri kümesinin içindeki özellikleri sorgulamanızı sağlar. Örneğin, belirli bir tesis ve kat düzeyi için tüm orta ölçekli toplantı odalarını bulmak üzere WFS 'yi kullanabilirsiniz.
 
-### <a name="indoor-maps-module"></a>Inkapıharitaları modülü
+### <a name="indoor-maps-module"></a>İç Mekan Haritaları modülü
 
 [Azure Haritalar Web SDK 'sı](https://docs.microsoft.com/azure/azure-maps/) , ınkapıharitaları modülünü içerir. Bu modül, Azure Maps *harita denetimi* kitaplığı 'na genişletilmiş işlevler sunar. Inkapıeşlem modülü Oluşturucu 'da oluşturulan ınkapılı haritaları işler. , Kullanıcıların farklı katları görselleştirmesine yardımcı olan *zemin Seçicisi*gibi pencere öğelerini tümleştirir.
 

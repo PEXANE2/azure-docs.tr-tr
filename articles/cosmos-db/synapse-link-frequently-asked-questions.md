@@ -6,16 +6,15 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d16da1588c2fa90c4a40a829ed660fd089ff29ac
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921200"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 
-Azure Cosmos DB için Azure SYNAPSE bağlantısı Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir tümleştirme oluşturur. Müşterilerin, işletimsel iş yüklerinden ve ETL işlem hattı olmadan tam performans yalıtımıyla neredeyse gerçek zamanlı analizler çalıştırmasına olanak sağlar. Bu makalede, Azure Cosmos DB için SYNAPSE bağlantısı hakkında sıkça sorulan sorular yanıtlanmaktadır.
+Azure Cosmos DB için Azure SYNAPSE bağlantısı Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir tümleştirme oluşturur. Müşterilerin, işletimsel iş yüklerinden ve ETL işlem hattı olmadan tam performans yalıtımıyla neredeyse gerçek zamanlı analizler çalıştırmasına olanak sağlar. Bu makalede Azure Cosmos DB için Synapse Link hakkında sık sorulan soruların yanıtları yer almaktadır.
 
 ## <a name="general-faq"></a>Genel SSS
 
@@ -29,6 +28,9 @@ Analitik mağaza desteğiyle çok bölgeli bir Azure Cosmos hesabını yapıland
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Yalnızca belirli bir bölge için SYNAPSE bağlantısını etkinleştirmeyi seçebilir ve çok bölgeli bir hesap kümesi içindeki tüm bölgeleri değil mi?
 Önizleme sürümünde, SYNAPSE link çok bölgeli bir hesap için etkinleştirildiğinde, analitik depo tüm bölgelerde oluşturulur. Temel alınan veriler işlem deposunda işleme ve işlem tutarlılığı için iyileştirilmiştir.
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Yedekleme ve geri yükleme SYNAPSE bağlantısı etkinleştirilmiş hesaplar için destekleniyor mu?
+Önizlemede, SYNAPSE link etkin veritabanı hesapları için, kapsayıcıları yedekleme ve geri yükleme desteklenmez. Yedekleme ve geri yükleme işlevselliği gerektiren üretim iş yükleriniz varsa, bu veritabanı hesaplarında SYNAPSE bağlantısının etkinleştirilmediğimiz için önerilmez. 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Azure Cosmos hesabımın SYNAPSE Link özelliğini devre dışı bırakabilir miyim?
 Şu an için Synapse Link özelliğini hesap düzeyinde etkinleştirdikten sonra devre dışı bırakmanız mümkün değildir.  Özelliği devre dışı bırakmak istiyorsanız, yeni bir Azure Cosmos hesabını silip yeniden oluşturmanız gerekir.

@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759437"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure 'da OKD dağıtma
@@ -29,15 +28,15 @@ Kaynak Yöneticisi şablonu kullanarak dağıtmak için, giriş parametrelerini 
 
 Bazı yaygın özelleştirme seçenekleri şunlardır, ancak bunlarla sınırlı değildir:
 
-- Savunma VM boyutu (azuredeploy. JSON içinde değişken)
-- Adlandırma kuralları (azuredeploy. JSON içindeki değişkenler)
+- Savunma VM boyutu (azuredeploy.jsdeğişken)
+- Adlandırma kuralları (azuredeploy.jsdeğişkenler)
 - OpenShift küme özellikleri, Hosts dosyası aracılığıyla değiştirildi (deployOpenShift.sh)
 
 [OKD şablonunda](https://github.com/Microsoft/openshift-origin) farklı OKD sürümleri için kullanılabilen birden çok dal var.  Gereksinimlerinize bağlı olarak, doğrudan depodan dağıtım yapabilir veya depoyu çatalla dağıtmadan önce özel değişiklikler yapabilirsiniz.
 
-Daha önce `appId` `aadClientId` parametresi için oluşturduğunuz hizmet sorumlusunun değerini kullanın.
+`appId`Daha önce parametresi için oluşturduğunuz hizmet sorumlusunun değerini kullanın `aadClientId` .
 
-Aşağıda, tüm gerekli girişlerle birlikte azuredeploy. Parameters. JSON adlı bir parametre dosyası örneği verilmiştir.
+Aşağıda, tüm gerekli girişlerle birlikte azuredeploy.parameters.jsadlı bir parametre dosyası örneği verilmiştir.
 
 ```json
 {
@@ -121,7 +120,7 @@ Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle lütfen kulla
 > [!NOTE] 
 > Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLı sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Aşağıdaki örnek, OKD kümesini ve tüm ilgili kaynakları myOpenShiftCluster dağıtım adı ile openkaydırıcı Trg adlı bir kaynak grubuna dağıtır. Azuredeploy. Parameters. JSON adlı yerel bir parametre dosyası kullanılırken, şablona doğrudan GitHub deposundan başvurulur.
+Aşağıdaki örnek, OKD kümesini ve tüm ilgili kaynakları myOpenShiftCluster dağıtım adı ile openkaydırıcı Trg adlı bir kaynak grubuna dağıtır. Şablonuna, üzerinde azuredeploy.parameters.jsadlı yerel bir parametre dosyası kullanılırken doğrudan GitHub deposundan başvurulur.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -138,11 +137,11 @@ Dağıtım, dağıtılan toplam düğüm sayısına bağlı olarak en az 30 daki
 }
 ```
 
-Dağıtımın tamamlanmasını bekleyen komut satırını bağlamak istemiyorsanız, Grup dağıtımına yönelik seçeneklerden birini ekleyin `--no-wait` . Dağıtımdan alınan çıkış, kaynak grubunun dağıtım bölümündeki Azure portal alabilir.
+Dağıtımın tamamlanmasını bekleyen komut satırını bağlamak istemiyorsanız, `--no-wait` Grup dağıtımına yönelik seçeneklerden birini ekleyin. Dağıtımdan alınan çıkış, kaynak grubunun dağıtım bölümündeki Azure portal alabilir.
 
 ## <a name="connect-to-the-okd-cluster"></a>OKD kümesine bağlanma
 
-Dağıtım tamamlandığında, ' yi kullanarak, `OpenShift Console Url`tarayıcınızla OpenShift konsoluna bağlanın. Alternatif olarak, OKD ana için SSH kullanabilirsiniz. Dağıtımdan alınan çıktıyı kullanan bir örnek aşağıda verilmiştir:
+Dağıtım tamamlandığında, ' yi kullanarak, tarayıcınızla OpenShift konsoluna bağlanın `OpenShift Console Url` . Alternatif olarak, OKD ana için SSH kullanabilirsiniz. Dağıtımdan alınan çıktıyı kullanan bir örnek aşağıda verilmiştir:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com

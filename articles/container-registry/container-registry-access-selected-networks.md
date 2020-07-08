@@ -4,10 +4,9 @@ description: Seçilen ortak IP adreslerinden veya adres aralıklarından bir Azu
 ms.topic: article
 ms.date: 05/19/2020
 ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83702078"
 ---
 # <a name="configure-public-ip-network-rules"></a>Genel IP ağ kurallarını yapılandırma
@@ -47,7 +46,7 @@ az acr network-rule add \
 1. **Ayarlar**altında **ağ**' ı seçin.
 1. **Ortak erişim** sekmesinde, **Seçili ağlardan**ortak erişime izin ver ' i seçin.
 1. **Güvenlik duvarı**altında, bir sanal ağdaki VM 'nın genel IP adresi gibi BIR genel IP adresi girin. Ya da VM 'nin IP adresini içeren CıDR gösteriminde bir adres aralığı girin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ![Kapsayıcı kayıt defteri için güvenlik duvarı kuralını yapılandırma][acr-access-selected-networks]
 
@@ -75,7 +74,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**' i seçin.
+1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**'i seçin.
 
 ![Genel erişimi devre dışı bırak][acr-access-disabled]
 
@@ -98,7 +97,7 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Ortak erişimi geri yükleme-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Sonra **Kaydet**' i seçin.
+1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Sonra **Kaydet**'i seçin.
 
 ![Tüm ağlardan ortak erişim][acr-access-all-networks]
 

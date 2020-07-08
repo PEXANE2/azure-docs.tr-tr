@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042802"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Tek bir kiracıyı kiracı başına veritabanı SaaS uygulamasıyla geri yükleme
@@ -74,7 +73,7 @@ Bu kurtarma senaryolarını göstermek için, ilk olarak "yanlışlıkla" Kirac�
 
 ### <a name="accidentally-delete-the-last-event"></a>Son olayı "yanlışlıkla" Sil
 
-1. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ Iş sürekliliği ve olağanüstü durum kurtarma \\ RestoreTenant \\ *demo-RestoreTenant. ps1*ve aşağıdaki değeri ayarlayın:
+1. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ Iş sürekliliği ve olağanüstü durum kurtarma \\ RestoreTenant \\ *Demo-RestoreTenant.ps1*ve aşağıdaki değeri ayarlayın:
 
    * **$DemoScenario**  =  **1**, *son olayı Sil (Bilet satışları olmadan)*.
 2. Betiği çalıştırmak için F5 tuşuna basın ve son olayı silin. Aşağıdaki onay iletisi görüntülenir:
@@ -91,10 +90,10 @@ Bu kurtarma senaryolarını göstermek için, ilk olarak "yanlışlıkla" Kirac�
 
 Bu alıştırma, contoso Concert Salı veritabanını, olay silinmeden önceki bir zamana geri yükler. Bu senaryo, bir paralel veritabanında silinen verileri gözden geçirmek istediğinizi varsayar.
 
- *Restore-TenantInParallel. ps1* betiği, bir paralel katalog girişi ile *ContosoConcertHall \_ Old*adlı bir paralel Kiracı veritabanı oluşturur. Bu geri yükleme deseninin küçük bir veri kaybını kurtarmak için idealdir. Bu kalıbı, uyumluluk veya denetim amaçlarıyla verileri gözden geçirmeniz gerekiyorsa de kullanabilirsiniz. [Etkin coğrafi çoğaltma](active-geo-replication-overview.md)kullandığınızda önerilen yaklaşım önerilir.
+ *Restore-TenantInParallel.ps1* betiği, paralel bir katalog girdisiyle *ContosoConcertHall \_ Old*adlı bir paralel Kiracı veritabanı oluşturur. Bu geri yükleme deseninin küçük bir veri kaybını kurtarmak için idealdir. Bu kalıbı, uyumluluk veya denetim amaçlarıyla verileri gözden geçirmeniz gerekiyorsa de kullanabilirsiniz. [Etkin coğrafi çoğaltma](active-geo-replication-overview.md)kullandığınızda önerilen yaklaşım önerilir.
 
 1. [Yanlışlıkla verileri silme bir kiracının benzetimini](#simulate-a-tenant-accidentally-deleting-data) gerçekleştirin bölümü.
-2. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ Iş sürekliliği ve olağanüstü durum kurtarma \\ RestoreTenant \\ _demo-RestoreTenant. ps1_.
+2. PowerShell ıSE 'de açın... \\ Öğrenme modülleri \\ Iş sürekliliği ve olağanüstü durum kurtarma \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_.
 3. **$DemoScenario**  =  **2**' yi ayarlayın, *kiracıyı paralel olarak geri yükleyin*.
 4. Betiği çalıştırmak için F5 tuşuna basın.
 
@@ -114,7 +113,7 @@ Geri yüklenen kiracıyı, kendi olay uygulamasıyla ek bir kiracı olarak ortay
 
 Bu alıştırma, contoso Concert salonu kiracısını olay silinmeden önceki bir noktaya geri yükler. *Restore-TenantInPlace* betiği, bir kiracı veritabanını yeni bir veritabanına geri yükler ve orijinali siler. Bu geri yükleme düzeninin önemli verilerin bozulmasını kurtarmak için idealdir ve kiracının önemli veri kaybına uyum sağlaması gerekebilir.
 
-1. PowerShell ıSE 'de, **demo-RestoreTenant. ps1** dosyasını açın.
+1. PowerShell ıSE 'de **Demo-RestoreTenant.ps1** dosyasını açın.
 2. **$DemoScenario**  =  **5**' i ayarlayın, *kiracı 'yı yerinde geri yükleyin*.
 3. Betiği çalıştırmak için F5 tuşuna basın.
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 5ae9190213f753f8b9440ced52e4d04626af13f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732992"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for Eclipse kullanma
@@ -45,21 +44,21 @@ Yükleme yönergeleri için bkz. [yükleme Azure Toolkit for Eclipse](https://do
 
 ### <a name="confirm-plug-ins"></a>Eklentileri Onayla
 
-1. **Yardım** > eden**küreler Market 'e git...**.
+1. Yardım eden **Help**  >  **küreler Market 'e git...**.
 
 1. **Yüklü öğeler** sekmesini seçin.
 
 1. En azından şunu görmeniz gerekir:
-    * Azure Toolkit for Eclipse \<sürüm>.
-    * Scala IDE \<sürüm>.
+    * Azure Toolkit for Eclipse \<version> .
+    * Scala IDE \<version> .
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
 
 1. Tutulma IDE 'yi başlatın.
 
-1. **Pencereye** >  git diğer**görünümü** > göster **...**  >  **Oturum aç..**.
+1. Pencereye git **Window**  >   diğer**görünümü göster**  >  **...**  >  **Oturum aç..**.
 
-1. **Görünümü göster** iletişim kutusunda **Azure** > **Azure Gezgini**' ne gidin ve **Aç**' ı seçin.
+1. **Görünümü göster** iletişim kutusunda **Azure**  >  **Azure Gezgini**' ne gidin ve **Aç**' ı seçin.
 
    ![Apache Spark tutulma görünümü göster](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
 
@@ -73,7 +72,7 @@ Yükleme yönergeleri için bkz. [yükleme Azure Toolkit for Eclipse](https://do
 
    ![Abonelikler Seç iletişim kutusu](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 
-1. **Azure Explorer**'da, aboneliğinizin altındaki HDInsight Spark kümelerini görmek için **Azure** >  **HDInsight** ' a gidin.
+1. **Azure Explorer**'da, **Azure**  >   aboneliğinizin altındaki HDInsight Spark kümelerini görmek için Azure**HDInsight** ' a gidin.
 
    ![Azure 'da HDInsight Spark kümeleri Explorer3](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer3.png)
 
@@ -83,7 +82,7 @@ Yükleme yönergeleri için bkz. [yükleme Azure Toolkit for Eclipse](https://do
 
 ## <a name="link-a-cluster"></a>Bir kümeyi bağlama
 
-Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilirsiniz. Benzer şekilde, etki alanına katılmış bir HDInsight kümesi için, etki alanı ve Kullanıcı adı (gibi) kullanarak bağlantı oluşturabilirsiniz `user1@contoso.com`.
+Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilirsiniz. Benzer şekilde, etki alanına katılmış bir HDInsight kümesi için, etki alanı ve Kullanıcı adı (gibi) kullanarak bağlantı oluşturabilirsiniz `user1@contoso.com` .
 
 1. **Azure Gezgini**'nden **HDInsight**öğesine sağ tıklayın ve **küme bağla**' yı seçin.
 
@@ -109,9 +108,9 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>HDInsight Spark kümesi için Spark Scala projesi ayarlama
 
-1. Çakışan IDE çalışma alanından **Dosya** > **Yeni** > **proje...** öğesini seçin.
+1. Çakışan IDE çalışma alanından **Dosya**  >  **Yeni**  >  **proje...** öğesini seçin.
 
-1. **Yeni proje** sihirbazında**HDInsight (Scala) üzerinde** **HDInsight proje** > Spark ' ı seçin. Ardından **İleri**' yi seçin.
+1. **Yeni proje** sihirbazında **HDInsight Project**  >  **HDInsight (Scala) üzerinde**HDInsight proje Spark ' ı seçin. Ardından **İleri**' yi seçin.
 
    ![HDInsight üzerinde Spark (Scala) Projesi seçme](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
@@ -126,9 +125,9 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>HDInsight Spark kümesi için bir Scala uygulaması oluşturma
 
-1. **Paket Gezgini**' nden, daha önce oluşturduğunuz projeyi genişletin. **Src**öğesine sağ tıklayın, **Yeni** > **diğer...** seçeneğini belirleyin.
+1. **Paket Gezgini**' nden, daha önce oluşturduğunuz projeyi genişletin. **Src**öğesine sağ tıklayın, **Yeni**  >  **diğer...** seçeneğini belirleyin.
 
-1. **Sihirbaz Seç** iletişim kutusunda **Scala sihirbazları** > **Scala nesnesi**' ni seçin. Ardından **İleri**' yi seçin.
+1. **Sihirbaz Seç** iletişim kutusunda **Scala sihirbazları**  >  **Scala nesnesi**' ni seçin. Ardından **İleri**' yi seçin.
 
    ![Bir Scala nesnesi oluşturma Sihirbazı seçin](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
 
@@ -218,7 +217,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 1. Azure Explorer 'da Spark kümeniz adına sağ tıklayın ve ardından **Spark geçmişi Kullanıcı arabirimini aç**' ı seçin. İstendiğinde, kümenin yönetici kimlik bilgilerini girin. Kümeyi sağlarken bunları belirtmelisiniz.
 
-1. Spark geçmiş sunucusu panosunda, az önce çalıştırmayı tamamlamış uygulamayı aramak için uygulama adını kullanırsınız. Yukarıdaki kodda, kullanarak `val conf = new SparkConf().setAppName("MyClusterApp")`uygulama adını ayarlarsınız. Bu nedenle, Spark uygulamanızın adı **Myclusterapp**idi.
+1. Spark geçmiş sunucusu panosunda, az önce çalıştırmayı tamamlamış uygulamayı aramak için uygulama adını kullanırsınız. Yukarıdaki kodda, kullanarak uygulama adını ayarlarsınız `val conf = new SparkConf().setAppName("MyClusterApp")` . Bu nedenle, Spark uygulamanızın adı **Myclusterapp**idi.
 
 ### <a name="start-the-apache-ambari-portal"></a>Apache ambarı portalını başlatma
 
@@ -240,15 +239,15 @@ Spark Scala uygulamalarını iş istasyonunuzda yerel olarak çalıştırmak iç
 
 ### <a name="prerequisite"></a>Önkoşul
 
-Yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)' de anlatıldığı gibi bir özel durum alabilirsiniz. Bu özel durum, Windows 'ta **Winutils. exe** eksik olduğu için oluşur.
+Yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)' de anlatıldığı gibi bir özel durum alabilirsiniz. Bu özel durum, Windows 'ta **WinUtils.exe** eksik olduğu için oluşur.
 
-Bu hatayı çözmek için [Winutils. exe](https://github.com/steveloughran/winutils) ' yi **C:\wintıı \ bin**gibi bir konuma almanız ve ardından **HADOOP_HOME** ortam değişkenini eklemeniz ve değişkenin değerini **c\winutils**olarak ayarlamanız gerekir.
+Bu hatayı çözmek için **C:\wintıı S\bin**gibi bir konuma [Winutils.exe](https://github.com/steveloughran/winutils) gerekir ve ardından ortam değişkenini **HADOOP_HOME** ekleyip değişkenin değerini **c\winutils**olarak ayarlamalısınız.
 
 ### <a name="run-a-local-spark-scala-application"></a>Yerel Spark Scala uygulaması çalıştırma
 
 1. Çakışan Küreler başlatın ve bir proje oluşturun. **Yeni proje** iletişim kutusunda aşağıdaki seçimleri yapın ve ardından **İleri**' yi seçin.
 
-1. **Yeni proje** sihirbazında,**HDInsight yerel çalıştırma örneği ' nde (Scala)** **HDInsight proje** > Spark ' ı seçin. Ardından **İleri**' yi seçin.
+1. **Yeni proje** sihirbazında, **HDInsight Project**  >  **HDInsight yerel çalıştırma örneği ' nde (Scala)** HDInsight proje Spark ' ı seçin. Ardından **İleri**' yi seçin.
 
    ![Yeni proje bir sihirbaz iletişim kutusu seçer](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
@@ -258,7 +257,7 @@ Bu hatayı çözmek için [Winutils. exe](https://github.com/steveloughran/winut
 
    ![LogQuery yerel Scala uygulamasının konumu](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
 
-1. **Logquery. Scala** öğesine sağ tıklayın ve 1. **farklı** > Çalıştır**uygulaması**' nı seçin. Aşağıdakine benzer bir çıktı, **konsol** sekmesinde görünür:
+1. **Logquery. Scala** öğesine sağ tıklayın ve 1. **Farklı Çalıştır**  >  **uygulaması**' nı seçin. Aşağıdakine benzer bir çıktı, **konsol** sekmesinde görünür:
 
    ![Spark uygulaması yerel çalıştırma sonucu](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 

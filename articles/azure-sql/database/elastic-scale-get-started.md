@@ -12,10 +12,9 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 8a7efdee772c3a871fb8f26655dfc1160c275959
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84044188"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanmaya başlama
@@ -87,7 +86,7 @@ Kitaplığı yüklemek için [Microsoft. Azure. SQLDatabase. Elaol Scale. Client
 
 2. Bir proje oluşturmak için *C#* dizininden *Elakıscalestarterkit. sln* çözümünü açın.
 
-3. Örnek projenin çözümünde *app. config* dosyasını açın. Ardından, sunucu adınızı ve oturum açma bilgilerinizi (Kullanıcı adı ve parola) eklemek için dosyadaki yönergeleri izleyin.
+3. Örnek projenin çözümünde *app.config* dosyasını açın. Ardından, sunucu adınızı ve oturum açma bilgilerinizi (Kullanıcı adı ve parola) eklemek için dosyadaki yönergeleri izleyin.
 
 4. Uygulamayı derleyin ve çalıştırın. İstendiğinde, çözümün NuGet paketlerini geri yüklemek için Visual Studio 'Yu etkinleştirin. Bu eylem, en son elastik veritabanı istemci kitaplığı sürümünü NuGet 'den indirir.
 

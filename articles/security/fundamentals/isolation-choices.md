@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021883"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
@@ -211,7 +210,7 @@ Azure, verileri korumak için aşağıdaki şifreleme türlerini sunar:
 - Aktarım sırasında şifreleme
 - Bekleme sırasında şifreleme
 
-#### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
+#### <a name="encryption-in-transit"></a>Aktarım Sırasında Şifreleme
 
 Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmasında bir mekanizmadır. Azure depolama ile, aşağıdakileri kullanarak verileri güvenli hale getirebilirsiniz:
 
@@ -219,7 +218,7 @@ Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmas
 - Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/blobs/security-recommendations.md).
 - Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](../../storage/blobs/security-recommendations.md).
 
-#### <a name="encryption-at-rest"></a>Bekleyen şifreleme
+#### <a name="encryption-at-rest"></a>Bekleme Sırasında Şifreleme
 
 Birçok kuruluş için, [bekleyen veri şifreleme](isolation-choices.md) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
 

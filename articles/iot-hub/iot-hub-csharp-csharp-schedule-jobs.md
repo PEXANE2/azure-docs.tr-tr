@@ -10,10 +10,9 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733362"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>İşleri zamanlama ve yayınlama (.NET)
@@ -78,7 +77,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
 
 1. Çözüm Gezgini, **SimulateDeviceMethods** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**’yi seçin.
+1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**'yi seçin.
 
     ![NuGet Paket Yöneticisi penceresi Istemci uygulaması](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
@@ -167,7 +166,7 @@ Bu bölümde, çözüm arka ucu tarafından çağrılan doğrudan bir yönteme y
 
 Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özellik güncelleştirmelerini birden çok cihaza göndermek için işleri kullanan bir .NET konsol uygulaması (C# kullanarak) oluşturursunuz.
 
-1. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
+1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. **Yeni proje oluştur**' da **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
 1. **Yeni projenizi yapılandırın**bölümünde proje *schedulejob*' u adlandırın. **Çözüm**Için **çözüme Ekle**' yi seçin ve ardından **Oluştur**' u seçin.
 
@@ -186,7 +185,7 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Varsayılan deyimlerde `using` henüz yoksa, aşağıdaki deyimi ekleyin.
+1. `using`Varsayılan deyimlerde henüz yoksa, aşağıdaki deyimi ekleyin.
 
     ```csharp
     using System.Threading;
@@ -295,9 +294,9 @@ Bu bölümde, **Lockkapısı** doğrudan yöntemini çağırmak ve istenen özel
 
 1. Visual Studio Çözüm Gezgini çözümünüze sağ tıklayın ve ardından **Başlangıç projelerini ayarla**' yı seçin.
 
-1. **Ortak özellikler** > **Başlangıç projesi**' ni seçin ve ardından **birden çok başlangıç**projesi ' ni seçin.
+1. **Ortak özellikler**  >  **Başlangıç projesi**' ni seçin ve ardından **birden çok başlangıç**projesi ' ni seçin.
 
-1. Listenin en `SimulateDeviceMethods` üstünde ve sonrasında olduğundan emin olun `ScheduleJob`. Her iki eylemini **Başlangıç** olarak ayarlayın ve **Tamam**' ı seçin.
+1. `SimulateDeviceMethods`Listenin en üstünde ve sonrasında olduğundan emin olun `ScheduleJob` . Her iki eylemini **Başlangıç** olarak ayarlayın ve **Tamam**' ı seçin.
 
 1. **Başlat** ' a tıklayarak veya **hata ayıklama** menüsüne gidip **hata ayıklamayı Başlat**' a tıklayarak projeleri çalıştırın.
 

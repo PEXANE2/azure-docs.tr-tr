@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84986104"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Örnek yapılandırma: Cisco ASA cihazı (Ikev2/BGP yok)
@@ -27,7 +26,7 @@ Bu makalede Cisco Uyarlamalı güvenlik gereci (ASA) cihazlarını Azure VPN ağ
 | Test edilen model           | ASA 5505                          |
 | Test edilen sürüm         | 9,2                               |
 | IKE sürümü            | IKEv2                             |
-| BGP                    | No                                |
+| BGP                    | Hayır                                |
 | Azure VPN ağ geçidi türü | Rota temelli VPN ağ geçidi           |
 |                        |                                   |
 

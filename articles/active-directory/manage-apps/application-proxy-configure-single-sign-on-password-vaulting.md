@@ -15,10 +15,9 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764783"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Uygulama proxy 'Si ile çoklu oturum açma için parola oluşturma
@@ -45,7 +44,7 @@ Uygulamanızı zaten uygulama proxy 'Si ile yayımlamış ve test etmeniz gereki
 
    ![Parola tabanlı oturum açma seçin ve URL 'nizi girin](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 1. **Uygulama proxy 'si**seçin. 
 1. **Ön kimlik doğrulama türünü** **Azure Active Directory** olarak değiştirin ve **Kaydet**' i seçin. 
 1. **Kullanıcılar ve gruplar ' ı**seçin.

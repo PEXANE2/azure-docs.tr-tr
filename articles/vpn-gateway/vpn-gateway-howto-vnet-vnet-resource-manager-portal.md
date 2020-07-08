@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5abf79d23ca2de661383cc002dac9d7f9e4dc5bf
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84985569"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portal kullanarak VNet-VNet VPN Gateway bağlantısı yapılandırma
@@ -23,7 +22,7 @@ Bu makale, VNet-VNet bağlantı türünü kullanarak sanal ağları (VNet 'ler) 
 Bu makaledeki adımlar Azure Resource Manager dağıtım modeli için geçerlidir ve Azure portal kullanır. Aşağıdaki makalelerde açıklanan seçenekleri kullanarak, bu yapılandırmayı farklı bir dağıtım aracı veya modeliyle oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portalındaki](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)

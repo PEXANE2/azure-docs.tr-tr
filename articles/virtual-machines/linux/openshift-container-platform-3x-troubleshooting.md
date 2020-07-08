@@ -11,10 +11,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759475"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtımında sorun giderme
@@ -37,9 +36,9 @@ Anerişilebilir PlayBook konağına SSH. OKD şablonu (sürüm 3,9 ve önceki s�
 
 ## <a name="log-files"></a>Günlük dosyaları
 
-Konak hazırlama betikleri için günlük dosyaları (stderr ve STDOUT), tüm konaklarda ' de `/var/lib/waagent/custom-script/download/0` bulunur. Konağın hazırlanması sırasında bir hata oluştuysa, hatayı öğrenmek için bu günlük dosyalarını görüntüleyin.
+Konak hazırlama betikleri için günlük dosyaları (stderr ve STDOUT), tüm konaklarda ' de bulunur `/var/lib/waagent/custom-script/download/0` . Konağın hazırlanması sırasında bir hata oluştuysa, hatayı öğrenmek için bu günlük dosyalarını görüntüleyin.
 
-Hazırlama betikleri başarıyla çalıştırılmışsa, anlabilen PlayBook konağının `/var/lib/waagent/custom-script/download/1` dizinindeki günlük dosyalarının incelenmesi gerekir. OpenShift 'in gerçek yüklemesi sırasında hata oluştuysa, stdout dosyasında hata görüntülenir. Daha fazla yardım için desteğe başvurmak üzere bu bilgileri kullanın.
+Hazırlama betikleri başarıyla çalıştırılmışsa, `/var/lib/waagent/custom-script/download/1` anlabilen PlayBook konağının dizinindeki günlük dosyalarının incelenmesi gerekir. OpenShift 'in gerçek yüklemesi sırasında hata oluştuysa, stdout dosyasında hata görüntülenir. Daha fazla yardım için desteğe başvurmak üzere bu bilgileri kullanın.
 
 Örnek çıkış
 
@@ -114,5 +113,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 Bazı hatalarda, daha fazla bilgi edinmek için aşağıdaki komutları da kullanabilirsiniz:
 
-1. systemctl durum \<hizmeti>
+1. systemctl durumu\<service>
 2. journalctl-XE

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770681"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
@@ -119,7 +118,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-Betiğinizdeki ile `az login --service-principal`oturum açın, ana bilgisayarın bilgilerini sağlar. Daha sonra kapsayıcı adını `az webapp config container set` , etiketi, kayıt defteri URL 'sini ve kayıt defteri parolasını ayarlamak için öğesini kullanabilirsiniz. Kapsayıcı CI işleminizi oluşturmak için kullanabileceğiniz bazı yararlı bağlantılar aşağıda verilmiştir.
+Betiğinizdeki ile oturum açın `az login --service-principal` , ana bilgisayarın bilgilerini sağlar. Daha sonra `az webapp config container set` kapsayıcı adını, etiketi, kayıt defteri URL 'sini ve kayıt defteri parolasını ayarlamak için öğesini kullanabilirsiniz. Kapsayıcı CI işleminizi oluşturmak için kullanabileceğiniz bazı yararlı bağlantılar aşağıda verilmiştir.
 
 - [Azure CLı 'da daire CI üzerinde oturum açma](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
@@ -131,11 +130,11 @@ JAR uygulamalarını dağıtmak için kudu [zipdeploy/](deploy-zip.md) API ve Wa
 
 ### <a name="node"></a>Node
 
-Varsayılan olarak kudu, düğüm uygulamanız (`npm install`) için derleme adımlarını yürütür. Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için değeri olan bir uygulama ayarı `SCM_DO_BUILD_DURING_DEPLOYMENT`oluşturun `false`.
+Varsayılan olarak kudu, düğüm uygulamanız () için derleme adımlarını yürütür `npm install` . Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için değeri olan bir uygulama ayarı oluşturun `SCM_DO_BUILD_DURING_DEPLOYMENT` `false` .
 
 ### <a name="net"></a>.NET 
 
-Varsayılan olarak, kudu .NET uygulamanız (`dotnet build`) için derleme adımlarını yürütür. Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için değeri olan bir uygulama ayarı `SCM_DO_BUILD_DURING_DEPLOYMENT`oluşturun `false`.
+Varsayılan olarak, kudu .NET uygulamanız () için derleme adımlarını yürütür `dotnet build` . Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için değeri olan bir uygulama ayarı oluşturun `SCM_DO_BUILD_DURING_DEPLOYMENT` `false` .
 
 ## <a name="other-deployment-considerations"></a>Diğer dağıtım konuları
 
@@ -156,4 +155,4 @@ En iyi uygulamalar hakkında daha fazla bilgi için [App Service tanılama](http
 - **En Iyi Yöntemler** giriş sayfası kutucuğu seçin.
 - En iyi yapılandırma uygulamalarına göre uygulamanızın geçerli durumunu görüntülemek için en iyi yapılandırmanın kullanılabilirlik & performansı veya **en iyi** uygulamaları **Için en iyi yöntemler** ' e tıklayın.
 
-Bu bağlantıyı, kaynağınız için App Service tanılamayı doğrudan açmak için de kullanabilirsiniz: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.
+Bu bağlantıyı, kaynağınız için App Service tanılamayı doğrudan açmak için de kullanabilirsiniz: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` .

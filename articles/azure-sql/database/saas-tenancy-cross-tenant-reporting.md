@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042123"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Dağıtılmış sorguları kullanarak çapraz kiracı raporlaması
@@ -59,7 +58,7 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Sorguları daha ilgi çekici bir veri kümesine karşı çalıştırmak için, Bilet oluşturma ' yı çalıştırarak bilet satış verileri oluşturun.
 
-1. *PowerShell ISE*'de,... \\ öğesini açın. Öğrenme modülleri \\ Işlem Analizi \\ geçici raporlama \\ *demo-AdhocReporting. ps1* betiği ve aşağıdaki değeri ayarlayın:
+1. *PowerShell ISE*'de,... \\ öğesini açın. Öğrenme modülleri \\ Işlem Analizi \\ geçici raporlama \\ *Demo-AdhocReporting.ps1* betiği ve aşağıdaki değeri ayarlayın:
    * **$DemoScenario** = 1, **Tüm havalandırma olayları Için bilet satın alın**.
 2. Betiği çalıştırmak ve bilet satışları oluşturmak için **F5** tuşuna basın. Betik çalışırken bu öğreticideki adımlara devam edin. Bilet verileri, *geçici olarak dağıtılan sorguları Çalıştır* bölümünde sorgulanır, bu nedenle bilet oluşturucunun tamamlanmasını bekleyin.
 
@@ -104,7 +103,7 @@ Diğer *mekan* görünümlerini, *venueıd*'nin nasıl ekleneceğini görmek iç
 
 Bu alıştırma, _adhocretaşıma_ veritabanını dağıtır. Bu, tüm kiracı veritabanlarında sorgulamak için kullanılan şemayı içeren baş veritabanıdır. Veritabanı, örnek uygulamadaki tüm yönetim ile ilgili veritabanları için kullanılan sunucu olan var olan katalog sunucusuna dağıtılır.
 
-1. *PowerShell ISE*'de açın... \\ Öğrenme modülleri \\ Işlem Analizi \\ geçici raporlama \\ *demo-AdhocReporting. ps1*. 
+1. *PowerShell ISE*'de açın... \\ Öğrenme modülleri \\ Işlem Analizi \\ geçici raporlama \\ *Demo-AdhocReporting.ps1*. 
 
 1. **$DemoScenario = 2**olarak ayarlayın, _geçici raporlama veritabanını dağıtın_.
 
@@ -191,4 +190,4 @@ Artık daha karmaşık analiz işlemleri için verileri ayrı bir analiz veritab
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Kiracı uygulaması başına Wingtip bilet SaaS veritabanı üzerine inşa eden ek öğreticiler](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Esnek Sorgu](elastic-query-overview.md)
+* [Elastik sorgu](elastic-query-overview.md)

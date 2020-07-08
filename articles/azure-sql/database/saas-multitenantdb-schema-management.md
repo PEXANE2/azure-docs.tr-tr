@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b115b410547b37e6cfa369b825c94b6b22436941
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042179"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Parçalı çok kiracılı veritabanları kullanan bir SaaS uygulamasında şemayı yönetme
@@ -75,10 +74,10 @@ Wingtip biletleri SaaS çok kiracılı veritabanı betikleri ve uygulama kaynak 
 
 Bu öğreticide, İş Aracısı veritabanı ve iş Aracısı oluşturmak için PowerShell kullanmanız gerekir. SQL Aracısı tarafından kullanılan MSDB veritabanı gibi, İş Aracısı iş tanımlarını, iş durumunu ve geçmişi depolamak için Azure SQL veritabanı 'nda bir veritabanı kullanır. İş Aracısı oluşturulduktan sonra, işleri hemen oluşturabilir ve izleyebilirsiniz.
 
-1. **PowerShell ISE**'de açın *... \\ Öğrenme modülleri \\ Şema Yönetimi \\ demo-SchemaManagement. ps1*.
+1. **PowerShell ISE**'de açın *... \\ Öğrenme modülleri \\ şema yönetimi \\Demo-SchemaManagement.ps1*.
 2. Betiği çalıştırmak için **F5**'e basın.
 
-*Demo-SchemaManagement. ps1* betiği, katalog sunucusunda _JobAgent_ adlı bir veritabanı oluşturmak için *Deploy-SchemaManagement. ps1* betiğini çağırır. Betik daha sonra, _JobAgent_ veritabanını bir parametre olarak geçirerek iş aracısını oluşturur.
+*Demo-SchemaManagement.ps1* betiği, katalog sunucusunda _JobAgent_ adlı bir veritabanı oluşturmak için *Deploy-SchemaManagement.ps1* betiğini çağırır. Betik daha sonra, _JobAgent_ veritabanını bir parametre olarak geçirerek iş aracısını oluşturur.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Tüm kiracılara yeni başvuru verilerini dağıtmak için bir iş oluşturma
 

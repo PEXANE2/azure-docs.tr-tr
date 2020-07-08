@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759641"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub’ınızda X.509 güvenliğini ayarlayın
@@ -47,7 +46,7 @@ Sertifikalarınızı almak için aşağıdaki yollarla seçim yapabilirsiniz:
 
 Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini nasıl ekleyeceğiniz gösterilir.
 
-1. Azure Portal, IoT Hub 'ınıza gidin ve hub için **ayar** > **sertifikaları** ' nı seçin.
+1. Azure Portal, IoT Hub 'ınıza gidin ve hub için **ayar**  >  **sertifikaları** ' nı seçin.
 
 1. Yeni bir sertifika eklemek için **Ekle** ' yi seçin.
 
@@ -73,7 +72,7 @@ Bu adımlarda, Portal üzerinden IoT Hub 'ınıza yeni bir sertifika yetkilisini
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>IoT Hub 'ınız için bir X. 509.952 cihazı oluşturma
 
-1. Azure Portal IoT Hub 'ınıza gidin ve ardından **araştırıcılar** > **IoT cihazları**' nı seçin.
+1. Azure Portal IoT Hub 'ınıza gidin ve ardından **araştırıcılar**  >  **IoT cihazları**' nı seçin.
 
 1. Yeni bir cihaz eklemek için **Yeni** ' yi seçin.
 
@@ -95,7 +94,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 cihazının benzetimini y
 
 1. Çözüm Gezgini, **SimulateX509Device** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
-1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**’yi seçin.
+1. **NuGet Paket Yöneticisi**'Nde, **Araştır** ' ı seçin ve arama yapın ve **Microsoft. Azure. Devices. Client**' ı seçin. **Yükle**'yi seçin.
 
    ![Visual Studio 'da cihaz SDK 'Sı NuGet paketi ekleme](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
@@ -181,7 +180,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 cihazının benzetimini y
 
    1. Çözümünüzü içeren klasöre gidin ve çözüm klasörü içindeki *bin/Debug* yoluna gidin.
 
-   1. Komut isteminden **SimulateX509Device. exe** uygulamasını çalıştırın.
+   1. Uygulama **SimulateX509Device.exe** komut isteminden çalıştırın.
 
    Cihazınızın hub 'a başarıyla bağlanmasını ve olayları göndermesini görmeniz gerekir.
 

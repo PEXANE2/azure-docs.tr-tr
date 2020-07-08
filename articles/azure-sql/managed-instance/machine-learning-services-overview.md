@@ -13,10 +13,9 @@ ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
 ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708748"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL yönetilen örneği 'nde Machine Learning Services (Önizleme)
@@ -24,7 +23,7 @@ ms.locfileid: "84708748"
 Machine Learning Services, hem Python hem de R betiklerini destekleyen, veritabanı içi makine öğrenimi sağlayan Azure SQL yönetilen örneği (Önizleme) özelliğidir. Özelliği, yüksek performanslı tahmine dayalı analiz ve makine öğrenimi için Microsoft Python ve R paketleri içerir. İlişkisel veriler saklı yordamlar aracılığıyla betiklerde, Python veya R deyimlerini içeren T-SQL betiği veya T-SQL içeren Python veya R kodu kullanılarak kullanılabilir.
 
 > [!IMPORTANT]
-> Machine Learning Services, şu anda genel önizlemede olan Azure SQL yönetilen örneği 'nin bir özelliğidir.
+> Machine Learning Services, genel önizleme aşamasında olan bir Azure SQL Yönetilen Örneği özelliğidir.
 > Bu Önizleme işlevi başlangıçta, ABD, Asya Avrupa ve Avustralya 'daki sınırlı sayıda bölgede daha sonra eklenen ek bölgelere sahiptir.
 >
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
@@ -52,11 +51,11 @@ Python ve R 'nin temel dağıtımları Machine Learning Services eklenmiştir. M
 
 Bu sınırlı genel önizleme, [Azure önizleme koşullarına](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)tabidir. 
 
-Önizleme programını birleştirmek ve bu koşulları kabul etmek istiyorsanız, konumunda bir Azure destek bileti oluşturarak kayıt isteğinde bulunabilir [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . "Sorun türü" için "Teknik" seçeneğini belirleyin, "hizmet" için "SQL veritabanı yönetilen örneği" ni seçin ve "sorun türü" için "diğer" seçeneğini belirleyin. İsteğiniz içinde, aşağıdaki ayrıntılarla SQL yönetilen örneği için Machine Learning 'ın sınırlı genel önizlemesine kaydedilmesini istediğiniz durum: mantıksal sunucu adı, bölgesi ve abonelik KIMLIĞI.
+Önizleme programını birleştirmek ve bu koşulları kabul etmek istiyorsanız, konumunda bir Azure destek bileti oluşturarak kayıt isteğinde bulunabilir [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . "Sorun türü" için "Teknik" seçeneğini belirleyin, "hizmet" için "SQL veritabanı yönetilen örneği" ni seçin ve "sorun türü" için "diğer" seçeneğini belirleyin. Şu bilgileri de ekleyerek SQL Yönetilen Örneği için Machine Learning sınırlı genel önizleme sürümüne kaydolmak istediğinizi belirten bir istek gönderin: mantıksal sunucu adı, bölge ve abonelik kimliği.
 
-Programa kaydolduktan sonra, Microsoft sizi genel önizlemeye ve mevcut veya yeni veritabanınız için Machine Learning Services etkinleştirecektir.
+Programa kaydınız yapıldıktan sonra Microsoft sizi genel önizleme sürümüne alacak ve var olan veya yeni veritabanınız için Machine Learning Services işlevini etkinleştirecektir.
 
-SQL yönetilen örneğindeki Machine Learning Services, genel önizleme sırasında üretim iş yükleri için önerilmez.
+Genel önizleme sırasında SQL Yönetilen Örneği için Machine Learning Services işlevinin üretim iş yükleri için kullanılması önerilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83674236"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
@@ -64,7 +63,7 @@ Daha fazla bilgi için [Azure Backup bileşenleri tablosuna](/azure/backup/backu
 
 Azure AD, aşağıdakiler dahil olmak üzere tam [kimlik yönetimi özellikleri](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)paketini de içerir:
 
-- [Multi-Factor Authentication](/azure/multi-factor-authentication/multi-factor-authentication)
+- [Multi-factor authentication](/azure/multi-factor-authentication/multi-factor-authentication)
 - [Self servis parola yönetimi](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Self servis grup yönetimi](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Ayrıcalıklı hesap yönetimi](/azure/active-directory/active-directory-privileged-identity-management-configure)

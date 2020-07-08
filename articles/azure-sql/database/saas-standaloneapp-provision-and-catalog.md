@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042172"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Kiracı SaaS düzenine göre uygulama kullanarak yeni kiracılar sağlayın ve kataloglayın
@@ -83,14 +82,14 @@ Bu görevde, tüm kiracı veritabanlarını kaydetmek için kullanılan kataloğ
 * Daha önce dağıttığınız **örnek kiracı uygulamalarını kaydettirin** .  Her kiracı, kiracı adının karmasından oluşturulmuş bir anahtar kullanılarak kaydedilir.  Kiracı adı, katalogdaki bir uzantı tablosunda da depolanır.
 
 1. PowerShell ıSE 'de *. ..\Learning Modules\userconfig.exe* dosyasını açın ve **\<user\>** değeri üç örnek uygulamayı dağıttığınızda kullandığınız değere güncelleştirin.  **Dosyayı kaydedin**.
-1. PowerShell ıSE 'de *. ..\Learning Modules\provisiontenants\demo-provisionandcatalog.exe dosyasını* açın ve **$Scenario = 1**olarak ayarlayın. Kiracı kataloğunu dağıtın ve önceden tanımlanmış kiracılar 'ı kaydedin.
+1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 1**olarak ayarlayın. Kiracı kataloğunu dağıtın ve önceden tanımlanmış kiracılar 'ı kaydedin.
 
 1. İmlecinizi,, `& $PSScriptRoot\New-Catalog.ps1` ve ardından **F9**tuşuna basarak bir yere yerleştirerek bir kesme noktası ekleyin.
 
     ![izleme için kesme noktası ayarlama](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
 1. **F5**tuşuna basarak betiği çalıştırın.
-1.  Komut dosyası yürütme kesme noktasında durduktan sonra, New-Catalog. ps1 betiğine dönmek için **F11** tuşuna basın.
+1.  Komut dosyası yürütme kesme noktasında durduktan sonra, New-Catalog.ps1 betiğine geçmek için **F11** tuşuna basın.
 1.  Komut dosyasının yürütülmesini, hata ayıklama menü seçenekleri, F10 ve F11 kullanarak, çağrılan işlevleri üzerinde veya içine adımla izleyin.
     *   PowerShell betiklerinde hata ayıklama hakkında daha fazla bilgi için bkz. [PowerShell betiklerinde çalışma ve hata ayıklama hakkında ipuçları](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
@@ -123,11 +122,11 @@ Bu görevde, tek bir kiracı uygulamasını sağlamayı öğreneceksiniz. Yapaca
 * **Veritabanını temel kiracı bilgileriyle başlatın**. Bu eylem, olay Web sitesinde arka plan olarak kullanılan fotoğrafı belirleyen mekan türünü belirtmeyi içerir.
 * **Veritabanını Katalog veritabanına kaydedin**.
 
-1. PowerShell ıSE 'de *. ..\Learning Modules\provisiontenants\demo-provisionandcatalog.exe* ve set **$Scenario = 2**' yi açın. Kiracı kataloğunu dağıtma ve önceden tanımlanmış kiracılar kaydetme
+1. PowerShell ıSE 'de *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* açın ve **$Scenario = 2**olarak ayarlayın. Kiracı kataloğunu dağıtma ve önceden tanımlanmış kiracılar kaydetme
 
 1. İmlecinizi,, `& $PSScriptRoot\New-TenantApp.ps1` ve ardından **F9**tuşuna basarak satır 49 ' de bir yere yerleştirerek betiğe bir kesme noktası ekleyin.
 1. **F5**tuşuna basarak betiği çalıştırın.
-1.  Komut dosyası yürütme kesme noktasında durduktan sonra, New-Catalog. ps1 betiğine dönmek için **F11** tuşuna basın.
+1.  Komut dosyası yürütme kesme noktasında durduktan sonra, New-Catalog.ps1 betiğine geçmek için **F11** tuşuna basın.
 1.  Komut dosyasının yürütülmesini, hata ayıklama menü seçenekleri, F10 ve F11 kullanarak, çağrılan işlevleri üzerinde veya içine adımla izleyin.
 
 Kiracı sağlandıktan sonra, yeni kiracının olaylar Web sitesi açılır.

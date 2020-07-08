@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920090"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Rollerin geri dönüştürülmesine neden olan yaygın sorunlar
 Bu makalede, dağıtım sorunlarının bazı yaygın nedenleri ele alınmaktadır ve bu sorunları çözmenize yardımcı olacak sorun giderme ipuçları sunulmaktadır. Bir uygulamada sorun olduğunu belirten bir ifade, rol örneğinin başlayamadığını veya başlatma, meşgul ve durdurma durumları arasında geçiş yapar.
@@ -32,7 +31,7 @@ Uygulamanızdaki bir rol, .NET Framework veya Azure yönetilen Kitaplığı 'nı
 Uygulamanızı oluşturmadan ve paketlemenize başlamadan önce aşağıdakileri doğrulayın:
 
 * Visual Studio kullanıyorsanız, projenizde Azure SDK 'sının veya .NET Framework bir parçası olmayan her Başvurulmuş derleme için yereli **Kopyala** özelliğinin **true** olarak ayarlandığından emin olun.
-* Web. config dosyasının, derleme öğesinde kullanılmayan derlemelere başvurmadığından emin olun.
+* web.config dosyasının, derleme öğesinde kullanılmayan hiçbir derlemeye başvurmadığından emin olun.
 * Her. cshtml dosyasının **derleme eylemi** **içerik**olarak ayarlanır. Bu, dosyaların pakette doğru görünmesini ve başvurulan diğer dosyaların pakette görünmesini sağlar.
 
 ## <a name="assembly-targets-wrong-platform"></a>Derleme yanlış platformu hedefliyor
@@ -47,13 +46,15 @@ Azure, 64 bitlik bir ortamdır. Bu nedenle, 32 bitlik bir hedef için derlenen .
 ## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Yanlış DiagnosticsConnectionString ayarı
 Uygulama Azure Tanılama kullanıyorsa, hizmet yapılandırma dosyanızda `DiagnosticsConnectionString` yapılandırma ayarı belirtilmelidir. Bu ayar, Azure 'daki depolama hesabınıza bir HTTPS bağlantısı belirtmelidir.
 
-Uygulama paketinizi Azure 'a `DiagnosticsConnectionString` dağıtmadan önce ayarınızı doğru olduğundan emin olmak için aşağıdakileri doğrulayın:  
+`DiagnosticsConnectionString`Uygulama paketinizi Azure 'a dağıtmadan önce ayarınızı doğru olduğundan emin olmak için aşağıdakileri doğrulayın:  
 
 * Bu `DiagnosticsConnectionString` ayar, Azure 'da geçerli bir depolama hesabına işaret eder.  
   Varsayılan olarak, bu ayar öykünülmüş depolama hesabına işaret eder, bu nedenle uygulama paketinizi dağıtmadan önce bu ayarı açıkça değiştirmeniz gerekir. Bu ayarı değiştirmeyin, rol örneği tanılama izleyicisini başlatmaya çalıştığında bir özel durum oluşturulur. Bu, rol örneğinin sonsuza kadar geri dönüştürülmesine neden olabilir.
 * Bağlantı dizesi aşağıdaki [biçimde](../storage/common/storage-configure-connection-string.md)belirtilir. (Protokol HTTPS olarak belirtilmelidir.) *MyAccountName* değerini depolama hesabınızın adıyla ve *myaccountkey* değerini erişim anahtarınızla değiştirin:    
 
-        DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```console
+DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```
 
   Uygulamanızı Microsoft Visual Studio için Azure Araçları 'nı kullanarak geliştiriyorsanız, bu değeri ayarlamak için özellik sayfalarını kullanabilirsiniz.
 
@@ -68,4 +69,4 @@ Cloud Services için daha fazla [sorun giderme makalesini](https://azure.microso
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [Başlangıçta]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Çalışmaz]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[Çalıştır]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
