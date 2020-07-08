@@ -8,14 +8,13 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: d47450f3252074d3bae8df97766bf8858fca5972
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416588"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037605"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory için yönetilen kimlik
 
@@ -163,7 +162,7 @@ Data Factory-> özelliklerinizi Azure portal > yönetilen kimlik bilgilerini bul
 - Yönetilen kimlik kiracısı
 - Yönetilen kimlik uygulama KIMLIĞI
 
-Yönetilen kimlik bilgileri, Azure blob, Azure Data Lake Storage, Azure Key Vault vb. gibi yönetilen kimlik doğrulamasını destekleyen bağlı hizmet oluşturduğunuzda da görüntülenir.
+Yönetilen kimlik bilgileri, Azure blob, Azure Data Lake Storage, Azure Key Vault vb. gibi yönetilen kimlik doğrulamasını destekleyen bağlı hizmet oluştururken de görüntülenir.
 
 İzin verirken, bu kimliği bulmak için nesne KIMLIĞINI veya Veri Fabrikası adını (yönetilen kimlik adı olarak) kullanın.
 
@@ -191,8 +190,63 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
+### <a name="retrieve-managed-identity-using-rest-api"></a>REST API kullanarak yönetilen kimlik alma
+
+Yönetilen kimlik sorumlusu KIMLIĞI ve kiracı KIMLIĞI, belirli bir veri fabrikasını aşağıdaki şekilde aldığınızda döndürülür.
+
+İstekte aşağıdaki API 'YI çağırın:
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
+```
+
+**Yanıt**: aşağıdaki örnekte gösterildiği gibi yanıt alacaksınız. "Kimlik" bölümü buna göre doldurulur.
+
+```json
+{
+    "name":"<dataFactoryName>",
+    "identity":{
+        "type":"SystemAssigned",
+        "principalId":"554cff9e-XXXX-XXXX-XXXX-90c7d9ff2ead",
+        "tenantId":"72f988bf-XXXX-XXXX-XXXX-2d7cd011db47"
+    },
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>",
+    "type":"Microsoft.DataFactory/factories",
+    "properties":{
+        "provisioningState":"Succeeded",
+        "createTime":"2020-02-12T02:22:50.2384387Z",
+        "version":"2018-06-01",
+        "factoryStatistics":{
+            "totalResourceCount":0,
+            "maxAllowedResourceCount":0,
+            "factorySizeInGbUnits":0,
+            "maxAllowedFactorySizeInGbUnits":0
+        }
+    },
+    "eTag":"\"03006b40-XXXX-XXXX-XXXX-5e43617a0000\"",
+    "location":"<region>",
+    "tags":{
+
+    }
+}
+```
+
+> [!TIP] 
+> Bir ARM şablonundan yönetilen kimliği almak için ARM JSON içinde bir **çıktılar** bölümü ekleyin:
+
+```json
+{
+    "outputs":{
+        "managedIdentityObjectId":{
+            "type":"string",
+            "value":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('<dataFactoryName>')), '2018-06-01', 'Full').identity.principalId]"
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
-Data Factory tarafından yönetilen kimliğin ne zaman ve nasıl kullanılacağını açıklayan aşağıdaki konulara bakın:
+Data Factory tarafından yönetilen kimliğin ne zaman ve nasıl kullanılacağını tanıtan aşağıdaki konulara bakın:
 
 - [Kimlik bilgilerini Azure Key Vault içinde depola](store-credentials-in-key-vault.md)
 - [Azure kaynakları kimlik doğrulaması için Yönetilen kimlikler kullanarak/veya Azure Data Lake Store veri kopyalama](connector-azure-data-lake-store.md)

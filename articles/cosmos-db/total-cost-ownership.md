@@ -7,22 +7,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116273"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954664"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB ile toplam sahip olma maliyeti (TCO)
 
 Azure Cosmos DB, ayrıntılı çok kiracılı olarak ve kaynak idaresi özelliğiyle tasarlanmıştır. Bu tasarım, Azure Cosmos DB’nin çok daha az maliyetlerle çalıştırılmasına olanak tanır ve kullanıcıların tasarruf etmesine yardımcı olur. Şu anda, Azure Cosmos DB tek makinede 280’den fazla müşteri iş yükünü ve bir kümede binlerce müşteri iş yükünü destekler. Bu yoğunluk, sürekli olarak artış gösteriyor. Müşterilerin iş yüklerinin çoğaltmalarına ilişkin yükü bir kümedeki farklı makinelerde ve bir veri merkezindeki birden fazla kümede dengeler. Daha fazla bilgi edinmek için bkz. [Azure Cosmos DB: genel olarak dağıtılmış veritabanlarının en katmanını iletme](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Kaynak yönetimi, çok kiracılı ve Azure altyapısına yönelik yerel tümleştirme nedeniyle Azure Cosmos DB, MongoDB, Cassandra veya IaaS üzerinde çalışan diğer OSS NoSQL ve şirket içinde çalışan veritabanı altyapılarından en fazla 10 kez bir tanesi üzerinden. [Bir NoSQL veritabanı bulut hizmetinin toplam maliyetlerine (değil)](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)ait incelemeye bakın.
 
-Apache Cassandra, MongoDB, HBase gibi OSS NoSQL veritabanı çözümleri, şirket içi için tasarlanmıştır. Yönetilen bir hizmet olarak sunulduklarında, sağlanan kümelerin ve izleme desteğinin yönetilmesi için kiracı veritabanı olan bir Kaynak Yöneticisi şablonuna eşdeğerdir. OSS NoSQL mimarileri önemli işlem yükü gerektirir ve uzmanlığın bulunması zor ve pahalı olabilir. Diğer taraftan Azure Cosmos DB, geliştiricilerin veritabanı altyapısını yönetmek ve sürdürmek yerine iş yeniliklerine odaklanmasını sağlayan, tam olarak yönetilen bir bulut hizmetidir. 
+Apache Cassandra, MongoDB, HBase gibi OSS NoSQL veritabanı çözümleri, şirket içi için tasarlanmıştır. Yönetilen bir hizmet olarak sunulduklarında, sağlanan kümelerin ve izleme desteğinin yönetilmesi için kiracı veritabanı olan bir Kaynak Yöneticisi şablonuna eşdeğerdir. OSS NoSQL mimarileri önemli işlem yükü gerektirir ve uzmanlığın bulunması zor ve pahalı olabilir. Diğer taraftan Azure Cosmos DB, geliştiricilerin veritabanı altyapısını yönetmek ve sürdürmek yerine iş yeniliklerine odaklanmasını sağlayan, tam olarak yönetilen bir bulut hizmetidir.
 
 Bulut Yerel veritabanı hizmeti Azure Cosmos DB farklı olarak, OSS NoSQL veritabanı motorları, temel mimari ilkeleri olarak kaynak yönetimi veya ayrıntılı çok kiracılı bir şekilde tasarlanmadı ve derlenmedi. Cassandra ve MongoDB gibi OSS NoSQL veritabanı motorları, çalıştığı sanal makine kaynaklarının tümünün kullanımları için kullanılabilir olduğunu temel bir varsayımına sahiptir. Bu veritabanı altyapılarından birçoğu, kaynak miktarı belirli bir eşiğin altına düşerse çalışamaz. Örneğin, küçük sanal makine örnekleri için ve genellikle büyük ölçekli VM 'Ler için yüksek maliyetli sanal makineler öneren satıcı tarafından önerilen yapılandırmalarda kullanılabilir. Bu nedenle, bir OSS NoSQL veya başka bir şirket içi veritabanı motorunu barındırmak ve saniye başına istekler veya tüketilen depolama alanı gibi tüketim tabanlı bir ücretlendirme modeli kullanarak kullanılabilmesini sağlamak mümkün değildir.
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB toplam sahip olma maliyeti 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB toplam sahip olma maliyeti
 
 Azure Cosmos DB sunucusuz sağlama modeli, veritabanı altyapısının aşırı sağlanması gereksinimini ortadan kaldırır. Azure Cosmos DB kaynaklar, özelleştirilmiş yapılandırmalara veya lisanslamaya gerek kalmadan sağlanır. Sonuç olarak, Azure Cosmos DB ile desteklenen uygulamalar, OSS NoSQL veritabanlarına kıyasla yüzde 70 toplam sahiplik tasarrufuna kadar bir şekilde çalışabilir. Bazı gerçek zamanlı örnekler için bkz. [Müşteri kullanım örnekleri](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Azure Cosmos DB fiyatlandırma modelinin diğer avantajları şunlardır:
 

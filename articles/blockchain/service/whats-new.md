@@ -1,15 +1,14 @@
 ---
 title: Yenilikler Sürüm notları-Azure blok zinciri hizmeti
 description: En son sürüm notları, sürümler, bilinen sorunlar ve yaklaşan değişiklikler gibi Azure blok zinciri hizmeti ile nelerin yeni olduğunu öğrenin.
-ms.date: 06/03/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c5316aa387de28fe1a78b336eb2e9e010c624b02
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921898"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Azure blok zinciri hizmetindeki yenilikler nelerdir?
 
@@ -23,6 +22,25 @@ Azure blok zinciri hizmeti, iyileştirmeleri sürekli olarak alır. En son geli�
 
 ---
 
+## <a name="june-2020"></a>Haziran 2020
+
+### <a name="version-upgrades"></a>Sürüm yükseltmeleri
+
+- 2.6.0 sürümüne çekirdek sürümü yükseltmesi. Sürüm 2.6.0 ile imzalı özel işlemler gönderebilirsiniz. Özel işlemler gönderme hakkında daha fazla bilgi için bkz. [çekirdek API 'si belgeleri](https://docs.goquorum.com/en/latest/Getting%20Started/api/).
+- Tessera sürümü 0.10.5 sürümüne yükseltilir.
+
+### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>Sözleşme boyutu ve işlem boyutu 128 KB 'ye yükseldi
+
+Tür: yapılandırma değişikliği
+
+Daha büyük boyutlu akıllı sözleşmeleri dağıtabilmeniz için sözleşme boyutu (MaxCodeSize) 128 KB 'ye yükselmiştir. Ayrıca, işlem boyutu (txnSizeLimit) 128 KB 'ye yükselmiştir. Yapılandırma değişiklikleri, Haziran 19 2020 ' den sonra Azure blok zinciri hizmeti 'nde oluşturulan yeni yarışmatılıklar için geçerlidir.
+
+### <a name="trietimeout-value-reduced"></a>TrieTimeout değeri azaltıldı
+
+Tür: yapılandırma değişikliği
+
+TrieTimeout değeri, bellek içi durumunun diske daha sık yazıldığı şekilde azaltılmıştır. Alt değer, düğüm kilitlenmesinin nadir durumunda bir düğümün daha hızlı kurtarılmasını sağlar.
+
 ## <a name="may-2020"></a>Mayıs 2020
 
 ### <a name="version-upgrades"></a>Sürüm yükseltmeleri
@@ -33,17 +51,24 @@ Azure blok zinciri hizmeti, iyileştirmeleri sürekli olarak alır. En son geli�
 
 ### <a name="azure-blockchain-service-supports-sending-rawprivate-transactions"></a>Azure blok zinciri hizmeti, Rawprıvate işlem gönderilmesini destekler
 
-**Şunu yazın:** Özellik
+Tür: Özellik
 
 Müşteriler, düğümdeki hesap dışında özel işlemleri imzalayabilir.
 
 ### <a name="two-phase-member-provisioning"></a>İki aşamalı üye sağlama
 
-**Şunu yazın:** Geliştirmesini
+Tür: geliştirme
 
 İki aşama, bir üyenin var olan bir konsorsiyumun üzerinde oluşturulduğu senaryoların iyileştirmenize yardımcı olur. Üye altyapısı ilk aşamada sağlanıyor. İkinci aşamada, üye blok zinciriyle eşitlenir. İki aşamalı sağlama zaman aşımları nedeniyle üye oluşturma hatasından kaçınmanıza yardımcı olur.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
+
+### <a name="ethestimategas-function-throws-exception-in-quorum-v260"></a>ETH. Estimategaz işlevi, çekirdek v 2.6.0 'de özel durum oluşturur
+
+Çekirdek v 2.6.0 'de, ek *değer* parametresi sağlanması gerekmeden *ETH. estimategaz* işlevine yapılan çağrılar, bir *Yöntem işleyicisinin çökme* özel durumuna neden olur. Çekirdek ekibine bildirildi ve 2020 Temmuz 'dan sonuna bir onarım beklenmektedir. Bir çözüm kullanılabilir olana kadar aşağıdaki geçici çözümleri kullanabilirsiniz:
+
+- Performansı etkileyebileceğinden, *ETH. Estimategaz* kullanmaktan kaçının. ETH. Estimategaz performans sorunları hakkında daha fazla bilgi için, bkz [.. estimategaz Işlevi çağırma performansı azaltır](#calling-ethestimategas-function-reduces-performance). Her işlem için bir gaz değeri ekleyin. Çoğu kitaplık, çekirdek v 2.6.0 'in kilitlenmesine neden olan bir gaz değeri sağlanmazsa, ETH. Estimategaz çağırır.
+- *ETH. Estimategaz*çağrısı yapmanız gerekiyorsa, çekirdek ekip ek parametre *değerini* geçici bir çözüm olarak *0* olarak iletmeniz önerilir.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>Dört Doğrulayıcı düğümü daha az olursa araştırma durduruluyor
 
@@ -89,11 +114,11 @@ Azure blok zinciri hizmeti, kilitlenme olduğunda Tessera 'yi yeniden başlatır
 
 Yüksek hacimli özel işlemler gönderiyorsanız *Standart* katmanı kullanın. Geliştirme, test ve kavram kanıtı için *temel* katmanı kullanın. Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanını değiştirmek desteklenmez.
 
-### <a name="calling-ethestimate-gas-function-reduces-performance"></a>ETH 'ın çağrılması. tahmin gaz işlevi performansı azaltır
+### <a name="calling-ethestimategas-function-reduces-performance"></a>ETH. Estimategaz işlevinin çağrılması performansı azaltır
 
-*ETH. tahmin* işlevini birden çok kez çağırmak, saniye başına işlem azaltır. Her işlem gönderimi için *ETH. tahmin* gaz işlevini kullanmayın. *ETH. tahmin* işlevi bellek açısından yoğun.
+*ETH. Estimategaz* işlevini birden çok kez çağırmak, saniye başına işlem azaltır. Her işlem gönderimi için *ETH. Estimategaz* işlevini kullanmayın. *ETH. Estimategaz* işlevi bellek açısından yoğun.
 
-Mümkünse, işlem göndermek için bir klasik gaz değeri kullanın ve *ETH. tahmin*kullanımını en aza indirin.
+Mümkünse, işlem göndermek için bir klasik gaz değeri kullanın ve *ETH. Estimategaz*kullanımını en aza indirin.
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Akıllı sözleşmelerdeki sınırsız döngüler performansı azaltır
 

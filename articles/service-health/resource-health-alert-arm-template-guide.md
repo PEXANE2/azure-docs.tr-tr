@@ -4,13 +4,12 @@ description: Azure kaynaklarınızın kullanım dışı olmasına göre size bil
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759007"
 ---
-# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak kaynak sistem durumu uyarılarını yapılandırma
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager şablonlarını kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
 Bu makalede, Azure Resource Manager şablonlarını ve Azure PowerShell kullanarak programlı olarak Kaynak Durumu etkinlik günlüğü uyarılarını nasıl oluşturacağınız gösterilmektedir.
 
@@ -34,13 +33,13 @@ Bu sayfadaki yönergeleri izlemek için, önceden birkaç şey ayarlamanız gere
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > Erişiminiz olan abonelikleri `Get-AzSubscription` listelemek için ' i kullanabilirsiniz.
+    > `Get-AzSubscription`Erişiminiz olan abonelikleri listelemek için ' i kullanabilirsiniz.
 
 2. Eylem grubunuz için tam Azure Resource Manager KIMLIĞINI bulun ve kaydedin
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Kaynak durumu uyarılar için Kaynak Yöneticisi şablonu oluşturun ve kaydedin `resourcehealthalert.json` ([aşağıdaki ayrıntılara bakın](#resource-manager-template-options-for-resource-health-alerts))
+3. Kaynak Durumu uyarılar için Kaynak Yöneticisi şablonu oluşturun ve kaydedin `resourcehealthalert.json` ([aşağıdaki ayrıntılara bakın](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Bu şablonu kullanarak yeni bir Azure Resource Manager dağıtımı oluşturun
 
@@ -144,7 +143,7 @@ Kaynak Durumu uyarılar, olayları üç farklı kapsam üzerinde izlemek için y
  * Kaynak grubu düzeyi
  * Kaynak düzeyi
 
-Uyarı şablonu abonelik düzeyinde yapılandırılır, ancak uyarınızı yalnızca belirli kaynaklar veya belirli bir kaynak grubundaki kaynaklar hakkında bilgilendirecek şekilde yapılandırmak istiyorsanız Yukarıdaki şablonda `scopes` bölümü değiştirmeniz yeterlidir.
+Uyarı şablonu abonelik düzeyinde yapılandırılır, ancak uyarınızı yalnızca belirli kaynaklar veya belirli bir kaynak grubundaki kaynaklar hakkında bilgilendirecek şekilde yapılandırmak istiyorsanız `scopes` Yukarıdaki şablonda bölümü değiştirmeniz yeterlidir.
 
 Kaynak grubu düzeyi kapsamı için kapsamlar bölümü şöyle görünmelidir:
 ```json
@@ -167,7 +166,7 @@ Kaynak düzeyi kapsamı için kapsam bölümü şöyle görünmelidir:
 
 ### <a name="adjusting-the-resource-types-which-alert-you"></a>Sizi uyaran kaynak türlerini ayarlama
 
-Abonelik veya kaynak grubu düzeyindeki uyarıların farklı türlerde kaynakları olabilir. Yalnızca belirli bir kaynak türü alt kümesinden gelen uyarıları sınırlamak istiyorsanız, bunu şöyle olacak şekilde şablonun `condition` bölümünde tanımlayabilirsiniz:
+Abonelik veya kaynak grubu düzeyindeki uyarıların farklı türlerde kaynakları olabilir. Yalnızca belirli bir kaynak türü alt kümesinden gelen uyarıları sınırlamak istiyorsanız, `condition` bunu şöyle olacak şekilde şablonun bölümünde tanımlayabilirsiniz:
 
 ```json
 "condition": {
@@ -192,12 +191,12 @@ Abonelik veya kaynak grubu düzeyindeki uyarıların farklı türlerde kaynaklar
 },
 ```
 
-Burada, kaynak sistem `anyOf` durumu uyarısının belirlediğimiz koşullardan herhangi biriyle eşleşmesini sağlamak için sarmalayıcı kullanacağız, bu da belirli kaynak türlerini hedefleyen uyarılara izin verir.
+Burada, `anyOf` kaynak sistem durumu uyarısının belirlediğimiz koşullardan herhangi biriyle eşleşmesini sağlamak için sarmalayıcı kullanacağız, bu da belirli kaynak türlerini hedefleyen uyarılara izin verir.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Sizi uyaran Kaynak Durumu olaylarını ayarlama
-Kaynaklar bir sistem durumu olayına uyduklarında, sistem durumu olayının durumunu temsil eden bir dizi aşamadan geçebilir `Active`:, `In Progress` `Updated`, ve. `Resolved`
+Kaynaklar bir sistem durumu olayına uyduklarında, sistem durumu olayının durumunu temsil eden bir dizi aşamadan geçebilir: `Active` ,, `In Progress` `Updated` ve `Resolved` .
 
-Yalnızca bir kaynak sağlıksız hale geldiğinde bildirim almak isteyebilirsiniz, bu durumda uyarınızı yalnızca `status` olduğu `Active`zaman bilgilendirmek üzere yapılandırmak isteyebilirsiniz. Bununla birlikte, diğer aşamalar üzerinde de bildirim almak istiyorsanız bu ayrıntıları şöyle ekleyebilirsiniz:
+Yalnızca bir kaynak sağlıksız hale geldiğinde bildirim almak isteyebilirsiniz, bu durumda uyarınızı yalnızca olduğu zaman bilgilendirmek üzere yapılandırmak isteyebilirsiniz `status` `Active` . Bununla birlikte, diğer aşamalar üzerinde de bildirim almak istiyorsanız bu ayrıntıları şöyle ekleyebilirsiniz:
 
 ```json
 "condition": {
@@ -227,7 +226,7 @@ Yalnızca bir kaynak sağlıksız hale geldiğinde bildirim almak isteyebilirsin
 }
 ```
 
-Tüm dört sistem durumu olayı aşaması için bildirim almak istiyorsanız, bu koşulu tüm birlikte kaldırabilirsiniz ve uyarı, `status` özelliği ne olursa olsun sizi bilgilendirir.
+Tüm dört sistem durumu olayı aşaması için bildirim almak istiyorsanız, bu koşulu tüm birlikte kaldırabilirsiniz ve uyarı, özelliği ne olursa olsun sizi bilgilendirir `status` .
 
 > [!NOTE]
 > Her bir "anyOf" bölümü yalnızca bir alan türü değeri içermelidir.

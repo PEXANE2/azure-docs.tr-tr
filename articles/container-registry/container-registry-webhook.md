@@ -4,10 +4,9 @@ description: Kayıt defteri depolarınızda gönderme veya çekme eylemleri ger�
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83685040"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry Web kancalarını kullanma
@@ -16,7 +15,7 @@ Azure kapsayıcısı kayıt defteri, Docker Hub’ın genel Docker görüntüler
 
 Web kancası istekleri hakkında daha fazla bilgi için bkz. [Azure Container Registry Web kancası şeması başvurusu](container-registry-webhook-reference.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure kapsayıcısı kayıt defteri -Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturun. Örneğin, [Azure Portal](container-registry-get-started-portal.md) veya [Azure CLI](container-registry-get-started-azure-cli.md)'yi kullanın. [Azure Container Registry hizmet katmanlarında](container-registry-skus.md) farklı Web kancaları kotaları vardır.
 * Docker CLI - Yerel bilgisayarınızı bir Docker konağı olarak ayarlamak ve Docker CLI komutlarına erişmek için [Docker Engine](https://docs.docker.com/engine/installation/)’i yükleyin.

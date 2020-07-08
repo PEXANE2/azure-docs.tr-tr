@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 147fecdd9777e06ce078e4ed1531d6d0a0da749c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78197173"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954630"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için Axinom kullanma 
 > [!div class="op_single_selector"]
@@ -54,16 +53,18 @@ Her ikisine de sahip olan DASH akışı için çoklu DRM ile dinamik CENC koruma
 
 Neden Azure Active Directory Axinom 'ın Widevine lisans sunucusu için STS olarak kullanılamayacağını öğrenmek için [JWT belirteci oluşturma](media-services-axinom-integration.md#jwt-token-generation) bölümüne bakın.
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 1. Anahtar teslim hizmetini yapılandırmaya yönelik içerik anahtarını oluşturmak için, Axınom belirtilen anahtar kaynağı (8888000000000000000000000000000000000000) ve oluşturulan ya da seçtiğiniz anahtar KIMLIĞINI kullanmanız gerekir. Axinom lisans sunucusu, hem test hem de üretim için geçerli olan aynı anahtar Seed 'e dayalı içerik anahtarları içeren tüm lisansları yayınlar.
-2. Test için Widevine lisans alma URL 'SI: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense). Hem HTTP hem de ıSıTLARA izin verilir.
+2. Test için Widevine lisans alma URL 'SI: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense) . Hem HTTP hem de ıSıTLARA izin verilir.
 
 ## <a name="azure-media-player-preparation"></a>Azure Media Player hazırlığı
 AMP v 1.4.0, hem PlayReady hem de Widevine DRM ile dinamik olarak paketlenmiş AMS içeriğinin oynatılmasını destekler.
 Widevine lisans sunucusu belirteç kimlik doğrulaması gerektirmiyorsa, Widevine tarafından korunan bir DASH içeriğini test etmek için yapmanız gereken ek bir şey yoktur. Örneğin, AMP ekibi, Widevine ile PlayReady ve Chrome ile Microsoft Edge ve ıE11 'de çalıştığını görebileceğiniz basit bir [örnek](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html)sağlar.
 Axinom tarafından sunulan Widevine lisans sunucusu, JWT belirteci kimlik doğrulamasını gerektirir. JWT belirtecinin, "X-AxDRM-Message" HTTP üstbilgisiyle lisans isteğiyle gönderilmesi gerekir. Bu amaçla, kaynağı ayarlamadan önce AMP 'yı barındıran Web sayfasına aşağıdaki JavaScript eklemeniz gerekir:
 
-    <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
+```html
+<script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
+```
 
 AMP kodunun geri kalanı, AMP belgesinde olduğu gibi standart AMP API 'sidir [.](https://amp.azure.net/libs/amp/latest/docs/)
 
@@ -78,65 +79,69 @@ John Sheehan 'ın [JWT NuGet paketi](https://www.nuget.org/packages/JWT) , bu Nu
 
 Aşağıda, test için Axınom Widevine lisans sunucusu için gerekli talepler ile JWT belirteci oluşturma kodu verilmiştir:
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
-    using System.IdentityModel.Tokens;
-    using System.IdentityModel.Protocols.WSTrust;
-    using System.Security.Claims;
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.IdentityModel.Tokens;
+using System.IdentityModel.Protocols.WSTrust;
+using System.Security.Claims;
 
-    namespace OpenIdConnectWeb.Utils
+namespace OpenIdConnectWeb.Utils
+{
+    public class JwtUtils
     {
-        public class JwtUtils
+        //using John Sheehan's NuGet JWT library: https://www.nuget.org/packages/JWT/
+        public static string CreateJwtSheehan(string symmetricKeyHex, string key_id)
         {
-            //using John Sheehan's NuGet JWT library: https://www.nuget.org/packages/JWT/
-            public static string CreateJwtSheehan(string symmetricKeyHex, string key_id)
+            byte[] symmetricKey = ConvertHexStringToByteArray(symmetricKeyHex);  //hex string to byte[] Note: Note that the key is a hex string, however it must be treated as a series of bytes not a string when encoding.
+
+            var payload = new Dictionary<string, object>()
             {
-                byte[] symmetricKey = ConvertHexStringToByteArray(symmetricKeyHex);  //hex string to byte[] Note: Note that the key is a hex string, however it must be treated as a series of bytes not a string when encoding.
+                { "version", 1 },
+                { "com_key_id", System.Configuration.ConfigurationManager.AppSettings["ax:com_key_id"] },
+                { "message", new { type = "entitlement_message", key_ids = new string[] { key_id } }  }
+            };
 
-                var payload = new Dictionary<string, object>()
-                             {
-                                 { "version", 1 },
-                                 { "com_key_id", System.Configuration.ConfigurationManager.AppSettings["ax:com_key_id"] },
-                                 { "message", new { type = "entitlement_message", key_ids = new string[] { key_id } }  }
-                             };
+            string token = JWT.JsonWebToken.Encode(payload, symmetricKey, JWT.JwtHashAlgorithm.HS256);
 
-                string token = JWT.JsonWebToken.Encode(payload, symmetricKey, JWT.JwtHashAlgorithm.HS256);
+            return token;
+        }
 
-                return token;
+        //convert hex string to byte[]
+        public static byte[] ConvertHexStringToByteArray(string hexString)
+        {
+            if (hexString.Length % 2 != 0)
+            {
+                throw new ArgumentException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "The binary key cannot have an odd number of digits: {0}", hexString));
             }
 
-            //convert hex string to byte[]
-            public static byte[] ConvertHexStringToByteArray(string hexString)
+            byte[] HexAsBytes = new byte[hexString.Length / 2];
+            for (int index = 0; index < HexAsBytes.Length; index++)
             {
-                if (hexString.Length % 2 != 0)
-                {
-                    throw new ArgumentException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "The binary key cannot have an odd number of digits: {0}", hexString));
-                }
-
-                byte[] HexAsBytes = new byte[hexString.Length / 2];
-                for (int index = 0; index < HexAsBytes.Length; index++)
-                {
-                    string byteValue = hexString.Substring(index * 2, 2);
-                    HexAsBytes[index] = byte.Parse(byteValue, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
-                }
-
-                return HexAsBytes;
+                string byteValue = hexString.Substring(index * 2, 2);
+                HexAsBytes[index] = byte.Parse(byteValue, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
             }
 
-        }  
+            return HexAsBytes;
+        }
 
     }  
 
+}  
+```
+
 Axınom Widevine lisans sunucusu
 
-    <add key="ax:laurl" value="https://drm-widevine-licensing.axtest.net/AcquireLicense" />
-    <add key="ax:com_key_id" value="69e54088-e9e0-4530-8c1a-1eb6dcd0d14e" />
-    <add key="ax:com_key" value="4861292d027e269791093327e62ceefdbea489a4c7e5a4974cc904b840fd7c0f" />
-    <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
+```xml
+<add key="ax:laurl" value="https://drm-widevine-licensing.axtest.net/AcquireLicense" />
+<add key="ax:com_key_id" value="69e54088-e9e0-4530-8c1a-1eb6dcd0d14e" />
+<add key="ax:com_key" value="4861292d027e269791093327e62ceefdbea489a4c7e5a4974cc904b840fd7c0f" />
+<add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
+```
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 1. AMS PlayReady lisans teslimi hizmeti bir kimlik doğrulama belirtecinden önce "taşıyıcı =" gerektirse de, Axınom Widevine lisans sunucusu bunu kullanmaz.
 2. Axınom iletişim anahtarı imzalama anahtarı olarak kullanılır. Anahtar onaltılık bir dizedir, ancak kodlama sırasında dize olmayan bir dizi bayt olarak değerlendirilmelidir. Bu, ConvertHexStringToByteArray yöntemi tarafından gerçekleştirilir.
 
@@ -145,36 +150,38 @@ Bir JWT belirteci oluşturma kodunda, anahtar KIMLIĞI ' nin gerekli olduğunu f
 
 Kuşkusuz, anahtar KIMLIĞINI tutan birçok yol vardır. Örneğin, biri bir veritabanında içerik meta verileriyle birlikte anahtar KIMLIĞINI de saklayabilir. Ya da DASH MPD (medya sunum açıklaması) dosyasından anahtar KIMLIĞI alabilirsiniz. Aşağıdaki kod ikincisi için verilmiştir.
 
-    //get key_id from DASH MPD
-    public static string GetKeyID(string dashUrl)
+```csharp
+//get key_id from DASH MPD
+public static string GetKeyID(string dashUrl)
+{
+    if (!dashUrl.EndsWith("(format=mpd-time-csf)"))
     {
-        if (!dashUrl.EndsWith("(format=mpd-time-csf)"))
-        {
-            dashUrl += "(format=mpd-time-csf)";
-        }
-
-        XPathDocument objXPathDocument = new XPathDocument(dashUrl);
-        XPathNavigator objXPathNavigator = objXPathDocument.CreateNavigator();
-        XmlNamespaceManager objXmlNamespaceManager = new XmlNamespaceManager(objXPathNavigator.NameTable);
-        objXmlNamespaceManager.AddNamespace("",     "urn:mpeg:dash:schema:mpd:2011");
-        objXmlNamespaceManager.AddNamespace("ns1",  "urn:mpeg:dash:schema:mpd:2011");
-        objXmlNamespaceManager.AddNamespace("cenc", "urn:mpeg:cenc:2013");
-        objXmlNamespaceManager.AddNamespace("ms",   "urn:microsoft");
-        objXmlNamespaceManager.AddNamespace("mspr", "urn:microsoft:playready");
-        objXmlNamespaceManager.AddNamespace("xsi",  "https://www.w3.org/2001/XMLSchema-instance");
-        objXmlNamespaceManager.PushScope();
-
-        XPathNodeIterator objXPathNodeIterator;
-        objXPathNodeIterator = objXPathNavigator.Select("//ns1:MPD/ns1:Period/ns1:AdaptationSet/ns1:ContentProtection[@value='cenc']", objXmlNamespaceManager);
-
-        string key_id = string.Empty;
-        if (objXPathNodeIterator.MoveNext())
-        {
-            key_id = objXPathNodeIterator.Current.GetAttribute("default_KID", "urn:mpeg:cenc:2013");
-        }
-
-        return key_id;
+        dashUrl += "(format=mpd-time-csf)";
     }
+
+    XPathDocument objXPathDocument = new XPathDocument(dashUrl);
+    XPathNavigator objXPathNavigator = objXPathDocument.CreateNavigator();
+    XmlNamespaceManager objXmlNamespaceManager = new XmlNamespaceManager(objXPathNavigator.NameTable);
+    objXmlNamespaceManager.AddNamespace("",     "urn:mpeg:dash:schema:mpd:2011");
+    objXmlNamespaceManager.AddNamespace("ns1",  "urn:mpeg:dash:schema:mpd:2011");
+    objXmlNamespaceManager.AddNamespace("cenc", "urn:mpeg:cenc:2013");
+    objXmlNamespaceManager.AddNamespace("ms",   "urn:microsoft");
+    objXmlNamespaceManager.AddNamespace("mspr", "urn:microsoft:playready");
+    objXmlNamespaceManager.AddNamespace("xsi",  "https://www.w3.org/2001/XMLSchema-instance");
+    objXmlNamespaceManager.PushScope();
+
+    XPathNodeIterator objXPathNodeIterator;
+    objXPathNodeIterator = objXPathNavigator.Select("//ns1:MPD/ns1:Period/ns1:AdaptationSet/ns1:ContentProtection[@value='cenc']", objXmlNamespaceManager);
+
+    string key_id = string.Empty;
+    if (objXPathNodeIterator.MoveNext())
+    {
+        key_id = objXPathNodeIterator.Current.GetAttribute("default_KID", "urn:mpeg:cenc:2013");
+    }
+
+    return key_id;
+}
+```
 
 ## <a name="summary"></a>Özet
 
@@ -202,7 +209,7 @@ Aşağıdaki parametreler, Axınom Widevine lisans sunucusu kullanan mini çöz�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>İlgili kaynaklar

@@ -9,10 +9,9 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 1ccb32996cd8f15805a810dd5b5985aeb5f87c26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770453"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükleyip kullanma
@@ -123,7 +122,7 @@ Bir cihazdaki bir arabirim için tüm komutları listeleyin:
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-`--repo-login` Parametresi olmadan, bu komut ortak model deposunu kullanır.
+Parametresi olmadan `--repo-login` , bu komut ortak model deposunu kullanır.
 
 Bir komut çağırın:
 
@@ -147,7 +146,7 @@ az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} 
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Bir model deposundaki arabirimleri yönetme
 
-Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu `--login` bağlantı dizeniz ile bağımsız değişkeni ekleyin.
+Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, `--login` model deposu bağlantı dizeniz ile bağımsız değişkeni ekleyin.
 
 Genel IoT Tak ve Kullan modeli deposundaki arabirimleri listeleyin:
 
@@ -187,7 +186,7 @@ Yalnızca Microsoft iş ortakları, genel model deposuna arabirim yayımlayabili
 
 ### <a name="manage-device-capability-models-in-a-model-repository"></a>Bir model deposundaki cihaz yetenek modellerini yönetme
 
-Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu `--login` bağlantı dizeniz ile bağımsız değişkeni ekleyin.
+Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, `--login` model deposu bağlantı dizeniz ile bağımsız değişkeni ekleyin.
 
 IoT Tak ve Kullan ortak model deposundaki cihaz yetenek modellerini listeleyin:
 

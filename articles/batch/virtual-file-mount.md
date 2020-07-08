@@ -3,23 +3,22 @@ title: Bir havuza sanal dosya sistemi bağlama
 description: Bir Batch havuzunda sanal dosya sistemi bağlama hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816038"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954681"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Bir Batch havuzunda sanal dosya sistemi bağlama
 
 Azure Batch artık Batch havuzlarınızdaki Windows veya Linux işlem düğümlerinde bulut depolama veya harici bir dosya sistemi bağlamayı desteklemektedir. Bir işlem düğümü bir havuza katıldığında, sanal dosya sistemi bağlanır ve bu düğümde yerel bir sürücü olarak değerlendirilir. Azure dosyaları, Azure Blob depolama, ağ dosya sistemi (NFS) gibi bir [avere vFXT önbelleği](../avere-vfxt/avere-vfxt-overview.md)veya ortak Internet dosya SISTEMI (CIFS) gibi dosya sistemlerini bağlayabilirsiniz.
 
-Bu makalede, [.net Için Batch Yönetim Kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet)'nı kullanarak bir işlem düğümleri havuzuna bir sanal dosya sistemi bağlama hakkında bilgi edineceksiniz.
+Bu makalede, [.net Için Batch Yönetim Kitaplığı](/dotnet/api/overview/azure/batch?view=azure-dotnet)'nı kullanarak bir işlem düğümleri havuzuna bir sanal dosya sistemi bağlama hakkında bilgi edineceksiniz.
 
 > [!NOTE]
 > Bir sanal dosya sistemi bağlama, 2019-08-19 tarihinde veya sonrasında oluşturulan Batch havuzlarında desteklenir. 2019-08-19 ' den önce oluşturulan toplu iş havuzları bu özelliği desteklemez.
 > 
-> Dosya sistemlerini bir işlem düğümüne bağlamak için API 'Ler [Batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) kitaplığı 'nın bir parçasıdır.
+> Dosya sistemlerini bir işlem düğümüne bağlamak için API 'Ler [Batch .net](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) kitaplığı 'nın bir parçasıdır.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Bir havuza bağlama avantajları
 
@@ -128,7 +127,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Ortak Internet dosya sistemi
 
-Ortak Internet dosya sistemleri (CIFS), geleneksel dosya sistemlerine Azure Batch düğümlere kolayca erişilmesine izin veren havuz düğümlerine de bağlanabilir. CIFS, ağ sunucusu dosyaları ve hizmetleri istemek için açık ve platformlar arası bir mekanizma sağlayan dosya paylaşım protokolüdür. CIFS, Microsoft 'un Internet ve intranet dosya paylaşımı için sunucu Ileti bloğu (SMB) protokolünün gelişmiş sürümünü temel alır ve Windows düğümlerine dış dosya sistemlerini bağlamak için kullanılır. SMB hakkında daha fazla bilgi edinmek için bkz. [dosya sunucusu ve SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+Ortak Internet dosya sistemleri (CIFS), geleneksel dosya sistemlerine Azure Batch düğümlere kolayca erişilmesine izin veren havuz düğümlerine de bağlanabilir. CIFS, ağ sunucusu dosyaları ve hizmetleri istemek için açık ve platformlar arası bir mekanizma sağlayan dosya paylaşım protokolüdür. CIFS, Microsoft 'un Internet ve intranet dosya paylaşımı için sunucu Ileti bloğu (SMB) protokolünün gelişmiş sürümünü temel alır ve Windows düğümlerine dış dosya sistemlerini bağlamak için kullanılır. SMB hakkında daha fazla bilgi edinmek için bkz. [dosya sunucusu ve SMB](/windows-server/storage/file-server/file-server-smb-overview).
 
 ```csharp
 new PoolAddParameter
@@ -153,7 +152,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Bağlama hatalarını tanılama
 
-Bağlama yapılandırması başarısız olursa, havuzdaki işlem düğümü başarısız olur ve düğüm durumu kullanılamaz hale gelir. Bağlama yapılandırma hatasını tanılamak için, [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) hata hakkındaki ayrıntılar için özelliği inceleyin.
+Bağlama yapılandırması başarısız olursa, havuzdaki işlem düğümü başarısız olur ve düğüm durumu kullanılamaz hale gelir. Bağlama yapılandırma hatasını tanılamak için, [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) hata hakkındaki ayrıntılar için özelliği inceleyin.
 
 Hata ayıklama için günlük dosyalarını almak üzere, dosyaları karşıya yüklemek için [OutputFiles](batch-task-output-files.md) kullanın `*.log` . `*.log`Dosyalar, konumdaki dosya sistemi bağlaması hakkında bilgiler içerir `AZ_BATCH_NODE_MOUNTS_DIR` . Bağlama günlük dosyaları şu biçimdedir: `<type>-<mountDirOrDrive>.log` her bir bağlama için. Örneğin, adlı bir bağlama dizininde bulunan bir `cifs` Mount adlı bir bağlama `test` günlük dosyası olacaktır: `cifs-test.log` .
 
@@ -179,5 +178,5 @@ Hata ayıklama için günlük dosyalarını almak üzere, dosyaları karşıya y
 
 - [Windows](../storage/files/storage-how-to-use-files-windows.md) veya [Linux](../storage/files/storage-how-to-use-files-linux.md)ile Azure dosyaları paylaşımının bağlanması hakkında daha fazla bilgi edinin.
 - [Blobsigortası](https://github.com/Azure/azure-storage-fuse) sanal dosya sistemlerini kullanma ve bağlama hakkında bilgi edinin.
-- NFS ve uygulamaları hakkında bilgi edinmek için bkz. [ağ dosya sistemine genel bakış](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) .
-- CIFS hakkında daha fazla bilgi için bkz. [MICROSOFT SMB protokolü ve CIFS protokolüne genel bakış](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) .
+- NFS ve uygulamaları hakkında bilgi edinmek için bkz. [ağ dosya sistemine genel bakış](/windows-server/storage/nfs/nfs-overview) .
+- CIFS hakkında daha fazla bilgi için bkz. [MICROSOFT SMB protokolü ve CIFS protokolüne genel bakış](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) .

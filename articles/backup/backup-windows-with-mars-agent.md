@@ -3,14 +3,13 @@ title: MARS Aracısı 'nı kullanarak Windows makinelerini yedekleme
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını kullanın.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604854"
 ---
-# <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Azure Backup MARS Aracısı 'nı kullanarak Windows makinelerini yedekleme
+# <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server dosyalarını ve klasörlerini Azure 'a yedekleme
 
 Bu makalede, Windows makinelerini [Azure Backup](backup-overview.md) hizmeti ve MICROSOFT Azure kurtarma HIZMETLERI (mars) Aracısı kullanılarak nasıl yedekleyeceğiniz açıklanmaktadır. MARS, Azure Backup Aracısı olarak da bilinir.
 
@@ -43,7 +42,7 @@ Bir yedekleme ilkesi oluşturmak için:
 1. **Eylemler**' in altında, **yedeklemeyi zamanla**' yı seçin.
 
     ![Windows Server yedeklemesini zamanlama](./media/backup-configure-vault/schedule-first-backup.png)
-1. Yedekleme zamanlaması sihirbazında,**sonraki** **Başlangıç** > ' ı seçin.
+1. Yedekleme zamanlaması sihirbazında, sonraki **Başlangıç**' ı seçin  >  **Next**.
 1. **Yedeklenecek öğeleri seçin**altında **öğe Ekle**' yi seçin.
 
     ![Yedeklenecek öğeleri ekle](./media/backup-azure-manage-mars/select-item-to-backup.png)
@@ -79,7 +78,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
         ![Bekletme ilkesi örneği](./media/backup-configure-vault/retention-example.png)
 
-1. **Ilk yedekleme türünü seçin** sayfasında, ilk yedeklemeyi ağ üzerinden mi yoksa çevrimdışı yedekleme mi kullanacağınızı belirleyin. İlk yedeklemeyi ağ üzerinden almak için, > **sonraki** **ağ üzerinden otomatik olarak**' ı seçin.
+1. **Ilk yedekleme türünü seçin** sayfasında, ilk yedeklemeyi ağ üzerinden mi yoksa çevrimdışı yedekleme mi kullanacağınızı belirleyin. İlk yedeklemeyi ağ üzerinden almak için, sonraki **ağ üzerinden otomatik olarak**' ı seçin  >  **Next**.
 
     Çevrimdışı yedekleme hakkında daha fazla bilgi için bkz. [çevrimdışı yedekleme için Azure Data Box kullanma](offline-backup-azure-data-box.md).
 

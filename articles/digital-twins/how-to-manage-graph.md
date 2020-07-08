@@ -1,5 +1,5 @@
 ---
-title: İkizi grafiğini ilişkilerle yönetme
+title: İlişkileri olan ikiz grafiğini yönetme
 titleSuffix: Azure Digital Twins
 description: Bkz. bir dijital TWINS grafiğini ilişkiler ile bağlayarak yönetme.
 author: baanders
@@ -8,10 +8,9 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392259"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
@@ -230,12 +229,12 @@ Oluşturulacak bir dizi dijital TWINS ve ilişki tanımlayan aşağıdaki veri t
 | Model    | ID | Üst | İlişki adı | Diğer veriler |
 | --- | --- | --- | --- | --- |
 | sını    | Floor01 | | | … |
-| Oda    | Room10 | Floor01 | içerir | … |
-| Oda    | Room11 | Floor01 | içerir | … |
-| Oda    | Room12 | Floor01 | içerir | … |
+| Oda    | Room10 | Floor01 | şunu içerir | … |
+| Oda    | Room11 | Floor01 | şunu içerir | … |
+| Oda    | Room12 | Floor01 | şunu içerir | … |
 | sını    | Floor02 | | | … |
-| Oda    | Room21 | Floor02 | içerir | … |
-| Oda    | Room22 | Floor02 | içerir | … |
+| Oda    | Room21 | Floor02 | şunu içerir | … |
+| Oda    | Room22 | Floor02 | şunu içerir | … |
 
 Aşağıdaki kod, bir elektronik tabloyu okumak ve sonuçlardan bir Azure dijital TWINS ikizi grafiği oluşturmak için [MICROSOFT Graph API](https://docs.microsoft.com/graph/overview) kullanır.
 

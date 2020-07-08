@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
 ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84325142"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
@@ -26,7 +25,7 @@ ms.locfileid: "84325142"
 
 Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek için [Azure Active Directory açma kimlik doğrulamasını](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) destekler. Bu kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için [Azure Logic Apps Azure AD OAuth kimlik doğrulamasını etkinleştirme ' deki güvenli erişim ve verilere](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -74,8 +73,8 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST URL 'SI** | seçim | Yes | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
-   | **İstek gövdesi JSON şeması** | `schema` | No | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
+   | **HTTP POST URL 'SI** | seçim | Evet | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
+   | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
    |||||
 
 1. **Istek GÖVDESI JSON şeması** kutusunda, isteğe bağlı olarak, gelen istekteki gövdeyi açıklayan bir JSON şeması girin, örneğin:
@@ -181,8 +180,8 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Yöntem** | `method` | No | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
-   | **Göreli yol** | `relativePath` | No | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
+   | **Yöntem** | `method` | Hayır | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
+   | **Göreli yol** | `relativePath` | Hayır | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
    |||||
 
    Bu örnek, **Yöntem** özelliğini ekler:
@@ -218,7 +217,7 @@ Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkı
 
 Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıda verilmiştir:
 
-| JSON Özellik adı | Veri türü | Description |
+| JSON Özellik adı | Veri türü | Açıklama |
 |--------------------|-----------|-------------|
 | `headers` | Nesne | İstekten üstbilgileri açıklayan bir JSON nesnesi |
 | `body` | Nesne | İstekten gelen gövde içeriğini açıklayan bir JSON nesnesi |
@@ -275,9 +274,9 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Durum kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
-   | **Üst Bilgiler** | `headers` | No | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
-   | **Gövde** | `body` | No | Yanıt gövdesi |
+   | **Durum kodu** | `statusCode` | Evet | Yanıtta döndürülecek durum kodu |
+   | **Üst bilgiler** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
+   | **Gövde** | `body` | Hayır | Yanıt gövdesi |
    |||||
 
 1. Yanıt gövdesi için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.

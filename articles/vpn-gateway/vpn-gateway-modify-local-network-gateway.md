@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 06/19/2017
 ms.author: cherylmc
 ms.openlocfilehash: 41157f26e4f87e59d5a0276ff72012ae20b70fbe
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84986019"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>PowerShell kullanarak yerel ağ geçidi ayarlarını değiştirme
@@ -20,7 +19,7 @@ ms.locfileid: "84986019"
 Bazen yerel ağ geçidi Adresispredüzeltmesini veya Gatewayıpaddress değişikliği ayarları değişir. Bu makalede yerel ağ geçidi ayarlarınızı nasıl değiştireceğiniz gösterilir. Ayrıca, aşağıdaki listeden farklı bir seçenek belirleyerek bu ayarları farklı bir yöntem kullanarak da değiştirebilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [Azure portalındaki](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >

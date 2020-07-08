@@ -4,10 +4,9 @@ description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını A
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667327"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme

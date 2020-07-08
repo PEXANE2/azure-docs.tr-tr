@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714585"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps Azure işlevleri 'ni çağırma
+# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps'ten Azure işlevlerini çağırma
 
-Mantıksal uygulamalarınızda belirli bir işi gerçekleştiren kodu çalıştırmak istediğinizde, [Azure işlevleri](../azure-functions/functions-overview.md)'ni kullanarak kendi işlevinizi oluşturabilirsiniz. Bu hizmet, Node. js, C# ve F # işlevleri oluşturmanıza yardımcı olur, böylece kod çalıştırmak için tamamen bir uygulama veya altyapı oluşturmanız gerekmez. Ayrıca, [Azure işlevlerinin içinden Logic Apps 'i çağırabilirsiniz](#call-logic-app). Azure Işlevleri, bulutta sunucusuz bilgi işlem sağlar ve bu örnekler gibi görevleri gerçekleştirmek için yararlıdır:
+Mantıksal uygulamalarınızda belirli bir işi gerçekleştiren kodu çalıştırmak istediğinizde, [Azure işlevleri](../azure-functions/functions-overview.md)'ni kullanarak kendi işlevinizi oluşturabilirsiniz. Bu hizmet, Node.js, C# ve F# işlevi oluşturmanıza yardımcı olur ve bu sayede kod çalıştırmak için kapsamlı bir uygulama veya altyapı oluşturmanıza gerek kalmaz. Ayrıca, [Azure işlevlerinin içinden Logic Apps 'i çağırabilirsiniz](#call-logic-app). Azure Işlevleri, bulutta sunucusuz bilgi işlem sağlar ve bu örnekler gibi görevleri gerçekleştirmek için yararlıdır:
 
-* Node. js veya C# ' deki işlevlerle mantıksal uygulamanızın davranışını genişletin.
+* Mantıksal uygulamanızın davranışını Node.js veya C# ' deki işlevlerle genişletin.
 * Mantıksal uygulama iş akışınızda hesaplamalar gerçekleştirin.
 * Mantıksal uygulamalarınızda gelişmiş biçimlendirme veya işlem alanları uygulayın.
 
@@ -125,9 +124,9 @@ Ancak, herhangi bir Azure işlevi oluşturabilmeniz için önce işlevleriniz i�
 
    1. **İşlev adı** kutusunda, işleviniz için bir ad girin.
 
-   1. **Kod** kutusunda, işleviniz çalıştıktan sonra mantıksal uygulamanıza döndürülmesini istediğiniz yanıt ve yük dahil olmak üzere, kodunuzu işlev şablonuna ekleyin. İşiniz bittiğinde **Oluştur**’u seçin.
+   1. **Kod** kutusunda, işleviniz çalıştıktan sonra mantıksal uygulamanıza döndürülmesini istediğiniz yanıt ve yük dahil olmak üzere, kodunuzu işlev şablonuna ekleyin. İşiniz bittiğinde **Oluştur**'u seçin.
 
-   Örnek:
+   Örneğin:
 
    ![İşlevinizi tanımlayın](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
@@ -200,7 +199,7 @@ Bir Azure işlevinin içinden bir mantıksal uygulama tetiklemek istediğinizde,
 
 ## <a name="enable-authentication-for-azure-functions"></a>Azure işlevleri için kimlik doğrulamasını etkinleştirme
 
-Oturum açmak ve kimlik bilgilerini veya gizli dizileri sağlamak zorunda kalmadan Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara erişimi kolayca doğrulamak için mantıksal uygulamanız [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığından kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur. [Azure AD kimlik doğrulaması için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)hakkında daha fazla bilgi edinin.
+Oturum açmak ve kimlik bilgilerini veya gizli dizileri sağlamak zorunda kalmadan Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara erişimi kolayca doğrulamak için mantıksal uygulamanız [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizi sağlamak veya döndürmek zorunda olmadığınızdan kimlik bilgilerinizin güvenliğinin sağlanmasına yardımcı olur. [Azure AD kimlik doğrulaması için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)hakkında daha fazla bilgi edinin.
 
 Mantıksal uygulamanızı sistem tarafından atanan kimliği veya el ile oluşturulmuş bir kullanıcı tarafından oluşturulmuş kimliği kullanacak şekilde ayarlarsanız, mantıksal uygulamanızdaki Azure işlevleri de kimlik doğrulaması için aynı kimliği kullanabilir. Logic Apps 'te Azure işlevleri için kimlik doğrulama desteği hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -235,7 +234,7 @@ Mantıksal uygulamanızın yönetilen kimliğini Azure işlevinizde kullanmak i�
 
 1. `function.json`Dosyayı düzenlenmek üzere açın.
 
-   !["Function. JSON" dosyası için Düzenle 'ye tıklayın](./media/logic-apps-azure-functions/edit-function-json-file.png)
+   !["function.json" dosyası için Düzenle 'ye tıklayın](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
 1. `bindings`Nesnesinde, özelliğin mevcut olup olmadığını denetleyin `authLevel` . Özellik varsa, özellik değerini olarak ayarlayın `anonymous` . Aksi takdirde, bu özelliği ekleyin ve değeri ayarlayın.
 

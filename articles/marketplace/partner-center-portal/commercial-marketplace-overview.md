@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724828"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954140"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market portalına genel bakış
 
@@ -34,7 +33,7 @@ Daha önce Bulut İş Ortağı Portalı kullanan mevcut yayımcılar, Iş Ortağ
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Yayımlama ve teklif yönetimi Kullanıcı deneyimi geliştirmeleri
 
-Iş Ortağı Merkezi 'ne geçiş ile, yeni işlevsellik, Kullanıcı deneyimine yönelik geliştirmelere ek olarak yayımcılar tarafından kullanılabilir.  Ayrıntılar için bkz. [bulut iş ortağı portalı Iş ortağı merkezine geçiş Için sık sorulan sorular](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq).
+Iş Ortağı Merkezi 'ne geçiş ile, yeni işlevsellik, Kullanıcı deneyimine yönelik geliştirmelere ek olarak yayımcılar tarafından kullanılabilir.  Ayrıntılar için bkz. [bulut iş ortağı portalı Iş ortağı merkezine geçiş Için sık sorulan sorular](../cloud-partner-portal-migration-faq.md).
 
 ### <a name="account-and-user-management-updates"></a>Hesap ve Kullanıcı yönetimi güncelleştirmeleri
 
@@ -50,10 +49,10 @@ Iş Ortağı Merkezi 'nde hesap ve Kullanıcı yönetimi, portala erişiminizi v
 
 ## <a name="view-the-roadmap-and-join-the-conversation"></a>Yol haritasını görüntüleyin ve konuşmaya ekleyin
 
-[Microsoft ticari Market yol haritasını](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)ziyaret ederek en son ve gelecekteki sürümler hakkında daha fazla bilgi edinin veya [Microsoft iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/)'nda konuşmaya katın.
+[Microsoft ticari Market yol haritasını](../marketplace-roadmap.md)ziyaret ederek en son ve gelecekteki sürümler hakkında daha fazla bilgi edinin veya [Microsoft iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/)'nda konuşmaya katın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Market konumlarına bir teklif yayımlamaya ilgilenen yeni Microsoft iş ortakları için bkz. [Iş Ortağı Merkezi 'Nde ticari Market hesabı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
-- Daha önce Bulut İş Ortağı Portalı tekliflerini yayımlayan mevcut iş ortakları için [Iş Ortağı Merkezi ' nde ticari Market hesabınızı yönetin](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+- Market konumlarına bir teklif yayımlamaya ilgilenen yeni Microsoft iş ortakları için bkz. [Iş Ortağı Merkezi 'Nde ticari Market hesabı oluşturma](create-account.md).
+- Daha önce Bulut İş Ortağı Portalı tekliflerini yayımlayan mevcut iş ortakları için [Iş Ortağı Merkezi ' nde ticari Market hesabınızı yönetin](manage-account.md).
 - Bu [Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)'nda, tanıtım videosu Içeren Iş Ortağı Merkezi 'ne taşıma hakkında daha fazla bilgi edinin.

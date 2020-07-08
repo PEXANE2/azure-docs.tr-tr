@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
 ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324751"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric kümelerinde sertifika yönetimi
@@ -69,7 +68,7 @@ Amaçlarımız için yukarıdaki dizideki ilk iki adım büyük ölçüde ilgisi
 
 Bu adımlar aşağıda gösterilmiştir; sırasıyla parmak izi ve ortak ad tarafından belirtilen Sertifikalar arasında sağlama farklarını göz önünde bir şekilde aklınızda olun.
 
-*Fig. 1.* Parmak iziyle belirtilen sertifikaların verme ve sağlama akışı.
+*Şekil 1.* Parmak iziyle belirtilen sertifikaların verme ve sağlama akışı.
 ![Parmak iziyle belirtilen sertifikaları sağlama][Image1]
 
 *Fig. 2.* Konu ortak adına göre belirtilen sertifikaların verme ve sağlama akışı.

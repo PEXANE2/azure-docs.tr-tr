@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9e29d91aa3b146a8aacdccec01b67506d5e45bb3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75548845"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037928"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark yapılandırılmış akışa genel bakış
 
@@ -62,53 +61,65 @@ Tüm sorguların tamamı, tablonun sınır olmadan büyümesine neden olur.  Ön
 
 Basit örnek bir sorgu, saat-uzun pencereler için sıcaklık okumaları özetleyebilir. Bu durumda, veriler Azure Storage 'daki JSON dosyalarında (HDInsight kümesi için varsayılan depolama alanı olarak eklenir) depolanır:
 
-    {"time":1469501107,"temp":"95"}
-    {"time":1469501147,"temp":"95"}
-    {"time":1469501202,"temp":"95"}
-    {"time":1469501219,"temp":"95"}
-    {"time":1469501225,"temp":"95"}
+```json
+{"time":1469501107,"temp":"95"}
+{"time":1469501147,"temp":"95"}
+{"time":1469501202,"temp":"95"}
+{"time":1469501219,"temp":"95"}
+{"time":1469501225,"temp":"95"}
+```
 
-Bu JSON dosyaları, HDInsight kümesinin kapsayıcısının `temps` altındaki alt klasörde depolanır.
+Bu JSON dosyaları, `temps` HDInsight kümesinin kapsayıcısının altındaki alt klasörde depolanır.
 
 ### <a name="define-the-input-source"></a>Giriş kaynağını tanımlama
 
 İlk olarak, verilerin kaynağını ve bu kaynak için gereken tüm ayarları açıklayan bir veri çerçevesini yapılandırın. Bu örnek, Azure Storage 'daki JSON dosyalarından çizilir ve okuma sırasında bunlara bir şema uygular.
 
-    import org.apache.spark.sql.types._
-    import org.apache.spark.sql.functions._
+```sql
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
-    //Cluster-local path to the folder containing the JSON files
-    val inputPath = "/temps/" 
+//Cluster-local path to the folder containing the JSON files
+val inputPath = "/temps/" 
 
-    //Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
-    val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
+//Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
+val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
 
-    //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
-    val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
+//Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
+val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
+``` 
 
 #### <a name="apply-the-query"></a>Sorguyu Uygula
 
 Ardından, akış veri çerçevesine yönelik istenen işlemleri içeren bir sorgu uygulayın. Bu durumda, bir toplama tüm satırları 1 saat Windows 'a gruplandırır ve sonra bu 1 saatlik pencerede minimum, ortalama ve maksimum sıcaklıkları hesaplar.
 
-    val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```sql
+val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```
 
 ### <a name="define-the-output-sink"></a>Çıkış havuzunu tanımlama
 
-Sonra, her tetikleyici aralığı içindeki sonuçlar tablosuna eklenen satırlar için hedefi tanımlayın. Bu örnek, tüm satırları daha sonra daha sonra daha sonra daha `temps` sonra mini bellekli bir tabloya çıkarır. Çıkış modunu tamamen doldurun tüm pencereler için tüm satırların her seferinde çıkış olmasını sağlar.
+Sonra, her tetikleyici aralığı içindeki sonuçlar tablosuna eklenen satırlar için hedefi tanımlayın. Bu örnek, tüm satırları `temps` daha sonra daha sonra daha sonra daha sonra mini bellekli bir tabloya çıkarır. Çıkış modunu tamamen doldurun tüm pencereler için tüm satırların her seferinde çıkış olmasını sağlar.
 
-    val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
+```sql
+val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
+``` 
 
 ### <a name="start-the-query"></a>Sorguyu Başlat
 
 Akış sorgusunu başlatın ve sonlandırma sinyali alınana kadar çalıştırın.
 
-    val query = streamingOutDF.start()  
+```sql
+val query = streamingOutDF.start() 
+``` 
 
 ### <a name="view-the-results"></a>Sonuçları görüntüleme
 
-Sorgu çalışırken, aynı mini oturumda sorgu sonuçlarının depolandığı `temps` tabloya karşı bir mini SQL sorgusu çalıştırabilirsiniz.
+Sorgu çalışırken, aynı mini oturumda `temps` sorgu sonuçlarının depolandığı tabloya karşı bir mini SQL sorgusu çalıştırabilirsiniz.
 
-    select * from temps
+```sql
+select * from temps
+```
 
 Bu sorgu aşağıdakilere benzer sonuçlar verir:
 

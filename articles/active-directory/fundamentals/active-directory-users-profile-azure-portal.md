@@ -7,17 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604021"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme
 Profil resmi, işe özel bilgiler ve Azure Active Directory (Azure AD) kullanarak bazı ayarlar dahil olmak üzere Kullanıcı profili bilgilerini ekleyin. Yeni Kullanıcı ekleme hakkında daha fazla bilgi için bkz. [Azure Active Directory Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
@@ -50,7 +49,7 @@ Gördüğünüz gibi, kullanıcının profilinde kullanıcı oluşturma sırası
 
     - **Kimlik doğrulaması iletişim bilgileri.** Kullanıcı için etkin bir telefon numarası ve e-posta adresi olduğundan emin olmak için bu bilgileri doğrulayın. Bu bilgiler, kullanıcının oturum açma işlemi sırasında gerçekten Kullanıcı olduğundan emin olmak için Azure Active Directory tarafından kullanılır. Kimlik doğrulama iletişim bilgileri yalnızca genel bir yönetici tarafından güncelleştirilebilen olabilir.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
     Tüm değişiklikleriniz Kullanıcı için kaydedilir.
 

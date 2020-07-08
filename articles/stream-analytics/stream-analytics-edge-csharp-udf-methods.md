@@ -7,12 +7,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921864"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics işleri için .NET Standard Kullanıcı tanımlı işlevler geliştirme (Önizleme)
 
@@ -39,7 +38,7 @@ UDF 'Leri uygulamak için üç yol vardır:
 
 ## <a name="package-path"></a>Paket yolu
 
-Herhangi bir UDF paketinin biçimi yolu `/UserCustomCode/CLR/*`vardır. Dinamik bağlantı kitaplıkları (dll 'Ler) ve kaynakları `/UserCustomCode/CLR/*` klasörü altına kopyalanır ve bu, Kullanıcı dll 'lerinin sistem ve Azure Stream Analytics dll 'lerden yalıtılmasına yardımcı olur. Bu paket yolu, bunları kullanmak için kullanılan yöntemden bağımsız olarak tüm işlevler için kullanılır.
+Herhangi bir UDF paketinin biçimi yolu vardır `/UserCustomCode/CLR/*` . Dinamik bağlantı kitaplıkları (dll 'Ler) ve kaynakları klasörü altına kopyalanır ve `/UserCustomCode/CLR/*` Bu, Kullanıcı dll 'lerinin sistem ve Azure Stream Analytics dll 'lerden yalıtılmasına yardımcı olur. Bu paket yolu, bunları kullanmak için kullanılan yöntemden bağımsız olarak tüm işlevler için kullanılır.
 
 ## <a name="supported-types-and-mapping"></a>Desteklenen türler ve eşleme
 C# dilinde kullanılacak Azure Stream Analytics değerler için, bir ortamdan diğerine sıralanması gerekir. Bir UDF 'nin tüm giriş parametreleri için sıralama gerçekleşir. Her Azure Stream Analytics türü, aşağıdaki tabloda gösterilen C# dilinde karşılık gelen bir türe sahiptir:
@@ -50,7 +49,7 @@ C# dilinde kullanılacak Azure Stream Analytics değerler için, bir ortamdan di
 |float | double |
 |nvarchar (max) | string |
 |datetime | DateTime |
-|Kayıt | Sözlük\<dizesi, nesne> |
+|Kayıt | Sözlük\<string, object> |
 |Dizi | Object [] |
 
 Aynı durum, verilerin C# ' den Azure Stream Analytics, UDF 'nin çıkış değerinde meydana gelen olarak sıralanması gerektiğinde de geçerlidir. Aşağıdaki tabloda hangi türlerin desteklendiğini gösterilmektedir:
@@ -61,10 +60,10 @@ Aynı durum, verilerin C# ' den Azure Stream Analytics, UDF 'nin çıkış değe
 |double  |  float   |
 |string  |  nvarchar (max)   |
 |DateTime  |  tarih saat   |
-|struct   |  Kayıt   |
+|struct  |  Kayıt   |
 |nesne  |  Kayıt   |
 |Object []  |  Dizi   |
-|Sözlük\<dizesi, nesne>  |  Kayıt   |
+|Sözlük\<string, object>  |  Kayıt   |
 
 ## <a name="codebehind"></a>CodeBehind
 Kullanıcı tanımlı işlevleri **Script. ASQL** codebehind içinde yazabilirsiniz. Visual Studio Araçları otomatik olarak CodeBehind dosyasını derleme dosyasına derler. Derlemeler bir zip dosyası olarak paketlenir ve işinizi Azure 'a gönderdiğinizde depolama hesabınıza yüklenir. [Stream Analytics Edge işleri öğreticisi Için C# UDF](stream-analytics-edge-csharp-udf.md) 'Yi izleyerek codebehind kullanarak c# UDF yazma hakkında bilgi edinebilirsiniz. 
@@ -79,7 +78,7 @@ Yerel bir projeye başvurmak için:
 3. Projenizi yapılandırın. Araçlar bin klasöründeki tüm yapıtları bir ZIP dosyasına paketler ve ZIP dosyasını depolama hesabına yükler. Dış başvurular için NuGet paketi yerine derleme başvurusunu kullanın.
 4. Azure Stream Analytics projenizdeki yeni sınıfa başvurun.
 5. Azure Stream Analytics projenize yeni bir işlev ekleyin.
-6. Derleme yolunu iş yapılandırma dosyasında yapılandırın `JobConfig.json`. Derleme yolunu **Yerel proje başvurusu veya codebehind**olarak ayarlayın.
+6. Derleme yolunu iş yapılandırma dosyasında yapılandırın `JobConfig.json` . Derleme yolunu **Yerel proje başvurusu veya codebehind**olarak ayarlayın.
 7. Hem işlev projesini hem de Azure Stream Analytics projeyi yeniden derleyin.  
 
 ### <a name="example"></a>Örnek
@@ -108,7 +107,7 @@ Bu örnekte, **udftest** bir C# sınıf kitaplığı projem ve **Asaudfdemo** , 
 
    ![Azure Stream Analytics Edge çözümünde IŞLEVLERE yeni öğe ekleme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
-6. Azure Stream Analytics projenize bir C# işlevi **squarefunction. JSON** ekleyin.
+6. Azure Stream Analytics projenize bir C# işlevi **SquareFunction.js** ekleyin.
 
    ![Visual Studio 'da Stream Analytics Edge öğelerinden CSharp işlevi seçme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
 
@@ -122,11 +121,11 @@ Bu örnekte, **udftest** bir C# sınıf kitaplığı projem ve **Asaudfdemo** , 
 
 ## <a name="existing-packages"></a>Mevcut paketler
 
-.NET Standard UDF 'Leri dilediğiniz IDE 'de yazabilir ve Azure Stream Analytics sorgınızdan çağırabilirsiniz. İlk olarak kodunuzu derleyin ve tüm dll 'Leri paketleyin. Paketin biçimi yolu `/UserCustomCode/CLR/*`vardır. Ardından, Azure `UserCustomCode.zip` Depolama hesabınızdaki kapsayıcının köküne yükleyin.
+.NET Standard UDF 'Leri dilediğiniz IDE 'de yazabilir ve Azure Stream Analytics sorgınızdan çağırabilirsiniz. İlk olarak kodunuzu derleyin ve tüm dll 'Leri paketleyin. Paketin biçimi yolu vardır `/UserCustomCode/CLR/*` . Ardından, `UserCustomCode.zip` Azure Depolama hesabınızdaki kapsayıcının köküne yükleyin.
 
 Azure depolama hesabınıza derleme ZIP paketleri yüklendikten sonra, Azure Stream Analytics sorgulardaki işlevleri kullanabilirsiniz. Tüm yapmanız gereken Stream Analytics iş yapılandırmasındaki depolama bilgilerini içerir. Visual Studio Araçları paketinizi indirmediği için işlevi bu seçenekle yerel olarak test edebilirsiniz. Paket yolu doğrudan hizmete ayrıştırılır. 
 
-İş yapılandırma dosyasında derleme yolunu yapılandırmak için `JobConfig.json`:
+İş yapılandırma dosyasında derleme yolunu yapılandırmak için `JobConfig.json` :
 
 **Kullanıcı Tanımlı Kod Yapılandırması** bölümünü genişletin ve yapılandırmaya aşağıdaki önerilen değerleri ekleyin:
 
@@ -139,12 +138,12 @@ Azure depolama hesabınıza derleme ZIP paketleri yüklendikten sonra, Azure Str
    |Özel kod depolama ayarları depolama hesabı|Depolama hesabınızı < >|
    |Özel kod depolama ayarları kapsayıcısı|Depolama kapsayıcınızı < >|
    |Özel kod derleme kaynağı|Buluttan mevcut derleme paketleri|
-   |Özel kod derleme kaynağı|UserCustomCode. zip|
+   |Özel kod derleme kaynağı|UserCustomCode.zip|
 
 ## <a name="user-logging"></a>Kullanıcı günlüğü
 Günlüğe kaydetme mekanizması, bir iş çalışırken özel bilgileri yakalamanızı sağlar. Hata ayıklamak veya gerçek zamanlı olarak özel kodun doğruluğunu değerlendirmek için günlük verilerini kullanabilirsiniz.
 
-`StreamingContext` Sınıfı, `StreamingDiagnostics.WriteError` işlevini kullanarak tanılama bilgilerini yayımlamanıza olanak sağlar. Aşağıdaki kodda Azure Stream Analytics tarafından sunulan arabirim gösterilmektedir.
+`StreamingContext`Sınıfı, işlevini kullanarak tanılama bilgilerini yayımlamanıza olanak sağlar `StreamingDiagnostics.WriteError` . Aşağıdaki kodda Azure Stream Analytics tarafından sunulan arabirim gösterilmektedir.
 
 ```csharp
 public abstract class StreamingContext
@@ -158,7 +157,7 @@ public abstract class StreamingDiagnostics
 }
 ```
 
-`StreamingContext`, UDF yöntemine bir giriş parametresi olarak geçirilir ve özel günlük bilgilerini yayımlamak için UDF içinde kullanılabilir. Aşağıdaki örnekte, `MyUdfMethod` sorgu tarafından belirtilen bir **veri** girişi ve çalışma zamanı altyapısı tarafından sağlanmış olan olarak `StreamingContext`bir **bağlam** girişi tanımlanmaktadır. 
+`StreamingContext`, UDF yöntemine bir giriş parametresi olarak geçirilir ve özel günlük bilgilerini yayımlamak için UDF içinde kullanılabilir. Aşağıdaki örnekte, `MyUdfMethod` sorgu tarafından belirtilen bir **veri** girişi ve **context** `StreamingContext` çalışma zamanı altyapısı tarafından sağlanmış olan olarak bir bağlam girişi tanımlanmaktadır. 
 
 ```csharp
 public static long MyUdfMethod(long data, StreamingContext context)
@@ -170,7 +169,7 @@ public static long MyUdfMethod(long data, StreamingContext context)
 }
 ```
 
-`StreamingContext` Değerin SQL sorgusu tarafından geçirilmesi gerekmez. Azure Stream Analytics bir giriş parametresi varsa otomatik olarak bir bağlam nesnesi sağlar. Aşağıdaki sorguda gösterildiği gibi `MyUdfMethod` , öğesinin kullanımı değişmez:
+`StreamingContext`DEĞERIN SQL sorgusu tarafından geçirilmesi gerekmez. Azure Stream Analytics bir giriş parametresi varsa otomatik olarak bir bağlam nesnesi sağlar. `MyUdfMethod`Aşağıdaki sorguda gösterildiği gibi, öğesinin kullanımı değişmez:
 
 ```sql
 SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
@@ -186,6 +185,10 @@ UDF önizlemesi Şu anda aşağıdaki sınırlamalara sahiptir:
 * Azure portal sorgu Düzenleyicisi portalda .NET Standard UDF kullanırken bir hata gösterir. 
 
 * Özel kod Azure Stream Analytics altyapısı ile bağlam paylaştığından, özel kod Azure Stream Analytics kodla çakışan bir ad alanı/dll_name olan herhangi bir şeye başvuramaz. Örneğin, *Newtonsoft JSON*öğesine başvurulamıyor.
+
+* Projeye dahil olan destekleyici dosyalar, işi buluta yayımladığınızda kullanılan Kullanıcı özel kod ZIP dosyasına kopyalanır. Alt klasörlerdeki tüm dosyalar, daraltılmış durumda, bulutta bulunan Kullanıcı özel kod klasörünün köküne doğrudan kopyalanır. ZIP açıldığında "düzleştirilmiş" olur.
+
+* Kullanıcı özel kodu boş klasörleri desteklemez. Projedeki destekleyici dosyalara boş klasörler eklemeyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

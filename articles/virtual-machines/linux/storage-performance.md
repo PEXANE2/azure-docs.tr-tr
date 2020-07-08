@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757693"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 serisi sanal makinelerde performansı iyileştirin
@@ -106,7 +105,7 @@ Yerel depolamada verileri yedekleme seçenekleri hakkında daha fazla bilgi edin
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Ayrıca, g/ç, bölümleme olmadan, hiçbir dosya sistemi, RAID 0 yapılandırma vb. olmayan ham NVMe cihazlarının her birine doğrudan yapıldığında en iyi performansı elde edin. Bir test oturumuna başlamadan önce, her NVMe cihazlarından birini çalıştırarak `blkdiscard` yapılandırmanın bilinen bir yeni/temiz durumunda olduğundan emin olun.
+   Ayrıca, g/ç, bölümleme olmadan, hiçbir dosya sistemi, RAID 0 yapılandırma vb. olmayan ham NVMe cihazlarının her birine doğrudan yapıldığında en iyi performansı elde edin. Bir test oturumuna başlamadan önce, `blkdiscard` her NVMe cihazlarından birini çalıştırarak yapılandırmanın bilinen bir yeni/temiz durumunda olduğundan emin olun.
    
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f5688a42a240fa2690eed48ab32d483f96a5b7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608390"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Erişim belirteci almak için bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -47,7 +46,7 @@ Bu makaledeki Azure PowerShell örnekleri kullanmayı planlıyorsanız, [Azure P
 
 Bir istemci uygulaması, belirli bir kaynağa erişmek için yalnızca Azure kaynakları için Yönetilen kimlikler, [yalnızca uygulama erişim belirteci](../develop/developer-glossary.md#access-token) isteyebilir. Belirteç, [Azure kaynakları hizmet sorumlusu için yönetilen kimliklere dayalıdır](overview.md#managed-identity-types). Bu nedenle, istemcinin kendi hizmet sorumlusu altında erişim belirteci almak için kendisini kaydetmesi gerekmez. Belirteç, [istemci kimlik bilgileri gerektiren hizmetten hizmete çağrılar](../develop/v2-oauth2-client-creds-grant-flow.md)için bir taşıyıcı belirteci olarak kullanım için uygundur.
 
-|  |  |
+| Bağlantı | Açıklama |
 | -------------- | -------------------- |
 | [HTTP kullanarak belirteç al](#get-a-token-using-http) | Azure kaynakları belirteç uç noktası için Yönetilen kimlikler protokol ayrıntıları |
 | [.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | .NET istemcisinden Microsoft. Azure. Services. AppAuthentication kitaplığını kullanma örneği
@@ -70,7 +69,7 @@ Azure Instance Metadata Service (ıMDS) uç noktasını kullanan örnek istek *(
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Instance Metadata Service için Azure kaynakları için Yönetilen kimlikler uç noktası. |
@@ -88,7 +87,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `http://localhost:50342/oauth2/token` | Azure kaynakları için Yönetilen kimlikler uç noktası, burada 50342 varsayılan bağlantı noktasıdır ve yapılandırılabilir. |
@@ -113,7 +112,7 @@ Content-Type: application/json
 }
 ```
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
 | `refresh_token` | Azure kaynakları için Yönetilen kimlikler tarafından kullanılmıyor. |
@@ -362,7 +361,7 @@ Azure kaynakları için Yönetilen kimlikler uç noktası, HTTP yanıt iletisi �
 
 Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına sahip JSON içerir:
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | error   | Hata tanımlayıcısı. |
 | error_description | Hatanın ayrıntılı açıklaması. **Hata açıklamaları herhangi bir zamanda değişebilir. Hata açıklamasındaki değerlere göre dalların kodunu yazma.**|

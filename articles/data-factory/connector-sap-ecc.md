@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 4bdcb2b4008f54ff0d84594e6f3b5a7b76944e65
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987008"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP ECC 'den veri kopyalama
@@ -74,11 +73,11 @@ SAP ECC bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapEcc` . | Yes |
-| `url` | SAP ECC OData hizmetinin URL 'SI. | Yes |
-| `username` | SAP ECC 'ye bağlanmak için kullanılan Kullanıcı adı. | No |
-| `password` | SAP ECC 'ye bağlanmak için kullanılan düz metin parolası. | No |
-| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Bir çalışma zamanı belirtmezseniz, varsayılan Azure tümleştirme çalışma zamanı kullanılır. | No |
+| `type` | `type`Özelliğin olarak ayarlanması gerekir `SapEcc` . | Evet |
+| `url` | SAP ECC OData hizmetinin URL 'SI. | Evet |
+| `username` | SAP ECC 'ye bağlanmak için kullanılan Kullanıcı adı. | Hayır |
+| `password` | SAP ECC 'ye bağlanmak için kullanılan düz metin parolası. | Hayır |
+| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Bir çalışma zamanı belirtmezseniz, varsayılan Azure tümleştirme çalışma zamanı kullanılır. | Hayır |
 
 ### <a name="example"></a>Örnek
 
@@ -113,7 +112,7 @@ Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `path` | SAP ECC OData varlığının yolu. | Yes |
+| `path` | SAP ECC OData varlığının yolu. | Evet |
 
 ### <a name="example"></a>Örnek
 
@@ -146,9 +145,9 @@ Kopyalama etkinliğinin bölümünde aşağıdaki özellikler desteklenir `sourc
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `type`Kopyalama etkinliğinin `source` bölümünün özelliği olarak ayarlanmalıdır `SapEccSource` . | Yes |
-| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örneğin:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC Bağlayıcısı, verileri birleştirilmiş URL 'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
-| `httpRequestTimeout` | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | No |
+| `type` | `type`Kopyalama etkinliğinin `source` bölümünün özelliği olarak ayarlanmalıdır `SapEccSource` . | Evet |
+| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örneğin:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC Bağlayıcısı, verileri birleştirilmiş URL 'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
+| `httpRequestTimeout` | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | Hayır |
 
 ### <a name="example"></a>Örnek
 

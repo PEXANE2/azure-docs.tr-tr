@@ -13,13 +13,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 5d91fc0d5dd51ea5ef766f23519f38202b24a337
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711315"
 ---
-# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için mevcut bir sanal ağı yapılandırma
+# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Mevcut sanal ağı Azure SQL Yönetilen Örneği için yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL yönetilen örneği, bir Azure [sanal ağı](../../virtual-network/virtual-networks-overview.md) içinde dağıtılmalıdır ve yalnızca yönetilen örnekler için ayrılmış alt ağ olmalıdır. [SQL yönetilen örnek sanal ağ gereksinimlerine](connectivity-architecture-overview.md#network-requirements)göre yapılandırıldıysa, var olan sanal ağı ve alt ağı kullanabilirsiniz.

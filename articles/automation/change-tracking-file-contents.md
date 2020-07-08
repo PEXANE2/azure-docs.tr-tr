@@ -6,10 +6,9 @@ ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781200"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
@@ -141,7 +140,7 @@ Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için 
 
 Değişiklik kayıtları için Azure Izleyici günlüklerinde çeşitli aramalar yapabilirsiniz. Değişiklik izleme sayfası açıkken, Günlükler sayfasını açmak için **Log Analytics** ' a tıklayın. Aşağıdaki tabloda değişiklik kayıtları için örnek günlük aramaları sunulmaktadır.
 
-|Sorgu  |Description  |
+|Sorgu  |Açıklama  |
 |---------|---------|
 |`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Otomatik olarak ayarlanan ancak durdurulma olarak bildirilen Microsoft Hizmetleri için en son envanter kayıtlarını gösterir. Sonuçlar, belirtilen yazılım adı ve bilgisayar için en son kayıtla sınırlıdır.    |
 |`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Kaldırılan yazılım için değişiklik kayıtlarını gösterir.|

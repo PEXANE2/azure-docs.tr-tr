@@ -9,14 +9,13 @@ ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609512"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps bir IBM MQ sunucusuna bağlanma
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps'ten IBM MQ sunucusuna bağlanma
 
 IBM MQ Bağlayıcısı, şirket içinde veya Azure 'da bir IBM MQ sunucusunda depolanan iletileri gönderir ve alır. Bu bağlayıcı bir TCP/IP ağı üzerinde uzak IBM MQ sunucusuyla iletişim kuran bir Microsoft MQ istemcisi içerir. Bu makale, MQ bağlayıcısını kullanmak için bir başlangıç kılavuzu sağlar. Bir kuyruktaki tek bir iletiye göz atarak başlayabilir ve ardından diğer eylemleri deneyebilirsiniz.
 
@@ -35,7 +34,7 @@ Resmi olarak desteklenen IBM WebSphere MQ sürümleri aşağıda verilmiştir:
   * MQ 9,0
   * MQ 9,1
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Şirket içi MQ sunucusu kullanıyorsanız, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) ağınız içindeki bir sunucuya yükleyebilirsiniz. Şirket içi veri ağ geçidinin yüklü olduğu sunucuda, MQ bağlayıcısının çalışması için .NET Framework 4,6 yüklü olmalıdır.
 
@@ -71,7 +70,7 @@ Bir MQ eylemi eklediğinizde henüz MQ bağlantınız yoksa, bağlantıyı oluş
 
    1. **Bağlantı ağ geçidi** listesinden, kullanmak istediğiniz Azure ağ geçidi kaynağını seçin.
 
-1. İşiniz bittiğinde **Oluştur**’u seçin.
+1. İşiniz bittiğinde **Oluştur**'u seçin.
 
 <a name="connection-problems"></a>
 
@@ -94,7 +93,7 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
      > [!IMPORTANT]
      > Sertifikayı **Sertifikalar-Yerel bilgisayar**  >  **Güvenilen kök sertifika yetkilileri** deposuna yüklediğinizden emin olun.
 
-* MQ sunucusu, SSL bağlantıları için kullanmak istediğiniz şifre belirtimini tanımlamanızı gerektirir. Ancak, .NET 'teki SsLStream, şifre belirtimlerinin sırasını belirtmenize izin vermez. Bu sınırlamaya geçici bir çözüm için, MQ sunucu yapılandırmanızı, bağlayıcının SSL anlaşmasıyla gönderdiği paketteki ilk şifre belirtimiyle eşleşecek şekilde değiştirebilirsiniz.
+* MQ sunucusu, TLS/SSL bağlantıları için kullanmak istediğiniz şifre belirtimini tanımlamanızı gerektirir. Ancak, .NET 'teki SslStream, şifre belirtimlerinin sırasını belirtmenize izin vermez. Bu sınırlamaya geçici bir çözüm için, MQ sunucu yapılandırmanızı, bağlayıcının TLS/SSL anlaşmasıyla gönderdiği paketteki ilk şifre belirtimiyle eşleşecek şekilde değiştirebilirsiniz.
 
   Bağlantıyı denediğinizde, MQ sunucusu, bağlantının başarısız olduğunu belirten bir olay iletisini günlüğe kaydeder çünkü diğer bitiş yanlış şifre belirtimini kullandı. Olay iletisi, listede ilk görüntülenen şifre belirtimini içerir. Kanal yapılandırmasındaki şifre belirtimini, olay iletisindeki şifre belirtimine uyacak şekilde güncelleştirin.
 
@@ -115,10 +114,10 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
    | **Sıradaki** | Bağlantıda belirtilen kuyruktan farklıysa, bu kuyruğu belirtin. |
    | **MessageID**, **bağıntıkimliği**, **GroupID**ve diğer özellikler | Farklı MQ İleti özelliklerine dayalı bir iletiye gözatın |
    | **Includeınfo** | Çıkışa ek ileti bilgilerini eklemek için **doğru**öğesini seçin. Çıktıda ek ileti bilgisini atlamak için, **false**' ı seçin. |
-   | **Aş** | Bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez. |
+   | **Zaman aşımı** | Bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez. |
    |||
 
-   Örnek:
+   Örneğin:
 
    !["İletiye gözatamıyorum" eylemi için Özellikler](media/connectors-create-api-mq/browse-message-properties.png)
 

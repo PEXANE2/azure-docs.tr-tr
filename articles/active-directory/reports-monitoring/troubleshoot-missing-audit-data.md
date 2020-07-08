@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74014283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608118"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Sorun giderme: Azure Active Directory etkinlik günlüklerindeki eksik veriler 
 
@@ -38,10 +37,10 @@ Azure portalında bazı eylemler gerçekleştirdim ve bu eylemlerin denetim gün
 
 Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinlik günlüklerinin gecikme süreleri gösterilmiştir. 
 
-| Rapor | &nbsp; | Gecikme süresi (P95) | Gecikme süresi (P99) |
-|--------|--------|---------------|---------------|
-| Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
-| Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
+| Rapor | Gecikme süresi (P95) | Gecikme süresi (P99) |
+|--------|---------------|---------------|
+| Dizin denetimi | 2 dk. | 5 dk. |
+| Oturum açma etkinliği | 2 dk. | 5 dk. |
 
 ### <a name="resolution"></a>Çözüm
 
@@ -59,10 +58,10 @@ Azure portalında kısa bir süre önce oturum açtım ve bu oturum açma işlem
 
 Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinlik günlüklerinin gecikme süreleri gösterilmiştir. 
 
-| Rapor | &nbsp; | Gecikme süresi (P95) | Gecikme süresi (P99) |
-|--------|--------|---------------|---------------|
-| Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
-| Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
+| Rapor | Gecikme süresi (P95) | Gecikme süresi (P99) |
+|--------|---------------|---------------|
+| Dizin denetimi | 2 dk. | 5 dk. |
+| Oturum açma etkinliği 2 dakika | 5 dk. |
 
 ### <a name="resolution"></a>Çözüm
 
@@ -72,7 +71,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 ### <a name="symptoms"></a>Belirtiler
 
-Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden? 
+Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden mi? 
 
  ![Raporlama](./media/troubleshoot-missing-audit-data/03.png)
 
@@ -80,10 +79,10 @@ Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görünt�
 
 Lisansınıza bağlı olarak, etkinlik raporları Azure Active Directory Actions tarafından aşağıdaki sürelerde depolanır:
 
-| Rapor           | &nbsp; |  Azure AD Ücretsiz | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Dizin Denetimi  | &nbsp; |   7 gün     | 30 gün             | 30 gün             |
-| Oturum Açma Etkinliği | &nbsp; | Kullanılamıyor. Kendi oturum açma etkinliklerinize bireysel kullanıcı profili dikey penceresinden 7 gün boyunca erişebilirsiniz | 30 gün | 30 gün             |
+| Rapor           | Azure AD Ücretsiz | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---                 |
+| Dizin Denetimi  |  7 gün       | 30 gün             | 30 gün             |
+| Oturum Açma Etkinliği | Kullanılamıyor. Kendi oturum açma etkinliklerinize bireysel kullanıcı profili dikey penceresinden 7 gün boyunca erişebilirsiniz | 30 gün | 30 gün             |
 
 Daha fazla bilgi için bkz. [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md).  
 

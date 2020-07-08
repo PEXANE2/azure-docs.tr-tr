@@ -5,10 +5,9 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212573"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
@@ -17,7 +16,7 @@ ms.locfileid: "85212573"
 
 Varsayılan işlem düğümü ayrıntılarını görüntülemek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümlerini**seçin.
 
     ![Varsayılan işlem düğümünü seçin](./media/configure-transaction-nodes/nodes.png)
@@ -35,7 +34,7 @@ Blok zinciri üyesine toplam 10 işlem düğümü için en fazla dokuz ek işlem
 
     ![İşlem düğümü Ekle](./media/configure-transaction-nodes/add-node.png)
 
-    | Ayar | Description |
+    | Ayar | Açıklama |
     |---------|-------------|
     | Name | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
     | Parola | Güçlü bir parola ayarlayın. Temel kimlik doğrulamasıyla işlem düğümü uç noktasına erişmek için parolayı kullanın.

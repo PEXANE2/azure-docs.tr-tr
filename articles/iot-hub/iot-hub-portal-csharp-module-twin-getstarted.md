@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759772"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Portal ve .NET cihazını kullanarak IoT Hub modül kimliğini ve modül ikizini kullanmaya başlama
@@ -83,7 +82,7 @@ Modülün ikizi bildirilen özelliklerini güncelleştiren bir uygulama oluştur
 
 Modül kimliği ve modül ikizi genel önizlemede. Yalnızca yayın öncesi cihaz SDK 'Ları IoT Hub kullanılabilir. Yüklemek için şu adımları izleyin:
 
-1. Visual Studio 'da **Araçlar** > **NuGet Paket Yöneticisi** > **çözüm için NuGet Paketlerini Yönet**' i açın.
+1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **çözüm için NuGet Paketlerini Yönet**' i açın.
 
 1. **Araştır**' ı seçin ve ardından **sürümü dahil et**' i seçin. *Microsoft. Azure. Devices. Client*araması yapın. En son sürümü seçin ve yüklemeyi yapın.
 
@@ -95,7 +94,7 @@ Modül kimliği ve modül ikizi genel önizlemede. Yalnızca yayın öncesi ciha
 
 Konsol uygulamanız için modül bağlantı dizesine ihtiyacınız vardır. Şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. IoT Hub 'ınıza gidin ve **IoT cihazları**' nı seçin. **Myfirstdevice** ' i açın ve **myfirstmodule** ' un başarıyla oluşturulduğunu görürsünüz.
 

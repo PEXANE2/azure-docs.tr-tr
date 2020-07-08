@@ -5,10 +5,9 @@ ms.date: 05/09/2019
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 78841ca830ae56f6c07f796bdde85f6a6ba9c921
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212743"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure blok zinciri çalışma ekranı 'nda kullanıcıları yönetme
@@ -25,7 +24,7 @@ Azure blok zinciri çalışma ekranı, kimlik doğrulaması, erişim denetimi ve
 
 Blok zinciri çalışma ekranı, uygulamaları ve rollere atamadan önce kullanıcıların Azure AD kiracısında mevcut olmaları gerekir. Azure AD 'ye Kullanıcı eklemek için aşağıdaki adımları kullanın:
 
-1.  [Azure Portal](https://portal.azure.com) oturum açın.
+1.  [Azure portalında](https://portal.azure.com) oturum açın.
 2.  Sağ üst köşede hesabınızı seçin ve blok zinciri çalışma ekranı ile ilişkili Azure AD kiracısına geçiş yapın.
 3.  **Azure Active Directory > kullanıcıları**' nı seçin. Dizininizde bulunan kullanıcıların listesini görürsünüz.
 4.  Dizine kullanıcı eklemek için **Yeni Kullanıcı**' yı seçin. Dış kullanıcılar için **Yeni Konuk Kullanıcı**' yı seçin.
@@ -42,7 +41,7 @@ Kullanıcılar dizine eklendikten sonra, bir sonraki adım, hangi kullanıcılar
 
 Kullanıcıları Azure AD dizininde **yönetici** grubuna eklemek için:
 
-1.  [Azure Portal](https://portal.azure.com) oturum açın.
+1.  [Azure portalında](https://portal.azure.com) oturum açın.
 2.  Sağ üst köşede hesabınızı seçerek blok zinciri ile ilişkili Azure AD kiracısında olduğunuzdan emin olun.
 3.  **Kurumsal uygulamalar > Azure Active Directory**seçin.
 4.  Blok zinciri için Azure AD istemci uygulamasını seçme çalışma ekranı
@@ -81,11 +80,11 @@ Konsorsiyumun parçası olan kullanıcıları ve kuruluşları yönetmek için b
 1. Geçerli üyelerin listesini göstermek için üye kutucuğunu seçin.
 2. **Üye Ekle**' yi seçin.
 
-    ![Üye ekle](./media/manage-users/application-add-members.png)
+    ![Üye ekleme](./media/manage-users/application-add-members.png)
 
 3. Kullanıcının adını arayın.  Yalnızca blok zinciri çalışma ekranı kiracısında mevcut olan Azure AD kullanıcıları listelenir. Kullanıcı bulunamazsa, [Azure AD kullanıcıları eklemeniz](#add-azure-ad-users)gerekir.
 
-    ![Üye ekle](./media/manage-users/find-user.png)
+    ![Üye ekleme](./media/manage-users/find-user.png)
 
 4. Açılan listeden bir **rol** seçin.
 

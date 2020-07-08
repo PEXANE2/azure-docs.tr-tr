@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021900"
 ---
 # <a name="use-case---customer-profiling"></a>Kullanım örneği-müşteri profili oluşturma
@@ -63,6 +62,6 @@ Bu şekilde, veri ardışık düzenleri dağıtıldıktan sonra Azure portal nas
 
 Bu örnekte, giriş verilerini kopyalamak, verileri dönüştürmek ve işlemek ve nihai verileri bir Azure SQL veritabanına çıkarmak için Data Factory kullanılır.  Ayrıca veri işlem hatları ağını görselleştirin, bunları yönetebilir ve durumlarını kullanıcı arabiriminden izleyebilirsiniz.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 Kullanıcı profili analizlerini en iyi duruma getirerek ve iş hedefleri ile hizalayarak, oyun şirketi kullanım modellerini hızlıca toplayabilir ve pazarlama kampanyalarının verimliliğini analiz edebilir.
 

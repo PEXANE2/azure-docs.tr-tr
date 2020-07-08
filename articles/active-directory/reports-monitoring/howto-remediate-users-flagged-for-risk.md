@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608934"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında riskli olarak işaretlenmiş kullanıcıları düzeltme
 
@@ -32,7 +31,7 @@ Kullanıcılarınızın hesaplarının bazılarına yetkisiz erişimi gösterebi
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Riskli olarak işaretlenen kullanıcılar raporuna erişme
 
-Risk için işaretlenen kullanıcıları Azure portal, [risk altındaki kullanıcılar raporu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) aracılığıyla gözden geçirebilirsiniz. Azure AD yoksa, adresinden [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)ücretsiz olarak kaydolabilirsiniz. 
+Risk için işaretlenen kullanıcıları Azure portal, [risk altındaki kullanıcılar raporu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) aracılığıyla gözden geçirebilirsiniz. Azure AD yoksa, adresinden ücretsiz olarak kaydolabilirsiniz [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) . 
 
 Risk işaretli kullanıcılar raporu için, her kullanıcı için aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
@@ -75,7 +74,7 @@ Etkilenen hesapları düzeltmeye ve ortamınızın güvenliğini sağlamaya yard
 
     f. Hesapta parola karmaşıklığını yüksek düzeyde olacak şekilde ayarlayın.
 
-    g. Posta kutusu denetimini etkinleştirin.
+    örneğin: Posta kutusu denetimini etkinleştirin.
 
     h. Yöneticinin gözden geçirmesi için bir denetim günlüğü oluşturun.
 

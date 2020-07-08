@@ -10,10 +10,9 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758732"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
@@ -48,7 +47,7 @@ Bazı olanaklar şunlardır:
 
 - Cihazın arka plandaki ağ bağlantısı, bir uzak boşta kalma zaman aşımı [ile sonuçlanan MQTT etkin](iot-hub-mqtt-support.md#default-keep-alive-timeout)'den uzun MQTT Keep-canlı ayarı cihaz başına farklı olabilir.
 
-- Cihaz TCP/IP düzeyinde sıfırlama gönderdi, ancak uygulama düzeyi `MQTT DISCONNECT`göndermedi. Temel olarak, cihaz temeldeki yuva bağlantısını aniden kapattı. Bazen bu sorun, Azure IoT SDK 'sının eski sürümlerindeki hataların oluşmasına neden olur.
+- Cihaz TCP/IP düzeyinde sıfırlama gönderdi, ancak uygulama düzeyi göndermedi `MQTT DISCONNECT` . Temel olarak, cihaz temeldeki yuva bağlantısını aniden kapattı. Bazen bu sorun, Azure IoT SDK 'sının eski sürümlerindeki hataların oluşmasına neden olur.
 
 - Cihaz tarafı uygulaması kilitlendi.
 

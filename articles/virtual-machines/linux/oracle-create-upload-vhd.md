@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: guybo
 ms.openlocfilehash: fd6d17709cc3e5e9f6bb89ed7480fcd9ee80fd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759394"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure için Oracle Linux bir sanal makine hazırlama
@@ -27,7 +26,7 @@ Bu makalede bir Oracle Linux işletim sistemini zaten bir sanal sabit diske yük
 * 2.6.37 ' den önceki Linux çekirdek sürümleri, Hyper-V üzerinde NUMA 'yı daha büyük VM boyutları ile desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve Oracle Linux 6,6 ve üzeri sürümlerde düzeltildi
 * İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
-* `Addons` Deponun etkinleştirildiğinden emin olun. Dosyayı `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) `/etc/yum.repos.d/public-yum-ol7.repo`veya (Oracle Linux 7) düzenleyin ve bu dosyada **[ol6_addons]** veya `enabled=1` **[ol7_addons]** altındaki satırı `enabled=0` değiştirin.
+* Deponun etkinleştirildiğinden emin olun `Addons` . Dosyayı `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) veya `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux 7) düzenleyin ve `enabled=0` `enabled=1` Bu dosyada **[ol6_addons]** veya **[ol7_addons]** altındaki satırı değiştirin.
 
 ## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 ve üzeri
 Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yapılandırma adımlarını tamamlamalısınız.
@@ -39,11 +38,11 @@ Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yap
         # sudo rpm -e --nodeps NetworkManager
    
     **Note:** Paket zaten yüklü değilse, bu komut bir hata iletisiyle başarısız olur. Bu beklenen bir durumdur.
-4. Aşağıdaki metni içeren `/etc/sysconfig/` dizinde **ağ** adlı bir dosya oluşturun:
+4. Aşağıdaki metni içeren dizinde **ağ** adlı bir dosya oluşturun `/etc/sysconfig/` :
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. Aşağıdaki metni içeren `/etc/sysconfig/network-scripts/` dizinde **ifcfg-eth0** adlı bir dosya oluşturun:
+5. Aşağıdaki metni içeren dizinde **ifcfg-eth0** adlı bir dosya oluşturun `/etc/sysconfig/network-scripts/` :
    
         DEVICE=eth0
         ONBOOT=yes
@@ -74,7 +73,7 @@ Sanal makinenin Azure 'da çalışması için, işletim sistemindeki belirli yap
    
    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir.
    
-   İsterseniz `crashkernel` seçenek, istenirse yapılandırılmış olabilir, ancak bu parametrenin VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
+   `crashkernel`İsterseniz seçenek, istenirse yapılandırılmış olabilir, ancak bu PARAMETRENIN VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
 10. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
 11. Aşağıdaki komutu çalıştırarak Azure Linux aracısını yükler. En son sürüm 2.0.15 ' dir.
     
@@ -112,11 +111,11 @@ Oracle Linux 7 sanal makinesini Azure için hazırlamak, Oracle Linux 6 ' ya ben
 
 1. Hyper-V Yöneticisi 'nde sanal makineyi seçin.
 2. **Bağlan** ' a tıklayarak sanal makine için bir konsol penceresi açın.
-3. Aşağıdaki metni içeren `/etc/sysconfig/` dizinde **ağ** adlı bir dosya oluşturun:
+3. Aşağıdaki metni içeren dizinde **ağ** adlı bir dosya oluşturun `/etc/sysconfig/` :
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. Aşağıdaki metni içeren `/etc/sysconfig/network-scripts/` dizinde **ifcfg-eth0** adlı bir dosya oluşturun:
+4. Aşağıdaki metni içeren dizinde **ifcfg-eth0** adlı bir dosya oluşturun `/etc/sysconfig/network-scripts/` :
    
         DEVICE=eth0
         ONBOOT=yes
@@ -148,7 +147,7 @@ Oracle Linux 7 sanal makinesini Azure için hazırlamak, Oracle Linux 6 ' ya ben
    
    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir.
    
-   İsterseniz `crashkernel` seçenek, istenirse yapılandırılmış olabilir, ancak bu parametrenin VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
+   `crashkernel`İsterseniz seçenek, istenirse yapılandırılmış olabilir, ancak bu PARAMETRENIN VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
 10. Yukarıdaki "/etc/default/grub" düzenlemesini tamamladıktan sonra, grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg

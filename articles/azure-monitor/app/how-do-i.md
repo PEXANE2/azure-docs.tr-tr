@@ -4,10 +4,9 @@ description: Application Insights SSS.
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701950"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
@@ -74,7 +73,7 @@ Dikkat edilmesi gereken bazı noktalar:
 ## <a name="separate-telemetry-from-different-versions"></a>Farklı sürümlerden telemetri ayırın
 
 * Bir uygulamada birden çok rol: tek bir Application Insights kaynağı kullanın ve [cloud_Rolename](../../azure-monitor/app/app-map.md)filtreleyin.
-* Geliştirme, test ve yayın sürümlerini ayırma: farklı Application Insights kaynakları kullanın. Web. config dosyasından izleme anahtarlarını seçin. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
+* Geliştirme, test ve yayın sürümlerini ayırma: farklı Application Insights kaynakları kullanın. web.config izleme anahtarlarını seçin. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
 * Derleme sürümlerini raporlama: telemetri başlatıcısı kullanarak özellik ekleme. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Arka uç sunucularını ve masaüstü uygulamalarını izleme
@@ -118,7 +117,7 @@ Hangi sayfaların baktığınıza veya ne sıklıkla oturum açtıklarında, ver
 * Yalnızca az sayıda kullanıcınız varsa, ölçüm değeri veya olay adı olarak ilgilendiğiniz verileri kullanarak özel olayları ve ölçümleri gönderin, ve kullanıcı KIMLIĞINI bir özellik olarak ayarlama. Sayfa görünümlerini çözümlemek için standart JavaScript trackPageView çağrısını değiştirin. Sunucu tarafı Telemetriyi çözümlemek için, kullanıcı KIMLIĞINI tüm sunucu telemetrisine eklemek üzere bir telemetri başlatıcısı kullanın. Daha sonra Kullanıcı KIMLIĞINDE ölçümleri ve aramaları filtreleyebilir ve segmentleyebilirsiniz.
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Uygulamamın trafiğini Application Insights için azaltma
-* [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasında, gerek olmayan tüm modülleri (performans sayacı toplayıcısı gibi) devre dışı bırakın.
+* [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)' de, gerek olmayan tüm modülleri (performans sayacı toplayıcısı gibi) devre dışı bırakın.
 * SDK 'da [örnekleme ve filtrelemeyi](../../azure-monitor/app/api-filtering-sampling.md) kullanın.
 * Web sayfalarınızda, her sayfa görünümü için raporlanan Ajax çağrılarının sayısını sınırlayın. Sonrasında betik kod parçacığında `instrumentationKey:...` , şunu ekleyin: `,maxAjaxCallsPerView:3` (veya uygun bir sayı).
 * [Trackmetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)kullanıyorsanız, sonucu göndermeden önce ölçüm değerleri toplu iş toplamını hesaplayın. Bunun için sağlayan TrackMetric () aşırı yüklemesi vardır.
@@ -145,7 +144,7 @@ ASP.NET Core uygulamalar için, `TelemetryConfiguration` [ASP.NET Core bağıml�
 ## <a name="disable-selected-standard-collectors"></a>Seçili standart toplayıcıyı devre dışı bırak
 Standart toplayıcıları devre dışı bırakabilirsiniz (örneğin, performans sayaçları, HTTP istekleri veya bağımlılıklar)
 
-* **ASP.NET uygulamaları** - [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasında ilgili satırları silin veya açıklama alın
+* **ASP.NET uygulamalar** - [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) ilgili satırları silin veya not edin
 * **ASP.NET Core uygulamalar** - [ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules) telemetri modülleri yapılandırma seçeneklerini izleyin
 
 ## <a name="view-system-performance-counters"></a>Sistem performans sayaçlarını görüntüleme
