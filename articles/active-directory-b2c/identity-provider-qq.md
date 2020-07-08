@@ -11,10 +11,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d230bc8a1e9bf388e1cca4e3a3a691223146d734
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387992"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir QQ hesabı ile kaydolma ve oturum açma ayarlama
@@ -47,11 +47,11 @@ Bir QQ hesabını Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağ
 
 ## <a name="configure-qq-as-an-identity-provider"></a>QQ 'ı kimlik sağlayıcısı olarak yapılandırma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. **Kimlik sağlayıcıları**' nı seçin ve **QQ (Önizleme)** öğesini seçin.
 1. Bir **ad**girin. Örneğin, *QQ*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz QQ UYGULAMASıNıN uygulama kimliğini girin.
 1. **İstemci parolası**için, KAYDETTIĞINIZ uygulama anahtarını girin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.

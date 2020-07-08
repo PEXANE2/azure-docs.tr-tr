@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387635"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
@@ -40,7 +40,7 @@ Yönetim uygulamanızın kullanabileceği bir uygulama kaydı oluşturmak için 
 - [Kullanıcı oluşturma](https://docs.microsoft.com/graph/api/user-post-users)
 - [Kullanıcı al](https://docs.microsoft.com/graph/api/user-get)
 - [Kullanıcı güncelleştirme](https://docs.microsoft.com/graph/api/user-update)
-- [Kullanıcı sil](https://docs.microsoft.com/graph/api/user-delete)
+- [Kullanıcı silme](https://docs.microsoft.com/graph/api/user-delete)
 
 ## <a name="user-properties"></a>Kullanıcı özellikleri
 

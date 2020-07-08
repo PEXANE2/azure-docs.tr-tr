@@ -12,10 +12,10 @@ ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ebf83807629cc56aa381c97a9ce36d90c94d61f2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85388910"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
@@ -169,7 +169,7 @@ Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Dir
 
 **Şirket markalaması**içinde başlık logosunu, arka plan görüntüsünü ve arka plan rengini ayarlayarak başlayın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. **Yönet**altında **Şirket markalaması**' nı seçin.
@@ -190,7 +190,7 @@ Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Dir
 1. Şirket markasını etkinleştirmek istediğiniz kullanıcı akışını seçin. Şirket markası, *oturum açma v1* ve *profil düzenlemesi v1* Kullanıcı akış türleri için **desteklenmez** .
 1. **Özelleştir**altında **sayfa düzenleri**' ni seçin ve ardından marka yapmak istediğiniz düzeni seçin. Örneğin **Birleşik kaydolma veya oturum açma sayfası**' nı seçin.
 1. **Sayfa düzeni sürümü (Önizleme)** için sürüm **1.2.0** veya üzerini seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Kullanıcı akışındaki tüm sayfaları markalaştırmak isterseniz, Kullanıcı akışındaki her sayfa düzeni için sayfa düzeni sürümünü ayarlayın.
 

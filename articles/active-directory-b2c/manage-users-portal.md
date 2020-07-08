@@ -11,10 +11,10 @@ ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387533"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Azure AD B2C ' de tüketici kullanıcıları oluşturmak ve silmek için Azure portal kullanın
@@ -31,13 +31,13 @@ Kullanıcı eklemek veya silmek için hesabınıza *Kullanıcı Yöneticisi* vey
 
 * İş
 * Konuk
-* İsini
+* Tüketici
 
 Bu makale, Azure portal **Tüketici hesaplarıyla** çalışmaya odaklanır. Iş ve Konuk hesapları oluşturma ve silme hakkında daha fazla bilgi için, bkz. [Azure Active Directory kullanarak Kullanıcı ekleme veya silme](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 ## <a name="create-a-consumer-user"></a>Tüketici kullanıcısı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.

@@ -12,10 +12,10 @@ ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85389301"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
@@ -32,7 +32,7 @@ ms.locfileid: "85389301"
 
 ## <a name="add-signing-and-encryption-keys"></a>İmzalama ve şifreleme anahtarları Ekle
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. Genel Bakış sayfasında, **ilkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -111,7 +111,7 @@ Sonra, uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceğ
 
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**altında, **uygulamayı ortak istemci olarak değerlendir** ' i etkinleştirin ( **Evet**' i seçin). Uygulama bildiriminde **"Allowpublicclient": true** değerinin ayarlandığından emin olun. 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Şimdi *IdentityExperienceFramework* kaydında daha önce sunulan API kapsamına izin verin:
 

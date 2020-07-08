@@ -1,5 +1,5 @@
 ---
-title: Dijital TWINS 'i yönetme
+title: Dijital ikizleri yönetme
 titleSuffix: Azure Digital Twins
 description: Bkz. ayrı ayrı TWINS ve ilişkileri alma, güncelleştirme ve silme.
 author: baanders
@@ -8,13 +8,13 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390525"
 ---
-# <a name="manage-digital-twins"></a>Dijital TWINS 'i yönetme
+# <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
 Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
 
@@ -153,7 +153,7 @@ Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey öz
 
 İkizi için döndürülen JSON 'ı, tercih ettiğiniz bir JSON ayrıştırma kitaplığı kullanarak ayrıştırtırabilirsiniz `System.Text.Json` .
 
-Ayrıca, SDK 'da bulunan serileştirme Yardımcısı sınıfını da kullanabilirsiniz `BasicDigitalTwin` ; Bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Aşağıda bir örnek verilmiştir:
+Ayrıca, SDK 'da bulunan serileştirme Yardımcısı sınıfını da kullanabilirsiniz `BasicDigitalTwin` ; Bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Örnek aşağıda verilmiştir:
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);

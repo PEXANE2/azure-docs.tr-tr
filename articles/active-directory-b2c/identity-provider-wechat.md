@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 462e33c836d8ca0a904e8f7b2e833dc7103311fc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387907"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir WeChat hesabı ile kaydolma ve oturum açma ayarlama
@@ -43,4 +43,4 @@ Azure Active Directory B2C (Azure AD B2C) içinde bir kimlik sağlayıcısı ola
 1. Bir **ad**girin. Örneğin, *Wechat*.
 1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Wechat UYGULAMASıNıN uygulama kimliğini girin.
 1. **İstemci parolası**için, KAYDETTIĞINIZ uygulama anahtarını girin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.

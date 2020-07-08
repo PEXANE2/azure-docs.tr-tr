@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387397"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Kuruluşunuzdaki kullanıcıların bir uygulamaya Konuk kullanıcıları davet edebilir
@@ -86,7 +86,7 @@ Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi 
 3. **Grupları**seçin.
 4. **Ayarlar**altında **genel**' i seçin.
 5. **Self servis grup yönetimi**altında, sahipler ' in yanında, **erişim panelinde grup üyeliği Isteklerini yönetebilir**, **Evet**' i seçin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Uygulamaya atanacak bir grup oluşturun ve kullanıcıya bir sahip yapın
 1. [Azure Portal](https://portal.azure.com) Azure AD yöneticisi veya genel yönetici olarak oturum açın.

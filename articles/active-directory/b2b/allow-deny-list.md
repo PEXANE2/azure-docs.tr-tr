@@ -13,10 +13,10 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387295"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Belirli kuruluşlardan B2B kullanıcılarına gönderilen davetlere izin verme veya engelleme
@@ -41,7 +41,7 @@ Bu, kuruluşunuzun neredeyse her kuruluşla çalışmak istediği, ancak belirli
 
 Reddetme listesi eklemek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' nı seçin.
 3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında, **belirtilen etki alanlarına davetleri Reddet**' i seçin.
@@ -62,7 +62,7 @@ Bir izin verilenler listesi kullanmak istiyorsanız, işletmenizin ihtiyaçları
 
 Bir izin verilenler listesi eklemek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' nı seçin.
 3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında **yalnızca belirtilen etki alanlarına (en kısıtlayıcı) davetlere izin ver**' i seçin.

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
 ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390372"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
@@ -501,7 +501,7 @@ Bu ayar komut için de geçerlidir `az acr run` .
 
 | Git hizmeti | Kaynak bağlamı | El ile derleme | Tamamlama tetikleyicisi aracılığıyla otomatik derleme |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Yes |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Yes |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
 | GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Hayır |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Evet | Hayır |

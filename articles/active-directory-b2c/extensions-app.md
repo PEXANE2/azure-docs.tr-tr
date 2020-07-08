@@ -11,10 +11,10 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: accd32f376c6030900a9f9a3c29547118d0a1a7b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85388519"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: uzantılar uygulaması
@@ -36,7 +36,7 @@ B2C-Extensions-uygulamasının mevcut olduğunu doğrulamak için:
 
 B2C-Extensions-App ' i yanlışlıkla sildiyseniz, bu uygulamayı kurtarmak için 30 gününüz vardır. Graph API kullanarak uygulamayı geri yükleyebilirsiniz:
 
-1. Öğesine gidin [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) .
+1. [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) adresine göz atın.
 1. İçin silinen uygulamayı geri yüklemek istediğiniz Azure AD B2C dizin için genel yönetici olarak sitede oturum açın. Bu genel yöneticinin aşağıdakine benzer bir e-posta adresi olmalıdır: `username@{yourTenant}.onmicrosoft.com` .
 1. `https://graph.windows.net/myorganization/deletedApplications`Api-Version = 1.6 Ile URL 'ye yönelik BIR http get verme. Bu işlem, son 30 gün içinde silinmiş tüm uygulamaların listesini alacak.
 1. Adın ' B2C-Extension-App ' ile başladığı listede uygulamayı bulun ve `objectid` özellik değerini kopyalayın.

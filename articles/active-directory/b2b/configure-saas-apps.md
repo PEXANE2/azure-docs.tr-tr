@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387359"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B işbirliği için SaaS uygulamalarını yapılandırma
@@ -32,7 +32,7 @@ Uygulamaya özgü yönergelere bakmadan önce, Thumb 'in bazı kuralları aşağ
 * Kullanıcı öznitelikleri ' nde, Konuk kullanıcılar içindeki karıştırılmış Kullanıcı profili diski (UPD) ile ilgili sorunları azaltmak için Kullanıcı **tanımlayıcısını** her zaman **Kullanıcı. Mail**olarak ayarlayın.
 
 
-## <a name="dropbox-business"></a>Dropbox Iş
+## <a name="dropbox-business"></a>Dropbox Business
 
 Kullanıcıların kuruluş hesaplarını kullanarak oturum açmasını sağlamak için Dropbox Business 'ı Security Assertion Markup Language (SAML) kimlik sağlayıcısı olarak Azure AD 'yi kullanacak şekilde el ile yapılandırmanız gerekir. Dropbox Business bunu yapmak üzere yapılandırılmamışsa, kullanıcıların Azure AD 'yi kullanarak oturum açmalarına izin vermez ya da izin vermez.
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
 ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390899"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı oluşturma
@@ -24,7 +24,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a name="sql-api"></a><a id="portal-sql"></a>SQL APı 'SI
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya var olan bir hesabı seçin.
 
@@ -40,7 +40,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>MongoDB için Azure Cosmos DB API
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -56,7 +56,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API’si
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-cassandra-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -75,7 +75,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin API
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-graph-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 
@@ -92,7 +92,7 @@ Bu makalede, Azure Cosmos kapsayıcısı (koleksiyon, tablo veya grafik) oluştu
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tablo API’si
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-table-dotnet.md#create-a-database-account)veya var olan bir hesabı seçin.
 

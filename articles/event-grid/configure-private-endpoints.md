@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390474"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
@@ -81,7 +81,7 @@ Dört sağlama durumu vardır:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
 Aşağıdaki bölümlerde, özel bir uç nokta bağlantısını onaylama veya reddetme işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Arama çubuğuna **Event Grid konuları** ' nı veya **Event Grid etki alanlarını**yazın.
 1. Yönetmek istediğiniz **konuyu** veya **etki alanını** seçin.
 1. **Ağ** sekmesini seçin.
