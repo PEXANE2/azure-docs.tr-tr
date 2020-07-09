@@ -1,18 +1,16 @@
 ---
 title: Microsoft Commercial Market için yeni bir SaaS teklifi oluşturun
 description: Microsoft AppSource, Azure Marketi 'nde veya Microsoft Iş Ortağı Merkezi 'ndeki Microsoft ticari Market programını kullanarak bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleme veya satma için yeni bir hizmet olarak yazılım (SaaS) teklifi oluşturma.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980606"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121903"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te yeni bir SaaS teklifi oluşturun
 

@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
-ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498126"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131250"
 ---
 # <a name="exclude-disks-from-replication"></a>Diskleri çoğaltmanın dışında tutma
 
@@ -40,7 +41,7 @@ Başlamadan önce aşağıdakilere dikkat edin:
 
 ## <a name="exclude-disks"></a>Diskleri dışlama
 
-1. Diskleri dışlamak için bir Hyper-V VM için [çoğaltmayı etkinleştirdiğinizde](site-recovery-hyper-v-site-to-azure.md) , çoğaltmak istediğiniz VM 'leri seçtikten sonra, **çoğaltma**  >  **özelliklerini**  >  **Yapılandır Özellikler** sayfasında, sütunu **çoğaltmak için diskleri** gözden geçirin. Varsayılan olarak, tüm diskler çoğaltma için seçilir.
+1. Diskleri dışlamak için bir Hyper-V VM için [çoğaltmayı etkinleştirdiğinizde](./hyper-v-azure-tutorial.md) , çoğaltmak istediğiniz VM 'leri seçtikten sonra, **çoğaltma**  >  **özelliklerini**  >  **Yapılandır Özellikler** sayfasında, sütunu **çoğaltmak için diskleri** gözden geçirin. Varsayılan olarak, tüm diskler çoğaltma için seçilir.
 2. Belirli bir diski çoğaltmak istemiyorsanız, **diskler** ' de dışlamak istediğiniz disklerin seçimini temizleyin. 
 
     ![Diskleri çoğaltmanın dışında tutma](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

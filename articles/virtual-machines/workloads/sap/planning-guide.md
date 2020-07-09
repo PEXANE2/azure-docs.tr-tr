@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7947b6c04ade1fd6a5d9032f05cb6ec56e7a1f5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361413"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132078"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -544,7 +544,7 @@ Bir depolama hesabı içinde, belirli diskleri belirli kapsayıcılara gruplamak
 
 Azure 'da bir disk/VHD adı, Azure 'da VHD için benzersiz bir ad sağlaması gereken aşağıdaki adlandırma bağlantısını izler:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 Yukarıdaki dizenin, Azure depolama 'da depolanan diski/VHD 'yi benzersiz şekilde tanımlaması gerekir.
 
@@ -999,7 +999,7 @@ SAP sistemi veya SAP uygulama katmanını destekleyen adanmış bir DBMS sunucus
 
 Veri diskleri, bir Azure depolama hesabında VHD dosyaları olarak depolanabilir ve doğrudan bir sanal makineye bağlanabilir veya görüntü olarak kullanılabilir. Bu durumda, VHD sanal makineye iliştirilmeden önce başka bir konuma kopyalanır. Azure 'da VHD dosyasının tam adı Azure içinde benzersiz olmalıdır. Daha önce belirtildiği gibi, adı şu şekilde görünen üç bölümden oluşan bir ad türü olmalıdır:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 Veri diskleri de yönetilen diskler olabilir. Bu durumda, yönetilen disk, sanal makineye iliştirilmeden önce yeni bir yönetilen disk oluşturmak için kullanılır. Yönetilen diskin adı bir kaynak grubu içinde benzersiz olmalıdır.
 
@@ -1926,7 +1926,7 @@ Azure 'da Linux 'ta SAP HA 'nin mimarisi, yukarıda açıklanan Windows için te
 
 SAP, VM 'deki işletim sistemi başladıktan hemen sonra SAP örneklerinin başlatılması için gereken işlevselliği önerdi. SAP Bilgi Bankası makalesi [1909114]' de tam adımlar belgelenmiştir. Ancak, örnek yeniden başlatmalarının sırası üzerinde bir denetim olmadığından, SAP 'nin birden fazla VM 'den etkilendiğini veya birden çok örnek VM başına çalıştırıldığı varsayıldığında, bu ayarı kullanmayı önermez. Bir VM 'deki bir SAP uygulama sunucusu örneğinin tipik bir Azure senaryosu ve tek bir VM 'nin yeniden başlatılması durumunda, autostart önemli değildir ve bu parametre eklenerek etkinleştirilebilir:
 
-    Autostart = 1
+`Autostart = 1`
 
 SAP ABAP ve/veya Java örneğinin başlangıç profiline.
 

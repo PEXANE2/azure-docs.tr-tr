@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712182"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130291"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>Yük devretmeden sonra genel IP adreslerini ayarlama
 
@@ -47,7 +48,7 @@ Traffic Manager ile yük devretme senaryoları hakkında daha fazla bilgi edinin
 2. [Azure 'dan Azure 'a yük devretme](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) Traffic Manager 
 
 Kurulum aşağıdaki gibidir:
-- [Traffic Manager profili](../traffic-manager/traffic-manager-create-profile.md)oluşturun.
+- [Traffic Manager profili](../traffic-manager/quickstart-create-traffic-manager-profile.md)oluşturun.
 - **Öncelik** yönlendirme yönteminden yararlanarak, Azure için kaynak ve **Yük devretme** için **birincil** olan iki uç nokta oluşturun. **Birincil** öncelik 1 olarak atanır ve **yük devretmeye** öncelik 2 atanır.
 - **Birincil** uç nokta, kaynak ortamınızın Azure içinde veya dışında olmasına bağlı olarak [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) veya [Harici](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) olabilir.
 - **Yük devretme** uç noktası bir **Azure** uç noktası olarak oluşturulur. Bir **statik genel IP adresi** kullanın çünkü bu, olağanüstü durum olayında Traffic Manager için dış uç nokta olacaktır.

@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710244"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132513"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmayı ayarlama
 
@@ -24,7 +25,7 @@ Bu makalede, Hyper-V VM 'lerini Azure 'a çoğaltmak için Azure Resource Manage
 
 Azure PowerShell, Windows PowerShell kullanarak Azure 'ı yönetmek için cmdlet 'ler sağlar. Azure Resource Manager için Azure PowerShell kullanılabilen PowerShell cmdlet 'leri Site Recovery Azure 'da sunucularınızı korumanıza ve kurtarmanıza yardımcı olur.
 
-Bu makaleyi kullanmak için PowerShell uzmanı olmanız gerekmez, ancak modüller, cmdlet 'ler ve oturumlar gibi temel kavramları anlamanız gerekir. Daha fazla bilgi için bkz. [PowerShell belgeleri](/powershell) ve [Azure Resource Manager Azure PowerShell kullanımı](../powershell-azure-resource-manager.md).
+Bu makaleyi kullanmak için PowerShell uzmanı olmanız gerekmez, ancak modüller, cmdlet 'ler ve oturumlar gibi temel kavramları anlamanız gerekir. Daha fazla bilgi için bkz. [PowerShell belgeleri](/powershell) ve [Azure Resource Manager Azure PowerShell kullanımı](../azure-resource-manager/management/manage-resources-powershell.md).
 
 > [!NOTE]
 > Bulut çözümü sağlayıcısı (CSP) programındaki Microsoft iş ortakları, müşteri sunucularının korumasını kendi CSP aboneliklerine (kiracı abonelikleri) yapılandırabilir ve yönetebilir.

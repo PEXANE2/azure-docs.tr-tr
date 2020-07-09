@@ -7,11 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048609"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130219"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell kullanarak Hyper-V VM 'lerini ikincil bir siteye olağanüstü durum kurtarmayı ayarlama (Kaynak Yöneticisi)
 
@@ -19,12 +20,12 @@ Bu makalede, System Center Virtual Machine Manager bulutlarındaki Hyper-V VM 'l
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Senaryo mimarisini ve bileşenlerini](hyper-v-vmm-architecture.md) gözden geçirin.
-- Tüm bileşenler için [destek gereksinimlerini](site-recovery-support-matrix-to-sec-site.md) gözden geçirin.
-- Virtual Machine Manager sunucularının ve Hyper-V konaklarının [destek gereksinimleriyle](site-recovery-support-matrix-to-sec-site.md)uyumlu olduğundan emin olun.
-- Çoğaltmak istediğiniz VM 'Lerin [çoğaltılan makine desteğiyle](site-recovery-support-matrix-to-sec-site.md)uyumlu olduğundan emin olun.
+- Tüm bileşenler için [destek gereksinimlerini](./vmware-physical-secondary-support-matrix.md) gözden geçirin.
+- Virtual Machine Manager sunucularının ve Hyper-V konaklarının [destek gereksinimleriyle](./vmware-physical-secondary-support-matrix.md)uyumlu olduğundan emin olun.
+- Çoğaltmak istediğiniz VM 'Lerin [çoğaltılan makine desteğiyle](./vmware-physical-secondary-support-matrix.md)uyumlu olduğundan emin olun.
 
 ## <a name="prepare-for-network-mapping"></a>Ağ eşlemesi için hazırlanma
 
@@ -36,10 +37,10 @@ Kaynak ve hedef bulutlarda şirket içi Virtual Machine Manager VM ağları aras
 
 Virtual Machine Manager aşağıdaki şekilde hazırlayın:
 
-- Kaynak ve hedef Virtual Machine Manager sunucularında [Virtual Machine Manager Mantıksal ağlarınız](https://docs.microsoft.com/system-center/vmm/network-logical) olduğundan emin olun:
+- Kaynak ve hedef Virtual Machine Manager sunucularında [Virtual Machine Manager Mantıksal ağlarınız](/system-center/vmm/network-logical) olduğundan emin olun:
   - Kaynak sunucusundaki mantıksal ağ, Hyper-V konaklarının bulunduğu kaynak bulutla ilişkilendirilmelidir.
   - Hedef sunucudaki mantıksal ağ, hedef bulutla ilişkilendirilmelidir.
-- Kaynak ve hedef Virtual Machine Manager sunucularında [VM ağlarının](https://docs.microsoft.com/system-center/vmm/network-virtual) bulunduğundan emin olun. VM ağları, her bir konumdaki mantıksal ağa bağlanmış olmalıdır.
+- Kaynak ve hedef Virtual Machine Manager sunucularında [VM ağlarının](/system-center/vmm/network-virtual) bulunduğundan emin olun. VM ağları, her bir konumdaki mantıksal ağa bağlanmış olmalıdır.
 - Kaynak Hyper-V konaklarındaki VM'leri kaynak VM ağına bağlayın.
 
 ## <a name="prepare-for-powershell"></a>PowerShell için hazırlanma

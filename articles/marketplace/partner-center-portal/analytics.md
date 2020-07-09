@@ -1,18 +1,18 @@
 ---
 title: Iş Ortağı Merkezi 'nde Microsoft ticari Marketi için analiz
 description: Microsoft Iş Ortağı Merkezi 'nde satışları izlemek, performansı değerlendirmek ve Market tekliflerinizi iyileştirmek için analitik raporlara nasıl erişebileceğinizi öğrenin.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: rajap
+ms.author: rajap
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fd42e7661e04b6eab35e3b076e9c8c2fb55a363
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744901"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122022"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analitik raporlara erişin
 

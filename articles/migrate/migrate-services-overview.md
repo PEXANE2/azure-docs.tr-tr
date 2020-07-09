@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti hakkında bilgi edinin.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 41fcf1c4a9a59ad0cea89c8b44374cef6444558e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564124"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122090"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -34,11 +34,11 @@ Azure geçişi hub 'ı şu araçları içerir:
 --- | --- | ---
 **Azure geçişi: Sunucu değerlendirmesi** | Sunucuları değerlendirin. | Şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucuları Azure 'a geçişe hazırlık olarak bulun ve değerlendirin.
 **Azure geçişi: sunucu geçişi** | Sunucuları geçirin. | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, diğer sanallaştırılmış makineler ve genel bulut VM 'lerini Azure 'a geçirin.
-**Data Migration Yardımcısı** | Azure SQL veritabanı, Azure SQL yönetilen örneği veya SQL Server çalıştıran Azure VM 'lerine geçiş için SQL Server veritabanlarını değerlendirin. | Data Migration Yardımcısı, geçişi engelleyen olası sorunları belirlemenize yardımcı olur. Desteklenmeyen özellikleri, geçişten sonra size faydalanabilir yeni özellikleri ve veritabanı geçişinin doğru yolunu tanımlar. [Daha fazla bilgi edinin](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
-**Azure Veritabanı Geçiş Hizmeti** | Şirket içi veritabanlarını SQL Server, Azure SQL veritabanı veya SQL yönetilen örnekleri çalıştıran Azure VM 'lerine geçirin. | Veritabanı geçiş hizmeti hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/dms/dms-overview) .
+**Data Migration Yardımcısı** | Azure SQL veritabanı, Azure SQL yönetilen örneği veya SQL Server çalıştıran Azure VM 'lerine geçiş için SQL Server veritabanlarını değerlendirin. | Data Migration Yardımcısı, geçişi engelleyen olası sorunları belirlemenize yardımcı olur. Desteklenmeyen özellikleri, geçişten sonra size faydalanabilir yeni özellikleri ve veritabanı geçişinin doğru yolunu tanımlar. [Daha fazla bilgi edinin](/sql/dma/dma-overview?view=sql-server-2017).
+**Azure Veritabanı Geçiş Hizmeti** | Şirket içi veritabanlarını SQL Server, Azure SQL veritabanı veya SQL yönetilen örnekleri çalıştıran Azure VM 'lerine geçirin. | Veritabanı geçiş hizmeti hakkında [daha fazla bilgi edinin](../dms/dms-overview.md) .
 **Movere** | Sunucuları değerlendirin. | Movere hakkında [daha fazla bilgi edinin](#movere) .
 **Web uygulaması Geçiş Yardımcısı** | Şirket içi Web uygulamalarını değerlendirin ve bunları Azure 'a geçirin. |  Azure App Service geçiş için şirket içi web sitelerini değerlendirmek üzere Azure App Service Geçiş Yardımcısı kullanın.<br/><br/> .NET ve PHP Web uygulamalarını Azure 'a geçirmek için Geçiş Yardımcısı kullanın. Azure App Service Geçiş Yardımcısı hakkında [daha fazla bilgi edinin](https://appmigration.microsoft.com/) .
-**Azure Data Box** | Çevrimdışı verileri geçirin. | Büyük miktarlarda çevrimdışı verileri Azure 'a taşımak için Azure Data Box ürünlerini kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/databox/).
+**Azure Data Box** | Çevrimdışı verileri geçirin. | Büyük miktarlarda çevrimdışı verileri Azure 'a taşımak için Azure Data Box ürünlerini kullanın. [Daha fazla bilgi edinin](../databox/index.yml).
 
 > [!NOTE]
 > Azure Kamu kullanıyorsanız, dış tümleşik araçlar ve ISV teklifleri verileri Azure geçişi projelerine gönderemez. Araçları bağımsız olarak kullanabilirsiniz.

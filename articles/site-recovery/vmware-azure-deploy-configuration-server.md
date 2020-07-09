@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704446"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132161"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
 
@@ -25,7 +26,7 @@ VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması
 
 Yapılandırma sunucusu, belirli minimum donanım ve boyutlandırma gereksinimlerine sahip yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarlanmalıdır. Kullanışlı ve kolay dağıtım için Site Recovery, burada listelenen tüm uygulanan gereksinimleriyle uyumlu yapılandırma sunucusunu ayarlamak için indirilebilir bir açık sanallaştırma uygulaması (OVA) şablonu sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir yapılandırma sunucusu için en düşük donanım gereksinimleri aşağıdaki bölümlerde özetlenmektedir.
 
@@ -38,7 +39,7 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
 1. Kullanıcının bir uygulama oluşturmak için bir uygulama geliştirici rolüne sahip olması gerekir.
     - Doğrulamak için Azure portal oturum açın.</br>
     - **Azure Active Directory**  >  **Roller ve yöneticiler '** e gidin.</br>
-    - Uygulama geliştirici rolünün kullanıcıya atandığını doğrulayın. Aksi takdirde, bu izinle bir Kullanıcı kullanın veya [izni etkinleştirmek için bir yöneticiye](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)başvurun.
+    - Uygulama geliştirici rolünün kullanıcıya atandığını doğrulayın. Aksi takdirde, bu izinle bir Kullanıcı kullanın veya [izni etkinleştirmek için bir yöneticiye](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles)başvurun.
     
 2. Uygulama geliştirici rolü atanmadığından, kullanıcıların bir kimlik oluşturması için **kullanıcıların uygulamaları kaydedebilmesi** için, **doğru** olarak ayarlanmış olduğundan emin olun. Bu izinleri etkinleştirmek için:
     - Azure Portal’da oturum açın.
@@ -48,7 +49,7 @@ Yapılandırma sunucusunu Azure Site Recovery Hizmetleri ile kaydetmek için Azu
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory Federasyon Hizmetleri (AD FS) *desteklenmez*. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)ile yönetilen bir hesap kullanın.
+> Active Directory Federasyon Hizmetleri (AD FS) *desteklenmez*. [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)ile yönetilen bir hesap kullanın.
 
 ## <a name="download-the-template"></a>Şablonu indirme
 

@@ -403,9 +403,9 @@
         - name: Dynamics AX
           href: site-recovery-dynamicsax.md
         - name: RDS
-          href: 'site-recovery-workload.md#protect-remote-desktop-services'
+          href: site-recovery-workload.md#protect-remote-desktop-services
         - name: Exchange
-          href: 'site-recovery-workload.md#protect-exchange'
+          href: site-recovery-workload.md#protect-exchange
         - name: SAP
           href: site-recovery-sap.md
         - name: Dosya Sunucusu
@@ -415,7 +415,7 @@
         - name: Citrix XenApp ve XenDesktop
           href: site-recovery-citrix-xenapp-and-xendesktop.md
         - name: Diğer iş yükleri
-          href: 'site-recovery-workload.md#workload-summary'
+          href: site-recovery-workload.md#workload-summary
     - name: İkincil siteye olağanüstü durum kurtarma
       items:
         - name: VMware VM’ler/fiziksel sunucular
@@ -509,7 +509,7 @@
 - name: İlgili
   items:
     - name: Azure Otomasyonu
-      href: /azure/automation/
+      href: ../automation/index.yml
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası
@@ -517,7 +517,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
+      href: /answers/topics/azure-site-recovery.html
     - name: Öğrenme yolu
       href: /learn/azure/
     - name: Fiyatlandırma

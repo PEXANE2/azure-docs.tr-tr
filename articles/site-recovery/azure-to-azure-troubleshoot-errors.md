@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738125"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130458"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-Azure VM çoğaltma hatalarında sorun giderme
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>Sorunu çözme
 
-Aboneliğinizi hedef konumda gereken boyutlarda VM 'Ler oluşturacak şekilde etkinleştirmek için [Azure Faturalandırma desteği](/azure/azure-portal/supportability/resource-manager-core-quotas-request) 'ne başvurun. Sonra başarısız olan işlemi yeniden deneyin.
+Aboneliğinizi hedef konumda gereken boyutlarda VM 'Ler oluşturacak şekilde etkinleştirmek için [Azure Faturalandırma desteği](../azure-portal/supportability/resource-manager-core-quotas-request.md) 'ne başvurun. Sonra başarısız olan işlemi yeniden deneyin.
 
 Hedef konumun bir kapasite kısıtlaması varsa, bu konuma yinelemeyi devre dışı bırakın. Daha sonra, aboneliğin gereken boyutlarda VM 'Ler oluşturmak için yeterli kotası olan farklı bir konuma çoğaltmayı etkinleştirin.
 
@@ -202,7 +202,7 @@ Office 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bir bağlantı k
 #### <a name="fix-the-problem"></a>Sorunu çözme
 
 Kimlik doğrulaması için Office 365 IP aralıklarına gereken Azure Site Recovery erişimi.
-VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız, AAD 'ye erişim izni vermek için [Azure Active Directory (AAD) hizmet etiketi](/azure/virtual-network/security-overview#service-tags) tabanlı NSG kuralını kullandığınızdan emin olun. IP adresi tabanlı NSG kurallarını artık desteklemiyoruz.
+VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız, AAD 'ye erişim izni vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralını kullandığınızdan emin olun. IP adresi tabanlı NSG kurallarını artık desteklemiyoruz.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: Site Recovery yapılandırma başarısız oldu (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Veri disklerinin başlatıldığından emin olun ve işlemi yeniden deneyin.
 
-- **Windows**: [Yeni bir disk ekleyin ve başlatın](/azure/virtual-machines/windows/attach-managed-disk-portal).
-- **Linux**: [Linux 'ta yeni bir veri diski başlatın](/azure/virtual-machines/linux/add-disk).
+- **Windows**: [Yeni bir disk ekleyin ve başlatın](../virtual-machines/windows/attach-managed-disk-portal.md).
+- **Linux**: [Linux 'ta yeni bir veri diski başlatın](../virtual-machines/linux/add-disk.md).
 
 Sorun devam ederse desteğe başvurun.
 
@@ -475,7 +475,7 @@ Aşağıdaki örnekler, gerekli UUID 'ler yerine cihaz adlarının göründüğ�
 
 Her bir cihaz adını karşılık gelen UUID ile değiştirin:
 
-1. Komutu yürüterek cihazın UUID 'sini bulun `blkid <device name>` . Örnek:
+1. Komutu yürüterek cihazın UUID 'sini bulun `blkid <device name>` . Örneğin:
 
    ```shell
    blkid /dev/sda1

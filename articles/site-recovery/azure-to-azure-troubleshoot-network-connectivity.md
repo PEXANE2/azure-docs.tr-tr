@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884877"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132708"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
 
@@ -50,7 +51,7 @@ DNS sunucusuna sanal makineden erişmeyi deneyin. DNS sunucusu erişilebilir de�
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Sorun 2: Site Recovery yapılandırma başarısız oldu (151196)
 
 > [!NOTE]
-> VM 'Ler **Standart** bir iç yük dengeleyicinin arkasında ise, varsayılan olarak, gibi Office 365 IP 'lerine erişemez `login.microsoftonline.com` . Bunu **temel** iç yük dengeleyici türüne değiştirin veya [Azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırma](/azure/load-balancer/configure-load-balancer-outbound-cli)makalesinde belirtildiği şekilde giden erişim oluşturun.
+> VM 'Ler **Standart** bir iç yük dengeleyicinin arkasında ise, varsayılan olarak, gibi Office 365 IP 'lerine erişemez `login.microsoftonline.com` . Bunu **temel** iç yük dengeleyici türüne değiştirin veya [Azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırma](../load-balancer/configure-load-balancer-outbound-cli.md)makalesinde belirtildiği şekilde giden erişim oluşturun.
 
 #### <a name="possible-cause"></a>Olası nedeni
 
@@ -59,7 +60,7 @@ Office 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bir bağlantı k
 #### <a name="resolution"></a>Çözüm
 
 - Azure Site Recovery, kimlik doğrulaması için Office 365 IP aralıklarına erişim gerektirir.
-- VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız, Office 365 IP aralıklarıyla iletişime izin verildiğinden emin olun. Azure AD 'ye karşılık gelen tüm IP adreslerine erişim sağlayan bir [Azure Active Directory (Azure AD) hizmet etiketi](/azure/virtual-network/security-overview#service-tags) tabanlı NSG kuralı oluşturun.
+- VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız, Office 365 IP aralıklarıyla iletişime izin verildiğinden emin olun. Azure AD 'ye karşılık gelen tüm IP adreslerine erişim sağlayan bir [Azure Active Directory (Azure AD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
 - Daha sonra Azure AD 'ye yeni adresler eklenirse, yeni NSG kuralları oluşturmanız gerekir.
 
 ### <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması
@@ -142,7 +143,7 @@ Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](az
 
 ### <a name="fix-the-problem"></a>Sorunu çözme
 
-[Gerekli URL 'lere](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) veya [gerekli IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)izin vermek için [Ağ Kılavuzu belgesindeki](site-recovery-azure-to-azure-networking-guidance.md)adımları izleyin.
+[Gerekli URL 'lere](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) veya [gerekli IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)izin vermek için [Ağ Kılavuzu belgesindeki](./azure-to-azure-about-networking.md)adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

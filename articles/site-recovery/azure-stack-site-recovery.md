@@ -3,12 +3,12 @@ title: Azure Site Recovery kullanarak Azure Stack VM 'Leri Azure 'a çoğaltma |
 description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da olağanüstü durum kurtarmayı ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478503"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131602"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
 
@@ -262,7 +262,7 @@ Yük devretme testi çalıştırmadan önce makine özelliklerini doğrulayın v
 2. **Çoğaltılan öğe** bölmesinde VM bilgileri ile sistem durumunun bir özeti ve kullanılabilen son kurtarma noktaları yer alır. Daha fazla ayrıntı görüntülemek için **Özellikler**’e tıklayın.
 3. **İşlem ve ağ**bölümünde, ayarları gerektiği gibi değiştirin.
 
-    - Azure VM adını, kaynak grubunu, hedef boyutunu, [kullanılabilirlik kümesini](/azure/virtual-machines/windows/tutorial-availability-sets)ve yönetilen disk ayarlarını değiştirebilirsiniz.
+    - Azure VM adını, kaynak grubunu, hedef boyutunu, [kullanılabilirlik kümesini](../virtual-machines/windows/tutorial-availability-sets.md)ve yönetilen disk ayarlarını değiştirebilirsiniz.
     - Ayrıca, ağ ayarlarını görüntüleyebilir ve değiştirebilirsiniz. Bunlar, yük devretmeden sonra Azure VM 'nin katıldığı ağ/alt ağı ve VM 'ye atanacak IP adresini içerir.
 1. **Diskler**' de, VM 'deki işletim sistemi ve veri diskleri hakkındaki bilgileri görüntüleyin.
 

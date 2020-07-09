@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954384"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132115"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM 'lerinin Azure 'a olağanüstü durum kurtarması hakkında
 
@@ -20,7 +21,7 @@ Bu makalede, şirket içi VMware VM 'lerinin [Azure Site Recovery](site-recovery
 
 İş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejisi, işinizi çalışır durumda tutmanıza yardımcı olur. Planlanan kapalı kalma süresi ve beklenmedik kesintiler sırasında, BCDR verileri güvenli ve kullanılabilir tutar ve uygulamaların çalışmaya devam etmesini sağlar. Azure, bölgesel eşleştirme ve yüksek kullanılabilirliğe sahip depolama gibi platform BCDR özelliklerine ek olarak, kurtarma hizmetleri için BCDR çözümünüzün bir parçası olarak sağlanır. Kurtarma Hizmetleri şunları içerir: 
 
-- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) , şirket Içi ve Azure VM verilerinizi yedekler. Bir dosya ve klasörleri, belirli iş yüklerini veya tüm VM 'leri yedekleyebilirsiniz. 
+- [Azure Backup](../backup/backup-overview.md) , şirket Içi ve Azure VM verilerinizi yedekler. Bir dosya ve klasörleri, belirli iş yüklerini veya tüm VM 'leri yedekleyebilirsiniz. 
 - [Azure Site Recovery](site-recovery-overview.md) , şirket içi makinelerde çalışan uygulamalar ve iş yükleri ya da Azure IaaS VM 'leri için esnekliği ve olağanüstü durum kurtarma sağlar. Site Recovery çoğaltmayı düzenler ve kesintiler gerçekleştiğinde Azure 'a yük devretmeyi işler. Ayrıca, Azure 'dan birincil sitenize kurtarmayı işler. 
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery olağanüstü durum kurtarma nasıl yapılır?

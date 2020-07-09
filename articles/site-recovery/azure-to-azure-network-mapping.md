@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691212"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130444"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNET 'ler için Ağ eşlemesini ve IP adresini ayarlama
 
 Bu makalede, farklı Azure bölgelerinde bulunan iki Azure sanal ağı örneğinin (VNet 'ler) nasıl eşleneceğini ve ağlar arasında IP adreslemenin nasıl ayarlanacağı açıklanır. Ağ eşleme, çoğaltmayı etkinleştirme sırasında kaynak ağa göre hedef ağ seçimi için varsayılan bir davranış sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Ağları eşleştirmadan önce kaynak ve hedef Azure bölgelerinde [Azure sanal](../virtual-network/virtual-networks-overview.md) ağlarına sahip olmanız gerekir. 
 
@@ -93,5 +94,5 @@ Hedef ağ yük devretme VNet değil | -Hedef IP adresi aynı IP adresiyle statik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure VM olağanüstü durum kurtarma için [ağ kılavuzunu](site-recovery-azure-to-azure-networking-guidance.md) gözden geçirin.
+- Azure VM olağanüstü durum kurtarma için [ağ kılavuzunu](./azure-to-azure-about-networking.md) gözden geçirin.
 - Yük devretmeden sonra IP adreslerini koruma hakkında [daha fazla bilgi edinin](site-recovery-retain-ip-azure-vm-failover.md) .

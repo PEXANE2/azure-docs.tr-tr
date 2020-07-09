@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584140"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129925"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM 'Leri için Azure 'a çoğaltmayı etkinleştirme
 
@@ -106,9 +106,9 @@ Ardından, kaynak sanal makinenin özelliklerini doğrulayın. Azure VM adının
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="İşlem ve ağ özellikleri penceresi":::
 
    - **Azure VM adı**: gerekirse, Azure gereksinimlerine uyacak şekilde adı değiştirin.
-   - **Hedef VM boyutu veya VM türü**: varsayılan VM boyutu, hedef Azure bölgesindeki disk sayısı, NIC sayısı, CPU çekirdek sayısı, bellek ve kullanılabilir VM rolü boyutlarını içeren parametrelere göre seçilir. Azure Site Recovery tüm ölçütleri karşılayan kullanılabilir ilk VM boyutunu seçer. Yük devretmeden önce istediğiniz zaman, gereksinimlerinize göre farklı bir VM boyutu seçebilirsiniz. VM disk boyutu da kaynak disk boyutuna dayalıdır ve yalnızca yük devretme işleminden sonra değiştirilebilir. [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedeflerinde](/azure/virtual-machines/windows/disk-scalability-targets)disk BOYUTLARı ve IOPS ücretleri hakkında daha fazla bilgi edinin.
-   - **Kaynak grubu**: bir sanal makinenin yük devretmenin bir parçası haline geldiği bir [kaynak grubu](/azure/azure-resource-manager/management/overview#resource-groups)seçebilirsiniz. Bu ayarı, yük devretmeden önce istediğiniz zaman değiştirebilirsiniz. Yük devretmeden sonra, sanal makineyi farklı bir kaynak grubuna geçirirseniz bu sanal makine için koruma ayarları kesilir.
-   - **Kullanılabilirlik kümesi**: sanal makinenizin yük devretmenin bir parçası olması gerekiyorsa bir [kullanılabilirlik kümesi](/azure/virtual-machines/windows/tutorial-availability-sets) seçebilirsiniz. Bir kullanılabilirlik kümesi seçtiğinizde, aşağıdaki bilgileri aklınızda bulundurun:
+   - **Hedef VM boyutu veya VM türü**: varsayılan VM boyutu, hedef Azure bölgesindeki disk sayısı, NIC sayısı, CPU çekirdek sayısı, bellek ve kullanılabilir VM rolü boyutlarını içeren parametrelere göre seçilir. Azure Site Recovery tüm ölçütleri karşılayan kullanılabilir ilk VM boyutunu seçer. Yük devretmeden önce istediğiniz zaman, gereksinimlerinize göre farklı bir VM boyutu seçebilirsiniz. VM disk boyutu da kaynak disk boyutuna dayalıdır ve yalnızca yük devretme işleminden sonra değiştirilebilir. [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedeflerinde](../virtual-machines/windows/disk-scalability-targets.md)disk BOYUTLARı ve IOPS ücretleri hakkında daha fazla bilgi edinin.
+   - **Kaynak grubu**: bir sanal makinenin yük devretmenin bir parçası haline geldiği bir [kaynak grubu](../azure-resource-manager/management/overview.md#resource-groups)seçebilirsiniz. Bu ayarı, yük devretmeden önce istediğiniz zaman değiştirebilirsiniz. Yük devretmeden sonra, sanal makineyi farklı bir kaynak grubuna geçirirseniz bu sanal makine için koruma ayarları kesilir.
+   - **Kullanılabilirlik kümesi**: sanal makinenizin yük devretmenin bir parçası olması gerekiyorsa bir [kullanılabilirlik kümesi](../virtual-machines/windows/tutorial-availability-sets.md) seçebilirsiniz. Bir kullanılabilirlik kümesi seçtiğinizde, aşağıdaki bilgileri aklınızda bulundurun:
      - Yalnızca belirtilen kaynak grubuna ait kullanılabilirlik kümeleri listelenir.
      - Farklı sanal ağlardaki VM 'Ler aynı Kullanılabilirlik kümesinin parçası olamaz.
      - Yalnızca aynı boyuttaki sanal makineler bir kullanılabilirlik kümesinin parçası olabilir.

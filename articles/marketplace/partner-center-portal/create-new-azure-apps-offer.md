@@ -1,18 +1,16 @@
 ---
 title: Azure Uygulama teklifi oluşturma-Microsoft ticari Market
 description: Iş Ortağı Merkezi 'nde ticari Market portalında yeni bir Azure uygulaması teklifi oluşturmaya yönelik adımları ve konuları öğrenin. Azure uygulama teklifinizi Azure Market 'te veya bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleyebilir veya satın alabilirsiniz.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: cf44e50f7d8cc0dbf94c5313373bbd8080baa176
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121988"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 

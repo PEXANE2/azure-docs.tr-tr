@@ -3,12 +3,12 @@ title: Azure Lighthouse nedir?
 description: Azure Athouse, hizmet sağlayıcılarının daha yüksek otomasyon ve verimlilik özelliklerine sahip müşterileri için yönetilen hizmetler sunmasına olanak tanır.
 ms.date: 05/28/2020
 ms.topic: overview
-ms.openlocfilehash: d4eea306341c690d5dea040d5ae3b20ef8d83084
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 119f1465c9fdf03779f28a46967c30d899ae37d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919109"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131379"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse nedir?
 
@@ -22,7 +22,7 @@ Azure Kathouse, müşterileriniz için yönetilen Hizmetleri öngörülebilir ve
 
 - **Ölçekteki yönetim**: müşteri kaynaklarını yönetmeye yönelik müşteri katılımı ve yaşam döngüsü işlemleri daha kolay ve ölçeklenebilir. Mevcut API 'Ler, yönetim araçları ve iş akışları, bulunan bölgeler ne olursa olsun, temsilcili müşteri kaynakları ile kullanılabilir.
 - **Müşteriler Için daha fazla görünürlük ve duyarlık**: MÜŞTERILER, IP 'niz korunurken, erişimi tamamen kaldırma özelliği de dahil olmak üzere, eylemleriniz üzerinde daha fazla görünürlük ve yönetim için temsilci seçtikleri kapsam üzerinde tam denetim sahibi olacaktır.
-- **Kapsamlı ve Birleşik platform araçları**: alet oluşturma DENEYIMIMIZ, EA, CSP ve kullandıkça öde gibi birden fazla lisanslama modeli de dahil olmak üzere temel hizmet sağlayıcısı senaryolarına yöneliktir. Yeni yetenekler, mevcut araçlar ve API 'Ler, lisanslama modelleri ve [bulut çözümü sağlayıcısı programı (CSP)](/partner-center/csp-overview)gibi iş ortağı programlarıyla çalışır. Azure ışıklı kullanımı, mevcut iş akışlarınızla ve uygulamalarınızla tümleştirilebilir ve [iş ortağı kimliğinizi bağlayarak](../billing/billing-partner-admin-link-started.md)müşteri görevlendirmelerinizi takip edebilirsiniz.
+- **Kapsamlı ve Birleşik platform araçları**: alet oluşturma DENEYIMIMIZ, EA, CSP ve kullandıkça öde gibi birden fazla lisanslama modeli de dahil olmak üzere temel hizmet sağlayıcısı senaryolarına yöneliktir. Yeni yetenekler, mevcut araçlar ve API 'Ler, lisanslama modelleri ve [bulut çözümü sağlayıcısı programı (CSP)](/partner-center/csp-overview)gibi iş ortağı programlarıyla çalışır. Azure ışıklı kullanımı, mevcut iş akışlarınızla ve uygulamalarınızla tümleştirilebilir ve [iş ortağı kimliğinizi bağlayarak](../cost-management-billing/manage/link-partner-id.md)müşteri görevlendirmelerinizi takip edebilirsiniz.
 
 Müşterilerinizin Azure kaynaklarını yönetmek için Azure açık Thouse kullanımıyla ilişkili ek maliyet yoktur. Tüm Azure müşterileri veya iş ortakları, Azure Use 'ı kullanabilir.
 

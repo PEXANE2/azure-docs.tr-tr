@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 8e1fd7e839c50458ddcfc9f83d152d7b45cd6672
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956262"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131875"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -50,8 +50,8 @@ Boş disk alanı | bekletme sürücüsü için 600 GB alan.
 İşletim sistemi yerel ayarı | İngilizce (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Yapılandırma sunucusu sürüm [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) veya üzeri için gerekli değildir.
 Windows Server rolleri | Active Directory Domain Services etkinleştirmeyin; Internet Information Services (IIS) veya Hyper-V.
-Grup ilkeleri| -Komut istemine erişimi engelleyin. <br/> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br/> -Dosya ekleri için güven mantığı. <br/> -Betik yürütmeyi açın. <br/> - [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Şunları yaptığınızdan emin olun:<br/><br/> -Önceden var olan varsayılan Web siteniz yok <br/> - [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br/> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir  <br/> -443 numaralı bağlantı noktasında önceden bir Web sitesine/uygulamaya dinleme yapmayın<br/>
+Grup ilkeleri| -Komut istemine erişimi engelleyin. <br/> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br/> -Dosya ekleri için güven mantığı. <br/> -Betik yürütmeyi açın. <br/> - [Daha fazla bilgi](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+IIS | Şunları yaptığınızdan emin olun:<br/><br/> -Önceden var olan varsayılan Web siteniz yok <br/> - [Anonim kimlik doğrulamasını](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) etkinleştir <br/> - [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) ayarını etkinleştir  <br/> -443 numaralı bağlantı noktasında önceden bir Web sitesine/uygulamaya dinleme yapmayın<br/>
 NIC türü | VMXNET3 (bir VMware sanal makinesi olarak dağıtıldığında)
 IP adresi türü | Statik
 Bağlantı noktaları | denetim kanalı düzenleme için kullanılan 443<br/>veri aktarımı için 9443
@@ -67,7 +67,7 @@ Site Recovery, desteklenen bir makinede çalışan herhangi bir iş yükünün �
 --- | ---
 Makine ayarları | Azure 'a çoğaltılan makinelerin [Azure gereksinimlerini](#azure-vm-requirements)karşılaması gerekir.
 Makine iş yükü | Site Recovery, desteklenen bir makinede çalışan herhangi bir iş yükünün çoğaltılmasını destekler. [Daha fazla bilgi edinin](https://aka.ms/asr_workload).
-Makine adı | Makinenin görünen adının [Azure ayrılmış kaynak adlarına](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name) sahip olmadığından emin olun<br/><br/> Mantıksal birim adları büyük/küçük harfe duyarlı değildir. Cihazdaki iki birimin aynı ada sahip olmadığından emin olun. Ex: "voLUME1", "voLUME1" adlı birimler Azure Site Recovery aracılığıyla korunamaz.
+Makine adı | Makinenin görünen adının [Azure ayrılmış kaynak adlarına](../azure-resource-manager/templates/error-reserved-resource-name.md) sahip olmadığından emin olun<br/><br/> Mantıksal birim adları büyük/küçük harfe duyarlı değildir. Cihazdaki iki birimin aynı ada sahip olmadığından emin olun. Ex: "voLUME1", "voLUME1" adlı birimler Azure Site Recovery aracılığıyla korunamaz.
 
 ### <a name="for-windows"></a>Windows için
 
@@ -185,69 +185,69 @@ Konuk/sunucu ağı birden çok NIC | Evet.
 
 **Bileşen** | **Destek**
 --- | ---
-Azure ExpressRoute | Evet
-ILB | Evet
-ELB | Evet
-Azure Traffic Manager | Evet
-Çoklu NIC | Evet
-Ayrılmış IP adresi | Evet
-IPv4 | Evet
-Kaynak IP adresini sakla | Evet
-Azure sanal ağ hizmet uç noktaları<br/> | Evet
-Hızlandırılmış ağ iletişimi | Hayır
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Çoklu NIC | Yes
+Ayrılmış IP adresi | Yes
+IPv4 | Yes
+Kaynak IP adresini sakla | Yes
+Azure sanal ağ hizmet uç noktaları<br/> | Yes
+Hızlandırılmış ağ iletişimi | No
 
 ## <a name="storage"></a>Depolama
 **Bileşen** | **Destek**
 --- | ---
 Dinamik disk | İşletim sistemi diski, temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
-Docker disk yapılandırması | Hayır
+Docker disk yapılandırması | No
 Konak NFS | VMware için Evet<br/><br/> Fiziksel sunucular için Hayır
-Ana bilgisayar SAN (Iscsı/FC) | Evet
+Ana bilgisayar SAN (Iscsı/FC) | Yes
 Ana bilgisayar vSAN | VMware için Evet<br/><br/> Fiziksel sunucular için yok
 Ana bilgisayar çok yollu (MPIO) | Evet, Microsoft DSM ile test edildi, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM
 Konak sanal birimleri (Vvir) | VMware için Evet<br/><br/> Fiziksel sunucular için yok
-Konuk/sunucu VMDK | Evet
-Konuk/sunucu paylaşılan küme diski | Hayır
-Konuk/sunucu tarafından şifrelenen disk | Hayır
-Konuk/sunucu NFS | Hayır
+Konuk/sunucu VMDK | Yes
+Konuk/sunucu paylaşılan küme diski | No
+Konuk/sunucu tarafından şifrelenen disk | No
+Konuk/sunucu NFS | No
 Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
-Konuk/sunucu SMB 3,0 | Hayır
-Konuk/sunucu RDM | Evet<br/><br/> Fiziksel sunucular için yok
+Konuk/sunucu SMB 3,0 | No
+Konuk/sunucu RDM | Yes<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar
-4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | Hayır
-4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | Hayır
-Şeritli disk >4 TB olan konuk/sunucu birimi | Evet
+4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | No
+4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | No
+Şeritli disk >4 TB olan konuk/sunucu birimi | Yes
 Mantıksal birim yönetimi (LVM)| Kalın sağlama-Evet <br></br> Ölçülü kaynak sağlama-Hayır
-Konuk/sunucu-depolama alanları | Hayır
-Konuk/sunucu Hot Add/Remove disk | Hayır
-Konuk/sunucu-diski hariç tut | Evet
-Konuk/sunucu çok yollu (MPIO) | Hayır
+Konuk/sunucu-depolama alanları | No
+Konuk/sunucu Hot Add/Remove disk | No
+Konuk/sunucu-diski hariç tut | Yes
+Konuk/sunucu çok yollu (MPIO) | No
 Konuk/sunucu GPT bölümleri | Beş bölüm [güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) (Mobility hizmetinin sürüm 9,25) ve sonraki sürümlerde desteklenir. Daha önce dört destekleniyordu.
 ReFS | Dayanıklı dosya sistemi, Mobility hizmeti sürüm 9,23 veya üzeri sürümlerde desteklenir
-Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için desteklenir, Mobility Aracısı sürüm 9,30 ve sonraki sürümleri içeren SLES 12 SP4 ve RHEL 8,0<br/> -Secure UEFı önyükleme türü desteklenmez. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için desteklenir, Mobility Aracısı sürüm 9,30 ve sonraki sürümleri içeren SLES 12 SP4 ve RHEL 8,0<br/> -Secure UEFı önyükleme türü desteklenmez. [Daha fazla bilgi edinin.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Çoğaltma kanalları
 
 |**Çoğaltma türü**   |**Destek**  |
 |---------|---------|
-|Boşaltılan veri aktarımları (ODX)    |       Hayır  |
-|Çevrimdışı dengeli dağıtım        |   Hayır      |
-| Azure Data Box | Hayır
+|Boşaltılan veri aktarımları (ODX)    |       No  |
+|Çevrimdışı dengeli dağıtım        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure depolama
 
 **Bileşen** | **Destek**
 --- | ---
-Yerel olarak yedekli depolama | Evet
-Coğrafi olarak yedekli depolama | Evet
-Okuma erişimli coğrafi olarak yedekli depolama | Evet
-Seyrek Erişimli Depolama | Hayır
-Sık erişimli depolama| Hayır
-Blok blobları | Hayır
-Bekleyen şifreleme (SSE)| Evet
+Yerel olarak yedekli depolama | Yes
+Coğrafi olarak yedekli depolama | Yes
+Okuma erişimli coğrafi olarak yedekli depolama | Yes
+Seyrek Erişimli Depolama | No
+Sık erişimli depolama| No
+Blok blobları | No
+Bekleyen şifreleme (SSE)| Yes
 Bekleyen şifreleme (CMK)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
-Premium depolama | Evet
-İçeri/dışarı aktarma hizmeti | Hayır
+Premium depolama | Yes
+İçeri/dışarı aktarma hizmeti | No
 Sanal ağlar için Azure Storage güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında yapılandırıldı (çoğaltma verilerini depolamak için kullanılır).
 Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katmanlar) | Evet (v1 ile karşılaştırıldığında v2 için Işlem maliyetleri önemli ölçüde yüksektir)
 
@@ -255,10 +255,10 @@ Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katman
 
 **Özellik** | **Destek**
 --- | ---
-Kullanılabilirlik kümeleri | Evet
-Kullanılabilirlik alanları | Hayır
-HUB | Evet
-Yönetilen diskler | Evet
+Kullanılabilirlik kümeleri | Yes
+Kullanılabilirlik alanları | No
+HUB | Yes
+Yönetilen diskler | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
@@ -280,7 +280,7 @@ VM adı | 1 ile 63 karakter arasında.<br/><br/> Harfler, sayılar ve kısa çiz
 
 ## <a name="resource-group-limits"></a>Kaynak grubu sınırları
 
-Tek bir kaynak grubu altında korunabilecek sanal makinelerin sayısını anlamak için [abonelik limitleri ve kotaları](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)hakkındaki makaleye bakın.
+Tek bir kaynak grubu altında korunabilecek sanal makinelerin sayısını anlamak için [abonelik limitleri ve kotaları](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)hakkındaki makaleye bakın.
 
 ## <a name="churn-limits"></a>Karmaşıklık limitleri
 
@@ -312,10 +312,10 @@ VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 
 **Eylem** | **Destek**
 --- | ---
-Kasayı kaynak grupları arasında taşıma | Hayır
-Kasayı abonelik içinde ve abonelikler arasında taşıma | Hayır
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | Hayır
-Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | Hayır
+Kasayı kaynak grupları arasında taşıma | No
+Kasayı abonelik içinde ve abonelikler arasında taşıma | No
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | No
+Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | No
 
 
 ## <a name="obtain-latest-components"></a>En son bileşenleri edinin

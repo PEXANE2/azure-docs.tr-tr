@@ -3,15 +3,16 @@ title: Azure geçişi 'nde değerlendirme araçları ekleme
 description: Azure geçişi 'nde değerlendirme araçları eklemeyi öğrenin.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195628"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122124"
 ---
 # <a name="add-assessment-tools"></a>Değerlendirme araçları ekleme
 
-Bu makalede, [Azure geçişi](migrate-overview.md)'nde değerlendirme araçlarının nasıl ekleneceği açıklanmaktadır. 
+Bu makalede, [Azure geçişi](./migrate-services-overview.md)'nde değerlendirme araçlarının nasıl ekleneceği açıklanmaktadır. 
 
 - Bir değerlendirme aracı eklemek isterseniz ve henüz bir Azure geçişi projeniz yoksa, bu [makaleye](how-to-add-tool-first-time.md)uyun.
 - Değerlendirme için bir ISV aracı veya Movere eklediyseniz, araçla çalışmaya hazırlanmak için [adımları izleyin](prepare-isv-movere.md).

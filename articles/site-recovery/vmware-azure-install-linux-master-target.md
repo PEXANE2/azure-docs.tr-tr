@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829792"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130139"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükleme
 Sanal makinelerinizin yükünü Azure 'a devretmek için sanal makineleri şirket içi siteye geri alabilirsiniz. Yeniden yük devretmek için sanal makineyi Azure 'dan şirket içi siteye yeniden korumanız gerekir. Bu işlem için, trafiği almak için bir şirket içi ana hedef sunucusuna ihtiyacınız vardır. 
@@ -26,9 +27,9 @@ Korumalı sanal makineniz bir Windows sanal makinedir, bir Windows Ana hedefine 
 ## <a name="overview"></a>Genel Bakış
 Bu makalede bir Linux ana hedefinin nasıl yükleneceğine ilişkin yönergeler sağlanmaktadır.
 
-Bu makalenin sonunda veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)yorum veya soru gönderin.
+Bu makalenin sonunda veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)yorum veya soru gönderin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Ana hedefin dağıtılacağı Konağı seçmek için, yeniden çalışma 'nin mevcut bir şirket içi sanal makineye mı yoksa yeni bir sanal makinede mı olacağını belirleyin. 
     * Mevcut bir sanal makine için, ana hedefin konağın sanal makinenin veri depolarına erişimi olmalıdır.
@@ -36,6 +37,9 @@ Bu makalenin sonunda veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayf
 * Ana hedef, işlem sunucusu ve yapılandırma sunucusu ile iletişim kurabilen bir ağda olmalıdır.
 * Ana hedefin sürümü, işlem sunucusu ve yapılandırma sunucusu sürümlerine eşit veya ondan daha önceki bir sürüme eşit olmalıdır. Örneğin, yapılandırma sunucusunun sürümü 9,4 ise, ana hedefin sürümü 9,4 veya 9,3, ancak 9,5 olamaz.
 * Ana hedef, fiziksel sunucu değil yalnızca bir VMware sanal makinesi olabilir.
+
+> [!NOTE]
+> Ana hedef gibi yönetim bileşenlerinde Depolama vMotion 'ı etkinleştirdiğinizden emin olun. Ana hedef başarılı bir şekilde yeniden korunduktan sonra taşınırsa, sanal makine diskleri (VMDK) ayrılamıyor. Bu durumda yeniden çalışma başarısız olur.
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Ana hedef sunucu oluşturmak için boyutlandırma yönergeleri
 
@@ -273,16 +277,22 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
 > [!NOTE]
 > Ana hedef sunucuyu yüklemeden önce, sanal makinedeki **/etc/hosts** dosyasında, yerel ana bilgisayar adını tüm ağ bağdaştırıcıları Ile ilişkili IP adreslerine eşleyen girişler bulunduğundan emin olun.
 
-1. Yapılandırma sunucusundaki **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.exe** klasöründen parolayı kopyalayın. Sonra, aşağıdaki komutu çalıştırarak aynı yerel dizine **passphrase.txt** olarak kaydedin:
+1. Ana hedefi yüklemek için aşağıdaki komutu çalıştırın.
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. Yapılandırma sunucusundaki **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.exe** klasöründen parolayı kopyalayın. Sonra, aşağıdaki komutu çalıştırarak aynı yerel dizine **passphrase.txt** olarak kaydedin:
 
     `echo <passphrase> >passphrase.txt`
 
     Örnek: 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Yapılandırma sunucusunun IP adresini aklınızda edin. Ana hedef sunucuyu yüklemek ve sunucuyu yapılandırma sunucusuna kaydetmek için aşağıdaki komutu çalıştırın.
+3. Yapılandırma sunucusunun IP adresini aklınızda edin. Sunucuyu yapılandırma sunucusuna kaydetmek için aşağıdaki komutu çalıştırın.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -313,16 +323,10 @@ Yükleme tamamlandıktan sonra, komut satırını kullanarak yapılandırma sunu
 
 1. Yapılandırma sunucusunun IP adresini göz önünde edin. Bunu bir sonraki adımda yapmanız gerekir.
 
-2. Ana hedef sunucuyu yüklemek ve sunucuyu yapılandırma sunucusuna kaydetmek için aşağıdaki komutu çalıştırın.
+2. Sunucuyu yapılandırma sunucusuna kaydetmek için aşağıdaki komutu çalıştırın.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    Örnek: 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      Komut dosyası bitene kadar bekleyin. Ana hedef başarıyla kaydedilmişse, ana hedef portalın **Site Recovery altyapı** sayfasında listelenir.
@@ -347,9 +351,13 @@ Yükleyiciyi çalıştırın. Aracının ana hedefte yüklü olduğunu otomatik 
 
 * Ana hedefin sanal makinede anlık görüntü olmaması gerekir. Anlık görüntüler varsa, yeniden çalışma başarısız olur.
 
-* Bazı özel NIC yapılandırmalarına bağlı olarak, ağ arabirimi başlangıç sırasında devre dışıdır ve ana hedef Aracısı başlatılamaz. Aşağıdaki özelliklerin doğru ayarlandığından emin olun. Bu özellikleri Ethernet kartı dosyasının/Etc/sysconfig/Network-Scripts/ifcfg-ETH * ' de denetleyin.
-    * BOOTPROTO = DHCP
-    * ONBOOT = Evet
+* Bazı özel NIC yapılandırmalarına bağlı olarak, ağ arabirimi başlangıç sırasında devre dışıdır ve ana hedef Aracısı başlatılamaz. Aşağıdaki özelliklerin doğru ayarlandığından emin olun. Bu özellikleri Ethernet kartı dosyasının/etc/Network/ınterfaces' nda kontrol edin.
+    * Auto eth0
+    * IACE eth0 Inet DHCP <br>
+
+    Aşağıdaki komutu kullanarak ağ hizmetini yeniden başlatın: <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

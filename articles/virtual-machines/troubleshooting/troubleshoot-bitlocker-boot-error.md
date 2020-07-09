@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132952"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 'de BitLocker önyükleme hataları
 
@@ -135,11 +136,15 @@ Bu yöntem sorunu çözmezse, BEK dosyasını el ile geri yüklemek için şu ad
 
     - Aşağıdakileri çalıştırarak BitLocker 'ı geçici olarak devre dışı bırakmak için korumayı askıya alın:
 
-                    manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Sürücünün şifresini tamamen çözün. Bunu yapmak için aşağıdaki komutu çalıştırın:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
 
 ### <a name="key-encryption-key-scenario"></a>Anahtar şifreleme anahtarı senaryosu
 
@@ -236,17 +241,17 @@ Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
 
 4. Komut dosyası başladığında aşağıdaki çıktıyı görürsünüz:
 
-        GAC    Version        Location                                                                              
-        ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    GAC sürüm konumu                                                                              
+    ---    -------        --------                                                                              
+    False v 4.0.30319 C:\Program Files\windowspowershell\modules\az.exe \. ..  False v 4.0.30319 C:\Program Files\windowspowershell\modules\az.exe \. ..
 
     Komut dosyası tamamlandığında aşağıdaki çıktıyı görürsünüz:
 
-        VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
-        version=2015-06-01 with -1-byte payload
-        VERBOSE: received 360-byte response of content type application/json; charset=utf-8
-
+    ```output
+    VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
+    version=2015-06-01 with -1-byte payload
+    VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. BEK dosyasını kullanarak ekli diskin kilidini açmak için aşağıdaki komutu çalıştırın:
 
@@ -264,11 +269,16 @@ Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
 
     - Aşağıdaki komutu çalıştırarak BitLocker 'ı geçici olarak devre dışı bırakmak için korumayı askıya alın:
 
-             manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Sürücünün şifresini tamamen çözün. Bunu yapmak için aşağıdaki komutu çalıştırın:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
+
 ## <a name="script-troubleshooting"></a>Betik sorunlarını giderme
 
 **Hata: dosya veya derleme yüklenemedi**

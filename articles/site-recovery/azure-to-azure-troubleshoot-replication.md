@@ -5,15 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196084"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130410"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da çoğaltma sorunlarını giderme
 
-Bu makalede, Azure sanal makinelerini (VM) bir bölgeden başka bir bölgeye çoğaltırken ve kurtarırken Azure Site Recovery karşılaşılan yaygın sorunlar açıklanmaktadır. Ayrıca, yaygın sorunların nasıl giderileceği açıklanmaktadır. Desteklenen konfigürasyonlar hakkında daha fazla bilgi için bkz. [Azure VM 'leri çoğaltmak için destek matrisi](site-recovery-support-matrix-azure-to-azure.md).
+Bu makalede, Azure sanal makinelerini (VM) bir bölgeden başka bir bölgeye çoğaltırken ve kurtarırken Azure Site Recovery karşılaşılan yaygın sorunlar açıklanmaktadır. Ayrıca, yaygın sorunların nasıl giderileceği açıklanmaktadır. Desteklenen konfigürasyonlar hakkında daha fazla bilgi için bkz. [Azure VM 'leri çoğaltmak için destek matrisi](./azure-to-azure-support-matrix.md).
 
 Azure Site Recovery, verileri düzenli olarak kaynak bölgesinden olağanüstü durum kurtarma bölgesine çoğaltır. Ayrıca, 5 dakikada bir çökme ile tutarlı bir kurtarma noktası oluşturur. Site Recovery 60 dakika boyunca kurtarma noktaları oluşturamıyorum, şu bilgilerle sizi uyarır:
 
@@ -77,7 +78,7 @@ Veri değişikliği hızının bir ani artış, zaman zaman veri bloğu aracıl�
 
 Site Recovery, çoğaltılan verileri önbellek depolama hesabına gönderir. Verileri bir sanal makineden önbellek depolama hesabına yüklemek 3 saniye içinde 4 MB 'den yavaşsa ağ gecikmesi yaşayabilirsiniz.
 
-Gecikmeyle ilgili bir sorun olup olmadığını denetlemek için [AzCopy](/azure/storage/common/storage-use-azcopy)kullanın. Sanal makineden önbellek depolama hesabına veri yüklemek için bu komut satırı yardımcı programını kullanabilirsiniz. Gecikme yüksekse, VM 'lerden giden ağ trafiğini denetlemek için bir ağ sanal gereci (NVA) kullanıp kullanmayacağınızı kontrol edin. Tüm çoğaltma trafiği NVA üzerinden geçerse gereç azalmasıyla karşılaşabilirsiniz.
+Gecikmeyle ilgili bir sorun olup olmadığını denetlemek için [AzCopy](../storage/common/storage-use-azcopy-v10.md)kullanın. Sanal makineden önbellek depolama hesabına veri yüklemek için bu komut satırı yardımcı programını kullanabilirsiniz. Gecikme yüksekse, VM 'lerden giden ağ trafiğini denetlemek için bir ağ sanal gereci (NVA) kullanıp kullanmayacağınızı kontrol edin. Tüm çoğaltma trafiği NVA üzerinden geçerse gereç azalmasıyla karşılaşabilirsiniz.
 
 Çoğaltma trafiğinin NVA 'ya gitmemesi için, sanal ağınızda "depolama" için bir ağ hizmeti uç noktası oluşturmanız önerilir. Daha fazla bilgi için bkz. [ağ sanal gereç yapılandırması](azure-to-azure-about-networking.md#network-virtual-appliance-configuration).
 
@@ -107,7 +108,7 @@ En yaygın sorunlardan bazıları aşağıda verilmiştir.
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>Uygulama tutarlılığı Linux sunucularında etkinleştirilmemiş
 
-**Nasıl düzeltilir** : Linux işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve gönderi seçenekleriyle özel betik, uygulama tutarlılığı için Azure Site Recovery Mobility Aracısı tarafından kullanılır. Etkinleştirme adımları [aşağıda](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) verilmiştir.
+**Nasıl düzeltilir** : Linux işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve gönderi seçenekleriyle özel betik, uygulama tutarlılığı için Azure Site Recovery Mobility Aracısı tarafından kullanılır. Etkinleştirme adımları [aşağıda](./site-recovery-faq.md#replication) verilmiştir.
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>VSS ile ilgili sorunlar nedeniyle daha fazla neden:
 

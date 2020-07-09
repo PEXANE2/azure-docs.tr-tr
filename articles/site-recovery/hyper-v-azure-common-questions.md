@@ -3,11 +3,12 @@ title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma için sık s
 description: Bu makalede, şirket içi Hyper-V sanal makineleri için Azure Site Recovery sitesini kullanarak Azure 'a olağanüstü durum kurtarma ayarlama hakkında sık sorulan sorular özetlenmektedir.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195254"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132661"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular - Hyper-V'den Azure'a olağanüstü durum kurtarma
 
@@ -31,17 +32,17 @@ Azure Site Recovery işlemler ağır olduğundan, genellikle GPv2 depolama hesap
 
 Hyper-V ana bilgisayar sunucusu için sahip olmanız gerekenler dağıtım senaryosuna bağlıdır. Aşağıdaki makalelerden Hyper-V önkoşullarını inceleyin:
 
-* [Hyper-V VM'lerini (VMM olmadan) Azure'a çoğaltma](site-recovery-hyper-v-site-to-azure.md)
-* [Hyper-V VM'lerini (VMM ile) Azure'a çoğaltma](site-recovery-vmm-to-azure.md)
-* [Hyper-V sanal makinelerini ikincil veri merkezine çoğaltma](site-recovery-vmm-to-vmm.md)
-* İkincil bir veri merkezine çoğaltma yapıyorsanız, [Hyper-V VM 'leri Için desteklenen konuk işletim sistemleri](https://technet.microsoft.com/library/mt126277.aspx)hakkında bilgi edinin.
-* Azure 'a çoğaltma yapıyorsanız, Site Recovery [Azure tarafından desteklenen](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)tüm konuk işletim sistemlerini destekler.
+* [Hyper-V VM'lerini (VMM olmadan) Azure'a çoğaltma](./hyper-v-azure-tutorial.md)
+* [Hyper-V VM'lerini (VMM ile) Azure'a çoğaltma](./hyper-v-vmm-disaster-recovery.md)
+* [Hyper-V sanal makinelerini ikincil veri merkezine çoğaltma](./hyper-v-vmm-disaster-recovery.md)
+* İkincil bir veri merkezine çoğaltma yapıyorsanız, [Hyper-V VM 'leri Için desteklenen konuk işletim sistemleri](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/mt126277(v=ws.11))hakkında bilgi edinin.
+* Azure 'a çoğaltma yapıyorsanız, Site Recovery [Azure tarafından desteklenen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))tüm konuk işletim sistemlerini destekler.
 
 ### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>Hyper-V bir istemci işletim sisteminde çalışırken VM 'Leri koruyabilir miyim?
-Hayır, VM'lerin desteklenen bir Windows sunucusu makinesinde çalışan Hyper-V ana bilgisayar sunucusunda bulunması gerekir. Bir istemci bilgisayarı korumanız gerekiyorsa, bunu [Azure](site-recovery-vmware-to-azure.md) 'a veya [ikincil veri merkezine](site-recovery-vmware-to-vmware.md)fiziksel bir makine olarak çoğaltabilirsiniz.
+Hayır, VM'lerin desteklenen bir Windows sunucusu makinesinde çalışan Hyper-V ana bilgisayar sunucusunda bulunması gerekir. Bir istemci bilgisayarı korumanız gerekiyorsa, bunu [Azure](./vmware-azure-tutorial.md) 'a veya [ikincil veri merkezine](./vmware-physical-secondary-disaster-recovery.md)fiziksel bir makine olarak çoğaltabilirsiniz.
 
 ### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Hyper-V konaklarının VMM bulutlarında olması gerekir mi?
-İkincil bir veri merkezine çoğaltmak istiyorsanız, Hyper-V VM 'lerinin VMM bulutundaki Hyper-V konakları sunucularında olması gerekir. Azure 'a çoğaltmak istiyorsanız VM 'Leri VMM bulutları ile veya olmayan bir şekilde çoğaltabilirsiniz. Azure 'da Hyper-V çoğaltma hakkında [daha fazla bilgi edinin](tutorial-hyper-v-to-azure.md) .
+İkincil bir veri merkezine çoğaltmak istiyorsanız, Hyper-V VM 'lerinin VMM bulutundaki Hyper-V konakları sunucularında olması gerekir. Azure 'a çoğaltmak istiyorsanız VM 'Leri VMM bulutları ile veya olmayan bir şekilde çoğaltabilirsiniz. Azure 'da Hyper-V çoğaltma hakkında [daha fazla bilgi edinin](./hyper-v-azure-tutorial.md) .
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Hyper-V 2.nesil sanal makinelerini Azure'a çoğaltabilir miyim?
@@ -70,7 +71,7 @@ Site Recovery ISO 27001:2013, 27018, HIPAA, DPA sertifikalı ve SOC2 ve Fedrajab
 Evet. Bir bölgede kasa oluşturduğunuzda, Site Recovery tarafından kullanılan tüm meta verilerin bu bölgenin coğrafi sınırında kalmasını sağlamaktır.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery çoğaltma işlemini şifreleyebilir mi?
-Evet, hem [Azure 'da](https://docs.microsoft.com/azure/storage/storage-service-encryption) hem de aktarım sırasında şifreleme desteklenir.
+Evet, hem [Azure 'da](../storage/common/storage-service-encryption.md) hem de aktarım sırasında şifreleme desteklenir.
 
 
 ## <a name="deployment"></a>Dağıtım

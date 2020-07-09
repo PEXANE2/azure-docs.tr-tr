@@ -3,11 +3,12 @@ title: Azure geçişi için Hyper-V geçişi desteği
 description: Azure geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5dd2ae134e57fc8c719a27c25ddc58e769367065
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ea7d139b3d3cc8c14e43ccfb7c233fcbe4c564c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122073"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V geçişi için destek matrisi
 
@@ -32,7 +33,7 @@ Bu makalede, Hyper-V VM 'lerini Azure geçişi ile geçirmeye yönelik destek ay
 
 | **Destek**                  | **Ayrıntılar**               
 | :----------------------------- | :------------------- |
-| **İşletim sistemi** | Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri. |
+| **İşletim sistemi** | Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](../virtual-machines/linux/endorsed-distros.md) işletim sistemleri. |
 **Windows Server 2003** | Windows Server 2003 çalıştıran VM 'Ler için, geçişten önce [Hyper-V tümleştirme hizmetlerini yüklemeniz](prepare-windows-server-2003-migration.md) gerekir. | 
 **Azure 'da Linux VM 'Leri** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir.<br/><br/> Linux için Azure geçişi, değişiklikleri bu işletim sistemleri için otomatik olarak yapar:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Detem 7, 8. Diğer işletim sistemleri için [gerekli değişiklikleri](prepare-for-migration.md#linux-machines) el ile yaparsınız.
 | **Azure için gereken değişiklikler** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir. Geçişten önce ayarları el ile yapın. İlgili makaleler, bunun nasıl yapılacağı hakkında yönergeler içerir. |

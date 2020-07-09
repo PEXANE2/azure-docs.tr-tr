@@ -7,19 +7,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826290"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130133"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Kurtarma planına VMM betiği ekleme
 
 Bu makalede, bir System Center Virtual Machine Manager (VMM) komut dosyasının nasıl oluşturulacağı ve [Azure Site Recovery](site-recovery-overview.md)bir kurtarma planına nasıl ekleneceği açıklanmaktadır.
 
-Bu makalenin alt kısmında veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)herhangi bir yorum veya soru gönderin.
+Bu makalenin alt kısmında veya [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)herhangi bir yorum veya soru gönderin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planından erişilebilmesi için betiği yazıp VMM kitaplığına yerleştirmeniz gerekir. Betiği yazarken aşağıdaki noktaları göz önünde bulundurun:
 
@@ -37,7 +38,7 @@ Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planı
 
     `Import-Module -Name virtualmachinemanager`
 
-    Daha fazla bilgi için bkz. [Windows PowerShell ve VMM ile çalışmaya başlama](https://technet.microsoft.com/library/hh875013.aspx).
+    Daha fazla bilgi için bkz. [Windows PowerShell ve VMM ile çalışmaya başlama](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12)).
 * VMM dağıtımınızda en az bir kitaplık sunucusuna sahip olduğunuzdan emin olun. Varsayılan olarak, VMM sunucusunun kitaplık paylaşma yolu VMM sunucusunda yerel olarak bulunur. Klasör adı MSCVMMLibrary ' dir.
 
   Kitaplık paylaşım yolunuz uzak ise (veya yerel ise ve MSCVMMLibrary ile paylaşılmışsa), \\ libserver2. contoso. com\share\ kullanarak bir örnek olarak, aşağıdaki gibi bir paylaşım yapılandırın:
@@ -50,7 +51,7 @@ Kurtarma planlarınızda PowerShell betikleri kullanabilirsiniz. Kurtarma planı
 
      a. Yönetici olarak **64-bit Windows PowerShell** konsolunu açın.
      
-     b. **Set-executionpolicy bypass**girin. Daha fazla bilgi için bkz. [set-ExecutionPolicy cmdlet 'Ini kullanma](https://technet.microsoft.com/library/ee176961.aspx).
+     b. **Set-executionpolicy bypass**girin. Daha fazla bilgi için bkz. [set-ExecutionPolicy cmdlet 'Ini kullanma](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
 
      > [!IMPORTANT]
      > **Set-executionpolicy bypass** yalnızca 64-bit PowerShell konsolunda ayarlanır. Bunu 32-bit PowerShell konsolu için ayarlarsanız betikler çalıştırılmaz.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81409762"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131787"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM 'Leri/fiziksel sunucular için ölçekte olağanüstü durum kurtarmayı ayarlama
 
@@ -85,7 +85,7 @@ Hedef abonelikteki kullanılabilir kotaların yük devretmeyi işlemek için yet
 
 **Görev** | **Ayrıntılar** | **Eylem**
 --- | --- | ---
-**Çekirdekleri denetleyin** | Kullanılabilir kotanın çekirdekleri, yük devretme sırasında toplam hedef sayısına eşit veya daha fazla değilse yük devretme başarısız olur. | VMware VM 'Leri için, hedef abonelikte Dağıtım Planlayıcısı temel öneriyi karşılamak üzere yeterince çekirdeğe sahip olup olmadığınızı denetleyin.<br/><br/> Fiziksel sunucular için Azure çekirdekleri el ile tahminleri karşıladığından emin olun.<br/><br/> Kotaları denetlemek için, Azure portal > **abonelikte**, **kullanım + kotalar**' a tıklayın.<br/><br/> Kotaları artırma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
+**Çekirdekleri denetleyin** | Kullanılabilir kotanın çekirdekleri, yük devretme sırasında toplam hedef sayısına eşit veya daha fazla değilse yük devretme başarısız olur. | VMware VM 'Leri için, hedef abonelikte Dağıtım Planlayıcısı temel öneriyi karşılamak üzere yeterince çekirdeğe sahip olup olmadığınızı denetleyin.<br/><br/> Fiziksel sunucular için Azure çekirdekleri el ile tahminleri karşıladığından emin olun.<br/><br/> Kotaları denetlemek için, Azure portal > **abonelikte**, **kullanım + kotalar**' a tıklayın.<br/><br/> Kotaları artırma hakkında [daha fazla bilgi edinin](../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 **Yük devretme sınırlarını denetle** | Yük devretme sayısı Site Recovery yük devretme sınırlarını aşamaz. |  Yük devretme işlemleri sınırları aşarsa, abonelikler ekleyebilir, birden fazla aboneliğe yük devreedebilir veya bir abonelik için kotayı artırabilirsiniz. 
 
 
@@ -188,7 +188,7 @@ Kapasiteyi planlayıp ve gerekli bileşen ve altyapıyı dağıttıktan sonra, �
 1. Çoğaltılan makinelerin sistem durumunu izlemek için bir olağanüstü durum kurtarma Yöneticisi atayın.
 2. Çoğaltılan öğeler ve altyapı için [olayları izleyin](site-recovery-monitor-and-troubleshoot.md) .
 3. Genişleme işlem sunucularınızın [sistem durumunu izleyin](vmware-physical-azure-monitor-process-server.md) .
-4. Daha kolay izleme amacıyla olaylara yönelik [e-posta bildirimleri](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) almak için kaydolun.
+4. Daha kolay izleme amacıyla olaylara yönelik [e-posta bildirimleri](./site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications) almak için kaydolun.
 5. Her şeyin beklendiği gibi çalıştığından emin olmak için düzenli [olağanüstü durum kurtarma detaylarını](site-recovery-test-failover-to-azure.md)yürütün.
 
 
@@ -214,7 +214,7 @@ Büyük ölçekli yük devretme çalıştırmak için şunları öneririz:
     - Kurtarma planları hakkında [daha fazla bilgi edinin](recovery-plan-overview.md) .
 2. Azure 'daki tüm el ile görevleri otomatikleştirmek için kurtarma planlarına Azure Otomasyonu runbook betikleri ekleyin. Tipik görevler yük dengeleyicileri yapılandırmayı, DNS 'yi güncellemeyi içerir. [Daha fazla bilgi edinin](site-recovery-runbook-automation.md)
 2. Yük devretmeden önce, Windows makinelerini Azure ortamıyla uyumlu olacak şekilde hazırlayın. Uyumlu olan makineler için [Yük devretme limitleri](#plan-azure-subscriptions-and-quotas) daha yüksektir. Runbook 'lar hakkında [daha fazla bilgi edinin](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) .
-4.  Bir kurtarma planıyla birlikte [Start-AzRecoveryServicesAsrPlannedFailoverJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell cmdlet 'i ile yük devretmeyi tetikleyin.
+4.  Bir kurtarma planıyla birlikte [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell cmdlet 'i ile yük devretmeyi tetikleyin.
 
 
 

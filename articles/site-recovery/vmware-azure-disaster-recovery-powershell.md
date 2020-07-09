@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704395"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129904"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell ile Azure 'da VMware VM 'lerinin olağanüstü durum kurtarması ayarlama
 
@@ -30,12 +31,12 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
 - [Senaryo mimarisini ve bileşenlerini ](vmware-azure-architecture.md) anladığınızdan emin olun.
-- Tüm bileşenler için [destek gereksinimlerini](site-recovery-support-matrix-to-azure.md) gözden geçirin.
+- Tüm bileşenler için [destek gereksinimlerini](./vmware-physical-azure-support-matrix.md) gözden geçirin.
 - Azure PowerShell `Az` modüle sahipsiniz. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps)izleyin.
 
 ## <a name="log-into-azure"></a>Azure'da oturum açın
@@ -496,4 +497,4 @@ Bu adımda, Win2K12VM1 sanal makinesini belirli bir kurtarma noktasına devreder
 2. Başarılı bir şekilde yük devretmek için yük devretme işlemini gerçekleştirebilir ve Azure 'dan şirket içi VMware sitesine ters çoğaltma ayarlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Site Recovery PowerShell başvurusunu](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)kullanarak daha fazla görevi otomatikleştirmeyi öğrenin.
+[Azure Site Recovery PowerShell başvurusunu](/powershell/module/Az.RecoveryServices)kullanarak daha fazla görevi otomatikleştirmeyi öğrenin.

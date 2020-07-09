@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: 58348c9aed14a5cc9126be780fe01817274a0b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80283268"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131393"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -124,6 +124,6 @@ VM 'lerden giden ağ trafiğini denetlemek için ağ sanal gereçlerini (NVA 'la
 [Özel bir rota](../virtual-network/virtual-networks-udr-overview.md#custom-routes) ile 0.0.0.0/0 adres ön eki için Azure 'un varsayılan sistem yolunu geçersiz KıLABILIR ve VM trafiğini şirket içi ağ sanal gerecine (NVA) yönlendirebilirsiniz, ancak bu yapılandırma Site Recovery çoğaltma için önerilmez. Özel yollar kullanıyorsanız, çoğaltma trafiğinin Azure sınırından ayrılmaması için sanal ağınızda "depolama" için [bir sanal ağ hizmet uç noktası oluşturmanız](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure sanal makinelerini çoğaltarak](site-recovery-azure-to-azure.md)iş yüklerinizi korumaya başlayın.
+- [Azure sanal makinelerini çoğaltarak](./azure-to-azure-quickstart.md)iş yüklerinizi korumaya başlayın.
 - Azure sanal makine yük devretmesi için [IP adresi saklama](site-recovery-retain-ip-azure-vm-failover.md) hakkında daha fazla bilgi edinin.
 - [ExpressRoute Ile Azure sanal makinelerinin](azure-vm-disaster-recovery-with-expressroute.md)olağanüstü durum kurtarması hakkında daha fazla bilgi edinin.

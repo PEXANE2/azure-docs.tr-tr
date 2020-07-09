@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478974"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132492"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
@@ -35,8 +35,8 @@ Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önk
 | İşletim sistemi yerel ayarı | İngilizce (ABD)|
 | VMware vSphere PowerCLI sürümü | Gerekli değil|
 | Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V |
-| Grup ilkeleri| Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelle <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelle <br> -Dosya ekleri için güven mantığı <br> -Betik yürütmeyi aç <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | -Önceden var olan varsayılan Web sitesi yok <br> - [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir  <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor<br>|
+| Grup ilkeleri| Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelle <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelle <br> -Dosya ekleri için güven mantığı <br> -Betik yürütmeyi aç <br> [Daha fazla bilgi edinin](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | -Önceden var olan varsayılan Web sitesi yok <br> - [Anonim kimlik doğrulamasını](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) etkinleştir <br> - [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) ayarını etkinleştir  <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor<br>|
 | NIC türü | VMXNET3 (bir VMware sanal makinesi olarak dağıtıldığında) |
 | IP adresi türü | Statik |
 | İnternet erişimi | Sunucunun bu URL 'Lere erişmesi gerekir: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(genişleme Işlem sunucuları için gerekli değildir) <br> - time.nist.gov <br> - time.windows.com |
@@ -217,7 +217,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 
 ## <a name="upgrade-a-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
-Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örnek:
+Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örneğin:
 
 - 9,7, 9,8, 9,9 veya 9,10 çalıştırıyorsanız, doğrudan 9,11 'e yükseltebilirsiniz.
 - 9,6 veya önceki bir sürümünü çalıştırıyorsanız ve 9,11 sürümüne yükseltmek istiyorsanız, önce sürüm 9,7 ' ye yükseltmeniz gerekir. 9,11 öncesi.
@@ -267,7 +267,7 @@ Sunucuyu aşağıdaki gibi yükseltin:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Yapılandırma sunucusunu silme veya kaydını kaldırma (PowerShell)
 
-1. [Yüklemesi](https://docs.microsoft.com/powershell/azure/install-Az-ps) Azure PowerShell modülü
+1. [Yüklemesi](/powershell/azure/install-Az-ps) Azure PowerShell modülü
 2. Komutunu kullanarak Azure hesabınızda oturum açın
     
     `Connect-AzAccount`
@@ -315,5 +315,4 @@ Yapılandırma sunucusunda, Mobility hizmetinin, işlem sunucularının ve buna 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Fiziksel sunucuları](tutorial-physical-to-azure.md) Azure 'a olağanüstü durum kurtarmayı ayarlamaya yönelik öğreticileri gözden geçirin.
-
+[Fiziksel sunucuları](./physical-azure-disaster-recovery.md) Azure 'a olağanüstü durum kurtarmayı ayarlamaya yönelik öğreticileri gözden geçirin.

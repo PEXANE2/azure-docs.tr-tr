@@ -1,18 +1,18 @@
 ---
 title: Ölçülen faturalandırma için anomali algılama hizmeti-Microsoft Azure Market
 description: Anomali algılamanın nasıl çalıştığını, bildirimlerin ne zaman gönderileceğini ve bunlarla ne yapılacağını açıklar ve destek seçenekleri.
-author: anbene
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 06/10/2020
-ms.openlocfilehash: b83b6fc0da6a8b2016676d7fb748fc87880868f3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964575"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122039"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Ölçülen faturalandırma için anomali algılama hizmeti
 

@@ -9,11 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa6e3edf2c02cad34cbe9b1f9ac82517823caa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891462"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130562"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service için bir Windows Java uygulaması yapılandırma
 
@@ -321,7 +322,7 @@ Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak �
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Önemli güvenlik açıklarına yönelik düzeltme ekleri ve düzeltmeler Azul sistemlerinden kullanılabilir hale geldiğinde serbest bırakılır. "Ana" güvenlik açığı, [NIST ortak güvenlik açığı Puanlama sistemi, sürüm 2](https://nvd.nist.gov/cvss.cfm)üzerinde 9,0 veya üzeri bir taban puanı tarafından tanımlanır.
+Önemli güvenlik açıklarına yönelik düzeltme ekleri ve düzeltmeler Azul sistemlerinden kullanılabilir hale geldiğinde serbest bırakılır. "Ana" güvenlik açığı, [NIST ortak güvenlik açığı Puanlama sistemi, sürüm 2](https://nvd.nist.gov/vuln-metrics/cvss)üzerinde 9,0 veya üzeri bir taban puanı tarafından tanımlanır.
 
 Tomcat 8,0 [, 30 eylül 2018 Itibariyle yaşam sonuna (EOL)](https://tomcat.apache.org/tomcat-80-eol.html)ulaştı. Çalışma zamanı Azure App Service devam ederken, Azure, Tomcat 8,0 güvenlik güncelleştirmelerini uygulamacaktır. Mümkünse, uygulamalarınızı Tomcat 8,5 veya 9,0 ' ye geçirin. Azure App Service hem Tomcat 8,5 hem de 9,0 kullanılabilir. Daha fazla bilgi için [resmi Tomcat sitesine](https://tomcat.apache.org/whichversion.html) bakın. 
 

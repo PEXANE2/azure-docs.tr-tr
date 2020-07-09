@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954599"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129896"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure 'da şirket içi olağanüstü durum kurtarma için VM ağ arabirimlerini yönetme
 
@@ -25,7 +26,7 @@ Azure Site Recovery, varsayılan olarak, Azure sanal makinesinde şirket içi su
 
 ## <a name="select-the-target-network"></a>Hedef ağı seçin
 
-VMware ve fiziksel makineler için ve Hyper-V (System Center Virtual Machine Manager olmadan) sanal makineler için, hedef sanal ağı ayrı sanal makineler için belirtebilirsiniz. Virtual Machine Manager ile yönetilen Hyper-V sanal makineleri için, bir kaynak Virtual Machine Manager sunucusundaki VM ağlarını eşlemek ve Azure ağlarını hedeflemek için [ağ eşleme](site-recovery-network-mapping.md) kullanın.
+VMware ve fiziksel makineler için ve Hyper-V (System Center Virtual Machine Manager olmadan) sanal makineler için, hedef sanal ağı ayrı sanal makineler için belirtebilirsiniz. Virtual Machine Manager ile yönetilen Hyper-V sanal makineleri için, bir kaynak Virtual Machine Manager sunucusundaki VM ağlarını eşlemek ve Azure ağlarını hedeflemek için [ağ eşleme](./hyper-v-vmm-network-mapping.md) kullanın.
 
 1. Kurtarma Hizmetleri kasasındaki **çoğaltılan öğeler** altında, çoğaltılan öğenin ayarlarına erişmek için çoğaltılan öğeleri seçin.
 

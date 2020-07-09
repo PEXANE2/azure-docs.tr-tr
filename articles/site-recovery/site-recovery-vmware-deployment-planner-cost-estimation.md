@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132197"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Dağıtım Planlayıcısı maliyet tahminleri gözden geçirin 
 
@@ -161,4 +162,4 @@ Azure Site Recovery Dağıtım Planlayıcısı aşağıdaki para birimlerinin t�
 |TRY|Türk Lirası (TL)||USD| ABD Doları ($)||ZAR|Güney Afrika Randı (R)|
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Site Recovery kullanarak VMware VM'lerden Azure'a dağıtımı](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure) koruma hakkında daha fazla bilgi edinin.
+[Azure Site Recovery kullanarak VMware VM'lerden Azure'a dağıtımı](./vmware-azure-tutorial.md) koruma hakkında daha fazla bilgi edinin.

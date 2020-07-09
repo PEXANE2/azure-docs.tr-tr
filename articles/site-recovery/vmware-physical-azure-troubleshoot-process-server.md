@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131985"
 ---
 # <a name="troubleshoot-the-process-server"></a>İşlem sunucusunda sorun giderme
 
@@ -95,7 +96,7 @@ Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine) dışındaki tüm hizme
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>4. Adım: kaynak makinedeki zaman eşitlemesini doğrulama
 
-Çoğaltılan makinenin sistem tarihinin/saatinin eşitlenmiş olduğundan emin olun. [Daha fazla bilgi](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+Çoğaltılan makinenin sistem tarihinin/saatinin eşitlenmiş olduğundan emin olun. [Daha fazla bilgi](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5. Adım: kaynak makinedeki Anti-Virus yazılımını denetleme
 
@@ -104,7 +105,7 @@ Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine) dışındaki tüm hizme
 ## <a name="step-6-check-connectivity-from-source-machine"></a>6. Adım: kaynak makineden bağlantıyı denetleme
 
 
-1. Gerekirse, [Telnet istemcisini](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) kaynak makineye yükleyebilirsiniz. Ping kullanmayın.
+1. Gerekirse, [Telnet istemcisini](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10)) kaynak makineye yükleyebilirsiniz. Ping kullanmayın.
 2. Kaynak makineden, HTTPS bağlantı noktasındaki işlem sunucusuna Telnet ile ping gönderin. Varsayılan olarak 9443, çoğaltma trafiği için HTTPS bağlantı noktasıdır.
 
     `telnet <process server IP address> <port>`
@@ -245,7 +246,7 @@ Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)sorunuzu gönderin. 
+Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)sorunuzu gönderin. 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

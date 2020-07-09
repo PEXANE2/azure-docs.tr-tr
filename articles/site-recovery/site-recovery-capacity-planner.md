@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73936039"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129961"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM olağanüstü durum kurtarma için kapasiteyi planlayın 
 
@@ -38,7 +39,7 @@ Aracı iki modda çalıştırabilirsiniz:
 ## <a name="before-you-start"></a>Başlamadan önce
 
 * Sanal makineler, VM başına diskler, disk başına depolama alanı dahil olmak üzere, ortamınız hakkında bilgi toplayın.
-* Çoğaltılan veriler için günlük değişiklik (karmaşıklık) hızınızı belirler. Değişiklik hızını almak için [Hyper-V kapasite planlama aracı](https://www.microsoft.com/download/details.aspx?id=39057) 'nı indirin. Bu araç hakkında [daha fazla bilgi edinin](site-recovery-capacity-planning-for-hyper-v-replication.md). Ortalamaları yakalamak için bu aracı bir hafta boyunca çalıştırmanızı öneririz.
+* Çoğaltılan veriler için günlük değişiklik (karmaşıklık) hızınızı belirler. Değişiklik hızını almak için [Hyper-V kapasite planlama aracı](https://www.microsoft.com/download/details.aspx?id=39057) 'nı indirin. Bu araç hakkında [daha fazla bilgi edinin](./hyper-v-deployment-planner-overview.md). Ortalamaları yakalamak için bu aracı bir hafta boyunca çalıştırmanızı öneririz.
 
 
 ## <a name="run-the-quick-planner"></a>Hızlı planlayıcısı çalıştırın
@@ -52,7 +53,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
    a. **Senaryonuzu seçin**bölümünde **Azure 'A Hyper-V** veya Azure için **VMware/fiziksel**' i seçin.
 
-   b. **Günlük ortalama veri değişim oranı (%)** Içinde, [Hyper-V kapasite planlama aracı](site-recovery-capacity-planning-for-hyper-v-replication.md) 'nı veya [Site Recovery dağıtım planlayıcısı](./site-recovery-deployment-planner.md)kullanarak topladığınız bilgileri girin.
+   b. **Günlük ortalama veri değişim oranı (%)** Içinde, [Hyper-V kapasite planlama aracı](./hyper-v-deployment-planner-overview.md) 'nı veya [Site Recovery dağıtım planlayıcısı](./site-recovery-deployment-planner.md)kullanarak topladığınız bilgileri girin.
 
    c. **Sıkıştırma** ayarı, Hyper-V VM 'lerini Azure 'a çoğalttığınızda kullanılmaz. Sıkıştırma için, bir üçüncü taraf gereç kullanın, örneğin, Riveryatak.
 
@@ -146,4 +147,4 @@ Tüm bilgiler girildikten sonra Capacity Planner açmak için **planlayıcısı 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kapasite planlama aracının [nasıl çalıştırılacağını öğrenin](site-recovery-capacity-planning-for-hyper-v-replication.md) .
+Kapasite planlama aracının [nasıl çalıştırılacağını öğrenin](./hyper-v-deployment-planner-overview.md) .

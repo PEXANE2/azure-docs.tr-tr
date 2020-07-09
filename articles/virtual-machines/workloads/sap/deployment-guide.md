@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361396"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133157"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -211,6 +211,7 @@ ms.locfileid: "85361396"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Azure depolama hesapları arasında diskleri kopyalama)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP dağıtımları için VM/VHD yapısı)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (İliştirilmiş diskler için otomatik bağlama ayarlama)
+[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (SAP için Azure Izleme çözümü)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -323,7 +324,7 @@ Azure sanal makineleri, işlem ve depolama kaynakları, en kısa sürede ve uzun
 
 Bu makalede, farklı dağıtım seçenekleri ve sorun giderme dahil olmak üzere Azure 'daki sanal makinelerde (VM) SAP uygulamaları dağıtma adımları ele alınmaktadır. Bu makalede, [SAP NetWeaver için planlama ve uygulama Için Azure sanal makineler][planning-guide]'de bilgi oluşturulur. Ayrıca SAP yazılım yükleme ve dağıtmaya yönelik birincil kaynaklar olan SAP yükleme belgelerini ve SAP notlarını da tamamlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -913,7 +914,7 @@ Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı
 > Genel destek beyanı: SAP için Azure uzantısı için desteğe ihtiyacınız varsa lütfen her zaman Windows için bileşen BC-OP-NT-AZR ' de bir olay açın veya BC-OP-LNX-AZR.
 > Ortak müşterilerimize yardımcı olmak üzere SAP destek sisteminde çalışan adanmış Microsoft destek mühendisleri vardır.
 
-VM 'yi [Azure 'DA SAP Için VM 'Lerin dağıtım senaryolarında][deployment-guide-3]açıklandığı şekilde hazırladığınızda, Azure VM Aracısı sanal makineye yüklenir. Sonraki adım, genel Azure veri merkezlerinde Azure uzantı deposunda bulunan SAP için Azure uzantısını dağıtmaktır. Daha fazla bilgi için bkz. [SAP NetWeaver için Azure sanal makineleri planlama ve uygulama] [Planlama-Kılavuzu-9,1].
+VM 'yi [Azure 'DA SAP Için VM 'Lerin dağıtım senaryolarında][deployment-guide-3]açıklandığı şekilde hazırladığınızda, Azure VM Aracısı sanal makineye yüklenir. Sonraki adım, genel Azure veri merkezlerinde Azure uzantı deposunda bulunan SAP için Azure uzantısını dağıtmaktır. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama][planning-guide-9.1].
 
 SAP için Azure uzantısının yeni bir sürümünü serbest bırakma sürecimiz. Yeni uzantı, eklenen diskler, ağ arabirimleri ve sanal makinenin kendisi hakkında bilgi almak için sanal makinenin sistem tarafından atanan kimliğini kullanır. Bu kaynaklara erişebilmek için sanal makinenin sistem kimliğinin, sanal makine, işletim sistemi diski, veri diskleri ve ağ arabirimleri için okuyucu izni olması gerekir. Şu anda yalnızca yeni uzantıyı aşağıdaki senaryolarda yüklemeyi öneriyoruz:
 

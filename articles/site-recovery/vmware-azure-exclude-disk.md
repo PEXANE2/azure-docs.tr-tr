@@ -6,11 +6,12 @@ manager: rochakm
 ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cd54da5ee01206e576157435135065189bfb8035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75495358"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129869"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Diskleri VMware VM çoğaltmasıyla Azure 'a dışlama
 
@@ -41,7 +42,7 @@ Diskleri çoğaltmadan hariç tutmak için:
 
 ## <a name="exclude-disks-from-replication"></a>Diskleri çoğaltmanın dışında tutma
 
-1. Bir VMware sanal makinesi için [çoğaltmayı etkinleştirdiğinizde](site-recovery-hyper-v-site-to-azure.md) , çoğaltmak istediğiniz VM 'leri seçtikten sonra, **çoğaltma**  >  **özelliklerini**  >  **Yapılandır Özellikler** sayfasında, sütunu **çoğaltmak için diskleri** gözden geçirin. Varsayılan olarak, tüm diskler çoğaltma için seçilir.
+1. Bir VMware sanal makinesi için [çoğaltmayı etkinleştirdiğinizde](./hyper-v-azure-tutorial.md) , çoğaltmak istediğiniz VM 'leri seçtikten sonra, **çoğaltma**  >  **özelliklerini**  >  **Yapılandır Özellikler** sayfasında, sütunu **çoğaltmak için diskleri** gözden geçirin. Varsayılan olarak, tüm diskler çoğaltma için seçilir.
 2. Belirli bir diski çoğaltmak istemiyorsanız, **diskler** ' de dışlamak istediğiniz disklerin seçimini temizleyin. 
 
     ![Diskleri çoğaltmanın dışında tutma](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)

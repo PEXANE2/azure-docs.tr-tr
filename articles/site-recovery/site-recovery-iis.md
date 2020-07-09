@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478297"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131332"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Çok katmanlı bir IIS tabanlı Web uygulaması için olağanüstü durum kurtarmayı ayarlama
 
@@ -31,7 +31,7 @@ Bu makalede [Azure Site Recovery](site-recovery-overview.md)kullanarak Internet 
 Başlamadan önce, aşağıdaki görevleri nasıl yapabileceğinizi öğrendiğinizden emin olun:
 
 * [Bir sanal makineyi Azure 'a çoğaltma](vmware-azure-tutorial.md)
-* [Kurtarma ağını tasarlama](site-recovery-network-design.md)
+* [Kurtarma ağını tasarlama](./concepts-on-premises-to-azure-networking.md)
 * [Azure 'a yük devretme testi yapın](site-recovery-test-failover-to-azure.md)
 * [Azure 'a yük devretme](site-recovery-failover.md)
 * [Bir etki alanı denetleyicisini çoğaltma](site-recovery-active-directory.md)
@@ -92,7 +92,7 @@ Daha fazla bilgi için bkz. [Kurtarma planını özelleştirme](site-recovery-ru
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>Kurtarma planına bir komut dosyası ekleyin
-IIS Web grubunun düzgün çalışması için, Azure sanal makinelerinde yük devretme sonrası veya yük devretme testi sırasında bazı işlemler yapmanız gerekebilir. Bazı yük devretme sonrası işlemleri otomatik hale getirebilirsiniz. Örneğin, DNS girişini güncelleştirebilir, bir site bağlamasını değiştirebilir veya ilgili betikleri kurtarma planına ekleyerek bir bağlantı dizesini değiştirebilirsiniz. Bir [Kurtarma PLANıNA VMM betiği ekleme](site-recovery-how-to-add-vmmscript.md) bir betiği kullanarak otomatikleştirilmiş görevlerin nasıl ayarlanacağını açıklar.
+IIS Web grubunun düzgün çalışması için, Azure sanal makinelerinde yük devretme sonrası veya yük devretme testi sırasında bazı işlemler yapmanız gerekebilir. Bazı yük devretme sonrası işlemleri otomatik hale getirebilirsiniz. Örneğin, DNS girişini güncelleştirebilir, bir site bağlamasını değiştirebilir veya ilgili betikleri kurtarma planına ekleyerek bir bağlantı dizesini değiştirebilirsiniz. Bir [Kurtarma PLANıNA VMM betiği ekleme](./hyper-v-vmm-recovery-script.md) bir betiği kullanarak otomatikleştirilmiş görevlerin nasıl ayarlanacağını açıklar.
 
 #### <a name="dns-update"></a>DNS güncelleştirmesi
 DNS dinamik DNS güncelleştirmesi için yapılandırılmışsa, sanal makineler genellikle DNS 'yi yeni IP adresiyle güncelleştirir. DNS 'yi sanal makinelerin yeni IP adresleriyle güncelleştirmek üzere açık bir adım eklemek istiyorsanız, DNS 'deki IP 'yi kurtarma planı gruplarında yük devretme sonrası eylem olarak [güncelleştirmek üzere bir komut dosyası](https://aka.ms/asr-dns-update) ekleyin.  

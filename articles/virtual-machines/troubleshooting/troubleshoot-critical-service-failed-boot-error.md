@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921462"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129864"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekranda "KRITIK HIZMET başarısız oldu" olarak gösterilir
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz "KRITIK HIZMET başarısız oldu" hatası açıklanır. Sorunları gidermeye yardımcı olmak için sorun giderme adımları sağlar. 
@@ -83,11 +84,15 @@ Döküm günlüklerini ve seri konsolunu etkinleştirmek için aşağıdaki beti
 
 1. Kurtarma VM 'sinde, yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırın. Bu komut, etkilenen işletim sistemi diskini bir sonraki önyüklemede güvenli moda başlayacak şekilde ayarlar:
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     Örneğin, eklediğiniz işletim sistemi diski F sürücüsündeyse aşağıdaki komutu çalıştırın:
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden ekleyin](troubleshoot-recovery-disks-portal-windows.md). VM, güvenli modda önyüklenir. Yine de hatayla karşılaşırsanız isteğe bağlı adıma gidin.
 3. **Çalıştır** kutusunu açın ve Sürücü Doğrulayıcı Yöneticisi aracını başlatmak için **doğrulayıcıyı** çalıştırın.
@@ -97,7 +102,10 @@ Döküm günlüklerini ve seri konsolunu etkinleştirmek için aşağıdaki beti
 
 7. Güvenli Önyükleme ayarlarını kaldırın:
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  VM’yi yeniden başlatın. 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>İsteğe bağlı: döküm kilitlenme modunda döküm günlüklerini çözümleyin

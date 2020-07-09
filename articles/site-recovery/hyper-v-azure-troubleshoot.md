@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195268"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132438"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V’den Azure’a çoğaltma ve yük devretmeye ilişkin sorunları giderme
 
@@ -27,12 +28,12 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
 3. Hyper-v sanal makine yönetimi hizmetinin Hyper-V konaklarında çalışıp çalışmadığını denetleyin.
 4. Hyper-V-VMMS\Admin oturum açma bölümünde görünen sorunları kontrol edin. Bu günlük, **uygulama ve hizmet günlükleri**  >  **Microsoft**  >  **Windows**'da bulunur.
 5. Konuk VM 'de, WMI 'nın etkinleştirildiğini ve erişilebilir olduğunu doğrulayın.
-   - Temel WMI testi [hakkında bilgi edinin](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) .
+   - Temel WMI testi [hakkında bilgi edinin](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) .
    - [Sorun giderme](https://aka.ms/WMiTshooting) 'Ya.
-   - WMI betikleri ve hizmetleriyle ilgili sorunları [giderin](https://technet.microsoft.com/library/ff406382.aspx#H22) .
+   - WMI betikleri ve hizmetleriyle ilgili sorunları [giderin](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) .
 6. Konuk VM 'de Integration Services 'ın en son sürümünün çalıştığından emin olun.
-    - En son sürüme sahip [olup olmadığınızı denetleyin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .
-    - [Sakla](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Tümleştirme Hizmetleri güncel.
+    - En son sürüme sahip [olup olmadığınızı denetleyin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .
+    - [Sakla](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Tümleştirme Hizmetleri güncel.
     
 ## <a name="replication-issues"></a>Çoğaltma sorunları
 
@@ -65,7 +66,7 @@ Ağ bant genişliği sınırlamaları, çoğaltmayı etkileyebilir. Sorunları a
 3. Profil oluşturucuyu çalıştırdıktan sonra [bant genişliği](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) ve [depolama](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) önerilerini izleyin.
 4. [Veri dalgalanma sınırlamalarını](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)denetleyin. Bir sanal makinede yüksek veri dalgalanması görürseniz şunları yapın:
    - SANAL makinenizin yeniden eşitleme için işaretlenip işaretlenmediğini denetleyin.
-   - Karmaşıklığın kaynağını araştırmak için [Bu adımları](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) izleyin.
+   - Karmaşıklığın kaynağını araştırmak için [Bu adımları](https://techcommunity.microsoft.com/t5/virtualization/bg-p/Virtualization) izleyin.
    - HRL günlük dosyaları kullanılabilir disk alanının %50 ' ü aştığında dalgalanma gerçekleşebilir. Sorun bu ise, sorunun gerçekleştiği tüm VM 'Ler için daha fazla depolama alanı sağlayın.
    - Çoğaltmanın duraklatılmadığını denetleyin. Varsa, bu, daha fazla boyut katkıda bulunmak için HRL dosyasına değişiklikleri yazmaya devam eder.
  
@@ -113,9 +114,9 @@ Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin za
         - Kategori: "Hyper-V sanal depolama cihazı"
         - Sayaç: "yazılan bayt/sn"</br>
         - Bu veri değişim hızı, VM 'nin veya uygulamalarının ne kadar meşgul olduğuna bağlı olarak yüksek düzeyde artar veya kalır.
-        - Ortalama kaynak disk verileri karmaşıklığı Site Recovery için standart depolama için 2 MB/sn 'dir. [Daha fazla bilgi](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Ayrıca, [depolama ölçeklenebilirliği hedeflerini doğrulayabilirsiniz](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
-8. Linux tabanlı bir sunucu kullanıyorsanız, üzerinde uygulama tutarlılığını etkinleştirdiğinizden emin olun. [Daha fazla bilgi](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)
+        - Ortalama kaynak disk verileri karmaşıklığı Site Recovery için standart depolama için 2 MB/sn 'dir. [Daha fazla bilgi edinin](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
+    - Ayrıca, [depolama ölçeklenebilirliği hedeflerini doğrulayabilirsiniz](../storage/common/scalability-targets-standard-account.md).
+8. Linux tabanlı bir sunucu kullanıyorsanız, üzerinde uygulama tutarlılığını etkinleştirdiğinizden emin olun. [Daha fazla bilgi edinin](./site-recovery-faq.md#replication)
 9. [Dağıtım planlayıcısı](hyper-v-deployment-planner-run.md)çalıştırın.
 10. [Ağ](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) ve [depolama](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)önerilerini gözden geçirin.
 
@@ -129,7 +130,7 @@ Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin za
 
 2. VM için VSS anlık görüntüleri oluşturmak için, Hyper-V tümleştirme hizmetlerinin VM 'de yüklü olduğundan ve yedekleme (VSS) tümleştirme hizmetinin etkin olduğundan emin olun.
     - Tümleştirme Hizmetleri VSS hizmeti/Daemon 'ları 'nin konukta çalıştığından ve bir **Tamam** durumunda olduğundan emin olun.
-    - Bunu, **Get-VMIntegrationService-VMName \<VMName> -Name VSS** komutunu kullanarak Hyper-V konağındaki yükseltilmiş bir PowerShell oturumundan kontrol edebilirsiniz. Ayrıca Konuk VM 'de oturum açarak bu bilgileri alabilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Bunu, **Get-VMIntegrationService-VMName \<VMName> -Name VSS** komutunu kullanarak Hyper-V konağındaki yükseltilmiş bir PowerShell oturumundan kontrol edebilirsiniz. Ayrıca Konuk VM 'de oturum açarak bu bilgileri alabilirsiniz. [Daha fazla bilgi edinin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - VM 'deki yedekleme/VSS tümleştirme hizmetlerinin çalıştığından ve sağlıklı durumda olduğundan emin olun. Aksi takdirde, bu hizmetleri ve Hyper-v ana bilgisayar sunucusunda Hyper-V Birim gölge kopyası istek sahibi hizmetini yeniden başlatın.
 
 ### <a name="common-errors"></a>Sık karşılaşılan hatalar
@@ -137,7 +138,7 @@ Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin za
 **Hata kodu** | **İleti** | **Ayrıntılar**
 --- | --- | ---
 **0x800700EA** | "Hyper-V sanal makine için VSS anlık görüntü kümesini oluşturamadı: daha fazla veri var. (0x800700EA). Yedekleme işlemi devam ediyorsa VSS anlık görüntü kümesi oluşturma işlemi başarısız olabilir.<br/><br/> Sanal makine için çoğaltma işlemi başarısız oldu: daha fazla veri var. " | VM 'nizin etkin dinamik disk olup olmadığını denetleyin. Bu özellik desteklenmez.
-**0x80070032** | "Hyper-V Birim gölge kopyası Istek sahibi, Hyper-V tarafından beklenen sürümle eşleşmediğinden <./VMname> sanal makinesine bağlanamadı | En son Windows güncelleştirmelerinin yüklenip yüklenmediğini denetleyin.<br/><br/> Tümleştirme Hizmetleri 'nin en son sürümüne [yükseltin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) .
+**0x80070032** | "Hyper-V Birim gölge kopyası Istek sahibi, Hyper-V tarafından beklenen sürümle eşleşmediğinden <./VMname> sanal makinesine bağlanamadı | En son Windows güncelleştirmelerinin yüklenip yüklenmediğini denetleyin.<br/><br/> Tümleştirme Hizmetleri 'nin en son sürümüne [yükseltin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) .
 
 
 
@@ -169,4 +170,3 @@ Bu araçlar Gelişmiş sorun giderme konusunda yardımcı olabilir:
 
 -   VMM için, [Destek Tanılama Platformu (SDP) aracını](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)kullanarak Site Recovery günlük koleksiyonu gerçekleştirin.
 -   VMM olmadan Hyper-V için [Bu aracı indirin](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)ve günlükleri toplamak için Hyper-v konağında çalıştırın.
-

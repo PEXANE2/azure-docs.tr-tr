@@ -8,17 +8,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699932"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130196"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Fiziksel sunucuların olağanüstü durum kurtarması için yapılandırma sunucusunu Azure 'a ayarlama
 
 Bu makalede, şirket içi ortamınızı Windows veya Linux çalıştıran fiziksel sunucuları Azure 'a çoğaltmaya başlayacak şekilde ayarlama açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Makalesinde zaten sahip olduğunuz varsayılır:
 - [Azure Portal](https://portal.azure.com "Azure portal")bir kurtarma hizmetleri Kasası.
@@ -57,7 +58,7 @@ Aşağıdaki tabloda bir yapılandırma sunucusu için en düşük donanım, yaz
 #### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery Birleşik kurulum 'U Çalıştır
 
 > [!TIP]
-> Bilgisayarınızın sistem saatindeki sürenin yerel saatten beş dakikadan uzun olması durumunda yapılandırma sunucusu kaydı başarısız olur. Yüklemeyi başlatmadan önce sistem saatinizi bir [saat sunucusuyla](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) eşitler.
+> Bilgisayarınızın sistem saatindeki sürenin yerel saatten beş dakikadan uzun olması durumunda yapılandırma sunucusu kaydı başarısız olur. Yüklemeyi başlatmadan önce sistem saatinizi bir [saat sunucusuyla](/windows-server/networking/windows-time-service/windows-time-service-top) eşitler.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
