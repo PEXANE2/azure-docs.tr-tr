@@ -6,14 +6,14 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77920085"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142460"
 ---
-# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını Izleme
+# <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını izleme
 
 Azure yay bulut uyarıları, kullanılabilir depolama, istek hızı veya veri kullanımı gibi koşullara göre kaynakları izlemeyi destekler. Bir uyarı, oran veya koşullar tanımlı belirtimleri karşılıyorsa bildirim gönderir.
 
@@ -22,12 +22,9 @@ Bir uyarı ardışık düzeni kurmak için iki adım vardır:
 2. Uyarı kurallarını ayarlayın. Kurallar, ölçüm düzenlerini hedef kaynağa, ölçüme, koşula, zaman toplamaya, vb. göre eylem gruplarıyla bağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu öğretici, Azure Spring gereksinimlerine ek olarak aşağıdaki kaynaklara bağımlıdır.
 
-* Dağıtılmış bir Azure yay bulutu örneği.  Başlamak için [hızlı](spring-cloud-quickstart-launch-app-cli.md) başlarımızı izleyin.
+Azure Spring gereksinimlerine ek olarak, bu öğreticideki yordamlar dağıtılan bir Azure yay bulutu örneğiyle birlikte çalışır.  Başlamak için [hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcı izleyin.
 
-* İzlenecek bir Azure kaynağı. Bu örnek, bir yay bulutu örneğini izler.
- 
 Aşağıdaki yordamlar, bir yay bulutu örneğinin sol gezinti bölmesindeki **Uyarılar** seçeneğinden başlayarak hem **Eylem grubunu** hem de **uyarıyı** başlatır. (Yordam, Azure portal **Izlemeye genel bakış** sayfasından da başlayabilir.) 
 
 Bir kaynak grubundan Spring Cloud örneğinize gidin. Sol bölmedeki **Uyarılar** ' ı seçin ve ardından **eylemleri Yönet**' i seçin:
@@ -109,7 +106,11 @@ Yeni uyarı kuralının etkinleştirildiğini doğrulayın.
    ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Kullanıcı Portalı ölçüm seçenekleri](spring-cloud-concept-metrics.md#user-metrics-options)
-* [Azure portal eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* [Eylem gruplarında SMS uyarı davranışı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
-* [Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+
+Bu öğreticide, bir Azure yay bulutu uygulaması için uyarıları ve eylem gruplarını ayarlamayı öğrendiniz. Eylem grupları hakkında daha fazla bilgi edinmek için bkz.:
+
+> [!div class="nextstepaction"]
+> [Azure portal eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+
+> [!div class="nextstepaction"]
+> [Eylem gruplarında SMS uyarı davranışı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbe6aed8ae0403f6ab4a7f9e0ba8b9a2c5d61617
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68347790"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168567"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Öğretici: SAP Analytics bulutunu Azure Active Directory tümleştirin
 
@@ -85,17 +85,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |-|-|
-    | `https://<sub-domain>.sapanalytics.cloud/` |
-    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
+    - `https://<sub-domain>.sapanalytics.cloud/`
+    - `https://<sub-domain>.sapbusinessobjects.cloud/`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
-    
-    | |
-    |-|-|
-    | `<sub-domain>.sapbusinessobjects.cloud` |
-    | `<sub-domain>.sapanalytics.cloud` |
+
+    - `<sub-domain>.sapbusinessobjects.cloud`
+    - `<sub-domain>.sapanalytics.cloud`
 
     > [!NOTE] 
     > Bu URL 'Lerdeki değerler yalnızca tanıtım amaçlıdır. Değerleri, gerçek oturum açma URL 'SI ve tanımlayıcı URL 'SI ile güncelleştirin. Oturum açma URL 'sini almak için [SAP Analytics bulut istemci desteği ekibine](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)başvurun. Yönetim konsolundan SAP Analytics bulut meta verilerini indirerek tanımlayıcı URL 'sini alabilirsiniz. Bu, öğreticide daha sonra açıklanmaktadır.
@@ -112,7 +108,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Farklı bir Web tarayıcısı penceresinde, SAP Analytics bulut şirket sitenizde yönetici olarak oturum açın.
 
-2. **Menü** > **System**sistem > **yönetimi**' ni seçin.
+2. **Menü**  >  **sistem**  >  **yönetimi**' ni seçin.
     
     ![Menü, sistem ve ardından Yönetim ' i seçin](./media/sapboc-tutorial/config1.png)
 
@@ -152,9 +148,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -182,11 +178,11 @@ Bir kullanıcı hesabı sağlamak için:
 
 1. SAP Analytics bulut şirket sitenizde yönetici olarak oturum açın.
 
-2. **Menü** > **Security**güvenliği > **kullanıcıları**' nı seçin.
+2. **Menü**  >  **güvenliği**  >  **kullanıcıları**' nı seçin.
 
     ![Çalışan Ekle](./media/sapboc-tutorial/user1.png)
 
-3. **Kullanıcılar** sayfasında, yeni kullanıcı ayrıntıları eklemek için öğesini seçin **+**. 
+3. **Kullanıcılar** sayfasında, yeni kullanıcı ayrıntıları eklemek için öğesini seçin **+** . 
 
     ![Kullanıcı Ekle sayfası](./media/sapboc-tutorial/user4.png)
 
@@ -200,13 +196,13 @@ Bir kullanıcı hesabı sağlamak için:
 
     d. **Görünen ad** kutusuna, **B. Simon**gibi kullanıcının tam adını girin.
 
-    e. **E-posta** kutusuna kullanıcının e-posta adresini girin, örneğin `b.simon@contoso.com`.
+    e. **E-posta** kutusuna kullanıcının e-posta adresini girin, örneğin `b.simon@contoso.com` .
 
     f. **Rolleri seçin** sayfasında, Kullanıcı için uygun rolü seçin ve ardından **Tamam**' ı seçin.
 
-      ![Rol seç](./media/sapboc-tutorial/user3.png)
+      ![Rol seçin](./media/sapboc-tutorial/user3.png)
 
-    g. **Kaydet** simgesini seçin.
+    örneğin: **Kaydet** simgesini seçin.
 
 ### <a name="test-sso"></a>Test SSO 'SU 
 

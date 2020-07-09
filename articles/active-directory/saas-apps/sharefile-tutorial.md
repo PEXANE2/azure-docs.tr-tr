@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d2fe97a4af07f48038ffd88de648247b56bb80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c535b6610b569c4d3649f3d97428b2c97d0db91
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160021"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Öğretici: Citrix ShareFile ile tümleştirme Azure Active Directory
 
@@ -33,7 +33,7 @@ Citrix ShareFile 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -110,22 +110,17 @@ Azure AD çoklu oturum açmayı Citrix ShareFile ile birlikte yapılandırmak i�
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |---|
-    | `https://<tenant-name>.sharefile.com`|
-    | `https://<tenant-name>.sharefile.com/saml/info`|
-    | `https://<tenant-name>.sharefile1.com/saml/info`|
-    | `https://<tenant-name>.sharefile1.eu/saml/info`|
-    | `https://<tenant-name>.sharefile.eu/saml/info`|
-    | |
-    
+    - `https://<tenant-name>.sharefile.com`
+    - `https://<tenant-name>.sharefile.com/saml/info`
+    - `https://<tenant-name>.sharefile1.com/saml/info`
+    - `https://<tenant-name>.sharefile1.eu/saml/info`
+    - `https://<tenant-name>.sharefile.eu/saml/info`
+
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |---|
-    | `https://<tenant-name>.sharefile.com/saml/acs`|
-    | `https://<tenant-name>.sharefile.eu/saml/<URL path>`|
-    | `https://<tenant-name>.sharefile.com/saml/<URL path>`|
+    - `https://<tenant-name>.sharefile.com/saml/acs`
+    - `https://<tenant-name>.sharefile.eu/saml/<URL path>`
+    - `https://<tenant-name>.sharefile.com/saml/<URL path>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Citrix ShareFile istemci destek ekibine](https://www.citrix.co.in/products/citrix-content-collaboration/support.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -188,12 +183,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -229,7 +224,7 @@ Azure AD kullanıcılarının Citrix ShareFile oturumu açmasını sağlamak iç
 
 1. **Citrix ShareFile** kiracınızda oturum açın.
 
-2. Kullanıcıları **Yönet \> Yönet giriş \> + çalışan oluştur**' a tıklayın.
+2. Kullanıcıları **Yönet Yönet \> giriş \> + çalışan oluştur**' a tıklayın.
    
     ![Çalışan oluştur](./media/sharefile-tutorial/IC781050.png "Çalışan oluştur")
 
@@ -237,7 +232,7 @@ Azure AD kullanıcılarının Citrix ShareFile oturumu açmasını sağlamak iç
    
     ![Temel bilgiler](./media/sharefile-tutorial/IC799951.png "Temel bilgiler")
    
-    a. **E-posta adresi** metin kutusuna Britta Simon 'un e-posta adresini **brittasıon\@contoso.com**olarak yazın.
+    a. **E-posta adresi** metin kutusuna Britta Simon 'un e-posta adresini **brittasıon \@ contoso.com**olarak yazın.
    
     b. **Ad** metin kutusuna **Ilk Kullanıcı adını** **Britta**olarak yazın.
    

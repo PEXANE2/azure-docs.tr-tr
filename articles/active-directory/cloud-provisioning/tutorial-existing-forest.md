@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2612c765140d838ddf441894d7fd068b7d66ccfc
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: d369395cc06902f31bdf17b427ecbb9f71f42001
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360648"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146823"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirme
 
 Bu öğreticide, mevcut bir karma kimlik ortamına bulut sağlaması ekleme işlemi adım adım gösterilmektedir. 
 
-![Oluştur](media/tutorial-existing-forest/existing-forest-new-forest.png)
+![Oluşturma](media/tutorial-existing-forest/existing-forest-new-forest.png)
 
 Bu öğreticide oluşturduğunuz ortamı test etmek veya karma kimliğin nasıl çalıştığı hakkında daha fazla bilgi almak için kullanabilirsiniz. 
 
@@ -104,14 +104,14 @@ Aracının çalıştığını doğrulamak için şu adımları izleyin:
 1.  Azure AD portalında oturum açın.
 2.  **Azure Active Directory** tıklayın
 3.  **Azure AD Connect** tıklayın
-4.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin
-![](media/how-to-configure/manage1.png)
-5.  **Yeni yapılandırma** ' ya tıklayın
-![](media/tutorial-single-forest/configure1.png)
+4.  **Manage provisioning (Preview)** 
+ ![ "Sağlamayı yönetme (Önizleme)" bağlantısını gösteren sağlamayı Yönet (Önizleme) ekran görüntüsünü seçin.](media/how-to-configure/manage1.png)
+5.  **New Configuration** 
+ ![ "Yeni yapılandırma" bağlantısı vurgulanmış şekilde Azure AD sağlama (Önizleme) ekranının yeni yapılandırma ekran görüntüsü ' ne tıklayın.](media/tutorial-single-forest/configure1.png)
 7.  Yapılandırma ekranında bir **bildirim e-postası**girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
-![](media/tutorial-single-forest/configure2.png)
+![Bildirim e-postasına sahip ekranı Yapılandır ekranının ekran görüntüsü doldurulmuş ve seçili şekilde etkin.](media/tutorial-single-forest/configure2.png)
 1.  Yapılandırma durumu artık **sağlıklı**olmalıdır.
-![](media/how-to-configure/manage4.png)
+![Sağlıklı durumu gösteren Azure AD sağlama (Önizleme) ekranının ekran görüntüsü.](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Kullanıcıların oluşturulduğunu ve eşitlemenin gerçekleştiğini doğrula
 Artık şirket içi dizinimizde bulunan kullanıcıların Azure AD kiracımızda bulunduğundan emin olursunuz.  Bu işlem işleminin tamamlanması birkaç saat sürebilir.  Kullanıcıların eşitlendiğinden emin olmak için aşağıdakileri yapın.

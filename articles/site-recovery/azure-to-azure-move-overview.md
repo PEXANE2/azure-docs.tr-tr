@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498054"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130625"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine taşıma
 
@@ -51,11 +51,11 @@ Bu bölümde, Azure 'daki çok katmanlı bir uygulama için en yaygın dağıtı
 
      ![Katmanlar arasında tek örnekli VM dağıtımı](media/move-vm-overview/regular-deployment.png)
 
-* **Her katmandaki VM 'ler kullanılabilirlik kümeleri arasında dağıtılır**: bir KATMANDAKI her VM bir kullanılabilirlik kümesinde yapılandırılır. [Kullanılabilirlik kümeleri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) , Azure 'Da dağıttığınız VM 'lerin bir kümedeki birden fazla yalıtılmış donanım düğümüne dağıtılmış olmasını güvence altına alır. Böylece, Azure 'da bir donanım veya yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesinin etkilenmesi ve genel çözümünüzün kullanılabilir ve çalışır durumda kalması sağlanır.
+* **Her katmandaki VM 'ler kullanılabilirlik kümeleri arasında dağıtılır**: bir KATMANDAKI her VM bir kullanılabilirlik kümesinde yapılandırılır. [Kullanılabilirlik kümeleri](../virtual-machines/windows/tutorial-availability-sets.md) , Azure 'Da dağıttığınız VM 'lerin bir kümedeki birden fazla yalıtılmış donanım düğümüne dağıtılmış olmasını güvence altına alır. Böylece, Azure 'da bir donanım veya yazılım hatası oluşursa, sanal makinelerinizin yalnızca bir alt kümesinin etkilenmesi ve genel çözümünüzün kullanılabilir ve çalışır durumda kalması sağlanır.
 
      ![Kullanılabilirlik kümeleri arasında VM dağıtımı](media/move-vm-overview/avset.png)
 
-* **Kullanılabilirlik alanları arasında dağıtılan her katmandaki VM 'ler**: bir KATMANDAKI her VM, [kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview)arasında yapılandırılır. Bir Azure bölgesindeki kullanılabilirlik bölgesi bir hata etki alanının ve bir güncelleştirme etki alanının birleşimidir. Örneğin, bir Azure bölgesindeki üç bölgede üç veya daha fazla VM oluşturursanız, VM 'niz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM 'Lerin aynı anda güncelleştirildiğinden emin olmak için bu dağıtımı güncelleştirme etki alanları genelinde tanır.
+* **Kullanılabilirlik alanları arasında dağıtılan her katmandaki VM 'ler**: bir KATMANDAKI her VM, [kullanılabilirlik alanları](../availability-zones/az-overview.md)arasında yapılandırılır. Bir Azure bölgesindeki kullanılabilirlik bölgesi bir hata etki alanının ve bir güncelleştirme etki alanının birleşimidir. Örneğin, bir Azure bölgesindeki üç bölgede üç veya daha fazla VM oluşturursanız, VM 'niz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM 'Lerin aynı anda güncelleştirildiğinden emin olmak için bu dağıtımı güncelleştirme etki alanları genelinde tanır.
 
      ![Kullanılabilirlik alanı dağıtımı](media/move-vm-overview/zone.png)
 

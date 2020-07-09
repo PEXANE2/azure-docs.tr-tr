@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Redsıs için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlama
-description: Bu öğreticide, Reda için Azure önbelleğini Azure Spring Cloud uygulamanıza nasıl bağlayacağınız gösterilmektedir.
+title: Redsıs için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlama
+description: Reda için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlamayı öğrenin
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: 94f7b5a2363b7c53e0f70500e5a0a8cb6f64e611
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ddf239fc6415b3dbee6051d4199cd29e5244e4d2
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277515"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142136"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Redsıs için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlama 
 
@@ -27,7 +27,7 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, [Azure yay bulutu uygulam
 
 ## <a name="bind-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini bağlama
 
-1. Aşağıdaki bağımlılığı projenizin polım. xml dosyasına ekleyin:
+1. Aşağıdaki bağımlılığı projenizin pom.xml dosyasına ekleyin:
 
     ```xml
     <dependency>
@@ -35,9 +35,9 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, [Azure yay bulutu uygulam
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. `application.properties` Dosyadaki tüm `spring.redis.*` özellikleri Kaldır
+1. Dosyadaki tüm `spring.redis.*` Özellikleri Kaldır `application.properties`
 
-1. Kullanarak geçerli dağıtımı güncelleştirin `az spring-cloud app update` veya kullanarak `az spring-cloud app deployment create`yeni bir dağıtım oluşturun.
+1. Kullanarak geçerli dağıtımı güncelleştirin `az spring-cloud app update` veya kullanarak yeni bir dağıtım oluşturun `az spring-cloud app deployment create` .
 
 1. Azure portal Azure Spring Cloud Service sayfanıza gidin. **Uygulama panosu** ' na gidin ve Redsıs Için Azure önbelleğine bağlanacak uygulamayı seçin. Bu uygulama, önceki adımda güncelleştirdiğiniz veya dağıttığınız aynı bir uygulamadır.
 
@@ -45,7 +45,7 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, [Azure yay bulutu uygulam
 
 1. Uygulamayı yeniden başlatın. Bağlama artık çalışmalıdır.
 
-1. Hizmet bağlamasının doğru olduğundan emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. `property` Alan şöyle görünmelidir:
+1. Hizmet bağlamasının doğru olduğundan emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. `property`Alan şöyle görünmelidir:
     ```
     spring.redis.host=some-redis.redis.cache.windows.net
     spring.redis.port=6380
@@ -55,7 +55,4 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, [Azure yay bulutu uygulam
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Spring Cloud uygulamanızı Redsıs için Azure önbelleğine bağlamayı öğrendiniz. Uygulamanıza hizmet bağlama hakkında daha fazla bilgi edinmek için, bir uygulamayı MySQL için Azure veritabanı örneğine bağlama öğreticisine devam edin.
-
-> [!div class="nextstepaction"]
-> [MySQL için Azure veritabanı örneğine nasıl bağlanılacağını öğrenin](spring-cloud-tutorial-bind-mysql.md)
+Bu makalede, Azure Spring Cloud uygulamanızı Redsıs için Azure önbelleğine bağlamayı öğrendiniz. Uygulamanıza hizmet bağlama hakkında daha fazla bilgi edinmek için bkz. [MySQL Için Azure veritabanı örneğine bağlama](spring-cloud-tutorial-bind-mysql.md).

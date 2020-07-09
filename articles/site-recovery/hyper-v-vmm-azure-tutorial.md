@@ -4,12 +4,12 @@ description: Site Recovery kullanarak, System Center VMM bulutlarındaki şirket
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: a391d8eb3cf7bc43b52883cbf2e76170338c44c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067586"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130225"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>VMM bulutlarında şirket içi Hyper-V sanal makineleri için Azure’da olağanüstü durum kurtarma ayarlama
 
@@ -25,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Sanal makine için çoğaltmayı etkinleştirme.
 
 > [!NOTE]
-> Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için [Site Recovery belgelerinin](/azure/site-recovery/) **nasıl yapılır kılavuzlarındaki** makaleleri gözden geçirin.
+> Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. Ayrıntılı yönergeler için [Site Recovery belgelerinin](./index.yml) **nasıl yapılır kılavuzlarındaki** makaleleri gözden geçirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -37,8 +37,8 @@ Bu öğreticide, aşağıdaki öğreticileri zaten tamamladığınız varsayılm
 ## <a name="select-a-replication-goal"></a>Çoğaltma hedefi seçme
 
 1. Azure portal, **Kurtarma Hizmetleri kasaları** ' na gidin ve [Azure 'u hazırla](tutorial-prepare-azure.md#create-a-recovery-services-vault) öğreticisinde oluşturulan **contosovmkasa** kasasını seçin.
-1. **Başlarken** **Site Recovery** > **altyapıyı hazırla** ' yı seçin ve aşağıdaki ayarları yapılandırın:
-    1. **Protection goal**Makineleriniz**nerede bulunur?**, **Şirket içi**seçeneğini belirleyin. > 
+1. **Başlarken** **Site Recovery**  >  **altyapıyı hazırla** ' yı seçin ve aşağıdaki ayarları yapılandırın:
+    1. **Koruma hedefi**  >  **Makineleriniz nerede bulunuyor?**, **Şirket içi**seçeneğini belirleyin.
     1. **Makinelerinizi nereye çoğaltmak istiyorsunuz?**, **Azure 'a**seçin.
     1. **Makineleriniz sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
     1. **Hyper-V konaklarınızı yönetmek Için System Center VMM kullanıyor musunuz?**, **Evet**' i seçin.
@@ -90,7 +90,7 @@ Microsoft Azure Kurtarma Hizmetleri Aracısı kurulum sihirbazında, şu ayarlar
 
 ## <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
 
-1. **Altyapı** > **hedefini**hazırla ' yı seçin.
+1. **Altyapı hedefini hazırla**' yı seçin  >  **Target**.
 1. Yük devretmeden sonra Azure VM 'lerinin oluşturulacağı aboneliği ve kaynak grubunu (**ContosoRG**) seçin.
 1. **Kaynak Yöneticisi** dağıtım modelini seçin.
 
@@ -98,7 +98,7 @@ Site Recovery, bir veya daha fazla uyumlu Azure depolama hesabı ve ağı olup o
 
 ## <a name="configure-network-mapping"></a>Ağ eşlemesini yapılandırma
 
-1. **Site Recovery altyapı** > **ağı eşlemeleri** > **ağ eşlemesi**. **+ Ağ eşleme** simgesini seçin.
+1. **Site Recovery altyapısı**  >  **Ağ eşlemeleri**  >  **Ağ eşleme**. **+ Ağ eşleme** simgesini seçin.
 1. **Ağ eşlemesi ekleyin**. **Kaynak System Center VMM** sunucusunu seçin. **Hedef**için Azure ' u seçin.
 1. Yük devretme işleminden sonra dağıtım modelini ve aboneliği seçin.
 1. **Kaynak ağ**. Kaynak şirket içi VM ağını seçin.
@@ -108,7 +108,7 @@ Site Recovery, bir veya daha fazla uyumlu Azure depolama hesabı ve ağı olup o
 
 ## <a name="set-up-a-replication-policy"></a>Çoğaltma ilkesi ayarlama
 
-1. **Altyapıyı** > hazırla**çoğaltma ayarları** > **+ Oluştur ve ilişkilendir '** i seçin.
+1. **Altyapıyı hazırla**  >  **çoğaltma ayarları**  >  **+ Oluştur ve ilişkilendir '** i seçin.
 1. **Ilke oluştur ve ilişkilendir**bölümünde bir ilke adı belirtin. **Contosoreplicationpolicy**kullanıyorsunuz.
 1. Varsayılan ayarları kabul edin ve **Tamam**' ı seçin:
    - **Kopyalama sıklığı** , ilk çoğaltmadan sonra Delta verilerinin her beş dakikada bir çoğaltılacağını belirtir.
@@ -124,7 +124,7 @@ Site Recovery, bir veya daha fazla uyumlu Azure depolama hesabı ve ağı olup o
 1. **Kaynak**. VMM bulutunu seçin. Ardından **Tamam**' ı seçin.
 1. **Hedef**. Hedefi (Azure), kasa aboneliğini doğrulayın ve **Kaynak Yöneticisi** modeli seçin.
 1. **Contosovmsacct1910171607** Storage hesabını ve **contosoasrnet** Azure ağını seçin.
-1. **Sanal makineler** > '**i seçin**. Çoğaltmak istediğiniz VM 'yi seçin. Ardından **Tamam**' ı seçin.
+1. **Sanal makineler**  >  Öğesini **seçin**. Çoğaltmak istediğiniz VM 'yi seçin. Ardından **Tamam**' ı seçin.
 
    **İşler** > **Site Recovery işleri** bölümünde **Korumayı Etkinleştir** eyleminin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi tamamlandıktan sonra, ilk çoğaltma TAMAMLANıR ve VM yük devretme için hazırlayın.
 

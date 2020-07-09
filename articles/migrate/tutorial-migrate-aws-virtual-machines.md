@@ -4,12 +4,12 @@ description: Bu makalede Azure geçişi ile AWS VM 'lerinin Azure 'a nasıl geç
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102812"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165439"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
@@ -77,9 +77,9 @@ Azure geçişi: sunucu geçiş aracı ile geçiş için Azure 'u hazırlayın.
 
 Sanal makine katılımcısı rolünü Azure hesabına atayın. Bu izinler şunları sağlar:
 
-    - Seçilen kaynak grubunda sanal makine oluşturma.
-    - Seçilen sanal ağda sanal makine oluşturma.
-    - Azure yönetilen diskine yazın. 
+- Seçilen kaynak grubunda sanal makine oluşturma.
+- Seçilen sanal ağda sanal makine oluşturma.
+- Azure yönetilen diskine yazın. 
 
 ### <a name="create-an-azure-network"></a>Azure ağı oluşturma
 

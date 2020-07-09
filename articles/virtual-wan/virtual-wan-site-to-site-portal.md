@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6c6620a83be2eade3b449553824116a4bea7e4d8
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563032"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144116"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Öğretici: Azure Sanal WAN kullanarak siteden siteye bağlantı oluşturma
 
@@ -47,7 +47,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 * Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Sanal WAN oluşturma
 
@@ -262,7 +262,7 @@ VPN Gateway ayarlarınızı **görüntüleme/yapılandırma**' yı seçerek iste
 * VPN Gateway genel IP adresi (Azure tarafından atanan)
 * VPN Gateway özel IP adresi (Azure tarafından atanan)
 * VPN Gateway varsayılan BGP IP adresi (Azure tarafından atanan)
-* Özel BGP IP adresi için yapılandırma seçeneği: Bu alan, APIPA (otomatik özel IP adresleme) için ayrılmıştır. Azure, 169.254.21. * ve 169.254.22. * aralıklarında BGP IP 'sini destekler.
+* Özel BGP IP adresi için yapılandırma seçeneği: Bu alan, APIPA (otomatik özel IP adresleme) için ayrılmıştır. Azure, 169.254.21. * ve 169.254.22. * aralıklarında BGP IP 'sini destekler. Azure, bu aralıklardaki BGP bağlantılarını kabul eder, ancak varsayılan BGP IP 'si ile bağlantıyı çevirebilir.
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Yapılandırmayı görüntüle" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 

@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile fiziksel makinelerin Azure 'a nası
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: dbb7737d59f48cadc645be990634bb5cb0cda251
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116106"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165405"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -40,7 +40,7 @@ Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve g
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
@@ -69,9 +69,9 @@ Sunucu geçişi ile geçiş için Azure 'u hazırlayın.
 
 Sanal makine katılımcısı rolünü Azure hesabına atayın. Bu izinler şunları sağlar:
 
-    - Seçilen kaynak grubunda sanal makine oluşturma.
-    - Seçilen sanal ağda sanal makine oluşturma.
-    - Azure yönetilen diskine yazın. 
+- Seçilen kaynak grubunda sanal makine oluşturma.
+- Seçilen sanal ağda sanal makine oluşturma.
+- Azure yönetilen diskine yazın. 
 
 ### <a name="create-an-azure-network"></a>Azure ağı oluşturma
 

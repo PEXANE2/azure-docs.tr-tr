@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: bir Machine Learning modeli oluşturmak için R kullanın'
+title: 'Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)'
 titleSuffix: Azure Machine Learning
 description: Bu öğreticide, bir arabadaki bir Fatality olma olasılığını tahmin eden bir lojistik regresyon modeli oluşturmak için Azure Machine Learning R SDK 'sını kullanacaksınız.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483389"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134688"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccf83bacedb667e52e9865b6d451641faa0ac414
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80388925"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131182"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Şirket içi makineleri Azure’a geçirme
 
@@ -34,7 +34,7 @@ Bu öğreticide, şirket içi VM’ler ve fiziksel sunucuları Azure’a geçirm
 
 
 > [!TIP]
-> Azure geçişi hizmetini kullanarak, artık şirket içi sunucuları Azure 'a geçirebilirsiniz. [Daha fazlasını öğrenin](../migrate/migrate-services-overview.md)
+> Azure geçişi hizmetini kullanarak, artık şirket içi sunucuları Azure 'a geçirebilirsiniz. [Daha fazla bilgi edinin](../migrate/migrate-services-overview.md)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -51,7 +51,7 @@ Parasanallaştırılmış sürücüler tarafından dışarı aktarılan cihazlar
 
 Neleri çoğaltmak istediğinizi ve bunları nereye çoğaltacağınızı seçin.
 1. **Kurtarma Hizmetleri kasaları** > kasa öğesine tıklayın.
-2. Kaynak menüsünde, **Site Recovery** > **altyapı** > **koruma hedefini**hazırla ' ya tıklayın.
+2. Kaynak menüsünde, **Site Recovery**  >  **altyapı**  >  **koruma hedefini**hazırla ' ya tıklayın.
 3. **Koruma hedefi**’nde, geçişini yapmak istediğiniz öğeyi seçin.
     - **VMware**: **Azure’a** > **Evet, VMWare vSphere Hiper Yöneticisi ile** öğelerini seçin.
     - **Fiziksel makine**: **Azure’a** > **Sanallaştırılmamış/Diğer** öğelerini seçin.
@@ -60,7 +60,7 @@ Neleri çoğaltmak istediğinizi ve bunları nereye çoğaltacağınızı seçin
 
 ## <a name="set-up-the-source-environment"></a>Kaynak ortamı ayarlama
 
-**Senaryo** | **Bilgileri**
+**Senaryo** | **Ayrıntılar**
 --- | --- 
 VMware | [Kaynak ortamı](vmware-azure-set-up-source.md)ayarlayın ve [yapılandırma sunucusunu](vmware-azure-deploy-configuration-server.md)ayarlayın.
 Fiziksel makine | Kaynak ortamı ve yapılandırma sunucusunu [ayarlayın](physical-azure-set-up-source.md) .
@@ -70,7 +70,7 @@ Hyper-V | [Kaynak ortamı](hyper-v-azure-tutorial.md#set-up-the-source-environme
 
 Hedef kaynaklarını seçin ve doğrulayın.
 
-1. **Altyapı** > **hedefini**hazırla ' ya tıklayın ve kullanmak istediğiniz Azure aboneliğini seçin.
+1. **Altyapı hedefini hazırla**' ya tıklayın  >  **Target**ve kullanmak istediğiniz Azure aboneliğini seçin.
 2. Kaynak Yöneticisi dağıtım modelini belirtin.
 3. Site Recovery Azure kaynaklarını denetler.
     - VMware VM 'lerini veya fiziksel sunucuları geçiriyorsanız Site Recovery, yük devretmeden sonra oluşturulan Azure sanal makinelerinin bulunduğu bir Azure ağınızın olduğunu doğrular.
@@ -79,7 +79,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 
 ## <a name="set-up-a-replication-policy"></a>Çoğaltma ilkesi ayarlama
 
-**Senaryo** | **Bilgileri**
+**Senaryo** | **Ayrıntılar**
 --- | --- 
 VMware | VMware VM 'Leri için [Çoğaltma İlkesi](vmware-azure-set-up-replication.md) ayarlayın.
 Fiziksel makine | Fiziksel makineler için bir [Çoğaltma İlkesi](physical-azure-disaster-recovery.md#create-a-replication-policy) ayarlayın.
@@ -87,7 +87,7 @@ Hyper-V | [Çoğaltma İlkesi](hyper-v-azure-tutorial.md#set-up-a-replication-po
 
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
-**Senaryo** | **Bilgileri**
+**Senaryo** | **Ayrıntılar**
 --- | --- 
 VMware | VMware VM 'Leri için [çoğaltmayı etkinleştirin](vmware-azure-enable-replication.md) .
 Fiziksel makine | Fiziksel makineler için [çoğaltmayı etkinleştirin](physical-azure-disaster-recovery.md#enable-replication) .
@@ -103,10 +103,10 @@ Her şeyin beklendiği gibi çalıştığından emin olmak için bir Azure’a [
 
 Geçirmek istediğiniz makineler için yük devretmeyi çalıştırın.
 
-1. **Ayarlar** > **çoğaltılan öğeler** ' de **Yük devretme**> makine ' ye tıklayın.
+1. **Ayarlar**  >  **çoğaltılan öğeler** ' de **Yük devretme**> makine ' ye tıklayın.
 2. **Yük devretme**’de yük devretmenin yapılacağı bir **Kurtarma Noktası** seçin. En son kurtarma noktasını seçin.
 3. Şifreleme anahtarı ayarı, bu senaryo için geçerli değildir.
-4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery yük devretmeyi tetiklemeden önce sanal makineleri kapatmayı dener. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery yük devretmeyi tetiklemeden önce sanal makineleri kapatmayı dener. Kapatma işlemi başarısız olsa bile yük devretme devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 5. Azure VM’nin Azure’da beklendiği gibi görüntülenip görüntülenmediğini kontrol edin.
 6. **Çoğaltılan öğeler** bölümünde VM’ye sağ tıklayıp **Geçişi Tamamla**’ya tıklayın. Bu, şunları yapar:
 
@@ -132,21 +132,21 @@ Bazı adımlar, [kurtarma planlarındaki](site-recovery-runbook-automation.md) y
 
 - Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin. 
 - Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.
-- [Azure VM aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows), Azure Yapı Denetleyicisi ile sanal makine etkileşimini yönetir. Azure Backup, Site Recovery ve Azure Güvenliği gibi bazı Azure hizmetleri için gereklidir.
+- [Azure VM aracısı](../virtual-machines/extensions/agent-windows.md), Azure Yapı Denetleyicisi ile sanal makine etkileşimini yönetir. Azure Backup, Site Recovery ve Azure Güvenliği gibi bazı Azure hizmetleri için gereklidir.
     - VMware makinelerini ve fiziksel sunucuları geçiriyorsanız Mobility Hizmeti yükleyicisi, Windows makinelere kullanılabilir Azure sanal makine aracısını yükler. Linux sanal makineleri üzerinde, yük devretmeden sonra aracıyı yüklemeniz önerilir.
     - Azure VM 'lerini ikincil bir bölgeye geçiriyorsanız geçişten önce VM 'de Azure VM aracısının sağlanması gerekir.
     - Hyper-V VM 'lerini Azure 'a geçiriyorsanız geçişten sonra Azure VM 'ye Azure VM aracısını yükleyebilirsiniz.
 - Sanal makineden Site Recovery sağlayıcısını/aracısını kendiniz kaldırın. VMware VM 'lerini veya fiziksel sunucuları geçirirseniz, Mobility hizmetini sanal makineden kaldırın.
 - Daha fazla esneklik için:
-    - Azure Backup hizmetini kullanarak Azure sanal makinelerini yedekleyip verileri güvende tutun. [Daha fazla bilgi edinin]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
+    - Azure Backup hizmetini kullanarak Azure sanal makinelerini yedekleyip verileri güvende tutun. [Daha fazla bilgi edinin](../backup/quick-backup-vm-portal.md).
     - Site Recovery ile Azure sanal makinelerini ikincil bölgeye çoğaltarak iş yüklerinin çalışmaya devam etmesini ve sürekli kullanılabilir olmasını sağlayın. [Daha fazla bilgi edinin](azure-to-azure-quickstart.md).
 - Daha fazla güvenlik için:
-    - Azure Güvenlik Merkezi [Anlık yönetim]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) özelliği ile gelen trafik erişimini kilitleme ve sınırlama
-    - [Ağ Güvenlik Grupları](https://docs.microsoft.com/azure/virtual-network/security-overview) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
-    - [Azure Disk Şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
+    - Azure Güvenlik Merkezi [Anlık yönetim](../security-center/security-center-just-in-time.md) özelliği ile gelen trafik erişimini kilitleme ve sınırlama
+    - [Ağ Güvenlik Grupları](../virtual-network/security-overview.md) ile ağ trafiğini yönetim uç noktaları ile kısıtlayın.
+    - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)’ni dağıtarak disklerin güvenliğinin sağlanmasına yardımcı olun ve verileri hırsızlık ve yetkisiz erişime karşı koruyun.
     - [IaaS kaynaklarının güvenliğini sağlama]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ ) hakkında daha fazla bilgi edinin ve [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/ )’ni ziyaret edin.
 - İzleme ve yönetim için:
-    - [Azure Maliyet Yönetimi](https://docs.microsoft.com/azure/cost-management/overview)’ni dağıtarak kaynak kullanımını ve harcamayı izleyin.
+    - [Azure Maliyet Yönetimi](../cost-management-billing/cloudyn/overview.md)’ni dağıtarak kaynak kullanımını ve harcamayı izleyin.
 
 ### <a name="post-migration-steps-on-premises"></a>Şirket içi geçiş sonrası adımlar
 

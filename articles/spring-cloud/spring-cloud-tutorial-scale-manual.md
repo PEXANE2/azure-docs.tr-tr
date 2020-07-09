@@ -1,19 +1,19 @@
 ---
 title: "Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme | Microsoft Docs"
-description: Bu öğreticide, Azure portal Azure Spring Cloud ile bir uygulamayı nasıl ölçeklentireceğinizi öğreneceksiniz
+description: Azure portal Azure Spring Cloud ile uygulama ölçeklendirmeyi öğrenin
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca889e48510ec20b4823c6ec5e4e0149d5aaaa62
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141886"
 ---
-# <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
+# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
 
 Bu öğreticide, Azure portal Azure Spring Cloud Panosu kullanılarak herhangi bir mikro hizmet uygulamasının nasıl ölçeklendirileceğini gösterilmektedir.
 
@@ -23,10 +23,10 @@ Sanal CPU (vCPU) sayısını ve bellek miktarını değiştirerek uygulamanızı
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
+Bu yordamları izlemek için şunlar gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
-* Dağıtılmış bir Azure yay bulut hizmeti örneği.  Kullanmaya başlamak için [Azure CLI aracılığıyla uygulama dağıtmaya yönelik hızlı başlangıç hızımızı](spring-cloud-quickstart-launch-app-cli.md) izleyin.
+* Dağıtılmış bir Azure yay bulut hizmeti örneği.  Kullanmaya başlamak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcını izleyin.
 * Hizmet örneğiniz için en az bir uygulama zaten oluşturulmuş.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal ölçek sayfasına gidin
@@ -64,7 +64,7 @@ Temel katmandadır ve bu [limitlerden](spring-cloud-quotas.md)biri veya daha faz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Spring Cloud uygulamalarınızı el ile ölçeklendirmenizi öğrendiniz. Uygulamanızı nasıl izleyeceğinizi öğrenmek için bir sonraki öğreticiye geçin.
+Bu öğreticide, bir Azure yay bulutu uygulamasını el ile ölçeklendirmenin nasıl yapılacağını öğrendiniz. Uyarıları ayarlayarak bir uygulamayı izlemeyi öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Bir uygulamayı izlemeyi öğrenin](spring-cloud-tutorial-distributed-tracing.md)
+> [Uyarıları ayarlamayı öğrenin](spring-cloud-tutorial-alerts-action-groups.md)

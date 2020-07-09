@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Azure yay bulut uygulamalarını dağıtmak için IntelliJ kullanma
+title: 'Öğretici: Azure Spring Cloud uygulamalarını dağıtmak için IntelliJ kullanma'
 description: Azure Spring Cloud 'a uygulama dağıtmak için IntelliJ kullanın.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec78b62f15851c41a3b9759f32d9c35c189f72c4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81731367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142039"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
 Azure yay bulutu için IntelliJ eklentisi, IntelliJ FIKRINDEN uygulama dağıtımını destekler.  
@@ -46,14 +46,14 @@ Aşağıdaki yordamlar IntelliJ FIKRINI kullanarak bir Merhaba Dünya uygulamas�
 1. Bu öğretici için kaynak depoyu indirip sıkıştırmasını açın veya git 'i kullanarak kopyalayın: git Clonehttps://github.com/spring-guides/gs-spring-boot.git 
 1. CD 'ye GS-Spring-boot\complete.
 1. IntelliJ **karşılama** iletişim kutusunu açın, içeri aktar sihirbazını açmak Için **projeyi içeri aktar** ' ı seçin.
-1. Klasör `gs-spring-boot\complete` seçin.
+1. `gs-spring-boot\complete`Klasör seçin.
 
     ![Projeyi içeri aktar](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Azure yay bulutuna dağıtın
 Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure** -> **yay bulutu 'na Azure dağıtımı**' nı seçin.
+1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
     ![Azure 'a dağıtma 1](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
 
@@ -71,7 +71,7 @@ Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi
 
     ![Azure 'a dağıtma 3](media/spring-cloud-intellij-howto/deploy-to-azure-3.png)
 
-1. Eklenti, projede komutunu `mvn package` çalıştırır ve ardından yeni uygulamayı oluşturur ve `package` komut tarafından oluşturulan jar 'yi dağıtır.
+1. Eklenti, projede komutunu çalıştırır `mvn package` ve ardından yeni uygulamayı oluşturur ve komut tarafından oluşturulan jar 'yi dağıtır `package` .
 
 1. Uygulama URL 'SI çıkış penceresinde gösterilmezse, Azure portal alın. Kaynak grupınızdan Azure Spring Cloud örneğine gidin.  Ardından **uygulamalar**' a tıklayın.  Çalışan uygulama listelenecektir.
 
