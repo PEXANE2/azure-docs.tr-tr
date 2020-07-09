@@ -4,14 +4,14 @@ description: Azure portal kullanarak MySQL için Azure veritabanı için veri ş
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: 9d1e89919647d9d94b287618da2f9a77278425a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3bb15e494638d543795ac5b95e2513cb5871a2a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81459092"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118639"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -49,7 +49,7 @@ MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek
 
    ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
 ## <a name="set-data-encryption-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için veri şifrelemeyi ayarlama
 
@@ -61,7 +61,7 @@ MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek
 
    ![Veri şifreleme seçenekleri vurgulanmış olan MySQL için Azure veritabanı 'nın ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. **Kaydet**’i seçin.
+3. **Kaydet**'i seçin.
 
 4. Tüm dosyaların (geçici dosyalar dahil) tamamen şifrelendiğinden emin olmak için sunucuyu yeniden başlatın.
 

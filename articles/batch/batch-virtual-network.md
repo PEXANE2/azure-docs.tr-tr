@@ -4,12 +4,12 @@ description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ff8995217521199436e0924acc691dab7c4baef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506624"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115420"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -21,7 +21,7 @@ Bir havuzdaki işlem düğümleri, farklı bir VNet gerekmeden, çok örnekli g�
 
 İşlem düğümlerinin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu bir Azure VNet 'in alt ağında sağlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Kimlik doğrulaması**. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.
 
@@ -62,7 +62,7 @@ Bir UDR eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlay�
 ![Kullanıcı tanımlı yol](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> Batch hizmeti IP adresleri zamanla değişebilir. Bir IP adresi değişikliği nedeniyle kesintileri önlemek için, Batch hizmeti IP adreslerini otomatik olarak yenilemek ve yol tablonuzda güncel tutmak için bir işlem oluşturun. Alternatif olarak, [denetlediğiniz BELIRTILEN IP adresleriyle bir havuz oluşturabilirsiniz](create-pool-public-ip.md).
+> Batch hizmeti IP adresleri zamanla değişebilir. Bir IP adresi değişikliği nedeniyle kesintileri önlemek için, Batch hizmeti IP adreslerini otomatik olarak yenilemek ve yol tablonuzda güncel tutmak için bir işlem oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

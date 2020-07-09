@@ -1,17 +1,18 @@
 ---
 title: Ödeme özetine genel bakış-Azure Marketi
 description: Ödeme Özeti, teklifiniz ile kazanabileceğiniz paradan ilgili ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118486"
 ---
 # <a name="payout-summary-overview"></a>Ödeme özetine genel bakış
 
@@ -63,7 +64,7 @@ Dönemleri, iş ortağı görünürlüğünü ve müşterinin bir kredi kartı v
 
 Bu seçenek, Işlem geçmişi sayfasında gördüğünüz her bir atma çizgisi öğesinin indirilmesini sağlar. Bu, teşvikleri programıyla ilişkili tür, tarih, ilişkili işlem miktarı, müşteri, ürün ve diğer işlem ayrıntılarını içerir.
 
-| Sütun adı | Açıklama |
+| Sütun adı | Description |
 | --- | --- |
 | Eardokgıd | Her bir atma için benzersiz tanımlayıcı |
 | participantId | İş ortağının birincil kimliği program altında |

@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: f69301bdbc0af9334858940fbfd3d7d0a0a63153
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807639"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118434"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Azure depolama için Gelişmiş tehdit koruması yapılandırma
 
@@ -23,28 +23,19 @@ Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik
 
 Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
 
-Hizmet, tehdit algılama için blob depolamaya okuma, yazma ve silme isteklerinin kaynak günlüklerini günlüğe kaydeder. Gelişmiş tehdit korumasından gelen uyarıları araştırmak için Depolama Analizi günlüğünü kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için, [Azure Portal depolama hesabını izlemek](storage-monitor-storage-account.md#configure-logging)için bkz. **oturum açma yapılandırma** .
+Hizmet, kaynak okuma, yazma ve silme isteklerinin, tehdit algılama için BLOB depolama ve Azure dosyaları (Önizleme) isteklerini geri alır. Gelişmiş tehdit korumasından gelen uyarıları araştırmak için Depolama Analizi günlüğünü kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için, [Azure Portal depolama hesabını izlemek](storage-monitor-storage-account.md#configure-logging)için bkz. **oturum açma yapılandırma** .
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Azure depolama için Gelişmiş tehdit koruması Şu anda yalnızca [BLOB depolama alanı](https://azure.microsoft.com/services/storage/blobs/)için kullanılabilir. Gelişmiş tehdit korumasını destekleyen hesap türleri, genel amaçlı v2, Blok Blobu ve BLOB depolama hesaplarını içerir. Gelişmiş tehdit koruması, tüm genel bulutlarda ve ABD kamu bulutlarında mevcuttur, ancak diğer sogeign veya Azure Kamu bulut bölgelerinde kullanılamaz.
+Azure Storage için Gelişmiş tehdit koruması Şu anda BLOB depolama, Azure dosyaları (Önizleme) ve Azure Data Lake Storage 2. (Önizleme) için kullanılabilir. Gelişmiş tehdit korumasını destekleyen hesap türleri, genel amaçlı v2, Blok Blobu ve BLOB depolama hesaplarını içerir. Gelişmiş tehdit koruması, tüm genel bulutlarda ve ABD kamu bulutlarında mevcuttur, ancak diğer sogeign veya Azure Kamu bulut bölgelerinde kullanılamaz.
+
+Azure Blob depolama API 'Leri ve Data Lake Storage API 'Lerini kullanarak işlemleri Data Lake Storage için etkinleştirilmiş hiyerarşik ad alanları içeren hesaplar. Azure dosya paylaşımları SMB üzerinden işlemleri destekler.
 
 Ücretsiz 30 günlük deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için bkz. [Azure Güvenlik Merkezi fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
-
 
 ## <a name="set-up-advanced-threat-protection"></a>Gelişmiş tehdit koruması ayarlama
 
 Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli yollarla yapılandırabilirsiniz.
-
-### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-1. [Azure Portal](https://portal.azure.com/)başlatın.
-1. Azure depolama hesabınıza gidin. **Ayarlar**altında **Gelişmiş güvenlik**' i seçin.
-1. Gelişmiş Güvenlik Yapılandırması sayfasında **Ayarlar** bağlantısını seçin.
-1. **Gelişmiş güvenliği** **Açık**olarak ayarlayın.
-1. Yeni veya güncelleştirilmiş ilkeyi kaydetmek için **Kaydet** ' e tıklayın.
-
-    ![Azure Storage Gelişmiş tehdit korumasını aç](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure Güvenlik Merkezi](#tab/azure-security-center)
 
@@ -61,6 +52,16 @@ Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, tüm depolama 
 
     ![Güvenlik Merkezi 'nde ATP 'yi etkinleştir](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. **Kaydet**’e tıklayın.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. [Azure Portal](https://portal.azure.com/)başlatın.
+1. Azure depolama hesabınıza gidin. **Ayarlar**altında **Gelişmiş güvenlik**' i seçin.
+1. Gelişmiş Güvenlik Yapılandırması sayfasında **Ayarlar** bağlantısını seçin.
+1. **Gelişmiş güvenliği** **Açık**olarak ayarlayın.
+1. Yeni veya güncelleştirilmiş ilkeyi kaydetmek için **Kaydet** ' e tıklayın.
+
+    ![Azure Storage Gelişmiş tehdit korumasını aç](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="template"></a>[Şablon](#tab/template)
 

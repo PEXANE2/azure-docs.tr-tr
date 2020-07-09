@@ -1,25 +1,21 @@
 ---
 title: Azure Event Grid tarafından desteklenen ölçümler
 description: Bu makalede, Azure Event Grid hizmeti tarafından desteklenen Azure Izleyici ölçümleri sunulmaktadır.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 643df2f4cc6347e0fd56f9124b68f1888ab85e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 3b22beafc9f88d2d95b25fd7ad2f2308a4df9097
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630141"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116429"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Azure Event Grid tarafından desteklenen ölçümler
 Bu makalede, ad alanlarına göre kategorilere ayrılan Event Grid ölçümleri listelenmiştir. 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/Domains
 
-|Metric|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Konu başlığı|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|Konu, ErrorType, hata|
@@ -33,7 +29,7 @@ Bu makalede, ad alanlarına göre kategorilere ayrılan Event Grid ölçümleri 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/konuları
 
-|Metric|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Hiçbiri|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|ErrorType, hata|
@@ -48,7 +44,7 @@ Bu makalede, ad alanlarına göre kategorilere ayrılan Event Grid ölçümleri 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/Systemkonuları
 
-|Metric|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Hiçbiri|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|ErrorType, hata|
@@ -63,7 +59,7 @@ Bu makalede, ad alanlarına göre kategorilere ayrılan Event Grid ölçümleri 
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/Eventabonelikleri
 
-|Metric|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |MatchedEventCount|Eşleşen olaylar|Sayı|Toplam|Bu olay aboneliğiyle eşleşen toplam olay sayısı|Hiçbiri|
 |Ityattemptfailcount|Teslim başarısız olaylar|Sayı|Toplam|Bu olay aboneliğine teslim edilemedi toplam olay sayısı|Hata, ErrorType|
@@ -74,7 +70,7 @@ Bu makalede, ad alanlarına göre kategorilere ayrılan Event Grid ölçümleri 
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/Extensionkonuları
 
-|Metric|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Hiçbiri|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|ErrorType, hata|

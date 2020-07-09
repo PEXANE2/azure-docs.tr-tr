@@ -222,12 +222,6 @@
         - name: Dağıtım Yöneticisi’nde sistem durumu denetimini kullanma
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: Örnekler
-  items:
-    - name: Azure Hızlı Başlangıç Şablonları
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: Şablon örnekleri
-      href: template-samples.md
 - name: Kavramlar
   items:
     - name: Şablon en iyi uygulamalar
@@ -299,16 +293,6 @@
             - name: Çıkışlar
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Yazma araçlarını kullanma
-      items:
-        - name: VS Code
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: VS dağıtım betiğini Az modülünü kullanacak şekilde güncelleştirme
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: Şablon özelliklerini keşfetme
       items:
         - name: Şablonu dışarı aktarma
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: SAS belirteciyle şablon güvenliğini sağlama
           href: secure-template-with-sas-token.md
+        - name: Dağıtım geçmişini görüntüleme
+          href: deployment-history.md
     - name: Kapsamlı dağıtımlar
       items:
         - name: Abonelik
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: Dağıtım - GitHub Actions
           href: deploy-github-actions.md
-    - name: Dağıtım geçmişini görüntüleme
-      href: deployment-history.md
+    - name: Yazma araçlarını kullanma
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: VS dağıtım betiğini Az modülünü kullanacak şekilde güncelleştirme
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Dağıtımlarla ilgili sorunları giderme
       items:
         - name: Dağıtım hatalarını giderme
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Kaynaklar
   items:
+    - name: Azure Hızlı Başlangıç Şablonları
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Fiyatlandırma hesaplayıcı

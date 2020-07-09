@@ -1,18 +1,18 @@
 ---
 title: Teklif listesi en iyi uygulamalar-Microsoft ticari Market
 description: Microsoft AppSource ve Azure Market tekliflerinizin pazara sunma konusundaki en iyi uygulamaları hakkında bilgi edinin.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027078"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118401"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
@@ -31,7 +31,7 @@ Bu bölümdeki tablolarda Market teklifleri oluşturma ve ilgi çekici öneriler
 
 Farklı bir storefront için kategoriler ve endüstriler, farklı teklif türleri için geçerli olacaktır.
 
-|  | **<br>Storefront göre kategoriler** |  | **<br>AppSource için Industries** |
+| Storefront | Kategoriler <br>Storefront tarafından | Kategoriler <br>Storefront tarafından | Sektörler <br> AppSource için |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Teklif türü**   |  **Azure Market**  | **AppSource**  |
 | Azure Uygulaması | X | |
@@ -61,10 +61,10 @@ Teklifiniz ve hedeflediğiniz hedef kitlelerinizi en iyi şekilde hizalamak içi
 |**Analiz** | **Analiz** |
 | &nbsp;&nbsp;Veri öngörüleri | &nbsp;&nbsp;Gelişmiş analiz  |
 | &nbsp;&nbsp;Veri Analizi |  &nbsp;&nbsp;Görselleştirme & raporlama |
-| &nbsp;&nbsp;Büyük veri | **Yapay Zeka + Makine Öğrenmesi**  |
+| &nbsp;&nbsp;Büyük veri | **Yapay Zeka ve Makine Öğrenmesi**  |
 | &nbsp;&nbsp;Tahmine dayalı analiz | &nbsp;&nbsp;Iş için AI |
 | &nbsp;&nbsp;Gerçek zamanlı/Akış Analizi | &nbsp;&nbsp;Bot uygulamaları |
-| **Yapay Zeka + Makine Öğrenmesi** | **İşbirliği** |
+| **Yapay Zeka ve Makine Öğrenmesi** | **İşbirliği** |
 | &nbsp;&nbsp;Bot hizmeti | &nbsp;&nbsp;& kişilerle iletişim kurun |
 | &nbsp;&nbsp;Bilişsel hizmetler | &nbsp;&nbsp;Toplantı Yönetimi |
 | &nbsp;&nbsp;ML hizmeti | &nbsp;&nbsp;Site tasarımı & yönetimi |
@@ -74,7 +74,7 @@ Teklifiniz ve hedeflediğiniz hedef kitlelerinizi en iyi şekilde hizalamak içi
 | &nbsp;&nbsp;Veri hazırlama | &nbsp;&nbsp;Vergi & denetimi |
 | &nbsp;&nbsp;Bilgi madenciliği | &nbsp;&nbsp;Kanun |
 | &nbsp;&nbsp;ML Işlemleri | &nbsp;&nbsp;Veri, Idare & gizliliği |
-| **Blok Zinciri**  | &nbsp;&nbsp;Sistem durumu & güvenliği |
+| **Blok zinciri**  | &nbsp;&nbsp;Sistem durumu & güvenliği |
 | &nbsp;&nbsp;Uygulama hızlandırıcıları | **Customer Service**  |
 | &nbsp;&nbsp;Tek düğümlü defter | &nbsp;&nbsp;Kişi Merkezi |
 | &nbsp;&nbsp;Çok düğümlü defter | &nbsp;&nbsp;Yüz yüze hizmet |
@@ -144,7 +144,7 @@ Teklifiniz ve hedeflediğiniz hedef kitlelerinizi en iyi şekilde hizalamak içi
 
 Transact yeteneklerinin Market müşterilerinin nasıl görüntülenebileceğini ve satın alınabileceği hakkında ayrıntılı bilgi edinmek için [teklif türüne göre kılavuza](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) bakın. SaaS teklifleri için teklifin işlem yeteneğinin yanı sıra kategori seçimi de teklifinizin yayımlanacağı storefront ' ı saptacaktır:
 
-| SaaS teklifi    |     |          |           |    |    |     | Uygulanabilir storefront |              |
+| SaaS teklifi    | SaaS teklifi   | SaaS teklifi  | SaaS teklifi   | SaaS teklifi   | SaaS teklifi   | SaaS teklifi    | Uygulanabilir storefront | Uygulanabilir storefront |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Ölçülen faturalandırma | Microsoft 365 eklentiler | Benimle iletişim kurun | Transact (en az 1 plan) | Yalnızca özel plan | Yalnızca genel plan | Ortak & özel planlar | AppSource | Azure Market |
 |  | X |  |  |  |  |  | X |  |
@@ -175,8 +175,8 @@ Sektör seçimi yalnızca Azure Marketi 'nde yayınlanan AppSource ve danışman
 | **Dağıtım** | Toplu <br> Paket Gönderimi & paket dağıtımı |  
 | **Eğitim** | Daha yüksek eğitim <br> Birincil & Ikincil edu/K-12 <br> Kitaplıklar & Museums |
 | **Finansal Hizmetler** | Bankacılık & büyük pazarlar <br> Eleri | 
-| **Devlet** |  Savunma & zekası <br> Cıvilian kamu <br> Genel güvenlik & de |
-| **Sağlık** | Sistem durumu ödemi veya <br> Sistem durumu sağlayıcısı <br> Pharmaceuticals | 
+| **Kamu** |  Savunma & zekası <br> Cıvilian kamu <br> Genel güvenlik & de |
+| **Sağlık Hizmetleri** | Sistem durumu ödemi veya <br> Sistem durumu sağlayıcısı <br> Pharmaceuticals | 
 | **& yolculuğu seyahat** | Seyahat & ulaşım <br> Oteller & boş <br> Restoran hizmetleri & Restoranlar | 
 | **& kaynaklarını üretim** | Kimyasal & Agrokimyasal <br> Ayrık üretim <br> Enerji | 
 | **Medya & Iletişimleri** | Medya & eğlence <br> Telekomünikasyon | 

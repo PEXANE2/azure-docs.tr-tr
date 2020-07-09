@@ -1,33 +1,33 @@
 ---
-title: Hızlı başlangıç-coğrafi olarak çoğaltılan kayıt defteri Kaynak Yöneticisi şablonu oluşturma
+title: Hızlı başlangıç-bir kapsayıcı örneği oluşturma-Azure Resource Manager şablonu
 description: Bu hızlı başlangıçta, yalıtılmış bir Azure Container örneğinde çalışan kapsayıcılı bir Web uygulamasını hızlıca dağıtmak için bir Azure Resource Manager şablonu kullanırsınız.
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: 17f71d1c383c72fab748a9bdb789158095616f2d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 64f86611e8a60cd3d1463cd2845c034551277bb2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779866"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118469"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure 'da kapsayıcı örneği dağıtma
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure 'da kapsayıcı örneği dağıtma
 
-Azure 'da sunucusuz Docker kapsayıcılarını basitlik ve hızla çalıştırmak için Azure Container Instances kullanın. Azure Kubernetes hizmeti gibi tam kapsayıcı düzenleme platformu gerekmiyorsa, bir uygulamayı isteğe bağlı olarak bir kapsayıcı örneğine dağıtın. Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtmak ve Web uygulamasını genel bir IP adresi ile kullanılabilir hale getirmek için bir Azure Resource Manager şablonu kullanırsınız.
+Azure 'da sunucusuz Docker kapsayıcılarını basitlik ve hızla çalıştırmak için Azure Container Instances kullanın. Azure Kubernetes hizmeti gibi tam kapsayıcı düzenleme platformu gerekmiyorsa, bir uygulamayı isteğe bağlı olarak bir kapsayıcı örneğine dağıtın. Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtmak ve Web uygulamasını genel bir IP adresi ile kullanılabilir hale getirmek için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
-
-Yok.
-
-## <a name="create-a-container-instance"></a>Kapsayıcı örneği oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/).
 
@@ -39,11 +39,11 @@ Aşağıdaki kaynak şablonda tanımlanmıştır:
 
 Daha fazla Azure Container Instances şablon örneği [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular)bulunabilir.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
  1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon, başka bir konumda bir kayıt defteri ve bir çoğaltma oluşturur.
 
-    [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
  2. Aşağıdaki değerleri seçin veya girin.
 
@@ -51,7 +51,7 @@ Daha fazla Azure Container Instances şablon örneği [hızlı başlangıç şab
     * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve **Tamam**' ı seçin.
     * **Konum**: kaynak grubu için bir konum seçin. Örnek: **Orta ABD**.
     * **Ad**: örnek için oluşturulan adı kabul edin veya bir ad girin.
-    * **Görüntü**: varsayılan görüntü adını kabul edin. Bu örnek Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. 
+    * **Görüntü**: varsayılan görüntü adını kabul edin. Bu örnek Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node.js yazılmış küçük bir Web uygulamasını paketler. 
 
     Kalan özellikler için varsayılan değerleri kabul edin.
 
@@ -63,7 +63,7 @@ Daha fazla Azure Container Instances şablon örneği [hızlı başlangıç şab
 
     ![Portal bildirimi](media/container-instances-quickstart-template/deployment-notification.png)
 
- Azure portal, şablonu dağıtmak için kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-cli.md).
+ Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-cli.md).
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
@@ -101,4 +101,4 @@ Bu hızlı başlangıçta, genel Microsoft görüntüsünden bir Azure Kapsayıc
 Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

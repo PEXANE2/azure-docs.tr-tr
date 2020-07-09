@@ -1,18 +1,18 @@
 ---
 title: Ödeme ilkesi ayrıntıları-Azure Marketi
 description: Zamanlamalar ve engel dahil olmak üzere, ödeme ilkelerine ilişkin ayrıntılar.
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: cb939d223d0aa91b6da62d3045ccad919f1bd277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887936"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118299"
 ---
 # <a name="payout-policy-details"></a>Ödeme ilkesi ayrıntıları
 

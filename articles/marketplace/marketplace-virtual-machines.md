@@ -2,18 +2,18 @@
 title: Azure Marketi 'nde sanal makine teklifleri için Yayımlama Kılavuzu
 description: Bu makalede, Azure Marketi 'nden dağıtılması için bir sanal makine ve yazılım ücretsiz deneme sürümü yayımlama gereksinimleri açıklanmaktadır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961549"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116735"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Sanal makine teklifleri için Yayımlama Kılavuzu
 

@@ -1,17 +1,14 @@
 ---
 title: Azure Event Grid olay işleyicileri
 description: Azure Event Grid için desteklenen olay işleyicilerini açıklar. Azure Otomasyonu, Işlevler, Event Hubs, Karma Bağlantılar, Logic Apps, Service Bus, kuyruk depolama, Web kancaları.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 76f7fff3e0a3e1c0c554e452987bf944503358b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83592466"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117024"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid içindeki olay işleyicileri
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır. Olayları işlemek için herhangi bir Web kancasını da kullanabilirsiniz. Web kancasının olayları işlemek için Azure 'da barındırılması gerekmez. Event Grid yalnızca HTTPS Web kancası uç noktalarını destekler.

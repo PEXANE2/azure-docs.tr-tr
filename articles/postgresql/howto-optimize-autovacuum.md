@@ -4,14 +4,14 @@ description: Bu makalede, bir PostgreSQL için Azure veritabanı-tek sunucu üze
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848191"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116377"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda oto vakum 'yi iyileştirin-tek sunucu
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucusu üzerinde oto 'nin nasıl etkili bir şekilde iyileştirileceği açıklanır.
@@ -22,20 +22,25 @@ PostgreSQL, daha fazla veritabanı eşzamanlılık sağlamak için çok sürüml
 Bir vakum işi el ile veya otomatik olarak tetiklenebilir. Veritabanı ağır güncelleştirme veya silme işlemleri yaşdığında, daha eski olmayan tanımlama grupları mevcuttur. Veritabanı boştayken daha az ölü tanımlama grubu mevcuttur. Veritabanı yükü ağır olduğunda, vakum işlerinin *el ile* uygun hale gelmesini sağlayan çok daha sık bir işlem yapmanız gerekir.
 
 Otomatik Vakum, ayarlamadan yapılandırılabilir ve faydalanır. PostgreSQL tarafından sunulan varsayılan değerler, ürünün her türlü cihazda çalıştığından emin olmak için TRY ile birlikte gönderilir. Bu cihazlar Raspberry PSIS 'yi içerir. İdeal yapılandırma değerleri aşağıdakilere bağlıdır:
+
 - SKU ve depolama boyutu gibi toplam kullanılabilir kaynak.
 - Kaynak kullanımı.
 - Bağımsız nesne özellikleri.
 
 ## <a name="autovacuum-benefits"></a>Oto vakum avantajları
+
 Zaman zaman Vakum yoksa, biriken atılacak tanımlama grupları şu şekilde olabilir:
+
 - Daha büyük veritabanları ve tablolar gibi veri blobunun.
 - Daha büyük olan alt dizinler.
 - Artan g/ç.
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>Oluşan şişirmeyi ile oto vakum sorguları izleyin
 Aşağıdaki örnek sorgu, XYZ adlı bir tablodaki ölü ve canlı tanımlama gruplarının sayısını belirlemek için tasarlanmıştır:
- 
-    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+
+```sql
+SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;
+```
 
 ## <a name="autovacuum-configurations"></a>Oto vakum yapılandırması
 Oto vakum 'yi denetleyen yapılandırma parametreleri, iki önemli soruya verilen yanıtlara göre yapılır:
@@ -56,6 +61,7 @@ autovacuum_max_workers|Herhangi bir anda çalışabilen, oto olmayan bir başlat
 Tek tek tabloların ayarlarını geçersiz kılmak için tablo depolama parametrelerini değiştirin. 
 
 ## <a name="autovacuum-cost"></a>Oto vakum maliyeti
+
 Bir vakum işlemi çalıştırmanın "maliyetleri" aşağıda verilmiştir:
 
 - Vakum 'nin üzerinde çalıştığı veri sayfaları kilitlidir.
@@ -64,6 +70,7 @@ Bir vakum işlemi çalıştırmanın "maliyetleri" aşağıda verilmiştir:
 Sonuç olarak, vakum işleri çok sık veya çok seyrek çalıştırılmayın. Bir vakum işinin iş yüküne uyum sağlaması gerekir. Her birinin avantajları nedeniyle tüm oto parametresi değişikliklerini test edin.
 
 ## <a name="autovacuum-start-trigger"></a>Oto vakum başlangıç tetikleyicisi
+
 Yok sayılma başlıkları sayısı autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * relbaşlıkların aştığında, oto değeri tetiklenir. Burada, relbaşlıkların bir sabittir.
 
 Temizleme işleminden temizlik, veritabanı yüküne devam etmelidir. Aksi takdirde, depolama alanı tükenmeyebilir ve sorgularda genel bir yavaşlama yaşayabilirsiniz. Zaman içinde, bir vakum işleminin ölü tanımlama gruplarını Temizleme hızının, atılacak tanımlama gruplarının oluşturulma hızına eşit olması gerekir.
@@ -91,7 +98,9 @@ Autovacuum_max_workers parametresi, eşzamanlı olarak çalışabilecek en yüks
 PostgreSQL ile, bu parametreleri tablo düzeyinde veya örnek düzeyinde ayarlayabilirsiniz. Bugün, bu parametreleri yalnızca PostgreSQL için Azure veritabanı 'nda tablo düzeyinde ayarlayabilirsiniz.
 
 ## <a name="optimize-autovacuum-per-table"></a>Her tablo için oto vakum 'ı iyileştirme
+
 Tablo başına önceki tüm yapılandırma parametrelerini yapılandırabilirsiniz. İşte bir örnek:
+
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -102,7 +111,8 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 Oto vakum, tablo başına zaman uyumlu bir işlemdir. Bir tablonun sahip olduğu kullanılmayan başlıkların daha büyük yüzdesi, "maliyet" i de oto vakum. Yüksek oranda güncelleştirme ve silmeleri olan tabloları birden çok tabloya ayırabilirsiniz. Tabloları bölmek, paralel hale getirmek oto ve bir tabloda bir bütün olarak bir tablo üzerinde tamamen vakum sağlamak için "maliyet" azaltmaya yardımcı olur. Çalışanların serbest bir şekilde zamanlandığından emin olmak için paralel otomatik çalışan sayısını da artırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 ' Nin nasıl kullanılacağı ve ayarlanacağı hakkında daha fazla bilgi edinmek için aşağıdaki PostgreSQL belgelerine bakın:
 
- - [Bölüm 18, sunucu yapılandırması](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - [Bölüm 24, rutin veritabanı bakım görevleri](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+- [Bölüm 18, sunucu yapılandırması](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+- [Bölüm 24, rutin veritabanı bakım görevleri](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
