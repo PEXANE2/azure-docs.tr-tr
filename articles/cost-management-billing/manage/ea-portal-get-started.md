@@ -3,16 +3,16 @@ title: Azure Enterprise Portal'ı kullanmaya başlama
 description: Bu makalede Azure Kurumsal Anlaşma (Azure EA) müşterilerinin Azure Enterprise Portal'ı nasıl kullanacağı açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7983afa32ff8104d181fbcdc75a50d12e2240128
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298117"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560367"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise Portal'ı kullanmaya başlama
 
@@ -471,6 +471,7 @@ Azure Enterprise Portal, etkin olmayan kayıtları filtreleyerek görünümün d
 
 ### <a name="enrollment-statuses"></a>Kayıt durumları
 
+- **Yeni**: Bu durum, 24 saat içinde oluşturulan bir kayda atanır ve 24 saat içinde Beklemede durumuna güncelleştirilir.
 - **Beklemede**: Kayıt yöneticisinin Azure Enterprise Portal'da oturum açması gerekir. Oturum açıldıktan sonra kayıt "Etkin" duruma geçer.
 - **Etkin**: Kayıt "Etkin" durumdadır, Azure Enterprise Portal'da hesaplar ve abonelikler oluşturulabilir. Kurumsal Anlaşma'nın bitiş tarihine kadar kayıt etkin durumda kalır.
 - **Süresiz uzatılan süre**: Süresiz uzatılan süre durumu, Kurumsal Anlaşma bitiş tarihi geçtikten sonra gerçekleşir. Uzatılan süreyi kabul eden Azure EA müşterilerinin Azure hizmetlerini Kurumsal Anlaşmaları bitene kadar sınırsız bir şekilde kullanmalarını sağlar.

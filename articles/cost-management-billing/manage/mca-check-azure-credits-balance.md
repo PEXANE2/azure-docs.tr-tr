@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199696"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361515"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft Müşteri Sözleşmesi Azure kredi bakiyesini izleme
 
@@ -21,13 +21,16 @@ Azure portalında veya REST API’leri aracılığıyla Microsoft Müşteri Söz
 
 Bir Microsoft Müşteri Sözleşmesi ödeme hesabında, krediler bir faturalama profiline atanır. Her faturalama profilinin, faturasındaki ücretlere otomatik olarak uygulanan kendine özel kredileri bulunur. Bir faturalama profilinin Azure kredisi bakiyesini görüntülemek için faturalama profilinde sahip, katkıda bulunan, okuyucu veya fatura yöneticisi rolüne ya da ödeme hesabında sahip, katkıda bulunan veya okuyucu rolüne sahip olmanız gerekir. Roller hakkında daha fazla bilgi almak için bkz. [Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama](understand-mca-roles.md).
 
+> [!NOTE]
+> Yeni kredinin Azure portalında görünmesi 24 saate kadar sürebilir. Yeni kredi alırsanız ve portalda göremezseniz 24 saat kadar bekleyin.
+
 Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Kredi bakiyenizi denetleme
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 82cdd8519f1e3fce80aaf051d6bc5fc40a9b8be9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219106"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959650"
 ---
 ::: zone target="docs"
 
@@ -62,7 +62,7 @@ Blok blobu ve sayfa blobu paylaşımlarının altında birinci düzeydeki varlı
 
 Aşağıdaki tabloda, Data Box üzerindeki paylaşımların UNC yolu ve verilerin karşıya yüklendiği Azure Depolama yolu URL'si gösterilmektedir. Son Azure depolama yolu URL'si, UNC paylaşım yolundan türetilebilir.
  
-|                   |                                                            |
+|Azure Depolama türleri  | Data Box paylaşımları            |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure Blok blobları | <li>Paylaşımların UNC yolu: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure Depolama URL’si: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure Sayfa blobları  | <li>Paylaşımların UNC yolu: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure Depolama URL’si: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -70,32 +70,32 @@ Aşağıdaki tabloda, Data Box üzerindeki paylaşımların UNC yolu ve verileri
 
 Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için aşağıdaki adımları izleyin.
 
-1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al**'a tıklayın. 
+1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **SMB**’yi seçin. 
 
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam** düğmesine tıklayın.
+2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam**’ı seçin.
     
     ![Paylaşım kimlik bilgilerini alma 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *devicemanagertest1*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
+3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *utsac1*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     Veri biçimine bağlı olarak paylaşım yolları şu şekilde olacaktır:
-    - Azure Blok blobu - `\\10.126.76.172\devicemanagertest1_BlockBlob`
-    - Azure Sayfa blobu - `\\10.126.76.172\devicemanagertest1_PageBlob`
-    - Azure Dosyalar - `\\10.126.76.172\devicemanagertest1_AzFile`
+    - Azure Blok blobu - `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
+    - Azure Sayfa blobu - `\\10.126.76.138\utSAC1_202006051000_PageBlob`
+    - Azure Dosyalar - `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
 4. İstendiğinde paylaşımın parolasını girin. Aşağıdaki örnekte yukarıdaki komutla paylaşıma bağlanma adımları gösterilmektedir.
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
-    Enter the password for 'devicemanagertest1' to connect to '10.126.76.172':
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    Enter the password for 'testuser1' to connect to '10.126.76.138':
     The command completed successfully.
     ```
 
-4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini'ni açmak için **Tamam**’a tıklayın.
+4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam**’ı seçin.
     
     ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -107,7 +107,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
     
 Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşağıdaki komutu kullanın. Aşağıdaki "vers" parametresi, Linux ana bilgisayarınızın desteklediği SMB sürümüdür. Aşağıdaki komutta verilen uygun sürümü takın. Data Box’ın desteklediği SMB sürümleri için bkz. [Linux istemcileri için desteklenen dosya sistemleri](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
-    `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
+    `sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox`
 
 ## <a name="copy-data-to-data-box"></a>Data Box'a veri kopyalama
 
@@ -215,11 +215,23 @@ Performansı iyileştirmek için veri kopyalama sırasında aşağıdaki Robocop
 
 Robocopy komutu hakkında daha fazla bilgi için bkz. [Robocopy ve birkaç örnek](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx).
 
-Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın. Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için hata dosyalarını indirin. Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
+Kopyalama işlemi sırasında hatalarla karşılaşırsanız bir bildirim görürsünüz.
+
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-1.png)
+
+**Sorun listesini indir**’i seçin.
+
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-2.png)
+
+Hatanın ayrıntılarını görüntülemek için listeyi açın ve önerilen çözümü görüntülemek için çözüm URL’sini seçin.
+
+![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-3.png)
+
+Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 
 Veri bütünlüğünü sağlamak için sağlama toplamı veri kopyalama sırasında satır içinde hesaplanır. Kopyalama tamamlandıktan sonra cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
 
-   ![Panoda boş ve kullanılan alanı doğrulama](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
+![Panoda boş ve kullanılan alanı doğrulama](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
 

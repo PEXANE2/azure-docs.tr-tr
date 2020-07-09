@@ -7,21 +7,21 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 07/01/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 722d1bca7f983c124c85e6d675f51d29c5357522
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052156"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854941"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
 Kuruluşunuzdan ayrılacaksanız veya aboneliğinizin faturasının başka bir hesaba yansıtılmasını istiyorsanız Azure aboneliğinizin faturalama sahipliğini aktarmak isteyebilirsiniz. Faturalama sahipliğini başka bir hesaba aktarmak, yeni hesaptaki yöneticilere ödeme görevlerini gerçekleştirme izni sağlar. Bu yöneticiler ödeme yöntemini değiştirebilir, ücretleri görüntüleyebilir ve aboneliği iptal edebilir.
 
-Faturalama sahipliğini değiştirmeyip aboneliğinizin türünü değiştirmek istiyorsanız bkz. [Azure aboneliğinizi başka bir teklifle değiştirme](switch-azure-offer.md). Abonelikteki kaynakları kimlerin yönetebileceğini denetlemek için bkz. [Azure kaynakları için yerleşik roller](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Faturalama sahipliğini değiştirmeyip aboneliğinizin türünü değiştirmek istiyorsanız bkz. [Azure aboneliğinizi başka bir teklifle değiştirme](switch-azure-offer.md). Abonelikte kaynaklara erişebilecek kişileri denetlemek için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
 Kurumsal Anlaşma (EA) müşterisiyseniz kurumsal yöneticileriniz aboneliklerinizin faturalama sahipliğini hesaplar arasında aktarabilir. Daha fazla bilgi için bkz. [Kurumsal Anlaşma (EA) aboneliklerinin faturalama sahipliğini aktarma](#EA).
 
@@ -45,7 +45,7 @@ Kurumsal Anlaşma (EA) müşterisiyseniz kurumsal yöneticileriniz aboneliklerin
 
     > [!IMPORTANT]
     >
-    > Aboneliği yeni hesabın Azure AD kiracısına taşımayı seçerseniz, abonelikteki kaynakları yönetmeye yönelik tüm [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) atamaları kalıcı olarak kaldırılır. Yalnızca aktarım isteğinizi kabul eden yeni hesaptaki kullanıcı, abonelikteki kaynakları yönetmek için erişime sahip olur. Daha fazla bilgi için bkz. [Aboneliği başka Azure AD kiracısındaki bir kullanıcıya aktarma](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories). Alternatif olarak, aboneliği yeni hesabın kiracısına taşımadan faturalama sahipliğini aktarmak için Abonelik Azure AD kiracısının kutusunun işaretini kaldırabilirsiniz. Bunu yaparsanız, Azure kaynaklarını yönetmek için mevcut RBAC izinleri korunur.
+    > Aboneliği yeni hesabın Azure AD kiracısına taşımayı seçerseniz abonelikteki kaynaklara erişmeye yönelik tüm [Azure rol atamaları](../../role-based-access-control/role-assignments-portal.md) kalıcı olarak kaldırılır. Yalnızca aktarım isteğinizi kabul eden yeni hesaptaki kullanıcı, abonelikteki kaynakları yönetmek için erişime sahip olur. Daha fazla bilgi için [Aboneliği başka Azure AD kiracısına aktarma](#transfer-a-subscription-to-another-azure-ad-tenant-account) adlı sonraki bölümü okuyun. Alternatif olarak, aboneliği yeni hesabın kiracısına taşımadan faturalama sahipliğini aktarmak için **Abonelik Azure AD kiracısının** kutusunun işaretini kaldırabilirsiniz. Bunu yaparsanız Azure kaynaklarına erişecek mevcut Azure rol atamaları korunur.
 
     ![Aktarım gönder sayfası](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
@@ -71,7 +71,7 @@ Azure'a kaydolduğunuzda sizin için bir Azure Active Directory (AD) kiracısı 
 
 Yeni bir abonelik oluşturduğunuzda hesabınızın Azure AD kiracısında barındırılır. Aboneliğinize veya kaynaklarınıza erişmesi için başkalarına erişim izni vermek isterseniz kiracınıza katılmaya davet etmeniz gerekir. Bunun yapılması, aboneliklerinize ve kaynaklarınıza erişimi denetlemenize yardımcı olur.
 
-Aboneliğinizin faturalama sahipliğini başka bir Azure AD kiracısındaki bir hesaba aktarırken aboneliği yeni hesabın kiracısına taşıyabilirsiniz. Bunu yaparsanız, abonelikleri ve kaynaklarını yönetmek için [rol tabanlı erişim (RBAC)](../../role-based-access-control/role-assignments-portal.md) izni olan tüm kullanıcılar, gruplar veya hizmet sorumluları erişimlerini kaybeder. Yalnızca aktarım isteğinizi kabul eden yeni hesaptaki kullanıcı, kaynakları yönetmek için erişime sahip olur. Yeni sahibin erişimi kaybeden kişilere erişim sağlamak için [bu kullanıcıları aboneliğe el ile eklemesi](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) gerekir.
+Aboneliğinizin faturalama sahipliğini başka bir Azure AD kiracısındaki bir hesaba aktarırken aboneliği yeni hesabın kiracısına taşıyabilirsiniz. Bunu yaparsanız abonelikleri ve kaynaklarını yönetmek için [Azure rol atamalarına](../../role-based-access-control/role-assignments-portal.md) sahip olan tüm kullanıcılar, gruplar veya hizmet sorumluları erişimlerini kaybeder. Yalnızca aktarım isteğinizi kabul eden yeni hesaptaki kullanıcı, kaynakları yönetmek için erişime sahip olur. Yeni sahibin erişimi kaybeden kişilere erişim sağlamak için bu kullanıcıları aboneliğe el ile eklemesi gerekir. Daha fazla bilgi için bkz. [Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)](../../role-based-access-control/transfer-subscription.md).
 
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio ve İş Ortağı Ağı aboneliklerini aktarma
@@ -89,7 +89,7 @@ Kuruluş Yöneticisi, bir kayıt içindeki hesaplar arasında aboneliklerin sahi
 
 Bir Azure aboneliğinin faturalama sahipliğini kabul ettiyseniz, sonraki adımları incelemenizi öneririz:
 
-1. Hizmet Yöneticisi, Ortak Yöneticiler ve diğer RBAC rollerini gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+1. Hizmet Yöneticisi, Ortak Yöneticiler ve diğer Azure rol atamalarını gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [Azure portalını Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 1. Bu aboneliğin hizmetleriyle ilişkili kimlik bilgilerini şu şekilde güncelleştirin:
    1. Abonelik kaynaklarına kullanıcı yöneticisi hakları veren yönetim sertifikaları. Daha fazla bilgi için bkz. [Azure için yönetim sertifikası oluşturma ve karşıya yükleme](../../cloud-services/cloud-services-certs-create.md)
    1. Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-create-storage-account.md)
@@ -142,7 +142,7 @@ Bir aboneliğin hesap yöneticisinin kim olduğunu bilmiyorsanız aşağıdaki a
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Her şey aktarılır mı? Kaynak grupları, VM'ler, diskler ve diğer çalışan hizmetler de dahil mi?
 
-Sanal Makineler, diskler ve web siteleri gibi tüm kaynaklarınız yeni hesaba aktarılır. Bununla birlikte, aboneliği başka bir Azure AD kiracısındaki bir hesaba aktarırsanız, abonelikteki hiçbir [yönetici rolü](add-change-subscription-administrator.md) ve [Rol Tabanlı Erişim Denetimi (RBAC)](../../role-based-access-control/role-assignments-portal.md) ataması [aktarılmaz](#transfer-a-subscription-to-another-azure-ad-tenant-account). Ayrıca, [uygulama kayıtları](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) ve kiracıya özgü diğer hizmetler abonelikle birlikte aktarılmaz.
+Sanal Makineler, diskler ve web siteleri gibi tüm kaynaklarınız yeni hesaba aktarılır. Ancak aboneliği başka bir Azure AD kiracısındaki bir hesaba aktarırsanız abonelikteki hiçbir [yönetici rolü](add-change-subscription-administrator.md) ve [Azure rol](../../role-based-access-control/role-assignments-portal.md) ataması [aktarılmaz](#transfer-a-subscription-to-another-azure-ad-tenant-account). Ayrıca, [uygulama kayıtları](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) ve kiracıya özgü diğer hizmetler abonelikle birlikte aktarılmaz.
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Sahipliği başka bir ülkedeki/bölgedeki bir hesaba aktarabilir miyim?
 Ne yazık ki, Azure portalında ülkeler/bölgeler arası aktarımlar gerçekleştirilemez. Aboneliğinizi ülkeler/bölgeler arasında aktarmak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -152,7 +152,7 @@ Evet, hesaplarınız arasında abonelik aktarabilirsiniz. Hesaplarınız kavrams
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Abonelik aktarımı herhangi bir hizmette kesintiye neden olur mu?
 
-Aboneliği aynı Azure AD kiracısında yer alan bir hesaba aktarırsanız abonelikte çalışan kaynaklar üzerinde hiçbir etkisi olmaz. Ancak PowerShell'deki bağlam bilgileri güncelleştirilmediğinden silmeniz veya ayarları değiştirmeniz gerekebilir. Aboneliği başka bir kiracıdaki bir hesaba aktarıp aboneliği kiracıya taşımaya karar verirseniz, abonelikteki kaynakları yönetmek için [rol tabanlı erişim denetimine (RBAC)](../../role-based-access-control/overview.md) sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları erişimi kaybeder. Bunun sonucunda hizmette kesinti yaşanabilir.
+Aboneliği aynı Azure AD kiracısında yer alan bir hesaba aktarırsanız abonelikte çalışan kaynaklar üzerinde hiçbir etkisi olmaz. Ancak PowerShell'deki bağlam bilgileri güncelleştirilmediğinden silmeniz veya ayarları değiştirmeniz gerekebilir. Aboneliği başka bir kiracıdaki bir hesaba aktarıp aboneliği kiracıya taşımaya karar verirseniz abonelikteki kaynaklara erişmek için [Azure rol atamalarına](../../role-based-access-control/role-assignments-portal.md) sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları erişimi kaybeder. Bunun sonucunda hizmette kesinti yaşanabilir.
 
 ### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>Yeni hesaptaki kullanıcılar kullanım ve fatura geçmişine erişebilir mi?
 
@@ -173,19 +173,19 @@ Bu sık sorulan sorular, bir Azure aboneliğinin faturalama sahipliğini başka 
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Başka bir hesaptan aboneliğin faturalama sahipliğini devralırsam, söz konusu hesaptaki kullanıcılar kaynaklarıma erişmeye devam eder mi?
 
-Evet. Ancak [yönetici rolleri](add-change-subscription-administrator.md) ve [Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/role-assignments-portal.md) atamaları kaldırılabilir. Hesabınız, aboneliğin Azure AD kiracısından farklı bir kiracıda olması ve aktarım isteğini gönderen kullanıcı aboneliği sizin hesabınızın kiracısına taşıması erişimin kaybedilmesine neden olur. Abonelikteki kaynakları yönetmek için [rol tabanlı erişim (RBAC)](../../role-based-access-control/overview.md) izni olan kullanıcıları görüntülemek için aşağıdaki adımları kullanın:
+Evet. Ancak [yönetici rolleri](add-change-subscription-administrator.md) ve [Azure rol](../../role-based-access-control/role-assignments-portal.md) atamaları kaldırılabilir. Hesabınız, aboneliğin Azure AD kiracısından farklı bir kiracıda olması ve aktarım isteğini gönderen kullanıcı aboneliği sizin hesabınızın kiracısına taşıması erişimin kaybedilmesine neden olur. Abonelikteki kaynaklara erişmek için Azure rol atamalarına sahip olan kullanıcıları görüntülemek için aşağıdaki adımları kullanın:
 
 1. [Azure portalında Abonelikler sayfasını](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ziyaret edin.
 1. Denetlemek istediğiniz aboneliği seçin ve ardından sol bölmedeki **Erişim denetimi (IAM)** seçeneğini belirleyin.
-1. Sayfanın üst kısmından **Rol atamaları**'nı seçin. Rol atamaları sayfasında, abonelikte RBAC erişimi olan tüm kullanıcılar listelenir.
+1. Sayfanın üst kısmından **Rol atamaları**'nı seçin. Rol atamaları sayfasında, abonelikte erişimi olan tüm kullanıcılar listelenir.
 
-Aktarım sırasında [Rol Tabanlı Erişim Denetimi (RBAC)](../../role-based-access-control/role-assignments-portal.md) atamaları kaldırılsa bile, ilk sahip hesabındaki kullanıcılar aşağıdaki gibi bazı güvenlik mekanizmaları üzerinden aboneliğe erişmeye devam edebilir:
+Aktarım sırasında [Azure rol](../../role-based-access-control/role-assignments-portal.md) atamaları kaldırılsa bile, ilk sahip hesabındaki kullanıcılar aşağıdaki gibi diğer güvenlik mekanizmaları üzerinden aboneliğe erişmeye devam edebilir:
 
 * Abonelik kaynaklarına kullanıcı yöneticisi hakları veren yönetim sertifikaları. Daha fazla bilgi için bkz. [Azure için Yönetim Sertifikası Oluşturma ve Karşıya Yükleme](../../cloud-services/cloud-services-certs-create.md).
 * Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-create-storage-account.md).
 * Azure Sanal Makineleri gibi hizmetler için Uzaktan Erişim kimlik bilgileri.
 
-Alıcının kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
+Alıcının kaynaklarına erişimi kısıtlaması gerekiyorsa hizmetle ilişkili tüm gizli dizileri güncelleştirmesi faydalı olabilir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
 
   1. [Azure Portal](https://portal.azure.com) oturum açın.
   2. Merkez menüsünde **Tüm kaynaklar**'ı seçin.
@@ -225,4 +225,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hizmet Yöneticisi, Ortak Yöneticiler ve diğer RBAC rollerini gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+- Hizmet Yöneticisi, Ortak Yöneticiler ve diğer Azure rol atamalarını gözden geçirin ve güncelleştirin. Daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](add-change-subscription-administrator.md) ve [Azure portalını Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).

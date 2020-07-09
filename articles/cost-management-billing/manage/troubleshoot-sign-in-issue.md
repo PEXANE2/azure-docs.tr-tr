@@ -9,71 +9,82 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 08f278d56e742659ebe197695fae8dfa35383b17
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: e424a3d0e46f0dc154809eba501d2339bc94b1f5
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639197"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85806712"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure aboneliği oturum açma sorunlarını giderme
 
 Bu kılavuz, Azure portalında veya Azure hesap merkezinde oturum açamama sorunlarının çözülmesine yardımcı olur.
 
-## <a name="issues"></a>Sorunlar
+> [!NOTE]
+> Yeni bir Azure hesabına kaydolmayla ilgili sorun yaşıyorsanız bkz. [Azure aboneliğine kaydolma sorunlarını giderme](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up).
 
-### <a name="page-hangs-in-the-loading-status"></a>Sayfa, yükleme durumunda yanıt vermemeye başlıyor
+## <a name="page-hangs-in-the-loading-status"></a>Sayfa, yükleme durumunda yanıt vermemeye başlıyor
 
 İnternet tarayıcınızın sayfası yanıt vermemeye başlıyorsa Azure portalına ulaşana kadar aşağıdaki adımlardan her birini deneyin.
 
 - Sayfayı yenileyin.
 - Farklı bir İnternet tarayıcısı kullanın.
-- Tarayıcınızda özel gözatma modunu kullanın. Internet Explorer için: **Araçlar** > **Güvenlik** > **InPrivate Gözatma**’ya tıklayın ve sonra [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip oturum açın.
+- Tarayıcınızda özel gözatma modunu kullanın:
 
-### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Otomatik şekilde farklı kullanıcı olarak oturum açtınız
+   - **Microsoft Edge:** **Ayarlar**’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere**’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
+   - **Chrome:** **Gizli** modu seçin.
+   - **Safari:** **Dosya**’yı ve sonra **Yeni Özel Pencere**’yi seçin.
+
+- Önbelleği temizleyin ve İnternet tanımlama bilgilerini silin:
+
+   - **Microsoft Edge:** **Ayarlar**’ı açıp **Gizlilik ve Hizmetler**’i seçin. **Gözatma Verilerini Temizle** bölümündeki adımları izleyin. **Gözatma geçmişi**, **İndirme geçmişi** ve **Önbelleğe alınan resimler ve dosyalar** onay kutularının işaretli olduğundan emin olun ve **Sil**’i seçin.
+   - **Chrome:** **Ayarlar**’ı ve sonra **Gizlilik ve Güvenlik** bölümünden **Gözatma verilerini temizle**’yi seçin.
+
+## <a name="you-are-automatically-signed-in-as-a-different-user"></a>Otomatik şekilde farklı kullanıcı olarak oturum açtınız
 
 İnternet tarayıcısında birden çok kullanıcı hesabı kullanıyorsanız bu sorun oluşabilir.
 
 Sorunu çözmek için aşağıdaki yöntemlerden birini deneyin:
 
-- Önbelleği temizleyin ve İnternet tanımlama bilgilerini silin. Internet Explorer’da **Araçlar** > **Internet Seçenekleri** > **Sil**’e tıklayın. Geçici dosyalar, tanımlama bilgileri, parola ve gözatma geçmişi onay kutularının seçildiğinden emin olun ve Sil’e tıklayın.
-- Yaptığınız tüm kişisel ayarları geri almak için Internet Explorer ayarlarını sıfırlayın. **Araçlar** > **Internet Seçenekleri** > **Gelişmiş**’e tıklayın > **Kişisel ayarları sil** kutusu > **Sıfırla**’yı seçin.
-- Tarayıcınızda özel gözatma modunu kullanın. Internet Explorer için:  **Araçlar** > **Güvenlik** > **InPrivate Gözatma**’ya tıklayın ve sonra [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip oturum açın.
+- Önbelleği temizleyin ve İnternet tanımlama bilgilerini silin.
 
-### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Oturum açabiliyorum, ancak *Abonelik bulunamadı* iletisini görüyorum
+   - **Microsoft Edge:** **Ayarlar**’ı açıp **Gizlilik ve Hizmetler**’i seçin. **Gözatma Verilerini Temizle** bölümündeki adımları izleyin. **Gözatma geçmişi**, **İndirme geçmişi**, **Tanımlama bilgileri** ve **Önbelleğe alınan resimler ve dosyalar** onay kutularının işaretli olduğundan emin olun ve **Sil**’i seçin.
+   - **Chrome:** **Ayarlar**’ı ve sonra **Gizlilik ve Güvenlik** bölümünden **Gözatma verilerini temizle**’yi seçin.
+- Tarayıcı ayarlarınızı varsayılana sıfırlayın.
+- Tarayıcınızda özel gözatma modunu kullanın. 
+   - **Microsoft Edge:** **Ayarlar**’ı (profil resminizin yanındaki üç nokta) açın, **Yeni InPrivate pencere**’yi seçin ve [Azure portalına](https://portal.azure.com/) veya [Azure hesap merkezine](https://account.azure.com/Subscriptions) gidip burada oturum açın. 
+   - **Chrome:** **Gizli** modu seçin.
+   - **Safari:** **Dosya**’yı ve sonra **Yeni Özel Pencere**’yi seçin.
+
+## <a name="i-can-sign-in-but-i-see-the-error-no-subscriptions-found"></a>Oturum açabiliyorum, ancak “Abonelik bulunamadı” hatasını görüyorum
 
 Yanlış dizinde seçim yaptıysanız veya hesabınız yeterli izinlere sahip değilse bu sorun oluşur.
 
-**Senaryo 1:** [Azure portalında](https://portal.azure.com/) hata iletisi alınır
+**Senaryo 1:** [Azure portalında](https://portal.azure.com/) oturum açarken hata alıyorsunuz
 
 Bu sorunu düzeltmek için:
 
-- Sağ üst kısımda hesabınıza tıklayarak doğru Azure dizininin seçildiğinden emin olun.
-- Doğru Azure dizini seçili olduğu halde hata iletisini almaya devam ediyorsanız hesabınızın [Sahip olarak eklenmesini](add-change-subscription-administrator.md) sağlayın.
+- Sağ üst köşede hesabınızı seçerek doğru Azure dizininin seçildiğini doğrulayın.
+- Doğru Azure dizini seçili olduğu halde hata iletisini almaya devam ediyorsanız hesabınızın [Sahip olarak eklenmesini](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator) sağlayın.
 
-**Senaryo 2:** [Azure Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde hata iletisi alınır
+**Senaryo 2:** [Azure Hesap Merkezi](https://account.windowsazure.com/Subscriptions)’nde oturum açarken hata alıyorsunuz
 
 Kullandığınız hesabın Hesap Yöneticisi olup olmadığını denetleyin. Hesap Yöneticisinin kim olduğunu doğrulamak için şu adımları izleyin:
 
-1. [Azure portalındaki Abonelikler görünümünde](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oturum açın.
-
-2. Denetlemek istediğiniz aboneliği seçin ve **Ayarlar** bölümüne bakın.
-
-3. **Özellikler**’i seçin. Aboneliğin hesap yöneticisi, **Hesap Yöneticisi** kutusunda görüntülenir.
+1.  [Azure portalındaki Abonelikler görünümünde](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) oturum açın.
+1.  Denetlemek istediğiniz aboneliği ve sonra **Ayarlar**’ı seçin.
+1.  **Özellikler**’i seçin. Aboneliğin hesap yöneticisi, **Hesap Yöneticisi** kutusunda görüntülenir.
 
 ## <a name="additional-help-resources"></a>Ek yardım kaynakları
 
 Azure Faturalama ve Abonelikler için diğer sorun giderme makaleleri
 
-- [Reddedilen kart](troubleshoot-declined-card.md)
-- [Abonelik kaydı sorunları](troubleshoot-azure-sign-up.md)
-- [Abonelik bulunamadı](no-subscriptions-found.md)
-- [Kurumsal maliyet görünümü devre dışı](enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Reddedilen kart](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
+- [Abonelik kaydı sorunları](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
+- [Abonelik bulunamadı](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
+- [Kurumsal maliyet görünümü devre dışı](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Azure Faturalama belgeleri](https://docs.microsoft.com/azure/cost-management-billing/)
 
 ## <a name="contact-us-for-help"></a>Yardım için bizimle iletişim kurun
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-- [Azure Faturalama belgeleri](../../billing/index.md)

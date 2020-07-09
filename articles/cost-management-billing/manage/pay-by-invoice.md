@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849081"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure abonelikleriniz için fatura ile ödeme
 
@@ -42,28 +42,28 @@ Faturayla ödemeye geçmeniz, faturanızı fatura tarihini izleyen 30 gün için
 
 5. **Ayrıntılar** kutusuna aşağıdaki bilgileri girin ve sonra **İleri**‘yi seçin.
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     Yeni veya mevcut müşteri:<br>
+     Varsa geçerli ödeme yöntemi:<br>
+     Sipariş Kimliği (fatura isteme seçeneği için):<br>
+     Hesap Yöneticisinin Live Kimliği (veya Kuruluş Kimliği) (şirket etki alanı olmalıdır):<br>
+     Ticari Hesap Kimliği:<br>
+     Şirket Adı (Vergi Dairesi veya Resmi Kurum Web Sitesinde görünen şekilde):<br>
+     Şirket Adresi (Vergi Dairesi veya Resmi Kurum Web Sitesinde görünen şekilde):<br>
+     Şirket Web Sitesi:<br>
+     Ülke:<br>
+     VERGİ NO/KDV NO:<br>
+     Şirketin Kuruluşu (Yıl):<br>
+     Microsoft ile önceden yapılan işler:<br>
+     İlgili Kişinin Adı:<br>
+     İlgili Kişinin Telefon Numarası:<br>
+     İlgili Kişinin E-posta Adresi:<br>
+     Kredi kartı yerine fatura seçeneğini tercih etme gerekçeniz:<br>
 
-         For cores increase, provide the following additional information:
+     Çekirdek sayısının artması için aşağıdaki ek bilgileri sağlayın:<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     (Eski kota) Mevcut Çekirdekler:<br>
+     (Yeni kota) İstenen çekirdek sayısı:<br>
+     Belirli bölge ve Abonelik serisi:<br>
 
     - **Şirket adı** ve **Şirket adresi**, Azure hesabı için sağladığınız bilgilerle aynı olmalıdır. Bilgileri görüntülemek veya güncelleştirmek için bkz. [Azure hesap profili bilgilerinizi değiştirme](change-azure-account-profile.md).
     - Kredi limitinin onaylanabilmesi için önce Azure portalında faturalama iletişim bilgilerinizi ekleyin. İletişim ayrıntıları, şirketin Borç Hesapları veya Finans bölümü ile ilişkili olmalıdır. Faturalama iletişim bilgilerini güncelleştirmek için [Azure Hesap Merkezi](https://account.azure.com/Profile)‘ne gidin.

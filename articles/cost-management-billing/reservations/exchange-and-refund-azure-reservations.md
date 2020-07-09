@@ -4,14 +4,14 @@ description: Azure Ayrılmış Sanal Makine Örnekleri’ni nasıl değiştirebi
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/01/2020
 ms.author: banders
-ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101030"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807698"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
@@ -20,6 +20,9 @@ Azure Ayrılmış Sanal Makine Örnekleri, değişen ihtiyaçlarınızın karş�
 Self servis değişim ve iptal özelliği US Government Kurumsal Anlaşma müşterileri tarafından kullanılamaz. Kullandıkça Öde ve Bulut Çözümü Sağlayıcısı (CSP) da dahil olmak üzere diğer US Government abonelik türleri desteklenir.
 
 Mevcut rezervasyonu değiştirmek veya para iadesi almak için Rezervasyon Siparişi üzerinde sahip erişiminiz olmalıdır. [Rezervasyonu yönetebilecek kullanıcıları ekleyebilir veya değiştirebilirsiniz](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+
+> [!NOTE]
+> Microsoft şu anda rezervasyon para iadelerinde erken sonlandırma ücretlerini almamaktadır. Gelecekte yapılacak para iadelerinde ücretleri alabiliriz. Şu anda bu ücretin etkinleştirileceği tarihi belirlemedik.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Mevcut rezervasyonu değiştirme veya rezervasyon için para iadesi alma
 
@@ -72,7 +75,7 @@ Azure, iptaller, değişimler ve para iadeleri için aşağıdaki ilkelere sahip
 
 **Para iadesi ilkeleri**
 
-- İptallerde %12 erken sonlandırma ücreti uygulanabilir.
+- Şu anda erken sonlandırma ücreti almıyoruz ama gelecekte iptaller için %12 erken sonlandırma ücreti uygulanabilir.
 - Toplam iptal edilen taahhüt 12 aylık zaman penceresinde 50.000 ABD dolarını aşamaz. Örnek: Aylık 100 ABD Doları tutarında olan ve 18. ayda para iadesi yapılan üç yıllık bir rezervasyon için, iptal edilen taahhüt 1.800 ABD Dolarıdır. Para iadesinden sonra, yeni kullanılabilir para iadesi limitiniz 48.200 ABD Doları olur. Bu para iadesinden 365 gün sonra 48.200 ABD Doları limiti 1.800 ABD Doları daha artırılarak yeni havuzunuz 50.000 ABD Doları olur. Diğer tüm rezervasyon iptalleri aynı havuzdan düşülür ve aynı yenileme mantığı uygulanır.
 - Para iadeleri, satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır.
 - Yalnızca rezervasyon siparişi sahipleri para iadesini işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).

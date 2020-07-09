@@ -3,23 +3,25 @@ title: İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özelliklerini nasıl kullanacağı ve müşterileri için Maliyet Yönetimi'ni nasıl etkinleştirebilecekleri anlatılmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849854"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
-Azure Maliyet Yönetimi, müşterilerini bir Microsoft Müşteri Sözleşmesi'ne eklemiş ve [bir Azure Planı satın almış olan](/partner-center/purchase-azure-plan) doğrudan iş ortakları tarafından yerel olarak kullanılabilir. Bu makalede iş ortaklarının Azure Planı'ndaki aboneliklerin maliyetlerini görüntülemek için [Azure Maliyet Yönetimi](../index.yml) özelliklerini nasıl kullanabilecekleri açıklanmıştır. Ayrıca iş ortaklarının, müşterileri için Maliyet Yönetimi erişimini nasıl etkinleştirebilecekleri de anlatılmıştır.
+Azure Maliyet Yönetimi, müşterilerini bir Microsoft Müşteri Sözleşmesi'ne eklemiş ve [bir Azure Planı satın almış olan](/partner-center/purchase-azure-plan) doğrudan iş ortakları tarafından yerel olarak kullanılabilir. Bu makalede iş ortaklarının Azure Planı'ndaki aboneliklerin maliyetlerini görüntülemek için [Azure Maliyet Yönetimi](../index.yml) özelliklerini nasıl kullanabilecekleri açıklanmıştır. Ayrıca iş ortaklarının, müşterileri için perakende fiyatına Maliyet Yönetimi erişimini nasıl etkinleştirebilecekleri de anlatılmıştır.
 
-Doğrudan iş ortakları ve dolaylı sağlayıcılar için genel yönetici ve dolaylı sağlayıcının yönetici aracıları, iş ortağı kiracısında Maliyet Yönetimi'ne erişebilir. Kurumsal bayiler ve müşteriler, Maliyet Yönetimi'ne müşteri kiracısında erişip aboneliklere ait maliyetleri görüntüleyebilir ve bu maliyetler perakende ücretleri üzerinden hesaplanır ve gösterilir. Ancak bu kullanıcıların maliyetleri görüntüleyebilmek için müşteri kiracısında aboneliğe RBAC erişimine sahip olması gerekir. Maliyet görünürlüğü ilkesinin sağlayıcı tarafından müşteri kiracısında etkinleştirilmesi gerekir.
+Doğrudan iş ortakları ve dolaylı sağlayıcılar için genel yönetici ve yönetici aracıları, iş ortağı kiracısında Maliyet Yönetimi’ne erişebilir ve faturalanan ücretlerdeki maliyetleri yönetebilir.
+
+Kurumsal bayiler ve müşteriler, Maliyet Yönetimi'ne müşteri kiracısında erişip aboneliklere ait maliyetleri görüntüleyebilir ve bu maliyetler perakende ücretleri üzerinden hesaplanır ve gösterilir. Ancak bu kullanıcıların maliyetleri görüntüleyebilmek için müşteri kiracısında aboneliğe RBAC erişimine sahip olması gerekir. Maliyet görünürlüğü ilkesinin sağlayıcı tarafından müşteri kiracısında etkinleştirilmesi gerekir.
 
 Müşteriler, CSP iş ortakları tarafından etkinleştirilmesi durumunda Maliyet Yönetimi özelliklerini kullanabilir.
 
@@ -33,10 +35,12 @@ CSP iş ortakları, Maliyet Yönetimi ile şu işlemleri gerçekleştirebilir:
 - Maliyet ve kullanım verilerini, kullandıkça öde aboneliğiyle bir depolama blobuna aktarabilir.
 
 Aşağıdaki örnekte tüm müşterilere ait maliyetler gösterilmiştir.
-![Tüm müşterilere ait maliyetleri gösteren örnek](./media/get-started-partners/customer-costs1.png)
+
+[![Tüm müşterilere ait maliyetleri gösteren örnek](./media/get-started-partners/customer-costs1.png)](./media/get-started-partners/customer-costs1.png#lightbox)
 
 Aşağıdaki örnekte tek bir müşteriye ait maliyetler gösterilmiştir.
-![Tek bir müşteriye ait maliyetleri gösteren örnek](./media/get-started-partners/customer-costs2.png)
+
+[![Tek bir müşteriye ait maliyetleri gösteren örnek](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
 Azure Maliyet Yönetimi'ndeki tüm işlevler REST API'leri aracılığıyla da kullanılabilir. API'leri kullanarak maliyet yönetimi görevlerini otomatikleştirebilirsiniz.
 
@@ -50,8 +54,7 @@ Azure Maliyet Yönetimi, ödeme hesabı veya abonelik için okuma yetkisine ihti
 
 Azure Maliyet Yönetimi için ödeme hesabı erişimini etkinleştirme ve atama hakkında daha fazla bilgi için bkz. [Kullanıcı rollerini ve izinlerini atama](/partner-center/permissions-overview). **Genel yönetici** ve **Yönetici aracısı** rolleri ödeme hesabında maliyetleri yönetebilir.
 
-Azure Maliyet Yönetimi'ne abonelik kapsamında erişmek için bir abonelikte RBAC erişimine sahip olan tüm kullanıcılar perakende (kullandıkça öde) ücretlerine ait maliyetleri görüntüleyebilir. Ancak müşteri kiracısında maliyet görünürlüğü ilkesinin etkinleştirilmiş olması gerekir. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md).
-
+Azure Maliyet Yönetimi'ne abonelik kapsamında erişmek için bir abonelikte RBAC erişimine sahip olan tüm kullanıcılar perakende (kullandıkça öde) ücretlerine ait maliyetleri görüntüleyebilir. Ancak [müşteri kiracısında maliyet görünürlüğü](#enable-the-policy-to-view-azure-usage-charges) ilkesinin etkinleştirilmiş olması gerekir. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md).
 
 ## <a name="how-cost-management-uses-scopes"></a>Maliyet Yönetimi, kapsamları nasıl kullanır?
 
@@ -110,13 +113,13 @@ Müşteri kapsamı, geçerli CSP teklifindeki müşterileri kapsamaz. Kapsam yal
 
 Doğrudan iş ortağının Azure kiracısında bulunan ödeme hesapları, faturalama profilleri ve müşteriler ile ilgili maliyetleri yönetme ve görüntüleme işlemleri yalnızca **Genel yönetici** ve **Yönetici aracısı** rolleri tarafından gerçekleştirilebilir. İş ortağı merkezi rolleri hakkında daha fazla bilgi için bkz. [Kullanıcı rollerini ve izinlerini atama](/partner-center/permissions-overview).
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Müşteri kiracısında maliyet yönetimi etkinleştirme
+## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Müşteri kiracı abonelikleri için maliyet yönetimini etkinleştirme
 
-İş ortakları, Microsoft Müşteri Sözleşmesi'ne ekledikleri müşteriler için Maliyet Yönetimi'ni etkinleştirebilir. İş ortakları daha sonra müşterilerin, maliyetlerinin kullandıkça öde perakende ücretleri üzerinden hesaplanmış halini görüntülemesine izin verecek bir ilkeyi etkinleştirebilir. Maliyetler, RBAC aboneliği ve kaynak grubu kapsamlarındaki kullanımları için müşterilerin faturalandırma para biriminde gösterilir.
+İş ortakları, Microsoft Müşteri Sözleşmesi'ne ekledikleri müşteriler için Maliyet Yönetimi'ni etkinleştirebilir. İş ortakları daha sonra müşterilerin, kullandıkları Azure hizmetlerinin maliyetlerinin kullandıkça öde perakende ücretleri üzerinden hesaplanmış halini görüntülemesine izin verecek bir ilkeyi etkinleştirebilir. Maliyetler, RBAC aboneliği ve kaynak grubu kapsamlarındaki kullanımları için müşterilerin faturalandırma para biriminde gösterilir.
 
 İş ortağı, maliyet görünürlüğü ilkesini etkinleştirdikten sonra abonelikte Azure Resource Manager erişimine sahip olan tüm kullanıcılar, kullandıkça öde fiyatları üzerinden maliyetleri yönetebilir ve analiz edebilir. Benzer şekilde Azure aboneliklerinde uygun RBAC erişimine sahip olan kurumsal bayiler ve müşteriler de maliyetleri görüntüleyebilir.
 
-İş ortakları da ilkeden bağımsız olarak aboneliğe ve kaynak grubuna erişim sahibi olmaları durumunda maliyetleri görüntüleyebilir.
+Sağlayıcının genel yöneticileri ve yönetici temsilcileri, aboneliğe ve kaynak grubuna erişimleri varsa ilke fark etmeksizin abonelik maliyetlerini görüntüleyebilir.
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Azure kullanımı ücretlerini görüntülemek için ilkeyi etkinleştirme
 
@@ -126,7 +129,7 @@ Azure portalında iş ortağı kiracısında oturum açıp **Maliyet Yönetimi +
 
 Müşteri listesinde maliyetleri görüntülemesine izin vermek istediğiniz müşteriyi seçin.
 
-![Maliyet Yönetimi'nde müşterileri seçme](./media/get-started-partners/customer-list.png)
+[![Maliyet Yönetimi’nde müşterileri seçme](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
 **Ayarlar**'ın altında **İlkeler**'i seçin.
 
@@ -139,16 +142,17 @@ Maliyet ilkesi **Evet** olarak ayarlandığında müşteri kiracısıyla ilişki
 
 Maliyet görünürlüğü ilkesi etkinleştirildiğinde abonelik kullanımına sahip olan tüm hizmetler, kullandıkça öde fiyatları üzerinden maliyetleri görüntüler. Rezervasyon kullanımı, gerçek ve amorti edilen maliyetler için sıfır ücretle gösterilir. Satın alma ve yetkilendirme işlemleri belirli bir abonelikle ilişkilendirilmez. Bu nedenle satın alma işlemleri, abonelik kapsamında görüntülenmez.
 
+### <a name="view-subscription-costs-in-the-customer-tenant"></a>Müşteri kiracısında abonelik maliyetlerini görüntüleme
 
-### <a name="view-customer-costs"></a>Müşteri maliyetlerini görüntüleme
+Bir aboneliğin maliyetlerini görüntülemek için müşterinin Azure kiracısında **Maliyet Yönetimi + Faturalandırma** sayfasını açın. Maliyetleri gözden geçirmeye başlamak için gerekli aboneliğin **Maliyet analizini** seçin. Müşteri kiracısında her aboneliğin tüketim maliyetlerini ayrı ayrı görüntüleyebilirsiniz.
 
-Müşteri kiracısının maliyetlerini görüntülemek için **Maliyet Yönetimi + Faturalama**’yı açın. **Maliyet analizi**’ni seçin ve kapsamı müşteri kiracısı aboneliği olarak değiştirerek maliyetleri gözden geçirme işlemini başlatın.
-
-![Maliyet analizini müşteri olarak görüntüleme ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+[![Maliyet analizini müşteri olarak görüntüleme ](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
 Abonelik ve kaynak grubu RBAC kapsamları için maliyet analizi, bütçeler ve uyarılar, kullandıkça öde fiyatını temel alan maliyetler üzerinden kullanılabilir.
 
 RBAC kapsamlarındaki ayrılmış örneklere ait amorti edilmiş görünümler ve gerçek maliyetler sıfır olarak görünür. Ayrılmış örnek maliyetleri yalnızca satın alma işleminin gerçekleştirildiği faturalama kapsamlarında gösterilir.
+
+Görünümde gösterilen maliyetleri hesaplamak için kullanılan perakende fiyatları, tüm müşteriler için Azure Fiyatlandırma Hesaplayıcısı’nda gösterilen fiyatlarla aynıdır. Gösterilen fiyatlar, iş ortağının sahip olabileceği İş Ortağı Tarafından Kazanılmış Krediler, Katman İndirimleri, Genel Hizmet indirimleri gibi indirimleri veya kredileri içermez.
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Maliyet analizindeki maliyetleri analiz etme
 
