@@ -1,17 +1,14 @@
 ---
 title: Azure Event Grid ölçümleri ve etkinlik günlüğü işlemleri için uyarı ayarlama
 description: Bu makalede, Azure Event Grid ölçümleri ve etkinlik günlüğü işlemlerinde uyarıların nasıl oluşturulacağı açıklanır.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 1a2eacb5fa03ea2a5a8ba2d38d9b3e7dea315890
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 615ebef749be49822a09470eb0d47d8eb31b9a5a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412847"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119149"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Azure Event Grid ölçümleri ve etkinlik günlüklerinde uyarı ayarlama
 Bu makalede, Azure Event Grid ölçümleri ve etkinlik günlüğü işlemlerinde uyarıların nasıl oluşturulacağı açıklanır. Azure Event Grid kaynaklar (konular ve etki alanları) için hem yayımlama hem de teslim ölçümleri üzerinde uyarı oluşturabilirsiniz. Sistem konuları için [ **ölçümler** sayfasını kullanarak uyarılar oluşturun](#create-alerts-using-the-metrics-page).

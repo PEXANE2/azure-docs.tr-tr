@@ -4,14 +4,14 @@ description: Bu makalede, bir PostgreSQL için Azure veritabanı-tek sunucu ile 
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f25bda1a450919264c7ddba3886554381009c546
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119608"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-tek sunucu
 
@@ -70,7 +70,7 @@ Sunucu Yöneticisi Kullanıcı hesabı, ek kullanıcılar oluşturmak ve bu kull
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örnek:
+4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örneğin:
 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;

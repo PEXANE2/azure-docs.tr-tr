@@ -5,14 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: ba0311da88f1fe0cbc0bf885197785db10b1bac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564843"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121444"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics’te tanılama günlüklerine erişim
 
@@ -128,7 +128,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
 
-| Name | Tür | Açıklama |
+| Name | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -142,7 +142,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
 
-| Name | Tür | Açıklama |
+| Name | Tür | Description |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -178,7 +178,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
 
-| Name | Tür | Açıklama |
+| Name | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın tanımlayıcısı |
@@ -196,7 +196,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
 
-| Name | Tür | Açıklama |
+| Name | Tür | Description |
 | --- | --- | --- |
 | JobId |Dize |İşe atanan KIMLIK |
 | JobName |Dize |İş için belirtilen ad |

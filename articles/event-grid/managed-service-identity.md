@@ -1,17 +1,14 @@
 ---
 title: Yönetilen hizmet kimliğiyle olay teslimi
 description: Bu makalede bir Azure olay Kılavuzu konusu için yönetilen hizmet kimliğinin nasıl etkinleştirileceği açıklanır. Olayları desteklenen hedeflere iletmek için kullanın.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 06/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 4d81845ab61d8a84b9bad47ede4a027cd772c499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 5138a89101a7e6c1770952028de9c3d478bc3852
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412949"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119200"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Yönetilen bir kimlikle olay teslimi
 Bu makalede, Azure Event Grid konuları veya etki alanları için [yönetilen bir hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.

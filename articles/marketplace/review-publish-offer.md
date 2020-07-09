@@ -1,19 +1,19 @@
 ---
 title: Microsoft Commercial Market 'e yönelik bir teklifi gözden geçirin ve yayımlayın
 description: Teklifinizi önizlemek için Iş Ortağı Merkezi 'ni kullanın, teklifinizin önizlemesini yapın ve Microsoft ticari Market ' te yayımlayın.
-author: mingshen-ms
-ms.author: mingshen
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 910a886f02b386d7242bdd5e85f0710baa25408e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86091023"
+ms.locfileid: "86119744"
 ---
 # <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi gözden geçirin ve yayımlayın
 

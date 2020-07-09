@@ -1,18 +1,18 @@
 ---
 title: Sanal makine sertifikasyonu - sorunlar ve çözümler
 description: Bu makalede VM görüntülerinin yaygın hata iletileri açıklanmaktadır. Ayrıca ilgili çözümleri de anlatmaktadır
-author: v-miegge
-ms.author: v-krmall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
+author: v-miegge
+ms.author: v-krmall
 ms.date: 06/16/2020
-ms.openlocfilehash: 71577a52ed1b528bc330d4c8e1f4c34ab6e1d81f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087053"
+ms.locfileid: "86120662"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Sanal makine sertifikası sırasında sorunlar ve çözümler 
 
@@ -94,7 +94,7 @@ Microsoft sertifika araç seti, test çalışmalarını çalıştırmanıza ve V
 
 Aşağıdaki tablo, araç setinin çalışacağı Linux test çalışmalarını listeler. Test doğrulaması, açıklamada belirtilmiştir.
 
-|Senaryo|Test çalışması|Açıklama|
+|Senaryo|Test çalışması|Description|
 |---|---|---|
 |1|Bash geçmişi|VM görüntüsünü oluşturmadan önce bash geçmiş dosyaları temizlenmelidir.|
 |2|Linux Aracısı sürümü|Azure Linux Agent 2.2.41 veya üzeri yüklü olmalıdır.|
@@ -122,7 +122,7 @@ Aşağıdaki tabloda, önceki test çalışmaları yürütülürken bulunan yayg
 
 Aşağıdaki tabloda, test doğrulamasının bir açıklamasıyla birlikte, araç setinin çalışacağı Windows test çalışmaları listelenmektedir:
 
-|Senaryo |Test çalışmaları|Açıklama|
+|Senaryo |Test çalışmaları|Description|
 |---|---|---|---|
 |1|İşletim sistemi mimarisi|Azure yalnızca 64 bitlik işletim sistemlerini destekler.|
 |2|Kullanıcı hesabı bağımlılığı|Uygulama yürütme, yönetici hesabına bağlı olmamalıdır.|

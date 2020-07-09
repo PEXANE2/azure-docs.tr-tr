@@ -1,17 +1,18 @@
 ---
 title: Tümleşik çözümler-Microsoft ticari Market
 description: Ticari Market 'te Tümleşik çözümler sunma avantajları, kaynakları ve sonraki adımlar hakkında bilgi edinin.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83657999"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119523"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>Ticari Market 'teki Tümleşik çözümler
 Tümleşik bir çözüm, Microsoft iş ortaklarından en iyi şekilde sunulan ve uzman hizmet iş ortakları tarafından sunulan danışmanın, dağıtımın ve desteklenen bir araya getirir.

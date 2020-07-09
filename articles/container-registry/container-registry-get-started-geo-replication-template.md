@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-coğrafi olarak çoğaltılan kayıt defteri Kaynak Yöneticisi şablonu oluşturma
+title: Hızlı başlangıç-coğrafi olarak çoğaltılan kayıt defteri Azure Resource Manager şablonu oluşturma
 description: Azure Resource Manager şablonu kullanarak coğrafi olarak çoğaltılan bir Azure Container Registry oluşturmayı öğrenin.
 services: azure-resource-manager
 author: dlepow
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: c94cd3b4b455691e85e7525007fcdf7a056a2b28
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119863"
 ---
-# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak coğrafi olarak çoğaltılan kapsayıcı kayıt defteri oluşturma
+# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak coğrafi olarak çoğaltılan kapsayıcı kayıt defteri oluşturma
 
-Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir Azure Container Registry örneği oluşturma gösterilmektedir. Şablon, birden fazla Azure bölgesinde kayıt defteri içeriğini otomatik olarak eşitleyen [coğrafi olarak çoğaltılan](container-registry-geo-replication.md) bir kayıt defteri ayarlar. Coğrafi çoğaltma, tek bir yönetim deneyimi sağlarken bölgesel dağıtımlardan gelen görüntülere ağ kapatma erişimi sağlar. Bu, [Premium](container-registry-skus.md) kayıt defteri hizmet katmanının bir özelliğidir. 
+Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure Container Registry örneği oluşturma gösterilmektedir. Şablon, birden fazla Azure bölgesinde kayıt defteri içeriğini otomatik olarak eşitleyen [coğrafi olarak çoğaltılan](container-registry-geo-replication.md) bir kayıt defteri ayarlar. Coğrafi çoğaltma, tek bir yönetim deneyimi sağlarken bölgesel dağıtımlardan gelen görüntülere ağ kapatma erişimi sağlar. Bu, [Premium](container-registry-skus.md) kayıt defteri hizmet katmanının bir özelliğidir.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
-
-Yok.
-
-## <a name="create-a-geo-replicated-registry"></a>Coğrafi olarak çoğaltılan kayıt defteri oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Şablon bir kayıt defteri ve ek bölgesel bir çoğaltma ayarlar.
 
@@ -42,7 +42,7 @@ Aşağıdaki kaynaklar şablonda tanımlanmıştır:
 
 Daha fazla Azure Container Registry şablon örneği [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerregistry&pageNumber=1&sort=Popular)bulunabilir.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
  1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın.
 
@@ -86,7 +86,7 @@ Artık ihtiyacınız kalmadığında, kaynak grubunu, kayıt defterini ve kayıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Kaynak Yöneticisi şablonuyla Azure Container Registry oluşturdunuz ve başka bir konumda kayıt defteri çoğaltması yapılandırdınız. ACR 'ye daha ayrıntılı bir bakış için Azure Container Registry öğreticilerine geçin.
+Bu hızlı başlangıçta ARM şablonuyla bir Azure Container Registry oluşturdunuz ve başka bir konumda kayıt defteri çoğaltması yapılandırdınız. ACR 'ye daha ayrıntılı bir bakış için Azure Container Registry öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
 > [Azure Container Registry öğreticileri](container-registry-tutorial-prepare-registry.md)
@@ -94,4 +94,4 @@ Bu hızlı başlangıçta, bir Kaynak Yöneticisi şablonuyla Azure Container Re
 Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

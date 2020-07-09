@@ -7,26 +7,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722465"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119506"
 ---
-# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Service Fabric kümesi oluşturma
+# <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Service Fabric kümesi oluşturma
 
-Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri ve kapsayıcıları paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur. Service Fabric *küme* , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal makineler kümesidir.
+Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri ve kapsayıcıları paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur. Service Fabric *küme* , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal makineler kümesidir. Bu makalede, Azure 'da bir Service Fabric test kümesinin bir Azure Resource Manager şablonu (ARM şablonu) kullanılarak nasıl dağıtılacağı açıklanır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Bu makalede, Azure 'da Kaynak Yöneticisi kullanarak Service Fabric test kümesinin nasıl dağıtılacağı açıklanır. Bu beş düğümlü Windows kümesi, otomatik olarak imzalanan bir sertifikayla güvenli hale getirilir ve bu nedenle yalnızca eğitim amaçlarıyla (üretim iş yükleri yerine) yöneliktir.
+Bu beş düğümlü Windows kümesi, otomatik olarak imzalanan bir sertifikayla güvenli hale getirilir ve bu nedenle yalnızca eğitim amaçlarıyla (üretim iş yükleri yerine) yöneliktir. Şablonu dağıtmak için Azure PowerShell kullanacağız. Azure PowerShell ek olarak, Azure portal, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-portal.md).
 
-Şablonu dağıtmak için Azure PowerShell kullanacağız. Azure PowerShell ek olarak, Azure portal, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-portal.md).
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-
-## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Service Fabric SDK ve PowerShell modülleri 'ni yükler
 
@@ -40,8 +42,8 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 [Azure Resource Manager hızlı başlangıç şablonları](https://github.com/Azure/azure-quickstart-templates) deposunu kopyalayın veya indirin. Alternatif olarak, *Service-Fabric-Secure-Cluster-5-node-1-NodeType* klasöründen kullanacağınız dosyaları yerel olarak aşağı kopyalayın:
 
-* [New-ServiceFabricClusterCertificate. ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
-* [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
+* [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
+* [Üzerindeazuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
 * [azuredeploy.parameters.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.parameters.json)
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -87,11 +89,9 @@ $certUrlValue = "<Certificate URL>"
 $certThumbprint = "<Certificate Thumbprint>"
 ```
 
-## <a name="create-a-service-fabric-cluster"></a>Service Fabric kümesi oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
-
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). Bu makalenin şablonu burada görüntülenemeyecek kadar uzun. Şablonu görüntülemek için, bkz. [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) dosyası.
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). Bu makalenin şablonu burada görüntülenemeyecek kadar uzun. Şablonu görüntülemek için dosyadaki [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) bakın.
 
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
@@ -106,14 +106,14 @@ Azure Service Fabric ile ilgili daha fazla şablon bulmak için bkz. [Azure hız
 
 ### <a name="customize-the-parameters-file"></a>Parametreler dosyasını özelleştirme
 
-*Azuredeploy. Parameters. JSON* ' u açın ve parametre değerlerini düzenleyerek şunları yapabilirsiniz:
+*azuredeploy.parameters.js* açın ve parametre değerlerini düzenleyerek şu şekilde düzenleyin:
 
 * **clusterName** , küme sertifikanızı oluştururken *certdnsname* için sağladığınız değerle eşleşir
 * **AdminUserName** varsayılan *Gen-UNIQUE* Token dışında bir değerdir
 * **adminPassword** varsayılan *genel parola* belirtecinden farklı bir değerdir
 * **certificateThumbprint**, **Sourcevaultresourceıd**ve **certificateurlvalue** tüm boş dizlardır ( `""` )
 
-Örnek:
+Örneğin:
 
 ```json
 {
@@ -144,7 +144,7 @@ Azure Service Fabric ile ilgili daha fazla şablon bulmak için bkz. [Azure hız
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Kaynak Yöneticisi şablon ve parametre dosyalarınızın yollarını değişkenlerde depolayın, sonra şablonu dağıtın.
+ARM şablon ve parametre dosyalarınızın yollarını değişkenlerde depolayın, sonra şablonu dağıtın.
 
 ```powershell
 $templateFilePath = "<full path to azuredeploy.json>"

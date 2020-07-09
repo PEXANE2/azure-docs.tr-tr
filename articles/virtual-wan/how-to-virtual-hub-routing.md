@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: f9f05eb73c2fa12c9625c8e26d1c86431bcb8f6a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e9891e3ac12de3f8735407c603ff59b61f4eb05d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087070"
+ms.locfileid: "86118979"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Sanal merkez yönlendirmeyi yapılandırma
 
@@ -22,7 +22,9 @@ Bir sanal hub, siteden siteye VPN ağ geçidi, ExpressRoute ağ geçidi, Noktada
 Daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Bu yeteneklerin bazıları hala kullanıma alınıyor ve 3. hafta içinde tamamlanmalıdır.
+> Bu yeteneklerin bazıları hala kullanıma sunulmayabilir. Dağıtım henüz bölgenizde gerçekleşmemişse, lütfen bu makalede yer alan makalelerin bu sürümlerindeki adımları kullanın:
+>* [Azure portal makalesi](virtual-wan-route-table-nva-portal.md)
+>* [PowerShell makalesi](virtual-wan-route-table-nva.md)
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Yönlendirme tablosu oluşturma

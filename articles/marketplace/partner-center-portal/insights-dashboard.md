@@ -1,17 +1,16 @@
 ---
 title: Market öngörüleri-Microsoft ticari Market
 description: Microsoft AppSource ve Azure Marketi 'nde müşteri katılımını ölçmenizi sağlayan Market Web Analytics özetine erişin.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745666"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120407"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Iş Ortağı Merkezi 'nde Market öngörüleri panosu
 

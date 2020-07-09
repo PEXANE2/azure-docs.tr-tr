@@ -6,17 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 3af5a716bc5e211a7fd3263f57f5b5e62af628ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119897"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>MySQL için Azure veritabanı fiyatlandırma katmanları
 
 Bir MySQL için Azure veritabanı sunucusu oluşturmak için üç farklı fiyatlandırma katmanlarından birini kullanabilirsiniz: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Fiyatlandırma katmanları, sağlanan sanal çekirdekler, sanal çekirdek başına bellek ve verileri depolamak için kullanılan depolama teknolojisi miktarına göre farklılaştırılabilir. Tüm kaynaklar MySQL sunucu düzeyinde sağlanır. Sunucuda bir veya daha fazla veritabanı olabilir.
 
-|    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+| Öznitelik   | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
 | İşlem oluşturma | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -42,7 +43,7 @@ Bir sunucu oluşturduktan sonra, sanal çekirdek sayısı, donanım oluşturma v
 
 Sağladığınız depolama alanı, MySQL için Azure veritabanı sunucunuz için kullanılabilen depolama kapasitesi miktarıdır. Depolama alanı veritabanı dosyaları, geçici dosyalar, işlem günlükleri ve MySQL Server günlükleri için kullanılır. Sağladığınız toplam depolama miktarı, sunucunuz için kullanılabilir olan g/ç kapasitesini de tanımlar.
 
-|    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+| Depolama özniteliği   | Temel | Genel amaçlı | Bellek için iyileştirilmiş |
 |:---|:----------|:--------------------|:---------------------|
 | Depolama türü | Temel depolama | Genel Amaçlı depolama | Genel Amaçlı depolama |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 16 TB | 5 GB ila 16 TB |

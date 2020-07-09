@@ -1,18 +1,18 @@
 ---
 title: Azure Marketi teklifi ve hizmet listesi gereksinimleri
 description: Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listelemek için gereksinimler ve yönergeler açıklanmaktadır.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 6c95f510ce83f924a58b0844285f4142131db3eb
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b0954941ba6b6b7ce3697889305dc5bbd299590
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027146"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119387"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
 
@@ -28,7 +28,7 @@ Aşağıdakiler de dahil olmak üzere belirli liste türleri için ek gereksinim
 
 ## <a name="listing-requirements-for-all-offers"></a>Tüm teklifler için gereksinimleri listeleme
 
-|  | Listeleme öğesi | Temel gereksinim | En iyi gereksinim |
+| Sayı | Listeleme öğesi | Temel gereksinim | En iyi gereksinim |
 |:--- |:--- |:--- |:--- |
 | 1 | Müşteri adayı hedefi | Yapılandırılmış bir lider hedefi vardır.| Tek bir ticari Iş ortağı (OCP) kataloğunda, iş ortağı çözümü sekmesinde da listelenen lider hedefi CRM bilgileri bulunur. | 
 | 2 | Teklif başlığı | Çözüm teklifini kısaca açıklar. İş ortağının Web sitesinde çözümün çevrimiçi promosyonu ile eşleşir. | Anahtar arama sözcüklerini içerir. |
@@ -47,15 +47,15 @@ Aşağıdakiler de dahil olmak üzere belirli liste türleri için ek gereksinim
 
 ## <a name="trial-offer-requirements"></a>Deneme teklifi gereksinimleri
 
-|  | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
+| Sayı | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
-|  | Liste durumu (eylem çağrısı) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Eyleme yapılan diğer çağrılar (örneğin, *Şimdi satın al*) de mevcuttur. | 
+| 1 | Liste durumu (eylem çağrısı) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Eyleme yapılan diğer çağrılar (örneğin, *Şimdi satın al*) de mevcuttur. | 
 
 ---
 
 ## <a name="saas-application-requirements"></a>SaaS uygulama gereksinimleri
 
-|  | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
+| Sayı | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
 | 1 | Teklif başlığı |<ul><li>Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi içermelidir. Başlık yayımlandıktan sonra değiştirilemez.</li><li>Çözüm sunumunu açıklar.</li><li>İş ortağının Web sitesinde çevrimiçi çözüm promosyonu ile eşleşir. | Anahtar arama sözcüklerini içerir. |
 | 2 | Teknik bilgiler: yapılandırma |<ul><li>Hizmet olarak yazılım (SaaS) uygulamaları için yalnızca uygulamanızı listelemek mı yoksa müşterilerin uygulamanızı Azure üzerinden satın almasını mı istediğinizi seçin.</li><li>Teklifinizin Alım düğmenizde istediğiniz metni seçin: *ücretsiz*, *ücretsiz deneme*veya *benimle iletişim kurun*.</li><li>Açılır pencerede, uygulamanız teknolojiden yararlanıyorsa yalnızca geçerli bir ürün seçin: Cortana Intelligence, Power BI çözüm şablonları veya güç uygulamaları. |  |
@@ -73,7 +73,7 @@ Aşağıdakiler de dahil olmak üzere belirli liste türleri için ek gereksinim
 
 ## <a name="container-offer-requirements"></a>Kapsayıcı teklif gereksinimleri
 
-|  | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
+| Sayı | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
 |1 |Teklif ayarları | <ul><li>Teklif KIMLIĞI: maks. 50 karakter.</li><li>Yayımcı KIMLIĞI: açılan listeden seçin.</li><li>Ad: maks. 50 karakter. | Açıklamada zaten bulunan başlık stilini yansıtır. Uzun başlıklar kullanmaktan kaçının. | 
 | 2 | SKU'lar | İş ortağı yeni SKU 'Ları seçer.| Başlık, açıklamada zaten bulunan başlık stilini yansıtır. Uzun başlıklar kullanmaktan kaçının.  |
@@ -84,7 +84,7 @@ Aşağıdakiler de dahil olmak üzere belirli liste türleri için ek gereksinim
 
 ## <a name="consulting-offer-requirements"></a>Danışmanlık teklif gereksinimleri
 
-|  | Listeleme öğesi | Temel gereksinim | En iyi gereksinim |
+| Sayı | Listeleme öğesi | Temel gereksinim | En iyi gereksinim |
 |:--- |:--- |:--- |:--- |
 | 1 | Teklif başlığı  |  Hizmet türünü ve süreyi, biçim *adı: Duration türünde* (örneğin, "teklif katılımı: 1-haftalık kavram kanıtı") açıkça listemelidir.  | <ul><li>Yayımcı adını yinelemez.</li><li>Başlık, açıklamada zaten bulunan başlık stilini yansıtır. Uzun başlıklar kullanmaktan kaçının. | 
 | 2 | Teklif açıklaması  |<ul><li>[Microsoft ürün adlarının](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)doğru kullanımını sağlayın.</li><li>Fiyat olarak işaretlenen teklifler *: tahmini* , değişkenlik (istemciye yolculuk, geçirilmekte olan sunucu sayısı vb.) açıklamak için en üst veya alt kısımdaki bir nota sahip olmalıdır.</li><li>Her teklif türü, aşağıdaki gibi açıklama gereksinimlerine sahiptir: <ul><li>Brifler, ele alınanlara ilişkin bilgilerle en az dört veya beş madde işareti olmalıdır.</li><li>Tüm atölyeler bir ajandası olmalıdır.</li><li>Atölyenin süresine bağlı olarak tüm ajandaların güne veya haftaya göre ayrılmış olması gerekir.</li><li>Assessment, POC, eğitim olmayan atölyeler ve uygulama için teslim edilebilirler gerekir.</li><li>Eğitim atölyeler için teslim edilebilirler gerekmez, ancak kapsanacak konularda daha ayrıntılı bir gündemi olması gerekir.</li></ul></ul> | <ul><li>Herhangi bir teklifin gündem ve teslim edilebilirler vardır.</li><li>Teklif, en üst bölümde hizmeti sağlayan şirket hakkında bağlam içeren bir paragraf içerir.</li><li>Teklif, en üst bölüm olarak hizmetin kendisinin değeri hakkında bir paragraf içerir. |

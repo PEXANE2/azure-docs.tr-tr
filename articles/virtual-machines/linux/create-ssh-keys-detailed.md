@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84985351"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119217"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ayrıntılı adımlar: Azure 'da bir Linux VM 'sine kimlik doğrulaması için SSH anahtarları oluşturma ve yönetme 
 Güvenli Kabuk (SSH) anahtar çifti ile Azure 'da, kimlik doğrulaması için SSH anahtarlarını kullanan varsayılan bir Linux sanal makinesi oluşturabilir ve parolaların oturum açması gereksinimini ortadan kaldırabilirsiniz. Azure portal, Azure CLı, Kaynak Yöneticisi şablonları veya diğer araçlarla oluşturulan VM 'Ler, SSH bağlantıları için SSH anahtarı kimlik doğrulamasını ayarlayan dağıtımın bir parçası olarak SSH ortak anahtarınızı içerebilir. 
@@ -40,7 +41,7 @@ SSH anahtarları, varsayılan olarak `~/.ssh` dizininde tutulur.  `~/.ssh` dizin
 
 ### <a name="basic-example"></a>Temel örnek
 
-Aşağıdaki `ssh-keygen` komut, dizinde varsayılan olarak 2048 BITLIK ssh rsa ortak ve özel anahtar dosyaları oluşturur `~/.ssh` . Geçerli konumda bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
+Aşağıdaki `ssh-keygen` komut, dizinde varsayılan olarak 4096 BITLIK ssh rsa ortak ve özel anahtar dosyaları oluşturur `~/.ssh` . Geçerli konumda bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096

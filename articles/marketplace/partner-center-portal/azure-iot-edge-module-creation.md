@@ -1,18 +1,18 @@
 ---
 title: Azure Marketi 'nde Iş Ortağı Merkezi ile Azure IoT Edge bir modül teklifi oluşturma
 description: Iş Ortağı Merkezi 'ni kullanarak Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama hakkında bilgi edinin
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: 8accb29907bde53baf7f175dd1d36a9a2e1fe66b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984696"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119302"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modülü teklifi oluşturma, yapılandırma ve yayımlama
 

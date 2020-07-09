@@ -2,18 +2,16 @@
 title: SaaS uygulamaları yayımlama Kılavuzu-Microsoft ticari Market
 description: Yayımlama SaaS uygulaması için gereksinimler ve kaynaklar Microsoft AppSource ve Azure Marketi 'ne yöneliktir.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: dsindona
-ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c19799265679eeead96bf95943f274aa32c75ff2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963844"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121580"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulaması teklifi yayımlama kılavuzu
 
@@ -28,9 +26,9 @@ SaaS uygulamaları Microsoft AppSource ve Azure Marketi 'nde kullanılabilir.  H
 
 | SaaS uygulamaları teklifi | İş gereksinimleri | Teknik gereksinimler |  
 | --- | --- | --- |  
-| **Bizimle iletişime geçin** | Evet | Hayır |  
-| **Power BI/Dynamics** | Evet | Evet (Azure AD tümleştirmesi) |  
-| **SaaS uygulamaları**| Evet | Evet (Azure AD tümleştirmesi) |     
+| **Bizimle iletişime geçin** | Yes | Hayır |  
+| **Power BI/Dynamics** | Yes | Evet (Azure AD tümleştirmesi) |  
+| **SaaS uygulamaları**| Yes | Evet (Azure AD tümleştirmesi) |     
 
 ## <a name="saas-list"></a>SaaS listesi
 

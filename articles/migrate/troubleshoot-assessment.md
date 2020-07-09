@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121682"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -36,10 +36,10 @@ Microsoft Visual Studio aboneliği gerektirir | Makine, yalnızca bir Visual Stu
 Gerekli depolama performansı için VM bulunamadı | Makine için gereken depolama performansı (saniye başına giriş/çıkış işlemi [ıOPS] ve üretilen iş), Azure VM desteğini aşıyor. Geçişten önce makinenin depolama gereksinimlerini azaltın.
 Gerekli ağ performansı için VM bulunamadı | Makine için gereken ağ performansı (ın/out) Azure VM desteğini aşıyor. Makinenin ağ gereksinimlerini azaltın.
 Belirtilen konumda VM bulunamadı | Geçişten önce farklı bir hedef konum kullanın.
-Bir veya daha fazla uygun olmayan disk | VM 'ye bağlı bir veya daha fazla disk, Azure gereksinimlerini karşılamıyor. A<br/><br/> Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklememektedir ve Premium yönetilen diskler (32 TB) için disk sınırlarına göre diskleri değerlendirir.<br/><br/> SANAL makineye bağlı her disk için, diskin boyutunun < 64 TB (Ultra SSD diskler tarafından desteklenir) olduğundan emin olun.<br/><br/> Değilse, Azure 'a geçmeden önce disk boyutunu azaltın veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) . Her disk için gereken performansın (ıOPS ve aktarım hızı) Azure [yönetilen sanal makine diskleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)tarafından desteklendiğinden emin olun.
+Bir veya daha fazla uygun olmayan disk | VM 'ye bağlı bir veya daha fazla disk, Azure gereksinimlerini karşılamıyor. A<br/><br/> Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklememektedir ve Premium yönetilen diskler (32 TB) için disk sınırlarına göre diskleri değerlendirir.<br/><br/> SANAL makineye bağlı her disk için, diskin boyutunun < 64 TB (Ultra SSD diskler tarafından desteklenir) olduğundan emin olun.<br/><br/> Değilse, Azure 'a geçmeden önce disk boyutunu azaltın veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](../virtual-machines/windows/premium-storage-performance.md#disk-striping) . Her disk için gereken performansın (ıOPS ve aktarım hızı) Azure [yönetilen sanal makine diskleri](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)tarafından desteklendiğinden emin olun.
 Bir veya daha fazla uygun olmayan ağ bağdaştırıcısı. | Kullanılmayan ağ bağdaştırıcılarını geçişten önce makineden kaldırın.
 Disk sayısı sınırı aşıyor | Kullanılmayan diskleri geçişten önce makineden kaldırın.
-Disk boyutu sınırı aşıyor | Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklemez ve değerlendirir disk sınırlarına (32 TB) dayalı diskleri destekler.<br/><br/> Ancak Azure, 64 TB 'a kadar olan diskleri destekler (Ultra SSD diskleri tarafından desteklenir). Geçiş işleminden önce diskleri 64 TB 'den daha az bir değere küçültün veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) .
+Disk boyutu sınırı aşıyor | Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklemez ve değerlendirir disk sınırlarına (32 TB) dayalı diskleri destekler.<br/><br/> Ancak Azure, 64 TB 'a kadar olan diskleri destekler (Ultra SSD diskleri tarafından desteklenir). Geçiş işleminden önce diskleri 64 TB 'den daha az bir değere küçültün veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](../virtual-machines/windows/premium-storage-performance.md#disk-striping) .
 Belirtilen konumda disk yok | Geçirmeden önce diskin hedef konumunda olduğundan emin olun.
 Belirtilen artıklık için disk kullanılamıyor | Disk, değerlendirme ayarlarında tanımlanan artıklık depolama türünü kullanmalıdır (varsayılan olarak LRS).
 Bir iç hata nedeniyle disk uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
@@ -52,7 +52,7 @@ Koşullu olarak Ready Internet Protokolü | Yalnızca Azure VMware Çözüm (AVS
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>İçeri aktarma temelli AVS değerlendirmesi bilinmeyen olarak işaretlenmiş olan önerilen geçiş aracı
 
-Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, ve AVS değerlendirmesi için varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, ve AVS değerlendirmesi için varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir. [Daha fazla bilgi edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux VM 'Leri, bir Azure VM değerlendirmesinde "koşullu olarak hazırlanıyor"
 
@@ -64,7 +64,7 @@ VMware ve Hyper-V VM 'lerinde sunucu değerlendirmesi, sunucu değerlendirmesind
 - [Azure Linux desteğini](https://aka.ms/migrate/selfhost/azureendorseddistros)inceleyerek, ŞIRKET içi VM 'de çalışan Linux Işletim sisteminin Azure 'da olup olmadığını belirleyebilirsiniz.
 -  Doğrulanan dağıtımı doğruladıktan sonra bu uyarıyı yoksayabilirsiniz.
 
-Bu boşluk, VMware VM 'lerinde [uygulama bulma](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) etkinleştirilerek çözülebilir. Sunucu değerlendirmesi, belirtilen konuk kimlik bilgilerini kullanarak VM 'den algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
+Bu boşluk, VMware VM 'lerinde [uygulama bulma](./how-to-discover-applications.md) etkinleştirilerek çözülebilir. Sunucu değerlendirmesi, belirtilen konuk kimlik bilgilerini kullanarak VM 'den algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure VM değerlendirmesinde Azure SKU 'Ları Şirket içinden daha büyük
@@ -101,7 +101,7 @@ Sunucu değerlendirmesi, "PercentageOfCoresUtilizedMissing" veya "PercentageOfMe
 - Bu durum, değerlendirme süresi boyunca VM 'Ler kapatılmışsa ortaya çıkabilir. Gereç, devre dışı bırakıldığında bir VM için performans verilerini toplayamıyor.
 - Yalnızca bellek sayaçları eksikse ve Hyper-V VM 'lerini değerlendirmeye çalışıyorsanız, bu VM 'lerde etkin bir dinamik bellek olup olmadığını kontrol edin. Yalnızca Hyper-V VM 'Leri için bir Azure geçişi gerecinin, dinamik belleği etkin olmayan VM 'Ler için bellek kullanım verilerini toplayamediği bilinen bir sorun vardır.
 - Performans sayaçlarından herhangi biri eksikse, Azure geçişi sunucu değerlendirmesi ayrılmış çekirdeğe ve belleğe geri döner ve buna karşılık gelen VM boyutunu önerir.
-- Tüm performans sayaçları eksikse, değerlendirme için bağlantı noktası erişim gereksinimlerinin karşılandığından emin olun. [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) ve [fiziksel](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) sunucu değerlendirmesi için bağlantı noktası erişim gereksinimleri hakkında daha fazla bilgi edinin.
+- Tüm performans sayaçları eksikse, değerlendirme için bağlantı noktası erişim gereksinimlerinin karşılandığından emin olun. [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) ve [fiziksel](./migrate-support-matrix-physical.md#port-access) sunucu değerlendirmesi için bağlantı noktası erişim gereksinimleri hakkında daha fazla bilgi edinin.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>İşletim sistemi lisansı bir Azure VM değerlendirmesine dahil midir?
 
@@ -120,11 +120,11 @@ Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluş
 
 ## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>Fiziksel sunucum için önerilen Azure VM SKU 'SU büyük
 
-Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Azure geçişi Şu anda bu sunucularda fiziksel ve sanal ağ bağdaştırıcılarını tespit eder. Bu nedenle, hayır. bulunan ağ bağdaştırıcılarının sayısı, gerçek değerden daha yüksek. Sunucu değerlendirmesi gereken sayıda ağ bağdaştırıcısını destekleyebilen bir Azure VM 'si çekirse, bu muhtemelen büyük olasılıkla büyük bir VM 'nin oluşmasına neden olabilir. Hayır 'ın etkisi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) . ağ bağdaştırıcılarının boyutunu boyutlandırmadır. Bu, ileride gönderilecek bir ürün eksikmidir.
+Fiziksel sunucuda Hyper-V Sanallaştırması etkinleştirilmişse bu durum oluşabilir. Azure geçişi Şu anda bu sunucularda fiziksel ve sanal ağ bağdaştırıcılarını tespit eder. Bu nedenle, hayır. bulunan ağ bağdaştırıcılarının sayısı, gerçek değerden daha yüksek. Sunucu değerlendirmesi gereken sayıda ağ bağdaştırıcısını destekleyebilen bir Azure VM 'si çekirse, bu muhtemelen büyük olasılıkla büyük bir VM 'nin oluşmasına neden olabilir. Hayır 'ın etkisi hakkında [daha fazla bilgi edinin](./concepts-assessment-calculation.md#calculating-sizing) . ağ bağdaştırıcılarının boyutunu boyutlandırmadır. Bu, ileride gönderilecek bir ürün eksikmidir.
 
 ## <a name="readiness-category-not-ready-for-my-physical-server"></a>Fiziksel sunucum için hazırlık kategorisi "hazır değil"
 
-Hyper-V Sanallaştırması etkin olan bir fiziksel sunucu söz konusu olduğunda, hazırlık kategorisi yanlış bir şekilde "hazır değil" olarak işaretlenmiş olabilir. Bu sunucularda, bir ürün boşluğu nedeniyle Azure geçişi Şu anda fiziksel ve Sanal bağdaştırıcıları bulur. Bu nedenle, hayır. bulunan ağ bağdaştırıcılarının sayısı, gerçek değerden daha yüksek. Hem şirket içinde hem de performans tabanlı değerlendirmelerinde, sunucu değerlendirmesi gereken sayıda ağ bağdaştırıcısını destekleyebilen bir Azure VM 'si seçer. Ağ bağdaştırıcılarının sayısının 32 ' den yüksek olduğu tespit edildiğinde, en fazla No. Azure VM 'lerde desteklenen NIC 'Ler, makine "Ready" olarak işaretlenir.  Hayır 'ın etkisi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) . , boyutlandırmanın bulunduğu NIC 'ler.
+Hyper-V Sanallaştırması etkin olan bir fiziksel sunucu söz konusu olduğunda, hazırlık kategorisi yanlış bir şekilde "hazır değil" olarak işaretlenmiş olabilir. Bu sunucularda, bir ürün boşluğu nedeniyle Azure geçişi Şu anda fiziksel ve Sanal bağdaştırıcıları bulur. Bu nedenle, hayır. bulunan ağ bağdaştırıcılarının sayısı, gerçek değerden daha yüksek. Hem şirket içinde hem de performans tabanlı değerlendirmelerinde, sunucu değerlendirmesi gereken sayıda ağ bağdaştırıcısını destekleyebilen bir Azure VM 'si seçer. Ağ bağdaştırıcılarının sayısının 32 ' den yüksek olduğu tespit edildiğinde, en fazla No. Azure VM 'lerde desteklenen NIC 'Ler, makine "Ready" olarak işaretlenir.  Hayır 'ın etkisi hakkında [daha fazla bilgi edinin](./concepts-assessment-calculation.md#calculating-sizing) . , boyutlandırmanın bulunduğu NIC 'ler.
 
 
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Fiziksel sunucular için gerçek sayıdan yüksek bulunan NIC sayısı
@@ -154,18 +154,18 @@ Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komut
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-- **MMS Aracısı**: desteklenen [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)ve [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) işletim sistemlerini gözden geçirin.
+- **MMS Aracısı**: desteklenen [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)ve [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) işletim sistemlerini gözden geçirin.
 - **Bağımlılık Aracısı**: desteklenen [Windows ve Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) işletim sistemleri.
 
 ## <a name="visualize-dependencies-for--hour"></a>> saat bağımlılıklarını görselleştirin
 
 Aracısız bağımlılık analizi sayesinde, bağımlılıkları görselleştirin veya 30 güne kadar bir süre için bir haritada dışarı aktarabilirsiniz.
 
-Aracı tabanlı bağımlılık analizine sahip olan Azure geçişi, son ayın belirli bir tarihine geri dönmenize rağmen, bağımlılıkları görselleştirebileceğiniz en uzun süre bir saattir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresi işlevini kullanabilirsiniz, ancak bunları yalnızca bir saatlik dönem için görüntüleyebilirsiniz. Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) için kullanabilirsiniz.
+Aracı tabanlı bağımlılık analizine sahip olan Azure geçişi, son ayın belirli bir tarihine geri dönmenize rağmen, bağımlılıkları görselleştirebileceğiniz en uzun süre bir saattir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresi işlevini kullanabilirsiniz, ancak bunları yalnızca bir saatlik dönem için görüntüleyebilirsiniz. Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](./how-to-create-group-machine-dependencies.md) için kullanabilirsiniz.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>> 10 makineler için görselleştirilen bağımlılıklar
 
-Azure geçişi sunucu değerlendirmesi ' nde, aracı tabanlı bağımlılık analizi ile, en fazla 10 VM içeren [gruplar için bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Daha büyük gruplar için, bağımlılıkları görselleştirmek üzere VM 'Leri daha küçük gruplara bölmeniz önerilir.
+Azure geçişi sunucu değerlendirmesi ' nde, aracı tabanlı bağımlılık analizi ile, en fazla 10 VM içeren [gruplar için bağımlılıkları görselleştirebilirsiniz](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) . Daha büyük gruplar için, bağımlılıkları görselleştirmek üzere VM 'Leri daha küçük gruplara bölmeniz önerilir.
 
 
 ## <a name="machines-show-install-agent"></a>Makineler "aracıyı yüklemeyi" gösterir

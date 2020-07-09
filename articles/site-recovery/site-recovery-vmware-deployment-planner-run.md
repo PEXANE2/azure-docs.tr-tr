@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953293"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119846"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı çalıştırma
 Bu makale, VMware’den Azure’a üretim dağıtımları için Azure Site Recovery Dağıtım Planlayıcısı kullanım kılavuzudur.
@@ -39,18 +40,24 @@ Profil oluşturma modunda dağıtım planlayıcısı aracı, sanal makineye ili�
 2. VMware vSphere PowerCLI konsolunu açın.
 3. Betik için yürütme ilkesinin etkin olduğundan emin olun. Devre dışı bırakılmışsa, VMware vSphere PowerCLI konsolunu yönetici modunda başlatın ve aşağıdaki komutu çalıştırarak etkinleştirin:
 
-            Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```powershell
+    Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```
 
 4. Cmdlet 'in adı olarak Connect-VIServer tanınmazsa, isteğe bağlı olarak aşağıdaki komutu çalıştırmanız gerekebilir.
 
-            Add-PSSnapin VMware.VimAutomation.Core
+    ```powershell
+    Add-PSSnapin VMware.VimAutomation.Core
+    ```
 
 5. Bir vCenter sunucusu/vSphere ESXi ana bilgisayarındaki tüm VM’lerin adlarını almak ve listeyi bir .txt dosyasında depolamak için burada listelenen iki komutu çalıştırın.
 &lsaquo;Sunucu adı&rsaquo;, &lsaquo;kullanıcı adı&rsaquo;, &lsaquo;parola&rsaquo;, &lsaquo;outputfile.txt&rsaquo; değerlerini girdilerinizle değiştirin.
 
-            Connect-VIServer -Server <server name> -User <user name> -Password <password>
+    ```powershell
+    Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
-            Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    ```
 
 6. Çıktı dosyasını Not Defteri’nde açın ve sonra profilini oluşturmak istediğiniz tüm VM’lerin adlarını, her satıra bir VM gelecek şekilde başka bir dosyaya (örneğin, ProfileVMList.txt) kopyalayın. Bu dosya, komut satırı aracının *-VMListFile* parametresinin girdisi olarak kullanılır.
 
@@ -64,7 +71,7 @@ Profili oluşturulacak sanal makinelerin listesini oluşturduktan sonra, aracı 
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Parametre adı | Açıklama |
+| Parametre adı | Description |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | Sanal makineleri için profil oluşturulacak vCenter sunucusunun/vSphere ESXi ana bilgisayarının tam etki alanı adı.|
@@ -144,7 +151,7 @@ Profil oluşturma tamamlandıktan sonra, aracı rapor oluşturma modunda çalı�
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|Parametre adı | Açıklama |
+|Parametre adı | Description |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  Raporu oluşturulacak profili oluşturulmuş sanal makinelerin bulunduğu vCenter/vSphere sunucusu tam etki alanı adı veya IP adresi (profil oluşturma sırasında kullandığınız adın veya IP adresinin aynısını kullanın). Profil oluşturma sırasında bir vCenter sunucusu kullandıysanız, rapor oluşturma için vSphere sunucusu kullanamazsınız.|
@@ -256,7 +263,7 @@ Bir komut satırı konsolu açın ve Site Recovery dağıtım planlama aracını
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|Parametre adı | Açıklama |
+|Parametre adı | Description |
 |-|-|
 | -Operation | GetThroughput |
 |-Sanallaştırma|Sanallaştırma türünü (VMware veya Hyper-V) belirtin.|

@@ -3,21 +3,22 @@ title: Azure Market’teki Yönetilen Hizmet teklifleri
 description: Yönetilen hizmet, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792301"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121597"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Market’teki Yönetilen Hizmet teklifleri
 
-Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com)'Ndeki **yönetilen hizmet** teklifi türü açıklanmaktadır. Yönetilen hizmet teklifleri, [Azure tarafından atanan kaynak yönetimi](azure-delegated-resource-management.md)aracılığıyla müşterilere kaynak yönetimi hizmetleri sunmanıza olanak tanır. Bu teklifleri tüm potansiyel müşteriler için veya yalnızca bir veya daha fazla belirli müşteriye kullanılabilir hale getirebilirsiniz. Müşterileri bu yönetilen hizmetlerle ilgili maliyetlerle doğrudan faturalandırınızdan, Microsoft tarafından ücretlendirilmez.
+Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com)'Ndeki **yönetilen hizmet** teklifi türü açıklanmaktadır. Yönetilen hizmet teklifleri, [Azure açık Thouse](../overview.md)aracılığıyla müşterilere kaynak yönetimi hizmetleri sunmanıza olanak tanır. Bu teklifleri tüm potansiyel müşteriler için veya yalnızca bir veya daha fazla belirli müşteriye kullanılabilir hale getirebilirsiniz. Müşterileri bu yönetilen hizmetlerle ilgili maliyetlerle doğrudan faturalandırınızdan, Microsoft tarafından ücretlendirilmez.
 
 ## <a name="understand-managed-service-offers"></a>Yönetilen hizmet tekliflerini anlama
 
-Yönetilen hizmet, Azure tarafından atanan kaynak yönetimi için müşterileri ekleme sürecini kolaylaştırır. Bir müşteri Azure Marketi 'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının eklendi olması gerektiğini belirleyebilecektir.
+Yönetilen hizmet, müşterileri Azure 'un kullanımına ekleme sürecini kolaylaştırır. Bir müşteri Azure Marketi 'nde bir teklif satın aldığında, hangi aboneliklerin ve/veya kaynak gruplarının eklendi olması gerektiğini belirleyebilecektir.
 
-Bundan sonra kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladığınız erişime göre kuruluşunuzun kiracısında bu kaynaklar üzerinde çalışabilir. Bu işlem, erişim düzeyini tanımlayan rollerle birlikte müşteri kaynaklarına erişimi olacak Azure Active Directory (Azure AD) kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde yapılır. Bir dizi Kullanıcı veya uygulama hesabı yerine bir Azure AD grubuna izinler atayarak, erişim gereksinimleriniz değiştiğinde bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz.
+Bundan sonra kuruluşunuzdaki kullanıcılar, teklifi oluştururken tanımladığınız erişime göre kuruluşunuzun kiracısında [Azure tarafından atanan kaynak yönetimi](azure-delegated-resource-management.md)aracılığıyla bu kaynaklar üzerinde çalışabilir. Bu işlem, erişim düzeyini tanımlayan rollerle birlikte müşteri kaynaklarına erişimi olacak Azure Active Directory (Azure AD) kullanıcılarını, gruplarını ve hizmet sorumlularını belirten bir bildirimde yapılır. Bir dizi Kullanıcı veya uygulama hesabı yerine bir Azure AD grubuna izinler atayarak, erişim gereksinimleriniz değiştiğinde bireysel kullanıcı ekleyebilir veya kaldırabilirsiniz.
 
 ## <a name="public-and-private-offers"></a>Ortak ve özel teklifler
 

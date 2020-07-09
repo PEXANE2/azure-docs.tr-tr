@@ -4,13 +4,14 @@ description: MySQL için Azure veritabanı ile kimlik doğrulaması için yönet
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120585"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na yönetilen kimlikle bağlanma
 
@@ -25,7 +26,7 @@ Bu makalede, bir Azure sanal makinesi (VM) için bir Azure veritabanına MySQL s
 > [!IMPORTANT]
 > Yönetilen kimlikle bağlantı yalnızca MySQL 5,7 ve üzeri sürümlerde kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](../../articles/active-directory/managed-identities-azure-resources/overview.md) inceleyin. Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Gerekli kaynak oluşturma ve rol yönetimini yapmak için hesabınızın uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri olması gerekir. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../articles/role-based-access-control/role-assignments-portal.md).

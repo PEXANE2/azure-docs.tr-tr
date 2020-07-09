@@ -3,11 +3,12 @@ title: Geçersiz şablon hataları
 description: Azure Resource Manager şablonları dağıtılırken geçersiz şablon hatalarının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324071"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118894"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Geçersiz şablon hatalarını giderme
 
@@ -47,7 +48,7 @@ Bu hata kolayca yapılabilir çünkü şablon ifadeleri karmaşık olabilir. Ör
 
 Eşleşen söz dizimini sağlamazsanız, şablon, sizin niyetinden farklı bir değer üretir.
 
-Bu tür bir hata aldığınızda, ifade söz dizimini dikkatle gözden geçirin. [Visual Studio](create-visual-studio-deployment-project.md) veya [VISUAL STUDIO Code](use-vs-code-to-create-template.md)gibi bir JSON Düzenleyicisi kullanmayı düşünün; bu, söz dizimi hataları hakkında sizi uyarabilir.
+Bu tür bir hata aldığınızda, ifade söz dizimini dikkatle gözden geçirin. [Visual Studio](create-visual-studio-deployment-project.md) veya [VISUAL STUDIO Code](quickstart-create-templates-use-visual-studio-code.md)gibi bir JSON Düzenleyicisi kullanmayı düşünün; bu, söz dizimi hataları hakkında sizi uyarabilir.
 
 <a id="incorrect-segment-lengths"></a>
 

@@ -4,14 +4,14 @@ description: Azure CLı 'dan MariaDB için Azure veritabanı için özel bağlan
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 08e7805d9eff1f53c43882f2180e298abd008346
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97901ee0c431699ac8217619042daefd86df2f38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120985"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLı kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -20,7 +20,7 @@ ms.locfileid: "85368337"
 > [!NOTE]
 > Bu özellik, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 

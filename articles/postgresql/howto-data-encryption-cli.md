@@ -4,13 +4,14 @@ description: Azure CLı kullanarak PostgreSQL için Azure veritabanı için veri
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341313"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119591"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
 
@@ -21,28 +22,28 @@ Azure CLı kullanarak PostgreSQL için Azure veritabanı tek sunucu için veri �
 * Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
 * Bir anahtar kasası ve müşterinin yönettiği anahtar için kullanılacak bir anahtar oluşturun. Ayrıca, anahtar kasasında Temizleme korumasını ve geçici silmeyi etkinleştirin.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+   ```azurecli-interactive
+   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
+   ```
 
 * Oluşturulan Azure Key Vault, PostgreSQL için Azure veritabanı 'nın tek sunucu veri şifrelemesi için kullanılacak anahtarı oluşturun.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+   ```azurecli-interactive
+   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+   ```
 
 * Mevcut bir anahtar kasasını kullanabilmeniz için, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliklere sahip olmalıdır:
   * [Geçici silme](../key-vault/general/overview-soft-delete.md)
 
-    ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-    ```
+      ```azurecli-interactive
+      az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+      ```
 
   * [Korumalı Temizleme](../key-vault/general/overview-soft-delete.md#purge-protection)
 
-    ```azurecli-interactive
-    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
-    ```
+      ```azurecli-interactive
+      az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+      ```
 
 * Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
   * Sona erme tarihi yok
@@ -87,36 +88,37 @@ PostgreSQL için Azure veritabanı tek sunucu, Key Vault ' de depolanan bir mü�
 
 ### <a name="creating-a-restoredreplica-server"></a>Geri yüklenen/çoğaltılan sunucu oluşturma
 
-  *  [Geri yükleme sunucusu oluşturma](howto-restore-server-cli.md) 
-  *  [Okuma çoğaltması sunucusu oluşturma](howto-read-replicas-cli.md) 
+* [Geri yükleme sunucusu oluşturma](howto-restore-server-cli.md)
+* [Okuma çoğaltması sunucusu oluşturma](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Sunucu geri yüklendikten sonra, geri yüklenen sunucu için veri şifrelemeyi yeniden doğrula
 
-    ```azurecli-interactive
-    az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu için kullanılan anahtar için ek özellik
 
 ### <a name="get-the-key-used"></a>Kullanılan anahtarı al
 
-    ```azurecli-interactive
-    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Anahtar URL 'si:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>Kullanılan anahtarı listeleyin
 
-    ```azurecli-interactive
-    az postgres server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az postgres server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>Kullanılan anahtarı bırakın
 
-    ```azurecli-interactive
-    az postgres server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az postgres server key delete -g <resource_group> --kid <key url> 
+```
+
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Veri şifrelemeyi etkinleştirmek için Azure Resource Manager şablonu kullanma
 
 Azure portal dışında, yeni ve mevcut sunucu için Azure Resource Manager şablonlarını kullanarak PostgreSQL için Azure veritabanı 'nda veri şifrelemeyi de etkinleştirebilirsiniz.

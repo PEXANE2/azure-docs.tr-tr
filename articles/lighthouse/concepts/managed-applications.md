@@ -3,12 +3,12 @@ title: Azure Lighthouse ve Azure yönetilen uygulamaları
 description: Azure açık ve Azure tarafından yönetilen uygulamalar...
 ms.date: 05/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9923d31e78675927b4ca235607b2a61b24ccc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82783636"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121614"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse ve Azure yönetilen uygulamaları
 
@@ -47,4 +47,4 @@ Müşteriler ayrıca birden çok hizmet sağlayıcısından yönetilen uygulamal
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure yönetilen uygulamalar](../../azure-resource-manager/managed-applications/overview.md)hakkında bilgi edinin.
-- [Azure 'un Temsilcili kaynak yönetimine nasıl bir abonelik](../how-to/onboard-customer.md)ekleneceğini öğrenin.
+- [Azure açık Thouse aboneliği ekleme](../how-to/onboard-customer.md)hakkında bilgi edinin.

@@ -1,17 +1,14 @@
 ---
 title: Event Grid kaynak olarak Azure Service Bus
 description: Azure Event Grid Service Bus olaylar için belirtilen özellikleri açıklar
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: femila
-ms.openlocfilehash: 5152c1579d46bfbff6c85b2cd19425aee0dd3290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559490"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121143"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Service Bus
 
@@ -23,7 +20,7 @@ Bu makalede Service Bus olayları için özellikler ve şema sağlanmaktadır.Ol
 
 Service Bus aşağıdaki olay türlerini yayar:
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Bir kuyrukta veya abonelikte etkin iletiler olduğunda ve hiçbir alıcı dinlemeden oluşturulur. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Sahipsiz bir kuyrukta etkin iletiler olduğunda ve etkin dinleyici olmadığında tetiklenir. |

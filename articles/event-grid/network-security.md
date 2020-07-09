@@ -1,18 +1,16 @@
 ---
 title: Azure Event Grid kaynakları için ağ güvenliği
 description: Bu makalede özel uç noktalardan erişimin nasıl yapılandırılacağı açıklanmaktadır
-services: event-grid
 author: VidyaKukke
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414258"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119251"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
 Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -85,10 +83,10 @@ Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve y
 
 | Bağlantı durumu   |  Başarıyla Yayımla (Evet/Hayır) |
 | ------------------ | -------------------------------|
-| Onaylandı           | Evet                            |
-| Reddedildi           | Hayır                             |
-| Beklemede            | Hayır                             |
-| Bağlantı kesildi       | Hayır                             |
+| Onaylandı           | Yes                            |
+| Reddedildi           | No                             |
+| Beklemede            | No                             |
+| Bağlantı kesildi       | No                             |
 
 Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
 

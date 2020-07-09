@@ -4,20 +4,20 @@ description: Bu makalede, Azure CLı 'dan MariaDB için Azure veritabanı 'nda d
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 1dcad61ed94926aa2aa2237ea735287cd9c9f137
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0f5f71ed636cc67e742198436b48a09d291e798
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362705"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120067"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Azure CLı 'de denetim günlüklerini yapılandırma ve erişme
+# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Azure CLı 'de Maria DB denetim günlükleri için Azure veritabanı 'nı yapılandırma ve erişme
 
 [MariaDB Için Azure veritabanı denetim günlüklerini](concepts-audit-logs.md) Azure CLI 'dan yapılandırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 

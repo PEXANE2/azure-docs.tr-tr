@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68297778"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120288"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM 'Leri için TCP/IP performans ayarı
 
@@ -136,7 +136,7 @@ Bu tabloda iki konum arasındaki düz çizgi uzaklığı gösterilmektedir. Ağl
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-Yayma hızı için 200 kullanabilirsiniz. Bu, bu ışığın 1 milisaniyeye göre hareket eder.
+Yayma hızı için 200 kullanabilirsiniz. Bu, ışığın 1 milisaniyeye göre hareket eden mesafe cinsinden uzaklığı.
 
 Örnek olarak San Francisco 'ye yeni bir New York bakalım. Düz çizgi uzaklığı 4.148 km 'dir. Bu değeri denkleme takmak için aşağıdakiler verilmiştir:
 

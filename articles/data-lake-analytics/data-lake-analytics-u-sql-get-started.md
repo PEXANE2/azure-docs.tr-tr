@@ -7,14 +7,14 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/23/2017
-ms.openlocfilehash: df217f302cd9f989fbabce009f00996d17fe284c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80ecac68c3352c7f067fcbfcedb9a07aed729a8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555692"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120866"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics 'de U-SQL ile çalışmaya başlama
 
@@ -26,7 +26,7 @@ U-SQL, herhangi bir ölçekte verileri işlemenizi sağlamak Için bildirim teme
 * **U-SQL dili sözdizimi**hakkında ayrıntılı bilgi için, bkz. [u-SQL dili başvurusu](https://docs.microsoft.com/u-sql/).
 * **U-SQL tasarım FI**'sini anlamak Için, Visual Studio blog gönderisine ( [u-SQL tanıtımı), büyük veri işlemeyi kolay hale getiren bir dili](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu belgedeki U-SQL örneklerinden geçmeden önce, [öğreticiyi tamamlayın: Visual Studio için Data Lake araçları 'nı kullanarak u-SQL betikleri geliştirin](data-lake-analytics-data-lake-tools-get-started.md). Bu öğreticide, Visual Studio için Azure Data Lake Araçları ile U-SQL kullanma mekanizması açıklanmaktadır.
 

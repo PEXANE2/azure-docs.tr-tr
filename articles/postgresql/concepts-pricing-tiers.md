@@ -6,17 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 3a813a9b8c2a81a85d1c4a96d5a4da2256832d3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84487993"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121631"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı fiyatlandırma katmanları - Tek Sunucu
 
 Üç farklı fiyatlandırma katmanlarından birinde PostgreSQL için Azure veritabanı sunucusu oluşturabilirsiniz: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Fiyatlandırma katmanları, sağlanan sanal çekirdekler, sanal çekirdek başına bellek ve verileri depolamak için kullanılan depolama teknolojisi miktarına göre farklılaştırılabilir. Tüm kaynaklar PostgreSQL sunucu düzeyinde sağlanır. Sunucuda bir veya daha fazla veritabanı olabilir.
 
-|    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+| Kaynak/katman | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
 | İşlem oluşturma | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -42,7 +43,7 @@ Bir sunucu oluşturduktan sonra, sanal çekirdek sayısı, donanım oluşturma v
 
 Sağladığınız depolama alanı, PostgreSQL için Azure veritabanı sunucunuza sunulan depolama kapasitesi miktarıdır. Depolama alanı veritabanı dosyaları, geçici dosyalar, işlem günlükleri ve PostgreSQL sunucu günlükleri için kullanılır. Sağladığınız toplam depolama miktarı, sunucunuz için kullanılabilir olan g/ç kapasitesini de tanımlar.
 
-|    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
+| Depolama öznitelikleri | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
 | Depolama türü | Temel depolama | Genel Amaçlı depolama | Genel Amaçlı depolama |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 16 TB | 5 GB ila 16 TB |
@@ -55,7 +56,7 @@ Sağladığınız depolama alanı, PostgreSQL için Azure veritabanı sunucunuza
 > Tüm diğer bölgeler 4TB 'a kadar depolama ve 6000 ıOPS 'yi destekler.
 >
 
-Sunucu oluşturma sırasında ve sonrasında ek depolama kapasitesi ekleyebilir ve sistemin iş yükünüzün depolama tüketimine göre depolamayı otomatik olarak büyümesine izin verebilirsiniz. 
+Sunucu oluşturma sırasında ve sonrasında ek depolama kapasitesi ekleyebilir ve sistemin iş yükünüzün depolama tüketimine göre depolamayı otomatik olarak büyümesine izin verebilirsiniz.
 
 >[!NOTE]
 > Depolama yalnızca yukarı ölçeklenebilen, aşağı doğru değil.
@@ -92,7 +93,7 @@ Hizmet, sunucunuzun yedeklerini otomatik olarak alır. 7 ile 35 gün arasında b
 
 Sunucunuzu oluşturduktan sonra, sanal çekirdekleri, donanım oluşturmayı, fiyatlandırma katmanını (temel ve dışı), depolama miktarını ve yedekleme saklama süresini bağımsız olarak değiştirebilirsiniz. Sunucu oluşturulduktan sonra yedekleme depolama türünü değiştiremezsiniz. Sanal çekirdek sayısı yukarı veya aşağı ölçeklendirilebilir. Yedekleme saklama süresi 7 ile 35 gün arasında ölçeklendirilebilir veya kapatılabilir. Depolama boyutu yalnızca artırılabilir. Kaynakların ölçeklendirilmesi portal veya Azure CLı aracılığıyla yapılabilir. Azure CLı kullanarak ölçeklendirmeyle ilgili bir örnek için bkz. [Azure CLI kullanarak PostgreSQL Için Azure veritabanı sunucusunu izleme ve ölçeklendirme](scripts/sample-scale-server-up-or-down.md).
 
-> [!NOTE] 
+> [!NOTE]
 > Depolama boyutu yalnızca artırılabilir. Artdıktan sonra daha küçük bir depolama boyutuna dönemezsiniz.
 
 Sanal çekirdek sayısını, donanım oluşturmayı veya fiyatlandırma katmanını değiştirdiğinizde, yeni işlem ayırmasıyla orijinal sunucunun bir kopyası oluşturulur. Yeni sunucu çalışır duruma geçtikten sonra, bağlantılar yeni sunucuya geçer. Sistem yeni sunucuya geçerken yeni bağlantı kurulamaz ve tüm işlenmemiş işlemler geri alınır. Bu süre değişir, ancak çoğu durumda bir dakikadan daha kısadır.
@@ -106,5 +107,5 @@ En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Portalda bir PostgreSQL sunucusu oluşturmayı](tutorial-design-database-using-azure-portal.md)öğrenin.
-- [Hizmet limitleri](concepts-limits.md)hakkında bilgi edinin. 
+- [Hizmet limitleri](concepts-limits.md)hakkında bilgi edinin.
 - [Okuma çoğaltmalarıyla nasıl ölçeklenebileceğinizi](howto-read-replicas-portal.md)öğrenin.

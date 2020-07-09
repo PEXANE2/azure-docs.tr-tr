@@ -1,18 +1,16 @@
 ---
 title: Sanal makine (VM) görüntülerini Azure Marketi 'nde yönetilen disk depolama alanına taşııyoruz
 description: Yeni Market özellikleri ve özellikleri için daha hızlı, daha güvenilir depolama ve destek sağlamak üzere Market VM görüntülerini yönetilen disk depolama alanına taşıyoruz.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 17b418ab82cc88b4368efe247b06c0c8bbb27453
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d64bb176f79a0c15c15e425df18a22c9c4f423e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285121"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120628"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketi 'ndeki sanal makine (VM) görüntülerini yönetilen disk depolama alanına taşııyoruz
 

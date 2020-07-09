@@ -6,20 +6,19 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/06/2019
-ms.openlocfilehash: c2593c4c03f48624b8b9e3b9d72a3558f5f581be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd7604e33a9f98d9104eecabb20369fe2fcee8a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73499294"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119642"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure veri paylaşımıyla ilgili Azure PowerShell örnekleri
 
 Aşağıdaki tabloda, Azure veri paylaşımında örnek Azure PowerShell betiklerin bağlantıları yer almaktadır.
 
-| |  |
+|PowerShell örnekleri|Description|
 |---|---|
-|**PowerShell örnekleri**||
 |[Yeni bir veri paylaşma hesabı oluşturun](scripts/powershell/create-new-share-account-powershell.md)| Bu PowerShell betiği yeni bir veri paylaşma hesabı oluşturur. |
 |[Yeni veri paylaşma oluştur](scripts/powershell/create-new-share-powershell.md)| Bu PowerShell betiği yeni bir veri paylaşma oluşturur. |
 |[Bir paylaşıma veri kümeleri ekleme](scripts/powershell/add-datasets-powershell.md)| Bu PowerShell betiği, var olan bir veri paylaşma hesabına blob veri kümesi ekler. |

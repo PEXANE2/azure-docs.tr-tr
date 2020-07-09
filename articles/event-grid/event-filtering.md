@@ -1,17 +1,14 @@
 ---
 title: Azure Event Grid için olay filtreleme
 description: Azure Event Grid aboneliği oluştururken olayların nasıl filtreleneceğini açıklar.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.author: spelluru
-ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120101"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
 

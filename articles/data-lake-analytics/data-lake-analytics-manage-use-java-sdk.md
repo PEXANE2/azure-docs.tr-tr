@@ -7,21 +7,21 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 883b2895966d71b91554e8978df6876b0edcef88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6409ac10a524f75709cbbf185efb03359606e88c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564765"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121376"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java uygulaması kullanarak Azure Data Lake Analytics yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Bu makalede, Azure Java SDK 'Sı kullanılarak yazılmış bir uygulamayı kullanarak Azure Data Lake Analytics hesaplarının, veri kaynaklarının, kullanıcıların ve işlerin nasıl yönetileceği açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Java Development Kit (JDK) 8** (java sürüm 1,8 kullanarak).
 * **IntelliJ** veya başka bir uygun Java geliştirme ortamı. Bu belgedeki yönergeler IntelliJ kullanır.
 * Bir Azure Active Directory (AAD) uygulaması oluşturun ve **İstemci Kimliği**, **Kiracı Kimliği** ve **Anahtar** bilgilerini alın. AAD uygulamaları hakkında daha fazla bilgi ve istemci kimliği almaya ilişkin yönergeler için bkz. [Portal kullanarak Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). Uygulama oluşturulduktan ve anahtar oluşturulduktan sonra, portalda yanıt URI 'SI ve anahtar kullanılabilir.

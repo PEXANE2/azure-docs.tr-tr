@@ -3,12 +3,12 @@ title: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi ile i
 description: Azure geçişi 'nde bulma, değerlendirme ve bağımlılık analizi hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118843"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi-genel sorular
 
@@ -33,7 +33,7 @@ En fazla 10.000 VMware VM, en fazla 5.000 Hyper-V VM ve tek bir gereç kullanara
 
 - Azure VM 'lerine geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V VM](how-to-set-up-appliance-hyper-v.md)'lerini ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirmek istediğinizde **Azure VM değerlendirmelerini** kullanın. [Daha Fazla Bilgi](concepts-assessment-calculation.md)
 
-- Bu değerlendirme türünü kullanarak [Azure VMware çözümüne (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction) geçiş için şirket Içi [VMware VM](how-to-set-up-appliance-vmware.md) 'Lerinizi değerlendirmek istediğinizde **Azure VMware çözümü (AVS)** değerlendirmelerini kullanın. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+- Bu değerlendirme türünü kullanarak [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md) geçiş için şirket Içi [VMware VM](how-to-set-up-appliance-vmware.md) 'Lerinizi değerlendirmek istediğinizde **Azure VMware çözümü (AVS)** değerlendirmelerini kullanın. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Yalnızca her iki değerlendirme türünü çalıştırmak için, VMware makinelerle ortak bir grup kullanabilirsiniz. Azure geçişi 'nde AVS değerlendirmelerinde ilk kez çalıştırıyorsanız, yeni bir VMware makinesi grubu oluşturmanız önerilir.
 
@@ -113,7 +113,7 @@ Azure 'da bir değerlendirme oluşturduğunuzda, performans süresine ve ayarlan
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>İçeri aktarma tabanlı AVS değerlendirmesi bilinmeyen olarak işaretlenmiş olan geçiş aracı neden bilinmiyor?
 
-Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, bir AVS değerlendirmesinde varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+Bir CSV dosyası aracılığıyla içeri aktarılan makineler için, bir AVS değerlendirmesinde varsayılan geçiş aracı bilinmez. Ancak, VMware makinelerinde, VMWare karma bulut uzantısı (HCX) çözümünün kullanılması önerilir. [Daha fazla bilgi edinin](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 
 ## <a name="what-is-dependency-visualization"></a>Bağımlılık görselleştirmesi nedir?
@@ -130,9 +130,9 @@ Aracısız görselleştirme ve aracı tabanlı görselleştirme arasındaki fark
 **Gereksinim** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---
 Destek | Bu seçenek şu anda önizleme aşamasındadır ve yalnızca VMware VM 'Leri için kullanılabilir. Desteklenen işletim sistemlerini [gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) . | Genel kullanılabilirlik (GA).
-Aracı | Çapraz denetlemek istediğiniz makinelere aracı yüklemeye gerek yoktur. | Çözümlemek istediğiniz her şirket içi makineye yüklenecek aracılar: [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)ve [bağımlılık Aracısı](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
-Ön koşullar | Önkoşulları ve dağıtım gereksinimlerini [gözden geçirin](concepts-dependency-visualization.md#agentless-analysis) . | Önkoşulları ve dağıtım gereksinimlerini [gözden geçirin](concepts-dependency-visualization.md#agent-based-analysis) .
-Log Analytics | Gerekli değildir. | Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlüklerinde](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) [hizmet eşlemesi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md#agent-based-analysis).
+Aracı | Çapraz denetlemek istediğiniz makinelere aracı yüklemeye gerek yoktur. | Çözümlemek istediğiniz her şirket içi makineye yüklenecek aracılar: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)ve [bağımlılık Aracısı](../azure-monitor/platform/agents-overview.md#dependency-agent). 
+Önkoşullar | Önkoşulları ve dağıtım gereksinimlerini [gözden geçirin](concepts-dependency-visualization.md#agentless-analysis) . | Önkoşulları ve dağıtım gereksinimlerini [gözden geçirin](concepts-dependency-visualization.md#agent-based-analysis) .
+Log Analytics | Gerekli değildir. | Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlüklerinde](../azure-monitor/log-query/log-query-overview.md) [hizmet eşlemesi](../azure-monitor/insights/service-map.md) çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md#agent-based-analysis).
 Nasıl çalışır? | Bağımlılık görselleştirmesi için etkinleştirilen makinelerde TCP bağlantı verilerini yakalar. Bulmadan sonra, verileri beş dakikalık aralıklarla toplar. | Bir makineye yüklü Hizmet Eşlemesi aracılar, her bir işlem için TCP işlemleri ve gelen/giden bağlantılarla ilgili verileri toplar.
 Veriler | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme süresi ve veri aktarımı bilgilerinin toplanması ve Log Analytics sorguları için kullanılabilir olması. 
 Görselleştirme | Tek bir sunucunun bağımlılık eşlemesi, bir saat ile 30 güne kadar bir süre içinde görüntülenebilir. | Tek bir sunucunun bağımlılık eşlemesi.<br/><br/> Eşleme, yalnızca bir saat boyunca görüntülenebilir.<br/><br/> Bir sunucu grubunun bağımlılık eşlemesi.<br/><br/> Harita görünümünden bir gruptaki sunucuları ekleyin ve kaldırın.
@@ -151,7 +151,7 @@ Hayır. [Azure geçişi fiyatlandırması](https://azure.microsoft.com/pricing/d
 
 Aracı tabanlı bağımlılık görselleştirmesini kullanmak için, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yükleyin:
 
-- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
 - [Bağımlılık aracısı](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - İnternet bağlantısı olmayan makineleriniz varsa Log Analytics ağ geçidini indirip yükleyin.
 
@@ -163,7 +163,7 @@ Evet, aracı tabanlı bağımlılık görselleştirmesi için, var olan bir çal
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>Bağımlılık görselleştirme raporunu dışarı aktarabilir miyim?
 
-Hayır, aracı tabanlı görselleştirmede bağımlılık görselleştirme raporu verilemez. Bununla birlikte, Azure geçişi Hizmet Eşlemesi kullanır ve bağımlılıkları JSON biçiminde almak için [Hizmet Eşlemesi REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) de kullanabilirsiniz.
+Hayır, aracı tabanlı görselleştirmede bağımlılık görselleştirme raporu verilemez. Bununla birlikte, Azure geçişi Hizmet Eşlemesi kullanır ve bağımlılıkları JSON biçiminde almak için [Hizmet Eşlemesi REST API](/rest/api/servicemap/machines/listconnections) de kullanabilirsiniz.
 
 ## <a name="can-i-automate-agent-installation"></a>Aracı yüklemesini otomatikleştirebilirim miyim?
 
@@ -175,18 +175,18 @@ Aracı tabanlı bağımlılık görselleştirmesi için:
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA hangi işletim sistemlerini destekler?
 
-- [MMA 'nın desteklediği Windows işletim sistemlerinin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)listesini görüntüleyin.
-- [MMA 'nın desteklediği Linux işletim sistemlerinin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)listesini görüntüleyin.
+- [MMA 'nın desteklediği Windows işletim sistemlerinin](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)listesini görüntüleyin.
+- [MMA 'nın desteklediği Linux işletim sistemlerinin](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)listesini görüntüleyin.
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Bağımlılıkları birden fazla saat için görselleştirebilir miyim?
 
-Aracı tabanlı görselleştirme için, bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmişte belirli bir tarihe kadar bir ay kadar geri dönebilirsiniz, ancak görselleştirme için en uzun süre bir saat olabilir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresini kullanabilirsiniz, ancak yalnızca bir saatlik pencerenin bağımlılıklarını görüntüleyebilirsiniz. Ancak, daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) Için Azure izleyici günlüklerini kullanabilirsiniz.
+Aracı tabanlı görselleştirme için, bağımlılıkları bir saate kadar görselleştirebilirsiniz. Geçmişte belirli bir tarihe kadar bir ay kadar geri dönebilirsiniz, ancak görselleştirme için en uzun süre bir saat olabilir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresini kullanabilirsiniz, ancak yalnızca bir saatlik pencerenin bağımlılıklarını görüntüleyebilirsiniz. Ancak, daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](./how-to-create-group-machine-dependencies.md) Için Azure izleyici günlüklerini kullanabilirsiniz.
 
 Aracısız görselleştirme için, tek bir sunucunun bağımlılık haritasını bir saat ile 30 gün arasında bir süre izleyebilirsiniz.
 
 ## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>10 ' dan fazla VM 'nin bağımlılıklarını görselleştirebilir miyim?
 
-10 adede kadar VM 'ye sahip olan gruplar için [bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . 10 ' dan fazla VM 'ye sahip bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmenizi öneririz.
+10 adede kadar VM 'ye sahip olan gruplar için [bağımlılıkları görselleştirebilirsiniz](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) . 10 ' dan fazla VM 'ye sahip bir grubunuz varsa, grubu daha küçük gruplara bölmeniz ve sonra bağımlılıkları görselleştirmenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

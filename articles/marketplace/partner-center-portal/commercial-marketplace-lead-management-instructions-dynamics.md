@@ -1,17 +1,18 @@
 ---
 title: Dynamics 365 müşteri katılımı için lider Yönetimi-Microsoft ticari Market
 description: Microsoft AppSource ve Azure Marketi 'nden müşteri adaylarını yönetmek için Dynamics 365 müşteri katılımı ayarlamayı öğrenin.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 555002284b2665a357a28319a400710d66be4604
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957248"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120390"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 müşteri katılımı için lider yönetimini yapılandırma
 
@@ -20,7 +21,7 @@ Bu makalede, Dynamics 365 müşteri katılımı ayarlama (daha önce Dynamics CR
 >[!NOTE]
 >Bu yönergeler, Dynamics 365 müşteri katılımı için Microsoft tarafından barındırılan bulut ortamına özgüdür. Dynamics şirket içi bir ortama doğrudan bağlanmak Şu anda desteklenmemektedir. Bir [https uç noktası](./commercial-marketplace-lead-management-instructions-https.md) veya [Azure tablosu](./commercial-marketplace-lead-management-instructions-azure-table.md)yapılandırma gibi müşteri adaylarını almanızı sağlamak için başka seçenekler de vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki Kullanıcı izinleri gereklidir:
 

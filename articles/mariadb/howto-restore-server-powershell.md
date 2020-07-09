@@ -5,19 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurepowershell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/26/2020
-ms.openlocfilehash: c16c18a7056b2d23b64caeca4a88905b3dd2557c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc4c0497095c2ab4e1210ab71bc5597713499b7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041948"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120475"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>PowerShell kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı yedekleme ve geri yükleme
 
 MariaDB sunucuları için Azure veritabanı, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -73,7 +74,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 'in **Pointintimeresıtransaction** parametre kümesi `Restore-AzMariaDbServer` aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
 | Name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
@@ -115,7 +116,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 'in **Georestore** parametre kümesi `Restore-AzMariaDbServer` aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Description  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Yeni sunucunun ait olduğu kaynak grubunun adı.|
 |Name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |

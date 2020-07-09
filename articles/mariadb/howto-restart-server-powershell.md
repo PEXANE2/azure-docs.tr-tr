@@ -4,13 +4,14 @@ description: Bu makalede, PowerShell kullanarak bir MariaDB sunucusu için Azure
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: ff7a7b7d83089f575df1ac169556c2762dd674a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cf5cf3f34f2986bbc18b5293dad4862c24f47a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050852"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121087"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>PowerShell kullanarak MariaDB sunucusu için Azure veritabanını yeniden başlatma
 
@@ -20,7 +21,7 @@ Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sana
 
 Yeniden başlatmanın tamamlanması için gereken süre miktarı, MariaDB kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 

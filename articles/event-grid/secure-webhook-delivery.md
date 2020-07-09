@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid 'de Azure AD ile güvenli Web kancası teslimi
 description: Azure Event Grid kullanılarak Azure Active Directory korunan HTTPS uç noktalarına olayların nasıl teslim edileceğini açıklar
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.author: femila
-ms.openlocfilehash: 7caa5a99f2d4ebdbe858c78c6e36be17aeb003ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: b0503d7da9e191e9d6764076392ead8faa5109a1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126085"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119132"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Korunan uç noktalara Azure Active Directory olayları yayımlayın
 

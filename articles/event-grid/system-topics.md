@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid sistem konuları
 description: Azure Event Grid içindeki Sistem konularını açıklar.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 190c6ccb13a0853913c96ac5d2d3f5faf4594433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887904"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119931"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid sistem konuları
 Event Grid bir sistem konusu, Azure depolama ve Azure Event Hubs gibi Azure hizmetleri tarafından yayınlanan bir veya daha fazla olayı temsil eder. Örneğin, bir sistem konusu **tüm blob olaylarını** veya yalnızca **BLOB oluşturulmuş** ve **belirli bir depolama hesabı**için yayımlanan **BLOB silinen** olayları temsil edebilir. Bu örnekte, bir BLOB depolama hesabına yüklendiğinde Azure Storage hizmeti, Event Grid ' deki Sistem konusuna **BLOB tarafından oluşturulan** bir olay yayımlar, daha sonra olayı alan ve işleyen [abonelere](event-handlers.md) iletir. 
