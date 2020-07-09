@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662170"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111941"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Izleyici 'de Linux için Log Analytics Aracısı ile özel JSON veri kaynakları toplama
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -29,7 +30,7 @@ Azure Izleyici 'de JSON verileri toplamak için, `oms.api.` giriş eklentisindek
 
 Örneğin, aşağıdaki ayrı bir yapılandırma dosyasıdır `exec-json.conf` `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` .  Bu, `exec` her 30 saniyede bir kıvrımlı komutu çalıştırmak Için Floentd eklentisini kullanır.  Bu komutun çıktısı, JSON çıktı eklentisi tarafından toplanır.
 
-```
+```xml
 <source>
   type exec
   command 'curl localhost/json.output'
@@ -51,6 +52,7 @@ Azure Izleyici 'de JSON verileri toplamak için, `oms.api.` giriş eklentisindek
   retry_wait 30s
 </match>
 ```
+
 Altına eklenen yapılandırma dosyası, `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` aşağıdaki komutla onun sahipliğinin değiştirilmesini gerektirir.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
@@ -58,7 +60,7 @@ Altına eklenen yapılandırma dosyası, `/etc/opt/microsoft/omsagent/<workspace
 ### <a name="configure-output-plugin"></a>Çıkış eklentisini yapılandırma 
 ' Deki ana yapılandırmaya `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` veya içindeki ayrı bir yapılandırma dosyasına yerleştirilmiş olarak aşağıdaki çıkış eklentisi yapılandırmasını ekleyin`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
-```
+```xml
 <match oms.api.**>
   type out_oms_api
   log_level info
@@ -76,18 +78,22 @@ Altına eklenen yapılandırma dosyası, `/etc/opt/microsoft/omsagent/<workspace
 ### <a name="restart-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısını yeniden başlatma
 Linux hizmeti için Log Analytics aracısını aşağıdaki komutla yeniden başlatın.
 
-    sudo /opt/microsoft/omsagent/bin/service_control restart 
+```console
+sudo /opt/microsoft/omsagent/bin/service_control restart 
+```
 
 ## <a name="output"></a>Çıktı
 Veriler Azure Izleyici 'de bir kayıt türüyle toplanacaktır `<FLUENTD_TAG>_CL` .
 
 Örneğin, `tag oms.api.tomcat` Azure izleyici 'de bir kayıt türü içeren özel etiket `tomcat_CL` .  Bu türün tüm kayıtlarını aşağıdaki günlük sorgusuyla alabilirsiniz.
 
-    Type=tomcat_CL
+```console
+Type=tomcat_CL
+```
 
 İç içe geçmiş JSON veri kaynakları desteklenir, ancak üst alanı temel alan dizine alınır. Örneğin, aşağıdaki JSON verileri bir günlük sorgusundan olarak döndürülür `tag_s : "[{ "a":"1", "b":"2" }]` .
 
-```
+```json
 {
     "tag": [{
         "a":"1",

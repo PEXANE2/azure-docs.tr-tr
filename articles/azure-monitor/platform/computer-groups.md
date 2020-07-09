@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689019"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112121"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularının bilgisayar grupları
 Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/log-query-overview.md) belirli bir bilgisayar kümesiyle kapsamlarınıza izin verir.  Her grup, tanımladığınız bir sorgu kullanılarak veya farklı kaynaklardan grupları içeri aktararak bilgisayarlarla doldurulur.  Grup bir günlük sorgusuna eklendiğinde, sonuçlar gruptaki bilgisayarlarla eşleşen kayıtlarla sınırlıdır.
@@ -20,7 +21,7 @@ Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/l
 ## <a name="creating-a-computer-group"></a>Bilgisayar grubu oluşturma
 Aşağıdaki tablodaki yöntemlerden birini kullanarak Azure Izleyici 'de bir bilgisayar grubu oluşturabilirsiniz.  Her yöntemin ayrıntıları aşağıdaki bölümlerde verilmiştir. 
 
-| Yöntem | Açıklama |
+| Yöntem | Description |
 |:--- |:--- |
 | Günlük sorgusu |Bilgisayarların listesini döndüren bir günlük sorgusu oluşturun. |
 | Günlük Arama API’si |Günlük sorgusunun sonuçlarına göre program aracılığıyla bir bilgisayar grubu oluşturmak için günlük araması API 'sini kullanın. |
@@ -33,7 +34,9 @@ Bir günlük sorgusundan oluşturulan bilgisayar grupları, tanımladığınız 
 
 Bilgisayar grubu için herhangi bir sorgu kullanabilirsiniz, ancak kullanarak farklı bir bilgisayar kümesi döndürmesi gerekir `distinct Computer` .  Aşağıda, bilgisayar grubu olarak kullanabileceğiniz tipik örnek bir sorgu verilmiştir.
 
-    Heartbeat | where Computer contains "srv" | distinct Computer
+```kusto
+Heartbeat | where Computer contains "srv" | distinct Computer
+```
 
 Azure portal bir günlük aramasından bir bilgisayar grubu oluşturmak için aşağıdaki yordamı kullanın.
 
@@ -93,26 +96,28 @@ Bilgisayar grubunu silmek için **Kaldır** sütunundaki **x** simgesini tıklat
 ## <a name="using-a-computer-group-in-a-log-query"></a>Bir günlük sorgusunda bilgisayar grubu kullanma
 Bir sorgudaki bir günlük sorgusundan oluşturulmuş bir bilgisayar grubunu, diğer adını bir işlev olarak düşünerek, genellikle aşağıdaki sözdizimi ile kullanabilirsiniz:
 
-  `Table | where Computer in (ComputerGroup)`
+```kusto
+Table | where Computer in (ComputerGroup)`
+```
 
 Örneğin, yalnızca mycomputergroup adlı bir bilgisayar grubundaki bilgisayarlar için UpdateSummary kayıtlarını döndürmek üzere aşağıdakileri kullanabilirsiniz.
- 
-  `UpdateSummary | where Computer in (mycomputergroup)`
 
+```kusto
+UpdateSummary | where Computer in (mycomputergroup)`
+```
 
 İçeri aktarılan bilgisayar grupları ve dahil edilen bilgisayarları **Computergroup** tablosunda depolanır.  Örneğin, aşağıdaki sorgu Active Directory etki alanı bilgisayarları grubundaki bilgisayarların listesini döndürür. 
 
-  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+```kusto
+ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer
+```
 
 Aşağıdaki sorgu, yalnızca etki alanı bilgisayarlarındaki bilgisayarlar için UpdateSummary kayıtları döndürür.
 
-  ```
-  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+```kusto
+let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
   UpdateSummary | where Computer in (ADComputers)
-  ```
-
-
-
+```
 
 ## <a name="computer-group-records"></a>Bilgisayar grubu kayıtları
 Active Directory veya WSUS 'tan oluşturulan her bilgisayar grubu üyeliğinin Log Analytics çalışma alanında bir kayıt oluşturulur.  Bu kayıtlar bir **bilgisayar grubu** türüne sahiptir ve aşağıdaki tabloda bulunan özelliklere sahiptir.  Günlük sorgularına dayalı bilgisayar grupları için kayıtlar oluşturulmaz.

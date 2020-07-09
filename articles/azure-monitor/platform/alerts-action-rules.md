@@ -4,12 +4,12 @@ description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80618983"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112349"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -196,23 +196,26 @@ Gizleme her zaman aynı kapsamda öncelik alır.
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>İki ayrı eylem kurallarında izlenen bir kaynağınız varsa ne olur? Bir veya iki bildirim alıyorum? Örneğin, aşağıdaki senaryoda **VM2** :
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
 VM1 ve VM3 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. **VM2**üzerindeki her uyarı için, eylem kuralları yinelenen işlemleri kaldırmadığı için eylem grubu AG1 iki kez tetiklenecektir. 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>İki ayrı eylem kuralına göre izlenen bir kaynaktır ve diğeri de gizleme için bir eylem aradığında ne olur? Örneğin, aşağıdaki senaryoda **VM2** :
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with suppression`
 
 VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. VM2 ve VM3 üzerindeki her uyarı için Eylemler ve bildirimler bastırılır. 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Farklı eylem gruplarını çağıran aynı kaynak için bir uyarı kuralınız ve bir eylem kuralı tanımsam ne olur? Örneğin, aşağıdaki senaryoda **VM1** :
 
-      alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1 
- 
+   `alert rule rule1 on VM1 with action group AG2`
+
+   `action rule AR1 defined for VM1 with action group AG1`
+
 VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. "Rule1" uyarı kuralı tetiklendiğinde, ayrıca AG2 de tetiklenecektir. Eylem kuralları ve uyarı kuralları içinde tanımlanan eylem grupları, yinelenenleri kaldırma olmadan bağımsız olarak çalışır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

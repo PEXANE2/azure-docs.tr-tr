@@ -1,17 +1,14 @@
 ---
 title: Azure Event Grid (portal) içinde sistem konuları oluşturma, görüntüleme ve yönetme
 description: Bu makalede, Azure portal kullanarak var olan sistem konusunun nasıl görüntüleneceği, Azure Event Grid sistem konuları oluşturulacağı gösterilmektedir.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457244"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115120"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Azure portal Event Grid sistem konuları oluşturun, görüntüleyin ve yönetin
 Bu makalede, Azure portal kullanarak sistem konuları oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Sistem konularına genel bakış için bkz. [sistem konuları](system-topics.md).

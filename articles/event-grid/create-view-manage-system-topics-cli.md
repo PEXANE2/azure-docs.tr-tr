@@ -1,18 +1,14 @@
 ---
 title: CLı kullanarak Azure Event Grid sistem konuları oluşturma, görüntüleme ve yönetme
 description: Bu makalede, Azure CLı kullanarak sistem konuları oluşturma, görüntüleme ve silme işlemlerinin nasıl yapılacağı gösterilmektedir.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: d9ba83d12e73b3ebceaee3167cdcf7f27922b686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 354afb89b145e288f525e40ad700e8f8a67c6dad
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115052"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Azure CLı kullanarak Event Grid sistem konuları oluşturma, görüntüleme ve yönetme
 Bu makalede, Azure CLı kullanarak sistem konuları oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Sistem konularına genel bakış için bkz. [sistem konuları](system-topics.md).

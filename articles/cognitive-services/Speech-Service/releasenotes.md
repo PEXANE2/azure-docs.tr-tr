@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086321"
+ms.locfileid: "86112995"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -24,7 +24,7 @@ ms.locfileid: "86086321"
 
 ### <a name="new-features"></a>Yeni özellikler
 
-* **Sınır TTS, 15 yeni sinir sesleri**: sinir TTS portföyüne eklenen yeni sesler Arapça (Mısır), Arapça (Suudi Arabistan), Arapça (Suudi Arabistan), KAG (Danimarka), (Danimarka), Danca (Danimarka), serja, Ingilizce (Hindistan), Hintçe (Hindistan), deniz Zofia, Lehçe (Polonya), Portekizce (Portekiz), Rusça (Rusya), Portekizce (Rusya), Isveççe (Rusya), Ispanyolca (Çin), Achara dilinde (Norveç), Çince (İsviçre), Çince (Tayvan) Içinde ıselx (Tayvan), Hiugaaı, Çince (Tayvan) Içinde Hsıaoyu. Desteklenen tüm [dilleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)denetleyin.  
+* **Sınır TTS, 15 yeni sinir sesleri**: sinir TTS portföyüne eklenen yeni sesler `ar-EG` Arapça (Mısır), `ar-SA` Arapça (Suudi Arabistan), Arapça (Suudi Arabistan), KAG (Danimarka), (Danimarka), Danca (Danimarka), `ca-ES` `da-DK` serja, `es-IN` İngilizce (Hindistan), Noora (Hindistan), Hinduca 'daki `fi-FI` Swara (Hindistan), Hollanda Içinde `hi-IN` Colette `nl-NL` (Netherland), Zofia, `pl-PL` Lehçe (Polonya), `pt-PT` Portekizce (Portekiz), Rusça (Rusya), `ru-RU` Rusça (Rusya), İsveççe (Rusya), Tepesi `sv-SE` ), `th-TH` Tay dili (Tayland), `zh-HK` Çince (Cantoneo, geleneksel) ve Hsıaoyu `zh-TW` Çince (Taiwanese Mandarin) dilinde hiugaaı. Desteklenen tüm [dilleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)denetleyin.  
 
 * **Kullanıcı deneyimini basitleştirmek için eğitim akışıyla özel ses, akıcı bir sesli test**: yeni test özelliği ile her ses, her bir dil için en iyi duruma getirilmiş önceden tanımlanmış bir test kümesiyle otomatik olarak test edilir ve bu da genel ve sesli yardım senaryolarını kapsar. Bu test kümeleri dikkatle seçilir ve genel kullanım durumlarını ve telefon dilini içerecek şekilde test edilir. Bunun yanı sıra, kullanıcılar bir modeli eğitmek için kendi test betiklerini karşıya yüklemeyi yine de seçebilir.
 
@@ -46,23 +46,23 @@ ms.locfileid: "86086321"
 
 * Daha yüksek doğruluk ve daha düşük gecikme için ' de geliştirilmiş TTS vocoder.
 
-    * Italyan 'daki Elsa 'Ları, ve + 0,464 CMOS (karşılaştırmalı ortalama görüşeri puanı) ile birlikte, "%40 daha hızlı ve ilk bayt gecikme süresi üzerinde %30 oranında azaldığı yeni bir vocoder 'a güncelleştirildi. 
-    * Genel etki alanı için + 0148 CMOS kazancı ve Lyrical stili için + 0,195 ile 0,348, Çin 'de Xiaoxıao, yeni vocoder 'e güncelleştirildi. 
+    * İçindeki Elsa 'yı `it-IT` , + 0,464 CMOS (karşılaştırmalı ortalama görüşeri puanı) ile sesli kalite ve %40 daha hızlı bir şekilde elde edilen yeni bir vocoder ve ilk bayt gecikmesi üzerinde %30 oranında azaltma. 
+    * `zh-CN`Genel etki 0,348 alanı için + 0148 CMOS kazancı ve Lyrical stili için + 0,195 ile yeni vocoder 'Da Xiaoxıao 'da güncelleştirilmiş. 
 
 * `de-DE` `ja-JP` TTS çıkışını daha doğal hale getirmek için güncelleştirilmiş ve ses modelleri.
     
-    * En son Prosody modelleme yöntemiyle birlikte Alman 'daki Katja güncellenmiştir, (yani, puan puanı) kazanç + 0,13 ' dir. 
-    * Yeni bir Aralık Vurgu Prosody 0,19 modeliyle Japon 'da NANAMI güncelleştirildi.  
+    * `de-DE`En son Prosody modelleme yöntemiyle Katja güncellenmiştir, (yani, puan puanı) kazanç + 0,13 ' dir. 
+    * `ja-JP`Yeni bir Aralık Vurgu Prosody modeliyle birlikte NANAMI güncelleştirildi 0,19,  
 
 * 5 dilde sözcük düzeyinde telaffuz doğruluğu geliştirildi.
 
     | Dil | Telaffuz hatası azaltma |
     |---|---|
-    | en-GB | %51 |
-    | ko-KR | 17 |
-    | pt-BR | %39 |
-    | pt-PT | %77 |
-    | id-ID | %46 |
+    | `en-GB` | %51 |
+    | `ko-KR` | 17 |
+    | `pt-BR` | %39 |
+    | `pt-PT` | %77 |
+    | `id-ID` | %46 |
 
 ### <a name="bug-fixes"></a>Hata düzeltmeleri
 
@@ -71,8 +71,8 @@ ms.locfileid: "86086321"
      
     | Dil | Giriş | İyileştirmelerden sonra yeniden okuma |
     |---|---|---|
-    | es-MX | $1,58 | su cincuenta y Ocho centavos kaldır |
-    | es-ES | $1,58 | dólar cincuenta y Ocho centavos 'yı kaldır |
+    | `es-MX` | $1,58 | su cincuenta y Ocho centavos kaldır |
+    | `es-ES` | $1,58 | dólar cincuenta y Ocho centavos 'yı kaldır |
 
     * Aşağıdaki yerel ayarlarda negatif para birimi ("-€325" gibi) için destek: `en-US` , `en-GB` ,, `fr-FR` `it-IT` , `en-AU` , `en-CA` .
 
@@ -217,7 +217,7 @@ Sağlıklı olun!
 - JavaScript: `FromHost API` Şirket içi kapsayıcılar ve bağımsız bulutlarla kullanım kolaylığı sağlamak için desteği eklendi. [Belgelere bakın](speech-container-howto.md).
 - JavaScript: artık orgads ' `NODE_TLS_REJECT_UNAUTHORIZED` dan bir katkı için teşekkürler [orgads](https://github.com/orgads). [Ayrıntılara bakın](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - `OpenSSL`, 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutunuz `OpenSSL` sistemdeki dizine yüklenmemişse kesintiye neden olabilir `/usr/lib/ssl` . Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
 - C# için döndürülen veri türünü, `WordLevelTimingResult.Offset` `int` `long` `WordLevelTimingResults` konuşma verileri 2 dakikadan uzun olduğunda erişime izin verecek şekilde değiştirdik.
@@ -258,7 +258,7 @@ Sağlıklı olun!
 - `KeywordRecognizer`NuGet ve Unity paketleri aracılığıyla Windows (UWP), Android ve iOS desteği eklendi
 - Zaman uyumsuz toplu işlemlerdeki konuşma dökümü için uzak konuşma Java API 'SI eklendi.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Konuşma taşıma işlevleri ad alanı altına taşındı `Microsoft.CognitiveServices.Speech.Transcription` .
 - Görüşmenin bir parçası olan yöntemler yeni `Conversation` sınıfa taşınır.
@@ -565,7 +565,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - İOS üzerinde amaç-C desteği. [İOS Için hedef C hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)öğreticimize göz atın.
 - Tarayıcıda JavaScript desteği. [JavaScript hızlı](quickstart-js-browser.md)başlangıçmıza göz atın.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Bu sürümle birlikte, bir dizi Son değişiklik yapılmıştır.
   Ayrıntılar için [Bu sayfaya](https://aka.ms/csspeech/breakingchanges_1_0_0) bakın.
@@ -584,7 +584,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 - Bağlantı hatalarıyla ilgili ek hata ayrıntısı bilgilerini kullanıma sunun.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Java 'da (Android), `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` işlev artık bir yol parametresi gerektirmez. Artık tüm desteklenen platformlarda yol otomatik olarak algılanır.
 - `EndpointUrl`Java ve C# ' de özelliğin get-erişimcisi kaldırılmıştır.
@@ -613,7 +613,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - Tanınma sonucu daha fazla alan içeriyor. Bunlar, tanınan metnin ses başlangıcından ve süresinden (her ikisi de her ikisi de) ve tanınma durumunu temsil eden ek değerlere (örneğin, ve) göre denkleştirilir `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Fabrika örnekleri oluşturmak için AuthorizationToken 'ı destekleme.
 
-**Yeni değişiklikler**
+**Son değişiklikler**
 
 - Tanıma olayları: olay `NoMatch` türü `Error` olayla birleştirildi.
 - C# ' de SpeechOutputFormat, `OutputFormat` C++ ile hizalı kalmak için olarak yeniden adlandırıldı.

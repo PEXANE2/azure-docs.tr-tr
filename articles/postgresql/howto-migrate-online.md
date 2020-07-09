@@ -4,14 +4,14 @@ description: Bu makalede, Azure veritabanı geçiş hizmeti kullanılarak bir Po
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b7c6392fbd795a078e9ec8f61281d95cf6363bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65067522"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112400"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'na en az kapalı kalma süresi-tek sunucu
 [Azure veritabanı geçiş hizmeti](https://aka.ms/get-dms) (DMS) için yeni sunulan **sürekli eşitleme özelliğini** kullanarak PostgreSQL için Azure veritabanı 'na geçiş işlemini en az kapalı kalma süresine sahip olabilirsiniz. Bu işlevsellik, uygulama tarafından tahakkuk eden kesinti süresini sınırlandırır.

@@ -3,11 +3,12 @@ title: Azure Application Insights Stream Analytics kullanarak dışarı aktarma 
 description: Stream Analytics, Application Insights dışarı aktarma yaptığınız verileri sürekli olarak dönüştürebilir, filtreleyebilir ve yönlendirebilir.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536888"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110496"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) , [Application Insights aktarılmış](export-telemetry.md)verileri işlemeye yönelik ideal bir araçtır. Stream Analytics, çeşitli kaynaklardan veri çekebilir. Verileri dönüştürebilir ve filtreleyebilir ve sonra çeşitli alıcılara yönlendirebilir.
@@ -92,7 +93,7 @@ Artık, daha önce not ettiğiniz depolama hesabınızdan birincil erişim anaht
 
 Yol ön eki deseninin, Stream Analytics depolama alanındaki giriş dosyalarını nerede bulacağını belirtir. Sürekli dışarı aktarmanın verileri nasıl depoladığını karşılayacak şekilde ayarlamanız gerekir. Bunu şöyle ayarlayın:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+`webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
 Bu örnekte:
 
@@ -124,16 +125,15 @@ Doğru çıktıyı almanızı denetlemek için test işlevini kullanın. Giriş 
 Bu sorguyu Yapıştır:
 
 ```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
+SELECT
+  flat.ArrayValue.name,
+  count(*)
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.[event]) as flat
+GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
 * Export-Input, akış girişine verdiğimiz diğer addır
@@ -141,40 +141,38 @@ Bu sorguyu Yapıştır:
 * Olay adı, iç içe geçmiş bir JSON dizisinde olduğundan, [dış uygulama, GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) kullanıyoruz. Ardından Select, zaman döneminde bu adı taşıyan örneklerin sayısı ile birlikte olay adını seçer. [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) yan tümcesi, öğeleri bir dakikalık zaman dilimlerine göre gruplandırır.
 
 ### <a name="query-to-display-metric-values"></a>Ölçüm değerlerini görüntüleme sorgusu
+
 ```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
+SELECT
+  A.context.data.eventtime,
+  avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.context.custom.metrics) as flat
+GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+```
 
 * Bu sorgu, olay zamanını ve ölçüm değerini almak için ölçüm telemetrisine gider. Ölçüm değerleri bir dizi içindedir, bu nedenle, satırları ayıklamak için DıŞTAKI al Gements düzenlerini kullanırız. "myMetric", bu durumda ölçüm adıdır. 
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>Boyut özelliklerinin değerlerini dahil etmek için sorgu
+
 ```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
+WITH flat AS (
+SELECT
+  MySource.context.data.eventTime as eventTime,
+  InstanceId = MyDimension.ArrayValue.InstanceId.value,
+  BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+FROM MySource
+OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+)
+SELECT
+  eventTime,
+  InstanceId,
+  BusinessUnitId
+INTO AIOutput
+FROM flat
 ```
 
 * Bu sorgu, boyut dizisindeki sabit bir dizinde bulunan belirli bir boyuta bağlı kalmadan boyut özelliklerinin değerlerini içerir.

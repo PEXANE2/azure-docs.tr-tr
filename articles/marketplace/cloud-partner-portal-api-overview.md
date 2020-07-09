@@ -1,18 +1,16 @@
 ---
 title: Bulut İş Ortağı Portalı API başvurusu-Microsoft ticari Market
 description: Açıklaması, kullanım önkoşulları ve Market API işlemlerinin listesi.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 2f79dea4baaa2589333af4e15aece06c1d86b9c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516331"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113590"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Bulut İş Ortağı Portalı API Başvurusu
 
@@ -50,7 +48,7 @@ Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API 'Ler hakk
 - [Teklif oluşturma](./cloud-partner-portal-api-creating-offer.md)
 - [Teklif yayımlama](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>İşlemler
+### <a name="operations"></a>Operations
 
 - [İşlemleri alma](./cloud-partner-portal-api-retrieve-operations.md)
 - [İşlemleri iptal etme](./cloud-partner-portal-api-cancel-operations.md)

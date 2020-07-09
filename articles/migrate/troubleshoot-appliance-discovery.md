@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114066"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -27,7 +27,7 @@ Gereç destek gereksinimlerini [gözden geçirin](migrate-appliance.md) .
 
 "Belirtilen bildirim dosyası geçersiz: geçersiz OVF manifest entry" hatasını alırsanız şunları yapın:
 
-1. Azure geçişi gereç OVA dosyasının karma değerini denetleyerek doğru şekilde indirildiğini doğrulayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Karma değeri eşleşmiyorsa, OVA dosyasını yeniden indirin ve dağıtımı yeniden deneyin.
+1. Azure geçişi gereç OVA dosyasının karma değerini denetleyerek doğru şekilde indirildiğini doğrulayın. [Daha fazla bilgi edinin](./tutorial-prepare-vmware.md). Karma değeri eşleşmiyorsa, OVA dosyasını yeniden indirin ve dağıtımı yeniden deneyin.
 2. Dağıtım hala başarısız olursa ve OVF dosyasını dağıtmak için VMware vSphere istemcisini kullanıyorsanız, vSphere Web istemcisi aracılığıyla dağıtmayı deneyin. Dağıtım hala başarısız olursa, farklı bir Web tarayıcısı kullanmayı deneyin.
 3. VSphere Web istemcisini kullanıyorsanız ve vCenter Server 6,5 veya 6,7 ' de dağıtmaya çalışıyorsanız, OVA 'yı doğrudan ESXi konağına dağıtmayı deneyin:
    - Web istemcisi (https://<*ana BILGISAYAR IP adresi*>/UI) Ile ESXi konağına doğrudan (vCenter Server yerine) bağlanın.
@@ -40,7 +40,7 @@ Gereç makinesi bir proxy 'nin arkasındaysa bu durum oluşabilir.
 
 - Proxy 'ye ihtiyaç duyuyorsa yetkilendirme kimlik bilgilerini sağladığınızdan emin olun.
 - Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, [Bu URL 'leri](migrate-appliance.md#url-access) izin verilenler listesine ekleyin.
-- İnternet 'e bağlanmak için bir kesintiye uğratan ara sunucu kullanıyorsanız, [Bu adımları](https://docs.microsoft.com/azure/migrate/concepts-collector)kullanarak proxy SERTIFIKASıNı gereç sanal makinesine aktarın.
+- İnternet 'e bağlanmak için bir kesintiye uğratan ara sunucu kullanıyorsanız, [Bu adımları](./migrate-appliance.md)kullanarak proxy SERTIFIKASıNı gereç sanal makinesine aktarın.
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Azure 'da gereç Web uygulamasından oturum açılamıyor
 
@@ -64,7 +64,7 @@ Tarih ve saat eşitleme (802) ile ilgili bir hata, sunucu saatinin beş dakikada
 
 Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğesine bağlanamadıysanız. Hata ayrıntıları, `https://\*servername*.com:9443/sdk` iletiyi kabul edebilecek bir uç nokta dinleme olmadığını gösterir.
 
-- En son gereç sürümünü çalıştırıp çalıştırmadığını denetleyin. Değilseniz, gereci [en son sürüme](https://docs.microsoft.com/azure/migrate/concepts-collector)yükseltin.
+- En son gereç sürümünü çalıştırıp çalıştırmadığını denetleyin. Değilseniz, gereci [en son sürüme](./migrate-appliance.md)yükseltin.
 - Sorun hala en son sürümde gerçekleşirse, Gereç belirtilen vCenter Server adını çözemeyebilir veya belirtilen bağlantı noktası yanlış olabilir. Varsayılan olarak, bağlantı noktası belirtilmemişse, toplayıcı 443 numaralı bağlantı noktası numarasına bağlanmayı dener.
 
     1. Gereci *ServerName*. com ' a ping yapın.
@@ -77,10 +77,10 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
 
 - Hata 60052, "gereci kaydetmek için kullanılan Azure hesabının izinleri yetersizse," gereç Azure geçişi projesine başarıyla kaydedilmemiş olabilir "hatası oluşur.
     - Gereci kaydetmek için kullanılan Azure Kullanıcı hesabının abonelikte en az katkıda bulunan izinleri olduğundan emin olun.
-    - Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) .
+    - Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](./migrate-appliance.md#appliance---vmware) .
 - Hata 60039, "gereç, kayıt başarısız olursa, kayıt başarısız olursa, Gereç kayıt işlemi için kullanılan Azure geçişi projesi bulunamadığı için," gereç Azure geçiş projesi 'ne başarıyla kaydettirilmemiş "olabilir
     - Azure portal ve projenin kaynak grubunda mevcut olup olmadığını kontrol edin.
-    - Proje yoksa, kaynak grubunuzda yeni bir Azure geçişi projesi oluşturun ve gereci yeniden kaydedin. Yeni bir proje oluşturmayı [öğrenin](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) .
+    - Proje yoksa, kaynak grubunuzda yeni bir Azure geçişi projesi oluşturun ve gereci yeniden kaydedin. Yeni bir proje oluşturmayı [öğrenin](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) .
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>Hata 60030/60031: Key Vault Yönetimi işlemi başarısız oldu
 
@@ -88,7 +88,7 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
 - Gereci kaydetmek için kullanılan Azure Kullanıcı hesabının abonelikte en az katkıda bulunan izinleri olduğundan emin olun.
 - Hesabın hata iletisinde belirtilen anahtar kasasına erişimi olduğundan emin olun ve işlemi yeniden deneyin.
 - Sorun devam ederse, Microsoft desteğine başvurun.
-- Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) .
+- Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](./migrate-appliance.md#appliance---vmware) .
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Hata 60028: bulma başlatılamadı
 
@@ -103,7 +103,7 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 - Keşfi başlatan kullanıcı hesabının gereci kaydetmek için kullanılan ile aynı olduğundan emin olun.
 - Bulma işleminin başarısız olduğu Kullanıcı hesabına Azure Active Directory Uygulama erişim izinleri sağlayın.
 - Azure geçişi projesi için önceden oluşturulan kaynak grubunu silin. Yeniden başlamak için başka bir kaynak grubu oluşturun.
-- Azure Active Directory Uygulama izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) .
+- Azure Active Directory Uygulama izinleri hakkında [daha fazla bilgi edinin](./migrate-appliance.md#appliance---vmware) .
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>Hata 50004: konağa veya kümeye bağlanılamıyor

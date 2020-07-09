@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322060"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111006"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -30,9 +30,8 @@ Bir Azure veri deposundan veri paylaşmak veya almak için, kullanıcının en a
 
 Aşağıda, veri paylaşımının kaynak yönetimli kimliğine atanan rollerin özeti verilmiştir:
 
-| |  |  |
-|---|---|---|
 |**Veri deposu türü**|**Kaynak veri deposu Veri Sağlayıcısı**|**Veri tüketicisi hedef veri deposu**|
+|---|---|---|
 |Azure Blob Depolama| Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
 |Azure Data Lake Gen1 | Sahip | Desteklenmiyor
 |Azure Data Lake Gen2 | Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
@@ -42,9 +41,8 @@ Aşağıda, veri paylaşımının kaynak yönetimli kimliğine atanan rollerin �
 
 SQL tabanlı paylaşım için, Azure SQL veritabanı 'nda Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
 
-| |  |  |
-|---|---|---|
 |**SQL veritabanı türü**|**Veri Sağlayıcısı SQL Kullanıcı Izni**|**Veri tüketicisi SQL Kullanıcı Izni**|
+|---|---|---|
 |Azure SQL Veritabanı | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |Azure Synapse Analytics (eski adı SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
@@ -103,4 +101,3 @@ Azure kiracınızda Azure Veri Paylaşma davetini ilk kez görüntülemek için,
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure 'da roller hakkında daha fazla bilgi edinin- [rol tanımlarını anlayın](../role-based-access-control/role-definitions.md)
-

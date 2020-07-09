@@ -4,14 +4,14 @@ description: Azure CLı kullanarak MySQL için Azure veritabanı için veri şif
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cb3e5db1c7fae3b0542557d2dae8239e0624f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82185838"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114627"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -22,17 +22,18 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
 * Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
 * Bir anahtar kasası ve müşterinin yönettiği anahtar için kullanılacak bir anahtar oluşturun. Ayrıca, anahtar kasasında Temizleme korumasını ve geçici silmeyi etkinleştirin.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+  ```azurecli-interactive
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  ```
 
 * Oluşturulan Azure Key Vault, MySQL için Azure veritabanı 'nın veri şifrelemesi için kullanılacak anahtarı oluşturun.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+  ```azurecli-interactive
+  az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+  ```
 
 * Mevcut bir anahtar kasasını kullanabilmeniz için, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliklere sahip olmalıdır:
+
   * [Geçici silme](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
@@ -54,17 +55,17 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
 
 1. MySQL için Azure veritabanı 'nın yönetilen kimliğini almanın iki yolu vardır.
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Yönetilen bir kimlikle MySQL için yeni bir Azure veritabanı sunucusu oluşturun.
+   ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Yönetilen bir kimlikle MySQL için yeni bir Azure veritabanı sunucusu oluşturun.
 
-    ```azurecli-interactive
-    az mysql server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server create --name -g <resource_group> --location <locations> --storage-size size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> -geo-redundant-backup <Enabled/Disabled>  --assign-identity
+   ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Yönetilen bir kimlik almak için mevcut bir MySQL için Azure veritabanı sunucusunu güncelleştirin.
+   ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Yönetilen bir kimlik almak için mevcut bir MySQL için Azure veritabanı sunucusunu güncelleştirin.
 
-    ```azurecli-interactive
-    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server update --name  <server name>  -g <resource_group> --assign-identity
+   ```
 
 2. MySQL sunucusunun adı olan **asıl öğe**için **anahtar izinlerini** (**Get**, **Wrap**, **Unwrap**) ayarlayın.
 
@@ -88,36 +89,36 @@ MySQL için Azure veritabanı, Key Vault ' de depolanan bir müşterinin yöneti
 
 ### <a name="creating-a-restoredreplica-server"></a>Geri yüklenen/çoğaltılan sunucu oluşturma
 
-  *  [Geri yükleme sunucusu oluşturma](howto-restore-server-cli.md) 
-  *  [Okuma çoğaltması sunucusu oluşturma](howto-read-replicas-cli.md) 
+* [Geri yükleme sunucusu oluşturma](howto-restore-server-cli.md) 
+* [Okuma çoğaltması sunucusu oluşturma](howto-read-replicas-cli.md) 
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Sunucu geri yüklendikten sonra, geri yüklenen sunucu için veri şifrelemeyi yeniden doğrula
 
-    ```azurecli-interactive
-    az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-mysql"></a>MySQL için Azure veritabanı için kullanılan anahtar için ek özellik
 
 ### <a name="get-the-key-used"></a>Kullanılan anahtarı al
 
-    ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Anahtar URL 'si:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>Kullanılan anahtarı listeleyin
 
-    ```azurecli-interactive
-    az mysql server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az mysql server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>Kullanılan anahtarı bırakın
 
-    ```azurecli-interactive
-    az mysql server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az mysql server key delete -g <resource_group> --kid <key url>
+```
 
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Veri şifrelemeyi etkinleştirmek için Azure Resource Manager şablonu kullanma
 
@@ -130,6 +131,7 @@ Sunucuda veri şifrelemesi etkinken sunucu sağlamak için önceden oluşturulmu
 Bu Azure Resource Manager şablonu, MySQL için Azure veritabanı sunucusu oluşturur ve sunucuda veri şifrelemeyi etkinleştirmek için **anahtar** **Kasası** ve parametre olarak geçirilen anahtarı kullanır.
 
 ### <a name="for-an-existing-server"></a>Var olan bir sunucu için
+
 Ayrıca, mevcut MySQL için Azure veritabanı sunucularınızda veri şifrelemeyi etkinleştirmek üzere Azure Resource Manager şablonları kullanabilirsiniz.
 
 * Daha önce bir özellik altında kopyaladığınız Azure Key Vault anahtarının kaynak KIMLIĞINI `Uri` Özellikler nesnesinde geçirin.

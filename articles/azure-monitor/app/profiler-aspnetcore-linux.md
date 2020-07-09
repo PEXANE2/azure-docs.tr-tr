@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640966"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111074"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler ile Azure Linux Web Apps ASP.NET Core profili
 
@@ -22,7 +23,7 @@ Bu yönergeyi tamamladıktan sonra, uygulamanız görüntüde gösterilen izleme
 
 ![Profil Oluşturucu izlemeleri](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için geçerlidir:
 
 * [.NET Core SDK 2.1.2 'yi veya üstünü](https://dotnet.microsoft.com/download/archives)yükler.
@@ -34,17 +35,17 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
 
 1. ASP.NET Core MVC web uygulaması oluşturma:
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. Çalışma dizinini projenin kök klasörüyle değiştirin.
 
 1. Profil Oluşturucu izlemelerini toplamak için NuGet paketini ekleyin:
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. Program.cs içinde Application Insights etkinleştir:
 
@@ -54,7 +55,7 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. Startup.cs içinde profil oluşturucuyu etkinleştir:
 
     ```csharp
@@ -68,24 +69,24 @@ Aşağıdaki yönergeler tüm Windows, Linux ve Mac geliştirme ortamları için
 1. Birkaç saniye rastgele gecikmeye sağlamak için **HomeController.cs** bölümüne bir kod satırı ekleyin:
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. Değişikliklerinizi yerel depoya kaydedin ve işleyin:
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>Projenizi barındırmak için Linux Web uygulaması oluşturma
@@ -111,7 +112,7 @@ Daha fazla dağıtım seçeneği için [Bu makaleye](https://docs.microsoft.com/
 
 1. Komut Istemi penceresinde, projeniz için kök klasöre gidin. App Service depoyu işaret etmek için bir git uzak deposu ekleyin:
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -120,13 +121,13 @@ Daha fazla dağıtım seçeneği için [Bu makaleye](https://docs.microsoft.com/
 
 2. Değişiklikleri Azure 'a göndererek projeyi dağıtın:
 
-    ```
+    ```console
     git push azure master
     ```
 
-Aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
+    Aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -143,8 +144,7 @@ Aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Web uygulamalarınızı izlemek için Application Insights ekleyin
@@ -153,9 +153,7 @@ Aşağıdaki örneğe benzer bir çıktı görmeniz gerekir:
 
 2. Application Insights kaynağın **Ikey** değerini kopyalayın ve Web uygulamalarınızda aşağıdaki ayarları ayarlayın:
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     Uygulama ayarları değiştirildiğinde, site otomatik olarak yeniden başlatılır. Yeni ayarlar uygulandıktan sonra, profil oluşturucu hemen iki dakika boyunca çalışır. Profil Oluşturucu daha sonra saatte iki dakika çalışır.
 

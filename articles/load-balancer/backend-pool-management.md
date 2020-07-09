@@ -1,89 +1,162 @@
 ---
 title: Arka uç havuzu yönetimi
-description: Load Balancer arka uç havuzunu yapılandırmaya yönelik kılavuz
+titleSuffix: Azure Load Balancer
+description: Azure Load Balancer arka uç havuzunu yapılandırmayı ve yönetmeyi öğrenmeye başlayın
 services: load-balancer
-author: erichrt
+author: asudbring
 ms.service: load-balancer
 ms.topic: overview
-ms.date: 07/06/2020
-ms.author: errobin
-ms.openlocfilehash: 6d9700e134a9e3d6c53524d15c8b3503cf5773c7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.author: allensu
+ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050192"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113981"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
-Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak işlem kaynağı grubunu tanımlayan Load Balancer temel bir bileşenidir. Bir arka uç havuzunu düzgün şekilde yapılandırarak, trafiği sunacak uygun bir makine grubu tanımlamış olursunuz. Bir arka uç havuzunu, ağ arabirimi kartı (NIC) ve bir bileşim IP adresi ve sanal ağ (VNET) kaynak KIMLIĞI ile yapılandırmanın iki yolu vardır. 
+Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
 
-Sanal makineleri ve sanal makine ölçek kümelerini kapsayan Çoğu senaryoda, bu yöntem, kaynağınız ile arka uç havuzu arasında en doğrudan bağlantıyı oluşturdığından, arka uç havuzunuzun NIC tarafından yapılandırılması önerilir. Bir NIC 'e sahip olmayan kapsayıcılar ve Kubernetes pods içeren senaryolar ve arka uç kaynakları için bir IP adresi aralığının ön ayırması için, arka uç havuzunuzu IP adresine ve VNET KIMLIĞI birleşimine göre yapılandırabilirsiniz.
+Arka uç havuzunu yapılandırmanın iki yolu vardır:
+* Ağ arabirimi kartı (NIC)
+* Birleşik IP adresi ve sanal ağ (VNET) kaynak KIMLIĞI
 
-Portal aracılığıyla NIC veya IP adresi ve VNET KIMLIĞI ile yapılandırırken, Kullanıcı arabirimi her adımda size kılavuzluk eder ve tüm yapılandırma güncelleştirmeleri arka uçta işlenir. Bu makalenin yapılandırma bölümleri, arka uç havuzlarının her bir yapılandırma seçeneği için nasıl yapılandırıldığı hakkında bilgi vermek için Azure PowerShell, CLı, REST API ve ARM şablonlarına odaklanacaktır.
+Sanal makineler ve sanal makine ölçek kümeleri kullanırken arka uç havuzunuzu NIC ile yapılandırın. Bu yöntem, kaynağınız ile arka uç havuzu arasındaki en doğrudan bağlantıyı oluşturur. 
+
+Kapsayıcı veya Kubernetes pods gibi bir NIC 'nin kullanılamadığı senaryolarda, arka uç havuzunuzu IP adresine ve VNET KIMLIĞI birleşimine göre yapılandırın.
+
+Bu makalenin yapılandırma bölümleri şu şekilde odaklanacaktır:
+
+* Azure PowerShell
+* Azure CLI
+* REST API
+* Azure Resource Manager şablonları 
+
+Bu bölümler, arka uç havuzlarının her bir yapılandırma seçeneği için nasıl yapılandırıldığı hakkında fikir verir.
 
 ## <a name="configuring-backend-pool-by-nic"></a>NIC tarafından arka uç havuzunu yapılandırma
-Bir arka uç havuzunu NIC ile yapılandırırken, arka uç havuzunun Load Balancer işleminin bir parçası olarak oluşturulduğunu ve üyelerin, ağ arabirimi işlemi sırasında ağ arabiriminin IP Yapılandırması özelliğinin bir parçası olarak arka uç havuzuna eklendiğini aklınızda bulundurmanız önemlidir. Aşağıdaki örnekler, bu iş akışını ve ilişkiyi vurgulamak için arka uç havuzunun oluştur ve doldur işlemlerine odaklanılmıştır.
+Arka uç havuzu, yük dengeleyici işleminin bir parçası olarak oluşturulur. NIC 'nin IP yapılandırma özelliği, arka uç havuzu üyelerini eklemek için kullanılır.
+
+Aşağıdaki örnekler, bu iş akışını ve ilişkiyi vurgulamak için arka uç havuzunun oluştur ve doldur işlemlerine odaklanılmıştır.
 
   >[!NOTE] 
   >Ağ arabirimi aracılığıyla yapılandırılan arka uç havuzlarının, arka uç havuzundaki bir işlemin parçası olarak güncelleştirileceğini unutmayın. Arka uç kaynaklarının herhangi bir eklenmesi veya silinmesi, kaynağın ağ arabiriminde gerçekleşmelidir.
 
 ### <a name="powershell"></a>PowerShell
-Yeni bir arka uç havuzu oluşturun: 
-```powershell
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup   -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+Yeni bir arka uç havuzu oluşturun:
+ 
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
 Yeni bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin:
-```powershell
-$nic = New-AzNetworkInterface -ResourceGroupName $rgName -Location $location `
-  -Name 'MyNic' -LoadBalancerBackendAddressPool $bepool -Subnet $vnet.Subnets[0]
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+$nicname = "myNic"
+$location = "eastus"
+$vnetname = <your-vnet-name>
+
+$vnet = 
+Get-AzVirtualNetwork -Name $vnetname -ResourceGroupName $resourceGroup
+
+$nic = 
+New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicname -LoadBalancerBackendAddressPool $backendPoolName -Subnet $vnet.Subnets[0]
 ```
 
-Bu ağ arabiriminin arka uç havuzuna eklendiğini onaylamak için Load Balancer arka uç havuzu bilgilerini alın:
-```powershell
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $bePool  
+Bu ağ arabiriminin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+
+$lb =
+Get-AzLoadBalancer -ResourceGroupName $res
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
 ```
 
 Yeni bir sanal makine oluşturun ve ağ arabirimini, arka uç havuzuna yerleştirmek üzere bağlayın:
-```powershell
+
+```azurepowershell-interactive
 # Create a username and password for the virtual machine
 $cred = Get-Credential
 
 # Create a virtual machine configuration
-$vmConfig = New-AzVMConfig -VMName 'myVM1' -VMSize Standard_DS1_v2 `
- | Set-AzVMOperatingSystem -Windows -ComputerName 'myVM1' -Credential $cred `
- | Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version latest `
- | Add-AzVMNetworkInterface -Id $nicVM1.Id
+$vmname = "myVM1"
+$vmsize = "Standard_DS1_v2"
+$pubname = "MicrosoftWindowsServer"
+$nicname = "myNic"
+$off = "WindowsServer"
+$sku = "2019-Datacenter"
+$resourceGroup = "myResourceGroup"
+$location = "eastus"
+
+$nic =
+Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
+
+$vmConfig = 
+New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
  
 # Create a virtual machine using the configuration
-$vm1 = New-AzVM -ResourceGroupName $rgName -Zone 1 -Location $location -VM $vmConfig
+$vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-
-  
 ### <a name="cli"></a>CLI
 Arka uç havuzunu oluşturma:
-```bash
-az network lb address-pool create --resourceGroup myResourceGroup --lb-name myLB --name myBackendPool 
+
+```azurecli-interactive
+az network lb address-pool create \
+--resourceGroup myResourceGroup \
+--lb-name myLB \
+--name myBackendPool 
 ```
 
 Yeni bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin:
-```bash
-az network nic create --resource-group myResourceGroup --name myNic --vnet-name myVnet --subnet mySubnet --network-security-group myNetworkSecurityGroup --lb-name myLB --lb-address-pools myBackEndPool
+
+```azurecli-interactive
+az network nic create \
+--resource-group myResourceGroup \
+--name myNic \
+--vnet-name myVnet \
+--subnet mySubnet \
+--network-security-group myNetworkSecurityGroup \
+--lb-name myLB \
+--lb-address-pools myBackEndPool
 ```
 
 IP adresinin doğru şekilde eklendiğini onaylamak için arka uç havuzunu alın:
-```bash
-az network lb address-pool show -g MyResourceGroup --lb-name MyLb -n MyBackendPool
+
+```azurecli-interactive
+az network lb address-pool show \
+--resource-group myResourceGroup \
+--lb-name myLb \
+--name myBackendPool
 ```
 
 Yeni bir sanal makine oluşturun ve ağ arabirimini, arka uç havuzuna yerleştirmek üzere bağlayın:
-```bash
-az vm create --resource-group myResourceGroup --name myVM --nics myNic --image UbuntuLTS --admin-username azureuser --generate-ssh-keys
+
+```azurecli-interactive
+az vm create \
+--resource-group myResourceGroup \
+--name myVM \
+--nics myNic \
+--image UbuntuLTS \
+--admin-username azureuser \
+--generate-ssh-keys
 ```
 
 ### <a name="rest-api"></a>REST API
 Arka uç havuzunu oluşturma:
+
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
 ```
@@ -94,7 +167,7 @@ Ağ arabirimi oluşturun ve ağ arabiriminin IP yapılandırması özelliği ara
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
 ```
 
-JSON Istek gövdesi:
+JSON istek gövdesi:
 ```json
 {
   "properties": {
@@ -117,7 +190,7 @@ JSON Istek gövdesi:
 }
 ```
 
-Bu ağ arabiriminin arka uç havuzuna eklendiğini onaylamak için Load Balancer arka uç havuzu bilgilerini alın:
+Bu ağ arabiriminin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name/providers/Microsoft.Network/loadBalancers/{load-balancer-name/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
@@ -129,7 +202,7 @@ Bir VM oluşturun ve arka uç havuzuna başvuran NIC 'yi iliştirin:
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
 ```
 
-JSON Istek gövdesi:
+JSON istek gövdesi:
 ```JSON
 {
   "location": "easttus",
@@ -172,72 +245,111 @@ JSON Istek gövdesi:
 }
 ```
 
-### <a name="arm-template"></a>ARM Şablonu
-Bir Load Balancer ve sanal makine dağıtmak ve ağ arabirimi aracılığıyla sanal makineleri arka uç havuzuna eklemek için bu [hızlı başlangıç ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) izleyin.
+### <a name="resource-manager-template"></a>Resource Manager Şablonu
+Yük dengeleyici ve sanal makineler dağıtmak ve ağ arabirimi aracılığıyla sanal makineleri arka uç havuzuna eklemek için bu [hızlı başlangıç Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) izleyin.
 
-## <a name="configuring-backend-pool-by-ip-address-and-virtual-network"></a>IP adresi ve sanal ağ ile arka uç havuzunu yapılandırma
-Kapsayıcı kaynaklarına yük dengelemekte veya bir IP adresi aralığına sahip bir arka uç havuzu önceden dolduruluyorsanız, ağ arabirimine sahip olup olmadığına bakılmaksızın geçerli bir kaynağa yönlendirmek için IP adresi ve sanal ağ üzerinden yararlanabilirsiniz. IP adresi ve VNET aracılığıyla yapılandırırken, tüm arka uç havuzu yönetimi, aşağıdaki örneklerde vurgulanan şekilde doğrudan arka uç havuzu nesnesi üzerinde yapılır.
+## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>IP adresi ve sanal ağ ile arka uç havuzunu yapılandırma
+Kapsayıcılarla senaryolarda veya IP 'Ler ile önceden doldurulmuş bir arka uç havuzu ile IP ve sanal ağ kullanın.
+
+Tüm arka uç havuzu yönetimi, aşağıdaki örneklerde vurgulanan şekilde doğrudan arka uç havuzu nesnesi üzerinde yapılır.
 
   >[!IMPORTANT] 
   >Bu özellik şu anda önizleme aşamasındadır ve aşağıdaki sınırlamalara sahiptir:
   >* 100 IP adresi sınırı eklendi
-  >* Arka uç kaynakları, Load Balancer ile aynı sanal ağda olmalıdır
-  >* Bu özellik şu anda portal UX sürümünde desteklenmemektedir
-  >* Bu yalnızca standart yük dengeleyiciler için kullanılabilir
+  >* Arka uç kaynakları, yük dengeleyici ile aynı sanal ağda olmalıdır
+  >* Bu özellik şu anda Azure portal desteklenmiyor
+  >* Yalnızca standart yük dengeleyici
   
 ### <a name="powershell"></a>PowerShell
-Yeni arka uç havuzu oluştur: 
-```powershell
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup   -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPooName  
+Yeni arka uç havuzu oluştur:
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+$vnetName = "myVnet"
+$location = "eastus"
+$nicName = "myNic"
+
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
-Bu arka uç havuzunu mevcut VNET 'ten yeni bir IP ile güncelleştirin:  
-```powershell
-$virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+Mevcut sanal ağdan arka uç havuzunu yeni bir IP ile güncelleştir:
  
-$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+```azurepowershell-interactive
+$virtualNetwork = 
+Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+ 
+$ip1 = 
+New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
  
 $backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
-Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $backendPool  
+Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
 ```
 
-Arka uç adreslerinin arka uç havuzuna eklendiğini doğrulamak üzere Load Balancer için arka uç havuzu bilgilerini alın:
-```powershell
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $backendPool  
+Arka uç adreslerinin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
+
+```azurepowershell-interactive
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
 ```
-IP adresini arka uç adreslerinden birine ayarlayarak bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin:
-```
-$nic = New-AzNetworkInterface -ResourceGroupName $rgName -Location $location `
-  -Name 'MyNic' -PrivateIpAddress 10.0.0.4 -Subnet $vnet.Subnets[0]
+Bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin. IP adresini arka uç adreslerinden birine ayarlayın:
+
+```azurepowershell-interactive
+$nic = 
+New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicName -PrivateIpAddress 10.0.0.4 -Subnet $virtualNetwork.Subnets[0]
 ```
 
 Bir VM oluşturun ve NIC 'yi arka uç havuzunda bir IP adresi ile ekleyin:
-```powershell
+```azurepowershell-interactive
 # Create a username and password for the virtual machine
 $cred = Get-Credential
 
 # Create a virtual machine configuration
-$vmConfig = New-AzVMConfig -VMName 'myVM' -VMSize Standard_DS1_v2 `
- | Set-AzVMOperatingSystem -Windows -ComputerName 'myVM' -Credential $cred `
- | Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version latest `
- | Add-AzVMNetworkInterface -Id $nic.Id
- 
+$vmname = "myVM1"
+$vmsize = "Standard_DS1_v2"
+$pubname = "MicrosoftWindowsServer"
+$nicname = "myNic"
+$off = "WindowsServer"
+$sku = "2019-Datacenter"
+$resourceGroup = "myResourceGroup"
+$location = "eastus"
+
+$nic =
+Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
+
+$vmConfig = 
+New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
+
 # Create a virtual machine using the configuration
-$vm = New-AzVM -ResourceGroupName $rgName -Zone 1 -Location $location -VM $vmConfig
+$vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
 ### <a name="cli"></a>CLI
 CLı kullanarak, arka uç havuzunu komut satırı parametreleriyle ya da bir JSON yapılandırma dosyası aracılığıyla doldurabilirsiniz. 
 
 Komut satırı parametreleri aracılığıyla arka uç havuzunu oluşturun ve doldurun:
-```bash
-az network lb address-pool create --lb-name myLB --name myBackendPool --vnet {VNET resource ID} --backend-address name=addr1 ip-address=10.0.0.4 --backend-address name=addr2 ip-address=10.0.0.5
+
+```azurecli-interactive
+az network lb address-pool create \
+--resource-group myResourceGroup \
+--lb-name myLB \
+--name myBackendPool \
+--vnet {VNET resource ID} \
+--backend-address name=addr1 ip-address=10.0.0.4 \
+--backend-address name=addr2 ip-address=10.0.0.5
 ```
 
 Arka uç havuzunu JSON yapılandırma dosyası aracılığıyla oluşturun ve doldurun:
-```bash
-az network lb address-pool create --lb-name myLB --name myBackendPool --vnet {VNET resource ID} --backend-address-config-file @config_file.json
+
+```azurecli-interactive
+az network lb address-pool create \
+--resource-group myResourceGroup \
+--lb-name myLB \
+--name myBackendPool \
+--vnet {VNET resource ID} \
+--backend-address-config-file @config_file.json
 ```
 
 JSON yapılandırma dosyası:
@@ -256,13 +368,18 @@ JSON yapılandırma dosyası:
         ]
 ```
 
-Arka uç adreslerinin arka uç havuzuna eklendiğini doğrulamak üzere Load Balancer için arka uç havuzu bilgilerini alın:
-```bash
-az network lb address-pool show -g MyResourceGroup --lb-name MyLb -n MyBackendPool
+Arka uç adreslerinin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
+
+```azurecli-interactive
+az network lb address-pool show \
+--resource-group myResourceGroup \
+--lb-name MyLb \
+--name MyBackendPool
 ```
 
-IP adresini arka uç adreslerinden birine ayarlayarak bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin:
-```bash
+Bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin. IP adresini arka uç adreslerinden birine ayarlayın:
+
+```azurecli-interactive
 az network nic create \
   --resource-group myResourceGroup \
   --name myNic \
@@ -274,7 +391,8 @@ az network nic create \
 ```
 
 Bir VM oluşturun ve NIC 'yi arka uç havuzunda bir IP adresi ile ekleyin:
-```bash
+
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVM \
@@ -286,8 +404,11 @@ az vm create \
 
 ### <a name="rest-api"></a>REST API
 
+Bir arka uç havuzu isteği ile arka uç havuzu oluşturun ve arka uç adreslerini tanımlayın. PUT isteğinin JSON gövdesinde arka uç adreslerini şu şekilde yapılandırın:
 
-Bir arka uç havuzu isteği ile arka uç havuzu oluşturun ve arka uç adreslerini tanımlayın. PUT isteğinin JSON gövdesinde adres adı, IP adresi ve sanal ağ KIMLIĞI aracılığıyla eklemek istediğiniz arka uç adreslerini yapılandırın:
+* Adres adı
+* IP adresi
+* Sanal ağ KIMLIĞI 
 
 ```
 PUT https://management.azure.com/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend?api-version=2020-05-01
@@ -321,12 +442,12 @@ JSON Istek gövdesi:
 }
 ```
 
-Arka uç adreslerinin arka uç havuzuna eklendiğini doğrulamak üzere Load Balancer için arka uç havuzu bilgilerini alın:
+Arka uç adreslerinin arka uç havuzuna eklendiğini onaylamak için yük dengeleyicinin arka uç havuzu bilgilerini alın:
 ```
 GET https://management.azure.com/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
 ```
 
-IP adresini arka uç adreslerinden birine ayarlayarak bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin:
+Bir ağ arabirimi oluşturun ve arka uç havuzuna ekleyin. IP adresini arka uç adreslerinden birine ayarlayın:
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
 ```
@@ -401,8 +522,8 @@ JSON Istek gövdesi:
 }
 ```
 
-### <a name="arm-template"></a>ARM Şablonu
-Load Balancer, arka uç havuzunu oluşturun ve arka uç havuzunu arka uç adresleriyle doldurun:
+### <a name="resource-manager-template"></a>Resource Manager Şablonu
+Yük dengeleyici, arka uç havuzu oluşturun ve arka uç havuzunu arka uç adresleriyle doldurun:
 ```
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -719,3 +840,7 @@ Bir sanal makine ve bağlı ağ arabirimi oluşturun. Ağ arabiriminin IP adresi
   ]
 }
 ```
+## <a name="next-steps"></a>Sonraki adımlar
+Bu makalede Azure Load Balancer arka uç havuzu yönetimi ve IP adresi ve sanal ağ ile arka uç havuzu yapılandırma hakkında bilgi edindiniz.
+
+[Azure Load Balancer](load-balancer-overview.md)hakkında daha fazla bilgi edinin.

@@ -1,17 +1,18 @@
 ---
 title: Temsilci erişimini kaldırma
-description: Azure tarafından atanan kaynak yönetimi için bir hizmet sağlayıcısına temsilci atanmış kaynaklara erişimi kaldırmayı öğrenin.
-ms.date: 04/24/2020
+description: Azure açık Thouse için bir hizmet sağlayıcısına temsilci atanmış kaynaklara erişimi kaldırmayı öğrenin.
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636504"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111737"
 ---
 # <a name="remove-access-to-a-delegation"></a>Temsilci erişimini kaldırma
 
-Bir müşterinin aboneliği veya kaynak grubu, [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için bir hizmet sağlayıcısına temsilci seçildikten sonra, gerekirse temsilci kaldırılabilir. Bir yetkilendirme kaldırıldıktan sonra, hizmet sağlayıcı kiracısındaki kullanıcılara daha önce verilen erişim artık uygulanmaz.
+Bir müşterinin aboneliği veya kaynak grubu, [Azure açık kullanım](../overview.md)için bir hizmet sağlayıcısına temsilci seçildikten sonra, gerekirse temsilci kaldırılabilir. Bir temsilci kaldırıldıktan sonra, daha önce hizmet sağlayıcı kiracısındaki kullanıcılara verilen [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md) erişimi artık uygulanmaz.
 
 Bir temsilciyi kaldırmak, Kullanıcı uygun izinlere sahip olduğu sürece müşteri kiracısında veya hizmet sağlayıcısı kiracısında bir kullanıcı tarafından yapılabilir.
 

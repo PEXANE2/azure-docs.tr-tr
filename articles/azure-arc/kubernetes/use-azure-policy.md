@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111278"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesi kullanma (Önizleme)
 
@@ -34,7 +35,7 @@ Her küme için Truth kaynakları olarak birden çok git deposu kullanıyorsanı
 8. Öğesinin oluşturulması sırasında kullanılacak parametre değerlerini ayarlayın `sourceControlConfiguration` .
 9. **İleri**’yi seçin.
 10. **Düzeltme görevi oluşturma**özelliğini etkinleştirin.
-11. **Yönetilen bir kimlik oluşturmak** ve kimliğin **katkıda** bulunan izinlerine sahip olması güvence altına alınır. İhtiyacınız olan izinler hakkında daha fazla bilgi [için bu belgeyi ve](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) [Bu belgedeki yorumu](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) inceleyin.
+11. **Yönetilen bir kimlik oluşturmak** ve kimliğin **katkıda** bulunan izinlerine sahip olması güvence altına alınır. İhtiyacınız olan izinler hakkında daha fazla bilgi [için bu belgeyi ve](../../governance/policy/assign-policy-portal.md) [Bu belgedeki yorumu](../../governance/policy/how-to/remediate-resources.md) inceleyin.
 12. **İncele ve oluştur**’u seçin.
 
 İlke ataması oluşturulduktan sonra, `connectedCluster` atama kapsamında yer alan herhangi bir yeni kaynak (veya `managedCluster` Gile aracıları yüklü olan kaynak) için `sourceControlConfiguration` uygulanır. Mevcut kümeler için bir düzeltme görevini el ile çalıştırmanız gerekir. İlke atamasının etkili olması için genellikle 10-20 dakika sürer.
@@ -50,4 +51,4 @@ Her küme için Truth kaynakları olarak birden çok git deposu kullanıyorsanı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Arc etkin Kubernetes kümelerine sahip kapsayıcılar için Azure Izleyici 'yi ayarlama](./deploy-azure-monitor-for-containers.md)
+* [Arc etkin Kubernetes kümelerine sahip kapsayıcılar için Azure Izleyici 'yi ayarlama](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)

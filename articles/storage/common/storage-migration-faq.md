@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0272d53c5fc4c565baf5d7105bd6e1b4a0ef535
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944704"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114610"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Depolama geçişi hakkında sık sorulan sorular
 
@@ -26,9 +26,11 @@ Bu makalede, Azure depolama geçişi hakkında sık sorulan sorular yanıtlanmak
 
 Kapsayıcılar arasında dosya kopyalamak için AzCopy kullanabilirsiniz. Aşağıdaki örneğe bakın:
 
-    AzCopy /Source:https://xxx.blob.core.windows.net/xxx
-    /Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
-    /S
+```azurepowershell-interactive
+AzCopy /Source:https://xxx.blob.core.windows.net/xxx
+/Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
+/S
+```
 
 AzCopy, kapsayıcıdaki her dosyayı kopyalamak için [kopyalama blobu API](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 'sini kullanır.  
 
@@ -54,11 +56,15 @@ Azure CLı kullanabilirsiniz.
 
 - Tek bir blobu indir:
 
-      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```azurecli-interactive
+    azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```
 
 - Tek bir blobu karşıya yükle:
 
-      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```azurecli-interactive
+    azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```
 
 **Blob 'Ları bir depolama hesabından diğerine geçirmek Nasıl yaparım? istiyor musunuz?**
 
@@ -160,15 +166,19 @@ Verileri indirmek için AzCopy kullanın. Daha fazla bilgi için bkz. [Windows �
 
     Depolama hesabındaki tüm diskleri kopyalamak için:
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     Yalnızca bir diski kopyalamak için, **Şu düzende diskin adını belirtin:**
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```
 
 İşlemin tamamlanması birkaç saat sürebilir.
 
@@ -190,9 +200,11 @@ Tüm depolama hesabını doğrudan yedekleme seçeneği yoktur. Ancak, bu depola
 
 3.  Kapsayıcıyı taşımak için aşağıdaki komutu çalıştırın. Metni gerçek değerlerle değiştirmeniz gerekir.   
 
-            AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-            /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-            /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     - `/Source`: Kaynak depolama hesabı için URI sağlayın (kapsayıcıya kadar).  
     - `/Dest`: Hedef depolama hesabı için URI sağlayın (kapsayıcıya kadar).  

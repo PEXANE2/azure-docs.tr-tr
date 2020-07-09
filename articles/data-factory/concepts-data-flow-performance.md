@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 07/06/2020
-ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042637"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114389"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -35,7 +35,7 @@ Eşleme veri akışları tasarlarken, yapılandırma panelinde veri önizleme se
 
 ![Veri akışı Izleme](media/data-flow/mon003.png "Veri akışı Izleyicisi 3")
 
- İşlem hattı hata ayıklama çalıştırmaları için, bir ısınma kümesi için genel performans hesaplamalarınızda bir dakikalık küme ayarlama zamanı gereklidir. Varsayılan Azure Integration Runtime başladıysanız, başlatma süresi yaklaşık 5 dakika sürebilir.
+ İşlem hattı hata ayıklama çalıştırmaları için, bir ısınma kümesi için genel performans hesaplamalarınızda bir dakikalık küme ayarlama zamanı gereklidir. Varsayılan Azure Integration Runtime başladıysanız, başlatma zamanı yaklaşık 4 dakika sürebilir.
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime işlem boyutunu artırma
 
@@ -55,7 +55,7 @@ Varsayılan olarak, hata ayıklamayı açmak her bir veri fabrikası için otoma
 
 ### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>TTL ile küme hesaplama başlangıç süresini azaltma
 
-Azure IR, veri akışı özellikleri altında, fabrikanızın bir küme işlem kaynakları havuzunu kullanmanıza olanak sağlayacak bir özellik vardır. Bu havuz sayesinde, yürütme için veri akışı etkinliklerini sıralı olarak gönderebilirsiniz. Havuz kurulduktan sonra, sonraki her iş, isteğe bağlı Spark kümesinin işinizi yürütmesi için 1-2 dakika sürer. Kaynak havuzunun ilk kurulumu 6 dakika içinde sürer. Kaynak havuzunu yaşam süresi (TTL) ayarında sürdürmek istediğiniz süreyi belirtin.
+Azure IR, veri akışı özellikleri altında, fabrikanızın bir küme işlem kaynakları havuzunu kullanmanıza olanak sağlayacak bir özellik vardır. Bu havuz sayesinde, yürütme için veri akışı etkinliklerini sıralı olarak gönderebilirsiniz. Havuz kurulduktan sonra, sonraki her iş, isteğe bağlı Spark kümesinin işinizi yürütmesi için 1-2 dakika sürer. Kaynak havuzunun ilk kurulumu 4 dakika sürer. Kaynak havuzunu yaşam süresi (TTL) ayarında sürdürmek istediğiniz süreyi belirtin.
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Azure SQL veritabanı ve Azure SQL veri ambarı SYNAPSE için iyileştirme
 
@@ -145,7 +145,7 @@ Joker karakter kullanımı ' nı kullanarak, işlem hattınız yalnızca bir ver
 
 Her biri paralel modda olan işlem hattı, yürütülen her veri akışı etkinliği için dönen iş kümelerine göre birden çok küme oluşturacak. Bu, yüksek sayıda eş zamanlı yürütmeler ile Azure hizmeti azaltmasına neden olabilir. Ancak, ardışık düzende sıralı kümesi olan her biri Için bir Için veri akışı yürütme kullanımı, azaltma ve kaynak tükenmesi yapmaktan kaçınacaktır. Bu, Data Factory her bir veri akışına karşı her dosyanızı yürütmek üzere zorlayacaktır.
 
-Her biri Için bir veri akışı ile kullanıyorsanız, Azure Integration Runtime TTL ayarını kullanmanız önerilir. Bunun nedeni, her bir dosyanın yineleyicisinin içinde tam 5 dakikalık bir küme başlatma süresi olacaktır.
+Her biri Için bir veri akışı ile kullanıyorsanız, Azure Integration Runtime TTL ayarını kullanmanız önerilir. Bunun nedeni, her bir dosyanın yineleyicisinin içinde tam 4 dakikalık bir küme başlangıç süresi olacaktır.
 
 ### <a name="optimizing-for-cosmosdb"></a>CosmosDB için iyileştiriliyor
 

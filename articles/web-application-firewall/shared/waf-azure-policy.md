@@ -5,14 +5,14 @@ author: tremansdoerfer
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 4c1fd53eb6ebf1f1aebdfba99b736e26bd6cff2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85307000"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111362"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web uygulaması güvenlik duvarı ve Azure Ilkesi
 
@@ -22,9 +22,13 @@ Azure Ilkesiyle birleştirilmiş Azure Web uygulaması güvenlik duvarı (WAF), 
 
 WAF kaynaklarını yönetmek için birkaç yerleşik Azure Ilkesi vardır. İlkelerin ve bunların işlevlerini bir dökümü aşağıdaki gibidir:
 
-1. **Azure ön kapı hizmeti veya Application Gateway Için Web uygulaması güvenlik duvarı etkinleştirilmelidir**: kaynak oluşturma üzerinde bir WAF varsa, Azure ön kapı Hizmetleri ve uygulama ağ geçitleri üzerinde değerlendirilir. İlkenin üç etkisi vardır: denetim, reddetme ve devre dışı bırakma. Denetim, bir Azure ön kapısının veya Application Gateway WAF olmadığında ve kullanıcıların Azure ön kapısının ne olduğunu veya Application Gateway Şu anda uyumlu olmadığını görmesini sağlar. Reddetme, bir WAF iliştiriliyorsa Azure ön kapı hizmeti 'nin veya Application Gateway oluşturulmasını engeller. Devre dışı bırakılan bu ilkeyi kapatır.
+1. **Azure ön kapı hizmeti Için Web uygulaması güvenlik duvarı (WAF) etkinleştirilmelidir**: kaynak oluşturma üzerinde bir WAF varsa, Azure ön kapı Hizmetleri üzerinde değerlendirilir. İlkenin üç etkisi vardır: denetim, reddetme ve devre dışı bırakma. Azure ön kapısının bir WAF 'si olmadığında ve kullanıcıların Azure ön kapısının uyumlu olmadığını görmesini sağlayan denetim izler. Reddetme, bir WAF iliştiriliyorsa Azure ön kapı hizmeti 'nin oluşturulmasını engeller. Devre dışı bırakılan bu ilkeyi kapatır.
 
-2. **Web uygulaması güvenlik duvarı Application Gateway ve Azure ön kapı hizmeti için ayarlanmış bir mod**olmalıdır: Web uygulaması güvenlik duvarı, içinde olduğu modda, önleme ya da algılama için değerlendirilir. İlke, Web uygulaması güvenlik duvarları arasında mod tutarlılığı sağlar. İlkenin üç etkisi vardır: denetim, reddetme ve devre dışı bırakma. Bir WAF belirtilen moda uygun olmadığında denetim izler. Deny, doğru modda değilse WAF 'nin oluşturulmasını engeller. Devre dışı bırakılan bu ilkeyi kapatır.
+2. **Application Gateway Için Web uygulaması güvenlik duvarı (WAF) etkinleştirilmelidir**: kaynak oluşturma üzerinde bir WAF varsa, uygulama ağ geçitleri üzerinde değerlendirilir. İlkenin üç etkisi vardır: denetim, reddetme ve devre dışı bırakma. Denetim, bir Application Gateway WAF olmadığında ve kullanıcıların ne Application Gateway uyumlu olmadığını görmesini sağlayan izler. Reddetme, bir WAF iliştiriliyorsa Application Gateway oluşturulmasını engeller. Devre dışı bırakılan bu ilkeyi kapatır.
+
+3. **Web uygulaması güvenlik duvarı (WAF), Azure ön kapı hizmeti için belirtilen modu kullanmalıdır**: ' algılama ' veya ' önleme ' modunun Azure ön kapı hizmeti Için tüm Web uygulaması güvenlik duvarı ilkelerine etkin olmasını sağlamak için kullanın. İlkenin üç etkisi vardır: denetim, reddetme ve devre dışı bırakma. Bir WAF belirtilen moda uygun olmadığında denetim izler. Deny, doğru modda değilse WAF 'nin oluşturulmasını engeller. Devre dışı bırakılan bu ilkeyi kapatır.
+
+4. **Web uygulaması güvenlik duvarı (WAF) Application Gateway için belirtilen modu kullanmalıdır**: mantarihlere, Application Gateway Için tüm Web uygulaması güvenlik duvarı ilkelerinde etkin olması Için ' algılama ' veya ' önleme ' modunun kullanılması gerekir. İlkenin üç etkisi vardır: denetim, reddetme ve devre dışı bırakma. Bir WAF belirtilen moda uygun olmadığında denetim izler. Deny, doğru modda değilse WAF 'nin oluşturulmasını engeller. Devre dışı bırakılan bu ilkeyi kapatır.
 
 
 ## <a name="launch-an-azure-policy"></a>Azure Ilkesi başlatma
@@ -45,7 +49,7 @@ WAF kaynaklarını yönetmek için birkaç yerleşik Azure Ilkesi vardır. İlke
     2.  **Dışlamalar**: ilkeden dışlamak için kapsamdaki kaynakları seçin 
     3.  **Ilke tanımı**: dışlamalarla kapsama uygulanacak Azure ilkesini seçin. İlgili Web uygulaması güvenlik duvarı Azure Ilkesini seçmek için arama çubuğuna "Web uygulaması güvenlik duvarı" yazın.
 
-![Azure Web uygulaması güvenlik duvarı](../media/waf-azure-policy/policy-listings.png)
+![Azure Web uygulaması güvenlik duvarı](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  **Parametreler** sekmesini seçin ve ilke parametrelerini güncelleştirin. Parametrenin ne yaptığını netleştirmek için, daha fazla açıklama için parametre adının yanındaki bilgi simgesinin üzerine gelin.

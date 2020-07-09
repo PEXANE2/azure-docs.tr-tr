@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186433"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111992"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Izleyici 'de Linux aracılarında CollectD 'den veri toplama
 [Collectd](https://collectd.org/) , uygulamalardan ve sistem düzeyi bilgilerden düzenli olarak performans ölçümlerini toplayan açık kaynaklı bir Linux Daemon. Örnek uygulamalar Java Sanal Makinesi (JVM), MySQL Server ve NGINX ' i içerir. Bu makalede, Azure Izleyici 'de CollectD 'den performans verilerinin toplanması hakkında bilgi sağlanır.
@@ -24,26 +24,30 @@ Aşağıdaki CollectD yapılandırması, Linux için Log Analytics aracısına, 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-         <Node "oms">
-         URL "127.0.0.1:26000/oms.collectd"
-         Format "JSON"
-         StoreRates true
-         </Node>
-    </Plugin>
+<Plugin write_http>
+   <Node "oms">
+      URL "127.0.0.1:26000/oms.collectd"
+      Format "JSON"
+      StoreRates true
+   </Node>
+</Plugin>
+```
 
 Ayrıca, 5,5 öncesinde bir collectD sürümü kullanılıyorsa, bunun yerine aşağıdaki yapılandırmayı kullanın.
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-       <URL "127.0.0.1:26000/oms.collectd">
-        Format "JSON"
-         StoreRates true
-       </URL>
-    </Plugin>
+<Plugin write_http>
+   <URL "127.0.0.1:26000/oms.collectd">
+      Format "JSON"
+      StoreRates true
+   </URL>
+</Plugin>
+```
 
 CollectD yapılandırması, `write_http` 26000 numaralı bağlantı noktası üzerinden performans ölçümü verilerini Linux için Log Analytics aracısına göndermek için varsayılan eklentiyi kullanır. 
 
@@ -52,15 +56,17 @@ CollectD yapılandırması, `write_http` 26000 numaralı bağlantı noktası üz
 
 Linux için Log Analytics Aracısı Ayrıca, CollectD ölçümleri için 26000 numaralı bağlantı noktasını dinler ve ardından bunları Azure Izleyici şeması ölçümlerine dönüştürür. Linux yapılandırması için Log Analytics Aracısı aşağıda verilmiştir `collectd.conf` .
 
-    <source>
-      type http
-      port 26000
-      bind 127.0.0.1
-    </source>
+```xml
+<source>
+   type http
+   port 26000
+   bind 127.0.0.1
+</source>
 
-    <filter oms.collectd>
-      type filter_collectd
-    </filter>
+<filter oms.collectd>
+   type filter_collectd
+</filter>
+```
 
 > [!NOTE]
 > CollectD varsayılan olarak 10 saniyelik bir [aralıkta](https://collectd.org/wiki/index.php/Interval)değerleri okumak üzere ayarlanır. Bu işlem, Azure Izleyici günlüklerine gönderilen veri hacmini doğrudan etkilediği için, izleme gereksinimleri ile ilişkili maliyetler ve Azure Izleyici günlüklerinin kullanımı arasında iyi bir denge sağlamak için CollectD yapılandırması dahilinde bu zaman aralığını ayarlamanız gerekebilir.
@@ -83,11 +89,15 @@ Azure Izleyici 'de CollectD verilerinin toplanmasını yapılandırmak için tem
 
     CollectD yapılandırma dizininiz/etc/collectd.exe dizininde bulunuyorsa:
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```
 
     CollectD yapılandırma dizininiz/etc/collectd/collectd.exe dizininde bulunuyorsa:
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```
 
     >[!NOTE]
     >5,5 'den önceki CollectD sürümleri için, içindeki etiketleri `oms.conf` yukarıda gösterildiği gibi değiştirmeniz gerekecektir.
@@ -95,13 +105,17 @@ Azure Izleyici 'de CollectD verilerinin toplanmasını yapılandırmak için tem
 
 2. Collectd. conf dosyasını istenen çalışma alanının omsagent yapılandırma dizinine kopyalayın.
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
-        sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
+    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```
 
 3. Aşağıdaki komutlarla, CollectD ve Linux için Log Analytics Aracısı 'nı yeniden başlatın.
 
-        sudo service collectd restart
-        sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```console
+    sudo service collectd restart
+    sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD ölçümlerini Azure Izleyici şemasına dönüştürme
 Linux için Log Analytics Aracısı tarafından zaten toplanan altyapı ölçümleri ve CollectD tarafından toplanan yeni ölçümler arasında tanıdık bir modeli korumak için aşağıdaki şema eşlemesi kullanılır:

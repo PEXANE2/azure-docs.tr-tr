@@ -1,19 +1,14 @@
 ---
 title: Azure Event Grid ölçümleri görüntüleme ve uyarıları ayarlama
 description: Bu makalede, Azure Event Grid konu ve Aboneliklerle ilgili ölçümleri görüntülemek ve bunlar üzerinde uyarı oluşturmak için Azure portal nasıl kullanılacağı açıklanır.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390610"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114892"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>İleti teslimini izleme Event Grid 
 Bu makalede, Event Grid konular ve abonelikler için ölçümleri görmek ve bunlar üzerinde uyarı oluşturmak üzere portalın nasıl kullanılacağı açıklanır. 

@@ -1,13 +1,14 @@
 ---
 title: Kurumsal senaryolarda Azure Lighthouse
 description: Azure açık Thouse özellikleri, birden çok Azure AD kiracısının kullanıldığı bir kuruluşta çapraz kiracı yönetimini basitleştirmek için kullanılabilir.
-ms.date: 09/25/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f9a7aa81772a1edda5fd1915918b547a3066455
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749214"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114151"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure Lighthouse
 
@@ -17,7 +18,7 @@ ms.locfileid: "75749214"
 
 Çoğu kuruluş için, yönetim tek bir Azure AD kiracısıyla daha kolay olur. Tek bir kiracının içindeki tüm kaynakların olması, bu Kiracıdaki kullanıcılara, Kullanıcı gruplarına veya hizmet sorumlularına göre yönetim görevlerinin merkezileşmeyi sağlar. Mümkün olduğunda kuruluşunuz için bir kiracı kullanmanızı öneririz.
 
-Aynı zamanda, bir kuruluşun birden çok Azure AD kiracının bakımını gerektirebileceği durumlar vardır. Bazı durumlarda bu geçici bir durum olabilir. Bu durumda, alımlar gerçekleştiği sırada ve uzun süreli bir kiracı birleştirme stratejisinin tanımlanması zaman alabilir. Kuruluşun aynı zamanda birden fazla kiracının devam edebilmesi için (tamamen bağımsız bağlı kuruluşlar, coğrafi veya yasal gereksinimler vb.). Çok kiracılı bir mimarinin gerekli olduğu durumlarda, yönetim işlemlerini merkezileştirmek ve kolaylaştırmak için Azure tarafından atanan kaynak yönetimi kullanılabilir. Birden çok kiracıdan abonelikler, Azure tarafından atanan [kaynak yönetimi](azure-delegated-resource-management.md)için eklendi olabilir. Bu, bir yönetim kiracısındaki belirlenen kullanıcıların, merkezi ve ölçeklenebilir bir şekilde [platformlar arası yönetim işlevleri](cross-tenant-management-experience.md) gerçekleştirmesini sağlar.
+Aynı zamanda, bir kuruluşun birden çok Azure AD kiracının bakımını gerektirebileceği durumlar vardır. Bazı durumlarda bu geçici bir durum olabilir. Bu durumda, alımlar gerçekleştiği sırada ve uzun süreli bir kiracı birleştirme stratejisinin tanımlanması zaman alabilir. Kuruluşun aynı zamanda birden fazla kiracının devam edebilmesi için (tamamen bağımsız bağlı kuruluşlar, coğrafi veya yasal gereksinimler vb.). Çok kiracılı bir mimarinin gerekli olduğu durumlarda, yönetim işlemlerini merkezileştirmek ve kolaylaştırmak için Azure ışıklı kullanım kullanılabilir. Birden çok kiracıdan abonelikler, Azure tarafından atanan [kaynak yönetimi](azure-delegated-resource-management.md)için eklendi olabilir. Bu, bir yönetim kiracısındaki belirlenen kullanıcıların, merkezi ve ölçeklenebilir bir şekilde [platformlar arası yönetim işlevleri](cross-tenant-management-experience.md) gerçekleştirmesini sağlar.
 
 ## <a name="tenant-management-architecture"></a>Kiracı Yönetimi mimarisi
 
@@ -31,17 +32,17 @@ Kuruluşunuz, tüm kiracıların tamamında aynı ilke tanımlarını, yedekleme
 
 ## <a name="security-and-access-considerations"></a>Güvenlik ve erişim konuları
 
-Çoğu kurumsal senaryoda, bir abonelik içinde yalnızca belirli kaynak gruplarını temsil edebilir, ancak Azure tarafından atanan kaynak yönetimi için tam bir abonelik atamak isteyeceksiniz.
+Çoğu kurumsal senaryoda, Azure mathouse için tam bir abonelik atamak isteyeceksiniz, ancak bir abonelik içinde yalnızca belirli kaynak grupları da atayabilirsiniz.
 
 Her iki durumda da, [kaynaklara hangi kullanıcıların erişebileceğini tanımlarken en az ayrıcalık ilkesini izlediğinizden](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)emin olun. Bunun yapılması, kullanıcıların yalnızca gerekli görevleri gerçekleştirmek için gerekli izinlere sahip olmasını sağlamaya yardımcı olur ve yanlışlıkla hata olasılığını azaltır.
 
-Azure Mathouse ve Azure Temsilcili kaynak yönetimi, verileri veya kaynakları fiziksel olarak taşımak yerine yalnızca bir kiracı ve yönetilen kiracılar arasında mantıksal bağlantılar sağlar. Ayrıca erişim, yönetim kiracısından yönetilen kiracılar 'a her zaman tek bir yönde gider.  Yönetim kiracısındaki kullanıcılar ve gruplar, yönetilen kiracı kaynaklarında yönetim işlemlerini gerçekleştirirken Multi-Factor Authentication kullanmaya devam etmelidir.
+Azure Mathouse yalnızca, verileri veya kaynakları fiziksel olarak taşımak yerine, bir kiracı ve yönetilen kiracılar arasında mantıksal bağlantılar sağlar. Ayrıca erişim, yönetim kiracısından yönetilen kiracılar 'a her zaman tek bir yönde gider.  Yönetim kiracısındaki kullanıcılar ve gruplar, yönetilen kiracı kaynaklarında yönetim işlemlerini gerçekleştirirken Multi-Factor Authentication kullanmaya devam etmelidir.
 
 İç veya dış idare ve uyumluluk guardları olan kuruluşlar, saydamlık gereksinimlerini karşılamak için [Azure etkinlik günlüklerini](../../azure-monitor/platform/platform-logs-overview.md) kullanabilir. Kurumsal kiracılar yönetim ve yönetilen kiracı ilişkileri oluştururken, her Kiracıdaki kullanıcılar günlüğe kaydedilen etkinliği görüntüleyerek diğer Kiracıdaki kullanıcılar tarafından gerçekleştirilen eylemleri izleyebilir ve görünürlük elde edebilir.
 
 ## <a name="onboarding-process-considerations"></a>Ekleme süreci konuları
 
-Abonelikler (veya bir abonelik içindeki kaynak grupları), Azure Resource Manager şablonları dağıtarak veya Azure Marketi 'nde yayınlanan yönetilen hizmet teklifleri aracılığıyla ya da özel olarak veya genel olarak, Azure tarafından yetkilendirilen kaynak yönetimine eklendi olabilir.
+Abonelikler (veya bir abonelik içindeki kaynak grupları), Azure Resource Manager şablonları dağıtarak veya Azure Marketi 'nde yayınlanan yönetilen hizmet teklifleri aracılığıyla ya da özel olarak veya herkese açık olarak eklendi.
 
 Kurumsal kullanıcılar normalde kuruluşun kiracılarına doğrudan erişim elde edebilecekler ve bir yönetim teklifini pazarlamaya veya yükseltmeye gerek duymadığından, genellikle Azure Resource Manager şablonlarıyla doğrudan daha hızlı ve daha basit hale gelir. [Ekleme](../how-to/onboard-customer.md)kılavuzundaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz sürece kuruluşlar aynı işlemlerin aynısını kullanabilir.
 
