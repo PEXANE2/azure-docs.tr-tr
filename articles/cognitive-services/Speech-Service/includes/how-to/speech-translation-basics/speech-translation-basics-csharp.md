@@ -4,24 +4,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: bac2ed447c9055f095e604725591c487378f5091
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0f113c22d28b4ae211562974d1c3292f54351498
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399617"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035555"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gerekir. Platformunuza bağlı olarak, konuşma SDK makalesinin <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">konuşma SDK 'sını <span class="docon docon-navigate-external x-hidden-focus"></span> al</a> bölümünde yer alan yönergeleri izleyin.
+Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gerekir. Platformunuza bağlı olarak, _konuşma SDK 'Sı hakkında_ konusunun <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">konuşma SDK <span class="docon docon-navigate-external x-hidden-focus"></span> 'sını al</a> bölümünde yer alan yönergeleri izleyin.
 
 ## <a name="import-dependencies"></a>Bağımlılıkları içeri aktar
 
-Bu makaledeki örnekleri çalıştırmak için, *program.cs* dosyasının en üstüne aşağıdaki `using` deyimleri ekleyin.
+Bu makaledeki örnekleri çalıştırmak için, `using` *program.cs* dosyasının en üstüne aşağıdaki deyimleri ekleyin.
 
 ```csharp
 using System;
@@ -36,7 +36,7 @@ using Microsoft.CognitiveServices.Speech.Translation;
 
 ## <a name="sensitive-data-and-environment-variables"></a>Hassas veriler ve ortam değişkenleri
 
-Bu makaledeki örnek kaynak kodu, konuşma kaynağı abonelik anahtarı ve bölgesi gibi hassas verileri depolamak için ortam değişkenlerine bağımlıdır. `Program` Sınıfı, `SPEECH__SUBSCRIPTION__KEY` ve `SPEECH__SERVICE__REGION`gibi konak makineler ortam değişkenlerinden atanan iki `static readonly string` değer içerir. Bu alanların her ikisi de sınıf kapsamıdır ve sınıfın yöntem gövdelerinde erişilebilir hale getirir. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [ortam değişkenleri ve uygulama yapılandırması](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
+Bu makaledeki örnek kaynak kodu, konuşma kaynağı abonelik anahtarı ve bölgesi gibi hassas verileri depolamak için ortam değişkenlerine bağımlıdır. `Program`Sınıfı `static readonly string` , ve gibi konak makineler ortam değişkenlerinden atanan iki değer içerir `SPEECH__SUBSCRIPTION__KEY` `SPEECH__SERVICE__REGION` . Bu alanların her ikisi de sınıf kapsamıdır ve sınıfın yöntem gövdelerinde erişilebilir hale getirir. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [ortam değişkenleri ve uygulama yapılandırması](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
 
 ```csharp
 public class Program
@@ -53,12 +53,12 @@ public class Program
 
 ## <a name="create-a-speech-translation-configuration"></a>Konuşma çevirisi yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir [`SpeechTranslationConfig`][config]oluşturmanız gerekir. Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechTranslationConfig`][config] . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
 
 > [!TIP]
 > Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
 
-[`SpeechTranslationConfig`][config]Şunları başlatabilmeniz için birkaç yol vardır:
+Şunları başlatabilmeniz için birkaç yol vardır [`SpeechTranslationConfig`][config] :
 
 * Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
 * Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
@@ -88,7 +88,7 @@ public class Program
 
 ## <a name="change-source-language"></a>Kaynak dilini değiştir
 
-Konuşma çevirisi 'nin yaygın bir görevi, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Italyanca olarak nasıl değiştirebileceğinizi göz atalım. Kodunuzda, [`SpeechTranslationConfig`][config] `SpeechRecognitionLanguage` özelliğine atayarak örnekle etkileşime geçin.
+Konuşma çevirisi 'nin yaygın bir görevi, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Italyanca olarak nasıl değiştirebileceğinizi göz atalım. Kodunuzda, [`SpeechTranslationConfig`][config] özelliğine atayarak örnekle etkileşime geçin `SpeechRecognitionLanguage` .
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -101,11 +101,11 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-Özelliği [`SpeechRecognitionLanguage`][recognitionlang] , bir dil yerel ayar dizesi bekliyor. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesindeki **yerel ayar** sütununda herhangi bir değer sağlayabilirsiniz.
+[`SpeechRecognitionLanguage`][recognitionlang]Özelliği, bir dil yerel ayar dizesi bekliyor. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesindeki **yerel ayar** sütununda herhangi bir değer sağlayabilirsiniz.
 
 ## <a name="add-translation-language"></a>Çeviri dili Ekle
 
-Konuşma çevirisi 'nin başka bir ortak görevi, hedef çeviri dillerini belirtmektir, ancak en az bir tane gereklidir ancak katları desteklenir. Aşağıdaki kod parçacığında, hem Fransızca hem de Almanca, Çeviri dili olarak hedefler.
+Konuşma çevirisi 'nin başka bir ortak görevi, hedef çeviri dillerini belirtmektir, ancak en az bir tane gereklidir ancak katları desteklenir. Aşağıdaki kod parçacığı, hem Fransızca hem de Almanca ' yı çeviri dili hedefi olarak ayarlar.
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -121,13 +121,13 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-Her çağrısıyla [`AddTargetLanguage`][addlang], yeni bir hedef çeviri dili belirtilir. Diğer bir deyişle, konuşma kaynak dilden tanındığında, her hedef çeviri, elde edilen çeviri işleminin bir parçası olarak kullanılabilir.
+Her çağrısıyla [`AddTargetLanguage`][addlang] , yeni bir hedef çeviri dili belirtilir. Diğer bir deyişle, konuşma kaynak dilden tanındığında, her hedef çeviri, elde edilen çeviri işleminin bir parçası olarak kullanılabilir.
 
 ## <a name="initialize-a-translation-recognizer"></a>Çeviri tanıyıcısı başlatma
 
-Bir [`SpeechTranslationConfig`][config]oluşturduktan sonra, bir sonraki adım bir [`TranslationRecognizer`][recognizer]' ı başlatmaktır. Bir [`TranslationRecognizer`][recognizer]başlattığınızda, bunu geçirmeniz gerekir `translationConfig`. Yapılandırma nesnesi, konuşma hizmeti 'nin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
+Bir oluşturduktan sonra [`SpeechTranslationConfig`][config] , bir sonraki adım bir ' ı başlatmaktır [`TranslationRecognizer`][recognizer] . Bir başlattığınızda [`TranslationRecognizer`][recognizer] , bunu geçirmeniz gerekir `translationConfig` . Yapılandırma nesnesi, konuşma hizmeti 'nin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
 
-Cihazınızın varsayılan mikrofonunu [`TranslationRecognizer`][recognizer] kullanarak konuşmayı tanıyor olmanız halinde şöyle görünmelidir:
+Cihazınızın varsayılan mikrofonunu kullanarak konuşmayı tanıyor olmanız halinde şöyle [`TranslationRecognizer`][recognizer] görünmelidir:
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -144,12 +144,12 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-Ses giriş cihazını belirtmek isterseniz, oluşturmanız [`AudioConfig`][audioconfig] ve ' ı başlatırken `audioConfig` parametresini sağlamanız gerekir. [`TranslationRecognizer`][recognizer]
+Ses giriş cihazını belirtmek isterseniz, oluşturmanız ve ' ı [`AudioConfig`][audioconfig] `audioConfig` başlatırken parametresini sağlamanız gerekir [`TranslationRecognizer`][recognizer] .
 
 > [!TIP]
 > [Ses giriş cihazınız için CIHAZ kimliğini nasıl alabileceğinizi öğrenin](../../../how-to-select-audio-input-devices.md).
 
-İlk olarak, `AudioConfig` nesnesine aşağıdaki gibi başvuracağız:
+İlk `AudioConfig` olarak, nesnesine aşağıdaki gibi başvuracağız:
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -167,7 +167,7 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-Mikrofon kullanmak yerine bir ses dosyası sağlamak istiyorsanız, yine de sağlamanız gerekir `audioConfig`. Ancak [`AudioConfig`][audioconfig], öğesini çağırmak `FromDefaultMicrophoneInput`yerine bir oluşturduğunuzda, `FromWavFileInput` `filename` parametresini çağırır ve geçireceğiz.
+Mikrofon kullanmak yerine bir ses dosyası sağlamak istiyorsanız, yine de sağlamanız gerekir `audioConfig` . Ancak, [`AudioConfig`][audioconfig] öğesini çağırmak yerine bir oluşturduğunuzda, `FromDefaultMicrophoneInput` `FromWavFileInput` parametresini çağırır ve geçireceğiz `filename` .
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -221,14 +221,14 @@ Konuşmayı metne dönüştürme hakkında daha fazla bilgi için bkz. [konuşma
 
 ## <a name="synthesize-translations"></a>Çevirileri sentezleştir
 
-Başarılı bir konuşma tanıma ve çeviri işleminden sonra, sonuç bir Sözlükteki tüm çevirileri içerir. [`Translations`][translations] Sözlük anahtarı hedef çeviri dilidir ve değer, çevrilmiş metindir. Tanınan konuşma çevrilebilir ve farklı bir dilde (konuşma konuşmaya) alınabilir.
+Başarılı bir konuşma tanıma ve çeviri işleminden sonra, sonuç bir Sözlükteki tüm çevirileri içerir. [`Translations`][translations]Sözlük anahtarı hedef çeviri dilidir ve değer, çevrilmiş metindir. Tanınan konuşma çevrilebilir ve farklı bir dilde (konuşma konuşmaya) alınabilir.
 
 ### <a name="event-based-synthesis"></a>Olay tabanlı sensıs
 
-`TranslationRecognizer` Nesne bir `Synthesizing` olay gösterir. Olay birkaç kez harekete geçirilir ve çeviri tanıma sonucundan birleştirilmiş sesi almak için bir mekanizma sağlar. Birden çok dile arıyorsanız bkz. [el ile birleştirme](#manual-synthesis). Bir oluşturma [`VoiceName`][voicename] ve `Synthesizing` olay için olay işleyicisi sağlama yoluyla sensıs sesini belirtin, sesi alın. Aşağıdaki örnek, çevrilmiş sesi bir *. wav* dosyası olarak kaydeder.
+`TranslationRecognizer`Nesne bir olay gösterir `Synthesizing` . Olay birkaç kez harekete geçirilir ve çeviri tanıma sonucundan birleştirilmiş sesi almak için bir mekanizma sağlar. Birden çok dile arıyorsanız bkz. [el ile birleştirme](#manual-synthesis). Bir oluşturma ve olay için olay işleyicisi sağlama yoluyla sensıs sesini belirtin [`VoiceName`][voicename] `Synthesizing` , sesi alın. Aşağıdaki örnek, çevrilmiş sesi bir *. wav* dosyası olarak kaydeder.
 
 > [!IMPORTANT]
-> Olay tabanlı birleştirme yalnızca tek bir çeviri ile birlikte çalışarak birden çok hedef çeviri **dili eklemeyin.** [`VoiceName`][voicename] Ayrıca, hedef çeviri diliyle aynı dil olmalıdır, örneğin; `"de"` ile `"de-DE-Hedda"`eşlenecek.
+> Olay tabanlı birleştirme yalnızca tek bir çeviri ile birlikte çalışarak birden çok hedef çeviri **dili eklemeyin.** Ayrıca, [`VoiceName`][voicename] hedef çeviri diliyle aynı dil olmalıdır, örneğin, `"de"` ile eşleşebilmelidir `"de-DE-Hedda"` .
 
 ```csharp
 static async Task TranslateSpeechAsync()
@@ -271,7 +271,7 @@ static async Task TranslateSpeechAsync()
 
 ### <a name="manual-synthesis"></a>El ile birleştirme
 
-[`Translations`][translations] Sözlük, çeviri metninin sesini sentezleştirmek için kullanılabilir. Her bir çeviride yineleme yapın ve çeviriyi sentezleştirme. Bir `SpeechSynthesizer` örnek oluştururken `SpeechConfig` nesnenin [`SpeechSynthesisVoiceName`][speechsynthesisvoicename] özelliği istenen sesle ayarlanmış olması gerekir. Aşağıdaki örnek, beş dili dönüştürür ve her bir çeviri, karşılık gelen sinir dilinde bir ses dosyası ile birleştirilmiştir.
+[`Translations`][translations]Sözlük, çeviri metninin sesini sentezleştirmek için kullanılabilir. Her bir çeviride yineleme yapın ve çeviriyi sentezleştirme. Bir örnek oluştururken `SpeechSynthesizer` `SpeechConfig` nesnenin [`SpeechSynthesisVoiceName`][speechsynthesisvoicename] Özelliği istenen sesle ayarlanmış olması gerekir. Aşağıdaki örnek, beş dili dönüştürür ve her bir çeviri, karşılık gelen sinir dilinde bir ses dosyası ile birleştirilmiştir.
 
 ```csharp
 static async Task TranslateSpeechAsync()

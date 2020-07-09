@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72789709"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050499"
 ---
 Nesnelerin İnterneti (IoT), dünya çapındaki işletmeler için benzersiz güvenlik, gizlilik ve uyumluluk sorunları doğurur. Bu sorunların yazılım etrafında ve nasıl uygulandıklarını gösteren geleneksel siber teknolojisinin aksine, IoT ve fiziksel çalışma LDS yakınlarından ne olur? IoT çözümlerini korumak, cihazların güvenli şekilde sağlanması, bu cihazlar ile bulut arasında güvenli bağlantı sağlanması ve işlem ve depolama sırasında buluttaki veri korumasının güvenliğini sağlamayı gerektirir. Bununla birlikte, bu işlevselliğe göre çalışarak kaynak kısıtlı cihazlar, dağıtımların coğrafi dağıtımı ve bir çözüm içinde çok sayıda cihaz vardır.
 
@@ -89,7 +89,7 @@ Kullanıcı kimlik doğrulaması ve yetkilendirme için Azure Active Directory (
 
 Veriler bulutta olduktan sonra, Kullanıcı tanımlı herhangi bir iş akışında işlenebilir ve depolanabilir. Verilerin her bir kısmına erişim, kullanılan depolama hizmetine bağlı olarak Azure Active Directory ile denetlenir.
 
-IoT altyapısı tarafından kullanılan tüm anahtarlar, güvenli depolamada bulutta depolanır ve bu durumda, anahtarların yeniden sağlanması gerekir. Veriler [Azure Cosmos DB](../articles/cosmos-db/introduction.md) veya [SQL veritabanlarında](../articles/sql-database/sql-database-faq.md)depolanabilir ve bu da, istenen güvenlik düzeyinin tanımını etkinleştirir. Ayrıca Azure, herhangi bir yetkisiz erişim veya yetkisiz erişim konusunda sizi uyarmak için verilerinize yönelik tüm erişimleri izleyip denetlemek için bir yol sağlar.
+IoT altyapısı tarafından kullanılan tüm anahtarlar, güvenli depolamada bulutta depolanır ve bu durumda, anahtarların yeniden sağlanması gerekir. Veriler [Azure Cosmos DB](../articles/cosmos-db/introduction.md) veya [SQL veritabanı](../articles/sql-database/sql-database-faq.md)'nda depolanabilir ve bu sayede istenen güvenlik düzeyinin tanımı etkinleştirilebilir. Ayrıca Azure, herhangi bir yetkisiz erişim veya yetkisiz erişim konusunda sizi uyarmak için verilerinize yönelik tüm erişimleri izleyip denetlemek için bir yol sağlar.
 
 ## <a name="conclusion"></a>Sonuç
 
@@ -107,7 +107,7 @@ Her çözüm hızlandırıcısı, Azure Hizmetleri örnekleri oluşturur, örne�
 
 * [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): bulutta, algılayıcılardan, altyapıdan ve uygulamalardan gerçek zamanlı içgörüler elde etmek için hızlı bir şekilde düşük maliyetli bir analiz çözümü geliştirmenize ve dağıtmanıza olanak tanıyan gerçek zamanlı akış işleme. Bu tam olarak yönetilen hizmetin verileri, yüksek aktarım hızı, düşük gecikme süresi ve dayanıklılık sağlarken herhangi bir birime ölçeklendirebilir.
 
-* [**Azure Uygulama Hizmetleri**](https://azure.microsoft.com/services/app-service/): her yerden verilere bağlanan güçlü web uygulamaları ve mobil uygulamalar oluşturmak için bir bulut platformudur; bulutta veya şirket içinde. İOS, Android ve Windows için ilgi çekici mobil uygulamalar oluşturun. Hizmet olarak yazılım (SaaS) ve kurumsal uygulamalarla, onlarca bulut tabanlı hizmetlere ve kurumsal uygulamalara yönelik kullanıma hazır bağlantı ile tümleştirin. Web uygulamaları ve API 'Leri her zamankinden daha hızlı derlemek için en sevdiğiniz dil ve IDE (.NET, Node. js, PHP, Python veya Java) kodu.
+* [**Azure Uygulama Hizmetleri**](https://azure.microsoft.com/services/app-service/): her yerden verilere bağlanan güçlü web uygulamaları ve mobil uygulamalar oluşturmak için bir bulut platformudur; bulutta veya şirket içinde. İOS, Android ve Windows için ilgi çekici mobil uygulamalar oluşturun. Hizmet olarak yazılım (SaaS) ve kurumsal uygulamalarla, onlarca bulut tabanlı hizmetlere ve kurumsal uygulamalara yönelik kullanıma hazır bağlantı ile tümleştirin. Web uygulamaları ve API 'Leri her zamankinden daha hızlı bir şekilde oluşturmak için, en sevdiğiniz dilde ve IDE 'de (.NET, Node.js, PHP, Python veya Java) kod.
 
 * [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Azure App Service Logic Apps özelliği, IoT çözümünüzü mevcut iş kolu sistemlerinizle tümleştirmenize ve iş akışı süreçlerini otomatikleştirmenize yardımcı olur. Logic Apps, geliştiricilerin bir tetikleyiciden başlayan iş akışlarını tasarlamasına ve sonra iş süreçlerinizle tümleştirilecek güçlü bağlayıcılar kullanan kurallar ve eylemler yürütebilmesini sağlar. Logic Apps SaaS, bulut tabanlı ve şirket içi uygulamalarla büyük bir geniş ekosisteme kullanıma hazır bağlantı sunar.
 
