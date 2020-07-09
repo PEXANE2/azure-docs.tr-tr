@@ -3,11 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılı
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770586"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110009"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -56,7 +57,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
 Çözümlemek istediğiniz her makinede aracıları yükleyebilirsiniz.
 
 > [!NOTE]
-> System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen makinelerde MMA aracısını yüklemeniz gerekmez. Hizmet Eşlemesi Operations Manager tümleştirilir. Tümleştirme kılavuzunu [izleyin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) .
+> System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen makinelerde MMA aracısını yüklemeniz gerekmez. Hizmet Eşlemesi Operations Manager tümleştirilir. Tümleştirme kılavuzunu [izleyin](../azure-monitor/insights/service-map-scom.md#prerequisites) .
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
 2. Bağımlılık görselleştirmesi ile çözümlemek istediğiniz her makine için, **Bağımlılıklar** sütununda, **Aracı yüklemesi gerektirir öğesine**tıklayın.
@@ -83,7 +84,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://www.intigua.com/intigua-for-azure-migration)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz.
 - MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) .
 - MMA aracısı bu [betik](https://go.microsoft.com/fwlink/?linkid=2104394) kullanılarak da yüklenebilir.
-- MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) .
+- MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) .
 
 ### <a name="install-mma-on-a-linux-machine"></a>Linux makinesine MMA 'yı yükler
 
@@ -94,7 +95,7 @@ Bir Linux makinesine MMA 'yı yüklemek için:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems) . 
+MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) . 
 
 ## <a name="install-the-dependency-agent"></a>Bağımlılık aracısını yükleme
 
@@ -103,8 +104,8 @@ MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fa
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples) .
-- Bağımlılık Aracısı tarafından desteklenen işletim sistemleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems) .
+- Bağımlılık aracısını yüklemek için betikleri nasıl kullanabileceğiniz hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) .
+- Bağımlılık Aracısı tarafından desteklenen işletim sistemleri hakkında [daha fazla bilgi edinin](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>Bağımlılık görselleştirmesi kullanarak Grup oluşturma
@@ -161,8 +162,8 @@ Bağımlılık verileri için aşağıdaki gibi bir sorgu çalıştırın:
 Bağımlılık verilerini ayıklamak için kullanabileceğiniz birkaç örnek sorgu aşağıda verilmiştir.
 
 - Tercih ettiğiniz veri noktalarını ayıklamak için sorguları değiştirebilirsiniz.
-- Bağımlılık verileri kayıtlarının tüm listesini [gözden geçirin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) .
-- Ek örnek sorguları [gözden geçirin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches) .
+- Bağımlılık verileri kayıtlarının tüm listesini [gözden geçirin](../azure-monitor/insights/service-map.md#log-analytics-records) .
+- Ek örnek sorguları [gözden geçirin](../azure-monitor/insights/service-map.md#sample-log-searches) .
 
 #### <a name="sample-review-inbound-connections"></a>Örnek: gelen bağlantıları gözden geçirme
 
@@ -170,7 +171,7 @@ Bir VM kümesi için gelen bağlantıları gözden geçirin.
 
 - Bağlantı ölçümleri (VMConnection) tablosundaki kayıtlar tek tek fiziksel ağ bağlantılarını temsil etmez.
 - Birden çok fiziksel ağ bağlantısı mantıksal bir bağlantı halinde gruplandırılır.
-- Fiziksel ağ bağlantısı verilerinin VMConnection 'da nasıl toplandığından [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) .
+- Fiziksel ağ bağlantısı verilerinin VMConnection 'da nasıl toplandığından [daha fazla bilgi edinin](../azure-monitor/insights/service-map.md#connections) .
 
 ```
 // the machines of interest

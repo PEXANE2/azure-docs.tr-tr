@@ -3,12 +3,12 @@ title: Azure Application Insights ile canlı bir ASP.NET web uygulamasını izle
 description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket içinde veya VM 'lerde barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807273"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107487"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
 
@@ -39,10 +39,10 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| İstekler ve özel durumlar |Yes |Evet |
-| [Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) | |Evet |
+| İstekler ve özel durumlar |Yes |Yes |
+| [Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Bağımlılık tanılama](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| [Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md) |Yes |Evet |
+| [Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md) |Yes |Yes |
 | [Özel telemetri için API][api] |Evet |Hayır |
 | [İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md) |Evet |Hayır |
 | [Sayfa görünümü ve kullanıcı verileri](../../azure-monitor/app/javascript.md) |Evet |Hayır |
@@ -98,7 +98,8 @@ Bunlar, yüklemenizin başarılı olduğunu onaylamak için gerçekleştirebilec
   ```
 
 - Application Insights başarıyla iliştirildiğini onaylamanız gerekiyorsa, applicationinsights.dll IIS tarafından yüklendiğini onaylamak için [Sysinternals tanıtıcısını](https://docs.microsoft.com/sysinternals/downloads/handle) bir komut penceresinde çalıştırabilirsiniz.
-  ```cmd
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
@@ -109,7 +110,7 @@ Bunlar, yüklemenizin başarılı olduğunu onaylamak için gerçekleştirebilec
 
 ### <a name="unable-to-login"></a>Oturum açılamıyor
 
-* Durum İzleyicisi oturum açamıyor, bunun yerine bir komut satırı yüklemesi yapın. Durum İzleyicisi, Ikey dosyanızı toplamak için oturum açmaya çalışır, ancak komutunu kullanarak bunu el ile sağlayabilirsiniz:
+Durum İzleyicisi oturum açamıyor, bunun yerine bir komut satırı yüklemesi yapın. Durum İzleyicisi, Ikey dosyanızı toplamak için oturum açmaya çalışır, ancak komutunu kullanarak bunu el ile sağlayabilirsiniz:
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -192,7 +193,9 @@ IIS sunucunuzda PowerShell'i kullanarak izlemeyi başlatabilir ve durdurabilirsi
 
 İlk olarak Application Insights modülünü içeri aktarın:
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 Hangi uygulamaların izlenmekte olduğunu öğrenin:
 
@@ -221,12 +224,14 @@ Hangi uygulamaların izlenmekte olduğunu öğrenin:
     En son sürümü indirmek için Update-ApplicationInsightsVersion kullanın.
 * Başarılı bir şekilde `ApplicationInsightsApplication` döndürür. Başarısız olursa, stderr’e bir izleme kaydeder.
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 
@@ -298,7 +303,7 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
  * Bağımlılık çağrıları (.NET 4.5); bağımlılık çağrılarındaki dönüş değerleri (.NET 4.6).
  * Özel durum yığın izleme değerleri.
 
-[Daha fazla bilgi](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
+[Daha fazla bilgi edinin](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>Video
 

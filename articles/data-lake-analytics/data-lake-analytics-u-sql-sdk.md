@@ -6,14 +6,14 @@ ms.service: data-lake-analytics
 author: yanacai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 481b17651afbd2c0e0cf7a683ae0838a7f3fd88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555580"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110479"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK ile U-SQL çalıştırma ve test etme
 
@@ -65,7 +65,7 @@ U-SQL betiklerine hem göreli bir yol hem de yerel mutlak yol kullanabilirsiniz.
 
 U-SQL betiğini yerel olarak çalıştırırken, geçerli çalışan dizin altında derleme sırasında çalışma dizini oluşturulur. Derleme çıktılarına ek olarak, yerel yürütmeye yönelik gerekli çalışma zamanı dosyaları bu çalışma dizinine gölge olarak kopyalanacaktır. Çalışma dizini kök klasörüne "ScopeWorkDir" adı verilir ve çalışma dizini altındaki dosyalar aşağıdaki gibidir:
 
-|Dizin/dosya|Dizin/dosya|Dizin/dosya|Tanım|Açıklama|
+|Dizin/dosya|Dizin/dosya|Dizin/dosya|Tanım|Description|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Çalışma zamanı sürümünün karma dizesi|Yerel yürütme için gereken çalışma zamanı dosyalarının gölge kopyası|
 | |Script_66AE4909AA0ED06C| |Betik adı + betik yolunun karma dizesi|Derleme çıktıları ve yürütme adımı günlüğü|
@@ -142,7 +142,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 **Çalıştırma**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Varsayılan değer|Açıklama|
+|Bağımsız Değişken|Varsayılan değer|Description|
 |--------|-------------|-----------|
 |-CodeBehind|False|Betiğin arkasında. cs kodu bulunur|
 |-CppSDK| |CppSDK dizini|
@@ -174,7 +174,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 **Derleme**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Açıklama|
+|Bağımsız Değişken|Description|
 |--------|-----------|
 | -CodeBehind [varsayılan değer ' false ']|Betiğin arkasında. cs kodu bulunur|
 | -CppSDK [varsayılan değer ' ']|CppSDK dizini|
@@ -219,7 +219,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 **Yürütme**için isteğe bağlı bağımsız değişkenler aşağıda verilmiştir:
 
-|Bağımsız Değişken|Varsayılan değer|Açıklama|
+|Bağımsız Değişken|Varsayılan değer|Description|
 |--------|-------------|-----------|
 |-DataRoot | '' |Meta veri yürütme için veri kökü. **LOCALRUN_DATAROOT** ortam değişkenini varsayılan olarak alır.|
 |-MessageOut | '' |Konsolundaki iletileri bir dosyaya döker.|
@@ -332,13 +332,13 @@ LocalRunHelper.exe U-SQL yerel derleme, çalıştırma vb. için programlama ara
 
 Public LocalRunHelper ([System. ıO. TextWriter messageOutput = NULL])
 
-|Parametre|Tür|Açıklama|
+|Parametre|Tür|Description|
 |---------|----|-----------|
 |messageOutput|System. ıO. TextWriter|çıkış iletileri için, konsolu kullanmak üzere null olarak ayarlayın|
 
 ### <a name="properties"></a>Özellikler
 
-|Özellik|Tür|Açıklama|
+|Özellik|Tür|Description|
 |--------|----|-----------|
 |AlgebraPath|string|Algedeniz dosyasının yolu (algeköşeli dosyası, derleme sonuçlarından biridir)|
 |CodeBehindReferences|string|Betik başvuruların arkasında ek kod içeriyorsa, '; ' ile ayrılmış yolları belirtin|
@@ -363,7 +363,7 @@ Public LocalRunHelper ([System. ıO. TextWriter messageOutput = NULL])
 
 ### <a name="method"></a>Yöntem
 
-|Yöntem|Açıklama|Döndürülmesini|Parametre|
+|Yöntem|Description|Döndürülmesini|Parametre|
 |------|-----------|------|---------|
 |ortak bool DoCompile ()|U-SQL betiğini derle|Başarılı olduğunda doğru| |
 |public bool DoExec ()|Derlenen sonucu yürütme|Başarılı olduğunda doğru| |

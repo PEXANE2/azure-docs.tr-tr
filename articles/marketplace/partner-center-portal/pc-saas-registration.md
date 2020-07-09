@@ -1,18 +1,16 @@
 ---
 title: SaaS uygulaması kaydetme-Azure Marketi
 description: SaaS uygulamasını kaydetmek ve Azure Active Directory bir güvenlik belirteci almak için Azure portal nasıl kullanacağınızı öğrenin.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.author: dsindona
-ms.openlocfilehash: 630dceedcac36cf6d37d54612d73fabe676d74f6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963725"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109272"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
 

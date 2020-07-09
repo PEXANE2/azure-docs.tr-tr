@@ -9,20 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702138"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108999"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
 > [!NOTE]
 > * V3 Yaklaşım Analizi kapsayıcısı genel kullanıma sunulmuştur. Anahtar tümceciği ayıklama ve dil algılama kapsayıcıları, geçitli genel önizleme olarak kullanılabilir.
 > * Varlık bağlama ve NER Şu anda bir kapsayıcı olarak kullanılamıyor.
+> * Şu anda, sistem durumu kapsayıcısı kullanımı için Metin Analizi faturalandırılmaz.
 
 Kapsayıcılar, kendi ortamınızda metin analitik API 'Leri çalıştırmanızı sağlar ve belirli güvenlik ve veri idare gereksinimleriniz için harika bir yöntemdir. Metin Analizi kapsayıcıları ham metin üzerinde gelişmiş doğal dil işleme sağlar ve üç ana işlev içerir: yaklaşım analizi, anahtar ifade ayıklama ve dil algılama. 
 
@@ -59,6 +60,8 @@ Aşağıdaki tabloda Metin Analizi kapsayıcıları için en düşük ve öneril
 |---|---------|-------------|--|--|
 | **Dil algılama, anahtar tümceciği ayıklama**   | 1 çekirdek, 2GB bellek | 1 çekirdek, 4GB bellek |15 | 30|
 | **Yaklaşım Analizi v3**   | 1 çekirdek, 2GB bellek | 4 çekirdek, 8GB bellek |15 | 30|
+| **Sağlık-1 belgesi/isteği için Metin Analizi**   |  4 çekirdek, 10 GB bellek | 6 çekirdek, 12GB bellek |15 | 30|
+| **Sistem durumu için Metin Analizi-10 belge/istek**   |  6 çekirdek, 16GB bellek | 8 çekirdek, 20GB bellek |15 | 30|
 
 CPU çekirdeği ve belleği, `--cpus` `--memory` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir `docker run` .
 
@@ -80,6 +83,10 @@ Metin Analizi için kapsayıcı görüntüleri Microsoft Container Registry kull
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
+# <a name="text-analytics-for-health-preview"></a>[Sistem durumu için Metin Analizi (Önizleme)](#tab/healthcare)
+
+[!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
+
 ***
 
 ## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
@@ -92,13 +99,6 @@ Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcınd
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
 
 Kapsayıcıları çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Kapsayıcı siz durduruncaya kadar çalışmaya devam edecektir.
-
-Aşağıdaki yer tutucuları kendi değerlerinizle değiştirin:
-
-| Yer tutucu | Değer | Biçim veya örnek |
-|-------------|-------|---|
-| **{API_KEY}** | Metin Analizi kaynağınız için anahtar. Bunu, kaynağın **anahtar ve uç nokta** sayfasında, Azure Portal bulabilirsiniz. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | Metin Analizi API'si erişmek için uç nokta. Bunu, kaynağın **anahtar ve uç nokta** sayfasında, Azure Portal bulabilirsiniz. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 > [!IMPORTANT]
 > * Aşağıdaki bölümlerdeki Docker komutları, `\` satır devamlılık karakteri olarak ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. 
@@ -116,6 +116,10 @@ Aşağıdaki yer tutucuları kendi değerlerinizle değiştirin:
 # <a name="language-detection-preview"></a>[Dil Algılama (Önizleme)](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+# <a name="text-analytics-for-health-preview"></a>[Sistem durumu için Metin Analizi (Önizleme)](#tab/healthcare)
+
+[!INCLUDE [docker-run-health-container](../includes/docker-run-health-container.md)]
 
 ***
 
@@ -161,8 +165,8 @@ Bu makalede, Metin Analizi kapsayıcıları indirmek, yüklemek ve çalıştırm
    * *Yaklaşım Analizi*
    * *Anahtar İfade Ayıklama (Önizleme)* 
    * *Dil Algılama (Önizleme)*
-   
-* Kapsayıcı görüntüleri Azure 'daki Microsoft Container Registry (MCR) ' den indirilir.
+   * *Sistem durumu için Metin Analizi (Önizleme)*
+* Kapsayıcı görüntüleri Microsoft Container Registry (MCR) veya önizleme kapsayıcı deposundan indirilir.
 * Kapsayıcı görüntüleri Docker 'da çalışır.
 * Kapsayıcının ana bilgisayar URI 'sini belirterek Metin Analizi kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini belirtmeniz gerekir.

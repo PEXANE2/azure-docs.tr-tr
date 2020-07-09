@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: de526da255d0ffb2d4c8f13d87d9b9e230c8bbd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561831"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109731"
 ---
 # <a name="customize-an-assessment"></a>Bir değerlendirmeyi özelleştirme
 
@@ -28,7 +28,7 @@ Sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir za
 **Değerlendirme türü** | **Ayrıntılar**
 --- | --- 
 **Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. (concepts-assessment-calculation.md)
-**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Sunucu değerlendirmesinde bir Azure VM değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
 
@@ -40,7 +40,7 @@ Sunucu değerlendirmesinde bir Azure VM değerlendirmesi iki boyutlandırma öl�
 
 ## <a name="how-is-an-assessment-done"></a>Değerlendirme nasıl yapılır?
 
-Azure geçişi sunucu değerlendirmesi sırasında yapılan bir değerlendirme üç aşamaya sahiptir. Değerlendirme, bir uygunluk analizi, ardından boyutlandırma ve son olarak aylık maliyet tahmini ile başlar. Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, bir makine Azure uygunluk denetiminde başarısız olursa, Azure için uygun değil olarak işaretlenir ve boyutlandırma ve maliyetlendirme yapılmaz. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
+Azure geçişi sunucu değerlendirmesi sırasında yapılan bir değerlendirme üç aşamaya sahiptir. Değerlendirme, bir uygunluk analizi, ardından boyutlandırma ve son olarak aylık maliyet tahmini ile başlar. Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, bir makine Azure uygunluk denetiminde başarısız olursa, Azure için uygun değil olarak işaretlenir ve boyutlandırma ve maliyetlendirme yapılmaz. [Daha fazla bilgi edinin.](./concepts-assessment-calculation.md)
 
 ## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM değerlendirmesinde neler var?
 
@@ -70,7 +70,7 @@ Sunucu değerlendirmesinde bir AVS değerlendirmesi aşağıda verilmiştir:
 | **Hedef konum** | Geçirmek istediğiniz AVS özel bulut konumunu belirtir.<br/><br/> Sunucu değerlendirmesinde AVS değerlendirmesi Şu anda şu hedef bölgeleri destekliyor: Doğu ABD, Batı Avrupa Batı ABD. |
 | **Depolama türü** | AVS 'de kullanılacak depolama altyapısını belirtir.<br/><br/> AVS değerlendirmelerinin yalnızca varsayılan depolama türü olarak vSAN 'ı desteklediğini unutmayın. |
 **Ayrılmış örnekler (RIS)** | Bu özellik, AVS 'de ayrılmış örnekler belirtmenize yardımcı olur. Bu, AVS düğümlerinde Şu anda desteklenmemektedir. |
-**Düğüm türü** | Şirket içi VM 'Leri eşlemek için kullanılan [AVS düğüm türünü](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters) belirtir. Varsayılan düğüm türünün AV36 olduğunu unutmayın. <br/><br/> Azure geçişi, sanal makinelerin AVS 'ye geçirilmesi için gerekli sayıda düğüm önermenizi önerir. |
+**Düğüm türü** | Şirket içi VM 'Leri eşlemek için kullanılan [AVS düğüm türünü](../azure-vmware/concepts-private-clouds-clusters.md) belirtir. Varsayılan düğüm türünün AV36 olduğunu unutmayın. <br/><br/> Azure geçişi, sanal makinelerin AVS 'ye geçirilmesi için gerekli sayıda düğüm önermenizi önerir. |
 **FTT ayarı, RAID düzeyi** | Tolerans ve RAID birleşimlerine yönelik geçerli hatayı belirtir. Şirket içi VM disk gereksinimiyle birlikte bulunan seçili FTT seçeneği, AVS 'de gereken toplam vSAN depolama alanını tespit eder. |
 **Boyutlandırma ölçütü** | AVS için sanal makineleri _doğru olarak boyutlandıralmak_ üzere kullanılacak ölçütleri ayarlar. Performans geçmişini dikkate almadan _performans tabanlı_ boyutlandırmayı veya _Şirket içi olarak_ tercih edebilirsiniz. |
 **Performans geçmişi** | Makinelerin performans verilerini değerlendirmek için göz önünde bulundurulması gereken süreyi ayarlar. Bu özellik yalnızca boyutlandırma ölçütü _performans tabanlı_olduğunda geçerlidir. |

@@ -3,11 +3,12 @@ title: Nasıl yaparım?... Azure Application Insights | Microsoft Docs
 description: Application Insights SSS.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701950"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110241"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
 ## <a name="get-an-email-when-"></a>Şu durumlarda bir e-posta alın...
@@ -32,17 +33,23 @@ Belirli bir olay gerçekleştiğinde bir e-posta almak istediğinizi varsayalım
 
 Özel etkinliklerde değil, [özel ölçümler](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)üzerinde de uyarı ayarlanabilir. Olay gerçekleştiğinde bir ölçümü artırmak için kod yazın:
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
 veya:
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 Uyarıların iki durumu olduğu için, uyarıyı sonlandırdığınızda düşük bir değer göndermeniz gerekir:
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
 Alarmlarınızı görmek için [ölçüm Gezgininde](../../azure-monitor/platform/metrics-charts.md) bir grafik oluşturun:
 
@@ -74,7 +81,7 @@ Dikkat edilmesi gereken bazı noktalar:
 
 * Bir uygulamada birden çok rol: tek bir Application Insights kaynağı kullanın ve [cloud_Rolename](../../azure-monitor/app/app-map.md)filtreleyin.
 * Geliştirme, test ve yayın sürümlerini ayırma: farklı Application Insights kaynakları kullanın. web.config izleme anahtarlarını seçin. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
-* Derleme sürümlerini raporlama: telemetri başlatıcısı kullanarak özellik ekleme. [Daha fazla bilgi](../../azure-monitor/app/separate-resources.md)
+* Derleme sürümlerini raporlama: telemetri başlatıcısı kullanarak özellik ekleme. [Daha fazla bilgi edinin](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Arka uç sunucularını ve masaüstü uygulamalarını izleme
 [Windows Server SDK modülünü kullanın](../../azure-monitor/app/windows-desktop.md).
@@ -130,9 +137,9 @@ Sunucudan telemetri toplamayı ve iletimini **dinamik olarak durdurmak ve başla
 ### <a name="aspnet-classic-applications"></a>ASP.NET klasik uygulamalar
 
 ```csharp
-    using  Microsoft.ApplicationInsights.Extensibility;
+using  Microsoft.ApplicationInsights.Extensibility;
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
 ### <a name="other-applications"></a>Diğer uygulamalar

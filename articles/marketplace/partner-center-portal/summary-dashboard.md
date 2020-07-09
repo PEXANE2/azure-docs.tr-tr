@@ -1,17 +1,16 @@
 ---
 title: Ticari Market 'teki Iş ortağı merkezi analizi için Özet Panosu
 description: Iş Ortağı Merkezi 'ndeki Özet panosundan Market etkinliklerini özetleyen toplam veri verilerine, eğilimler ve değerlerine nasıl erişebileceğinizi öğrenin.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: c7f1700cb386a197b33427e2ea615de019284d96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39b963fe40d26d498e69b8fc9bbb62ce514bef39
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83738328"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109153"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde özet panosu
 

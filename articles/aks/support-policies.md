@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558084"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106994"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -52,7 +52,7 @@ Müşteri kümesi düğümleri özel kodu yürüttiğinden ve hassas verileri de
 Microsoft aşağıdakiler için teknik destek sağlar:
 
 > [!NOTE]
-> Microsoft desteği tarafından alınan herhangi bir küme eylemi, adın yerleşik bir Kubernetes ["düzenleme"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) rolü altında Kullanıcı onayı ile yapılır `aks-support-rolebinding` . Bu rol ile, küme sorunlarını gidermek ve tanılamak için küme yapılandırma ve kaynaklarını düzenleme özelliği etkinleştirilmiş olsa da rol, izinleri değiştiremez ve roller ya da rol bağlamaları oluşturamaz. Rol erişimi yalnızca, tam zamanında (JıT) erişime sahip etkin destek biletleri altında etkinleştirilir.
+> Microsoft/AKS tarafından gerçekleştirilen herhangi bir küme eylemi, yerleşik bir Kubernetes rolü `aks-service` ve yerleşik rol bağlama altında Kullanıcı onayı ile yapılır `aks-service-rolebinding` . Bu rol, AKS 'in küme sorunlarını giderme ve tanılama, ancak izinleri değiştiremeyeceği ya da roller ya da rol bağlamaları ya da diğer yüksek ayrıcalıklı eylemler oluşturmalarına olanak sağlar. Rol erişimi yalnızca, tam zamanında (JıT) erişime sahip etkin destek biletleri altında etkinleştirilir.
 
 * Kubernetes hizmetinin API sunucusu gibi sağladığı ve desteklediği tüm Kubernetes bileşenlerine bağlantı.
 * Kubernetes denetim düzlemi Hizmetleri 'nin yönetimi, çalışma süresi, QoS ve işlemleri (örneğin, Kubernetes Master Nodes, API Server, etcd ve Kuto-DNS).

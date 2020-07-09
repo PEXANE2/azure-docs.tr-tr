@@ -6,17 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109850"
 ---
 # <a name="scale-migration-of-vms"></a>VM 'lerin geçişini ölçeklendirin 
 
 Bu makale, çok sayıda sanal makineyi (VM) geçirmek için betikleri nasıl kullanacağınızı anlamanıza yardımcı olur. Geçişi ölçeklendirmek için [Azure Site Recovery](../site-recovery/site-recovery-overview.md)kullanırsınız. 
 
-Site Recovery betikler, GitHub 'da [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) deposunda indirileceği için kullanılabilir. Betikler, VMware, AWS, GCP VM 'Leri ve fiziksel sunucuları Azure 'da yönetilen disklere geçirmek için kullanılabilir. Bu komut dosyalarını, VM 'Leri fiziksel sunucu olarak geçirirseniz Hyper-V VM 'lerini geçirmek için de kullanabilirsiniz. Azure Site Recovery PowerShell 'den yararlanan betikler [burada](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)belgelenmiştir.
+Site Recovery betikler, GitHub 'da [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) deposunda indirileceği için kullanılabilir. Betikler, VMware, AWS, GCP VM 'Leri ve fiziksel sunucuları Azure 'da yönetilen disklere geçirmek için kullanılabilir. Bu komut dosyalarını, VM 'Leri fiziksel sunucu olarak geçirirseniz Hyper-V VM 'lerini geçirmek için de kullanabilirsiniz. Azure Site Recovery PowerShell 'den yararlanan betikler [burada](../site-recovery/vmware-azure-disaster-recovery-powershell.md)belgelenmiştir.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 - Yalnızca hedef VM 'nin birincil NIC 'ı için statik IP adresi belirtme desteği
@@ -24,7 +25,7 @@ Site Recovery betikler, GitHub 'da [Azure PowerShell örnekleri](https://github.
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce aşağıdaki adımları gerçekleştirmeniz gerekir:
 - Azure aboneliğinizde Site Recovery kasasının oluşturulduğundan emin olun
 - Yapılandırma sunucusu ve Işlem sunucusunun kaynak ortamda yüklü olduğundan ve kasasının ortamı keşfedebildiğinden emin olun
@@ -68,4 +69,4 @@ Komut dosyası, varsayılan olarak VM 'Leri Azure 'da yönetilen disklere geçir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Site Recovery kullanarak sunucuları Azure 'a geçirme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure)
+Azure Site Recovery kullanarak sunucuları Azure 'a geçirme hakkında [daha fazla bilgi edinin](../site-recovery/migrate-tutorial-on-premises-azure.md)

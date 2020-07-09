@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465363"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109510"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma
 
@@ -20,7 +21,7 @@ Genel amaçlı v2 depolama hesabı ile genel amaçlı v2 depolama hesabı arası
 
 DistCp, çeşitli komut satırı parametreleri sağlar ve kullanımınızı iyileştirmek için bu makaleyi okumanızı kesinlikle öneririz. Bu makalede, verileri hiyerarşik bir ad alanı etkin bir hesaba kopyalamak için kullanımına odaklanırken temel işlevsellik gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * Data Lake Storage 2. yetenekleri olmayan mevcut bir Azure depolama hesabı (hiyerarşik ad alanı) etkin.
@@ -36,25 +37,33 @@ An HDInsight küme, farklı kaynaklardaki verileri bir HDInsight kümesine kopya
 
 2. Mevcut genel amaçlı v2 hesabınıza erişip erişemeyeceğinizi doğrulayın (hiyerarşik ad alanı etkin olmadan).
 
-        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```bash
+    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```
 
    Çıktı, kapsayıcıdaki içeriklerin bir listesini sağlamalıdır.
 
 3. Benzer şekilde, küme üzerinde etkinleştirilmiş hiyerarşik ad alanı ile depolama hesabına erişip erişemeyeceğinizi doğrulayın. Şu komutu çalıştırın:
 
-        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```bash
+    hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```
 
     Çıktı, Data Lake depolama hesabındaki dosyaların/klasörlerin bir listesini sağlamalıdır.
 
 4. Verileri bir Data Lake Storage hesabına kopyalamak için DistCp kullanın.
 
-        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```bash
+    hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```
 
     Komut, blob depolamada **/example/Data/Gutenberg/** klasörünün içeriğini Data Lake Storage hesabındaki **/myFolder** klasörüne kopyalar.
 
 5. Benzer şekilde, Data Lake Storage hesabındaki verileri BLOB depolama alanına (. 1) kopyalamak için DistCp kullanın.
 
-        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```bash
+    hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```
 
     Komutu, Data Lake Store hesabındaki **/myFolder** içeriğini, **/example/Data/Gutenberg/** klasörüne kopyalar.
 
@@ -64,7 +73,9 @@ DistCp 'nin en düşük ayrıntı düzeyi tek bir dosya olduğundan, en fazla e�
 
 **Örnek**
 
-    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```bash
+hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Nasıl yaparım? kullanılacak mapbir sayı mı var?
 
@@ -74,7 +85,7 @@ Aşağıda kullanabileceğiniz bazı yönergeler verilmiştir.
 
 * **2. Adım: mapcontroller sayısını hesaplama** -l DEĞERI, Yarn kapsayıcı boyutuna bölünen toplam Yarn bellek bölümüne eşittir. **m** YARN kapsayıcı boyut bilgileri ayrıca, ambarı portalında da mevcuttur. YARN 'ye gidin ve configs sekmesini görüntüleyin. YARN kapsayıcı boyutu bu pencerede görüntülenir. Mapcontroller (**e**) sayısına ulaşacak denklem
 
-        m = (number of nodes * YARN memory for each node) / YARN container size
+    d = (düğüm sayısı * her düğüm için YARN bellek)/YARN kapsayıcı boyutu
 
 **Örnek**
 
@@ -82,11 +93,11 @@ Bir 4X D14v2s kümeniz olduğunu ve 10 farklı klasörden 10 TB veri aktarmaya �
 
 * **Toplam YARN belleği**: ambarı portalından, Yarn belleğin bir D14 düğümü IÇIN 96 GB olduğunu belirlersiniz. Bu nedenle, dört düğümlü küme için toplam YARN bellek: 
 
-        YARN memory = 4 * 96GB = 384GB
+    YARN bellek = 4 * 96GB = 384GB
 
 * Eşleme **sayısı**: ambarı portalından, D14 küme düğümü için Yarn kapsayıcı boyutunun 3.072 MB olduğunu belirlersiniz. Bu nedenle, Mapper sayısı şu şekilde olur:
 
-        m = (4 nodes * 96GB) / 3072MB = 128 mappers
+    m = (4 düğüm * 96gb)/3072mb = 128 map72
 
 Diğer uygulamalar bellek kullanıyorsa, DistCp için yalnızca kümenizin YARN bellek belleğinin bir kısmını kullanmayı tercih edebilirsiniz.
 

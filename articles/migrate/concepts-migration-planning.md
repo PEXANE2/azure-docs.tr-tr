@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107708"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Azure Geçişi ile geçiş planı oluşturma
 
@@ -24,7 +24,7 @@ Bu makalede [, Azure geçişi Ile Azure](migrate-services-overview.md)'a geçiş
 
 ## <a name="define-the-goals-of-cloud-migration"></a>Bulut geçişinin hedeflerini tanımlama
 
-Bir geçiş planı oluşturmadan önce, daha başarılı iş sonuçları oluşturulmasına yardımcı olabilecek bir buluta geçmek için [mosyon](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/motivations) 'nın anlaşılması ve değerlendirilmesi önemlidir. [Azure Için bulut benimseme çerçevesi](https://docs.microsoft.com/azure/cloud-adoption-framework) 'nin açıklandığı şekilde, işletmeniz için uygun olan farklı tetikleyiciler ve geçiş yaklaşımları olabilir:  
+Bir geçiş planı oluşturmadan önce, daha başarılı iş sonuçları oluşturulmasına yardımcı olabilecek bir buluta geçmek için [mosyon](/azure/cloud-adoption-framework/strategy/motivations) 'nın anlaşılması ve değerlendirilmesi önemlidir. [Azure Için bulut benimseme çerçevesi](/azure/cloud-adoption-framework) 'nin açıklandığı şekilde, işletmeniz için uygun olan farklı tetikleyiciler ve geçiş yaklaşımları olabilir:  
 
 **Kritik iş olayları** | **Geçiş sonucu**
 --- | ---
@@ -147,7 +147,7 @@ Geçiş planınızı sonuçlandırmadan önce, bu anahtar geçişi konularının
 
 - Önerilen Azure izinlerini ve geçiş için gereken sunucu/veritabanı erişim rollerinizi ve izin modelinizi gözden geçirin.
 
-- Kuruluşunuzu hazırlayın ve dijital dönüştürmeye iş gücü hizalaması sağlayın. Sağlam bir eğitim altyapısı, başarılı bir kurumsal değişiklik için önemlidir. Azure temelleri, çözüm mimarisi ve güvenlik kursları dahil olmak üzere [Microsoft Learn](https://docs.microsoft.com/learn/azure/?ocid=CM_Discovery_Checklist_PDF)sunulan ücretsiz eğitime göz atın. Takımınızı [Azure sertifikası](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)'nı keşfetmeye teşvik edin   .  
+- Kuruluşunuzu hazırlayın ve dijital dönüştürmeye iş gücü hizalaması sağlayın. Sağlam bir eğitim altyapısı, başarılı bir kurumsal değişiklik için önemlidir. Azure temelleri, çözüm mimarisi ve güvenlik kursları dahil olmak üzere [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF)sunulan ücretsiz eğitime göz atın. Takımınızı [Azure sertifikası](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)'nı keşfetmeye teşvik edin   .  
 
 - Gerekirse uygulamanız için destek alın. Birçok kuruluş, bulut geçişini desteklemeye yönelik yardım dışarıdan tercih eder. Kişiselleştirilmiş yardım ile hızlı ve sorunsuz bir şekilde Azure 'a geçmek için bir [Azure Expert yönetilen hizmet sağlayıcısı](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   veya [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)değerlendirin.  
 
@@ -164,6 +164,6 @@ Geçişe hazırsanız, uçtan uca izleme ile sorunsuz ve tümleşik bir geçiş 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure bulut benimseme çerçevesindeki [bulut geçiş yolculuğunu](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)araştırın   .
+- Azure bulut benimseme çerçevesindeki [bulut geçiş yolculuğunu](/azure/architecture/cloud-adoption/getting-started/migrate)araştırın   .
 - Azure geçişi ile [çalışmaya](https://youtu.be/wFfq3YPxYHE) başlayın.
 - [VMware VM](tutorial-assess-vmware.md) 'Leri veya [Hyper-V VM 'leri](tutorial-assess-hyper-v.md)için bir değerlendirme oluşturun.

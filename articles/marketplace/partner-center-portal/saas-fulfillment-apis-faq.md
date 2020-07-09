@@ -1,18 +1,16 @@
 ---
 title: SaaS karşılama API 'SI SSS-Microsoft ticari Market
 description: Azure müşterilerinin SaaS tekliflerine abone olmalarını sağlamak için Microsoft Commercial Market 'in çeşitli Tümleştirme gereksinimlerinden birkaçı hakkında bilgi edinin.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 97359083698e92f39ca854972c864ef769bda730
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963759"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109255"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS 'in API 'Leri karşılama hakkında genel sorular
 

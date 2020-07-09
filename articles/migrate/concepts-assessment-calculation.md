@@ -3,12 +3,12 @@ title: Azure sanal makine değerlendirmelerinde Azure geçişi sunucu değerlend
 description: Azure geçişi sunucu değerlendirmesinde değerlendirmeler hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 33051fbcfb792d3fa9734a818d293775486de647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549964"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108010"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure geçişi ile Azure VM değerlendirmeleri: Sunucu değerlendirmesi
 
@@ -28,7 +28,7 @@ Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tü
 **Değerlendirme türü** | **Ayrıntılar**
 --- | --- 
 **Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz.
-**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Sunucu değerlendirmesinde bir Azure VM değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
 
@@ -152,7 +152,7 @@ Azure VM değerlendirmesi için sunucu değerlendirmesi, Azure VM 'lerinde çal�
 --- | --- | ---
 **Önyükleme türü** | Azure, UEFı değil, BIOS 'un önyükleme türü olan VM 'Leri destekler. | Önyükleme türü UEFı ise koşullu olarak hazırlanıyor
 **Çekirdekler** | Her makinede en fazla 128 çekirdek olmalıdır; bu, bir Azure VM 'nin desteklediği maksimum sayıdır.<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan çekirdekleri dikkate alır. Değerlendirme ayarları bir rahatetken belirtirseniz, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi, rakip etmenini uygulamadan ayrılmış çekirdekleri kullanır. | Çekirdek sayısı sınırın içindeyse, hazırlanıyor
-**KOÇ** | Her makinede 3.892 GB 'den fazla RAM olması gerekir. bu boyut, en büyük boyut olan bir Azure ı serisi Standard_M128m &nbsp; <sup>2</sup> VM destekler. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan RAM 'i dikkate alır. Bir rakip faktörü belirtilmişse, kullanılan RAM, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Geçmiş yoksa, ayrılan RAM bir rahatörün uygulaması olmadan kullanılır.<br/><br/> | RAM miktarı sınırın içindeyse hazırlanıyor
+**KOÇ** | Her makinede 3.892 GB 'den fazla RAM olması gerekir. bu boyut, en büyük boyut olan bir Azure ı serisi Standard_M128m &nbsp; <sup>2</sup> VM destekler. [Daha fazla bilgi edinin](../virtual-machines/windows/sizes.md).<br/><br/> Performans geçmişi varsa, Azure geçişi karşılaştırma için kullanılan RAM 'i dikkate alır. Bir rakip faktörü belirtilmişse, kullanılan RAM, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Geçmiş yoksa, ayrılan RAM bir rahatörün uygulaması olmadan kullanılır.<br/><br/> | RAM miktarı sınırın içindeyse hazırlanıyor
 **Depolama diski** | Bir diskin ayrılan boyutu 32 TB 'tan fazla olmamalıdır. Azure, Azure Ultra SSD diskleriyle 64 TB diskleri destekler, ancak Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD desteklemediği için, disk boyutu sınırı olarak 32 TB 'yi kontrol eder. <br/><br/> İşletim sistemi diski de dahil olmak üzere makineye bağlı disk sayısı 65 veya daha az olmalıdır. | Disk boyutu ve sayı limitlerin içindeyse,
 **Ağ** | Bir makinenin kendisine bağlı 32 ' den fazla ağ arabirimi (NIC) olmaması gerekir. | NIC sayısı sınırın içindeyse, hazırlanıyor
 
@@ -161,7 +161,7 @@ Azure VM değerlendirmesi için sunucu değerlendirmesi, Azure VM 'lerinde çal�
 Azure VM değerlendirmesi için, VM özelliklerini gözden geçirme ile sunucu değerlendirmesi, Azure üzerinde çalışıp çalışmadığını anlamak için bir makinenin Konuk işletim sistemine bakar.
 
 > [!NOTE]
-> VMware VM 'lerinin Konuk analizini işlemek için sunucu değerlendirmesi, vCenter Server içinde VM için belirtilen işletim sistemini kullanır. Ancak, vCenter Server Linux VM işletim sistemleri için çekirdek sürümü sağlamaz. Sürümü bulmak için [uygulama bulmayı](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)ayarlamanız gerekir. Daha sonra, Gereç, uygulama bulmayı ayarlarken belirttiğiniz Konuk kimlik bilgilerini kullanarak sürüm bilgilerini bulur.
+> VMware VM 'lerinin Konuk analizini işlemek için sunucu değerlendirmesi, vCenter Server içinde VM için belirtilen işletim sistemini kullanır. Ancak, vCenter Server Linux VM işletim sistemleri için çekirdek sürümü sağlamaz. Sürümü bulmak için [uygulama bulmayı](./how-to-discover-applications.md)ayarlamanız gerekir. Daha sonra, Gereç, uygulama bulmayı ayarlarken belirttiğiniz Konuk kimlik bilgilerini kullanarak sürüm bilgilerini bulur.
 
 
 Sunucu değerlendirmesi, işletim sistemine bağlı olarak Azure hazırlığını belirlemek için aşağıdaki mantığı kullanır:
@@ -175,8 +175,8 @@ Tüm SPs 'ler ile Windows Server 2008 R2 | Azure tam destek sağlar.| Azure içi
 Windows Server 2008 (32-bit ve 64-bit) | Azure tam destek sağlar. | Azure için hazırlayın.
 Windows Server 2003 ve Windows Server 2003 R2 | Bu işletim sistemleri destek son tarihlerini geçti ve Azure 'da destek için [özel bir destek sözleşmesine (CSA)](https://aka.ms/WSosstatement) ihtiyaç duyuyor. | Azure için koşullu olarak hazırlanın. Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz göz önünde bulundurun.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 ve MS-DOS | Bu işletim sistemleri destek son tarihlerini geçti. Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. | Azure için koşullu olarak hazırlanın. Azure 'a geçiş yapmadan önce işletim sistemini yükseltmenizi öneririz.
-Windows 7, Windows 8 ve Windows 10 | Azure [yalnızca bir Visual Studio aboneliği](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) için destek sağlar. | Azure için koşullu olarak hazırlanın.
-Windows 10 Pro | Azure, [çok kiracılı barındırma haklarıyla](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) destek sağlar. | Azure için koşullu olarak hazırlanın.
+Windows 7, Windows 8 ve Windows 10 | Azure [yalnızca bir Visual Studio aboneliği](../virtual-machines/windows/client-images.md) için destek sağlar. | Azure için koşullu olarak hazırlanın.
+Windows 10 Pro | Azure, [çok kiracılı barındırma haklarıyla](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) destek sağlar. | Azure için koşullu olarak hazırlanın.
 Windows Vista ve Windows XP Professional | Bu işletim sistemleri destek son tarihlerini geçti. Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. | Azure için koşullu olarak hazırlanın. Azure 'a geçiş yapmadan önce işletim sistemini yükseltmenizi öneririz.
 Linux | Azure 'un onaylayabileceği [Linux işletim sistemlerine](../virtual-machines/linux/endorsed-distros.md) bakın. Diğer Linux işletim sistemleri Azure 'da başlayabilir. Ancak, Azure 'a geçiş yapmadan önce işletim sistemini onaylı bir sürüme yükseltmenizi öneririz. | Sürüm onaylanmış ise Azure için hazırlanın.<br/><br/>Sürüm onaymadıysa koşullu olarak kabul edilebilir.
 Oracle Solaris, Apple macOS ve FreeBSD gibi diğer işletim sistemleri | Azure, bu işletim sistemlerini onaylamaz. Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. | Azure için koşullu olarak hazırlanın. Azure 'a geçiş yapmadan önce desteklenen bir işletim sistemi yüklemenizi öneririz.  

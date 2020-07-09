@@ -9,11 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 9c5b1d38e32ff0a0d0954064c8a2511d898d16e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462932"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109459"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile
 
@@ -45,7 +46,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
 * `<container-name>`Yer tutucusunu, kapsayıcınıza vermek istediğiniz adla değiştirin.
 
@@ -53,7 +54,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 ## <a name="get-a-list-of-files-or-directories"></a>Dosya veya dizinlerin listesini al
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
 `<path>`Yer tutucuyu kapsayıcının veya kapsayıcı KLASÖRÜNÜN URI 'siyle değiştirin.
 
@@ -61,7 +62,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
 `<path>`Yer tutucusunu kök kapsayıcı adı veya Kapsayıcınız içindeki bir klasör ile değiştirin.
 
@@ -69,7 +70,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 ## <a name="delete-a-file-or-directory"></a>Dosya veya dizini silme
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
 `<path>`Yer tutucusunu, silmek istediğiniz dosya veya KLASÖRÜN URI 'siyle değiştirin.
 
@@ -77,7 +78,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Dosyaların ve dizinlerin Access Control listelerini (ACL 'Ler) görüntüleme
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 Örnek:
 
@@ -87,7 +88,7 @@ Bkz. [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-
 
 ## <a name="set-acls-of-files-and-directories"></a>Dosya ve dizinlerin ACL 'Lerini ayarla
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 Örnek:
 
@@ -97,19 +98,19 @@ Bkz. [setfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-
 
 ## <a name="change-the-owner-of-files"></a>Dosyaların sahibini değiştirme
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 Bkz. [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
 ## <a name="change-group-association-of-files"></a>Dosyaların grup ilişkilendirmesini değiştirme
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 Bkz. [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
 ## <a name="change-the-permissions-of-files"></a>Dosyaların izinlerini değiştirme
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 Bkz. [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 

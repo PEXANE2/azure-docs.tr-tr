@@ -3,15 +3,16 @@ title: Azure geçişi 'ne geçiş araçları ekleme
 description: Azure geçişi 'ne geçiş araçları ekleme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109816"
 ---
 # <a name="add-migration-tools"></a>Geçiş araçları ekleme
 
-Bu makalede, [Azure](migrate-overview.md)geçişi 'nde geçiş araçlarının nasıl ekleneceği açıklanmaktadır.
+Bu makalede, [Azure](./migrate-services-overview.md)geçişi 'nde geçiş araçlarının nasıl ekleneceği açıklanmaktadır.
 
 - Bir geçiş aracı eklemek ve henüz bir Azure geçişi projesi ayarlamadıysanız, bu [makaleye](how-to-add-tool-first-time.md)uyun.
 - Geçiş için bir ISV aracı eklediyseniz, araçla çalışmaya hazırlanmak için [adımları izleyin](prepare-isv-movere.md).

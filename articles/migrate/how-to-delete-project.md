@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73512736"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109884"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Geçişi projesini silme
 
-Bu makalede bir [Azure geçişi](migrate-overview.md) projesinin nasıl silineceği açıklanır.
+Bu makalede bir [Azure geçişi](./migrate-services-overview.md) projesinin nasıl silineceği açıklanır.
 
 
 ## <a name="before-you-start"></a>Başlamadan önce

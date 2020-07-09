@@ -57,7 +57,11 @@
             - name: Dinamik veri maskeleme
               href: database/dynamic-data-masking-overview.md
             - name: SQL Güvenlik Açığı Değerlendirmesi
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL Güvenlik Açığı Değerlendirmesi
+                  href: database/sql-vulnerability-assessment.md
+                - name: Güvenlik açığı değerlendirme kuralları
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: 'Oturum açmalar, kullanıcı hesapları, roller ve izinler'
               href: database/logins-create-manage.md
             - name: Azure AD Kimlik Doğrulaması
@@ -606,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Azure İlkesi yerleşik ilkeler
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Kod örnekleri
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL Yönetilen Örnek (SQL MI)
@@ -833,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Azure İlkesi yerleşik ilkeler
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Kod örnekleri
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure VM’lerde SQL Server
@@ -974,8 +984,6 @@
                       items:
                         - name: FCI için DNN oluşturma
                           href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: DNN ile özellik birlikte çalışabilirliği
-                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                         - name: FCI DNN ve SQL Server özellikleri
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                 - name: Bağlantı yapılandırma

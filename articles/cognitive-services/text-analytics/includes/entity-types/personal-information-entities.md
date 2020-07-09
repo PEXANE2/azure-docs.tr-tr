@@ -8,15 +8,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: cd17bf6c97cb89984bf407552330fbe9bec36e3f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: dd7a8b94aefbf389afef30b327ffaa367a30dd51
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85292199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108523"
 ---
 > [!NOTE]
-> Algılamak için `PHI` , `domain=phi` parametresini ve model sürümünü `2020-04-01` veya üstünü kullanın.
+> Algılamak için `PHI` (korunan sistem durumu bilgilerini), `domain=phi` parametresini ve model sürümünü `2020-04-01` veya üstünü kullanın.
 >
 > Örneğin, `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
  
@@ -24,24 +24,24 @@ Uç noktaya istek gönderilirken aşağıdaki varlık kategorileri döndürülü
 
 | Kategori   | Subcategory | Description                          | Model sürümü başlatılıyor | Notlar |
 |------------|-------------|--------------------------------------|------------------------|---|
-| Kişi     | Yok         | Kişilerin adları.  | `2019-10-01`  | İle de döndürülür `domain=phi` . |
-| Kişilik türü | Yok         | Bir kişi tarafından tutulan iş türleri veya roller. | `2020-02-01` | |
-| PhoneNumber | Yok | Telefon numaraları (yalnızca ABD ve AB telefon numaraları). | `2019-10-01` | İle de döndürüldü`domain=phi` |
-|Kuruluş  | Yok | Şirketler, siyatik gruplar, müzik bantları, spor sinek, kamu gövdeleri ve kamu kuruluşları.  | `2019-10-01` | Bu varlık türünde ülke almallikleri ve dini dahil değildir.  |
+| Kişi     | YOK         | Kişilerin adları.  | `2019-10-01`  | İle de döndürülür `domain=phi` . |
+| Kişilik türü | YOK         | Bir kişi tarafından tutulan iş türleri veya roller. | `2020-02-01` | |
+| PhoneNumber | YOK | Telefon numaraları (yalnızca ABD ve AB telefon numaraları). | `2019-10-01` | İle de döndürüldü`domain=phi` |
+|Kuruluş  | YOK | Şirketler, siyatik gruplar, müzik bantları, spor sinek, kamu gövdeleri ve kamu kuruluşları.  | `2019-10-01` | Bu varlık türünde ülke almallikleri ve dini dahil değildir.  |
 |Kuruluş | Birinin | Tıbbi şirketler ve gruplar. | `2020-04-01` | İle de döndürülür `domain=phi` . |
 |Kuruluş | Stok alışverişi | Kambiyo senedi grupları. | `2020-04-01` | İle de döndürülür `domain=phi` . |
 | Kuruluş | Spor | Spor ile ilgili kuruluşlar. | `2020-04-01` | İle de döndürülür `domain=phi` . |
-| Adres | Yok | Tam posta adresleri.  | `2020-04-01` | İle de döndürülür `domain=phi` . |
-| AB GPS koordinatları | Yok | Avrupa Birliği içindeki konumların GPS koordinatları.  | `2019-10-01` |  |
-| E-posta | Yok | E-posta adresleri. | `2019-10-01` | İle de döndürülür `domain=phi` .   |
-| URL | Yok | Web sitelerinin URL 'Leri. | `2019-10-01` | İle de döndürülür `domain=phi` . |
-| IP | Yok | Ağ IP adresleri. | `2019-10-01` | |
-| DateTime | Yok | Günün tarihleri ve saatleri. | `2019-10-01` |  | 
+| Adres | YOK | Tam posta adresleri.  | `2020-04-01` | İle de döndürülür `domain=phi` . |
+| AB GPS koordinatları | YOK | Avrupa Birliği içindeki konumların GPS koordinatları.  | `2019-10-01` |  |
+| E-posta | YOK | E-posta adresleri. | `2019-10-01` | İle de döndürülür `domain=phi` .   |
+| URL | YOK | Web sitelerinin URL 'Leri. | `2019-10-01` | İle de döndürülür `domain=phi` . |
+| IP | YOK | Ağ IP adresleri. | `2019-10-01` | |
+| DateTime | YOK | Günün tarihleri ve saatleri. | `2019-10-01` |  | 
 | DateTime | Tarih | Takvim tarihleri. | `2019-10-01` | İle de döndürülür `domain=phi` . |
-| Miktar | Yok | Sayılar ve sayısal miktarlar. | `2019-10-01` |  |
+| Miktar | YOK | Sayılar ve sayısal miktarlar. | `2019-10-01` |  |
 | Miktar | Yaş | Geçirir. | `2019-10-01` | | |
-| Derinlemesine bir uluslararası sınıflandırma (ICD-9-CM) | Yok | Uluslararası sınıflandırmayla ilgili varlıklar, dokuzuncu düzeltme.   | `2020-04-01` | |
-| Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | Yok | Uluslararası sınıflandırmayla ilgili varlıklar, onuncu düzeltme.    | `2020-04-01` | |
+| Derinlemesine bir uluslararası sınıflandırma (ICD-9-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, dokuzuncu düzeltme.   | `2020-04-01` | |
+| Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, onuncu düzeltme.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure bilgileri
 
