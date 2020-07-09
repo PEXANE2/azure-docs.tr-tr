@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920170"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134590"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Zorlamalı tünel senaryosunda Windows etkinleştirme başarısız oluyor
 
@@ -78,7 +79,9 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
     ```
 3. Etkinleştirme sorunları olan VM 'ye gidin. KMS sunucusuna ulaşabilmesini sınamak için [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) kullanın:
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Windows 'u etkinleştirmeyi deneyin ve sorunun çözümlenip çözümlenmediğini görün.
 
@@ -106,7 +109,9 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
 
 3. Etkinleştirme sorunları olan VM 'ye gidin. KMS sunucusuna ulaşabilmesini sınamak için [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) kullanın:
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Windows 'u etkinleştirmeyi deneyin ve sorunun çözümlenip çözümlenmediğini görün.
 

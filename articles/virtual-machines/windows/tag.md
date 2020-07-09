@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 6ecf0f047fe353d94ca901118d1f434e33e9c8d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e50601ac2c10861f63995af37fe8a98f9caa211b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100575"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135126"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Azure 'da bir Windows sanal makinesini etiketleme
 Bu makalede, Azure 'daki bir Windows sanal makinesini Kaynak Yöneticisi dağıtım modeliyle etiketlemek için farklı yollar açıklanmaktadır. Etiketler, doğrudan bir kaynağa veya bir kaynak grubuna yerleştirilebilecek Kullanıcı tanımlı anahtar/değer çiftleridir. Azure Şu anda kaynak ve kaynak grubu başına en fazla 50 etiketi desteklemektedir. Etiketler, oluşturma sırasında veya var olan bir kaynağa eklenen bir kaynağa yerleştirilebilir. Lütfen etiketlerin yalnızca Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulan kaynaklar için desteklendiğini unutmayın. Bir Linux sanal makinesini etiketlemek istiyorsanız bkz. [Azure 'Da Linux sanal makinesini etiketleme](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -26,56 +26,66 @@ PowerShell aracılığıyla etiket oluşturmak, eklemek ve silmek için önce [P
 
 İlk olarak cmdlet üzerinden bir sanal makineye gidin `Get-AzVM` .
 
-        PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
+```azurepowershell
+PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
+```
 
 Sanal makineniz zaten etiketler içeriyorsa, kaynağınızın tüm etiketlerini görürsünüz:
 
-        Tags : {
-                "Application": "MyApp1",
-                "Created By": "MyName",
-                "Department": "MyDepartment",
-                "Environment": "Production"
-               }
+```json
+Tags : {
+        "Application": "MyApp1",
+        "Created By": "MyName",
+        "Department": "MyDepartment",
+        "Environment": "Production"
+        }
+```
 
 PowerShell aracılığıyla Etiketler eklemek istiyorsanız `Set-AzResource` komutunu kullanabilirsiniz. Bkz. Etiketler PowerShell aracılığıyla güncelleştirilirken, Etiketler bir bütün olarak güncelleştirilir. Bu nedenle, zaten etiketlere sahip olan bir kaynağa bir etiket ekliyorsanız, kaynağa yerleştirilmesini istediğiniz tüm etiketleri dahil etmeniz gerekir. Aşağıda, PowerShell cmdlet 'Leri aracılığıyla bir kaynağa ek etiketlerin nasıl ekleneceği gösterilmektedir.
 
 Bu ilk cmdlet, ve özelliğini kullanarak *Mytestvm* üzerinde yer alan tüm etiketleri *$Tags* değişkenine ayarlar `Get-AzResource` `Tags` .
 
-        PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+```azurepowershell
+PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+```
 
 İkinci komut, verilen değişkenin etiketlerini görüntüler.
 
-```
-    PS C:\> $tags
-    
-    Key           Value
-    ----          -----
-    Department    MyDepartment
-    Application   MyApp1
-    Created By    MyName
-    Environment   Production
+```azurepowershell
+PS C:\> $tags
+
+Key           Value
+----          -----
+Department    MyDepartment
+Application   MyApp1
+Created By    MyName
+Environment   Production
 ```
 
 Üçüncü komut *$Tags* değişkenine ek bir etiket ekler. **+=** Yeni anahtar/değer çiftini *$Tags* listesine eklemek için öğesinin kullanımını dikkate alın.
 
-        PS C:\> $tags += @{Location="MyLocation"}
+```azurepowershell
+PS C:\> $tags += @{Location="MyLocation"}
+```
 
 Dördüncü komut *$Tags* değişkeninde tanımlanan tüm etiketleri verilen kaynağa ayarlar. Bu durumda, test sanal makinedir.
 
-        PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
+```azurepowershell
+PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
+```
 
 Beşinci komut kaynaktaki tüm etiketleri görüntüler. Gördüğünüz gibi, *konum* artık değer olarak *MyLocation* içeren bir etiket olarak tanımlanmıştır.
 
-```
-    PS C:\> (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+```azurepowershell
+PS C:\> (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
-    Key           Value
-    ----          -----
-    Department    MyDepartment
-    Application   MyApp1
-    Created By    MyName
-    Environment   Production
-    Location      MyLocation
+Key           Value
+----          -----
+Department    MyDepartment
+Application   MyApp1
+Created By    MyName
+Environment   Production
+Location      MyLocation
 ```
 
 PowerShell aracılığıyla etiketleme hakkında daha fazla bilgi edinmek için [Azure Kaynak cmdlet 'lerine][Azure Resource Cmdlets]göz atın.

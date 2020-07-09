@@ -4,12 +4,12 @@ description: Bu sayfada, Azure Site Recovery hizmetine genel bir bakış sağlan
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: ee387682e935522b37a5b4f9f32e53712bfb9150
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067554"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135229"
 ---
 # <a name="about-site-recovery"></a>Site Recovery Hakkında
 
@@ -20,7 +20,7 @@ Bir kuruluş olarak, planlı ve plansız kesintiler gerçekleştiğinde verileri
 Azure kurtarma hizmetleri, BCDR stratejinize katkıda bulunur:
 
 - **Site Recovery hizmeti**: Site Recovery, kesintiler sırasında iş uygulamalarını ve iş yüklerini çalışır durumda tutarak iş sürekliliği sağlamaya yardımcı olur. Site Recovery, fiziksel ve sanal makineler (VM) üzerinde çalışan iş yüklerini birincil siteden ikincil bir konuma çoğaltır. Birincil sitenizde bir kesinti oluştuğunda ikinci konuma yük devredersiniz ve uygulamalara oradan erişirsiniz. Birincil konum tekrar çalışmaya başladıktan sonra o konuma geri dönebilirsiniz.
-- **Yedekleme hizmeti**: [Azure Backup](/azure/backup/) hizmeti verilerinizi güvende tutar ve kurtarılabilir.
+- **Yedekleme hizmeti**: [Azure Backup](../backup/index.yml) hizmeti verilerinizi güvende tutar ve kurtarılabilir.
 
 Site Recovery, şunlar için çoğaltmayı yönetebilir:
 
@@ -29,7 +29,7 @@ Site Recovery, şunlar için çoğaltmayı yönetebilir:
 
 ## <a name="what-does-site-recovery-provide"></a>Site Recovery ne sağlar?
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Basit BCDR çözümü** | Site Recovery hizmetini kullanarak Azure portalındaki tek bir konumdan çoğaltma, yük devretme ve yeniden çalışmayı yönetebilirsiniz.
 **Azure VM çoğaltma** | Azure VM’lerin olağanüstü durum kurtarma özelliğini birincil bir bölgeden ikincil bölgeye ayarlayabilirsiniz.
@@ -47,7 +47,7 @@ Site Recovery, şunlar için çoğaltmayı yönetebilir:
 
 ## <a name="what-can-i-replicate"></a>Neleri çoğaltabilirim?
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 **Çoğaltma senaryoları** | Azure VM’leri bir Azure bölgesinden diğerine çoğaltın.<br/><br/>  Şirket içi VMware VM 'lerini, Hyper-V VM 'lerini, fiziksel sunucuları (Windows ve Linux) Azure Stack VM 'Leri Azure 'a çoğaltın.<br/><br/> AWS Windows örneklerini Azure 'a çoğaltın.<br/><br/> Şirket içi VMware VM’leri, System Center VMM tarafından yönetilen Hyper-V VM’leri ve fiziksel sunucuları ikincil siteye çoğaltın.
 **Bölgeler** | Site Recovery için [desteklenen bölgeleri](https://azure.microsoft.com/regions/services/) inceleyin. |

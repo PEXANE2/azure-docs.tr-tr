@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0ba4531ed15630a8887cb7be843a00ba23a439cc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682044"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134176"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
 
@@ -26,9 +26,9 @@ ms.locfileid: "83682044"
 
 Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamasının (SPA), yetkilendirme kodu akışını kullanarak kişisel hesap, iş hesabı ve okul hesaplarının kullanıcılarına nasıl oturum açıp çalıştırabileceklerini gösteren bir kod örneği çalıştırırsınız. Kod örneği Ayrıca, bir Web API 'SI çağırmak için bir erişim belirteci alma, bu durumda Microsoft Graph API 'SI de gösterir. Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL. js 2,0 kullanılır. Örtük Flow ile MSAL. js 1,0 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılır. Örtük akışta MSAL.js 1,0 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma kullanıcıları](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -76,10 +76,10 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL. js 2,0 kullanıl�
 #### <a name="step-2-download-the-project"></a>2. Adım: Projeyi indirme
 
 > [!div renderon="docs"]
-> Projeyi Node. js kullanarak bir Web sunucusuyla çalıştırmak için, [temel proje dosyalarını indirin](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip).
+> Node.js kullanarak projeyi bir Web sunucusuyla çalıştırmak için, [temel proje dosyalarını indirin](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Node. js kullanarak projeyi bir Web sunucusu ile çalıştırma
+> Node.js kullanarak projeyi bir Web sunucusu ile çalıştırma
 
 > [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip)
@@ -87,7 +87,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL. js 2,0 kullanıl�
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>3. Adım: JavaScript uygulamanızı yapılandırma
 >
-> *Uygulama* klasöründe, *AuthConfig. js* dosyasını açın ve `clientID` `authority` nesnesindeki, ve değerlerini güncelleştirin `redirectUri` `msalConfig` .
+> *Uygulama* klasöründe *authConfig.js* dosyasını açın ve `clientID` `authority` nesnesindeki, ve değerlerini güncelleştirin `redirectUri` `msalConfig` .
 >
 > ```javascript
 > // Config object to be passed to Msal on creation
@@ -119,9 +119,9 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL. js 2,0 kullanıl�
 >   - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri ile değiştirin `organizations` .
 >   - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri ile değiştirin `common` . **Bu hızlı başlangıç için**kullanın `common` .
 >   - *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri ile değiştirin `consumers` .
-> - `Enter_the_Redirect_Uri_Here``http://localhost:3000/`.
+> - `Enter_the_Redirect_Uri_Here`, `http://localhost:3000/` değeridir.
 >
-> `authority`Ana (genel) Azure bulutu kullanıyorsanız, *AuthConfig. js* ' deki değer aşağıdakine benzer olmalıdır:
+> `authority`Ana (genel) Azure bulutunu kullanıyorsanız, *authConfig.js* değerin aşağıdakine benzer olması gerekir:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
@@ -136,7 +136,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL. js 2,0 kullanıl�
 
 > [!div renderon="docs"]
 >
-> Ardından, yine aynı klasörde, *Graphconfig. js* dosyasını düzenleyin ve `graphMeEndpoint` ve `graphMailEndpoint` değerlerini ve değerlerini güncelleştirin `apiConfig` .
+> Ardından, hala aynı klasörde *graphConfig.js* dosyasını düzenleyin ve `graphMeEndpoint` ve `graphMailEndpoint` değerlerini ve değerlerini güncelleştirin `apiConfig` .
 >
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -155,7 +155,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL. js 2,0 kullanıl�
 >
 > `Enter_the_Graph_Endpoint_Here`, API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana (genel) Microsoft Graph API hizmeti için `https://graph.microsoft.com/` (sondaki eğik çizgiyi dahil et) girin. Ulusal bulutlarda Microsoft Graph hakkında daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](https://docs.microsoft.com/graph/deployments).
 >
-> `graphMeEndpoint` `graphMailEndpoint` Ana (genel) Microsoft Graph API hizmetini kullanıyorsanız, *graphconfig. js* dosyasındaki ve değerleri aşağıdakine benzer olmalıdır:
+> `graphMeEndpoint` `graphMailEndpoint` Ana (global) Microsoft Graph API hizmetini kullanıyorsanız, *graphConfig.js* dosyadaki ve değerleri aşağıdakine benzer olmalıdır:
 >
 > ```javascript
 > graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
@@ -164,7 +164,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL. js 2,0 kullanıl�
 >
 > #### <a name="step-4-run-the-project"></a>4. Adım: projeyi çalıştırma
 
-Node. js kullanarak projeyi bir Web sunucusuyla çalıştırın:
+Node.js kullanarak projeyi bir Web sunucusuyla çalıştırın:
 
 1. Sunucuyu başlatmak için, proje dizini içinden aşağıdaki komutları çalıştırın:
     ```console
@@ -181,18 +181,18 @@ Node. js kullanarak projeyi bir Web sunucusuyla çalıştırın:
 
 ### <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
 
-:::image type="content" source="media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Tek sayfalı bir uygulama için yetkilendirme kodu akışını gösteren diyagram":::
+![Tek sayfalı bir uygulama için yetkilendirme kodu akışını gösteren diyagram.](media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png)
 
-### <a name="msaljs"></a>msal. js
+### <a name="msaljs"></a>msal.js
 
-MSAL. js kitaplığı, kullanıcıları imzalar ve Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. Örneğin *index. html* dosyası, kitaplığa bir başvuru içerir:
+MSAL.js kitaplığı, kullanıcıları imzalar ve Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. Örneğin *index.html* dosyası, kitaplığa bir başvuru içerir:
 
 ```html
 <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js" integrity=
 "sha384-r7Qxfs6PYHyfoBR6zG62DGzptfLBxnREThAlcJyEfzJ4dq5rqExc1Xj3TPFE/9TH" crossorigin="anonymous"></script>
 ```
 
-Node. js yüklüyse, Node. js paket yöneticisini (NPM) kullanarak en son sürümü indirebilirsiniz:
+Node.js yüklüyse, Node.js paket yöneticisini (NPM) kullanarak en son sürümü indirebilirsiniz:
 
 ```console
 npm install @azure/msal-browser

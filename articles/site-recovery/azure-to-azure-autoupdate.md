@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: b2f5faea3df695500ea245d1dc71cb96a84c3643
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b57ce89979225015dc87bbfb17f9603897ef6d6b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985610"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135847"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 'dan Azure 'a çoğaltma için Mobility hizmetini otomatik güncelleştirme
 
@@ -90,7 +90,7 @@ Otomatik güncelleştirmeleri etkinleştiremediğimiz takdirde aşağıdaki yayg
 
 - **Hata**: Azure farklı çalıştır hesabı (hizmet sorumlusu) oluşturma ve hizmet sorumlusuna katkıda bulunan rolü verme izinleriniz yok.
 
-  **Önerilen eylem**: oturum açan hesabın katkı olarak atandığından emin olun ve yeniden deneyin. İzinleri atama hakkında daha fazla bilgi için bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
+  **Önerilen eylem**: oturum açan hesabın katkı olarak atandığından emin olun ve yeniden deneyin. İzinleri atama hakkında daha fazla bilgi için bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
   Otomatik güncelleştirmeleri etkinleştirdikten sonra birçok sorunu gidermek için, **Onar**' ı seçin. Onar düğmesi kullanılamıyorsa, uzantı güncelleştirme ayarları bölmesinde hata iletisine bakın.
 
@@ -98,11 +98,11 @@ Otomatik güncelleştirmeleri etkinleştiremediğimiz takdirde aşağıdaki yayg
 
 - **Hata**: farklı çalıştır hesabının kurtarma hizmetleri kaynağına erişim izni yok.
 
-  **Önerilen eylem**: [Farklı Çalıştır hesabını silin ve yeniden oluşturun](/azure/automation/automation-create-runas-account). Ya da Otomasyon farklı çalıştır hesabının Azure Active Directory uygulamasının kurtarma hizmetleri kaynağına erişebildiğinizden emin olun.
+  **Önerilen eylem**: [Farklı Çalıştır hesabını silin ve yeniden oluşturun](../automation/manage-runas-account.md). Ya da Otomasyon farklı çalıştır hesabının Azure Active Directory uygulamasının kurtarma hizmetleri kaynağına erişebildiğinizden emin olun.
 
 - **Hata**: Run as hesabı bulunamadı. Bunlardan biri silinmiş veya oluşturulmamış-Azure Active Directory uygulama, hizmet sorumlusu, rol, Otomasyon sertifikası varlığı, Otomasyon bağlantı varlığı veya Parmak Izi sertifika ile bağlantı arasında aynı değil.
 
-  **Önerilen eylem**: [Farklı Çalıştır hesabını silin ve yeniden oluşturun](/azure/automation/automation-create-runas-account).
+  **Önerilen eylem**: [Farklı Çalıştır hesabını silin ve yeniden oluşturun](../automation/manage-runas-account.md).
 
 - **Hata**: Otomasyon hesabı tarafından kullanılan Azure farklı çalıştır sertifikası sona ermek üzere.
 

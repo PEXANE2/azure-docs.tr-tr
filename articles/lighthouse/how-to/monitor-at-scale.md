@@ -1,17 +1,18 @@
 ---
 title: Temsil edilen kaynakları ölçeklendirmeye göre izleme
 description: Azure Izleyici günlüklerini, yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl verimli bir şekilde kullanacağınızı öğrenin.
-ms.date: 02/03/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: bdd91cec650d6810d1d62230219f840a172141d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be7494f929fc91e2b01bde0b4f26f7c2e4b907b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634124"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133486"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Temsil edilen kaynakları ölçeklendirmeye göre izleme
 
-Hizmet sağlayıcı olarak, Azure tarafından atanan kaynak yönetimi için birden fazla müşteri kiracısından eklendi olabilirsiniz. [Azure Mathouse](../overview.md) , hizmet sağlayıcılarının aynı anda birkaç kiracıda bir ölçekte işlem gerçekleştirmesine olanak sağlayarak yönetim görevlerini daha verimli hale getirir.
+Hizmet sağlayıcı olarak, [Azure açık Thouse](../overview.md)için birden fazla müşteri kiracısından eklendi olabilirsiniz. Azure Mathouse, hizmet sağlayıcılarının aynı anda birkaç kiracıda bir ölçekte işlem gerçekleştirmesine olanak sağlayarak yönetim görevlerini daha verimli hale getirir.
 
 Bu konu başlığı altında, [Azure Izleyici günlüklerinin](../../azure-monitor/platform/data-platform-logs.md) yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl kullanılacağı gösterilmektedir.
 
@@ -21,7 +22,7 @@ Veri toplamak için Log Analytics çalışma alanları oluşturmanız gerekir. B
 
 Bu çalışma alanlarını doğrudan müşteri kiracılarında oluşturmanız önerilir. Bu şekilde, verileri kendi içine aktarılması yerine kiracılarında kalır. Bu Ayrıca, Log Analytics tarafından desteklenen herhangi bir kaynak ve hizmetin merkezi olarak izlenmesini sağlar ve bu sayede izlediğiniz veri türlerine daha fazla esneklik sunar.
 
-[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)kullanarak veya [Azure PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)kullanarak [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)kullanarak Log Analytics çalışma alanı oluşturabilirsiniz.
+[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)kullanarak veya [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md)kullanarak [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)kullanarak Log Analytics çalışma alanı oluşturabilirsiniz.
 
 ## <a name="deploy-policies-that-log-data"></a>Verileri günlüğe kaydetme ilkeleri dağıtma
 

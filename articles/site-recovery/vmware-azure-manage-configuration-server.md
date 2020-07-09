@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672760"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134829"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
@@ -21,7 +22,7 @@ VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması
 
 ## <a name="update-windows-license"></a>Windows lisansını Güncelleştir
 
-OVF şablonuyla birlikte sunulan lisans, 180 gün için geçerli bir değerlendirme lisanslayadır. Kesintisiz kullanım için Windows 'u bir temin lisansıyla etkinleştirmeniz gerekir. Lisans güncelleştirmesi, tek başına bir anahtar veya KMS standart anahtarı aracılığıyla yapılabilir. Rehberlik, [işletim sistemini çalıştırmak Için DISM Windows komut satırında](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)sunulmaktadır. Anahtarları almak için [KMS istemcisi ayarlama](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)bölümüne bakın.
+OVF şablonuyla birlikte sunulan lisans, 180 gün için geçerli bir değerlendirme lisanslayadır. Kesintisiz kullanım için Windows 'u bir temin lisansıyla etkinleştirmeniz gerekir. Lisans güncelleştirmesi, tek başına bir anahtar veya KMS standart anahtarı aracılığıyla yapılabilir. Rehberlik, [işletim sistemini çalıştırmak Için DISM Windows komut satırında](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)sunulmaktadır. Anahtarları almak için [KMS istemcisi ayarlama](/windows-server/get-started/kmsclientkeys)bölümüne bakın.
 
 ## <a name="access-configuration-server"></a>Erişim yapılandırma sunucusu
 
@@ -211,7 +212,7 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 ### <a name="parameters"></a>Parametreler
 
-|Parametre Adı| Tür | Açıklama| Değerler|
+|Parametre Adı| Tür | Description| Değerler|
 |-|-|-|-|
 | /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
 |/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
@@ -265,7 +266,7 @@ ProxyPassword="Password"
 
 Configuration sunucusunu isteğe bağlı olarak PowerShell kullanarak silebilirsiniz.
 
-1. Azure PowerShell modülünü [yükler](https://docs.microsoft.com/powershell/azure/install-Az-ps) .
+1. Azure PowerShell modülünü [yükler](/powershell/azure/install-Az-ps) .
 2. Şu komutu kullanarak Azure hesabınızda oturum açın:
 
     `Connect-AzAccount`

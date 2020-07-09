@@ -3,12 +3,12 @@ title: Kaynak değişikliklerini alma
 description: Bir kaynağın ne zaman değiştiğini öğrenin, değiştirilen özelliklerin bir listesini alın ve diffs 'yi değerlendirin.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ace911361ccb96cab3d5c7557ba0e524dbf801d2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3d65b5d7e968fda17f80d790ae3171398e2cb73b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045000"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135537"
 ---
 # <a name="get-resource-changes"></a>Kaynak değişikliklerini alma
 
@@ -25,7 +25,7 @@ Değişiklik algılama ve Ayrıntılar aşağıdaki örnek senaryolar için değ
 - CMDB olarak bilinen bir yapılandırma yönetimi veritabanının tutulması, güncel. Tüm kaynakları ve bunların tam özellik kümelerini zamanlanan bir sıklıkta yenilemek yerine yalnızca nelerin değiştiğini alın.
 - Bir kaynağın uyumluluk durumu değiştiğinde başka hangi özelliklerin değiştirildiğini anlama. Bu ek özelliklerin değerlendirilmesi, bir Azure Ilke tanımıyla yönetilmesi gerekebilecek diğer özelliklerle ilgili öngörüler sağlayabilir.
 
-Bu makalede, kaynak grafiğinin SDK 'Sı aracılığıyla bu bilgilerin nasıl toplanacağı gösterilmektedir. Bu bilgileri Azure portal görmek için bkz. Azure Ilkesinin [değişiklik geçmişi](../../policy/how-to/determine-non-compliance.md#change-history) veya Azure etkinlik günlüğü [değişiklik geçmişi](../../../azure-monitor/platform/activity-log-view.md#azure-portal). Altyapı katmanından uygulama dağıtımına kadar olan uygulamalardaki değişiklikler hakkında ayrıntılı bilgi için bkz. Azure Izleyici 'de [uygulama değişiklik analizini (Önizleme) kullanma](../../../azure-monitor/app/change-analysis.md) .
+Bu makalede, kaynak grafiğinin SDK 'Sı aracılığıyla bu bilgilerin nasıl toplanacağı gösterilmektedir. Bu bilgileri Azure portal görmek için bkz. Azure Ilkesinin [değişiklik geçmişi](../../policy/how-to/determine-non-compliance.md#change-history) veya Azure etkinlik günlüğü [değişiklik geçmişi](../../../azure-monitor/platform/activity-log.md#view-the-activity-log). Altyapı katmanından uygulama dağıtımına kadar olan uygulamalardaki değişiklikler hakkında ayrıntılı bilgi için bkz. Azure Izleyici 'de [uygulama değişiklik analizini (Önizleme) kullanma](../../../azure-monitor/app/change-analysis.md) .
 
 > [!NOTE]
 > Kaynak grafiğinde değişiklik ayrıntıları Kaynak Yöneticisi özellikleri içindir. Bir sanal makine içindeki değişiklikleri izlemek için bkz. Azure Otomasyonu 'nun [VM 'ler Için](../../policy/concepts/guest-configuration.md) [değişiklik Izleme](../../../automation/change-tracking.md) veya Azure ilkesinin Konuk yapılandırması.

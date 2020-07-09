@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969611"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134617"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Izleyici müşteri tarafından yönetilen anahtar 
 
@@ -193,7 +193,7 @@ Bu ayarlar CLı ve PowerShell aracılığıyla kullanılabilir:
 
 Bu kaynak, Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak kullanılır. Aboneliklerinize izin verildiğini doğruladıktan sonra, çalışma alanlarınızın bulunduğu bölgede bir Log Analytics *küme* kaynağı oluşturun.
 
-*Küme* kaynağı oluştururken *Kapasite ayırma* düzeyini (SKU) belirtmeniz gerekir. *Kapasite ayırma* düzeyi günde 1.000 Ila 2.000 GB aralığında olabilir ve daha sonra 100 adımlarında güncelleştirebilirsiniz. Gün başına 2.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, adresinden bizimle iletişime geçin LAIngestionRate@microsoft.com . [Daha fazla bilgi](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+*Küme* kaynağı oluştururken *Kapasite ayırma* düzeyini (SKU) belirtmeniz gerekir. *Kapasite ayırma* düzeyi günde 1.000 Ila 2.000 GB aralığında olabilir ve daha sonra 100 adımlarında güncelleştirebilirsiniz. Gün başına 2.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, adresinden bizimle iletişime geçin LAIngestionRate@microsoft.com . [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 *Billingtype* özelliği *küme* kaynağı ve verileri için faturalandırma atışmasını belirler:
 - *Küme* (varsayılan)--kümeniz Için kapasite ayırma maliyetleri *küme* kaynağına atanır.
@@ -461,26 +461,27 @@ CMK 'nin dönmesi, *küme* kaynağında Azure Key Vault yeni anahtar sürümü i
 
 Verilerin her zaman Key Vault ' de yeni anahtar şifreleme anahtarı (KEK) ile şifrelenmesi sırasında, veriler her zaman hesap şifreleme anahtarıyla (AEK) şifrelendiğinden, tüm verileriniz anahtar döndürme işleminden sonra erişilebilir durumda kalır.
 
-## <a name="saving-queries-protected-with-cmk"></a>CMK ile korunan sorguları kaydetme
+## <a name="cmk-for-queries"></a>Sorgular için CMK
 
-Log Analytics ' de kullanılan sorgu dili ifade edilebilir ve sorgulara eklediğiniz açıklamalarda veya sorgu söz diziminde gizli bilgiler içerebilir. Bazı kuruluşlar, bu tür bilgilerin CMK ilkesinin bir parçası olarak korunmasını gerektirir ve sorgularınızı anahtarınızla şifreli olarak kaydetmeniz gerekir. Azure Izleyici, *kayıtlı aramaları* ve *günlük uyarıları* sorgularını, çalışma alanınıza bağlandığınız depolama hesabınızda depolamanıza olanak sağlar. 
+Log Analytics ' de kullanılan sorgu dili ifade edilebilir ve sorgulara eklediğiniz açıklamalarda veya sorgu söz diziminde gizli bilgiler içerebilir. Bazı kuruluşlar, bu tür bilgilerin CMK ilkesinin bir parçası olarak korunmasını gerektirir ve sorgularınızı anahtarınızla şifreli olarak kaydetmeniz gerekir. Azure Izleyici, çalışma alanınıza bağlıyken kendi depolama hesabınızda anahtarınızla şifrelenen *kayıtlı aramaları* ve *günlük uyarıları* sorgularını depolamanıza olanak sağlar. 
 
+> [!NOTE]
 > Çalışma kitaplarında kullanılan sorgular için CMK ve Azure panoları henüz desteklenmiyor. Bu sorgular Microsoft anahtarıyla şifrelenmiş olarak kalır.  
 
-Kendi depolama alanınızı getir (KCG) sayesinde, hizmet sorguları denetlediğiniz depolama hesabına yükler. Diğer bir deyişle, Log Analytics kümesindeki verileri şifrelemek için kullandığınız anahtarı ya da farklı bir anahtarı kullanarak [rest-at ilkesini](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) denetlersiniz. Bununla birlikte, bu depolama hesabıyla ilişkili maliyetlerden de sorumlu olursunuz. 
+[Kendi depolama alanınızı](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (byos) getirip çalışma alanınıza ilişkilendirdiğinizde, hizmet *kayıtlı aramaları* ve *günlük uyarıları* sorgularını depolama hesabınıza yükler. Diğer bir deyişle, Log Analytics kümesindeki verileri şifrelemek için kullandığınız anahtarı veya farklı bir anahtarı kullanarak depolama hesabını ve [geri kalan şifreleme ilkesini](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) denetlersiniz. Bununla birlikte, bu depolama hesabıyla ilişkili maliyetlerden de sorumlu olursunuz. 
 
 **Sorgular için CMK ayarlamadan önce dikkat edilecek noktalar**
 * Hem çalışma alanınız hem de depolama hesabınızda ' Write ' izinlerine sahip olmanız gerekir
 * Log Analytics çalışma alanınız bulunduğundan, depolama hesabınızı aynı bölgede oluşturduğunuzdan emin olun
 * Depolamadaki *aramalar* , hizmet yapıtları olarak değerlendirilir ve bunların biçimi değişebilir
-* Mevcut *kaydetme aramaları* çalışma alanınızdan kaldırılır. Yapılandırma öncesinde ihtiyacınız olan aramaları kopyalayın ve *kaydeder* . *Kayıtlı aramalarınızı* bu [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0) kullanarak görüntüleyebilirsiniz
+* Mevcut *kaydetme aramaları* çalışma alanınızdan kaldırılır. Yapılandırma öncesinde ihtiyacınız olan aramaları kopyalayın ve *kaydeder* . *Kayıtlı aramalarınızı* [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch) kullanarak görüntüleyebilirsiniz
 * Sorgu geçmişi desteklenmiyor ve çalıştırdığınız sorguları göremezsiniz
-* Sorguları kaydetmek amacıyla tek bir depolama hesabını çalışma alanıyla ilişkilendirebilirsiniz, ancak her iki *kayıtlı aramayı* ve *günlük uyarıları* sorgularını kullanabilir.
+* Sorguları kaydetmek amacıyla tek bir depolama hesabını çalışma alanıyla ilişkilendirebilirsiniz, ancak her ikisi de *kaydedilmiş aramalar* ve *log-Alerts* sorguları kullanabilir.
 * Panoya sabitle desteklenmiyor
 
-**Sorgular için KCG 'LERI yapılandırma**
+**Kayıtlı arama sorguları için KCG 'LERI yapılandırma**
 
-*Sorgu* dataSourceType ile bir depolama hesabını çalışma alanınıza ilişkilendirin. 
+*Sorgu* için depolama hesabını çalışma alanınıza ilişkilendir-- *kayıtlı aramalar* sorguları depolama hesabınıza kaydedilir. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
@@ -505,9 +506,9 @@ Content-type: application/json
 
 Yapılandırmadan sonra, yeni *Kaydedilmiş arama* sorgusu, depolama alanına kaydedilir.
 
-**Log uyarıları için BYOS yapılandırması**
+**KCG 'LERI log-Alerts sorguları için yapılandırma**
 
-Bir depolama hesabını *Uyarılar* dataSourceType ile çalışma alanınıza ilişkilendirin. 
+Depolama hesabını çalışma alanınıza *Alerts* göre ilişkilendirin-- *log-Alerts* sorguları depolama hesabınıza kaydedilir. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197036"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135374"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için çoğaltma sorunlarını giderme
 
@@ -94,16 +95,16 @@ Sorunu çözmek için, kaynak VM 'den yapılandırma sunucusuna ağ bağlantıs�
    - InMage Scout Uygulaması Hizmeti
 4. Kaynak makinede, hata ayrıntıları için konumdaki günlükleri inceleyin:
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    *C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>Sinyal olmadan işlem sunucusu [Hata 806]
 Işlem sunucusu 'ndan (PS) sinyal olmaması durumunda şunları kontrol edin:
 1. PS sanal makinesi çalışıyor
 2. Hata ayrıntıları için PS 'de aşağıdaki günlükleri kontrol edin:
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager \* . log*\
+    '
+    *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* . log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Sinyal olmadan ana hedef sunucu [hata 78022]
 
@@ -116,7 +117,7 @@ Sorunu çözmek için, hizmet durumunu doğrulamak üzere aşağıdaki adımlar�
     - Svagents hizmetinin çalıştığını doğrulayın. Çalışıyorsa, hizmeti yeniden başlatın
     - Hata ayrıntıları için konumdaki günlükleri kontrol edin:
 
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+        *C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
 3. Ana hedefi yapılandırma sunucusuna kaydetmek için **%ProgramData%\asr\agent**klasörüne gidin ve komut isteminde aşağıdaki komutu çalıştırın:
    ```
    cmd
@@ -146,25 +147,25 @@ En yaygın sorunlardan bazıları aşağıda listelenmiştir
 **Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) başvurun
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Neden 4: uygulama tutarlılığı Linux sunucularında etkinleştirilmemiş
-**Nasıl düzeltilir** : Linux işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve gönderi seçenekleriyle özel betik, uygulama tutarlılığı için Azure Site Recovery Mobility Aracısı tarafından kullanılır. Etkinleştirme adımları [aşağıda](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) verilmiştir.
+**Nasıl düzeltilir** : Linux işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve gönderi seçenekleriyle özel betik, uygulama tutarlılığı için Azure Site Recovery Mobility Aracısı tarafından kullanılır. Etkinleştirme adımları [aşağıda](./site-recovery-faq.md#replication) verilmiştir.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS ile ilgili sorunlardan kaynaklanan nedenler:
 
 Daha fazla sorun gidermek için, hata kodunu tam olarak almak için kaynak makinedeki dosyaları kontrol edin:
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+*C:\Program Files (x86) \Microsoft Azure Site Recovery\ıoperations T\application Data\applicationpolicylogs\boş P.log*
 
 Dosyadaki hatalar nasıl konumlandırsın?
 Bir düzenleyicide boş olan bir dosyayı açarak "boş" dizesini arayın
 
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 Yukarıdaki örnekte **2147754994** , hatayı aşağıda gösterildiği gibi bildiren hata kodudur
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazıcısı yüklü değil-hata 2147221164
 
 *Nasıl düzeltilir*: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin yüklü olmaması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi, 0x80040154 "sınıf kayıtlı değil" hata KIMLIĞIYLE başarısız olur. </br>
-[VSS yazıcı yükleme sorunlarını giderme makalesine](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) bakın
+[VSS yazıcı yükleme sorunlarını giderme makalesine](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures) bakın
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS yazıcı devre dışı-hata 2147943458
 
@@ -194,4 +195,4 @@ VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarland�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)sorunuzu gönderin. Etkin bir topluluk sunuyoruz ve mühendislerimizden biri size yardımcı olabilir.
+Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)sorunuzu gönderin. Etkin bir topluluk sunuyoruz ve mühendislerimizden biri size yardımcı olabilir.

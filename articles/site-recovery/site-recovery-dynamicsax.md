@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75941584"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133827"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Çok katmanlı Dynamics AX uygulaması için olağanüstü durum kurtarmayı ayarlama   
 
@@ -24,7 +25,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak Dynamics
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Site Recovery kullanarak Dynamics AX uygulaması için olağanüstü durum kurtarmayı uygulamak aşağıdaki önkoşulları gerektirir:
 
@@ -42,9 +43,9 @@ Bu makaleyi oluşturmak amacıyla, Windows Server 2012 R2 Enterprise üzerinde D
 
 **Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Evet | Evet
-**VMware** | Evet | Evet
-**Fiziksel sunucu** | Evet | Evet
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fiziksel sunucu** | Yes | Yes
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery kullanarak Dynamics AX uygulamasının olağanüstü durum kurtarma özelliğini etkinleştirme
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX uygulamanızı koruyun
@@ -68,7 +69,7 @@ Müşterinin çok sayıda uygulaması vardır ve bir Active Directory ormanı ç
 SQL katmanını korumaya yönelik önerilen seçenek hakkında teknik yönergeler için bkz. [SQL Server ve Azure Site Recovery ile uygulamaları çoğaltma](site-recovery-sql.md).
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Dynamics AX İstemcisi ve uygulama nesne sunucusu VM 'Leri için korumayı etkinleştirme
-Sanal makinelerin [Hyper-V](site-recovery-hyper-v-site-to-azure.md) veya [VMware](site-recovery-vmware-to-azure.md)üzerinde dağıtılmış olup olmadığına bağlı olarak ilgili Site Recovery yapılandırmasını gerçekleştirin.
+Sanal makinelerin [Hyper-V](./hyper-v-azure-tutorial.md) veya [VMware](./vmware-azure-tutorial.md)üzerinde dağıtılmış olup olmadığına bağlı olarak ilgili Site Recovery yapılandırmasını gerçekleştirin.
 
 > [!TIP]
 > Kilitlenme tutarlılığı sıklığını 15 dakika olarak yapılandırmanızı öneririz.
@@ -175,7 +176,7 @@ Yeniden çalışma sırasında SQL Server özgü konular için bkz. [uygulamalar
 6. Yeniden çalışma işlemini başlatmak için **✓** öğesini seçin.
 
 
-Yeniden çalışma yapma hakkında daha fazla bilgi için bkz. [Azure 'dan şirket içine yeniden çalışma VMware VM 'leri](site-recovery-failback-azure-to-vmware.md).
+Yeniden çalışma yapma hakkında daha fazla bilgi için bkz. [Azure 'dan şirket içine yeniden çalışma VMware VM 'leri](./vmware-azure-failback.md).
 
 ## <a name="summary"></a>Özet
 Site Recovery kullanarak, Dynamics AX uygulamanız için tamamen bir otomatik olağanüstü durum kurtarma planı oluşturabilirsiniz. Kesinti durumunda, yük devretmeyi her yerden Saniyeler içinde başlatabilir ve birkaç dakika içinde uygulamayı çalışır duruma getirebilirsiniz.

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835062"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134739"
 ---
 # <a name="monitor-the-process-server"></a>İşlem sunucusunu izleme
 
@@ -95,7 +96,7 @@ Ayrıca, **Site Recovery altyapı**altında kasadaki işlem sunucularını da iz
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Herhangi bir işlem sunucusu sorununuz varsa, [sorun giderme kılavuzumuzu](vmware-physical-azure-troubleshoot-process-server.md) izleyin
-- Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)sorunuzu gönderin. 
+- Daha fazla yardıma ihtiyacınız varsa, [Azure Site Recovery Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)sorunuzu gönderin. 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641721"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135316"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için DNS ad çözümleme seçenekleri
 Azure, tek bir sanal ağdaki tüm sanal makineler için varsayılan olarak DNS ad çözümlemesi sağlar. Azure 'un barındırdığı sanal makinelerinizde kendi DNS hizmetlerinizi yapılandırarak kendi DNS ad çözümlemesi çözümünüzü uygulayabilirsiniz. Aşağıdaki senaryolar, durumunuza uygun olanı seçmenize yardımcı olmalıdır.
@@ -91,7 +92,9 @@ DNS birincil olarak bir UDP protokolüdür. UDP Protokolü ileti teslimini garan
 
 Bir Linux sanal makinesindeki (' cat/etc/resolv.exe ') geçerli ayarları denetlemek ve "Seçenekler" satırına bakmak için:
 
-    options timeout:1 attempts:5
+```config-conf
+options timeout:1 attempts:5
+```
 
 Resolv. conf dosyası otomatik olarak oluşturulur ve düzenlenmemelidir. ' Seçenekler ' satırını ekleyen belirli adımlar dağıtıma göre farklılık gösterir:
 

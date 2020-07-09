@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74084549"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134831"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>çok katmanlı Citrix XenApp ve XenDesktop dağıtımı için olağanüstü durum kurtarmayı ayarlama
 
@@ -25,12 +26,12 @@ Günümüzde Citrix XenApp herhangi bir olağanüstü durum kurtarma özelliği 
 Bu belge, Hyper-V ve VMware vSphere platformlarındaki şirket içi Citrix XenApp dağıtımlarınız için bir olağanüstü durum kurtarma çözümü oluşturmaya yönelik adım adım yönergeler sağlar. Bu belge Ayrıca, kurtarma planlarını, desteklenen yapılandırma ve önkoşulları kullanarak Azure 'a yük devretme testi (olağanüstü durum kurtarma detayları) ve planlanmamış yük devretme gerçekleştirmeyi açıklar.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakileri anladığınızdan emin olun:
 
-1. [Bir sanal makineyi Azure 'a çoğaltma](site-recovery-vmware-to-azure.md)
-1. [Kurtarma ağını tasarlama](site-recovery-network-design.md)
+1. [Bir sanal makineyi Azure 'a çoğaltma](./vmware-azure-tutorial.md)
+1. [Kurtarma ağını tasarlama](./concepts-on-premises-to-azure-networking.md)
 1. [Azure 'a yük devretme testi yapma](site-recovery-test-failover-to-azure.md)
 1. [Azure 'a yük devretme işlemi yapma](site-recovery-failover.md)
 1. [Bir etki alanı denetleyicisini çoğaltma](site-recovery-active-directory.md)
@@ -55,9 +56,9 @@ Bu makalenin amacı doğrultusunda, DR 'yi kurmak için vSphere 6,0/System Cente
 
 **Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Kapsamda değil | Evet
-**VMware** | Kapsamda değil | Evet
-**Fiziksel sunucu** | Kapsamda değil | Evet
+**Hyper-V** | Kapsamda değil | Yes
+**VMware** | Kapsamda değil | Yes
+**Fiziksel sunucu** | Kapsamda değil | Yes
 
 ### <a name="versions"></a>Sürümler
 Müşteriler, XenApp bileşenlerini Hyper-V veya VMware üzerinde çalışan sanal makineler olarak veya fiziksel sunucu olarak dağıtabilir. Azure Site Recovery, hem fiziksel hem de sanal dağıtımları Azure ile koruyabilir.
@@ -95,7 +96,7 @@ Lütfen Azure 'da bir etki alanı denetleyicisini çoğaltmak ve yapılandırmak
 
 Lütfen SQL Server korumasına yönelik önerilen seçeneklerle ilgili ayrıntılı teknik yönergeler için [SQL Server olağanüstü durum kurtarma ve Azure Site Recovery SQL Server koruyun '](site-recovery-sql.md) e bakın.
 
-Diğer bileşen sanal makinelerini Azure 'a Çoğaltmaya başlamak için [Bu yönergeleri](site-recovery-vmware-to-azure.md) izleyin.
+Diğer bileşen sanal makinelerini Azure 'a Çoğaltmaya başlamak için [Bu yönergeleri](./vmware-azure-tutorial.md) izleyin.
 
 ![XenApp bileşenlerinin korunması](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

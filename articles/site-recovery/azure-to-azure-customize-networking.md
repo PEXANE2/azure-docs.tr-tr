@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84236310"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135825"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
 
@@ -26,11 +27,11 @@ Site Recovery [Bu senaryo](azure-to-azure-architecture.md)için olağanüstü du
 
 Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel kaynak yapılandırmasını sağlayabilirsiniz:
 
-- [İç yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+- [İç yük dengeleyici](../load-balancer/load-balancer-overview.md)
 - [Genel IP](../virtual-network/public-ip-addresses.md)
-- Hem alt ağ hem de NIC için [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
+- Hem alt ağ hem de NIC için [ağ güvenlik grubu](../virtual-network/manage-network-security-group.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kurtarma tarafı yapılandırmalarının önceden planlantığınızdan emin olun.
 - Ağ kaynaklarını önceden oluşturun. Azure Site Recovery hizmetin bu ayarları kabul edebilmesi ve yük devretme VM 'sinin bu ayarlara uyduğundan emin olması için bunu bir giriş olarak sağlayın.

@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f41e1d8843783addf601becfda87607253e0a18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014528"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135903"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler DBMS dağıtımı SQL Server
 
@@ -458,7 +459,9 @@ Azure Marketi 'ndeki SQL Server görüntüleri, SAP NetWeaver uygulamaları içi
 
 İstenen sonuç şöyle görünmelidir:
 
-    Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```output
+Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```
 
 Sonuç farklıysa SAP dağıtımı durdurun ve kurulum komutunun neden beklendiği gibi çalışmadığına ilişkin araştırma yapın. Yukarıda bahsedilen farklı SQL Server codepages ile SQL Server örneğine SAP NetWeaver uygulamalarının **dağıtılması desteklenmez.**
 

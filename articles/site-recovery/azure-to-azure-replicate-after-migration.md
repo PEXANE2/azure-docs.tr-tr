@@ -8,16 +8,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74159121"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135667"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure'a geçişten sonra Azure VM'leri için olağanüstü durumdan kurtarmayı ayarlama 
 
 
-Şirket içi makineleri [Site Recovery](site-recovery-overview.md) hizmetini kullanarak [Azure VM 'lerine geçirdiyseniz](tutorial-migrate-on-premises-to-azure.md) ve artık ikincil bir Azure bölgesine olağanüstü durum kurtarma için ayarlanan VM 'leri almak istiyorsanız bu makaleyi izleyin. Makalede, Azure VM aracısının geçirilmiş VM 'lerde yüklü olduğundan ve geçişten sonra artık gerekmeyen Site Recovery Mobility hizmetini nasıl kaldırabileceği açıklanmaktadır.
+Şirket içi makineleri [Site Recovery](site-recovery-overview.md) hizmetini kullanarak [Azure VM 'lerine geçirdiyseniz](./migrate-tutorial-on-premises-azure.md) ve artık ikincil bir Azure bölgesine olağanüstü durum kurtarma için ayarlanan VM 'leri almak istiyorsanız bu makaleyi izleyin. Makalede, Azure VM aracısının geçirilmiş VM 'lerde yüklü olduğundan ve geçişten sonra artık gerekmeyen Site Recovery Mobility hizmetini nasıl kaldırabileceği açıklanmaktadır.
 
 
 
@@ -48,14 +49,14 @@ Aracının yüklenip yüklenmediğini denetlemek için:
 2. Dosyaya sağ tıklayın ve **Özellikler**' de **Ayrıntılar** sekmesini seçin.
 3. **Ürün sürümü** alanının 2.6.1198.718 veya üzeri olduğunu doğrulayın.
 
-Windows için aracı yüklemesi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) .
+Windows için aracı yüklemesi hakkında [daha fazla bilgi edinin](../virtual-machines/extensions/agent-windows.md) .
 
 ### <a name="install-the-agent-on-linux-vms"></a>Aracıyı Linux VM 'lerine yükler
 
 [Azure LINUX VM](../virtual-machines/extensions/agent-linux.md) aracısını aşağıdaki şekilde el ile yükleyebilirsiniz:
 
 1. Makinede yönetici izinlerinizin olduğundan emin olun.
-2. Kuruluşunuzun paket deposundan bir RPM veya bir DEB paketini kullanarak Linux VM aracısını yüklemenizi önemle öneririz. Tüm [onaylı dağıtım sağlayıcıları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin.
+2. Kuruluşunuzun paket deposundan bir RPM veya bir DEB paketini kullanarak Linux VM aracısını yüklemenizi önemle öneririz. Tüm [onaylı dağıtım sağlayıcıları](../virtual-machines/linux/endorsed-distros.md) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin.
     - Aracıyı yalnızca bir dağıtım deposu aracılığıyla güncelleştirmenizi önemle tavsiye ederiz.
     - Linux VM aracısının doğrudan GitHub 'dan yüklenmesini ve güncelleştirilmesini önermiyoruz.
     -  Dağıtım için en son aracı kullanılamıyorsa, nasıl yükleneceğine ilişkin yönergeler için dağıtım desteğiyle iletişim kurun. 

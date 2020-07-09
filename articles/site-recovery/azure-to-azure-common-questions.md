@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299791"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134047"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -88,7 +89,7 @@ Site Recovery, çoğaltılan bir VM 'den bir diskin "Hot Remove" öğesini deste
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Azure 'a ne sıklıkta çoğaltma yapabilirim?
 
-Azure VM 'lerini başka bir Azure bölgesine çoğaltdığınızda çoğaltma işlemi sürekli olur. Daha fazla bilgi için bkz. [Azure 'Dan Azure 'a çoğaltma mimarisi](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).
+Azure VM 'lerini başka bir Azure bölgesine çoğaltdığınızda çoğaltma işlemi sürekli olur. Daha fazla bilgi için bkz. [Azure 'Dan Azure 'a çoğaltma mimarisi](./azure-to-azure-architecture.md#replication-process).
 
 ### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>Bir bölgedeki sanal makineleri çoğaltabilir miyim? VM 'Leri geçirmek için bu işlevselliğe ihtiyacım var.
 
@@ -96,17 +97,17 @@ Bir bölgedeki VM 'Leri çoğaltmak için Azure 'dan Azure 'a disk kurtarma çö
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>Sanal makine örneklerini herhangi bir Azure bölgesine çoğaltabilir miyim?
 
-Site Recovery kullanarak, aynı coğrafi küme içindeki iki bölge arasında VM 'Leri çoğaltıp kurtarabilirsiniz. Coğrafi kümeler, veri gecikmesi ve sogemenlik göz önünde bulundurularak tanımlanmıştır. Daha fazla bilgi için Site Recovery [bölge desteği matrisine](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)bakın.
+Site Recovery kullanarak, aynı coğrafi küme içindeki iki bölge arasında VM 'Leri çoğaltıp kurtarabilirsiniz. Coğrafi kümeler, veri gecikmesi ve sogemenlik göz önünde bulundurularak tanımlanmıştır. Daha fazla bilgi için Site Recovery [bölge desteği matrisine](./azure-to-azure-support-matrix.md#region-support)bakın.
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Recovery internet bağlantısı gerektiriyor mu?
 
-Hayır, Site Recovery Internet bağlantısı gerektirmez. Ancak, [Azure VM olağanüstü durum kurtarma 'daki ağlarda](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)belirtildiği gibi Site Recovery URL 'ler ve IP aralıkları için erişim gerektirir.
+Hayır, Site Recovery Internet bağlantısı gerektirmez. Ancak, [Azure VM olağanüstü durum kurtarma 'daki ağlarda](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls)belirtildiği gibi Site Recovery URL 'ler ve IP aralıkları için erişim gerektirir.
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Ayrı katmanlar için ayrı bir kaynak grubuna sahip olan bir uygulamayı çoğaltabilir miyim?
 
 Evet, uygulamayı çoğaltabilir ve olağanüstü durum kurtarma yapılandırmasını aynı şekilde ayrı bir kaynak grubunda tutabilirsiniz.
 
-Örneğin, uygulamanız ayrı bir kaynak grubunda her bir katmanın uygulamasına, veritabanına ve Web 'e sahipse, tüm katmanları korumak için [Çoğaltma Sihirbazı 'nı](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) üç kez seçmeniz gerekir. Site Recovery, bu üç katmanı üç farklı kaynak grubuna çoğaltacaktır.
+Örneğin, uygulamanız ayrı bir kaynak grubunda her bir katmanın uygulamasına, veritabanına ve Web 'e sahipse, tüm katmanları korumak için [Çoğaltma Sihirbazı 'nı](./azure-to-azure-how-to-enable-replication.md#enable-replication) üç kez seçmeniz gerekir. Site Recovery, bu üç katmanı üç farklı kaynak grubuna çoğaltacaktır.
 
 ### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Depolama hesaplarını kaynak grupları arasında taşıyabilir miyim?
 
@@ -121,7 +122,7 @@ Hayır, bu desteklenmeyen bir senaryodur. Ancak, depolama hesaplarını yanlış
 - Kurtarma noktalarının bekletme geçmişi için 24 saat.
 - uygulamayla tutarlı anlık görüntülerin sıklığı için 60 dakika.
 
-[Çoğaltma ayarları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
+[Çoğaltma ayarları hakkında daha fazla bilgi edinin](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Kilitlenme ile tutarlı bir kurtarma noktası nedir?
 
@@ -182,7 +183,7 @@ Evet, bekletme süresini 24 saat ile 72 saate artırırsanız Site Recovery, kur
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux sunucularında uygulama tutarlılığı ile çoğaltmayı etkinleştirebilir miyim?
 
-Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve son seçenekleri olan özel betik, uygulama tutarlılığı sırasında Azure Site Recovery Mobility Aracısı tarafından kullanılır. [Daha fazla bilgi](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve son seçenekleri olan özel betik, uygulama tutarlılığı sırasında Azure Site Recovery Mobility Aracısı tarafından kullanılır. [Daha fazla bilgi edinin](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Çoklu VM tutarlılığı
 
@@ -194,7 +195,7 @@ Site Recovery, tüm makinelerin çoğaltma grubunu oluşturan **Çoklu VM tutarl
 
 Sanal makinelerin yükünü devretmek için, paylaşılan kilitlenme ile tutarlı ve uygulamayla tutarlı kurtarma noktalarına sahip olurlar.
 
-[Çoklu VM tutarlılığını etkinleştirmek](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)için Öğreticiye gidin.
+[Çoklu VM tutarlılığını etkinleştirmek](./azure-to-azure-tutorial-enable-replication.md#enable-replication-for-a-vm)için Öğreticiye gidin.
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Çoklu VM tutarlılığı çoğaltma grubundaki tek bir sanal makinenin yükünü devreder miyim?
 
@@ -290,11 +291,11 @@ Evet, Azure Otomasyonu runbook 'larını kurtarma planınızla tümleştirebilir
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Birincil bölgeden bir olağanüstü durum kurtarma bölgesine yük devretdim. Bir DR bölgesindeki VM 'Ler otomatik olarak korunuyor mu?
 
-Hayır. Azure VM 'lerinden bir bölgeden diğerine [Yük devretmek](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) Için sanal makineler, korumasız BIR durumdaki Dr bölgesinde başlatılır. VM 'Leri birincil bölgeye yeniden devretmek için ikincil bölgedeki VM 'Leri [yeniden korumanız](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) gerekir.
+Hayır. Azure VM 'lerinden bir bölgeden diğerine [Yük devretmek](./azure-to-azure-tutorial-failover-failback.md) Için sanal makineler, korumasız BIR durumdaki Dr bölgesinde başlatılır. VM 'Leri birincil bölgeye yeniden devretmek için ikincil bölgedeki VM 'Leri [yeniden korumanız](./azure-to-azure-how-to-reprotect.md) gerekir.
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>Yeniden koruma sırasında, tüm verileri ikincil bölgeden birincil bölgeye çoğaltarak Site Recovery.
 
-Duruma bağlıdır. Kaynak bölgesi VM 'si varsa, yalnızca kaynak disk ve hedef disk arasındaki değişiklikler eşitlenir. Site Recovery, diskleri karşılaştırarak farklıları hesaplar ve ardından verileri aktarır. Bu işlem genellikle birkaç saat sürer. Yeniden koruma sırasında ne olacağı hakkında daha fazla bilgi için bkz. [Azure VM örnekleri yük devretmesinin birincil bölgeye yeniden koruma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
+Duruma bağlıdır. Kaynak bölgesi VM 'si varsa, yalnızca kaynak disk ve hedef disk arasındaki değişiklikler eşitlenir. Site Recovery, diskleri karşılaştırarak farklıları hesaplar ve ardından verileri aktarır. Bu işlem genellikle birkaç saat sürer. Yeniden koruma sırasında ne olacağı hakkında daha fazla bilgi için bkz. [Azure VM örnekleri yük devretmesinin birincil bölgeye yeniden koruma](./azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Yeniden çalışma ne kadar zaman alır?
 
@@ -320,10 +321,10 @@ Site Recovery ISO 27001:2013, 27018, HIPAA ve DPA sertifikalı. Hizmet SOC2 ve F
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery çoğaltma işlemini şifreleyebilir mi?
 
-Evet, hem geçiş hem de [Azure 'da bekleyen şifreleme](https://docs.microsoft.com/azure/storage/storage-service-encryption) destekleniyor.
+Evet, hem geçiş hem de [Azure 'da bekleyen şifreleme](../storage/common/storage-service-encryption.md) destekleniyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'Dan Azure 'a destek gereksinimlerini gözden geçirin](azure-to-azure-support-matrix.md).
 - [Azure 'Dan Azure 'a çoğaltma ayarlayın](azure-to-azure-tutorial-enable-replication.md).
-- Bu makaleyi okuduktan sonra sorularınız varsa, [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)bu makaleye gönderin.
+- Bu makaleyi okuduktan sonra sorularınız varsa, [Azure kurtarma hizmetleri Için Microsoft Q&soru sayfasında](/answers/topics/azure-site-recovery.html)bu makaleye gönderin.

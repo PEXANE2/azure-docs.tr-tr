@@ -1,15 +1,14 @@
 ---
 title: Dosya ve klasörlerin yavaş yedeklenmesinde sorun giderme
 description: Azure Backup performans sorunlarının nedenini tanılamanıza yardımcı olması için sorun giderme kılavuzu sağlar
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d65eca685748499f52a990c7ac588bf44cbbba31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194034"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135047"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 
@@ -50,13 +49,13 @@ En iyi yedeklemeler için performans sorunlarını tanılamaya yardımcı olabil
 
 | Sayaç | Durum |
 | --- | --- |
-| Mantıksal disk (fiziksel disk)--% boşta |* %100 boşta = %50 boşta = sağlıklı</br>* %49 boşta = %20 boşta = uyarı ya da Izleyici</br>* %19 boşta %0 boşta = kritik veya spec dışı |
-| Mantıksal disk (fiziksel disk)--% ort. Disk sn okuma veya yazma |* 0,001 MS ile 0,015 MS = sağlıklı</br>* 0,015 MS ile 0,025 MS = uyarı veya Izleyici</br>* 0,026 MS veya daha uzun = kritik veya spec dışı |
+| Mantıksal disk (fiziksel disk)--% boşta |<li> %100 boşta = %50 boşta</br><li> %49 boşta = %20 boşta = uyarı ya da Izleyici</br><li> %19 boşta %0 boşta = kritik veya spec dışı |
+| Mantıksal disk (fiziksel disk)--% ort. Disk sn okuma veya yazma |<li> 0,001 MS-0,015 MS = sağlıklı</br><li> 0,015 MS-0,025 MS = uyarı veya Izleyici</br><li> 0,026 MS veya daha uzun = kritik veya spec dışı |
 | Mantıksal disk (fiziksel disk)--geçerli disk sırası uzunluğu (tüm örnekler için) |6 dakikadan uzun süre 80 istek |
-| Bellek--Sayfalamayan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı<br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
-| Bellek--havuzda disk belleğine alınan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı</br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
-| Bellek--kullanılabilir megabayt |* %50 boş bellek kullanılabilir veya daha fazla = sağlıklı</br>* boş belleğin %25 ' i kullanılabilir = Izleyici</br>* boş belleğin %10 ' ü kullanılabilir = uyarı</br>* 100 MB 'tan az veya kullanılabilir boş belleğin %5 ' inden az olması = kritik veya spec dışı |
-| İşlemci-- \% Işlemci zamanı (tüm örnekler) |* %60 daha az tüketilen = sağlıklı</br>* %61-90% tüketilen = Izleyici veya uyarı</br>* %91-100% tüketilen = kritik |
+| Bellek--Sayfalamayan baytlar |<li> Kullanılan havuzun %60 ' inden az olması = sağlıklı<br><li> %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br><li> %80 taneden fazla havuz kullanıldı = kritik veya spec dışı |
+| Bellek--havuzda disk belleğine alınan baytlar |<li> Kullanılan havuzun %60 ' inden az olması = sağlıklı</br><li> %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br><li> %80 taneden fazla havuz kullanıldı = kritik veya spec dışı |
+| Bellek--kullanılabilir megabayt |<li> kullanılabilir boş belleğin %50 ' ü veya daha Iyi = sağlıklı</br><li> kullanılabilir boş bellek = %25 = Izleyici</br><li>kullanılabilir boş belleğin %10 ' ü = uyarı</br><li> 100 MB veya boş belleğin %5 ' inden az kullanılabilir = kritik veya spec dışı |
+| İşlemci-- \% Işlemci zamanı (tüm örnekler) |<li> %60 daha az tüketilen = sağlıklı</br><li> %61 ile %90 arasında = Izleyici veya uyarı</br><li> %91-100% tüketilen = kritik |
 
 > [!NOTE]
 > Altyapının külün olduğunu belirlerseniz, daha iyi performans için diskleri düzenli olarak birleştirmeniz önerilir.

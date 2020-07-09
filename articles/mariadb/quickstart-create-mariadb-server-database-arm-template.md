@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fd560658a20a5b58d582332a88bf031d0e56ac91
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323612"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134112"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak MariaDB sunucusu için Azure veritabanı oluşturma
 
-MariaDB için Azure veritabanı, bulutta yüksek oranda kullanılabilir MariaDB veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız bir yönetilen hizmettir. Bu hızlı başlangıçta, Azure portal, PowerShell veya Azure CLı 'de MariaDB sunucusu için Azure veritabanı oluşturmak üzere bir ARM şablonu kullanırsınız.
+MariaDB için Azure veritabanı, bulutta yüksek oranda kullanılabilir MariaDB veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız bir yönetilen hizmettir. Bu hızlı başlangıçta, Azure portal, PowerShell veya Azure CLı 'da MariaDB sunucusu için Azure veritabanı oluşturmak üzere bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -38,11 +42,9 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https:/
 
 ---
 
-## <a name="create-an-azure-database-for-mariadb-server"></a>MariaDB için Azure Veritabanı sunucusu oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Tanımlı bir dizi işlem ve depolama kaynağı ile MariaDB için Azure Veritabanı sunucusu oluşturulur. Daha fazla bilgi edinmek için bkz. [MariaDB Için Azure veritabanı fiyatlandırma katmanları](concepts-pricing-tiers.md). Sunucu, [Azure kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur.
-
-### <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/).
 
@@ -58,7 +60,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 MariaDB şablon örnekleri için daha fazla Azure veritabanı, [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular)bulunabilir.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -207,7 +209,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
+ARM şablonu oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
 
 > [!div class="nextstepaction"]
-> [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

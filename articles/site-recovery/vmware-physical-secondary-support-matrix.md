@@ -8,11 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711893"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135137"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM 'Leri ve fiziksel sunucuları ikincil bir siteye olağanüstü durum kurtarması için destek matrisi
 
@@ -67,14 +68,14 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 
 **Yapılandırma** | **Destek**  
 --- | --- 
-Konak-NIC Grubu oluşturma | Evet 
-Konak-VLAN | Evet 
-Ana bilgisayar-IPv4 | Evet 
-Ana bilgisayar-IPv6 | Hayır 
-Konuk VM-NIC ekibi oluşturma | Hayır
-Konuk VM-IPv4 | Evet
-Konuk VM-IPv6 | Hayır
-Konuk VM-Windows/Linux-statik IP adresi | Evet
+Konak-NIC Grubu oluşturma | Yes 
+Konak-VLAN | Yes 
+Ana bilgisayar-IPv4 | Yes 
+Ana bilgisayar-IPv6 | No 
+Konuk VM-NIC ekibi oluşturma | No
+Konuk VM-IPv4 | Yes
+Konuk VM-IPv6 | No
+Konuk VM-Windows/Linux-statik IP adresi | Yes
 Konuk VM-çoklu NIC | Yes
 
 
@@ -84,37 +85,37 @@ Konuk VM-çoklu NIC | Yes
 
 **Depolama (ana bilgisayar)** | **Destek** 
 --- | --- 
-NFS | Evet 
+NFS | Yes 
 SMB 3.0 | YOK 
-SAN (ISCSı) | Evet 
-Çoklu yol (MPIO) | Evet 
+SAN (ISCSı) | Yes 
+Çoklu yol (MPIO) | Yes 
 
 ### <a name="guest-or-physical-server-storage"></a>Konuk veya fiziksel sunucu depolaması
 
 **Yapılandırma** | **Destek** 
 --- | --- 
-VMDK | Evet 
+VMDK | Yes 
 VHD/VHDX | YOK 
 Gen 2 VM | YOK 
-Paylaşılan küme diski | Evet 
-Şifrelenmiş disk | Hayır 
-UEFı| Evet 
-NFS | Hayır 
-SMB 3.0 | Hayır 
-RDM | Evet 
-Disk > 1 TB | Evet 
-Dizili disk > 1 TB olan birim<br/><br/> LVM | Evet 
-Depolama Alanları | Hayır 
-Dinamik disk Ekle/Kaldır | Evet 
-Diski hariç tutma | Evet 
+Paylaşılan küme diski | Yes 
+Şifrelenmiş disk | No 
+UEFı| Yes 
+NFS | No 
+SMB 3.0 | No 
+RDM | Yes 
+Disk > 1 TB | Yes 
+Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes 
+Depolama Alanları | No 
+Dinamik disk Ekle/Kaldır | Yes 
+Diski hariç tutma | Yes 
 Çoklu yol (MPIO) | YOK 
 
 ## <a name="vaults"></a>Kasalar
 
 **Eylem** | **Destek** 
 --- | --- 
-Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | Hayır 
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | Hayır 
+Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | No 
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | No 
 
 ## <a name="mobility-service-and-updates"></a>Mobility hizmeti ve güncelleştirmeleri
 
@@ -130,5 +131,5 @@ Mobility hizmeti, şirket içi VMware sunucuları veya fiziksel sunucular ile ik
 
 [InMage Scout Kullanıcı kılavuzunu](https://aka.ms/asr-scout-user-guide) indirin
 
-- [VMM bulutlarındaki Hyper-V VM 'lerini ikincil bir siteye çoğaltma](tutorial-vmm-to-vmm.md)
-- [VMware VM’lerini ve fiziksel sunucuları ikincil bir siteye çoğaltma](tutorial-vmware-to-vmware.md)
+- [VMM bulutlarındaki Hyper-V VM 'lerini ikincil bir siteye çoğaltma](./hyper-v-vmm-disaster-recovery.md)
+- [VMware VM’lerini ve fiziksel sunucuları ikincil bir siteye çoğaltma](./vmware-physical-secondary-disaster-recovery.md)

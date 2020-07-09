@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebd20b6187fd4f04ac525e0152d805d9d81de3ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066707"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134594"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure için bir de, VHD 'YI hazırlama
 ## <a name="prerequisites"></a>Önkoşullar
@@ -27,16 +27,18 @@ Bu bölümde, [de, Web sitesinden](https://www.debian.org/distrib/) bir sanal sa
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage kullanarak detem VHD 'leri oluşturun
 Azure için Azure-Manage betikleri, [Credadtiv](https://www.credativ.com/)içindeki [Azure-Manage](https://github.com/credativ/azure-manage) betikleri gibi araçlar oluşturmaya yönelik araçlar mevcuttur. Bu, sıfırdan bir görüntü oluşturulmasına karşı önerilen yaklaşımdır. Örneğin, bir debir 8 VHD oluşturmak için, `azure-manage` yardımcı programı (ve bağımlılıkları) indirmek ve betiği çalıştırmak için aşağıdaki komutları çalıştırın `azure_build_image` :
 
-    # sudo apt-get update
-    # sudo apt-get install git qemu-utils mbr kpartx debootstrap
+```console
+# sudo apt-get update
+# sudo apt-get install git qemu-utils mbr kpartx debootstrap
 
-    # sudo apt-get install python3-pip python3-dateutil python3-cryptography
-    # sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
-    # git clone https://github.com/credativ/azure-manage.git
-    # cd azure-manage
-    # sudo pip3 install .
+# sudo apt-get install python3-pip python3-dateutil python3-cryptography
+# sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
+# git clone https://github.com/credativ/azure-manage.git
+# cd azure-manage
+# sudo pip3 install .
 
-    # sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+# sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+```
 
 
 ## <a name="manually-prepare-a-debian-vhd"></a>Bir deni VHD 'YI el ile hazırlama
@@ -45,56 +47,70 @@ Azure için Azure-Manage betikleri, [Credadtiv](https://www.credativ.com/)içind
 3. İşletim sistemini bir ISO kullanarak yüklediyseniz içindeki "" ile ilgili herhangi bir satırı açıklama olarak yapın `deb cdrom` `/etc/apt/source.list` .
 
 4. Dosyayı düzenleyin `/etc/default/grub` ve Azure için ek çekirdek parametrelerini dahil etmek üzere **GRUB_CMDLINE_LINUX** parametresini aşağıdaki şekilde değiştirin.
-   
-        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+    ```
 
 5. Grub 'yi yeniden oluşturun ve çalıştırın:
 
-        # sudo update-grub
+    ```console
+    # sudo update-grub
+    ```
 
 6. De, 8 veya 9 ' un Azure depolarını/etc/apt/sources.exe listesine ekleyin:
 
     **Desek8. x "Jese"**
 
-        deb http://debian-archive.trafficmanager.net/debian jessie main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie main
-        deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
-        deb http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb http://debian-archive.trafficmanager.net/debian jessie-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian jessie main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie main
+    deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
+    deb http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb http://debian-archive.trafficmanager.net/debian jessie-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```
 
     **9. x "uzat"**
 
-        deb http://debian-archive.trafficmanager.net/debian stretch main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch main
-        deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian stretch main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch main
+    deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```
 
 
 7. Azure Linux aracısını yükler:
-   
-        # sudo apt-get update
-        # sudo apt-get install waagent
+
+    ```console
+    # sudo apt-get update
+    # sudo apt-get install waagent
+    ```
 
 8. Deler 9 + için, Azure 'da VM 'lerle kullanılmak üzere yeni de, bulut çekirdeğini kullanmanız önerilir. Bu yeni çekirdeği yüklemek için ilk olarak/etc/apt/Preferences.exe \ \ Linux.exe ' adlı bir dosyayı aşağıdaki içeriklerle oluşturun:
-   
-        Package: linux-* initramfs-tools
-        Pin: release n=stretch-backports
-        Pin-Priority: 500
-   
+
+    ```config-pref
+    Package: linux-* initramfs-tools
+    Pin: release n=stretch-backports
+    Pin-Priority: 500
+    ```
+
     Ardından, yeni detem bulut çekirdeğini yüklemek için "sudo apt-get Install Linux-Image-Cloud-amd64" öğesini çalıştırın.
 
 9. Sanal makinenin sağlamasını kaldırır ve Azure 'da sağlama için hazırlayın ve şunu çalıştırın:
-   
-        # sudo waagent –force -deprovision
-        # export HISTSIZE=0
-        # logout
+
+    ```console
+    # sudo waagent –force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
 
 10. Hyper-V Yöneticisi 'nde **eylem** -> Kapat ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 

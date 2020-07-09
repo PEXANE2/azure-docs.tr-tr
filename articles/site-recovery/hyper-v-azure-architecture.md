@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74082660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134926"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V'den Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -66,14 +67,14 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM bulutlarında yönetilmiyor
 ### <a name="enable-protection"></a>Korumayı etkinleştir
 
 1. Azure portalında veya şirket içinde bir Hyper-V VM’si için koruma etkinleştirdikten sonra, **Korumayı etkinleştir** başlatılır.
-2. İş, makinenin önkoşullarla uyumlu olup olmadığını denetler, ardından, çoğaltmayı daha önce yapılandırdığınız ayarları uygulamak üzere [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) çağırır.
-3. İş, tam bir VM çoğaltması başlatmak için [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) yöntemini çağırarak ilk çoğaltmayı başlatır ve VM’lerin sanal disklerini Azure’a gönderir.
+2. İş, makinenin önkoşullarla uyumlu olup olmadığını denetler, ardından, çoğaltmayı daha önce yapılandırdığınız ayarları uygulamak üzere [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) çağırır.
+3. İş, tam bir VM çoğaltması başlatmak için [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) yöntemini çağırarak ilk çoğaltmayı başlatır ve VM’lerin sanal disklerini Azure’a gönderir.
 4. İşi **işler** sekmesinde izleyebilirsiniz.      ![İşler listesi ](media/hyper-v-azure-architecture/image1.png) ![ Korumayı etkinleştirme detaya gitme](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>İlk veri çoğaltma
 
-1. İlk çoğaltma tetiklendiğinde, bir [Hyper-V VM anlık](https://technet.microsoft.com/library/dd560637.aspx) görüntüsü alınır.
+1. İlk çoğaltma tetiklendiğinde, bir [Hyper-V VM anlık](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) görüntüsü alınır.
 2. VM 'deki sanal sabit diskler, hepsi Azure 'a kopyalanana kadar tek tek çoğaltılır. Bu işlem, VM boyutuna ve ağ bant genişliğine bağlı olarak biraz zaman alabilir. Ağ bant genişliğini artırma [hakkında bilgi edinin](https://support.microsoft.com/kb/3056159) .
 3. İlk çoğaltma devam ederken disk değişiklikleri oluşursa, Hyper-V çoğaltma çoğaltma Izleyicisi değişiklikleri Hyper-V çoğaltma günlükleri (. HRL) olarak izler. Bu günlük dosyaları, disklerle aynı klasörde bulunur. Her diskin, ikincil depolamaya gönderilen ilişkili bir. HRL dosyası vardır. İlk çoğaltma sırasında anlık görüntü ve günlük dosyaları disk kaynaklarını kullanır.
 4. İlk çoğaltma tamamlandığında, VM anlık görüntüsü silinir.

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: b8b874888d3a46a855c3d76d520d390725c40898
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: fc22dea201ccd19c4e7bee92a1092b4ff50117db
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735411"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134939"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Gerçek zamanlı konuşma dökümü (Önizleme)
 
-Konuşma **SDK 'sı konuşma API 'si** , veya `PullStream` `PushStream`kullanarak konuşma hizmetine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve tanıma olanağı sunarak toplantılar ve diğer konuşmalar oluşturmanızı sağlar. Bu konu, konuşma SDK 'Sı (sürüm 1.8.0 veya üzeri) ile konuşmayı metne nasıl kullanacağınızı bilmeniz gerekir. Daha fazla bilgi için bkz. [konuşma Hizmetleri nedir?](overview.md)
+Konuşma **SDK 'sı konuşma API 'si** , veya kullanarak konuşma hizmetine ses akışı yaparak, birden fazla katılımcı ekleme, kaldırma ve tanıma olanağı sunarak toplantılar ve diğer konuşmalar oluşturmanızı sağlar `PullStream` `PushStream` . Bu konu, konuşma SDK 'Sı (sürüm 1.8.0 veya üzeri) ile konuşmayı metne nasıl kullanacağınızı bilmeniz gerekir. Daha fazla bilgi için bkz. [konuşma Hizmetleri nedir?](overview.md)
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -35,7 +35,7 @@ Konuşma cihaz SDK 'Sı, 8 kanal kullanan gerçek zamanlı ses yakalama için Ja
 - [ROOBO cihazı örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
 - [Azure Kinect Dev Kit örnek kodu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir konuşma hizmeti aboneliği. Bir [konuşma deneme aboneliği yoksa bir konuşma deneme aboneliği edinebilirsiniz](https://azure.microsoft.com/try/cognitive-services/) .
 
@@ -108,8 +108,8 @@ Aşağıdaki örnek kod, üç hoparlör için konuşmaları gerçek zamanlı ola
 
 Örnek kod vurguları şunlardır:
 
-- Kullanılarak oluşturulan `Conversation` bir toplantı tanımlayıcısı `SpeechConfig` kullanarak nesneden nesne oluşturma`Guid.NewGuid()`
-- Bir `ConversationTranscriber` nesne oluşturma ve konuşmaya başlamak için ile `JoinConversationAsync()` konuşmayı birleştirin
+- `Conversation` `SpeechConfig` Kullanılarak oluşturulan bir toplantı tanımlayıcısı kullanarak nesneden nesne oluşturma`Guid.NewGuid()`
+- Bir `ConversationTranscriber` nesne oluşturma ve konuşmaya başlamak için ile konuşmayı birleştirin `JoinConversationAsync()`
 - İlgilendiğiniz olayları kaydetme
 - Konuşma nesnesini kullanarak konuşmaya katılımcı ekleme veya konuşmayı kaldırma
 - Ses akışı
@@ -140,7 +140,7 @@ public class MyConversationTranscriber
             using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
             {
                 // Create a conversation transcriber using audio stream input
-                using (var conversationTranscriber = new ConversationTranscriber    (audioInput))
+                using (var conversationTranscriber = new ConversationTranscriber(audioInput))
                 {
                     await conversationTranscriber.JoinConversationAsync(conversation);
 

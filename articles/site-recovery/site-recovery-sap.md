@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190789"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133705"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Çok katmanlı SAP NetWeaver uygulama dağıtımı için olağanüstü durum kurtarmayı ayarlama
 
@@ -23,13 +24,13 @@ Site Recovery, şunları yapabilirsiniz:
 
 [Azure Site Recovery](site-recovery-overview.md)kullanarak SAP NetWeaver uygulama dağıtımlarını koruyabilirsiniz. Bu makalede, Site Recovery kullanarak başka bir Azure veri merkezine çoğalttığınızda Azure 'da üç katmanlı SAP NetWeaver dağıtımını korumaya yönelik en iyi uygulamalar ele alınmaktadır. Makalesinde desteklenen senaryolar ve Konfigürasyonlar ve yük devretme testi (olağanüstü durum kurtarma detayları) ve gerçek yük devretme işlemleri açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki görevleri nasıl yapabileceğinizi öğrendiğinizden emin olun:
 
-* [Bir sanal makineyi Azure 'a çoğaltma](azure-to-azure-walkthrough-enable-replication.md)
-* [Kurtarma ağını tasarlama](site-recovery-azure-to-azure-networking-guidance.md)
-* [Azure 'a yük devretme testi yapın](azure-to-azure-walkthrough-test-failover.md)
+* [Bir sanal makineyi Azure 'a çoğaltma](./azure-to-azure-tutorial-enable-replication.md)
+* [Kurtarma ağını tasarlama](./azure-to-azure-about-networking.md)
+* [Azure 'a yük devretme testi yapın](./azure-to-azure-tutorial-dr-drill.md)
 * [Azure 'a yük devretme](site-recovery-failover.md)
 * [Bir etki alanı denetleyicisini çoğaltma](site-recovery-active-directory.md)
 * [SQL Server örneğini çoğaltma](site-recovery-sql.md)
@@ -110,7 +111,7 @@ Bu örnekte kullanılan her bir katmanın olağanüstü durum kurtarma önerisi 
 
 ## <a name="replicate-virtual-machines"></a>Sanal makineleri çoğaltma
 
-Tüm SAP uygulaması sanal makinelerini Azure olağanüstü durum kurtarma veri merkezine Çoğaltmaya başlamak için, [bir sanal makineyi Azure 'A çoğaltma](azure-to-azure-walkthrough-enable-replication.md)' daki yönergeleri izleyin.
+Tüm SAP uygulaması sanal makinelerini Azure olağanüstü durum kurtarma veri merkezine Çoğaltmaya başlamak için, [bir sanal makineyi Azure 'A çoğaltma](./azure-to-azure-tutorial-enable-replication.md)' daki yönergeleri izleyin.
 
 * Active Directory ve DNS 'yi koruma hakkında yönergeler için [Active Directory ve DNS 'yi nasıl koruyacağınızı](site-recovery-active-directory.md)öğrenin.
 

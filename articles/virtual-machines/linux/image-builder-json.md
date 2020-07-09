@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263322"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135079"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -391,7 +391,8 @@ Dosya Özelleştirici içindeki dosyalar, [MSI](https://github.com/danielsollond
 
 ### <a name="windows-update-customizer"></a>Windows Update Özelleştirici
 Bu Özelleştirici, Packer topluluğu tarafından tutulan açık kaynaklı bir proje olan Packer için [topluluk Windows Update hazırlayıcı](https://packer.io/docs/provisioners/community-supported.html) üzerine kurulmuştur. Microsoft, görüntü Oluşturucu hizmeti ile birlikte hizmeti sınar ve doğrular ve bunlarla ilgili sorunları araştırarak sorunları gidermeye çalışır, ancak açık kaynak proje Microsoft tarafından resmi olarak desteklenmez. Hakkında ayrıntılı belgeler ve Windows Update hazırlayıcı ile ilgili yardım için lütfen proje deposuna bakın.
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ Bu Özelleştirici, Packer topluluğu tarafından tutulan açık kaynaklı bir p
                 "updateLimit": 20
             }
                ], 
-İşletim sistemi desteği: Windows
+OS support: Windows
+```
 
 Özellikleri Özelleştir:
 - **şunu yazın** : windowsupdate.

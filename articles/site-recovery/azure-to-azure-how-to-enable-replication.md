@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851180"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135766"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine çoğaltma
 
@@ -50,7 +50,7 @@ Bu makalede, [Azure 'Dan Azure 'a olağanüstü durum kurtarma öğreticisinde](
        - Site Recovery tarafından oluşturulan kaynak grubu zaten varsa, yeniden kullanılır.
        - Kaynak grubu ayarlarını özelleştirebilirsiniz.
        - Kaynak VM 'Lerin barındırıldığı bölge dışında, hedef kaynak grubunun konumu herhangi bir Azure bölgesi olabilir.
-   - **Hedef sanal ağ**: Site Recovery, varsayılan olarak hedef bölgede, adında bir "ASR" sonekiyle yeni bir sanal ağ oluşturur. Bu, kaynak ağınıza eşlenir ve gelecekteki koruma için kullanılır. Ağ eşlemesi hakkında [daha fazla bilgi edinin](site-recovery-network-mapping-azure-to-azure.md) .
+   - **Hedef sanal ağ**: Site Recovery, varsayılan olarak hedef bölgede, adında bir "ASR" sonekiyle yeni bir sanal ağ oluşturur. Bu, kaynak ağınıza eşlenir ve gelecekteki koruma için kullanılır. Ağ eşlemesi hakkında [daha fazla bilgi edinin](./azure-to-azure-network-mapping.md) .
    - **Hedef depolama hesapları (kaynak VM yönetilen diskleri kullanmıyor)**: varsayılan olarak Site Recovery, kaynak VM depolama yapılandırmanızı inceleyerek yeni bir hedef depolama hesabı oluşturur. Depolama hesabı zaten mevcut olduğunda, yeniden kullanılır.
    - **Çoğaltma ile yönetilen diskler (kaynak sanal makine yönetilen diskleri kullanır)**: Site Recovery kaynak VM 'nin yönetilen diskiyle aynı depolama türüyle (Standart veya Premium) kaynak sanal makinenin yönetilen disklerini yansıtmak için hedef bölgede yeni bir çoğaltma tarafından yönetilen diskler oluşturur.
    - **Önbellek depolama hesapları**: Site Recovery, kaynak bölgede önbellek depolaması adlı ek depolama hesabı gerektirir. Kaynak VM 'lerde oluşan tüm değişiklikler, hedef konuma çoğaltılmadan önce izlenir ve önbellek depolama hesabına gönderilir. Bu depolama hesabı standart olmalıdır.

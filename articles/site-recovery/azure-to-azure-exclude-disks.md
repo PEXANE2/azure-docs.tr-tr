@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
-ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135815"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Azure VM 'lerinin PowerShell çoğaltmasıyla diskleri dışlama
 
@@ -18,20 +19,20 @@ Bu makalede, Azure sanal makinelerini çoğalttığınızda disklerin nasıl har
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
 - [Olağanüstü durum kurtarma mimarisini ve bileşenlerini](azure-to-azure-architecture.md)anladığınızdan emin olun.
 - Tüm bileşenler için [destek gereksinimlerini](azure-to-azure-support-matrix.md) gözden geçirin.
-- Azurerd PowerShell "az" modülüne sahip olduğunuzdan emin olun. PowerShell 'i yüklemek veya güncelleştirmek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Azurerd PowerShell "az" modülüne sahip olduğunuzdan emin olun. PowerShell 'i yüklemek veya güncelleştirmek için bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps).
 - Bir kurtarma hizmetleri kasası ve korunan sanal makineleri en az bir kez oluşturmuş olduğunuzdan emin olun. Bu işlemleri yapmadıysanız, [Azure PowerShell kullanarak Azure sanal makineleri için olağanüstü durum kurtarmayı ayarlama](azure-to-azure-powershell.md)sürecini izleyin.
 - Çoğaltma için etkin bir Azure VM 'ye disk ekleme hakkında bilgi arıyorsanız, [Bu makaleyi gözden geçirin](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Disklerin neden çoğaltmanın dışında tutulması
 Diskleri çoğaltmanın dışında bırakmanız gerekebilir çünkü:
 
-- Sanal makineniz [veri değişikliği hızlarını çoğaltmak için sınırlara Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)ulaştı.
+- Sanal makineniz [veri değişikliği hızlarını çoğaltmak için sınırlara Azure Site Recovery](./azure-to-azure-support-matrix.md)ulaştı.
 
 - Dışlanan diske eklenen veriler önemli değildir veya çoğaltılmaması gerekmez.
 

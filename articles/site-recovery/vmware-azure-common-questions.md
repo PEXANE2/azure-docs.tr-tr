@@ -3,11 +3,12 @@ title: Azure Site Recovery ile VMware olağanüstü durum kurtarma hakkında sı
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259519"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135158"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
@@ -121,7 +122,7 @@ Yeni VM 'lerin bir depolama hesabına çoğaltılması yalnızca PowerShell veya
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Bir makine korunduktan sonra yönetilen disk türünü değiştirebilir miyim?
 
-Evet, devam eden çoğaltmalar için [yönetilen disk türünü kolayca değiştirebilirsiniz](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) . Türü değiştirmeden önce, yönetilen diskte hiçbir paylaşılan erişim imzası URL 'SI üretilmediğinden emin olun:
+Evet, devam eden çoğaltmalar için [yönetilen disk türünü kolayca değiştirebilirsiniz](../virtual-machines/windows/convert-disk-storage.md) . Türü değiştirmeden önce, yönetilen diskte hiçbir paylaşılan erişim imzası URL 'SI üretilmediğinden emin olun:
 
 1. Azure portal **yönetilen disk** kaynağına gidin ve **genel bakış** dikey penceresinde bir paylaşılan erişim imzası URL 'si başlığını içerip içermediğini kontrol edin.
 1. Başlık mevcutsa, devam eden dışarı aktarma işlemini iptal etmek için bunu seçin.

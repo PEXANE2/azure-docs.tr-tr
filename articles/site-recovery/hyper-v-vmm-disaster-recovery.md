@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437501"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134008"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V VM'leri için ikincil bir şirket içi siteye olağanüstü durum kurtarma ayarlama
 
@@ -48,10 +48,10 @@ Bu senaryoyu tamamlamak için:
 
 VMM'yi şu şekilde hazırlayın:
 
-1. Kaynak ve hedef VMM sunucularında [VMM mantıksal ağları](https://docs.microsoft.com/system-center/vmm/network-logical) bulunduğundan emin olun.
+1. Kaynak ve hedef VMM sunucularında [VMM mantıksal ağları](/system-center/vmm/network-logical) bulunduğundan emin olun.
     - Kaynak sunucusundaki mantıksal ağ, Hyper-V konaklarının bulunduğu kaynak bulutla ilişkilendirilmelidir.
     - Hedef sunucudaki mantıksal ağ, hedef bulutla ilişkilendirilmelidir.
-1. Kaynak ve hedef VMM sunucularında [VM ağları](https://docs.microsoft.com/system-center/vmm/network-virtual) bulunduğundan emin olun. VM ağları, her bir konumdaki mantıksal ağa bağlanmış olmalıdır.
+1. Kaynak ve hedef VMM sunucularında [VM ağları](/system-center/vmm/network-virtual) bulunduğundan emin olun. VM ağları, her bir konumdaki mantıksal ağa bağlanmış olmalıdır.
 2. Kaynak Hyper-V konaklarındaki VM'leri kaynak VM ağına bağlayın. 
 
 

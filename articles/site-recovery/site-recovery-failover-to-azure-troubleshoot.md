@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971088"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133771"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM veya fiziksel makinenin Azure 'a yük devretmesinde oluşan hata sorunlarını giderme
 
@@ -90,7 +90,7 @@ Azure 'daki yük devredilen VM 'deki **Bağlan** düğmesi gri Ise ve Azure 'A b
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Bağlantı kurulamıyor/RDP/SSH-VM Connect düğmesi kullanılabilir
 
-Azure 'daki yük devredilen VM üzerindeki **Bağlan** düğmesi kullanılabiliyorsa (gri değil), sanal makinenizde **önyükleme tanılamayı** denetleyin ve [Bu makalede](../virtual-machines/windows/boot-diagnostics.md)listelenen hataları denetleyin.
+Azure 'daki yük devredilen VM üzerindeki **Bağlan** düğmesi kullanılabiliyorsa (gri değil), sanal makinenizde **önyükleme tanılamayı** denetleyin ve [Bu makalede](../virtual-machines/troubleshooting/boot-diagnostics.md)listelenen hataları denetleyin.
 
 1. Sanal makine başlatılmamışsa, daha eski bir kurtarma noktasına yük devretmeyi deneyin.
 2. Sanal makinenin içindeki uygulama yoksa uygulamayla tutarlı bir kurtarma noktasına yük devretmeyi deneyin.
@@ -174,7 +174,7 @@ Bu sorunu çözmek için:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [WINDOWS VM Ile RDP bağlantısı](../virtual-machines/windows/troubleshoot-rdp-connection.md) sorunlarını giderme
-- [LINUX VM 'ye SSH bağlantısı](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) sorunlarını giderme
+- [WINDOWS VM Ile RDP bağlantısı](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) sorunlarını giderme
+- [LINUX VM 'ye SSH bağlantısı](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) sorunlarını giderme
 
-Daha fazla yardıma ihtiyacınız varsa sorgunuzu [Microsoft Q&soru sayfasında Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) gönderin veya bu belgenin sonunda bir yorum bırakın. Size yardımcı olabilmemiz gereken etkin bir topluluk var.
+Daha fazla yardıma ihtiyacınız varsa sorgunuzu [Microsoft Q&soru sayfasında Site Recovery](/answers/topics/azure-site-recovery.html) gönderin veya bu belgenin sonunda bir yorum bırakın. Size yardımcı olabilmemiz gereken etkin bir topluluk var.

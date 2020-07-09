@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417863"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133803"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Dağıtım Planlayıcısı sürümü geçmişi
 
@@ -168,7 +169,7 @@ Bu makalede, tüm Azure Site Recovery Dağıtım Planlayıcısı sürümlerinin 
 
 **Bilinen sınırlamalar:**
 
-- Yalnızca VMware 'den Azure 'a olağanüstü durum kurtarma senaryolarını destekler. Hyper-V ile Azure olağanüstü durum kurtarma senaryoları için, [Hyper-v kapasite planlayıcısı aracını](./site-recovery-capacity-planning-for-hyper-v-replication.md)kullanın.
+- Yalnızca VMware 'den Azure 'a olağanüstü durum kurtarma senaryolarını destekler. Hyper-V ile Azure olağanüstü durum kurtarma senaryoları için, [Hyper-v kapasite planlayıcısı aracını](./hyper-v-deployment-planner-overview.md)kullanın.
 - ABD devlet ve Çin Microsoft Azure bölgeleri için Getüretilen Iş işlemini desteklemez.
 - VCenter Server, çeşitli ESXi konakları arasında aynı ada veya IP adresine sahip iki veya daha fazla sanal makineye sahipse araç, VM 'Leri profilgiden kaldırılmıştır.
 Bu sürümde, araç VMListFile dosyasındaki yinelenen sanal makine adları veya IP adresleri için profil oluşturmayı atlar. Bunun geçici çözümü, sanal makine profillerinin vCenter sunucusu yerine bir ESXi ana bilgisayarı kullanılarak oluşturulmasıdır. Her ESXi konağı için bir örnek çalıştırmanın emin olun.

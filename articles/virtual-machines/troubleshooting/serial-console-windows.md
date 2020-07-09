@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309790"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135254"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows için Azure seri konsol
 
@@ -31,7 +32,7 @@ Linux için seri konsol belgeleri için bkz. [Linux Için Azure seri konsolu](se
 > Seri konsol Genel Azure bölgelerinde ve Azure Kamu 'da genel önizlemede kullanılabilir. Henüz Azure Çin bulutu 'nda mevcut değildir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 
@@ -101,15 +102,15 @@ Windows önyükleme yükleyicisi komut istemlerini seri konsolunda görüntülem
 
     ![SAC 'ye bağlanma](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    `cmd`Cmd örneği olan bir kanal oluşturmak için girin.
+1. `cmd`Cmd örneği olan bir kanal oluşturmak için girin.
 
-1.    `ch -si 1` `<esc>+<tab>` Cmd örneğini çalıştıran kanala geçiş yapmak için kısayol tuşlarını girin veya basın.
+1. `ch -si 1` `<esc>+<tab>` Cmd örneğini çalıştıran kanala geçiş yapmak için kısayol tuşlarını girin veya basın.
 
-1.    **ENTER**tuşuna basın ve ardından Yönetici izinleriyle oturum açma kimlik bilgilerini girin.
+1. **ENTER**tuşuna basın ve ardından Yönetici izinleriyle oturum açma kimlik bilgilerini girin.
 
-1.    Geçerli kimlik bilgilerini girdikten sonra CMD örneği açılır.
+1. Geçerli kimlik bilgilerini girdikten sonra CMD örneği açılır.
 
-1.    Bir PowerShell örneği başlatmak için `PowerShell` cmd örneğine girin ve ardından **ENTER**tuşuna basın.
+1. Bir PowerShell örneği başlatmak için `PowerShell` cmd örneğine girin ve ardından **ENTER**tuşuna basın.
 
     ![PowerShell örneğini aç](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

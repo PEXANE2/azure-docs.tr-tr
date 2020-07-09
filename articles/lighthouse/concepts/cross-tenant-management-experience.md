@@ -3,15 +3,16 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920599"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135480"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
-Hizmet sağlayıcısı olarak, Azure kaynaklarını, [Azure Portal](https://portal.azure.com)kendi kiracınızda birden fazla müşterinin Azure kaynaklarını [yönetmek için kullanabilirsiniz](../concepts/azure-delegated-resource-management.md) . Birçok görev ve hizmet yönetilen kiracılar genelinde Azure kaynakları için kullanılabilir. Bu makalede, Azure tarafından yetkilendirilen Kaynak yönetiminin etkili olduğu bazı gelişmiş senaryolar açıklanmaktadır.
+Bir hizmet sağlayıcısı olarak, [Azure Mathouse](../overview.md) ' ı kullanarak birden çok müşteriye ait kaynakları, [Azure Portal](https://portal.azure.com)kendi kiracınızın içinden yönetebilirsiniz. [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)kullanılarak yönetilen kiracılar genelinde Azure kaynakları için birçok görev ve hizmet gerçekleştirilebilir.
 
 > [!NOTE]
 > Azure Temsilcili kaynak yönetimi, platformlar arası yönetimi basitleştirmek için [birden çok Azure AD kiracısına sahip bir kuruluşta](enterprise.md) de kullanılabilir.
@@ -22,9 +23,9 @@ Azure Active Directory (Azure AD) kiracısı, kuruluşun bir gösterimidir. Bu, 
 
 Genellikle, bir müşterinin Azure kaynaklarını yönetmek için, hizmet sağlayıcılarının bu müşterinin kiracısıyla ilişkili bir hesabı kullanarak Azure portal oturum açması gerekir, bu da müşterinin kiracısında hizmet sağlayıcısı için Kullanıcı hesapları oluşturmak ve yönetmek için bir yönetici gerektirir.
 
-Azure Temsilcili kaynak yönetimi sayesinde, ekleme işlemi, hizmet sağlayıcısının kiracısındaki kullanıcıları, müşteri kiracısında abonelikler, kaynak grupları ve kaynaklara erişebilecek ve yönetebilecek kullanıcıları belirler. Bu kullanıcılar daha sonra kendi kimlik bilgilerini kullanarak Azure portal oturum açabilirler. Azure portal içinde, erişimleri olan tüm müşterilere ait olan kaynakları yönetebilir. Bu işlem, Azure portal [müşteriler](../how-to/view-manage-customers.md) sayfasından veya Azure Portal ya da API 'ler aracılığıyla doğrudan söz konusu müşterinin aboneliği kapsamında çalışarak yapılabilir.
+Azure Use ile, ekleme işlemi, hizmet sağlayıcısının kiracısındaki kullanıcıları, müşteri kiracısında abonelikler, kaynak grupları ve kaynaklara erişebilecek ve yönetebilecek kullanıcıları belirtir. Bu kullanıcılar daha sonra kendi kimlik bilgilerini kullanarak Azure portal oturum açabilirler. Azure portal içinde, erişimleri olan tüm müşterilere ait olan kaynakları yönetebilir. Bu işlem, Azure portal [müşteriler](../how-to/view-manage-customers.md) sayfasından veya Azure Portal ya da API 'ler aracılığıyla doğrudan söz konusu müşterinin aboneliği kapsamında çalışarak yapılabilir.
 
-Azure Temsilcili kaynak yönetimi, farklı kiracılarda farklı hesaplarda oturum açmaya gerek kalmadan, birden fazla müşteriye ait kaynakların yönetilmesine daha fazla esneklik sağlar. Örneğin, bir hizmet sağlayıcısı farklı sorumluluklara ve erişim düzeylerine sahip iki müşteriye sahip olabilir. Yetkili kullanıcılar, Azure tarafından atanan kaynak yönetimini kullanarak bu kaynaklara erişmek için hizmet sağlayıcının kiracısında oturum açabilirler.
+Azure Athouse, farklı kiracılarda farklı hesaplarda oturum açmak zorunda kalmadan birden fazla müşteriye ait kaynakların yönetilmesine daha fazla esneklik sağlar. Örneğin, bir hizmet sağlayıcısı farklı sorumluluklara ve erişim düzeylerine sahip iki müşteriye sahip olabilir. Yetkili kullanıcılar, Azure Athouse kullanılarak bu kaynaklara erişmek için hizmet sağlayıcının kiracısında oturum açabilir.
 
 ![Bir hizmet sağlayıcı kiracısıyla yönetilen müşteri kaynakları](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -39,15 +40,15 @@ Benzer şekilde, [az Account List](/cli/azure/account?view=azure-cli-latest#az-a
 > [!TIP]
 > Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .
 
-Ayrıca, Azure tarafından atanan kaynak yönetimi görevlerini gerçekleştirmeye özgü API 'Ler sunuyoruz. Daha fazla bilgi için **başvuru** bölümüne bakın.
+Ayrıca, Azure Use görevlerini gerçekleştirmeye özgü API 'Ler sunuyoruz. Daha fazla bilgi için **başvuru** bölümüne bakın.
 
 ## <a name="enhanced-services-and-scenarios"></a>Geliştirilmiş hizmetler ve senaryolar
 
-Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar üzerinde gerçekleştirilebilir. Platformlar arası yönetimin etkili olabilmesi için aşağıdaki önemli senaryolardan bazılarını aşağıda bulabilirsiniz.
+Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar üzerinde gerçekleştirilebilir. Bunlar, platformlar arası yönetimin özellikle etkili olabilecek önemli senaryolardan bazılarıdır.
 
 [Sunucular Için Azure Arc (Önizleme)](../../azure-arc/servers/overview.md):
 
-- Azure 'daki [Windows Server veya Linux makinelerini](../../azure-arc/servers/quickstart-onboard-portal.md) , Azure 'daki abonelik ve/veya kaynak grupları için temsilci olarak bağlayın
+- Azure 'daki [Windows Server veya Linux makinelerini](../../azure-arc/servers/onboard-portal.md) , Azure 'daki abonelik ve/veya kaynak grupları için temsilci olarak bağlayın
 - Azure Ilkesi ve etiketleme gibi Azure yapılarını kullanarak bağlı makineleri yönetme
 
 [Azure Otomasyonu](../../automation/index.yml):

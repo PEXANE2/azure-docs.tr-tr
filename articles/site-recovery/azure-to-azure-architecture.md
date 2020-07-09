@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629675"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135852"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -166,11 +167,11 @@ HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine
 
 #### <a name="control-access-with-nsg-rules"></a>NSG kurallarıyla erişimi denetleme
 
-[NSG kurallarını](https://docs.microsoft.com/azure/virtual-network/security-overview)kullanarak Azure ağlarına/alt ağlarına ağ trafiğini FILTRELEYEREK VM bağlantısını kontrol ederseniz, aşağıdaki gereksinimleri dikkate alın:
+[NSG kurallarını](../virtual-network/security-overview.md)kullanarak Azure ağlarına/alt ağlarına ağ trafiğini FILTRELEYEREK VM bağlantısını kontrol ederseniz, aşağıdaki gereksinimleri dikkate alın:
 
 - Kaynak Azure bölgesinin NSG kuralları, çoğaltma trafiği için giden erişime izin verilmelidir.
 - Bir test ortamında, üretim ortamına girmeden önce kurallar oluşturmanızı öneririz.
-- Tek tek IP adreslerine izin vermek yerine [hizmet etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) kullanın.
+- Tek tek IP adreslerine izin vermek yerine [hizmet etiketlerini](../virtual-network/security-overview.md#service-tags) kullanın.
     - Hizmet etiketleri, güvenlik kuralları oluştururken karmaşıklığı en aza indirmek için birlikte toplanan bir IP adresi önekleri grubunu temsil eder.
     - Microsoft, zaman içinde hizmet etiketlerini otomatik olarak güncelleştirir. 
  

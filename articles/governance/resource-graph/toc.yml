@@ -65,6 +65,10 @@
     - name: Kısıtlanan istekler için yönergeler
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
+    - name: Güvenlik
+      items:
+        - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Kaynak değişikliklerini alma

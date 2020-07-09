@@ -1,27 +1,30 @@
 ---
-title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
-description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
+title: Azure ışıklı bir müşteriyi bir müşteri ile kullanma
+description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 149398a822d5aa21335be4122e92c96800d94255
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920919"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133462"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure ışıklı bir müşteriyi bir müşteri ile kullanma
 
-Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure tarafından atanan kaynak yönetimine ekleme, temsilcili kaynakların (abonelikler ve/veya kaynak grupları) kendi Azure Active Directory (Azure AD) kiracınız aracılığıyla erişilebilir ve yönetilme olanağı sağlayan açıklanır. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) , Azure açık thouse 'ı kurmak ve yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
+Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure açık Thouse 'a nasıl oluşturabileceğiniz açıklanmaktadır. Bunu yaptığınızda, müşterinin Temsilcili kaynaklara (abonelikler ve/veya kaynak grupları) [Azure Temsilcili kaynak yönetimi](../concepts/azure-delegated-resource-management.md)kullanılarak kendi Azure Active Directory (Azure AD) kiracınız aracılığıyla erişilebilir ve yönetilebilir.
 
-Birden çok müşteri için kaynakları yönetiyorsanız, bu işlemi yineleyebilirsiniz. Daha sonra, yetkili bir Kullanıcı kiracınızda oturum açtığında, bu kullanıcı, her müşteri kiracısında oturum açmaya gerek kalmadan yönetim işlemlerini gerçekleştirmek üzere müşteri kiracı kapsamları genelinde yetkilendiribiliyor olabilir.
+Birden çok müşteri için kaynakları yönetiyorsanız, bu işlemi yineleyebilirsiniz. Daha sonra, yetkili bir Kullanıcı kiracınızda oturum açtığında, bu kullanıcıya, her müşteri kiracısında oturum açmaya gerek kalmadan, yönetim işlemlerini gerçekleştirmek üzere müşteri kiracı kapsamları genelinde yetki atanabilir.
 
-Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirin. Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerektiğini unutmayın. Basitlik için, kiracınızda MPN KIMLIĞINIZLE ilişkilendirilen bir hizmet sorumlusu hesabı oluşturmanızı ve BT okuyucuyu eklediğiniz her müşteri için erişim izni verilmesini öneririz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](../../billing/billing-partner-admin-link-started.md). 
+Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirin. Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerektiğini unutmayın. Basitlik için, kiracınızda MPN KIMLIĞINIZLE ilişkilendirilen bir hizmet sorumlusu hesabı oluşturmanızı ve BT okuyucuyu eklediğiniz her müşteri için erişim izni verilmesini öneririz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](../../cost-management-billing/manage/link-partner-id.md). 
 
 > [!NOTE]
-> Müşteriler, Azure Marketi 'Nde yayımladığınız yönetilen bir hizmet teklifi (genel veya özel) satın alındığında da eklendi. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini, Azure Marketi 'Nde yayınlanan bir teklifle birlikte da kullanabilirsiniz.
+> Müşteriler, Azure Marketi 'Nde yayımladığınız yönetilen bir hizmet teklifi (genel veya özel) satın alırken Azure 'da da eklendi de olabilir. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini, Azure Marketi 'Nde yayınlanan bir teklifle birlikte da kullanabilirsiniz.
 
 Ekleme işlemi, eylemlerin hem hizmet sağlayıcının kiracısından hem de müşterinin kiracısından alınması gerekir. Bu adımların tümü bu makalede açıklanmıştır.
+
+> [!TIP]
+> Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) , Azure Athouse 'ı kurmak ve yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
 ## <a name="gather-tenant-and-subscription-details"></a>Kiracı ve abonelik ayrıntılarını toplayın
 
@@ -193,7 +196,7 @@ Yukarıdaki örnekteki en son yetkilendirme, Kullanıcı erişimi yönetici rol�
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını dağıtma
 
-Parametre dosyanızı güncelleştirdikten sonra, müşterinin kiracısındaki bir kullanıcının kiracı içinde Azure Resource Manager şablonunu abonelik düzeyinde bir dağıtım olarak dağıtması gerekir. Azure 'un Temsilcili kaynak yönetimine eklemek istediğiniz her abonelik için ayrı bir dağıtım gerekir (veya eklemek istediğiniz kaynak gruplarını içeren her abonelik için).
+Parametre dosyanızı güncelleştirdikten sonra, müşterinin kiracısındaki bir kullanıcının kiracı içinde Azure Resource Manager şablonunu abonelik düzeyinde bir dağıtım olarak dağıtması gerekir. Eklemek istediğiniz her abonelik için ayrı bir dağıtım gerekir (veya eklemek istediğiniz kaynak gruplarını içeren her bir abonelik için).
 
 Bu, abonelik düzeyinde bir dağıtım olduğundan Azure portal başlatılamaz. Dağıtım, aşağıda gösterildiği gibi PowerShell veya Azure CLı kullanılarak yapılabilir.
 
@@ -244,7 +247,7 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>Başarılı ekleme Onayla
 
-Bir müşteri aboneliği, Azure tarafından atanan kaynak yönetimine başarıyla eklendi, hizmet sağlayıcının kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (tek tek veya bir Azure AD grubunun bir üyesi olarak, uygun izinlerle birlikte bu gruba erişim verildiyse). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
+Bir müşteri aboneliğinin Azure Mathouse 'a başarıyla eklendi, hizmet sağlayıcının kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (tek tek veya bir Azure AD grubunun bir üyesi olarak, uygun izinlere sahip bir Azure AD grubuna erişim izni verildiyse). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -255,7 +258,7 @@ Hizmet sağlayıcısının kiracısında:
 3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!IMPORTANT]
-> [Müşterilerimde](view-manage-customers.md)Temsilcili abonelik görmek için, hizmet sağlayıcının kiracısındaki kullanıcılara, abonelik Azure tarafından atanan kaynak yönetimi için eklendi olduğunda [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü (veya okuyucu erişimi içeren başka bir yerleşik rol) verilmiş olması gerekir.
+> [Müşterilerimde](view-manage-customers.md)Temsilcili aboneliği görmek için, hizmet sağlayıcısının kiracısındaki kullanıcılara, abonelik eklendi olduğunda [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü (veya okuyucu erişimi içeren başka bir yerleşik rol) verilmiş olması gerekir.
 
 Müşterinin kiracısında:
 

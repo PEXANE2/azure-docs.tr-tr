@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135112"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
 
@@ -27,7 +27,7 @@ ms.locfileid: "85207218"
 
 Desteklenen özelliklerin tam listesi ve bunların varsayılan değerleri için bkz. [desteklenen RDP dosyası ayarları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, PowerShell modülünüzü ayarlamak ve Azure 'da oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izleyin.
 
@@ -53,7 +53,7 @@ Azure portal RDP özelliklerini yapılandırmak için:
 4. Windows sanal masaüstü sayfasında, ekranın sol tarafındaki menüden **konak havuzları** ' nı seçin.
 5. Güncelleştirmek istediğiniz **konak havuzunun adını** seçin.
 6. Ekranın sol tarafındaki menüden **Özellikler** ' i seçin.
-7. **Özellikler** sekmesinde, RDP özelliklerini düzenlemeyle başlamak için **RDP ayarları** ' na gidin. Özellikler, PowerShell örnekleri gibi bir virgülle ayrılmış biçimde olmalıdır.
+7. **Özellikler** sekmesinde, RDP özelliklerini düzenlemeyle başlamak için **RDP ayarları** ' na gidin. Özellikler, PowerShell örnekleri gibi noktalı virgülle ayrılmış bir biçimde olmalıdır.
 8. İşiniz bittiğinde, değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
 Sonraki bölümlerde, PowerShell 'de özel RDP özelliklerinin el ile nasıl düzenleneceği açıklanır.

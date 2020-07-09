@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74133004"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133911"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Mimari-ikincil siteye Hyper-V çoğaltma
 
@@ -35,7 +36,7 @@ Aşağıdaki tablo ve grafik, ikincil bir siteye Hyper-V çoğaltması için kul
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 
-1. İlk çoğaltma tetiklendiğinde, bir [Hyper-V VM anlık](https://technet.microsoft.com/library/dd560637.aspx) görüntüsü alınır.
+1. İlk çoğaltma tetiklendiğinde, bir [Hyper-V VM anlık](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) görüntüsü alınır.
 2. VM 'deki sanal sabit diskler, ikincil konuma tek tek çoğaltılır.
 3. İlk çoğaltma devam ederken disk değişiklikleri oluşursa, Hyper-V çoğaltma çoğaltma Izleyicisi değişiklikleri Hyper-V çoğaltma günlükleri (. HRL) olarak izler. Bu günlük dosyaları, disklerle aynı klasörde bulunur. Her diskin ikincil konuma gönderilen ilişkili bir. HRL dosyası vardır. İlk çoğaltma sırasında anlık görüntü ve günlük dosyaları disk kaynaklarını kullanır.
 4. İlk çoğaltma tamamlandığında VM anlık görüntüsü silinir ve Delta çoğaltma başlar.

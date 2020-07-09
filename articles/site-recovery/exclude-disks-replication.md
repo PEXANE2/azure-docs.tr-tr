@@ -3,11 +3,12 @@ title: Azure Site Recovery ile diskleri çoğaltmadan dışlama
 description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında tutma.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740533"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135683"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
 
@@ -25,7 +26,7 @@ Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsini
 
 **Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** | **Fiziksel sunucudan Azure 'a**
 --- | --- | --- | ---
-Evet | Evet | Evet | Evet
+Yes | Yes | Yes | Yes
 
 ## <a name="exclude-limitations"></a>Dışlama sınırlamaları
 
@@ -259,7 +260,6 @@ Azure VM 'deki disk belleği dosyası ayarları şu şekildedir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Geçici depolama diski için yönergeler hakkında daha fazla bilgi edinin:
-    - SQL Server TempDB ve arabellek havuzu uzantıları depolamak için Azure VM 'lerinde SSDs kullanma [hakkında bilgi edinin](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
-    - Azure VM 'lerinde SQL Server yönelik performans en iyi yöntemlerini [gözden geçirin](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) .
+    - SQL Server TempDB ve arabellek havuzu uzantıları depolamak için Azure VM 'lerinde SSDs kullanma [hakkında bilgi edinin](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
+    - Azure VM 'lerinde SQL Server yönelik performans en iyi yöntemlerini [gözden geçirin](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) .
 - Dağıtımınız ayarlandıktan ve çalışmaya başladıktan sonra farklı türdeki yük devretmeler hakkında [daha fazla bilgi edinebilirsiniz](failover-failback-overview.md).
-

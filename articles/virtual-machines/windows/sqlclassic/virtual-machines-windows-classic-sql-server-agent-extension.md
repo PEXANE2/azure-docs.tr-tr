@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd913b597e52f81c19b9c6bb20e83be23e5b35bd
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338416"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134695"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent uzantısı (klasik) ile Azure sanal makinelerinde yönetim görevlerini otomatikleştirme
 > [!div class="op_single_selector"]
@@ -36,13 +37,13 @@ SQL Server IaaS Aracısı uzantısı (SQLIaaSAgent), yönetim görevlerini otoma
 ## <a name="supported-services"></a>Desteklenen hizmetler
 SQL Server IaaS Aracısı uzantısı aşağıdaki yönetim görevlerini destekler:
 
-| Yönetim özelliği | Açıklama |
+| Yönetim özelliği | Description |
 | --- | --- |
 | **SQL Otomatik Yedekleme** |VM 'deki SQL Server varsayılan örneği için tüm veritabanları için yedeklemelerin zamanlamasını otomatikleştirir. Daha fazla bilgi için bkz. [Azure sanal makineler 'de SQL Server Için otomatik yedekleme (klasik)](../classic/sql-automated-backup.md). |
 | **SQL Otomatik Düzeltme Eki Uygulama** |VM 'niz için önemli Windows güncelleştirmelerinin gerçekleşmesi sırasında bir bakım penceresi yapılandırır, bu sayede iş yükünüz için yoğun zamanlarda güncelleştirmelerden kaçınabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama (klasik)](../classic/sql-automated-patching.md). |
 | **Azure Anahtar Kasası Tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure VM 'lerde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (klasik)](../classic/ps-sql-keyvault.md). |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 SANAL makinenizde SQL Server IaaS Aracısı uzantısını kullanma gereksinimleri:
 
 ### <a name="operating-system"></a>İşletim Sistemi:
@@ -60,20 +61,28 @@ SANAL makinenizde SQL Server IaaS Aracısı uzantısını kullanma gereksinimler
 
 Windows PowerShell 'i başlatın ve **Add-AzureAccount** komutuyla Azure aboneliğinize bağlayın.
 
-    Add-AzureAccount
+```azurepowershell
+Add-AzureAccount
+```
 
 Birden çok aboneliğiniz varsa, **Select-azuyeniden göndermeyi** kullanarak hedef klasik VM 'nizi içeren aboneliği seçin.
 
-    Select-AzureSubscription -SubscriptionName <subscriptionname>
+```azurepowershell
+Select-AzureSubscription -SubscriptionName <subscriptionname>
+```
 
 Bu noktada, **Get-AzureVM** komutuyla klasik sanal makinelerin ve bunların ilişkili hizmet adlarının bir listesini alabilirsiniz.
 
-    Get-AzureVM
+```azurepowershell
+Get-AzureVM
+```
 
 ## <a name="installation"></a>Yükleme
 Klasik VM 'Lerde, SQL Server IaaS Aracısı uzantısını yüklemek ve ilişkili hizmetlerini yapılandırmak için PowerShell kullanmanız gerekir. Uzantıyı yüklemek için **set-AzureVMSqlServerExtension** PowerShell cmdlet 'ini kullanın. Örneğin, aşağıdaki komut, uzantıyı bir Windows Server VM 'ye (klasik) yükleyip "Sqliaasextenma" olarak adlandırır.
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```
 
 SQL IaaS aracı uzantısının en son sürümüne güncelleştirirseniz, uzantıyı güncelleştirdikten sonra sanal makinenizi yeniden başlatmanız gerekir.
 
@@ -90,7 +99,9 @@ Uzantının yüklendiğini doğrulamak için bir yol, Azure portalında aracı d
 
 **Get-AzureVMSqlServerExtension** Azure PowerShell cmdlet 'ini de kullanabilirsiniz.
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```
 
 ## <a name="removal"></a>Kaldırılmasını
 Azure portalında, sanal makine özelliklerinin **Uzantılar** dikey penceresinde üç nokta simgesine tıklayarak uzantıyı kaldırabilirsiniz. Ardından **Kaldır**' a tıklayın.
@@ -99,7 +110,9 @@ Azure portalında, sanal makine özelliklerinin **Uzantılar** dikey penceresind
 
 **Remove-AzureVMSqlServerExtension** PowerShell cmdlet 'ini de kullanabilirsiniz.
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Uzantı tarafından desteklenen hizmetlerden birini kullanmaya başlayın. Daha fazla ayrıntı için, bu makalenin [desteklenen hizmetler](#supported-services) bölümünde başvurulan konulara bakın.

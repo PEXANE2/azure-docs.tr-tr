@@ -8,17 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 095e837043e6322cf85aeaa732f5bcbf7c0fa098
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699558"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135391"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma için kaynak ortamı ayarlama
 
 Bu makalede, VMware VM 'lerini Azure 'a çoğaltmak için kaynak şirket içi ortamınızı ayarlama açıklanmaktadır. Makale, çoğaltma senaryonuzu seçme, Site Recovery yapılandırma sunucusu olarak şirket içi makine ayarlama ve şirket içi VM 'Leri otomatik olarak bulma adımlarını içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Makalesinde zaten sahip olduğunuz varsayılır:
 
@@ -36,7 +37,7 @@ Makalesinde zaten sahip olduğunuz varsayılır:
 
 ## <a name="set-up-the-configuration-server"></a>Yapılandırma sunucusunu ayarlama
 
-Yapılandırma sunucusunu, açık bir sanallaştırma uygulaması (OVA) şablonu aracılığıyla şirket içi VMware VM 'si olarak ayarlayabilirsiniz. VMware VM 'de yüklenecek bileşenler hakkında [daha fazla bilgi edinin](concepts-vmware-to-azure-architecture.md) .
+Yapılandırma sunucusunu, açık bir sanallaştırma uygulaması (OVA) şablonu aracılığıyla şirket içi VMware VM 'si olarak ayarlayabilirsiniz. VMware VM 'de yüklenecek bileşenler hakkında [daha fazla bilgi edinin](./vmware-azure-architecture.md) .
 
 1. Yapılandırma sunucusu dağıtımı [önkoşulları](vmware-azure-deploy-configuration-server.md#prerequisites) hakkında bilgi edinin.
 2. Dağıtım için [Kapasite numaralarını denetleyin](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) .

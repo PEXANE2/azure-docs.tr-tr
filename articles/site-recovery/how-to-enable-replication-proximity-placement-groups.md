@@ -5,17 +5,18 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 9fabf6cf4c8a3afc2d119fca2c8cdc2526ddbebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415874"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134887"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Yakınlık yerleştirme gruplarında çalışan Azure sanal makinelerini başka bir bölgeye çoğaltma
 
 Bu makalede, bir yakınlık yerleştirme grubunda çalışan sanal makinelerin ikincil bir bölgeye nasıl çoğaltılacağı, yük devretmeyle ve yeniden çalıştırıldığı açıklanmaktadır.
 
-[Yakınlık yerleştirme grupları](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) , UYGULAMALARıNıZLA ilişkili VM 'ler arası ağ gecikmesini azaltmak için kullanabileceğiniz bir Azure sanal makine mantıksal gruplandırma özelliğidir. VM 'Ler aynı yakınlık yerleşimi grubu içinde dağıtıldığında, fiziksel olarak birbirlerine mümkün olduğunca yakın şekilde bulunur. Yakınlık yerleşimi grupları özellikle gecikme süresine duyarlı iş yüklerinin gereksinimlerini karşılamak için yararlıdır.
+[Yakınlık yerleştirme grupları](../virtual-machines/windows/proximity-placement-groups-portal.md) , UYGULAMALARıNıZLA ilişkili VM 'ler arası ağ gecikmesini azaltmak için kullanabileceğiniz bir Azure sanal makine mantıksal gruplandırma özelliğidir. VM 'Ler aynı yakınlık yerleşimi grubu içinde dağıtıldığında, fiziksel olarak birbirlerine mümkün olduğunca yakın şekilde bulunur. Yakınlık yerleşimi grupları özellikle gecikme süresine duyarlı iş yüklerinin gereksinimlerini karşılamak için yararlıdır.
 
 ## <a name="disaster-recovery-with-proximity-placement-groups"></a>Yakınlık yerleştirme gruplarıyla olağanüstü durum kurtarma
 
@@ -30,23 +31,23 @@ Tipik bir senaryoda, uygulamanızın çeşitli katmanları arasındaki ağ gecik
 > [!Note]
 > Azure Site Recovery, Hyper-V ' d e Azure senaryolarına yönelik yönetilen disklerden yeniden çalışmayı desteklemez. Bu nedenle, Azure 'daki yakınlık yerleşimi grubundan Hyper-V ' d e yeniden çalışma desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-1. Azure PowerShell az modüle sahip olduğunuzdan emin olun. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](https://docs.microsoft.com/powershell/azure/install-az-ps)izleyin.
+1. Azure PowerShell az modüle sahip olduğunuzdan emin olun. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps)izleyin.
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Yakınlık yerleştirme grubundaki sanal makineler için Site Recovery ayarlama
 
 ### <a name="azure-to-azure"></a>Azure-Azure arası
 
-1. Hesabınızda [oturum açın](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#sign-in-to-your-microsoft-azure-subscription) ve aboneliğinizi ayarlayın.
-2. Çoğaltmak istediğiniz sanal makinenin ayrıntılarını [burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#get-details-of-the-virtual-machine-to-be-replicated)belirtildiği gibi alın.
-3. Kurtarma Hizmetleri kasanızı [oluşturun](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-recovery-services-vault) ve kasa bağlamını [ayarlayın](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#set-the-vault-context) .
-4. Kasayı çoğaltma sanal makinesini başlatacak şekilde hazırlayın. Bu, hem birincil hem de kurtarma bölgeleri için bir [Service Fabric nesnesi](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) oluşturulmasını içerir.
-5. Hem birincil hem de kurtarma yapıları için Site Recovery bir koruma kapsayıcısı [oluşturun](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-protection-container-in-the-primary-fabric) .
-6. Çoğaltma İlkesi [oluşturun](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-replication-policy) .
-7. [Bu](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) adımları ve [burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)belirtildiği gibi yeniden çalışma için bir koruma kapsayıcısı eşlemesini kullanarak birincil ve kurtarma koruma kapsayıcısı arasında bir koruma kapsayıcısı eşlemesi oluşturun.
-8. [Aşağıdaki adımları izleyerek](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-cache-storage-account-and-target-storage-account) önbellek depolama hesabı oluşturun.
-9. [Burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-network-mappings)belirtildiği gibi gerekli ağ eşlemelerini oluşturun.
+1. Hesabınızda [oturum açın](./azure-to-azure-powershell.md#sign-in-to-your-microsoft-azure-subscription) ve aboneliğinizi ayarlayın.
+2. Çoğaltmak istediğiniz sanal makinenin ayrıntılarını [burada](./azure-to-azure-powershell.md#get-details-of-the-virtual-machine-to-be-replicated)belirtildiği gibi alın.
+3. Kurtarma Hizmetleri kasanızı [oluşturun](./azure-to-azure-powershell.md#create-a-recovery-services-vault) ve kasa bağlamını [ayarlayın](./azure-to-azure-powershell.md#set-the-vault-context) .
+4. Kasayı çoğaltma sanal makinesini başlatacak şekilde hazırlayın. Bu, hem birincil hem de kurtarma bölgeleri için bir [Service Fabric nesnesi](./azure-to-azure-powershell.md#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) oluşturulmasını içerir.
+5. Hem birincil hem de kurtarma yapıları için Site Recovery bir koruma kapsayıcısı [oluşturun](./azure-to-azure-powershell.md#create-a-site-recovery-protection-container-in-the-primary-fabric) .
+6. Çoğaltma İlkesi [oluşturun](./azure-to-azure-powershell.md#create-a-replication-policy) .
+7. [Bu](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) adımları ve [burada](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)belirtildiği gibi yeniden çalışma için bir koruma kapsayıcısı eşlemesini kullanarak birincil ve kurtarma koruma kapsayıcısı arasında bir koruma kapsayıcısı eşlemesi oluşturun.
+8. [Aşağıdaki adımları izleyerek](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) önbellek depolama hesabı oluşturun.
+9. [Burada](./azure-to-azure-powershell.md#create-network-mappings)belirtildiği gibi gerekli ağ eşlemelerini oluşturun.
 10. Azure sanal makinesini yönetilen disklerle çoğaltmak için aşağıdaki PowerShell cmdlet 'ini kullanın: 
 
 ```azurepowershell
@@ -90,8 +91,8 @@ Kendisine karşılık gelen çoğaltma korumalı öğenin ayrıntılarını alar
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
 
-11. Yük devretme testini doğrulamak, test yük devretmesini doğrulamak ve temizlemek için [aşağıdaki](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#do-a-test-failover-validate-and-cleanup-test-failover) adımları izleyin.
-12. Yük devretme için [burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#fail-over-to-azure)bahsedilen adımları izleyin.
+11. Yük devretme testini doğrulamak, test yük devretmesini doğrulamak ve temizlemek için [aşağıdaki](./azure-to-azure-powershell.md#do-a-test-failover-validate-and-cleanup-test-failover) adımları izleyin.
+12. Yük devretme için [burada](./azure-to-azure-powershell.md#fail-over-to-azure)bahsedilen adımları izleyin.
 13. Kaynak bölgeye yeniden koruma ve yeniden çalışma için aşağıdaki PowerShell cmdlet 'ini kullanın:
 
 ```azurepowershell
@@ -102,16 +103,16 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 #Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
-14. Çoğaltmayı devre dışı bırakmak için [buradaki](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#disable-replication)adımları izleyin.
+14. Çoğaltmayı devre dışı bırakmak için [buradaki](./azure-to-azure-powershell.md#disable-replication)adımları izleyin.
 
 ### <a name="vmware-to-azure"></a>Vmware’den Azure’a
 
-1. Şirket [Içi VMware sunucularını](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises) Azure 'a olağanüstü durum kurtarma için hazırladığınızdan emin olun.
-2. Hesabınızda oturum açın ve aboneliğinizi [burada](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#log-into-azure)belirtilen şekilde ayarlayın.
-3. Bir kurtarma hizmetleri Kasası [kurun](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-up-a-recovery-services-vault) ve [kasa bağlamını ayarlayın](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-the-vault-context).
-4. Kasa kaydınızı [doğrulayın](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#validate-vault-registration) .
-5. Çoğaltma İlkesi [oluşturun](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-a-replication-policy) .
-6. Bir vCenter sunucusu [ekleyin](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#add-a-vcenter-server-and-discover-vms) ve sanal makineleri bulun ve çoğaltma için depolama hesapları [oluşturun](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-storage-accounts-for-replication) .
+1. Şirket [Içi VMware sunucularını](./vmware-azure-tutorial-prepare-on-premises.md) Azure 'a olağanüstü durum kurtarma için hazırladığınızdan emin olun.
+2. Hesabınızda oturum açın ve aboneliğinizi [burada](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)belirtilen şekilde ayarlayın.
+3. Bir kurtarma hizmetleri Kasası [kurun](./vmware-azure-disaster-recovery-powershell.md#set-up-a-recovery-services-vault) ve [kasa bağlamını ayarlayın](./vmware-azure-disaster-recovery-powershell.md#set-the-vault-context).
+4. Kasa kaydınızı [doğrulayın](./vmware-azure-disaster-recovery-powershell.md#validate-vault-registration) .
+5. Çoğaltma İlkesi [oluşturun](./vmware-azure-disaster-recovery-powershell.md#create-a-replication-policy) .
+6. Bir vCenter sunucusu [ekleyin](./vmware-azure-disaster-recovery-powershell.md#add-a-vcenter-server-and-discover-vms) ve sanal makineleri bulun ve çoğaltma için depolama hesapları [oluşturun](./vmware-azure-disaster-recovery-powershell.md#create-storage-accounts-for-replication) .
 7. VMware sanal makinelerini çoğaltmak için buradaki ayrıntıları denetleyin ve aşağıdaki PowerShell cmdlet 'ini izleyin:
 
 ```azurepowershell
@@ -136,18 +137,18 @@ $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
-9. [Buradaki](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#configure-failover-settings)adımları izleyerek yük devretme ayarlarını yapılandırın.
-10. Yük devretme testi [çalıştırın](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#run-a-test-failover) . 
-11. [Bu](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#fail-over-to-azure) adımları kullanarak Azure 'a yük devretme.
+9. [Buradaki](./vmware-azure-disaster-recovery-powershell.md#configure-failover-settings)adımları izleyerek yük devretme ayarlarını yapılandırın.
+10. Yük devretme testi [çalıştırın](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover) . 
+11. [Bu](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) adımları kullanarak Azure 'a yük devretme.
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V’den Azure’a
 
-1. Şirket [Içi Hyper-V sunucularınızı](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial) Azure 'a olağanüstü durum kurtarma için hazırlayın.
-2. Azure ['Da oturum açın](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-1-sign-in-to-your-azure-account) .
-3. Kasanızı [ayarlayın](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-2-set-up-the-vault) ve kurtarma hizmetleri Kasası bağlamını [ayarlayın](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-3-set-the-recovery-services-vault-context) .
-4. Hyper-V sitesi [oluşturun](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-4-create-a-hyper-v-site) .
-5. Sağlayıcıyı ve aracıyı [yükler](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-5-install-the-provider-and-agent) .
-6. Çoğaltma İlkesi [oluşturun](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-6-create-a-replication-policy) .
+1. Şirket [Içi Hyper-V sunucularınızı](./hyper-v-prepare-on-premises-tutorial.md) Azure 'a olağanüstü durum kurtarma için hazırlayın.
+2. Azure ['Da oturum açın](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) .
+3. Kasanızı [ayarlayın](./hyper-v-azure-powershell-resource-manager.md#step-2-set-up-the-vault) ve kurtarma hizmetleri Kasası bağlamını [ayarlayın](./hyper-v-azure-powershell-resource-manager.md#step-3-set-the-recovery-services-vault-context) .
+4. Hyper-V sitesi [oluşturun](./hyper-v-azure-powershell-resource-manager.md#step-4-create-a-hyper-v-site) .
+5. Sağlayıcıyı ve aracıyı [yükler](./hyper-v-azure-powershell-resource-manager.md#step-5-install-the-provider-and-agent) .
+6. Çoğaltma İlkesi [oluşturun](./hyper-v-azure-powershell-resource-manager.md#step-6-create-a-replication-policy) .
 7. Aşağıdaki adımları kullanarak çoğaltmayı etkinleştirin – 
     
     a. Korumak istediğiniz VM 'ye karşılık gelen korunabilir öğeyi aşağıdaki gibi alın:
@@ -187,13 +188,13 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 
     Get-AzRecoveryServicesAsrJob -Job $job | Select-Object -ExpandProperty state
     ```
-8. [Yük devretme](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover)testi çalıştırın.
+8. [Yük devretme](./hyper-v-azure-powershell-resource-manager.md#step-8-run-a-test-failover)testi çalıştırın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VMware 'den Azure 'a yeniden koruma ve yeniden çalışma gerçekleştirmek için [burada](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback)özetlenen adımları izleyin.
+VMware 'den Azure 'a yeniden koruma ve yeniden çalışma gerçekleştirmek için [burada](./vmware-azure-prepare-failback.md)özetlenen adımları izleyin.
 
-Azure 'da Hyper-V ' d e yük devretme gerçekleştirmek için [burada](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) özetlenen adımları izleyin ve yeniden çalışma gerçekleştirmek için [burada](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback)özetlenen adımları izleyin.
+Azure 'da Hyper-V ' d e yük devretme gerçekleştirmek için [burada](./site-recovery-failover.md) özetlenen adımları izleyin ve yeniden çalışma gerçekleştirmek için [burada](./hyper-v-azure-failback.md)özetlenen adımları izleyin.
 
 Daha fazla bilgi için bkz. [Site Recovery 'de yük devretme](site-recovery-failover.md).

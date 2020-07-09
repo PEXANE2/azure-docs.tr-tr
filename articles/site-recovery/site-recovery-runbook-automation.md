@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345147"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134806"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook’ları ekleme
 
@@ -128,7 +129,7 @@ Aman parçalara ayırma [bulutlarının](http://harvestingclouds.com) üzerinde 
 
 Çoklu kurtarma planlarında, dış değişkenleri kullanarak tek bir runbook betiği kullanabilirsiniz. 
 
-- Bir kurtarma planını çalıştırmaya yönelik parametreleri depolamak için [Azure Otomasyonu değişkenlerini](../automation/automation-variables.md) kullanırsınız.
+- Bir kurtarma planını çalıştırmaya yönelik parametreleri depolamak için [Azure Otomasyonu değişkenlerini](../automation/shared-resources/variables.md) kullanırsınız.
 - Kurtarma planı adını değişkenine önek olarak ekleyerek her bir kurtarma planı için bağımsız değişkenler oluşturabilirsiniz. Sonra değişkenleri parametre olarak kullanın.
 - Betiği değiştirmeden bir parametreyi değiştirebilirsiniz, ancak yine de betiğin çalışma şeklini değiştirebilirsiniz.
 
@@ -198,7 +199,7 @@ Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilem
 - Örneğin, bir SharePoint kurtarması iki ön ucu vardır. Temel bir iş kolu (LOB) uygulamasının yalnızca bir ön ucu vardır.
 - Bu senaryoda, her kurtarma planı için ayrı değişkenler oluşturamazsınız.
 
-Aşağıdaki örnekte, Azure Otomasyonu hesabında karmaşık bir [değişken](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) oluşturacağız.
+Aşağıdaki örnekte, Azure Otomasyonu hesabında karmaşık bir [değişken](/powershell/module/servicemanagement/azure/set-azureautomationvariable) oluşturacağız.
 
 Bunu, Azure PowerShell kullanarak birden çok değer belirterek yapacağız.
 
@@ -263,9 +264,6 @@ Bu video başka bir örnek sağlar. İki katmanlı bir WordPress uygulamasının
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Otomasyonu farklı çalıştır hesabı](../automation/automation-create-runas-account.md) hakkında bilgi edinin
+- [Azure Otomasyonu farklı çalıştır hesabı](../automation/manage-runas-account.md) hakkında bilgi edinin
 - [Azure Otomasyonu örnek komut dosyalarını](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)gözden geçirin.
 - Yük devretme çalıştırma hakkında [daha fazla bilgi edinin](site-recovery-failover.md) .
-
-
-

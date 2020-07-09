@@ -1,6 +1,6 @@
 ---
 title: 'Azure Resource Manager: tek bir veritabanı oluşturma'
-description: Azure Resource Manager şablonunu kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturun.
+description: Azure Resource Manager şablonu kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturun.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,24 +11,24 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135639"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonunu kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
 
-Tek bir [veritabanı](single-database-overview.md) oluşturmak, Azure SQL veritabanı 'nda veritabanı oluşturmak için en hızlı ve en basit seçenektir. Bu hızlı başlangıçta, Azure Resource Manager şablonunu kullanarak tek bir veritabanının nasıl oluşturulacağı gösterilmektedir.
+Tek bir [veritabanı](single-database-overview.md) oluşturmak, Azure SQL veritabanı 'nda veritabanı oluşturmak için en hızlı ve en basit seçenektir. Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanarak tek bir veritabanının nasıl oluşturulacağı gösterilmektedir (ARM şablonu).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, Azure 'a dağıt düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
 
 [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microso
 
 Tek bir veritabanı, iki [satın alma modelinden](purchasing-models.md)birini kullanarak tanımlı bir işlem, bellek, GÇ ve depolama kaynakları kümesine sahiptir. Tek bir veritabanı oluşturduğunuzda, bunu yönetmek için bir [sunucu](logical-servers.md) tanımlar ve belirli bir bölgedeki [Azure Kaynak grubu](../../active-directory-b2c/overview.md) içine yerleştirebilirsiniz.
 
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-logical-server/) alınmıştır.
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-database/).
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
@@ -88,4 +88,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
   - [Azure Data Studio kullanarak bağlanma ve sorgulama](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Azure CLı kullanarak tek bir veritabanı oluşturmak için bkz. [Azure CLI örnekleri](az-cli-script-samples-content-guide.md).
 - Azure PowerShell kullanarak tek bir veritabanı oluşturmak için bkz. [Azure PowerShell örnekleri](powershell-script-content-guide.md).
-- Kaynak Yöneticisi şablonları oluşturmayı öğrenmek için bkz. [ilk şablonunuzu oluşturma](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).
+- ARM şablonları oluşturmayı öğrenmek için bkz. [ilk şablonunuzu oluşturma](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).

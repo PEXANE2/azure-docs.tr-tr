@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f42942d0e112aad147f78d62b5f5b43587eca9b3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80388908"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135604"
 ---
 # <a name="about-migration"></a>Geçiş hakkında
 
@@ -30,7 +30,7 @@ Site Recovery kullanarak geçirebileceğiniz özellikler şunlardır:
 - **AWS geçirme**: AWS Windows örneklerini Azure IaaS’ye geçirin. 
 
 > [!NOTE]
-> Artık Azure geçişi hizmetini kullanarak şirket içinden Azure 'a geçiş yapabilirsiniz. [Daha fazla bilgi edinin](../migrate/migrate-overview.md).
+> Artık Azure geçişi hizmetini kullanarak şirket içinden Azure 'a geçiş yapabilirsiniz. [Daha fazla bilgi edinin](../migrate/migrate-services-overview.md).
 
 ## <a name="what-do-we-mean-by-migration"></a>Geçiş ile kast edilen nedir?
 

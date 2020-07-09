@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86094fd7ff9550946e1b1c13e0773f025a0e977c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77623812"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134539"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>SAP sisteminin "daha yüksek kullanılabilirlik" düzeyine ulaşmak için Azure altyapı VM yeniden başlatma işlemini kullanma
 
@@ -266,7 +267,7 @@ SAP, VM 'deki işletim sistemi başladıktan hemen sonra SAP örnekleri başlata
 
 Bir VM 'deki ve tek bir VM 'deki bir SAP uygulama sunucusu örneği için tipik bir Azure senaryosunun, kısa bir süre sonra yeniden başlatıldığında, autostart kritik değildir. Ancak SAP Advanced Business Application Programming (ABAP) veya Java örneğinin başlangıç profiline aşağıdaki parametreyi ekleyerek etkinleştirebilirsiniz:
 
-      Autostart = 1
+`Autostart = 1`
 
 
   > [!NOTE]

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134965"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Site Recovery ile Azure Traffic Manager
 
@@ -30,7 +30,7 @@ Bu makalede, Azure Trafik Izleyicisi 'nin akıllı yönlendirmesini Azure Site R
 **A şirketi** ortak uç noktalara sahip uygulamalar çalıştırıyor ve bir olağanüstü durum olayında trafiği sorunsuz bir şekilde Azure 'a yeniden yönlendirebilme olanağı istiyor. Azure Traffic Manager [Öncelik](../traffic-manager/traffic-manager-configure-priority-routing-method.md) trafiği yönlendirme yöntemi, Şirket A 'nın bu yük devretme modelini kolayca uygulamasına olanak tanır.
 
 Kurulum aşağıdaki gibidir:
-- **A şirketi** bir [Traffic Manager profili](../traffic-manager/traffic-manager-create-profile.md)oluşturur.
+- **A şirketi** bir [Traffic Manager profili](../traffic-manager/quickstart-create-traffic-manager-profile.md)oluşturur.
 - **Öncelik** yönlendirme yönteminden yararlanarak, **Şirket A** iki uç nokta oluşturur – şirket Içi ve Azure Için **Yük devretme** için **birincil** . **Birincil** öncelik 1 olarak atanır ve **yük devretmeye** öncelik 2 atanır.
 - **Birincil** uç nokta Azure dışında barındırıldığından, uç nokta bir [dış](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) uç nokta olarak oluşturulur.
 - Azure Site Recovery, Azure sitesinde yük devretmeden önce çalışan sanal makineler veya uygulamalar yok. Bu nedenle, **Yük devretme** uç noktası bir **dış** uç nokta olarak da oluşturulur.
@@ -65,7 +65,7 @@ Bu örnek için, Azure çalıştıran tüm uygulama altyapısına sahip olan **�
 **Şirket C** , genel uç noktalara sahip uygulamalar çalıştırıyor ve bir olağanüstü durum olayında trafiği sorunsuz bir şekilde farklı bir Azure bölgesine yeniden yönlendirebilme olanağı istiyor. [Öncelik](../traffic-manager/traffic-manager-configure-priority-routing-method.md) trafiği-yönlendirme yöntemi, **Şirket C** 'nin bu yük devretme modelini kolayca uygulamasına olanak tanır.
 
 Kurulum aşağıdaki gibidir:
-- **Şirket C** bir [Traffic Manager profili](../traffic-manager/traffic-manager-create-profile.md)oluşturur.
+- **Şirket C** bir [Traffic Manager profili](../traffic-manager/quickstart-create-traffic-manager-profile.md)oluşturur.
 - **Öncelik** yönlendirme yönteminin kullanıldığı **Şirket C** , kaynak bölge (Azure Doğu Asya) için **birincil** ve kurtarma bölgesi (Azure Güneydoğu Asya) için **Yük devretme** olmak üzere iki uç nokta oluşturur. **Birincil** öncelik 1 olarak atanır ve **yük devretmeye** öncelik 2 atanır.
 - **Birincil** uç nokta Azure 'da barındırıldığından, uç nokta bir [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) uç noktası olabilir.
 - Azure Site Recovery ile, kurtarma Azure sitesinde yük devretme öncesinde çalışan sanal makine veya uygulamalar yok. Bu nedenle, **Yük devretme** uç noktası bir [dış](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) uç nokta olarak oluşturulabilir.

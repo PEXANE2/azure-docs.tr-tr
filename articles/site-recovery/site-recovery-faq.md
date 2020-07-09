@@ -4,11 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057441"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133660"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -55,7 +56,7 @@ Hayır, veriler aboneliğinizdeki Azure depolama alanına çoğaltılır. Yük d
 Evet.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Şu anda hangi platformları destekliyorsanız?
-Azure Pack, bulut platformu sistemi ve System Center tabanlı (2012 ve üzeri) dağıtımları destekliyoruz. Azure paketi ve Site Recovery tümleştirme hakkında [daha fazla bilgi edinin](https://technet.microsoft.com/library/dn850370.aspx) .
+Azure Pack, bulut platformu sistemi ve System Center tabanlı (2012 ve üzeri) dağıtımları destekliyoruz. Azure paketi ve Site Recovery tümleştirme hakkında [daha fazla bilgi edinin](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) .
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Tek bir Azure Paketi'ni ve tek bir VMM sunucusu dağıtımını destekliyor musunuz?
 Evet, Hyper-V sanal makinelerini Azure 'a veya hizmet sağlayıcı siteleri arasında çoğaltabilirsiniz.  Hizmet sağlayıcı siteleri arasında çoğaltma yaparsanız Azure runbook tümleştirmesi 'nin kullanılamaz olduğunu unutmayın.
@@ -104,7 +105,7 @@ Site Recovery ISO 27001:2013, 27018, HIPAA, DPA sertifikalı ve SOC2 ve Fedrajab
 Evet. Bir bölgede Site Recovery kasa oluşturduğunuzda, çoğaltma ve yük devretme işlemlerini etkinleştirmek ve düzenlemek için ihtiyaç duyduğumuz tüm meta verilerin bu bölgenin coğrafi sınırında kalmasını sağlamaktır.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery çoğaltma işlemini şifreleyebilir mi?
-Sanal makineler ve fiziksel sunucular için, şirket içi siteler arasında çoğaltma geçişi desteklenir. Azure 'a çoğaltılan sanal makineler ve fiziksel sunucular için hem çapraz geçiş hem de [bekleyen şifreleme (Azure 'da)](https://docs.microsoft.com/azure/storage/storage-service-encryption) desteklenir.
+Sanal makineler ve fiziksel sunucular için, şirket içi siteler arasında çoğaltma geçişi desteklenir. Azure 'a çoğaltılan sanal makineler ve fiziksel sunucular için hem çapraz geçiş hem de [bekleyen şifreleme (Azure 'da)](../storage/common/storage-service-encryption.md) desteklenir.
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Azure 'dan Azure Site Recovery, Azure 'un mikro hizmetleri arasındaki tüm iletişimler için TLS 1,2 kullanır mi?
 Evet, TLS 1,2 Protokolü, Azure 'dan Azure Site Recovery senaryosu için varsayılan olarak zorlanır. 
@@ -197,7 +198,7 @@ Hyper-V sanal makinelerini çoğaltırken ve VMware VM 'lerini ve fiziksel makin
 Evet. Aşağıdaki makalelerde azaltma bant genişliği hakkında daha fazla bilgi edinebilirsiniz:
 
 * [VMware VM 'lerini ve fiziksel sunucuları çoğaltmak için kapasite planlaması](site-recovery-plan-capacity-vmware.md)
-* [Hyper-V VM 'lerini Azure 'a çoğaltmak için kapasite planlaması](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [Hyper-V VM 'lerini Azure 'a çoğaltmak için kapasite planlaması](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux sunucularında uygulama tutarlılığı ile çoğaltmayı etkinleştirebilir miyim? 
 Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve son seçenekleri olan özel betik, uygulama tutarlılığı sırasında Azure Site Recovery Mobility Aracısı tarafından kullanılır. Aşağıda, etkinleştirme adımları verilmiştir.
@@ -253,7 +254,7 @@ Otomatik hale getirmek için, şirket içi Orchestrator veya Operations Manager 
 
 * Kurtarma planları hakkında [daha fazla bilgi edinin](site-recovery-create-recovery-plans.md) .
 * Yük devretme hakkında [daha fazla bilgi edinin](site-recovery-failover.md) .
-* VMware VM 'lerini ve fiziksel sunucuları geri dönme hakkında [daha fazla bilgi edinin](site-recovery-failback-azure-to-vmware.md)
+* VMware VM 'lerini ve fiziksel sunucuları geri dönme hakkında [daha fazla bilgi edinin](./vmware-azure-failback.md)
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Şirket içi Ana Bilgisayarım yanıt vermiyorsa veya kilitlenirse farklı bir konağa yeniden oturum açabilir miyim?
 Evet, Azure 'dan farklı bir konağa yeniden çalışma yapmak için alternatif konum kurtarma kullanabilirsiniz.
@@ -278,4 +279,3 @@ Yeni güncelleştirmeler hakkında [bilgi edinin](site-recovery-whats-new.md) ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Site Recovery'ye genel bakış](site-recovery-overview.md) başlığını okuyun.
-

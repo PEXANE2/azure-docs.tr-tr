@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057539"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135275"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows için Azure Performans Tanılama VM Uzantısı
 
@@ -88,7 +88,7 @@ Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösteri
 
 Uzantıyı Windows sanal makinelerine yüklemek için aşağıdaki yönergeleri izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Bu uzantıyı yüklemek istediğiniz sanal makineyi seçin.
 
     ![Sanal makineler vurgulanmış Azure portal ekran görüntüsü](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -253,6 +253,6 @@ Ayrıca, uzantıyı seçerek ZIP dosyasını doğrudan portaldan indirebilirsini
     Uzantı durumu uzantının başarıyla sağlandığını gösterdiği sürece bu sorun güvenle yoksayılabilir.
 - Uzantı günlüklerini kullanarak yükleme sırasında bazı sorunları ele alabilirsiniz. Uzantı yürütme çıkışı aşağıdaki dizinde bulunan dosyalara kaydedilir:
 
-        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
+    `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
 Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

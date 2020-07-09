@@ -4,12 +4,12 @@ description: Azure Site Recovery hizmetini kullanarak Azure VM için başka bir 
 ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
-ms.openlocfilehash: e26c2a1f24a88dc979f4ec68de65afc618740c00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371899"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135712"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Hızlı başlangıç: Azure VM için ikincil Azure bölgesine olağanüstü durum kurtarma ayarlama
 
@@ -17,24 +17,24 @@ ms.locfileid: "80371899"
 
 Bu hızlı başlangıçta, bir Azure VM için, ikincil bir Azure bölgesine çoğaltılarak olağanüstü durum kurtarmanın nasıl ayarlanacağı açıklanır. Genel olarak, çoğaltmayı etkinleştirmek için varsayılan ayarlar kullanılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliğine ve VM 'ye ihtiyacınız vardır.
 
 - Etkin aboneliği olan bir Azure hesabınız yoksa, [ücretsiz olarak bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- En az 1 GB RAM 'e sahip bir VM önerilir. VM oluşturma hakkında [daha fazla bilgi edinin](/azure/virtual-machines/windows/quick-create-portal) .
+- En az 1 GB RAM 'e sahip bir VM önerilir. VM oluşturma hakkında [daha fazla bilgi edinin](../virtual-machines/windows/quick-create-portal.md) .
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Azure VM için çoğaltmayı etkinleştirme
 
 Aşağıdaki adımlar, VM çoğaltmasını ikincil bir konuma etkinleştirir.
 
-1. Azure Portal, **ana** > **sanal makineler** menüsünde, çoğaltılacak bir VM seçin.
+1. Azure Portal, **ana**  >  **sanal makineler** menüsünde, çoğaltılacak bir VM seçin.
 1. **İşlemler** ' de **olağanüstü durum kurtarma**' yı seçin.
-1. **Temel bilgiler** > **hedef bölgesi**' nden hedef bölgeyi seçin.
+1. **Temel bilgiler**  >  **hedef bölgesi**' nden hedef bölgeyi seçin.
 1. Çoğaltma ayarlarını görüntülemek için, **gözden geçir + çoğaltmayı Başlat**' ı seçin. Herhangi bir varsayılanı değiştirmeniz gerekiyorsa, **Gelişmiş ayarlar**' ı seçin.
 1. VM çoğaltmasını sağlayan işi başlatmak için **çoğaltmayı Başlat**' ı seçin.
 
@@ -63,7 +63,7 @@ Birincil bölgedeki VM çoğaltmasını durdurmak için çoğaltmayı devre dı�
 1. Azure portal menüsünde, **sanal makineler** ' i seçin ve çoğaltılan VM 'yi seçin.
 1. **İşlemler** ' de **olağanüstü durum kurtarma**' yı seçin.
 1. **Genel bakışta** **çoğaltmayı devre dışı bırak**' ı seçin.
-1. Site Recovery uzantısını kaldırmak için VM 'nin **Ayarlar** > **uzantılarına**gidin.
+1. Site Recovery uzantısını kaldırmak için VM 'nin **Ayarlar**  >  **uzantılarına**gidin.
 
    :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Çoğaltmayı devre dışı bırakın.":::
 

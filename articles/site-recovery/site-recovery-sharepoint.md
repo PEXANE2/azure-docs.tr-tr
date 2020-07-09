@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74706375"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135407"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery kullanarak olağanüstü durum kurtarma için çok katmanlı bir SharePoint uygulaması için olağanüstü durum kurtarmayı ayarlama
 
@@ -33,12 +34,12 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak bir Shar
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakileri anladığınızdan emin olun:
 
-1. [Bir sanal makineyi Azure 'a çoğaltma](site-recovery-vmware-to-azure.md)
-2. [Kurtarma ağını tasarlama](site-recovery-network-design.md)
+1. [Bir sanal makineyi Azure 'a çoğaltma](./vmware-azure-tutorial.md)
+2. [Kurtarma ağını tasarlama](./concepts-on-premises-to-azure-networking.md)
 3. [Azure 'a yük devretme testi yapma](site-recovery-test-failover-to-azure.md)
 4. [Azure 'a yük devretme işlemi yapma](site-recovery-failover.md)
 5. [Bir etki alanı denetleyicisini çoğaltma](site-recovery-active-directory.md)
@@ -46,7 +47,7 @@ Başlamadan önce, aşağıdakileri anladığınızdan emin olun:
 
 ## <a name="sharepoint-architecture"></a>SharePoint mimarisi
 
-SharePoint, belirli hedefleri ve hedefleri karşılayan bir grup tasarımı uygulamak için katmanlı topolojiler ve sunucu rolleri kullanılarak bir veya daha fazla sunucuya dağıtılabilir. Çok sayıda eşzamanlı kullanıcıyı ve çok sayıda içerik öğesini destekleyen tipik bir büyük ve yüksek talebe sahip SharePoint sunucu grubu, ölçeklenebilirlik stratejilerinin bir parçası olarak hizmet gruplama 'yı kullanır. Bu yaklaşım adanmış sunucularda hizmetleri çalıştırmayı, bu Hizmetleri birlikte gruplandırmayı ve sonra sunucuları bir grup olarak ölçeklendirmeyi içerir. Aşağıdaki topolojide üç katmanlı bir SharePoint sunucu grubu için hizmet ve sunucu gruplandırması gösterilmektedir. Farklı SharePoint topolojileriyle ilgili ayrıntılı yönergeler için lütfen SharePoint belgelerine ve ürün hattı mimarilerine bakın. [Bu belgede](https://technet.microsoft.com/library/cc303422.aspx)SharePoint 2013 dağıtımı hakkında daha fazla ayrıntı bulabilirsiniz.
+SharePoint, belirli hedefleri ve hedefleri karşılayan bir grup tasarımı uygulamak için katmanlı topolojiler ve sunucu rolleri kullanılarak bir veya daha fazla sunucuya dağıtılabilir. Çok sayıda eşzamanlı kullanıcıyı ve çok sayıda içerik öğesini destekleyen tipik bir büyük ve yüksek talebe sahip SharePoint sunucu grubu, ölçeklenebilirlik stratejilerinin bir parçası olarak hizmet gruplama 'yı kullanır. Bu yaklaşım adanmış sunucularda hizmetleri çalıştırmayı, bu Hizmetleri birlikte gruplandırmayı ve sonra sunucuları bir grup olarak ölçeklendirmeyi içerir. Aşağıdaki topolojide üç katmanlı bir SharePoint sunucu grubu için hizmet ve sunucu gruplandırması gösterilmektedir. Farklı SharePoint topolojileriyle ilgili ayrıntılı yönergeler için lütfen SharePoint belgelerine ve ürün hattı mimarilerine bakın. [Bu belgede](/SharePoint/sharepoint-server)SharePoint 2013 dağıtımı hakkında daha fazla ayrıntı bulabilirsiniz.
 
 
 
@@ -61,10 +62,10 @@ Site Recovery, uygulama belirsiz ve desteklenen bir makinede çalışan herhangi
 
 **Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Evet | Evet
-**VMware** | Evet | Evet
-**Fiziksel sunucu** | Evet | Evet
-**Azure** | NA | Evet
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fiziksel sunucu** | Yes | Yes
+**Azure** | NA | Yes
 
 
 ### <a name="things-to-keep-in-mind"></a>Akılda tutulması gereken noktalar
@@ -73,7 +74,7 @@ Uygulamanızda herhangi bir katman olarak paylaşılan disk tabanlı bir küme k
 
 ## <a name="replicating-virtual-machines"></a>Sanal makineleri çoğaltma
 
-Sanal makineyi Azure 'a Çoğaltmaya başlamak için [Bu kılavuzu](site-recovery-vmware-to-azure.md) izleyin.
+Sanal makineyi Azure 'a Çoğaltmaya başlamak için [Bu kılavuzu](./vmware-azure-tutorial.md) izleyin.
 
 * Çoğaltma tamamlandıktan sonra her bir katmanın her bir sanal makinesine gitdiğinizden ve ' çoğaltılan öğe > ayarları > özellikler > Işlem ve ağ ' ' de aynı Kullanılabilirlik kümesini seçtiğinizden emin olun. Örneğin, Web katmanınızda 3 VM varsa, tüm 3 VM 'Lerin Azure 'da aynı Kullanılabilirlik kümesinin parçası olacak şekilde yapılandırıldığından emin olun.
 
@@ -98,7 +99,7 @@ Sanal makineyi Azure 'a Çoğaltmaya başlamak için [Bu kılavuzu](site-recover
 
 ### <a name="dns-and-traffic-routing"></a>DNS ve trafik yönlendirme
 
-İnternet 'e yönelik siteler için, Azure aboneliğinde [' Priority ' türünde bir Traffic Manager profili oluşturun](../traffic-manager/traffic-manager-create-profile.md) . Ve sonra DNS ve Traffic Manager profilinizi aşağıdaki şekilde yapılandırın.
+İnternet 'e yönelik siteler için, Azure aboneliğinde [' Priority ' türünde bir Traffic Manager profili oluşturun](../traffic-manager/quickstart-create-traffic-manager-profile.md) . Ve sonra DNS ve Traffic Manager profilinizi aşağıdaki şekilde yapılandırın.
 
 
 | **Olmadığı** | **Kaynak** | **Hedef**|
@@ -162,7 +163,7 @@ En yaygın olarak kullanılan Azure Site Recovery betikleri aşağıdaki ' Azure
     * Bu yöntem, Arama Hizmeti uygulamasının bir yedeğinin çok zararlı olaydan önce gerçekleştirildiğini ve yedeklemenin DR sitesinde kullanılabilir olduğunu varsayar.
     * Bu, yedeklemenin (örneğin, her gün) planlanarak ve yedeklemenin DR sitesine yerleştirileceği bir kopyalama yordamı kullanılarak kolayca elde edilebilir. Kopyalama yordamları AzCopy (Azure kopyası) veya DFSR (dağıtılmış dosya hizmetleri çoğaltması) gibi betikleştirilmiş programları içerebilir.
     * Artık SharePoint grubu çalışıyor olduğuna göre, Yönetim Merkezi, ' yedekleme ve geri yükleme ' ' ye gidin ve geri yükle ' yi seçin. Geri yükleme, yedekleme konumunu belirtilen şekilde yedekler (değeri güncelleştirmeniz gerekebilir). Geri yüklemek istediğiniz Arama Hizmeti uygulama yedeklemesini seçin.
-    * Arama geri yüklendi. Geri yüklemenin aynı topolojiyi (aynı sayıda sunucu) ve bu sunuculara atanmış sabit sürücü harflerini bulmasını beklediğini aklınızda bulundurun. Daha fazla bilgi için, bkz. [' SharePoint 2013 'de arama hizmeti uygulaması geri yükleme '](https://technet.microsoft.com/library/ee748654.aspx) belgesi.
+    * Arama geri yüklendi. Geri yüklemenin aynı topolojiyi (aynı sayıda sunucu) ve bu sunuculara atanmış sabit sürücü harflerini bulmasını beklediğini aklınızda bulundurun. Daha fazla bilgi için, bkz. [' SharePoint 2013 'de arama hizmeti uygulaması geri yükleme '](/SharePoint/administration/restore-a-search-service-application) belgesi.
 
 
 6. Yeni bir arama hizmeti uygulamasıyla başlamak için aşağıdaki adımları izleyin.

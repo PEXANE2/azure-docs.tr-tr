@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68841381"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135940"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama
 
@@ -26,7 +27,7 @@ Bu makalede, Azure 'da bir zD&T ortamında bir ADCD örneğinin nasıl ayarlanac
 
 ZD&T gibi, Adcd 'Ler yalnızca IBM müşterileri ve iş ortakları tarafından kullanılabilir ve yalnızca geliştirme ve test amaçlıdır. Bunlar, üretim ortamları için kullanılmamalıdır. [Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) veya [IBM PartnerWorld](https://www.ibm.com/partnerworld/public)aracılığıyla çok sayıda IBM yükleme paketi indirilebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -75,7 +76,7 @@ Artık pakete sahip olduğunuza göre, bunları Azure 'da sanal makinenize yükl
 
 4. Oturum açıldığında, IBM paketlerini karşıya yüklemek için bir dizin oluşturun. Linux 'ın büyük/küçük harfe duyarlı olduğunu aklınızda bulundurun. Örneğin, bu demo paketlerin karşıya yüklendiğini varsayar:
 
-        /home/MyUserID/ZDT/adcd/nov2017/volumes
+    `/home/MyUserID/ZDT/adcd/nov2017/volumes`
 
 5. Dosyaları[WinSCP](https://winscp.net/eng/index.php)gıbı bir SSH istemcisi kullanarak karşıya yükleyin. SCP SSH 'nin bir parçası olduğundan, SSH 'nin kullandığı bağlantı noktası 22 ' yi kullanır. Yerel bilgisayarınız Windows değilse, SSH oturumunuza [SCP komutunu](http://man7.org/linux/man-pages/man1/scp.1.html) yazabilirsiniz.
 
@@ -88,8 +89,8 @@ Artık pakete sahip olduğunuza göre, bunları Azure 'da sanal makinenize yükl
 
 8. Karşıya yüklemeler tamamlandığında, birimler dizinine gidin ve tüm **gz** birimlerinin sıkıştırmasını açın:
 
-    ```
-        gunzip \*.gz
+    ```console
+    gunzip \*.gz
     ```
     
 ![Açılan gz birimlerini gösteren dosya Gezgini](media/01-gunzip.png)
@@ -99,9 +100,9 @@ Artık pakete sahip olduğunuza göre, bunları Azure 'da sanal makinenize yükl
 Sonraki adım, zD&T 'leri karşıya yüklenen paketleri kullanacak şekilde yapılandırmaktır. ZD&T içindeki görüntü depolama işlemi görüntüleri takabilmeniz ve kullanmanıza olanak sağlar. SSH veya FTP kullanabilir.
 
 1. **Zdtserver**'ı başlatın. Bunu yapmak için kök düzeyinde olmanız gerekir. Sırasıyla aşağıdaki iki komutu girin:
-    ```
-        sudo su -
-        /opt/ibm/zDT/bin/startServer
+    ```console
+    sudo su -
+    /opt/ibm/zDT/bin/startServer
     ```
 2. Komutun URL çıkışını ve Web sunucusuna erişmek için bu URL 'yi kullanın. Şuna benzer:
      > https://(VM adınız veya IP adresiniz): 9443/ZDTMC/index.html

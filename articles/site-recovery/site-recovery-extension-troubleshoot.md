@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133759"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM Uzantısı sorunlarını giderme
 
@@ -68,14 +69,14 @@ VM Aracısı bozulmuş olabilir veya hizmet durdurulmuş olabilir. VM Aracısı 
 1. Windows Azure Konuk Aracısı hizmetinin hizmetler 'de göründüğünü doğrulayın.
 1. Koruma işini yeniden başlatın.
 
-Ayrıca, VM 'de [Microsoft .NET 4,5 ' nin yüklü](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) olduğunu doğrulayın. VM aracısının hizmetle iletişim kurması için .NET 4,5 gerekir.
+Ayrıca, VM 'de [Microsoft .NET 4,5 ' nin yüklü](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) olduğunu doğrulayın. VM aracısının hizmetle iletişim kurması için .NET 4,5 gerekir.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 'de yüklü olan aracı güncel değil (Linux VM 'Leri için)
 
 #### <a name="solution"></a>Çözüm
 Linux VM 'Leri için aracıyla ilgili veya uzantı ile ilgili çoğu başarısızlık, süresi geçmiş bir VM aracısını etkileyen sorunlardan kaynaklanır. Bu sorunu gidermek için aşağıdaki genel yönergeleri izleyin:
 
-1. [LINUX VM aracısını güncelleştirme](../virtual-machines/linux/update-agent.md)yönergelerini izleyin.
+1. [LINUX VM aracısını güncelleştirme](../virtual-machines/extensions/update-linux-agent.md)yönergelerini izleyin.
 
    > [!NOTE]
    > Aracıyı yalnızca bir dağıtım deposu aracılığıyla güncelleştirmenizi *önemle tavsiye* ederiz. Doğrudan GitHub 'dan aracı kodunu indirmenizi ve güncelleştirmeyi önermiyoruz. Dağıtım için en son aracı kullanılamıyorsa, nasıl yükleneceğine ilişkin yönergeler için dağıtım desteğiyle iletişim kurun. En son aracıyı denetlemek için GitHub deposundaki [Windows Azure Linux Aracısı](https://github.com/Azure/WALinuxAgent/releases) sayfasına gidin.
@@ -106,6 +107,6 @@ Uzantıyı kaldırmak için:
 1. **Site Recovery uzantısı**' nı seçin.
 1. **Kaldır**'ı seçin.
 
-Linux VM için, VMSnapshot uzantısı Azure portal gösterilmezse [Azure Linux aracısını güncelleştirin](../virtual-machines/linux/update-agent.md). Ardından korumayı çalıştırın.
+Linux VM için, VMSnapshot uzantısı Azure portal gösterilmezse [Azure Linux aracısını güncelleştirin](../virtual-machines/extensions/update-linux-agent.md). Ardından korumayı çalıştırın.
 
 Bu adımları tamamladığınızda, uzantının koruma sırasında yeniden yüklenmesine neden olur.

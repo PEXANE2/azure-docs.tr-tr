@@ -7,22 +7,27 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725809"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135879"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Oto Rest ile Azure dijital TWINS için özel SDK 'lar oluşturma
+# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
 
 Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Sı .NET için geçerlidir (C#). .NET SDK ve genel olarak API 'Ler hakkında bilgi edinmek için bkz. [nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi SDK 'nizi tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilir.
 
-## <a name="set-up-the-sdk"></a>SDK 'Yı ayarlama
+## <a name="set-up-your-machine"></a>Makinenizi kurma
 
 Bir SDK oluşturmak için şunlar gerekir:
 * [Oto Rest](https://github.com/Azure/autorest), sürüm 2.0.4413 (sürüm 3 Şu anda desteklenmiyor)
 * Otomatik Rest için önkoşul olarak [Node.js](https://nodejs.org)
-* [Azure Digital TWINS Openapı (Swagger) dosyası](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview/digitaltwins.json)
+* *digitaltwins.js*sahip olan [Azure Digital TWINS Swagger (openapı) dosyası](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) ve buna eşlik eden örnek klasörü. Swagger dosyasını ve örnek klasörünü yerel makinenize indirin.
+
+Makinenizde yukarıdaki listeden her şey varsa, SDK 'Yı oluşturmak için oto Rest 'i kullanmaya hazırsınız demektir.
+
+## <a name="create-the-sdk-with-autorest"></a>Oto Rest ile SDK oluşturma 
 
 Node.js yüklüyse, doğru oto Rest sürümünün yüklü olduğundan emin olmak için bu komutu çalıştırabilirsiniz:
 ```cmd/sh
@@ -30,31 +35,33 @@ npm install -g autorest@2.0.4413
 ```
 
 Azure dijital TWINS Swagger dosyasında oto Rest 'i çalıştırmak için aşağıdaki adımları izleyin:
-1. Azure dijital TWINS Swagger dosyasını çalışma dizinine kopyalayın.
-2. Bir komut isteminde o çalışma dizinine geçin.
-3. Aşağıdaki komutla, oto REST komutunu çalıştırın.
+1. Azure dijital TWINS Swagger dosyasını ve buna eşlik eden örnek klasörünü çalışma dizinine kopyalayın.
+2. Bu çalışma dizinine geçiş yapmak için bir komut istemi penceresi kullanın.
+3. Aşağıdaki komutla, oto REST komutunu çalıştırın. `<language>`Yer tutucusunu tercih ettiğiniz dille değiştirin: `--python` , `--java` , `--go` , vb. ( [oto Rest Benioku](https://github.com/Azure/autorest)dosyasında seçeneklerin tam listesini bulabilirsiniz.)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --csharp --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Sonuç olarak, çalışma dizininizde *Adtapı* adlı yeni bir klasör görürsünüz. Oluşturulan SDK dosyaları *Adtapı*ad alanına sahip olacaktır, bu da örneklerin geri kalanı aracılığıyla kullanmaya devam edersiniz.
+Sonuç olarak, çalışma dizininizde *Adtapı* adlı yeni bir klasör görürsünüz. Oluşturulan SDK dosyaları *Adtapı*ad alanına sahip olacaktır, bu da bu makaledeki kullanım örneklerinin geri kalanı aracılığıyla kullanmaya devam edersiniz.
 
 Oto Rest, çok çeşitli dil kodu oluşturucuları destekler.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>SDK 'Yı bir Visual Studio projesine ekleme
 
-Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları dahil edebilirsiniz. Ancak, Azure dijital TWINS SDK 'sına çok sayıda ayrı projede (istemci uygulamalarınız, Azure Işlevleri uygulamalarınız vb.) ihtiyacınız olacak şekilde, oluşturulan dosyalardan ayrı bir proje (.NET sınıf kitaplığı) oluşturmanızı öneririz. Daha sonra bu sınıf kitaplığı projesini diğer çözümlerinizi proje başvurusu olarak ekleyebilirsiniz.
+Doğrudan bir .NET çözümüne, oto Rest tarafından oluşturulan dosyaları dahil edebilirsiniz. Ancak, Azure dijital TWINS SDK 'sına birçok ayrı projede (istemci uygulamalarınız, Azure Işlevleri uygulamalarınız vb.) ihtiyaç duymadığınızda, oluşturulan dosyalardan ayrı bir proje (.NET sınıf kitaplığı) oluşturmak yararlı olabilir. Daha sonra bu sınıf kitaplığı projesini bir proje başvurusu olarak çeşitli çözümlere dahil edebilirsiniz.
 
-Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Uygulamanız gereken adımlar:
+Bu bölüm, SDK 'nın kendi projesi olan ve diğer projelere dahil olabilen bir sınıf kitaplığı olarak nasıl oluşturulacağı hakkında yönergeler sağlar. Bu adımlar **Visual Studio 'yu** kullanır (en son sürümü [buradan](https://visualstudio.microsoft.com/downloads/)yükleyebilirsiniz).
+
+Uygulamanız gereken adımlar:
 
 1. Sınıf kitaplığı için yeni bir Visual Studio çözümü oluşturma
-2. Proje adı olarak "ADTApi" adını kullanın
+2. Proje adı olarak *Adtapi* kullanın
 3. Çözüm Gezgini ' nde, oluşturulan çözümün *Adtapi* projesini sağ seçin ve *> var olan öğe Ekle ' yi seçin...*
 4. SDK 'Yı oluşturduğunuz klasörü bulun ve kök düzeyindeki dosyaları seçin
 5. "Tamam" düğmesine basın
 6. Projeye bir klasör ekleyin (Çözüm Gezgini içinde projeyi sağ seçin ve *> yeni klasör ekle*' yi seçin.
-7. Klasörü "modeller" olarak adlandırın
+7. Klasör *modellerini* adlandırın
 8. Çözüm Gezgini ' nde *modeller* klasörünü sağ seçin ve *> var olan öğeyi Ekle ' yi seçin...*
 9. Oluşturulan SDK 'nın *modeller* klasöründeki dosyaları seçin ve "Tamam" düğmesine basın
 

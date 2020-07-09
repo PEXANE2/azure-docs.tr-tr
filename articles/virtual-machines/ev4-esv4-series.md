@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 967df2022166936df71b30fbe9d49798663ce962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccb6bbcddaa5ce76e9dbb04d737830fbaf5c2d9f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783606"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134325"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 ve Esv4 serisi
 
@@ -30,7 +30,7 @@ Ev4 serisi boyutlar Intel Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde ç
 Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Esv4 boyutlarını kullanın. Esv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Ev4 serisi ile aynıdır.
 
 > [!IMPORTANT]
-> Bu yeni boyutlar Şu anda yalnızca genel önizleme aşamasındadır. Bu dv4 ve Dsv4 serisi için [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)kaydolma yapabilirsiniz. 
+> Bu yeni boyutlar Şu anda yalnızca genel önizleme aşamasındadır. Bu Ev4 ve Esv4 serisi için [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)kaydolma yapabilirsiniz. 
 
 ACU: 195-210
 
@@ -59,7 +59,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 Esv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Esv4 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir. Evs4 serisi VM 'Ler özelliği Intel &reg; hiper Iş parçacığı teknolojisi. Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
 
 > [!IMPORTANT]
-> Bu yeni boyutlar Şu anda yalnızca genel önizleme aşamasındadır. Bu dv4 ve Dsv4 serisi için [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)kaydolma yapabilirsiniz. 
+> Bu yeni boyutlar Şu anda yalnızca genel önizleme aşamasındadır. Bu Ev4 ve Esv4 serisi için [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)kaydolma yapabilirsiniz. 
 
 ACU: 195-210
 

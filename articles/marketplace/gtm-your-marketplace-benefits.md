@@ -1,18 +1,18 @@
 ---
 title: Go-to-market Hizmetleri-ticari Market avantajlarınız, Azure Marketi
 description: Go-to-market Services-yayımcıların kullanabileceği Microsoft kaynakları bu bölümde açıklanmıştır.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 7de2e36edbcd0b55facae89be477ac0d334dae49
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: keferna
+ms.author: keferna
+ms.openlocfilehash: c954e3c685a795942f78bdb19b59ca817252d26b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085693"
+ms.locfileid: "86135513"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -34,15 +34,15 @@ Transact iş ortakları için, Market platformu aracılığıyla faturalanan sat
 
 Stoıd 'ler içinde yayımlamak için en düşük gereksinim bir MPNID olduğundan, bu avantajlar MPN uzmanlığa veya iş ortağı türünden bağımsız olarak tüm iş ortakları tarafından kullanılabilir. Her iş ortağı, işletmelerini bir platform olarak marketten büyütmek için güçde bulunur.
 
-Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, [kendi kendinize de gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
+Size sunulan kaynakları anlama ve en iyi uygulamaları uygulama konusunda, sizin de [gözden geçirebilmeniz](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)için destek alacaksınız.
 
-Tüm program avantajlarının ayrıntılı açıklamaları [Market 'Teki ödüller program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
+Tüm program avantajlarının ayrıntılı açıklamaları bu Market 'te yer alabilir [Program sunumunda](https://aka.ms/marketplacerewards)bulunabilir.
 
-Kullanmaya başlamak için adımlarınız kolaydır:
+Kullanmaya başlamak kolaydır:
 
 1. Microsoft AppSource veya Azure Marketi 'nde teklif yayımlayın.
-2. Iş Ortağı Merkezi [panosuna](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)gidin, sol gezinti **menüsünde ticari Market** ' i açın, **Market depoları**' nı seçin **ve ardından satış ve pazarlama avantajları** sekmesini seçerek avantajlarınızın listesini görüntüleyin.
-3. Satış ve pazarlama avantajını etkinleştirmek için önce bir şirket pazarlama kişisi atamanız gerekir. Bu kişi Marketplace Rewards avantajınız hakkında izleme amaçlı iletişimleri alacaktır.
+2. Iş Ortağı Merkezi ' nde [Market](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) 'e gidin ve **Market yeniden oluşturma programı '** nı seçin.
+3. Satış ve pazarlama avantajını etkinleştirmek için bir şirket pazarlama kişisi atayın. Bu kişi Marketplace Rewards avantajınız hakkında izleme amaçlı iletişimleri alacaktır.
 4. Pazarlama iletişim bilgilerinizi eklemek veya güncelleştirmek için Market depoları sayfasında satış ve pazarlama avantajları sekmesinin en üstüne gidin ve **Ekle, Güncelleştir veya Değiştir**' i seçin.  Sonra, şunları yapın:
 
     1. Listeden bir kullanıcı seçin. Atamak istediğiniz Kullanıcı listede yoksa, **Hesap ayarlarına**yeni kullanıcı ekleyebilirsiniz.
@@ -56,7 +56,7 @@ Kullanmaya başlamak için adımlarınız kolaydır:
 2. Azure Sponsorluk avantajlarının kullanımı, bu avantajlardan yararlanılması sırasında bir e-posta aracılığıyla paylaşılır.
 
 >[!NOTE]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://aka.ms/marketplacepublishersupport)' e bir destek bileti yükseltebilirsiniz.
+>Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir.<br><br>Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://aka.ms/marketplacepublishersupport)' e bir destek bileti yükseltebilirsiniz.
 
 Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 
@@ -75,7 +75,7 @@ Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye pro
 Azure Market veya Microsoft AppSource 'de transactable teklifinizle canlı olduğunuzda, faturalandırılan satış işlemlerinizi veya ticari Market aracılığıyla satılan bilgisayarları büyürken ek avantajlara erişebilirsiniz. 
 
 >[!NOTE]
->Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2020 tarihine kadar tamamlanması gerekir.
+>Satılan bir koltuk, yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2020 tarihine kadar tamamlanması gerekir.
 
 Bu avantajlar, pazarlama, satış ve teknik etkinliklerinizde size yardımcı olmak üzere tasarlanmıştır ve böylece daha fazla ziyaretçi elde etmenizi, daha fazla müşteri adayları almanızı ve daha fazla iş dönüştürmenizi sağlar.
 

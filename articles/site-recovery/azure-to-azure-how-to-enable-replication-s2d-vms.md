@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135755"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Depolama Alanları Doğrudan çalıştıran Azure VM 'lerini başka bir bölgeye çoğaltma
 
@@ -19,7 +20,7 @@ Bu makalede, depolama alanları doğrudan çalıştıran Azure VM 'lerinin olağ
 >Yalnızca çökme ile tutarlı kurtarma noktaları, depolama alanları doğrudan kümeleri için desteklenir.
 >
 
-[Depolama alanları doğrudan (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) , Azure üzerinde [Konuk kümeler](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) oluşturmak için bir yol sağlayan, yazılım tanımlı bir depodır.  Microsoft Azure Konuk küme, IaaS VM 'lerinden oluşan bir yük devretme kümesidir. Barındırılan VM iş yüklerinin Konuk kümeler genelinde yük devredebilmeleri için, tek bir Azure VM 'den farklı uygulamalar için daha yüksek kullanılabilirlik SLA 'Sı sağlar. Bir VM 'nin SQL veya genişleme dosya sunucusu gibi kritik bir uygulamayı barındırdığı senaryolarda faydalıdır.
+[Depolama alanları doğrudan (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) , Azure üzerinde [Konuk kümeler](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering) oluşturmak için bir yol sağlayan, yazılım tanımlı bir depodır.  Microsoft Azure Konuk küme, IaaS VM 'lerinden oluşan bir yük devretme kümesidir. Barındırılan VM iş yüklerinin Konuk kümeler genelinde yük devredebilmeleri için, tek bir Azure VM 'den farklı uygulamalar için daha yüksek kullanılabilirlik SLA 'Sı sağlar. Bir VM 'nin SQL veya genişleme dosya sunucusu gibi kritik bir uygulamayı barındırdığı senaryolarda faydalıdır.
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>Depolama alanları doğrudan ile olağanüstü durum kurtarma
 
@@ -37,14 +38,14 @@ Aşağıdaki diyagramda, depolama alanları doğrudan kullanan iki düğümlü b
 
 **Olağanüstü durum kurtarma konuları**
 
-1. Küme için [bulut tanığı](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) ayarlarken, tanığını olağanüstü durum kurtarma bölgesinde tutun.
-2. Kaynak bölgeden farklı olan DR bölgesindeki alt ağa sanal makinelerin yükünü devretmek için, küme IP adresinin yük devretmeden sonra değiştirilmesi gerekir.  Kümenin IP 'sini değiştirmek için Site Recovery [kurtarma planı betiğini](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation) kullanmanız gerekir.</br>
+1. Küme için [bulut tanığı](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) ayarlarken, tanığını olağanüstü durum kurtarma bölgesinde tutun.
+2. Kaynak bölgeden farklı olan DR bölgesindeki alt ağa sanal makinelerin yükünü devretmek için, küme IP adresinin yük devretmeden sonra değiştirilmesi gerekir.  Kümenin IP 'sini değiştirmek için Site Recovery [kurtarma planı betiğini](./site-recovery-runbook-automation.md) kullanmanız gerekir.</br>
 Özel Betik uzantısı kullanarak VM içinde komut yürütmek için [örnek betik](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>S2D kümesi için Site Recovery Etkinleştiriliyor:
 
 1. Kurtarma Hizmetleri kasasının içinde "+ Çoğalt" a tıklayın.
-1. Kümedeki tüm düğümleri seçin ve bunları [Çoklu VM tutarlılık grubunun](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency) bir parçası yapın
+1. Kümedeki tüm düğümleri seçin ve bunları [Çoklu VM tutarlılık grubunun](./azure-to-azure-common-questions.md#multi-vm-consistency) bir parçası yapın
 1. Uygulama tutarlılığı olmadan çoğaltma ilkesi seçin * (yalnızca kilitlenme tutarlılığı desteği kullanılabilir)
 1. Çoğaltmayı etkinleştirme
 
@@ -69,7 +70,7 @@ Uygulamalarınızın düzgün çalışması için, yük devretmeden sonra veya y
 
 
 ### <a name="failover-of-the-virtual-machines"></a>Sanal makinelerin yük devretmesi 
-Site Recovery [kurtarma planı](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) kullanılarak sanal makinelerin her iki düğümünün da yük devri yapması gerekir 
+Site Recovery [kurtarma planı](./site-recovery-create-recovery-plans.md) kullanılarak sanal makinelerin her iki düğümünün da yük devri yapması gerekir 
 
 ![storagespacesdirect koruması](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -93,4 +94,4 @@ Daha fazla bilgi için bkz. [Azure 'a yük devretmeyi test etme Site Recovery](s
 Daha fazla bilgi için bkz. [Site Recovery 'de yük devretme](site-recovery-failover.md).
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeniden çalışma çalıştırma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) .
+Yeniden çalışma çalıştırma hakkında [daha fazla bilgi edinin](./azure-to-azure-tutorial-failover-failback.md) .

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488945"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135724"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure sanal makineleri için bölgeyi bölgeye olağanüstü durum kurtarmaya etkinleştirme
 
@@ -97,7 +98,7 @@ Azure portal oturum açın.
 
 5. Çoğaltma ayarlarında değişiklik yapmak istiyorsanız ' Ileri: Gelişmiş ayarlar ' seçeneğine tıklayın.
 
-6. Ayarları uygun olan yerlerde varsayılan olarak değiştirin. Azure 'dan Azure 'a olağanüstü durum kurtarma ile ilgili Bu sayfa tanıdık görünebilir. Bu dikey pencerede sunulan seçeneklerle ilgili daha fazla ayrıntı [burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) bulunabilir
+6. Ayarları uygun olan yerlerde varsayılan olarak değiştirin. Azure 'dan Azure 'a olağanüstü durum kurtarma ile ilgili Bu sayfa tanıdık görünebilir. Bu dikey pencerede sunulan seçeneklerle ilgili daha fazla ayrıntı [burada](./azure-to-azure-tutorial-enable-replication.md) bulunabilir
 
     ![Gelişmiş ayarlar sayfası](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -115,7 +116,7 @@ RTO SLA, Site Recovery genel olarak aynıdır. 2 saate kadar taahhüdünü taahh
 Site Recovery Team ve Azure kapasite yönetimi ekibi, yeterli altyapı kapasitesi için plan yapın. Yük devretme başlattığınızda takımlar, Site Recovery tarafından korunan sanal makine örneklerinin hedef bölgeye dağıtılmasını sağlamaya de yardımcı olur.
 
 **4. hangi işletim sistemleri destekleniyor?**
-Bölgeden bölgeye olağanüstü durum kurtarma, Azure ile Azure olağanüstü durum kurtarma ile aynı işletim sistemlerini destekler. [Buradaki](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)destek matrisine bakın.
+Bölgeden bölgeye olağanüstü durum kurtarma, Azure ile Azure olağanüstü durum kurtarma ile aynı işletim sistemlerini destekler. [Buradaki](./azure-to-azure-support-matrix.md)destek matrisine bakın.
 
 **5. kaynak ve hedef kaynak grupları aynı olabilir mi?**
 Hayır, farklı bir kaynak grubuna yük devretmeli.
@@ -124,8 +125,8 @@ Hayır, farklı bir kaynak grubuna yük devretmeli.
 
 Olağanüstü durum kurtarma detaya gitme, yük devretme, yeniden koruma ve yeniden çalışma işlemlerini çalıştırmak için izlenmesi gereken adımlar, Azure 'daki Azure 'da olağanüstü durum kurtarma senaryosunda bulunan adımlarla aynıdır.
 
-Olağanüstü durum kurtarma detayına ulaşmak için lütfen [burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill)özetlenen adımları izleyin.
+Olağanüstü durum kurtarma detayına ulaşmak için lütfen [burada](./azure-to-azure-tutorial-dr-drill.md)özetlenen adımları izleyin.
 
-İkincil bölgedeki VM 'Leri yük devretme ve yeniden koruma işlemleri gerçekleştirmek için [burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)özetlenen adımları izleyin.
+İkincil bölgedeki VM 'Leri yük devretme ve yeniden koruma işlemleri gerçekleştirmek için [burada](./azure-to-azure-tutorial-failover-failback.md)özetlenen adımları izleyin.
 
-Birincil bölgeye yeniden çalışma için [burada](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback)özetlenen adımları izleyin.
+Birincil bölgeye yeniden çalışma için [burada](./azure-to-azure-tutorial-failback.md)özetlenen adımları izleyin.
