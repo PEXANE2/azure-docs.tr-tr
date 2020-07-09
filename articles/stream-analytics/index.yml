@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Stream Analytics belgeleri
-summary: Azure Stream Analytics, uyarıları ve eylemleri tetiklemek için kullanılabilen hızlı hareketli veri akışlarını analiz etmeniz ve işlemeniz için tasarlanan, tam olarak yönetilen, gerçek zamanlı bir analiz hizmetidir. Hızlı başlangıçlarımız, öğreticilerimiz ve örneklerimizle Azure Stream Analytics'i kullanmayı öğrenin.
+summary: Azure Stream Analytics, içgörü elde etmek, rapor oluşturmak ya da uyarıları ve eylemleri tetiklemek için kullanılabilen hızlı hareketli veri akışlarını analiz etmeniz ve işlemeniz için tasarlanan, tam olarak yönetilen, gerçek zamanlı bir analiz hizmetidir. Hızlı başlangıçlarımız, öğreticilerimiz ve örneklerimizle Azure Stream Analytics'i kullanmayı öğrenin.
 metadata:
   title: Azure Stream Analytics belgeleri
-  description: Azure Stream Analytics, uyarıları ve eylemleri tetiklemek için kullanılabilen hızlı hareketli veri akışlarını analiz etmeniz ve işlemeniz için tasarlanan, tam olarak yönetilen, gerçek zamanlı bir analiz hizmetidir. Hızlı başlangıçlarımız, öğreticilerimiz ve örneklerimizle Azure Stream Analytics'i kullanmayı öğrenin.
+  description: Azure Stream Analytics, içgörü elde etmek, rapor oluşturmak ya da uyarıları ve eylemleri tetiklemek için kullanılabilen hızlı hareketli veri akışlarını analiz etmeniz ve işlemeniz için tasarlanan, tam olarak yönetilen, gerçek zamanlı bir analiz hizmetidir. Hızlı başlangıçlarımız, öğreticilerimiz ve örneklerimizle Azure Stream Analytics'i kullanmayı öğrenin.
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 757c60487e4c4c7fedca4824cd40e86cbd9ca465
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130944"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86119659"
 landingContent:
 - title: Azure Stream Analytics hakkında
   linkLists:

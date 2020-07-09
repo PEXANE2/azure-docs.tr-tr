@@ -228,6 +228,8 @@
           href: control-kubeconfig-access.md
         - name: Ağ ilkeleri ile pod trafiğinin güvenliğini sağlama
           href: use-network-policies.md
+        - name: Azure İlkesi ile pod güvenliğini sağlama (önizleme)
+          href: use-pod-security-on-azure-policy.md
         - name: Pod güvenlik ilkelerini kullanma (önizleme)
           href: use-pod-security-policies.md
         - name: API sunucusu tarafından yetkilendirilen IP aralıklarını tanımlama
@@ -244,6 +246,8 @@
               href: managed-aad.md
             - name: Azure CLI kullanma
               href: azure-ad-integration-cli.md
+        - name: Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
+          href: manage-azure-rbac.md
         - name: Azure AD tümleştirmesiyle Kubernetes RBAC kullanma
           href: azure-ad-rbac.md
           maintainContext: true

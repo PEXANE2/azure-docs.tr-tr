@@ -2,19 +2,19 @@
 title: Azure Lighthouse örnekleri ve şablonları
 description: Bu örnekler ve Azure Resource Manager şablonları, Azure temsilcili kaynak yönetimi için müşterilerin nasıl ekleneceğini ve Azure Lighthouse senaryolarının nasıl destekleneceğini gösterir.
 ms.topic: sample
-ms.date: 03/30/2020
-ms.openlocfilehash: 9e0ba8175931e277357e5b65e7e9ebded908a675
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 07/07/2020
+ms.openlocfilehash: 9a90923b43fa5afe59f6385e3f227cdc722b27f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421144"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111686"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse örnekleri
 
 Aşağıdaki tablo, Azure Lighthouse için önemli Azure Resource Manager şablonlarının bağlantılarını içerir. Bu dosyalar ve daha fazlası [Azure Lighthouse örnekleri deposunda](https://github.com/Azure/Azure-Lighthouse-samples/) da bulunabilir.
 
-## <a name="onboarding-customers-to-azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimine müşterileri ekleme
+## <a name="onboarding-customers-to-azure-lighthouse"></a>Azure Lighthouse’a müşteri ekleme
 
 [!INCLUDE [azure-lighthouse-samples-onboarding](../../../includes/azure-lighthouse-samples-onboarding.md)]
 

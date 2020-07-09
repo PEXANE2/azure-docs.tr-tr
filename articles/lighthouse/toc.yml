@@ -41,7 +41,7 @@
       href: ./concepts/managed-applications.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
+    - name: Bir müşteriyi Azure Lighthouse’a ekleme
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Yönetilen Hizmet tekliflerini Azure Market’te yayımlama

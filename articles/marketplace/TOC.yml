@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: Eyalet kodları
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: Yayın durumu
-      href: ./partner-center-portal/publishing-status.md
+    - name: İnceleme ve yayımlama
+      href: review-publish-offer.md
     - name: Mevcut teklifleri güncelleştirme
       href: ./partner-center-portal/update-existing-offer.md
     - name: Avantajları etkinleştirme

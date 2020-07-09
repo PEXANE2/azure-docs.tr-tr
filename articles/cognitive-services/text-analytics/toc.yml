@@ -68,6 +68,8 @@
       href: How-tos/text-analytics-how-to-keyword-extraction.md
     - name: Adlandırılmış varlık tanıma
       href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: Sistem Durumu için Metin Analizi
+      href: How-tos/text-analytics-for-health.md
     - name: Kapsayıcıları kullanma
       items:
         - name: Kapsayıcıları yükleme ve çalıştırma

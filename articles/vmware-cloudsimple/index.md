@@ -1,6 +1,6 @@
 ---
 title: CloudSimple tarafından sunulan Azure VMware Çözümü
-description: CloudSimple tarafından sunulan Azure VMware Çözümü için belge portalı.
+description: CloudSimple Azure VMware Çözümü için belgeleri bulun.
 author: sharaths-cs
 ms.author: b-mashar
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8866015fc4c9d054289a3eea2b9b8453ae39edcf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "77025223"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116650"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından sunulan Azure VMware Çözümü
 

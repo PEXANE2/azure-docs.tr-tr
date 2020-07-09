@@ -520,6 +520,8 @@
         - name: Konuşma kapsayıcılarını yapılandırma
           displayName: 'containers,configure containers,container config,configuration'
           href: speech-container-configuration.md
+        - name: Konuşma kapsayıcılarıyla toplu işlem
+          href: speech-container-batch-processing.md
         - name: Kubernetes ve Helm ile konuşma kapsayıcıları
           displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
           href: speech-container-howto-on-premises.md

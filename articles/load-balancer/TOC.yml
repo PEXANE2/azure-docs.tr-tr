@@ -12,18 +12,21 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Load Balancer oluşturma - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Load Balancer oluşturma - PowerShell
+    - name: Load Balancer oluşturma - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Load Balancer oluşturma - ARM şablonu
-      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
+    - name: İç Load Balancer oluşturma - Portal
+      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: İç Load Balancer oluşturma - Azure CLI
+      href: load-balancer-get-started-ilb-arm-cli.md
+    - name: İç Load Balancer oluşturma - Azure PowerShell
+      href: load-balancer-get-started-ilb-arm-ps.md
+    - name: İç Load Balancer oluşturma - ARM şablonu
+      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Öğreticiler
   items:
-    - name: Sanal makinelerin internet trafiğinde yük dengeleme
-      href: tutorial-load-balancer-standard-manage-portal.md
-    - name: Sanal makinelerin iç trafiğinde yük dengeleme
-      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Farklı kullanılabilirlik bölgelerindeki VM’lerin yükünü dengeleme
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Belirli bir kullanılabilirlik bölgesi içinde VM yükünü dengeleme
@@ -78,17 +81,17 @@
           href: configure-vm-scale-set-powershell.md
         - name: Mevcut bir Azure Load Balancer ile kullanma - CLI
           href: configure-vm-scale-set-cli.md
-    - name: Temel Load Balancer’ı Standart Load Balancer’a yükseltme
+    - name: Temel sürümden Standart Load Balancer’a yükseltme
       items:
         - name: Temel Genel Load Balancer’ı yükseltme
           href: upgrade-basic-standard.md
-        - name: Temel İç Load Balancer’ı Yükseltme - Giden Bağlantı Gerekmez
+        - name: İç Load Balancer’ı Yükseltme - Giden Bağlantı Gerekmez
           href: upgrade-basicInternal-standard.md
-        - name: Temel İç Load Balancer’ı Yükseltme - Giden Bağlantı Gerekir
+        - name: İç Load Balancer’ı Yükseltme - Giden Bağlantı Gerekir
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Giden kuralları yapılandırma
       items:
-        - name: Azure portal
+        - name: Portal
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
@@ -103,35 +106,25 @@
         - name: Azure Resource Manager şablonu
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: İç Load Balancer yapılandırma
-      items:
-        - name: Azure portal
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Azure Resource Manager şablonu
-          href: load-balancer-get-started-ilb-arm-template.md
-          displayName: ARM
     - name: Yük Dengeleyici için TCP boşta kalma zaman aşımı yapılandırma
       href: load-balancer-tcp-idle-timeout.md
     - name: Load Balancer için dağıtım modunu yapılandırma
       href: load-balancer-distribution-mode.md
     - name: Birden fazla IP yapılandırması kullanma
-      href: load-balancer-multiple-ip.md
       items:
+        - name: Portal
+          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
     - name: Bölgeler arasında taşıma
       items:
-        - name: Dış yük dengeleyici - Portal
+        - name: Genel Load Balancer - Portal
           href: move-across-regions-external-load-balancer-portal.md
-        - name: Dış yük dengeleyici - PowerShell
+        - name: Genel Load Balancer - PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
-        - name: İç yük dengeleyici - Portal
+        - name: Genel Load Balancer - Portal
           href: move-across-regions-internal-load-balancer-portal.md
         - name: İç yük dengeleyici - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md

@@ -116,6 +116,12 @@
           href: how-to-virtual-hub-routing.md
         - name: Sanal merkezin geçerli yollarını görüntüleme
           href: effective-routes-virtual-hub.md
+        - name: Sanal hub'dan NVA'ya trafik yönlendirme (eski)
+          items:
+            - name: Azure portal
+              href: virtual-wan-route-table-nva-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table-nva.md
     - name: Güvenlik
       items:
         - name: Bir merkeze Azure Güvenlik Duvarı yükleme

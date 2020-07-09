@@ -88,7 +88,7 @@
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Makine öğrenmesi UDF
           href: machine-learning-udf.md
-        - name: UDF ve güncelleştirmelerde hata ayıklama
+        - name: Hata ayıklama UDF’leri
           href: debug-user-defined-functions.md
     - name: Stream Analytics işinizi iyileştirin
       items:
