@@ -3,15 +3,16 @@ title: Azure geçişi 'nde değerlendirme/geçiş aracı ekleme
 description: Azure geçişi projesi oluşturmayı ve değerlendirme/geçiş aracının nasıl ekleneceğini açıklar.
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82901176"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102540"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Bir değerlendirmeyi/geçiş aracını ilk kez ekleme
 
-Bu makalede, bir [Azure geçiş](migrate-overview.md) projesine ilk kez nasıl değerlendirme veya geçiş aracı ekleneceği açıklanmaktadır.  
+Bu makalede, bir [Azure geçiş](./migrate-services-overview.md) projesine ilk kez nasıl değerlendirme veya geçiş aracı ekleneceği açıklanmaktadır.  
 Azure geçişi, şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve diğer araçlar ve bağımsız yazılım satıcısı (ISV) [tekliflerini](migrate-services-overview.md#isv-integration) sağlar. 
 
 ## <a name="check-permissions-to-create-project"></a>Proje oluşturmak için izinleri denetle

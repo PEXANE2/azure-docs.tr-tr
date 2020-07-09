@@ -2,19 +2,17 @@
 title: dosya dahil etme
 description: dosya dahil etme
 documentationcenter: partner-center-commercial-marketplace
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 08/16/2019
-ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86b16c92f7a9bd3f594b01820db6cbf7ef5ecb6b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131081"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104376"
 ---
 Teklifinizi Iş Ortağı Merkezi aracılığıyla Market 'te yayımladığınızda, teklifinizi CRM sisteminize bağlamanız gerekir. Bu şekilde, müşteri ilgili iletişim bilgilerini bir müşterinin ilgisini ifade ettikten veya ürününüzü dağıttığında hemen alabilirsiniz.
 

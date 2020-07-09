@@ -1,18 +1,14 @@
 ---
 title: Atılacak mektup ve yeniden deneme ilkeleri-Azure Event Grid
 description: Event Grid için olay teslim seçeneklerini özelleştirmeyi açıklar. Bir atılacak mektup hedefi ayarlayın ve teslimin ne kadar süreyle yeniden deneneceğini belirtin.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.author: spelluru
-ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 88e782eb7dafc10956120bdae870aa2eb58778a5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72794031"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105515"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Atılacak mektup ve yeniden deneme ilkeleri
 
@@ -29,7 +25,7 @@ Atılacak bir harf konumu ayarlamak için bir uç noktaya teslim edilemeyen olay
 > - Event Grid hizmeti bu kapsayıcıda Bloblar oluşturur. Blobların adları, büyük harfli tüm harflerle Event Grid abonelik adına sahip olur. Örneğin, aboneliğin adı-blob-aboneliğim ise, atılacak mektup bloblarının adları-BLOB-ABONELIĞIM (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.js) olacaktır. Bu davranış, Azure hizmetleri arasında durum işlemede farklılık açısından korunmamıza olanak sağlar.
 
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 containername=testcontainer
@@ -75,7 +71,7 @@ Event Grid bir abonelik oluştururken, olayın ne kadar süreyle teslim etmesi g
 
 [Yeniden deneme zamanlamasını](delivery-and-retry.md#retry-schedule-and-duration)yapılandıramazsınız.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Olayı 1440 dakikadan farklı bir değere yaşam süresi olarak ayarlamak için şunu kullanın:
 

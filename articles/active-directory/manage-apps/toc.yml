@@ -105,12 +105,8 @@
       items:
         - name: Bulut uygulaması ekleme
           items:
-            - name: Galeri uygulaması ekleme
-              href: add-gallery-app.md
             - name: Galeri dışı uygulama ekleme
               href: add-non-gallery-app.md
-            - name: Uygulama adını veya logosunu değiştirme
-              href: change-name-or-logo-portal.md
         - name: Çoklu oturum açmayı yapılandırma
           items:
             - name: SAML tabanlı çoklu oturum açmayı yapılandırma

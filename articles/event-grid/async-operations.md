@@ -1,19 +1,16 @@
 ---
-title: Zaman uyumsuz işlemlerin durumu
-description: Azure 'da zaman uyumsuz işlemlerin nasıl izleneceğini açıklar. Uzun süre çalışan bir işlemin durumunu almak için kullandığınız değerleri gösterir.
-services: event-grid
-author: spelluru
-ms.service: event-grid
+title: Event Grid zaman uyumsuz işlemlerin durumu
+description: Azure 'da Event Grid zaman uyumsuz işlemlerin nasıl izleneceğini açıklar. Uzun süre çalışan bir işlemin durumunu almak için kullandığınız değerleri gösterir.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.author: spelluru
-ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892023"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103339"
 ---
-# <a name="track-asynchronous-azure-operations"></a>Zaman uyumsuz Azure işlemlerini izleme
+# <a name="track-event-grid-asynchronous-azure-operations"></a>Zaman uyumsuz Azure işlemlerini izleme Event Grid
 İşlem hızlı bir şekilde tamamlanamadığından bazı Azure REST işlemleri zaman uyumsuz olarak çalışır. Bu makalede, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz işlemlerin durumunun nasıl izleneceği açıklanır.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Zaman uyumsuz işlemler için durum kodları

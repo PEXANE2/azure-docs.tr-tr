@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge iş yüklerini dağıtma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 2a688a221b2f4865d51bca2ebf4aaa0b1f714290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103985"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge iş yüklerini dağıtma (Önizleme)
 
@@ -25,7 +25,7 @@ Azure Arc ve Azure IoT Edge birbirlerinin yeteneklerini çok iyi tamamlayalım. 
 
 ## <a name="pre-requisites"></a>Ön koşullar
 
-* [Bir IoT Edge cihazı kaydedin](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#register-an-iot-edge-device) ve [sanal sıcaklık algılayıcı modülünü dağıtın](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#deploy-a-module). Cihazın bağlantı dizesini aklınızda olduğunuzdan emin olun.
+* [Bir IoT Edge cihazı kaydedin](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device) ve [sanal sıcaklık algılayıcı modülünü dağıtın](../../iot-edge/quickstart-linux.md#deploy-a-module). Cihazın bağlantı dizesini aklınızda olduğunuzdan emin olun.
 
 * [Kubernetes için IoT Edge](https://aka.ms/edgek8sdoc) , Azure Arc Flox operatörü aracılığıyla dağıtmak için desteğini kullanın.
 

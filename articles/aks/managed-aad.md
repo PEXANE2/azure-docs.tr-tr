@@ -7,19 +7,25 @@ author: mlearned
 ms.topic: article
 ms.date: 06/25/2020
 ms.author: mlearned
-ms.openlocfilehash: bf635d37559d09e887a67be27c412bff7899127b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f22b79cb8a730fb9c28dd1a208ab672473218b79
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023406"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105957"
 ---
-# <a name="integrate-aks-managed-azure-ad-preview"></a>AKS tarafından yönetilen Azure AD 'yi tümleştirin (Önizleme)
+# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-yönetilen Azure Active Directory Tümleştirmesi (Önizleme)
 
-> [!Note]
+> [!NOTE]
 > Azure Active Directory (Azure AD) Tümleştirmesi olan mevcut AKS (Azure Kubernetes hizmeti) kümeleri, yeni AKS tarafından yönetilen Azure AD deneyiminden etkilenmez.
 
-AKS tarafından yönetilen Azure AD ile Azure AD tümleştirmesi, kullanıcıların daha önce bir istemci uygulaması, bir sunucu uygulaması oluşturmak ve dizin okuma izinleri vermek için Azure AD kiracısının gerekli olduğu Azure AD tümleştirme deneyimini basitleştirmek üzere tasarlanmıştır. Yeni sürümde, AKS kaynak sağlayıcısı, istemci ve sunucu uygulamalarını sizin için yönetir.
+AKS tarafından yönetilen Azure AD tümleştirmesi, kullanıcıların daha önce bir istemci uygulaması, bir sunucu uygulaması oluşturmak ve dizin okuma izinleri vermek için Azure AD kiracısının gerekli olduğu Azure AD tümleştirme deneyimini basitleştirmek üzere tasarlanmıştır. Yeni sürümde, AKS kaynak sağlayıcısı, istemci ve sunucu uygulamalarını sizin için yönetir.
+
+## <a name="azure-ad-authentication-overview"></a>Azure AD kimlik doğrulamasına genel bakış
+
+Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (RBAC) bir kullanıcının kimliğine veya dizin grubu üyeliğine göre yapılandırabilir. Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][open-id-connect].
+
+[Azure Active Directory tümleştirme kavramları BELGELERINDEKI](concepts-identity.md#azure-active-directory-integration)AAD tümleştirme akışı hakkında daha fazla bilgi edinin.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -80,30 +86,6 @@ Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
-## <a name="azure-ad-authentication-overview"></a>Azure AD kimlik doğrulamasına genel bakış
-
-Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (RBAC) bir kullanıcının kimliğine veya dizin grubu üyeliğine göre yapılandırabilir. Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][open-id-connect].
-
-Kubernetes kümesinin içinden, kimlik doğrulama belirteçlerini doğrulamak için Web kancası belirteci kimlik doğrulaması kullanılır. Web kancası belirteci kimlik doğrulaması, AKS kümesinin bir parçası olarak yapılandırılır ve yönetilir.
-
-## <a name="webhook-and-api-server"></a>Web kancası ve API sunucusu
-
-:::image type="content" source="media/aad-integration/auth-flow.png" alt-text="Web kancası ve API sunucusu kimlik doğrulama akışı":::
-
-Yukarıdaki grafikte gösterildiği gibi, API sunucusu AKS Web kancası sunucusunu çağırır ve aşağıdaki adımları gerçekleştirir:
-
-1. Azure AD istemci uygulaması, [OAuth 2,0 cihaz yetkilendirme verme akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)ile kullanıcıların oturum açması için kubectl tarafından kullanılır.
-2. Azure AD, bir access_token, id_token ve bir refresh_token sağlar.
-3. Kullanıcı, kubeconfig 'ten bir access_token kubectl 'ye bir istek yapar.
-4. Kubectl, access_token Apıver 'e gönderir.
-5. API sunucusu, doğrulama gerçekleştirmek için auth Web kancası sunucusuyla yapılandırılır.
-6. Kimlik doğrulama Web kancası sunucusu, Azure AD ortak imzalama anahtarını denetleyerek JSON Web Token imzasının geçerli olduğunu onaylar.
-7. Sunucu uygulaması, oturum açmış kullanıcının grup üyeliklerini MS Graph API sorgulamak için Kullanıcı tarafından sağlanmış kimlik bilgilerini kullanır.
-8. Erişim belirtecinin Kullanıcı asıl adı (UPN) talebi ve nesne KIMLIĞINE göre kullanıcının grup üyeliği gibi Kullanıcı bilgileri ile Apıver 'e bir yanıt gönderilir.
-9. API, Kubernetes role/RoleBinding ' i temel alan bir yetkilendirme kararı uygular.
-10. Yetkilendirildikten sonra, API sunucusu kubectl 'ye bir yanıt döndürür.
-11. Kubectl kullanıcıya geri bildirim sağlar.
-
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>Azure AD özellikli bir AKS kümesi oluşturma
 
@@ -123,7 +105,7 @@ Mevcut bir Azure AD grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
 az ad group list
 ```
 
-Küme yöneticileriniz için yeni bir Azure AD grubu eklemek için aşağıdaki komutu kullanın:
+Küme yöneticileriniz için yeni bir Azure AD grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 # Create an Azure AD group
@@ -139,7 +121,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 
 AKS tarafından yönetilen bir Azure AD kümesinin başarılı bir şekilde oluşturulması yanıt gövdesinde aşağıdaki bölüme sahiptir
 ```
-"Azure ADProfile": {
+"AADProfile": {
     "adminGroupObjectIds": null,
     "clientAppId": null,
     "managed": true,
@@ -153,7 +135,7 @@ Küme birkaç dakika içinde oluşturulur.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Azure AD özellikli bir kümeye erişme
 
-Aşağıdaki adımları gerçekleştirmek için [Azure Kubernetes hizmet kümesi Kullanıcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) yerleşik rolüne sahip olmanız gerekir.
+Aşağıdaki adımları uygulamak için [Azure Kubernetes hizmet kümesi Kullanıcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) yerleşik rolüne sahip olmanız gerekir.
 
 Kümeye erişmek için Kullanıcı kimlik bilgilerini alın:
  
@@ -179,22 +161,24 @@ Kümeleriniz için ek güvenlik grupları yapılandırmak üzere [rol tabanlı A
 > [!Important]
 > Aşağıda açıklanan adımlar, normal Azure AD grubu kimlik doğrulamasını atlama. Onları yalnızca bir acil durum içinde kullanın.
 
-Kümenize erişimi olan geçerli bir Azure AD grubuna erişim olmadan kalıcı olarak engelleniyorsa, kümeye doğrudan erişmek için yönetici kimlik bilgilerini almaya devam edebilirsiniz.
+Kümenize erişimi olan geçerli bir Azure AD grubuna erişim olmadan kalıcı olarak engelleniyorsa, doğrudan kümeye erişmek için yönetici kimlik bilgilerini almaya devam edebilirsiniz.
 
-Bu adımları gerçekleştirmek için [Azure Kubernetes hizmet kümesi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role) yerleşik rolüne erişiminizin olması gerekir.
+Bu adımları uygulamak için [Azure Kubernetes hizmet kümesi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role) yerleşik rolüne erişiminizin olması gerekir.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
 
-## <a name="non-interactive-login-with-kubelogin"></a>Kubelogin ile etkileşimli olmayan oturum açma
+## <a name="non-interactive-sign-in-with-kubelogin"></a>Kubelogin ile etkileşimli olmayan oturum açma
 
-Şu anda kubectl ile kullanılamayan sürekli tümleştirme işlem hatları gibi etkileşimli olmayan bazı senaryolar vardır. [Kubelogin](https://github.com/Azure/kubelogin) ' i etkileşimli olmayan hizmet sorumlusu oturum açma bilgileriyle kümeye erişmek için kullanabilirsiniz.
+Şu anda kubectl ile kullanılamayan sürekli tümleştirme işlem hatları gibi etkileşimli olmayan bazı senaryolar vardır. [`kubelogin`](https://github.com/Azure/kubelogin)Etkileşimli olmayan hizmet sorumlusu oturum açma ile kümeye erişmek için kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD rol tabanlı Access Control][azure-ad-rbac]hakkında bilgi edinin.
+* [Kubernetes yetkilendirmesi Için Azure RBAC tümleştirmesi][azure-rbac-integration] hakkında bilgi edinin
+* [Kubernetes RBAC Ile Azure AD tümleştirmesi][azure-ad-rbac]hakkında bilgi edinin.
 * Kubectl 'de kullanılamayan Azure kimlik doğrulaması özelliklerine erişmek için [kubelogin](https://github.com/Azure/kubelogin) kullanın.
+* [Aks ve Kubernetes kimlik kavramları][aks-concepts-identity]hakkında daha fazla bilgi edinin.
 * AKS tarafından yönetilen Azure AD etkinleştirilmiş kümeler oluşturmak için [Azure Resource Manager (ARM) şablonları][aks-arm-template] kullanın.
 
 <!-- LINKS - external -->
@@ -203,6 +187,8 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 [aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[azure-rbac-integration]: manage-azure-rbac.md
+[aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

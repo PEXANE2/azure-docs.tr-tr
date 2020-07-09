@@ -1,17 +1,14 @@
 ---
 title: Service Bus kuyrukları ve konuları Azure Event Grid olaylar için olay işleyicileri olarak
 description: Azure Event Grid olaylar için Service Bus kuyrukları ve konuları olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: c9e1c9aa664065371595ed34a3af28330bd7e0db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105702"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus kuyrukları ve konuları Azure Event Grid olaylar için olay işleyicileri olarak
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır ve bunlardan biridir **Azure Service Bus** . 
@@ -56,7 +53,7 @@ az eventgrid event-subscription create \
 ## <a name="message-properties"></a>İleti özellikleri
 Event Grid olaylar için olay işleyicisi olarak bir **Service Bus konusu veya kuyruğu** kullanıyorsanız, aşağıdaki ileti üst bilgilerini ayarlayın: 
 
-| Özellik adı | Açıklama |
+| Özellik adı | Description |
 | ------------- | ----------- | 
 | AEG-abonelik-adı | Olay aboneliğinin adı. |
 | AEG-Delivery-Count | <p>Olay için yapılan deneme sayısı.</p> <p>Örnek: "1"</p> |

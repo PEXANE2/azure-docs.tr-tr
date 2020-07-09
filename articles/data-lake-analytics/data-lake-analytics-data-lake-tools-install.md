@@ -7,19 +7,20 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d153ba1d00c0e43a5809503e047fb66713b7fb7c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70914065"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104937"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake Araçları’nı yükleme.
 
 Azure Data Lake Analytics hesapları oluşturmak için Visual Studio 'Yu nasıl kullanacağınızı öğrenin. İşleri [U-SQL](data-lake-analytics-u-sql-get-started.md) içinde tanımlayabilir ve işleri Data Lake Analytics hizmetine gönderebilirsiniz. Data Lake Analytics hakkında daha fazla bilgi için bkz. [Azure Data Lake Analytics genel bakış](data-lake-analytics-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Visual Studio**: Express dışında tüm sürümler desteklenir.
 

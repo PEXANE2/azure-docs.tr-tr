@@ -3,11 +3,12 @@ title: Azure geçişini bir ISV aracı/Movere ile çalışacak şekilde hazırla
 description: Bu makalede, Azure geçişi 'nin bir ISV aracı veya Movere ile çalışacak şekilde nasıl hazırlanacağı ve sonra aracın nasıl kullanılacağına nasıl başlayabileceğiniz açıklanır.
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103934"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>ISV aracıyla veya Movere ile çalışmaya hazırlanma
 
@@ -35,7 +36,7 @@ Azure aboneliğinizde hesabınız, Azure AD uygulamasına bir rol atamak için *
 1. Azure portalında **Abonelikler**’i açın.
 2. Uygun aboneliği seçin. Bunu görmüyorsanız **genel abonelikler filtresini**seçin. 
 3. **Izinlerim**' i seçin. Ardından, **bu aboneliğin tüm erişim ayrıntılarını görüntülemek için buraya tıklayın '** ı seçin.
-4. **Rol atamaları**  >  **görünümünde**, izinleri denetleyin. Hesabınızın izinleri yoksa, abonelik yöneticisinden sizi [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) rolüne veya [sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rolüne eklemesini isteyin.
+4. **Rol atamaları**  >  **görünümünde**, izinleri denetleyin. Hesabınızın izinleri yoksa, abonelik yöneticisinden sizi [Kullanıcı erişimi Yöneticisi](../role-based-access-control/built-in-roles.md#user-access-administrator) rolüne veya [sahip](../role-based-access-control/built-in-roles.md#owner) rolüne eklemesini isteyin.
 
 ## <a name="allow-access-to-urls"></a>URL 'lere erişime izin ver
 

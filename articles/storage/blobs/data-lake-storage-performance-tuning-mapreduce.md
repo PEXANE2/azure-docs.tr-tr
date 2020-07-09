@@ -8,17 +8,18 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f5de8da90ac3356480fd809af68ab2c8b30540aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465958"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106229"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: MapReduce, HDInsight & Azure Data Lake Storage 2.
 
 Harita azaltma işlerinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Bu makalede, bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
@@ -56,7 +57,7 @@ Eşleme için bellek boyutu ve görevlerin azaltılması, belirli bir işinize g
 
 MapReduce. job. Maps/MapReduce. job. azaltıyor olması için, kullanılabilecek toplam YARN bellek miktarını dikkate almalısınız.  Bu bilgiler, ambarı 'nda mevcuttur.  YARN 'ye gidin ve configs sekmesini görüntüleyin.  YARN belleği Bu pencerede görüntülenir.  Toplam YARN belleği almak için, YARN belleğini kümenizdeki düğüm sayısıyla çarpmalısınız.
 
-    Total YARN memory = nodes * YARN memory per node
+Toplam YARN bellek = düğüm * düğüm başına YARN bellek
 
 Boş bir küme kullanıyorsanız, bellek kümeniz için toplam YARN bellek olabilir.  Diğer uygulamalar bellek kullanıyorsa, kullanmak istediğiniz kapsayıcı sayısına göre Map, veya azaltıcının sayısını azaltarak yalnızca kümenizin belleğinin bir bölümünü kullanabilirsiniz.  
 
@@ -64,7 +65,7 @@ Boş bir küme kullanıyorsanız, bellek kümeniz için toplam YARN bellek olabi
 
 YARN kapsayıcıları, iş için kullanılabilir eşzamanlılık miktarını belirler.  Toplam YARN belleği alıp MapReduce. Map. Memory ile ayırın.  
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+\#YARN kapsayıcıları = toplam YARN bellek/MapReduce. Map. Memory
 
 **5. Adım: MapReduce. job. Maps/MapReduce. job. azaltımı ayarlayın**
 
@@ -84,18 +85,19 @@ Bu örnekte, işimizin çalışan tek iş olduğunu varsayalım.
 
 Bu örnekte, bir g/ç yoğun işi çalıştırdık ve eşleme görevleri için bir dizi belleğin yeterli olacağını seçiyoruz.
 
-    mapreduce.map.memory = 3GB
+MapReduce. Map. Memory = 3GB
 
 **3. Adım: Toplam YARN belleği belirleme**
 
-    Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
+Kümeden alınan toplam bellek, bir D14 = 768GB için 200 GB 'lık YARN bellek
+
 **4. Adım: YARN kapsayıcıları sayısını hesaplama**
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+\#YARN kapsayıcıları = 768GB kullanılabilir bellek/3 GB bellek = 256
 
 **5. Adım: MapReduce. job. Maps/MapReduce. job. azaltımı ayarlayın**
 
-    mapreduce.map.jobs = 256
+mapreduce.map.jobs = 256
 
 ## <a name="examples-to-run"></a>Çalıştırılacak örnekler
 
@@ -108,12 +110,18 @@ Başlangıç noktası için, MapReduce Teragen, Terasort ve Teravalidate çalı�
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```

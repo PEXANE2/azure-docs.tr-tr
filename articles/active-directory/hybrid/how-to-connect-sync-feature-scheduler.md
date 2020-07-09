@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357401"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103560"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect eşitleme: Scheduler
 Bu konuda Azure AD Connect Sync (eşitleme altyapısı) içinde yerleşik Zamanlayıcı açıklanmaktadır.
@@ -39,6 +39,10 @@ Zamanlayıcı iki görevden sorumludur:
 * **Bakım görevleri**. Parola sıfırlama ve cihaz kayıt hizmeti (DRS) için anahtarları ve sertifikaları yenileyin. İşlem günlüğündeki eski girdileri temizle.
 
 Scheduler her zaman çalışır, ancak bu görevlerden yalnızca birini çalıştıracak şekilde yapılandırılabilir. Örneğin, kendi eşitleme çevrimi işleminizin olması gerekiyorsa bu görevi Scheduler 'da devre dışı bırakabilir ancak bakım görevini yine de çalıştırabilirsiniz.
+
+>[!IMPORTANT]
+>Bir eşitleme döngüsünün her 7 günde bir en az bir kez çalıştığından emin olmanız gerekir. Bunun yapılmaması, çözümlemek için tam eşitleme çalıştırmanızı gerektiren eşitleme sorunlarına neden olabilir.
+
 
 ## <a name="scheduler-configuration"></a>Zamanlayıcı yapılandırması
 Geçerli yapılandırma ayarlarınızı görmek için PowerShell ve Çalıştır ' a gidin `Get-ADSyncScheduler` . Şu resme benzer bir şey gösterir:

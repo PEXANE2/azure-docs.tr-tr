@@ -1,17 +1,14 @@
 ---
 title: Event Grid kaynak olarak Azure Machine Learning
 description: Azure Event Grid Machine Learning Çalışma Alanı olaylar için belirtilen özellikleri açıklar
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82928882"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102506"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Machine Learning
 
@@ -23,7 +20,7 @@ Bu makalede Machine Learning çalışma alanı olayları için özellikler ve ş
 
 Azure Machine Learning aşağıdaki olay türlerini yayar:
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. MachineLearningServices. ModelRegistered | Yeni bir model veya model sürümü başarıyla kaydettirilirse tetiklenir. |
 | Microsoft. MachineLearningServices. Modeldağıtıldı | Model (ler) bir uç noktaya başarıyla dağıtıldığında tetiklenir. |
@@ -189,7 +186,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
@@ -204,7 +201,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | ModelName | string | Kayıtlı olan modelin adı. |
 | ModelVersion | string | Kaydedilen modelin sürümü. |
@@ -213,7 +210,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. Modeldağıtıldı
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | ServiceName | string | Dağıtılan hizmetin adı. |
 | ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |

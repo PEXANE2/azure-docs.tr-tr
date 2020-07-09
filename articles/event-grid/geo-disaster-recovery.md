@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid coğrafi olağanüstü durum kurtarma | Microsoft Docs
 description: Azure Event Grid coğrafi olağanüstü durum kurtarmayı (GeoDR) otomatik olarak nasıl desteklediğini açıklar.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: spelluru
-ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66307325"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105855"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure Event Grid 'de sunucu tarafı coğrafi olağanüstü durum kurtarma
 Event Grid artık yalnızca yeni, ancak var olan tüm etki alanları, konular ve olay abonelikleri için değil, meta verilere yönelik otomatik coğrafi bir olağanüstü durum kurtarma (GeoDR) vardır. Bir Azure bölgesinin tamamı kapalıysa Event Grid, tüm olayla ilgili altyapı meta verilerlerinizin eşleştirilmiş bir bölgeyle eşitlenmesi zaten olur. Yeni olaylarınız, sizin tarafınızdan araya girmeden yeniden akışa sunulacaktır. 

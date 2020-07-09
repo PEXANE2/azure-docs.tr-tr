@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ac8e49c85147576e489b16a3a421c75d60ad4aee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83721097"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104427"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
@@ -67,9 +67,10 @@ Aşağıdaki geçişli önizleme kapsayıcıları, kapsayıcı önizlemesi kayı
 | Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|
 | [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Yüz](../../face/face-how-to-install-containers.md) | Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Yüz Tanıma](../../face/face-how-to-install-containers.md) | Yüz Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Form tanıyıcı](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=stt) | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=cstt) | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=tts) | Metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=ctts) | Özel metin okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |
+| [Sistem durumu için Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Sistem durumu için Metin Analizi | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |

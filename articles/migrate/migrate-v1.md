@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993799"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103968"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -56,7 +56,7 @@ Aşağıdaki gibi bir değerlendirme oluşturun:
 3. Grubu oluşturun ve bir grup adı belirtin.
 4. Gruba eklemek istediğiniz makineleri seçin.
 5. Grubu ve değerlendirmeyi oluşturmak için **Değerlendirme Oluştur**’a tıklayın.
-6. Değerlendirme oluşturulduktan sonra **genel bakış** > **panosunda**görüntüleyin.
+6. Değerlendirme oluşturulduktan sonra **genel bakış**  >  **panosunda**görüntüleyin.
 7. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
 Var olan bir değerlendirmeyi en son performans verileriyle güncelleştirmek isterseniz, değerlendirmeyi güncelleştirmek için **Yeniden Hesapla** komutunu kullanabilirsiniz.
@@ -76,7 +76,7 @@ Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, 
 
 Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin hazır olma durumunu gösterir.
 
-**Hazırlığı** | **Durumunda** | **Bilgileri**
+**Hazırlığı** | **Durum** | **Ayrıntılar**
 --- | --- | ---
 Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da tam Azure desteğiyle önyüklenir. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
@@ -88,11 +88,11 @@ Hazır olma durumu bilinmiyor | Azure geçişi, genellikle veri kullanılamadı�
 Hazır olma durumu, VM 'nin Azure 'da çalıştırılıp çalıştırılamayacağını belirlemek için bir dizi VM özelliği hesaba girer.
 
 
-**Özelliði** | **Bilgileri** | **Hazırlığı**
+**Özellik** | **Ayrıntılar** | **Hazırlığı**
 --- | --- | ---
 **Önyükleme türü** | BIOS desteklenir. UEFı desteklenmiyor. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
 **Çekirdekler** | Makine çekirdeği <= bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
-**Bellek** | Makine bellek boyutu <= bir Azure VM 'si için maksimum bellek (3892 GB on Azure&nbsp;b serisi Standard_M128m<sup>2</sup>). [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan belleği dikkate alır.<br/><br/>Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
+**Bellek** | Makine bellek boyutu <= bir Azure VM 'si için maksimum bellek (3892 GB on Azure b serisi Standard_M128m &nbsp; <sup>2</sup>). [Daha fazla bilgi edinin](../virtual-machines/windows/sizes.md).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan belleği dikkate alır.<br/><br/>Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
 **Depolama diski** | Bir diskin ayrılan boyutu 4 TB (4096 GB) veya daha az olmalıdır.<br/><br/> Makineye bağlı disk sayısı, işletim sistemi diski dahil 65 veya daha az olmalıdır. | Sınırlar içindeyse hazırlanın.
 **Ağ** | Bir makinenin kendisine bağlı 32 veya daha az NIC 'e sahip olması gerekir. | Sınırlar içindeyse hazırlanın.
 
@@ -105,7 +105,7 @@ VM özellikleriyle birlikte Azure geçişi, VM 'nin Azure 'da çalıştırıp ç
 
 Aşağıdaki mantık kullanılır.
 
-**İşletim Sistemi** | **Bilgileri** | **Hazırlığı**
+**İşletim Sistemi** | **Ayrıntılar** | **Hazırlığı**
 --- | --- | ---
 Windows Server 2016 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazır
 Windows Server 2012 R2 ve tüm SPs 'ler | Azure tam destek sağlar. | Azure için hazır
@@ -114,8 +114,8 @@ Windows Server 2008 R2 ve tüm SPs 'ler | Azure tam destek sağlar.| Azure için
 Windows Server 2008 (32-bit ve 64-bit) | Azure tam destek sağlar. | Azure için hazır
 Windows Server 2003, 2003 R2 | Destek dışı ve Azure 'da destek için [özel bir destek sözleşmesi (CSA)](https://aka.ms/WSosstatement) gerekiyor. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeyi düşünün.
 Windows 2000, 98, 95, NT, 3,1, MS-DOS | Destek dışı. Makine Azure 'da önbaşlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz önerilir.
-Windows Istemcisi 7, 8 ve 10 | Azure [yalnızca Visual Studio aboneliği](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) için destek sağlar. | Azure için koşullu olarak hazır
-Windows 10 Pro masaüstü | Azure, [çok kiracılı barındırma haklarıyla](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) destek sağlar. | Azure için koşullu olarak hazır
+Windows Istemcisi 7, 8 ve 10 | Azure [yalnızca Visual Studio aboneliği](../virtual-machines/windows/client-images.md) için destek sağlar. | Azure için koşullu olarak hazır
+Windows 10 Pro masaüstü | Azure, [çok kiracılı barındırma haklarıyla](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) destek sağlar. | Azure için koşullu olarak hazır
 Windows Vista, XP Professional | Destek dışı. Makine Azure 'da önbaşlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce işletim sistemini yükseltmeniz önerilir.
 Linux | Azure bu [Linux işletim sistemlerini](../virtual-machines/linux/endorsed-distros.md)doğrubir şekilde algılar. Diğer Linux işletim sistemleri Azure 'da önbaşlatılabilir, ancak Azure 'a geçiş yapmadan önce işletim sistemini onaylı bir sürüme yükseltmeniz önerilir. | Sürüm onaylanmış ise Azure için hazırlanın.<br/><br/>Sürüm henüz hazırlanmadığından koşullu olarak kabul edilebilir.
 Diğer işletim sistemleri<br/><br/> Örneğin, Oracle Solaris, Apple Mac OS vb., FreeBSD vb. | Azure, bu işletim sistemlerini onaylamaz. Makine Azure 'da başlatılabilir, ancak Azure tarafından bir işletim sistemi desteği sağlanmaz. | Azure için koşullu olarak, Azure 'a geçiş yapmadan önce desteklenen bir işletim sistemi yüklenmesi önerilir.  
@@ -210,7 +210,7 @@ Bağımlılık görselleştirmesini kullanmak için bir Log Analytics çalışma
 
 Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklersiniz. Ayrıca, internet bağlantısı olmayan makineleriniz varsa [Log Analytics ağ geçidini](../azure-monitor/platform/gateway.md) indirip yüklemeniz gerekir.
 
-1. Genel olarak, makineleri **Yönet** > **Machines**' **e**tıklayın ve gerekli makineyi seçin.
+1. Genel olarak, makineleri **Yönet**' **e**tıklayın  >  **Machines**ve gerekli makineyi seçin.
 2. **Bağımlılıklar** sütununda, **aracıları yüklensin**' e tıklayın.
 3. **Bağımlılıklar** sayfasında, değerlendirmek ISTEDIĞINIZ her VM 'ye Microsoft Monitoring Agent (MMA) ve bağımlılık aracısını indirip yükleyin.
 4. Çalışma alanı kimliğini ve anahtarını kopyalayın. Bu, şirket içi makineye MMA 'yı yüklerken gereklidir.
@@ -226,7 +226,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 1. İndirilen aracıya çift tıklayın.
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
 3. **Hedef klasörde**, **sonraki**> varsayılan yükleme klasörünü tutun veya değiştirin.
-4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
+4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics**  >  **İleri**' yi seçin.
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
 Aracıyı komut satırından veya Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) .
@@ -240,11 +240,11 @@ Aracıyı bir Linux makinesine yüklemek için:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) .
+MMA tarafından Linux işletim sistemleri desteğinin listesi hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Operations Manager tarafından izlenen bir makineye MMA aracısını yükler
 
-System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için MMA aracısını yüklemek gerekmiyor. Hizmet Eşlemesi, gerekli bağımlılık verilerini toplamak için Operations Manager MMA ile tümleşir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Bağımlılık aracısının yüklenmesi gerekir.
+System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için MMA aracısını yüklemek gerekmiyor. Hizmet Eşlemesi, gerekli bağımlılık verilerini toplamak için Operations Manager MMA ile tümleşir. [Daha fazla bilgi edinin](../azure-monitor/insights/service-map-scom.md#prerequisites). Bağımlılık aracısının yüklenmesi gerekir.
 
 ### <a name="install-the-dependency-agent"></a>Bağımlılık aracısını yükleme
 
@@ -261,7 +261,7 @@ System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için 
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Bağımlılık eşleme ile bir grup oluşturma
 
-1. Aracıları yükledikten sonra portala gidin ve**makineleri** **Yönet** > ' e tıklayın.
+1. Aracıları yükledikten sonra portala gidin ve makineleri **Yönet**' e tıklayın  >  **Machines**.
 2. Aracıları yüklediğiniz makineyi arayın.
 3. Makinenin **Bağımlılıklar** sütunu artık **Görünüm bağımlılıkları**olarak gösterilmelidir. Makinenin bağımlılıklarını görüntülemek için sütuna tıklayın.
 4. Makinenin bağımlılık eşlemesi aşağıdaki ayrıntıları gösterir:
@@ -274,7 +274,7 @@ System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için 
 4. Zaman aralığı etiketindeki zaman süresine tıklayarak farklı zaman sürelerine yönelik bağımlılıkları görüntüleyebilirsiniz. Aralık varsayılan olarak bir saattir. Zaman aralığını değiştirebilir veya başlangıç ve bitiş tarihlerini ve süreyi belirtebilirsiniz.
 
    > [!NOTE]
-   >    Bir saate kadar zaman aralığı desteklenir. Daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) Için Azure izleyici günlüklerini kullanın.
+   >    Bir saate kadar zaman aralığı desteklenir. Daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](./how-to-create-group-machine-dependencies.md) Için Azure izleyici günlüklerini kullanın.
 
 5. Birlikte gruplandırmak istediğiniz bağımlı makineleri tanımladıktan sonra, haritada birden fazla makine seçmek için CTRL + tıklama tuşlarını kullanın ve **Grup makineleri**' ne tıklayın.
 6. Bir grup adı belirtin. Bağımlı makinelerin Azure geçişi tarafından bulunduğundan emin olun.
@@ -289,25 +289,25 @@ Grup oluşturulduktan sonra, aracıların tüm makinelerine yüklenmesi ve tüm 
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Azure Izleyici günlüklerinden bağımlılık verilerini sorgulama
 
-Hizmet Eşlemesi tarafından yakalanan bağımlılık verileri, Azure geçişi projenizle ilişkili Log Analytics çalışma alanında sorgulama için kullanılabilir. Azure Izleyici günlüklerinde Sorgulanacak Hizmet Eşlemesi veri tabloları hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) . 
+Hizmet Eşlemesi tarafından yakalanan bağımlılık verileri, Azure geçişi projenizle ilişkili Log Analytics çalışma alanında sorgulama için kullanılabilir. Azure Izleyici günlüklerinde Sorgulanacak Hizmet Eşlemesi veri tabloları hakkında [daha fazla bilgi edinin](../azure-monitor/insights/service-map.md#log-analytics-records) . 
 
 Kusto sorgularını çalıştırmak için:
 
 1. Aracıları yükledikten sonra portala gidin ve **Genel Bakış ' a**tıklayın.
 2. **Genel bakış**bölümünde, projenin **temel parçalar** bölümüne gidin ve **OMS çalışma alanının**yanında sunulan çalışma alanı adına tıklayın.
-3. Log Analytics çalışma alanı sayfasında **genel** > **Günlükler**' e tıklayın.
+3. Log Analytics çalışma alanı sayfasında **genel**  >  **Günlükler**' e tıklayın.
 4. Azure Izleyici günlüklerini kullanarak bağımlılık verilerini toplamak için sorgunuzu yazın. Sonraki bölümde örnek sorgular bulun.
 5. Çalıştır ' a tıklayarak sorgunuzu çalıştırın. 
 
-Kusto sorguları yazma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) . 
+Kusto sorguları yazma hakkında [daha fazla bilgi edinin](../azure-monitor/log-query/get-started-portal.md) . 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Örnek Azure Izleyici günlükleri sorguları
 
-Bağımlılık verilerini ayıklamak için kullanabileceğiniz örnek sorgular aşağıda verilmiştir. Tercih ettiğiniz veri noktalarını ayıklamak için sorguları değiştirebilirsiniz. Bağımlılık veri kayıtlarında alanların ayrıntılı bir listesi [burada](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)bulunabilir. Daha fazla örnek sorgu [burada](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)bulabilirsiniz.
+Bağımlılık verilerini ayıklamak için kullanabileceğiniz örnek sorgular aşağıda verilmiştir. Tercih ettiğiniz veri noktalarını ayıklamak için sorguları değiştirebilirsiniz. Bağımlılık veri kayıtlarında alanların ayrıntılı bir listesi [burada](../azure-monitor/insights/service-map.md#log-analytics-records)bulunabilir. Daha fazla örnek sorgu [burada](../azure-monitor/insights/service-map.md#sample-log-searches)bulabilirsiniz.
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Bir makine kümesi üzerinde gelen bağlantıları özetleme
 
-Bağlantı ölçümleri, VMConnection için tablodaki kayıtlar, bağımsız fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı mantıksal bir bağlantı halinde gruplandırılır. Fiziksel ağ bağlantısı verilerinin, VMConnection 'daki tek bir mantıksal kayıtta nasıl toplandığından [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) . 
+Bağlantı ölçümleri, VMConnection için tablodaki kayıtlar, bağımsız fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı mantıksal bir bağlantı halinde gruplandırılır. Fiziksel ağ bağlantısı verilerinin, VMConnection 'daki tek bir mantıksal kayıtta nasıl toplandığından [daha fazla bilgi edinin](../azure-monitor/insights/service-map.md#connections) . 
 
 ```
 // the machines of interest

@@ -3,15 +3,16 @@ title: Bir komut dosyası ile Azure geçişi gereci ayarlama
 description: Bir komut dosyası ile Azure geçişi gereci ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052458"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102455"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Komut dosyası ile gereç ayarlama
 
-VMware VM 'Leri ve Hyper-V VM 'lerinin değerlendirmesi/geçirilmesi için bir [Azure geçiş](deploy-appliance.md) gereci oluşturmak için bu makaleyi izleyin. Bir gereç oluşturmak için bir komut dosyası çalıştırın ve Azure 'a bağlanabildiğini doğrulayın. 
+VMware VM 'Leri ve Hyper-V VM 'lerinin değerlendirmesi/geçirilmesi için bir [Azure geçiş](./migrate-appliance-architecture.md) gereci oluşturmak için bu makaleyi izleyin. Bir gereç oluşturmak için bir komut dosyası çalıştırın ve Azure 'a bağlanabildiğini doğrulayın. 
 
 VMware ve Hyper-V VM 'Leri için bir betik kullanarak veya Azure portal indirtiğiniz bir şablon kullanarak gereci dağıtabilirsiniz. İndirilen şablonu kullanarak bir VM oluştursanız, betik kullanmak faydalıdır.
 
@@ -19,7 +20,7 @@ VMware ve Hyper-V VM 'Leri için bir betik kullanarak veya Azure portal indirti�
 - Fiziksel sunucular için bir gereç ayarlamak üzere yalnızca bir komut dosyası kullanabilirsiniz. [Bu makaleyi](how-to-set-up-appliance-physical.md)izleyin.
 - Azure Kamu bulutunda bir gereç ayarlamak için [Bu makaleyi](deploy-appliance-script-government.md)izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
 

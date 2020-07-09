@@ -8,15 +8,16 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79164689"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104019"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC kullanarak bağlı makine aracısını yüklemek
 
-[Windows PowerShell Istenen durum yapılandırması](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) 'nı (DSC) kullanarak bir Windows bilgisayarı için yazılım yükleme ve yapılandırmasını otomatik hale getirebilirsiniz. Bu makalede, karma Windows makinelerinde sunucular için bağlı makine Aracısı için Azure Arc 'ı yüklemek üzere DSC 'nin nasıl kullanılacağı açıklanır.
+[Windows PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) 'nı (DSC) kullanarak bir Windows bilgisayarı için yazılım yükleme ve yapılandırmasını otomatik hale getirebilirsiniz. Bu makalede, karma Windows makinelerinde sunucular için bağlı makine Aracısı için Azure Arc 'ı yüklemek üzere DSC 'nin nasıl kullanılacağı açıklanır.
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -72,7 +73,7 @@ Aşağıda, kullanılacak PowerShell betiğine geçirdiğiniz parametreler veril
 
 1. Bir PowerShell konsolunda, dosyayı kaydettiğiniz klasöre gidin `.ps1` .
 
-2. MOF belgesini derlemek için aşağıdaki PowerShell komutlarını çalıştırın (DSC yapılandırmalarının derlenmesi hakkında daha fazla bilgi için bkz. [DSC yapılandırması](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
+2. MOF belgesini derlemek için aşağıdaki PowerShell komutlarını çalıştırın (DSC yapılandırmalarının derlenmesi hakkında daha fazla bilgi için bkz. [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations?view=powershell-7):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -86,7 +87,7 @@ Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şe
 
 Bu kaynak, bir makine için uçtan uca yapılandırmayı temsil etmek üzere mevcut DSC yapılandırmalarına eklenebilir. Örneğin, bu kaynağı güvenli işletim sistemi ayarlarını ayarlayan bir yapılandırmaya eklemek isteyebilirsiniz.
 
-PowerShell Galerisi [Compsıteresource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modülü, yapılandırmaların birleştirilmesi için daha fazla basitleştirecek örnek yapılandırmanın [bileşik kaynağını](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) oluşturmak için kullanılabilir.
+PowerShell Galerisi [Compsıteresource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modülü, yapılandırmaların birleştirilmesi için daha fazla basitleştirecek örnek yapılandırmanın [bileşik kaynağını](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) oluşturmak için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,16 @@
 ---
 title: Microsoft ticari Market 'te SaaS teklifi oluşturma denetim listesi
 description: Iş Ortağı Merkezi 'nde SaaS teklifi oluşturma sürecinde sağlayabilmeniz için ayrıntılar.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374415"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101717"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Iş Ortağı Merkezi 'nde SaaS teklifi oluşturma denetim listesi
 
@@ -83,7 +81,7 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 | :---------------- | :-----------| 
 | Name  | Gerekli, en fazla 50 karakter. |
 | Özet  | Gerekli, en fazla 100 karakter. | 
-| Açıklama  | Gerekli, en fazla 3000 karakter. |
+| Description  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Anahtar sözcükleri ara  | İsteğe bağlı, önerilen, en fazla 3 anahtar sözcük. |
@@ -153,7 +151,7 @@ Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanıla
 
 | **Alan adı**    | **Notlar**   | 
 | :---------------- | :-----------| 
-| Açıklama  | Gereklidir. |
+| Description  | Gereklidir. |
 | Kullanıcı El Ile adı + dosyası  | Gerekli, en fazla 1 belge. PDF biçiminde olmalıdır. |
 | Video adı, URL + küçük resim  | İsteğe bağlı, önerilir. Küçük resim, JPGP veya PNG biçiminde 533 x 324 olmalıdır. Videonun YouTube veya Vimeo 'da barındırılması gerekir. |
 

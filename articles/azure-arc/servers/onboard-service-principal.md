@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648065"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103798"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Karma makineleri Azure 'a ölçeklendirmeye bağlama
 
@@ -85,7 +86,7 @@ Aşağıda, `azcmagent` hizmet sorumlusu için kullanmak üzere komutu yapıland
 * `location`: [Desteklenen Azure bölgelerine](overview.md#supported-regions)bakın. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
 * `resource-name`: (*Isteğe bağlı*) Şirket Içi makinenizin Azure Kaynak temsili için kullanılır. Bu değeri belirtmezseniz makine ana bilgisayar adı kullanılır.
 
-`azcmagent` [Azcmagent başvurusunu](azcmagent-reference.md)inceleyerek komut satırı aracı hakkında daha fazla bilgi edinebilirsiniz.
+`azcmagent` [Azcmagent başvurusunu](./manage-agent.md)inceleyerek komut satırı aracı hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="windows-installation-script"></a>Windows yükleme betiği
 

@@ -1,7 +1,5 @@
 - name: Media Services Belgeleri
   href: ./index.yml
-- name: IoT Edge’de Canlı Video Analizi’ne geçiş belgeleri
-  href: ../live-video-analytics-edge/overview.md
 - name: Genel Bakış
   items:
     - name: Media Services hakkında

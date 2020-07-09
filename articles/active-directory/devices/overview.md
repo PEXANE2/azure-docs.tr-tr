@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024447"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103713"
 ---
 # <a name="what-is-a-device-identity"></a>Cihaz kimliği nedir?
 
@@ -45,7 +45,7 @@ Azure AD 'de bir cihaz almak için, birden çok seçeneğiniz vardır:
 - **Azure AD'ye katılanlar**
    - Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açanlar. Bunlar yalnızca bulutta bulunur.
       - Windows 10 
-      - Windows Server 2019 (Sunucu Çekirdeği desteklenmez)
+      - [Azure 'da çalışan Windows Server 2019 sanal makineleri] (./howto-vm-sign-in-azure-ad-windows.md) (Sunucu Çekirdeği desteklenmez)
 - **Hibrit Azure AD'ye katılmış**
    - Karma Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açanlar. Bunlar bulutta ve şirket içinde mevcuttur.
       - Windows 7, 8,1 veya 10

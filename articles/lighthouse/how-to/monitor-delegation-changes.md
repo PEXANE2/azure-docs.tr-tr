@@ -1,18 +1,18 @@
 ---
 title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b30cbc025f97ab76be55f0f83e15603b40092ce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919138"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105175"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
-Hizmet sağlayıcı olarak, müşteri abonelikleri veya kaynak grupları, kiracınıza [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla veya daha önce atanmış kaynaklar kaldırıldığında farkında olmak isteyebilirsiniz.
+Hizmet sağlayıcı olarak, müşteri abonelikleri veya kaynak grupları, kiracınıza [Azure ınthouse](../overview.md)aracılığıyla veya daha önce atanmış kaynaklar kaldırıldığında farkında olmak isteyebilirsiniz.
 
 Yönetim kiracısında [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) , yetkilendirme etkinliğini kiracı düzeyinde izler. Günlüğe kaydedilen bu etkinlik, tüm müşteri kiracılarından eklenen veya kaldırılan temsilcileri içerir.
 
@@ -158,5 +158,5 @@ else
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure tarafından atanan kaynak yönetimine](../concepts/azure-delegated-resource-management.md)müşterilerin nasıl ekleneceğini öğrenin.
+- [Azure](../concepts/azure-delegated-resource-management.md)'un nasıl kullanılacağına ilişkin müşterileri nasıl kullanacağınızı öğrenin.
 - [Azure izleyici](../../azure-monitor/index.yml) ve [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md)hakkında bilgi edinin.

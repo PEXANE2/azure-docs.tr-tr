@@ -428,8 +428,6 @@
               href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
             - name: Apache Spark iş başarısızlıkları - InvalidClassException
               href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
-            - name: Yavaş Apache Spark işleri - listStatus
-              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
             - name: Yavaş Apache Spark işleri - depolama kapsayıcısı
               href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
             - name: IllegalArgumentException özel durumu
@@ -723,8 +721,6 @@
               href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
             - name: '''hbase hbck'' komutuyla zaman aşımları'
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
-            - name: Apache HBase sorunlarını giderme
-              href: ./hbase/apache-troubleshoot-hbase.md
             - name: Apache HBase’i sorgulamak için REST API
               href: ./hbase/troubleshoot-rest-api.md
 - name: Interactive Query

@@ -1,13 +1,14 @@
 ---
 title: Düzeltilebilir bir ilke dağıtma
-description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
-ms.date: 10/11/2019
+description: Azure 'da bir düzeltme görevi kullanan ilkeleri dağıtmak için, müşteri kiracısında bir yönetilen kimlik oluşturmanız gerekir.
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: a953db44d8b4fc035d947d3534185062d0ec884b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc13b6209826d4a59d82bca5db63d4ca5c39f9fb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634141"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105345"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Temsilci bir abonelik içinde düzeltilebilir bir ilke dağıtın
 
@@ -15,7 +16,7 @@ ms.locfileid: "84634141"
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Müşteri kiracısında yönetilen bir kimliğe roller atayabilecek bir kullanıcı oluşturun
 
-Azure tarafından atanan kaynak yönetimi için bir müşteri eklediğinizde, yönetim kiracınızdaki kullanıcıları, Kullanıcı gruplarını ve hizmet sorumlularını, müşteri kiracısında Temsilcili kaynaklara erişebilecek şekilde tanımlayan bir parametreler dosyası ile birlikte bir [Azure Resource Manager şablonu](onboard-customer.md#create-an-azure-resource-manager-template) kullanırsınız. Parametreleriniz dosyasında, bu kullanıcıların (**PrincipalId**) her birine erişim düzeyini tanımlayan [yerleşik bir rol](../../role-based-access-control/built-in-roles.md) (**roledefinitionıd**) atanır.
+Azure 'da bir müşteriyi kullanıma aldığınızda, yönetim kiracınızdaki kullanıcıları, Kullanıcı gruplarını ve hizmet sorumlularını tanımlayan bir parametre dosyası ile birlikte, müşteri kiracısındaki Temsilcili kaynaklara erişebilecek bir [Azure Resource Manager şablonu](onboard-customer.md#create-an-azure-resource-manager-template) kullanırsınız. Parametreleriniz dosyasında, bu kullanıcıların (**PrincipalId**) her birine erişim düzeyini tanımlayan [yerleşik bir rol](../../role-based-access-control/built-in-roles.md) (**roledefinitionıd**) atanır.
 
 **PrincipalId** 'nin müşteri kiracısında yönetilen bir kimlik oluşturmasına izin vermek Için, **roledefinitionıd** değerini **Kullanıcı erişimi Yöneticisi**olarak ayarlamanız gerekir. Bu rol genellikle desteklenmekle birlikte, bu özel senaryoda kullanılabilir ve bu izne sahip kullanıcıların yönetilen kimliklere bir veya daha fazla yerleşik rol atamasını sağlar. Bu roller, **Delegatedrotadefinitionıds** özelliğinde tanımlanmıştır. Kullanıcı erişimi Yöneticisi veya sahibi dışında, burada herhangi bir yerleşik rolü ekleyebilirsiniz.
 
@@ -37,11 +38,11 @@ Aşağıdaki örnekte, Kullanıcı erişimi yönetici rolüne sahip olacak bir *
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>Düzeltilenebilir ilkeleri dağıtma
 
-Yukarıda açıklanan izinlerle Kullanıcı oluşturduktan sonra, bu kullanıcı, müşteri kiracısında düzeltme görevleri kullanan ilkeler dağıtabilir.
+Yukarıda açıklanan izinlerle Kullanıcı oluşturduktan sonra, Kullanıcı, müşteri kiracısında düzeltme görevleri kullanan ilkeler dağıtabilir.
 
 Örneğin, bu [örnekte](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)gösterildiği gibi, müşteri kiracısındaki Azure Key Vault kaynaklarında tanılamayı etkinleştirmek istediğinizi varsayalım. Yönetim kiracısındaki bir kullanıcı uygun izinlerle (yukarıda açıklandığı gibi), bu senaryoyu etkinleştirmek için bir [Azure Resource Manager şablonu](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) dağıtır.
 
-Temsilci olarak kullanılacak ilke atamasının, Azure portal değil, API 'Ler aracılığıyla yapılması gerektiğini unutmayın. Bunu yaparken, **Apiversion** 'ın yeni **Delegatedmanagedıdentityresourceıd** özelliğini içeren **2019-04-01-Preview**olarak ayarlanması gerekir. Bu özellik, müşteri kiracısında bulunan yönetilen bir kimliği (Azure tarafından atanan kaynak yönetimine eklendi bir abonelik veya kaynak grubu) eklemenize olanak tanır.
+Temsilci olarak kullanılacak ilke atamasının, Azure portal değil, API 'Ler aracılığıyla yapılması gerektiğini unutmayın. Bunu yaparken, **Apiversion** 'ın yeni **Delegatedmanagedıdentityresourceıd** özelliğini içeren **2019-04-01-Preview**olarak ayarlanması gerekir. Bu özellik, müşteri kiracısında bulunan yönetilen bir kimliği (Azure 'un eklendi ile kullanıma yönelik bir abonelik veya kaynak grubu) eklemenize olanak tanır.
 
 Aşağıdaki örnek, bir **Delegatedmanagedıdentityresourceıd**ile bir rol atamasını gösterir.
 

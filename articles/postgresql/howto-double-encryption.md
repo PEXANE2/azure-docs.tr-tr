@@ -4,20 +4,20 @@ description: PostgreSQL için Azure veritabanınız için altyapı çift şifrel
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 2eb1c196e73644eeefa77d66562dc2a55d6f221a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6612fe38adcd3c8002dd4a11122b5bb2e797a4dd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034943"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102183"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için altyapı Çift şifreleme
 
 PostgreSQL için Azure veritabanınız için altyapı ikili şifrelemesini ayarlama ve yönetme hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
 

@@ -324,7 +324,7 @@
           href: how-to-use-secrets-in-runs.md
         - name: Pekiştirmeye dayalı öğrenme
           href: how-to-use-reinforcement-learning.md
-    - name: Makine öğrenimini otomatikleştirme
+    - name: Otomatik makine öğrenimi
       displayName: 'automl, auto ml'
       items:
         - name: Otomatik ML kullanma (Python)

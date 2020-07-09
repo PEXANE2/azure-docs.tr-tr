@@ -3,16 +3,16 @@ title: Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 description: Temsilcili müşteri kaynakları üzerinde Azure Sentinel 'i etkin bir şekilde yönetmeyi öğrenin.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bca5b6fdc84fa5a7a5553fe64c0218c5f0b44aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105277"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 
-Hizmet sağlayıcı olarak, Azure tarafından atanan kaynak yönetimi için birden fazla müşteri kiracısından eklendi olabilirsiniz. Azure Mathouse, hizmet sağlayıcılarının birden çok Azure Active Directory (Azure AD) kiracılarının aynı anda, yönetim görevlerini daha verimli hale getiren işlemleri gerçekleştirmesine olanak tanır.
+Hizmet sağlayıcı olarak, [Azure açık Thouse](../overview.md)için birden fazla müşteri kiracısından eklendi olabilirsiniz. Azure Mathouse, hizmet sağlayıcılarının birden çok Azure Active Directory (Azure AD) kiracılarının aynı anda, yönetim görevlerini daha verimli hale getiren işlemleri gerçekleştirmesine olanak tanır.
 
 Azure Sentinel, uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için tek bir çözüm sunan güvenlik analizlerini ve tehdit bilgilerini sunar. Azure açık bir şekilde, kiracılar genelinde birden çok Azure Sentinel çalışma alanını ölçekli bir şekilde yönetebilirsiniz. Bu, birden çok çalışma alanı genelinde sorgu çalıştırma veya içgörüler elde etmek için bağlı veri kaynaklarınızdaki verileri görselleştirmek ve izlemek üzere çalışma kitapları oluşturmak gibi senaryolara olanak sağlar. Sorgular ve PlayBook 'lar gibi IP, yönetim kiracınızda kalır, ancak müşteri kiracılarında güvenlik yönetimi gerçekleştirmek için kullanılabilir.
 
@@ -35,7 +35,7 @@ Bu merkezi dağıtım modelinin aşağıdaki avantajları vardır:
 
 ## <a name="granular-role-based-access-control-rbac"></a>Ayrıntılı rol tabanlı erişim denetimi (RBAC)
 
-Bir MSSP 'nin yöneteceği her bir müşteri aboneliği, [Azure tarafından yetkilendirilen kaynak yönetimi için eklendi](onboard-customer.md)olmalıdır. Bu, yönetim kiracısındaki belirlenen kullanıcıların, müşteri kiracılarında dağıtılan Azure Sentinel çalışma alanlarında yönetim işlemlerine erişmesini ve bu işlemleri gerçekleştirmesini sağlar.
+Bir MSSP 'nin yöneteceği her bir müşteri aboneliği, [Azure eklendi to Use](onboard-customer.md)' a sahip olmalıdır. Bu, yönetim kiracısındaki belirlenen kullanıcıların, müşteri kiracılarında dağıtılan Azure Sentinel çalışma alanlarında yönetim işlemlerine erişmesini ve bu işlemleri gerçekleştirmesini sağlar.
 
 Yetkilendirmeleri oluştururken, yönetim kiracınızdaki kullanıcılara, gruplara veya hizmet sorumlularına Azure Sentinel yerleşik rollerini atayabilirsiniz:
 

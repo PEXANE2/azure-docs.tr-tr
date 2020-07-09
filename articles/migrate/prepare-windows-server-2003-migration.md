@@ -3,11 +3,12 @@ title: Windows Server 2003 sunucularını Azure geçişi ile geçiş için hazı
 description: Windows Server 2003 sunucularının Azure geçişi ile geçiş için nasıl hazırlanacağını öğrenin.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172287"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103951"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003 makinelerini geçiş için hazırlama
 
@@ -24,7 +25,7 @@ Bu makalede, Windows Server 2003 çalıştıran makinelerin Azure 'a geçiş iç
 
 Geçişten önce, Hyper-V tümleştirme hizmetlerinin yüklü olup olmadığını denetleyin ve gerekirse yükleme yapın.
 
-1. Yüklü olup olmadığını denetlemek için [Bu yönergeleri](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) izleyin.
+1. Yüklü olup olmadığını denetlemek için [Bu yönergeleri](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) izleyin.
 2. Yüklü değilse, Hyper-V rolüyle Windows Server 2012 R2/Windows Server 2012 çalıştıran bir makinede oturum açın.
 3. **C:\windows\system32\vmguest.exe**konumundaki yükleme dosyasına gidin ve dosyayı bağlayın.
 2. Yükleme klasörünü Windows Server 2003 makinesine kopyalayın ve Tümleştirme Hizmetleri 'ni yükleme.

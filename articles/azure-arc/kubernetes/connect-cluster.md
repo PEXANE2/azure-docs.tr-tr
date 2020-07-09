@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: ec77609e5ee30cd3451c52635e530eb7153bc9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a186ac3bf2297de5ffc7ff478ba9b4350dae4c8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341384"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104291"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
@@ -30,7 +30,7 @@ Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
 * Yay etkinleştirilmiş Kubernetes aracılarının dağıtımı için kümedeki kümeye ve Küme Yöneticisi rolüne erişmeniz için bir kubeconfig dosyası gerekir.
 * Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır. Bu izinlere sahip olan "Kubernetes ekleme için Azure Arc" rolü, ekleme için Azure CLı ile kullanılan Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
 * Connectedk8s uzantısını kullanarak kümeyi ekleme için Held 3 gereklidir. Bu gereksinimi karşılamak için [Held 3 ' ün en son sürümünü yükler](https://helm.sh/docs/intro/install) .
-* Azure Arc etkin Kubernetes CLı uzantılarını yüklemek için Azure CLı sürüm 2.3 + gereklidir. Azure CLI sürüm 2.3 + sürümüne sahip olduğunuzdan emin olmak için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı veya güncelleştirme 'yi en son sürüme güncelleştirin.
+* Azure Arc etkin Kubernetes CLı uzantılarını yüklemek için Azure CLı sürüm 2.3 + gereklidir. Azure CLI sürüm 2.3 + sürümüne sahip olduğunuzdan emin olmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı veya güncelleştirme 'yi en son sürüme güncelleştirin.
 * Yay etkin Kubernetes CLı uzantılarını yükler:
   
   `connectedk8s`Kubernetes kümelerini Azure 'a bağlamanıza yardımcı olan uzantıyı yükleyebilirsiniz:
@@ -64,7 +64,7 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 * 443 numaralı bağlantı noktasında TCP-->`https://:443`
 * 9418 numaralı bağlantı noktasında TCP-->`git://:9418`
 
-| Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
+| Uç nokta (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durum ve getirme yapılandırma bilgilerini itilmesi için veri düzlemi uç noktası                                      |

@@ -1,20 +1,14 @@
 ---
 title: Blob Depolama olaylarını Web uç noktasına gönder-şablon
 description: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure Resource Manager şablonu kullanın. Olayları bir Web kancasına gönder. '
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: subject-armqs
-ms.openlocfilehash: 2d7991a00bedf49147b7a6015b5a5e0ce8892ac3
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479870"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103322"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>ARM şablonunu kullanarak BLOB Depolama olaylarını Web uç noktasına yönlendirme
 
@@ -26,7 +20,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -36,7 +30,7 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 
 1. Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. Azure portalında parametre değerlerini girin.
 
-    [Azure’a dağıtma](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+    [Azure’a dağıtın](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 1. Dağıtımın tamamlanması birkaç dakika sürebilir. Dağıtım başarıyla gerçekleştirildikten sonra, web uygulamanızı görüntüleyip çalıştığından emin olun. Web tarayıcısında şu adrese gidin: `https://<your-site-name>.azurewebsites.net`
 
 1. Siteyi görürsünüz ancak henüz yayımlanmış olay yoktur.
@@ -94,5 +88,5 @@ Azure Resource Manager şablonları hakkında daha fazla bilgi için aşağıdak
 
 * [Azure Resource Manager belgeleri](/azure/azure-resource-manager)
 * [Azure Resource Manager şablonlarda kaynakları tanımlama](/azure/templates/)
-* [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
+* [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

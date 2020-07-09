@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f6cf551b95de8fc7fae83941e5109dfa823213af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465992"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106399"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Performans için Azure Data Lake Storage 2. iyileştirin
 
@@ -64,13 +65,13 @@ Hive iş yükleri için, zaman serisi verilerinin bölüm ayıklanması, bazı s
 
 Zaman serisi verileri alan işlem hatları, genellikle dosyalarını dosya ve klasörler için çok yapılandırılmış bir adlandırma ile yerleştirir. Aşağıda, şu tarihe göre yapılandırılmış veriler için görtiğimiz çok yaygın bir örnek verilmiştir:
 
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+*\DataSet\YYYY\MM\DD\ datafile_YYYY_MM_DD. tsv*
 
 Tarih saat bilgilerinin hem klasör hem de dosya adında göründüğünü unutmayın.
 
 Tarih ve saat için aşağıdaki genel bir örüntü
 
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+*\DataSet\YYYY\MM\DD\HH\mm\ datafile_YYYY_MM_DD_HH_mm. tsv*
 
 Yine, klasör ve dosya kuruluşunda yaptığınız seçim, daha büyük dosya boyutları ve her klasörde makul sayıda dosya için iyileştirmelidir.
 

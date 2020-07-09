@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104886"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. kullanmak için en iyi uygulamalar
 
 Bu makalede, Azure Data Lake Storage 2. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 2. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 2. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 2., her bir dosya boyutunu en fazla 5 TB kadar destekler ve performans için sabit limitlerin çoğu kaldırılmıştır. Ancak, Data Lake Storage 2. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Azure Data Lake Storage 2., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri sunmaktadır. Bu erişim denetimleri var olan dosyalara ve dizinlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya dizinlere otomatik olarak uygulanabilecek varsayılan izinleri oluşturmak için de kullanılabilir. Data Lake Storage 2. ACL 'Ler hakkında daha fazla ayrıntı [Azure Data Lake Storage 2. Içindeki erişim denetiminde](storage-data-lake-storage-access-control.md)bulunmaktadır.
 
@@ -76,11 +77,11 @@ Verileri bir veri Gölü içine kaydederken, güvenlik, bölümleme ve işlemeni
 
 IoT iş yüklerinde, çok sayıda ürüne, cihaza, kuruluşa ve müşterilere yayılan veri deposunda yer alan harika bir veri olabilir. Sağ Akış tüketicilerine yönelik verilerin kuruluş, güvenlik ve verimli işlenmesi için Dizin düzeninin önceden planlanmak önemlidir. Göz önünde bulundurmanız gereken genel bir şablon aşağıdaki düzen olabilir:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{Subjectler}/{yyyy}/{mm}/{dd}/{ss}/*
 
 Örneğin, UK içindeki bir uçak altyapısının giriş telemetrisi aşağıdaki yapıya benzeyebilir:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+*UK/düzlemler/BA1293/Engine1/2017/08/11/12/*
 
 Tarihi dizin yapısının sonuna yerleştirmek için önemli bir neden vardır. Belirli bölgeleri veya ilgili konuyu kullanıcılar/gruplar için kilitlemek istiyorsanız, bunu POSIX izinleriyle kolayca yapabilirsiniz. Aksi takdirde, belirli bir güvenlik grubunu yalnızca UK verileri veya belirli düzlemleri görüntülemek üzere kısıtlamak için, her saat dizininde bulunan çok sayıda dizin için, önde gelen Tarih yapısıyla ayrı bir izin olması gerekir. Ayrıca, tarih yapısının önde olması, dizin sayısını zaman içinde geçen zamanda üstel olarak artırır.
 
@@ -90,13 +91,13 @@ Bir üst düzeyden, toplu işlemede yaygın olarak kullanılan bir yaklaşım, v
 
 Bazen veri bozulması veya beklenmeyen biçimler nedeniyle dosya işleme başarısız olur. Bu gibi durumlarda, dizin yapısı bir **/Bad** klasöründen daha fazla inceleme için dosyaları taşımak için faydalanabilir. Toplu iş, el ile müdahale için bu *Hatalı* dosyaların raporlamasını veya bildirimini de işleyebilir. Aşağıdaki şablon yapısını göz önünde bulundurun:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{Subjectınsınlar}/ın/{yyyy}/{mm}/{dd}/{ss}/*\
+*{Region}/{Subjectler}/Out/{yyyy}/{mm}/{dd}/{ss}/*\
+*{Region}/{Subjectönemi}/Bad/{yyyy}/{mm}/{dd}/{ss}/*
 
 Örneğin, bir pazarlama firması, müşteri güncelleştirmelerinin Kuzey Amerika içindeki istemcilerinden günlük veri ayıklar. İşlenmeden önce ve sonra aşağıdaki kod parçacığına benzeyebilir:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+*NA/ayıklar/ACMEPaperCo/ın/2017/08/14/updates_08142017.csv*\
+*NA/ayıklar/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv*
 
 Toplu iş verilerinin doğrudan Hive veya geleneksel SQL veritabanları gibi veritabanlarına işlendiği durumlarda, çıkış zaten Hive tablosu veya dış veritabanı için ayrı bir klasöre geçtiğinde bir **/ın** veya **/Out** klasörüne gerek yoktur. Örneğin, müşterilerden günlük ayıklamalar ilgili klasörlerine giderek Azure Data Factory, Apache Oozie veya Apache Airflow gibi bir şey tarafından düzenleme, günlük bir Hive veya Spark işinin verileri bir Hive tablosuna işlemesi ve yazması için tetikleyecektir.

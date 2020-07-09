@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462812"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103407"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="july-2020"></a>Temmuz 2020
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>Sistem durumu kapsayıcısı genel geçişli önizleme için Metin Analizi
+
+Sistem durumu kapsayıcısı için Metin Analizi, artık genel geçitli önizlemededir ve bu, örneğin: hasta Intake formları, Doktor notları, araştırma kağıtları ve ücretsiz Özet özetleri gibi klinik belgelerde yapılandırılmamış Ingilizce dilindeki metinden bilgi ayıklamanıza olanak tanır. Şu anda, sistem durumu kapsayıcısı kullanımı için Metin Analizi faturalandırılmaz. 
+
+Kapsayıcı aşağıdaki özellikleri sunar:
+
+* Adlandırılmış Varlık Tanıma
+* İlişki ayıklama
+* Varlık bağlama
+* Negatif
+
+
+> [!div class="nextstepaction"]
+> [Sistem durumu kapsayıcısı için Metin Analizi hakkında daha fazla bilgi edinin](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>Mayıs 2020
 
@@ -61,9 +78,6 @@ JSON yanıtında aşağıdaki özelliklerin adları, uygun yerlerde değiştiril
 ### <a name="text-analytics-api-v31-public-preview"></a>Metin Analizi API'si v 3.1 genel önizleme
    * Yeni Yaklaşım Analizi özelliği- [görüşme madenciliği](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * Korunan sağlık bilgileri () için yeni [Kişisel ( `PII` ) etki alanı filtresi](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `PHI` .
-   * Yeni kişisel ( `PII` ) Kategoriler:
-      * Derinlemesine bir uluslararası sınıflandırma (ICD-9-CM)
-      * Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM)
 
 > [!div class="nextstepaction"]
 > [Metin Analizi API'si v 3.1 Preview hakkında daha fazla bilgi edinin](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -75,7 +89,7 @@ JSON yanıtında aşağıdaki özelliklerin adları, uygun yerlerde değiştiril
 [Birleşik Azure SDK sürümünün](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)bir parçası olarak, metın ANALIZI API'SI v3 SDK artık aşağıdaki programlama dilleri için genel önizleme olarak sunulmaktadır:
    * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
-   * [JavaScript (node. js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
    * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
    
    > [!div class="nextstepaction"]

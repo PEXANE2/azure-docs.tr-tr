@@ -1,18 +1,16 @@
 ---
 title: Test sürücüleri türleri, Microsoft ticari Market
 description: Ticari Market 'teki test sürücü türleri
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: a2d12a372f773a4a389ea7e7f2b3d2811ba889d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801232"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102948"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
@@ -70,7 +68,7 @@ Parametreleriniz için geçerli herhangi bir ad kullanabilirsiniz; test sürüc�
 
 ### <a name="accepted-parameter-metadata-types"></a>Kabul edilen parametre meta veri türleri
 
-| Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
+| Meta veri türü   | Parametre türü  | Description     | Örnek değer    |
 |---|---|---|---|
 | **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **nitelen**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
