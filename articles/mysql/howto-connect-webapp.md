@@ -4,20 +4,20 @@ description: Mevcut bir Azure App Service MySQL için Azure veritabanı 'na doğ
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ba75daa47ca1f77cd5828d13877238a64deeeb41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f3daa56c782d84cf6ba07223f8cfea15daa8a4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062456"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101633"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Mevcut bir Azure App Service MySQL sunucusu için Azure veritabanı 'na bağlama
 Bu konu, mevcut bir Azure App Service MySQL Server için Azure veritabanınıza nasıl bağlayabileceğinizi açıklamaktadır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-[Azure Portal](https://portal.azure.com) oturum açın. MySQL için Azure veritabanı sunucusu oluşturun. Ayrıntılar için [Portal 'Dan MySQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)bölümüne bakın.
+[Azure portalında](https://portal.azure.com) oturum açın. MySQL için Azure veritabanı sunucusu oluşturun. Ayrıntılar için [Portal 'Dan MySQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)bölümüne bakın.
 
 Şu anda bir Azure App Service erişimi bir MySQL için Azure veritabanı 'na etkinleştirmeye yönelik iki çözüm vardır. Her iki çözüm de sunucu düzeyinde güvenlik duvarı kurallarını ayarlamayı içerir.
 

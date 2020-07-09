@@ -11,24 +11,24 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707421"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082446"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalını kullanarak bir sanal ağ oluşturma
 
 Bu hızlı başlangıçta, Azure portal kullanarak bir sanal ağ oluşturmayı öğreneceksiniz. İki sanal makine (VM) dağıtırsınız. Daha sonra, VM 'Ler arasında güvenli bir şekilde iletişim kurabilir ve internet 'ten VM 'lere bağlanırsınız. Bir sanal ağ, Azure 'daki özel ağınız için temel yapı taşdır. VM 'Ler gibi Azure kaynaklarının birbirleriyle ve internet ile güvenli bir şekilde iletişim kurmasına olanak sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
@@ -223,3 +223,6 @@ Sanal ağ ve VM 'Leri kullanarak işiniz bittiğinde, kaynak grubunu ve içerdi�
 Sanal ağ ayarları hakkında daha fazla bilgi edinmek için bkz. [sanal ağ oluşturma, değiştirme veya silme](manage-virtual-network.md).
 
 Azure, varsayılan olarak VM 'Ler arasında güvenli iletişim sağlar. Azure, yalnızca Internet 'ten gelen Windows VM 'lerine gelen Uzak Masaüstü bağlantılarına izin verir. VM ağı iletişimleri türleri hakkında daha fazla bilgi edinmek için bkz. [ağ trafiğini filtreleme](tutorial-filter-network-traffic.md).
+
+> [!NOTE] 
+> Azure hizmetleri maliyet parayı. Azure maliyet yönetimi, bütçeleri ayarlamanıza ve denetim altına harcamalarını sağlamak için uyarıları yapılandırmanıza yardımcı olur. Maliyet yönetimi ile Azure maliyetlerinizi çözümleyin, yönetin ve iyileştirin. Daha fazla bilgi edinmek için [maliyetlerinizi çözümlemeye yönelik hızlı başlangıç](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bölümüne bakın.

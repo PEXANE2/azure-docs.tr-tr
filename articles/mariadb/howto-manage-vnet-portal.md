@@ -4,14 +4,14 @@ description: Azure portal kullanarak MariaDB VNet hizmet uç noktaları ve kural
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 61a8337536f55ceda9bef5b7eaa67a37644d2aca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e32b2b2e619d37323b2516178ab2b24cede4ee4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79530606"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101350"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure portal kullanarak MariaDB VNet hizmet uç noktaları ve VNet kuralları için Azure veritabanı oluşturun ve yönetin
 

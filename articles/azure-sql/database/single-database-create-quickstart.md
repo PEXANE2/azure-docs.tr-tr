@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 1ae3159365e63159b8ed62c09bc20441ba65d8aa
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081596"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Hızlı başlangıç: Azure SQL veritabanı tek veritabanı oluşturma
 
@@ -100,4 +100,8 @@ Farklı araçlar ve diller kullanarak veritabanınızı [bağlayın ve sorgulay�
 > [SQL Server Management Studio kullanarak bağlanma ve sorgulama](connect-query-ssms.md)
 >
 > [Azure Data Studio kullanarak bağlanma ve sorgulama](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
- 
+
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
+
+> [!div class="nextstepaction"]
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -8,41 +8,45 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: f5f92044a0274b809388eeb164be9f1587013e0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 841012cc8629b8eeb6ef863fd2f596d550cb67d9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064598"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082939"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
-Bu hızlı başlangıçta, Azure HDInsight 'ta bir [Apache Kafka](./apache-kafka-introduction.md) kümesi oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. Kafka, açık kaynaklı bir dağıtılmış akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır.
+Bu hızlı başlangıçta, Azure HDInsight 'ta bir [Apache Kafka](./apache-kafka-introduction.md) kümesi oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Kafka, açık kaynaklı bir dağıtılmış akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 Kafka API’sine yalnızca aynı sanal ağ içindeki kaynaklar tarafından erişilebilir. Bu hızlı başlangıçta, doğrudan SSH kullanarak kümeye erişirsiniz. Diğer hizmetleri, ağları veya sanal makineleri Kafka’ya bağlamak için önce bir sanal ağ oluşturmanız e sonra ağ içinde kaynakları oluşturmanız gerekir. Daha fazla bilgi için [Sanal ağ kullanarak Apache Kafka'ya bağlanma](apache-kafka-connect-vpn-gateway.md) belgesine bakın.
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka kümesi oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-hdinsight-kafka/).
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-kafka).
-
-:::code language="json" source="~/quickstart-templates/101-hdinsight-kafka/azuredeploy.json" range="1-150":::
+:::code language="json" source="~/quickstart-templates/101-hdinsight-kafka/azuredeploy.json" range="1-203" highlight="103-135":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
-* [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): bir Azure depolama hesabı oluşturun.
-* [Microsoft. HDInsight/Cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): HDInsight kümesi oluşturma.
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): bir Azure depolama hesabı oluşturun.
+* [Microsoft. HDInsight/Cluster](/azure/templates/microsoft.hdinsight/clusters): HDInsight kümesi oluşturma.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure 'da oturum açmak ve Kaynak Yöneticisi şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
+1. Azure 'da oturum açmak ve ARM şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-kafka-java-get-started%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/apache-kafka-quickstart-resource-manager-template/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri yazın veya seçin:
 
@@ -77,7 +81,7 @@ Bu bölümde, kümedeki Ambari REST API’sinden ana bilgisayar bilgilerini alı
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. SSH bağlantısından, `jq` yardımcı programı yüklemek için aşağıdaki komutu kullanın. Bu yardımcı program, JSON belgelerini ayrıştırmak için kullanılır ve ana bilgisayar bilgilerini almak için yararlıdır:
+1. SSH bağlantısından, yardımcı programı yüklemek için aşağıdaki komutu kullanın `jq` . Bu yardımcı program, JSON belgelerini ayrıştırmak için kullanılır ve ana bilgisayar bilgilerini almak için yararlıdır:
 
     ```bash
     sudo apt -y install jq
@@ -208,7 +212,7 @@ Daha önce oluşturduğunuz test konu başlığında kayıtları depolamak ve ar
 
     Bu komutla, kayıtlar konu başlığından alınır ve görüntülenir. `--from-beginning` kullanılması, tüketiciye akışın başından başlamasını söyler, böylece tüm kayıtlar alınır.
 
-    Eski bir Kafka sürümü kullanıyorsanız, ile `--bootstrap-server $KAFKABROKERS` `--zookeeper $KAFKAZKHOSTS`değiştirin.
+    Eski bir Kafka sürümü kullanıyorsanız, `--bootstrap-server $KAFKABROKERS` ile değiştirin `--zookeeper $KAFKAZKHOSTS` .
 
 1. Tüketiciyi durdurmak için __Ctrl + C__ tuşlarını kullanın.
 
@@ -226,7 +230,7 @@ Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **K
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Kaynak Yöneticisi şablonu kullanarak HDInsight 'ta Apache Kafka kümesi oluşturmayı öğrendiniz. Sonraki makalede Apache Kafka Streams API 'sini kullanan bir uygulama oluşturmayı ve HDInsight üzerinde Kafka ile çalıştırmayı öğreneceksiniz.
+Bu hızlı başlangıçta, bir ARM şablonu kullanarak HDInsight 'ta Apache Kafka kümesi oluşturmayı öğrendiniz. Sonraki makalede Apache Kafka Streams API 'sini kullanan bir uygulama oluşturmayı ve HDInsight üzerinde Kafka ile çalıştırmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
 > [Azure HDInsight 'ta Apache Kafka Streams API 'sini kullanma](./apache-kafka-streams-api.md)

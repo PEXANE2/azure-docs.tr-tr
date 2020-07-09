@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/27/2020
+ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 70baddf86207c490d3b85e0f584525592f8a7ad7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 64b4b0bd8c1e387229144e02293b573062ab196c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087835"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD rolleri
 
@@ -99,7 +99,7 @@ Azure AD rolleri, Kullanıcı oluşturma veya düzenleme, diğer kullanıcılara
 
 | Azure AD rolü | İzinler | Notlar |
 | --- | --- | --- |
-| [Genel Yönetici](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Azure Active Directory'deki tüm yönetim özelliklerine ve Azure Active Directory'yi federasyona ekleyen hizmetlere erişimi yönetme</li><li>Diğer kullanıcılara yönetici rolü atama</li><li>Tüm kullanıcıların ve diğer yöneticilerin parolasını sıfırlama</li></ul> | Azure Active Directory'ye kaydolan kullanıcı, Genel Yönetici olur. |
+| [Genel yönetici](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Azure Active Directory'deki tüm yönetim özelliklerine ve Azure Active Directory'yi federasyona ekleyen hizmetlere erişimi yönetme</li><li>Diğer kullanıcılara yönetici rolü atama</li><li>Tüm kullanıcıların ve diğer yöneticilerin parolasını sıfırlama</li></ul> | Azure Active Directory'ye kaydolan kullanıcı, Genel Yönetici olur. |
 | [Kullanıcı Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Kullanıcı ve grup oluşturma ve bunların tüm özelliklerini yönetme</li><li>Destek biletlerini yönetme</li><li>Hizmet durumunu izleme</li><li>Kullanıcıların, Yardım Masası yöneticilerinin ve Kullanıcı Yöneticilerinin parolalarını değiştirme</li></ul> |  |
 | [Faturalama yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Satın alma gerçekleştirme</li><li>Abonelikleri yönetme</li><li>Destek biletlerini yönetme</li><li>Hizmet durumunu izleme</li></ul> |  |
 
@@ -120,7 +120,7 @@ Azure rolleri, yüksek düzeyde Azure kaynakları 'nı yönetmek için izinleri 
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Azure rolleri ve Azure AD rolleri çakışıyor mu?
 
-Azure rolleri ve Azure AD rolleri, varsayılan olarak Azure ve Azure AD 'yi kapsamaz. Bununla birlikte, genel yönetici, **Azure aboneliklerini yönetebilir ve Azure portal yönetim grupları** anahtarı ' nı seçerek bir genel yönetici erişimini yükseltir. genel yöneticiye, belirli bir kiracının tüm aboneliklerinde [Kullanıcı erişimi yönetici](built-in-roles.md#user-access-administrator) rolü (bir Azure rolü) verilecektir. Kullanıcı Erişimi Yöneticisi, kullanıcının diğer kullanıcılara Azure kaynaklarına erişim izni vermesini sağlar. Bu seçenek bir aboneliğe yeniden erişim elde etmek konusunda faydalı olabilir. Daha fazla bilgi için bkz. [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](elevate-access-global-admin.md).
+Azure rolleri ve Azure AD rolleri, varsayılan olarak Azure ve Azure AD 'yi kapsamaz. Ancak, bir genel yönetici Azure portal **Azure kaynakları Için erişim yönetimini** seçerek erişimini yükseltir, genel yöneticiye belirli bir kiracının tüm aboneliklerinde [Kullanıcı erişimi yönetici](built-in-roles.md#user-access-administrator) rolü (bir Azure rolü) verilecektir. Kullanıcı Erişimi Yöneticisi, kullanıcının diğer kullanıcılara Azure kaynaklarına erişim izni vermesini sağlar. Bu seçenek bir aboneliğe yeniden erişim elde etmek konusunda faydalı olabilir. Daha fazla bilgi için bkz. [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](elevate-access-global-admin.md).
 
 Azure AD ve Microsoft Office 365 ' de genel yönetici ve Kullanıcı Yöneticisi rolleri gibi çeşitli Azure AD rolleri. Örneğin Genel Yönetici rolüne üye olduğunuzda Azure AD ve Office 365'te Microsoft Exchange ve Microsoft SharePoint'te değişiklik yapma gibi genel yönetici özelliklerine sahip olursunuz. Ancak Genel Yönetici varsayılan olarak Azure kaynaklarına erişim sahibi değildir.
 

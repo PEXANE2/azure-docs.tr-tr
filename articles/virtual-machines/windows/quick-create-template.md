@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84551987"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087291"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Windows sanal makinesi oluşturma
+# <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Windows sanal makinesi oluşturma
 
-Bu hızlı başlangıçta, Azure 'da bir Windows sanal makinesini (VM) dağıtmak için Kaynak Yöneticisi şablonunun nasıl kullanılacağı gösterilmektedir. 
+Bu hızlı başlangıçta, Azure 'da bir Windows sanal makinesi (VM) dağıtmak için bir Azure Resource Manager şablonunun (ARM şablonu) nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
-
-Yok.
-
-## <a name="create-a-windows-virtual-machine"></a>Windows sanal makinesi oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir anahtar kasası ve gizli dizi oluşturur.
 
@@ -86,7 +86,7 @@ Artık gerekli olmadığında, kaynak grubundaki VM 'yi ve tüm kaynakları sile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Kaynak Yöneticisi şablonu kullanarak basit bir sanal makine dağıttınız. Azure sanal makineleri hakkında daha fazla bilgi için Linux VM’lerine yönelik öğreticiye geçin.
+Bu hızlı başlangıçta, ARM şablonunu kullanarak basit bir sanal makine dağıttınız. Azure sanal makineleri hakkında daha fazla bilgi için Linux VM’lerine yönelik öğreticiye geçin.
 
 
 > [!div class="nextstepaction"]

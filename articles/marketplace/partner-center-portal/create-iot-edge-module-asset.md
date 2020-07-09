@@ -1,17 +1,18 @@
 ---
 title: IoT Edge modülünüzü hazırlama teknik varlıkları-Azure Marketi
 description: Azure Market 'Te yayımlayabilmeniz için Nesnelerin İnterneti (IoT) Edge modülünün teknik varlıklarının karşılaması gereken teknik ve yapılandırma gereksinimleri hakkında bilgi edinin.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/03/2020
-ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 685ac2a383bcc0b85121112b9b5df4aa7650ab59
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958591"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101180"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge modülünüzü hazırlayın teknik varlıkları hazırlama
 

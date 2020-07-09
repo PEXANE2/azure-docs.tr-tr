@@ -4,15 +4,16 @@ description: MySQL için Azure veritabanı ile kimlik doğrulaması için Azure 
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2019
-ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5d2e5546c8b29ed486c587a555f47fa2c7e31b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636691"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101435"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
 Bu makale, MySQL için Azure veritabanı ile Azure Active Directory erişimi yapılandırma ve Azure AD belirteci kullanarak bağlanma adımlarında size yol gösterecektir.
 
@@ -56,7 +57,7 @@ Ayrıca, en yaygın uygulama sürücülerini test ettik, bu sayfanın sonundaki 
 
 Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure Cloud Shell, bir Azure VM veya yerel makinenizde da izleyebilirsiniz. [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
 

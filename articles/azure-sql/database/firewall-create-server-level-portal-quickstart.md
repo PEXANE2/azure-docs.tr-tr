@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 8b340bdbd4bea4fcd865d6c27d688e5dbed86bb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054302"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084996"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu hızlı başlangıçta, [MANTıKSAL SQL Server 'lar](logical-servers.md), tek veritabanları ve elastik havuzlara ve veritabanlarına bağlanmanızı sağlamak üzere Azure Portal kullanarak Azure SQL veritabanı 'nda [sunucu düzeyinde güvenlik duvarı kuralı](firewall-configure.md) oluşturma işlemi gösterilmektedir. Diğer Azure kaynaklarından ve şirket içi kaynaklardan bağlanmak için bir güvenlik duvarı kuralı gereklidir. Sunucu düzeyinde güvenlik duvarı kuralları, Azure SQL yönetilen örneği için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta, başlangıç noktası olarak [Azure Portal kullanarak tek bir veritabanı oluşturma](single-database-create-quickstart.md) bölümünde oluşturulan kaynaklar kullanılmaktadır.
 
@@ -33,12 +33,12 @@ Bu hızlı başlangıçta, başlangıç noktası olarak [Azure Portal kullanarak
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Sunucu düzeyinde IP güvenlik duvarı kuralı oluşturma
 
- SQL veritabanı, tek ve havuza alınmış veritabanları için sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu güvenlik duvarı, güvenlik duvarını açmak için bir IP güvenlik duvarı kuralı oluşturmadığınız müddetçe istemci uygulamalarının sunucuya veya tek veya havuza alınmış veritabanlarından herhangi birine bağlanmasını engeller. Azure dışındaki bir IP adresinden bağlantı için, bağlanabilmek istediğiniz belirli bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun. Sunucu düzeyinde ve veritabanı düzeyinde IP güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [sunucu düzeyi ve veritabanı DÜZEYINDE IP güvenlik duvarı kuralları](firewall-configure.md).
+ SQL veritabanı, tek ve havuza alınmış veritabanları için sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu güvenlik duvarı, güvenlik duvarını açmak için bir IP güvenlik duvarı kuralı oluşturmadığınız müddetçe istemci uygulamalarının sunucuya veya veritabanlarının veritabanlarına bağlanmasını engeller. Azure dışındaki bir IP adresinden bağlantı için, bağlanabilmek istediğiniz belirli bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun. Sunucu düzeyinde ve veritabanı düzeyinde IP güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [sunucu düzeyi ve veritabanı DÜZEYINDE IP güvenlik duvarı kuralları](firewall-configure.md).
 
 > [!NOTE]
 > Azure SQL veritabanı 1433 bağlantı noktası üzerinden iletişim kurar. Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde sunucunuza bağlanamazsınız.
 > [!IMPORTANT]
-> 0.0.0.0 güvenlik duvarı kuralı, tüm Azure hizmetlerinin sunucu düzeyinde güvenlik duvarı kuralı üzerinden geçmesini ve sunucu üzerinden tek veya havuza alınmış bir veritabanına bağlanmayı denemesini sağlar.
+> 0.0.0.0 güvenlik duvarı kuralı, tüm Azure hizmetlerinin sunucu düzeyinde güvenlik duvarı kuralı üzerinden geçmesini ve sunucu üzerinden bir veritabanına bağlanmayı denemesini sağlar.
 
 İstemci IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturmak ve yalnızca IP adresiniz için Azure SQL veritabanı güvenlik duvarı üzerinden dış bağlantıyı etkinleştirmek için bu adımları izleyin.
 
@@ -58,7 +58,7 @@ Bu hızlı başlangıçta, başlangıç noktası olarak [Azure Portal kullanarak
    > Varsayılan olarak, Azure SQL veritabanı güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için devre dışıdır. Tüm Azure hizmetleri için erişimi etkinleştirmek istiyorsanız bu sayfada **Açık '** ı seçin.
    >
 
-5. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet**'i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Güvenlik duvarı ayarları** sayfasını kapatın.
 

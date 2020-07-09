@@ -1,14 +1,14 @@
 ---
-title: Genel Bakış
+title: Azure Resource Manager genel bakış
 description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim denetimi için Azure Resource Manager’ın nasıl kullanılacağı açıklanmaktadır.
 ms.topic: overview
 ms.date: 04/21/2020
-ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870485"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087036"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
@@ -68,7 +68,7 @@ Yönetim ayarlarını bu kapsam düzeylerinden birinde uygularsınız. Seçtiği
 
 Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli faktörler bulunur:
 
-* Grubunuzdaki tüm kaynaklar aynı yaşam döngüsünü paylaşmalıdır. Bunları birlikte dağıtır, güncelleştirir ve silersiniz. Veritabanı sunucusu gibi bir kaynağın farklı bir dağıtım döngüsünde bulunması gerekiyorsa, bu kaynak farklı bir kaynak grubuna konulmalıdır.
+* Grubunuzdaki tüm kaynaklar aynı yaşam döngüsünü paylaşmalıdır. Bunları birlikte dağıtır, güncelleştirir ve silersiniz. Sunucu gibi bir kaynağın farklı bir dağıtım döngüsüyle bulunması gerekiyorsa, başka bir kaynak grubunda olması gerekir.
 
 * Her kaynak yalnızca bir kaynak grubunda yer alabilir.
 

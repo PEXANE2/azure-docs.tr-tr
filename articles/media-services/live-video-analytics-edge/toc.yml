@@ -1,7 +1,5 @@
 - name: IoT Edge’de Canlı Video Analizi (önizleme) belgeleri
   href: index.yml
-- name: Azure Media Services v3’e geçiş belgeleri
-  href: ../latest/index.yml
 - name: Genel Bakış
   items:
     - name: IoT Edge’de Canlı Video Analizi hakkında
@@ -34,7 +32,7 @@
       href: playback-multi-day-recordings-tutorial.md
 - name: Örnekler
   items:
-    - name: 'IoT Edge’de Canlı Video Analizi C# örnekleri'
+    - name: IoT Edge’de Canlı Video Analizi C# örnekleri
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
 - name: Kavramlar
   items:

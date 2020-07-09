@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 28eb88a40139352b475851003a1092954a97ef64
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954324"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083568"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -276,3 +276,8 @@ Bir tarayıcıda çalışan kullanıma yönelik bir Web uygulaması oluşturmak 
 
 > [!div class="nextstepaction"]
 > [Portalda demo uygulaması oluşturma](search-create-app-portal.md)
+
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
+
+> [!div class="nextstepaction"]
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

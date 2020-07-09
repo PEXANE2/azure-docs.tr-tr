@@ -8,38 +8,41 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: 395078b9a973b6255685feb6a858daed7667207a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c772345b9cf5d6e4fafdcd951f65bd8c796ab839
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605453"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082157"
 ---
-# <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure HDInsight 'ta Apache HBase kümesi oluşturma
+# <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure HDInsight 'ta Apache HBase kümesi oluşturma
 
-Bu hızlı başlangıçta, Azure HDInsight 'ta [Apache HBase](./apache-hbase-overview.md) kümesi oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. HBase, Apache Hadoop oluşturulan ve [Google BigTable](https://cloud.google.com/bigtable/)'dan sonra Modellenen açık kaynaklı, NoSQL veritabanıdır.
+Bu hızlı başlangıçta, Azure HDInsight 'ta [Apache HBase](./apache-hbase-overview.md) kümesi oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. HBase, Apache Hadoop oluşturulan ve [Google BigTable](https://cloud.google.com/bigtable/)'dan sonra Modellenen açık kaynaklı, NoSQL veritabanıdır.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-an-apache-hbase-cluster"></a>Apache HBase kümesi oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux/).
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-hbase-linux).
-
-:::code language="json" source="~/quickstart-templates/101-hdinsight-hbase-linux/azuredeploy.json" range="1-145":::
-
+:::code language="json" source="~/quickstart-templates/101-hdinsight-hbase-linux/azuredeploy.json" range="1-199" highlight="103-136":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
-* [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): bir Azure depolama hesabı oluşturun.
-* [Microsoft. HDInsight/Cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): HDInsight kümesi oluşturma.
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): bir Azure depolama hesabı oluşturun.
+* [Microsoft. HDInsight/Cluster](/azure/templates/microsoft.hdinsight/clusters): HDInsight kümesi oluşturma.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure 'da oturum açmak ve Kaynak Yöneticisi şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
+1. Azure 'da oturum açmak ve ARM şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
 
     [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
 
@@ -76,7 +79,7 @@ Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **K
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Kaynak Yöneticisi şablonu kullanarak HDInsight 'ta Apache HBase kümesi oluşturmayı öğrendiniz. Sonraki makalede, HBase kabuğu ile HDInsight 'ta HBase 'i sorgulamayı öğreneceksiniz.
+Bu hızlı başlangıçta, bir ARM şablonu kullanarak HDInsight 'ta Apache HBase kümesi oluşturmayı öğrendiniz. Sonraki makalede, HBase kabuğu ile HDInsight 'ta HBase 'i sorgulamayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
 > [HBase kabuğu ile Azure HDInsight 'ta Apache HBase 'i sorgulama](./query-hbase-with-hbase-shell.md)

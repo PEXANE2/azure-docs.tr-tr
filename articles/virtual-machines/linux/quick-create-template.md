@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 7fc7e4d5d402bfb21a30798f64e31cbbef8ccdd0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 479e580ee8821f0a6de054c631714c5386927e4f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677959"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083925"
 ---
-# <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Ubuntu Linux sanal makine oluşturma
+# <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Ubuntu Linux sanal makine oluşturma
 
-Bu hızlı başlangıçta, Azure 'da Ubuntu Linux sanal makine (VM) dağıtmak için Kaynak Yöneticisi şablonunun nasıl kullanılacağı gösterilmektedir. 
+Bu hızlı başlangıçta, Azure 'da Ubuntu Linux sanal makine (VM) dağıtmak için bir Azure Resource Manager şablonunun (ARM şablonu) nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
-
-Yok.
-
-## <a name="create-an-ubuntu-linux-virtual-machine"></a>Ubuntu Linux sanal makinesi oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/).
 
@@ -46,7 +46,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft. Network/Publicıpaddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): genel bir IP adresi oluşturun.
 - [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines): sanal makine oluşturun.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir anahtar kasası ve gizli dizi oluşturur.
 
@@ -90,7 +90,7 @@ Artık gerekli olmadığında, kaynak grubundaki VM 'yi ve tüm kaynakları sile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Kaynak Yöneticisi şablonu kullanarak basit bir sanal makine dağıttınız. Azure sanal makineleri hakkında daha fazla bilgi için Linux VM’lerine yönelik öğreticiye geçin.
+Bu hızlı başlangıçta, ARM şablonunu kullanarak basit bir sanal makine dağıttınız. Azure sanal makineleri hakkında daha fazla bilgi için Linux VM’lerine yönelik öğreticiye geçin.
 
 
 > [!div class="nextstepaction"]

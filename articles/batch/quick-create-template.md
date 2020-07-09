@@ -4,18 +4,22 @@ description: Azure CLI ile bir Batch işi çalıştırmayı hızlı bir şekilde
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086135"
 ---
-# <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Batch hesabı oluşturma
+# <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Batch hesabı oluşturma
 
-İşlem kaynakları (işlem düğümleri havuzları) ve Batch işleri oluşturmak için bir Batch hesabına ihtiyacınız vardır. Bir Azure Depolama hesabını Batch hesabınıza bağlayabilirsiniz. Bu, uygulamaları dağıtmak ve gerçek hayatta çok sayıda iş yükü için giriş ve çıkış verilerini depolamak için yararlıdır. Bu hızlı başlangıçta, depolama dahil olmak üzere bir Batch hesabı oluşturmak için bir Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
+İşlem kaynakları (işlem düğümleri havuzları) ve Batch işleri oluşturmak için bir Batch hesabına ihtiyacınız vardır. Bir Azure Depolama hesabını Batch hesabınıza bağlayabilirsiniz. Bu, uygulamaları dağıtmak ve gerçek hayatta çok sayıda iş yükü için giriş ve çıkış verilerini depolamak için yararlıdır. Bu hızlı başlangıçta, depolama dahil olmak üzere bir Batch hesabı oluşturmak için bir Azure Resource Manager şablonunun (ARM şablonu) nasıl kullanılacağı gösterilmektedir. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -23,9 +27,7 @@ Etkin bir Azure aboneliğiniz olmalıdır.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-batch-account-with-storage"></a>Depolama ile Batch hesabı oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
 
@@ -36,7 +38,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): bir depolama hesabı oluşturur.
 - [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): bir Batch hesabı oluşturur.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Batch hesabı ve depolama hesabı oluşturur.
 

@@ -8,38 +8,41 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: cde8d6932400966ae22720b1e86f3c5164f25b30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd3e541624c2375ed71fb9768bb0c42ec101f47b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81603439"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087716"
 ---
-# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure HDInsight 'ta ML Hizmetleri kümesi oluşturma
+# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure HDInsight 'ta ML Hizmetleri kümesi oluşturma
 
-Bu hızlı başlangıçta, Azure HDInsight 'ta bir [ml Hizmetleri](./r-server-overview.md) kümesi oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. Microsoft Machine Learning Server, Azure 'da HDInsight kümeleri oluştururken dağıtım seçeneği olarak kullanılabilir. Bu seçeneği sağlayan küme türü ML Hizmetleri olarak adlandırılır. Bu özellik, HDInsight üzerinde ölçeklenebilir ve dağıtılmış analiz yöntemlerine isteğe bağlı erişim sağlayan veri bilimcileri, İstatistikçilerin ve R programcıları sağlar.
+Bu hızlı başlangıçta, Azure HDInsight 'ta bir [ml Hizmetleri](./r-server-overview.md) kümesi oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Microsoft Machine Learning Server, Azure 'da HDInsight kümeleri oluştururken dağıtım seçeneği olarak kullanılabilir. Bu seçeneği sağlayan küme türü ML Hizmetleri olarak adlandırılır. Bu özellik, HDInsight üzerinde ölçeklenebilir ve dağıtılmış analiz yöntemlerine isteğe bağlı erişim sağlayan veri bilimcileri, İstatistikçilerin ve R programcıları sağlar.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-rserver%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-an-ml-services-cluster"></a>ML Hizmetleri kümesi oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-rserver).
-
-:::code language="json" source="~/quickstart-templates/101-hdinsight-rserver/azuredeploy.json" range="1-171":::
-
+:::code language="json" source="~/quickstart-templates/101-hdinsight-rserver/azuredeploy.json" range="1-171" highlight="49-85":::
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
-* [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): bir Azure depolama hesabı oluşturun.
-* [Microsoft. HDInsight/Cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): HDInsight kümesi oluşturma.
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): bir Azure depolama hesabı oluşturun.
+* [Microsoft. HDInsight/Cluster](/azure/templates/microsoft.hdinsight/clusters): HDInsight kümesi oluşturma.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure 'da oturum açmak ve Kaynak Yöneticisi şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
+1. Azure 'da oturum açmak ve ARM şablonunu açmak için aşağıdaki **Azure 'A dağıt** düğmesini seçin.
 
     [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-rserver%2Fazuredeploy.json)
 
@@ -76,7 +79,7 @@ Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **K
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Kaynak Yöneticisi şablonu kullanarak HDInsight 'ta ML Hizmetleri kümesi oluşturmayı öğrendiniz. Sonraki makalede, dağıtılmış R hesaplamaları için Spark kullanmayı gösteren RStudio Server ile R betiği çalıştırmayı öğreneceksiniz.
+Bu hızlı başlangıçta, bir ARM şablonu kullanarak HDInsight 'ta ML Hizmetleri kümesi oluşturmayı öğrendiniz. Sonraki makalede, dağıtılmış R hesaplamaları için Spark kullanmayı gösteren RStudio Server ile R betiği çalıştırmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
 > [RStudio Server kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme](./machine-learning-services-quickstart-job-rstudio.md)
