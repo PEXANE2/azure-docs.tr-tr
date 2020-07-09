@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b860f4f75e142a8df09bb538ebee3f2eac6d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 41f42b053181f4115770cd9973621706b248baab
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297486"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168312"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -101,10 +101,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. **Yanıt URL 'si**IÇIN aşağıdaki URL 'den birini girin:
 
-    |||
-    |-|-|
-    | `https://instancename.service-now.com/navpage.do` |
-    | `https://instancename.service-now.com/customer.do` | 
+    - `https://instancename.service-now.com/navpage.do`
+    - `https://instancename.service-now.com/customer.do`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI ve tanımlayıcı ile güncelleştirmeniz gerekir. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -131,7 +129,7 @@ Bu bölümde, Azure portal olarak B. Simon adlı bir test kullanıcısı oluştu
    1. **Ad**için girin `B.Simon` .  
    1. **Kullanıcı adı**için öğesini girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda gösterilen değeri yazın.
-   1. **Oluştur**'u seçin.
+   1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -173,10 +171,8 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
     c. **Yanıt URL 'si**IÇIN aşağıdaki URL 'den birini girin:
 
-    |||
-    |-|-|
-    | `https://instancename.service-now.com/navpage.do` |
-    | `https://instancename.service-now.com/customer.do` |
+    - `https://instancename.service-now.com/navpage.do`
+    - `https://instancename.service-now.com/customer.do`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI ve tanımlayıcı ile güncelleştirmeniz gerekir. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

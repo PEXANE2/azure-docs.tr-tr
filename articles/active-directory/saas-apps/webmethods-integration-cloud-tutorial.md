@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 30fc55cb608189e1be82c2b28393c5e242e262fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfe2825915e52e1cbe1cb3d1015e0239e88d15e0
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160870"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>Öğretici: webMethods Integration Suite ile Azure Active Directory tümleştirme
 
@@ -32,7 +32,7 @@ Web yöntemleri tümleştirme paketini Azure AD ile tümleştirmek aşağıdaki 
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -109,19 +109,16 @@ Azure AD çoklu oturum açma 'yı webMethods tümleştirme paketi ile yapıland�
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `<SUBDOMAIN>.webmethodscloud.com` |
-    | `<SUBDOMAIN>.webmethodscloud.eu` |
-    | `<SUBDOMAIN>.webmethodscloud.de` |
+    - `<SUBDOMAIN>.webmethodscloud.com`
+    - `<SUBDOMAIN>.webmethodscloud.eu`
+    - `<SUBDOMAIN>.webmethodscloud.de`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse` |
+
+    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoResponse`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoResponse`
 
     c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -129,11 +126,9 @@ Azure AD çoklu oturum açma 'yı webMethods tümleştirme paketi ile yapıland�
 
     d. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest` |
+    - `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/integration/live/saml/ssoRequest`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/integration/live/saml/ssoRequest`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [WebMethods Integration Suite istemci destek ekibine](https://empower.softwareag.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -144,19 +139,15 @@ Azure AD çoklu oturum açma 'yı webMethods tümleştirme paketi ile yapıland�
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `<SUBDOMAIN>.webmethodscloud.com` |
-    | `<SUBDOMAIN>.webmethodscloud.eu` |
-    | `<SUBDOMAIN>.webmethodscloud.de` |
+    - `<SUBDOMAIN>.webmethodscloud.com`
+    - `<SUBDOMAIN>.webmethodscloud.eu`
+    - `<SUBDOMAIN>.webmethodscloud.de`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso` |
-    | `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso` |
-    | `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso` |
+    - `https://<SUBDOMAIN>.webmethodscloud.com/umc/rest/saml/initsso`
+    - `https://<SUBDOMAIN>.webmethodscloud.eu/umc/rest/saml/initsso`
+    - `https://<SUBDOMAIN>.webmethodscloud.de/umc/rest/saml/initsso`
 
     c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -164,11 +155,9 @@ Azure AD çoklu oturum açma 'yı webMethods tümleştirme paketi ile yapıland�
 
     d. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>` |
-    | `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>` |
-    | `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>` |
+    - `https://api.webmethodscloud.com/umc/rest/saml/initsso/?tenant=<TENANTID>`
+    - `https://api.webmethodscloud.eu/umc/rest/saml/initsso/?tenant=<TENANTID>`
+    - `https://api.webmethodscloud.de/umc/rest/saml/initsso/?tenant=<TENANTID>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [WebMethods Integration Suite istemci destek ekibine](https://empower.softwareag.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -209,12 +198,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**yazın.
   
-    b. **Kullanıcı adı** alanına **brittasıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

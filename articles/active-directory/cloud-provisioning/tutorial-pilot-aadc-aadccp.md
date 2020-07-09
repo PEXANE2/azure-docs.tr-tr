@@ -11,18 +11,18 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360767"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146810"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
 Bu öğreticide, zaten Azure Active Directory (Azure AD) Connect Sync kullanılarak eşitlenmiş bir test Active Directory ormanı için bulut sağlamasının nasıl ele aldığı anlatılmaktadır.
 
-![Oluştur](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Oluşturma](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
@@ -78,7 +78,7 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
  
  4. **Kapsam filtresi** sayfasında, pilot uygulamayı açmak istediğiniz OU veya güvenlik grubunu girin.  OU 'ya filtre uygulamak için, ayırt edici adın OU kısmını ekleyin. Bu kural, o OU 'da bulunan tüm kullanıcılara uygulanır.  Yani, DN "OU = CPUsers, DC = contoso, DC = com" ile sonlanıyorsa, bu filtreyi eklersiniz.  Ardından **İleri**'ye tıklayın. 
 
-    |Kural|Öznitelik|Operatör|Değer|
+    |Kural|Öznitelik|İşleç|Değer|
     |-----|----|----|-----|
     |Kapsamı bulunan OU|DEĞERI|ENDSWITH|OU 'nun ayırt edici adı.|
     |Kapsam grubu||ISMEMBEROF|Güvenlik grubunun ayırt edici adı.|
@@ -164,19 +164,19 @@ Sağlamayı yapılandırmak için aşağıdaki adımları kullanın:
  1. Azure AD portalında oturum açın.
  2. **Azure Active Directory** tıklayın
  3. **Azure AD Connect** tıklayın
- 4. **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin
- ![](media/how-to-configure/manage1.png)</br>
- 5.  **Yeni yapılandırma** ' ya tıklayın
- ![](media/tutorial-single-forest/configure1.png)</br>
+ 4. **Manage provisioning (Preview)** 
+  ![ "Sağlamayı yönetme (Önizleme)" bağlantısını gösteren sağlamayı Yönet (Önizleme) ekran görüntüsünü seçin.](media/how-to-configure/manage1.png)</br>
+ 5.  **New Configuration** 
+  ![ "Yeni yapılandırma" bağlantısı vurgulanmış şekilde Azure AD sağlama (Önizleme) ekranının yeni yapılandırma ekran görüntüsü ' ne tıklayın.](media/tutorial-single-forest/configure1.png)</br>
  6.  Yapılandırma ekranında bir **bildirim e-postası**girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![Bildirim e-postasına sahip ekranı Yapılandır ekranının ekran görüntüsü doldurulmuş ve seçili şekilde etkin.](media/tutorial-single-forest/configure2.png)</br>
  7. **Yapılandır**' ın altında, yapılandırma kuralının kapsamını değiştirmek için **tüm kullanıcılar** ' ı seçin.
- ![](media/how-to-configure/scope2.png)</br>
+ !["Kapsam kullanıcıları" öğesinin yanında "tüm kullanıcılar" vurgulanmış şekilde yapılandırma ekranının ekran görüntüsü.](media/how-to-configure/scope2.png)</br>
  8. Sağ tarafta, yeni oluşturduğunuz kuruluş birimini (OU = CPUsers, DC = contoso, DC = com ") içerecek şekilde kapsamını değiştirin.
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![Kapsamını vurgulayan kapsam kullanıcıları ekranının ekran görüntüsü oluşturduğunuz OU 'ya değişti.](media/tutorial-existing-forest/scope2.png)</br>
  9.  **Bitti** ve **Kaydet**' e tıklayın.
  10. Kapsam artık tek bir kuruluş birimine ayarlanmalıdır. 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ !["Kapsam kullanıcıları" yanında vurgulanan "1 kuruluş birimi" ile yapılandırma ekranının ekran görüntüsü.](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Kullanıcıların bulut sağlaması tarafından sağlandığını doğrulayın

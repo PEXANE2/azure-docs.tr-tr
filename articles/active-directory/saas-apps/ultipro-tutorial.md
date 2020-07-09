@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036737bd945f9abecef04e6e747c2d05dcb25187
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2d4967e9aeb5d8f0a1e05d272f6e5f372c11dd64
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73161072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>Öğretici: UltiPro ile tümleştirme Azure Active Directory
 
@@ -33,7 +33,7 @@ UltiPro 'Yu Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -108,27 +108,21 @@ Azure AD çoklu oturum açmayı UltiPro ile yapılandırmak için aşağıdaki a
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<companyname>.ultipro.com/`|
-    | `https://<companyname>.ultiproworkplace.com?cpi=AZUREADISSSUERURL`|
-    | `https://<companyname>.ultipro.ca`|
+    - `https://<companyname>.ultipro.com/`
+    - `https://<companyname>.ultiproworkplace.com?cpi=AZUREADISSSUERURL`
+    - `https://<companyname>.ultipro.ca`
     
     b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<companyname>.ultipro.com/adfs/services/trust`|
-    | `https://<companyname>.ultiproworkplace.com/adfs/services/trust`|
-    | `https://<companyname>.ultipro.ca/adfs/services/trust`|
+    - `https://<companyname>.ultipro.com/adfs/services/trust`
+    - `https://<companyname>.ultiproworkplace.com/adfs/services/trust`
+    - `https://<companyname>.ultipro.ca/adfs/services/trust`
     
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |--|
-    | `https://<companyname>.ultipro.com/<instancename>`|
-    | `https://<companyname>.ultiproworkplace.com/<instancename>`|
-    | `https://<companyname>.ultipro.ca/<instancename>`|
+    - `https://<companyname>.ultipro.com/<instancename>`
+    - `https://<companyname>.ultiproworkplace.com/<instancename>`
+    - `https://<companyname>.ultipro.ca/<instancename>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [UltiPro istemci desteği ekibine](https://www.ultimatesoftware.com/ContactUs) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -169,12 +163,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

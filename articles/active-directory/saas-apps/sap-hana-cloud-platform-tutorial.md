@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2972af3c94768cc21b53bbf5376826940aee639a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160077"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Öğretici: SAP Cloud Platform ile tümleştirme Azure Active Directory
 
@@ -33,7 +33,7 @@ SAP Cloud Platform ile Azure AD arasında tümleştirme aşağıdaki avantajlar�
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -114,35 +114,29 @@ Azure AD çoklu oturum açmayı SAP Cloud Platform ile yapılandırmak için aş
 
     a. **Oturum açma URL 'si** metin kutusunda, kullanıcılarınız tarafından **SAP bulut platformu** uygulamanızda oturum açmak için kullanılan URL 'yi yazın. Bu, SAP bulut platformu uygulamanızda korunan bir kaynağın hesaba özgü URL 'sidir. URL aşağıdaki modele dayalıdır:`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
-     >[!NOTE]
-     >Bu, SAP bulut platformu uygulamanızda kullanıcının kimlik doğrulamasını gerektiren URL 'dir.
-     > 
+    >[!NOTE]
+    >Bu, SAP bulut platformu uygulamanızda kullanıcının kimlik doğrulamasını gerektiren URL 'dir.
+    > 
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
 
     b. **Tanımlayıcı** metin kutusunda, aşağıdaki desenlerden bırını kullanarak SAP bulut PLATFORMUNUZUN URL 'sini girin: 
 
-    | |
-    |--|
-    | `https://hanatrial.ondemand.com/<instancename>` |
-    | `https://hana.ondemand.com/<instancename>` |
-    | `https://us1.hana.ondemand.com/<instancename>` |
-    | `https://ap1.hana.ondemand.com/<instancename>` |
+    - `https://hanatrial.ondemand.com/<instancename>`
+    - `https://hana.ondemand.com/<instancename>`
+    - `https://us1.hana.ondemand.com/<instancename>`
+    - `https://ap1.hana.ondemand.com/<instancename>`
 
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
 
     > [!NOTE] 
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Oturum açma URL 'sini ve tanımlayıcıyı almak için [SAP Cloud Platform istemci destek ekibine](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html) başvurun. Güven yönetimi bölümünden alabileceğiniz, öğreticide daha sonra açıklanan yanıt URL 'SI.
@@ -153,7 +147,7 @@ Azure AD çoklu oturum açmayı SAP Cloud Platform ile yapılandırmak için aş
 
 ### <a name="configure-sap-cloud-platform-single-sign-on"></a>SAP Cloud Platform çoklu oturum açmayı yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, SAP Cloud Platform kokpiti üzerinde `https://account.<landscape host>.ondemand.com/cockpit`(örneğin: https://account.hanatrial.ondemand.com/cockpit)) oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, SAP Cloud Platform kokpiti üzerinde `https://account.<landscape host>.ondemand.com/cockpit` (örneğin:) oturum açın https://account.hanatrial.ondemand.com/cockpit) .
 
 2. **Güven** sekmesine tıklayın.
    
@@ -175,7 +169,7 @@ Azure AD çoklu oturum açmayı SAP Cloud Platform ile yapılandırmak için aş
 
     f. **Zorlamalı kimlik doğrulaması**olarak **devre dışı**seçeneğini belirleyin.
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 4. **Yerel hizmet sağlayıcısı** ayarlarını kaydettikten sonra, yanıt URL 'sini almak için aşağıdakileri gerçekleştirin:
    
@@ -254,12 +248,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

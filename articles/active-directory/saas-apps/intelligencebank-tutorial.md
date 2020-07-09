@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e41f2a5124603c8233bf515e07a95d0ee9ff4272
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a0b418b15aaebe298b8e7c6507c96de2843d51e9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85256164"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Öğretici: ıntelligencebank ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -88,12 +88,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdakilerin herhangi birini kullanın:
 
-    | |
-    |--|
-    | `IB`| 
-    | `IntelligenceBank`|
-    | `https://<SUBDOMAIN>.intelligencebank.com`|
-    | |
+    - `IB`
+    - `IntelligenceBank`
+    - `https://<SUBDOMAIN>.intelligencebank.com`
 
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.intelligencebank.com/auth`
 
@@ -118,7 +115,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

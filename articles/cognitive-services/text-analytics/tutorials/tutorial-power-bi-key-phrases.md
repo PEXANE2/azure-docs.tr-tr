@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 067a0383c90ce42120269ff40f910805dacfd11a
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75378543"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143873"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Ücretsiz olarak indirin](https://powerbi.microsoft.com/get-started/).
-- Bir Microsoft Azure hesabı. [Ücretsiz bir deneme başlatın](https://azure.microsoft.com/free/) veya [oturum açın](https://portal.azure.com/).
+- Bir Microsoft Azure hesabı. [Ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/cognitive-services/) veya [oturum açın](https://portal.azure.com/).
 - Metin Analizi API’si ile Bilişsel Hizmetler API’si hesabı. Yoksa, [kaydolup](../../cognitive-services-apis-create-account.md) 5000 işlem/ay ücretsiz katmanını kullanabilirsiniz (bu öğreticiyi tamamlamak için [fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) bakın).
 - Kayıt sırasında sizin için oluşturulan [Metin Analizi erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource).
 - Müşteri yorumları. [Örnek verilerimizi](https://aka.ms/cogsvc/ta) veya kendi verilerinizi kullanabilirsiniz. Bu öğreticide, örnek verilerimizi kullandığınız varsayılır.
@@ -114,7 +114,7 @@ Sorgular listesinde, başlangıçta `Query1` olarak adlandırılan yeni bir sorg
 Şimdi **Ana Sayfa** şeridindeki **Sorgu** grubunda **Gelişmiş Düzenleyici**’ye tıklayarak Gelişmiş Düzenleyici penceresini açın. Pencerede bulunan kodu silin ve aşağıdaki kodu yapıştırın. 
 
 > [!NOTE]
-> Aşağıdaki örnek uç noktayı, Metin Analizi kaynağınız `<your-custom-subdomain>`için oluşturulan uç noktayla değiştirin (içeren). [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açıp metin analizi aboneliğinizi seçip seçerek `Quick start`bu uç noktayı bulabilirsiniz.
+> Aşağıdaki örnek uç noktayı, `<your-custom-subdomain>` metin analizi kaynağınız için oluşturulan uç noktayla değiştirin (içeren). [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açıp metin analizi aboneliğinizi seçip seçerek bu uç noktayı bulabilirsiniz `Quick start` .
 
 
 ```fsharp
@@ -145,7 +145,7 @@ Power BI Desktop’ta Sorgu Düzenleyicisi penceresinde `FabrikamComments` sorgu
 
 Özel İşlev Çağır iletişim kutusu görüntülenir. **Yeni sütun adı** bölümüne `keyphrases` girin. **İşlev sorgusu** bölümünde, oluşturduğunuz özel işlevi (`KeyPhrases`) seçin.
 
-İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)**. Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. ( `language` Ve `id` parametrelerinin değerlerini zaten sabit olarak kodlayacağınızdan emin olmalısınız.) Açılır `Merged` menüden (konu ve ileti alanlarını birleştirerek [daha önce](#PreparingData) oluşturduğunuz sütun) seçeneğini belirleyin.
+İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)**. Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. (Ve parametrelerinin değerlerini zaten sabit olarak kodlayacağınızdan emin olmalısınız `language` `id` .) `Merged`Açılır menüden (konu ve ileti alanlarını birleştirerek [daha önce](#PreparingData) oluşturduğunuz sütun) seçeneğini belirleyin.
 
 ![[Özel işlev çağırma]](../media/tutorials/power-bi/invoke-custom-function.png)
 

@@ -11,22 +11,22 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360614"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146739"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Öğretici: tek bir Azure AD kiracısı ile tek bir ormanı tümleştirme
 
 Bu öğreticide, Azure Active Directory (Azure AD) ile bağlantı bulutu sağlama aracılığıyla karma kimlik ortamı oluşturma işlemi adım adım açıklanmaktadır.
 
-![Oluştur](media/tutorial-single-forest/diagram1.png)
+![Oluşturma](media/tutorial-single-forest/diagram1.png)
 
 Bu öğreticide oluşturduğunuz ortamı, test için veya bulut sağlaması hakkında daha fazla bilgi almak için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
 
 1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olması veya kullanılamaz hale gelmesi için kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
@@ -107,14 +107,14 @@ Aracının çalıştığını doğrulamak için şu adımları izleyin:
 1.  Azure AD portalında oturum açın.
 2.  **Azure Active Directory** tıklayın
 3.  **Azure AD Connect** tıklayın
-4.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin
-![](media/how-to-configure/manage1.png)
-5.  **Yeni yapılandırma** ' ya tıklayın
-![](media/tutorial-single-forest/configure1.png)
+4.  **Manage provisioning (Preview)** 
+ ![ "Sağlamayı yönetme (Önizleme)" bağlantısını gösteren sağlamayı Yönet (Önizleme) ekran görüntüsünü seçin.](media/how-to-configure/manage1.png)
+5.  **New Configuration** 
+ ![ "Yeni yapılandırma" bağlantısı vurgulanmış şekilde Azure AD sağlama (Önizleme) ekranının yeni yapılandırma ekran görüntüsü ' ne tıklayın.](media/tutorial-single-forest/configure1.png)
 7.  Yapılandırma ekranında bir **bildirim e-postası**girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
-![](media/tutorial-single-forest/configure2.png)
+![Bildirim e-postasına sahip ekranı Yapılandır ekranının ekran görüntüsü doldurulmuş ve seçili şekilde etkin.](media/tutorial-single-forest/configure2.png)
 1.  Yapılandırma durumu artık **sağlıklı**olmalıdır.
-![](media/how-to-configure/manage4.png)
+![Sağlıklı durumu gösteren Azure AD sağlama (Önizleme) ekranının ekran görüntüsü.](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Kullanıcıların oluşturulduğunu ve eşitlemenin gerçekleştiğini doğrula
 Artık şirket içi dizinimizde bulunan kullanıcıların Azure AD kiracımızda bulunduğundan emin olursunuz.  Bu işlem işleminin tamamlanması birkaç saat sürebilir.  Kullanıcıların eşitlendiğinden emin olmak için aşağıdakileri yapın.

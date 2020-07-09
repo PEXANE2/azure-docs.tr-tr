@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: e8ae31122d59238ac104d7d873cf56f32977c9af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ada0977dafeba546e84b22c6c61efecce1511dc7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086512"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Öğretici: Xönemli OnDemand ile tümleştirme Azure Active Directory
 
@@ -32,7 +32,7 @@ Azure AD ile Xönemli OnDemand tümleştirme aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -107,24 +107,18 @@ Azure AD çoklu oturum açmayı Xönemli OnDemand olarak yapılandırmak için a
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<companyname>.au1.xmatters.com.au/`|
-    | `https://<companyname>.cs1.xmatters.com/`|
-    | `https://<companyname>.xmatters.com/`|
-    | `https://www.xmatters.com`|
-    | `https://<companyname>.xmatters.com.au/`|
-    | |
+    - `https://<companyname>.au1.xmatters.com.au/`
+    - `https://<companyname>.cs1.xmatters.com/`
+    - `https://<companyname>.xmatters.com/`
+    - `https://www.xmatters.com`
+    - `https://<companyname>.xmatters.com.au/`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<companyname>.au1.xmatters.com.au`|
-    | `https://<companyname>.xmatters.com/sp/<instancename>`|
-    | `https://<companyname>.cs1.xmatters.com/sp/<instancename>`|
-    | `https://<companyname>.au1.xmatters.com.au/<instancename>`|
-    | |
+    - `https://<companyname>.au1.xmatters.com.au`
+    - `https://<companyname>.xmatters.com/sp/<instancename>`
+    - `https://<companyname>.cs1.xmatters.com/sp/<instancename>`
+    - `https://<companyname>.au1.xmatters.com.au/<instancename>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Xönemli OnDemand istemci destek ekibine](https://www.xmatters.com/company/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -168,7 +162,7 @@ Azure AD çoklu oturum açmayı Xönemli OnDemand olarak yapılandırmak için a
 
     e. Şirket ayrıntıları sayfasında, üstteki **Değişiklikleri Kaydet**' e tıklayın.
 
-    ![Şirket bilgileri](./media/xmatters-ondemand-tutorial/IC776797.png "Şirket bilgileri")
+    ![Şirket ayrıntıları](./media/xmatters-ondemand-tutorial/IC776797.png "Şirket ayrıntıları")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -188,11 +182,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -238,7 +232,7 @@ Bu bölümün amacı, Xönemli OnDemand ' de Britta Simon adlı bir Kullanıcı 
 
     a. **Etkin**' i seçin.
 
-    b. **Kullanıcı kimliği** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının kullanıcı kimliğini yazın.
+    b. **Kullanıcı kimliği** metin kutusuna, gibi kullanıcının kullanıcı kimliğini yazın Brittasimon@contoso.com .
 
     c. **Ilk ad** metin kutusuna, Britta gibi kullanıcının adını yazın.
 

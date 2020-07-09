@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b31bc86554998295bc97352d28fa3b3d4b330abe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Öğretici: çözüm GmbH ile Jira için SAML SSO ile tümleştirme Azure Active Directory
 
@@ -33,7 +33,7 @@ Azure AD ile bir çözüm GmbH ile Jira tarafından sağlanan SAML SSO 'SU tüml
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -117,7 +117,7 @@ Jira tarafından çözümleme GmbH için SAML SSO ile çoklu oturum açmayı yap
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > Tanımlayıcı, yanıt URL 'si ve oturum açma URL 'si için, ** \<Server-Base-url>** , Jira örneğinizin temel URL 'siyle değiştirin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz. Bir sorununuz varsa, [cira tarafından çözümleme GmbH istemci desteği ekibi Için SAML SSO 'su](https://www.resolution.de/go/support)' nde bizimle iletişime geçin.
+    > Tanımlayıcı, yanıt URL 'si ve oturum açma URL 'SI için, **\<server-base-url>** Jira örneğinizin temel URL 'si ile değiştirin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz. Bir sorununuz varsa, [cira tarafından çözümleme GmbH istemci desteği ekibi Için SAML SSO 'su](https://www.resolution.de/go/support)' nde bizimle iletişime geçin.
 
 4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i indirin ve bilgisayarınıza kaydedin.
 
@@ -219,11 +219,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Britta Simon**girin.
   
-    b. **Kullanıcı adı** alanına, girin <b>BrittaSimon@contoso.com</b>.
+    b. **Kullanıcı adı** alanına, girin <b>BrittaSimon@contoso.com</b> .
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -275,11 +275,11 @@ Azure AD kullanıcılarının, cira tarafından çözüm GmbH için SAML SSO 'ya
 
     ![Çalışan Ekle](./media/samlssojira-tutorial/user4-new.png) 
 
-    a. **E-posta adresi** metin kutusuna kullanıcının e-posta adresini yazın: <b>BrittaSimon@contoso.com</b>.
+    a. **E-posta adresi** metin kutusuna kullanıcının e-posta adresini yazın: <b>BrittaSimon@contoso.com</b> .
 
     b. **Tam ad** metin kutusuna kullanıcının tam adını yazın: **Britta Simon**.
 
-    c. Kullanıcı **adı** metin kutusuna kullanıcının e-posta adresini yazın: <b>BrittaSimon@contoso.com</b>. 
+    c. Kullanıcı **adı** metin kutusuna kullanıcının e-posta adresini yazın: <b>BrittaSimon@contoso.com</b> . 
 
     d. **Parola** metin kutusuna kullanıcının parolasını girin.
 
@@ -291,7 +291,7 @@ Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapıland
 
 Erişim panelinde Jira tarafından çözüm GmbH için SAML SSO 'SU ' ne tıkladığınızda, SSO 'yu ayarladığınız bir çözüm GmbH tarafından Jira tarafından otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Ayrıca, öğesine `https://<server-base-url>/plugins/servlet/samlsso`gittiğinizde çoklu oturum açmayı test edebilirsiniz. ** \<Sunucu-temel URL>** , JIRA örneğinizin temel URL 'siyle değiştirin.
+Ayrıca, öğesine gittiğinizde çoklu oturum açmayı test edebilirsiniz `https://<server-base-url>/plugins/servlet/samlsso` . **\<server-base-url>** JIRA örneğinizin temel URL 'si ile değiştirin.
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Jira için çoklu oturum açma yeniden yönlendirmeyi etkinleştirme
@@ -304,14 +304,16 @@ SSO yeniden yönlendirmeyi etkinleştirmek için, **Jira örneğiniz**içinde a�
 
 1. Jira içindeki SAML SSO eklentisinin yapılandırma sayfasına erişin.
 1. Sol panelde **yeniden yönlendirme** ' ye tıklayın.
-![](./media/samlssojira-tutorial/ssore1.png)
+
+   ![Sol gezinmede yeniden yönlendirme bağlantısını vurgulayan Jira SAML SingleSignOn Plugin yapılandırma sayfasının kısmi ekran görüntüsü.](./media/samlssojira-tutorial/ssore1.png)
 
 1. Değer **SSO yeniden yönlendirmeyi etkinleştirin**.
-![](./media/samlssojira-tutorial/ssore2.png) 
+
+   ![Jira SAML SingleSignOn Plugin yapılandırma sayfasının, seçili "SSO yeniden yönlendirmeyi etkinleştir" onay kutusunu vurgulayan kısmi ekran görüntüsü.](./media/samlssojira-tutorial/ssore2.png) 
 
 1. Sağ üst köşedeki **Ayarları Kaydet** düğmesine basın.
 
-Seçeneği etkinleştirdikten sonra, ' ye `https://\<server-base-url>/login.jsp?nosso`gidildiğinde **Nosso etkinleştir** seçeneği ele alındıktan sonra Kullanıcı adı/parola istemine erişmeye devam edebilirsiniz. Her zaman olduğu gibi, temel URL 'niz ile ** \<>sunucu tabanlı URL 'yi** değiştirin.
+Seçeneği etkinleştirdikten sonra, ' ye gidildiğinde **Nosso etkinleştir** seçeneği ele alındıktan sonra Kullanıcı adı/parola istemine erişmeye devam edebilirsiniz `https://\<server-base-url>/login.jsp?nosso` . Her zaman olduğu gibi, **\<server-base-url>** temel URL 'niz ile değiştirin.
 
 
 ## <a name="additional-resources"></a>Ek kaynaklar

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1070230d968a6239a5a4aab5ac412280393d17da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80388976"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133172"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini Azure’a geçirme
 
@@ -86,9 +86,9 @@ Geçirilen EC2 örneklerinin kullanılması için Azure’da birkaç kaynağın 
 4. **Kaynak Grubu** için **Mevcut olanı kullan**’ı ve **migrationRG** adını seçin.
 5. **Konum** için **Batı Avrupa**’yı seçin.
 5. Panodan yeni kasaya hızlı şekilde erişmek için **Panoya sabitle**’yi seçin.
-7. İşiniz bittiğinde **Oluştur**’u seçin.
+7. İşiniz bittiğinde **Oluştur**'u seçin.
 
-Yeni kasayı görmek için, **Pano** > **tüm kaynaklar**' a gidin. Yeni kasa, **Kurtarma Hizmetleri kasaları** sayfasında da görüntülenir.
+Yeni kasayı görmek için, **Pano**  >  **tüm kaynaklar**' a gidin. Yeni kasa, **Kurtarma Hizmetleri kasaları** sayfasında da görüntülenir.
 
 ### <a name="set-up-an-azure-network"></a>Azure ağı ayarlama
 
@@ -105,7 +105,7 @@ Geçişten (yük devretme) sonra Azure sanal makineleri oluşturulduğunda bu Az
 9. DDoS koruması ayarları için yönergeler ekleyin.
 10. **Hizmet Uç Noktaları** seçeneğini devre dışı bırakın.
 11. Güvenlik Duvarı ayarları için yönergeler ekleyin.
-12. İşiniz bittiğinde **Oluştur**’u seçin.
+12. İşiniz bittiğinde **Oluştur**'u seçin.
 
 ## <a name="prepare-the-infrastructure"></a>Altyapıyı hazırlama
 
@@ -133,7 +133,7 @@ Azure portalda kasanızın sayfasında, **Başlarken** bölümünden **Site Reco
 **Kaynağı hazırla** sayfasında **+ Yapılandırma Sunucusu** seçeneğini belirleyin.
 
 1. Yapılandırma sunucusu oluşturmak ve kurtarma kasası ile kaydetmek için Windows Server 2012 R2 çalıştıran bir EC2 örneği kullanın.
-2. [Hizmet URL’lerine](site-recovery-support-matrix-to-azure.md) erişebilmesi için yapılandırma sunucusu olarak kullandığınız EC2 örneği sanal makinesindeki ara sunucuyu yapılandırın.
+2. [Hizmet URL’lerine](./vmware-physical-azure-support-matrix.md) erişebilmesi için yapılandırma sunucusu olarak kullandığınız EC2 örneği sanal makinesindeki ara sunucuyu yapılandırın.
 3. [Microsoft Azure Site Recovery Birleşik Kurulumu](https://aka.ms/unifiedinstaller_wus)’nu indirin. Yerel makinenize indirebilir ve yapılandırma sunucusu olarak kullandığınız sanal makineye kopyalayabilirsiniz.
 4. Kasa kayıt anahtarını indirmek için **İndir** düğmesini seçin. İndirilen dosyayı, yapılandırma sunucusu olarak kullandığınız sanal makineye kopyalayın.
 5. Sanal makinede, Microsoft Azure Site Recovery Birleşik Kurulumu için indirdiğiniz yükleyiciye sağ tıklayın ve **Yönetici olarak çalıştır**’ı seçin.
@@ -176,7 +176,7 @@ Bu bölümde, bu öğreticinin önceki kısımlarındaki [Azure kaynaklarını h
 
 Geçirmek istediğiniz her sanal makine için çoğaltmayı etkinleştirin. Çoğaltma etkinleştirildiğinde Site Recovery otomatik olarak Mobility hizmetini yükler.
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 1. Kasanızın sayfasındaki **Başlarken** bölümünde **Site Recovery**’i seçin.
 2. **Şirket içi makineler ve Azure VM’ler için** bölümünde **1. Adım: Uygulamayı Çoğaltma**’yı seçin. Aşağıdaki bilgilerle sihirbazın sonraki sayfalarını tamamlayın. İşiniz bittiğinde her sayfada **Tamam**’ı seçin:
    - 1: Kaynağı yapılandırma
@@ -229,14 +229,14 @@ Yük devretme testi çalıştırdığınızda şunlar olur:
 
 Portalda yük devretme testini çalıştırın:
 
-1. Kasanızın sayfasında, **korunan öğeler** > **çoğaltılan öğeler**' e gidin. VM’yi ve ardından **Yük Devretme Testi**’ni seçin.
+1. Kasanızın sayfasında, **korunan öğeler**  >  **çoğaltılan öğeler**' e gidin. VM’yi ve ardından **Yük Devretme Testi**’ni seçin.
 2. Yük devretme için kullanılacak bir kurtarma noktası seçin:
     - **En son işlenen**: VM yükü, Site Recovery tarafından işlenen en son kurtarma noktasına devredilir. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük kurtarma süresi hedefi (RTO) elde edilir.
     - **Uygulamayla tutarlı olan son**: Bu seçenek, tüm VM’lerin yükünü uygulamayla tutarlı olan en son kurtarma noktasına devreder. Zaman damgası gösterilir.
     - **Özel**: Herhangi bir kurtarma noktası seçin.
 
 3. **Yük Devretme Testi** bölümünde, yük devretme gerçekleştikten sonra Azure VM’lerinin bağlanacağı hedef Azure ağını seçin. Bu, [Azure kaynaklarını hazırlama](#prepare-azure-resources) aşamasında oluşturduğunuz ağ olmalıdır.
-4. Yük devretmeyi başlatmak için **Tamam**'ı seçin. İlerleme durumunu izlemek için VM’yi seçip özelliklerini açın. Kasanızın sayfasında **Yük Devretme Testi**’ni de seçebilirsiniz. Bunu yapmak için,**işler Site Recovery** **izleme ve rapor** > **işleri** >  ' ni seçin.
+4. Yük devretmeyi başlatmak için **Tamam**'ı seçin. İlerleme durumunu izlemek için VM’yi seçip özelliklerini açın. Kasanızın sayfasında **Yük Devretme Testi**’ni de seçebilirsiniz. Bunu yapmak için, işler **Site Recovery izleme ve rapor**  >  **işleri**' ni seçin  >   **Site Recovery jobs**.
 5. Yük devretme bittikten sonra, Azure VM çoğaltması Azure portalda görünür. VM’yi görüntülemek için **Sanal Makineler**’i seçin. Sanal makinenin uygun boyutta olduğundan, doğru ağa bağlandığından ve çalıştığından emin olun.
 6. Şimdi Azure’da çoğaltılan sanal makineye bağlanabiliyor olmanız gerekir.
 7. Yük devretme testi sırasında oluşturulan Azure sanal makinelerini silmek için, kurtarma planında **Yük devretme testini temizle**’yi seçin. **Notlar**’da, yük devretme testiyle ilişkili gözlemlerinizi kaydedin ve saklayın.
@@ -247,8 +247,8 @@ Bazı senaryolarda, yük devretme için ek işlemler gerekir. İşlemin tamamlan
 
 EC2 örneklerinin Azure sanal makinelerine geçişi için gerçek bir yük devretme çalıştırın:
 
-1. **Korunan öğeler** > **çoğaltılan öğeler**' de AWS örneklerini seçip **Yük devretme**' yi seçin.
-2. **Yük devretme**bölümünde, yük devretme Için bir **Kurtarma noktası** seçin. En son kurtarma noktasını seçin ve yük devretmeyi başlatın. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+1. **Korunan öğeler**  >  **çoğaltılan öğeler**' de AWS örneklerini seçip **Yük devretme**' yi seçin.
+2. **Yük devretme**bölümünde, yük devretme Için bir **Kurtarma noktası** seçin. En son kurtarma noktasını seçin ve yük devretmeyi başlatın. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 1. Sanal makinenin, **Çoğaltılan öğeler** bölümünde görüntülendiğinden emin olun.
 2. Her bir sanal makineye sağ tıklayın ve **Geçişi Tamamla**’yı seçin. Bu, şunları yapar:
 

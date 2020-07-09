@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
-ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/08/2020
+ms.openlocfilehash: 9d85e59e003cffdbe6fe6abe7bb053ae4c574b78
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272941"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143457"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code uzantısını ayarlama
 
@@ -38,7 +38,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 1. Visual Studio Code'u açın.
 1. Uzantılar görünümünü açmak için **etkinlik çubuğundan** **Uzantılar** simgesini seçin.
 1. Uzantılar görünümünde, "Azure Machine Learning" araması yapın.
-1. **Yükle**’yi seçin.
+1. **Yükle**'yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Azure Machine Learning VS Code uzantısını yükler](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
@@ -60,7 +60,7 @@ Azure 'da kaynak sağlamak ve iş yüklerini çalıştırmak için Azure hesabı
 Azure 'da hesap kimlik bilgilerinizle oturum açmış olduğunuza göre, bu bölümdeki adımları kullanarak, bir makine öğrenimi modelini eğitme için uzantıyı nasıl kullanacağınızı öğrenin.
 
 1. [AI deposu için vs Code araçları](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) 'nı bilgisayarınızda herhangi bir yere indirip sıkıştırmasını açın.
-1. `mnist-vscode-docs-sample` Dizini Visual Studio Code açın.
+1. `mnist-vscode-docs-sample`Dizini Visual Studio Code açın.
 1. Etkinlik çubuğunda **Azure** simgesini seçin.
 1. Azure Machine Learning görünümünün en üstündeki **deneme Çalıştır** simgesini seçin.
 
@@ -69,27 +69,30 @@ Azure 'da hesap kimlik bilgilerinizle oturum açmış olduğunuza göre, bu böl
 
 1. Komut paleti genişlediğinde, istemleri izleyin.
 
+    > [!NOTE]
+    > Zaten sağlanmış olan Azure Machine Learning kaynaklarınız varsa, bkz. [denemeleri vs Code in nasıl çalıştırılır?](./how-to-manage-resources-vscode.md#run-experiment)
+
     1. Azure aboneliğinizi seçin.
     1. Ortam listesinden **Conda Dependencies dosyası**' nı seçin.
-    1. Conda Dependencies dosyasına gitmek için **ENTER** tuşuna basın. Bu dosya, komut dosyanızı çalıştırmak için gereken bağımlılıkları içerir. Bu durumda, bağımlılıklar dosyası `env.yml` `mnist-vscode-docs-sample` dizinin içindeki dosyadır.
-    1. Eğitim betik dosyasına gitmek için **ENTER** tuşuna basın. Bu, el ile yazılan basamakların görüntülerini sınıflandırmakta olan Machine Learning modeline kod içeren dosyadır. Bu durumda, modeli eğitme betiği `train.py` `mnist-vscode-docs-sample` dizin içindeki dosyadır.
+    1. Conda Dependencies dosyasına gitmek için **ENTER** tuşuna basın. Bu dosya, komut dosyanızı çalıştırmak için gereken bağımlılıkları içerir. Bu durumda, bağımlılıklar dosyası `env.yml` dizinin içindeki dosyadır `mnist-vscode-docs-sample` .
+    1. Eğitim betik dosyasına gitmek için **ENTER** tuşuna basın. Bu, el ile yazılan basamakların görüntülerini sınıflandırmakta olan Machine Learning modeline kod içeren dosyadır. Bu durumda, modeli eğitme betiği `train.py` Dizin içindeki dosyadır `mnist-vscode-docs-sample` .
 
 1. Bu noktada, aşağıdaki aşağıdakine benzer bir yapılandırma dosyası metin düzenleyicisinde görünür. Yapılandırma, modeli eğitmek için kodu ve önceki adımda belirtilen Python bağımlılıklarını içeren dosya gibi eğitim işini çalıştırmak için gereken bilgileri içerir.
 
     ```json
     {
-        "workspace": "WS04131142",
-        "resourceGroup": "WS04131142-rg1",
+        "workspace": "WS06271500",
+        "resourceGroup": "WS06271500-rg2",
         "location": "South Central US",
-        "experiment": "WS04131142-exp1",
+        "experiment": "WS06271500-exp1",
         "compute": {
-            "name": "WS04131142-com1",
+            "name": "WS06271500-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS04131142-com1-rc1",
+            "filename": "WS06271500-com1-rc1",
             "environment": {
-                "name": "WS04131142-env1",
+                "name": "WS06271500-env1",
                 "conda_dependencies": [
                     "python=3.6.2",
                     "tensorflow=1.15.0",
@@ -118,7 +121,7 @@ Komut dosyanızı çalıştırmak birkaç dakika sürebilir. İlerleme durumunu 
 
 1. Etkinlik çubuğundan **Azure** simgesini seçin.
 1. Abonelik düğümünü genişletin.
-1. Şu anda çalışan denemenizin düğümünü genişletin. Bu, çalışma alanınızın ve `{workspace}/Experiments/{experiment}` denemenizin değerlerinin yapılandırma dosyasında tanımlanan özelliklerle aynı olduğu düğüm içinde bulunur.
+1. Şu anda çalışan denemenizin düğümünü genişletin. Bu, `{workspace}/Experiments/{experiment}` çalışma alanınızın ve denemenizin değerlerinin yapılandırma dosyasında tanımlanan özelliklerle aynı olduğu düğüm içinde bulunur.
 1. Denemenin tüm çalıştırmaları ve durumları listelenir. En son durumu almak için Azure Machine Learning görünümünün en üstündeki Yenile simgesine tıklayın.
 
     > [!div class="mx-imgBorder"]

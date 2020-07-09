@@ -1,25 +1,25 @@
 ---
-title: Öğretici-Azure yay bulutu 'nda yapılandırma sunucusu örneğinizi ayarlama
-description: Bu öğreticide, Azure Spring Cloud için Azure portal bir Spring Cloud config Server örneği ayarlamayı öğreneceksiniz.
+title: Azure yay bulutu 'nda yapılandırma sunucusu örneğinizi ayarlama
+description: Azure portal Azure Spring Cloud için bir Spring Cloud config Server örneği ayarlamayı öğrenin
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 4c8b2e92cd7e88dde434e42971d091db689bfbc9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791308"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142190"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Öğretici: hizmetiniz için bir Spring Cloud config Server örneği ayarlama
+# <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Hizmetiniz için bir Spring Cloud config Server örneği ayarlama
 
 Bu makalede, bir yay bulutu yapılandırma sunucusu örneğini Azure Spring Cloud Service 'e nasıl bağlayacaksınız gösterilmektedir.
 
 Spring Cloud config, dağıtılmış bir sistemde bir externalized yapılandırması için sunucu ve istemci tarafı desteği sağlar. Yapılandırma sunucusu örneğiyle, tüm ortamlarda uygulamalara yönelik dış özellikleri yönetmek için merkezi bir yerdir. Daha fazla bilgi için bkz. [Spring Cloud config Server başvurusu](https://spring.io/projects/spring-cloud-config).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 * Zaten sağlanmış ve Azure yay bulut hizmeti çalıştırılıyor. Azure yay bulut hizmetini ayarlamak ve başlatmak için bkz. [hızlı başlangıç: Azure CLI kullanarak bir Java Spring uygulaması başlatma](spring-cloud-quickstart-launch-app-cli.md).
 
@@ -56,9 +56,9 @@ Genel Git deposunu kurmak için kullanılan yapılandırılabilir tüm özellikl
 
 | Özellik        | Gerekli | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlar. |
-| `default-label` | No     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
-| `search-paths`  | No     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
+| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlar. |
+| `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
+| `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
 
 ------
 
@@ -71,13 +71,13 @@ SSH ile özel Git deposunu kurmak için kullanılan yapılandırılabilir tüm �
 
 | Özellik                   | Gerekli | Özellik                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
-| `default-label`            | No     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
-| `search-paths`             | No     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
-| `private-key`              | No     | Git deposuna erişmek için SSH özel anahtarı, URI *Git@* veya *SSH://* ile başladığı zaman _gereklidir_ . |
-| `host-key`                 | No     | Git deposu sunucusunun ana bilgisayar anahtarı, kapsamında olduğu gibi algoritma önekini içermemelidir `host-key-algorithm` . |
-| `host-key-algorithm`       | No     | Konak anahtar algoritması, *SSH-DSS*, *ssh-rsa*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*veya *ECDSA-SHA2-nistp521*olmalıdır. *Required* Yalnızca varsa gereklidir `host-key` . |
-| `strict-host-key-checking` | No     | Yapılandırma sunucusu örneğinin özel kullanılırken başlayamayacağını gösterir `host-key` . *True* (varsayılan değer) veya *false*olmalıdır. |
+| `uri`                      | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI, *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmış olmalıdır. |
+| `default-label`            | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
+| `search-paths`             | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
+| `private-key`              | Hayır     | Git deposuna erişmek için SSH özel anahtarı, URI *Git@* veya *SSH://* ile başladığı zaman _gereklidir_ . |
+| `host-key`                 | Hayır     | Git deposu sunucusunun ana bilgisayar anahtarı, kapsamında olduğu gibi algoritma önekini içermemelidir `host-key-algorithm` . |
+| `host-key-algorithm`       | Hayır     | Konak anahtar algoritması, *SSH-DSS*, *ssh-rsa*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*veya *ECDSA-SHA2-nistp521*olmalıdır. *Required* Yalnızca varsa gereklidir `host-key` . |
+| `strict-host-key-checking` | Hayır     | Yapılandırma sunucusu örneğinin özel kullanılırken başlayamayacağını gösterir `host-key` . *True* (varsayılan değer) veya *false*olmalıdır. |
 
 -----
 
@@ -90,11 +90,11 @@ Temel kimlik doğrulaması ile özel Git deposunu kurmak için kullanılan tüm 
 
 | Özellik        | Gerekli | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Yes    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
-| `default-label` | No     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
-| `search-paths`  | No     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
-| `username`      | No     | Git deposu sunucusu ' nu desteklediğinde _gereken_ , git deposu sunucusuna erişmek için kullanılan Kullanıcı adı `Http Basic Authentication` . |
-| `password`      | No     | Git deposu sunucusu ' nu desteklediğinde _gerekli_ olan git deposu sunucusuna erişmek için kullanılan parola `Http Basic Authentication` . |
+| `uri`           | Evet    | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
+| `default-label` | Hayır     | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
+| `search-paths`  | Hayır     | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
+| `username`      | Hayır     | Git deposu sunucusu ' nu desteklediğinde _gereken_ , git deposu sunucusuna erişmek için kullanılan Kullanıcı adı `Http Basic Authentication` . |
+| `password`      | Hayır     | Git deposu sunucusu ' nu desteklediğinde _gerekli_ olan git deposu sunucusuna erişmek için kullanılan parola `Http Basic Authentication` . |
 
 > [!NOTE]
 > Birçok `Git` Depo sunucusu, http temel kimlik doğrulaması için parolalar yerine belirteçlerin kullanılmasını destekler. GitHub gibi bazı depolar, belirteçlerin süresiz olarak kalıcı kalmasına izin verir. Ancak, Azure DevOps dahil bazı git deposu sunucuları, belirteçleri birkaç saat içinde sona ermeyecek şekilde zorlar. Belirteçlerin dolmasına neden olan depolar, Azure Spring Cloud ile belirteç tabanlı kimlik doğrulaması kullanmamalıdır.
@@ -108,18 +108,18 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 
 | Özellik                           | Gerekli         | Özellik                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
-| `repos`                            | No             | Verilen bir ada sahip git deposu ayarlarından oluşan bir harita. |
+| `repos`                            | Hayır             | Verilen bir ada sahip git deposu ayarlarından oluşan bir harita. |
 | `repos."uri"`                      | Evet açık`repos` | Yapılandırma sunucusu arka ucu olarak kullanılan git deposunun URI 'SI *http://*, *https://*, *Git@* veya *SSH://* ile başlatılmalıdır. |
 | `repos."name"`                     | Evet açık`repos` | Git deposunda tanımlanabilmesi için bir ad, yalnızca varsa _gereklidir_ `repos` . Örneğin, *Ekip-A*, *Takım-B*. |
-| `repos."pattern"`                  | No             | Bir uygulama adıyla eşleşen dizeler dizisi. Her bir model için, `{application}/{profile}` joker karakterleri ile biçimini kullanın. |
-| `repos."default-label"`            | No             | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
-| `repos."search-paths`"             | No             | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
-| `repos."username"`                 | No             | Git deposu sunucusu ' nu desteklediğinde _gereken_ , git deposu sunucusuna erişmek için kullanılan Kullanıcı adı `Http Basic Authentication` . |
-| `repos."password"`                 | No             | Git deposu sunucusu ' nu desteklediğinde _gerekli_ olan git deposu sunucusuna erişmek için kullanılan parola `Http Basic Authentication` . |
-| `repos."private-key"`              | No             | Git deposuna erişmek için SSH özel anahtarı, URI *Git@* veya *SSH://* ile başladığı zaman _gereklidir_ . |
-| `repos."host-key"`                 | No             | Git deposu sunucusunun ana bilgisayar anahtarı, kapsamında olduğu gibi algoritma önekini içermemelidir `host-key-algorithm` . |
-| `repos."host-key-algorithm"`       | No             | Konak anahtar algoritması, *SSH-DSS*, *ssh-rsa*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*veya *ECDSA-SHA2-nistp521*olmalıdır. *Required* Yalnızca varsa gereklidir `host-key` . |
-| `repos."strict-host-key-checking"` | No             | Yapılandırma sunucusu örneğinin özel kullanılırken başlayamayacağını gösterir `host-key` . *True* (varsayılan değer) veya *false*olmalıdır. |
+| `repos."pattern"`                  | Hayır             | Bir uygulama adıyla eşleşen dizeler dizisi. Her bir model için, `{application}/{profile}` joker karakterleri ile biçimini kullanın. |
+| `repos."default-label"`            | Hayır             | Git deposunun varsayılan etiketi, deponun *şube adı*, *etiket adı*veya *kayıt kimliği* olmalıdır. |
+| `repos."search-paths`"             | Hayır             | Git deposunun alt dizinlerinde arama yapmak için kullanılan bir dize dizisi. |
+| `repos."username"`                 | Hayır             | Git deposu sunucusu ' nu desteklediğinde _gereken_ , git deposu sunucusuna erişmek için kullanılan Kullanıcı adı `Http Basic Authentication` . |
+| `repos."password"`                 | Hayır             | Git deposu sunucusu ' nu desteklediğinde _gerekli_ olan git deposu sunucusuna erişmek için kullanılan parola `Http Basic Authentication` . |
+| `repos."private-key"`              | Hayır             | Git deposuna erişmek için SSH özel anahtarı, URI *Git@* veya *SSH://* ile başladığı zaman _gereklidir_ . |
+| `repos."host-key"`                 | Hayır             | Git deposu sunucusunun ana bilgisayar anahtarı, kapsamında olduğu gibi algoritma önekini içermemelidir `host-key-algorithm` . |
+| `repos."host-key-algorithm"`       | Hayır             | Konak anahtar algoritması, *SSH-DSS*, *ssh-rsa*, *ECDSA-SHA2-nistp256*, *ECDSA-SHA2-nistp384*veya *ECDSA-SHA2-nistp521*olmalıdır. *Required* Yalnızca varsa gereklidir `host-key` . |
+| `repos."strict-host-key-checking"` | Hayır             | Yapılandırma sunucusu örneğinin özel kullanılırken başlayamayacağını gösterir `host-key` . *True* (varsayılan değer) veya *false*olmalıdır. |
 
 ## <a name="attach-your-config-server-repository-to-azure-spring-cloud"></a>Yapılandırma sunucusu deponuzu Azure Spring Cloud 'a ekleyin
 
@@ -190,7 +190,4 @@ Bir yapılandırma dosyasını kaydettikten sonra **yapılandırma** sekmesinde 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Spring Cloud config Server örneğinizi nasıl etkinleştireceğinizi ve yapılandıracağınızı öğrendiniz. Uygulamanızı yönetme hakkında daha fazla bilgi edinmek için uygulamanızı el ile ölçeklendirmeyle ilgili öğreticiye geçin.
-
-> [!div class="nextstepaction"]
-> [Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme](spring-cloud-tutorial-scale-manual.md)
+Bu makalede, Spring Cloud config Server örneğinizi nasıl etkinleştireceğinizi ve yapılandıracağınızı öğrendiniz. Uygulamanızı yönetme hakkında daha fazla bilgi edinmek için bkz. [Azure yay bulutu 'nda bir uygulamayı ölçeklendirme](spring-cloud-tutorial-scale-manual.md).

@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3efa8da87ac15495900dd264a9c37143f5e08181
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84699728"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135472"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM'lerini Kullanılabilirlik Alanlarına taşıma
-Azure 'daki Kullanılabilirlik Alanları, veri merkezi hatalarından uygulamalarınızın ve verilerinizin korunmasına yardımcı olur. Her Kullanılabilirlik Alanı bağımsız enerji, soğutma ve ağ kaynaklarıyla donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaların ve verilerin veri merkezi hatalarından korunmasını sağlar. Azure, Kullanılabilirlik Alanları ile sanal makinelerin (VM) çalışma süresi için% 99,99 ' lik bir hizmet düzeyi sözleşmesi (SLA) sunmaktadır. Kullanılabilirlik Alanları, [kullanılabilirlik alanları destekleyen bölgelerde](https://docs.microsoft.com/azure/availability-zones/az-region)belirtildiği gibi, seçme bölgelerinde desteklenir.
+Azure 'daki Kullanılabilirlik Alanları, veri merkezi hatalarından uygulamalarınızın ve verilerinizin korunmasına yardımcı olur. Her Kullanılabilirlik Alanı bağımsız enerji, soğutma ve ağ kaynaklarıyla donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaların ve verilerin veri merkezi hatalarından korunmasını sağlar. Azure, Kullanılabilirlik Alanları ile sanal makinelerin (VM) çalışma süresi için% 99,99 ' lik bir hizmet düzeyi sözleşmesi (SLA) sunmaktadır. Kullanılabilirlik Alanları, [kullanılabilirlik alanları destekleyen bölgelerde](../availability-zones/az-region.md)belirtildiği gibi, seçme bölgelerinde desteklenir.
 
 Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldığı ve bu VM 'Leri bir kullanılabilirlik bölgesine taşıyarak kullanılabilirliği artırmak istediğiniz bir senaryoda, Azure Site Recovery kullanarak bunu yapabilirsiniz. Bu eylem, daha sonra kategorilere ayrılabilir:
 
@@ -23,11 +23,11 @@ Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldı
 - Bir kullanılabilirlik kümesindeki VM 'Leri hedef bölgedeki Kullanılabilirlik Alanları taşıyın
 
 > [!IMPORTANT]
-> Şu anda Azure Site Recovery VM 'Lerin bir bölgeden diğerine taşınmasını destekler. Yalnızca birkaç bölgedeki bölge içindeki bölgeler arasında geçmeyi destekler. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery).
+> Şu anda Azure Site Recovery VM 'Lerin bir bölgeden diğerine taşınmasını destekler. Yalnızca birkaç bölgedeki bölge içindeki bölgeler arasında geçmeyi destekler. [Daha fazla bilgi edinin](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ## <a name="check-prerequisites"></a>Önkoşulları denetleme
 
-- Hedef bölgenin [kullanılabilirlik alanları için desteğe](https://docs.microsoft.com/azure/availability-zones/az-region)sahip olup olmadığını denetleyin. [Kaynak bölgesi/hedef bölge bileşiminin desteklenip desteklenmediğini](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)denetleyin. Hedef bölgede bilinçli bir karar alın.
+- Hedef bölgenin [kullanılabilirlik alanları için desteğe](../availability-zones/az-region.md)sahip olup olmadığını denetleyin. [Kaynak bölgesi/hedef bölge bileşiminin desteklenip desteklenmediğini](./azure-to-azure-support-matrix.md#region-support)denetleyin. Hedef bölgede bilinçli bir karar alın.
 - [Senaryo mimarisini ve bileşenlerini ](azure-to-azure-architecture.md) anladığınızdan emin olun.
 - [Destek sınırlamaları ve gereksinimleri](azure-to-azure-support-matrix.md) konusunu inceleyin.
 - Hesap izinlerini denetleyin. Ücretsiz Azure hesabınızı oluşturduysanız aboneliğinizin yöneticisi olursunuz. Abonelik yöneticisi değilseniz, ihtiyaç duyduğunuz izinleri atamak için yönetici ile çalışın. Bir VM için çoğaltmayı etkinleştirmek ve sonunda Azure Site Recovery kullanarak verileri hedefe kopyalamak için, şunları yapmanız gerekir:
@@ -41,7 +41,7 @@ Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldı
 
 ## <a name="prepare-the-source-vms"></a>Kaynak VM 'Leri hazırlama
 
-1. Site Recovery kullanarak bunları bir kullanılabilirlik bölgesine taşımak istiyorsanız sanal makinelerinizin yönetilen diskleri kullanması gerekir. Yönetilmeyen diskleri kullanan mevcut Windows VM 'lerini yönetilen diskleri kullanmak üzere dönüştürebilirsiniz. [Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)bölümündeki adımları izleyin. Kullanılabilirlik kümesinin *yönetilen*olarak yapılandırıldığından emin olun.
+1. Site Recovery kullanarak bunları bir kullanılabilirlik bölgesine taşımak istiyorsanız sanal makinelerinizin yönetilen diskleri kullanması gerekir. Yönetilmeyen diskleri kullanan mevcut Windows VM 'lerini yönetilen diskleri kullanmak üzere dönüştürebilirsiniz. [Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme](../virtual-machines/windows/convert-unmanaged-to-managed-disks.md)bölümündeki adımları izleyin. Kullanılabilirlik kümesinin *yönetilen*olarak yapılandırıldığından emin olun.
 2. Taşımak istediğiniz Azure VM 'lerinde en son kök sertifikaların mevcut olup olmadığını denetleyin. En son kök sertifikalar mevcut değilse, hedef bölgeye veri kopyalama güvenlik kısıtlamaları nedeniyle etkinleştirilemez.
 
 3. Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme süreçlerini izleyin.
@@ -66,16 +66,16 @@ Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldı
 
      Aşağıdaki belgeler, kaynak VM yapılandırmasına bağlı olarak, sizin için uygun olan en yaygın kullanılan ağ kaynaklarını oluşturmayı söyler.
 
-    - [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer)
+    - [Ağ güvenlik grupları](../virtual-network/manage-network-security-group.md)
+    - [Yük dengeleyiciler](../load-balancer/index.yml)
     - [Genel IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   Diğer ağ bileşenleri için ağ [belgelerine](https://docs.microsoft.com/azure/?pivot=products&panel=network)bakın.
+   Diğer ağ bileşenleri için ağ [belgelerine](../index.yml?pivot=products&panel=network)bakın.
 
     > [!IMPORTANT]
-    > Hedefte bölge yedekli yük dengeleyici kullandığınızdan emin olun. [Standart Load Balancer ve kullanılabilirlik alanları](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)daha fazla bilgi edinebilirsiniz.
+    > Hedefte bölge yedekli yük dengeleyici kullandığınızdan emin olun. [Standart Load Balancer ve kullanılabilirlik alanları](../load-balancer/load-balancer-standard-availability-zones.md)daha fazla bilgi edinebilirsiniz.
 
-4. Hedef bölgeye geçmeden önce yapılandırmayı test etmek istiyorsanız hedef bölgede el ile [bir üretim dışı ağ oluşturun](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) . Üretim ortamında en az girişim oluşmasına neden olduğundan bu yaklaşım önerilir.
+4. Hedef bölgeye geçmeden önce yapılandırmayı test etmek istiyorsanız hedef bölgede el ile [bir üretim dışı ağ oluşturun](../virtual-network/quick-create-portal.md) . Üretim ortamında en az girişim oluşmasına neden olduğundan bu yaklaşım önerilir.
 
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak için Azure Site Recovery kullandığınızda size rehberlik eder. Bu işlem, sonunda Kullanılabilirlik Alanları.
@@ -85,7 +85,7 @@ Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak i�
 
 1. Azure portal **sanal makineler**' i seçin ve kullanılabilirlik alanları taşımak istediğiniz VM 'yi seçin.
 2. **İşlemler** menüsünden **Olağanüstü durum kurtarma** seçeneğini belirleyin.
-3. **Olağanüstü durum kurtarma**  >  **Hedef bölgesini**Yapılandır bölümünde, çoğaltılacak hedef bölgeyi seçin. Bu bölgenin Kullanılabilirlik Alanları [desteklediğinden](https://docs.microsoft.com/azure/availability-zones/az-region) emin olun.
+3. **Olağanüstü durum kurtarma**  >  **Hedef bölgesini**Yapılandır bölümünde, çoğaltılacak hedef bölgeyi seçin. Bu bölgenin Kullanılabilirlik Alanları [desteklediğinden](../availability-zones/az-region.md) emin olun.
 
     ![Hedef bölgenin seçimi](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -149,5 +149,3 @@ Bu öğreticide bir Azure VM 'nin kullanılabilirliğini, bir kullanılabilirlik
 
 > [!div class="nextstepaction"]
 > [Geçişten sonra olağanüstü durum kurtarmayı ayarlama](azure-to-azure-quickstart.md)
-
-

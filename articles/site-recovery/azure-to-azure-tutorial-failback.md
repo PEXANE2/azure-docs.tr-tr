@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74091356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134441"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure bölgeleri arasında Azure VM geri dönme
 
@@ -28,7 +28,7 @@ Bu öğreticide, tek bir Azure VM 'nin nasıl geri yükleneceği açıklanmaktad
 > 
 > [!NOTE]
 > 
-> Bu öğretici, bir hedef bölgeye birkaç VM 'nin yükünü devretmek ve en düşük özelleştirmeler ile kaynak bölgeye geri dönmek için size yardımcı olur. Daha ayrıntılı yönergeler için [Azure VM 'lerinde nasıl yapılır kılavuzlarını](https://docs.microsoft.com/azure/virtual-machines/windows/)gözden geçirin.
+> Bu öğretici, bir hedef bölgeye birkaç VM 'nin yükünü devretmek ve en düşük özelleştirmeler ile kaynak bölgeye geri dönmek için size yardımcı olur. Daha ayrıntılı yönergeler için [Azure VM 'lerinde nasıl yapılır kılavuzlarını](../virtual-machines/windows/index.yml)gözden geçirin.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067559"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130906"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Azure 'da şirket içi olağanüstü durum kurtarma için Azure 'u hazırlama
 
@@ -60,11 +60,11 @@ Bu görevleri tamamlamak için hesabınıza Sanal Makine Katkıda Bulunan yerle�
 4. **Kaynak grubu**' nda, var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun. Bu öğreticide **contosoRG**kullandık.
 5. **Kasa adı**alanına kasayı tanımlamak için bir kolay ad girin. Bu öğretici dizisi için **ContosoVMVault**’u kullanacağız.
 6. **Bölge**bölümünde, kasasının bulunduğu bölgeyi seçin. **Batı Avrupa** kullanacağız.
-7. **İncele ve oluştur**’u seçin.
+7. **Gözden geçir ve oluştur**’u seçin.
 
    ![Yeni kasa oluştur](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Yeni kasa artık **Pano** > **tüm kaynaklar**bölümünde ve ana **Kurtarma Hizmetleri kasaları** sayfasında listelenir.
+   Yeni kasa artık **Pano**  >  **tüm kaynaklar**bölümünde ve ana **Kurtarma Hizmetleri kasaları** sayfasında listelenir.
 
 ## <a name="set-up-an-azure-network"></a>Azure ağı ayarlama
 
@@ -90,8 +90,8 @@ Sanal ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra, Azur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- VMware olağanüstü durum kurtarma için, [Şirket Içi VMware altyapısını hazırlayın](tutorial-prepare-on-premises-vmware.md).
+- VMware olağanüstü durum kurtarma için, [Şirket Içi VMware altyapısını hazırlayın](./vmware-azure-tutorial-prepare-on-premises.md).
 - Hyper-V olağanüstü durum kurtarma için, Şirket [Içi Hyper-v sunucularını hazırlayın](hyper-v-prepare-on-premises-tutorial.md).
 - Fiziksel sunucu olağanüstü durum kurtarma için [yapılandırma sunucusunu ve kaynak ortamı ayarlama](physical-azure-disaster-recovery.md)
-- Azure ağları [hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
-- Yönetilen diskler [hakkında bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) .
+- Azure ağları [hakkında bilgi edinin](../virtual-network/virtual-networks-overview.md).
+- Yönetilen diskler [hakkında bilgi edinin](../virtual-machines/windows/managed-disks-overview.md) .

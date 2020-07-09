@@ -3,12 +3,12 @@ title: Öğretici-CLı kullanarak Azure 'da DB geri yükleme SAP HANA
 description: Bu öğreticide, Azure CLı kullanarak bir Azure Backup kurtarma hizmetleri kasasından Azure VM üzerinde çalışan SAP HANA veritabanlarını geri yüklemeyi öğrenin.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6dbe0c4382b648506d853feb281c70a8e8401595
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14e5023bf79e3e20f96c00fdc73f19c8cd095b73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75472075"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170590"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını geri yükleme
 
@@ -109,10 +109,10 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 Yukarıdaki sorguya olan yanıt, şuna benzer bir kurtarma yapılandırma nesnesi olacaktır:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, *recoveryconfig. JSON*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını girmeniz gerekir.
+Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, *üzerinderecoveryconfig.js*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını girmeniz gerekir.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -150,10 +150,10 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 Yukarıdaki sorguya olan yanıt, aşağıdaki gibi görünen bir kurtarma yapılandırma nesnesi olacaktır:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, *recoveryconfig. JSON*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını girmeniz gerekir.
+Şimdi veritabanını geri yüklemek için [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, *üzerinderecoveryconfig.js*adlı bir dosyaya kaydedilen yukarıdaki JSON çıkışını girmeniz gerekir.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -171,6 +171,177 @@ Name                                  Resource
 ```
 
 Yanıt size iş adı verecektir. Bu iş adı, [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanarak iş durumunu izlemek için kullanılabilir.
+
+## <a name="restore-as-files"></a>Dosya olarak geri yükleme
+
+Yedekleme verilerini bir veritabanı yerine dosya olarak geri yüklemek için geri yükleme modu olarak **Restoreasdosyalarýný** kullanacağız. Ardından, önceki bir nokta veya önceki geri yükleme noktalarından biri olabilecek geri yükleme noktasını seçin. Dosyalar belirtilen bir yola alındıktan sonra, bu dosyaları bir veritabanı olarak geri yüklemek istediğiniz herhangi bir SAP HANA makineye alabilirsiniz. Bu dosyaları herhangi bir makineye taşıyabildiğiniz için artık verileri abonelikler ve bölgeler arasında geri yükleyebilirsiniz.
+
+Bu öğreticide, geri yükleme için bir önceki zaman noktasını `28-11-2019-09:53:00` ve yedekleme dosyalarının dökümünü almak için aynı SAP HANA sunucusuna kadar olan konumu seçeceğiz `/home/saphana/restoreasfiles` . Bu geri yükleme noktasını aşağıdaki biçimlerden birinde sağlayabilirsiniz: **gg-aa-yyyy** veya **gg-aa-yyyy-HH: mm: ss**. Geri yüklenecek geçerli bir zaman noktası seçmek için, bozulan günlük zinciri yedeklerinin aralıklarını listeleyen [az Backup RecoveryPoint Show-log-zincir](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet 'ini kullanın.
+
+Yukarıdaki geri yükleme noktası adını ve geri yükleme modunu kullanarak, [az Backup recoveryconfig Show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 'ini kullanarak kurtarma yapılandırma nesnesini oluşturalım. Bu cmdlet 'teki kalan parametrelerin her birinin ne anlama geldiğini inceleyelim:
+
+* **--target-Container-Name** Bu, bir kurtarma hizmetleri kasasında başarıyla kaydedilen ve geri yüklenecek veritabanıyla aynı bölgede yer alan bir SAP HANA sunucusunun adıdır. Bu öğreticide, veritabanını dosya olarak, koruduğumuz aynı SAP HANA sunucusuna geri yükleyeceğiz, *hxehost*adlı.
+* **--RP-adı** Bir zaman noktaya geri yükleme için geri yükleme noktası adı **DefaultRangeRecoveryPoint** olur
+
+```azurecli-interactive
+az backup recoveryconfig show --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --item-name saphanadatabase;hxe;hxe \
+    --restore-mode RestoreAsFiles \
+    --log-point-in-time 28-11-2019-09:53:00 \
+    --rp-name DefaultRangeRecoveryPoint \
+    --target-container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --filepath /home/saphana/restoreasfiles \
+    --output json
+```
+
+Yukarıdaki sorguya olan yanıt, aşağıdaki gibi görünen bir kurtarma yapılandırma nesnesi olacaktır:
+
+```output
+{
+  "alternate_directory_paths": null,
+  "container_id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;SAPHANA;hanamachine",
+  "container_uri": "VMAppContainer;compute;saphana;hanamachine",
+  "database_name": null,
+  "filepath": "/home/",
+  "item_type": "SAPHana",
+  "item_uri": "SAPHanaDatabase;hxe;hxe",
+  "log_point_in_time": "04-07-2020-09:53:00",
+  "recovery_mode": "FileRecovery",
+  "recovery_point_id": "DefaultRangeRecoveryPoint",
+  "restore_mode": "AlternateLocation",
+  "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/hanamachine"
+}
+```
+
+Şimdi, veritabanını dosyalar olarak geri yüklemek için [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet 'ini çalıştırın. Bu komutu kullanmak için, *üzerinderecoveryconfig.js*adlı bir dosyaya kaydedilen JSON çıkışını girmeniz gerekir.
+
+```azurecli-interactive
+az backup restore restore-azurewl --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --restore-config recoveryconfig.json \
+    --output json
+```
+
+Çıktı şöyle görünür:
+
+```output
+{
+  "eTag": null,
+  "id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/SAPHANARESOURCEGROUP/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupJobs/608e737e-c001-47ca-8c37-57d909c8a704",
+  "location": null,
+  "name": "608e737e-c001-47ca-8c37-57d909c8a704",
+  "properties": {
+    "actionsInfo": [
+      "Cancellable"
+    ],
+    "activityId": "7ddd3c3a-c0eb-11ea-a5f8-54ee75ec272a",
+    "backupManagementType": "AzureWorkload",
+    "duration": "0:00:01.781847",
+    "endTime": null,
+    "entityFriendlyName": "HXE [hxehost]",
+    "errorDetails": null,
+    "extendedInfo": {
+      "dynamicErrorMessage": null,
+      "propertyBag": {
+        "Job Type": "Restore as files"
+      },
+      "tasksList": [
+        {
+          "status": "InProgress",
+          "taskId": "Transfer data from vault"
+        }
+      ]
+    },
+    "jobType": "AzureWorkloadJob",
+    "operation": "Restore",
+    "startTime": "2020-07-08T07:20:29.336434+00:00",
+    "status": "InProgress",
+    "workloadType": "SAPHanaDatabase"
+  },
+  "resourceGroup": "saphanaResourceGroup",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupJobs"
+}
+```
+
+Yanıt size iş adı verecektir. Bu iş adı, [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanarak iş durumunu izlemek için kullanılabilir.
+
+Hedef kapsayıcıya dökülebilir dosyalar şunlardır:
+
+* Veritabanı yedekleme dosyaları
+* Katalog dosyaları
+* JSON meta veri dosyaları (dahil edilen her yedekleme dosyası için)
+
+Genellikle, bir ağ paylaşımının yolu veya hedef yolu olarak belirtildiğinde bağlı bir Azure dosya paylaşımının yolu, bu dosyalara aynı ağdaki diğer makineler veya bunlara bağlı aynı Azure dosya paylaşımıyla daha kolay erişim sağlar.
+
+>[!NOTE]
+>Veritabanı yedekleme dosyalarını hedef kayıtlı VM 'ye bağlanmış bir Azure dosya paylaşımında geri yüklemek için, kök hesabın Azure dosya paylaşımında okuma/yazma izinlerine sahip olduğundan emin olun.
+
+Seçilen geri yükleme noktası türüne göre (**zaman içinde** veya **tam & fark**), hedef yolunda oluşturulmuş bir veya daha fazla klasör görürsünüz. Adlı klasörlerden biri `Data_<date and time of restore>` , tam ve fark yedeklemelerini ve adlı diğer klasörü, `Log` günlük yedeklemelerini içerir.
+
+Bu geri yüklenen dosyaları bir veritabanı olarak geri yüklemek istediğiniz SAP HANA sunucuya taşıyın. Ardından, veritabanını geri yüklemek için şu adımları izleyin:
+
+1. Yedekleme dosyalarının depolandığı klasör/dizin üzerinde aşağıdaki komutu kullanarak izinleri ayarlayın:
+
+    ```bash
+    chown -R <SID>adm:sapsys <directory>
+    ```
+
+1. Sonraki komut kümesini şu şekilde Çalıştır`<SID>adm`
+
+    ```bash
+    su - <sid>adm
+    ```
+
+1. Geri yükleme için katalog dosyasını oluşturun. Geri yükleme işleminde daha sonra kullanılacak olan tam yedekleme için, JSON meta veri dosyasından **BackupID** 'yi ayıklayın. Tam ve günlük yedeklemelerin farklı klasörlerde bulunduğundan emin olun ve bu klasörlerdeki katalog dosyalarını ve JSON meta veri dosyalarını silin.
+
+    ```bash
+    hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
+    ```
+
+    Yukarıdaki komutta:
+
+    * `<DataFileDir>`-tam yedeklemeleri içeren klasör
+    * `<LogFilesDir>`-günlük yedeklemelerini içeren klasör
+    * `<PathToPlaceCatalogFile>`-Katalog dosyasının oluşturulduğu klasör yerleştirilmesi gerekir
+
+1. Yeni oluşturulan katalog dosyasını HANA Studio aracılığıyla geri yükleyin veya bu yeni oluşturulan katalogla HDBSQL restore sorgusunu çalıştırın. HDBSQL sorguları aşağıda listelenmiştir:
+
+    * Zaman içinde bir noktaya geri yüklemek için:
+
+        Geri yüklenen yeni bir veritabanı oluşturuyorsanız, HDBSQL komutunu çalıştırarak yeni bir veritabanı oluşturun `<DatabaseName>` ve ardından veritabanını geri yükleme için durdurun. Ancak, yalnızca var olan bir veritabanını geri yüklüyorsanız, veritabanını durdurmak için HDBSQL komutunu çalıştırın.
+
+        Ardından, veritabanını geri yüklemek için aşağıdaki komutu çalıştırın:
+
+        ```hdbsql
+        RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
+        ```
+
+        * `<DatabaseName>`-Geri yüklemek istediğiniz yeni veritabanının veya var olan veritabanının adı
+        * `<Timestamp>`-Zaman içindeki noktaya geri yükleme için tam zaman damgası
+        * `<DatabaseName@HostName>`-Backup 'ın geri yükleme için kullanıldığı veritabanının adı ve bu veritabanının bulunduğu **konak** /SAP HANA sunucu adı. `USING SOURCE <DatabaseName@HostName>`Seçeneği, veri yedeklemesinin (geri yükleme için kullanılan), hedef SAP HANA makineden farklı bır SID veya ada sahip bir veritabanı olduğunu belirtir. Bu nedenle, yedeklemenin alındığı aynı HANA sunucusunda yapılan geri yüklemeler için belirtilmesi gerekmez.
+        * `<PathToGeneratedCatalogInStep3>`- **3. adımda** oluşturulan katalog dosyasının yolu
+        * `<DataFileDir>`-tam yedeklemeleri içeren klasör
+        * `<LogFilesDir>`-günlük yedeklemelerini içeren klasör
+        * `<BackupIdFromJsonFile>`- **3. adımda** ayıklanan **BackupID**
+
+    * Belirli bir tam veya değişiklik yedeklemesine geri yüklemek için:
+
+        Geri yüklenen yeni bir veritabanı oluşturuyorsanız, HDBSQL komutunu çalıştırarak yeni bir veritabanı oluşturun `<DatabaseName>` ve ardından veritabanını geri yükleme için durdurun. Ancak, yalnızca var olan bir veritabanını geri yüklüyorsanız, veritabanını durdurmak için HDBSQL komutunu çalıştırın:
+
+        ```hdbsql
+        RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
+        ```
+
+        * `<DatabaseName>`-geri yüklemek istediğiniz yeni veritabanının veya var olan veritabanının adı
+        * `<Timestamp>`-zaman içinde nokta geri yükleme 'nin tam zaman damgası
+        * `<DatabaseName@HostName>`-geri yükleme için yedekleme kullanılan veritabanının adı ve bu veritabanının bulunduğu **konak** /SAP HANA sunucu adı. `USING SOURCE <DatabaseName@HostName>`Seçeneği, veri yedeklemesinin (geri yükleme için kullanılan), hedef SAP HANA makineden farklı bır SID veya ada sahip bir veritabanı olduğunu belirtir. Bu nedenle, yedeklemenin alındığı aynı HANA sunucusunda yapılan geri yüklemeler için belirtilmemesi gerekir.
+        * `<PathToGeneratedCatalogInStep3>`- **3. adımda** oluşturulan katalog dosyasının yolu
+        * `<DataFileDir>`-tam yedeklemeleri içeren klasör
+        * `<LogFilesDir>`-günlük yedeklemelerini içeren klasör
+        * `<BackupIdFromJsonFile>`- **3. adımda** ayıklanan **BackupID**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

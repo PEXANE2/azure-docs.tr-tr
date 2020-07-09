@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Azure Spring Cloud ile dağıtılmış Izleme kullanma
-description: Bu öğreticide, Spring Cloud 'ın dağıtılmış Izlemenin Azure 'da nasıl kullanılacağı gösterilmektedir Application Insights
+title: Azure Spring Cloud ile dağıtılmış Izleme kullanma
+description: Spring Cloud 'ın dağıtılmış izlemesini Azure 'da nasıl kullanacağınızı öğrenin Application Insights
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccaf58465c1ade0228daea2b535d06fb6168d64f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273205"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142119"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud ile dağıtılmış izleme kullanma
 
@@ -27,7 +27,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcını doldurun.
+Bu yordamları izlemek için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcını doldurun.
     
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
@@ -39,7 +39,7 @@ Bu öğreticiyi tamamlayabilmeniz için, zaten sağlanmış ve çalışan bir Az
 
    Bu değişiklikten sonra, Zipkabağı gönderici Web 'e gönderebilir.
 
-1. [Azure yay bulut uygulaması hazırlama kılavuzumuzu](spring-cloud-tutorial-prepare-app-deployment.md)izlediyseniz bu adımı atlayın. Aksi takdirde, yerel geliştirme ortamınıza gidin ve Pom. XML dosyanızı düzenleyerek aşağıdaki yay bulutu uykuya geçme bağımlılığını ekleyin:
+1. [Azure yay bulut uygulaması hazırlama kılavuzumuzu](spring-cloud-tutorial-prepare-app-deployment.md)izlediyseniz bu adımı atlayın. Aksi takdirde, yerel geliştirme ortamınıza gidin ve pom.xml dosyanızı düzenleyerek aşağıdaki yay bulutu uykuya geçme bağımlılığını ekleyin:
 
     ```xml
     <dependencyManagement>
@@ -102,7 +102,4 @@ Application Insights, uygulama eşlemesi ve arama işlevine ek olarak izleme öz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Spring Cloud 'da dağıtılmış izlemeyi etkinleştirme ve anlama hakkında bilgi edindiniz. Uygulamanızı bir Azure Cosmos DB veritabanına bağlamayı öğrenmek için bir sonraki öğreticiye geçin.
-
-> [!div class="nextstepaction"]
-> [Azure Cosmos DB veritabanına bağlamayı öğrenin](spring-cloud-tutorial-bind-cosmos.md)
+Bu makalede, Azure Spring Cloud 'da dağıtılmış izlemeyi etkinleştirme ve anlama hakkında bilgi edindiniz. Bir uygulamaya hizmet bağlama hakkında bilgi edinmek için bkz. [Azure Spring Cloud uygulamasına Azure Cosmos db veritabanını](spring-cloud-tutorial-bind-cosmos.md)bağlama.

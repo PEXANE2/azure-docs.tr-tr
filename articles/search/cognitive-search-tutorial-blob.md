@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 663d6659acf5c1e5abc8be56156af84167c51797
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984020"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146955"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için REST ve AI kullanma
 
@@ -30,7 +30,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [ara
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Postman masaüstü uygulaması](https://www.getpostman.com/)
@@ -175,7 +175,7 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
 
 1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın. Bu beceri, aşağıdaki yerleşik becerilerden oluşur.
 
-   | İmde                 | Description    |
+   | İmde                 | Açıklama    |
    |-----------------------|----------------|
    | [Varlık Tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
    | [Dil Algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |
@@ -451,7 +451,7 @@ Tüm belgenin tek bir alana paketlendiği blob içeriğiyle başladığımızda 
 1. Bir terim veya tümceciğin örneklerini aramak için, bir terim veya tümcecik örnekleri aramak üzere, **Get** ve aşağıdaki URL 'yi kullanarak, hizmet adını hizmetinizin gerçek adıyla değiştirerek, `content` alan ve eşleşen belgelerin sayısını döndüren bir terim veya tümcecik için arama yapın.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=content&api-version=2020-06-30
    ```
    
    Bu sorgunun sonuçları, bir blob Dizin oluşturucuyu bilişsel arama işlem hattı olmadan kullandıysanız alacağınız aynı sonucu veren belge içeriğini döndürür. Bu alan aranabilir, ancak modelleri, filtreleri veya otomatik tamamlamayı kullanmak istiyorsanız, kullanılamaz.
@@ -461,7 +461,7 @@ Tüm belgenin tek bir alana paketlendiği blob içeriğiyle başladığımızda 
 1. İkinci sorgu için, işlem hattı (kişiler, kuruluşlar, konumlar, languageCode) tarafından oluşturulan yeni alanlardan bazılarını döndürün. Kısaltma için keyPhrases yok eteceğiz, ancak bu değerleri görmek istiyorsanız dahil etmelisiniz.
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    $Select deyimindeki alanlar bilişsel hizmetler 'in doğal dil işleme özellikleri ' nden oluşturulan yeni bilgiler içerir. Tahmin edebileceğiniz gibi, sonuçlar ve belgelerde çeşitlerdeki bazı gürültü vardır, ancak birçok örnekte analitik modeller doğru sonuçlar üretir.
 
@@ -483,7 +483,7 @@ Tüm belgenin tek bir alana paketlendiği blob içeriğiyle başladığımızda 
 1. Bu son örnekte, organizasyonlar koleksiyonuna bir filtre uygulayın ve NASDAQ tabanlı filtre ölçütlerine yönelik iki eşleşme döndürerek.
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 Bu sorgular, bilişsel arama tarafından oluşturulan yeni alanlara sorgu söz dizimi ve filtreler ile çalışmanın birkaç yolunu gösterir. Daha fazla sorgu örneği için bkz. [arama belgeleri REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [basit sözdizimi sorgu örnekleri](search-query-simple-examples.md)ve [tam Lucene sorgu örnekleri](search-query-lucene-examples.md).
@@ -516,7 +516,7 @@ Son olarak, daha fazla yineleme için sonuçların nasıl test edileceğini ve s
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki tüm kaynaklar veya kaynak grupları bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

@@ -1,21 +1,21 @@
 ---
-title: Arka uç hizmeti aracılığıyla Azure Notification Hubs kullanarak Xamarin. Forms uygulamalarına anında iletme bildirimleri gönderin | Microsoft Docs
-description: Arka uç hizmeti aracılığıyla Azure Notification Hubs kullanan Xamarin. Forms uygulamalarına anında iletme bildirimleri gönderme hakkında bilgi edinin.
+title: Arka uç hizmeti aracılığıyla Azure Notification Hubs kullanarak flutter uygulamalarına anında iletme bildirimleri gönderin | Microsoft Docs
+description: Arka uç hizmeti aracılığıyla Azure Notification Hubs kullanan flutter uygulamalarına anında iletme bildirimleri gönderme hakkında bilgi edinin.
 author: mikeparker104
 ms.service: notification-hubs
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 07/07/2020
 ms.author: miparker
-ms.openlocfilehash: 5175edfd438edb527f6873c87b948f8ff0701cf1
+ms.openlocfilehash: 5fa753a6b8b1284c4f8fcd046f74fabcbae3f8fb
 ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166340"
+ms.locfileid: "86171015"
 ---
-# <a name="tutorial-send-push-notifications-to-xamarinforms-apps-using-azure-notification-hubs-via-a-backend-service"></a>Öğretici: arka uç hizmeti aracılığıyla Azure Notification Hubs kullanarak Xamarin. Forms uygulamalarına anında iletme bildirimleri gönderme  
+# <a name="tutorial-send-push-notifications-to-flutter-apps-using-azure-notification-hubs-via-a-backend-service"></a>Öğretici: arka uç hizmeti aracılığıyla Azure Notification Hubs kullanarak flutter uygulamalarına anında iletme bildirimleri gönderme  
 
-[![Örnek indirin örnek ](./media/notification-hubs-backend-service-xamarin-forms/download.png) indirin](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_backend_service)  
+[![Örnek indirin örnek ](./media/notification-hubs-backend-service-flutter/download.png) indirin](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_backend_service)  
 
 > [!div class="op_single_selector"]
 >
@@ -23,7 +23,7 @@ ms.locfileid: "86166340"
 > * [Flutter](notification-hubs-backend-service-flutter.md)
 > * [React Native](notification-hubs-backend-service-react-native.md)
 
-Bu öğreticide, **Android** ve **iOS**'u hedefleyen bir [Xamarin. Forms](https://dotnet.microsoft.com/apps/xamarin/xamarin-forms) uygulamasına anında iletme bildirimleri göndermek için [Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-overview) kullanırsınız.  
+Bu öğreticide, **Android** ve **iOS**'u hedefleyen bir [flutter](https://flutter.dev) uygulamasına anında iletme bildirimleri göndermek için [Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-overview) kullanırsınız.  
 
 [!INCLUDE [Notification Hubs Backend Service Introduction](../../includes/notification-hubs-backend-service-introduction.md)]
 
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdaki adımları izleyebilirsiniz:
 >
 > * [Anında Iletme Bildirim Hizmetleri ve Azure Notification Hubs ayarlayın.](#set-up-push-notification-services-and-azure-notification-hub)
 > * [ASP.NET Core Web API arka uç uygulaması oluşturun.](#create-an-aspnet-core-web-api-backend-application)
-> * [Platformlar arası Xamarin. Forms uygulaması oluşturun.](#create-a-cross-platform-xamarinforms-application)
+> * [Platformlar arası flutter uygulaması oluşturun.](#create-a-cross-platform-flutter-application)
 > * [Yerel Android projesini anında iletme bildirimleri için yapılandırın.](#configure-the-native-android-project-for-push-notifications)
 > * [Yerel iOS projesini anında iletme bildirimleri için yapılandırın.](#configure-the-native-ios-project-for-push-notifications)
 > * [Çözümü test edin.](#test-the-solution)
@@ -43,7 +43,8 @@ Bu öğreticide aşağıdaki adımları izleyebilirsiniz:
 Bu arada izlemek için şunları yapmanız gerekir:
 
 * Kaynakları oluşturabileceğiniz ve yönetebileceğiniz bir [Azure aboneliği](https://portal.azure.com) .
-* [Mac için Visual Studio](https://visualstudio.microsoft.com/vs/mac/) yüklü bir Mac (veya [Visual Studio 2019](https://visualstudio.microsoft.com/vs) çalıştıran bir bilgisayar, .net Iş yüküne **sahip mobil geliştirmeyle** birlikte).
+* [Flutter](https://flutter.dev/docs/get-started/install) araç seti (önkoşulları ile birlikte).
+* [Flutter ve dart eklentileri](https://flutter.dev/docs/get-started/editor?tab=vscode) yüklü [Visual Studio Code](https://code.visualstudio.com) .
 * Uygulamayı **Android** (fiziksel veya öykünücü cihazlar) ya da **iOS** (yalnızca fiziksel cihazlar) üzerinde çalıştırma özelliği.
 
 Android için şunları yapmanız gerekir:
@@ -55,6 +56,7 @@ Android için şunları yapmanız gerekir:
 * Etkin bir [Apple geliştirici hesabı](https://developer.apple.com).
 * [Geliştirici hesabınıza kayıtlı](https://help.apple.com/developer-account/#/dev40df0d9fa) olan bir fiziksel iOS cihazı *(iOS 13,0 ve üzeri çalıştıran)*.
 * **Anahtarınıza** yüklenmiş bir **. p12** [geliştirme sertifikası](https://help.apple.com/developer-account/#/dev04fd06d56) , bir [uygulamayı fiziksel bir cihazda çalıştırmanızı](https://help.apple.com/xcode/mac/current/#/dev5a825a1ca)sağlar.
+* [Cocoapods](https://guides.cocoapods.org/using/getting-started.html#installation) , kitaplık bağımlılıklarını yönetmek için yüklendi.
 
 > [!NOTE]
 > İOS simülatörü uzak bildirimleri desteklemez ve bu nedenle iOS üzerinde bu örnek araştırılırken fiziksel bir cihaz gereklidir. Ancak, bu öğreticiyi tamamlayabilmeniz için uygulamayı hem **Android** hem de **iOS** üzerinde çalıştırmanız gerekmez.
@@ -65,9 +67,10 @@ Android için şunları yapmanız gerekir:
 * [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1)
 * [Azure Bildirim Merkezleri](notification-hubs-push-notification-overview.md)
 * [Google Firebase konsolu](https://console.firebase.google.com/u/0/)
-* [Xamarin](https://dotnet.microsoft.com/apps/xamarin) ve [Xamarin. Forms](https://dotnet.microsoft.com/apps/xamarin/xamarin-forms)
+* Platformlar arası geliştirme için [flutter](https://flutter.dev) ve [Dart](https://dart.dev)
+* Android ve iOS yerel geliştirme için [Kotlin](https://kotlinlang.org) ve [Swift](https://developer.apple.com/swift)
 
-[Mac için Visual Studio](https://visualstudio.microsoft.com/vs/mac/) için sunulan adımlar, [Visual Studio 2019](https://visualstudio.microsoft.com/vs)' i kullanarak takip etmek mümkündür.
+Belirtilen adımlar [MacOS](https://developer.apple.com/macos)'a özgüdür. **İOS** yönlerini atlayarak [Windows](https://www.microsoft.com/windows) üzerinde takip etmek mümkündür.
 
 ## <a name="set-up-push-notification-services-and-azure-notification-hub"></a>Anında Iletme Bildirim Hizmetleri ve Azure Notification Hub 'ı ayarlama
 
@@ -85,25 +88,25 @@ Bu bölümde, **[Firebase Cloud Messaging (FCM)](https://firebase.google.com/doc
 
 ## <a name="create-an-aspnet-core-web-api-backend-application"></a>ASP.NET Core Web API arka uç uygulaması oluşturma
 
-Bu bölümde, [cihaz kaydını](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) Işleyecek ve Xamarin. Forms mobil uygulamasına bildirimlerin gönderilmesi Için [ASP.NET Core Web API](https://dotnet.microsoft.com/apps/aspnet/apis) arka ucu oluşturacaksınız.
+Bu bölümde, [cihaz kaydını](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-registration-management#what-is-device-registration) Işleyecek ve flutter mobil uygulamasına bildirimlerin gönderilmesi Için [ASP.NET Core Web API](https://dotnet.microsoft.com/apps/aspnet/apis) arka ucu oluşturacaksınız.
 
 [!INCLUDE [Create an ASP.NET Core Web API backend application](../../includes/notification-hubs-backend-service-web-api.md)]
 
-## <a name="create-a-cross-platform-xamarinforms-application"></a>Platformlar arası Xamarin. Forms uygulaması oluşturma
+## <a name="create-a-cross-platform-flutter-application"></a>Platformlar arası flutter uygulaması oluşturma
 
-Bu bölümde, platformlar arası bir şekilde anında iletme bildirimleri uygulayan bir [Xamarin. Forms](https://dotnet.microsoft.com/apps/xamarin/xamarin-forms) mobil uygulaması oluşturacaksınız.
+Bu bölümde, bir platformlar arası şekilde anında iletme bildirimleri uygulayan bir [flutter](https://flutter.dev) mobil uygulaması oluşturacaksınız.
 
 [!INCLUDE [Sample application generic overview](../../includes/notification-hubs-backend-service-sample-app-overview.md)]
 
-[!INCLUDE [Create Xamarin.Forms application](../../includes/notification-hubs-backend-service-sample-app-xamarin-forms.md)]
+[!INCLUDE [Create Flutter application](../../includes/notification-hubs-backend-service-sample-app-flutter.md)]
 
 ## <a name="configure-the-native-android-project-for-push-notifications"></a>Yerel Android projesini anında iletme bildirimleri için yapılandırma
 
-[!INCLUDE [Configure the native Android project](../../includes/notification-hubs-backend-service-configure-xamarin-android.md)]
+[!INCLUDE [Configure the native Android project](../../includes/notification-hubs-backend-service-configure-flutter-android.md)]
 
 ## <a name="configure-the-native-ios-project-for-push-notifications"></a>Yerel iOS projesini anında iletme bildirimleri için yapılandırma
 
-[!INCLUDE [Configure the native iOS project](../../includes/notification-hubs-backend-service-configure-xamarin-ios.md)]
+[!INCLUDE [Configure the native iOS project](../../includes/notification-hubs-backend-service-configure-flutter-ios.md)]
 
 ## <a name="test-the-solution"></a>Çözümü test etme
 
@@ -113,7 +116,7 @@ Artık arka uç hizmeti üzerinden bildirimleri göndermeye test edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık arka uç hizmeti aracılığıyla bir Bildirim Hub 'ına bağlı olan temel bir Xamarin. Forms uygulamasına sahip olmanız ve bildirim gönderebilmeniz ve alabilmesi gerekir.
+Artık arka uç hizmeti aracılığıyla bir Bildirim Hub 'ına bağlı temel bir flutter uygulamasına sahip olmanız ve bildirim gönderebilmeniz ve alabilmesi gerekir.
 
 [!INCLUDE [Next steps](../../includes/notification-hubs-backend-service-next-steps.md)]
 
@@ -124,8 +127,8 @@ Artık arka uç hizmeti aracılığıyla bir Bildirim Hub 'ına bağlı olan tem
 ## <a name="related-links"></a>İlgili bağlantılar
 
 * [Azure Notification Hubs genel bakış](notification-hubs-push-notification-overview.md)
-* [Mac için Visual Studio’yu Yükleme](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
-* [Windows’a Xamarin Yükleme](https://docs.microsoft.com/xamarin/get-started/installation/windows)
+* [MacOS üzerinde flutter yükleme](https://flutter.dev/docs/get-started/install/macos)
+* [Windows üzerinde flutter yükleme](https://flutter.dev/docs/get-started/install/windows)
 * [Arka uç işlemleri için SDK Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
 * [GitHub 'da SDK 'Yı Notification Hubs](https://github.com/Azure/azure-notificationhubs)
 * [Uygulama arka ucuna kaydetme](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)

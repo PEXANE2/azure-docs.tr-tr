@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084185"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130977"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Hyper-V olağanüstü durum kurtarma için Azure kaynaklarını hazırlama
 
@@ -34,7 +34,7 @@ Bu öğreticide, şirket içi VM 'Leri (Hyper-V) Azure 'a çoğaltmak istediğin
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="sign-in"></a>Oturum açma
+## <a name="sign-in"></a>Oturum açın
 
 [Azure Portal](https://portal.azure.com) oturum açın.
 
@@ -52,7 +52,7 @@ Bu görevleri gerçekleştirmek için hesabınıza sanal makine katılımcısı 
 
 Çoğaltılan makinelerin görüntüleri Azure depolama alanında tutulur. Şirket içinden Azure’a yük devretme gerçekleştirdiğinizde depolama alanından Azure sanal makineleri oluşturulur. Depolama hesabının, Kurtarma Hizmetleri kasasıyla aynı bölgede olması gerekir.
 
-1. [Azure Portal](https://portal.azure.com) menüsünde, **kaynak** > **depolama** > **depolama hesabı oluştur-blob, dosya, tablo, kuyruk**' u seçin.
+1. [Azure Portal](https://portal.azure.com) menüsünde, **kaynak**  >  **depolama**  >  **depolama hesabı oluştur-blob, dosya, tablo, kuyruk**' u seçin.
 2. **Depolama hesabı oluştur** bölümüne hesap için bir ad girin.  Seçtiğiniz ad Azure içinde benzersiz olmalı, 3 ile 24 karakter uzunluğunda olmalı ve yalnızca küçük harf ve rakam kullanmalıdır. Bu öğretici için **contosovmsacct1910171607**kullanın.
 3. **Dağıtım modeli** bölümünde **Kaynak Yöneticisi**’ni seçin.
 4. **Hesap türü**' nde, **depolama (genel amaçlı v1)** öğesini seçin. Blob depolamayı seçmeyin.
@@ -72,11 +72,11 @@ Bu görevleri gerçekleştirmek için hesabınıza sanal makine katılımcısı 
 1. **Kurtarma Hizmetleri kasası > adı**' nda, kasayı tanımlamak için bir kolay ad girin. Bu öğretici için **ContosoVMVault** adını kullanın.
 2. **Kaynak grubu**' nda, var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun. Bu öğretici için **contosoRG**kullanın.
 3. **Konum**' da, kasasının bulunacağı bölgeyi seçin. Bu öğretici için **Batı Avrupa**kullanın.
-4. Panodan kasaya hızlıca erişmek için **panoya** > sabitle**Oluştur**' u seçin.
+4. Panodan kasaya hızlıca erişmek için **panoya sabitle**  >  **Oluştur**' u seçin.
 
 ![Yeni kasa oluştur](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-Yeni kasa **Pano** > **tüm kaynaklar**' da ve ana **Kurtarma Hizmetleri kasaları** sayfasında görüntülenir.
+Yeni kasa **Pano**  >  **tüm kaynaklar**' da ve ana **Kurtarma Hizmetleri kasaları** sayfasında görüntülenir.
 
 ## <a name="set-up-an-azure-network"></a>Azure ağı ayarlama
 
@@ -98,8 +98,8 @@ Sanal ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra, Azur
 ## <a name="useful-links"></a>Yararlı bağlantılar
 
 Şunları öğrenin:
-- [Azure ağları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Yönetilen diskler](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)
+- [Azure ağları](../virtual-network/virtual-networks-overview.md)
+- [Yönetilen diskler](../virtual-machines/windows/managed-disks-overview.md)
 
 
 

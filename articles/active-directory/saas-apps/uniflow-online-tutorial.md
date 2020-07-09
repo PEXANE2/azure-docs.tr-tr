@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f081d6b01ffb0b4fc78c23a076c20ff93c483203
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76262138"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166969"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Öğretici: uniFLOW Online ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -83,23 +83,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | | |
-    |-|-|
-    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
-    | `https://<tenant_domain_name>.us.uniflowonline.com`|
-    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
-    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
-    | `https://<tenant_domain_name>.au.uniflowonline.com`|
+    - `https://<tenant_domain_name>.eu.uniflowonline.com`
+    - `https://<tenant_domain_name>.us.uniflowonline.com`
+    - `https://<tenant_domain_name>.sg.uniflowonline.com`
+    - `https://<tenant_domain_name>.jp.uniflowonline.com`
+    - `https://<tenant_domain_name>.au.uniflowonline.com`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | | |
-    |-|-|
-    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
-    | `https://<tenant_domain_name>.us.uniflowonline.com`|
-    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
-    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
-    | `https://<tenant_domain_name>.au.uniflowonline.com`|
+    - `https://<tenant_domain_name>.eu.uniflowonline.com`
+    - `https://<tenant_domain_name>.us.uniflowonline.com`
+    - `https://<tenant_domain_name>.sg.uniflowonline.com`
+    - `https://<tenant_domain_name>.jp.uniflowonline.com`
+    - `https://<tenant_domain_name>.au.uniflowonline.com`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, en [düşük çevrimiçi istemci desteği ekibine](mailto:support@nt-ware.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz veya diğer bir çevrimiçi kiracınızda GÖSTERILEN yanıt URL 'sine başvurabilirsiniz.
@@ -110,13 +106,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakilerin yanı sıra, en düşük çevrimiçi uygulama aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Ad |  Kaynak özniteliği|
     | -----------| --------------- |
     | DisplayName | User. DisplayName |
     | takma ad | User. onpremisessamaccountname |
 
    > [!NOTE]
-   > `user.onpremisessamaccountname` Özniteliği yalnızca Azure AD kullanıcılarınız yerel bir Windows Active Directory eşitlendiğinde bir değer içerir.
+   > `user.onpremisessamaccountname`Özniteliği yalnızca Azure AD kullanıcılarınız yerel bir Windows Active Directory eşitlendiğinde bir değer içerir.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -130,9 +126,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

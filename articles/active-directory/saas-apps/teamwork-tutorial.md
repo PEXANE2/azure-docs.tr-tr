@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b407f29e4dda532ef12019f8d0a2a273832987
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a62bdc0f23f6769dca9914381a81674e470e695d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67595247"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Öğretici: Teamwork.com ile tümleştirme Azure Active Directory
 
@@ -33,7 +33,7 @@ Teamwork.com Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -110,10 +110,8 @@ Azure AD çoklu oturum açmayı Teamwork.com ile yapılandırmak için aşağıd
 
     b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:
 
-    | | |
-    |-|-|
-    | `https://teamwork.com/saml`|
-    | `https://eu.teamwork.com/saml`|
+    - `https://teamwork.com/saml`
+    - `https://eu.teamwork.com/saml`
 
     > [!NOTE]
     > Bu oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Teamwork.com destek ekibine](mailto:support@teamwork.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -154,11 +152,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d49915271580b5665981bf7e212f3d5712c86456
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d9b141f3722a722a57e5ec7c5662ded4b9a8c790
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76292988"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170437"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Öğretici: başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -85,41 +85,35 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<companyname>.successfactors.com/<companyname>`|
-    | `https://<companyname>.sapsf.com/<companyname>`|
-    | `https://<companyname>.successfactors.eu/<companyname>`|
-    | `https://<companyname>.sapsf.eu`|
+    - `https://<companyname>.successfactors.com/<companyname>`
+    - `https://<companyname>.sapsf.com/<companyname>`
+    - `https://<companyname>.successfactors.eu/<companyname>`
+    - `https://<companyname>.sapsf.eu`
 
     b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://www.successfactors.com/<companyname>`|
-    | `https://www.successfactors.com`|
-    | `https://<companyname>.successfactors.eu`|
-    | `https://www.successfactors.eu/<companyname>`|
-    | `https://<companyname>.sapsf.com`|
-    | `https://hcm4preview.sapsf.com/<companyname>`|
-    | `https://<companyname>.sapsf.eu`|
-    | `https://www.successfactors.cn`|
-    | `https://www.successfactors.cn/<companyname>`|
+    - `https://www.successfactors.com/<companyname>`
+    - `https://www.successfactors.com`
+    - `https://<companyname>.successfactors.eu`
+    - `https://www.successfactors.eu/<companyname>`
+    - `https://<companyname>.sapsf.com`
+    - `https://hcm4preview.sapsf.com/<companyname>`
+    - `https://<companyname>.sapsf.eu`
+    - `https://www.successfactors.cn`
+    - `https://www.successfactors.cn/<companyname>`
 
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<companyname>.successfactors.com/<companyname>`|
-    | `https://<companyname>.successfactors.com`|
-    | `https://<companyname>.sapsf.com/<companyname>`|
-    | `https://<companyname>.sapsf.com`|
-    | `https://<companyname>.successfactors.eu/<companyname>`|
-    | `https://<companyname>.successfactors.eu`|
-    | `https://<companyname>.sapsf.eu`|
-    | `https://<companyname>.sapsf.eu/<companyname>`|
-    | `https://<companyname>.sapsf.cn`|
-    | `https://<companyname>.sapsf.cn/<companyname>`|
+    - `https://<companyname>.successfactors.com/<companyname>`
+    - `https://<companyname>.successfactors.com`
+    - `https://<companyname>.sapsf.com/<companyname>`
+    - `https://<companyname>.sapsf.com`
+    - `https://<companyname>.successfactors.eu/<companyname>`
+    - `https://<companyname>.successfactors.eu`
+    - `https://<companyname>.sapsf.eu`
+    - `https://<companyname>.sapsf.eu/<companyname>`
+    - `https://<companyname>.sapsf.cn`
+    - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [başarılı olan istemci desteği ekibine](https://www.successfactors.com/content/ssf-site/en/support.html) başvurun.
@@ -140,9 +134,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
     1. **Ad** alanına `B.Simon` girin.  
-    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-    1. **Oluştur**' a tıklayın.
+    1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -191,7 +185,7 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
     f. **Oturum açma Isteği imzası olarak Hayır (SF tarafından oluşturulan/SP/RP)** seçeneğini belirleyin. **No**
 
-    g. **SAML profili**olarak **tarayıcı/gönderi profili** ' ni seçin.
+    örneğin: **SAML profili**olarak **tarayıcı/gönderi profili** ' ni seçin.
 
     h. **Sertifikayı zorla geçerli süre**olarak **Hayır** ' ı seçin.
 

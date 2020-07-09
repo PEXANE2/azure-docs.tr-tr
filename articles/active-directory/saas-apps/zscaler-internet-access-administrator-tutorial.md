@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7623373be1aded29cb022f1d5080ed94d96b719
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161030"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Öğretici: Zscaler Internet erişim yöneticisiyle Azure Active Directory tümleştirme
 
@@ -33,7 +33,7 @@ Zscaler Internet Access Administrator 'ı Azure AD ile tümleştirmek aşağıda
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -108,25 +108,21 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
 
     a. **Tanımlayıcı** metin kutusunda, gereksiniminize göre bir URL yazın:
 
-    | |
-    |--|
-    | `https://admin.zscaler.net` |
-    | `https://admin.zscalerone.net` |
-    | `https://admin.zscalertwo.net` |
-    | `https://admin.zscalerthree.net` |
-    | `https://admin.zscloud.net` |
-    | `https://admin.zscalerbeta.net` |
+    - `https://admin.zscaler.net`
+    - `https://admin.zscalerone.net`
+    - `https://admin.zscalertwo.net`
+    - `https://admin.zscalerthree.net`
+    - `https://admin.zscloud.net`
+    - `https://admin.zscalerbeta.net`
 
     b. **Yanıt URL 'si** metin kutusuna, gereksiniminize göre bir URL yazın:
 
-    | |
-    |--|
-    | `https://admin.zscaler.net/adminsso.do` |
-    | `https://admin.zscalerone.net/adminsso.do` |
-    | `https://admin.zscalertwo.net/adminsso.do` |
-    | `https://admin.zscalerthree.net/adminsso.do` |
-    | `https://admin.zscloud.net/adminsso.do` |
-    | `https://admin.zscalerbeta.net/adminsso.do` |
+    - `https://admin.zscaler.net/adminsso.do`
+    - `https://admin.zscalerone.net/adminsso.do`
+    - `https://admin.zscalertwo.net/adminsso.do`
+    - `https://admin.zscalerthree.net/adminsso.do`
+    - `https://admin.zscloud.net/adminsso.do`
+    - `https://admin.zscalerbeta.net/adminsso.do`
 
 5. Zscaler Internet erişimi yönetici uygulaması, belirli bir biçimde SAML onayları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama sayfasında**, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
@@ -134,7 +130,7 @@ Azure AD çoklu oturum açma 'yı Zscaler Internet erişimi yöneticisiyle yapı
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı  | Kaynak özniteliği  |
+    | Ad  | Kaynak özniteliği  |
     | ---------| ------------ |
     | Rol     | Kullanıcı. atandroles |
 
@@ -207,12 +203,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

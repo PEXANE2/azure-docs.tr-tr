@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
-ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498085"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131994"
 ---
 # <a name="fail-over--vmware-vms"></a>VMware VM 'lerini devreder
 
@@ -64,14 +64,14 @@ Yük devretmeyi çalıştırmadan önce VM 'Lerin [Azure gereksinimlerini](vmwar
 
 ## <a name="run-a-failover-to-azure"></a>Azure'a yük devretme işlemini çalıştırma
 
-1. **Ayarlar** > **çoğaltılan öğeler**' de, yük devretmek istediğiniz VM 'yi seçin ve ardından **Yük devretme**' yı seçin.
+1. **Ayarlar**  >  **çoğaltılan öğeler**' de, yük devretmek istediğiniz VM 'yi seçin ve ardından **Yük devretme**' yı seçin.
 2. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
    * **Varsayılan**: Bu seçenekte öncelikle Site Recovery’ye gönderilen tüm veriler işlenir. Yük devretmeden sonra oluşturulan Azure VM, yük devretme tetiklendiğinde Site Recovery çoğaltılan tüm verilere sahip olduğundan en düşük kurtarma noktası hedefini (RPO) sağlar.
    * **En son işlenen**: Bu seçenek VM 'yi Site Recovery tarafından işlenen en son kurtarma noktasına devreder. İşlenmemiş verileri işlemek için zaman harcanmadığından, bu seçenek düşük bir RTO (kurtarma süresi hedefi) sağlar.
    * **En son uygulamayla tutarlı**: Bu seçenek VM 'yi, Site Recovery tarafından işlenen en son uygulamayla tutarlı kurtarma noktasına devreder.
    * **Özel**: Bu seçenek, bir kurtarma noktası belirtmenizi sağlar.
 
-3. Yük devretmeyi tetiklemeden önce kaynak VM 'Leri kapatmayı denemek için **yük devretmeye başlamadan önce makineyi kapat** ' ı seçin. Yük devretme, kapatılma başarısız olsa bile devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+3. Yük devretmeyi tetiklemeden önce kaynak VM 'Leri kapatmayı denemek için **yük devretmeye başlamadan önce makineyi kapat** ' ı seçin. Yük devretme, kapatılma başarısız olsa bile devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 
 Bazı senaryolarda, yük devretme işleminin tamamlanabilmesi için 8 ila 10 dakika geçen ek işleme gerekir. İçin yük devretme sürelerinin daha uzun süre test edebilirsiniz:
 
@@ -87,7 +87,7 @@ Bazı senaryolarda, yük devretme işleminin tamamlanabilmesi için 8 ila 10 dak
 
 ## <a name="connect-to-failed-over-vm"></a>Yük devredilen VM 'ye bağlanma
 
-1. Yük devretmeden sonra Uzak Masaüstü Protokolü (RDP) ve Secure Shell (SSH) kullanarak Azure VM 'lerine bağlanmak istiyorsanız, [gereksinimlerin karşılandığını doğrulayın] ((aılover-yeniden çalışma-genel bakış. MD # Connect-to-Azure-After-yük devretme).
+1. Yük devretmeden sonra Uzak Masaüstü Protokolü (RDP) ve Secure Shell (SSH) kullanarak Azure VM 'lerine bağlanmak istiyorsanız, [gereksinimlerin karşılandığını doğrulayın](failover-failback-overview.md#connect-to-azure-after-failover).
 2. Yük devretmeden sonra VM 'ye gidin ve bu ağa [bağlanarak](../virtual-machines/windows/connect-logon.md) doğrulayın.
 3. Yük devretmeden sonra farklı bir kurtarma noktası kullanmak istiyorsanız, **değişiklik kurtarma noktasını** kullanın. Bir sonraki adımda yük devretmeyi kaydettikten sonra bu seçenek artık kullanılamaz.
 4. Doğrulamadan sonra, yük devretmeden sonra sanal makinenin kurtarma noktasını sonlandırmak için **Yürüt** ' ü seçin.
@@ -101,5 +101,5 @@ Bazı senaryolarda, yük devretme işleminin tamamlanabilmesi için 8 ila 10 dak
 Yük devretmeden sonra Azure VM 'lerini şirket içine yeniden koruyun. Ardından, VM 'Ler yeniden korunduktan ve şirket içi siteye çoğaltıldıktan sonra, hazırsanız Azure 'dan yeniden yük devreder.
 
 > [!div class="nextstepaction"]
-> [Azure VM 'leri](vmware-azure-reprotect.md)
-> yeniden koruma[Azure 'dan geri dönme](vmware-azure-failback.md)
+> [Azure VM](vmware-azure-reprotect.md) 
+>  'lerini yeniden koruma [Azure 'dan geri](vmware-azure-failback.md) dönme

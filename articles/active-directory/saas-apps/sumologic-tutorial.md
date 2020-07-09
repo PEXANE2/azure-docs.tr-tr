@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de6d941c6efe42993b6bad7c556582831d179250
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bca74d7cce0257f4d852e1520cb23e6a77969ec7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75659755"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167734"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>Öğretici: SumoLogic ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -83,28 +83,24 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://service.sumologic.com`|
-    | `https://<tenantname>.us2.sumologic.com`|
-    | `https://<tenantname>.us4.sumologic.com`|
-    | `https://<tenantname>.eu.sumologic.com`|
-    | `https://<tenantname>.jp.sumologic.com`|
-    | `https://<tenantname>.de.sumologic.com`|
-    | `https://<tenantname>.ca.sumologic.com`|
+    - `https://service.sumologic.com`
+    - `https://<tenantname>.us2.sumologic.com`
+    - `https://<tenantname>.us4.sumologic.com`
+    - `https://<tenantname>.eu.sumologic.com`
+    - `https://<tenantname>.jp.sumologic.com`
+    - `https://<tenantname>.de.sumologic.com`
+    - `https://<tenantname>.ca.sumologic.com`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://service.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.us2.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.us4.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.eu.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.jp.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.de.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.ca.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.au.sumologic.com/sumo/saml/consume/<tenantname>`|
+    - `https://service.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.us2.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.us4.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.eu.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.jp.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.de.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.ca.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.au.sumologic.com/sumo/saml/consume/<tenantname>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [SumoLogic istemci destek ekibine](https://www.sumologic.com/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -115,7 +111,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SumoLogic uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    |  Adı | Kaynak özniteliği |
+    |  Ad | Kaynak özniteliği |
     | ---------------| --------------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -140,9 +136,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -166,7 +162,7 @@ Bu bölümde, SumoLogic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. Farklı bir Web tarayıcısı penceresinde, SumoLogic şirket sitenizde yönetici olarak oturum açın.
 
-1. **Güvenliği Yönet \> **' e gidin.
+1. ** \> Güvenliği Yönet**' e gidin.
 
     ![Yönetme](./media/sumologic-tutorial/ic778556.png "Yönetme")
 
@@ -194,7 +190,7 @@ Bu bölümde, SumoLogic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     f. **E-posta özniteliği**olarak, **SAML Subject kullan**' ı seçin.  
 
-    g. **SP tarafından başlatılan oturum açma yapılandırmasını**seçin.
+    örneğin: **SP tarafından başlatılan oturum açma yapılandırmasını**seçin.
 
     h. **Oturum açma yolu** metin kutusuna **Azure** yazın ve **Kaydet**' e tıklayın.
 
@@ -206,7 +202,7 @@ Azure AD kullanıcılarının SumoLogic 'de oturum açmasını sağlamak için, 
 
 1. **SumoLogic** kiracınızda oturum açın.
 
-1. **Kullanıcıları Yönet \> **' e gidin.
+1. ** \> Kullanıcıları Yönet**' e gidin.
 
     ![Kullanıcılar](./media/sumologic-tutorial/ic778561.png "Kullanıcılar")
 

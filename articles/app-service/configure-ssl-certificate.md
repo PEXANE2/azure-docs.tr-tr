@@ -6,14 +6,14 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81453916"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146419"
 ---
-# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service bir TLS/SSL sertifikası ekleme
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu makalede, App Service bir özel sertifika veya ortak sertifika oluşturma, karşıya yükleme veya içeri aktarma işlemlerinin nasıl yapılacağı gösterilir. 
 
@@ -34,7 +34,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 Bu nasıl yapılır kılavuzunu izlemek için:
 
 - [App Service uygulaması oluşturun](/azure/app-service/).
-- Yalnızca ücretsiz sertifika: bir alt etki alanını (örneğin, `www.contoso.com`) [CNAME kaydıyla](app-service-web-tutorial-custom-domain.md#map-a-cname-record)App Service eşleştirin.
+- Yalnızca ücretsiz sertifika: bir alt etki alanını (örneğin, `www.contoso.com` ) [CNAME kaydıyla](app-service-web-tutorial-custom-domain.md#map-a-cname-record)App Service eşleştirin.
 
 ## <a name="private-certificate-requirements"></a>Özel sertifika gereksinimleri
 
@@ -64,17 +64,17 @@ App Service yönetilen ücretsiz sertifika, App Service özel DNS adınızı gü
 - Joker sertifikaları desteklemez.
 - Çıplak etki alanlarını desteklemez.
 - Dışarı aktarılabilir değil.
-- DNS A-kayıtlarını desteklemez.
+- Bir kaydı desteklemez. Örneğin, otomatik yenileme bir kayıtla birlikte çalışmaz.
 
 > [!NOTE]
-> Ücretsiz sertifika, DigiCert tarafından verilir. Bazı üst düzey etki alanları için, şu değere sahip bir [CAA etki alanı kaydı](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) oluşturarak bir sertifika veren olarak DigiCert 'e açıkça izin vermeniz gerekir `0 issue digicert.com`:.
+> Ücretsiz sertifika, DigiCert tarafından verilir. Bazı üst düzey etki alanları için, şu değere sahip bir [CAA etki alanı kaydı](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) oluşturarak bir sertifika veren olarak DigiCert 'e açıkça izin vermeniz gerekir: `0 issue digicert.com` .
 > 
 
 App Service yönetilen ücretsiz bir sertifika oluşturmak için:
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **App Services** > **\<uygulaması-adı>**' nı seçin.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
-Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları** > **özel anahtar sertifikaları (. pfx)** > **App Service yönetilen sertifika oluştur**' u seçin.
+Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anahtar sertifikaları (. pfx)**  >  **App Service yönetilen sertifika oluştur**' u seçin.
 
 ![App Service 'de ücretsiz sertifika oluşturma](./media/configure-ssl-certificate/create-free-cert.png)
 
@@ -115,8 +115,8 @@ Sertifikayı yapılandırmanıza yardımcı olması için aşağıdaki tabloyu k
 
 | Ayar | Açıklama |
 |-|-|
-| Adı | App Service sertifikanız için kolay bir ad. |
-| Naked etki alanı konak adı | Kök etki alanını burada belirtin. Verilen sertifika hem kök etki alanının hem *de* alt `www` etki alanının güvenliğini sağlar. Verilen sertifikada, ortak ad alanı kök etki alanını içerir ve konu alternatif adı alanı `www` etki alanını içerir. Yalnızca herhangi bir alt etki alanının güvenliğini sağlamak için burada alt etki alanının tam etki alanı adını belirtin (örneğin `mysubdomain.contoso.com`,).|
+| Ad | App Service sertifikanız için kolay bir ad. |
+| Naked etki alanı konak adı | Kök etki alanını burada belirtin. Verilen sertifika hem kök etki alanının hem *de* alt etki alanının güvenliğini sağlar `www` . Verilen sertifikada, ortak ad alanı kök etki alanını içerir ve konu alternatif adı alanı `www` etki alanını içerir. Yalnızca herhangi bir alt etki alanının güvenliğini sağlamak için burada alt etki alanının tam etki alanı adını belirtin (örneğin, `mysubdomain.contoso.com` ).|
 | Abonelik | Sertifikayı içerecek abonelik. |
 | Kaynak grubu | Sertifikayı içerecek kaynak grubu. Örneğin, yeni bir kaynak grubu kullanabilir veya App Service uygulamanız ile aynı kaynak grubunu seçebilirsiniz. |
 | Sertifika SKU 'SU | Oluşturulacak sertifikanın türünü, standart bir sertifika veya [Joker bir sertifika](https://wikipedia.org/wiki/Wildcard_certificate)olduğunu belirler. |
@@ -126,7 +126,7 @@ Sertifikayı yapılandırmanıza yardımcı olması için aşağıdaki tabloyu k
 
 Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya başlayabilmeniz için yapmanız gereken birkaç adım daha vardır. 
 
-[App Service sertifikaları](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) sayfasında sertifikayı seçin ve ardından **sertifika yapılandırması** > **Adım 1: depolama**' ya tıklayın.
+[App Service sertifikaları](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) sayfasında sertifikayı seçin ve ardından **sertifika yapılandırması**  >  **Adım 1: depolama**' ya tıklayın.
 
 ![App Service sertifikası Key Vault depolamayı yapılandırma](./media/configure-ssl-certificate/configure-key-vault.png)
 
@@ -136,7 +136,7 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 
 | Ayar | Açıklama |
 |-|-|
-| Adı | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
+| Ad | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
 | Kaynak grubu | Öneri olarak, App Service sertifikanız ile aynı kaynak grubunu seçin. |
 | Konum | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -163,9 +163,9 @@ Son adımda kullandığınız **sertifika yapılandırma** sayfasından **2. Ad�
 
 ### <a name="import-certificate-into-app-service"></a>Sertifikayı App Service içeri aktar
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **App Services** > **\<uygulaması-adı>**' nı seçin.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
-Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları** > **özel anahtar sertifikaları (. pfx)** > **içeri aktarma App Service sertifikası**seçin.
+Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anahtar sertifikaları (. pfx)**  >  **içeri aktarma App Service sertifikası**seçin.
 
 ![App Service App Service sertifikayı içeri aktar](./media/configure-ssl-certificate/import-app-service-cert.png)
 
@@ -183,9 +183,9 @@ Yeni satın aldığınız sertifikayı seçin ve **Tamam**' ı seçin.
 
 Sertifikalarınızı yönetmek için Azure Key Vault kullanıyorsanız, [gereksinimleri karşılayan](#private-certificate-requirements)sürece Key Vault bir PKCS12 sertifikasını App Service 'e aktarabilirsiniz.
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **App Services** > **\<uygulaması-adı>**' nı seçin.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
-Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları** > **özel anahtar sertifikaları (. pfx)** > **Key Vault sertifikayı içeri aktar**' ı seçin.
+Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anahtar sertifikaları (. pfx)**  >  **Key Vault sertifikayı içeri aktar**' ı seçin.
 
 ![App Service Key Vault sertifikayı içeri aktar](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
@@ -239,7 +239,7 @@ Birleştirilmiş sertifika için _mergedcertificate.crt_ adlı bir dosya oluştu
 
 Birleştirilmiş TLS/SSL sertifikanızı, Sertifika isteğinizin oluşturulduğu özel anahtarla dışarı aktarın.
 
-Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. _ &lt;Özel anahtar dosyası>_ ve _ &lt;birleştirilmiş-sertifika-dosya>_ yer tutucuları özel anahtarınıza ve birleştirilmiş sertifika dosyanıza yönelik yollarla değiştirin.
+Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. _ &lt; Özel anahtar dosyası>_ ve _ &lt; birleştirilmiş-sertifika-dosya>_ yer tutucuları özel anahtarınıza ve birleştirilmiş sertifika dosyanıza yönelik yollarla değiştirin.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
@@ -253,9 +253,9 @@ Sertifika isteğinizi oluşturmak için IIS veya _Certreq.exe_ kullandıysanız,
 
 Artık App Service sertifikayı karşıya yükleyin.
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **App Services** > **\<uygulaması-adı>**' nı seçin.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
-Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları** > **özel anahtar sertifikaları (. pfx)** > **karşıya yükleme sertifikası**' nı seçin.
+Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **özel anahtar sertifikaları (. pfx)**  >  **karşıya yükleme sertifikası**' nı seçin.
 
 ![App Service özel sertifikayı karşıya yükle](./media/configure-ssl-certificate/upload-private-cert.png)
 
@@ -273,9 +273,9 @@ Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları** > **özel anahtar
 
 Ortak Sertifikalar *. cer* biçiminde desteklenir. 
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **App Services** > **\<uygulaması-adı>**' nı seçin.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sol menüden **uygulama hizmetleri**' ni seçin  >  **\<app-name>** .
 
-Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları** > **genel Sertifikalar (. cer)** > **ortak anahtar sertifikasını karşıya yükle**' ye tıklayın.
+Uygulamanızın sol gezinti bölmesinde, **TLS/SSL ayarları**  >  **genel Sertifikalar (. cer)**  >  **ortak anahtar sertifikasını karşıya yükle**' ye tıklayın.
 
 **Ad**alanına sertifika için bir ad yazın. **Cer sertifika dosyası**' nda, cer dosyanızı seçin.
 
@@ -357,7 +357,7 @@ Kilit türü **silme**ile sertifikanıza yönelik kilidi bulun. Sağ tarafta **S
 
 ![App Service sertifikası için kilidi Sil](./media/configure-ssl-certificate/delete-lock-app-service-cert.png)
 
-Artık App Service sertifikasını silebilirsiniz. Sol gezinmede **genel bakış** > **Sil**' i seçin. Onay iletişim kutusunda, sertifika adını yazın ve **Tamam**' ı seçin.
+Artık App Service sertifikasını silebilirsiniz. Sol gezinmede **genel bakış**  >  **Sil**' i seçin. Onay iletişim kutusunda, sertifika adını yazın ve **Tamam**' ı seçin.
 
 ## <a name="automate-with-scripts"></a>Betiklerle otomatikleştirme
 

@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db2e583515d948f455e1d2129684f97347a07403
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594942"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170284"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Öğretici: Notification Hubs kullanarak Windows Phone uygulamalara anında iletme bildirimleri gönderin
 
@@ -84,9 +84,12 @@ Bu bölümde, bildirim hub’ınıza kendi kendine kaydolan bir Windows Phone uy
     ![Visual Studio - NuGet Paket Yöneticisi][20]
 4. App.xaml.cs dosyasını açın ve aşağıdaki `using` deyimlerini ekleyin:
 
-        using Microsoft.Phone.Notification;
-        using Microsoft.WindowsAzure.Messaging;
-5. Aşağıdaki kodu içindeki `Application_Launching` `App.xaml.cs`yönteminin üst kısmına ekleyin:
+    ```csharp
+    using Microsoft.Phone.Notification;
+    using Microsoft.WindowsAzure.Messaging;
+    ```
+
+5. Aşağıdaki kodu içindeki yönteminin üst kısmına ekleyin `Application_Launching` `App.xaml.cs` :
 
     ```csharp
     private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -114,13 +117,13 @@ Bu bölümde, bildirim hub’ınıza kendi kendine kaydolan bir Windows Phone uy
     ```
 
    > [!NOTE]
-   > Değer `MyPushChannel` , [httpnotificationchannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) koleksiyonundaki mevcut bir kanalı aramak için kullanılan bir dizindir. Bu koleksiyonda bir tane bulunmuyorsa bu adla yeni bir giriş oluşturun.
+   > Değer, `MyPushChannel` [httpnotificationchannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) koleksiyonundaki mevcut bir kanalı aramak için kullanılan bir dizindir. Bu koleksiyonda bir tane bulunmuyorsa bu adla yeni bir giriş oluşturun.
 
-    Hub 'ınızın adını ve önceki bölümde not ettiğiniz adlı `DefaultListenSharedAccessSignature` bağlantı dizesini ekleyin.
+    Hub 'ınızın adını ve önceki bölümde not ettiğiniz adlı bağlantı dizesini ekleyin `DefaultListenSharedAccessSignature` .
     Bu kod, MPNS'den uygulamanın kanal URI'sini alır ve ardından bu kanal URI'sini bildirim hub'ınıza kaydeder. Bu kod ayrıca uygulama her başlatıldığında kanal URI'sinin bildirim hub'ınıza kaydedilmesini garanti eder.
 
    > [!NOTE]
-   > Bu öğretici cihaza bir bildirim gönderir. Bir kutucuk bildirimi gönderdiğinizde, bunun yerine kanalda `BindToShellTile` yöntemini çağırmanız gerekir. Hem bildirim hem de Kutucuk bildirimlerini desteklemek için hem hem `BindToShellTile` de `BindToShellToast`çağırın.
+   > Bu öğretici cihaza bir bildirim gönderir. Bir kutucuk bildirimi gönderdiğinizde, bunun yerine `BindToShellTile` kanalda yöntemini çağırmanız gerekir. Hem bildirim hem de Kutucuk bildirimlerini desteklemek için hem hem de çağırın `BindToShellTile` `BindToShellToast` .
 
 6. Çözüm Gezgini'nde **Özellikler**'i genişletin, `WMAppManifest.xml` dosyasını açın, **Özellikler** sekmesine tıklayın ve **ID_CAP_PUSH_NOTIFICATION** özelliğinin işaretlendiğinden emin olun. Uygulamanız artık anında iletme bildirimleri alabilir.
 

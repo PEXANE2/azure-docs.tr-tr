@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5c4cef9c2334328dc1291db95cfed3994d1709
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c860d821ff67b5eb95735e33dd0fda267f9c3bf
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80668905"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167343"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tickitlms-learn"></a>Öğretici: TickitLMS ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -95,13 +95,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki, TickitLMS hakkında daha fazla özniteliğe daha fazla sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekliyor. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |   |  Kaynak özniteliği|
-    | ---------------| --------------- | --------- |
-    | samlaccount |  | User. samlaccount |
-    | çalışan |  | User. EmployeeID |
-    | rol |  | User. Role |
-    | bölüm |  | User. Departmanı |
-    | raporlar |  | User. ReportsTo |
+    | Ad | Kaynak özniteliği|
+    | ---- | --------------- |
+    | samlaccount | User. samlaccount |
+    | çalışan | User. EmployeeID |
+    | rol | User. Role |
+    | bölüm | User. Departmanı |
+    | raporlar | User. ReportsTo |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -114,9 +114,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

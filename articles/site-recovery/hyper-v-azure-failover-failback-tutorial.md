@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132467"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerini Azure 'a devreder
 
@@ -27,8 +27,8 @@ Bu öğreticide, Hyper-V VM 'lerinin [Azure Site Recovery](site-recovery-overvie
 Bu öğretici, serideki beşinci öğreticidir. Önceki öğreticilerdeki adımları zaten tamamladığınız varsayılır.    
 
 1. [Azure’u hazırlama](tutorial-prepare-azure.md)
-2. [Şirket içi Hyper-V’leri hazırlama](tutorial-prepare-on-premises-hyper-v.md)
-3. [Hyper-V VM'leri](tutorial-hyper-v-to-azure.md) veya [System Center VMM bulutlarında yönetilen Hyper-V VM'leri](tutorial-hyper-v-vmm-to-azure.md) için olağanüstü durum kurtarmayı ayarlama
+2. [Şirket içi Hyper-V’leri hazırlama](./hyper-v-prepare-on-premises-tutorial.md)
+3. [Hyper-V VM'leri](./hyper-v-azure-tutorial.md) veya [System Center VMM bulutlarında yönetilen Hyper-V VM'leri](./hyper-v-vmm-azure-tutorial.md) için olağanüstü durum kurtarmayı ayarlama
 4. [Olağanüstü durum kurtarma tatbikatı çalıştırma](tutorial-dr-drill-azure.md)
 
 Farklı yük devretme türleri [hakkında bilgi edinin](failover-failback-overview.md#types-of-failover) . Bir kurtarma planında birden çok VM 'nin yükünü devretmek istiyorsanız [Bu makaleyi](site-recovery-failover.md)gözden geçirin.
@@ -58,9 +58,9 @@ Yük devretme öncesinde VM özelliklerini doğrulayın ve VM’nin [Azure gerek
 
 ## <a name="fail-over-to-azure"></a>Azure'a yük devretme
 
-1. **Ayarlar** > **çoğaltılan öğeler**' de **Yük devretme**> VM ' ye tıklayın.
+1. **Ayarlar**  >  **çoğaltılan öğeler**' de **Yük devretme**> VM ' ye tıklayın.
 2. **Yük devretme** bölümünde **En son** kurtarma noktasını seçin. 
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak VM'leri kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak VM'leri kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 4. Yük devretmeyi doğruladıktan sonra **Yürüt**'e tıklayın. Bu işlem tüm kullanılabilir kurtarma noktalarını siler.
 
 > [!WARNING]

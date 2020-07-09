@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45782d7827a289cc0942eca61d6b30d071a6721c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccd1304ae43a2f424dab94cf67e7cc41357579fa
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67450747"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167037"
 ---
 # <a name="tutorial-integrate-vtiger-crm-saml-with-azure-active-directory"></a>Öğretici: vtiger CRM 'yi (SAML) Azure Active Directory ile tümleştirme
 
@@ -85,11 +85,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | | |
-    | - |- |
-    | `https://<customer_instance>.od1.vtiger.com` |
-    | `https://<customer_instance>.od2.vtiger.com` |
-    | `https://<customer_instance>.od1.vtiger.ws` |
+   - `https://<customer_instance>.od1.vtiger.com`
+   - `https://<customer_instance>.od2.vtiger.com`
+   - `https://<customer_instance>.od1.vtiger.ws`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customer_instance>.od1.vtiger.com/sso/saml?acs`
 
@@ -116,9 +114,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

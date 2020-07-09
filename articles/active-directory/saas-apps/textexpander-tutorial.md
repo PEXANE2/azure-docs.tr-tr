@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: aecb235006752096c6040066cb9b96fcfa709363
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764108"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167258"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>Öğretici: TextExpander ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -97,11 +97,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakilerin yanı sıra, TextExpander uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name | |  Kaynak özniteliği|
-    | ---------------| --------------- | --------- |
-    | e-posta | | Kullanıcı. e-posta |
-    | firstName | | Kullanıcı. |
-    | lastName | | User. soyadı |
+    | Ad | Kaynak özniteliği|
+    | ---- | --------------- |
+    | e-posta | Kullanıcı. e-posta |
+    | firstName | Kullanıcı. |
+    | lastName | User. soyadı |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -121,7 +121,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

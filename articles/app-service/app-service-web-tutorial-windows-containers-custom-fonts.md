@@ -4,18 +4,18 @@ description: Özel bir Windows kapsayıcısını Azure App Service 'ye geçirmey
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8f2f4f707300e3ebe31f059c65492247befe324a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205631"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169961"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows kapsayıcısı kullanarak bir ASP.NET uygulamasını Azure App Service'e geçirme (Önizleme)
 
 [Azure App Service](overview.md), Windows'da IIS üzerinde çalışan ASP.NET veya Node.js gibi önceden tanımlı uygulama yığınları sunar. Önceden yapılandırılmış Windows ortamı, işletim sistemini yönetimsel erişime, yazılım yüklemesine ve genel derleme önbelleğine ve benzeri uygulamalara karşı kilitler (bkz. [Azure App Service'teki işletim sistemi işlevleri](operating-system-functionality.md)). Ancak App Service içinde özel bir Windows kapsayıcısı kullanmak, uygulamanızın ihtiyaç duyduğu işletim sistemi değişikliklerini kolayca gerçekleştirmenizi sağlar. Bu sayede özel işletim sistemi ve yazılım yapılandırmasına ihtiyaç duyan bir şirket içi uygulamayı geçirmek oldukça kolaydır. Bu öğreticide Windows yazı tipi kitaplığında yüklü olan özel yazı tiplerini kullanan bir ASP.NET uygulamasını App Service'e geçirme adımları gösterilmektedir. Visual Studio'dan [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)'ye özel olarak yapılandırılmış bir Windows görüntüsü dağıtıp ardından bunu App Service'te çalıştıracaksınız.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Bir Windows kapsayıcısında çalışan Web uygulamasını gösterir.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -116,7 +116,7 @@ Yeni kapsayıcı kayıt defterini aşağıdaki tabloda bulunan değerleri kullan
 |**DNS Ön Eki**| Oluşturulan kayıt defteri adını kullanın veya benzersiz bir adla değiştirin. |  |
 |**Kaynak grubu**| **Yeni**'ye tıklayın, **myResourceGroup** yazın ve **Tamam**'a tıklayın. |  |
 |**SKU**| Temel | [Fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/container-registry/)|
-|**Kayıt Defteri Konumu**| Batı Avrupa | |
+|**Kayıt Defteri Konumu**| West Europe | |
 
 ![Azure Container Registry yapılandırması](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
 
@@ -141,12 +141,12 @@ Sol menüden **kaynak oluştur**  >  **Web**  >  **kapsayıcılar için Web App*
 |**Adı**| Benzersiz bir ad yazın. | Web uygulamasının URL'si `http://<app-name>.azurewebsites.net` şeklindedir; burada `<app-name>`, uygulamanızın adıdır. |
 |**Yayımlama**| Docker kapsayıcısı | |
 |**İşletim Sistemi**| Windows | |
-|**Geli**| Batı Avrupa | |
+|**Region**| West Europe | |
 |**Windows Planı**| **Yeni oluştur**' u seçin, **myappserviceplan**yazın ve **Tamam**' a tıklayın. | |
 
 **Temel kavramlar** sekmesi şöyle görünmelidir:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
+![Web uygulamasını yapılandırmak için kullanılan temel bilgiler sekmesini gösterir.](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Windows kapsayıcısını yapılandırma
 
@@ -167,7 +167,7 @@ Sol menüden **kaynak oluştur**  >  **Web**  >  **kapsayıcılar için Web App*
 
 Azure işlemi tamamlandığında bir bildirim kutusu görüntülenir.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
+![Azure işleminin tamamlandığını gösterir.](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
 
 1. **Kaynağa git**'e tıklayın.
 
@@ -175,11 +175,11 @@ Azure işlemi tamamlandığında bir bildirim kutusu görüntülenir.
 
 Aşağıdaki sayfayla yeni bir tarayıcı sayfası açılır:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
+![Web uygulaması için yeni tarayıcı sayfasını gösterir.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
 Birkaç dakika bekleyin ve beklediğiniz güzel yazı tipine sahip giriş sayfası açılana kadar yeniden deneyin:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Yapılandırdığınız yazı tipine sahip giriş sayfasını gösterir.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 **Tebrikler!** Bir ASP.NET uygulamasını Windows kapsayıcısında Azure App Service'e geçirdiniz.
 

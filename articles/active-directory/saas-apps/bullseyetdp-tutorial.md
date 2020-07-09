@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c07dbaf069ef804df21467354544676aeec5ba
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 9b7ac1538c02ab41a905f208f9485260423bc125
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101929"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169077"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bullseyetdp"></a>Öğretici: BullseyeTDP ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -91,11 +91,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. BullseyeTDP uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name |  |  Kaynak özniteliği|
-    | ---------------| --------------- | --------- |
-    | AccessToken | | < AccessTokenValue > |
-    | ApplicationKey | | < ApplicationKeyValue >|
-    | EmployeeID | | User. EmployeeID |
+    | Ad | Kaynak özniteliği|
+    | ---- | --------------- |
+    | AccessToken | < AccessTokenValue > |
+    | ApplicationKey | < ApplicationKeyValue >|
+    | Çalışan Kimliği | User. EmployeeID |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -115,7 +115,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

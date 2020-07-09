@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 03e6f52d764b72c423269fcdfdc966474978aa6e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74081951"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Öğretici: Reward Gateway ile tümleştirme Azure Active Directory
 
@@ -32,7 +32,7 @@ Azure AD ile Reward ağ geçidini tümleştirmek aşağıdaki avantajları sağl
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -106,22 +106,18 @@ Azure AD çoklu oturum açmayı, Reward Gateway ile yapılandırmak için aşağ
     ![Reward Gateway etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
-    
-    | |
-    |--|
-    | `https://<companyname>.rewardgateway.com`|
-    | `https://<companyname>.rewardgateway.co.uk/`|
-    | `https://<companyname>.rewardgateway.co.nz/`|
-    | `https://<companyname>.rewardgateway.com.au/`|
+
+    - `https://<companyname>.rewardgateway.com`
+    - `https://<companyname>.rewardgateway.co.uk/`
+    - `https://<companyname>.rewardgateway.co.nz/`
+    - `https://<companyname>.rewardgateway.com.au/`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
-    
-    | |
-    |--|
-    |  `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>`|
-    | `https://<companyname>.rewardgateway.co.uk/Authentication/EndLogin?idp=<Unique Id>`|
-    | `https://<companyname>.rewardgateway.co.nz/Authentication/EndLogin?idp=<Unique Id>`|
-    | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
+
+    - `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>`
+    - `https://<companyname>.rewardgateway.co.uk/Authentication/EndLogin?idp=<Unique Id>`
+    - `https://<companyname>.rewardgateway.co.nz/Authentication/EndLogin?idp=<Unique Id>`
+    - `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, Reward Manager portalında bir tümleştirme ayarlamaya başlayın. Ayrıntılar şu şekilde bulunabilirhttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
@@ -167,7 +163,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

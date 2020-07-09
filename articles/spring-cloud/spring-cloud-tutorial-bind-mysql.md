@@ -1,21 +1,21 @@
 ---
-title: Öğretici-MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlama
-description: Bu öğreticide, MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza nasıl bağlayacağınız gösterilmektedir
+title: MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlama
+description: MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlamayı öğrenin
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 657aa70d77fd1af9fd2121a3e98ea3aca7773642
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6f2c9a46d8b17a53d2dc43c0c8313c9357f502a1
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277552"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142167"
 ---
-# <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Öğretici: MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlama 
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>MySQL için Azure veritabanı örneğini Azure Spring Cloud uygulamanıza bağlama 
 
-Azure Spring Cloud ile, Spring Boot uygulamanızı el ile yapılandırmak yerine, Azure hizmetlerini otomatik olarak uygulamalarınıza bağlayabilirsiniz. Bu öğreticide, uygulamanızı MySQL için Azure veritabanı örneğine nasıl bağlayacağınız gösterilmektedir.
+Azure Spring Cloud ile, Spring Boot uygulamanızı el ile yapılandırmak yerine, Azure hizmetlerini otomatik olarak uygulamalarınıza bağlayabilirsiniz. Bu makalede, uygulamanızı MySQL için Azure veritabanı örneğine nasıl bağlayacağınız gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,7 +31,7 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, ilk Spring Cloud uygulama
 
 1. Sunucuya bağlanın, MySQL istemcisinden **TestDB** adlı bir veritabanı oluşturun ve ardından yeni yönetici olmayan bir hesap oluşturun.
 
-1. Projenizin *POI. xml* dosyasında aşağıdaki bağımlılığı ekleyin:
+1. Projenizin *pom.xml* dosyasında aşağıdaki bağımlılığı ekleyin:
 
     ```xml
     <dependency>
@@ -41,7 +41,7 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, ilk Spring Cloud uygulama
     ```
 1. *Application. Properties* dosyasında tüm `spring.datasource.*` özellikleri kaldırın.
 
-1. Çalıştırarak `az spring-cloud app update`geçerli dağıtımı güncelleştirin veya bu değişiklik için çalıştırarak `az spring-cloud app deployment create`yeni bir dağıtım oluşturun.  Bu komutlar uygulamayı yeni bağımlılığı ile güncelleştirir veya oluşturur.
+1. Çalıştırarak geçerli dağıtımı güncelleştirin `az spring-cloud app update` veya bu değişiklik için çalıştırarak yeni bir dağıtım oluşturun `az spring-cloud app deployment create` .  Bu komutlar uygulamayı yeni bağımlılığı ile güncelleştirir veya oluşturur.
 
 1. Azure portal **Azure Spring Cloud** Service sayfasında, **uygulama panosunu**bulun ve ardından MySQL için Azure veritabanı örneğine bağlamak üzere uygulamayı seçin.  Bu, önceki adımda güncelleştirdiğiniz veya dağıttığınız aynı uygulamadır. 
 
@@ -51,7 +51,7 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, ilk Spring Cloud uygulama
 
 1. Uygulamayı yeniden başlatın ve bu bağlama artık çalışmalıdır.
 
-1. Hizmet bağlamasının doğru olduğundan emin olmak için bağlama adını seçin ve sonra ayrıntılarını doğrulayın. `property` Alan şöyle görünmelidir:
+1. Hizmet bağlamasının doğru olduğundan emin olmak için bağlama adını seçin ve sonra ayrıntılarını doğrulayın. `property`Alan şöyle görünmelidir:
     ```
     spring.datasource.url=jdbc:mysql://some-server.mysql.database.azure.com:3306/testdb?useSSL=true&requireSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin@some-server
@@ -61,7 +61,4 @@ Dağıtılmış bir Azure yay bulut örneğiniz yoksa, ilk Spring Cloud uygulama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Spring Cloud uygulamanızı bir MySQL için Azure veritabanı örneğine nasıl bağlayacağınız hakkında daha fazla öğrendiniz.  Azure yay bulut hizmetinizi yönetme hakkında daha fazla bilgi edinmek için hizmet bulma ve kayıt hakkındaki makaleye bakın.
-
-> [!div class="nextstepaction"]
-> [Spring Cloud Service kayıt defteri 'ni kullanarak hizmet bulmayı ve kaydını etkinleştirme](spring-cloud-service-registration.md)
+Bu makalede, bir Azure Spring Cloud uygulamasını MySQL için Azure veritabanı örneğine bağlamayı öğrendiniz. Bir uygulamaya hizmet bağlama hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos db veritabanını Azure Spring Cloud uygulamasına bağlama](spring-cloud-tutorial-bind-cosmos.md).

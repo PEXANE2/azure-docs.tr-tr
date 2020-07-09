@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078179"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170488"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Öğretici: Shopify Plus ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Shopify Plus 'ı Azure Active Directory (Azure AD) ile tümleş
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -99,9 +99,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Shopify Plus uygulamasının yanı sıra, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name |  |  Kaynak özniteliği|
-    | ---------------| --------------- | --------- |
-    | e-posta | | Kullanıcı. Mail |
+    | Ad | Kaynak özniteliği|
+    | ---- | --------------- |
+    | e-posta | Kullanıcı. Mail |
 
 1. **Ad kimlik** biçimini **kalıcı**olarak değiştirin. **Benzersiz kullanıcı tanımlayıcısı (ad kimliği)** seçeneğini belirleyin ve ardından **ad tanımlayıcı** biçimini seçin. Bu seçenek için **persistent** ' i seçin. Yaptığınız değişiklikleri kaydedin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, Kopyala düğmesini seçerek **App Federasyon meta verileri URL 'sini** kopyalayın ve bilgisayarınıza kaydedin.
@@ -118,7 +118,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -161,7 +161,7 @@ Bireysel kullanıcılar:
 Bir e-posta etki alanı altındaki tüm kullanıcılar için:
 1. **Güvenlik** sayfasına dönün.
 1. SAML kimlik doğrulaması ayarınız için **gerekli** ' yi seçin. Bu, Shopify Plus genelindeki e-posta etki alanına sahip tüm kullanıcılar için SAML 'yi zorlar.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 > [!IMPORTANT]
 > Bir e-posta etki alanı altındaki tüm kullanıcılar için SAML 'nin etkinleştirilmesi, bu uygulamayı kullanan tüm kullanıcıları etkiler. Kullanıcılar, normal oturum açma sayfasını kullanarak oturum açamaz. Yalnızca Azure Active Directory aracılığıyla uygulamaya erişebilecekler. Shopify, kullanıcıların normal kullanıcı adını ve parolasını kullanarak oturum açmasını sağlayan bir yedekleme oturum açma URL 'SI sağlamaz. Gerekirse SAML 'yi kapatmak için Shopify desteğine başvurabilirsiniz.

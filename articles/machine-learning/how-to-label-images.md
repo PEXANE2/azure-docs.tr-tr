@@ -2,19 +2,20 @@
 title: Etiketleme projesindeki resimleri etiketleme
 title.suffix: Azure Machine Learning
 description: Azure Machine Learning etiketleme projesindeki veri etiketleme araçlarını kullanmayı öğrenin.
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025140"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147008"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>Etiketleme projesindeki resimleri etiketleme (Önizleme)
+# <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
 Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) oluşturduktan sonra etiketleme aracını (Genel Önizleme) kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
 
@@ -63,7 +64,7 @@ Sayfadaki tüm görüntüleri etiketlediyseniz Azure, **Gönder** düğmesine iz
 
 Bir yandan veriler için Etiketler gönderdikten sonra, Azure sayfayı iş kuyruğundan yeni bir görüntü kümesiyle yeniler.
 
-### <a name="assisted-machine-learning"></a>Yardımlı makine öğrenimi 
+### <a name="assisted-machine-learning-preview"></a>Yardımlı makine öğrenimi (Önizleme) 
 
 Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etkinleştirilirse, aşağıdakileri görebilirsiniz:
 

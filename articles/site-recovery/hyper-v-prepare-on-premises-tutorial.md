@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135654"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Şirket içi Hyper-V sunucularını Azure’a olağanüstü durum kurtarma için hazırlama
 
@@ -56,12 +56,12 @@ Hyper-V konakları VMM tarafından yönetiliyorsa, şirket içi VMM sunucusunu h
 
 ### <a name="prepare-vmm-for-network-mapping"></a>VMM 'yi ağ eşleme için hazırlama
 
-VMM kullanıyorsanız, şirket içi VMM VM ağları ve Azure sanal ağları arasında [ağ eşleme](site-recovery-network-mapping.md) haritaları. Eşleme, yük devretmeden sonra oluşturulan Azure VM 'lerinin doğru ağa bağlanmasını sağlar.
+VMM kullanıyorsanız, şirket içi VMM VM ağları ve Azure sanal ağları arasında [ağ eşleme](./hyper-v-vmm-network-mapping.md) haritaları. Eşleme, yük devretmeden sonra oluşturulan Azure VM 'lerinin doğru ağa bağlanmasını sağlar.
 
 Ağ eşlemesi için VMM 'yi aşağıdaki şekilde hazırlayın:
 
-1. Hyper-V konaklarının bulunduğu bulutla ilişkili bir [VMM mantıksal ağınıza](https://docs.microsoft.com/system-center/vmm/network-logical) sahip olduğunuzdan emin olun.
-2. Mantıksal ağa bağlı bir [VM ağına](https://docs.microsoft.com/system-center/vmm/network-virtual) sahip olduğunuzdan emin olun.
+1. Hyper-V konaklarının bulunduğu bulutla ilişkili bir [VMM mantıksal ağınıza](/system-center/vmm/network-logical) sahip olduğunuzdan emin olun.
+2. Mantıksal ağa bağlı bir [VM ağına](/system-center/vmm/network-virtual) sahip olduğunuzdan emin olun.
 3. VMM 'de VM 'Leri VM ağına bağlayın.
 
 ## <a name="verify-internet-access"></a>İnternet erişimini doğrulama
@@ -94,5 +94,5 @@ Yük devretmeden sonra, çoğaltılan şirket içi VM ile aynı IP adresini veya
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hyper-V VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-to-azure.md) 
->  [VMM bulutlarındaki Hyper-V VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-vmm-to-azure.md)
+> [Hyper-V VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlama](./hyper-v-azure-tutorial.md) 
+>  [VMM bulutlarındaki Hyper-V VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlama](./hyper-v-vmm-azure-tutorial.md)

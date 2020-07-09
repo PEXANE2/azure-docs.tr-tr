@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78298539"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134022"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure VM’lerini Azure Kamu ve Genel bölgeleri arasında taşıma 
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure sanal makinelerini Azure Kamu ve ortak bölgeler arasınd
 > * Kaynak bölgedeki kaynakları at
 
 > [!IMPORTANT]
-> Bu öğreticide, Azure sanal makinelerini Azure Kamu ve ortak bölgeler arasında veya Azure VM 'Leri için normal olağanüstü durum kurtarma çözümü tarafından desteklenmeyen bölgeler çiftleri arasında nasıl taşıyacağınız gösterilmektedir. Bu durumda, kaynak ve hedef bölge çiftlerinizin [desteklenmiş](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)olması için lütfen taşıma için bu [belgeye](azure-to-azure-tutorial-migrate.md) başvurun. Gereksiniminiz, bir kullanılabilirlik kümesindeki VM 'Leri farklı bir bölgedeki bölge sabitlenmiş VM 'lere taşıyarak kullanılabilirliği geliştirmek istiyorsanız [buradaki](move-azure-VMs-AVset-Azone.md)öğreticiye bakın.
+> Bu öğreticide, Azure sanal makinelerini Azure Kamu ve ortak bölgeler arasında veya Azure VM 'Leri için normal olağanüstü durum kurtarma çözümü tarafından desteklenmeyen bölgeler çiftleri arasında nasıl taşıyacağınız gösterilmektedir. Bu durumda, kaynak ve hedef bölge çiftlerinizin [desteklenmiş](./azure-to-azure-support-matrix.md#region-support)olması için lütfen taşıma için bu [belgeye](azure-to-azure-tutorial-migrate.md) başvurun. Gereksiniminiz, bir kullanılabilirlik kümesindeki VM 'Leri farklı bir bölgedeki bölge sabitlenmiş VM 'lere taşıyarak kullanılabilirliği geliştirmek istiyorsanız [buradaki](move-azure-VMs-AVset-Azone.md)öğreticiye bakın.
 
 > [!IMPORTANT]
 > Çiftler, bir DR senaryosu için kritik olan veri gecikmesini aklınızda tutarak, desteklenmeyen bölge çiftleri arasında DR 'yi yapılandırmak için bu yöntemin kullanılması önerilmez.
@@ -96,33 +96,33 @@ Mobility hizmeti, çoğaltmak istediğiniz her bir sunucuda yüklü olmalıdır.
 
      Kaynak VM yapılandırmasına bağlı olarak, sizin için uygun olan en sık kullanılan ağ kaynaklarını oluşturmak için lütfen aşağıdaki belgelere bakın.
 
-    - [Ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer)
+    - [Ağ güvenlik grupları](../virtual-network/manage-network-security-group.md)
+    - [Yük dengeleyiciler](../load-balancer/index.yml)
     - [Genel IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    Diğer ağ bileşenleri için ağ [belgelerine](https://docs.microsoft.com/azure/?pivot=products&panel=network)bakın.
+    Diğer ağ bileşenleri için ağ [belgelerine](../index.yml?pivot=products&panel=network)bakın.
 
-4. Hedef bölgede son kesmeyi gerçekleştirmeden önce yapılandırmayı test etmek isterseniz, hedef bölgede el ile [bir üretim dışı ağ oluşturun](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) . Bu işlem, üretimde en az girişim oluşturur ve önerilir.
+4. Hedef bölgede son kesmeyi gerçekleştirmeden önce yapılandırmayı test etmek isterseniz, hedef bölgede el ile [bir üretim dışı ağ oluşturun](../virtual-network/quick-create-portal.md) . Bu işlem, üretimde en az girişim oluşturur ve önerilir.
 
 ## <a name="copy-data-to-the-target-region"></a>Hedef bölgeye veri kopyalama
 Aşağıdaki adımlar, verileri hedef bölgeye kopyalamak için Azure Site Recovery nasıl kullanacağınızı yönlendirecektir.
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kaynak bölgesi dışında herhangi bir bölgede kasayı oluşturun.
 
-1. [Azure Portal](https://portal.azure.com) > **Kurtarma hizmetlerinde**oturum açın.
-2. **Kaynak** > **yönetimi araçları** > **yedeklemesi ve Site Recovery**oluştur ' a tıklayın.
+1. [Azure Portal](https://portal.azure.com)  >  **Kurtarma hizmetlerinde**oturum açın.
+2. **Kaynak**  >  **yönetimi araçları**  >  **yedeklemesi ve Site Recovery**oluştur ' a tıklayın.
 3. **Ad** bölümünde **ContosoVMVault** kolay adını belirtin. Birden çok tane varsa. abonelik, uygun olanı seçin.
 4. Bir **ContosoRG** kaynak grubu oluşturun.
 5. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
-6. Kurtarma Hizmetleri kasalarında **genel bakış** > **ConsotoVMVault** > **+ Çoğalt** ' a tıklayın.
-7. **Azure** > için**sanallaştırılmamış/diğer**' i seçin.
+6. Kurtarma Hizmetleri kasalarında **genel bakış**  >  **ConsotoVMVault**  >  **+ Çoğalt** ' a tıklayın.
+7. **Azure için**  >  **sanallaştırılmamış/diğer**' i seçin.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>VM 'Leri bulacak yapılandırma sunucusunu ayarlayın.
 
 
 Yapılandırma sunucusunu ayarlayın, kasaya kaydedin ve VM 'Leri bulun.
 
-1.  > **Altyapı** **Site Recovery** > **kaynağı**hazırlama Site Recovery ' ye tıklayın.
+1. **Site Recovery**  >  **Altyapı**  >  **kaynağı**hazırlama Site Recovery ' ye tıklayın.
 2. Bir yapılandırma sunucunuz yoksa **+ yapılandırma sunucusu**' na tıklayın.
 3. **Sunucu Ekle**' de, **sunucu türü**' nde **Configuration Server** ' ın göründüğünden emin olun.
 4. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
@@ -136,7 +136,7 @@ Yapılandırma sunucusunu ayarlayın, kasaya kaydedin ve VM 'Leri bulun.
 Başlamadan önce aşağıdakileri yapın: 
 
 #### <a name="verify-time-accuracy"></a>Zaman doğruluğunu doğrulama
-Yapılandırma sunucusu makinesinde, sistem saatinin bir [saat sunucusuyla](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)eşitlendiğinden emin olun. Eşleşmelidir. Ön veya arka planda 15 dakika ise, kurulum başarısız olabilir.
+Yapılandırma sunucusu makinesinde, sistem saatinin bir [saat sunucusuyla](/windows-server/networking/windows-time-service/windows-time-service-top)eşitlendiğinden emin olun. Eşleşmelidir. Ön veya arka planda 15 dakika ise, kurulum başarısız olabilir.
 
 #### <a name="verify-connectivity"></a>Bağlantıyı doğrulama
 Makinenin ortamınıza bağlı olarak bu URL 'Lere erişebildiğinizden emin olun: 
@@ -153,13 +153,13 @@ Yapılandırma sunucusunu yüklemek için Birleşik kurulumu yerel yönetici ola
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Kayıt tamamlandıktan sonra, yapılandırma sunucusu kasadaki **Ayarlar** > **sunucular** sayfasında görüntülenir.
+Kayıt tamamlandıktan sonra, yapılandırma sunucusu kasadaki **Ayarlar**  >  **sunucular** sayfasında görüntülenir.
 
 ### <a name="configure-target-settings-for-replication"></a>Çoğaltma için hedef ayarlarını yapılandırma
 
 Hedef kaynaklarını seçin ve doğrulayın.
 
-1. **Altyapı** > **hedefini**hazırla ' ya tıklayın ve kullanmak istediğiniz Azure aboneliğini seçin.
+1. **Altyapı hedefini hazırla**' ya tıklayın  >  **Target**ve kullanmak istediğiniz Azure aboneliğini seçin.
 2. Hedef dağıtım modelini belirtin.
 3. Site Recovery, bir veya birden çok uyumlu Azure depolama hesabınızın ve ağınızın olup olmadığını denetler.
 
@@ -168,7 +168,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 
 ### <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
 
-1. Yeni bir çoğaltma ilkesi oluşturmak için, **Site Recovery altyapı** > **çoğaltma ilkeleri** > **+ Çoğaltma İlkesi**' ne tıklayın.
+1. Yeni bir çoğaltma ilkesi oluşturmak için, **Site Recovery altyapı**  >  **çoğaltma ilkeleri**  >  **+ Çoğaltma İlkesi**' ne tıklayın.
 2. **Çoğaltma ilkesi oluştur** bölümünde bir ilke adı belirtin.
 3. **RPO eşiği** bölümünde kurtarma noktası hedefi (RPO) sınırını belirtin. Bu değer, veri kurtarma noktalarının ne sıklıkta oluşturulacağını belirtir. Devamlı çoğaltma bu sınırı aşarsa bir uyarı oluşturulur.
 4. **Kurtarma noktası bekletme** bölümünde, her kurtarma noktası için bekletme süresinin ne kadar olacağını (saat) belirtin. Çoğaltılan VM’ler bir aralıktaki herhangi bir noktaya kurtarılabilir. Premium depolama alanına çoğaltılan makineler için 24 saate, standart depolama için de 72 saate kadar bekletme desteklenir.
@@ -184,7 +184,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 - Site Recovery, çoğaltma etkinleştirildiğinde Mobility hizmetini yükleyecek.
 - Bir sunucu için çoğaltmayı etkinleştirdiğinizde, değişikliklerin etkili olması 15 dakika veya daha uzun sürebilir ve portalda görüntülenir.
 
-1. **Uygulama** > **kaynağını**Çoğalt ' a tıklayın.
+1. **Uygulama kaynağını Çoğalt**' a tıklayın  >  **Source**.
 2. **Kaynak** bölümünde yapılandırma sunucusunu seçin.
 3. **Makine türü**' nde **fiziksel makineler**' i seçin.
 4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Ardından **Tamam**'a tıklayın.
@@ -197,17 +197,17 @@ Hedef kaynaklarını seçin ve doğrulayın.
    > [!WARNING]
    > Taşımak istediğiniz Azure sanal makinesinin IP adresini girmeniz gerekir
 
-10. **Özellikler** > **yapılandırma özellikleri**' nde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
-11. **Çoğaltma ayarları** > **çoğaltma ayarlarını yapılandır**bölümünde doğru çoğaltma ilkesinin seçildiğini doğrulayın. 
+10. **Özellikler**  >  **yapılandırma özellikleri**' nde, Mobility hizmetini makineye otomatik olarak yüklemek için işlem sunucusu tarafından kullanılacak hesabı seçin.
+11. **Çoğaltma ayarları**  >  **çoğaltma ayarlarını yapılandır**bölümünde doğru çoğaltma ilkesinin seçildiğini doğrulayın. 
 12. **Çoğaltmayı Etkinleştir**’e tıklayın. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
 
 
-Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları** > **son iletişim**kutusunda bu süre için son keşfedilen zamanı kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
+Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları**  >  **son iletişim**kutusunda bu süre için son keşfedilen zamanı kontrol edebilirsiniz. Zamanlanan bulma süresini beklemeden makineler eklemek için yapılandırma sunucusunu vurgulayın (tıklamayın) ve **Yenile**' ye tıklayın.
 
 ## <a name="test-the-configuration"></a>Yapılandırmayı test etme
 
 
-1. Kasaya gidin, **Ayarlar** > **çoğaltılan öğeler**' de hedef bölgeye taşımak istediğiniz sanal makineye tıklayın, **+ Test yük devretmesi** simgesine tıklayın.
+1. Kasaya gidin, **Ayarlar**  >  **çoğaltılan öğeler**' de hedef bölgeye taşımak istediğiniz sanal makineye tıklayın, **+ Test yük devretmesi** simgesine tıklayın.
 2. **Yük Devretme Testi** bölümünde, yük devretmede kullanılması için bir kurtarma noktası seçin:
 
    - **En son işlenen**: VM’nin yükünü, Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına devreder. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük RTO sağlanılır (Kurtarma Süresi Hedefi)
@@ -225,9 +225,9 @@ Eklediğiniz sunucuları izlemek için, **yapılandırma sunucuları** > **son i
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Hedef bölgeye taşıma işlemini gerçekleştirin ve onaylayın.
 
-1. Kasaya gidin, **Ayarlar** > **çoğaltılan öğeler**bölümünde, sanal makineye tıklayın ve ardından **Yük devretme**' ye tıklayın.
+1. Kasaya gidin, **Ayarlar**  >  **çoğaltılan öğeler**bölümünde, sanal makineye tıklayın ve ardından **Yük devretme**' ye tıklayın.
 2. **Yük devretme** bölümünde **En geç** seçeneğini belirleyin. 
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz. 
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz. 
 4. İş tamamlandıktan sonra, sanal makinenin hedef Azure bölgesinde beklenen şekilde göründüğünden emin olun.
 5. **Çoğaltılan öğeler** bölümünde VM’ye sağ tıklayıp **Yürüt**’e tıklayın. Bu, hedef bölgeye taşıma işlemini tamamlar. Tamamlama işi tamamlanana kadar bekleyin.
 
