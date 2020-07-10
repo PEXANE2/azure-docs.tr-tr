@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c7efccf35ddb47bf349d9a21628e9445e37b7699
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211315"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166051"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
 
 Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) bir Synapse SQL havuzunu (veri ambarı) hızlıca oluşturun ve sorgulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -33,7 +33,7 @@ Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) bir Sy
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
 
@@ -51,7 +51,7 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
 3. **Temel bilgiler**için aboneliğinizi, kaynak grubunuzu, SQL havuzu adınızı ve sunucu adını sağlayın:
 
-   | Ayar | Önerilen değer | Description |
+   | Ayar | Önerilen değer | Açıklama |
    | :------ | :-------------- | :---------- |
    | **Abonelik** | Aboneliğiniz | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
    | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
@@ -70,7 +70,7 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
     ![mevcut verileri kullan seçeneğini belirleyin](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
 
-6. Azure SYNAPSE Analytics formunun temel bilgiler sekmesini tamamladığınıza göre, SQL havuzunu oluşturmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Sağlama birkaç dakika sürer.
+6. Azure SYNAPSE Analytics formunun temel bilgiler sekmesini tamamladığınıza göre, SQL havuzunu oluşturmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Sağlama işlemi birkaç dakika sürer.
 
    ![Gözden geçir + oluştur ' u seçin](./media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -95,7 +95,7 @@ Azure SYNAPSE hizmeti, sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu g�
 
    ![sunucu adını bulma](./media/create-data-warehouse-portal/find-server-name.png)
 
-4. **Güvenlik Duvarı ayarlarını göster**' i seçin.
+4. **Güvenlik duvarı ayarlarını göster**’i seçin.
 
    ![sunucu ayarları](./media/create-data-warehouse-portal/server-settings.png)
 
@@ -118,7 +118,7 @@ Artık bu IP adresini kullanarak sunucuya ve SQL havuzlarına bağlanabilirsiniz
 
 Azure portal sunucunuzun tam sunucu adını alın. Daha sonra sunucuya bağlanırken tam adı kullanırsınız.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Sol taraftaki menüden **Azure SYNAPSE Analytics** ' i seçin ve **Azure SYNAPSE Analytics** sayfasında hesabınızı seçin.
 
@@ -134,12 +134,12 @@ Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/s
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
-   | Ayar | Önerilen değer | Description |
+   | Ayar | Önerilen değer | Açıklama |
    | :------ | :-------------- | :---------- |
    | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
    | Sunucu adı | Tam sunucu adı | Örnek: **sqlpoolservername.Database.Windows.net**. |
    | Kimlik doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
-   | Oturum aç | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
+   | Oturum açma | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
    | Parola | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluştururken belirttiğiniz parola. |
    ||||
 
@@ -199,6 +199,10 @@ Artık ihtiyacınız olmayan kaynakları temizlemek için bu adımları izleyin.
 4. Oluşturduğunuz sunucuyu kaldırmak için önceki görüntüde **sqlpoolservername.Database.Windows.net** ' ı seçin ve **Sil**' i seçin. Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
 
 5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
+
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

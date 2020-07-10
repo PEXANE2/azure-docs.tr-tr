@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201710"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181344"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
 
@@ -24,7 +24,7 @@ Bu makale, SYNAPSE SQL havuzu şemanızda çoğaltılan tabloları tasarlamaya y
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, SQL havuzundaki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.Daha fazla bilgi için bkz. [mimari](massively-parallel-processing-mpp-architecture.md) makalesi.
 
@@ -149,9 +149,9 @@ Standart dizin oluşturma uygulamaları çoğaltılan tablolar için geçerlidir
 
 Örneğin, bu yük deseninin verileri dört kaynaktan yüklenir ve dört yeniden yüklemeyi çağırır.
 
-        Load from source 1.
+- Kaynak 1 ' den yükleme.
 - Select deyimleri yeniden oluşturma Tetikleyicileri 1.
-        Kaynak 2 ' den yükleme.
+- Kaynak 2 ' den yükleme.
 - Select bildiri Tetikleyicileri yeniden oluştur 2.
 - Kaynak 3 ' ten yükleyin.
 - Select deyimin tetikleyicisi yeniden oluştur 3.

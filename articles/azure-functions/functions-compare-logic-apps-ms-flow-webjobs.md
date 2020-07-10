@@ -4,14 +4,14 @@ description: 'Tümleştirme görevleri için optimize edilmiş Microsoft bulut h
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878145"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169876"
 ---
-# <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure 'da doğru tümleştirme ve otomasyon hizmetlerini seçme
+# <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure’da doğru tümleştirme ve otomasyon hizmetlerini seçme
 
 Bu makalede aşağıdaki Microsoft bulut hizmetleri karşılaştırılır:
 
@@ -54,10 +54,10 @@ Düzenleme oluşturduğunuzda, mantıksal uygulamalardan işlev çağırdığın
 |  | Dayanıklı İşlevler | Logic Apps |
 | --- | --- | --- |
 | **Geliştirme** | Koda öncelik veren (kesinlik temelli) | Tasarımcıya öncelik veren (bildirim temelli) |
-| **Bağlantı** | [Yaklaşık bir düzine bağlama türü](functions-triggers-bindings.md#supported-bindings), özel bağlamalar için kod yazma | [Bağlayıcılardan oluşan büyük koleksiyon](../connectors/apis-list.md), [B2B senaryoları için Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md), [özel bağlayıcı oluşturma](../logic-apps/custom-connector-overview.md) |
+| **Bağlantı** | [Bir düzine yerleşik bağlama türü hakkında](functions-triggers-bindings.md#supported-bindings), özel bağlamalar için kod yazın | [Büyük bağlayıcılar koleksiyonu](../connectors/apis-list.md), [B2B senaryoları için Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md), [özel bağlayıcılar oluşturma](../logic-apps/custom-connector-overview.md) |
 | **Eylemler** | Her etkinlik bir Azure işlevidir; eylem işlevleri için kod yazma |[Hazır eylemlerden oluşan büyük koleksiyon](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **İzleme** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure izleyici günlükleri](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| **Yönetim** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure portalı](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| **Yönetim** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | **Yürütme bağlamı** | [Yerel olarak](functions-runtime-overview.md) veya bulutta çalışabilir | Yalnızca bulutta çalışır|
 
 <a name="function"></a>
@@ -78,13 +78,13 @@ Azure İşlevleri, WebJobs SDK’da derlendiğinden diğer Azure hizmetlerine y�
 
 |  | İşlevler | WebJobs SDK ile WebJobs |
 | --- | --- | --- |
-|[Otomatik ölçeklendirme](functions-scale.md#how-the-consumption-and-premium-plans-work) ile [sunucusuz uygulama modeli](https://azure.microsoft.com/solutions/serverless/)|✔||
-|[Tarayıcıda geliştirme ve test etme](functions-create-first-azure-function.md) |✔||
-|[Kullanım başına ödeme fiyatlandırması](functions-scale.md#consumption-plan)|✔||
-|[Logic Apps ile tümleştirme](functions-twitter-email.md)|✔||
-| Tetikleyici olayları |[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dosya sistemi](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Desteklenen diller  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
-|Paket yöneticileri|NPM ve NuGet|NuGet<sup>2</sup>|
+|**[Otomatik ölçeklendirmeyle](functions-scale.md#how-the-consumption-and-premium-plans-work) [sunucusuz uygulama modeli](https://azure.microsoft.com/solutions/serverless/)**|✔||
+|**[Tarayıcıda geliştirin ve test edin](functions-create-first-azure-function.md)** |✔||
+|**[Kullanım başına ödeme fiyatlandırması](functions-scale.md#consumption-plan)**|✔||
+|**[Logic Apps ile tümleştirme](functions-twitter-email.md)**|✔||
+| **Tetikleyici olayları** |[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dosya sistemi](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| **Desteklenen diller**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
+|**Paket yöneticileri**|NPM ve NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> Web Işleri (WEBJOBS SDK olmadan) C#, Java, JavaScript, Bash,. cmd,. bat, POWERSHELL, php, TypeScript, Python ve daha fazlasını destekler. Bu kapsamlı bir liste değildir. WebJob, App Service korumalı alanında çalıştırılabilen herhangi bir programı veya betiği çalıştırabilir.
 

@@ -8,11 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027214"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143897"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure sanal WAN hakkında
 
@@ -57,7 +58,7 @@ Uçtan uca sanal WAN'yi yapılandırmak için şu kaynakları oluşturursunuz:
 
 * **Hub sanal ağ bağlantısı:** Hub'ı sorunsuzca sanal ağınıza bağlamak için bir hub sanal ağ bağlantı kaynağı kullanılır.
 
-* **(Önizleme) hub 'Dan hub 'a bağlantı** -hub 'ların hepsi bır sanal WAN 'da birbirlerine bağlanır. Bu, bir yerel hub 'a bağlı bir dalın, kullanıcının veya VNet 'in bağlı hub 'ların tam ağ mimarisini kullanarak başka bir dalla veya VNet ile iletişim kurabildiğini gösterir. Ayrıca, hub 'dan hub 'a bağlı çerçeveyi kullanarak sanal hub 'dan ve hub 'daki VNET 'lerde VNET 'ler arasında VNET 'ler de bağlayabilirsiniz.
+* **Hub-hub bağlantısı:** Hub 'ların hepsi sanal bir WAN 'da birbirlerine bağlanır. Bu, bir yerel hub 'a bağlı bir dalın, kullanıcının veya VNet 'in bağlı hub 'ların tam ağ mimarisini kullanarak başka bir dalla veya VNet ile iletişim kurabildiğini gösterir. Ayrıca, hub 'dan hub 'a bağlı çerçeveyi kullanarak sanal hub 'dan ve hub 'daki VNET 'lerde VNET 'ler arasında VNET 'ler de bağlayabilirsiniz.
 
 * **Hub rota tablosu:** Bir sanal hub rotası oluşturarak rotayı sanal hub rota tablosuna uygulayabilirsiniz. Sanal hub rota tablosuna birden fazla rota uygulayabilirsiniz.
 

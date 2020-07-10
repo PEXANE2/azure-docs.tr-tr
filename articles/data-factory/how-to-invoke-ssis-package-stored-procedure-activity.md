@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 07/09/2020
 ms.author: sawinark
-ms.openlocfilehash: 95f29331c723e584cdecdd27a714f22377dfd26d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7729318e6121b0072546b8e111a8b782e95906d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253588"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183435"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory'de Saklı Yordam etkinliğiyle bir SSIS paketi çalıştırma
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, bir Azure Data Factory Işlem hattındaki bir SSIS paketinin saklı yordam etkinliği kullanılarak nasıl çalıştırılacağı açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
 Bu makaledeki izlenecek yol, SSIS kataloğunu barındırmak için Azure SQL veritabanı 'nı kullanır. Azure SQL yönetilen örneği de kullanabilirsiniz.
@@ -41,7 +41,7 @@ Bu bölümde, bir SSIS paketini çağıran saklı yordam etkinliği ile Data Fac
 İlk adım Azure portal kullanarak bir veri fabrikası oluşturmaktır. 
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. [Azure portalına](https://portal.azure.com) gidin. 
+2. [Azure Portal](https://portal.azure.com)gidin. 
 3. Soldaki menüde **Yeni**, **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
    
    ![Yeni->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
@@ -62,7 +62,7 @@ Bu bölümde, bir SSIS paketini çağıran saklı yordam etkinliği ile Data Fac
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca Data Factory tarafından desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları (Azure Depolama, Azure SQL Veritabanı, vb.) ve işlemler (HDInsight, vb.) başka konumlarda olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**'a tıklayın.
+7. **Oluştur**’a tıklayın.
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
      ![veri fabrikası dağıtılıyor kutucuğu](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -97,7 +97,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
         ![Azure SQL Veritabanı bağlı hizmeti](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. Özellikler penceresinde, **SQL hesabı** sekmesinden **saklı yordam** sekmesine geçin ve aşağıdaki adımları uygulayın: 
 
-    1. **Düzenle**' yi seçin. 
+    1. **Düzenle**’yi seçin. 
     2. **Saklı yordam adı** alanı için girin `sp_executesql` . 
     3. **Saklı yordam parametreleri** bölümünde **+ Yeni** ' ye tıklayın. 
     4. Parametrenin **adı** için **stmt**girin. 
@@ -116,7 +116,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
     ![İşlem hattını doğrulama](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Data Factory **Tümünü** Yayımla düğmesine tıklayarak ardışık düzeni yayımlayın. 
 
-    ![Yayımlama](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![Yayımla](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>İşlem hattını çalıştırma ve izleme
 Bu bölümde bir işlem hattı çalıştırması tetiklersiniz ve sonra bunu izleyebilirsiniz. 

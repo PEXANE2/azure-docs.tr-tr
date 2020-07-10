@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73242473"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171576"
 ---
 # <a name="event-schemas"></a>Olay şemaları
 
@@ -57,12 +55,12 @@ Tüm olaylar aşağıdaki en üst düzey verilere sahiptir:
 | Özellik | Tür | Gerekli | Açıklama |
 | -------- | ---- | ----------- |-----------
 | konu başlığı | dize | No | Yayımlandığı konuyla eşleşmelidir. Event Grid,, belirtilmemişse yayımlandığı konunun adı ile doldurulur. |
-| Konu | string | Yes | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Yes | Bu olay kaynağı için olay türü, örneğin BlobCreated. |
-| eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| subject | string | Evet | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Evet | Bu olay kaynağı için olay türü, örneğin BlobCreated. |
+| eventTime | string | Evet | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | ID | dize | No | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | nesne | No | Yayımlama varlığına özgü olay verilerini yakalamak için kullanılır. |
-| dataVersion | string | Yes | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| veriler | nesne | Hayır | Yayımlama varlığına özgü olay verilerini yakalamak için kullanılır. |
+| dataVersion | string | Evet | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | dize | No | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 ### <a name="example--eventgrid-schema-event"></a>Örnek — EventGrid şema olayı

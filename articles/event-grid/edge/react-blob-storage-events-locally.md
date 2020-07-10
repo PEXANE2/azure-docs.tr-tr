@@ -5,15 +5,14 @@ author: arduppal
 manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 12/13/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9389e0aff04baa18cb216f2a7ab6da42eb7031f2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77086610"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171440"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Öğretici: IoT Edge BLOB depolama olaylarına tepki verme (Önizleme)
 Bu makalede, Azure Blob depolama 'yı IoT modülü 'nde dağıtma işlemi gösterilmektedir. Bu, blob oluşturma ve BLOB silme hakkında olay göndermek için Event Grid yayımcı görevi gören Event Grid.  
@@ -38,7 +37,7 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge cihazınızı seçin
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Azure portalında](https://portal.azure.com) oturum açın
 1. IoT Hub gidin.
 1. **Otomatik cihaz yönetimi** bölümündeki menüden **IoT Edge** ' yi seçin. 
 1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
@@ -76,7 +75,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
         }
     ```    
 
- 1. **Kaydet** 'e tıklayın
+ 1. **Kaydet**’e tıklayın
  1. Azure Event Grid abone modülünü birlikte dağıtmadan önce eklemek için sonraki bölüme geçin.
 
     >[!IMPORTANT]
@@ -96,7 +95,7 @@ Bu bölümde, olayların sunulabileceği bir olay işleyicisi olarak görev yapa
    * **Ad**: abone
    * **Görüntü URI 'si**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Kapsayıcı oluşturma seçenekleri**: yok
-1. **Kaydet** 'e tıklayın
+1. **Kaydet**’e tıklayın
 1. Azure Blob depolama modülünü eklemek için sonraki bölüme geçin
 
 ## <a name="deploy-azure-blob-storage-module"></a>Azure Blob depolama modülünü dağıtma
@@ -147,7 +146,7 @@ Bu bölümde, Event Grid yayımcı yayımlama blobu oluşturma ve silinen olayla
      - Linux kapsayıcıları için, **My-Volume:/blobroot**
      - Windows kapsayıcıları için,**My-Volume: C:/BlobRoot**
 
-5. **Kaydet** 'e tıklayın
+5. **Kaydet**’e tıklayın
 6. Yönlendirmeler bölümüne devam etmek için **İleri** 'ye tıklayın
 
     > [!NOTE]
@@ -328,8 +327,8 @@ Desteklenen olay özelliklerinin listesi ve bunların türleri ve açıklamalar�
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
 | veriler | nesne | BLOB depolama olay verileri. |
@@ -340,7 +339,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| API | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve`PutBlockList`</li><li>BlobDeleted-izin verilen değerler `DeleteBlob` , `DeleteAfterUpload` ve `AutoDelete` . <p>`DeleteAfterUpload`DeleteAfterUpload istenen özelliği true olarak ayarlandığından, blob otomatik olarak silindiğinde olay oluşturulur. </p><p>`AutoDelete`Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde olay oluşturulur.</p></li></ul>|
+| api | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve`PutBlockList`</li><li>BlobDeleted-izin verilen değerler `DeleteBlob` , `DeleteAfterUpload` ve `AutoDelete` . <p>`DeleteAfterUpload`DeleteAfterUpload istenen özelliği true olarak ayarlandığından, blob otomatik olarak silindiğinde olay oluşturulur. </p><p>`AutoDelete`Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde olay oluşturulur.</p></li></ul>|
 | Clientrequestıd 'ye sahip | string | depolama API 'SI işlemi için istemci tarafından sağlanmış bir istek KIMLIĞI. Bu KIMLIK, günlüklerdeki "istemci-istek-kimliği" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve "x-MS-Client-Request-ID" üst bilgisi kullanılarak istemci isteklerinde sağlanabilirler. Ayrıntılar için bkz. [günlük biçimi](/rest/api/storageservices/storage-analytics-log-format). |
 | No | string | Depolama API 'SI işlemi için hizmet tarafından oluşturulan istek KIMLIĞI. , Günlüklerdeki "istek-kimliği-üst bilgi" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve ' x-MS-Request-id ' üst bilgisinde API çağrısını başlatma işleminden döndürülür. [Günlük biçimine](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)bakın. |
 | Özelliği | string | İşlemleri koşullu olarak gerçekleştirmek için kullanabileceğiniz değer. |

@@ -6,14 +6,14 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75c6f8ec8410ff90b3da4fb6a50c9ef8ba7d1618
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196367"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184631"
 ---
-# <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
+# <a name="azure-cache-for-redis"></a>Redis için Azure Cache
 
 Redsıs için Azure önbelleği, açık kaynaklı yazılım [redin](https://redis.io/)temel alınarak bellek içi veri deposu sağlar. Reddir, önbellek olarak kullanıldığında, yoğun olarak arka uç veri depolarında çalışan sistemlerin performansını ve ölçeklenebilirliğini geliştirir. Sık erişilen veriler uygulamaya yakın olan hızlı depolamaya kopyalanarak performans artırıldı. Redin için Azure Cache ile, bu hızlı depolama, diskten bir veritabanı tarafından yüklenmesi yerine bellek içinde bulunur.
 
@@ -40,7 +40,7 @@ Redo için Azure Cache aşağıdaki katmanlarda kullanılabilir:
 | Katman | Açıklama |
 |---|---|
 Temel | Tek düğümlü bir önbellek. Bu katman birden çok bellek boyutunu (250 MB-53 GB) destekler ve geliştirme/test ve kritik olmayan iş yükleri için idealdir. Temel katmanda hizmet düzeyi sözleşmesi (SLA) yoktur |
-| Standart | Azure tarafından yüksek kullanılabilirliğe sahip bir SLA ile yönetilen, birincil/ikincil ve yapılandırma için çoğaltılan bir önbellek (% 99,9) |
+| Standart | Yüksek kullanılabilirlik SLA 'Sı ile Azure tarafından yönetilen iki düğümlü, birincil/çoğaltma, yapılandırma içindeki çoğaltılan önbellek (% 99,9) |
 | Premium | Premium katman, kurumsal olmaya yönelik katmandır. Premium katmanı Önbellekler daha fazla özelliği destekler ve düşük gecikmeyle daha yüksek aktarım hızına sahiptir. Premium katmanındaki önbellekler, Temel veya Standart Katmanına kıyasla daha iyi performans sağlayan daha güçlü donanımlara dağıtılır. Bu avantaj, aynı boyuttaki bir önbellek için üretilen iş hızının Standart katmana kıyasla Premium 'da daha yüksek olacağı anlamına gelir. |
 
 > [!TIP]
@@ -71,6 +71,6 @@ Oluşturulduktan sonra önbelleğinizi daha yüksek bir katmana ölçeklendirebi
 * [ASP.NET Web uygulaması hızlı başlangıç](cache-web-app-howto.md) Redsıs için Azure önbelleği kullanan basit bir ASP.NET Web uygulaması oluşturun.
 * [.Net hızlı başlangıç](cache-dotnet-how-to-use-azure-redis-cache.md) Redsıs için Azure önbelleği kullanan bir .NET uygulaması oluşturun.
 * [.NET Core hızlı başlangıç](cache-dotnet-core-quickstart.md) Redsıs için Azure önbelleği kullanan bir .NET Core uygulaması oluşturun.
-* [Node. js hızlı başlangıç](cache-nodejs-get-started.md) Redsıs için Azure önbelleği kullanan basit bir Node. js uygulaması oluşturun.
+* [Hızlı başlangıçNode.js](cache-nodejs-get-started.md) Redsıs için Azure önbelleği kullanan basit bir Node.js uygulaması oluşturun.
 * [Java hızlı başlangıç](cache-java-get-started.md) Redsıs için Azure önbelleği kullanan basit bir Java uygulaması oluşturun.
 * [Python hızlı başlangıç](cache-python-get-started.md) Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturun.

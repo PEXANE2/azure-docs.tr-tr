@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450664"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170267"
 ---
 # <a name="train-pytorch-model"></a>PyTorch Modelini eğitme
 
@@ -26,7 +27,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 2. İşlem hattına **Pytorch model** modülünü ekleyin. Bu modülü **model eğitimi** kategorisi altında bulabilirsiniz. **Eğit**' i genişletin ve ardından **Train Pytorch Model**
 
    > [!NOTE]
-   > **Pytorch model modülünü eğitme** yalnızca **GPU** türü işlem sırasında çalıştırılabilir; Aksi takdirde, işlem hattı başarısız olur. Modülün sağ bölmesinde, **diğer işlem hedefini kullan**' ı seçerek belirli bir modül için işlem seçebilirsiniz.
+   > **Pytorch model modülünü eğitme** , büyük veri kümesi için **GPU** türü hesaplama üzerinde daha iyi çalışır, aksi takdirde ardışık düzen başarısız olur. Modülün sağ bölmesinde, **diğer işlem hedefini kullan**' ı seçerek belirli bir modül için işlem seçebilirsiniz.
 
 3.  Sol girişte, eğitimli olmayan bir model ekleyin. Eğitim veri kümesini ve doğrulama veri kümesini, **Pytorch modelini eğitme**ve sağ taraftaki girişe iliştirin.
 
@@ -57,7 +58,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 ## <a name="technical-notes"></a>Teknik notlar
 ###  <a name="expected-inputs"></a>Beklenen girişler  
 
-| Name               | Tür                    | Açıklama                              |
+| Ad               | Tür                    | Açıklama                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Eğitilen model    | Untraınedmodeldirectory | Eğitilen model, pytorch gerektir         |
 | Eğitim veri kümesi   | ImageDirectory          | Eğitim veri kümesi                         |
@@ -65,7 +66,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Name          | Aralık            | Tür    | Varsayılan | Açıklama                              |
+| Ad          | Aralık            | Tür    | Varsayılan | Açıklama                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Dönemler        | >0               | Tamsayı | 5       | Etiket veya sonuç sütununu içeren sütunu seçin |
 | Toplu iş boyutu    | >0               | Tamsayı | 16      | Bir toplu işte eğiten örnek sayısı   |
@@ -75,7 +76,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 
 ###  <a name="outputs"></a>Çıkışlar  
 
-| Name          | Tür           | Açıklama   |
+| Ad          | Tür           | Açıklama   |
 | ------------- | -------------- | ------------- |
 | Eğitilen model | ModelDirectory | Eğitilen model |
 

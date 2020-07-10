@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2d16bdca18b7fc0afab2a3deb325d1a75be3bb8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834637"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185186"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Birden çok VM için güncelleştirmesini yönetme
 
-Windows ve Linux sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Azure Otomasyonu Güncelleştirme Yönetimi kullanabilirsiniz. [Azure Otomasyonu](automation-offering-get-started.md) hesabınızdan şunları yapabilirsiniz:
+Windows ve Linux sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Azure Otomasyonu Güncelleştirme Yönetimi kullanabilirsiniz. [Azure Otomasyonu](./index.yml) hesabınızdan şunları yapabilirsiniz:
 
 - Güncelleştirme yönetimi için VM 'Leri etkinleştirin.
 - Kullanılabilir güncelleştirmelerin durumunu değerlendirme.
@@ -22,7 +23,7 @@ Windows ve Linux sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme
 
 Güncelleştirme Yönetimi sistem gereksinimleri hakkında bilgi edinmek için bkz. [güncelleştirme yönetimi istemci gereksinimleri](automation-update-management.md#client-requirements).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Desteklenen işletim sistemlerinden birine sahip bir VM veya bilgisayar.
 * Güncelleştirme Yönetimi için etkinleştirilen Linux VM 'Leri için bir güncelleştirme deposuna erişim.
@@ -73,7 +74,7 @@ VM 'Ler ve bilgisayarlara yüklenen aracılar güncelleştirmeler hakkında veri
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Destekleniyor | Açıklama |
+| Bağlı kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
 | Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5033d19de2321e0dfd3b6d89d2da3306b1723bd0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745155"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146597"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarındaki yenilikler nelerdir?
 
@@ -27,6 +27,7 @@ Azure Web uygulaması güvenlik duvarı sürekli olarak güncelleştirilir. En s
 
 |Özellik  |Açıklama  |Eklenme tarihi  |
 |---------|---------|---------|
+|Site başına ilke GA| Site başına ilke artık genel kullanıma sunulmuştur. | Temmuz 2020 |
 |Bot azaltma RuleSet (Önizleme)|Seçtiğiniz yönettiğiniz RuleSet 'in yanı sıra bir bot Azaltma kuralı kümesini etkinleştirebilirsiniz. | Kasım 2019 |
 |GeoDB tümleştirmesi (Önizleme)|Artık trafiği ülkeye/bölgeye göre sınırlayan özel kurallar oluşturabilirsiniz. | Kasım 2019 |
 |Dakikada WAF-site/URI ilkesi (Önizleme)|WAF-v2 artık dinleyicilerine bir ilke uygulanmasını ve yol tabanlı kuralları desteklemektedir. Bkz. [WAF Ilkesi oluşturma](create-waf-policy-ag.md). | Kasım 2019 |

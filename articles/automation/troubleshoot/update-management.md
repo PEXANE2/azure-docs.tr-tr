@@ -5,11 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801895"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183176"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -52,7 +53,7 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 
 ### <a name="issue"></a>Sorun
 
-Eski güncelleştirmeler, yenisiyle değiştirilseler bile bir Otomasyon hesabı için eksik olarak görünür. Aynı güvenlik açığını düzelten sonraki bir güncelleştirme mevcut olduğundan, yenisiyle değiştirilen bir güncelleştirme, yüklemenize gerek kalmaz. Güncelleştirme Yönetimi, yenisiyle değiştirilen güncelleştirmeyi yoksayar ve yerine geçen güncelleştirmenin yerine uygulanabilir değildir. İlgili bir sorun hakkında daha fazla bilgi için bkz. [Update 'in yerini almıştır](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+Eski güncelleştirmeler, yenisiyle değiştirilseler bile bir Otomasyon hesabı için eksik olarak görünür. Aynı güvenlik açığını düzelten sonraki bir güncelleştirme mevcut olduğundan, yenisiyle değiştirilen bir güncelleştirme, yüklemenize gerek kalmaz. Güncelleştirme Yönetimi, yenisiyle değiştirilen güncelleştirmeyi yoksayar ve yerine geçen güncelleştirmenin yerine uygulanabilir değildir. İlgili bir sorun hakkında daha fazla bilgi için bkz. [Update 'in yerini almıştır](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
 
 ### <a name="cause"></a>Nedeni
 
@@ -155,7 +156,7 @@ Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki ad
 
 4. Kaynak sağlayıcıları listesinden, Microsoft. Automation kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
 
-5. Listede yoksa, [kaynak sağlayıcısı kaydı hatalarını giderme](/azure/azure-resource-manager/resource-manager-register-provider-errors)adımlarını izleyerek Microsoft. Automation sağlayıcısını kaydedin.
+5. Listede yoksa, [kaynak sağlayıcısı kaydı hatalarını giderme](../../azure-resource-manager/templates/error-register-resource-provider.md)adımlarını izleyerek Microsoft. Automation sağlayıcısını kaydedin.
 
 ## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Senaryo: dinamik bir zamanlamaya sahip zamanlanmış güncelleştirme bazı makineler kaçırdı
 
@@ -177,7 +178,7 @@ Bu sorunun nedeni aşağıdakilerden biri olabilir:
 
 Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırılmamışsa, Bu abonelikteki makinelere ilişkin bilgileri sorgulayabilir veya alamazsınız. Abonelik kaydını doğrulamak için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)Azure hizmet listesine erişin.
+1. [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)Azure hizmet listesine erişin.
 
 2. **Tüm hizmetler**' i seçin ve ardından Genel hizmet grubundaki **abonelikler** ' i seçin. 
 
@@ -187,7 +188,7 @@ Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırılmamışsa, B
 
 5. Microsoft. Automation kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
 
-6. Listede yoksa, [kaynak sağlayıcısı kaydı hatalarını giderme](/azure/azure-resource-manager/resource-manager-register-provider-errors)adımlarını izleyerek Microsoft. Automation sağlayıcısını kaydedin.
+6. Listede yoksa, [kaynak sağlayıcısı kaydı hatalarını giderme](../../azure-resource-manager/templates/error-register-resource-provider.md)adımlarını izleyerek Microsoft. Automation sağlayıcısını kaydedin.
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Zamanlama yürütüldüğünde makineler kullanılamıyor veya doğru şekilde etiketlenmedi
 
@@ -195,9 +196,9 @@ Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırılmışsa, anc
 
 1. Azure portal Otomasyon hesabını açın ve **güncelleştirme yönetimi**' ı seçin.
 
-2. Güncelleştirme dağıtımının çalıştırıldığı zamanı tam olarak öğrenmek için [güncelleştirme yönetimi geçmişi](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) kontrol edin. 
+2. Güncelleştirme dağıtımının çalıştırıldığı zamanı tam olarak öğrenmek için [güncelleştirme yönetimi geçmişi](../manage-update-multi.md#view-results-of-an-update-deployment) kontrol edin. 
 
-3. Güncelleştirme Yönetimi tarafından kaçırıldığınıza şüphelendiğiniz makinelerde, [makine değişikliklerini bulmak](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)Için Azure Kaynak Grafiği 'NI (arg) kullanın. 
+3. Güncelleştirme Yönetimi tarafından kaçırıldığınıza şüphelendiğiniz makinelerde, [makine değişikliklerini bulmak](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details)Için Azure Kaynak Grafiği 'NI (arg) kullanın. 
 
 4. Güncelleştirme dağıtımının çalıştırılmasından önce, bir gün gibi önemli bir süre içinde değişiklikler arayın.
 
@@ -225,13 +226,13 @@ Bu sorunun olası nedenleri şunlardır:
 
 #### <a name="incorrect-access-on-selected-scopes"></a>Seçili kapsamlar üzerinde yanlış erişim
 
-Azure portal yalnızca belirli bir kapsamda yazma erişiminizin bulunduğu makineleri görüntüler. Kapsam için doğru erişiminiz yoksa, bkz. [öğretici: Azure KAYNAKLARıNA RBAC ve Azure Portal kullanarak Kullanıcı erişimi verme](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Azure portal yalnızca belirli bir kapsamda yazma erişiminizin bulunduğu makineleri görüntüler. Kapsam için doğru erişiminiz yoksa, bkz. [öğretici: Azure KAYNAKLARıNA RBAC ve Azure Portal kullanarak Kullanıcı erişimi verme](../../role-based-access-control/quickstart-assign-role-user-portal.md).
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>ARG sorgusu beklenen makineleri döndürmüyor
 
 Sorgularınızın doğru şekilde çalışıp çalışmadığını öğrenmek için aşağıdaki adımları izleyin.
 
-1. Azure portal içinde kaynak grafik Gezgini dikey penceresinde aşağıda gösterildiği gibi biçimlendirilen bir ARG sorgusu çalıştırın. Bu sorgu, Güncelleştirme Yönetimi içinde dinamik grubu oluştururken seçtiğiniz filtreleri taklit eder. Bkz. [güncelleştirme yönetimi dinamik grupları kullanma](https://docs.microsoft.com/azure/automation/automation-update-management-groups). 
+1. Azure portal içinde kaynak grafik Gezgini dikey penceresinde aşağıda gösterildiği gibi biçimlendirilen bir ARG sorgusu çalıştırın. Bu sorgu, Güncelleştirme Yönetimi içinde dinamik grubu oluştururken seçtiğiniz filtreleri taklit eder. Bkz. [güncelleştirme yönetimi dinamik grupları kullanma](../automation-update-management-groups.md). 
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -266,7 +267,7 @@ Makineler, bağımsız değişken sorgu sonuçlarında görünür, ancak yine de
 
 4. Karma çalışanın bu makine için mevcut olduğunu doğrulayın.
 
-5. Makine karma çalışan olarak ayarlanmamışsa, [karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatik hale](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)getirmeye yönelik yönergeleri kullanarak ayarlamalar yapın.
+5. Makine karma çalışan olarak ayarlanmamışsa, [karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatik hale](../automation-hybrid-runbook-worker.md)getirmeye yönelik yönergeleri kullanarak ayarlamalar yapın.
 
 6. Makineyi karma Runbook Worker grubuna ekleyin.
 
@@ -342,7 +343,7 @@ Bu hata, bir güncelleştirme dağıtımında yer alan başka bir kiracıda Azur
 
 ### <a name="resolution"></a>Çözüm
 
-Zamanlanmış bu öğeleri almak için aşağıdaki geçici çözümü kullanın. Bir zamanlama oluşturmak için [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) cmdlet 'ini parametresiyle birlikte kullanabilirsiniz `ForUpdateConfiguration` . Ardından [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet 'ini kullanın ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
+Zamanlanmış bu öğeleri almak için aşağıdaki geçici çözümü kullanın. Bir zamanlama oluşturmak için [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) cmdlet 'ini parametresiyle birlikte kullanabilirsiniz `ForUpdateConfiguration` . Ardından [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet 'ini kullanın ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -420,7 +421,7 @@ Windows 'da, güncelleştirmeler kullanılabilir duruma geldiğinde otomatik ola
 
 Güncelleştirme Yönetimi istemciler için, bu anahtarı 3: olarak ayarlamayı öneririz `auto download but do not auto install` .
 
-Daha fazla bilgi için bkz. [otomatik güncelleştirmeleri yapılandırma](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
+Daha fazla bilgi için bkz. [otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Senaryo: makine farklı bir hesaba zaten kayıtlı
 
@@ -574,9 +575,9 @@ Düzeltme eki uygulama sorununu çözemezseniz, **/var/opt/Microsoft/omsagent/Ru
 
 ### <a name="machines-dont-install-updates"></a>Makineler güncelleştirmeleri yüklemiyor
 
-Güncelleştirmeleri doğrudan makinede çalıştırmayı deneyin. Makine güncelleştirmeleri uygulayamıyorum, [sorun giderme kılavuzunda olası hataların listesine](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)bakın.
+Güncelleştirmeleri doğrudan makinede çalıştırmayı deneyin. Makine güncelleştirmeleri uygulayamıyorum, [sorun giderme kılavuzunda olası hataların listesine](#hresult)bakın.
 
-Güncelleştirmeler yerel olarak çalışıyorsa, [GÜNCELLEŞTIRME YÖNETIMI VM 'Yi kaldırma](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources)konusunda yer alan kılavuzu izleyerek aracıyı kaldırıp yeniden yüklemeyi deneyin.
+Güncelleştirmeler yerel olarak çalışıyorsa, [GÜNCELLEŞTIRME YÖNETIMI VM 'Yi kaldırma](../automation-remove-vms-from-update-management.md)konusunda yer alan kılavuzu izleyerek aracıyı kaldırıp yeniden yüklemeyi deneyin.
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Güncelleştirmelerin kullanılabildiğini biliyorum, ancak makinelerimde kullanılabilir olarak gösterilmiyorum
 
@@ -592,11 +593,11 @@ Güncelleştirmeler WSUS 'de onaylanmamışsa, bunlar yüklenmez. Aşağıdaki s
 
 ### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>Güncelleştirmeler yüklenmiş görünüyor ancak makinemde bulamıyorum
 
-Güncelleştirmeler genellikle başka güncelleştirmelerle değiştirilir. Daha fazla bilgi için, Windows Update sorun giderme kılavuzunda [güncelleştirme 'nin yerini almıştır](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) .
+Güncelleştirmeler genellikle başka güncelleştirmelerle değiştirilir. Daha fazla bilgi için, Windows Update sorun giderme kılavuzunda [güncelleştirme 'nin yerini almıştır](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) .
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Linux'da güncelleştirmeleri sınıflandırmaya göre yükleme
 
-Güncelleştirmeleri Linux'a sınıflandırmaya göre ("Kritik ve güvenlik güncelleştirmeleri") yüklemek, özellikle CentOS için önemli uyarılara tabidir. Bu sınırlamalar [güncelleştirme yönetimi genel bakış sayfasında](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)belgelenmiştir.
+Güncelleştirmeleri Linux'a sınıflandırmaya göre ("Kritik ve güvenlik güncelleştirmeleri") yüklemek, özellikle CentOS için önemli uyarılara tabidir. Bu sınırlamalar [güncelleştirme yönetimi genel bakış sayfasında](../automation-update-management.md#linux)belgelenmiştir.
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602, sürekli olarak eksik
 

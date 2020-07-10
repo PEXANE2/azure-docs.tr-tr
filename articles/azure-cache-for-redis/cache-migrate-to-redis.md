@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122692"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184795"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Yönetilen Önbellek Hizmeti’nden Redis için Azure Cache’ye Geçiş
 Azure Yönetilen Önbellek Hizmeti kullanan uygulamalarınızın redin için Azure önbelleğine geçirilmesi, önbelleğe alma uygulamanız tarafından kullanılan yönetilen önbellek hizmeti özelliklerine bağlı olarak uygulamanızda en az değişiklikle gerçekleştirilebilir. API 'Ler tamamen benzer değildir ve bir önbelleğe erişmek için Yönetilen Önbellek hizmetini kullanan mevcut kodunuzun çoğu, en az değişiklikle yeniden kullanılabilir. Bu makalede, yönetilen önbellek hizmeti uygulamalarınızı Redsıs için Azure önbelleği 'ni kullanmak üzere geçirmek için gerekli yapılandırma ve uygulama değişikliklerinin nasıl yapılacağı gösterilmektedir ve Yönetilen Önbellek Hizmeti önbelleğinin işlevlerini uygulamak için redin Azure Cache 'in bazı özelliklerinin nasıl kullanılabileceği gösterilmektedir.
@@ -39,7 +40,7 @@ Azure Yönetilen Önbellek Hizmeti ve Redsıs için Azure önbelleği benzerdir 
 | Yönetilen Önbellek Hizmeti özelliği | Yönetilen Önbellek hizmeti desteği | Redsıs desteği için Azure önbelleği |
 | --- | --- | --- |
 | Adlandırılmış önbellekler |Varsayılan bir önbellek yapılandırılır ve standart ve Premium önbellek tekliflerinde, isterseniz en fazla dokuz ek adlandırılmış önbellek yapılandırılabilir. |Redsıs için Azure önbelleğinde, adlandırılmış önbelleklere benzer bir işlevsellik uygulamak için kullanılabilecek yapılandırılabilir sayıda veritabanı (varsayılan değer 16) vardır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration). |
-| Yüksek Kullanılabilirlik |Standart ve Premium önbellek tekliflerindeki Önbellekteki öğeler için yüksek kullanılabilirlik sağlar. Bir hata nedeniyle öğeler kaybolursa, önbellekteki öğelerin yedek kopyaları hala kullanılabilir. İkincil önbelleğe yazma işlemleri zaman uyumlu olarak yapılır. |Yüksek kullanılabilirlik, iki düğümlü birincil/çoğaltma yapılandırmasına (bir Premium önbellekteki her parça birincil/çoğaltma çiftine sahiptir) sahip olan standart ve Premium önbellek teklifleriyle kullanılabilir. Çoğaltmaya yazma işlemleri zaman uyumsuz olarak yapılır. Daha fazla bilgi için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/). |
+| Yüksek Kullanılabilirlik |Standart ve Premium önbellek tekliflerindeki Önbellekteki öğeler için yüksek kullanılabilirlik sağlar. Bir hata nedeniyle öğeler kaybolursa, önbellekteki öğelerin yedek kopyaları hala kullanılabilir. Çoğaltma önbelleğine yazma işlemleri zaman uyumlu olarak yapılır. |Yüksek kullanılabilirlik, iki düğümlü birincil/çoğaltma yapılandırmasına (bir Premium önbellekteki her parça birincil/çoğaltma çiftine sahiptir) sahip olan standart ve Premium önbellek teklifleriyle kullanılabilir. Çoğaltmaya yazma işlemleri zaman uyumsuz olarak yapılır. Daha fazla bilgi için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/). |
 | Bildirimler |Adlandırılmış bir önbellekte çeşitli önbellek işlemleri gerçekleşince istemcilerin zaman uyumsuz bildirimler almasına izin verir. |İstemci uygulamaları, bildirimlere benzer bir işlevsellik elde etmek için Redsıs pub/Sub veya [keyspace bildirimlerini](cache-configure.md#keyspace-notifications-advanced-settings) kullanabilir. |
 | Yerel önbellek |Daha hızlı erişim için, önbelleğe alınmış nesnelerin bir kopyasını istemcide yerel olarak depolar. |İstemci uygulamalarının bu işlevselliği bir sözlük veya benzer bir veri yapısı kullanarak uygulaması gerekir. |
 | Çıkarma Ilkesi |Hiçbiri veya LRU. Varsayılan ilke LRU ' dır. |Redsıs için Azure Cache şu çıkarma ilkelerini destekler: geçici-LRU, AllKeys-LRU, volatile-Random, AllKeys-Random, volatile-TTL, noçıkarma. Varsayılan ilke geçici-LRU ' dır. Daha fazla bilgi için bkz. [varsayılan redsıs sunucu yapılandırması](cache-configure.md#default-redis-server-configuration). |

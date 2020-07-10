@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171559"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Öğretici: olayları ıothub 'e Ilet
 
@@ -27,7 +26,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kavramları anlamanız gere
 - [Event Grid kavramlar](concepts.md)
 - [IoT Edge hub 'ı](../../iot-edge/module-composition.md) 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 * **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
@@ -134,7 +133,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 Aşağıdaki gibi, ıothub 'e iletilmek üzere olay aboneliğinin olaylarını iletmek için Edge hub 'ın yolunu güncelleştirin:
 
-1. [Azure Portal](https://ms.portal.azure.com) oturum açın
+1. [Azure portalında](https://ms.portal.azure.com) oturum açın
 1. **IoT Hub**gidin.
 1. Menüden **IoT Edge** seçin
 1. Cihaz listesinden hedef cihazın KIMLIĞINI seçin.
@@ -146,7 +145,7 @@ Aşağıdaki gibi, ıothub 'e iletilmek üzere olay aboneliğinin olaylarını i
   "fromEventGridToIoTHub":"FROM /messages/modules/eventgridmodule/outputs/sampleSub4 INTO $upstream"
   ```
 
-  Örneğin,
+  Örneğin:
 
   ```json
   {

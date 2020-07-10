@@ -2,14 +2,16 @@
 title: Azure Active Directory'yi Azure Kubernetes Service ile tümleştirme
 description: Azure CLı 'yı kullanarak Azure Kubernetes Service (AKS) kümesi oluşturma ve Azure Active Directory etkin yapma hakkında bilgi edinin
 services: container-service
+author: TomGeske
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: 85441b53b22b4d33ee2ff967d777cc3267e171da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 0465c54df2095cff7647e974765e61fa9b9ff3e1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106110"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169468"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme
 
@@ -19,9 +21,9 @@ Bu makalede, gerekli Azure AD bileşenlerini oluşturma, ardından Azure AD öze
 
 Bu makalede kullanılan tam örnek betik için bkz. Azure [CLI örnekleri-Azure AD Ile AKS tümleştirmesi][complete-script].
 
-Aşağıdaki sınırlamalar geçerlidir:
+## <a name="the-following-limitations-apply"></a>Aşağıdaki sınırlamalar geçerlidir:
 
-- Azure AD yalnızca yeni, RBAC özellikli bir küme oluşturduğunuzda etkinleştirilebilir. Mevcut bir AKS kümesinde Azure AD 'yi etkinleştiremezsiniz.
+- Azure AD, yalnızca RBAC özellikli kümede etkinleştirilebilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

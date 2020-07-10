@@ -3,12 +3,12 @@ title: Event Grid kaynak olarak Azure Machine Learning
 description: Azure Event Grid Machine Learning Çalışma Alanı olaylar için belirtilen özellikleri açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102506"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181531"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Machine Learning
 
@@ -20,13 +20,13 @@ Bu makalede Machine Learning çalışma alanı olayları için özellikler ve ş
 
 Azure Machine Learning aşağıdaki olay türlerini yayar:
 
-| Olay türü | Description |
+| Olay türü | Açıklama |
 | ---------- | ----------- |
 | Microsoft. MachineLearningServices. ModelRegistered | Yeni bir model veya model sürümü başarıyla kaydettirilirse tetiklenir. |
 | Microsoft. MachineLearningServices. Modeldağıtıldı | Model (ler) bir uç noktaya başarıyla dağıtıldığında tetiklenir. |
 | Microsoft. MachineLearningServices. RunCompleted | Bir çalıştırma başarıyla tamamlandığında tetiklenir. |
 | Microsoft. MachineLearningServices. Datasetdriftalgılandı | Bir veri kümesi DRFT izleyici, DRFT algıladığında tetiklenir. |
-| Microsoft. MachineLearningServices. RunStatusChanged | Çalışma durumu ' başarısız ' olarak değiştiğinde tetiklenir. |
+| Microsoft. MachineLearningServices. RunStatusChanged | Çalışma durumu değiştiğinde tetiklenir. |
 
 ### <a name="the-contents-of-an-event-response"></a>Olay yanıtının içeriği
 
@@ -186,11 +186,11 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
 | veriler | nesne | BLOB depolama olay verileri. |
@@ -201,7 +201,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | ModelName | string | Kayıtlı olan modelin adı. |
 | ModelVersion | string | Kaydedilen modelin sürümü. |
@@ -210,7 +210,7 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. Modeldağıtıldı
 
-| Özellik | Tür | Description |
+| Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | ServiceName | string | Dağıtılan hizmetin adı. |
 | ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |

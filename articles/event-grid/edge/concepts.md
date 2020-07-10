@@ -5,22 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992554"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171746"
 ---
 # <a name="event-grid-concepts"></a>Event Grid kavramları
 
 Bu makalede Azure Event Grid temel kavramları açıklanmaktadır.
 
-## <a name="events"></a>Ekinlikler
+## <a name="events"></a>Olaylar
 
 Bir olay, sistemde gerçekleşen bir şeyi tam olarak açıklayan en düşük bilgi miktarıdır. Her olayda, olayın kaynağı, olayın gerçekleştiği süre ve benzersiz tanımlayıcı gibi yaygın bilgiler bulunur. Her olay, yalnızca belirli olay türüyle ilgili belirli bilgilere de sahiptir. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır.
 

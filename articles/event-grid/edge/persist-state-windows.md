@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77086616"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171474"
 ---
 # <a name="persist-state-in-windows"></a>Windows 'da durumu kalıcı yap
 
@@ -36,7 +35,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    Örneğin,
+    Örneğin:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -47,7 +46,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    Örneğin,
+    Örneğin:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -78,7 +77,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     1. *Kullanıcılar Için izinler*altında **Değiştir**' i seçin ve **Tamam**' ı seçin.
 1. Bu birimi bağlamak ve Azure portal Event Grid modülünü yeniden dağıtmak için **bağlamalar** kullanın
 
-   Örneğin,
+   Örneğin:
 
     ```json
         {
@@ -114,7 +113,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
    >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb**olmalıdır.
 
 
-    Örneğin,
+    Örneğin:
 
     ```json
     {
@@ -157,7 +156,7 @@ Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir v
    mkdir <your-directory-name-here>
    ```
 
-   Örneğin,
+   Örneğin:
 
    ```sh
    mkdir C:\myhostdir
@@ -177,7 +176,7 @@ Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir v
     >[!IMPORTANT]
     >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb**olmalıdır.
 
-    Örneğin,
+    Örneğin:
 
     ```json
     {

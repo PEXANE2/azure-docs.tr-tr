@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 598df2f0a1e9badebbb1bf8e7ec0f93ff98d55ce
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341784"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170573"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -67,7 +67,7 @@ Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Varsayılan olarak güvenli
 
 Standart Load Balancer, temel alınarak sıfır güvenli ağ güvenlik modelinde oluşturulmuştur. Varsayılan olarak güvenli Standart Load Balancer ve sanal ağınızın bir parçasıdır. Sanal ağ özel ve yalıtılmış bir ağ.  Bu, ağ güvenlik grupları tarafından açılmadığı müddetçe standart yük dengeleyiciler ve standart genel IP adreslerinin gelen akışlara kapalı olması anlamına gelir. NSG 'ler, izin verilen trafiğe açıkça izin vermek için kullanılır.  Sanal makine kaynağınızın bir alt ağda veya NIC 'inde bir NSG 'niz yoksa, trafiğin bu kaynağa erişmesine izin verilmez. NSG 'ler ve senaryonuz için nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
-Temel Load Balancer varsayılan olarak Internet 'e açıktır.
+Temel Load Balancer varsayılan olarak Internet 'e açıktır. Ayrıca, Load Balancer müşteri verilerini depolamaz.
 
 ## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA
 

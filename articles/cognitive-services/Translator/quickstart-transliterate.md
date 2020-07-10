@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 47580e45f030cd49d30a5a8cc3d9e1a2160357fc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 31d316635211d56207b2d612997938c2baaff02f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606537"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144241"
 ---
 # <a name="quickstart-use-the-translator-to-transliterate-text"></a>Hızlı başlangıç: metni alfabeye eklemek için çeviriciyi kullanın
 
 Bu hızlı başlangıçta, çeviriciyi REST API kullanarak metni bir betikten diğerine nasıl dönüştüreceğinizi öğreneceksiniz. Verilen örnekte Japonca, Latin alfabesine dönüştürülmektedir.
 
-Bu hızlı başlangıç, bir çevirmen kaynağı içeren bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+Bu hızlı başlangıç, bir çevirmen kaynağı içeren bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/transliterate-csharp.md)]

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e13d5f3421f3c0d4f3e14da29581ca585e7f9438
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536123"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145860"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, bir Java Web uygulamasını Microsoft Identity platfo
 
 Bu hızlı başlangıcı tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) oturum açma işlemlerini ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesaplarını kabul eder. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -52,11 +52,11 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->    - **Ad** bölümünde, örneğin `java-webapp`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
->    - **Kaydol**’u seçin.
+>    - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `java-webapp` .
+>    - **Kaydet**’i seçin.
 > 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
->    - **Web** platformu yapılandırmasını ekleyin.  Bunları `https://localhost:8080/msal4jsample/secure/aad` ve `https://localhost:8080/msal4jsample/graph/me` **yeniden yönlendirme URI 'leri**olarak ekleyin...
+>    - **Web** platformu yapılandırmasını ekleyin.  Bunları `https://localhost:8443/msal4jsample/secure/aad` ve `https://localhost:8443/msal4jsample/graph/me` **yeniden yönlendirme URI 'leri**olarak ekleyin...
 >    - **Kaydet**’i seçin.
 > 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
 >
@@ -70,7 +70,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > Bu hızlı başlangıçta çalışması için kod örneği için şunları yapmanız gerekir:
 >
-> 1. Yanıt URL 'Lerini ve `https://localhost:8080/msal4jsample/secure/aad` `https://localhost:8080/msal4jsample/graph/me`olarak ekleyin.
+> 1. Yanıt URL 'Lerini ve olarak ekleyin `https://localhost:8443/msal4jsample/secure/aad``https://localhost:8443/msal4jsample/graph/me`
 > 1. Bir Istemci gizli dizisi oluşturun.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
@@ -115,11 +115,11 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >    aad.clientId=Enter_the_Application_Id_here
 >    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 >    aad.secretKey=Enter_the_Client_Secret_Here
->    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
->    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.redirectUriSignin=https://localhost:8443/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
-> Konumlar:
+> Konum:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here`-Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &** .
@@ -149,11 +149,11 @@ Katıştırılmış yay önyükleme sunucusunu kullanarak doğrudan IDE 'nizden 
 
 ##### <a name="running-from-ide"></a>IDE 'den çalıştırma
 
-Web uygulamasını bir IDE 'den çalıştırıyorsanız, Çalıştır ' a tıklayın ve ardından projenin giriş sayfasına gidin. Bu örnek için, standart giriş sayfası URL 'sidir https://localhost:8080.
+Web uygulamasını bir IDE 'den çalıştırıyorsanız, Çalıştır ' a tıklayın ve ardından projenin giriş sayfasına gidin. Bu örnek için, standart giriş sayfası URL 'SIhttps://localhost:8443
 
 1. Ön sayfada, Azure Active Directory yeniden yönlendirmek için **oturum aç** düğmesini seçin ve kullanıcıdan kimlik bilgilerini girmesini isteyebilirsiniz.
 
-1. Kullanıcının kimliği doğrulandıktan sonra, yeniden yönlendirilir *https://localhost:8080/msal4jsample/secure/aad*. Bunlar artık oturum açırlar ve sayfada oturum açmış hesap hakkında bilgi gösterilir. Örnek kullanıcı arabirimi aşağıdaki düğmelere sahiptir:
+1. Kullanıcının kimliği doğrulandıktan sonra, yeniden yönlendirilir *https://localhost:8443/msal4jsample/secure/aad* . Bunlar artık oturum açırlar ve sayfada oturum açmış hesap hakkında bilgi gösterilir. Örnek kullanıcı arabirimi aşağıdaki düğmelere sahiptir:
     - *Oturumu*kapat: geçerli kullanıcıyı uygulamanın dışına imzalar ve bunları giriş sayfasına yönlendirir.
     - *Kullanıcı bilgilerini göster*: Microsoft Graph için bir belirteç alır ve Microsoft Graph çağırır, bu belirteç içeren bir istekle birlikte oturum açan kullanıcı hakkında temel bilgileri döndürür.
 
@@ -161,17 +161,8 @@ Web uygulamasını bir IDE 'den çalıştırıyorsanız, Çalıştır ' a tıkla
 
 Web örneğini Tomcat 'e dağıtmak istiyorsanız, kaynak kodunda birkaç değişiklik yapmanız gerekir.
 
-1. Açık MS-identity-Java-WebApp/Pod. xml
-    - Ekle `<name>msal-web-sample</name>` altında`<packaging>war</packaging>`
-    - Bağımlılık ekle:
-
-         ```xml
-         <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-          <scope>provided</scope>
-         </dependency>
-         ```
+1. Açık MS-Identity-Java-WebApp/pom.xml
+    - `<name>msal-web-sample</name>`Ekle altında`<packaging>war</packaging>`
 
 2. Open MS-identity-Java-WebApp/src/Main/Java/com. Microsoft. Azure. msalwebsample/MsalWebSampleApplication
 
@@ -199,13 +190,26 @@ Web örneğini Tomcat 'e dağıtmak istiyorsanız, kaynak kodunda birkaç deği�
     }
    ```
 
-3. Bir komut istemi açın, projenin kök klasörüne gidin ve şunu çalıştırın`mvn package`
-    - Bu,/targets `msal-web-sample-0.1.0.war` dizininizde bir dosya oluşturur.
-    - Bu dosyayı yeniden adlandır`ROOT.war`
+3.   Tomcat 'in varsayılan HTTP bağlantı noktası 8080 ' dir, ancak bağlantı noktası 8443 üzerinden HTTPS bağlantısı gereklidir. Bunu yapılandırmak için:
+        - Tomcat/conf/server.xml git
+        - `<connector>`Etiketi arayın ve var olan bağlayıcıyı ile değiştirin:
+        ```
+        <Connector
+                   protocol="org.apache.coyote.http11.Http11NioProtocol"
+                   port="8443" maxThreads="200"
+                   scheme="https" secure="true" SSLEnabled="true"
+                   keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
+                   clientAuth="false" sslProtocol="TLS"/>
+        ``` 
+       
+4. Bir komut istemi açın, bu örneğin kök klasörüne gidin (pom.xml dosyasının bulunduğu yer) ve `mvn package` Projeyi derlemek için çalıştırın
+    - Bu, `msal-web-sample-0.1.0.war` /targets dizininizde bir dosya oluşturur.
+    - Bu dosyayı yeniden adlandır`msal4jsample.war`
     - Bu war dosyasını Tomcat veya diğer bir J2EE kapsayıcı çözümünü kullanarak dağıtın.
-        - Tomcat kapsayıcısında dağıtım yapmak için,. war dosyasını Tomcat yüklemenizin altındaki webapps klasörüne kopyalayın ve ardından Tomcat sunucusunu başlatın.
+        - Dağıtmak için msal4jsample. war dosyasını `/webapps/` Tomcat yüklemenizin dizinine kopyalayın ve ardından Tomcat sunucusunu başlatın.
 
-Bu WAR, ' de https://localhost:8080/otomatik olarak barındırılır.
+5. Dağıtıldıktan sonra https://localhost:8443/msal4jsample tarayıcınıza gidin
+
 
 > [!IMPORTANT]
 > Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulaması Için sertifika kimlik bilgileri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
@@ -219,9 +223,9 @@ Bu WAR, ' de https://localhost:8080/otomatik olarak barındırılır.
 
 Java için MSAL (MSAL4J), kullanıcılara oturum açmak için kullanılan Java kitaplığı ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister.
 
-Uygulamanın Pod. xml (Maven) veya Build. Gradle (Gradle) dosyasında aşağıdaki değişiklikleri yaparak bağımlılıklarınızı yönetmek için Maven veya Gradle kullanarak uygulamanıza MSAL4J ekleyin.
+Uygulamanızın pom.xml (Maven) veya Build. Gradle (Gradle) dosyasında aşağıdaki değişiklikleri yaparak bağımlılıklarınızı yönetmek için Maven veya Gradle kullanarak uygulamanıza MSAL4J ekleyin.
 
-Pod. xml dosyasında:
+pom.xml:
 
 ```XML
 <dependency>

@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6e66dc05ac2b6e54a1be94576b8686390949145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562043"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171848"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Bilişsel Arama karmaşık veri türlerini modelleme
 
@@ -111,7 +111,7 @@ Serbest biçimli arama ifadeleri karmaşık türlerle beklenen şekilde çalış
 
 Birden çok hüküm ve işleçle sahip olduğunuzda sorgular daha fazla bilgi edinmiş olur ve bazı şartlar belirtilen alan adlarına sahiptir ve bu da [Lucene sözdizimi](query-lucene-syntax.md)ile mümkün olur. Örneğin, bu sorgu iki terimi ("Portland" ve "veya") adres alanının iki alt alanına göre eşleştirmeye çalışır:
 
-    search=Address/City:Portland AND Address/State:OR
+> `search=Address/City:Portland AND Address/State:OR`
 
 Bu gibi sorgular, filtrelerin aksine tam metin arama için *bağıntılı* değildir. Filtrelerde, karmaşık bir koleksiyonun alt alanları üzerinde bulunan sorgular, [ `any` veya `all` ](search-query-odata-collection-operators.md)içindeki Aralık değişkenleri kullanılarak bağıntılı. Yukarıdaki Lucene sorgusu, "Istanbul, Maine" ve "Istanbul, Oregon" içeren belgeleri, Oregon 'daki diğer şehirlerle birlikte döndürür. Bu durum her yan tümce tüm belgedeki alanının tüm değerlerine uygulandığı için, "geçerli alt belge" kavramı yoktur. Bunun hakkında daha fazla bilgi için bkz. [Azure bilişsel arama OData koleksiyon filtrelerini anlama](search-query-understand-collection-filters.md).
 
@@ -119,7 +119,7 @@ Bu gibi sorgular, filtrelerin aksine tam metin arama için *bağıntılı* deği
 
 `$select`Parametresi, arama sonuçlarında hangi alanların döndürüleceğini seçmek için kullanılır. Karmaşık bir alanın belirli alt alanlarını seçmek üzere bu parametreyi kullanmak için üst alanı ve alt alanı eğik çizgiyle () ayırarak dahil edin `/` .
 
-    $select=HotelName, Address/City, Rooms/BaseRate
+> `$select=HotelName, Address/City, Rooms/BaseRate`
 
 Arama sonuçlarında isterseniz, alanların dizinde alınabilir olarak işaretlenmesi gerekir. Yalnızca, alınabilir olarak işaretlenen alanlar bir `$select` bildirimde kullanılabilir.
 
@@ -143,11 +143,11 @@ Alanların belge başına tek bir değeri olduğunda, alanın basit bir alan olm
 
 Bir filtre ifadesinde karmaşık bir alanın alt alanlarına başvurabilirsiniz. Yalnızca oluşturma, sıralama ve alanları seçme için kullanılan aynı [OData yolu sözdizimini](query-odata-filter-orderby-syntax.md) kullanın. Örneğin, aşağıdaki filtre Kanada 'daki tüm oteller döndürür:
 
-    $filter=Address/Country eq 'Canada'
+> `$filter=Address/Country eq 'Canada'`
 
 Karmaşık bir koleksiyon alanını filtrelemek için [ `any` ve `all` işleçleriyle](search-query-odata-collection-operators.md)bir **lambda ifadesi** kullanabilirsiniz. Bu durumda, lambda ifadesinin **Aralık değişkeni** , alt alanları olan bir nesnedir. Standart OData yolu söz dizimi ile bu alt alanlara başvurabilirsiniz. Örneğin, aşağıdaki filtre en az bir lüks ve tüm içgörü olmayan odalar ile tüm oteller döndürür:
 
-    $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
+> `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
 En üst düzey basit alanlarda olduğu gibi, karmaşık alanların basit alt alanları, yalnızca **filtrelenebilir** özniteliği Dizin tanımında ayarlanmış olan filtrelere dahil edilebilir `true` . Daha fazla bilgi için [create INDEX API Reference](/rest/api/searchservice/create-index)bölümüne bakın.
 

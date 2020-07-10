@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: gelecaro
-ms.openlocfilehash: 6d7d1d261bce671396d539cb7ecb1ecc3d950662
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a1bc980f8334ca815a1805f33f3572cded4ba0ef
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980190"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156729"
 ---
 Bu kılavuzda, Linux için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="system-requirements"></a>Sistem Gereksinimleri
+## <a name="system-requirements"></a>Sistem gereksinimleri
 
 Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8)
 
@@ -24,7 +24,7 @@ Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8)
 Bu hızlı başlangıcı tamamlayabilmeniz için şunlar gerekir:
 
 * GCC
-* Go (1,13 veya üzeri)
+* [İkiliye git (1,13 veya üzeri)](https://golang.org/dl/)
 
 * Desteklenen Linux platformları, belirli kitaplıkların yüklü olmasını gerektirir ( `libssl` Güvenli Yuva Katmanı desteği ve `libasound2` ses desteği için). Bu kitaplıkların doğru sürümlerini yüklemek için gereken komutlar için aşağıdaki dağıtıma bakın.
 

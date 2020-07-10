@@ -9,11 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 32749037ac0abe3c55878c3adaaeff48183ae685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080408"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171916"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK sürüm 5 ' e yükseltme
 
@@ -47,7 +48,9 @@ NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yenid
 
 Derlemeniz başarısız olursa, aşağıdaki gibi bir yapı hatası görmeniz gerekir:
 
-    The name 'SuggesterSearchMode' does not exist in the current context
+```output
+The name 'SuggesterSearchMode' does not exist in the current context
+```
 
 Sonraki adım bu derleme hatasını düzeltemedi. Hataya neden olan ve nasıl düzeltileceğini gösteren Ayrıntılar için [sürüm 5 ' teki son değişikliklere](#ListOfChanges) bakın.
 

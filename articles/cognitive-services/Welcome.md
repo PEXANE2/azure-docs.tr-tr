@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f45cf27f427625571a58022c199391cac9a05bd2
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588301"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146931"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -27,7 +27,7 @@ Azure bilişsel hizmetler, geliştiricilerin doğrudan AI veya veri bilimi becer
 |:-----------|:------------------|
 |[Görüntü İşleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Görüntü İşleme")|Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar.|
 |[Özel Görüntü İşleme Hizmeti](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Özel Görüntü İşleme Hizmeti")|Özel Görüntü İşleme Hizmeti özel görüntü sınıflandırıcıları oluşturmanıza olanak sağlar.|
-|[Yüz Tanıma](https://docs.microsoft.com/azure/cognitive-services/face/ "Yüz Tanıma")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar.|
+|[Yüz](https://docs.microsoft.com/azure/cognitive-services/face/ "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar.|
 |[Form tanıyıcı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Tanıma") (Önizleme)|Form tanıyıcı, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlar ve ayıklar; ardından, özgün dosyadaki ilişkiler dahil olmak üzere yapılandırılmış verilerin çıktısını verir.|
 |[Mürekkep tanıyıcı](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Mürekkep Tanıma") (Önizleme)|Mürekkep tanıyıcı, dijital mürekkep konturu verilerini, şekilleri ve el yazısı içeriğini tanımanıza ve analiz etmenize ve tüm tanınan varlıklarla bir belge yapısını çıkışlamaya olanak tanır.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer, videonuzun öngörülerini ayıklamanızı sağlar.|
@@ -52,7 +52,7 @@ Azure bilişsel hizmetler, geliştiricilerin doğrudan AI veya veri bilimi becer
 |[LUSıS Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding hizmeti (LUSıS), uygulamanızın bir kişinin kendi sözcüklerini nasıl istediğini anlamasına olanak sağlar.|
 |[Soru-Cevap Oluşturucu](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "Soru-Cevap Oluşturucu")|Soru-Cevap Oluşturma yarı yapılandırılmış içeriklerden bir soru ve yanıt hizmeti oluşturmanızı sağlar.|
 |[Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Metin Analizi")|Metin Analizi, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar.|
-|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator")|Translator, neredeyse gerçek zamanlı olarak makine tabanlı metin çevirisi sağlar.|
+|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Çevirmen")|Translator, neredeyse gerçek zamanlı olarak makine tabanlı metin çevirisi sağlar.|
 
 
 ## <a name="search-apis"></a>API Arama
@@ -78,17 +78,13 @@ Azure bilişsel hizmetler, geliştiricilerin doğrudan AI veya veri bilimi becer
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator olası rahatsız edici, istenmeyen ve riskli içerik için izleme sağlar.|
 |[Kişiselleştirme](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Kişiselleştirme")|Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza göstermek için en iyi deneyimi seçmenize olanak sağlar.|
 
-## <a name="use-free-trials"></a>Ücretsiz denemeleri kullanın
-
-[Ücretsiz denemelerdeki kaydolmak için](https://azure.microsoft.com/try/cognitive-services/ "Kaydolma yardımı") yalnızca bir e-posta ve birkaç basit adım yer alır. Henüz yoksa bir Microsoft hesabı gerekir. İstenen her API için benzersiz bir anahtar çifti alacaksınız. İkincisi ise yalnızca bir yedek olur. Gizli anahtarları kimseyle paylaşmayın. Denemeler için bir hız limiti, saniye başına işlem ve aylık kullanım ucu vardır. İşlem yalnızca bir API çağrıdır. Kısıtlamaların kilidini açmak için ücretli katmanlara yükseltebilirsiniz.
-
 ## <a name="subscription-management"></a>Abonelik yönetimi
 
 Microsoft hesabınızla oturum açtıktan sonra, kullanmakta olduğunuz ürünleri, kalan kotayı ve aboneliğinize ek ürünler ekleme yeteneğini göstermek için [Aboneliklerim](https://www.microsoft.com/cognitive-services/subscriptions "Aboneliklerim") 'e erişebilirsiniz.
 
 ## <a name="upgrade-to-unlock-limits"></a>Kilit açma sınırlarına yükselt
 
-Tüm API 'Lerde kullanım ve verimlilik limitleri olan ücretsiz bir deneme planı vardır.  Ücretli bir teklif kullanarak ve Azure portal hizmeti dağıttığınızda uygun fiyatlandırma katmanı seçeneğini belirleyerek bu limitleri artırabilirsiniz. [Teklifler ve fiyatlandırma hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/cognitive-services/ "Teklifler ve fiyatlandırma"). Kredi kartı ve telefon numarası ile bir Azure abone hesabı ayarlamanız gerekir. Özel bir gereksinimiz varsa veya yalnızca satışlarla konuşmak istiyorsanız, en üstteki fiyatlandırma sayfasında "bizimle Iletişime geçin" düğmesine tıklayın.
+Tüm API 'Ler, kullanım ve verimlilik sınırlarına sahip olan ücretsiz bir katmana sahiptir.  Ücretli bir teklif kullanarak ve Azure portal hizmeti dağıttığınızda uygun fiyatlandırma katmanı seçeneğini belirleyerek bu limitleri artırabilirsiniz. [Teklifler ve fiyatlandırma hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/cognitive-services/ "Teklifler ve fiyatlandırma"). Kredi kartı ve telefon numarası ile bir Azure abone hesabı ayarlamanız gerekir. Özel bir gereksinimiz varsa veya yalnızca satışlarla konuşmak istiyorsanız, en üstteki fiyatlandırma sayfasında "bizimle Iletişime geçin" düğmesine tıklayın.
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 

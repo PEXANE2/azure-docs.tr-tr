@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3114c19ecff1a8ae70012592592078302d4a6222
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800032"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184064"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Resim Arama API'si hakkında sık sorulan sorular (SSS)
 
@@ -25,7 +25,7 @@ Azure 'da Microsoft bilişsel hizmetler için Bing Resim Arama API'si ilgili kav
 
 Bing Resim Arama API'si yanıtlarında aşağıdaki üstbilgiler meydana gelebilir.
 
-| `Attribute`         | `Description` |
+| Öznitelik           | Açıklama   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |Bing 'in kullanıcıya atadığı benzersiz KIMLIK |
 | `BingAPIs-Market`   |İsteği yerine getirmek için kullanılan Pazar |

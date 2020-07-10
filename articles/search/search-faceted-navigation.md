@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836099"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171950"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Bilişsel Arama çok yönlü gezintiyi uygulama
 
@@ -283,10 +284,12 @@ Arama için aday belgeler kümesini daraltmak ve bunları derecelendirmeden hari
 
 Model sonuçları, bir model terimiyle eşleşen arama sonuçlarında bulunan belgelerdir. Aşağıdaki örnekte, *bulut bilgi işlem*için arama sonuçlarında, 254 öğe de bir içerik türü olarak *iç belirtime* sahiptir. Öğelerin birbirini karşılıklı olarak dışlamalı olması gerekmez. Bir öğe her iki filtrenin ölçütlerine uyuyorsa, her birinde sayılır. Bu çoğaltma `Collection(Edm.String)` , genellikle belge etiketlemesini uygulamak için kullanılan alanlar üzerinde bir değer oluşturduğunuzda mümkündür.
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 Genel olarak, model sonuçlarının sürekli olarak çok büyük olduğunu fark ederseniz, kullanıcılara aramayı daraltmak için daha fazla seçenek sağlamak üzere daha fazla filtre eklemenizi öneririz.
 
@@ -344,7 +347,7 @@ Sayısal veriler için bir values listesi kullanabilirsiniz.  Bir `listPrice` al
 
 Önceki ekran görüntüsündeki gibi bir model aralığı belirtmek için bir değerler listesi kullanın:
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 Her Aralık, başlangıç noktası olarak 0, listeden bir bitiş noktası olarak bir değer ve daha sonra ayrı aralıklar oluşturmak için önceki aralığın kırpılandır. Azure Bilişsel Arama, bu şeyleri çok yönlü gezintinin bir parçası olarak yapar. Her aralığı yapılandırmak için kod yazmanız gerekmez.
 
