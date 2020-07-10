@@ -3,16 +3,16 @@ title: Azure EA VM ayrılmış örnekleri
 description: Bu makalede, sanal makine ayrılmış örnekleri için Azure rezervasyonlarının, kurumsal kaydınızla para tasarrufu yapmanıza nasıl yardımcı olabildiği özetlenmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b78abeaac3066839636918923636f4b7bdf9ee35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735430"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044864"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM ayrılmış örnekleri
 
@@ -83,9 +83,9 @@ Azure ayrılmış sanal makine örneklerini satın almak için Azure hibrit avan
 
 ### <a name="reserved-instance-billing"></a>Ayrılmış örnek faturalaması
 
-Kurumsal müşteriler için Azure ayrılmış sanal makine örnekleri parasal taahhüt ile satın alınır. Kaydınızda ayrılmış örnek satın alma işlemi için yeterli parasal taahhüt bakiyesi varsa, ilgili tutar parasal taahhüt bakiyenizden düşer ve satın alma işlemine ait bir fatura almazsınız.
+Kurumsal müşteriler için Azure ayrılmış sanal makine örnekleri Azure Ön Ödemesi ile satın alınır. Kaydınızda ayrılmış örnek satın alma işlemi için yeterli Azure Ön Ödeme bakiyesi varsa ilgili tutar Ön Ödeme bakiyenizden düşer ve satın alma işlemine ait bir fatura almazsınız.
 
-Azure EA müşterilerinin parasal taahhüdünü tükettiği durumlarda da ayrılmış örnek satın alınabilir ve bu satın alma işlemleri bir sonraki fazla kullanım faturanıza dahil edilir. Varsa ayrılmış örnek fazla kullanımı, normal fazla kullanım faturanıza eklenir.
+Azure EA müşterilerinin Azure Ön Ödemesini tükettiği durumlarda da ayrılmış örnek satın alınabilir ve bu satın alma işlemleri bir sonraki fazla kullanım faturanıza dahil edilir. Varsa ayrılmış örnek fazla kullanımı, normal fazla kullanım faturanıza eklenir.
 
 ### <a name="reserved-instance-expiration"></a>Ayrılmış örnek süre sonu
 

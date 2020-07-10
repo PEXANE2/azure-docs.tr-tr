@@ -5,11 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: de46f4e2fd53b888981076256fda28a2a14995af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837051"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186546"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -26,7 +27,7 @@ Azure Otomasyonu durum yapılandırması ' nda Istenen durum yapılandırması (
   - Ölçekteki node ve Node olmayan verilerle çalışma
   - Önemli performans iyileştirmesi
 
-Azure VM 'lerinize yapılandırma göndermek için Azure Istenen durum yapılandırması (DSC) uzantısıyla birlikte Azure Resource Manager şablonlarını da kullanabilirsiniz. Azure DSC Uzantısı, Azure VM 'lerde çalışan DSC yapılandırmasını teslim etmek, uygulamak ve raporlamak için Azure VM Aracısı çerçevesini kullanır. Azure Resource Manager şablonları kullanarak derleme ayrıntıları için, [Azure Resource Manager şablonlarla Istenen durum yapılandırma uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)' na bakın. 
+Azure VM 'lerinize yapılandırma göndermek için Azure Istenen durum yapılandırması (DSC) uzantısıyla birlikte Azure Resource Manager şablonlarını da kullanabilirsiniz. Azure DSC Uzantısı, Azure VM 'lerde çalışan DSC yapılandırmasını teslim etmek, uygulamak ve raporlamak için Azure VM Aracısı çerçevesini kullanır. Azure Resource Manager şablonları kullanarak derleme ayrıntıları için, [Azure Resource Manager şablonlarla Istenen durum yapılandırma uzantısı](../virtual-machines/extensions/dsc-template.md#details)' na bakın. 
 
 ## <a name="compile-a-dsc-configuration-in-azure-state-configuration"></a>Azure durum yapılandırmasında DSC yapılandırması derleme
 
@@ -62,7 +63,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 ### <a name="declare-basic-parameters"></a>Temel parametreleri bildir
 
-Parametre türleri ve özellikler dahil olmak üzere DSC yapılandırmalarında parametre bildirimi, Azure Otomasyonu runbook 'larıyla aynı şekilde çalışmaktadır. Runbook parametreleri hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'nda runbook başlatma](automation-starting-a-runbook.md) .
+Parametre türleri ve özellikler dahil olmak üzere DSC yapılandırmalarında parametre bildirimi, Azure Otomasyonu runbook 'larıyla aynı şekilde çalışmaktadır. Runbook parametreleri hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'nda runbook başlatma](./start-runbooks.md) .
 
 Aşağıdaki örnekte `FeatureName` ve parametreleri, `IsPresent` derleme sırasında oluşturulan **parametersexsample. örnek** düğüm yapılandırmasındaki özelliklerin değerlerini belirlemekte kullanılır.
 
@@ -122,7 +123,7 @@ Nesneleri parametre olarak geçirme hakkında daha fazla bilgi için `PSCredenti
 **Bileşik kaynaklar** ÖZELLIĞI, DSC yapılandırmalarını bir yapılandırma içinde iç içe geçmiş kaynaklar olarak kullanmanıza olanak tanır. Bu özellik, birden çok yapılandırmanın tek bir kaynak üzerinde uygulamasını sağlar. Bileşik kaynaklar hakkında daha fazla bilgi edinmek için bkz. [bileşik kaynaklar: kaynak olarak DSC yapılandırması kullanma](/powershell/scripting/dsc/resources/authoringresourcecomposite) .
 
 > [!NOTE]
-> Bileşik kaynakları içeren yapılandırmaların doğru şekilde derlenmesi için, önce Birleşik sitelerin kullandığı DSC kaynaklarını Azure Otomasyonu 'na aktarmanız gerekir. DSC bileşik kaynağı ekleme işlemi, Azure Otomasyonu 'na herhangi bir PowerShell modülü eklemekten farklı değildir. Bu işlem, [Azure Automation 'Da modülleri yönetme](/azure/automation/shared-resources/modules)bölümünde belgelenmiştir.
+> Bileşik kaynakları içeren yapılandırmaların doğru şekilde derlenmesi için, önce Birleşik sitelerin kullandığı DSC kaynaklarını Azure Otomasyonu 'na aktarmanız gerekir. DSC bileşik kaynağı ekleme işlemi, Azure Otomasyonu 'na herhangi bir PowerShell modülü eklemekten farklı değildir. Bu işlem, [Azure Automation 'Da modülleri yönetme](./shared-resources/modules.md)bölümünde belgelenmiştir.
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Azure Otomasyonu 'nda yapılandırma derlerken ConfigurationData yönetimi
 
@@ -183,10 +184,10 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 Varlık başvuruları hem Azure Otomasyonu durum Yapılandırması hem de runbook 'larda aynıdır. Daha fazla bilgi için, aşağıdakilere bakın:
 
-- [Sertifikalar](automation-certificates.md)
+- [Sertifikalar](./shared-resources/certificates.md)
 - [Bağlantılar](automation-connections.md)
-- [Kimlik Bilgileri](automation-credentials.md)
-- [Değişkenler](automation-variables.md)
+- [Kimlik Bilgileri](./shared-resources/credentials.md)
+- [Değişkenler](./shared-resources/variables.md)
 
 #### <a name="credential-assets"></a>Kimlik bilgisi varlıkları
 
@@ -277,7 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - Başlamak için bkz. [Azure Otomasyonu durum yapılandırmasını kullanmaya başlama](automation-dsc-getting-started.md).
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 - Sürekli dağıtım işlem hattında durum yapılandırması kullanmanın bir örneği için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).

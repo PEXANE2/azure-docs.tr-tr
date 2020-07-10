@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74073866"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186835"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux aracısını anlama ve kullanma
 
@@ -133,36 +134,36 @@ Kaynaktan veya özel konumlara veya öneklere yükleme gibi gelişmiş yükleme 
 ## <a name="configuration"></a>Yapılandırma
 Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Aşağıda örnek bir yapılandırma dosyası gösterilmektedir:
 
-    ```
-    Provisioning.Enabled=y
-    Provisioning.DeleteRootPassword=n
-    Provisioning.RegenerateSshHostKeyPair=y
-    Provisioning.SshHostKeyPairType=rsa
-    Provisioning.MonitorHostName=y
-    Provisioning.DecodeCustomData=n
-    Provisioning.ExecuteCustomData=n
-    Provisioning.AllowResetSysUser=n
-    Provisioning.PasswordCryptId=6
-    Provisioning.PasswordCryptSaltLength=10
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.MountOptions=None
-    ResourceDisk.EnableSwap=n
-    ResourceDisk.SwapSizeMB=0
-    LBProbeResponder=y
-    Logs.Verbose=n
-    OS.RootDeviceScsiTimeout=300
-    OS.OpensslPath=None
-    HttpProxy.Host=None
-    HttpProxy.Port=None
-    AutoUpdate.Enabled=y
-    ```
+```config
+Provisioning.Enabled=y
+Provisioning.DeleteRootPassword=n
+Provisioning.RegenerateSshHostKeyPair=y
+Provisioning.SshHostKeyPairType=rsa
+Provisioning.MonitorHostName=y
+Provisioning.DecodeCustomData=n
+Provisioning.ExecuteCustomData=n
+Provisioning.AllowResetSysUser=n
+Provisioning.PasswordCryptId=6
+Provisioning.PasswordCryptSaltLength=10
+ResourceDisk.Format=y
+ResourceDisk.Filesystem=ext4
+ResourceDisk.MountPoint=/mnt/resource
+ResourceDisk.MountOptions=None
+ResourceDisk.EnableSwap=n
+ResourceDisk.SwapSizeMB=0
+LBProbeResponder=y
+Logs.Verbose=n
+OS.RootDeviceScsiTimeout=300
+OS.OpensslPath=None
+HttpProxy.Host=None
+HttpProxy.Port=None
+AutoUpdate.Enabled=y
+```
 
 Aşağıdaki çeşitli yapılandırma seçenekleri açıklanmaktadır. Yapılandırma seçenekleri üç türtür; Boolean, dize veya tamsayı. Boole yapılandırma seçenekleri "y" veya "n" olarak belirtilebilir. "None" özel anahtar sözcüğü, bazı dize türü yapılandırma girdileri için aşağıdaki Ayrıntılar olarak kullanılabilir:
 
 **Sağlama. etkin:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -174,14 +175,14 @@ Bu, kullanıcının aracıdaki sağlama işlevini etkinleştirmesine veya devre 
 > 
 
 **Sağlama. DeleteRootPassword:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ayarlanırsa,/etc/shadow dosyasındaki kök parola sağlama işlemi sırasında silinir.
 
 **Sağlama. RegenerateSshHostKeyPair:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -190,42 +191,42 @@ Ayarlanırsa, tüm SSH ana bilgisayar anahtar çiftleri (ECDSA, dsa ve RSA),/etc
 Yeni anahtar çiftinin şifreleme türü, sağlama. SshHostKeyPairType girişi tarafından yapılandırılabilir. Bazı dağıtımlar, SSH arka plan programı yeniden başlatıldığında (örneğin, yeniden başlatma sırasında) eksik şifreleme türleri için SSH anahtar çiftlerini yeniden oluşturur.
 
 **Sağlama. SshHostKeyPairType:**  
-```
+```txt
 Type: String  
 Default: rsa
 ```
 Bu, sanal makinede SSH Daemon tarafından desteklenen bir şifreleme algoritması türüne ayarlanabilir. Genellikle desteklenen değerler "RSA", "dsa" ve "ECDSA" dir. Windows üzerinde "putty.exe", "ECDSA" desteklemez. Bu nedenle, bir Linux dağıtımına bağlanmak için Windows üzerinde putty.exe kullanmayı planlıyorsanız, "RSA" veya "dsa" kullanın.
 
 **Sağlama. MonitorHostName:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Ayarlanırsa, waagent Linux sanal makinesini ana bilgisayar adı değişiklikleri için izler ("hostname" komutu tarafından döndürülen) ve değişikliği yansıtmak için görüntüdeki ağ yapılandırmasını otomatik olarak güncelleştirir. Ad değişikliğini DNS sunucularına göndermek için sanal makinede ağ yeniden başlatılır. Bu, Internet bağlantısının kısa bir kaybına neden olur.
 
 **. DecodeCustomData sağlama**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ayarlanırsa, waagent CustomData 'ın Base64 'ten kodunu çözer.
 
 **CuteCustomDataProvisioning.Exe**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ayarlanırsa, waagent sağlamaktan sonra CustomData öğesini yürütür.
 
 **Sağlama. AllowResetSysUser**
-```
+```txt
 Type: Boolean
 Default: n
 ```
 Bu seçenek, sys kullanıcısının parolasının sıfırlanmasına izin verir; Varsayılan değer devre dışıdır.
 
 **Sağlama. Passwordcryptıd**  
-```
+```txt
 Type: String  
 Default: 6
 ```
@@ -236,91 +237,91 @@ Parola karması oluşturulurken Crypt tarafından kullanılan algoritma.
  6-SHA-512  
 
 **Sağlama. PasswordCryptSaltLength**  
-```
+```txt
 Type: String  
 Default: 10
 ```
 Parola karması oluşturulurken kullanılan rastgele anahtar uzunluğu.
 
 **ResourceDisk. Format:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Ayarlanırsa, platform tarafından sunulan kaynak disk, "ResourceDisk. FileSystem" içinde Kullanıcı tarafından istenen dosya sistemi türü "NTFS" dışında herhangi bir şeydir waagent tarafından biçimlendirilir ve bağlanır. Diskte Linux (83) türünde tek bir bölüm kullanılabilir hale getirilir. Bu bölüm, başarıyla bağlanlanabilir ise biçimlendirilmedi.
 
 **ResourceDisk. FileSystem:**  
-```
+```txt
 Type: String  
 Default: ext4
 ```
 Bu, kaynak diskinin dosya sistemi türünü belirtir. Desteklenen değerler Linux dağıtımına göre farklılık gösterir. Dize X ise, mkfs. X, Linux görüntüsünde bulunmalıdır. SLES 11 görüntüleri genellikle ' ext3 ' kullanmalıdır. FreeBSD görüntülerinin burada ' UFS2 ' kullanması gerekir.
 
 **ResourceDisk. Bağlamanoktası:**  
-```
+```txt
 Type: String  
 Default: /mnt/resource 
 ```
 Bu, kaynak diskinin bağlı olduğu yolu belirtir. Kaynak disk *geçici* bir DISKTIR ve VM 'nin sağlaması tamamlandığında boşaltılır.
 
 **ResourceDisk. MountOptions**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Mount-o komutuna geçirilecek disk bağlama seçeneklerini belirtir. Bu, EX değerlerinin virgülle ayrılmış listesidir. ' nodev, nosuıd '. Ayrıntılar için bağlama (8) bölümüne bakın.
 
 **ResourceDisk. EnableSwap:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ayarlanırsa, kaynak diskte bir takas dosyası (/Swapfile) oluşturulur ve sistem takas alanına eklenir.
 
 **ResourceDisk. SwapSizeMB:**  
-```
+```txt
 Type: Integer  
 Default: 0
 ```
 Takas dosyasının megabayt cinsinden boyutu.
 
 **Günlükler. verbose:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ayarlanırsa, günlük ayrıntı düzeyi artırıldığı. Waagent günlüğü/var/log/waagent.log olarak kaydedilir ve günlükleri döndürmek için sistem logrotate işlevini kullanır.
 
 **Atayamadı. EnableRDMA**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ayarlanırsa, aracı temel donanımda üretici yazılımının sürümüyle eşleşen bir RDMA çekirdek sürücüsü yüklemeye çalışır ve sonra yükler.
 
 **Atayamadı. Rootdevicescsıtimeout:**  
-```
+```txt
 Type: Integer  
 Default: 300
 ```
 Bu ayar, işletim sistemi diskinde ve veri sürücülerinde SCSI zaman aşımını saniye cinsinden yapılandırır. Ayarlanmamışsa, sistem Varsayılanları kullanılır.
 
 **Atayamadı. OpensslPath:**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Bu ayar, şifreli işlemler için kullanılacak OpenSSL ikilisinin alternatif yolunu belirtmek için kullanılabilir.
 
 **HttpProxy. Host, HttpProxy. Port**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Ayarlanırsa, aracı internet 'e erişmek için bu proxy sunucusunu kullanır. 
 
 **Otomatik güncelleştirme. etkin**
-```
+```txt
 Type: Boolean
 Default: y
 ```

@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: ddc4af9a164de3a822e8aebd6c0a4db769ec62a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262591"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170335"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -59,15 +59,19 @@ Sorun giderme kılavuzunun [Bu bölümüne](https://docs.microsoft.com/azure/bac
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>İsteğe bağlı bir yedeklemeyi Azure Kasası yerine yerel dosya sistemine nasıl taşıyabilirim?
 
-1. Şu anda çalışmakta olan yedeklemenin istenen veritabanında tamamlanmasını bekle (Studio 'nun tamamlanmasını denetle)
+1. Şu anda çalışmakta olan yedeklemenin istenen veritabanında tamamlanmasını bekleyin (Studio 'nun tamamlanmasını denetleyin).
 1. Aşağıdaki adımları kullanarak, günlük yedeklemelerini devre dışı bırakın ve istenen VERITABANı için Katalog yedeklemesini **dosya sistemine** ayarlayın:
 1. **SystemDB**  ->  **yapılandırma**  ->  **veritabanı**  ->  **filtresi Seç (günlük)** öğesine çift tıklayın
     1. Enable_auto_log_backup **Hayır** olarak ayarla
-    1. Log_backup_using_backint **false** olarak ayarla
-1. İstenen veritabanında isteğe bağlı bir yedekleme yapın ve yedeklemenin ve kataloğun yedeğinin tamamlanmasını bekleyin.
+    1. Catalog_backup_using_backint **false** olarak ayarla
+1. İstenen veritabanında isteğe bağlı bir yedekleme (tam/değişiklik/artımlı) yapın ve yedekleme ve Katalog yedeklemesinin tamamlanmasını bekleyin.
+1. Günlük yedeklemelerini de dosya sistemine taşımak istiyorsanız, enable_auto_log_backup **Evet** olarak ayarlayın.
 1. Yedeklemelerin Azure kasasına akmasını sağlamak için önceki ayarlara geri dönün:
     1. Enable_auto_log_backup **Evet** olarak ayarla
-    1. Log_backup_using_backint **true** olarak ayarla
+    1. Catalog_backup_using_backint **true** olarak ayarla
+
+>[!NOTE]
+>Yedeklemeleri yerel dosya sistemine taşımak ve Azure kasasına yeniden dönmek, kasadaki günlük yedeklerinin bir günlük yedeklerine neden olabilir. Bu, başarılı bir şekilde tamamlandıktan sonra günlükleri yedeklemeye başlayacak şekilde tam yedekleme tetikleyecektir.
 
 ### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>HANA çoğaltma ayarlarım SAP HANA yedeklemeyi nasıl kullanabilirim?
 

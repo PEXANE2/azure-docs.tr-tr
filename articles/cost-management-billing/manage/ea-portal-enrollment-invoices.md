@@ -3,16 +3,16 @@ title: Azure Kurumsal kayıt faturaları
 description: Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve işleme alacağınız açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807791"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044881"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -46,14 +46,14 @@ Kuruluş yöneticisi fatura tarihinden önce bir satın alma siparişi (PO) numa
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure kurumsal faturalama sıklığı
 
-Microsoft her yıl kayıt geçerlilik tarihinde Microsoft Azure hizmetlerinin satın alma taahhüdünü faturalandırır. Taahhüt miktarlarını aşan kullanımlar, Microsoft tarafından borç olarak faturalandırılır.
+Microsoft her yıl kayıt geçerlilik tarihinde Microsoft Azure hizmetlerinin ön ödemeli satın almalarını faturalandırır. Ön ödeme miktarlarını aşan kullanımlar, Microsoft tarafından borç olarak faturalandırılır.
 
-- Taahhüt ücretleri önceden aylık ücret ve yıllık faturalama temelinde fiyatlandırılır.
+- Ön ödeme ücretleri önceden aylık ücret ve yıllık faturalama temelinde fiyatlandırılır.
 - Her ay fazla kullanım ücretleri hesaplanır ve faturalama döneminizin sonunda borç olarak faturalanır.
 
 ### <a name="billing-intervals"></a>Faturalama aralıkları
 
-Faturalama aralığınız, taahhüt satın alma işlemlerinizi nasıl tamamladığınıza bağlı olarak belirlenir. Yıllık taahhüdünüz şu tarihlerden biri ile uyumlu olacaktır:
+Faturalama aralığınız, ön ödemeli satın alma işlemlerinizi nasıl tamamladığınıza bağlı olarak belirlenir. Yıllık ön ödemeniz şu tarihlerden biri ile uyumlu olacaktır:
 
 - Kayıt yıl dönümü tarihiniz
 - Bir yıllık Değişiklik Aboneliğinizin geçerlilik tarihi.
@@ -62,12 +62,12 @@ Fazla kullanım faturanızın gönderileceği tarih, kayıt başlangıç ve kuru
 
 - **Başlangıç tarihi, 1 Mayıs 2018 tarihinden önce olan doğrudan kayıtlar**:
   - Doğrudan Kurumsal Azure (EA) müşterisiyseniz Azure Market hizmetleri hariç olmak üzere Azure hizmetleri için yıllık faturalama dönemine tabi olursunuz. Faturalama döneminiz, yıl dönümü tarihinize (anlaşmanızın yürürlüğe girdiği tarihe) göre belirlenir.
-  - EA parasal taahhüt (MC) eşiğinizi %150 oranında aşmanız halinde, otomatik olarak yıl dönümü tarihinize göre belirlenen üç aylık dönem faturalama dönemine geçersiniz. Ayrıca bir Azure hizmet fazla kullanımı faturası da gönderilir.
-  - Parasal taahhüt eşiğinizi %150 oranında aşmazsanız kaydınız yıllık faturalama dönemi olarak kalır. Fazla kullanım faturası, taahhüt yılının sonunda gönderilir.
+  - Azure EA Ön Ödeme eşiğinizi %150 oranında aşmanız halinde, otomatik olarak yıl dönümü tarihinize göre belirlenen üç aylık faturalama dönemine geçersiniz. Ayrıca bir Azure hizmet fazla kullanımı faturası da gönderilir.
+  - Azure Ön Ödeme eşiğinizi %150 oranında aşmazsanız kaydınız yıllık faturalama döneminde kalır. Fazla kullanım faturası, Ön ödeme yılının sonunda gönderilir.
 
 - **Başlangıç tarihi, 1 Mayıs 2018 tarihinden sonra olan doğrudan kayıtlar**:
   - Azure tüketiminiz ve ücretleriniz için aylık faturalama dönemi kullanılarak ayrı faturalar düzenlenir.
-  - Parasal taahhüdünüzün kapsamına girmeyen ücretler, fazla kullanım ödemesi olarak değerlendirilir.  
+  - Azure Ön Ödeme kapsamına girmeyen ücretler, fazla kullanım ödemesi olarak değerlendirilir.  
 
 - **Kayıt tarihi 1 Mayıs 2018 tarihinden önce olan dolaylı kayıtlar**:
 
@@ -77,21 +77,21 @@ Fazla kullanım faturanızın gönderileceği tarih, kayıt başlangıç ve kuru
 
   Aylık faturalama dönemini kullanırsınız.  
 
-### <a name="increase-your-monetary-commitment"></a>Parasal taahhüdünüzü artırma
+### <a name="increase-your-azure-prepayment"></a>Azure Ön Ödemenizi artırma
 
-Taahhüdünüzü dilediğiniz zaman artırabilirsiniz. O ayın taahhüt süresinde kalan ay sayısı üzerinden faturalandırılırsınız. Örneğin bir yıllık Değişiklik Aboneliği için kaydolur ve taahhüdünüzü altıncı ayda artırırsanız, o dönemin kalan altı aylık bölümü için faturalandırılırsınız. Bu durumda taahhüt miktarlarınız, taahhüt döneminizin son altı ayı için güncelleştirilir. Fazla kullanım ücretlerinin belirlenmesi için bu yeni miktarlar kullanılır.
+Ön ödemenizi dilediğiniz zaman artırabilirsiniz. Artırdığınızda, içinde bulunulan yılın Ön ödeme süresinde kalan ay sayısına göre faturalandırılırsınız. Örneğin bir yıllık Değişiklik Aboneliği için kaydolur ve Ön ödemenizi altıncı ayda artırırsanız söz konusu dönemin kalan altı aylık bölümü için faturalandırılırsınız. Bu durumda, Ön ödeme döneminizin son altı ayına yönelik Ön ödeme miktarlarınız güncelleştirilir. Fazla kullanım ücretlerinin belirlenmesi için bu yeni miktarlar kullanılır.
 
 ### <a name="overage"></a>Kapasite Aşımı
 
-Fazla kullanım için faturalama döneminde taahhüdünüzü artan kullanımlar veya rezervasyonlar için faturalandırılırsınız. Fazla kullanım miktarlarının öğelere göre hesaplama ayrıntılarını görüntülemek için kullanım özeti raporu sayfasını inceleyin veya kanal iş ortağınızla iletişim geçin.
+Fazla kullanım olduğunda, faturalama döneminde Ön ödemenizi aşan kullanımlar veya rezervasyonlar için faturalandırılırsınız. Fazla kullanım miktarlarının öğelere göre hesaplama ayrıntılarını görüntülemek için kullanım özeti raporu sayfasını inceleyin veya kanal iş ortağınızla iletişim geçin.
 
 Faturadaki her bir öğe için şu bilgileri göreceksiniz:
 
 - **Genişletilmiş Tutar**: Ücretlerin toplamı
-- **Taahhüt Kullanımı**: Ücretleri karşılamak için kullanılan taahhüt miktarı
-- **Net Tutar**: Taahhüdünüzü aşan ücretler
+- **Ön Ödeme Kullanımı**: Ücretleri karşılamak için kullanılan Ön ödeme miktarı
+- **Net Tutar**: Ön ödemenizi aşan ücretler
 
-Geçerli vergiler yalnızca taahhüdünüzü aşan net tutar üzerinden hesaplanır.
+Geçerli vergiler yalnızca Ön ödemenizi aşan net tutar üzerinden hesaplanır.
 
 Fazla kullanım faturalama süreci otomatiktir. Bildirimlerin ve faturaların gönderim tarihi, faturalama dönemi bitiş tarihinize göre belirlenir.
 
@@ -130,18 +130,18 @@ Kredileri görüntülemek için:
 1. [Azure Enterprise Portal](https://ea.azure.com)'da **Raporlar** bölümünü seçin.
 1. **Kullanım Özeti**'ni seçin.
 1. Sağ üst köşeden **M** yerine **C** görünümüne geçiş yapın.
-1. Azure hizmet taahhüdü tablosundaki düzeltme alanını genişletin.
+1. Azure hizmet ön ödemesi tablosundaki düzeltme alanını genişletin.
 1. Kaydınıza uygulanan kredileri ve kısa açıklamaları görürsünüz. Örneğin: Hizmet Düzeyi Sözleşmesi Kredisi.
 
-## <a name="pay-your-overage-with-your-monetary-commitment"></a>Parasal taahhüdünüz ile fazla kullanımınızı ödeme
+## <a name="pay-your-overage-with-your-azure-prepayment"></a>Fazla kullanımınızı Azure Ön Ödemesiyle karşılama
 
-Parasal taahhüdünüzü fazla kullanıma uygulamak için aşağıdaki ölçütleri karşılamanız gerekir:
+Azure Ön Ödemenizi fazla kullanıma uygulamak için aşağıdaki ölçütlere uygun olmanız gerekir:
 
 - Ödenmemiş fazla kullanım ücretleriniz bulunmalı ve bunlar faturalanan hizmetin son tarihini izleyen bir yıl içinde olmalıdır.
-- Kullanılabilir parasal taahhüt tutarınız, geçmişe ait tüm ödenmemiş Azure faturaları da dahil olmak üzere tahakkuk eden ücretlerin tamamını kapsamalıdır.
+- Kullanılabilir Azure Ön Ödeme tutarınız, geçmişe ait tüm ödenmemiş Azure faturaları da dahil olmak üzere tahakkuk eden ücretlerin tamamını kapsamalıdır.
 - Tamamlanmasını istediğiniz faturalama dönemi tamamen kapatılmış olmalıdır. Faturalama her ayın beşinci günü kapatılır.
 - Denkleştirilmesini istediğiniz faturalama dönemi tamamen kapatılmış olmalıdır.
-- Azure Taahhüt İndiriminiz (ACD) için gerçek yeni taahhüt eksi önceki tüketim için planlanan fonlar temel alınır. Bu gereksinim yalnızca tahakkuk eden fazla kullanım ücretleri için geçerlidir. Yalnızca parasal taahhüt tüketimi olan hizmetlerde geçerlidir, dolayısıyla Azure Market ücretlerine uygulanamaz. Azure Market ücretleri ayrı faturalanır.
+- Azure Ön Ödeme İndiriminiz (APD), gerçek yeni Ön ödeme miktarından önceki tüketim için planlanan fonlar çıkarıldığında kalan tutara göre belirlenir. Bu gereksinim yalnızca tahakkuk eden fazla kullanım ücretleri için geçerlidir. Yalnızca Azure Ön Ödeme tüketimi olan hizmetlerde geçerlidir, dolayısıyla Azure Market ücretlerine uygulanamaz. Azure Market ücretleri ayrı faturalanır.
 
 Fazla kullanım denkleştirmesini tamamlamak için sizin veya hesap ekibinizin bir destek isteği açması gerekir. Kuruluş yöneticinizden veya Fatura İlgili Kişisinden e-posta onayı istenecektir.
 
@@ -178,13 +178,13 @@ Aşağıdaki tabloda yuvarlama ve dönüştürme için Azure Enterprise Portal k
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Kullanım ayrıntıları raporu ile kullanım özeti sayfası verilerini birbirine dönüştürme
 
-İndirilen kullanım verileri raporunda ham kullanım verileri için altı ondalık basamak bulunur. Ancak Azure Enterprise Portal'da gösterilen veriler, kullanımı taahhüt birimleri için dört ondalık basamağa yuvarlar, fazla kullanım birimlerinde de tüm ondalık basamakları siler. Ham kullanım verileri, Azure Enterprise Portal'da kullanılan birimlere dönüştürülmeden önce dört basamağa yuvarlanır. Daha sonra dönüştürülen Enterprise birimleri yeniden dört basamağa yuvarlanır. Dönüştürme öncesindeki tüketilen gerçek saat sayısı yalnızca indirilen kullanım raporunda gösterilir, Azure Enterprise Portal'da gösterilmez.
+İndirilen kullanım verileri raporunda ham kullanım verileri için altı ondalık basamak bulunur. Ancak Azure Enterprise Portal’da gösterilen veriler, Ön Ödeme birimlerinde kullanımı dört ondalık basamağa yuvarlar, fazla kullanım birimlerinde de tüm ondalık basamakları siler. Ham kullanım verileri, Azure Enterprise Portal'da kullanılan birimlere dönüştürülmeden önce dört basamağa yuvarlanır. Daha sonra dönüştürülen Enterprise birimleri yeniden dört basamağa yuvarlanır. Dönüştürme öncesindeki tüketilen gerçek saat sayısı yalnızca indirilen kullanım raporunda gösterilir, Azure Enterprise Portal'da gösterilmez.
 
 Örneğin: Kullanım raporunda 694,533404 gerçek SQL Server saatlerinin bildirildiğini düşünelim. Bu birimler önce 6,94533404 birim 100 işlem saatine dönüştürülür ve ardından 6,9453 şeklinde yuvarlanır ve Azure Enterprise Portal'da bu şekilde görüntülenir.
 
-- Görüntülenen birimler Taahhüt Birimi Fiyatı ile çarpılır ve sonuç iki ondalık basamağa düşürülerek genişletilmiş faturalama tutarı belirlenir. Japon Yeni (JPY) ve Kore Wonu (KRW) için genişletilmiş tutardaki tüm ondalık basamaklar silinir.
+- Görüntülenen birimler Ön Ödeme Birimi Fiyatı ile çarpılır ve sonuç iki ondalık basamağa düşürülerek genişletilmiş faturalama tutarı belirlenir. Japon Yeni (JPY) ve Kore Wonu (KRW) için genişletilmiş tutardaki tüm ondalık basamaklar silinir.
 - Fazla kullanım için faturalandırma birimleri altı basamak olacak şekilde kısaltıldıktan sonra Fazla Kullanım Fiyatı ile çarpılarak genişletilmiş fatura tutarı belirlenir.
-- Yönetilen Hizmet Sağlayıcısı (MSP) faturalandırma sürecinde MSP olarak işaretlenmiş bir bölüm ile ilgili olan tüm kullanımlar, EA ölçü birimine dönüştürüldükten sonra sıfır ondalık basamak olacak şekilde kısaltılır. Sonuç olarak bu kullanımın sonucu, Azure Enterprise Portal'da bildirilen tüm kullanımların toplamından daha düşük olabilir. MSP'nin parasal taahhüt bakiyesinde veya fazla kullanımda olma durumuna göre belirlenir.
+- Yönetilen Hizmet Sağlayıcısı (MSP) faturalandırma sürecinde MSP olarak işaretlenmiş bir bölüm ile ilgili olan tüm kullanımlar, EA ölçü birimine dönüştürüldükten sonra sıfır ondalık basamak olacak şekilde kısaltılır. Sonuç olarak bu kullanımın sonucu, Azure Enterprise Portal'da bildirilen tüm kullanımların toplamından daha düşük olabilir. MSP’nin Azure Ön Ödeme bakiyesinde veya fazla kullanımda olma durumuna göre belirlenir.
 
 ### <a name="graduated-pricing"></a>Kademeli fiyatlandırma
 
@@ -226,13 +226,13 @@ Fiyatın alana ve bölgeye göre değiştiği hizmetler için geçerli coğrafi 
 
 Aynı veri merkezinde barındırılan hizmetler arasındaki veri çıkışından ücret alınmaz. Örneğin Microsoft 365 ve Azure.
 
-### <a name="monetary-commitment-and-unbilled-usage"></a>Parasal taahhüt ve faturalanmamış kullanım
+### <a name="azure-prepayment-and-unbilled-usage"></a>Azure Ön Ödeme kullanımı ve faturalandırılmamış kullanım
 
-Azure parasal taahhüdü Azure hizmetleri için önceden ödenmiş tutardır. Hizmetler kullanıldıkça parasal taahhüt tüketilir. Parasal taahhüt, birinci taraf Azure hizmetleri için faturalandırılır. Ancak bazı ücretler ayrıca faturalandırılır ve Azure Market hizmetleri parasal taahhüdü kullanmaz.
+Azure Ön Ödeme, Azure hizmetleri için önceden ödenmiş tutardır. Hizmetler kullanıldıkça Azure Ön Ödeme tüketilir. Azure Ön Ödeme, birinci taraf Azure hizmetleri için faturalandırılır. Ancak bazı ücretler ayrıca faturalandırılır ve Azure Market hizmetleri Azure Ön Ödemeyi kullanmaz.
 
 ### <a name="charges-billed-separately"></a>Ayrı olarak faturalandırılan ücretler
 
-Üçüncü taraf kaynaklar tarafından sunulan bazı ürün ve hizmetler, Azure parasal taahhüdünü kullanmaz. Bu öğeler bunun yerine standart faturalama döneminin fazla kullanım faturasında ayrı olarak faturalanır.
+Üçüncü taraf kaynaklar tarafından sunulan bazı ürün ve hizmetler, Azure Ön Ödemesini kullanmaz. Bu öğeler bunun yerine standart faturalama döneminin fazla kullanım faturasında ayrı olarak faturalanır.
 
 Tüm Azure ve Azure Market ücretlerini, kaydın faturalama dönemiyle eşleşen tek bir fatura olacak şekilde birleştirdik. Birleştirilmiş fatura Avustralya, Japonya veya Singapur’daki müşteriler için geçerli değildir.
 
@@ -265,7 +265,7 @@ Faturalar, fatura dönemi sona erdikten sonraki ay yayınlanır. Faturalama sık
 
    | Başlık | Açıklama | Dosya adı |
    | --- | --- | --- |
-   | [Hizmet Kolay Adları](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Tüm etkin hizmetlerin listesidir ve şunları içerir: <br>  <ul><li>hizmet kategorisi</li>   <li>hizmet kolay adı</li>   <li>taahhüt adı ve parça numarası</li> <li>tüketim adı ve parça numarası</li>   <li>ölçü birimi</li>   <li>bildirilen kullanım ile görüntülenen Enterprise Portal kullanımı arasındaki dönüştürme faktörleri</li></ul> | Hizmet\_Kolay\_Adları.xlsx |
+   | [Hizmet Kolay Adları](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Tüm etkin hizmetlerin listesidir ve şunları içerir: <br>  <ul><li>hizmet kategorisi</li>   <li>hizmet kolay adı</li>   <li>Ön ödeme adı ve parça numarası</li> <li>tüketim adı ve parça numarası</li>   <li>ölçü birimi</li>   <li>bildirilen kullanım ile görüntülenen Enterprise Portal kullanımı arasındaki dönüştürme faktörleri</li></ul> | Hizmet\_Kolay\_Adları.xlsx |
    | [Hizmet İndirme Alanları](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Bu elektronik tabloda Kullanım İndirme Raporundaki hizmetle ilgili alanların tüm olası birleşimlerinin bir listesi bulunur. | Hizmet\_İndirme\_Alanları.xlsx |
 
 - Faturanızı ve ücretlerinizi anlama konusunda bilgi için bkz. [Azure Kurumsal Anlaşma faturanızı anlama](../understand/review-enterprise-agreement-bill.md).

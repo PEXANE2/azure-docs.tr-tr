@@ -3,16 +3,16 @@ title: Azure EA portalı yönetimi
 description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdiği genel görevler açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 6169a18148b251540d66bce6e34374a16f697015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456564"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044898"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -33,7 +33,7 @@ Kuruluş Yöneticileri, mevcut hesapları kayıt kapsamındaki Bölümlerle ili�
 
 ## <a name="department-spending-quotas"></a>Departman harcama kotaları
 
-EA müşterileri, bir kayıt kapsamındaki bölümler için ayrı harcama kotaları belirleyebilir veya mevcut kotaları değiştirebilir. Harcama kotasının miktarı geçerli taahhüt dönemini kapsayacak şekilde ayarlanır. Geçerli taahhüt döneminin sonunda değerler güncelleştirilmediği sürece sistem, mevcut harcama kotasını takip eden taahhüt dönemine uzatır.
+EA müşterileri, bir kayıt kapsamındaki bölümler için ayrı harcama kotaları belirleyebilir veya mevcut kotaları değiştirebilir. Harcama kotasının miktarı geçerli Ön Ödeme dönemini kapsayacak şekilde ayarlanır. Geçerli Ön Ödeme döneminin sonunda değerler güncelleştirilmediği sürece sistem, mevcut harcama kotasını takip eden Ön Ödeme dönemine uzatır.
 
 Bölüm yöneticisi, harcama kotasını görüntüleyebilir ancak kota miktarı yalnızca kuruluş yöneticisi tarafından güncelleştirilebilir. Kota %50, %75, %90 ve %100 düzeyine ulaştığında kuruluş yöneticisine ve bölüm yöneticisine bildirim gönderilir.
 
@@ -48,9 +48,9 @@ Bölüm yöneticisi, harcama kotasını görüntüleyebilir ancak kota miktarı 
     - Bu adımda Bölüm Adı ve Maliyet Merkezi bilgilerini de düzenleyebilirsiniz.
  1. **Kaydet**’i seçin.
 
-Bölüm harcama kotası, Bölüm sekmesindeki Bölüm Listesi görünümünde görünür duruma gelir. Azure EA Portal, geçerli taahhüt döneminin sonunda harcama kotalarını bir sonraki taahhüt dönemine aktarır.
+Bölüm harcama kotası, Bölüm sekmesindeki Bölüm Listesi görünümünde görünür duruma gelir. Azure EA Portal, geçerli Ön Ödeme döneminin sonunda harcama kotalarını bir sonraki Ön Ödeme dönemine aktarır.
 
-Bölüm kotası tutarı, mevcut parasal taahhütten bağımsızdır ve kota miktarı ile uyarılar yalnızca birinci taraf kullanımı için geçerlidir. Bölüm harcama kotası yalnızca bilgilendirme amaçlıdır ve harcama limiti uygulamaz.
+Bölüm kotası tutarı, mevcut Azure Ön Ödemesinden bağımsızdır ve kota miktarı ile uyarılar yalnızca birinci taraf kullanımı için geçerlidir. Bölüm harcama kotası yalnızca bilgilendirme amaçlıdır ve harcama limiti uygulamaz.
 
 ### <a name="department-administrator-to-view-the-quota"></a>Bölüm yöneticisi olarak kotayı görüntülemek için:
 
@@ -174,7 +174,7 @@ Bu belgede hesap aboneliği sahipliğiyle ilgili sık sorulan sorular ve yanıtl
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Bir abonelikte kaç Azure hesabı sahibi olabilir?
 
-Her abonelikte yalnızca bir tane hesap sahibi bulunabilir.  Rol Tabanlı Erişim veya Erişim Denetimi (IAM) işlevlerini kullanarak daha fazla rol ekleyebilirsiniz. Bunun için şu sayfanın sol üst köşesindeki abonelik sekmesini kullanın: [portal.azure.com]](https://portal.azure.com).
+Her abonelikte yalnızca bir tane hesap sahibi bulunabilir.  Rol Tabanlı Erişim veya Erişim Denetimi (IAM) işlevlerini kullanarak daha fazla rol ekleyebilirsiniz. Bunun için [Azure portalı](https://portal.azure.com) sayfasının sol üst köşesindeki abonelik sekmesini kullanın.
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Bir Azure hesabı sahibi birden fazla bölümde listelenebilir mi?
 

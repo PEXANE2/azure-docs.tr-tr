@@ -16,11 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8928e7293f184e8eb366df6a29e50cbea6a7c93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078201"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170505"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -53,7 +54,7 @@ Bağlı bir kuruluşun nasıl ekleneceğini gösteren bir gösterim için aşağ
 
 Dış bir Azure AD dizini veya etki alanını bağlı bir kuruluş olarak eklemek için, bu bölümdeki yönergeleri izleyin.
 
-**Önkoşul rolü**: *genel yönetici*, *Kullanıcı Yöneticisi*veya *Konuk davetci*
+**Önkoşul rolü**: *genel yönetici* veya *Kullanıcı Yöneticisi*
 
 1. Azure portal **Azure Active Directory**' i seçin ve ardından **Identity idare**' ı seçin.
 

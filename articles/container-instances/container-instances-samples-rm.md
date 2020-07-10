@@ -3,11 +3,12 @@ title: Azure Resource Manager şablonu örnekleri
 description: Farklı yapılandırmalarda Azure Container Instances dağıtmak için Azure Resource Manager şablon örnekleri bulma
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299766"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169655"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances için Azure Resource Manager Şablonlar
 
@@ -17,7 +18,7 @@ Dağıtım seçenekleri için [dağıtım](#deployment) bölümüne bakın. Kend
 
 ## <a name="sample-templates"></a>Örnek şablonlar
 
-| | |
+| Şablon | Açıklama |
 |-|-|
 | **Uygulamalar** ||
 | [WordPress][app-wp] | Bir bir WordPress web sitesi ve bir kapsayıcı grubunda MySQL veritabanı oluşturur. WordPress sitesi içeriği ve MySQL veritabanı, bir Azure dosya paylaşımında kalıcı hale getirilir. Ayrıca, WordPress 'e genel ağ erişimini açığa çıkarmak için bir uygulama ağ geçidi oluşturur. |
@@ -41,7 +42,7 @@ Kaynak Yöneticisi şablonlarıyla kaynak dağıtmaya yönelik çeşitli seçene
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure portalındaki][deploy-portal]
+[Azure Portal][deploy-portal]
 
 [REST API][deploy-rest]
 

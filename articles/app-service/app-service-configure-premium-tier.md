@@ -6,17 +6,18 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74672221"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170029"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service için PremiumV2 katmanını yapılandırma
 
 Yeni **PremiumV2** fiyatlandırma katmanı, daha hızlı IŞLEMCILER, SSD depolaması sağlar ve mevcut fiyatlandırma katmanlarının bellek-çekirdek oranını iki katına çıkarır. Performans avantajı sayesinde uygulamalarınızı daha az örnek üzerinde çalıştırarak tasarruf edebilirsiniz. Bu makalede, **PremiumV2** katmanında bir uygulama oluşturmayı veya bir uygulamayı **PremiumV2** katmanına ölçeklendirmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir uygulamayı **PremiumV2**'e ölçeklendirmek Için, **PremiumV2**'den daha düşük bir fiyatlandırma katmanında çalışan bir Azure App Service uygulamasına sahip olmanız ve uygulamanın PremiumV2 'yi destekleyen bir App Service dağıtımında çalışıyor olması gerekir.
 
@@ -42,7 +43,7 @@ Bir App Service uygulamasının fiyatlandırma katmanı, üzerinde çalıştığ
 
 **Üretim**' ı seçin, ardından **P1V2**, **P2V2**veya **P3V2**öğesini seçin ve **Uygula**' ya tıklayın.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Uygulamanız için önerilen fiyatlandırma katmanlarını gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > **P1V2**, **P2V2**ve **P3V2** as seçeneklerini görmüyorsanız veya seçenekler gri ise, **PremiumV2** büyük olasılıkla App Service planını içeren temel App Service dağıtımında kullanılabilir değildir. Daha fazla ayrıntı için bkz. [Desteklenmeyen bir kaynak grubu ve bölge kombinasyonuna ölçeği artırma](#unsupported) .
@@ -57,15 +58,15 @@ Barındırma ortamınıza bağlı olarak, ölçeklendirme için ek adımlar gere
 
 App Service uygulaması sayfanızın sol gezinti bölmesinde **Ölçek yukarı (App Service planı)** öğesini seçin.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![App Service planınızın nasıl ölçeklenebilmesini gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 **Üretim**' ı seçin, ardından **P1V2**, **P2V2**veya **P3V2**öğesini seçin ve **Uygula**' ya tıklayın.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Uygulamanız için önerilen fiyatlandırma katmanlarını gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 İşlem başarılı bir şekilde tamamlanerdiğinde, uygulamanızın genel bakış sayfası bir **PremiumV2** katmanında olduğunu gösterir.
 
-![](media/app-service-configure-premium-tier/finished.png)
+![Uygulamanızın genel bakış sayfasında PremiumV2 fiyatlandırma katmanını gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Bir hata alırsanız
 
@@ -80,7 +81,7 @@ Uygulamanız **PremiumV2** ' nin kullanılamadığı bir App Service dağıtım�
 - **Yeni bir kaynak grubu** oluşturun **ve yeni bir uygulama oluşturun** ve **Yeni** kaynak grubunda planı App Service, oluşturma işlemi sırasında istediğiniz Azure bölgenizi seçin.  Yeni App Service planının oluşturulduğu sırada **PremiumV2** **planını seçmelisiniz.**  Bu, kaynak grubu, App Service planı ve Azure bölgesinin birleşimini, **PremiumV2**destekleyen bir App Service dağıtımında oluşturulan App Service planının oluşmasına neden olur.  Ardından uygulama kodunuzu yeni oluşturulan uygulama ve App Service planına yeniden dağıtın. İsterseniz, maliyetleri kaydetmek için App Service planını daha sonra **PremiumV2** ' dan ölçeklendirebilirsiniz ve yine de **PremiumV2**kullanarak yeniden daha sonra tekrar tekrar ölçeklendirirsiniz.
 - Uygulamanız zaten mevcut bir **Premium** katmanda çalıştırılıyorsa, uygulamanızı tüm uygulama ayarları, bağlantı dizeleri ve dağıtım yapılandırmasıyla **PremiumV2**kullanan yeni bir App Service planına kopyalayabilirsiniz.
 
-    ![](media/app-service-configure-premium-tier/clone-app.png)
+    ![Uygulamanızın nasıl klonileceğini gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/clone-app.png)
 
     **Uygulamayı Kopyala** sayfasında, Istediğiniz bölgede **PremiumV2** kullanarak bir App Service planı oluşturabilir ve kopyalamak istediğiniz uygulama ayarlarını ve yapılandırmayı belirtebilirsiniz.
 

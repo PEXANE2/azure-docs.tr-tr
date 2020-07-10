@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76773668"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170828"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış 
 
@@ -32,27 +33,29 @@ Media Services hem JSON hem de atom + pub XML biçimini kabul eden bir REST API 
 
 Media Services REST API kimlik doğrulaması, [Azure MEDIA SERVICES API 'SINE Rest ile erişmek Için Azure AD kimlik doğrulamasını kullanma](media-services-rest-connect-with-aad.md) makalesinde özetlenen Azure Active Directory kimlik doğrulaması aracılığıyla yapılır
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 REST kullanılırken aşağıdaki noktalar geçerlidir.
 
 * Varlıkları sorgularken, genel REST v2 sorgu sonuçlarını 1000 sonuçla sınırladığından, tek seferde döndürülen 1000 varlıkların bir sınırı vardır. [Bu .net örneğinde](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) ve [Bu REST API örnekte](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)açıklandığı gibi **Atla** ve **Al** (.net)/ **top** (REST) kullanmanız gerekir. 
 * JSON kullanırken ve istekte **__metadata** anahtar sözcüğünü kullanmak için belirtirken (örneğin, bağlantılı bir nesneye başvurmak Için) **Accept** üst bilgisini [JSON verbose biçimine](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) ayarlamanız gerekir (aşağıdaki örneğe bakın). OData, istek içinde **__metadata** özelliğini ayrıntılı olarak ayarlamadığınız müddetçe anlamaz.  
-  
-        POST https://media.windows.net/API/Jobs HTTP/1.1
-        Content-Type: application/json;odata=verbose
-        Accept: application/json;odata=verbose
-        DataServiceVersion: 3.0
-        MaxDataServiceVersion: 3.0
-        x-ms-version: 2.19
-        Authorization: Bearer <ENCODED JWT TOKEN> 
-        Host: media.windows.net
-  
-        {
-            "Name" : "NewTestJob", 
-            "InputMediaAssets" : 
-                [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
-        . . . 
+
+    ```console
+    POST https://media.windows.net/API/Jobs HTTP/1.1
+    Content-Type: application/json;odata=verbose
+    Accept: application/json;odata=verbose
+    DataServiceVersion: 3.0
+    MaxDataServiceVersion: 3.0
+    x-ms-version: 2.19
+    Authorization: Bearer <ENCODED JWT TOKEN> 
+    Host: media.windows.net
+
+    {
+        "Name" : "NewTestJob", 
+        "InputMediaAssets" : 
+            [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
+    . . . 
+   ```
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services tarafından desteklenen standart HTTP istek üstbilgileri
 Media Services yaptığınız her çağrı için, isteğinize dahil etmeniz gereken bir başlık kümesi ve ayrıca dahil etmek isteyebileceğiniz bir isteğe bağlı üst bilgi kümesi vardır. Aşağıdaki tabloda gereken üstbilgiler listelenmiştir:

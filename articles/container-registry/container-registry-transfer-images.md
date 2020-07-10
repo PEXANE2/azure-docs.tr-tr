@@ -4,11 +4,12 @@ description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006332"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186937"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -29,7 +30,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Kapsayıcı kayıt defterleri** -aktarılacak yapıtlara ve hedef kayıt defterine sahip mevcut bir kaynak kayıt defterine ihtiyacınız vardır. ACR aktarımı, fiziksel olarak bağlantısı kesilen bulutlar arasında hareket etmek için tasarlanmıştır. Test için kaynak ve hedef kayıt defterleri aynı veya farklı bir Azure aboneliğinde, Active Directory kiracısında veya bulutta olabilir. Bir kayıt defteri oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md). 
 * **Depolama hesapları** -bir abonelikte ve tercih ettiğiniz konumda kaynak ve hedef depolama hesapları oluşturun. Test amacıyla, kaynak ve hedef kayıt defterlerinden aynı abonelik veya abonelikleri kullanabilirsiniz. Platformlar arası senaryolar için genellikle her bulutta ayrı bir depolama hesabı oluşturursunuz. Gerekirse, [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) veya diğer araçlarla depolama hesapları oluşturun. 
@@ -57,7 +58,7 @@ Depolama kimlik doğrulaması, anahtar kasalarında gizli dizi olarak yönetilen
 * **[Ardışık düzen eylemsizlik](#create-pipelinerun-for-export-with-resource-manager)** ya da ımportpipeline kaynağını çağırmak için kullanılan kaynak.  
   * Bir ardışık düzen eylemsizlik kaynağı oluşturarak ve dışarı aktarılacak yapıtları belirterek ExportPipeline 'ı el ile çalıştırırsınız.  
   * İçeri aktarma tetikleyicisi etkinse, ımportpipeline otomatik olarak çalışır. Ardışık düzen eylemsizlik kullanarak el ile de çalıştırılabilir. 
-  * Şu anda en fazla **10 yapıt** , her ardışık düzen eylemsizlik ile aktarılabilir.
+  * Şu anda en fazla **50 Yapıt** , her ardışık düzen eylemsizlik ile aktarılabilir.
 
 ### <a name="things-to-know"></a>Bilinmesi gerekenler
 * ExportPipeline ve ımportpipeline genellikle kaynak ve hedef bulutlarla ilişkili farklı Active Directory kiracılarda olur. Bu senaryo, dışarı ve içeri aktarma kaynakları için ayrı yönetilen kimlikler ve Anahtar kasaları gerektirir. Sınama amacıyla, bu kaynaklar aynı buluta yerleştirilebilecek ve kimlikleri paylaşıyor.
@@ -161,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-Komut çıkışında, işlem hattının kaynak KIMLIĞINI () göz önünde edin `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+Komut çıkışında, işlem hattının kaynak KIMLIĞINI () göz önünde edin `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örnek:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -207,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI () göz önünde bulabilirsiniz `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örneğin:
+İçeri aktarmayı el ile çalıştırmayı planlıyorsanız, işlem hattının kaynak KIMLIĞINI () göz önünde bulabilirsiniz `id` . Bu değeri daha sonra kullanmak için [az Deployment Group Show][az-deployment-group-show]' i çalıştırarak bir ortam değişkeninde saklayabilirsiniz. Örnek:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -336,7 +337,7 @@ az deployment group delete \
 * **AzCopy sorunları**
   * Bkz. [AzCopy sorunlarını giderme](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
 * **Yapıt aktarma sorunları**
-  * Tüm yapıtlar veya hiçbiri aktarılmaz. Dışarı aktarma çalıştırmasında yapıtların yazımını ve dışarı aktarma ve içeri aktarma çalıştırmalarının blob adını onaylayın. En fazla 10 yapıt aktaraldığınızı onaylayın.
+  * Tüm yapıtlar veya hiçbiri aktarılmaz. Dışarı aktarma çalıştırmasında yapıtların yazımını ve dışarı aktarma ve içeri aktarma çalıştırmalarının blob adını onaylayın. En fazla 50 Yapıt aktaraldığınızı onaylayın.
   * İşlem hattı çalıştırması tamamlanmamış olabilir. Bir dışarı aktarma veya içeri aktarma çalıştırması biraz zaman alabilir. 
   * Diğer işlem hattı sorunları için Azure Container Registry ekibine dışarı aktarma çalıştırmasının veya içeri aktarma çalıştırmasının dağıtım [BAĞıNTı kimliğini](../azure-resource-manager/templates/deployment-history.md) sağlayın.
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 16e1dba8c430a5c1e1d1d69910b8ed2c8d0b8138
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aeae50c9cb7497c20f785f2a32c96f5a4fdec1e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81262851"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186988"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Windows çalıştıran bir sanal makinede Azure Tanılama etkinleştirmek için PowerShell 'i kullanma
 
@@ -30,11 +31,13 @@ Uzantı yapılandırmasını Kaynak Yöneticisi şablonuna ekleyerek, Azure Reso
 
 Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulmuş mevcut bir VM 'de tanılama uzantısını etkinleştirmek için, aşağıda gösterildiği gibi [set-Azvmdiagnosticsextenma](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) PowerShell cmdlet 'ini kullanabilirsiniz.
 
-    $vm_resourcegroup = "myvmresourcegroup"
-    $vm_name = "myvm"
-    $diagnosticsconfig_path = "DiagnosticsPubConfig.xml"
+```azurepowershell
+$vm_resourcegroup = "myvmresourcegroup"
+$vm_name = "myvm"
+$diagnosticsconfig_path = "DiagnosticsPubConfig.xml"
 
-    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
+Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
+```
 
 
 *$diagnosticsconfig _path* , aşağıdaki [örnekte](#sample-diagnostics-configuration) açıklandığı gibi, XML 'de tanılama yapılandırmasını içeren dosyanın yoludur.  
@@ -45,18 +48,24 @@ Tanılama yapılandırmasında **Storageaccount** belirtilmemişse, cmdlet 'e *s
 
 Tanılama depolama hesabı VM 'den farklı bir abonelikte yer alıyorsa, cmdlet 'e *storageAccountName* ve *storageaccountkey* parametrelerini açıkça geçirmeniz gerekir. Tanılama depolama hesabı aynı abonelikte olduğunda *Storageaccountkey* parametresi gerekli değildir. cmdlet, tanılama uzantısını etkinleştirirken anahtar değerini otomatik olarak sorgulayabilir ve ayarlayabilir. Ancak, tanılama depolama hesabı farklı bir abonelikte ise, cmdlet anahtarı otomatik olarak alamaz ve anahtarı *Storageaccountkey* parametresi aracılığıyla açıkça belirtmeniz gerekir.  
 
-    Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
+```azurepowershell
+Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
+```
 
 Tanılama uzantısı bir VM 'de etkinleştirildikten sonra, [Get-Azvmdiagnosticsextenma](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) cmdlet 'ini kullanarak geçerli ayarları alabilirsiniz.
 
-    Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
+```azurepowershell
+Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
+```
 
 Cmdlet 'i, tanılama yapılandırmasını içeren *Publicsettings*' i döndürür. WadCfg ve xmlCfg olmak üzere iki tür yapılandırma desteklenir. WadCfg, JSON yapılandırması ve xmlCfg, Base64 kodlamalı bir biçimde XML yapılandırması. XML 'yi okumak için, bu dosyanın kodunu çözmelisiniz.
 
-    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
-    $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
-    $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
-    Write-Host $xmlconfig
+```azurepowershell
+$publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
+$encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
+$xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
+Write-Host $xmlconfig
+```
 
 [Remove-Azvmdiagnosticsextenma](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) CMDLET 'i VM 'den tanılama uzantısını kaldırmak için kullanılabilir.  
 
@@ -66,16 +75,20 @@ Cmdlet 'i, tanılama yapılandırmasını içeren *Publicsettings*' i döndürü
 
 Klasik dağıtım modeli aracılığıyla oluşturduğunuz bir VM 'de bir tanılama uzantısını etkinleştirmek için [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) cmdlet 'ini kullanabilirsiniz. Aşağıdaki örnek, tanılama uzantısı etkin olan klasik dağıtım modeli aracılığıyla yeni bir VM oluşturmayı gösterir.
 
-    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
-    $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
+```azurepowershell
+$VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+$VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
+$VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
+```
 
 Klasik dağıtım modeli aracılığıyla oluşturulmuş mevcut bir VM 'de tanılama uzantısını etkinleştirmek için önce VM yapılandırmasını almak üzere [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) cmdlet 'ini kullanın. Daha sonra [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) cmdlet 'ini kullanarak tanılama uzantısını IÇERECEK şekilde VM yapılandırmasını güncelleştirin. Son olarak, [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)kullanarak GÜNCELLEŞTIRILMIŞ yapılandırmayı VM 'ye uygulayın.
 
-    $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
-    $VM_Update = Set-AzureVMDiagnosticsExtension  -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
-    Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
+```azurepowershell
+$VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
+$VM_Update = Set-AzureVMDiagnosticsExtension  -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
+```
 
 ## <a name="sample-diagnostics-configuration"></a>Örnek tanılama yapılandırması
 Aşağıdaki XML, yukarıdaki betiklerle tanılama genel yapılandırması için kullanılabilir. Bu örnek yapılandırma, Windows olay günlüklerindeki uygulama, güvenlik ve sistem kanallarındaki hatalar ve tanılama altyapısı günlüklerinden hata ile birlikte çeşitli performans sayaçlarını tanılama depolama hesabına aktaracaktır.

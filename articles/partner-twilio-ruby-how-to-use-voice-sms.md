@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637194"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170709"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby 'de ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -38,10 +38,12 @@ TwiML, bir çağrıyı veya SMS 'nin nasıl işleyeceğini bildiren bir Twilio X
 
 Örnek olarak, aşağıdaki TwiML metin **Merhaba Dünya** konuşmaya dönüştürür.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-       <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+    <Say>Hello World</Say>
+</Response>
+```
 
 Tüm TwiML belgelerinin `<Response>` kök öğesi vardır. Buradan, Twilio fiillerini kullanarak uygulamanızın davranışını tanımlayabilirsiniz.
 
@@ -82,28 +84,36 @@ Aşağıdaki örneklerde, Ruby için çok basit bir Web çerçevesi olan [Sinatr
 
 Yeni sanal makinenize SSH ekleyin ve yeni uygulamanız için bir dizin oluşturun. Bu dizinin içinde, Gemfile adlı bir dosya oluşturun ve aşağıdaki kodu buna kopyalayın:
 
-    source 'https://rubygems.org'
-    gem 'sinatra'
-    gem 'thin'
+```bash
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'thin'
+```
 
 Komut satırı çalıştırın `bundle install` . Bu işlem yukarıdaki bağımlılıkları yükler. Ardından adlı bir dosya oluşturun `web.rb` . Bu, Web uygulamanız için kodun bulunacağı yerdir. Aşağıdaki kodu içine yapıştırın:
 
-    require 'sinatra'
+```ruby
+require 'sinatra'
 
-    get '/' do
-        "Hello Monkey!"
-    end
+get '/' do
+    "Hello Monkey!"
+end
+```
 
 Bu noktada komutunu çalıştırabilirsiniz `ruby web.rb -p 5000` . Bu, 5000 numaralı bağlantı noktasında küçük bir Web sunucusu kullanacaktır. Azure VM 'niz için ayarladığınız URL 'YI ziyaret ederek tarayıcınızda bu uygulamaya gözatabilmelisiniz. Web uygulamanıza tarayıcıda ulabilmeniz için, bir Twilio uygulaması oluşturmaya başlamaya hazırsınız demektir.
 
 ## <a name="configure-your-application-to-use-twilio"></a><a id="configure_app"></a>Uygulamanızı Twilio kullanacak şekilde yapılandırma
 Web uygulamanızı `Gemfile` Şu satırı içerecek şekilde güncelleştirerek Twilio kitaplığını kullanacak şekilde yapılandırabilirsiniz:
 
-    gem 'twilio-ruby'
+```bash
+gem 'twilio-ruby'
+```
 
 Komut satırında komutunu çalıştırın `bundle install` . Şimdi açın `web.rb` ve bu satırı en üstte dahil edin:
 
-    require 'twilio-ruby'
+```ruby
+require 'twilio-ruby'
+```
 
 Artık, Web uygulamanızda Ruby için Twilio yardımcı kitaplığını kullanmak üzere hazırsınız.
 
@@ -112,33 +122,35 @@ Aşağıda, giden bir çağrının nasıl yapılacağı gösterilmektedir. Temel
 
 Bu işlevi şu şekilde ekleyin `web.md` :
 
-    # Set your account ID and authentication token.
-    sid = "your_twilio_account_sid";
-    token = "your_twilio_authentication_token";
+```ruby
+# Set your account ID and authentication token.
+sid = "your_twilio_account_sid";
+token = "your_twilio_authentication_token";
 
-    # The number of the phone initiating the call.
-    # This should either be a Twilio number or a number that you've verified
-    from = "NNNNNNNNNNN";
+# The number of the phone initiating the call.
+# This should either be a Twilio number or a number that you've verified
+from = "NNNNNNNNNNN";
 
-    # The number of the phone receiving call.
-    to = "NNNNNNNNNNN";
+# The number of the phone receiving call.
+to = "NNNNNNNNNNN";
 
-    # Use the Twilio-provided site for the TwiML response.
-    url = "http://yourdomain.cloudapp.net/voice_url";
+# Use the Twilio-provided site for the TwiML response.
+url = "http://yourdomain.cloudapp.net/voice_url";
 
-    get '/make_call' do
-      # Create the call client.
-      client = Twilio::REST::Client.new(sid, token);
+get '/make_call' do
+    # Create the call client.
+    client = Twilio::REST::Client.new(sid, token);
 
-      # Make the call
-      client.account.calls.create(to: to, from: from, url: url)
-    end
+    # Make the call
+    client.account.calls.create(to: to, from: from, url: url)
+end
 
-    post '/voice_url' do
-      "<Response>
-         <Say>Hello Monkey!</Say>
-       </Response>"
-    end
+post '/voice_url' do
+    "<Response>
+        <Say>Hello Monkey!</Say>
+    </Response>"
+end
+```
 
 `http://yourdomain.cloudapp.net/make_call`Bir tarayıcıda açarsanız, telefon çağrısını yapmak Için TWILIO API 'sine yapılan çağrıyı tetikler. İçindeki ilk iki parametre `client.account.calls.create` oldukça kendi kendine açıklayıcıdır: çağrının sayısı `from` ve çağrının numarası `to` . 
 
@@ -151,11 +163,13 @@ Bu işlevi şu şekilde ekleyin `web.md` :
 
 Gelen SMS iletilerini işlemek istiyoruz, bu nedenle URL 'yi şu şekilde güncelleştirelim `http://yourdomain.cloudapp.net/sms_url` . Devam edin ve sayfanın altındaki Değişiklikleri Kaydet ' e tıklayın. Şimdi, artık `web.rb` uygulamamız bu uygulamayı işleyecek şekilde programlayalım:
 
-    post '/sms_url' do
-      "<Response>
-         <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
-       </Response>"
-    end
+```ruby
+post '/sms_url' do
+    "<Response>
+        <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
+    </Response>"
+end
+```
 
 Değişikliği yaptıktan sonra, Web uygulamanızı yeniden başlattığınızdan emin olun. Şimdi telefonunuzu yanınıza alın ve Twilio numaranız için SMS gönderin. "Selam, ping için teşekkürler!" yazan bir SMS yanıtını hemen almalısınız. Twilio ve Azure rock! ".
 

@@ -3,11 +3,12 @@ title: Şema örnekleri dizini
 description: Azure Blueprints ile ortamlar, ilkeler ve Bulut Benimseme Çerçevesi temelleri dağıtmak için uyumluluk ve standart örnek dizini.
 ms.date: 07/01/2020
 ms.topic: sample
-ms.openlocfilehash: 7e45cbbbf7cf6c2e267156dbb0087a19d8288aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832330"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181565"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints örnekleri
 
@@ -15,7 +16,7 @@ Aşağıdaki tabloda Azure Blueprints'e ait örneklerin bağlantıları yer alı
 
 ## <a name="standards-based-blueprint-samples"></a>Standartlara dayalı şema örnekleri
 
-|  |  |
+| Örnek | Açıklama |
 |---------|---------|
 | [ISM İLE KORUNAN Avustralya Kamu](./ism-protected/control-mapping.md) | ISM İLE KORUNAN Avustralya Kamu’ya uyumluluk için korkuluklar sağlar. |
 | [Azure Güvenlik Karşılaştırması](./azure-security-benchmark.md) | [Azure Güvenlik Karşılaştırması](../../../security/benchmarks/overview.md) uyumluluğu için koruma sağlar. |

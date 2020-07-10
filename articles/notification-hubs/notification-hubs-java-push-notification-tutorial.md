@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecfd6bf9d20309619155bf35c87bdb4c08665f73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263872"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169553"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java 'dan Notification Hubs kullanma
 
@@ -50,7 +51,9 @@ SDK Şu anda şunları destekler:
 
 Oluşturmak için:
 
-    mvn package
+```cmd
+mvn package
+```
 
 ## <a name="code"></a>Kod
 
@@ -58,126 +61,126 @@ Oluşturmak için:
 
 **NamespaceManager oluşturma:**
 
-    ```java
-    NamespaceManager namespaceManager = new NamespaceManager("connection string")
-    ```
+```java
+NamespaceManager namespaceManager = new NamespaceManager("connection string")
+```
 
 **Bildirim Hub 'ı oluştur:**
 
-    ```java
-    NotificationHubDescription hub = new NotificationHubDescription("hubname");
-    hub.setWindowsCredential(new WindowsCredential("sid","key"));
-    hub = namespaceManager.createNotificationHub(hub);
-    ```
+```java
+NotificationHubDescription hub = new NotificationHubDescription("hubname");
+hub.setWindowsCredential(new WindowsCredential("sid","key"));
+hub = namespaceManager.createNotificationHub(hub);
+```
 
  OR
 
-    ```java
-    hub = new NotificationHub("connection string", "hubname");
-    ```
+```java
+hub = new NotificationHub("connection string", "hubname");
+```
 
 **Bildirim Hub 'ı al:**
 
-    ```java
-    hub = namespaceManager.getNotificationHub("hubname");
-    ```
+```java
+hub = namespaceManager.getNotificationHub("hubname");
+```
 
 **Bildirim Hub 'ını güncelleştir:**
 
-    ```java
-    hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
-    hub = namespaceManager.updateNotificationHub(hub);
-    ```
+```java
+hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
+hub = namespaceManager.updateNotificationHub(hub);
+```
 
 **Bildirim Hub 'ını Sil:**
 
-    ```java
-    namespaceManager.deleteNotificationHub("hubname");
-    ```
+```java
+namespaceManager.deleteNotificationHub("hubname");
+```
 
 ### <a name="registration-cruds"></a>Kayıt CRUDs
 
 **Bir Bildirim Hub 'ı istemcisi oluşturun:**
 
-    ```java
-    hub = new NotificationHub("connection string", "hubname");
-    ```
+```java
+hub = new NotificationHub("connection string", "hubname");
+```
 
 **Windows kaydı oluştur:**
 
-    ```java
-    WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
-    reg.getTags().add("myTag");
-    reg.getTags().add("myOtherTag");
-    hub.createRegistration(reg);
-    ```
+```java
+WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
+reg.getTags().add("myTag");
+reg.getTags().add("myOtherTag");
+hub.createRegistration(reg);
+```
 
 **İOS kaydı oluşturma:**
 
-    ```java
-    AppleRegistration reg = new AppleRegistration(DEVICETOKEN);
-    reg.getTags().add("myTag");
-    reg.getTags().add("myOtherTag");
-    hub.createRegistration(reg);
-    ```
+```java
+AppleRegistration reg = new AppleRegistration(DEVICETOKEN);
+reg.getTags().add("myTag");
+reg.getTags().add("myOtherTag");
+hub.createRegistration(reg);
+```
 
 Benzer şekilde, Android (FCM), Windows Phone (MPNS) ve MPR Le Fire (ADM) için kayıtlar oluşturabilirsiniz.
 
 **Şablon kaydı oluştur:**
 
-    ```java
-    WindowsTemplateRegistration reg = new WindowsTemplateRegistration(new URI(CHANNELURI), WNSBODYTEMPLATE);
-    reg.getHeaders().put("X-WNS-Type", "wns/toast");
-    hub.createRegistration(reg);
-    ```
+```java
+WindowsTemplateRegistration reg = new WindowsTemplateRegistration(new URI(CHANNELURI), WNSBODYTEMPLATE);
+reg.getHeaders().put("X-WNS-Type", "wns/toast");
+hub.createRegistration(reg);
+```
 
 **Kayıt KIMLIĞI oluştur + upsert model kullanarak kayıt oluşturma:**
 
 Kayıt kimliklerini cihazda depoluyorsanız kayıp yanıtları nedeniyle yinelenenleri kaldırır:
 
-    ```java
-    String id = hub.createRegistrationId();
-    WindowsRegistration reg = new WindowsRegistration(id, new URI(CHANNELURI));
-    hub.upsertRegistration(reg);
-    ```
+```java
+String id = hub.createRegistrationId();
+WindowsRegistration reg = new WindowsRegistration(id, new URI(CHANNELURI));
+hub.upsertRegistration(reg);
+```
 
 **Kayıtları güncelleştir:**
 
-    ```java
-    hub.updateRegistration(reg);
-    ```
+```java
+hub.updateRegistration(reg);
+```
 
 **Kayıtları Sil:**
 
-    ```java
-    hub.deleteRegistration(regid);
-    ```
+```java
+hub.deleteRegistration(regid);
+```
 
 **Sorgu kayıtları:**
 
 * **Tek kayıt al:**
 
-    ```java
-    hub.getRegistration(regid);
-    ```
+```java
+hub.getRegistration(regid);
+```
 
 * **Hub 'daki tüm kayıtları al:**
 
-    ```java
-    hub.getRegistrations();
-    ```
+```java
+hub.getRegistrations();
+```
 
 * **Etikete sahip kayıtları al:**
 
-    ```java
-    hub.getRegistrationsByTag("myTag");
-    ```
+```java
+hub.getRegistrationsByTag("myTag");
+```
 
 * **Kanala göre kayıtları al:**
 
-    ```java
-    hub.getRegistrationsByChannel("devicetoken");
-    ```
+```java
+hub.getRegistrationsByChannel("devicetoken");
+```
 
 Tüm koleksiyon sorguları $top ve devamlılık belirteçlerini destekler.
 
@@ -191,52 +194,52 @@ Arka uçta yalnızca tek bir çağrı yapmanız gerekir `CreateOrUpdateInstallat
 
 Amazon Ille Fire için örnek olarak:
 
-    ```java
-    Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
-    hub.createOrUpdateInstallation(installation);
-    ```
+```java
+Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
+hub.createOrUpdateInstallation(installation);
+```
 
 Güncelleştirmek istiyorsanız:
 
-    ```java
-    installation.addTag("foo");
-    installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
-    installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
-    hub.createOrUpdateInstallation(installation);
-    ```
+```java
+installation.addTag("foo");
+installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
+installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
+hub.createOrUpdateInstallation(installation);
+```
 
 Gelişmiş senaryolar için, yükleme nesnesinin yalnızca belirli özelliklerini değiştirmeye izin veren kısmi güncelleştirme özelliğini kullanın. Kısmi güncelleştirme, yükleme nesnesine karşı çalıştırabileceğiniz JSON Patch işlemlerinin bir alt kümesidir.
 
-    ```java
-    PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
-    PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
-    PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{\"data\":{\"key3\":\"$(value3)\"}}","tag-for-template1")).toJson());
-    hub.patchInstallation("installation-id", addChannel, addTag, replaceTemplate);
-    ```
+```java
+PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
+PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
+PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{\"data\":{\"key3\":\"$(value3)\"}}","tag-for-template1")).toJson());
+hub.patchInstallation("installation-id", addChannel, addTag, replaceTemplate);
+```
 
 Yüklemeyi Sil:
 
-    ```java
-    hub.deleteInstallation(installation.getInstallationId());
-    ```
+```java
+hub.deleteInstallation(installation.getInstallationId());
+```
 
 `CreateOrUpdate`, `Patch` ve `Delete` ile en sonunda tutarlıdır `Get` . İsteğiniz işlem, çağrı sırasında yalnızca sistem kuyruğuna gider ve arka planda yürütülür. Get, ana çalışma zamanı senaryosu için tasarlanmamıştır, ancak hata ayıklama ve sorun giderme amacıyla, hizmet tarafından sıkı bir şekilde kısıtlanmıştır.
 
 Yüklemeler için gönderme akışı, kayıtlar için ile aynıdır. Belirli bir yüklemeye yönelik bildirimi hedeflemek için-yalnızca "ınstalstıd: {istenen-id}" etiketini kullanın. Bu durumda, kod şu şekilde olur:
 
-    ```java
-    Notification n = Notification.createWindowsNotification("WNS body");
-    hub.sendNotification(n, "InstallationId:{installation-id}");
-    ```
+```java
+Notification n = Notification.createWindowsNotification("WNS body");
+hub.sendNotification(n, "InstallationId:{installation-id}");
+```
 
 Birçok şablondan biri için:
 
-    ```java
-    Map<String, String> prop =  new HashMap<String, String>();
-    prop.put("value3", "some value");
-    Notification n = Notification.createTemplateNotification(prop);
-    hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
-    ```
+```java
+Map<String, String> prop =  new HashMap<String, String>();
+prop.put("value3", "some value");
+Notification n = Notification.createTemplateNotification(prop);
+hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
+```
 
 ### <a name="schedule-notifications-available-for-standard-tier"></a>Zamanlama bildirimleri (Standart katmanda kullanılabilir)
 
@@ -244,12 +247,12 @@ Normal gönderme ile aynı, ancak bildirimin ne zaman teslim edilmesi gerektiği
 
 **Bir Windows yerel bildirimi zamanlayın:**
 
-    ```java
-    Calendar c = Calendar.getInstance();
-    c.add(Calendar.DATE, 1);
-    Notification n = Notification.createWindowsNotification("WNS body");
-    hub.scheduleNotification(n, c.getTime());
-    ```
+```java
+Calendar c = Calendar.getInstance();
+c.add(Calendar.DATE, 1);
+Notification n = Notification.createWindowsNotification("WNS body");
+hub.scheduleNotification(n, c.getTime());
+```
 
 ### <a name="importexport-available-for-standard-tier"></a>İçeri/dışarı aktarma (Standart katmanda kullanılabilir)
 
@@ -257,39 +260,39 @@ Kayıtlara karşı toplu işlem yapmanız gerekebilir. Genellikle, etiketleri g�
 
 **Dışarı aktarma işi gönder:**
 
-    ```java
-    NotificationHubJob job = new NotificationHubJob();
-    job.setJobType(NotificationHubJobType.ExportRegistrations);
-    job.setOutputContainerUri("container uri with SAS signature");
-    job = hub.submitNotificationHubJob(job);
-    ```
+```java
+NotificationHubJob job = new NotificationHubJob();
+job.setJobType(NotificationHubJobType.ExportRegistrations);
+job.setOutputContainerUri("container uri with SAS signature");
+job = hub.submitNotificationHubJob(job);
+```
 
 **İçeri aktarma işi gönder:**
 
-    ```java
-    NotificationHubJob job = new NotificationHubJob();
-    job.setJobType(NotificationHubJobType.ImportCreateRegistrations);
-    job.setImportFileUri("input file uri with SAS signature");
-    job.setOutputContainerUri("container uri with SAS signature");
-    job = hub.submitNotificationHubJob(job);
-    ```
+```java
+NotificationHubJob job = new NotificationHubJob();
+job.setJobType(NotificationHubJobType.ImportCreateRegistrations);
+job.setImportFileUri("input file uri with SAS signature");
+job.setOutputContainerUri("container uri with SAS signature");
+job = hub.submitNotificationHubJob(job);
+```
 
 **Bir iş tamamlanana kadar bekleyin:**
 
-    ```java
-    while(true){
-        Thread.sleep(1000);
-        job = hub.getNotificationHubJob(job.getJobId());
-        if(job.getJobStatus() == NotificationHubJobStatus.Completed)
-            break;
-    }
-    ```
+```java
+while(true){
+    Thread.sleep(1000);
+    job = hub.getNotificationHubJob(job.getJobId());
+    if(job.getJobStatus() == NotificationHubJobStatus.Completed)
+        break;
+}
+```
 
 **Tüm işleri al:**
 
-    ```java
-    List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
-    ```
+```java
+List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
+```
 
 **SAS imzası olan URI:**
 
@@ -301,73 +304,73 @@ Bildirim nesnesi yalnızca üst bilgileri olan bir gövdedir, bazı yardımcı y
 
 * **Windows Mağazası ve Windows Phone 8,1 (Silverlight olmayan)**
 
-    ```java
-    String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
-    Notification n = Notification.createWindowsNotification(toast);
-    hub.sendNotification(n);
-    ```
+```java
+String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
+Notification n = Notification.createWindowsNotification(toast);
+hub.sendNotification(n);
+```
 
 * **iOS**
 
-    ```java
-    String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
-    Notification n = Notification.createAppleNotification(alert);
-    hub.sendNotification(n);
-    ```
+```java
+String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
+Notification n = Notification.createAppleNotification(alert);
+hub.sendNotification(n);
+```
 
 * **Android**
 
-    ```java
-    String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
-    Notification n = Notification.createFcmNotification(message);
-    hub.sendNotification(n);
-    ```
+```java
+String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
+Notification n = Notification.createFcmNotification(message);
+hub.sendNotification(n);
+```
 
 * **Windows Phone 8,0 ve 8,1 Silverlight**
 
-    ```java
-    String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<wp:Notification xmlns:wp=\"WPNotification\">" +
-                    "<wp:Toast>" +
-                        "<wp:Text1>Hello from Java!</wp:Text1>" +
-                    "</wp:Toast> " +
-                "</wp:Notification>";
-    Notification n = Notification.createMpnsNotification(toast);
-    hub.sendNotification(n);
-    ```
+```java
+String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<wp:Notification xmlns:wp=\"WPNotification\">" +
+                "<wp:Toast>" +
+                    "<wp:Text1>Hello from Java!</wp:Text1>" +
+                "</wp:Toast> " +
+            "</wp:Notification>";
+Notification n = Notification.createMpnsNotification(toast);
+hub.sendNotification(n);
+```
 
 * **Lütfen yangın ateş**
 
-    ```java
-    String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
-    Notification n = Notification.createAdmNotification(message);
-    hub.sendNotification(n);
-    ```
+```java
+String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
+Notification n = Notification.createAdmNotification(message);
+hub.sendNotification(n);
+```
 
 * **Etiketlere gönder**
   
-    ```java
-    Set<String> tags = new HashSet<String>();
-    tags.add("boo");
-    tags.add("foo");
-    hub.sendNotification(n, tags);
-    ```
+```java
+Set<String> tags = new HashSet<String>();
+tags.add("boo");
+tags.add("foo");
+hub.sendNotification(n, tags);
+```
 
 * **Etiket ifadesine gönder**
 
-    ```java
-    hub.sendNotification(n, "foo && ! bar");
-    ```
+```java
+hub.sendNotification(n, "foo && ! bar");
+```
 
 * **Şablon bildirimi gönder**
 
-    ```java
-    Map<String, String> prop =  new HashMap<String, String>();
-    prop.put("prop1", "v1");
-    prop.put("prop2", "v2");
-    Notification n = Notification.createTemplateNotification(prop);
-    hub.sendNotification(n);
-    ```
+```java
+Map<String, String> prop =  new HashMap<String, String>();
+prop.put("prop1", "v1");
+prop.put("prop2", "v2");
+Notification n = Notification.createTemplateNotification(prop);
+hub.sendNotification(n);
+```
 
 Java kodunuzun çalıştırılması artık hedef cihazınızda bir bildirim oluşturacak.
 

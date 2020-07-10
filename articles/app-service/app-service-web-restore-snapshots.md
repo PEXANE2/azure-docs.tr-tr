@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255145"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169994"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure 'da bir uygulamayı bir anlık görüntüden geri yükleme
 Bu makalede bir anlık görüntüden [Azure App Service](../app-service/overview.md) bir uygulamanın nasıl geri yükleneceği gösterilmektedir. Uygulamanızı uygulamanızın anlık görüntülerinden birine göre önceki bir duruma geri yükleyebilirsiniz. Anlık görüntü yedeklemesini etkinleştirmeniz gerekmez, platform veri kurtarma amacıyla tüm uygulamaların anlık görüntüsünü otomatik olarak kaydeder.
@@ -36,15 +37,15 @@ Anlık görüntülerden geri yükleme, **Premium** katmanda veya üzeri sürüml
 
 1. [Azure Portal](https://portal.azure.com)uygulamanızın **Ayarlar** **sayfasında yedeklemeler sayfasını göstermek** için **yedeklemeler** ' e tıklayın. Ardından **anlık görüntü (Önizleme)** bölümünün altında **geri yükle** ' ye tıklayın.
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![Anlık görüntü yedeklemesinden bir uygulamanın nasıl geri yükleneceğini gösteren ekran görüntüsü.](./media/app-service-web-restore-snapshots/1.png)
 
 2. **Geri yükle** sayfasında geri yüklenecek anlık görüntüyü seçin.
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![Geri yüklenecek anlık görüntünün nasıl seçdiğinin gösterildiği ekran görüntüsü. ](./media/app-service-web-restore-snapshots/2.png)
    
 3. **Geri yükleme hedefinde**uygulama geri yükleme hedefini belirtin.
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![Geri yükleme hedefinin nasıl belirtildiğinin gösterildiği ekran görüntüsü.](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
    > **Üzerine yaz**seçeneğini belirlerseniz, uygulamanızın geçerli dosya sistemindeki tüm mevcut veriler silinir ve üzerine yazılır. **Tamam**' a tıklamadan önce, yapmak istediğiniz durum olduğundan emin olun.
@@ -60,6 +61,6 @@ Anlık görüntülerden geri yükleme, **Premium** katmanda veya üzeri sürüml
 
 4. Site yapılandırmanızı geri yüklemeyi seçebilirsiniz.
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![Site yapılandırmasını geri yüklemeyi gösteren ekran görüntüsü.](./media/app-service-web-restore-snapshots/4.png)
 
-5. **Tamam**'a tıklayın.
+5. **Tamam** düğmesine tıklayın.

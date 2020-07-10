@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 18c6e9aac220d7e76a82a2abded6840db931f2d1
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057730"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170641"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programlı olarak Azure abonelikleri oluşturma (Önizleme)
 
@@ -26,7 +26,7 @@ Bir Azure aboneliğini programlı bir şekilde oluşturduğunuzda, bu abonelik M
 
 EA abonelikleri oluşturmak için aşağıdaki bölümlerdeki bilgileri kullanın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Abonelik oluşturmak için bir kayıt hesabında sahip rolüne sahip olmanız gerekir. Rolü almanın iki yolu vardır:
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Evet      | Dize | Abonelik teklifi. EA 'nın iki seçeneği [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-azr-0148p](https://azure.microsoft.com/offers/ms-azr-0148p/) (GELIŞTIRME/test, [EA Portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
 | `owners`      | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının nesne KIMLIĞI.  |
 
-Yanıtta, bir `subscriptionOperation` nesneyi izleme için geri alırsınız. Abonelik oluşturma işlemi tamamlandığında, `subscriptionOperation` nesne, `subscriptionLink` abonelik kimliği olan bir nesne döndürür.
+Yanıtta, izleme için bir URL geri alacaksınız `Location` . Abonelik oluşturma işlemi tamamlandığında, URL 'yi al, `Location` `subscriptionLink` abonelik kimliği olan bir nesne döndürür. Daha ayrıntılı bilgi için [abonelik API 'si belgelerine](https://docs.microsoft.com/rest/api/subscription/) başvurun
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -212,7 +212,7 @@ Tüm parametrelerin tam listesini görmek için, bkz. [az Account Create](/cli/a
 
 ## <a name="create-subscriptions-for-an-mca-account"></a>MCA hesabı için abonelikler oluşturma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Abonelik oluşturmak için bir fatura bölümünde veya bir faturalandırma hesabındaki sahip veya katkıda bulunan rolünde sahip, katkıda bulunan veya Azure abonelik Oluşturucu rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [Abonelik faturalama rolleri ve görevleri](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
@@ -353,7 +353,7 @@ Yanıtta, bir `subscriptionCreationResult` nesneyi izleme için geri alırsını
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>MPA faturalandırma hesabı için abonelikler oluşturma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Faturalandırma hesabınız için abonelik oluşturmak üzere kuruluşunuzun bulut çözümü sağlayıcısı hesabında bir genel yönetici veya yönetici aracı rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi-Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview).
 

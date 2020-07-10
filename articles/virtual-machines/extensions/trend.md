@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919932"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186971"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak
 
@@ -61,10 +62,12 @@ Aracıyı var olan bir VM 'ye yüklemek için aşağıdaki öğeler gereklidir:
 
 İlk olarak, VM aracısının zaten yüklü olduğunu doğrulayın. Bulut hizmeti adını ve sanal makine adını doldurup yönetici düzeyinde bir Azure PowerShell komut isteminde aşağıdaki komutları çalıştırın. < ve > karakterler dahil olmak üzere tırnak içindeki her şeyi değiştirin.
 
-    $CSName = "<cloud service name>"
-    $VMName = "<virtual machine name>"
-    $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
-    write-host $vm.VM.ProvisionGuestAgent
+```azurepowershell
+$CSName = "<cloud service name>"
+$VMName = "<virtual machine name>"
+$vm = Get-AzureVM -ServiceName $CSName -Name $VMName
+write-host $vm.VM.ProvisionGuestAgent
+```
 
 Bulut hizmeti ve sanal makine adını bilmiyorsanız, geçerli aboneliğinizdeki tüm sanal makineler için bu bilgileri göstermek üzere **Get-AzureVM** ' i çalıştırın.
 
@@ -72,9 +75,11 @@ Bulut hizmeti ve sanal makine adını bilmiyorsanız, geçerli aboneliğinizdeki
 
 VM Aracısı yüklüyse, bu komutları çalıştırın.
 
-    $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
+```azurepowershell
+$Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
-    Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aracının yüklendiğinde çalışmaya başlaması birkaç dakika sürer. Bundan sonra, derin Güvenlik Yöneticisi tarafından yönetilebilmesi için sanal makinede derin güvenliği etkinleştirmeniz gerekir. Ek yönergeler için aşağıdaki makalelere bakın:

@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 57dbec2b91d313c9c93c141c9f3ec839a299d47d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385493"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170063"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio Verify uygulamasını Azure Active Directory B2C ile tümleştirme
 
 Bu kılavuzda, Azure Active Directory B2C (Azure AD B2C) ' de bir örnek çevrimiçi ödeme uygulamasını Twilio Verify API 'siyle tümleştirmeyi öğrenin. Azure AD B2C müşteriler, Twilio Verify uygulamasını kullanarak, dinamik bağlama ve güçlü müşteri kimlik doğrulaması aracılığıyla PSD2 (ödeme hizmetleri yönerge 2) işlem gereksinimleriyle uyumlu olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -42,7 +42,7 @@ Aşağıdaki bileşenler Twilio çözümünü yapar:
 
     ![Twilio akışı](media/partner-twilio/twilio-flow.png)
 
-|      |      |
+| Adım | Açıklama |
 |------|------|
 | 1     | Kullanıcı oturum açma veya PSD2 demo uygulamasına kaydolma işlemini başlatır. Kullanıcının kimliği, Azure AD B2C Birleşik oturum açma ve kaydolma ilkesi aracılığıyla doğrulanır. Uygulamaya bir belirteç döndürülür. Kaydolma sırasında kullanıcının telefon numarası SMS/Phone kullanılarak doğrulanır ve Azure AD B2C hesabına kaydedilir.     |
 | 2     | Kullanıcı, $50,00 aktarımı gibi yüksek riskli bir işlem başlatır. Kullanıcının geçerli erişim belirteci, kullanıcının bir adım adım özel ilke aracılığıyla zaten kimlik doğrulamasının yapılıp kalmadığını tespit etmek üzere PolicyId için değerlendirilir.     |

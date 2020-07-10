@@ -6,19 +6,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807165"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186750"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure Resource Manager için PowerShell 'i kullanarak Azure Application Gateway için özel bir araştırma oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -91,7 +91,7 @@ Uygulama ağ geçidini oluşturmadan önce tüm yapılandırma öğelerini ayarl
 |---|---|
 | **Ağ geçidi IP yapılandırması** | Uygulama ağ geçidi için bir IP yapılandırması.|
 | **Arka uç havuzu** | Web uygulamasını barındıran uygulama sunucularına yönelik IP adresleri, FQDN 'ler veya NIC 'ler havuzu|
-| **Durum yoklaması** | Arka uç havuzu üyelerinin durumunu izlemek için kullanılan özel bir araştırma|
+| **Durumu araştırması** | Arka uç havuzu üyelerinin durumunu izlemek için kullanılan özel bir araştırma|
 | **HTTP ayarları** | Bağlantı noktası, protokol, tanımlama bilgisi tabanlı benzeşim, araştırma ve zaman aşımı dahil olmak üzere ayarların koleksiyonu.  Bu ayarlar trafiğin arka uç havuzu üyelerine nasıl yönlendirildiğini belirleme|
 | **Ön uç bağlantı noktası** | Uygulama ağ geçidinin trafiği dinlediği bağlantı noktası|
 | **Dinleyici** | Protokol, ön uç IP yapılandırması ve ön uç bağlantı noktası birleşimi. Bu, gelen istekleri dinler.

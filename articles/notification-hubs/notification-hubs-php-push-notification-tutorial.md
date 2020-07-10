@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1c4bf0569d6e2e595eb03c85abba7224b25b1864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb2d2d33d380819a88da57a78c449e22256bf41b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255458"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169536"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP 'den Notification Hubs kullanma
 
@@ -40,16 +40,16 @@ Ana istemci arabirimi, bu sitede mevcut olan tüm öğreticileri ve örnekleri d
 
 Örneğin, bir istemci oluşturmak için:
 
-    ```php
-    $hub = new NotificationHub("connection string", "hubname");
-    ```
+```php
+$hub = new NotificationHub("connection string", "hubname");
+```
 
 İOS yerel bildirimi göndermek için:
 
-    ```php
-    $notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
+$hub->sendNotification($notification, null);
+```
 
 ## <a name="implementation"></a>Uygulama
 
@@ -66,39 +66,39 @@ Tam REST sarmalayıcı uygulamak için tüm ayrıntılar [MSDN](https://msdn.mic
 
 Aşağıda, bağlantı dizesini çözümleyen Oluşturucu olan istemciyi uygulayan ana sınıf verilmiştir:
 
-    ```php
-    class NotificationHub {
-        const API_VERSION = "?api-version=2013-10";
+```php
+class NotificationHub {
+    const API_VERSION = "?api-version=2013-10";
 
-        private $endpoint;
-        private $hubPath;
-        private $sasKeyName;
-        private $sasKeyValue;
+    private $endpoint;
+    private $hubPath;
+    private $sasKeyName;
+    private $sasKeyValue;
 
-        function __construct($connectionString, $hubPath) {
-            $this->hubPath = $hubPath;
+    function __construct($connectionString, $hubPath) {
+        $this->hubPath = $hubPath;
 
-            $this->parseConnectionString($connectionString);
+        $this->parseConnectionString($connectionString);
+    }
+
+    private function parseConnectionString($connectionString) {
+        $parts = explode(";", $connectionString);
+        if (sizeof($parts) != 3) {
+            throw new Exception("Error parsing connection string: " . $connectionString);
         }
 
-        private function parseConnectionString($connectionString) {
-            $parts = explode(";", $connectionString);
-            if (sizeof($parts) != 3) {
-                throw new Exception("Error parsing connection string: " . $connectionString);
-            }
-
-            foreach ($parts as $part) {
-                if (strpos($part, "Endpoint") === 0) {
-                    $this->endpoint = "https" . substr($part, 11);
-                } else if (strpos($part, "SharedAccessKeyName") === 0) {
-                    $this->sasKeyName = substr($part, 20);
-                } else if (strpos($part, "SharedAccessKey") === 0) {
-                    $this->sasKeyValue = substr($part, 16);
-                }
+        foreach ($parts as $part) {
+            if (strpos($part, "Endpoint") === 0) {
+                $this->endpoint = "https" . substr($part, 11);
+            } else if (strpos($part, "SharedAccessKeyName") === 0) {
+                $this->sasKeyName = substr($part, 20);
+            } else if (strpos($part, "SharedAccessKey") === 0) {
+                $this->sasKeyValue = substr($part, 16);
             }
         }
     }
-    ```
+}
+```
 
 ### <a name="create-a-security-token"></a>Güvenlik belirteci oluşturma
 
@@ -106,48 +106,48 @@ Aşağıda, bağlantı dizesini çözümleyen Oluşturucu olan istemciyi uygulay
 
 `generateSasToken` `NotificationHub` GEÇERLI isteğin URI 'sini ve bağlantı dizesinden ayıklanan kimlik bilgilerini temel alarak belirteci oluşturmak için yöntemini sınıfına ekleyin.
 
-    ```php
-    private function generateSasToken($uri) {
-        $targetUri = strtolower(rawurlencode(strtolower($uri)));
+```php
+private function generateSasToken($uri) {
+    $targetUri = strtolower(rawurlencode(strtolower($uri)));
 
-        $expires = time();
-        $expiresInMins = 60;
-        $expires = $expires + $expiresInMins * 60;
-        $toSign = $targetUri . "\n" . $expires;
+    $expires = time();
+    $expiresInMins = 60;
+    $expires = $expires + $expiresInMins * 60;
+    $toSign = $targetUri . "\n" . $expires;
 
-        $signature = rawurlencode(base64_encode(hash_hmac('sha256', $toSign, $this->sasKeyValue, TRUE)));
+    $signature = rawurlencode(base64_encode(hash_hmac('sha256', $toSign, $this->sasKeyValue, TRUE)));
 
-        $token = "SharedAccessSignature sr=" . $targetUri . "&sig="
-                    . $signature . "&se=" . $expires . "&skn=" . $this->sasKeyName;
+    $token = "SharedAccessSignature sr=" . $targetUri . "&sig="
+                . $signature . "&se=" . $expires . "&skn=" . $this->sasKeyName;
 
-        return $token;
-    }
-    ```
+    return $token;
+}
+```
 
 ### <a name="send-a-notification"></a>Bildirim gönder
 
 İlk olarak, bir bildirimi temsil eden bir sınıf tanımlamamıza izin verin.
 
-    ```php
-    class Notification {
-        public $format;
-        public $payload;
+```php
+class Notification {
+    public $format;
+    public $payload;
 
-        # array with keynames for headers
-        # Note: Some headers are mandatory: Windows: X-WNS-Type, WindowsPhone: X-NotificationType
-        # Note: For Apple you can set Expiry with header: ServiceBusNotification-ApnsExpiry in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
-        public $headers;
+    # array with keynames for headers
+    # Note: Some headers are mandatory: Windows: X-WNS-Type, WindowsPhone: X-NotificationType
+    # Note: For Apple you can set Expiry with header: ServiceBusNotification-ApnsExpiry in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
+    public $headers;
 
-        function __construct($format, $payload) {
-            if (!in_array($format, ["template", "apple", "windows", "fcm", "windowsphone"])) {
-                throw new Exception('Invalid format: ' . $format);
-            }
-
-            $this->format = $format;
-            $this->payload = $payload;
+    function __construct($format, $payload) {
+        if (!in_array($format, ["template", "apple", "windows", "fcm", "windowsphone"])) {
+            throw new Exception('Invalid format: ' . $format);
         }
+
+        $this->format = $format;
+        $this->payload = $payload;
     }
-    ```
+}
+```
 
 Bu sınıf, yerel bir bildirim gövdesi için bir kapsayıcıdır veya bir şablon bildirimi olması durumunda bir dizi özellik ve biçim (yerel platform veya şablon) ve platforma özgü özellikler (Apple Expiration özelliği ve WNS üstbilgileri gibi) içeren bir üst bilgi kümesi.
 
@@ -155,64 +155,64 @@ Kullanılabilir tüm seçenekler için [NOTIFICATION HUBS REST API belgelerine](
 
 Bu sınıfla birlikte, artık sınıfın içine gönder bildirim yöntemlerini yazabiliriz `NotificationHub` :
 
-    ```php
-    public function sendNotification($notification, $tagsOrTagExpression="") {
-        if (is_array($tagsOrTagExpression)) {
-            $tagExpression = implode(" || ", $tagsOrTagExpression);
-        } else {
-            $tagExpression = $tagsOrTagExpression;
-        }
+```php
+public function sendNotification($notification, $tagsOrTagExpression="") {
+    if (is_array($tagsOrTagExpression)) {
+        $tagExpression = implode(" || ", $tagsOrTagExpression);
+    } else {
+        $tagExpression = $tagsOrTagExpression;
+    }
 
-        # build uri
-        $uri = $this->endpoint . $this->hubPath . "/messages" . NotificationHub::API_VERSION;
-        $ch = curl_init($uri);
+    # build uri
+    $uri = $this->endpoint . $this->hubPath . "/messages" . NotificationHub::API_VERSION;
+    $ch = curl_init($uri);
 
-        if (in_array($notification->format, ["template", "apple", "fcm"])) {
-            $contentType = "application/json";
-        } else {
-            $contentType = "application/xml";
-        }
+    if (in_array($notification->format, ["template", "apple", "fcm"])) {
+        $contentType = "application/json";
+    } else {
+        $contentType = "application/xml";
+    }
 
-        $token = $this->generateSasToken($uri);
+    $token = $this->generateSasToken($uri);
 
-        $headers = [
-            'Authorization: '.$token,
-            'Content-Type: '.$contentType,
-            'ServiceBusNotification-Format: '.$notification->format
-        ];
+    $headers = [
+        'Authorization: '.$token,
+        'Content-Type: '.$contentType,
+        'ServiceBusNotification-Format: '.$notification->format
+    ];
 
-        if ("" !== $tagExpression) {
-            $headers[] = 'ServiceBusNotification-Tags: '.$tagExpression;
-        }
+    if ("" !== $tagExpression) {
+        $headers[] = 'ServiceBusNotification-Tags: '.$tagExpression;
+    }
 
-        # add headers for other platforms
-        if (is_array($notification->headers)) {
-            $headers = array_merge($headers, $notification->headers);
-        }
+    # add headers for other platforms
+    if (is_array($notification->headers)) {
+        $headers = array_merge($headers, $notification->headers);
+    }
 
-        curl_setopt_array($ch, array(
-            CURLOPT_POST => TRUE,
-            CURLOPT_RETURNTRANSFER => TRUE,
-            CURLOPT_SSL_VERIFYPEER => FALSE,
-            CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_POSTFIELDS => $notification->payload
-        ));
+    curl_setopt_array($ch, array(
+        CURLOPT_POST => TRUE,
+        CURLOPT_RETURNTRANSFER => TRUE,
+        CURLOPT_SSL_VERIFYPEER => FALSE,
+        CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_POSTFIELDS => $notification->payload
+    ));
 
-        // Send the request
-        $response = curl_exec($ch);
+    // Send the request
+    $response = curl_exec($ch);
 
-        // Check for errors
-        if($response === FALSE){
-            throw new Exception(curl_error($ch));
-        }
+    // Check for errors
+    if($response === FALSE){
+        throw new Exception(curl_error($ch));
+    }
 
-        $info = curl_getinfo($ch);
+    $info = curl_getinfo($ch);
 
-        if ($info['http_code'] <> 201) {
-            throw new Exception('Error sending notification: '. $info['http_code'] . ' msg: ' . $response);
-        }
-    } 
-    ```
+    if ($info['http_code'] <> 201) {
+        throw new Exception('Error sending notification: '. $info['http_code'] . ' msg: ' . $response);
+    }
+} 
+```
 
 Yukarıdaki yöntemler `/messages` , bildirimi göndermek için doğru gövde ve üstbilgilere sahip olan Notification Hub 'ının uç noktasına BIR http post isteği gönderir.
 
@@ -222,59 +222,59 @@ Artık bir PHP arka ucunun bildirimini göndererek başlangıç öğreticisini t
 
 Notification Hubs istemcinizi başlatın (bağlantı dizesini ve hub adını [Başlangıç öğreticisinde belirtildiği gibi değiştirin):
 
-    ```php
-    $hub = new NotificationHub("connection string", "hubname");
-    ```
+```php
+$hub = new NotificationHub("connection string", "hubname");
+```
 
 Ardından, hedef mobil platformunuza bağlı olarak gönderme kodunu ekleyin.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Mağazası ve Windows Phone 8,1 (Silverlight olmayan)
 
-    ```php
-    $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
-    $notification = new Notification("windows", $toast);
-    $notification->headers[] = 'X-WNS-Type: wns/toast';
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
+$notification = new Notification("windows", $toast);
+$notification->headers[] = 'X-WNS-Type: wns/toast';
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="ios"></a>iOS
 
-    ```php
-    $alert = '{"aps":{"alert":"Hello from PHP!"}}';
-    $notification = new Notification("apple", $alert);
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$alert = '{"aps":{"alert":"Hello from PHP!"}}';
+$notification = new Notification("apple", $alert);
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="android"></a>Android
 
-    ```php
-    $message = '{"data":{"msg":"Hello from PHP!"}}';
-    $notification = new Notification("fcm", $message);
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$message = '{"data":{"msg":"Hello from PHP!"}}';
+$notification = new Notification("fcm", $message);
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8,0 ve 8,1 Silverlight
 
-    ```php
-    $toast = '<?xml version="1.0" encoding="utf-8"?>' .
-                '<wp:Notification xmlns:wp="WPNotification">' .
-                   '<wp:Toast>' .
-                        '<wp:Text1>Hello from PHP!</wp:Text1>' .
-                   '</wp:Toast> ' .
-                '</wp:Notification>';
-    $notification = new Notification("windowsphone", $toast);
-    $notification->headers[] = 'X-WindowsPhone-Target : toast';
-    $notification->headers[] = 'X-NotificationClass : 2';
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$toast = '<?xml version="1.0" encoding="utf-8"?>' .
+            '<wp:Notification xmlns:wp="WPNotification">' .
+               '<wp:Toast>' .
+                    '<wp:Text1>Hello from PHP!</wp:Text1>' .
+               '</wp:Toast> ' .
+            '</wp:Notification>';
+$notification = new Notification("windowsphone", $toast);
+$notification->headers[] = 'X-WindowsPhone-Target : toast';
+$notification->headers[] = 'X-NotificationClass : 2';
+$hub->sendNotification($notification, null);
+```
 
 ### <a name="kindle-fire"></a>Lütfen yangın ateş
 
-    ```php
-    $message = '{"data":{"msg":"Hello from PHP!"}}';
-    $notification = new Notification("adm", $message);
-    $hub->sendNotification($notification, null);
-    ```
+```php
+$message = '{"data":{"msg":"Hello from PHP!"}}';
+$notification = new Notification("adm", $message);
+$hub->sendNotification($notification, null);
+```
 
 PHP kodunuzun çalıştırılması artık hedef cihazınızda bir bildirim görünür.
 

@@ -3,12 +3,12 @@ title: Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0 | Microsof
 description: Azure Service Bus ve Event Hubs AMQP 1,0 ifadelerine ve açıklamasına yönelik protokol Kılavuzu
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337894"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186920"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0
 
@@ -222,8 +222,8 @@ Uygulamanın tanımlaması gereken herhangi bir özelliği AMQP 'nin `applicatio
 | --- | --- | --- |
 | ileti kimliği |Bu ileti için uygulama tanımlı, serbest biçimli tanımlayıcı. Yinelenen algılama için kullanılır. |[Ileti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Uygulama tanımlı kullanıcı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |Service Bus API 'SI aracılığıyla erişilemez. |
-| - |Uygulama tanımlı hedef tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Hedef](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Konu |Uygulama tanımlı ileti amacı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Etiketle](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| - |Uygulama tanımlı hedef tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Amaç](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Uygulama tanımlı ileti amacı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Etiketle](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Yanıtla |Uygulama tanımlı yanıt yolu göstergesi, Service Bus tarafından yorumlanmaz. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Uygulama tanımlı bağıntı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | içerik türü |Service Bus tarafından Yorumlanmayan gövde için uygulama tanımlı içerik türü göstergesi. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -264,8 +264,8 @@ Her bağlantının, işlem başlatmak ve sonlandırmak için kendi denetim bağl
 
 İşlemsel çalışmaya başlamak için. denetleyici `txn-id` , düzenleyiciden bir almalıdır. Bu, bir tür iletisi göndererek bunu yapar `declare` . Bildirim başarılı olursa, düzenleyici, atandı sonucunu taşıyan bir değerlendirme sonucu ile yanıt verir `txn-id` .
 
-| İstemci (denetleyici) | | Service Bus (düzenleyici) |
-| --- | --- | --- |
+| İstemci (denetleyici) | Yön | Service Bus (düzenleyici) |
+| :--- | :---: | :--- |
 | ekleme<br/>ad = {bağlantı adı},<br/>... ,<br/>rol =**Gönderen**,<br/>hedef =**Düzenleyici**<br/>) | ------> |  |
 |  | <------ | ekleme<br/>ad = {bağlantı adı},<br/>... ,<br/>Target = Koordinatör ()<br/>) |
 | aktarımı<br/>teslim-kimlik = 0,...)<br/>{AmqpValue (**Declare ()**)}| ------> |  |
@@ -277,8 +277,8 @@ Denetleyici, düzenleyiciye bir ileti göndererek işlem işini sonlanır `disch
 
 > Note: Fail = true bir işlemin geri alınması anlamına gelir ve fail = false, COMMIT anlamına gelir.
 
-| İstemci (denetleyici) | | Service Bus (düzenleyici) |
-| --- | --- | --- |
+| İstemci (denetleyici) | Yön | Service Bus (düzenleyici) |
+| :--- | :---: | :--- |
 | aktarımı<br/>teslim-kimlik = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | çıkarma <br/> ilk = 0, son = 0, <br/>durum = beyan edilen (<br/>TXN-id = {işlem KIMLIĞI}<br/>))|
 | | . . . <br/>İşlemsel çalışma<br/>diğer bağlantılarda<br/> . . . |
@@ -289,8 +289,8 @@ Denetleyici, düzenleyiciye bir ileti göndererek işlem işini sonlanır `disch
 
 Tüm işlem işleri, `transactional-state` TXN-id ' y i taşıyan işlem teslim durumuyla yapılır. İleti gönderme durumunda, işlem durumu iletinin aktarım çerçevesi tarafından yürütülür. 
 
-| İstemci (denetleyici) | | Service Bus (düzenleyici) |
-| --- | --- | --- |
+| İstemci (denetleyici) | Yön | Service Bus (düzenleyici) |
+| :--- | :---: | :--- |
 | aktarımı<br/>teslim-kimlik = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | çıkarma <br/> ilk = 0, son = 0, <br/>durum = beyan edilen (<br/>TXN-id = {işlem KIMLIĞI}<br/>))|
 | aktarımı<br/>tanıtıcı = 1,<br/>teslimat kimliği = 1, <br/>**durum = <br/> TransactionalState ( <br/> TXN-ID = 0)**)<br/>te| ------> |  |
@@ -300,8 +300,8 @@ Tüm işlem işleri, `transactional-state` TXN-id ' y i taşıyan işlem teslim 
 
 İleti değerlendirmesi gibi işlemleri içerir `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` . Bu işlemleri bir işlem içinde gerçekleştirmek için, öğesini `transactional-state` disposition ile geçirin.
 
-| İstemci (denetleyici) | | Service Bus (düzenleyici) |
-| --- | --- | --- |
+| İstemci (denetleyici) | Yön | Service Bus (düzenleyici) |
+| :--- | :---: | :--- |
 | aktarımı<br/>teslim-kimlik = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | çıkarma <br/> ilk = 0, son = 0, <br/>durum = beyan edilen (<br/>TXN-id = {işlem KIMLIĞI}<br/>))|
 | | <------ |aktarımı<br/>tanıtıcı = 2,<br/>teslimat kimliği = 11, <br/>durum = null)<br/>te|  
@@ -399,8 +399,8 @@ Bu işlevle, bir gönderici oluşturup bağlantısını kurarsınız `via-entity
 
 > Note: Bu bağlantıyı oluşturmadan önce, kimlik doğrulamasının hem *ile varlık* hem de *hedef varlık* için gerçekleştirilmesi sağlanmalıdır.
 
-| İstemci | | Service Bus |
-| --- | --- | --- |
+| İstemci | Yön | Service Bus |
+| :--- | :---: | :--- |
 | ekleme<br/>ad = {bağlantı adı},<br/>rol = Gönderen,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef =**{VIA-varlık}**,<br/>**Properties = Map [( <br/> com. Microsoft: aktarım-hedefi-adresi = <br/> {hedef-varlık})]** ) | ------> | |
 | | <------ | ekleme<br/>ad = {bağlantı adı},<br/>rol = alıcı,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef = {VIA-varlık},<br/>Properties = Map [(<br/>com. Microsoft: transfer-Destination-Address =<br/>{Hedef-varlık})] ) |
 

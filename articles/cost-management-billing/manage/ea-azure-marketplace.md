@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 4721d8dbe5973baf2ac82124ff516a89398227cb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: acb818cf2a892a3a71f2f59b0a44041767b846d0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298202"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044932"
 ---
 # <a name="azure-marketplace"></a>Azure Market
 
@@ -20,7 +20,7 @@ Bu makalede, EA müşterilerinin ve iş ortaklarının market ücretlerini nası
 
 ## <a name="azure-marketplace-for-ea-customers"></a>EA müşterileri için Azure Market
 
-Doğrudan müşteriler, Azure Market ücretlerini Azure Enterprise Portal'da görüntüleyebilir. Azure Market'ten yapılan satın alma ve tüketim işlemleri, parasal taahhüdün dışında faturalanır ve üç aylık veya aylık borçlar olarak yazılır.
+Doğrudan müşteriler, Azure Market ücretlerini Azure Enterprise Portal'da görüntüleyebilir. Azure Market’ten yapılan satın alma ve tüketim işlemleri, Azure Ön Ödemesinin dışında faturalanır ve üç aylık veya aylık borçlar olarak yazılır.
 
 Dolaylı müşteriler, Azure Market aboneliklerini Azure Enterprise Portal'ın **Abonelikleri Yönet** sayfasında bulabilir ancak fiyatlar gizli olacaktır. Müşteriler, Azure Market fiyatları için Lisanslama Çözümü Sağlayıcısı (LSP) ile iletişime geçmelidir.
 
@@ -28,7 +28,7 @@ Yeni aylık veya yıllık yinelenen Azure Market satın alma işlemleriyle ilgil
 
 Aylık yinelenen ücretler her takvim ayının ilk gününde yenilenmeye devam edecektir. Yıllık ücretler de satın alma tarihinin yıl dönümünde yenilenecektir.
 
-Azure Market’teki bazı üçüncü taraf satıcı hizmetleri artık Kurumsal Anlaşma (EA) parasal taahhüt bakiyenizi kullanacaktır. Önceden bu hizmetler, EA parasal taahhüdü dışında faturalandırılıyor ve faturası ayrı kesiliyordu. Azure Market’teki bu hizmetler için EA parasal taahhüdü, müşterinin satın alma ve ödeme yönetiminin kolaylaştırılmasına yardımcı olur. Parasal taahhüdü kullanmaya başlayan hizmetlerin tam listesi için lütfen [Azure web sitesindeki 6 Mart 2018 güncelleştirmesini](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) inceleyin.
+Azure Market’teki bazı üçüncü taraf satıcı hizmetleri artık Kurumsal Anlaşma (EA) Azure Ön Ödeme bakiyenizi kullanacaktır. Önceden bu hizmetler, EA Azure Ön Ödemesi dışında faturalandırılıyor ve faturası ayrı kesiliyordu. Azure Market’teki bu hizmetler için EA Azure Ön Ödemesi, müşterinin satın alma ve ödeme yönetiminin kolaylaştırılmasına yardımcı olur. Azure Ön Ödemeyi kullanmaya başlayan hizmetlerin tam listesi için lütfen [Azure web sitesindeki 6 Mart 2018 güncelleştirmesini](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) inceleyin.
 
 ### <a name="partners"></a>İş Ortakları
 
@@ -75,41 +75,41 @@ Kurumsal Anlaşmanız varsa Azure RemoteApp için Kurumsal Anlaşma fiyat düzey
 
 ## <a name="azure-marketplace-faq"></a>Azure Market Hakkında SSS
 
-Bu bölümde Azure parasal taahhüdünüzün Azure Market'teki bazı üçüncü taraf satıcı hizmetlerine nasıl uygulanabileceği anlatılmaktadır.
+Bu bölümde, Azure Ön Ödemesinin Azure Market’teki bazı üçüncü taraf satıcı hizmetlerine nasıl uygulanabileceği anlatılmaktadır.
 
-### <a name="what-changed-with-azure-marketplace-services-and-ea-monetary-commitment"></a>Azure Market hizmetleri ve EA parasal taahhüt ile neler değişti?
+### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Azure Market hizmetleri ve Azure EA Ön Ödemesi ile neler değişti?
 
-1 Mart 2018 itibarıyla bazı üçüncü taraf hizmetler EA parasal taahhüdünü (MC) kullanmaya başladı. Azure ayrılmış sanal makine örnekleri (RI) dışındaki hizmetler önceden EA parasal taahhüdünden ayrı bir şekilde faturalandırılıyordu.
+1 Mart 2018 itibarıyla bazı üçüncü taraf hizmetler Azure EA Ön Ödemesi kullanmaya başladı. Azure ayrılmış sanal makine örnekleri (RI) dışındaki hizmetler Azure EA Ön Ödemesinden ayrı bir şekilde faturalandırılıyordu.
 
-Parasal taahhüt kullanım kapsamını Azure Market'te yayımlanmış olan ve sıklıkla satın alınan bazı üçüncü taraf hizmetleri kapsayacak şekilde genişlettik. Azure Market’teki bu hizmetler için EA parasal taahhüdü, satın alma ve ödeme yönetiminin kolaylaştırılmasına yardımcı olur.
+Azure Ön Ödeme kullanım kapsamını Azure Market’te yayımlanmış olan ve sıklıkla satın alınan bazı üçüncü taraf hizmetleri kapsayacak şekilde genişlettik. Azure Market’teki bu hizmetler için Azure EA Ön Ödemesi, satın alma ve ödeme yönetiminin kolaylaştırılmasına yardımcı olur.
 
 ### <a name="why-did-we-make-this-change"></a>Bu değişikliği neden yaptık?
 
-Müşteriler, peşin parasal taahhüt ödemesini kullanabilecekleri farklı yollar arıyordu. Bu, müşteriler tarafından sıklıkla istenen bir değişiklikti ve Azure Market müşterilerinin büyük bir bölümünü etkiledi.
+Müşteriler, peşin Azure Ön Ödemesi kullanabilecekleri farklı yollar arıyordu. Bu, müşteriler tarafından sıklıkla istenen bir değişiklikti ve Azure Market müşterilerinin büyük bir bölümünü etkiledi.
 
 ### <a name="how-do-you-benefit"></a>Nasıl faydalanabilirsiniz?
 
-Daha basit bir faturalandırma deneyimine sahip olabilir ve EA parasal taahhüdünüzü daha iyi harcayabilirsiniz. Bu hizmetler peşin parasal taahhüt ödemenize dahil olduğundan EA parasal taahhüdünüz daha değerli hale gelir.
+Daha basit bir faturalandırma deneyimine sahip olabilir ve Azure EA Ön Ödemesini daha iyi harcayabilirsiniz. Bu hizmetler Azure Ön Ödemenize dahil olduğundan Azure EA Ön Ödemeniz daha değerli hale gelir.
 
-### <a name="what-azure-marketplace-services-use-ea-monetary-commitment-and-how-do-i-know"></a>EA parasal taahhüdünü kullanan Azure Market hizmetlerini nasıl tespit edebilirim?
+### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Azure EA Ön Ödemesini kullanan Azure Market hizmetlerini nasıl tespit edebilirim?
 
-Parasal taahhüt kullanan bir hizmet satın aldığınızda Azure Market'te bir sorumluluk reddi görüntülenir. Red Hat, SUSE, Autodesk ve Oracle tarafından yayımlanmış bazı hizmetler desteklenmektedir. Şu anda başkaları tarafından yayımlanan benzer ada sahip hizmetler parasal taahhüt kullanmamaktadır. Hizmetlerin tam listesini bu SSS sayfasının sonunda bulabilirsiniz.
+Azure Ön Ödemesini kullanan bir hizmet satın aldığınızda Azure Market'te bir sorumluluk reddi görüntülenir. Red Hat, SUSE, Autodesk ve Oracle tarafından yayımlanmış bazı hizmetler desteklenmektedir. Şu anda başkaları tarafından yayımlanan benzer ada sahip hizmetler Azure Ön Ödemesini kullanmamaktadır. Hizmetlerin tam listesini bu SSS sayfasının sonunda bulabilirsiniz.
 
-### <a name="what-if-my-ea-monetary-commitment-runs-out"></a>EA parasal taahhüdüm biterse ne olacak?
+### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Azure EA Ön Ödemem biterse ne olur?
 
-Parasal taahhüdünüzü bitirip fazla kullanıma geçerseniz bu hizmetlerle ilgili ücretler, diğer tüketilen hizmetlerle birlikte bir sonraki fazla kullanım faturanıza yansıtılacaktır. 1 Mart 2018 tarihinden önce bu ücretler diğer Azure Market hizmetleriyle birlikte faturalandırılıyordu.
+Azure Ön Ödemenizi bitirip fazla kullanıma geçerseniz bu hizmetlerle ilgili ücretler, diğer tüketilen hizmetlerle birlikte bir sonraki fazla kullanım faturanıza yansıtılacaktır. 1 Mart 2018 tarihinden önce bu ücretler diğer Azure Market hizmetleriyle birlikte faturalandırılıyordu.
 
-### <a name="why-dont-all-azure-marketplaces-consume-ea-monetary-commitment"></a>Neden tüm Azure Market hizmetleri EA parasal taahhüdünü kullanmıyor?
+### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>Neden tüm Azure Market hizmetleri Azure Ön Ödemesini kullanmıyor?
 
-EA parasal taahhüdü ile ilgili en iyi müşteri deneyimi sunmak için düzenli güncelleştirmeler yapıyoruz. Bu değişiklik, çok sayıda müşteriyi ve Azure Market harcamalarının önemli bir miktarını etkileyecek. İleride farklı hizmetler de eklenebilir.
+Azure Ön Ödemesi ile ilgili en iyi müşteri deneyimi sunmak için düzenli güncelleştirmeler yapıyoruz. Bu değişiklik, çok sayıda müşteriyi ve Azure Market harcamalarının önemli bir miktarını etkileyecek. İleride farklı hizmetler de eklenebilir.
 
 ### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>Bu durum dolaylı kayıtları ve iş ortaklarını nasıl etkiliyor?
 
-Dolaylı kayıt müşterileri veya iş ortakları bu durumdan etkilenmeyecektir. Bu hizmetler, diğer tüketim hizmetleriyle aynı iş ortağı kar payı özelliklerine sahiptir. Buradaki tek değişiklik, ücretlerin farklı bir faturada görünmesi ve ücretlerin ödemesinin müşterinin EA parasal taahhüdü ile yapılmasıdır.
+Dolaylı kayıt müşterileri veya iş ortakları bu durumdan etkilenmeyecektir. Bu hizmetler, diğer tüketim hizmetleriyle aynı iş ortağı kar payı özelliklerine sahiptir. Buradaki tek değişiklik, ücretlerin farklı bir faturada görünmesi ve ücretlerin ödemesinin müşterinin Azure EA Ön Ödemesi ile yapılmasıdır.
 
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-ea-monetary-commitment"></a>EA parasal taahhüdünü kullanan Azure Market hizmetlerinin olduğu bir liste var mı?
+### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Azure EA Ön Ödemesini kullanan Azure Market hizmetlerinin olduğu bir liste var mı?
 
-Belirli Azure Market teklifleri, parasal taahhüt fonlarını kullanabilir. Bu programa katılan ürünlerin tam listesi için [parasal taahhüt kullanan üçüncü taraf hizmetler](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) sayfasına bakın.
+Belirli Azure Market teklifleri, Azure Ön Ödeme fonlarını kullanabilir. Bu programa katılan ürünlerin tam listesi için [Azure Ön Ödemesini kullanan üçüncü taraf hizmetler](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) sayfasına bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

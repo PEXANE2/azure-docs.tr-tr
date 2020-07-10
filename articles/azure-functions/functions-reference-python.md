@@ -4,11 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730756"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170386"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -234,7 +235,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Azure Işlevleri çalışma zamanı günlükçüsü erişimi, işlev uygulamanızda bir kök işleyici aracılığıyla kullanılabilir [`logging`](https://docs.python.org/3/library/logging.html#module-logging) . Bu günlükçü Application Insights bağlıdır ve işlev yürütmesi sırasında uyarıları ve hataları işaretetmenize olanak tanır.
 
@@ -337,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin.
 
-Örneğin:
+Örnek:
 
 ```python
 import azure.functions
@@ -427,17 +428,15 @@ Yayımlamaya hazır olduğunuzda, tüm genel kullanım bağımlılıklarınızı
 
 Sanal ortam klasörü de dahil olmak üzere, yayımlamanın dışında tutulan proje dosyaları ve klasörler. funcignore dosyasında listelenir.
 
-Python projenizi Azure 'da yayımlamak için desteklenen üç derleme eylemi vardır:
+Python projenizi Azure 'da yayımlamak için desteklenen üç derleme eylemi vardır: uzak derleme, yerel derleme ve özel bağımlılıklar kullanarak derlemeler.
 
-+ Uzak derleme: bağımlılıklar, requirements.txt dosyanın içeriğine göre uzaktan alınır. [Uzaktan derleme](functions-deployment-technologies.md#remote-build) önerilen derleme yöntemidir. Uzak Ayrıca Azure Araçları 'nın varsayılan derleme seçeneğidir.
-+ Yerel derleme: bağımlılıklar, requirements.txt dosyanın içeriğine göre yerel olarak alınır.
-+ Özel bağımlılıklar: projeniz, araçlarımız için herkese açık olarak kullanılamayan paketler kullanır. (Docker gerektirir.)
-
-Bağımlılıklarınızı derlemek ve sürekli teslim (CD) sistemi kullanarak yayımlamak için [Azure Pipelines kullanın](functions-how-to-azure-devops.md).
+Bağımlılıklarınızı derlemek ve sürekli teslim (CD) kullanarak yayımlamak için Azure Pipelines de kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure DevOps kullanarak sürekli teslim](functions-how-to-azure-devops.md).
 
 ### <a name="remote-build"></a>Uzak derleme
 
-Varsayılan olarak, Python projenizi Azure 'da yayımlamak için aşağıdaki [Func Azure functionapp Publish](functions-run-local.md#publish) komutunu kullandığınızda Azure Functions Core Tools uzak bir derlemeyi ister.
+Uzak derleme kullanılırken, sunucuda geri yüklenen bağımlılıklar ve yerel bağımlılıklar üretim ortamıyla eşleşir. Bu, karşıya yüklenecek daha küçük bir dağıtım paketine neden olur. Windows üzerinde Python uygulamaları geliştirirken uzak derlemeyi kullanın. Projenizde özel bağımlılıklar varsa, [ek dizin URL 'si ile uzak derlemeyi kullanabilirsiniz](#remote-build-with-extra-index-url). 
+ 
+Bağımlılıklar, requirements.txt dosyanın içeriğine göre uzaktan elde edilir. [Uzaktan derleme](functions-deployment-technologies.md#remote-build) önerilen derleme yöntemidir. Varsayılan olarak, Python projenizi Azure 'da yayımlamak için aşağıdaki [Func Azure functionapp Publish](functions-run-local.md#publish) komutunu kullandığınızda Azure Functions Core Tools uzak bir derlemeyi ister.
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -449,7 +448,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="local-build"></a>Yerel derleme
 
-Bir yerel derleme ile yayımlamak için aşağıdaki [Func Azure functionapp Publish](functions-run-local.md#publish) komutunu kullanarak uzak bir derlemeyi engelleyebilirsiniz.
+Bağımlılıklar, requirements.txt dosyanın içeriğine göre yerel olarak alınır. Bir yerel derleme ile yayımlamak için aşağıdaki [Func Azure functionapp Publish](functions-run-local.md#publish) komutunu kullanarak uzak bir derlemeyi engelleyebilirsiniz.
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -457,9 +456,21 @@ func azure functionapp publish <APP_NAME> --build local
 
 `<APP_NAME>`Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın.
 
-Seçeneğini kullanarak `--build local` , Proje bağımlılıkları requirements.txt dosyasından okunurdur ve bu bağımlı paketler yerel olarak indirilir ve yüklenir. Proje dosyaları ve bağımlılıklar yerel bilgisayarınızdan Azure 'a dağıtılır. Bu, daha büyük bir dağıtım paketinin Azure 'a yüklenmasına neden olur. Bazı nedenlerle requirements.txt dosyanızdaki bağımlılıklar temel araçlar tarafından alınamadığından, yayımlamak için özel bağımlılıklar seçeneğini kullanmanız gerekir.
+Seçeneğini kullanarak `--build local` , Proje bağımlılıkları requirements.txt dosyasından okunurdur ve bu bağımlı paketler yerel olarak indirilir ve yüklenir. Proje dosyaları ve bağımlılıklar yerel bilgisayarınızdan Azure 'a dağıtılır. Bu, daha büyük bir dağıtım paketinin Azure 'a yüklenmasına neden olur. Bazı nedenlerle requirements.txt dosyanızdaki bağımlılıklar temel araçlar tarafından alınamadığından, yayımlamak için özel bağımlılıklar seçeneğini kullanmanız gerekir. 
+
+Windows 'da yerel olarak geliştirme yaparken yerel derlemelerin kullanılmasını önermiyoruz.
 
 ### <a name="custom-dependencies"></a>Özel bağımlılıklar
+
+Projenizin [Python paket dizininde](https://pypi.org/)bulunmayan bağımlılıkları olduğunda, projeyi oluşturmanın iki yolu vardır. Build yöntemi, projeyi nasıl derlemenize bağlıdır.
+
+#### <a name="remote-build-with-extra-index-url"></a>Ek dizin URL 'SI ile uzak derleme
+
+Paketleriniz erişilebilir bir özel paket dizininden kullanılabilir olduğunda, uzak bir yapı kullanın. Yayımlamadan önce adlı [bir uygulama ayarı oluşturduğunuzdan](functions-how-to-use-azure-function-app-settings.md#settings) emin olun `PIP_EXTRA_INDEX_URL` . Bu ayarın değeri, özel paket dizininizin URL 'sidir. Bu ayarın kullanılması, uzak derlemeyi `pip install` seçeneğini kullanarak çalıştırmasını söyler `--extra-index-url` . Daha fazla bilgi için bkz. [Python PIP yüklemesi belgeleri](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format). 
+
+Ayrıca, ek paket dizin URL 'lerinizle temel kimlik doğrulama bilgilerini de kullanabilirsiniz. Daha fazla bilgi için bkz. Python belgelerindeki [temel kimlik doğrulama kimlik bilgileri](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) .
+
+#### <a name="install-local-packages"></a>Yerel Paketleri yükler
 
 Projeniz araçlarımızda herkese açık değil paketler kullanıyorsa, bunları \_ \_ App \_ \_ /. python_packages dizinine yerleştirerek uygulamanız için kullanılabilir hale getirebilirsiniz. Yayımlamadan önce, bağımlılıkları yerel olarak yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -467,7 +478,7 @@ Projeniz araçlarımızda herkese açık değil paketler kullanıyorsa, bunları
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-Özel bağımlılıklar kullanırken, `--no-build` bağımlılıkları zaten yüklemiş olduğunuz için yayımlama seçeneğini kullanmanız gerekir.
+Özel bağımlılıklar kullanırken, `--no-build` bağımlılıkları proje klasörüne zaten yüklediğinden yayımlama seçeneğini kullanmanız gerekir.
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
@@ -692,7 +703,7 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [BLOB depolama bağlamaları](functions-bindings-storage-blob.md)
 * [HTTP ve Web kancası bağlamaları](functions-bindings-http-webhook.md)
 * [Kuyruk depolama bağlamaları](functions-bindings-storage-queue.md)
-* [Zamanlayıcı tetikleyicisi](functions-bindings-timer.md)
+* [Süreölçer tetikleyicisi](functions-bindings-timer.md)
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python

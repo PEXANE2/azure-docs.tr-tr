@@ -2,13 +2,14 @@
 title: Azure dosyaları birimini kapsayıcı grubuna bağlama
 description: Azure Container Instances ile devam etmek için bir Azure dosyaları birimini nasıl bağlayacağınızı öğrenin
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 593400f67db5018f1533dd37eed88ece7fd596c6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75561346"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169587"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances'ta Azure dosya paylaşımı bağlama
 
@@ -102,7 +103,7 @@ Aşağıdaki YAML şablonu, görüntüyle oluşturulmuş bir kapsayıcı grubunu
 CLı örneğinde olduğu gibi, `dnsNameLabel` değer kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Gerekirse YAML dosyasındaki değeri güncelleştirin.
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: file-share-demo
 properties:
@@ -167,7 +168,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, görüntüyle oluşturulmuş bir kapsa
     {
       "name": "file-share-demo",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [

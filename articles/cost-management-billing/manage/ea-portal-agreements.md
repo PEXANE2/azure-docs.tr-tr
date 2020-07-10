@@ -3,16 +3,16 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 50f7a1bab17b9a98b7ca282387def52b24d448c4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298151"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044915"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -20,7 +20,7 @@ Makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure hizmetleri erişimini
 
 ## <a name="enrollment-provisioning-status"></a>Kayıt sağlama durumu
 
-Yeni parasal taahhüdün başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen parasal taahhüt siparişleri UTC saat dilimine göre işleme alındığından parasal taahhüt satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. [https://www.explore.ms](https://www.explore.ms ) adresinde satın alma siparişindeki karşılama başlangıç tarihi parasal taahhüdün başlangıcını gösterir. Karşılama başlangıç tarihi parasal taahhüdün Azure EA portalında gösterildiği tarihtir.
+Yeni Azure Ön Ödemesinin başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen Azure Ön Ödeme siparişleri UTC saat dilimine göre işleme alındığından Azure Ön Ödeme satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. https://www.explore.ms adresinde satın alma siparişindeki karşılama başlangıç tarihi Azure Ön Ödemesinin başlangıcını gösterir. Karşılama başlangıç tarihi Azure Ön Ödemesinin Azure EA portalında gösterildiği tarihtir.
 
 ## <a name="support-for-enterprise-customers"></a>Kurumsal müşterilere yönelik destek
 
@@ -36,7 +36,7 @@ Kayıt aşağıdaki durum değerlerinden birine sahiptir. Değerlerin her biri k
 
 **Süresiz Uzatılan Süre** - Süresiz uzatılan süre durumu, kurumsal anlaşma bitiş tarihi geldikten sonra gerçekleşir. EA kaydı kurumsal anlaşma bitiş tarihine ulaşana kadar Kayıt Yöneticisinin şunlara karar vermesi gerekir:
 
-- Parasal Taahhüt ekleyerek kaydı yenileme
+- Azure Ön Ödemesi ekleyerek kaydı yenileme
 - Mevcut kaydı yeni bir kayda aktarma
 - Microsoft Çevrimiçi Abonelik Programı'na (MOSP) geçme
 - Kayıtla ilişkili tüm hizmetleri devre dışı bırakmayı onaylama
@@ -51,7 +51,7 @@ Kayıt aşağıdaki durum değerlerinden birine sahiptir. Değerlerin her biri k
 
 Azure EA portalında İş Ortağı Fiyat Kar Payı müşterilere daha iyi maliyet raporlaması sağlamaya yardımcı olur. İş ortakları tarafından müşterileri için yapılandırılmış kullanım ve fiyatlar Azure EA portalında gösterilir.
 
-Kar payı iş ortağı yöneticilerinin dolaylı kurumsal anlaşmalarına belirli bir oranda kar payı eklemelerine olanak tanır. Kar payı oranı Azure EA portalında tüm Microsoft birinci taraf hizmeti bilgilerine uygulanır (ölçüm oranları, parasal taahhütler ve siparişler gibi). İş ortağı kar payını yayımladıktan sonra müşteriler Azure EA portalında Azure maliyetlerini görebilir. (Örneğin kullanım özeti, fiyat listeleri ve indirilen kullanım raporları.)
+Kar payı iş ortağı yöneticilerinin dolaylı kurumsal anlaşmalarına belirli bir oranda kar payı eklemelerine olanak tanır. Kar payı oranı Azure EA portalında tüm Microsoft birinci taraf hizmeti bilgilerine uygulanır (ölçüm oranları, Azure Ön Ödemesi ve siparişler gibi). İş ortağı kar payını yayımladıktan sonra müşteriler Azure EA portalında Azure maliyetlerini görebilir. (Örneğin kullanım özeti, fiyat listeleri ve indirilen kullanım raporları.)
 
 Eylül 2019'dan itibaren iş ortakları bir dönem boyunca istedikleri zaman kar payı uygulayabilirler. Kar payını eklemek için dönemin bir sonraki yıldönümünü beklemeleri gerekmez.
 
@@ -61,7 +61,7 @@ Microsoft, iş ortağı tarafından açıkça yetki verilen durumların haricind
 
 LSP, EA portalında tek bir yüzde değeri belirtir.  Portaldaki tüm ticari bilgiler, LSP tarafından belirtilen yüzdeye göre artırılır. Örnek:
 
-- Müşteri, 100.000 ABD doları tutarında parasal taahhüdü kapsayan bir EA imzalar.
+- Müşteri, 100.000 ABD doları tutarında Azure Ön Ödemesini kapsayan bir EA imzalar.
 - A Hizmetinin ölçüm ücreti saatte 10 ABD dolarıdır.
 - LSP, EA Portal'da kar payı yüzdesini %10 olarak ayarlar.
 - Aşağıdaki örnekte müşterinin ticari bilgileri nasıl göreceği gösterilmiştir:
@@ -72,10 +72,10 @@ LSP, EA portalında tek bir yüzde değeri belirtir.  Portaldaki tüm ticari bi
 
 ### <a name="when-to-use-a-markup"></a>Kar payı ne zaman kullanılır?
 
-EA'daki TÜM ticari işlemlere aynı kar payı yüzdesini uygulamak istediğinizde bu özelliği kullanabilirsiniz. Bu durumda parasal taahhüt bilgilerine, ölçüm ücretlerine, sipariş bilgilerine ve diğer her şeye kar payı uygulamış olursunuz.
+EA'daki TÜM ticari işlemlere aynı kar payı yüzdesini uygulamak istediğinizde bu özelliği kullanabilirsiniz. Bu durumda Azure Ön Ödeme bilgilerine, ölçüm ücretlerine, sipariş bilgilerine ve diğer her şeye kar payı uygulamış olursunuz.
 
 Kar payı özelliğini şu durumlarda kullanmayın:
-- Parasal taahhüt ve ölçüm ücretleri için farklı ücretler kullanıyorsanız.
+- Azure Ön Ödemesi ve ölçüm ücretleri için farklı ücretler kullanıyorsanız.
 - Farklı ölçümler için farklı ücretler kullanıyorsanız.
 
 Farklı ölçümler için farklı ücretler kullanıyorsanız API Anahtarını temel alan özel bir çözüm geliştirmenizi ve tüketim verilerini çekip rapor sağlama amacıyla bunu müşteriye sunmanız önerilir.
@@ -97,11 +97,11 @@ Kar payı uygulanmış fiyatları son müşteriyle paylaşmadan önce parasal ba
 
 **İkinci Adım: Gözden geçirme ve doğrulama**
 
-Müşteri görünümünde taahhüt dönemine ait _Kullanım Özeti_ içinde kar payı fiyatını gözden geçirin. İş ortağı görünümünde Microsoft fiyatı görünüyor olacaktır. Görünümler arasında geçiş yapmak için sağ üstteki iş ortağı kar payı "kişiler" seçeneğini kullanabilirsiniz.
+Müşteri görünümünde Ön Ödeme dönemine ait _Kullanım Özeti_ içinde kar payı fiyatını gözden geçirin. İş ortağı görünümünde Microsoft fiyatı görünüyor olacaktır. Görünümler arasında geçiş yapmak için sağ üstteki iş ortağı kar payı "kişiler" seçeneğini kullanabilirsiniz.
 
 1. Fiyat listesindeki fiyatları gözden geçirin.
 1. _Kullanım Özetini Görüntüle > Müşteri Görünümü_ sekmesinde **Düzenle**'yi seçerek yayımlamadan önce değişiklik yapabilirsiniz.  
-  Hem hizmet ücretlerine hem de taahhüt bakiyelerine aynı yüzde değerinde kar payı eklenecektir. Parasal bakiye ve ölçüm ücretleri için farklı yüzde değerleri kullanıyorsanız veya hizmetlere ait yüzde değerleriniz birbirinden farklıysa lütfen bu özelliği kullanmayın.
+  Hem hizmet ücretlerine hem de Ön Ödeme bakiyelerine aynı yüzde değerinde kar payı eklenecektir. Parasal bakiye ve ölçüm ücretleri için farklı yüzde değerleri kullanıyorsanız veya hizmetlere ait yüzde değerleriniz birbirinden farklıysa lütfen bu özelliği kullanmayın.
 
 **Üçüncü Adım: Yayımlama**
 
@@ -121,7 +121,7 @@ Bir kayıtta yayımlanmış kar payı olup olmadığını denetlemek için sol t
 İş ortakları, Kanal İş Ortağı Değişikliği işleme alındıktan sonra kar payı özelliğini kullanabilir (Azure EA üzerinde). Bir sonraki yıl dönümünü beklemenize gerek yoktur.
 
 
-## <a name="resource-commitment-and-requesting-quota-increases"></a>Kaynak taahhüdü ve kota artış isteğinde bulunma
+## <a name="resource-prepayment-and-requesting-quota-increases"></a>Kaynak Ön Ödemesi ve kota artış isteğinde bulunma
 
 **Sistem, abonelik başına aşağıdaki varsayılan kotaları uygular:**
 
@@ -135,11 +135,11 @@ Bir kayıtta yayımlanmış kar payı olup olmadığını denetlemek için sol t
 | Erişim Denetimi | Hesap başına 50 Ad Alanı. Ayda 100 milyon Erişim Denetimi işlemi |   |
 | Service Bus | Hesap başına 50 Ad Alanı. 40 Service Bus bağlantısı | Bağlantı paketi aracılığıyla Service Bus bağlantısı satın alan müşterilere satın aldıkları bağlantı paketi ile bir sonraki en yüksek bağlantı paketi tutarı arasındaki orta noktaya eşit bir kota uygulanacaktır. 500'lük Paketi seçen kullanıcıların kotası 750 olacaktır. |
 
-## <a name="resource-commitment"></a>Kaynak taahhüdü
+## <a name="resource-prepayment"></a>Kaynak Ön Ödemesi
 
-Microsoft, en az satın aldığınız aylık taahhüt kapsamındaki ilişkili kullanım düzeyi kadar hizmet sağlayacaktır (Hizmet Taahhüdü), ancak hizmet kaynaklarının kullanım düzeylerindeki diğer tüm artışlar (örneğin, çalışan işlem örneği sayısına ekleme yapma veya kullanımdaki depolama miktarını artırma), söz konusu hizmet kaynaklarının kullanılabilirlik duruma tabidir.
+Microsoft, en az satın aldığınız aylık Ön Ödeme (Hizmet Ön Ödemesi) kapsamındaki ilişkili kullanım düzeyi kadar hizmet sağlar. Ancak hizmet kaynaklarının kullanım düzeylerindeki diğer tüm artışlar (örneğin, çalışan işlem örneği sayısına ekleme yapılması veya kullanımdaki depolama miktarının artırılması) söz konusu hizmet kaynaklarının kullanılabilirlik duruma tabidir.
 
-Yukarıda belirtilmeyen kotalar Hizmet Taahhüdü değildir. Microsoft'un Hizmet Taahhüdü kapsamında sağlayacağı eş zamanlı küçük işlem örneklerinin (veya eşdeğerlerinin) sayısını saptamak amacıyla, bu değer bir ayda satın alınan taahhüt edilmiş küçük işlem örneği saat sayısının, yılın en kısa ayının saat sayısına (Şubat – 672 saat) bölünmesiyle saptanır.
+Yukarıda belirtilmeyen kotalar Hizmet Ön Ödemesi değildir. Microsoft’un Hizmet Ön Ödemesi kapsamında sağlayacağı eş zamanlı küçük işlem örneklerinin (veya eşdeğerlerinin) sayısını saptamak amacıyla, bu değer bir ayda satın alınan taahhüt edilmiş küçük işlem örneği saat sayısının, yılın en kısa ayının saat sayısına (örneğin, Şubat – 672 saat) bölünmesiyle saptanır.
 
 ## <a name="requesting-a-quota-increase"></a>Kota artışı isteğinde bulunma
 

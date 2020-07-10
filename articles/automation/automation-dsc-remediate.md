@@ -9,11 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836864"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186376"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Uyumsuz Azure Otomasyonu durum yapılandırma sunucularını düzelt
 
@@ -24,7 +25,7 @@ Bu belge, yapılandırma DRFT 'i el ile düzeltirken bu özellik için örnek be
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>PowerShell kullanarak Windows sanal makinelerini doğru Drın
 
-Komut özelliğini kullanarak Windows sanal makinelerini Drın 'i düzeltebilirsiniz `Run` . Bkz. [Run komutuyla PowerShell betiklerini WINDOWS sanal makinenizde çalıştırma](/azure/virtual-machines/windows/run-command).
+Komut özelliğini kullanarak Windows sanal makinelerini Drın 'i düzeltebilirsiniz `Run` . Bkz. [Run komutuyla PowerShell betiklerini WINDOWS sanal makinenizde çalıştırma](../virtual-machines/windows/run-command.md).
 
 Bir Azure Otomasyonu durum yapılandırma düğümünü en son yapılandırmayı indirip uygulamayı zorlamak için [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) cmdlet 'ini kullanın.
 
@@ -42,5 +43,5 @@ Karma düğümler için Python betiklerini kullanarak DRFT 'yi düzeltebilirsini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).

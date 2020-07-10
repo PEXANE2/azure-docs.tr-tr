@@ -1,18 +1,18 @@
 ---
-title: Azure Functions Core Tools çalışın
+title: Azure Functions Core Tools ile çalışma
 description: Azure işlevleri 'nde çalıştırmadan önce yerel bilgisayarınızdaki komut isteminden veya terminalden Azure işlevlerini nasıl kodleyeceğinizi ve test leyeceğinizi öğrenin.
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955277"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170369"
 ---
-# <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
+# <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
 Azure Functions Core Tools, komut isteminden veya terminalden yerel bilgisayarınızda işlevlerinizi geliştirmenize ve test etmenize olanak tanır. Yerel işlevleriniz canlı Azure hizmetlerine bağlanabilir ve tüm Işlevler çalışma zamanını kullanarak işlevlerinizi yerel bilgisayarınızdaki hata ayıklaması yapabilirsiniz. Hatta, Azure aboneliğinize bir işlev uygulaması dağıtabilirsiniz.
 
@@ -116,15 +116,15 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Bir APT güncelleştirmesi yapmadan önce .NET geliştirme kaynak listesini ayarlayın.
+1. Bir APT güncelleştirme yapmadan önce APT kaynak listesini ayarlayın.
 
-   Ubuntu için APT kaynak listesini ayarlamak için şu komutu çalıştırın:
+    ##### <a name="ubuntu"></a>Ubuntu
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-   Dekim için APT kaynak listesini ayarlamak için şu komutu çalıştırın:
+    ##### <a name="debian"></a>Debian
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -136,6 +136,7 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
     | --------------- | ----------- |
     | Debian 10 | `buster`  |
     | Debian 9  | `stretch` |
+    | Ubuntu 20.04    | `focal`     |
     | Ubuntu 19.04    | `disco`     |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
@@ -204,24 +205,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`, aksi belirtilmediği takdirde sürüm 3. x/2. x-Only olan aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--csharp`**<br/> **`--dotnet`** | [C# sınıf kitaplığı (. cs) projesi](functions-dotnet-class-library.md)başlatır. |
-| **`--csx`** | Bir [C# betiği (. CSX) projesi](functions-reference-csharp.md)başlatır. `--csx`Sonraki komutlarda ' i belirtmeniz gerekir. |
-| **`--docker`** | Seçili bir temel görüntü kullanarak kapsayıcı için bir Dockerfile oluşturun `--worker-runtime` . Özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
+| **`--csx`** | .NET işlevlerini, sürüm 1. x davranışı olan C# betiği olarak oluşturur. Yalnızca ile geçerlidir `--worker-runtime dotnet` . |
+| **`--docker`** | Seçili bir temel görüntü kullanarak kapsayıcı için bir Dockerfile oluşturur `--worker-runtime` . Özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
 | **`--docker-only`** |  Mevcut bir projeye Dockerfile ekler. Belirtilmediğinde çalışan çalışma zamanı için ister veya üzerinde local.settings.jsayarlanır. Mevcut bir projeyi özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
 | **`--force`** | Projede var olan dosyalar olduğunda bile projeyi başlatın. Bu ayar aynı ada sahip varolan dosyaların üzerine yazar. Proje klasöründeki diğer dosyalar etkilenmez. |
-| **`--java`**  | Bir [Java projesi](functions-reference-java.md)başlatır. |
-| **`--javascript`**<br/>**`--node`**  | Bir [JavaScript projesi](functions-reference-node.md)başlatır. |
-| **`--no-source-control`**<br/>**`-n`** | 1. x sürümünde bir git deposunun varsayılan oluşturulmasını engeller. Sürüm 3. x/2. x içinde, git deposu varsayılan olarak oluşturulmaz. |
-| **`--powershell`**  | Bir [PowerShell projesi](functions-reference-powershell.md)başlatır. |
-| **`--python`**  | Bir [Python projesi](functions-reference-python.md)başlatır. |
+| **`--language`** | Dile özgü bir projeyi başlatır. Şu anda `--worker-runtime` olarak ayarlandığında desteklenir `node` . Seçenekler `typescript` ve ' dir `javascript` . Veya de kullanabilirsiniz `--worker-runtime javascript` `--worker-runtime typescript` .  |
+| **`--managed-dependencies`**  | Yönetilen bağımlılıkları kurar. Şu anda yalnızca PowerShell Worker çalışma zamanı bu işlevselliği desteklemektedir. |
 | **`--source-control`** | Git deposunun oluşturulup oluşturulmayacağını denetler. Varsayılan olarak, bir depo oluşturulmaz. Ne zaman `true` bir depo oluşturulur. |
-| **`--typescript`**  | Bir [TypeScript projesi](functions-reference-node.md#typescript)başlatır. |
-| **`--worker-runtime`** | Projenin dil çalışma zamanını ayarlar. Desteklenen değerler şunlardır: `csharp` , `dotnet` , `java` , `javascript` , `node` (JavaScript),,, `powershell` `python` ve `typescript` . Ayarlanmaması durumunda, başlatma sırasında çalışma zamanını seçmeniz istenir. |
-
+| **`--worker-runtime`** | Projenin dil çalışma zamanını ayarlar. Desteklenen değerler şunlardır: `csharp` , `dotnet` , `javascript` , `node` (JavaScript),,, `powershell` `python` ve `typescript` . Java için [Maven](functions-reference-java.md#create-java-functions)'i kullanın. Ayarlanmaması durumunda, başlatma sırasında çalışma zamanını seçmeniz istenir. |
+|
 > [!IMPORTANT]
-> Varsayılan olarak, temel araçların sürüm 3. x/2. x 'i, .NET çalışma zamanı için [C# sınıf projeleri](functions-dotnet-class-library.md) (. csproj) olarak işlev uygulaması projeleri oluşturur. Visual Studio veya Visual Studio Code ile kullanılabilen bu C# projeleri, test sırasında ve Azure 'a yayımlarken derlenir. Bunun yerine, 1. x sürümünde oluşturulan aynı C# betiği (. CSX) dosyalarını oluşturup, portalda çalışmak istiyorsanız, `--csx` işlevleri oluştururken ve dağıtırken parametresini eklemeniz gerekir.
+> Varsayılan olarak, temel araçların sürüm 2. x ve sonraki sürümleri, .NET çalışma zamanına yönelik işlev uygulama projelerini [C# sınıf projeleri](functions-dotnet-class-library.md) (. csproj) olarak oluşturur. Visual Studio veya Visual Studio Code ile kullanılabilen bu C# projeleri, test sırasında ve Azure 'a yayımlarken derlenir. Bunun yerine, 1. x sürümünde oluşturulan aynı C# betiği (. CSX) dosyalarını oluşturup, portalda çalışmak istiyorsanız, `--csx` işlevleri oluştururken ve dağıtırken parametresini eklemeniz gerekir.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -235,6 +231,8 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 * [C# betiği (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
+* [PowerShell](functions-reference-powershell.md#environment-variables)
+* [Python](functions-reference-python.md#environment-variables)
 
 İçin geçerli bir depolama bağlantı dizesi ayarlanmamışsa [`AzureWebJobsStorage`] ve öykünücü kullanılmıyorsa, aşağıdaki hata iletisi gösterilir:
 
@@ -305,12 +303,13 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ayrıca, aşağıdaki bağımsız değişkenleri kullanarak komutta bu seçenekleri belirtebilirsiniz:
 
-| Bağımsız Değişken     | Description                            |
+| Bağımsız Değişken     | Açıklama                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (Sürüm 3. x/2. x) 1. x sürümünde ve portalda kullanılan C# betiği (. CSX) şablonlarını üretir. |
-| **`--language`**, **`-l`**| C#, F # veya JavaScript gibi şablon programlama dili. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 3. x/2. x içinde, bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
+| **`--csx`** | (Sürüm 2. x ve sonraki sürümler.) 1. x sürümünde ve portalda kullanılan C# betiği (. CSX) şablonlarını üretir. |
+| **`--language`**, **`-l`**| C#, F # veya JavaScript gibi şablon programlama dili. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 2. x ve sonraki sürümlerde, bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
 | **`--name`**, **`-n`** | İşlev adı. |
 | **`--template`**, **`-t`** | `func templates list`Desteklenen her dil için kullanılabilir şablonların tüm listesini görmek için komutunu kullanın.   |
+
 
 Örneğin, tek bir komutta bir JavaScript HTTP tetikleyicisi oluşturmak için şunu çalıştırın:
 
@@ -364,14 +363,13 @@ npm start
 
 `func start`Aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Çalıştırmadan önce derleme geçerli projesi yok. Yalnızca DotNet projeleri için. Varsayılan değer false olarak ayarlanmıştır. 1. x sürümü için desteklenmez. |
-| **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca ile kullanılır `--useHttps` . 1. x sürümü için desteklenmez. |
 | **`--cors-credentials`** | Sürüm 1. x için desteklenmeyen, çıkış noktaları ve kimlik doğrulama üst bilgisi gibi kimlik doğrulamalı isteklere izin ver. |
 | **`--cors`** | CORS kaynakları için boşluk olmadan virgülle ayrılmış bir liste. |
 | **`--language-worker`** | Dil çalışanını yapılandırmak için bağımsız değişkenler. Örneğin, [hata ayıklama bağlantı noktası ve diğer gerekli bağımsız değişkenleri](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)sağlayarak dil çalışanı için hata ayıklamayı etkinleştirebilirsiniz. 1. x sürümü için desteklenmez. |
-| **`--nodeDebugPort`**, **`-n`** | Node.js hata ayıklayıcının kullanması için bağlantı noktası. Varsayılan: launch.jsveya 5858 arasında bir değer. Yalnızca sürüm 1. x. |
+| **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca ile kullanılır `--useHttps` . 1. x sürümü için desteklenmez. |
 | **`--password`** | Bir. pfx dosyasının parolasını içeren parola veya dosya. Yalnızca ile kullanılır `--cert` . 1. x sürümü için desteklenmez. |
 | **`--port`**, **`-p`** | Dinlenecek yerel bağlantı noktası. Varsayılan değer: 7071. |
 | **`--pause-on-error`** | İşlemden çıkmadan önce ek giriş için duraklatın. Yalnızca tümleşik geliştirme ortamından (IDE) temel araçlar başlatılırken kullanılır.|
@@ -405,7 +403,7 @@ Test işlevleri hakkında daha fazla genel bilgi için bkz. [Azure işlevlerinde
 
 HTTP ve Web kancası tarafından tetiklenen işlevleri yerel olarak çalıştırmak için aşağıdaki uç noktayı çağırın:
 
-```http
+```
 http://localhost:{port}/api/{function_name}
 ```
 
@@ -441,7 +439,7 @@ Event Grid tetiklenmiş işlevleri yerel olarak test etmek için bkz. [Viewer We
 
 HTTP olmayan işlevleri tetiklemek için aşağıdaki yönetici uç noktasını çağırın:
 
-```http
+```
 http://localhost:{port}/admin/functions/{function_name}
 ```
 
@@ -474,7 +472,7 @@ Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func ru
 
 `func run`Aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Satır içi içerik. |
 | **`--debug`**, **`-d`** | İşlevi çalıştırmadan önce konak işlemine bir hata ayıklayıcı ekleyin.|
@@ -488,7 +486,7 @@ Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func ru
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish-to-azure"></a><a name="publish"></a>Azure’da Yayımlama
+## <a name="publish-to-azure"></a><a name="publish"></a>Azure 'da yayımlama
 
 Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosyalarını [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) ve [dağıtım](functions-deployment-technologies.md#docker-container)aracılığıyla doğrudan işlev uygulamanıza dağıtma. Kodunuzu dağıtacağınız [Azure aboneliğinizde zaten bir işlev uygulaması oluşturmuş](functions-cli-samples.md#create)olmanız gerekir. İkililerin dağıtılması için derleme gerektiren projeler oluşturulmalıdır.
 
@@ -511,16 +509,16 @@ Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde
 > Azure portal bir işlev uygulaması oluşturduğunuzda, varsayılan olarak Işlev çalışma zamanının 3. x sürümünü kullanır. İşlev uygulamasının çalışma zamanının sürüm 1. x ' i kullanmasını sağlamak için [Sürüm 1. x üzerinde Çalıştır](functions-versions.md#creating-1x-apps)' daki yönergeleri izleyin.
 > Mevcut işlevlere sahip bir işlev uygulamasının çalışma zamanı sürümünü değiştiremezsiniz.
 
-Aşağıdaki yayımlama seçenekleri 3. x, 2. x ve 1. x sürümleri için geçerlidir:
+Aşağıdaki yayımlama seçenekleri tüm sürümler için geçerlidir:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Ayarları Azure 'da local.settings.jsyayımlayın, bu ayar zaten varsa üzerine yazmak isteyip istemediğinizi sorar. Microsoft Azure Depolama Öykünücüsü kullanıyorsanız, önce uygulama ayarını [gerçek bir depolama bağlantısı](#get-your-storage-connection-strings)olarak değiştirin. |
 | **`--overwrite-settings -y`** | Kullanıldığında uygulama ayarlarının üzerine yazma istemi 'ni gizleyin `--publish-local-settings -i` .|
 
-Aşağıdaki yayımlama seçenekleri yalnızca 3. x ve 2. x sürümünde desteklenir:
+Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x ve sonraki sürümler için desteklenir:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Yalnızca ayarları yayımlayın ve içeriği atlayın. Varsayılan istem. |
 |**`--list-ignored-files`** | Yayımlama sırasında yoksayılan,. funcignore dosyasını temel alan dosyaların listesini görüntüler. |
@@ -531,7 +529,7 @@ Aşağıdaki yayımlama seçenekleri yalnızca 3. x ve 2. x sürümünde destekl
 | **`--additional-packages`** | Yerel bağımlılıklar oluşturulurken yüklenecek paketlerin listesi. Örneğin: `python3-dev libevent-dev`. |
 | **`--force`** | Belirli senaryolarda yayımlama öncesi doğrulamayı yoksayın. |
 | **`--csx`** | Bir C# betiği (. CSX) projesi yayımlayın. |
-| **`--no-build`** | .NET sınıf kitaplığı işlevleri oluşturmayın. |
+| **`--no-build`** | Proje Yayımlama sırasında derlenmedi. Python için `pip install` gerçekleştirilmedi. |
 | **`--dotnet-cli-params`** | Derlenmiş C# (. csproj) işlevlerini yayımlarken, temel Araçlar ' DotNet Build--output bin/Publish ' yöntemini çağırır. Buna geçirilen parametreler komut satırına eklenecektir. |
 
 ### <a name="deploy-custom-container"></a>Özel kapsayıcı dağıtma
@@ -544,7 +542,7 @@ func deploy
 
 Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Geçerli kullanıcının oturum açan bir Docker kayıt defterinin adı. |
 | **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler şunlardır`kubernetes` |
@@ -582,7 +580,7 @@ Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure portalındaki]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

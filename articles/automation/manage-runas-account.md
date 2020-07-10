@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 66fb5741a5ed1af9e7edf002485c959f9f2fc82f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84f2ef1fc318e53914b1510870d0399cfbfa87e9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507271"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185288"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Otomasyonu farklı çalıştır hesabını yönetme
 
@@ -24,7 +24,7 @@ Azure Otomasyonu iki farklı çalıştır hesabı türü kullanır:
 * Azure klasik farklı çalıştır hesabı
 
 >[!NOTE]
->Azure bulut çözümü sağlayıcısı (CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler. Azure Resource Manager olmayan hizmetler programda yok. CSP aboneliği kullanırken, Azure klasik farklı çalıştır hesabı oluşturulmaz, ancak Azure farklı çalıştır hesabı oluşturulur. CSP abonelikleri hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
+>Azure bulut çözümü sağlayıcısı (CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler. Azure Resource Manager olmayan hizmetler programda yok. CSP aboneliği kullanırken, Azure klasik farklı çalıştır hesabı oluşturulmaz, ancak Azure farklı çalıştır hesabı oluşturulur. CSP abonelikleri hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
 Farklı Çalıştır hesabı için hizmet sorumlusu varsayılan olarak Azure AD 'yi okuma izinlerine sahip değildir. Azure AD 'yi okuma veya yönetme izinleri eklemek istiyorsanız, **API izinleri**altında hizmet sorumlusu için izinleri vermeniz gerekir. Daha fazla bilgi için bkz. [Web API 'lerine erişim Izinleri ekleme](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
@@ -63,12 +63,12 @@ Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, belirli a
 
 |Görev|Cmdlet  |Minimum Izinler  |İzinleri ayarladığınız yer|
 |---|---------|---------|---|
-|Azure AD uygulaması oluşturma|[New-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Uygulama geliştirici rolü<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Azure AD > uygulama kayıtlarını > giriş |
-|Uygulamaya bir kimlik bilgisi ekleyin.|[New-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Uygulama Yöneticisi veya genel yönetici<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Azure AD > uygulama kayıtlarını > giriş|
-|Azure AD hizmet sorumlusu oluşturma ve edinme|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Uygulama Yöneticisi veya genel yönetici<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Azure AD > uygulama kayıtlarını > giriş|
-|Belirtilen sorumlu için RBAC rolünü ata veya al|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Kullanıcı erişimi Yöneticisi veya sahibi ya da aşağıdaki izinlere sahip:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Abonelik](../role-based-access-control/role-assignments-portal.md)</br>Giriş > abonelikleri > \<subscription name\> -Access Control (IAM)|
-|Otomasyon sertifikası oluşturma veya kaldırma|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Kaynak grubunda katkıda bulunan         |Otomasyon hesabı kaynak grubu|
-|Otomasyon bağlantısı oluşturma veya kaldırma|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Kaynak grubunda katkıda bulunan |Otomasyon hesabı kaynak grubu|
+|Azure AD uygulaması oluşturma|[New-AzADApplication](/powershell/module/az.resources/new-azadapplication)     | Uygulama geliştirici rolü<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Azure AD > uygulama kayıtlarını > giriş |
+|Uygulamaya bir kimlik bilgisi ekleyin.|[New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential)     | Uygulama Yöneticisi veya genel yönetici<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Azure AD > uygulama kayıtlarını > giriş|
+|Azure AD hizmet sorumlusu oluşturma ve edinme|[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)     | Uygulama Yöneticisi veya genel yönetici<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Azure AD > uygulama kayıtlarını > giriş|
+|Belirtilen sorumlu için RBAC rolünü ata veya al|[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Kullanıcı erişimi Yöneticisi veya sahibi ya da aşağıdaki izinlere sahip:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Abonelik](../role-based-access-control/role-assignments-portal.md)</br>Giriş > abonelikleri > \<subscription name\> -Access Control (IAM)|
+|Otomasyon sertifikası oluşturma veya kaldırma|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](/powershell/module/az.automation/remove-azautomationcertificate)     | Kaynak grubunda katkıda bulunan         |Otomasyon hesabı kaynak grubu|
+|Otomasyon bağlantısı oluşturma veya kaldırma|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](/powershell/module/az.automation/remove-azautomationconnection)|Kaynak grubunda katkıda bulunan |Otomasyon hesabı kaynak grubu|
 
 <sup>1</sup> Azure AD kiracınızdaki yönetici olmayan kullanıcılar, Kullanıcı ayarları sayfasında **uygulamalar KAYDEDEBILIYORSANıZ** , [ad uygulamalarını kayıt](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) **edebilir.** Uygulama kayıt ayarı **Hayır**ise, bu eylemi gerçekleştiren kullanıcının bu tabloda tanımlanmış olması gerekir.
 
@@ -155,7 +155,7 @@ Otomatik olarak imzalanan sertifikayı yenilemek için aşağıdaki adımları k
 
 ## <a name="limit-run-as-account-permissions"></a>Farklı Çalıştır hesabı izinlerini sınırla
 
-Azure 'daki kaynaklara karşı Otomasyon hedeflemesini denetlemek için [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) betiğini çalıştırabilirsiniz. Bu betik, özel bir rol tanımı oluşturmak ve kullanmak için mevcut farklı çalıştır hesabı hizmet sorumlunuzu değiştirir. Rolün [Key Vault](https://docs.microsoft.com/azure/key-vault/)hariç tüm kaynaklar için izinleri vardır.
+Azure 'daki kaynaklara karşı Otomasyon hedeflemesini denetlemek için [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) betiğini çalıştırabilirsiniz. Bu betik, özel bir rol tanımı oluşturmak ve kullanmak için mevcut farklı çalıştır hesabı hizmet sorumlunuzu değiştirir. Rolün [Key Vault](../key-vault/index.yml)hariç tüm kaynaklar için izinleri vardır.
 
 >[!IMPORTANT]
 >**Update-AutomationRunAsAccountRoleAssignments.ps1** betiğini çalıştırdıktan sonra, Farklı Çalıştır hesaplarının kullanımı üzerinden Key Vault erişen runbook 'lar artık çalışmaz. Betiği çalıştırmadan önce, Azure Key Vault çağrılar için hesabınızdaki runbook 'ları gözden geçirmeniz gerekir. Azure Otomasyonu runbook 'lardan Key Vault erişimi etkinleştirmek için, [Farklı Çalıştır hesabını Key Vault izinlerine eklemeniz](#add-permissions-to-key-vault)gerekir.

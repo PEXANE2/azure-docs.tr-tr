@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718317"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185254"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -34,7 +35,7 @@ Azure portal veya Windows PowerShell kullanarak Azure Otomasyonu 'nda yeni bir r
 
 ### <a name="create-a-runbook-with-powershell"></a>PowerShell ile runbook oluşturma
 
-Boş bir runbook oluşturmak için [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanın. `Type`İçin tanımlanan runbook türlerinden birini belirtmek için parametresini kullanın `New-AzAutomationRunbook` .
+Boş bir runbook oluşturmak için [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanın. `Type`İçin tanımlanan runbook türlerinden birini belirtmek için parametresini kullanın `New-AzAutomationRunbook` .
 
 Aşağıdaki örnek, yeni bir boş runbook oluşturmayı gösterir.
 
@@ -68,7 +69,7 @@ Bir betik dosyasını Azure Otomasyonu 'na aktarmak için aşağıdaki yordamı 
 4. **Runbook dosyası** ' na tıklayın ve içeri aktarılacak dosyayı seçin.
 5. **Ad** alanı etkinleştirilirse, runbook adını değiştirme seçeneğiniz vardır. Ad bir harfle başlamalıdır ve harfler, rakamlar, alt çizgiler ve kısa çizgiler içerebilir.
 6. [Runbook türü](automation-runbook-types.md) otomatik olarak seçilir, ancak ilgili kısıtlamaları hesaba aldıktan sonra türü değiştirebilirsiniz.
-7. **Oluştur**'a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
+7. **Oluştur**’a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
 8. Çalıştırmak için [runbook 'u yayımlamanız](#publish-a-runbook) gerekir.
 
 > [!NOTE]
@@ -76,7 +77,7 @@ Bir betik dosyasını Azure Otomasyonu 'na aktarmak için aşağıdaki yordamı 
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>Windows PowerShell ile bir runbook 'u içeri aktarma
 
-Bir betik dosyasını taslak runbook olarak içeri aktarmak için [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanın. Runbook zaten mevcutsa, parametresini cmdlet ile kullanmadığınız müddetçe içeri aktarma başarısız olur `Force` .
+Bir betik dosyasını taslak runbook olarak içeri aktarmak için [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 'ini kullanın. Runbook zaten mevcutsa, parametresini cmdlet ile kullanmadığınız müddetçe içeri aktarma başarısız olur `Force` .
 
 Aşağıdaki örnek bir runbook 'a bir betik dosyasının nasıl içeri aktarılacağını gösterir.
 
@@ -191,7 +192,7 @@ Runbook 'larınız normalde bir zaman kısıtlaması içinde çalışıyorsa, y�
 
 ## <a name="work-with-multiple-subscriptions"></a>Birden fazla abonelik ile çalışma
 
-Runbook 'larınızın [aboneliklerle](automation-runbook-execution.md#subscriptions)çalışabilebilmesi gerekir. Örneğin, birden çok aboneliği işlemek için Runbook [devre dışı bırak-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) cmdlet 'ini kullanır. Bu cmdlet, kimlik doğrulama bağlamının aynı korumalı alanda çalışan başka bir runbook 'tan alınmamasını sağlar. Runbook aynı zamanda `Get-AzContext` cmdlet 'ini kullanarak geçerli oturumun bağlamını alır ve değişkenine atar `$AzureContext` .
+Runbook 'larınızın [aboneliklerle](automation-runbook-execution.md#subscriptions)çalışabilebilmesi gerekir. Örneğin, birden çok aboneliği işlemek için Runbook [devre dışı bırak-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) cmdlet 'ini kullanır. Bu cmdlet, kimlik doğrulama bağlamının aynı korumalı alanda çalışan başka bir runbook 'tan alınmamasını sağlar. Runbook aynı zamanda `Get-AzContext` cmdlet 'ini kullanarak geçerli oturumun bağlamını alır ve değişkenine atar `$AzureContext` .
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -256,7 +257,7 @@ Yeni bir runbook oluşturduğunuzda veya içeri aktardığınızda, çalıştır
 
 ### <a name="publish-a-runbook-using-powershell"></a>PowerShell kullanarak runbook yayımlama
 
-Runbook 'unuzu yayımlamak için [Publish-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) cmdlet 'ini kullanın. 
+Runbook 'unuzu yayımlamak için [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) cmdlet 'ini kullanın. 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -304,7 +305,7 @@ Alternatif olarak, belirli bir runbook için iş Özeti ayrıntılarını Otomas
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>PowerShell kullanarak iş durumlarını alma
 
-Bir runbook için oluşturulan işleri ve belirli bir işin ayrıntılarını almak için [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) cmdlet 'ini kullanın. Kullanarak bir runbook başlatırsanız `Start-AzAutomationRunbook` , sonuçta elde edilen işi döndürür. İş çıktısını almak için [Get-Azautomationjoi put](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) komutunu kullanın.
+Bir runbook için oluşturulan işleri ve belirli bir işin ayrıntılarını almak için [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) cmdlet 'ini kullanın. Kullanarak bir runbook başlatırsanız `Start-AzAutomationRunbook` , sonuçta elde edilen işi döndürür. İş çıktısını almak için [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) komutunu kullanın.
 
 Aşağıdaki örnek, örnek bir runbook 'un son işini alır ve durumunu, runbook parametreleri için belirtilen değerleri ve iş çıktısını görüntüler.
 

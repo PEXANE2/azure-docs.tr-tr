@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30573eb3b35152ab5769c1aab9c4af052cb454a6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850212"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171032"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 
@@ -37,52 +37,46 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 * **Bağlantı modu: doğrudan modu kullan**
 <a id="direct-connection"></a>
     
-    İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. *Connectionmode* , Istemci *connectionpolicy*'yi yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Java SDK 'Sı v4 Azure Cosmos DB için, kullanılabilir iki *Connectionmode*s şunlardır:  
-      
-    * [Ağ Geçidi (varsayılan)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
-    * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
+    İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. Bağlantı modu, istemcisini yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Java SDK 'Sı v4 Azure Cosmos DB için kullanılabilen iki bağlantı modu şunlardır:  
 
-    Bu *Connectionmode*'lar temelde, istemci makinenizden Azure Cosmos DB arka uçta bulunan bölümlere gelen istek yolunu temel alır. Genellikle doğrudan modu, en iyi performans için tercih edilen seçenektir. istemcinin TCP bağlantılarını Azure Cosmos DB arka uçtaki bölümlerle doğrudan açmasına olanak sağlar ve istekleri doğrudan bir aracı olmadan *doğrudan*gönderebilirsiniz. Buna karşılık, ağ geçidi modunda, istemciniz tarafından yapılan istekler, Azure Cosmos DB Ön uçtaki "ağ geçidi" sunucusuna yönlendirilir ve bu da isteklerinizi Azure Cosmos DB arka uçta uygun bölümlere (ler) gönderir. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun Azure Cosmos DB, verilerin her okunışında veya her yazıldığında ek bir ağ atlaması (bölüm için istemci ağ geçidine ve ağ geçidine) içerir. Bu nedenle, daha az ağ atlaması nedeniyle doğrudan mod daha iyi performans sunar.
+    * Doğrudan mod (varsayılan)      
+    * Ağ geçidi modu
 
-    *Connectionmode* , Azure Cosmos db istemci örneğinin oluşturulması sırasında *connectionpolicy* parametresiyle yapılandırılır:
+    Bu bağlantı modları temelde, veri düzleminin istek gösteren yolu-belge okuma ve yazma işlemlerini, istemci makinenizden Azure Cosmos DB arka uçta bölümlere alma. Genellikle doğrudan modu, en iyi performans için tercih edilen seçenektir. istemcinin TCP bağlantılarını Azure Cosmos DB arka uçtaki bölümlerle doğrudan açmasına olanak sağlar ve istekleri doğrudan bir aracı olmadan *doğrudan*gönderebilirsiniz. Buna karşılık, ağ geçidi modunda, istemciniz tarafından yapılan istekler, Azure Cosmos DB Ön uçtaki "ağ geçidi" sunucusuna yönlendirilir ve bu da isteklerinizi Azure Cosmos DB arka uçta uygun bölümlere (ler) gönderir. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun Azure Cosmos DB, verilerin her okunışında veya her yazıldığında ek bir ağ atlaması (bölüm için istemci ağ geçidine ve ağ geçidine) içerir. Bu nedenle, daha az ağ atlaması nedeniyle doğrudan mod daha iyi performans sunar.
+
+    Veri düzlemi istekleri için bağlantı modu, aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemleri kullanılarak Azure Cosmos db istemci Oluşturucusu 'nda yapılandırılır. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için*directconnectionconfig* , *gatewaymode ()* için *gatewayconnectionconfig* .)
     
-   #### <a name="async"></a>[Eş](#tab/api-async)
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
 
-   ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
+    # <a name="async"></a>[Eş](#tab/api-async)
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosAsyncClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildAsyncClient();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientConnectionModeAsync)]
 
-    #### <a name="sync"></a>[Eşitle](#tab/api-sync)
+    # <a name="sync"></a>[Eşitle](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-connection-policy-sync"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) eşitleme API 'SI
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) eşitleme API 'SI
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientConnectionModeSync)]
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildClient();
-    ```
+    --- 
+
+    *Directmode ()* yönteminin aşağıdaki nedenlerle ek bir geçersiz kılma işlemi vardır. Veritabanı ve kapsayıcı CRUD gibi denetim düzlemi işlemleri *her zaman* ağ geçidi modunu kullanır; Kullanıcı, veri düzlemi işlemleri için doğrudan modu yapılandırmışsa, denetim düzlemi işlemleri varsayılan ağ geçidi modu ayarlarını kullanır. Bu, çoğu kullanıcıya uygun değildir. Ancak, veri düzlemi işlemleri için doğrudan mod ve denetim düzlemi ağ geçidi modu parametrelerinin tunyeteneğinin olmasını isteyen kullanıcıların aşağıdaki *Directmode ()* geçersiz kılmayı kullanması gerekir:
+
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
+
+    # <a name="async"></a>[Eş](#tab/api-async)
+
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
+
+    # <a name="sync"></a>[Eşitle](#tab/api-sync)
+
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) eşitleme API 'SI
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientDirectOverrideSync)]
 
     --- 
 
@@ -156,7 +150,7 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
 * **ConnectionPolicy ayarlama**
 
-    Varsayılan olarak, Azure Cosmos DB Java SDK v4 kullanılırken doğrudan mod Cosmos DB istekleri TCP üzerinden yapılır. Dahili olarak SDK, ağ kaynaklarını dinamik olarak yönetmek ve en iyi performansı elde etmek için özel bir doğrudan mod mimarisi kullanır.
+    Varsayılan olarak, Azure Cosmos DB Java SDK v4 kullanılırken doğrudan mod Cosmos DB istekleri TCP üzerinden yapılır. Dahili doğrudan mod, ağ kaynaklarını dinamik olarak yönetmek ve en iyi performansı elde etmek için özel bir mimari kullanır.
 
     Java SDK 'Sı v4 Azure Cosmos DB, doğrudan modu, en iyi iş yükleriyle veritabanı performansını geliştirmek için en iyi seçenektir. 
 
@@ -166,30 +160,21 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
 
         Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 **Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası**tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
 
-    * ***Doğrudan mod için ConnectionPolicy yapılandırma seçenekleri***
+    * ***Doğrudan mod için yapılandırma seçenekleri***
 
-        Bu yapılandırma ayarları, doğrudan Mod SDK davranışını yöneten RNTBD mimarisinin davranışını denetler.
-        
-        İlk adım olarak aşağıdaki önerilen yapılandırma ayarlarını kullanın. Bu *Connectionpolicy* SEÇENEKLERI, SDK performansını beklenmeyen yollarla etkileyebilecek gelişmiş yapılandırma ayarlarıdır; avantajları anlamak çok rahat ve kesinlikle gerekli olmadığı müddetçe, kullanıcıların bunları değiştirmelerini öneririz. Bu konuda sorun yaşıyorsanız lütfen [Azure Cosmos DB ekibine](mailto:CosmosDBPerformanceSupport@service.microsoft.com) başvurun.
+        Varsayılan olmayan doğrudan mod davranışı isteniyorsa, bir *Directconnectionconfig* örneği oluşturun ve özelliklerini özelleştirin, ardından özelleştirilmiş özellik örneğini Azure Cosmos DB Istemci oluşturucusunun *directmode ()* metoduna geçirin.
 
-        Bir başvuru veritabanı olarak Azure Cosmos DB kullanıyorsanız (diğer bir deyişle, veritabanı birçok nokta okuma işlemi ve birkaç yazma işlemi için kullanılırsa), *ıdtimeout zaman aşımını* 0 (yani zaman aşımı yok) olarak ayarlamak kabul edilebilir.
+        Bu yapılandırma ayarları yukarıda ele alınan temeldeki doğrudan mod mimarisinin davranışını denetler.
 
+        İlk adım olarak aşağıdaki önerilen yapılandırma ayarlarını kullanın. Bu *Directconnectionconfig* SEÇENEKLERI, SDK performansını beklenmeyen yollarla etkileyebilecek gelişmiş yapılandırma ayarlarıdır; avantajları anlamak çok rahat ve kesinlikle gerekli olmadığı müddetçe, kullanıcıların bunları değiştirmelerini öneririz. Bu konuda sorun yaşıyorsanız lütfen [Azure Cosmos DB ekibine](mailto:CosmosDBPerformanceSupport@service.microsoft.com) başvurun.
 
         | Yapılandırma seçeneği       | Varsayılan    |
         | :------------------:       | :-----:    |
-        | bufferPageSize             | 8192       |
-        | connectionTimeout          | "PT1M"     |
-        | ıdtımechanneltimeout         | "PT0S"     |
-        | ıdtımeendpointtimeout        | "PT1M10S"  |
-        | maxBufferCapacity          | 8388608    |
-        | maxChannelsPerEndpoint     | 10         |
-        | maxRequestsPerChannel      | 30         |
-        | receiveHangDetectionTime   | "PT1M5S"   |
-        | Requestexpiryıınterval      | "PT5S"     |
-        | requestTimeout             | "PT1M"     |
-        | requestTimerResolution     | "PT 0,5 S"   |
-        | sendHangDetectionTime      | "PT10S"    |
-        | shutdownTimeout            | "PT15S"    |
+        | ıdboşta ConnectionTimeout      | "PT1M"     |
+        | maxConnectionsPerEndpoint  | "PT0S"     |
+        | connectTimeout             | "PT1M10S"  |
+        | ıdtımeendpointtimeout        | 8388608    |
+        | maxRequestsPerConnection   | 10         |
 
 * **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
@@ -326,17 +311,11 @@ Daha fazla ayrıntı için lütfen [Windows](https://docs.microsoft.com/azure/vi
  
 * **Daha hızlı yazma işlemleri için, kullanılmayan yolları dizin oluşturmanın dışında bırakma**
 
-    Azure Cosmos DB Dizin oluşturma ilkesi, dizin oluşturma yollarını (Setıncludedpaths ve setExcludedPaths) kullanarak hangi belge yollarının dizine eklenmesini veya dışlanacağını belirtmenize olanak tanır. Dizin oluşturma yollarının kullanımı, sorgu desenlerinin önceden bildiği senaryolar için gelişmiş yazma performansı ve daha düşük dizin depolaması sunabilir, dizin oluşturma maliyetleri doğrudan dizinli benzersiz yolların sayısıyla bağıntılı olur. Örneğin, aşağıdaki kod, "*" joker karakterini kullanarak, belgelerin tamamının (alt ağaç olarak da bilinir) bir bölümünün tamamını nasıl dışlayacak olduğunu gösterir.
+    Azure Cosmos DB Dizin oluşturma ilkesi, dizin oluşturma yollarını (Setıncludedpaths ve setExcludedPaths) kullanarak hangi belge yollarının dizine eklenmesini veya dışlanacağını belirtmenize olanak tanır. Dizin oluşturma yollarının kullanımı, sorgu desenlerinin önceden bildiği senaryolar için gelişmiş yazma performansı ve daha düşük dizin depolaması sunabilir, dizin oluşturma maliyetleri doğrudan dizinli benzersiz yolların sayısıyla bağıntılı olur. Örneğin, aşağıdaki kod, "*" joker karakterini kullanarak, belgelerin tüm bölümlerinin (alt ağaç olarak da bilinir) nasıl ekleneceğini ve dışlanacağını gösterir.
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
-    ```java
-    Index numberIndex = Index.Range(DataType.Number);
-    indexes.add(numberIndex);
-    includedPath.setIndexes(indexes);
-    includedPaths.add(includedPath);
-    indexingPolicy.setIncludedPaths(includedPaths);        
-    containerProperties.setIndexingPolicy(indexingPolicy);
-    ``` 
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
 
     Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](indexing-policies.md).
 

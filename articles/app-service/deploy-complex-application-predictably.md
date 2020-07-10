@@ -5,11 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5e4c4d89a1119b0f59aa15885406cd7261d2f69
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75967392"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170012"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure 'da mikro hizmetleri öngörülebilir bir şekilde sağlayın ve dağıtın
 Bu öğreticide, tek bir birim olarak [Azure App Service](https://azure.microsoft.com/services/app-service/) [mikro hizmetlerden](https://en.wikipedia.org/wiki/Microservices) oluşan bir uygulamanın nasıl SAĞLANACAĞı ve dağıtılacağı ve JSON kaynak grubu şablonlarının ve PowerShell betiği kullanılarak öngörülebilir bir şekilde dağıtılması gösterilmektedir. 
@@ -53,19 +54,19 @@ Kaynak denetimi için GitHub kullanıyorsanız, BENIOKU 'nize bir [Azure 'A dağ
 2. Readme.md ' de **Azure 'A dağıt**' a tıklayın.
 3. [Dağıtım parametrelerine](https://deploy.azure.com) yönlendirilirsiniz ve dağıtım parametrelerini oluşturmanız istenir. Alanların çoğunun Depo adı ve sizin için bazı rastgele dizeler doldurulduğuna dikkat edin. İsterseniz tüm alanları değiştirebilirsiniz, ancak girmeniz gereken tek şey SQL Server yönetici oturum açma ve parola ' **nun ardından İleri**' ye tıklayın.
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
+   ![Dağıtım-Azure sitesinde giriş dağıtım parametrelerini gösterir.](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 4. Sonra dağıtım işlemini başlatmak için **Dağıt** ' a tıklayın. İşlem tamamlanana kadar çalıştıktan sonra, http://todoapp dağıtılan uygulamaya gitmek için *XXXX*. azurewebsites.net bağlantısına tıklayın. 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
+   ![Uygulamanızın dağıtım sürecini gösterir.](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
    Uygulamalar yeni başladığından ve bunu tam işlevli bir uygulama olduğunu ikna ederken Kullanıcı arabirimi biraz daha yavaş olabilir.
 5. Dağıtım sayfasına geri döndüğünüzde, yeni uygulamayı Azure portalında görmek için **Yönet** bağlantısına tıklayın.
 6. **Essentials** açılan menüsünde kaynak grubu bağlantısına tıklayın. Ayrıca uygulamanın, **dış proje**altında GitHub deposuna zaten bağlı olduğunu unutmayın. 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
+   ![Essentials açılan bölümünde kaynak grubu bağlantısını gösterir.](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
 7. Kaynak grubu dikey penceresinde, kaynak grubunda zaten iki uygulama ve bir SQL veritabanı olduğunu unutmayın.
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
+   ![Kaynak grubunuzda kullanılabilir kaynakları gösterir.](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
 Kısa bir süre içinde az önce gördüğünüz her şey, tüm bileşenler, bağımlılıklar, ayarlar, veritabanı ve sürekli yayımlama ile, Azure Resource Manager bir otomatik düzenleme tarafından ayarlanan tamamen dağıtılan iki mikro hizmet uygulamasıdır. Bunların hepsi iki şey tarafından gerçekleştirildi:
 
@@ -79,10 +80,10 @@ Aynı uygulamayı onlarca, yüzlerce veya binlerce kez dağıtabilir ve her sefe
 
 1. En sevdiğiniz git aracını kullanarak [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) deposunu kopyalayın. Aşağıdaki ekran görüntüsünde, bunu Visual Studio 2013 Takım Gezgini yapacağım.
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
+   ![ToDoApp deposunu kopyalamak için bir git aracının nasıl kullanılacağını gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
 2. Depo kökünden, Visual Studio 'da azuredeploy.jsaçın. JSON ana hat bölmesini görmüyorsanız Azure .NET SDK 'yı yüklemeniz gerekir.
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
+   ![Visual Studio 'da JSON ana hat bölmesini gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
 JSON biçiminin her ayrıntısını anlatmak istemiyorum, ancak [daha fazla kaynak](#resources) bölümünde kaynak grubu şablon dilini öğrenmek için bağlantılar vardır. Burada, uygulama dağıtımı için kendi özel şablonunuzu yapmaya başlamanıza yardımcı olabilecek ilginç özellikleri göstereceğiz.
 
@@ -95,7 +96,7 @@ Kaynaklar düğümünde, SQL Server bir örnek, App Service planı ve iki uygula
 #### <a name="app-service-plan"></a>App Service planı
 JSON içinde basit bir kök düzeyi kaynakla başlayalım. JSON ana hattının karşılık gelen JSON kodunu vurgulamak için **[Hostingplanname]** adlı App Service planına tıklayın. 
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
+![JSON kodunun [hostingPlanName] bölümünü gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
 `type`Öğesinin bir App Service planı için dizeyi (bir sunucu grubu uzun, uzun bir süre önce denir) belirtir ve diğer öğeler ve ÖZELLIKLER json dosyasında tanımlanan parametreleri kullanarak doldurulmuştur ve bu kaynak, iç içe kaynak içermez.
 
@@ -107,7 +108,7 @@ JSON içinde basit bir kök düzeyi kaynakla başlayalım. JSON ana hattının k
 #### <a name="sql-server"></a>SQL Server
 Ardından, JSON ana hattından **SqlServer** adlı SQL Server kaynağına tıklayın.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
+![JSON ana hattından SQLServer adlı SQL Server kaynağını gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
 
 Vurgulanan JSON kodu hakkında aşağıdakilere dikkat edin:
 
@@ -127,12 +128,12 @@ Vurgulanan JSON kodu hakkında aşağıdakilere dikkat edin:
 ##### <a name="root-resource"></a>Kök kaynak
 Uygulama iki farklı kaynağa bağlıdır. Bu, Azure Resource Manager uygulamayı yalnızca App Service planı ve SQL Server örneği oluşturulduktan sonra oluşturacağı anlamına gelir.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
+![App Service planında ve SQL Server örneğinde uygulama bağımlılıklarını gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
 ##### <a name="app-settings"></a>Uygulama ayarları
 Uygulama ayarları, iç içe geçmiş bir kaynak olarak da tanımlanır.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
+![JSON kodunda iç içe geçmiş kaynak olarak tanımlanan uygulama ayarlarını gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
 `properties`İçin öğesinde `config/appsettings` , biçiminde iki uygulama ayarı vardır `"<name>" : "<value>"` .
 
@@ -142,7 +143,7 @@ Uygulama ayarları, iç içe geçmiş bir kaynak olarak da tanımlanır.
 ##### <a name="connection-strings"></a>Bağlantı dizeleri
 Bağlantı dizeleri de iç içe geçmiş bir kaynak olarak tanımlanır.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
+![Bağlantı dizelerinin JSON kodunda iç içe geçmiş kaynak olarak nasıl tanımlandığını gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
 `properties`İçin öğesinde `config/connectionstrings` , her bağlantı dizesi, belirli biçimiyle bir ad: değer çifti olarak da tanımlanır `"<name>" : {"value": "…", "type": "…"}` . Öğesi için `type` olası değerler,, ve ' dir `MySql` `SQLServer` `SQLAzure` `Custom` .
 
@@ -154,7 +155,7 @@ Bağlantı dizeleri de iç içe geçmiş bir kaynak olarak tanımlanır.
 ##### <a name="source-control"></a>Kaynak denetimi
 Kaynak denetimi ayarları, iç içe geçmiş kaynak olarak da tanımlanır. Azure Resource Manager, sürekli yayımlamayı yapılandırmak için bu kaynağı kullanır ( `IsManualIntegration` daha sonra bkz. desteklenmediği uyarısıyla) ve ayrıca, JSON dosyasının işlenmesi sırasında uygulama kodu dağıtımını otomatik olarak başlatma.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
+![Kaynak denetimi ayarlarının JSON kodunda iç içe geçmiş kaynak olarak nasıl tanımlandığını gösterir.](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
 `RepoUrl`ve `branch` oldukça sezgisel olmalıdır ve git deposuna ve yayımlanacak dalın adına işaret etmelidir. Bunlar, giriş parametrelerine göre tanımlanır. 
 
@@ -170,11 +171,11 @@ Burada, [Azure portalındaki](https://portal.azure.com/)tüm uygulamaların dike
 
 Örneğin, [Azure Kaynak Gezgini](https://resources.azure.com) aracına gidip gezgin içindeki düğümleri genişlettikten sonra kaynak grubunu ve ilgili kaynak türleri altında toplanan kök düzeyi kaynakları görebiliyorum.
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
+![Genişletilmiş Azure kaynakları gezgin aracında kaynak grubu ve kök düzeyi kaynakları görüntüleyin.](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
 Bir uygulamanın detayına inmek isterseniz, aşağıdaki ekran görüntüsüne benzer şekilde uygulama yapılandırma ayrıntılarını görmeniz gerekir:
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
+![Uygulamada yapılandırma ayrıntılarını görüntülemek için detaya gidin.](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
 
 Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir hiyerarşiye sahip olmalıdır ve uygulama ayarları, bağlantı dizeleri vb. gibi JSON bölmesine doğru şekilde yansıtılmalıdır. Buradaki ayarların yokluğu, JSON dosyanızda bir sorun olduğunu gösterebilir ve JSON şablon dosyanızda sorun gidermenize yardımcı olabilir.
 
@@ -184,50 +185,50 @@ Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir
 1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
 2. **Visual C#**  >  **Cloud**  >  **Azure Kaynak grubu**' na tıklayın ve ardından **Tamam**' a tıklayın.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
+   ![Azure .NET SDK 'sında Azure Kaynak grubu olarak yeni bir proje oluşturun.](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. **Azure şablonu seç**' te **boş şablon** ' u seçin ve **Tamam**' ı tıklatın.
 4. azuredeploy.jsüzerine yeni projenizin **şablon** klasörüne sürükleyin.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
+   ![Dosyadaki azuredeploy.js, projenizin şablon klasörüne sürüklenmesi sonucunu gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
 5. Çözüm Gezgini, kopyalanmış azuredeploy.jsüzerinde açın.
 6. Yalnızca tanıtım amacıyla, **Kaynak Ekle**' ye tıklayarak JSON dosyanıza bazı standart Application Insight kaynakları ekleyelim. JSON dosyasını dağıtmaya yalnızca ilgileniyorsanız, dağıtma adımlarına atlayın.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
+   ![JSON dosyanıza standart uygulama Insight kaynakları eklemek için kullanabileceğiniz Kaynak Ekle düğmesini gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 7. **Web Apps için Application Insights**seçin, ardından mevcut bir App Service planının ve uygulamanın seçildiğinden emin olun ve ardından **Ekle**' ye tıklayın.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
+   ![Web Apps, ad, App Service planı ve Web uygulaması için Application Insights seçimini gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
    Artık, kaynağa ve ne işe bağlı olarak, App Service planında veya uygulamada bağımlılıklar içeren birkaç yeni kaynak görebileceksiniz. Bu kaynaklar mevcut tanımlarıyla etkinleştirilmemiştir ve bunu değiştirirsiniz.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
+   ![App Service planında veya uygulamada bağımlılıklara sahip yeni kaynakları görüntüleyin.](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
 8. JSON ana hattından, JSON kodunu vurgulamak için **Appınsights otomatik ölçeklendirme** ' ye tıklayın. Bu, App Service planınız için ölçeklendirme ayarıdır.
 9. Vurgulanan JSON kodunda, `location` ve `enabled` özelliklerini bulun ve aşağıda gösterildiği gibi ayarlayın.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
+   ![Appınsights otomatik ölçeklendirme JSON kodundaki ve ' i ayarlamanız gereken değerlerin konumunu ve etkin özelliklerini gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
 10. JSON ana hattından, JSON kodunu vurgulamak için **Cpuhigh Appınsights** ' a tıklayın. Bu bir uyarıdır.
 11. `location`Ve özelliklerini bulun `isEnabled` ve aşağıda gösterildiği gibi ayarlayın. Diğer üç uyarı (mor bulbs) için de aynısını yapın.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
+    ![CPUHigh Appınsights JSON kodundaki ve bunları ayarlamanız gereken değerler için konumu ve IsEnabled özelliklerini gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
 12. Şimdi dağıtıma hazırsınız. Projeye sağ tıklayın ve **Deploy**  >  **yeni dağıtım**Dağıt ' ı seçin.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
+    ![Yeni projenizin nasıl dağıtılacağını gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. Henüz yapmadıysanız Azure hesabınızda oturum açın.
 14. Aboneliğinizde var olan bir kaynak grubu seçin veya yeni bir tane oluşturun, **üzerindeazuredeploy.js**seçin ve ardından **parametreleri Düzenle**' ye tıklayın.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
+    ![Dosyadaki azuredeploy.jsparametrelerin nasıl düzenleneceğini gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
     Artık, şablon dosyasında tanımlanan tüm parametreleri iyi bir tabloda düzenleyebileceksiniz. Varsayılanları tanımlayan parametreler varsayılan değerlerine sahip olur ve izin verilen değerlerin bir listesini tanımlayan parametreler açılan olarak gösterilir.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
+    ![Açılır listeler olarak izin verilen değerlerin bir listesini tanımlayan parametreleri gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
 15. Tüm boş parametreleri doldurup, **Repourl**'de [ToDoApp için GitHub depo adresini](https://github.com/azure-appservice-samples/ToDoApp.git) kullanın. Ardından **Kaydet**' e tıklayın.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
+    ![Dosyadaki azuredeploy.jsiçin yeni doldurulmuş parametreleri gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
     > [!NOTE]
     > Otomatik ölçeklendirme, **Standart** katmanda veya daha yüksek bir özelliktir ve plan düzeyi uyarılar **temel** katmanda veya daha yüksek sürümlerde sunulan özelliklerdir, tüm yeni App Insights kaynaklarınızın açık olduğunu görmek için **SKU** parametresini **Standart** veya **Premium** olarak ayarlamanız gerekir.
     > 
     > 
-16. **Dağıt**' a tıklayın. **Parolaları kaydet**' i seçtiyseniz, parola parametre dosyasına **düz metin olarak**kaydedilir. Aksi takdirde, dağıtım işlemi sırasında veritabanı parolasını girmek isteyip istemediğiniz sorulur.
+16. **Dağıt**’a tıklayın. **Parolaları kaydet**' i seçtiyseniz, parola parametre dosyasına **düz metin olarak**kaydedilir. Aksi takdirde, dağıtım işlemi sırasında veritabanı parolasını girmek isteyip istemediğiniz sorulur.
 
 Bu kadar! Şimdi, JSON dağıtılan uygulamanıza eklenen yeni uyarıları ve otomatik ölçeklendirme ayarlarını görmek için [Azure portalına](https://portal.azure.com/) ve [Azure Kaynak Gezgini](https://resources.azure.com) aracına gitmeniz yeterlidir.
 
@@ -239,7 +240,7 @@ Bu bölümdeki adımlar genellikle aşağıdakileri yerine gerçekleştirdi:
 
 Son adım bir PowerShell cmdlet 'i tarafından kolayca yapılır. Uygulamanızı dağıtırken hangi Visual Studio 'Nun olduğunu görmek için Scripts\Deploy-AzureResourceGroup.ps1 açın. Burada çok fazla kod vardır, ancak şablon dosyasını parametre dosyasıyla birlikte dağıtmanız için ihtiyacınız olan tüm ilgili kodu vurgulayacağım.
 
-![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
+![Komut dosyasında, şablon dosyasını parametre dosyası ile dağıtmak için kullanmanız gereken ilgili kodu gösterir.](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
 Son cmdlet 'i, `New-AzureResourceGroup` eylemi gerçekten gerçekleştiren bir şeydir. Bu, araç yardımıyla, bulut uygulamanızı öngörülebilir şekilde dağıtmak için oldukça basittir. Cmdlet 'i aynı şablonda aynı parametre dosyası ile her çalıştırdığınızda aynı sonucu elde edersiniz.
 

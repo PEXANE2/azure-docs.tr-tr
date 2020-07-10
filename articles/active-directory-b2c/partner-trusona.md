@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78de242cb6fd1d670dc9564a2725070b7424b5b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385561"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170114"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Truslonwith Azure Active Directory B2C tümleştirme
 
 Trusona, passwordless kimlik doğrulaması, Multi-Factor Authentication ve dijital lisans taramasını etkinleştirerek, oturum açma güvenliğini sağlamaya yardımcı olan bağımsız bir yazılım satıcısı (ISV) sağlayıcısıdır. Bu makalede, passwordless kimlik doğrulamasını etkinleştirmek için Azure AD B2C ' de bir kimlik sağlayıcısı olarak Trusona nasıl ekleneceğini öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -40,8 +40,7 @@ Bu senaryoda, Trusona, passwordless kimlik doğrulamasını etkinleştirmek içi
 
 ![Truslonarchitecture diyagramı](media/partner-trusona/trusona-architecture-diagram.png)
 
-
-|  |  |
+| Adım | Açıklama |
 |------|------|
 |1     | Kullanıcı oturum açmaya veya uygulamaya kaydolma girişiminde bulunur. Kullanıcının kimliği, Azure AD B2C kaydolma ve oturum açma ilkesi aracılığıyla doğrulanır. Kaydolma işlemi sırasında kullanıcının daha önce, Truslonapp 'ten daha önce doğrulanmış e-posta adresi kullanılır.     |
 |2     | Azure B2C, dolaylı akışı kullanarak kullanıcıyı Truslonopenıd Connect (OıDC) kimlik sağlayıcısına yönlendirir.     |
@@ -92,7 +91,7 @@ Bu senaryoda, Trusona, passwordless kimlik doğrulamasını etkinleştirmek içi
 
 3. **Kimlik sağlayıcıları**' nı seçin.
 
-4. **Ekle**'yi seçin.
+4. **Ekle**’yi seçin.
 
 ### <a name="configure-an-identity-provider"></a>Kimlik sağlayıcısı yapılandırma  
 
@@ -140,7 +139,7 @@ Bu senaryoda, Trusona, passwordless kimlik doğrulamasını etkinleştirmek içi
 
 3. Trusloni doğal olarak Multi-Factor olduğundan, Multi-Factor Authentication 'ı devre dışı bırakmak en iyisidir.
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 5. **Kullanıcı öznitelikleri ve talepler**altında **daha fazla göster**' i seçin. Formunda, önceki bölümde kimlik sağlayıcınızın kurulumu sırasında belirttiğiniz en az bir öznitelik seçin.
 

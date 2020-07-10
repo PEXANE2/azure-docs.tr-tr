@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206895"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186393"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
@@ -53,7 +53,7 @@ Azure Otomasyonu durum yapılandırması, PowerShell komut dosyası oluşturma �
 
 Azure Otomasyonu durum yapılandırması ile yönetilen düğümler, yerleşik çekme sunucusuna ayrıntılı raporlama durum verileri gönderir. Azure Otomasyonu durum yapılandırması 'nı, bu verileri Log Analytics çalışma alanınıza gönderecek şekilde yapılandırabilirsiniz. Bkz. [Azure Otomasyonu durum yapılandırması raporlama verilerini Azure izleyici günlüklerine iletme](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Otomasyonu durum yapılandırması 'nı kullanırken bu bölümdeki gereksinimleri göz önünde bulundurun.
 
@@ -77,7 +77,7 @@ Linux çalıştıran düğümler için DSC Linux uzantısı, [desteklenen Linux 
 
 ### <a name="dsc-requirements"></a>DSC gereksinimleri
 
-Azure 'da çalışan tüm Windows düğümleri için, makineler etkinleştirildiğinde [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) yüklenir. Windows Server 2012 ve Windows 7 çalıştıran düğümler için [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) etkinleştirilmiştir.
+Azure 'da çalışan tüm Windows düğümleri için, makineler etkinleştirildiğinde [WMF 5,1](/powershell/scripting/wmf/setup/install-configure) yüklenir. Windows Server 2012 ve Windows 7 çalıştıran düğümler için [WinRM](/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) etkinleştirilmiştir.
 
 Azure 'da çalışan tüm Linux düğümleri için, makineler etkinleştirildiğinde [Linux Için POWERSHELL DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) yüklenir.
 
@@ -90,7 +90,7 @@ Düğümleriniz özel bir ağda bulunuyorsa, aşağıdaki bağlantı noktası ve
 * US Gov Virginia genel URL 'SI: ***. Azure-Automation.us**
 * Aracı hizmeti: **https:// \<workspaceId\> . Agentsvc.Azure-Automation.net**
 
-[Waitfor * kaynakları](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)gibi düğümler arasında ILETIŞIM kuran DSC kaynakları kullanıyorsanız, düğümler arasında trafiğe de izin vermeniz gerekir. Bu ağ gereksinimlerini anlamak için her DSC kaynağına yönelik belgelere bakın.
+[Waitfor * kaynakları](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)gibi düğümler arasında ILETIŞIM kuran DSC kaynakları kullanıyorsanız, düğümler arasında trafiğe de izin vermeniz gerekir. Bu ağ gereksinimlerini anlamak için her DSC kaynağına yönelik belgelere bakın.
 
 TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -114,5 +114,4 @@ Linux düğümleri için DSC Aracısı ara sunucuyu destekler ve `http_proxy` UR
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
 - Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/30/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057815"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186869"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning eğitim
 
 Bir __sanal ağ__ , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için bir güvenlik sınırı görevi görür. Ayrıca, bir Azure sanal ağını şirket içi ağınıza da katabilirsiniz. Ağları birleştirerek, modellerinizi güvenli bir şekilde eğitebilir ve çıkarım için dağıtılan modellerinize erişebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure Machine Learning [çalışma alanı](how-to-manage-workspace.md).
 
@@ -67,6 +67,9 @@ Ayrıca, özel bir uç nokta kullanarak çalışma alanınıza bağlanmak için 
 
 Verileriniz bir sanal ağda depolanıyorsa, Studio 'ya verilerinize erişim vermek için çalışma alanı [tarafından yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanmanız gerekir.
 
+> [!IMPORTANT]
+> Çoğu Studio, bir sanal ağda depolanan verilerle birlikte çalışarak, tümleşik Not defterleri __değildir__. Tümleşik Not defterleri, sanal bir ağdaki depolamanın kullanımını desteklemez. Bunun yerine, Jupyıter not defterlerini bir işlem örneğinden kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri](#access-data-in-a-compute-instance-notebook) bölümüne bakın.
+
 Studio erişimi verilemez, bu hatayı alırsınız `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` ve aşağıdaki işlemleri devre dışı bırakabilirsiniz:
 
 * Studio 'daki verileri önizleyin.
@@ -85,7 +88,7 @@ Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı de
 
 Çalışma alanınızı ve depolama hesabınızı birbirlerine erişebilecek şekilde aynı sanal ağa ekleyin.
 
-1. Çalışma alanınızı sanal ağa bağlamak için [Azure özel bağlantısını etkinleştirin](how-to-configure-private-link.md).
+1. Çalışma alanınızı sanal ağa bağlamak için [Azure özel bağlantısını etkinleştirin](how-to-configure-private-link.md). Bu özellik şu anda önizleme aşamasındadır ve ABD Doğu, ABD Batı 2 ABD Orta Güney bölgelerinde kullanılabilir.
 
 1. Depolama hesabınızı sanal ağa bağlamak için [güvenlik duvarları ve sanal ağlar ayarlarını yapılandırın](#use-a-storage-account-for-your-workspace).
 
@@ -635,7 +638,7 @@ Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi içi
 
 1. Çalışma alanınızın Azure Container Registry adını bulmak için aşağıdaki yöntemlerden birini kullanın:
 
-    __Azure portalındaki__
+    __Azure Portal__
 
     Çalışma alanınızın genel bakış bölümünden __kayıt defteri__ değeri Azure Container Registry bağlanır.
 
@@ -765,7 +768,7 @@ Bir sanal ağla Azure Databricks kullanma hakkında ayrıntılı bilgi için bkz
 
 Sanal bir makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip bir sanal ağda kullanmak için aşağıdaki adımları kullanın:
 
-1. Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+1. Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makalelere bakın:
     * [Linux VM 'Ler için Azure sanal ağları oluşturma ve yönetme](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Azure sanal ağını kullanarak HDInsight 'ı genişletme](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)

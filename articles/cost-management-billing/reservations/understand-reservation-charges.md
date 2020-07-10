@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Veritabanları için rezervasyon indirimini anlama | Microsoft Docs
-description: Çalışmakta olan Azure SQL Veritabanlarına bir rezervasyon indiriminin nasıl uygulanacağını öğrenin.
+title: Azure SQL Veritabanı için rezervasyon indirimini anlama | Microsoft Docs
+description: Çalışmakta olan Azure SQL veritabanlarına bir rezervasyon indiriminin nasıl uygulanacağını öğrenin.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: e402eabce5fd7af6ca9f51a1d67175cd8e5e1ce4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726069"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037996"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Azure SQL Veritabanlarına rezervasyon indiriminin uygulanması
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Azure SQL Veritabanı’na rezervasyon indiriminin uygulanması
 
-Bir Azure SQL Veritabanı ayrılmış kapasitesi satın almanızın ardından, rezervasyonun öznitelikleriyle ve miktarıyla eşleşen SQL Veritabanlarına otomatik olarak rezervasyon indirimi uygulanır. Rezervasyon, SQL Veritabanınızın işlem maliyetlerini kapsar. Yazılım, depolama ve ağ iletişimi için normal fiyatlarla ücretlendirilirsiniz. [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) ile SQL Veritabanı için lisanslama maliyetlerini kapsayabilirsiniz.
+Bir Azure SQL Veritabanı ayrılmış kapasitesi satın almanızın ardından, rezervasyonun öznitelikleriyle ve miktarıyla eşleşen SQL veritabanlarına otomatik olarak rezervasyon indirimi uygulanır. Rezervasyon, SQL Veritabanınızın işlem maliyetlerini kapsar. Yazılım, depolama ve ağ iletişimi için normal fiyatlarla ücretlendirilirsiniz. [Azure Hibrit Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) ile SQL Veritabanı için lisanslama maliyetlerini kapsayabilirsiniz.
 
 Azure SQL Veritabanı sunucusuza rezervasyon indirimleri uygulanmadığını unutmayın.
 
@@ -28,17 +28,17 @@ Rezervasyon indirimi “*kullanılmadığı takdirde hakkı kaybedilen*” bir �
 
 Bir kaynağı kapattığınızda rezervasyon indirimi, belirtilen kapsamdaki başka bir eşleşen kaynağa otomatik olarak uygulanır. Belirtilen kapsamda eşleşen kaynak bulunamazsa, ayrılan saatler *kaybedilir*.
 
-## <a name="discount-applied-to-sql-databases"></a>SQL Veritabanlarına uygulanan indirim
+## <a name="discount-applied-to-running-sql-databases"></a>Çalışan SQL veritabanlarına uygulanan indirim
 
- SQL Veritabanı ayrılmış kapasite indirimi, çalışmakta olan SQL Veritabanlarına saat bazında uygulanır. Satın aldığınız rezervasyon, çalışmakta olan SQL Veritabanları tarafından gösterilen işlem kullanımı ile eşleştirilir. Saatin tamamı boyunca çalışmayan SQL Veritabanları olursa rezervasyon, rezervasyon öznitelikleriyle eşleşen diğer SQL veritabanlarına otomatik olarak uygulanır. Eş zamanlı olarak çalışan SQL Veritabanları için de indirim geçerli olabilir. Rezervasyon öznitelikleriyle eşleşen ve saatin tamamı boyunca çalışan bir SQL Veritabanınız yoksa, ilgili saat için rezervasyon indiriminden tam olarak yararlanmazsınız.
+ SQL Veritabanı ayrılmış kapasite indirimi, çalışmakta olan SQL veritabanlarına saat bazında uygulanır. Satın aldığınız rezervasyon, çalışmakta olan SQL veritabanları tarafından gösterilen işlem kullanımı ile eşleştirilir. Saatin tamamı boyunca çalışmayan SQL veritabanları olursa rezervasyon, rezervasyon öznitelikleriyle eşleşen diğer SQL veritabanlarına otomatik olarak uygulanır. Eş zamanlı olarak çalışan SQL veritabanları için de indirim geçerli olabilir. Rezervasyon öznitelikleriyle eşleşen ve saatin tamamı boyunca çalışan bir SQL veritabanınız yoksa, ilgili saat için rezervasyon indiriminden tam olarak yararlanmazsınız.
 
 Aşağıdaki örneklerde, satın aldığınız çekirdek sayısına ve çalıştırılma zamanına bağlı olarak SQL Veritabanı ayrılmış kapasite indiriminin nasıl uygulanacağı gösterilmektedir.
 
 - Senaryo 1: 8 çekirdekli bir SQL Veritabanı için SQL Veritabanı ayrılmış kapasitesi satın aldınız. Rezervasyon özniteliklerinin geri kalanıyla eşleşen 16 çekirdekli bir SQL Veritabanı çalıştırıyorsunuz. 8 çekirdekli SQL Veritabanı işlem kullanımı için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Bir saatlik 8 çekirdekli SQL Veritabanı işlem kullanımı için rezervasyon indirimi elde edersiniz.
 
-Bu örneklerin geri kalanında, satın aldığınız SQL Veritabanı ayrılmış kapasitesinin 16 çekirdekli SQL Veritabanı için olduğunu ve rezervasyon özniteliklerinin geri kalanının, çalışmakta olan SQL Veritabanları ile eşleştiğini varsayın.
+Bu örneklerin geri kalanında, satın aldığınız SQL Veritabanı ayrılmış kapasitesinin 16 çekirdekli SQL Veritabanı için olduğunu ve rezervasyon özniteliklerinin geri kalanının, çalışmakta olan SQL veritabanları ile eşleştiğini varsayın.
 
-- Senaryo 2: Her bir saat için 8’er çekirdekle iki SQL Veritabanı çalıştırıyorsunuz. 16 çekirdekli rezervasyon indirimi her iki 8 çekirdekli SQL Veritabanı için işlem kullanımına uygulanır.
+- Senaryo 2: Her bir saat için 8’er çekirdekle iki SQL veritabanı çalıştırıyorsunuz. 16 çekirdekli rezervasyon indirimi her iki 8 çekirdekli SQL veritabanı için işlem kullanımına uygulanır.
 - Senaryo 3: 13:00’dan 13:30’a kadar tek bir 16 çekirdekli SQL Veritabanı çalıştırıyorsunuz. 13:30’dan 14:00’a kadar başka bir 16 çekirdekli SQL Veritabanı çalıştırıyorsunuz. Her ikisi de rezervasyon indirimi kapsamındadır.
 - Senaryo 4: 13:00’dan 13:45’e kadar tek bir 16 çekirdekli SQL Veritabanı çalıştırıyorsunuz. 13:30’dan 14:00’a kadar başka bir 16 çekirdekli SQL Veritabanı çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
 

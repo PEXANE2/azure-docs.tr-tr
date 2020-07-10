@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: a0846a07fd8107a87483753c8dbff1301fda4a0c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299919"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043283"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Kurumsal aktarımlar
 
@@ -49,7 +49,7 @@ Hesap aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
 
 Kayıt aktarımı şu durumlarda göz önünde bulundurulur:
 
-- Geçerli bir kaydın taahhüt döneminin sona ermesi.
+- Geçerli bir kaydın Ön Ödeme döneminin sona ermesi.
 - Bir kaydın süresi dolmuş/uzatılmış durumda olması ve yeni bir anlaşmanın yapılması.
 - Birden fazla kaydınızın olması ve tüm hesaplarla faturaları tek kayıtta birleştirmek istemeniz.
 
@@ -60,7 +60,7 @@ Bir kuruluş kaydının tamamını bir kayda aktarmak istediğinizde aşağıdak
 - Tüm EA departman yöneticileri de dahil olmak üzere tüm Azure hizmetleri, abonelikleri, hesapları, departmanları ve kayıt yapısının tamamı yeni hedef kayda aktarılır.
 - Kayıt durumu _Aktarıldı_ olarak ayarlanır. Aktarılan kayıt yalnızca geçmiş kullanım raporlama amacıyla kullanılabilir.
 - Aktarılan bir kayda rol veya abonelik ekleyemezsiniz. Aktarıldı durumu, kayda aykırı ek kullanım yapılmasını önler.
-- Anlaşmadaki kalan parasal taahhüt bakiyeleri, geleceğe dönük hükümler de dahil olmak üzere kaybedilir.
+- Anlaşmadaki kalan Azure Ön Ödeme bakiyeleri, geleceğe dönük hükümler de dahil olmak üzere kaybedilir.
 -    Aktardığınız kayıtta satın alınmış ayrılmış örnekler varsa ayrılmış örnek satın alma ücreti kaynak kayıtta kalır ancak tüm ayrılmış örnek avantajları yeni kayıtta kullanılmak üzere aktarılır.
 -    Market için tek seferlik satın alma ücreti ve eski kayıtta tahakkuk etmiş olan aylık sabit ücretler yeni kayda aktarılmaz. Tüketime dayalı market ücretleri aktarılır.
 
@@ -68,7 +68,7 @@ Bir kuruluş kaydının tamamını bir kayda aktarmak istediğinizde aşağıdak
 
 Geçerli aktarım tarihi, hedef kaydın başlangıç tarihi veya daha sonraki bir tarih olabilir.
 
-Kaynak kayıt kullanımı, parasal taahhüt karşılığında veya fazla kullanım olarak ücretlendirilir. Geçerli aktarım tarihinden sonra gerçekleşen kullanımlar yeni kayda aktarılır ve uygun şekilde ücretlendirilir.
+Kaynak kayıt kullanımı, Azure Ön Ödemesi karşılığında veya fazla kullanım olarak ücretlendirilir. Geçerli aktarım tarihinden sonra gerçekleşen kullanımlar yeni kayda aktarılır ve uygun şekilde ücretlendirilir.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
@@ -84,9 +84,9 @@ Kayıt aktarımından önce göz önünde bulundurmanız gereken diğer noktalar
 - Kayıt aktarımı gereksinimlerinizi karşılamıyorsa, hesap aktarımı yapmayı düşünün.
 - Kaynak kaydı durumu aktarıldı olarak güncelleştirilir ve yalnızca geçmiş kullanım raporlama amaçları için kullanılabilir olur.
 
-### <a name="monetary-commitment"></a>Parasal taahhüt
+### <a name="azure-prepayment"></a>Azure Ön Ödemesi
 
-Parasal taahhüt, kayıtlar arasında aktarılamaz. Parasal taahhüt bakiyeleri, sipariş edildiği kayda sözleşmeyle bağlıdır. Parasal taahhüt, hesap veya kayıt aktarma işleminin bir parçası olarak aktarılmaz.
+Azure Ön Ödemesi, kayıtlar arasında aktarılamaz. Azure Ön Ödeme bakiyeleri, sipariş edildiği kayda sözleşmeyle bağlıdır. Azure Ön Ödemesi, hesap veya kayıt aktarma işleminin bir parçası olarak aktarılmaz.
 
 ### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Hesap ve kayıt aktarımları için etkilenen hizmet yok
 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430557"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169995"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
@@ -169,7 +170,7 @@ Hata ayıklama konsolu sitesine gidin`https://yoursite.scm.azurewebsites.net/Deb
 
 Sitenize/Wwwroot dizinine gidin. Aşağıdaki örnekte gösterildiği gibi bir komut istemi görürsünüz:
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![Sitenizin/Wwwroot dizininizin ve komut isteminin gösterildiği ekran görüntüsü.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 `npm install v8-profiler` komutunu çalıştırın.
 
@@ -202,11 +203,11 @@ http.createServer(function (req, res) {
 
 Önceki kod, WriteConsoleLog işlevini profiller ve sonra profil çıkışını sitenizin Wwwroot altındaki ' profile. cpuprofile ' dosyasına yazar. Uygulamanıza bir istek gönderin. Siteniz Wwwroot altında oluşturulmuş bir ' profile. cpuprofile ' dosyası görürsünüz.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![Profile. cpuprofile dosyasını gösteren ekran görüntüsü.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 Bu dosyayı indirin ve Chrome F12 araçlarıyla açın. Chrome üzerinde F12 tuşuna basın, sonra **profiller** sekmesini seçin. **Yükle** düğmesini seçin. İndirdiğiniz profile. cpuprofile dosyanızı seçin. Az önce yüklediğiniz profile tıklayın.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![Yüklediğiniz profile. cpuprofile dosyasını gösteren ekran görüntüsü.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 Zamanın %95 ' nin WriteConsoleLog işlevi tarafından tüketildiğini görebilirsiniz. Çıktı Ayrıca, soruna neden olan tam satır numaralarını ve kaynak dosyalarını da gösterir.
 

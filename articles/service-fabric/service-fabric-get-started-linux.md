@@ -3,12 +3,12 @@ title: Linux üzerinde geliştirme ortamınızı ayarlama
 description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra uygulama derlemek için hazır hale gelirsiniz.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: cfc97a540ed8c4c17ca4030c45b16021b926d7c5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8610feb68e16646c73c132c0577fd3ff198d74b8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854800"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186903"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ Bu makaledeki adımlarda, Linux’a yerel olarak yükleme yaptığınız veya Se
 Linux için Windows Alt Sistemine SDK ve Service Fabric çalışma zamanının yüklenmesi desteklenmez. Desteklenen Azure Service Fabric komut satırı arabirimiyle (CLI) bulutta veya şirket içinde başka herhangi bir yerde barındırılan Service Fabric varlıklarını yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
@@ -161,8 +161,8 @@ SDK yüklemesiyle birlikte gelen Service Fabric çalışma zamanı, aşağıdaki
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1,8 | Npm’de örtük | en son |
-RHEL | - | OpenJDK 1.8 | Npm’de örtük | en son |
+**Ubuntu** | 2.0.0 | AzulJDK 1,8 | Npm’de örtük | en son |
+**RHEL** | - | OpenJDK 1.8 | Npm’de örtük | en son |
 
 ## <a name="set-up-a-local-cluster"></a>Yerel küme oluşturma
 Yükleme tamamlandıktan sonra yerel bir küme başlatın.
@@ -261,7 +261,7 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 
 3. **Birlikte çalış** kutusuna **https: \/ /DL.Microsoft.com/Eclipse**girin.
 
-4. **Ekle**'yi seçin.
+4. **Ekle**’yi seçin.
 
     ![Kullanılabilir Yazılım sayfası][sf-eclipse-plugin]
 

@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836847"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186359"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Azure Automation 'da metin runbook 'larını düzenleme
 
@@ -56,7 +57,7 @@ Bu makalede, bu düzenleyiciyle farklı işlevler gerçekleştirmeye yönelik ay
 1. Metinsel düzenleyicinin tuval denetiminde, alt runbook için kodu yerleştirmek istediğiniz yere imleci konumlandırın.
 2. Kitaplık denetimindeki **varlıklar** düğümünü genişletin.
 3. İstenen varlık türü için düğümü genişletin.
-4. Eklemek için varlık adına sağ tıklayın ve **tuvale Ekle**' yi seçin. Değişken [varlıklar](automation-variables.md)için, değişkeni almak veya ayarlamak istediğinize bağlı olarak " **değişkeni al" seçeneğini tuvale ekleyin** veya **"set variable" öğesini tuvale ekleyin**.
+4. Eklemek için varlık adına sağ tıklayın ve **tuvale Ekle**' yi seçin. Değişken [varlıklar](./shared-resources/variables.md)için, değişkeni almak veya ayarlamak istediğinize bağlı olarak " **değişkeni al" seçeneğini tuvale ekleyin** veya **"set variable" öğesini tuvale ekleyin**.
 5. Varlık kodunun runbook 'a eklendiğini unutmayın.
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Windows PowerShell kullanarak bir Azure Otomasyonu runbook 'unu düzenleme
@@ -95,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Azure Otomasyonu 'nda runbook 'Ları yönetin](manage-runbooks.md).
 * [PowerShell iş akışını öğrenme](automation-powershell-workflow.md).
 * [Azure Otomasyonu 'Nda grafik yazma](automation-graphical-authoring-intro.md).
-* [Sertifikalar](automation-certificates.md).
+* [Sertifikalar](./shared-resources/certificates.md).
 * [Bağlantı](automation-connections.md).
-* [Kimlik bilgileri](automation-credentials.md).
-* [Zamanlamalar](automation-schedules.md).
-* [Değişkenler](automation-variables.md).
-* [PowerShell cmdlet başvurusu](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [Kimlik bilgileri](./shared-resources/credentials.md).
+* [Zamanlamalar](./shared-resources/schedules.md).
+* [Değişkenler](./shared-resources/variables.md).
+* [PowerShell cmdlet başvurusu](/powershell/module/az.automation/?view=azps-3.7.0#automation).

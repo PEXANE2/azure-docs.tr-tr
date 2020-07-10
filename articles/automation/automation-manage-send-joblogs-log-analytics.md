@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835265"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186206"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Otomasyonu iş verilerini Azure İzleyici günlüklerine iletme
 
@@ -27,8 +28,8 @@ Azure Otomasyonu, Log Analytics çalışma alanınıza runbook iş durumu ve iş
 
 Otomasyon günlüklerinizi Azure Izleyici günlüklerine göndermeye başlamak için şunlar gerekir:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)en son sürümü.
-* Log Analytics çalışma alanı. Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](../log-analytics/log-analytics-get-started.md).
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs/)en son sürümü.
+* Log Analytics çalışma alanı. Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](../azure-monitor/overview.md).
 * Azure Otomasyonu hesabınızın kaynak KIMLIĞI.
 
 Azure Otomasyonu hesabınızın kaynak KIMLIĞINI bulmak için aşağıdaki komutu kullanın:
@@ -185,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Arama sorguları oluşturma ve Azure Izleyici günlükleriyle Otomasyon iş günlüklerini İnceleme hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
+* Arama sorguları oluşturma ve Azure Izleyici günlükleriyle Otomasyon iş günlüklerini İnceleme hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde günlük aramaları](../azure-monitor/log-query/log-query-overview.md).
 * Runbook 'lardan çıkış ve hata iletilerinin oluşturulmasını ve alınmasını anlamak için bkz. [runbook çıkışını izleme](automation-runbook-output-and-messages.md).
 * Runbook yürütmesi, runbook işlerini izleme ve diğer teknik ayrıntılar hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](automation-runbook-execution.md).
-* Azure Izleyici günlükleri ve veri toplama kaynakları hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici günlüklerine Azure depolama verilerini toplama genel bakış](../azure-monitor/platform/collect-azure-metrics-logs.md).
+* Azure Izleyici günlükleri ve veri toplama kaynakları hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici günlüklerine Azure depolama verilerini toplama genel bakış](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 * Log Analytics sorun giderme konusunda yardım için bkz. [Log Analytics artık veri toplamamasının neden olduğu sorun giderme](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

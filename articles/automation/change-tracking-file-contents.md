@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781200"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185611"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
@@ -78,10 +79,10 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 
 ## <a name="track-file-contents"></a>Dosya içeriğini izleme
 
-Dosya içeriği izleme, izlenen bir değişiklikten önceki ve sonraki bir dosyanın içeriğini görüntülemenize izin verir. Özellik, her değişiklik oluştuktan sonra dosya içeriğini bir [depolama hesabına](https://docs.microsoft.com/azure/storage/common/storage-account-overview) kaydeder. Dosya içeriğini izlemek için izlenecek bazı kurallar aşağıda verilmiştir:
+Dosya içeriği izleme, izlenen bir değişiklikten önceki ve sonraki bir dosyanın içeriğini görüntülemenize izin verir. Özellik, her değişiklik oluştuktan sonra dosya içeriğini bir [depolama hesabına](../storage/common/storage-account-overview.md) kaydeder. Dosya içeriğini izlemek için izlenecek bazı kurallar aşağıda verilmiştir:
 
 * Dosya içeriğini depolamak için Kaynak Yöneticisi dağıtım modelini kullanan standart bir depolama hesabı gerekir. 
-* Premium ve klasik dağıtım modeli depolama hesapları kullanmayın. Bkz. [Azure depolama hesapları hakkında](../storage/common/storage-create-storage-account.md).
+* Premium ve klasik dağıtım modeli depolama hesapları kullanmayın. Bkz. [Azure depolama hesapları hakkında](../storage/common/storage-account-create.md).
 * Depolama hesabını yalnızca bir Otomasyon hesabına bağlayabilirsiniz.
 * Otomasyon hesabınızda [değişiklik izleme ve envanter](change-tracking.md) etkinleştirilmelidir.
 
@@ -169,7 +170,7 @@ Bu örneği bir değişiklik üzerinde uyarı oluşturma adımlarını tartışm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [Limit değişiklik izleme and Inventory Deployment Scope](automation-scope-configurations-change-tracking.md).
-* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
+* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../azure-monitor/log-query/log-query-overview.md).
 * Dağıtımlar ile tamamlandıysa, [değişiklik izleme ve envanter için çalışma alanının Otomasyon hesabından bağlantısını](automation-unlink-workspace-change-tracking.md)kaldırma bölümüne bakın.
 * VM 'lerinizi Değişiklik İzleme ve envanterden silmek için bkz. [VM 'leri değişiklik izleme ve envanterden kaldırma](automation-remove-vms-from-change-tracking.md).
 * Özellik hatalarını gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

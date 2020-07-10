@@ -3,16 +3,16 @@ title: Azure Enterprise Portal'ı kullanmaya başlama
 description: Bu makalede Azure Kurumsal Anlaşma (Azure EA) müşterilerinin Azure Enterprise Portal'ı nasıl kullanacağı açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/29/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2d4fbf90afa93f3dbde12a3bc5ce02f9a60b6c5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560367"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044966"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise Portal'ı kullanmaya başlama
 
@@ -372,7 +372,7 @@ Kurumsal Anlaşma hesabınızda destek aboneliği yoksa ve Azure Enterprise Port
 
 ## <a name="view-usage-summary-and-download-reports"></a>Kullanım özetini görüntüleme ve raporları indirme
 
-Kuruluş yöneticileri, Azure Enterprise Portal'da kullanım verilerinin özetini, tüketilen parasal taahhüdü ve ek kullanımla ilişkili ücretleri görüntüleyebilir. Ücretler, tüm hesaplar ve abonelikler genelinde özet düzeyinde gösterilir.
+Kuruluş yöneticileri, Azure Enterprise Portal’da kullanım verilerinin özetini, tüketilen Azure Ön Ödemesini ve ek kullanımla ilişkili ücretleri görüntüleyebilir. Ücretler, tüm hesaplar ve abonelikler genelinde özet düzeyinde gösterilir.
 
 Belirli hesaplardaki ayrıntılı kullanımı görüntülemek için kullanım ayrıntıları raporunu indirin:
 
@@ -390,7 +390,7 @@ Kullanım özeti raporlarını ve grafiklerini görüntülemek için:
 
 1. Azure Enterprise Portal'da oturum açın.
 
-1. Bir taahhüt dönemi seçin.
+1. Ön ödeme dönemi seçin.
 
    **Kullanım Özeti** tarih aralığını değiştirmek için sayfanın sağ üst tarafından **M** (Aylık) yerine **C** (Özel) görünüme geçiş yapabilir ve özel başlangıç ve bitiş tarihleri girebilirsiniz.
 
@@ -455,7 +455,7 @@ Azure Enterprise Portal, etkin olmayan kayıtları filtreleyerek görünümün d
 - **Hesap**: Azure Enterprise Portal'daki kuruluş birimleridir. Abonelikleri yönetmek ve raporlama için kullanılır.
 - **Hesap sahibi**: Azure'da abonelikleri ve hizmet yöneticilerini yöneten kişidir. Bu kullanıcılar hesapla ve ilişkilendirilmiş aboneliklerle ilgili kullanım verilerini görüntüleyebilir.
 - **Değişiklik aboneliği**: Kayıt değişikliği kapsamında bir yıllık veya uyuşan dönem boyunca devam eden aboneliktir.
-- **Taahhüt**: Azure hizmetlerinin ön ödeme karşılığında kullanılması için taahhüt edilmiş indirimli ücretlerden karşılanması amacıyla gerçekleştirilen yıllık parasal tutar taahhüttür.
+- **Ön Ödeme**: Azure hizmetlerinin ön ödeme karşılığında kullanılması için önceden ödenmiş indirimli ücretlerden karşılanması amacıyla gerçekleştirilen yıllık parasal tutar ön ödemedir.
 - **Bölüm yöneticisi**: Bölümleri yöneten, yeni hesap ve hesap sahibi oluşturan, yönetilen bölümlerle ilgili kullanım ayrıntılarını görüntüleyen ve izin verildiğinde maliyetleri görüntüleyebilen kişidir.
 - **Kayıt numarası**: Microsoft tarafından Kurumsal Anlaşma ile ilişkilendirilmiş olan kaydı tanımlamak için verilen benzersiz tanıtıcıdır.
 - **Kuruluş yöneticisi**: Azure'daki departmanları, departman sahiplerini, hesapları ve hesap sahiplerini yöneten kişidir. Kuruluş yöneticileri, diğer kuruluş yöneticilerini de yönetmenin yanı sıra kurumsal kayıtla ilişkilendirilmiş olan tüm hesaplara ve aboneliklere ait olan kullanım verilerini, faturalandırılan miktarları ve faturalandırılmamış ücretleri görüntüleyebilir.
@@ -478,7 +478,7 @@ Azure Enterprise Portal, etkin olmayan kayıtları filtreleyerek görünümün d
 
    Azure EA kaydı Kurumsal Anlaşma bitiş tarihine ulaşana kadar layıt yöneticisinin aşağıdaki seçeneklerden birini belirlemesi gerekir:
 
-  - Parasal taahhüt ekleyerek kaydı yenileme.
+  - Azure Ön Ödemesi ekleyerek kaydı yenileyin.
   - Yeni bir kayda aktarma.
   - Microsoft Çevrimiçi Abonelik Programı'na (MOSP) geçme.
   - Kayıtla ilişkili tüm hizmetleri devre dışı bırakmayı onaylama.

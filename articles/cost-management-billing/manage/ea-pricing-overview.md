@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 5ad92fe9f243cf9884f29536cf6ebb66202338d5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d205f3ccc0adef7e2390274bb7f4511c6f994027
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299970"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038013"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA fiyatlandırması
 
@@ -24,7 +24,7 @@ Bu bölümde, kullanımın nasıl hesaplandığı hakkında ayrıntılı bilgi v
 
 ### <a name="price-protection"></a>Fiyat koruması
 
-Müşteri veya kanal iş ortağı olarak Müşteri Fiyat Listesi (CPS) içinde gösterilen veya Azure satın alma işleminizin yapıldığı tarihte geçerli olan fiyatlardan veya bunlardan daha düşük fiyatlardan yararlanmanız garanti edilir. Bu fiyat, taban fiyat olarak adlandırılır. Azure satın alma tarihinden sonra sunulan hizmetler için hizmet kullanıma ilk sunulduğunda uygun düzeyde indirim uygulanan fiyat geçerli olur. Fiyat koruması, taahhüt süreniz boyunca geçerlidir ve bu süre, Kurumsal Anlaşmanıza göre bir ile üç yıl arasında olabilir.
+Müşteri veya kanal iş ortağı olarak Müşteri Fiyat Listesi (CPS) içinde gösterilen veya Azure satın alma işleminizin yapıldığı tarihte geçerli olan fiyatlardan veya bunlardan daha düşük fiyatlardan yararlanmanız garanti edilir. Bu fiyat, taban fiyat olarak adlandırılır. Azure satın alma tarihinden sonra sunulan hizmetler için hizmet kullanıma ilk sunulduğunda uygun düzeyde indirim uygulanan fiyat geçerli olur. Fiyat koruması, Ön Ödeme süreniz boyunca geçerlidir. Bu süre, Kurumsal Anlaşmanıza göre bir ile üç yıl arasında olabilir.
 
 ### <a name="price-changes"></a>Fiyat değişiklikleri
 

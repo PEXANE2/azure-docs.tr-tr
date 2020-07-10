@@ -5,11 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2728964d5bbf83b42251068ffbdea223ff6bd85e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92149289c6c422179ddb3562274020acf779f10b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171098"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186291"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook’tan Değişiklik İzleme ve Stok özelliğini etkinleştirme
 
@@ -18,10 +19,10 @@ Bu makalede, ortamınızdaki VM 'Ler için [değişiklik izleme ve envanter](cha
 > [!NOTE]
 > Değişiklik İzleme ve envanteri etkinleştirirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* Makineleri yönetmek için [Otomasyon hesabı](automation-offering-get-started.md).
+* Makineleri yönetmek için [Otomasyon hesabı](./index.yml).
 * Bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme 
@@ -50,7 +51,7 @@ Değişiklik İzleme ve envanter etkinleştirildiğinde, özelliği tarafından 
 
 ## <a name="install-and-update-modules"></a>Modülleri yükleme ve güncelleştirme
 
-En son Azure modüllerine güncelleştirmeniz gerekir ve [az. Operationalınsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) modülünü IÇERI aktararak sanal makinenizin değişiklik izleme ve envanterini başarıyla etkinleştirin.
+En son Azure modüllerine güncelleştirmeniz gerekir ve [az. Operationalınsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) modülünü IÇERI aktararak sanal makinenizin değişiklik izleme ve envanterini başarıyla etkinleştirin.
 
 1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **modüller** ' i seçin. 
 2. Azure modüllerini en son sürüme güncelleştirmek için **Azure Modüllerini Güncelleştir** seçeneğini belirleyin. 

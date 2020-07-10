@@ -5,11 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: f84a609ea2821546c4001b98ad11495305ac101a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d657dc38cd5b4149bcf7d1dbf1ad73afa75a5e6
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171081"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186308"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Azure portal Değişiklik İzleme ve stoku etkinleştir
 
@@ -20,10 +21,10 @@ VM 'lerinizi yönetmek için kullanabileceğiniz kaynak gruplarının sayısı [
 > [!NOTE]
 > Değişiklik İzleme ve envanteri etkinleştirirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* Makineleri yönetmek için [Otomasyon hesabı](automation-offering-get-started.md).
+* Makineleri yönetmek için [Otomasyon hesabı](./index.yml).
 * Bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma

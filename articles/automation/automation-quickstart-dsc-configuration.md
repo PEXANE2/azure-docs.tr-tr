@@ -7,23 +7,23 @@ keywords: dsc, yapılandırma, otomasyon
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836728"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186087"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Istenen durum yapılandırması ile VM yapılandırma
 
 Azure Otomasyonu durum yapılandırmasını etkinleştirerek, Istenen durum yapılandırması 'nı (DSC) kullanarak Windows ve Linux sunucularınızın yapılandırmalarını yönetebilir ve izleyebilirsiniz. İstenen yapılandırmadan alınan yapılandırmalar tanımlanabilir veya otomatik olarak düzeltilebilir. Bu hızlı başlangıçta, bir Linux sanal makinesini etkinleştirme ve Azure Otomasyonu durum yapılandırması kullanılarak bir lamba yığını dağıtma işlemleri.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
-* Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](automation-sec-configure-azure-runas-account.md).
+* Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](./manage-runas-account.md).
 * Red Hat Enterprise Linux, CentOS veya Oracle Linux çalıştıran bir Azure Resource Manager VM (klasik değil). VM oluşturma yönergeleri için bkz. [Azure portalında ilk Linux sanal makinenizi oluşturma](../virtual-machines/linux/quick-create-portal.md)
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -31,7 +31,7 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 ## <a name="enable-a-virtual-machine"></a>Sanal makineyi etkinleştir
 
-Bir makineyi durum yapılandırma özelliği için etkinleştirmek üzere birçok farklı yöntem vardır. Bu hızlı başlangıçta bir Otomasyon hesabı kullanarak bir VM 'nin özelliğinin nasıl etkinleştirileceği açıklanır. [Azure Otomasyonu durum yapılandırması tarafından yönetim için makineleri etkinleştir](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)' i okuyarak makinelerinizi durum yapılandırması için etkinleştirmek üzere farklı yöntemler hakkında daha fazla bilgi edinebilirsiniz.
+Bir makineyi durum yapılandırma özelliği için etkinleştirmek üzere birçok farklı yöntem vardır. Bu hızlı başlangıçta bir Otomasyon hesabı kullanarak bir VM 'nin özelliğinin nasıl etkinleştirileceği açıklanır. [Azure Otomasyonu durum yapılandırması tarafından yönetim için makineleri etkinleştir](./automation-dsc-onboarding.md)' i okuyarak makinelerinizi durum yapılandırması için etkinleştirmek üzere farklı yöntemler hakkında daha fazla bilgi edinebilirsiniz.
 
 1. Azure portalının sol tarafındaki bölmede **Otomasyon hesapları**'nı seçin. Sol bölmede görünür değilse, **tüm hizmetler** ' e tıklayın ve sonuçta elde edilen görünümde arama yapın.
 1. Listeden bir Otomasyon hesabı seçin.
@@ -39,8 +39,8 @@ Bir makineyi durum yapılandırma özelliği için etkinleştirmek üzere birço
 2. VM seçme sayfasını açmak için **Ekle**'ye tıklayın.
 3. DSC 'nin etkinleştirileceği sanal makineyi bulun. Aradığınız sanal makineyi bulmak için arama alanını ve filtre seçeneklerini kullanabilirsiniz.
 4. Sanal makineye tıklayın ve ardından **Bağlan** ' a tıklayın.
-5. Sanal makineye uygun DSC ayarlarını seçin. Zaten bir yapılandırma hazırladıysanız, bunu olarak belirtebilirsiniz `Node Configuration Name` . Makinenin yapılandırma davranışını denetlemek için [yapılandırma modunu](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) ayarlayabilirsiniz.
-6. **Tamam**'a tıklayın. DSC Uzantısı sanal makineye dağıtıldığında, durum olarak gösterilir `Connecting` .
+5. Sanal makineye uygun DSC ayarlarını seçin. Zaten bir yapılandırma hazırladıysanız, bunu olarak belirtebilirsiniz `Node Configuration Name` . Makinenin yapılandırma davranışını denetlemek için [yapılandırma modunu](/powershell/scripting/dsc/managing-nodes/metaConfig) ayarlayabilirsiniz.
+6. **Tamam** düğmesine tıklayın. DSC Uzantısı sanal makineye dağıtıldığında, durum olarak gösterilir `Connecting` .
 
 ![DSC için bir Azure VM 'yi etkinleştirme](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -57,9 +57,9 @@ Modüller DSC kaynakları içerir ve [PowerShell Galerisi](https://www.powershel
 
 ## <a name="import-the-configuration"></a>Yapılandırmayı içeri aktarma
 
-Bu hızlı başlangıçta makinede Apache HTTP Server, MySQL ve PHP yapılandırması gerçekleştiren bir DSC yapılandırması kullanılmaktadır. Bkz. [DSC yapılandırması](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
+Bu hızlı başlangıçta makinede Apache HTTP Server, MySQL ve PHP yapılandırması gerçekleştiren bir DSC yapılandırması kullanılmaktadır. Bkz. [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations).
 
-Bir metin düzenleyicisinde aşağıdakini yazın ve yerel olarak **Ampserver. ps1**olarak kaydedin.
+Bir metin düzenleyicisinde aşağıdakini yazın ve **AMPServer.ps1**olarak yerel olarak kaydedin.
 
 ```powershell-interactive
 configuration LAMPServer {
@@ -95,9 +95,9 @@ configuration LAMPServer {
 Yapılandırmayı içeri aktarmak için:
 
 1. Otomasyon hesabının sol bölmesinde **Durum yapılandırması (DSC)** öğesini seçin ve ardından **Yapılandırmalar** sekmesine tıklayın.
-2. **+ Ekle**'ye tıklayın.
+2. **+ Ekle**’ye tıklayın.
 3. Önceki adımda kaydettiğiniz yapılandırma dosyasını seçin.
-4. **Tamam**'a tıklayın.
+4. **Tamam** düğmesine tıklayın.
 
 ## <a name="compile-a-configuration"></a>Yapılandırma derleme
 

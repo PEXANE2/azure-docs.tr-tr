@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382519"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170403"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -26,12 +26,12 @@ Bir işlev uygulamasını dağıtmak için bir Azure Resource Manager şablonu k
 
 Azure Işlevleri dağıtımı genellikle şu kaynaklardan oluşur:
 
-| Kaynak                                                                           | Gereksinim | Sözdizimi ve Özellikler başvurusu                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Bir işlev uygulaması                                                                     | Gerekli    | [Microsoft. Web/siteler](/azure/templates/microsoft.web/sites)                             |   |
-| Bir [Azure depolama](../storage/index.yml) hesabı                                   | Gerekli    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md) bileşeni | İsteğe Bağlı    | [Microsoft. Insights/bileşenler](/azure/templates/microsoft.insights/components)         |   |
-| [Barındırma planı](./functions-scale.md)                                             | İsteğe bağlı<sup>1</sup>    | [Microsoft. Web/sunucugrupları](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Kaynak                                                                           | Gereksinim | Sözdizimi ve Özellikler başvurusu                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| Bir işlev uygulaması                                                                     | Gerekli    | [Microsoft. Web/siteler](/azure/templates/microsoft.web/sites)                             |
+| Bir [Azure depolama](../storage/index.yml) hesabı                                   | Gerekli    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md) bileşeni | İsteğe Bağlı    | [Microsoft. Insights/bileşenler](/azure/templates/microsoft.insights/components)         |
+| [Barındırma planı](./functions-scale.md)                                             | İsteğe bağlı<sup>1</sup>    | [Microsoft. Web/sunucugrupları](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup> Barındırma planı yalnızca bir [Premium planda](./functions-premium-plan.md) veya [App Service planında](../app-service/overview-hosting-plans.md)işlev uygulamanızı çalıştırmayı seçtiğinizde gereklidir.
 
@@ -137,7 +137,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 
 Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 
-| Ayar adı                 | Description                                                                               | Örnek değerler                        |
+| Ayar adı                 | Açıklama                                                                               | Örnek değerler                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Işlevlerin çalışma zamanının iç sıraya alma için kullandığı bir depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~2`                                  |
@@ -649,7 +649,7 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure portalındaki](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure 'a dağıt düğmesi

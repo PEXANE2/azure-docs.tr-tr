@@ -511,6 +511,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: Görüntü kaynaklarını güncelleştirme
                   href: ../update-image-resources-powershell.md
+                - name: Paylaşım için uygulama kaydı
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Portal
               items:
                 - name: 'Galeri, görüntü ve sanal makine oluşturma'
@@ -947,8 +949,6 @@
           items:
             - name: Azure Site Recovery ile Premium depolamaya geçiş
               href: migrate-to-premium-storage-using-azure-site-recovery.md
-            - name: Sunucu tarafı şifrelemesine dönüştürme
-              href: disks-ade-sse-conversion-cli.md
             - name: Yönetilen Disklere dönüştürme
               href: convert-unmanaged-to-managed-disks.md
             - name: Standart ve Premium arasında disk dönüştürme

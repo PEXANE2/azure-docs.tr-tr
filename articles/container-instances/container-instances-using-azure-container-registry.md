@@ -3,15 +3,15 @@ title: Azure Container Registry kapsayıcı görüntüsünü dağıtma
 description: Azure Container Registry 'den kapsayıcı görüntülerini çekerek Azure Container Instances kapsayıcıları dağıtmayı öğrenin.
 services: container-instances
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81453532"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169621"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry’den Azure Container Instances’a dağıtma
 
@@ -136,7 +136,7 @@ Kapsayıcı başarıyla başlatıldıktan sonra, uygulamanın başarıyla çalı
 [...]
 ```
 
-Tüm kapsayıcı grubu ayarları için [Kaynak Yöneticisi şablonu başvurusuna](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)bakın.    
+Tüm kapsayıcı grubu ayarları için [Kaynak Yöneticisi şablonu başvurusuna](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)bakın.    
 
 Bir Kaynak Yöneticisi şablonundaki gizli dizileri Azure Key Vault başvurma hakkında daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md).
 

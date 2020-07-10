@@ -7,12 +7,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, durum yapılandırması, güncelle�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835283"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186189"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Otomasyonu'na giriş
 
@@ -53,14 +53,14 @@ Azure Otomasyonu, paylaşılan kaynaklar, rol tabanlı erişim denetimi, esnek z
 
 Azure Otomasyonu, büyük ölçekli ortamlarınızda otomasyon ve yapılandırma kolaylığı sunmak için bir dizi paylaşılan kaynak sunar.
 
-* **[Zamanlamalar](automation-schedules.md)** -önceden tanımlanmış saatlerde Otomasyon işlemlerini tetikler.
-* **[Modüller](automation-integration-modules.md)** -Azure ve diğer sistemleri yönetin. Microsoft, üçüncü taraf, topluluk ve özel tanımlı cmdlet 'ler ve DSC kaynakları için, modülleri Otomasyon hesabına aktarabilirsiniz.
+* **[Zamanlamalar](./shared-resources/schedules.md)** -önceden tanımlanmış saatlerde Otomasyon işlemlerini tetikler.
+* **[Modüller](./shared-resources/modules.md)** -Azure ve diğer sistemleri yönetin. Microsoft, üçüncü taraf, topluluk ve özel tanımlı cmdlet 'ler ve DSC kaynakları için, modülleri Otomasyon hesabına aktarabilirsiniz.
 * **[Modüller Galerisi](automation-runbook-gallery.md)** -runbook 'ları görüntülemenizi ve otomasyon hesabına içeri aktarmanızı sağlamak için PowerShell Galerisi ile yerel tümleştirmeyi destekler. Galeri, işlemlerinizi PowerShell galerisinden ve Microsoft betik Merkezi ' nden kolayca tümleştirmenize ve oluşturmanıza başlamanıza olanak tanır.
 * **[Python 2 paketleri](python-packages.md)** -Otomasyon hesabınız için Python 2 runbook 'larını destekler.
-* **[Kimlik bilgileri](automation-credentials.md)** -runbook 'ların ve yapılandırmaların çalışma zamanında kullanabileceği hassas bilgileri güvenli bir şekilde depolayın.
+* **[Kimlik bilgileri](./shared-resources/credentials.md)** -runbook 'ların ve yapılandırmaların çalışma zamanında kullanabileceği hassas bilgileri güvenli bir şekilde depolayın.
 * **[Bağlantılar](automation-connections.md)** -sistem bağlantıları için ortak bilgilerin mağaza ad-değer çiftleri. Modül yazarı, çalışma zamanında kullanılmak üzere runbook 'larda ve yapılandırmalarda bağlantıları tanımlar.
-* **[Sertifikalar](automation-certificates.md)** -çalışma zamanında runbook 'LAR veya DSC yapılandırmalarının eriştiği dağıtılan kaynakların kimlik doğrulaması ve güvenliğini sağlamak için kullanılacak bilgileri tanımlayın. 
-* **[Değişkenler](automation-variables.md)** -runbook 'larda ve yapılandırmalarda kullanılabilecek içeriği tutun. Değişken değerlerini, bunlara başvuran runbook 'ların veya yapılandırmaların hiçbirini değiştirmek zorunda kalmadan değiştirebilirsiniz.
+* **[Sertifikalar](./shared-resources/certificates.md)** -çalışma zamanında runbook 'LAR veya DSC yapılandırmalarının eriştiği dağıtılan kaynakların kimlik doğrulaması ve güvenliğini sağlamak için kullanılacak bilgileri tanımlayın. 
+* **[Değişkenler](./shared-resources/variables.md)** -runbook 'larda ve yapılandırmalarda kullanılabilecek içeriği tutun. Değişken değerlerini, bunlara başvuran runbook 'ların veya yapılandırmaların hiçbirini değiştirmek zorunda kalmadan değiştirebilirsiniz.
 
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849765"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186342"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda grafik runbook 'ları yazma
 
@@ -60,7 +61,7 @@ Yapılandırma dikey penceresinde özelliklerini ve parametrelerini yapılandır
 
 Bir parametre kümesi, belirli bir cmdlet için değerleri kabul eden zorunlu ve isteğe bağlı parametreleri tanımlar. Tüm cmdlet 'ler en az bir parametre kümesine sahiptir ve bazılarında birkaç küme vardır. Bir cmdlet birden çok parametre kümesine sahipse, parametreleri yapılandırmadan önce kullanılacak birini seçmeniz gerekir. Bir etkinlik tarafından kullanılan parametre kümesini **parametre kümesi** seçip başka bir küme seçerek değiştirebilirsiniz. Bu durumda, önceden yapılandırdığınız herhangi bir parametre değeri kaybedilir.
 
-Aşağıdaki örnekte, [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için **Listvirtualmachineınresourcegroupparamset**adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için **Getvirtualmachineınresourcegroupparamset** parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
+Aşağıdaki örnekte, [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 'inin üç parametre kümesi vardır. Örnek, bir kaynak grubundaki tüm sanal makineleri döndürmek için **Listvirtualmachineınresourcegroupparamset**adlı tek bir isteğe bağlı parametre içeren bir kümesi kullanır. Örnek, döndürülecek sanal makineyi belirtmek için **Getvirtualmachineınresourcegroupparamset** parametre kümesini de kullanır. Bu küme, iki zorunlu parametreye ve bir isteğe bağlı parametreye sahiptir.
 
 ![Parametre kümesi](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -255,7 +256,7 @@ Her giriş parametresi aşağıdaki tablodaki Özellikler tarafından tanımlan�
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Name | Gereklidir. Parametrenin adı. Ad, runbook içinde benzersiz olmalıdır. Bir harfle başlamalı ve yalnızca harf, rakam ve alt çizgi içermelidir. Ad boşluk içeremez. |
+| Ad | Gereklidir. Parametrenin adı. Ad, runbook içinde benzersiz olmalıdır. Bir harfle başlamalı ve yalnızca harf, rakam ve alt çizgi içermelidir. Ad boşluk içeremez. |
 | Açıklama |İsteğe bağlı. Giriş parametresinin amacının açıklaması. |
 | Tür | İsteğe bağlı. Parametre değeri için beklenen veri türü. Azure portal, giriş isterken her bir parametre için veri türü için uygun bir denetim sağlar. Desteklenen parametre türleri String, Int32, Int64, Decimal, Boolean, DateTime ve Object. Bir veri türü seçilmezse, varsayılan olarak dize olur.|
 | Zorunlu | İsteğe bağlı. Parametresi için bir değer sağlanması gerektiğini belirten ayar. `yes`' I seçerseniz, runbook başlatıldığında bir değer sağlanmalıdır. Seçeneğini belirlerseniz `no` , runbook başlatıldığında bir değer gerekli değildir ve varsayılan bir değer kullanılabilir. Varsayılan bir değeri tanımlanmış olmayan her zorunlu parametre için bir değer sağlamazsanız runbook başlatılamaz. |
@@ -263,11 +264,11 @@ Her giriş parametresi aşağıdaki tablodaki Özellikler tarafından tanımlan�
 
 ## <a name="handle-runbook-output"></a>Runbook çıkışını işle
 
-Grafik yazma, [runbook 'un çıkışına](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages)giden bağlantısı olmayan herhangi bir etkinlik tarafından oluşturulan verileri kaydeder. Çıktı runbook işiyle birlikte kaydedilir ve Runbook bir alt öğe olarak kullanıldığında üst runbook 'ta kullanılabilir.
+Grafik yazma, [runbook 'un çıkışına](./automation-runbook-output-and-messages.md)giden bağlantısı olmayan herhangi bir etkinlik tarafından oluşturulan verileri kaydeder. Çıktı runbook işiyle birlikte kaydedilir ve Runbook bir alt öğe olarak kullanıldığında üst runbook 'ta kullanılabilir.
 
 ## <a name="work-with-powershell-expressions"></a>PowerShell ifadelerle çalışma
 
-Grafik yazmanın avantajlarından biri, en az PowerShell bilgisine sahip bir runbook oluşturmanıza olanak sağlar. Şu anda, bazı [parametre değerlerini](#use-activities) doldurmak ve [bağlantı koşullarını](#use-links-for-workflow)ayarlamak için bir PowerShell 'i bilmeniz gerekir. Bu bölüm, PowerShell ifadelerine hızlı bir giriş sağlar. PowerShell 'in tüm ayrıntıları, [Windows PowerShell Ile komut dosyası oluşturma](https://docs.microsoft.com/powershell/scripting/overview)sırasında kullanılabilir.
+Grafik yazmanın avantajlarından biri, en az PowerShell bilgisine sahip bir runbook oluşturmanıza olanak sağlar. Şu anda, bazı [parametre değerlerini](#use-activities) doldurmak ve [bağlantı koşullarını](#use-links-for-workflow)ayarlamak için bir PowerShell 'i bilmeniz gerekir. Bu bölüm, PowerShell ifadelerine hızlı bir giriş sağlar. PowerShell 'in tüm ayrıntıları, [Windows PowerShell Ile komut dosyası oluşturma](/powershell/scripting/overview)sırasında kullanılabilir.
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>Veri kaynağı olarak bir PowerShell ifadesi kullanma
 
@@ -322,7 +323,7 @@ Runbook, etkinliğin çıkışını aşağıdaki gibi daha karmaşık bir ifaded
 
 ### <a name="compare-values"></a>Değerleri Karşılaştır
 
-Değerleri karşılaştırmak veya bir değerin belirtilen bir Düzenle eşleşip eşleşmediğini anlamak için [karşılaştırma işleçlerini](https://technet.microsoft.com/library/hh847759.aspx) kullanın. Karşılaştırma, true veya false değerini döndürür.
+Değerleri karşılaştırmak veya bir değerin belirtilen bir Düzenle eşleşip eşleşmediğini anlamak için [karşılaştırma işleçlerini](/powershell/module/microsoft.powershell.core/about/about_comparison_operators) kullanın. Karşılaştırma, true veya false değerini döndürür.
 
 Örneğin, aşağıdaki koşul adlı bir etkinlikten sanal makinenin `Get-AzureVM` Şu anda durdurulmuş olup olmadığını belirler.
 
@@ -336,7 +337,7 @@ Aşağıdaki koşul, aynı sanal makinenin durdurulmuş dışında bir durumda o
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-Veya gibi [mantıksal bir işleç](https://technet.microsoft.com/library/hh847789.aspx)kullanarak runbook 'inizdeki birden çok koşulu birleştirebilirsiniz `-and` `-or` . Örneğin, aşağıdaki koşul, önceki örnekteki sanal makinenin durdurulmuş veya durduruluyor durumunda olup olmadığını denetler.
+Veya gibi [mantıksal bir işleç](/powershell/module/microsoft.powershell.core/about/about_logical_operators)kullanarak runbook 'inizdeki birden çok koşulu birleştirebilirsiniz `-and` `-or` . Örneğin, aşağıdaki koşul, önceki örnekteki sanal makinenin durdurulmuş veya durduruluyor durumunda olup olmadığını denetler.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -344,7 +345,7 @@ Veya gibi [mantıksal bir işleç](https://technet.microsoft.com/library/hh84778
 
 ### <a name="use-hashtables"></a>Diyez tabloları kullanma
 
-[Hashtables](https://technet.microsoft.com/library/hh847780.aspx) , bir değer kümesi döndürmek için yararlı olan ad-değer çiftleridir. Ayrıca, sözlük olarak adlandırılan bir karma tablosu da görebilirsiniz. Belirli etkinliklerin özellikleri basit bir değer yerine bir karma değer bekler.
+[Hashtables](/powershell/module/microsoft.powershell.core/about/about_hash_tables) , bir değer kümesi döndürmek için yararlı olan ad-değer çiftleridir. Ayrıca, sözlük olarak adlandırılan bir karma tablosu da görebilirsiniz. Belirli etkinliklerin özellikleri basit bir değer yerine bir karma değer bekler.
 
 Aşağıdaki sözdizimini kullanarak bir Hashtable oluşturun. Herhangi bir sayıda girdi içerebilir, ancak her biri bir ad ve değer tarafından tanımlanır.
 
@@ -372,7 +373,7 @@ Aşağıdaki örnek, bir Hashtable 'ı doldurmak için çağrılan bir etkinliğ
 
 ## <a name="authenticate-to-azure-resources"></a>Azure kaynaklarında kimlik doğrulama
 
-Azure Otomasyonu 'ndaki runbook 'lar Azure kaynaklarını yöneten Azure 'da kimlik doğrulaması gerektirir. Hizmet sorumlusu olarak da adlandırılan [Farklı Çalıştır hesabı](automation-create-runas-account.md), bir Otomasyon Runbook 'unun aboneliğinizdeki Azure Resource Manager kaynaklarına erişmek için kullandığı varsayılan mekanizmadır. Bu işlevselliği, `AzureRunAsConnection` PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) cmdlet 'ini kullanan bağlantı varlığını tuvale ekleyerek bir grafik runbook 'a ekleyebilirsiniz. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini de ekleyebilirsiniz. Bu senaryo aşağıdaki örnekte gösterilmiştir.
+Azure Otomasyonu 'ndaki runbook 'lar Azure kaynaklarını yöneten Azure 'da kimlik doğrulaması gerektirir. Hizmet sorumlusu olarak da adlandırılan [Farklı Çalıştır hesabı](./manage-runas-account.md), bir Otomasyon Runbook 'unun aboneliğinizdeki Azure Resource Manager kaynaklarına erişmek için kullandığı varsayılan mekanizmadır. Bu işlevselliği, `AzureRunAsConnection` PowerShell [Get-AutomationConnection](/system-center/sma/manage-global-assets) cmdlet 'ini kullanan bağlantı varlığını tuvale ekleyerek bir grafik runbook 'a ekleyebilirsiniz. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'ini de ekleyebilirsiniz. Bu senaryo aşağıdaki örnekte gösterilmiştir.
 
 ![Farklı çalıştır kimlik doğrulama etkinlikleri](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -389,7 +390,7 @@ Sonraki etkinlik, `Connect-AzAccount` runbook 'ta kullanılmak üzere kimliği d
 
 **ApplicationId**, **CERTIFICATETHUMBPRINT**ve **tenantıd**parametre alanları için, etkinlik birden fazla özelliğe sahip bir nesne çıkardığından, alan yolu için özelliğin adını belirtin. Aksi takdirde, runbook çalıştırıldığında kimlik doğrulamaya çalışırken başarısız olur. Bu, runbook 'unuzu farklı çalıştır hesabıyla doğrulamak için en azından ihtiyacınız olan şeydir.
 
-Bazı aboneler, Azure klasik dağıtımını veya Azure Resource Manager kaynaklarını yönetmek için bir [Azure AD Kullanıcı hesabı](automation-create-aduser-account.md) kullanarak bir Otomasyon hesabı oluşturur. Bu aboneler için geriye dönük uyumluluk sağlamak için, runbook 'inizde kullanılacak kimlik doğrulama mekanizması, `Add-AzureAccount` bir [kimlik bilgisi](automation-credentials.md)varlığına sahip olan cmdlet 'dir. Varlık, Azure hesabına erişimi olan bir Active Directory kullanıcısını temsil eder.
+Bazı aboneler, Azure klasik dağıtımını veya Azure Resource Manager kaynaklarını yönetmek için bir [Azure AD Kullanıcı hesabı](./shared-resources/credentials.md) kullanarak bir Otomasyon hesabı oluşturur. Bu aboneler için geriye dönük uyumluluk sağlamak için, runbook 'inizde kullanılacak kimlik doğrulama mekanizması, `Add-AzureAccount` bir [kimlik bilgisi](./shared-resources/credentials.md)varlığına sahip olan cmdlet 'dir. Varlık, Azure hesabına erişimi olan bir Active Directory kullanıcısını temsil eder.
 
 Tuvale bir kimlik bilgisi varlığı ekleyerek ve ardından `Add-AzureAccount` girişinin kimlik bilgisi varlığını kullanan bir etkinliğin ardından grafik runbook 'ınız için bu işlevselliği etkinleştirebilirsiniz. Aşağıdaki örneğe bakın.
 
@@ -434,4 +435,4 @@ Runbook 'un yayımlanmış sürümüne dönmek için seçeneğiniz vardır. Bu i
 * Grafik runbook 'larını kullanmaya başlamak için bkz. [öğretici: grafik runbook 'U oluşturma](learn/automation-tutorial-runbook-graphical.md).
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).
 * Otomasyon farklı çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını anlamak için bkz. [Farklı Çalıştır hesabı](automation-security-overview.md#run-as-account).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

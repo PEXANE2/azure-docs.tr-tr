@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134617"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170352"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Izleyici müşteri tarafından yönetilen anahtar 
 
@@ -23,7 +23,7 @@ Yapılandırmadan önce aşağıdaki [sınırlamaları ve kısıtlamaları](#lim
 
 [Bekleyen şifreleme](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)   , kuruluşlarda ortak bir gizlilik ve güvenlik gereksinimidir.Azure 'un bekleyen şifrelemeyi tamamen yönetmesine izin verebilir, şifreleme veya şifreleme anahtarlarını yakından yönetmek için çeşitli seçenekleriniz vardır.
 
-Azure Izleyici, Azure tarafından yönetilen anahtarlar kullanılarak tüm verilerin Rest 'te şifrelenmesini sağlar.Azure Izleyici Ayrıca, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)depolanan   ve sistem tarafından atanan [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)doğrulaması kullanan depolama tarafından erişilen kendi anahtarınızı kullanarak veri şifrelemesi için bir seçenek sağlar   .Bu anahtar, [yazılım ya da donanım HSM korumalı](https://docs.microsoft.com/azure/key-vault/key-vault-overview)olabilir.
+Azure Izleyici, tüm veri ve kaydedilmiş sorguların Microsoft tarafından yönetilen anahtarlar (MMK) kullanılarak Rest 'te şifrelenmesini sağlar. Azure Izleyici Ayrıca, [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) depolanan ve sistem tarafından atanan [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) doğrulaması kullanan depolama tarafından erişilen kendi anahtarınızı kullanarak şifreleme için bir seçenek sağlar. Bu anahtar (CMK) [yazılım ya da donanım HSM korumalı](https://docs.microsoft.com/azure/key-vault/key-vault-overview)olabilir.
 
 Azure Izleyici şifreleme kullanımı, [Azure depolama şifrelemesiyle](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)aynı şekilde   çalışır.
 
@@ -80,7 +80,7 @@ Yordam Azure portal desteklenmez ve sağlama, PowerShell veya REST istekleri ara
 > [!IMPORTANT]
 > Herhangi bir REST isteği, istek üst bilgisinde bir taşıyıcı yetkilendirme belirteci içermelidir.
 
-Örneğin:
+Örnek:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -235,7 +235,7 @@ Content-type: application/json
 
 Kimlik, oluşturma zamanında *küme* kaynağına atanır.
 
-**Yanıtıyla**
+**Response**
 
 200 Tamam ve üst bilgi.
 
@@ -249,7 +249,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-**Yanıtıyla**
+**Response**
 
 ```json
 {
@@ -334,7 +334,7 @@ Content-type: application/json
 
 "KeyVaultProperties" Key Vault anahtar tanımlayıcısı ayrıntılarını içerir.
 
-**Yanıtıyla**
+**Response**
 
 200 Tamam ve üst bilgi.
 Anahtar tanımlayıcısının yayılması birkaç dakika sürer. Güncelleştirme durumunu iki şekilde kontrol edebilirsiniz:
@@ -401,7 +401,7 @@ Content-type: application/json
 }
 ```
 
-**Yanıtıyla**
+**Response**
 
 200 Tamam ve üst bilgi.
 
@@ -415,7 +415,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 Authorization: Bearer <token>
 ```
 
-**Yanıtıyla**
+**Response**
 
 ```json
 {
@@ -546,7 +546,7 @@ Yapılandırmadan sonra, tüm yeni uyarı sorgusu depolama alanına kaydedilir.
   Authorization: Bearer <token>
   ```
 
-  **Yanıtıyla**
+  **Response**
   
   ```json
   {
@@ -592,7 +592,7 @@ Yapılandırmadan sonra, tüm yeni uyarı sorgusu depolama alanına kaydedilir.
   Authorization: Bearer <token>
   ```
     
-  **Yanıtıyla**
+  **Response**
     
   ' Kaynak grubu için*küme* kaynakları ' için aynı yanıt, ancak abonelik kapsamı.
 
@@ -652,7 +652,7 @@ Yapılandırmadan sonra, tüm yeni uyarı sorgusu depolama alanına kaydedilir.
   Authorization: Bearer <token>
   ```
 
-  **Yanıtıyla**
+  **Response**
 
   200 Tamam ve üst bilgi.
 
@@ -684,7 +684,7 @@ Yapılandırmadan sonra, tüm yeni uyarı sorgusu depolama alanına kaydedilir.
   Authorization: Bearer <token>
   ```
 
-  **Yanıtıyla**
+  **Response**
 
   200 TAMAM
 
