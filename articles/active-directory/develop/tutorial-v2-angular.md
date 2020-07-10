@@ -3,7 +3,7 @@ title: Angular tek sayfalı uygulama öğreticisi-Azure
 titleSuffix: Microsoft identity platform
 description: Angular SPA uygulamalarının Microsoft Identity platform uç noktasından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
-author: hahamil
+author: hamiltonha
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322779"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231701"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
@@ -35,7 +35,7 @@ Bu öğreticide, angular tek sayfalı uygulamanın (SPA) nasıl kullanılabilece
 
 ### <a name="more-information"></a>Daha fazla bilgi
 
-Bu öğreticide oluşturulan örnek uygulama, Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamak için angular SPA 'yı sağlar. Angular kitaplığı için MSAL, çekirdek MSAL. js kitaplığının bir sarmalayıcısıdır. Microsoft Azure Active Directory, Microsoft hesabı kullanıcıları ve sosyal kimlik kullanıcıları (Facebook, Google ve LinkedIn gibi) kullanarak kurumsal kullanıcıların kimliğini doğrulamak için angular (6 +) uygulamalarının kimlik doğrulamasını sağlar. Kitaplık Ayrıca uygulamaların Microsoft bulut hizmetlerine veya Microsoft Graph erişmesini sağlar.
+Bu öğreticide oluşturulan örnek uygulama, Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamak için angular SPA 'yı sağlar. Angular kitaplığı için MSAL, çekirdek MSAL.js kitaplığının bir sarmalayıcısıdır. Microsoft Azure Active Directory, Microsoft hesabı kullanıcıları ve sosyal kimlik kullanıcıları (Facebook, Google ve LinkedIn gibi) kullanarak kurumsal kullanıcıların kimliğini doğrulamak için angular (6 +) uygulamalarının kimlik doğrulamasını sağlar. Kitaplık Ayrıca uygulamaların Microsoft bulut hizmetlerine veya Microsoft Graph erişmesini sağlar.
 
 Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Belirteç alma ve yenileme, MSAL tarafından işlenir.
 
@@ -43,20 +43,20 @@ Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgis
 
 Bu öğretici aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
 
-MSAL. js kitaplığı için kaynak kodunu GitHub ' da [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
+GitHub 'da, MSAL.js kitaplığının kaynak kodunu, [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
-* [Node. js](https://nodejs.org/en/download/)gibi yerel bir Web sunucusu. Bu öğreticideki yönergeler Node. js ' ye dayalıdır.
+* [Node.js](https://nodejs.org/en/download/)gibi yerel bir Web sunucusu. Bu öğreticideki yönergeler Node.js temel alır.
 * Proje dosyalarını düzenlemek için [Visual Studio Code](https://code.visualstudio.com/download)gibi tümleşik bir geliştirme ORTAMı (IDE).
 
-## <a name="create-your-project"></a>Projenizi oluşturma
+## <a name="create-your-project"></a>Projenizi oluşturun
 
 Aşağıdaki NPM komutlarını kullanarak yeni bir angular uygulaması oluşturun:
 
@@ -138,7 +138,7 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
 3. Aşağıdaki import deyimlerini en üst öğesine ekleyin `src/app/app.component.ts` :
 
     ```javascript
-    import { MsalService } from '@azure/msal-angular';
+    import { MsalService, BroadcastService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
 ## <a name="sign-in-a-user"></a>Kullanıcı oturumu açma
@@ -148,6 +148,8 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+    
+    ngOnInit() { }
 
     login() {
         const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;

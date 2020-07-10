@@ -1,16 +1,16 @@
 ---
-title: Malzemeleri, aydınlatmayı ve etkileri iyileştirme
+title: Malzemeleri, ışıkları ve efektleri iyileştirme
 description: Model malzemelerini ve aydınlatmayı değiştirin. Ana hat oluşturma ve düzlemi kesme gibi ek efektler ekleyin.
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0379fe460d2bb90d28999a139e3ca9c8b7110eca
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39560966b542999b2c0c3472075c7497f2146455
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569863"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207341"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Öğretici: malzemeleri, aydınlatmayı ve etkileri Iyileştirme
 
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kesme düzlemiyle modeller arasında dilimle
 > * Uzaktan işlenen nesneler için basit animasyonlar ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici [öğretici: modelleri düzenleme](..\manipulate-models\manipulate-models.md).
 

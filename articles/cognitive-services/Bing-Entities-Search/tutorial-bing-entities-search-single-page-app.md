@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800066"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184149"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
 
 Bing Varlık Arama API’si, *varlıklar* ve *yerler* hakkındaki bilgiler için Web araması yapmanızı sağlar. Belirli bir sorguda bir sonuç türünü veya her ikisini de isteyebilirsiniz. Yerlerin ve varlıkların tanımları aşağıda sağlanmıştır.
 
-|||
+| Sonuç | Açıklama |
 |-|-|
 |Varlıklar|Ada göre bulduğunuz tanınmış kişiler, yerler ve nesneler|
 |Yerler|Ada *veya* türe (İtalyan restoranları) bulduğunuz restoranlar, oteller ve diğer yerel işletmeler|
@@ -56,7 +56,7 @@ Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. T
 > [!NOTE]
 > Bu öğretici, [tek sayfalı Bing Web Araması uygulaması öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) büyük ölçüde benzer, ancak yalnızca varlık araması sonuçlarını ele alır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyle birlikte izlemek için Bing Arama API 'si ve Bing Haritalar API 'SI için abonelik anahtarlarına ihtiyacınız vardır. 
 
@@ -141,7 +141,7 @@ HTML `<body>` etiketi, sayfanın yüklenmesi tamamlandığında `getSearchSubscr
 
 HTML formu aşağıdaki denetimleri içerir:
 
-| | |
+| Denetim | Açıklama |
 |-|-|
 |`where`|Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü.|
 |`query`|Arama terimlerinin girildiği metin alanı.|
@@ -411,7 +411,7 @@ Son olarak. `sidebar` ikincil arama sonuçlarını ifade eder. Kenar çubuğunda
 
 `rankingResponse` koleksiyonundaki her öğe, gerçek arama sonucu öğelerini iki farklı (ancak eşdeğer) şekilde ifade eder.
 
-| | |
+| Öğe | Açıklama |
 |-|-|
 |`id`|`id` bir URL gibi görünür, ancak bağlantılar için kullanılmamalıdır. `id` türündeki bir sıralama sonucu, bir yanıt koleksiyonundaki bir arama sonucu öğesinin `id` ölçütünü *veya* bir yanıt koleksiyonunun tamamını (`Entities` gibi) eşleştirir.
 |`answerType`<br>`resultIndex`|`answerType`, sonucu içeren üst düzey yanıt koleksiyonunu ifade eder (örneğin, `Entities`). `resultIndex`, o koleksiyondaki sonucun dizinini ifade eder. `resultIndex` atlanırsa, sıralama sonucu koleksiyonun tamamını ifade eder.
@@ -452,7 +452,7 @@ searchItemRenderers = {
 
 İşleyici işlevi aşağıdaki parametreleri kabul eder:
 
-| | |
+| Parametre | Açıklama |
 |-|-|
 |`item`|Öğenin özelliklerini, örneğin URL'sini ve açıklamasını içeren JavaScript nesnesi.|
 |`index`|Kendi koleksiyonu içindeki arama öğesinin dizini.|

@@ -1,5 +1,5 @@
 ---
-title: Veri kümeleri & örnek tasarımcı işlem hatları
+title: Tasarımcı için veri kümeleri & örnek işlem hatları (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Makine öğrenimi işlem hatlarınızı atlayaöğrenmek için Azure Machine Learning tasarımcısında örnekleri kullanın.
 services: machine-learning
@@ -10,20 +10,20 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: e40c49cdcaae6fa84a72c645f5fea4bac99ee03f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654558"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206323"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları (Önizleme)
 
 Kendi makine öğrenimi işlem hatlarınızı oluşturmaya hemen başlamak için Azure Machine Learning tasarımcısında yerleşik örnekleri kullanın. Azure Machine Learning Designer [GitHub deposu](https://github.com/Azure/MachineLearningDesigner) , bazı yaygın makine öğrenimi senaryolarını anlamanıza yardımcı olacak ayrıntılı belgeler içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 * Kurumsal SKU 'SU olan bir Azure Machine Learning çalışma alanı.
 
 ## <a name="use-sample-pipelines"></a>Örnek işlem hatlarını kullanma
@@ -88,7 +88,7 @@ Bu yerleşik öneren örnekleri keşfedebilirsiniz. Örnekleri açıp modül aç
 | --- | --- |
 | Örnek 10: öneri-film derecelendirmesi arası | Film başlıklarından ve derecelendirmeden bir film öneren altyapısı oluşturun. |
 
-## <a name="utility"></a>Yardımcı program
+## <a name="utility"></a>Yardımcı Program
 
 Machine Learning yardımcı programlarını ve özelliklerini gösteren örnekler hakkında daha fazla bilgi edinin. Örnekleri açıp modül açıklamalarını görüntüleyerek, belge bağlantıları olmadan örnekler hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -111,7 +111,7 @@ Azure Machine Learning tasarımcısında yeni bir işlem hattı oluşturduğunuz
 |Otomobil fiyat verileri (ham)|, Bir sigorta riski puanı ve bu fiyat dahil olmak üzere, marka ve model bazında otomobil hakkında bilgiler.<br/> Risk puanı başlangıçta otomatik fiyatla ilişkilendirilir. Daha sonra, söz konusu bir işlemdeki bir işlem için, symboling olarak bilinen bir işlemde gerçek risk için ayarlanır. + 3 değeri, otomatik olarak riskli olduğunu ve büyük olasılıkla güvenli olduğunu belirten-3 değerini gösterir.<br/>**Kullanım**: </b> gerileme veya çok sayıda sınıflandırma kullanarak, özelliklerle risk Puanını tahmin edin.<br/>**Ilgili araştırma**: </b> schlikökü, J.C. (1987). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi. |
 | CRM uygulama paylaşılan etiketleri |KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler ([orange_small_train_appetency. Etiketler](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)).|
 |Paylaşılan CRM dalgalanması etiketleri|KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler ([orange_small_train_churn. Etiketler](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)).|
-|CRM veri kümesi paylaşıldı | Bu veriler, KDD Kupa 2009 müşteri ilişkisi tahmin Challenge ([orange_small_train. Data. zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) ' den gelir. <br/>Veri kümesi, Fransız telekomünikasyon şirketi turuncu 'dan 50K müşterileri içerir. Her müşterinin 230 anonim özelliği vardır, bunlar sayısal ve 40 kategorik olan 190 ' dir. Özellikler çok seyrek. |
+|CRM veri kümesi paylaşıldı | Bu veriler, KDD Fin2009 müşteri ilişkisi tahmin Challenge ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) ' den gelir. <br/>Veri kümesi, Fransız telekomünikasyon şirketi turuncu 'dan 50K müşterileri içerir. Her müşterinin 230 anonim özelliği vardır, bunlar sayısal ve 40 kategorik olan 190 ' dir. Özellikler çok seyrek. |
 |Paylaşılan CRM satış etiketleri|KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler ([orange_large_train_upselling. Etiketler](http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels)|
 |Uçuş gecikmeleri verileri|Passenger, ABD 'nin ulaşım bölümünün ([zamanında](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)) geçiş Bakanlığı veri koleksiyonundan alınan zaman içindeki performans verilerini alır.<br/>Veri kümesi Nisan-Ekim 2013 ' de geçen süreyi içerir. Tasarımcıya yüklemeden önce veri kümesi şu şekilde işlenir: <br/>-Veri kümesi, kıst ABD 'de yalnızca 70 ortalamanızı havaalanları kapsayacak şekilde filtrelenmiştir <br/>-İptal edilen fışıkları 15 dakikadan uzun bir süre gecikti olarak etiketlendi <br/>-Ayrılan fışıklar filtrelendi <br/>-Şu sütunlar seçildi: Year, month, DayofMonth, DayOfWeek, taşıyıcı, Originairportıd, Destairportıd, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, Iptal edildi|
 |Alman kredi kartı UCı veri kümesi|Alman. Data dosyasını kullanarak UCı Statgünlüğü (Almanya kredi kartı) veri kümesi ([Statlog + Almanya + kredi + veri](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))).<br/>Veri kümesi, bir öznitelik kümesiyle tanımlanan kişileri, düşük veya yüksek kredi riskleri olarak sınıflandırır. Her örnek bir kişiyi temsil eder. Hem sayısal hem de kategorik ve bir ikili etiketi (kredi risk değeri) 20 özellik vardır. Yüksek kredi risk girişlerinde etiket = 2, düşük kredi risk girişlerinde etiket = 1 vardır. Düşük riskli bir örneği yüksek olarak sınıflandırın maliyeti 1 ' dir, ancak yüksek riskli örnek 5 ' i yanlış sınıflandırma maliyeti 5 ' tir.|

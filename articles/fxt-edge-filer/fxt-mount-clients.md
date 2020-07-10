@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130761"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231361"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Öğretici: kümeyi bağlama
 
@@ -47,7 +47,7 @@ Diğer yük dengeleme yöntemleri büyük veya karmaşık sistemler için uygun 
 
 ## <a name="create-the-mount-command"></a>Bağlama komutunu oluşturma
 
-``mount`` Komut, Istemcinizden Azure FXT Edge Filer kümesindeki sanal sunucuyu (vServer) yerel dosya sistemindeki bir yola eşler.
+Komut, istemcinizden ``mount`` Azure FXT Edge Filer kümesindeki sanal sunucuyu (vServer) yerel dosya sistemindeki bir yola eşler.
 
 Biçim``mount <FXT cluster path> <local path> {options}``
 
@@ -61,7 +61,7 @@ Bağlama komutunda üç öğe vardır:
 
 Küme yolu, vServer *IP adresinin* bir birleşimidir ve bir *ad alanı birleşiminin*yoludur. Ad alanı birleşimi, [depolama sistemini](fxt-add-storage.md#create-a-junction)eklediğinizde tanımladığınız bir sanal yoldur.
 
-Örneğin, ad alanı yolu olarak ``/fxt/files`` kullandıysanız, istemcileriniz *IP_address*:/FXT/Files öğesini yerel bağlama noktasına bağlayabilir.
+Örneğin, ``/fxt/files`` ad alanı yolu olarak kullandıysanız, istemcileriniz *IP_address*:/FXT/Files öğesini yerel bağlama noktasına bağlayabilir.
 
 ![Ad alanı yolu alanındaki/avere/Files ile "yeni birleşim Ekle" iletişim kutusu](media/fxt-mount/fxt-junction-example.png)
 
@@ -93,14 +93,14 @@ Sorunsuz bir istemci bağlama sağlamak için, bu ayarları ve bağımsız deği
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Gerekli ayarlar | |
+| Gerekli ayarlar | Açıklama |
 --- | ---
 ``hard`` | Azure FXT Edge Filer kümesine yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir.
 ``proto=netid`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
 ``mountproto=netid`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
-``retry=n`` | Geçici ``retry=30`` bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
+``retry=n`` | ``retry=30``Geçici bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
 
-| Tercih edilen ayarlar  | |
+| Tercih edilen ayarlar  | Açıklama |
 --- | ---
 ``nointr``            | İstemcileriniz, bu seçeneği destekleyen eski işletim sistemi çekirdekler (2008 Nisan 'tan önce) kullanıyorsa, bunu kullanın. "INTR" seçeneği varsayılandır.
 

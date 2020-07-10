@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a701a5a9fd77bd801bb535fe1f26bfa17c97757b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204897"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185798"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -61,7 +61,7 @@ Bir güncelleştirme dağıtımının durumunu öğrenmenizi sağlamak için uya
 
 5. Güncelleştirme dağıtımınız için uygun olan sinyali seçmek için **Koşul Ekle** ' ye tıklayın. Aşağıdaki tabloda, iki kullanılabilir sinyalin ayrıntıları gösterilmektedir.
 
-    |Sinyal adı|Boyutlar|Description
+    |Sinyal adı|Boyutlar|Açıklama
     |---|---|---|
     |`Total Update Deployment Runs`|-Güncelleştirme dağıtım adı<br>-Durum    |Bir güncelleştirme dağıtımının genel durumu hakkında uyarılar.|
     |`Total Update Deployment Machine Runs`|-Güncelleştirme dağıtım adı</br>-Durum</br>-Hedef bilgisayar</br>-Güncelleştirme dağıtımı çalıştırma KIMLIĞI    |Belirli makinelere hedeflenmiş bir güncelleştirme dağıtımının durumu hakkında uyarılar.|
@@ -151,7 +151,7 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için:
     > [!NOTE]
     > Güncelleştirmelerin Ubuntu 'daki bakım penceresinin dışında uygulanmasını önlemek için, `Unattended-Upgrade` otomatik güncelleştirmeleri devre dışı bırakmak üzere paketi yeniden yapılandırın. Paketin nasıl yapılandırılacağı hakkında daha fazla bilgi için [Ubuntu sunucu kılavuzundaki otomatik güncelleştirmeler konusuna](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)bakın.
 
-12. Dağıtım sırasında yeniden başlatmalar işleme yöntemini belirtmek için **yeniden başlatma seçenekleri** alanını kullanın. Aşağıdaki seçenekler mevcuttur: 
+12. Dağıtım sırasında yeniden başlatmalar işleme yöntemini belirtmek için **yeniden başlatma seçenekleri** alanını kullanın. Aşağıdaki seçenekler kullanılabilir: 
     * Gerekirse yeniden Başlat (varsayılan)
     * Her zaman yeniden başlat
     * Hiçbir zaman yeniden başlatma
@@ -206,7 +206,7 @@ Güncelleştirme dağıtımınız tamamlandığında, dağıtım için kurulum s
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kapsam konfigürasyonları hakkında daha fazla bilgi için bkz. [sınır güncelleştirme yönetimi dağıtım kapsamı](automation-scope-configurations-update-management.md).
-* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../log-analytics/log-analytics-log-searches.md).
+* Log Analytics çalışma alanınızda depolanan günlüklerde arama yapmanız gerekiyorsa bkz. [Azure izleyici günlüklerinde günlük aramaları](../azure-monitor/log-query/log-query-overview.md).
 * Dağıtımlar ile işiniz bittiğinde, [güncelleştirme yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)' a bakın.
 * VM 'lerinizi Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
 * Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).

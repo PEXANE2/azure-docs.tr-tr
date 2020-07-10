@@ -1,16 +1,16 @@
 ---
-title: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
+title: Azure Remote Rendering ve model depolamanın güvenliğini sağlama
 description: İçeriği güvenli hale getirmek için uzaktan Işleme uygulamasını sağlamlaştırma
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa9bc317203a28d8c4302c89ddf536507d747e82
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569844"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207807"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
@@ -22,7 +22,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure uzaktan Işleme örneğinize erişmek için Azure AD ile kimlik doğrulama
 > * Azure uzaktan Işleme kimlik doğrulaması için Azure kimlik bilgilerini kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici [öğretici: malzemeleri, aydınlatmayı ve etkileri Iyileştirirken](..\materials-lighting-effects\materials-lighting-effects.md)Bu öğreticide oluşturulur.
 

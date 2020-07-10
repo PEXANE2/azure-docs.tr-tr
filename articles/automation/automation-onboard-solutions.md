@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204081"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186138"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -19,10 +19,10 @@ Bu makalede, ortamınızdaki VM 'Ler için [güncelleştirme yönetimi](automati
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* Makineleri yönetmek için [Otomasyon hesabı](automation-offering-get-started.md).
+* Makineleri yönetmek için [Otomasyon hesabı](./index.yml).
 * Bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-update-management"></a>Güncelleştirme Yönetimi’ni etkinleştirme
@@ -50,7 +50,7 @@ Güncelleştirme Yönetimi etkinken, güncelleştirmeleri almak için bir Azure 
 
 ## <a name="install-and-update-modules"></a>Modülleri yükleme ve güncelleştirme
 
-En son Azure modüllerine güncelleştirmek ve [az. Operationalınsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) modülünü Içeri aktararak sanal makinelerinize yönelik güncelleştirme yönetimi başarıyla etkinleştirmeniz gerekir.
+En son Azure modüllerine güncelleştirmek ve [az. Operationalınsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) modülünü Içeri aktararak sanal makinelerinize yönelik güncelleştirme yönetimi başarıyla etkinleştirmeniz gerekir.
 
 1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **modüller** ' i seçin. 
 2. Azure modüllerini en son sürüme güncelleştirmek için **Azure Modüllerini Güncelleştir** seçeneğini belirleyin. 

@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f1d12081591b180acca8ee35ecc5a5bf202211e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308141"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223950"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Öğretici: Notification Hubs kullanarak Xamarin. Android uygulamalarına anında iletme bildirimleri gönderme
 
@@ -40,7 +40,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Xamarin.Android uygulaması oluşturma ve bildirim hub'ına bağlama
 > * Azure portalından test bildirimleri gönderme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Windows'da [Xamarin ile Visual Studio] veya OS X'te [Mac için Visual Studio].
@@ -60,7 +60,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 2. Google Firebase konsolundan not ettiğiniz **sunucu anahtarını** girin.
 3. Araç çubuğunda **Kaydet**’i seçin.
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Google G C M F C M seçeneği vurgulanmış ve kırmızı renkle özetlenen Azure portalındaki Bildirim Hub 'ının ekran görüntüsü.](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayrıca, uygulamanızı anında iletme bildirimleri alması ve anında iletme bildirimlerini göndermesi amacıyla kaydetmenizi sağlayan bağlantı dizelerine sahipsiniz.
 
@@ -361,7 +361,7 @@ Bu öğreticide, arka uca kayıtlı olan tüm Android cihazlarınıza yayın bil
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Xamarin ile Visual Studio]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Mac için Visual Studio]: https://www.visualstudio.com/vs/visual-studio-mac/
-[Azure portal]: https://portal.azure.com/
+[Azure portalındaki]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx

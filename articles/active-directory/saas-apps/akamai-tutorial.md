@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026840"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232398"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -60,13 +61,13 @@ Akamai EAA, Azure AD 'de tek bir uygulama olarak yapılandırılır. Yönetici, 
 
 **Uzmanları**:
 
-• IDP 'yi yalnızca bir kez yapılandırmanız gerekiyor
+* IDP 'yi yalnızca bir kez yapılandırmanız gerekiyor
 
 **Dezavantajlarını**:
 
-• Kullanıcılar iki uygulama portalı ile sona erdir
+* Kullanıcılar iki uygulama portalı ile sona erdir
 
-• Tüm uygulamalar için tek ortak CA Ilkesi kapsamı.
+* Tüm uygulamalar için tek ortak CA Ilkesi kapsamı.
 
 ![Tümleştirme senaryosu 1](./media/header-akamai-tutorial/scenario1.png)
 
@@ -76,13 +77,14 @@ Akamai EAA uygulaması, Azure AD portalında ayrı ayrı ayarlanır. Yönetici, 
 
 **Uzmanları**:
 
-• Tek tek CA Ilkelerini tanımlayabilirsiniz
+* Ayrı CA Ilkelerini tanımlayabilirsiniz
 
-• Tüm uygulamalar O365 waffle ve myApps.microsoft.com panelinde temsil edilir.
+* Tüm uygulamalar 0365 waffle ve myApps.microsoft.com panelinde temsil edilir.
+
 
 **Dezavantajlarını**:
 
-• Birden çok ıDP 'yi yapılandırmanız gerekir.
+* Birden çok ıDP 'yi yapılandırmanız gerekir.
 
 ![Tümleştirme senaryosu 2](./media/header-akamai-tutorial/scenario2.png)
 
@@ -171,7 +173,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -279,7 +281,7 @@ Akamai üst bilgi tabanlı kimlik doğrulaması
 
     ![Akamai yapılandırma](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulaması
 
 1. **Kimlik doğrulama** sekmesini seçin.
 
@@ -343,7 +345,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Akamai yapılandırma](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulaması
 
 **Kaydet ' e tıklayın ve hizmetler 'e gidin**.
 
@@ -405,7 +407,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     e. Bağlayıcının konumunu belirtin ve bağlayıcıyı seçin.
 
-#### <a name="authentication"></a>Kimlik Doğrulaması
+#### <a name="authentication"></a>Kimlik doğrulaması
 
 Kaydet ' **e tıklayın ve hizmetlere gidin**.
 
@@ -449,7 +451,7 @@ Kaydet ve dağıtıma git 'e tıklayın
 
 ### <a name="kerberos-authentication"></a>Kerberos Kimlik Doğrulaması
 
-Aşağıdaki örnekte, bir Iç Web sunucusu yayımlayacağız [http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/) ve KCD kullanarak SSO 'yu etkinleştireceğiz
+Aşağıdaki örnekte, bir Iç Web sunucusu yayımlayacağız <code>http://frp-app1.superdemo.live</code> ve KCD kullanarak SSO 'yu etkinleştireceğiz
 
 #### <a name="general-tab"></a>Genel Sekmesi
 

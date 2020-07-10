@@ -1,16 +1,16 @@
 ---
 title: Arabirimler ve özel modeller
 description: Azure uzaktan Işleme tarafından işlenecek görünüm denetleyicilerini ve alma özel modellerini ekleyin
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: a3a4892400daa229f5f91d3cc22a9be80cf868c6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569788"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200752"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Öğretici: arabirimler ve özel modeller
 
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Model alımı için Azure Blob depolamayı yapılandırma
 > * Oluşturma için modelleri yükleme ve işleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici [öğretici: uzaktan işlenmiş bir modeli görüntüleme](../view-remote-models/view-remote-models.md).
 

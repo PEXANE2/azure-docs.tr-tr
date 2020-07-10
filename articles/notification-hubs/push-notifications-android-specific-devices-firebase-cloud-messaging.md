@@ -17,12 +17,12 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 273827e68a81e87dcff15760f0b400b2d5ce8723
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80126869"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220873"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Öğretici: Notification Hubs ve Google Firebase Cloud Messaging kullanarak belirli cihazlara bildirimler gönderme
 
@@ -40,7 +40,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Mobil uygulamaya kategori seçimi ekleme.
 > * Etiketlerle bildirimler için kaydedilir.
 > * Etiketli bildirimler gönderme.
-> * Uygulamayı test edin
+> * Uygulamayı test etme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -50,7 +50,7 @@ Bu öğretici, [öğretici: Azure Notification Hubs ve Firebase Cloud Messaging 
 
 İlk adım, mevcut ana etkinliğinize kullanıcının kaydolunacak kategorileri seçmesini sağlayan UI öğeleri eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. `res/layout/activity_main.xml file`Öğesini açın ve içeriği aşağıdaki ile değiştirin:
+1. Öğesini açın `res/layout/activity_main.xml file` ve içeriği aşağıdaki ile değiştirin:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -103,7 +103,7 @@ Bu öğretici, [öğretici: Azure Notification Hubs ve Firebase Cloud Messaging 
             />
     </LinearLayout>
     ```
-2. `res/values/strings.xml` Dosyasını açın ve aşağıdaki satırları ekleyin:
+2. Dosyasını açın `res/values/strings.xml` ve aşağıdaki satırları ekleyin:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -115,10 +115,10 @@ Bu öğretici, [öğretici: Azure Notification Hubs ve Firebase Cloud Messaging 
     <string name="label_sports">Sports</string>
     ```
 
-    `main_activity.xml` Grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
+    `main_activity.xml`Grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
 
-    ![][A1]
-3. Sınıfınız ile aynı `Notifications` pakette bir sınıf oluşturun. `MainActivity`
+    ![Ana etkinliğin X M L grafik düzeninin nasıl görüneceğine ilişkin bir öykünücü ekran görüntüsü.][A1]
+3. `Notifications`Sınıfınız ile aynı pakette bir sınıf oluşturun `MainActivity` .
 
     ```java
     import java.util.HashSet;
@@ -204,12 +204,12 @@ Bu öğretici, [öğretici: Azure Notification Hubs ve Firebase Cloud Messaging 
     ```
 
     Bu sınıf, bu cihazın alması gereken haber kategorilerini depolamak için yerel depolamayı kullanır. Ayrıca, bu kategoriler için kaydolma yöntemlerini içerir.
-4. Sınıfınıza `MainActivity` için `Notifications`bir alan ekleyin:
+4. `MainActivity`Sınıfınıza için bir alan ekleyin `Notifications` :
 
     ```java
     private Notifications notifications;
     ```
-5. Ardından, aşağıdaki kodda `onCreate` gösterildiği gibi yöntemini güncelleştirin. **Bildirim** sınıfının **subscribeToCategories** yönteminde Notification Hubs kayıt yaptırın. 
+5. Ardından, `onCreate` aşağıdaki kodda gösterildiği gibi yöntemini güncelleştirin. **Bildirim** sınıfının **subscribeToCategories** yönteminde Notification Hubs kayıt yaptırın. 
 
     ```java
     @Override
@@ -275,7 +275,7 @@ Uygulamalarınız artık bir kategori kümesini cihazdaki yerel depolama alanın
 
 Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatma sırasında bildirim hub’ına kaydolur.
 
-1. Aşağıdaki kodun, `onCreate` `MainActivity` sınıfındaki yönteminin sonunda olduğunu doğrulayın:
+1. Aşağıdaki kodun, sınıfındaki yönteminin sonunda olduğunu doğrulayın `onCreate` `MainActivity` :
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -316,7 +316,7 @@ Uygulama artık tamamlanmıştır ve kullanıcının kategori seçimini her değ
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Uygulamayı test edin
+## <a name="test-the-app"></a>Uygulamayı test etme
 
 1. Android Studio'da, Android cihazınız veya öykünücünüz üzerinde uygulamayı çalıştırın. Uygulama kullanıcı arabirimi, abone olunacak kategorileri seçmenize olanak sağlayan iki durumlu düğmeler sağlar.
 2. Bir veya daha fazla kategori iki durumlu düğmesini etkinleştirin ve **Abone ol**’a tıklayın. Uygulama, seçilen kategorileri etiketlere dönüştürür ve bildirim hub’ından seçilen etiketler için yeni bir cihaz kaydı ister. Kayıtlı kategoriler döndürülür ve bir bildirimde görüntülenir.

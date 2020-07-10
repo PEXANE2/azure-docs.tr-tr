@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: tasarımcı ile ML modellerini dağıtma'
+title: 'Öğretici: tasarımcı ile ML modellerini dağıtma (Önizleme)'
 titleSuffix: Azure Machine Learning
 description: Bu öğreticide, Azure Machine Learning tasarımcısında bir tahmine dayalı analiz çözümü oluşturma (Önizleme) gösterilmektedir. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
 author: peterclu
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 1d0cd074f6e4ad836bc5102f3f6edc61b75215e4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517490"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199966"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci
 > * Gerçek zamanlı bitiş noktasını dağıtın.
 > * Gerçek zamanlı uç noktayı test edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıralınacağını öğrenmek için [öğreticiden birinin bir kısmını](tutorial-designer-automobile-price-train-score.md) doldurun.
 
@@ -79,7 +79,7 @@ Görüntülenen iletişim kutusunda, modelinizi dağıtmak için mevcut herhangi
     
 1. **Bölge**için kullanılabilen bir yakın bölge seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
     > [!NOTE]
     > Yeni bir AKS hizmeti oluşturmak yaklaşık 15 dakika sürer. **Çıkarım kümeleri** sayfasında sağlama durumunu kontrol edebilirsiniz.

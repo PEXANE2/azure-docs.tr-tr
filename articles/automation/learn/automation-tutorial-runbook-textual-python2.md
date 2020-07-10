@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9c587ad9b791d953dce66df2337cf0e7dca52324
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559552"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185373"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Öğretici: Python runbook 'u oluşturma
 
@@ -31,7 +31,7 @@ Bu öğreticide, Azure Otomasyonu 'nda bir [Python runbook](../automation-runboo
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 - Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-- Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](../automation-offering-get-started.md). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
+- Runbook’u tutacak ve Azure kaynaklarında kimlik doğrulamasını yapacak bir [Automation hesabı](../index.yml). Bu hesabın sanal makineyi başlatma ve durdurma izni olmalıdır.
 - Azure sanal makinesi. Bu makineyi durdurup başlatacağınız için makinenin üretime yönelik bir VM olmaması gerekir.
 
 ## <a name="create-a-new-runbook"></a>Yeni runbook oluştur
@@ -161,7 +161,7 @@ Bunu yapmak için, komut dosyasının Otomasyon hesabınızdaki kimlik bilgileri
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Python Işlem istemcisi oluşturmak ve VM 'yi başlatmak için kod ekleme
 
-Azure VM 'leriyle çalışmak için [Python Için Azure işlem istemcisinin](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient)bir örneğini oluşturun.
+Azure VM 'leriyle çalışmak için [Python Için Azure işlem istemcisinin](/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient)bir örneğini oluşturun.
 
 VM 'yi başlatmak için işlem istemcisini kullanın. Aşağıdaki kodu runbook 'a ekleyin:
 

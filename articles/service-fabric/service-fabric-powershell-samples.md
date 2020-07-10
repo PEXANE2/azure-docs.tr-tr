@@ -4,12 +4,12 @@ description: PowerShell kullanarak Azure Service Fabric kümeleri, uygulamaları
 ms.topic: sample
 ms.date: 11/29/2018
 ms.custom: mvc
-ms.openlocfilehash: f9ba1b4833b3aff13284a68c23f398ea47ef2ae2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b85fd604eb27f0963af882b41e823d800005dda
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75645659"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187107"
 ---
 # <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell örnekleri
 
@@ -17,7 +17,7 @@ Aşağıdaki tablo, Service Fabric kümelerini, uygulamalarını ve hizmetlerini
 
 [!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
-| | |
+| Komut Dosyası | Açıklama |
 |-|-|
 | **Küme oluşturma** ||
 | [Küme oluşturma (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Bir Azure Service Fabric kümesi oluşturur. |

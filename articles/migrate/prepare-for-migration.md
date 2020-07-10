@@ -4,11 +4,12 @@ description: Azure geçişi ile geçiş için şirket içi makineleri nasıl haz
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: e6840b75d58bf19f742f94caad74e10aebe24666
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044167"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223627"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -121,7 +122,7 @@ Diğer sürümler için, makineleri tabloda özetlenen şekilde hazırlayın.
 --- | --- | ---
 **Hyper-V Linux Tümleştirme Hizmetleri 'ni yükler** | Linux init görüntüsünü, gerekli Hyper-V sürücülerini içerecek şekilde yeniden derleyin. İnit görüntüsünü yeniden oluşturmak, VM 'nin Azure 'da önyüklenebilmesini sağlar. | Linux dağıtımların çoğu yeni sürümü bu varsayılan olarak eklenmiştir.<br/><br/> Dahil edilmedikçe, yukarıda çağrılanlar hariç tüm sürümler için el ile yükleyebilirsiniz.
 **Azure seri konsol günlüğünü etkinleştirme** | Konsol günlüğünü etkinleştirmek, sorun gidermenize yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir.<br/><br/> ' İ etkinleştirmek için [Bu yönergeleri](../virtual-machines/troubleshooting/serial-console-linux.md) izleyin.
-**Cihaz eşleme dosyasını güncelleştir** | Cihaz eşleme dosyasını cihaz adı-birim ilişkilendirmeleriyle güncelleştirin, böylece kalıcı cihaz tanımlayıcılarını kullanırsınız. | Yukarıdaki çağrılanlar hariç tüm sürümler için el ile yükler.
+**Cihaz eşleme dosyasını güncelleştir** | Cihaz eşleme dosyasını cihaz adı-birim ilişkilendirmeleriyle güncelleştirin, böylece kalıcı cihaz tanımlayıcılarını kullanırsınız. | Yukarıdaki çağrılanlar hariç tüm sürümler için el ile yükler. (Yalnızca aracı tabanlı VMware senaryosunda geçerlidir)
 **Fstab girdilerini Güncelleştir** |  Kalıcı birim tanımlayıcılarını kullanmak için girişleri güncelleştirin.    | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile güncelleştirin.
 **Uıdev kuralını kaldır** | Arabirim adlarını ayrılmış olan tüm udev kurallarını MAC adresine göre kaldırın vb. | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile kaldırın.
 **Ağ arabirimlerini Güncelleştir** | Ağ arabirimlerini DHCP. NST tabanlı IP adresini alacak şekilde Güncelleştir | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile güncelleştirin.

@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71212066"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220159"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara bildirim gönderme
 
@@ -66,7 +66,7 @@ Bu bölümde, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows P
 5. Sonuçlar listesinde **System.Net.Http** ve sonra **Yükle**’ye tıklayın. Yüklemeyi tamamlayın.
 6. NuGet **Arama** kutusuna **Json.net** yazın. **Newtonsoft.json** paketini yükleyin ve sonra NuGet Paket Yöneticisi penceresini kapatın.
 7. Çözüm Gezgini'nde, **WindowsApp** projesinde bulunan **MainPage.xaml** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
-8. `MainPage.xaml` XML kodunda, `<Grid>` bölümünü şu kodla değiştirin: Bu kod, kullanıcının kimliğini doğruladığı bir Kullanıcı adı ve parola metin kutusu ekler. Bildirim iletisi ve bildirimi alması gereken Kullanıcı adı etiketi için de metin kutuları ekler:
+8. `MainPage.xaml`XML kodunda, `<Grid>` bölümünü şu kodla değiştirin: Bu kod, kullanıcının kimliğini doğruladığı bir Kullanıcı adı ve parola metin kutusu ekler. Bildirim iletisi ve bildirimi alması gereken Kullanıcı adı etiketi için de metin kutuları ekler:
 
     ```xml
     <Grid>
@@ -128,7 +128,7 @@ Bu bölümde, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows P
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. **WindowsApp** projesi için içinde `MainPage` `MainPage.xaml.cs` aşağıdaki üyeyi sınıfına ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
+10. `MainPage.xaml.cs` **WindowsApp** projesi için içinde aşağıdaki üyeyi `MainPage` sınıfına ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
@@ -215,14 +215,14 @@ Bu bölümde, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows P
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. ' `App.xaml.cs` İ açın ve `OnLaunched()` olay işleyicisinde `InitNotificationsAsync()` çağrısını bulun. `InitNotificationsAsync()` çağrısına açıklama ekleyin veya çağrıyı silin. Düğme işleyicisi, bildirim kayıtlarını başlatır.
+12. `App.xaml.cs`' İ açın ve `InitNotificationsAsync()` olay işleyicisinde çağrısını bulun `OnLaunched()` . `InitNotificationsAsync()` çağrısına açıklama ekleyin veya çağrıyı silin. Düğme işleyicisi, bildirim kayıtlarını başlatır.
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
-13. **WindowsApp** projesine sağ tıklayın, **Ekle**’ye ve sonra **Sınıf**’a tıklayın. Sınıfı adlandırın `RegisterClient.cs`, ardından sınıfı oluşturmak için **Tamam** ' a tıklayın.
+13. **WindowsApp** projesine sağ tıklayın, **Ekle**’ye ve sonra **Sınıf**’a tıklayın. Sınıfı adlandırın `RegisterClient.cs` , ardından sınıfı oluşturmak Için **Tamam** ' a tıklayın.
 
     Bu sınıf, anında iletme bildirimlerine kaydolmak için uygulama arka ucuyla iletişim kurmak üzere gereken REST çağrılarını sarmalar. [Uygulama arka ucunuzdan kaydetme](https://msdn.microsoft.com/library/dn743807.aspx) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum aç ve kaydet** düğmesine tıkladığınızda yerel depolama alanında depolanan bir yetkilendirme belirtecini kullanır.
 14. Aşağıdaki `using` deyimlerini RegisterClient.cs dosyasının en üst kısmına ekleyin:
@@ -331,11 +331,11 @@ Bu bölümde, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows P
 2. Aşağıdaki ekranda gösterildiği gibi **Kullanıcı Adı** ve **Parola** girin. Girdiğiniz değerler, Windows Phone üzerinde girdiğiniz kullanıcı adı ve paroladan farklı olmalıdır.
 3. **Oturum aç ve kaydet**’e tıklayın ve bir iletişim kutusunun oturum açtığınızı gösterdiğini onaylayın. Bu kod ayrıca **Anında İletme Bildirimi Gönder** düğmesini etkinleştirir.
 
-    ![][14]
+    ![Kullanıcı adını ve parolayı gösteren Notification Hubs uygulamasının ekran görüntüsü.][14]
 5. Sonra **Alıcı Kullanıcı Adı Etiketi** alanına, kayıtlı kullanıcı adını girin. Bir bildirim iletisi girin ve **Anında İletme Bildirimi Gönder**’e tıklayın.
 6. Yalnızca eşleşen kullanıcı adı etiketi ile kaydedilmiş cihazlar bildirim iletisini alır.
 
-    ![][15]
+    ![Gönderilen iletiyi gösteren Notification Hubs uygulamasının ekran görüntüsü.][15]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

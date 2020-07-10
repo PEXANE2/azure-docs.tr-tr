@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551741"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202558"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Öğretici: şirket içi bir ortama Azure Active Directory self servis parola sıfırlama geri yazma özelliğini etkinleştirme
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure AD Connect parola geri yazma seçeneğini etkinleştirin
 > * Azure AD SSPR 'de parola geri yazmayı etkinleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Gerekirse, [Azure AD SSPR 'yi etkinleştirmek için önceki öğreticiyi](tutorial-enable-sspr.md)izleyin.
 * Geçerli bir Azure AD Connect sürümü ile yapılandırılmış mevcut bir şirket içi AD DS ortamı.
     * Gerekirse, [Express](../hybrid/how-to-connect-install-express.md) veya [özel](../hybrid/how-to-connect-install-custom.md) ayarları kullanarak Azure AD Connect yapılandırın.
-    * Parola geri yazma özelliğini kullanmak için, etki alanı denetleyicileriniz Windows Server 2008 R2 veya üzeri olmalıdır.
+    * Parola geri yazma özelliğini kullanmak için, etki alanı denetleyicileriniz Windows Server 2012 veya sonraki bir sürümü olmalıdır.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Azure AD Connect için hesap izinlerini yapılandırma
 

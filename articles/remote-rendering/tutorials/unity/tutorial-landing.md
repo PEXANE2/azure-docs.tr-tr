@@ -1,16 +1,16 @@
 ---
 title: Azure uzaktan Işleme öğreticisi giriş sayfası
 description: ARR öğreticiye genel bakış ve gezinme
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6501508940672f5506d84ee32821730f7c28d5fb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e9bcabc05f0a967c788c5811dce0d99dc5cf38c9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569994"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207682"
 ---
 # <a name="azure-remote-rendering-tutorials"></a>Azure uzaktan Işleme öğreticileri
 
@@ -32,16 +32,16 @@ Daha sonra, kendi modellerinizi Azure uzaktan Işleme 'ye yüklemeyi ve bunları
 
 Bu öğreticide, uzaktan işlenmiş modellerinizi işleyebilir ve bunlarla etkileşime geçebilirsiniz. Bu öğreticiden önce, [Uzaktan işlenmiş bir model](view-remote-models/view-remote-models.md) ve [arabirimlerin ve özel modellerin](custom-models/custom-models.md) görüntülenmesini tamamlamanızı öneririz.
 
-#### <a name="refining-materials-lighting-and-effects"></a>[Malzemeleri, aydınlatmayı ve etkileri iyileştirme](materials-lighting-effects/materials-lighting-effects.md)
+#### <a name="refining-materials-lighting-and-effects"></a>[Malzemeleri, ışıkları ve efektleri iyileştirme](materials-lighting-effects/materials-lighting-effects.md)
 
 Daha sonra, malzemeleri değiştirme, aydınlatmayı değiştirme ve uzaktan işlenmiş modellerinize etkiler uygulama gibi önemli kavramlar ele alacağız. [Uzaktan işlenmiş bir modeli](view-remote-models/view-remote-models.md), [arabirimleri ve özel modelleri](custom-models/custom-models.md)görüntüleme ve [modelleri düzenleme](manipulate-models/manipulate-models.md) , bu öğretici için önerilen önkoşullardır.
 
-#### <a name="securing-azure-remote-rendering-and-model-storage"></a>[Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama](security/security.md)
+#### <a name="securing-azure-remote-rendering-and-model-storage"></a>[Azure Remote Rendering ve model depolamanın güvenliğini sağlama](security/security.md)
 
 Burada, Azure uzaktan Işleme hesabınızı ve BLOB depolama alanınızı güvenli hale getirmenin hakkında bilgi edineceksiniz. Bu, Azure uzaktan Işleme kullanan bir ticari uygulamayı serbest bırakmayı sağlayan ilk adımları ele alır. Bu öğreticide, yukarıdaki dersleri tamamladığınız varsayılmaktadır.
 
 
-#### <a name="creating-a-commercial-ready-azure-remote-rendering-application"></a>[Ticari özellikli bir Azure uzaktan Işleme uygulaması oluşturma](commercial-ready/commercial-ready.md)
+#### <a name="creating-a-commercial-ready-azure-remote-rendering-application"></a>[Ticari kullanım için hazır bir Azure Remote Rendering uygulaması oluşturma](commercial-ready/commercial-ready.md)
 
 Son olarak, Azure uzaktan Işleme kullanarak ticari bir uygulama hazırlamaya yönelik bazı önemli konuları ve ipuçları ele alacağız. Bu kaynağı kullanıma almadan önce tüm Azure uzaktan Işleme öğreticilerini tamamladıysanız yararlı olur.
 

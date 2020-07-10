@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: eğitim & dağıtım modelleri: VS Code'
+title: 'Öğretici: eğitim & dağıtım modelleri: VS Code (Önizleme)'
 titleSuffix: Azure Machine Learning
 description: TensorFlow ve Azure Machine Learning Visual Studio Code uzantısını kullanarak görüntü sınıflandırma modelini eğitme ve dağıtma hakkında bilgi edinin
 services: machine-learning
@@ -8,16 +8,16 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/08/2020
+ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 1d7b712e27ad73516606564ea125298cb3dea314
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143196"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203555"
 ---
-# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code uzantısını kullanarak görüntü sınıflandırması TensorFlow modelini eğitme ve dağıtma
+# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code uzantısı (Önizleme) kullanarak görüntü sınıflandırması TensorFlow modelini eğitme ve dağıtma
 
 TensorFlow ve Azure Machine Learning Visual Studio Code uzantısını kullanarak el ile yazılmış sayıları tanımak için görüntü sınıflandırma modelini eğitme ve dağıtma hakkında bilgi edinin.
 
@@ -303,7 +303,7 @@ Azure Machine Learning deneme çalıştırmak için:
 
 Model tamamlandığında, çalışma düğümü ' nün yanındaki durum etiketi "tamamlandı" olarak güncelleştirilir.
 
-## <a name="register-the-model"></a>Modeli kaydedin
+## <a name="register-the-model"></a>Modeli Kaydet
 
 Modelinize eğitim edindiniz. bu aşamada, çalışma alanınıza kaydedebilirsiniz. 
 

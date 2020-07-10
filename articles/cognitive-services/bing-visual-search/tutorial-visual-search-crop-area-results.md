@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
-ms.openlocfilehash: 4778a4089c7374c1ac6a9312064dcfb1e0325b63
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3c331faad3c49b91defc9f081352eda80c701b4a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478487"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205393"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Öğretici: C için Bing Görsel Arama SDK ile görüntü kırpma #
 
@@ -49,7 +49,7 @@ Bu uygulama, Microsoft üst düzey liderliği ekibinin bu görüntüsünün bir 
 
 ![Microsoft Üst Düzey Liderlik Ekibi](./media/MS_SrLeaders.jpg)
 
-Bu görüntü, kırpma alanından bir `ImageInfo` nesne oluşturularak ve `ImageInfo` nesnesi bir `VisualSearchRequest`öğesine yüklenirken kırpılır. `ImageInfo` Nesne Ayrıca görüntünün URL 'sini de içerir:
+Bu görüntü, `ImageInfo` kırpma alanından bir nesne oluşturularak ve `ImageInfo` nesnesi bir öğesine yüklenirken kırpılır `VisualSearchRequest` . `ImageInfo`Nesne Ayrıca görüntünün URL 'sini de içerir:
 
 ```csharp
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
@@ -61,7 +61,7 @@ VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: ima
 
 ## <a name="search-for-images-similar-to-the-crop-area"></a>Kırpma alanına benzer görüntüleri ara
 
-Değişkeni `VisualSearchRequest` , görüntünün kırpma alanı ve URL 'si hakkındaki bilgileri içerir. `VisualSearchMethodAsync()` Yöntemi sonuçları alır:
+Değişkeni, `VisualSearchRequest` görüntünün kırpma alanı ve URL 'si hakkındaki bilgileri içerir. `VisualSearchMethodAsync()`Yöntemi sonuçları alır:
 
 ```csharp
 Console.WriteLine("\r\nSending visual search request with knowledgeRequest that contains URL and crop area");
@@ -71,7 +71,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ## <a name="get-the-url-data-from-imagemoduleaction"></a>URL verilerini al`ImageModuleAction`
 
-Bing Görsel Arama sonuçları `ImageTag` nesneler. Her etiket bir `ImageAction` nesneleri listesi içerir. Her `ImageAction` biri, `Data` eylem türüne bağlı değerlerin listesi olan bir alan içerir.
+Bing Görsel Arama sonuçları `ImageTag` nesneler. Her etiket bir `ImageAction` nesneleri listesi içerir. Her biri `ImageAction` `Data` , eylem türüne bağlı değerlerin listesi olan bir alan içerir.
 
 Çeşitli türleri aşağıdaki kodla yazdırabilirsiniz:
 
@@ -81,22 +81,22 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 Tam uygulama şunları döndürür:
 
-|EylemTürü  |URL'si  | |
-|---------|---------|---------|
+|EylemTürü  |URL  |
+|---------|---------|
 |Websearchurl dahil Pages     |         |
 |Mosearchurl 'Yi yeniden boyutlandırır     |         |  
 |VisualSearch WebSearchURL 'Si    |         |
 |Imagebyıd WebSearchURL     |         |  
 |Relatedaramaweb Searchurl     |         |
-|Entity-> WebSearchUrl     | https\://www.BING.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&CıD = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fsearch% 3Fq% 3dSatya% 2bNadella&p = devex, 5380.1        |
-|TopicResults-> WebSearchUrl    |  https\://www.BING.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&CıD = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = 3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fdiscover% 2fnadella% 2bsatya&p = devex, 5382.1        |
-|Imageresults-> WebSearchUrl    |  https\://www.BING.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&CıD = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fimages% 2fsearch% 3Fq% 3dSatya% 2bNadella&p = devex, 5384.1        |
+|Entity-> WebSearchUrl     | https \: //www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fsearch% 3Fq% 3dSatya% 2bNadella&p = DevEx, 5380.1        |
+|TopicResults-> WebSearchUrl    |  https \: //www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = 3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fdiscover% 2fnadella% 2bsatya&p = DevEx, 5382.1        |
+|Imageresults-> WebSearchUrl    |  https \: //www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fimages% 2fsearch% 3Fq% 3dSatya% 2bNadella&p = DevEx, 5384.1        |
 
 Yukarıda gösterildiği gibi, `Entity` ActionType tanınabilir bir kişi, yer veya bir şey hakkında bilgi döndüren bir Bing arama sorgusu içerir. `TopicResults` ve `ImageResults` türleri, ilgili görüntülerin sorgularını içerir. Listedeki URL’ler Bing arama sonuçlarına yönlendirir.
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Görüntüler için `PagesIncluding` `ActionType` URL 'ler al
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Görüntüler için URL 'Ler Al `PagesIncluding` `ActionType`
 
-Gerçek görüntü URL’lerini almak için, bir `ActionType` türünü `ImageModuleAction` olarak okuyan bir tür dönüştürme gerekir. Bu tür ise değerler listesine sahip bir `Data` öğesi içerir. Her değer, bir görüntünün URL’sidir. Aşağıdaki `PagesIncluding` eylem türünü öğesine `ImageModuleAction` yayınlar ve değerleri okur:
+Gerçek görüntü URL’lerini almak için, bir `ActionType` türünü `ImageModuleAction` olarak okuyan bir tür dönüştürme gerekir. Bu tür ise değerler listesine sahip bir `Data` öğesi içerir. Her değer, bir görüntünün URL’sidir. Aşağıdaki `PagesIncluding` eylem türünü öğesine yayınlar `ImageModuleAction` ve değerleri okur:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")

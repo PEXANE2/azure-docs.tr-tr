@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f98df33b3efc697e349ddeae31439dd2fb701d91
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81616598"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202031"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault geçici silmeyi CLI ile kullanma
 
@@ -207,7 +207,7 @@ Aynı değer, Anahtar Kasası için de geçerlidir. Geçici olarak silinen bir a
 
 ### <a name="purging-a-key-vault"></a>Anahtar kasasını Temizleme
 
-Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için `az keyvault purge` komutunu kullanın. Aboneliğinizi Silinen anahtar kasalarınızın konumunu komutunu `az keyvault list-deleted`kullanarak bulabilirsiniz.
+Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için komutunu kullanın `az keyvault purge` . Aboneliğinizi Silinen anahtar kasalarınızın konumunu komutunu kullanarak bulabilirsiniz `az keyvault list-deleted` .
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
@@ -229,7 +229,7 @@ Silinen Anahtar Kasası nesnelerinin listelenmesi Ayrıca Key Vault tarafından 
 
 Temizleme koruması açık olduğunda, 90 günlük bekletme süresi geçene kadar bir kasa veya silinmiş durumdaki bir nesne kaldırılamaz. Bu kasa veya nesne yine de kurtarılabilir. Bu özellik, bir kasasının veya bir nesnenin Bekletme dönemi geçene kadar hiçbir zaman kalıcı olarak silinebileceğini güvence altına almanızı sağlar.
 
-Temizleme korumasını yalnızca geçici silme de etkinse etkinleştirebilirsiniz. 
+Temizleme korumasını yalnızca geçici silme de etkinse etkinleştirebilirsiniz. Temizleme korumasını devre dışı bırakma desteklenmiyor.
 
 Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [az keykasa Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın:
 

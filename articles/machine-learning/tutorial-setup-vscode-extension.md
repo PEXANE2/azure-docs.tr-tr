@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Visual Studio Code uzantısını ayarlama'
+title: 'Öğretici: Visual Studio Code uzantısını ayarlama (Önizleme)'
 titleSuffix: Azure Machine Learning
 description: Visual Studio Code Azure Machine Learning uzantısını ayarlamayı öğrenin.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/08/2020
-ms.openlocfilehash: 9d85e59e003cffdbe6fe6abe7bb053ae4c574b78
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/09/2020
+ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143457"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199769"
 ---
-# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code uzantısını ayarlama
+# <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code uzantısını ayarlama (Önizleme)
 
 Azure Machine Learning Visual Studio Code uzantısını kullanarak betikleri yüklemeyi ve çalıştırmayı öğrenin.
 
@@ -35,10 +35,10 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 
 ## <a name="install-the-extension"></a>Uzantıyı yükleme
 
-1. Visual Studio Code'u açın.
+1. Visual Studio Code’u açın.
 1. Uzantılar görünümünü açmak için **etkinlik çubuğundan** **Uzantılar** simgesini seçin.
 1. Uzantılar görünümünde, "Azure Machine Learning" araması yapın.
-1. **Yükle**'yi seçin.
+1. **Yükle**’yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Azure Machine Learning VS Code uzantısını yükler](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)

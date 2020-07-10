@@ -7,12 +7,12 @@ keywords: değişiklik, izleme, değişiklik izleme, stok, Otomasyon
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 211b34b4424fa5bc9b82dc1cc2a2da574ffc5d96
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743682"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185815"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM 'deki değişikliklerle ilgili sorunları giderme
 
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* İzleyici ve eylem runbook 'larını ve Izleyici görevini tutacak bir [Otomasyon hesabı](automation-offering-get-started.md) .
+* İzleyici ve eylem runbook 'larını ve Izleyici görevini tutacak bir [Otomasyon hesabı](./index.yml) .
 * Özelliği için etkinleştirilecek bir [sanal makine](../virtual-machines/windows/quick-create-portal.md) .
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -54,7 +54,7 @@ Bu öğretici için öncelikle Değişiklik İzleme ve stoku etkinleştirmeniz g
 
     ![Değişikliği etkinleştir](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) çalışma alanını seçin. Bu çalışma alanı, Değişiklik İzleme ve envanter gibi özellikler tarafından oluşturulan verileri toplar. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
+3. [Log Analytics](../azure-monitor/log-query/log-query-overview.md) çalışma alanını seçin. Bu çalışma alanı, Değişiklik İzleme ve envanter gibi özellikler tarafından oluşturulan verileri toplar. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -238,4 +238,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Daha fazla bilgi edinmek için Değişiklik İzleme ve envanter özelliğine genel bakış ' a geçin.
 
 > [!div class="nextstepaction"]
-> [Değişiklik İzleme ve envantere genel bakış](automation-change-tracking.md)
+> [Değişiklik İzleme ve envantere genel bakış](./change-tracking.md)

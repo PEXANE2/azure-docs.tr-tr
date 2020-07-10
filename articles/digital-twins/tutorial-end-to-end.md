@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391936"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206547"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Uçtan uca çözüm oluşturma
 
@@ -120,7 +120,7 @@ Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin 
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: İşlev Uygulaması (Windows)-yeni oluştur":::
 
-Ardından **Oluştur**' u seçin.
+Ardından **Oluştur**’u seçin.
 
 Bu, yeni işlev uygulamanızın artık kaynak grubunuzun altında göründüğünden, bunu *işlevler örneği* sayfasına geri getirmelidir. İsabet *sonu*.
 
@@ -205,8 +205,9 @@ Bu işlem *olay aboneliği oluştur* sayfasını getirir.
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure portal: olay aboneliği oluştur":::
 
-Alanları aşağıdaki gibi girin:
+Alanları aşağıda gösterildiği gibi (varsayılan olarak doldurulan alanlar bahsedilmez) girin:
 * *olay ABONELIĞI ayrıntıları*  >  **Ad**: olay aboneliğinize bir ad verin.
+* *konu ayrıntıları*  >  **Sistem konu adı**: sistem konusu için kullanılacak bir ad verin. 
 * *olay türleri*  >  **Olay türlerine filtrele**: menü seçeneklerinden *cihaz telemetrisi* ' ni seçin.
 * *uç nokta ayrıntıları*  >  **Uç nokta türü**: menü seçeneklerinden *Azure işlevi* ' ni seçin.
 * *uç nokta ayrıntıları*  >  **Uç nokta**: *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="olay aboneliği Azure Portal: Azure işlevi seçin" border="false":::
@@ -361,11 +362,9 @@ Bunu yapmak için, olay kılavuzunuzda, *Processdtkabteddata* Azure işlevinizde
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure portal: Event Grid olay aboneliği":::
 
-Bu olay aboneliğini oluşturma adımları, bu öğreticide daha önce IoT Hub ilk Azure işlevine abone olduğunuz zamana benzer. Bunun farkı, bu sürenin dinlenecek olay türü olarak *cihaz telemetrisini* belirtmeniz gerekmez ve farklı bir Azure işlevine bağlanırsınız.
+Bu olay aboneliğini oluşturma adımları, bu öğreticide daha önce IoT Hub ilk Azure işlevine abone olduğunuz zamana benzer. Bu kez, dinlenecek olay türü olarak *cihaz telemetrisini* belirtmeniz gerekmez ve farklı bir Azure işlevine bağlanırsınız.
 
-Abonelik adımları tekrar aşağıda verilmiştir:
-
-*Olay aboneliği oluştur* sayfasında, alanları aşağıdaki gibi girin:
+*Olay aboneliği oluştur* sayfasında, alanları aşağıdaki gibi girin (varsayılan olarak doldurulmuş alanlar verilmez):
 * *olay ABONELIĞI ayrıntıları*  >  **Ad**: olay aboneliğinize bir ad verin.
 * *uç nokta ayrıntıları*  >  **Uç nokta türü**: menü seçeneklerinden *Azure işlevi* ' ni seçin.
 * *uç nokta ayrıntıları*  >  **Uç nokta**: *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar:

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6727a2c45187e0e6bb583bb65e176024067d81e2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064413"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220005"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Öğretici: IoT Tak ve Kullan (Önizleme) cihazı oluşturmak ve IoT Central uygulamanıza bağlamak için bir cihaz yetenek modeli kullanın
 
@@ -39,7 +39,7 @@ Bu öğreticiyi tamamlayabilmeniz için yerel makinenize aşağıdaki yazılım�
 * [CMake](https://cmake.org/download/) - **CMake**'ı yüklediğinizde, **sistem yoluna CMake Ekle**seçeneğini belirleyin.
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Node.js](https://nodejs.org/)
-* `dps-keygen` Yardımcı program:
+* `dps-keygen`Yardımcı program:
 
     ```cmd/sh
     npm i -g dps-keygen
@@ -86,7 +86,9 @@ Bir cihazı IoT Central uygulamasına bağlamak için bir cihaz anahtarına ihti
 
 1. **Yönetim** sayfasına gidin ve **cihaz bağlantısı**' nı seçin.
 
-1. Anahtar **kapsamını** ve **görüntüleme anahtarlarını**seçtiğinizde gördüğünüz **birincil anahtarı** bir yere göz atın. Bu değerleri daha sonra bu öğreticide kullanacaksınız.
+1. **Kimlik kapsamını**bir yere getirin. Bu değeri daha sonra bu öğreticide kullanacaksınız.
+
+1. **SAS-IoT-cihazlar** kayıt grubunu seçin. **Birincil anahtarı**bir yere göz önünde alın. Bu değeri daha sonra bu öğreticide kullanacaksınız.
 
     ![Cihaz bağlantısı](./media/tutorial-connect-pnp-device/device-connection.png)
 
@@ -98,15 +100,15 @@ Bir cihazı IoT Central uygulamasına bağlamak için bir cihaz anahtarına ihti
 
     Oluşturulan _Cihaz anahtarını_bir yere getirin, bu değeri bu öğreticideki sonraki bir adımda kullanın.
 
-## <a name="download-your-model"></a>Modelinizi indirin
+## <a name="download-your-model"></a>Modelinizi indirme
 
 Bu öğreticide, bir Mxyonga IoT DevKit cihazı için genel DCM kullanılır. Kodu çalıştırmak için gerçek bir DevKit cihazına ihtiyacınız yoktur. Bu öğreticide, Windows 'da çalıştırmak için kodu derleyebilirsiniz.
 
-1. Adlı `central_app` bir klasör oluşturun ve vs Code açın.
+1. Adlı bir klasör oluşturun `central_app` ve vs Code açın.
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın, **IoT Tak ve kullan**girin ve **model deposunu aç**' ı seçin. **Ortak depoyu**seçin. VS Code, genel model deposundaki DCMs 'lerin bir listesini gösterir.
 
-1. KIMLIĞI `urn:mxchip:mxchip_iot_devkit:1`olan **Mxyongaıot devkit** DCM öğesini seçin. Ardından **İndir**' i seçin. Artık `central_app` klasörde DCM 'nin bir kopyasına sahipsiniz.
+1. KIMLIĞI olan **Mxyongaıot DevKit** DCM öğesini seçin `urn:mxchip:mxchip_iot_devkit:1` . Ardından **İndir**' i seçin. Artık klasörde DCM 'nin bir kopyasına sahipsiniz `central_app` .
 
 ![Model deposu ve DCM](./media/tutorial-connect-pnp-device/public-repository.png)
 
@@ -134,7 +136,7 @@ Artık **Mxyonu IoT DevKit** DCM ve ilişkili arabirimlerinizde, modeli uygulaya
 
 1. SDK 'yı dahil etme yöntemi olarak **Vcpkg aracılığıyla** seçim yapın.
 
-1. VS Code, `devkit_device` klasöründe oluşturulan cihaz kodu saplama dosyaları ile yeni bir pencere açar.
+1. VS Code, klasöründe oluşturulan cihaz kodu saplama dosyaları ile yeni bir pencere açar `devkit_device` .
 
 ![Oluşturulan cihaz kodu](./media/tutorial-connect-pnp-device/generated-code.png)
 
@@ -142,14 +144,14 @@ Artık **Mxyonu IoT DevKit** DCM ve ilişkili arabirimlerinizde, modeli uygulaya
 
 Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın. Oluşturduğunuz uygulama bir **Mxyonga IoT DevKit** cihazına benzetir ve IoT Central uygulamanıza bağlanır. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
 
-1. Komut isteminde `cmake` `devkit_device` klasörde bir alt dizin oluşturun ve bu klasöre gidin:
+1. Komut isteminde `cmake` klasörde bir alt dizin oluşturun `devkit_device` ve bu klasöre gidin:
 
     ```cmd
     mkdir cmake
     cd cmake
     ```
 
-1. Oluşturulan kod Saplaması oluşturmak için aşağıdaki komutları çalıştırın. `<directory of your Vcpkg repo>` Yer tutucusunu **vcpkg** deposunun kopyasına olan yol ile değiştirin:
+1. Oluşturulan kod Saplaması oluşturmak için aşağıdaki komutları çalıştırın. `<directory of your Vcpkg repo>`Yer tutucusunu **Vcpkg** deposunun kopyasına olan yol ile değiştirin:
 
     ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
@@ -166,13 +168,13 @@ Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. Derleme başarıyla tamamlandıktan sonra, aynı komut isteminde uygulamanızı çalıştırın. Ve `<scopeid>` `<devicekey>` değerlerini daha önce not ettiğiniz değerlerle değiştirin:
+1. Derleme başarıyla tamamlandıktan sonra, aynı komut isteminde uygulamanızı çalıştırın. `<scopeid>`Ve `<devicekey>` değerlerini daha önce not ettiğiniz değerlerle değiştirin:
 
     ```cmd
     .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
-1. Cihaz uygulaması IoT Hub veri göndermeye başlar. Bazen önceki komutu ilk kez `Error registering device for DPS` çalıştırdığınızda hatayı görürsünüz. Bu hatayı görürseniz, komutunu yeniden deneyin.
+1. Cihaz uygulaması IoT Hub veri göndermeye başlar. Bazen `Error registering device for DPS` önceki komutu ilk kez çalıştırdığınızda hatayı görürsünüz. Bu hatayı görürseniz, komutunu yeniden deneyin.
 
 ## <a name="view-the-device"></a>Cihazı görüntüleme
 

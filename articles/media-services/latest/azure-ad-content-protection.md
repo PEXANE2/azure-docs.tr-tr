@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 92b3489113aff9d48940131c80df00aedcf45325
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172836"
+ms.locfileid: "86205216"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
 
@@ -120,18 +120,17 @@ SPA oynatıcı uygulaması aşağıdaki eylemleri tamamlar:
 * Şifre çözme, kodunu çözme ve görüntüleme.
 * Sorun giderme amacıyla API çağrılarını Microsoft Graph. <!--See more details in the subsection Shortest path: testing my protected asset in my subscription with your hosted player app and underlying tenant. -->
 
-<!--
-The screen for sign-in, token acquisition, token renewal, and token display:
+Oturum açma, belirteç alma, belirteç yenileme ve belirteç görüntüleme ekranı:
 
- ![Screen for sign in, token acquisition, token renewal, and token display](media/aad-ams-content-protection/token-acquisition2.png)
+ ![Oturum açma, belirteç alma, belirteç yenileme ve belirteç görüntüleme için ekran](media/aad-ams-content-protection/token-acquisition.png)
 
-The screen for parsing JWT tokens (access_token or id_token):
+JWT belirteçlerini ayrıştırma ekranı (access_token veya id_token):
 
-![screen for parsing JWT tokens](media/aad-ams-content-protection/parsing-jwt-tokens2.png)
+![JWT belirteçlerini ayrıştırma ekranı](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
-The screen for testing protected content with different combinations of DRM/AES vs Streaming Protocols vs Container Format:
+Farklı DRM/AES vs akış protokolleriyle korumalı içeriği test etme ekranı, kapsayıcı biçimi:
 
-![screen for parsing JWT tokens](media/aad-ams-content-protection/testing-protected-content2.png)
+![JWT belirteçlerini ayrıştırma ekranı](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -261,7 +260,7 @@ Oynatıcı uygulamasını ayarlamak için iki seçeneğiniz vardır:
 
 ### <a name="option-1"></a>1\. Seçenek
 
-1. Visual Studio Code başlatın.
+1. Visual Studio Code’u başlatın.
 1. Projeyi açmak için dosya > klasörü aç ' a tıklayın > klasöre gidin ve *package.jsdosya üzerinde* üst klasörü seçin.
 1. *Public/JavaScript/constants.js*JavaScript dosyasını açın.
 1. `OAUTH2_CONST.CLIENT_ID` `client_id` AAD kiracısındaki kayıtlı istemci uygulamanızın ile değiştirin.  `client_id`Azure Portal ' de kayıtlı uygulamanın genel bakış bölümünü bulabilirsiniz. Not: nesne KIMLIĞI değil, istemci KIMLIĞIDIR.
@@ -342,7 +341,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 *Gruplar* talebi, Azure AD 'de kısıtlı bir [talep kümesinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets) üyesidir.
 
-#### <a name="test"></a>Test etme
+#### <a name="test"></a>Test
 
 1. *Premium_user* hesabıyla oturum açın. Korunan içeriği oynatabilmelisiniz.
 1. *Basic_user* hesabıyla oturum açın. Videonun şifrelendiğini belirten bir hata almalısınız, ancak şifresini çözmek için bir anahtar yok. Player tanılama alt sürümünün altındaki açılan menüde olayları, hataları ve İndirmeleri görüntülediğinizde, hata iletisi, Azure AD belirteç uç noktası tarafından verilen JWT içindeki gruplar talebi için eksik talep değeri nedeniyle lisans alma başarısızlığını göstermelidir.
