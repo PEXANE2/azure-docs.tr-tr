@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017622"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218272"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -39,7 +39,7 @@ Aşağıdaki formülde gösterildiği gibi, üretilen iş ve ıOPS arasında bir
 
 Bu nedenle, uygulamanızın gerektirdiği en iyi aktarım hızı ve ıOPS değerlerini belirlenmesi önemlidir. Bir diğerini iyileştirmenize çalıştığınızda, diğeri de etkilenir. Daha sonraki bir bölümde, *uygulama performansını en*iyi duruma GETIRMEK için IOPS ve aktarım hızını iyileştirme hakkında daha fazla ayrıntı inceleyeceğiz.
 
-## <a name="latency"></a>Gecikme süresi
+## <a name="latency"></a>Gecikme Süresi
 
 Gecikme süresi, bir uygulamanın tek bir istek alması, depolama disklerine gönderilmesi ve yanıtı istemciye gönderilmesi için gereken süredir. Bu, ıOPS ve aktarım hızına ek olarak uygulamanın performansına yönelik kritik bir ölçüdür. Premium Depolama diskinin gecikmesi, bir istek için bilgilerin alınması ve uygulamanıza geri iletişim kurması için gereken süredir. Premium Depolama, düşük gecikme süreleri sağlar. Premium diskler, çoğu GÇ işlemi için tek basamaklı milisaniyelik gecikme süreleri sağlamak üzere tasarlanmıştır. Premium Depolama disklerinde ReadOnly ana bilgisayar önbelleğe almayı etkinleştirirseniz çok daha düşük okuma gecikmesi sağlayabilirsiniz. Daha sonra *uygulama performansını En Iyi duruma getirme*bölümünde daha ayrıntılı bilgi Için disk önbelleğe alma ele alınacaktır.
 
@@ -73,7 +73,7 @@ Daha sonra, uygulamanızın ömrü boyunca en fazla performans gereksinimlerini 
 | GÇ istek boyutu | | | |
 | Ortalama üretilen Iş | | | |
 | En çok, Aktarım hızı | | | |
-| Min. Gecikme süresi | | | |
+| Min. Gecikme Süresi | | | |
 | Ortalama gecikme süresi | | | |
 | En çok, CPU | | | |
 | Ortalama CPU | | | |
@@ -92,12 +92,12 @@ Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucusunun 
 
 PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiziksel disk için kullanılabilir. Premium Depolama disklerini bir VM ile kullandığınızda, her bir Premium Depolama diski için fiziksel disk sayaçları ve Premium Depolama disklerinde oluşturulan her birim için mantıksal disk sayaçları bulunur. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamalısınız. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; Aksi takdirde mantıksal disk sayaçlarına bakın. Linux 'ta, Iostat komutu bir CPU ve disk kullanımı raporu oluşturur. Disk kullanımı raporu, fiziksel cihaz veya bölüm başına istatistikler sağlar. Verileri ve günlükleri ayrı disklerde içeren bir veritabanı sunucusuna sahipseniz, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve Bellek sayaçlarını açıklanmaktadır:
 
-| Sayaç | Description | Sin | Iostat |
+| Sayaç | Açıklama | Sin | Iostat |
 | --- | --- | --- | --- |
 | **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
 | **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
-| **Aktarım hızı** |Saniye başına diskten okunan veya diske yazılan veri miktarı. |Disk okuma bayt/sn <br> Disk yazma bayt/sn |kB_read/s <br> kB_wrtn/s |
-| **Gecikme süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |bekleme <br> svctd |
+| **İşleme hızı** |Saniye başına diskten okunan veya diske yazılan veri miktarı. |Disk okuma bayt/sn <br> Disk yazma bayt/sn |kB_read/s <br> kB_wrtn/s |
+| **Gecikme Süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |bekleme <br> svctd |
 | **GÇ boyutu** |G/ç isteklerinin boyutu depolama disklerinde sorun verir. |Ortalama disk bayt/okuma <br> Ortalama disk bayt/yazma |avgrq-SZ |
 | **Sıra derinliği** |Depolama diskine okunmayı bekleyen bekleyen g/ç isteklerinin sayısı. |Geçerli disk sırası uzunluğu |avgqu-SZ |
 | **Biçimlendir. Bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
@@ -119,10 +119,10 @@ Aşağıdaki tabloda, performans faktörleri ve ıOPS 'yi, aktarım hızını ve
 
 VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ıOPS, aktarım hızı ve gecikme süresi hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../articles/virtual-machines/linux/sizes.md) veya [Windows VM boyutları](../articles/virtual-machines/windows/sizes.md).
 
-| &nbsp; | **IOPS** | **Aktarım hızı** | **Gecikme süresi** |
+| | **IOPS** | **İşleme hızı** | **Gecikme Süresi** |
 | --- | --- | --- | --- |
 | **Örnek senaryo** |Saniye başına çok yüksek işlem gerektiren kurumsal OLTP uygulaması. |Büyük miktarlarda veriyi işleyen kurumsal veri ambarı uygulaması. |Çevrimiçi oyun gibi Kullanıcı isteklerine anında yanıt gerektiren neredeyse gerçek zamanlı uygulamalar. |
-| Performans faktörleri | &nbsp; | &nbsp; | &nbsp; |
+| **Performans faktörleri** | &nbsp; | &nbsp; | &nbsp; |
 | **GÇ boyutu** |Daha küçük GÇ boyutu, ıOPS 'yi verir. |Daha yüksek performans elde etmek için daha büyük GÇ boyutu. | &nbsp;|
 | **VM boyutu** |Uygulama gereksiniminden daha büyük ıOPS sağlayan bir VM boyutu kullanın. |Uygulama gereksiniminden daha büyük aktarım hızı sınırı ile bir VM boyutu kullanın. |Uygulama gereksiniminden daha büyük ölçek sınırları sunan bir VM boyutu kullanın. |
 | **Disk boyutu** |Uygulama gereksiniminden daha büyük ıOPS sağlayan bir disk boyutu kullanın. |Uygulama gereksiniminden daha büyük aktarım hızı sınırı ile disk boyutu kullanın. |Uygulama gereksiniminden daha büyük ölçek sınırları sunan bir disk boyutu kullanın. |
@@ -142,7 +142,7 @@ GÇ boyutu, daha önemli faktörlerden biridir. GÇ boyutu, uygulamanız tarafı
 
 Bazı uygulamalar, bazı uygulamalar olmasa da bunun GÇ boyutunu değiştirmelerini sağlar. Örneğin, SQL Server en iyi GÇ boyutunu belirler ve bunu değiştirmek için kullanıcılara herhangi bir KBS sağlamaz. Diğer yandan, Oracle, veritabanı [ \_ blok \_ boyutu](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar ve bu, veritabanının g/ç istek boyutunu yapılandırabilirsiniz.
 
-GÇ boyutunu değiştirmenize izin verilmeyen bir uygulama kullanıyorsanız, uygulamanızla en uygun performans KPI 'sini iyileştirmek için bu makaledeki yönergeleri kullanın. Örneğin,
+GÇ boyutunu değiştirmenize izin verilmeyen bir uygulama kullanıyorsanız, uygulamanızla en uygun performans KPI 'sini iyileştirmek için bu makaledeki yönergeleri kullanın. Örneğin:
 
 * OLTP uygulaması milyonlarca küçük ve rastgele GÇ isteği oluşturur. Bu GÇ isteği türlerini işlemek için, uygulama altyapınızı daha yüksek ıOPS 'yi almak üzere tasarlamanız gerekir.  
 * Veri ambarı uygulaması büyük ve sıralı GÇ istekleri üretir. Bu GÇ isteği türlerini işlemek için, uygulama altyapınızı daha yüksek bant genişliği veya aktarım hızı sağlamak üzere tasarlamanız gerekir.
@@ -265,7 +265,7 @@ Premium depolama veri disklerinde ReadOnly önbelleğe alma yapılandırarak, d�
 *ReadWrite*  
 Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir. Kısa süre önce veri disklerinde de ReadWrite önbelleği desteği ekledik. Okuma önbelleği kullanıyorsanız, verileri önbellekten kalıcı disklere yazmak için uygun bir yola sahip olmanız gerekir. Örneğin, SQL Server önbelleğe alınan verileri kendi kendine kalıcı depolama disklerine yazmayı işler. Gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleği kullanmak, VM kilitlenirse veri kaybına yol açabilir.
 
-*Yok*  
+*Hiçbiri*  
 Şu anda **hiçbiri** yalnızca veri disklerinde desteklenir. İşletim sistemi disklerinde desteklenmez. Bir işletim sistemi diskinde **hiçbiri** ayarlarsanız, bunu dahili olarak geçersiz kılar ve **salt okunur**olarak ayarlar.
 
 Örnek olarak, aşağıdaki işlemleri yaparak Premium depolamada çalışan SQL Server için bu yönergeleri uygulayabilirsiniz.

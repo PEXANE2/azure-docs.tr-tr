@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488808"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218160"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -28,20 +28,20 @@ VNet ile VNet tümleştirmesini aynı bölgede kullandığınızda, aşağıdaki
 
 Varsayılan olarak, uygulamanız yalnızca sanal ağınıza RFC1918 trafiği yönlendirir. Tüm giden trafiğinizi sanal ağınıza yönlendirmek istiyorsanız WEBSITE_VNET_ROUTE_ALL uygulama ayarını uygulamanıza uygulayın. Uygulama ayarını yapılandırmak için:
 
-1. Uygulama portalınızdaki **yapılandırma** Kullanıcı arabirimine gidin. **Yeni uygulama ayarı**seçin.
+1. Uygulama portalınızdaki **yapılandırma** Kullanıcı arabirimine gidin. **Yeni uygulama ayarı**'nı seçin.
 1. **Ad** kutusuna **WEBSITE_VNET_ROUTE_ALL** girin ve **değer** kutusuna **1** yazın.
 
    ![Uygulama ayarı sağla][4]
 
 1. **Tamam**’ı seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, tümleştirme alt ağınıza uygulanan NSG 'ler ve UDRs 'ye tabidir. Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, trafiği başka bir yere göndermek için yollar sağlamazsanız, giden adresleriniz hala uygulama özelliklerinde listelenen giden adreslerdir.
 
 Aynı bölgedeki sanal ağlar ile VNet tümleştirmesi kullanımıyla ilgili bazı sınırlamalar vardır:
 
 * Genel eşleme bağlantıları genelindeki kaynaklara ulaşıamazsınız.
-* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni Azure App Service ölçek birimlerinden kullanılabilir.
+* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni Azure App Service ölçek birimlerinden kullanılabilir. Bu, *uygulamanızın bir PremiumV2 fiyatlandırma katmanında çalıştırılması gerektiğini*, yalnızca PremiumV2 seçeneğinin kullanılabildiği bir App Service planında çalışması gerektiğini (Yani bu VNET tümleştirme özelliğinin de kullanılabilir olduğu daha yeni bir ölçek birimi olduğunu gösterir) unutmayın.
 * Tümleştirme alt ağı yalnızca bir App Service planı tarafından kullanılabilir.
 * Özelliği, bir App Service Ortamı olan yalıtılmış plan uygulamaları tarafından kullanılamaz.
 * Bu özellik, bir Azure Resource Manager VNet 'te 32 adresi veya daha büyük bir/27 veya daha büyük olmayan kullanılmayan bir alt ağ gerektirir.

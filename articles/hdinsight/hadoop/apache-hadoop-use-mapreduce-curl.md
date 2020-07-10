@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076377"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207714"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>REST kullanarak HDInsight üzerinde Apache Hadoop MapReduce işleri çalıştırma
 
@@ -22,7 +22,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 > [!NOTE]  
 > Linux tabanlı Hadoop sunucuları kullanmayı zaten biliyorsanız, ancak HDInsight 'a yeni bir adım daha sahipseniz [HDInsight 'Ta Linux tabanlı Apache Hadoop hakkında bilmeniz](../hdinsight-hadoop-linux-information.md) gerekenler bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -61,7 +61,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 
     Aşağıdaki JSON 'a benzer bir yanıt alırsınız:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,9 +83,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
      * **Class**: MapReduce mantığını içeren sınıf
      * **arg**: MapReduce işine geçirilecek bağımsız değişkenler. Bu durumda, giriş metin dosyası ve çıkış için kullanılan dizin
 
-    Bu komut, işin durumunu denetlemek için kullanılabilecek bir iş KIMLIĞI döndürmelidir:
-
-       job_1415651640909_0026
+    Bu komut, işin durumunu denetlemek için kullanılabilecek bir iş KIMLIĞI döndürmelidir: `job_1415651640909_0026` .
 
 1. İşin durumunu denetlemek için aşağıdaki komutu kullanın. Değerini, `JOBID` önceki adımda döndürülen **Gerçek** değer ile değiştirin. **JQ** 'ın yerini gereken şekilde gözden geçirin.
 
@@ -116,7 +114,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
 
     Aşağıdaki JSON 'a benzer bir yanıt alırsınız:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ MapReduce işlerini HDInsight kümesindeki bir Apache Hadoop üzerinde çalışt
     * **Class**: MapReduce mantığını içeren sınıf
     * **arg**: MapReduce işine geçirilecek bağımsız değişkenler. Bu durumda, giriş metin dosyası ve çıkış için kullanılan dizin
 
-   Bu komut, işin durumunu denetlemek için kullanılabilecek bir iş KIMLIĞI döndürmelidir:
-
-       job_1415651640909_0026
+   Bu komut, işin durumunu denetlemek için kullanılabilecek bir iş KIMLIĞI döndürmelidir: `job_1415651640909_0026` .
 
 1. İşin durumunu denetlemek için şu komutu kullanın:
 

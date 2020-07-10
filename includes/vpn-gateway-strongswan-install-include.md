@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,19 +8,17 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ddab6927044ce638e50ff3ad79aa3c35d046c820
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d0e171807985deaebe8faa625d6b767c2a3efd7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69520891"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218189"
 ---
 Aşağıdaki adımlar için aşağıdaki yapılandırma kullanılmıştır:
 
-  | | |
-  |---|---|
-  |Bilgisayar| Ubuntu Server 18.04|
-  |Bağımlılıklar| Strongswan istemcisi ile |
+- Bilgisayar: Ubuntu Server 18,04
+- Bağımlılıklar: strongSwan
 
 
 Gerekli Strongswa yapılandırmasını yüklemek için aşağıdaki komutları kullanın:

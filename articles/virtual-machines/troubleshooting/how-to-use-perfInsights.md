@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847456"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207709"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
 
@@ -76,7 +76,7 @@ Bu senaryoda, bir ağ izleme ile birlikte özel bir performans sayacı yakalama 
 | IOPS         | Veri Isteği/sn             |
 |              | Okuma Isteği/sn             |
 |              | Yazma Isteği/sn            |
-| Gecikme süresi      | Ort. sn/veri Isteği         |
+| Gecikme Süresi      | Ort. sn/veri Isteği         |
 |              | Ort. sn/okuma                 |
 |              | Ort. sn/yazma                |
 | GÇ boyutu      | Ort. bayt/veri Isteği       |
@@ -101,9 +101,8 @@ Gelişmiş bir performans analizi çalıştırdığınızda, paralel olarak çal
 
 Windows VM, diskler veya depolama havuzları yapılandırması, performans sayaçları, Günlükler ve çeşitli izlemeler hakkında bilgiler toplanır. Bu, kullandığınız performans senaryosuna bağlıdır. Ayrıntılar aşağıdaki tabloda verilmiştir:
 
-|Toplanan veriler                              |  |  | Performans senaryoları |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Hızlı performans analizi | Karşılaştırmalı | Performans Analizi | Azure dosyaları Analizi | Gelişmiş performans analizi |
+| Toplanan veriler | Hızlı performans analizi | Karşılaştırmalı | Performans Analizi | Azure dosyaları Analizi | Gelişmiş performans analizi |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | Olay günlüklerinden bilgi       | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
 | Sistem bilgileri                | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
 | Birim eşleme                        | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |

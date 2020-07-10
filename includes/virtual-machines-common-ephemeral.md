@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d712e4eecb930b52a519a1aaddf97c744a24ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112046"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218107"
 ---
 Geçici işletim sistemi diskleri, yerel sanal makine (VM) depolama alanı üzerinde oluşturulur ve uzak Azure depolama 'ya kaydedilmez. Kısa ömürlü işletim sistemi diskleri, uygulamaların tek tek VM hatalarından dayanıklı olduğu, ancak VM dağıtım zamanından daha fazla etkilediği veya tek tek sanal makine örneklerinin yeniden oluşturulduğu durum bilgisiz iş yükleri için iyi çalışır. Kısa ömürlü IŞLETIM sistemi diski ile işletim sistemi diskine daha hızlı okuma/yazma gecikme süresi ve daha hızlı VM yeniden görüntüsü alırsınız. 
  
@@ -30,17 +30,17 @@ Kısa ömürlü disklerin temel özellikleri şunlardır:
  
 Kalıcı ve kısa ömürlü işletim sistemi diskleri arasındaki önemli farklılıklar:
 
-|                             | Kalıcı işletim sistemi diski                          | Kısa Ömürlü İşletim Sistemi Diski                              |    |
+|                             | Kalıcı işletim sistemi diski                          | Kısa Ömürlü İşletim Sistemi Diski                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| İşletim sistemi diski için boyut sınırı      | 2 TiB                                                                                        | VM boyutu için önbellek boyutu veya 2TiB, hangisi daha küçüktür. **GiB 'deki önbellek boyutu**için bkz. [DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)ve [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
-| Desteklenen VM boyutları          | Tümü                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, ı                                               |
-| Disk türü desteği           | Yönetilen ve yönetilmeyen işletim sistemi diski                                                                | Yalnızca yönetilen işletim sistemi diski                                                               |
-| Bölge desteği              | Tüm bölgeler                                                                                  | Tüm bölgeler                              |
-| Veri kalıcılığı            | IŞLETIM sistemi diskine yazılan işletim sistemi diski verileri Azure depolama 'da depolanıyor                                  | İşletim sistemi diskine yazılan veriler yerel VM depolama alanında depolanır ve Azure Storage 'da kalıcı değildir. |
-| Serbest bırakılmış durumu durdur      | VM 'Ler ve ölçek kümesi örnekleri, durdurma-serbest bırakıldı durumundan durdurulup yeniden başlatılabilir | VM 'Ler ve ölçek kümesi örnekleri durdurulamıyor-serbest bırakılamaz                                  |
-| Özelleştirilmiş işletim sistemi diski desteği | Evet                                                                                          | Hayır                                                                                 |
-| İşletim sistemi diski yeniden boyutlandırma              | VM oluşturma sırasında ve VM durdurulduktan sonra desteklenir-serbest bırakıldı                                | Yalnızca VM oluşturma sırasında desteklenir                                                  |
-| Yeni bir VM boyutuna yeniden boyutlandırma   | İşletim sistemi diski verileri korunur                                                                    | İşletim sistemi diskindeki veriler silinir, işletim sistemi yeniden sağlandı                                      |
+| **İşletim sistemi diski için boyut sınırı**      | 2 TiB                                                                                        | VM boyutu için önbellek boyutu veya 2TiB, hangisi daha küçüktür. **GiB 'deki önbellek boyutu**için bkz. [DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)ve [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
+| **Desteklenen VM boyutları**          | Tümü                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, ı                                               |
+| **Disk türü desteği**           | Yönetilen ve yönetilmeyen işletim sistemi diski                                                                | Yalnızca yönetilen işletim sistemi diski                                                               |
+| **Bölge desteği**              | Tüm bölgeler                                                                                  | Tüm bölgeler                              |
+| **Veri kalıcılığı**            | IŞLETIM sistemi diskine yazılan işletim sistemi diski verileri Azure depolama 'da depolanıyor                                  | İşletim sistemi diskine yazılan veriler yerel VM depolama alanında depolanır ve Azure Storage 'da kalıcı değildir. |
+| **Serbest bırakılmış durumu durdur**      | VM 'Ler ve ölçek kümesi örnekleri, durdurma-serbest bırakıldı durumundan durdurulup yeniden başlatılabilir | VM 'Ler ve ölçek kümesi örnekleri durdurulamıyor-serbest bırakılamaz                                  |
+| **Özelleştirilmiş işletim sistemi diski desteği** | Evet                                                                                          | Hayır                                                                                 |
+| **İşletim sistemi diski yeniden boyutlandırma**              | VM oluşturma sırasında ve VM durdurulduktan sonra desteklenir-serbest bırakıldı                                | Yalnızca VM oluşturma sırasında desteklenir                                                  |
+| **Yeni bir VM boyutuna yeniden boyutlandırma**   | İşletim sistemi diski verileri korunur                                                                    | İşletim sistemi diskindeki veriler silinir, işletim sistemi yeniden sağlandı                                      |
 
 ## <a name="size-requirements"></a>Boyut gereksinimleri
 

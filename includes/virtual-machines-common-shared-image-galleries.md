@@ -1,18 +1,18 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84317667"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218266"
 ---
 Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -31,7 +31,7 @@ Korumanız gereken çok sayıda görüntünüz varsa ve bunları şirketiniz gen
 
 Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir:
 
-| Kaynak | Description|
+| Kaynak | Açıklama|
 |----------|------------|
 | **Görüntü kaynağı** | Bu, bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılabilecek bir kaynaktır. Görüntü kaynağı, başka bir görüntü galerisinde [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images), yönetilen bir görüntü, anlık görüntü veya görüntü sürümü olan mevcut BIR Azure VM olabilir. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
@@ -84,20 +84,7 @@ Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi du
 
 Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için aboneliğinizi beyaz listeye almanız gerekir. Beyaz liste istemek için şuraya gidin:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-
-| Kaynak bölgeler        |                   |                    |                    |
-| --------------------- | ----------------- | ------------------ | ------------------ |
-| Orta Avustralya     | Doğu Çin        | Güney Hindistan        | Batı Avrupa        |
-| Orta Avustralya 2   | Çin Doğu 2      | Güneydoğu Asya     | Güney Birleşik Krallık           |
-| Doğu Avustralya        | Kuzey Çin       | Doğu Japonya         | Batı Birleşik Krallık            |
-| Güneydoğu Avustralya   | Çin Kuzey 2     | Batı Japonya         | Orta US DoD     |
-| Güney Brezilya          | Doğu Asya         | Güney Kore - Orta      | Doğu US DoD        |
-| Orta Kanada        | Doğu ABD           | Güney Kore - Güney        | US Gov Arizona     |
-| Doğu Kanada           | Doğu ABD 2         | Orta Kuzey ABD   | US Gov Texas       |
-| Orta Hindistan         | EUAP Doğu ABD 2    | Kuzey Avrupa       | US Gov Virginia    |
-| Orta ABD            | Orta Fransa    | Orta Güney ABD   | Batı Hindistan         |
-| EUAP Orta ABD       | Güney Fransa      | Orta Batı ABD    | Batı ABD            |
-|                       |                   |                    | Batı ABD 2          |
+> Avustralya Orta, Çin Doğu, Güney Hindistan, Batı Avrupa, Avustralya Orta 2, Çin Doğu 2, Güneydoğu Asya, UK Güney, Avustralya Doğu, Çin Kuzey, Japonya Doğu, UK Batı, Avustralya Güneydoğu, Çin Kuzey 2, Japonya Batı, US DOD orta, Brezilya Güney, Doğu Asya, Kore Orta, US DOD Doğu, Kanada Orta, Doğu ABD, Kore Güney, US Gov Arizona, Kanada Doğu, Doğu ABD 2, Orta Kuzey ABD , US Gov Teksas, Orta Hindistan, Doğu ABD 2 EUAP, Kuzey Avrupa, US Gov Virginia, Orta ABD, Fransa Orta, Orta Güney ABD, Batı Hindistan, Orta ABD EUAP, Fransa Güney, Orta Batı ABD, Batı ABD, Batı ABD 2 |
 
 
 
@@ -139,13 +126,13 @@ Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma z
 
 ![Görüntüleri nasıl çoğaltacağınızı gösteren grafik](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Erişim
 
 Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
 
 | Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
+| Paylaşılan Görüntü Galerisi | Evet                  | Yes          | Yes                  |
 | Görüntü Tanımı     | Hayır                   | Evet          | Yes                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
@@ -162,12 +149,12 @@ Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alın
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Description
+- Açıklama
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Description
+- Açıklama
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -218,7 +205,7 @@ Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler
 
 Azure portal erişiminiz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 1. Sayfayı aşağı kaydırın ve **tüm kaynaklar**' ı seçin.
 1. Tüm kaynakları listelemek istediğiniz tüm abonelikleri seçin.
 1. **Paylaşılan görüntü Galerisi**türündeki kaynakları arayın.

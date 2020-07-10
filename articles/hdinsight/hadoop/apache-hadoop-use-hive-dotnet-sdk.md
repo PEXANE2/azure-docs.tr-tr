@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 12d3762889253e2e3d359c6bf44bd166482c69f3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f1927d44daf49d938d2c43ce9de02cb1dbfb735f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076547"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207757"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK kullanarak Apache Hive sorguları çalıştırma
 
@@ -43,7 +43,9 @@ HDInsight .NET SDK 'Sı .NET istemci kitaplıkları sağlar. Bu, .NET 'teki HDIn
 
 1. NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
 
-        Install-Package Microsoft.Azure.Management.HDInsight.Job
+    ```console
+    Install-Package Microsoft.Azure.Management.HDInsight.Job
+    ```
 
 1. Değişkenlerin değerlerini başlatmak için aşağıdaki kodu düzenleyin: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName` . Ardından, düzeltilen kodu Visual Studio 'daki tüm **program.cs** içeriği olarak kullanın.
 

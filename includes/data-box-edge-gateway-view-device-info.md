@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3312d1ec7c2535e103cf8959599c0d4c3014f520
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561764"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218101"
 ---
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
 2. `Get-HcsApplianceInfo`Cihazınızın bilgilerini almak için kullanın.
@@ -44,15 +44,15 @@ ms.locfileid: "82561764"
     ```
 
     Bazı önemli cihaz bilgilerini özetleyen bir tablo aşağıda verilmiştir:
-    
-    | Parametre                             | Açıklama                                                                                                                                                  |   |
-    |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | Cihaz dağıtımı sırasında yerel Web Kullanıcı arabirimi aracılığıyla yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır.  |   |
-    | SerialNumber                   | Cihaz seri numarası, fabrikada atanan benzersiz bir sayıdır.                                                                             |   |
-    | Model                          | Azure Stack Edge veya Data Box Gateway cihazınız için model. Model, Data Box Gateway için Azure Stack Edge ve sanal için fiziksel bir modeldir.                   |   |
-    | Daha önce yazılım sürümü        | Cihaz yazılımı sürümüne karşılık gelen kolay dize. Önizleme çalıştıran bir sistem için, kolay yazılım sürümü Data Box Edge 1902 olur. |   |
-    | HcsVersion                     | Cihazınızda çalışan HCS yazılım sürümü. Örneğin, 1902 Data Box Edge karşılık gelen HCS yazılım sürümü 1.4.771.324 ' dir.            |   |
-    | Localcapacityınmb              | Cihazın megabit 'daki toplam yerel kapasitesi.                                                                                                        |   |
-    | IsRegistered                   | Bu değer, cihazınızın hizmetle etkinleştirilmiş olup olmadığını gösterir.                                                                                         |   |
+
+    | Parametre | Açıklama |
+    |-----------|-------------|
+    | FriendlyName                   | Cihaz dağıtımı sırasında yerel Web Kullanıcı arabirimi aracılığıyla yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır.  |
+    | SerialNumber                   | Cihaz seri numarası, fabrikada atanan benzersiz bir sayıdır.                                                                             |
+    | Model                          | Azure Stack Edge veya Data Box Gateway cihazınız için model. Model, Data Box Gateway için Azure Stack Edge ve sanal için fiziksel bir modeldir.                   |
+    | Daha önce yazılım sürümü        | Cihaz yazılımı sürümüne karşılık gelen kolay dize. Önizleme çalıştıran bir sistem için, kolay yazılım sürümü Data Box Edge 1902 olur. |
+    | HcsVersion                     | Cihazınızda çalışan HCS yazılım sürümü. Örneğin, 1902 Data Box Edge karşılık gelen HCS yazılım sürümü 1.4.771.324 ' dir.            |
+    | Localcapacityınmb              | Cihazın megabit 'daki toplam yerel kapasitesi.                                                                                                        |
+    | IsRegistered                   | Bu değer, cihazınızın hizmetle etkinleştirilmiş olup olmadığını gösterir.                                                                                         |
 
 

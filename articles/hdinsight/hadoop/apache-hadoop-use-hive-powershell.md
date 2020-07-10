@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 653a481efeeaac83215b1e46309944efab924d2e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5588920c860de09ea1561cf5ed4b28a08085438c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076496"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207771"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell kullanarak Apache Hive sorguları çalıştırma
 
@@ -52,16 +52,20 @@ Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için b
 
 2. Yeni bir **Azure PowerShell** komut istemi açın. Dizini dosyanın konumuyla değiştirin `hivejob.ps1` , ardından betiği çalıştırmak için aşağıdaki komutu kullanın:
 
-        .\hivejob.ps1
+    ```azurepowershell
+    .\hivejob.ps1
+    ```
 
     Betik çalıştırıldığında, küme adını ve HTTPS/Küme Yöneticisi hesabı kimlik bilgilerini girmeniz istenir. Ayrıca Azure aboneliğinizde oturum açmanız istenebilir.
 
 3. İş tamamlandığında, aşağıdaki metne benzer bilgiler döndürür:
 
-        Display the standard output...
-        2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
-        2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
-        2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```output
+    Display the standard output...
+    2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
+    2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
+    2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```
 
 4. Daha önce belirtildiği gibi, `Invoke-Hive` bir sorgu çalıştırmak ve yanıt beklemek için kullanılabilir. Invoke-Hive nasıl çalıştığını görmek için aşağıdaki betiği kullanın:
 
@@ -69,9 +73,11 @@ Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için b
 
     Çıktı aşağıdaki metin gibi görünür:
 
-        2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
-        2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
-        2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```output
+    2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
+    2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
+    2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```
 
    > [!NOTE]  
    > Daha uzun HiveQL sorguları için Azure PowerShell **burada-dizeler** cmdlet 'Ini veya hiveql betik dosyalarını kullanabilirsiniz. Aşağıdaki kod parçacığında, `Invoke-Hive` bir HiveQL betik dosyasını çalıştırmak için cmdlet 'inin nasıl kullanılacağı gösterilmektedir. HiveQL betik dosyasının wasbs://'e yüklenmesi gerekir.
