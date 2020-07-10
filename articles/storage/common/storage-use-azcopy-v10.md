@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504483"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142997"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -31,7 +31,7 @@ AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi ger
 
 - [Windows 64-bit](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32-bit](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 Bu dosyalar bir ZIP dosyası (Windows ve Mac) veya bir tar dosyası (Linux) olarak sıkıştırılır. IK dosyasını Linux üzerinde indirip sıkıştırmasını açmak için Linux dağıtımına yönelik belgelere bakın.
@@ -65,7 +65,7 @@ Bu tabloyu kılavuz olarak kullan:
 
 | Depolama türü | Şu anda desteklenen yetkilendirme yöntemi |
 |--|--|
-|**BLOB depolama** | Azure AD & SAS |
+|**Blob depolama** | Azure AD & SAS |
 |**BLOB depolama (hiyerarşik ad alanı)** | Azure AD & SAS |
 |**Dosya depolama** | Yalnızca SAS |
 
@@ -121,7 +121,7 @@ azcopy login --tenant-id=<tenant-id>
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
-![Bir kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
+![Kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra, tarayıcı penceresini kapatabilir ve AzCopy kullanmaya başlayabilirsiniz.
 
@@ -255,7 +255,7 @@ Kimliğinizi doğruladıktan veya bir SAS belirteci edindikten sonra, dosyaları
 
 - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 
-- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 
 - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
 

@@ -23,11 +23,11 @@ ms.locfileid: "80879231"
 
 1. Tüm gerekli ayarları girin:
 
-    |Adı|Amaç|
+    |Ad|Amaç|
     |--|--|
     |Abonelik adı| kaynak için faturalandırılacak abonelik.|
     |Kaynak grubu| Seçtiğiniz veya oluşturduğunuz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır.|
-    |Adı| Yazma ve tahmin uç noktası sorgularınız için özel alt etki alanı olarak kullanılan özel bir ad.|
+    |Ad| Yazma ve tahmin uç noktası sorgularınız için özel alt etki alanı olarak kullanılan özel bir ad.|
     |Yazma konumu|Modelinizle ilişkili bölge.|
     |Fiyatlandırma Katmanı yazma|Fiyatlandırma Katmanı, saniye başına en fazla işlemi ve ayı belirler.|
     |Çalışma zamanı konumu|Yayımlanmış tahmin uç noktası çalışma zamanı ile ilişkili bölge.|

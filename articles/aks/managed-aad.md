@@ -3,16 +3,16 @@ title: Azure Kubernetes hizmetinde Azure AD kullanma
 description: Azure Kubernetes hizmetinde (AKS) Azure AD 'yi nasıl kullanacağınızı öğrenin
 services: container-service
 manager: gwallace
-author: mlearned
+author: TomGeske
 ms.topic: article
-ms.date: 06/25/2020
-ms.author: mlearned
-ms.openlocfilehash: f22b79cb8a730fb9c28dd1a208ab672473218b79
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105957"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166510"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-yönetilen Azure Active Directory Tümleştirmesi (Önizleme)
 
@@ -26,10 +26,6 @@ AKS tarafından yönetilen Azure AD tümleştirmesi, kullanıcıların daha önc
 Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (RBAC) bir kullanıcının kimliğine veya dizin grubu üyeliğine göre yapılandırabilir. Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][open-id-connect].
 
 [Azure Active Directory tümleştirme kavramları BELGELERINDEKI](concepts-identity.md#azure-active-directory-integration)AAD tümleştirme akışı hakkında daha fazla bilgi edinin.
-
-## <a name="limitations"></a>Sınırlamalar
-
-* Şu anda mevcut bir AKS Azure AD ile tümleşik kümesini yeni AKS tarafından yönetilen Azure AD deneyimine yükseltemezsiniz.
 
 > [!IMPORTANT]
 > AKS Önizleme özellikleri self servis, kabul etme esasına göre sunulmaktadır. Önizlemeler "olduğu gibi" ve "kullanılabildiği gibi" verilmiştir ve hizmet düzeyi anlaşmalarından ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteği tarafından kısmen bir en iyi performans kapsamında ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Daha fazla bilgi için aşağıdaki destek makalelerine bakın:

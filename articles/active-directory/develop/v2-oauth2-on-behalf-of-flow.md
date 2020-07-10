@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/8/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553550"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165881"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform ve OAuth 2,0-adına akış
 
@@ -47,7 +47,7 @@ Aşağıdaki adımlar, OBO akışını oluşturur ve aşağıdaki diyagramın ya
 > [!NOTE]
 > Bu senaryoda, orta katman hizmeti kullanıcının aşağı akış API 'sine erişim iznini almak için Kullanıcı etkileşimi yoktur. Bu nedenle, aşağı akış API 'sine erişim izni verme seçeneği, kimlik doğrulama sırasında izin adımının bir parçası olarak önde sunulur. Uygulamanızı için nasıl ayarlayacağınızı öğrenmek için bkz. [Orta katmanlı uygulama için izin](#gaining-consent-for-the-middle-tier-application)alma.
 
-## <a name="service-to-service-access-token-request"></a>Hizmetten hizmete erişim belirteci isteği
+## <a name="middle-tier-access-token-request"></a>Orta katman erişim belirteci isteği
 
 Erişim belirteci istemek için, kiracıya özgü Microsoft Identity platform belirteci uç noktasında aşağıdaki parametrelerle bir HTTP GÖNDERISI yapın.
 
@@ -66,7 +66,7 @@ Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci 
 | `grant_type` | Gerekli | Belirteç isteği türü. JWT kullanan bir istek için değer olmalıdır `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Gerekli | [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
 | `client_secret` | Gerekli | Azure portal Uygulama kayıtları sayfasında uygulamanız için oluşturduğunuz istemci gizli anahtarı. |
-| `assertion` | Gerekli | İstekte kullanılan belirtecin değeri.  Bu belirteç, bu OBO isteğini (alan tarafından belirtilen uygulama) yapan uygulamanın hedef kitlesi olmalıdır `client-id` . |
+| `assertion` | Gerekli | Orta katman API 'sine gönderilen erişim belirteci.  Bu belirteç, `aud` Bu OBO isteğini yapan uygulamanın (alan tarafından belirtilen uygulama) bir hedef kitle () talebine sahip olmalıdır `client-id` . Uygulamalar, farklı bir uygulama için belirteç kullanamaz (yani, bir istemci bir API 'YI MS Graph için bir belirteç gönderirse, bu API 'yi OBO kullanarak kullanamaz.  Bunun yerine belirteci reddetmesi gerekir).  |
 | `scope` | Gerekli | Belirteç isteği için bir alan ayrılmış kapsam listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md). |
 | `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin olarak ayarlanması gerekir `on_behalf_of` . |
 
@@ -99,7 +99,7 @@ Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki p
 | `client_id` | Gerekli |  [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
 | `client_assertion_type` | Gerekli | Değer olmalıdır `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
 | `client_assertion` | Gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web belirteci). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için bkz. [sertifika kimlik bilgileri](active-directory-certificate-credentials.md). |
-| `assertion` | Gerekli | İstekte kullanılan belirtecin değeri. |
+| `assertion` | Gerekli |  Orta katman API 'sine gönderilen erişim belirteci.  Bu belirteç, `aud` Bu OBO isteğini yapan uygulamanın (alan tarafından belirtilen uygulama) bir hedef kitle () talebine sahip olmalıdır `client-id` . Uygulamalar, farklı bir uygulama için belirteç kullanamaz (yani, bir istemci bir API 'YI MS Graph için bir belirteç gönderirse, bu API 'yi OBO kullanarak kullanamaz.  Bunun yerine belirteci reddetmesi gerekir).  |
 | `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin olarak ayarlanması gerekir `on_behalf_of` . |
 | `scope` | Gerekli | Belirteç isteğine yönelik kapsamların boşlukla ayrılmış listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md).|
 
@@ -125,7 +125,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Hizmetten hizmete erişim belirteci yanıtı
+## <a name="middle-tier-access-token-response"></a>Orta katman erişim belirteci yanıtı
 
 Başarı yanıtı, aşağıdaki parametrelere sahip bir JSON OAuth 2,0 yanıtdır.
 

@@ -7,17 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488758"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141945"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
 Akış girişi verilerinizde gerçek zamanlı Puanlama ve tahmin işlemleri yapmak için Azure Stream Analytics işlerinizde Kullanıcı tanımlı bir işlev (UDF) olarak makine öğrenimi modelleri uygulayabilirsiniz. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) , modellerinizi geliştirmek, eğitme ve dağıtmak Için TensorFlow, scikit-öğren veya PyTorch gibi popüler açık kaynak araçlarından birini kullanmanıza olanak sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden önce aşağıdaki adımları uygulayın:
 
@@ -27,7 +28,7 @@ Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden 
 
 3. Web hizmetinizin JSON seri hale getirilmiş verileri kabul ettiğinden ve döndürdüğünden emin olun.
 
-4. Modelinizi [Azure Kubernetes hizmetinde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) yüksek ölçekli üretim dağıtımları için dağıtın. Web hizmeti, işinizden gelen istek sayısını işleyemediğinde, Stream Analytics işinizin performansı düşecek ve bu da gecikmeyi etkiler. Azure Container Instances dağıtılan modeller yalnızca Azure portal kullandığınızda desteklenir.
+4. Modelinizi [Azure Kubernetes hizmetinde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) yüksek ölçekli üretim dağıtımları için dağıtın. Web hizmeti, işinizden gelen istek sayısını işleyemediğinde, Stream Analytics işinizin performansı düşecek ve bu da gecikmeyi etkiler. Azure Container Instances dağıtılan modeller yalnızca Azure portal kullandığınızda desteklenir. [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) kullanılarak oluşturulan modeller henüz Stream Analytics desteklenmemektedir.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>İşinize bir makine öğrenme modeli ekleyin
 

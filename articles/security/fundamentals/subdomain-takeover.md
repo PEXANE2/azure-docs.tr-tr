@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610872"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145980"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
@@ -45,7 +45,7 @@ Bir alt etki alanı için ortak senaryo:
 
 1. Site silindikten hemen sonra, bir tehdit aktör eksik siteyi bulur ve üzerinde kendi Web sitesini oluşturur `app-contogreat-dev-001.azurewebsites.net` .
 
-    Artık, için amaçlanan trafik `greatapp.contoso.com` tehdit aktörün Azure sitesine gitmektedir ve tehdit aktör, görüntülenen içeriğin denetimidir. 
+    Artık, için amaçlanan trafik `greatapp.contoso.com` tehdit aktörün Azure sitesine ve tehdit aktör 'in görüntülenen içeriğin denetiminde gitmesidir. 
 
     Saldırgan DNS ile kullanım dışı bırakıldı ve contoso 'nun "GreatApp" alt etki alanı, alt etki alanının bir kurbanı oldu. 
 
@@ -61,7 +61,7 @@ Saldırgan DNS girişleri, tehdit aktörlerini kötü amaçlı bir Web sitesi ve
 
 - Alt **etki alanının içeriği üzerinde denetim kaybı** -kuruluşunuzun içeriğini güvenli hale getirme sorunu, Ayrıca marka hasarı ve güven kaybı hakkında daha fazla bilgi.
 
-- Çok fazla **ziyaretçi olmadan tanımlama bilgisi alma** -Web uygulamalarının, oturum tanımlama bilgilerini alt etki alanlarına (*. contoso.com) sunmaları yaygındır, bu nedenle herhangi bir alt etki alanı bunlara erişebilir. Tehdit aktörleri, gerçek bir arama sayfası oluşturmak, kullanıcıların bunu ziyaret etmesini ve tanımlama bilgilerinin (hatta güvenli tanımlama bilgileri) sayması için bir alt etki alanı kullanabilirler. Yaygın bir yanıltıcı, SSL sertifikalarının kullanılması, sitenizi ve kullanıcılarınızın tanımlama bilgilerini bir yük devrkaynağından korumakla aynıdır. Ancak tehdit aktör, geçerli bir SSL sertifikası için uygulama ve alma için ele geçirilmiş alt etki alanını kullanabilir. Böylece, güvenli tanımlama bilgilerine erişim izni verir ve kötü amaçlı sitenin yasallığını daha da artırabilir.
+- Çok fazla **ziyaretçi olmadan tanımlama bilgisi alma** -Web uygulamalarının, oturum tanımlama bilgilerini alt etki alanlarına (*. contoso.com) sunmaları yaygındır, bu nedenle herhangi bir alt etki alanı bunlara erişebilir. Tehdit aktörleri, gerçek bir arama sayfası oluşturmak, kullanıcıların bunu ziyaret etmesini ve tanımlama bilgilerinin (hatta güvenli tanımlama bilgileri) sayması için bir alt etki alanı kullanabilirler. Yaygın bir yanıltıcı, SSL sertifikalarının kullanılması, sitenizi ve kullanıcılarınızın tanımlama bilgilerini bir yük devrkaynağından korumakla aynıdır. Ancak tehdit aktör, geçerli bir SSL sertifikası için uygulama ve alma için ele geçirilmiş alt etki alanını kullanabilir. Geçerli SSL sertifikaları güvenli tanımlama bilgilerine erişim izni verir ve kötü amaçlı sitenin yasallığını daha da artırabilir.
 
 - **Kimlik avı kampanyaları** -gerçek-arayan alt etki alanları, kimlik avı kampanyalarda kullanılabilir. Bu, kötü amaçlı siteler için ve ayrıca, tehdit aktörün bilinen bir markasının meşru bir alt etki alanıyla ilgili e-postaları almasına imkan tanıyan MX kayıtları için geçerlidir.
 
@@ -78,14 +78,14 @@ Bugün size sunulan önleyici ölçüler aşağıda listelenmiştir.
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS diğer ad kayıtlarını kullanma
 
-Bir Azure kaynağına sahip bir DNS kaydının yaşam döngüsünü yakından bağlayarak Azure DNS [diğer ad kayıtları](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) , sallaştırılmış başvuruların oluşmasını engelleyebilir. Örneğin, bir genel IP adresini veya bir Traffic Manager profilini işaret etmek için bir diğer ad kaydı olarak nitelenen bir DNS kaydını göz önünde bulundurun. Bu temel alınan kaynakları silerseniz, DNS diğer ad kaydı boş bir kayıt kümesi haline gelir. Artık silinen kaynağa başvurmuyor. Diğer ad kayıtlarıyla neleri koruyabileceğiniz sınırlandırmalar olduğunu unutmayın. Bugün, liste şu şekilde sınırlıdır:
+Azure DNS [diğer ad kayıtları](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) , bir Azure kaynağı Ile bir DNS kaydı yaşam döngüsüne eşlenerek tehlikeden başvuruların oluşmasını engelleyebilir. Örneğin, bir genel IP adresini veya bir Traffic Manager profilini işaret etmek için bir diğer ad kaydı olarak nitelenen bir DNS kaydını göz önünde bulundurun. Bu temel alınan kaynakları silerseniz, DNS diğer ad kaydı boş bir kayıt kümesi haline gelir. Artık silinen kaynağa başvurmuyor. Diğer ad kayıtlarıyla neleri koruyabileceğiniz sınırlandırmalar olduğunu unutmayın. Bugün, liste şu şekilde sınırlıdır:
 
 - Azure Front Door
 - Traffic Manager profilleri
 - Azure Content Delivery Network (CDN) uç noktaları
 - Genel IP'ler
 
-Diğer ad kayıtlarıyla birlikte bulunan alt etki alanından korunabilecek kaynaklarınız varsa, günümüzde sınırlı hizmet sunumlarına rağmen bunu yapmanızı öneririz.
+Günümüzde sınırlı hizmet sunumlarına rağmen, mümkün olan her durumda alt etki alanı üzerinde savunmak için diğer ad kayıtlarını kullanmanızı öneririz.
 
 Azure DNS diğer ad kayıtlarının özellikleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) .
 
@@ -120,7 +120,7 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
         - **Var** : *. azurewebsites.NET veya *. cloudapp.Azure.com gibi Azure alt etki alanlarını işaret eden kaynaklar için DNS bölgelerinizi sorgulayın ( [Bu başvuru listesine](azure-domains.md)bakın).
         - **Kendı** DNS alt etki alanları 'nın hedeflediği tüm kaynakların sahip olduğunu doğrulayın.
 
-    - Azure tam etki alanı adı (FQDN) uç noktalarınızın ve uygulama sahiplerinin hizmet kataloğunu saklayın. Hizmet kataloğunuzu derlemek için aşağıdaki tablodaki parametrelerle aşağıdaki Azure Kaynak Grafiği sorgusunu çalıştırın:
+    - Azure tam etki alanı adı (FQDN) uç noktalarınızın ve uygulama sahiplerinin hizmet kataloğunu saklayın. Hizmet kataloğunuzu derlemek için aşağıdaki tablodaki parametrelerle aşağıdaki Azure Kaynak Grafiği (ARG) sorgusunu çalıştırın:
     
         >[!IMPORTANT]
         > **İzinler** -sorguyu tüm Azure aboneliklerinize erişimi olan bir kullanıcı olarak çalıştırın. 
@@ -139,9 +139,12 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
         
         Ayrıca, birden çok kaynak türünü birleştirebilirsiniz. Bu örnek sorgu Azure App Service **ve** Azure App Service yuvalardan kaynakları döndürür:
 
-        ```
+        ```azurepowershell
         Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
         ```
+
+
+        Bağımsız değişken sorgusu için hizmet başına parametreler:
 
         |Kaynak adı  |[ResourceType]  | [FQDNproperty]  |
         |---------|---------|---------|

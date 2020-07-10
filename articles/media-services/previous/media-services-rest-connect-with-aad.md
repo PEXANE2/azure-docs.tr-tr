@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295436"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166374"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>REST ile Media Services API'sine erişmek için Azure AD kimlik doğrulamasını kullanma
 
@@ -62,7 +62,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Media Services API 'sine erişmek için aşağıdaki veri noktalarını toplamanız gerekir.
 
-|Ayar|Örnek|Description|
+|Ayar|Örnek|Açıklama|
 |---|-------|-----|
 |Azure Active Directory kiracı etki alanı|microsoft.onmicrosoft.com|Azure AD, güvenli belirteç hizmeti (STS) uç noktası olarak şu biçim kullanılarak oluşturulmuştur: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Azure AD, kaynaklara erişmek için bir JWT yayınlar (bir erişim belirteci).|
 |REST API uç noktası|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Bu, uygulamanızdaki tüm Media Services REST API çağrılarının yapıldığı bitiş noktasıdır.|
@@ -137,8 +137,10 @@ Bu bölümde, bir JWT taşıyıcı belirteci (erişim belirteci) döndüren bir 
 
     Alternatif olarak, Postman penceresinin sağ tarafındaki **toplu düzenleme** bağlantısına tıklayın ve aşağıdaki kodu yapıştırın.
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. **Gövde** sekmesine basın.
 7. "Anahtar/değer" veri kılavuzunu kullanarak gövde bilgilerini girin (istemci KIMLIĞINI ve gizli değerleri değiştirin). 
@@ -147,10 +149,12 @@ Bu bölümde, bir JWT taşıyıcı belirteci (erişim belirteci) döndüren bir 
 
     Alternatif olarak, Postman penceresinin sağ tarafındaki **Toplu Düzenle** ' ye tıklayın ve aşağıdaki gövdeye yapıştırın (istemci kimliğini ve gizli değerleri değiştirin):
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. **Gönder**’e basın.
 
@@ -180,11 +184,13 @@ Bu bölümde, **Postman**kullanılarak **varlıklar** API 'sine nasıl erişebil
 5. Sağ taraftaki Postman penceresinde **toplu düzenleme** bağlantısı ' na tıklayın.
 6. Aşağıdaki üst bilgileri yapıştırın:
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. **Gönder**’e basın.
 

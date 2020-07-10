@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6809429b26eea30ca0569044634308d2e4dff9f7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025990"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147387"
 ---
 # <a name="about-virtual-hub-routing"></a>Sanal merkez yönlendirmesi hakkında
 
@@ -24,6 +24,10 @@ Yönlendirmeyi yapılandırmak için bkz. [sanal hub yönlendirmeyi yapılandır
 ## <a name="routing-concepts"></a><a name="concepts"></a>Yönlendirme kavramları
 
 Aşağıdaki bölümlerde, sanal hub yönlendirmesinde temel kavramlar açıklanır.
+
+> [!NOTE]
+> Hub yol tablosu, ilişkilendirme, yayma ve bir sanal ağ bağlantısı içindeki statik yolların bu yeni kavramlarından bazıları yine de kullanıma sunulmakta ve 3. adımda tamamlanmayı beklenebilir.
+>
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Merkez yol tablosu
 
@@ -59,10 +63,6 @@ Her sanal hub için bir **yol tablosu** da kullanılabilir. None yol tablosuna y
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Bir sanal ağ bağlantısında statik yolları yapılandırma
 
 Statik yolları yapılandırmak, bir sonraki atlama IP 'si aracılığıyla trafiği bir sanal hub 'a bağlı olan bir bağlı ağ VNet 'te sağlanan bir ağ sanal gereci (NVA) olabilecek bir mekanizma sağlar. Statik yol, bir yol adından, hedef ön eklerin listesinden ve bir sonraki atlama IP 'si ile oluşur.
-
-> [!NOTE]
-> Bir sanal ağ bağlantısı içindeki ilişkilendirme, yayma ve statik yollar için bu yeni kavramların bazıları yine de kullanıma alınıyor ve 3. adımda tamamlanmalıdır.
->
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Temel ve standart sanal WAN 'Lara, Ilişkilendirme ve yayma özelliği kümesinden önce rota tabloları
 

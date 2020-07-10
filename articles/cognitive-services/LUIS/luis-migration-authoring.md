@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055469"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145617"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -226,7 +226,7 @@ Uygulamalar üzerinde işbirliği yapıyorsanız ve bu uygulamalara bir tahmin/�
 ## <a name="troubleshooting-the-migration-process"></a>Geçiş işlemi sorunlarını giderme
 
 Geçiş yapmayı denediğinizde, ancak açılan listede Azure aboneliğinizi bulamıyorsanız:
-* Bilişsel hizmetler kaynakları oluşturma yetkisine sahip geçerli bir Azure aboneliğiniz olduğundan emin olun. [Azure Portal](https://ms.portal.azure.com) gidin ve aboneliğin durumunu denetleyin. Bir tane yoksa [ücretsiz deneme sürümü oluşturun](https://azure.microsoft.com/free/).
+* Bilişsel hizmetler kaynakları oluşturma yetkisine sahip geçerli bir Azure aboneliğiniz olduğundan emin olun. [Azure Portal](https://ms.portal.azure.com) gidin ve aboneliğin durumunu denetleyin. Bir tane yoksa, [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/cognitive-services/).
 * Geçerli aboneliğinizle ilişkili doğru kiracıda olduğunuzdan emin olun. Bu araç çubuğunda, Kiracılarınızın Avatarınızın soluna kadar olan kiracılar arasında geçiş yapabilirsiniz: bir ![ araç çubuğu, kiracılar arasında geçiş yapabilirsiniz](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Var olan bir yazma kaynağınız varsa ancak **mevcut yazma kaynağını kullan** seçeneğini belirlediğinizde bu kaynağı bulamıyorsanız:

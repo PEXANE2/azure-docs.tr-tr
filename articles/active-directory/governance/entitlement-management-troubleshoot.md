@@ -16,11 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338187"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145778"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme
 
@@ -94,7 +95,9 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 Bir erişim paketi yeniden işlem isteği tetiklendikten sonra bir hata karşılanıyorsa, sistem isteği yeniden işlerken beklemeniz gerekir. Sistem birkaç saat boyunca yeniden işlem gerçekleştirmeye çalışır, bu nedenle bu süre içinde yeniden işlemeye zorlarsınız. 
 
-Yalnızca **teslim durumu başarısız** veya **kısmen teslim** edildi olan bir isteği ve bir haftadan daha az tamamlanma tarihini yeniden işleyebilirsiniz.
+Yalnızca **teslim durumu başarısız** veya **kısmen teslim** edildi olan bir isteği ve bir haftadan daha az tamamlanma tarihini yeniden işleyebilirsiniz. **Yeniden işleme** düğmesi, aksi durumda gri renkte görünür.
+
+![Düğme gri renkte yeniden işleme](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - Deneme süresi boyunca hata düzeltildiğinde, istek durumu **teslim**olarak değişir. İstek, kullanıcıdan ek eylem olmadan yeniden işlenecek.
 
@@ -116,7 +119,7 @@ Yalnızca **teslim durumu başarısız** veya **kısmen teslim** edildi olan bir
 
 ### <a name="cancel-a-pending-request"></a>Bekleyen bir isteği iptal etme
 
-Yalnızca teslim edilmemiş veya teslimi başarısız olan bekleyen bir isteği iptal edebilirsiniz.
+Yalnızca teslim edilmemiş veya teslimi başarısız olan bekleyen bir isteği iptal edebilirsiniz. **İptal** düğmesi, aksi durumda gri renkte görünür.
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 

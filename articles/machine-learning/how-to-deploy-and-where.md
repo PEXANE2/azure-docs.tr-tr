@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
+ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083090"
+ms.locfileid: "86146556"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Aşağıdaki kod, yerel geliştirme ortamında önbelleğe alınan bilgileri kul
 
 + **Visual Studio Code’u kullanma**
 
-   Visual Studio Code kullandığınızda, bir grafik arabirim kullanarak çalışma alanını seçersiniz. Daha fazla bilgi için bkz. Visual Studio Code uzantısı belgelerindeki [modelleri dağıtma ve yönetme](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) .
+   Visual Studio Code kullandığınızda, bir grafik arabirim kullanarak çalışma alanını seçersiniz. Daha fazla bilgi için bkz. Visual Studio Code uzantısı belgelerindeki [modelleri dağıtma ve yönetme](how-to-manage-resources-vscode.md#endpoints) .
 
 ## <a name="register-your-model"></a><a id="registermodel"></a>Modelinizi kaydetme
 
@@ -608,13 +608,13 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Description | Son durum?
+| Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | No |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
-| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
-| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
+| Kta | Hizmet, dağıtım sürecinde. | Hayır |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
+| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
+| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>İşlem örneği Web hizmeti (geliştirme/test)
 
@@ -998,7 +998,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Bir paket oluşturduktan sonra, `package.pull()` görüntüyü yerel Docker ortamınıza çekmek için ' i kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örneğin: 
+Bir paket oluşturduktan sonra, `package.pull()` görüntüyü yerel Docker ortamınıza çekmek için ' i kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örnek: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

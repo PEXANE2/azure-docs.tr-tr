@@ -4,19 +4,19 @@ description: Kullanıcı hesaplarının türlerini ve bunların nasıl yapıland
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 514a104c879a8d601bb03e2ed1c59b69516bc621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209734"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142684"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
 
 > [!NOTE]
 > Bu makalede ele alınan kullanıcı hesapları, güvenlik nedenleriyle Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) için kullanılan kullanıcı hesaplarından farklıdır.
 >
-> Linux sanal makine yapılandırmasını SSH aracılığıyla çalıştıran bir düğüme bağlanmak için bkz. [Azure 'Da LINUX VM 'ye uzak masaüstü kullanma](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Windows çalıştıran düğümlere RDP aracılığıyla bağlanmak için bkz. [Windows Server VM 'ye bağlanma](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Linux sanal makine yapılandırmasını SSH aracılığıyla çalıştıran bir düğüme bağlanmak için bkz. [Azure 'Da LINUX VM 'ye uzak masaüstü kullanma](../virtual-machines/linux/use-remote-desktop.md). Windows çalıştıran düğümlere RDP aracılığıyla bağlanmak için bkz. [Windows Server VM 'ye bağlanma](../virtual-machines/windows/connect-logon.md).<br /><br />
 > RDP aracılığıyla bulut hizmeti yapılandırmasını çalıştıran bir düğüme bağlanmak için bkz. [Azure Cloud Services bir rol için Uzak Masaüstü bağlantısı etkinleştirme](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
 Azure Batch bir görev her zaman bir kullanıcı hesabı altında çalışır. Varsayılan olarak, görevler yönetici izinleri olmadan standart Kullanıcı hesapları altında çalışır. Belirli senaryolarda, bir görevin çalışmasını istediğiniz kullanıcı hesabını yapılandırmak isteyebilirsiniz. Bu makalede, Kullanıcı hesaplarının türleri ve senaryonuz için nasıl yapılandırılacağı açıklanmaktadır.

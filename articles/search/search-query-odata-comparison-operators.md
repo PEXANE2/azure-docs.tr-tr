@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 572b653a49833ae06ee57b1718000e8555239de7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113213"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146037"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure bilişsel arama- `eq` , `ne` ,, `gt` `lt` , `ge` ve içinde OData karşılaştırma işleçleri`le`
 
@@ -46,7 +47,7 @@ Bir alanın belirli bir değer aralığı içinde olup olmadığını test etmek
 > [!NOTE]
 > İsterseniz, sabit değeri işlecin sol tarafına ve alan adını sağ tarafta koyabilirsiniz. Aralık işleçleri için karşılaştırma anlamı tersine çevrilir. Örneğin, sabit değer Solsa, `gt` sabit değerinin alandan büyük olup olmadığını test edecektir. Karşılaştırma işleçlerini, gibi bir işlevin sonucunu karşılaştırmak için de kullanabilirsiniz `geo.distance` . Gibi Boole işlevleri için `search.ismatch` , sonucu veya ile karşılaştırma `true` `false` isteğe bağlıdır.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), karşılaştırma işleçlerini kullanan bir OData ifadesinin dilbilgisini tanımlar.
 
@@ -99,7 +100,7 @@ Türündeki bir alanı ile karşılaştırma gibi izin verilmeyen karşılaştı
 
 Karşılaştırma işleçlerini kullanırken, Azure Bilişsel Arama tüm koleksiyon olmayan alanların potansiyel olarak olabileceğini unutmamak önemlidir `null` . Aşağıdaki tabloda her iki tarafın de bir karşılaştırma ifadesi için olası tüm sonuçlar gösterilmektedir `null` :
 
-| Operatör | Yalnızca alan veya değişken olduğunda sonuç`null` | Yalnızca sabit değer olduğunda sonuç`null` | Hem alan hem de değişken ve sabit olduğunda sonuç`null` |
+| İşleç | Yalnızca alan veya değişken olduğunda sonuç`null` | Yalnızca sabit değer olduğunda sonuç`null` | Hem alan hem de değişken ve sabit olduğunda sonuç`null` |
 | --- | --- | --- | --- |
 | `gt` | `false` | HTTP 400: Hatalı Istek hatası | HTTP 400: Hatalı Istek hatası |
 | `lt` | `false` | HTTP 400: Hatalı Istek hatası | HTTP 400: Hatalı Istek hatası |
@@ -112,7 +113,7 @@ Karşılaştırma işleçlerini kullanırken, Azure Bilişsel Arama tüm koleksi
 
 Dizininizdeki tür alanları varsa `Edm.Double` ve `NaN` Bu alanlara değerleri yüklerseniz, filtre yazarken bu hesaba hesap eklemeniz gerekir. Azure Bilişsel Arama, değerleri işlemek için IEEE 754 standardını uygular `NaN` ve bu tür değerlerle karşılaştırmalar, aşağıdaki tabloda gösterildiği gibi belirgin olmayan sonuçlar üretir.
 
-| Operatör | En az bir işlenen olduğunda sonuç`NaN` |
+| İşleç | En az bir işlenen olduğunda sonuç`NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -135,23 +136,33 @@ Dizeler, ve işleçleri kullanılarak tam eşleşmelerin filtrelerinde karşıla
 
 `Rating`Alanın 3 ile 5 arasında (dahil) olduğu belgeleri eşleştirin:
 
-    Rating ge 3 and Rating le 5
+```text
+Rating ge 3 and Rating le 5
+```
 
 `Location`Alanın, verilen Enlem ve Boylam 'nin 2 kilometreden küçük olduğu belgeleri eşleştirin:
 
-    geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```text
+geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```
 
 `LastRenovationDate`Alanın 1 ocak 2015, gece yarısı UTC 'den büyük veya buna eşit olduğu belgeleri eşleştirin:
 
-    LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```text
+LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```
 
 Alanın olmadığı belge Eşleştir `Details/Sku` `null` :
 
-    Details/Sku ne null
+```text
+Details/Sku ne null
+```
 
 En az bir odada "Deluxe Oda" türüne sahip olduğu oteller için, `Rooms/Type` alanın dizesinin filtreye tam olarak eşleştiği bir belge eşleştirin:
 
-    Rooms/any(room: room/Type eq 'Deluxe Room')
+```text
+Rooms/any(room: room/Type eq 'Deluxe Room')
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

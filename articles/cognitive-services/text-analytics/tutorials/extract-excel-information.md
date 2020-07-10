@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201193"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145705"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla 
 
@@ -31,9 +31,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Excel 'den metin Ayıkla ve Metin Analizi API'si gönderin 
 > * Bir Excel sayfasını güncelleştirmek için API 'deki bilgileri kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Microsoft Azure hesabı. [Ücretsiz bir deneme başlatın](https://azure.microsoft.com/free/) veya [oturum açın](https://portal.azure.com/).
+- Bir Microsoft Azure hesabı. [Ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/cognitive-services/) veya [oturum açın](https://portal.azure.com/).
 - Bir Metin Analizi kaynağı. Bir tane yoksa, [Azure Portal bir tane oluşturabilir](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) ve ücretsiz katmanı kullanarak bu öğreticiyi tamamlayabilirsiniz.
 - Kaydolma sırasında sizin için oluşturulan [anahtar ve uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 - Kiracı sorunlarını içeren bir elektronik tablo. GitHub 'da örnek veriler verilmiştir
@@ -76,7 +76,7 @@ Excel dosyasına eklenecek bilgileri temsil eden değişkenler oluşturun. **Yen
 
 Aşağıdaki bilgileri oluşturduğunuz değişkenlere ekleyin. Excel dosyasının sütunlarını temsil eder. Herhangi bir değişken daraltılamışsa, bunları genişletmek için bunlara tıklayabilirsiniz.
 
-| Eylem |Adı   | Tür | Değer |
+| Eylem |Ad   | Tür | Değer |
 |---------|---------|---|---|
 | Değişkeni Başlat | var_person | Dize | Kişi |
 | Değişken 2 ' i Başlat | var_phone | Dize | Phone_Number |
@@ -137,7 +137,7 @@ Bağlantı oluşturulduktan sonra, **metin analizi** arayın ve **varlıklar**' 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-**Metin** alanına tıklayın ve görüntülenen dinamik Içerik penceresinden **Açıklama** ' yı seçin. Dil `en` için girin. (Dil görmüyorsanız Gelişmiş seçenekleri göster ' e tıklayın)
+**Metin** alanına tıklayın ve görüntülenen dinamik Içerik penceresinden **Açıklama** ' yı seçin. `en`Dil için girin. (Dil görmüyorsanız Gelişmiş seçenekleri göster ' e tıklayın)
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
@@ -160,7 +160,7 @@ Koşul penceresinde, ilk metin kutusuna tıklayın. Dinamik içerik penceresinde
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-İkinci kutunun **değerine eşit**olduğundan emin olun. Ardından üçüncü kutuyu seçin ve dinamik içerik penceresinde arama `var_person` yapın. 
+İkinci kutunun **değerine eşit**olduğundan emin olun. Ardından üçüncü kutuyu seçin ve `var_person` dinamik içerik penceresinde arama yapın. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
@@ -182,7 +182,7 @@ Ada tıklayarak **her 2 Için Uygula** eylemini en aza indirin. Ardından, daha 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-**Her 3 Için geçerlidir**Içinde bir **koşul** denetimi ekleyin. **Koşul 2**olarak adlandırılır. İlk metin kutusunda, dinamik içerik penceresinden **varlık türünü** arayın ve ekleyin. Center kutusunun **değerine eşit**olduğundan emin olun. Ardından, doğru metin kutusuna girin `var_phone`. 
+**Her 3 Için geçerlidir**Içinde bir **koşul** denetimi ekleyin. **Koşul 2**olarak adlandırılır. İlk metin kutusunda, dinamik içerik penceresinden **varlık türünü** arayın ve ekleyin. Center kutusunun **değerine eşit**olduğundan emin olun. Ardından, doğru metin kutusuna girin `var_phone` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
@@ -203,15 +203,15 @@ Ada tıklayarak **her 3 Için uygulanan uygulamayı** en aza indirin. Ardından,
 
 Daha sonra Flow, Excel tablo satırındaki sorun açıklamasının "sıhhi tesisat" sözcüğünü içerip içermesinin olup olmadığını kontrol eder. Yanıt Evet ise, IssueType sütununa "sıhhi tesisat" ekler. Aksi takdirde "Other" olarak girilecek.
 
-**Her 4 Için Uygula** eyleminin Içinde bir **koşul** denetimi ekleyin. **Koşul 3**olarak adlandırılır. İlk metin kutusunda, dinamik içerik penceresini kullanarak Excel dosyasından açıklama ekleyin ve **Açıklama** ekleyin. Ortadaki kutunun **içerdiğinden**emin olun. Sonra sağ metin kutusunda bulun ve seçin `var_plumbing`. 
+**Her 4 Için Uygula** eyleminin Içinde bir **koşul** denetimi ekleyin. **Koşul 3**olarak adlandırılır. İlk metin kutusunda, dinamik içerik penceresini kullanarak Excel dosyasından açıklama ekleyin ve **Açıklama** ekleyin. Ortadaki kutunun **içerdiğinden**emin olun. Sonra sağ metin kutusunda bulun ve seçin `var_plumbing` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
 
-**Evet ise** , **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_plumbing`. Bu, satıra bir "sıhhi tesisat" etiketi uygular.
+**Evet ise** , **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_plumbing` . Bu, satıra bir "sıhhi tesisat" etiketi uygular.
 
-**Koşul yoksa,** **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_other`. Bu, satıra "diğer" etiketini uygular.
+**Koşul yoksa,** **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_other` . Bu, satıra "diğer" etiketini uygular.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::

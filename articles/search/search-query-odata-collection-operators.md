@@ -19,17 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113242"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146058"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Bilişsel Arama OData toplama işleçleri `any` ve`all`
 
 Azure Bilişsel Arama ile kullanmak üzere bir [OData filtresi ifadesi](query-odata-filter-orderby-syntax.md) yazarken, genellikle koleksiyon alanlarını filtrelemek yararlı olur. Ve işleçlerini kullanarak bunu elde edebilirsiniz `any` `all` .
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), veya kullanan bir OData ifadesinin dilbilgisini tanımlar `any` `all` .
 
@@ -65,23 +66,33 @@ Bir koleksiyon filtresindeki **lambda ifadesi** , bir programlama dilindeki Dön
 
 `tags`Alanı tam olarak "WiFi" dizesini içeren belgeleri eşleştir:
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 Alandaki her öğenin `ratings` 3 ila 5 (dahil) arasında olduğu belgeleri eşleştirin:
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 Alandaki coğrafi koordinatların herhangi birinin `locations` verilen çokgen içinde olduğu belgeleri eşleştirin:
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 Alanın boş olduğu belgeleri Eşleştir `rooms` :
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 Tüm odaların bulunduğu belgelerde, `rooms/amenities` alan "TV" ve `rooms/baseRate` 100 ' den küçük olan belgeleri eşleştirin:
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>Sınırlamalar
 

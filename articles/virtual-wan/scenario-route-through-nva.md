@@ -8,16 +8,22 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0716ca8f0457ca801098c97dd7a5e68751822d4d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848095"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142974"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Senaryo: trafiği bir NVA üzerinden yönlendirme
 
 Sanal WAN sanal hub 'ı yönlendirme ile çalışırken, kullanılabilecek oldukça az sayıda senaryo vardır. Bu NVA senaryosunda, hedef, trafiği bir NVA (ağ sanal gereci) yoluyla VNet 'e ve VNet 'e Dala Dala yönlendirmektir. Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönlendirmesi hakkında](about-virtual-hub-routing.md).
+
+> [!NOTE]
+> Bazı yönlendirme özellikleri hala kullanıma alınıyor. Dağıtım henüz bölgenizde gerçekleşmemişse, lütfen bu makalede yer alan makalelerin bu sürümlerindeki adımları kullanın:
+>* [Azure portal makalesi](virtual-wan-route-table-nva-portal.md)
+>* [PowerShell makalesi](virtual-wan-route-table-nva.md)
+>
 
 ## <a name="scenario-architecture"></a><a name="architecture"></a>Senaryo mimarisi
 

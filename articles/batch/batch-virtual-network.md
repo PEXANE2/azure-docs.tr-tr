@@ -4,12 +4,12 @@ description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115420"
+ms.locfileid: "86142764"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -27,7 +27,7 @@ Bir havuzdaki işlem düğümleri, farklı bir VNet gerekmeden, çok örnekli g�
 
 - **Bir Azure sanal ağı**. VNet gereksinimleri ve yapılandırması için aşağıdaki bölüme bakın. Bir sanal ağı bir veya daha fazla alt ağ ile önceden hazırlamak için Azure portal, Azure PowerShell, Azure komut satırı arabirimi (CLı) veya diğer yöntemleri kullanabilirsiniz.
   - Azure Resource Manager tabanlı VNet oluşturmak için, bkz. [sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Yeni dağıtımlar için Kaynak Yöneticisi tabanlı VNet önerilir ve yalnızca sanal makine yapılandırması kullanan havuzlarda desteklenir.
-  - Klasik VNet oluşturmak için, bkz. [birden çok alt ağ ile sanal ağ (klasik) oluşturma](../virtual-network/create-virtual-network-classic.md). Klasik VNet yalnızca Cloud Services yapılandırma kullanan havuzlarda desteklenir.
+  - Klasik VNet oluşturmak için, bkz. [birden çok alt ağ ile sanal ağ (klasik) oluşturma](/previous-versions/azure/virtual-network/create-virtual-network-classic). Klasik VNet yalnızca Cloud Services yapılandırma kullanan havuzlarda desteklenir.
 
 ## <a name="vnet-requirements"></a>Sanal ağ gereksinimleri
 

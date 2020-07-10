@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 1bf21b8714554dcdc52ab6e34041c738ec2653f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1836be2a5feb6dad747d0da9b42cbd31ddc28a63
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105073"
+ms.locfileid: "86142592"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için .NET kullanın
 
@@ -91,11 +91,11 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 > [!NOTE]
 > Daha fazla örnek için bkz. [.net Için Azure kimlik istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) belgeleri.
 
-## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
-Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) metodunu çağırarak bir tane oluşturabilirsiniz.
+Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) metodunu çağırarak bir tane oluşturabilirsiniz.
 
-Bu örnek adlı bir dosya sistemi oluşturur `my-file-system` . 
+Bu örnek adlı bir kapsayıcı oluşturur `my-file-system` . 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +109,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 [Datalakefilesystemclient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) yöntemini çağırarak bir dizin başvurusu oluşturun.
 
-Bu örnek `my-directory` , bir dosya sistemine adlı bir dizin ekler ve sonra adlı bir alt dizin ekler `my-subdirectory` . 
+Bu örnek, bir kapsayıcıya adlı bir dizin ekler `my-directory` ve sonra adlı bir alt dizin ekler `my-subdirectory` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -201,7 +201,7 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-Bir dosya sisteminin kök dizininin ACL 'sini de alabilir ve ayarlayabilirsiniz. Kök dizini almak için `""` [Datalakefilesystemclient. getdirectoryclient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) metoduna boş bir dize () geçirin.
+Ayrıca, bir kapsayıcının kök dizininin ACL 'sini de alabilir ve ayarlayabilirsiniz. Kök dizini almak için `""` [Datalakefilesystemclient. getdirectoryclient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) metoduna boş bir dize () geçirin.
 
 ## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 

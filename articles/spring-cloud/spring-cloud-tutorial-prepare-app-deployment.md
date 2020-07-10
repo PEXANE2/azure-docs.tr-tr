@@ -1,17 +1,17 @@
 ---
-title: Azure yay bulutu 'nda dağıtım için bir Java Spring uygulaması hazırlama
-description: Bu konu başlığında, bir Java Spring uygulamasını Azure Spring buluta dağıtım için hazırlarsınız.
+title: Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
+description: Bir Java Spring uygulamasının Azure Spring Cloud 'a dağıtılması için nasıl hazırlanacağını öğrenin.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1840979fc1380f1e0d14f3a0a74eef5fa6df6538
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833392"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141858"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
@@ -253,7 +253,7 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
 </dependency>
 ```
 
- Ayrıca Azure Spring Cloud Service örneğiniz ile çalışmak için bir Azure Application Insights örneğini etkinleştirmeniz gerekir. Azure Spring Cloud ile Application Insights kullanmayı öğrenmek için [Dağıtılmış izleme öğreticisini](spring-cloud-tutorial-distributed-tracing.md) okuyun.
+ Ayrıca Azure Spring Cloud Service örneğiniz ile çalışmak için bir Azure Application Insights örneğini etkinleştirmeniz gerekir. Azure Spring Cloud ile Application Insights kullanma hakkında daha fazla bilgi için bkz. [Dağıtılmış izleme hakkındaki belgeler](spring-cloud-tutorial-distributed-tracing.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Uygulama günlüklerini ve ölçümleri çözümleme](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
@@ -264,9 +264,6 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu konu başlığında, Java Spring uygulamanızı Azure Spring Cloud 'a dağıtmak üzere nasıl yapılandıracağınızı öğrendiniz. Bir yapılandırma sunucusu örneğini ayarlamayı öğrenmek için aşağıdaki makaleye bakın.
-
-> [!div class="nextstepaction"]
-> [Bir yapılandırma sunucusu örneğini ayarlamayı öğrenin](spring-cloud-tutorial-config-server.md)
+Bu konu başlığında, Java Spring uygulamanızı Azure Spring Cloud 'a dağıtmak üzere nasıl yapılandıracağınızı öğrendiniz. Bir yapılandırma sunucusu örneğini ayarlamayı öğrenmek için bkz. [bir yapılandırma sunucusu örneği ayarlama](spring-cloud-tutorial-config-server.md).
 
 GitHub 'da daha fazla örnek vardır: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

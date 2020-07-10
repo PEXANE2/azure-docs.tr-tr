@@ -11,11 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: aa8fa9ff6973e908d6af700f7c2965a844e87b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170996"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145657"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL veritabanı için DNS diğer adı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -111,6 +112,8 @@ Kod örneğinde kullanılan cmdlet 'ler şunlardır:
 ## <a name="related-resources"></a>İlgili kaynaklar
 
 - Olağanüstü durum kurtarma dahil olmak üzere [Azure SQL veritabanı ile iş sürekliliği 'Ne genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+- [Azure REST API başvurusu](https://docs.microsoft.com/rest/api/azure/)
+- [Sunucu DNS diğer adları API 'SI](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

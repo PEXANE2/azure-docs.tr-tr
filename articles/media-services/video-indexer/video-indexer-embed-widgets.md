@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d76f3afa3a831f402f93322ecec350bfdb0c788d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594857"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166034"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 
@@ -29,11 +29,11 @@ Sürüm 2 ' den başlayarak pencere öğesi temel URL 'SI, belirtilen hesabın b
 
 Bilişsel İçgörüler pencere öğeleri, video dizini oluşturma işleminizden elde edilen tüm görsel içgörüleri içerir. Bilişsel Öngörüler pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler:
 
-|Name|Tanım|Description|
+|Ad|Tanım|Açıklama|
 |---|---|---|
 |`widgets` | Virgülle ayrılmış dizeler | , İşlemek istediğiniz öngörüleri denetlemenize olanak tanır.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` yalnızca kişiler ve anahtar sözcükler UI öngörülerini işler.<br/>Kullanılabilir seçenekler: kişiler, animatedCharacters, anahtar sözcükler, Etiketler, yaklaşım, konu başlıkları, konular, ana kareler, döküm, OCR, hoparlörler, sahneler ve namedEntities.|
 |`controls`|Virgülle ayrılmış dizeler|İşlemek istediğiniz denetimleri denetlemenizi sağlar.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` yalnızca arama seçeneğini işler ve İndir düğmesi.<br/>Kullanılabilir seçenekler: arama, indirme, Önayarlar, dil.|
-|`language`|Kısa bir dil kodu (dil adı)|Öngörüler dilini denetler.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>veya`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|Kısa bir dil kodu (dil adı)|Öngörüler dilini denetler.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/> veya `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Kısa bir dil kodu | Kullanıcı arabiriminin dilini denetler. Varsayılan değer: `en`. <br/>Örnek: `locale=de`.|
 |`tab` | Varsayılan seçili sekme | Varsayılan olarak işlenen **Öngörüler** sekmesini denetler. <br/>Örnek: `tab=timeline` görüş **zaman çizelgesi** sekmesi seçiliyken öngörüleri işler.|
 |`location` ||`location`Parametrenin gömülü bağlantılara dahil olması gerekir, bkz. [bölgenizin adını alma](regions.md). Hesabınız önizlemededir, `trial` konum değeri için kullanılmalıdır. `trial`, parametresi için varsayılan değerdir `location` .| 
@@ -42,7 +42,7 @@ Bilişsel İçgörüler pencere öğeleri, video dizini oluşturma işleminizden
 
 Video akışını Uyarlamalı bit hızı kullanarak akışa almak için oynatıcı pencere öğesini kullanabilirsiniz. Oynatıcı pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler.
 
-|Name|Tanım|Description|
+|Ad|Tanım|Açıklama|
 |---|---|---|
 |`t` | Başlangıçtan itibaren saniye | Player 'ın belirtilen zaman noktasından yürütmeye başlamasını sağlar.<br/> Örnek: `t=60`. |
 |`captions` | Dil kodu | Resim **yazıları** menüsünde kullanılabilir olacak pencere öğesi yükleme sırasında, belirtilen dilde resim yazısını getirir.<br/> Örnek: `captions=en-US`. |
@@ -56,12 +56,12 @@ Video akışını Uyarlamalı bit hızı kullanarak akışa almak için oynatıc
 
 Yeni projeler oluşturmak ve bir videonun öngörülerini yönetmek için düzenleyici pencere öğesini kullanabilirsiniz. Düzenleyici pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler.
 
-|Name|Tanım|Description|
+|Ad|Tanım|Açıklama|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Dize | Yalnızca pencere öğesini katıştırmak için kullanılan hesapta olan videolara erişim sağlar.<br> Düzenleyici pencere öğesi için `accessToken` parametre gereklidir. |
 |`language` | Dil kodu | Oynatıcı dilini denetler. Varsayılan değer: `en-US`.<br/>Örnek: `language=de-DE`. |
 |`locale` | Kısa bir dil kodu | Öngörüler dilini denetler. Varsayılan değer: `en`.<br/>Örnek: `language=de`. |
-|`location` ||`location`Parametrenin gömülü bağlantılara dahil olması gerekir, bkz. [bölgenizin adını alma](regions.md). Hesabınız önizlemededir, `trial` konum değeri için kullanılmalıdır. `trial`, paramete için varsayılan değerdir `location` .| 
+|`location` ||`location`Parametrenin gömülü bağlantılara dahil olması gerekir, bkz. [bölgenizin adını alma](regions.md). Hesabınız önizlemededir, `trial` konum değeri için kullanılmalıdır. `trial`, parametresi için varsayılan değerdir `location` .| 
 
 <sup>*</sup>Sahibin dikkatli sağlaması gerekir `accessToken` .
 
@@ -69,7 +69,7 @@ Yeni projeler oluşturmak ve bir videonun öngörülerini yönetmek için düzen
 
 Bu bölümde ortak ve özel içerik uygulamalara katıştırılması ele alınmaktadır.
 
-`location`Parametrenin gömülü bağlantılara dahil olması gerekir, bkz. [bölgenizin adını alma](regions.md). Hesabınız önizlemededir, `trial` konum değeri için kullanılmalıdır. `trial`, paramete için varsayılan değerdir `location` . Örneğin: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+`location`Parametrenin gömülü bağlantılara dahil olması gerekir, bkz. [bölgenizin adını alma](regions.md). Hesabınız önizlemededir, `trial` konum değeri için kullanılmalıdır. `trial`, parametresi için varsayılan değerdir `location` . Örneğin: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > **Oynatıcı** veya **Öngörüler** pencere öğesi için bir bağlantının paylaşılması, erişim belirtecini içerir ve hesabınıza salt okuma izinleri verir.
@@ -131,47 +131,48 @@ Bu bölümde, bir bilişsel Öngörüler pencere öğesi ve bir Azure Media Play
 1. AMP Player için Video Indexer eklentisi ekleme:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
 2. Video Indexer eklentisiyle Azure Media Player örneğini oluşturun.
 
-        // Init the source.
-        function initSource() {
-            var tracks = [{
-            kind: 'captions',
-            // To load vtt from VI, replace it with your vtt URL.
-            src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
-            srclang: 'en',
-            label: 'English'
-            }];
-
-            myPlayer.src([
-            {
-                "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
-                "type": "application/vnd.ms-sstr+xml"
-            }
-            ], tracks);
+    ```javascript
+    // Init the source.
+    function initSource() {
+        var tracks = [{
+        kind: 'captions',
+        // To load vtt from VI, replace it with your vtt URL.
+        src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
+        srclang: 'en',
+        label: 'English'
+        }];
+        myPlayer.src([
+        {
+            "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
+            "type": "application/vnd.ms-sstr+xml"
         }
+        ], tracks);
+    }
 
-        // Init your AMP instance.
-        var myPlayer = amp('vid1', { /* Options */
-            "nativeControlsForTouch": false,
-            autoplay: true,
-            controls: true,
-            width: "640",
-            height: "400",
-            poster: "",
-            plugins: {
-            videobreakedown: {}
-            }
-        }, function () {
-            // Activate the plug-in.
-            this.videobreakdown({
-            videoId: "c4c1ad4c9a",
-            syncTranscript: true,
-            syncLanguage: true,
-            location: "trial" /* location option for paid accounts (default is trial) */
-            });
-
-            // Set the source dynamically.
-            initSource.call(this);
+    // Init your AMP instance.
+    var myPlayer = amp('vid1', { /* Options */
+        "nativeControlsForTouch": false,
+        autoplay: true,
+        controls: true,
+        width: "640",
+        height: "400",
+        poster: "",
+        plugins: {
+        videobreakedown: {}
+        }
+    }, function () {
+        // Activate the plug-in.
+        this.videobreakdown({
+        videoId: "c4c1ad4c9a",
+        syncTranscript: true,
+        syncLanguage: true,
+        location: "trial" /* location option for paid accounts (default is trial) */
         });
+
+        // Set the source dynamically.
+        initSource.call(this);
+    });
+    ```
 
 3. Bilişsel İçgörüler ekleme kodunu kopyalayın.
 
@@ -187,42 +188,46 @@ Azure Media Player dışında bir video oynatıcı kullanıyorsanız, iletişim 
 
     Örneğin, standart bir HTML5 oynatıcı:
 
-        <video id="vid1" width="640" height="360" controls autoplay preload>
-           <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
-           Your browser does not support the video tag.
-        </video>    
+    ```html
+    <video id="vid1" width="640" height="360" controls autoplay preload>
+       <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
+       Your browser does not support the video tag.
+    </video>
+    ```
 
 2. Bilişsel İçgörüler pencere öğesini ekleyin.
 3. "İleti" olayını dinleyerek yürütücünüz için iletişimi uygulayın. Örnek:
 
-        <script>
+    ```javascript
+    <script>
     
-            (function(){
-            // Reference your player instance.
-            var playerInstance = document.getElementById('vid1');
+        (function(){
+        // Reference your player instance.
+        var playerInstance = document.getElementById('vid1');
         
-            function jumpTo(evt) {
-              var origin = evt.origin || evt.originalEvent.origin;
+        function jumpTo(evt) {
+          var origin = evt.origin || evt.originalEvent.origin;
         
-              // Validate that the event comes from the videobreakdown domain.
-              if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
+          // Validate that the event comes from the videobreakdown domain.
+          if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
                 
-                // Call your player's "jumpTo" implementation.
-                playerInstance.currentTime = evt.data.time;
+            // Call your player's "jumpTo" implementation.
+            playerInstance.currentTime = evt.data.time;
                
-                // Confirm the arrival to us.
-                if ('postMessage' in window) {
-                  evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
-                }
-              }
+            // Confirm the arrival to us.
+            if ('postMessage' in window) {
+              evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
             }
+          }
+        }
         
-            // Listen to the message event.
-            window.addEventListener("message", jumpTo, false);
+        // Listen to the message event.
+        window.addEventListener("message", jumpTo, false);
           
-            }())    
+        }())    
         
-        </script>
+    </script>
+    ```
 
 Daha fazla bilgi için [Azure Media Player + VI Öngörüler tanıtımı](https://codepen.io/videoindexer/pen/YEyPLd)bölümüne bakın.
 
@@ -274,7 +279,7 @@ Oynatıcı, varsayılan olarak videoyu oynatmaya başlayacaktır. önceki ekleme
 
 Video Indexer API 'SI ve pencere öğeleri için örnekler içeren [kod örnekleri](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) deposuna bakın:
 
-| Dosya/klasör                       | Description                                |
+| Dosya/klasör                       | Açıklama                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | Video Indexer videosunu özel bir Azure Media Player yükleyin.                        |
 | `azure-media-player-vi-insights`  | Özel bir Azure Media Player VI öngörüleri ekleyin.                             |

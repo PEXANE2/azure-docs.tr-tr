@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985744"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147049"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -96,7 +96,7 @@ Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini (�
 
 R SDK, Azure Machine Learning R dilini kullanmanıza olanak sağlar. SDK, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Öğretici: lojistik regresyon modeli oluşturma](tutorial-1st-r-experiment.md)
 * [R başvurusu için SDK Azure Machine Learning](https://azure.github.io/azureml-sdk-for-r/index.html)
@@ -131,6 +131,10 @@ Machine Learning CLı, Azure CLı için bir uzantıdır. Azure Machine Learning 
 
 * [Azure Machine Learning için CLı uzantısını kullanın](reference-azure-machine-learning-cli.md)
 * [Azure üzerinde MLOps](https://github.com/microsoft/MLOps)
+
+## <a name="vs-code"></a>VS Code
+
+Eğitim işlerinizi çalıştırmak ve yönetmek için VS Code uzantısını kullanabilirsiniz. Daha fazla bilgi edinmek için [vs Code kaynak yönetimi nasıl yapılır Kılavuzu](how-to-manage-resources-vscode.md#experiments) ' na bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

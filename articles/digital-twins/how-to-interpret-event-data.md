@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f6794559c2296b02ef61d0e280d29456904ae607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609308"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142434"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
 
@@ -103,7 +103,7 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 
 İşte bir yaşam döngüsü bildiriminin gövdesinde yer alan alanlar.
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir. |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı |
@@ -125,6 +125,7 @@ Aşağıda, bir [ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play
 ```json
 {
   "$dtId": "device-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "thermostat": {
     "temperature": 80,
     "humidity": 45,
@@ -157,6 +158,7 @@ Dijital ikizi başka bir örneği aşağıda verilmiştir. Bu, bir [modeli](conc
 ```json
 {
   "$dtId": "logical-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "avgTemperature": 70,
   "comfortIndex": 85,
   "$metadata": {
@@ -187,7 +189,7 @@ Dijital ikizi başka bir örneği aşağıda verilmiştir. Bu, bir [modeli](conc
 
 Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Name    | Değer |
+| Ad    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
 | `source` | *Mydigitaltwins.westus2.azuredigitaltwins.net* gibi Azure dijital TWINS örneğinin adı |
@@ -243,7 +245,7 @@ Dijital **ikizi değişiklik bildirimleri** , bir dijital ikizi güncelleştiril
 
 Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Name    | Değer |
+| Ad    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı

@@ -3,12 +3,12 @@ title: Azure Application Insights ile canlı bir ASP.NET web uygulamasını izle
 description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket içinde veya VM 'lerde barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107487"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166391"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
 
@@ -39,14 +39,14 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| İstekler ve özel durumlar |Yes |Yes |
-| [Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
-| [Bağımlılık tanılama](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| [Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md) |Yes |Yes |
-| [Özel telemetri için API][api] |Evet |Hayır |
-| [İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md) |Evet |Hayır |
-| [Sayfa görünümü ve kullanıcı verileri](../../azure-monitor/app/javascript.md) |Evet |Hayır |
-| Kodu yeniden derlemeniz gerekir |Evet | Hayır |
+| **Özel durumları & istekleri** |Yes |Evet |
+| **[Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)** | |Evet |
+| **[Bağımlılık tanılama](../../azure-monitor/app/asp-net-dependencies.md)** |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
+| **[Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md)** |Yes |Evet |
+| **[Özel telemetri için API][api]** |Evet |Hayır |
+| **[İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md)** |Evet |Hayır |
+| **[Sayfa görüntüleme & Kullanıcı verileri](../../azure-monitor/app/javascript.md)** |Evet |Hayır |
+| **Kodu yeniden derlemeniz gerekir** |Evet | Hayır |
 
 
 

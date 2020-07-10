@@ -6,14 +6,15 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 07/08/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: f9e6c8dc7438e05f960504b2cacee7fc987adf70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a872121ca6560b8ede86abc35294ab8c9b0c1b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022393"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142016"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory bağlayıcıya genel bakış
 
@@ -27,7 +28,16 @@ Azure Data Factory, kopyalama, veri akışı, arama, meta veri al ve silme etkin
 
 ## <a name="supported-file-formats"></a>Desteklenen dosya biçimleri
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)]
+Azure Data Factory aşağıdaki dosya biçimlerini destekler. Biçim tabanlı ayarlar için her makaleye başvurun.
+
+- [Avro biçimi](format-avro.md)
+- [İkili biçim](format-binary.md)
+- [Common Data Model biçimi](format-common-data-model.md)
+- [Sınırlandırılmış metin biçimi](format-delimited-text.md)
+- [Excel biçimi](format-excel.md)
+- [JSON biçimi](format-json.md)
+- [ORC biçimi](format-orc.md)
+- [Parquet biçimi](format-parquet.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

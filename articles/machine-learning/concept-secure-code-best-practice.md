@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: larryfr
 author: larryfr
 ms.date: 11/12/2019
-ms.openlocfilehash: 8932640a69ad68e0fd30b8577ba95768dbf8b9b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e41323d05f1a81fbc73a9158cf30c2b0f7953f3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660887"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147068"
 ---
 # <a name="secure-code-best-practices-with-azure-machine-learning"></a>Azure Machine Learning ile güvenli kod en iyi yöntemleri
 
-Azure Machine Learning, herhangi bir kaynaktan dosya ve içerik yükleyebilirsiniz. Jupleter Not defterleri veya betikleri içindeki içerikler, oturumlarınızdan verileri okuyabilir, Azure 'da kuruluşunuzdaki verilere erişebilir veya kötü amaçlı süreçler sizin adınıza çalıştırabilir.
+Azure Machine Learning, herhangi bir kaynaktaki dosyaları ve içerikleri Azure 'a yükleyebilirsiniz. Jupi Not defterleri veya yüklediğiniz betikler içindeki içerikler, oturumlarınızdan verileri okuyabilir, Azure 'da kuruluşunuzdaki verilere erişebilir veya sizin adınıza kötü amaçlı süreçler çalıştırabilir.
 
 > [!IMPORTANT]
 > Yalnızca güvenilir kaynaklardan gelen not defterlerini veya betikleri çalıştırın. Örneğin, sizin veya güvenlik takımınız Not defterini veya betiği incelendi.

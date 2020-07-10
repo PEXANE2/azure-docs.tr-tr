@@ -14,13 +14,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b1e648058e866be57deaf8dd159c89fc08141b68
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921746"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166680"
 ---
-# <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
 Azure Active Directory (Azure AD) kullanarak, daha az ayrıcalıklı rollerdeki kimlik görevlerini yönetmek için sınırlı yöneticiler atayabilirsiniz. Yöneticiler, Kullanıcı ekleme veya değiştirme, yönetici rolleri atama, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme ve etki alanı adlarını yönetme gibi amaçlar için atanabilir. [Varsayılan Kullanıcı izinleri](../fundamentals/users-default-permissions.md) yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
 
@@ -81,7 +82,7 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 [Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -266,7 +267,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -488,14 +489,14 @@ Bu roldeki kullanıcılar Microsoft ekipleri & Skype Kurumsal Yönetici Merkezi 
 
 Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara sahip kullanıcıların tüm yönlerini yönetebilir (aşağıya bakın) ve parola süre sonu ilkelerini güncelleştirebilir. Ayrıca, bu role sahip kullanıcılar tüm grupları oluşturabilir ve yönetebilir. Bu rol Ayrıca Kullanıcı görünümleri oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini de içerir. Kullanıcı yöneticilerinin çoğu yönetici rolünde kullanıcılar için bazı kullanıcı özelliklerini yönetme izni yoktur. Bu role sahip olan kullanıcının MFA 'yı yönetme izni yok. Bu kısıtlamanın özel durumları olan roller aşağıdaki tabloda listelenmiştir.
 
-| | |
+| İzin | Yapılabilir |
 | --- | --- |
 |Genel izinler|<p>Kullanıcı ve grup oluşturma</p><p>Kullanıcı görünümleri oluşturma ve yönetme</p><p>Office destek biletlerini yönetme<p>Parola süre sonu ilkelerini Güncelleştir|
 |<p>Tüm kullanıcılar (tüm yöneticiler dahil)</p>|<p>Lisansları yönetme</p><p>Kullanıcı asıl adı dışındaki tüm kullanıcı özelliklerini yönet</p>
 |Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -1900,7 +1901,7 @@ Takımlar Iletişim Yöneticisi | Takımlar Iletişim Yöneticisi | baf37b3a-610
 Takımlar Iletişimleri Destek Mühendisi | Takımlar Iletişimleri Destek Mühendisi | f70938a0-fc10-4177-9e90-2178f8765737
 Takımlar Iletişimleri destek uzmanı | Takımlar Iletişimleri destek uzmanı | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Takımlar Hizmet Yöneticisi | Takımlar Hizmet Yöneticisi | 69091246-20e8-4a56-aa4d-066075b2a7a8
-Kullanıcı | Kullanılmadığından gösterilmez | a0b1b346-4d3e-4e8b-98f8-753987be4970
+User | Kullanılmadığından gösterilmez | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Kullanıcı hesabı Yöneticisi | Kullanıcı yöneticisi | fe930be7-5e62-47db-91af-98c3a49a38b1
 Çalışma alanına cihaz katılımı | Kullanım Dışı | c34f683f-4d5a-4403-AFD-6615e00e3a7f
 
@@ -1934,7 +1935,7 @@ Lync Hizmet Yöneticisi | Skype Kurumsal yöneticisi | [Geçerli ürün markası
 İş ortağı katman 1 desteği | Kullanılmaması nedeniyle gösterilmez | [İş ortağı Katman1 Destek belgeleri](directory-assign-admin-roles.md#partner-tier1-support)
 İş ortağı katman 2 desteği | Kullanılmaması nedeniyle gösterilmez | [İş ortağı Katman2 Destek belgeleri](directory-assign-admin-roles.md#partner-tier2-support)
 Kısıtlı Konuk Kullanıcı | Kullanılmadığından gösterilmez | NA
-Kullanıcı | Kullanılmadığından gösterilmez | NA
+User | Kullanılmadığından gösterilmez | NA
 Çalışma alanına cihaz katılımı | Kullanım Dışı | [Kullanım dışı roller belgeleri](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -3,12 +3,12 @@ title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5707d834a7d99e147a81ee2b39952863a63ed695
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964051"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144924"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -111,7 +111,7 @@ Hem düşük öncelikli hem de adanmış düğümlere yönelik fiyatlandırma bi
 
 ## <a name="node-size"></a>Düğüm boyutu
 
-Azure Batch havuzu oluşturduğunuzda, neredeyse Azure'da bulunan tüm VM aileleri ve boyutları arasından seçim yapabilirsiniz. Azure farklı iş yükleri için [HPC](../virtual-machines/linux/sizes-hpc.md) veya [GPU etkin](../virtual-machines/linux/sizes-gpu.md) VM boyutları da dahil olmak üzere çeşitli VM boyutları sunar. 
+Azure Batch havuzu oluşturduğunuzda, neredeyse Azure'da bulunan tüm VM aileleri ve boyutları arasından seçim yapabilirsiniz. Azure farklı iş yükleri için [HPC](../virtual-machines/sizes-hpc.md) veya [GPU etkin](../virtual-machines/sizes-gpu.md) VM boyutları da dahil olmak üzere çeşitli VM boyutları sunar. 
 
 Daha fazla bilgi için bkz. [Azure Batch havuzunda işlem düğümleri için VM boyutunu seçme](batch-pool-vm-sizes.md).
 

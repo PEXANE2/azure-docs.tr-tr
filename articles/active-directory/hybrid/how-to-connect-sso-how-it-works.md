@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357928"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144702"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Sorunsuz çoklu oturum açma Azure Active Directory: teknik kapsamlı bakış
 
@@ -45,6 +45,9 @@ Bu bölümde üç bölümü vardır:
 
 >[!IMPORTANT]
 > `AZUREADSSOACC`Güvenlik nedenleriyle bilgisayar hesabının güçlü korunması gerekir. Bilgisayar hesabını yalnızca etki alanı yöneticileri yönetebilmelidir. Bilgisayar hesabında Kerberos temsilcisinin devre dışı bırakıldığından ve Active Directory ' deki başka hiçbir hesabın bilgisayar hesabında temsilciliizin izinlerine sahip olduğundan emin olun `AZUREADSSOACC` . Bilgisayar hesabını, yanlışlıkla silinmelerden güvenli oldukları ve yalnızca etki alanı yöneticilerinin erişimi olan bir kuruluş biriminde (OU) depolayın. Bilgisayar hesabındaki Kerberos şifre çözme anahtarı da hassas olarak değerlendirilmelidir. Bilgisayar hesabının [Kerberos şifre çözme anahtarını](how-to-connect-sso-faq.md) `AZUREADSSOACC` en az 30 günde bir ele almanızı önemle tavsiye ederiz.
+
+>[!IMPORTANT]
+> Sorunsuz SSO, Kerberos için AES256_HMAC_SHA1, AES128_HMAC_SHA1 ve RC4_HMAC_MD5 şifreleme türlerini destekler. AzureADSSOAcc $ hesabı için şifreleme türü AES256_HMAC_SHA1 olarak, ek güvenlik için de AES türlerinden biri de. RC4 olarak ayarlanmalıdır. Şifreleme türü, Active Directory hesabın msDS-SupportedEncryptionTypes özniteliğinde depolanır.  AzureADSSOAcc $ Account ENCRYPTION türü RC4_HMAC_MD5 olarak ayarlandıysa ve bunu AES şifreleme türlerinden biri olarak değiştirmek istiyorsanız, lütfen ilk olarak AzureADSSOAcc $ hesabının Kerberos şifre çözme anahtarını, ilgili sorunun altındaki [SSS belgesinde](how-to-connect-sso-faq.md) açıklandığı gibi aldığınızdan emin olun, aksi takdırde sorunsuz SSO gerçekleşmeyecektir.
 
 Kurulum tamamlandıktan sonra sorunsuz SSO, tümleşik Windows kimlik doğrulaması (ıWA) kullanan başka bir oturum açma yöntemiyle aynı şekilde çalışır.
 

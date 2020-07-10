@@ -7,19 +7,19 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060263"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143839"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
 
 Web uygulaması güvenlik duvarı Ilkeleri tüm WAF ayarlarını ve yapılandırmasını içerir. Bu, dışlamaları, özel kuralları, yönetilen kuralları vb. içerir. Bu ilkeler daha sonra bir uygulama ağ geçidi (genel), bir dinleyici (site başına) veya yol tabanlı bir kural (URI başına), etkili olması için ilişkilendirilir.
 
 > [!NOTE]
-> Azure Web uygulaması güvenlik duvarı (WAF)-site başına ve URI başına ilkeler genel önizlemede.
+> Azure Web uygulaması güvenlik duvarı (WAF) URI başına ilkeler genel önizlemede.
 > 
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

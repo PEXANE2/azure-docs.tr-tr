@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 7ed55200db72879f7ec7323b5c165998944688a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffdfeacad2fcfa7f77f3bcb55e8b1edaea865202
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906794"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145157"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
@@ -226,21 +226,21 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 |Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-|CpuUsagePercentageInDouble|CPU kullanım yüzdesi|Yüzde|Maksimum|CPU kullanım yüzdesi|Node|
-|MemoryUsage|Bellek Kullanımı|Bayt|Ortalama|Bellek Kullanımı|Node|
-|MemoryLimit|Bellek sınırı|Bayt|Ortalama|Bellek sınırı|Node|
-|MemoryUsagePercentageInDouble|Bellek kullanım yüzdesi|Yüzde|Ortalama|Bellek kullanım yüzdesi|Node|
-|StorageUsage|Depolama alanı kullanımı|Bayt|Ortalama|Depolama alanı kullanımı|Node|
-|Ioreadbytes|GÇ okuma baytları|Bayt|Toplam|GÇ okuma baytları|Node|
-|IOWriteBytes|GÇ Yazma baytları|Bayt|Toplam|GÇ Yazma baytları|Node|
-|Connectionkabul edildi|Kabul edilen bağlantılar|Sayı|Toplam|Kabul edilen bağlantılar|Node|
-|Connectionişlenmiş|İşlenmiş bağlantılar|Sayı|Toplam|İşlenmiş bağlantılar|Node|
-|ConnectionActive|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Node|
-|RequestHandled|İşlenmiş Istekler|Sayı|Toplam|İşlenmiş Istekler|Node|
-|Processedbkilitler|İşlenen bloklar|Sayı|Toplam|İşlenen bloklar|Node|
-|ProcessedTransactions|İşlenen Işlemler|Sayı|Toplam|İşlenen Işlemler|Node|
-|PendingTransactions|Bekleyen Işlemler|Sayı|Ortalama|Bekleyen Işlemler|Node|
-|QueuedTransactions|Kuyruğa alınmış Işlemler|Sayı|Ortalama|Kuyruğa alınmış Işlemler|Node|
+|CpuUsagePercentageInDouble|CPU kullanım yüzdesi|Yüzde|Maksimum|CPU kullanım yüzdesi|Düğüm|
+|MemoryUsage|Bellek Kullanımı|Bayt|Ortalama|Bellek Kullanımı|Düğüm|
+|MemoryLimit|Bellek sınırı|Bayt|Ortalama|Bellek sınırı|Düğüm|
+|MemoryUsagePercentageInDouble|Bellek kullanım yüzdesi|Yüzde|Ortalama|Bellek kullanım yüzdesi|Düğüm|
+|StorageUsage|Depolama alanı kullanımı|Bayt|Ortalama|Depolama alanı kullanımı|Düğüm|
+|Ioreadbytes|GÇ okuma baytları|Bayt|Toplam|GÇ okuma baytları|Düğüm|
+|IOWriteBytes|GÇ Yazma baytları|Bayt|Toplam|GÇ Yazma baytları|Düğüm|
+|Connectionkabul edildi|Kabul edilen bağlantılar|Sayı|Toplam|Kabul edilen bağlantılar|Düğüm|
+|Connectionişlenmiş|İşlenmiş bağlantılar|Sayı|Toplam|İşlenmiş bağlantılar|Düğüm|
+|ConnectionActive|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Düğüm|
+|RequestHandled|İşlenmiş Istekler|Sayı|Toplam|İşlenmiş Istekler|Düğüm|
+|Processedbkilitler|İşlenen bloklar|Sayı|Toplam|İşlenen bloklar|Düğüm|
+|ProcessedTransactions|İşlenen Işlemler|Sayı|Toplam|İşlenen Işlemler|Düğüm|
+|PendingTransactions|Bekleyen Işlemler|Sayı|Ortalama|Bekleyen Işlemler|Düğüm|
+|QueuedTransactions|Kuyruğa alınmış Işlemler|Sayı|Ortalama|Kuyruğa alınmış Işlemler|Düğüm|
 
 
 
@@ -254,7 +254,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |cacheisabetsizlik|İsabetsiz Önbellek Okuma Sayısı|Sayı|Toplam||Parça|
 |cachemissrate|Önbellek Isabetsizlik oranı|Yüzde|cachemissrate||Parça|
 |GetCommands|Alınanlar|Sayı|Toplam||Parça|
-|SetCommands|Kümeler|Sayı|Toplam||Parça|
+|SetCommands|Ayarlar|Sayı|Toplam||Parça|
 |operationsPerSecond|Saniye Başına İşlem|Sayı|Maksimum||Parça|
 |çıkarılan anahtarlar|Çıkarılan Anahtarlar|Sayı|Toplam||Parça|
 |totalkeys|Toplam anahtar sayısı|Sayı|Maksimum||Parça|
@@ -474,7 +474,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden uçtan uca gecikmesi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 
@@ -489,7 +489,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden uçtan uca gecikmesi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 
@@ -503,7 +503,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden uçtan uca gecikmesi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 
@@ -520,7 +520,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|ResponseType, GeoType, ApiName, Authentication, FileShare|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden uçtan uca gecikmesi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 
@@ -534,7 +534,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan gecikme süresi (milisaniye cinsinden). Bu değer, Başarı E2E Gecikme Süresi’nde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden uçtan uca gecikmesi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 
@@ -551,7 +551,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |ClientErrors|İstemci hataları|Sayı|Toplam|İstemci tarafı hatası olan çağrı sayısı (HTTP yanıt kodu 4xx).|ApiName, OperationName, bölge|
 |Dataın|Içindeki veriler|Bayt|Toplam|Gelen verilerin bayt cinsinden boyutu.|ApiName, OperationName, bölge|
 |Veri çıkışı|Giden veriler|Bayt|Toplam|Giden verilerin bayt cinsinden boyutu.|ApiName, OperationName, bölge|
-|Gecikme süresi|Gecikme süresi|Mayacak|Ortalama|Milisaniye cinsinden gecikme süresi.|ApiName, OperationName, bölge|
+|Gecikme Süresi|Gecikme Süresi|Mayacak|Ortalama|Milisaniye cinsinden gecikme süresi.|ApiName, OperationName, bölge|
 |TotalTokenCalls|Toplam belirteç çağrısı sayısı|Sayı|Toplam|Toplam belirteç çağrısı sayısı.|ApiName, OperationName, bölge|
 |Karakter Yabanslamuş|Çevrilen karakterler|Sayı|Toplam|Gelen metin isteğindeki toplam karakter sayısı.|ApiName, OperationName, bölge|
 |Karakterçeli|Eğitilen karakterler|Sayı|Toplam|Eğitilen toplam karakter sayısı.|ApiName, OperationName, bölge|
@@ -762,7 +762,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |ScanFailed|Tarama başarısız oldu|Sayı|Toplam|Başarısız tarama sayısını belirtir.|Hiçbiri|
 |ScanTimeTaken|Harcanan Tarama süresi|Saniye|Toplam|Saniye cinsinden toplam tarama süresini gösterir.|Hiçbiri|
 |CatalogActiveUsers|Günlük etkin kullanıcılar|Sayı|Toplam|Günlük etkin kullanıcı sayısı|Hiçbiri|
-|CatalogUsage|Işleme göre kullanım dağılımı|Sayı|Toplam|Kullanıcının kataloğa yaptığı işlem sayısını belirtin, örneğin, erişim, arama, sözlük.|Çalışma|
+|CatalogUsage|Işleme göre kullanım dağılımı|Sayı|Toplam|Kullanıcının kataloğa yaptığı işlem sayısını belirtin, örneğin, erişim, arama, sözlük.|İşlem|
 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/DataFactory
@@ -1093,7 +1093,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 |Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-|Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Konu başlığı|
+|Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Konu|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|Konu, ErrorType, hata|
 |Publishbaşarıyla Latencınms|Yayımlama başarı gecikmesi|Mayacak|Toplam|Milisaniye cinsinden yayımlama başarısı gecikmesi|Hiçbiri|
 |MatchedEventCount|Eşleşen olaylar|Sayı|Toplam|Bu olay aboneliğiyle eşleşen toplam olay sayısı|Konu başlığı, EventSubscriptionName, DomainEventSubscriptionName|
@@ -1215,9 +1215,9 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |CaptureBacklog|Biriktirme listesini yakala.|Sayı|Toplam|Microsoft. EventHub için yakalama biriktirme listesi.|Hiçbiri|
 |CapturedMessages|Yakalanan Iletiler.|Sayı|Toplam|Microsoft. EventHub için yakalanan Iletiler.|Hiçbiri|
 |CapturedBytes|Yakalanan baytlar.|Bayt|Toplam|Microsoft. EventHub için yakalanan baytlar.|Hiçbiri|
-|CPU|CPU|Yüzde|Maksimum|Bir yüzde olarak olay hub 'ı kümesine yönelik CPU kullanımı|Rol|
-|Kullanılabilirlik Blememory|Kullanılabilir Bellek|Yüzde|Maksimum|Toplam belleğin yüzdesi olarak olay hub 'ı kümesi için kullanılabilir bellek.|Rol|
-|Boyut|Bir EventHub 'ın bayt cinsinden boyutu.|Bayt|Ortalama|Bir EventHub 'ın bayt cinsinden boyutu.|Rol|
+|CPU|CPU|Yüzde|Maksimum|Bir yüzde olarak olay hub 'ı kümesine yönelik CPU kullanımı|Role|
+|Kullanılabilirlik Blememory|Kullanılabilir Bellek|Yüzde|Maksimum|Toplam belleğin yüzdesi olarak olay hub 'ı kümesi için kullanılabilir bellek.|Role|
+|Boyut|Bir EventHub 'ın bayt cinsinden boyutu.|Bayt|Ortalama|Bir EventHub 'ın bayt cinsinden boyutu.|Role|
 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft. HDInsight/kümeler
@@ -1856,7 +1856,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |Toplam Average_Bytes/sn|Toplam bayt/sn|Sayı|Ortalama|Toplam Average_Bytes/sn|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
 |Average_Processor kuyruğu uzunluğu|İşlemci kuyruğu uzunluğu|Sayı|Ortalama|Average_Processor kuyruğu uzunluğu|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
 |Sinyal|Sinyal|Sayı|Toplam|Sinyal|Bilgisayar, OSType, sürüm, Sourcecomputerıd|
-|Güncelleştir|Güncelleştir|Sayı|Ortalama|Güncelleştir|Bilgisayar, ürün, sınıflandırma, UpdateState, Isteğe bağlı, onaylanan|
+|Güncelleştir|Güncelleştir|Sayı|Ortalama|Güncelleştirme|Bilgisayar, ürün, sınıflandırma, UpdateState, Isteğe bağlı, onaylanan|
 |Olay|Olay|Sayı|Ortalama|Olay|Kaynak, olay günlüğü, bilgisayar, EventCategory, EventLevel, EventLevelName, EventID|
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. eşleme/peeringServices
@@ -2013,9 +2013,9 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |cache_used_percent|Önbellek kullanılan yüzde|Yüzde|Maksimum|Önbellek kullanım yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Hiçbiri|
 |sqlserver_process_core_percent<sup>1</sup> |SQL Server işlem çekirdeği yüzdesi|Yüzde|Maksimum|SQL Server işlemi için işletim sistemi tarafından ölçülen CPU kullanım yüzdesi.|Hiçbiri|
 |sqlserver_process_memory_percent<sup>1</sup> |SQL Server işlem belleği yüzdesi|Yüzde|Maksimum|SQL Server işlemi için işletim sistemi tarafından ölçülen bellek kullanım yüzdesi.|Hiçbiri|
-|tempdb_data_size<sup>2</sup> |Tempdb veri dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb veri dosyası boyutu kilobayt.|Hiçbiri|
-|tempdb_log_size<sup>2</sup> |Tempdb günlük dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb günlük dosyası boyutu kilobayt.|Hiçbiri|
-|tempdb_log_used_percent<sup>2</sup> |Kullanılan tempdb günlüğü yüzdesi|Yüzde|Maksimum|Kullanılan tempdb günlüğü yüzdesi.|Hiçbiri|
+|tempdb_data_size<sup>1</sup> |Tempdb veri dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb veri dosyası boyutu kilobayt.|Hiçbiri|
+|tempdb_log_size<sup>1</sup> |Tempdb günlük dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb günlük dosyası boyutu kilobayt.|Hiçbiri|
+|tempdb_log_used_percent<sup>1</sup> |Kullanılan tempdb günlüğü yüzdesi|Yüzde|Maksimum|Kullanılan tempdb günlüğü yüzdesi.|Hiçbiri|
 |local_tempdb_usage_percent|Yerel tempdb yüzdesi|Yüzde|Ortalama|Yerel tempdb yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Hiçbiri|
 |app_cpu_billed|Faturalandırılan uygulama CPU 'SU|Sayı|Toplam|Uygulama CPU 'SU faturalandırılır. Sunucusuz veritabanları için geçerlidir.|Hiçbiri|
 |app_cpu_percent|Uygulama CPU yüzdesi|Yüzde|Ortalama|Uygulama CPU yüzdesi. Sunucusuz veritabanları için geçerlidir.|Hiçbiri|
@@ -2040,9 +2040,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |snapshot_backup_size_bytes|Anlık görüntü yedekleme depolama boyutu|Bayt|Maksimum|Birikmeli anlık görüntü yedekleme depolama boyutu. Hiper ölçekli veritabanları için geçerlidir.|Hiçbiri|
 |base_blob_size_bytes|Temel BLOB depolama boyutu|Bayt|Maksimum|Temel BLOB depolama boyutu. Hiper ölçekli veritabanları için geçerlidir.|Hiçbiri|
 
-<sup>1</sup> Bu ölçüm, DTU tabanlı satın alma modelleri Için 2 sanal çekirdek ve üzeri Ile Vcore satın alma modeli veya 200 DTU ve üzeri kullanan veritabanlarında kullanılabilir. 
-
-<sup>2</sup> Bu ölçüm, 2 sanal çekirdek ve üzeri Ile Vcore satın alma modelini kullanan veritabanları IÇIN, DTU tabanlı satın alma modelleri IÇIN 200 DTU ve üzeri ile kullanılabilir. Bu ölçüm, hiper ölçekli veritabanları veya veri ambarları için şu anda kullanılamıyor.
+<sup>1</sup> Bu ölçüm, DTU tabanlı satın alma modeli Için 2 sanal çekirdekler ve üzeri ya da 200 DTU ve üzeri bir sanal çekirdek satın alma modeli kullanan veritabanlarında kullanılabilir. 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/Servers/Elaun havuzları
 
@@ -2074,16 +2072,14 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |database_cpu_used|Kullanılan CPU|Sayı|Ortalama|Kullanılan CPU|DatabaseResourceId|
 |sqlserver_process_core_percent<sup>1</sup>|SQL Server işlem çekirdeği yüzdesi|Yüzde|Maksimum|SQL Server işlemi için işletim sistemi tarafından ölçülen CPU kullanım yüzdesi. Elastik havuzlar için geçerlidir. |Hiçbiri|
 |sqlserver_process_memory_percent<sup>1</sup>|SQL Server işlem belleği yüzdesi|Yüzde|Maksimum|SQL Server işlemi için işletim sistemi tarafından ölçülen bellek kullanım yüzdesi. Elastik havuzlar için geçerlidir. |Hiçbiri|
-|tempdb_data_size<sup>2</sup>|Tempdb veri dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb veri dosyası boyutu kilobayt.|Hiçbiri|
-|tempdb_log_size<sup>2</sup>|Tempdb günlük dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb günlük dosyası boyutu kilobayt. |Hiçbiri|
-|tempdb_log_used_percent<sup>2</sup>|Kullanılan tempdb günlüğü yüzdesi|Yüzde|Maksimum|Kullanılan tempdb günlüğü yüzdesi.|Hiçbiri|
+|tempdb_data_size<sup>1</sup>|Tempdb veri dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb veri dosyası boyutu kilobayt.|Hiçbiri|
+|tempdb_log_size<sup>1</sup>|Tempdb günlük dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb günlük dosyası boyutu kilobayt. |Hiçbiri|
+|tempdb_log_used_percent<sup>1</sup>|Kullanılan tempdb günlüğü yüzdesi|Yüzde|Maksimum|Kullanılan tempdb günlüğü yüzdesi.|Hiçbiri|
 |allocated_data_storage|Ayrılan veri alanı|Bayt|Ortalama|Ayrılan veri alanı|Hiçbiri|
 |database_allocated_data_storage|Ayrılan veri alanı|Bayt|Ortalama|Ayrılan veri alanı|DatabaseResourceId|
 |allocated_data_storage_percent|Ayrılan veri alanı yüzdesi|Yüzde|Maksimum|Ayrılan veri alanı yüzdesi|Hiçbiri|
 
-<sup>1</sup> Bu ölçüm, DTU tabanlı satın alma modelleri Için 2 sanal çekirdek ve üzeri Ile Vcore satın alma modeli veya 200 DTU ve üzeri kullanan veritabanlarında kullanılabilir. 
-
-<sup>2</sup> Bu ölçüm, 2 sanal çekirdek ve üzeri Ile Vcore satın alma modelini kullanan veritabanları IÇIN, DTU tabanlı satın alma modelleri IÇIN 200 DTU ve üzeri ile kullanılabilir. Bu ölçüm, hiper ölçekli veritabanları için şu anda kullanılamıyor.
+<sup>1</sup> Bu ölçüm, DTU tabanlı satın alma modeli Için 2 sanal çekirdekler ve üzeri ya da 200 DTU ve üzeri bir sanal çekirdek satın alma modeli kullanan veritabanlarında kullanılabilir. 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/ManagedInstances
 
@@ -2107,7 +2103,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 
@@ -2122,7 +2118,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 
@@ -2136,7 +2132,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 
@@ -2153,7 +2149,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|ResponseType, GeoType, ApiName, Authentication, FileShare|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulama, FileShare|
 
@@ -2167,7 +2163,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
 |Giriş|Giriş|Bayt|Toplam|Bayt cinsinden giriş verileri miktarı. Bu sayı, dış istemciden Azure Depolama'ya giren ve Azure içinde giren verileri içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı. Bu sayı, dış istemciden Azure Depolama'ya çıkan ve Azure içinde çıkan verileri içerir. Sonuç olarak bu sayı, faturalanabilir çıkışı yansıtmaz.|Coğrafi tür, ApiName, kimlik doğrulaması|
-|Başarılı Sunucugecikmesi|Başarı Sunucu Gecikme Süresi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
+|Başarılı Sunucugecikmesi|Başarı sunucusu gecikmesi|Mayacak|Ortalama|Azure depolama tarafından başarılı bir isteği işlemek için kullanılan ortalama gecikme süresi (milisaniye cinsinden). Bu değer, AverageE2ELatency öğesinde belirtilen ağ gecikme süresini içermez.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |SuccessE2ELatency|Başarı E2E Gecikme Süresi|Mayacak|Ortalama|Bir depolama hizmetine veya belirtilen API işlemine yapılan başarılı isteklerin milisaniye cinsinden ortalama uçtan uca gecikme süresi. Bu değer, isteği okumak, yanıtı göndermek ve yanıtın onayını almak için Azure Depolama içinde gerekli işleme süresini içerir.|Coğrafi tür, ApiName, kimlik doğrulaması|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|Depolama hizmeti için kullanılabilirlik yüzdesi veya belirtilen API işlemi. Kullanılabilirlik, TotalBillableRequests değerinin beklenmeyen hata üretenler dahil olmak üzere ilgili istek sayısına bölünmesiyle hesaplanır. Beklenmeyen tüm hatalar, depolama hizmeti veya belirtilen API işlemi için kullanılabilirliğin azalmasıyla sonuçlanır.|Coğrafi tür, ApiName, kimlik doğrulaması|
 

@@ -8,12 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/27/2019
-ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77505567"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147024"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -52,6 +53,7 @@ Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
 + Python [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)olan herhangi bir Python ortamında.
 + [R için Azure Machine Learning SDK 'sı](https://azure.github.io/azureml-sdk-for-r/reference/index.html)olan herhangi bir r ortamında.
 + Azure Machine Learning [CLI uzantısını](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanarak komut satırında
++ [Azure Machine Learning VS Code uzantısı](how-to-manage-resources-vscode.md#workspaces)
 
 ## <a name="machine-learning-with-a-workspace"></a>Çalışma alanıyla makine öğrenimi
 
@@ -69,13 +71,13 @@ Machine Learning görevleri çalışma alanınıza yapıları okur ve/veya yazar
 
 Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebilirsiniz:
 
-| Çalışma alanı yönetim görevi   | Portal              | Studio | Python SDK/R SDK       | CLI        |
-|---------------------------|---------|---------|------------|------------|
-| Çalışma alanı oluşturma        | **&check;**     | | **&check;** | **&check;** |
-| Çalışma alanı erişimini yönetme    | **&check;**   || |  **&check;**    |
-| Enterprise Edition 'a yükseltme    | **&check;** | **&check;**  | |     |
-| İşlem kaynaklarını oluşturma ve yönetme    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
-| Not defteri VM 'si oluşturma |   | **&check;** | |     |
+| Çalışma alanı yönetim görevi   | Portal              | Studio | Python SDK/R SDK       | CLI        | VS Code
+|---------------------------|---------|---------|------------|------------|------------|
+| Çalışma alanı oluşturma        | **&check;**     | | **&check;** | **&check;** | **&check;** |
+| Çalışma alanı erişimini yönetme    | **&check;**   || |  **&check;**    ||
+| Enterprise Edition 'a yükseltme    | **&check;** | **&check;**  | |     ||
+| İşlem kaynaklarını oluşturma ve yönetme    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
+| Not defteri VM 'si oluşturma |   | **&check;** | |     ||
 
 > [!WARNING]
 > Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
@@ -89,7 +91,7 @@ Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](over
 * Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md) kullanın.
 * Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) kullanın
 * Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
-* Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](tutorial-setup-vscode-extension.md)kullanın.
+* Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](how-to-manage-resources-vscode.md#create-a-workspace)kullanın.
 
 > [!NOTE]
 > Çalışma alanı adı büyük/küçük harfe duyarlıdır.

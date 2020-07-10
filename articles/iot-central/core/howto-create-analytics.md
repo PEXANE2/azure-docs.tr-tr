@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158291"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147267"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Cihaz verilerini çözümlemek için Analytics 'i kullanma
 
@@ -86,9 +86,11 @@ Verilerinizi sorguladıktan sonra çizgi grafik üzerinde görselleştirmeyi ba�
 
   ![Verileri yakınlaştırın](media/howto-create-analytics/zoom.png)
 
-Üç nokta altında verilerle etkileşimde bulunmak için daha fazla grafik denetimi vardır.
+Üç nokta altında, verilerle etkileşimde bulunmak için daha fazla grafik denetimi vardır:
 
 - **Görüntüleme Kılavuzu:** Sonuçlarınız, her bir veri noktası için belirli bir değeri görüntülemenize olanak sağlayan bir tablo biçiminde kullanılabilir.
+
+- **CSV olarak indir:** Sonuçlarınız, virgülle ayrılmış değerler (CSV) dosyası olarak dışa aktarmak için kullanılabilir. CSV dosyası her bir cihaz için verileri içerir. Sonuçlar, belirtilen Aralık ve zaman çerçevesi kullanılarak verilir. 
 
 - **Bir Işaret bırakın:** ' Bırakma Işaretleyicisi ' denetimi, grafikteki belirli veri noktalarını bağlamak için bir yol sağlar. Farklı zaman dönemlerinde birden çok satır için verileri karşılaştırmaya çalışırken yararlı olur.
 

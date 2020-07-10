@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792210"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145283"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Bilişsel Arama eşzamanlılık yönetimi
 
@@ -46,7 +46,7 @@ Aşağıdaki kod, anahtar güncelleştirme işlemlerine yönelik accessCondition
 
 ### <a name="sample-code-from-dotnetetagsexplainer-program"></a>[Dotnetetagsexplainer programından](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) örnek kod
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
@@ -173,6 +173,7 @@ Bu kod parçacığı, zaten var olan bir dizine eş bir Eşeşleme eklenmesini g
 
 Kod parçacığı, "oteller" dizinini alır, bir güncelleştirme işleminde nesne sürümünü denetler, koşul başarısız olursa bir özel durum oluşturur ve sonra en son sürümü almak için sunucudan Dizin almayla başlayarak işlemi (en fazla üç kez) yeniden dener.
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -203,7 +204,7 @@ Kod parçacığı, "oteller" dizinini alır, bir güncelleştirme işleminde nes
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

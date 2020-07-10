@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include

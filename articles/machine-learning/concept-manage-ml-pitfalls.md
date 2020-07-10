@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210193"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147092"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
 
@@ -71,7 +71,7 @@ Otomatik ML, aşırı sığdırmayı engellemek için açık **model karmaşıkl
 **Çapraz doğrulama (CV)** , tam eğitim verilerinizin çok sayıda alt kümesini alma ve her bir alt kümede bir modeli eğitme işlemidir. Bu, bir modelin "Lucky" alabilir ve bir alt küme ile harika bir doğruluk elde etmenizi sağlar, ancak birçok alt küme kullanarak modelin her seferinde bu yüksek doğruluğu elde edilmeyeceği. CV 'yi yaparken, bir doğrulama veri kümesi sağlarsınız, CV katlarınızı (alt küme sayısı) belirtin ve otomatik ML, doğrulama kümenizdeki hatayı en aza indirmek için modelinize eğitme ve hiper parametreleri ayarlamanıza yardımcı olur. Bir CV katlaması daha fazla olabilir, ancak bunların çoğunu kullanarak, son modelinizin daha fazla sığdırma olasılığını azaltır. Zorunluluğunu getirir, CV 'nin bir kez eğitim sağladığından, her *n* CV alt kümesi için bir kez eğitecaksınız. 
 
 > [!NOTE]
-> Çapraz doğrulama varsayılan olarak etkinleştirilmemiştir; Otomatik ML ayarları ' nda yapılandırılması gerekir. Ancak, çapraz doğrulama yapılandırıldıktan ve bir doğrulama veri kümesi sağlandıktan sonra, işlem sizin için otomatikleştirilir. Bkz. 
+> Çapraz doğrulama varsayılan olarak etkinleştirilmemiştir; Otomatik ML ayarları ' nda yapılandırılması gerekir. Ancak, çapraz doğrulama yapılandırıldıktan ve bir doğrulama veri kümesi sağlandıktan sonra, işlem sizin için otomatikleştirilir. [OTOMATIK ml 'de çapraz doğrulama yapılandırması](how-to-configure-cross-validation-data-splits.md) hakkında daha fazla bilgi edinin
 
 <a name="imbalance"></a>
 
@@ -93,7 +93,7 @@ Machine Learning iş akışını basitleştirmenin bir parçası olarak, otomati
 
 - **Ağırlık sütunu**: otomatik ml, bir sınıfı daha fazla veya daha az "önemli" haline getirmek için kullanılabilen verilerin ağırlıklı veya aşağı bir şekilde kalınlığını sağlar.
 
-- Otomatik ML tarafından kullanılan algoritmalar, 20:1 'e kadar dengesizliği doğru şekilde işleyebilir, yani en yaygın sınıf, verilerde en az ortak sınıftan 20 kat daha fazla satıra sahip olabilir.
+- Minınor sınıfında örnek sayısı en az örnek olan bir değere eşitse ve çoğunluk sınıfının çoğu örnek içeren bir değeri ifade ettiği durumlarda, otomatik ML tarafından kullanılan algoritmalar, minalalallık sınıfındaki örnek sayısı %20 ' ye eşit veya ondan daha az Daha sonra, bu sorunu gidermek ve performansı artırmak için, oto ml 'nin, Sub-örneklenmiş verilerle bir deneme çalıştırması gerekir. Bu deneme boyunca daha iyi bir performans yoklarsa bu çözüm uygulanır.
 
 - İmdengeli verilerle daha iyi anlaşmalar sağlayan bir performans ölçümü kullanın. Örneğin AUC_weighted, bu sınıfı temsil eden örneklerin göreli sayısına göre her sınıfın katkısını hesaplayan birincil bir ölçümdür, bu nedenle dengesizine karşı daha sağlamdır.
 

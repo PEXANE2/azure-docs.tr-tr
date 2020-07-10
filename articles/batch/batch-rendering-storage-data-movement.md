@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965272"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147301"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Varlık ve çıkış dosyalarını işlemeye yönelik depolama ve veri taşıma seçenekleri
 
@@ -87,7 +87,7 @@ Dosyalar yalnızca Azure Storage 'daki blob 'lar olduğundan, standart blob API 
 
 [Azure dosyaları](../storage/files/storage-files-introduction.md) , bulutta SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar.  Azure dosyaları, Azure Blob depolama alanını temel alır; Bu, uygun [maliyetli](https://azure.microsoft.com/pricing/details/storage/files/) ve genel olarak yedekli şekilde başka bir bölgeye veri çoğaltma ile yapılandırılabilir.  [Ölçek hedefleri](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) , Azure dosyalarının tahmin havuzu boyutu ve varlık dosyalarının sayısı verildiğinde kullanılması gerekip gerekmediğini öğrenmek için incelenmelidir.
 
-Bir Azure dosya paylaşımının nasıl bağlanacağını kapsayan bir [blog gönderisi](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) ve [Belgeler](../storage/files/storage-how-to-use-files-windows.md) vardır.
+Azure dosya paylaşımının nasıl bağlanacağını kapsayan [Belgeler](../storage/files/storage-how-to-use-files-windows.md) vardır.
 
 ### <a name="mounting-an-azure-files-share"></a>Azure dosya paylaşma bağlama
 
@@ -134,4 +134,4 @@ Depolama seçenekleri hakkında daha fazla bilgi için bkz. ayrıntılı belgele
 
 * [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)
 * [Blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md)
-* [Azure Dosyaları](../storage/files/storage-files-introduction.md)
+* [Azure dosyaları](../storage/files/storage-files-introduction.md)

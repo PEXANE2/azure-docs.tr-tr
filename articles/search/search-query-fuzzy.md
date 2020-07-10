@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81262443"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146128"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Yanlış yazım ve yazım hatalarını düzeltmek için belirsiz arama
 
@@ -85,37 +86,49 @@ Arama belgesinde bir alanda aşağıdaki dizenin bulunduğunu varsayın `"Descri
 
 "Özel" üzerinde benzer bir aramayla başlayın ve Açıklama alanına isabet vurgusu ekleyin:
 
-    search=special~&highlight=Description
+```console
+search=special~&highlight=Description
+```
 
 Yanıt içinde, isabet vurgulama ' i eklediğiniz için biçimlendirme, eşleşen terim olarak "özel" e uygulanır.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 İsteği yeniden deneyin, birkaç harf ("pe") alarak "özel" yazarak hatalı çalışın:
 
-    search=scial~&highlight=Description
+```console
+search=scial~&highlight=Description
+```
 
 Şimdiye kadar, yanıtta hiçbir değişiklik yoktur. Varsayılan 2 derece uzaklığın kullanılması, "pe" iki karakteri "özel" kaynağından kaldırmak yine de söz konusu dönemde başarılı bir eşleştirmeye izin verir.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Bir çok istek deneniyor, toplam üç silme ("özel" iken "scal") için bir son karakter alarak arama terimini daha fazla değiştirin:
 
-    search=scal~&highlight=Description
+```console
+search=scal~&highlight=Description
+```
 
 Aynı yanıtın döndürüldüğünden, ancak artık "özel" ile eşleşme yerine "SQL" üzerinde olduğu gibi dikkat edin.
 
-            "@search.score": 0.4232868,
-            "@search.highlights": {
-                "Description": [
-                    "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
-                ]
+```output
+        "@search.score": 0.4232868,
+        "@search.highlights": {
+            "Description": [
+                "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
+            ]
+```
 
 Bu genişletilmiş örneğin noktası, isabet vurgulamanın belirsiz sonuçlara yol açmak için gereken açıklık göstermektir. Her durumda, aynı belge döndürülür. Bir eşleşmeyi doğrulamak için belge kimliklerine güvenmiştiniz, "özel" ' in "SQL" olarak kaymasını kaçırmış olabilirsiniz.
 

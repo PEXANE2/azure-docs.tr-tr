@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
-ms.date: 03/18/2020
-ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 437db3e1ad367a75d6c8d3a77b138bce79b5f61e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80064204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147141"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning ortamları nelerdir?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,6 +48,7 @@ Ortamları şu şekilde oluşturabilirsiniz:
 * `Environment`Çalışma alanınızdan mevcut nesneleri kullanma. Bu yaklaşım, bağımlılıklarınız ile tutarlılık ve reproducibility sağlar.
 * Mevcut bir Anaconda ortam tanımından içeri aktarılıyor.
 * Azure Machine Learning CLı 'yi kullanma
+* [VS Code uzantısını kullanma](how-to-manage-resources-vscode.md#create-environment)
 
 Belirli kod örnekleri için, [eğitim ve dağıtım için ortamları yeniden kullanma](how-to-use-environments.md#create-an-environment)' nın "ortam oluşturma" bölümüne bakın. Ortamlar, çalışma alanınız aracılığıyla da kolayca yönetilir. Bunlar aşağıdaki işlevleri içerir:
 

@@ -9,19 +9,20 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 8fdcad18ccec2748761cf35f2cd0b8efe9749958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159f3c63a647ff565e838b01dbaaadf947fb8ada
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142624"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
 Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için nasıl kullanacağınız gösterilmektedir. 
 
-[Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)  |  [Geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
+[Örnekler](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -64,39 +65,39 @@ Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.c
 > [!NOTE]
 > Bu makalede sunulan örnekte Azure Active Directory (AD) yetkilendirmesi gösterilmektedir. Yetkilendirme yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md).
 
-## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
-Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. Komutunu kullanarak bir tane oluşturabilirsiniz `az storage fs create` . 
+Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. Komutunu kullanarak bir tane oluşturabilirsiniz `az storage fs create` . 
 
-Bu örnek adlı bir dosya sistemi oluşturur `my-file-system` .
+Bu örnek adlı bir kapsayıcı oluşturur `my-file-system` .
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="show-file-system-properties"></a>Dosya sistemi özelliklerini göster
+## <a name="show-container-properties"></a>Kapsayıcı özelliklerini göster
 
-Bir dosya sisteminin özelliklerini, komutunu kullanarak konsola yazdırabilirsiniz `az storage fs show` .
+Komutunu kullanarak bir kapsayıcının özelliklerini konsola yazdırabilirsiniz `az storage fs show` .
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="list-file-system-contents"></a>Dosya sistemi içeriğini listeleme
+## <a name="list-container-contents"></a>Kapsayıcı içeriklerini Listele
 
 Komutunu kullanarak bir dizinin içeriğini listeleyin `az storage fs file list` .
 
-Bu örnek, adlı bir dosya sisteminin içeriğini listeler `my-file-system` .
+Bu örnek, adlı bir kapsayıcının içeriğini listeler `my-file-system` .
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="delete-a-file-system"></a>Dosya sistemini silme
+## <a name="delete-a-container"></a>Kapsayıcı silme
 
-Komutunu kullanarak bir dosya sistemini silin `az storage fs delete` .
+Komutunu kullanarak bir kapsayıcıyı silin `az storage fs delete` .
 
-Bu örnekte adlı bir dosya sistemi silinir `my-file-system` . 
+Bu örnekte adlı bir kapsayıcı silinir `my-file-system` . 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -106,7 +107,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 Komutunu kullanarak bir dizin başvurusu oluşturun `az storage fs directory create` . 
 
-Bu örnek, adlı bir `my-directory` hesapta bulunan adlı bir dosya sistemine adlı bir dizin ekler `my-file-system` `mystorageaccount` .
+Bu örnek, adlı bir `my-directory` hesapta bulunan adlı bir kapsayıcıya adlı bir dizin ekler `my-file-system` `mystorageaccount` .
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -124,13 +125,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 Komutunu kullanarak bir dizini yeniden adlandırın veya taşıyın `az storage fs directory move` .
 
-Bu örnek, adından `my-directory` aynı dosya sistemindeki adı bir dizini yeniden adlandırır `my-new-directory` .
+Bu örnek, adından `my-directory` aynı kapsayıcıdaki adı bir dizini yeniden adlandırır `my-new-directory` .
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-Bu örnek, bir dizini adlı bir dosya sistemine taşır `my-second-file-system` .
+Bu örnek, adlı bir kapsayıcıya bir dizin taşır `my-second-file-system` .
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -148,9 +149,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>Bir dizinin mevcut olup olmadığını denetle
 
-Dosya sisteminde, komutunu kullanarak belirli bir dizinin mevcut olup olmadığını saptayın `az storage fs directory exists` .
+Komutu kullanarak kapsayıcıda belirli bir dizinin mevcut olup olmadığını saptayın `az storage fs directory exists` .
 
-Bu örnek, adlı bir dizinin `my-directory` dosya sisteminde mevcut olup olmadığını gösterir `my-file-system` . 
+Bu örnek, adlı bir dizinin kapsayıcıda mevcut olup olmadığını gösterir `my-directory` `my-file-system` . 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -170,7 +171,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 Komutunu kullanarak bir dizinin içeriğini listeleyin `az storage fs file list` .
 
-Bu örnek, adlı `my-directory` `my-file-system` bir depolama hesabının dosya sisteminde bulunan adlı bir dizinin içeriğini listeler `mystorageaccount` . 
+Bu örnek, adlı `my-directory` `my-file-system` bir depolama hesabının kapsayıcısında bulunan adlı bir dizinin içeriğini listeler `mystorageaccount` . 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -309,7 +310,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [Örnekler](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [Görüş bildirin](https://github.com/Azure/azure-cli-extensions/issues)
 * [Bilinen sorunlar](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

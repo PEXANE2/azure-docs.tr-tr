@@ -4,12 +4,12 @@ description: Language Understanding (LUU) ilk kez kullandığınızda, yazma ana
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055775"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144637"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -110,7 +110,7 @@ Sahibi ve tüm katkıda bulunanlar, uygulamayı yazmak için erişime sahiptir.
 |Sürüm içeri aktarılıyor||
 |Uygulamayı genel yap|Bir uygulama genel olduğunda, yazma veya bitiş noktası anahtarına sahip herkes uygulamayı sorgulayabilir.|
 |Modeli değiştir|
-|Yayımlama|
+|Yayımla|
 |[Etkin öğrenme](luis-how-to-review-endpoint-utterances.md) için uç nokta utslerini gözden geçirme|
 |Eğitim|
 
@@ -154,9 +154,9 @@ Bir sunucudan sunucuya bir ortama çağırarak, LUSıS tahmin çalışma zamanı
 ## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>LUSıS portalında oturum açın ve yazmaya başlayın
 
 1. [Luo portalında](https://www.luis.ai) oturum açın ve kullanım koşullarını kabul edin.
-1. Hangi tür bir LUSıS yazma anahtarını kullanmak istediğinizi seçerek LUSıS uygulamanızı başlatın: ücretsiz deneme anahtarı veya yeni Azure LUSıS yazma anahtarı.
+1. Azure LUSıS yazma anahtarınızı seçerek LUSıS uygulamanızı başlatın.
 
-    ![Language Understanding yazma kaynağı türünü seçin](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+   ![Language Understanding yazma kaynağı türünü seçin](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
 1. Kaynak seçim sürecinizle işiniz bittiğinde [Yeni bir uygulama oluşturun](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
@@ -206,7 +206,7 @@ Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kayna�
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**'i seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**’i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 

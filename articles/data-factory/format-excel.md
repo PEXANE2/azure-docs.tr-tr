@@ -7,13 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 8b4876377501209e19ac496d605d228208d2323d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46108ed06659d234907c6eaa6841dc18022c73bf
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84670925"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144121"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory Excel biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -94,6 +95,54 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
         ...
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
+
+Veri akışlarını eşleme bölümünde, Excel biçimini aşağıdaki veri depolarında okuyabilirsiniz: [Azure Blob depolama](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#mapping-data-flow-properties)ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Excel veri kümesi veya [satır içi veri kümesi](data-flow-source.md#inline-datasets)kullanarak Excel dosyalarını işaret edebilirsiniz.
+
+### <a name="source-properties"></a>Kaynak özellikleri
+
+Aşağıdaki tabloda bir Excel kaynağı tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **kaynak seçenekleri** sekmesinde düzenleyebilirsiniz. Satır içi veri kümesi kullanırken, [veri kümesi özellikleri](#dataset-properties) bölümünde açıklanan özelliklerle aynı olan ek dosya ayarlarını görürsünüz.
+
+| Ad                      | Açıklama                                                  | Gerekli | İzin verilen değerler                                            | Veri akışı betiği özelliği         |
+| ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
+| Joker karakter yolları           | Joker karakterle eşleşen tüm dosyalar işlenecek. Veri kümesinde ayarlanan klasör ve dosya yolunu geçersiz kılar. | hayır       | String []                                                  | Yavaya Cardyolları                     |
+| Bölüm kök yolu       | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | hayır       | Dize                                                    | Partitionrootyolu                 |
+| Dosya listesi             | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | hayır       | `true` veya `false`                                         | Si                          |
+| Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma       | hayır       | Dize                                                    | rowUrlColumn                      |
+| Tamamlandıktan sonra          | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır       | Sil: `true` veya`false` <br> Geçiş`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
+| Son değiştirme ölçütü   | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır       | Timestamp                                                 | Modıfıedafter <br> modifiedBefore |
+
+### <a name="source-example"></a>Kaynak örneği
+
+Aşağıdaki görüntü, veri akışı modu kullanılarak veri akışlarını eşlerken Excel kaynak yapılandırmasına bir örnektir.
+
+![Excel kaynağı](media/data-flow/excel-source.png)
+
+İlişkili veri akışı betiği:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    wildcardPaths:['*.xls']) ~> ExcelSource
+```
+
+Satır içi veri kümesi kullanıyorsanız, eşleme veri akışı 'nda aşağıdaki kaynak seçeneklerini görürsünüz.
+
+![Excel kaynak satır içi veri kümesi](media/data-flow/excel-source-inline-dataset.png)
+
+İlişkili veri akışı betiği:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'excel',
+    fileSystem: 'container',
+    folderPath: 'path',
+    fileName: 'sample.xls',
+    sheetName: 'worksheet',
+    firstRowAsHeader: true) ~> ExcelSourceInlineDataset
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

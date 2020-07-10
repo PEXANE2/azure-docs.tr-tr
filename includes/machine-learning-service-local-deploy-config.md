@@ -13,7 +13,7 @@ ms.locfileid: "79477281"
 ---
 `deploymentconfig.json`Belgedeki girişler [localwebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
-| JSON varlığı | Yöntem parametresi | Description |
+| JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
 | `computeType` | NA | Bilgi işlem hedefi. Yerel hedefler için değer olmalıdır `local` . |
 | `port` | `port` | Hizmetin HTTP uç noktasının sergilebileceği yerel bağlantı noktası. |

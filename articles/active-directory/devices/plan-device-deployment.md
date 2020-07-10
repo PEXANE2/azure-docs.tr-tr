@@ -11,11 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444259"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165779"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory cihaz dağıtımınızı planlayın
 
@@ -37,7 +38,7 @@ Cihazlarınızı Azure AD ile tümleştirmeye yönelik birden çok yöntem vard�
 
 Başlamadan önce, [cihaz kimlik yönetimine genel bakış](overview.md)hakkında bilgi sahibi olduğunuzdan emin olun.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 Cihazlarınıza bir Azure AD kimliği verme hakkında önemli avantajlar:
 
@@ -101,7 +102,7 @@ Kuruluşa ait cihazların seçeneklerini öğrenmek için bu ağacı kullanın.
 
 iOS ve Android cihazları yalnızca Azure AD kayıtlı olabilir. Aşağıdaki tabloda Windows istemci cihazları için üst düzey noktalar sunulmaktadır. Genel bakış olarak kullanın, ardından farklı tümleştirme yöntemlerini ayrıntılı olarak inceleyin.
 
-| | Azure AD kayıtlı| Azure AD'ye katılım| Hibrit Azure AD'ye katılım |
+| Değerlendirme | Azure AD kayıtlı| Azure AD'ye katılım| Hibrit Azure AD'ye katılım |
 | - | - | - | - |
 | **İstemci işletim sistemleri**| | |  |
 | Windows 10 cihazları| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |

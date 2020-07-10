@@ -12,13 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/08/2020
 ms.author: b-juche
-ms.openlocfilehash: 8b417559a17dc05a07467a28d37fec9b9a7c12cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0d672f782cb9f476fa81d28ee369072caf8509b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84553465"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147200"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -60,7 +61,7 @@ Hizmet, bir birimin sağlanan boyutuna bağlı olarak maxfiles sınırını dina
 |    >= 3 TiB ancak < 4 TiB    |    80.000.000     |
 |    >= 4 TiB                |    100.000.000    |
 
-Herhangi bir birim boyutu için, maxfiles limitini 100.000.000 ötesine yükseltmek üzere bir [destek isteği](#limit_increase) başlatabilirsiniz.
+Bir birim için en az 4 TiB kotayı zaten ayırdıysanız, maxfiles limitini 100.000.000 ' den fazla artırmak için bir [destek isteği](#limit_increase) başlatabilirsiniz.
 
 ## <a name="request-limit-increase"></a>İstek sınırı artışı<a name="limit_increase"></a> 
 
@@ -80,7 +81,7 @@ Azure portal gezinti düzleminden:
 
         |  Kaynak  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışı nedeni       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Hesap |  *Abonelik Kimliği*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
+        |  Hesap |  *Abonelik kimliği*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Havuz    |  *Abonelik KIMLIĞI, hesap URI 'SI*  |  *İstenen yeni en büyük **Havuz** numarası*   |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Birim  |  *Abonelik KIMLIĞI, hesap URI 'si, havuz URI 'SI*   |  *İstenen yeni en yüksek **birim** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Maxfiles  |  *Abonelik KIMLIĞI, hesap URI 'SI, havuz URI 'si, birim URI 'SI*   |  *İstenen yeni en yüksek **maxfiles** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |    

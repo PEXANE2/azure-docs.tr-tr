@@ -7,11 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146613"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway için Web uygulaması güvenlik duvarı ilkeleri oluşturma
 
@@ -22,7 +23,7 @@ Bir WAF ilkesinin dinleyiciyle ilişkilendirilmesi, tek bir WAF arkasındaki bir
 Application Gateway bir ilke uygulanmışsa ve sonra bu Application Gateway üzerindeki bir dinleyiciye farklı bir ilke uygularsanız, dinleyicinin ilkesi geçerli olur, ancak yalnızca atandığı dinleyicilerden yararlanabilir. Application Gateway ilkesi, kendisine atanmış belirli bir ilke olmayan tüm diğer dinleyiciler için de geçerlidir. 
 
    > [!NOTE]
-   > Site başına ve URI başına WAF Ilkeleri genel önizlemede. Bu, bu özelliğin Microsoft 'un ek kullanım koşulları 'na tabi olduğu anlamına gelir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > URI başına WAF Ilkeleri genel önizlemede. Bu, bu özelliğin Microsoft 'un ek kullanım koşulları 'na tabi olduğu anlamına gelir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
    > [!NOTE]
    > Bir güvenlik duvarı Ilkesi bir WAF ile ilişkilendirildikten sonra, bu WAF ile ilişkili bir ilke olmalıdır. Bu ilkenin üzerine yazabilir, ancak bir ilkenin WAF ile tamamen ilişkisi desteklenmez. 
 

@@ -4,12 +4,12 @@ description: Batch görevi ve iş çıktısı verilerini Azure depolama 'ya kal�
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965136"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143512"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Kapsayıcı için paylaşılan erişim imzası alın
 
-Kapsayıcıyı oluşturduktan sonra kapsayıcıya yazma erişimi olan bir paylaşılan erişim imzası (SAS) alın. Bir SAS, kapsayıcıya temsilci erişimi sağlar. SAS, belirtilen bir zaman aralığı boyunca belirli bir izin kümesiyle ve erişim izni verir. Batch hizmeti, kapsayıcıya görev çıktısı yazmak için yazma izinlerine sahip bir SAS gerektirir. SAS hakkında daha fazla bilgi için bkz. [ \( \) Azure depolama 'da paylaşılan erişim imzaları SAS kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Kapsayıcıyı oluşturduktan sonra kapsayıcıya yazma erişimi olan bir paylaşılan erişim imzası (SAS) alın. Bir SAS, kapsayıcıya temsilci erişimi sağlar. SAS, belirtilen bir zaman aralığı boyunca belirli bir izin kümesiyle ve erişim izni verir. Batch hizmeti, kapsayıcıya görev çıktısı yazmak için yazma izinlerine sahip bir SAS gerektirir. SAS hakkında daha fazla bilgi için bkz. [ \( \) Azure depolama 'da paylaşılan erişim imzaları SAS kullanma](../storage/common/storage-sas-overview.md).
 
 Azure depolama API 'Lerini kullanarak bir SAS aldığınızda, API bir SAS belirteci dizesi döndürür. Bu belirteç dizesi, izinler ve SAS 'ın geçerli olduğu Aralık dahil olmak üzere SAS 'nin tüm parametrelerini içerir. Azure depolama 'daki bir kapsayıcıya erişmek üzere SAS 'yi kullanmak için, SAS belirteç dizesini Kaynak URI 'sine eklemeniz gerekir. Kaynak URI 'SI, eklenen SAS belirteciyle birlikte Azure Storage 'a kimliği doğrulanmış erişim sağlar.
 

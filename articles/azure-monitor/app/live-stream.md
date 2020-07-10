@@ -4,12 +4,12 @@ description: Özel ölçümler sayesinde web uygulamanızı gerçek zamanlı ola
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507355"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166493"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: Izleme & Tanıla, 1 saniyelik gecikme
 
@@ -49,12 +49,12 @@ Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Nod
 
 | |Canlı Akış | Ölçüm Gezgini ve analiz |
 |---|---|---|
-|Gecikme süresi|Bir saniye içinde görünen veriler|Dakikada toplanan|
-|Saklama yok|Veriler grafikte olduğu sırada devam ettirir ve sonra atılır|[90 gün boyunca tutulan veriler](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|İsteğe bağlı|Veriler yalnızca canlı ölçümler bölmesi açıkken akışlıdır |SDK her yüklendiğinde ve etkinleştirildiğinde veriler gönderilir|
-|Ücretsiz|Canlı Akış verileri için ücret alınmaz|[Fiyatlandırmaya](../../azure-monitor/app/pricing.md) tabi
-|Örnekleme|Tüm seçili ölçümler ve sayaçlar iletilir. Arızalar ve yığın izlemeleri örneklenir. TelemetryProcessors uygulanmıyor.|Olaylar [örneklenebilir](../../azure-monitor/app/api-filtering-sampling.md)|
-|Denetim kanalı|Filtre denetim sinyalleri SDK 'ya gönderilir. Bu kanalın güvenli olmasını öneririz.|İletişim, portala tek bir yoldur|
+|**Gecikme Süresi**|Bir saniye içinde görünen veriler|Dakikada toplanan|
+|**Saklama yok**|Veriler grafikte olduğu sırada devam ettirir ve sonra atılır|[90 gün boyunca tutulan veriler](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**İsteğe bağlı**|Veriler yalnızca canlı ölçümler bölmesi açıkken akışlıdır |SDK her yüklendiğinde ve etkinleştirildiğinde veriler gönderilir|
+|**Ücretsiz**|Canlı Akış verileri için ücret alınmaz|[Fiyatlandırmaya](../../azure-monitor/app/pricing.md) tabi
+|**Örnekleme**|Tüm seçili ölçümler ve sayaçlar iletilir. Arızalar ve yığın izlemeleri örneklenir. TelemetryProcessors uygulanmıyor.|Olaylar [örneklenebilir](../../azure-monitor/app/api-filtering-sampling.md)|
+|**Denetim kanalı**|Filtre denetim sinyalleri SDK 'ya gönderilir. Bu kanalın güvenli olmasını öneririz.|İletişim, portala tek bir yoldur|
 
 ## <a name="select-and-filter-your-metrics"></a>Ölçümlerinizi seçme ve filtreleme
 
@@ -190,7 +190,7 @@ Bununla birlikte, tüm bağlı sunucuları tanıyor ve güveniyorsanız, kimlik 
 | .NET                             | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +)  |
 | .NET Core (Target =. NET Framework)| Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +)  |
 | .NET Core (Target =. NET Core)     | Desteklenen (V 2.4.1 +) | Destekleniyor*          | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | **Desteklenmiyor**    |
-| Azure Işlevleri v2               | Destekleniyor           | Destekleniyor           | Destekleniyor           | Destekleniyor           | **Desteklenmiyor**    |
+| Azure Işlevleri v2               | Desteklenir           | Desteklenir           | Desteklenir           | Desteklenir           | **Desteklenmiyor**    |
 | Java                             | Desteklenen (V 2.0.0 +) | Desteklenen (V 2.0.0 +) | **Desteklenmiyor**   | **Desteklenmiyor**   | **Desteklenmiyor**    |
 | Node.js                          | Desteklenen (V 1.3.0 +) | Desteklenen (V 1.3.0 +) | **Desteklenmiyor**   | Desteklenen (V 1.3.0 +) | **Desteklenmiyor**    |
 

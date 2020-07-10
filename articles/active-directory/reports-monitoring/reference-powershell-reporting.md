@@ -13,15 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/12/2019
+ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0510184e2471d61c8911b5fcd484fd5dec0bce28
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75495315"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144474"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Raporlama için Azure AD PowerShell cmdlet’leri
 
@@ -49,9 +50,9 @@ Bu makale, denetim günlükleri ve oturum açma günlükleri için kullanılacak
 | Senaryo                      | PowerShell komutu |
 | :--                           | :--                |
 | Uygulama görünen adı      | Get-AzureADAuditDirectoryLogs-filtre "/App/displayName EQ ' Azure AD bulut eşitlemesi '" |
-| Kategori                      | Get-AzureADAuditDirectoryLogs-filtre "category EQ ' uygulama yönetimi '" |
+| Kategori                      | Get-AzureADAuditDirectoryLogs-filtre "category EQ ' ApplicationManagement '" |
 | Etkinlik tarihi saati            | Get-AzureADAuditDirectoryLogs-filtre "activityDateTime gt 2019-04-18" |
-| Yukarıdakilerin tümü              | Get-AzureADAuditDirectoryLogs-filtre "/uygulama/displayName EQ ' Azure AD bulut eşitleme ' ve kategori EQ ' uygulama yönetimi ' ve activityDateTime gt 2019-04-18"|
+| Yukarıdakilerin tümü              | Get-AzureADAuditDirectoryLogs-filtre "/uygulama/displayName EQ ' Azure AD bulut eşitleme ' ve kategori EQ ' ApplicationManagement ' ve activityDateTime gt 2019-04-18"|
 
 
 Aşağıdaki görüntüde bu komut için bir örnek gösterilmektedir. 

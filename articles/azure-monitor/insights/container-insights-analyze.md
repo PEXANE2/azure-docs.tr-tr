@@ -3,11 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Kubernetes izleme | Microsoft Doc
 description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure Izleyici ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 17efb89e36429f9658759a0ed90d4e7b785fe4b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340902"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166646"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
 
@@ -65,7 +66,7 @@ Sistem durumu, genel küme durumunu üç durumun *en kötü* durumu olarak bir �
 
 Aşağıdaki tabloda, çok küme görünümünde izlenen bir kümenin sistem durumunu denetleyen hesaplamanın bir dökümü verilmiştir.
 
-| |Durum |Kullanılabilirlik |
+| İzlenen küme |Durum |Kullanılabilirlik |
 |-------|-------|-----------------|
 |**Kullanıcı Pod**| | |
 | |Sağlam |%100 |
@@ -74,10 +75,10 @@ Aşağıdaki tabloda, çok küme görünümünde izlenen bir kümenin sistem dur
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
 |**Sistem Pod**| | |
 | |Sağlam |%100 |
-| |Uyarı |YOK |
+| |Uyarı |Yok |
 | |Kritik |<% 100 |
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
-|**Node** | | |
+|**Düğüm** | | |
 | |Sağlam |>% 85 |
 | |Uyarı |60-84% |
 | |Kritik |<% 60 |
@@ -116,7 +117,7 @@ Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluştu
 
 Ölçüm Gezgini ' nde, kapsayıcılar için Azure Izleyici 'den toplanmış düğüm ve pod kullanım ölçümlerini görüntüleyebilirsiniz. Aşağıdaki tabloda, kapsayıcı ölçümlerini görselleştirmek için ölçüm grafiklerini nasıl kullanacağınızı anlamanıza yardımcı olacak Ayrıntılar özetlenmektedir.
 
-|Ad Alanı | Metric | Açıklama |
+|Ad Alanı | Ölçüm | Açıklama |
 |----------|--------|-------------|
 | Öngörüler. kapsayıcı/düğümler | |
 | | Cpuusagemiliçekirdekler | Küme genelinde CPU kullanımının toplu ölçümü. Bu, 1000 birimlerine bölünen bir CPU çekirdeğleridir (Milli = 1000). Birçok uygulamanın bir çekirdek kullandığı bir kapsayıcıda çekirdekler kullanımını belirlemede kullanılır.|
@@ -133,7 +134,7 @@ Bir ölçümü, boyuta göre görüntülemek ve farklı segmentlerinin birbirler
 
 * Kumandasını
 * Kubernetes ad alanı
-* Node
+* Düğüm
 * Aşama
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Düğümleri, denetleyicileri ve kapsayıcı sistem durumunu çözümleme
@@ -190,7 +191,7 @@ Bu bilgiler, kümenizdeki düğümler arasında doğru kapsayıcılara sahip olu
 
 | Sütun | Açıklama |
 |--------|-------------|
-| Name | Ana bilgisayarın adı. |
+| Ad | Ana bilgisayarın adı. |
 | Durum | Düğüm durumunun Kubernetes görünümü. |
 | En az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; %95, en fazla&nbsp;%  | Seçilen süre boyunca yüzdebirlik değerini temel alan ortalama düğüm yüzdesi. |
 | En az, ortalama, 50 TH, 90 TH, en fazla | Ortalama düğümlerin fiili değeri, seçilen süre boyunca yüzdebirlik değerini temel alır. Ortalama değer bir düğüm için ayarlanan CPU/bellek sınırı üzerinden ölçülür. Pod ve kapsayıcılar için, ana bilgisayar tarafından bildirilen ortalama değerdir. |
@@ -233,14 +234,14 @@ Denetleyicileri görüntülerken görüntülenen bilgiler aşağıdaki tabloda a
 
 | Sütun | Açıklama |
 |--------|-------------|
-| Name | Denetleyicinin adı.|
+| Ad | Denetleyicinin adı.|
 | Durum | Çalışma bittikten sonra, *Tamam*, *sonlandırıldı*, *başarısız*, *durduruldu*veya *duraklatıldı*gibi bir durumla çalıştıktan sonra kapsayıcıların toplama durumu. Kapsayıcı çalışıyorsa ancak durum doğru şekilde görüntülenmiyorsa veya aracı tarafından çekilmediyse ve 30 dakikadan uzun süredir yanıt vermediyse durum *bilinmiyor*demektir. Durum simgesinin ek ayrıntıları aşağıdaki tabloda verilmiştir.|
 | En az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; %95, en fazla&nbsp;%| Seçili ölçüm ve yüzdebirlik için her bir varlığın ortalama yüzdesinin toplam ortalaması. |
 | En az, ortalama, 50 TH, 90 TH, en fazla  | Seçilen yüzdelik için kapsayıcının ortalama CPU frelicore veya bellek performansı toplamı. Ortalama değer bir pod için CPU/bellek sınırı kümesinden ölçülür. |
 | Kapsayıcılar | Denetleyici veya pod için toplam kapsayıcı sayısı. |
 | 'U | Kapsayıcılardan yeniden başlatma sayısı toplaması. |
 | Hizmet | Kapsayıcının başlatılmasından bu yana geçen süreyi temsil eder. |
-| Node | Yalnızca kapsayıcılar ve pods için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. |
+| Düğüm | Yalnızca kapsayıcılar ve pods için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. |
 | Eğilim en az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; en fazla&nbsp;% | Çubuk grafik eğilimi denetleyicinin ortalama yüzdebirlik ölçüsünü temsil eder. |
 
 Durum alanındaki simgeler, kapsayıcıların çevrimiçi durumunu gösterir.
@@ -270,12 +271,12 @@ Kapsayıcıları görüntülerken görüntülenen bilgiler aşağıdaki tabloda 
 
 | Sütun | Açıklama |
 |--------|-------------|
-| Name | Denetleyicinin adı.|
+| Ad | Denetleyicinin adı.|
 | Durum | Kapsayıcıların durumu (varsa). Durum simgesinin ek ayrıntıları sonraki tabloda verilmiştir.|
 | En az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; %95, en fazla&nbsp;% | Seçili ölçüm ve yüzdebirlik için her bir varlığın ortalama yüzdesinin toplamı. |
 | En az, ortalama, 50 TH, 90 TH, en fazla | Seçilen yüzdelik için kapsayıcının ortalama CPU milde veya bellek performansının toplamı. Ortalama değer bir pod için CPU/bellek sınırı kümesinden ölçülür. |
 | Ayak | Pod 'un bulunduğu kapsayıcı.|
-| Node |  Kapsayıcının bulunduğu düğüm. |
+| Düğüm |  Kapsayıcının bulunduğu düğüm. |
 | 'U | Kapsayıcının başlatılmasından bu yana geçen süreyi temsil eder. |
 | Hizmet | Kapsayıcının başlatıldığı veya yeniden başlatıldığı zamandan itibaren geçen süreyi temsil eder. |
 | Eğilim en az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; en fazla&nbsp;% | Çubuk grafik eğilimi kapsayıcının ortalama yüzdebirlik ölçüm yüzdesini temsil eder. |

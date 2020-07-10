@@ -7,15 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536633"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143861"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell kullanarak Web uygulaması güvenlik duvarı ilkelerini geçirme
 
-Bu betik, bir WAF yapılandırması veya özel kurallardan yalnızca WAF ilkesindeki bir tam WAF ilkesi arasında geçiş yapmayı kolaylaştırır. Portalda *WAF ilkesine geçiş*söyleyen bir uyarı görebilirsiniz veya coğrafi eşleşme özel kuralları, site BAŞıNA ve URI başına WAF ilkesi ya da bot Azaltma kuralı kümesi gibi yeni genel ÖNIZLEMESININ WAF özelliklerini de isteyebilirsiniz. Bu özelliklerden herhangi birini kullanmak için, uygulama ağ geçidiniz ile ilişkili tam bir WAF ilkesi gerekir. 
+Bu betik, bir WAF yapılandırması veya özel kurallardan yalnızca WAF ilkesindeki bir tam WAF ilkesi arasında geçiş yapmayı kolaylaştırır. Portalda *WAF ilkesine geçiş*söyleyen bir uyarı görebilirsiniz veya geomatch özel kuralları (Önizleme), site başına WAF ILKESI ve URI başına WAF ilkesi (Önizleme) veya bot azaltma RuleSet (Önizleme) gibi yeni WAF özelliklerinin olmasını isteyebilirsiniz. Bu özelliklerden herhangi birini kullanmak için, uygulama ağ geçidiniz ile ilişkili tam bir WAF ilkesi gerekir. 
 
 Yeni bir WAF ilkesi oluşturma hakkında daha fazla bilgi için bkz. [Application Gateway Için Web uygulaması güvenlik duvarı Ilkeleri oluşturma](create-waf-policy-ag.md). Geçirme hakkında daha fazla bilgi için bkz. [WAF Ilkesine geçme](create-waf-policy-ag.md#migrate-to-waf-policy).
 

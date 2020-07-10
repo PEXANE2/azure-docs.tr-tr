@@ -3,25 +3,26 @@ title: İzleyici Azure Batch
 description: Azure Batch için Azure izleme Hizmetleri, ölçümler, tanılama günlükleri ve diğer izleme özellikleri hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723536"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144939"
 ---
 # <a name="monitor-batch-solutions"></a>Batch çözümlerini izleme
 
 Azure ve Batch hizmeti, Batch çözümlerinizi izlemek için bir dizi hizmet, araç ve API sağlar. Bu genel bakış makalesi, gereksinimlerinize uyan bir izleme yaklaşımını seçmenize yardımcı olur.
 
-Azure kaynaklarını izlemeye yönelik Azure bileşenlerine ve hizmetlerine genel bir bakış için bkz. [Azure uygulamalarını ve kaynaklarını izleme](../monitoring-and-diagnostics/monitoring-overview.md).
+Azure kaynaklarını izlemeye yönelik Azure bileşenlerine ve hizmetlerine genel bir bakış için bkz. [Azure uygulamalarını ve kaynaklarını izleme](../azure-monitor/overview.md).
 
 ## <a name="subscription-level-monitoring"></a>Abonelik düzeyinde izleme
 
-Batch hesaplarını içeren abonelik düzeyinde, [Azure etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md) işlemsel olay verilerini [çeşitli kategorilerde](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log)toplar.
+Batch hesaplarını içeren abonelik düzeyinde, [Azure etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md) işlemsel olay verilerini [çeşitli kategorilerde](../azure-monitor/platform/activity-log.md#view-the-activity-log)toplar.
 
 Özel olarak Batch hesapları için, etkinlik günlüğü hesap oluşturma ve silme ve anahtar yönetimiyle ilgili olayları toplar.
 
-Etkinlik günlüğliğinizden olayları almanın bir yolu Azure portal kullanmaktır. **Tüm hizmetler**  >  **etkinlik günlüğü**' ne tıklayın. Veya Azure CLı, PowerShell cmdlet 'leri ya da Azure Izleyici REST API kullanarak olayları sorgulayın. Etkinlik günlüğünü de dışarı aktarabilir ya da [etkinlik günlüğü uyarılarını](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)yapılandırabilirsiniz.
+Etkinlik günlüğliğinizden olayları almanın bir yolu Azure portal kullanmaktır. **Tüm hizmetler**  >  **etkinlik günlüğü**' ne tıklayın. Veya Azure CLı, PowerShell cmdlet 'leri ya da Azure Izleyici REST API kullanarak olayları sorgulayın. Etkinlik günlüğünü de dışarı aktarabilir ya da [etkinlik günlüğü uyarılarını](../azure-monitor/platform/alerts-activity-log.md)yapılandırabilirsiniz.
 
 ## <a name="batch-account-level-monitoring"></a>Batch hesabı düzeyinde izleme
 
@@ -32,7 +33,7 @@ Etkinlik günlüğliğinizden olayları almanın bir yolu Azure portal kullanmak
 
 ## <a name="batch-resource-monitoring"></a>Batch kaynak izleme
 
-Batch uygulamalarınızda işler, görevler, düğümler ve havuzlar dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Batch API 'Lerini kullanın. Örneğin:
+Batch uygulamalarınızda işler, görevler, düğümler ve havuzlar dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Batch API 'Lerini kullanın. Örnek:
 
 * [Görevleri ve işlem düğümlerini duruma göre say](batch-get-resource-counts.md)
 * [Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma](batch-efficient-list-queries.md)

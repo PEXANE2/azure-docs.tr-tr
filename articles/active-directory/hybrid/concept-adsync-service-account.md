@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360308"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144723"
 ---
 # <a name="adsync-service-account"></a>AD Eşitleme hizmeti hesabı
 Azure AD Connect, Active Directory ve Azure Active Directory arasındaki eşitlemeyi düzenleyen bir şirket içi hizmeti yüklüyor.  Microsoft Azure AD eşitleme eşitleme hizmeti (ADSync), şirket içi ortamınızdaki bir sunucuda çalışır.  Hizmetin kimlik bilgileri hızlı yüklemelerde varsayılan olarak ayarlanır ancak kuruluş güvenlik gereksinimlerinizi karşılayacak şekilde özelleştirilebilir.  Bu kimlik bilgileri, şirket içi ormanlarınız veya Azure Active Directory bağlanmak için kullanılmaz.
@@ -40,15 +40,15 @@ Bir üye sunucuda çalıştırıldığında, AdSync hizmeti bir sanal hizmet hes
 |Etki Alanı Denetleyicisi|Etki alanı \ AAD_74dc30c01e80 (nota bakın)|
 
 ## <a name="custom-adsync-service-accounts"></a>Özel ADSync hizmeti hesapları
-Microsoft, ADSync hizmetini bir sanal hizmet hesabı ya da tek başına veya grup tarafından yönetilen hizmet hesabı bağlamında çalıştırmayı önerir.  Etki alanı yöneticiniz, belirli kurumsal güvenlik gereksinimlerinizi karşılamak için sağlanan bir hizmet hesabı oluşturmayı da seçebilir.   Yükleme sırasında kullanılan hizmet hesabını özelleştirmek için aşağıdaki hızlı ayarlar sayfasında Özelleştir seçeneğini belirleyin.   Aşağıdaki seçenekler mevcuttur:
+Microsoft, ADSync hizmetini bir sanal hizmet hesabı ya da tek başına veya grup tarafından yönetilen hizmet hesabı bağlamında çalıştırmayı önerir.  Etki alanı yöneticiniz, belirli kurumsal güvenlik gereksinimlerinizi karşılamak için sağlanan bir hizmet hesabı oluşturmayı da seçebilir.   Yükleme sırasında kullanılan hizmet hesabını özelleştirmek için aşağıdaki hızlı ayarlar sayfasında Özelleştir seçeneğini belirleyin.   Aşağıdaki seçenekler kullanılabilir:
 
 - Varsayılan hesap – Azure AD Connect, yukarıda açıklandığı gibi hizmet hesabı sağlayacak
 - yönetilen hizmet hesabı – yöneticiniz tarafından sağlanan tek başına veya grup MSA kullanın
 - etki alanı hesabı – yöneticiniz tarafından sağlanan bir etki alanı hizmet hesabı kullanın
 
-![](media/concept-adsync-service-account/adsync1.png)
+!["Özelleştir" veya "hızlı ayarları kullan" seçenek düğmelerini içeren Azure AD Connect Express ayarları sayfasının ekran görüntüsü.](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![Mevcut bir yönetilen hizmet hesabını kullanma seçeneğiyle birlikte Azure AD Connect "gerekli bileşenleri yüklemek" sayfasının ekran görüntüsü.](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>ADSync hizmeti hesap değişikliklerini tanılama
 Yükleme sonrasında ADSync hizmeti için kimlik bilgilerini değiştirmek, hizmetin başlamamasına, eşitleme veritabanına erişimi kaybetmesini ve bağlı dizinlerinizde (Azure ve AD DS) kimlik doğrulaması başarısız olmasına neden olur.  Yeni ADSync hizmet hesabına veritabanı erişimi verilmesi bu sorundan kurtulmak için yeterli değil. Özgün kimlik bilgileri geri yüklenene kadar hiçbir eşitleme gerçekleşmeyecektir.

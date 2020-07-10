@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6c7e1fcaebd415fcacfffcef62ca25cccde3e476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143746"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Blob depolamada belge dizin oluşturma
 
@@ -31,7 +31,7 @@ Blob Indexer aşağıdaki belge biçimlerinden metin ayıklayabilir:
 ## <a name="setting-up-blob-indexing"></a>Blob dizinlemeyi ayarlama
 Kullanarak bir Azure Blob depolama Dizin Oluşturucu ayarlayabilirsiniz:
 
-* [Azure portalındaki](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Bilişsel Arama [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -53,6 +53,7 @@ Blob dizin oluşturma için veri kaynağı aşağıdaki gerekli özelliklere sah
 
 Bir veri kaynağı oluşturmak için:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -63,6 +64,7 @@ Bir veri kaynağı oluşturmak için:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
+```
 
 Veri kaynağı API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kaynağı oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
@@ -85,6 +87,7 @@ Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapılar�
 
 `content`Bloblardan ayıklanan metni depolamak için aranabilir bir alanla dizin oluşturma:   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -96,6 +99,7 @@ Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapılar�
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 Dizinler oluşturma hakkında daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
@@ -104,6 +108,7 @@ Bir Dizin Oluşturucu bir veri kaynağını hedef arama diziniyle bağlar ve ver
 
 Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya hazırsınız:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -114,6 +119,7 @@ Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Bu Dizin Oluşturucu her iki saatte bir çalışır (zamanlama aralığı "PT2H" olarak ayarlanır). Her 30 dakikada bir dizin oluşturucu çalıştırmak için, aralığı "PT30M" olarak ayarlayın. Desteklenen en kısa Aralık 5 dakikadır. Zamanlama isteğe bağlıdır-atlanırsa, Dizin Oluşturucu yalnızca bir kez oluşturulduğunda çalışır. Ancak, bir dizin oluşturucuyu dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.   
 
@@ -174,13 +180,16 @@ Hangi ayıklanan alanın, dizininiz için anahtar alanla eşleşmesi gerektiğin
 
 Bu örnekte, `metadata_storage_name` alanı belge anahtarı olarak seçelim. Ayrıca, dizininizin adlı bir anahtar alanı `key` ve `fileSize` belge boyutunu depolamak için bir alan olduğunu varsayalım. İstediğiniz gibi durumlarda, Dizin oluşturucuyu oluştururken veya güncelleştirirken aşağıdaki alan eşlemelerini belirtin:
 
+```http
     "fieldMappings" : [
       { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
       { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
     ]
+```
 
 Bunu bir araya getirmek için, alan eşlemelerini nasıl ekleyebileceğiniz ve mevcut bir dizin oluşturucunun anahtarlarının Base-64 kodlamasını nasıl etkinleştirebileceğiniz aşağıda verilmiştir:
 
+```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -194,6 +203,7 @@ Bunu bir araya getirmek için, alan eşlemelerini nasıl ekleyebileceğiniz ve m
         { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
       ]
     }
+```
 
 > [!NOTE]
 > Alan eşlemeleri hakkında daha fazla bilgi edinmek için [Bu makaleye](search-indexer-field-mappings.md)bakın.
@@ -207,6 +217,7 @@ Hangi Blobların dizine alınacağını ve hangilerinin atlandığını denetley
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Yalnızca belirli dosya uzantılarına sahip Blobları dizine oluştur
 Dizin Oluşturucu yapılandırma parametresini kullanarak yalnızca belirttiğiniz dosya adı uzantılarına sahip Blobları dizinleyerek dizin oluşturabilirsiniz `indexedFileNameExtensions` . Değer, dosya uzantılarının virgülle ayrılmış bir listesini içeren bir dizedir (önde gelen noktayla). Örneğin, yalnızca ' ı dizine eklemek için. PDF ve. DOCX blob 'ları, bunu yapın:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -215,10 +226,12 @@ Dizin Oluşturucu yapılandırma parametresini kullanarak yalnızca belirttiğin
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
     }
+```
 
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Belirli dosya uzantılarına sahip Blobları Dışla
 Yapılandırma parametresini kullanarak, dizin oluşturma işleminden belirli dosya adı uzantılarına sahip Blobları dışlayabilirsiniz `excludedFileNameExtensions` . Değer, dosya uzantılarının virgülle ayrılmış bir listesini içeren bir dizedir (önde gelen noktayla). Örneğin, tüm Blobları hariç tüm Blobları dizine eklemek için. PNG ve. JPEG uzantıları, bunu yapın:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -227,6 +240,7 @@ Yapılandırma parametresini kullanarak, dizin oluşturma işleminden belirli do
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
     }
+```
 
 Hem hem `indexedFileNameExtensions` de `excludedFileNameExtensions` parametreleri varsa, Azure bilişsel arama önce `indexedFileNameExtensions` ' e, sonra da ' a bakar `excludedFileNameExtensions` . Bu, aynı dosya uzantısının her iki listede de mevcutsa, dizin oluşturma işleminin dışlanacağını belirtir.
 
@@ -241,6 +255,7 @@ Yapılandırma parametresi kullanılarak Blobların hangi bölümlerinin dizine 
 
 Örneğin, yalnızca depolama meta verilerini indekslemek için şunu kullanın:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -249,6 +264,7 @@ Yapılandırma parametresi kullanılarak Blobların hangi bölümlerinin dizine 
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
     }
+```
 
 ### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>Blobların nasıl dizine alınacağını denetlemek için blob meta verilerini kullanma
 
@@ -264,6 +280,7 @@ Yukarıda açıklanan yapılandırma parametreleri tüm Bloblar için geçerlidi
 
 Varsayılan olarak, blob Indexer, desteklenmeyen içerik türü (örneğin, bir görüntü) ile bir blob ile karşılaştığında yanıt vermez. Tabii ki, `excludedFileNameExtensions` belirli içerik türlerini atlamak için parametresini kullanabilirsiniz. Ancak, tüm olası içerik türlerini önceden bilmeden blob 'ları dizinleyebilirsiniz. Desteklenmeyen bir içerik türüyle karşılaşıldığında dizine almaya devam etmek için `failOnUnsupportedContentType` yapılandırma parametresini şu şekilde ayarlayın `false` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -272,21 +289,28 @@ Varsayılan olarak, blob Indexer, desteklenmeyen içerik türü (örneğin, bir 
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
     }
+```
 
 Bazı Bloblar için Azure Bilişsel Arama, içerik türünü belirleyemiyor veya başka türlü desteklenen içerik türündeki bir belgeyi işleyemez. Bu hata modunu yoksaymak için `failOnUnprocessableDocument` yapılandırma parametresini false olarak ayarlayın:
 
+```http
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+```
 
 Azure Bilişsel Arama, dizini oluşturulmuş Blobların boyutunu sınırlandırır. Bu sınırlar [Azure bilişsel arama hizmet sınırları](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)bölümünde belgelenmiştir. Büyük bir blob, varsayılan olarak hata olarak değerlendirilir. Ancak yapılandırma parametresini doğru olarak ayarlarsanız, hala büyük Blobların depolama meta verilerinin dizinini oluşturabilirsiniz `indexStorageMetadataOnlyForOversizedDocuments` : 
 
+```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
+```
 
-Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işlem noktasında hatalar meydana geliyorsa dizin oluşturmaya da devam edebilirsiniz. Belirli sayıda hatayı yoksaymak için, `maxFailedItems` ve `maxFailedItemsPerBatch` yapılandırma parametrelerini istenen değerlere ayarlayın. Örneğin:
+Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işlem noktasında hatalar meydana geliyorsa dizin oluşturmaya da devam edebilirsiniz. Belirli sayıda hatayı yoksaymak için, `maxFailedItems` ve `maxFailedItemsPerBatch` yapılandırma parametrelerini istenen değerlere ayarlayın. Örnek:
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
     }
+```
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Artımlı dizin oluşturma ve silme algılaması
 
@@ -345,6 +369,7 @@ Aşağıdaki adımları kullanın:
 
 Örneğin, aşağıdaki ilke, bir blob 'un şu değere sahip bir meta veri özelliği varsa silineceğini kabul eder `IsDeleted` `true` :
 
+```http
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -360,6 +385,7 @@ Aşağıdaki adımları kullanın:
             "softDeleteMarkerValue" : "true"
         }
     }
+```
 
 #### <a name="reindexing-undeleted-blobs"></a>Silinmeyen Blobların yeniden oluşturulması
 
@@ -396,6 +422,7 @@ Bunun çalışması için, tüm dizin oluşturucularının ve diğer bileşenler
 
 Tüm bloblarınız aynı kodlamada düz metin içeriyorsa, **metin ayrıştırma modunu**kullanarak dizin oluşturma performansını önemli ölçüde artırabilirsiniz. Metin ayrıştırma modunu kullanmak için `parsingMode` yapılandırma özelliğini şu şekilde ayarlayın `text` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -404,14 +431,16 @@ Tüm bloblarınız aynı kodlamada düz metin içeriyorsa, **metin ayrıştırma
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text" } }
     }
+```
 
 Varsayılan olarak, `UTF-8` kodlama varsayılır. Farklı bir kodlama belirtmek için `encoding` yapılandırma özelliğini kullanın: 
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
     }
-
+```
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>İçerik türüne özgü meta veri özellikleri

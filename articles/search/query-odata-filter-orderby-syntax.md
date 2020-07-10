@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153885"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165218"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>`$filter` `$orderby` `$select` Azure bilişsel arama için OData diline genel bakış
 
@@ -82,7 +83,9 @@ Bir alan yolunun anlamı, bağlama göre farklılık gösterir. Filtrelerdeki bi
 
 Alan yolunu göz önünde bulundurun `Address/City` . Filtre içinde, bu, "San Francisco" gibi geçerli belge için tek bir şehir anlamına gelir. Buna karşılık, `Rooms/Type` `Type` birçok Oda için alt alanı (örneğin, ilk odadaki "standart", ikinci odanın "Deluxe" gibi) ifade eder. `Rooms/Type`Alt alanın *tek bir örneğine* başvurmadığından `Type` , bu, doğrudan bir filtrede kullanılamaz. Bunun yerine, Oda türünü filtrelemek için, bir Aralık değişkeni ile bir [lambda ifadesi](search-query-odata-collection-operators.md) kullanırsınız, örneğin:
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 Bu örnekte, Aralık değişkeni `room` `room/Type` alan yolunda görünür. Bu şekilde, `room/Type` geçerli belgedeki geçerli odanın türü anlamına gelir. Bu, alt alanın tek bir örneğidir `Type` , bu nedenle doğrudan filtrede kullanılabilir.
 

@@ -3,16 +3,16 @@ title: Batch ile yoğun işlem kullanan Azure VM 'Leri kullanma
 description: Azure Batch havuzlarındaki HPC ve GPU sanal makine boyutlarının avantajlarından yararlanın. İşletim sistemi bağımlılıkları hakkında bilgi edinin ve çeşitli senaryo örneklerine bakın.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962518"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147335"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch havuzlarında RDMA veya GPU örnekleri kullanma
 
-Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örneğin:
+Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için tasarlanan Azure VM boyutlarının avantajlarından yararlanabilirsiniz. Örnek:
 
 * Çoklu örnek [MPI iş yüklerini](batch-mpi.md)çalıştırmak Için, H serisi veya uzak doğrudan bellek ERIŞIMI (RDMA) için bir ağ arabirimine sahip diğer boyutları seçin. Bu boyutlar, DEVI uygulamalarını hızlandırabilen, düğümler arası iletişim için bir InfiniBand ağına bağlanır. 
 
@@ -20,9 +20,9 @@ Belirli toplu işleri çalıştırmak için, büyük ölçekli hesaplama için t
 
 Bu makalede, Azure 'un Batch havuzlarında belirli boyutlardaki bir kısmını kullanmak için rehberlik ve örnekler sağlanmaktadır. Özellikler ve arka plan için bkz.:
 
-* Yüksek performanslı işlem VM boyutları ([Linux](../virtual-machines/linux/sizes-hpc.md), [Windows](../virtual-machines/windows/sizes-hpc.md)) 
+* Yüksek performanslı işlem VM boyutları ([Linux](../virtual-machines/sizes-hpc.md), [Windows](../virtual-machines/sizes-hpc.md)) 
 
-* GPU etkin VM boyutları ([Linux](../virtual-machines/linux/sizes-gpu.md), [Windows](../virtual-machines/windows/sizes-gpu.md)) 
+* GPU etkin VM boyutları ([Linux](../virtual-machines/sizes-gpu.md), [Windows](../virtual-machines/sizes-gpu.md)) 
 
 > [!NOTE]
 > Belirli VM boyutları, Batch hesaplarınızı oluşturduğunuz bölgelerde kullanılamayabilir. Bir boyutun kullanılabilir olup olmadığını denetlemek için [bölgeye göre kullanılabilir ürünlere](https://azure.microsoft.com/regions/services/) bakın ve [bir Batch havuzu için bir VM boyutu seçin](batch-pool-vm-sizes.md).
@@ -33,21 +33,21 @@ Batch 'de yoğun işlem yoğunluğu bulunan boyutlardaki RDMA veya GPU Özellikl
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux havuzları-sanal makine yapılandırması
 
-| Boyut | Özellik | İşletim sistemleri | Gerekli yazılımlar | Havuz ayarları |
+| Boyut | Yetenek | İşletim sistemleri | Gerekli yazılımlar | Havuz ayarları |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS veya<br/>CentOS tabanlı HPC<br/>(Azure Marketi) | Intel MPı 5<br/><br/>Linux RDMA sürücüleri | Düğüm içi iletişimi etkinleştir, eşzamanlı görev yürütmeyi devre dışı bırak |
-| [NC, NCv2, NCv3, NDv2 serisi](../virtual-machines/linux/n-series-driver-setup.md) | NVıDıA Tesla GPU (seriye göre değişir) | Ubuntu 16,04 LTS veya<br/>CentOS 7,3 veya 7,4<br/>(Azure Marketi) | NVıDıA CUDA veya CUDA araç seti sürücüleri | YOK | 
-| [NV, NVv2 serisi](../virtual-machines/linux/n-series-driver-setup.md) | NVıDıA Tesla M60 GPU | Ubuntu 16,04 LTS veya<br/>CentOS 7,3<br/>(Azure Marketi) | NVıDıA KıLAVUZ sürücüleri | YOK |
+| [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS veya<br/>CentOS tabanlı HPC<br/>(Azure Marketi) | Intel MPı 5<br/><br/>Linux RDMA sürücüleri | Düğüm içi iletişimi etkinleştir, eşzamanlı görev yürütmeyi devre dışı bırak |
+| [NC, NCv2, NCv3, NDv2 serisi](../virtual-machines/linux/n-series-driver-setup.md) | NVıDıA Tesla GPU (seriye göre değişir) | Ubuntu 16,04 LTS veya<br/>CentOS 7,3 veya 7,4<br/>(Azure Marketi) | NVıDıA CUDA veya CUDA araç seti sürücüleri | Yok | 
+| [NV, NVv2 serisi](../virtual-machines/linux/n-series-driver-setup.md) | NVıDıA Tesla M60 GPU | Ubuntu 16,04 LTS veya<br/>CentOS 7,3<br/>(Azure Marketi) | NVıDıA KıLAVUZ sürücüleri | Yok |
 
 <sup>*</sup>RDMA özellikli N serisi boyutlar da NVıDıA Tesla GPU 'ları içerir
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows havuzları-sanal makine yapılandırması
 
-| Boyut | Özellik | İşletim sistemleri | Gerekli yazılımlar | Havuz ayarları |
+| Boyut | Yetenek | İşletim sistemleri | Gerekli yazılımlar | Havuz ayarları |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 veya<br/>2012 (Azure Marketi) | Microsoft MPı 2012 R2 veya üzeri ya da<br/> Intel MPı 5<br/><br/>Windows RDMA sürücüleri | Düğüm içi iletişimi etkinleştir, eşzamanlı görev yürütmeyi devre dışı bırak |
-| [NC, NCv2, NCv3, ND, NDv2 serisi](../virtual-machines/windows/n-series-driver-setup.md) | NVıDıA Tesla GPU (seriye göre değişir) | Windows Server 2016 veya <br/>2012 R2 (Azure Marketi) | NVıDıA CUDA veya CUDA araç seti sürücüleri| YOK | 
-| [NV, NVv2 serisi](../virtual-machines/windows/n-series-driver-setup.md) | NVıDıA Tesla M60 GPU | Windows Server 2016 veya<br/>2012 R2 (Azure Marketi) | NVıDıA KıLAVUZ sürücüleri | YOK |
+| [NC, NCv2, NCv3, ND, NDv2 serisi](../virtual-machines/windows/n-series-driver-setup.md) | NVıDıA Tesla GPU (seriye göre değişir) | Windows Server 2016 veya <br/>2012 R2 (Azure Marketi) | NVıDıA CUDA veya CUDA araç seti sürücüleri| Yok | 
+| [NV, NVv2 serisi](../virtual-machines/windows/n-series-driver-setup.md) | NVıDıA Tesla M60 GPU | Windows Server 2016 veya<br/>2012 R2 (Azure Marketi) | NVıDıA KıLAVUZ sürücüleri | Yok |
 
 <sup>*</sup>RDMA özellikli N serisi boyutlar da NVıDıA Tesla GPU 'ları içerir
 
@@ -57,7 +57,7 @@ Batch 'de yoğun işlem yoğunluğu bulunan boyutlardaki RDMA veya GPU Özellikl
 > Bulut hizmeti yapılandırması olan Batch havuzlarında N serisi boyutlar desteklenmez.
 >
 
-| Boyut | Özellik | İşletim sistemleri | Gerekli yazılımlar | Havuz ayarları |
+| Boyut | Yetenek | İşletim sistemleri | Gerekli yazılımlar | Havuz ayarları |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016, 2012 R2, 2012 veya<br/>2008 R2 (konuk işletim sistemi ailesi) | Microsoft MPı 2012 R2 veya üzeri ya da<br/>Intel MPı 5<br/><br/>Windows RDMA sürücüleri | Düğüm içi iletişimi etkinleştir,<br/> eşzamanlı görev yürütmeyi devre dışı bırak |
 
@@ -105,7 +105,7 @@ CUDA uygulamalarını bir Windows NC düğümü havuzunda çalıştırmak için 
 | **İsteyin** | 2016-veri merkezi |
 | **Düğüm boyutu** | NC6 standart |
 | **Uygulama paketi başvuruları** | GPUDriver, sürüm 411,82 |
-| **Başlangıç görevi etkin** | True<br>**Komut satırı** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Kullanıcı kimliği** -havuz oto Kullanıcı, yönetici<br/>**Başarılı bekleme** -doğru
+| **Başlangıç görevi etkin** | Doğru<br>**Komut satırı** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Kullanıcı kimliği** -havuz oto Kullanıcı, yönetici<br/>**Başarılı bekleme** -doğru
 
 ## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Örnek: Linux NC VM havuzunda NVıDıA GPU sürücüleri
 
@@ -142,7 +142,7 @@ Windows MPı uygulamalarını bir Azure H16r VM düğümü havuzunda çalıştı
 | **Özel görüntü** | *Görüntünün adı* |
 | **Düğüm Aracısı SKU 'SU** | Batch. Node. Windows AMD64 |
 | **Düğüm boyutu** | H16r standart |
-| **Düğümler arası iletişim etkin** | True |
+| **Düğümler arası iletişim etkin** | Doğru |
 | **Düğüm başına en fazla görev** | 1 |
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Örnek: Linux H16r VM havuzunda Intel MPı
@@ -158,7 +158,7 @@ Batch API 'Lerini veya Azure portal kullanarak, bu görüntüyü kullanarak ve i
 | **Teklif** | CentOS-HPC |
 | **İsteyin** | 7.4 |
 | **Düğüm boyutu** | H16r standart |
-| **Düğümler arası iletişim etkin** | True |
+| **Düğümler arası iletişim etkin** | Doğru |
 | **Düğüm başına en fazla görev** | 1 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

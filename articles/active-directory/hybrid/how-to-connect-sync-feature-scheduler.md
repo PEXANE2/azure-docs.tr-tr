@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103560"
+ms.locfileid: "86146997"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect eşitleme: Scheduler
 Bu konuda Azure AD Connect Sync (eşitleme altyapısı) içinde yerleşik Zamanlayıcı açıklanmaktadır.
@@ -41,8 +41,12 @@ Zamanlayıcı iki görevden sorumludur:
 Scheduler her zaman çalışır, ancak bu görevlerden yalnızca birini çalıştıracak şekilde yapılandırılabilir. Örneğin, kendi eşitleme çevrimi işleminizin olması gerekiyorsa bu görevi Scheduler 'da devre dışı bırakabilir ancak bakım görevini yine de çalıştırabilirsiniz.
 
 >[!IMPORTANT]
->Bir eşitleme döngüsünün her 7 günde bir en az bir kez çalıştığından emin olmanız gerekir. Bunun yapılmaması, çözümlemek için tam eşitleme çalıştırmanızı gerektiren eşitleme sorunlarına neden olabilir.
-
+>Varsayılan olarak, her 30 dakikada bir eşitleme çevrimi çalıştırılır. Eşitleme cycley değiştirdiyseniz, bir eşitleme döngüsünün her 7 günde en az bir kez çalıştığından emin olmanız gerekir. 
+>
+>* Bir Delta eşitlemenin, son Delta eşitleden 7 gün içinde gerçekleşmesi gerekir.
+>* Bir Delta eşitlemesi (tam eşitleme sonrasında), son tam eşitlemenin tamamlandığı zamandan itibaren 7 gün içinde gerçekleşecektir.
+>
+>Bunun yapılmaması, çözümlemek için tam eşitleme çalıştırmanızı gerektiren eşitleme sorunlarına neden olabilir. Bu, hazırlama modundaki sunucular için de geçerlidir.
 
 ## <a name="scheduler-configuration"></a>Zamanlayıcı yapılandırması
 Geçerli yapılandırma ayarlarınızı görmek için PowerShell ve Çalıştır ' a gidin `Get-ADSyncScheduler` . Şu resme benzer bir şey gösterir:

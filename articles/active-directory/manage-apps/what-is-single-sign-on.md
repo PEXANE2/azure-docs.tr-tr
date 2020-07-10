@@ -1,5 +1,5 @@
 ---
-title: Uygulamalarda çoklu oturum açma-Azure Active Directory | Microsoft Docs
+title: Azure çoklu oturum açma (SSO) nedir?
 description: Azure Active Directory (Azure AD) içinde uygulama yapılandırırken çoklu oturum açma yöntemi seçme hakkında bilgi edinin. Kullanıcıların her uygulama için parolaları hatırlamaları ve hesap yönetiminin yönetimini basitleştirmek için çoklu oturum açma kullanın.
 services: active-directory
 author: kenwith
@@ -12,14 +12,14 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8b20d7d285f30eb0aa9ba5ac22739b57856d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479717"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144595"
 ---
-# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalarda çoklu oturum açma
+# <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
 Çoklu oturum açma (SSO), kullanıcılar Azure Active Directory (Azure AD) uygulamalarında oturum açtığında güvenlik ve kolaylık sağlar. Bu makalede, çoklu oturum açma yöntemleri açıklanmakta ve uygulamalarınızı yapılandırırken en uygun SSO yöntemini seçmenize yardımcı olur.
 
@@ -54,7 +54,7 @@ Aşağıdaki tablo, çoklu oturum açma yöntemlerini özetler ve daha fazla ayr
 
 Yeni uygulamalar geliştirirken, birden çok cihaz platformunda uygulamanız için en iyi çoklu oturum açma deneyimi elde etmek için OpenID Connect ve OAuth gibi modern protokolleri kullanın. OAuth, kullanıcıların veya yöneticilerin [Microsoft Graph](/graph/overview)gibi korumalı kaynaklara [izin vermesini](configure-user-consent.md) sağlar. Uygulamanız için [SDK 'ları](../develop/reference-v2-libraries.md) benimsemeyi ve ayrıca uygulamanız [Microsoft Graph](/graph/overview)kullanmaya hazırız.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
@@ -99,8 +99,8 @@ Parola tabanlı çoklu oturum açma, HTML tabanlı bir oturum açma sayfasına s
 - Windows 10 yıldönümü sürümü veya sonraki sürümlerde Microsoft Edge
 - İOS ve Android için Microsoft Edge
 - Intune Yönetilen Tarayıcı
-- Windows 7 veya üzeri cihazlarda ve MacOS X veya üzeri cihazlarda Chrome
-- Windows XP SP2 veya sonraki sürümlerde Firefox 26,0 veya üzeri ve Mac OS X 10,6 ya da üzeri
+- Windows 7 veya üzeri cihazlarda ve macOS X veya üzeri cihazlarda Chrome
+- Windows XP SP2 veya sonraki sürümlerinde ve macOS X 10,6 veya üzeri sürümlerde Firefox 26,0 veya üzeri
 
 Parola tabanlı çoklu oturum açma için bir bulut uygulaması yapılandırmak üzere, bkz. [parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md).
 

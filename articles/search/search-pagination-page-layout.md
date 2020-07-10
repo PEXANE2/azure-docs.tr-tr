@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561588"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146182"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
@@ -55,20 +55,26 @@ Temel alınan dizin değiştirilirken sayfalandırılmış sorguların sonuçlar
  
 Yinelemeleri nasıl alabileceğiniz hakkında bir örnek aşağıda verilmiştir. Dört belge içeren bir dizin varsayın:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 Şimdi sonuçların, derecelendirmeye göre sıralanmış olarak her seferinde bir kez döndürülmesini istediğinizi varsayın. Sonuçların ilk sayfasını almak için bu sorguyu yürütülecektir: `$top=2&$skip=0&$orderby=rating desc` , aşağıdaki sonuçları üretir:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 Hizmette, sorgu çağrıları arasındaki dizine beşinci bir belge eklendiğini varsayalım: `{ "id": "5", "rating": 4 }` .  Kısa süre sonra, ikinci sayfayı getirmek için bir sorgu yürütüyoruz `$top=2&$skip=2&$orderby=rating desc` ve şu sonuçları elde edersiniz:
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 Belge 2 ' nin iki kez getirildiğine dikkat edin. Bunun nedeni, yeni belge 5 ' in derecelendirme için daha büyük olması, bu yüzden belge 2 ' den önce ve ilk sayfada yer bırakmadan önce sıralanır. Bu davranış beklenmeyen bir durum olsa da, bir arama altyapısının nasıl davrandığı normaldir.
 

@@ -8,11 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c774d3f56eaf666a31ff73f433a3b4a5a363ce2f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466077"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142491"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için JavaScript kullanın
 
@@ -20,7 +21,7 @@ Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin
 
 [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Geri bildirimde](https://github.com/Azure/azure-sdk-for-java/issues) bulunun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -89,11 +90,11 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 > [!NOTE]
 > Daha fazla örnek için bkz. [js Için Azure kimlik istemci kitaplığı](https://www.npmjs.com/package/@azure/identity) belgeleri.
 
-## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
-Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. Bir **filesystemclient** örneği alarak ve sonra **Filesystemclient. Create** metodunu çağırarak bir tane oluşturabilirsiniz.
+Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. Bir **filesystemclient** örneği alarak ve sonra **Filesystemclient. Create** metodunu çağırarak bir tane oluşturabilirsiniz.
 
-Bu örnek adlı bir dosya sistemi oluşturur `my-file-system` . 
+Bu örnek adlı bir kapsayıcı oluşturur `my-file-system` . 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -111,7 +112,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 Bir **directoryclient** örneği alarak ve sonra **directoryclient. Create** metodunu çağırarak bir dizin başvurusu oluşturun.
 
-Bu örnek, bir dosya sistemine adlı bir dizin ekler `my-directory` . 
+Bu örnek, bir kapsayıcıya adlı bir dizin ekler `my-directory` . 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {

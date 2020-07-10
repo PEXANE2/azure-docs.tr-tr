@@ -4,11 +4,12 @@ description: Azure Batch içindeki Linux sanal makinelerinin havuzlarında paral
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, tracking-python
-ms.openlocfilehash: 1a87b72b16c1d41e5569c4ce9e5e1a6e2c51a2e0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 05e23093a00eab70db683c10eae59ef27152d2f7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960087"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145042"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -28,7 +29,7 @@ Batch 'de işlem düğümleri havuzu oluşturduğunuzda, düğüm boyutunu ve i�
 
 ### <a name="virtual-machine-image-reference"></a>Sanal makine görüntüsü başvurusu
 
-Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak için [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanır. [Azure Marketi][vm_marketplace]'nden bir görüntü belirtebilir veya hazırladığınız özel bir görüntü sağlayabilirsiniz. Özel görüntüler hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi ile havuz oluşturma](batch-sig-images.md).
+Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak için [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/overview.md) kullanır. [Azure Marketi][vm_marketplace]'nden bir görüntü belirtebilir veya hazırladığınız özel bir görüntü sağlayabilirsiniz. Özel görüntüler hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi ile havuz oluşturma](batch-sig-images.md).
 
 Bir sanal makine görüntü başvurusunu yapılandırdığınızda, sanal makine görüntüsünün özelliklerini belirtirsiniz. Bir sanal makine görüntü başvurusu oluştururken aşağıdaki özellikler gereklidir:
 

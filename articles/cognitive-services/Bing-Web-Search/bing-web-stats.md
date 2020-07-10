@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147400"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Bing Arama API'leri analiz ekleyin
 
@@ -53,7 +53,7 @@ Varsayılan olarak, grafikler ve grafikler, erişiminiz olan tüm ölçümleri v
 - **Zaman dilimi**: raporlama dönemi. Şunları belirtebilirsiniz:
   - **Tümü**: en fazla 13 ay veri içerir  
   - Son **24 saat**: son 24 saat içindeki analizi içerir  
-  - **Son hafta**: önceki yedi gündeki analizi içerir  
+  - **Son hafta**: önceki 7 güne ait analizi içerir  
   - **Geçen ay**: önceki 30 günden analizler içerir  
   - **Özel bir tarih aralığı**: varsa, belirtilen tarih aralığından analiz içerir  
 

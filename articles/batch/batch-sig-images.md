@@ -4,12 +4,12 @@ description: Özel görüntü havuzları, toplu iş yüklerinizi çalıştırmak
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851721"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147288"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -30,10 +30,10 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 - **Uygulamaları önceden yükler.** İşletim düğümleri bir başlangıç göreviyle sağlandıktan sonra uygulamaları yüklemekten daha verimli ve daha az hata, işletim sistemi diskine önceden yükleme.
 - **Büyük miktarlarda veriyi bir kez kopyalayın.** Yönetilen bir görüntünün veri disklerine kopyalayarak, yönetilen paylaşılan görüntünün statik veri parçasını oluşturun. Bu yalnızca bir kez yapılmalıdır ve verileri havuzun her bir düğümü için kullanılabilir hale getirir.
 - **Daha büyük boyutlarda havuzları büyütün.** Paylaşılan görüntü Galerisi ile, daha fazla paylaşılan görüntü çoğaltmalarıyla birlikte özelleştirilmiş görüntülerinize sahip daha büyük havuzlar da oluşturabilirsiniz.
-- **Özel görüntü olarak yalnızca yönetilen bir görüntü kullanmaktan daha iyi performans.** Paylaşılan görüntü özel görüntü havuzu için, kararlı duruma ulaşma süresi %25 ' e varan ve VM boşta kalma gecikmesi %30 ' a kadar kısa.
+- **Özel görüntü olarak yalnızca yönetilen bir görüntü kullanmaktan daha iyi performans.** Paylaşılan görüntü özel görüntü havuzu için, kararlı duruma ulaşma süresi %25 ' e kadar daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
 - **Daha kolay yönetim için görüntü sürümü oluşturma ve gruplama.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri içerir. Görüntülerin gruplandırılması, daha kolay görüntü yönetimine olanak tanır. Daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
 > Azure AD 'yi kullanarak kimlik doğrulaması yapmanız gerekir. Paylaşılan anahtar kimlik doğrulaması kullanırsanız, bir kimlik doğrulama hatası alırsınız.  
@@ -83,7 +83,7 @@ Bir anlık görüntüden yönetilen bir görüntü oluşturmak için [az Image C
 
 ### <a name="create-a-shared-image-gallery"></a>Paylaşılan Görüntü Galerisi Oluşturma
 
-Yönetilen görüntünüzü başarıyla oluşturduktan sonra, özel görüntünüzü kullanılabilir hale getirmek için paylaşılan bir görüntü Galerisi oluşturmanız gerekir. Görüntüleriniz için paylaşılan bir görüntü Galerisi oluşturmayı öğrenmek için bkz. [Azure CLI Ile paylaşılan görüntü galerisi oluşturma](../virtual-machines/linux/shared-images.md) veya [Azure Portal kullanarak paylaşılan görüntü Galerisi](../virtual-machines/linux/shared-images-portal.md)oluşturma.
+Yönetilen görüntünüzü başarıyla oluşturduktan sonra, özel görüntünüzü kullanılabilir hale getirmek için paylaşılan bir görüntü Galerisi oluşturmanız gerekir. Görüntüleriniz için paylaşılan bir görüntü Galerisi oluşturmayı öğrenmek için bkz. [Azure CLI Ile paylaşılan görüntü galerisi oluşturma](../virtual-machines/shared-images-cli.md) veya [Azure Portal kullanarak paylaşılan görüntü Galerisi](../virtual-machines/linux/shared-images-portal.md)oluşturma.
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan görüntüden havuz oluşturma
 
@@ -203,7 +203,7 @@ client.pool.add(new_pool)
 
 Azure portal paylaşılan görüntüden bir havuz oluşturmak için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://portal.azure.com)açın.
+1. [Azure portalını](https://portal.azure.com) açın.
 1. **Batch hesaplarına** gidin ve hesabınızı seçin.
 1. **Havuzlar** ' ı seçin ve ardından **Ekle** ' yi seçerek yeni bir havuz oluşturun.
 1. **Görüntü türü** bölümünde **paylaşılan görüntü Galerisi**' ni seçin.

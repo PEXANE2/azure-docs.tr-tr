@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6670966b4cf74510df5dd26c994e0c53b219ba9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145241"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Tablo depolamadaki tabloları dizin oluşturma
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Tablo depolamada depolanan verileri indekslemek için Azure B
 
 Şu kaynakları kullanarak bir Azure Tablo depolama Dizin Oluşturucu oluşturabilirsiniz:
 
-* [Azure portalındaki](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Bilişsel Arama [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -49,6 +49,7 @@ Tablo dizini oluşturma için, veri kaynağı aşağıdaki özelliklere sahip ol
 
 Bir veri kaynağı oluşturmak için:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -59,6 +60,7 @@ Bir veri kaynağı oluşturmak için:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
+```
 
 DataSource API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kaynağı oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
@@ -81,6 +83,7 @@ Dizin, bir belgedeki alanları, öznitelikleri ve arama deneyimini şekillendiri
 
 Bir dizin oluşturmak için:
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -92,6 +95,7 @@ Bir dizin oluşturmak için:
             { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
           ]
     }
+```
 
 Dizinler oluşturma hakkında daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
@@ -100,6 +104,7 @@ Dizin Oluşturucu bir veri kaynağını hedef arama diziniyle bağlar ve veri ye
 
 Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya hazırsınız:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -110,6 +115,7 @@ Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Bu Dizin Oluşturucu her iki saatte bir çalışır. (Zamanlama aralığı "PT2H" olarak ayarlanır.) Her 30 dakikada bir dizin oluşturucu çalıştırmak için, aralığı "PT30M" olarak ayarlayın. Desteklenen en kısa Aralık beş dakikadır. Zamanlama isteğe bağlıdır; Atlanırsa, bir Dizin Oluşturucu oluşturulduğunda yalnızca bir kez çalışır. Ancak, bir dizin oluşturucuyu dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.   
 
@@ -135,6 +141,7 @@ Bir zamanlamaya göre çalıştırılacak bir tablo dizin oluşturucuyu ayarlark
 
 Belirli belgelerin dizinden kaldırılması gerektiğini belirtmek için, bir geçici silme stratejisi kullanabilirsiniz. Bir satırı silmek yerine, silindiğini göstermek için bir özellik ekleyin ve DataSource üzerinde bir geçici silme algılama ilkesi ayarlayın. Örneğin, aşağıdaki ilke, satırın değeri olan bir özelliği varsa, bir satırın silindiğini kabul eder `IsDeleted` `"true"` :
 
+```http
     PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -146,9 +153,10 @@ Belirli belgelerin dizinden kaldırılması gerektiğini belirtmek için, bir ge
         "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
+```
 
 <a name="Performance"></a>
-## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
+## <a name="performance-considerations"></a>Performansla ilgili konular
 
 Azure Bilişsel Arama, varsayılan olarak aşağıdaki sorgu filtresini kullanır: `Timestamp >= HighWaterMarkValue` . Azure tablolarının alan üzerinde ikincil bir dizini olmadığından `Timestamp` , bu tür bir sorgu tam tablo taraması gerektirir ve bu nedenle büyük tablolar için yavaş olur.
 

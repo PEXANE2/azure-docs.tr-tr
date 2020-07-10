@@ -3,11 +3,12 @@ title: Bir havuza sanal dosya sistemi bağlama
 description: Bir Batch havuzunda sanal dosya sistemi bağlama hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144411"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Bir Batch havuzunda sanal dosya sistemi bağlama
 
@@ -76,7 +77,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure blob dosya sistemi
 
-Diğer bir seçenek de [blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md)aracılığıyla Azure Blob depolama kullanmaktır. BLOB dosya sistemi bağlamak `AccountKey` için bir veya `SasKey` depolama hesabınız olması gerekir. Bu anahtarları alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md)veya [paylaşılan ERIŞIM imzaları (SAS) kullanma](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Blobsigortası kullanma hakkında daha fazla bilgi için bkz. blobsigortası [sorun GIDERME SSS](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ). Blobsigortası bağlı dizinine varsayılan erişim sağlamak için, görevi **yönetici**olarak çalıştırın. Blobsigortası, dizini Kullanıcı alanında takar ve havuz oluşturulduğunda kök olarak bağlanır. Linux 'ta tüm **yönetici** görevleri köküdür. SIGORTASı modülü için tüm seçenekler, [Sigorta başvurusu sayfasında](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)açıklanmaktadır.
+Diğer bir seçenek de [blobsigortası](../storage/blobs/storage-how-to-mount-container-linux.md)aracılığıyla Azure Blob depolama kullanmaktır. BLOB dosya sistemi bağlamak `AccountKey` için bir veya `SasKey` depolama hesabınız olması gerekir. Bu anahtarları alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md)veya [paylaşılan ERIŞIM imzaları (SAS) kullanma](../storage/common/storage-sas-overview.md). Blobsigortası kullanma hakkında daha fazla bilgi için bkz. blobsigortası [sorun GIDERME SSS](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ). Blobsigortası bağlı dizinine varsayılan erişim sağlamak için, görevi **yönetici**olarak çalıştırın. Blobsigortası, dizini Kullanıcı alanında takar ve havuz oluşturulduğunda kök olarak bağlanır. Linux 'ta tüm **yönetici** görevleri köküdür. SIGORTASı modülü için tüm seçenekler, [Sigorta başvurusu sayfasında](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)açıklanmaktadır.
 
 Sorun giderme kılavuzuna ek olarak, blobsigortası deposundaki GitHub sorunları geçerli blobsigortası sorunlarını ve çözümlerini denetlemek için faydalı bir yoldur. Daha fazla bilgi için bkz. [blobsigortası sorunları](https://github.com/Azure/azure-storage-fuse/issues).
 

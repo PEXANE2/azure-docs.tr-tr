@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515816"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147442"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -337,7 +337,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. Formu doldurun. Gerekli özellikler, özellikle **VM ailesi**ve işlem için kullanılacak **en fazla düğüm** değerlerini sağlayın.  
 
-1. __Oluştur__'u seçin.
+1. __Oluştur__’u seçin.
 
 
 1. Listeden işlem hedefini seçerek oluşturma işleminin durumunu görüntüleyin:
@@ -389,7 +389,7 @@ Daha fazla bilgi için bkz. [kaynak yönetimi](reference-azure-machine-learning-
 
 ## <a name="set-up-with-vs-code"></a>VS Code ayarla
 
-Azure Machine Learning için [vs Code uzantısını](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) kullanarak çalışma alanınız ile ilişkili işlem hedeflerini erişebilir, oluşturabilir ve yönetebilirsiniz.
+Azure Machine Learning için [vs Code uzantısını](how-to-manage-resources-vscode.md#compute-clusters) kullanarak çalışma alanınız ile ilişkili işlem hedeflerini erişebilir, oluşturabilir ve yönetebilirsiniz.
 
 ## <a name="submit-training-run-using-azure-machine-learning-sdk"></a><a id="submit"></a>Azure Machine Learning SDK kullanarak eğitim çalışması gönder
 

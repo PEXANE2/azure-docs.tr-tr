@@ -1,5 +1,5 @@
 ---
-title: Kimlik Doğrulaması
+title: Kimlik doğrulaması
 titleSuffix: Azure Cognitive Services
 description: 'Azure bilişsel hizmetler kaynağına yönelik bir isteğin kimlik doğrulamasının üç yolu vardır: abonelik anahtarı, bir taşıyıcı belirteç veya bir çoklu hizmet aboneliği. Bu makalede her bir yöntem ve bir istek oluşturma hakkında bilgi edineceksiniz.'
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445551"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146958"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama
 
@@ -24,11 +24,11 @@ Azure bilişsel hizmet hizmetine yapılan her istek bir kimlik doğrulama üst b
 * [Belirteç](#authenticate-with-an-authentication-token) ile kimlik doğrulama
 * [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory) ile kimlik doğrulama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir istek yapmadan önce, bir Azure hesabı ve bir Azure bilişsel hizmetler aboneliğiniz olması gerekir. Zaten bir hesabınız varsa, devam edin ve sonraki bölüme atlayın. Hesabınız yoksa, dakikalar içinde ayarlamanıza yardımcı olacak bir kılavuz sunuyoruz: Azure için bilişsel [Hizmetler hesabı oluşturma](cognitive-services-apis-create-account.md).
 
-Hesabınızı oluşturduktan sonra [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abonelik anahtarınızı alabilir veya [ücretsiz denemeyi](https://azure.microsoft.com/try/cognitive-services/my-apis)etkinleştirebilirsiniz.
+[Hesabınızı](https://azure.microsoft.com/free/cognitive-services/)oluşturduktan sonra [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abonelik anahtarınızı alabilirsiniz.
 
 ## <a name="authentication-headers"></a>Kimlik doğrulama üstbilgileri
 

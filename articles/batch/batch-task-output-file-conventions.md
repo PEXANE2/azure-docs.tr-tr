@@ -4,12 +4,12 @@ description: Batch görevinin & iş çıktısını Azure depolama 'ya kalıcı h
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147165"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET için batch dosya kuralları kitaplığı ile iş ve görev verilerini Azure depolama 'ya kalıcı hale getirme
 
@@ -55,7 +55,7 @@ Dosya kuralları kitaplığını kullanarak çıkış verilerini Azure depolama 
 
 Dosya kuralları kitaplığı ile iş ve Görev çıkış verilerini kalıcı hale getirmek için Azure depolama 'da bir kapsayıcı oluşturun ve sonra çıktıyı kapsayıcıya kaydedin. Görev çıktısını kapsayıcıya yüklemek için görev kodunuzda [.net Için Azure Storage istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage) 'nı kullanın.
 
-Azure depolama 'da kapsayıcılar ve BLOB 'larla çalışma hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Azure depolama 'da kapsayıcılar ve BLOB 'larla çalışma hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 > [!WARNING]
 > Dosya kuralları kitaplığıyla kalıcı olan tüm iş ve görev çıkışları aynı kapsayıcıda depolanır. Çok sayıda görev dosyaları aynı anda kalıcı olarak denemeye çalışıyorsa, Azure depolama azaltma sınırları zorlanabilir. Azaltma limitleri hakkında daha fazla bilgi için bkz. [BLOB depolama Için performans ve ölçeklenebilirlik denetim listesi](../storage/blobs/storage-performance-checklist.md).

@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659887"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144850"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -85,7 +86,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1. nesil ve 2. nesil yetenekler
 
-| Özellik | 1. nesil | 2. nesil |
+| Yetenek | 1. nesil | 2. nesil |
 |------------|--------------|--------------|
 | İşletim sistemi diski > 2 TB                    | sayı                | :heavy_check_mark: |
 | Özel disk/görüntü/takas OS         | :heavy_check_mark: | :heavy_check_mark: |
@@ -109,7 +110,7 @@ Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmişt
 1. **Kaynak oluştur**’u seçin.
 1. Sol taraftaki Azure Marketi 'nden **Tümünü gör** ' e tıklayın.
 1. Gen2 destekleyen bir görüntü seçin.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
 1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları**altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
 1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.
@@ -191,6 +192,9 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturab
 * **2. nesil VM 'Ler hızlandırılmış ağı destekliyor mu?**  
     Evet. Daha fazla bilgi için bkz. [hızlandırılmış ağ Ile VM oluşturma](../../virtual-network/create-vm-accelerated-networking-cli.md).
 
+* **2. nesil VM 'Ler Azure 'da güvenli önyükleme veya vTPM 'yi destekliyor mu?**
+    Azure 'da hem 1. kuşak hem de 2. nesil VM 'Ler güvenli önyükleme veya vTPM 'yi desteklemez. 
+    
 * **VHDX 2. nesil üzerinde destekleniyor mu?**  
     Hayır, 2. nesil VM 'Ler yalnızca VHD 'YI destekler.
 

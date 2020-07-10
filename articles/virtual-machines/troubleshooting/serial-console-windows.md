@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135254"
+ms.locfileid: "86146641"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows için Azure seri konsol
 
@@ -100,11 +100,10 @@ Windows önyükleme yükleyicisi komut istemlerini seri konsolunda görüntülem
 
 1. Seri konsoluna bağlanın. Başarıyla bağlanıyorsanız, istem **SAC>**:
 
-    ![SAC 'ye bağlanma](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
-
+   ![SAC 'ye bağlanma](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 1. `cmd`Cmd örneği olan bir kanal oluşturmak için girin.
 
-1. `ch -si 1` `<esc>+<tab>` Cmd örneğini çalıştıran kanala geçiş yapmak için kısayol tuşlarını girin veya basın.
+1. `ch -si 1` `<esc>+<tab>` Cmd örneğini çalıştıran kanala geçiş yapmak için kısayol tuşlarına girin veya basın.
 
 1. **ENTER**tuşuna basın ve ardından Yönetici izinleriyle oturum açma kimlik bilgilerini girin.
 
@@ -112,7 +111,7 @@ Windows önyükleme yükleyicisi komut istemlerini seri konsolunda görüntülem
 
 1. Bir PowerShell örneği başlatmak için `PowerShell` cmd örneğine girin ve ardından **ENTER**tuşuna basın.
 
-    ![PowerShell örneğini aç](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+   ![PowerShell örneğini aç](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>NMI çağrıları için seri konsolunu kullanma
 Maskelenemeyen bir kesme (NMI), bir sanal makinede yazılımın yok sayılamayan bir sinyal oluşturmak için tasarlanmıştır. Tarihsel olarak, belirli yanıt süreleri gerektiren sistemlerdeki donanım sorunlarını izlemek için, NMIs kullanıldı. Günümüzde programcılar ve sistem yöneticileri, yanıt vermeyen sistemlerde hata ayıklamak veya sorunları gidermek için genellikle NMI 'yi bir mekanizma olarak kullanır.

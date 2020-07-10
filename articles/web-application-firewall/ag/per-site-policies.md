@@ -8,11 +8,12 @@ ms.service: web-application-firewall
 ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682491"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143931"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Azure PowerShell kullanarak site başına WAF ilkelerini yapılandırma
 
@@ -28,7 +29,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Ağı ayarlama
 > * WAF ilkesi oluşturma
 > * WAF etkinken bir uygulama ağ geçidi oluşturma
-> * WAF ilkesini genel, site başına ve URI başına uygulama
+> * WAF ilkesini genel, site başına ve URI başına (Önizleme) uygulama
 > * Sanal makine ölçek kümesi oluşturma
 > * Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 > * Uygulama ağ geçidini test etme
@@ -249,7 +250,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>URI başına ilke uygulama
+### <a name="apply-a-per-uri-policy-preview"></a>URI başına ilke uygulama (Önizleme)
 
 URI başına ilke uygulamak için yeni bir ilke oluşturmanız ve bunu yol kuralı yapılandırmasına uygulamanız yeterlidir. 
 
@@ -369,7 +370,7 @@ Update-AzVmss `
 
 Bu makalede, uygulama ağ geçidi, algılama ve önleme amaçlarıyla verileri depolamak için bir depolama hesabı kullanır. Ayrıca Azure Izleyici günlüklerini veya Olay Hub 'ını kullanarak verileri kaydedebilirsiniz.
 
-### <a name="create-the-storage-account"></a>Depolama hesabı oluşturma
+### <a name="create-the-storage-account"></a>Depolama hesabını oluşturma
 
 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)kullanarak *myagstore1* adlı bir depolama hesabı oluşturun.
 

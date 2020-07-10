@@ -12,11 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db7a1489b877544cd36627f3962b6b4e1b8c462
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433266"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146445"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,9 @@ Bir [işlem hedefi](how-to-set-up-training-targets.md)üzerinde eğitim çalış
 
 Bir işlem hedefi veya yerel makinenizde bir deneme başlamadan önce, kodunuzun çalışması gereken bağımlılık dosyaları ve veri dosyaları gibi gerekli dosyaların bu işlem hedefi için kullanılabilir olduğundan emin olmanız gerekir.
 
-Azure Machine Learning, tüm betik klasörünü hedef işlem bağlamına kopyalayarak ve ardından bir anlık görüntü alan eğitim betikleri çalıştırır. Deneme anlık görüntülerinin depolama sınırı 300 MB ve/veya 2000 dosyadır.
+Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)kullanarak verilerinize erişin.
+
+Deneme anlık görüntülerinin depolama sınırı 300 MB ve/veya 2000 dosyadır.
 
 Bu nedenle şunları öneririz:
 
@@ -55,7 +58,7 @@ Deneme &nbsp; açıklaması|Depolama sınırı çözümü
 2000 'den az dosya & veri deposu kullanamaz| Anlık görüntü boyutu sınırını geçersiz kıl <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Bu işlem, dosyaların sayısına ve boyutuna bağlı olarak birkaç dakika sürebilir.
 Belirli komut dosyası dizini kullanılmalıdır| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 İşlem hattı|Her adım için farklı bir alt dizin kullanın
-Jupyter notebooks| Bir `.amlignore` dosya oluşturun veya not defterinizi yeni, boş bir alt dizine taşıyın ve kodunuzu yeniden çalıştırın.
+Jupyter Notebooks| Bir `.amlignore` dosya oluşturun veya not defterinizi yeni, boş bir alt dizine taşıyın ve kodunuzu yeniden çalıştırın.
 
 ## <a name="where-to-write-files"></a>Dosyaların yazılacağı yer
 

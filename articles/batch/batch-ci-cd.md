@@ -5,11 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956670"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145263"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -188,7 +189,7 @@ Sonraki şablonda bir Azure Batch Havuzu (uygulamalarımızı işlemek için ark
 
 Son olarak, bir Orchestrator ile benzer şekilde davranan bir şablonumuz vardır. Bu şablon, yetenek şablonlarının dağıtılmasından sorumludur.
 
-Ayrıca, [bağlı Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) ayrı bir makalede oluşturma hakkında daha fazla bilgi edinebilirsiniz.
+Ayrıca, [bağlı Azure Resource Manager şablonlarını](../azure-resource-manager/templates/deployment-tutorial-linked-template.md) ayrı bir makalede oluşturma hakkında daha fazla bilgi edinebilirsiniz.
 
 ```json
 {
