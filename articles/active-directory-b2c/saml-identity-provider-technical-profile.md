@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 268295ce86a9323a1f7ae16bbfcbd4e78367c3a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724178f71befbe4eace0d3d5615871c21253c1f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203639"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170080"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir SAML kimlik sağlayıcısı teknik profili tanımlama
 
@@ -70,7 +70,7 @@ SAML yanıtı onayını şifrelemek için:
 3. Teknik profil meta verilerini **WantsEncryptedAssertions** olarak ayarlayın `true` .
 4. Kimlik sağlayıcısını yeni Azure AD B2C teknik profil meta verileri ile güncelleştirin. **Anahtar tanımlayıcısını** , **use** `encryption` sertifikanızın ortak anahtarını içerecek şekilde Use özelliği ayarlanmış olarak görmeniz gerekir.
 
-Aşağıdaki örnek, meta verilerin Azure AD B2C teknik profil şifreleme bölümünü gösterir:
+Aşağıdaki örnek, şifreleme için kullanılan SAML meta verilerinin anahtar tanımlayıcı bölümünü göstermektedir:
 
 ```xml
 <KeyDescriptor use="encryption">
@@ -142,7 +142,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |

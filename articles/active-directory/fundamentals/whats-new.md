@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f196c21869f4a2f12e28bc4d6c42b8c945ddde71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603681"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170454"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -259,10 +259,9 @@ SignIns v 1.0 API 'sine yeni bir riskEventsTypes_v2 (String) özelliği ekledik.
 **Ürün yeteneği:** Kimlik güvenliği & koruması
  
 
-MFA e-posta bildirimlerinde hem bulut MFA hem de MFA sunucusu için aşağıdaki değişiklikleri yapıyoruz:
+MFA için MFA e-posta bildirimlerinde aşağıdaki değişiklikleri yapıyoruz:
 
-Şu adresten e-posta bildirimleri gönderilecek: azure-noreply@microsoft.com .
-Dolandırıcıların engellemesini kaldırmak için gerekli adımları daha iyi göstermek üzere sahtekarlık uyarı e-postalarının içeriğini güncelleştiriyoruz.
+E-posta bildirimleri şu adresten gönderilir: azure-noreply@microsoft.com ve msonlineservicesteam@microsoftonline.com . Dolandırıcıların engellemesini kaldırmak için gerekli adımları daha iyi göstermek üzere sahtekarlık uyarı e-postalarının içeriğini güncelleştiriyoruz.
 
 ---
 
