@@ -5,11 +5,13 @@ author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74231267"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165711"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
 
@@ -19,18 +21,15 @@ Bu hataların oluşmasını engellemek için iki seçeneğiniz vardır:
 - Çalışan tüm düzenleme örnekleri tamamlanana kadar dağıtımınızı geciktirebilirsiniz.
 - Çalışan tüm düzenleme örneklerinin işlevlerinizin mevcut sürümlerini kullanmasını sağlayın. 
 
-> [!NOTE]
-> Bu makalede, Dayanıklı İşlevler 1. x ' i hedefleyen işlevler uygulamalarına yönelik rehberlik sunulmaktadır. Dayanıklı İşlevler 2. x içinde tanıtılan değişiklikler için hesaba güncelleştirilmedi. Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için bkz. [dayanıklı işlevler sürümleri](durable-functions-versions.md).
-
 Aşağıdaki grafik, Dayanıklı İşlevler için sıfır kesinti temelli bir dağıtım elde etmek üzere üç ana stratejileri karşılaştırır: 
 
 | Strateji |  Kullanılması gereken durumlar | Artıları | Simgeler |
 | -------- | ------------ | ---- | ---- |
-| [Sürüm Oluşturma](#versioning) |  Sık karşılaşılan değişiklikler hakkında daha fazla karşılaşmeyen uygulamalar [.](durable-functions-versioning.md) | Basit uygulama. |  Bellekte ve işlev sayısında daha fazla işlev uygulaması boyutu.<br/>Kod çoğaltma. |
+| [Sürüm oluşturma](#versioning) |  Sık karşılaşılan değişiklikler hakkında daha fazla karşılaşmeyen uygulamalar [.](durable-functions-versioning.md) | Basit uygulama. |  Bellekte ve işlev sayısında daha fazla işlev uygulaması boyutu.<br/>Kod çoğaltma. |
 | [Yuva ile durum denetimi](#status-check-with-slot) | 24 veya daha fazla çakışan düzenleme için uzun süre çalışan bir düzenleme gerçekleştirmeyen bir sistem. | Basit kod tabanı.<br/>Ek işlev uygulama yönetimi gerektirmez. | Ek depolama hesabı veya görev merkezi yönetimi gerektirir.<br/>Hiçbir düzenleme çalışmadığı zaman dönem gerektirir. |
 | [Uygulama yönlendirme](#application-routing) | En son 24 saatten uzun veya sık sık çakışan düzenleyicilerle bu dönemler gibi, düzenleme çalışmadığı zaman süreleri olmayan bir sistem. | Sürekli değişiklikler içeren düzenlemeleri çalıştıran sistemlerin yeni sürümlerini işler. | Akıllı uygulama yönlendiricisi gerektirir.<br/>Aboneliğiniz tarafından izin verilen işlev uygulamalarının sayısı en fazla olabilir. Varsayılan değer 100'dür. |
 
-## <a name="versioning"></a>Sürüm Oluşturma
+## <a name="versioning"></a>Sürüm oluşturma
 
 İşlevlerinizin yeni sürümlerini tanımlayın ve işlev uygulamanızda eski sürümleri bırakın. Diyagramda görebileceğiniz gibi, bir işlevin sürümü adının bir parçası haline gelir. İşlevlerin önceki sürümleri korunduğundan, uçuş sırasında düzenleme örnekleri bunlara başvurmasına devam edebilir. Bu sırada, Orchestration Client işlevinizin bir uygulama ayarından başvurmasına yönelik yeni düzenleme örnekleri istekleri en son sürüm için çağrı yapılır.
 
@@ -96,7 +95,7 @@ CI/CD işlem hattınızı yalnızca işlev uygulamanızda bekleyen veya çalış
 [FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient client,
+    [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
     var runtimeStatus = new List<OrchestrationRuntimeStatus>();
@@ -104,8 +103,8 @@ public static async Task<IActionResult> StatusCheck(
     runtimeStatus.Add(OrchestrationRuntimeStatus.Pending);
     runtimeStatus.Add(OrchestrationRuntimeStatus.Running);
 
-    var status = await client.GetStatusAsync(new DateTime(2015,10,10), null, runtimeStatus);
-    return (ActionResult) new OkObjectResult(new Status() {HasRunning = (status.Count != 0)});
+    var result = await client.ListInstancesAsync(new OrchestrationStatusQueryCondition() { RuntimeStatus = runtimeStatus }, CancellationToken.None);
+    return (ActionResult)new OkObjectResult(new { HasRunning = result.DurableOrchestrationState.Any() });
 }
 ```
 

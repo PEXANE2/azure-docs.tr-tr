@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/24/2020
-ms.openlocfilehash: 0b7ca2654fb8b7bdcca6dcb5f2fd354a138f2fcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564361"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171133"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
@@ -35,10 +35,10 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
 
 ## <a name="how-to-use-evaluate-model"></a>Modeli değerlendir kullanma
 1. [Puanlama modelinin](./score-model.md) **puanlanmış veri kümesi** çıkışını veya [veri](./assign-data-to-clusters.md) kümesi çıkışını, **modeli değerlendir**' in sol giriş bağlantı noktasına bağlayın. 
-  > [!NOTE] 
-  > Giriş veri kümesinin bir bölümünü seçmek için "veri kümesindeki sütunları seçme" gibi modüller kullanıyorsanız, lütfen AUC gibi ölçümleri hesaplamak için gerçek etiket sütununun (eğitiminde kullanılan), ' puanlanmış olasılıkların ' sütununun ve ' puanlanmış Etiketler ' sütununun mevcut olduğundan emin olun.
-  > Çok sınıflı sınıflandırma/gerileme için ölçümleri hesaplamak üzere gerçek etiket sütunu, ' puanlanmış Etiketler ' sütunu var.
-  > ' Atamalar ' sütunu, sütunlar ' DistancesToClusterCenter No. X ' (X, centroıd dizinidir, 0,..., centroıds-1), Kümelemeye yönelik ölçümleri hesaplamak için mevcuttur.
+    > [!NOTE] 
+    > Giriş veri kümesinin bir bölümünü seçmek için "veri kümesindeki sütunları seçme" gibi modüller kullanıyorsanız, lütfen AUC gibi ölçümleri hesaplamak için gerçek etiket sütununun (eğitiminde kullanılan), ' puanlanmış olasılıkların ' sütununun ve ' puanlanmış Etiketler ' sütununun mevcut olduğundan emin olun.
+    > Çok sınıflı sınıflandırma/gerileme için ölçümleri hesaplamak üzere gerçek etiket sütunu, ' puanlanmış Etiketler ' sütunu var.
+    > ' Atamalar ' sütunu, sütunlar ' DistancesToClusterCenter No. X ' (X, centroıd dizinidir, 0,..., centroıds-1), Kümelemeye yönelik ölçümleri hesaplamak için mevcuttur.
 
 2. Seçim [Puan modelinin puın](./score-model.md) veri **kümesi** çıkışını veya ikinci model için veri kümesi çıkışının, **modeli değerlendir**' in **doğru** giriş bağlantı noktasına bağlanmasını sağlar. Aynı verilerdeki iki farklı modelden sonuçları kolayca karşılaştırabilirsiniz. İki giriş algoritması aynı algoritma türünde olmalıdır. Ya da, farklı parametrelerle aynı veriler üzerinde bulunan iki farklı çalıştırmaların puanlarını karşılaştırabilirsiniz.
 
@@ -49,7 +49,12 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
 
 ## <a name="results"></a>Sonuçlar
 
-**Modeli değerlendir**' i çalıştırdıktan sonra, sağ taraftaki **modeli değerlendir** gezinti bölmesini açmak için modülü seçin.  Ardından, **çıktılar + Günlükler** sekmesini seçin ve bu sekmede **veri çıkışları** bölümünde çeşitli simgeler bulunur.   **Görselleştirilecek** simge çubuk grafik simgesine sahiptir ve sonuçları görmek için ilk yoldur.
+**Modeli değerlendir**' i çalıştırdıktan sonra, sağ taraftaki **modeli değerlendir** gezinti bölmesini açmak için modülü seçin.  Ardından, **çıktılar + Günlükler** sekmesini seçin ve bu sekmede **veri çıkışları** bölümünde çeşitli simgeler bulunur. **Görselleştirilecek** simge çubuk grafik simgesine sahiptir ve sonuçları görmek için ilk yoldur.
+
+İkili sınıflandırma için, **görselleştirin** simgesini tıkladıktan sonra ikili karışıklık matrisini görselleştirebilirsiniz.
+Çoklu sınıflandırma için, karışıklıklar **+ Günlükler** sekmesinde aşağıdaki gibi karışıklığa matris çizim dosyasını bulabilirsiniz:
+> [!div class="mx-imgBorder"]
+> ![Karşıya yüklenen görüntünün önizlemesi](media/module/multi-class-confusion-matrix.png)
 
 Veri kümelerini her iki **değerlendirme modeli**girişi için bağladığınızda, sonuçlar hem veri kümesinin hem de her iki modelin ölçümlerini içerir.
 Sol bağlantı noktasına eklenen model veya veriler, önce raporda, ardından veri kümesi için ölçümler veya sağ bağlantı noktasında eklenmiş model tarafından sunulur.  
@@ -70,7 +75,8 @@ Bu bölümde, **modeli değerlendir**ile kullanılmak üzere desteklenen belirli
 
 ### <a name="metrics-for-classification-models"></a>Sınıflandırma modelleriyle ilgili ölçümler
 
-Sınıflandırma modelleri değerlendirilirken aşağıdaki ölçümler raporlanır.
+
+Aşağıdaki ölçümler, ikili sınıflandırma modelleri değerlendirilirken raporlanır.
   
 -   **Doğruluk** , toplam durum sonuçlarının gerçek sonuçlarının oranı olarak bir sınıflandırma modelinin iyiyliğini ölçer.  
   
@@ -78,13 +84,10 @@ Sınıflandırma modelleri değerlendirilirken aşağıdaki ölçümler raporlan
   
 -   **Geri çağırma** , modelin döndürdüğü tüm doğru sonuçların kesiri.  
   
--   **F puanı** ağırlıklı duyarlık ortalaması olarak hesaplanır ve ideal F puanı değerinin 1 olduğu 0 ile 1 arasında geri çağırır.  
+-   **F1 puanı** ağırlıklı duyarlık ortalaması olarak hesaplanır ve en ideal F1 puanı değerinin 1 olduğu 0 ile 1 arasında geri çağırır.  
   
 -   **AUC** , y ekseninde gerçek pozitifler ve x ekseninde hatalı pozitif sonuçlar ile çizilen eğrinin altındaki alanı ölçer. Bu ölçüm, farklı türlerin modellerini karşılaştırmanızı sağlayan tek bir sayı sağladığından yararlıdır.  
-  
-- **Ortalama günlük kaybı** , yanlış sonuçlar için ceza Puanını ifade etmek için kullanılan tek bir puandır. Bu, iki olasılık dağıtımı arasındaki fark olarak hesaplanır; gerçek bir değer ve modeldeki bir tane.  
-  
-- **Eğitim günlük kaybı** , sınıflandırıcının rastgele bir tahmine göre faydalanmasını temsil eden tek bir puandır. Günlük kayıp, çıktılarının çıkış yaptığı olasılıkların, etiketlerde bilinen değerler (zemin dışı) ile karşılaştırılmasıyla, modelinizin unkliğini ölçer. Modelin günlük kaybını bir bütün olarak en aza indirmek istiyorsunuz.
+
 
 ### <a name="metrics-for-regression-models"></a>Regresyon modelleriyle ilgili ölçümler
  

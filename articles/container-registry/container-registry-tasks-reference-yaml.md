@@ -3,11 +3,12 @@ title: YAML başvurusu-ACR görevleri
 description: Görev özellikleri, adım türleri, adım özellikleri ve yerleşik değişkenler de dahil olmak üzere ACR görevleri için YAML görevlerini tanımlamaya yönelik başvuru.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11771c32db3b3d7c975c0262bda228903a58978f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79246987"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171066"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR görevleri başvurusu: YAML
 
@@ -76,12 +77,12 @@ Görev özellikleri genellikle bir dosyanın en üstünde görünür `acr-task.y
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Geçersiz kılma destekleniyor | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Evet | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | Hayır | Hiçbiri |
+| `version` | string | Evet | `acr-task.yaml`ACR görevler hizmeti tarafından ayrıştırılabilen dosyanın sürümü. ACR görevleri geriye dönük uyumluluğu sürdürmeye devam ederken, bu değer ACR görevlerinin tanımlı bir sürüm içinde uyumluluğu korumasına olanak tanır. Belirtilmemişse, varsayılan olarak en son sürümü alır. | Hayır | Yok |
 | `stepTimeout` | int (saniye) | Evet | Bir adımın çalıştırılacağı en fazla saniye sayısı. Özellik bir görevde belirtilmişse, `timeout` tüm adımların varsayılan özelliğini ayarlar. `timeout`Özellik bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Evet | 600 (10 dakika) |
 | `workingDirectory` | string | Evet | Çalışma zamanı sırasında kapsayıcının çalışma dizini. Özellik bir görevde belirtilmişse, `workingDirectory` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görev tarafından sunulan özelliği geçersiz kılar. | Evet | `/workspace` |
-| `env` | [dize, dize,...] | Evet |  `key=value`Görevin ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. Özellik bir görevde belirtilmişse, `env` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görevden devralınan tüm ortam değişkenlerini geçersiz kılar. | Hiçbiri |
-| `secrets` | [gizli, gizli,...] | Evet | [Gizli](#secret) nesneler dizisi. | Hiçbiri |
-| `networks` | [Ağ, ağ,...] | Evet | [Ağ](#network) nesneleri dizisi. | Hiçbiri |
+| `env` | [dize, dize,...] | Evet |  `key=value`Görevin ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. Özellik bir görevde belirtilmişse, `env` tüm adımların varsayılan özelliğini ayarlar. Bir adımda belirtilmişse, görevden devralınan tüm ortam değişkenlerini geçersiz kılar. | Yok |
+| `secrets` | [gizli, gizli,...] | Evet | [Gizli](#secret) nesneler dizisi. | Yok |
+| `networks` | [Ağ, ağ,...] | Evet | [Ağ](#network) nesneleri dizisi. | Yok |
 
 ### <a name="secret"></a>gizli dizi
 
@@ -89,9 +90,9 @@ Gizli nesne aşağıdaki özelliklere sahiptir.
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | dize | No | Gizli dizi tanımlayıcısı. | Hiçbiri |
-| `keyvault` | string | Evet | Azure Key Vault gizli URL 'SI. | Hiçbiri |
-| `clientID` | string | Evet | Azure kaynakları için [Kullanıcı tarafından atanan yönetilen kimliğin](container-registry-tasks-authentication-managed-identity.md) istemci kimliği. | Hiçbiri |
+| `id` | dize | No | Gizli dizi tanımlayıcısı. | Yok |
+| `keyvault` | string | Evet | Azure Key Vault gizli URL 'SI. | Yok |
+| `clientID` | string | Evet | Azure kaynakları için [Kullanıcı tarafından atanan yönetilen kimliğin](container-registry-tasks-authentication-managed-identity.md) istemci kimliği. | Yok |
 
 ### <a name="network"></a>network
 
@@ -99,8 +100,8 @@ Ağ nesnesi aşağıdaki özelliklere sahiptir.
 
 | Özellik | Tür | İsteğe Bağlı | Açıklama | Varsayılan değer |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | dize | No | Ağın adı. | Hiçbiri |
-| `driver` | string | Evet | Ağı yönetmek için sürücü. | Hiçbiri |
+| `name` | dize | No | Ağın adı. | Yok |
+| `driver` | string | Evet | Ağı yönetmek için sürücü. | Yok |
 | `ipv6` | bool | Evet | IPv6 ağ oluşturma özelliğinin etkin olup olmadığı. | `false` |
 | `skipCreation` | bool | Evet | Ağ oluşturma atlanıp atlanmayacağı. | `false` |
 | `isDefault` | bool | Evet | Ağın Azure Container Registry ile belirtilen bir varsayılan ağ olup olmadığı | `false` |
@@ -140,7 +141,7 @@ steps:
 
 `build`Adım türü aşağıdaki özellikleri destekler. Bu makalenin [görev adımı özellikleri](#task-step-properties) bölümünde bu özelliklerin ayrıntılarını bulun.
 
-| | | |
+| Özellikler | Tür | Gerekli |
 | -------- | ---- | -------- |
 | `detach` | bool | İsteğe Bağlı |
 | `disableWorkingDirectoryOverride` | bool | İsteğe Bağlı |
@@ -212,7 +213,7 @@ steps:
 
 `push`Adım türü aşağıdaki özellikleri destekler. Bu makalenin [görev adımı özellikleri](#task-step-properties) bölümünde bu özelliklerin ayrıntılarını bulun.
 
-| | | |
+| Özellik | Tür | Gerekli |
 | -------- | ---- | -------- |
 | `env` | [dize, dize,...] | İsteğe Bağlı |
 | `id` | string | İsteğe Bağlı |
@@ -257,7 +258,7 @@ steps:
 
 `cmd`Adım türü aşağıdaki özellikleri destekler:
 
-| | | |
+| Özellik | Tür | Gerekli |
 | -------- | ---- | -------- |
 | `detach` | bool | İsteğe Bağlı |
 | `disableWorkingDirectoryOverride` | bool | İsteğe Bağlı |
@@ -359,25 +360,25 @@ Her adım türü, türü için uygun olan birkaç özelliği destekler. Aşağı
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | Evet | Çalışma sırasında kapsayıcının ayrılmayacağı. | `false` |
 | `disableWorkingDirectoryOverride` | bool | Evet | Geçersiz kılma işlevselliğinin devre dışı bırakılıp başlatılmayacağını belirtir `workingDirectory` . `workingDirectory`Kapsayıcının çalışma dizini üzerinde tamamen denetim sağlamak için bunu ile birlikte kullanın. | `false` |
-| `entryPoint` | string | Evet | `[ENTRYPOINT]`Bir adımın kapsayıcısını geçersiz kılar. | Hiçbiri |
-| `env` | [dize, dize,...] | Evet | `key=value`Adımın ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. | Hiçbiri |
-| `expose` | [dize, dize,...] | Evet | Kapsayıcıdan sunulan bağlantı noktası dizisi. |  Hiçbiri |
+| `entryPoint` | string | Evet | `[ENTRYPOINT]`Bir adımın kapsayıcısını geçersiz kılar. | Yok |
+| `env` | [dize, dize,...] | Evet | `key=value`Adımın ortam değişkenlerini tanımlayan biçimdeki dizeler dizisi. | Yok |
+| `expose` | [dize, dize,...] | Evet | Kapsayıcıdan sunulan bağlantı noktası dizisi. |  Yok |
 | [`id`](#example-id) | string | Evet | Görevi içindeki adımı benzersiz bir şekilde tanımlar. Görevdeki diğer adımlarda `id` , ile bağımlılık denetimi gibi bir adım başvuru yapılabilir `when` .<br /><br />, `id` Aynı zamanda çalışan kapsayıcının adıdır. Görevdeki diğer kapsayıcılar üzerinde çalışan süreçler, `id` DNS ana bilgisayar adı olarak veya Docker logs [ID] ile erişim için öğesine başvurabilir. | `acb_step_%d`, `%d` YAML dosyasında adımın en üst düzey 0 tabanlı dizinidir |
 | `ignoreErrors` | bool | Evet | Kapsayıcının yürütülmesi sırasında bir hata oluşup oluşmadığını ne olursa olsun adımın başarıyla işaretleneceğini belirtir. | `false` |
 | `isolation` | string | Evet | Kapsayıcının yalıtım düzeyi. | `default` |
 | `keep` | bool | Evet | Adım kapsayıcısının yürütmeden sonra tutulup tutulmayacağını belirtir. | `false` |
-| `network` | nesne | Evet | Kapsayıcının çalıştığı bir ağı tanımlar. | Hiçbiri |
-| `ports` | [dize, dize,...] | Evet | Kapsayıcıdan konağa yayınlanan bağlantı noktaları dizisi. |  Hiçbiri |
+| `network` | nesne | Evet | Kapsayıcının çalıştığı bir ağı tanımlar. | Yok |
+| `ports` | [dize, dize,...] | Evet | Kapsayıcıdan konağa yayınlanan bağlantı noktaları dizisi. |  Yok |
 | `pull` | bool | Evet | Herhangi bir önbelleğe alma davranışına engel olmak için yürütmeden önce kapsayıcının yapılıp yapılmayacağını belirtir. | `false` |
 | `privileged` | bool | Evet | Kapsayıcının ayrıcalıklı modda çalıştırılıp çalıştırılmayacağı. | `false` |
 | `repeat` | int | Evet | Kapsayıcının yürütülmesini yinelemek için yeniden deneme sayısı. | 0 |
 | `retries` | int | Evet | Bir kapsayıcının yürütülmesinin başarısız olması durumunda denenecek yeniden deneme sayısı. Yeniden deneme yalnızca bir kapsayıcının çıkış kodu sıfır değilse denenir. | 0 |
 | `retryDelay` | int (saniye) | Evet | Bir kapsayıcının çalışmasının yeniden denemeleri arasındaki gecikme süresi (saniye cinsinden). | 0 |
-| `secret` | nesne | Evet | [Azure kaynakları için](container-registry-tasks-authentication-managed-identity.md)Azure Key Vault gizli dizi veya yönetilen kimlik tanımlar. | Hiçbiri |
+| `secret` | nesne | Evet | [Azure kaynakları için](container-registry-tasks-authentication-managed-identity.md)Azure Key Vault gizli dizi veya yönetilen kimlik tanımlar. | Yok |
 | `startDelay` | int (saniye) | Evet | Kapsayıcının yürütülmesinin geciktirileceği saniye sayısı. | 0 |
 | `timeout` | int (saniye) | Evet | Bir adımın sonlandırılmadan önce yürütebilmesi için gereken en fazla saniye sayısı. | 600 |
-| [`when`](#example-when) | [dize, dize,...] | Evet | Görevin içindeki bir veya daha fazla adım için bir adımın bağımlılığını yapılandırır. | Hiçbiri |
-| `user` | string | Evet | Bir kapsayıcının Kullanıcı adı veya UID 'SI | Hiçbiri |
+| [`when`](#example-when) | [dize, dize,...] | Evet | Görevin içindeki bir veya daha fazla adım için bir adımın bağımlılığını yapılandırır. | Yok |
+| `user` | string | Evet | Bir kapsayıcının Kullanıcı adı veya UID 'SI | Yok |
 | `workingDirectory` | string | Evet | Bir adım için çalışma dizinini ayarlar. Varsayılan olarak ACR görevleri, çalışma dizini olarak bir kök dizin oluşturur. Ancak, derlemeniz birkaç adım içeriyorsa, önceki adımlar aynı çalışma dizinini belirterek yapıtları sonraki adımlarla paylaşabilir. | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>Örnekler: görev adımı özellikleri

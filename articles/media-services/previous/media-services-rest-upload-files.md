@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888593"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170794"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST kullanarak Media Services hesabına dosya yükleme  
 > [!div class="op_single_selector"]
@@ -39,7 +40,7 @@ Bu öğreticide, bir dosya ve onunla ilişkili başka bir işlemi karşıya yük
 > * Karşıya yükleme URL 'sini kullanarak blob depolamaya bir dosya yükleme
 > * Karşıya yüklediğiniz medya dosyası için varlık içinde meta veri oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - [Azure Portal kullanarak bir Azure Media Services hesabı oluşturun](media-services-portal-create-account.md).
@@ -47,7 +48,7 @@ Bu öğreticide, bir dosya ve onunla ilişkili başka bir işlemi karşıya yük
 - Ayrıca, [rest makalesine MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) konusunu gözden geçirin.
 - [Media Services REST API çağrılarında Postman yapılandırma](media-rest-apis-with-postman.md)bölümünde açıklandığı gibi **Postman** 'ı yapılandırın.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Media Services REST API kullanılırken aşağıdaki noktalar geçerlidir:
  
@@ -149,9 +150,9 @@ Gerçek karşıya yükleme URL 'sini almak için SAS Konumlandırıcı (aşağı
 
 SAS URL 'SI aşağıdaki biçime sahiptir:
 
-    {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
+`{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Bazı dikkate alınması gereken noktalar vardır:
 
@@ -172,7 +173,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="overview"></a>Genel Bakış
 
-Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure Depolama REST API’sini kullanma](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Blobu koy](https://docs.microsoft.com/rest/api/storageservices/put-blob)
@@ -212,15 +213,17 @@ Dosyanın başarıyla karşıya yüklendiğini doğrulamak için, [assetdosyası
 
 Örneğin, aşağıdaki **Get** işlemi, varlık dosyanız için dosya verilerini (veya BigBuckBunny.mp4 dosyası) getirir. Sorgu daha önce ayarladığınız [ortam değişkenlerini](postman-environment.md) kullanıyor.
 
-    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
+`{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 
 Yanıt boyut, ad ve diğer bilgileri içerir.
 
-    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
-    "Name": "BigBuckBunny.mp4",
-    "ContentFileSize": "3186542",
-    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
-            
+```console
+"Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+"Name": "BigBuckBunny.mp4",
+"ContentFileSize": "3186542",
+"ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+```
+  
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Karşıya yüklenen varlıklarınızı artık kodlayabilirsiniz. Daha fazla bilgi için bkz. [Varlıkları kodlama](media-services-portal-encode.md).

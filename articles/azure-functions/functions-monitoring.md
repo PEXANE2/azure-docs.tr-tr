@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207016"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170420"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -233,7 +233,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  İşte bir örnek:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 ```json
 {
@@ -246,7 +246,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights)örnekleme yapılandırabilirsiniz.  İşte bir örnek:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights)örnekleme yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -537,7 +537,7 @@ Ayarlanmadı `telemetryClient.Context.Operation.Id` . Aynı anda çok sayıda i�
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>JavaScript işlevlerinde özel telemetriyi günlüğe kaydetme
 
-[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)ile özel telemetri gönderen örnek kod parçacıkları aşağıda verilmiştir:
+Aşağıda, [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)ile özel telemetri gönderen örnek kod parçacıkları verilmiştir:
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -595,7 +595,7 @@ module.exports = function (context, req) {
 
 Bağımlılıkları göstermek için özel kod yazabilirsiniz. Örnekler için [C# özel telemetri bölümünde](#log-custom-telemetry-in-c-functions)örnek koda bakın. Örnek kod, aşağıdaki görüntüde olduğu gibi Application Insights bir *uygulama Haritası* ile sonuçlanır:
 
-![Uygulama eşlemesi](./media/functions-monitoring/app-map.png)
+![Uygulama haritası](./media/functions-monitoring/app-map.png)
 
 ## <a name="enable-application-insights-integration"></a>Application Insights tümleştirmesini etkinleştirme
 
@@ -688,27 +688,41 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
-## <a name="scale-controller-logs"></a>Denetleyici günlüklerini ölçeklendirme
+## <a name="scale-controller-logs-preview"></a>Ölçek denetleyicisi günlükleri (Önizleme)
 
-[Azure işlevleri ölçek denetleyicisi](./functions-scale.md#runtime-scaling) , uygulamanızı çalıştıran işlev ana bilgisayar örneklerini izler ve işlev konak örneklerinin ne zaman ekleneceğini veya kaldırılacağını gösteren kararlar verir. Ölçek denetleyicisinin uygulamanızda yaptığı kararların anlaşılması gerekiyorsa, günlükleri Application Insights veya blob depolama alanına yaymak üzere yapılandırabilirsiniz.
+Bu özellik önizlemede. 
 
-> [!WARNING]
-> Bu özellik önizlemede. Bu özelliği süresiz olarak bırakmanız önerilmez. bunun yerine, topladığı bilgilere ihtiyacınız olduğunda onu etkinleştirmeniz ve sonra devre dışı bırakmanız gerekir.
+[Azure işlevleri ölçek denetleyicisi](./functions-scale.md#runtime-scaling) , uygulamanızın çalıştırıldığı Azure işlevleri ana bilgisayarının örneklerini izler. Bu denetleyici, geçerli performansa göre örnek ekleme veya kaldırma hakkında kararlar verir. Ölçek denetleyicisi 'nin işlev uygulamanızda yapmakta olduğu kararları daha iyi anlamak için ölçek denetleyicisinin günlükleri Application Insights veya blob depolama alanına yayabilirsiniz.
 
-Bu özelliği etkinleştirmek için adlı yeni bir uygulama ayarı ekleyin `SCALE_CONTROLLER_LOGGING_ENABLED` . Bu ayarın değeri şu biçimde olmalıdır `{Destination}:{Verbosity}` :
-* `{Destination}`gönderilecek günlüklerin hedefini belirtir ve ya da olmalıdır `AppInsights` `Blob` .
-* `{Verbosity}`istediğiniz günlüğe kaydetme düzeyini belirtir ve, veya ' den biri olmalıdır `None` `Warning` `Verbose` .
+Bu özelliği etkinleştirmek için adlı yeni bir uygulama ayarı ekleyin `SCALE_CONTROLLER_LOGGING_ENABLED` . Bu ayarın değeri `<DESTINATION>:<VERBOSITY>` , aşağıdakilere bağlı olarak şu biçimde olmalıdır:
 
-Örneğin, ölçek denetleyicisinden Application Insights için ayrıntılı bilgileri günlüğe kaydetmek için değerini kullanın `AppInsights:Verbose` .
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
-> [!NOTE]
-> `AppInsights`Hedef türünü etkinleştirirseniz, [işlev uygulamanız için Application Insights](#enable-application-insights-integration)yapılandırmanıza emin olmanız gerekir.
+Örneğin, aşağıdaki Azure CLı komutu, ölçek denetleyicisinden Application Insights için ayrıntılı günlük kaydını etkinleştirir:
 
-Hedefi olarak ayarlarsanız `Blob` , Günlükler `azure-functions-scale-controller` uygulama ayarında ayarlanan depolama hesabı içinde adlı bir blob kapsayıcısında oluşturulur `AzureWebJobsStorage` .
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
 
-Ayrıntı düzeyini olarak ayarlarsanız `Verbose` , ölçek denetleyicisi çalışan sayısında her değişiklik için bir neden, Ayrıca ölçek denetleyicinin kararına katılan Tetikleyiciler hakkındaki bilgileri günlüğe kaydeder. Örneğin, günlüklerde tetikleyici uyarıları ve ölçek denetleyicisi çalıştırılmadan önce ve sonra Tetikleyiciler tarafından kullanılan karmaları dahil edilir.
+Bu örnekte, ve ' `<FUNCTION_APP_NAME>` `<RESOURCE_GROUP_NAME>` yi sırasıyla işlev uygulamanızın adı ve kaynak grubu adı ile değiştirin. 
 
-Ölçek denetleyicisi günlüğünü devre dışı bırakmak için, değerini olarak ayarlayın `{Verbosity}` `None` veya `SCALE_CONTROLLER_LOGGING_ENABLED` uygulama ayarını kaldırın.
+Aşağıdaki Azure CLı komutu, ayrıntı düzeyini şu şekilde ayarlayarak günlüğe kaydetmeyi devre dışı bırakır `None` :
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+`SCALE_CONTROLLER_LOGGING_ENABLED`Aşağıdaki Azure CLI komutunu kullanarak ayarı kaldırarak günlüğü de devre dışı bırakabilirsiniz:
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
+```
 
 ## <a name="disable-built-in-logging"></a>Yerleşik günlüğe kaydetmeyi devre dışı bırak
 
