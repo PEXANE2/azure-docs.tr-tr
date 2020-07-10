@@ -4,12 +4,12 @@ description: Toplu işlem düğümlerinde yüklenmek üzere birden çok uygulama
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955039"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147220"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -57,7 +57,7 @@ Uygulama paketlerini havuz ve görev düzeylerinde belirtebilirsiniz. Bir havuz 
 ### <a name="benefits-of-application-packages"></a>Uygulama paketlerinin avantajları
 Uygulama paketleri, Batch çözümünüzdeki kodu basitleştirebilir ve görevlerinizin çalıştırdığı uygulamaları yönetmek için gereken ek yükü düşürebilirler.
 
-Uygulama paketleriyle, havuzunuzun başlangıç görevinin düğümlere yüklenecek tek kaynak dosyalarının uzun bir listesini belirtmek zorunda değildir. Azure depolama 'da veya düğümlerdeki uygulama dosyalarınızın birden çok sürümünü el ile yönetmeniz gerekmez. Ve Depolama hesabınızdaki dosyalara erişim sağlamak için [SAS URL 'leri](../storage/common/storage-dotnet-shared-access-signature-part-1.md) oluşturma konusunda endişelenmeniz gerekmez. Batch, uygulama paketlerini depolamak ve bunları işlem düğümlerine dağıtmak için Azure depolama ile arka planda çalışmaktadır.
+Uygulama paketleriyle, havuzunuzun başlangıç görevinin düğümlere yüklenecek tek kaynak dosyalarının uzun bir listesini belirtmek zorunda değildir. Azure depolama 'da veya düğümlerdeki uygulama dosyalarınızın birden çok sürümünü el ile yönetmeniz gerekmez. Ve Depolama hesabınızdaki dosyalara erişim sağlamak için [SAS URL 'leri](../storage/common/storage-sas-overview.md) oluşturma konusunda endişelenmeniz gerekmez. Batch, uygulama paketlerini depolamak ve bunları işlem düğümlerine dağıtmak için Azure depolama ile arka planda çalışmaktadır.
 
 > [!NOTE] 
 > Bir başlangıç görevinin toplam boyutunun kaynak dosyaları ve ortam değişkenleri dahil olmak üzere 32.768 karakter veya daha az olması gerekir. Başlangıç göreviniz bu sınırı aşarsa, uygulama paketlerinin kullanılması başka bir seçenektir. Ayrıca, kaynak dosyalarınızı içeren daraltılmış bir arşiv oluşturabilir, Azure depolama 'ya blob olarak yükleyebilir ve sonra başlangıç görevinin komut satırından bu dosyayı indirebilirsiniz. 
@@ -170,7 +170,7 @@ Var olan bir uygulama paketini güncelleştirmek veya silmek için, uygulamanın
 
 ![Azure portal paketi güncelleştirme veya silme][7]
 
-**Güncelleştir**
+**Güncelleştirme**
 
 **Güncelleştir**' e tıkladığınızda, **güncelleştirme paketi** penceresi görüntülenir. Bu pencere, **Yeni uygulama paketi** penceresine benzer ancak yalnızca paket seçimi alanı etkinleştirilir ve karşıya yüklenecek yenı bir ZIP dosyası belirtmenize olanak tanır.
 
@@ -248,7 +248,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
 
 ```
 Linux:
