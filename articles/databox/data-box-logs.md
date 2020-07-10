@@ -1,36 +1,37 @@
 ---
-title: İzleme ve günlüğe kaydetme Azure Data Box, Azure Data Box Heavy olayları | Microsoft Docs
-description: Azure Data Box ve Azure Data Box Heavy siparişinizin çeşitli aşamalarda olayların nasıl izleneceğini ve günlüğe alınacağını açıklar.
+title: İçeri aktarma sırası için Azure Data Box Heavy olayları Azure Data Box izleme ve günlüğe kaydetme | Microsoft Docs
+description: Azure Data Box çeşitli aşamalarda olayların nasıl izleneceğini ve günlüğe alınacağını açıklar ve içeri aktarma sırası Azure Data Box Heavy.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676402"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204310"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy için izleme ve olay günlüğü
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box ve Azure Data Box Heavy içeri aktarma siparişiniz için izleme ve olay günlüğü
 
-Bir Data Box veya Data Box Heavy sırası şu adımlardan geçer: sipariş, ayarlama, veri kopyalama, döndürme, Azure 'a yükleme ve doğrulama ve veri Erimi. Siparişteki her adıma karşılık gelen, sıraya erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem gerçekleştirebilirsiniz.
+Bir Data Box veya Data Box Heavy içeri aktarma sırası şu adımlardan geçer: sipariş, ayarlama, veri kopyalama, döndürme, Azure 'a yükleme ve doğrulama ve veri Erimi. Siparişteki her adıma karşılık gelen, sıraya erişimi denetlemek, olayları denetlemek, siparişi izlemek ve oluşturulan çeşitli günlükleri yorumlamak için birden çok eylem gerçekleştirebilirsiniz.
 
-Aşağıdaki tabloda Data Box veya Data Box Heavy sipariş adımlarının bir özeti ve her adım sırasında sırayı izlemek ve denetlemek için kullanılabilen araçlar gösterilmektedir.
+Aşağıdaki tabloda Data Box veya Data Box Heavy içeri aktarma sırası adımlarının bir özeti gösterilmektedir ve her adımda sırayı izlemek ve denetlemek için kullanılabilen araçlar gösterilmektedir.
 
-| Data Box sipariş aşaması       | İzlenecek ve denetlenecek araç                                                                        |
+| Data Box içeri aktarma siparişi aşaması       | İzlenecek ve denetlenecek araç                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Sipariş oluşturma               | [RBAC aracılığıyla sırada erişim denetimini ayarlama](#set-up-access-control-on-the-order)                                                    |
-| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portal </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
+| Sıra işlendi            | [Sıralamayı izleme](#track-the-order) <ul><li> Azure portalı </li><li> Kargo taşıyıcısı Web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | Cihaz kimlik bilgileri erişim oturum açmış [etkinlik günlükleri](#query-activity-logs-during-setup)                                              |
 | Cihaza veri kopyalama        | Veri kopyası için [ *error.xml* dosyalarını görüntüle](#view-error-log-during-data-copy)                                                             |
 | Göndermeye hazırlama            | Cihazdaki [bom dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
 | Azure 'a veri yükleme       | Azure veri merkezinde karşıya veri yükleme sırasında oluşan hataları [kopyalama günlüklerini gözden geçirme](#review-copy-log-during-upload-to-azure)                         |
 | Cihazdan veri ernure   | Denetim günlükleri ve sıra geçmişi dahil [, gözetim günlüklerinin zincirini görüntüleme](#get-chain-of-custody-logs-after-data-erasure)                |
 
-Bu makalede, Data Box veya Data Box Heavy sırasını izlemek ve denetlemek için kullanılabilen çeşitli mekanizmalar veya araçların ayrıntıları açıklanmaktadır. Bu makaledeki bilgiler, Data Box ve Data Box Heavy için geçerlidir. Sonraki bölümlerde, Data Box yapılan tüm başvurular Data Box Heavy için de geçerlidir.
+Bu makalede, Data Box veya Data Box Heavy içeri aktarma sırasını izlemek ve denetlemek için kullanılabilen çeşitli mekanizmalar veya araçların ayrıntıları açıklanmaktadır. Bu makaledeki bilgiler, Data Box ve Data Box Heavy içeri aktarma siparişlerine yöneliktir. Sonraki bölümlerde, Data Box yapılan tüm başvurular Data Box Heavy için de geçerlidir.
 
 ## <a name="set-up-access-control-on-the-order"></a>Sıraya göre erişim denetimi ayarlama
 

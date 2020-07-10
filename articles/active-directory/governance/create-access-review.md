@@ -11,15 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 06/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661339545f2c3f01ffd2e07b0fad08de8ac90278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078877"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204020"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
@@ -27,7 +28,7 @@ ms.locfileid: "85078877"
 
 Bu makalede, Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Premium P2
 - Genel yönetici veya Kullanıcı Yöneticisi
@@ -105,7 +106,7 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
 1. Ek ayarları belirtmek için **Gelişmiş ayarlar** bölümünü genişletin.
 
-    ![Erişim incelemesi oluşturma-Gelişmiş ayarlar](./media/create-access-review/advanced-settings.png)
+    ![Erişim incelemesi oluşturma-Gelişmiş ayarlar](./media/create-access-review/advanced-settings-preview.png)
 
 1. Kullanıcının erişim bilgilerini temel alarak sistem önerilerini gözden geçirenlere göstermek üzere **etkinleştirilecek** **önerileri göster** ' i ayarlayın.
 
@@ -113,9 +114,14 @@ Daha fazla bilgi için bkz. [Lisans gereksinimleri](access-reviews-overview.md#l
 
 1. Bir erişim incelemesi başladığında ve bir gözden geçirme tamamlandığında yöneticilere, Azure **ad 'nin gözden** geçirenlere e-posta bildirimleri göndermesini sağlamak için **posta bildirimleri** ayarlayın.
 
-1. Azure AD 'nin, gözden geçirenleri tamamlamadıkları gözden geçirenler için sürmekte olan erişim gözden geçirmeleri gönderme anımsatıcıları **sağlamak üzere** **anımsatıcıları** ayarlayın.
+1. Azure AD 'nin, gözden geçirenleri tamamlamadıkları gözden geçirenler için sürmekte olan erişim gözden geçirmeleri gönderme anımsatıcıları **sağlamak üzere** **anımsatıcıları** ayarlayın. 
 
-    Varsayılan olarak, bitiş tarihine kadar olan sürenin yarısına ulaşıldığında, Azure AD henüz yanıt vermemiş olan gözden geçirenlere bir anımsatıcı gönderir.
+    >[!NOTE]
+    > Varsayılan olarak, Azure AD, henüz yanıt vermemiş olan gözden geçirenlere bitiş tarihine kadar otomatik olarak bir anımsatıcı gönderir
+
+1. Önizle Gözden geçirenlere gönderilen e-postanın içeriği İnceleme adı, kaynak adı, son tarih vb. gözden geçirme ayrıntılarına göre otomatik olarak oluşturulur. Ek yönergeler veya iletişim bilgileri gibi ek bilgilere iletişim kurmak için bir yönteme ihtiyacınız varsa, bu ayrıntıları gözden geçiren için ek içerikte, davet ve anımsatıcı e-postalarına gönderilen gözden geçirenler e-postalarına dahil edilecek şekilde belirtebilirsiniz. Aşağıdaki Vurgulanan bölümde bu bilgilerin görüntüleneceği yer verilmiştir.
+
+    ![Kullanıcılara bir gruba erişimi gözden geçirme](./media/create-access-review/review-users-access-group.png)
 
 ## <a name="start-the-access-review"></a>Erişim gözden geçirmesini Başlat
 

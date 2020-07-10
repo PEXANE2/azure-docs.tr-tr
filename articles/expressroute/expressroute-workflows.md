@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864375"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204163"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Devre sağlama ve devre durumları için ExpressRoute iş akışları
 Bu sayfada, hizmet sağlama ve yapılandırma iş akışlarının yüksek düzeyde nasıl bulunduğu anlatılmaktadır.
@@ -54,33 +55,37 @@ Bu bölümde, bir ExpressRoute devresine ait olası durumlar listelenmiştir.
 
 ExpressRoute bağlantı hattı, kaynak oluşturma sırasında aşağıdaki durumları rapor eder.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **Bağlantı sağlayıcısı, devre sağlama sürecinde olduğunda**
 
 ExpressRoute bağlantı hattı, bağlantı sağlayıcı devreyi sağlamak için çalışırken aşağıdaki durumları bildirir.
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **Bağlantı sağlayıcısı sağlama işlemini tamamladığında**
 
 Bağlantı sağlayıcısı devresini başarıyla sağladıktan sonra ExpressRoute bağlantı hattı aşağıdaki durumları rapor eder.
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **Bağlantı sağlayıcısı devre dışı bırakıldığında**
 
 ExpressRoute bağlantı hattının sağlanması gerekiyorsa, hizmet sağlayıcısı sağlamayı kaldırma işlemini tamamladıktan sonra devre aşağıdaki durumları rapor eder.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 Gerekirse yeniden etkinleştirmeyi seçebilir veya devre dışı bırakmak için PowerShell cmdlet 'lerini çalıştırabilirsiniz.  
 

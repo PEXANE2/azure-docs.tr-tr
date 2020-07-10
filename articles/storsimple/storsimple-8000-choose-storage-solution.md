@@ -7,11 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965353"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203977"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple’ı Azure Dosya Eşitleme ve Data Box Edge veri aktarma seçenekleriyle karşılaştırma 
 
@@ -27,14 +28,14 @@ Bu belgede, Azure 'a yönelik şirket içi veri aktarımı seçeneklerine genel 
 
 |                           |StorSimple 8000   |Azure Dosya Eşitleme   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|Genel Bakış         |Katmanlı karma depolama ve arşivleme|Bulut katmanlaması ve çok siteli eşitleme ile genel dosya sunucusu depolaması.  |Verileri önceden işlemek ve ağ üzerinden Azure 'a göndermek için depolama çözümü.        |
-|Senaryolar        |Dosya sunucusu, arşivleme, yedekleme hedefi |Dosya sunucusu, arşivleme (çok siteli)   |Veri aktarımı, ML ınkleme, IoT, arşivleme dahil verileri önceden işleme    |
-|Uç işlemi     |Kullanılamaz |Kullanılamaz |Azure IoT Edge kullanarak kapsayıcıları çalıştırmayı destekler    |
-|Form faktörü      |Fiziksel cihaz   |Windows Server 'da yüklü aracı |Fiziksel cihaz   |
-|Donanım         |Hizmetin bir parçası olarak Microsoft 'tan gelen fiziksel cihaz | Müşteri tarafından sağlanmış |Hizmetin bir parçası olarak Microsoft 'tan gelen fiziksel cihaz  |
-|Veri biçimi      |Özel biçim   |Dosyalar         |Bloblar veya dosyalar    |
-|Protokol desteği |iSCSI          |SMB, NFS    | SMB veya NFS      |
-|Fiyatlandırma          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure Dosya Eşitleme](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
+|**Genel Bakış**     |Katmanlı karma depolama ve arşivleme|Bulut katmanlaması ve çok siteli eşitleme ile genel dosya sunucusu depolaması.  |Verileri önceden işlemek ve ağ üzerinden Azure 'a göndermek için depolama çözümü.        |
+|**Senaryolar**    |Dosya sunucusu, arşivleme, yedekleme hedefi |Dosya sunucusu, arşivleme (çok siteli)   |Veri aktarımı, ML ınkleme, IoT, arşivleme dahil verileri önceden işleme    |
+|**Uç işlemi** |Kullanılamaz |Kullanılamaz |Azure IoT Edge kullanarak kapsayıcıları çalıştırmayı destekler    |
+|**Form faktörü**  |Fiziksel cihaz   |Windows Server 'da yüklü aracı |Fiziksel cihaz   |
+|**Donanım**     |Hizmetin bir parçası olarak Microsoft 'tan gelen fiziksel cihaz | Müşteri tarafından sağlanmış |Hizmetin bir parçası olarak Microsoft 'tan gelen fiziksel cihaz  |
+|**Veri biçimi**  |Özel biçim   |Dosyalar         |Bloblar veya dosyalar    |
+|**Protokol desteği** |iSCSI          |SMB, NFS    | SMB veya NFS      |
+|**Fiyatlandırma**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure Dosya Eşitleme](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984279"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203806"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
@@ -98,12 +98,22 @@ Bu sayfa, danışmanlık hizmetinizin en iyi şekilde kapsaabileceği birincil �
 
 3. **Azure** 'u birincil ürün olarak seçtiyseniz en fazla üç **çözüm alanını**seçin. Bu, Azure Marketi 'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. Azure 'u seçmediyseniz, bu adımı atlayın.
 
-    | Çözüm alanı | | | |
-    | --- | --- | --- | --- |
-    | Analiz | Backup | DevOps | Geçiş |
-    | Uygulama modernleştirme | Büyük Veri | Olağanüstü Durum Kurtarma | Ağ |
-    | Arşiv | Veri platformu | Kimlik | Güvenlik |
-    | Yapay Zeka ve Makine Öğrenmesi | Veri merkezi yönetimi | Nesnelerin İnterneti | Depolama |
+    - Analiz
+    - Uygulama modernleştirme
+    - Arşiv
+    - Yapay Zeka ve Makine Öğrenmesi
+    - Backup
+    - Büyük Veri
+    - Veri platformu
+    - Veri merkezi yönetimi
+    - DevOps
+    - Olağanüstü Durum Kurtarma
+    - Kimlik
+    - Nesnelerin İnterneti
+    - Geçiş
+    - Ağ
+    - Güvenlik
+    - Depolama
 
 1. **Azure** 'u birincil ürün olarak seçtiyseniz, en fazla altı **sektör**seçebilirsiniz. Bu, Azure Marketi 'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)sektörlerin tam listesine bakın. Azure 'u seçmediyseniz, bu adımı atlayın.
 1. Azure *dışında bir birincil ürün seçtiyseniz* , en fazla üç **uygulanabilir ürünü**seçin. Bu, AppSource 'taki müşterilerin teklifinizi bulmasını kolaylaştırır. Ayrıntılar için bkz. [Microsoft AppSource danışmanlık hizmeti listeleme yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
@@ -131,7 +141,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 4. Sektörler
 5. Teklif adı
 6. Özet
-7. Description
+7. Açıklama
 8. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
@@ -146,11 +156,11 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 4. Sektörler
 5. Teklif adı
 6. Özet
-7. Description
+7. Açıklama
 8. Ekran görüntüleri/videolar
 9. Belgeler
 
-### <a name="name"></a>Name
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad, teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -164,7 +174,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -172,7 +182,7 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 [!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
-### <a name="keywords"></a>Anahtar sözcükler
+### <a name="keywords"></a>Anahtar Sözcükler
 
 Birincil ürün ve danışmanlık hizmetinize uygun en fazla üç arama anahtar sözcüğü girin. Tekliflerinizi bulmayı daha kolay hale getirir.
 

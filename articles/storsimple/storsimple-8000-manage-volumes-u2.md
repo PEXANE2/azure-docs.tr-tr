@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508257"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204463"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Birimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın (güncelleştirme 3 veya üzeri)
 
@@ -51,14 +51,14 @@ Arşiv verileri için katmanlı birim kullanıyorsanız, biriminizin yinelenenle
 
 Her cihaz ve birim türü için sağlanan maksimum kapasite için aşağıdaki tabloya bakın. (Yerel olarak sabitlenmiş birimlerin sanal bir cihazda kullanılabilir olmadığına unutmayın.)
 
-|  | Maksimum katmanlı birim boyutu | Yerel olarak sabitlenmiş birim boyutu üst sınırı |
+| Tür | Maksimum katmanlı birim boyutu | Yerel olarak sabitlenmiş birim boyutu üst sınırı |
 | --- | --- | --- |
 | **Fiziksel cihazlar** | | |
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Sanal cihazlar** | | |
-| 8010 |30 TB |YOK |
-| 8020 |64 TB |YOK |
+| 8010 |30 TB |Yok |
+| 8020 |64 TB |Yok |
 
 ## <a name="the-volumes-blade"></a>Birimler dikey penceresi
 
@@ -112,7 +112,7 @@ StorSimple 8000 serisi cihazınızın dağıtımı sırasında [bir birim oluşt
       
        8100 cihazınızda 8,5 TB boyutunda (izin verilen en yüksek boyut) yerel olarak sabitlenmiş bir birim sağlarsanız, cihazdaki kullanılabilir yerel alanın tümünü kullanmış olursunuz. Katmanlı birimin çalışan kümesinin barındıracak cihazda yerel alan olmadığından, bu noktadan sonra herhangi bir katmanlı birim oluşturamazsınız. Var olan katmanlı birimler kullanılabilir alanı de etkiler. Örneğin, zaten 106 TB boyutunda katmanlı birimlerin bulunduğu bir 8100 cihazınız varsa, yerel olarak sabitlenmiş birimlerin kullanabileceği yalnızca 4 TB’lık alan kalır.
 
-    6. **Bağlı konaklar** alanında oka tıklayın. **Bağlı konaklar** dikey penceresinde, var olan bir ACR seçin veya yeni bir ACR ekleyin. Yeni bir ACR seçerseniz, ACR 'niz için bir **ad** sağlayın, Windows ana bilgisayarınız Için **iSCSI tam adını** (IQN) sağlayın. IQN’niz yoksa Windows Server konağının IQN’sini al’a gidin. **Oluştur**'a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
+    6. **Bağlı konaklar** alanında oka tıklayın. **Bağlı konaklar** dikey penceresinde, var olan bir ACR seçin veya yeni bir ACR ekleyin. Yeni bir ACR seçerseniz, ACR 'niz için bir **ad** sağlayın, Windows ana bilgisayarınız Için **iSCSI tam adını** (IQN) sağlayın. IQN’niz yoksa Windows Server konağının IQN’sini al’a gidin. **Oluştur**’a tıklayın. Belirtilen ayarlarla bir birim oluşturulur.
 
         ![Oluştur’a tıklayın](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -157,7 +157,7 @@ Bir birimi genişletmeniz veya birime erişen Konakları değiştirmeniz gerekti
 
        ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
+5. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin. Onayınız istendiğinde **Evet**’e tıklayın. Azure portal güncelleştirme birimi iletisi görüntülenir. Birim başarıyla güncelleştirildiği zaman başarılı bir ileti görüntülenir.
 
     ![Birimi çevrimdışına alma etkisini gözden geçirin](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 

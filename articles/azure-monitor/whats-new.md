@@ -5,17 +5,96 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 04/06/2020
-ms.openlocfilehash: 561767b6857f4b52b3ee1eb17fedd51ad409ee29
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 07/08/2020
+ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462983"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203754"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
+
+## <a name="june-2020"></a>Haziran 2020
+
+### <a name="general"></a>Genel
+- [Azure Izleyiciyi dağıtma](platform/deploy-scale.md) -yeni makale.
+- [Azure izleyici müşteri tarafından yönetilen anahtar](platform/customer-managed-keys.md) -güncelleştirilmiş billingtype özelliği. PowerShell komutları eklendi.
+
+### <a name="agents"></a>Aracılar
+- [Log Analytics aracısına genel bakış](platform/log-analytics-agent.md) -Python 2 gereksinimi eklendi.
+
+### <a name="alerts"></a>Uyarılar
+- [Hedef kaynakları farklı bir Azure bölgesine hareket ettirildiğinde uyarı kurallarını veya eylem kurallarını güncelleştirme](platform/alerts-resource-move.md) -yeni makale.
+- [Azure ölçüm uyarıları sorunlarını giderme](platform/alerts-troubleshoot-metric.md) -yeni makale.
+- [Azure izleyici 'de günlük uyarıları sorunlarını giderme](platform/alerts-troubleshoot-metric.md) -yeni makale.
+  
+### <a name="application-insights"></a>Application Insights
+- [JavaScript Web Apps Için Azure Application Insights](app/javascript.md) -JavaScript SDK 'sı bölümüne güncelleştirin. Yükleme başarısızlıklarını raporlamak için kod parçacığı güncelleştirildi.
+- [Profil oluşturucu & Snapshot Debugger-yeni makale için KCG 'leri (kendi depolama alanınızı getirin) yapılandırma](app/profiler-bring-your-own-storage.md) .
+- [Azure 'da, Opencensus Python Ile gelen Istek izleme Application Insights](app/opencensus-python-request.md) , opencensus için günlük kaydı ve yapılandırma güncelleştirildi.
+- [Azure Application Insights ile canlı bir ASP.NET Web uygulamasını izleme](app/monitor-performance-live-website-now.md) durum İzleyicisi v1 için güncel kaldırma tarihi.
+- [Azure Application Insights ile Node.js hizmetleri izleme](app/nodejs.md) -birden çok güncelleştirme, sanal SÜRÜMLERDEN ve SDK yapılandırmasından geçiş de dahil olmak üzere
+- Azure izleyici dışarı aktarımlarını yapılandırma bölümüne [Azure izleyici (Önizleme) Ile Python uygulamalarını izleyin](app/opencensus-python.md) .
+- [Kod değişikliği olmadan uygulamalarınızı izleyin-Azure izleyici için otomatik izleme Application Insights](app/codeless-overview.md) -yeni makale.
+- [JavaScript Web uygulamaları IÇIN SDK yükleme hatası giderme](app/javascript-sdk-load-failure.md) -yeni makale.
+
+### <a name="containers"></a>Kapsayıcılar
+- Yay etkin Kubernetes için [karma Kubernetes kümesi](insights/container-insights-optout-hybrid.md) ile eklenen bölümü izlemeyi durdurma.
+- [Azure Arc etkin Kubernetes kümesini kapsayıcılar Için Azure izleyici Ile yapılandırma](insights/container-insights-enable-arc-enabled-clusters.md) -yeni makale.
+- [Azure Red Hat OpenShift v4. x ' i kapsayıcılar Için Azure izleyici Ile yapılandırın](insights/container-insights-azure-redhat4-setup.md) -güncelleştirilmiş önkoşulları.
+- [Kapsayıcılar Için Azure Izleyicisini ayarlama Canlı veriler (Önizleme)](insights/container-insights-livedata-setup.md) -kaldırılan özellik hakkında Azure ABD kamu 'da kullanılamayan Not.
+
+### <a name="insights"></a>Insights
+- [SSS-Azure 'da ağ performansı İzleyicisi çözüm](insights/network-performance-monitor-faq.md) -ExpressRoute IZLEYICISI için SSS eklendi.
+
+### <a name="logs"></a>Günlükler
+- [Azure Log Analytics çalışma alanını silme ve kurtarma](platform/delete-workspace.md) -PowerShell komutu eklendi. Sorun giderme güncelleştirildi.
+- RBAC bölümünde izin verilmeyen tablolar için [Azure izleyici 'de Log Analytics çalışma alanlarını yönetin](platform/manage-access.md) .
+- [Azure Izleyici günlükleri için kullanımı ve maliyetleri yönetme](platform/manage-cost-storage.md) -veri boyutunun hesaplanmasıyla ilgili ek ayrıntılar. Veri birimi uyarılarını yapılandırma güncelleştirildi. Azure Sentinel tarafından toplanan Güvenlik verileriyle ilgili ayrıntılar. Veri ucunun açıklaması.
+- [Azure izleyici günlüklerini Azure Logic Apps ve Power otomatikleştir](platform/logicapp-flow-connector.md) tarafından eklenen bağlayıcı limitleriyle birlikte kullanın.
+
+### <a name="metrics"></a>Ölçümler
+- [Azure izleyici kaynak türüne göre desteklenen ölçümleri](platform/metrics-supported.md) SQL Server.
+
+
+### <a name="platform-logs"></a>Platform günlükleri
+
+- [Tanılama ayarları için şablon örnekleri Kaynak Yöneticisi](samples/resource-manager-diagnostic-settings.md) -etkinlik günlüğü tanılaması için düzelme ayarı.
+- [Azure Portal yeni makale kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderin](learn/quick-collect-activity-log-portal.md) .
+- [Azure Resource Manager şablonu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderin](learn/quick-collect-activity-log-arm.md) -yeni makale.
+
+#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncelleştirilmiş makaleler
+- [Azure Kaynak günlüklerini depolama hesabına arşivleme](platform/resource-logs-collect-storage.md)
+- [Azure etkinlik günlüğü olay şeması](platform/activity-log-schema.md)
+- [Azure etkinlik günlüğü](platform/activity-log.md)
+- [Azure Izleyici CLı örnekleri](samples/cli-samples.md)
+- [Azure Izleyici PowerShell örnekleri](samples/powershell-samples.md)
+- [Azure Izleme REST API izlenecek yol](platform/rest-api-walkthrough.md)
+- [Azure kaynak günlüğü desteklenen Hizmetleri ve şemaları](platform/diagnostic-logs-schema.md)
+- [Azure Kaynak günlükleri](platform/resource-logs.md)
+- [Azure Izleyici 'de Azure etkinlik günlüğünü toplayın ve çözümleyin](platform/activity-log-collect.md)
+- [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](platform/resource-logs-collect-workspace.md)
+- [Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma](platform/diagnostic-settings.md)
+- [Azure etkinlik günlüğünü dışarı aktarma](platform/activity-log-export.md)
+- [Azure platformu günlüklerine genel bakış](platform/platform-logs-overview.md)
+- [Azure platformu günlüklerini bir olay hub 'ına akış](platform/resource-logs-stream-event-hubs.md)
+- [Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme](platform/activity-log-view.md)
+
+### <a name="virtual-machines"></a>Sanal makineler
+- [Azure portal VM'ler için Azure izleyici,](insights/vminsights-enable-single-vm.md) Azure Arc 'ı içerecek şekilde güncelleştirildi.
+- [VM'ler için Azure izleyici genel bakışı etkinleştirin](insights/vminsights-enable-overview.md) -Azure Arc 'ı içerecek şekilde güncelleştirildi.
+- [VM'ler için Azure İzleyici nedir?](insights/vminsights-overview.md) -Azure yayı içerecek şekilde güncelleştirildi.
+
+
+### <a name="visualizations"></a>Görselleştirmeler
+- [Azure izleyici çalışma kitapları veri kaynakları](platform/workbooks-data-sources.md) -uyarılar ve özel uç noktalar bölümü eklendi.
+- [Azure izleyici çalışma kitabı tabanlı Öngörüler sorunlarını giderme](insights/troubleshoot-workbooks.md) -yeni makale.
+- [Log Analytics Pano görselleştirmelerinizi yükseltme](log-query/dashboard-upgrade.md) -yeni makale.
+
+
 
 ## <a name="may-2020"></a>Mayıs 2020
 
@@ -49,7 +128,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 ### <a name="application-insights"></a>Application Insights
 
 - [Azure işlevleri 'nde çalışan uygulamaları Application Insights-Azure izleyici](app/monitor-functions.md) -yeni makale ile izleyin.
-- [Azure Application Insights Ile Node. js hizmetlerini izleyin](app/nodejs.md) -önceki sürümlerden geçiş konusunda yeni bölüm de dahil olmak üzere Genel güncelleştirmeler.
+- [Azure Application Insights ile Node.js hizmetleri izleme](app/nodejs.md) -önceki sürümlerden geçiş hakkında yeni bölüm içeren genel güncelleştirmeler.
 - Web kancaları ve ABD kamu için [Application Insights ve Log Analytics tarafından eklenen IP adresleri tarafından kullanılan IP adresleri](app/ip-addresses.md) .
 - [Azure Kubernetes Service (AKS) üzerindeki uygulamaları Application Insights-Azure izleyici](app/kubernetes-codeless.md) -yeni makale ile izleyin.
 - DotNet-Trace ile günlükleri toplama konusunda .NET 'e eklenen bölüm [için veri Application Insights sorun giderme](app/asp-net-troubleshoot-no-data.md) .
@@ -101,7 +180,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [VM'ler için Azure izleyici genel bakışı etkinleştirin](insights/vminsights-enable-overview.md) -Ubuntu Server 'ın desteklenen sürümlerine eklenir. Log Analytics çalışma alanı için desteklenen bölgeler eklendi.
 - Kullanılabilir ölçümler için VM'ler için Azure İzleyici eklenen sınırlamalar bölümü [ile performansı grafik olarak belirleme](insights/vminsights-performance.md) .
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 - [Azure izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi Güncelleştirmesi eklendi.
 - [Azure Izleyici çalışma kitapları grupları](platform/workbooks-groups.md) -yeni makale.
 - [Azure Izleyici çalışma kitapları-JSON verilerini JSONPath Ile Dönüştür](platform/workbooks-jsonpath.md) -yeni makale.
@@ -152,7 +231,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 
 - [Azure Ölçüm Gezgini](platform/metrics-charts.md) ile eklenen toplama bölümünün gelişmiş özellikleri.
 
-### <a name="workbooks"></a>Çalışma Kitapları
+### <a name="workbooks"></a>Çalışma kitapları
 
 - [Azure Izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi şablonu eklendi.
 
@@ -219,7 +298,7 @@ VM'ler için Azure İzleyici genel kullanıma yönelik genel güncelleştirmeler
 - [VM'ler için Azure İzleyici günlüklerini sorgulama](insights/vminsights-log-search.md)
 - [VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme](insights/vminsights-maps.md) 
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 
 - [Azure izleyici 'den verileri görselleştirme](visualizations.md) -Görünüm Tasarımcısı 'nın planlanmış kullanım dışı bırakılmasıyla güncelleştirildi.
 
@@ -267,7 +346,7 @@ Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok gü
 
 - [Azure izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir](platform/metrics-supported-export-diagnostic-settings.md) -null ve sıfır değerleri için davranış değişikliğine eklenen bölüm.
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 
 Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna yönelik birden çok yeni makale.
 
@@ -354,7 +433,7 @@ Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna y
 ### <a name="application-insights"></a>Application Insights
 
 - [Çalışan hizmeti uygulamaları için Application Insights (http olmayan uygulamalar)](app/worker-service.md) -C# koduna varsayılan günlük kaydı düzeyi eklendi. Paket başvurusu sürümü güncelleştirildi.
-- [ApplicationInsights. config başvurusu-Azure](app/configuration-with-applicationinsights-config.md) -güncelleştirilmiş örnek kod.
+- [ApplicationInsights.config başvurusu-Azure](app/configuration-with-applicationinsights-config.md) -güncelleştirilmiş örnek kod.
 - [Azure Application Insights 'Yi PowerShell Ile otomatikleştirin](app/powershell.md) -Kaynak Yöneticisi şablona güncelleştirin.
 - [Azure izleyici Application Insights NuGet paketleri](app/nuget.md) -güncelleştirilmiş paket sürümleri.
 - [Yeni bir Azure Application Insights kaynağı oluşturma](app/create-new-resource.md) -genel benzersiz ada Note eklendi.

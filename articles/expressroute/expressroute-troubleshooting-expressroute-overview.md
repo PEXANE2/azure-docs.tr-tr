@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 827d68a5f0f35e42acae1fa225646eb509f69c89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729328"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204211"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute bağlantısını doğrulama
 Bu makale, ExpressRoute bağlantısını doğrulamanıza ve sorunlarını gidermenize yardımcı olur. ExpressRoute, bir bağlantı sağlayıcısı tarafından yaygın olarak kullanılan özel bir bağlantı üzerinden şirket içi bir ağı Microsoft bulutuna genişletir. ExpressRoute bağlantısı, geleneksel olarak üç farklı ağ bölgesi içerir ve aşağıdaki gibi:
@@ -94,7 +95,9 @@ Bir ExpressRoute bağlantı hattının işlemsel olması için *devre durumunun*
 ### <a name="verification-via-powershell"></a>PowerShell aracılığıyla doğrulama
 Bir kaynak grubundaki tüm ExpressRoute devrelerini listelemek için aşağıdaki komutu kullanın:
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```
 
 >[!TIP]
 >Bir kaynak grubunun adını arıyorsanız, aboneliğinizdeki tüm kaynak gruplarını, *Get-AzResourceGroup* komutunu kullanarak bu alana alabilirsiniz.
@@ -103,37 +106,43 @@ Bir kaynak grubundaki tüm ExpressRoute devrelerini listelemek için aşağıdak
 
 Bir kaynak grubunda belirli bir ExpressRoute devresini seçmek için aşağıdaki komutu kullanın:
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```
 
 Örnek yanıt:
 
-    Name                             : Test-ER-Ckt
-    ResourceGroupName                : Test-ER-RG
-    Location                         : westus2
-    Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                        "Name": "Standard_UnlimitedData",
-                                        "Tier": "Standard",
-                                        "Family": "UnlimitedData"
-                                        }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             : 
-    ServiceProviderProperties        : {
-                                        "ServiceProviderName": "****",
-                                        "PeeringLocation": "******",
-                                        "BandwidthInMbps": 100
-                                        }
-    ServiceKey                       : **************************************
-    Peerings                         : []
-    Authorizations                   : []
+```output
+Name                             : Test-ER-Ckt
+ResourceGroupName                : Test-ER-RG
+Location                         : westus2
+Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_UnlimitedData",
+                                    "Tier": "Standard",
+                                    "Family": "UnlimitedData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             : 
+ServiceProviderProperties        : {
+                                    "ServiceProviderName": "****",
+                                    "PeeringLocation": "******",
+                                    "BandwidthInMbps": 100
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+Authorizations                   : []
+```
 
 Bir ExpressRoute bağlantı hattının çalışır durumda olup olmadığını doğrulamak için, aşağıdaki alanlara özellikle dikkat edin:
 
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
+```output
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+```
 
 > [!NOTE]
 > Bir ExpressRoute devresini yapılandırdıktan sonra, *devre durumu* etkin değil durumunda olduğunda [Microsoft desteği][Support]başvurun. Öte yandan, *sağlayıcının durumu* sağlanmamış durumunda değilse hizmet sağlayıcınıza başvurun.
@@ -167,47 +176,56 @@ Yukarıdaki örnekte, belirtilen Azure özel eşlemesi sağlandığı için Azur
 ### <a name="verification-via-powershell"></a>PowerShell aracılığıyla doğrulama
 Azure özel eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutları kullanın:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```
 
 Başarılı bir şekilde yapılandırılmış özel eşleme için örnek yanıt:
 
-    Name                       : AzurePrivatePeering
-    Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
-    Etag                       : W/"################################"
-    PeeringType                : AzurePrivatePeering
-    AzureASN                   : 12076
-    PeerASN                    : 123##
-    PrimaryPeerAddressPrefix   : 172.16.0.0/30
-    SecondaryPeerAddressPrefix : 172.16.0.4/30
-    PrimaryAzurePort           : 
-    SecondaryAzurePort         : 
-    SharedKey                  : 
-    VlanId                     : 200
-    MicrosoftPeeringConfig     : null
-    ProvisioningState          : Succeeded
+```output
+Name                       : AzurePrivatePeering
+Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
+Etag                       : W/"################################"
+PeeringType                : AzurePrivatePeering
+AzureASN                   : 12076
+PeerASN                    : 123##
+PrimaryPeerAddressPrefix   : 172.16.0.0/30
+SecondaryPeerAddressPrefix : 172.16.0.4/30
+PrimaryAzurePort           : 
+SecondaryAzurePort         : 
+SharedKey                  : 
+VlanId                     : 200
+MicrosoftPeeringConfig     : null
+ProvisioningState          : Succeeded
+```
 
  Başarıyla etkinleştirilen bir eşleme bağlamı, birincil ve ikincil adres ön eklerinin listelenmesine neden olur. /30 alt ağları, Mgördüğü ve CEs/PE-MSEE Arabirim IP adresi için kullanılır.
 
 Azure genel eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutları kullanın:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```
 
 Microsoft eşleme yapılandırma ayrıntılarını almak için aşağıdaki komutları kullanın:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```
 
 Bir eşleme yapılandırılmamışsa, bir hata iletisi olur. Bir örnek yanıt, belirtilen eşleme (Bu örnekteki Azure ortak eşlemesi) devre içinde yapılandırılmadı:
 
-    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
-    At line:1 char:1
-        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
-        + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
-            + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
-
+```azurepowershell
+Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+At line:1 char:1
+    + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
+        + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
+```
 
 > [!NOTE]
 > Bir eşlemenin etkinleştirilmesi başarısız olursa, atanan birincil ve ikincil alt ağların bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediği kontrol edin. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı CE/PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE/CE çifti ile aynı olmalıdır. Önceden yapılandırılmış paylaşılan anahtar, güvenlik nedenleriyle gösterilmeyecek. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
@@ -233,28 +251,31 @@ Bkz. [Kaynak Yöneticisi dağıtım modeli BELGESINDE ARP tablolarını alma][AR
 
 *Özel* yönlendirme bağlamı için *birincil* yolda MSEE yönlendirme tablosunu almak için aşağıdaki komutu kullanın:
 
-    Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```
 
 Örnek yanıt:
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.141
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+```output
+Network : 10.1.0.0/16
+NextHop : 10.17.17.141
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.140*
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+Network : 10.1.0.0/16
+NextHop : 10.17.17.140*
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.2.20.0/25
-    NextHop : 172.16.0.1
-    LocPrf  : 
-    Weight  : 0
-    Path    : 123##
-
+Network : 10.2.20.0/25
+NextHop : 172.16.0.1
+LocPrf  : 
+Weight  : 0
+Path    : 123##
+```
 
 > [!NOTE]
 > Bir MSEE ve bir CE/PE-MSEE arasındaki eBGP eşlemesinin durumu etkin veya boşta ise, birincil ve ikincil eş alt ağlarının bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediğinden emin olun. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı PE-MSEE/CE üzerinde kullanılanlara eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve CE/PE-MSEE çiftiyle aynı olmalıdır. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.
@@ -268,24 +289,32 @@ Bkz. [Kaynak Yöneticisi dağıtım modeli BELGESINDE ARP tablolarını alma][AR
 
 Aşağıdaki örnek, varolmayan bir eşleme için komutun yanıtını gösterir:
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="confirm-the-traffic-flow"></a>Trafik akışını onaylama
 Birleşik birincil ve ikincil yol trafiği istatistiklerini almak için, bir eşleme bağlamının içindeki ve çıkan baytlar, aşağıdaki komutu kullanın:
 
-    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```azurepowershell
+Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```
 
 Komutun örnek çıktısı şu şekilde olur:
 
-    PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
-    -------------- --------------- ---------------- -----------------
-         240780020       239863857        240565035         239628474
+```output
+PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
+-------------- --------------- ---------------- -----------------
+     240780020       239863857        240565035         239628474
+```
 
 Mevcut olmayan bir eşleme için komutun örnek çıktısı:
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
