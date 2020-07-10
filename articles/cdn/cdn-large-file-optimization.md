@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887657"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206707"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN ile büyük dosya indirme iyileştirmesi
 
@@ -104,11 +104,10 @@ Bayt aralığı isteği hakkında daha fazla bilgi için bkz. [RFC 7233](https:/
 
 CDN, alındıkları tüm öbekleri önbelleğe alır. Tüm dosyanın CDN önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıklarının sonraki istekleri CDN önbelleğinden sunulur. Tüm parçalar CDN 'de önbelleğe alınmamışsa, kaynaktan öbekleri istemek için önceden getirme kullanılır. Bu iyileştirme, kaynak sunucunun, bayt aralığı isteklerini destekleme özelliğine dayanır; Kaynak sunucu, bayt aralığı isteklerini desteklemiyorsa, bu iyileştirme etkili olmaz.
 
-### <a name="caching"></a>Önbelleğe Alma
+### <a name="caching"></a>Önbelleğe alma
 Büyük dosya iyileştirmesi, genel Web tesliminden farklı varsayılan önbelleğe alma zaman aşımı sürelerini kullanır. Olumlu önbellek ve HTTP yanıt kodlarına göre negatif önbellek arasında ayrım yapar. Kaynak sunucu, yanıtta Cache-Control veya Expires üst bilgisi aracılığıyla bir sona erme saati belirtiyorsa, CDN bu değere sahiptir. Kaynak belirtilmezse ve dosya bu iyileştirme türü için tür ve boyut koşullarıyla eşleşiyorsa, CDN büyük dosya iyileştirmesi için varsayılan değerleri kullanır. Aksi takdirde, CDN genel web teslimi için Varsayılanları kullanır.
 
-
-|    | Genel Web | Büyük dosya iyileştirmesi 
+| Önbelleğe alma  | Genel Web | Büyük dosya iyileştirmesi 
 --- | --- | --- 
 Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |1 gün  
 Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye 

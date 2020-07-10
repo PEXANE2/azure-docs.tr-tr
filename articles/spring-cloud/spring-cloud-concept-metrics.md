@@ -6,11 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: ed8a46683d79211559b4af7972c6d1bb784e1f02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ef7614b32dd88e804b1a74749ee87504f9cea40
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434165"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205452"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -87,65 +88,43 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 
 ### <a name="error"></a>Hata
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat genel hatası (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere)  | Tomcat. Global. Error | Sayı | İşlenen isteklerde oluşan hata sayısı |
 >| Tomcat. Global. Error | Tomcat. Global. Error | Sayı | İşlenen isteklerde oluşan hata sayısı |
 
 ### <a name="performance"></a>Performans
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Sistem CPU kullanım yüzdesi (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | System. CPU. Usage | Yüzde | Tüm sistem için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, izlenen son süre boyunca tüm CPU 'ların boşta kaldığı, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin %100 ' i etkin bir şekilde çalıştırdığı anlamına gelir.|
 >| System. CPU. Usage | System. CPU. Usage | Yüzde | Tüm sistem için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, izlenen son süre boyunca tüm CPU 'ların boşta kaldığı, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin %100 ' i etkin bir şekilde çalıştırdığı anlamına gelir.|
->| Uygulama CPU kullanım yüzdesi (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
 >| Process. CPU. Usage | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
->| Atanan uygulama belleği (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. Memory. taahhüt | Bayt | JVM tarafından kullanılabilecek garanti edilen bellek miktarını temsil eder. JVM, belleği sisteme bırakabilir ve kaydedilmiş bellek ilk bellekten daha az olabilir. Kaydedilmiş bellek, kullanılan bellekten her zaman daha büyük veya ona eşit olacaktır. |
 >| JVM. Memory. taahhüt | JVM. Memory. taahhüt | Bayt | JVM tarafından kullanılabilecek garanti edilen bellek miktarını temsil eder. JVM, belleği sisteme bırakabilir ve yürütme init 'ten az olabilir. taahhüt edilen her zaman en fazla veya daha büyük olur. |
->| Kullanılan uygulama belleği (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. Memory. kullanıldı | Bayt | Bayt cinsinden şu anda kullanılan bellek miktarını temsil eder. |
 >| JVM. Memory. kullanıldı | JVM. Memory. kullanıldı | Bayt | Bayt cinsinden şu anda kullanılan bellek miktarını temsil eder. |
->| En fazla uygulama belleği (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. Memory. Max | Bayt | Bellek yönetimi için kullanılabilecek maksimum bellek miktarını temsil eder. En büyük değer tanımlanırsa, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşit veya daha düşük olacaktır. Kullanılan > kullanılan belleği artırmayı denerse bir bellek ayırma başarısız olabilir. <= Max kullanılması hala true (örneğin, sistem sanal belleği düşük olduğunda). |
 >| JVM. Memory. Max | JVM. Memory. Max | Bayt | Bellek yönetimi için kullanılabilecek maksimum bellek miktarını temsil eder. En büyük değer tanımlanırsa, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşit veya daha düşük olacaktır. Kullanılan > kullanılan belleği artırmayı denerse bir bellek ayırma başarısız olabilir. <= Max kullanılması hala true (örneğin, sistem sanal belleği düşük olduğunda). |
->| En fazla kullanılabilir eski nesil veri boyutu (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. GC. Max. Data. size | Bayt | Java sanal makinesi başlatıldığından bu yana eski nesil bellek havuzunun en yoğun bellek kullanımı. |
 >| JVM. GC. Max. Data. size | JVM. GC. Max. Data. size | Bayt | Java sanal makinesi başlatıldığından bu yana eski nesil bellek havuzunun en yoğun bellek kullanımı. |
->| Eski nesil veri boyutu (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. GC. Live. Data. size | Bayt | Tam GC sonrasında eski nesil bellek havuzunun boyutu. |
 >| JVM. GC. Live. Data. size | JVM. GC. Live. Data. size | Bayt | Tam GC sonrasında eski nesil bellek havuzunun boyutu. |
->| Eski nesil veri boyutu (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. GC. Memory. yükseltilen | Bayt | GC 'den sonra GC öncesinde, eski nesil bellek havuzunun boyutundaki pozitif artış sayısı. |
 >| JVM. GC. Memory. yükseltilen | JVM. GC. Memory. yükseltilen | Bayt | GC 'den sonra GC öncesinde, eski nesil bellek havuzunun boyutundaki pozitif artış sayısı. |
->| Küçük ölçekli oluşturma veri boyutuna (kullanım dışı) yükselt<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. GC. Memory. ayrılmış | Bayt | Bir GC 'nin bir sonraki öncesinde bir GC sonrasında küçük kuşak bellek havuzunun boyutunun artması için artırılır. |
 >| JVM. GC. Memory. ayrılmış | JVM. GC. Memory. ayrılmış | Bayt | Bir GC 'nin bir sonraki öncesinde bir GC sonrasında küçük kuşak bellek havuzunun boyutunun artması için artırılır. |
->| GC duraklatma sayısı (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. GC. Pause (Toplam-sayı) | Sayı | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere toplam GC sayısı. |
 >| JVM. GC. Pause. Total. Count | JVM. GC. Pause (Toplam-sayı) | Sayı | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere toplam GC sayısı. |
->| GC duraklatma toplam süresi (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. GC. Pause (Toplam süre) | Mayacak | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere tüketilen toplam GC süresi. |
 >| JVM. GC. Pause. Total. Time | JVM. GC. Pause (Toplam süre) | Mayacak | Bu JMV başlatıldıktan sonra, Başak ve eski GC dahil olmak üzere tüketilen toplam GC süresi. |
 
 ### <a name="request"></a>İstek
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat gönderilen toplam bayt (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Global. gönderildi | Bayt | Gönderilen veri miktarı Tomcat Web sunucusu |
 >| Tomcat. Global. gönderildi | Tomcat. Global. gönderildi | Bayt | Gönderilen veri miktarı Tomcat Web sunucusu |
->| Tomcat Toplam alınan bayt (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Global. alındı | Bayt | Alınan veri miktarı Tomcat Web sunucusu |
 >| Tomcat. Global. alındı | Tomcat. Global. alındı | Bayt | Alınan veri miktarı Tomcat Web sunucusu |
->| Tomcat Isteği toplam süre (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Global. Request (Toplam süre) | Mayacak | İstekleri işlemek için Tomcat Web sunucusunun toplam süresi |
->| Tomcat Isteği toplam sayısı (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Global. Request (Toplam sayı) | Sayı | Toplam Tomcat Web sunucusu işlenen istek sayısı |
 >| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (Toplam sayı) | Sayı | Toplam Tomcat Web sunucusu işlenen istek sayısı |
->| Tomcat Isteği en uzun süresi (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Global. Request. Max | Mayacak | Bir isteği işlemek için en fazla Tomcat Web sunucusu süresi |
 >| Tomcat. Global. Request. Max | Tomcat. Global. Request. Max | Mayacak | Bir isteği işlemek için en fazla Tomcat Web sunucusu süresi |
 
 ### <a name="session"></a>Oturum
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat oturumu en fazla etkin sayısı (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Sessions. Active. Max | Sayı | Aynı anda etkin olan en fazla oturum sayısı |
 >| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Sayı | Aynı anda etkin olan en fazla oturum sayısı |
->| Tomcat oturumu maksimum etkin süresi (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Sessions. canlı. Max | Mayacak | Süresi biten bir oturumun etkin olduğu en uzun süre (saniye cinsinden) |
 >| Tomcat. Sessions. canlı. Max | Tomcat. Sessions. canlı. Max | Mayacak | Süresi biten bir oturumun etkin olduğu en uzun süre (saniye cinsinden) |
->| Tomcat oturumunun oluşturulma sayısı (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Sessions. oluşturuldu | Sayı | Oluşturulan oturum sayısı |
 >| Tomcat. Sessions. oluşturuldu | Tomcat. Sessions. oluşturuldu | Sayı | Oluşturulan oturum sayısı |
->| Tomcat oturumunun süre dolma sayısı (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Sessions. süre geçildi | Sayı | Zaman aşımına uğramış oturum sayısı |
 >| Tomcat. Sessions. süre geçildi | Tomcat. Sessions. süre geçildi | Sayı | Zaman aşımına uğramış oturum sayısı |
->| Tomcat oturumu reddedildi sayısı (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Tomcat. Sessions. reddedildi | Sayı | En fazla etkin oturum sayısına ulaşıldığından, oluşturulmayan oturum sayısı. |
 >| Tomcat. Sessions. reddedildi | Tomcat. Sessions. reddedildi | Sayı | En fazla etkin oturum sayısına ulaşıldığından, oluşturulmayan oturum sayısı. |
 >| Tomcat. Sessions. ACTIVE. Current | Tomcat. Sessions. ACTIVE. Current | Sayı | Tomcat oturumu etkin sayısı |
 

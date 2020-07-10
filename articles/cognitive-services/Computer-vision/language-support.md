@@ -1,7 +1,7 @@
 ---
 title: Dil desteği-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Görüntü İşleme özellikleri tarafından desteklenen doğal dillerin bir listesini sağlar; OCR, Metin Tanıma ve okuma.
+description: Bu makale, Görüntü İşleme özellikleri tarafından desteklenen doğal dillerin bir listesini sağlar; OCR, görüntü analizi.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560174"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205292"
 ---
 # <a name="language-support-for-computer-vision"></a>Görüntü İşleme için dil desteği
 
 Görüntü İşleme bazı özellikleri birden çok dili destekler; Burada bahsedilen özellikler yalnızca Ingilizce 'yi destekler.
 
-## <a name="text-detection-ocr"></a>Metin algılama (OCR)
+## <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
-Görüntü İşleme, birçok dilde metni algılayabilir. Okuma ve OCR API 'Leri için bir dil kodu belirtmeniz gerekmez. Bu işlevsellik ve her API 'nin avantajları hakkında daha fazla bilgi için bkz. [resimlerden ve belgelerden metin okuma](concept-recognizing-text.md) .
+Görüntü İşleme OCR API 'Leri çeşitli dilleri destekler. Bir dil kodu belirtmenizi gerektirmez. Daha fazla bilgi için bkz. [optik karakter tanıma (OCR)](concept-recognizing-text.md) .
 
 |Dil| Dil kodu | OCR APı 'SI | API 'YI oku |
 |:-----|:----:|:-----:|:---:|
@@ -58,7 +58,7 @@ Görüntü İşleme, birçok dilde metni algılayabilir. Okuma ve OCR API 'Leri 
 
 [Analyze-Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sindeki bazı eylemler, sorgu parametresiyle belirtilen diğer dillerde sonuç döndürebilir `language` . Diğer Eylemler, belirtilen dilin ne olduğuna bakmaksızın sonuçları Ingilizce olarak döndürür ve bazıları desteklenmeyen diller için bir özel durum oluşturur. Eylemler `visualFeatures` ve sorgu parametreleriyle birlikte belirtilir `details` ; görüntü analizine sahip yapabileceğiniz tüm eylemlerin bir listesi için bkz. [genel bakış](home.md) .
 
-|Dil | Dil kodu | Kategoriler | Etiketler | Description | Yetişkin | Markalar | Renk | Yüzler | ImageType | Nesneler | Ünlüler | Yer işaretleri |
+|Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkin | Markalar | Color | Yüzler | ImageType | Nesneler | Ünlü Kişiler | Bölümler |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Çince | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |İngilizce | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

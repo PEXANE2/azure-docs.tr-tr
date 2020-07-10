@@ -5,11 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feeef1773ffe68f3ff88175b413cd40ba618b8d9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639811"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207236"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric kapsayıcı ağ modları
 
@@ -190,15 +191,14 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
  
 3. Yalnızca Windows kümeleri için, sanal ağ için UDP/53 bağlantı noktasını aşağıdaki değerlerle açan bir Azure ağ güvenlik grubu (NSG) kuralı ayarlayın:
 
-   |Ayar |Değer | |
-   | --- | --- | --- |
-   |Öncelik |2000 | |
-   |Name |Custom_Dns  | |
-   |Kaynak |VirtualNetwork | |
-   |Hedef | VirtualNetwork | |
-   |Hizmet | DNS (UDP/53) | |
-   |Eylem | İzin Ver  | |
-   | | |
+   |Ayar |Değer |
+   | --- | --- |
+   |Öncelik |2000 |
+   |Ad |Custom_Dns  |
+   |Kaynak |VirtualNetwork |
+   |Hedef | VirtualNetwork |
+   |Hizmet | DNS (UDP/53) |
+   |Eylem | İzin Ver  |
 
 4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">` . **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` ve `NodeContainerServicePackage2` Hizmetleri her biri aynı bağlantı noktasını dinleyebilir (her iki hizmet de dinleme yapabilir `Endpoint1` ). Açık ağ modu belirtildiğinde, `PortBinding` Konfigürasyonlar belirtilemez.
 

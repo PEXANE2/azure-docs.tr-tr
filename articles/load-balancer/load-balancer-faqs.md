@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2b547dbc8671481275952f4c3eae5683e9e3a06c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848222"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207536"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer sık sorulan sorular
 
@@ -49,5 +49,9 @@ Nslookup komutunu kullanarak, myip.opendns.com adı için OpenDNS çözümleyici
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Azure depolama ile aynı bölgedeki bağlantılar nasıl çalışır?
 Yukarıdaki senaryolar aracılığıyla giden bağlantıların olması, VM ile aynı bölgedeki depolamaya bağlanmak için gerekli değildir. Bunu istemiyorsanız, yukarıda açıklandığı gibi ağ güvenlik gruplarını (NSG 'ler) kullanın. Diğer bölgelerdeki depolama bağlantısı için giden bağlantı gereklidir. Lütfen aynı bölgedeki bir VM 'den depolamaya bağlanırken, depolama tanılama günlüklerindeki kaynak IP adresinin, sanal makinenizin genel IP adresi değil, iç sağlayıcı adresi olacağını unutmayın. Depolama hesabınıza erişimi aynı bölgedeki bir veya daha fazla sanal ağ alt ağında bulunan VM 'Lerle kısıtlamak istiyorsanız, depolama hesabı güvenlik duvarını yapılandırırken ortak IP adresinizi değil [sanal ağ hizmet uç noktalarını](../virtual-network/virtual-network-service-endpoints-overview.md) kullanın. Hizmet uç noktaları yapılandırıldıktan sonra, sanal ağ özel IP adresinizi, iç sağlayıcı adresinde değil, depolama tanılama günlüklerinizin içinde görürsünüz.
 
+## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>Giden bağlantı açısından en iyi uygulamalar nelerdir?
+Standart Load Balancer ve standart genel IP, giden bağlantılara yönelik yetenekler ve farklı davranışları tanıtır. Bunlar temel SKU 'Lar ile aynı değildir. Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir. Bu, dahili bir Standart Load Balancer kullanırken giden bağlantı oluşturmayı içerir. Her zaman standart bir genel Load Balancer giden kuralları kullanmanızı öneririz. Bu, bir iç Standart Load Balancer kullanıldığında, giden bağlantı istenirse arka uç havuzundaki VM 'Ler için giden bağlantı oluşturmak üzere gerekli adımları uygulamanız gerekir. Giden bağlantı bağlamında, tek bir tek başına VM, tüm VM 'ler bir kullanılabilirlik kümesinde, bir VMSS içindeki tüm örnekler bir grup olarak davranır. Bu, bir kullanılabilirlik kümesindeki tek bir VM standart SKU ile ilişkili ise, bu kullanılabilirlik kümesindeki tüm sanal makine örnekleri, tek bir örnek doğrudan ilişkili olmasa bile standart SKU ile ilişkilendirildikleri kurallarla aynı kurallara göre davranır. Bu davranış, bir yük dengeleyiciye bağlı birden çok ağ arabirimi kartına sahip tek başına bir VM söz konusu olduğunda da gözlemlenmiştir. Tek başına bir NIC eklenirse aynı davranışa sahip olur. Genel kavramları anlamak için tüm belgeyi dikkatle gözden geçirin, SKU 'Lar arasındaki farklılıklar için [Standart Load Balancer](load-balancer-standard-overview.md) gözden geçirin ve [giden kuralları](load-balancer-outbound-connections.md#outboundrules)gözden geçirin.
+Giden kuralları kullanmak, giden bağlantıların tüm yönleri üzerinde ayrıntılı denetim sağlar.
+ 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Sorunuz yukarıdaki listede yoksa, bu sayfayla ilgili geri bildirimde bulunmak için lütfen sorularınızı gönderin. Bu, tüm değerli müşteri sorularımızın cevaplanmasını sağlamak için ürün ekibine yönelik bir GitHub sorunu oluşturur.

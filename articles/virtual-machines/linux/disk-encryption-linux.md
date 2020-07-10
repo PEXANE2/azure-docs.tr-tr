@@ -1,5 +1,5 @@
 ---
-title: Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
+title: Linux VM’lerde Azure Disk Şifrelemesi senaryoları
 description: Bu makale çeşitli senaryolar için Linux VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601403"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206159"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM’lerde Azure Disk Şifrelemesi senaryoları
 
 
 Linux sanal makineleri için Azure disk şifrelemesi (VM 'Ler), işletim sistemi diskinin ve veri disklerinin tam disk şifrelemesini sağlamak için Linux 'un DM-Crypt özelliğini kullanır. Ayrıca, EncryptFormatAll özelliği kullanılırken geçici disk şifrelemesi de sağlar.
@@ -413,6 +413,8 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - "İç içe bağlama noktaları" olan bir VM. diğer bir deyişle, tek bir yolda birden çok bağlama noktası ("/1stmountpoint/Data/2stbağlamanoktası" gibi).
 - Bir işletim sistemi klasörünün üzerine bağlanmış bir veri sürücüsüne sahip bir VM.
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
+- Müşteri tarafından yönetilen anahtarlarla ADE tarafından şifrelenen bir VM 'ye [sunucu tarafı şifrelemeyi](disk-encryption.md) uygulama ve tam tersi.
+- [Müşteri tarafından yönetilen ANAHTARLARLA](disk-encryption.md)Ade ile ŞIFRELENEN bir VM 'yi sunucu tarafı şifrelemeye geçirme.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

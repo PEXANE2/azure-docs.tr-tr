@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817125"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205699"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
 
@@ -104,7 +104,7 @@ Aşağıdaki tabloda, şu anda desteklenen veri guardları ve deneme hesabınız
 Guarddemiryolu|Durum|&nbsp;Tetikleyici için &nbsp; koşul
 ---|---|---
 **Eksik özellik değerleri imputation** |Geçiril <br><br><br> Bitti| Eğitim verilerinizde eksik özellik değeri algılanmadı. [Eksik değerli imputation](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve bu şekilde karşılaşıldı.
-**Yüksek kardinalite özelliği işleme** |Geçiril <br><br><br> Bitti| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin algılanması. [Yüksek kardinalite Özellik algılaması](#automatic-featurization)hakkında daha fazla bilgi edinin. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.
+**Yüksek kardinalite özelliği işleme** |Geçiril <br><br><br> Bitti| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin algılanması. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.
 **Doğrulama bölünmüş işleme** |Bitti| Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 satırdan daha az satır*içeriyordu. <br> Eğitilen modelin her yinelemesi, çapraz doğrulama kullanılarak doğrulanmıştı. [Doğrulama verileri](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)hakkında daha fazla bilgi edinin. <br><br> Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 'den fazla satır*içeriyordu. <br> Giriş verileri, modelin doğrulanması için bir eğitim veri kümesine ve bir doğrulama veri kümesine bölündü.
 **Sınıf Dengeleme algılaması** |Geçiril <br><br><br><br><br> Uyarı | Girişlerinizin çözümlenmesi ve tüm sınıfların eğitim verilerinizde dengelenmesi. Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir. <br><br><br> Girdilerde imdengelenmiş sınıflar algılandı. Model sapmalarının giderilmesi için, Dengeleme sorununu düzeltir. [İmdengelenmiş veriler](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)hakkında daha fazla bilgi edinin.
 **Bellek sorunları algılama** |Geçiril <br><br><br><br> Bitti |<br> Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve olası bellek dışı sorunlar algılandı. Zaman serisi [tahmin yapılandırması](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)hakkında daha fazla bilgi edinin. <br><br><br>Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Gecikme veya sıralı pencere yapılandırması kapatılmış.

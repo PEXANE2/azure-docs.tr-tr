@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/01/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111261"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206629"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Sunucular için Azure Arc aracısına genel bakış
 
@@ -60,7 +60,7 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Description |
+    |Klasör |Açıklama |
     |-------|------------|
     |C:\Program Files\AzureConnectedMachineAgent |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |%ProgramData%\AzureConnectedMachineAgent |Aracı yapılandırma dosyalarını içerir.|
@@ -72,21 +72,21 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aşağıdaki Windows Hizmetleri, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Description |
+    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
     |-------------|-------------|-------------|------------|
     |hımds |Azure hibrit Instance Metadata Service |himds.exe |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |DscService |Konuk yapılandırma hizmeti |dsc_service.exe |Bu, Azure 'Da Konuk içi Ilkeyi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
-    |Name |Varsayılan değer |Description |
+    |Ad |Varsayılan değer |Açıklama |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Description |
+    |Log |Açıklama |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -111,7 +111,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Description |
+    |Klasör |Açıklama |
     |-------|------------|
     |/var/seçenek/azcmagent/ |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |/seçenek/azcmagent/ |
@@ -123,14 +123,14 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki Daemon 'ları, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Description |
+    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
     |-------------|-------------|-------------|------------|
     |hımdsd. hizmeti |Azure hibrit Instance Metadata Service |/opt/azcmagent/bin/himds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |DSCD. hizmeti |Konuk yapılandırma hizmeti |/Seçenek/DSC/dsc_linux_service |Bu, Azure 'Da Konuk içi Ilkeyi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Description |
+    |Log |Açıklama |
     |----|------------|
     |/var/seçenek/azcmagent/log/hımds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |/var/seçenek/azcmagent/log/azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
@@ -141,7 +141,7 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur. Bu değişkenler ' de ayarlanır `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Varsayılan değer |Description |
+    |Ad |Varsayılan değer |Açıklama |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -200,14 +200,15 @@ Hizmet Etiketleri:
 
 Adresleri
 
-| Aracı kaynağı | Description |
+| Aracı kaynağı | Açıklama |
 |---------|---------|
-|management.azure.com|Azure Resource Manager|
-|login.windows.net|Azure Active Directory|
-|dc.services.visualstudio.com|Application Insights|
-|agentserviceapi.azure-automation.net|Konuk Yapılandırması|
-|*-agentservice-prod-1.azure-automation.net|Konuk Yapılandırması|
-|*. his.arc.azure.com|Karma kimlik hizmeti|
+|`management.azure.com`|Azure Resource Manager|
+|`login.windows.net`|Azure Active Directory|
+|`dc.services.visualstudio.com`|Application Insights|
+|`agentserviceapi.azure-automation.net`|Konuk Yapılandırması|
+|`*-agentservice-prod-1.azure-automation.net`|Konuk Yapılandırması|
+|`*.guestconfiguration.azure.com` |Konuk Yapılandırması|
+|`*.his.arc.azure.com`|Karma kimlik hizmeti|
 
 Her bir hizmet etiketi/bölgesinin IP adresleri listesi için bkz. JSON dosyası- [Azure IP aralıkları ve hizmet etiketleri – genel bulut](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft, her bir Azure hizmetini ve kullandığı IP aralıklarını içeren haftalık güncelleştirmeler yayımlar. Daha fazla bilgi için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags)gözden geçirin.
 
@@ -245,7 +246,7 @@ Ayrıca, [Azure Portal](../../azure-resource-manager/management/resource-provide
 
 Karma ortamınızdaki makineleri doğrudan Azure ile bağlamak, gereksinimlerinize bağlı olarak farklı yöntemler kullanılarak gerçekleştirilebilir. Aşağıdaki tabloda, kuruluşunuz için en uygun olanı belirleyen her bir yöntem vurgulanmaktadır.
 
-| Yöntem | Description |
+| Yöntem | Açıklama |
 |--------|-------------|
 | Biriyle | [Azure Portal makinelerinden gelen bağlantı](onboard-portal.md)adımlarını izleyerek aracıyı tek veya az sayıda makineye el ile yükleyebilirsiniz.<br> Azure portal, aracının yüklenmesi ve yapılandırma adımlarını otomatik hale getirmek için bir betik oluşturup makinede çalıştırabilirsiniz.|
 | Ölçekte | [Hizmet sorumlusu kullanarak, Connect makinelerini](onboard-service-principal.md)izleyen birden çok makine için aracıyı yükleyip yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet sorumlusu oluşturur.|

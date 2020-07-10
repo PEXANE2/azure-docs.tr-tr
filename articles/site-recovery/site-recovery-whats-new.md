@@ -3,12 +3,12 @@ title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131081"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206401"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -20,27 +20,26 @@ ms.locfileid: "86131081"
 
 Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en son yayınlanan sürümdür. Bunlar aşağıdaki tabloda özetlenmiştir.
 
-**Güncelleştir** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
+**Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
 --- | --- | --- | --- | --- | ---
 [Toplu 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
 [Toplu 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Toplu 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Toplu 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Toplu 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
-[Toplu 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
 
 > [!NOTE]
 > Güncelleştirme paketi 44, Site Recovery sağlayıcıları ve aracıları için güncelleştirmeler içermediği için tabloda gösterilmez.
 
-## <a name="updates-june-2020"></a>Güncelleştirmeler (Haziran 2020)
+## <a name="updates-july-2020"></a>Güncelleştirmeler (Temmuz 2020)
 
 ### <a name="update-rollup-47"></a>Güncelleştirme paketi 47
 
 [Güncelleştirme paketi 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
@@ -51,7 +50,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 
 [Güncelleştirme paketi 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
@@ -62,7 +61,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 
 [Güncelleştirme paketi 45](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
@@ -73,7 +72,7 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 
 [Güncelleştirme paketi 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery sağlayıcıları ve aracıları için güncelleştirme yoktu.
 **Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler.
@@ -87,7 +86,7 @@ Azure sanal makineleri artık, müşteri tarafından yönetilen anahtarlarla bek
 
 [Güncelleştirme paketi 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -99,7 +98,7 @@ Azure sanal makineleri artık, müşteri tarafından yönetilen anahtarlarla bek
 
 [Güncelleştirme paketi 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -146,7 +145,7 @@ Azure sanal makinelerinin bir ikincil bölgeye veya şirket içi VMware VM 'leri
 
 [Güncelleştirme paketi 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -177,7 +176,7 @@ VMware 'den Azure 'a olağanüstü durum kurtarma için yeni özellikler tabloda
 
 [Güncelleştirme paketi 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -217,7 +216,7 @@ Depolama hesabı | Site Recovery artık Hyper-V için Azure olağanüstü durum 
 
 [Güncelleştirme paketi 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -238,7 +237,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 
 [Güncelleştirme paketi 38](https://support.microsoft.com/help/4513507/) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -259,7 +258,7 @@ Artık, yönetilen disklerle bir Azure VM 'ye çoğaltma yaparken diskleri 8 TB 
 
 [Güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -281,7 +280,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 36](https://support.microsoft.com/help/4503156) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -314,7 +313,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
@@ -335,7 +334,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -345,7 +344,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -385,7 +384,7 @@ Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV
 
 [Güncelleştirme paketi 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -412,7 +411,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -467,7 +466,7 @@ Duyuruyu [okuyun](https://azure.microsoft.com/blog/know-exactly-how-much-it-will
 
 [Güncelleştirme paketi 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -487,7 +486,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -499,7 +498,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).
@@ -528,7 +527,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 [Güncelleştirme paketi 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) , aşağıdaki güncelleştirmeleri sağlar.
 
-**Güncelleştir** | **Ayrıntılar**
+**Güncelleştirme** | **Ayrıntılar**
 --- | ---
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak).
 **Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak).

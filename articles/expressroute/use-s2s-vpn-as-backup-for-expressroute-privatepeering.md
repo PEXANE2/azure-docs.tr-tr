@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: cb6ebdcae837216efac5b9333789dee032219251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738099"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206877"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için S2S VPN 'i yedekleme olarak kullanma
 
@@ -71,19 +71,23 @@ Aşağıdaki tabloda topolojinin ASNs listelenmiştir:
 
 ExpressRoute devresinin birincil bağlantısı aracılığıyla birincil CE yönlendiricisinin şirket içi yol tanıtımı aşağıda gösterilmektedir (Junos komutları):
 
-    user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
+```console
+user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
-    Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 ExpressRoute devresinin ikincil bağlantısı üzerinden ikincil CE yönlendiricisinin şirket içi yol tanıtımı aşağıda gösterilmektedir (Junos komutları):
 
-    user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
+```console
+user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
-    Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 Yedek bağlantının yüksek oranda kullanılabilirliğini artırmak için, S2S VPN etkin-etkin modda da yapılandırılır. Azure VPN ağ geçidi yapılandırması aşağıda gösterilmiştir. VPN yapılandırması VPN 'nin bir parçası olarak bkz. ağ geçidinin BGP eşi IP adresleri--10.17.11.76 ve 10.17.11.77--Ayrıca listelenir.
 
@@ -91,18 +95,20 @@ Yedek bağlantının yüksek oranda kullanılabilirliğini artırmak için, S2S 
 
 Şirket içi yol, VPN ağ geçidinin birincil ve ikincil BGP eşlerine güvenlik duvarları tarafından tanıtılabilir. Yol reklamları aşağıda gösterilmiştir (Junos):
 
-    user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
+```console
+user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
 
-    {primary:node0}
-    user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.77    
+{primary:node0}
+user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.77    
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 >[!NOTE] 
 >S2S VPN 'i etkin-etkin modda yapılandırmak, yalnızca olağanüstü durum kurtarma yedek ağ bağlantınız için yüksek kullanılabilirlik sağlar, ancak yedekleme bağlantısına daha yüksek performans sağlar. Diğer bir deyişle, etkin-etkin modda S2S VPN yapılandırması, birden çok temel tünel oluşturmayı zorgerektirdiğinden önerilir.
@@ -116,66 +122,70 @@ Verilen şirket içi bir rota hem ExpressRoute hem de S2S VPN aracılığıyla t
 
 ExpressRoute devresinin birincil bağlantısını sonlandıran birincil CE yönlendiricisinin BGP yapılandırması aşağıda gösterilmiştir. IGP oturumu üzerinden tanıtılan yolların yerel tercihinin değeri 150 olacak şekilde yapılandırılır. Benzer şekilde, ExpressRoute bağlantı hattının ikincil bağlantısını sonlandıran ikincil CE yönlendiricisinin yerel tercihlerinin de 150 olarak yapılandırıldığından emin olunması gerekir.
 
-    user@SEA-MX03-01> show configuration routing-instances Cust11 
-    description "Customer 11 VRF";
-    instance-type virtual-router;
-    interface xe-0/0/0:0.110;
-    interface ae0.11;
-    protocols {
-      bgp {
-        group ibgp {
-            type internal;
-            local-preference 150;
-            neighbor 192.168.11.1;
-        }
-        group ebgp {
-            peer-as 12076;
-            bfd-liveness-detection {
-                minimum-interval 300;
-                multiplier 3;
-            }
-            neighbor 192.168.11.18;
-        }
-      }
+```console
+user@SEA-MX03-01> show configuration routing-instances Cust11
+description "Customer 11 VRF";
+instance-type virtual-router;
+interface xe-0/0/0:0.110;
+interface ae0.11;
+protocols {
+  bgp {
+    group ibgp {
+        type internal;
+        local-preference 150;
+        neighbor 192.168.11.1;
     }
+    group ebgp {
+        peer-as 12076;
+        bfd-liveness-detection {
+            minimum-interval 300;
+            multiplier 3;
+        }
+        neighbor 192.168.11.18;
+    }
+  }
+}
+```
 
 Şirket içi güvenlik duvarları 'nin yönlendirme tablosu, Azure 'a gidecek şirket içi trafiğin, Azure 'a yönelik olarak tercih edilen yolda ExpressRoute üzerinden olduğunu doğrular (aşağıda gösterilmiştir).
 
-    user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
+```console
+user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-    + = Active Route, - = Last Active, * = Both
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
 
-    10.17.11.0/25      *[BGP/170] 2d 00:34:04, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.0 via reth1.11
-                          to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 00:34:01, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.118
-                        [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.119
-    10.17.11.76/32     *[Static/5] 2d 21:12:16
-                        > via st0.118
-    10.17.11.77/32     *[Static/5] 2d 00:41:56
-                        > via st0.119
-    10.17.11.128/26    *[BGP/170] 2d 00:34:04, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.0 via reth1.11
-                          to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 00:34:01, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.118
-                        [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.119
+10.17.11.0/25      *[BGP/170] 2d 00:34:04, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                    > to 192.168.11.0 via reth1.11
+                      to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 00:34:01, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
+                       AS path: 65515 I, validation-state: unverified
+                    > via st0.118
+                    [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
+                       AS path: 65515 I, validation-state: unverified
+                     > via st0.119
+10.17.11.76/32     *[Static/5] 2d 21:12:16
+                     > via st0.118
+10.17.11.77/32     *[Static/5] 2d 00:41:56
+                    > via st0.119
+10.17.11.128/26    *[BGP/170] 2d 00:34:04, localpref 150
+                       AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.0 via reth1.11
+                       to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 00:34:01, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
+                       AS path: 65515 I, validation-state: unverified
+                    > via st0.118
+                     [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
+                       AS path: 65515 I, validation-state: unverified
+                     > via st0.119
+```
 
 Yukarıdaki yol tablosunda, hub ve bağlı bileşen VNet rotaları için--10.17.11.0/25 ve 10.17.11.128/26--VPN bağlantıları üzerinden ExpressRoute bağlantı hattı tercih ederiz. 192.168.11.0 ve 192.168.11.2, CE yönlendiricilerine yönelik güvenlik duvarı arabirimindeki IP 'lardır.
 
@@ -183,49 +193,54 @@ Yukarıdaki yol tablosunda, hub ve bağlı bileşen VNet rotaları için--10.17.
 
 Bu makalenin önceki kısımlarında, güvenlik duvarlarının şirket içi yol tanıtımını VPN ağ geçidinin birincil ve ikincil BGP eşleri için doğruladık. Ayrıca, VPN ağ geçidinin birincil ve ikincil BGP eşlerinden gelen güvenlik duvarları tarafından alınan Azure yollarını doğrulayalim.
 
-    user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
+```console
+user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-      10.17.11.0/25           10.17.11.76                             65515 I
-      10.17.11.128/26         10.17.11.76                             65515 I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  10.17.11.0/25           10.17.11.76                             65515 I
+  10.17.11.128/26         10.17.11.76                             65515 I
 
-    {primary:node0}
-    user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.77 table Cust11.inet.0    
+{primary:node0}
+user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.77 table Cust11.inet.0    
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-      10.17.11.0/25           10.17.11.77                             65515 I
-      10.17.11.128/26         10.17.11.77                             65515 I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  10.17.11.0/25           10.17.11.77                             65515 I
+  10.17.11.128/26         10.17.11.77                             65515 I
+```
 
 Benzer şekilde, Azure VPN ağ geçidi tarafından alınan şirket içi ağ yolu öneklerini doğrulayalım. 
 
-    PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
+```powershell
+PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
-    Network      NextHop       AsPath      Weight
-    -------      -------       ------      ------
-    10.1.11.0/25 192.168.11.88 65020        32768
-    10.1.11.0/25 10.17.11.76   65020        32768
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 192.168.11.88 65020        32768
-    10.1.11.0/25 10.17.11.77   65020        32768
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
+Network      NextHop       AsPath      Weight
+-------      -------       ------      ------
+10.1.11.0/25 192.168.11.88 65020        32768
+10.1.11.0/25 10.17.11.76   65020        32768
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 192.168.11.88 65020        32768
+10.1.11.0/25 10.17.11.77   65020        32768
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+```
 
 Yukarıda görüldüğü gibi, VPN ağ geçidinin hem VPN ağ geçidinin birincil ve ikincil BGP eşleri tarafından alınan yolları vardır. Ayrıca birincil ve ikincil ExpressRoute bağlantıları aracılığıyla alınan yolların üzerinde görünebilirliği vardır (AS-Path 'e sahip olanlar 12076 ile sona erer). VPN bağlantıları aracılığıyla alınan yolları onaylamak için, bağlantıların şirket içi BGP eş IP 'sini bilmelidir. Göz önüne alındığında, 192.168.11.88, bundan alınan yolları görmemiz gerekir.
 
 Daha sonra, Azure VPN ağ geçidi tarafından tanıtılan yolları şirket içi güvenlik duvarı BGP eşine (192.168.11.88) doğrulayalim.
 
-    PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
+```powershell
+PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
-    Network         NextHop     AsPath Weight
-    -------         -------     ------ ------
-    10.17.11.0/25   10.17.11.76 65515       0
-    10.17.11.128/26 10.17.11.76 65515       0
-    10.17.11.0/25   10.17.11.77 65515       0
-    10.17.11.128/26 10.17.11.77 65515       0
-
+Network         NextHop     AsPath Weight
+-------         -------     ------ ------
+10.17.11.0/25   10.17.11.76 65515       0
+10.17.11.128/26 10.17.11.76 65515       0
+10.17.11.0/25   10.17.11.77 65515       0
+10.17.11.128/26 10.17.11.77 65515       0
+```
 
 Yol alışverişlerini görmemesi bağlantı hatasını gösteriyor. Bkz. [sorun giderme: Azure siteden sıteye VPN bağlantısı][VPN Troubleshoot] , VPN bağlantısının sorunlarını gidermeye yönelik yardım için bağlantı ve çalışmayı durduruyor.
 
@@ -239,43 +254,51 @@ Artık VPN bağlantısı (denetim düzlemi) üzerinden başarılı yol alışver
 
 Trafik anahtarını yapmadan önce, ayarımızda bulunan geçerli yolu, şirket içi test sunucusundan bağlı olan VNet 'teki test sanal makinesine yönlendirmenizi sağlar.
 
-    C:\Users\PathLabUser>tracert 10.17.11.132
+```console
+C:\Users\PathLabUser>tracert 10.17.11.132
 
-    Tracing route to 10.17.11.132 over a maximum of 30 hops
+Tracing route to 10.17.11.132 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.11.1
-      2    <1 ms    <1 ms    11 ms  192.168.11.0
-      3    <1 ms    <1 ms    <1 ms  192.168.11.18
-      4     *        *        *     Request timed out.
-      5     6 ms     6 ms     5 ms  10.17.11.132
+  1    <1 ms    <1 ms    <1 ms  10.1.11.1
+  2    <1 ms    <1 ms    11 ms  192.168.11.0
+  3    <1 ms    <1 ms    <1 ms  192.168.11.18
+  4     *        *        *     Request timed out.
+  5     6 ms     6 ms     5 ms  10.17.11.132
 
-    Trace complete.
+Trace complete.
+```
 
 Kurulumumuz birincil ve ikincil ExpressRoute noktadan noktaya bağlantı alt ağları sırasıyla, 192.168.11.16/30 ve 192.168.11.20/30 ' dur. Yukarıdaki izleme rotasında, adım 3 ' te, birincil MSEE 'in Arabirim IP 'si olan 192.168.11.18 'e ulaşdığımızda görüyoruz. MSEE arabirimi varlığı, geçerli yolumuz ExpressRoute 'un üzerinde olduğunu onaylar.
 
 [ExpressRoute][RST]bağlantı hattı eşlerinin sıfırlanması sırasında bildirildiği gibi, ExpressRoute bağlantı hattının birincil ve ikincil eşlemesini devre dışı bırakmak için aşağıdaki PowerShell komutlarını kullanalım.
 
-    $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
-    $ckt.Peerings[0].State = "Disabled"
-    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```powershell
+$ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
+$ckt.Peerings[0].State = "Disabled"
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
 
 Yük devretme anahtarı süresi BGP yakınsama zamanına bağlıdır. Kurulumumuzda, yük devretme anahtarı birkaç saniye sürer (10 ' dan az). Anahtardan sonra, izleme yolu ' nu yinelemek aşağıdaki yolu gösterir:
 
-    C:\Users\PathLabUser>tracert 10.17.11.132
+```console
+C:\Users\PathLabUser>tracert 10.17.11.132
 
-    Tracing route to 10.17.11.132 over a maximum of 30 hops
+Tracing route to 10.17.11.132 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.11.1
-      2     *        *        *     Request timed out.
-      3     6 ms     7 ms     9 ms  10.17.11.132
+  1    <1 ms    <1 ms    <1 ms  10.1.11.1
+  2     *        *        *     Request timed out.
+  3     6 ms     7 ms     9 ms  10.17.11.132
 
-    Trace complete.
+Trace complete.
+```
 
 İzleme işlemi sonucu, S2S VPN aracılığıyla yedekleme bağlantısının etkin olduğunu doğrular ve hem birincil hem de ikincil ExpressRoute bağlantıları başarısız olursa hizmet devamlılığını sağlayabilir. Yük devretme testini gerçekleştirmek için aşağıdaki komut kümesini kullanarak ExpressRoute bağlantılarını geri etkinleştirip trafik akışını normalleştirin.
 
-    $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
-    $ckt.Peerings[0].State = "Enabled"
-    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```powershell
+$ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
+$ckt.Peerings[0].State = "Enabled"
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
 
 Trafiğin ExpressRoute 'a geri yüklendiğini doğrulamak için, izleme Oute öğesini tekrarlayın ve ExpressRoute özel eşlemeden devam edin.
 

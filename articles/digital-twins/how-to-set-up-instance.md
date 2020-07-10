@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4cac7a3f663d9ede966b8d6e5753c48629049dcd
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fecacbd2c7c6549a1321367157bb179321779ca9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057492"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206512"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneği ayarlama
 
@@ -57,15 +57,15 @@ Azure dijital TWINS 'i bir istemci uygulamasıyla kullanabilmek için, istemci u
 
 Azure aboneliğinizdeki AAD kiracısı ile ilişkili e-postanızı kullanarak Azure dijital TWINS örneğinde kendiniz için bir rol ataması oluşturun. 
 
-Bunu yapabilmeleri için Azure aboneliğinizde bir sahip olarak sınıflandırılmalıdır. Bunu `az role assignment list --assignee <your-Azure-email>` , komutunu çalıştırarak ve sonra *Roledefinitionname* değerinin *sahip*olduğu çıktıda doğrulayarak kontrol edebilirsiniz. Değerin *katkıda* bulunduğunu veya *sahip*dışında bir şeyi fark ederseniz, rolünüzü yükseltmek için aboneliğinizin izin vermesi için lütfen güç ile abonelik yöneticinizle iletişime geçin.
+Bunu yapabilmeleri için Azure aboneliğinizde bir sahip olarak sınıflandırılmalıdır. Bunu `az role assignment list --assignee <your-Azure-email>` , komutunu çalıştırarak ve sonra *Roledefinitionname* değerinin *sahip*olduğu çıktıda doğrulayarak kontrol edebilirsiniz. Değerin *katkıda* bulunduğunu veya *sahip*dışında bir şeyi fark ederseniz, aboneliğinizde izin vermek için lütfen güç ile abonelik yöneticinizle iletişime geçin. Rolü tüm abonelikte yükseltebilir, böylece aşağıdaki komutu çalıştırabilirsiniz veya bir sahip sizin yerinize Azure dijital TWINS izinlerinizi kurmak için sizin adınıza aşağıdaki komutu çalıştırabilir.
 
-Abonelikte sahip olarak, Azure dijital TWINS örneğiniz için kullanıcıyı bir sahip rolüne atamak üzere aşağıdaki komutu kullanabilirsiniz:
+Azure dijital TWINS örneğiniz için Kullanıcı "sahibi" izinlerinizi atamak için aşağıdaki komutu kullanın (Azure aboneliğinin sahibi tarafından çalıştırılmalıdır):
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Bu komutun sonucu, oluşturduğunuz rol ataması hakkında bilgi verilir.
+Bu komutun sonucu oluşturulan rol ataması hakkında bilgi verilir.
 
 > [!TIP]
 > Bunun yerine *400: BadRequest* hatası alırsanız, Kullanıcı için *ObjectID* 'yi almak için aşağıdaki komutu çalıştırın:
@@ -74,7 +74,7 @@ Bu komutun sonucu, oluşturduğunuz rol ataması hakkında bilgi verilir.
 > ```
 > Sonra, e-postanız yerine kullanıcının *nesne kimliğini* kullanarak rol atama komutunu tekrarlayın.
 
-Artık hazır bir Azure dijital TWINS örneğiniz var.
+Artık bir Azure dijital TWINS örneğiniz var ve bunu yönetme izinleri var.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

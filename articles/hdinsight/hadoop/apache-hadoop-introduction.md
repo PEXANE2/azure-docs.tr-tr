@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2dc9d5d154c8128e0744e8dd9f08dec6e52381a4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78244881"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205310"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop nedir?
 
@@ -48,7 +48,7 @@ Java ve Java Sanal Makinesi temel alan diller veya çerçeveler doğrudan MapRed
 
 Hadoop akışı Eşleyici ve Reducer üzerinden STDıN ve STDOUT üzerinden iletişim kurar. Eşleyici ve Reducer verileri STDIN 'den bir kerede bir satıra okur ve çıktıyı STDOUT 'a yazar. Eşleyici ve Reducer tarafından okunan veya yayılan her satır, bir sekme karakteriyle ayrılmış bir anahtar/değer çifti biçiminde olmalıdır:
 
-    [key]/t[value]
+`[key]/t[value]`
 
 Daha fazla bilgi için bkz. [Hadoop akışı](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 

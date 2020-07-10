@@ -1,21 +1,21 @@
 ---
 title: Web uygulaması kullanma-kişiselleştirici
 description: Eylemler (özelliklerle birlikte) ve bağlam özellikleriyle bir kullanıcıya doğru içerik sağlamak için bir kişiselleştirme döngüsüyle bir C# .NET Web uygulamasını özelleştirin.
-ms.topic: troubleshooting
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 9def69a1540e81b99723c16ad34ba522d1737c7f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84713922"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207600"
 ---
-# <a name="add-personalizer-to-a-net-web-app"></a>.NET Web uygulamasına kişiselleştirici ekleme
+# <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Öğretici: bir .NET Web uygulamasına kişiselleştirici ekleme
 
 Eylemler (özelliklerle birlikte) ve bağlam özellikleriyle bir kullanıcıya doğru içerik sağlamak için bir kişiselleştirme döngüsüyle bir C# .NET Web uygulamasını özelleştirin.
 
-**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]

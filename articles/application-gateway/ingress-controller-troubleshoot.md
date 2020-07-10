@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207864"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207160"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş denetleyicisindeki yaygın soruların veya sorunların sorunlarını giderme
 
 [Azure Cloud Shell](https://shell.azure.com/) , aks ve agic yüklemenizin sorunlarını gidermek için en kolay yoldur. Kabuğunu [Shell.Azure.com](https://shell.azure.com/) adresinden başlatın veya bağlantıya tıklayın:
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)
 
 
 ## <a name="test-with-a-simple-kubernetes-app"></a>Basit bir Kubernetes uygulamasıyla test etme
@@ -26,7 +26,7 @@ ms.locfileid: "85207864"
 Aşağıdaki adımlarda varsayılmaktadır:
   - Gelişmiş ağ özellikli bir AKS kümeniz var
   - AGIC, AKS kümesine yüklendi
-  - AKS kümeniz ile paylaşılan bir VNET üzerinde zaten bir Application Gateway hamalmış olursunuz
+  - AKS kümeniz ile paylaşılan bir VNET üzerinde zaten bir Application Gateway var
 
 Application Gateway + AKS + AGIC yüklemesinin doğru şekilde ayarlandığından emin olmak için en basit olası uygulamayı dağıtın:
 
@@ -118,7 +118,7 @@ Application Gateway aşağıdaki yapılandırma uygulanmış olacaktır:
 Son olarak, `cURL` Yeni dağıtılan uygulamaya http bağlantısı kurmak için [Cloud Shell](https://shell.azure.com/) içinden komutunu kullanabiliriz:
 
 1. `kubectl get ingress`Application Gateway genel IP adresini almak için kullanın
-2. `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` kullan
+2. `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` komutunu kullanma
 
 ![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 

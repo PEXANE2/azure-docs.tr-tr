@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: eec92672801d33290df1690d8cb17e79d4626192
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2e337628542475c081a59bffd25368de313011f8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042059"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206206"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure 'da Kullanılabilirlik Alanları destekleyen bölgeler
 
@@ -24,9 +24,8 @@ Bu bölümde Kullanılabilirlik Alanları destekleyen Azure hizmetleri ve bölge
 
 Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan yol haritası ile birlikte [bölge tarafından kullanılabilen ürünlerde](https://azure.microsoft.com/global-infrastructure/services/)bulunabilir.
 
-|                                 |Kuzey ve Güney Amerika |              |           |           | Avrupa |              |          |              | Asya Pasifik |                 |                |
+| Hizmet |Kuzey: Orta ABD|Kuzey: Doğu ABD|Kuzey: Doğu ABD 2|Kuzey: Batı ABD 2|Avrupa: Fransa Orta|Avrupa: Kuzey Avrupa|Avrupa: UK Güney|Avrupa: Batı Avrupa|Asya Pasifik: Japonya Doğu|Asya Pasifik: Güneydoğu Asya|Asya Pasifik: Avustralya Doğu|
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|-------------|
-|          |Orta ABD|Doğu ABD|Doğu ABD 2|Batı ABD 2|Orta Fransa|Kuzey Avrupa|Güney Birleşik Krallık|Batı Avrupa|Doğu Japonya|Güneydoğu Asya|Doğu Avustralya|
 | **İşlem**                         |            |              |           |           |                |              |          |             |            |                |                |
 | Linux Sanal Makineleri          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       | &#10003;               |
 | Windows Sanal Makineleri        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       | &#10003;               |
@@ -68,4 +67,4 @@ Bu beş bölgede Kullanılabilirlik Alanları destek hakkında daha fazla bilgi 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da bölgeler ve Kullanılabilirlik Alanları](az-overview.md)
+- [Azure’daki Bölgeler ve Kullanılabilirlik Alanları](az-overview.md)

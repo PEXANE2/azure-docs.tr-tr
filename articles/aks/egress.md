@@ -5,11 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde çıkış trafiği için 
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803391"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205776"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de çıkış trafiği için statik bir genel IP adresi kullanın
 
@@ -22,6 +23,9 @@ Bu makalede, bir AKS kümesinde çıkış trafiği ile kullanmak üzere statik b
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
 Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+
+> [!IMPORTANT]
+> Bu makalede, tek düğümlü havuz ile *temel* SKU yük dengeleyici kullanılmaktadır. *Temel* SKU yük dengeleyici birden çok düğüm havuzlarıyla desteklenmediğinden, bu yapılandırma birden çok düğüm havuzu için kullanılamaz. *Standart* SKU yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes SERVICE (aks) Içinde genel standart Load Balancer kullanma][slb] .
 
 ## <a name="egress-traffic-overview"></a>Çıkış trafiğine genel bakış
 
@@ -92,7 +96,7 @@ Komutuyla hizmeti ve dağıtımı oluşturun `kubectl apply` .
 kubectl apply -f egress-service.yaml
 ```
 
-Bu hizmet Azure Load Balancer yeni bir ön uç IP 'yi yapılandırır. Yapılandırılmış başka bir IP yoksa, **Tüm** çıkış trafiği artık bu adresi kullanmalıdır. Azure Load Balancer birden çok adres yapılandırıldığında, çıkış o yük dengeleyicideki ilk IP 'yi kullanır.
+Bu hizmet Azure Load Balancer yeni bir ön uç IP 'yi yapılandırır. Yapılandırılmış başka bir IP yoksa, **Tüm** çıkış trafiği artık bu adresi kullanmalıdır. Azure Load Balancer birden çok adres yapılandırıldığında, bu genel IP adreslerinden herhangi biri giden akışlar için aday olur ve rastgele bir seçilir.
 
 ## <a name="verify-egress-address"></a>Çıkış adresini doğrula
 
@@ -133,3 +137,4 @@ Azure Load Balancer birden çok genel IP adresinin korunmasından kaçınmak iç
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

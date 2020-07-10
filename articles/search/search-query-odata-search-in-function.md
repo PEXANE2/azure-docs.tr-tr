@@ -19,21 +19,26 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113110"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206929"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Azure bilişsel arama 'de OData işlevi
 
 [OData filtre ifadelerinde](query-odata-filter-orderby-syntax.md) yaygın bir senaryo, her bir belgedeki tek bir alanın olası birçok değerden birine eşit olup olmadığını denetlemenize olanak tanır. Örneğin, bu, bir veya daha fazla asıl kimliği içeren bir alanı, sorguyu veren kullanıcıyı temsil eden bir asıl kimlik listesine göre denetleyerek, bazı uygulamalar [güvenlik kırpması](search-security-trimming-for-azure-search.md) uygular. Bunun gibi bir sorgu yazmanın bir yolu, [`eq`](search-query-odata-comparison-operators.md) ve [`or`](search-query-odata-logical-operators.md) işleçlerini kullanmaktır:
 
+```odata-filter-expr
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
+```
 
 Ancak, işlevini kullanarak bunu yazmanın daha kısa bir yolu vardır `search.in` :
 
+```odata-filter-expr
     group_ids/any(g: search.in(g, '123, 456, 789'))
+```
 
 > [!IMPORTANT]
 > Daha kısa ve kolay okunması yanı sıra, kullanmak `search.in` da [performans avantajları](#bkmk_performance) sağlar ve filtreye dahil edilecek yüzlerce veya hatta binlerce değer olduğunda [filtrelerin belirli boyut sınırlamalarını](search-query-odata-filter.md#bkmk_limits) önler. Bu nedenle, `search.in` daha karmaşık bir eşitlik ifadesi birleşimi yerine kullanmanızı kesinlikle öneririz.
@@ -41,7 +46,7 @@ Ancak, işlevini kullanarak bunu yazmanın daha kısa bir yolu vardır `search.i
 > [!NOTE]
 > OData standardının 4,01 sürümü yakın zamanda, Azure Bilişsel Arama işlevi gibi benzer davranışa sahip olan [ `in` işlecini](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)kullanıma sunmuştur `search.in` . Ancak, Azure Bilişsel Arama bu işleci desteklemez, bu nedenle `search.in` bunun yerine işlevini kullanmanız gerekir.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) işlevin dilbilgisini tanımlar `search.in` :
 
@@ -85,23 +90,33 @@ Kullanırsanız `search.in` , ikinci parametre yüzlerce veya binlerce değerin 
 
 Adı ' Sea View Motel ' veya ' bütçe otel ' değerine eşit olan tüm oteller bulun. Tümcecikler varsayılan bir sınırlayıcı olan boşluklar içerir. Üçüncü dize parametresi olarak tek tırnak içinde alternatif bir sınırlayıcı belirtebilirsiniz:  
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 Adı ' | ' ile ayrılmış ' Sea View Motel ' veya ' bütçe otel ' değerine eşit olan tüm oteller bulun:
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 ' WiFi ' veya ' Tub ' etiketine sahip olan odaları içeren tüm oteller bulun:
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
+```
 
 Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir koleksiyonda eşleşme bulun.
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 ' Motel ' veya ' cabin' ' etiketi olmadan tüm otelleri bul:
 
+```odata-filter-expr
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

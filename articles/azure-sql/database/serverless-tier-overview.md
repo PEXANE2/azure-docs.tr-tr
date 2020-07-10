@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/6/2020
-ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045969"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206935"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -127,7 +127,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Özellik|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
+|Kimlik doğrulama ve yetkilendirme|Oturum açma|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -149,7 +149,7 @@ Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncell
 
 Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi veritabanını sürdürür ve 40613 hata koduyla veritabanının kullanılamadığını belirten bir hata döndürür. Veritabanı devam ettirdikten sonra, bağlantı kurmak için oturum açma yeniden denenmelidir. Bağlantı yeniden deneme mantığının bulunduğu veritabanı istemcilerinin değiştirilmesi gerekmez.
 
-### <a name="latency"></a>Gecikme süresi
+### <a name="latency"></a>Gecikme Süresi
 
 Bir sunucusuz veritabanını oto Resume ve oto duraklatma gecikmesi genellikle 1 dakikalık ve oto duraklamaya 1-10 dakika sıradır.
 
@@ -176,7 +176,7 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
 
 Aşağıdaki örnekler sunucusuz işlem katmanında yeni bir veritabanı oluşturur.
 
-#### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+#### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](single-database-create-quickstart.md).
 
@@ -272,7 +272,7 @@ Kullanıcı kaynak havuzu, veritabanının sunucusuz veya sağlanmış bir işle
 
 Bir sunucusuz veritabanının uygulama paketinin ve Kullanıcı havuzunun kaynak kullanımını izlemeye yönelik ölçümler aşağıdaki tabloda listelenmiştir:
 
-|Varlık|Metric|Açıklama|Birimler|
+|Varlık|Ölçüm|Açıklama|Birimler|
 |---|---|---|---|
 |Uygulama paketi|app_cpu_percent|Uygulama tarafından, uygulama için izin verilen en fazla Vçekirdelere göre kullanılan sanal çekirdekler yüzdesi.|Yüzde|
 |Uygulama paketi|app_cpu_billed|Raporlama döneminde uygulama için faturalandırılan işlem miktarı. Bu süre boyunca ödenen miktar, bu ölçümün ve vCore birim fiyatının ürünüdür. <br><br>Bu ölçümün değerleri, en fazla CPU kullanımı ve her saniye kullanılan bellek için toplanan zamana göre belirlenir. Kullanılan miktar, en düşük sanal çekirdekler ve minimum bellek tarafından ayarlanan şekilde sağlanan minimum miktardan azsa, sağlanan minimum miktar faturalandırılır.İşlemci amacıyla CPU 'yu bellek ile karşılaştırmak için, bellek miktarı GB cinsinden vCore başına 5 GB olarak yeniden ayarlayarak sanal çekirdek birimlerine normalleştirilmelidir.|Sanal çekirdek Saniyeler|
@@ -324,6 +324,19 @@ Faturalandırılan işlem miktarı aşağıdaki ölçüm tarafından sunulur:
 - **Raporlama sıklığı**: dakika başına
 
 Bu miktar saniyede hesaplanır ve 1 dakikadan fazla toplanır.
+
+### <a name="minimum-compute-bill"></a>Minimum işlem faturanız
+
+Sunucusuz bir veritabanı duraklatılmışsa, işlem faturanız sıfırdır.  Sunucusuz bir veritabanı duraklatılmadığı takdirde, en düşük işlem faturanız en fazla (en düşük sanal çekirdek, en az bellek GB * 1/3) temel alan sanal çekirdek miktarından daha az olmaz.
+
+Örnekler:
+
+- Sunucusuz bir veritabanının duraklatılmadığını ve 3,0 GB dakikalık belleğe karşılık gelen 8 maks sanal çekirdek ve 1 dakikalık sanal çekirdek ile yapılandırıldığını varsayalım.  Daha sonra minimum işlem faturanız en fazla (1 sanal çekirdek, 3,0 GB * 1 sanal çekirdek/3 GB) = 1 sanal çekirdek tabanlıdır.
+- Sunucusuz bir veritabanının duraklatılmadığını ve 6 GB dakikalık belleğe karşılık 2,1 gelen 4 maksimum sanal çekirdek ve 0,5 minimum Vcore ile yapılandırıldığını varsayalım.  Daha sonra minimum işlem faturanız en yüksek (0,5 sanal çekirdek, 2,1 GB * 1 sanal çekirdek/3 GB) = 0,7 sanal çekirdekleri temel alır.
+
+Sunucusuz için [Azure SQL Veritabanı Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=sql-database) , yapılandırılan en fazla ve en düşük sanal çekirdek sayısına göre yapılandırılabilir en düşük belleği tespit etmek için kullanılabilir.  Kural olarak, yapılandırılan en düşük sanal çekirdekler 0,5 sanal çekirdekten fazlaysa, en düşük işlem faturanız yapılandırılan en düşük bellekten ve yalnızca yapılandırılan minimum sanal çekirdek sayısına göre belirlenir.
+
+### <a name="example-scenario"></a>Örnek senaryo
 
 1 dakikalık sanal çekirdek ve 4 maks sanal çekirdeklerle yapılandırılmış sunucusuz bir veritabanını göz önünde bulundurun.  Bu, 3 GB ve daha fazla bellek ve 12 GB maksimum bellek ile aynıdır.  Otomatik duraklatma gecikmesini 6 saat olarak, veritabanı iş yükünün ise 24 saatlik bir dönemde ilk 2 saat boyunca etkin olduğunu ve aksi takdirde devre dışı olduğunu varsayalım.    
 

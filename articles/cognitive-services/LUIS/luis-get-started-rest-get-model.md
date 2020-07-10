@@ -3,20 +3,20 @@ title: "Hızlı başlangıç: REST API 'Leri ile model edinme-LUıS"
 titleSuffix: Azure Cognitive Services
 description: Bu REST API hızlı başlangıçta, bir modeli eklemek ve bir modeli eğitmek için kıvrımlı kullanın.
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 00bc71f76b15455dd8e4f8242c5379e9e97a53f2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: nitinme
+ms.openlocfilehash: e5cf3160e6592a48e3a81480480ad8f01cc6af3a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119594"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206264"
 ---
 # <a name="quickstart-use-curl-and-rest-to-change-model"></a>Hızlı başlangıç: modeli değiştirmek için kıvrımlı ve REST kullanma
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıcı izleyerek sırayla üç REST çağrısı gerçekleştir
 
 [Başvuru belgeleri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Boş bir [Luo](https://www.luis.ai) hesabı.
 * [Visual Studio Code](https://code.visualstudio.com/)gibi bir metin düzenleyici.

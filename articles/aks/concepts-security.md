@@ -6,24 +6,29 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0fe0803b0961b3aaa89627823b4867fac0d5d61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831548"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206311"
 ---
-# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar ve kümeler için güvenlik kavramları
+# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service’teki (AKS) uygulamalar ve kümeler için güvenlik kavramları
 
 Azure Kubernetes Service (AKS) içinde uygulama iş yüklerini çalıştırırken müşteri verilerinizi korumak için, kümenizin güvenliği önemli bir konudur. Kubernetes, *ağ ilkeleri* ve *gizli*dizileri gibi güvenlik bileşenleri içerir. Daha sonra Azure, ağ güvenlik grupları ve düzenlenmiş küme yükseltmeleri gibi bileşenlere eklenir. Bu güvenlik bileşenleri, AKS kümenizi en son işletim sistemi güvenlik güncelleştirmelerini ve Kubernetes yayınlarını çalıştıran, güvenli Pod trafiği ve hassas kimlik bilgilerine erişim sağlamak için birleştirilir.
 
 Bu makalede, AKS 'deki uygulamalarınızın güvenliğini sağlayan temel kavramlar tanıtılmaktadır:
 
-- [Ana bileşen güvenliği](#master-security)
-- [Düğüm güvenliği](#node-security)
-- [Küme yükseltmeleri](#cluster-upgrades)
-- [Ağ güvenliği](#network-security)
-- [Kubernetes Gizli Dizileri](#kubernetes-secrets)
+- [Azure Kubernetes Service’teki (AKS) uygulamalar ve kümeler için güvenlik kavramları](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [Ana güvenlik](#master-security)
+  - [Düğüm güvenliği](#node-security)
+    - [İşlem yalıtımı](#compute-isolation)
+  - [Küme yükseltmeleri](#cluster-upgrades)
+    - [Cordon ve boşalt](#cordon-and-drain)
+  - [Ağ güvenliği](#network-security)
+    - [Azure ağ güvenlik grupları](#azure-network-security-groups)
+  - [Kubernetes gizli dizileri](#kubernetes-secrets)
+  - [Sonraki adımlar](#next-steps)
 
 ## <a name="master-security"></a>Ana güvenlik
 
@@ -45,7 +50,14 @@ Düğümler, genel IP adresleri atanmadan özel bir sanal ağ alt ağına dağı
 
 Depolama sağlamak için düğümler Azure yönetilen diskleri kullanır. Çoğu VM düğüm boyutu için bunlar, yüksek performanslı SSD 'Ler tarafından desteklenen Premium disklerdir. Yönetilen disklerde depolanan veriler, Azure platformunda Rest 'de otomatik olarak şifrelenir. Bu diskler, artıklığı artırmak için Azure veri merkezi 'nde de güvenli bir şekilde çoğaltılır.
 
-Kubernetes ortamları, AKS veya başka bir yerde, şu anda çok kiracılı olmayan kullanım için tamamen güvenli değildir. Tüm düğümler için *Pod güvenlik ilkeleri* veya daha ayrıntılı rol tabanlı erişim DENETIMLERI (RBAC) gibi ek güvenlik özellikleri, çok daha zor hale getirir. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir. İş yüklerini yalıtmaya yönelik yollar hakkında daha fazla bilgi için bkz. [AKS 'de küme yalıtımı Için en iyi uygulamalar][cluster-isolation].
+Kubernetes ortamları, AKS veya başka bir yerde, şu anda çok kiracılı olmayan kullanım için tamamen güvenli değildir. Tüm düğümler için *Pod güvenlik ilkeleri* veya daha ayrıntılı rol tabanlı erişim DENETIMLERI (RBAC) gibi ek güvenlik özellikleri, çok daha zor hale getirir. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir. İş yüklerini yalıtma yolları hakkında daha fazla bilgi için bkz. [AKS 'de küme yalıtımı Için en iyi uygulamalar][cluster-isolation].
+
+### <a name="compute-isolation"></a>İşlem yalıtımı
+
+ Belirli iş yükleri, uyumluluk ve mevzuat gereksinimleri nedeniyle diğer müşteri iş yüklerinden yüksek ölçüde yalıtım gerektirebilir. Azure, bu iş yükleri için bir AKS kümesinde aracı düğümleri olarak kullanılabilecek [yalıtılmış sanal makineler](../virtual-machines/linux/isolation.md)sağlar. Bu yalıtılmış sanal makineler belirli bir donanım türüne ayrılmıştır ve tek bir müşteriye atanır. 
+
+ Bu yalıtılmış sanal makineleri bir AKS kümesiyle birlikte kullanmak için, bir AKS kümesi oluştururken **veya düğüm havuzu** eklerken [burada](../virtual-machines/linux/isolation.md) listelenen yalıtılmış sanal makine boyutlarından birini seçin.
+
 
 ## <a name="cluster-upgrades"></a>Küme yükseltmeleri
 

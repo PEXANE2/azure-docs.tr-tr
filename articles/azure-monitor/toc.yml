@@ -81,6 +81,10 @@
               href: samples/resource-manager-alerts-metric.md
             - name: Eylem grupları
               href: samples/resource-manager-action-groups.md
+        - name: Application Insights
+          items:
+            - name: Kaynak oluşturma
+              href: samples/resource-manager-app-resource.md
         - name: Tanılama ayarları
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics çalışma alanları

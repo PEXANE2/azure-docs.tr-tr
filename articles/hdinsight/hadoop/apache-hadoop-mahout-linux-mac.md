@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: f533b2baa3e1e748edfc723a60734daedf3d0a18
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086033"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207664"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Mahout kullanarak öneriler oluşturma
 
@@ -47,11 +47,13 @@ Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/mov
 
 İçinde bulunan veriler `user-ratings.txt` `userID` , `movieID` `userRating` `timestamp` her kullanıcının bir filmi derecelendirdiğini belirten,, ve yapısına sahiptir. Verilerin bir örneği aşağıda verilmiştir:
 
+```output
     196    242    3    881250949
     186    302    3    891717742
     22     377    1    878887116
     244    51     2    880606923
     166    346    1    886397596
+```
 
 ## <a name="run-the-analysis"></a>Analizi Çalıştırma
 

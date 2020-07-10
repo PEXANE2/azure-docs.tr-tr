@@ -1,5 +1,5 @@
 ---
-title: Python 'da ML modellerini yorumlama & açıklama
+title: Python 'da ML modellerini yorumlama & açıklama (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Machine Learning modelinizin Özellik önemini nasıl belirlediğini ve Azure Machine Learning SDK kullanırken tahmine dayalı hale getirmek için nasıl açıklamalar alabileceğinizi öğrenin.
 services: machine-learning
@@ -9,15 +9,16 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/12/2020
+ms.date: 07/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3830f65a3435c1db0291811c6306ea579bf1d896
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560197"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207149"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Python 'da öngörülere & ML modellerini açıklamak için yorumlamalar paketini kullanın
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -295,7 +296,7 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
     ```
 
 
-## <a name="visualizations"></a>Görsel öğeler
+## <a name="visualizations"></a>Görselleştirmeler
 
 Yerel Jupyter Not defterinize açıklamaları indirdikten sonra, modelinizi anlamak ve yorumlamak için görselleştirme panosunu kullanabilirsiniz.
 
@@ -334,7 +335,7 @@ Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri 
 > [!NOTE]
 > Jupyıter çekirdeği başlamadan önce görselleştirme panosu için pencere öğesi uzantılarını etkinleştirdiğinizden emin olun.
 
-* Jupyter notebooks
+* Jupyter Notebooks
 
     ```shell
     jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize

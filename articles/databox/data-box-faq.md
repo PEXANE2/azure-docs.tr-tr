@@ -6,13 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743006"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207009"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -37,10 +38,10 @@ A.  Azure Data Box hizmeti, çevrimdışı veri alımı için tasarlanmıştır.
 ### <a name="q-what-is-azure-data-box"></a>S. Azure Data Box nedir?
 A. Azure Data Box, terabaytlık verilerin Azure 'a hızlı, pahalı ve güvenli bir şekilde aktarılmasına izin verir. Data Box cihazını Azure portalı üzerinden sipariş edersiniz. Microsoft, bölgesel bir taşıyıcı aracılığıyla 80 TB 'lık bir kapasiteye sahip bir depolama cihazı sevk eder. 
 
-Cihaz size ulaştıktan sonra, yerel web kullanıcı arabirimini kullanarak cihazı hızla ayarlayabilirsiniz. Sunucularınızdaki verileri cihaza kopyalayın ve cihazı Azure'a geri gönderin. Azure veri merkezinde, verileriniz cihazdan Azure'a otomatik olarak yüklenir. Sürecin tamamı Azure portalındaki Data Box hizmeti tarafından uçtan uca izlenir.
+Cihaz size ulaştıktan sonra, yerel web kullanıcı arabirimini kullanarak cihazı hızla ayarlayabilirsiniz. Sunucularınızdaki verileri cihaza veya cihazdan sunuculara kopyalayın ve cihazı Azure 'a geri gönderin. Azure veri merkezinde içeri aktarma sırası için verileriniz cihazdan Azure 'a otomatik olarak yüklenir. Sürecin tamamı Azure portalındaki Data Box hizmeti tarafından uçtan uca izlenir.
 
 ### <a name="q-when-should-i-use-data-box"></a>S. Data Box'ı ne zaman kullanmalıyım?
-A. Azure'a aktarmak istediğiniz 40-500 TB arası veriniz varsa Data Box'tan faydalanabilirsiniz. 40 TB < veri boyutları için Data Box Disk ve veri boyutları > 500 TB [Data Box Heavy](data-box-heavy-overview.md)için kaydolun.
+A. Azure 'a veya Azure 'a aktarmak istediğiniz 40-500 TB veriniz varsa Data Box kullanmaktan faydalanabilirsiniz. 40 TB < veri boyutları için Data Box Disk ve veri boyutları > 500 TB [Data Box Heavy](data-box-heavy-overview.md)için kaydolun.
 
 ### <a name="q-what-is-the-price-of-data-box"></a>S. Data Box'ın maliyeti nedir?
 A. Data Box için 10 gün boyunca nominal bir ücret tahsil edilir. Azure portalda sipariş oluştururken ürün modelini seçme aşamasında cihaz ücretleri görüntülenir. Sevkiyat da ücretsizdir ancak Azure depolama ücretleri tahsil edilecektir. Daha fazla bilgi için bkz. [Azure Data Box fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -83,7 +84,7 @@ A. Bu ifade Data Box hizmetinin seçtiğiniz ülke ve bölge birleşimi için ku
 A. Sipariş verdiğinizde uygun bir cihazın olup olmadığı kontrol edilir. Cihaz varsa 10 gün içinde gönderilir. Talebin yüksek olduğu dönemlerle de karşılaşabilirsiniz. Bu durumda siparişiniz sıraya alınır ve durumunu Azure portaldan takip edebilirsiniz. Siparişiniz 90 gün içinde işleme alınmazsa otomatik olarak iptal edilir.
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>S. Data Box cihazıma veri yükledim ve yeni bir tane daha sipariş etmem gerekiyor. Siparişi hızlı bir şekilde vermek için kullanabileceğim bir yöntem var mı?
-A. Önceki siparişinizi kopyalayabilirsiniz. Kopyalama işlemi, bir öncekiyle aynı bilgilere sahip bir sipariş oluşturur ve adres, iletişim ve bildirim ayrıntılarını yeniden girmenize gerek kalmadan yalnızca sipariş bilgilerini düzenleyebilirsiniz.
+A. Önceki siparişinizi kopyalayabilirsiniz. Kopyalama işlemi, bir öncekiyle aynı bilgilere sahip bir sipariş oluşturur ve adres, iletişim ve bildirim ayrıntılarını yeniden girmenize gerek kalmadan yalnızca sipariş bilgilerini düzenleyebilirsiniz. Yalnızca içeri aktarma siparişlerinde kopyalamaya izin verilir.
 
 ## <a name="configure-and-connect"></a>Yapılandırma ve bağlanma
 
@@ -180,18 +181,7 @@ A.  Evet. Data Box ile genel amaçlı, klasik veya blob depolama olmak üzere en
 A. Hasarlı bir şekilde ulaşan veya bariz kurcalama izleri bulunan cihazları kullanmayın. [Microsoft Desteğine başvurun](data-box-disk-contact-microsoft-support.md) ve cihazı mümkün olan en kısa sürede geri gönderin. Yenisinin gönderilmesi için yeni bir Data Box siparişi de oluşturabilirsiniz. Bu durumda yeni cihaz için ayrıca ücret alınmaz.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>S. Data Box sıraımı kendi kendinize alabilir miyim? Seçdiğim bir taşıyıcı aracılığıyla Data Box döndürebilir miyim?
-A. Evet. Microsoft ayrıca yalnızca US Gov bölgede otomatik olarak yönetilen kargo da sunar. Data Box sırayı yerleştirirken, kendi kendine yönetilen teslim seçeneğini belirleyebilirsiniz. Data Box cihazınızı seçmek için aşağıdaki adımları uygulayın:
-    
-1. Siparişi yerleştirdikten sonra, sipariş işlenir ve Data Box hazırlanır. Siparişinizin çekme için hazırlandığı bir e-posta ile bildirim alırsınız. 
-2. Sipariş toplama için hazırsa, Azure portal sırasıyla sıraya gidin ve **genel bakış** dikey penceresine gidin. 
-3. Azure portal kod içeren bir bildirim göreceksiniz. [Azure Data Box işlemler ekibine](mailto:adbops@microsoft.com) e-posta gönderin ve kodu sağlayın. Takım, konumu sağlayacak ve bir toplama tarihi ve saati zamanlamanıza izin verir. E-posta bildirimini aldıktan sonra ekibi 5 iş günü içinde çağırmanız gerekir.
-
-Veri kopyalama işlemi tamamlandıktan sonra, cihazınızı döndürmek için aşağıdaki adımları uygulayın:
-
-1. Veri kopyalama işlemi hatasız tamamlandıktan sonra **göndermeye hazırlama**çalıştırın. Hazırlama işlemi tamamlandıktan sonra, cihazın yerel Web Kullanıcı arabiriminde bir kod alacaksınız. Kodu kopyalayın ve kaydedin.
-2. Cihazı kapatın ve bağlantı kablolarını kaldırın.
-3. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-4. [Azure Data Box işlemler ekibine](mailto:adbops@microsoft.com) e-posta gönderin ve daha önce kaydettiğiniz kodu sağlayın. Cihazın nereden ve ne zaman kapatılabileceği hakkında bilgi verir.
+A. Evet. Microsoft, otomatik olarak yönetilen Kargo olanağı da sunar. Data Box sırayı yerleştirirken, kendi kendine yönetilen teslim seçeneğini belirleyebilirsiniz. Daha fazla bilgi için bkz. [Data Box Için kendi kendine yönetilen sevkıyat](data-box-portal-customer-managed-shipping.md).
 
 ### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>S. Data Box Cihazlarım, Sevkiyat sırasında ülke/bölge kenarlıklarını ister misiniz?
 A. Tüm Data Box cihazları, hedefle aynı ülke/bölge içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), cihazların herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinden oluşan siparişler içindir. Bu hem Data Box hem de Data Box Heavy cihazları için geçerlidir.
@@ -212,7 +202,7 @@ A.  Aşağıdaki Data Box özellikleri taşıma sırasında verilerinizin korunm
  - Cihaz kilitlenir ve verilere erişmek için bir parola kullanılması gerekir.
 Daha fazla bilgi için bkz. [Data Box güvenlik özellikleri](data-box-security.md).  
 
-### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>S. Göndermeye Hazırlama adımlarını tamamladım ve cihazı kapattım. Data Box'a yeni veri eklemem mümkün mü?
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>S. İçeri aktarma siparişiniz için hazırlanma ve cihazı kapatma işlemi tamamlandı. Data Box'a yeni veri eklemem mümkün mü?
 A. Evet. Cihazı açarak daha fazla veri ekleyebilirsiniz. Veri kopyalama işlemini tamamladıktan sonra **Göndermeye Hazırlama** adımlarını yeniden tamamlamanız gerekir.
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>S. Cihazımı aldım ve bu cihaz önyüklenmiyor mu? Nasıl yaparım? cihaz geri başlatılsın mı?
@@ -252,7 +242,7 @@ A.  Koruma zinciri desteği için aşağıdaki rapor türleri sunulur:
 
 - KGK 'dan taşıma lojistik.
 - Cihazı açma ve kullanıcı paylaşımı erişimi günlükleri.
-- Data Box'a başarıyla eklenen her dosya için 64 bit dönüşsel artıklık denetimi (CRC-64) veya sağlama toplamı.
+- 64 bitlik bir Döngüsel artıklık denetimi (CRC-64) veya Data Box başarıyla alınan her dosya için sağlama toplamı olan BOM veya manifest dosyası.
 - Azure depolama hesabına yükleme işlemi başarısız olan dosyaların bildirilmesi.
 - Veriler Azure depolama hesabınıza kopyalandıktan sonra Data Box cihazının temizlenmesi (NIST 800 88R1 standartlarına göre).
 
@@ -260,7 +250,9 @@ A.  Koruma zinciri desteği için aşağıdaki rapor türleri sunulur:
 A.  Taşıyıcı takip günlükleri, Data Box sipariş geçmişine kaydedilir. Bu rapor cihaz Azure veri merkezine iade edildikten ve cihaz üzerindeki veriler silindikten sonra sunulur. Anında gerek için, sipariş izleme numarası ile doğrudan taşıyıcının Web sitesine gidebilir ve izleme bilgilerini alabilirsiniz.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Data Box'ı Azure veri merkezine kendim götürebilir miyim? 
-A.  Hayır. Şu anda Azure veri merkezi, müşterilerin veya UPS dışındaki taşıyıcılar arasından Data Box teslimini kabul etmez.
+A.  Hayır. Microsoft yönetilen dağıtımını seçtiyseniz, tarihi taşıyamazsınız. Şu anda Azure veri merkezi, müşterilerin veya UPS dışındaki taşıyıcılar arasından Data Box teslimini kabul etmez.
+
+Kendi kendine yönetilen gönderi ' ı seçtiyseniz, Azure veri merkezinde Data Box alabilir veya kapatabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

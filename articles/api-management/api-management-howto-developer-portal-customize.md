@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79244101"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206236"
 ---
 # <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
 
@@ -35,7 +36,7 @@ Geliştirici Portalında daha fazla ayrıntı için [Azure API Management geliş
 
 ![API Management Geliştirici Portalı-yönetici modu](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 - Azure API Management örneğini içeri aktarın ve yayımlayın. Daha fazla bilgi için bkz. [Içeri aktarma ve yayımlama](import-and-publish.md)
@@ -130,6 +131,7 @@ Portalı yayımladıktan sonra, yönetim paneliyle aynı URL 'de buna erişebili
 Portalınızın ziyaretçilerinin yerleşik etkileşimli konsol aracılığıyla API 'Leri test etmek için API 'lerinizin CORS 'yi (Cross-Origin kaynak paylaşımı) etkinleştirmeniz gerekir. Daha fazla bilgi için [Bu belge makalesine](api-management-howto-developer-portal.md#cors) başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+- [Bulut harcamalarınızı iyileştirin ve kaydedin](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 Geliştirici portalı hakkında daha fazla bilgi edinin:
 

@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b6dc5ba59aa563da6e7c19e6c821f4a9b697832f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563497"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206531"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Hızlı başlangıç: Xamarin ile Azure Blob depolama istemci kitaplığı V12
 
@@ -20,13 +20,18 @@ Xamarin ile Azure Blob depolama istemci kitaplığı V12 ile çalışmaya başla
 
 Xamarin ile Azure Blob depolama istemci kitaplığı V12 kullanın:
 
-* Bir kapsayıcı oluşturma
+* Kapsayıcı oluşturma
 * Azure depolama 'ya blob yükleme
 * Bir kapsayıcıdaki tüm Blobları listeleme
 * Blob 'u cihazınıza indirin
 * Kapsayıcı silme
 
-[API başvuru belgeleri](/dotnet/api/azure.storage.blobs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Örnek](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+Başvuru bağlantıları:
+
+* [API başvuru belgeleri](/dotnet/api/azure.storage.blobs)
+* [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [Örnek](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -96,7 +101,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, Xamarin. Forms uygulamasında .NET için Azure Blob depolama istemci kitaplığı ile aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir:
 
 * [Sınıf düzeyi değişkenleri oluştur](#create-class-level-variables)
-* [Bir kapsayıcı oluşturma](#create-a-container)
+* [Kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Blob’ları bir kapsayıcıda listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
@@ -119,7 +124,7 @@ BlobContainerClient containerClient;
 BlobClient blobClient;
 ```
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir GUID değeri ekler.
 

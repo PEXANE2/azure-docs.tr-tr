@@ -1,22 +1,23 @@
 ---
-title: Şifrelenmiş bir ınlekrime hizmeti dağıtma
+title: Şifrelenmiş bir ınırm hizmeti dağıtma (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Microsoft MÜHÜRLEMEK için, görüntü sınıflandırması için şifrelenmiş bir tahmin hizmeti dağıtmak üzere nasıl kullanacağınızı öğrenin
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/18/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: tracking-python
-ms.openlocfilehash: b92293973ac9b5027a9f1a10c2d19fd164c41e3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c67ddf2d82a1cebaaa43a90111f4a42edb20058e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560194"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206786"
 ---
-# <a name="how-to-deploy-an-encrypted-inferencing-web-service"></a>Şifrelenmiş bir ınırm Web hizmeti dağıtma
+# <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Şifrelenmiş bir ınlebilme Web hizmeti dağıtma (Önizleme)
 
 Bir görüntü sınıflandırma modelini [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (aci) ' de şifrelenmiş bir Inactive bir Web hizmeti olarak dağıtmayı öğrenin. Web hizmeti, model ve Puanlama mantığını içeren bir Docker kapsayıcı görüntüsüdür.
 
@@ -33,7 +34,7 @@ ACI, model dağıtımı iş akışını test etmek ve anlamak için harika bir �
 
 Bu örnekte kullanılan şifreleme yöntemi [homomorphic şifredir](https://github.com/Microsoft/SEAL#homomorphic-encryption). Homomorphic şifrelemesi, bir gizli dizi (şifre çözme) anahtarına erişmek gerekmeden, şifrelenmiş verilerde hesaplamalar yapılmasına izin verir. Hesaplamaların sonuçları şifrelenir ve yalnızca gizli anahtar sahibi tarafından açığa çıkarlenebilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzda, Azure Machine Learning kayıtlı bir görüntü sınıflandırma modeliniz olduğunu varsaymaktadır. Aksi takdirde, modeli [önceden eğitilen bir model](https://github.com/Azure/MachineLearningNotebooks/raw/master/tutorials/image-classification-mnist-data/sklearn_mnist_model.pkl) kullanarak kaydedin veya [Azure Machine Learning öğreticisi ile görüntü sınıflandırma modeliyle eğitme](tutorial-train-models-with-aml.md)işlemini tamamlayarak kendinizinkini oluşturun.
 

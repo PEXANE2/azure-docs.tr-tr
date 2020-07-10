@@ -12,11 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708427"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206190"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,11 +33,11 @@ SQL yönetilen örneği, temel altyapıyı ve mimarisine bağlı olan özellikle
 
 |   | **4. nesil** | **5. nesil** |
 | --- | --- | --- |
-| Donanım | Intel E5-2673 v3 (Haswell) 2,4-GHz işlemciler, ekli SSD sanal çekirdek = 1 PP (fiziksel çekirdek) | Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) işlemciler, Fast NVMe SSD, vCore = 1 LP (hiper iş parçacığı) |
-| Sanal çekirdek sayısı | 8, 16, 24 sanal çekirdek | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
-| Maksimum bellek (bellek/çekirdek oranı) | Sanal çekirdek başına 7 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | vCore başına 5,1 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
-| Maks. bellek Içi OLTP belleği | Örnek sınırı: vCore başına 1-1,5 GB| Örnek sınırı: vCore başına 0,8-1,65 GB |
-| En büyük örnek ayrılmış depolama alanı |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 TB | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
+| **Donanım** | Intel E5-2673 v3 (Haswell) 2,4-GHz işlemciler, ekli SSD sanal çekirdek = 1 PP (fiziksel çekirdek) | Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) işlemciler, Fast NVMe SSD, vCore = 1 LP (hiper iş parçacığı) |
+| **Sanal çekirdek sayısı** | 8, 16, 24 sanal çekirdek | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
+| **Maksimum bellek (bellek/çekirdek oranı)** | Sanal çekirdek başına 7 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | vCore başına 5,1 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
+| **Maks. bellek Içi OLTP belleği** | Örnek sınırı: vCore başına 1-1,5 GB| Örnek sınırı: vCore başına 0,8-1,65 GB |
+| **En büyük örnek ayrılmış depolama alanı** |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 TB | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
 
 > [!IMPORTANT]
 > - 4. nesil donanım kullanıma alınıyor ve Yeni dağıtımlar için artık kullanılamıyor. SQL yönetilen örneğinin tüm yeni örnekleri 5. nesil donanımında dağıtılmalıdır.
@@ -79,7 +80,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 | Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>En fazla 22 MB/sn | vCore başına 4 MB/s<br/>En fazla 48 MB/sn |
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](#file-io-characteristics-in-general-purpose-tier) | Sınırlı değildir. |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
-| Bellek içi OLTP | Desteklenmiyor | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
+| Bellek içi OLTP | Desteklenmez | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
 | En fazla oturum sayısı | 30000 | 30000 |
 | Maksimum eş zamanlı çalışan (istek) | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 |
 | [Salt okuma çoğaltmaları](../database/read-scale-out.md) | 0 | 1 (fiyata dahildir) |

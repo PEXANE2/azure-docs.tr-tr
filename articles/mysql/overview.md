@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 8f49811ad0d40c70933d32227cfb17a5144b857a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5758fa367ac17ceb687212b4073fd2c1a5c18f6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067815"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206411"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>MySQL için Azure Veritabanı nedir?
 
@@ -51,7 +51,7 @@ Azure'ın Microsoft yönetimindeki veri merkezlerinin küresel bir ağı tarafı
 Azure veritabanı Hizmetleri, MySQL için Azure veritabanı 'nın, erişimi sınırlayan, verileri REST ve hareket halindeyken koruyan özelliklerle ve etkinliği izlemenize yardımcı olan bir gelenek veri güvenliği içerir. Azure'ın platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/trustcenter/security)'ni ziyaret edin. MySQL için Azure veritabanı güvenlik özellikleri hakkında daha fazla bilgi için bkz. [Güvenliğe genel bakış](concepts-security.md).
 
 ## <a name="contacts"></a>Kişiler
-MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine bir e-posta gönderin ([ @Ask MySQL için Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bu e-posta adresi bir teknik destek diğer adı değil.
+MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine bir e-posta gönderin ([ @Ask MySQL IÇIN Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bu e-posta adresi bir teknik destek diğer adı değil.
 
 Buna ek olarak, aşağıdaki iletişim noktalarını uygun şekilde göz önünde bulundurun:
 
@@ -64,4 +64,11 @@ Artık MySQL için Azure veritabanı 'na giriş okuduğunuzu ve "MySQL için Azu
 
 - Maliyet karşılaştırmaları ve hesaplayıcıları için fiyatlandırma sayfasına bakın. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/mysql/)
 - İlk sunucunuzu oluşturarak başlayın. [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Tercih ettiğiniz dili kullanarak ilk uygulamanızı oluşturun: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.net (C#)](./connect-csharp.md) | [Go](./connect-go.md)
+- Tercih ettiğiniz dili kullanarak ilk uygulamanızı oluşturun:
+  - [Python](./connect-python.md)
+  - [Node.JS](./connect-nodejs.md)
+  - [Java](./connect-java.md)
+  - [Ruby](./connect-ruby.md)
+  - [PHP](./connect-php.md)
+  - [.NET (C#)](./connect-csharp.md)
+  - [Git](./connect-go.md)

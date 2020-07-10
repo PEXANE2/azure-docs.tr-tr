@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073473"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205645"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Bölgeler arasında Azure API Management geçirme
 API Management örneklerini bir Azure bölgesinden diğerine geçirmek için [yedekleme ve geri yükleme](api-management-howto-disaster-recovery-backup-restore.md) özelliğini kullanabilirsiniz. Kaynak ve hedef bölgelerde aynı API Management fiyatlandırma katmanını seçmeniz gerekir. 
@@ -47,3 +47,4 @@ API Management örneklerini bir Azure bölgesinden diğerine geçirmek için [ye
 ## <a name="next-steps"></a><a name="next-steps"> </a>Sonraki adımlar
 * Yedekleme ve geri yükleme özelliği hakkında daha fazla bilgi için bkz. [olağanüstü durum kurtarmayı uygulama](api-management-howto-disaster-recovery-backup-restore.md).
 * Geçiş Azure kaynakları hakkında daha fazla bilgi için bkz. [Azure çapraz bölge geçiş kılavuzu](https://github.com/Azure/Azure-Migration-Guidance).
+* [Bulut harcamalarınızı iyileştirin ve saklayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

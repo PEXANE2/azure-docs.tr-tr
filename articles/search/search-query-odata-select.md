@@ -19,17 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113109"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206880"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $select söz dizimi
 
  Azure Bilişsel Arama arama sonuçlarına dahil edilecek alanları seçmek için [OData **$Select** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$Select** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$Select** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 **$Select** parametresi, her belge için hangi alanların sorgu sonuç kümesinde döndürüleceğini belirler. Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) **$Select** parametresi için dilbilgisini tanımlar:
 
@@ -62,7 +63,9 @@ Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyors
 
 `HotelId` `HotelName` `Rating` Sonuçlara ve alt alanına, ve en üst düzey alanları ekleyin `City` `Address` :
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 Örnek bir sonuç şöyle görünebilir:
 
@@ -79,7 +82,9 @@ Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyors
 
 `HotelName`Sonuçlarda en üst düzey alanı, tüm alt alanlarını `Address` ve `Type` `BaseRate` koleksiyondaki her bir nesnenin ve alt alanlarını `Rooms` dahil edin:
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 Örnek bir sonuç şöyle görünebilir:
 

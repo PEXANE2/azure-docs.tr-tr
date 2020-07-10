@@ -1,16 +1,17 @@
 ---
-title: Kimlik doğrulaması ve yetkilendirme
+title: Kimlik doğrulama ve yetkilendirme
 description: Azure App Service ve Azure Işlevlerinde yerleşik kimlik doğrulama ve yetkilendirme desteği hakkında bilgi edinin ve uygulamanızın yetkisiz erişime karşı nasıl güvenli hale getirilmesine yardımcı olabilir.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196446"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206760"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -34,7 +35,7 @@ Yerel mobil uygulamalara özgü bilgiler için, bkz. [Azure App Service ile mobi
 
 Kimlik doğrulama ve yetkilendirme modülü, uygulama kodunuzla aynı korumalı alanda çalışır. Etkin olduğunda, her gelen HTTP isteği, uygulama kodunuz tarafından işlenemeden önce üzerinden geçirilir.
 
-![](media/app-service-authentication-overview/architecture.png)
+![Dağıtılan sitede trafiğe izin vermeden önce kimlik sağlayıcılarıyla etkileşen site korumalı bir işlem tarafından kesilen istekleri gösteren bir mimari diyagramı](media/app-service-authentication-overview/architecture.png)
 
 Bu modül, uygulamanız için çeşitli şeyleri işler:
 
@@ -62,7 +63,7 @@ App Service, Web uygulamalarınızın, API 'lerin veya yerel mobil uygulamaları
 
 Uygulamanızda bu belirteçleri toplamak, depolamak ve yenilemek için genellikle kod yazmanız gerekir. Belirteç deposu ile, ihtiyacınız olduğunda [belirteçleri alır](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) ve geçersiz hale geldiklerinde [bunları yenilemek App Service söyleyin](app-service-authentication-how-to.md#refresh-identity-provider-tokens) . 
 
-Kimlik belirteçleri, erişim belirteçleri ve yenileme belirteçleri kimliği doğrulanmış oturum için önbelleğe alınır ve yalnızca ilişkili kullanıcı tarafından erişilebilir.  
+KIMLIK belirteçleri, erişim belirteçleri ve yenileme belirteçleri kimliği doğrulanmış oturum için önbelleğe alınır ve yalnızca ilişkili kullanıcı tarafından erişilebilir.  
 
 Uygulamanızdaki belirteçlerle çalışmanız gerekmiyorsa, belirteç deposunu devre dışı bırakabilirsiniz.
 
@@ -81,8 +82,11 @@ App Service, üçüncü taraf bir kimlik sağlayıcısının sizin için Kullan�
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| Herhangi bir [OpenID Connect](https://openid.net/connect/) sağlayıcısı (Önizleme) | `/.auth/login/<providerName>` |
 
-Kimlik doğrulama ve yetkilendirmeyi bu sağlayıcılardan biriyle etkinleştirdiğinizde, oturum açma uç noktası Kullanıcı kimlik doğrulaması ve sağlayıcıdan kimlik doğrulama belirteçleri doğrulaması için kullanılabilir. Kullanıcılarınıza dilediğiniz sayıda bu oturum açma seçeneğini kolayca sağlayabilirsiniz. Ayrıca, başka bir kimlik sağlayıcısını veya [kendi özel kimlik çözümünüzü][custom-auth]tümleştirebilirsiniz.
+Kimlik doğrulama ve yetkilendirmeyi bu sağlayıcılardan biriyle etkinleştirdiğinizde, oturum açma uç noktası Kullanıcı kimlik doğrulaması ve sağlayıcıdan kimlik doğrulama belirteçleri doğrulaması için kullanılabilir. Kullanıcılarınıza dilediğiniz sayıda bu oturum açma seçeneğini kolayca sağlayabilirsiniz.
+
+Diğer kimlik sağlayıcıları veya özel bir kimlik doğrulama çözümüyle tümleştirmek için [eski bir genişletilebilirlik yolu][custom-auth] vardır, ancak bu önerilmez. Bunun yerine, OpenID Connect desteğini kullanmayı göz önünde bulundurun.
 
 ## <a name="authentication-flow"></a>Kimlik doğrulaması akışı
 
@@ -112,7 +116,7 @@ Aşağıdaki tabloda, kimlik doğrulama akışı adımları gösterilmektedir.
 
 [Azure Portal](https://portal.azure.com), gelen isteğin kimliği doğrulanmamış bir dizi davranışla App Service yetkilendirmeyi yapılandırabilirsiniz.
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+!["İstek kimlik doğrulaması olmadığında gerçekleştirilecek eylemi" açılan ekran görüntüsü](media/app-service-authentication-overview/authorization-flow.png)
 
 Aşağıdaki başlıklar seçenekleri anlatmaktadır.
 
@@ -150,13 +154,14 @@ Sağlayıcıya özgü nasıl yapılır Kılavuzu:
 * [Uygulamanızı Google oturum açma bilgilerini kullanacak şekilde yapılandırma][Google]
 * [Uygulamanızı Microsoft Hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma][MSA]
 * [Uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma][Twitter]
-* [Nasıl yapılır: uygulamanız için özel kimlik doğrulaması kullanma][custom-auth]
+* [Uygulamanızı, oturum açmak için bir OpenID Connect sağlayıcısı kullanacak şekilde yapılandırma (Önizleme)][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

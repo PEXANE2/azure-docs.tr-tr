@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 23c7913fbe9b3943559d36f5cbf2a21d7ed63dbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a53122b324c0a6dc43619eb2e9c704873f87b69
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563463"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207306"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Bilişsel Arama eş anlamlılar
 
@@ -51,6 +51,7 @@ Eş anlamlı eşlemeler aşağıda açıklanan Apache Solr biçiminde olmalıdı
 
 Aşağıdaki örnekte olduğu gibi, HTTP POST kullanarak yeni bir eş anlamlı eşleme oluşturabilirsiniz:
 
+```synonym-map
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
@@ -61,9 +62,11 @@ Aşağıdaki örnekte olduğu gibi, HTTP POST kullanarak yeni bir eş anlamlı e
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 Alternatif olarak, koy ' u kullanabilir ve URI üzerinde eş anlamlı eşleme adını belirtebilirsiniz. Eş anlamlı eşleme yoksa, oluşturulur.
 
+```synonym-map
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
@@ -73,10 +76,12 @@ Alternatif olarak, koy ' u kullanabilir ve URI üzerinde eş anlamlı eşleme ad
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr eş anlamlı biçimi
 
 Solr biçimi eşdeğer ve açık eş anlamlı eşlemelerini destekler. Eşleme kuralları, bu belgede açıklanan Apache Solr 'nin açık kaynaklı eş anlamlı filtre belirtimine uyar: [eşanlamlı Ymfilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Eşdeğer eş anlamlılar için örnek bir kural aşağıda verilmiştir.
+
 ```
 USA, United States, United States of America
 ```
@@ -84,29 +89,37 @@ USA, United States, United States of America
 Yukarıdaki kuralla birlikte "USA" arama sorgusu "ABD" veya "Birleşik Devletler" ya da "Birleşik Devletler" olarak genişletilir.
 
 Açık eşleme bir ok "=>" ile gösterilir. Belirtildiğinde, "=>" öğesinin sol tarafıyla eşleşen bir arama sorgusunun terim sırası, sağ taraftaki alternatiflerle birlikte değişir. Aşağıdaki kural verildiğinde, "Washington", "yıkama" sorguları üzerinde arama yapın. ya da "WA" tümü "WA" olarak yeniden yazılır. Açık eşleme yalnızca belirtilen yönde geçerlidir ve bu durumda "WA" sorgusunu "Washington" olarak yeniden yazmaz.
+
 ```
 Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Hizmetiniz altındaki eş anlamlı haritaları listeleyin.
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="get-a-synonym-map-under-your-service"></a>Hizmetiniz altında bir eş anlamlı eşleme alın.
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>Hizmetiniz altındaki bir eş anlamlı eşlemeyi silin.
 
+```synonym-map
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Dizin tanımında eş anlamlı eşlemeyi kullanmak için aranabilir bir alan yapılandırın.
 
 Yeni bir alan özelliği olan eşanlamlı bir alan için kullanılacak bir eş anlamlı eşleme belirtmek için, **eş** anlamlılar özelliği kullanılabilir. Eş anlamlı eşlemeler hizmet düzeyi kaynaklardır ve hizmet altındaki bir dizinin herhangi bir alanı tarafından başvurulabilir.
 
+```synonym-map
     POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
     api-key: [admin key]
 
@@ -138,6 +151,7 @@ Yeni bir alan özelliği olan eşanlamlı bir alan için kullanılacak bir eş a
           }
        ]
     }
+```
 
 ' Edm. String ' veya ' Collection (EDM. String) ' türündeki aranabilir alanlar için **eş anlamlı** alanları belirtilebilir.
 

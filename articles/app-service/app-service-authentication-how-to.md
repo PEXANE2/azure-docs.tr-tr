@@ -1,15 +1,15 @@
 ---
-title: AuthN/AuthO 'ın gelişmiş kullanımı
+title: AuthN/AuthZ gelişmiş kullanımı
 description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkilendirme özelliğini özelleştirmeyi ve Kullanıcı taleplerini ve farklı belirteçleri almayı öğrenin.
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205654"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205574"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -24,6 +24,7 @@ Hızlıca kullanmaya başlamak için aşağıdaki öğreticilerden birine bakın
 * [Uygulamanızı Google oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-google.md)
 * [Uygulamanızı Microsoft Hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-microsoft.md)
 * [Uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-twitter.md)
+* [Uygulamanızı bir OpenID Connect sağlayıcısı kullanarak oturum açmak üzere yapılandırma (Önizleme)](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Çoklu oturum açma sağlayıcılarını kullanma
 
@@ -33,7 +34,7 @@ Portal Yapılandırması, kullanıcılarınıza birden çok oturum açma sağlay
 
 **İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem Için** **anonim isteklere izin ver (eylem yok)** seçeneğini belirleyin.
 
-Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz her bir sağlayıcının () bir oturum açma bağlantısını ekleyin `/.auth/login/<provider>` . Örneğin:
+Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz her bir sağlayıcının () bir oturum açma bağlantısını ekleyin `/.auth/login/<provider>` . Örnek:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -55,7 +56,7 @@ Kullanıcı oturum açma sonrası eklentisini özel bir URL 'ye yönlendirmek i�
 
 İstemci ile yönlendirilen bir oturum açma bölümünde, uygulama kullanıcıdan sağlayıcıya el ile oturum açar ve ardından kimlik doğrulama belirtecini doğrulama için App Service (bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow)) gönderir. Bu doğrulamanın kendisi, istenen uygulama kaynaklarına erişim hakkı vermez, ancak başarılı bir doğrulama size uygulama kaynaklarına erişmek için kullanabileceğiniz bir oturum belirteci verecektir. 
 
-Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, `/.auth/login/<provider>` doğrulama için belirteci gönderin. Örneğin: 
+Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, `/.auth/login/<provider>` doğrulama için belirteci gönderin. Örnek: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +87,7 @@ Sağlayıcı belirteci başarıyla doğrulandıktan sonra, API, `authenticationT
 }
 ```
 
-Bu oturum belirtecine sahip olduğunuzda, `X-ZUMO-AUTH` http isteklerinize üst bilgi ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örneğin: 
+Bu oturum belirtecine sahip olduğunuzda, `X-ZUMO-AUTH` http isteklerinize üst bilgi ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örnek: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +108,7 @@ Web sayfasında basit bir oturum kapatma bağlantısı şöyle olabilir:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done` . Sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz `post_logout_redirect_uri` . Örneğin:
+Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done` . Sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz `post_logout_redirect_uri` . Örnek:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -269,7 +270,7 @@ Herhangi bir Windows uygulaması için, *Web.config* dosyasını düzenleyerek I
 
 ### <a name="identity-provider-level"></a>Kimlik sağlayıcısı düzeyi
 
-Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örneğin:
+Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örnek:
 
 - [Azure App Service](configure-authentication-provider-aad.md)için, [Kurumsal düzeyde ERIŞIMI](../active-directory/manage-apps/what-is-access-management.md) doğrudan Azure AD 'de yönetebilirsiniz. Yönergeler için bkz. [kullanıcının bir uygulamaya erişimini kaldırma](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - [Google](configure-authentication-provider-google.md)için, bir [kuruluşa](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) ait Google API projeleri yalnızca kuruluşunuzdaki kullanıcılara erişime izin verecek şekilde yapılandırılabilir (bkz. [Google 'ın **OAuth 2,0** destek sayfasını ayarlama](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -277,6 +278,195 @@ Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örneğ
 ### <a name="application-level"></a>Uygulama düzeyi
 
 Diğer düzeylerin herhangi biri ihtiyacınız olan yetkilendirmeyi sağlamıyorsa veya platformunuz veya kimlik sağlayıcınız desteklenmiyorsa, [Kullanıcı taleplerine](#access-user-claims)göre kullanıcılara yetki vermek için özel kod yazmanız gerekir.
+
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Dosya kullanarak yapılandırma (Önizleme)
+
+Kimlik doğrulama ayarlarınız isteğe bağlı olarak, dağıtımınız tarafından sağlanmış bir dosya aracılığıyla yapılandırılabilir. Bu, App Service kimlik doğrulaması/yetkilendirme için bazı Önizleme özellikleri tarafından gerekli olabilir.
+
+> [!IMPORTANT]
+> Uygulama yükünüzü ve bu dosyanın, [yuvalarda](./deploy-staging-slots.md)olduğu gibi ortamlar arasında hareket edebilir olduğunu unutmayın. Büyük olasılıkla her bir yuvaya sabitlenmiş farklı bir uygulama kaydı yapmak isteyebilirsiniz ve bu durumlarda yapılandırma dosyasını kullanmak yerine standart yapılandırma yöntemini kullanmaya devam etmelisiniz.
+
+### <a name="enabling-file-based-configuration"></a>Dosya tabanlı yapılandırmayı etkinleştirme
+
+> [!CAUTION]
+> Önizleme süresince dosya tabanlı yapılandırmayı etkinleştirmek, Azure portal, Azure CLı ve Azure PowerShell gibi bazı istemciler aracılığıyla uygulamanız için App Service kimlik doğrulaması/yetkilendirme özelliğinin yönetimini devre dışı bırakır.
+
+1. Projenizin kökündeki yapılandırmanız için yeni bir JSON dosyası oluşturun (Web/işlev uygulamanızda D:\home\site\wwwroot dosyasına dağıtılır). [Dosya tabanlı yapılandırma başvurusuna](#configuration-file-reference)göre istediğiniz yapılandırmayı girin. Mevcut bir Azure Resource Manager yapılandırmasını değiştiriyorsanız, koleksiyonda yakalanan özellikleri yapılandırma dosyanıza çevirdiğinizden emin olun `authsettings` .
+
+2. Altındaki [Azure Resource Manager](../azure-resource-manager/management/overview.md) API 'lerinde yakalanan varolan yapılandırmayı değiştirin `Microsoft.Web/sites/<siteName>/config/authsettings` . Bunu değiştirmek için [Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md) veya [Azure Kaynak Gezgini](https://resources.azure.com/)gibi bir aracı kullanabilirsiniz. Authsettings öğesine tıklayın koleksiyonu içinde üç özellik ayarlamanız gerekir (ve diğerlerini kaldırabilir):
+
+    1.  `enabled`"True" olarak ayarlayın
+    2.  `isAuthFromFile`"True" olarak ayarlayın
+    3.  `authFilePath`Dosyanın adına ayarlanır (örneğin, "auth.json")
+
+Bu yapılandırma güncelleştirmesini yaptıktan sonra, bu site için App Service kimlik doğrulaması/yetkilendirme davranışını tanımlamak üzere dosyanın içeriği kullanılacaktır. Azure Resource Manager yapılandırmaya geri dönmek isterseniz, bunu `isAuthFromFile` "false" olarak ayarlayarak yapabilirsiniz.
+
+### <a name="configuration-file-reference"></a>Yapılandırma dosyası başvurusu
+
+Yapılandırma dosyanızda başvurulacak tüm gizli dizi, [uygulama ayarları](./configure-common.md#configure-app-settings)olarak depolanmalıdır. Ayarları istediğiniz şekilde adlandırın. Yalnızca yapılandırma dosyasındaki başvuruların aynı anahtarları kullandığından emin olun.
+
+Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedir:
+
+```json
+{
+    "platform": {
+        "enabled": <true|false>
+    },
+    "globalValidation": {
+        "requireAuthentication": <true|false>,
+        "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
+        "redirectToProvider": "<default provider alias>",
+        "excludedPaths": [
+            "/path1",
+            "/path2"
+        ]
+    },
+    "identityProviders": {
+        "azureActiveDirectory": {
+            "enabled": <true|false>,
+            "registration": {
+                "openIdIssuer": "<issuer url>",
+                "clientId": "<app id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_AAD_SECRET",
+            },
+            "login": {
+                "loginParameters": [
+                    "paramName1=value1",
+                    "paramName2=value2"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "facebook": {
+            "enabled": <true|false>,
+            "registration": {
+                "appId": "<app id>",
+                "appSecretSettingName": "APP_SETTING_CONTAINING_FACEBOOK_SECRET"
+            },
+            "graphApiVersion": "v3.3",
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+        },
+        "gitHub": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GITHUB_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
+        "google": {
+            "enabled": true,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GOOGLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "twitter": {
+            "enabled": <true|false>,
+            "registration": {
+                "consumerKey": "<consumer key>",
+                "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
+            }
+        },
+        "openIdConnectProviders": {
+            "provider name": {
+                "enabled": <true|false>,
+                "registration": {
+                    "clientId": "<client id>",
+                    "clientCredential": {
+                        "secretSettingName": "<name of app setting containing client secret>"
+                    },
+                    "openIdConnectConfiguration": {
+                        "authorizationEndpoint": "<url specifying authorization endpoint>",
+                        "tokenEndpoint": "<url specifying token endpoint>",
+                        "issuer": "<url specifying issuer>",
+                        "certificationUri": "<url specifying jwks endpoint>",
+                        "wellKnownOpenIdConfiguration": "<url specifying .well-known/open-id-configuration endpoint - if this property is set, the other properties of this object are ignored, and authorizationEndpoint, tokenEndpoint, issuer, and certificationUri are set to the corresponding values listed at this endpoint>"
+                    }
+                },
+                "login": {
+                    "nameClaimType": "<name of claim containing name>",
+                    "loginScopes": [
+                        "profile",
+                        "email"
+                    ],
+                    "loginParameterNames": [
+                        "paramName1=value1",
+                        "paramName2=value2"
+                    ],
+                }
+            },
+            //...
+        },
+        "login": {
+            "routes": {
+                "logoutEndpoint": "<logout endpoint>"
+            },
+            "tokenStore": {
+                "enabled": <true|false>,
+                "tokenRefreshExtensionHours": "<double>",
+                "fileSystem": {
+                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
+                },
+                "azureBlobStorage": {
+                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+                }
+            },
+            "preserveUrlFragmentsForLogins": <true|false>,
+            "allowedExternalRedirectUrls": [
+                "https://uri1.azurewebsites.net/",
+                "https://uri2.azurewebsites.net/"
+            ],
+            "cookieExpiration": {
+                "convention": "FixedTime|IdentityProviderDerived",
+                "timeToExpiration": "<timespan>"
+            },
+            "nonce": {
+                "validateNonce": <true|false>,
+                "nonceExpirationInterval": "<timespan>"
+            }
+        },
+        "httpSettings": {
+            "requireHttps": <true|false>,
+            "routes": {
+                "apiPrefix": "<api prefix>"
+            },
+            "forwardProxy": {
+                "convention": "NoProxy|Standard|Custom",
+                "customHostHeaderName": "<host header value>",
+                "customProtoHeaderName": "<proto header value>"
+            }
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

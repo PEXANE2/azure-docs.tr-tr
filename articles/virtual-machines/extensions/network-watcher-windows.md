@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261678"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206018"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows için ağ Izleyicisi Aracısı sanal makine uzantısı
 
@@ -29,11 +30,11 @@ ms.locfileid: "81261678"
 
 Bu belgede, Windows için ağ Izleyicisi Aracısı sanal makine uzantısı için desteklenen platformlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır. Aracının yüklenmesi, sanal makinenin yeniden başlatılmasını kesintiye uğramaz veya gerektirmez. Uzantıyı dağıttığınız sanal makinelere dağıtabilirsiniz. Sanal makine bir Azure hizmeti tarafından dağıtılırsa, sanal makinede uzantıların yüklenmesine izin verilip verilmeyeceğini öğrenmek için hizmetin belgelerini denetleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Windows için ağ Izleyicisi Aracısı uzantısı Windows Server 2008 R2, 2012, 2012 R2 ve 2016 yayınlarına karşı çalıştırılabilir. Nano sunucu şu anda desteklenmiyor.
+Windows için ağ Izleyicisi Aracısı uzantısı Windows Server 2008 R2, 2012, 2012 R2, 2016 ve 2019 yayınlarına karşı çalıştırılabilir. Nano sunucu şu anda desteklenmiyor.
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
@@ -63,7 +64,7 @@ Aşağıdaki JSON ağ Izleyicisi Aracısı uzantısı için şemayı gösterir. 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek |
+| Ad | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | yayımcı | Microsoft. Azure. Networkizleyici |

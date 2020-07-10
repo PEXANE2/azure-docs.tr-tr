@@ -1,0 +1,125 @@
+- name: Azure Rezervasyonları belgeleri
+  href: index.yml?toc=/azure/cost-management-billing/reservations/toc.json
+- name: Genel Bakış
+  expanded: true
+  items:
+    - name: Azure Ayırmaları nedir?
+      href: save-compute-costs-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Neyin satın alınacağını saptama
+      items:
+        - name: Satın alınacak rezervasyonu seçme
+          href: determine-reservation-purchase.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Rezervasyon satın alın
+      items:
+        - name: Azure rezervasyonu satın alma
+          href: prepare-buy-reservation.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: App Service
+          href: prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Redis için Azure Cache rezervasyonu
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Cosmos DB
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Databricks
+          href: prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Veri Gezgini
+          href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Disk Depolama
+          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Ayrılmış Konak
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Yazılım planları
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Storage
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: SQL Veritabanı
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: PostgreSQL için Azure Veritabanı
+          href: ../../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: MySQL için Azure Veritabanı
+          href: ../../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: MariaDB için Azure Veritabanı
+          href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Synapse Analytics
+          href: prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Sanal makineler
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: 'Satın aldıktan sonra Görüntüleme, Yönetme ve İyileştirme'
+      items:
+        - name: Rezervasyonları ve kullanımı görüntüleme
+          href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Rezervasyonları yönetme
+          href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: İyileştirme ayarlarını değiştirme
+          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
+        - name: Değişim ve para iadesi rezervasyonları
+          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Maliyetleri raporlama
+      items:
+        - name: Rezervasyon işlemlerini görüntüleme
+          href: view-purchase-refunds.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Rezervasyon maliyetlerini geri ödeme
+          href: charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Rezervasyonları yenileme
+      items:
+        - name: Rezervasyonu yenileme
+          href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
+- name: Kavramlar
+  items:
+    - name: Rezervasyon önerilerinin oluşturulma biçimi
+      href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: İndirim nasıl uygulanır?
+      items:
+        - name: Azure rezervasyonu indirimini uygulama
+          href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: App Service
+          href: reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Redis için Azure Önbelleği
+          href: understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Cosmos DB
+          href: understand-cosmosdb-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: MariaDB için Veritabanı
+          href: understand-reservation-charges-mariadb.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: MySQL için Veritabanı
+          href: understand-reservation-charges-mysql.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: PostgreSQL için Veritabanı
+          href: understand-reservation-charges-postgresql.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Databricks
+          href: reservation-discount-databricks.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Veri Gezgini
+          href: understand-azure-data-explorer-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Ayrılmış Konaklar
+          href: billing-understand-dedicated-hosts-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Disk Depolama
+          href: understand-disk-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Red Hat Linux Enterprise
+          href: understand-rhel-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Yazılım planları
+          href: understand-suse-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Depolama
+          href: understand-storage-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: SQL Veritabanı
+          href: understand-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Synapse Analytics
+          href: reservation-discount-azure-sql-dw.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Sanal makineler
+          href: ../manage/understand-vm-reservation-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Windows ve SQL maliyetleri dahil değil
+      href: reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Bireysel aboneliklere yönelik kullanım verileri
+      href: understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Kurumsal müşterilere yönelik kullanım verileri
+      href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
+- name: Başvuru
+  items:
+    - name: Rezervasyonlar REST API’si
+      href: reservation-apis.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Rezervasyonlar - Azure PowerShell
+      href: /powershell/module/azurerm.reservations
+    - name: Rezervasyonlar - CLI
+      href: /cli/azure/reservations/reservation
+    - name: Maliyet Yönetimi - Tüketim Kullanım Ayrıntıları REST API’si
+      href: /rest/api/consumption/usagedetails
+    - name: Maliyet Yönetimi - Tüketim Rezervasyon Ayrıntıları REST API’si
+      href: /rest/api/consumption/reservationsdetails

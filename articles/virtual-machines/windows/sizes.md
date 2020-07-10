@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8f91727ddc131b1f44acb4303a2368aed1890223
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60200bd35d142b8b55a40d6912f946f9421f52e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783308"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207662"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure'daki Windows sanal makinesi boyutları
 
@@ -46,6 +47,10 @@ Azure [işlem birimlerinin (ACU)](../acu.md) Azure SKU 'ları genelinde işlem p
 ## <a name="benchmark-scores"></a>Kıyaslama puanları
 
 [CoreMark kıyaslama puanlarını](compute-benchmark-scores.md)kullanarak Windows VM 'lerinin işlem performansı hakkında daha fazla bilgi edinin.
+
+## <a name="manage-costs"></a>Maliyetleri yönetme
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

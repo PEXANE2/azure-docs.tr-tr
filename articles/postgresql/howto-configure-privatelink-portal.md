@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 6986d5882e4d62ffc2e25b7ea998f46f41c67330
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f05b70c8197283d9fa576d6ea464aa08554dd773
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102472"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206769"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-portalı kullanarak tek sunucu
 
@@ -37,7 +37,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *MyVirtualNetwork*girin. |
+    | Ad | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
@@ -69,7 +69,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
+    | Genel gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
     |||
@@ -86,12 +86,12 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
     | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
-    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     |||
 
 
-1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
 
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
@@ -122,7 +122,7 @@ Bu bölümde, Azure 'da PostgreSQL için Azure veritabanı sunucusu oluşturacak
     |||
  
 7. **Tamam**’ı seçin. 
-8. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+8. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur**' u seçin. 
 10. Doğrulama başarılı iletisini gördüğünüzde oluştur ' u seçin. 
 
@@ -143,7 +143,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **Örnek Ayrıntıları** |  |
-    | Name | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
+    | Ad | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |Bölge|**Batı Avrupa**'yı seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
@@ -164,16 +164,16 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     | ------- | ----- |
     |**IŞLEMLERI**| |
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
-    | Alt ağ |  *Mysubnet*öğesini seçin. |
+    | Alt ağ | *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTIRMESI**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. |
+    |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
     |Özel DNS bölgesi |Seçin *(yeni) Privatelink. Postgres. Database. Azure. com* |
     |||
 
     > [!Note] 
     > Hizmetiniz için önceden tanımlanmış özel DNS bölgesini kullanın veya tercih ettiğiniz DNS bölge adını sağlayın. Ayrıntılar için [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md) ' na bakın.
 
-1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
     ![Özel bağlantı oluşturuldu](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
@@ -190,7 +190,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. *İndirilen. rdp* dosyasını açın.
 
@@ -209,7 +209,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>PostgreSQL sunucusuna VM 'den özel olarak erişin
 
-1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
+1. *Myvm*uzak masaüstünde PowerShell ' i açın.
 
 2. Girin  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` . 
 
@@ -235,7 +235,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     |SSL|**Gerekli**' yi seçin.|
     ||
 
-5. Bağlan'ı seçin.
+5. Bağlan’ı seçin.
 
 6. Sol menüden veritabanlarına gözatamazsınız.
 
@@ -246,7 +246,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Özel uç nokta, PostgreSQL sunucusu ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1.  *myResourceGroup*   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından *myresourcegroup*öğesini seçin   .
+1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup*öğesini seçin   .
 2. **Kaynak grubunu sil**'i seçin.
 3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 

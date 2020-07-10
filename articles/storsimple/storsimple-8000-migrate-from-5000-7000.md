@@ -13,11 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: c05b62b254320bd56a6f0591f1edbe32d5362e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 721dffcaea64e949ac7a5230e24f3aa37261fa9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514727"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206475"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 serisinden verileri 8000 serisi cihaza geçirme
 
@@ -40,21 +41,21 @@ Geçiş özelliğini kullanarak veya bir konak tarafı geçişi gerçekleştirer
 
 Geçiş özelliği, 7000/5000 serisinden 8000 serisine bir olağanüstü durum kurtarma (DR) işlemini benzetir. Bu özellik, verileri 5000/7000 Serisi biçiminden Azure 'da 8000 seri biçimine geçirmenize olanak sağlar. Geçiş işlemi StorSimple geçiş aracı kullanılarak başlatılır. Araç, yedekleme meta verilerinin 8000 serisi cihaza indirilmesini ve dönüştürülmesini başlatır ve ardından en son yedeklemeyi kullanarak cihazdaki birimleri kullanıma sunar.
 
-|      | Artıları                                                                                                                                     |Simgeler                                                                                                                                                              |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Geçiş işlemi, 5000/7000 serisinde gerçekleştirilen yedeklemelerin geçmişini korur.                                               | Kullanıcılar verilere erişmeyi denediğinde, bu geçiş verileri Azure 'dan indirerek veri indirme maliyetlerini de indirir.                                     |
-| 2.   | Konak tarafında hiçbir veri geçirilmez.                                                                                                     | İşlemin başlatılması ve 8000 serisinde en son yedeklemenin ortaya çıkması arasında kesinti olması gerekir (Geçiş Aracı kullanılarak tahmin edilebilir). |
-| 3.   | Bu işlem, 8000 serisi cihazlarda tüm ilkeleri, bant genişliği şablonlarını, şifrelemeyi ve diğer ayarları korur.                      | Kullanıcı erişimi, yalnızca kullanıcılar tarafından erişilen verileri geri getirecek ve tüm veri kümesini yeniden sarmamayacak.                                                  |
-| 4.   | Bu işlem, Azure 'daki daha eski yedeklemelerin, üretimi etkilemeden zaman uyumsuz olarak dönüştürülmesi için ek süre gerektirir | Geçiş, yalnızca bir bulut yapılandırma düzeyinde yapılabilir.  Bir bulut yapılandırmasındaki tek tek birimler ayrı olarak geçirilemez                       |
+| Avantajlar                                                                                                                                     |Dezavantajlar                                                                                                                                                              |
+|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Geçiş işlemi, 5000/7000 serisinde gerçekleştirilen yedeklemelerin geçmişini korur.                                               | Kullanıcılar verilere erişmeyi denediğinde, bu geçiş verileri Azure 'dan indirerek veri indirme maliyetlerini de indirir.                                     |
+| Konak tarafında hiçbir veri geçirilmez.                                                                                                     | İşlemin başlatılması ve 8000 serisinde en son yedeklemenin ortaya çıkması arasında kesinti olması gerekir (Geçiş Aracı kullanılarak tahmin edilebilir). |
+| Bu işlem, 8000 serisi cihazlarda tüm ilkeleri, bant genişliği şablonlarını, şifrelemeyi ve diğer ayarları korur.                      | Kullanıcı erişimi, yalnızca kullanıcılar tarafından erişilen verileri geri getirecek ve tüm veri kümesini yeniden sarmamayacak.                                                  |
+| Bu işlem, Azure 'daki daha eski yedeklemelerin, üretimi etkilemeden zaman uyumsuz olarak dönüştürülmesi için ek süre gerektirir | Geçiş, yalnızca bir bulut yapılandırma düzeyinde yapılabilir.  Bir bulut yapılandırmasındaki tek tek birimler ayrı olarak geçirilemez                       |
 
 Ana bilgisayar tarafı geçişi, 8000 serisinin bağımsız olarak ayarlanmasını ve verilerin 5000/7000 Serisi cihazdan 8000 serisi cihazına kopyalanmasını sağlar. Bu, verileri bir depolama cihazından diğerine geçirmeye eşdeğerdir. Diskpatron, Robocopy gibi çeşitli araçlar, verileri kopyalamak için kullanılır.
 
-|      | Artıları                                                                                                                      |Simgeler                                                                                                                                                                                                      |
-|------|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Geçiş, birim temelinde tek başına approached olabilir.                                               | Önceki yedeklemeler (5000/7000 serisinde alınan), 8000 serisi cihazda kullanılamayacak.                                                                                                       |
-| 2.   | Azure 'daki bir depolama hesabında verilerin birleştirilmesi için izin verir.                                                       | 8000 serisi üzerinde buluta ilk yedekleme, 8000 serisi üzerindeki tüm verilerin Azure 'a yedeklenmesi gerektiğinden daha uzun sürer.                                                                     |
-| 3.   | Başarılı bir geçiş sonrasında tüm veriler gereç üzerinde yereldir. Verilere erişirken gecikme süresi yok. | Azure depolama tüketimi, veriler 5000/7000 cihazdan silinene kadar artar.                                                                                                        |
-| 4.   |                                                                                                                           | 7000/5000 serisi cihazda büyük miktarda veri varsa, geçiş sırasında bu verilerin Azure 'dan indirilmesi gerekir ve Azure 'dan veri yükleme ile ilgili maliyet ve gecikme süreleri uygulanır |
+| Avantajlar                                                                                                                      |Dezavantajlar                                                                                                                                                                                                      |
+|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Geçiş, birim temelinde tek başına approached olabilir.                                               | Önceki yedeklemeler (5000/7000 serisinde alınan), 8000 serisi cihazda kullanılamayacak.                                                                                                       |
+| Azure 'daki bir depolama hesabında verilerin birleştirilmesi için izin verir.                                                       | 8000 serisi üzerinde buluta ilk yedekleme, 8000 serisi üzerindeki tüm verilerin Azure 'a yedeklenmesi gerektiğinden daha uzun sürer.                                                                     |
+| Başarılı bir geçiş sonrasında tüm veriler gereç üzerinde yereldir. Verilere erişirken gecikme süresi yok. | Azure depolama tüketimi, veriler 5000/7000 cihazdan silinene kadar artar.                                                                                                        |
+|                                                                                                                           | 7000/5000 serisi cihazda büyük miktarda veri varsa, geçiş sırasında bu verilerin Azure 'dan indirilmesi gerekir ve Azure 'dan veri yükleme ile ilgili maliyet ve gecikme süreleri uygulanır |
 
 Bu makale yalnızca 5000/7000 ' den 8000 ' e kadar seri cihaza geçiş özelliğine odaklanır. Konak tarafı geçişi hakkında daha fazla bilgi için [diğer depolama cihazlarından geçiş](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)bölümüne gidin.
 

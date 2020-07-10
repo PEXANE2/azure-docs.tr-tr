@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830052"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207789"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple uyarılarını görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -199,8 +199,8 @@ StorSimple üretim cihazınızda bulut bağlantısı başarısız olursa cihazı
 
 ### <a name="performance-alerts"></a>Performans uyarıları
 
-| Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler | |
-|:--- |:--- |:--- | --- |
+| Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
+|:--- |:--- |:--- |
 | Cihaz yükü <*eşiği*> aştı. |Beklenen yanıt süreleriyle daha yavaş. |Cihazınız ağır bir giriş/çıkış yükü altında kullanım bildiriyor. Bu, cihazınızın çalışmasına ve aynı zamanda çalışmamasına neden olabilir. Cihaza eklediğiniz iş yüklerini gözden geçirin ve başka bir cihaza taşınabilecek veya artık gerekli olmayan bir cihaz olup olmadığını saptayın.|
 | StorSimple Hizmetleri başlatılamadı. |Veri yolu hatası |Sorun devam ederse Microsoft Desteği başvurun. |
 

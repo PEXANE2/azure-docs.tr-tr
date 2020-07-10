@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188935"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205714"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler Yapılandır
 
@@ -32,7 +32,7 @@ Bu, şöyle görünen bir sayfa açar:
 
 **Application Insights Profiler Yapılandır** sayfası şu özelliklere sahiptir:
 
-| | |
+| Özellik | Açıklama |
 |-|-|
 Şimdi profil | Bu Application Insights örneğiyle bağlantılı tüm uygulamalar için profil oluşturma oturumlarını başlatır.
 Tetikleyiciler | Profil oluşturucunun çalışmasına neden olan Tetikleyicileri yapılandırmanızı sağlar. 
@@ -48,7 +48,7 @@ Bir kullanıcının profil oluşturucu oturumunu el ile tetiklemesi için, Appli
 
 Menü çubuğundaki Tetikleyiciler düğmesine tıkladığınızda tetikleyici ayarları kutusu açılır. CPU veya bellek kullanımı yüzdesi ayarladığınız düzeyi ziyaret edildiğinde profil oluşturmayı başlatacak şekilde tetikleyebilirsiniz.
 
-| | |
+| Ayar | Açıklama |
 |-|-|
 Açık/kapalı düğmesi | Açık: Profiler, bu tetikleyici tarafından başlatılabilir; Kapalı: Profil Oluşturucu bu tetikleyici tarafından başlatılmayacak.
 Bellek eşiği | Bu bellek yüzdesi kullanımda olduğunda, profil oluşturucu başlatılır.
@@ -58,12 +58,12 @@ Coolaşağı | Profil oluşturucunun, bellek veya CPU kullanımını, tetiklendi
 ## <a name="recent-profiling-sessions"></a>Son profil oluşturma oturumları
 Sayfanın bu bölümü, son profil oluşturma oturumları hakkında bilgi gösterir. Profil oluşturma oturumu, profil oluşturucu aracısının uygulamanızı barındıran makinelerden birinde bir profil aldığı zaman dilimini temsil eder. Satırlardan birine tıklayarak profilleri bir oturumdan açabilirsiniz. Her oturum için şunu göstereceğiz:
 
-| | |
+| Ayar | Açıklama |
 |-|-|
 Tetikleyen | Oturumun nasıl başlatıldığı, bir tetikleyici, şimdi profil veya varsayılan örnekleme. 
 Uygulama Adı | Profili oluşturulan uygulamanın adı.
 Makine örneği | Profil Oluşturucu aracısının çalıştırıldığı makinenin adı.
-Zaman damgası | Profilin yakalandığı zaman.
+Timestamp | Profilin yakalandığı zaman.
 Tracee | Bireysel isteklere eklenmiş izleme sayısı.
 CPU % | Profil Oluşturucu çalışırken kullanılmakta olan CPU yüzdesi.
 Bellek | Profil Oluşturucu çalışırken kullanılmakta olan bellek yüzdesi.

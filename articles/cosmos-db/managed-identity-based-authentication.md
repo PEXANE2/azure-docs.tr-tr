@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970969"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206104"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 
@@ -53,6 +53,8 @@ Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliği
 
 Bu senaryoda, işlev uygulaması Aquarium 'un sıcaklığını okur ve sonra bu verileri Azure Cosmos DB bir kapsayıcıya geri yazar. İşlev uygulaması verileri yazması gerektiğinden, **DocumentDB hesabı katılımcısı** rolünü atamanız gerekir. 
 
+### <a name="assign-the-role-using-azure-portal"></a>Azure portal kullanarak rol atama
+
 1. Azure portal oturum açın ve Azure Cosmos DB hesabınıza gidin. **Erişim denetimi (IAM)** bölmesini ve ardından **rol atamaları** sekmesini açın:
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Erişim denetim bölmesini ve rol atamaları sekmesini gösteren ekran görüntüsü.":::
@@ -70,6 +72,18 @@ Bu senaryoda, işlev uygulaması Aquarium 'un sıcaklığını okur ve sonra bu 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Örnek ile doldurulmuş rol atama Ekle bölmesini gösteren ekran görüntüsü.":::
 
 1. İşlev uygulamanızı seçtikten sonra **Kaydet**' i seçin.
+
+### <a name="assign-the-role-using-azure-cli"></a>Azure CLı kullanarak rol atama
+
+Azure CLı kullanarak rolü atamak için aşağıdaki komutları kullanın:
+
+```azurecli-interactive
+$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+
+$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Azure Cosmos DB anahtarlarına programlı olarak erişin
 

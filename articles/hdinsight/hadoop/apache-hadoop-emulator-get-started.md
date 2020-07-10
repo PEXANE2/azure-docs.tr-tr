@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e918740c884f377048febfe2177e2fe956b1d552
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085064"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207467"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Sanal makinede öykünücü olan Apache Hadoop korumalı alan ile çalışmaya başlama
 
 Hadoop ekosistemi hakkında bilgi edinmek için bir sanal makinede Hortonçalışmalardan Apache Hadoop korumalı alanı yüklemeyi öğrenin. Korumalı alan, Hadoop, Hadoop Dağıtılmış Dosya Sistemi (bir) ve iş gönderimi hakkında bilgi edinmek için yerel bir geliştirme ortamı sağlar. Hadoop 'u tanıdıktan sonra HDInsight kümesi oluşturarak Azure 'da Hadoop kullanmaya başlayabilirsiniz. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Oracle VirtualBox](https://www.virtualbox.org/). [Buradan](https://www.virtualbox.org/wiki/Downloads)indirin ve yükleyin.
 
@@ -57,7 +57,9 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**alt
 
 2. Oturum açtıktan sonra aşağıdaki komutu girin:
 
-        ambari-admin-password-reset
+    ```bash
+    ambari-admin-password-reset
+    ```
 
     İstendiğinde, ambarı yönetici hesabı için bir parola sağlayın. Bu, ambarı Web Kullanıcı arabirimine eriştiğinizde kullanılır.
 
@@ -65,13 +67,21 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**alt
 
 1. Bir SSH bağlantısından korumalı alana, Hive kabuğu 'nu başlatmak için aşağıdaki komutu kullanın:
 
-        hive
+    ```bash
+    hive
+    ```
+
 2. Kabuk başladıktan sonra, korumalı alan ile birlikte sunulan tabloları görüntülemek için aşağıdakileri kullanın:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
+
 3. Tablodan 10 satır almak için aşağıdakileri kullanın `sample_07` :
 
-        select * from sample_07 limit 10;
+    ```hiveql
+    select * from sample_07 limit 10;
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

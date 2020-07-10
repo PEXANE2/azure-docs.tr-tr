@@ -4,26 +4,29 @@ description: Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: fa473591355ef9e1ee582dd9c9b820dfa2f93f36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269103"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207288"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın (Önizleme)
 
 Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete özel olarak ve güvenle bağlayan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak Otomasyon hizmetini sanal ağınıza etkin bir şekilde getiriyor. VNet ve Otomasyon hesabı arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
 
-Örneğin, giden internet erişimini devre dışı bıraktığınız bir sanal ağınız var. Ancak, Otomasyon hesabınıza özel olarak erişmek ve karma runbook çalışanları üzerinde Web kancaları, durum yapılandırması ve Runbook işleri gibi Otomasyon özelliklerini kullanmak istersiniz. Üstelik, kullanıcıların yalnızca VNET aracılığıyla Otomasyon hesabına erişimi olmasını istiyorsunuz. Bu, Özel uç noktalar dağıtarak elde edilebilir.
+Örneğin, giden internet erişimini devre dışı bıraktığınız bir sanal ağınız var. Ancak, Otomasyon hesabınıza özel olarak erişmek ve karma runbook çalışanları üzerinde Web kancaları, durum yapılandırması ve Runbook işleri gibi Otomasyon özelliklerini kullanmak istersiniz. Üstelik, kullanıcıların yalnızca VNET aracılığıyla Otomasyon hesabına erişimi olmasını istiyorsunuz.  Özel uç nokta dağıtımı bu hedeflere erişir.
 
-Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla özel bir uç noktanın nasıl ayarlanacağı ele alınmaktadır.
+Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla (Önizleme) özel bir uç noktanın nasıl ayarlanacağı ele alınmaktadır.
 
 ![Azure Otomasyonu için özel bağlantıya kavramsal genel bakış](./media/private-link-security/private-endpoints-automation.png)
 
-## <a name="advantages"></a>Yararları
+>[!NOTE]
+> Azure Otomasyonu ile özel bağlantı desteği (Önizleme) yalnızca Azure ticari ve Azure ABD kamu bulutlarında kullanılabilir.
+
+## <a name="advantages"></a>Avantajlar
 
 Özel bağlantıyla birlikte şunları yapabilirsiniz:
 
@@ -46,25 +49,27 @@ Azure Otomasyonu özel bağlantısı, bir veya daha fazla özel uç noktayı (ve
 
 Otomasyon için özel uç noktalar oluşturduktan sonra, siz veya bir makine doğrudan iletişim kurabildiğiniz, genel kullanıma açık Otomasyon URL 'lerinin her biri, VNet 'iniz içindeki bir özel uç noktaya eşlenir.
 
+Önizleme sürümünün bir parçası olarak, bir Otomasyon hesabı özel uç nokta kullanılarak güvenliği sağlanmış Azure kaynaklarına erişemez. Örneğin, Azure Key Vault, Azure SQL, Azure depolama hesabı vb.
+
 ### <a name="webhook-scenario"></a>Web kancası senaryosu
 
-Web kancası URL 'sinde bir GÖNDERI yaparak runbook 'ları başlatabilirsiniz. Örneğin, URL şöyle görünür:`https://<automationAccountId>.webhooks. <region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+Web kancası URL 'sinde bir GÖNDERI yaparak runbook 'ları başlatabilirsiniz. Örneğin, URL şöyle görünür:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Durum Yapılandırması (Agentsvc) senaryosu
 
 Durum Yapılandırması size herhangi bir bulutta veya şirket içi veri merkezinde bulunan düğümler için PowerShell Istenen durum yapılandırması (DSC) yapılandırmalarını yazmanıza, yönetmenize ve derlemenize olanak tanıyan Azure yapılandırma yönetimi hizmeti sağlar.
 
-Makinedeki aracı DSC hizmetine kaydolur ve sonra DSC yapılandırması çekmek için hizmet uç noktasını kullanır. Aracı hizmeti uç noktası şuna benzer: `https://<automationAccountId>.agentsvc.<region>.azure-automation.net` .
+Makinedeki aracı DSC hizmetine kaydolur ve sonra DSC yapılandırması çekmek için hizmet uç noktasını kullanır. Aracı hizmeti uç noktası şöyle görünür: `https://<automationAccountId>.agentsvc.<region>.azure-automation.net` .
 
 Ortak & özel uç nokta URL 'SI aynı olur, ancak özel bağlantı etkinleştirildiğinde özel bir IP adresine eşlenir.
 
 ## <a name="planning-based-on-your-network"></a>Ağınızı temel alan planlama
 
-Otomasyon hesabı kaynağını ayarlamadan önce ağ yalıtımı gereksinimlerinizi göz önünde bulundurun. Sanal ağlarınızın genel İnternet 'e erişimini ve otomasyon hesabınıza yönelik erişim kısıtlamalarını (Otomasyon hesabınızla tümleşikse Azure Izleyici günlüklerine özel bir bağlantı grubu kapsamı ayarlama dahil) değerlendirin.
+Otomasyon hesabı kaynağını ayarlamadan önce ağ yalıtımı gereksinimlerinizi göz önünde bulundurun. Sanal ağlarınızın genel İnternet 'e erişimini ve otomasyon hesabınıza yönelik erişim kısıtlamalarını (Otomasyon hesabınızla tümleşikse Azure Izleyici günlüklerine özel bir bağlantı grubu kapsamı ayarlama dahil) değerlendirin. Ayrıca, desteklenen özelliklerin sorun olmadan çalışmasını sağlamak için planınızın bir parçası olarak Automation hizmeti [DNS kayıtlarını](./automation-region-dns-records.md) gözden geçirin.
 
 ### <a name="connect-to-a-private-endpoint"></a>Özel bir uç noktaya Bağlan
 
-Ağımızı bağlamak için özel bir uç nokta oluşturun. Bu görevi [Azure Portal özel bağlantı merkezinde](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)yapabilirsiniz. PublicNetworkAccess ve Private bağlantısına yaptığınız değişiklikler uygulandıktan sonra, bu değişikliklerin etkili olması 35 dakika sürebilir.
+Ağımızı bağlamak için özel bir uç nokta oluşturun. Bunu, [Azure Portal özel bağlantı merkezinde](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)oluşturabilirsiniz. PublicNetworkAccess ve Private bağlantısına yaptığınız değişiklikler uygulandıktan sonra, bu değişikliklerin etkili olması 35 dakika sürebilir.
 
 Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksınız.
 
@@ -72,7 +77,7 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
 
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 
-3. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
+3. **Sanal makine oluşturma-temel bilgiler**bölümünde aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -80,13 +85,13 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Name | *Privateendpoint*girin. |
+    | Ad | *Privateendpoint*girin. |
     | Bölge | **Yourregion**' ı seçin. |
     |||
 
 4. **Sonraki: kaynak**' ı seçin.
 
-5. **Özel uç nokta oluştur-kaynak**bölümünde bu bilgileri girin veya seçin:
+5. **Özel uç nokta oluştur-kaynak**bölümünde aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -99,7 +104,7 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
 
 6. Ileri 'yi seçin **: yapılandırma**.
 
-7. **Özel uç nokta oluşturma-yapılandırma**' da bu bilgileri girin veya seçin:
+7. **Özel uç nokta oluşturma-yapılandırma**' da, aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -107,11 +112,11 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
     | Alt ağ | *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTIRMESI**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. |
+    |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
     |Özel DNS bölgesi |Seç *(yeni) Privatelink. Azure-Automation.net* |
     |||
 
-8. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+8. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
 
 9. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
@@ -141,7 +146,7 @@ $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 
 ## <a name="dns-configuration"></a>DNS yapılandırması
 
-Bağlantı dizesinin parçası olarak bir FQDN kullanarak özel bir bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Azure hizmetlerinde ortak bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırması zaten olabilir. Özel uç noktanız kullanılarak bağlanmak için bunun geçersiz kılınması gerekir.
+Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak bir özel bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Azure hizmetlerinde ortak bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırması zaten olabilir. DNS yapılandırmanızın özel uç noktanız kullanılarak bağlanacak şekilde incelenmesi ve güncellenmesi gerekir.
 
 Özel uç nokta ile ilişkili ağ arabirimi, DNS 'nizi yapılandırmak için gerekli olan ve belirli bir özel bağlantı kaynağı için ayrılan FQDN ve özel IP adresleri dahil olmak üzere tam bilgi kümesini içerir.
 

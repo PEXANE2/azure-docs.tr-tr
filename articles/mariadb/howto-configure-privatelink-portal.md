@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: db2fa377cc10759fc57c3e4a27bd7815a5724bd7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114746"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206450"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -37,7 +37,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *MyVirtualNetwork*girin. |
+    | Ad | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
@@ -69,7 +69,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
+    | Genel gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
     |||
@@ -86,12 +86,12 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
     | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
-    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     |||
 
 
-1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
 
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
@@ -118,7 +118,7 @@ Bu bölümde, Azure 'da bir MariaDB sunucusu için Azure veritabanı oluşturaca
     |||
 
 7. **Tamam**’ı seçin. 
-8. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+8. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur**' u seçin. 
 10. Doğrulama başarılı iletisini gördüğünüzde oluştur ' u seçin. 
 
@@ -143,7 +143,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **Örnek Ayrıntıları** |  |
-    | Name | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
+    | Ad | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |Bölge|**Batı Avrupa**'yı seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
@@ -166,14 +166,14 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
     | Alt ağ |  *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTIRMESI**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. |
+    |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
     |Özel DNS bölgesi |Seçin *(yeni) Privatelink. MariaDB. Database. Azure. com* |
     |||
 
     > [!Note] 
     > Hizmetiniz için önceden tanımlanmış özel DNS bölgesini kullanın veya tercih ettiğiniz DNS bölge adını sağlayın. Ayrıntılar için [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md) ' na bakın.
 
-1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
     ![Özel bağlantı oluşturuldu](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
@@ -190,7 +190,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. *İndirilen. rdp* dosyasını açın.
 
@@ -209,7 +209,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>MariaDB sunucusuna VM 'den özel olarak erişin
 
-1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
+1. *Myvm*uzak masaüstünde PowerShell ' i açın.
 
 2. Girin  `nslookup mydemomserver.privatelink.mariadb.database.azure.com` . 
 

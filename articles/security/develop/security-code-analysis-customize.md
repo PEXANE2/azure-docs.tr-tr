@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362100"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206851"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Derleme görevlerini yapılandırma ve özelleştirme
 
@@ -64,9 +64,11 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
     - Dizin belirtimlerinin her zaman * ile bitmesi gerekir \\ .
     - Örnekler:
 
+```binskim-targets
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
+```
 
 - **Tür** listesinde **komut satırı** ' nı seçerseniz binskim.exe çalıştırmanız gerekir:
      - binskim.exe ilk bağımsız değişkenlerin, ardından bir veya daha fazla yol belirtimlerinden sonra **analiz** olduğundan emin olun. Her yol, kaynak dizine göre tam yol veya yol olabilir.
@@ -74,11 +76,13 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
      - **/O** veya **/output** seçeneğini atlayabilirsiniz. Çıkış değeri sizin için eklenir veya değiştirilmez.
      - Standart komut satırı yapılandırması aşağıdaki gibi gösterilmiştir.
 
+```binskim-line-args
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
+```
 
-          > [!NOTE]
-          > \\Hedef için dizinler belirtirseniz sonda * önemlidir.
+> [!NOTE]
+> \\Hedef için dizinler belirtirseniz sonda * önemlidir.
 
 BinSkim komut satırı bağımsız değişkenleri, KIMLIĞE göre kurallar veya çıkış kodları hakkında daha fazla bilgi için bkz. [Binskim Kullanıcı Kılavuzu](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 

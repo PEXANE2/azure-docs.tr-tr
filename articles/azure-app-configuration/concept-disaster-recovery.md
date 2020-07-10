@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523773"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207200"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Dayanıklılık ve olağanüstü durum kurtarma
 
@@ -63,7 +64,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ## <a name="synchronization-between-configuration-stores"></a>Yapılandırma depoları arasında eşitleme
 
-Coğrafi olarak yedekli yapılandırma mağazalarınızın tümünün aynı veri kümesine sahip olması önemlidir. Birincil depodan verileri isteğe bağlı olarak kopyalamak için uygulama yapılandırmasındaki **dışarı aktarma** işlevini kullanabilirsiniz. Bu işlev hem Azure portal hem de CLı aracılığıyla kullanılabilir.
+Coğrafi olarak yedekli yapılandırma mağazalarınızın tümünün aynı veri kümesine sahip olması önemlidir. Bunu başarmanın iki yolu vardır:
+
+### <a name="backup-manually-using-the-export-function"></a>Export işlevini kullanarak el ile yedekleme
+
+Birincil depodan verileri isteğe bağlı olarak kopyalamak için uygulama yapılandırmasındaki **dışarı aktarma** işlevini kullanabilirsiniz. Bu işlev hem Azure portal hem de CLı aracılığıyla kullanılabilir.
 
 Azure portal, aşağıdaki adımları izleyerek başka bir yapılandırma deposuna bir değişikliği gönderebilirsiniz.
 
@@ -71,15 +76,19 @@ Azure portal, aşağıdaki adımları izleyerek başka bir yapılandırma deposu
 
 1. Açılan yeni dikey pencerede abonelik, kaynak grubu ve ikincil deponuzu kaynak adını belirtip **Uygula**' yı seçin.
 
-1. İkincil deponuza dışarı aktarmak istediğiniz yapılandırma verilerini seçebilmeniz için Kullanıcı arabirimi güncellenir. Varsayılan saat değerini olduğu gibi bırakabilir ve hem **etiketinden** hem de **etiketini** aynı değere ayarlayabilirsiniz. **Uygula**’yı seçin.
+1. İkincil deponuza dışarı aktarmak istediğiniz yapılandırma verilerini seçebilmeniz için Kullanıcı arabirimi güncellenir. Varsayılan saat değerini olduğu gibi bırakabilir ve hem **etiketi** hem de **etiketi** aynı değere ayarlayabilirsiniz. **Uygula**’yı seçin. Bunu birincil Deponuzdaki tüm etiketler için tekrarlayın.
 
-1. Tüm yapılandırma değişiklikleri için önceki adımları tekrarlayın.
+1. Yapılandırmanız her değiştiğinde önceki adımları yineleyin.
 
-Bu dışarı aktarma işlemini otomatik hale getirmek için Azure CLı 'yi kullanın. Aşağıdaki komut, birincil depodan ikinciye tek bir yapılandırma değişikliğinin nasıl dışarı aktarılacağını göstermektedir:
+Dışarı aktarma işlemi de Azure CLı kullanılarak elde edilebilir. Aşağıdaki komut, tüm yapılandırmaların birincil depodan ikincil öğesine nasıl verileceğini gösterir:
 
 ```azurecli
-    az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+    az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
+
+### <a name="backup-automatically-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak otomatik olarak yedekleme
+
+Yedekleme işlemi, Azure Işlevleri kullanılarak otomatikleştirilebilir. Uygulama yapılandırmasındaki Azure Event Grid tümleştirmeyle yararlanır. Ayarladıktan sonra, uygulama yapılandırması bir yapılandırma deposundaki anahtar değerlerinde yapılan değişiklikler için Event Grid olayları yayımlar. Bu nedenle, bir Azure Işlevleri uygulaması bu olayları dinleyebilir ve verileri buna göre yedekleyebilir. Ayrıntılar için, [uygulama yapılandırma depolarını otomatik olarak yedekleme](./howto-backup-config-store.md)hakkında öğreticiye bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

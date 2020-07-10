@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113060"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206172"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama OData koleksiyon filtrelerini anlama
 
@@ -49,13 +50,17 @@ Tüm filtre özelliklerinin tüm koleksiyon türleri için desteklenmemesinin ü
 
 Karmaşık nesneler koleksiyonuna birden çok filtre ölçütü uygulanırken, *koleksiyonda her bir nesne*için uygulandıklarından, ölçütler **bağıntılı** bir şekilde yapılır. Örneğin, aşağıdaki filtre 100 ' dan düşük bir fiyata sahip en az bir Deluxe Oda olan oteller döndürür:
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 Filtreleme *bağıntısız*ise yukarıdaki filtre, bir odanın Deluxe olduğu ve farklı bir odanın 100 ' den düşük bir taban oranına sahip olan oteller döndürebilir. Yani, lambda ifadesinin her iki yan tümcesi de aynı Aralık değişkenine uygulandığından bu anlamlı değildir `room` . Bu, bu tür filtrelerin bağıntılı olmasının nedenleridir.
 
 Ancak, tam metin arama için belirli bir Aralık değişkenine başvurmanız mümkün değildir. Bu şekilde, [tam bir Lucene sorgusu](query-lucene-syntax.md) vermek için kullanılabilir arama kullanıyorsanız:
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 oteller bir odanın bulunduğu yerde ve farklı bir odada açıklama içinde "şehir görünümü" bahsetmesini sağlayabilirsiniz. Örneğin, ile aşağıdaki belge `Id` `1` sorguyla eşleşir:
 
@@ -148,19 +153,27 @@ Bu veri yapısı, bir soruyu harika bir hızla yanıtlamak üzere tasarlandı: h
 
 Daha sonra eşitlik ile aynı Aralık değişkeninde birden çok eşitlik denetimini nasıl birleştirebileceğinizi inceleyeceğiz `or` . Sonuç olarak [, nicelik belirteçleri ve dağıtılabilir özelliği](https://en.wikipedia.org/wiki/Existential_quantification#Negation)için teşekkürler. Bu ifade:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 eşittir:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 ve iki alt ifadenin her biri, `any` ters dizin kullanılarak etkili bir şekilde çalıştırılabilir. Ayrıca, [nicelik sayısının Olumsuzlaştırma yasaları](https://en.wikipedia.org/wiki/Existential_quantification#Negation)sayesinde bu ifade:
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 eşittir:
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 `all`ve ile birlikte kullanılması mümkün değildir `ne` `and` .
 

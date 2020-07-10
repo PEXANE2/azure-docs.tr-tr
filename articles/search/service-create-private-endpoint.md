@@ -8,11 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466179"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206901"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
 
@@ -43,9 +44,9 @@ Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılac
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Abonelik | Aboneliğinizi seçme|
+    | Abonelik | Aboneliğinizi seçin|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*yazın ve **Tamam** ' ı seçin. |
-    | Name | *MyVirtualNetwork* girin |
+    | Ad | *MyVirtualNetwork* girin |
     | Bölge | İstediğiniz bölgeyi seçin |
     |||
 
@@ -85,11 +86,11 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | Konum | **Batı ABD**seçin.|
-    | Name |  *Myprivateendpoint*girin.  |
+    | Ad | *Myprivateendpoint*girin.  |
     | Hedef alt kaynak | Varsayılan **SearchService**' i bırakın. |
     | **IŞLEMLERI** |  |
-    | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
-    | Alt ağ |  *Mysubnet*öğesini seçin. |
+    | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
+    | Alt ağ | *Mysubnet*öğesini seçin. |
     | **ÖZEL DNS TÜMLEŞTIRMESI** |  |
     | Özel DNS bölgesiyle tümleştirin  | Varsayılan **Evet**' i bırakın. |
     | Özel DNS bölgesi  | Varsayılan * * (yeni) privatelink.search.windows.net * * ' i bırakın. |
@@ -97,7 +98,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
 
 1. **Tamam**’ı seçin. 
 
-1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
@@ -129,7 +130,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Ortak gelen bağlantı noktaları | Varsayılan olarak **Seçili bağlantı noktalarına Izin ver**' i bırakın. |
+    | Genel gelen bağlantı noktaları | Varsayılan olarak **Seçili bağlantı noktalarına Izin ver**' i bırakın. |
     | Gelen bağlantı noktalarını seçin | Varsayılan RDP 'yi **(3389)** bırakın. |
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
@@ -147,11 +148,11 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
     | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
-    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     ||
 
-1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
 
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
@@ -164,7 +165,7 @@ VM *myvm* ' yi indirip şu şekilde bağlayın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. İndirilen. rdp * dosyasını açın.
 
@@ -188,7 +189,7 @@ Bu bölümde, arama hizmetine özel ağ erişimini doğrulayacaksınız ve özel
 
 Arama hizmeti uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi ayarlarını görüntüleyebilir ve yönetebileceksiniz, ancak dizin, Dizin Oluşturucu ve beceri tanımları gibi hizmet içindeki çeşitli diğer bileşenlere güvenlik nedenleriyle, Portal erişimi, güvenlik nedenleriyle kısıtlıdır.
 
-1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
+1. *Myvm*uzak masaüstünde PowerShell ' i açın.
 
 1. ' Nslookup [arama hizmeti adı]. Search. Windows. net ' yazın
 
@@ -206,7 +207,7 @@ Arama hizmeti uç noktası özel olduğunda, bazı Portal özellikleri devre dı
 
 1. VM 'den hızlı başlangıç işlemini tamamlamak, hizmetin tam olarak çalışır durumda olduğunu onaylamadır.
 
-1.  *Myvm*ile uzak masaüstü bağlantısını kapatın. 
+1. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
 1. Hizmetinizin genel bir uç noktada erişilebilir olmadığından emin olmak için, yerel iş istasyonunuzda Postman ' ı açın ve hızlı başlangıçta ilk birkaç görevi deneyin. Uzak sunucunun mevcut olmadığı bir hata alırsanız, arama hizmetiniz için bir özel uç nokta başarıyla yapılandırdınız.
 

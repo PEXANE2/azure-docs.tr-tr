@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 63415b221b3980f3b6e3abc7d197cf9f61844f3f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6c71b88f43570a65edb5d0bea24f623c861f8111
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077499"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206286"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Yeni bir Azure API Management hizmeti örneği oluşturma
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
 
 ## <a name="create-a-new-service"></a>Yeni hizmet oluşturma
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin. Azure **giriş** sayfasında **kaynak oluştur** ' u de seçebilirsiniz. 
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Azure **giriş** sayfasında **kaynak oluştur** ' u de seçebilirsiniz. 
    
    ![Kaynak oluştur ' u seçin](./media/get-started-create-service-instance/00-CreateResource-01.png)
    
@@ -47,17 +47,17 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
    
    ![yeni örnek](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
    
-   | Ayar                 | Önerilen değer                               | Description                                                                                                                                                                                                                                                                                                                         |
+   | Ayar                 | Önerilen değer                               | Açıklama                                                                                                                                                                                                                                                                                                                         |
 |-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Adı**                | API Management hizmetiniz için benzersiz bir ad | Ad daha sonra değiştirilemez. Hizmet adı, *{name}.azure-api.net* biçiminde varsayılan bir etki alanı adı oluşturmak için kullanılır. Özel bir etki alanı adı kullanmak istiyorsanız bkz. [Özel etki alanı yapılandırma](configure-custom-domain.md). <br/> Hizmet adı, hizmete ve ilgili Azure kaynağına başvurmak için kullanılır. |
+| **Ad**                | API Management hizmetiniz için benzersiz bir ad | Ad daha sonra değiştirilemez. Hizmet adı, *{name}.azure-api.net* biçiminde varsayılan bir etki alanı adı oluşturmak için kullanılır. Özel bir etki alanı adı kullanmak istiyorsanız bkz. [Özel etki alanı yapılandırma](configure-custom-domain.md). <br/> Hizmet adı, hizmete ve ilgili Azure kaynağına başvurmak için kullanılır. |
 | **Abonelik**        | Aboneliğiniz                             | Bu yeni hizmet örneğini barındıran abonelik oluşturulur. Erişiminizin bulunduğu farklı Azure abonelikleri arasından abonelik seçebilirsiniz.                                                                                                                                                            |
 | **Kaynak Grubu**      | *apimResourceGroup*                           | Yeni veya var olan bir kaynak seçebilirsiniz. Kaynak grubu; yaşam döngüsünü, izinleri ve ilkeleri paylaşan kaynakların bir koleksiyonudur. [Burada](../azure-resource-manager/management/overview.md#resource-groups) daha fazla bilgi edinin.                                                                                                  |
 | **Konum**            | *Batı ABD*                                    | Yakınınızdaki coğrafi bölgeyi seçin. Açılır listede yalnızca kullanılabilir API Management hizmet bölgeleri görünür.                                                                                                                                                                                                          |
 | **Kuruluş adı**   | Kuruluşunuzun adı                 | Bu ad, geliştirici portalının başlığı ve bildirim e-postalarının göndereni gibi birkaç yerde kullanılır.                                                                                                                                                                                                             |
 | **Yönetici e-postası** | *yönetici \@ org.com*                               | **API Management**’tan tüm bildirimlerin gönderileceği e-posta adresini ayarlayın.                                                                                                                                                                                                                                              |
-| **Fiyatlandırma Katmanı**        | *Geliştirici*                                   | Hizmeti değerlendirmek için **Geliştirici** katmanını ayarlayın. Bu katman, üretim kullanımı için değildir. API Management katmanlarını ölçeklendirme hakkında daha fazla bilgi için bkz. [yükseltme ve ölçeklendirme](upgrade-and-scale.md).                                                                                                                                    |
+| **Fiyatlandırma katmanı**        | *Geliştirici*                                   | Hizmeti değerlendirmek için **Geliştirici** katmanını ayarlayın. Bu katman, üretim kullanımı için değildir. API Management katmanlarını ölçeklendirme hakkında daha fazla bilgi için bkz. [yükseltme ve ölçeklendirme](upgrade-and-scale.md).                                                                                                                                    |
 
-3. **Oluştur**’u seçin.
+3. **Oluştur**' a tıklayın.
 
     > [!TIP]
     > Bir API Management hizmetinin oluşturulması genellikle 20 ile 30 dakika arasında sürer. **Panoya Sabitle** öğesinin seçilmesi, yeni oluşturulan hizmetin bulunmasını kolaylaştırır.
@@ -86,8 +86,3 @@ Artık gerekli değilse, aşağıdaki adımları izleyerek kaynak grubunu ve tü
 
 > [!div class="nextstepaction"]
 > [İlk API’nizi içeri aktarma ve yayımlama](import-and-publish.md)
-
-Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
-
-> [!div class="nextstepaction"]
-> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

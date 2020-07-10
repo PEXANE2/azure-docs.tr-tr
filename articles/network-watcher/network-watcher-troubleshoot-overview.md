@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738660"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207366"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
 
@@ -73,7 +73,7 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
 | ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
-| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Evet|
+| Kimlik doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Evet|
 | Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
 | Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
 | WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
@@ -82,17 +82,17 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 
 Aşağıdaki tabloda ağ Izleyicisi sorunlarını gidermek için hangi ağ geçitlerinin ve bağlantıların desteklendiği listelenmektedir:
 
-|  |  |
+| Ağ geçidi veya bağlantı | Desteklenir  |
 |---------|---------|
 |**Ağ geçidi türleri**   |         |
-|VPN      | Destekleniyor        |
+|VPN      | Desteklenir        |
 |ExpressRoute | Desteklenmiyor |
 |**VPN türleri** | |
-|Rota tabanlı | Destekleniyor|
+|Rota tabanlı | Desteklenir|
 |İlke tabanlı | Desteklenmiyor|
 |**Bağlantı türleri**||
-|IPSec| Destekleniyor|
-|VNet2Vnet| Destekleniyor|
+|IPSec| Desteklenir|
+|VNet2Vnet| Desteklenir|
 |ExpressRoute| Desteklenmiyor|
 |VPNClient| Desteklenmiyor|
 

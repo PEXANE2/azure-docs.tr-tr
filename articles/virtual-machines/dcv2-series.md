@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: e5a4c9d1afcc4caa0f9ac0db8b59274006ab3097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676565"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207440"
 ---
 # <a name="dcsv2-series"></a>DCsv2 serisi
 
@@ -40,7 +41,7 @@ Standard_DC8_v2 hariç *
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
 - DCsv2 serisi VM 'Ler [2. nesil sanal makineler](./linux/generation-2.md#creating-a-generation-2-vm) ve yalnızca `Gen2` görüntüleri destekler.
-- Şu anda yalnızca UK Güney, Kanada Orta ve ABD Doğu için kullanılabilir.
+- Şu anda [burada](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)listelenen bölgelerde kullanılabilir.
 - Önceki nesil gizli Işlem VM 'Leri: [DC Serisi](sizes-previous-gen.md#preview-dc-series)
 - [Azure Portal](./linux/quick-create-portal.md) veya [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) 'ni kullanarak DCsv2 VM oluşturma
 

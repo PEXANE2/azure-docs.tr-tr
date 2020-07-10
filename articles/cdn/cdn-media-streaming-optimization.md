@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 1f8dc5ef89c70cebce1d59fc389300b30dc828f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887599"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206710"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Azure CDN ile medya akışı iyileştirmesi 
  
@@ -77,17 +77,16 @@ Genel medya teslimi veya video isteğe bağlı medya teslimi iyileştirme türle
  
 Uç noktasını oluşturduktan sonra, belirli ölçütlerle eşleşen tüm dosyalar için iyileştirme uygular. Aşağıdaki bölümde bu işlem açıklanmaktadır. 
 
-### <a name="caching"></a>Önbelleğe Alma
+### <a name="caching"></a>Önbelleğe alma
 
 **Akamai 'den Azure CDN Standard** , varlığın bir akış bildirimi veya parçası olduğunu algılarsa, genel Web tesliminden farklı önbelleğe alma sona erme süreleri kullanır. (Aşağıdaki tablodaki tam listeye bakın.) Her zaman olduğu gibi, kaynaktan gönderilen Cache-Control veya Expires üstbilgileri kabul edilir. Varlık bir medya varlığı değilse, genel Web tesliminin sona erme zamanlarını kullanarak önbelleğe alınır.
 
 Çok sayıda kullanıcı henüz mevcut olmayan bir parça istemesi durumunda, kaynak boşaltması için kısa negatif önbellek süresi faydalıdır. Örnek, paketin kaynaktan kullanılamadığı canlı bir akıştır. Daha uzun önbelleğe alma aralığı, video içeriği genellikle değiştirilmediğinden, isteklerin kaynaktan oluşturulmasına da yardımcı olur.
- 
 
-|   | Genel web teslimi | Genel medya akışı | İsteğe bağlı video medya akışı  
---- | --- | --- | ---
-Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |365 gün | 365 gün   
-Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye | 1 saniye
+| Önbelleğe alma  | Genel web teslimi | Genel medya akışı | İsteğe bağlı video medya akışı  
+|--- | --- | --- | ---
+| Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |365 gün | 365 gün   
+| Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye | 1 saniye
  
 ### <a name="deal-with-origin-failure"></a>Kaynak hatasıyla uğraşın  
 

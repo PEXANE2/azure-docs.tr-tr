@@ -3,20 +3,20 @@ title: "Hızlı başlangıç: REST API 'Leri ile amaç al-LUıS"
 titleSuffix: Azure Cognitive Services
 description: Bu REST API hızlı başlangıçta, kullanıcının konuşma metinleriyle bir amaç olduğunu öğrenmek için kullanılabilir bir genel LUO uygulaması kullanın.
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 8248d441add1af39ab9d2d08a6dba85055f254b6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: nitinme
+ms.openlocfilehash: 714d76641dd22f566b2464e3470f6a3324f4d758
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119595"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207178"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>Hızlı başlangıç: amacı sağlamak için kıvrımlı ve REST kullanın
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, bir kullanıcının konuşma metinden amaç belirleme
 
 [Başvuru belgeleri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Boş bir [Luo](https://www.luis.ai) hesabı.
 * [Visual Studio Code](https://code.visualstudio.com/)gibi bir metin düzenleyici.
