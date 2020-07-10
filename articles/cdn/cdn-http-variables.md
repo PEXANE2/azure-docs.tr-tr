@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84340683"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203568"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN Rules altyapısı için HTTP değişkenleri
 HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almak için kullanabileceğiniz yolları sağlar. Bu meta veriler, bir isteği veya yanıtı dinamik olarak değiştirmek için kullanılabilir. HTTP değişkenlerinin kullanımı aşağıdaki kural altyapısı özellikleriyle kısıtlıdır:
@@ -33,15 +34,15 @@ HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almak için kullanab
 Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAFI meta veriler (örneğin, posta kodu) belirli bir istek için kullanılamadığında boş bir değer döndürülür.
 
 
-| Name | Değişken | Açıklama | Örnek değer |
+| Ad | Değişken | Açıklama | Örnek değer |
 | ---- | -------- | ----------- | ------------ |
 | ASN (Istek sahibi) | % {geo_asnum} | İstek sahibinin numarasını belirtir. <br /><br />**Kullanım dışı:** % {virt_dst_asnum}. <br />Bu değişken,% {geo_asnum} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | AS15133 |
 | Şehir (Istek sahibi) | % {geo_city} | İsteyanın şehrini gösterir. | Los Angeles |
-| Kıta (Istek sahibi) | % {geo_continent} | İstek sahibinin kısaltmasıyla kıolarak olduğunu gösterir. <br />Geçerli değerler: <br />AF: Afrika<br />AS: Asya<br />AB: Avrupa<br />NA: Kuzey Amerika<br />OC: Okyanusya<br />SA: Güney Amerika<br /><br />**Kullanım dışı:** % {virt_dst_continent}. <br />Bu değişken,% {geo_continent} için kullanım dışı bırakıldı. <br />Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir.| YOK |
+| Kıta (Istek sahibi) | % {geo_continent} | İstek sahibinin kısaltmasıyla kıolarak olduğunu gösterir. <br />Geçerli değerler: <br />AF: Afrika<br />AS: Asya<br />AB: Avrupa<br />NA: Kuzey Amerika<br />OC: Okyanusya<br />SA: Güney Amerika<br /><br />**Kullanım dışı:** % {virt_dst_continent}. <br />Bu değişken,% {geo_continent} için kullanım dışı bırakıldı. <br />Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir.| Yok |
 | Tanımlama bilgisi değeri | % {cookie_Cookie} | Tanımlama bilgisi terimi tarafından tanımlanan tanımlama bilgisi anahtarına karşılık gelen değeri döndürür. | Örnek kullanım: <br />% {cookie__utma}<br /><br />Örnek değer:<br />111662281.2.10.1222100123 |
 | Ülke/bölge (Istek sahibi) | % {geo_country} | İstek sahibinin ülke/bölge kodu üzerinden kaynak ülkesini/bölgesini gösterir. <br />**Kullanım dışı:** % {virt_dst_country}. <br /><br />Bu değişken,% {geo_country} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | ABD |
 | Belirlenen pazar alanı (Istek sahibi) | % {geo_dma_code} |İsteyenin medya pazarını bölge koduna göre gösterir. <br /><br />Bu alan yalnızca Birleşik Devletler kaynaklı istekler için geçerlidir.| 745 |
-| HTTP Istek yöntemi | % {request_method} | HTTP istek yöntemini gösterir. | GET |
+| HTTP İsteği Yöntemi | % {request_method} | HTTP istek yöntemini gösterir. | GET |
 | HTTP durum kodu | % {Status} | Yanıt için HTTP durum kodunu gösterir. | 200 |
 | IP adresi (Istek sahibi) | % {virt_dst_addr} | İsteyenin IP adresini gösterir. | 192.168.1.1 |
 | Enlem (Istek sahibi) | % {geo_latitude} | İsteyanın Enlem olduğunu gösterir. | 34,0995 |
@@ -68,7 +69,7 @@ Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAF
 Aşağıdaki tabloda, bir HTTP değişkeni belirtmek için uygun sözdizimi açıklanmaktadır.
 
 
-| Syntax | Örnek | Açıklama |
+| Sözdizimi | Örnek | Açıklama |
 | ------ | -------- | ---------- |
 | % { &lt; Httpvariable &gt; } | % {Konak} | Belirtilen httpvariable öğesine karşılık gelen değerin tamamını almak için bu sözdizimini kullanın &lt; &gt; . |
 | % { &lt; Httpvariabledelimiter &gt; } | % {Ana bilgisayar,} | Belirtilen httpvariablesınırlayıcısına karşılık gelen değerin tamamı için büyük/küçük harf ayarlamak için bu sözdizimini kullanın &lt; &gt; . |
@@ -124,7 +125,7 @@ Aşağıdaki koşullardan herhangi birini karşıladığında, bir üst bilgiye 
 
 Aşağıdaki tabloda, varsayılan bir değerin nasıl tanımlanacağı açıklanmaktadır.
 
-| Koşul | Syntax | Örnek | Açıklama |
+| Koşul | Sözdizimi | Örnek | Açıklama |
 | --------- | ------ | --------| ----------- |
 | Aşağıdaki koşullardan herhangi birini karşıladığında bir üst bilgiyi varsayılan değere ayarlayın: <br /><br />-Eksik üst bilgi <br /><br />-Header değeri NULL olarak ayarlandı.| % {Variable: = değer} | % {http_referrer: = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik ya da NULL olarak ayarlandığında *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
 | Bir üst bilgiyi, eksik olduğunda varsayılan değere ayarlayın. | % {Variable = değer} | % {http_referrer = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik olduğunda *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
@@ -173,7 +174,7 @@ https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Model kaldırma
 Belirli bir düzenle eşleşen metin, bir değişkenin değerinin başından veya sonundan kaldırılabilir.
 
-| Syntax | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Değişken # model} | Bir değişkenin değerinin başlangıcında belirtilen model bulunduğunda metni kaldır. |
 | % {Değişken% model} | Bir değişkenin değerinin sonunda belirtilen model bulunduğunda metni kaldır. |
@@ -186,7 +187,7 @@ Bu örnek senaryoda *request_uri* değişkeni şu şekilde ayarlanır:
 
 Aşağıdaki tabloda bu sözdiziminin nasıl çalıştığı gösterilmektedir.
 
-| Örnek sözdizimi | Sonuçlar | |
+| Örnek sözdizimi | Sonuçlar | Açıklama |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/Pazar/product.html? Language = en-US | Değişken, düzeniyle başladığı için değiştirildi. |
 | % {request_uri% html} htm | /800001/myorigin/Pazar/product.html? dil = en-US | Değişken, Düzenle bitmediği için değişiklik yoktu.|
@@ -194,7 +195,7 @@ Aşağıdaki tabloda bu sözdiziminin nasıl çalıştığı gösterilmektedir.
 ### <a name="find-and-replace"></a>Bulma ve değiştirme
 Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Syntax | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Değişken/Bul/Değiştir} | Belirtilen düzenin ilk oluşumunu bul ve Değiştir. |
 | % {Değişken//Bul/Değiştir} | Belirtilen düzenin tüm oluşumlarını bul ve Değiştir. |
@@ -206,7 +207,7 @@ Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 ### <a name="find-and-rewrite"></a>Bul ve yeniden yaz
 Bul ve Değiştir 'teki bir varyasyon için, yeniden yazarken belirtilen Düzenle eşleşen metni kullanın. Bul ve yeniden yaz sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Syntax | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Variable/= bul/yeniden yaz} | Belirtilen düzenin tüm oluşumlarını bulun, kopyalayın ve yeniden yazın. |
 | % {Variable/^ bul/yeniden yaz} | Değişkenin başlangıcında gerçekleştiği sırada belirtilen kalıbı bulun, kopyalayın ve yeniden yazın. |

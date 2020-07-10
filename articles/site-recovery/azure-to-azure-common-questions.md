@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134047"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201206"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -120,7 +120,7 @@ Hayır, bu desteklenmeyen bir senaryodur. Ancak, depolama hesaplarını yanlış
 Çoğaltma İlkesi, kurtarma noktalarının bekletme geçmişine yönelik ayarları tanımlar. İlke, uygulamayla tutarlı anlık görüntülerin sıklığını da tanımlar. Varsayılan olarak, Azure Site Recovery varsayılan ayarları ile yeni bir çoğaltma ilkesi oluşturur:
 
 - Kurtarma noktalarının bekletme geçmişi için 24 saat.
-- uygulamayla tutarlı anlık görüntülerin sıklığı için 60 dakika.
+- uygulamayla tutarlı anlık görüntülerin sıklığı için 4 saat.
 
 [Çoğaltma ayarları hakkında daha fazla bilgi edinin](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 

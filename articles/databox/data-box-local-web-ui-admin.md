@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608256"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202533"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
@@ -27,6 +28,8 @@ Bu makale aşağıdaki öğreticileri içerir:
 - BOM veya manifest dosyalarını indirin
 - Cihazın kullanılabilir kapasitesini görüntüleme
 - Sağlama toplamı doğrulamasını atlama
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Destek paketi oluşturma
 
@@ -79,9 +82,9 @@ Data Box'ınızı yeniden başlatmak için aşağıdaki adımları gerçekleşti
 
 ## <a name="download-bom-or-manifest-files"></a>BOM veya manifest dosyalarını indirin
 
-Ürün reçetesi (BOM) veya bildirim dosyaları, Data Box veya Data Box Heavy kopyalanan dosyaların listesini içerir. Bu dosyalar, cihazı sevk edilecek şekilde hazırlarken oluşturulur.
+Ürün reçetesi (BOM) veya bildirim dosyaları, Data Box veya Data Box Heavy kopyalanan dosyaların listesini içerir. Bu dosyalar, cihazı sevk edilecek şekilde hazırlarken bir içeri aktarma sırası için oluşturulur.
 
-Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamladığınızdan emin olun. BOM veya manifest dosyalarını indirmek için şu adımları izleyin:
+Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamladığınızdan emin olun. İçeri aktarma siparişiniz için BOM veya manifest dosyalarını indirmek için şu adımları izleyin:
 
 1. Cihazınız için yerel Web Kullanıcı arabirimine gidin. Cihazın sevkiyat hazırlığı tamamlandığını görürsünüz. Cihaz hazırlığı tamamlandığında, cihazınızın durumu **Sevkiyat Için hazırlık**olarak görüntülenir.
 
@@ -101,7 +104,7 @@ Başlamadan önce, cihazınızın **göndermeye hazırlama** adımını tamamlad
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |Blok blobları         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |Sayfa blobları         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Dosyaları         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure Dosyalar         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Sayfa blobları         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok blobları         |REST         |
     |mydbmdrg1_MDisk-BOM.txt    |Yönetilen Disk         |SMB/NFS         |
@@ -167,6 +170,8 @@ Cihazın kullanılabilir ve kullanılan kapasitesini görüntülemek için cihaz
 
 Teslim için hazırlanırken, verileriniz için sağlama toplamı varsayılan olarak oluşturulur. Bazı ender durumlarda, veri türüne (küçük dosya boyutları) bağlı olarak performans yavaş olabilir. Bu gibi durumlarda sağlama toplamını atlayabilirsiniz.
 
+Gönderim hazırlığı sırasında sağlama toplamı hesaplaması yalnızca içeri aktarma siparişleri için yapılır ve dışa aktarma siparişleri için yapılır. 
+
 Performans ciddi şekilde etkilenmedikçe sağlama toplamını kesinlikle atlamamanızı öneririz.
 
 1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' a gidin.
@@ -176,7 +181,8 @@ Performans ciddi şekilde etkilenmedikçe sağlama toplamını kesinlikle atlama
 2. Sağlama toplamı doğrulamasını **Devre dışı bırakma**
 3. **Uygula**'ya tıklayın.
 
-## <a name="next-steps"></a>Sonraki adımlar
+> [!NOTE]
+> Sağlama toplamı hesaplamayı Atla seçeneği yalnızca Azure Data Box kilidi açıldığında kullanılabilir. Cihaz kilitlendiğinde bu seçeneği görmezsiniz.
 
 - [Azure Portal aracılığıyla Data Box ve Data Box Heavy yönetmeyi](data-box-portal-admin.md)öğrenin.
 

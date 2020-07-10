@@ -8,18 +8,18 @@ ms.devlang: dotnet
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 4a8353cf38c63e2642c7f76d05b4b7a2764e0706
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2c02f6858711173a2ddd2217bbb9e241a5a2109d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117392"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201457"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Hızlı başlangıç: .NET Core uygulaması ile Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Core uygulamasına dahil edersiniz. .NET Core konsol uygulamasında C# kodu ile [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini özellikle kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -298,7 +298,7 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 
 **Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
 
-![Sil](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
+![Silme](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
 Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
 
@@ -315,6 +315,7 @@ Bu hızlı başlangıçta, .NET Core uygulamasından Redsıs için Azure önbell
 > [!div class="nextstepaction"]
 > [Redsıs için Azure önbelleği kullanan bir ASP.NET Web uygulaması oluşturun.](./cache-web-app-howto.md)
 
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 
-
-
+> [!div class="nextstepaction"]
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -10,16 +10,17 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 5/14/2019
-ms.openlocfilehash: eb167f121027272330399f8345c90602d93ecbaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84113869"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187685"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için Azure Active Directory kimlik doğrulamasını etkinleştirme
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, Azure Active Directory (Azure AD) kimlik doğrulamasının Azure Data Factory (ADF) için yönetilen kimlikle nasıl etkinleştirileceği ve geleneksel kimlik doğrulama yöntemleri yerine (SQL kimlik doğrulaması gibi) kullanılması gösterilmektedir:
 
@@ -200,7 +201,7 @@ PowerShell ile Azure-SSIS IR sağlamak için aşağıdaki işlemleri yapın:
 
 1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018)   modülünü yükler.
 
-2.  Betiğinizdeki `CatalogAdminCredential` parametre ayarlamayın. Örneğin:
+2.  Betiğinizdeki `CatalogAdminCredential` parametre ayarlamayın. Örnek:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

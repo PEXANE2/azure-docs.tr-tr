@@ -3,11 +3,12 @@ title: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921267"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187804"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı
 
@@ -35,7 +36,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 > * Daha sonra SATA sürücüler en yakın Azure veri merkezine gönderilir.
 > * Yedekleme verilerinin Azure 'a yüklenmesi tamamlandıktan sonra, Azure Backup yedekleme verileri yedekleme kasasına kopyalanır ve artımlı yedeklemeler zamanlanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -123,7 +124,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
     | Parametre | Açıklama |
     | --- | --- |
     | s: &lt; *hazırlama konumu yolu*&gt; |Bu zorunlu giriş, "çevrimdışı yedekleme 'yi başlatma" bölümünde iş akışına girdiğiniz hazırlama konumunun yolunu sağlamak için kullanılır. |
-    | p: &lt; *PublishSettingsFile yolu*&gt; |Bu isteğe bağlı giriş, "çevrimdışı yedekleme 'yi başlatma" bölümünde iş akışına girdiğiniz Azure yayımlama ayarları dosyasının yolunu sağlamak için kullanılır. |
+    | p: &lt; *PublishSettingsFile yolu*&gt; |Bu isteğe bağlı giriş, Azure yayımlama ayarları dosyasının yolunu sağlamak için kullanılır. |
 
     Komutunu çalıştırdığınızda, yardımcı program, hazırlanması gereken sürücülere karşılık gelen Azure Içeri aktarma işinin seçimini ister. Yalnızca tek bir içeri aktarma işi belirtilen hazırlama konumuyla ilişkiliyse, aşağıdakine benzer bir ekran görürsünüz.
 

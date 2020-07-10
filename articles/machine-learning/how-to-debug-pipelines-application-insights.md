@@ -3,19 +3,19 @@ title: İşlem hattı günlük dosyalarını izleme &
 titleSuffix: Azure Machine Learning
 description: Eğitim ve Batch Puanlama işlem hatlarınıza günlük kaydı ekleyin ve günlüğe kaydedilen sonuçları Application Insights görüntüleyin.
 services: machine-learning
-author: sanpil
-ms.author: sanpil
+author: NilsPohlmann
+ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6a4a32db18b881b702aacf7bb669ffa14f9d103e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055724"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201244"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "86055724"
 
 Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geçmişini sağlar. Application Insights Azure uyarıları ile tümleştirilebildiğinden, Application Insights sorgularını temel alan uyarılar da oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning](./how-to-manage-workspace.md) çalışma alanı oluşturma ve [ilk işlem hattınızı oluşturma](./how-to-create-your-first-pipeline.md) adımlarını izleyin
 * Azure Machine Learning SDK 'Yı yüklemek için [geliştirme ortamınızı yapılandırın](./how-to-configure-environment.md) .

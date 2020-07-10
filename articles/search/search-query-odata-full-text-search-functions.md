@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793359"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201397"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Bilişsel Arama OData tam metin arama işlevleri- `search.ismatch` ve`search.ismatchscoring`
 
@@ -33,7 +33,7 @@ Azure Bilişsel Arama, ve işlevleri aracılığıyla [OData filtre ifadeleri](q
 > [!NOTE]
 > `search.ismatch`Ve `search.ismatchscoring` Işlevleri yalnızca [Arama API 'sindeki](https://docs.microsoft.com/rest/api/searchservice/search-documents)filtrelerde desteklenir. Bunlar, [öneri](https://docs.microsoft.com/rest/api/searchservice/suggestions) veya [otomatik tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API 'lerinde desteklenmez.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.ismatch` ve işlevlerinin dilbilgisini tanımlar `search.ismatchscoring` :
 
@@ -69,7 +69,7 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 Parametreler aşağıdaki tabloda tanımlanmıştır:
 
-| Parametre adı | Tür | Description |
+| Parametre adı | Tür | Açıklama |
 | --- | --- | --- |
 | `search` | `Edm.String` | Arama sorgusu ( [basit](query-simple-syntax.md) veya [tam](query-lucene-syntax.md) Lucene sorgu sözdiziminde). |
 | `searchFields` | `Edm.String` | Arama yapılacak aranabilir alanların virgülle ayrılmış listesi; dizindeki tüm aranabilir alanları varsayılan olarak belirler. [fielded search](query-lucene-syntax.md#bkmk_fields) `search` Parametresinde, alan araması kullanılırken, Lucene sorgusunda alan belirticileri bu parametrede belirtilen tüm alanları geçersiz kılar. |
@@ -98,25 +98,35 @@ Hem `search.ismatch` hem de `search.ismatchscoring` işlevleri aynı filtre ifad
 
 "Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir `search=waterfront` .
 
+```odata-filter-expr
     search.ismatchscoring('waterfront')
+```
 
 "Hostel" sözcüğünü içeren belgeleri bulun ve 4 ' e eşit veya daha büyük derecelendirme veya "Motel" sözcüğünü ve derecesi 5 ' e eşit olan belgeleri bulun. Not, bu istek işlev olmadan ifade edilemedi `search.ismatchscoring` .
 
+```odata-filter-expr
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
+```
 
 "Merkezlerini" sözcüğü olmadan belge bul.
 
+```odata-filter-expr
     not search.ismatch('luxury')
+```
 
 "Okyanus görünümü" veya derecelendirme 5 ' e eşit olan belgeleri bulun. `search.ismatchscoring`Sorgu yalnızca alanlara ve ' a karşı yürütülür `HotelName` `Rooms/Description` .
 
 Disbirleşimin yalnızca ikinci yan tümcesiyle eşleşen belgeler, 5 ' e eşit olan çok--oteller olarak döndürülür `Rating` . Bu belgelerin, ifadenin puanlanmış parçalarından hiçbiriyle eşleşmediğinden emin olmak için, puanın sıfıra eşit olarak döndürülmeleri gerekir.
 
+```odata-filter-expr
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
+```
 
 "Otel" ve "Havaalanı" koşullarının, otel açıklamasına ait 5 sözcükten ve her odada en az bir kısmında izin verilmediği belgeleri bulun. Bu sorgu, [tam Lucene sorgu dilini](query-lucene-syntax.md)kullanır.
 
+```odata-filter-expr
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccad51d18a5e76f68633103af64e9ba6cc3f19c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833355"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203377"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Depolama'da statik web sitesi barındırma
 
@@ -76,13 +76,15 @@ Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin be
 
 Aşağıdaki ekran görüntüsünde Azure portal ortak erişim düzeyi ayarı gösterilmektedir:
 
-![Portalda genel erişim düzeyinin nasıl ayarlanacağını gösteren ekran görüntüsü](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Portalda genel erişim düzeyinin nasıl ayarlanacağını gösteren ekran görüntüsü](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
 Birincil statik Web sitesi uç noktası etkilenmediğinden, genel erişim düzeyinde yapılan bir değişiklik birincil blob hizmeti uç noktasını etkiler.
 
 Örneğin, **$Web** kapsayıcısının genel erişim düzeyini ( **Anonim erişim olmadan)** **BLOB 'a (yalnızca blob 'lar için anonim okuma erişimi**) değiştirirseniz, birincil statik Web sitesi uç noktasına genel erişim düzeyi `https://contosoblobaccount.z22.web.core.windows.net/index.html` değişmez.
 
 Bununla birlikte, birincil blob hizmeti uç noktasına genel erişim, `https://contosoblobaccount.blob.core.windows.net/$web/index.html` Private iken public olarak değişir. Artık kullanıcılar bu iki uç noktanın birini kullanarak bu dosyayı açabilir.
+
+Bir depolama hesabında genel erişimin devre dışı bırakılması, bu depolama hesabında barındırılan statik Web sitelerini etkilemez. Daha fazla bilgi için bkz. [kapsayıcılar ve Bloblar için anonim genel okuma erişimini yapılandırma](anonymous-read-access-configure.md).
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Özel bir etki alanını statik bir Web sitesi URL 'siyle eşleme
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning model yorumlenebilirliği
+title: Azure Machine Learning model yorumlenebilirliği (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Modelinizin Azure Machine Learning SDK 'Yı kullanarak neden tahmin sağladığını açıklayacağınızı öğrenin. Bu, modelinizin tahminleri nasıl yaptığını anlamak için eğitim ve çıkarım sırasında kullanılabilir.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601692"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201438"
 ---
-# <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning model yorumlenebilirliği
+# <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 ## <a name="overview-of-model-interpretability"></a>Model yorumlenebilirliğini genel bakış

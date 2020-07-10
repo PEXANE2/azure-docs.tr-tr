@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445534"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202647"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Azure 'da Windows sanal makine görüntüleri oluşturmak için Packer kullanma
 Azure 'daki her sanal makine (VM), Windows Dağıtım ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın işletim sistemi ve uygulama ortamları için pek çok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi de oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynaklı araç [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.
@@ -111,6 +111,9 @@ Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. �
     "type": "powershell",
     "inline": [
       "Add-WindowsFeature Web-Server",
+      "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
       "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
     ]
@@ -119,6 +122,8 @@ Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. �
 ```
 
 Bu şablon bir Windows Server 2016 VM oluşturur, IIS 'yi yüklüyor ve sonra VM 'yi Sysprep ile genelleştirir. IIS yüklemesi ek komutlar çalıştırmak için PowerShell hazırlayıcısı 'nı nasıl kullanabileceğinizi gösterir. Son Packer görüntüsü, gerekli yazılım yüklemesi ve yapılandırmasını içerir.
+
+Windows Konuk Aracısı, Sysprep işlemine katılır. VM 'nin, Sysprep 'e başlamadan önce tam olarak yüklenmesi gerekir. Bunun doğru olduğundan emin olmak için, sysprep.exe yürütmeden önce tüm aracı hizmetlerinin çalışıyor olması gerekir. Önceki JSON kod parçacığında bunu PowerShell hazırlayıcısı içinde yapmanın bir yolu gösterilmektedir. Bu kod parçacığı yalnızca VM, varsayılan olan aracıyı yüklemek üzere yapılandırılmışsa gereklidir.
 
 
 ## <a name="build-packer-image"></a>Packer görüntüsü oluştur

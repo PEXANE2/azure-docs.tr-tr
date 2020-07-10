@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: b5ce74e680d79cfee006cb8cade6c22bff3c055f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851267"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202954"
 ---
 # <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
-Kodlarınızdan blob 'ları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Her bir sonuç kümesinde döndürülecek sonuç sayısını belirtebilir ve ardından sonraki kümeleri elde edebilirsiniz. Adları bu karakterle veya dizeyle başlayan Blobları döndürmek için bir ön ek belirtebilirsiniz. Blob 'ları düz bir liste yapısında veya hiyerarşik olarak listeleyebilirsiniz. Hiyerarşik bir liste Blobları klasörler halinde düzenlenmiş gibi döndürür. 
+Kodlarınızdan blob 'ları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Her bir sonuç kümesinde döndürülecek sonuç sayısını belirtebilir ve ardından sonraki kümeleri elde edebilirsiniz. Adları bu karakterle veya dizeyle başlayan Blobları döndürmek için bir ön ek belirtebilirsiniz. Blob 'ları düz bir liste yapısında veya hiyerarşik olarak listeleyebilirsiniz. Hiyerarşik bir liste Blobları klasörler halinde düzenlenmiş gibi döndürür.
 
 Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)kullanılarak Blobların nasıl listeyapılacağı gösterilmektedir.  
 

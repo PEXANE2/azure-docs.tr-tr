@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200410"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
 
@@ -30,11 +30,14 @@ Microsoft Azure Data Box çözümü birbiriyle etkileşimde olan dört ana bile�
 - **Cihaza bağlı istemciler/konaklar** – Altyapınızda Data Box cihazına bağlanan ve korunması gereken verileri içeren istemciler.
 - **Bulut depolama** – Azure bulutunda verilerin depolandığı konum. Bu genellikle, oluşturduğunuz Azure Data Box kaynağına bağlanan depolama hesabıdır.
 
-Aşağıdaki diyagram, Azure Data Box çözümü aracılığıyla şirket içinden Azure’a veri akışını gösterir.
+Aşağıdaki diyagram, Azure Data Box çözümü aracılığıyla şirket içinden Azure’a veri akışını gösterir. Bu akış Data Box bir içeri aktarma siparişi içindir.
 
 ![Data Box güvenliği](media/data-box-security/data-box-security-2.png)
 
-Veriler bu çözüm üzerinden akar, olaylar günlüğe kaydedilir ve günlükler oluşturulur. Daha fazla bilgi için, [Azure Data Box izleme ve olay günlüğü](data-box-logs.md)' ne gidin.
+Veriler bu çözüm üzerinden akar, olaylar günlüğe kaydedilir ve günlükler oluşturulur. Daha fazla bilgi için şuraya gidin:
+
+- [Azure Data Box içeri aktarma siparişleriniz Için izleme ve olay günlüğü](data-box-logs.md).
+- [Azure Data Box dışarı aktarma siparişleriniz için izleme ve olay günlüğü](data-box-export-logs.md)
 
 ## <a name="security-features"></a>Güvenlik özellikleri
 
@@ -81,7 +84,7 @@ Azure Data Box, hizmette şu anahtar örneklerinde kişisel bilgileri toplar ve 
   - Telefon numarası
   - E-posta
   - Açık adres
-  - Şehir
+  - City
   - Posta kodu
   - Durum
   - Ülke/İl/Bölge

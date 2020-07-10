@@ -19,17 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113152"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203114"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $orderby söz dizimi
 
  Azure Bilişsel Arama arama sonuçları için özel bir sıralama düzeni uygulamak üzere [OData **$OrderBy** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$OrderBy** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$OrderBy** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 **$OrderBy** parametresi, en fazla 32 **sıra ölçütü yan tümceleri**olan virgülle ayrılmış bir liste kabul eder. Order by yan tümcesinin sözdizimi aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından açıklanmıştır:
 
@@ -63,19 +64,27 @@ Birden çok sıralama ölçütü belirtebilirsiniz. İfadelerin sırası, son s�
 
 Oteller taban oranına göre artan şekilde sıralayın:
 
+```odata-filter-expr
     $orderby=BaseRate asc
+```
 
 Otelleri derecelendirmeye göre azalan şekilde sıralayın, ardından taban oranına göre artan şekilde (artan varsayılan değer olduğunu unutmayın):
 
+```odata-filter-expr
     $orderby=Rating desc,BaseRate
+```
 
 Otelleri derecelendirmeye göre azalan şekilde sıralayın, sonra da verilen koordinatlardan uzaklıktan yükselen:
 
+```odata-filter-expr
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 Oteller, arama. puan ve derecelendirme, ardından verilen koordinatlardan uzaklıktan artan sırada sıralayın. Aynı ilgi puanları ve derecelendirmelere sahip iki otel arasında en yakın olanı ilk olarak listelenmiştir:
 
+```odata-filter-expr
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

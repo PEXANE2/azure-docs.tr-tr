@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833698"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202599"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,7 +129,7 @@ Oto [içi modelleri engellemek](concept-manage-ml-pitfalls.md#prevent-over-fitti
 
 ### <a name="custom-validation-dataset"></a>Özel doğrulama veri kümesi
 
-Rastgele bölme kabul edilebilir değilse, genellikle zaman serisi verileri veya imledengeli veriler için özel doğrulama veri kümesi kullanın. Kendi doğrulama veri kümenizi belirtebilirsiniz. Model, rastgele veri kümesi yerine belirtilen doğrulama veri kümesine göre değerlendirilir.
+Rastgele bölme kabul edilebilir değilse, genellikle zaman serisi verileri veya imledengeli veriler için özel doğrulama veri kümesi kullanın. Kendi doğrulama veri kümenizi belirtebilirsiniz. Model, rastgele veri kümesi yerine belirtilen doğrulama veri kümesine göre değerlendirilir. [SDK ile özel doğrulama kümesi yapılandırma](how-to-configure-cross-validation-data-splits.md#provide-validation-data)hakkında daha fazla bilgi edinin.
 
 ## <a name="compute-to-run-experiment"></a>Deneme çalıştırmak için işlem
 
@@ -422,7 +422,7 @@ Daha fazlasını anlamak için, bu 2 API 'Leri, monte edilecek modelin ilk adım
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Burada:
+   Konum:
 
    |Çıktı|Tanım|
    |----|--------|
@@ -433,7 +433,7 @@ Daha fazlasını anlamak için, bu 2 API 'Leri, monte edilecek modelin ilk adım
    |Dönüşümler|Uygulanan özellikler oluşturmak için giriş özelliklerine uygulanan dönüşümlerin listesi.|
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Hiper parametre değerleriyle ölçekleme/normalleştirme ve algoritma:
 
-Bir işlem hattının ölçekleme/normalleştirme ve algoritma/hiper parametre değerlerini anlamak için fitted_model. Steps kullanın. [Ölçeklendirme/normalleştirme hakkında daha fazla bilgi edinin](). Örnek çıktı aşağıdaki gibidir:
+Bir işlem hattının ölçekleme/normalleştirme ve algoritma/hiper parametre değerlerini anlamak için fitted_model. Steps kullanın. [Ölçeklendirme/normalleştirme hakkında daha fazla bilgi edinin](how-to-configure-auto-features.md). Örnek çıktı aşağıdaki gibidir:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: 2eb5817a3339494417bb426bfdccb09ae3ac7230
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087784"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202409"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell kullanarak MapReduce işlerini HDInsight üzerinde Apache Hadoop çalıştırma
 
@@ -33,7 +33,7 @@ Azure PowerShell HDInsight 'ta MapReduce işlerini uzaktan çalıştırmanıza o
 
 Aşağıdaki cmdlet 'ler, MapReduce işlerini uzak bir HDInsight kümesinde çalıştırırken kullanılır.
 
-|Cmdlet | Description |
+|Cmdlet | Açıklama |
 |---|---|
 |Connect-AzAccount|Azure aboneliğinize Azure PowerShell kimliğini doğrular.|
 |New-AzHDInsightMapReduceJobDefinition|Belirtilen MapReduce bilgilerini kullanarak yeni bir *iş tanımı* oluşturur.|
@@ -49,21 +49,25 @@ Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için b
 
 2. Yeni bir **Azure PowerShell** komut istemi açın. Dizinleri **mapreducejob.ps1** dosyanın konumuyla değiştirin ve betiği çalıştırmak için aşağıdaki komutu kullanın:
 
-        .\mapreducejob.ps1
+    ```azurepowershell
+    .\mapreducejob.ps1
+    ```
 
     Betiği çalıştırdığınızda, HDInsight kümesinin adı ve küme oturumu açmanız istenir. Ayrıca Azure aboneliğinizde kimlik doğrulaması yapmanız da istenebilir.
 
 3. İş tamamlandığında, aşağıdaki metne benzer bir çıktı alırsınız:
 
-        Cluster         : CLUSTERNAME
-        ExitCode        : 0
-        Name            : wordcount
-        PercentComplete : map 100% reduce 100%
-        Query           :
-        State           : Completed
-        StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
-        SubmissionTime  : 12/5/2014 8:34:09 PM
-        JobId           : job_1415949758166_0071
+    ```output
+    Cluster         : CLUSTERNAME
+    ExitCode        : 0
+    Name            : wordcount
+    PercentComplete : map 100% reduce 100%
+    Query           :
+    State           : Completed
+    StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
+    SubmissionTime  : 12/5/2014 8:34:09 PM
+    JobId           : job_1415949758166_0071
+    ```
 
     Bu çıktı, işin başarıyla tamamlandığını gösterir.
 

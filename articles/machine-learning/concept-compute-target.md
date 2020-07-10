@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/26/2020
-ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483287"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199820"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -48,9 +48,9 @@ Aşağıdaki işlem kaynakları, model dağıtımınızı barındırmak için ku
 
 Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur ve yönetilir. Bu işlem makine öğrenimi iş yükleri için iyileştirilmiştir. Azure Machine Learning işlem kümeleri ve [işlem örnekleri](concept-compute-instance.md) yalnızca yönetilen hesaplalardır. Daha sonra ek yönetilen işlem kaynakları eklenebilir.
 
-Şunları yapmak için Azure Machine Learning işlem örnekleri (Önizleme) veya işlem kümeleri oluşturabilirsiniz:
+Azure Machine Learning işlem örnekleri veya işlem kümeleri oluşturabilirsiniz:
 * Azure Machine Learning Studio
-* Azure portal
+* Azure portalı
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) ve [amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) sınıfları
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Önizleme)
 * Resource Manager şablonu
@@ -59,7 +59,7 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçasıdır.
 
 
-|Özellik  |İşlem kümesi  |İşlem örneği  |
+|Yetenek  |İşlem kümesi  |İşlem örneği  |
 |---------|---------|---------|
 |Tek veya çok düğümlü küme     |    **&check;**       |         |
 |Her çalıştırma gönderdiğinizde otomatik ölçekler     |     **&check;**      |         |
@@ -82,17 +82,17 @@ Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için a
 
 | **Desteklenen VM Serisi**  | **Kısıtlamalar** |
 |------------|------------|
-| D | Hiçbiri |
-| Dv2 | Hiçbiri |  
-| DSv2 | Hiçbiri |  
-| FSv2 | Hiçbiri |  
+| D | Yok |
+| Dv2 | Yok |  
+| DSv2 | Yok |  
+| FSv2 | Yok |  
 | M | Onay gerekiyor |
-| NC | Hiçbiri |    
+| NC | Yok |    
 | NCsv2 | Onay gerekiyor |
 | NCsv3 | Onay gerekiyor |  
 | Üstündeki | Onay gerekiyor |
 | NDv2 | Onay gerekiyor |
-| NV | Hiçbiri |
+| NV | Yok |
 | NVv3 | Onay gerekiyor | 
 
 

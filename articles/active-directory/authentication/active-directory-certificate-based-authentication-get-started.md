@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610658"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202874"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory’de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama
 
@@ -69,6 +69,7 @@ Sertifika yetkilinizi Azure Active Directory ' de yapılandırmak için, her ser
 
 Bir sertifika yetkilisinin şeması şu şekilde görünür:
 
+```csharp
     class TrustedCAsForPasswordlessAuth
     {
        CertificateAuthorityInformation[] certificateAuthorities;
@@ -90,53 +91,66 @@ Bir sertifika yetkilisinin şeması şu şekilde görünür:
         RootAuthority = 0,
         IntermediateAuthority = 1
     }
+```
 
 Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/azure/install-adv2?view=azureadps-2.0)' yi kullanabilirsiniz:
 
 1. Windows PowerShell 'i yönetici ayrıcalıklarıyla başlatın.
 2. Azure AD modülü sürüm [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) veya üstünü yükler.
 
-        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```powershell
+    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```
 
 İlk yapılandırma adımı olarak, kiracınızla bir bağlantı kurmanız gerekir. Kiracınızla bağlantı varsa, dizininizde tanımlı olan güvenilen sertifika yetkililerini gözden geçirebilir, ekleyebilir, silebilir ve değiştirebilirsiniz.
 
-### <a name="connect"></a>Bağlan
+### <a name="connect"></a>Bağlanma
 
 Kiracınızla bir bağlantı kurmak için [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet 'ini kullanın:
 
+```azurepowershell
     Connect-AzureAD
+```
 
 ### <a name="retrieve"></a>Almanın
 
 Dizininizde tanımlı güvenilen sertifika yetkililerini almak için [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın.
 
+```azurepowershell
     Get-AzureADTrustedCertificateAuthority
+```
 
 ### <a name="add"></a>Ekle
 
-Güvenilen bir sertifika yetkilisi oluşturmak için [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın ve **CRLDistributionPoint** özniteliğini doğru bir değere ayarlayın:
+Güvenilen bir sertifika yetkilisi oluşturmak için [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın ve **CRLDistributionPoint** özniteliğini doğru bir değere ayarlayın:
 
+```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
     $new_ca.AuthorityType=0
     $new_ca.TrustedCertificate=$cert
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
+```
 
 ### <a name="remove"></a>Kaldır
 
 Güvenilen bir sertifika yetkilisini kaldırmak için [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın:
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
+```
 
 ### <a name="modify"></a>Değiştir
 
 Güvenilen bir sertifika yetkilisini değiştirmek için [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın:
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
+```
 
 ## <a name="step-3-configure-revocation"></a>3. Adım: iptali yapılandırma
 
@@ -152,17 +166,23 @@ Aşağıdaki adımlar, **StsRefreshTokenValidFrom** alanını ayarlayarak yetkil
 
 1. Yönetici kimlik bilgileriyle MSOL hizmetine bağlanın:
 
+```powershell
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
+```
 
 2. Bir kullanıcı için geçerli StsRefreshTokensValidFrom değerini Al:
 
+```powershell
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
+```
 
 3. Kullanıcı için geçerli zaman damgasına eşit yeni bir StsRefreshTokensValidFrom değeri yapılandırın:
 
+```powershell
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+```
 
 Ayarladığınız tarih gelecekte olmalıdır. Tarih gelecekte değilse, **StsRefreshTokensValidFrom** özelliği ayarlı değildir. Tarih gelecekte ise, **StsRefreshTokensValidFrom** geçerli saate ayarlanır (set-MsolUser komutuyla gösterilen tarih değil).
 

@@ -6,20 +6,21 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: b0e18ec4665ede783145cd1aedf38c907f6f2905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118495"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187821"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime'ı sanal ağa bağlama
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory SQL Server Integration Services (SSIS) kullanırken, Azure-SSIS tümleştirme çalışma zamanı 'nı (IR) aşağıdaki senaryolarda bir Azure sanal ağına katılmanız gerekir:
 
@@ -168,7 +169,7 @@ Azure-SSIS IR tarafından kullanılan alt ağ için bir NSG uygulamanız gerekiy
 | Yön | Aktarım Protokolü | Kaynak | Kaynak bağlantı noktası aralığı | Hedef | Hedef bağlantı noktası aralığı | Yorumlar |
 |---|---|---|---|---|---|---|
 | Giden | TCP | VirtualNetwork | * | AzureCloud | 443 | Sanal ağdaki Azure-SSIS IR düğümleri Azure depolama ve Azure Event Hubs gibi Azure hizmetlerine erişmek için bu bağlantı noktasını kullanır. |
-| Giden | TCP | VirtualNetwork | * | Internet | 80 | Seçim Sanal ağdaki Azure-SSIS IR düğümleri Internet 'ten bir sertifika iptal listesi indirmek için bu bağlantı noktasını kullanır. Bu trafiği engellerseniz, IR 'yi başlatır ve sertifika kullanımı için sertifika iptal listesini denetleme yeteneğini kaybederseniz performansı indirgeyede karşılaşabilirsiniz. Hedefi belirli FQDN 'lere daha fazla daraltmak istiyorsanız lütfen **Azure ExpressRoute veya UDR kullanma** bölümüne bakın|
+| Giden | TCP | VirtualNetwork | * | İnternet | 80 | Seçim Sanal ağdaki Azure-SSIS IR düğümleri Internet 'ten bir sertifika iptal listesi indirmek için bu bağlantı noktasını kullanır. Bu trafiği engellerseniz, IR 'yi başlatır ve sertifika kullanımı için sertifika iptal listesini denetleme yeteneğini kaybederseniz performansı indirgeyede karşılaşabilirsiniz. Hedefi belirli FQDN 'lere daha fazla daraltmak istiyorsanız lütfen **Azure ExpressRoute veya UDR kullanma** bölümüne bakın|
 | Giden | TCP | VirtualNetwork | * | Sql | 1433, 11000-11999 | Seçim Bu kural yalnızca, sanal ağdaki Azure-SSIS IR düğümleri sunucunuz tarafından barındırılan bir SSıSDB 'ye erişirken gereklidir. Sunucu bağlantı ilkeniz **yeniden yönlendirme**yerine **proxy** olarak ayarlandıysa yalnızca bağlantı noktası 1433 gerekir. <br/><br/> Bu giden güvenlik kuralı, sanal ağ veya özel uç noktayla yapılandırılmış SQL veritabanı 'nda SQL yönetilen örneğiniz tarafından barındırılan bir SSSıSDB için geçerli değildir. |
 | Giden | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Seçim Bu kural yalnızca sanal ağdaki Azure-SSIS IR düğümleri, sanal ağda veya özel uç noktayla yapılandırılmış SQL veritabanı tarafından barındırılan bir SSıSDB 'ye erişirken gereklidir. Sunucu bağlantı ilkeniz **yeniden yönlendirme**yerine **proxy** olarak ayarlandıysa yalnızca bağlantı noktası 1433 gerekir. |
 | Giden | TCP | VirtualNetwork | * | Depolama | 445 | Seçim Bu kural yalnızca Azure dosyalarında depolanan SSIS paketini yürütmek istediğinizde gereklidir. |
@@ -235,7 +236,7 @@ Giden trafiğe izin vermek için güvenlik duvarı gerecinin, NSG giden kurallar
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Genel      | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.clouddatahub.net</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*.blob.core.windows.net</li><li>\*. table.core.windows.net</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.io</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.windows.net</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
     | Azure Kamu  | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.datamovement.azure.us</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*. blob.core.usgovcloudapi.net</li><li>\*. table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.us</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
-    | Azure China 21Vianet     | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.cn</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
+    | Azure Çin 21Vianet     | <ul><li><b>Azure Data Factory (Yönetim)</b><ul><li>\*. frontend.datamovement.azure.cn</li></ul></li><li><b>Azure depolama (Yönetim)</b><ul><li>\*. blob.core.chinacloudapi.cn</li><li>\*. table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (özel kurulum)</b><ul><li>\*. azurecr.cn</li></ul></li><li><b>Olay Hub 'ı (günlük)</b><ul><li>\*. servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft günlük hizmeti (Iç kullanım)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     Azure depolama, Azure Container Registry ve Olay Hub 'ının FQDN 'leri itibariyle, bu uç noktalara giden ağ trafiğinin güvenlik duvarı gerecinize yönlendirilmek yerine Azure omurga ağı üzerinden geçmesi için sanal ağınız için aşağıdaki hizmet uç noktalarını etkinleştirmeyi de tercih edebilirsiniz:
     -  Microsoft.Storage

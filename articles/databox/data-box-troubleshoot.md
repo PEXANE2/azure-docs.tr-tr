@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558549"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200133"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy ilgili sorunları giderin
 
-Bu makalede, Azure Data Box veya Azure Data Box Heavy kullanırken görebileceğiniz sorunları gidermeye yönelik bilgiler ayrıntılı olarak anlatılmaktadır. Bu makale, veriler Data Box kopyalandığında veya verilerin Data Box karşıya yüklendiği zaman görülen olası hataların listesini içerir.
+Bu makalede, içeri aktarma siparişleri için Azure Data Box veya Azure Data Box Heavy kullanırken görebileceğiniz sorunları gidermeye yönelik bilgiler ayrıntılı olarak anlatılmaktadır. Makale, veriler Data Box kopyalanırken veya veriler Data Box bir içeri aktarma sırası için karşıya yüklendiğinde görülen olası hataların listesini içerir.
+
+Bu makaledeki bilgiler Data Box için oluşturulan dışarı aktarma siparişlerine uygulanmaz.
 
 ## <a name="error-classes"></a>Hata sınıfları
 

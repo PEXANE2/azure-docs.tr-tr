@@ -1,5 +1,5 @@
 ---
-title: 'Etkileşimli hata ayıklama: VS Code & ML işlem örnekleri'
+title: 'Etkileşimli hata ayıklama: VS Code & ML işlem örnekleri (Önizleme)'
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning ile kodunuzda etkileşimli olarak hata ayıklamada uzak VS Code ayarlayın.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 12/09/2019
-ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433126"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203459"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama (Önizleme)
 
 Bu makalede, Azure Machine Learning bir Işlem örneği üzerinde uzaktan Visual Studio Code ayarlamayı öğrenirsiniz, böylece VS Code **kodunuzda kodunuzun hatalarını etkileşimli olarak ayıklayabilirsiniz** . 
 
@@ -87,10 +88,10 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 |Alan|Açıklama|
 |----|---------|
-|Ana bilgisayar|İşlem örneği için istediğiniz toplu şeyi kullanın |
-|Ana bilgisayar adı|Bu, işlem örneğinin IP adresidir |
+|Konak|İşlem örneği için istediğiniz toplu şeyi kullanın |
+|HostName|Bu, işlem örneğinin IP adresidir |
 |Bağlantı noktası|Bu, yukarıdaki SSH iletişim kutusunda gösterilen bağlantı noktasıdır |
-|Kullanıcı|Bunun olması gerekir `azureuser` |
+|User|Bunun olması gerekir `azureuser` |
 |Identityfile|Özel anahtarı kaydettiğiniz dosyaya işaret etmelidir |
 
 Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` . 

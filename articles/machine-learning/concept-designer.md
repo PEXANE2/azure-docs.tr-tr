@@ -1,5 +1,5 @@
 ---
-title: Tasarımcı ile ML modelleri derleme
+title: Tasarımcı ile ML modelleri derleme (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning için tasarımcıyı oluşturan hüküm, kavramlar ve iş akışı hakkında bilgi edinin.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517397"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199984"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Azure Machine Learning tasarımcı, makine öğrenimi modelleri oluşturmak içi
 
 Tasarımcı, şu gibi paylaşılan kaynakları düzenlemek için Azure Machine Learning [çalışma alanınızı](concept-workspace.md) kullanır:
 
-+ [Pipelines](#pipeline)
++ [İşlem hatları](#pipeline)
 + [Veri kümeleri](#datasets)
 + [İşlem kaynakları](#compute)
 + [Kayıtlı modeller](concept-azure-machine-learning-architecture.md#models)
@@ -90,7 +90,7 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gez
 
 İş hattınızı çalıştırmak ve dağıtılan modellerinizi gerçek zamanlı uç noktalar veya ardışık düzen uç noktaları olarak barındırmak (Batch çıkarımı için) için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
-| İşlem hedefi | Eğitim | Dağıtım |
+| İşlem hedefi | Eğitiliyor | Dağıtım |
 | ---- |:----:|:----:|
 | Azure Machine Learning işlem | ✓ | |
 | Azure Machine Learning işlem örneği | ✓ | |
@@ -106,7 +106,7 @@ Gerçek zamanlı uç noktaların bir Azure Kubernetes hizmet kümesine dağıtı
 
 Modelinizi dağıtmayı öğrenmek için bkz. [öğretici: tasarımcı ile makine öğrenimi modeli dağıtma](tutorial-designer-automobile-price-deploy.md).
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 Ardışık Düzen **uç noktasına**bir işlem hattı da yayımlayabilirsiniz. Gerçek zamanlı bir uç noktaya benzer şekilde, bir ardışık düzen uç noktası, REST çağrılarını kullanarak dış uygulamalardan yeni işlem hattı çalıştırmaları göndermenize olanak tanır. Ancak, bir ardışık düzen uç noktası kullanarak gerçek zamanlı olarak veri gönderemez veya alamazsınız.
 

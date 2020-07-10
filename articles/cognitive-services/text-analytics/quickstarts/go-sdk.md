@@ -10,21 +10,24 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f9b5fb1837fdafe818fdb27221f8575d93ec304d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ff1b35ec036996dfa452d92632c8fc6ede22d82f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701619"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203250"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Hızlı başlangıç: go için Metin Analizi istemci kitaplığını kullanma
 
-[Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go)  |  [Paket (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+- [Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics)
+- [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go)
+- [Paket (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+- [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
 > Bu hızlı başlangıç yalnızca Metin Analizi sürüm 2,1 için geçerlidir. Şu anda Go için bir v3 istemci kitaplığı kullanılamıyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * En son [Go](https://golang.org/dl/) sürümü
@@ -95,7 +98,7 @@ Bu kod parçacıkları, Go için Metin Analizi istemci kitaplığı ile aşağı
 * [Yaklaşım Analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Varlık tanıma](#entity-recognition)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 

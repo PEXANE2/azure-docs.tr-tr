@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113192"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201998"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Bilişsel Arama OData mantıksal işleçleri- `and` , `or` ,`not`
 
@@ -35,7 +36,7 @@ Azure Bilişsel Arama 'de [OData filtre ifadeleri](query-odata-filter-orderby-sy
 
 Bunlar, [koleksiyon işleçleri `any` ve `all` ](search-query-odata-collection-operators.md)ile birlikte çok karmaşık arama ölçütlerine hızlı bir şekilde ifade edebilen filtreler oluşturmanız için izin verir.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), mantıksal işleçleri kullanan bir OData ifadesinin dilbilgisini tanımlar.
 
@@ -71,7 +72,7 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 İşlevler ve karşılaştırmalar gibi çoğu Boole ifadesi değer üretemiyor `null` ve mantıksal işleçler `null` doğrudan sabit değere uygulanamaz (örneğin, `x and null` buna izin verilmez). Ancak, Boolean alanları olabilir `null` , bu nedenle, `and` `or` ve işleçlerinin, `not` null durumunda nasıl davrandığına dikkat etmeniz gerekir. Bu, aşağıdaki tabloda özetlenmiştir, burada, `b` türünde bir alandır `Edm.Boolean` :
 
-| Expression | `b`Ne zaman sonuç`null` |
+| İfade | `b`Ne zaman sonuç`null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -92,19 +93,27 @@ Bir Boole alanı `b` bir filtre ifadesinde kendisiyle göründüğünde, yazılm
 
 `rating`Alanın 3 ile 5 arasında (dahil) olduğu belgeleri eşleştirin:
 
+```odata-filter-expr
     rating ge 3 and rating le 5
+```
 
 Alanın tüm öğelerinin `ratings` 3 ' ten küçük veya 5 ' ten büyük olduğu belgeleri eşleştirin:
 
+```odata-filter-expr
     ratings/all(r: r lt 3 or r gt 5)
+```
 
 `location`Alanın verilen çokgen içinde bulunduğu belgeleri eşleştirin ve belge "genel" terimini içermez.
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
+```
 
 160 'den düşük bir temel fiyata sahip olan bir lüks, Kanada 'daki otel belgelerini eşleştirin:
 
+```odata-filter-expr
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

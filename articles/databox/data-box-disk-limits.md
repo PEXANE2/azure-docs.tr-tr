@@ -8,11 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099080"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203516"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk sınırları
 
@@ -59,11 +60,11 @@ Azure depolama hizmeti sınırları ve adlandırma paylaşımları, kapsayıcıl
 
 ## <a name="azure-storage-account-size-limits"></a>Azure depolama hesabı boyut sınırları
 
-Depolama hesabına kopyalanmış verilerin boyutuna ilişkin sınırlar aşağıda verilmiştir. Karşıya yüklediğiniz verilerin bu sınırlara uyduğundan emin olun. Bu limitlerin en güncel bilgileri için [Azure Blob depolama ölçek hedefleri](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) ve [Azure dosyaları ölçek hedefleri](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)' ne gidin.
+Bir depolama hesabına kopyalanabilen verilerin boyutuna ilişkin sınırlar aşağıda verilmiştir. Karşıya yüklediğiniz verilerin bu sınırlara uyduğundan emin olun. 
 
-| Azure depolama hesabına kopyalanmış verilerin boyutu                      | Varsayılan limit          |
-|---------------------------------------------------------------------|------------------------|
-| Blok Blobu ve Sayfa Blobu                                            | depolama hesabı başına 500 TB. <br> Bu, Data Box Disk dahil olmak üzere tüm kaynaklardaki verileri içerir.|
+| Veri türü             | Varsayılan limit          |
+|--------------------------|------------------------|
+| Blok Blobu, Sayfa Blobu    | Bu limitlerle ilgili güncel bilgiler için bkz. [Azure Blob depolama ölçek hedefleri](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [Azure Standart depolama ölçek hedefleri](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)ve [Azure dosyaları ölçeklendirme hedefi](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> Sınırlar, Data Box Disk dahil olmak üzere tüm kaynaklardaki verileri içerir.|
 
 
 ## <a name="azure-object-size-limits"></a>Azure nesne boyutu sınırları
@@ -74,7 +75,7 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 |-------------------|-----------------------------------------------------------|
 | Blok Blobu        | ~ 4,75 TiB                                                 |
 | Sayfa Blobu         | 8 TiB <br> (Sayfa Blobu biçiminde karşıya yüklenen her dosya 512 bayt hizalı olmalıdır, aksi takdirde karşıya yükleme başarısız olur. <br> Hem VHD hem de VHDX 512 bayt hizalı.) |
-|Azure Dosyaları        | 1 TiB <br> En çok, paylaşımın boyutu 5 TiB     |
+|Azure Dosyalar        | 1 TiB <br> En çok, paylaşımın boyutu 5 TiB     |
 | Yönetilen diskler     |4 TiB <br> Boyut ve sınırlar hakkında daha fazla bilgi için bkz. <li>[Yönetilen diskler için ölçeklenebilirlik hedefleri](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 

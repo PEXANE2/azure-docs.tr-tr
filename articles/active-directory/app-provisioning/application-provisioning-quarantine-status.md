@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e5c0b00873cd97b255eff7e001f8b54cf0397462
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024579"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203027"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
@@ -36,7 +36,9 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
 
 - Sağlama işinin durumunu programlı bir şekilde almak için Microsoft Graph isteği [Al işini](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) kullanın:
 
-        `GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/`
+```microsoft-graph
+        GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
+```
 
 - E-postanızı kontrol edin. Bir uygulama karantinada yerleştirildiğinde, bir kerelik bildirim e-postası gönderilir. Karantina nedeni değişirse, karantinanın yeni nedenini gösteren güncelleştirilmiş bir e-posta gönderilir. E-posta görmüyorsanız:
 
@@ -74,7 +76,9 @@ Sorunu çözdükten sonra, sağlama işini yeniden başlatın. Uygulamanın sağ
 
 - [Sağlama işini yeniden başlatmak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Et 'ları kaldırmayı seçebilirsiniz (karantina durumuna göre tahakkuk eden Emanet sayacını yeniden başlatmak için), karantinayı temizleyebilir (uygulamayı karantinadan kaldırmak için) veya filigranları temizleyebilirsiniz. Aşağıdaki isteği kullanın:
  
-       `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
-       
+```microsoft-graph
+        POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
 "{İd}" öğesini uygulama KIMLIĞI değeriyle değiştirin ve "{JobId}" öğesini [eşitleme Işinin kimliğiyle](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal)değiştirin. 
 

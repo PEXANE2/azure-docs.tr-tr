@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113169"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202014"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Bilişsel Arama OData coğrafi uzamsal işlevleri- `geo.distance` ve`geo.intersects`
 
@@ -34,7 +35,7 @@ Azure Bilişsel Arama, ve işlevleri aracılığıyla [OData filtre ifadelerinde
 > [!NOTE]
 > `geo.distance` **$OrderBy** parametresinde kullanırken, işleve geçirdiğiniz alan yalnızca tek bir coğrafi nokta içermelidir. Diğer bir deyişle, türünde olması gerekir `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` . Azure Bilişsel Arama 'de koleksiyon alanlarını sıralamak mümkün değildir.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Sözdizimi
 
 Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), `geo.distance` ve işlevlerinin dilbilgisini ve `geo.intersects` üzerinde çalıştıkları coğrafi uzamsal değerleri tanımlar:
 
@@ -104,21 +105,29 @@ Azure Bilişsel Arama içindeki diğer tüm koleksiyon olmayan alanlar gibi, tü
 
 Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bul (konum, konum türünde bir alandır `Edm.GeographyPoint` ):
 
+```odata-filter-expr
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 Belirli bir görünüm içindeki tüm otelleri bir çokgen (konum türünde bir alandır) olarak tanımlanan bir görünüm içinde bulun `Edm.GeographyPoint` . Çokgenin kapatıldığını unutmayın (ilk ve son nokta kümeleri aynı olmalıdır) ve [noktaların saatin tersi sırada listelenmesi gerekir](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 ### <a name="order-by-examples"></a>Sıralama örnekleri
 
 Oteller `rating` , daha sonra verilen koordinatlardan uzaklıktan artan düzende sıralayın:
 
+```odata-filter-expr
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 Oteller `search.score` ve `rating` ardından, aynı derecelendirmelere sahip iki otel arasında, en yakın bir değer olacak şekilde, ve daha sonra verilen koordinatlardan uzaklıktan artan düzende bir şekilde sıralayın.
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

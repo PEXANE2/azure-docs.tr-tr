@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554266"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202299"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
@@ -67,7 +67,9 @@ Hem GÖNDERI hem de GET için, istek URL 'sinde *hizmet adınızı*, *Dizin adı
 
 GET için sorgu parametrelerini URL'nin sonundaki *sorgu dizesine* sağlarsınız. URL biçimi için aşağıya bakın:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+```http
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+```
 
 POST biçimi aynı ancak `api-version` sorgu dizesi parametrelerinde ile aynıdır.
 
@@ -75,7 +77,7 @@ POST biçimi aynı ancak `api-version` sorgu dizesi parametrelerinde ile aynıd�
 
 Çekme modeli, desteklenen veri kaynağında gezinir ve dizininize verileri otomatik olarak yükler. Azure Bilişsel Arama, bu özellik şu anda bu platformlar için kullanılabilen *Dizin oluşturucular*aracılığıyla uygulanır:
 
-+ [BLOB depolama](search-howto-indexing-azure-blob-storage.md)
++ [Blob depolama](search-howto-indexing-azure-blob-storage.md)
 + [Tablo depolama](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL veritabanı, SQL yönetilen örneği ve Azure VM 'lerinde SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

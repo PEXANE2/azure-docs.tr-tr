@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262234"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203170"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark Azure Cosmos DB bağlayıcısını kullanarak büyük veri analizlerini hızlandırma
 
@@ -233,7 +233,7 @@ Bağlayıcıyı GitHub 'da kaynaktan oluşturabilir veya aşağıdaki bağlantı
 Azure Databricks kılavuzundaki kılavuzu izleyerek Databricks çalışma alanınızı kullanarak bir kitaplık oluşturun > [Azure Cosmos DB Spark bağlayıcısını kullanın](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
 
 > [!NOTE]
-> **Azure Cosmos DB Spark bağlayıcısını kullanma** sayfasının Şu anda güncel olmadığına not edin. Altı ayrı jar dosyaları dışındaki 'ı altı farklı kitaplıklara indirmek yerine, Maven 'den Uber jar 'i indirebilir https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) ve bu tek jar/Library 'yi yükleyebilirsiniz.
+> **Azure Cosmos DB Spark bağlayıcısını kullan** sayfası şu anda güncel değil. Altı ayrı jar dosyaları dışındaki altı farklı kitaplıklara indirmek yerine, Maven 'ten [Azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) adresinden Uber jar 'i indirebilir ve bu tek bir jar/Library yükleyebilirsiniz.
 > 
 
 ### <a name="using-spark-cli"></a>Spark-CLI kullanma

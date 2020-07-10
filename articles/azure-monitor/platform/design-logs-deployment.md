@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82165697"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201286"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
 
@@ -62,7 +62,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Çarpan | Description |
+| Çarpan | Açıklama |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
@@ -97,7 +97,7 @@ Azure Izleyici, günlük aramasını gerçekleştirdiğiniz bağlama göre otoma
 
 Aşağıdaki tabloda erişim modları özetlenmektedir:
 
-| | Çalışma alanı-bağlam | Kaynak bağlamı |
+| Sorun | Çalışma alanı-bağlam | Kaynak bağlamı |
 |:---|:---|:---|
 | Her bir model kim içindir? | Yönetim Merkezi. Veri toplamayı ve çok çeşitli kaynaklara erişmesi gereken kullanıcıları yapılandırması gereken yöneticiler. Şu anda Azure dışındaki kaynaklar için günlüklere erişmesi gereken kullanıcılar için de gereklidir. | Uygulama takımları. İzlenmekte olan Azure kaynaklarının yöneticileri. |
 | Kullanıcı günlükleri görüntülemek için ne gerekir? | Çalışma alanı izinleri. [Çalışma alanı izinlerini kullanarak erişimi yönetme](manage-access.md#manage-access-using-workspace-permissions)Içindeki **çalışma alanı izinlerine** bakın. | Kaynağa yönelik okuma erişimi. Bkz. [Azure izinleri kullanarak erişimi yönetme](manage-access.md#manage-access-using-azure-permissions)içindeki **kaynak izinleri** . İzinler devralınabilir (örneğin, kapsayan kaynak grubundan) veya doğrudan kaynağa atanabilir. Kaynak için günlüklere izin verilecek izinler otomatik olarak atanır. |

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 13b6753d7c04951839852b3090e99fd8cde1fe2d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0d76bf29efeb40f9f29f80b6e3e6414f5e9b6fc8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079811"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203271"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
 
@@ -84,7 +84,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
     |Kimlik doğrulaması türü | __Parola__ veya __SSH ortak anahtarı__: SSH hesabı için kimlik doğrulama yöntemi. Daha güvenli olduklarından ortak anahtarların kullanılmasını öneririz. Bu örnek, **parolayı**kullanır.  Daha fazla bilgi için bkz. [Linux VM 'leri IÇIN SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md) belgesi.|
     |Kullanıcı adı |VM için yönetici kullanıcı adını girin.  Bu örnek **sshuser**kullanır.|
     |Parola veya SSH ortak anahtarı | Kullanılabilir alan, **kimlik doğrulama türü**için seçtiğiniz seçeneğe göre belirlenir.  Uygun değeri girin.|
-    |Ortak gelen bağlantı noktaları|**Seçili bağlantı noktalarına Izin ver**' i seçin. Ardından **gelen bağlantı noktaları seçin** açılır listesinden **SSH (22)** öğesini seçin.|
+    |Genel gelen bağlantı noktaları|**Seçili bağlantı noktalarına Izin ver**' i seçin. Ardından **gelen bağlantı noktaları seçin** açılır listesinden **SSH (22)** öğesini seçin.|
 
     ![Sanal makine temel yapılandırması](./media/connect-on-premises-network/virtual-machine-basics.png)
 
@@ -131,29 +131,31 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 3. Ad çözümleme isteklerini şirket içi DNS sunucunuza iletecek şekilde bağlamayı yapılandırmak için aşağıdaki metni dosyanın içeriğiyle kullanın `/etc/bind/named.conf.options` :
 
-        acl goodclients {
-            10.0.0.0/16; # Replace with the IP address range of the virtual network
-            10.1.0.0/16; # Replace with the IP address range of the on-premises network
-            localhost;
-            localnets;
-        };
+    ```DNS Zone file
+    acl goodclients {
+        10.0.0.0/16; # Replace with the IP address range of the virtual network
+        10.1.0.0/16; # Replace with the IP address range of the on-premises network
+        localhost;
+        localnets;
+    };
 
-        options {
-                directory "/var/cache/bind";
+    options {
+            directory "/var/cache/bind";
 
-                recursion yes;
+            recursion yes;
 
-                allow-query { goodclients; };
+            allow-query { goodclients; };
 
-                forwarders {
-                192.168.0.1; # Replace with the IP address of the on-premises DNS server
-                };
+            forwarders {
+            192.168.0.1; # Replace with the IP address of the on-premises DNS server
+            };
 
-                dnssec-validation auto;
+            dnssec-validation auto;
 
-                auth-nxdomain no;    # conform to RFC1035
-                listen-on { any; };
-        };
+            auth-nxdomain no;    # conform to RFC1035
+            listen-on { any; };
+    };
+    ```
 
     > [!IMPORTANT]  
     > Bölümündeki değerleri, `goodclients` sanal ağın ve şirket içi AĞıN IP adresi aralığıyla değiştirin. Bu bölümde, bu DNS sunucusunun istekleri kabul ettiği adresler tanımlanmaktadır.
@@ -184,11 +186,13 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 5. Sanal ağ içindeki kaynakların DNS adlarını çözümlemek üzere bağlamayı yapılandırmak için, dosyanın içeriği olarak aşağıdaki metni kullanın `/etc/bind/named.conf.local` :
 
-        // Replace the following with the DNS suffix for your virtual network
-        zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-            type forward;
-            forwarders {168.63.129.16;}; # The Azure recursive resolver
-        };
+    ```DNS Zone file
+    // Replace the following with the DNS suffix for your virtual network
+    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+        type forward;
+        forwarders {168.63.129.16;}; # The Azure recursive resolver
+    };
+    ```
 
     > [!IMPORTANT]  
     > Öğesini `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` daha önce ALDıĞıNıZ DNS son eki ile değiştirmelisiniz.
@@ -242,7 +246,7 @@ Sanal ağı Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullana
 
 4. __Özel__' i seçin ve özel DNS sunucusunun **özel IP adresini** girin.
 
-5. __Kaydet__'i seçin.  <br />  
+5. __Kaydet__’i seçin.  <br />  
 
     ![Ağ için özel DNS sunucusunu ayarlama](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -256,10 +260,12 @@ Koşullu iletme yalnızca belirli bir DNS son eki için istekleri iletir. Bu dur
 
 Aşağıdaki metin, **BIND** DNS yazılımının koşullu iletici yapılandırmasına bir örnektir:
 
-    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-        type forward;
-        forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
-    };
+```DNS Zone file
+zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+    type forward;
+    forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
+};
+```
 
 **Windows Server 2016**' de DNS kullanma hakkında bilgi için bkz. [Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) belgeleri...
 

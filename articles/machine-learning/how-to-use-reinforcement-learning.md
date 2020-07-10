@@ -1,7 +1,7 @@
 ---
-title: Pekiştirmeye dayalı öğrenme modeli eğitimi yapın ve dağıtın.
+title: Pekiştirmeye dayalı öğrenme modeli (Önizleme) eğitimi yapın ve dağıtın.
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning pekiştirmeye dayalı Learning (RL) kullanarak bir RL aracısının Pong 'yi yürütmeye nasıl eğeceğinizi öğrenin.
+description: Azure Machine Learning pekiştirmeye dayalı Learning (Önizleme) kullanarak bir RL aracısını Pong oynamak üzere eğitme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,11 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556933"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203277"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -35,7 +36,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 
 Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://aka.ms/azureml-rl-notebooks)bulunan [Rllib Pong örneğini](https://aka.ms/azureml-rl-pong) temel alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangıç deneyimi için Azure Machine Learning işlem örneğini denemenizi öneririz. Pekiştirmeye dayalı örnek Not defterleri, Azure Machine Learning işlem örneğinde hızlı bir şekilde klonlamak ve çalıştırmak için kullanılabilir.
 

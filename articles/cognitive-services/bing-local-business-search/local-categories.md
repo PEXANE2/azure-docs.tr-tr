@@ -10,21 +10,21 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69906389"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200507"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing yerel Iş Arama API 'SI için kategorileri ara
 
-Bing yerel Iş Arama API 'SI, bir kullanıcının konumunu kapatan sonuçlara göre çok sayıda kategoride yerel iş varlıkları aramanızı sağlar. Bu aramaları, `localCircularView` ve `localMapView` [parametreleriyle](specify-geographic-search.md)birlikte aramalara dahil edebilirsiniz.
+Bing yerel Iş Arama API 'SI, bir kullanıcının konumunu kapatan sonuçlara göre çok sayıda kategoride yerel iş varlıkları aramanızı sağlar. Bu aramaları, ve parametreleriyle birlikte aramalara dahil edebilirsiniz `localCircularView` `localMapView` [parameters](specify-geographic-search.md).
 
 
 ## <a name="toplevel-categories"></a>TopLevel kategorileri 
 
-Aşağıdaki türler, aramanın ana kategorilerini tanımlar.  `localCategories` Parametreye atanan virgülle ayrılmış bir liste kullanılarak birden fazla kategori belirtilebilir.  
+Aşağıdaki türler, aramanın ana kategorilerini tanımlar.  Parametreye atanan virgülle ayrılmış bir liste kullanılarak birden fazla kategori belirtilebilir `localCategories` .  
 - EatDrink 
 - SeeDo 
 - Ba 
@@ -34,56 +34,24 @@ Aşağıdaki türler, aramanın ana kategorilerini tanımlar.  `localCategories`
 - Hastaneler 
 
 ## <a name="sub-categories"></a>Alt Kategoriler
-Alt kategoriler ile `localCategories`aynı şekilde geçirilir. Alt Kategoriler daha belirgin kategorileridir. Bu, bir kategori C ve alt kategorilerinden birini, aynı virgülle ayrılmış listede belirtirseniz, yalnızca C 'yi belirttiklerinde aynı sonuçları elde edersiniz.
+Alt kategoriler ile aynı şekilde geçirilir `localCategories` . Alt Kategoriler daha belirgin kategorileridir. Bu, bir kategori C ve alt kategorilerinden birini, aynı virgülle ayrılmış listede belirtirseniz, yalnızca C 'yi belirttiklerinde aynı sonuçları elde edersiniz.
 
-### <a name="eat-drink"></a>Kurutink yiyecek 
-|  |  |  |  |
-| - | - | - | - |
-| BreweriesAndBrewPubs | Coctasillounges | AfricanRestaurants |
-| AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Taverns | Sportsçubuklar | Bu |
-| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
-| Britişlolar | Caferestaurlar | Caribbeanrestoranlar |
-| Çineserestalar | CoffeeAndTea | Delicatessens | 
-| DeliveryService | Diners | Discountmağazaları | 
-| Donutlar | Fastyiyecek | Frenchrestoranlar | 
-| FrozenYogurt | Geri Restoran | Süper pazarlar | 
-| Greekrestoranlar | Grocers | Hawaii dili | 
-| HungarianRestaurants | Iecreatofrozendesserts | Indianlotlar | 
-| Ialianrestoranlar | JapaneseRestaurants | Juıces | 
-| KoreanRestaurants | LiquorStores | Mexicanrestoranlar |
-| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Pretzya | Restoranlar | 
-| Russianandukraınrestoranlar | Sandwiches | Deniz ve restoran 'Lar | 
-| Spanrestoranlar | Steakhouserestalarurlar | Sushilotlar | 
-| Ders | Thairestoranlar | Türki Restoranlar | 
-| Vegetarianandveganrestoranlar | VietnameseRestaurants|  |
- 
-### <a name="see-do"></a>Bkz. do 
-|  |  |  |
-| -- | -- | -- |
-| Amusementpark | Atlamalar | Carniler |
-| Casinos | LandmarksAndHistoricalSites | Mini Aturegolfkurslar |
-| Moviemetreler | Museums | Lular |
-| Sı, Seeingturları | Touristınformation | Buros |
- 
-### <a name="shop"></a>Ba 
-|  |  |  |
-| -- | -- | -- |
-| Antisorgtores | Kitap depoları | Cdandrecordmağazaları |
-| Childrensclothingmağazaları | CigarAndTobaccoShops | Comicbookmağazaları |
-| DepartmentStores | Discountmağazaları | FleaMarketsAndBazaars |
-| Mobilyanitugeri Yüklemeler | HomeImprovementStores | JewelryAndWatchesStores |
-| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
-| Mensclothingmağazaları | Müzik depoları | Outletmağazaları |
-| Petterlar | Petsupplymağazaların | SchoolAndOfficeSupplyStores |
-| ShoeStores | SportingGoodsStores | ToyAndGameStores |
-| Inserminandtakıma Tmağazaları | Womensclothingmağazaları |  |
+### <a name="eat-drink"></a>Kurutink yiyecek
+
+> BreweriesAndBrewPubs, Coctasillounges, AfricanRestaurants, AmericanRestaurants, Bagels, BarbecueRestaurants, Taverns, Sportsçubuklar, çubuklar, BarsGrillsAndPubs, BuffetRestaurants | BelgianRestaurants, Britishrestoranlar, Caferestaurler, Caribbeanrestoranlar, Chineserestaurlar, CoffeeAndTea, Delicatessens, DeliveryService, dinleyiciler, Discountmağazalar, Donmanlar, Fastgıda, Frenchrestoran, FrozenYogurt, Germanrestoranlar, süper pazarlar, Greekrestoranlar, Grocers, Hawaii JapaneseRestaurants, Juıces, KoreanRestaurants, LiquorStores, Mexicanrestoranlar, MiddleEasternRestaurants, Pizza, PolishRestaurants, PortugueseRestaurants, Pretzze, restoranlar, Russianandukrainilanrestoran, Sandwiches, deniz Yondrestoranlar, Spanlarrestoranlar, Steakhouserestaurler, Sushirestoranlar, kalkış, Thairestoranlar, Türklarrestoran, Vegetarianandveganrestoranlar, VietnameseRestaurants
+
+### <a name="see-do"></a>Bkz. do
+
+> Amusementpark, Atizler, Carnisal, Casınos, Landmarksandhıtoricalsites, Mini Aturegolfkurslar, Movielandters, Museums, Park, Sılerseeingtur, Touristınformation, Buros
+
+### <a name="shop"></a>Ba
+
+> Antisorgtores, Bookmağazaların, Cdandrecordmağazaların, Childrensclothingmağazaların, CigarAndTobaccoShops, Comicbookmağazaların, DepartmentStores, Discountmağazaların, FleaMarketsAndBazaars, Mobilyanitugeri Yüklemeler, HomeImprovementStores, JewelryAndWatchesStores, KitchenwareStores, LiquorStores, MallsAndShoppingCenters, Mensclothingmağazalar, Musicmağazaları, Outletmağazaları, Pettat, Petsupplymağazalar, SchoolAndOfficeSupplyStores, ShoeStores, SportingGoodsStores, ToyAndGameStores, Catminandtooltmağazaları, Womensclothingmağazaları
 
 
 ## <a name="examples-of-local-categories-search"></a>Yerel Kategori arama örnekleri
 
-Aşağıdaki örnekler, `localCategories` parametresine göre sonuçları alır:
+Aşağıdaki örnekler, parametresine göre sonuçları alır `localCategories` :
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=HotelsAndMotels`
 

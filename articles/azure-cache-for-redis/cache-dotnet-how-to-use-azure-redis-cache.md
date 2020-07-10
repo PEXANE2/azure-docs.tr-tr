@@ -8,18 +8,18 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 9072f057059c66d0030c31e649fda6b6ebe3db9d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2efe05ebb26030720a1af90c4a4de8d48ea37106
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117820"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201475"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Hızlı başlangıç: .NET Framework bir uygulamayla Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Framework uygulamasına katabilirsiniz. .NET konsol uygulamasında C# kodu ile [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini özellikle kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
@@ -251,7 +251,7 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 
 **Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
 
-![Sil](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
+![Silme](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
 Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
 
@@ -268,4 +268,7 @@ Bu hızlı başlangıçta, bir .NET uygulamasından Redsıs için Azure önbelle
 > [!div class="nextstepaction"]
 > [Redsıs için Azure önbelleği kullanan bir ASP.NET Web uygulaması oluşturun.](./cache-web-app-howto.md)
 
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 
+> [!div class="nextstepaction"]
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

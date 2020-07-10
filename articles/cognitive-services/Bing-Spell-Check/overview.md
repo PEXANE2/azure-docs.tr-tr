@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383008"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200501"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Bing Yazım Denetimi API’si nedir?
 
@@ -23,8 +23,7 @@ Bing Yazım Denetimi API'si, metin üzerinde bağlamsal dilbilgisi ve yazım den
 
 ## <a name="features"></a>Özellikler
 
-
-|  |  |
+| Özellik | Açıklama |
 |---------|---------|
 |Birden çok yazım denetimi modu     | Birden çok yazım denetimi modu, dilbilgisi ve/veya yazım denetimine odaklanan düzeltmeler almanızı sağlar. |
 |Slang ve resmi olmayan dil tanıma     | Metinde kullanılan ortak ifadeleri ve resmi olmayan terimleri TANIIN.         |
@@ -43,6 +42,6 @@ Bing Yazım Denetimi API'si, HTTP istekleri yapan ve JSON yanıtlarını ayrış
 
 İlk olarak, çeşitli metinleri hızlı bir şekilde nasıl kontrol etbileceğinizi görmek için Bing Yazım Denetimi Search API [etkileşimli tanıtımı](https://azure.microsoft.com/services/cognitive-services/spell-check/) ' nı deneyin.
 
-API'yi çağırmaya hazır olduğunuzda, bir [Bilişsel hizmetler API hesabı](../../cognitive-services/cognitive-services-apis-create-account.md) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+API'yi çağırmaya hazır olduğunuzda, bir [Bilişsel hizmetler API hesabı](../../cognitive-services/cognitive-services-apis-create-account.md) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
 
 Ayrıca, kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) da ziyaret edebilirsiniz.
