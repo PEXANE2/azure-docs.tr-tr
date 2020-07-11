@@ -18,5 +18,5 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 |-------------------|-----------------------------------------------------------|
 | Blok blobu        | ~ 4,75 TiB                                                 |
 | Sayfa blobu         | 8 TiB <br> Sayfa Blobu biçiminde karşıya yüklenen her dosya 512 bayt hizalı (tamsayı birden çok) olmalıdır, aksi takdirde karşıya yükleme başarısız olur. <br> VHD ve VHDX 512 bayt hizalı. |
-| Azure Dosyaları        | 1 TiB                                                      |
+| Azure Dosyalar        | 1 TiB                                                      |
 | Yönetilen diskler     | 4 TiB <br> Boyut ve sınırlar hakkında daha fazla bilgi için bkz. <li>[Standart SSD 'lerin ölçeklenebilirlik hedefleri](../articles/virtual-machines/windows/disks-types.md#standard-ssd)</li><li>[Premium SSDs 'nin ölçeklenebilirlik hedefleri](../articles/virtual-machines/windows/disks-types.md#standard-hdd)</li><li>[Standart HDD 'lerin ölçeklenebilirlik hedefleri](../articles/virtual-machines/windows/disks-types.md#premium-ssd)</li><li>[Yönetilen disklerin fiyatlandırma ve faturalama](../articles/virtual-machines/windows/disks-types.md#billing)</li>  

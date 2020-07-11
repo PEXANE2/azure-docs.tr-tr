@@ -10,16 +10,18 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: f45cf27f427625571a58022c199391cac9a05bd2
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146931"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223763"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
 Azure bilişsel hizmetler, geliştiricilerin doğrudan AI veya veri bilimi becerileri veya bilgisi olmadan akıllı uygulamalar oluşturmasına yardımcı olan API 'Ler, SDK 'Lar ve hizmetlerdir. Azure bilişsel hizmetler, geliştiricilerin uygulamalarına kolayca bilişsel özellikler eklemesini sağlar. Azure bilişsel hizmetler 'in amacı, geliştiricilerin görebileceği, duyabilecek, konuşabilecek, anlayan ve hatta başlayamaz uygulamalar oluşturmalarına yardımcı olmaktır. Azure bilişsel hizmetler 'deki hizmetlerin kataloğu, beş ana pillik, konuşma, dil, Web Araması ve Kararta kategorize edilebilir.
+
+Yeni ve güncelleştirilmiş bilişsel hizmetler belgelerini görmek mi istiyorsunuz? [Bilişsel hizmetler docs 'daki](whats-new-docs.md)yenilikler hakkında göz atın.
 
 ## <a name="vision-apis"></a>Vision API 'Leri
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/07/2020
+ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 0d6cc523a56c9235360e6476b69303c51dc4d893
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125813"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224358"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -87,47 +87,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şeki
 >[!NOTE]
 >Bir Azure aboneliğine ihtiyacınız varsa, bir [aylık ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/). Azure 'un ücretsiz deneme sürümünü kullanıyorsanız, Windows Server Active Directory Azure Active Directory ile eşitlenmiş halde tutmak için Azure AD Domain Services kullanmanız gerekir.
 
-Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağıdaki URL 'Lere erişimi olmalıdır:
-
-|Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
-|---|---|---|---|
-|*. wvd.microsoft.com|443|Hizmet trafiği|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
-|*.core.windows.net|443|Aracı trafiği|AzureCloud|
-|*.servicebus.windows.net|443|Aracı trafiği|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Aracı trafiği|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
-|kms.core.windows.net|1688|Windows etkinleştirme|Internet|
-|wvdportalstorageblob.blob.core.windows.net|443|Azure portal desteği|AzureCloud|
-
->[!IMPORTANT]
->Windows sanal masaüstü artık FQDN etiketini destekliyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](../firewall/protect-windows-virtual-desktop.md).
->
->Hizmet sorunlarını engellemek için URL 'Ler yerine FQDN etiketleri veya hizmet etiketleri kullanmanızı öneririz. Listelenen URL 'Ler ve Etiketler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir. Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler dahil değildir.
-
-Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL 'Ler listelenmektedir:
-
-|Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
-|---|---|---|---|
-|*.microsoftonline.com|443|Microsoft Online Services kimlik doğrulaması|Yok|
-|*. events.data.microsoft.com|443|Telemetri hizmeti|Yok|
-|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Yok|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Yok|
-|login.windows.net|443|Microsoft Online Services 'da oturum açın Microsoft 365|Yok|
-|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Yok|
-|*. digicert.com|443|Sertifika iptal denetimi|Yok|
-
-
->[!NOTE]
->Windows sanal masaüstü, ağ trafiğine izin vermek için beyaz listeye sahip bir IP adresi aralığı listesine sahip değil. Şu anda yalnızca belirli URL 'Lerin beyaz listeye alınmasını destekliyoruz.
->
->Gerekli Azure Active Directory ilgili URL 'Ler dahil olmak üzere Office ile ilgili URL 'Lerin bir listesi için bkz. [office 365 URL 'leri ve IP adresi aralıkları](/office365/enterprise/urls-and-ip-address-ranges).
->
->Hizmet trafiğiyle ilgili URL 'Ler için (*) joker karakterini kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmayı tercih ediyorsanız, joker karakterleri olmayan URL 'Leri bulma hakkında bilgi edinebilirsiniz:
->
->1. Sanal makinelerinizi Windows sanal masaüstü ana bilgisayar havuzuna kaydedin.
->2. **Olay Görüntüleyicisi** 'ni açın ve **Windows günlükleri**  >  **uygulaması**  >  **WVD-Agent** ' a gidin ve olay kimliği 3702 ' i arayın.
->3. Olay KIMLIĞI 3702 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3702 altındaki URL 'Ler bölgeye özeldir. Beyaz Listeleme işlemini, sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle tekrarlamanız gerekecektir.
+Windows sanal masaüstü dağıtımınızın beklendiği gibi çalışması için engellemesini kaldırmanız gereken URL 'lerin bir listesi için, bkz. [GÜVENLI URL listemize](safe-url-list.md)bakın.
 
 Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
 
@@ -153,20 +113,7 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 > [!IMPORTANT]
 > Windows sanal masaüstü Şu anda Windows Mağazası 'ndan uzak masaüstü istemcisini desteklememektedir. Bu istemciye yönelik destek gelecekteki bir sürüme eklenecektir.
 
-Uzak Masaüstü istemcilerinin aşağıdaki URL 'Lere erişimi olmalıdır:
-
-|Adres|Giden TCP bağlantı noktası|Amaç|İstemci (ler)|
-|---|---|---|---|
-|*. wvd.microsoft.com|443|Hizmet trafiği|Tümü|
-|*.servicebus.windows.net|443|Sorun giderme verileri|Tümü|
-|go.microsoft.com|443|Microsoft FWLinks|Tümü|
-|aka.ms|443|Microsoft URL kısaltalayıcı|Tümü|
-|docs.microsoft.com|443|Belgeler|Tümü|
-|privacy.microsoft.com|443|Gizlilik bildirimi|Tümü|
-|query.prod.cms.rt.microsoft.com|443|İstemci güncelleştirmeleri|Windows Masaüstü|
-
->[!IMPORTANT]
->Bu URL 'Leri açmak, güvenilir bir istemci deneyimi için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca istemci sitelerine ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez.
+Uzak Istemcileri kullanmak için engellemesini kaldırmanız gereken URL 'Ler hakkında daha fazla bilgi edinmek için bkz. [GÜVENLI URL listesi](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Desteklenen sanal makine işletim sistemi görüntüleri
 
@@ -185,14 +132,14 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|No|Hayır|
+|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Evet|Hayır|Hayır|
 |Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|No|Hayır|
-|Windows 7 Enterprise|Yes|Yes|No|Hayır|
-|Windows Server 2019|Yes|Yes|No|Hayır|
+|Windows 10 Enterprise, sürüm 1809|Yes|Evet|Hayır|Hayır|
+|Windows 7 Enterprise|Yes|Evet|Hayır|Hayır|
+|Windows Server 2019|Yes|Evet|Hayır|Hayır|
 |Windows Server 2016|Yes|Yes|Yes|Yes|
-|Windows Server 2012 R2|Yes|Yes|No|Hayır|
+|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

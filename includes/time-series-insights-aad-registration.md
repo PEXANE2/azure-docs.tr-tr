@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 ms.topic: include
 ms.custom: include file
 services: time-series-insights
