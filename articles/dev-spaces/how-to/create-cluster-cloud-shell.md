@@ -5,11 +5,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Her şeyi yüklemeden doğrudan tarayıcınızdan Azure Dev Spaces için etkin bir Kubernetes kümesini kolayca oluşturmayı öğrenin.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6da9055e11b5c514d71122c3650bbc326fb8de8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77605310"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232296"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Azure Cloud Shell ile Azure Dev Spaces etkin bir Kubernetes kümesi oluşturma
 
@@ -33,7 +34,7 @@ Kümenin oluşturulması birkaç dakika sürer.  Tamamlandığında, çıktı JS
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tam öğreticilerin bağlantıları için bkz. [Azure dev Spaces](/azure/dev-spaces/) .
+Tam öğreticilerin bağlantıları için bkz. [Azure dev Spaces](../index.yml) .
 
 > [!IMPORTANT]
 > Azure Dev Spaces hızlı başlangıç ve öğreticilerin birçoğu, işlemleri gerçekleştirmek için Azure Dev Spaces CLı kullanır. Azure Dev Spaces CLı 'yi Azure Cloud Shell yükleyemezsiniz.

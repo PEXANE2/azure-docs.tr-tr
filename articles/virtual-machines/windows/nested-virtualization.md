@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 543ed51cc10cce017e0e57a1a351ce382f1ca35f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083517"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232330"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM 'de iç içe sanallaştırmayı etkinleştirme
 
@@ -145,7 +145,7 @@ Dinamik adres ataması için konak sanal makinesinde DHCP 'yi yapılandırmak i�
   
 3. **DHCP sunucusu** onay kutusunu seçin, **Özellik Ekle**' ye tıklayın ve ardından Sihirbazı tamamlamadan **İleri** ' ye tıklayın.
   
-4. **Install**'a tıklayın.
+4. **Yükle**'ye tıklayın.
 
 #### <a name="configure-a-new-dhcp-scope"></a>Yeni bir DHCP kapsamı yapılandırma
 
@@ -181,3 +181,4 @@ Bu örnekte, 192.168.0.0/24 aralığında bir adres kullanacaksınız.
 Konuk sanal makinede, tarayıcınızı açın ve bir Web sayfasına gidin.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
+Konuk VM 'Ler ve Azure VM 'Ler arasında şeffaf bağlantıyı etkinleştirme yönergeleri için lütfen [Bu belgeye](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)başvurun.

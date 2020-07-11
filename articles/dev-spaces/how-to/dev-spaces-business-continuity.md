@@ -8,23 +8,24 @@ ms.topic: conceptual
 description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş sürekliliği sağlamanıza ve olağanüstü durum kurtarma için hazırlık yapmayı öğrenin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996933"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232432"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için olağanüstü durum kurtarma kılavuzunu gözden geçirin
 
-Azure Dev Spaces, Azure Kubernetes hizmeti 'nin (AKS) bir özelliğidir. AKS 'de olağanüstü durum kurtarma yönergelerinden haberdar olmanız ve dev alanları için kullandığınız AKS kümelerine uygulanıp uygulanmadığını göz önünde bulundurmanız gerekir. Daha fazla bilgi için lütfen [Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma Için en iyi yöntemlere](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) başvurun
+Azure Dev Spaces, Azure Kubernetes hizmeti 'nin (AKS) bir özelliğidir. AKS 'de olağanüstü durum kurtarma yönergelerinden haberdar olmanız ve dev alanları için kullandığınız AKS kümelerine uygulanıp uygulanmadığını göz önünde bulundurmanız gerekir. Daha fazla bilgi için lütfen [Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma Için en iyi yöntemlere](../../aks/operator-best-practices-multi-region.md) başvurun
 
 ## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Farklı bölgelerde AKS kümelerinde dev alanlarını etkinleştirme
 
 Farklı bölgelerdeki AKS kümelerinde dev alanlarını etkinleştirmek, Azure bölge hatasından hemen sonra dev alanlarını kullanmayı sürdürmeye olanak tanır.
 
-AKS 'nin çok bölgeli dağıtımları hakkında genel bilgi için bkz. [çok bölgeli dağıtım Için plan](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+AKS 'nin çok bölgeli dağıtımları hakkında genel bilgi için bkz. [çok bölgeli dağıtım Için plan](../../aks/operator-best-practices-multi-region.md#plan-for-multiregion-deployment)
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Azure CLı aracılığıyla dev alanlarını etkinleştirme
 

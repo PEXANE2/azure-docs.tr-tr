@@ -9,11 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 565d98bd5f27351f16ff523aa017c4b980fbdd53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827283"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232670"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri ile dikey otomatik ölçeklendirme
 
@@ -38,7 +39,7 @@ Sanal makine ölçek kümesinden ölçüm tabanlı uyarılara dayalı olarak tet
 > [!NOTE]
 > İlk sanal makinenin boyutu nedeniyle, ölçeklendirilebilen Boyutlar, geçerli sanal makinedeki kümedeki diğer boyutların kullanılabilirliğine bağlı olarak, ' de sınırlı olabilir. Bu makalede kullanılan yayımlanan Otomasyon Runbook 'larında bu durumu ele aldık ve yalnızca aşağıdaki VM boyut çiftleri içinde ölçeklendirdik. Bu, Standard_D1v2 bir sanal makinenin aniden Standard_G5 kadar ölçeklendirilmesi veya Basic_A0 olarak ölçeklendirilmesi anlamına gelir. Ayrıca, kısıtlanmış sanal makine boyutları ölçeği artırma/azaltma desteklenmez. Aşağıdaki boyut çiftleri arasında ölçeklendirmeyi seçebilirsiniz:
 > 
-> | VM boyutları ölçeklendirme çifti |  |
+> | VM boyutları ölçeklendirme çifti üyesi | Üye |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |
@@ -86,7 +87,7 @@ Sanal makine ölçek kümesinden ölçüm tabanlı uyarılara dayalı olarak tet
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Farklı Çalıştır özelliği ile bir Azure Otomasyonu hesabı oluşturma
-Yapmanız gereken ilk şey, sanal makine ölçek kümesi örneklerini ölçeklendirmek için kullanılan runbook 'ları barındıran bir Azure Otomasyonu hesabı oluşturmaktır. Son [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) , bir kullanıcı adına runbook 'ları otomatik olarak çalıştırmak Için hizmet sorumlusu ayarlamayı sağlayan "farklı çalıştır hesabı" özelliğini kullanıma sunmuştur. Daha fazla bilgi için bkz.
+Yapmanız gereken ilk şey, sanal makine ölçek kümesi örneklerini ölçeklendirmek için kullanılan runbook 'ları barındıran bir Azure Otomasyonu hesabı oluşturmaktır. Son [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) , bir kullanıcı adına runbook 'ları otomatik olarak çalıştırmak Için hizmet sorumlusu ayarlamayı sağlayan "farklı çalıştır hesabı" özelliğini kullanıma sunmuştur. Daha fazla bilgi için bkz:
 
 * [Azure Farklı Çalıştır hesabıyla Runbook Kimlik Doğrulaması](../automation/automation-sec-configure-azure-runas-account.md)
 

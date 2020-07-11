@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512009"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232279"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
@@ -30,12 +30,12 @@ Bu sorunun yaygın nedenleri şunlardır:
 
 |   | SMB 2.1 <br>(Aynı Azure bölgesi içindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölgeden takar) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7,5 + |
-| CentOS | 7 + |  7,5 + |
-| Debian | 8 + |   |
-| openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| **Ubuntu Server** | 14.04 + | 16.04 + |
+| **RHEL** | 7 + | 7,5 + |
+| **CentOS** | 7 + |  7,5 + |
+| **Debian** | 8 + |   |
+| **openSUSE** | 13.2 + | 42.3 + |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3 + |
 
 - CIFS yardımcı programları (CIFS-utils) istemcide yüklü değil.
 - İstemcide en düşük SMB/CIFS sürümü (2,1) yüklü değil.
@@ -84,9 +84,9 @@ Linux 'ta aşağıdakine benzer bir hata iletisi alırsınız:
 
 ### <a name="cause"></a>Nedeni
 
-Bir dosya için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştınız.
+Bir dosya veya dizin için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştınız.
 
-Tek bir dosyada 2.000 açık tanıtıcı kotası vardır. 2.000 açık tutamacı varsa, kotanın ulaşılmadığını belirten bir hata iletisi görüntülenir.
+Tek bir dosya veya dizin üzerinde 2.000 açık tanıtıcı kotası vardır. 2.000 açık tutamacı varsa, kotanın ulaşılmadığını belirten bir hata iletisi görüntülenir.
 
 ### <a name="solution"></a>Çözüm
 

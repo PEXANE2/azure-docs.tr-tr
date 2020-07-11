@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422888"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232245"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM konuk işletim sisteminde güvenlik duvarı kuralını etkinleştirin veya devre dışı bırakın
 
@@ -107,7 +107,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
     
         Ardından, dizedeki **etkin = FALSE değerini** **etkin = true** olarak değiştirin:
 
-        **v 2.22 | Eylem = Izin ver | Etkin = TRUE | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =% SystemRoot% \system32\svchost.exe| Svc = TermService | Ad = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
     
     * Bir kuralı devre dışı bırakmak için aşağıdaki kayıt defteri değerini açın:
     
@@ -115,7 +115,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
         Ardından, **etkin = TRUE değerini** **etkin = false**olarak değiştirin:
         
-        **v 2.22 | Eylem = Izin ver | Etkin = yanlış | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =% SystemRoot% \system32\svchost.exe| Svc = TermService | Ad = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 3.  Değişiklikleri uygulamak için VM 'yi yeniden başlatın.
 
@@ -154,7 +154,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin sistem diskinin bir anlık gör
         
         Ardından, **etkin = FALSE değerini** **etkin = true**olarak değiştirin.
         
-        **v 2.22 | Eylem = Izin ver | Etkin = TRUE | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =% SystemRoot% \system32\svchost.exe| Svc = TermService | Ad = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
     3.  Bir kuralı devre dışı bırakmak için aşağıdaki kayıt defteri anahtarını açın:
 
@@ -162,7 +162,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin sistem diskinin bir anlık gör
 
         Ardından, **etkin = true değerini** **etkin = false**olarak değiştirin.
         
-        **v 2.22 | Eylem = Izin ver | Etkin = yanlış | Dır = | Protokol = 6 | Profil = etki alanı | Profil = özel | Profil = genel | LPort = 3389 | Uygulama =% SystemRoot% \system32\svchost.exe| Svc = TermService | Ad = \@FirewallAPI.dll,-28775 | DESC = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 9.  **Brokensystem**öğesini vurgulayın ve sonra menüden **Dosya**  >  **Kaldır Hive** öğesini seçin.
 

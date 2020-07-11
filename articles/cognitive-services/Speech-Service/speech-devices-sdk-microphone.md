@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168133"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232534"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Konuşma cihazları SDK 'Sı dizi önerileri
 
@@ -27,11 +27,11 @@ Konuşma cihazları SDK 'Sı, mikrofon geometrisi ve bileşen seçimi dahil olma
 
 Aşağıdaki dizi geometrileri, Microsoft ses yığını ile kullanım için önerilir. Belirli uygulamalara, Kullanıcı senaryolarına ve cihaz formu faktörüne sahip daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan
 
-|     | Dairesel dizi |     | Doğrusal dizi |     |
+| Mik& geometrisi | Dairesel dizi | Dairesel dizi | Doğrusal dizi | Doğrusal dizi |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \#Akademik | 7 | 4 | 4 | 2 |
-| Geometrisi | 6 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | 3 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | Uzunluk = 120 mm, Aralık = 40 mm | Aralık = 40 mm |
+| Geometri | 6 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | 3 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | Uzunluk = 120 mm, Aralık = 40 mm | Aralık = 40 mm |
 
 Mikrofon kanalları, yukarıdaki her dizi için gösterilen numaralandırmaya göre sıralanmalıdır, 0 ' dan artış yapılır. Microsoft ses yığını, yankı iptali gerçekleştirmek için ek bir ses kayıttan yürütme akışı gerektirir.
 
@@ -90,8 +90,8 @@ Mikrofonlar bir cihazla tümleştirilirken mimari için aşağıdaki yönergeler
 | Parametre | Öneri |
 | --------- | -------------- |
 | MIC bağlantı noktası benzerliği | Tüm mikrofon bağlantı noktaları dizideki aynı uzunluktadır |
-| MIC bağlantı noktası boyutları | Bağlantı noktası boyutu Ø 0.8-1,0 mm. Bağlantı noktası uzunluğu/bağlantı \< noktası çapı 2 |
-| Mik mühürleme         | Stack gaskets bir arada uygulandı. Fohar gaskets için %70 sıkıştırma oranı öner \> |
+| MIC bağlantı noktası boyutları | Bağlantı noktası boyutu Ø 0.8-1,0 mm. Bağlantı noktası uzunluğu/bağlantı noktası çapı \< 2 |
+| Mik mühürleme         | Stack gaskets bir arada uygulandı. \>Fohar gaskets için %70 sıkıştırma oranı öner |
 | MIC güvenilirliği     | Ara, toz ve giriş yapılmasını engellemek için kullanılmalıdır (altı bağlantı noktalı mikrofonlar ve mühürleme/en üst kapak için PCB arasında) |
 | MIC yalıtımı       | Lastik gaskets ve titreşim, özellikle Tümleşik hoparlörler nedeniyle titreşim yollarını yalıtmak için yapı aracılığıyla ayrılır |
 | Örnekleme saati      | Cihaz sesinin azalmaları ve düşük bir düşüş olması gerekir |

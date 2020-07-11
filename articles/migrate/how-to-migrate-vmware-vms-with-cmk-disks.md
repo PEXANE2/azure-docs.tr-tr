@@ -7,11 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79269490"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232177"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware VM 'lerini, sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen Azure VM 'lerine geçirin
 
@@ -23,7 +24,7 @@ Bu makaledeki örneklerde, Kaynak Yöneticisi şablonu oluşturmak ve dağıtmak
 
 Yönetilen diskler için müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifreleme (SSE) hakkında [daha fazla bilgi edinin](../virtual-machines/windows/disk-encryption.md) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Araç gereksinimlerini anlamak üzere aracısız çoğaltma ile VMware VM 'lerini Azure 'a geçirme [öğreticisini gözden geçirin](tutorial-migrate-vmware.md) .
 - Azure geçişi projesi oluşturmak ve projeye **Azure geçişi: sunucu geçiş** aracını eklemek için [Bu yönergeleri izleyin](how-to-add-tool-first-time.md) .
@@ -57,7 +58,7 @@ Sunucu geçiş portalı deneyimi, bir VM 'yi bir projede ilk kez çoğalttığı
 
 Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler. VM 'Leri CMK ile çoğaltmak için bir disk şifreleme kümesi oluşturacak ve bunu çoğaltma işlemine girdi olarak geçireceğiz.
 
-Azure PowerShell kullanarak bir disk şifreleme kümesi oluşturmak için [buradaki](../virtual-machines/windows/disk-encryption.md#powershell) örneği izleyin. Disk şifrelemesi kümesinin, sanal makinelerin geçirildiği hedef abonelikte ve geçiş için hedef Azure bölgesinde oluşturulduğundan emin olun.
+Azure PowerShell kullanarak bir disk şifreleme kümesi oluşturmak için [buradaki](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) örneği izleyin. Disk şifrelemesi kümesinin, sanal makinelerin geçirildiği hedef abonelikte ve geçiş için hedef Azure bölgesinde oluşturulduğundan emin olun.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

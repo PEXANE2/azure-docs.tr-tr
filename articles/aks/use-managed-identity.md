@@ -4,14 +4,14 @@ description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl ku
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 30d1290f9eb7b2750f09e5e256d4dd212c7e4607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610294"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231990"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -23,7 +23,7 @@ ms.locfileid: "85610294"
 
 Aşağıdaki kaynağın yüklü olması gerekir:
 
-- Azure CLı, sürüm 2.2.0 veya üzeri
+- Azure CLı, sürüm 2.8.0 veya üzeri
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -36,7 +36,7 @@ Aşağıdaki kaynağın yüklü olması gerekir:
 
 AKS, yerleşik hizmetler ve eklentiler için birkaç yönetilen kimlik kullanır.
 
-| Kimlik                       | Name    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
+| Identity                       | Ad    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
 |----------------------------|-----------|----------|
 | Kontrol düzlemi | görünür değil | AKS tarafından ağ kaynaklarını yönetmek için kullanılır, örneğin, giriş, genel IP vb. için bir yük dengeleyici oluşturun.| Düğüm kaynak grubu için katkıda bulunan rolü | Şu anda desteklenmiyor
 | Kubelet | AKS küme adı-agentpool | Azure Container Registry (ACR) ile kimlik doğrulaması | Düğüm kaynak grubu için okuyucu rolü | Şu anda desteklenmiyor

@@ -3,12 +3,12 @@ title: İçeriği karşıya yüklemek, kodlamak ve akışa almak için Portal '�
 description: Bu hızlı başlangıçta, Azure Media Services ile içeriği karşıya yüklemek, kodlamak ve akışa almak için Portal 'ın nasıl kullanılacağı gösterilir.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: b023a4ed68aa7cfa41661e986dcd4ad6819b810d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988962"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232483"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Hızlı başlangıç: portala karşıya içerik yükleme, kodlama ve akışla
 
@@ -46,23 +46,23 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
     * [Filtreler](filters-concept.md)
 * İçeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana DRM sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay) şifreleyerek koruyabilirsiniz. Azure portal hızlı başlangıç [ile Içerik şifreleme](encrypt-content-quickstart.md) içerik korumasının nasıl yapılandırılacağını gösterir.
         
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [Media Services hesabı oluşturma](create-account-howto.md#use-the-azure-portal)
 
-## <a name="upload"></a>Karşıya Yükle
+## <a name="upload"></a>Karşıya Yükleme
 
 1. [Azure portalda](https://portal.azure.com/) oturum açın.
 1. Media Services hesabınıza bulup tıklayın.
 1. **Varlıkları seçin (yeni)**.
 1. Pencerenin üst kısmındaki **karşıya yükle** ' ye basın. 
-1. Karşıya yüklemek istediğiniz bir dosya Tha öğesine sürükleyip bırakın veya tarayın.
+1. Karşıya yüklemek istediğiniz bir dosyaya sürükleyip bırakın veya tarayın.
 
 Varlıklar pencerenize gittiğinizde, listeye yeni bir varlık eklendiğini görürsünüz:
 
-![Karşıya Yükle](./media/manage-assets-quickstart/upload.png)
+![Karşıya Yükleme](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>Kodlama
 

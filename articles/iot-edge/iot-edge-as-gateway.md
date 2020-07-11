@@ -11,11 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 916eeaa60bc054301af039164ce1c14e77ceb91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733523"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232636"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge cihazını ağ geçidi olarak kullanma
 
@@ -23,11 +24,11 @@ IoT Edge çözümlerinde ağ geçitleri, bu yeteneklere sahip olmayan IoT cihazl
 
 ## <a name="patterns"></a>Desenler
 
-Bir IoT Edge cihazını ağ geçidi olarak kullanmanın üç deseni vardır: saydam, protokol çevirisi ve kimlik çevirisi:
+IoT Edge cihazını ağ geçidi olarak kullanmak için üç desen vardır; saydam, protokol çevirisi ve kimlik çevirisi:
 
-* **Saydam** – teorik olarak IoT Hub bağlantı kurmak için bir ağ geçidi cihazına bağlanabilir cihazlar. Aşağı akış cihazlarının kendi IoT Hub kimlikleri vardır ve MQTT, AMQP veya HTTP protokollerinden herhangi birini kullanıyor. Ağ geçidi yalnızca aygıtlar ve IoT Hub arasındaki iletişimleri geçirir. Her iki cihaz ve IoT Hub aracılığıyla onlarla etkileşim kuran kullanıcılar, bir ağ geçidinin iletişimlerini ortalamalarını farkında değildir. Bu tanıma olmaması, ağ geçidinin *saydam*olarak kabul edildiği anlamına gelir. IoT Edge bir cihazı saydam bir ağ geçidi olarak kullanma hakkında daha fazla ayrıntı için [bkz. saydam bir ağ geçidi oluşturma](how-to-create-transparent-gateway.md) .
-* **Protokol çevirisi** – donuk ağ geçidi alanı olarak da BILINEN, MQTT, AMQP veya HTTP desteği olmayan cihazlar, verileri adına IoT Hub veri göndermek için bir ağ geçidi cihazı kullanabilir. Ağ Geçidi, aşağı akış cihazları tarafından kullanılan protokolü anlamıştır ve IoT Hub kimliği olan tek cihazdır. Tüm bilgiler bir cihazdan, ağ geçidinden geliyor gibi görünüyor. Bulut uygulamaları verileri cihaz temelinde çözümlemek istiyorsam, aşağı akış cihazları iletilerine ek tanımlayıcı bilgileri katıştırmalıdır. Ayrıca, TWINS ve yöntemler gibi IoT Hub temel elemanlar yalnızca ağ geçidi cihazında kullanılabilir, akış aşağı cihazlarda kullanılamaz.
-* **Kimlik çevirisi** -IoT Hub bağlantı olmayan cihazlar, bunun yerine bir ağ geçidi cihazına bağlanabilir. Ağ Geçidi, aşağı akış cihazları adına IoT Hub kimlik ve protokol çevirisi sağlar. Ağ Geçidi, aşağı akış cihazları tarafından kullanılan protokolü anlamak, bunların kimliklerini sağlamak ve IoT Hub temel öğeleri çevirmek için yeterince akıllı bir temeldir. Aşağı akış cihazları, TWINS ve yöntemleriyle birinci sınıf cihazlar olarak IoT Hub görüntülenir. Kullanıcı IoT Hub cihazlarıyla etkileşime geçebilir ve ara ağ geçidi cihazını farkında değildir.
+* **Saydam** – teorik olarak IoT Hub bağlantı kurmak için bir ağ geçidi cihazına bağlanabilir cihazlar. Aşağı akış cihazlarının kendi IoT Hub kimlikleri vardır ve MQTT, AMQP veya HTTP protokollerinden herhangi birini kullanır. Ağ geçidi basitçe cihazlarla IoT Hub arasındaki iletişimi geçirir. Her iki cihaz ve IoT Hub aracılığıyla onlarla etkileşim kuran kullanıcılar, bir ağ geçidinin iletişimlerini ortalamalarını farkında değildir. Bu tanıma olmaması, ağ geçidinin *saydam*olarak kabul edildiği anlamına gelir. IoT Edge cihazını saydam ağ geçidi olarak kullanmaya özel bilgiler için [Saydam ağ geçidi oluşturma](how-to-create-transparent-gateway.md) konusuna bakın.
+* **Protokol çevirisi** – donuk ağ geçidi alanı olarak da BILINEN, MQTT, AMQP veya HTTP desteği olmayan cihazlar, verileri adına IoT Hub veri göndermek için bir ağ geçidi cihazı kullanabilir. Ağ geçidi aşağı akış cihazları tarafından kullanılan protokolü anlar ve IoT Hub’da kimliği olan tek cihazdır. Tüm bilgiler bir cihazdan, ağ geçidinden geliyor gibi görünüyor. Bulut uygulamaları verileri cihaz başına analiz etmek istiyorsa, aşağı akış cihazları ek tanımlama bilgilerini iletilerine eklemelidir. Buna ek olarak, ikizler ve yöntemler gibi IoT Hub basit öğeleri yalnızca ağ geçidi cihazı için kullanılabilir, aşağı akış cihazları için kullanılamaz.
+* **Kimlik çevirisi** -IoT Hub bağlantı olmayan cihazlar, bunun yerine bir ağ geçidi cihazına bağlanabilir. Ağ geçidi, aşağı akış cihazları adına IoT Hub kimliği ve protokol çevirisi sağlar. Ağ geçidi aşağı akış cihazları tarafından kullanılan protokolü anlayacak kadar akıllıdır, onlara kimlik sağlar ve IoT Hub basit öğelerini çevirir. Aşağı akış cihazları IoT Hub’da ikizler ve yöntemlerle birinci sınıf cihazlar olarak görüntülenir. Kullanıcı IoT Hub’da cihazlarla etkileşim kurabilir ve aradaki ağ geçidi cihazının farkında olmaz.
 
 ![Diyagram-saydam, protokol ve kimlik ağ geçidi desenleri](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
@@ -49,7 +50,7 @@ Kimlik çevirisi yapan bir ağ geçidi, protokol çevirisi avantajlarından yara
 
 Saydam, donuk (protokol) ve proxy ağ geçitleri kullanırken IoT Hub temel elemanların karşılaştırıldığı hızlı bir şekilde bir sayfa aşağıda verilmiştir.
 
-| &nbsp; | Saydam ağ geçidi | Protokol çevirisi | Kimlik çevirisi |
+| Eleman | Saydam ağ geçidi | Protokol çevirisi | Kimlik çevirisi |
 |--------|-------------|--------|--------|
 | IoT Hub Identity kayıt defterinde depolanan kimlikler | Tüm bağlı cihazların kimlikleri | Yalnızca ağ geçidi cihazının kimliği | Tüm bağlı cihazların kimlikleri |
 | Cihaz çifti | Her bağlı cihazın kendi cihazı ikizi vardır | Yalnızca ağ geçidinde bir cihaz ve modül TWINS vardır | Her bağlı cihazın kendi cihazı ikizi vardır |

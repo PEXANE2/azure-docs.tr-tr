@@ -5,11 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309654"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232500"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -131,7 +132,7 @@ Bu sorunu düzeltmek için:
 
 ### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>"Kapsayıcı görüntüsü derlemesi bekleniyor..." saatinde zaman aşımı AKS sanal düğümleri ile adımla
 
-Bu zaman aşımı, bir [aks sanal düğümünde](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)çalışacak şekilde yapılandırılmış bir hizmeti çalıştırmak Için geliştirme alanlarını kullanmaya çalıştığınızda oluşur. Geliştirme alanları şu anda sanal düğümlerde Hizmetleri oluşturmayı veya hata ayıklamayı desteklememektedir.
+Bu zaman aşımı, bir [aks sanal düğümünde](../aks/virtual-nodes-portal.md)çalışacak şekilde yapılandırılmış bir hizmeti çalıştırmak Için geliştirme alanlarını kullanmaya çalıştığınızda oluşur. Geliştirme alanları şu anda sanal düğümlerde Hizmetleri oluşturmayı veya hata ayıklamayı desteklememektedir.
 
 `azds up` `--verbose` Anahtarla çalıştırırsanız veya Visual Studio 'da ayrıntılı günlük kaydını etkinleştirirseniz, ek ayrıntı görürsünüz:
 
@@ -277,7 +278,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
 * *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam*'a tıklayın.
+* *Tamam* düğmesine tıklayın.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
@@ -591,7 +592,7 @@ Yığınlarınız yeniden başlatıldıktan sonra, Azure Dev Spaces var olan ad 
 
 Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kümesinde Azure Dev Spaces etkinleştirmek için aşağıdaki FQDN 'Lere izin vermeniz gerekir:
 
-| FQDN                                    | Bağlantı noktası      | Kullanım      |
+| FQDN                                    | Bağlantı noktası      | Kullanın      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
 | gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
@@ -612,7 +613,7 @@ Bu sorunu düzeltmek için:
 
 [AKS kümenizdeki sertifikaları döndürmeden](../aks/certificate-rotation.md)sonra, ve gibi bazı işlemler `azds space list` `azds up` başarısız olur. Ayrıca, kümenizdeki sertifikaları döndürmeden Azure Dev Spaces denetleyicinizde sertifikaları yenilemeniz gerekir.
 
-Bu sorunu onarmak için, *kubeconfig* 'nizin güncelleştirilmiş sertifikalara sahip olduğundan emin olun `az aks get-credentials` ve ardından `azds controller refresh-credentials` komutunu çalıştırın. Örneğin:
+Bu sorunu onarmak için, *kubeconfig* 'nizin güncelleştirilmiş sertifikalara sahip olduğundan emin olun `az aks get-credentials` ve ardından `azds controller refresh-credentials` komutunu çalıştırın. Örnek:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

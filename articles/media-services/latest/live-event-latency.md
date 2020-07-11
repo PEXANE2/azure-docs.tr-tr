@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78199657"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232466"
 ---
 # <a name="live-event-low-latency-settings"></a>Canlı olay düşük gecikme süresi ayarları
 
@@ -61,15 +62,15 @@ Aşağıdaki tablolarda, bir Görüntüleyici Player 'da kayıttan yürütmeyi g
 
 ||2s GOP düşük gecikme süresi etkin|1s GOP düşük gecikme süresi etkin|
 |---|---|---|
-|AMP 'da DASH|10s|8S|
-|Yerel iOS yürütücüsü üzerinde HLS|14s|10s|
+|**AMP 'da DASH**|10s|8S|
+|**Yerel iOS yürütücüsü üzerinde HLS**|14s|10s|
 
 ### <a name="live-encoding"></a>Live encoding
 
 ||2s GOP düşük gecikme süresi etkin|1s GOP düşük gecikme süresi etkin|
 |---|---|---|
-|AMP 'da DASH|14s|10s|
-|Yerel iOS yürütücüsü üzerinde HLS|18s|13s|
+|**AMP 'da DASH**|14s|10s|
+|**Yerel iOS yürütücüsü üzerinde HLS**|18s|13s|
 
 > [!NOTE]
 > Uçtan uca gecikme süresi, yerel ağ koşullarına bağlı olarak veya bir CDN önbelleğe alma katmanı sunarak farklılık gösterebilir. Tam yapılandırmalarınızı test etmelisiniz.

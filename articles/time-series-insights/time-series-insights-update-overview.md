@@ -10,11 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5e8ea56de84f3d6b92bc23c0e3ab139d03bd68a9
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040716"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232262"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights Önizleme nedir?
 
@@ -75,7 +76,7 @@ Azure Time Series Insights, veri işleme, depolama (veri ve meta veriler) ve sor
  
 Bu temel Endüstriyel IoT özelliklerine giriş ile Time Series Insights, aşağıdaki başlıca avantajları da sağlar.  
 
-| | |
+| Yetenek | Avantaj |
 | ---| ---|
 | IoT ölçeğinde zaman serisi verileri için çok katmanlı depolama | Verilerin içe aktarılmasıyla ilgili bir paylaşılan veri işleme işlem hattı sayesinde, verileri hem normal hem de soğuk depolara aktarabilirsiniz. Büyük hacimli verileri depolamak için etkileşimli sorgular ve soğuk mağaza için ısınma mağazasını kullanın. Yüksek performanslı varlık tabanlı sorgulardan nasıl yararlanabilmeniz hakkında daha fazla bilgi için bkz. [sorgular](./concepts-query-overview.md). |
 | Ham telemetri eklemek ve varlık tabanlı Öngörüler türetmeye yönelik zaman serisi modeli | Tarih serisi modelini, zaman serisi verileriniz için örnekler, hiyerarşiler, türler ve değişkenler oluşturmak için kullanabilirsiniz. Zaman serisi modeli hakkında daha fazla bilgi edinmek için bkz. [zaman serisi modeli](./concepts-model-overview.md).  |
