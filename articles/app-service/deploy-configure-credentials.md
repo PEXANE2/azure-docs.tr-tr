@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649130"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223865"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
@@ -39,17 +40,17 @@ Azure portal, dağıtım kimlik bilgileri sayfasına erişebilmek için en az bi
 
 1. [Azure Portal](https://portal.azure.com), sol menüden **uygulama hizmetleri**  >  **\<any_app>**  >  **Dağıtım Merkezi**  >  **FTP**  >  **panosu**' nu seçin.
 
-    ![](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Azure Uygulama Hizmetleri 'nde dağıtım merkezi 'nden FTP panosunu nasıl seçkullanabileceğinizi gösterir.](./media/app-service-deployment-credentials/access-no-git.png)
 
     Ya da git dağıtımını zaten yapılandırdıysanız **App Services**  >  ** &lt; any_app>**  >  **Deployment Center**  >  **FTP/Credentials**' ı seçin.
 
-    ![](./media/app-service-deployment-credentials/access-with-git.png)
+    ![Yapılandırılmış git dağıtımınız için Azure Uygulama Hizmetleri 'ndeki dağıtım merkezi 'nden FTP panosunu nasıl seçkullanabileceğinizi gösterir.](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. **Kullanıcı kimlik bilgileri**' ni seçin, Kullanıcı adını ve parolayı yapılandırın ve ardından **kimlik bilgilerini kaydet**' i seçin.
 
 Dağıtım kimlik bilgilerinizi ayarladıktan sonra, *Git* dağıtım Kullanıcı adını uygulamanızın **genel bakış** sayfasında bulabilirsiniz,
 
-![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![Uygulamanızın genel bakış sayfasında git dağıtım Kullanıcı adının nasıl bulunacağını gösterir.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 Git dağıtımı yapılandırılırsa, sayfada bir **Git/dağıtım Kullanıcı adı**gösterilir; Aksi takdirde, bir **FTP/Deployment Kullanıcı adı**.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392955"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230885"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet ile özel e-posta doğrulama
 
@@ -38,7 +38,7 @@ Henüz bir tane yoksa, bir Mailjet hesabı ayarlayarak başlayın (Azure müşte
 
 Ardından, ilkelerinize başvurmak üzere Mailjet API anahtarını bir Azure AD B2C ilke anahtarında depolayın.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Genel bakış** sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -47,17 +47,17 @@ Ardından, ilkelerinize başvurmak üzere Mailjet API anahtarını bir Azure AD 
 1. İlke anahtarı için bir **ad** girin. Örneğin, `MailjetApiKey`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 1. **Gizli**, daha önce kaydettiğiniz Mailjet **API anahtarınızı** girin.
 1. **Anahtar kullanımı**için **imza**' yı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
 1. **Seçenekler**Için **el ile**' yi seçin.
 1. İlke anahtarı için bir **ad** girin. Örneğin, `MailjetSecretKey`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 1. **Gizli**, daha önce kaydettiğiniz Mailjet **gizli anahtarınızı** girin.
 1. **Anahtar kullanımı**için **imza**' yı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="create-a-mailjet-template"></a>Mailjet şablonu oluşturma
 
-Bir Mailjet hesabı oluşturulup Azure AD B2C ilke anahtarında depolanan Mailjet API anahtarı ile bir Mailjet [dinamik işlem şablonu](https://Mailjet.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)oluşturun.
+Bir Mailjet hesabı oluşturulup Azure AD B2C ilke anahtarında depolanan Mailjet API anahtarı ile bir Mailjet [dinamik işlem şablonu](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)oluşturun.
 
 1. Mailjet sitesinde, [işlem şablonları](https://app.mailjet.com/templates/transactional) sayfasını açın ve **Yeni Şablon Oluştur**' u seçin.
 1. **Bunu HTML biçiminde kodlayarak**seçin ve ardından **sıfırdan kod**' u seçin.
@@ -162,7 +162,7 @@ Bir Mailjet hesabı oluşturulup Azure AD B2C ilke anahtarında depolanan Mailje
     1. **Konu**için, konu için varsayılan bir değer girin. API bir konu parametresi içermiyorsa mailjet bu değeri kullanır.
     1. **Ad**için şirketinizin adını yazın.
     1. **Adres**için e-posta adresinizi seçin
-    1. **Kaydet**'i seçin.
+    1. **Kaydet**’i seçin.
 1. Sağ üstten **kaydet & Yayımla**' yı seçin ve ardından **Evet, değişiklikleri Yayımla** ' yı seçin.
 1. Daha sonraki bir adımda kullanmak üzere oluşturduğunuz şablonun **şablon kimliğini** kaydedin. [Talep dönüşümünü eklediğinizde](#add-the-claims-transformation)bu kimliği belirtirsiniz.
 

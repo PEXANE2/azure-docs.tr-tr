@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76264042"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223610"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Kurumsal gönderim mimari kılavuzu
 
@@ -36,7 +37,7 @@ Daha iyi bir çözüm Azure Service Bus konu/abonelik modelini kullanmaktır, bu
 
 ## <a name="architecture"></a>Mimari
 
-![][1]
+![Olaylar, abonelikler ve anında Iletme Iletileri aracılığıyla akışı gösteren kuruluş mimarisi diyagramı.][1]
 
 Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler programlama modeli (daha fazla [Service Bus pub/Sub programlamada]) sağlar. Bu durumda, mobil arka uç (mobil uygulamalara gönderim başlatan [Azure Mobil Hizmeti]), doğrudan arka uç sistemlerinden ileti almaz, bunun yerine, mobil arka ucun bir veya daha fazla arka uç sisteminden ileti almasına olanak sağlayan, [Azure Service Bus]tarafından sunulan bir ara soyutlama katmanı. Bir Service Bus konunun her bir arka uç sistemi için oluşturulması gerekir; örneğin, bir hesap, ık ve finans, bu, temel olarak ilgi çekici bir "konu başlığı" olan ve anında iletme bildirimi olarak gönderilecek iletileri başlatır. Arka uç sistemleri bu konulara iletiler gönderir. Mobil arka uç, Service Bus bir abonelik oluşturarak bir veya daha fazla konuya abone olabilir. Bu, ilgili arka uç sisteminden bildirim almak için mobil arka uca sahibine. Mobil arka uç, aboneliklerindeki iletileri dinlemeye devam eder ve bir ileti ulaştığında, geri döner ve Bildirim Hub 'ına bildirim olarak gönderir. Bildirim Hub 'ları, sonunda iletiyi mobil uygulamaya teslim edebilir. Anahtar bileşenlerinin listesi aşağıdadır:
 
@@ -50,14 +51,14 @@ Bu mimari diyagramdaki anahtar parçası Azure Service Bus konular/abonelikler p
 1. Mobile Uygulama
    * Bildirim alır ve görüntüler
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 1. Alıcı (Bildirim Hub 'ı aracılığıyla mobil uygulama/hizmet) ve gönderici (arka uç sistemleri) arasındaki ayırma, ek arka uç sistemlerinin en az değişiklik ile tümleştirilebilmesine izin verebilir.
 1. Ayrıca, birden çok mobil uygulama senaryosunun bir veya daha fazla arka uç sisteminden olay alabilmesini sağlar.  
 
 ## <a name="sample"></a>Örnek
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Kavramların yanı sıra ortak oluşturma & yapılandırma adımları hakkında bilgi edinmek için aşağıdaki öğreticilerini doldurun:
 
@@ -227,15 +228,17 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
 
     e. Bu uygulamayı **WebJob**olarak yayımlamak Için, Visual Studio 'da çözüme sağ tıklayın ve **WebJob olarak Yayımla** ' yı seçin.
 
-    ![][2]
+    ![Azure Web Işi olarak yayımla seçeneği kırmızı renkle gösterilen sağ tıklama seçeneklerinin ekran görüntüsü.][2]
 
     f. Yayımlama profilinizi seçin ve henüz yoksa yeni bir Azure Web sitesi oluşturun, bu WebJob 'u barındırır ve Web sitesi yayımlandıktan sonra **yayımlayın**.
 
-    ![][3]
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Azure 'da bir site oluşturmak için iş akışını gösteren ekran görüntüsü.":::
+    Web 'i Microsoft Azure Web siteleri seçeneği seçiliyken, var olan Web sitesini Seç iletişim kutusunu işaret eden, kırmızı renkle belirtilen yeni seçeneği içeren yeşil bir ok ve site adı ile ana Microsoft Azure Site Oluştur iletişim kutusuna işaret eden yeşil bir ok ve kırmızı renkte özetlenen seçenekleri içeren ekran görüntüsü.
+    :::image-end:::
 
     örneğin: İşi "sürekli Çalıştır" olacak şekilde yapılandırın, böylece [Azure Portal] oturum açtığınızda aşağıdakine benzer bir şey görmeniz gerekir:
 
-    ![][4]
+    ![Kurumsal anında iletme Web işlerinin gösterildiği Azure portalının ekran görüntüsü ve kırmızı renkle özetlenen ad, zamanlama ve Günlükler değerleri.][4]
 
 3. **EnterprisePushMobileApp**
 
@@ -269,11 +272,11 @@ Tam örnek kod, [Bildirim Hub 'ı örneklerinde]kullanılabilir. Üç bileşene 
 2. Windows Mağazası uygulamasını başlatan **EnterprisePushMobileApp**çalıştırın.
 3. LoB arka ucunu taklit eden ve ileti göndermeye başlayan **EnterprisePushBackendSystem** konsol uygulamasını çalıştırın ve aşağıdaki görüntüde olduğu gibi bildirim bildirimleri görmeniz gerekir:
 
-    ![][5]
+    ![Kurumsal anında Iletme sistem uygulamasını çalıştıran bir konsolun ve uygulama tarafından gönderilen iletinin ekran görüntüsü.][5]
 
 4. İletiler başlangıçta Web işinizdeki Service Bus abonelikleri tarafından izlenmekte olan Service Bus konularına gönderilmiştir. Bir ileti alındıktan sonra mobil uygulamaya bir bildirim oluşturulup gönderilir. Web Işiniz için [Azure Portal] Günlükler bağlantısına gittiğinizde işlemeyi onaylamak için WebJob günlüklerine bakabilirsiniz:
 
-    ![][6]
+    ![Ardışık WebJob ayrıntıları iletişim kutusunun, kırmızı renkle gönderilen iletiyle birlikte ekran görüntüsü.][6]
 
 <!-- Images -->
 [1]: ./media/notification-hubs-enterprise-push-architecture/architecture.png

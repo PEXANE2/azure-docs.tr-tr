@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform (v 2.0) genel bakış-Azure
-description: Microsoft Identity platform (v 2.0) uç noktası ve platformu hakkında bilgi edinin.
+title: Microsoft Identity platform genel bakış-Azure
+description: Microsoft Identity platform bileşenleri ve uygulamalarınıza kimlik ve erişim yönetimi (ıAM) desteği oluşturmanıza nasıl yardımcı olabileceğini öğrenin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,75 +8,78 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2e5bbbd311d71f2925e86ae756b36de7194aa9fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: identityplatformtop40
+ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80886254"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231684"
 ---
-# <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) genel bakış
+# <a name="microsoft-identity-platform-overview"></a>Microsoft Identity platformuna genel bakış
 
-Microsoft kimlik platformu, Azure Active Directory (Azure AD) geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Geliştiricilerin tüm Microsoft kimliklerinden oturum açıp Microsoft API 'Leri (Microsoft Graph veya geliştiricilerin oluşturduğu API 'Ler) çağırmak için belirteçleri almasına olanak tanır. Microsoft Identity platformu şunlardan oluşur:
+Microsoft Identity platform, kullanıcılarınızın ve müşterilerinin Microsoft kimliklerini veya sosyal hesaplarını kullanarak oturum açmasını ve kendi API 'lerinize veya Microsoft Graph gibi Microsoft API 'Lerine yetkili erişim sağlamasına yardımcı olur.
 
-- OAuth 2,0 ve OpenID, geliştiricilerin aşağıdakiler de dahil olmak üzere herhangi bir Microsoft kimliği için kimlik doğrulamasını sağlayan **standart uyumlu kimlik doğrulama hizmetini bağlama**
-  - İş veya okul hesapları (Azure AD aracılığıyla temin edilmiş)
-  - Kişisel Microsoft hesapları (Skype, Xbox ve Outlook.com gibi)
-  - Sosyal veya yerel hesaplar (Azure AD B2C aracılığıyla)
+Microsoft Identity platformunu oluşturan birkaç bileşen vardır:
+
+- **OAuth 2,0 ve OpenID Connect standart uyumlu kimlik doğrulama hizmeti** geliştiricilerin aşağıdakiler de dahil olmak üzere çeşitli kimlik türlerinin kimliklerini doğrulamasını sağlar:
+  - Azure AD aracılığıyla sağlanan iş veya okul hesapları
+  - Skype, Xbox ve Outlook.com gibi kişisel Microsoft hesabı
+  - Azure AD B2C kullanarak sosyal veya yerel hesaplar
 - **Açık kaynak kitaplıkları**: Microsoft kimlik doğrulama KITAPLıKLARı (msal) ve standartlara uyumlu diğer kitaplıklar için destek
-- **Uygulama Yönetimi Portalı**: Azure Portal yerleşik olarak bulunan ve diğer tüm Azure Yönetim olanaklarınızla birlikte bulunan bir kayıt ve yapılandırma deneyimi.
-- **Uygulama yapılandırma API 'si ve PowerShell**: UYGULAMALARıNıZıN Microsoft Graph API ve PowerShell aracılığıyla programlı yapılandırılmasına izin veren, DevOps görevlerinizi otomatikleştirebileceğiniz.
-- **Geliştirici içeriği**: kavramsal ve başvuru belgeleri, hızlı başlangıç örnekleri, kod örnekleri, öğreticiler ve nasıl yapılır kılavuzlarından.
+- **Uygulama Yönetimi Portalı**: Azure Portal, diğer Azure yönetim özellikleri ile birlikte bir kayıt ve yapılandırma deneyimi.
+- **Uygulama yapılandırma API 'si ve PowerShell**: DevOps görevlerinizi otomatikleştirebilmeniz IÇIN Microsoft Graph API ve PowerShell aracılığıyla uygulamalarınızın programlı yapılandırması.
+- **Geliştirici içeriği**: hızlı başlangıç, Öğreticiler, nasıl yapılır kılavuzları ve kod örnekleri gibi teknik belgeler.
 
-Geliştiriciler için Microsoft Identity platformu, kimlik ve güvenlik alanındaki, passwordless kimlik doğrulaması, adım kimlik doğrulama ve koşullu erişim gibi yeniliklere sorunsuz tümleştirme sunar.  Bu tür işlevselliği kendiniz uygulamanız gerekmez: Microsoft Identity platformu ile tümleştirilmiş uygulamalar, bu tür yeniliklerden yararlanır.
+Geliştiriciler için, Microsoft Identity platformu, kimlik ve güvenlik alanında, passwordless kimlik doğrulaması, adım kimlik doğrulama ve koşullu erişim gibi modern yeniliklerin tümleştirilmesini sağlar. Bu tür işlevselliği kendiniz uygulamanız gerekmez: Microsoft Identity platformu ile tümleştirilmiş uygulamalar, bu tür yeniliklerden yararlanır.
 
 Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanıcıya ulaşabilirsiniz. Bir uygulamayı bir kez oluşturup çok sayıda platformda çalışır hale getirebilirsiniz veya istemci olarak bir kaynak uygulaması (API) olarak işlev gören bir uygulama oluşturabilirsiniz.
 
 ## <a name="getting-started"></a>Başlarken
 
-Kimlikle çalışmanın zor olması şart değil. 
+Derlemek istediğiniz [uygulama senaryosunu](authentication-flows-app-scenarios.md) seçin. Bu senaryo yollarının her biri, bir genel bakış ile başlar ve hızlı başlangıç bağlantısı ile çalışmaya başlamanıza yardımcı olur:
 
-Temel bilgileri öğrenmek için [Microsoft Identity platform videosunu](identity-videos.md) izleyin. 
+- [Tek sayfalı uygulama (SPA)](scenario-spa-overview.md)
+- [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
+- [Korumalı web API'si](scenario-protected-web-api-overview.md)
+- [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md)
+- [Masaüstü uygulaması](scenario-desktop-overview.md)
+- [Daemon uygulaması](scenario-daemon-overview.md)
+- [Mobil uygulama](scenario-mobile-overview.md)
 
-Size uygulanan bir [senaryo](authentication-flows-app-scenarios.md) seçin — her senaryo yolunda bir hızlı başlangıç ve bir genel bakış sayfası, birkaç dakika içinde çalışmaya başlamanızı sağlar:
+Uygulamalarınızda kimlik doğrulaması ve yetkilendirmeyi tümleştirmede Microsoft Identity platformu ile çalışırken, en yaygın uygulama senaryolarını ve kimlik bileşenlerini özetleyen bu görüntüye başvurabilirsiniz. Tam boyut görüntülemek için görüntüyü seçin.
 
-- [Tek sayfalı bir uygulama oluşturma](scenario-spa-overview.md)
-- [Kullanıcıların oturum açtığı web uygulaması oluşturma](scenario-web-app-sign-user-overview.md)
-- [Web API'lerini çağıran web uygulaması oluşturma](scenario-web-app-call-api-overview.md)
-- [Korumalı web API'si oluşturma](scenario-protected-web-api-overview.md)
-- [Web API 'Lerini çağıran bir Web API 'SI oluşturma](scenario-web-api-call-api-overview.md)
-- [Masaüstü uygulaması oluşturma](scenario-desktop-overview.md)
-- [Daemon uygulaması oluşturma](scenario-daemon-overview.md)
-- [Mobil uygulama oluşturma](scenario-mobile-overview.md)
+[![Microsoft Identity platformunda çeşitli uygulama senaryolarını gösteren metro haritası](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-Aşağıdaki grafik ortak kimlik doğrulama uygulaması senaryolarını özetler – Microsoft Identity platformunu uygulamanızla tümleştirdiğinizde bu uygulamayı bir başvuru olarak kullanın.
+## <a name="learn-authentication-concepts"></a>Kimlik doğrulama kavramlarını öğrenin
 
-[![Microsoft Identity platformunda uygulama senaryoları](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+Çekirdek kimlik doğrulamasının ve Azure AD kavramlarının bu önerilen makale kümesinde Microsoft Identity platformu için nasıl uygulanacağını öğrenin:
 
-## <a name="next-steps"></a>Sonraki adımlar
-
-Çekirdek kimlik doğrulama kavramları hakkında daha fazla bilgi edinmek istiyorsanız şu konularda başlamanız önerilir:
-
-- [Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md)
 - [Kimlik doğrulaması temel bilgileri](authentication-scenarios.md)
 - [Uygulama ve hizmet sorumluları](app-objects-and-service-principals.md)
 - [Kitle](v2-supported-account-types.md)
 - [İzinler ve onay](v2-permissions-and-consent.md)
-- [Kimlik belirteçleri](id-tokens.md) ve [erişim belirteçleri](access-tokens.md)
+- [Kimlik belirteçleri](id-tokens.md)
+- [Erişim belirteçleri](access-tokens.md)
+- [Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md)
 
-[Microsoft Graph](https://docs.microsoft.com/graph/overview)çağıran veri açısından zengin bir uygulama oluşturun.
+## <a name="more-identity-and-access-management-options"></a>Daha fazla kimlik ve erişim yönetimi seçeneği
 
-Uygulamanızı bir **Üretim ortamında**başlatmaya hazırsanız, bu en iyi yöntemleri gözden geçirin:
+[Azure AD B2C](../../active-directory-b2c/overview.md) -kullanıcılarınız Facebook veya Google gibi sosyal hesaplarını kullanarak veya bir e-posta adresi ve parola kullanarak oturum açabilirler.
 
-- Uygulamanızda [günlüğe kaydetmeyi etkinleştirin](msal-logging.md) .
-- Uygulamanızda Telemetriyi etkinleştirin.
-- [Proxy 'leri etkinleştirin ve http istemcilerini özelleştirin](msal-net-provide-httpclient.md).
-- [Microsoft Identity platform tümleştirme denetim listesini](identity-platform-integration-checklist.md)izleyerek tümleştirmenizi test edin.
+[Azure AD B2B](../b2b/what-is-b2b.md) -dış KULLANıCıLARı Azure AD kiracınıza "Konuk" kullanıcıları olarak davet edin ve kimlik doğrulama için mevcut kimlik bilgilerini kullanırken yetkilendirme izinlerini atayın.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+> [!TIP]
+> *Azure Active Directory geliştirici platformu (v 1.0)* belgeleri mi arıyorsunuz? Bkz. [geliştiriciler için Azure Active Directory (v 1.0) genel bakış](../azuread-dev/v1-overview.md).
 
-Sosyal ve yerel kimliklerinizde oturum açan müşterilere yönelik bir uygulama oluşturmayı planlıyorsanız bkz. [Azure AD B2C genel bakış](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+## <a name="next-steps"></a>Sonraki adımlar
+
+Zaten bir Azure Active Directory kiracısına erişiminiz olan bir Azure hesabınız varsa, ancak çoğu Microsoft Identity platform geliştiricilerinin uygulamalar geliştirirken "geliştirme kiracısı" için kendi Azure AD kiracısını kullanması gerekir.
+
+Uygulamalarınızı oluştururken kullanmak üzere kendi kiracınızı oluşturmayı öğrenin:
+
+[Hızlı başlangıç: Azure AD kiracısı ayarlama](quickstart-create-new-tenant.md)

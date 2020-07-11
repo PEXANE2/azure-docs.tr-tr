@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79536998"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223967"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu kullanarak Azure Notification Hubs ile çalışmaya başlama
 
@@ -415,8 +415,8 @@ Erişim bağlantı bilgileri penceresindeki `DefaultListenSharedAccessSignature`
 
 Aşağıdaki ekranlarda gösterildiği [Azure portalında] bildirim hub'ı yapılandırma ekranındaki **Gönder** düğmesini kullanarak uygulamanızda bildirim almayı hızlıca test edebilirsiniz:
 
-![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
-![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Azure Portal 'ın, kırmızı ve kırmızı bir ok ile özetlenen test gönder seçeneği ile ekran görüntüsü. ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+ ![ Azure portal Baidu test gönderme sayfasının ekran görüntüsü.](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 Anında iletme bildirimleri normalde, uyumlu bir kitaplık kullanılarak Mobile Services veya ASP.NET gibi bir arka uç hizmetinde gönderilir. Arka ucunuz için uygun bir kitaplık yoksa bildirim iletilerini göndermek için doğrudan REST API'sini kullanabilirsiniz.
 
@@ -436,7 +436,7 @@ Bu bölümde, bir .NET konsol uygulaması kullanarak bildirim göndermeyi göste
 
 1. Yeni bir Visual C# konsol uygulaması oluşturun:
 
-    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![Konsol uygulaması Visual C# seçeneği vurgulanmış şekilde yeni proje iletişim kutusunun ekran görüntüsü.](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. Paket Yöneticisi Konsolu penceresinde, **Varsayılan projeyi** yeni konsol uygulaması projeniz olarak ayarlayın ve ardından konsol penceresinde aşağıdaki komutu yürütün:
 
@@ -446,7 +446,7 @@ Bu bölümde, bir .NET konsol uygulaması kullanarak bildirim göndermeyi göste
 
     Bu yönerge, [Microsoft.Azure.Notification Hubs NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) kullanarak Azure Notification Hubs SDK'sına bir başvuru ekler.
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![Bildirim Hub 'ına gönder seçeneği Için daire içinde kırmızı renkli olan Paket Yöneticisi konsolu iletişim kutusunun ekran görüntüsü.](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. `Program.cs` dosyasını açın ve aşağıdaki deyimi ekleyin:
 

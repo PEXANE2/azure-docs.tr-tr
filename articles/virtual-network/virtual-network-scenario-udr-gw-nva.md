@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81455371"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231718"
 ---
 # <a name="virtual-appliance-scenario"></a>Sanal Gereç senaryosu
 Daha büyük Azure müşterisi arasındaki yaygın bir senaryo, Internet 'e açık iki katmanlı bir uygulama sağlamak ve şirket içi veri merkezinden arka katmana erişime izin vermek için gereklidir. Bu belge, aşağıdaki gereksinimleri karşılayan iki katmanlı bir ortam dağıtmak için Kullanıcı tanımlı yollar (UDR), VPN Gateway ve ağ sanal gereçlerini kullanan bir senaryoda size kılavuzluk eder:
@@ -31,14 +31,14 @@ Daha büyük Azure müşterisi arasındaki yaygın bir senaryo, Internet 'e aç�
 
 Bu, DMZ ve korumalı bir ağla standart bir çevre ağı (Ayrıca, DMZ olarak da MNS olarak da tasarlanmıştır) senaryosudur. Bu tür senaryolar NSG 'ler, güvenlik duvarı sanal cihazları veya her ikisinin bir birleşimi kullanılarak Azure 'da oluşturulabilir. Aşağıdaki tabloda, NSG 'ler ve güvenlik duvarı sanal cihazları arasındaki bazı olumlu ve olumsuz yönleri gösterilmektedir.
 
-|  | Artıları | Simgeler |
+|  | Avantajlar | Dezavantajlar |
 | --- | --- | --- |
-| NSG |Maliyet yok. <br/>Azure RBAC Ile tümleşiktir. <br/>Kurallar, Azure Resource Manager şablonlarda oluşturulabilir. |Karmaşıklık, daha büyük ortamlarda farklılık gösterebilir. |
-| Güvenlik Duvarı |Veri düzlemi üzerinde tam denetim. <br/>Güvenlik Duvarı konsolu aracılığıyla merkezi yönetim. |Güvenlik Duvarı gerecinin maliyeti. <br/>Azure RBAC ile tümleştirildi. |
+| **NSG** |Maliyet yok. <br/>Azure RBAC Ile tümleşiktir. <br/>Kurallar, Azure Resource Manager şablonlarda oluşturulabilir. |Karmaşıklık, daha büyük ortamlarda farklılık gösterebilir. |
+| **Güvenlik duvarı** |Veri düzlemi üzerinde tam denetim. <br/>Güvenlik Duvarı konsolu aracılığıyla merkezi yönetim. |Güvenlik Duvarı gerecinin maliyeti. <br/>Azure RBAC ile tümleştirildi. |
 
 Aşağıdaki çözüm, bir çevre ağı (DMZ)/korumalı ağ senaryosu uygulamak için güvenlik duvarı sanal gereçlerini kullanır.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Yukarıda açıklanan ortamı, aşağıdaki gibi, günümüzde bulunan farklı özellikleri kullanarak Azure 'da dağıtabilirsiniz.
 
 * **Sanal ağ (VNet)** . Bir Azure sanal ağı, şirket içi bir ağa benzer şekilde davranır ve trafik yalıtımı sağlamak ve kaygıları ayrımı için bir veya daha fazla alt ağa ayrılabilir.
@@ -63,7 +63,7 @@ Bu örnekte, aşağıdakileri içeren bir abonelik vardır:
   * **azsn2**. Internet 'ten erişilecek bir Web sunucusu olarak çalışan bir VM barındıran ön uç alt ağı.
   * **azsn3**. Ön uç Web sunucusu tarafından erişilecek bir arka uç uygulama sunucusu çalıştıran bir VM barındıran arka uç alt ağı.
   * **azsn4**. Tüm güvenlik duvarı sanal gereçlerine yönetim erişimi sağlamak için özel olarak kullanılan yönetim alt ağı. Bu alt ağ, çözümde kullanılan her güvenlik duvarı sanal gereci için bir NIC içerir.
-  * **Gatewaysubnet**. Azure sanal ağları ve diğer ağlar arasında bağlantı sağlamak için ExpressRoute ve VPN Gateway için Azure hibrit bağlantı alt ağı gerekir. 
+  * **GatewaySubnet**. Azure sanal ağları ve diğer ağlar arasında bağlantı sağlamak için ExpressRoute ve VPN Gateway için Azure hibrit bağlantı alt ağı gerekir. 
 * **Azurevnet** ağında 3 güvenlik duvarı sanal aygıtı vardır. 
   * **AZF1**. Azure 'da genel bir IP adresi kaynağı kullanarak genel Internet 'e sunulan dış güvenlik duvarı. Market 'ten veya doğrudan gereç satıcınızdan (3 NIC Sanal Gereç sağlayan) bir şablonunuz olduğundan emin olmanız gerekir.
   * **AZF2**. **Azsn2** ve **azsn3**arasındaki trafiği denetlemek için kullanılan iç güvenlik duvarı. Bu, ayrıca 3 NIC sanal gerectir.

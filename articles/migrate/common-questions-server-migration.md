@@ -3,12 +3,12 @@ title: Azure geçişi sunucu geçişi hakkında sık sorulan sorular
 description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744336"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224137"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -27,7 +27,7 @@ Bu makalede, Azure geçişi: sunucu geçiş aracı hakkında sık sorulan sorula
 
 VMware için aracısız çoğaltma yöntemi VMware anlık görüntülerini ve VMware değiştirilmiş blok Izlemeyi (CBT) kullanır.
 
-İşlem şöyledir:
+Süreç şu şekildedir:
 
 1. Çoğaltmayı başlattığınızda, bir ilk çoğaltma çevrimi zamanlanır. İlk döngüde, VM 'nin bir anlık görüntüsü alınır. Anlık görüntü, VMDK (diskler) VM 'lerini çoğaltmak için kullanılır. 
 2. İlk çoğaltma döngüsü bittikten sonra, Delta çoğaltma döngüleri düzenli aralıklarla zamanlanır.
@@ -67,6 +67,9 @@ Hayır. Azure Kullanılabilirlik Alanları Azure geçişi geçiş için destekle
 
 Azure geçişi, ağ engelleme cihazı (NBD) protokolünü TLS şifrelemesi ile kullanır.
 
+## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>Veriler şirket içi ortamdan Azure 'a nasıl iletilir? İletimden önce şifrelendi mı? 
+Aracısız çoğaltma durumunda Azure geçişi gereci verileri sıkıştırır ve karşıya yüklemeden önce şifreler. Veriler, https üzerinden güvenli bir iletişim kanalı üzerinden iletilir ve TLS 1,2 veya sonraki bir sürümü kullanır. Ayrıca, Azure depolama, verilerinizi buluta kalıcı hale geldiğinde otomatik olarak şifreler (bekleyen şifreleme).  
+
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Geçiş için gereken en düşük vCenter Server sürümü nedir?
 
 En az vCenter Server 5,5 ve vSphere ESXi ana bilgisayar sürümü 5,5 olmalıdır.
@@ -81,7 +84,7 @@ Hayır. Azure geçişi yalnızca yönetilen disklere geçişi destekler (Standar
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltması için Azure geçişi aracı 'nı kullanarak çoğaltma Nasıl yaparım? kısıtlaması yapılsın mı?  
 
-NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örnek:
+NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
 
 NetQosPolicy içinde kullanılacak AppNamePrefix "GatewayWindowsService.exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
  

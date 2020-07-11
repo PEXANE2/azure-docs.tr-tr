@@ -3,12 +3,12 @@ title: Azure Application Insights veri saklama ve depolama | Microsoft Docs
 description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601369"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224494"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
 
@@ -62,7 +62,7 @@ Ana Kategoriler şunlardır:
 ## <a name="how-can-i-verify-whats-being-collected"></a>Toplanmakta olan öğeleri nasıl doğrulayabilirim?
 Uygulamayı Visual Studio 'Yu kullanarak geliştirdiğinizi, uygulamayı hata ayıklama modunda (F5) çalıştırın. Telemetriyi çıkış penceresinde görünür. Buradan, daha kolay İnceleme için onu kopyalayabilir ve JSON olarak biçimlendirebilirsiniz. 
 
-![](./media/data-retention-privacy/06-vs.png)
+![Uygulamayı Visual Studio 'da hata ayıklama modunda çalıştırmayı gösteren ekran görüntüsü.](./media/data-retention-privacy/06-vs.png)
 
 Tanılama penceresinde de daha okunabilir bir görünüm bulunur.
 
@@ -213,7 +213,7 @@ Bunun gerekli olmadığı sürece uygulamanızı yalnızca TLS 1,2 ' i kullanaca
 | Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
 | Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfası.  |
 | Windows Server 2008 SP2 | TLS 1,2 desteği için bir güncelleştirme gerekiyor. | Bkz. Windows Server 2008 SP2 'de [TLS 1,2 için destek eklemek Için güncelleştirme](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) . |
-|Windows Vista | Desteklenmiyor. | YOK
+|Windows Vista | Desteklenmiyor. | Yok
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Linux dağılımının hangi OpenSSL sürümünü çalıştırdığından emin olun
 

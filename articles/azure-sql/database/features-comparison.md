@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 06/25/2020
-ms.openlocfilehash: e48a027af70ec9d002ddcfbb2ee36ded4ca7875a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4eb1afdd7a6e48d8701dafc6dff44ce6e6db4902
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983528"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231633"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Özellikler karşılaştırması: Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -144,7 +144,7 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Evet, paketlerin Azure SQL veritabanı tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütüldüğü SSSıSDB 'de depolandığı, yönetilen bir SSIS Azure Data Factory (ADF) ortamıyla birlikte, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı ve SQL yönetilen örneğindeki SSIS özelliklerini karşılaştırmak için bkz. [SQL veritabanı ile SQL yönetilen örneği karşılaştırması](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). | Evet, paketlerin SQL yönetilen örneği tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütüldüğü SSSıSDB 'de depolandığı, yönetilen bir SSIS Azure Data Factory (ADF) ortamıyla birlikte, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı ve SQL yönetilen örneğindeki SSIS özelliklerini karşılaştırmak için bkz. [SQL veritabanı ile SQL yönetilen örneği karşılaştırması](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Hayır- [Power BI](https://docs.microsoft.com/power-bi/) | Hayır- [Power BI](https://docs.microsoft.com/power-bi/) |
 | [Sorgu performansı öngörüleri (QPı)](query-performance-insight-use.md) | Evet | Hayır. SQL Server Management Studio ve Azure Data Studio yerleşik raporlarını kullanın. |
-| [Adlı](../../virtual-network/virtual-networks-overview.md) | Kısmi, [VNET uç noktaları](vnet-service-endpoint-rule-overview.md) kullanarak kısıtlı erişime izin verebilir | Evet, SQL yönetilen örneği müşterinin VNet 'ine eklenmiş. Bkz. [alt ağ](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) ve [VNET](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
+| [Sanal Ağ](../../virtual-network/virtual-networks-overview.md) | Kısmi, [VNET uç noktaları](vnet-service-endpoint-rule-overview.md) kullanarak kısıtlı erişime izin verebilir | Evet, SQL yönetilen örneği müşterinin VNet 'ine eklenmiş. Bkz. [alt ağ](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) ve [VNET](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNet hizmeti uç noktası | [Evet](vnet-service-endpoint-rule-overview.md) | Hayır |
 | VNet genel eşleme | Evet, [özel IP ve hizmet uç noktalarını](vnet-service-endpoint-rule-overview.md) kullanma | Hayır, [VNET genel eşlemesindeki yük dengeleyici kısıtlaması](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)nedeniyle [SQL yönetilen örneği desteklenmez](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) .
 
@@ -167,7 +167,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği, verilerinizi yönetmeniz
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Evet | Evet [sürüm 18,0 ve üzeri](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Evet | Evet |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Hayır- [genişletilmiş olaylara](xevent-db-diff-from-svr.md) bakın | Evet |
-| [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | Evet, [önizlemede](https://www.microsoft.com/download/details.aspx?id=100306) |
+| [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | Evet, [önizlemede](https://www.microsoft.com/download/details.aspx?id=38829) |
 
 ## <a name="migration-methods"></a>Geçiş yöntemleri
 

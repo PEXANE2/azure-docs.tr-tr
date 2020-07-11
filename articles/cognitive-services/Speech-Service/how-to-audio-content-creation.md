@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589661"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224596"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Ses Içeriği oluşturma aracı ile sensıs 'yi geliştirme
 
@@ -23,11 +23,13 @@ ms.locfileid: "83589661"
 
 Ses Içeriği oluşturma aracı, [konuşma birleştirme biçimlendirme dilini (SSML)](speech-synthesis-markup.md)temel alır. Görsel Içerik oluşturma, özelleştirmeyi ve ayarlamayı basitleştirmek için, metin okuma çıktılarınızı gerçek zamanlı olarak görsel olarak incelemenize olanak sağlar.
 
+Ses Içeriği oluşturma için [video öğreticisine](https://www.youtube.com/watch?v=O1wIJ7mts_w) bakın.
+
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
 Bu diyagramda, metinden konuşmaya okuma çıktıları üzerinde ince ayar yapmak için gereken adımlar gösterilir. Her adım hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![Metin okuma çıkışları üzerinde ince ayar yapmak için gereken adımların bir diyagramı.](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. Başlamak için [Azure hesabınızı ve konuşma kaynağını ayarlayın](#set-up-your-azure-account-and-speech-resource) .
 2. Düz metin veya SSML betikleri kullanarak [bir ses ayarlama dosyası oluşturun](#create-an-audio-tuning-file) .

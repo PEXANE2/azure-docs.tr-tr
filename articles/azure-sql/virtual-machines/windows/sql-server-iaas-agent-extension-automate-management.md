@@ -16,19 +16,16 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 89210cda6390fd7c3cf4ca2877b8899559a41321
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67df782cf8044593859e7761278d93187d258d26
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668721"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231956"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı uzantısını kullanarak Azure sanal makinelerinde yönetim görevlerini otomatikleştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-
-> [!div class="op_single_selector"]
-> * [Resource Manager](sql-server-iaas-agent-extension-automate-management.md)
-> * [Klasik](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
 SQL Server IaaS Aracı Uzantısı Extension (SqlIaasExtension) Azure sanal makinelerinde yönetim görevlerini otomatikleştirmek için çalıştırılır. Bu makale, uzantının desteklediği hizmetlere genel bir bakış sağlar. Bu makale ayrıca uzantının yüklenmesi, durumu ve kaldırılması için yönergeler sağlar.
 
@@ -44,14 +41,14 @@ SQL Server IaaS Aracısı uzantısı aşağıdaki yönetim görevlerini destekle
 | --- | --- |
 | **Otomatik yedekleme SQL Server** |Tüm veritabanları için, varsayılan örnek veya VM üzerinde [doğru şekilde yüklenmiş](frequently-asked-questions-faq.md#administration) bir SQL Server örneği için yedeklemelerin zamanlamasını otomatikleştirir. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik yedekleme (Kaynak Yöneticisi)](automated-backup-sql-2014.md). |
 | **SQL Server otomatik düzeltme eki uygulama** |VM 'niz için önemli Windows güncelleştirmelerinin gerçekleşmesi sırasında bir bakım penceresi yapılandırır, bu sayede iş yükünüz için yoğun zamanlarda güncelleştirmelerden kaçınabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama (Kaynak Yöneticisi)](automated-patching.md). |
-| **Azure Key Vault tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (Kaynak Yöneticisi)](azure-key-vault-integration-configure.md). |
+| **Azure Anahtar Kasası tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (Kaynak Yöneticisi)](azure-key-vault-integration-configure.md). |
 
 SQL Server IaaS Aracısı uzantısı yüklendikten ve çalıştırıldıktan sonra, yönetim özellikleri kullanılabilir hale gelir:
 
 * Azure portal sanal makinenin SQL Server panelinde ve Azure Marketi 'ndeki SQL Server görüntüleri için Azure PowerShell üzerinden.
 * Azure PowerShell aracılığıyla uzantının el ile yüklenmesi için. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 SANAL makinenizde SQL Server IaaS Aracısı uzantısını kullanmak için gerekenler şunlardır:
 
 **İşletim sistemi**:

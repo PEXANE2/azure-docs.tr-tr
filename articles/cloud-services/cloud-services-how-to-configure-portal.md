@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811402"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223746"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services’ı Yapılandırma
 
@@ -47,7 +48,7 @@ Belirli bir işletim sistemi sürümünü hedefliyorsanız, bu sürümü **yapı
 
 Bulut hizmetinize uyarı ekleyebilirsiniz. **Ayarlar**  >  **Uyarı kuralları**  >  **Uyarı Ekle**' ye tıklayın.
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![Ayarlar 'ın ekran görüntüsü, uyarı kuralları seçeneğinin vurgulandığı ve kırmızı renkle ve uyarı ekle seçeneğinin kırmızı olarak gösterildiği şekilde kaydırmasına sahiptir.](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 Buradan bir uyarı ayarlayabilirsiniz. **Ölçüm** açılan kutusuyla, aşağıdaki veri türleri için bir uyarı ayarlayabilirsiniz.
 
@@ -57,7 +58,7 @@ Buradan bir uyarı ayarlayabilirsiniz. **Ölçüm** açılan kutusuyla, aşağı
 * Ağdan giden
 * CPU yüzdesi
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![Tüm yapılandırma seçenekleri ayarlanmış bir uyarı kuralı ekle bölmesinin ekran görüntüsü.](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Ölçüm kutucuğundan izlemeyi yapılandırma
 
@@ -91,10 +92,10 @@ Daha sonra, bir Uzak Masaüstü bağlantısı başlatabilir, örneği uzaktan ye
     ![Yapılandırma dikey penceresi](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. **İndir** düğmesine tıklayın.
 
-    ![İndir](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+    ![İndirme](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Hizmet yapılandırma dosyasını güncelleştirdikten sonra yapılandırma güncelleştirmelerini yükleyin ve uygulayın:
 
-    ![Karşıya Yükle](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+    ![Karşıya Yükleme](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. . Cscfg dosyasını seçin ve **Tamam**' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

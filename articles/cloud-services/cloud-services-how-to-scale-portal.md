@@ -7,11 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360846"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223695"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Portalda bir bulut hizmeti için otomatik ölçeklendirmeyi yapılandırma
 
@@ -20,7 +21,7 @@ Koşullar, bir ölçek genişletme veya genişletme işlemini tetikleyen bir bul
 > [!NOTE]
 > Bu makale, bulut hizmeti Web ve çalışan rollerine odaklanır. Doğrudan bir sanal makine (klasik) oluşturduğunuzda bir bulut hizmetinde barındırılır. Standart bir sanal makineyi bir [kullanılabilirlik kümesiyle](../virtual-machines/windows/classic/configure-availability-classic.md) ilişkilendirerek ölçeklendirebilir ve el ile açıp kapatabilirsiniz.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Uygulamanız için ölçeklendirmeyi yapılandırmadan önce aşağıdaki bilgileri göz önünde bulundurmanız gerekir:
 
 * Ölçeklendirme, temel kullanımdan etkilenir.
@@ -42,10 +43,10 @@ Bulut hizmetinizi seçtikten sonra, bulut hizmeti dikey penceresinin görünür 
 1. Bulut hizmeti dikey penceresinde, **Roller ve örnekler** kutucuğunda, bulut hizmetinin adını seçin.   
    **Önemli**: rolün altındaki rol örneğine değil, bulut hizmeti rolüne tıkladığınızdan emin olun.
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![Roller ve örnekler kutucuğunun ekran görüntüsü, çalışan rolü ile S B kuyruğu 1 seçeneği kırmızı olarak ana hatlarıyla gösterilmiştir.](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **Ölçek** kutucuğunu seçin.
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![Satış kutucuğu kırmızı renkle gösterilen Işlemler sayfasının ekran görüntüsü.](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Otomatik ölçeklendirme
 Bir rol için ölçek ayarlarını, iki moddan **el ile** veya **Otomatik**olarak yapılandırabilirsiniz. El ile beklenen, örneklerin mutlak sayısını ayarlarsınız. Otomatik olarak, ne kadar ölçeklendirmeniz gerektiğini belirleyen kurallar ayarlamanıza olanak sağlar.
@@ -88,7 +89,7 @@ Kurallar bir profile eklenir ve ölçeği tetikleyen bir koşulu temsil eder.
 
 Kural tetikleyicisi, koşullu bir değer ekleyebileceğiniz bulut hizmeti ölçüsünü (CPU kullanımı, disk etkinliği veya ağ etkinliği) temel alır. Ayrıca, tetikleyicinin bir ileti kuyruğuna veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne göre tetiklemesine sahip olabilirsiniz.
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![Ölçü adı seçeneğinin kırmızı renkle gösterildiği kural iletişim kutusunun ekran görüntüsü.](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 Kuralı yapılandırdıktan sonra, kural dikey penceresinin altındaki **Tamam** düğmesini seçin.
 

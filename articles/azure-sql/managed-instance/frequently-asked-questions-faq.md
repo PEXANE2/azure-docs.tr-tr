@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 88f92117dc07fc241ca714851956e386cd10d617
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135033"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224426"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL yönetilen örnek hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,12 +33,38 @@ SQL yönetilen örneğindeki desteklenen özelliklerin listesi için bkz. [Azure
 Azure SQL yönetilen örneği ve SQL Server arasındaki sözdizimi ve davranıştaki farklar için, bkz. [T-SQL farkları SQL Server](transact-sql-tsql-differences-sql-server.md).
 
 
-## <a name="tech-spec--resource-limits"></a>Teknik belirtim & kaynak limitleri
+## <a name="technical-specification-resource-limits-and-other-limitations"></a>Teknik belirtim, kaynak limitleri ve diğer sınırlamalar
  
 **SQL yönetilen örneği için teknik özellikleri ve kaynak sınırlarını nereden bulabilirim?**
 
 Kullanılabilir donanım oluşturma özellikleri için bkz. [donanım oluşumlarında teknik farklılıklar](resource-limits.md#hardware-generation-characteristics).
 Kullanılabilir hizmet katmanları ve özellikleri için bkz. [hizmet katmanları arasındaki teknik farklılıklar](resource-limits.md#service-tier-characteristics).
+
+**Hangi hizmet katmanını uygun olarak kullanabilirim?**
+
+Herhangi bir müşteri tüm hizmet katmanlarından yararlanabilir. Ancak, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak Azure SQL yönetilen örneği 'nde indirimli ücretler için mevcut lisanslarınızı değiştirmek istiyorsanız, yazılım güvencesi olan SQL Server Enterprise edition müşterilerinin [genel amaçlı](../database/service-tier-general-purpose.md) veya [iş açısından kritik](../database/service-tier-business-critical.md) performans katmanlarına uygun olduğunu ve yazılım güvencesi olan SQL Server Standard Edition müşterilerinin yalnızca genel amaçlı performans katmanına uygun olduğunu unutmayın. Daha fazla ayrıntı için bkz. [AHB 'Nin belirli hakları](../azure-hybrid-benefit.md?tabs=azure-powershell#what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server).
+
+**SQL yönetilen örneği için hangi Abonelik türleri desteklenir?**
+
+Desteklenen abonelik türlerinin listesi için bkz. [desteklenen Abonelik türleri](resource-limits.md#supported-subscription-types). 
+
+**Hangi Azure bölgeleri destekleniyor?**
+
+Yönetilen örnekler, Azure bölgelerinin çoğunda oluşturulabilir; bkz. [SQL yönetilen örneği Için desteklenen bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Şu anda desteklenmeyen bir bölgede yönetilen örneğe ihtiyacınız varsa [Azure Portal aracılığıyla bir destek isteği gönderin](../database/quota-increase-request.md).
+
+**SQL yönetilen örnek dağıtımları için herhangi bir kota sınırlaması var mı?**
+
+Yönetilen örnek iki varsayılan sınıra sahiptir: kullanabileceğiniz alt ağ sayısı ve sağlayabileceğiniz sanal çekirdek sayısı sınırı. Sınırlar, abonelik türleri ve bölgeler arasında farklılık gösterir. Abonelik türüne göre bölgesel kaynak sınırlamaları listesi için bkz. [Bölgesel Kaynak sınırlamasından](resource-limits.md#regional-resource-limitations)tablo. Bunlar, isteğe bağlı olarak arttığı hafif sınırlardır. Geçerli Bölgelerinizdeki daha fazla yönetilen örnek sağlamanız gerekiyorsa, Azure portal kullanarak kotayı artırmak için bir destek isteği gönderin. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](../database/quota-increase-request.md).
+
+**Yönetilen örneğimde istek üzerine veritabanı sınırı (100) sayısını artırabilir miyim?**
+
+Hayır, ve şu anda SQL yönetilen örneğindeki veritabanlarının sayısını artırmak için hiçbir taahhüt planı yok. 
+
+**8 TB 'den fazla veriniz varsa nereden geçiş yapabilirim?**
+İş yükünüze uygun diğer Azure türleri arasında geçiş yapmayı düşünebilirsiniz: Azure [SQL veritabanı hiper ölçek](../database/service-tier-hyperscale.md) veya [azure sanal makinelerinde SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
+
+**Sanal çekirdek oranına veya daha fazla CPU 'ya daha büyük RAM gibi belirli donanım gereksinimleriniz varsa nereye geçiş yapabilirim?**
+[Azure sanal makinelerinde](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) veya [Azure SQL veritabanı](../database/sql-database-paas-overview.md) belleği/CPU 'ya iyileştirilmiş SQL Server geçiş yapmayı düşünebilirsiniz.
 
 ## <a name="known-issues--bugs"></a>Bilinen sorunlar & hataları
 
@@ -52,74 +78,165 @@ Hatalar ve bilinen sorunlar için bkz. [bilinen sorunlar](../database/doc-change
 
 Yeni ve Önizleme özellikleri için bkz. [sürüm notları](../database/doc-changes-updates-release-notes.md?tabs=managed-instance).
 
-## <a name="deployment-times"></a>Dağıtım süreleri 
+## <a name="create-update-delete-or-move-sql-managed-instance"></a>SQL yönetilen örneği oluşturma, güncelleştirme, silme veya taşıma
 
-**Örneği oluşturmak veya güncelleştirmek ya da bir veritabanını geri yüklemek için ne kadar süre sürer?**
+**SQL yönetilen örneğini nasıl sağlayabilirim?**
 
-Yönetilen bir örnek oluşturmak için beklenen süre veya hizmet katmanını değiştirme (Vçekirdekler, depolama) çeşitli etkenlere bağlıdır. [Yönetim işlemlerine](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations)göz atın. 
+[Azure Portal](instance-create-quickstart.md), [POWERSHELL](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) ve [ARM şablonlarından](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)bir örnek sağlayabilirsiniz.
 
+**Mevcut bir abonelikte yönetilen örnekler sağlayabilir miyim?**
+
+Evet, bu abonelik [desteklenen abonelik türlerine](resource-limits.md#supported-subscription-types)aitse, var olan bir abonelikte yönetilen bir örnek sağlayabilirsiniz.
+
+**Alt ağda adı rakamla başlayan bir yönetilen örnek sağlamadım mı?**
+
+Bu, alt ağ adını Regex ^ [a-za-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * (? <! [ \. \s]) $. Normal olarak geçen ve geçerli alt ağ adları olan tüm adlar Şu anda desteklenmektedir.
+
+**Yönetilen örnekten nasıl ölçeklendirebilirim?**
+
+Yönetilen örneğinizi [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [POWERSHELL](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) veya [ARM şablonlarından](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)ölçeklendirebilirsiniz.
+
+**Yönetilen örnekten bir bölgeden diğerine taşıyabilir miyim?**
+
+Evet, yazabilirsiniz. Yönergeler için bkz. [kaynakları bölgeler arasında taşıma](../database/move-resources-across-regions.md).
+
+**Yönetilen örnekten nasıl silebilirim?**
+
+Yönetilen örnekleri Azure portalı, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), [azure CLı](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) veya [Kaynak Yöneticisi REST API 'leri](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)aracılığıyla silebilirsiniz.
+
+**Bir örneği oluşturmak veya güncelleştirmek ya da bir veritabanını geri yüklemek için ne kadar süre sürer?**
+
+Yeni bir yönetilen örnek oluşturmak veya hizmet katmanlarını (sanal çekirdekler, depolama) değiştirmek için beklenen süre, çeşitli etkenlere bağlıdır. Bkz. [yönetim işlemleri](sql-managed-instance-paas-overview.md#management-operations).
+ 
 ## <a name="naming-conventions"></a>Adlandırma kuralları
 
 **Yönetilen bir örnek SQL Server şirket içi örnekle aynı ada sahip olabilir mi?**
 
 Yönetilen örnek adının değiştirilmesi desteklenmiyor.
 
-Yönetilen örnek için varsayılan DNS bölgesi *. Database.Windows.net* değiştirilebilir. 
+**DNS bölgesi önekini değiştirebilir miyim?**
+
+Evet, yönetilen örnek varsayılan DNS bölgesi *. Database.Windows.net* değiştirilebilir. 
 
 Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin *. contoso.com*: 
-- Bir diğer ad tanımlamak için CliConfig 'i kullanın. Araç yalnızca bir kayıt defteri ayarları sarmalayıcısı, bu yüzden Grup İlkesi veya bir komut dosyası kullanılarak yapılabilir.
+- Bir diğer ad tanımlamak için CliConfig 'i kullanın. Araç yalnızca bir kayıt defteri ayarları sarmalayıcısıdır ve bu nedenle Grup İlkesi veya bir komut dosyası kullanılarak yapılabilir.
 - *TrustServerCertificate = true* seçeneğiyle *CNAME* kullanın.
 
-## <a name="move-a-database-from-sql-managed-instance"></a>SQL yönetilen örneğinden bir veritabanını taşıma 
+## <a name="migration-options"></a>Geçiş seçenekleri
 
-**SQL yönetilen örneğinden bir veritabanını SQL Server veya Azure SQL veritabanı 'na geri nasıl taşıyabilirim?**
+**Azure SQL veritabanı tekil veya elastik havuzdan SQL yönetilen örneği 'ne nasıl geçiş yapabilirim?**
 
-[Bir veritabanını BACPAC 'e aktarabilir](../database/database-export.md) ve ardından [bacpac dosyasını içeri aktarabilirsiniz](../database/database-import.md). Veritabanınız 100 GB 'den küçükse bu önerilen yaklaşımdır.
+Yönetilen örnek, Azure SQL veritabanı 'nın diğer dağıtım seçenekleri olarak işlem ve depolama boyutuna göre aynı performans düzeylerini sunmaktadır. Tek bir örnekteki verileri birleştirmek istiyorsanız veya yalnızca yönetilen örnekte yalnızca desteklenen bir özelliğe ihtiyacınız varsa, dışarı aktarma/içeri aktarma (BACPAC) işlevini kullanarak verilerinizi geçirebilirsiniz. SQL yönetilen örneğine SQL veritabanı geçişi için göz önünde bulundurmanız gereken diğer yollar şunlardır: 
+- [Dış veri kaynağı]() kullanma
+- [SqlPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) kullanma
+- [Bcp](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) kullanma
 
-Veritabanındaki tüm tablolarda birincil anahtarlar varsa işlemsel çoğaltma kullanılabilir.
+**Örnek veritabanımı tek bir Azure SQL veritabanına nasıl geçirebilirim?**
 
-SQL yönetilen `COPY_ONLY` örneği SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL yönetilen örneğinden alınan yerel yedeklemeler SQL Server geri yüklenemez.
+Bir seçenek, [bir veritabanını BACPAC 'e aktarmak](../database/database-export.md) ve ardından [bacpac dosyasını içeri aktaryıdır](../database/database-import.md). Veritabanınız 100 GB 'den küçükse bu önerilen yaklaşımdır.
 
-## <a name="migrate-an-instance-database"></a>Örnek veritabanını geçirme
+Veritabanındaki tüm tablolarda *birincil* anahtarlar varsa ve veritabanında bellek içi OLTP nesneleri yoksa, [İşlemsel çoğaltma](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) kullanılabilir.
 
-**Örnek veritabanımı Azure SQL veritabanı 'na nasıl geçirebilirim?**
+Yönetilen örnekten alınan yerel COPY_ONLY yedeklemeleri, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez. Daha fazla ayrıntı için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15).
 
-Bir seçenek, [veritabanını BIR BACPAC 'e aktarmak](../database/database-export.md) ve ardından [bacpac dosyasını içeri aktaryıdır](../database/database-import.md). 
+**SQL Server örneğinden SQL yönetilen örneği 'ne nasıl geçirebilirim?**
 
-Veritabanınız 100 GB 'den küçükse bu önerilen yaklaşımdır. Veritabanındaki tüm tablolarda birincil anahtarlar varsa işlemsel çoğaltma kullanılabilir.
+SQL Server örneğinizi geçirmek için bkz. [Azure SQL yönetilen örneği 'ne SQL Server örnek geçişi](migrate-to-instance-from-sql-server.md).
+
+**Diğer platformlardan SQL yönetilen örneğine nasıl geçiş yapabilirim?**
+
+Diğer platformlardan geçiş hakkında geçiş bilgileri için bkz. [Azure veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/).
 
 ## <a name="switch-hardware-generation"></a>Donanım oluşturmayı Değiştir 
 
-**SQL yönetilen örnek donanım oluşturma işlemi ile gen 4 ve Gen 5 arasında geçiş yapabilir miyim?**
+**Yönetilen örnek donanım oluşturma işlemi ile gen 4 ve Gen 5 arasında geçiş yapabilir miyim?**
 
-SQL yönetilen örneğinin sağlandığı bölgede her iki donanım nesli de kullanılabiliyorsa, donanım nesilleri arasında otomatik çevrimiçi geçiş mümkündür. Bu durumda, [sanal çekirdek modeline genel bakış sayfasını](../database/service-tiers-vcore.md)denetleyerek, donanım nesilleri arasında nasıl geçiş yapılacağını açıklayan bir denetim yapabilirsiniz.
+Yönetilen örneğinizin sağlandığı bölgede 5. nesil donanım kullanılabiliyorsa, 4. nesil ile 5. nesil arasında otomatik çevrimiçi geçiş mümkündür. Bu durumda, donanım nesilleri arasında nasıl geçiş yapılacağını açıklayan [Vcore modeline genel bakış sayfasını](../database/service-tiers-vcore.md) kontrol edebilirsiniz.
 
-Bu uzun süredir çalışan bir işlemdir. yeni bir yönetilen örnek, arka planda ve veritabanları otomatik olarak eski ve yeni örnekler arasında, işlem sonunda hızlı bir yük devretmeyle hazırlanacaktır. 
+Arka planda yeni bir yönetilen örnek sağlanacağı ve veritabanlarının sonunda hızlı bir yük devretmeyle, eski ve yeni örnek arasında otomatik olarak aktarılan, bu uzun süredir çalışan bir işlemdir.
 
-**Aynı bölgede her iki donanım kuşnesi de desteklenmiyorsa ne olacak?**
+Note: 4. nesil donanımı kullanıma alınıyor ve Yeni dağıtımlar için artık kullanılamıyor. Tüm yeni veritabanlarının 5. nesil donanımında dağıtılması gerekir. 5. nesil 'den 4. nesil 'e geçiş de kullanılamaz.
 
-Aynı bölgede her iki donanım neslini de desteklenmiyorsa, donanım oluşturma işlemi değiştirilebilir, ancak el ile yapılması gerekir. Bu, istenen donanım oluşturma 'nın kullanılabildiği bölgede yeni bir örnek sağlamanızı ve eski ve yeni örnekler arasında verileri el ile yedeklemeniz ve geri yüklemeniz gerekir.
+## <a name="performance"></a>Performans 
 
-**Güncelleştirme işlemini gerçekleştirmek için yeterli IP adresi yoksa ne olacak?**
+**Yönetilen örnek performansını SQL Server performansla nasıl karşılaştırabilirim?**
 
-Yönetilen örneğinizin sağlandığı alt ağda yeterli IP adresi yoksa, içinde yeni bir alt ağ ve yeni bir yönetilen örnek oluşturmanız gerekir. Ayrıca, yeni alt ağın daha fazla IP adresi ayrılmış olarak oluşturulmasını önerdiğimiz için, gelecekteki güncelleştirme işlemleri benzer durumlardan kaçınacaktır. (Uygun alt ağ boyutu için, [VNET alt ağının boyutunu belirlemeyi](vnet-subnet-determine-size.md)denetleyin.) Yeni örnek sağlandıktan sonra, eski ve yeni örnekler arasında verileri el ile yedekleyebilir veya geri yükleyebilir ya da çapraz örnek [zaman içinde geri yükleme](point-in-time-restore.md?tabs=azure-powershell)gerçekleştirebilirsiniz. 
+Yönetilen örnek ve SQL Server arasındaki bir performans karşılaştırması için iyi bir başlangıç noktası, [Azure SQL yönetilen örneği ve SQL Server makalesi arasında performans karşılaştırması Için en iyi](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210) uygulamadır.
 
+**Yönetilen örnek ve SQL Server arasında performans farklılıklarına neden olur?**
 
-## <a name="tune-performance"></a>Performansı ayarlama
+[SQL yönetilen örneği ve SQL Server arasındaki performans farklılıklarının temel nedenleri](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)bölümüne bakın. Genel Amaçlı yönetilen örnek performansı üzerindeki günlük dosyası boyutu etkisi hakkında daha fazla bilgi için bkz. [genel amaçlı günlük dosyası boyutunun etkisi](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-**Nasıl yaparım? SQL yönetilen örneği 'nin performansı yapılsın mı?**
+**Yönetilen örneðimin performansı Nasıl yaparım? mi?**
 
-Genel Amaçlı katmanındaki SQL yönetilen örneği, uzak depolama kullanır, bu nedenle veri ve günlük dosyalarının boyutu performansı önemli değildir. Daha fazla bilgi için bkz. [SQL yönetilen örnek performansı genel amaçlı günlük dosyası boyutunun etkisi](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
+Yönetilen örneğinizin performansını şu şekilde iyileştirebilirsiniz:
+- AI ve makine öğrenimine dayalı sürekli performans ayarlaması aracılığıyla en yüksek performans ve kararlı iş yükleri sağlayan [otomatik ayarlama](../database/automatic-tuning-overview.md) .
+-   İşlemsel işleme iş yükleri üzerinde işleme ve gecikme süresini artıran ve daha hızlı iş öngörüleri sunan [bellek ıçı OLTP](../in-memory-oltp-overview.md) . 
 
-İş yükünüz çok sayıda küçük işlem içeriyorsa, bağlantı türünü proxy 'den yeniden yönlendirme moduna geçirmeyi düşünün.
+Performansı daha da ayarlamak için, [uygulama ve veritabanı ayarlama](../database/performance-guidance.md#tune-your-database)için *en iyi uygulamalardan* bazılarını uygulamayı düşünün.
+İş yükünüz çok sayıda küçük işlem içeriyorsa, düşük gecikme süresi ve daha yüksek aktarım hızı için [bağlantı türünü proxy 'den yeniden yönlendirme moduna geçirmeyi](connection-types-overview.md#changing-connection-type) düşünün.
 
-## <a name="maximum-storage-size"></a>Maksimum depolama boyutu
+## <a name="monitoring-metrics-and-alerts"></a>İzleme, ölçümler ve uyarılar
+
+**Yönetilen örneğimin izlenmesi ve uyarı verme seçenekleri nelerdir?**
+
+SQL yönetilen örnek kullanımını ve performansını izlemeye ve uyarıya yönelik tüm olası seçenekler için bkz. [Azure SQL yönetilen örnek izleme seçenekleri blog gönderisi](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416). SQL MI için gerçek zamanlı performans izleme için bkz. [Azure SQL veritabanı yönetilen örneği Için gerçek zamanlı performans izleme](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance).
+
+**Performans izleme için SQL Profiler kullanabilir miyim?**
+
+Evet, SQL Profiler desteklenir veya SQL yönetilen örneğidir. Daha ayrıntılı bilgi için bkz. [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15).
+
+**Veritabanı Danışmanı ve yönetilen örnek veritabanları için Sorgu Performansı İçgörüleri destekleniyor mu?**
+
+Hayır, bunlar desteklenmez. Veritabanlarınızı izlemek için, [DMVs](../database/monitoring-with-dmvs.md) ve [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) 'U [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) ve [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) ile birlikte kullanabilirsiniz.
+
+**SQL yönetilen örneği 'nde ölçüm uyarıları oluşturabilir miyim?**
+
+Evet. Yönergeler için bkz. [SQL yönetilen örneği için uyarı oluşturma](alerts-create.md).
+
+**Yönetilen örnekteki bir veritabanında ölçüm uyarıları oluşturabilir miyim?**
+
+Yalnızca yönetilen örnek için ölçümleri uyarma. Yönetilen örnekteki ayrı veritabanları için uyarı ölçümleri kullanılamıyor.
+
+## <a name="storage-size"></a>Depolama boyutu
 
 **SQL yönetilen örneği için en büyük depolama boyutu nedir?**
 
 SQL yönetilen örneği için depolama boyutu, seçilen hizmet katmanına (Genel Amaçlı veya İş Açısından Kritik) göre değişir. Bu hizmet katmanlarının depolama sınırlamaları için bkz. [hizmet katmanı özellikleri](../database/service-tiers-general-purpose-business-critical.md).
 
-  
+**Yönetilen bir örnek için kullanılabilen minimum depolama boyutu nedir?**
+
+Bir örnekte kullanılabilen minimum depolama alanı miktarı 32 GB 'dir. Depolama, en fazla depolama boyutuna kadar 32 GB 'lik artışlarla eklenebilir. İlk 32BO ücretsizdir.
+
+**İşlem kaynaklarından bağımsız olarak bir örneğe atanan depolama alanını artırabilir miyim?**
+
+Evet, işlem içinden bağımsız olarak, bir ölçüde işlem dışında eklenti depolaması satın alabilirsiniz. Bkz. [tabloda](resource-limits.md#hardware-generation-characteristics) *en büyük örnek ayrılmış depolama alanı* .
+
+**Genel Amaçlı hizmet katmanında depolama performanmumu nasıl iyileştirebilirim?**
+
+Depolama performansını iyileştirmek için, [genel amaçlı ' de depolama en iyi uygulamaları](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)bölümüne bakın.
+
+## <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
+
+**Yedekleme deposu yönetilen örnek depolamama göre mi kesilsin?**
+
+Hayır, yedekleme depolama alanı yönetilen örnek depolama alanından kesilmiyor. Yedekleme depolaması, örnek depolama alanından bağımsızdır ve bu boyut sınırlı değildir. Yedekleme depolaması, örnek veritabanlarınızın yedeğinin tutulacağı zaman dilimi ile sınırlıdır ve 35 güne kadar yapılandırılabilir. Ayrıntılar için bkz. [otomatik yedeklemeler](../database/automated-backups-overview.md).
+
+**Yönetilen örneğimde otomatikleştirilmiş yedeklemelerin ne zaman yapıldığını nasıl görebilirim?**
+Yönetilen örnekte otomatik yedeklemelerin ne zaman gerçekleştirildiğini izlemek için bkz. [Azure SQL yönetilen örneği için Otomatik yedeklemeyi izleme](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355).
+
+**İsteğe bağlı yedekleme destekleniyor mu?**
+Evet, Azure Blob depolamada yalnızca bir kopya tam yedekleme oluşturabilirsiniz, ancak yönetilen örnekte yalnızca geri yüklenebilir. Ayrıntılar için bkz. [yalnızca kopya yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15). Ancak, şifreleme için kullanılan sertifikaya erişilemediğinden, veritabanı hizmet tarafından yönetilen TDE tarafından şifrelendiyse, salt kopya yedekleme olanaksızdır. Böyle bir durumda, veritabanını başka bir SQL yönetilen örneğine taşımak veya müşteri tarafından yönetilen anahtara geçiş yapmak için zaman içinde geri yükleme özelliğini kullanın.
+
+**Yerel geri yükleme (. bak dosyalarından) yönetilen örneğe destekleniyor mu?**
+Evet, SQL Server 2005 + sürümlerinde desteklenir ve kullanılabilir.  Yerel geri yüklemeyi kullanmak için,. bak dosyanızı Azure Blob depolama alanına yükleyin ve T-SQL komutlarını yürütün. Daha ayrıntılı bilgi için bkz. [URL 'Den yerel geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url).
+
+## <a name="business-continuity"></a>İş sürekliliği
+
+**Sistem Veritabanlarım bir yük devretme grubunda ikincil örneğe çoğaltılıyor mu?**
+
+Sistem veritabanları, bir yük devretme grubundaki ikincil örneğe çoğaltılmaz. Bu nedenle, nesneler ikincil üzerinde el ile oluşturulmadığı takdirde, sistem veritabanlarından nesnelere bağlı senaryolar ikincil örnekte imkansız olur. Geçici çözüm için bkz. [sistem veritabanlarından nesneye bağımlı senaryoları etkinleştirme](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases).
+ 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri 
 
 **Yönetilen örnek alt ağında geçerli gelen/giden NSG kısıtlamaları nelerdir?**
@@ -186,7 +303,7 @@ Hayır. Şu anda, yönetilen örneği zaten diğer kaynak türlerini içeren bir
 Hayır, bu desteklenmiyor. Yönetilen bir örneğin ana bilgisayar adı, yönetilen örneğin sanal kümesinin önünde yük dengeleyiciye eşlenir. Bir sanal küme birden çok yönetilen örneği barındırabildiğinden, bir bağlantı, adını belirtmeden doğru yönetilen örneğe yönlendirilemez.
 SQL yönetilen örnek sanal küme mimarisi hakkında daha fazla bilgi için bkz. [sanal küme bağlantısı mimarisi](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
 
-**Yönetilen bir örnek statik IP adresine sahip olabilir mi?**
+**Yönetilen örneğimin statik bir IP adresi olabilir mi?**
 
 Bu şu anda desteklenmiyor.
 
@@ -217,7 +334,6 @@ Hayır, bu seçenek kullanılamaz.  Özel veri uç noktası için, yönetilen ö
 Hızlı rota devresi eşlemesi bunu yapmanın tercih edilen yoludur. Bu, iç yük dengeleyici ile ilgili [kısıtlama](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)nedeniyle desteklenmeyen bölgeler arası sanal ağ eşlemesi ile birlikte kullanılamaz.
 
 Hızlı rota devresi eşlemesi mümkün değilse, siteden siteye VPN bağlantısı ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) oluşturmak diğer tek seçenektir.
-
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Veri kaybı riskini azaltma  
 
@@ -265,7 +381,6 @@ DNS yapılandırması sonunda yenilenir:
 
 Geçici bir çözüm olarak, SQL yönetilen örneği 4 sanal çekirdeğe indirgekten sonra yeniden yükseltin. Bunun, DNS yapılandırmasını yenilemeyi yan etkisi vardır.
 
-
 ## <a name="change-time-zone"></a>Saat dilimini değiştirme
 
 **Mevcut bir yönetilen örnek için saat dilimini değiştirebilir miyim?**
@@ -275,16 +390,29 @@ Yönetilen bir örnek ilk kez sağlandığında saat dilimi yapılandırması ay
 Geçici çözümler, doğru saat dilimine sahip yeni bir yönetilen örnek oluşturma ve ardından el ile yedekleme ve geri yükleme gerçekleştirme ya da önerdiğimiz bir [çapraz örnek zaman geri yükleme](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)gerçekleştirme işlemlerini içerir.
 
 
-## <a name="resolve-performance-issues"></a>Performans sorunlarını çözme
+## <a name="security-and-database-encryption"></a>Güvenlik ve veritabanı şifrelemesi
 
-**Nasıl yaparım? SQL yönetilen örneği ile performans sorunlarını çözmek mi istiyorsunuz?**
+**Sysadmin sunucu rolü SQL yönetilen örneği için kullanılabilir mi?**
 
-SQL yönetilen örneği ve SQL Server arasındaki performans karşılaştırması için iyi bir başlangıç noktası, [Azure SQL yönetilen örneği ve SQL Server arasında performans karşılaştırması Için en iyi](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)uygulamadır.
+Evet, müşteriler sysadmin rolünün üyeleri olan oturum açma işlemleri oluşturabilir.  Sysadmin ayrıcalığına sahip olan müşteriler, örneğin, SLA taahhüdünü olumsuz yönde etkileyebilecek örnek çalıştırma sorumluluğunu de kabul eder. Sysadmin sunucu rolüne oturum açma eklemek için bkz. [Azure AD kimlik doğrulaması](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-aad-security-tutorial#azure-ad-authentication).
 
-Veri yükleme, zorunlu tam kurtarma modeli ve işlem günlüğü yazma aktarım hızı [sınırları](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) nedenıyle, SQL yönetilen SQL Server örneği üzerinde genellikle daha yavaştır. Bazen bu, geçici verileri Kullanıcı veritabanı yerine tempdb 'ye yükleyerek veya kümelenmiş columnstore ya da bellek için iyileştirilmiş tablolar kullanarak geçici olarak çalışabilir.
+**SQL yönetilen örneği için Saydam Veri Şifrelemesi destekleniyor mu?**
 
+Evet, Saydam Veri Şifrelemesi SQL yönetilen örneği için desteklenir. Ayrıntılar için bkz. [SQL yönetilen örneği için saydam veri şifrelemesi](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal).
 
-## <a name="restore-encrypted-backup"></a>Şifrelenmiş yedeklemeyi geri yükleme
+**"Kendi anahtarını getir" modelini TDE kullanabilir miyim?**
+
+Evet, BYOK senaryosu için Azure Key Vault Azure SQL yönetilen örneği için kullanılabilir. Ayrıntılar için bkz. [müşteri tarafından yönetilen anahtarla saydam veri şifrelemesi](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
+
+**Şifrelenmiş bir SQL Server veritabanını geçirebilir miyim?**
+
+Evet, yazabilirsiniz. Şifrelenmiş bir SQL Server veritabanını geçirmek için, mevcut sertifikalarınızı yönetilen örneğe dışarı aktarıp içeri aktarmanız, ardından tam bir veritabanı yedeklemesi alıp yönetilen örneğe geri yüklemeniz gerekir. 
+
+Ayrıca, [Azure veritabanı geçiş hizmeti](https://azure.microsoft.com/services/database-migration/) 'ni kullanarak TDE şifreli veritabanlarını geçirebilirsiniz.
+
+**SQL yönetilen örneği için TDE koruyucu döndürmeyi nasıl yapılandırabilirim?**
+
+Azure Cloud Shell kullanarak, yönetilen örnek için TDE koruyucuyu döndürebilirsiniz. Yönergeler için, [Azure Key Vault ' dan kendi anahtarınızı kullanarak SQL yönetilen örneği saydam veri şifrelemesi](scripts/transparent-data-encryption-byok-powershell.md)bakın.
 
 **Şifrelenmiş veritabanımı SQL yönetilen örneğine geri yükleyebilir miyim?**
 

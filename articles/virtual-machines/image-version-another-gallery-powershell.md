@@ -1,5 +1,5 @@
 ---
-title: Başka bir galerinin görüntüsünü kopyalama
+title: PowerShell kullanarak başka bir galerinin görüntüsünü kopyalama
 description: Azure PowerShell kullanarak başka bir galerinin görüntüsünü kopyalayın.
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796934"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221230"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Başka bir galerinin görüntüsünü kopyalama
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell kullanarak başka bir galerinin görüntüsünü kopyalama
 
 Kuruluşunuzda birden çok Galeri varsa, diğer galerilerinde depolanan görüntülerden görüntü oluşturabilirsiniz. Örneğin, yeni görüntüleri oluşturmak ve test etmek için bir geliştirme ve test galeriniz olabilir. Üretimde kullanılmak üzere hazırsanız, bu örneği kullanarak bunları bir üretim galerisine kopyalayabilirsiniz. Ayrıca, [Azure CLI](image-version-another-gallery-cli.md)kullanarak başka bir galerinin görüntüsünden bir görüntü oluşturabilirsiniz.
 
@@ -165,3 +165,5 @@ $job.State
 [Genelleştirilmiş](vm-generalized-image-version-powershell.md) veya [özel](vm-specialized-image-version-powershell.md) BIR görüntü sürümünden bir VM oluşturun.
 
 [Azure görüntü Oluşturucu (Önizleme)](./linux/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
+
+Satın alma planı bilgilerini sağlama hakkında daha fazla bilgi için bkz. [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](marketplace-images.md).

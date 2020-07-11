@@ -9,11 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765106"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224868"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarını kullanmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
@@ -79,6 +80,9 @@ Bu süreç, 3,1. adım ile bir kerelik işlemidir.
 [Sertifika işlemini al](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Durum: tamamlandı, hata bilgileri ile başarısız oldu veya iptal edildi  
       -   Oluşturma gecikmesi nedeniyle, bir iptal işlemi başlatılabilir. İptal etme etkili olabilir veya olmayabilir.  
+
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Tümleşik CA ile ilişkili ağ güvenliği ve erişim ilkeleri
+Key Vault hizmet istekleri CA 'ya gönderir (giden trafik). Bu nedenle, Güvenlik Duvarı etkin anahtar kasaları ile tamamen uyumludur. Key Vault, CA ile erişim ilkelerini paylaşmaz. CA imzalama isteklerini bağımsız kabul edecek şekilde yapılandırılmalıdır. [Güvenilen CA 'yı tümleştirme Kılavuzu](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 
 ## <a name="import-a-certificate"></a>Sertifikayı içeri aktar  
  Alternatif olarak, bir sertifika Key Vault – PFX veya ped içine aktarılabilir.  

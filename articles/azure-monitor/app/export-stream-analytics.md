@@ -3,12 +3,12 @@ title: Azure Application Insights Stream Analytics kullanarak dışarı aktarma 
 description: Stream Analytics, Application Insights dışarı aktarma yaptığınız verileri sürekli olarak dönüştürebilir, filtreleyebilir ve yönlendirebilir.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110496"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224528"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) , [Application Insights aktarılmış](export-telemetry.md)verileri işlemeye yönelik ideal bir araçtır. Stream Analytics, çeşitli kaynaklardan veri çekebilir. Verileri dönüştürebilir ve filtreleyebilir ve sonra çeşitli alıcılara yönlendirebilir.
@@ -28,7 +28,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 1. [Azure Portal](https://portal.azure.com)aboneliğinizde bir "klasik" depolama hesabı oluşturun.
    
    ![Azure portal ' de yeni, veri, depolama ' yı seçin.](./media/export-stream-analytics/030.png)
-2. Bir kapsayıcı oluşturma
+2. Kapsayıcı oluşturma
    
     ![Yeni depolama alanında kapsayıcılar ' ı seçin, kapsayıcılar kutucuğuna tıklayın ve ardından Ekle](./media/export-stream-analytics/040.png)
 3. Depolama erişim anahtarını kopyalama
@@ -60,7 +60,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
     Ayrıca, veriler depolama verilerinize dışarı aktaracaktır. 
 2. Aktarılmış verileri inceleyin. Visual Studio 'da **Görünüm/bulut Gezgini**' ni seçin ve Azure/Storage ' ı açın. (Bu menü seçeneğine sahip değilseniz, Azure SDK 'sını yüklemeniz gerekir: yeni proje iletişim kutusunu açın ve Visual C#/Cloud/Get .NET için Microsoft Azure SDK açın.)
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![Görmek istediğiniz olay türlerinin nasıl ayarlanacağını gösteren ekran görüntüsü.](./media/export-stream-analytics/04-data.png)
    
     Yol adının, uygulama adı ve izleme anahtarından türetilen ortak bölümünü bir yere göz önünde bir şekilde oluşturun. 
 
@@ -69,21 +69,21 @@ Olaylar JSON biçimindeki blob dosyalarına yazılır. Her dosya bir veya daha f
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics örneği oluşturma
 [Azure Portal](https://portal.azure.com/), Azure Stream Analytics hizmetini seçin ve yeni bir Stream Analytics işi oluşturun:
 
-![](./media/export-stream-analytics/SA001.png)
+![Azure portal Stream Analytics işi oluşturmak için ana sayfayı gösteren ekran görüntüsü.](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![Yeni bir Stream Analytics işi oluştururken gereken ayrıntıları gösteren ekran görüntüsü.](./media/export-stream-analytics/SA002.png)
 
 Yeni iş oluşturulduğunda **Kaynağa Git**' i seçin.
 
-![](./media/export-stream-analytics/SA003.png)
+![Yeni Stream Analytics işi dağıtımı başarılı olduğunda alınan iletiyi gösteren ekran görüntüsü.](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>Yeni giriş Ekle
 
-![](./media/export-stream-analytics/SA004.png)
+![Stream Analytics işine nasıl giriş ekleneceğini gösteren ekran görüntüsü.](./media/export-stream-analytics/SA004.png)
 
 Sürekli dışarı aktarma blobundan giriş alacak şekilde ayarlayın:
 
-![](./media/export-stream-analytics/SA0005.png)
+![Stream Analytics işinin sürekli bir dışarı aktarma blobundan giriş alacak şekilde yapılandırılmasını gösteren ekran görüntüsü.](./media/export-stream-analytics/SA0005.png)
 
 Artık, daha önce not ettiğiniz depolama hesabınızdan birincil erişim anahtarı gerekir. Bunu depolama hesabı anahtarı olarak ayarlayın.
 
@@ -109,7 +109,7 @@ Bu örnekte:
 ## <a name="add-new-output"></a>Yeni çıkış Ekle
 Şimdi işle > **çıkışlarını**  >  **Ekle**' yi seçin.
 
-![](./media/export-stream-analytics/SA006.png)
+![Yeni bir çıkış eklemek için Stream Analytics işinizi seçmeyi gösteren ekran görüntüsü.](./media/export-stream-analytics/SA006.png)
 
 
 ![Yeni kanalı seçin, çıkış ' a tıklayın, Power BI ekleyin](./media/export-stream-analytics/SA010.png)

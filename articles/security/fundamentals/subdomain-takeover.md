@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145980"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223984"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
@@ -117,8 +117,8 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
 
     - Alt etki alanınızı Azure kaynaklarıyla eşleştirilmiş olduğundan emin olmak için DNS kayıtlarınızı düzenli olarak gözden geçirin:
 
-        - **Var** : *. azurewebsites.NET veya *. cloudapp.Azure.com gibi Azure alt etki alanlarını işaret eden kaynaklar için DNS bölgelerinizi sorgulayın ( [Bu başvuru listesine](azure-domains.md)bakın).
-        - **Kendı** DNS alt etki alanları 'nın hedeflediği tüm kaynakların sahip olduğunu doğrulayın.
+        - Var: *. azurewebsites.net veya *. cloudapp.azure.com gibi Azure alt etki alanlarını işaret eden kaynaklar için DNS bölgelerinizi sorgulayın ( [Bu başvuru listesine](azure-domains.md)bakın).
+        - Kendi DNS alt etki alanları 'nın hedeflediği tüm kaynakların sahip olduğunu doğrulayın.
 
     - Azure tam etki alanı adı (FQDN) uç noktalarınızın ve uygulama sahiplerinin hizmet kataloğunu saklayın. Hizmet kataloğunuzu derlemek için aşağıdaki tablodaki parametrelerle aşağıdaki Azure Kaynak Grafiği (ARG) sorgusunu çalıştırın:
     
@@ -127,26 +127,15 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
         >
         > **Sınırlamalar** -Azure Kaynak grafiğinde, büyük bir Azure ortamınız varsa göz önünde bulundurmanız gereken azaltma ve sayfalama limitleri vardır. Büyük Azure Kaynak veri kümeleriyle çalışma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) .  
 
-        ```
-        Search-AzGraph -Query "resources | where type == '[ResourceType]' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = [FQDNproperty]"
+        ```powershell
+        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = <FQDNproperty>"
         ``` 
-        
-        Örneğin, bu sorgu Azure App Service kaynakları döndürür:
-
-        ```
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-        
-        Ayrıca, birden çok kaynak türünü birleştirebilirsiniz. Bu örnek sorgu Azure App Service **ve** Azure App Service yuvalardan kaynakları döndürür:
-
-        ```azurepowershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-
 
         Bağımsız değişken sorgusu için hizmet başına parametreler:
 
-        |Kaynak adı  |[ResourceType]  | [FQDNproperty]  |
+        |Kaynak adı  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
         |Azure Front Door|Microsoft. Network/frontkapaklı|Properties. cName|
         |Azure Blob Depolama|Microsoft. Storage/storageaccounts|Properties. BID. blob|
@@ -157,6 +146,23 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
         |Azure API Management|Microsoft. apimanayönetimi/hizmeti|Properties. hostnameConfigurations. hostName|
         |Azure App Service|Microsoft. Web/siteler|Properties. defaultHostName|
         |Azure App Service Yuvaları|Microsoft. Web/Sites/Yuvaları|Properties. defaultHostName|
+
+        
+        **Örnek 1** -bu sorgu Azure App Service kaynaklarını döndürür: 
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = properties.defaultHostName"
+        ```
+        
+        **Örnek 2** -bu sorgu, Azure App Service **ve** Azure App Service yuvalardan kaynakları döndürmek için birden çok kaynak türünü birleştirir:
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
+        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
+        resourceGroup, name, endpoint = properties.defaultHostName"
+        ```
 
 
 - **Düzeltme için yordamlar oluşturun:**
@@ -173,4 +179,4 @@ Alt etki alanı devrmasına karşı savunmak için kullanabileceğiniz ilgili hi
 
 - [Azure App Service özel etki alanları eklerken etki alanı doğrulama KIMLIĞINI kullanın](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
 
--    [Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)

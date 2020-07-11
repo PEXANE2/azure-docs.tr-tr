@@ -1,21 +1,21 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772950"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226385"
 ---
-Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürümleri ile ilgili işlem yaparken sorunlarla karşılaşıyorsanız başarısız olan komutları hata ayıklama modunda yeniden çalıştırın. Hata ayıklama **modu, CLI** ve **-Debug** anahtarı PowerShell ile geçirerek etkinleştirilir. Hatayı bulduktan sonra, hataları gidermek için bu belgeyi izleyin.
+Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürümleri ile ilgili işlem yaparken sorunlarla karşılaşıyorsanız başarısız olan komutları hata ayıklama modunda yeniden çalıştırın. `--debug`Anahtar CLI ve anahtarı PowerShell ile geçirerek hata ayıklama modu etkinleştirilir `-Debug` . Hatayı bulduktan sonra, hataları gidermek için bu belgeyi izleyin.
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>Paylaşılan görüntü galerisi oluşturulamıyor
@@ -43,7 +43,7 @@ Görüntü tanımı için izin verilen karakterler büyük veya küçük harfler
 
 Ad, Yayımcı, teklif, SKU ve işletim sistemi türü gibi özellikler zorunludur. Tüm özelliklerin geçtiğini doğrulayın.
 
-Görüntü tanımının Linux veya Windows **'un, görüntü**sürümünü oluşturmak için kullandığınız kaynak tarafından yönetilen görüntüyle aynı olduğundan emin olun. 
+Görüntü tanımının Linux veya Windows **'un, görüntü**sürümünü oluşturmak için kullandığınız kaynakla aynı olduğundan emin olun. 
 
 
 ## <a name="unable-to-create-an-image-version"></a>Görüntü sürümü oluşturulamıyor 
@@ -84,7 +84,7 @@ Abonelik sahibine başvurarak, [rol tabanlı Access Control](https://docs.micros
 
 *VM veya sanal makine ölçek kümesi oluşturma uzun bir süre sürer.*
 
-VM veya sanal makine ölçek kümesi oluşturmaya çalıştığınız görüntü sürümünün **OSType** öğesinin, görüntü sürümünü oluşturmak için kullandığınız kaynak tarafından yönetilen görüntünün aynı **OSType** öğesine sahip olduğunu doğrulayın. 
+VM veya sanal makine ölçek kümesi oluşturmaya çalıştığınız görüntü sürümünün **OSType** öğesinin, görüntü sürümünü oluşturmak için kullandığınız kaynağın aynı **OSType** öğesine sahip olduğunu doğrulayın. 
 
 ## <a name="unable-to-share-resources"></a>Kaynaklar paylaşılamıyor
 

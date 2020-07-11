@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918346"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231854"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Video özeti oluşturmak için Azure Media Video Thumbnails kullanma  
 
@@ -66,10 +67,10 @@ Azure Media Video Thumbnails medya işlemcisinin yapabilecekleri bazı örnekler
 
 Aşağıdaki tabloda, **maxMotionThumbnailInSecs** kullanılmazsa varsayılan süre açıklanmaktadır.
 
-|  |  |  |
+|  | Small | Boyutta |
 | --- | --- | --- |
-| Video süresi |d < 3 dk |3 dk < d < 15 dk |
-| Küçük resim süresi |15 sn (2-3 sahne) |30 sn (3-5 sahne) |
+| **Video süresi** |d < 3 dk |3 dk < d < 15 dk |
+| **Küçük resim süresi** |15 sn (2-3 sahne) |30 sn (3-5 sahne) |
 
 Aşağıdaki JSON, kullanılabilir parametreleri ayarlar.
 

@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144595"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223899"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Çoklu oturum açma (SSO) nedir?
 
@@ -90,6 +90,9 @@ Parola tabanlı çoklu oturum açma, uygulama tarafından sunulan mevcut kimlik 
 - Bir uygulama SAML çoklu oturum açma protokolünü desteklemez.
 - Bir uygulama, belirteç ve üst bilgiler yerine Kullanıcı adı ve parolayla kimlik doğrular.
 
+>[!NOTE]
+>Parola tabanlı SSO için koşullu erişim ilkeleri veya Multi-Factor Authentication uygulayamazsınız.
+
 Parola tabanlı çoklu oturum açma, HTML tabanlı bir oturum açma sayfasına sahip olan tüm bulut tabanlı uygulamalar için desteklenir. Kullanıcı aşağıdaki tarayıcılardan herhangi birini kullanabilir:
 
 - Windows 7 veya sonraki sürümlerde Internet Explorer 11
@@ -136,6 +139,9 @@ Bağlantılı oturum açma, Azure AD 'nin, zaten başka bir hizmette çoklu otur
 Bağlantılı oturum açma, uygulamaları bir süre boyunca geçirirken tutarlı bir kullanıcı deneyimi sağlayabilir. Uygulamaları Azure Active Directory geçiriyorsanız, geçiş yapmak istediğiniz tüm uygulamaların bağlantılarını hızlıca yayımlamak için bağlantılı oturum açma ' yı kullanabilirsiniz.  Kullanıcılar, [Uygulamaps portalındaki](../user-help/active-directory-saas-access-panel-introduction.md) veya [Office 365 uygulama başlatıcısı](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)'ndaki tüm bağlantıları bulabilir. Kullanıcılar, bağlı bir uygulamaya veya geçirilen uygulamaya erişeceğimizi bilmez.  
 
 Bir kullanıcının kimliği, bağlantılı bir uygulamayla doğrulandıktan sonra, Son Kullanıcı çoklu oturum açma erişimi sağlanmadan önce bir hesap kaydının oluşturulması gerekir. Bu hesap kaydının sağlanması otomatik olarak yapılabilir veya bir yönetici tarafından el ile gerçekleşebilir.
+
+>[!NOTE]
+>Bağlı bir uygulamaya koşullu erişim ilkeleri veya Multi-Factor Authentication uygulayamazsınız. Bunun nedeni, bağlantılı bir uygulamanın Azure AD aracılığıyla çoklu oturum açma özellikleri sağlamadır. Bağlı bir uygulama yapılandırdığınızda, yalnızca uygulama başlatıcısı veya Uygulamaps portalında görünecek bir bağlantı eklersiniz. 
 
 ## <a name="disabled-sso"></a>Devre dışı SSO
 

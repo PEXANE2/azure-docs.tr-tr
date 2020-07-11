@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735005"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221400"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services hizmet sorumlusu uyarıları
 
@@ -38,7 +38,7 @@ Hangi hizmet sorumlusunun eksik olduğunu ve yeniden oluşturulması gerektiğin
 
 1. Azure portal sol taraftaki gezinti menüsünden **Azure Active Directory** ' i seçin.
 1. **Kurumsal uygulamalar**' ı seçin. **Uygulama türü** açılan menüsünden *tüm uygulamalar* ' ı seçin ve ardından **Uygula**' yı seçin.
-1. Uygulama kimliklerinin her birini arayın. Mevcut bir uygulama bulunamazsa, hizmet sorumlusunu oluşturmak veya ad alanını yeniden kaydettirmek için *çözüm* adımlarını izleyin.
+1. Aşağıdaki uygulama kimliklerinin her birini arayın. Mevcut bir uygulama bulunamazsa, hizmet sorumlusunu oluşturmak veya ad alanını yeniden kaydettirmek için *çözüm* adımlarını izleyin.
 
     | Uygulama Kimliği | Çözüm |
     | :--- | :--- |
@@ -49,9 +49,9 @@ Hangi hizmet sorumlusunun eksik olduğunu ve yeniden oluşturulması gerektiğin
 
 ### <a name="recreate-a-missing-service-principal"></a>Eksik hizmet sorumlusunu yeniden oluşturma
 
-Uygulama KIMLIĞI *2565bd9d-dad50-47d4-8B85-4c97f669dc36* Azure AD dizininizde yoksa, aşağıdaki adımları gerçekleştirmek IÇIN Azure AD PowerShell kullanın. Daha fazla bilgi için bkz. [Azure AD PowerShell 'i Install](/powershell/azure/active-directory/install-adv2).
+Uygulama KIMLIĞI *2565bd9d-dad50-47d4-8B85-4c97f669dc36* Azure AD dizininizde yoksa, aşağıdaki adımları gerçekleştirmek IÇIN Azure AD PowerShell kullanın. Daha fazla bilgi için bkz. [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
 
-1. Azure AD PowerShell modülünü yükleyip aşağıdaki gibi içeri aktarın:
+1. Gerekirse, Azure AD PowerShell modülünü yükleyip aşağıdaki gibi içeri aktarın:
 
     ```powershell
     Install-Module AzureAD
@@ -89,7 +89,7 @@ Azure AD DS, Kullanıcı hesaplarını ve kimlik bilgilerini Azure AD 'den otoma
 
 Kimlik bilgileri eşitleme için kullanılan Azure AD uygulamasını yeniden oluşturmak için Azure AD PowerShell 'i kullanarak aşağıdaki adımları uygulayın. Daha fazla bilgi için bkz. [Azure AD PowerShell 'i Install](/powershell/azure/active-directory/install-adv2).
 
-1. Azure AD PowerShell modülünü yükleyip aşağıdaki gibi içeri aktarın:
+1. Gerekirse, Azure AD PowerShell modülünü yükleyip aşağıdaki gibi içeri aktarın:
 
     ```powershell
     Install-Module AzureAD

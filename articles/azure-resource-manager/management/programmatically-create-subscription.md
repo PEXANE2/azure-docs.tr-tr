@@ -1,17 +1,17 @@
 ---
 title: Program aracılığıyla Azure abonelikleri oluşturma
 description: Programlı olarak ek Azure abonelikleri oluşturmayı öğrenin.
-author: amberbhargava
+author: anuragdalmia
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170641"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224171"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programlı olarak Azure abonelikleri oluşturma (Önizleme)
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Evet      | Dize | Abonelik teklifi. EA 'nın iki seçeneği [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve [MS-azr-0148p](https://azure.microsoft.com/offers/ms-azr-0148p/) (GELIŞTIRME/test, [EA Portalı kullanılarak açık](https://ea.azure.com/helpdocs/DevOrTestOffer)olması gerekir).                |
 | `owners`      | Hayır       | Dize | Abonelikte RBAC sahibi olarak eklemek istediğiniz herhangi bir kullanıcının nesne KIMLIĞI.  |
 
-Yanıtta, izleme için bir URL geri alacaksınız `Location` . Abonelik oluşturma işlemi tamamlandığında, URL 'yi al, `Location` `subscriptionLink` abonelik kimliği olan bir nesne döndürür. Daha ayrıntılı bilgi için [abonelik API 'si belgelerine](https://docs.microsoft.com/rest/api/subscription/) başvurun
+Yanıtta, üstbilginin bir parçası olarak `Location` , abonelik oluşturma işleminde durum için Sorgulayabileceğiniz bir URL 'yi geri alırsınız. Abonelik oluşturma işlemi tamamlandığında, URL 'yi al, `Location` `subscriptionLink` abonelik kimliği olan bir nesne döndürür. Daha ayrıntılı bilgi için [abonelik API 'si belgelerine](https://docs.microsoft.com/rest/api/subscription/) başvurun
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

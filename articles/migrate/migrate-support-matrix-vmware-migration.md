@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware geçişi desteği
 description: Azure geçişi 'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d8a2488e16031a4d960d039d646d9da5de1c1c2e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135000"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223712"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -59,15 +59,15 @@ Tablo, VMware VM 'Leri için aracısız geçiş gereksinimlerini özetler.
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
 **Disk sınırları** |  VM başına en fazla 60 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmiyor.
-**Bağımsız diskler** | Desteklenmiyor.
+**Paylaşılan disk kümesi** | Desteklenmez.
+**Bağımsız diskler** | Desteklenmez.
 **RDM/geçiş diskleri** | VM 'Lerin RDM veya PASSTHROUGH diskleri varsa, bu diskler Azure 'a çoğaltılmaz.
 **NFS** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmiyor.
-**Depolama vMotion** | Desteklenmiyor. VM, Depolama vMotion kullanıyorsa çoğaltma çalışmayacaktır.
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
-**IPv6** | Desteklenmiyor.
+**Çok yollu GÇ** | Desteklenmez.
+**Depolama vMotion** | Desteklenmez. VM, Depolama vMotion kullanıyorsa çoğaltma çalışmayacaktır.
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
+**IPv6** | Desteklenmez.
 **Hedef disk** | VM 'Ler yalnızca Azure 'da yönetilen disklere (Standart HDD, Premium SSD) geçirilebilirler.
 **Eşzamanlı çoğaltma** | vCenter Server başına 300 VM. Daha fazlasına sahipseniz, bunları 300 toplu işlem halinde geçirin.
 
@@ -121,15 +121,15 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz VMware VM 'Leri
 **Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 8 TB.
 **Disk sınırları** |  VM başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
-**Paylaşılan disk kümesi** | Desteklenmiyor.
+**Paylaşılan disk kümesi** | Desteklenmez.
 **Bağımsız diskler** | Destekleniyor.
 **Geçiş diskleri** | Destekleniyor.
 **NFS** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan VM 'Ler aracısız geçiş için desteklenmez.
-**Çok yollu GÇ** | Desteklenmiyor.
-**Depolama vMotion** | Destekleniyor
-**Ekip oluşturulmuş NIC 'ler** | Desteklenmiyor.
-**IPv6** | Desteklenmiyor.
+**Çok yollu GÇ** | Desteklenmez.
+**Depolama vMotion** | Desteklenir
+**Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
+**IPv6** | Desteklenmez.
 
 
 
@@ -162,11 +162,11 @@ Konuk işletim sistemi mimarisi | 64 bit.
 İşletim sistemi disk boyutu | 2.048 GB 'a kadar. 
 İşletim sistemi disk sayısı | 1 
 Veri diski sayısı | 64 veya daha az. 
-Veri diski boyutu | 4.095 GB 'a kadar 
+Veri diski boyutu | 8.095 GB 'a kadar
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir.
-Paylaşılan VHD | Desteklenmiyor. 
-FC diski | Desteklenmiyor. 
-BitLocker | Desteklenmiyor.<br/><br/> Makineyi geçirmeden önce BitLocker devre dışı bırakılmalıdır.
+Paylaşılan VHD | Desteklenmez. 
+FC diski | Desteklenmez. 
+BitLocker | Desteklenmez.<br/><br/> Makineyi geçirmeden önce BitLocker devre dışı bırakılmalıdır.
 VM adı | 1 ile 63 karakter arasında.<br/><br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. 
 Geçişten sonra Bağlan-Windows | Geçişten sonra Windows çalıştıran Azure VM 'lerine bağlanmak için:<br/><br/> -Geçişten önce, şirket içi VM 'de RDP 'yi etkinleştirin.<br/><br/> TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.<br/><br/> Siteden siteye VPN erişimi için, RDP 'yi etkinleştirin ve **Windows Firewall**  ->  **etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve Özellikler** ' de RDP 'ye izin verin.<br/><br/> Ayrıca, işletim sisteminin SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](prepare-for-migration.md).
 Geçişten sonra Bağlan-Linux | SSH kullanarak geçişten sonra Azure VM 'lerine bağlanmak için:<br/><br/> Geçişten önce, şirket içi makinede, Secure Shell hizmetinin başlangıç olarak ayarlandığını ve Güvenlik Duvarı kurallarının bir SSH bağlantısına izin vermeyi kontrol edin.<br/><br/> Yük devretmenin ardından Azure VM 'de, yük devredilen VM 'deki ağ güvenlik grubu kuralları için SSH bağlantı noktasına gelen bağlantılara ve bağlı olduğu Azure alt ağına izin verin.<br/><br/> Ayrıca, VM için bir genel IP adresi ekleyin.  

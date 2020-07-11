@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5f6c6970ad8bb697ceb118b6725b37e93ca80b5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 94f9aca38ebe6fef50b555fa0d5b09050d996366
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213066"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230630"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
@@ -23,10 +23,10 @@ Bu makalede, [Copy ifadesiyle](https://docs.microsoft.com/sql/t-sql/statements/c
 
 Aşağıdaki matris, her dosya türü ve depolama hesabı için desteklenen kimlik doğrulama yöntemlerini açıklar. Bu, kaynak depolama konumu ve hata dosyası konumu için geçerlidir.
 
-|                      |                CSV                |              Parquet              |                ORC                |
-| :------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  Azure blob depolama  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |              SAS/ANAHTAR              |              SAS/ANAHTAR              |
-| Azure Data Lake Gen2 | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |
+|                          |                CSV                |              Parquet              |                ORC                |
+| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|  **Azure Blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |              SAS/ANAHTAR              |              SAS/ANAHTAR              |
+| **Azure Data Lake Gen2** | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Satır Sonlandırıcı olarak LF ile depolama hesabı anahtarı (UNIX stili yeni satır)
 
@@ -68,7 +68,7 @@ WITH (
 
 Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulaması gerekir. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 1. Bu [Kılavuzu](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak Azure PowerShell 'i yükler.
 2. Genel amaçlı v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak genel amaçlı v2 'ye yükseltmeniz gerekir.

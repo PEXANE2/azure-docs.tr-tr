@@ -9,17 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734291"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223406"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içindeki sistem durumlarını anlayın ve askıya alınmış etki alanlarını çözün
 
-Azure Active Directory Domain Services (Azure AD DS), uzun bir süre boyunca yönetilen bir etki alanına hizmet verilemediğinde, yönetilen etki alanını askıya alınma durumuna geçirir. Yönetilen bir etki alanı daha sonra askıya alınma durumunda kalırsa, otomatik olarak silinir. Azure AD DS yönetilen etki alanınızı sağlıklı tutmak ve askıya alma önlemek için tüm uyarıları olabildiğince çabuk çözün.
+Azure Active Directory Domain Services (Azure AD DS), uzun bir süre boyunca yönetilen bir etki alanına hizmet verilemediğinde, yönetilen etki alanını askıya alınma durumuna geçirir. Yönetilen bir etki alanı askıya alınma durumunda kalırsa, otomatik olarak silinir. Azure AD DS yönetilen etki alanınızı sağlıklı tutmak ve askıya alma önlemek için tüm uyarıları olabildiğince çabuk çözün.
 
 Bu makalede, yönetilen etki alanlarının neden askıya alındığı ve askıya alınmış bir etki alanının nasıl kurtarılacağı açıklanmaktadır.
 
@@ -38,7 +39,7 @@ Yönetilen bir etki alanı aşağıdaki durumlardan birinde olabilir:
 
 ## <a name="running-state"></a>Çalışma durumu
 
-Doğru şekilde yapılandırılmış ve sorunsuz şekilde çalışan yönetilen bir etki alanı *çalışır* durumda. Bu, yönetilen bir etki alanı için istenen durumdur.
+Doğru şekilde yapılandırılmış ve sorunsuz şekilde yapılandırılan bir yönetilen etki alanı *çalışır* durumda. Bu, yönetilen bir etki alanı için istenen durumdur.
 
 ### <a name="what-to-expect"></a>Bekleneceğiniz
 
@@ -49,7 +50,9 @@ Doğru şekilde yapılandırılmış ve sorunsuz şekilde çalışan yönetilen 
 
 ## <a name="needs-attention-state"></a>Dikkat edilmesi gereken durum
 
-Düzeltilmesi gereken bir veya daha fazla soruna sahip yönetilen bir etki alanı, *dikkat edilmesi gereken* bir durumdur. Yönetilen etki alanı için sistem durumu sayfası, uyarıları listeler ve nerede bir sorun olduğunu gösterir. Bazı uyarılar geçicidir ve Azure platformu tarafından otomatik olarak çözümlenir. Diğer uyarılar için, sunulan çözüm adımlarını izleyerek sorunu çözebilirsiniz. Kritik bir uyarı var, ek sorun giderme yardımı için [bir Azure destek isteği açın][azure-support] .
+Düzeltilmesi gereken bir veya daha fazla soruna sahip yönetilen bir etki alanı, *dikkat edilmesi gereken* bir durumdur. Yönetilen etki alanı için sistem durumu sayfası, uyarıları listeler ve nerede bir sorun olduğunu gösterir.
+
+Bazı uyarılar geçicidir ve Azure platformu tarafından otomatik olarak çözümlenir. Diğer uyarılar için, sunulan çözüm adımlarını izleyerek sorunu çözebilirsiniz. Kritik bir uyarı var, ek sorun giderme yardımı için [bir Azure destek isteği açın][azure-support] .
 
 Bir uyarı örneği, kısıtlayıcı ağ güvenlik grubu olduğunda oluşur. Bu yapılandırmada Azure platformu, yönetilen etki alanını güncelleştiremeyebilir ve izleyemeyebilir. Bir uyarı oluşturulur ve durum, *dikkat edilmesi gereken*şekilde değişir.
 
@@ -57,7 +60,7 @@ Daha fazla bilgi için bkz. [yönetilen etki alanı için uyarılarla ilgili sor
 
 ### <a name="what-to-expect"></a>Bekleneceğiniz
 
-Yönetilen bir etki alanı, *dikkat edilmesi* durumunda olduğunda, Azure platformu verileri düzenli olarak izleyemeyebilir, düzeltme eki, güncelleştiremeyebilir veya yedeklemeyebilir. Bazı durumlarda, örneğin, geçersiz bir ağ yapılandırmasıyla, yönetilen etki alanı için etki alanı denetleyicilerine ulaşılamıyor olabilir.
+Yönetilen bir etki alanı, *dikkat edilmesi* durumunda olduğunda, Azure platformu verileri düzenli olarak izleyemeyebilir, düzeltme eki, güncelleştiremeyebilir veya yedeklemeyebilir. Bazı durumlarda, geçersiz bir ağ yapılandırması gibi, yönetilen etki alanı için etki alanı denetleyicilerine ulaşılamayabilir.
 
 * Yönetilen etki alanı sağlıksız bir durumda ve devam eden sistem durumu izleme, uyarı çözümlenene kadar durabilir.
 * Yönetilen etki alanı için etki alanı denetleyicileri düzeltme eki uygulanabilir veya güncelleştirilemiyor.
@@ -101,7 +104,7 @@ Azure AD DS sistem durumu sayfasında, etki alanının askıya alındığını N
 
 Yönetilen bir etki alanı yalnızca son yedeklemenin tarihine geri yüklenebilir. Son yedeklemelerinizin tarihi, yönetilen etki alanının **sistem durumu** sayfasında görüntülenir. Son yedekleme sonrasında gerçekleşen tüm değişiklikler geri yüklenmez. Yönetilen bir etki alanı için yedeklemeler, en fazla 30 gün boyunca depolanır. 30 günden eski olan yedeklemeler silinir.
 
-Yönetilen etki alanı *askıda* durumdayken uyarıları çözümledikten sonra, sağlıklı bir duruma dönmek Için [bir Azure destek isteği açın][azure-support] . 30 günden daha az bir yedekleme varsa, Azure desteği yönetilen etki alanını geri yükleyebilir.
+Yönetilen etki alanı *askıda* durumdayken uyarıları çözümledikten sonra, sağlıklı bir duruma dönmek Için [bir Azure destek isteği açın][azure-support] . 30 günden daha eski bir yedekleme varsa, Azure desteği yönetilen etki alanını geri yükleyebilir.
 
 ## <a name="deleted-state"></a>Durum silindi
 
@@ -112,7 +115,7 @@ Yönetilen bir etki alanı 15 gün boyunca *askıya alınma* durumunda kalırsa,
 Yönetilen bir etki alanı *Silinmiş* duruma girdiğinde, aşağıdaki davranış görülür:
 
 * Yönetilen etki alanı için tüm kaynaklar ve yedeklemeler silinir.
-* Yönetilen etki alanını geri yüklemenize ve Azure AD DS yeniden kullanmak için değiştirme yönetilen etki alanı oluşturmanız gerekir.
+* Yönetilen etki alanını geri alamazsınız. Azure AD DS 'yi yeniden kullanmak için bir değiştirme yönetilen etki alanı oluşturmanız gerekir.
 * Silindikten sonra, yönetilen etki alanı için faturalandırılmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

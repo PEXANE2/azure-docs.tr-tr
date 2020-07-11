@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ca7aca1c11158e396c27d3f0ac37e18a9cbea361
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182739"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224698"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -131,11 +131,11 @@ Aşağıdaki kayıt defteri alt anahtarında **LmCompatibilityLevel** değerini 
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>Hata 1816 "Bu komutu işlemek için yeterli kota yok" bir Azure dosya paylaşımında kopyaladığınızda
+## <a name="error-1816---not-enough-quota-is-available-to-process-this-command"></a>Hata 1816-bu komutu işlemek için yeterli kota yok
 
 ### <a name="cause"></a>Nedeni
 
-Dosya paylaşımının takılabileceği bilgisayardaki bir dosya için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 olur.
+Azure dosya paylaşımında bir dosya veya dizin için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 olur. Daha fazla bilgi için bkz. [Azure Dosyaları ölçeklendirme hedefleri](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets).
 
 ### <a name="solution"></a>Çözüm
 

@@ -8,11 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure Dev Spaces ile Azure DevOps kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685627"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229338"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces ile CI/CD kullanma
 
@@ -22,10 +23,10 @@ Bu makalede, geliştirme alanları etkinken Azure Kubernetes Service (AKS) ile s
 
 Bu makalede Azure DevOps ile ilgili yol, ancak Jenkins, TeamCity vb. gibi CI/CD sistemleri için de aynı kavramlar geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Azure Dev Spaces etkin Azure Kubernetes hizmeti (AKS) kümesi](../get-started-netcore.md)
 * [Azure Dev Spaces CLı yüklendi](upgrade-tools.md)
-* [Bir proje ile Azure DevOps organizasyonu](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Bir proje ile Azure DevOps organizasyonu](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Azure Container Registry [yönetici hesabı](../../container-registry/container-registry-authentication.md#admin-account) ayrıntıları kullanılabilir
 * [AKS kümenizi Azure Container Registry çekmek üzere yetkilendirin](../../aks/cluster-container-registry-integration.md)
@@ -67,7 +68,7 @@ Devre dışı bırakma seçeneği:
 > [!Note]
 > Azure DevOps _New YAML işlem hattı oluşturma deneyimi_ önizleme özelliği şu anda önceden tanımlanmış derleme işlem hatları oluşturma ile çakışıyor. Önceden tanımlanmış derleme işlem hattımızı dağıtmak için bunu şimdilik devre dışı bırakmanız gerekir.
 
-_Azds_updates_ dalında, *mywebapi* ve *webön uç*için gereken derleme adımlarını tanımlayan basit bir [Azure işlem hattı YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) sunuyoruz.
+_Azds_updates_ dalında, *mywebapi* ve *webön uç*için gereken derleme adımlarını tanımlayan basit bir [Azure işlem hattı YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) sunuyoruz.
 
 Seçtiğiniz dile bağlı olarak, işlem hattı YAML, şuna benzer bir yolda iade edildi:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
@@ -92,7 +93,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Henüz bir yayın tanımı içermeyen yepyeni bir DevOps projesinde çalışıyorsanız, önce devam etmeden önce boş bir yayın tanımı oluşturmanız gerekir. Içeri aktarma seçeneği, var olan bir yayın tanımına sahip olana kadar Kullanıcı arabiriminde görüntülenmez.
 1. Sol tarafta **+ Yeni** düğmesine tıklayın ve ardından Işlem hattını **İçeri Aktar ' a**tıklayın.
 1. **Görüntüle** ' ye tıklayın ve `samples/release.json` projenizden seçin.
-1. **Tamam**'a tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
+1. **Tamam** düğmesine tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
 1. Ardışık düzen bölmesinin sol tarafında, **yapıt balonu Ekle** ' ye tıklayın.
 1. **Kaynak** açılan listesinde, daha önce oluşturduğunuz derleme işlem hattını seçin.
 1. **Varsayılan sürüm**Için, **en son yapı ardışık düzen varsayılan dalından etiketlerle**' ı seçin.
@@ -118,7 +119,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Sağ üst köşedeki **Kaydet** ' e tıklayıp **Tamam**' a tıklayın.
 1. **+ Release** (Kaydet düğmesinin yanında) seçeneğine tıklayın ve **bir yayın oluşturun**.
 1. **Yapıtlar**bölümünde, derleme işlem hattınızdan en son derlemeyi doğrulayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 Otomatik bir yayın işlemi başlar, şimdi _geliştirme_ üst düzey alanında *mywebapi* ve *Webön uç* grafiklerini Kubernetes kümenize dağıtacaksınız. Azure DevOps web portalında, yayınınızın ilerlemesini izleyebilirsiniz:
 

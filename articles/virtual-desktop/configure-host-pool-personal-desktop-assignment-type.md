@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 158ac92a930b53e02ee81570c62711ca27dc4ae8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200401"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223117"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma
 
@@ -28,7 +28,7 @@ Windows sanal masaüstü ortamınızı gereksinimlerinize daha uygun olacak şek
 >[!NOTE]
 > Havuza alınmış konak havuzlarındaki kullanıcılar belirli oturum konaklarına atanmadığından, bu makaledeki yönergeler yalnızca kişisel masaüstü ana bilgisayar havuzları için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Windows sanal masaüstü PowerShell modülünü zaten indirdiğiniz ve yüklediğiniz varsayılmaktadır. Yapmadıysanız, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri izleyin.
 
@@ -71,6 +71,21 @@ Bir kullanıcıyı belirli bir oturum konağına atamak için aşağıdaki Power
 ```powershell
 Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -ResourceGroupName <resourcegroupname> -AssignedUser <userupn>
 ```
+
+Bir kullanıcıyı Azure portal bir oturum konağına doğrudan atamak için:
+
+1. <https://portal.azure.com> adresinden Azure portalında oturum açın.
+2. Arama çubuğuna **Windows sanal masaüstü 'nü** girin.
+3. **Hizmetler**altında **Windows sanal masaüstü**' nü seçin.
+4. Windows sanal masaüstü sayfasında, pencerenin sol tarafındaki menüye gidin ve **konak havuzları**' nı seçin.
+5. Güncelleştirmek istediğiniz konak havuzunun adını seçin.
+6. Sonra, pencerenin sol tarafındaki menüye gidin ve **uygulama grupları**' nı seçin.
+7. Düzenlemek istediğiniz masaüstü uygulama grubunun adını seçin ve ardından pencerenin sol tarafındaki menüden **atamalar** ' ı seçin.
+8. **+ Ekle**' yi seçin ve ardından bu masaüstü uygulama grubunu yayımlamak istediğiniz kullanıcıları veya Kullanıcı gruplarını seçin.
+9. Bir kullanıcıya oturum ana bilgisayarı atamak için bilgi çubuğunda **VM ata** ' yı seçin.
+10. Kullanıcıya atamak istediğiniz oturum konağını seçin ve ardından **ata**' yı seçin.
+11. Kullanılabilir kullanıcılar listesinden oturum konağını atamak istediğiniz kullanıcıyı seçin.
+12. İşiniz bittiğinde **Seç**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,11 +3,12 @@ title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights verileri görmüyor musunuz? Buradan deneyin.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485164"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221043"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -123,7 +124,7 @@ Onar
 *Uygulamamı çalıştırdım ve Microsoft Azure Application Insights hizmeti 'ni açtık, ancak tüm grafiklerde ' nasıl toplayacağınızı öğrenin... ' gösterilmektedir veya ' yapılandırılmadı. '* Ya da *yalnızca sayfa görünümü ve Kullanıcı verileri, ancak sunucu verisi yok.*
 
 * Uygulamanızı Visual Studio 'da hata ayıklama modunda çalıştırın (F5). Uygulamayı, bazı telemetri oluşturmak için kullanın. Visual Studio çıktı penceresinde günlüğe kaydedilen olayları görebilmeniz için denetleyin.  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![Visual Studio 'da uygulamanızı hata ayıklama modunda çalıştırmayı gösteren ekran görüntüsü.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Application Insights portalında [Tanılama araması](../../azure-monitor/app/diagnostic-search.md)' nı açın. Veriler genellikle önce burada görünür.
 * Yenile düğmesine tıklayın. Dikey pencere kendi kendine düzenli olarak yenilenir, ancak bunu el ile de yapabilirsiniz. Yenileme aralığı daha büyük zaman aralıkları için daha uzun.
 * İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı**' na bakın. Ardından, Visual Studio 'daki projenizdeki ApplicationInsights.config açın ve bulun `<instrumentationkey>` . İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  

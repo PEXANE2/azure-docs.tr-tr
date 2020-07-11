@@ -1,28 +1,26 @@
 ---
-title: Azure 'da Windows VM görüntülerini seçme
+title: Azure Marketi görüntülerini bulma ve kullanma
 description: Market VM görüntüleri için yayımcı, teklif, SKU ve sürümü öğrenmek için Azure PowerShell kullanın.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083374"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224256"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure PowerShell ile Azure Market'te Windows VM görüntülerini bulma
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure PowerShell ile Azure Marketi 'nde VM görüntülerini bulma ve kullanma
 
-Bu makalede, Azure Marketi 'nde VM görüntülerini bulmak için Azure PowerShell nasıl kullanılacağı açıklanır. Daha sonra PowerShell, Kaynak Yöneticisi şablonları veya diğer araçlarla bir VM 'yi programlama yoluyla oluşturduğunuzda bir market görüntüsü belirtebilirsiniz.
+Bu makalede, Azure Marketi 'nde VM görüntülerini bulmak için Azure PowerShell nasıl kullanılacağı açıklanır. Ardından, bir VM oluştururken Market görüntüsü belirtebilirsiniz.
 
 Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/) storefront, [Azure Portal](https://portal.azure.com)veya [Azure CLI](../linux/cli-ps-findimage.md)kullanarak kullanılabilir görüntülere ve tekliflere de gidebilirsiniz. 
 
- 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -318,7 +316,6 @@ Daha sonra VM yapılandırmasını ağ yapılandırma nesneleriyle birlikte `New
 
 Temel görüntü bilgilerini kullanarak cmdlet 'le hızlı bir şekilde sanal makine oluşturmak için `New-AzVM` bkz. [PowerShell ile Windows sanal makinesi oluşturma](quick-create-powershell.md).
 
-
-[Tam olarak yapılandırılmış bir sanal makine oluşturmak](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)Için bir PowerShell betiği örneğine bakın.
+Paylaşılan görüntü galerisinde özel görüntüler oluşturmak üzere Azure Marketi görüntülerini kullanma hakkında daha fazla bilgi için bkz. [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](../marketplace-images.md).
 
 

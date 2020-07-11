@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146876"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230715"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme için önbelleğe alma yapılandırma
 
@@ -174,7 +174,7 @@ Aşağıdaki tabloda, çeşitli API 'Lerin önbellekle bağlantılı olduğu öz
 | [Dizin Oluşturucu oluştur (2020-06-30-Önizleme)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Dizin Oluşturucu tanımınızda bir önbellek oluşturma da dahil olmak üzere ilk kullanımda bir dizin oluşturucu oluşturur ve çalıştırır. |
 | [Dizin oluşturucuyu Çalıştır](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | İsteğe bağlı olarak bir zenginleştirme işlem hattı yürütür. Bu API, varsa önbellekten okur veya güncelleştirilmiş bir Dizin Oluşturucu tanımına önbelleğe alma eklediyseniz bir önbellek oluşturur. Önbelleğe alma özelliği etkin olan bir Dizin Oluşturucu çalıştırdığınızda, önbelleğe alınmış çıkışın kullanılabilmesi için Dizin Oluşturucu adımları atlar. Bu API 'nin genel kullanıma açık veya önizleme API sürümünü kullanabilirsiniz.|
 | [Dizin oluşturucuyu Sıfırla](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Herhangi bir artımlı dizin oluşturma bilgisinin Dizin oluşturucuyu temizler. Sonraki bir Dizin Oluşturucu çalıştırması (isteğe bağlı veya zamanlama), tüm becerileri yeniden çalıştırmak ve önbelleği yeniden oluşturmak dahil olmak üzere sıfırdan tam işleme alır. Dizin oluşturucuyu silmek ve yeniden oluşturmak için işlevsel olarak eşdeğerdir. Bu API 'nin genel kullanıma açık veya önizleme API sürümünü kullanabilirsiniz.|
-| [Becerileri sıfırlama](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | Herhangi bir becerileri değiştirmemiş olsanız bile, bir sonraki Dizin Oluşturucu üzerinde hangi yeteneklerin yeniden çalıştırılacağını belirtir. Önbellek uygun şekilde güncelleştirilir. Bilgi deposu veya arama dizini gibi çıkışlar, önbellekteki yeniden kullanılabilir veriler ve güncelleştirilmiş yetenek başına yeni içerik kullanılarak yenilenir. |
+| [Becerileri sıfırlama](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | Herhangi bir becerileri değiştirmemiş olsanız bile, bir sonraki Dizin Oluşturucu üzerinde hangi yeteneklerin yeniden çalıştırılacağını belirtir. Önbellek uygun şekilde güncelleştirilir. Bilgi deposu veya arama dizini gibi çıkışlar, önbellekteki yeniden kullanılabilir veriler ve güncelleştirilmiş yetenek başına yeni içerik kullanılarak yenilenir. |
 
 Önbellekte ne olacağını denetleme hakkında daha fazla bilgi için bkz. [önbellek yönetimi](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 

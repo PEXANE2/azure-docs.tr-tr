@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657172"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229372"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
 Bu makale, sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sağlar.
@@ -60,7 +61,7 @@ Daha da güçlü koruma için, [Windows Defender Gelişmiş tehdit koruması](ht
 * [Yeni nesil koruma](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [Endpoint Protection ve yanıt](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [Otomatik araştırma ve düzeltme](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
-* [Güvenlik puanı](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
+* [Güvenlik puanı](/windows/security/threat-protection/microsoft-defender-atp/tvm-microsoft-secure-score-devices)
 * [Gelişmiş arama](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [Yönetim ve API 'Ler](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft Tehdit Koruması](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
@@ -78,7 +79,7 @@ Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı d
 
 Daha fazla bilgi edinin:
 
-* [Azure Anahtar Kasası nedir?](/azure/key-vault/key-vault-overview)
+* [Azure Key Vault nedir?](/azure/key-vault/key-vault-overview)
 * [Azure Key Vault blogu](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Sanal makine disk şifrelemesi

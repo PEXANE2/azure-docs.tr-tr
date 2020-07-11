@@ -1,5 +1,5 @@
 ---
-title: Yönetici rolü açıklamaları ve izinleri-Azure AD | Microsoft Docs
+title: Azure AD rol açıklamaları ve izinleri-Azure Active Directory | Microsoft Docs
 description: Yönetici rolü kullanıcı ekleyebilir, yönetici roller atayabilir, Kullanıcı parolalarını sıfırlayabilir, kullanıcı lisanslarını yönetebilir veya etki alanlarını yönetebilir.
 services: active-directory
 author: curtand
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/29/2020
+ms.date: 06/15/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e648058e866be57deaf8dd159c89fc08141b68
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd0d17732991fd97b2406c9c5f182408f4746d96
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166680"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223882"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
@@ -42,6 +42,11 @@ Azure AD 'ye, bazı kullanıcıları küresel yöneticiye yükseltmiş bir seçe
 ## <a name="assign-or-remove-administrator-roles"></a>Yönetici rolleri atama veya kaldırma
 
 Azure Active Directory ' de bir kullanıcıya yönetim rolleri atamayı öğrenmek için, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](directory-manage-roles-portal.md).
+
+> [!Note]
+> Bir Azure AD Premium P2 lisansınız varsa ve zaten bir Privileged Identity Management (PıM) kullanıcısı varsa, tüm rol yönetimi görevleri Azure AD 'de değil, ayrıcalık kimlik yönetimi 'nde gerçekleştirilir.
+>
+> ![Zaten PıM kullanan ve Premium P2 lisansına sahip olan kullanıcılar için PıM 'de yönetilen Azure AD rolleri](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="available-roles"></a>Kullanılabilir roller
 
@@ -82,7 +87,7 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 [Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -180,6 +185,7 @@ Bu rol, yalnızca [cihaz ayarları](https://aad.portal.azure.com/#blade/Microsof
 ### <a name="directory-readers"></a>[Dizin okuyucuları](#directory-readers-permissions)
 
 Bu roldeki kullanıcılar, temel dizin bilgilerini okuyabilir. Bu rol için kullanılmalıdır:
+
 * Belirli bir konuk kullanıcıları kümesine, tüm konuk kullanıcılara vermek yerine okuma erişimi verme.
 * "Azure AD portalına erişimi yalnızca yöneticilerle kısıtla" olarak ayarlarsanız, yönetici olmayan kullanıcıların belirli bir kümesini Azure portal erişimine izin vermek "Evet" olarak ayarlanır.
 * Dizin. Read. All 'un bir seçenek olmadığı dizine hizmet sorumlusu erişimi veriliyor.
@@ -267,7 +273,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -309,6 +315,7 @@ Bu roldeki kullanıcılar, veri gizlilik iletileri dahil olmak üzere Ileti merk
 Bu roldeki kullanıcılar, Exchange, Intune ve Microsoft ekipleri gibi yapılandırılmış hizmetlerde kuruluşları için [Office 365 İleti merkezindeki](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) bildirimleri ve danışmanlık sistem durumu güncelleştirmelerini izleyebilir. İleti Merkezi okuyucuları, Office 365 ' de ileti merkezi gönderilerini bir haftalık e-posta ile alırlar. Azure AD 'de, bu role atanan kullanıcılar yalnızca kullanıcılar ve gruplar gibi Azure AD hizmetlerinde salt okuma erişimine sahip olur. Bu rolün destek biletlerini görüntüleme, oluşturma veya yönetme erişimi yok.
 
 ### <a name="modern-commerce-administrator"></a>[Modern ticari yönetici](#modern-commerce-administrator-permissions)
+
 Kullanmayın. Bu rol, otomatik olarak ticari olarak atanır ve başka bir kullanım için tasarlanmamıştır veya desteklenmez. Ayrıntıları aşağıda bulabilirsiniz.
 
 Modern ticaret yöneticisi rolü, belirli kullanıcılara Microsoft 365 yönetim merkezine erişme izni verir ve **giriş**, **faturalandırma**ve **destek**için sol gezinti girişlerini görebilir. Bu alanlarda bulunan içerik, kullanıcılara kendi veya kuruluşunuz için satın aldıkları ürünleri yönetmek üzere atanan, [ticari özel roller](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) tarafından denetlenir. Bu, faturalandırma veya faturalama hesaplarına ve faturalandırma profillerine erişim için ödeme gibi görevleri içerebilir. 
@@ -316,17 +323,17 @@ Modern ticaret yöneticisi rolü, belirli kullanıcılara Microsoft 365 yönetim
 Modern ticaret yöneticisi rolüne sahip kullanıcılar genellikle diğer Microsoft satın alma sistemlerinde yönetici izinlerine sahiptir ancak yönetim merkezine erişmek için genel yönetici veya faturalandırma yöneticisi rollerine sahip değildir. 
 
 **Modern ticari yönetici rolü ne zaman atanır?**
+
 * **Microsoft 365 Yönetim Merkezi 'Nde self servis satın alma** – self servis satın alma, kullanıcılara kendi kendilerine satın alarak veya kendi kendilerine kaydolup yeni ürünleri denemenize olanak tanır. Bu ürünler Yönetim merkezinde yönetilir. Self servis satın alma yapan kullanıcılara, Commerce sisteminde bir rol atanır ve bu sayede, Yönetim Merkezi 'nde satın alımları yönetebilmesi için modern ticaret yönetici rolü vardır. Yöneticiler, [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide)aracılığıyla self servis satın alımları (Power BI, Power Apps, Power otomatikleştirmek) engelleyebilir. Daha fazla bilgi için bkz. [Self servis satın alma hakkında SSS](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
-* **Microsoft Commercial Market 'Ten satın** alma – self servis satın almaya benzer şekilde, bir Kullanıcı Microsoft AppSource veya Azure Marketi 'nden bir ürün veya hizmet satın aldığında, genel yönetici veya faturalama yöneticisi rolüne sahip olmadıkları durumlarda modern ticaret yöneticisi rolü atanır. Bazı durumlarda, kullanıcıların bu satınalmaları yapmasını engellemiş olabilir. Daha fazla bilgi için bkz. [Microsoft ticari Market](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).   
-* Microsoft **'un teklifleri** : teklif, Microsoft 'un Microsoft ürün ve hizmetlerini satın alması için Microsoft 'un sunduğu resmi bir tekliftir. Teklifi kabul eden kişinin Azure AD 'de Genel yönetici veya faturalama yöneticisi rolü yoksa, teklife ve yönetim merkezine erişmek için modern ticaret yöneticisi rolüne sahip olmak üzere hem ticari özel bir rol atanır. Yönetim merkezine erişirken yalnızca, ticari olarak verilen rolleri karşılayan özellikleri kullanabilir. 
+* **Microsoft Commercial Market 'Ten satın** alma – self servis satın almaya benzer şekilde, bir Kullanıcı Microsoft AppSource veya Azure Marketi 'nden bir ürün veya hizmet satın aldığında, genel yönetici veya faturalama yöneticisi rolüne sahip olmadıkları durumlarda modern ticaret yöneticisi rolü atanır. Bazı durumlarda, kullanıcıların bu satınalmaları yapmasını engellemiş olabilir. Daha fazla bilgi için bkz. [Microsoft ticari Market](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).
+* Microsoft **'un teklifleri** : teklif, Microsoft 'un Microsoft ürün ve hizmetlerini satın alması için Microsoft 'un sunduğu resmi bir tekliftir. Teklifi kabul eden kişinin Azure AD 'de Genel yönetici veya faturalama yöneticisi rolü yoksa, teklife ve yönetim merkezine erişmek için modern ticaret yöneticisi rolüne sahip olmak üzere hem ticari özel bir rol atanır. Yönetim merkezine erişirken yalnızca, ticari olarak verilen rolleri karşılayan özellikleri kullanabilir.
 * **Ticarete özgü roller** – bazı kullanıcılara ticari özel roller atanır. Bir Kullanıcı genel veya faturalama yöneticisi değilse, yönetim merkezine erişebilmeleri için modern ticaret yöneticisi rolünü alırlar.  
 
-Modern ticari yönetici rolü bir kullanıcıdan atanmadıklarında, Microsoft 365 yönetim merkezine erişimi kaybeder. Kendileri veya kuruluşunuz için herhangi bir ürünü yönetiyorsanız, bunları yönetemezler. Bu, lisansları atama, ödeme yöntemlerinin değiştirilmesi, faturalandırların faturalandırılır veya abonelikleri yönetmek için başka görevler içerebilir. 
+Modern ticari yönetici rolü bir kullanıcıdan atanmadıklarında, Microsoft 365 yönetim merkezine erişimi kaybeder. Kendileri veya kuruluşunuz için herhangi bir ürünü yönetiyorsanız, bunları yönetemezler. Bu, lisansları atama, ödeme yöntemlerinin değiştirilmesi, faturalandırların faturalandırılır veya abonelikleri yönetmek için başka görevler içerebilir.
 
 ### <a name="network-administrator"></a>[Ağ Yöneticisi](#network-administrator-permissions)
 
-Bu roldeki kullanıcılar, Kullanıcı konumlarından ağ telemetrisini temel alan Microsoft 'un ağ çevre mimarisi önerilerini gözden geçirebilir. Office 365 için ağ performansı, genellikle kullanıcı konumlarına özgü, dikkatli bir kurumsal müşteri ağ çevre mimarisine dayanır. Bu rol, geliştirilmiş telemetri ölçümlerini ve tasarım önerilerini kolaylaştırmak amacıyla, bulunan Kullanıcı konumlarının düzenlenmesine ve bu konumların ağ parametrelerinin yapılandırılmasını sağlar. 
-
+Bu roldeki kullanıcılar, Kullanıcı konumlarından ağ telemetrisini temel alan Microsoft 'un ağ çevre mimarisi önerilerini gözden geçirebilir. Office 365 için ağ performansı, genellikle kullanıcı konumlarına özgü, dikkatli bir kurumsal müşteri ağ çevre mimarisine dayanır. Bu rol, geliştirilmiş telemetri ölçümlerini ve tasarım önerilerini kolaylaştırmak için, bulunan Kullanıcı konumlarının düzenlenmesine ve bu konumların ağ parametrelerinin yapılandırılmasını sağlar
 ### <a name="office-apps-administrator"></a>[Office uygulamaları Yöneticisi](#office-apps-administrator-permissions)
 
 Bu roldeki kullanıcılar, Office 365 uygulamalarının bulut ayarlarını yönetebilir. Bu, bulut ilkelerinin yönetimi, self servis indirme yönetimi ve Office uygulamalarıyla ilgili raporu görüntüleme imkanını içerir. Bu rol Ayrıca, destek biletlerini yönetme ve ana yönetim merkezinde hizmet durumunu izleme özelliğini sağlar. Bu role atanan kullanıcılar, Office uygulamalarındaki yeni özelliklerin iletişimini de yönetebilir. 
@@ -429,7 +436,7 @@ Windows Defender ATP ve EDR | Güvenlik okuyucusu rolünün tüm izinleri<br>Gü
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Güvenlik okuyucusu rolünün tüm izinleri
 [Office 365 hizmet durumu](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365 hizmetlerinin sistem durumunu görüntüleme
 
-### <a name="security-reader"></a>[Güvenlik okuyucusu](#security-reader-permissions)
+### <a name="security-reader"></a>[Güvenlik Okuyucusu](#security-reader-permissions)
 
 Bu role sahip olan kullanıcılar, Microsoft 365 Güvenlik Merkezi, Azure Active Directory, kimlik koruması, Privileged Identity Management ve Azure Active Directory oturum açma raporlarını ve denetim günlüklerini okuma ve Office 365 güvenlik & Uyumluluk Merkezi 'ndeki tüm bilgiler dahil olmak üzere güvenlikle ilgili özellik üzerinde genel salt okuma erişimine sahiptir. Office [365 güvenlik & Uyumluluk Merkezi 'Nde](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)Office 365 izinleri hakkında daha fazla bilgi bulabilirsiniz.
 
@@ -487,16 +494,16 @@ Bu roldeki kullanıcılar Microsoft ekipleri & Skype Kurumsal Yönetici Merkezi 
 
 ### <a name="user-administrator"></a>[Kullanıcı Yöneticisi](#user-administrator-permissions)
 
-Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara sahip kullanıcıların tüm yönlerini yönetebilir (aşağıya bakın) ve parola süre sonu ilkelerini güncelleştirebilir. Ayrıca, bu role sahip kullanıcılar tüm grupları oluşturabilir ve yönetebilir. Bu rol Ayrıca Kullanıcı görünümleri oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini de içerir. Kullanıcı yöneticilerinin çoğu yönetici rolünde kullanıcılar için bazı kullanıcı özelliklerini yönetme izni yoktur. Bu role sahip olan kullanıcının MFA 'yı yönetme izni yok. Bu kısıtlamanın özel durumları olan roller aşağıdaki tabloda listelenmiştir.
+Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara sahip kullanıcıların tüm yönlerini yönetebilir (tabloya bakın) ve parola süre sonu ilkelerini güncelleştirebilir. Ayrıca, bu role sahip kullanıcılar tüm grupları oluşturabilir ve yönetebilir. Bu rol Ayrıca Kullanıcı görünümleri oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini de içerir. Kullanıcı yöneticilerinin çoğu yönetici rolünde kullanıcılar için bazı kullanıcı özelliklerini yönetme izni yoktur. Bu role sahip olan kullanıcının MFA 'yı yönetme izni yok. Bu kısıtlamanın özel durumları olan roller aşağıdaki tabloda listelenmiştir.
 
-| İzin | Yapılabilir |
+| **İzin** | **Yapılabilir** |
 | --- | --- |
 |Genel izinler|<p>Kullanıcı ve grup oluşturma</p><p>Kullanıcı görünümleri oluşturma ve yönetme</p><p>Office destek biletlerini yönetme<p>Parola süre sonu ilkelerini Güncelleştir|
-|<p>Tüm kullanıcılar (tüm yöneticiler dahil)</p>|<p>Lisansları yönetme</p><p>Kullanıcı asıl adı dışındaki tüm kullanıcı özelliklerini yönet</p>
-|Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
+| <p>Tüm kullanıcılar (tüm yöneticiler dahil)</p>|<p>Lisansları yönetme</p><p>Kullanıcı asıl adı dışındaki tüm kullanıcı özelliklerini yönet</p>
+| Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -1894,7 +1901,7 @@ Yönetici ara | Yönetici ara | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Arama Düzenleyicisi | Arama Düzenleyicisi | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Güvenlik Yöneticisi | Güvenlik yöneticisi | 194ae4cb-B126-40b2-bd5b-6091b380977d
 Güvenlik operatörü | Güvenlik operatörü | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
-Güvenlik okuyucusu | Güvenlik okuyucusu | 5d6b6bb7-de71-4623-B4AF-96380a352509
+Güvenlik Okuyucusu | Güvenlik okuyucusu | 5d6b6bb7-de71-4623-B4AF-96380a352509
 Hizmet desteği Yöneticisi | Hizmet desteği yöneticisi | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint Hizmet Yöneticisi | SharePoint yöneticisi | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Takımlar Iletişim Yöneticisi | Takımlar Iletişim Yöneticisi | baf37b3a-610e-45da-9e62-d9d1e5e8914b

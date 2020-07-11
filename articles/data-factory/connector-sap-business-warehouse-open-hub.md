@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb61a3360ee2514fa6fd61e125ebc345474c62f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771028"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224630"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan açık hub aracılığıyla veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,10 +38,10 @@ SAP Business Warehouse 'tan verileri, desteklenen herhangi bir havuz veri deposu
 
 Özellikle, bu SAP Business Warehouse açık hub Bağlayıcısı şunları destekler:
 
-- SAP Business Warehouse **sürüm 7,01 veya üzeri (2015 yıldan sonra yayınlanan son sap desteği paket yığınında)**.
+- SAP Business Warehouse **sürüm 7,01 veya üzeri (2015 yıldan sonra yayınlanan son sap desteği paket yığınında)**. SAP BW4/HANA bu bağlayıcı tarafından desteklenmiyor.
 - ' Nin altında açık hub hedefi yerel tablosu aracılığıyla veri kopyalama, DSO, InfoCube, MultiProvider, DataSource vb. olabilir.
 - Temel kimlik doğrulaması kullanarak verileri kopyalama.
-- Uygulama sunucusuna bağlanılıyor.
+- SAP uygulama sunucusuna veya SAP ileti sunucusuna bağlanma.
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW açık Hub tümleştirmesi 
 
@@ -73,7 +74,7 @@ Genellikle, en fazla kopyalanmış istek KIMLIĞINI bir hazırlama veri deposund
 
 Doğru Delta işleme için, aynı Açık hub tablosunda farklı DTPs 'lerden istek kimliklerinin bulunmasına izin verilmez. Bu nedenle, her bir açık hub hedefi (OHD) için birden fazla DTP oluşturmanız gerekir. Aynı bilgi sağlayıcısından tam ve Delta ayıklama gereksinimi olduğunda, aynı ınfoprovider için iki Dirend oluşturmalısınız. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu SAP Business Warehouse açık hub bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
@@ -119,7 +120,7 @@ SAP Business Warehouse açık hub bağlı hizmeti için aşağıdaki özellikler
 | password | Kullanıcının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -157,7 +158,7 @@ Ve SAP BW açık hub 'a veri kopyalamak için, veri kümesinin Type özelliğini
 
 `excludeLastRequest`Veri kümesinde ve ' i ayarlıyorsanız, `baseRequestId` hala olduğu gibi desteklenir, ancak etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -195,7 +196,7 @@ SAP BW açık hub 'dan veri kopyalamak için, etkinlik **kaynağını** kopyalam
 
 Veri yüklemeyi hızlandırmak için [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğini, SAP BW açık hub 'dan paralel olarak yüklemek için ayarlayabilirsiniz. Örneğin, `parallelCopies` dört olarak ayarlarsanız Data Factory eşzamanlı olarak dört RFC çağrısını yürütür ve her RFC çağrısı, DTP Istek kimliği ve paket kimliği tarafından bölümlenen SAP BW açık hub tablosundan verilerin bir kısmını alır. Bu, benzersiz DTP istek KIMLIĞI + paket KIMLIĞI sayısının değerinden büyük olduğunda geçerlidir `parallelCopies` . Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazmak da daha da iyidir. Bu durumda, performans tek bir dosyaya yazılmasından daha iyidir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

@@ -3,11 +3,12 @@ title: Bir SharePoint sitesini Application Insights ile izleme
 description: Yeni bir izleme anahtarı ile yeni bir uygulamayı izlemeye başlama
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671452"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221060"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Bir SharePoint sitesini Application Insights ile izleme
 Azure Application Insights, uygulamalarınızın kullanılabilirliğini, performansını ve kullanımını izler. Burada, bir SharePoint sitesi için nasıl ayarlayacağınızı öğreneceksiniz.
@@ -48,18 +49,18 @@ Sitenin ana sayfasını düzenleyebiliyorsanız, bu sayede sitedeki her sayfa i�
 
 Ana sayfayı inceleyin ve SharePoint Designer’ı veya başka bir düzenleyiciyi kullanarak düzenleyin.
 
-![](./media/sharepoint/03-master.png)
+![SharePoing Designer veya başka bir düzenleyiciyi kullanarak ana sayfanın nasıl düzenleneceğini gösteren ekran görüntüsü.](./media/sharepoint/03-master.png)
 
 Kodu, </head> Etiket. 
 
-![](./media/sharepoint/04-code.png)
+![Site sayfanıza kodun nereye ekleneceğini gösteren ekran görüntüsü.](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>Veya belirli sayfalarda
 Sınırlı sayıda sayfayı izlemek için betiği her sayfaya ayrı ayrı ekleyin. 
 
 Bir web parçası ekleyip kod parçacığını buna ekleyin.
 
-![](./media/sharepoint/05-page.png)
+![Sınırlı bir sayfa kümesini izlemek için betiğin eklenmesini gösteren ekran görüntüsü.](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>Uygulamanızla ilgili verileri görüntüleme
 Uygulamanızı yeniden dağıtın.
@@ -68,7 +69,7 @@ Uygulamanızın [Azure portalındaki](https://portal.azure.com) dikey penceresin
 
 İlk olaylar Arama’da görünür. 
 
-![](./media/sharepoint/09-search.png)
+![Uygulamada görüntüleyebileceğiniz yeni verileri gösteren ekran görüntüsü.](./media/sharepoint/09-search.png)
 
 Daha fazla veri bekliyorsanız, birkaç saniye geçtikten sonra Yenile’ye tıklayın.
 
@@ -77,7 +78,7 @@ Standart web sayfası kod parçacığı SharePoint’ten kullanıcı kimliğini 
 
 1. Application Insights’taki Temel Bileşenler açılan penceresinden uygulamanızın izleme anahtarını kopyalayın. 
 
-    ![](./media/sharepoint/02-props.png)
+    ![Application Insights 'teki temel bileşenler açılan listesinden uygulamanın izleme kopyalamasını gösteren ekran görüntüsü.](./media/sharepoint/02-props.png)
 
 1. Aşağıdaki kod parçacığında geçen 'XXXX' ifadesini izleme anahtarıyla değiştirin. 
 2. Betiği portaldan edindiğiniz kod parçacığı yerine SharePoint uygulamanıza ekleyin.

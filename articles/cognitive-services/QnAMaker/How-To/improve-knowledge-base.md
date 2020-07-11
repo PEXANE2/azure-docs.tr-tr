@@ -3,12 +3,12 @@ title: Bilgi Bankası Soru-Cevap Oluşturma geliştirme-
 description: Etkin öğrenme ile bilgi Bankalarınızın kalitesini artırabilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin, ekleyin.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650765"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231786"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -127,7 +127,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP istek özelliği|Name|Tür|Amaç|
+|HTTP istek özelliği|Ad|Tür|Amaç|
 |--|--|--|--|
 |URL yol parametresi|Bilgi Bankası KIMLIĞI|string|Bilgi tabanınız için GUID.|
 |Özel alt etki alanı|QnAMaker kaynak adı|string|Kaynak adı, Soru-Cevap Oluşturma özel alt etki alanı olarak kullanılır. Bu, Bilgi Bankası 'nı yayımladıktan sonra Ayarlar sayfasında bulunur. Olarak listelenir `host` .|
@@ -199,7 +199,7 @@ Kullanıcı sorgusunun etkin öğrenme için kullanılması gerekiyorsa, bot Fra
 * Sorgunun etkin öğrenme için kullanılması gerekip gerekmediğini belirleme
 * Sorguyu etkin öğrenme için Soru-Cevap Oluşturma eğitme API 'sine geri gönder
 
-[Azure bot örneğinde](https://aka.ms/activelearningsamplebot), bu etkinliklerin her ikisi de programlanmıştır.
+[Azure bot örneğinde](https://github.com/microsoft/BotBuilder-Samples), bu etkinliklerin her ikisi de programlanmıştır.
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Bot Framework 4. x ile API eğitimi için örnek C# kodu
 
@@ -264,7 +264,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Bot Framework 4. x ile API eğitimi için örnek Node. js kodu
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Bot Framework 4. x ile API eğitimi için örnek Node.js kod
 
 Aşağıdaki kod, tren API 'siyle Soru-Cevap Oluşturma bilgilerin geri nasıl gönderileceğini gösterir.
 

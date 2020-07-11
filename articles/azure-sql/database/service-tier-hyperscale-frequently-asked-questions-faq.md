@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084350"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231599"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,15 +42,15 @@ Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığ
 
 | | Kaynak türü | Genel Amaçlı |  Hiper Ölçek | İş Açısından Kritik |
 |:---:|:---:|:---:|:---:|:---:|
-| **En iyisi** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
+| **En iyi kullanım alanı:** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türü** ||SQL veritabanı/SQL yönetilen örneği | Tek veritabanı | SQL veritabanı/SQL yönetilen örneği |
 | **İşlem boyutu**|SQL veritabanı * | 1-80 sanal çekirdek | 1-80 sanal çekirdek * | 1-80 sanal çekirdek |
-| |SQL Yönetilen Örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | YOK | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
+| **İşlem boyutu**|SQL Yönetilen Örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | Yok | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
 | **Depolama türü** | Tümü |Premium uzak depolama (örnek başına) | Yerel SSD Önbelleği (örnek başına) ile birlikte bağlanmış depolama | Süper hızlı yerel SSD depolaması (örnek başına) |
 | **Depolama boyutu** | SQL veritabanı *| 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
-| | SQL Yönetilen Örnek  | 32 GB – 8 TB | YOK | 32 GB – 4 TB |
+| **Depolama boyutu** | SQL Yönetilen Örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
 | **IOPS** | Tek veritabanı | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
-| | SQL Yönetilen Örnek | Dosya boyutuna bağlıdır | YOK | 1375 ıOPS/sanal çekirdek |
+| **IOPS** | SQL Yönetilen Örnek | Dosya boyutuna bağlıdır | Yok | 1375 ıOPS/sanal çekirdek |
 |**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, en fazla 4 okuma ölçeği genişletme, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği genişletme, bölge yedekli HA, tam yerel depolama |
 |**Yedeklemeler**|Tümü|RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün)| RA-GRS, 7 günlük bekletme, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün) |
 
@@ -96,7 +96,7 @@ Hiper ölçek, iş yükü talebe göre hızlı ölçeklenebilirlik sağlar.
 
 ### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-server"></a>Tek bir sunucuda hiper ölçek ve tek veritabanlarını karıştırabilirim
 
-Evet, bunu yapabilirsiniz.
+Evet, yazabilirsiniz.
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>Hiper ölçek, uygulama programlama modelinizin değiştirilmesini gerektiriyor
 

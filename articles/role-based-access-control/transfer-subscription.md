@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: f169cf45702d4a5051f9f6908b77c645c7a0018f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042399"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230851"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
 
@@ -74,16 +74,16 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 | Azure AD kimlik doğrulaması ile Azure SQL veritabanları | Evet | Hayır | [Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını denetleme](#list-other-known-resources) |  |  |
 | Azure depolama ve Azure Data Lake Storage 2. | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Data Lake Storage 1. Nesil | Evet |  |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
-| Azure Dosyaları | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
+| Azure Dosyalar | Yes | Yes |  | Tüm ACL 'Leri yeniden oluşturmanız gerekir. |
 | Azure Dosya Eşitleme | Yes | Yes |  |  |
-| Azure Yönetilen Diskleri | Evet | YOK |  |  |
+| Azure Yönetilen Diskleri | Evet | Yok |  |  |
 | Kubernetes için Azure Kapsayıcı Hizmetleri | Yes | Yes |  |  |
 | Azure Active Directory Domain Services | Evet | Hayır |  |  |
 | Uygulama kayıtları | Evet | Evet |  |  |
 
 Aktarılmakta olan abonelikte aynı abonelikte olmayan bir anahtar kasasına bağımlılığı olan bir depolama hesabı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -189,7 +189,7 @@ Yönetilen kimlikler, bir abonelik başka bir dizine aktarıldığında güncell
 
 1. Yönetilen kimlikleri [destekleyen Azure hizmetlerinin listesini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) gözden geçirin ve yönetilen kimlikleri nerede kullanabileceğinizi aklınızda bulabilirsiniz.
 
-1. Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimliklerinizi listelemek için [az ad SP listesini](/azure/ad/sp#az-ad-sp-list) kullanın.
+1. Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimliklerinizi listelemek için [az ad SP listesini](/cli/azure/identity?view=azure-cli-latest#az-identity-list) kullanın.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"

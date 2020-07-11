@@ -6,6 +6,8 @@
   href: sample-v1-code.md
 - name: Kavramlar
   items:
+    - name: Microsoft Identity Platform'un gelişimi
+      href: about-microsoft-identity-platform.md
     - name: Neden v2.0'a yükseltmeli?
       href: azure-ad-endpoint-comparison.md
     - name: Uygulama türleri

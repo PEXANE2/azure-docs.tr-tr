@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77482981"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221145"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Bir bulut klasöründen içerik eşitleme Azure App Service
 Bu makalede, içeriğinizi Dropbox ve OneDrive 'dan [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) eşitlenecek. 
@@ -23,11 +24,11 @@ Bu makalede, içeriğinizi Dropbox ve OneDrive 'dan [Azure App Service](https://
 
 Sol taraftaki menüden **Deployment Center**  >  **OneDrive** veya **Dropbox**  >  **Yetkilendir**' e tıklayın. Yetkilendirme istemlerini izleyin. 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![Azure portal dağıtım merkezinde OneDrive veya Dropbox 'ın nasıl yetkilendirilemez olduğunu gösterir.](media/app-service-deploy-content-sync/choose-source.png)
 
 Yalnızca OneDrive veya Dropbox ile bir kez yetkilendirme yapmanız gerekir. Zaten yetkiniz varsa **devam**' a tıklamanız yeterlidir. **Hesabı Değiştir**' i tıklatarak yetkili OneDrive veya Dropbox hesabını değiştirebilirsiniz.
 
-![](media/app-service-deploy-content-sync/continue.png)
+![Azure portal dağıtım merkezinde yetkili OneDrive veya Dropbox hesabının nasıl değiştirileceğini gösterir.](media/app-service-deploy-content-sync/continue.png)
 
 **Yapılandır** sayfasında, eşitlenmesini istediğiniz klasörü seçin. Bu klasör, OneDrive veya Dropbox 'ta aşağıdaki belirtilen içerik yolu altında oluşturulur. 
    
@@ -42,7 +43,7 @@ Yalnızca OneDrive veya Dropbox ile bir kez yetkilendirme yapmanız gerekir. Zat
 
 Bulut klasörünüzdeki içerikleri App Service eşitlemek istediğinizde, **Dağıtım Merkezi** sayfasına dönün ve **Eşitle**' ye tıklayın.
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![Bulut klasörünüzün App Service ile nasıl eşitleneceğini gösterir.](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > API 'lerde temeldeki farklılıklar nedeniyle, **OneDrive iş** Şu anda desteklenmiyor. 
@@ -55,7 +56,7 @@ Bulut klasörünüzdeki içerikleri App Service eşitlemek istediğinizde, **Da�
 
 Sol menüde **Dağıtım Merkezi**  >  **bağlantısı kes**' e tıklayın.
 
-![](media/app-service-deploy-content-sync/disable.png)
+![Bulut klasörünüzün Azure portal App Service uygulamanızın bağlantısının nasıl yapılacağını gösterir.](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

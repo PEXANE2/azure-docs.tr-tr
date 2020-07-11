@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/27/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358727"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223933"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu konu, Azure AD Connect için önkoşulları ve donanım gereksinimlerini açıklamaktadır.
@@ -48,34 +48,35 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 * [Active Directory geri dönüşüm kutusunun etkinleştirilmesi](how-to-connect-sync-recycle-bin.md)önerilir.
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect sunucusu
->[!IMPORTANT]
->Azure AD Connect sunucusu kritik kimlik verileri içerir ve [Active Directory Yönetim Katmanı modelinde](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir
+Azure AD Connect sunucusu kritik kimlik verileri içerir. [Ayrıcalıklı erişimin güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)bölümünde belgelenen yönergeleri izleyerek bu sunucuya yönetim erişiminin düzgün bir şekilde güvenli hale getirilmesi önemlidir. 
 
-* Azure AD Connect, 2019 öncesi Small Business Server veya Windows Server Essentials üzerine yüklenemez (Windows Server Essentials 2019 desteklenir). Sunucu, Windows Server Standard veya daha iyi bir using olmalıdır.
-* Azure AD Connect doğru yüklenmesini engelleyebilecek güvenlik uygulamaları ve daha kısıtlayıcı ayarlar nedeniyle Azure AD Connect bir etki alanı denetleyicisine yüklenmesi önerilmez.
-* Azure AD Connect sunucuda tam GUI yüklü olmalıdır. Sunucu Çekirdeği üzerine yüklenmesi **desteklenmez** .
->[!IMPORTANT]
->Small Business Server, Server Essentials veya Server Core üzerinde Azure AD Connect yükleme desteklenmez.
+Azure AD Connect sunucusu, [Active Directory Yönetim Katmanı modelinde](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir.  
 
-* Azure AD Connect, Windows Server 2012 veya sonraki bir sürüme yüklenmiş olmalıdır. Bu sunucu etki alanına katılmış olmalıdır ve bir etki alanı denetleyicisi veya üye sunucu olabilir.
-* ADFS yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız, Azure AD Connect sunucusu PowerShell döküm grup ilkesi etkin olmamalıdır. Eşitleme yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız PowerShell dökümünü etkinleştirebilirsiniz.
-* Active Directory Federasyon Hizmetleri (AD FS) dağıtılırsa, AD FS veya Web uygulaması proxy 'Sinin yüklü olduğu sunucular Windows Server 2012 R2 veya üzeri olmalıdır. Uzaktan Yükleme için bu sunucularda [Windows Uzaktan Yönetimi](#windows-remote-management) etkinleştirilmelidir.
-* Active Directory Federasyon Hizmetleri (AD FS) dağıtılmışsa, [TLS/SSL sertifikalarına](#tlsssl-certificate-requirements)ihtiyacınız vardır.
-* Active Directory Federasyon Hizmetleri (AD FS) dağıtılmışsa, [ad çözümlemesi](#name-resolution-for-federation-servers)yapılandırmanız gerekir.
-* Genel yöneticileriniz MFA etkinleştirilmişse, URL 'nin **https://secure.aadcdn.microsoftonline-p.com** güvenilir siteler listesinde olması gerekir. MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmediyse. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.
-* Microsoft, BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucunuzu sağlamlaştırmanızı önerir.  Aşağıdaki önerilerin ardından kuruluşunuza yönelik güvenlik riskleri azalır.
+Active Directory ortamınızı güvenli hale getirmek hakkında daha fazla bilgi için bkz. [Active Directory Için En Iyi uygulamalar](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
 
-* Etki alanına katılmış bir sunucuda Azure AD Connect dağıtın ve etki alanı yöneticilerine veya daha sıkı denetlenen güvenlik gruplarına yönetici erişimini kısıtlayın.
+#### <a name="installation-prerequisites"></a>Yükleme önkoşulları 
 
-Daha fazla bilgi için bkz: 
+- Azure AD Connect, etki alanına katılmış bir Windows Server 2012 veya sonraki bir sürüme yüklenmelidir. Bu sunucunun bir etki alanı denetleyicisi olması önemle önerilir. 
+- Azure AD Connect, 2019 öncesi Small Business Server veya Windows Server Essentials üzerine yüklenemez (Windows Server Essentials 2019 desteklenir). Sunucu, Windows Server Standard veya daha iyi bir using olmalıdır.  
+- Azure AD Connect sunucuda tam GUI yüklü olmalıdır. Windows Server Core üzerinde Azure AD Connect yüklemek desteklenmez. 
+- ADFS yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız, Azure AD Connect sunucusu PowerShell döküm grup ilkesi etkin olmamalıdır. Eşitleme yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız PowerShell dökümünü etkinleştirebilirsiniz. 
+- Active Directory Federasyon Hizmetleri (AD FS) dağıtılmışsa: 
+    - AD FS veya Web uygulaması proxy 'Sinin yüklü olduğu sunucular Windows Server 2012 R2 veya üzeri olmalıdır. Uzaktan Yükleme için bu sunucularda Windows Uzaktan Yönetimi etkinleştirilmelidir. 
+    - TLS/SSL sertifikalarını yapılandırmanız gerekir.  Bkz. [AD FS IÇIN SSL/TLS protokollerini ve şifre paketlerini yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ve [AD FS SSL sertifikalarını yönetme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
+    - ad çözümlemesi yapılandırmanız gerekir. 
+- Genel yöneticileriniz MFA etkinleştirilmişse, URL 'nin https://secure.aadcdn.microsoftonline-p.com güvenilir siteler listesinde olması **gerekir** . MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmediyse. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.  
 
-* [Yöneticiler gruplarının güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+#### <a name="hardening-your-azure-ad-connect-server"></a>Azure AD Connect sunucunuzu sağlamlaştırma 
+Microsoft, BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucunuzu sağlamlaştırmanızı önerir. Aşağıdaki önerilerden sonra, kuruluşunuzun bazı güvenlik risklerini azaltmaya yardımcı olur.
 
-* [Yerleşik yönetici hesaplarının güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+- Azure AD Connect etki alanı denetleyicisi ve diğer katman 0 kaynaklarıyla aynı şekilde davranmalısınız:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material 
+- Azure AD Connect sunucusuna yönetici erişimini yalnızca etki alanı yöneticileri veya diğer sıkı kontrollü güvenlik gruplarıyla sınırlandırmalısınız.
+- [Ayrıcalıklı erişime sahip tüm personel için özel bir hesap](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)oluşturmanız gerekir. Yöneticiler web 'e göz atmamalıdır, e-postalarını kontrol etmemelidir ve yüksek ayrıcalıklı hesaplarla gün-gün üretkenlik görevleri gerçekleştirerek.
+- [Ayrıcalıklı erişimin güvenliğini sağlama](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)bölümünde belirtilen yönergeleri izlemelisiniz. 
+- Her makinenin benzersiz bir yerel yönetici parolası olduğundan emin olmanız gerekir. [Yerel yönetici parolası çözümü (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) , her iş istasyonunda benzersiz rastgele parolalar yapılandırabilir ve sunucu BUNLARı bir ACL tarafından korunan ACTIVE DIRECTORY (ad) içinde depolar. Yalnızca uygun yetkili kullanıcılar bu yerel yönetici hesabı parolalarını sıfırlayabilir veya sıfırlamayı isteyebilir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)' nden iş istasyonlarında ve sunucularda kullanım için laps 'leri edinebilirsiniz. LAPS ve Paw 'lar ile bir ortamı çalıştırmaya yönelik ek yönergeler, [Temizleme kaynak ilkesine dayalı işlem standartları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)içinde bulunabilir. 
+- Kuruluşunuzun bilgi sistemlerine ayrıcalıklı erişime sahip tüm personel için adanmış [ayrıcalıklı erişim Iş istasyonları (PAW)](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) uygulamanız gerekir. 
+- Active Directory ortamınızın saldırı yüzeyini azaltmak için bu [ek yönergeleri](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) izlemeniz gerekir.
 
-* [Saldırı yüzeylerini azaltarak güvenlik iyileştirmesi ve sürdürülebilirlik](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
-
-* [Active Directory saldırı yüzeyini azaltma](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect tarafından kullanılan SQL Server
 * Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Varsayılan olarak bir SQL Server 2012 Express LocalDB (SQL Server Express bir açık sürümü) yüklenir. SQL Server Express, yaklaşık 100.000 nesneyi yönetmenizi sağlayan 10 GB boyut sınırına sahiptir. Dizin nesnelerinin daha yüksek bir birimini yönetmeniz gerekiyorsa, Yükleme Sihirbazı 'nı farklı bir SQL Server yüklemesine işaret etmeniz gerekir. SQL Server yüklemesinin türü [Azure AD Connect performansını](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)etkileyebilir.

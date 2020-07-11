@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463731"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224902"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
 
@@ -39,31 +40,31 @@ Azure portal kullanarak Depolama hesabınızdaki Bloblar için geçici silme öz
 
 5. Veri koruma ayarlarınızı onaylamak için **Kaydet** düğmesini seçin
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![Veri koruma blobu hizmeti 'nin seçili olduğu Azure portalının ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 Geçici silinen Blobları görüntülemek için **silinen Blobları göster** onay kutusunu seçin.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![Silinen Blobları göster seçeneğinin vurgulandığı veri koruma blobu hizmeti sayfasının ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 Belirli bir blob için geçici olarak silinen anlık görüntüleri görüntülemek için, blobu seçin ve **anlık görüntüleri görüntüle**' ye tıklayın.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![Anlık görüntüleri görüntüle seçeneği vurgulanmış şekilde veri koruma blob hizmeti sayfasının ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 **Silinen anlık görüntüleri göster** onay kutusunun seçili olduğundan emin olun.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![Silinen Blobları göster seçeneğinin vurgulandığı anlık görüntüleri görüntüle sayfasının ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 Geçici olarak silinen bir blob veya anlık görüntüye tıkladığınızda, yeni blob özelliklerine dikkat edin. Bu, nesnenin ne zaman silindiğini ve BLOB ya da blob anlık görüntüsünün kalıcı olarak zaman aşımına erene kadar kaç gün kaldığını gösterir. Geçici olarak silinen nesne bir anlık görüntü değilse, geri alma seçeneğiniz de olur.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![Geçici olarak silinen bir nesnenin ayrıntılarının ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 Bir Blobun silinmesinin, ilişkili tüm anlık görüntüleri de silmeyi unutmayın. Etkin bir blob için geçici olarak silinen anlık görüntüleri geri almak için bloba tıklayın ve **tüm anlık görüntüleri geri al**seçeneğini belirleyin.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![Geçici olarak silinen bir Blobun ayrıntılarının ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 Bir Blobun anlık görüntülerini geri aldıktan sonra, bir anlık görüntüyü kök Blobun üzerine kopyalamak için **Yükselt** ' e tıklayabilir ve böylece blobu anlık görüntüye geri yükleyebilirsiniz.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![Yükselt seçeneği vurgulanmış şekilde anlık görüntüleri görüntüle sayfasının ekran görüntüsü.](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

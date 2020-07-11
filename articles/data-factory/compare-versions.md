@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ea625fbe28dad08ec2c3e2a64bada96460a04225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415564"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231242"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory ile Data Factory sürüm 1'in karşılaştırılması
 
@@ -130,14 +130,14 @@ Geçerli sürüm için güncelleştirilmiş olan SDK'lar V1 istemcileriyle uyuml
 
 ## <a name="authoring-experience"></a>Yazma deneyimi
 
-| &nbsp; | V2 | V1 |
+| | Sürüm 2 | Sürüm 1 |
 | ------ | -- | -- | 
-| Azure portalı | [Evet](quickstart-create-data-factory-portal.md) | Hayır |
-| Azure PowerShell | [Evet](quickstart-create-data-factory-powershell.md) | [Evet](data-factory-build-your-first-pipeline-using-powershell.md) |
-| .NET SDK | [Evet](quickstart-create-data-factory-dot-net.md) | [Evet](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [Evet](quickstart-create-data-factory-rest-api.md) | [Evet](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK'sı | [Evet](quickstart-create-data-factory-python.md) | Hayır |
-| Resource Manager şablonu | [Evet](quickstart-create-data-factory-resource-manager-template.md) | [Evet](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Azure portalındaki** | [Evet](quickstart-create-data-factory-portal.md) | Hayır |
+| **Azure PowerShell** | [Evet](quickstart-create-data-factory-powershell.md) | [Evet](data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [Evet](quickstart-create-data-factory-dot-net.md) | [Evet](data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [Evet](quickstart-create-data-factory-rest-api.md) | [Evet](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Python SDK'sı** | [Evet](quickstart-create-data-factory-python.md) | Hayır |
+| **Resource Manager şablonu** | [Evet](quickstart-create-data-factory-resource-manager-template.md) | [Evet](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Roller ve izinler
 

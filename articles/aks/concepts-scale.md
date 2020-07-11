@@ -4,11 +4,12 @@ description: Bkz. Azure Kubernetes hizmeti (AKS) ile yatay Pod otomatik Scaler, 
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465346"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223848"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) uygulamaları için ölçeklendirme seçenekleri
 
@@ -79,7 +80,7 @@ AKS kümenizi hızlı bir şekilde ölçeklendirmek için Azure Container Instan
 
 ![Kubernetes veri bloğu ölçeklendirmeyi ACI 'ya](media/concepts-scale/burst-scaling.png)
 
-ACI ek altyapı yükü olmadan kapsayıcı örneklerini hızlı bir şekilde dağıtmanızı sağlar. AKS ile bağlandığınızda, AKS kümenizin güvenli, mantıksal bir uzantısı haline gelir. Sanal [Kubelet][virtual-kubelet]tabanlı [sanal düğümler][virtual-nodes-cli] bileşeni, sanal bir Kubernetes düğümü olarak acı 'yi sunan aks kümenize yüklenir. Kubernetes daha sonra sanal düğümler aracılığıyla aci örnekleri olarak çalışan ve VM düğümlerinde doğrudan aks kümenizdeki Pod olmayan bir düğüm zamanlayabilir. Sanal düğümler Şu anda AKS 'de önizlemededir.
+ACI ek altyapı yükü olmadan kapsayıcı örneklerini hızlı bir şekilde dağıtmanızı sağlar. AKS ile bağlandığınızda, AKS kümenizin güvenli, mantıksal bir uzantısı haline gelir. Sanal [Kubelet][virtual-kubelet]tabanlı [sanal düğümler][virtual-nodes-cli] bileşeni, sanal bir Kubernetes düğümü olarak acı 'yi sunan aks kümenize yüklenir. Kubernetes daha sonra sanal düğümler aracılığıyla aci örnekleri olarak çalışan ve VM düğümlerinde doğrudan aks kümenizdeki Pod olmayan bir düğüm zamanlayabilir.
 
 Uygulamanız sanal düğümleri kullanmak için değişiklik gerektirmez. Dağıtımlar aks ve acı genelinde ölçeklendirebilir ve küme otomatik Scaler, AKS kümenizde yeni düğümler dağıttığında gecikme yok.
 

@@ -10,17 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 833dd0948a4a6a0ecc5c33ea8c92723169b52387
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: dbfd90c760f4f5f9f6cf1bac8c7d75f474f6827b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737810"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223678"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
+>
 > * [Sürüm 1](v1/data-factory-azure-datalake-connector.md)
 > * [Güncel sürüm](connector-azure-data-lake-store.md)
 
@@ -47,7 +48,7 @@ Bu Azure Data Lake Storage 1. Bağlayıcısı aşağıdaki etkinlikler için des
 > [!IMPORTANT]
 > Şirket içinde barındırılan tümleştirme çalışma zamanını kullanarak verileri kopyalarsanız, şirket güvenlik duvarını `<ADLS account name>.azuredatalakestore.net` `login.microsoftonline.com/<tenant>/oauth2/token` 443 numaralı bağlantı noktasına giden trafiğe izin verecek şekilde yapılandırın. İkincisi, tümleştirme çalışma zamanının erişim belirtecini almak için iletişim kurması gereken Azure Güvenlik belirteci hizmetidir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 > [!TIP]
 > Azure Data Lake Store bağlayıcısını nasıl kullanacağınızı öğrenmek için bkz. [Azure Data Lake Store verileri yükleme](load-azure-data-lake-store.md).
@@ -91,7 +92,7 @@ Aşağıdaki özellikler desteklenir:
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı bir olarak işaretleyin `SecureString` veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
 | Kiracı | Uygulamanızın bulunduğu etki alanı adı veya kiracı KIMLIĞI gibi kiracı bilgilerini belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -132,7 +133,7 @@ Azure kaynakları kimlik doğrulaması için yönetilen kimlikleri kullanmak iç
 
 Azure Data Factory, bağlantılı hizmette genel Data Lake Store bilgilerinin yanı sıra herhangi bir özellik belirtmeniz gerekmez.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -166,7 +167,7 @@ Biçim tabanlı veri kümesindeki ayarlar altında Azure Data Lake Store Gen1 i�
 | folderPath | Bir klasörün yolu. Klasörleri filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları 'nda belirtin. | Hayır       |
 | fileName   | Verilen folderPath altındaki dosya adı. Dosyaları filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları 'nda belirtin. | Hayır       |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -207,9 +208,11 @@ Biçim tabanlı kopyalama kaynağındaki ayarlar altında Azure Data Lake Store 
 | tür                     | İçindeki tür özelliği `storeSettings` **AzureDataLakeStoreReadSettings**olarak ayarlanmalıdır. | Evet                                          |
 | ***Kopyalanacak dosyaları bulun:*** |  |  |
 | SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen klasör/dosya yolundan Kopyala. Tüm dosyaları bir klasörden kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `*` . |  |
-| Seçenek 2: joker karakter<br>-Yavaya Cardfolderpath | Kaynak klasörlerin filtreleneceği joker karakter içeren klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
-| Seçenek 2: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için, belirtilen folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Evet |
-| Seçenek 3: dosya listesi<br>-fileListPath | Belirli bir dosya kümesinin kopyalanıp ayrılmadığını gösterir. Veri kümesinde yapılandırılan yolun göreli yolu olan, kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin.<br/>Bu seçeneği kullanırken, veri kümesinde dosya adı belirtmeyin. [Dosya listesi örneklerinde](#file-list-examples)daha fazla örneğe bakın. |Hayır |
+| Seçenek 2: ad aralığı<br>-listAfter | Adı bu değerden (dışlamalı) sonra olan klasörleri/dosyaları alın. ADLS 1. için hizmet tarafı filtresinden yararlanır ve bu, joker karakter filtresinden daha iyi performans sağlar. <br/>Data Factory bu filtreyi veri kümesinde tanımlanan yola uygular ve yalnızca bir varlık düzeyi desteklenir. [Ad aralığı Filtresi örneklerine](#name-range-filter-examples)daha fazla örnek görüntüleyin. | Hayır |
+| Seçenek 2: ad aralığı<br/>-listBefore | Adı bu değerden (dahil) daha önce olan klasörleri/dosyaları alın. ADLS 1. için hizmet tarafı filtresinden yararlanır ve bu, joker karakter filtresinden daha iyi performans sağlar.<br>Data Factory bu filtreyi veri kümesinde tanımlanan yola uygular ve yalnızca bir varlık düzeyi desteklenir. [Ad aralığı Filtresi örneklerine](#name-range-filter-examples)daha fazla örnek görüntüleyin. | Hayır |
+| Seçenek 3: joker karakter<br>-Yavaya Cardfolderpath | Kaynak klasörlerin filtreleneceği joker karakter içeren klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
+| Seçenek 3: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için, belirtilen folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Evet |
+| 4. seçenek: dosya listesi<br>-fileListPath | Belirli bir dosya kümesinin kopyalanıp ayrılmadığını gösterir. Veri kümesinde yapılandırılan yolun göreli yolu olan, kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin.<br/>Bu seçeneği kullanırken, veri kümesinde dosya adı belirtmeyin. [Dosya listesi örneklerinde](#file-list-examples)daha fazla örneğe bakın. |Hayır |
 | ***Ek ayarlar:*** |  | |
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. <br>İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |Hayır |
 | deleteFilesAfterCompletion | Hedef depoya başarıyla taşıdıktan sonra, ikili dosyaların kaynak depodan silinip silinmeyeceğini gösterir. Dosya silme dosya başına yapılır, bu nedenle kopyalama etkinliği başarısız olduğunda, bazı dosyaların hedefe zaten kopyalanmış ve kaynaktan silindiği görürsünüz, diğerleri ise kaynak deposunda hala kalır. <br/>Bu özellik yalnızca, veri kaynağı depolamadaki blob, ADLS 1., ADLS 2., S3, Google bulut depolama, dosya, Azure dosyası, SFTP veya FTP olan ikili kopyalama senaryosunda geçerlidir. Varsayılan değer: false. |Hayır |
@@ -217,7 +220,7 @@ Biçim tabanlı kopyalama kaynağındaki ayarlar altında Azure Data Lake Store 
 | modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | Hayır                                           |
 | maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır                                           |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -271,7 +274,7 @@ Biçim tabanlı kopya havuzunda ayarlar altında Azure Data Lake Store Gen1 içi
 | Expirrivdatetime | Yazılan dosyaların süre sonu süresini belirtir. Saat, UTC zamanına "2020-03-01T08:00:00Z" biçiminde uygulanır. Varsayılan olarak NULL olur; bu, yazılan dosyaların hiçbir zaman dolmayacağı anlamına gelir. | Hayır |
 | maxConcurrentConnections | Aynı anda veri deposuna bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır       |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -305,6 +308,13 @@ Biçim tabanlı kopya havuzunda ayarlar altında Azure Data Lake Store Gen1 içi
     }
 ]
 ```
+### <a name="name-range-filter-examples"></a>Ad aralığı Filtresi örnekleri
+
+Bu bölümde, ad aralığı filtrelerinin ortaya çıkan davranışı açıklanmaktadır.
+
+| Örnek kaynak yapısı | ADF yapılandırması | Sonuç |
+|:--- |:--- |:--- |
+|kök<br/>&nbsp;&nbsp;&nbsp;&nbsp;a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;'te<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;kenarı<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;bx.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;cx.csv| **Veri kümesinde:**<br>-Klasör yolu:`root`<br><br>**Kopyalama etkinliği kaynağı:**<br>-Sonra Listele:`a`<br>-Önce listele:`b`| Aşağıdaki dosyalar Kopyalanacak:<br><br>kök<br/>&nbsp;&nbsp;&nbsp;&nbsp;'te<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;kenarı<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv |
 
 ### <a name="folder-and-file-filter-examples"></a>Klasör ve dosya filtresi örnekleri
 
@@ -350,10 +360,11 @@ Data Lake Storage 1. 'den Data Lake Storage 2. sürümüne yükselttiğinizde er
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
 Veri akışlarındaki verileri dönüştürürken, aşağıdaki biçimlerde Azure Data Lake Storage 1. dosyaları okuyabilir ve yazabilirsiniz:
-* [JSON](format-json.md#mapping-data-flow-properties)
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties)
-* [Parquet](format-parquet.md#mapping-data-flow-properties).
+* [Excel](format-excel.md#mapping-data-flow-properties)
+* [JSON](format-json.md#mapping-data-flow-properties)
+* [Parquet](format-parquet.md#mapping-data-flow-properties)
 
 Biçimlendirme özel ayarları, bu biçimdeki belgelerde bulunur. Daha fazla bilgi için bkz. eşleme veri akışı ve [Havuz dönüşümünde](data-flow-sink.md) [kaynak dönüştürme](data-flow-source.md) veri akışında.
 
@@ -465,7 +476,7 @@ Havuz dönüşümünde, Azure Data Lake Storage 1. bir kapsayıcı veya klasöre
 >[!TIP]
 >Bir klasörün altındaki tüm dosyaları kopyalamak için, yalnızca **FolderPath** ' i belirtin.<br>Belirli bir ada sahip tek bir dosyayı kopyalamak için, klasör **bölümü ve dosya** adı ile bir dosya adı ile **FolderPath** belirtin.<br>Bir klasör altındaki bir dosya alt kümesini kopyalamak için, bir klasör bölümü ve **dosya adı** ile bir joker karakter filtresi içeren **FolderPath** öğesini belirtin. 
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -503,7 +514,7 @@ Havuz dönüşümünde, Azure Data Lake Storage 1. bir kapsayıcı veya klasöre
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. `recursive`Doğru olarak ayarlandığında ve havuz dosya tabanlı bir deposa, havuzda boş bir klasör veya alt klasör kopyalanmaz veya oluşturulmaz. İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir. | Hayır |
 | maxConcurrentConnections | Aynı anda veri deposuna bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -543,7 +554,7 @@ Havuz dönüşümünde, Azure Data Lake Storage 1. bir kapsayıcı veya klasöre
 | copyBehavior | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın göreli yoluyla hedef klasöre aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, dosya adı otomatik olarak oluşturulur. | Hayır |
 | maxConcurrentConnections | Aynı anda veri deposuna bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84451070"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229542"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web uygulamaları için SDK yükleme hatası giderme
 
@@ -28,7 +29,7 @@ SDK yükleme hatası özel durumu, SDK betiğinin indirileceği veya başlatıla
 
 Yığın ayrıntıları, son kullanıcı tarafından kullanılan URL 'lerle ilgili temel bilgileri içerir.
 
-| Name                      | Açıklama                                                                                                  |
+| Ad                      | Açıklama                                                                                                  |
 |---------------------------|--------------------------------------------------------------------------------------------------------------|
 | &lt;CDN &nbsp; uç noktası&gt; | SDK 'Yı indirmek için kullanılan URL (ve başarısız).                                                      |
 | &lt;Yardım &nbsp; bağlantısı&gt;    | Sorun giderme belgelerine (Bu sayfa) bağlanan bir URL.                                              |
@@ -75,11 +76,11 @@ Bir kesinti olduğunu onaylamak için [Yeni bir destek bileti oluşturabilir](ht
 Kod parçacığı ve yapılandırması uygulamanız tarafından oluşturulan her sayfanın parçası olarak döndürüldüğünden, kod parçacığı `src` YAPıLANDıRMASıNı SDK için farklı BIR URL kullanacak şekilde değiştirebilirsiniz. Bu yaklaşımı kullanarak, yeni URL 'nin engellenmediği için CDN engellenmiş sorunu atlayabilirsiniz.
 
 Geçerli Application Insights JavaScript SDK CDN uç noktaları
-- https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js
-- https://js.monitor.azure.com/scripts/b/ai.2.min.js
+- `https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js`
+- `https://js.monitor.azure.com/scripts/b/ai.2.min.js`
 
 > [!NOTE]
-> https://js.monitor.azure.com/Uç noktası, herhangi bir yapılandırmayı değiştirmenize gerek olmadan yaklaşık 5 dakika IÇINDE CDN sağlayıcıları arasında geçiş yapmamızı sağlayan bir diğer addır. Bu, bir CDN sağlayıcısı bölgesel veya küresel sorunları herkesin ayarlarını ayarlamasına gerek duymadan daha hızlı çözmemize olanak tanımak için.
+> `https://js.monitor.azure.com/`Uç noktası, herhangi bir yapılandırmayı değiştirmenize gerek olmadan yaklaşık 5 dakika IÇINDE CDN sağlayıcıları arasında geçiş yapmamızı sağlayan bir diğer addır. Bu, bir CDN sağlayıcısı bölgesel veya küresel sorunları herkesin ayarlarını ayarlamasına gerek duymadan daha hızlı çözmemize olanak tanımak için.
 
 ## <a name="sdk-failed-to-initialize-after-loading-the-script"></a>Betiği yükledikten sonra SDK başlatılamadı
 

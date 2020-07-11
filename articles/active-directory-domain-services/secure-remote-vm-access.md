@@ -8,13 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ba64ac6d33f96979a05de383ffc02dd757fc906
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734478"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223423"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de sanal makinelere uzaktan erişimi güvenli hale getirme
 
@@ -31,7 +32,7 @@ Bu makalede, Azure AD DS 'de RDS 'yi yapılandırma ve isteğe bağlı olarak Az
 
 ![Uzak Masaüstü Hizmetleri (RDS) genel bakış](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

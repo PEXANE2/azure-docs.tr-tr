@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 469e225a1cc40dc2ecc45339d9355484e87c4af2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683946"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223593"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -174,7 +175,7 @@ az sig image-version create \
    
 ```
 
-### <a name="create-the-vm"></a>Sanal makine oluşturma
+### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
 Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelemek için müşterinin yönettiği anahtarları kullanabilirsiniz. Söz dizimi, bir görüntüden [Genelleştirilmiş](vm-generalized-image-version-cli.md) veya [özel](vm-specialized-image-version-cli.md) bir VM oluşturma ile aynıdır; yalnızca, `--os-disk-encryption-set` şifreleme kümesinin kimliğiyle parametresini eklemeniz gerekir. Veri diskleri için, `--data-disk-encryption-sets` veri diskleri için disk şifreleme kümelerinin boşlukla ayrılmış bir listesiyle ekleyin.
 
@@ -187,10 +188,12 @@ Portalda görüntü sürümünüzü oluşturduğunuzda, depolama şifreleme küm
 2. **Şifreleme türü**' nde, **müşteri tarafından yönetilen bir anahtarla bekleyen şifreleme**' yi seçin. 
 3. Görüntüdeki her disk için, açılan listeden kullanılacak **disk şifrelemesi kümesini** seçin. 
 
-### <a name="create-the-vm"></a>Sanal makine oluşturma
+### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
 Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelemek için müşterinin yönettiği anahtarları kullanabilirsiniz. Portalda VM oluştururken, **diskler** sekmesinde, **şifreleme türü**için **müşteri tarafından yönetilen anahtarlarla bekleyen şifreleme** ' yi seçin. Daha sonra açılan listeden şifreleme kümesini seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Sunucu tarafı disk şifrelemesi](./windows/disk-encryption.md)hakkında daha fazla bilgi edinin.
+
+Satın alma planı bilgilerini sağlama hakkında daha fazla bilgi için bkz. [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](marketplace-images.md).

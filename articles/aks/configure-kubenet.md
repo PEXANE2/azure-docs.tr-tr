@@ -5,22 +5,22 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 740c5dfb7dd4bece32aa2df5ef47d5f87091445b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055503"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231650"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
-Varsayılan olarak, aks kümeleri [Kubernetes kullanan][kubenet]kullanır ve sizin için bir Azure sanal ağı ve alt ağı oluşturulur. *Kubernetes kullanan*ile, düğümler Azure sanal ağ alt ağından bir IP adresi alır. Podlar, düğümlerin Azure sanal ağ alt ağından mantıksal olarak farklı bir adres alanından IP adresi alır. Ardından podların Azure sanal ağındaki kaynaklara erişebilmesi için ağ adresi çevirisi (NAT) yapılandırması gerçekleştirilir. Trafiğin kaynak IP adresi NAT ' dır ve düğümün birincil IP adresidir. Bu yaklaşım, Pod 'nin kullanabilmesi için ağ alanınızda ayırmanız gereken IP adresi sayısını önemli ölçüde azaltır.
+Varsayılan olarak, aks kümeleri [Kubernetes kullanan][kubenet]kullanır ve sizin için bir Azure sanal ağı ve alt ağı oluşturulur. *Kubernetes kullanan*ile, düğümler Azure sanal ağ alt ağından bir IP adresi alır. Podlar, düğümlerin Azure sanal ağ alt ağından mantıksal olarak farklı olan bir adres alanından IP adresi alır. Ardından podların Azure sanal ağındaki kaynaklara erişebilmesi için ağ adresi çevirisi (NAT) yapılandırması gerçekleştirilir. Trafiğin kaynak IP adresi NAT ' dır ve düğümün birincil IP adresidir. Bu yaklaşım, Pod 'nin kullanabilmesi için ağ alanınızda ayırmanız gereken IP adresi sayısını önemli ölçüde azaltır.
 
 [Azure Container ağ arabirimi (CNı)][cni-networking]ile her Pod, alt ağdan bir IP adresi alır ve doğrudan erişilebilir. Bu IP adresleri, ağ alanınızda benzersiz olmalı ve önceden planlanmalıdır. Her düğümün desteklediği en fazla sayıda düğüm için bir yapılandırma parametresi vardır. Düğüm başına düşen IP adresi sayısı, bu düğüm için önde ayrılır. Bu yaklaşım daha fazla planlama gerektirir ve genellikle, uygulamanızın beklentilerine göre daha büyük bir alt ağda küme yeniden oluşturma gereksinimiyle sonuçlanır. Küme oluşturma sırasında veya yeni düğüm havuzları oluştururken bir düğüme dağıtılabilir maksimum dizin sayısını yapılandırabilirsiniz. Yeni düğüm havuzları oluştururken maxPods belirtmezseniz, kubenet için varsayılan bir 110 değeri alırsınız.
 
 Bu makalede, bir aks kümesi için bir sanal ağ alt ağı oluşturmak ve kullanmak için *Kubernetes kullanan* Networking 'in nasıl kullanılacağı gösterilmektedir. Ağ seçenekleri ve konuları hakkında daha fazla bilgi için bkz. [Kubernetes ve AKS Için ağ kavramları][aks-network-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
 * Aynı alt ağda birden fazla AKS kümesi oluşturmayın.
@@ -54,7 +54,7 @@ Azure, bir UDR 'de en fazla 400 yolu destekler, bu nedenle 400 düğümden daha 
 
 Bir uzlaşma olması halinde, *Kubernetes kullanan* kullanan bir aks kümesi oluşturabilir ve var olan bir sanal ağ alt ağına bağlanabilirsiniz. Bu yaklaşım, düğüm tanımlı IP adreslerini, kümede çalışabilecek tüm olası düğüm için çok sayıda IP adresi ayırmak zorunda kalmadan bir şekilde almasına olanak tanır.
 
-*Kubernetes kullanan*ile çok daha küçük bir IP adresi aralığı kullanabilir ve büyük kümeleri ve uygulama taleplerini destekleyebilirsiniz. Örneğin, */27* IP adres aralığı ile bile, ölçeklendirmek veya yükseltmek için yeterli odaya sahip bir 20-25 düğüm kümesi çalıştırabilirsiniz. Bu küme boyutu, *2200-2750* Pod 'yi (düğüm başına varsayılan en fazla 110 Pod) destekler. Aks 'de *Kubernetes kullanan* ile yapılandırabileceğiniz düğüm başına en fazla düğüm sayısı 110 ' dir.
+*Kubernetes kullanan*ile çok daha küçük bir IP adresi aralığı kullanabilir ve büyük kümeleri ve uygulama taleplerini destekleyebilirsiniz. Örneğin, alt ağınızda bir */27* IP adres aralığı olsa bile, ölçeklendirmek veya yükseltmek için yeterli odaya sahip bir 20-25 düğüm kümesi çalıştırabilirsiniz. Bu küme boyutu, *2200-2750* Pod 'yi (düğüm başına varsayılan en fazla 110 Pod) destekler. Aks 'de *Kubernetes kullanan* ile yapılandırabileceğiniz düğüm başına en fazla düğüm sayısı 110 ' dir.
 
 Aşağıdaki temel hesaplamalar, ağ modellerindeki farkı karşılaştırın:
 

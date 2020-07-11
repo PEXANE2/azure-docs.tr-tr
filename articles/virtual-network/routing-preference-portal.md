@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 7db8dcc87606e5c58ddac8f609d1538989af5ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d41893d734037e466ad786641fed98c461adcfc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689308"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231820"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak genel IP adresi için yönlendirme tercihini yapılandırın
 
-Bu makalede genel bir IP adresi için ISS ağı (**Internet** seçeneği) aracılığıyla yönlendirme tercihini yapılandırma gösterilmektedir. Genel IP adresini oluşturduktan sonra, internet 'e gelen ve giden trafik için aşağıdaki Azure kaynaklarıyla ilişkilendirebilirsiniz:
+Bu makalede genel bir IP adresi için ISS ağı (**Internet** seçeneği) aracılığıyla [yönlendirme tercihini](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) yapılandırma gösterilmektedir. Genel IP adresini oluşturduktan sonra, internet 'e gelen ve giden trafik için aşağıdaki Azure kaynaklarıyla ilişkilendirebilirsiniz:
 
 * Sanal makine
 * Sanal makine ölçek kümesi
@@ -44,7 +45,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderN
 ```
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Yönlendirme tercihi ile genel IP adresi oluşturma
-1. [Azure portalında](https://preview.portal.azure.com/) oturum açın.
+1. [Azure Portal](https://preview.portal.azure.com/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Arama kutusuna *genel IP adresi*yazın.
 3. Arama sonuçlarında **genel IP adresi**' ni seçin. Sonra, **genel IP adresi** sayfasında **Oluştur**' u seçin.

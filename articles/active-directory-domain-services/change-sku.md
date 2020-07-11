@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 8109b7b1f6cd8477d49bafd114be24b91530d123
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734971"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221466"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Mevcut Azure Active Directory Domain Services yönetilen bir etki alanı için SKU 'YU değiştirme
 
-Azure Active Directory Domain Services (Azure AD DS) ' de, kullanılabilir performans ve Özellikler SKU türünü temel alır. Bu özellik farkları, tek yönlü giden orman güvenlerini (Şu anda önizleme aşamasında) yedekleme sıklığını veya en yüksek sayıyı içerir. Yönetilen etki alanını oluştururken bir SKU seçersiniz ve yönetilen etki alanı dağıtıldıktan sonra iş gereksinimleriniz değiştikçe STB 'leri yukarı veya aşağı doğru değiştirebilirsiniz. İş Gereksinimlerdeki değişiklikler, daha sık yedekleme ihtiyacını veya ek orman güvenleri oluşturmayı içerebilir. Farklı SKU 'ların sınırları ve fiyatları hakkında daha fazla bilgi için bkz. [azure AD DS SKU kavramlarına][concepts-sku] ve [Azure AD DS fiyatlandırma][pricing] sayfalarına bakın.
+Azure Active Directory Domain Services (Azure AD DS) ' de, kullanılabilir performans ve Özellikler SKU türünü temel alır. Bu özellik farkları, tek yönlü giden orman güvenlerini (Şu anda önizleme aşamasında) yedekleme sıklığını veya en yüksek sayıyı içerir.
+
+Yönetilen etki alanını oluştururken bir SKU seçersiniz ve yönetilen etki alanı dağıtıldıktan sonra iş gereksinimleriniz değiştikçe STB 'leri yukarı veya aşağı doğru değiştirebilirsiniz. İş Gereksinimlerdeki değişiklikler, daha sık yedekleme ihtiyacını veya ek orman güvenleri oluşturmayı içerebilir. Farklı SKU 'ların sınırları ve fiyatları hakkında daha fazla bilgi için bkz. [azure AD DS SKU kavramlarına][concepts-sku] ve [Azure AD DS fiyatlandırma][pricing] sayfalarına bakın.
 
 Bu makalede, Azure portal kullanarak mevcut Azure AD DS yönetilen etki alanı için SKU 'nun nasıl değiştirileceği gösterilmektedir.
 

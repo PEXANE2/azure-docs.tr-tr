@@ -3,12 +3,12 @@ title: Nasıl yaparım?... Azure Application Insights | Microsoft Docs
 description: Application Insights SSS.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110241"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224477"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
 ## <a name="get-an-email-when-"></a>Şu durumlarda bir e-posta alın...
@@ -18,7 +18,7 @@ Bir [kullanılabilirlik Web testi](../../azure-monitor/app/monitor-web-app-avail
 ### <a name="email-if-my-site-is-overloaded"></a>Sitemin aşırı yüklenmiş olması durumunda e-posta
 **Sunucu yanıt süresi**üzerinde bir [Uyarı](../../azure-monitor/platform/alerts-log.md) ayarlayın. 1 ile 2 saniye arasında bir eşik çalışmalıdır.
 
-![](./media/how-do-i/030-server.png)
+![Sunucu yanıt süresi üzerinde bir uyarının nasıl ayarlanacağını gösteren ekran görüntüsü.](./media/how-do-i/030-server.png)
 
 Uygulamanız hata kodları döndürerek zorlamaların işaretlerini de gösterebilir. **Başarısız isteklerde**bir uyarı ayarlayın.
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 Alarmlarınızı görmek için [ölçüm Gezgininde](../../azure-monitor/platform/metrics-charts.md) bir grafik oluşturun:
 
-![](./media/how-do-i/010-alarm.png)
+![Alarmlarınızı görmek için ölçüm Gezgininde bir grafik oluşturmayı gösteren ekran görüntüsü.](./media/how-do-i/010-alarm.png)
 
 Şimdi, ölçüm kısa bir süre için bir orta değerin üzerine gittiğinde harekete geçmek üzere bir uyarı ayarlayın:
 
-![](./media/how-do-i/020-threshold.png)
+![Ölçüm, kısa bir dönem için orta değerin üzerine gittiğinde bir uyarının tetiklenmesi için nasıl ayarlanacağını gösteren ekran görüntüsü.](./media/how-do-i/020-threshold.png)
 
 Ortalama süreyi minimum olarak ayarlayın.
 
@@ -106,11 +106,11 @@ Ardından şunları yapabilirsiniz:
 
 * Belirli kullanıcı kimliklerinde ara
 
-![](./media/how-do-i/110-search.png)
+![Belirli kullanıcı kimliklerinde Searchin seçeneklerini gösteren ekran görüntüsü.](./media/how-do-i/110-search.png)
 
 * Ölçümleri anonim veya kimliği doğrulanmış kullanıcılara göre filtreleyin
 
-![](./media/how-do-i/115-metrics.png)
+![Anonim veya kimliği doğrulanmış kullanıcılar için metrixs filtrelemesinin gösterildiği ekran görüntüsü.](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>Özellik adlarını veya değerlerini değiştirme
 [Filtre](../../azure-monitor/app/api-filtering-sampling.md#filtering)oluşturun. Bu, Application Insights ' ye uygulamadan gönderilmeden önce Telemetriyi değiştirmenize veya filtrelemenize olanak tanır.

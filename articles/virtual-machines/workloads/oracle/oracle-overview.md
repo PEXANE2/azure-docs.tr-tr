@@ -3,7 +3,7 @@ title: Microsoft Azure Oracle çözümleri | Microsoft Docs
 description: Tamamen Azure altyapısında çalışan veya Oracle bulut altyapısı (OCı) ile platformlar arası bağlantı kullanma dahil olmak üzere Microsoft Azure ' de Oracle uygulamalarını ve çözümlerini dağıtmaya yönelik seçenekler hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: rgardler
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
-ms.author: borisb
-ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85098943"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224443"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
@@ -88,7 +89,7 @@ Ayrıca, Azure 'da OCı ve diğer Azure hizmetleriyle bağlantı sağlayan özel
 Azure 'da çalışan Oracle yazılımıyla birlikte Oracle Database Cloud Services (özerk veritabanı, RAC, sınavı verileri, DBaaS, tek düğüm) kullanın. [OCI veritabanı seçenekleri](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)hakkında daha fazla bilgi edinin. 
  
 
-## <a name="licensing"></a>Lisanslama
+## <a name="licensing"></a>Lisans
 
 Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" modelini temel alır. Oracle yazılımını kullanmak için doğru lisansa sahip olduğunuz ve Oracle ile geçerli bir destek sözleşmenizin olduğu varsayılır. Oracle 'ın Şirket içinden Azure 'a lisans taşınabilirlik garantisi vardır. Bkz. Oracle-Azure [SSS](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html).
 

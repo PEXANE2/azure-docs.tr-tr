@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f53a6b63c744b0e3e41f7ad22270cd842da57674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a983fd65a4934f53643bb21c8751e90dcb9eb21
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796583"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223542"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Azure CLı kullanarak Azure 'daki bir VM 'den görüntü sürümü oluşturma
 
@@ -105,3 +105,5 @@ az sig image-version create \
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLı kullanarak [Genelleştirilmiş görüntüden](vm-generalized-image-version-cli.md) bir VM oluşturun.
+
+Satın alma planı bilgilerini sağlama hakkında daha fazla bilgi için bkz. [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](marketplace-images.md).

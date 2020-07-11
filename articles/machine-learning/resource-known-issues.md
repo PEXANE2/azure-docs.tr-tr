@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610089"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223467"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -181,7 +181,27 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
 |Görüntüleri gözden geçirirken yeni etiketlenmiş görüntüler gösterilmez.     |   Etiketlenmiş tüm görüntüleri yüklemek için **ilk** düğmeyi seçin. **İlk** düğme, listenin önüne geri götürür, ancak etiketlenmiş tüm verileri yükler.      |
 |Nesne algılama için etiketleme sırasında Esc tuşuna basmak, sol üst köşede Sıfır boyutlu bir etiket oluşturur. Etiketlerin bu durumda gönderilmesi başarısız oluyor.     |   Yanındaki çapraz işaretine tıklayarak etiketi silin.  |
 
-### <a name="data-drift-monitors"></a>Veri kayması izleyicileri
+### <a name="data-drift-monitors"></a><a name="data-drift"></a>Veri kayması izleyicileri
+
+Veri kayması izleyicileri için sınırlamalar ve bilinen sorunlar:
+
+* Geçmiş verileri çözümlemede zaman aralığı, izleyicinin Sıklık ayarı için 31 aralıklarıyla sınırlıdır. 
+* Bir özellik listesi belirtilmediği takdirde (kullanılan tüm özellikler) 200 özelliklerinin sınırlaması.
+* İşlem boyutu, verileri işleyecek kadar büyük olmalıdır.
+* Veri kümenizin, belirli bir izleyici çalıştırması için başlangıç ve bitiş tarihi içinde verileri olduğundan emin olun.
+* Veri kümesi izleyicileri yalnızca 50 satır veya daha fazlasını içeren veri kümelerinde çalışır.
+* Veri kümesindeki sütunlar veya özellikler, aşağıdaki tabloda yer alan koşullara göre kategorik veya sayısal olarak sınıflandırılır. Özellik bu koşulları karşılamıyorsa (örneğin, >100 benzersiz değerler içeren dize türünde bir sütun), bu özellik Data değişikliklerini algoritmadan bırakılır, ancak yine de profil oluşturulur. 
+
+    | Özellik türü | Veri türü | Koşul | Sınırlamalar | 
+    | ------------ | --------- | --------- | ----------- |
+    | Kategorik | String, bool, int, float | Özelliğindeki benzersiz değer sayısı 100 ' den az ve satır sayısının %5 ' inden az. | Null, kendi kategorisi olarak değerlendirilir. | 
+    | Sayısal | int, float | Özelliğindeki değerler sayısal bir veri türüdür ve kategorik bir özelliğin koşulunu karşılamaz. | Değerin %15 ' i >null ise özellik bırakıldı. | 
+
+* [Bir datadrift izleyici](how-to-monitor-datasets.md) oluşturduğunuzda ancak Azure Machine Learning Studio 'Daki veri **kümesi izleyicileri** sayfasında verileri göremiyorsanız, aşağıdakileri deneyin.
+
+    1. Sayfanın üst kısmında doğru tarih aralığını seçtiğinizden emin olun.  
+    1. **Veri kümesi izleyicileri** sekmesinde, çalışma durumunu denetlemek için denemeler bağlantısını seçin.  Bu bağlantı tablonun en sağında bulunur.
+    1. Çalıştırma başarıyla tamamlanırsa, kaç ölçüm oluşturulduğunu veya bir uyarı mesajı olduğunu görmek için sürücü günlüklerini denetleyin.  Bir deneye tıkladıktan sonra **Çıkış + Günlükler** sekmesinde sürücü günlüklerini bulun.
 
 * SDK `backfill()` işlevi beklenen çıktıyı üretmiyorsa, bunun nedeni bir kimlik doğrulama sorunu olabilir.  Bu işleve geçirilecek bir işlem oluşturduğunuzda, kullanmayın `Run.get_context().experiment.workspace.compute_targets` .  Bunun yerine, bu işleve geçirdiğiniz işlem oluşturmak için aşağıdaki gibi [Serviceprincıpalauthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) kullanın `backfill()` : 
 

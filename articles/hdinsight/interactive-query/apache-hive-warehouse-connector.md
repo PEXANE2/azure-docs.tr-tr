@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 3efccc44255067b7e47c468c9a35853def2fce69
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085863"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221026"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
 
@@ -37,6 +37,9 @@ Hive ambarı Bağlayıcısı tarafından desteklenen işlemlerden bazıları şu
 * HiveStreaming kullanarak Hive 'e veri çerçevesi veya Spark akışı yazma
 
 ## <a name="hive-warehouse-connector-setup"></a>Hive ambar Bağlayıcısı kurulumu
+
+> [!IMPORTANT]
+> Spark 2,4 Kurumsal Güvenlik Paketi kümelerinde yüklü olan HiveServer2 Interactive örneği, Hive ambarı Bağlayıcısı ile kullanım için desteklenmez. Bunun yerine, HiveServer2 etkileşimli iş yüklerinizi barındırmak için ayrı bir HiveServer2 Interactive kümesi yapılandırmanız gerekir. Tek bir Spark 2,4 kümesinden yararlanan bir Hive ambar Bağlayıcısı yapılandırması desteklenmez.
 
 Hive ambarı Bağlayıcısı Spark ve etkileşimli sorgu iş yükleri için ayrı kümeler gerektirir. Bu kümeleri Azure HDInsight 'ta ayarlamak için aşağıdaki adımları izleyin.
 

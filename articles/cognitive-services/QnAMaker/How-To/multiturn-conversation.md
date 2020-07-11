@@ -3,12 +3,12 @@ title: Çoklu açma konuşmaları-Soru-Cevap Oluşturma
 description: Botunuzun bir sorudan diğerine kadar olan birden çok dönüşi yönetmek için istemleri ve bağlamı kullanın. Çoklu açma, önceki sorudaki bağlamın bir sonraki soruyu ve yanıtı etkilediği geri ve ileri bir konuşmaya sahip olabilir.
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 8ef244e1b6baf480189bb90ea5ff53138a6f377a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261474"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229355"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
@@ -52,7 +52,7 @@ Bu seçeneği belirlediğinizde Soru-Cevap Oluşturma belge yapısında mevcut h
 
 Çoklu açma yapısı yalnızca URL 'Ler, PDF dosyaları veya DOCX dosyalarından çıkarsanamıyor. Yapının bir örneği için, [Microsoft Surface Kullanıcı El Ile PDF dosyasının](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)bir görüntüsünü görüntüleyin.
 
-![! [Kullanıcı el ile yapı örneği] (.. /Media/, tional-Context/Import-File-with-konuşma tional-Structure.exe)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![! [Kullanıcı el ile yapı örneği] (.. /Media/konuşma tional-Context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
 ### <a name="building-your-own-multi-turn-document"></a>Kendi Çoklu açma belgenizi oluşturma
 
@@ -62,7 +62,7 @@ Bu seçeneği belirlediğinizde Soru-Cevap Oluşturma belge yapısında mevcut h
 
 * Başlığın ilk karakteri büyük harfle yazılmalıdır.
 
-* Bir başlığı soru işaretiyle sonlandırmayın `?`.
+* Bir başlığı soru işaretiyle sonlandırmayın `?` .
 
 * [Örnek belgeyi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) bir örnek olarak kullanarak kendi Çoklu açma belgenizi oluşturabilirsiniz.
 
@@ -92,7 +92,7 @@ Görüntülenecek soru-cevap çiftlerini yalnızca bağlamsal konuşmalarla birl
 
 Çoklu açma bağlamı ilk sütunda görüntülenir.
 
-![! ["Bağlam (ÖNIZLEME)" sütunu] (.. /Media/, tional-Context/Surce-Manual-PDF-Lay-up-Prompt.exe)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![! ["Bağlam (ÖNIZLEME)" sütunu] (.. /Media/konuşma tional-Context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
 Önceki görüntüde, **#1** sütundaki kalın metni gösterir ve bu da geçerli soruyu belirtir. Üst soru, satırdaki en üstteki öğedir. Aşağıdaki sorular, bağlantılı soru-cevap çiftleridir. Diğer bağlam öğelerine hemen gidebilmeniz için bu öğeler seçilebilir.
 
@@ -167,7 +167,7 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
 
     Üst soru, seçimlerinden biri olarak yeni bir soru görüntüler.
 
-    ![! [Bağlam sütunu her iki soru için de bir izleme istemi ilişkisi gösterir] (.. /Media/konuşma tional-Context/Child-Prompt-Created.exe)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![! [Bağlam sütunu her iki soru için de bir izleme istemi ilişkisi gösterir] (.. /Media/konuşma tional-Context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
 1. İzleme istemi ekledikten sonra, üst gezinti çubuğunda **Kaydet ve eğitme** ' yi seçin.
 
@@ -181,7 +181,7 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Bir başlangıç yanıtı ve izleme istemleri döndüren bir JSON isteği
 
-Kullanıcının sorusunun yanıtını `context` istemek ve izleme istemleri eklemek için boş nesneyi kullanın.
+`context`Kullanıcının sorusunun yanıtını istemek ve izleme istemleri eklemek için boş nesneyi kullanın.
 
 ```JSON
 {
@@ -260,7 +260,7 @@ Yukarıdaki bölüm, **hesaplara ve oturum**açmaya yönelik bir yanıt ve herha
 }
 ```
 
-`prompts` Dizi, `displayText` özelliğinde ve `qnaId` değerinde metin sağlar. Bu yanıtları, konuşma akışında bir sonraki görüntülenmiş seçimler olarak gösterebilir ve ardından seçilen `qnaId` isteği aşağıdaki istekte soru-cevap oluşturma geri gönderebilirsiniz.
+`prompts`Dizi, `displayText` özelliğinde ve değerinde metin sağlar `qnaId` . Bu yanıtları, konuşma akışında bir sonraki görüntülenmiş seçimler olarak gösterebilir ve ardından seçilen `qnaId` isteği aşağıdaki istekte soru-cevap oluşturma geri gönderebilirsiniz.
 
 <!--
 
@@ -270,7 +270,7 @@ The `promptsToDelete` array provides the ...
 
 ## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>İlk yanıt olmayan yanıt ve izleme istemlerini döndüren JSON isteği
 
-`context` Nesneyi önceki bağlamı içerecek şekilde doldurur.
+`context`Nesneyi önceki bağlamı içerecek şekilde doldurur.
 
 Aşağıdaki JSON isteğinde, geçerli soru, *oturum açmak Için Windows Hello* ve önceki soruda *hesaplar ve oturum açmak*için kullanılır.
 
@@ -290,7 +290,7 @@ Aşağıdaki JSON isteğinde, geçerli soru, *oturum açmak Için Windows Hello*
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>İlk yanıt olmayan yanıt ve izleme komut istemlerini döndüren JSON yanıtı
 
-Soru-Cevap Oluşturma _Generateanswer_ JSON yanıtı, `context` `answers` nesnedeki ilk öğenin özelliğindeki izleme istemlerini içerir:
+Soru-Cevap Oluşturma _Generateanswer_ JSON yanıtı, `context` nesnedeki ilk öğenin özelliğindeki izleme istemlerini içerir `answers` :
 
 ```JSON
 {
@@ -350,7 +350,7 @@ Soru-Cevap Oluşturma _Generateanswer_ JSON yanıtı, `context` `answers` nesned
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Bilgi Bankası 'nı Soru-Cevap Oluşturma KIMLIĞIYLE sorgulayın
 
-Çoklu açma özelliğini kullanarak özel bir uygulama oluşturuyorsanız. İlk sorunun yanıtında, tüm izleme istemleri ve onunla ilişkili `qnaId` döndürülür. KIMLIĞINIZ olduğuna göre, bunu izleme isteminin istek gövdesinde geçirebilirsiniz. İstek gövdesi `qnaId`öğesini ve bağlam nesnesini içeriyorsa (önceki soru-cevap oluşturma özelliklerini içeren), generateanswer, soru metninin yanıtını bulmak için derecelendirme algoritmasını kullanmak yerine kimliğe göre tam soruyu döndürür.
+Çoklu açma özelliğini kullanarak özel bir uygulama oluşturuyorsanız. İlk sorunun yanıtında, tüm izleme istemleri ve onunla ilişkili `qnaId` döndürülür. KIMLIĞINIZ olduğuna göre, bunu izleme isteminin istek gövdesinde geçirebilirsiniz. İstek gövdesi `qnaId` öğesini ve bağlam nesnesini içeriyorsa (önceki soru-cevap oluşturma özelliklerini içeren), GenerateAnswer, soru metninin yanıtını bulmak için derecelendirme algoritmasını kullanmak yerıne kimliğe göre tam soruyu döndürür.
 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>Güncelleştirme API 'sinde görüntüleme sırası destekleniyor
@@ -367,7 +367,7 @@ Soru-Cevap Oluşturma, dışarıya açılan dosyadaki çok yönlü konuşma adı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [iletişim kutusu](https://aka.ms/qnamakermultiturnsample) örneğinden bağlamsal konuşmalar hakkında daha fazla bilgi edinin veya [çok yönlü konuşmalar için kavramsal bot tasarımı](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)hakkında daha fazla bilgi edinin.
+Bu [iletişim kutusu](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) örneğinden bağlamsal konuşmalar hakkında daha fazla bilgi edinin veya [çok yönlü konuşmalar için kavramsal bot tasarımı](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Bilgi bankasını geçirme](../Tutorials/migrate-knowledge-base.md)

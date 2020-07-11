@@ -3,8 +3,8 @@ title: Azure 'da Oracle veritabanı tasarlama ve uygulama | Microsoft Docs
 description: Azure ortamınızda bir Oracle veritabanı tasarlayın ve uygulayın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687534"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224579"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure 'da Oracle veritabanı tasarlama ve uygulama
 
@@ -52,7 +53,7 @@ Aşağıdaki tabloda, şirket içi uygulama ve bir Oracle veritabanının Azure 
 > | **Kaynak** |Ayrılmış  |Diğer istemcilerle paylaşılıyor|
 > | **Bölgeler** |Veri merkezleri |[Bölge çiftleri](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **Depolama** |SAN/fiziksel diskler |[Azure tarafından yönetilen depolama](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Ölçek** |Dikey Ölçek |Yatay ölçeklendirme|
+> | **Ölçeklendirme** |Dikey Ölçek |Yatay ölçeklendirme|
 
 
 ### <a name="requirements"></a>Gereksinimler
@@ -143,7 +144,7 @@ Ağ bant genişliği gereksinimlerinize göre, aralarından seçim yapabileceği
 - Ağ gecikmesi, şirket içi dağıtıma kıyasla daha yüksektir. Ağ gidiş dönüşlerini düşürmek performansı önemli ölçüde iyileştirebilir.
 - Gidiş-gelişleri azaltmak için, yüksek işlemlere sahip uygulamaları veya aynı sanal makinede "geveze" uygulamalarını birleştirin.
 - Daha iyi ağ performansı için, [hızlandırılmış ağ](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) Ile sanal makineleri kullanın.
-- Bazı Linux Dağları için [kesme/EŞLEMEYI kaldır desteğini](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)etkinleştirmeyi düşünün.
+- Belirli Linux dağıtımları için [kesme/EŞLEMEYI kaldır desteğini](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)etkinleştirmeyi düşünün.
 - [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 'ı ayrı bir sanal makineye yükler.
 - Çok büyük sayfalar Linux üzerinde varsayılan olarak etkinleştirilmemiştir. Büyük sayfaları etkinleştirmeyi ve Oracle DB ayarlamayı düşünün `use_large_pages = ONLY` . Bu, performansı artırmaya yardımcı olabilir. [Burada](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)daha fazla bilgi bulabilirsiniz.
 

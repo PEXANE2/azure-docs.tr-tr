@@ -4,8 +4,6 @@
   items:
     - name: Microsoft kimlik platformu nedir?
       href: v2-overview.md
-    - name: Microsoft Identity Platform'un gelişimi
-      href: about-microsoft-identity-platform.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

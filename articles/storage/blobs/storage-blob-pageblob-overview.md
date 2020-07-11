@@ -9,11 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: f54adb54ca842ea389b0d3ea203d747df0071ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792039"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223304"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
@@ -122,7 +123,7 @@ Blob hizmetinde ardışık bir sayfa kümesi için yazma isteği başarılı olu
 
 Aşağıdaki diyagramda, 2 ayrı yazma işlemi gösterilmektedir:
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![İki ayrı yazma seçeneğini gösteren diyagram.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  0 uzunluklu 1024 bayt uzaklığında başlayan bir yazma işlemi 
 2.  4096 uzunluğuna başlayan bir yazma işlemi 1024 
@@ -150,7 +151,7 @@ Bu, Blobun herhangi bir aralıktan başlayarak tam Blobu veya bayt aralığını
 
 Aşağıdaki şekilde, 256 ve Aralık boyutu 4352 olan bir okuma işlemi gösterilmektedir. Döndürülen veriler Turuncu renkle vurgulanır. NUL sayfaları için sıfırlar döndürülür.
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![256 ve Aralık boyutu 4352 olan okuma işlemini gösteren bir diyagram](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 Daha seyrek doldurulmuş bir Blobun varsa, sıfır baytlık yumurtın ve indirme gecikmesini azaltmak için yalnızca geçerli sayfa bölgelerini indirmek isteyebilirsiniz.  
 

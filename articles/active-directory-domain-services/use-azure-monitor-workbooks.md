@@ -7,13 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733407"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223049"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitaplarını kullanarak Azure Active Directory Domain Services güvenlik denetim olaylarını gözden geçirme
 
@@ -31,8 +32,8 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
     * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
-* Log Analytics çalışma alanına veri akışı yapan Azure Active Directory Domain Services yönetilen etki alanınız için etkinleştirilen güvenlik denetim olayları.
-    * Gerekirse, [Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştirin][enable-security-audits].
+* Log Analytics çalışma alanına veri akışı yapan yönetilen etki alanınız için etkinleştirilen güvenlik denetim olayları.
+    * Gerekirse, [Azure AD DS için güvenlik denetimlerini etkinleştirin][enable-security-audits].
 
 ## <a name="azure-monitor-workbooks-overview"></a>Azure Izleyici çalışma kitaplarına genel bakış
 
@@ -60,11 +61,13 @@ Güvenlik Genel Bakış raporunun çalışma kitabı şablonuna erişmek için a
     ![Azure portal çalışma kitapları menü seçeneğini belirleyin](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. **Güvenlik genel bakış raporunu**seçin.
-1. Çalışma kitabının en üstündeki aşağı açılan menülerden Azure aboneliğinizi ve ardından Azure Izleyici çalışma alanını seçin. *Son 7 gün*gibi bir **zaman aralığı**seçin.
+1. Çalışma kitabının en üstündeki aşağı açılan menülerden Azure aboneliğinizi ve ardından bir Azure Izleyici çalışma alanını seçin.
+
+    Aşağıdaki örnek ekran görüntüsünde gösterildiği gibi *son 7 gün*gibi bir **zaman aralığı**seçin:
 
     ![Azure portal çalışma kitapları menü seçeneğini belirleyin](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    **Kutucuk görünümü** ve **grafik görünümü** seçenekleri, verileri istenen şekilde analiz etmek ve görselleştirmek için de değiştirilebilir
+    **Kutucuk görünümü** ve **grafik görünümü** seçenekleri, verileri istediğiniz şekilde analiz etmek ve görselleştirmek için de değiştirilebilir.
 
 1. Belirli bir olay türünün detayına gitmek için, aşağıdaki örnekte gösterildiği gibi, *Hesap kilitli*gibi **oturum açma sonuç** kartlarının birini seçin:
 
@@ -84,7 +87,11 @@ Hesap etkinliği raporunun çalışma kitabı şablonuna erişmek için aşağı
 1. Yönetilen etki alanınızı seçin (örneğin, *aaddscontoso.com* )
 1. Sol taraftaki menüden **izleme > çalışma kitaplarını** seçin
 1. **Hesap etkinliği raporunu**seçin.
-1. Çalışma kitabının en üstündeki aşağı açılan menülerden Azure aboneliğinizi ve ardından Azure Izleyici çalışma alanını seçin. *Son 30 gün*gibi bir **zaman aralığı**seçin, sonra **kutucuk görünümünün** verileri nasıl göstermesini istediğinizi belirleyin. Aşağıdaki örnek raporda gösterildiği gibi, *Felix*gibi **hesap Kullanıcı adına**göre filtreleyebilirsiniz:
+1. Çalışma kitabının en üstündeki aşağı açılan menülerden Azure aboneliğinizi ve ardından bir Azure Izleyici çalışma alanını seçin.
+
+    *Son 30 gün*gibi bir **zaman aralığı**seçin, sonra **kutucuk görünümünün** verileri nasıl göstermesini istediğinizi belirleyin.
+
+    Aşağıdaki örnek raporda gösterildiği gibi, *Felix*gibi **hesap Kullanıcı adına**göre filtreleyebilirsiniz:
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884637"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223797"
 ---
 # <a name="soft-delete-for-blob-storage"></a>BLOB depolama için geçici silme
 
@@ -53,7 +54,7 @@ Geçici silme, verilerinizi nesnelerin silindiği veya üzerine yazıldığı bi
 
 Blob **koyma**, **PUT blok listesi**veya **kopyalama blobu**kullanarak bir Blobun üzerine yazıldığında, yazma işleminden önce blob 'un durumunun bir sürümü veya anlık görüntüsü otomatik olarak oluşturulur. Bu nesne, geçici olarak silinen nesneler açıkça listelenmediği takdirde görünmez. Geçici silinen nesneleri nasıl listeleyeceğinizi öğrenmek için [Kurtarma](#recovery) bölümüne bakın.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
+![Blob 'un, put blok listesi veya kopyalama blobu kullanılarak üzerine yazıldığı için, blob 'ların nasıl depolandığını gösteren diyagram.](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
 
 *Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. B1 ile B0 'ın üzerine yazıldığında, B0 'nin geçici olarak silinmiş bir anlık görüntüsü oluşturulur. B2 ile B1 üzerine yazıldığında, B1 'nin geçici olarak silinen bir anlık görüntüsü oluşturulur.*
 
@@ -65,13 +66,13 @@ Blob **koyma**, **PUT blok listesi**veya **kopyalama blobu**kullanarak bir Blobu
 
 Bir anlık görüntüde **silme blobu** çağrıldığında, bu anlık görüntü geçici olarak silinmiş olarak işaretlenir. Yeni bir anlık görüntü oluşturulmaz.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+![Blob 'un anlık görüntülerinin silme blobu kullanılırken geçici olarak silinme şeklini gösteren diyagram.](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
 *Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. **Anlık görüntü blobu** çağrıldığında, B0 bir anlık görüntü haline gelir ve B1, Blobun etkin durumudur. B0 anlık görüntüsü silindiğinde, geçici olarak silinmiş olarak işaretlenir.*
 
 **BLOB silme** bir temel blob 'da (kendi anlık görüntü olmayan herhangi bir BLOB) çağrıldığında, bu blob geçici olarak silindi olarak işaretlenir. Önceki davranışla tutarlı, etkin anlık görüntülere sahip bir bloba **silme blobu** çağırma bir hata döndürüyor. Geçici olarak silinen anlık görüntülerle blob üzerinde **silme blobu** çağırma bir hata döndürmez. Geçici silme açıkken bir blobu ve tüm anlık görüntülerini tek işlemle silebilirsiniz. Bunu yaptığınızda temel blob ve anlık görüntüler geçici olarak silinir.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
+![Bir temel bloba silme blogu çağrıldığında ne olacağını gösteren diyagram.](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
 
 *Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. Burada, B2 ve ilişkili tüm anlık görüntüleri silmek için bir **silme blobu** çağrısı yapılır. Etkin blob, B2 ve tüm ilişkili anlık görüntüler, geçici olarak silinmiş olarak işaretlenir.*
 
@@ -104,7 +105,7 @@ Geçici olarak silinen bir temel blob üzerinde [geri alma blobu](/rest/api/stor
 
 Bir blobu belirli bir geçici silinen anlık görüntüye geri yüklemek için, temel bloba **geri alma blobu** çağırabilirsiniz. Ardından, anlık görüntüyü şimdi etkin Blobun üzerine kopyalayabilirsiniz. Ayrıca, anlık görüntüyü yeni bir bloba kopyalayabilirsiniz.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
+![Silmeyi geri alma blobu kullanıldığında ne olacağını gösteren diyagram.](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
 
 *Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. Burada, blob B üzerinde **geri alma blobu** çağrılır, böylece temel blob, B1 ve tüm ilişkili anlık görüntüler, burada yalnızca B0 etkin olarak geri yüklenir. İkinci adımda, B0 temel blob üzerinden kopyalanır. Bu kopyalama işlemi B1 'nin geçici olarak silinmiş bir anlık görüntüsünü oluşturur.*
 

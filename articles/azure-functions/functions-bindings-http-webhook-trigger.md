@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 437cbb87694adf89054161a7b0d40f6528b94199
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833800"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224103"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -797,11 +797,11 @@ Anahtar gerektirmeyen anonim isteklere izin verebilirsiniz. Ana anahtarın kulla
 
 Sürüm 1. x içinde, Web kancası şablonları Web kancası yükleri için ek doğrulama sağlar. Sürüm 2. x ve üzeri sürümlerde, temel HTTP tetikleyicisi hala çalışıyor ve Web kancaları için önerilen yaklaşım. 
 
-### <a name="github-webhooks"></a>GitHub Web kancaları
+### <a name="github-webhooks"></a>GitHub web kancaları
 
 GitHub Web kancalarına yanıt vermek için, önce bir HTTP tetikleyicisiyle işlevinizi oluşturun ve **Web Kancatürü** özelliğini olarak ayarlayın `github` . Ardından, URL ve API anahtarını GitHub deponuzun **Web kancası Ekle** sayfasına kopyalayın. 
 
-![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+![İşleviniz için bir Web kancası eklemeyi gösteren ekran görüntüsü.](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
 ### <a name="slack-webhooks"></a>Bolluk web kancaları
 

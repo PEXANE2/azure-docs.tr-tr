@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1d4896a2dd2115e5654baffe394618b30a294d5b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210380"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231752"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning vs Machine Learning Studio (klasik)
 
@@ -27,17 +27,17 @@ Yeni kullanıcıların en geniş düzey son teknoloji makine öğrenimi araçlar
 
 Aşağıdaki tabloda Azure Machine Learning ve Studio arasındaki bazı önemli farklılıklar özetlenmektedir (klasik):
 
-| | Machine Learning Studio (klasik) | Azure Machine Learning |
+| Özellik | Machine Learning Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
-| Sürükle ve bırak arabirimi | Destekleniyor | Desteklenen- [Azure Machine Learning Tasarımcısı (Önizleme)](concept-designer.md) <br/>(Kurumsal çalışma alanı gerektirir) | 
+| Sürükle ve bırak arabirimi | Desteklenir | Desteklenen- [Azure Machine Learning Tasarımcısı (Önizleme)](concept-designer.md) <br/>(Kurumsal çalışma alanı gerektirir) | 
 | Deneme | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
 | Eğitim işlem hedefleri | Özel işlem hedefi, yalnızca CPU desteği | Geniş kapsamlı özelleştirilebilir [eğitim işlem hedefleri](concept-compute-target.md#train). GPU ve CPU desteği içerir | 
 | Dağıtım işlem hedefleri | Özel Web hizmeti biçimi özelleştirilebilir değil | Geniş kapsamlı özelleştirilebilir [dağıtım işlem hedefleri](concept-compute-target.md#deploy). GPU ve CPU desteği içerir |
-| ML işlem hattı | Desteklenmiyor | İş akışlarını otomatikleştirmek için esnek, modüler işlem [hatları](concept-ml-pipelines.md) oluşturun |
+| ML işlem hattı | Desteklenmez | İş akışlarını otomatikleştirmek için esnek, modüler işlem [hatları](concept-ml-pipelines.md) oluşturun |
 | MLOps | Temel model yönetimi ve dağıtımı | Varlık sürümü oluşturma (model, veri, iş akışları), iş akışı Otomasyonu, CICD araçları ile tümleştirme [ve daha fazlası](concept-model-management-and-deployment.md) |
 | Model biçimi | Özel biçim, yalnızca Studio (klasik) | Eğitim işi türüne bağlı olarak desteklenen birden çok biçim |
-| Otomatik model eğitimi ve hyperparameter ayarlaması |  Desteklenmiyor | [SDK ve Visual çalışma alanında desteklenir](concept-automated-ml.md) | 
-| Veri drması algılama | Desteklenmiyor | [SDK ve Visual çalışma alanında desteklenir](how-to-monitor-datasets.md) |
+| Otomatik model eğitimi ve hyperparameter ayarlaması |  Desteklenmez | [SDK ve Visual çalışma alanında desteklenir](concept-automated-ml.md) | 
+| Veri drması algılama | Desteklenmez | [SDK ve Visual çalışma alanında desteklenir](how-to-monitor-datasets.md) |
 
 
 ## <a name="migrate-from-machine-learning-studio-classic"></a>Machine Learning Studio geçir (klasik)
