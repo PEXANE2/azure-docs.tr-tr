@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985697"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260675"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -87,11 +87,26 @@ Kaydedilen `pull-secret.txt` dosyayı güvenli bir yerde tutun-bu, her küme olu
 
 Çekme sırlarınızı kopyalıyorsunuz veya başka betiklerin içine başvuruyorsa, çekme gizli anahtarı geçerli bir JSON dizesi olarak biçimlendirilmelidir.
 
+### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>Kümeniz için özel bir etki alanı hazırlama (isteğe bağlı)
+
+`az aro create`Komutunu çalıştırırken, parametresini kullanarak kümeniz için özel bir etki alanı belirtebilirsiniz `--domain foo.example.com` .
+
+Kümeniz için özel bir etki alanı sağlarsanız aşağıdaki noktaları dikkate alın:
+
+* Kümenizi oluşturduktan sonra, DNS sunucunuzda belirtilen 2 DNS A kayıt oluşturmanız gerekir `--domain` :
+    * **API-API** sunucusuna işaret ediyor
+    * ** \* . Apps** -girişi gösterme
+    * Şu komutu yürüterek bu değerleri alın: `az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'` .
+
+* OpenShift konsolu, `https://console-openshift-console.apps.foo.example.com` yerleşik etki alanı yerine, gibi BIR URL 'de kullanılabilir olacaktır `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+
+* Varsayılan olarak, Openshıft, üzerinde oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır `*.apps.<random>.<location>.aroapp.io` .  Kümeye bağlandıktan sonra özel DNS kullanmayı seçerseniz, giriş [denetleyiciniz için özel bır CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) ve [API sunucunuz IÇIN özel bir CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)yapılandırmak üzere OpenShift belgelerini izlemeniz gerekir.
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>İki boş alt ağ içeren bir sanal ağ oluşturun
 
 Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
 
-1. **Aşağıdaki değişkenleri ayarlayın.**
+1. **Komut yürütmek istediğiniz kabuk ortamında aşağıdaki değişkenleri ayarlayın `az` .**
 
    ```console
    LOCATION=eastus                 # the location of your cluster
@@ -99,9 +114,9 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **Kaynak grubu oluşturma**
+1. **Bir kaynak grubu oluşturun.**
 
-    Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create] [az-Group-Create] komutunu kullanarak bir kaynak grubu oluşturun.
+    Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) komutunu kullanarak bir kaynak grubu oluşturun.
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
@@ -126,7 +141,7 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
 
     OpenShift 4 çalıştıran Azure Red Hat OpenShift kümeleri, ana ve çalışan düğümleri için iki boş alt ağa sahip bir sanal ağ gerektirir.
 
-    Daha önce oluşturduğunuz kaynak grubunda yeni bir sanal ağ oluşturun.
+    Daha önce oluşturduğunuz kaynak grubunda yeni bir sanal ağ oluşturun:
 
     ```azurecli-interactive
     az network vnet create \
@@ -189,10 +204,12 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
 
 ## <a name="create-the-cluster"></a>Kümeyi oluşturma
 
-Bir küme oluşturmak için aşağıdaki komutu çalıştırın. İsteğe bağlı olarak, kümenizin Red Hat kapsayıcısı kayıt defterlerine ek içerikle birlikte erişmesine olanak tanıyan [Red hat çekme gizli anahtarını geçirebilirsiniz](#get-a-red-hat-pull-secret-optional) .
+Bir küme oluşturmak için aşağıdaki komutu çalıştırın. Aşağıdaki seçeneklerden birini kullanmayı seçerseniz, komutu uygun şekilde değiştirin:
+* İsteğe bağlı olarak, kümenizin Red Hat kapsayıcısı kayıt defterlerine ek içerikle birlikte erişmesine olanak tanıyan [Red hat çekme gizli anahtarını geçirebilirsiniz](#get-a-red-hat-pull-secret-optional) . `--pull-secret @pull-secret.txt`Komutunuz için bağımsız değişkenini ekleyin.
+* İsteğe bağlı olarak, [özel bir etki alanı kullanabilirsiniz](#prepare-a-custom-domain-for-your-cluster-optional). `--domain foo.example.com` `foo.example.com` Kendi özel etki alanınız ile değiştirerek, Komutunuz için bağımsız değişkeni ekleyin.
 
->[!NOTE]
-> Komutları kopyalayıp yapıştırıyorsanız ve isteğe bağlı parametrelerden birini kullanıyorsanız, ilk diyez etiketlerini ve sondaki açıklama metnini silmeyi unutmayın. Ayrıca, sonundaki ters eğik çizgiyle komutun önceki satırındaki bağımsız değişkenini kapatın.
+> [!NOTE]
+> Komutunuz için herhangi bir isteğe bağlı bağımsız değişken ekliyorsanız, sonundaki ters eğik çizgiyle komutun önceki satırındaki bağımsız değişkenini kapatmayı unutmayın.
 
 ```azurecli-interactive
 az aro create \
@@ -201,23 +218,15 @@ az aro create \
   --vnet aro-vnet \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
-  # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
 Komutu yürüttükten sonra `az aro create` , normalde bir küme oluşturmak yaklaşık 35 dakika sürer.
-
->[!IMPORTANT]
-> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift Konsolu `https://console-openshift-console.apps.foo.example.com` yerleşik etki alanı yerine, gibi bir URL 'de kullanılabilir `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
->
-> Varsayılan olarak, Openshıft, üzerinde oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır `*.apps.<random>.<location>.aroapp.io` .  Kümeye bağlandıktan sonra özel DNS kullanmayı seçerseniz, giriş [denetleyiciniz için özel bır CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) ve [API sunucunuz IÇIN özel bir CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)yapılandırmak üzere OpenShift belgelerini izlemeniz gerekir.
->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Öğreticinin bu bölümünde, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
-> * Önkoşulları kurun ve gerekli sanal ağı ve alt ağları oluşturun
+> * Önkoşulları ayarlama ve gerekli sanal ağı ve alt ağları oluşturma
 > * Küme dağıtma
 
 Sonraki öğreticiye ilerleyin:

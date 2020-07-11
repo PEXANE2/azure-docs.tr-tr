@@ -1,17 +1,17 @@
 ---
 title: Azure Izleyici için yerleşik ilke tanımları
 description: Azure Izleyici için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.custom: subject-policy-samples
-ms.openlocfilehash: f5d7268413983a3cc2d0155d301bd09f16060f71
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 975bdc5981fa72228329f62ceb1c75a640c7099b
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276387"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-monitor"></a>Azure Izleyici için Azure Ilkesi yerleşik tanımları
 

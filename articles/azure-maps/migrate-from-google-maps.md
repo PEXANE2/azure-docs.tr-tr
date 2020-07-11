@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2422204a809e0b13f4e337d49b851a0338681853
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77913710"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249215"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Google Maps 'tan Azure Maps 'e geçiş
+# <a name="migrate-from-google-maps-to-azure-maps"></a>Google Haritalar’dan Azure Haritalar’a geçme
 
 Bu öğreticide Web, mobil ve sunucu tabanlı uygulamaların Google Maps 'tan Microsoft Azure haritalar platformuna nasıl geçirileceğiyle ilgili Öngörüler sunulmaktadır. Bu öğretici, Azure Maps 'a geçiş için karşılaştırılma kodu örnekleri, geçiş önerileri ve en iyi yöntemleri içerir.
 
@@ -74,7 +74,7 @@ Azure haritalar için bazı ilgili kaynaklar aşağıda verilmiştir:
 Aşağıda, üst düzey bir geçiş planı verilmiştir.
 
 1. Uygulamanızın kullandığı Google Maps SDK 'Ları ve hizmetlerini envanterini alın. Azure haritalar 'ın alternatif SDK 'lar ve hizmetler sağladığını doğrulayın.
-2. Henüz bir aboneliğiniz yoksa, bir Azure aboneliği oluşturun [https://azure.com](https://azure.com).
+2. Henüz bir aboneliğiniz yoksa, bir Azure aboneliği oluşturun [https://azure.com](https://azure.com) .
 3. Azure haritalar hesabı ([Belgeler](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) ve kimlik doğrulama anahtarı veya Azure Active Directory ([Belgeler](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)) oluşturun.
 4. Uygulama kodunuzu geçirin.
 5. Geçirilen uygulamanızı test edin.
@@ -92,7 +92,7 @@ Azure haritalar için yararlı teknik kaynakların listesi aşağıda verilmişt
 - Lenemeyen[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - Teknik blog:[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
 - Azure haritalar geri bildirimi (UserVoice):[https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
-- [Azure Maps Jupyter Notebook] [https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook]
+- [Azure haritalar Jupyter Notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
 
 ## <a name="migration-support"></a>Geçiş desteği
 

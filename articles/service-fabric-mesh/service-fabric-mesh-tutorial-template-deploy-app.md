@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494931"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248399"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Öğretici: Şablon kullanarak Service Fabric Mesh’e uygulama dağıtma
 
@@ -34,7 +34,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -171,7 +171,7 @@ Yukarıdaki çıkış, özel kapsayıcı kayıt defterinde `azure-mesh-todo-serv
 ## <a name="retrieve-credentials-for-the-registry"></a>Kayıt defteri kimlik bilgilerini alma
 
 > [!IMPORTANT]
-> Üretim senaryolarında ACR örneğinde yönetici kullanıcının etkinleştirilmesi önerilmez. Burada kolaylık sağlama açısından yapılmıştır. Üretim senaryolarında kullanıcı ve sistem kimlik doğrulaması için [hizmet sorumlusu](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal) kullanmanız önerilir.
+> Üretim senaryolarında ACR örneğinde yönetici kullanıcının etkinleştirilmesi önerilmez. Burada kolaylık sağlama açısından yapılmıştır. Üretim senaryolarında kullanıcı ve sistem kimlik doğrulaması için [hizmet sorumlusu](../container-registry/container-registry-auth-service-principal.md) kullanmanız önerilir.
 
 Kayıt defterinden şablon kullanılarak oluşturulmuş olan bir kapsayıcı örneğini dağıtmak için dağıtım sırasında kayıt defteri kimlik bilgilerini sağlamanız gerekir. Öncelikle aşağıdaki komutu kullanarak kayıt defterinizde yönetici kullanıcıyı etkinleştirin:
 
@@ -191,7 +191,7 @@ Bir sonraki bölümde RM şablonunu ve parametreler dosyalarını oluştururken 
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>Şablonu ve parametreler dosyalarını indirin ve keşfedin
 
-Service Fabric Mesh uygulaması, Azure Resource Manager (RM) şablonlarını kullanarak dağıtıp yönetebileceğiniz bir Azure kaynağıdır. Azure çözümlerinizi dağıtma ve yönetme kavramlarına aşina değilseniz bkz. [Azure Resource Manager'a genel bakış](/azure/azure-resource-manager/resource-group-overview) ve [RM Şablonlarının yapısını ve söz dizimini anlama](/azure/azure-resource-manager/resource-group-authoring-templates).
+Service Fabric Mesh uygulaması, Azure Resource Manager (RM) şablonlarını kullanarak dağıtıp yönetebileceğiniz bir Azure kaynağıdır. Azure çözümlerinizi dağıtma ve yönetme kavramlarına aşina değilseniz bkz. [Azure Resource Manager'a genel bakış](../azure-resource-manager/management/overview.md) ve [RM Şablonlarının yapısını ve söz dizimini anlama](../azure-resource-manager/templates/template-syntax.md).
 
 Bu öğreticide örnek olarak Yapılacaklar Listesi örneği kullanılmıştır.  Yeni şablon ve parametre dosyası oluşturmak yerine [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ve [mesh_rp.windows.parameter.json parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) dosyalarını indirin.
 
@@ -351,7 +351,7 @@ Uygulamayı dağıtmak için şu komutu çalıştırın:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Bu komut, aşağıda gösterilen bir JSON kod parçacığı oluşturur. JSON çıktısının ```outputs``` bölümü altında, ```publicIPAddress``` özelliğini kopyalayın.
+Bu komut, aşağıda gösterilen bir JSON kod parçacığı oluşturur. ```outputs```JSON çıktısının bölümü altında, ```publicIPAddress``` özelliğini kopyalayın.
 
 ```json
 "outputs": {
@@ -362,7 +362,7 @@ Bu komut, aşağıda gösterilen bir JSON kod parçacığı oluşturur. JSON ç�
 }
 ```
 
-Bu bilgiler ARM şablonundaki ```outputs``` bölümünden gelir. Aşağıda gösterildiği gibi, bu bölüm genel IP adresini getirmek için ağ geçidi kaynağına başvurur. 
+Bu bilgiler ```outputs``` ARM şablonundaki bölümünden gelir. Aşağıda gösterildiği gibi, bu bölüm genel IP adresini getirmek için ağ geçidi kaynağına başvurur. 
 
 ```json
   "outputs": {

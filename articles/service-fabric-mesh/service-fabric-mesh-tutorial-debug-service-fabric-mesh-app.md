@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494949"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261315"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Öğretici: Yerel geliştirme kümenizde çalışan bir Service Fabric Mesh uygulamasının hatalarını ayıklama
 
@@ -33,7 +33,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -69,22 +69,22 @@ Yerel dağıtım bittikten ve Visual Studio uygulamanızı çalıştırdıktan s
 
 [Visual Studio performansını iyileştirme](service-fabric-mesh-howto-optimize-vs.md)bölümündeki yönergeleri izleyerek ilk hata ayıklamanın çalışmasını (F5) çok daha hızlı hale getirin.
 
-Şu anda hizmete bağlanma başarısız olmasına neden `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` olan bir sorun var. Ana bilgisayarınızın IP adresi değiştiğinde bu durumda karşılaşabilirsiniz. Bunu çözmek için:
+Şu anda `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` hizmete bağlanma başarısız olmasına neden olan bir sorun var. Ana bilgisayarınızın IP adresi değiştiğinde bu durumda karşılaşabilirsiniz. Bunu çözmek için:
 
-1. Uygulamayı yerel kümeden kaldırın (Visual Studio 'da,**temiz çözüm** **oluşturun** > ).
+1. Uygulamayı yerel kümeden kaldırın (Visual Studio 'da, **Build**  >  **temiz çözüm**oluşturun).
 2. Service Fabric Yerel Küme Yöneticisi'nde **Yerel Kümeyi Durdur**'u ve ardından **Yerel Kümeyi Başlat**'ı seçin.
 3. Uygulamayı yeniden dağıtın (Visual Studio'da, **F5**).
 
 **Service Fabric yerel kümesi çalışmıyor** hatasını alırsanız, Service Fabric Yerel Küme Yöneticisi'nin (LCM) çalıştığından emin olun, sonra görev çubuğunda LCM simgesine tıklayın ve **Yerel Kümeyi Başlat**'a tıklayın. Başlatıldıktan sonra Visual Studio’ya dönün ve **F5** tuşuna basın.
 
-Uygulama başlatıldığında **404** hatası alırsanız, **service.yaml** içindeki ortam değişkenleriniz yanlış olabilir. `ApiHostPort` ve `ToDoServiceName` değerlerinin [Ortam değişkenlerini oluşturma](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) yönergelerine uygun olarak doğru ayarlandığından emin olun.
+Uygulama başlatıldığında **404** hatası alırsanız, **service.yaml** içindeki ortam değişkenleriniz yanlış olabilir. `ApiHostPort` ve `ToDoServiceName` değerlerinin [Ortam değişkenlerini oluşturma](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables) yönergelerine uygun olarak doğru ayarlandığından emin olun.
 
 **Service.yaml** içinde derleme hataları alırsanız, satırlarda girinti yapmak için sekme yerine boşlukların kullanıldığından emin olun. Ayrıca şu an için uygulamayı İngilizce yerel ayarı kullanarak derlemeniz gerekir.
 
 ### <a name="debug-in-visual-studio"></a>Visual Studio'da hata ayıklama
 
 Visual Studio 'da bir Service Fabric kafes uygulamasında hata ayıkladığınızda, yerel bir Service Fabric geliştirme kümesi kullanıyorsunuz demektir. Arka uç hizmetinden yapılacaklar öğelerinin nasıl alındığını görmek için OnGet() yönteminde hata ayıklaması yapın.
-1. **Webön uç** projesinde, **Pages** > **Index. cshtml** > **Index.cshtml.cs** ' ı açın ve **OnGet** yönteminde (17. satır) bir kesme noktası ayarlayın.
+1. **Webön uç** projesinde, **Pages**  >  **Index. cshtml**  >  **Index.cshtml.cs** ' ı açın ve **OnGet** yönteminde (17. satır) bir kesme noktası ayarlayın.
 2. **ToDoService** projesinde, **TodoController.cs** öğesini açın ve **Get** yönteminde (15. satır) bir kesme noktası ayarlayın.
 3. Tarayıcınıza geri dönüp sayfayı yenileyin. Web ön ucu `OnGet()` yönteminde kesme noktasına ulaşırsınız. `backendUrl` değişkenini inceleyerek **service.yaml** dosyasında tanımladığınız ortam değişkenlerinin arka uç hizmetiyle bağlantı kurmak için kullanılan URL'yle nasıl birleştirildiği görebilirsiniz.
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` çağrısından ilerleyin (F10); denetleyicinin `Get()` kesme noktasına ulaşırsınız. Bu yöntemde, yapılacaklar öğesi listesinin bellek içi listeden nasıl alındığını görebilirsiniz.

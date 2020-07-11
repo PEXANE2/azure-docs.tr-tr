@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd309b7c3b37e338b1d8e69635247cc90511b34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204753"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256858"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
 
@@ -58,7 +58,7 @@ Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak i�
 
 Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer alan yönergeleri izleyin.
 
-### <a name="basics"></a>Temel Bilgiler
+### <a name="basics"></a>Temel bilgiler
 
 **Temel kavramlar** sekmesi için şunları yapın:
 
@@ -115,7 +115,7 @@ Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer al
    [PowerShell öğreticisi ile hizmet sorumluları ve rol atamaları oluştur](create-service-principal-role-powershell.md)' u tamamladıysanız **hizmet sorumlusu**' nı seçin.
 
 1. **Hizmet sorumlusu**Için, **Azure AD Kiracı kimliği**Için HIZMET sorumlusunu içeren Azure AD örneği için kiracı yönetici hesabını girin. Yalnızca parola kimlik bilgilerine sahip hizmet sorumluları desteklenir.
-1. **İleri ' yi seçin: gözden geçir + oluştur**.
+1. Yolunuzu tanımlamak için **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Kurulumu tamamladıktan sonra sanal makineyi oluşturun
 
@@ -154,7 +154,7 @@ Masaüstü uygulama grubuna eklediğiniz kullanıcılar, desteklenen uzak masaü
 
 Desteklenen geçerli istemciler şunlardır:
 
-* [Windows 7 ve Windows 10 için Uzak Masaüstü istemcisi](../connect-windows-7-and-10.md)
+* [Windows 7 ve Windows 10 için Uzak Masaüstü istemcisi](connect-windows-7-10-2019.md)
 * [Windows Sanal Masaüstü Web istemcisi](connect-web-2019.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

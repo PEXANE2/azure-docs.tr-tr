@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513800"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245339"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile özel bir yetenek derleme ve dağıtma 
 
@@ -30,7 +30,10 @@ Belirtilen iki veri kümesi vardır. Modeli kendiniz eğmek istiyorsanız hotel_
 > * Dağıtılan modele bir AI zenginleştirme işlem hattı bağlama
 > * Dağıtılan modelden özel bir beceri olarak çıkış alma
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!IMPORTANT] 
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda .NET SDK desteği yok.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği-ücretsiz bir [abonelik](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)alın.
 * [Bilişsel Arama hizmeti](https://docs.microsoft.com/azure/search/search-get-started-arm)
@@ -84,7 +87,7 @@ Portalda beceri adresine gidin ve beceri Definition (JSON) bağlantısını seç
 
 Beceri şablonunu pencereden kopyalayın ve sol taraftaki beceri tanımına yapıştırın. Şablonu, için eksik değerleri sağlayacak şekilde düzenleyin:
 
-* Adı
+* Ad
 * Açıklama
 * Bağlam
 * ' girişler ' adı ve kaynağı
@@ -96,7 +99,7 @@ Beceri kaydettikten sonra, dizin oluşturucuya gidin ve Dizin Oluşturucu tanım
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

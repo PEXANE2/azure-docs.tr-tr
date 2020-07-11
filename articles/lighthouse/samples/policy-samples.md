@@ -1,15 +1,15 @@
 ---
 title: Azure kathouse için yerleşik ilke tanımları
 description: Azure açılır için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: bb4c90af88fcfd43ca2b1725b9396df33910fe6b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ab0d42982b134c6b189060a20ec752ef5701a1f2
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322235"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274042"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Azure için Azure Ilkesi yerleşik tanımları açık kathouse
 

@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982059"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243248"
 ---
 # <a name="monitor-published-apis"></a>Yayımlanan API’leri izleme
 
 Azure İzleyici ile Azure kaynaklarından gelen ölçüm ve günlükleri görselleştirebilir, sorgulayabilir, yönlendirebilir, arşivleyebilir ve bunlar üzerinde işlem uygulayabilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etkinlik günlüklerini görüntüleme
@@ -33,7 +33,7 @@ Aşağıdaki videoda, Azure İzleyici'yi kullanarak API Management’ı izleme i
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -43,7 +43,7 @@ Aşağıdaki videoda, Azure İzleyici'yi kullanarak API Management’ı izleme i
 
 ## <a name="view-metrics-of-your-apis"></a>API'lerinizin ölçümlerini görüntüleme
 
-API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu hakkında neredeyse gerçek zamanlı görünürlük sağlar. En sık kullanılan iki ölçüm aşağıda verilmiştir. Tüm kullanılabilir ölçümlerin bir listesi için bkz. [desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice).
+API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu hakkında neredeyse gerçek zamanlı görünürlük sağlar. En sık kullanılan iki ölçüm aşağıda verilmiştir. Tüm kullanılabilir ölçümlerin bir listesi için bkz. [desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
 
 * Kapasite: APıM hizmetlerinizi yükseltme/eski sürüme düşürme hakkında kararlar almanıza yardımcı olur. Ölçüm, dakika başına yayılır ve raporlama zamanındaki ağ geçidi kapasitesini yansıtır. Ölçüm, CPU ile bellek kullanımı gibi ağ geçidi kaynakları temel alınarak hesaplanan 0-100 aralığında değişir.
 * İstekler: APıM hizmetleriniz aracılığıyla API trafiğini çözümlemenize yardımcı olur. Ölçüm, dakika başına yayılır ve yanıt kodları, konum, ana bilgisayar adı ve hatalar dahil olmak üzere boyutlara sahip ağ geçidi isteklerinin sayısını raporlar. 
@@ -176,7 +176,7 @@ API Management Şu anda her bir girdiyle aşağıdaki şemaya sahip her bir API 
 }  
 ```
 
-| Özellik  | Tür | Description |
+| Özellik  | Tür | Açıklama |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | boole | HTTP isteği, 2xx veya 3xx aralığı içinde yanıt durum koduyla tamamlandıysa true olur |
 | time | date-time | Ağ geçidinin başladığı zaman zaman damgası isteği işleme |

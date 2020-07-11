@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646016"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244999"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric uygulamasını kümeye dağıtma
 
@@ -30,11 +30,11 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Azure Pipelines kullanarak CI/CD yapılandırın](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 > * [Uygulama için izleme ve tanılamayı ayarlayın](service-fabric-tutorial-monitoring-aspnet.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [Visual Studio 2019](https://www.visualstudio.com/)' i yükledikten sonra **Azure geliştirme** ve **ASP.net ve Web geliştirme** iş yüklerini yüklersiniz.
 * [Service Fabric SDK'yı yükleyin](service-fabric-get-started.md).
 
@@ -53,7 +53,7 @@ Uygulamayı Visual Studio 'da açın, yönetici olarak çalıştırın ve uygula
 
 ## <a name="create-a-cluster"></a>Küme oluşturma
 
-Artık uygulama hazır olduğuna göre, bir Service Fabric kümesi oluşturup uygulamayı kümeye dağıtırsınız. [Service Fabric küme](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir.
+Artık uygulama hazır olduğuna göre, bir Service Fabric kümesi oluşturup uygulamayı kümeye dağıtırsınız. [Service Fabric küme](./service-fabric-deploy-anywhere.md) , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir.
 
 Bu öğreticide, Visual Studio IDE 'de yeni üç düğümlü test kümesi oluşturur ve uygulamayı bu kümeye yayımlayabilirsiniz. Üretim kümesi oluşturma hakkında bilgi için bkz. [küme oluşturma ve yönetme öğreticisi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Uygulamayı, [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) veya [Azure CLI](./scripts/cli-create-cluster.md) betikleri kullanarak ya da bir [Azure Resource Manager şablonundan](service-fabric-tutorial-create-vnet-and-windows-cluster.md)daha önce [Azure Portal](https://portal.azure.com)aracılığıyla oluşturduğunuz var olan bir kümeye dağıtabilirsiniz.
 

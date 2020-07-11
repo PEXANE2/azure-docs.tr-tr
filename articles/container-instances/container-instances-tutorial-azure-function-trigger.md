@@ -4,12 +4,12 @@ description: Azure Container Instances oluşturmayı otomatikleştirmek için HT
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: ''
-ms.openlocfilehash: d5fa4acf7ac5a7d0b9103458636adff4befcc3d9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 298cf1452e514ede540e23d4e64f6dd1059cceab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144873"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259749"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: bir kapsayıcı grubu oluşturmak için HTTP ile tetiklenen bir Azure işlevi kullanın
 
@@ -25,7 +25,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * Tek kapsayıcılı bir kapsayıcı grubunun dağıtımını otomatik hale getirmek için PowerShell işlevini değiştirin ve yeniden yayımlayın.
 > * Kapsayıcının HTTP tarafından tetiklenen dağıtımını doğrulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İşletim sisteminde Azure Işlevleri Uzantısı ile Visual Studio Code yüklemek ve kullanmak üzere önkoşulları [Visual Studio Code kullanarak Azure 'da ilk Işlevinizi oluşturma](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment) konusuna bakın.
 
@@ -33,7 +33,7 @@ Bu makaledeki ek adımlar Azure PowerShell kullanır. Yüklemeniz veya yükseltm
 
 ## <a name="create-a-basic-powershell-function"></a>Temel PowerShell işlevi oluşturma
 
-HTTP tetikleyici şablonunu kullanarak bir PowerShell işlevi oluşturmak için [Azure 'da Ilk PowerShell işlevinizi oluşturma](../azure-functions/functions-create-first-function-powershell.md) bölümündeki adımları izleyin. Varsayılan Azure işlevi adı **Httptrigger**' i kullanın. Hızlı başlangıçta gösterildiği gibi, işlevi yerel olarak test edin ve projeyi Azure 'da bir işlev uygulamasında yayımlayın. Bu örnek, bir metin dizesi döndüren temel bir HTTP ile tetiklenen işlevdir. Bu makaledeki sonraki adımlarda, işlevi bir kapsayıcı grubu oluşturacak şekilde değiştirirsiniz.
+HTTP tetikleyici şablonunu kullanarak bir PowerShell işlevi oluşturmak için [Azure 'da Ilk PowerShell işlevinizi oluşturma](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell) bölümündeki adımları izleyin. Varsayılan Azure işlevi adı **Httptrigger**' i kullanın. Hızlı başlangıçta gösterildiği gibi, işlevi yerel olarak test edin ve projeyi Azure 'da bir işlev uygulamasında yayımlayın. Bu örnek, bir metin dizesi döndüren temel bir HTTP ile tetiklenen işlevdir. Bu makaledeki sonraki adımlarda, işlevi bir kapsayıcı grubu oluşturacak şekilde değiştirirsiniz.
 
 Bu makalede, projeyi, işlev uygulaması adına (Ayrıca *myfunctionapp*) göre otomatik olarak adlandırılan bir Azure Kaynak grubundaki *myfunctionapp*adını kullanarak yayımladığınızı varsaymaktadır. Daha sonraki adımlarda benzersiz işlev uygulamanızın adını ve kaynak grubu adını değiştirin.
 
@@ -201,7 +201,7 @@ Bu öğreticide, bir HTTP isteği alan ve bir kapsayıcı grubunun dağıtımın
 
 Kapsayıcılı bir işi başlatma ve izlemeye yönelik ayrıntılı bir örnek için bkz. PowerShell Azure Işlevleri ve Azure Container Instances ve birlikte gelen [kod örneği](https://github.com/anthonychu/functions-powershell-run-aci) [Ile olay temelli sunucusuz kapsayıcılar](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b) .
 
-Azure işlevleri oluşturma ve bir işlevler projesi yayımlama hakkında ayrıntılı yönergeler için bkz. [Azure işlevleri belgeleri](/azure/azure-functions/) . 
+Azure işlevleri oluşturma ve bir işlevler projesi yayımlama hakkında ayrıntılı yönergeler için bkz. [Azure işlevleri belgeleri](../azure-functions/index.yml) . 
 
 <!-- IMAGES -->
 

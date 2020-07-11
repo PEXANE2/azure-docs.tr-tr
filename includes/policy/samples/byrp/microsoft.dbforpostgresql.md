@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fc3c42964d5417db2f5d10bf1049c72d1f2c925e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 5ee5ad4d6e3142805600665aae6246ec855dffb6
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321448"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276626"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Ad<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[PostgreSQL sunucuları için kendi anahtar veri korumanızı getir etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |Bu ilke, kendi anahtar veri korumasını etkin hale getirmeden ortamınızdaki PostgreSQL sunucularını denetler. Daha fazla ayrıntı için, adresini ziyaret edin [https://aka.ms/postgresqlbyok](https://aka.ms/postgresqlbyok) . |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
 |[PostgreSQL veritabanı sunucuları için bağlantı azaltma etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |Bu ilke, bağlantı azaltma etkin olmadan ortamınızdaki tüm PostgreSQL veritabanlarını denetlemeye yardımcı olur. Bu ayar, çok sayıda geçersiz parola oturum açma başarısızlığı için IP başına geçici bağlantı azaltmayı mümkün. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |

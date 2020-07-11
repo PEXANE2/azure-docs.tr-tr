@@ -4,16 +4,16 @@ description: Bu öğreticide, PowerShell kullanarak bir Azure sanal ağı ve ağ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611671"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245067"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Öğretici: Windows çalıştıran bir Service Fabric kümesini Azure sanal ağına dağıtma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Windows çalıştıran bir Azure Service Fabric kümesini PowerShell ve şablon kullanarak bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md) ve [ağ güvenlik grubuna](../virtual-network/virtual-networks-nsg.md) dağıtmayı öğrenirsiniz. İşiniz bittiğinde, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz vardır. Azure CLı kullanan bir Linux kümesi oluşturmak için bkz. [Azure 'da güvenli bir Linux kümesi oluşturma](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Bu öğretici, bir dizinin birinci bölümüdür. Windows çalıştıran bir Azure Service Fabric kümesini PowerShell ve şablon kullanarak bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md) ve [ağ güvenlik grubuna](../virtual-network/virtual-network-vnet-plan-design-arm.md) dağıtmayı öğrenirsiniz. İşiniz bittiğinde, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz vardır. Azure CLı kullanan bir Linux kümesi oluşturmak için bkz. [Azure 'da güvenli bir Linux kümesi oluşturma](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 Bu öğreticide bir üretim senaryosu açıklanır. Sınama amacıyla daha küçük bir küme oluşturmak istiyorsanız, bkz. [test kümesi oluşturma](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
@@ -37,7 +37,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Bir kümeyi izleme](service-fabric-tutorial-monitor-cluster.md)
 > * [Bir kümenin ölçeğini daraltma veya genişletme](service-fabric-tutorial-scale-cluster.md)
 > * [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
-> * [Kümeyi silme](service-fabric-tutorial-delete-cluster.md)
+> * [Küme silme](service-fabric-tutorial-delete-cluster.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -46,9 +46,9 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiye başlamadan önce:
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [SERVICE fabrıc SDK ve PowerShell modülünü](service-fabric-get-started.md)yükler.
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)'i yükler.
+* [Azure PowerShell](/powershell/azure/install-az-ps)'i yükler.
 * [Azure kümelerinin](service-fabric-azure-clusters-overview.md)temel kavramlarını gözden geçirin.
 * Üretim kümesi dağıtımını [planlayın ve hazırlayın](service-fabric-cluster-azure-deployment-preparation.md) .
 
@@ -111,7 +111,7 @@ Sanal ağ, alt ağ ve ağ güvenlik grubunun adları şablon parametrelerinde bi
 Diğer uygulama bağlantı noktaları gerekliyse, içindeki trafiğe izin vermek için **Microsoft. Network/loadBalancers** kaynağını ve **Microsoft. Network/networksecuritygroups** kaynağını ayarlamanız gerekir.
 
 ### <a name="windows-defender"></a>Windows Defender
-Varsayılan olarak, [Windows Defender virüsten koruma programı](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) windows Server 2016 ' de yüklü ve çalışır. Kullanıcı arabirimi bazı SKU 'Larda varsayılan olarak yüklenir, ancak gerekli değildir. Şablonda belirtilen her düğüm türü/VM Ölçek kümesi için [Azure VM kötü amaçlı yazılımdan koruma uzantısı](/azure/virtual-machines/extensions/iaas-antimalware-windows) , Service Fabric dizinlerini ve süreçlerini dışlamak için kullanılır:
+Varsayılan olarak, [Windows Defender virüsten koruma programı](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) windows Server 2016 ' de yüklü ve çalışır. Kullanıcı arabirimi bazı SKU 'Larda varsayılan olarak yüklenir, ancak gerekli değildir. Şablonda belirtilen her düğüm türü/VM Ölçek kümesi için [Azure VM kötü amaçlı yazılımdan koruma uzantısı](../virtual-machines/extensions/iaas-antimalware-windows.md) , Service Fabric dizinlerini ve süreçlerini dışlamak için kullanılır:
 
 ```json
 {
@@ -145,8 +145,8 @@ Varsayılan olarak, [Windows Defender virüsten koruma programı](/windows/secur
 
 **Parametre** | **Örnek değer** | **Notlar** 
 |---|---|---|
-|adminUserName|vmadmin| Küme VM’leri için yönetici kullanıcı adı. [VM Için Kullanıcı adı gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Password#1234| Küme VM’leri için yönetici parolası. [VM Için parola gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| Küme VM’leri için yönetici kullanıcı adı. [VM Için Kullanıcı adı gereksinimleri](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm). |
+|adminPassword|Password#1234| Küme VM’leri için yönetici parolası. [VM Için parola gereksinimleri](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| Kümenin adı. Yalnızca harf ve sayı içerebilir. Uzunluğu 3 ile 23 karakter arasında olmalıdır.|
 |location|southcentralus| Kümenin konumu. |
 |certificateThumbprint|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika SHA1 parmak izi değerini girin. Örneğin: "6190390162C988701DB5676EB81083EA608DCCF3".</p> |
@@ -703,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici serisindeki diğer makaleler, oluşturduğunuz kümeyi kullanır. Hemen bir sonraki makaleye geçmeyecekiz, ücretlendirmeden kaçınmak için [kümeyi silmek](service-fabric-cluster-delete.md) isteyebilirsiniz.
+Bu öğretici serisindeki diğer makaleler, oluşturduğunuz kümeyi kullanır. Hemen bir sonraki makaleye geçmeyecekiz, ücretlendirmeden kaçınmak için [kümeyi silmek](./service-fabric-tutorial-delete-cluster.md) isteyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

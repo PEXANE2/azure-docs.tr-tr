@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6b98e3b11c8472d54632fabfc2b8f50732e5563a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 3d57f7ae57c4d05ad350589e8738940c04ab47b1
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312767"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276904"
 ---
-|Name |Description |İlkeler |Sürüm |
+|Ad |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
 |[Azure Cosmos DB üretilen iş ilkesini etkinleştir](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Cosmos%20DB/Cosmos_Throughput.json) |Belirtilen kapsamdaki (Yönetim grubu, abonelik veya kaynak grubu) Azure Cosmos DB kaynaklar için üretilen iş denetimini etkinleştirin. En fazla üretilen işi parametre olarak alır. Kaynak sağlayıcısı aracılığıyla üretilen iş denetimini uygulamaya yardımcı olması için bu ilkeyi kullanın. |2 |1.0.0 |

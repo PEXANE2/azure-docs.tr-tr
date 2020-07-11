@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b683910180e597cb8cbfa642bb2d9ac3200b42ee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73176824"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255039"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>API'nizin birden fazla sürümünü yayımlama 
 
-API’nizin tüm çağıranlarının tam olarak aynı sürümü kullanmasını sağlamak bazen kullanışlı olmayabilir. Çağıranlar sonraki bir sürüme yükseltmek istediğinde, bunu anlaşılması kolay bir yaklaşımı kullanarak yapabilmek ister. Bunu Azure API Management’taki **sürümleri** kullanarak gerçekleştirmek mümkündür. Daha fazla bilgi için bkz. [Sürümler ve düzeltmeler](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/).
+API’nizin tüm çağıranlarının tam olarak aynı sürümü kullanmasını sağlamak bazen kullanışlı olmayabilir. Çağıranlar sonraki bir sürüme yükseltmek istediğinde, bunu anlaşılması kolay bir yaklaşımı kullanarak yapabilmek ister. Bunu Azure API Management’taki **sürümleri** kullanarak gerçekleştirmek mümkündür. Daha fazla bilgi için bkz. [Sürümler ve düzeltmeler](https://azure.microsoft.com/blog/versions-revisions/).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Geliştirici portalında gösterilen sürüm](media/api-management-getstarted-publish-versions/azure_portal.PNG)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -89,7 +89,7 @@ Azure API Management, çağıranlara istedikleri API sürümünü belirtme olana
 3. **API’ler** seçeneğini belirleyin.
 4. **Add (Ekle)** seçeneğini belirleyin.
 5. **Demo Konferans API’si, Sürüm v1** seçeneğini belirleyin.
-6. **Seç**' e tıklayın.
+6. **Seç**’e tıklayın.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Sürümü görüntülemek için geliştirici portalına göz atma
 

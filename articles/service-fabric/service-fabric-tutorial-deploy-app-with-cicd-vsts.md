@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure Pipelines kullanarak Service Fabric bir uygu
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75614154"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260360"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile uygulama dağıtma
 
@@ -31,7 +31,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * Azure Pipelines kullanarak CI/CD yapılandırma
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -39,7 +39,7 @@ Bu öğreticiye başlamadan önce:
 * [Visual Studio 2019](https://www.visualstudio.com/) ' i yükleyip **Azure geliştirme** ve **ASP.net ve Web geliştirme** iş yüklerini yüklersiniz.
 * [Service Fabric SDK 'sını yükler](service-fabric-get-started.md)
 * Azure’da Windows Service Fabric kümesi oluşturun; örneğin, [bu öğreticiyi izleyin](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* [Azure DevOps kuruluşu](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) oluşturun. Bu, Azure DevOps 'da bir proje oluşturmanıza ve Azure Pipelines kullanmanıza olanak sağlar.
+* [Azure DevOps kuruluşu](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) oluşturun. Bu, Azure DevOps 'da bir proje oluşturmanıza ve Azure Pipelines kullanmanıza olanak sağlar.
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
@@ -61,7 +61,7 @@ Sürekli tümleştirme iş akışınızda kullanmak üzere uygulama projenizin i
 
 Derlemeler oluşturabilmek için uygulamanızın kaynak dosyalarını Azure DevOps’daki bir projede paylaşın.
 
-Visual Studio 'nun sağ alt köşesindeki durum çubuğunda **kaynak denetimine** -> Ekle**Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
+**Add to Source Control**  ->  Visual Studio 'nun sağ alt köşesindeki durum çubuğunda kaynak denetimine Ekle**Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
 
 **Takım Gezgini**’ndeki **Gönderim** görünümünde **Azure DevOps’a Gönder**’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
 
@@ -111,7 +111,7 @@ Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Derleme ilerleme dur
 
 ![Yayın şablonunu seçme][select-release-template]
 
-Yeni bir küme bağlantısı eklemek için **Görevler**->**ortam 1** ve sonra **+ Yeni** ' yi seçin.
+**Tasks** -> Yeni bir küme bağlantısı eklemek için görevler**ortam 1** ve sonra **+ Yeni** ' yi seçin.
 
 ![Küme bağlantısı ekleme][add-cluster-connection]
 
@@ -131,7 +131,7 @@ Derleme tamamlandığında otomatik olarak bir yayın oluşturulması için sür
 
 ![Tetikleyici etkinleştirme][enable-trigger]
 
-Bir yayını el ile oluşturmak için **+** -> **Create a Release** -> **yayın** oluştur oluştur ' u seçin. Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
+**+ Release**  ->  Bir yayını el ile oluşturmak için + yayın**Oluştur oluştur**' u seçin  ->  **Create** . Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
 
 Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6ce2e5a71d48942642ee01d8d2cc75a232abf259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f06387ea317029f5648ab0884cea80262e8640a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159958"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245016"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Öğretici: Application Insights'ı kullanarak Service Fabric'te ASP.NET Core uygulamasını izleme ve tanılama
 
@@ -32,7 +32,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Uygulama için izleme ve tanılamayı ayarlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -65,7 +65,7 @@ Gerekli bilgileri doldurduktan sonra, kaynağı sağlamak için **Oluştur**'a t
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Uygulamanın hizmetlerine Application Insights ekleme
 
-Başlat menüsünde Visual Studio simgesine sağ tıklayıp **yönetici olarak çalıştır**' ı seçerek visual Studio 2019 ' i yükseltilmiş ayrıcalıklarla başlatın. **Dosya** > **Open**aç > **Proje/çözüm** ' e tıklayın ve oylama uygulamasına gidin (öğreticinin veya git kopyalanan bölümünde oluşturulur). *Oylama. sln*'yi açın. Uygulamanın NuGet paketlerini geri yüklemeniz istenirse, **Evet**' e tıklayın.
+Başlat menüsünde Visual Studio simgesine sağ tıklayıp **yönetici olarak çalıştır**' ı seçerek visual Studio 2019 ' i yükseltilmiş ayrıcalıklarla başlatın. **Dosya**  >  **Aç**  >  **Proje/çözüm** ' e tıklayın ve oylama uygulamasına gidin (öğreticinin veya git kopyalanan bölümünde oluşturulur). *Oylama. sln*'yi açın. Uygulamanın NuGet paketlerini geri yüklemeniz istenirse, **Evet**' e tıklayın.
 
 Hem VotingWeb hem de VotingData Hizmetleri için Application Insights yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -102,14 +102,14 @@ NuGet paketini ayarlama adımları aşağıda verilmiştir:
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. Görüntülenen *Değişiklikleri Önizle* Iletişim kutusunda **Tamam** ' a tıklayın ve *Lisans kabulünü*kabul edin. Bu noktada NuGet'i hizmetlere ekleme işlemi tamamlanır.
 6. Şimdi iki hizmette telemetri başlatıcısını ayarlamanız gerekir. Bunu yapmak için, *VotingWeb.cs* ve *VotingData.cs*' yi açın. Her ikisinde de aşağıdaki iki adımı izleyin:
-    1. Bu iki *using* deyimini, var olan *using* deyimlerinden sonra her * \<bir ServiceName>. cs*' nin üst kısmına ekleyin:
+    1. Bu iki *using* deyimini, var olan *using* deyimlerinden sonra her * \<ServiceName> . cs*' nin üst kısmına ekleyin:
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. Her iki dosyada, *createserviceınstancelisteners ()* veya *CreateServiceReplicaListeners ()* iç içe geçmiş *Return* ifadesinde, *ConfigureServices* > *Services*altında, belirtilen diğer hizmet ile, şunu ekleyin:
+    2. Her iki dosyada, *createserviceınstancelisteners ()* veya *CreateServiceReplicaListeners ()* iç içe geçmiş *Return* ifadesinde, *ConfigureServices*  >  *Services*altında, belirtilen diğer hizmet ile, şunu ekleyin:
     ```csharp
     .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
     ```
@@ -150,7 +150,7 @@ NuGet paketini ayarlama adımları aşağıda verilmiştir:
         .Build();
     ```
 
-Yöntemin, `UseApplicationInsights()` yukarıda gösterildiği gibi hem *VotingWeb.cs* hem de *VotingData.cs* 'de çağrıldığından emin olun.
+`UseApplicationInsights()`Yöntemin, yukarıda gösterildiği gibi hem *VotingWeb.cs* hem de *VotingData.cs* 'de çağrıldığından emin olun.
 
 >[!NOTE]
 >Bu örnek uygulama, hizmetlerin iletişim kurması için http’yi kullanır. Uzaktan İletişim V2 ile bir uygulama geliştirirseniz, yukarıdakiyle aynı yere aşağıdaki kod satırlarını da eklemeniz gerekir
@@ -168,7 +168,7 @@ Bu noktada uygulamayı dağıtmaya hazırsınız. Üst kısımdaki **Başlat**'a
 >[!NOTE]
 >.NET Core SDK yüklü olan güncel bir sürümüne sahip değilseniz, derleme hatası alabilirsiniz.
 
-Uygulamanın dağıtımı tamamlandıktan sonra, oylama örnek tek sayfalı uygulamayı `localhost:8080`görmeniz gereken yere gidin. İstediğiniz birkaç farklı öğeye oy vererek biraz örnek veri ve telemetri oluşturun; ben burada tatlıları seçtim!
+Uygulamanın dağıtımı tamamlandıktan sonra, `localhost:8080` Oylama örnek tek sayfalı uygulamayı görmeniz gereken yere gidin. İstediğiniz birkaç farklı öğeye oy vererek biraz örnek veri ve telemetri oluşturun; ben burada tatlıları seçtim!
 
 ![AI örnek oyları](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
@@ -251,7 +251,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-Bu değişiklikleri yapmayı tamamladığınızda, en son sürümünü derlemesi ve dağıtması için uygulamayı **başlatın**. Uygulamanın dağıtımı tamamlandıktan sonra, üzerine gidin `localhost:8080`ve bazı oylama seçeneklerini ekleyin ve silin. Sonra, en son çalıştırmanın izlemelerini görmek için Application Insights kaynağınıza dönün (daha önce olduğu gibi, izlemelerin Application Insights'da gösterilmesi 1-2 dakika sürebilir). Eklediğiniz ve sildiğiniz tüm oylar için, artık tüm yanıt telemetrisiyle birlikte "Özel Olay* ifadesini görüyor olmalısınız.
+Bu değişiklikleri yapmayı tamamladığınızda, en son sürümünü derlemesi ve dağıtması için uygulamayı **başlatın**. Uygulamanın dağıtımı tamamlandıktan sonra, üzerine gidin `localhost:8080` ve bazı oylama seçeneklerini ekleyin ve silin. Sonra, en son çalıştırmanın izlemelerini görmek için Application Insights kaynağınıza dönün (daha önce olduğu gibi, izlemelerin Application Insights'da gösterilmesi 1-2 dakika sürebilir). Eklediğiniz ve sildiğiniz tüm oylar için, artık tüm yanıt telemetrisiyle birlikte "Özel Olay* ifadesini görüyor olmalısınız.
 
 ![özel olaylar](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
@@ -268,4 +268,4 @@ ASP.NET uygulamanız için izleme ve tanılama ayarlamayı tamamladığınıza g
 
 * [Service Fabric'te izleme ve tanılamayı daha ayrıntılı inceleyin](service-fabric-diagnostics-overview.md)
 * [Application Insights ile Service Fabric olay analizi](service-fabric-diagnostics-event-analysis-appinsights.md)
-* Application Insights hakkında daha fazla bilgi edinmek için bkz. [Application Insights Belgeleri](https://docs.microsoft.com/azure/application-insights/)
+* Application Insights hakkında daha fazla bilgi edinmek için bkz. [Application Insights Belgeleri](/azure/application-insights/)

@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure 'da ve ' de bir Service Fabric kümesinin ö
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611654"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257113"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
 
@@ -28,7 +28,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Bir kümeyi izleme](service-fabric-tutorial-monitor-cluster.md)
 > * Bir kümenin ölçeğini daraltma veya genişletme
 > * [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
-> * [Kümeyi silme](service-fabric-tutorial-delete-cluster.md)
+> * [Küme silme](service-fabric-tutorial-delete-cluster.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,7 +38,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yi yükler.
+* [Azure PowerShell](/powershell/azure/install-az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yi yükler.
 * Azure 'da güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma
 
 ## <a name="important-considerations-and-guidelines"></a>Önemli konular ve yönergeler
@@ -64,7 +64,7 @@ Daha fazla bilgi için [küme kapasitesi Kılavuzu](service-fabric-cluster-capac
 
 ## <a name="export-the-template-for-the-resource-group"></a>Kaynak grubu için şablonu dışarı aktarma
 
-Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturup kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubunun Kaynak Yöneticisi şablonunu dışarı aktarın. Şablonu dışarı aktarmak, tüm tüm altyapıyı içerdiğinden, kümenin ve kaynaklarının gelecekteki dağıtımlarını otomatikleştirmenizi sağlar.  Şablonları dışarı aktarma hakkında daha fazla bilgi için [Azure Portal kullanarak Azure Resource Manager kaynak gruplarını yönetme](/azure/azure-resource-manager/manage-resource-groups-portal)makalesini okuyun.
+Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturup kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubunun Kaynak Yöneticisi şablonunu dışarı aktarın. Şablonu dışarı aktarmak, tüm tüm altyapıyı içerdiğinden, kümenin ve kaynaklarının gelecekteki dağıtımlarını otomatikleştirmenizi sağlar.  Şablonları dışarı aktarma hakkında daha fazla bilgi için [Azure Portal kullanarak Azure Resource Manager kaynak gruplarını yönetme](../azure-resource-manager/management/manage-resource-groups-portal.md)makalesini okuyun.
 
 1. [Azure Portal](https://portal.azure.com), kümeyi içeren kaynak grubuna gidin (Bu öğreticiyi takip ediyorsanız**sfclustertutorialgroup**). 
 

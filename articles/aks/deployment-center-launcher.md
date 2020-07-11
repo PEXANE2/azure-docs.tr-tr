@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048119"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251782"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes için dağıtım merkezi
 
@@ -24,7 +24,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Sürekli teslim (CD) ardışık düzenini inceleyin.
 > * Kaynakları temizleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) aracılığıyla ücretsiz bir abonelik alabilirsiniz.
 
@@ -34,7 +34,7 @@ Bu öğreticide şunları yapacaksınız:
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
 
-1. Azure portal menü çubuğunun sağ tarafındaki [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) seçeneğini belirleyin.
+1. Azure portal menü çubuğunun sağ tarafındaki [Cloud Shell](../cloud-shell/overview.md) seçeneğini belirleyin.
 
 1. AKS kümesini oluşturmak için aşağıdaki komutları çalıştırın:
 
@@ -56,7 +56,7 @@ Bu öğreticide şunları yapacaksınız:
 
    ![ayarlar](media/deployment-center-launcher/settings.png)
 
-1. Kodun konumunu seçin ve **İleri ' yi**seçin. Daha sonra, şu anda desteklenen depolardan birini seçin: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** veya **GitHub**.
+1. Kodun konumunu seçin ve **İleri ' yi**seçin. Daha sonra, şu anda desteklenen depolardan birini seçin: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** veya **GitHub**.
 
     Azure Repos, kodunuzu yönetmenize yardımcı olan bir sürüm denetimi araçları kümesidir. Yazılım projenizin büyük veya küçük olup olmadığı, sürüm denetiminin olabildiğince erken kullanılması iyi bir fikirdir.
 
@@ -77,7 +77,7 @@ Bu öğreticide şunları yapacaksınız:
 
     ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
-1. Mevcut bir kapsayıcı kayıt defteri seçin ya da bir tane oluşturun ve ardından **son**' u seçin. İşlem hattı otomatik olarak oluşturulur ve [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops)bir derlemeyi kuyruğa alır.
+1. Mevcut bir kapsayıcı kayıt defteri seçin ya da bir tane oluşturun ve ardından **son**' u seçin. İşlem hattı otomatik olarak oluşturulur ve [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops)bir derlemeyi kuyruğa alır.
 
     Azure Pipelines, kod projenizi otomatik olarak derlemek ve test etmek ve diğer kullanıcıların kullanımına sunmak için kullanabileceğiniz bir bulut hizmetidir. Azure Pipelines sürekli tümleştirme ve sürekli teslimi sürekli ve tutarlı bir şekilde bir araya getirerek kodunuzu oluşturup her hedefe sunamaz.
 

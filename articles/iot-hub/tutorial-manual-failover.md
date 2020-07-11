@@ -11,16 +11,16 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 86b39beb2958194f7c86409c5d78992616234b05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769903"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252581"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Öğretici: IoT Hub 'ı için el ile yük devretme gerçekleştirme
 
-Elle yük devretme, müşterilerin hub işlemleri için birincil bölgeden coğrafi olarak eşleştirilen ilgili Azure coğrafi eşleme bölgesine [yük devretme](https://en.wikipedia.org/wiki/Failover) gerçekleştirmesini sağlayan bir IoT Hub hizmeti özelliğidir. Elle yük devretme, bölgesel olağanüstü durum veya uzun süreli hizmet kesintisi durumunda gerçekleştirilebilir. Ayrıca sisteminizin olağanüstü durum kurtarma özelliklerini test etmek için de planlı bir yük devretme gerçekleştirebilirsiniz. Bunun için üretim ortamı yerine test amaçlı bir IoT hub kullanmanız önerilir. Elle yük devretme özelliği, müşterilere ek maliyet olmadan sunulur.
+Elle yük devretme, müşterilerin hub işlemleri için birincil bölgeden coğrafi olarak eşleştirilen ilgili Azure coğrafi eşleme bölgesine [yük devretme](https://en.wikipedia.org/wiki/Failover) gerçekleştirmesini sağlayan bir IoT Hub hizmeti özelliğidir. Elle yük devretme, bölgesel olağanüstü durum veya uzun süreli hizmet kesintisi durumunda gerçekleştirilebilir. Ayrıca sisteminizin olağanüstü durum kurtarma özelliklerini test etmek için de planlı bir yük devretme gerçekleştirebilirsiniz. Bunun için üretim ortamı yerine test amaçlı bir IoT hub kullanmanız önerilir. El ile yük devretme özelliği, müşteriler 18 Mayıs 2017 ' den sonra oluşturulan IoT Hub 'ları için ek bir ücret ödemeden müşterilere sunulur.
 
 Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 
@@ -31,13 +31,13 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * IoT hub'ın işlemlerini birincil konuma geri almak için yeniden çalışma gerçekleştirin. 
 > * Hub'ın doğru konumda düzgün biçimde çalıştığını onaylayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 1. [Azure Portal](https://portal.azure.com)oturum açın. 
 
@@ -73,7 +73,7 @@ Bir IoT hub'ı için günlük iki yük devretme ve iki yeniden çalışma sını
 
    ![IoT Hub'ı özellikler bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-1. El Ile yük devretme bölmesinde **geçerli konumu** ve **Yük devretme konumunu**görürsünüz. Geçerli konum her zaman hub 'ın Şu anda etkin olduğu konumu gösterir. Yük devretme konumu, geçerli konumla eşleştirilmiş standart [Azure coğrafi eşlenmiş bölgesidir](../best-practices-availability-paired-regions.md) . Konum değerlerini değiştiremezsiniz. Bu öğretici için, geçerli konum `West US 2` ve yük devretme konumu olur. `West Central US`
+1. El Ile yük devretme bölmesinde **geçerli konumu** ve **Yük devretme konumunu**görürsünüz. Geçerli konum her zaman hub 'ın Şu anda etkin olduğu konumu gösterir. Yük devretme konumu, geçerli konumla eşleştirilmiş standart [Azure coğrafi eşlenmiş bölgesidir](../best-practices-availability-paired-regions.md) . Konum değerlerini değiştiremezsiniz. Bu öğretici için, geçerli konum `West US 2` ve yük devretme konumu olur `West Central US` .
 
    ![Elle Yük Devretme bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-02.png)
 
@@ -93,11 +93,11 @@ Bir IoT hub'ı için günlük iki yük devretme ve iki yeniden çalışma sını
 
    ![IoT Hub yük devretme işleminin devam ettiğini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
 
-   Tamamlandıktan sonra, El Ile yük devretme sayfasındaki geçerli ve yük devretme bölgeleri çevrilmiştir ve hub tekrar etkin olur. Bu örnekte, geçerli konum şu anda `WestCentralUS` ve yük devretme konumu artık `West US 2`vardır. 
+   Tamamlandıktan sonra, El Ile yük devretme sayfasındaki geçerli ve yük devretme bölgeleri çevrilmiştir ve hub tekrar etkin olur. Bu örnekte, geçerli konum şu anda `WestCentralUS` ve yük devretme konumu artık vardır `West US 2` . 
 
    ![Yük devretme işleminin tamamlandığını gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-06-finished.png)
 
-   Genel Bakış sayfasında ayrıca yük devretme işleminin tamamlandığını ve IoT Hub içinde `West Central US`çalıştığını belirten bir başlık gösterilir.
+   Genel Bakış sayfasında ayrıca yük devretme işleminin tamamlandığını ve IoT Hub içinde çalıştığını belirten bir başlık gösterilir `West Central US` .
 
    ![Genel Bakış sayfasında yük devretme işleminin tamamlandığını gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
 
@@ -118,7 +118,7 @@ Yeniden çalışma işlemi, elle yük devretme işlemiyle aynı şekilde gerçek
 
    ![Elle yeniden çalışma isteğinin ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
-   Görüntülenen başlıklar yük devretme gerçekleştirme bölümünde anlatılanlarla aynıdır. Yeniden `West US 2` çalışma tamamlandıktan sonra, ilk olarak geçerli konum ve `West Central US` yük devretme konumu olarak ayarlanır.
+   Görüntülenen başlıklar yük devretme gerçekleştirme bölümünde anlatılanlarla aynıdır. Yeniden çalışma tamamlandıktan sonra, `West US 2` ilk olarak geçerli konum ve `West Central US` Yük devretme konumu olarak ayarlanır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 

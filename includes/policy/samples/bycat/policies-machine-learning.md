@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7fbfe49d4240d1916bd18a4c1a43bfe3d1fca010
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 35fda5ca33594a88318874c50463c7c5cca2b767
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313624"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277532"
 ---
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Ad<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Belirtilen Azure Machine Learning hesaplar için izin verilen modül yazarlarını yapılandırın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |Bu ilke, belirtilen Azure Machine Learning izin verilen modül yazarlarının çalışma alanına atanmasını sağlar. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, devre dışı |[1.0.1-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |
 |[Belirtilen Azure Machine Learning hesaplar için izin verilen Python paketlerini yapılandırma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752) | Bu ilke, belirtilen Azure Machine Learning için izin verilen Python paketlerinin oluşturulmasına ve çalışma alanına atanabilirler. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, devre dışı |[1.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedPythonPackageChannels_EnforceSetting.json) |

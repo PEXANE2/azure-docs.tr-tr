@@ -4,12 +4,12 @@ description: Bu öğreticide, ASP.NET Core ön ucuyla ve durum bilgisi olan bir 
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214035"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257130"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Öğretici: ASP.NET Core Web API'si ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma ve dağıtma
 
@@ -32,7 +32,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
@@ -41,7 +41,7 @@ Bu öğreticiye başlamadan önce:
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API'si hizmetini güvenilir bir hizmet olarak oluşturma
 
-Başlangıçta, ASP.NET Core kullanarak oylama uygulamasının web ön ucunu oluşturun. ASP.NET Core, modern web kullanıcı arabirimleri ve web API'leri oluşturmak için kullanabileceğiniz basit, platformlar arası bir web geliştirme çerçevesidir. ASP.NET Core'un Service Fabric ile nasıl tümleştirildiğini her yönüyle anlamanız için, [Service Fabric Reliable Services'te ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) makalesini okumanızı kesinlikle öneririz. Şimdilik, hızlı bir başlangıç yapmak için öğreticiyi izleyebilirsiniz. ASP.NET Core hakkında daha fazla bilgi edinmek için [ASP.NET Core Belgelerine](https://docs.microsoft.com/aspnet/core/) bakın.
+Başlangıçta, ASP.NET Core kullanarak oylama uygulamasının web ön ucunu oluşturun. ASP.NET Core, modern web kullanıcı arabirimleri ve web API'leri oluşturmak için kullanabileceğiniz basit, platformlar arası bir web geliştirme çerçevesidir. ASP.NET Core'un Service Fabric ile nasıl tümleştirildiğini her yönüyle anlamanız için, [Service Fabric Reliable Services'te ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) makalesini okumanızı kesinlikle öneririz. Şimdilik, hızlı bir başlangıç yapmak için öğreticiyi izleyebilirsiniz. ASP.NET Core hakkında daha fazla bilgi edinmek için [ASP.NET Core Belgelerine](/aspnet/core/) bakın.
 
 1. Visual Studio'yu **yönetici** olarak başlatın.
 
@@ -641,4 +641,4 @@ Hata ayıklama oturumunu durdurmak için **Shift+F5** tuşlarına basın.
 
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]
-> [Uygulamayı Azure’a dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> [Uygulamayı Azure'a dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md)

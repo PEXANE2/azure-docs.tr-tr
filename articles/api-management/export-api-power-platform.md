@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/01/2020
 ms.author: apimpm
-ms.openlocfilehash: 9af20972a47e2d0ad20de62f1bb9d10e4d43563c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82725955"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252870"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>API 'Leri Azure API Management Power platform 'a aktarın 
 
@@ -25,11 +25,11 @@ Microsoft [Güç platformunu](https://powerplatform.microsoft.com) kullanan vata
 
 Bu makalede, API 'Leri API Management Power platform 'a aktarma adımlarında izlenecek yol gösterilmektedir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + API Management örneğiniz için güç platformuna aktarmak istediğiniz bir API olduğundan emin olun
-+ Power Apps veya Power otomatikleştir [ortamınıza](https://docs.microsoft.com/powerapps/powerapps-overview#power-apps-for-admins) sahip olduğunuzdan emin olun 
++ Power Apps veya Power otomatikleştir [ortamınıza](/powerapps/powerapps-overview#power-apps-for-admins) sahip olduğunuzdan emin olun 
 
 ## <a name="export-an-api"></a>API 'YI dışarı aktarma
 
@@ -39,7 +39,7 @@ Bu makalede, API 'Leri API Management Power platform 'a aktarma adımlarında iz
 4. **Power Apps ve güç otomatikleştir '** i seçin.
 5. API 'yi dışarı aktarmak için bir ortam seçin. 
 6. Özel bağlayıcının adı olarak kullanılacak bir görünen ad belirtin.  
-7. İsteğe bağlı, API bir OAuth 2,0 sunucusu tarafından korunuyorsa,,, `Client ID`ve `Client secret` `Authorization URL` `Token URL` `Refresh URL`dahil olmak üzere ek ayrıntılar da sağlamanız gerekecektir.  
+7. İsteğe bağlı, API bir OAuth 2,0 sunucusu tarafından korunuyorsa,,, ve dahil olmak üzere ek ayrıntılar da sağlamanız gerekecektir `Client ID` `Client secret` `Authorization URL` `Token URL` `Refresh URL` .  
 8. **Export** (Dışarı aktar) öğesini seçin. 
 
 Dışarı aktarma işlemi tamamlandıktan sonra, Power App veya Power otomatikleştirmek ortamınıza gidin. API 'YI özel bir bağlayıcı olarak görürsünüz.
@@ -47,4 +47,4 @@ Dışarı aktarma işlemi tamamlandıktan sonra, Power App veya Power otomatikle
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Güç platformu hakkında daha fazla bilgi edinin](https://powerplatform.microsoft.com/)
-* [Öğreticileri izleyerek API Management ortak görevleri öğrenin](https://docs.microsoft.com/azure/api-management/import-and-publish)
+* [Öğreticileri izleyerek API Management ortak görevleri öğrenin](./import-and-publish.md)
