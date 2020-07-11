@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555044"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185594"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -48,11 +49,11 @@ Değişiklik İzleme ve envanter Şu anda aşağıdaki sorunları yaşıyor:
 
 - Düzeltme güncelleştirmeleri Windows Server 2016 Core RS3 makinelerinde toplanmaz.
 
-- Linux Daemon 'ları, hiçbir değişiklik gerçekleşmese de değiştirilmiş durumu gösterebilir. Bu sorun, `SvcRunLevels` Azure Izleyici [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) günlüğündeki verilerin yakalandığı şekilde ortaya çıkar.
+- Linux Daemon 'ları, hiçbir değişiklik gerçekleşmese de değiştirilmiş durumu gösterebilir. Bu sorun, `SvcRunLevels` Azure Izleyici [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) günlüğündeki verilerin yakalandığı şekilde ortaya çıkar.
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Resmi işletim sistemi sürümleri Windows Server 2008 SP1 veya üzeri ve Windows 7 SP1 veya sonraki bir sürümü. Özelliği, bir dizi Linux işletim sisteminde de desteklenir. Log Analytics destekleyen işletim sistemleri için bkz. [Log Analytics aracısına genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Resmi işletim sistemi sürümleri Windows Server 2008 SP1 veya üzeri ve Windows 7 SP1 veya sonraki bir sürümü. Özelliği, bir dizi Linux işletim sisteminde de desteklenir. Log Analytics destekleyen işletim sistemleri için bkz. [Log Analytics aracısına genel bakış](../azure-monitor/platform/log-analytics-agent.md).
 
 TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -90,7 +91,7 @@ Her değişikliği ekleyebilir, değiştirebilir veya kaldırabilirsiniz. Aşağ
 
 ## <a name="fim-support-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde FIM desteği
 
-Değişiklik İzleme ve envanter, [Azure Güvenlik Merkezi dosya bütünlüğü izleme (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)kullanımını sağlar. FIM yalnızca dosyaları ve kayıt defterlerini izlerken, tam Değişiklik İzleme ve envanter özelliği için izleme de içerir:
+Değişiklik İzleme ve envanter, [Azure Güvenlik Merkezi dosya bütünlüğü izleme (FIM)](../security-center/security-center-file-integrity-monitoring.md)kullanımını sağlar. FIM yalnızca dosyaları ve kayıt defterlerini izlerken, tam Değişiklik İzleme ve envanter özelliği için izleme de içerir:
 
 - Yazılım değişiklikleri
 - Microsoft Hizmetleri
@@ -105,7 +106,7 @@ Hem Windows hem de Linux 'ta dosyalardaki değişiklikleri izlemek için, Deği�
 
 ## <a name="tracking-of-file-content-changes"></a>Dosya içeriği değişikliklerinin izlenmesi
 
-Değişiklik İzleme ve envanter, bir Windows veya Linux dosyasının içeriğini görüntülemenizi sağlar. Bir dosyada yapılan her değişiklik için Değişiklik İzleme ve stok, dosyanın içeriğini bir [Azure depolama hesabına](../storage/common/storage-create-storage-account.md)depolar. Bir dosyayı izlerken, bir değişiklikten önce veya sonra içeriğini görüntüleyebilirsiniz. Dosya içeriği satır içi veya yan yana görüntülenebilir. 
+Değişiklik İzleme ve envanter, bir Windows veya Linux dosyasının içeriğini görüntülemenizi sağlar. Bir dosyada yapılan her değişiklik için Değişiklik İzleme ve stok, dosyanın içeriğini bir [Azure depolama hesabına](../storage/common/storage-account-create.md)depolar. Bir dosyayı izlerken, bir değişiklikten önce veya sonra içeriğini görüntüleyebilirsiniz. Dosya içeriği satır içi veya yan yana görüntülenebilir. 
 
 ![Dosyadaki değişiklikleri görüntüleme](./media/change-tracking/view-file-changes.png)
 
@@ -170,7 +171,7 @@ Aşağıdaki tabloda, Değişiklik İzleme ve envanter için makine başına izl
 |Hizmetler|250|
 |Daemon 'ları|250|
 
-Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft hizmet verileri
 

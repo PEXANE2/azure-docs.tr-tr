@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 146cf01d99ccc00a972c98128d8e93e1ed5fb690
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830778"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185713"
 ---
 # <a name="query-update-management-logs"></a>Güncelleştirme Yönetimi günlüklerini sorgulama
 
@@ -30,14 +31,14 @@ Güncelleştirme Yönetimi, Windows ve Linux VM 'Leri için kayıtları ve günl
 | Bilgisayar | Raporlama makinesinin tam etki alanı adı. |
 | KBID | Windows Update Bilgi Bankası makalesi KIMLIĞI. |
 | ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. | 
-| Ürün | Güncelleştirmenin geçerli olduğu ürünler. | 
+| Çarpım | Güncelleştirmenin geçerli olduğu ürünler. | 
 | PublishDate | Güncelleştirmenin Windows Update indirilmeye ve yüklenmeye hazırlanma tarihi. |
 | Sunucu | | 
 | Sourcehealthserviceıd | Log Analytics Windows Agent KIMLIĞINI temsil eden benzersiz tanımlayıcı. |
 | SourceSystem | *OperationsManager* | 
 | TenantId | Azure Active Directory kurumları örneğinizi temsil eden benzersiz tanımlayıcı. | 
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. | 
-| Tür | *Güncelleştir* | 
+| Type | *Güncelleştirme* | 
 | UpdateClassification | Uygulanabilecek güncelleştirmelerin türünü gösterir. Windows için:<br> *Kritik güncelleştirmeler*<br> *Güvenlik güncelleştirmeleri*<br> *Güncelleştirme paketleri*<br> *Özellik paketleri*<br> *Hizmet paketleri*<br> *Tanım güncelleştirmeleri*<br> *Araçlar*<br> *Güncelleştirmeler*. Linux için:<br> *Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri*<br> *Diğer* |
 | Updateönem derecesi | Güvenlik Açığı için önem derecesi. Değerler şunlardır:<br> *Kritik*<br> *Önemli*<br> *Orta*<br> *Düşük* |
 | UpdateTitle | Güncelleştirme başlığı.|
@@ -62,7 +63,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | İsteğe Bağlı | Kayıt isteğe bağlı ise true, aksi takdirde false. | 
 | RebootBehavior | Bir güncelleştirmeyi yükledikten/kaldırdıktan sonra yeniden başlatma davranışı. |
 | _ResourceId | Kayıtla ilişkili kaynak için benzersiz tanımlayıcı. |
-| Tür | Kayıt türü. Değer Güncelleştir ' dir. |
+| Type | Kayıt türü. Değer Güncelleştir ' dir. |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
 | MG | Yönetim grubu veya Log Analytics çalışma alanı için benzersiz tanımlayıcı. | 
 | TenantId | Kuruluşunuzun Azure Active Directory örneğini temsil eden benzersiz tanımlayıcı. | 
@@ -72,11 +73,11 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | Başlık | Güncelleştirme başlığı. |
 | PublishedDate (UTC) | Güncelleştirmenin Windows Update indirilmeye ve yüklenmeye hazırlanma tarihi.  |
 | UpdateState | Güncelleştirmenin geçerli durumu. | 
-| Ürün | Güncelleştirmenin geçerli olduğu ürünler. |
+| Çarpım | Güncelleştirmenin geçerli olduğu ürünler. |
 | kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. | 
 | ResourceGroup | Kaynağın ait olduğu kaynak grubunun adı. | 
 | ResourceProvider | Kaynak sağlayıcısı. | 
-| Kaynak | Kaynağın adı. | 
+| Resource | Kaynağın adı. | 
 | ResourceType | Kaynak türü. | 
 
 ### <a name="query-update-agent-record"></a>Sorgu güncelleştirme Aracısı kaydı
@@ -96,7 +97,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | SourceSystem | Kayıt için kaynak sistem. Değer `OperationsManager` . | 
 | TenantId | Kuruluşunuzun Azure Active Directory örneğini temsil eden benzersiz tanımlayıcı. |
 | TimeGenerated | Kayıt oluşturmanın tarih ve saati. |
-| Tür | Kayıt türü. Değer Güncelleştir ' dir. | 
+| Type | Kayıt türü. Değer Güncelleştir ' dir. | 
 | WindowsUpdateAgentVersion | Windows Update aracısının sürümü. |
 | WSUSServer | Windows Update aracısında sorun gidermeye yardımcı olması için hatalar. |
 
@@ -115,8 +116,8 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | KBID | Windows Update Bilgi Bankası makalesi KIMLIĞI. | 
 | ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. |
 | OSType | İşletim sisteminin türü. Değerler Windows veya Linux. | 
-| Ürün | Güncelleştirmenin geçerli olduğu ürünler. |
-| Kaynak | Kaynağın adı. | 
+| Çarpım | Güncelleştirmenin geçerli olduğu ürünler. |
+| Resource | Kaynağın adı. | 
 | ResourceId | Kayıtla ilişkili kaynak için benzersiz tanımlayıcı. |
 | ResourceProvider | Kaynak sağlayıcısı. | 
 | ResourceType | Kaynak türü. | 
@@ -127,7 +128,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | SucceededOnRetry | Güncelleştirme yürütmenin ilk denemede başarısız olup olmadığını ve geçerli işlemin yeniden deneme girişimi olduğunu gösteren değer. |
 | TimeGenerated | Kayıt oluşturmanın tarih ve saati. |
 | Başlık | Güncelleştirme başlığı. |
-| Tür | Güncelleştirme türü. Değer `UpdateRunProgress` . |
+| Type | Güncelleştirme türü. Değer `UpdateRunProgress` . |
 | UpdateID | Yazılım güncelleştirmesinin benzersiz tanıtıcısı. |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
 | ResourceId | Kayıtla ilişkili kaynak için benzersiz tanımlayıcı. |
@@ -147,7 +148,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | OldestMissingSecurityUpdateInDays | En eski güncelleştirme yüklü olmayan şekilde algılanan toplam gün sayısı. |
 | OsVersion | İşletim sisteminin sürümü. |
 | OtherUpdatesMissing | Algılanan güncelleştirme sayısı eksik. |
-| Kaynak | Kayıt için kaynağın adı. | 
+| Resource | Kayıt için kaynağın adı. | 
 | ResourceGroup | Kaynağı içeren kaynak grubunun adı. |
 | ResourceId | Kayıtla ilişkili kaynak için benzersiz tanımlayıcı. |
 | ResourceProvider | Kaynak sağlayıcısı. |
@@ -159,7 +160,7 @@ Bir `Update` makine için kullanılabilir güncelleştirmeleri ve bunların yük
 | kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. |
 | TimeGenerated | Kayıt oluşturmanın tarih ve saati. |
 | TotalUpdatesMissing | Geçerli olan eksik güncelleştirmelerin toplam sayısı. | 
-| Tür | Kayıt türü. Değer `UpdateSummary` . |
+| Type | Kayıt türü. Değer `UpdateSummary` . |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
 | WindowsUpdateAgentVersion | Windows Update aracısının sürümü. |
 | WindowsUpdateSetting | Windows Update aracısının durumu. Olası değerler şunlardır:<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
@@ -193,7 +194,7 @@ Bir Windows bilgisayarında, Azure Izleyici günlükleriyle aracı bağlantısı
 1. Denetim Masası 'nda **Microsoft Monitoring Agent**açın. **Azure Log Analytics** sekmesinde, aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Log Analytics başarıyla bağlandı**.
 2. Windows olay günlüğü 'Nü açın. **Uygulama ve hizmetler Logs\Operations Manager** ' a gidin ve kaynak **hizmeti bağlayıcısından**olay KIMLIĞI 3000 ve olay kimliği 5002 ' ni arayın. Bu olaylar, bilgisayarın Log Analytics çalışma alanına kaydolduğunu ve yapılandırmayı aldığını gösterir.
 
-Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya ara sunucu üzerinden internet ile iletişim kurmak üzere yapılandırılmışsa, güvenlik duvarının veya ara sunucunun düzgün yapılandırıldığını onaylayın. Güvenlik duvarının veya proxy sunucusunun düzgün bir şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenmek için bkz. [Windows Aracısı Için ağ yapılandırması](../azure-monitor/platform/agent-windows.md) veya [Linux Aracısı için ağ yapılandırması](../log-analytics/log-analytics-agent-linux.md).
+Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya ara sunucu üzerinden internet ile iletişim kurmak üzere yapılandırılmışsa, güvenlik duvarının veya ara sunucunun düzgün yapılandırıldığını onaylayın. Güvenlik duvarının veya proxy sunucusunun düzgün bir şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenmek için bkz. [Windows Aracısı Için ağ yapılandırması](../azure-monitor/platform/agent-windows.md) veya [Linux Aracısı için ağ yapılandırması](../azure-monitor/learn/quick-collect-linux-computer.md).
 
 > [!NOTE]
 > Linux sistemleriniz bir ara sunucu veya Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırıldıysa ve Güncelleştirme Yönetimi etkinleştirirken, `proxy.conf` aşağıdaki komutları kullanarak dosya üzerinde omıuser grubuna Okuma izni vermek için izinleri güncelleştirin:
@@ -408,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici günlükleri hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri](../log-analytics/log-analytics-log-searches.md).
+* Azure Izleyici günlükleri hakkında daha fazla bilgi için bkz. [Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md).
 * Uyarılarla ilgili yardım için bkz. [Uyarıları yapılandırma](automation-tutorial-update-management.md#configure-alerts).

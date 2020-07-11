@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424083"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185883"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
 VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/platform/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir. 
 
-Bu özellik, VM 'Leri başlatmak için [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) kullanır.
+Bu özellik, VM 'Leri başlatmak için [Start-AzVm](/powershell/module/az.compute/start-azvm) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzVM](/powershell/module/az.compute/stop-azvm) kullanır.
 
 > [!NOTE]
 > Runbook 'lar yeni Azure az Module cmdlet 'lerini kullanacak şekilde güncelleştirildiğinden Azurere ön ek diğer adını kullanır.
@@ -34,9 +35,9 @@ Geçerli özellikle ilgili sınırlamalar aşağıda verilmiştir:
 - Herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınızla aynı abonelikte kullanılabilir.
 - Azure ve Azure Kamu 'da, bir Log Analytics çalışma alanını, bir Azure Otomasyonu hesabını ve uyarıları destekleyen her bölgede kullanılabilir. Azure Kamu bölgeleri Şu anda e-posta işlevlerini desteklememektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](automation-create-runas-account.md)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
+Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](./manage-runas-account.md)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
 
 VM'leri çalışma saatleri dışında başlat/durdur özelliği için etkin VM 'lerle çalışmak üzere ayrı bir Otomasyon hesabı kullanmanızı öneririz. Azure modül sürümleri sıklıkla yükseltilir ve parametreleri değişebilir. Özelliği aynı temposunda yükseltilmez ve kullandığı cmdlet 'lerin daha yeni sürümleriyle çalışmayabilir. Modül güncelleştirmelerini üretim Otomasyonu hesabınıza aktarmadan önce bir test Otomasyonu hesabında test etmeniz önerilir.
 
@@ -121,7 +122,7 @@ Tüm üst runbook 'lar `WhatIf` parametresi içerir. True olarak ayarlandığın
 Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listelenmektedir. Yalnızca ile önekli değişkenleri değiştirin `External` . Ön eki olan değişkenlerin değiştirilmesi, `Internal` istenmeyen etkilere neden olur.
 
 > [!NOTE]
-> VM adı ve kaynak grubuyla ilgili sınırlamalar büyük ölçüde değişken boyutunun bir sonucudur. Bkz. [Azure Otomasyonu 'Nda değişken varlıkları](https://docs.microsoft.com/azure/automation/shared-resources/variables).
+> VM adı ve kaynak grubuyla ilgili sınırlamalar büyük ölçüde değişken boyutunun bir sonucudur. Bkz. [Azure Otomasyonu 'Nda değişken varlıkları](./shared-resources/variables.md).
 
 |Değişken | Açıklama|
 |---------|------------|
@@ -176,7 +177,7 @@ Bulut hizmeti başına 20 ' den fazla VM varsa, bazı öneriler aşağıda veril
 
 Aksi takdirde, bu özelliğin Otomasyon işi üçten fazla saat çalışırsa, bu, dengeli olarak kaldırılmış veya [dengeli](automation-runbook-execution.md#fair-share) bir şekilde kaldırılır.
 
-Azure CSP abonelikleri yalnızca Azure Resource Manager modelini destekler. Azure Resource Manager olmayan hizmetler programda yok. VM'leri çalışma saatleri dışında başlat/durdur özelliği çalıştırıldığında, klasik kaynakları yönetmek için cmdlet 'ler olduğundan hatalar alabilirsiniz. CSP hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). CSP aboneliği kullanıyorsanız, dağıtımdan sonra [External_EnableClassicVMs](#variables) değişkenini false olarak ayarlamanız gerekir.
+Azure CSP abonelikleri yalnızca Azure Resource Manager modelini destekler. Azure Resource Manager olmayan hizmetler programda yok. VM'leri çalışma saatleri dışında başlat/durdur özelliği çalıştırıldığında, klasik kaynakları yönetmek için cmdlet 'ler olduğundan hatalar alabilirsiniz. CSP hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](/azure/cloud-solution-provider/overview/azure-csp-available-services). CSP aboneliği kullanıyorsanız, dağıtımdan sonra [External_EnableClassicVMs](#variables) değişkenini false olarak ayarlamanız gerekir.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

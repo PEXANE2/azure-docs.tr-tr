@@ -2,14 +2,14 @@
 title: Kapsayıcı grubunu Azure sanal ağı 'na dağıtma
 description: Azure komut satırı arabirimini kullanarak bir kapsayıcı grubunu yeni veya mevcut bir Azure sanal ağına dağıtmayı öğrenin.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0e15b2e65be45e7f77e401b912ef7b784519b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583646"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169604"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Kapsayıcı örneklerini Azure sanal ağına dağıtma
 
@@ -77,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-Çıktı, özel alt ağdaki kapsayıcı grubunun IP adresini görüntüler. Örnek:
+Çıktı, özel alt ağdaki kapsayıcı grubunun IP adresini görüntüler. Örneğin:
 
 ```console
 10.0.0.4
@@ -142,7 +142,7 @@ az network profile list --resource-group myResourceGroup \
 Ağ profili KIMLIĞI ' ne sahip olduktan sonra, aşağıdaki YAML 'yi *VNET-Deploy-aci. YAML*adlı yeni bir dosyaya kopyalayın. Altında `networkProfile` , `id` değerini az önce aldığınız kimlikle değiştirin, ardından dosyayı kaydedin. Bu YAML, sanal ağınızda *appcontaineryaml* adlı bir kapsayıcı grubu oluşturur.
 
 ```YAML
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: westus
 name: appcontaineryaml
 properties:

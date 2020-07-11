@@ -6,11 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5524d2847f59dda1f2c24f67e1e18f18d49b1f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020362"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185577"
 ---
 # <a name="compose-dsc-configurations"></a>DSC yapılandırmaları oluşturma
 
@@ -22,7 +23,7 @@ Azure Otomasyonu [bileşik kaynakların içeri ve derlemesini](automation-dsc-co
 
 Azure portal bileşik kaynaklardan yapılan bir yapılandırmayı atamadan önce yapılandırmayı oluşturmanız gerekir. Birleşim, **yapılandırmalar** ya da **derlenmiş yapılandırmalar** SEKMESINDEN durum yapılandırması (DSC) sayfasında **oluşturma yapılandırması** ' nı kullanır.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol tarafta **tüm kaynaklar** ' a ve ardından Otomasyon hesabınızın adına tıklayın.
 1. Otomasyon hesabı sayfasında, **yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** öğesini seçin.
 1. Durum Yapılandırması (DSC) sayfasında, **yapılandırmalar** veya **derlenen yapılandırmalar** sekmesine tıklayın ve ardından sayfanın üst kısmındaki menüde **yapılandırma oluştur** ' a tıklayın.
@@ -45,5 +46,4 @@ Derleme başarıyla tamamlandığında, yeni yapılandırma **derlenen yapıland
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
 - Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Chocolatey ile sürekli dağıtımı ayarlama](automation-dsc-cd-chocolatey.md).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

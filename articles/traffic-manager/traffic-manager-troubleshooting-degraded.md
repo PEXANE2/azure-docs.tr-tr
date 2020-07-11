@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88c2536ad53be0beb583dc64e633322b2a531d15
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183452"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager’da düşürülmüş durum için sorun giderme
 
@@ -55,9 +56,11 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
 
 Örnek çıktı:
 
-    StatusCode StatusDescription
-    ---------- -----------------
-           301 Moved Permanently
+```output
+StatusCode StatusDescription
+---------- -----------------
+        301 Moved Permanently
+```
 
 Yeniden yönlendirme yanıtı aldığınızı fark edin. Daha önce belirtildiği gibi, 200 dışındaki tüm StatusCode bir hata olarak değerlendirilir. Traffic Manager uç nokta durumunu çevrimdışı olarak değiştirir. Sorunu çözmek için, araştırma yolundan doğru StatusCode 'nin döndürüldüğünden emin olmak için Web sitesi yapılandırmasını denetleyin. Traffic Manager araştırmasını, 200 döndüren bir yolu işaret edecek şekilde yeniden yapılandırın.
 

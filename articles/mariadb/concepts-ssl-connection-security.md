@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 4111b0b01690097535412205b60619172e2c100a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2b166c1907a538d528ddabe3f2c53a962664eaa0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416665"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203878"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda SSL/TLS bağlantısı
 MariaDB için Azure veritabanı, veritabanı sunucunuzu Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
@@ -19,6 +20,10 @@ MariaDB için Azure veritabanı, veritabanı sunucunuzu Güvenli Yuva Katmanı (
 Varsayılan olarak, veritabanı hizmeti MariaDB 'ye bağlanırken SSL bağlantıları gerektirecek şekilde yapılandırılmalıdır.  Mümkün olduğunda SSL seçeneğini devre dışı bırakmaktan kaçınmanızı öneririz.
 
 Azure portal ve CLı aracılığıyla MariaDB sunucusu için yeni bir Azure veritabanı sağlarken, SSL bağlantılarını zorlama varsayılan olarak etkinleştirilir.
+
+Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından oluşturulan yerel bir sertifika dosyası gerektirir. MariaDB sunucusu için Azure veritabanı 'na bağlanma sertifikası konumunda bulunur https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . 
+
+Bağımsız bulutlarda bulunan sunucular için sertifikalar için aşağıdaki bağlantılara bakın: [Azure Kamu](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure Çin](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)ve [Azure Almanya](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
 Çeşitli programlama dilleri için bağlantı dizeleri Azure portal gösterilmektedir. Bu bağlantı dizeleri, veritabanınıza bağlanmak için gerekli SSL parametrelerini içerir. Azure portal, sunucunuzu seçin. **Ayarlar** başlığı altında **bağlantı dizelerini**seçin. SSL parametresi bağlayıcıya göre değişir; Örneğin, "SSL = true" veya "sslmode = gerektir" veya "sslmode = Required" ve diğer Çeşitlemeler.
 
@@ -43,9 +48,9 @@ MariaDB için Azure veritabanı, istemci bağlantıları için TLS sürümünü 
 Örneğin, minimum TLS ayarı sürümü değerinin TLS 1,0 olarak ayarlanması, sunucunuzun TLS 1,0, 1,1 ve 1.2 + kullanarak istemcilerden gelen bağlantılara izin vermeyeceği anlamına gelir. Alternatif olarak, bunu 1,2 olarak ayarlamak yalnızca TLS 1.2 + kullanan istemcilerden gelen bağlantılara izin vermek ve TLS 1,0 ve TLS 1,1 ile tüm bağlantıların reddedilecektir.
 
 > [!Note] 
-> MariaDB için Azure veritabanı, tüm yeni sunucular için varsayılan olarak TLS 'yi devre dışı bırakılıyor. 
+> Varsayılan olarak, MariaDB için Azure veritabanı en düşük TLS sürümünü (ayarı `TLSEnforcementDisabled` ) zorlamaz.
 >
-> Şu anda, MariaDB için Azure veritabanı tarafından desteklenen TLS sürümleri TLS 1,0, 1,1 ve 1,2. Belirli bir minimum TLS sürümüne zorlandıktan sonra, devre dışı olarak değiştiremezsiniz.
+> En düşük TLS sürümünü zorladıktan sonra, en düşük sürüm zorlamayı devre dışı bırakabilirsiniz.
 
 MariaDB için Azure veritabanınız için TLS ayarını ayarlama hakkında bilgi edinmek için bkz. [TLS ayarlarını yapılandırma](howto-tls-configurations.md).
 

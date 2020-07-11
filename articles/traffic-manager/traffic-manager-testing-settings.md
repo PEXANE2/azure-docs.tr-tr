@@ -10,11 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: b2ac056ef9140b4187eeb1850e56ba09b9755abb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704038"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187005"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager ayarlarını doğrulama
 
@@ -34,7 +35,9 @@ Aşağıdaki örnekler Traffic Manager profilinizi test etmenize yardımcı olur
 2. `ipconfig /flushdns`DNS çözümleyici önbelleğini temizlemek için yazın.
 3. `nslookup <your Traffic Manager domain name>` yazın. Örneğin, aşağıdaki komut etki alanı adını *MyApp. contoso* önekiyle denetler
 
-        nslookup myapp.contoso.trafficmanager.net
+    ```powershell
+    nslookup myapp.contoso.trafficmanager.net
+    ```
 
     Tipik bir sonuç aşağıdaki bilgileri gösterir:
 

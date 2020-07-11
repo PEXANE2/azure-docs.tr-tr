@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics 'da Kullanıcı tanımlı işlevlerde hata ayıkla
 description: Bu makalede Azure Stream Analytics içindeki kullanıcı tanımlı işlevlerin nasıl ayıklanacağı açıklanır.
-author: mamccrea
-ms.author: mamccrea
+author: jenssuessmeyer
+ms.author: jenss
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a6c2e390af39b496a871ae9b5799288ea3609bca
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 46aa9879af4bda1cd4a5e06894ea2d964f838f32
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981513"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181361"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'da Kullanıcı tanımlı işlevlerde hata ayıkla 
 
@@ -48,7 +48,7 @@ Stream Analytics doğrudan JavaScript işlevleri için hata ayıklama desteği o
 
 Aşağıdaki örnek, [Visual Studio Code](quick-create-vs-code.md)' deki tümleşik çalışma zamanı ortamında bazı sınırlamalara sahip JavaScript UDF 'leri hata ayıklamanın nasıl yapılacağını gösterir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, Azure Stream Analytics projenizin aşağıdaki öğelere sahip olduğundan emin olun:
 

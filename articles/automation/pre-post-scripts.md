@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 246fcdb27737e99bb677e23216f0305037f54526
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100384"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187464"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Ön betikleri ve son betikleri yönetme
 
@@ -146,7 +147,7 @@ foreach($summary in $finalStatus)
 * Farklı Çalıştır hesabı
 * Çalıştırmak istediğiniz runbook
 
-Azure makinelerle etkileşim kurmak için [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) cmdlet 'Ini kullanarak Azure VM 'larınızla etkileşim kurun. Bunun nasıl yapılacağı hakkında bir örnek için bkz. runbook örneği [güncelleştirme yönetimi – Betiği Çalıştır komutuyla Çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+Azure makinelerle etkileşim kurmak için [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) cmdlet 'Ini kullanarak Azure VM 'larınızla etkileşim kurun. Bunun nasıl yapılacağı hakkında bir örnek için bkz. runbook örneği [güncelleştirme yönetimi – Betiği Çalıştır komutuyla Çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
 
 ### <a name="interact-with-non-azure-machines"></a>Azure olmayan makinelerle etkileşim kurma
 
@@ -157,7 +158,7 @@ Azure makinelerle etkileşim kurmak için [Invoke-AzVMRunCommand](https://docs.m
 * Yerel olarak çalıştırmak istediğiniz runbook
 * Üst runbook
 
-Azure olmayan makinelerle etkileşim kurmak için Azure bağlamında bir üst runbook çalıştırılır. Bu runbook, [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) cmdlet 'i ile bir alt runbook 'u çağırır. `RunOn`Parametresini belirtmeniz ve betiğin üzerinde çalışacağı karma Runbook Worker adını sağlamanız gerekir. Bkz. runbook örneği [güncelleştirme yönetimi – betiği yerel olarak çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
+Azure olmayan makinelerle etkileşim kurmak için Azure bağlamında bir üst runbook çalıştırılır. Bu runbook, [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) cmdlet 'i ile bir alt runbook 'u çağırır. `RunOn`Parametresini belirtmeniz ve betiğin üzerinde çalışacağı karma Runbook Worker adını sağlamanız gerekir. Bkz. runbook örneği [güncelleştirme yönetimi – betiği yerel olarak çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
 ## <a name="abort-patch-deployment"></a>Düzeltme Eki dağıtımını durdur
 
@@ -242,7 +243,7 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
+> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

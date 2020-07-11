@@ -4,11 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'nda dış
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76262971"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165558"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler dış olayları işleme (Azure Işlevleri)
 
@@ -19,7 +20,7 @@ Orchestrator işlevlerinin dış olayları bekleme ve dinleme yeteneği vardır.
 
 ## <a name="wait-for-events"></a>Olayları bekle
 
-`WaitForExternalEvent` `waitForExternalEvent` [Orchestration tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger) (.net) ve (JavaScript) yöntemleri bir Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine olanak tanır. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
+Orchestration tetikleyicisi bağlamasının [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net) ve `waitForExternalEvent` (JavaScript) yöntemleri [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) bir Orchestrator işlevinin bir dış olayı zaman uyumsuz olarak bekleyip dinlemesine izin verir. Dinleme Orchestrator işlevi, olayın *adını* ve almayı beklediği *verilerin şeklini* bildirir.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -172,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>Olayları gönderme
 
-`RaiseEventAsync` `raiseEvent` [Orchestration istemci bağlamasının](durable-functions-bindings.md#orchestration-client) (.net) veya (JavaScript) yöntemi, `WaitForExternalEvent` (.net) veya `waitForExternalEvent` (JavaScript) için beklediği olayları gönderir.  `RaiseEventAsync`Yöntemi, *EventName* ve *eventdata* parametrelerini parametre olarak alır. Olay verileri JSON ile seri hale getirilebilir olmalıdır.
+[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) `raiseEventAsync` Bir Orchestration 'a dış olay göndermek için RaiseEventAsync (.net) veya (JavaScript) yöntemlerini kullanabilirsiniz. Bu yöntemler [Orchestration istemci](durable-functions-bindings.md#orchestration-client) bağlaması tarafından gösterilir. Ayrıca, bir Orchestration 'a dış olay göndermek için yerleşik oluşturma [OLAYı HTTP API](durable-functions-http-api.md#raise-event) 'sini de kullanabilirsiniz.
+
+Oluşturulan olay bir *örnek kimliği*, bir *EventName*ve *eventdata* parametrelerini içerir. Orchestrator işlevleri, `WaitForExternalEvent` (.net) veya `waitForExternalEvent` (JavaScript) API 'lerini kullanarak bu olayları işler. Olayın işlenebilmesi için, söz konusu hem gönderme hem de alma uçları *ile eşleşmelidir.* Olay verileri de JSON ile seri hale getirilebilir olmalıdır.
+
+Dahili olarak, "olay oluştur" mekanizmaları, bekleyen Orchestrator işlevi tarafından çekilen bir iletiyi sıraya alır. Örnek, belirtilen *olay adında* beklemmediyse, olay iletisi bir bellek içi kuyruğa eklenir. Düzenleme örneği daha sonra bu *olay adını* dinlemeye başlarsa, olay iletileri için sırayı denetler.
+
+> [!NOTE]
+> Belirtilen *örnek kimliğine*sahip bir düzenleme örneği yoksa, olay iletisi atılır.
 
 Aşağıda, bir Orchestrator işlev örneğine "onay" olayı gönderen örnek bir Queue-tetiklenen işlev verilmiştir. Orchestration örnek KIMLIĞI kuyruk iletisinin gövdesinden gelir.
 
@@ -208,6 +216,19 @@ Dahili olarak, `RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript), bekleyen
 
 > [!NOTE]
 > Belirtilen *örnek kimliğine*sahip bir düzenleme örneği yoksa, olay iletisi atılır.
+
+### <a name="http"></a>HTTP
+
+Aşağıda, bir Orchestration örneğine "onay" olayı oluşturan HTTP isteğinin bir örneği verilmiştir. 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+Bu durumda, örnek KIMLIĞI *Myınstanceıd*olarak sabit olarak kodlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

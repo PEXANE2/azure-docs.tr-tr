@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511591"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187090"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran bir StorSimple ana bilgisayarında MPIO yapılandırma
 Bu makalede, CentOS 6,6 ana sunucunuzda çok paiz ıO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, Iscsı başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlanır. Bu, çok yollu cihazların otomatik olarak keşfedilmesi ve yalnızca StorSimple birimleri için belirli kurulumun ayrıntılarını açıklar.
@@ -60,7 +60,7 @@ Linux ana bilgisayarına bağlı bir StorSimple cihazı, yüksek kullanılabilir
 
 Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ arabirimi içeren bir konağa bağlı olduğunda çoklu pasıların nasıl yapılandırılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma önkoşulları ayrıntılı olarak yapılır.
 
 ### <a name="on-centos-host"></a>CentOS ana bilgisayarında
@@ -70,35 +70,37 @@ Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön
    
     Aşağıdaki örnek, konakta iki ağ arabirimi ( `eth0` ve `eth1` ) varsa çıktıyı gösterir.
    
-        [root@centosSS ~]# ifconfig
-        eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
-          inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-         RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
-   
-        eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
-          inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
-   
-        loLink encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:12 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0
-          RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```output
+    [root@centosSS ~]# ifconfig
+    eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
+        inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
+
+    eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
+        inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
+
+    loLink encap:Local Loopback  
+        inet addr:127.0.0.1  Mask:255.0.0.0
+        inet6 addr: ::1/128 Scope:Host
+        UP LOOPBACK RUNNING  MTU:65536  Metric:1
+        RX packets:12 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:0
+        RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```
 1. CentOS sunucunuza *iSCSI-INITIATOR-utils* ' i yükler. *İSCSI-INITIATOR-utils*yüklemek için aşağıdaki adımları gerçekleştirin.
    
    1. `root`CentOS ana bilgisayarınızda olarak oturum açın.
@@ -119,8 +121,10 @@ Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön
       
        Örnek çıktı aşağıda gösterilmiştir.
       
-           iscsi   0:off   1:off   2:on3:on4:on5:on6:off
-           iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```output
+        iscsi   0:off   1:off   2:on3:on4:on5:on6:off
+        iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```
       
        Yukarıdaki örnekte, Iscsı ortamınızın 2, 3, 4 ve 5 çalıştırma düzeylerinde önyükleme zamanında çalışacağını görebilirsiniz.
 1. *Cihaz-Eşleyici-çok yollu*'yi yükler. Şunu yazın:
@@ -149,9 +153,11 @@ StorSimple cihazınız şunları içermelidir:
 * StorSimple cihazınızdaki Iscsı arabirimlerine CentOS sunucusundan ulaşılabilir olmalıdır.
       Bunu doğrulamak için, ana sunucunuzda StorSimple Iscsı özellikli ağ arabirimlerinizin IP adreslerini sağlamanız gerekir. Kullanılan komutlar ve VERI2 (10.126.162.25) ve DATA3 (10.126.162.26) ile ilgili çıktı aşağıda gösterilmiştir:
   
-        [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
-        10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
-        10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```console
+    [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
+    10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```
 
 ### <a name="hardware-configuration"></a>Donanım yapılandırması
 İki Iscsı ağ arabirimini yedekliliğe yönelik ayrı yollarda bağlanmanızı öneririz. Aşağıdaki şekilde, CentOS sunucunuz ve StorSimple cihazınız için yüksek kullanılabilirlik ve Yük Dengeleme çok sayıda çoklu yol için önerilen donanım yapılandırması gösterilmektedir.
@@ -197,11 +203,13 @@ Yukarıdaki yapılandırma, konak ve veri arabirimleri yönlendirilebilir ise, c
    
     Bu, aşağıda gösterildiği gibi verilerinizin varsayılanlar bölümünü değiştirecek `multipath.conf` :
    
-        defaults {
-        find_multipaths yes
-        user_friendly_names yes
-        path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+    find_multipaths yes
+    user_friendly_names yes
+    path_grouping_policy multibus
+    }
+    ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. Adım: StorSimple birimlerine yönelik çoklu paşeyi yapılandırma
 Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atlanır. StorSimple cihazlarından birimlerde çok sayıda duruma izin vermek için kara liste özel durumları oluşturmanız gerekir.
@@ -211,16 +219,18 @@ Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atl
     `vi /etc/multipath.conf`
 1. Çok yollu. conf dosyasındaki blacklist_exceptions bölümünü bulun. StorSimple cihazınızın bu bölümde bir kara liste özel durumu olarak listelenmesi gerekir. Bu dosyadaki ilgili satırların açıklamasını aşağıda gösterildiği gibi değiştirebilirsiniz (yalnızca kullandığınız cihazın özel modelini kullanın):
    
-        blacklist_exceptions {
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8100*"
-            }
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8600*"
-            }
-           }
+    ```config
+    blacklist_exceptions {
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8100*"
+        }
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8600*"
+        }
+    }
+    ```
 
 ### <a name="step-3-configure-round-robin-multipathing"></a>3. Adım: hepsini bir kez deneme çoklu paşeyi yapılandırma
 Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir çoklu yolları dengeli ve hepsini bir kez deneme biçiminde kullanır.
@@ -230,10 +240,12 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
     `vi /etc/multipath.conf`
 1. Bölümünün altında, `defaults` öğesini olarak ayarlayın `path_grouping_policy` `multibus` . `path_grouping_policy`Belirtilmemiş multipaths için uygulanacak varsayılan yol gruplama ilkesini belirtir. Varsayılanlar bölümü aşağıda gösterildiği gibi görünecektir.
    
-        defaults {
-                user_friendly_names yes
-                path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+            user_friendly_names yes
+            path_grouping_policy multibus
+    }
+    ```
 
 > [!NOTE]
 > En yaygın değerleri `path_grouping_policy` şunlardır:
@@ -249,21 +261,21 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
     `service multipathd restart`
 1. Çıktı aşağıda gösterildiği gibi olacaktır:
    
-        [root@centosSS ~]# service multipathd start
-        Starting multipathd daemon:  [OK]
+    ```output
+    [root@centosSS ~]# service multipathd start
+    Starting multipathd daemon:  [OK]
+    ```
 
 ### <a name="step-5-verify-multipathing"></a>5. Adım: multipaşeyi doğrulama
 1. İlk olarak, aşağıdaki şekilde StorSimple cihazından Iscsı bağlantısının kurulu olduğundan emin olun:
    
    a. StorSimple cihazınızı bulun. Şunu yazın:
       
-    ```
-    iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
-    ```
+    `iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>`
     
     DATA0 için IP adresi 10.126.162.25 ve 3260 numaralı bağlantı noktası, giden Iscsı trafiği için StorSimple cihazında aşağıda gösterildiği gibidir:
     
-    ```
+    ```output
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
@@ -272,13 +284,11 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
 
    b. Hedef ıQN 'yi kullanarak cihaza bağlanın. StorSimple cihazı, Iscsı hedefidir. Şunu yazın:
 
-    ```
-    iscsiadm -m node --login -T <IQN of iSCSI target>
-    ```
+      `iscsiadm -m node --login -T <IQN of iSCSI target>`
 
     Aşağıdaki örnek, hedef ıQN 'si olan çıktıyı gösterir `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` . Çıktı, cihazınızdaki iki Iscsı özellikli ağ arabirimine başarıyla bağlandığınızı gösterir.
 
-    ```
+    ```output
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
@@ -295,33 +305,31 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
 
 1. Kullanılabilir yolları doğrulayın. Şunu yazın:
 
-      ```
-      multipath -l
-      ```
+    `multipath -l`
 
       Aşağıdaki örnek, iki ağ arabirimi için bir StorSimple cihazında, kullanılabilir iki yol ile tek bir konak ağ arabirimine bağlı olan çıktıyı gösterir.
 
-        ```
-        mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 7:0:0:1 sdc 8:32 active undef running
-        `- 6:0:0:1 sdd 8:48 active undef running
-        ```
+    ```output
+    mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 7:0:0:1 sdc 8:32 active undef running
+    `- 6:0:0:1 sdd 8:48 active undef running
+    ```
 
-        The following example shows the output for two network interfaces on a StorSimple device connected to two host network interfaces with four available paths.
+    Aşağıdaki örnek, dört adet kullanılabilir yol ile iki konak ağı arabirimine bağlı olan bir StorSimple cihazında iki ağ arabirimi için çıktıyı gösterir.
 
-        ```
-        mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 17:0:0:0 sdb 8:16 active undef running
-        |- 15:0:0:0 sdd 8:48 active undef running
-        |- 14:0:0:0 sdc 8:32 active undef running
-        `- 16:0:0:0 sde 8:64 active undef running
-        ```
+    ```output
+    mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 17:0:0:0 sdb 8:16 active undef running
+    |- 15:0:0:0 sdd 8:48 active undef running
+    |- 14:0:0:0 sdc 8:32 active undef running
+    `- 16:0:0:0 sde 8:64 active undef running
+    ```
 
-        After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
+    Yollar yapılandırıldıktan sonra, bu birimi bağlamak ve biçimlendirmek için ana bilgisayar işletim Sisteminizdeki (CentOS 6,6) belirli yönergelere bakın.
 
 ## <a name="troubleshoot-multipathing"></a>Çoklu yol sorunlarını giderme
 Bu bölümde, çok sayıda yapılandırma sırasında herhangi bir sorunla karşılaşırsanız bazı yararlı ipuçları sunulmaktadır.
@@ -330,7 +338,7 @@ S. Dosya etkin olan değişiklikleri görmüyorum `multipath.conf` .
 
 A. Dosyada herhangi bir değişiklik yaptıysanız `multipath.conf` , çoklu yol hizmetini yeniden başlatmanız gerekir. Aşağıdaki komutu yazın:
 
-    service multipathd restart
+`service multipathd restart`
 
 S. StorSimple cihazında iki ağ arabirimini ve konaktaki iki ağ arabirimini etkinleştirdim. Kullanılabilir yolları listediğimde yalnızca iki yol görüyorum. Dört kullanılabilir yol görmem bekleniyor.
 
@@ -362,58 +370,60 @@ Aynı zamanda, hedefe bağlandıktan sonra bazı diskleri görebileceğinizi de 
 
 Olası bir neden büyük olasılıkla eski bir nedeni de olumsuz SID PID olabilir. Iscsı oturumlarından oturumu kapatmak için aşağıdaki komutu kullanın:
 
-    iscsiadm -m node --logout -p <Target_IP>
+`iscsiadm -m node --logout -p <Target_IP>`
 
 Bu komutu, StorSimple cihazınız olan Iscsı hedefinde bulunan tüm bağlı ağ arabirimleri için tekrarlayın. Tüm Iscsı oturumlarından oturumu kapattıktan sonra iSCSI oturumunu yeniden kurmak için Iscsı hedefi ıQN 'sini kullanın. Aşağıdaki komutu yazın:
 
-    iscsiadm -m node --login -T <TARGET_IQN>
+`iscsiadm -m node --login -T <TARGET_IQN>`
 
 
 S. Cihazımın beyaz listede olup olmadığından emin değilim.
 
 A. Cihazınızın beyaz listeye eklenip eklenmeyeceğini doğrulamak için, aşağıdaki sorun giderme etkileşimli komutunu kullanın:
 
-    multipathd -k
-    multipathd> show devices
-    available block devices:
-    ram0 devnode blacklisted, unmonitored
-    ram1 devnode blacklisted, unmonitored
-    ram2 devnode blacklisted, unmonitored
-    ram3 devnode blacklisted, unmonitored
-    ram4 devnode blacklisted, unmonitored
-    ram5 devnode blacklisted, unmonitored
-    ram6 devnode blacklisted, unmonitored
-    ram7 devnode blacklisted, unmonitored
-    ram8 devnode blacklisted, unmonitored
-    ram9 devnode blacklisted, unmonitored
-    ram10 devnode blacklisted, unmonitored
-    ram11 devnode blacklisted, unmonitored
-    ram12 devnode blacklisted, unmonitored
-    ram13 devnode blacklisted, unmonitored
-    ram14 devnode blacklisted, unmonitored
-    ram15 devnode blacklisted, unmonitored
-    loop0 devnode blacklisted, unmonitored
-    loop1 devnode blacklisted, unmonitored
-    loop2 devnode blacklisted, unmonitored
-    loop3 devnode blacklisted, unmonitored
-    loop4 devnode blacklisted, unmonitored
-    loop5 devnode blacklisted, unmonitored
-    loop6 devnode blacklisted, unmonitored
-    loop7 devnode blacklisted, unmonitored
-    sr0 devnode blacklisted, unmonitored
-    sda devnode whitelisted, monitored
-    dm-0 devnode blacklisted, unmonitored
-    dm-1 devnode blacklisted, unmonitored
-    dm-2 devnode blacklisted, unmonitored
-    sdb devnode whitelisted, monitored
-    sdc devnode whitelisted, monitored
-    dm-3 devnode blacklisted, unmonitored
+```console
+multipathd -k
+multipathd> show devices
+available block devices:
+ram0 devnode blacklisted, unmonitored
+ram1 devnode blacklisted, unmonitored
+ram2 devnode blacklisted, unmonitored
+ram3 devnode blacklisted, unmonitored
+ram4 devnode blacklisted, unmonitored
+ram5 devnode blacklisted, unmonitored
+ram6 devnode blacklisted, unmonitored
+ram7 devnode blacklisted, unmonitored
+ram8 devnode blacklisted, unmonitored
+ram9 devnode blacklisted, unmonitored
+ram10 devnode blacklisted, unmonitored
+ram11 devnode blacklisted, unmonitored
+ram12 devnode blacklisted, unmonitored
+ram13 devnode blacklisted, unmonitored
+ram14 devnode blacklisted, unmonitored
+ram15 devnode blacklisted, unmonitored
+loop0 devnode blacklisted, unmonitored
+loop1 devnode blacklisted, unmonitored
+loop2 devnode blacklisted, unmonitored
+loop3 devnode blacklisted, unmonitored
+loop4 devnode blacklisted, unmonitored
+loop5 devnode blacklisted, unmonitored
+loop6 devnode blacklisted, unmonitored
+loop7 devnode blacklisted, unmonitored
+sr0 devnode blacklisted, unmonitored
+sda devnode whitelisted, monitored
+dm-0 devnode blacklisted, unmonitored
+dm-1 devnode blacklisted, unmonitored
+dm-2 devnode blacklisted, unmonitored
+sdb devnode whitelisted, monitored
+sdc devnode whitelisted, monitored
+dm-3 devnode blacklisted, unmonitored
+```
 
 
 Daha fazla bilgi için, [çok sayıda sorun giderme](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)bölümüne gidin.
 
 ## <a name="list-of-useful-commands"></a>Faydalı komutların listesi
-| Tür | Komut | Açıklama |
+| Type | Komut | Açıklama |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Iscsı hizmetini Başlat |
 | &nbsp; |`service iscsid stop` |Iscsı hizmetini durdur |

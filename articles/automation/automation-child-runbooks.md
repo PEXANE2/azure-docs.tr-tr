@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95e156c17b723c679772293401c730cbdff2220b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828653"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169893"
 ---
 # <a name="create-modular-runbooks"></a>Modüler runbook’lar oluşturma
 
@@ -19,12 +20,12 @@ Alt runbook 'u bulmanın iki yolu vardır ve senaryolarınız için en uygun ola
 
 |  | Satır içi | Cmdlet |
 |:--- |:--- |:--- |
-| İş |Alt runbook'lar üst runbook'la aynı işte çalışır. |Alt runbook için ayrı bir iş oluşturulur. |
-| Yürütme |Üst runbook devam etmeden önce alt runbook'un tamamlanmasını bekler. |Üst runbook, alt runbook başlatıldıktan hemen sonra devam eder *veya* üst Runbook alt işin bitmesini bekler. |
-| Çıktı |Üst runbook doğrudan alt runbook'tan çıkış alabilir. |Üst Runbook alt runbook işinden çıkış almalıdır *veya* üst runbook, alt runbook 'tan doğrudan çıkış alabilir. |
-| Parametreler |Alt runbook parametre değerleri ayrı ayrı belirtilir ve herhangi bir veri türünü kullanabilir. |Alt runbook parametrelerinin değerlerinin tek bir Hashtable 'da birleştirilmesi gerekir. Bu Hashtable yalnızca JSON serileştirmesi kullanan basit, dizi ve nesne veri türlerini içerebilir. |
-| Otomasyon Hesabı |Üst runbook aynı Otomasyon hesabında yalnızca alt runbook 'u kullanabilir. |Üst runbook 'lar herhangi bir Otomasyon hesabından, aynı Azure aboneliğinden ve hatta bir bağlantınızın olduğu farklı bir abonelikte bulunan bir alt runbook 'u kullanabilir. |
-| Yayımlama |Üst runbook yayımlanmadan önce alt runbook yayımlanmalıdır. |Alt runbook, üst runbook başlatılmadan önce yayımlanır. |
+| **İş** |Alt runbook'lar üst runbook'la aynı işte çalışır. |Alt runbook için ayrı bir iş oluşturulur. |
+| **Yürütme** |Üst runbook devam etmeden önce alt runbook'un tamamlanmasını bekler. |Üst runbook, alt runbook başlatıldıktan hemen sonra devam eder *veya* üst Runbook alt işin bitmesini bekler. |
+| **Çıktı** |Üst runbook doğrudan alt runbook'tan çıkış alabilir. |Üst Runbook alt runbook işinden çıkış almalıdır *veya* üst runbook, alt runbook 'tan doğrudan çıkış alabilir. |
+| **Parametreler** |Alt runbook parametre değerleri ayrı ayrı belirtilir ve herhangi bir veri türünü kullanabilir. |Alt runbook parametrelerinin değerlerinin tek bir Hashtable 'da birleştirilmesi gerekir. Bu Hashtable yalnızca JSON serileştirmesi kullanan basit, dizi ve nesne veri türlerini içerebilir. |
+| **Otomasyon Hesabı** |Üst runbook aynı Otomasyon hesabında yalnızca alt runbook 'u kullanabilir. |Üst runbook 'lar herhangi bir Otomasyon hesabından, aynı Azure aboneliğinden ve hatta bir bağlantınızın olduğu farklı bir abonelikte bulunan bir alt runbook 'u kullanabilir. |
+| **Yayımlama** |Üst runbook yayımlanmadan önce alt runbook yayımlanmalıdır. |Alt runbook, üst runbook başlatılmadan önce yayımlanır. |
 
 ## <a name="invoke-a-child-runbook-using-inline-execution"></a>Satır içi yürütme kullanarak alt runbook 'u çağırma
 

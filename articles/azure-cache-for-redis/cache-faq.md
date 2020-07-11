@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856962"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185016"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin.
@@ -41,6 +41,7 @@ Aşağıdaki SSS 'ler, redin için Azure önbelleği ile ilgili temel kavramlar�
 * [Redne teklif teklifi ve boyutu için Azure önbelleği kullanmalıyım?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
 * [Redsıs performansı için Azure önbelleği](#azure-cache-for-redis-performance)
 * [Hangi bölgede önbelleğinizi bulmalıyım?](#in-what-region-should-i-locate-my-cache)
+* [Önbelleğe alınan veriler nerede bulunur?](#where-do-my-cached-data-reside)
 * [Redsıs için Azure önbelleği için nasıl faturalandırılırım?](#how-am-i-billed-for-azure-cache-for-redis)
 * [Redsıs için Azure önbelleğini Azure Kamu bulutu, Azure Çin bulutu veya Microsoft Azure Almanya kullanabilir miyim?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
@@ -128,7 +129,7 @@ Bu tablodan aşağıdaki ekibinizle çizebilirsiniz:
 | Fiyatlandırma katmanı | Boyut | CPU çekirdekleri | Kullanılabilir bant genişliği | 1 KB değer boyutu | 1 KB değer boyutu |
 | --- | --- | --- | --- | --- | --- |
 | **Standart önbellek boyutları** | | |**Megabit/sn (MB/sn)/megabayt/sn (MB/s)** |**Saniye başına istek (RPS) SSL olmayan** |**İstek/saniye (RPS) SSL** |
-| C0 | 250 MB | Shared | 100/12,5  |  15.000 |   7.500 |
+| C0 | 250 MB | Paylaşılan | 100/12,5  |  15.000 |   7.500 |
 | C1 |   1 GB | 1      | 500/62,5  |  38.000 |  20.720 |
 | C2 | 2,5 GB | 2      | 500/62,5  |  41.000 |  37.000 |
 | C3 |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
@@ -149,6 +150,13 @@ Stunnel ayarlama veya gibi Redsıs araçlarını indirme hakkında yönergeler i
 ### <a name="in-what-region-should-i-locate-my-cache"></a>Hangi bölgede önbelleğinizi bulmalıyım?
 En iyi performans ve en düşük gecikme için, önbellek istemci uygulamanızla aynı bölgedeki redin için Azure önbelleğinizi bulun.
 
+### <a name="where-do-my-cached-data-reside"></a>Önbelleğe alınan veriler nerede bulunur?
+Redsıs için Azure önbellek, önbelleğinizi barındıran katmana bağlı olarak, uygulama verilerinizi VM veya sanal makinelerin RAM 'ine depolar. Verileriniz, varsayılan olarak seçtiğiniz Azure bölgesinde kesin olarak bulunur. Verilerinizin bölge bırakabileceği iki durum vardır:
+  1. Önbellekte kalıcılığı etkinleştirdiğinizde Redsıs için Azure önbelleği, verilerinizi sahip olduğunuz bir Azure depolama hesabına yedekedecektir. Sağladığınız depolama hesabı başka bir bölgede yer alıyorsa, verilerinizin bir kopyası orada sona alınacaktır.
+  1. Coğrafi çoğaltmayı ayarlarsanız ve ikincil önbelleğiniz farklı bir bölgedeyse ve bu durum normal şekilde, bu durumda verileriniz bu bölgeye çoğaltılır.
+
+Bu özellikleri kullanmak için Redsıs için Azure önbelleğini açık bir şekilde yapılandırmanız gerekir. Depolama hesabının veya ikincil önbelleğin bulunduğu bölge üzerinde de tamamen denetiminiz vardır.
+
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için nasıl faturalandırılırım?
@@ -159,7 +167,7 @@ Evet, Redu için Azure önbelleği, Azure Kamu bulutu, Azure Çin 21Vianet bulut
 
 | Bulut   | Redsıs için DNS son eki            |
 |---------|---------------------------------|
-| Ortak  | *. redis.cache.windows.net       |
+| Genel  | *. redis.cache.windows.net       |
 | US Gov  | *. redis.cache.usgovcloudapi.net |
 | Almanya | *. redis.cache.cloudapi.de       |
 | Çin   | *. redis.cache.chinacloudapi.cn  |
@@ -215,20 +223,20 @@ Redin hakkında harika şeyler birçok farklı geliştirme dilini destekleyen ç
 
 ```csharp
 private static Lazy<ConnectionMultiplexer>
-      lazyConnection = new Lazy<ConnectionMultiplexer>
-    (() =>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
     {
-        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        // Connect to a locally running instance of Redis to simulate
+        // a local cache emulator experience.
         return ConnectionMultiplexer.Connect("127.0.0.1:6379");
     });
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
 ```
 
 İsterseniz redo [. conf](https://redis.io/topics/config) dosyasını redsıs Için çevrimiçi Azure önbelleğiniz için [varsayılan önbellek ayarlarıyla](cache-configure.md#default-redis-server-configuration) daha yakından eşleşecek şekilde yapılandırabilirsiniz.
@@ -367,11 +375,11 @@ Temel olarak, meşgul iş parçacıklarının sayısı en az iş parçacığınd
 
 StackExchange. Redsıs 'den bir örnek hata iletisi görüyoruz (derleme 1.0.450 veya sonrası), şimdi de iş parçacığı istatistiklerini (bkz. ıOCP ve çalışan ayrıntıları aşağıda verilmiştir) yazdıracaksınız.
 
-```output
-    System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
-    queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
-    IOCP: (Busy=6,Free=994,Min=4,Max=1000),
-    WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
+System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
+queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
+IOCP: (Busy=6,Free=994,Min=4,Max=1000),
+WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 ```
 
 Önceki örnekte, ıOCP iş parçacığında altı meşgul iş parçacığı olduğunu ve sistemin dört en düşük iş parçacığına izin verecek şekilde yapılandırıldığını görebilirsiniz. Bu durumda, 6 > 4 nedeniyle istemci muhtemelen 2 500 ms gecikme süresi görmüştür.
@@ -386,20 +394,20 @@ Bu ayar nasıl yapılandırılır:
 
 * İçindeki [ThreadPool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metodunu kullanarak bu ayarı programlı bir şekilde değiştirmenizi öneririz `global.asax.cs` . Örneğin:
 
-```cs
-private readonly int minThreads = 200;
-void Application_Start(object sender, EventArgs e)
-{
-    // Code that runs on application startup
-    AreaRegistration.RegisterAllAreas();
-    RouteConfig.RegisterRoutes(RouteTable.Routes);
-    BundleConfig.RegisterBundles(BundleTable.Bundles);
-    ThreadPool.SetMinThreads(minThreads, minThreads);
-}
-```
+    ```csharp
+    private readonly int minThreads = 200;
+    void Application_Start(object sender, EventArgs e)
+    {
+        // Code that runs on application startup
+        AreaRegistration.RegisterAllAreas();
+        RouteConfig.RegisterRoutes(RouteTable.Routes);
+        BundleConfig.RegisterBundles(BundleTable.Bundles);
+        ThreadPool.SetMinThreads(minThreads, minThreads);
+    }
+    ```
 
-  > [!NOTE]
-  > Bu yöntem tarafından belirtilen değer genel bir ayardır ve tüm AppDomain etki alanı etkilendi. Örneğin, 4 çekirdekli bir makineniz varsa ve çalışma zamanı sırasında *MinWorkerThreads* ve *MINIOTHREADS* 'i CPU başına 50 olarak ayarlamak Istiyorsanız, **ThreadPool. SetMinThreads (200, 200)** kullanın.
+    > [!NOTE]
+    > Bu yöntem tarafından belirtilen değer genel bir ayardır ve tüm AppDomain etki alanı etkilendi. Örneğin, 4 çekirdekli bir makineniz varsa ve çalışma zamanı sırasında *MinWorkerThreads* ve *MINIOTHREADS* 'i CPU başına 50 olarak ayarlamak Istiyorsanız, **ThreadPool. SetMinThreads (200, 200)** kullanın.
 
 * En düşük iş parçacığı ayarlarını, içindeki yapılandırma öğesinin altında bulunan, [ *miniothreads* veya *MinWorkerThreads* yapılandırma ayarı](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) kullanılarak belirlemek de mümkündür `<processModel>` `Machine.config` `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Bu şekilde en düşük iş parçacığı sayısını bu şekilde ayarlamak, sistem genelinde bir ayar olduğundan genellikle önerilmez.**
 
@@ -455,7 +463,7 @@ Redsıs ile konuşmak için kullandığınız istemcide zaman aşımları meydan
   * Bant genişliği eşik sınırlarına ulaşıldı.
   * CPU bağlantılı işlemlerin tamamlanması çok uzun sürdü.
 * Sunucu tarafı nedenleri
-  * Standart önbellek teklifiyle, Redsıs hizmeti için Azure önbelleği, birincil düğümden ikincil düğüme yük devretme işlemi başlattı.
+  * Standart önbellek sunumunda, Redsıs hizmeti için Azure önbelleği, birincil düğümden çoğaltma düğümüne yük devretme işlemi başlattı.
   * Azure, önbelleğin dağıtıldığı örneğe düzeltme eki eklendi
     * Bu, Redsıs sunucu güncelleştirmeleri veya genel VM bakımı için olabilir.
 

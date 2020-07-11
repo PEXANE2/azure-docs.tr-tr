@@ -3,12 +3,12 @@ title: Data Protection Manager (DPM) ve Microsoft Azure Backup sunucusu (MABS) i
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374840"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186954"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı (önceki sürümler)
 
@@ -45,7 +45,10 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 > * Tüm iş yüklerini ve dosyaları DPM ile yedekleyin.
 > * Tüm iş yüklerini ve MABS dosyalarını yedekleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+>[!NOTE]
+>Azure CSP abonelikleri, DPM 2019 RTM ve önceki sürümleri ve MABS v3 RTM ve önceki sürümleri için çevrimdışı dengeli dağıtım ile kullanım için desteklenmez. Ağ üzerinden çevrimiçi yedeklemeler hala desteklenmektedir.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -55,7 +58,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
     | Sovereign bulut bölgesi | Azure yayımlama ayarları dosyası bağlantısı |
     | --- | --- |
-    | Birleşik Devletler | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Amerika Birleşik Devletleri | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | Çin | [Bağlantı](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * Yayımlama ayarları dosyasını indirdiğiniz abonelikte Kaynak Yöneticisi dağıtım modeliyle bir Azure depolama hesabı oluşturuldu. Depolama hesabında, hedef olarak kullanılacak yeni bir blob kapsayıcısı oluşturun.
@@ -96,7 +99,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 Çevrimdışı yedekleme sertifikasını çevrimdışı yedekleme için daha önce oluşturulmuş bir Azure Active Directory uygulamasına el ile yüklemek için aşağıdaki adımları izleyin.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**gidin.
 1. Sahip olan **uygulamalar** sekmesinde görünen ad biçimiyle bir uygulama bulun `AzureOfflineBackup _<Azure User Id` .
 
@@ -121,7 +124,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
     >* Azure bağlı PowerShell 'den `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` komutunu çalıştırın.
     >* Kayıt defteri yoluna gidin `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;` .
 
-1. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, 7. adımda verdiğiniz sertifikanın parmak izini girin. Sonra **Tamam**’ı seçin.
+1. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, 7. adımda verdiğiniz sertifikanın parmak izini girin. Ardından **Tamam**’ı seçin.
 1. Parmak izi değerini almak için, sertifikaya çift tıklayın. **Ayrıntılar** sekmesini seçin ve parmak izi alanını görene kadar aşağı kaydırın. **Parmak izi**' ni seçin ve değeri kopyalayın.
 
     ![Parmak izi alanından değeri Kopyala](./media/offline-backup-dpm-mabs-previous-versions/thumbprint-field.png)

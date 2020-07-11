@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045102"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187668"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Tümleştirme ve geliştirme için Azure Stream Analytics CI/CD NuGet paketini kullanın 
 Bu makalede, Azure Stream Analytics CI/CD NuGet paketinin bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için nasıl kullanılacağı açıklanır.
@@ -36,15 +36,11 @@ Bir Stream Analytics Visual Studio projesi başarıyla oluşturduğunda, **bin/[
 
 * Şablon dosyası Kaynak Yöneticisi
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * Kaynak Yöneticisi Parameters dosyası
    
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```
+   `[ProjectName].JobTemplate.parameters.json`
 
 parameters.jsdosyadaki varsayılan parametreler, Visual Studio projenizin ayarlarından alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
 

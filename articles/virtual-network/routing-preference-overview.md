@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193371"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187447"
 ---
 # <a name="what-is-routing-preference-preview"></a>Yönlendirme tercihi nedir (Önizleme)?
 
@@ -88,7 +88,7 @@ Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fi
 
 Yönlendirme tercihi desteği, internet çıkış-Kuzey Avrupa, Batı Avrupa, Fransa Güney, UK Güney, Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Orta Batı ABD, Güneydoğu Asya, Almanya Orta Batı, İsviçre Batı, Japonya Doğu ve Japonya Batı için genel bir IP kullanan sanal makine ve internet 'e yönelik yük dengeleyici gibi hizmetler için aşağıdaki bölgelerde kullanılabilir.
 
-Depolama hesabı için yönlendirme tercihi desteği, aşağıdaki Azure bölgelerinde bulunur-Fransa Güney, Orta Kuzey ABD, Orta Batı ABD, Japonya Doğu, Japonya Batı, Almanya Orta Batı ve İsviçre Batı.
+Depolama hesabı için yönlendirme tercihi desteği, aşağıdaki Azure bölgelerinde bulunur-Orta Kuzey ABD, Orta Batı ABD, Orta Güney ABD, Doğu ABD, Batı ABD, Kuzey Avrupa, Fransa Güney, Almanya Orta Batı, İsviçre Batı, Güney Doğu Asya, Japonya Doğu ve Japonya Batı.
 ## <a name="limitations"></a>Sınırlamalar
 
 * Yönlendirme tercihi yalnızca standart genel IP adresi SKU 'SU ile uyumludur. Temel genel IP adresi SKU 'SU desteklenmiyor.

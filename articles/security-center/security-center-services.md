@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 4d048bb348b8093db7d3bf92ef0fc93aead35055
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762301"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187022"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -41,7 +41,6 @@ Aşağıdaki tablolarda, sanal makineler ve sunucular için kullanılabilen Azur
 |[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Standart|
 |[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Standart|
 |[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Standart|
-|Uyarlamalı ağ denetimleri|✔|✔|-|Standart|
 |[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Standart|
 |Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|-|-|-|Standart|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Ücretsiz|

@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734801"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220278"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server için Kullanıcı profili eşitlemesini desteklemek üzere Azure Active Directory Domain Services yapılandırma
 
@@ -41,18 +42,18 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 
 ## <a name="service-accounts-overview"></a>Hizmet hesaplarına genel bakış
 
-Yönetilen bir etki alanında, *Kullanıcılar* kuruluş BIRIMININ (OU) bir parçası olarak **AAD DC hizmet hesapları** adlı bir güvenlik grubu bulunur. Bu güvenlik grubunun üyelerine aşağıdaki ayrıcalıklar atanır:
+Yönetilen bir etki alanında, *Kullanıcılar* kuruluş BIRIMININ (OU) bir parçası olarak *AAD DC hizmet hesapları* adlı bir güvenlik grubu bulunur. Bu güvenlik grubunun üyelerine aşağıdaki ayrıcalıklar atanır:
 
 - Kök do 'da **Dizin değişikliklerini çoğaltma** ayrıcalığı.
 - *Yapılandırma* adlandırma bağlamında (kapsayıcı) **Dizin değişikliklerini çoğaltma** ayrıcalığı `cn=configuration` .
 
-**AAD DC hizmet hesapları** güvenlik grubu, yerleşik grup **öncesi Windows 2000 ile uyumlu erişim**'in de bir üyesidir.
+*AAD DC hizmet hesapları* güvenlik grubu, yerleşik grup *öncesi Windows 2000 ile uyumlu erişim*'in de bir üyesidir.
 
 Bu güvenlik grubuna eklendiğinde, SharePoint Server Kullanıcı profili eşitleme hizmeti için hizmet hesabına, doğru çalışmak için gerekli ayrıcalıklar verilir.
 
 ## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>SharePoint Server Kullanıcı profili eşitleme desteğini etkinleştir
 
-SharePoint Server hizmet hesabı, değişiklikleri dizine çoğaltmak ve SharePoint Server Kullanıcı profili eşitlemesini doğru şekilde sağlamak için yeterli ayrıcalıklara sahip olmalıdır. Bu ayrıcalıkları sağlamak için SharePoint kullanıcı profili eşitleme için kullanılan hizmet hesabını **AAD DC hizmet hesapları** grubuna ekleyin.
+SharePoint Server hizmet hesabı, değişiklikleri dizine çoğaltmak ve SharePoint Server Kullanıcı profili eşitlemesini doğru şekilde sağlamak için yeterli ayrıcalıklara sahip olmalıdır. Bu ayrıcalıkları sağlamak için SharePoint kullanıcı profili eşitleme için kullanılan hizmet hesabını *AAD DC hizmet hesapları* grubuna ekleyin.
 
 Azure AD DS Yönetim sanal makinenizde aşağıdaki adımları izleyin:
 

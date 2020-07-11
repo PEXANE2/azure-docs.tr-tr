@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d8229864acc80a27994ae3c795213dc2a65d22db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385578"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170131"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect 'i (OıDC) Azure Active Directory B2C ile yapılandırma
 
 Itsme dijital KIMLIĞI uygulaması, kart okuyucular, parolalar, iki öğeli kimlik doğrulama veya birden çok PIN kodu olmadan güvenli bir şekilde oturum açmanıza olanak tanır. Itsme uygulaması doğrulanmış bir kimlikle güçlü müşteri kimlik doğrulaması sağlar. Bu makalede, istemci gizli Kullanıcı akışı ilkesi kullanarak ıtsme OpenID Connect (OıDC) ile Azure AD B2C kimlik doğrulamasını tümleştirmeyi öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -40,7 +40,7 @@ Başlamak için şunlar gerekir:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-|   |   |
+| Adım | Açıklama |
 |------|------|
 |1     | Web sitenizde veya uygulamanızda, Azure AD B2C Kullanıcı akışında uyarlayarak, **itsme düğmesine tıklayarak oturum açın** . Etkileşim akışı, Kullanıcı bu düğmeye tıkladığında başlar.  |
 |2     | Azure AD B2C, ıtsme istemci gizli API 'sine bir yetkilendirme isteği göndererek OpenID Connect akışını başlatır. Uç noktalar hakkındaki bilgileri içeren iyi bilinen/OpenID-Configuration uç noktası kullanılabilir.  |
@@ -82,7 +82,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    |Özellik | Değer |
    |------------ |------- |
-   | Adı | itsme |
+   | Ad | itsme |
    | Meta veri URL 'SI | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>nerede `<environment>` `e2e` (test ortamı) ya da `prd` (üretim)  |
    | ClientID     | **ISTEMCI kimliğiniz**( **iş ortağı kodu** olarak da bilinir)  |
    | İstemci Gizli Anahtarı | **Client_secret** |
@@ -96,7 +96,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Soyadı | family_name |
    |E-posta | e-posta|
 
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="configure-a-user-flow"></a>Kullanıcı akışı yapılandırma
 
@@ -110,7 +110,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 5. **Kimlik sağlayıcıları** bölümünde, **ıtsme**' yi seçin.
 
-6. **Oluştur**'u seçin.
+6. **Oluştur**’u seçin.
 
 7. Kullanıcı akış adını seçerek yeni oluşturulan kullanıcı akışını açın.
 
@@ -119,7 +119,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    * **Erişim & kimliği belirteci yaşam sürelerini (dakika)** **5**' e değiştirin.
    * **Yenileme belirteci kayan pencere ömrünü** **süre sonu yok**olarak değiştirin.
 
-### <a name="register-an-application"></a>Uygulamaları kaydetme
+### <a name="register-an-application"></a>Uygulamayı kaydetme
 
 1. B2C kiracınızda, **Yönet**altında **App registrations**  >  **Yeni kayıt**uygulama kayıtları ' yi seçin.
 
@@ -127,11 +127,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 3. Multi-Factor Authentication 'ın **devre dışı bırakıldığından**emin olun.
 
-4. **Kaydol**’u seçin.
+4. **Kaydet**’i seçin.
 
    a. Sınama amacıyla **kimlik doğrulaması**' nı seçin ve **örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.  
 
-   b. **Kaydet**'i seçin.
+   b. **Kaydet**’i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 

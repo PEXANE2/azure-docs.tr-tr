@@ -1,5 +1,5 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 description: " dosyası"
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -16,7 +16,7 @@ ms.locfileid: "86109685"
 ---
 Açıklamanızı daha ilgi çekici olacak şekilde biçimlendirmek için HTML etiketlerini kullanın. Çoğu etiket, bu tabloda gösterildiği gibi bir açılış ve kapanış bileşeni gerektirir.
 
-|   Bunu yapmak için  |  Kullanım  |  Böyle  |  Bunu almak için   |
+|   Bunu yapmak için  |  Kullanın  |  Böyle  |  Bunu almak için   |
 | --- | --- | --- | --- |
 |   Kalın  |  `<b> & </b>`  |  `<b>`Örnek `</b>` : ücretsiz deneme  |  **Örnek**: ücretsiz deneme   |
 |   İtalik  |  `<i> & </i>`  |  `<i>`İlk satırı seçin `</i>` .  |  *İlk* satırı seçin.   |

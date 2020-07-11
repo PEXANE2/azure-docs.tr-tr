@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ebd4bf0ff91342229edb4295489f0cbd0970699a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745036"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187396"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Azure Otomasyonu 'nda sertifikaları yönetme
 
-Azure Otomasyonu, Azure Resource Manager kaynakları için [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 'ini kullanarak, sertifikaları runbook 'LAR ve DSC yapılandırmalarına göre güvenli bir şekilde depolar. Güvenli sertifika depolama, kimlik doğrulaması için sertifikaları kullanan runbook 'ları ve DSC yapılandırması oluşturmanızı veya bunları Azure ya da üçüncü taraf kaynaklarına eklemenizi sağlar.
+Azure Otomasyonu, Azure Resource Manager kaynakları için [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 'ini kullanarak, sertifikaları runbook 'LAR ve DSC yapılandırmalarına göre güvenli bir şekilde depolar. Güvenli sertifika depolama, kimlik doğrulaması için sertifikaları kullanan runbook 'ları ve DSC yapılandırması oluşturmanızı veya bunları Azure ya da üçüncü taraf kaynaklarına eklemenizi sağlar.
 
 >[!NOTE]
 >Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak şifrelenir ve otomasyon 'da depolanır. Otomasyon, anahtarı sistem tarafından yönetilen Key Vault hizmetinde depolar. Güvenli bir varlık depolamadan önce, otomasyon anahtarı Key Vault ' den yükler ve ardından varlığı şifrelemek için onu kullanır. 
@@ -28,10 +29,10 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon sertifikaları olu�
 
 |Cmdlet |Açıklama|
 | --- | ---|
-|[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Runbook veya DSC yapılandırmasında kullanılacak sertifikayla ilgili bilgileri alır. Sertifikayı yalnızca iç `Get-AutomationCertificate` cmdlet 'ini kullanarak alabilirsiniz.|
-|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Otomasyon 'da yeni bir sertifika oluşturur.|
-|[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Bir sertifikayı otomatikleştirmeden kaldırır.|
-|[Set-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Sertifika dosyasını karşıya yükleme ve bir **. pfx** dosyası için parolayı ayarlama dahil olmak üzere var olan bir sertifikanın özelliklerini ayarlar.|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Runbook veya DSC yapılandırmasında kullanılacak sertifikayla ilgili bilgileri alır. Sertifikayı yalnızca iç `Get-AutomationCertificate` cmdlet 'ini kullanarak alabilirsiniz.|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Otomasyon 'da yeni bir sertifika oluşturur.|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Bir sertifikayı otomatikleştirmeden kaldırır.|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Sertifika dosyasını karşıya yükleme ve bir **. pfx** dosyası için parolayı ayarlama dahil olmak üzere var olan bir sertifikanın özelliklerini ayarlar.|
 
 [Add-Azurecercertificateate](/powershell/module/servicemanagement/azure/add-azurecertificate) cmdlet 'i, belirtilen bulut hizmeti için bir hizmet sertifikası yüklemek için de kullanılabilir.
 
@@ -126,7 +127,7 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -Te
 
 ## <a name="get-a-certificate"></a>Sertifika Al
 
-Bir sertifikayı almak için iç `Get-AutomationCertificate` cmdlet 'ini kullanın. [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 'ini kullanarak sertifika varlığı hakkında bilgi döndürüyor, ancak sertifikanın kendisi değil.
+Bir sertifikayı almak için iç `Get-AutomationCertificate` cmdlet 'ini kullanın. [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) cmdlet 'ini kullanarak sertifika varlığı hakkında bilgi döndürüyor, ancak sertifikanın kendisi değil.
 
 ### <a name="textual-runbook-example"></a>Metinsel runbook örneği
 

@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
-ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d14e030898db364d6621933d0032fa9ce0cab676
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122193"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185033"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yük devretme ve düzeltme eki uygulama
 
@@ -22,32 +23,32 @@ Redin için Azure önbelleği için yük devretmeye genel bakış ile başlayal�
 
 ### <a name="a-quick-summary-of-cache-architecture"></a>Önbellek mimarisinin hızlı bir özeti
 
-Önbellek, ayrı, özel IP adreslerine sahip birden çok sanal makineden oluşturulur. Düğüm olarak da bilinen her sanal makine, tek bir sanal IP adresine sahip paylaşılan yük dengeleyiciye bağlanır. Her düğüm Redsıs sunucu sürecini çalıştırır ve ana bilgisayar adı ve Redsıs bağlantı noktaları aracılığıyla erişilebilir. Her düğüm, bir ana veya bir çoğaltma düğümü olarak kabul edilir. Bir istemci uygulaması bir önbelleğe bağlanırsa, trafiği bu yük dengeleyiciden geçer ve otomatik olarak ana düğüme yönlendirilir.
+Önbellek, ayrı, özel IP adreslerine sahip birden çok sanal makineden oluşturulur. Düğüm olarak da bilinen her sanal makine, tek bir sanal IP adresine sahip paylaşılan yük dengeleyiciye bağlanır. Her düğüm Redsıs sunucu sürecini çalıştırır ve ana bilgisayar adı ve Redsıs bağlantı noktaları aracılığıyla erişilebilir. Her düğüm, birincil ya da çoğaltma düğümü olarak değerlendirilir. Bir istemci uygulaması bir önbelleğe bağlanırsa, trafiği bu yük dengeleyiciden geçer ve otomatik olarak birincil düğüme yönlendirilir.
 
-Temel bir önbellekte tek düğüm her zaman bir yöneticisidir. Standart veya Premium önbelleğinde iki düğüm vardır: biri ana öğe olarak seçilir ve diğeri çoğaltmadır. Standart ve Premium önbellekler birden çok düğüme sahip olduğundan, diğeri istekleri işlemeye devam ederken bir düğüm kullanılamaz olabilir. Kümelenmiş önbellekler, her biri ayrı ana ve çoğaltma düğümlerine sahip birçok parça oluşur. Bir parça, diğerleri kullanılabilir kaldığı sırada kalmış olabilir.
+Temel bir önbellekte tek düğüm her zaman birincil olur. Standart veya Premium önbelleğinde iki düğüm vardır: biri birincil olarak seçilir ve diğeri çoğaltmadır. Standart ve Premium önbellekler birden çok düğüme sahip olduğundan, diğeri istekleri işlemeye devam ederken bir düğüm kullanılamaz olabilir. Kümelenmiş önbellekler, her biri ayrı birincil ve çoğaltma düğümlerine sahip birçok parça oluşur. Bir parça, diğerleri kullanılabilir kaldığı sırada kalmış olabilir.
 
 > [!NOTE]
 > Temel bir önbellekte birden fazla düğüm yoktur ve kullanılabilirlik için hizmet düzeyi sözleşmesi (SLA) sunmaz. Temel önbellekler yalnızca geliştirme ve test amaçları için önerilir. Kullanılabilirliği artırmak için çok düğümlü bir dağıtım için standart veya Premium önbellek kullanın.
 
 ### <a name="explanation-of-a-failover"></a>Yük devretme açıklaması
 
-Yük devretme, bir çoğaltma düğümü kendisini ana düğüm olacak şekilde yükseltir ve eski ana düğüm varolan bağlantıları kapattığında oluşur. Ana düğüm geri alındıktan sonra, rollerdeki değişikliği fark eder ve bir çoğaltma haline gelmesi için kendisini indirger. Ardından yeni ana ağa bağlanır ve verileri eşitler. Yük devretme planlanmış veya planlanmamış olabilir.
+Bir yük devretme işlemi, bir çoğaltma düğümü kendisini birincil düğüm olacak şekilde yükseltir ve eski birincil düğüm varolan bağlantıları kapattığında oluşur. Birincil düğüm geri alındıktan sonra, rollerdeki değişikliği fark eder ve bir çoğaltma haline gelmesi için kendisini indirger. Daha sonra yeni birincil ağa bağlanır ve verileri eşitler. Yük devretme planlanmış veya planlanmamış olabilir.
 
 Redis düzeltme eki uygulama, IŞLETIM sistemi yükseltmeleri ve ölçekleme ve yeniden başlatma gibi yönetim işlemleri gibi sistem güncelleştirmeleri sırasında *planlanmış bir yük devretme* gerçekleşir. Düğümler güncelleştirme için öncelikli bir bildirim aldığından, bu roller, kolayca takas rolleri ve değişikliğin yük dengeleyiciyi hızlıca güncelleştirebilirler. Planlanmış bir yük devretme genellikle 1 saniyeden az bir sürede tamamlanır.
 
-Donanım hatası, ağ arızası veya ana düğüme yönelik diğer beklenmedik kesintiler nedeniyle *planlanmamış yük devretme* gerçekleşebilir. Çoğaltma düğümü kendisini ana öğe ile yükseltir, ancak işlem daha uzun sürer. Bir çoğaltma düğümünün, yük devretme işlemini başlatabilmesi için önce ana düğümünün mevcut olmadığından emin olması gerekir. Gereksiz bir yük devretmenin önüne geçmek için, çoğaltma düğümü bu planlanmamış hatanın geçici ya da yerel olmadığından emin olmalıdır. Bu algılama gecikmesi, planlanmamış bir yük devretmenin genellikle 10 ile 15 saniye içinde bittiği anlamına gelir.
+Donanım hatası, ağ arızası veya birincil düğüme yönelik diğer beklenmedik kesintiler nedeniyle *planlanmamış yük devretme* gerçekleşebilir. Çoğaltma düğümü kendisini birincili yükseltir, ancak işlem daha uzun sürer. Bir çoğaltma düğümünün, yük devretme işlemini başlatabilmesi için öncelikle birincil düğümünün mevcut olmadığından emin olması gerekir. Gereksiz bir yük devretmenin önüne geçmek için, çoğaltma düğümü bu planlanmamış hatanın geçici ya da yerel olmadığından emin olmalıdır. Bu algılama gecikmesi, planlanmamış bir yük devretmenin genellikle 10 ile 15 saniye içinde bittiği anlamına gelir.
 
 ## <a name="how-does-patching-occur"></a>Düzeltme eki uygulama nasıl yapılır?
 
 Redsıs hizmeti için Azure önbelleği, en son platform özellikleri ve düzeltmeleriyle önbelleğinizi düzenli olarak güncelleştirir. Bir önbelleğe yama yapmak için hizmet aşağıdaki adımları izler:
 
 1. Yönetim hizmeti düzeltme için bir düğüm seçer.
-1. Seçili düğüm bir ana düğümse, karşılık gelen çoğaltma düğümü birlikte kendisini yükseltir. Bu promosyon planlı yük devretme olarak kabul edilir.
+1. Seçili düğüm birincil düğümse, karşılık gelen çoğaltma düğümü birlikte kendisini yükseltir. Bu promosyon planlı yük devretme olarak kabul edilir.
 1. Seçili düğüm, yeni değişiklikleri yapmak için yeniden başlatılır ve bir çoğaltma düğümü olarak geri gönderilir.
-1. Çoğaltma düğümü ana düğüme bağlanır ve verileri eşitler.
+1. Çoğaltma düğümü birincil düğüme bağlanır ve verileri eşitler.
 1. Veri eşitleme işlemi tamamlandığında, düzeltme eki uygulama, kalan düğümler için yinelenir.
 
-Düzeltme eki uygulama planlı bir yük devretme olduğundan, çoğaltma düğümü bir ana olacak şekilde kendisini hızlı bir şekilde yükseltir ve istekleri ve yeni bağlantıları başlatır. Temel önbellekler bir çoğaltma düğümüne sahip değildir ve güncelleştirme tamamlanana kadar kullanılamaz. Kümelenmiş bir önbelleğin her parçası ayrı düzeltme eki uygulanmış olur ve başka bir parça bağlantılarını kapatmaz.
+Düzeltme eki uygulama planlı bir yük devretme olduğundan, çoğaltma düğümü birincil olacak ve hizmet isteklerine ve yeni bağlantılarla çalışmaya başlayacak şekilde kendisini hızla yükseltir. Temel önbellekler bir çoğaltma düğümüne sahip değildir ve güncelleştirme tamamlanana kadar kullanılamaz. Kümelenmiş bir önbelleğin her parçası ayrı düzeltme eki uygulanmış olur ve başka bir parça bağlantılarını kapatmaz.
 
 > [!IMPORTANT]
 > Düğümler, veri kaybını engellemek için tek seferde düzeltme eki uygulanmış. Temel önbelleklerin veri kaybı olur. Kümelenmiş önbellekler tek seferde bir parça düzeltme hallenir.

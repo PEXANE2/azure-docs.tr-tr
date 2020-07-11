@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a728eff7addc7f835f82e795457e722fd60d2e30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 253cd8174ec523f6c8a6aae2b94f7ed367701fec
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564594"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146779"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -48,10 +48,10 @@ Dizin oluşturucular Azure 'da veri depolarında gezinme.
 
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage 2.](search-howto-index-azure-data-lake-storage.md) (önizlemede)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Tablo depolama](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL veritabanı ve SQL yönetilen örneği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Sanal Makinelerde SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Azure Sanal Makineler'de SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Yönetilen Örnek](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Temel yapılandırma adımları
@@ -77,8 +77,10 @@ Dizin Oluşturucu tanımı, veri alımı ile ilgili tüm öğeleri birlikte geti
 
 Dizin oluşturma zamanlaması yaygın olsa da, [Çalıştır komutu](https://docs.microsoft.com/rest/api/searchservice/run-indexer)kullanılarak bir Dizin Oluşturucu da isteğe bağlı olarak çağrılabilir:
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 > [!NOTE]
 > Run API 'SI başarıyla döndüğünde, Dizin Oluşturucu çağrısı zamanlandı, ancak gerçek işlem zaman uyumsuz olarak gerçekleşir. 
@@ -91,37 +93,40 @@ Dizin Oluşturucu durumunu portalda veya Dizin Oluşturucu durumunu Al API 'SI a
 
 Bir dizin oluşturucunun durum ve yürütme geçmişini [Get Indexer durum komutuyla](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)alabilirsiniz:
 
-
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 Yanıt genel Dizin Oluşturucu durumunu, son (veya sürmekte olan) Dizin Oluşturucu çağrısını ve son Dizin Oluşturucu etkinleştirmeleri geçmişini içerir.
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 Yürütme geçmişi, geriye doğru kronolojik düzende sıralanan en son tamamlanan yürütme sayısı olan 50 ' i içerir (Bu nedenle, en son yürütme yanıtta ilk kez gelir).
 
@@ -131,6 +136,6 @@ Artık temel fikri anladığınıza göre, atmanız gereken bir sonraki adım he
 * [Azure SQL veritabanı, SQL yönetilen örneği veya bir Azure sanal makinesinde SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Tablo depolama](search-howto-indexing-azure-tables.md)
 * [Azure Bilişsel Arama blob Dizin oluşturucuyu kullanarak CSV bloblarını dizine ekleme](search-howto-index-csv-blobs.md)
 * [JSON bloblarını Azure Bilişsel Arama blob Indexer ile dizinleme](search-howto-index-json-blobs.md)

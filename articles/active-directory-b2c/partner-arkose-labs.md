@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4e5dfe26af7e1d92c20cf15e3519563e600b256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385714"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170233"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Arkoo Labs yapılandırma öğreticisi
 
 Bu öğreticide, Arkoo Labs ile Azure AD B2C kimlik doğrulamasını tümleştirmeyi öğrenin. Arkoo Labs, kuruluşlara bot saldırılarına, hesap hileli saldırıları ve sahte hesap açılışlarına karşı yardımcı olur.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -35,7 +35,7 @@ Aşağıdaki diyagramda, Arkoo Labs Azure AD B2C ile nasıl tümleşildiği aç�
 
 ![Arkoi Labs mimari diyagramı](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-|   |   |
+| Adım  | Açıklama |
 |---|---|
 |1     | Kullanıcı önceden oluşturulmuş bir hesapla oturum açar. Kullanıcı Gönder ' i seçtiğinde bir Arkoo Labs zorlama sınaması görüntülenir. Kullanıcı sınamayı tamamladıktan sonra, bir belirteç oluşturmak için Arkoo Labs 'e gönderilir.        |
 |2     |  Arkoo Labs, belirteci Azure AD B2C 'e geri gönderir.       |
@@ -76,7 +76,7 @@ Bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
 9. Depolama hesabı oluşturulduktan sonra  **Kaynağa Git**' i seçin.
 
-#### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+#### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 1. Depolama hesabının genel bakış sayfasında,  **Bloblar**' ı seçin.
 
@@ -100,7 +100,7 @@ Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir UR
 
    ![Arkoo Labs kaydolma ve oturum açma](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 ### <a name="part-2--set-up-a-back-end-server"></a>Bölüm 2 – bir arka uç sunucusu ayarlama
 

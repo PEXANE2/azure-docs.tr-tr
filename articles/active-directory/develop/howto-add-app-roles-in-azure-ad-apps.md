@@ -3,7 +3,7 @@ title: Uygulama rolleri ekleme ve bir belirteçten edinme | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory kayıtlı bir uygulamaya uygulama rolleri ekleme, bu rollere Kullanıcı ve Grup atama ve bunları `roles` belirteçteki talepte alma hakkında bilgi edinin.
 services: active-directory
-author: kkrishna
+author: kalyankrishna1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: aedf5d710b82185cb634fcd92e6981a2c358ad52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477898"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187039"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -34,7 +34,7 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin.
 1. **Sık Kullanılanlar** veya **tüm dizinler** listesinde, uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
 1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
@@ -122,7 +122,7 @@ Uygulamanıza uygulama rolleri ekledikten sonra, bu rollere kullanıcılar ve gr
 ## <a name="more-information"></a>Daha fazla bilgi
 
 - [Uygulama rollerini kullanarak yetkilendirme ekleme ASP.NET Core Web uygulaması için rol talepleri &](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Uygulamalarınızda güvenlik gruplarını ve uygulama rollerini kullanma (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [Microsoft Identity platform (video) ile uygulamalarınızda yetkilendirme uygulama](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory, artık grup talepleri ve uygulama rolleriyle birlikte](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD erişim belirteçleri](access-tokens.md)

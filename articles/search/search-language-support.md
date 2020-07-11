@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54def7f03e28acb201d613ab5a13d9077cff121b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560844"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146766"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Azure Bilişsel Arama birden çok dil için dizin oluşturma
 
@@ -52,6 +52,7 @@ Yukarıdaki gibi bir sorguya benzer bir sorgu yapıştırmak için [**Arama Gezg
 
 Bazen bir sorguyu veren aracının dili, bu durumda sorgunun tüm alanlara aynı anda verilebileceği anlamına gelir. Gerekirse, belirli bir dilin sonuçları için tercih, [Puanlama profilleri](index-add-scoring-profiles.md)kullanılarak tanımlanabilir. Aşağıdaki örnekte, Ingilizce 'deki açıklamada bulunan eşleşmeler, Lehçe ve Fransızca 'daki eşleştirmelere göre daha yüksek puanlanacaktır:
 
+```http
     "scoringProfiles": [
       {
         "name": "englishFirst",
@@ -60,6 +61,7 @@ Bazen bir sorguyu veren aracının dili, bu durumda sorgunun tüm alanlara aynı
         }
       }
     ]
+```
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 

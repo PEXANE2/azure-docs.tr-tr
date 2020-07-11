@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684856"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187243"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Değişiklik İzleme ve Stok özelliği sorunlarını giderme
 
@@ -99,11 +100,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve aracıyı yeniden yüklemeniz gerekir. Yükleme ve yapılandırma hakkında bilgi için bkz. [Log Analytics aracısında günlük verileri toplama](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve aracıyı yeniden yüklemeniz gerekir. Yükleme ve yapılandırma hakkında bilgi için bkz. [Log Analytics aracısında günlük verileri toplama](../../azure-monitor/platform/log-analytics-agent.md).
 
-Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırmasını doğrulayın. Bkz. [Azure izleyici 'de izleme çözümlerini hedefleme](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
+Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırmasını doğrulayın. Bkz. [Azure izleyici 'de izleme çözümlerini hedefleme](../../azure-monitor/insights/solution-targeting.md).
 
-Bu sorunu giderme hakkında daha fazla bilgi için bkz. [sorun: herhangi bir Linux verisi görmüyorsunuz](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data).
+Bu sorunu giderme hakkında daha fazla bilgi için bkz. [sorun: herhangi bir Linux verisi görmüyorsunuz](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Linux için Log Analytics Aracısı doğru yapılandırılmamış
 

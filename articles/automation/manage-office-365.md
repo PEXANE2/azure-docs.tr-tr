@@ -4,24 +4,25 @@ description: Bu makalede, Azure Otomasyonu 'nu kullanarak Office 365 abonelik hi
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831185"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185322"
 ---
 # <a name="manage-office-365-services"></a>Office 365 hizmetlerini yönetme
 
-Microsoft Word ve Microsoft Outlook gibi ürünler için Office 365 abonelik hizmetlerinin yönetimi için Azure Otomasyonu ' nu kullanabilirsiniz. Office 365 etkileşimleri [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)tarafından etkinleştirilir. Azure ['da kimlik doğrulaması yapmak için bkz. Azure Otomasyonu 'Nda Azure ad kullanma](automation-use-azure-ad.md).
+Microsoft Word ve Microsoft Outlook gibi ürünler için Office 365 abonelik hizmetlerinin yönetimi için Azure Otomasyonu ' nu kullanabilirsiniz. Office 365 etkileşimleri [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md)tarafından etkinleştirilir. Azure ['da kimlik doğrulaması yapmak için bkz. Azure Otomasyonu 'Nda Azure ad kullanma](automation-use-azure-ad.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Otomasyonu 'nda Office 365 abonelik hizmetlerini yönetmek için aşağıdakiler gerekir.
 
-* Azure aboneliği. Bkz. [abonelik karar Kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/).
-* Kullanıcı hesabı kimlik bilgilerini ve Runbook 'ları tutmak için Azure 'da bir Otomasyon nesnesi. Bkz. [Azure Otomasyonu 'na giriş](https://docs.microsoft.com/azure/automation/automation-intro).
+* Azure aboneliği. Bkz. [abonelik karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
+* Kullanıcı hesabı kimlik bilgilerini ve Runbook 'ları tutmak için Azure 'da bir Otomasyon nesnesi. Bkz. [Azure Otomasyonu 'na giriş](./automation-intro.md).
 * Azure AD. Azure ['da kimlik doğrulaması yapmak için bkz. Azure Otomasyonu 'Nda Azure ad kullanma](automation-use-azure-ad.md).
-* Bir hesabı olan Office 365 kiracısı. Bkz. [Office 365 kiracınızı ayarlama](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant).
+* Bir hesabı olan Office 365 kiracısı. Bkz. [Office 365 kiracınızı ayarlama](/sharepoint/dev/spfx/set-up-your-developer-tenant).
 
 ## <a name="install-the-msonline-and-msonlineext-modules"></a>MSOnline ve MSOnlineExt modüllerini yükler
 
@@ -51,7 +52,7 @@ Komut dosyanızı çalıştırma iznine sahip olan Office 365 Yönetici kullanı
 
 ## <a name="create-an-office-365-service-account"></a>Office 365 hizmet hesabı oluşturma
 
-Office 365 abonelik hizmetlerini çalıştırmak için, istediğiniz şeyi yapmanız gereken izinlere sahip bir Office 365 hizmet hesabına sahip olmanız gerekir. Tek bir genel yönetici hesabı, hizmet başına bir hesap veya yürütülecek bir işlev ya da komut dosyası kullanabilirsiniz. Herhangi bir durumda, hizmet hesabı için karmaşık ve güvenli bir parola gerekir. Bkz. [iş Için Office 365 'Yi ayarlama](https://docs.microsoft.com/microsoft-365/admin/setup/setup?view=o365-worldwide). 
+Office 365 abonelik hizmetlerini çalıştırmak için, istediğiniz şeyi yapmanız gereken izinlere sahip bir Office 365 hizmet hesabına sahip olmanız gerekir. Tek bir genel yönetici hesabı, hizmet başına bir hesap veya yürütülecek bir işlev ya da komut dosyası kullanabilirsiniz. Herhangi bir durumda, hizmet hesabı için karmaşık ve güvenli bir parola gerekir. Bkz. [iş Için Office 365 'Yi ayarlama](/microsoft-365/admin/setup/setup?view=o365-worldwide). 
 
 ## <a name="connect-to-the-azure-ad-online-service"></a>Azure AD çevrimiçi hizmetine bağlanma
 
@@ -60,7 +61,7 @@ Office 365 abonelik hizmetlerini çalıştırmak için, istediğiniz şeyi yapma
 
 Office 365 aboneliğinden Azure AD 'ye bağlanmak için MSOnline modülünü kullanabilirsiniz. Bağlantı, Office 365 Kullanıcı adı ve parolası kullanır veya Multi-Factor Authentication (MFA) kullanır. Azure portal veya bir Windows PowerShell komut istemi (yükseltilmesi gerekmez) kullanarak bağlanabilirsiniz.
 
-Bir PowerShell örneği aşağıda gösterilmiştir. [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) cmdlet 'i kimlik bilgilerini ister ve `Msolcred` değişkende depolar. [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet 'i Azure Directory Online hizmetine bağlanmak için kimlik bilgilerini kullanır. Belirli bir Azure ortamına bağlanmak istiyorsanız `AzureEnvironment` parametresini kullanın.
+Bir PowerShell örneği aşağıda gösterilmiştir. [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) cmdlet 'i kimlik bilgilerini ister ve `Msolcred` değişkende depolar. [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet 'i Azure Directory Online hizmetine bağlanmak için kimlik bilgilerini kullanır. Belirli bir Azure ortamına bağlanmak istiyorsanız `AzureEnvironment` parametresini kullanın.
 
 ```powershell
 $Msolcred = Get-Credential
@@ -70,7 +71,7 @@ Connect-MsolService -Credential $MsolCred -AzureEnvironment "AzureCloud"
 Herhangi bir hata almazsanız, başarıyla bağlanırsınız. Hızlı bir test, örneğin, bir Office 365 cmdlet 'ini çalıştırmak `Get-MsolUser` ve sonuçları görmek içindir. Hata alırsanız, yaygın bir sorunun hatalı parola olduğunu unutmayın.
 
 >[!NOTE]
->Ayrıca, Office 365 aboneliğinden Azure AD 'ye bağlanmak için Azurere modülünü veya az modülünü de kullanabilirsiniz. Ana bağlantı cmdlet 'i [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)' dir. Bu cmdlet, `AzureEnvironmentName` belirli Office 365 ortamları için parametreyi destekler.
+>Ayrıca, Office 365 aboneliğinden Azure AD 'ye bağlanmak için Azurere modülünü veya az modülünü de kullanabilirsiniz. Ana bağlantı cmdlet 'i [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0)' dir. Bu cmdlet, `AzureEnvironmentName` belirli Office 365 ortamları için parametreyi destekler.
 
 ## <a name="create-a-powershell-runbook-from-an-existing-script"></a>Mevcut bir betikten PowerShell runbook 'u oluşturma
 
@@ -95,22 +96,22 @@ $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 
 Komut dosyanızı bir Azure Otomasyonu runbook 'unda kullanabilirsiniz. Örneğin, PowerShell runbook türünü kullanacağız.
 
-1. Yeni bir PowerShell runbook 'u oluşturun. [Azure Otomasyonu runbook 'U oluşturma](https://docs.microsoft.com/azure/automation/automation-quickstart-create-runbook)bölümüne bakın.
+1. Yeni bir PowerShell runbook 'u oluşturun. [Azure Otomasyonu runbook 'U oluşturma](./automation-quickstart-create-runbook.md)bölümüne bakın.
 2. Otomasyon hesabınızdan, **Işlem Otomasyonu**altında **runbook 'lar** ' ı seçin.
 3. Yeni runbook 'u seçin ve **Düzenle**' ye tıklayın.
 4. Betiğinizi kopyalayıp runbook için metin düzenleyicisine yapıştırın.
 5. **Varlıklar**' ı seçin, ardından **kimlik bilgileri** ' ni genişletin ve Office 365 kimlik bilgisinin orada olduğunu doğrulayın.
 6. **Kaydet**’e tıklayın.
-7. **Test bölmesi**' ni seçin ve ardından runbook 'unuzu sınamaya başlamak için **Başlat** ' a tıklayın. Bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](https://docs.microsoft.com/azure/automation/manage-runbooks).
+7. **Test bölmesi**' ni seçin ve ardından runbook 'unuzu sınamaya başlamak için **Başlat** ' a tıklayın. Bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](./manage-runbooks.md).
 8. Sınama tamamlandığında, test bölmesinden çıkın.
 
 ## <a name="publish-and-schedule-the-runbook"></a>Runbook 'u yayımlama ve zamanlama
 
-Runbook 'unuzu yayımlamak ve zamanlamak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](https://docs.microsoft.com/azure/automation/manage-runbooks).
+Runbook 'unuzu yayımlamak ve zamanlamak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](./manage-runbooks.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kimlik bilgileri kullanımı hakkında ayrıntılı bilgi için bkz. [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md).
 * Modüller hakkında daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
 * Bir runbook 'u başlatmanız gerekiyorsa bkz. [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md).
-* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](/powershell/scripting/overview).

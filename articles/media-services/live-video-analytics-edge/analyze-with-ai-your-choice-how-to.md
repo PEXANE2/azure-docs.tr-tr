@@ -3,11 +3,12 @@ title: Seçtiğiniz AI ile canlı videoyu çözümleyin-Azure
 description: Bu makalede, seçtiğiniz bir bilgisayar görüntü modeli kullanarak canlı videoyu çözümlemek için IoT Edge üzerinde canlı video analiziyle tümleştirilebilen bir IoT Edge modülü oluşturmayı öğreneceksiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1ea3ebd8c7de4c691d7a982dbc08e9d08d9e38
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261264"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182874"
 ---
 # <a name="analyze-live-video-with-ai-of-your-choice"></a>Seçtiğiniz yapay zeka ile canlı video analiz etme
 
@@ -45,7 +46,7 @@ HTTP sözleşmesi aşağıdaki gibi tanımlanır:
 
 Canlı video analizi modülünden modülize gönderilen istekler aşağıdaki gibi olacaktır:
 
-|||
+| Anahtar | Değer |
 |---|---|
 |POST| `https://hostname/optional-path?optional-query`|
 |Kabul Et|Uygulama/JSON,*/*|
@@ -71,7 +72,7 @@ Content-Length: 519222
 
 Modülünüzün canlı video analizi modülüne olan yanıtları şu şekilde olmalıdır
 
-|||
+| Anahtar | Değer |
 |---|---|
 |Durum Kodları|200 Tamam-çıkarım sonuçları bulundu<br/>204 Içerik yok-AI tarafından içerik bulunamadı<br/>400 Hatalı Istek-beklenmiyordu<br/>500 iç sunucu hatası-beklenmiyordu<br/>503 sunucu meşgul-"yeniden deneme" başlığına göre veya durum üst bilgisinde ön ayarlı olmayan varsayılan bir süre temelinde, AMS yeniden kapatılacak.|
 |İçerik Türü|uygulama/json|
@@ -264,7 +265,7 @@ Aşağıdaki örnekte, tüm desteklenen çıkarım türlerine sahip tek bir olay
  
 ## <a name="sample-http-extension-modules"></a>Örnek HTTP uzantı modülleri
 
-[Canlı video analizi GitHub](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)deposunda bırkaç örnek http uzantı modülü bulunabilir. Bu [video analizi örneklerinden](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) biri, nesne algılaması için bir IoT Edge modülü oluşturmak üzere [Yolov3](https://pjreddie.com/darknet/yolo/) [onnx](http://onnx.ai/) modelinin nasıl kullanılacağını gösterir. Seçtiğiniz bir AI modeliyle kendi modülünüzü oluşturmak için aynı yaklaşımı kullanabilirsiniz.
+[Canlı video analizi GitHub](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)deposunda bırkaç örnek http uzantı modülü bulunabilir. Bu [video analizi örneklerinden](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) biri, nesne algılaması için bir IoT Edge modülü oluşturmak üzere [YOLOv3](https://pjreddie.com/darknet/yolo/) [onnx](http://onnx.ai/) modelinin nasıl kullanılacağını gösterir. Başka bir [video analizi örneği](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx-tiny) , YOLOV3 onnx modelinin hafif bir sürümü olan küçük YOLOv3 nasıl kullanacağınızı gösterir. Seçtiğiniz bir AI modeliyle kendi modülünüzü oluşturmak için aynı yaklaşımı kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

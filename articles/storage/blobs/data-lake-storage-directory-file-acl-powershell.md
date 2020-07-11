@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142543"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
@@ -22,7 +22,7 @@ Bu makalede, PowerShell kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmi�
 
 [Gen1 to Gen2 Mapping](#gen1-gen2-map)  |  [Geri bildirimde](https://github.com/Azure/azure-powershell/issues) bulunun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -81,11 +81,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
-Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. Cmdlet 'ini kullanarak bir tane oluşturabilirsiniz `New-AzStorageContainer` . 
+Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. Cmdlet 'ini kullanarak bir tane oluşturabilirsiniz `New-AzStorageContainer` . 
 
-Bu örnek adlı bir dosya sistemi oluşturur `my-file-system` .
+Bu örnek adlı bir kapsayıcı oluşturur `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 Cmdlet 'ini kullanarak bir dizin başvurusu oluşturun `New-AzDataLakeGen2Item` . 
 
-Bu örnek, bir dosya sistemine adlı bir dizin ekler `my-directory` .
+Bu örnek, bir kapsayıcıya adlı bir dizin ekler `my-directory` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-Bir dosya sisteminin içeriğini listelemek için `-Path` komutundan parametreyi atlayın.
+Bir kapsayıcının içeriğini listelemek için `-Path` komuttan parametreyi atlayın.
 
 ## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 
@@ -270,7 +270,7 @@ Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncel
 
 Cmdlet 'ini kullanarak bir dizin veya dosyanın ACL 'sini alın `Get-AzDataLakeGen2Item` .
 
-Bu örnek, bir **dosya sisteminin** kök dizininin ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
+Bu örnek, bir **kapsayıcının** kök dizininin ACL 'sini alır ve ardından ACL 'yi konsola yazdırır.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ Bu örnekte, sahip olan kullanıcının okuma, yazma ve yürütme izinleri vard�
 
 `set-AzDataLakeGen2ItemAclObject`Sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için BIR ACL oluşturmak üzere cmdlet 'ini kullanın. Ardından, ACL 'yi `Update-AzDataLakeGen2Item` yürütmek için cmdlet 'ini kullanın.
 
-Bu örnek, bir **dosya sisteminin** kök dizinindeki ACL 'yi, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için ayarlar ve ardından ACL 'yi konsola yazdırır.
+Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir **kapsayıcının** kök dizinindeki ACL 'yi ayarlar ve ardından ACL 'yi konsola yazdırır.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -349,9 +349,9 @@ Aşağıdaki görüntüde, bir dosyanın ACL 'sini ayarlamadıktan sonra çıkı
 Bu örnekte, sahip olan Kullanıcı ve sahip olan Grup yalnızca okuma ve yazma izinlerine sahiptir. Diğer tüm kullanıcılar yazma ve yürütme izinlerine sahiptir. Erişim denetim listeleri hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. Access Control](data-lake-storage-access-control.md).
 
 
-### <a name="set-acls-on-all-items-in-a-file-system"></a>Bir dosya sistemindeki tüm öğelerde ACL 'Leri ayarlama
+### <a name="set-acls-on-all-items-in-a-container"></a>Bir kapsayıcıdaki tüm öğelerde ACL 'Leri ayarlama
 
-`Get-AzDataLakeGen2Item` `-Recurse` `Update-AzDataLakeGen2Item` Bir dosya sistemindeki DIZINLERIN ve dosyaların ACL 'sini ayarlamak için ve parametresini yinelemeli olarak cmdlet ile birlikte kullanabilirsiniz. 
+`Get-AzDataLakeGen2Item` `-Recurse` `Update-AzDataLakeGen2Item` Bir kapsayıcıdaki dizinler ve dosyalar için ACL 'yi ayarlamak üzere, ve parametresini yinelemeli olarak cmdlet ile birlikte kullanabilirsiniz. 
 
 ```powershell
 $filesystemName = "my-file-system"

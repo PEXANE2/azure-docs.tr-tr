@@ -6,11 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 1bab503004876a2680286204de28631ce26b9069
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87504625c298c4fb858ff90430d707081e87cd5a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197118"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186580"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Chocolatey ile sürekli dağıtım ayarlama
 
@@ -113,7 +114,7 @@ Ayrıca, daha sonra yükseltmek istemediğiniz müddetçe, kaynak başına yaln�
 
 6. ZIP dosyasını, bir Azure depolama hesabındaki BLOB depolama gibi erişilebilir bir HTTP konumuna koyun.
 
-7. Şu komutu çalıştırın.
+7. Aşağıdaki komutu çalıştırın.
 
     ```azurepowershell-interactive
     New-AzAutomationModule `
@@ -212,6 +213,5 @@ Bu noktadan itibaren, güncelleştirmeyi çekmek ve yüklemek için bu yapıland
 - Genel bakış için bkz. [Azure Otomasyonu durum yapılandırmasına genel bakış](automation-dsc-overview.md).
 - Özelliği kullanmaya başlamak için bkz. [Azure Automation durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md)başlama.
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](automation-dsc-compile.md).
-- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).

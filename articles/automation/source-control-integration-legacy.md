@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828942"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187345"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma-eski
 
@@ -55,7 +56,7 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 5. **Tamam**' a tıkladığınızda, kaynak denetimi tümleştirmesi artık Otomasyon hesabınız için yapılandırılmıştır ve GitHub bilgileriniz ile güncelleştirilmeleri gerekir. Artık tüm kaynak denetimi eşitleme işi geçmişinizi görüntülemek için bu bölüme tıklayabilirsiniz.  
 
     ![Geçerli yapılandırılmış kaynak denetimi yapılandırması için değerler](media/source-control-integration-legacy/automation-RepoValues.png)
-6. Kaynak denetimini ayarladıktan sonra, Otomasyon hesabınızda Iki [değişken varlık](automation-variables.md) oluşturulur. Ayrıca, bir yetkili uygulama GitHub hesabınıza eklenir.
+6. Kaynak denetimini ayarladıktan sonra, Otomasyon hesabınızda Iki [değişken varlık](./shared-resources/variables.md) oluşturulur. Ayrıca, bir yetkili uygulama GitHub hesabınıza eklenir.
 
    * **Microsoft. Azure. Automation. SourceControl. Connection** değişkeni, aşağıda gösterildiği gibi bağlantı dizesinin değerlerini içerir.  
 
@@ -83,7 +84,7 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
 Runbook denetimi, Azure Otomasyonu 'ndaki bir runbook 'ta yaptığınız değişiklikleri kaynak denetimi deponuza göndermenize olanak tanır. Aşağıda runbook 'u iade etme adımları verilmiştir:
 
-1. Otomasyon hesabınızdan [Yeni bir metinsel runbook oluşturun](automation-first-runbook-textual.md)veya [var olan bir metin runbook 'unu düzenleyin](automation-edit-textual-runbook.md). Bu Runbook bir PowerShell Iş akışı ya da bir PowerShell betiği runbook 'u olabilir.  
+1. Otomasyon hesabınızdan [Yeni bir metinsel runbook oluşturun](./learn/automation-tutorial-runbook-textual.md)veya [var olan bir metin runbook 'unu düzenleyin](automation-edit-textual-runbook.md). Bu Runbook bir PowerShell Iş akışı ya da bir PowerShell betiği runbook 'u olabilir.  
 2. Runbook 'unuzu düzenledikten sonra kaydedin ve düzenleme sayfasında **Iade et** ' e tıklayın.  
 
     ![GitHub düğmesine iade etmeyi gösteren pencere](media/source-control-integration-legacy/automation-CheckinButton.png)

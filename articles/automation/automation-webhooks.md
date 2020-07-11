@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361685"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185645"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Web kancasından runbook başlatma
 
-Web kancası, bir dış hizmetin Azure Otomasyonu 'nda belirli bir runbook 'u tek bir HTTP isteği aracılığıyla başlatmasını sağlar. Dış hizmetler Azure DevOps Services, GitHub, Azure Izleyici günlükleri ve özel uygulamalar içerir. Bu tür bir hizmet, tam Azure Otomasyonu API 'sini uygulamadan bir runbook 'u başlatmak için Web kancasını kullanabilir. Web kancalarını, [Azure Otomasyonu 'nda bir runbook başlatma](automation-starting-a-runbook.md)bölümünde bulunan bir runbook 'u başlatma yöntemleriyle karşılaştırabilirsiniz.
+Web kancası, bir dış hizmetin Azure Otomasyonu 'nda belirli bir runbook 'u tek bir HTTP isteği aracılığıyla başlatmasını sağlar. Dış hizmetler Azure DevOps Services, GitHub, Azure Izleyici günlükleri ve özel uygulamalar içerir. Bu tür bir hizmet, tam Azure Otomasyonu API 'sini uygulamadan bir runbook 'u başlatmak için Web kancasını kullanabilir. Web kancalarını, [Azure Otomasyonu 'nda bir runbook başlatma](./start-runbooks.md)bölümünde bulunan bir runbook 'u başlatma yöntemleriyle karşılaştırabilirsiniz.
 
 > [!NOTE]
 > Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
@@ -29,7 +29,7 @@ Aşağıdaki tabloda bir Web kancası için yapılandırmanız gereken özellikl
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Name |Web kancasının adı. İstemciye açık olmadığından istediğiniz adı verebilirsiniz. Yalnızca Azure Otomasyonu 'nda runbook 'u tanımlamak için kullanılır. En iyi uygulama olarak, Web kancasına onu kullanan istemciyle ilgili bir ad vermeniz gerekir. |
+| Ad |Web kancasının adı. İstemciye açık olmadığından istediğiniz adı verebilirsiniz. Yalnızca Azure Otomasyonu 'nda runbook 'u tanımlamak için kullanılır. En iyi uygulama olarak, Web kancasına onu kullanan istemciyle ilgili bir ad vermeniz gerekir. |
 | URL |Web kancasının URL 'SI. Bu, bir istemcinin Web kancasına bağlı olan runbook 'u başlatmak için bir HTTP POST ile çağırdığı benzersiz adrestir. Web kancasını oluşturduğunuzda otomatik olarak oluşturulur. Özel bir URL belirtemezsiniz. <br> <br> URL, üçüncü taraf bir sistemin runbook 'u başka bir kimlik doğrulaması olmadan çağırmasına izin veren bir güvenlik belirteci içeriyor. Bu nedenle, URL 'YI bir parola gibi kabul etmelisiniz. Güvenlik nedenleriyle, URL 'YI yalnızca Web kancasını oluştururken Azure portal görüntüleyebilirsiniz. Daha sonra kullanılmak üzere güvenli bir konumda URL 'YI aklınızda bulundurma. |
 | Son kullanma tarihi | Web kancasının, daha sonra kullanılamayacak son kullanma tarihi. Web kancasının süresi dolduğu sürece, Web kancası oluşturulduktan sonra sona erme tarihini değiştirebilirsiniz. |
 | Etkin | Web kancasının oluşturulduğu zaman varsayılan olarak etkinleştirilip etkinleştirilmediğini belirten ayar. Bu özelliği devre dışı olarak ayarlarsanız, hiçbir istemci Web kancasını kullanamaz. Bu özelliği, Web kancasını veya oluşturulduktan sonra herhangi bir zamanı oluşturduğunuzda ayarlayabilirsiniz. |
@@ -133,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-İstemci, runbook işinin ne zaman tamamlandığını veya Web kancasından tamamlanma durumunu belirleyemez. Bu bilgileri, [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) veya [Azure Otomasyonu API](/rest/api/automation/job)gibi başka BIR mekanizmasıyla iş kimliğini kullanarak bulabilir.
+İstemci, runbook işinin ne zaman tamamlandığını veya Web kancasından tamamlanma durumunu belirleyemez. Bu bilgileri, [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) veya [Azure Otomasyonu API](/rest/api/automation/job)gibi başka BIR mekanizmasıyla iş kimliğini kullanarak bulabilir.
 
 ## <a name="renew-a-webhook"></a>Web kancasını yenileme
 
@@ -151,7 +151,7 @@ Sona erme süresine ulaşmayan bir Web kancasını genişletebilirsiniz. Web kan
 Aşağıdaki örnek runbook, Web kancası verilerini kabul eder ve istek gövdesinde belirtilen sanal makineleri başlatır. Bu runbook 'u test etmek için Runbook **'ların**altındaki Otomasyon hesabınızda **runbook oluştur ' a**tıklayın. Runbook oluşturmayı bilmiyorsanız, bkz. [runbook oluşturma](automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
+> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
 
 ```powershell
 param

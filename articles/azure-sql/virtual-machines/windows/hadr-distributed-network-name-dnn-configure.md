@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae9b6bf41d90b0a9111414302b2eafea3c8332d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965688"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169825"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>FCı için dağıtılmış ağ adı yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Azure sanal makineler 'de, trafiği uygun kümelenmiş kaynağa yönlendirmek i�
 
 Bu makalede, yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) için Azure VM 'lerinde SQL Server hesabınızı Fcsize yönlendirmek üzere DNN 'yi yapılandırma öğretilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
 
@@ -81,6 +81,10 @@ Set-ClusterParameter -Name DnsName -Value FCIDNN
 
 İstemciler şimdi `FCIDNN` SQL Server FCI 'ya bağlanılırken bağlantı dizesine girer. 
 
+   > [!WARNING]
+   > FCı altyapısının gerekli bir bileşeni olduğundan geçerli sanal ağ adını (VNN) silmeyin. 
+
+
 ### <a name="rename-the-vnn"></a>VNN 'i yeniden adlandırma 
 
 Var olan bir sanal ağ adınız varsa ve istemcilerin SQL Server FCı 'ya bağlanmak için bu değeri kullanmaya devam etmesini istiyorsanız, geçerli VNN değerini bir yer tutucu değeri olarak yeniden adlandırmanız gerekir. Geçerli VNN yeniden adlandırıldıktan sonra DNN için DNS adı değerini VNN olarak ayarlayabilirsiniz. 
@@ -122,7 +126,7 @@ Olası sahipleri güncelleştirmek için şu adımları izleyin:
 
 ## <a name="restart-sql-server-instance"></a>SQL Server örneğini yeniden Başlat 
 
-SQL Server örneğini yeniden başlatmak için Yük Devretme Kümesi Yöneticisi kullanın. Şu adımları uygulayın:
+SQL Server örneğini yeniden başlatmak için Yük Devretme Kümesi Yöneticisi kullanın. Şu adımları izleyin:
 
 1. Yük Devretme Kümesi Yöneticisi SQL Server kaynağına gidin.
 1. SQL Server kaynağına sağ tıklayın ve çevrimdışına alın. 

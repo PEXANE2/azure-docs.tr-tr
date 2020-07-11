@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: stok, otomasyon, değişiklik, izleme
 ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603120"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185730"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>VM’lerden stok koleksiyonunu yönetme
 
@@ -30,7 +30,7 @@ Bu makalede, Değişiklik İzleme ve envanteriyle etkinleştirilecek bir sanal m
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>VM kaynak sayfasından envanter toplamayı etkinleştir
 
@@ -43,7 +43,7 @@ Bu makalede, Değişiklik İzleme ve envanteriyle etkinleştirilecek bir sanal m
 
    ![Ekleme seçeneklerini görüntüleme](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Bir durum çubuğu, Değişiklik İzleme ve stok özelliğinin etkinleştirildiğini bildirir. Bu işlemin tamamlanması 15 dakika sürebilir. Bu süre boyunca pencereyi kapatabilir veya açık tutabilirsiniz ve özellik etkinleştirildiğinde size bildirimde bulunur. Dağıtım durumunu bildirimler bölmesinden izleyebilirsiniz.
+    Bir durum çubuğu, Değişiklik İzleme ve stok özelliğinin etkinleştirildiğini bildirir. Bu işlem 15 dakika kadar sürebilir. Bu süre boyunca pencereyi kapatabilir veya açık tutabilirsiniz ve özellik etkinleştirildiğinde size bildirimde bulunur. Dağıtım durumunu bildirimler bölmesinden izleyebilirsiniz.
 
    ![Envanteri görüntüleme](./media/automation-vm-inventory/inventory-onboarded.png)
 
@@ -131,5 +131,5 @@ VM 'nizi Değişiklik İzleme ve stok yönetiminden kaldırmak için:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Özelliği ile çalışma hakkında ayrıntılı bilgi için bkz. [Manage değişiklik izleme and Inventory](change-tracking-file-contents.md).
-* Yazılım değişikliklerini izleme hakkında daha fazla bilgi edinmek için bkz. [ortamınızdaki yazılım değişikliklerini izleme değişiklik izleme](../log-analytics/log-analytics-change-tracking.md).
+* Yazılım değişikliklerini izleme hakkında daha fazla bilgi edinmek için bkz. [ortamınızdaki yazılım değişikliklerini izleme değişiklik izleme](./change-tracking.md).
 * Özellikle ilgili sorunları gidermek için bkz. [değişiklik izleme ve envanter sorunlarını giderme](troubleshoot/change-tracking.md).

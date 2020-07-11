@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041736"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199883"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -220,21 +220,21 @@ Aşağıdaki ayarlar otomatik ML denemenizi yapılandırmanıza olanak tanır.
 
 | |Python SDK 'Sı|Studio Web deneyimi|
 ----|:----:|:----:
-Verileri tren/doğrulama kümelerine Böl| ✓|✓
-ML görevlerini destekler: sınıflandırma, regresyon ve tahmin| ✓| ✓
-Birincil ölçüme göre iyileştirir| ✓| ✓
-İşlem hedefi olarak AML 'yi destekler | ✓|✓
-Tahmin ufku, hedef lags & sıralı pencereyi yapılandırma|✓|✓
-Çıkış ölçütünü ayarla |✓|✓ 
-Eşzamanlı yinelemeleri ayarla| ✓|✓
-Bırakma sütunları| ✓|✓
-Blok algoritmaları|✓|✓
-Çapraz doğrulama |✓|✓
-Azure Databricks kümelerinde eğitimi destekler| ✓|
-Uygulanan özellik adlarını görüntüle|✓|
-Korturleştirme Özeti| ✓|
-Tatiller için korleştirme|✓|
-Günlük dosyası ayrıntı düzeyleri| ✓|
+|**Verileri tren/doğrulama kümelerine Böl**| ✓|✓
+|**ML görevlerini destekler: sınıflandırma, regresyon ve tahmin**| ✓| ✓
+|**Birincil ölçüme göre iyileştirir**| ✓| ✓
+|**İşlem hedefi olarak AML 'yi destekler** | ✓|✓
+|**Tahmin ufku, hedef lags & sıralı pencereyi yapılandırma**|✓|✓
+|**Çıkış ölçütünü ayarla** |✓|✓ 
+|**Eşzamanlı yinelemeleri ayarla**| ✓|✓
+|**Bırakma sütunları**| ✓|✓
+|**Blok algoritmaları**|✓|✓
+|**Çapraz doğrulama** |✓|✓
+|**Azure Databricks kümelerinde eğitimi destekler**| ✓|
+|**Uygulanan özellik adlarını görüntüle**|✓|
+|**Korturleştirme Özeti**| ✓|
+|**Tatiller için korleştirme**|✓|
+|**Günlük dosyası ayrıntı düzeyleri**| ✓|
 
 ### <a name="model-settings"></a>Model ayarları
 
@@ -242,11 +242,11 @@ Bu ayarlar, otomatik ML denemenizin bir sonucu olarak en iyi modele uygulanabili
 
 | |Python SDK 'Sı|Studio Web deneyimi|
 |----|:----:|:----:|
-|En iyi model kaydı, dağıtım, explainability| ✓|✓|
-|Oylama & yığın zenginme modellerini etkinleştirme| ✓|✓|
-|Birincil olmayan ölçüye göre en iyi modeli göster|✓||
-|ONNX model uyumluluğunu etkinleştir/devre dışı bırak|✓||
-|Modeli test etme | ✓| |
+|**En iyi model kaydı, dağıtım, explainability**| ✓|✓|
+|**Oylama & yığın zenginme modellerini etkinleştirme**| ✓|✓|
+|**Birincil olmayan ölçüye göre en iyi modeli göster**|✓||
+|**ONNX model uyumluluğunu etkinleştir/devre dışı bırak**|✓||
+|**Modeli test etme** | ✓| |
 
 ### <a name="run-control-settings"></a>Denetim ayarlarını Çalıştır
 
@@ -254,10 +254,10 @@ Bu ayarlar, deneme çalışmalarınızı ve onun alt çalıştırmalarını ince
 
 | |Python SDK 'Sı|Studio Web deneyimi|
 |----|:----:|:----:|
-|Özet tablosunu Çalıştır| ✓|✓|
-|Alt çalıştırmalar & çalıştırmaları iptal et| ✓|✓|
-|Guardrayal| ✓|✓|
-|& devam ettirmeyi Duraklat| ✓| |
+|**Özet tablosunu Çalıştır**| ✓|✓|
+|**Alt çalıştırmalar & çalıştırmaları iptal et**| ✓|✓|
+|**Guardrayal**| ✓|✓|
+|**& devam ettirmeyi Duraklat**| ✓| |
 
 <a name="use-with-onnx"></a>
 
@@ -279,7 +279,7 @@ Her ne kadar fazla kaynak vardır.
 
  + **Düşük veya kod içermeyen bir deneyim için**bkz. [öğretici: Azure Machine Learning STUDIO ile otomatik ml sınıflandırma modelleri oluşturma](tutorial-first-experiment-automated-ml.md).
 
-Nasıl yapılır makaleleri, oto ml 'nin sunduğu işlevselliğe ek ayrıntı sağlar. Örneğin, 
+Nasıl yapılır makaleleri, oto ml 'nin sunduğu işlevselliğe ek ayrıntı sağlar. Örneğin: 
 
 + Otomatik eğitim denemeleri için ayarları yapılandırma
     + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-use-automated-ml-for-ml-models.md). 

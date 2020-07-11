@@ -2,13 +2,14 @@
 title: Kaynak günlüklerini toplama & analiz etme
 description: Azure Izleyici günlüklerine Azure Container Instances içindeki kapsayıcı gruplarından kaynak günlükleri ve olay verileri gönderme hakkında bilgi edinin
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892402"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169740"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı grubu ve örnek günlüğü
 
@@ -23,7 +24,7 @@ Aşağıdaki bölümlerde, günlük özellikli bir kapsayıcı grubu oluşturma 
 > [!NOTE]
 > Şu anda, Linux kapsayıcı örneklerinden yalnızca Log Analytics olay verileri gönderebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kapsayıcı örneklerinizde oturum açmayı etkinleştirmek için aşağıdakiler gerekir:
 
@@ -41,7 +42,7 @@ Log Analytics çalışma alanı KIMLIĞINI ve birincil anahtarı almak için:
 1. **Bağlı kaynaklar**  >  **Windows Server** (veya **Linux sunucuları**) seçin--kimlik ve anahtarlar her ikisi için de aynıdır
 1. Şunları not edin:
    * **ÇALıŞMA ALANı KIMLIĞI**
-   * **BİRİNCİL ANAHTAR**
+   * **BIRINCIL ANAHTAR**
 
 ## <a name="create-container-group"></a>Kapsayıcı grubu oluştur
 
@@ -67,7 +68,7 @@ az container create \
 Kapsayıcı gruplarını YAML ile dağıtmayı tercih ediyorsanız bu yöntemi kullanın. Aşağıdaki YAML, tek kapsayıcı içeren bir kapsayıcı grubunu gösterir. YAML şablonunu yeni bir dosyaya kopyalayın, ardından `LOG_ANALYTICS_WORKSPACE_ID` ve `LOG_ANALYTICS_WORKSPACE_KEY` değerlerini önceki adımda aldığınız değerlerle değiştirin. Dosyanızı **deploy-aci.yaml** olarak kaydedin.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: mycontainergroup001
 properties:

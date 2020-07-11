@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77f2e78fa3df6c7ac6a422a03335f93d2a19d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85256050"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169349"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
 
@@ -122,10 +122,10 @@ Yapılandırılabilir belirteç yaşam sürelerini etkinleştirdiyseniz, bu öze
 
 Aşağıdaki tabloda lisanslarına göre öneriler özetlenmektedir:
 
-|                              | Azure AD Ücretsiz ve Office 365 uygulamaları | Azure AD Premium |
+|              | Azure AD Ücretsiz ve Office 365 uygulamaları | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
-| SSO                          | [Azure AD JOIN](../devices/concept-azure-ad-join.md) veya [hibrit Azure AD JOIN](../devices/concept-azure-ad-join-hybrid.md)veya YÖNETILMEYEN cihazlar için [sorunsuz SSO](../hybrid/how-to-connect-sso.md) . | Azure AD'ye katılım<br />Hibrit Azure AD'ye katılım |
-| Yeniden kimlik doğrulama ayarları    | Oturum açmış durumda kalır                  | Oturum açma sıklığı ve kalıcı tarayıcı oturumu için koşullu erişim ilkelerini kullanın |
+| **SSO**                      | [Azure AD JOIN](../devices/concept-azure-ad-join.md) veya [hibrit Azure AD JOIN](../devices/concept-azure-ad-join-hybrid.md)veya YÖNETILMEYEN cihazlar için [sorunsuz SSO](../hybrid/how-to-connect-sso.md) . | Azure AD'ye katılım<br />Hibrit Azure AD'ye katılım |
+| **Yeniden kimlik doğrulama ayarları** | Oturum açmış durumda kalır                  | Oturum açma sıklığı ve kalıcı tarayıcı oturumu için koşullu erişim ilkelerini kullanın |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

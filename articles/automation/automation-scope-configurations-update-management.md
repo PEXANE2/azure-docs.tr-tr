@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8770762fa2d2ae6bc0584d75397829298a62e8c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117394"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185900"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Güncelleştirme Yönetimi dağıtım kapsamını sınırla
 
-Bu makalede, sanal makinelerinize güncelleştirmeler ve düzeltme ekleri dağıtmak için [güncelleştirme yönetimi](automation-update-management.md) özelliği kullanılırken kapsam yapılandırmalarının nasıl çalıştığı açıklanır. Daha fazla bilgi için bkz. [Azure izleyici 'de izleme çözümlerini hedefleme (Önizleme)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+Bu makalede, sanal makinelerinize güncelleştirmeler ve düzeltme ekleri dağıtmak için [güncelleştirme yönetimi](automation-update-management.md) özelliği kullanılırken kapsam yapılandırmalarının nasıl çalıştığı açıklanır. Daha fazla bilgi için bkz. [Azure izleyici 'de izleme çözümlerini hedefleme (Önizleme)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>Kapsam konfigürasyonları hakkında
 
@@ -33,7 +34,7 @@ Güncelleştirme Yönetimi dağıtımınızın kapsamını sınırlandırmak iç
 
 5. Düzen bölmesinde **bilgisayar grupları seç**' i genişletin. Bilgisayar grupları bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilmiş aramaları gösterir. Güncelleştirme Yönetimi tarafından kullanılan kayıtlı arama:
 
-    |Name     |Kategori  |Diğer ad  |
+    |Ad     |Category  |Diğer ad  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
 

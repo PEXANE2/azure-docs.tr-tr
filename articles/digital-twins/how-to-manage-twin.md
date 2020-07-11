@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390525"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142374"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -122,6 +122,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 ```json
 {
   "$dtId": "myMoon-001",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
@@ -146,7 +147,8 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 
 Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
 * Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
-* Bir bölümdeki diğer özellikler `$metadata` . Buna aşağıdakiler dahildir:
+* `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı
+* Bir bölümdeki diğer özellikler `$metadata` . Bunlar:
     - Dijital ikizi modelinin DTMı 'ı.
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
     - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 

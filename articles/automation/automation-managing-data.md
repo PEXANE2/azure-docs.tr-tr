@@ -5,11 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343063"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186172"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
@@ -36,9 +37,9 @@ Karma Runbook Worker rolüne yönelik bir bağımlılık olan Windows ve Linux i
 |Platform/dil | Destek | Daha Fazla Bilgi |
 | --- | --- | --- |
 |Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır.  | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
-| Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
-| Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
-| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfası.  |
+| Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
+| Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
+| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](/windows-server/security/tls/tls-registry-settings) sayfası.  |
 
 ## <a name="data-retention"></a>Veri saklama
 
@@ -50,7 +51,7 @@ Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 |:--- |:--- |
 | Hesaplar |Bir hesap, bir kullanıcı tarafından silindikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | Varlıklar |Bir varlık, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı varlığı tutan bir hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
-| DSC düğümleri |DSC düğümü, Windows PowerShell 'de Azure portal veya [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 'ini kullanarak bir Otomasyon hesabından silinen 30 gün sonra kalıcı olarak kaldırılır. Düğüm, düğüm tutan hesabı sildikten sonra 30 gün sonra da kalıcı olarak kaldırılır. |
+| DSC düğümleri |DSC düğümü, Windows PowerShell 'de Azure portal veya [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 'ini kullanarak bir Otomasyon hesabından silinen 30 gün sonra kalıcı olarak kaldırılır. Düğüm, düğüm tutan hesabı sildikten sonra 30 gün sonra da kalıcı olarak kaldırılır. |
 | İşler |Bir iş silinir ve değişiklik sonrasında 30 gün sonra kalıcı olarak kaldırılır. Örneğin, iş tamamlandıktan sonra, durdurulur veya askıya alınır. |
 | Modül |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | Düğüm konfigürasyonları/MOF dosyaları |Yeni bir düğüm yapılandırması oluşturulduktan sonra, eski bir düğüm yapılandırması 30 gün sonra kalıcı olarak kaldırılır. |
@@ -65,7 +66,7 @@ Azure 'da bir Otomasyon hesabını sildiğinizde, hesaptaki tüm nesneler silini
 
 ### <a name="runbooks"></a>Runbook'lar
 
-Windows PowerShell 'de Azure portal veya [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 'ini kullanarak runbook 'larınızı betik dosyalarına aktarabilirsiniz. Bu komut dosyalarını, [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md)bölümünde anlatıldığı gibi başka bir Otomasyon hesabına içeri aktarabilirsiniz.
+Windows PowerShell 'de Azure portal veya [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 'ini kullanarak runbook 'larınızı betik dosyalarına aktarabilirsiniz. Bu komut dosyalarını, [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md)bölümünde anlatıldığı gibi başka bir Otomasyon hesabına içeri aktarabilirsiniz.
 
 ### <a name="integration-modules"></a>Tümleştirme modülleri
 
@@ -79,8 +80,7 @@ Cmdlet 'leri kullanarak, şifrelenmiş değişkenlerin veya kimlik bilgilerinin 
 
 ### <a name="dsc-configurations"></a>DSC yapılandırması
 
-Windows PowerShell 'de Azure portal veya [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) cmdlet 'INI kullanarak DSC yapılandırmalarını betik dosyalarına aktarabilirsiniz. Bu konfigürasyonları başka bir Otomasyon hesabında içeri aktarabilir ve kullanabilirsiniz.
+Windows PowerShell 'de Azure portal veya [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) cmdlet 'INI kullanarak DSC yapılandırmalarını betik dosyalarına aktarabilirsiniz. Bu konfigürasyonları başka bir Otomasyon hesabında içeri aktarabilir ve kullanabilirsiniz.
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure Otomasyonu 'nda coğrafi çoğaltma
 
@@ -102,4 +102,4 @@ Bir bölgesel hata varsa, Otomasyon coğrafi çoğaltma hizmetine doğrudan dı�
 
 * Azure Automation 'da güvenli varlıklar hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da güvenli varlıkların şifrelenmesi](automation-secure-asset-encryption.md).
 
-* Coğrafi çoğaltma hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma oluşturma ve kullanma](../sql-database/sql-database-active-geo-replication.md).
+* Coğrafi çoğaltma hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma oluşturma ve kullanma](../azure-sql/database/active-geo-replication-overview.md).

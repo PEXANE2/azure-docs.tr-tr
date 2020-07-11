@@ -4,11 +4,12 @@ description: Batch, Batch hizmetinden kimlik doğrulaması için Azure AD 'yi de
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958217"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170318"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Active Directory ile Batch hizmeti çözümlerini kimlik doğrulama
 
@@ -62,7 +63,7 @@ Uygulamanızı kaydettikten sonra uygulama KIMLIĞINI görürsünüz:
 
 ![Batch uygulamanızı Azure AD 'ye kaydetme](./media/batch-aad-auth/app-registration-data-plane.png)
 
-Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](../active-directory/develop/authentication-scenarios.md).
+Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](../active-directory/develop/authentication-vs-authorization.md).
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>Active Directory kiracı KIMLIĞINI alın
 
@@ -120,7 +121,7 @@ Azure portalında şu adımları izleyin:
 
 ### <a name="assign-rbac-to-your-application"></a>Uygulamanıza RBAC atama
 
-Hizmet sorumlusu ile kimlik doğrulaması yapmak için uygulamanıza RBAC atamanız gerekir. Şu adımları uygulayın:
+Hizmet sorumlusu ile kimlik doğrulaması yapmak için uygulamanıza RBAC atamanız gerekir. Şu adımları izleyin:
 
 1. Azure portal, uygulamanız tarafından kullanılan Batch hesabına gidin.
 1. Batch hesabının **Ayarlar** bölümünde **Access Control (IAM)** öğesini seçin.
@@ -426,8 +427,8 @@ Hizmet sorumlusu kimlik bilgilerini kullanarak bir **BatchServiceClient** nesnes
 
 - Azure AD belirteci kullanılarak kimliği doğrulanmış bir Batch istemcisi oluşturma hakkında bir Python örneği için bkz. [Python betik örneği ile Azure Batch özel görüntü dağıtma](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) .
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory nedir?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Azure AD için kimlik doğrulama senaryoları"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Uygulamaları Azure Active Directory tümleştirme"
+[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory nedir?"
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
+[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Azure AD için kimlik doğrulama senaryoları"
+[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Uygulamaları Azure Active Directory tümleştirme"
 [azure_portal]: https://portal.azure.com

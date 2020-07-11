@@ -2,12 +2,13 @@
 title: Kapsayıcı örneği üzerinde hazırlık araştırması ayarlama
 description: Azure Container Instances içindeki kapsayıcıların istekleri yalnızca hazırlandıklarında almasını sağlamak için bir araştırma yapılandırmayı öğrenin
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76935689"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169672"
 ---
 # <a name="configure-readiness-probes"></a>Hazır olma yoklamalarını yapılandırma
 
@@ -25,7 +26,7 @@ Azure Container Instances Ayrıca, sağlıksız bir kapsayıcının otomatik ola
 Örnek olarak, `readiness-probe.yaml` bir hazırlık araştırması içeren aşağıdaki kod parçacığına sahip bir dosya oluşturun. Bu dosya, küçük bir Web uygulaması çalıştıran bir kapsayıcıdan oluşan bir kapsayıcı grubunu tanımlar. Uygulama, ortak `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüden dağıtılır. Bu Kapsayıcılı uygulama, Azure CLı ve diğer hızlı başlangıçlarla [Azure 'da bir kapsayıcı örneği dağıtma](container-instances-quickstart.md) bölümünde de gösterilmiştir.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: readinesstest
 properties:

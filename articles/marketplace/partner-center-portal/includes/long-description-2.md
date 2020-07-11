@@ -1,5 +1,5 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 description: " dosyası"
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher

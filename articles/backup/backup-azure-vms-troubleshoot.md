@@ -4,11 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 68310f504e94e50be9fbd4ce49055a4b318ab5d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e40b74cc5bf995e943b20ddcd21127ed4f7d7ead
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659511"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184200"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -185,19 +186,58 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 
 **3. adım**: [VM 'nin boyutunu artırmayı](https://azure.microsoft.com/blog/resize-virtual-machines/) deneyin ve işlemi yeniden deneyin
 
-## <a name="common-vm-backup-errors"></a>Sık karşılaşılan VM yedekleme hataları
 
-| Hata ayrıntıları | Geçici çözüm |
-| ------ | --- |
-| **Hata kodu**: 320001, ResourceNotFound <br/> **Hata iletisi**: VM artık mevcut olmadığından işlem gerçekleştirilemedi. <br/> <br/> **Hata kodu**: 400094, BCMV2VMNotFound <br/> **Hata iletisi**: sanal makine yok <br/> <br/>  Azure sanal makinesi bulunamadı.  |Birincil VM silindiğinde bu hata oluşur, ancak yedekleme ilkesi hala bir VM 'yi yedekleyecek şekilde arar. Bu hatayı onarmak için aşağıdaki adımları uygulayın: <ol><li> Aynı ada ve aynı kaynak grubu adına sahip sanal makineyi yeniden oluşturun, **bulut hizmeti adı**,<br>**veya**</li><li> Yedekleme verilerini silmeden sanal makineyi korumayı durdurun. Daha fazla bilgi için bkz. [sanal makineleri korumayı durdurma](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
-|**Hata kodu**: usererrorbcmpremıumstoragequotaerror<br/> **Hata iletisi**: depolama hesabında yeterli boş alan olmadığından sanal makinenin anlık görüntüsü kopyalanamadı | VM yedekleme yığını v1 'deki Premium VM 'Ler için, anlık görüntüyü depolama hesabına kopyalayacağız. Bu adım, anlık görüntüde kullanılan yedekleme yönetimi trafiğinin Premium diskler kullanılarak uygulama için kullanılabilir ıOPS sayısını sınırlandırmaz olmasını sağlar. <br><br>Toplam depolama hesabı alanını yalnızca yüzde 50, 17,5 TB olarak ayırmanız önerilir. Ardından Azure Backup hizmeti, anlık görüntüyü depolama hesabına kopyalayabilir ve depolama hesabındaki bu kopyalanmış konumdan kasaya veri aktarabilir. |
-| **Hata kodu**: 380008, AzureVmOffline <br/> **Hata iletisi**: sanal makine çalışmadığı Için Microsoft Kurtarma Hizmetleri Uzantısı yüklenemedi | VM Aracısı, Azure Kurtarma Hizmetleri uzantısı için bir önkoşuldur. Azure sanal makine aracısını yükleyip kayıt işlemini yeniden başlatın. <br> <ol> <li>VM aracısının doğru yüklenip yüklenmediğini denetleyin. <li>VM yapılandırması üzerindeki bayrağın doğru ayarlandığından emin olun.</ol> VM aracısını yükleme ve VM Aracısı yüklemesinin nasıl doğrulanacağı hakkında daha fazla bilgi edinin. |
-| **Hata kodu**: extensionsnapshotbitlockererror <br/> **Hata iletisi**: anlık görüntü işlemi bırım gölge KOPYASı HIZMETI (VSS) işlem hatasıyla başarısız oldu, **Bu sürücü BitLocker Sürücü Şifrelemesi tarafından kilitlenmiş. Bu sürücünün kilidini, Denetim Masası 'ndan açmanız gerekir.** |VM 'deki tüm sürücüler için BitLocker 'ı kapatın ve VSS sorununun çözümlenip çözümlenmediğini denetleyin. |
-| **Hata kodu**: vmnotındesıralaması <br/> **Hata iletisi**: VM, yedeklemelere izin veren bir durumda değil. |<ul><li>VM, **çalıştırma** ve **kapatma**arasında geçici bir durumdaysa, durumun değiştirilmesini bekleyin. Ardından yedekleme işini tetikleyin. <li> VM bir Linux sanal makinesi ise ve Gelişmiş Güvenlik Özellikli Linux çekirdek modülünü kullanıyorsa, güvenlik ilkesinden Azure Linux Aracısı yolu **/var/lib/waagent** ' ı dışlayın ve yedekleme uzantısının yüklü olduğundan emin olun.  |
-| VM Aracısı sanal makinede yok: <br>Herhangi bir önkoşulu ve VM aracısını yükler. Sonra işlemi yeniden başlatın. |[VM Aracısı yüklemesi ve VM Aracısı yüklemesinin nasıl doğrulanacağı](#vm-agent)hakkında daha fazla bilgi edinin. |
-| **Hata kodu**: extensionsnapshotfailednosecurenetwork <br/> **Hata iletisi**: güvenli ağ iletişim kanalı oluşturma hatası nedeniyle anlık görüntü işlemi başarısız oldu. | <ol><li> **regedit.exe** , yükseltilmiş modda çalıştırarak kayıt defteri düzenleyicisini açın. <li> Sisteminizde mevcut olan tüm .NET Framework sürümlerini belirler. Bunlar, kayıt defteri anahtarı **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**hiyerarşisinde mevcuttur. <li> Kayıt defteri anahtarında bulunan her bir .NET Framework için aşağıdaki anahtarı ekleyin: <br> **Schusestrongşifre "= DWORD: 00000001**. </ol>|
-| **Hata kodu**: ExtensionVCRedistInstallationFailure <br/> **Hata iletisi**: 2012 Visual Studio için Visual C++ yeniden dağıtılabilir yüklenemediğinden anlık görüntü işlemi başarısız oldu. | <li> Vcredist2013_x64 gidin `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` ve bu yüklemeye erişin.<br/>Hizmet yüklemeye izin veren kayıt defteri anahtarı değerinin doğru değere ayarlandığından emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\Msiserver** içindeki **Başlangıç** değerini **4**değil **3** olarak ayarlayın. <br><br>Yükleme ile ilgili sorun yaşıyorsanız, **msiexec/Unregister** ' yi ve ardından yükseltilmiş bir komut isteminden **msiexec/Register** ' i çalıştırarak yükleme hizmetini yeniden başlatın. <br><br><li> İlgili sorunlar yaşıyorsanız erişip erişemediğinizi doğrulamak için olay günlüğünü denetleyin. Örneğin: *Ürün: Microsoft Visual C++ 2013 x64 en düşük çalışma zamanı-12.0.21005--hata 1401. Anahtar oluşturulamadı: Software\Classes.  Sistem hatası 5.  Bu anahtara yeterli erişiminizin olduğunu doğrulayın veya destek personelinize başvurun.* <br><br> Yönetici veya Kullanıcı hesabının kayıt defteri anahtarını güncelleştirmek için yeterli izinlere sahip olduğundan emin olun **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**. Yeterli izinleri sağlayın ve Windows Azure Konuk Aracısı 'nı yeniden başlatın.<br><br> <li> Virüsten koruma ürünleri varsa, yüklemeye izin vermek için doğru dışlama kurallarına sahip olduklarından emin olun.    |
-| **Hata kodu**: usererrorrequestdisallowedbypolicy <BR> **Hata iletisi**: VM 'de anlık görüntü işlemini önleyecek geçersiz bir ilke yapılandırıldı. | [Ortamınızdaki etiketleri yöneten](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)bir Azure ilkeniz varsa, Ilkeyi bir [reddetme etkisine](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) değiştirme [efektiyle](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)değiştirmeyi düşünün veya [Azure Backup için gereken adlandırma şemasına](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)göre kaynak grubunu el ile oluşturun.
+## <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound-VM artık mevcut olmadığından işlem gerçekleştirilemedi/400094, BCMV2VMNotFound-sanal makine yok/bir Azure sanal makinesi bulunamadı
+
+Hata kodu: 320001, ResourceNotFound <br/> Hata iletisi: VM artık mevcut olmadığından işlem gerçekleştirilemedi. <br/> <br/> Hata kodu: 400094, BCMV2VMNotFound <br/> Hata iletisi: sanal makine yok <br/>
+Azure sanal makinesi bulunamadı.
+
+Birincil VM silindiğinde bu hata oluşur, ancak yedekleme ilkesi hala bir VM 'yi yedekleyecek şekilde arar. Bu hatayı onarmak için aşağıdaki adımları uygulayın:
+- Aynı ada ve aynı kaynak grubu adına sahip sanal makineyi yeniden oluşturun, **bulut hizmeti adı**,<br>veya
+- Yedekleme verilerini silmeden sanal makineyi korumayı durdurun. Daha fazla bilgi için bkz. [sanal makineleri korumayı durdurma](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>
+
+## <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>Usererrorbcmpremıumstoragequotaerror-depolama hesabında yeterli boş alan olmadığından sanal makinenin anlık görüntüsü kopyalanamadı
+
+Hata kodu: Usererrorbcmpremıumstoragequotaerror<br/> Hata iletisi: depolama hesabında yeterli boş alan olmadığından sanal makinenin anlık görüntüsü kopyalanamadı
+
+ VM yedekleme yığını v1 'deki Premium VM 'Ler için, anlık görüntüyü depolama hesabına kopyalayacağız. Bu adım, anlık görüntüde kullanılan yedekleme yönetimi trafiğinin Premium diskler kullanılarak uygulama için kullanılabilir ıOPS sayısını sınırlandırmaz olmasını sağlar. <br><br>Toplam depolama hesabı alanını yalnızca yüzde 50, 17,5 TB olarak ayırmanız önerilir. Ardından Azure Backup hizmeti, anlık görüntüyü depolama hesabına kopyalayabilir ve depolama hesabındaki bu kopyalanmış konumdan kasaya veri aktarabilir.
+
+
+## <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008, AzureVmOffline-sanal makine çalışmadığı için Microsoft Kurtarma Hizmetleri Uzantısı yüklenemedi
+Hata kodu: 380008, AzureVmOffline <br/> Hata iletisi: sanal makine çalışmadığı için Microsoft Kurtarma Hizmetleri Uzantısı yüklenemedi
+
+VM Aracısı, Azure Kurtarma Hizmetleri uzantısı için bir önkoşuldur. Azure sanal makine aracısını yükleyip kayıt işlemini yeniden başlatın. <br> <ol> <li>VM aracısının doğru yüklenip yüklenmediğini denetleyin. <li>VM yapılandırması üzerindeki bayrağın doğru ayarlandığından emin olun.</ol> VM aracısını yükleme ve VM Aracısı yüklemesinin nasıl doğrulanacağı hakkında daha fazla bilgi edinin.
+
+## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-anlık görüntü işlemi Birim Gölge Kopyası Hizmeti (VSS) işlem hatasıyla başarısız oldu
+Hata kodu: ExtensionSnapshotBitlockerError <br/> Hata iletisi: anlık görüntü işlemi Birim Gölge Kopyası Hizmeti (VSS) işlem hatasıyla başarısız oldu, **Bu sürücü BitLocker Sürücü Şifrelemesi tarafından kilitlenmiş. Bu sürücünün kilidini, Denetim Masası 'ndan açmanız gerekir.**
+
+VM 'deki tüm sürücüler için BitLocker 'ı kapatın ve VSS sorununun çözümlenip çözümlenmediğini denetleyin.
+
+## <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>Vmnotındesıralaması-VM, yedeklemelere izin veren bir durumda değil
+Hata kodu: Vmnotındesıralaması <br/> Hata iletisi: VM, yedeklemelere izin veren bir durumda değil.
+- VM, **çalıştırma** ve **kapatma**arasında geçici bir durumdaysa, durumun değiştirilmesini bekleyin. Ardından yedekleme işini tetikleyin.
+- VM bir Linux sanal makinesi ise ve Gelişmiş Güvenlik Özellikli Linux çekirdek modülünü kullanıyorsa, güvenlik ilkesinden Azure Linux Aracısı yolu **/var/lib/waagent** ' ı dışlayın ve yedekleme uzantısının yüklü olduğundan emin olun.
+
+- VM Aracısı sanal makinede yok: <br>Herhangi bir önkoşulu ve VM aracısını yükler. Sonra işlemi yeniden başlatın. | [VM Aracısı yüklemesi ve VM Aracısı yüklemesinin nasıl doğrulanacağı](#vm-agent)hakkında daha fazla bilgi edinin.
+
+
+## <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-bir güvenli ağ iletişim kanalı oluşturma hatası nedeniyle anlık görüntü işlemi başarısız oldu
+Hata kodu: ExtensionSnapshotFailedNoSecureNetwork <br/> Hata iletisi: güvenli ağ iletişim kanalı oluşturma hatası nedeniyle anlık görüntü işlemi başarısız oldu.
+- **regedit.exe** , yükseltilmiş modda çalıştırarak kayıt defteri düzenleyicisini açın.
+- Sisteminizde mevcut olan tüm .NET Framework sürümlerini belirler. Bunlar, kayıt defteri anahtarı **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**hiyerarşisinde mevcuttur.
+- Kayıt defteri anahtarında bulunan her bir .NET Framework için aşağıdaki anahtarı ekleyin: <br> **Schusestrongşifre "= DWORD: 00000001**. </ol>
+
+
+## <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure-anlık görüntü işlemi başarısız oldu Visual Studio için Visual C++ Yeniden Dağıtılabilir 2012
+Hata kodu: ExtensionVCRedistInstallationFailure <br/> Hata iletisi: 2012 Visual Studio için Visual C++ Yeniden Dağıtılabilir yüklenemediğinden anlık görüntü işlemi başarısız oldu.
+- Vcredist2013_x64 gidin `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` ve bu yüklemeye erişin.<br/>Hizmet yüklemeye izin veren kayıt defteri anahtarı değerinin doğru değere ayarlandığından emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\Msiserver** içindeki **Başlangıç** değerini **4**değil **3** olarak ayarlayın. <br><br>Yükleme ile ilgili sorun yaşıyorsanız, **msiexec/Unregister** ' yi ve ardından yükseltilmiş bir komut isteminden **msiexec/Register** ' i çalıştırarak yükleme hizmetini yeniden başlatın.
+- İlgili sorunlar yaşıyorsanız erişip erişemediğinizi doğrulamak için olay günlüğünü denetleyin. Örneğin: *Ürün: Microsoft Visual C++ 2013 x64 en düşük çalışma zamanı-12.0.21005--hata 1401. Anahtar oluşturulamadı: Software\Classes.  Sistem hatası 5.  Bu anahtara yeterli erişiminizin olduğunu doğrulayın veya destek personelinize başvurun.* <br><br> Yönetici veya Kullanıcı hesabının kayıt defteri anahtarını güncelleştirmek için yeterli izinlere sahip olduğundan emin olun **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**. Yeterli izinleri sağlayın ve Windows Azure Konuk Aracısı 'nı yeniden başlatın.<br><br> <li> Virüsten koruma ürünleri varsa, yüklemeye izin vermek için doğru dışlama kurallarına sahip olduklarından emin olun.
+
+
+## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-sanal makinede anlık görüntü işlemini önleyecek geçersiz bir ilke yapılandırıldı
+Hata kodu: UserErrorRequestDisallowedByPolicy <BR> Hata iletisi: VM 'de anlık görüntü işlemini önleyecek geçersiz bir ilke yapılandırıldı.
+
+[Ortamınızdaki etiketleri yöneten](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)bir Azure ilkeniz varsa, Ilkeyi bir [reddetme etkisine](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) değiştirme [efektiyle](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)değiştirmeyi düşünün veya [Azure Backup için gereken adlandırma şemasına](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)göre kaynak grubunu el ile oluşturun.
 
 ## <a name="jobs"></a>İşler
 

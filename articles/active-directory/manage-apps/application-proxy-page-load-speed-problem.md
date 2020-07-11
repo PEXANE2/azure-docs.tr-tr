@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bff9873742d5d660f563eebcb58ff9bcca940d24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1dc1b14a917786e124775a4505c53f63238a383
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760192"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203858"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Uygulama proxy 'Si uygulamasının yüklenmesi çok uzun sürüyor
 
@@ -31,8 +31,6 @@ Bu makale, bir Azure AD Uygulama Ara Sunucusu uygulamasının yüklenmesi uzun s
 Uygulamalarınız çalışıyor olsa da uzun bir gecikme yaşar. Hızı artırmak için yapabileceğiniz ağ topolojisi tiknoktaları olabilir. Farklı topolojilerden oluşan bir değerlendirme için bkz. [ağ hususları belgesi](application-proxy-network-topology.md).
 
 Ağ topolojisinin yanı sıra, şu anda performans ayarlaması için daha fazla öneri yoktur. Uygulama proxy hizmeti genişledikçe, fiziksel olarak daha yakın bir veri merkezine gelebilir. Daha yakın yakınlık, gecikme süresiyle yardımcı olabilirler. Azure veri merkezlerinin bir listesi için bkz. [gecikme süresi sınama sayfası](http://www.azurespeed.com/Azure/Latency). 
-
-Uygulama proxy 'Si hizmeti olan veri merkezleri [bağlayıcı bağlantı noktaları test aracı](https://aadap-portcheck.connectorporttest.msappproxy.net/)ile bulunabilir. 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>Uygulama proxy 'Si veri merkezi konumları hakkında geri bildirim 
 Henüz uygulama proxy 'Si içermeyen Azure veri merkezleri olabilir, ancak sizin için harika bir gecikme süresine neden olur. Veri merkezinin konumunu konumuna gönderin aadapfeedback@microsoft.com . Microsoft, genişletme planları için geri bildirimlerinizi kullanır.

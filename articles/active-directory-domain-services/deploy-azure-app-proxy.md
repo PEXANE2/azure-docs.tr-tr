@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 285f5aabe32013a629eebb150e55ba343150f589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734852"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220298"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında iç uygulamalara güvenli erişim için Azure AD Uygulama Ara Sunucusu Dağıtma
 
@@ -39,9 +40,9 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 
 ## <a name="create-a-domain-joined-windows-vm"></a>Etki alanına katılmış Windows VM oluşturma
 
-Trafiği ortamınızda çalışan uygulamalara yönlendirmek için Azure AD Uygulama Ara Sunucusu Bağlayıcısı bileşenini yüklersiniz. Bu Azure AD Uygulama Ara Sunucusu Bağlayıcısı, yönetilen etki alanına katılmış Windows Server sanal makinelerinde (VM) yüklü olmalıdır. Bazı uygulamalarda, her birinin bağlayıcının yüklü olduğu birden çok sunucu dağıtabilirsiniz. Bu dağıtım seçeneği, daha fazla kullanılabilirlik sağlar ve daha ağır kimlik doğrulama yüklerini işlemeye yardımcı olur.
+Trafiği ortamınızda çalışan uygulamalara yönlendirmek için Azure AD Uygulama Ara Sunucusu Bağlayıcısı bileşenini yüklersiniz. Bu Azure AD Uygulama Ara Sunucusu Bağlayıcısı, yönetilen etki alanına katılmış bir Windows Server sanal makinesinde (VM) yüklü olmalıdır. Bazı uygulamalarda, her birinin bağlayıcının yüklü olduğu birden çok sunucu dağıtabilirsiniz. Bu dağıtım seçeneği, daha fazla kullanılabilirlik sağlar ve daha ağır kimlik doğrulama yüklerini işlemeye yardımcı olur.
 
-Azure AD Uygulama Ara Sunucusu bağlayıcısını çalıştıran VM aynı veya Azure AD DS etkinleştirdiğiniz eşlenmiş bir sanal ağ üzerinde olmalıdır. Daha sonra uygulama proxy 'Si kullanarak yayımladığınız uygulamaları barındıran VM 'Lerin aynı Azure sanal ağına dağıtılması gerekir.
+Azure AD Uygulama Ara Sunucusu bağlayıcısını çalıştıran VM, yönetilen etki alanınız olarak aynı veya eşlenmiş bir sanal ağ üzerinde olmalıdır. Daha sonra uygulama proxy 'Si kullanarak yayımladığınız uygulamaları barındıran VM 'Lerin aynı Azure sanal ağına dağıtılması gerekir.
 
 Azure AD Uygulama Ara Sunucusu Bağlayıcısı için bir sanal makine oluşturmak için aşağıdaki adımları izleyin:
 
@@ -71,7 +72,7 @@ Azure AD Uygulama Ara Sunucusu Bağlayıcısı olarak kullanılmak üzere bir VM
         > [!NOTE]
         > Bağlayıcıyı kaydetmek için kullanılan genel yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır.
         >
-        > Örneğin, Azure AD etki alanı *aaddscontoso.com*ise, genel yönetici `admin@aaddscontoso.com` Bu etki alanında veya geçerli bir diğer ad olmalıdır.
+        > Örneğin, Azure AD etki alanı *contoso.com*ise, genel yönetici `admin@contoso.com` Bu etki alanında veya geçerli bir diğer ad olmalıdır.
 
    * Bağlayıcıyı yüklediğiniz VM için Internet Explorer Artırılmış Güvenlik Yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için, hata iletisindeki yönergeleri uygulayın veya yüklemenin işlemi sırasında Internet Explorer gelişmiş güvenliği ' ni kapatın.
    * Bağlayıcı kaydı başarısız olursa bkz. [uygulama proxy 'Si sorunlarını giderme](../active-directory/manage-apps/application-proxy-troubleshoot.md).

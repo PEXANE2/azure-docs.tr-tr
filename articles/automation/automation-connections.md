@@ -6,11 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837136"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186665"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantıları yönetme
 
@@ -42,10 +43,10 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon bağlantıları olu
 
 |Cmdlet|Açıklama|
 |---|---|
-|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Bir bağlantı hakkındaki bilgileri alır.|
-|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Yeni bir bağlantı oluşturur.|
-|[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Varolan bir bağlantıyı kaldırır.|
-|[Set-AzAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Mevcut bir bağlantı için belirli bir alanın değerini ayarlar.|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Bir bağlantı hakkındaki bilgileri alır.|
+|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Yeni bir bağlantı oluşturur.|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Varolan bir bağlantıyı kaldırır.|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Mevcut bir bağlantı için belirli bir alanın değerini ayarlar.|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>Bağlantılara erişim için iç cmdlet 'ler
 

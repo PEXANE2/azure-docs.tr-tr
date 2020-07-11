@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744962"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187362"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Otomasyonu 'nda zamanlamaları yönetme
 
@@ -31,13 +32,13 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon zamanlamaları olu�
 
 | Cmdlet’ler | Açıklama |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Bir zamanlama alır. |
-| [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Zamanlanan runbook 'ları alır. |
-| [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Yeni bir zamanlama oluşturur. |
-| [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Bir runbook 'u bir zamanlamaya göre ilişkilendirir. |
-| [Remove-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Bir zamanlamayı kaldırır. |
-| [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Varolan bir zamanlamanın özelliklerini ayarlar. |
-| [Unregister-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Bir runbook 'un bir zamanlamaya göre ilişkilendirmesini kaldırın. |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Bir zamanlama alır. |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Zamanlanan runbook 'ları alır. |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Yeni bir zamanlama oluşturur. |
+| [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Bir runbook 'u bir zamanlamaya göre ilişkilendirir. |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Bir zamanlamayı kaldırır. |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Varolan bir zamanlamanın özelliklerini ayarlar. |
+| [Unregister-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Bir runbook 'un bir zamanlamaya göre ilişkilendirmesini kaldırın. |
 
 ## <a name="create-a-schedule"></a>Zamanlama Oluştur
 
@@ -64,7 +65,7 @@ Runbook 'larınız için Azure portal veya PowerShell ile yeni bir zamanlama olu
 
 ### <a name="create-a-new-schedule-with-powershell"></a>PowerShell ile yeni bir zamanlama oluşturma
 
-Zamanlamalar oluşturmak için [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamanın başlangıç saatini ve çalışması gereken sıklığı belirtirsiniz. Aşağıdaki örneklerde birçok farklı zamanlama senaryosunun nasıl oluşturulacağı gösterilmektedir.
+Zamanlamalar oluşturmak için [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamanın başlangıç saatini ve çalışması gereken sıklığı belirtirsiniz. Aşağıdaki örneklerde birçok farklı zamanlama senaryosunun nasıl oluşturulacağı gösterilmektedir.
 
 #### <a name="create-a-one-time-schedule"></a>Tek seferlik zamanlama oluşturma
 
@@ -127,7 +128,7 @@ Bir runbook, birden çok zaman çizelgesine bağlanabilir ve bir zaman çizelges
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>PowerShell ile bir runbook 'a zamanlama bağlama
 
-Bir zamanlamayı bağlamak için [register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) cmdlet 'ini kullanın. Parametreler parametresiyle runbook’un parametreleri için değer belirtebilirsiniz. Parametre değerlerini belirtme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda runbook başlatma](../automation-starting-a-runbook.md).
+Bir zamanlamayı bağlamak için [register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) cmdlet 'ini kullanın. Parametreler parametresiyle runbook’un parametreleri için değer belirtebilirsiniz. Parametre değerlerini belirtme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda runbook başlatma](../start-runbooks.md).
 Aşağıdaki örnek, parametreleri olan Azure Resource Manager cmdlet 'ini kullanarak bir zamanlamayı runbook 'a bağlamayı gösterir.
 
 ```azurepowershell-interactive
@@ -163,7 +164,7 @@ Bir zamanlamayı devre dışı bıraktığınızda, onunla bağlantılı tüm ru
 
 ### <a name="disable-a-schedule-with-powershell"></a>PowerShell ile zamanlamayı devre dışı bırakma
 
-Var olan bir zamanlamanın özelliklerini değiştirmek için [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamayı devre dışı bırakmak için, parametre için false belirtin `IsEnabled` .
+Var olan bir zamanlamanın özelliklerini değiştirmek için [set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini kullanın. Zamanlamayı devre dışı bırakmak için, parametre için false belirtin `IsEnabled` .
 
 Aşağıdaki örnek, bir Azure Resource Manager cmdlet 'i kullanarak bir runbook için zamanlamanın nasıl devre dışı bırakılacağını gösterir.
 

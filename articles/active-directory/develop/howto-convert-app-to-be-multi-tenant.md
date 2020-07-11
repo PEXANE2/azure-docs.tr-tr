@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477864"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201950"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma
 
@@ -71,15 +71,21 @@ Web uygulamaları ve Web API 'Leri Microsoft Identity platformundan belirteçler
 
 Uygulamanın Microsoft Identity platform 'dan aldığı belirteçleri nasıl doğruladığına bakalım. Tek bir kiracı uygulaması normalde şöyle bir uç nokta değeri alır:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 ve bir meta veri URL 'SI (Bu örnekte, OpenID Connect) oluşturmak için aşağıdaki gibi kullanır:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 belirteçleri doğrulamak için kullanılan iki kritik bilgi parçasını indirmek için: kiracının İmzalama anahtarları ve veren değeri. Her Azure AD kiracısı, Şu biçimdeki benzersiz bir veren değerine sahiptir:
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 burada GUID değeri, kiracının kiracı KIMLIĞININ yeniden adlandırma güvenli sürümüdür. İçin önceki meta veri bağlantısını seçerseniz `contoso.onmicrosoft.com` belgesinde bu veren değerini görebilirsiniz.
 
@@ -87,7 +93,9 @@ Tek bir kiracı uygulaması bir belirteci doğrulaırsa, meta veri belgesinden i
 
 Sık karşılaşılan uç noktası bir kiracıya karşılık gelmediğinden ve veren olmadığından, sık karşılaşılan meta verilerinde veren değerini incelediğinizde gerçek bir değer yerine şablonlu bir URL 'ye sahiptir:
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 Bu nedenle, çok kiracılı bir uygulama belirteçleri yalnızca, belirteçteki değerle meta verilerde veren değeriyle eşleştirerek doğrulayamaz `issuer` . Çok kiracılı bir uygulama, hangi veren değerlerinin geçerli olduğunu ve veren değerinin kiracı KIMLIĞI kısmına bağlı olmayan karar vermek için mantığa ihtiyaç duyuyor. 
 
@@ -135,7 +143,9 @@ Uygulamanızın her biri Azure AD 'de kendi kaydıyla temsil edilen birden çok 
 
 Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örneğin:
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 Bu makalede, bu makalenin sonundaki [ilgili içerik](#related-content) bölümünde yer aldığı çok katmanlı yerel istemci BIR Web API örneğinde arama gösterilmiştir. Aşağıdaki diyagramda, tek bir kiracıda kayıtlı çok katmanlı bir uygulama için izin özeti sağlanmaktadır.
 

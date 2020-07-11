@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 26a4a3dbd54256fbc193fba299d0f7504f407254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8af64f2189625bcff5271855d6c0102551d1a535
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83832274"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185968"
 ---
 # <a name="handle-errors-in-graphical-runbooks"></a>Grafik temelli runbook’larda hataları ele alma
 
@@ -46,7 +47,7 @@ Bir hata üreten her etkinlik için başka bir etkinliğe işaret eden bir hata 
 1. Bu sorun hakkında bir bildirim gönderir.
 2. Bunun yerine otomatik olarak yeni bir VM sağlayan başka bir runbook başlatır.
 
-Bir çözüm, runbook 'ta birinci adımı işleyen bir etkinliğe işaret eden bir hata bağlantısına sahip olur. Örneğin, runbook `Write-Warning` [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet 'i gibi cmdlet 'ini ikinci adım için bir etkinliğe bağlayabilirler.
+Bir çözüm, runbook 'ta birinci adımı işleyen bir etkinliğe işaret eden bir hata bağlantısına sahip olur. Örneğin, runbook `Write-Warning` [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet 'i gibi cmdlet 'ini ikinci adım için bir etkinliğe bağlayabilirler.
 
 Ayrıca, bu iki etkinliği ayrı bir hata işleme runbook 'una yerleştirerek birçok runbook 'ta kullanılmak üzere bu davranışı genelleştirebilirsiniz. Orijinal runbook 'unuzu bu hata işleme runbook 'unu çağırmadan önce, verilerinden özel bir ileti oluşturabilir ve ardından bunu runbook 'u hata işleme öğesine bir parametre olarak geçirebilir.
 
@@ -58,7 +59,7 @@ Yapılandırma ayarını etkinleştirdikten sonra, runbook 'un hatayı işleyen 
 
 Aşağıdaki örnekte, bir runbook bir sanal makinenin bilgisayar adını içeren bir değişken alır. Daha sonra VM 'yi bir sonraki etkinlikle başlatmaya çalışır.<br><br> ![Otomasyon Runbook 'u hata işleme örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-`Get-AutomationVariable`Etkinlik ve [Start-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 'i, özel durumları hatalara dönüştürmek üzere yapılandırılır. Değişkeni alma veya VM 'yi başlatma sorunları varsa, kod hata oluşturur.<br><br> ![Otomasyon Runbook 'u hata işleme etkinlik ayarları ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png) .
+`Get-AutomationVariable`Etkinlik ve [Start-azvm](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 'i, özel durumları hatalara dönüştürmek üzere yapılandırılır. Değişkeni alma veya VM 'yi başlatma sorunları varsa, kod hata oluşturur.<br><br> ![Otomasyon Runbook 'u hata işleme etkinlik ayarları ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png) .
 
 Hata bağlantıları bu etkinliklerden tek bir `error management` kod etkinliğine akar. Bu etkinlik, `throw` `$Error.Exception.Message` geçerli özel durumu açıklayan iletiyi almak için ile birlikte işlemeyi durdurmak için anahtar sözcüğünü kullanan basit bir PowerShell ifadesiyle yapılandırılır.<br><br> ![Otomasyon Runbook 'u hata işleme kod örneği](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

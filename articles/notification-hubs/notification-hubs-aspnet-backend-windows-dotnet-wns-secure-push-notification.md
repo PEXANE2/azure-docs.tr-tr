@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f953b21a221967c2310b2fc70056d48863149821
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75530740"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220057"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs bildirimleri güvenli bir şekilde gönderin
 
@@ -93,7 +94,7 @@ Sonraki adım, anında iletme arka plan bileşeni oluşturmaktır.
 1. Çözüm Gezgini, çözümün en üst düzey düğümüne (Bu durumda**çözüm SecurePush** ) sağ tıklayın ve ardından **Ekle**' ye ve ardından **Yeni proje**' ye tıklayın.
 2. **Mağaza uygulamaları**' nı genişletin ve ardından **Windows Phone Uygulamalar**' a ve ardından **Windows çalışma zamanı bileşen (Windows Phone)** seçeneğine tıklayın. Projeyi **Pushbackgroundcomponent**olarak adlandırın ve ardından projeyi oluşturmak için **Tamam** ' a tıklayın.
 
-    ![][12]
+    ![Windows Çalışma Zamanı bileşeni (Windows Phone) Visual C# seçeneği vurgulanmış şekilde yeni proje Ekle iletişim kutusunun ekran görüntüsü.][12]
 3. Çözüm Gezgini, **Pushbackgroundcomponent (Windows Phone 8,1)** projesine sağ tıklayın ve ardından **Ekle**' ye ve ardından **sınıf**' a tıklayın. Yeni sınıfı adlandırın `PushBackgroundTask.cs` . Sınıfı oluşturmak için **Ekle** ' ye tıklayın.
 4. `PushBackgroundComponent`Ad alanı tanımının tüm içeriğini aşağıdaki kodla değiştirin ve yer tutucusunu, `{back-end endpoint}` arka ucunuzda dağıtım sırasında elde edilen arka uç bitiş noktasıyla değiştirin:
 
@@ -161,12 +162,12 @@ Sonraki adım, anında iletme arka plan bileşeni oluşturmaktır.
 11. Çözüm Gezgini, **NotifyUserWindowsPhone (Windows Phone 8,1)** projesinde, **Başvurular**' a sağ tıklayın ve ardından **Başvuru Ekle...** öğesine tıklayın. Başvuru Yöneticisi iletişim kutusunda **Pushbackgroundcomponent**' un yanındaki kutuyu işaretleyin ve ardından **Tamam**' a tıklayın.
 12. Çözüm Gezgini ' de, **NotifyUserWindowsPhone (Windows Phone 8,1)** projesinde **Package. appxmanifest** öğesine çift tıklayın. **Bildirimler**' in altında, **bildirim** ' ı **Evet**olarak ayarlayın.
 
-    ![][3]
+    ![Paket. appxmanifest ' e odaklanan Çözüm Gezgini penceresinin ekran görüntüsü, bildirim özellikli seçeneği kırmızı olarak seviyelendirilmiş şekilde ayarlanır.][3]
 13. Hala **Package. appxbildiriminde**, üstteki **Bildirimler** menüsüne tıklayın. **Kullanılabilir bildirimler** açılır listesinde, **arka plan görevleri**' ne ve ardından **Ekle**' ye tıklayın.
 14. **Package. appxmanifest**Içinde, **Özellikler**altında **anında iletme bildirimi**' ni işaretleyin.
 15. **Package. appxmanifest**Içinde, **uygulama ayarları**altında, **giriş noktası** alanına **pushbackgroundcomponent. pushbackgroundtask** yazın.
 
-    ![][13]
+    ![Paketteki Çözüm Gezgini pencerenin ekran görüntüsü, kullanılabilir bildirimler, desteklenen bildirimler, anında bildirimler ve kırmızı renkle özetlenen giriş noktası seçenekleridir.][13]
 16. **Dosya** menüsünden **Tümünü Kaydet**'e tıklayın.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma

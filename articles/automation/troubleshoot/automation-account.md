@@ -8,11 +8,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bebc89514da7f28015da5cb145ae50bf3fccdb6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edd57d3d77432f3bb37872ee26f414b56398cae0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680089"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187294"
 ---
 # <a name="troubleshoot-azure-automation-account-issues"></a>Azure Otomasyonu hesap sorunlarını giderme
 
@@ -44,7 +45,7 @@ Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki ad
 
 4. Kaynak sağlayıcıları listesinden, **Microsoft. Automation** kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
 
-5. Sağlayıcı listede yoksa, [kaynak sağlayıcısı kaydı hatalarını giderme](/azure/azure-resource-manager/resource-manager-register-provider-errors)bölümünde açıklandığı şekilde kaydedin.
+5. Sağlayıcı listede yoksa, [kaynak sağlayıcısı kaydı hatalarını giderme](../../azure-resource-manager/templates/error-register-resource-provider.md)bölümünde açıklandığı şekilde kaydedin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

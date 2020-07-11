@@ -2,12 +2,13 @@
 title: Gizli birimi kapsayıcı grubuna bağla
 description: Gizli bilgileri kapsayıcı örneklerinizin erişimine yönelik olarak depolamak üzere nasıl bağlayacağınızı öğrenin
 ms.topic: article
-ms.date: 04/03/2020
-ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: ea82ba5994feaf102d4622eada284df431e004d0
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657146"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169570"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances bir gizli birimi bağlama
 
@@ -61,7 +62,7 @@ Bir YAML şablonuyla dağıtırken, gizli değerlerin şablonda **Base64 kodlama
 Aşağıdaki YAML şablonu, üzerinde *gizli* bir birim bağlayan bir kapsayıcı grubunu tanımlar `/mnt/secrets` . Gizli birimde, "mysecret1" ve "mysecret2" gizli dizileri içeren iki dosya vardır.
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: secret-volume-demo
 properties:

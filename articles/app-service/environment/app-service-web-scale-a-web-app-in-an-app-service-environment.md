@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74688672"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220567"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Uygulamaları ölçeklendirme
 Azure App Service, genellikle ölçeklenebilmeniz gereken üç şey vardır:
@@ -29,7 +30,7 @@ ATıCı Yöneticisi, çalışan boyutlarına göre her çalışan havuzu için k
 
 Her iki öğenin de değiştirilmesi, AKEN barındırılan App Service planlarınız için gösterilen uygun Kullanıcı arabirimi aracılığıyla yapılır.  
 
-![][1]
+![Ölçek hizmeti planının ve çalışan havuzu hizmet planının ayrıntılarının nerede görüntüleneceği gösteren ekran görüntüsü.][1]
 
 ASP 'nizin içinde bulunduğu çalışan havuzundaki kullanılabilir işlem kaynakları sayısının ötesinde ASP 'nizi ölçeklendirebilirsiniz.  Bu çalışan havuzunda işlem kaynaklarına ihtiyacınız varsa, ATıCı yöneticinizden bunları eklemesi gerekir.  ATıCı 'nizi yeniden yapılandırma hakkında daha fazla bilgi için şu bilgileri okuyun: [App Service ortamını yapılandırma][HowtoConfigureASE].  Ayrıca, zamanlamaya veya ölçümlere göre kapasite eklemek için ATıCı otomatik ölçeklendirme özelliklerinden de yararlanmak isteyebilirsiniz.  Ao ortamı için otomatik ölçeklendirmeyi yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Otomatik ölçeklendirmeyi bir App Service ortamı için yapılandırma][ASEAutoscale].
 
@@ -40,14 +41,14 @@ Web uygulamanızı bir App Service Ortamı ilk kez oluşturduğunuzda 1 örnek i
 
 AŞIRIN yeterli kapasitesi varsa, bu oldukça basittir.  Ölçeği genişletmek istediğiniz siteleri tutan App Service planına gidin ve ölçek ' i seçin.  Bu, ASP için ölçeği el ile ayarlayabileceğiniz veya ASP 'niz için otomatik ölçeklendirme kurallarını yapılandırabileceğiniz Kullanıcı arabirimini açar.  Uygulamanızı el ile ölçeklendirmek için ölçeği ***, el ile girdiğim bir örnek sayısına*** ***göre*** ayarlamanız yeterlidir.  Buradan kaydırıcıyı istediğiniz miktara sürükleyin ya da kaydırıcının yanındaki kutuya girin.  
 
-![][2] 
+![ASP 'nizin ölçeğini ayarlayabileceğiniz veya ASP 'niz için otomatik ölçeklendirme kurallarını yapılandırabileceğiniz yeri gösteren ekran görüntüsü.][2] 
 
 Ao 'da bir ASP için otomatik ölçeklendirme kuralları, normal şekilde çalıştıkları gibi çalışır.  ***Ölçek ölçütü*** altında ***CPU yüzdesi*** ' ni seçebilir ve CPU yüzdesine göre ASP 'niz için otomatik ölçeklendirme kuralları oluşturabilirsiniz veya ***zamanlama ve performans kurallarını***kullanarak daha karmaşık kurallar oluşturabilirsiniz.  Otomatik ölçeklendirmeyi yapılandırma hakkında daha ayrıntılı bilgileri görmek için, burada [Azure App Service bir uygulamayı ölçeklendirin][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Çalışan havuzu seçimi
 Daha önce belirtildiği gibi, çalışan havuzu seçimine ASP kullanıcı arabiriminden erişilir.  Ölçeklendirmek istediğiniz ASP için dikey pencereyi açın ve çalışan havuzu ' nu seçin.  App Service Ortamı yapılandırdığınız tüm çalışan havuzları görüntülenir.  Yalnızca bir çalışan havuzunuz varsa, yalnızca bir havuzu listelenmiş olarak görürsünüz.  ASP 'nizin hangi çalışan havuzunu değiştirmek için, App Service planınızın taşınmasını istediğiniz çalışan havuzunu seçmeniz yeterlidir.  
 
-![][3]
+![ASP 'nizin hangi çalışan havuzunu değiştirebileceğinize ilişkin konumu gösteren ekran görüntüsü.][3]
 
 ASP 'nizi bir çalışan havuzundan diğerine taşımadan önce ASP 'niz için yeterli kapasiteye sahip olduğunuzdan emin olmak önemlidir.  Çalışan havuzları listesinde, yalnızca listelenen çalışan havuzu adı değil, söz konusu çalışan havuzunda kaç tane çalışan olduğunu da görebilirsiniz.  App Service planınızı içerecek yeterli sayıda örnek olduğundan emin olun.  Taşımak istediğiniz çalışan havuzunda daha fazla bilgi işlem kaynağına ihtiyacınız varsa, açı yöneticinizden bunları eklemesini sağlayın.  
 

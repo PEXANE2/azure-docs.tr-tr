@@ -4,15 +4,16 @@ description: Bu makalede Azure AD 'nin Azure 'da kimlik doğrulaması için sağ
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017341fd72329d0538a3cf2a6ec20d03ee6152cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c81e3389f2cc96f2581b8edee5f528237cb9eca
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830574"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185679"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure’da kimlik doğrulaması yapmak için Azure AD’yi kullanma
 
-[Azure Active Directory (ad)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) hizmeti, Kullanıcı yönetimi, etki alanı yönetimi ve çoklu oturum açma yapılandırması gibi çeşitli yönetim görevlerini mümkün bir şekilde sunar. Bu makalede, Azure 'da kimlik doğrulaması için sağlayıcı olarak Azure Otomasyonu 'nda Azure AD 'nin nasıl kullanılacağı açıklanır. 
+[Azure Active Directory (ad)](../active-directory/fundamentals/active-directory-whatis.md) hizmeti, Kullanıcı yönetimi, etki alanı yönetimi ve çoklu oturum açma yapılandırması gibi çeşitli yönetim görevlerini mümkün bir şekilde sunar. Bu makalede, Azure 'da kimlik doğrulaması için sağlayıcı olarak Azure Otomasyonu 'nda Azure AD 'nin nasıl kullanılacağı açıklanır. 
 
 ## <a name="install-azure-ad-modules"></a>Azure AD modüllerini yükler
 
@@ -38,14 +39,14 @@ Azure AD modüllerini bilgisayarınıza yüklemeden önce:
 >[!NOTE]
 >Bu modüllerle çalışmak için, Windows 'un 64 bit sürümüyle birlikte PowerShell sürüm 5,1 veya sonraki bir sürümünü kullanmanız gerekir. 
 
-1. Windows Management Framework (WMF) 5,1 ' ü yükler. Bkz. [WMF 5,1 'Yi yükleyip yapılandırma](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure?view=powershell-7).
+1. Windows Management Framework (WMF) 5,1 ' ü yükler. Bkz. [WMF 5,1 'Yi yükleyip yapılandırma](/powershell/scripting/wmf/setup/install-configure?view=powershell-7).
 
-2. [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)' daki yönergeleri kullanarak Azurerd ve/veya az ' yı yükledikten sonra.
+2. [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)' daki yönergeleri kullanarak Azurerd ve/veya az ' yı yükledikten sonra.
 
 ### <a name="install-the-msonline-module"></a>MSOnline modülünü yükler
 
 >[!NOTE]
->MSOnline modülünü yüklemek için Office 365 Yönetici rolünün bir üyesi olmanız gerekir. Bkz. [yönetici rolleri hakkında](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+>MSOnline modülünü yüklemek için Office 365 Yönetici rolünün bir üyesi olmanız gerekir. Bkz. [yönetici rolleri hakkında](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
 
 1. Bilgisayarınızda Microsoft .NET Framework 3.5. x özelliğinin etkinleştirildiğinden emin olun. Bilgisayarınızda daha yeni bir sürüm yüklü olabilir, ancak .NET Framework eski sürümleriyle geriye dönük uyumluluk etkinleştirilebilir veya devre dışı bırakılabilir. 
 
@@ -61,7 +62,7 @@ Azure AD modüllerini bilgisayarınıza yüklemeden önce:
 
 ### <a name="install-support-for-pscredential"></a>PSCredential için destek yüklemesi
 
-Azure Otomasyonu, bir kimlik bilgisi varlığını temsil etmek için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) sınıfını kullanır. Betikleriniz `PSCredential` cmdlet 'ini kullanarak nesneleri alır `Get-AutomationPSCredential` . Daha fazla bilgi için bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](shared-resources/credentials.md).
+Azure Otomasyonu, bir kimlik bilgisi varlığını temsil etmek için [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) sınıfını kullanır. Betikleriniz `PSCredential` cmdlet 'ini kullanarak nesneleri alır `Get-AutomationPSCredential` . Daha fazla bilgi için bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](shared-resources/credentials.md).
 
 ## <a name="assign-a-subscription-administrator"></a>Abonelik yöneticisi atama
 
@@ -79,7 +80,7 @@ Azure AD kullanıcısının parolasını değiştirmek için:
 
 ## <a name="configure-azure-automation-to-manage-the-azure-subscription"></a>Azure aboneliğini yönetmek için Azure Otomasyonu 'nu yapılandırma
 
-Azure Otomasyonu 'nun Azure AD ile iletişim kurması için Azure AD 'ye Azure bağlantısıyla ilişkili kimlik bilgilerini almalısınız. Bu kimlik bilgilerine örnek olarak kiracı KIMLIĞI, abonelik KIMLIĞI ve beğen verilebilir. Azure ile Azure AD arasındaki bağlantı hakkında daha fazla bilgi için bkz. [kuruluşunuzu Azure Active Directory bağlama](https://docs.microsoft.com/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops).
+Azure Otomasyonu 'nun Azure AD ile iletişim kurması için Azure AD 'ye Azure bağlantısıyla ilişkili kimlik bilgilerini almalısınız. Bu kimlik bilgilerine örnek olarak kiracı KIMLIĞI, abonelik KIMLIĞI ve beğen verilebilir. Azure ile Azure AD arasındaki bağlantı hakkında daha fazla bilgi için bkz. [kuruluşunuzu Azure Active Directory bağlama](/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops).
 
 ## <a name="create-a-credential-asset"></a>Kimlik bilgisi varlığı oluşturma
 
@@ -91,11 +92,11 @@ Kimlik bilgisi varlığını oluşturmak için Azure portal kullanabilirsiniz. B
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>Windows PowerShell ile kimlik bilgisi varlığı oluşturma
 
-Windows PowerShell 'de yeni bir kimlik bilgisi varlığı hazırlamak için, komut dosyası önce `PSCredential` Atanan Kullanıcı adı ve parolasını kullanarak bir nesne oluşturur. Betik daha sonra bu nesneyi [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) cmdlet 'i çağrısıyla varlık oluşturmak için kullanır. Alternatif olarak, komut dosyası [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) cmdlet 'ini çağırabilir ve kullanıcıdan bir ad ve parola yazıp yazmayabilirler. Bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](shared-resources/credentials.md). 
+Windows PowerShell 'de yeni bir kimlik bilgisi varlığı hazırlamak için, komut dosyası önce `PSCredential` Atanan Kullanıcı adı ve parolasını kullanarak bir nesne oluşturur. Betik daha sonra bu nesneyi [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) cmdlet 'i çağrısıyla varlık oluşturmak için kullanır. Alternatif olarak, komut dosyası [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) cmdlet 'ini çağırabilir ve kullanıcıdan bir ad ve parola yazıp yazmayabilirler. Bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](shared-resources/credentials.md). 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Azure Otomasyonu runbook 'tan Azure kaynaklarını yönetme
 
-Azure kaynaklarını Azure Otomasyonu runbook 'lardan, kimlik bilgisi varlığını kullanarak yönetebilirsiniz. Aşağıda, bir Azure aboneliğindeki sanal makineleri durdurmak ve başlatmak için kullanılacak kimlik bilgisi varlığını toplayan örnek bir PowerShell runbook 'u verilmiştir. Bu runbook ilk `Get-AutomationPSCredential` olarak Azure 'da kimlik doğrulaması yapmak için kullanılacak kimlik bilgilerini almak üzere kullanır. Ardından, kimlik bilgisini kullanarak Azure 'a bağlanmak için [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) cmdlet 'ini çağırır. Betiği, birlikte çalışmak üzere bir abonelik seçmek için [Select-azuyeniden göndermeyi Scription](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) cmdlet 'ini kullanır. 
+Azure kaynaklarını Azure Otomasyonu runbook 'lardan, kimlik bilgisi varlığını kullanarak yönetebilirsiniz. Aşağıda, bir Azure aboneliğindeki sanal makineleri durdurmak ve başlatmak için kullanılacak kimlik bilgisi varlığını toplayan örnek bir PowerShell runbook 'u verilmiştir. Bu runbook ilk `Get-AutomationPSCredential` olarak Azure 'da kimlik doğrulaması yapmak için kullanılacak kimlik bilgilerini almak üzere kullanır. Ardından, kimlik bilgisini kullanarak Azure 'a bağlanmak için [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) cmdlet 'ini çağırır. Betiği, birlikte çalışmak üzere bir abonelik seçmek için [Select-azuyeniden göndermeyi Scription](/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) cmdlet 'ini kullanır. 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 
@@ -161,4 +162,4 @@ Workflow Stop-Start-AzureVM
 * Kimlik bilgileri kullanımı hakkında ayrıntılı bilgi için bkz. [Azure Otomasyonu 'nda kimlik bilgilerini yönetme](shared-resources/credentials.md).
 * Modüller hakkında daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
 * Bir runbook 'u başlatmanız gerekiyorsa bkz. [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md).
-* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](/powershell/scripting/overview).

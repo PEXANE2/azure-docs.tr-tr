@@ -3,12 +3,12 @@ title: Azure Backup şifreleme
 description: Azure Backup ' deki şifreleme özelliklerinin, yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza nasıl yardımcı olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: ca570cfdc6e78e712715ba075168f4b06c55e4af
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aafb9868dfb6a63ec9b6a3ae654b88b202a1a145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116565"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171831"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup şifreleme
 
@@ -26,8 +26,7 @@ Varsayılan olarak, tüm verileriniz platform tarafından yönetilen anahtarlar 
 
 Azure sanal makinelerinizi yedeklerken artık size ait olan ve yönetilen anahtarları kullanarak verilerinizi şifreleyebilirsiniz. Azure Backup, yedeklemelerinizi şifrelemek için Azure Key Vault depolanan RSA anahtarlarınızı kullanmanıza olanak sağlar. Yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynak için kullanılan birinden farklı olabilir. Veriler, sırasıyla anahtarlarınız kullanılarak korunan bir AES 256 tabanlı veri şifreleme anahtarı (DEK) kullanılarak korunur. Bu sayede veriler ve anahtarlar üzerinde tam denetim elde edersiniz. Şifrelemeye izin vermek için, kurtarma hizmetleri kasasının Azure Key Vault şifreleme anahtarına erişim verilmesi gerekir. Her gerektiğinde anahtarı devre dışı bırakabilir veya erişimi iptal edebilirsiniz. Ancak, kasadaki herhangi bir öğeyi korumayı denemeden önce anahtarlarınızı kullanarak şifrelemeyi etkinleştirmeniz gerekir.
 
->[!NOTE]
->Bu özellik şu anda sınırlı kullanılabilirliğe sahip. Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinizi şifrelemek istiyorsanız lütfen [Bu anketi](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) ve e-postayı doldurun AskAzureBackupTeam@microsoft.com . Bu özelliği kullanma yeteneğinin Azure Backup hizmetten onaya tabi olduğunu unutmayın.
+[Burada](encryption-at-rest-with-cmk.md)müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinizi şifrelemek hakkında daha fazla bilgi edinin.
 
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmiş yönetilen disk VM 'lerinin yedeklemesi
 
@@ -38,7 +37,7 @@ Azure Backup Ayrıca, [depolama hizmeti şifrelemesi](https://docs.microsoft.com
 Kurtarma Hizmetleri kasasındaki verilerinizi, müşteri tarafından yönetilen anahtarları kullanarak şifrelemeye ek olarak, depolama altyapısında yapılandırılmış ek bir şifreleme katmanına sahip olmasını da tercih edebilirsiniz. Bu altyapı şifrelemesi, platform tarafından yönetilir ve müşterinin yönettiği anahtarlar kullanılarak bekleyen şifrelemeyle birlikte, yedekleme verilerinizin iki katmanlı şifrelemesine izin verir. Altyapı şifrelemenin yalnızca, bekleyen şifreleme için kendi anahtarlarınızı kullanmayı tercih ederseniz yapılandırılabileceğini not edilmelidir. Altyapı şifrelemesi, verileri şifrelemek için platform tarafından yönetilen anahtarları kullanır.
 
 >[!NOTE]
->Altyapı şifrelemesi Şu anda sınırlı önizlemededir ve yalnızca ABD Doğu, US West2 ve ABD Orta Güney bölgelerinde kullanılabilir. Bu bölgelerin herhangi birinde özelliğini kullanmak istiyorsanız, lütfen [Bu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) doldurun ve bize e-posta gönderin [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Altyapı şifrelemesi Şu anda sınırlı önizlemededir ve yalnızca ABD Doğu, US West2, ABD Orta Güney, US Gov Arizona ve ABD GOV Virginia bölgelerinde kullanılabilir. Bu bölgelerin herhangi birinde özelliğini kullanmak istiyorsanız, lütfen [Bu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) doldurun ve bize e-posta gönderin [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>ADE kullanılarak şifrelenen VM 'lerin yedeklenmesi
 

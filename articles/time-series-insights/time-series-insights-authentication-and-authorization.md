@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099221"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182007"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -91,7 +91,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 > [!IMPORTANT]
 > [Azure Active Directory kimlik doğrulaması kitaplığı (ADAL)](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) KULLANıYORSANıZ, [msal 'e geçiş yapma](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)hakkında bilgi edinin.
 
-    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
+   Daha fazla bilgi edinmek için bkz. [C# makalesini kullanarak Azure Time Series Insights ortamı IÇIN GA başvuru verilerini yönetme](time-series-insights-manage-reference-data-csharp.md) .
 
 ## <a name="common-headers-and-parameters"></a>Ortak üstbilgiler ve parametreler
 

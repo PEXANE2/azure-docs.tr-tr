@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6b6da2a15441564ef0b67e76ee5a0e0c85839a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609325"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142409"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -97,6 +98,7 @@ JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanlar�
 | Alan adı | Açıklama |
 | --- | --- |
 | `$dtId` | Dijital ikizi KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış dize |
+| `$etag` | Web sunucusu tarafından atanan standart HTTP alanı |
 | `$conformance` | Bu dijital ikizi uygunluk durumunu içeren bir sabit listesi (*uyumlu*, *uyumlu değil*, *bilinmiyor*) |
 | `{propertyName}` | JSON ( `string` , sayı türü veya nesne) içindeki bir özelliğin değeri |
 | `$relationships` | İlişki koleksiyonu yolunun URL 'SI. Bu alan, dijital ikizi giden ilişki kenarları yoksa yok olur. |
@@ -115,6 +117,7 @@ JSON nesnesi olarak biçimlendirilen bir dijital ikizi örneği aşağıda veril
 ```json
 {
   "$dtId": "Cafe",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "Temperature": 72,
   "Location": {
     "x": 101,
@@ -162,6 +165,7 @@ Bir JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi bir ilişki aşa�
 | Alan adı | Açıklama |
 | --- | --- |
 | `$relationshipId` | Bu ilişkinin KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış bir dize. Bu dize, kaynak dijital ikizi bağlamında benzersizdir, bu da `sourceId`  +  `relationshipId` Azure dijital TWINS örneği bağlamında benzersiz anlamına gelir. |
+| `$etag` | Web sunucusu tarafından atanan standart HTTP alanı |
 | `$sourceId` | Kaynak dijital ikizi KIMLIĞI |
 | `$targetId` | Hedef dijital ikizi KIMLIĞI |
 | `$relationshipName` | İlişkinin adı |

@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 1cd20e28d1b36167154059adf728a9cfdf8102bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76c8d09ef2ef0130ddac856a1f37f8b68d977494
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836626"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186240"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Otomasyonu sık sorulan sorular
 
@@ -37,7 +38,7 @@ Güncelleştirme sınıflandırmasına göre güncelleştirmelerin dağıtımı,
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Güncelleştirmeleri Azure kiracılarının tamamında dağıtabilir miyim?
 
-Güncelleştirme Yönetimi başka bir Azure kiracı raporlamada düzeltme eki gerektiren makineleriniz varsa, bunları zamanlanmak için aşağıdaki geçici çözümü kullanmanız gerekir. [Yeni-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini `ForUpdateConfiguration` bir zamanlama oluşturmak için belirtilen parametreyle birlikte kullanabilirsiniz. [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet 'ini kullanabilir ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirebilirsiniz. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir.
+Güncelleştirme Yönetimi başka bir Azure kiracı raporlamada düzeltme eki gerektiren makineleriniz varsa, bunları zamanlanmak için aşağıdaki geçici çözümü kullanmanız gerekir. [Yeni-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) cmdlet 'ini `ForUpdateConfiguration` bir zamanlama oluşturmak için belirtilen parametreyle birlikte kullanabilirsiniz. [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet 'ini kullanabilir ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirebilirsiniz. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir.
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -53,5 +54,5 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 Sorunuz burada yanıtlanmazsa, ek sorular ve yanıtlar için aşağıdaki kaynaklara başvurabilirsiniz.
 
-- [Azure Otomasyonu](https://docs.microsoft.com/answers/topics/azure-automation.html)
+- [Azure Otomasyonu](/answers/topics/azure-automation.html)
 - [Geri Bildirim forumu](https://feedback.azure.com/forums/905242-update-management)

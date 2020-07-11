@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610075"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184506"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Izleyici 'de günlük alımı için müşterinin sahip olduğu depolama hesapları
 
@@ -24,7 +25,7 @@ Başka bir senaryo, müşteri tarafından yönetilen anahtarlarla günlüklerin 
 
 Bir depolama hesabından alınan veri türleri şunlardır. Bu türlerin alımı hakkında daha fazla bilgi için bkz. [Azure tanılama uzantısından Azure Izleyici günlüklerine veri toplama](azure-storage-iis-table.md) .
 
-| Tür | Tablo bilgileri |
+| Type | Tablo bilgileri |
 |:-----|:------------------|
 | IIS günlükleri | Blob: wad-IIS-LogFiles|
 |Windows olay günlükleri | Tablo: WADWindowsEventLogsTable |
@@ -39,7 +40,7 @@ Depolama hesabının aşağıdaki gereksinimleri karşılaması gerekir:
 
 - VNet 'iniz üzerinde günlükleri depolama alanına yazan kaynaklar için erişilebilir.
 - Bağlandığı çalışma alanıyla aynı bölgede olmalıdır.
-- Açık olarak, *GÜVENILEN MS hizmetlerinin bu depolama hesabına erişmesine izin ver*' i seçerek depolama hesabından günlükleri okumasına izin Log Analytics.
+- Azure Izleyici erişimine izin ver-depolama hesabı erişiminizi ağ Seç olarak sınırlandırmayı seçerseniz, bu özel duruma izin verdiğinizden emin olun: *Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin verin*.
 
 ## <a name="process-to-configure-customer-owned-storage"></a>Müşteriye ait depolamayı yapılandırma işlemi
 Alma için kendi depolama hesabınızı kullanmanın temel süreci aşağıdaki gibidir:
@@ -50,7 +51,12 @@ Alma için kendi depolama hesabınızı kullanmanın temel süreci aşağıdaki 
 
 Bağlantıların oluşturulması ve kaldırılması için kullanılabilecek tek yöntem REST API. Her işlem için gerekli olan belirli API isteği hakkındaki ayrıntılar aşağıdaki bölümlerde verilmiştir.
 
-## <a name="api-request-values"></a>API istek değerleri
+## <a name="command-line-and-rest-api"></a>Komut satırı ve REST API
+
+### <a name="command-line"></a>Komut satırı
+Bağlı depolama hesapları oluşturmak ve yönetmek için [az Monitor Log Analytics Workspace Linked-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)' ı kullanın. Bu komut, depolama hesaplarının bir çalışma alanından bağlanıp bağlantısını kesebilir ve bağlı depolama hesaplarını listeleyebilir.
+
+### <a name="request-and-cli-values"></a>İstek ve CLı değerleri
 
 #### <a name="datasourcetype"></a>dataSourceType 
 
@@ -72,37 +78,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
-
-## <a name="get-current-links"></a>Geçerli bağlantıları al
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Belirli bir veri kaynağı türü için bağlantılı depolama hesapları al
-
-#### <a name="api-request"></a>API isteği
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Yanıt 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-### <a name="get-all-linked-storage-accounts"></a>Tüm bağlı depolama hesaplarını al
+### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Tüm veri kaynağı türleri için bağlantılı depolama hesapları al
 
 #### <a name="api-request"></a>API isteği
 
@@ -144,6 +120,34 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
         }
     ]
+}
+```
+
+
+### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Belirli bir veri kaynağı türü için bağlantılı depolama hesapları al
+
+#### <a name="api-request"></a>API isteği
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
+```
+
+#### <a name="response"></a>Yanıt 
+
+```json
+{
+    "properties":
+    {
+        "dataSourceType": "CustomLogs",
+        "storageAccountIds  ": 
+        [  
+            "<storage_account_resource_id_1>",
+            "<storage_account_resource_id_2>"
+        ],
+    },
+    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
+    "name": "CustomLogs",
+    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
 }
 ```
 

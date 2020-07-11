@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e1dd20514fcb14e411fbb7efee4157b670d462b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165677"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -258,7 +258,7 @@ Azure Işlevleri, NCRONTAB ifadelerini yorumlamak için [ncrontab](https://githu
 
 Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 
-|Tür  |Örnek  |Tetiklendiğinde  |
+|Type  |Örnek  |Tetiklendiğinde  |
 |---------|---------|---------|
 |Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|ss: 05:00, SS her saat (saat)|
 |Tüm değerler ( `*` )|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (günde 60 kez)|
@@ -287,24 +287,7 @@ Azure Işlevlerinde süreölçer tetikleyicisi için kullanabileceğiniz bazı N
 
 Bir CRON ifadesindeki sayılar, zaman aralığı değil, bir saat ve tarihe başvurur. Örneğin, `hour` alandaki 5 saat, 5 saatte bir değil 5:00 ' e başvurur.
 
-CRON ifadeleriyle kullanılan varsayılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) ' dir. CRON ifadenizi başka bir saat dilimine göre oluşturmak için adlı işlev uygulamanız için bir uygulama ayarı oluşturun `WEBSITE_TIME_ZONE` . Değeri, [Microsoft saat dilimi dizininde](https://technet.microsoft.com/library/cc749073)gösterildiği gibi istenen saat diliminin adı olarak ayarlayın.
-
-  > [!NOTE]
-  > `WEBSITE_TIME_ZONE`, Linux tüketim planında Şu anda desteklenmiyor.
-
-Örneğin, *Doğu Standart saatı* UTC-05:00 ' dir. Zamanlayıcı tetikleyicinizin her gün 10:00 ' de tetiklenmesi için, UTC saat dilimi hesaplarının aşağıdaki NCRONTAB ifadesini kullanın:
-
-```
-"0 0 15 * * *"
-``` 
-
-Ya da işlev uygulamanız için adlı bir uygulama ayarı oluşturun `WEBSITE_TIME_ZONE` ve değeri **Doğu Standart Saati**olarak ayarlayın.  Ardından aşağıdaki NCRONTAB ifadesini kullanır: 
-
-```
-"0 0 10 * * *"
-``` 
-
-' I kullandığınızda, saat, belirli bir saat dilimlerinde `WEBSITE_TIME_ZONE` yaz tasarrufu süresi gibi zaman değişikliği için ayarlanır. 
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="timespan"></a>TimeSpan
 
@@ -312,7 +295,7 @@ Ya da işlev uygulamanız için adlı bir uygulama ayarı oluşturun `WEBSITE_TI
 
 Bir CRON ifadesinin aksine bir `TimeSpan` değer, her bir işlev çağrısı arasındaki zaman aralığını belirtir. Bir işlev, belirtilen aralıktan daha uzun çalıştıktan sonra tamamlandığında, süreölçer işlevi hemen yeniden çağırır.
 
-Dize olarak ifade `TimeSpan` edildiğinde, biçim 24 ' `hh:mm:ss` `hh` ten küçüktür. İlk iki basamak 24 veya daha büyükse, biçim olur `dd:hh:mm` . Aşağıda bazı örnekler verilmiştir:
+Dize olarak ifade `TimeSpan` edildiğinde, biçim 24 ' `hh:mm:ss` `hh` ten küçüktür. İlk iki basamak 24 veya daha büyükse, biçim olur `dd:hh:mm` . İşte bazı örnekler:
 
 |Örnek |Tetiklendiğinde  |
 |---------|---------|

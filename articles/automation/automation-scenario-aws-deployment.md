@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855305"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185951"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Runbook ile Amazon Web Services VM dağıtma
 
 Bu makalede, Amazon Web Service (AWS) aboneliğinizde bir sanal makine sağlamak için Azure Otomasyonu 'Nu nasıl kullanabileceğinizi öğrenirsiniz ve bu VM 'ye özel bir ad verebilirsiniz: AWS 'nin VM 'yi "etiketleme" olarak ifade eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure Otomasyonu hesabınız ve bir Amazon Web Services (AWS) aboneliğine sahip olmanız gerekir. Azure Otomasyonu hesabı ayarlama ve AWS aboneliği kimlik bilgilerinizle yapılandırma hakkında daha fazla bilgi için, [Amazon Web Services kimlik doğrulamasını yapılandırma](automation-config-aws-account.md)konusunu gözden geçirin. Bu hesaba aşağıdaki bölümlerde başvuru yaptığınız için, bu hesap, devam etmeden önce AWS abonelik kimlik bilgilerinizle oluşturulmalıdır veya güncelleştirilir.
 
@@ -101,7 +101,6 @@ AWS PowerShell modülünün Azure Otomasyonu 'na aktarıldığından emin olun.
  
 * Hangi runbook 'ların desteklendiğini öğrenmek için bkz.[Azure Otomasyonu runbook türleri](automation-runbook-types.md).
 * Runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
-* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/scripting/overview).
+* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](/powershell/scripting/overview).
 * Betik desteği için bkz. [Azure Otomasyonu 'Nda yerel PowerShell betiği desteği](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
-* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

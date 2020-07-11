@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680996"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187209"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
@@ -57,7 +58,7 @@ Açıklamasıyla ilgili bir olay için **Microsoft-SMA** olay günlüğü ' ne b
 
 #### <a name="issue"></a>Sorun
 
-Karma Runbook Worker, bir sorgu sonucunun geçerli olmadığını belirten Event 15011 alır. Çalışan, [SignalR sunucusuyla](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1)bir bağlantı açmayı denediğinde aşağıdaki hata görüntülenir.
+Karma Runbook Worker, bir sorgu sonucunun geçerli olmadığını belirten Event 15011 alır. Çalışan, [SignalR sunucusuyla](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)bir bağlantı açmayı denediğinde aşağıdaki hata görüntülenir.
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -237,7 +238,7 @@ Hibrit çalışanlar, bulutta çalışan runbook işlerinin çıkış ve mesaj g
 
 #### <a name="issue"></a>Sorun
 
-Windows karma Runbook Worker üzerinde çalışan bir betik, bir Orchestrator korumalı alanı üzerinde Office 365 ' e istendiği şekilde bağlanamaz. Betik, bağlantı için [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) ' i kullanıyor. 
+Windows karma Runbook Worker üzerinde çalışan bir betik, bir Orchestrator korumalı alanı üzerinde Office 365 ' e istendiği şekilde bağlanamaz. Betik, bağlantı için [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) ' i kullanıyor. 
 
 Proxy 'yi ve atlama listesini ayarlamak için **Orchestrator.Sandbox.exe.config** ayarlarsanız, korumalı alan hala düzgün şekilde bağlanmaz. Aynı ara sunucu ve atlama listesi ayarlarına sahip bir **Powershell_ise.exe.config** dosyası, beklendiği gibi çalışıyor gibi çalışır. Service Management Automation (SMA) günlükleri ve PowerShell günlükleri ara sunucu ile ilgili herhangi bir bilgi sağlamaz.
 
@@ -247,9 +248,9 @@ Sunucu üzerindeki Active Directory Federasyon Hizmetleri (AD FS) (AD FS) bağla
 
 #### <a name="resolution"></a>Çözüm
 
-Komut dosyanızı PowerShell cmdlet 'leri için MSOnline modülü yerine Azure Active Directory modüllerini kullanacak şekilde geçirerek Orchestrator korumalı alanı için sorunu çözebilirsiniz. Daha fazla bilgi için bkz. [Orchestrator 'Dan Azure Otomasyonu 'na (Beta) geçiş](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+Komut dosyanızı PowerShell cmdlet 'leri için MSOnline modülü yerine Azure Active Directory modüllerini kullanacak şekilde geçirerek Orchestrator korumalı alanı için sorunu çözebilirsiniz. Daha fazla bilgi için bkz. [Orchestrator 'Dan Azure Otomasyonu 'na (Beta) geçiş](../automation-orchestrator-migration.md).
 
-MSOnline modülü cmdlet 'lerini kullanmaya devam etmek istiyorsanız, komut dosyanızı [Invoke-komutunu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)kullanacak şekilde değiştirin. Ve parametreleri için değerleri `ComputerName` belirtin `Credential` . 
+MSOnline modülü cmdlet 'lerini kullanmaya devam etmek istiyorsanız, komut dosyanızı [Invoke-komutunu](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)kullanacak şekilde değiştirin. Ve parametreleri için değerleri `ComputerName` belirtin `Credential` . 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

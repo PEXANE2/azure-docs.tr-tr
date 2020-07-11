@@ -8,11 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680875"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187175"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Paylaşılan kaynak sorunlarını giderme
 
@@ -32,7 +33,7 @@ PowerShell modüllerini içeri aktarma karmaşık, çok adımlı bir işlem oldu
 
 #### <a name="resolution"></a>Çözüm
 
-Bu sorunu çözmek için [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) cmdlet 'ini kullanarak takılı olan modülü kaldırmanız gerekir. Daha sonra modülün içeri aktarılmasını yeniden deneyebilirsiniz.
+Bu sorunu çözmek için [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) cmdlet 'ini kullanarak takılı olan modülü kaldırmanız gerekir. Daha sonra modülün içeri aktarılmasını yeniden deneyebilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -69,7 +70,7 @@ Modülün Azure Otomasyonu 'na başarıyla aktarılamayan bazı yaygın nedenler
 * Yapı, Otomasyon gereksinimlerinin yapısıyla eşleşmez.
 * Modül, Otomasyon hesabınıza dağıtılmamış başka bir modüle bağımlıdır.
 * Modülün içindeki bağımlılıkları eksik.
-* [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) cmdlet 'i modülü yüklemek için kullanılıyor ve tam depolama yolu sağlamadınız veya genel olarak ERIŞILEBILEN bir URL kullanarak modülü yüklemediniz.
+* [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) cmdlet 'i modülü yüklemek için kullanılıyor ve tam depolama yolu sağlamadınız veya genel olarak ERIŞILEBILEN bir URL kullanarak modülü yüklemediniz.
 
 #### <a name="resolution"></a>Çözüm
 

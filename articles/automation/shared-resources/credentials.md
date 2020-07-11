@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744990"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187413"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu 'nda kimlik bilgilerini yönetme
 
-Otomasyon kimlik bilgileri varlığı, Kullanıcı adı ve parola gibi güvenlik kimlik bilgilerini içeren bir nesne barındırır. Runbook 'lar ve DSC yapılandırması, kimlik doğrulaması için bir [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) nesnesini kabul eden cmdlet 'leri kullanır. Alternatif olarak, `PSCredential` kimlik doğrulaması gerektiren bir uygulama veya hizmete sağlamak üzere nesnenin Kullanıcı adını ve parolasını ayıklayabilirler. 
+Otomasyon kimlik bilgileri varlığı, Kullanıcı adı ve parola gibi güvenlik kimlik bilgilerini içeren bir nesne barındırır. Runbook 'lar ve DSC yapılandırması, kimlik doğrulaması için bir [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) nesnesini kabul eden cmdlet 'leri kullanır. Alternatif olarak, `PSCredential` kimlik doğrulaması gerektiren bir uygulama veya hizmete sağlamak üzere nesnenin Kullanıcı adını ve parolasını ayıklayabilirler. 
 
 >[!NOTE]
 >Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Azure Otomasyonu, anahtarı sistem tarafından yönetilen Key Vault depolar. Otomasyon, güvenli bir varlık depolamadan önce anahtarı Key Vault 'den yükler ve ardından varlığı şifrelemek için kullanır. 
@@ -30,7 +31,7 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon kimlik bilgilerini 
 
 | Cmdlet | Açıklama |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Kimlik bilgisiyle ilgili meta verileri içeren bir [Credentialınfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) nesnesi alır. Cmdlet `PSCredential` nesnenin kendisini almaz.  |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Kimlik bilgisiyle ilgili meta verileri içeren bir [Credentialınfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) nesnesi alır. Cmdlet `PSCredential` nesnenin kendisini almaz.  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Yeni bir Otomasyon kimlik bilgisi oluşturur. |
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Otomasyon kimlik bilgisini kaldırır. |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Mevcut bir Otomasyon kimlik bilgisinin özelliklerini ayarlar. |
@@ -42,8 +43,8 @@ Aşağıdaki tablodaki cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmala
 | Cmdlet | Açıklama |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |`PSCredential`Runbook veya DSC yapılandırmasında kullanılacak bir nesne alır. Çoğu kez, ikincinin yalnızca kimlik bilgisi bilgilerini aldığı için cmdlet yerine bu [iç cmdlet](modules.md#internal-cmdlets) 'i kullanmanız gerekir `Get-AzAutomationCredential` . Bu bilgiler normalde başka bir cmdlet 'e geçmek için yararlı değildir. |
-| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Kullanıcı adı ve parola isteminde bir kimlik bilgisi alır. Bu cmdlet, varsayılan Microsoft. PowerShell. Security modülünün bir parçasıdır. Bkz. [varsayılan modüller](modules.md#default-modules).|
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Bir kimlik bilgisi varlığı oluşturur. Bu cmdlet, varsayılan Azure modülünün bir parçasıdır. Bkz. [varsayılan modüller](modules.md#default-modules).|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Kullanıcı adı ve parola isteminde bir kimlik bilgisi alır. Bu cmdlet, varsayılan Microsoft. PowerShell. Security modülünün bir parçasıdır. Bkz. [varsayılan modüller](modules.md#default-modules).|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Bir kimlik bilgisi varlığı oluşturur. Bu cmdlet, varsayılan Azure modülünün bir parçasıdır. Bkz. [varsayılan modüller](modules.md#default-modules).|
 
 `PSCredential`Kodunuzda nesneleri almak için modülünü içeri aktarmanız gerekir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
 
@@ -103,7 +104,7 @@ Bir runbook veya DSC yapılandırması, iç cmdlet ile bir kimlik bilgisi varlı
 > [!NOTE]
 > `Get-AzAutomationCredential`Cmdlet 'i, `PSCredential` kimlik doğrulaması için kullanılabilecek bir nesne almaz. Yalnızca kimlik bilgileri hakkında bilgi sağlar. Bir runbook 'ta kimlik bilgisi kullanmanız gerekiyorsa, bunu kullanarak bir nesne olarak almanız gerekir `PSCredential` `Get-AutomationPSCredential` .
 
-Alternatif olarak, bir parolanın güvenli olmayan bir sürümünü temsil eden bir [NetworkCredential](/dotnet/api/system.net.networkcredential) nesnesi almak Için [getnetworkcredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) yöntemini kullanabilirsiniz.
+Alternatif olarak, bir parolanın güvenli olmayan bir sürümünü temsil eden bir [NetworkCredential](/dotnet/api/system.net.networkcredential) nesnesi almak Için [getnetworkcredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) yöntemini kullanabilirsiniz.
 
 ### <a name="textual-runbook-example"></a>Metinsel runbook örneği
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 75db20bdb746e7d15bef56ce7ac0a064993d3f3a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045833"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187770"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>CI/CD NPM paketini kullanarak bir Azure Stream Analytics işi dağıtma 
 
@@ -41,15 +41,11 @@ Bir Stream Analytics Visual Studio Code projesi başarıyla oluşturulduğunda, 
 
 * Şablon dosyası Kaynak Yöneticisi
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * Kaynak Yöneticisi Parameters dosyası
 
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```   
+   `[ProjectName].JobTemplate.parameters.json`   
 
 parameters.jsdosyadaki varsayılan parametreler Visual Studio Code projenizdeki ayarlardan alınır. Başka bir ortama dağıtmak istiyorsanız, parametreleri uygun şekilde değiştirin.
 
@@ -157,7 +153,7 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
    |Azure aboneliği| Aboneliğinizi seçin.|
    |Eylem| *Kaynak grubu oluşturma veya güncelleştirme*|
    |Kaynak grubu| Stream Analytics işinizi içerecek test kaynak grubu için bir ad seçin.|
-   |Konum|Test kaynak grubunuzun konumunu seçin.|
+   |Location|Test kaynak grubunuzun konumunu seçin.|
    |Şablon konumu| *Bağlı yapıt*|
    |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.js |
    |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.js|
@@ -174,7 +170,7 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
    |Azure aboneliği| Aboneliğinizi seçin.|
    |Eylem| *Kaynak grubu oluşturma veya güncelleştirme*|
    |Kaynak grubu| Stream Analytics işinizi içerecek üretim kaynak grubu için bir ad seçin.|
-   |Konum|Üretim kaynağı grubunuzun konumunu seçin.|
+   |Location|Üretim kaynağı grubunuzun konumunu seçin.|
    |Şablon konumu| *Bağlı yapıt*|
    |Şablon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.js |
    |Şablon parametreleri|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.js|

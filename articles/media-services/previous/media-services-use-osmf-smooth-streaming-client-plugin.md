@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84265327"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172018"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe açık kaynak medya çerçevesi için Microsoft Kesintisiz Akış eklentisini kullanma  
 ## <a name="overview"></a>Genel Bakış
@@ -59,7 +60,7 @@ Statik ve dinamik yükleme hakkında daha fazla bilgi için bkz. resmi [OSMF ekl
 ### <a name="ss-for-osmf-static-loading"></a>OSMF statik yükleme için SS
 Aşağıdaki kod parçacığı, OSMF için SS eklentisinin statik olarak nasıl yükleneceğini ve OSMF MediaFactory sınıfını kullanarak temel bir video oynamasını göstermektedir. OSMF koduna yönelik SS 'yi eklemeden önce lütfen proje başvurusunun "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" statik eklentisini içerdiğinden emin olun.
 
-```
+```csharp
 package 
 {
 
@@ -195,7 +196,9 @@ package
 ### <a name="ss-for-osmf-dynamic-loading"></a>OSMF dinamik yüklemesi için SS
 Aşağıdaki kod parçacığı, OSMF için SS eklentisinin dinamik olarak nasıl yükleneceğini ve OSMF MediaFactory sınıfını kullanarak temel bir video oynamasını göstermektedir. OSMF koduna yönelik SS 'yi eklemeden önce, dosya protokolünü kullanarak yüklemek istiyorsanız veya HTTP yükü için bir Web sunucusu altına kopyalamak istiyorsanız, "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" dinamik eklentisini proje klasörüne kopyalayın. Proje başvurularına "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" eklemeniz gerekmez.
 
-leyebilir
+```csharp
+package 
+{
 
     import flash.display.*;
     import org.osmf.media.*;
@@ -325,6 +328,7 @@ leyebilir
 
     }
 }
+```
 
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>SS ODMF Dynamic eklentisi ile medya kayıttan yürütme
 OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/)ile uyumludur. SMP 'e Kesintisiz Akış içerik yürütme eklemek için OSMF eklentisi için SS kullanabilirsiniz. Bunu yapmak için, aşağıdaki adımları kullanarak HTTP yükü için bir Web sunucusu altına "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" öğesini kopyalayın:
@@ -336,49 +340,53 @@ OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (
    **Göz önünde** İçerik Web sunucunuzun geçerli bir crossdomain.xml olması gerekir. 
 4. Aşağıdaki örnekte olduğu gibi, en sevdiğiniz metin düzenleyicisini kullanarak kodu kopyalayıp basit bir HTML sayfasına yapıştırın:
 
-        <html>
-        <body>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
-        </embed>
-        </object>
-        </body>
-        </html>
-
+    ```html
+    <html>
+    <body>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
+    </embed>
+    </object>
+    </body>
+    </html>
+    ```
 
 
 1. Ekleme koduna Kesintisiz Akış OSMF eklentisi ekleyin ve kaydedin.
    
-        <html>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
-        </embed>
-        </object>
-        </html>
+    ```html
+    <html>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
+    </embed>
+    </object>
+    </html>
+    ```
+
 2. HTML sayfanızı kaydedin ve bir Web sunucusuna yayımlayın. En sevdiğiniz Flash &reg; Player etkin Internet tarayıcısını (Internet Explorer, Chrome, Firefox vb.) kullanarak yayınlanan web sayfasına gidin.
 3. Adobe Flash Player içindeki Kesintisiz Akış içeriğin keyfini çıkarın &reg; &reg; .
 

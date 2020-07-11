@@ -10,11 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fbd721bc54ce2de6b7923b0f582c53ffc7da1a73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc55a4c5ab20cac041a00a0f924b207eb256ae8b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837034"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186529"
 ---
 # <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Verileri Azure Otomasyonu durum yapılandırması için ölçeklendirerek yapılandırma
 
@@ -43,8 +44,8 @@ Bilgiler, mantıksal fikirlere göre [metin dosyalarında düzenlenir](https://g
 Bu bilgiler, tercih ettiğiniz dosya biçiminde düzenlenmiştir (JSON, YAML veya PSD1).
 Ardından cmdlet 'ler, içindeki her bir dosyadaki bilgileri bir sunucu veya sunucu rolünün tek bir görünümünde [birleştirerek](https://github.com/gaelcolas/Datum#datum-tree) yapılandırma verileri dosyaları oluşturmak için sağlanır.
 
-Veri dosyaları oluşturulduktan sonra, MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)Için bunları [DSC yapılandırma betikleri](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) ile birlikte kullanabilirsiniz.
-Daha sonra, yapılandırma çekmek için [Şirket](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) Içinden veya [Azure 'da](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) sunucularınızı kaydettirin.
+Veri dosyaları oluşturulduktan sonra, MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)Için bunları [DSC yapılandırma betikleri](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) ile birlikte kullanabilirsiniz.
+Daha sonra, yapılandırma çekmek için [Şirket](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines) Içinden veya [Azure 'da](./automation-dsc-onboarding.md#enable-azure-vms) sunucularınızı kaydettirin.
 
 Datum denemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/datum/) ziyaret edin ve çözümü indirin veya "proje sitesi" ne tıklayarak [belgeleri](https://github.com/gaelcolas/Datum#2-getting-started--concepts)görüntüleyin.
 

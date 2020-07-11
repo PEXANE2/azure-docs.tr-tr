@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710873"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171457"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Öğretici: yayımlama, olaylara yerel olarak abone olma
 
@@ -22,7 +21,7 @@ Bu makalede, IoT Edge Event Grid kullanarak olayları yayımlamak ve bunlara abo
 > [!NOTE]
 > Azure Event Grid konuları ve abonelikleri hakkında bilgi edinmek için bkz. [Event Grid kavramlar](concepts.md).
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
 * **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
@@ -38,7 +37,7 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge cihazınızı seçin
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Azure portalında](https://portal.azure.com) oturum açın
 1. IoT Hub gidin.
 1. **Otomatik cihaz yönetimi** bölümündeki menüden **IoT Edge** ' yi seçin. 
 1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
@@ -76,7 +75,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
           }
         }
     ```    
- 1. **Kaydet** 'e tıklayın
+ 1. **Kaydet**’e tıklayın
  1. Azure Event Grid abone modülünü birlikte dağıtmadan önce eklemek için sonraki bölüme geçin.
 
     >[!IMPORTANT]
@@ -98,7 +97,7 @@ Bu bölümde, olayların sunulabileceği bir olay işleyicisi olarak görev yapa
    * **Ad**: abone
    * **Görüntü URI 'si**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Kapsayıcı oluşturma seçenekleri**: yok
-1. **Kaydet** 'e tıklayın
+1. **Kaydet**’e tıklayın
 1. Yönlendirmeler bölümüne devam etmek için **İleri** 'ye tıklayın
 
  ### <a name="setup-routes"></a>Kurulum yolları

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ec407b7f6baf56f0a2fe724089826d8f9303b85
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68854078"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186852"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Barındırılan kullanıcı arabirimi deneyiminizi yapılandırma
 
@@ -35,13 +35,11 @@ Web uygulamalarınız için barındırılan bir kullanıcı arabirimi yapıland�
   
 4. Bir düzen seçin.
 
-    |  |  |
-    |---------|---------|
-    |Arama çubuğu ve sonuçları (varsayılan)    | Aşağıdaki arama sonuçlarıyla birlikte bir arama kutusu görüntüler.         |
-    |Yalnızca sonuçlar     | Arama kutusu olmadan yalnızca arama sonuçlarını görüntüler. Bu düzeni kullanırken, arama sorgusu (`&q=<query string>`) sağlamanız gerekir. Sorgu parametresini JavaScript kod parçacığındaki istek URL 'sine veya HTML uç nokta bağlantısını ekleyin.        |
-    |Açılır pencere     | Bir arama kutusu sağlar ve arama sonuçlarını bir kayan kaplamasıyla görüntüler.        |
-    
-5. Bir renk teması seçin. **Temayı Özelleştir**' e tıklayarak renkleri uygulamanıza uyacak şekilde özelleştirebilirsiniz. Bir rengi değiştirmek için, rengin RGB ONALTıLıK değerini girin (örneğin, `#366eb8`) veya renk önizlemeye tıklayın.
+    - Arama çubuğu ve sonuçları (varsayılan): altında arama sonuçlarıyla birlikte bir arama kutusu görüntüler.
+    - Yalnızca sonuçlar: arama kutusu olmadan yalnızca arama sonuçlarını görüntüler. Bu düzeni kullanırken, arama sorgusu () sağlamanız gerekir `&q=<query string>` . Sorgu parametresini JavaScript kod parçacığındaki istek URL 'sine veya HTML uç nokta bağlantısını ekleyin.
+    - Açılır pencere: bir arama kutusu sağlar ve arama sonuçlarını kayan bir kaplama içinde görüntüler.
+
+5. Bir renk teması seçin. **Temayı Özelleştir**' e tıklayarak renkleri uygulamanıza uyacak şekilde özelleştirebilirsiniz. Bir rengi değiştirmek için, rengin RGB ONALTıLıK değerini girin (örneğin, `#366eb8` ) veya renk önizlemeye tıklayın.
 
    Portalın sağ tarafında yaptığınız değişikliklerin önizlemesini yapabilirsiniz. **Varsayılana sıfırla** ' ya tıkladığınızda seçili temanın varsayılan renkleriyle yaptığınız değişiklikler geri alınır.
 
@@ -96,55 +94,38 @@ Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın
 
 ### <a name="web-search-configurations"></a>Web araması yapılandırması
 
-|  |  |
-|---------|---------|
-|Web sonuçları etkin    | Web aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir Web sekmesi görürsünüz)        |
-|Otomatik öneri etkinleştir     | Özel otomatik öner'nin etkinleştirilip etkinleştirilmediğini belirler (ek maliyet için [fiyatlandırmayı](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) görüntüleyin).        |
-|Sayfa başına Web sonucu    | Tek seferde görüntülenecek web araması sonuçlarının sayısı (sayfa başına en fazla 50 sonuç).        |
-|Resim yazısı   | Görüntülerin arama sonuçlarıyla görüntülenip görüntülenmediğini belirler.|
-
+- Web sonuçları etkin: Web aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir Web sekmesi görürsünüz)
+- Otomatik öneri etkinleştir: özel otomatik önerin etkinleştirilip etkinleştirilmediğini belirler (ek maliyet için [fiyatlandırmayı](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) görüntüleyin).
+- Sayfa başına Web sonucu: tek seferde görüntülenecek web araması sonuçlarının sayısı (sayfa başına en fazla 50 sonuç).
+- Resim başlığı: görüntülerin arama sonuçlarıyla görüntülenip görüntülenmediğini belirler.
 
 **Gelişmiş yapılandırma göster**' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir:
 
-
-|  | |
-|---------|---------|
-|Sözcükleri Vurgula     | Sonuçların arama terimleriyle kalın olarak görüntülenip görüntülenmeyeceğini belirler.         |
-|Bağlantı hedefi    |  Kullanıcı bir arama sonucuna tıkladığında web sayfasının yeni bir tarayıcı sekmesinde (boş) veya aynı tarayıcı sekmesinde (kendi) açılıp açılamayacağını belirler.        |
+- Sözcükleri vurgula: sonuçların, arama terimleriyle kalın olarak gösterilip gösterilmeyeceğini belirler.
+- Bağlantı hedefi: Kullanıcı bir arama sonucuna tıkladığında, Web sayfasının yeni bir tarayıcı sekmesinde (boş) veya aynı tarayıcı sekmesinde (kendi) açılıp açılamayacağını belirler.
 
 ### <a name="image-search-configurations"></a>Görüntü arama yapılandırması
 
-| | |
-|---------|---------|
-|Görüntü sonuçları etkin     | Görüntü aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir görüntüler sekmesi görürsünüz).            |
-|Sayfa başına görüntü sonucu     | Tek seferde görüntülenecek görüntü arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).          |
+- Görüntü sonuçları etkin: görüntü aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir görüntüler sekmesi görürsünüz).
+- Sayfa başına görüntü sonucu: tek seferde görüntülenecek görüntü arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).
 
 **Gelişmiş yapılandırmaları göster**' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
   
-| | |
-|---------|---------|
-| Filtreleri Etkinleştir     | Kullanıcının Bing 'nin döndürdüğü görüntüleri filtrelemek için kullanabileceği filtreler ekler. Örneğin, Kullanıcı yalnızca animasyonlu GIF 'Ler için sonuçlara filtre uygulayabilir.|
+- Filtreleri etkinleştir: kullanıcının Bing tarafından döndürülen görüntüleri filtrelemek için kullanabileceği filtreleri ekler. Örneğin, Kullanıcı yalnızca animasyonlu GIF 'Ler için sonuçlara filtre uygulayabilir.
 
 ### <a name="video-search-configurations"></a>Video arama yapılandırması
 
-|  | |
-|---------|---------|
-|Video sonuçları etkin     | Video aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir videolar sekmesi görürsünüz).           |
-|Sayfa başına video sonucu   | Tek seferde görüntülenecek video arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).        |
+- Video sonuçları etkin: video aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir videolar sekmesi görürsünüz).
+- Sayfa başına video sonucu: tek seferde görüntülenecek video arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).
 
 **Gelişmiş yapılandırmaları göster**' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
   
-|  | |
-|---------|---------|
-|Filtreleri Etkinleştir    | Kullanıcının Bing 'nin döndürdüğü videoları filtrelemek için kullanabileceği filtreler ekler. Örneğin Kullanıcı, son 24 saat içinde bulunan belirli bir çözünürlük veya videoların bulunduğu videoların sonuçlarını filtreleyebilir.          |
+- Filtreleri etkinleştir: kullanıcının, Bing tarafından döndürülen videoları filtrelemek için kullanabileceği filtreleri ekler. Örneğin Kullanıcı, son 24 saat içinde bulunan belirli bir çözünürlük veya videoların bulunduğu videoların sonuçlarını filtreleyebilir.
 
 ### <a name="miscellaneous-configurations"></a>Çeşitli yapılandırma
 
-
-| |  |
-|---------|---------|
-|Sayfa başlığı   | Arama sonuçları sayfasının başlık alanında görüntülenen metin (açılır düzen için değil).        |
-|Araç çubuğu teması    | Arama sonuçları sayfasının başlık alanının arka plan rengini belirler. |
+- Sayfa başlığı: arama sonuçları sayfasının başlık alanında görüntülenen metin (açılır düzen için değil).
+- Toolbar teması: arama sonuçları sayfasının başlık alanının arka plan rengini belirler.
 
 **Gelişmiş yapılandırma göster**' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir.  
 

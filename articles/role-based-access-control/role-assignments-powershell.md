@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790900"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146660"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma
 
@@ -26,7 +27,7 @@ ms.locfileid: "84790900"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
@@ -37,7 +38,7 @@ Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 Rol atamaları eklemek veya kaldırmak için, bir nesnenin benzersiz KIMLIĞINI belirtmeniz gerekebilir. KIMLIK şu biçimdedir: `11111111-1111-1111-1111-111111111111` . KIMLIĞI Azure portal veya Azure PowerShell kullanarak alabilirsiniz.
 
-### <a name="user"></a>Kullanıcı
+### <a name="user"></a>User
 
 Bir Azure AD kullanıcısının nesne KIMLIĞINI almak için [Get-AzADUser](/powershell/module/az.resources/get-azaduser)öğesini kullanabilirsiniz.
 
@@ -108,7 +109,7 @@ Rol yeniden adlandırılsa bile, rol KIMLIĞI değişmez. Rol atamalarınızı o
 Rol adı yerine benzersiz rol KIMLIĞI kullanarak bir rol ataması eklemek için, [New-Azroleatama](/powershell/module/az.resources/new-azroleassignment)kullanın.
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
+New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -Scope <resource_group_name/resource/management groups>
 ```
 
 Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü ilaç * \@ example.com* kullanıcısına *ilaç-Sales* kaynak grubu kapsamında atar. Benzersiz rol KIMLIĞINI almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) ' ı kullanabilir veya [Azure yerleşik rolleri](built-in-roles.md)' ne bakabilirsiniz.

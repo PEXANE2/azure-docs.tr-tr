@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904601"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171151"
 ---
 # <a name="convert-to-image-directory"></a>Görüntü Dizinine Dönüştürme
 
@@ -24,11 +24,15 @@ Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönü
 
 1.  **Görüntü dizinine dönüştürme** modülünü denemenize ekleyin. Modül listesindeki ' Görüntü İşleme/Image Data Transformation ' kategorisinde bu modülü bulabilirsiniz. 
 
-2.  Görüntü veri kümesini girdi olarak bağlayın. Lütfen giriş veri kümesinde resim olduğundan emin olun.
+2.  [Bir görüntü veri kümesini kaydedin](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) ve modül giriş bağlantı noktasına bağlayın. Lütfen giriş veri kümesinde resim olduğundan emin olun. 
     Aşağıdaki veri kümesi biçimleri desteklenir:
 
     - Şu Uzantılarda sıkıştırılmış dosya: '. zip ', '. tar ', '. gz ', '. bz2 '.
     - Görüntüleri içeren klasör. **Öncelikle bu gibi bir klasörü sıkıştırmak ve sonra sıkıştırılmış dosyayı veri kümesi olarak kullanmak önerilir**.
+
+    > [!WARNING]
+    > **Veri alma** modülünün çıkış türü yalnızca dosya yolu dizesini Içeren Dataframe dizini olduğundan, görüntü veri kümesini içeri aktarmak Için **veri alma** **modülünü kullanamazsınız.**
+    
 
     > [!NOTE]
     > Denetimli öğreniminde görüntü veri kümesini kullanıyorsanız etiket gereklidir.
@@ -54,13 +58,13 @@ Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönü
 
 ###  <a name="expected-inputs"></a>Beklenen girişler  
 
-| Name          | Tür                  | Açıklama   |
+| Ad          | Tür                  | Açıklama   |
 | ------------- | --------------------- | ------------- |
 | Giriş veri kümesi | AnyDirectory, ZipFile | Giriş veri kümesi |
 
 ###  <a name="output"></a>Çıktı  
 
-| Name                   | Tür           | Açıklama            |
+| Ad                   | Tür           | Açıklama            |
 | ---------------------- | -------------- | ---------------------- |
 | Çıkış resmi dizini | ImageDirectory | Çıkış resmi dizini |
 

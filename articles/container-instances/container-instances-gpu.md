@@ -2,12 +2,13 @@
 title: GPU özellikli kapsayıcı örneği dağıt
 description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygulamaları çalıştırmak için Azure Container Instances 'ı dağıtmayı öğrenin.
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77525300"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169757"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
 
@@ -72,7 +73,7 @@ GPU kaynaklarını eklemenin bir yolu, bir [YAML dosyası](container-instances-m
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -138,7 +139,7 @@ Bir kapsayıcı grubunu GPU kaynaklarıyla dağıtmanın bir başka yolu da [Kay
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -167,10 +168,10 @@ Bir kapsayıcı grubunu GPU kaynaklarıyla dağıtmanın bir başka yolu da [Kay
 }
 ```
 
-[Az Group Deployment Create][az-group-deployment-create] komutuyla şablonu dağıtın. GPU kaynaklarını destekleyen *eastus* gibi bir bölgede oluşturulan bir kaynak grubunun adını sağlamanız gerekir.
+[Az Deployment Group Create][az-deployment-group-create] komutuyla şablonu dağıtın. GPU kaynaklarını destekleyen *eastus* gibi bir bölgede oluşturulan bir kaynak grubunun adını sağlamanız gerekir.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 Dağıtımın tamamlanması birkaç dakika sürer. Ardından, kapsayıcı başlar ve TensorFlow işini çalıştırır. Günlük çıktısını görüntülemek için [az Container logs][az-container-logs] komutunu çalıştırın:
@@ -239,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

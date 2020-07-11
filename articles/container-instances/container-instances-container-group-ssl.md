@@ -2,12 +2,13 @@
 title: Sepet kapsayıcısı ile TLS 'yi etkinleştirme
 description: Sepet kapsayıcısında NGINX 'i çalıştırarak Azure Container Instances çalıştıran bir kapsayıcı grubu için SSL veya TLS uç noktası oluşturma
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80984615"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169859"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Bir sepet kapsayıcısında TLS uç noktasını etkinleştirme
 
@@ -146,7 +147,7 @@ code deploy-aci.yaml
 ' In altında gösterildiği Base64 kodlamalı dosyaların içeriğini girin `secret` . Örneğin, `cat` Base64 kodlamalı her bir dosya içeriğini görmek için. Dağıtım sırasında, bu dosyalar kapsayıcı grubundaki gizli bir [birime](container-instances-volume-secret.md) eklenir. Bu örnekte, gizli birim NGINX kapsayıcısına bağlanır.
 
 ```YAML
-api-version: 2018-10-01
+api-version: 2019-12-01
 location: westus
 name: app-with-ssl
 properties:

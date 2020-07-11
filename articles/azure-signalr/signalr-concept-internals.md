@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82105769"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169808"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service iç işlevleri
 
@@ -85,6 +85,8 @@ ASP.NET Core SignalR 'nin [taşıma protokolleri](https://github.com/aspnet/Sign
 Bu noktada, uygulama sunucusu yeni istemciden bilgi içeren bir olay alır. Uygulama sunucusunda istemciye bir mantıksal bağlantı oluşturulur. Veri kanalı, SignalR hizmeti aracılığıyla istemciden uygulama sunucusuna oluşturulur.
 
 SignalR hizmeti, verileri istemciden eşleştirme uygulama sunucusuna iletir. Ve uygulama sunucusundaki veriler eşlenen istemcilere gönderilir.
+
+SignalR hizmeti müşteri verilerini kaydetmez veya depolamaz, alınan tüm müşteri verileri hedef sunucuya veya istemcilere gerçek zamanlı olarak iletilir.
 
 Gördüğünüz gibi, Azure SignalR hizmeti temelde uygulama sunucusu ve istemciler arasındaki mantıksal bir aktarım katmanıdır. Tüm kalıcı bağlantılar SignalR hizmetine boşaltılır.
 Uygulama sunucusunun, istemci bağlantıları hakkında endişelenmeden yalnızca Hub sınıfında iş mantığını işlemesi gerekir.

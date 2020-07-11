@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477802"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220584"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Ortamı v1 oluşturma 
 
@@ -40,11 +40,11 @@ App Service ortamı v1 oluşturmak için Azure Marketi 'nde ***App Service ortam
 
 1. ATıCı 'nizin adını sağlayın. ATıCı için belirttiğiniz ad, Ao 'da oluşturulan uygulamalar için kullanılacaktır. Ao 'nun adı appsvcenvdemo ise, alt etki alanı adı şöyle olacaktır: *appsvcenvdemo.p.azurewebsites.net*. Bu nedenle *mytestapp*adlı bir uygulama oluşturduysanız, *mytestapp.appsvcenvdemo.p.azurewebsites.net*adresinde adreslenebilir. ASA 'nın adında boşluk kullanamazsınız. Adında büyük harfli karakterler kullanırsanız, etki alanı adı bu adın toplam küçük harfli sürümü olacaktır. ILB kullanıyorsanız Ao adınız alt etki alanında kullanılmaz, ancak bunun yerine Ao oluşturma sırasında açıkça belirtilir.
    
-    ![][1]
+    ![App Service Ortamı (Ao) oluşturmayı gösteren ekran görüntüsü.][1]
 2. Aboneliğinizi seçin. ATıCı 'niz için kullandığınız abonelik, bu Ao 'da oluşturduğunuz tüm uygulamalar için de geçerlidir. ASE 'nizi başka bir abonelikte yer alan bir sanal ağa yerleştirebilirsiniz.
 3. Yeni bir kaynak grubu seçin veya belirtin. ASE 'niz için kullanılan kaynak grubu, VNet 'iniz için kullanılan aynı olmalıdır. Önceden var olan bir sanal ağı seçerseniz, ASE 'niz için kaynak grubu seçimi sanal ağınızın içeriğini yansıtacak şekilde güncelleştirilir.
    
-    ![][2]
+    ![Yeni bir kaynak grubunu seçme veya değiştirme işlemlerinin nasıl yapılacağını gösteren ekran görüntüsü.][2]
 4. Sanal ağınızı ve konum seçimlerinizi yapın. Yeni bir VNet oluşturmayı veya önceden var olan VNet 'i seçebilirsiniz. Yeni bir VNet seçerseniz, bir ad ve konum belirtebilirsiniz. Yeni VNet 192.168.250.0/23 adres aralığına ve **varsayılan** olarak 192.168.250.0/24 olarak tanımlanmış bir alt ağa sahip olacaktır. Ayrıca, önceden var olan bir klasik veya Kaynak Yöneticisi sanal ağı seçebilirsiniz. VIP türü seçimi, Ao 'un Internet 'ten (dış) doğrudan erişilebildiğini veya bir Iç Load Balancer (ıLB) kullanıp kullanmadığını belirler. Bunlar hakkında daha fazla bilgi edinmek için [App Service ortamı bir iç Load Balancer kullanarak][ILBASE]okuyun. Dış VIP türünü seçerseniz, IP SSL amacıyla sistemin kaç tane Harici IP adresi oluşturduğunu seçebilirsiniz. Dahili ' ı seçerseniz, ATıCı 'nizin kullanacağı alt etki alanını belirtmeniz gerekir. ASEs *, ortak adres* aralıkları *veya* RFC1918 adres alanları (örn. özel adresler) kullanan sanal ağlara dağıtılabilir. Bir sanal ağı ortak adres aralığıyla birlikte kullanmak için, VNet 'i daha önce oluşturmanız gerekir. Önceden var olan bir VNet seçtiğinizde, ASE oluşturma sırasında yeni bir alt ağ oluşturmanız gerekir. **Portalda önceden oluşturulmuş bir alt ağ kullanamazsınız. Bir Resource Manager şablonu kullanarak ATıCı 'nizi oluşturursanız, önceden var olan bir alt ağ ile Ao oluşturabilirsiniz.** Bir şablondan ATıCı oluşturmak için buradaki bilgileri kullanın, [şablondan bir App Service ortamı oluşturup][ILBAseTemplate] buradan bir [ILB App Service ortamı][ASEfromTemplate]oluşturun.
 
 ### <a name="details"></a>Ayrıntılar

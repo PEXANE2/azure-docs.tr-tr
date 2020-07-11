@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681383"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187226"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Otomasyonu durum yapılandırması sorunlarını giderme
 
@@ -25,7 +26,7 @@ Yapılandırma için bir derleme veya dağıtım hatası aldığınızda, sorunu
 
 ### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. yapılandırmanızın yerel makinede başarıyla derlendiğinden emin olun
 
-Azure Otomasyonu durum yapılandırması, PowerShell Istenen durum yapılandırması (DSC) üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](https://docs.microsoft.com/powershell/scripting/overview)' da bulabilirsiniz.
+Azure Otomasyonu durum yapılandırması, PowerShell Istenen durum yapılandırması (DSC) üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](/powershell/scripting/overview)' da bulabilirsiniz.
 
 Yerel makinenizde bir DSC yapılandırması derleyerek, şu gibi yaygın hataları bulabilir ve çözebilirsiniz:
 
@@ -41,7 +42,7 @@ Yapılandırmanız başarıyla derlenir, ancak bir düğüme uygulandığında b
 
 `xDscDiagnostics` [Kalıcı sürüm modülünü Install](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)' daki yönergeleri izleyerek modülü yerel makinenize yükleyebilirsiniz.
 
-`xDscDiagnostics`Modülü Azure makinenize yüklemek Için [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)komutunu kullanın. [WINDOWS sanal makinenizde Çalıştır komutuyla PowerShell betikleri çalıştırma](../../virtual-machines/windows/run-command.md)bölümündeki adımları Izleyerek Azure Portal **Çalıştır komutunu** da kullanabilirsiniz.
+`xDscDiagnostics`Modülü Azure makinenize yüklemek Için [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)komutunu kullanın. [WINDOWS sanal makinenizde Çalıştır komutuyla PowerShell betikleri çalıştırma](../../virtual-machines/windows/run-command.md)bölümündeki adımları Izleyerek Azure Portal **Çalıştır komutunu** da kullanabilirsiniz.
 
 **Xdscdiagnostics**kullanımı hakkında bilgi için bkz. [DSC günlüklerini çözümlemek Için xdscdiagnostics kullanma](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Ayrıca bkz. [Xdscdiagnostics cmdlet 'leri](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
@@ -65,13 +66,13 @@ Bu hata, çözülmesi planlanan geçici bir sorundur.
 
 ### <a name="resolution"></a>Çözüm
 
-Yapılandırmayı silmek için [Remove-AzAutomationDscConfiguration] ( https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 cmdlet 'ini kullanın.
+Yapılandırmayı silmek için [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) cmdlet 'ini kullanın.
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Senaryo: DSC Aracısı kaydedilemedi
 
 ### <a name="issue"></a>Sorun
 
-[Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) veya başka bir DSC cmdlet 'i olduğunda şu hatayı alırsınız:
+[Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) veya başka bir DSC cmdlet 'i olduğunda şu hatayı alırsınız:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -152,7 +153,7 @@ If (($certs.Count) -gt 0)
 
 1. Azure Portal, **ana**  >  **Otomasyon hesapları** > (Otomasyon hesabınız) > **Durum Yapılandırması (DSC)** bölümüne gidin.
 1. **Düğüm**seçin.
-1. **Ekle**'yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. Hatalı düğümü seçin.
 1. **Bağlan**' ı seçin ve istediğiniz seçenekleri belirleyin.
 
@@ -176,7 +177,7 @@ Bu hata genellikle düğüm bir yapılandırma adına atandığında oluşur. Ö
 * Azure portal veya PowerShell cmdlet 'i kullanarak bir düğüme düğüm yapılandırması atayabilirsiniz.
 
   * Azure Portal, **ana**  >  **Otomasyon hesapları** > (Otomasyon hesabınız) > **Durum Yapılandırması (DSC)** bölümüne gidin. Ardından bir düğüm seçin ve **düğüm yapılandırması ata**' yı seçin.
-  * [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet 'ini kullanın.
+  * [Set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet 'ini kullanın.
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Senaryo: bir yapılandırma derlendiğinde hiçbir düğüm yapılandırması (MOF dosyası) üretilmedi
 
@@ -215,7 +216,7 @@ Windows Management Framework (WMF) sürümünüzü yükselttiniz ve bozulmuş Wi
 
 ### <a name="resolution"></a>Çözüm
 
-[DSC bilinen sorunları ve sınırlamaları](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)bölümündeki yönergeleri izleyin.
+[DSC bilinen sorunları ve sınırlamaları](/powershell/scripting/wmf/known-issues/known-issues-dsc)bölümündeki yönergeleri izleyin.
 
 ## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>Senaryo: DSC yapılandırmasında kimlik bilgileri kullanılamıyor
 
@@ -258,7 +259,7 @@ Bu hata genellikle, düğüme hizmette mevcut olmayan bir düğüm yapılandırm
 
 ### <a name="issue"></a>Sorun
 
-[Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) veya [register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)kullanarak bir düğümü kaydettiğinizde, şu hatayı alırsınız:
+[Register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) veya [register-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)kullanarak bir düğümü kaydettiğinizde, şu hatayı alırsınız:
 
 ```error
 One or more errors occurred.
@@ -337,7 +338,7 @@ Derlenmesi uzun süren DSC yapılandırmalarının bu hataya neden olması olabi
 
 ### <a name="resolution"></a>Çözüm
 
-`ModuleName`Tüm [Import-dscresource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) çağrılarının PARAMETRESINI açıkça ekleyerek DSC yapılandırlarınızın daha hızlı ayrıştırmasını sağlayabilirsiniz.
+`ModuleName`Tüm [Import-dscresource](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) çağrılarının PARAMETRESINI açıkça ekleyerek DSC yapılandırlarınızın daha hızlı ayrıştırmasını sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

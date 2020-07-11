@@ -1,20 +1,20 @@
 ---
 title: Azure 'daki kiracılar genelinde Galeri görüntülerini paylaşma
 description: Paylaşılan görüntü galerileri kullanarak Azure kiracılarının tamamında VM görüntülerini paylaşmayı öğrenin.
-author: cynthn
+author: axayjo
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2019
-ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 62f136eb1c2684bfd307a05ccbb4836739da6f3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: 6560bf452f04ae5d88168b8d3fad300feb90b16f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789462"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220533"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure kiracılar genelinde Galeri VM görüntülerini paylaşma
 

@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2bcf2518ab7f4e5a3648b508e42868fd5bb1a863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 164db5d126ab9a22bce527b6197a463943b0fede
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817218"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183197"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Windows uç noktası ile Güncelleştirme Yönetimi tümleştirme Configuration Manager
 
@@ -23,20 +23,20 @@ Windows uç nokta Configuration Manager ' de yazılım güncelleştirme dağıt�
 >[!NOTE]
 >Güncelleştirme Yönetimi, Windows Server 2008 R2 'nin güncelleştirme değerlendirmesini ve düzeltme eki uygulamayı desteklese de, bu işletim sistemini çalıştıran Configuration Manager uç nokta tarafından yönetilen istemcileri desteklemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Otomasyon hesabınıza [Azure otomasyonu güncelleştirme yönetimi](automation-update-management.md) eklemiş olmanız gerekir.
 * Windows uç nokta Configuration Manager ortamınız tarafından şu anda yönetilen Windows Server 'lar, ayrıca Güncelleştirme Yönetimi etkinleştirilmiş olan Log Analytics çalışma alanına rapor etmeniz gerekir.
 * Bu özellik, geçerli dal sürümü 1606 ve üzeri Configuration Manager Windows uç noktasında etkindir. Windows uç noktası Configuration Manager merkezi yönetim sitesini veya tek başına birincil siteyi Azure Izleyici günlükleri ve içeri aktarma koleksiyonlarıyla bütünleştirmek için, [Azure izleyici günlüklerine bağlan Configuration Manager](../azure-monitor/platform/collect-sccm.md)inceleyin.  
 * Windows Agents, Windows Server Update Services (WSUS) sunucusu ile iletişim kurmak veya Windows uç nokta Configuration Manager Güvenlik güncelleştirmelerini almadıklarında Microsoft Update erişimi sağlamak için yapılandırılmış olmalıdır.
 
-Azure IaaS 'de barındırılan istemcileri mevcut Windows uç noktanızla Configuration Manager ortamı öncelikle, Azure veri merkezleri ve altyapınız arasındaki bağlantıya bağlıdır. Bu bağlantı, bu gerekli değişiklikleri desteklemek için Windows uç noktanıza Configuration Manager altyapınızda ve ilgili maliyette yapmanız gerekebilecek tüm tasarım değişikliklerini etkiler. Devam etmeden önce değerlendirmeniz gereken planlama konularını anlamak için, [Azure’da Configuration Manager - Sık Sorulan Sorular](https://docs.microsoft.com/configmgr/core/understand/configuration-manager-on-azure#networking)’ı gözden geçirin.
+Azure IaaS 'de barındırılan istemcileri mevcut Windows uç noktanızla Configuration Manager ortamı öncelikle, Azure veri merkezleri ve altyapınız arasındaki bağlantıya bağlıdır. Bu bağlantı, bu gerekli değişiklikleri desteklemek için Windows uç noktanıza Configuration Manager altyapınızda ve ilgili maliyette yapmanız gerekebilecek tüm tasarım değişikliklerini etkiler. Devam etmeden önce değerlendirmeniz gereken planlama konularını anlamak için, [Azure’da Configuration Manager - Sık Sorulan Sorular](/configmgr/core/understand/configuration-manager-on-azure#networking)’ı gözden geçirin.
 
 ## <a name="manage-software-updates-from-windows-endpoint-configuration-manager"></a>Windows uç nokta Configuration Manager yazılım güncelleştirmelerini yönetme
 
 Windows uç nokta Configuration Manager güncelleştirme dağıtımlarını yönetmeye devam edecekseniz aşağıdaki adımları gerçekleştirin. Azure Otomasyonu, Log Analytics çalışma alanınıza bağlı istemci bilgisayarlara güncelleştirmeleri uygulamak için Windows uç noktası Configuration Manager bağlanır. Dağıtım Windows uç nokta Configuration Manager tarafından yönetilmmiş gibi, istemci bilgisayar önbelleğinde güncelleştirme içeriği kullanılabilir.
 
-1. [Yazılım güncelleştirmelerini dağıtma](https://docs.microsoft.com/configmgr/sum/deploy-use/deploy-software-updates)bölümünde açıklanan Işlemi kullanarak Windows uç nokta Configuration Manager hiyerarşinizdeki en üst düzey siteden yazılım güncelleştirme dağıtımı oluşturun. Standart bir dağıtımdan farklı şekilde yapılandırılması gereken tek ayar, dağıtım paketinin indirme davranışını denetlemeye yönelik **Yazılım güncelleştirmelerini yükleme** seçeneğidir. Bu davranış, bir sonraki adımda zamanlanmış bir güncelleştirme dağıtımı oluşturularak Güncelleştirme Yönetimi yönetilir.
+1. [Yazılım güncelleştirmelerini dağıtma](/configmgr/sum/deploy-use/deploy-software-updates)bölümünde açıklanan Işlemi kullanarak Windows uç nokta Configuration Manager hiyerarşinizdeki en üst düzey siteden yazılım güncelleştirme dağıtımı oluşturun. Standart bir dağıtımdan farklı şekilde yapılandırılması gereken tek ayar, dağıtım paketinin indirme davranışını denetlemeye yönelik **Yazılım güncelleştirmelerini yükleme** seçeneğidir. Bu davranış, bir sonraki adımda zamanlanmış bir güncelleştirme dağıtımı oluşturularak Güncelleştirme Yönetimi yönetilir.
 
 1. Azure Otomasyonu 'nda **güncelleştirme yönetimi**' yi seçin. [Güncelleştirme dağıtımı oluşturma](automation-tutorial-update-management.md#schedule-an-update-deployment) bölümünde açıklanan adımları izleyerek yeni bir dağıtım oluşturun ve uygun Windows uç noktası Configuration Manager koleksiyonunu seçmek için **tür** açılan menüsünde **içeri aktarılan gruplar** ' ı seçin. Aşağıdaki önemli noktaları göz önünde bulundurun: a. Seçilen Windows uç noktası Configuration Manager cihaz koleksiyonunda bir bakım penceresi tanımlanmışsa, koleksiyonun üyeleri zamanlanan dağıtımda tanımlanan **süre** ayarı yerine bunu kabul ediyor.
     b. Hedef koleksiyonun üyelerinin Internet bağlantısı olması gerekir (doğrudan, bir proxy sunucusu veya Log Analytics ağ geçidi üzerinden).
@@ -45,7 +45,7 @@ Azure Otomasyonu aracılığıyla güncelleştirme dağıtımını tamamladıkta
 
 ## <a name="manage-software-updates-from-azure-automation"></a>Azure Otomasyonu 'ndan yazılım güncelleştirmelerini yönetme
 
-Windows uç nokta Configuration Manager istemcileri olan Windows Server VM 'lerinin güncelleştirmelerini yönetmek için istemci ilkesini, Güncelleştirme Yönetimi tarafından yönetilen tüm istemciler için Yazılım Güncelleştirmesi Yönetimi özelliğini devre dışı bırakacak şekilde yapılandırmanız gerekir. Varsayılan olarak, istemci ayarları hiyerarşideki tüm cihazları hedefler. Bu ilke ayarı ve nasıl yapılandırılacağı hakkında daha fazla bilgi için [Configuration Manager istemci ayarlarını yapılandırma](https://docs.microsoft.com/configmgr/core/clients/deploy/configure-client-settings)konusunu gözden geçirin.
+Windows uç nokta Configuration Manager istemcileri olan Windows Server VM 'lerinin güncelleştirmelerini yönetmek için istemci ilkesini, Güncelleştirme Yönetimi tarafından yönetilen tüm istemciler için Yazılım Güncelleştirmesi Yönetimi özelliğini devre dışı bırakacak şekilde yapılandırmanız gerekir. Varsayılan olarak, istemci ayarları hiyerarşideki tüm cihazları hedefler. Bu ilke ayarı ve nasıl yapılandırılacağı hakkında daha fazla bilgi için [Configuration Manager istemci ayarlarını yapılandırma](/configmgr/core/clients/deploy/configure-client-settings)konusunu gözden geçirin.
 
 Bu yapılandırma değişikliğini gerçekleştirdikten sonra, uygun Windows uç noktası Configuration Manager koleksiyonunu seçmek için, [güncelleştirme dağıtımı oluşturma](automation-tutorial-update-management.md#schedule-an-update-deployment) bölümünde açıklanan adımları izleyerek yeni bir dağıtım oluşturun ve **tür** açılır penceresinde **içeri aktarılan gruplar** ' ı seçin.
 

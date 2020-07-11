@@ -16,13 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263753"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219972"
 ---
-# <a name="templates"></a>Şablonlar
+# <a name="notification-hubs-templates"></a>Notification Hubs şablonları
 
 Şablonlar, bir istemci uygulamanın almak istediği bildirimlerin tam biçimini belirtmesini sağlar. Bir uygulama, şablonları kullanarak aşağıdakiler de dahil olmak üzere birkaç farklı avantajı fark edebilir:
 
@@ -61,7 +62,7 @@ Notification Hubs şablonu özelliği, bir istemci uygulamanın, Etiketler küme
 
 Aşağıdaki resimde işlem gösterilmektedir:
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![Şablonları platformlar arası kullanma sürecini gösteren diyagram](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 İOS istemci uygulaması kaydına yönelik şablon aşağıdaki gibidir:
 
@@ -120,7 +121,7 @@ Bildirim Hub 'ına gönderilen ileti aşağıdaki özellikleri içerir:
 
 Bu model kullanılarak, arka uç yalnızca uygulama kullanıcıları için belirli kişiselleştirme seçeneklerini depolamak zorunda kalmadan tek bir ileti gönderir. Aşağıdaki resimde bu senaryo gösterilmektedir:
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![Arka ucun her platforma yalnızca tek bir ileti gönderdiğini gösteren diyagram.](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Şablonları kaydetme
 

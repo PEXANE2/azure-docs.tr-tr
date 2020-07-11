@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/27/2020
+ms.date: 7/10/2020
 ms.author: raynew
-ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132405"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219887"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -55,24 +55,25 @@ Konuk işletim sistemi | [Azure için desteklenen](../cloud-services/cloud-servi
 
 **Eylem** | **Ayrıntılar**
 --- | ---
-Çoğaltılan Hyper-V VM 'de diski yeniden boyutlandır | Desteklenmiyor. Çoğaltmayı devre dışı bırakın, değişikliği yapın ve ardından VM için çoğaltmayı yeniden etkinleştirin.
-Çoğaltılan Hyper-V VM 'ye disk ekleme | Desteklenmiyor. Çoğaltmayı devre dışı bırakın, değişikliği yapın ve ardından VM için çoğaltmayı yeniden etkinleştirin.
+Çoğaltılan Hyper-V VM 'de diski yeniden boyutlandır | Desteklenmez. Çoğaltmayı devre dışı bırakın, değişikliği yapın ve ardından VM için çoğaltmayı yeniden etkinleştirin.
+Çoğaltılan Hyper-V VM 'ye disk ekleme | Desteklenmez. Çoğaltmayı devre dışı bırakın, değişikliği yapın ve ardından VM için çoğaltmayı yeniden etkinleştirin.
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V ağ yapılandırması
 
 **Bileşen** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
-Konak ağı: NIC ekibi oluşturma | Yes | Yes
-Konak ağı: VLAN | Yes | Yes
-Konak ağı: IPv4 | Yes | Yes
+Konak ağı: NIC ekibi oluşturma | Evet | Yes
+Konak ağı: VLAN | Evet | Yes
+Konak ağı: IPv4 | Evet | Yes
 Konak ağı: IPv6 | Hayır | Hayır
 Konuk VM ağı: NIC ekibi oluşturma | Hayır | Hayır
-Konuk VM ağı: IPv4 | Yes | Yes
-Konuk VM ağı: IPv6 | No | Evet
-Konuk VM ağı: statik IP (Windows) | Yes | Yes
+Konuk VM ağı: IPv4 | Evet | Yes
+Konuk VM ağı: IPv6 | Hayır | Evet
+Konuk VM ağı: statik IP (Windows) | Evet | Yes
 Konuk VM ağı: statik IP (Linux) | Hayır | Hayır
-Konuk VM ağı: çoklu NIC | Yes | Yes
+Konuk VM ağı: çoklu NIC | Evet | Yes
 HTTPS proxy 'Si | Hayır | Hayır
+
 
 
 
@@ -80,15 +81,15 @@ HTTPS proxy 'Si | Hayır | Hayır
 
 **Bileşen** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
-Azure ExpressRoute | Yes | Yes
-ILB | Yes | Yes
-ELB | Yes | Yes
-Azure Traffic Manager | Yes | Yes
-Çoklu NIC | Yes | Yes
-Ayrılmış IP | Yes | Yes
-IPv4 | Yes | Yes
-Kaynak IP adresini sakla | Yes | Yes
-Azure sanal ağ hizmet uç noktaları<br/> (Azure Storage güvenlik duvarları olmadan) | Yes | Yes
+Azure ExpressRoute | Evet | Yes
+ILB | Evet | Yes
+ELB | Evet | Yes
+Azure Traffic Manager | Evet | Yes
+Çoklu NIC | Evet | Evet
+Ayrılmış IP | Evet | Evet
+IPv4 | Evet | Evet
+Kaynak IP adresini sakla | Evet | Evet
+Azure sanal ağ hizmet uç noktaları<br/> (Azure Storage güvenlik duvarları olmadan) | Evet | Evet
 Hızlandırılmış Ağ | Hayır | Hayır
 
 
@@ -97,18 +98,18 @@ Hızlandırılmış Ağ | Hayır | Hayır
 **Depolama** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | --- 
 NFS | NA | NA
-SMB 3.0 | Yes | Yes
-SAN (ISCSı) | Yes | Yes
-Çoklu yol (MPIO). Test edilen:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM | Yes | Yes
+SMB 3.0 | Evet | Evet
+SAN (ISCSı) | Evet | Evet
+Çoklu yol (MPIO). Test edilen:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM | Evet | Evet
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM Konuk depolaması
 
 **Depolama** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
 VMDK | NA | NA
-VHD/VHDX | Yes | Yes
-2. Nesil VM | Yes | Yes
-EFı/UEFı<br></br>Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür. VM yalnızca Windows Server 2012 ve üstünü çalıştırmalıdır. İşletim sistemi diski en fazla beş bölüm veya daha az olmalıdır ve işletim sistemi diskinin boyutu 300 GB 'tan az olmalıdır.| Yes | Yes
+VHD/VHDX | Evet | Evet
+2. Nesil VM | Evet | Evet
+EFı/UEFı<br></br>Azure 'daki geçirilmiş VM otomatik olarak bir BIOS önyükleme VM 'sine dönüştürülür. VM yalnızca Windows Server 2012 ve üstünü çalıştırmalıdır. İşletim sistemi diski en fazla beş bölüm veya daha az olmalıdır ve işletim sistemi diskinin boyutu 300 GB 'tan az olmalıdır.| Evet | Evet
 Paylaşılan küme diski | Hayır | Hayır
 Şifrelenmiş disk | Hayır | Hayır
 NFS | NA | NA
@@ -116,39 +117,41 @@ SMB 3.0 | Hayır | Hayır
 RDM | NA | NA
 Disk >1 TB | Evet, 4.095 GB 'a kadar | Evet, 4.095 GB 'a kadar
 Disk: 4K mantıksal ve fiziksel kesim | Desteklenmez: Gen 1/Gen 2 | Desteklenmez: Gen 1/Gen 2
-Disk: 4K mantıksal ve 512 bayt fiziksel kesim | Yes |  Yes
-Mantıksal birim yönetimi (LVM). LVM yalnızca veri disklerinde desteklenir. Azure yalnızca tek bir işletim sistemi diski sağlar. | Yes | Yes
-Dizili disk >1 TB olan birim | Yes | Yes
+Disk: 4K mantıksal ve 512 bayt fiziksel kesim | Evet |  Evet
+Mantıksal birim yönetimi (LVM). LVM yalnızca veri disklerinde desteklenir. Azure yalnızca tek bir işletim sistemi diski sağlar. | Evet | Evet
+Dizili disk >1 TB olan birim | Evet | Evet
 Depolama Alanları | Hayır | Hayır
 Dinamik disk Ekle/Kaldır | Hayır | Hayır
-Diski hariç tutma | Yes | Yes
-Çoklu yol (MPIO) | Yes | Yes
+Diski hariç tutma | Evet | Evet
+Çoklu yol (MPIO) | Evet | Evet
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Bileşen** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
-Yerel olarak yedekli depolama | Yes | Yes
-Coğrafi olarak yedekli depolama | Yes | Yes
-Okuma erişimli coğrafi olarak yedekli depolama | Yes | Yes
+Yerel olarak yedekli depolama | Evet | Evet
+Coğrafi olarak yedekli depolama | Evet | Evet
+Okuma erişimli coğrafi olarak yedekli depolama | Evet | Evet
 Seyrek Erişimli Depolama | Hayır | Hayır
 Sık erişimli depolama| Hayır | Hayır
 Blok blobları | Hayır | Hayır
-Bekleyen şifreleme (SSE)| Yes | Yes
+Bekleyen şifreleme (SSE)| Evet | Evet
 Bekleyen şifreleme (CMK) <br></br> (Yalnızca yönetilen disklere yük devretme için)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller) | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
-Premium depolama | Yes | Yes
-Standart depolama | Yes | Yes
+Rest 'te Çift şifreleme <br></br> (Yalnızca yönetilen disklere yük devretme için) <br></br> [Windows](../virtual-machines/windows/disk-encryption.md) ve [Linux](../virtual-machines/linux/disk-encryption.md) için desteklenen bölgeler hakkında daha fazla bilgi edinin | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller) | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
+Premium depolama | Evet | Evet
+Standart depolama | Evet | Evet
 İçeri/dışarı aktarma hizmeti | Hayır | Hayır
 Güvenlik Duvarı etkin Azure depolama hesapları | Evet. Hedef depolama ve önbellek için. | Evet. Hedef depolama ve önbellek için.
-Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | No
+Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | Hayır
+Güvenli aktarım seçeneği | Evet
 
 
 ## <a name="azure-compute-features"></a>Azure işlem özellikleri
 
 **Özellik** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
-Kullanılabilirlik kümeleri | Yes | Yes
-HUB | Yes | Yes  
+Kullanılabilirlik kümeleri | Evet | Evet
+HUB | Evet | Evet  
 Yönetilen diskler | Evet, yük devretme için.<br/><br/> Yönetilen disklerin yeniden çalışma işlemi desteklenmiyor. | Evet, yük devretme için.<br/><br/> Yönetilen disklerin yeniden çalışma işlemi desteklenmiyor.
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
@@ -164,10 +167,10 @@ Konuk işletim sistemi mimarisi | 32-bit (Windows Server 2008)/64-bit | Destekle
 Veri diski sayısı | 16 veya daha az  | Desteklenmiyorsa önkoşul denetimi başarısız olur.
 Veri diski VHD boyutu | 4.095 GB 'a kadar | Desteklenmiyorsa önkoşul denetimi başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir |
-Paylaşılan VHD | Desteklenmiyor | Desteklenmiyorsa önkoşul denetimi başarısız olur.
-FC diski | Desteklenmiyor | Desteklenmiyorsa önkoşul denetimi başarısız olur.
+Paylaşılan VHD | Desteklenmez | Desteklenmiyorsa önkoşul denetimi başarısız olur.
+FC diski | Desteklenmez | Desteklenmiyorsa önkoşul denetimi başarısız olur.
 Sabit disk biçimi | VHD <br/><br/> IÇERMEDIĞI | Site Recovery Azure 'a yük devretmek için VHDX 'i otomatik olarak VHD 'ye dönüştürür. Şirket içinde yeniden oturum açtığınızda, sanal makineler VHDX biçimini kullanmaya devam eder.
-BitLocker | Desteklenmiyor | Bir VM için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
+BitLocker | Desteklenmez | Bir VM için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır.
 VM adı | 1-63 karakter. Harfler, sayılar ve kısa çizgilerden oluşabilir. VM adı bir harf veya sayıyla başlamalı ve bitmelidir. | Site Recovery içindeki VM özelliklerindeki değeri güncelleştirin.
 VM türü | 1. nesil<br/><br/> 2. nesil--Windows | Temel bir işletim sistemi disk türü (VHDX olarak biçimlendirilen bir veya iki veri birimi içerir) ve 300 GB 'den az disk alanının kullanıldığı 2. nesil VM 'Ler desteklenir.<br></br>Linux 2. nesil VM 'Ler desteklenmez. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
@@ -186,7 +189,7 @@ Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma<br/><br/> 
 
 Dağıtımınızın bu makaledeki ayarlarla uyumlu olduğundan emin olmak için en son sağlayıcı ve aracı sürümlerini çalıştırdığınızdan emin olun.
 
-**Adı** | **Açıklama** | **Ayrıntılar**
+**Ad** | **Açıklama** | **Ayrıntılar**
 --- | --- | --- 
 Azure Site Recovery sağlayıcı | Şirket içi sunucular ile Azure arasındaki iletişimleri düzenler <br/><br/> Virtual Machine Manager ile Hyper-V: Virtual Machine Manager sunucularına yüklendi<br/><br/> Virtual Machine Manager olmadan Hyper-V: Hyper-V konaklarında yüklü| En son sürüm: 5.1.2700.1 (Azure portal kullanılabilir)<br/><br/> [En son özellikler ve düzeltmeler](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Kurtarma Hizmetleri aracısı | Hyper-V VM 'Leri ve Azure arasında çoğaltmayı düzenler<br/><br/> Şirket içi Hyper-V sunucularında yüklü (Virtual Machine Manager sahip veya olmayan) | Portalda kullanılabilir en son aracı

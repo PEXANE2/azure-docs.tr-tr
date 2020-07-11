@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253722"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201800"
 ---
 # <a name="how-caching-works"></a>Önbelleğe alma nasıl işler?
 
@@ -111,11 +112,11 @@ Azure CDN, önbellek süresini ve önbellek paylaşımını tanımlayan aşağı
 
 Tüm kaynaklar önbelleğe alınmayabilir. Aşağıdaki tabloda, HTTP yanıtının türüne göre hangi kaynakların önbelleğe alınacağını gösterilmektedir. Bu koşulların tümünü karşılamayan HTTP yanıtlarıyla teslim edilen kaynaklar önbelleğe alınamaz. Yalnızca **Verizon 'den Azure CDN Premium** için, bu koşulların bazılarını özelleştirmek üzere Rules altyapısını kullanabilirsiniz.
 
-|                   | Microsoft 'tan Azure CDN          | Verizon 'dan Azure CDN | Akamai 'dan Azure CDN        |
-|-------------------|-----------------------------------|------------------------|------------------------------|
-| HTTP durum kodu | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
-| HTTP yöntemleri      | GET, HEAD                         | GET                    | GET                          |
-| Dosya boyutu sınırları  | 300 GB                            | 300 GB                 | -Genel web teslimi iyileştirmesi: 1,8 GB<br />-Medya akışı iyileştirmeleri: 1,8 GB<br />-Büyük dosya iyileştirmesi: 150 GB |
+|                       | Microsoft 'tan Azure CDN          | Verizon 'dan Azure CDN | Akamai 'dan Azure CDN        |
+|-----------------------|-----------------------------------|------------------------|------------------------------|
+| **HTTP durum kodu** | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
+| **HTTP yöntemleri**      | GET, HEAD                         | GET                    | GET                          |
+| **Dosya boyutu sınırları**  | 300 GB                            | 300 GB                 | -Genel web teslimi iyileştirmesi: 1,8 GB<br />-Medya akışı iyileştirmeleri: 1,8 GB<br />-Büyük dosya iyileştirmesi: 150 GB |
 
 **Microsoft 'un** önbelleğe alma işleminin bir kaynakta çalışması için, kaynak sunucunun HERHANGI bir baş ve Get http isteklerini desteklemesi ve içerik uzunluğu değerlerinin HERHANGI bir baş ve VARLıK için http yanıtları alması gerekir. Azure CDN BAŞ bir istek için, kaynak sunucunun baş isteği desteklemesi ve bir GET isteği aldığından aynı üst bilgilerle yanıt vermesi gerekir.
 

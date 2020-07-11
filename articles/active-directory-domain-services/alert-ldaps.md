@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/18/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735039"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220261"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Güvenli LDAP uyarılar
 
@@ -36,7 +36,7 @@ Güvenli LDAP etkinleştirdiğinizde, gelen LDAPS erişimini belirli IP adresler
 
 1. Azure portal **ağ güvenlik grupları**' nı arayıp seçin.
 1. Yönetilen etki alanınız ile ilişkili ağ güvenlik grubunu seçin (örneğin, *Aeklemesine-contoso.com-NSG*) ve ardından **gelen güvenlik kuralları** ' nı seçin.
-1. **+** TCP bağlantı noktası 636 için bir kural ekleyin. Gerekirse, bir kural oluşturmak için pencerede **Gelişmiş** ' i seçin.
+1. 636 numaralı TCP bağlantı noktası için bir kural oluşturmak için **+ Ekle** ' yi seçin. Gerekirse, bir kural oluşturmak için pencerede **Gelişmiş** ' i seçin.
 1. **Kaynak**için açılan menüden *IP adresleri* ' ni seçin. Güvenli LDAP trafiği için erişim vermek istediğiniz kaynak IP adreslerini girin.
 1. **Hedef**olarak *herhangi birini* seçin ve ardından **hedef bağlantı noktası aralıkları**için *636* girin.
 1. **Protokol** olarak *TCP* ve *izin ver* **eylemini** ayarlayın.

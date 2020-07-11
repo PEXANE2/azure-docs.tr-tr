@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 2/10/2020
-ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/09/2020
+ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983015"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171882"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -239,7 +239,7 @@ Her örnek kendi VNet 'inde yalıtılmış olduğundan, bu VNET 'ler arasındaki
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Farklı aboneliklerdeki yönetilen örnekler arasında yük devretme grubu oluşturma
 
-İki farklı abonelikteki SQL yönetilen örnekleri arasında bir yük devretme grubu oluşturabilirsiniz. PowerShell API 'sini kullanırken, `PartnerSubscriptionId` IKINCIL SQL yönetilen örneği için parametresini belirterek bunu yapabilirsiniz. REST API kullanırken, parametreye dahil edilen her örnek KIMLIĞI `properties.managedInstancePairs` kendi SubscriptionID değerine sahip olabilir.
+Abonelikler aynı [Azure Active Directory kiracısıyla](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)ilişkili olduğu sürece, iki farklı abonelikteki SQL yönetilen örnekleri arasında bir yük devretme grubu oluşturabilirsiniz. PowerShell API 'sini kullanırken, `PartnerSubscriptionId` IKINCIL SQL yönetilen örneği için parametresini belirterek bunu yapabilirsiniz. REST API kullanırken, parametreye dahil edilen her örnek KIMLIĞI `properties.managedInstancePairs` kendi SubscriptionID değerine sahip olabilir.
   
 > [!IMPORTANT]
 > Azure portal, farklı aboneliklerde yük devretme gruplarının oluşturulmasını desteklemez. Ayrıca, farklı abonelikler ve/veya kaynak gruplarındaki mevcut yük devretme grupları için yük devretme, birincil SQL yönetilen örneğinden Portal aracılığıyla el ile başlatılamaz. Bunun yerine coğrafi ikincil örnekten başlatın.

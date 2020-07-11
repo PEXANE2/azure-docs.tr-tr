@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: de637bc30420ce494e553100a9f1126e88027bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704157"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187600"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager yönetmek için PowerShell kullanma
 
@@ -29,7 +30,7 @@ Azure Traffic Manager, Traffic Manager profili adlı bir ayarlar koleksiyonu kul
 
 Her Traffic Manager profili ' TrafficManagerProfiles ' türünde bir kaynak tarafından temsil edilir. REST API düzeyinde, her profil için URI aşağıdaki gibidir:
 
-    https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}`
 
 ## <a name="setting-up-azure-powershell"></a>Azure PowerShell ayarlama
 
@@ -60,7 +61,7 @@ Aşağıdaki tabloda parametreler açıklanmaktadır:
 
 | Parametre | Açıklama |
 | --- | --- |
-| Name |Traffic Manager profili kaynağı için kaynak adı. Aynı kaynak grubundaki profillerin benzersiz adlara sahip olması gerekir. Bu ad DNS sorguları için kullanılan DNS adından ayrıdır. |
+| Ad |Traffic Manager profili kaynağı için kaynak adı. Aynı kaynak grubundaki profillerin benzersiz adlara sahip olması gerekir. Bu ad DNS sorguları için kullanılan DNS adından ayrıdır. |
 | ResourceGroupName |Profil kaynağını içeren kaynak grubunun adı. |
 | TrafficRoutingMethod |DNS sorgusunun yanıt olarak hangi uç noktanın döndürüleceğini belirleyen trafik yönlendirme yöntemini belirtir. Olası değerler ' Performance ', ' ağırlıklı ' veya ' Priority ' değerleridir. |
 | RelativeDnsName |Bu Traffic Manager profili tarafından belirtilen DNS adının ana bilgisayar adı bölümünü belirtir. Bu değer, profilin tam etki alanı adını (FQDN) oluşturmak için Azure Traffic Manager tarafından kullanılan DNS etki alanı adıyla birleştirilir. Örneğin, ' contoso ' değerinin ayarlanması ' contoso.trafficmanager.net. ' olur. |

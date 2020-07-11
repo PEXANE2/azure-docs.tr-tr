@@ -10,11 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 775fae09c4d618551327669362cd28a0ae2cc801
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f376fb383e50a39f0f12d45cf9b5ae47ad6fcbb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837017"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186512"
 ---
 # <a name="create-configurations-from-existing-servers"></a>Mevcut sunuculardan yapılandırma oluşturma
 
@@ -37,8 +38,8 @@ En son sürümde hangi bilgi düzeyinin ekleneceğini belirlemek için birden ç
 
 Çözümü kullanmanın sonucu, SharePointDSC yapılandırma betiklerine göre kullanılacak [yapılandırma verilerini](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) oluşturuyor.
 
-Veri dosyaları oluşturulduktan sonra, MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)Için bunları [DSC yapılandırma betikleri](/powershell/scripting/dsc/overview/overview) ile birlikte kullanabilirsiniz.
-Daha sonra, yapılandırma çekmek için [Şirket](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) Içinden veya [Azure 'da](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) sunucularınızı kaydettirin.
+Veri dosyaları oluşturulduktan sonra, MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu 'na yüklemek](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)Için bunları [DSC yapılandırma betikleri](/powershell/scripting/dsc/overview/overview) ile birlikte kullanabilirsiniz.
+Daha sonra, yapılandırma çekmek için [Şirket](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines) Içinden veya [Azure 'da](./automation-dsc-onboarding.md#enable-azure-vms) sunucularınızı kaydettirin.
 
 Smardsc 'yi denemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/ReverseDSC/) ziyaret edin ve çözümü indirin veya "proje sitesi" ' ne tıklayarak [belgeleri](https://github.com/Microsoft/sharepointDSC.reverse)görüntüleyin.
 

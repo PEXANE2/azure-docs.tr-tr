@@ -6,11 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699230"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184540"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Redis için Azure Cache'de veri kaybı sorunlarını giderme
 
@@ -22,7 +23,7 @@ Bu makalede Redsıs için Azure önbelleğinde oluşabilecek gerçek veya algıl
 
 ## <a name="partial-loss-of-keys"></a>Anahtarların kısmi kaybı
 
-Redsıs için Azure önbelleği, bellekte depolandıktan sonra anahtarları rastgele olarak silmez. Ancak, süre sonu veya çıkarma ilkelerine ve açık anahtar silme komutlarına yanıt olarak anahtarları kaldırır. Premium veya standart Azure önbelleğindeki ana düğüme, redin örneği için yazılmış anahtarlar aynı zamanda bir çoğaltmada doğrudan kullanılabilir olmayabilir. Veriler, ana bilgisayardan çoğaltmaya zaman uyumsuz ve engellenmeyen bir şekilde çoğaltılır.
+Redsıs için Azure önbelleği, bellekte depolandıktan sonra anahtarları rastgele olarak silmez. Ancak, süre sonu veya çıkarma ilkelerine ve açık anahtar silme komutlarına yanıt olarak anahtarları kaldırır. Premium veya standart Azure önbelleğindeki birincil düğüme, redin örneği için yazılmış anahtarlar Ayrıca bir çoğaltmada doğrudan kullanılabilir olmayabilir. Veriler, birincil kopyadan zaman uyumsuz ve engellenmeyen bir biçimde çoğaltılır.
 
 Bu anahtarların önbelleğinizi kaybolduğunu fark ederseniz, aşağıdaki olası nedenleri kontrol edin:
 
@@ -79,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Zaman uyumsuz çoğaltma
 
-Standart veya Premium katmanda Redsıs örneği için herhangi bir Azure önbelleği, bir ana düğüm ve en az bir çoğaltma ile yapılandırılır. Veriler, bir arka plan işlemi kullanılarak ana bilgisayardan bir kopyaya zaman uyumsuz olarak kopyalanır. [Redis.io](https://redis.io/topics/replication) Web sitesi, redsıs veri çoğaltmasının genel olarak nasıl çalıştığını açıklar. İstemcilerin redde sık olarak yazacağı senaryolarda, bu çoğaltmanın anında olması garanti edilmediği için kısmi veri kaybı oluşabilir. Örneğin *, bir istemci kendisine bir anahtar* yazdığında, ancak arka plan işleminin bu anahtarı çoğaltmaya gönderme şansı *olmadan önce* , çoğaltma yeni ana öğe olarak geçtiğinde anahtar kaybedilir.
+Standart veya Premium katmanda Redsıs örneği için herhangi bir Azure önbelleği, birincil düğüm ve en az bir çoğaltma ile yapılandırılır. Veriler, bir arka plan işlemi kullanılarak, birincil bilgisayardan bir kopyaya zaman uyumsuz olarak kopyalanır. [Redis.io](https://redis.io/topics/replication) Web sitesi, redsıs veri çoğaltmasının genel olarak nasıl çalıştığını açıklar. İstemcilerin redde sık olarak yazacağı senaryolarda, bu çoğaltmanın anında olması garanti edilmediği için kısmi veri kaybı oluşabilir. Örneğin *, bir istemci kendisine bir anahtar* yazdığında, ancak arka plan işleminin bu anahtarı çoğaltmaya gönderme şansı *olmadan önce* , çoğaltma yeni birincil olarak geçtiğinde anahtar kaybedilir.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Anahtarların büyük veya tamamen kaybolması
 
@@ -111,7 +112,7 @@ Redsıs için Azure önbelleği varsayılan olarak **DB0** veritabanını kullan
 
 Redsıs, bellek içi veri deposudur. Veriler redo önbelleğini barındıran fiziksel veya sanal makinelerde tutulur. Temel katmandaki Redsıs örneği için bir Azure önbelleği yalnızca tek bir sanal makinede (VM) çalışır. Bu VM kapalıysa, önbellekte depoladığınız tüm veriler kaybolur. 
 
-Standart ve Premium katmanlardaki önbellekler, çoğaltılan bir yapılandırmada iki VM kullanarak veri kaybına karşı daha fazla esneklik sunar. Bu tür bir önbellekteki ana düğüm başarısız olduğunda, çoğaltma düğümü verileri otomatik olarak sunacak şekilde alır. Bu sanal makineler, aynı anda kullanılamaz duruma gelme olasılığını en aza indirmek için hatalar ve güncelleştirmeler için ayrı etki alanlarında bulunur. Ancak büyük bir veri merkezi kesintisi olursa VM 'Ler yine de devam edebilir. Bu nadir durumlarda verileriniz kaybedilir.
+Standart ve Premium katmanlardaki önbellekler, çoğaltılan bir yapılandırmada iki VM kullanarak veri kaybına karşı daha fazla esneklik sunar. Bu tür bir önbellekteki birincil düğüm başarısız olduğunda, çoğaltma düğümü verileri otomatik olarak sunacak şekilde alır. Bu sanal makineler, aynı anda kullanılamaz duruma gelme olasılığını en aza indirmek için hatalar ve güncelleştirmeler için ayrı etki alanlarında bulunur. Ancak büyük bir veri merkezi kesintisi olursa VM 'Ler yine de devam edebilir. Bu nadir durumlarda verileriniz kaybedilir.
 
 Bu altyapı hatalarıyla karşı verilerinizin korunmasını artırmak için [redsıs veri kalıcılığı](https://redis.io/topics/persistence) ve [coğrafi çoğaltma](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) kullanmayı göz önünde bulundurun.
 

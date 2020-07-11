@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13691fe05ca42af3a9d5b09ea36eb58bcdf1df08
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830047"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187481"
 ---
 # <a name="configure-runbook-input-parameters"></a>Runbook girdi parametrelerini yapılandırma
 
@@ -25,8 +26,8 @@ Azure Otomasyonu 'ndaki PowerShell ve PowerShell Iş akışı runbook 'ları, a�
 
 | **Özellik** | **Açıklama** |
 |:--- |:--- |
-| Tür |Gereklidir. Parametre değeri için beklenen veri türü. Herhangi bir .NET türü geçerlidir. |
-| Name |Gereklidir. Parametrenin adı. Bu ad runbook içinde benzersiz olmalıdır, bir harfle başlamalıdır ve yalnızca harf, sayı veya alt çizgi karakterlerini içerebilir. |
+| Type |Gereklidir. Parametre değeri için beklenen veri türü. Herhangi bir .NET türü geçerlidir. |
+| Ad |Gereklidir. Parametrenin adı. Bu ad runbook içinde benzersiz olmalıdır, bir harfle başlamalıdır ve yalnızca harf, sayı veya alt çizgi karakterlerini içerebilir. |
 | Zorunlu |İsteğe bağlı. Parametrenin bir değer gerektirip gerektirmediğini belirten Boole değeri. Bunu true olarak ayarlarsanız, runbook başlatıldığında bir değer sağlanmalıdır. Bunu yanlış olarak ayarlarsanız bir değer isteğe bağlıdır. Özelliği için bir değer belirtmezseniz `Mandatory` , PowerShell giriş parametresini varsayılan olarak isteğe bağlı olarak değerlendirir. |
 | Varsayılan değer |İsteğe bağlı. Runbook başladığında hiçbir giriş değeri geçirilmemişse, parametresi için kullanılan bir değer. Runbook herhangi bir parametre için varsayılan bir değer ayarlayabilir. |
 
@@ -69,12 +70,12 @@ Bu durumda, parametresine aşağıdaki değeri geçirebilirsiniz.
 
 ### <a name="configure-input-parameters-in-graphical-runbooks"></a>Grafik runbook 'larda giriş parametrelerini yapılandırma
 
-Grafik runbook 'un giriş parametrelerinin yapılandırılmasını göstermek için, sanal makineler hakkındaki ayrıntıları, tek bir VM veya bir kaynak grubu içindeki tüm VM 'Ler hakkında bilgi veren bir runbook oluşturalım. Ayrıntılar için bkz. [ilk grafik runbook 'Um](automation-first-runbook-graphical.md).
+Grafik runbook 'un giriş parametrelerinin yapılandırılmasını göstermek için, sanal makineler hakkındaki ayrıntıları, tek bir VM veya bir kaynak grubu içindeki tüm VM 'Ler hakkında bilgi veren bir runbook oluşturalım. Ayrıntılar için bkz. [ilk grafik runbook 'Um](./learn/automation-tutorial-runbook-graphical.md).
 
 Grafik runbook şu ana runbook etkinliklerini kullanır:
 
 * Azure ile kimlik doğrulamak için Azure farklı çalıştır hesabının yapılandırılması. 
-* VM özelliklerini almak için [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 'inin tanımı.
+* VM özelliklerini almak için [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet 'inin tanımı.
 * VM adlarını çıkarmak için [yazma çıkışı](/powershell/module/microsoft.powershell.utility/write-output) etkinliğinin kullanımı. 
 
 `Get-AzVM`Etkinlik iki giriş, VM adı ve kaynak grubu adını tanımlar. Bu adlar runbook 'un her başlatıldığında farklı olduğundan, bu girdileri kabul etmek için Runbook 'a giriş parametreleri eklemeniz gerekir. [Azure Otomasyonu 'Nda grafik yazma](automation-graphical-authoring-intro.md)konusuna bakın.
@@ -111,7 +112,7 @@ Giriş parametrelerini yapılandırmak için bu adımları izleyin.
 
 PowerShell, PowerShell Iş akışı ve grafik runbook 'larının aksine, Python runbook 'ları adlandırılmış parametreler almaz. Runbook Düzenleyicisi, tüm giriş parametrelerini bağımsız değişken değerleri dizisi olarak ayrıştırır. Diziyi `sys` Python betiğe içeri aktararak ve sonra diziyi kullanarak erişebilirsiniz `sys.argv` . Dizinin ilk öğesinin, `sys.argv[0]` komut dosyasının adı olduğunu unutmamak önemlidir. Bu nedenle, ilk gerçek giriş parametresi `sys.argv[1]` .
 
-Bir Python runbook 'unda giriş parametrelerinin nasıl kullanılacağına ilişkin bir örnek için bkz. [Azure Automation 'da Ilk Python runbook 'Um](automation-first-runbook-textual-python2.md).
+Bir Python runbook 'unda giriş parametrelerinin nasıl kullanılacağına ilişkin bir örnek için bkz. [Azure Automation 'da Ilk Python runbook 'Um](./learn/automation-tutorial-runbook-textual-python2.md).
 
 ## <a name="assign-values-to-input-parameters-in-runbooks"></a>Runbook 'larda giriş parametrelerine değerler atama
 
@@ -139,8 +140,7 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini tanımlamak üz
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell cmdlet 'lerini kullanarak yayımlanmış runbook 'u başlatma ve parametreleri atama
 
-* **Azure Resource Manager cmdlet 'leri:** [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
-)kullanarak bir kaynak grubunda oluşturulan bir Otomasyon Runbook 'unu başlatabilirsiniz.
+* **Azure Resource Manager cmdlet 'leri:** [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0)kullanarak bir kaynak grubunda oluşturulan bir Otomasyon Runbook 'unu başlatabilirsiniz.
 
    ```powershell
      $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
@@ -248,13 +248,13 @@ Daha önce ve parametresiyle oluşturulan **Get-AzureVMTextual** runbook 'unu ba
 
 ### <a name="test-a-runbook-and-assign-parameters"></a>Runbook 'u test etme ve parametreleri atama
 
-Test seçeneğini kullanarak [runbook 'un taslak sürümünü test](automation-testing-runbook.md) ettiğinizde, test sayfası açılır. Oluşturduğunuz parametrelerin değerlerini yapılandırmak için bu sayfayı kullanın.
+Test seçeneğini kullanarak [runbook 'un taslak sürümünü test](./manage-runbooks.md) ettiğinizde, test sayfası açılır. Oluşturduğunuz parametrelerin değerlerini yapılandırmak için bu sayfayı kullanın.
 
 ![Test ve atama parametreleri](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 
 ### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>Bir runbook 'a zamanlama bağlama ve parametreleri atama
 
-Runbook 'un belirli bir zamanda başlaması için [bir zamanlamayı](automation-schedules.md) runbook 'una bağlayabilirsiniz. Zamanlamayı oluştururken giriş parametrelerini atarsınız ve runbook, zamanlama tarafından başlatıldığında bu değerleri kullanır. Tüm zorunlu parametre değerleri sağlanana kadar zamanlamayı kaydedemezsiniz.
+Runbook 'un belirli bir zamanda başlaması için [bir zamanlamayı](./shared-resources/schedules.md) runbook 'una bağlayabilirsiniz. Zamanlamayı oluştururken giriş parametrelerini atarsınız ve runbook, zamanlama tarafından başlatıldığında bu değerleri kullanır. Tüm zorunlu parametre değerleri sağlanana kadar zamanlamayı kaydedemezsiniz.
 
 ![Parametreleri zamanlayın ve atayın](media/automation-runbook-input-parameters/automation-07-scheduleandassignparameters.png)
 
@@ -272,7 +272,7 @@ Bir Web kancasını kullanarak bir runbook yürüttüğünüzde, önceden tanım
 
 Bir JSON dosyasındaki runbook 'a geçirmek istediğiniz verileri depolamak yararlı olabilir. Örneğin, bir runbook 'a geçirmek istediğiniz tüm parametreleri içeren bir JSON dosyası oluşturabilirsiniz. Bunu yapmak için JSON kodunu bir dizeye dönüştürmeniz ve sonra dizgiyi runbook 'a geçirmeden önce bir PowerShell nesnesine dönüştürmeniz gerekir.
 
-Bu bölümde, bir PowerShell betiğinin, bir PowerShell runbook 'unu başlatmak için [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) 'u ÇAĞıRDıĞı ve json dosyasının içeriğini runbook 'a geçirerek bir örnek kullanılmıştır. PowerShell runbook 'u JSON nesnesinden VM için parametreleri alarak bir Azure VM başlatır.
+Bu bölümde, bir PowerShell betiğinin, bir PowerShell runbook 'unu başlatmak için [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) 'u ÇAĞıRDıĞı ve json dosyasının içeriğini runbook 'a geçirerek bir örnek kullanılmıştır. PowerShell runbook 'u JSON nesnesinden VM için parametreleri alarak bir Azure VM başlatır.
 
 ### <a name="create-the-json-file"></a>JSON dosyası oluşturma
 
@@ -287,7 +287,7 @@ Aşağıdaki kodu bir metin dosyasına yazın ve **test.js** olarak yerel bilgis
 
 ### <a name="create-the-runbook"></a>Runbook 'u oluşturma
 
-Azure Otomasyonu 'nda **Test-JSON** adlı yeni bir PowerShell runbook 'u oluşturun. Bkz. [Ilk PowerShell runbook 'Um](automation-first-runbook-textual-powershell.md).
+Azure Otomasyonu 'nda **Test-JSON** adlı yeni bir PowerShell runbook 'u oluşturun. Bkz. [Ilk PowerShell runbook 'Um](./learn/automation-tutorial-runbook-textual-powershell.md).
 
 JSON verilerini kabul etmek için, runbook bir nesneyi giriş parametresi olarak almalıdır. Runbook daha sonra JSON dosyasında tanımlanan özellikleri kullanabilir.
 

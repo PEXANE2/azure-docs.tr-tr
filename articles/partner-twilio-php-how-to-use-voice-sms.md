@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c29e0f687e36eb679875ea7899aa1a0cd91bd122
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80410551"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169502"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>PHP 'de ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -58,10 +58,12 @@ TwiML, bir çağrıyı veya SMS 'yi nasıl işleyebileceğini bilgilendirmek iç
 
 Örnek olarak, aşağıdaki TwiML metin **Merhaba Dünya** konuşmaya dönüştürür.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-       <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+    <Say>Hello World</Say>
+</Response>
+```
 
 Uygulamanız Twilio API 'sini çağırdığında, API parametrelerinden biri TwiML yanıtını döndüren URL 'dir. Geliştirme amacıyla, uygulamalarınız tarafından kullanılan TwiML yanıtlarını sağlamak için Twilio tarafından sağlanmış URL 'Leri kullanabilirsiniz. Ayrıca, TwiML yanıtlarını oluşturmak için kendi URL 'nizi barındırabilir ve **Twimlresponse** nesnesini kullanmak diğer bir seçenektir.
 
@@ -84,57 +86,63 @@ Uygulamanızı PHP için Twilio kitaplığını iki şekilde kullanacak şekilde
    
     -VEYA-
 2. PHP için Twilio kitaplığını bir PEAR paketi olarak yükler. Aşağıdaki komutlarla yüklenebilir:
-   
-        $ pear channel-discover twilio.github.com/pear
-        $ pear install twilio/Services_Twilio
+
+    ```bash
+    $ pear channel-discover twilio.github.com/pear
+    $ pear install twilio/Services_Twilio
+    ```
 
 PHP için Twilio kitaplığını yükledikten sonra, kitaplığa başvurmak için PHP dosyalarınızın en üstüne bir **require_once** açıklaması ekleyebilirsiniz:
 
-        require_once 'Services/Twilio.php';
+```php
+require_once 'Services/Twilio.php';
+```
 
 Daha fazla bilgi için bkz. [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Nasıl yapılır: giden çağrı yapma
 Aşağıda, **Services_Twilio** sınıfını kullanarak nasıl giden bir çağrının yapılacağı gösterilmektedir. Bu kod ayrıca Twilio biçimlendirme dili (TwiML) yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. **Kimden** **ve telefon numaraları için** değerlerinizi değiştirin ve kodu çalıştırmadan önce Twilio **hesabınızın telefon numarasını** doğrulayın.
 
-    // Include the Twilio PHP library.
-    require_once 'Services/Twilio.php';
+```php
+// Include the Twilio PHP library.
+require_once 'Services/Twilio.php';
 
-    // Library version.
-    $version = "2010-04-01";
+// Library version.
+$version = "2010-04-01";
 
-    // Set your account ID and authentication token.
-    $sid = "your_twilio_account_sid";
-    $token = "your_twilio_authentication_token";
+// Set your account ID and authentication token.
+$sid = "your_twilio_account_sid";
+$token = "your_twilio_authentication_token";
 
-    // The number of the phone initiating the call.
-    $from_number = "NNNNNNNNNNN";
+// The number of the phone initiating the call.
+$from_number = "NNNNNNNNNNN";
 
-    // The number of the phone receiving call.
-    $to_number = "NNNNNNNNNNN";
+// The number of the phone receiving call.
+$to_number = "NNNNNNNNNNN";
 
-    // Use the Twilio-provided site for the TwiML response.
-    $url = "https://twimlets.com/message";
+// Use the Twilio-provided site for the TwiML response.
+$url = "https://twimlets.com/message";
 
-    // The phone message text.
-    $message = "Hello world.";
+// The phone message text.
+$message = "Hello world.";
 
-    // Create the call client.
-    $client = new Services_Twilio($sid, $token, $version);
+// Create the call client.
+$client = new Services_Twilio($sid, $token, $version);
 
-    //Make the call.
-    try
-    {
-        $call = $client->account->calls->create(
-            $from_number, 
-            $to_number,
-              $url.'?Message='.urlencode($message)
-        );
-    }
-    catch (Exception $e) 
-    {
-        echo 'Error: ' . $e->getMessage();
-    }
+//Make the call.
+try
+{
+    $call = $client->account->calls->create(
+        $from_number, 
+        $to_number,
+        $url.'?Message='.urlencode($message)
+    );
+}
+catch (Exception $e) 
+{
+    echo 'Error: ' . $e->getMessage();
+}
+```
 
 Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Bunun yerine, TwiML yanıtı sağlamak için kendi sitenizi kullanabilirsiniz; daha fazla bilgi için, [kendi web sitenizde TwiML yanıtları sağlama](#howto_provide_twiml_responses)konusuna bakın.
 
@@ -143,33 +151,35 @@ Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafında
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Nasıl yapılır: SMS iletisi gönderme
 Aşağıda, **Services_Twilio** SıNıFıNı kullanarak SMS iletisinin nasıl gönderileceği gösterilmektedir. **Kimden** numarası, TWILIO tarafından SMS iletileri göndermek için deneme hesapları için sağlanır. Kodu çalıştırmadan önce, Twilio hesabınız için **-** Number için doğrulama yapılmalıdır.
 
-    // Include the Twilio PHP library.
-    require_once 'Services/Twilio.php';
+```php
+// Include the Twilio PHP library.
+require_once 'Services/Twilio.php';
 
-    // Library version.
-    $version = "2010-04-01";
+// Library version.
+$version = "2010-04-01";
 
-    // Set your account ID and authentication token.
-    $sid = "your_twilio_account_sid";
-    $token = "your_twilio_authentication_token";
+// Set your account ID and authentication token.
+$sid = "your_twilio_account_sid";
+$token = "your_twilio_authentication_token";
 
 
-    $from_number = "NNNNNNNNNNN"; // With trial account, texts can only be sent from your Twilio number.
-    $to_number = "NNNNNNNNNNN";
-    $message = "Hello world.";
+$from_number = "NNNNNNNNNNN"; // With trial account, texts can only be sent from your Twilio number.
+$to_number = "NNNNNNNNNNN";
+$message = "Hello world.";
 
-    // Create the call client.
-    $client = new Services_Twilio($sid, $token, $version);
+// Create the call client.
+$client = new Services_Twilio($sid, $token, $version);
 
-    // Send the SMS message.
-    try
-    {
-        $client->$client->account->messages->sendMessage($from_number, $to_number, $message);
-    }
-    catch (Exception $e) 
-    {
-        echo 'Error: ' . $e->getMessage();
-    }
+// Send the SMS message.
+try
+{
+    $client->$client->account->messages->sendMessage($from_number, $to_number, $message);
+}
+catch (Exception $e) 
+{
+    echo 'Error: ' . $e->getMessage();
+}
+```
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama
 Uygulamanız Twilio API 'sine bir çağrı başlattığında, Twilio isteği TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. Yukarıdaki örnek Twilio tarafından sağlanmış URL 'YI kullanır [https://twimlets.com/message][twimlet_message_url] . (TwiML, Twilio tarafından kullanılmak üzere tasarlanırken, bunu tarayıcınızda görüntüleyebilirsiniz. Örneğin, boş bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için öğesine tıklayın `<Response>` ; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] bir öğesi içeren bir öğeyi görmek için tıklayın `<Response>` `<Say>` .)
@@ -178,51 +188,57 @@ Twilio tarafından sağlanmış URL 'ye güvenmek yerine, HTTP yanıtlarını d�
 
 Aşağıdaki PHP sayfası, çağrının **Merhaba Dünya** belirten TwiML yanıtı ile sonuçlanır.
 
-    <?php    
-        header("content-type: text/xml");    
-        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    ?>
-    <Response>    
-        <Say>Hello world.</Say>
-    </Response>
+```xml
+<?php    
+    header("content-type: text/xml");    
+    echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+?>
+<Response>    
+    <Say>Hello world.</Say>
+</Response>
+```
 
 Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML belgesidir. PHP için Twilio kitaplığı sizin için TwiML 'yi oluşturacak sınıfları içerir. Aşağıdaki örnek yukarıda gösterildiği gibi eşdeğer yanıtı üretir ancak PHP için Twilio kitaplığındaki **Services \_ Twilio \_ twiml** sınıfını kullanır:
 
-    require_once('Services/Twilio.php');
+```php
+require_once('Services/Twilio.php');
 
-    $response = new Services_Twilio_Twiml();
-    $response->say("Hello world.");
-    print $response;
+$response = new Services_Twilio_Twiml();
+$response->say("Hello world.");
+print $response;
+```
 
 TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml][twiml_reference] .. 
 
 PHP sayfanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, metoda geçirilen URL olarak PHP sayfasının URL 'sini kullanın `Services_Twilio->account->calls->create` . Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **mytwiml** adlı bir Web uygulamanız varsa ve php sayfasının adı **mytwiml. php**ise, URL aşağıdaki örnekte gösterildiği gibi **Services_Twilio >hesap->çağrılar->oluştur** ' a geçirilebilir:
 
-    require_once 'Services/Twilio.php';
+```php
+require_once 'Services/Twilio.php';
 
-    $sid = "your_twilio_account_sid";
-    $token = "your_twilio_authentication_token";
-    $from_number = "NNNNNNNNNNN";
-    $to_number = "NNNNNNNNNNN";
-    $url = "http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.php";
+$sid = "your_twilio_account_sid";
+$token = "your_twilio_authentication_token";
+$from_number = "NNNNNNNNNNN";
+$to_number = "NNNNNNNNNNN";
+$url = "http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.php";
 
-    // The phone message text.
-    $message = "Hello world.";
+// The phone message text.
+$message = "Hello world.";
 
-    $client = new Services_Twilio($sid, $token, "2010-04-01");
+$client = new Services_Twilio($sid, $token, "2010-04-01");
 
-    try
-    {
-        $call = $client->account->calls->create(
-            $from_number, 
-            $to_number,
-              $url.'?Message='.urlencode($message)
-        );
-    }
-    catch (Exception $e) 
-    {
-        echo 'Error: ' . $e->getMessage();
-    }
+try
+{
+    $call = $client->account->calls->create(
+        $from_number, 
+        $to_number,
+        $url.'?Message='.urlencode($message)
+    );
+}
+catch (Exception $e) 
+{
+    echo 'Error: ' . $e->getMessage();
+}
+```
 
 PHP ile Azure 'da Twilio kullanma hakkında daha fazla bilgi için bkz. [Azure 'DA php uygulamasında Twilio kullanarak telefon araması yapma][howto_phonecall_php].
 

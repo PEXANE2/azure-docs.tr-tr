@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744981"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187328"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Otomasyonu 'nda değişkenleri yönetme
 
@@ -44,14 +45,14 @@ Azure portal bir değişken oluşturduğunuzda, portalın değişken değerini g
 * Boole
 * Null
 
-Değişken, belirtilen veri türüyle sınırlı değil. Farklı türde bir değer belirtmek istiyorsanız, değişkeni Windows PowerShell kullanarak ayarlamanız gerekir. Belirtirseniz `Not defined` , değişkenin değeri null olarak ayarlanır. Değeri [set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 'i veya iç cmdlet ile ayarlamanız gerekir `Set-AutomationVariable` .
+Değişken, belirtilen veri türüyle sınırlı değil. Farklı türde bir değer belirtmek istiyorsanız, değişkeni Windows PowerShell kullanarak ayarlamanız gerekir. Belirtirseniz `Not defined` , değişkenin değeri null olarak ayarlanır. Değeri [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 'i veya iç cmdlet ile ayarlamanız gerekir `Set-AutomationVariable` .
 
 Karmaşık bir değişken türü için değer oluşturmak veya değiştirmek için Azure portal kullanamazsınız. Ancak, Windows PowerShell kullanarak herhangi bir türde bir değer sağlayabilirsiniz. Karmaşık türler [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)olarak alınır.
 
 Bir dizi veya Hashtable oluşturup değişkenine kaydederek birden çok değeri tek bir değişkende saklayabilirsiniz.
 
 >[!NOTE]
->VM adı değişkenleri en fazla 80 karakter olabilir. Kaynak grubu değişkenleri en fazla 90 karakter olabilir. Bkz. [Azure kaynakları Için adlandırma kuralları ve kısıtlamaları](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).
+>VM adı değişkenleri en fazla 80 karakter olabilir. Kaynak grubu değişkenleri en fazla 90 karakter olabilir. Bkz. [Azure kaynakları Için adlandırma kuralları ve kısıtlamaları](../../azure-resource-manager/management/resource-name-rules.md).
 
 ## <a name="powershell-cmdlets-to-access-variables"></a>Değişkenlere erişmek için PowerShell cmdlet 'leri
 
@@ -59,10 +60,10 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon değişkenleri olu�
 
 | Cmdlet | Açıklama |
 |:---|:---|
-|[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Mevcut bir değişkenin değerini alır. Değer basit bir tür ise, aynı tür alınır. Karmaşık bir tür ise, bir `PSCustomObject` tür alınır. <br>**Note:**  Bu cmdlet 'i, şifrelenmiş bir değişkenin değerini almak için kullanamazsınız. Bunu yapmanın tek yolu, `Get-AutomationVariable` bir runbook veya DSC yapılandırmasında iç cmdlet 'ini kullanmaktır. [Değişkenlere erişmek için bkz. Dahili cmdlet 'ler](#internal-cmdlets-to-access-variables). |
-|[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Yeni bir değişken oluşturur ve değerini ayarlar.|
-|[Remove-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Varolan bir değişkeni kaldırır.|
-|[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Mevcut bir değişken için değeri ayarlar. |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Mevcut bir değişkenin değerini alır. Değer basit bir tür ise, aynı tür alınır. Karmaşık bir tür ise, bir `PSCustomObject` tür alınır. <br>**Note:**  Bu cmdlet 'i, şifrelenmiş bir değişkenin değerini almak için kullanamazsınız. Bunu yapmanın tek yolu, `Get-AutomationVariable` bir runbook veya DSC yapılandırmasında iç cmdlet 'ini kullanmaktır. [Değişkenlere erişmek için bkz. Dahili cmdlet 'ler](#internal-cmdlets-to-access-variables). |
+|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Yeni bir değişken oluşturur ve değerini ayarlar.|
+|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Varolan bir değişkeni kaldırır.|
+|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Mevcut bir değişken için değeri ayarlar. |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>Değişkenlere erişmek için iç cmdlet 'ler
 
@@ -126,7 +127,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Aşağıdaki örnek, karmaşık bir türe sahip bir değişken oluşturma ve ardından özelliklerini alma işlemlerinin nasıl yapılacağını gösterir. Bu durumda, [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) öğesinden bir sanal makine nesnesi kullanılır.
+Aşağıdaki örnek, karmaşık bir türe sahip bir değişken oluşturma ve ardından özelliklerini alma işlemlerinin nasıl yapılacağını gösterir. Bu durumda, [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) öğesinden bir sanal makine nesnesi kullanılır.
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"

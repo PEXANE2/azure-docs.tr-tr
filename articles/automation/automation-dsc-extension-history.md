@@ -9,11 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836932"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186427"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Azure Istenen durum yapılandırma uzantısı sürüm geçmişi ile çalışma
 
@@ -98,7 +99,7 @@ Bu makalede, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar v
 - **Ortam:** Mavisi
 - **Açıklamalar:** Bu sürüm, Windows Server 2016 ' de yer alan DSC kullanır; diğer Windows Işletim sistemleri için [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) (WMF yükleme için bir yeniden başlatma gerekir) yüklenir. Nano sunucu için, sanal makinede DSC rolü yüklüdür.
 - **Yeni Özellikler:**
-  - Hata düzeltmeleri, DSC Azure Otomasyonu 'nu Portal kullanıcı arabiriminden ve Kaynak Yöneticisi şablonuyla kullanmayı kolaylaştıran iyileştirmeler &. Daha fazla bilgi için bkz. DSC Uzantısı belgelerindeki [varsayılan yapılandırma betiği](/azure/virtual-machines/extensions/dsc-overview) .
+  - Hata düzeltmeleri, DSC Azure Otomasyonu 'nu Portal kullanıcı arabiriminden ve Kaynak Yöneticisi şablonuyla kullanmayı kolaylaştıran iyileştirmeler &. Daha fazla bilgi için bkz. DSC Uzantısı belgelerindeki [varsayılan yapılandırma betiği](../virtual-machines/extensions/dsc-overview.md) .
 
 ### <a name="version-226"></a>Sürüm 2,26
 
@@ -249,6 +250,6 @@ Bu makalede, Azure DSC VM uzantısının her sürümü, desteklediği ortamlar v
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - PowerShell DSC hakkında daha fazla bilgi için bkz. [PowerShell belge merkezi](/powershell/scripting/dsc/overview/overview).
-- [DSC uzantısının Kaynak Yöneticisi şablonunu](/azure/virtual-machines/extensions/dsc-template)inceleyin.
+- [DSC uzantısının Kaynak Yöneticisi şablonunu](../virtual-machines/extensions/dsc-template.md)inceleyin.
 - PowerShell DSC ile yönetebileceğiniz daha fazla işlevsellik ve kaynak için [PowerShell galerisine](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)gözatamazsınız.
-- Hassas parametreleri yapılandırmalara geçirme hakkında ayrıntılı bilgi için bkz. [DSC uzantı işleyicisiyle kimlik bilgilerini güvenli bir şekilde yönetme](/azure/virtual-machines/extensions/dsc-credentials).
+- Hassas parametreleri yapılandırmalara geçirme hakkında ayrıntılı bilgi için bkz. [DSC uzantı işleyicisiyle kimlik bilgilerini güvenli bir şekilde yönetme](../virtual-machines/extensions/dsc-credentials.md).

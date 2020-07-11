@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680832"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187141"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update aracı sorunlarını giderme
 
@@ -109,7 +110,7 @@ Bu olay hakkında daha fazla bilgi edinmek için bu olayın [Operations Manager 
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Çevrimdışı sorun giderme
 
-Betiği yerel olarak çalıştırarak karma Runbook Worker 'daki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. PowerShell Galerisi şu betiği alın: [sorun giderme-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Betiği çalıştırmak için WMF 4,0 veya sonraki bir sürümünün yüklü olması gerekir. PowerShell 'in en son sürümünü indirmek için bkz. [PowerShell 'in çeşitli sürümlerini yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+Betiği yerel olarak çalıştırarak karma Runbook Worker 'daki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. PowerShell Galerisi şu betiği alın: [sorun giderme-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Betiği çalıştırmak için WMF 4,0 veya sonraki bir sürümünün yüklü olması gerekir. PowerShell 'in en son sürümünü indirmek için bkz. [PowerShell 'in çeşitli sürümlerini yükleme](/powershell/scripting/install/installing-powershell).
 
 Bu Betiğin çıktısı aşağıdaki örneğe benzer şekilde görünür:
 

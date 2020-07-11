@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/10/2020
-ms.openlocfilehash: feb1cc132bf5463550a2e7921f347c8f2f48260e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad9029b44ffb0c98bad58bbf012eb19d084d5446
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668007"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185764"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -30,17 +31,17 @@ Aboneliğinizde desteklenen bir bölgede dağıtılmış bir Log Analytics çal�
 
 Aşağıdaki tabloda, bu şablonda kullanılan kaynakların API sürümleri listelenmektedir.
 
-| Kaynak | Kaynak türü | API sürümü |
+| Resource | Kaynak türü | API sürümü |
 |:---|:---|:---|
 | Çalışma alanı | çalışma alanı | 2020-03-01-Önizleme |
-| Otomasyon hesabı | automation | 2018-06-30 | 
+| Otomasyon hesabı | otomasyon | 2018-06-30 | 
 | Çözüm | çözümler | 2015-11-01-Önizleme |
 
 ## <a name="before-using-the-template"></a>Şablonu kullanmadan önce
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell az modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) komutunu da çalıştırmanız gerekir. Azure PowerShell, dağıtım [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell az modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) komutunu da çalıştırmanız gerekir. Azure PowerShell, dağıtım [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.1.0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı ile bu dağıtım [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.1.0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı ile bu dağıtım [az Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
 
 JSON şablonu şunları isteyecek şekilde yapılandırılır:
 

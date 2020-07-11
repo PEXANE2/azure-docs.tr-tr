@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30d1606a3928f421d2155e2d1abac0c8a6872aa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837170"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186648"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Otomasyonu Güncelleştirme Yönetimi Windows Update ayarlarını yapılandırma
 
-Azure Otomasyonu Güncelleştirme Yönetimi, Windows güncelleştirmelerini indirmek ve yüklemek için [Windows Update istemcisine](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) bağımlıdır. Windows Server Update Services (WSUS) veya Windows Update bağlanırken Windows Update istemcisi tarafından kullanılan belirli ayarlar vardır. Bu ayarların birçoğu, ile yönetilebilir:
+Azure Otomasyonu Güncelleştirme Yönetimi, Windows güncelleştirmelerini indirmek ve yüklemek için [Windows Update istemcisine](/windows/deployment/update/windows-update-overview) bağımlıdır. Windows Server Update Services (WSUS) veya Windows Update bağlanırken Windows Update istemcisi tarafından kullanılan belirli ayarlar vardır. Bu ayarların birçoğu, ile yönetilebilir:
 
 - Yerel Grup İlkesi Düzenleyicisi
 - Grup İlkesi
@@ -22,7 +23,7 @@ Azure Otomasyonu Güncelleştirme Yönetimi, Windows güncelleştirmelerini indi
 
 Güncelleştirme Yönetimi, Windows Update istemcisini denetlemek için belirtilen ayarların birçoğunu sağlar. Windows dışı güncelleştirmeleri etkinleştirmek için ayarları kullanıyorsanız, Güncelleştirme Yönetimi bu güncelleştirmeleri de yönetecektir. Güncelleştirme dağıtımı gerçekleşmeden önce güncelleştirmelerin indirilmesini etkinleştirmek istiyorsanız, güncelleştirme dağıtımı daha hızlı, daha verimli ve bakım penceresini aşmaya daha az olabilir.
 
-Azure aboneliğinizde WSUS ayarlama ve Windows sanal makinelerinizi güvenli bir şekilde güncel tutmanız konusunda ek öneriler için, [WSUS kullanarak Azure 'Da Windows sanal makinelerini güncelleştirme dağıtımınızı planlayın](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/).
+Azure aboneliğinizde WSUS ayarlama ve Windows sanal makinelerinizi güvenli bir şekilde güncel tutmanız konusunda ek öneriler için, [WSUS kullanarak Azure 'Da Windows sanal makinelerini güncelleştirme dağıtımınızı planlayın](/azure/architecture/example-scenario/wsus/).
 
 ## <a name="pre-download-updates"></a>Güncelleştirmeleri indirme öncesi
 
@@ -57,7 +58,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 Güncelleştirme Yönetimi WSUS ayarlarını destekler. Güncelleştirme, [intranet Microsoft Update hizmeti konumunu belirtme](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)' deki yönergeleri kullanarak tarama ve indirme kaynakları belirtebilirsiniz. Windows Update istemcisi varsayılan olarak güncelleştirmeleri Windows Update indirmek üzere yapılandırılmıştır. Makineleriniz için kaynak olarak bir WSUS sunucusu belirttiğinizde, güncelleştirmeler WSUS 'de onaylanmamışsa güncelleştirme dağıtımı başarısız olur. 
 
-Makineleri iç güncelleştirme hizmetine kısıtlamak için [Windows Update Internet konumlarına bağlanma](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)seçeneğini belirleyin. 
+Makineleri iç güncelleştirme hizmetine kısıtlamak için [Windows Update Internet konumlarına bağlanma](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)seçeneğini belirleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

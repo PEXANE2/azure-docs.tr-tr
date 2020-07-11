@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ab6ee597cfdc5d169bd33b77a061880b19e134b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300312"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165643"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları sorunlarını giderme  
 
@@ -182,9 +183,10 @@ Azure Izleyici 'de yapılandırmanın bir parçası olarak oluşturulan her gün
 - Analiz platformunda veri akışı yoktu. Sorgu yürütme, belirtilen sorgu için veri bulunmadığından [bir hata veriyor](https://dev.loganalytics.io/documentation/Using-the-API/Errors) .
 - [Sorgu dilindeki](https://docs.microsoft.com/azure/kusto/query/) değişiklikler, komutlar ve işlevler için düzeltilmiş bir biçim içerir. Bu nedenle, daha önce bir uyarı kuralında sağlanmış olan sorgu artık geçerli değildir.
 
-[Azure Advisor](../../advisor/advisor-overview.md) bu davranışla ilgili olarak sizi uyarır. Orta etki ile yüksek kullanılabilirlik kategorisi ve "izlemeyi sağlamak için günlük uyarı kuralınızı onarma" açıklaması altında, Azure Advisor 'daki belirli günlük uyarısı kuralı için bir öneri eklenmiştir. Azure Advisor yedi gün için bir öneri sağladıktan sonra günlük uyarı kuralında bir uyarı sorgusu yoksa, Azure Izleyici günlük uyarısını devre dışı bırakır ve kural, boyutlandırılabilir bir süre (hafta gibi) için sürekli olarak çalışmazsa gereksiz yere faturalandırılmazsınız.
+[Azure Advisor](../../advisor/advisor-overview.md) bu davranışla ilgili olarak sizi uyarır. Orta etki ile yüksek kullanılabilirlik kategorisi ve "izlemeyi sağlamak için günlük uyarı kuralınızı onarma" açıklaması altında, Azure Advisor 'daki belirli günlük uyarısı kuralı için bir öneri eklenmiştir.
 
-Azure Izleyici günlük uyarı kuralını [Azure etkinlik günlüğünde](../../azure-resource-manager/management/view-activity-logs.md)bir olay arayarak devre dışı bıraktığınız zaman tam zamanı bulabilirsiniz.
+> [!NOTE]
+> Azure Advisor yedi gün boyunca bir öneri sağladıktan sonra günlük uyarı kuralında bir uyarı sorgusu yoksa, Azure Izleyici günlük uyarısını devre dışı bırakır ve kural boyutlandırılabilir bir süre (7 gün) için sürekli olarak çalışmazsa gereksiz yere faturalandırılmazsınız. Azure Izleyici günlük uyarı kuralını [Azure etkinlik günlüğünde](../../azure-resource-manager/management/view-activity-logs.md)bir olay arayarak devre dışı bıraktığınız zaman tam zamanı bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,11 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830132"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185849"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Azure Otomasyonu'nda güvenli varlıkların şifrelenmesi
 
@@ -51,12 +52,12 @@ Bir Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinl
 
  - Müşteri tarafından yönetilen anahtar, bir Azure Key Vault depolanır. 
  - Anahtar kasasında hem **geçici silme** hem de **Temizleme** özelliklerini etkinleştirin. Bu özellikler, yanlışlıkla silme durumunda anahtarların kurtarılmasına izin vermek için gereklidir.
- - Yalnızca RSA anahtarları Azure Otomasyonu şifrelemesi ile desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+ - Yalnızca RSA anahtarları Azure Otomasyonu şifrelemesi ile desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md).
 - Otomasyon hesabı ve Anahtar Kasası farklı aboneliklerde olabilir, ancak aynı Azure Active Directory kiracısında olması gerekir.
 
 ### <a name="assignment-of-an-identity-to-the-automation-account"></a>Otomasyon hesabına bir kimlik atama
 
-Müşteri tarafından yönetilen anahtarları bir Otomasyon hesabıyla birlikte kullanmak için Otomasyon hesabınızın, müşteri tarafından yönetilen anahtarları depolayan anahtar kasasında kimlik doğrulaması yapması gerekir. Azure Otomasyonu, Azure Key Vault hesabın kimliğini doğrulamak için sistem tarafından atanmış Yönetilen kimlikler kullanır. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Müşteri tarafından yönetilen anahtarları bir Otomasyon hesabıyla birlikte kullanmak için Otomasyon hesabınızın, müşteri tarafından yönetilen anahtarları depolayan anahtar kasasında kimlik doğrulaması yapması gerekir. Azure Otomasyonu, Azure Key Vault hesabın kimliğini doğrulamak için sistem tarafından atanmış Yönetilen kimlikler kullanır. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md)
 
 Aşağıdaki REST API çağrısını kullanarak, bir sistem tarafından atanmış yönetilen kimliği Otomasyon hesabına yapılandırın:
 
@@ -184,7 +185,7 @@ Anahtarın döndürülmesi Otomasyon hesabındaki güvenli varlıkların yeniden
 
 ## <a name="revocation-of-access-to-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtara erişimin iptali
 
-Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShell veya Azure CLı kullanın. Daha fazla bilgi için bkz. PowerShell veya [Azure Key Vault clı](https://docs.microsoft.com/cli/azure/keyvault) [Azure Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault/) . Erişimi iptal etmek, Azure Otomasyonu tarafından şifreleme anahtarına erişilemediğinden, Otomasyon hesabındaki tüm güvenli varlıklara erişimi etkin bir şekilde engeller.
+Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShell veya Azure CLı kullanın. Daha fazla bilgi için bkz. PowerShell veya [Azure Key Vault clı](/cli/azure/keyvault) [Azure Key Vault](/powershell/module/az.keyvault/) . Erişimi iptal etmek, Azure Otomasyonu tarafından şifreleme anahtarına erişilemediğinden, Otomasyon hesabındaki tüm güvenli varlıklara erişimi etkin bir şekilde engeller.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

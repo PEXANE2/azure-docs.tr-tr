@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985250"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187124"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure dijital TWINS için sorgu dili hakkında
 
@@ -30,10 +30,10 @@ Azure Digital TWINS sorgu deposu dilinde kullanılabilen işlemler şunlardır:
 * İlişki özelliklerine göre TWINS 'i alın.
 * Birden çok ilişki türü (sorgular) üzerinden TWINS Al `JOIN` . `JOIN`İzin verilen (genel önizleme için bir düzey) sayısında sınırlamalar vardır.
 * `IS_OF_MODEL(twinCollection, twinTypeName)`İkizi 'in [modeline](concepts-models.md)göre filtrelemeye izin veren özel işlevini kullanın. Devralmayı destekler.
-* `AND`Yukarıdaki (, `OR` , `NOT` işleç) birleşimini kullanın.
 * Skaler işlevleri kullanın: `IS_BOOL` , `IS_DEFINED` , `IS_NULL` , `IS_NUMBER` , `IS_OBJECT` , `IS_PRIMITIVE` , `IS_STRING` , `STARTS_WITH` , `ENDS_WITH` .
-* Sorgu karşılaştırma işleçlerini kullanın: `AND` / `OR` / `NOT` , `IN` / `NOT IN` ,, `STARTSWITH` / `ENDSWITH` `=` , `!=` , `<` , `>` , `<=` , `>=` .
-* Devamlılık kullan: sorgu nesnesi, bir sayfa boyutu (100 'e kadar) ile birlikte oluşturulur. Tek seferde dijital TWINS 'i, yönteme yapılan çağrıları yineleyerek alabilirsiniz `nextAsTwin` .
+* Sorgu karşılaştırma işleçlerini kullanın: `IN` / `NIN` , `=` , `!=` , `<` , `>` , `<=` , `>=` .
+* `AND`Yukarıdaki (, `OR` , `NOT` işleç) birleşimini kullanın.
+* Devamlılık kullan: sorgu nesnesi, bir sayfa boyutu (100 'e kadar) ile birlikte oluşturulur. Tek seferde dijital TWINS 'i, API 'ye sonraki çağrılarda devamlılık belirteci sağlayarak alabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

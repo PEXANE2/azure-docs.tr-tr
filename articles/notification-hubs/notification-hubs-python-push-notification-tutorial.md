@@ -17,11 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561191"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220074"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python 'dan Notification Hubs kullanma
 
@@ -382,7 +383,7 @@ Python kodunuzu çalıştırmak, hedef cihazınızda bir bildirim göstermelidir
 
 NotificationHub 'ı başlatırken hata ayıklama bayrağını etkinleştirdiğinizde, ayrıntılı HTTP isteği ve yanıt dökümünü ve aşağıdaki gibi NotificationOutcome görürsünüz. Bu, istekte hangi HTTP üstbilgilerinin geçtiğini ve Bildirim Hub 'ından HTTP yanıtının alındığını anlayabileceğiniz yerdir:
 
-![][1]
+![Bir konsolun, H T T P isteği ve yanıt dökümü ile ana hatlarıyla gösterilen bildirim sonucu iletilerinin ayrıntılarını içeren ekran görüntüsü.][1]
 
 Örneğin ayrıntılı Bildirim Hub 'ı sonucu görürsünüz.
 
@@ -403,7 +404,7 @@ Windows istemcisine bir yayın bildirim bildirimi gönderdiğinizde gönderilen 
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![H T T isteği ayrıntıları ve Service Bus bildirim biçimi ve X W N S tür değerleri kırmızı renkle gösterilen bir konsolun ekran görüntüsü.][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Etiket (veya etiket ifadesi) belirten bildirim gönder
 
@@ -413,7 +414,7 @@ HTTP isteğine eklenen Etiketler HTTP üst bilgisi (aşağıdaki örnekte, bildi
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![H T T isteği ayrıntıları ve Service Bus bildirim biçimi, Service Bus bildirim etiketleri ve X W N S tür değerleri kırmızı renkle gösterilen bir konsolun ekran görüntüsü.][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Birden çok etiket belirten bildirim gönder
 
@@ -424,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![H T T isteği ayrıntıları ve Service Bus bildirim biçimi, Service Bus bildirim etiketleri ve X W N S tür değerleri kırmızı renkle gösterilen bir konsolun ekran görüntüsü.][4]
 
 ### <a name="templated-notification"></a>Şablonlu bildirim
 
@@ -443,7 +444,7 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![H T T isteği ve Içerik türü ayrıntılarını içeren bir konsolun ekran görüntüsü ve kırmızı renkte özetlenen bildirim biçimi değerleri Service Bus.][5]
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

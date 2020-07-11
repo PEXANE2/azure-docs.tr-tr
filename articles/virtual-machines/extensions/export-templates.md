@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704004"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201024"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM uzantılarını içeren kaynak gruplarını dışarı aktarma
 
@@ -32,18 +33,7 @@ Birçok sanal makine uzantısı mevcuttur. Tüm uzantılar, "Otomasyon betiği" 
 
 Aşağıdaki uzantılar Otomasyon betiği özelliği ile birlikte aktarılabilir.
 
-| Dahili numara ||||
-|---|---|---|---|
-| Acronis Yedekleme | Dataköpek Windows Aracısı | Linux Için işletim sistemi düzeltme eki uygulama | VM anlık görüntüsü Linux
-| Acronis Yedekleme Linux | Docker uzantısı | Pupevcil hayvan Aracısı |
-| Bg bilgileri | DSC Uzantısı | Site 7/24 APM öngörüleri |
-| BMC CTı Aracısı Linux | DynaTrace Linux | Site 7/24 Linux sunucusu |
-| BMC CTı aracı pencereleri | DynaTrace pencereleri | Site 7/24 Windows Server |
-| Chef Istemcisi | HPE güvenlik uygulaması Defender | Eğilim mikro DSA |
-| Özel Betik | IaaS kötü amaçlı yazılımdan koruma | Eğilim mikro DSA Linux |
-| Özel Betik Uzantısı | IaaS tanılaması | Linux Için VM erişimi |
-| Linux için özel betik | Linux Chef Istemcisi | Linux Için VM erişimi |
-| Dataköpek Linux Aracısı | Linux tanısı | Sanal Makine Anlık Görüntüsü |
+> Acronis Backup, Acronis Backup Linux, bg Info, BMC CTı aracı Linux, BMC CTı aracı Windows, Chef Istemcisi, Özel Betik, Özel Betik uzantısı, Linux için özel betik, Dataköpek Linux Aracısı, Dataköpek Windows Aracısı, Docker uzantısı, DSC Uzantısı, dynaTrace Linux, dynaTrace Windows, HPE güvenlik uygulaması Defender, IaaS antimalware, IaaS Diagnostics, Linux Chef Client, Linux Tanılama, Linux Için düzeltme eki uygulama, Pupevcil hayvan, site 7/24 APM Insight , Site 7/24 Linux sunucusu, site 7/24 Windows Server, eğilim mikro DSA, eğilim mikro DSA Linux, Linux Için VM erişimi, Linux için VM erişimi, VM anlık görüntüsü, VM Snapshot Linux
 
 ## <a name="export-the-resource-group"></a>Kaynak grubunu dışarı aktarma
 

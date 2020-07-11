@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: d921ecc390ae9361c9b36b4738e73a499aa2e8a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361821"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186257"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -35,7 +35,7 @@ Disk alanı, bellek veya ağ yuvaları üzerinde birçok korumalı alan [sınır
 
 Karma Runbook Worker 'ı yüklemek için işlem işletim sistemine bağlıdır. Aşağıdaki tabloda dağıtım türleri tanımlanmaktadır.
 
-|İşletim Sistemi  |Dağıtım türleri  |
+|Operating System  |Dağıtım türleri  |
 |---------|---------|
 |Windows     | [Otomatik](automation-windows-hrw-install.md#automated-deployment)<br>[El ile](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
@@ -63,7 +63,7 @@ Azure Otomasyonu ve Log Analytics aracısını çalıştıran makineler arasınd
 
 ### <a name="firewall-use"></a>Güvenlik duvarı kullanımı
 
-İnternet 'e erişimi kısıtlamak için güvenlik duvarı kullanıyorsanız, güvenlik duvarını erişime izin verecek şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini ara sunucu olarak kullanıyorsanız, karma runbook çalışanları için yapılandırıldığından emin olun. Bkz. [Otomasyon karma çalışanları için Log Analytics ağ geçidini yapılandırma](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
+İnternet 'e erişimi kısıtlamak için güvenlik duvarı kullanıyorsanız, güvenlik duvarını erişime izin verecek şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini ara sunucu olarak kullanıyorsanız, karma runbook çalışanları için yapılandırıldığından emin olun. Bkz. [Otomasyon karma çalışanları için Log Analytics ağ geçidini yapılandırma](../azure-monitor/platform/gateway.md).
 
 ### <a name="service-tags"></a>Hizmet etiketleri
 

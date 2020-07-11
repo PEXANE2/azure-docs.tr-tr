@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110632"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184557"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -95,7 +95,7 @@ Bir atlama kırmızıysa, en az bir sağlıksız yolun parçası olduğunu belir
 NPM her ağ yoluna, ağ kesimine ve bileşen ağ atlıklarına, bir parçası oldukları sağlıksız yolların sayısına göre hata olasılıkların atanmasını sağlamak için bir dayalı mekanizması kullanır. Ağ kesimleri ve atlamaları daha fazla sağlıksız yolun parçası haline geldiği için, bunlarla ilişkili hata olasılığı artar. Bu algoritma en iyi şekilde çalışarak, hata olasılıkların hesaplanması için veri noktalarını arttığı için NPM Aracısı birbirlerine bağlı olan çok sayıda düğümünüz olduğunda bu algoritma en iyi şekilde çalışacaktır.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>NPM 'de nasıl uyarı oluşturabilirim?
-Adım adım yönergeler için [belgelerde Uyarılar bölümüne](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) bakın.
+NPM kullanıcı arabiriminden uyarı oluşturma şu anda bir sorun nedeniyle başarısız oluyor. Lütfen uyarıları el ile oluşturun.
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Uyarılar için varsayılan Log Analytics sorguları nelerdir?
 Performans İzleyicisi sorgusu

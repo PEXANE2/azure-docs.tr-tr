@@ -1,14 +1,15 @@
 ---
 title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
 description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-ms.date: 03/17/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248830"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187532"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -125,7 +126,7 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler için platform ölçümleri (özel ölçümler değil) için desteklenir:
 
-| Hizmet | Genel Azure | Devlet | Çin |
+| Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler  | **Evet** | Hayır | Hayır |
 | SQL Server veritabanları | **Evet** | **Evet** | Hayır |
@@ -134,9 +135,13 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 
 Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz. Örneğin, sanal makineler ile kapsamı şu şekilde belirtebilirsiniz:  
 
-- bir abonelik içindeki bir Azure bölgesindeki sanal makinelerin listesi
+- bir abonelik içindeki sanal makinelerin (bir Azure bölgesindeki) listesi
 - bir abonelikteki bir veya daha fazla kaynak grubunda bulunan tüm sanal makineler (bir Azure bölgesinde)
 - bir abonelikteki tüm sanal makineler (bir Azure bölgesinde)
+
+> [!NOTE]
+>
+> Birden çok kaynak ölçümü uyarı kuralının kapsamı, seçili kaynak türünde en az bir kaynak içermelidir.
 
 Birden çok kaynağı izleyen ölçüm uyarısı kuralları oluşturmak, tek bir kaynağı izleyen [başka bir ölçüm uyarısı oluşturmak](alerts-metric.md) gibidir. Yalnızca fark, izlemek istediğiniz tüm kaynakları seçecekti. Ayrıca, bu kuralları [Azure Resource Manager şablonları](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)aracılığıyla da oluşturabilirsiniz. İzlenen her kaynak için bireysel bildirimler alacaksınız.
 

@@ -1,5 +1,5 @@
 ---
-title: Otomatik ML 'de Explainability
+title: Otomatik ML 'de Explainability (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Otomatikleştirilmiş ML modelinizin Özellik önemini nasıl belirlediğini ve Azure Machine Learning SDK kullanırken tahmine dayalı hale getirmek için nasıl açıklamalar alabileceğinizi öğrenin.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: mesameki
 author: mesameki
-ms.date: 03/11/2020
-ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430536"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206594"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Yorumlenebilirlik: otomatik makine öğreniminde model açıklamaları
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Yorumlenebilirlik: otomatik makine öğreniminde model açıklamaları (Önizleme)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -29,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 - Veri ve açıklamaları desenlerdeki desenleri görmenizi sağlayacak görselleştirmeleri etkinleştirin.
 - Çıkarım veya Puanlama sırasında yorumlenebilirlik uygulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yorumlenebilirlik özellikleri. `pip install azureml-interpret azureml-contrib-interpret`Gerekli paketleri almak için ' i çalıştırın.
 - Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.

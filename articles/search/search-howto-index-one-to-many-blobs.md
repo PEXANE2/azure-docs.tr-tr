@@ -1,7 +1,7 @@
 ---
 title: Birden çok belge içeren dizin blob 'ları
 titleSuffix: Azure Cognitive Search
-description: Her Blobun bir veya daha fazla arama dizini belgesi sağlayabildiği Azure Congitive arama blobu Dizin oluşturucuyu kullanarak, Azure bloblarını metin içeriğine göre gezin.
+description: Her Blobun bir veya daha fazla arama dizini belgesi sağlayabildiği Azure Bilişsel Arama blob Dizin oluşturucuyu kullanarak Azure Blob 'larını metin içeriğine göre gezin.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,11 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f93ae8a017c889f6c465b3ccbbb66382577e871
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74112274"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146802"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Birden çok arama belgesi üretmek için Blobları dizinleme
 Varsayılan olarak, bir blob Dizin Oluşturucu bir Blobun içeriğini tek bir arama belgesi olarak değerlendirir. Belirli **Parsingmode** değerleri, tek bir Blobun birden çok arama belgesi ile sonuçlanabileceğinden senaryolar destekler. Bir dizin oluşturucunun bir Blobun birden fazla arama belgesi ayıklamasına izin veren farklı türde **Parsingmode** 'lar şunlardır:
@@ -41,21 +42,27 @@ Blob kabınızda aşağıdaki yapıyla blob 'lar vardır:
 
 _ÜzerindeBlob1.js_
 
+```json
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
+```
 
 _ÜzerindeBlob2.js_
 
+```json
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
+```
 
 Bir Dizin Oluşturucu oluşturup, **parsingMode** `jsonLines` anahtar alanı için herhangi bir açık alan eşlemesi belirtmeden parsingmode 'u olarak ayarlarsanız, aşağıdaki eşleme örtük olarak uygulanır
-    
+
+```http
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
         "targetFieldName": "id",
         "mappingFunction": { "name" : "base64Encode" }
     }
+```
 
 Bu kurulum, aşağıdaki bilgileri içeren Azure Bilişsel Arama dizinine neden olur (breçekimi için Base64 kodlamalı kimlik kısaltıldı)
 
@@ -72,22 +79,28 @@ Bu kurulum, aşağıdaki bilgileri içeren Azure Bilişsel Arama dizinine neden 
 
 _ÜzerindeBlob1.js_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
+```
 
 _ÜzerindeBlob2.js_
 
+```json
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
+```
 
 `delimitedText` **Parsingmode**ile bir Dizin Oluşturucu oluşturduğunuzda, anahtar alanına aşağıdaki şekilde bir alan eşleme işlevi ayarlamak doğal olabilir:
 
+```http
     {
         "sourceFieldName" : "recordid",
         "targetFieldName": "id"
     }
+```
 
 Ancak, bu eşleme, _not_ Dizin `recordid` _Bloblar genelinde_benzersiz olmadığından, dizinde gösterilen 4 belge ile sonuçlanmaz. Bu nedenle, `AzureSearch_DocumentKey` özellikten "bire çok" ayrıştırma modları için anahtar Dizin alanına uygulanan örtük alan eşlemesini kullanmanızı öneririz.
 

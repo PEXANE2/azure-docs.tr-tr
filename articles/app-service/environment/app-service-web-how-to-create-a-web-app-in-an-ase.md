@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701839"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220703"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Web uygulaması oluşturma
 
@@ -27,13 +28,13 @@ Bu öğreticide, bir [App Service ortamı v1](app-service-app-service-environmen
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktadır. Henüz yapmadıysanız, bkz. [App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 1. [Azure portalında](https://portal.azure.com/) **> Web uygulaması Web ve mobil > kaynak oluştur ' a**tıklayın. 
    
-    ![][1]
+    ![Azure portal bir Web uygulamasının nerede oluşturulacağını gösteren ekran görüntüsü.][1]
 2. Aboneliğinizi seçin.  
    
     Birden çok aboneliğiniz varsa App Service Ortamı bir uygulama oluşturmayı biliyorsanız, ortamı oluştururken kullandığınız aboneliğin aynısını kullanmanız gerekir. 
@@ -46,7 +47,7 @@ Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktad�
    
     Plan adı altında belirtilen konuma bakarak AŞIRINIZDEKI App Service planlarını belirleyebilirsiniz.  
    
-    ![][5]
+    ![AŞIRINIZDEKI App Service planlarını görüntülemenin gösterildiği ekran görüntüsü.][5]
    
     App Service Ortamı zaten var olan bir App Service planını kullanmak istiyorsanız, bu planı seçin. Yeni bir App Service planı oluşturmak istiyorsanız, Bu öğreticinin aşağıdaki bölümüne bakın, [bir App Service Ortamı App Service planı oluşturun](#createplan).
 5. Web uygulamanız için bir ad girin ve ardından **Oluştur**' a tıklayın. 
@@ -68,18 +69,18 @@ Aşağıdaki yönergelerde, öğreticinin önceki bölümünde açıklandığı 
    
     App Service Ortamı aslında özel bir dağıtım konumu olduğundan konum altında gösterilir. 
    
-    ![][2]
+    ![İstediğiniz Ao 'yu seçmek için konum seçiciyi gösteren ekran görüntüsü.][2]
    
     Konum seçicideki bir AO seçildikten sonra App Service planı oluşturma Kullanıcı Arabirimi güncelleştirmeleri.  Konum artık açı sisteminin adını ve bulunduğu bölgeyi gösterir ve fiyatlandırma planı seçicisinin bir çalışan havuzu seçiciyle değiştirilmiştir.  
    
-    ![][3]
+    ![Konum seçicide Ao 'yu seçtikten sonra Ao sistem ayrıntılarını gösteren ekran görüntüsü.][3]
 
 ### <a name="selecting-a-worker-pool"></a>Çalışan havuzu seçme
 Normalde Azure App Service ve App Service Ortamı dışında, özel bir fiyat planının seçiminde kullanılabilir 3 işlem boyutu vardır.  Benzer bir şekilde, bir ASE için 3 adede kadar çalışan havuzu tanımlayabilir ve bu çalışan havuzu için kullanılan işlem boyutunu belirtebilirsiniz.  Bu, Ao 'nın kiracılar için, App Service planınız için işlem boyutu olan bir fiyatlandırma planı seçmek yerine, *çalışan havuzu*adı ' nı seçersiniz.  
 
 Çalışan havuzu seçimi Kullanıcı arabirimi, bu çalışan havuzu için kullanılan işlem boyutunu adın altında gösterir.  Kullanılabilir miktar, bu havuzda kullanılmak üzere kaç işlem örneğinin kullanılabilir olduğunu gösterir.  Toplam Havuz gerçekte bu sayıdan daha fazla örneğe sahip olabilir, ancak bu değer, ne kadar çok kullanımda olduğunu ifade eder.  Daha fazla işlem kaynağı eklemek için App Service Ortamı ayarlamanız gerekiyorsa bkz. [App Service ortamı yapılandırma](app-service-web-configure-an-app-service-environment.md).
 
-![][4]
+![ATıCı için çalışan havuzları seçebileceğiniz çalışan havuzu bölmesini gösteren ekran görüntüsü.][4]
 
 Bu örnekte, kullanılabilir yalnızca iki çalışan havuzu görürsünüz. Bunun nedeni, Ao yöneticisinin yalnızca bu iki çalışan havuzlarında Konakları ayırdığından oluşur.  Üçüncü olarak, kendisine ayrılan VM 'Ler olduğunda bu durum gösterilir.  
 

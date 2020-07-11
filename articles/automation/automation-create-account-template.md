@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/09/2020
-ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b9d3ea30f502f8f95bb12c6a3b270f8eddde0cf
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84661023"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186631"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma
 
@@ -32,16 +33,16 @@ Bu adımları tamamladıktan sonra, bağlı Log Analytics çalışma alanına ru
 
 Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listelenmektedir.
 
-| Kaynak | Kaynak türü | API sürümü |
+| Resource | Kaynak türü | API sürümü |
 |:---|:---|:---|
 | Çalışma alanı | çalışma alanı | 2020-03-01-Önizleme |
-| Otomasyon hesabı | automation | 2018-06-30 | 
+| Otomasyon hesabı | otomasyon | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>Şablonu kullanmadan önce
 
 PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell az modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir. PowerShell ile, dağıtım [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
 
-Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, sürüm 2.1.0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı ile bu dağıtım [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
+Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, sürüm 2.1.0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı ile bu dağıtım [az Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
 
 JSON şablonu şunları isteyecek şekilde yapılandırılır:
 

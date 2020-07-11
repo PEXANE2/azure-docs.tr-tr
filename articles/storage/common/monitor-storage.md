@@ -9,19 +9,19 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955175"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182721"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage 'ı izleme
 
 Azure kaynaklarına dayanan önemli uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure depolama tarafından oluşturulan izleme verileri ve bu verilerdeki uyarıları çözümlemek için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
 
 > [!NOTE]
-> Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, genel amaçlı v1 için Premium Depolama hesapları ve genel amaçlı v2 depolama hesapları için günlük Günlükler sunar. Klasik depolama hesapları desteklenmez.
+> Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, Bloblar (Azure Data Lake Storage 2.), dosyalar, kuyruklar ve tablolar için Günlükler sunar. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
 
 ## <a name="monitor-overview"></a>İzlemeye genel bakış
 
@@ -319,7 +319,7 @@ Günlükler, hedef depolama hesabındaki bir kapsayıcıya depolanan BLOB olarak
 
 `https://<destination-storage-account>.blob.core.windows.net/insights-logs-<storage-operation>/resourceId=/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<source-storage-account>/blobServices/default/y=<year>/m=<month>/d=<day>/h=<hour>/m=<minute>/PT1H.json`
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 

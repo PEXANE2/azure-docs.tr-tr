@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7666ee1a81c2ed93ee5e246b3ec79f056f9d63ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078747"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187787"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Hava durumu ortaklarından Hava durumu verileri alın
 
@@ -153,7 +153,7 @@ REST API kullanarak hava durumu verilerini sorgulamak için aşağıdaki adımla
 
 1. Farmkörler veri merkezi Swagger ( https://yourdatahub.azurewebsites.net/swagger) ,/dalgalı iş DATALOCATION API 'sine gidin ve bır get isteği yapın. Yanıtta, işin bir parçası olarak belirtilen konum (Enlem/Boylam) için/dalgalı işlem datalocation nesneleri oluşturulur. Nesne (ler) in **kimliğini** ve **dalgalı veri modetiğine** dikkat edin.
 
-2. Adım 1 ' de belirtildiği gibi, **dalgalı veri ModelId** için/dalgalı therdatamodel API 'sinde Get/{ID} yapın. "Hava durumu veri modeli", alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları içerir. Örneğin, hava durumu **veri modeli** nesnesi içindeki **Hava durumu ölçümü** , hangi hava durumu bilgilerinin desteklenmekte olduğunu ve hangi tür ve birimler hakkında ayrıntılı bilgiler içerir. Örneğin,
+2. Adım 1 ' de belirtildiği gibi, **dalgalı veri ModelId** için/dalgalı therdatamodel API 'sinde Get/{ID} yapın. "Hava durumu veri modeli", alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları içerir. Örneğin, hava durumu **veri modeli** nesnesi içindeki **Hava durumu ölçümü** , hangi hava durumu bilgilerinin desteklenmekte olduğunu ve hangi tür ve birimler hakkında ayrıntılı bilgiler içerir. Örneğin:
 
    ```json
    {
@@ -210,6 +210,11 @@ REST API kullanarak hava durumu verilerini sorgulamak için aşağıdaki adımla
    ```
 
 Yukarıdaki örnekte, yanıtın iki zaman damgalarına ilişkin veriler, ölçü adı ("sıcaklık") ve raporlanan Hava durumu verilerinin iki zaman damgalarıyla birlikte verileri vardır. Bildirilen değerlerin türünü ve birimini yorumlamak için ilgili hava durumu veri modeline (yukarıdaki 2. adım bölümünde açıklandığı gibi) başvurmanız gerekir.
+
+## <a name="troubleshoot-job-failures"></a>İş hatalarında sorun giderme
+
+İş hatalarıyla ilgili sorunları gidermek için iş günlüklerini kontrol edebilirsiniz. Lütfen aynı [adımları](troubleshoot-azure-farmbeats.md#weather-data-job-failures) izleyin.
+
 
 ## <a name="appendix"></a>Ek
 

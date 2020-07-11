@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656825"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187719"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -284,7 +285,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Veri hub 'ında Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
 3. **Kaynak grubu** panosunda, *datahublogs \* * depolama hesabı ' nı arayın. Örneğin, *datahublogsmvxmq*.  
 4. **Ad** sütununda **, depolama hesabı panosunu görüntülemek** için depolama hesabını seçin.
@@ -296,7 +297,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Hızlandırıcı için Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmtempts Hızlandırıcı kaynak grubunu arayın.
 3. **Kaynak grubu** panosunda, *depolama \* * depolama hesabı ' nı arayın. Örneğin, *storagedop4k \* *.
 4. **Depolama hesabı** panosunu görüntülemek için **ad** sütunundaki depolama hesabını seçin.
@@ -313,3 +314,39 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 1. Farmrets Datahub kaynak grubuna gidin.
 2. **App Service**'i seçin.  
 3. Ölçek [App Service fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/app-service/windows/)gidin ve uygun bir fiyatlandırma katmanını seçin.
+
+## <a name="weather-data-job-failures"></a>Hava durumu verileri işi sorunları
+
+**Hata**: Hava durumu verilerini almak için işleri çalıştıralım, ancak iş başarısız
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>Hava durumu verileri iş hatalarında sorun gidermek için günlükleri toplayın
+
+1. Azure portal içindeki Farmtempts kaynak grubuna gidin.
+2. Kaynak grubunun parçası olan Data Factory hizmetine tıklayın. Hizmetin "SKU: Datahub" etiketi olacaktır
+
+> [!NOTE]
+> Kaynak grubu içindeki hizmetlerin etiketlerini görüntülemek için, "Sütunları Düzenle" seçeneğine tıklayın ve kaynak grubu görünümüne "Etiketler" ekleyin
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Proje Farmtları":::
+
+3. Veri fabrikasının Genel Bakış sayfasında **Yazar ve izleyici**' ye tıklayın. Tarayıcınızda yeni bir sekme açılır. **Monitöre** tıklayın
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Proje Farmtları":::
+
+4. Hava durumu işi yürütmesinin parçası olan işlem hattı çalıştırmalarının bir listesini görürsünüz. Günlüklerini toplamak istediğiniz Işe tıklayın
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Proje Farmtları":::
+
+5. İşlem hattı Genel Bakış sayfasında, etkinlik çalıştırmalarının listesini görürsünüz. Günlükleri toplamak istediğiniz etkinliklerin çalıştırma kimliklerini bir yere unutmayın
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Proje Farmtları":::
+
+6. Azure portal ' de Farmrekts kaynak grubunuza dönün ve **datahublogs-xxxx** adlı depolama hesabına tıklayın
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Proje Farmtları":::
+
+7. **Kapsayıcılar**  ->  **adfjobs**' a tıklayın. Arama kutusuna, yukarıdaki 5. adımda not ettiğiniz iş çalıştırma KIMLIĞINI girin.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Proje Farmtları":::
+
+8. Arama sonucu, işle ilgili günlüklere sahip olan klasörü içerir. Sorunu gidermek için günlükleri indirin ve yardım almak üzere gönderin farmbeatssupport@microsoft.com .

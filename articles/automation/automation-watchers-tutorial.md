@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830591"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185662"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Güncelleştirilmiş dosyaları izleyici göreviyle izleme
 
@@ -19,7 +20,7 @@ Azure Otomasyonu, PowerShell runbook 'ları ile olayları aramak ve eylemleri te
 > İzleyici görevleri Azure Çin Vianet 21 ' de desteklenmez.
 
 > [!IMPORTANT]
-> 2020 Mayıs 'tan başlayarak Azure Logic Apps kullanmak, olayları izlemek, yinelenen görevleri zamanlamak ve eylemleri tetiklemek için desteklenen yoldur. Bkz. [Azure Logic Apps ile yinelenen otomatikleştirilmiş görevleri, işlemleri ve iş akışlarını zamanlama ve çalıştırma](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
+> 2020 Mayıs 'tan başlayarak Azure Logic Apps kullanmak, olayları izlemek, yinelenen görevleri zamanlamak ve eylemleri tetiklemek için desteklenen yoldur. Bkz. [Azure Logic Apps ile yinelenen otomatikleştirilmiş görevleri, işlemleri ve iş akışlarını zamanlama ve çalıştırma](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Bu öğreticide, bir dizine yeni bir dosya eklendiğinde izlenecek bir izleyici görevi oluşturma işlemi adım adım açıklanmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -31,12 +32,12 @@ Bu öğreticide, bir dizine yeni bir dosya eklendiğinde izlenecek bir izleyici 
 > * İzleyici tetikleyin
 > * Çıktıyı inceleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
-* İzleyici ve eylem runbook 'larını ve Izleyici görevini tutacak [Otomasyon hesabı](automation-offering-get-started.md) .
+* İzleyici ve eylem runbook 'larını ve Izleyici görevini tutacak [Otomasyon hesabı](./index.yml) .
 * İzleyici görevinin çalıştırıldığı [karma bir runbook worker](automation-hybrid-runbook-worker.md) .
 * PowerShell runbook 'ları. PowerShell Iş akışı runbook 'ları izleyici görevleri tarafından desteklenmez.
 
@@ -60,7 +61,7 @@ Ayrıca, aşağıdaki adımları kullanarak bu runbook 'u portaldan Otomasyon he
 
 ## <a name="create-an-automation-variable"></a>Otomasyon değişkeni oluşturma
 
-Bir [Otomasyon değişkeni](automation-variables.md) , önceki runbook 'un her bir dosyadan okuduğu ve depoladığı zaman damgalarını depolamak için kullanılır.
+Bir [Otomasyon değişkeni](./shared-resources/variables.md) , önceki runbook 'un her bir dosyadan okuduğu ve depoladığı zaman damgalarını depolamak için kullanılır.
 
 1. **Paylaşılan kaynaklar** altında **değişkenler** ' i seçin ve **+ bir değişken Ekle**' ye tıklayın.
 1. Ad için Watch-NewFileTimestamp yazın.

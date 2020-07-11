@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117440"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185917"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Değişiklik İzleme ve envanter dağıtım kapsamını sınırlandırma
 
-Bu makalede, sanal makinelerinizdeki değişiklikleri dağıtmak üzere [değişiklik izleme ve envanter](change-tracking.md) özelliği kullanılırken kapsam yapılandırmalarının nasıl çalıştığı açıklanır. Daha fazla bilgi için bkz. [Azure izleyici 'de izleme çözümlerini hedefleme (Önizleme)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+Bu makalede, sanal makinelerinizdeki değişiklikleri dağıtmak üzere [değişiklik izleme ve envanter](change-tracking.md) özelliği kullanılırken kapsam yapılandırmalarının nasıl çalıştığı açıklanır. Daha fazla bilgi için bkz. [Azure izleyici 'de izleme çözümlerini hedefleme (Önizleme)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>Kapsam konfigürasyonları hakkında
 
@@ -33,7 +34,7 @@ Değişiklik İzleme ve envanter dağıtımınızın kapsamını sınırlandırm
 
 5. Düzen bölmesinde **bilgisayar gruplarını Seç**' i seçin. Bilgisayar grupları bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilmiş aramaları gösterir. Değişiklik İzleme ve envanter tarafından kullanılan kayıtlı arama:
 
-    |Name     |Kategori  |Diğer ad  |
+    |Ad     |Category  |Diğer ad  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Değişiklik izleme dosyanız       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

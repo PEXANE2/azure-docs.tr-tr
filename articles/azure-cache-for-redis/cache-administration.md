@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: dfb760477fc528575212d79d929661c2276effbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079061"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185235"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.
@@ -34,9 +35,9 @@ Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin 
 
 İstemci uygulamalarına etkisi, yeniden başlatmanız gereken düğümlere bağlı olarak değişir.
 
-* **Ana** düğüm-ana düğüm yeniden başlatıldığında, redin Azure önbelleği çoğaltma düğümüne devrediltilir ve onu ana öğe olarak yükseltir. Bu yük devretme sırasında, bağlantıların önbellekte başarısız olabileceği kısa bir Aralık olabilir.
+* **Ana** -birincil düğüm yeniden başlatıldığında, redin Azure önbelleği çoğaltma düğümüne devrediltilir ve bunu birincil olarak yükseltir. Bu yük devretme sırasında, bağlantıların önbellekte başarısız olabileceği kısa bir Aralık olabilir.
 * **Çoğaltma** -çoğaltma düğümü yeniden başlatıldığında, genellikle istemcileri önbelleğe alma etkisi yoktur.
-* **Hem ana** hem de çoğaltma-her iki önbellek düğümü yeniden başlatıldığında, birincil düğüm tekrar çevrimiçi olana kadar tüm veriler önbellekte kaybolur ve önbellek bağlantıları başarısız olur. [Veri kalıcılığını](cache-how-to-premium-persistence.md)yapılandırdıysanız, önbellek yeniden çevrimiçi olduğunda en son yedekleme geri yüklenir, ancak en son yedeklemeden sonra gerçekleşen tüm önbellek yazmaları kaybedilir.
+* **Hem birincil hem de çoğaltma** -her iki önbellek düğümü yeniden başlatıldığında tüm veriler önbellekte kaybolur ve önbellek bağlantıları birincil düğüm yeniden çevrimiçi olana kadar başarısız olur. [Veri kalıcılığını](cache-how-to-premium-persistence.md)yapılandırdıysanız, önbellek yeniden çevrimiçi olduğunda en son yedekleme geri yüklenir, ancak en son yedeklemeden sonra gerçekleşen tüm önbellek yazmaları kaybedilir.
 * **Kümeleme etkinken Premium önbelleğinin düğümleri** -kümelendirmeyi etkin bir Premium önbelleğin bir veya daha fazla düğümünü yeniden başlattığınızda, seçili düğümlerin davranışı ilgili düğümü veya kümelenmemiş bir önbelleğin düğümlerini yeniden başlattığınızda aynı olur.
 
 ## <a name="reboot-faq"></a>Yeniden başlatma SSS
@@ -46,7 +47,7 @@ Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin 
 * [PowerShell, CLı veya diğer yönetim araçlarını kullanarak önbelleğinizi yeniden başlatabilirim miyim?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Uygulamamı test etmek için hangi düğümü yeniden başlatmalıyım?
-Uygulamanızın dayanıklılığını, önbelleğinizin birincil düğümünde hata ile test etmek için **ana** düğümü yeniden başlatın. Uygulamanızın dayanıklılığını ikincil düğümün hatasına karşı test etmek için **çoğaltma** düğümünü yeniden başlatın. Uygulamanızın dayanıklılığını önbelleğin toplam arızasına karşı test etmek için **her iki** düğümü yeniden başlatın.
+Uygulamanızın dayanıklılığını, önbelleğinizin birincil düğümünde hata ile test etmek için **ana** düğümü yeniden başlatın. Uygulamanızın dayanıklılık Çoğaltma düğümünde hata ile test etmek için **çoğaltma** düğümünü yeniden başlatın. Uygulamanızın dayanıklılığını önbelleğin toplam arızasına karşı test etmek için **her iki** düğümü yeniden başlatın.
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>İstemci bağlantılarını temizlemek için önbelleği yeniden başlatabilirim miyim?
 Evet, önbelleği yeniden başlattıktan sonra tüm istemci bağlantıları temizlenir. Yeniden başlatma, bir mantık hatası veya istemci uygulamasındaki bir hata nedeniyle tüm istemci bağlantılarının kullanıldığı durumlarda yararlı olabilir. Her fiyatlandırma katmanının çeşitli boyutlarda farklı [istemci bağlantısı limitleri](cache-configure.md#default-redis-server-configuration) vardır ve bu sınırlara ulaşıldığında daha fazla istemci bağlantısı kabul edilmez. Önbelleğin yeniden başlatılması, tüm istemci bağlantılarını temizlemek için bir yol sağlar.
@@ -59,7 +60,7 @@ Evet, önbelleği yeniden başlattıktan sonra tüm istemci bağlantıları temi
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Yeniden başlatma işlemi yapmam durumunda önbelleğim verileri kaybedecek mıyım?
 Hem **ana** hem de **çoğaltma** düğümlerini yeniden başlattıktan sonra önbellekteki tüm veriler (veya kümelendirmeyi etkin bir Premium önbellek kullanıyorsanız) kaybolabilir, ancak bu garanti edilmez. [Veri kalıcılığını](cache-how-to-premium-persistence.md)yapılandırdıysanız, önbellek yeniden çevrimiçi olduğunda en son yedekleme geri yüklenir, ancak yedekleme yapıldıktan sonra gerçekleşen tüm önbellek yazmaları kaybedilir.
 
-Düğümlerden yalnızca birini yeniden yüklerseniz, veriler genellikle kaybedilmez, ancak yine de olabilir. Örneğin, ana düğüm yeniden başlatıldığında ve bir önbellek yazma işlemi devam ediyorsa, önbellek yazma verileri kaybedilir. Veri kaybı için başka bir senaryo da bir düğümü yeniden başlattığınızda ve diğer düğüm aynı anda bir hata nedeniyle sona acaksa olur. Veri kaybına ilişkin olası nedenler hakkında daha fazla bilgi için bkz. [redsıs 'deki verilerim ne oldu?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
+Düğümlerden yalnızca birini yeniden yüklerseniz, veriler genellikle kaybedilmez, ancak yine de olabilir. Örneğin, birincil düğüm yeniden başlatıldığında ve önbellek yazma işlemi devam ediyorsa, önbellek yazma verileri kaybedilir. Veri kaybı için başka bir senaryo da bir düğümü yeniden başlattığınızda ve diğer düğüm aynı anda bir hata nedeniyle sona acaksa olur. Veri kaybına ilişkin olası nedenler hakkında daha fazla bilgi için bkz. [redsıs 'deki verilerim ne oldu?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>PowerShell, CLı veya diğer yönetim araçlarını kullanarak önbelleğinizi yeniden başlatabilirim miyim?
 Evet, PowerShell yönergeleri için bkz. [Reda Için Azure önbelleğini yeniden başlatma](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).

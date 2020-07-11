@@ -12,11 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196384"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200542"
 ---
 # <a name="blocking-legacy-authentication"></a>Eski kimlik doğrulaması engelleniyor
  
@@ -31,9 +32,9 @@ Günümüzde, tüm güvenliği tehlikeye alınan oturum açma girişimlerinin ç
 
 Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamalar olup olmadığını ve bunun genel dizininizi nasıl etkileyeceğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullandığınızı anlamak için kullanılabilir.
 
-1.  **Azure Portal**   >  **Azure Active Directory**   >  **oturum açma**işlemleri ' ne gidin.
+1. **Azure Portal**  >  **Azure Active Directory**  >  **oturum açma**işlemleri ' ne gidin.
 1.  **Sütunlar**istemci uygulaması ' na tıklanarak gösterilmezse, **istemci uygulaması** sütununu ekleyin   >  **Client App**.
-1.  **Istemci uygulamasına** göre filtrele  > sunulan tüm **eski kimlik doğrulama istemcileri** seçeneklerini denetleyin.
+1. **Istemci uygulamasına** göre filtrele > sunulan tüm **eski kimlik doğrulama istemcileri** seçeneklerini denetleyin.
 1. **Durum**  >  **başarısına**göre filtreleyin. 
 1. **Tarih** filtresini kullanarak gerekirse tarih aralığınızı genişletin.
 
@@ -99,4 +100,4 @@ Modern kimlik doğrulamasını etkinleştirme adımları aşağıdaki makalelerd
 
 - [Şirket içi Exchange Server 'ı karma modern kimlik doğrulamasını kullanacak şekilde yapılandırma](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Skype Kurumsal ile modern kimlik doğrulaması (ADAL) kullanma](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
-- [Eski kimlik doğrulamasını engelle](../conditional-access/block-legacy-authentication.md)
+- [Eski kimlik doğrulamasını engelleme](../conditional-access/block-legacy-authentication.md)

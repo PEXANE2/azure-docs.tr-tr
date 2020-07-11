@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3cfc63b29b51b70cb41c476c49bc17f5e9cbd308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746629"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185560"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Otomasyonu hesabınızı başka bir aboneliğe taşıma
 
@@ -40,7 +41,7 @@ Otomasyon hesabı, taşıyacağınız kaynaklardan biridir. Bu makalede, Otomasy
 
     ![Azure portal Özellik kaynaklarını silme ekran görüntüsü](../media/move-account/delete-solutions.png)
 
-İsterseniz, [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) cmdlet 'ini kullanarak kaynakları silebilirsiniz:
+İsterseniz, [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) cmdlet 'ini kullanarak kaynakları silebilirsiniz:
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -79,7 +80,7 @@ VM'leri çalışma saatleri dışında başlat/durdur için, özelliği tarafın
 
     ![Eylem Grup sayfasının ekran görüntüsü](../media/move-account/delete-action-group.png)
 
-İsterseniz, [Remove-AzActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) cmdlet 'ini kullanarak eylem grubunuzu silebilirsiniz:
+İsterseniz, [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) cmdlet 'ini kullanarak eylem grubunuzu silebilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
@@ -146,7 +147,7 @@ Farklı Çalıştır hesaplarını yeniden oluşturduktan sonra, taşımadan ön
 
 Taşıma işlemi tamamlandığında, aşağıda listelenen yeteneklerin etkinleştirildiğini doğrulayın. 
 
-|Özellik|Testler|Sorun giderme|
+|Yetenek|Testler|Sorun giderme|
 |---|---|---|
 |Runbook'lar|Runbook, Azure kaynaklarına başarıyla çalıştırıp bağlanabilir.|[Runbook sorunlarını giderme](../troubleshoot/runbooks.md)
 |Kaynak denetimi|Kaynak denetimi deponuzda el ile eşitleme gerçekleştirebilirsiniz.|[Kaynak denetimi tümleştirmesi](../source-control-integration.md)|
