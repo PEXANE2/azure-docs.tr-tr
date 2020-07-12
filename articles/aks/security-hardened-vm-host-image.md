@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420893"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244047"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS aracı düğümü konak işletim sistemi için güvenlik sağlamlaştırma
 
-Azure Kubernetes Service (AKS), SOC, ISO, PCI DSS ve HIPAA standartları ile uyumlu bir güvenli hizmettir. Bu makalede, AKS sanal makine konaklarına uygulanan güvenlik sağlamlaştırma ele alınmaktadır. AKS güvenliği hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (aks) içindeki uygulamalar ve kümeler Için güvenlik kavramları](https://docs.microsoft.com/azure/aks/concepts-security).
+Azure Kubernetes Service (AKS), SOC, ISO, PCI DSS ve HIPAA standartları ile uyumlu bir güvenli hizmettir. Bu makalede, AKS sanal makine konaklarına uygulanan güvenlik sağlamlaştırma ele alınmaktadır. AKS güvenliği hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (aks) içindeki uygulamalar ve kümeler Için güvenlik kavramları](./concepts-security.md).
 
 > [!Note]
 > Bu belge yalnızca AKS 'deki Linux aracılarının kapsamına alınır.
@@ -32,7 +32,7 @@ Güvenlik sıkı ana bilgisayar işletim sisteminin hedefi, saldırının yüzey
 
 * AKS, varsayılan olarak güvenlik açısından iyileştirilmiş bir konak işletim sistemi sağlar. Alternatif bir işletim sistemi seçme seçeneği yoktur.
 
-* Azure, AKS sanal makine konaklarına günlük düzeltme ekleri (güvenlik düzeltme ekleri dahil) uygular. Bu düzeltme eklerinin bazılarının yeniden başlatılması gerekir, diğerleri bu şekilde çalışmaz. Gerektiğinde AKS VM konağının yeniden başlatmaları zamanlamaktan siz sorumlusunuz. AKS düzeltme eki uygulama hakkında yönergeler için bkz. [aks düğümlerine düzeltme eki uygulama](https://docs.microsoft.com/azure/aks/node-updates-kured).
+* Azure, AKS sanal makine konaklarına günlük düzeltme ekleri (güvenlik düzeltme ekleri dahil) uygular. Bu düzeltme eklerinin bazılarının yeniden başlatılması gerekir, diğerleri bu şekilde çalışmaz. Gerektiğinde AKS VM konağının yeniden başlatmaları zamanlamaktan siz sorumlusunuz. AKS düzeltme eki uygulama hakkında yönergeler için bkz. [aks düğümlerine düzeltme eki uygulama](./node-updates-kured.md).
 
 ## <a name="what-is-configured"></a>Ne yapılandırıldı
 
@@ -85,8 +85,8 @@ Güvenlik sıkı ana bilgisayar işletim sisteminin hedefi, saldırının yüzey
 
 AKS güvenliği hakkında daha fazla bilgi için aşağıdaki makalelere bakın: 
 
-[Azure Kubernetes Hizmeti (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Hizmeti (AKS)](./intro-kubernetes.md)
 
-[AKS güvenlik konuları](https://docs.microsoft.com/azure/aks/concepts-security)
+[AKS güvenlik konuları](./concepts-security.md)
 
-[AKS en iyi uygulamaları](https://docs.microsoft.com/azure/aks/best-practices)
+[AKS en iyi uygulamaları](./best-practices.md)

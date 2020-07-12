@@ -3,12 +3,12 @@ title: Güvenilir koleksiyonlara giriş
 description: Durum bilgisi olan Service Fabric hizmetler, yüksek oranda kullanılabilir, ölçeklenebilir ve düşük gecikmeli bulut uygulamaları yazmanıza olanak tanıyan güvenilir koleksiyonlar sağlar.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81398424"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245135"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric durum bilgisi olan hizmetlerde güvenilir koleksiyonlara giriş
 
@@ -40,8 +40,8 @@ Güvenilir koleksiyonlar API 'Leri, eşzamanlı koleksiyonlar API 'lerinin bir g
 
 Günümüzde **Microsoft. ServiceFabric. Data. Collections** üç koleksiyon vardır:
 
-* [Güvenilir sözlük](https://msdn.microsoft.com/library/azure/dn971511.aspx): anahtar/değer çiftlerinin çoğaltılan, işlemsel ve zaman uyumsuz koleksiyonunu temsil eder. **ConcurrentDictionary**ile benzer şekilde, hem anahtar hem de değer herhangi bir türde olabilir.
-* [Güvenilir sıra](https://msdn.microsoft.com/library/azure/dn971527.aspx): çoğaltılan, işlemsel ve zaman uyumsuz katı, ilk çıkar (FIFO) kuyruğunu temsil eder. **ConcurrentQueue**ile benzer şekilde, değer herhangi bir türde olabilir.
+* [Güvenilir sözlük](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): anahtar/değer çiftlerinin çoğaltılan, işlemsel ve zaman uyumsuz koleksiyonunu temsil eder. **ConcurrentDictionary**ile benzer şekilde, hem anahtar hem de değer herhangi bir türde olabilir.
+* [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): çoğaltılan, işlemsel ve zaman uyumsuz katı, ilk çıkar (FIFO) kuyruğunu temsil eder. **ConcurrentQueue**ile benzer şekilde, değer herhangi bir türde olabilir.
 * [Güvenilir eşzamanlı kuyruk](service-fabric-reliable-services-reliable-concurrent-queue.md): yüksek aktarım hızı için çoğaltılan, işlemsel ve zaman uyumsuz en iyi çaba sırası kuyruğunu temsil eder. **ConcurrentQueue**ile benzer şekilde, değer herhangi bir türde olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -57,4 +57,4 @@ Günümüzde **Microsoft. ServiceFabric. Data. Collections** üç koleksiyon var
   * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
 * Diğer
   * [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Güvenilir koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

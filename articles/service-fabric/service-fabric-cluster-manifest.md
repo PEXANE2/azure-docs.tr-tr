@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458366"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246580"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Tek başına Windows kümesi için yapılandırma ayarları
 Bu makalede, *ClusterConfig.json* dosyasında ayarlanyüklenebilen tek başına Azure Service Fabric kümesinin yapılandırma ayarları açıklanmaktadır. Bu dosyayı, küme düğümleri, güvenlik yapılandırmalarının yanı sıra hata ve yükseltme etki alanları açısından ağ topolojisi ile ilgili bilgileri belirtmek için kullanacaksınız.  Yapılandırma ayarlarını değiştirdikten veya ekledikten sonra [tek başına küme oluşturabilir](service-fabric-cluster-creation-for-windows-server.md) veya [tek başına bir kümenin yapılandırmasını yükseltebilirsiniz](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -88,7 +89,7 @@ Diagnosticstransaction bölümünde, aşağıdaki kod parçacığında gösteril
 }
 ```
 
-Meta veriler, küme tanılamalarınızın bir açıklamasıdır ve kuruluma göre ayarlanabilir. Bu değişkenler, ETW izleme günlüklerini ve kilitlenme dökümlerinin yanı sıra performans sayaçlarını toplamaya yardımcı olur. ETW izleme günlükleri hakkında daha fazla bilgi için bkz. [tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) ve [ETW izleme](https://msdn.microsoft.com/library/ms751538.aspx). [Kilitlenme dökümleri](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) ve [performans sayaçları](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)dahil tüm Günlükler, makinenizde ConnectionString klasörüne yönlendirilebilir. Ayrıca, tanılamayı depolamak için AzureStorage de kullanabilirsiniz. Aşağıdaki örnek kod parçacığına bakın:
+Meta veriler, küme tanılamalarınızın bir açıklamasıdır ve kuruluma göre ayarlanabilir. Bu değişkenler, ETW izleme günlüklerini ve kilitlenme dökümlerinin yanı sıra performans sayaçlarını toplamaya yardımcı olur. ETW izleme günlükleri hakkında daha fazla bilgi için bkz. [tracelog](/windows-hardware/drivers/devtest/tracelog) ve [ETW izleme](/dotnet/framework/wcf/samples/etw-tracing). [Kilitlenme dökümleri](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) ve [performans sayaçları](/windows/win32/perfctrs/performance-counters-portal)dahil tüm Günlükler, makinenizde ConnectionString klasörüne yönlendirilebilir. Ayrıca, tanılamayı depolamak için AzureStorage de kullanabilirsiniz. Aşağıdaki örnek kod parçacığına bakın:
 
 ```json
 "diagnosticsStore": {
@@ -192,7 +193,7 @@ Eklenti özelliklerini yapılandırmak için apiVersion 'ı 04-2017 veya üzeri 
     ]
 }
 ```
-Tüm kullanılabilir eklenti özellikleri [Service Fabric REST API başvurusunda](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)görülebilir.
+Tüm kullanılabilir eklenti özellikleri [Service Fabric REST API başvurusunda](/rest/api/servicefabric/sfrp-model-addonfeatures)görülebilir.
 
 ### <a name="container-support"></a>Kapsayıcı desteği
 Tek başına kümeler için hem Windows Server kapsayıcıları hem de Hyper-V kapsayıcıları için kapsayıcı desteğini etkinleştirmek üzere DnsService eklentisi özelliğinin etkinleştirilmesi gerekir.
@@ -203,4 +204,3 @@ Tek başına küme kuruluma göre yapılandırılmış dosya *üzerinde birClust
 Dağıtılan tek başına bir kümeniz varsa, [tek başına bir kümenin yapılandırmasını da yükseltebilirsiniz](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 [Service Fabric Explorer ile kümenizi görselleştirmeyi](service-fabric-visualizing-your-cluster.md)öğrenin.
-

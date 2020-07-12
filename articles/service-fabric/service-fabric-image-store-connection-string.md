@@ -5,11 +5,12 @@ author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645676"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246206"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>ImageStoreConnectionString ayarını anlama
 
@@ -37,7 +38,7 @@ Kümeyi biraz daha hızlı önyüklemek için geliştirme sırasında yerel tek 
 
 Ayrıca, dosya sistemi sağlayıcısı veya Azure depolama sağlayıcısı, birden çok küme arasında Görüntü Deposu paylaşma yöntemi olarak kullanılmalıdır. Bu, her küme, Görüntü Deposu çakışan veriler yazabileceğinden, küme yapılandırma verilerinin bozulmasına neden olur. Sağlanan uygulama paketlerini birden çok küme arasında paylaştırmak için, indirme URI 'SI olan herhangi bir harici depoya yüklenebilen yerine [sfpkg][12] dosyalarını kullanın.
 
-Bu nedenle, ımabtoreconnectionstring yapılandırılabilir, ancak varsayılan ayarı kullanmanız yeterlidir. Visual Studio aracılığıyla Azure 'a yayımlarken, parametre sizin için otomatik olarak ayarlanır. Azure 'da barındırılan kümelere programlı dağıtım için bağlantı dizesi her zaman "doku: ımabir" dir. Şüpheli halde, bunun değeri [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.net](https://msdn.microsoft.com/library/azure/mt161375.aspx)veya [rest](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest)tarafından küme bildirimi alınırken her zaman doğrulanabilir. Hem şirket içi test hem de üretim kümeleri her zaman Görüntü Deposu hizmet sağlayıcısını kullanacak şekilde yapılandırılmalıdır.
+Bu nedenle, ımabtoreconnectionstring yapılandırılabilir, ancak varsayılan ayarı kullanmanız yeterlidir. Visual Studio aracılığıyla Azure 'a yayımlarken, parametre sizin için otomatik olarak ayarlanır. Azure 'da barındırılan kümelere programlı dağıtım için bağlantı dizesi her zaman "doku: ımabir" dir. Şüpheli halde, bunun değeri [PowerShell](/powershell/module/servicefabric/get-servicefabricclustermanifest), [.net](/previous-versions/azure/reference/mt161375(v=azure.100))veya [rest](/rest/api/servicefabric/get-a-cluster-manifest)tarafından küme bildirimi alınırken her zaman doğrulanabilir. Hem şirket içi test hem de üretim kümeleri her zaman Görüntü Deposu hizmet sağlayıcısını kullanacak şekilde yapılandırılmalıdır.
 
 ### <a name="next-steps"></a>Sonraki adımlar
 [PowerShell kullanarak uygulama dağıtma ve kaldırma][10]

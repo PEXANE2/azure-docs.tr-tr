@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259482"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246563"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Küme kullanarak bir Service Fabric kümesini açıkla Kaynak Yöneticisi
 Azure Service Fabric 'ın Küme Kaynak Yöneticisi özelliği, bir kümeyi açıklamak için çeşitli mekanizmalar sağlar:
@@ -35,7 +36,7 @@ Azure ortamında, Service Fabric, kümedeki düğümleri sizin adınıza doğru 
 > [!WARNING]
 > Service Fabric için belirtilen hata etki alanı bilgilerinin doğru olması önemlidir. Örneğin, Service Fabric kümenizin düğümlerinin, 5 fiziksel ana bilgisayar üzerinde çalışan 10 sanal makine içinde çalıştığını varsayalım. Bu durumda, 10 sanal makine olmasına rağmen yalnızca 5 farklı (üst düzey) hata etki alanı vardır. Aynı fiziksel konağın paylaşılması, VM 'lerin fiziksel ana bilgisayarı başarısız olursa birlikte koordine edilen hata ile aynı kök hata etki alanını paylaşmasına neden olur.  
 >
-> Service Fabric bir düğümün hata etki alanının değişmemelidir. [Ha-VM](https://technet.microsoft.com/library/cc967323.aspx)'Ler gibi VM 'lerin yüksek oranda kullanılabilirliğini sağlamaya yönelik diğer mekanizmalar Service Fabric çakışmalara neden olabilir. Bu mekanizmalar VM 'lerin bir konaktan diğerine saydam geçişini kullanır. Sanal makine içinde çalışan kodu yeniden yapılandırmazlar veya bildirmez. Bu nedenle, Service Fabric kümelerini çalıştırmaya yönelik ortamlar olarak *desteklenmez* . 
+> Service Fabric bir düğümün hata etki alanının değişmemelidir. [Ha-VM](/previous-versions/system-center/virtual-machine-manager-2008-r2/cc967323(v=technet.10))'Ler gibi VM 'lerin yüksek oranda kullanılabilirliğini sağlamaya yönelik diğer mekanizmalar Service Fabric çakışmalara neden olabilir. Bu mekanizmalar VM 'lerin bir konaktan diğerine saydam geçişini kullanır. Sanal makine içinde çalışan kodu yeniden yapılandırmazlar veya bildirmez. Bu nedenle, Service Fabric kümelerini çalıştırmaya yönelik ortamlar olarak *desteklenmez* . 
 >
 > Service Fabric, en yüksek kullanılabilirlik teknolojisi kullanıma hazır olmalıdır. Canlı VM geçişi ve San 'Lar gibi mekanizmalar gerekli değildir. Bu mekanizmalar Service Fabric birlikte kullanılırsa, uygulama kullanılabilirliğini ve güvenilirliğini _azaltır_ . Bunun nedeni, ek karmaşıklık sağlar, merkezi hata kaynakları ekler ve Service Fabric ile çakışan güvenilirlik ve kullanılabilirlik stratejilerini kullanır. 
 >
@@ -236,7 +237,7 @@ Hizmetinizin **Targetreplicasetsize** değeri dördü (örneğin) olarak düşü
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | Udtoplam |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |YOK |YOK |YOK |YOK |YOK |YOK |
+| **UD0** |Yok |Yok |Yok |Yok |Yok |Yok |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -346,7 +347,7 @@ Bazen (aslında çoğu zaman) belirli iş yüklerinin yalnızca kümedeki belirl
 
 Belirli iş yükleri için donanım hedeflemek için harika bir örnek neredeyse her n katmanlı mimaridir. Bazı makineler uygulamanın ön uç veya API hizmet tarafı olarak hizmet verir ve istemcilere ya da internet 'e sunulur. Genellikle farklı donanım kaynakları olan farklı makineler, işlem veya depolama katmanlarının çalışmasını işler. Bunlar genellikle istemcilere veya internet _'e doğrudan gösterilmez_ . 
 
-Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örneğin:
+Service Fabric, bazı durumlarda belirli iş yüklerinin belirli donanım yapılandırmalarında çalıştırılması gerekebilir. Örnek:
 
 * Var olan n katmanlı bir uygulama, bir Service Fabric ortamına "yükseltilmemiş ve" kaydırmıştır.
 * Performans, ölçek veya güvenlik yalıtımı nedenleriyle belirli bir donanımda iş yükünün çalıştırılması gerekir.
@@ -374,7 +375,7 @@ Node özelliğinde belirtilen değer bir String, Boolean veya signed Long olabil
 
 * Belirli deyimler oluşturmak için koşullu denetimler:
 
-  | Deyim | Syntax |
+  | Deyim | Sözdizimi |
   | --- |:---:|
   | "eşittir" | "==" |
   | "eşit değildir" | "!=" |
@@ -385,7 +386,7 @@ Node özelliğinde belirtilen değer bir String, Boolean veya signed Long olabil
 
 * Gruplandırma ve mantıksal işlemler için Boole deyimleri:
 
-  | Deyim | Syntax |
+  | Deyim | Sözdizimi |
   | --- |:---:|
   | ' | "&&" |
   | veya | "&#124;&#124;" |

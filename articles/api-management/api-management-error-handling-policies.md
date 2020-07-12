@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674270"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243554"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management ilkelerinde hata işleme
 
@@ -50,7 +51,7 @@ Bir isteğin işlenmesi sırasında, yerleşik adımlar, istek kapsamında olan 
 `on-error`İlke bölümü herhangi bir kapsamda kullanılabilir. API yayımcıları, hatayı olay hub 'larına kaydetme veya arayana dönmek için yeni bir yanıt oluşturma gibi özel davranışları yapılandırabilir.
 
 > [!NOTE]
-> `on-error`Bölümü varsayılan olarak ilkelerde yer almıyor. `on-error`Bölümü bir ilkeye eklemek için, ilke düzenleyicisinde istenen ilkeye gidin ve ekleyin. İlkeleri yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).
+> `on-error`Bölümü varsayılan olarak ilkelerde yer almıyor. `on-error`Bölümü bir ilkeye eklemek için, ilke düzenleyicisinde istenen ilkeye gidin ve ekleyin. İlkeleri yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](./api-management-howto-policies.md).
 >
 > `on-error`Bölüm yoksa, arayanlar bir hata durumu oluşursa 400 veya 500 http yanıt iletisi alır.
 
@@ -79,7 +80,7 @@ Bir isteğin işlenmesi sırasında, yerleşik adımlar, istek kapsamında olan 
 
 Bir hata oluştuğunda ve denetim ilke bölümüne atdığında `on-error` , hata [bağlamda saklanır. LastError](api-management-policy-expressions.md#ContextVariables) özelliği, bölümünde ilkeler tarafından erişilebilecek `on-error` . LastError aşağıdaki özelliklere sahiptir.
 
-| Name       | Tür   | Açıklama                                                                                               | Gerekli |
+| Ad       | Tür   | Açıklama                                                                                               | Gerekli |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | string | Hatanın oluştuğu öğeyi adlandırır. İlke ya da yerleşik bir ardışık düzen adımı adı olabilir.      | Evet      |
 | `Reason`   | string | Hata işlemede kullanılabilecek makine dostu hata kodu.                                       | Hayır       |
@@ -99,7 +100,7 @@ Bir hata oluştuğunda ve denetim ilke bölümüne atdığında `on-error` , hat
 
 Aşağıdaki hatalar, yerleşik işleme adımlarının değerlendirmesi sırasında oluşabilecek hata koşulları için önceden tanımlanmıştır.
 
-| Kaynak        | Koşul                                 | Nedeni                  | İleti                                                                                                                |
+| Kaynak        | Koşul                                 | Neden                  | İleti                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | yapılandırma | URI, herhangi bir API veya Işlemle eşleşmiyor | OperationNotFound       | Gelen istek bir işleme dönüştürülemiyor.                                                                      |
 | yetkilendirme | Abonelik anahtarı sağlanmadı             | SubscriptionKeyNotFound | Eksik abonelik anahtarı nedeniyle erişim reddedildi. Bu API 'ye istek yaparken abonelik anahtarını eklediğinizden emin olun. |
@@ -112,7 +113,7 @@ Aşağıdaki hatalar, yerleşik işleme adımlarının değerlendirmesi sırası
 
 Aşağıdaki hatalar, ilke değerlendirmesi sırasında oluşabilecek hata koşulları için önceden tanımlanmıştır.
 
-| Kaynak       | Koşul                                                       | Nedeni                    | İleti                                                                                                                              |
+| Kaynak       | Koşul                                                       | Neden                    | İleti                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | hız limiti   | Hız sınırı aşıldı                                             | Ratelimitexcebaşında         | Hız sınırı aşıldı                                                                                                               |
 | kota        | Kota aşıldı                                                  | Quotaaştı             | Çağrı hacmi kotası aşıldı. Kota xx: xx: xx içinde replenished olacaktır. -veya-bant genişliği kotası. Kota xx: xx: xx içinde replenished olacaktır. |
@@ -188,5 +189,5 @@ ve yetkisiz bir istek göndermek aşağıdaki yanıta neden olur:
 
 -   [API Management ilkeler](api-management-howto-policies.md)
 -   [API dönüştürme](transform-api.md)
--   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
+-   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
 -   [İlke örnekleri](policy-samples.md)

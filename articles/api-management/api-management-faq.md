@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233491"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243605"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management SSS
 Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını alın.
@@ -49,7 +49,7 @@ Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntem
 Bir özellik önizlemede olduğunda, özelliğin sizin için nasıl çalıştığı konusunda etkin bir şekilde geri bildirimde bulunduğumuz anlamına gelir. Önizlemedeki bir özellik işlevsel olarak tamamlanmıştır, ancak müşteri geri bildirimlerine yanıt olarak bir değişiklik yapacağız olasıdır. Üretim ortamınızda önizlemede olan bir özelliğe bağlı memenizi öneririz.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ağ geçidi ile arka uç hizmetleri arasındaki bağlantının güvenliğini nasıl sağlayabilirim?
-API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Seçenekleriniz şunlardır:
+API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Şunları yapabilirsiniz:
 
 * HTTP temel kimlik doğrulaması kullanın. Daha fazla bilgi için bkz. [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md).
 * [Azure API Management 'de istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale getirme](api-management-howto-mutual-certificates.md)bölümünde AÇıKLANDıĞı gibi TLS karşılıklı kimlik doğrulaması kullanın.
@@ -57,7 +57,7 @@ API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı 
 * API Management örneğinizi bir Azure sanal ağına bağlayın.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>API Management hizmet örneğimi yeni bir örneğe nasıl kopyalayabilirim?
-Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Seçenekleriniz şunlardır:
+Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Şunları yapabilirsiniz:
 
 * API Management 'de yedekleme ve geri yükleme işlevini kullanın. Daha fazla bilgi için bkz. [Azure API Management 'de hizmet yedeklemesi ve geri yükleme kullanarak olağanüstü durum kurtarma uygulama](api-management-howto-disaster-recovery-backup-restore.md).
 * [API Management REST API](/rest/api/apimanagement/)kullanarak kendi yedekleme ve geri yükleme özelliğini oluşturun. Varlıkları istediğiniz hizmet örneğinden kaydetmek ve geri yüklemek için REST API kullanın.
@@ -68,16 +68,16 @@ Evet, kullanarak API Management programlı bir şekilde yönetebilirsiniz:
 
 * [API Management REST API](/rest/api/apimanagement/).
 * [Microsoft Azure ımanagementpackservice yönetim kitaplığı SDK 'sı](https://aka.ms/apimsdk).
-* [Hizmet dağıtımı](https://docs.microsoft.com/powershell/module/wds) ve [hizmet yönetimi](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) PowerShell cmdlet 'leri.
+* [Hizmet dağıtımı](/powershell/module/wds) ve [hizmet yönetimi](/powershell/azure/servicemanagement/overview) PowerShell cmdlet 'leri.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Yöneticiler grubuna nasıl kullanıcı ekleyebilirim?
 Yöneticiler grubuna bir kullanıcıyı nasıl ekleyebileceğiniz aşağıda bulabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Güncelleştirmek istediğiniz API Management örneğine sahip kaynak grubuna gidin.
 3. API Management, **API Management hizmeti katkıda bulunan** rolünü kullanıcıya atayın.
 
-Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](https://docs.microsoft.com/powershell/azure/overview)kullanabilir. Yönetici olarak oturum açmak için şu adımları uygulayın:
+Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](/powershell/azure/overview)kullanabilir. Yönetici olarak oturum açmak için şu adımları uygulayın:
 
 1. `Connect-AzAccount`Oturum açmak için cmdlet 'ini kullanın.
 2. Bağlamını kullanarak hizmeti olan aboneliğin bağlamını ayarlayın `Set-AzContext -SubscriptionID <subscriptionGUID>` .
@@ -85,16 +85,16 @@ Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](https://d
 4. Yönetici portalına erişmek için URL 'YI kullanın.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>İlke düzenleyicisinde kullanılamaz olarak eklemek istediğim ilke neden?
-Eklemek istediğiniz ilke, ilke düzenleyicisinde soluk veya gölgeli görünüyorsa, ilke için doğru kapsamda olduğunuzdan emin olun. Her ilke açıklaması, belirli kapsamlar ve ilke bölümlerinde kullanabilmeniz için tasarlanmıştır. İlke bölümlerini ve bir ilkeye ait kapsamları gözden geçirmek için, [API Management ilkeleri](/azure/api-management/api-management-policies)' nde ilkenin kullanımı bölümüne bakın.
+Eklemek istediğiniz ilke, ilke düzenleyicisinde soluk veya gölgeli görünüyorsa, ilke için doğru kapsamda olduğunuzdan emin olun. Her ilke açıklaması, belirli kapsamlar ve ilke bölümlerinde kullanabilmeniz için tasarlanmıştır. İlke bölümlerini ve bir ilkeye ait kapsamları gözden geçirmek için, [API Management ilkeleri](./api-management-policies.md)' nde ilkenin kullanımı bölümüne bakın.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Tek bir API 'de birden çok ortam ayarlamak Nasıl yaparım??
-Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Seçenekleriniz şunlardır:
+Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Şunları yapabilirsiniz:
 
 * Aynı kiracıda farklı API 'Leri barındırın.
 * Farklı kiracılarda aynı API 'Leri barındırın.
 
 ### <a name="can-i-use-soap-with-api-management"></a>API Management SOAP kullanabilir miyim?
-[SOAP geçişli geçiş](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) desteği artık kullanılabilir. Yöneticiler SOAP hizmeti WSDL 'sini içeri aktarabilir ve Azure API Management bir SOAP ön ucu oluşturur. Geliştirici portalı belgelerinin, test konsolunun, ilkelerin ve analizlerin hepsi SOAP Hizmetleri için kullanılabilir.
+[SOAP geçişli geçiş](https://azure.microsoft.com/blog/soap-pass-through/) desteği artık kullanılabilir. Yöneticiler SOAP hizmeti WSDL 'sini içeri aktarabilir ve Azure API Management bir SOAP ön ucu oluşturur. Geliştirici portalı belgelerinin, test konsolunun, ilkelerin ve analizlerin hepsi SOAP Hizmetleri için kullanılabilir.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>AD FS güvenliği olan bir OAuth 2,0 yetkilendirme sunucusunu yapılandırabilir miyim?
 Bir OAuth 2,0 yetkilendirme sunucusunu Active Directory Federasyon Hizmetleri (AD FS) (AD FS) güvenliği ile yapılandırma hakkında bilgi edinmek için bkz. [API Management ADFS kullanma](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
@@ -109,7 +109,7 @@ Evet. Bkz. [Azure API Management hizmeti](https://aka.ms/apimtemplate) hızlı b
 Evet. Bu, PowerShell aracılığıyla veya doğrudan API 'ye göndererek yapılabilir. Bu, sertifika zinciri doğrulamasını devre dışı bırakır ve API Management arka uç hizmetlerine iletişim kurarken otomatik olarak imzalanan veya özel olarak imzalanmış sertifikaları kullanmanıza olanak tanır.
 
 #### <a name="powershell-method"></a>PowerShell yöntemi ####
-[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)(Yeni arka uç için) veya [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (mevcut arka uç Için) PowerShell cmdlet 'lerini kullanın ve `-SkipCertificateChainValidation` parametresini olarak ayarlayın `True` .
+[`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend)(Yeni arka uç için) veya [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) (mevcut arka uç Için) PowerShell cmdlet 'lerini kullanın ve `-SkipCertificateChainValidation` parametresini olarak ayarlayın `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

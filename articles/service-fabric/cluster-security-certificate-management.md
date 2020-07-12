@@ -4,11 +4,12 @@ description: X. 509.440 sertifikalarıyla güvenliği sağlanmış bir Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324751"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246716"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric kümelerinde sertifika yönetimi
 
@@ -75,8 +76,8 @@ Bu adımlar aşağıda gösterilmiştir; sırasıyla parmak izi ve ortak ad tara
 ![Konu ortak adına göre belirtilen sertifikaları sağlama][Image2]
 
 ### <a name="certificate-enrollment"></a>Sertifika kaydı
-Bu konu, Key Vault [belgelerinde](../key-vault/create-certificate.md)ayrıntılı olarak ele alınmıştır. sürekliliği ve daha kolay başvuru için buraya bir özeti dahil ediyoruz. Bağlam olarak Azure 'a devam ederek ve gizli yönetim hizmeti olarak Azure Key Vault kullanarak, yetkili bir sertifika isteyenin kasa üzerinde en az sertifika yönetim izinlerine sahip olması gerekir; örneğin, kasa sahibi tarafından verilir; istek sahibi daha sonra aşağıdaki gibi bir sertifikaya kaydolur:
-    - sertifika etki alanı/konu, istenen veren, anahtar türü ve uzunluğu, hedeflenen anahtar kullanımı ve daha fazlasını belirten Azure Key Vault (AKV) içinde bir sertifika ilkesi oluşturur. Ayrıntılar için [Azure Key Vault Sertifikalar '](../key-vault/certificate-scenarios.md) a bakın. 
+Bu konu, Key Vault [belgelerinde](../key-vault/certificates/create-certificate.md)ayrıntılı olarak ele alınmıştır. sürekliliği ve daha kolay başvuru için buraya bir özeti dahil ediyoruz. Bağlam olarak Azure 'a devam ederek ve gizli yönetim hizmeti olarak Azure Key Vault kullanarak, yetkili bir sertifika isteyenin kasa üzerinde en az sertifika yönetim izinlerine sahip olması gerekir; örneğin, kasa sahibi tarafından verilir; istek sahibi daha sonra aşağıdaki gibi bir sertifikaya kaydolur:
+    - sertifika etki alanı/konu, istenen veren, anahtar türü ve uzunluğu, hedeflenen anahtar kullanımı ve daha fazlasını belirten Azure Key Vault (AKV) içinde bir sertifika ilkesi oluşturur. Ayrıntılar için [Azure Key Vault Sertifikalar '](../key-vault/certificates/certificate-scenarios.md) a bakın. 
     - Yukarıda belirtilen ilkeyle aynı kasada bir sertifika oluşturur; Buna karşılık, kasa nesneleri olarak bir anahtar çifti, özel anahtarla imzalanmış bir sertifika imzalama isteği ve daha sonra imzalama için belirtilen verene iletilir
     - veren (sertifika yetkilisi) imzalı sertifikayla yanıt verdiğinde, sonuç kasayla birleştirilir ve sertifika aşağıdaki işlemler için kullanılabilir:
       - {vaultUri}/Certificates/{Name} altında: ortak anahtar ve meta verileri içeren sertifika
@@ -209,7 +210,7 @@ Daha önce bahsedildiği gibi, sanal makine ölçek kümesi gizli dizisi olarak 
 
 Sonraki tüm alıntıları 'ler güvenle dağıtılmalıdır; oynatma, yürütme ve açıklamalar için tek tek listelenir.
 
-Önce Kullanıcı tarafından atanan bir kimlik tanımlayın (varsayılan değerler örnek olarak dahil edilir)-güncel bilgiler için [resmi belgelere](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity) başvurun:
+Önce Kullanıcı tarafından atanan bir kimlik tanımlayın (varsayılan değerler örnek olarak dahil edilir)-güncel bilgiler için [resmi belgelere](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity) başvurun:
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -240,7 +241,7 @@ Sonraki tüm alıntıları 'ler güvenle dağıtılmalıdır; oynatma, yürütme
   ]}
 ```
 
-Daha sonra bu kimliğe kasa gizliliklerinde erişim izni verin-geçerli bilgiler için [resmi belgelere](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy) bakın:
+Daha sonra bu kimliğe kasa gizliliklerinde erişim izni verin-geçerli bilgiler için [resmi belgelere](/rest/api/keyvault/vaults/updateaccesspolicy) bakın:
 ```json
   "resources":
   [{
@@ -265,7 +266,7 @@ Daha sonra bu kimliğe kasa gizliliklerinde erişim izni verin-geçerli bilgiler
 Bir sonraki adımda şunları yapacağız:
   - Kullanıcı tarafından atanan kimliği sanal makine ölçek kümesine ata
   - yönetilen kimliğin oluşturulmasına ve kasaya erişim verme sonucuna sanal makine ölçek kümesi bağımlılığını bildirin
-  - Anahtar Kasası VM uzantısını bildirmek için, başlangıçta gözlemlenen sertifikaları alması gerekir ([resmi belgeler](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows))
+  - Anahtar Kasası VM uzantısını bildirmek için, başlangıçta gözlemlenen sertifikaları alması gerekir ([resmi belgeler](../virtual-machines/extensions/key-vault-windows.md))
   - Service Fabric VM uzantısının tanımını KVVM uzantısına göre güncelleştirin ve küme sertifikasını ortak ada dönüştürmek için (aynı kaynağın kapsamı altında olduğundan, bu değişiklikleri tek bir adımda yapıyoruz.)
 
 ```json
@@ -419,12 +420,12 @@ Bir sağlama Aracısı olarak KVVM uzantısı, önceden belirlenmiş bir sıklı
 #### <a name="certificate-linking-explained"></a>Sertifika bağlama, açıklanacak
 KVVM uzantısının ' Linkonyenilemeye ' bayrağını ve false olarak ayarlandığını fark etmiş olabilirsiniz. Burada, bu bayrak tarafından denetlenen davranışın ve kümenin çalışmasına ilişkin etkilerine ilişkin ayrıntılı olarak adresliyoruz. Bu davranışın Windows 'a özgü olduğunu aklınızda yapın.
 
-[Tanımına](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows#extension-schema)göre:
+[Tanımına](../virtual-machines/extensions/key-vault-windows.md#extension-schema)göre:
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-Bir TLS bağlantısı kurmak için kullanılan sertifikalar genellikle S kanallı güvenlik desteği sağlayıcısı aracılığıyla [bir tanıtıcı olarak](https://docs.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) alınır; diğer bir deyişle, istemci sertifikanın özel anahtarına doğrudan erişemez. S-Channel, kimlik bilgilerinin bir sertifika uzantısı ([CERT_RENEWAL_PROP_ID](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) biçiminde yeniden yönlendirilmesini (bağlamayı) destekler: Bu özellik ayarlandıysa, değeri ' yenileme ' sertifikasının parmak izini temsil eder ve bu nedenle S-Channel, bağlı sertifikayı yüklemeyi dener. Aslında, bir yenileme işareti olmadan ' son ' sertifikayla bitene kadar bu bağlantılı (ve neyse ki Çevrimsiz) listesini gezecektir. Bu özellik, bozacağından kullanıldığında, zaman aşımına uğramamış sertifikaların (örneğin) neden olduğu kullanılabilirlik kaybına karşı çok büyük bir risk. Diğer durumlarda, tanılamaya ve hafifleşmeye zorlanması zor olan kesintilerin nedeni olabilir. S-Channel, sertifika geçişini, sertifika, verenler veya istemci tarafından elde edilen sertifikanın doğrulanmasına katılan diğer belirli özniteliklere bakılmaksızın, kendi yenileme özelliklerine koşulsuz olarak yürütür. Aslında, sonuçta elde edilen sertifikanın ilişkili bir özel anahtarı yoktur ya da anahtar onun olası tüketicisine bir şekilde erişim altına alınmaz. 
+Bir TLS bağlantısı kurmak için kullanılan sertifikalar genellikle S kanallı güvenlik desteği sağlayıcısı aracılığıyla [bir tanıtıcı olarak](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) alınır; diğer bir deyişle, istemci sertifikanın özel anahtarına doğrudan erişemez. S-Channel, kimlik bilgilerinin bir sertifika uzantısı ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) biçiminde yeniden yönlendirilmesini (bağlamayı) destekler: Bu özellik ayarlandıysa, değeri ' yenileme ' sertifikasının parmak izini temsil eder ve bu nedenle S-Channel, bağlı sertifikayı yüklemeyi dener. Aslında, bir yenileme işareti olmadan ' son ' sertifikayla bitene kadar bu bağlantılı (ve neyse ki Çevrimsiz) listesini gezecektir. Bu özellik, bozacağından kullanıldığında, zaman aşımına uğramamış sertifikaların (örneğin) neden olduğu kullanılabilirlik kaybına karşı çok büyük bir risk. Diğer durumlarda, tanılamaya ve hafifleşmeye zorlanması zor olan kesintilerin nedeni olabilir. S-Channel, sertifika geçişini, sertifika, verenler veya istemci tarafından elde edilen sertifikanın doğrulanmasına katılan diğer belirli özniteliklere bakılmaksızın, kendi yenileme özelliklerine koşulsuz olarak yürütür. Aslında, sonuçta elde edilen sertifikanın ilişkili bir özel anahtarı yoktur ya da anahtar onun olası tüketicisine bir şekilde erişim altına alınmaz. 
  
 Bağlama etkinse, kasadan gözlemlenen bir sertifika alındıktan sonra Anahtar Kasası VM uzantısı, yenileme uzantısı özelliği aracılığıyla bunları bağlamak için eşleşen, mevcut sertifikaları bulmaya çalışır. Eşleştirme (özel olarak) konu alternatif adı (SAN) temelinde ve aşağıda belirtilen örnek olarak çalışmaktadır.
 Var olan iki sertifikayı şu şekilde varsayın: A: CN = "Gamze 'nin aksesuarları", SAN = {"alice.universalexports.com"}, yenileme = ' ' B: CN = "Bob 's bit", SAN = {"bob.universalexports.com", "bob.universalexports.net"}, yenileme = ' '
@@ -491,4 +492,3 @@ Y *: hedeflenen konuya sahip bir sertifika*alın ve bunu, parmak izine göre iki
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
-

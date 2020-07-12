@@ -5,16 +5,17 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259380"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246427"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
 
-Service Fabric, belirli bölgelere sabitlenmiş düğüm türlerini dağıtarak Kullanılabilirlik Alanları yayılmış kümeleri destekler. Bu, uygulamalarınızın yüksek kullanılabilirliğe sahip olmasını sağlayacaktır. Azure Kullanılabilirlik Alanları yalnızca belirli bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Azure kullanılabilirlik alanları genel bakış](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric, belirli bölgelere sabitlenmiş düğüm türlerini dağıtarak Kullanılabilirlik Alanları yayılmış kümeleri destekler. Bu, uygulamalarınızın yüksek kullanılabilirliğe sahip olmasını sağlayacaktır. Azure Kullanılabilirlik Alanları yalnızca belirli bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [Azure kullanılabilirlik alanları genel bakış](../availability-zones/az-overview.md).
 
 Örnek şablonlar mevcuttur: [Service Fabric çapraz kullanılabilirlik bölgesi şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
@@ -135,7 +136,7 @@ Yük dengeleyici gelen NAT kuralları, sanal makine ölçek kümesindeki NAT hav
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>Standart SKU Load Balancer giden kuralları
-Standart Load Balancer ve standart genel IP, temel SKU 'Ları kullanmaya kıyasla giden bağlantılara yeni yetenekler ve farklı davranışlar getirir. Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir. Daha fazla bilgi için bkz. [giden bağlantılar](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) ve [Azure Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+Standart Load Balancer ve standart genel IP, temel SKU 'Ları kullanmaya kıyasla giden bağlantılara yeni yetenekler ve farklı davranışlar getirir. Standart SKU 'Lar ile çalışırken giden bağlantı isterseniz, standart genel IP adresleriyle veya standart ortak Load Balancer açıkça tanımlamanız gerekir. Daha fazla bilgi için bkz. [giden bağlantılar](../load-balancer/load-balancer-outbound-connections.md) ve [Azure Standart Load Balancer](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 > Standart Şablon, tüm giden trafiğe varsayılan olarak izin veren bir NSG 'ye başvurur. Gelen trafik Service Fabric yönetim işlemleri için gerekli olan bağlantı noktalarıyla sınırlıdır. NSG kuralları gereksinimlerinizi karşılayacak şekilde değiştirilebilir.

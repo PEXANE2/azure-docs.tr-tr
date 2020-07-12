@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206629"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242959"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Sunucular için Azure Arc aracısına genel bakış
 
@@ -62,7 +62,7 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
     |Klasör |Açıklama |
     |-------|------------|
-    |C:\Program Files\AzureConnectedMachineAgent |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
+    |%ProgramFiles%\AzureConnectedMachineAgent |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |%ProgramData%\AzureConnectedMachineAgent |Aracı yapılandırma dosyalarını içerir.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |Alınan belirteçleri içerir.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |`agentconfig.json`Hizmet ile kayıt bilgilerini kaydeden aracı yapılandırma dosyasını içerir.|
@@ -99,7 +99,7 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aracının kaldırılması sırasında, aşağıdaki yapıtlar kaldırılmaz.
 
-    * C:\Program Files\AzureConnectedMachineAgent\Logs
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
     * %ProgramData%\AzureConnectedMachineAgent ve alt dizinler
     * %ProgramData%\GuestConfig
 
@@ -170,9 +170,9 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 
 ### <a name="required-permissions"></a>Gerekli izinler
 
-- Makineleri eklemek için, **Azure bağlı makine ekleme** rolünün bir üyesidir.
+* Makineleri eklemek için, **Azure bağlı makine ekleme** rolünün bir üyesidir.
 
-- Bir makineyi okumak, değiştirmek, yeniden eklemek ve silmek için, **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz. 
+* Bir makineyi okumak, değiştirmek, yeniden eklemek ve silmek için, **Azure bağlı makine kaynak yöneticisi** rolünün bir üyesi olursunuz. 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
@@ -195,8 +195,8 @@ Giden bağlantı, güvenlik duvarınız veya ara sunucunuz tarafından kısıtla
 
 Hizmet Etiketleri:
 
-- AzureActiveDirectory
-- AzureTrafficManager
+* AzureActiveDirectory
+* AzureTrafficManager
 
 Adresleri
 
@@ -218,8 +218,8 @@ Hizmetlerin çoğu şu anda bir hizmet etiketi kaydına sahip olmadığından, �
 
 Sunucular için Azure Arc (Önizleme), bu hizmeti kullanabilmeniz için aboneliğinizde aşağıdaki Azure Kaynak sağlayıcılarına bağımlıdır:
 
-- **Microsoft. HybridCompute**
-- **Microsoft. GuestConfiguration**
+* **Microsoft. HybridCompute**
+* **Microsoft. GuestConfiguration**
 
 Bunlar kayıtlı değilse, aşağıdaki komutları kullanarak bunları kaydedebilirsiniz:
 

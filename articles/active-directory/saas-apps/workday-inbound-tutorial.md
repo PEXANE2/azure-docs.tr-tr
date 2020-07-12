@@ -15,11 +15,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84013610"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245356"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -175,7 +176,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
      >[!div class="mx-imgBorder"]
      >![Etki alanı güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_08.png "Etki alanı güvenlik Ilkeleri") 
 
-     **Tamam**'a tıklayın.
+     **Tamam** düğmesine tıklayın.
 
 3. Görüntülenen raporda, **dış hesap sağlama** seçeneğinin yanında görüntülenen üç nokta (...) simgesini seçin ve **etki alanı-> güvenlik ilkesi izinlerini Düzenle** ' ye tıklayın.
    >[!div class="mx-imgBorder"]
@@ -192,7 +193,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
 
 6. Bu kalan güvenlik ilkelerinin her biri için yukarıdaki 3-5 adımları yineleyin:
 
-   | Çalışma | Etki alanı Güvenlik Ilkesi |
+   | İşlem | Etki alanı Güvenlik Ilkesi |
    | ---------- | ---------- |
    | Al ve koy | Çalışan verileri: ortak çalışan raporları |
    | Al ve koy | Kişi verileri: Iş Iletişim bilgileri |
@@ -290,7 +291,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 
 **İş Workday 'yi sağlamayı Active Directory üzere yapılandırmak için:**
 
-1. <https://portal.azure.com> kısmına gidin.
+1. <https://portal.azure.com> öğesine gidin.
 
 2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 
@@ -496,13 +497,13 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 
 | WORKDAY ÖZNITELIĞI | ACTIVE DIRECTORY ÖZNITELIĞI |  EŞLEŞEN KIMLIK? | OLUŞTUR/GÜNCELLEŞTIR |
 | ---------- | ---------- | ---------- | ---------- |
-| **Workerıd**  |  EmployeeID | **Evet** | Yalnızca oluşturma sırasında yazılmıştır |
+| **Workerıd**  |  Çalışan Kimliği | **Evet** | Yalnızca oluşturma sırasında yazılmıştır |
 | **PreferredNameData**    |  ,    |   |   Yalnızca oluşturma sırasında yazılmıştır |
 | **SelectUniqueValue (JOIN (" \@ ", JOIN (".", \[ FirstName \] , \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), JOIN (bir \@ "", JOIN (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"))**   | userPrincipalName     |     | Yalnızca oluşturma sırasında yazılmıştır 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Yalnızca oluşturma sırasında yazılmıştır |
 | **Anahtar ( \[ etkin \] ,, "0", "true", "1", "false")** |  accountDisabled      |     | Oluştur + güncelleştir |
 | **FirstName**   | givenName       |     |    Oluştur + güncelleştir |
-| **Soyadı**   |   sn   |     |  Oluştur + güncelleştir |
+| **LastName**   |   sn   |     |  Oluştur + güncelleştir |
 | **PreferredNameData**  |  displayName |     |   Oluştur + güncelleştir |
 | **Şirket**         | şirket   |     |  Oluştur + güncelleştir |
 | **Supervisorspganleştirme**  | bölüm  |     |  Oluştur + güncelleştir |
@@ -683,12 +684,7 @@ Sağlama Aracısı giden ara sunucu kullanımını destekler. Bunu, **C:\Program
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Nasıl yaparım? sağlama aracısının Azure AD kiracısıyla iletişim kurabildiğinden ve aracı tarafından istenen bağlantı noktalarını engellemediğinden emin olun.
 
-Ayrıca, şirket içi ağınızdan [bağlayıcı bağlantı noktaları test aracını](https://aadap-portcheck.connectorporttest.msappproxy.net/) açarak gerekli tüm bağlantı noktalarının açık olup olmadığını kontrol edebilirsiniz. Daha fazla yeşil onay işareti daha fazla esneklik anlamına gelir.
-
-Aracın doğru sonuçları verdiğinden emin olmak için aşağıdakileri yaptığınızdan emin olun:
-
-* Aracı, sağlama aracısını yüklediğiniz sunucudan bir tarayıcıda açın.
-* Sağlama aracılarınız için geçerli olan tüm proxy veya güvenlik duvarlarının da bu sayfaya uygulandığından emin olun. Bu, Internet Explorer 'da **Ayarlar-> Internet seçenekleri-> bağlantılar-> LAN ayarları**' na giderek yapılabilir. Bu sayfada, "LAN için bir proxy sunucu kullanın" alanını görürsünüz. Bu kutuyu seçin ve proxy adresini "adres" alanına yerleştirin.
+Ayrıca, [gerekli tüm bağlantı noktalarının](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports) açık olup olmadığını da denetleyebilirsiniz.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Birden çok AD etki alanı sağlamak için bir sağlama Aracısı yapılandırılmış olabilir mi?
 

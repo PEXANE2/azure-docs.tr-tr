@@ -3,11 +3,12 @@ title: Sertifika ortak adını kullanarak bir küme oluşturma
 description: Bir şablondan sertifika ortak adını kullanarak Service Fabric kümesi oluşturmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614562"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246444"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Parmak izi yerine sertifika ortak adı kullanan bir Service Fabric kümesi dağıtma
 İki sertifika aynı parmak izine sahip olamaz, bu da küme sertifikası geçişi veya yönetimini zorlaştırır. Ancak, birden çok sertifika aynı ortak ada veya konuya sahip olabilir.  Sertifika ortak adlarını kullanan bir küme, sertifika yönetimini çok daha kolay hale getirir. Bu makalede, sertifika parmak izi yerine sertifika ortak adını kullanmak üzere bir Service Fabric kümesinin nasıl dağıtılacağı açıklanır.
@@ -16,7 +17,7 @@ ms.locfileid: "75614562"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Sertifika Al
-İlk olarak, bir [sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority)bir sertifika alın.  Sertifikanın ortak adı, sahip olduğunuz özel etki alanı için olmalıdır ve bir etki alanı kaydedicisinde satın alınmalıdır. Örneğin, "azureservicefabricbestpractices.com"; Microsoft çalışanları, MS etki alanları için sertifika sağlayamaz, bu nedenle LB veya Traffic Manager DNS adlarını sertifikanızın ortak adları olarak kullanamazsınız ve özel etki alanınız Azure 'da çözümlenecaksa bir [Azure DNS bölgesi](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) sağlamanız gerekir. Ayrıca, portalınızın kümeniz için özel etki alanı diğer adını yansıtmasını istiyorsanız, kendi özel etki alanınızı kümenizin "managementEndpoint" olarak bildirmeniz gerekir.
+İlk olarak, bir [sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority)bir sertifika alın.  Sertifikanın ortak adı, sahip olduğunuz özel etki alanı için olmalıdır ve bir etki alanı kaydedicisinde satın alınmalıdır. Örneğin, "azureservicefabricbestpractices.com"; Microsoft çalışanları, MS etki alanları için sertifika sağlayamaz, bu nedenle LB veya Traffic Manager DNS adlarını sertifikanızın ortak adları olarak kullanamazsınız ve özel etki alanınız Azure 'da çözümlenecaksa bir [Azure DNS bölgesi](../dns/dns-delegate-domain-azure-dns.md) sağlamanız gerekir. Ayrıca, portalınızın kümeniz için özel etki alanı diğer adını yansıtmasını istiyorsanız, kendi özel etki alanınızı kümenizin "managementEndpoint" olarak bildirmeniz gerekir.
 
 Sınama amacıyla, ücretsiz veya açık bir sertifika yetkilisinden CA imzalı bir sertifika edinebilirsiniz.
 

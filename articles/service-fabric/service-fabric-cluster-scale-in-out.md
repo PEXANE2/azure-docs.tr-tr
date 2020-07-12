@@ -3,12 +3,12 @@ title: Bir Service Fabric kümesini içinde veya dışarı ölçeklendirin
 description: Her düğüm türü/sanal makine ölçek kümesi için otomatik ölçek kuralları ayarlayarak, talebe eşleştirmek için bir Service Fabric kümesini içinde veya dışarı ölçeklendirin. Service Fabric kümesine düğüm ekleme veya kaldırma
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c72f8eca9bc054446ceec35448c930098c5f81fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610260"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246495"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Bir kümenin ölçeğini daraltma veya genişletme
 
@@ -24,7 +24,7 @@ ms.locfileid: "85610260"
 Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullanabileceğiniz bir Azure işlem kaynağıdır. Bir Service Fabric kümesinde tanımlanan her düğüm türü ayrı bir sanal makine ölçek kümesi olarak ayarlanır. Her düğüm türü daha sonra bağımsız olarak veya dışarı ölçeklenebilen, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri olabilir. [Service Fabric node Types](service-fabric-cluster-nodetypes.md) belgesinde bunun hakkında daha fazla bilgi edinin. Kümenizdeki Service Fabric düğüm türleri arka uçta sanal makine ölçek kümeleri yapıldığından, her düğüm türü/sanal makine ölçek kümesi için otomatik ölçek kuralları ayarlamanız gerekir.
 
 > [!NOTE]
-> Aboneliğiniz, bu kümeyi oluşturan yeni VM 'Leri eklemek için yeterli çekirdeğe sahip olmalıdır. Şu anda bir model doğrulaması yok, bu nedenle kota limitlerinin herhangi birine isabet edildiğinde bir dağıtım zamanı hatası alırsınız. Ayrıca, tek düğümlü bir tür, VMSS başına 100 düğümü aşamaz. Hedeflenen ölçeğe ulaşmak için VMSS 'leri eklemeniz gerekebilir ve otomatik ölçeklendirme, VMSS 'leri otomatik olarak eklemez. VMSS 'leri canlı bir kümeye yerinde eklemek zorlu bir görevdir ve bu durum genellikle, kullanıcıların oluşturma zamanında sağlanan uygun düğüm türleriyle yeni kümeler sağlaması ile sonuçlanır; [küme kapasitesini](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) uygun şekilde planlayın. 
+> Aboneliğiniz, bu kümeyi oluşturan yeni VM 'Leri eklemek için yeterli çekirdeğe sahip olmalıdır. Şu anda bir model doğrulaması yok, bu nedenle kota limitlerinin herhangi birine isabet edildiğinde bir dağıtım zamanı hatası alırsınız. Ayrıca, tek düğümlü bir tür, VMSS başına 100 düğümü aşamaz. Hedeflenen ölçeğe ulaşmak için VMSS 'leri eklemeniz gerekebilir ve otomatik ölçeklendirme, VMSS 'leri otomatik olarak eklemez. VMSS 'leri canlı bir kümeye yerinde eklemek zorlu bir görevdir ve bu durum genellikle, kullanıcıların oluşturma zamanında sağlanan uygun düğüm türleriyle yeni kümeler sağlaması ile sonuçlanır; [küme kapasitesini](./service-fabric-cluster-capacity.md) uygun şekilde planlayın. 
 > 
 > 
 
@@ -52,7 +52,7 @@ Kümenizin birden çok düğüm türü varsa, ölçeğini ölçeklendirmek isted
 [Her bir sanal makine ölçek kümesi için otomatik ölçeklendirmeyi ayarlamak için](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)bu yönergeleri izleyin.
 
 > [!NOTE]
-> Bir senaryoya göre, düğüm türü bir altın veya gümüş [dayanıklılık düzeyine][durability] sahip değilse, [Remove-ServiceFabricNodeState cmdlet 'ini](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) uygun düğüm adıyla çağırmanız gerekir. Bronz dayanıklılık için, aynı anda birden fazla düğümde ölçeklendirilmesi önerilmez.
+> Bir senaryoya göre, düğüm türü bir altın veya gümüş [dayanıklılık düzeyine][durability] sahip değilse, [Remove-ServiceFabricNodeState cmdlet 'ini](/powershell/module/servicefabric/remove-servicefabricnodestate) uygun düğüm adıyla çağırmanız gerekir. Bronz dayanıklılık için, aynı anda birden fazla düğümde ölçeklendirilmesi önerilmez.
 > 
 > 
 
@@ -229,7 +229,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Service Fabric Explorer gözlemleyebileceğiniz davranışlar
-Bir kümeyi ölçeklendirirseniz, Service Fabric Explorer kümenin parçası olan düğüm (sanal makine ölçek kümesi örneği) sayısını yansıtır.  Bununla birlikte, içinde bir kümeyi ölçeklendirdiğiniz zaman, [kaldırma-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) 'yi uygun düğüm adıyla çağırmadığınız müddetçe, kaldırılan düğümü/VM örneğini düzgün olmayan bir durumda görürsünüz.   
+Bir kümeyi ölçeklendirirseniz, Service Fabric Explorer kümenin parçası olan düğüm (sanal makine ölçek kümesi örneği) sayısını yansıtır.  Bununla birlikte, içinde bir kümeyi ölçeklendirdiğiniz zaman, [kaldırma-ServiceFabricNodeState cmd](/powershell/module/servicefabric/remove-servicefabricnodestate) 'yi uygun düğüm adıyla çağırmadığınız müddetçe, kaldırılan düğümü/VM örneğini düzgün olmayan bir durumda görürsünüz.   
 
 Bu davranışın açıklaması aşağıda verilmiştir.
 
@@ -240,7 +240,7 @@ Bir VM kaldırıldığında bir düğümün kaldırıldığından emin olmak iç
 1. Kümenizdeki düğüm türleri için altın veya gümüş bir dayanıklılık düzeyi seçin. Bu, size altyapı tümleştirmesi sağlar. Daha sonra, ' de ölçeklendirirseniz, düğümleri sistem hizmetleri (FM) durumundan otomatik olarak kaldırır.
 [Dayanıklılık düzeylerinin ayrıntılarına](service-fabric-cluster-capacity.md) bakın
 
-2. VM örneği içinde ölçeklendirildiğinde [Remove-ServiceFabricNodeState cmdlet 'ini](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)çağırmanız gerekir.
+2. VM örneği içinde ölçeklendirildiğinde [Remove-ServiceFabricNodeState cmdlet 'ini](/powershell/module/servicefabric/remove-servicefabricnodestate)çağırmanız gerekir.
 
 > [!NOTE]
 > Service Fabric kümeler, kullanılabilirliği korumak ve durumu korumak için "çekirdeği koruma" olarak adlandırılan belirli sayıda düğümün her zaman kullanılabilir olmasını gerektirir. Bu nedenle, ilk olarak [durumlarınızın tam yedeklemesini](service-fabric-reliable-services-backup-restore.md)gerçekleştirmediğiniz müddetçe kümedeki tüm makineleri kapatmak genellikle güvenli değildir.

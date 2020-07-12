@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191761"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242891"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
-Azure Maps, Web ve mobil uygulamalara coğrafi bağlam sağlamak için yeni eşleme verilerini kullanan Jeo-uzamsal hizmetler topluluğudur. Azure haritalar şunları sağlar:
+Azure Haritalar, web ve mobil uygulamalara coğrafi bağlam sağlamak amacıyla yeni harita verilerini kullanan bir jeo-uzamsal hizmetler koleksiyonudur. Azure haritalar şunları sağlar:
 
 * Haritaları birden çok stilde ve uydu Imagery 'de işlemek için REST API 'Leri. ' '
 * Dünyanın dört bir yanındaki adresleri, yerleri ve ilgi çekici noktaları bulmak için Hizmetleri arayın.
@@ -165,17 +165,25 @@ Azure haritalar, taşınabilirlik için geliştirilmiştir ve platformlar arası
 
 Ayrıca, Azure Maps basit bir programlama modeliyle kullanışlı bir [JavaScript harita denetimi](https://docs.microsoft.com/javascript/api/azure-maps-control) sunar. Geliştirme, hem Web uygulamaları hem de mobil uygulamalar için hızlı ve kolaydır.
 
+## <a name="power-bi-visual"></a>Power BI görseli
+
+Power BI için Azure Maps Visual, bir haritanın en üstündeki uzamsal veriler için zengin bir veri görselleştirmesi kümesi sağlar. İş verilerinin %80 ' ün üzerinde bir konum bağlamı olduğunu tahmin edilmektedir. Azure haritalar görseli, bu konum bağlamının iş verilerinizi nasıl ilişkili olduğu hakkında Öngörüler kazanmak için kod içermeyen bir çözüm sunar.
+
+![Azure haritalar ile masaüstü Power BI iş verilerini görüntüleme](media/power-bi-visual/azure-maps-visual-hero.png)
+
+Daha fazla bilgi için bkz. Azure Maps ile çalışmaya başlama [Power BI görsel](power-bi-visual-getting-started.md) belgeleri.
+
 ## <a name="usage"></a>Kullanım
 
 Azure haritalar hizmetlerine erişmek, [Azure Portal](https://portal.azure.com) ve Azure Maps hesabı oluşturmaya göre yapılır.
 
 Azure Haritalar anahtar tabanlı bir kimlik doğrulama düzeni kullanır. Hesabınız sizin için önceden oluşturulmuş iki anahtar ile birlikte gelir, her iki anahtar kullanın. Uygulamanızda bu konum yeteneklerini tümleştirmeye başlayın ve Azure Maps hizmetlerine istek yapın.
 
-Note-Azure haritaları, işlevselliği eşleştirmek amacıyla üçüncü taraf TomTom ile müşteri tarafından sunulan adres/konum sorgularını ("sorgular") paylaşır. Sorgular, TomTom ile paylaşıldığında hiçbir müşteriye veya son kullanıcıya bağlanmaz ve bireyler tanımlamak için kullanılamaz. Microsoft şu anda, çevrimiçi hizmetler alt yüklenici listesine TomTom ekleme sürecidir. Moovit ve Accuhava durumu ile tümleştirme dahil olmak üzere taşınabilirlik ve hava durumu hizmetlerinin Şu anda [Önizleme](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)aşamasında olduğunu unutmayın.
+Note-Azure haritaları, işlevselliği eşleştirmek amacıyla üçüncü taraf TomTom ile müşteri tarafından sunulan adres/konum sorgularını ("sorgular") paylaşır. Sorgular, TomTom ile paylaşıldığında hiçbir müşteriye veya son kullanıcıya bağlanmaz ve bireyler tanımlamak için kullanılamaz. Microsoft şu anda, çevrimiçi hizmetler alt yüklenici listesine TomTom ekleme sürecidir. Moovit ve Accuhava durumu ile tümleştirme dahil olmak üzere Mobility ve hava durumu hizmetlerinin Şu anda [Önizleme](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)aşamasında olduğunu unutmayın.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Azure Haritalar API 'Leri Şu anda tüm ülkelerde ve bölgelerde mevcuttur:
+Azure Haritalar API 'Leri Şu anda tüm ülkelerde ve bölgelerde aşağıdaki durumlar dışında kullanılabilir:
 
 * Çin
 * Güney Kore

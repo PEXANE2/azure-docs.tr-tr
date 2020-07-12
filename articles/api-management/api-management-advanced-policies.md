@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 5b17b7784691cdf38c45e4f306b2ed14b981a2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751256"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243741"
 ---
 # <a name="api-management-advanced-policies"></a>API Management gelişmiş ilkeleri
 
@@ -38,7 +38,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 -   [Set Request Yöntemi](#SetRequestMethod) -bir Istek için http yöntemini değiştirmenize izin verir.
 -   [Durum kodu ayarla](#SetStatus) -http durum kodunu belirtilen değere dönüştürür.
 -   [Değişken ayarla](api-management-advanced-policies.md#set-variable) -daha sonra erişim için adlandırılmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeninde bir değeri devam ettirir.
--   [Trace](#Trace) - [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına, Application Insights Telemetriler ve kaynak günlüklerine özel izlemeler ekler.
+-   [Trace](#Trace) - [API denetçisi](./api-management-howto-api-inspector.md) çıktısına, Application Insights Telemetriler ve kaynak günlüklerine özel izlemeler ekler.
 -   [Bekleme](#Wait) -devam etmeden önce, kapalı [gönderme isteği](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)veya [Denetim akışı](api-management-advanced-policies.md#choose) ilkelerinin tamamlanmasını bekler.
 
 ## <a name="control-flow"></a><a name="choose"></a>Denetim akışı
@@ -140,7 +140,7 @@ Bu örnek, ürünü kullanırken arka uç hizmetinden alınan yanıttan veri ö�
 
 ### <a name="usage"></a><a name="ChooseUsage"></a>Kullanımıyla
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -148,7 +148,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="forward-request"></a><a name="ForwardRequest"></a>İletme isteği
 
-`forward-request`İlke, gelen isteği istek [bağlamında](api-management-policy-expressions.md#ContextVariables)belirtilen arka uç hizmetine iletir. Arka uç hizmeti URL 'SI, API [ayarlarında](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) belirtilir ve [arka uç hizmet ilkesi ayarlama](api-management-transformation-policies.md) kullanılarak değiştirilebilir.
+`forward-request`İlke, gelen isteği istek [bağlamında](api-management-policy-expressions.md#ContextVariables)belirtilen arka uç hizmetine iletir. Arka uç hizmeti URL 'SI, API [ayarlarında](./import-and-publish.md) belirtilir ve [arka uç hizmet ilkesi ayarlama](api-management-transformation-policies.md) kullanılarak değiştirilebilir.
 
 > [!NOTE]
 > Bu ilkeyi kaldırmak, isteğin arka uç hizmetine iletilmemesi ve giden bölümündeki ilkeler gelen bölümündeki ilkelerin başarıyla tamamlanmasıyla hemen değerlendirilir.
@@ -252,14 +252,14 @@ Bu işlem düzeyi ilke, istekleri arka uç hizmetine iletmiyor.
 
 | Öznitelik                                     | Açıklama                                                                                                                                                                                                                                                                                                    | Gerekli | Varsayılan |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout = "Integer"                             | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | Hayır       | Hiçbiri    |
+| timeout = "Integer"                             | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | Hayır       | Yok    |
 | iz-yönlendirmeler = "false &#124; true"          | Arka uç hizmetinden gelen yönlendirmelerin, ağ geçidi tarafından izlenen veya çağırana döndürülmeyeceğini belirtir.                                                                                                                                                                                                    | Hayır       | yanlış   |
 | buffer-Request-Body = "false &#124; true"       | "True" olarak ayarlandığında istek arabelleğe alınır ve [yeniden denenmek](api-management-advanced-policies.md#Retry)üzere tekrar kullanılır.                                                                                                                                                                                               | Hayır       | yanlış   |
 | hata-başarısız-Status-Code = "false &#124; true" | Doğru olarak ayarlandığında, 400 ile 599 arasında bir yanıt kodu için [hata üzerinde](api-management-error-handling-policies.md) Tetikleyiciler bölümü.                                                                                                                                                                      | Hayır       | yanlış   |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** arka uç
 -   **İlke kapsamları:** tüm kapsamlar
@@ -304,12 +304,12 @@ Aşağıdaki örnek, bir arka uca iletilen isteklerin sayısının bir bağlam d
 
 | Öznitelik | Açıklama                                                                                        | Gerekli | Varsayılan |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | YOK     |
-| en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | YOK     |
+| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
+| en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -320,7 +320,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 `log-to-eventhub`İlke, belirtilen biçimdeki iletileri bir günlükçü varlığı tarafından tanımlanan bir olay hub 'ına gönderir. Adından da anlaşılacağı gibi, ilke, çevrimiçi veya çevrimdışı analize yönelik seçili istek veya Yanıt bağlamı bilgilerini kaydetmek için kullanılır.
 
 > [!NOTE]
-> Bir olay hub 'ı ve günlüğe kaydetme olaylarını yapılandırmaya yönelik adım adım kılavuz için bkz. [Azure Event Hubs ile API Management olaylarını günlüğe](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)kaydetme.
+> Bir olay hub 'ı ve günlüğe kaydetme olaylarını yapılandırmaya yönelik adım adım kılavuz için bkz. [Azure Event Hubs ile API Management olaylarını günlüğe](./api-management-howto-log-event-hubs.md)kaydetme.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -363,7 +363,7 @@ Herhangi bir dize Event Hubs oturum açma değeri olarak kullanılabilir. Bu ör
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -403,11 +403,11 @@ status code and media type. If no example or schema found, the content is empty.
 | Öznitelik    | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | durum kodu  | Yanıt durum kodunu belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır.                 | Hayır       | 200     |
-| içerik türü | `Content-Type`Yanıt üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Hiçbiri    |
+| içerik türü | `Content-Type`Yanıt üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Yok    |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, hata üzerine
 
@@ -461,11 +461,11 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 
 | Öznitelik        | Açıklama                                                                                                                                           | Gerekli | Varsayılan |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| koşul        | Yeniden denemelerin durdurulup durdurulmadığını belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) `false` () `true` .      | Evet      | YOK     |
-| count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | YOK     |
-| interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | YOK     |
-| Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | YOK     |
-| tamamlanması            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | YOK     |
+| koşul        | Yeniden denemelerin durdurulup durdurulmadığını belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) `false` () `true` .      | Evet      | Yok     |
+| count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | Yok     |
+| interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | Yok     |
+| Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | Yok     |
+| tamamlanması            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | Yok     |
 | ilk hızlı yeniden deneme | Olarak ayarlanırsa `true` , ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | Hayır       | `false` |
 
 > [!NOTE]
@@ -475,7 +475,7 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) kullanılabilir. Alt ilke kullanım kısıtlamalarının Bu ilke tarafından devralındığını unutmayın.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes) kullanılabilir. Alt ilke kullanım kısıtlamalarının Bu ilke tarafından devralındığını unutmayın.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -525,7 +525,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -550,7 +550,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-Bu örnek ilke, `send-one-way-request` http yanıt kodu 500 değerinden büyük veya bu değere eşitse bir bolluk sohbet odasına bir ileti göndermek için ilkeyi kullanmanın bir örneğini gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Bu örnek ilke, `send-one-way-request` http yanıt kodu 500 değerinden büyük veya bu değere eşitse bir bolluk sohbet odasına bir ileti göndermek için ilkeyi kullanmanın bir örneğini gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](./api-management-sample-send-request.md).
 
 ```xml
 <choose>
@@ -594,12 +594,12 @@ Bu örnek ilke, `send-one-way-request` http yanıt kodu 500 değerinden büyük 
 | Öznitelik     | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "String" | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| name          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | YOK      |
+| name          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
 | var-eylem | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | override |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -625,7 +625,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak için bir yol gösterilmektedir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak için bir yol gösterilmektedir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](./api-management-sample-send-request.md).
 
 ```xml
 <inbound>
@@ -678,15 +678,15 @@ Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak 
 | Öznitelik                       | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "String"                   | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve koleksiyon aracılığıyla erişilebilir hale gelir [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Evet      | YOK      |
+| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve koleksiyon aracılığıyla erişilebilir hale gelir [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Evet      | Yok      |
 | timeout = "Integer"               | URL çağrısının başarısız olması için geçmesi gereken saniye cinsinden zaman aşımı aralığı.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Hayır       | 60       |
 | yoksayma-hata                    | True ise ve istek bir hatayla sonuçlanır:<br /><br /> -Response-değişken adı belirtilmişse null değer içerecektir.<br />-Response değişkeni adı belirtilmemişse, bağlam. İstek güncelleştirilmeyecek.                                                                                                                                                                                                                                                                                                                                                                                   | Hayır       | yanlış    |
-| name                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | YOK      |
+| name                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
 | var-eylem                   | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | override |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -722,13 +722,13 @@ Gizli bilgilerin ilke belgesinde depolanmasını önlemek için, [özelliklerin]
 
 | Öznitelik         | Açıklama                                            | Gerekli | Varsayılan |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| URL = "String"      | Biçiminde proxy URL 'SI http://host:port .             | Evet      | YOK     |
-| username = "String" | Proxy ile kimlik doğrulaması için kullanılacak Kullanıcı adı. | Hayır       | YOK     |
-| Password = "String" | Proxy ile kimlik doğrulaması için kullanılacak parola. | Hayır       | YOK     |
+| URL = "String"      | Biçiminde proxy URL 'SI http://host:port .             | Evet      | Yok     |
+| username = "String" | Proxy ile kimlik doğrulaması için kullanılacak Kullanıcı adı. | Hayır       | Yok     |
+| Password = "String" | Proxy ile kimlik doğrulaması için kullanılacak parola. | Hayır       | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 
@@ -747,7 +747,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-İlkeyi kullanan Bu örnek ilke, `set-method` http yanıt kodu 500 değerinden büyük veya bu değere eşitse bir bolluk sohbet odasına bir ileti göndermeye yönelik bir örnek gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+İlkeyi kullanan Bu örnek ilke, `set-method` http yanıt kodu 500 değerinden büyük veya bu değere eşitse bir bolluk sohbet odasına bir ileti göndermeye yönelik bir örnek gösterir. Bu örnek hakkında daha fazla bilgi için bkz. [Azure API Management Service 'ten dış hizmetler kullanma](./api-management-sample-send-request.md).
 
 ```xml
 <choose>
@@ -783,7 +783,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, hata durumunda
 
@@ -802,7 +802,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="example"></a>Örnek
 
-Bu örnekte, yetkilendirme belirtecinin geçersiz olması durumunda 401 yanıtının nasıl döndürülayarlanacağı gösterilmektedir. Daha fazla bilgi için bkz [. Azure API Management Service 'ten dış hizmetler kullanma](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)
+Bu örnekte, yetkilendirme belirtecinin geçersiz olması durumunda 401 yanıtının nasıl döndürülayarlanacağı gösterilmektedir. Daha fazla bilgi için bkz [. Azure API Management Service 'ten dış hizmetler kullanma](./api-management-sample-send-request.md)
 
 ```xml
 <choose>
@@ -828,12 +828,12 @@ Bu örnekte, yetkilendirme belirtecinin geçersiz olması durumunda 401 yanıtı
 
 | Öznitelik       | Açıklama                                                | Gerekli | Varsayılan |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| Code = "integer"  | Döndürülecek HTTP durum kodu.                            | Evet      | YOK     |
-| Reason = "String" | Durum kodunu döndürme nedeninin açıklaması. | Evet      | YOK     |
+| Code = "integer"  | Döndürülecek HTTP durum kodu.                            | Evet      | Yok     |
+| Reason = "String" | Durum kodunu döndürme nedeninin açıklaması. | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** giden, arka uç, hata durumunda
 -   **İlke kapsamları:** tüm kapsamlar
@@ -871,7 +871,7 @@ Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini göste
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 -   **İlke kapsamları:** tüm kapsamlar
@@ -916,9 +916,9 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 `trace`İlke, API denetçisi çıktısına, Application Insights Telemetriler ve/veya kaynak günlüklerine özel bir izleme ekler.
 
--   İlke, izleme tetiklendiğinde [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına özel bir izleme ekler, yani `Ocp-Apim-Trace` istek üst bilgisi var ve doğru olarak ayarlanır ve `Ocp-Apim-Subscription-Key` istek üst bilgisi bulunur ve izlemeye izin veren geçerli bir anahtar barındırır.
--   İlke, [Application Insights tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) etkin olduğunda ve [Trace](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) `severity` ilkede belirtilen düzey, `verbosity` Tanılama ayarında belirtilen düzeyden daha yüksek olduğunda Application Insights ' de bir izleme telemetrisi oluşturur.
--   İlke, [kaynak günlükleri](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) etkinleştirildiğinde ve ilkede belirtilen önem düzeyi, tanılama ayarında belirtilen ayrıntı düzeyinden daha yüksek olduğunda günlük girişine bir özellik ekler.
+-   İlke, izleme tetiklendiğinde [API denetçisi](./api-management-howto-api-inspector.md) çıktısına özel bir izleme ekler, yani `Ocp-Apim-Trace` istek üst bilgisi var ve doğru olarak ayarlanır ve `Ocp-Apim-Subscription-Key` istek üst bilgisi bulunur ve izlemeye izin veren geçerli bir anahtar barındırır.
+-   İlke, [Application Insights tümleştirme](./api-management-howto-app-insights.md) etkin olduğunda ve [Trace](../azure-monitor/app/data-model-trace-telemetry.md) `severity` ilkede belirtilen düzey, `verbosity` Tanılama ayarında belirtilen düzeyden daha yüksek olduğunda Application Insights ' de bir izleme telemetrisi oluşturur.
+-   İlke, [kaynak günlükleri](./api-management-howto-use-azure-monitor.md#activity-logs) etkinleştirildiğinde ve ilkede belirtilen önem düzeyi, tanılama ayarında belirtilen ayrıntı düzeyinden daha yüksek olduğunda günlük girişine bir özellik ekler.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -946,20 +946,20 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | izleme    | Kök öğe.                                                                                                                                        | Evet      |
 | message  | Günlüğe kaydedilecek bir dize veya ifade.                                                                                                                 | Evet      |
-| meta veriler | Application Insights [izleme](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetrisine özel bir özellik ekler. | Hayır       |
+| meta veriler | Application Insights [izleme](../azure-monitor/app/data-model-trace-telemetry.md) telemetrisine özel bir özellik ekler. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                                                                               | Gerekli | Varsayılan |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| kaynak    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir.                                   | Evet      | YOK     |
+| kaynak    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir.                                   | Evet      | Yok     |
 | önem derecesi  | İzlemenin önem derecesini belirtir. İzin verilen değerler `verbose` , `information` , `error` (en küçükten en büyüğe). | Hayır       | Ayrıntılı |
-| name      | Özelliğin adı.                                                                                                     | Evet      | YOK     |
-| değer     | Özelliğin değeri.                                                                                                    | Evet      | YOK     |
+| name      | Özelliğin adı.                                                                                                     | Evet      | Yok     |
+| değer     | Özelliğin değeri.                                                                                                    | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes) kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -1025,11 +1025,11 @@ Aşağıdaki örnekte, `choose` ilkenin en hızlı alt ilkelerine sahip iki ilke
 
 | Öznitelik | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli | Varsayılan |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| :       | `wait`İlkenin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all`-Tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt öğe ilkesi tamamlandıktan sonra, `wait` ilke tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | Hayır       | tümü     |
+| for       | `wait`İlkenin tüm hızlı alt ilkelerin tamamlanmasını mi yoksa yalnızca bir tane mi bekleyeceğini belirler. İzin verilen değerler şunlardır:<br /><br /> - `all`-Tüm ilk alt ilkelerin tamamlanmasını bekle<br />-herhangi bir anlık alt ilkenin tamamlanmasını bekleyin. İlk acil alt öğe ilkesi tamamlandıktan sonra, `wait` ilke tamamlanır ve diğer tüm anlık alt ilkelerin yürütülmesi sonlandırılır. | Hayır       | tümü     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç
 -   **İlke kapsamları:** tüm kapsamlar
@@ -1040,5 +1040,5 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 -   [API Management ilkeler](api-management-howto-policies.md)
 -   [İlke ifadeleri](api-management-policy-expressions.md)
--   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
+-   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
 -   [İlke örnekleri](policy-samples.md)

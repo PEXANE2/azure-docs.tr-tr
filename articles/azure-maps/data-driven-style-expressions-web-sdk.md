@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561641"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242619"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
 
@@ -80,7 +81,7 @@ Bu belgedeki tüm örnekler, farklı ifade türlerinin kullanılabileceği farkl
 
 Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar. 
 
-| Expression | Dönüş türü | Açıklama |
+| İfade | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['at', number, array]` | nesne | Diziden bir öğe alır. |
 | `['geometry-type']` | string | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
@@ -140,7 +141,7 @@ Benzer şekilde, çokgenler ana hattı çizgi katmanlarında işlenir. Bir çizg
 
 Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçekleştirmek için matematik işleçleri sağlar.
 
-| Expression | Dönüş türü | Açıklama |
+| İfade | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | sayı | Belirtilen sayıların toplamını hesaplar. |
 | `['-', number]` | sayı | Belirtilen sayı ile 0 çıkartır. |
@@ -195,7 +196,7 @@ Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi B
 
 Değerler karşılaştırılırken karşılaştırma kesin olarak yazılır. Farklı türlerin değerleri her zaman eşit kabul edilir. Türlerin ayrıştırma zamanında farklı olduğu bilinen durumlar geçersiz olarak değerlendirilir ve bir ayrıştırma hatası oluşturur. 
 
-| Expression | Dönüş türü | Açıklama |
+| İfade | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boole | Mantıksal değilleme. `true`Girişin olup olmadığını ve girişin olup olmadığını döndürür `false` `false` `true` . |
 | `['!= ', value, value]` | boole | `true`Giriş değerleri eşit değilse döndürür, `false` Aksi takdirde. |
@@ -398,7 +399,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türlerini test etmek ve dönüştürmek için araçlar sağlar.
 
-| Expression | Dönüş türü | Açıklama |
+| İfade | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | dizi \| nesnesi | Sabit bir dizi veya nesne değeri döndürür. Bir dizi ya da nesnenin bir ifade olarak değerlendirilmesini engellemek için bu ifadeyi kullanın. Bir dizi ya da nesnenin bir ifade tarafından döndürülmesi gerektiğinde bu gereklidir. |
 | `['image', string]` | string | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
@@ -434,7 +435,7 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 
 Renk ifadeleri renk değerleri oluşturmayı ve işlemeyi kolaylaştırır.
 
-| Expression | Dönüş türü | Açıklama |
+| İfade | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*ve *mavi* bileşenlerden bir renk değeri oluşturur `0` `255` ve bir alfa bileşeni `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
 | `['rgba', number, number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*, *mavi* bileşenlerden `0` `255` ve bir ve aralığı içindeki bir Alfa bileşeninden bir renk değeri oluşturur `0` `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
@@ -462,7 +463,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Dize operatörü ifadeleri, büyük/küçük harfe dönüştürme ve dönüştürme gibi dizeler üzerinde dönüştürme işlemleri gerçekleştirir. 
 
-| Expression | Dönüş türü | Description |
+| İfade | Dönüş türü | Description |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | dize | Birden çok dizeyi birlikte birleştirir. Her değer bir dize olmalıdır. `to-string`Gerekirse, diğer değer türlerini dizeye dönüştürmek için tür ifadesini kullanın. |
 | `['downcase', string]` | string | Belirtilen dizeyi küçük harfe dönüştürür. |
@@ -778,7 +779,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency’: 'USD' }
+            { ‘currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -860,7 +861,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Değişken bağlama ifadeleri, bir hesaplamanın sonuçlarını bir değişkende depolar. Bu nedenle, hesaplama sonuçlarının bir ifadenin başka bir yerinde birden çok kez başvurulabilmesini sağlayabilirsiniz. Birçok hesaplamayı içeren ifadeler için yararlı bir iyileştirmedir.
 
-| Expression | Dönüş türü | Açıklama |
+| İfade | Dönüş türü | Açıklama |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Let ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Değer1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;AD2: dize,<br/>&nbsp;&nbsp;&nbsp;&nbsp;değer2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Bir veya daha fazla değeri `var` , sonucu döndüren alt ifadede ifadesi tarafından kullanılmak üzere değişkenler olarak depolar. |
 | `['var', name: string]` | herhangi biri | İfadesi kullanılarak oluşturulan bir değişkene başvurur `let` . |

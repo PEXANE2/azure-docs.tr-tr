@@ -5,11 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75377914"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246699"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric yedeklemeyi geri yükleme
 
@@ -22,7 +23,7 @@ Azure Service Fabric 'de, güvenilir durum bilgisi olan güvenilir hizmetler ve 
 - **Veri kaybı durumu**: yanlışlıkla silme veya hizmetin bozulması. Örneğin, bir yönetici hizmeti yanlışlıkla siler.
 - **Veri bozulması durumunda**: hizmette hatalar veri bozulmasına neden olur. Örneğin, bir hizmet kodu yükseltmesi hatalı verileri güvenilir bir koleksiyona yazdığında veri bozulması meydana gelebilir. Böyle bir durumda, hem kodu hem de verileri önceki bir duruma geri yüklemeniz gerekebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir geri yüklemeyi tetiklemek için, küme için _hata analiz hizmeti 'nin (Fas)_ etkinleştirilmesi gerekir.
 - Yedekleme _geri yükleme hizmeti (BRS)_ yedeklemeyi oluşturdu.
@@ -51,7 +52,7 @@ Aşağıdaki senaryolardan herhangi biri için bir geri yükleme tetiklenebilir:
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Olağanüstü durum kurtarma durumunda veri geri yükleme
 
-Service Fabric kümesinin tamamı kaybedilmişse, güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümlerinin verilerini kurtarabilirsiniz. [Yedekleme depolama ayrıntıları Ile Getbackupapı](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation)kullandığınızda, istenen yedekleme listeden seçilebilir. Yedekleme numaralandırması bir uygulama, hizmet veya bölüm için olabilir.
+Service Fabric kümesinin tamamı kaybedilmişse, güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümlerinin verilerini kurtarabilirsiniz. [Yedekleme depolama ayrıntıları Ile Getbackupapı](/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation)kullandığınızda, istenen yedekleme listeden seçilebilir. Yedekleme numaralandırması bir uygulama, hizmet veya bölüm için olabilir.
 
 Aşağıdaki örnek için kayıp kümenin, [güvenilir durum bilgisi olan ve Reliable Actors düzenli aralıklarla yedeklemeyi etkinleştirme](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)bölümünde başvurulan kümeyle aynı olduğunu varsayalım. Bu durumda, `SampleApp` yedekleme ilkesi etkinken dağıtılır ve yedeklemeler Azure Storage olarak yapılandırılır.
 
@@ -165,7 +166,7 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Aşağıdaki [restore API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)'sini kullanarak yedekleme kümesi bölümüne karşı geri yüklemeyi isteyebilirsiniz:
+Aşağıdaki [restore API](/rest/api/servicefabric/sfclient-api-restorepartition)'sini kullanarak yedekleme kümesi bölümüne karşı geri yüklemeyi isteyebilirsiniz:
 
 ```powershell
 
@@ -305,7 +306,7 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **Zaman aşımı**: _zaman_ aşımı geri yükleme durumu, isteğin zaman aşımına uğradığını gösterir. Daha fazla [Restoretimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout)ile yeni bir geri yükleme isteği oluşturun. Varsayılan zaman aşımı 10 dakikadır. Yeniden geri yükleme istenmeden önce bölümün bir veri kaybı durumunda olmadığından emin olun.
+    - **Zaman aşımı**: _zaman_ aşımı geri yükleme durumu, isteğin zaman aşımına uğradığını gösterir. Daha fazla [Restoretimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout)ile yeni bir geri yükleme isteği oluşturun. Varsayılan zaman aşımı 10 dakikadır. Yeniden geri yükleme istenmeden önce bölümün bir veri kaybı durumunda olmadığından emin olun.
      
         ```
         RestoreState  : Timeout
@@ -316,15 +317,15 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
 
 ## <a name="automatic-restore"></a>Otomatik geri yükleme
 
-_Otomatik geri yükleme_için Service Fabric kümesinde güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümleri yapılandırabilirsiniz. Yedekleme İlkesi ' nde, `AutoRestore` _doğru_olarak ayarlayın. _Otomatik geri yüklemeyi_ etkinleştirmek, veri kaybı bildirildiğinde en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz.
+_Otomatik geri yükleme_için Service Fabric kümesinde güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümleri yapılandırabilirsiniz. Yedekleme İlkesi ' nde, `AutoRestore` _doğru_olarak ayarlayın. _Otomatik geri yüklemeyi_ etkinleştirmek, veri kaybı bildirildiğinde en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz:
 
 - [Yedekleme Ilkesinde etkinleştirme otomatik geri yükleme](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [Restobölümlemek API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
-- [GetPartitionRestoreProgress API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
+- [Restobölümlemek API başvurusu](/rest/api/servicefabric/sfclient-api-restorepartition)
+- [GetPartitionRestoreProgress API başvurusu](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Düzenli aralıklarla yedekleme yapılandırmasını anlama](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Yedekleme geri yükleme REST API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Yedekleme geri yükleme REST API başvurusu](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
 [3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735345"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244931"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy
 Azure 'da yerleşik olarak bulunan ters proxy Service Fabric, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olur.
@@ -117,7 +117,7 @@ Ters proxy Service Fabric, bir hizmet adresini yeniden çözümlemeye çalışı
 
 Ancak, çoğaltmalar veya hizmet örnekleri bir konak işlemini paylaşabilir ve ayrıca, http.sys tabanlı bir Web sunucusu tarafından barındırıldığı sırada bir bağlantı noktası paylaşabilir:
 
-* [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System .net. HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
 * [WebListener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
@@ -155,7 +155,7 @@ Docker Compose kapsayıcıları içinde çalışan Service Fabric Hizmetleri, ö
 * [Ters proxy olaylarını tanılama](service-fabric-reverse-proxy-diagnostics.md)
 * [GitHub üzerinde örnek bir projede](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)bulunan HIZMETLER arasındaki HTTP iletişimi örneğini inceleyin.
 * [Reliable Services uzaktan iletişim ile uzak yordam çağrıları](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services 'de OWıN kullanan Web API 'SI](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services 'de OWıN kullanan Web API 'SI](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services kullanarak WCF iletişimi](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png

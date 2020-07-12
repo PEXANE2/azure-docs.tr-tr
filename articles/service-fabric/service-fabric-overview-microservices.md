@@ -4,11 +4,12 @@ description: Mikro hizmet yaklaşımına sahip bulut uygulamalarının neden olu
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792877"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246029"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Uygulamaları oluşturmak için neden mikro hizmetler yaklaşımı kullanılmalıdır
 
@@ -130,7 +131,7 @@ Sağlık, tanılamalardan farklıdır. Sistem durumu, uygun işlemleri gerçekle
 
 ## <a name="guidance-for-designing-microservices-on-azure"></a>Azure 'da mikro hizmetler tasarlama Kılavuzu
 
-[Azure 'da mikro hizmetler tasarlama ve oluşturma](https://docs.microsoft.com/azure/architecture/microservices/)hakkında rehberlik için Azure mimari merkezini ziyaret edin.
+[Azure 'da mikro hizmetler tasarlama ve oluşturma](/azure/architecture/microservices/)hakkında rehberlik için Azure mimari merkezini ziyaret edin.
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Mikro hizmet platformu olarak Service Fabric
 
@@ -162,7 +163,7 @@ Bunu unutmayın, *Bu aşamaların herhangi birini başlatabilir ve durdurabilirs
 
 Bu aşamaların her biri için örneklere bakalım.
 
-**Geçiş**  
+**Geçirme**  
 İki nedenden dolayı birçok şirket, mevcut tek parçalı uygulamaları kapsayıcılara geçirmektedir:
 
 * Mevcut donanımların birleştirilmesi ve kaldırılması nedeniyle ya da daha yüksek yoğunlukta çalışan uygulamalar nedeniyle maliyet indirimi.
@@ -190,7 +191,7 @@ Service Fabric amacı, mikro hizmet uygulamalarının oluşturulmasına ilişkin
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Mikro hizmetler: bulut tarafından desteklenen bir uygulama Devrimi](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure Mimari Merkezi: Azure 'da mikro hizmetler oluşturma](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Azure Mimari Merkezi: Azure 'da mikro hizmetler oluşturma](/azure/architecture/microservices/)
 * [Azure Service Fabric uygulama ve küme en iyi uygulamaları](service-fabric-best-practices-overview.md)
 * [Service Fabric terimlere genel bakış](service-fabric-technical-overview.md)
 

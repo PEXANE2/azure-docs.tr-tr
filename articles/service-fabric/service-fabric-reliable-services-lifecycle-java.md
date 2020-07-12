@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86f68126825f146a50ed21edf2acbda2b5181cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639607"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245186"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services yaşam döngüsü
 > [!div class="op_single_selector"]
@@ -114,7 +115,7 @@ Service Fabric, birden çok nedenden dolayı durum bilgisi olan bir hizmetin bir
 
 Hizmetler durum bilgisi olduğundan, hizmetlerin [güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)kullanması da olasıdır. Service Fabric, birincil bir indirgendiğinde, temel alınan duruma Yazma erişiminin iptal edilmesi gerekir. Bu, hizmet yaşam döngüsünü etkileyebilecek ikinci bir sorun kümesine yol açar. Koleksiyonlar, zamanlamaya göre özel durumlar, çoğaltmanın taşınıp taşınmakta veya kapatılmakta olup olmadığı için döndürülür. Bu özel durumları doğru bir şekilde işlemek önemlidir. 
 
-Service Fabric tarafından oluşturulan özel durumlar kalıcı [( `FabricException` )](https://docs.microsoft.com/java/api/system.fabric.exception) veya geçici [( `FabricTransientException` )](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception)olabilir. Kalıcı özel durumlar günlüğe kaydedilir ve oluşturulmalıdır. Geçici özel durumlar, yeniden deneme mantığına göre yeniden denenebilir.
+Service Fabric tarafından oluşturulan özel durumlar kalıcı [( `FabricException` )](/java/api/system.fabric.exception) veya geçici [( `FabricTransientException` )](/java/api/system.fabric.exception.fabrictransientexception)olabilir. Kalıcı özel durumlar günlüğe kaydedilir ve oluşturulmalıdır. Geçici özel durumlar, yeniden deneme mantığına göre yeniden denenebilir.
 
 Test ve doğrulama Reliable Services önemli bir parçası, `ReliableCollections` hizmet yaşam döngüsü olaylarıyla birlikte kullanılarak gelen özel durumları işledir. Hizmetinizi her zaman yükleme altında çalıştırmanızı öneririz. Ayrıca üretime dağıtım yapmadan önce yükseltmeler ve [Chaos testi](service-fabric-controlled-chaos.md) gerçekleştirmeniz gerekir. Bu temel adımlar, hizmetinizin doğru şekilde uygulandığından ve yaşam döngüsü olaylarını doğru şekilde işleyeceğinden emin olmanıza yardımcı olur.
 
@@ -129,4 +130,3 @@ Test ve doğrulama Reliable Services önemli bir parçası, `ReliableCollections
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Reliable Services giriş](service-fabric-reliable-services-introduction.md)
 * [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start-java.md)
-

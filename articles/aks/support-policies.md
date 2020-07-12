@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106994"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243860"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -75,7 +75,7 @@ Microsoft aşağıdakiler için teknik destek sağlamaz:
   > Microsoft, Held ve Kured gibi üçüncü taraf açık kaynaklı projeler için en iyi desteği sağlayabilir. Üçüncü taraf açık kaynak aracının, Kubernetes Azure bulut sağlayıcısıyla veya diğer AKS ile ilgili hatalarla tümleştirildiği durumlarda Microsoft, Microsoft belgelerindeki örnekleri ve uygulamaları destekler.
 * Üçüncü taraf kapalı kaynaklı yazılım. Bu yazılım, güvenlik tarama araçları ve ağ aygıtlarını veya yazılımlarını içerebilir.
 * Birden çok yüksek veya çok satıcılı derleme hakkında sorunlar. Örneğin, Microsoft, bir Federasyon çoğulublik bulut satıcısı çözümünü çalıştırmaya ilişkin sorunları desteklemez.
-* [Aks belgelerinde](https://docs.microsoft.com/azure/aks/)listelenenler dışındaki ağ özelleştirmeleri.
+* [Aks belgelerinde](./index.yml)listelenenler dışındaki ağ özelleştirmeleri.
   > [!NOTE]
   > Microsoft, ağ güvenlik grupları (NSG 'ler) ile ilgili sorunları ve hataları destekler. Örneğin Microsoft Desteği, bir NSG hatası veya beklenmeyen NSG veya yük dengeleyici davranışı hakkındaki soruları yanıtlayabilir.
 
@@ -88,7 +88,7 @@ Microsoft ve müşterileri, Kubernetes çalışan düğümlerinin sorumluluğunu
 * Temel işletim sistemi görüntüsünün gerekli eklemeleri (izleme ve ağ aracıları gibi) vardır.
 * Çalışan düğümleri işletim sistemi düzeltme eklerini otomatik olarak alır.
 * Çalışan düğümlerinde çalışan Kubernetes denetim düzlemi bileşenleriyle ilgili sorunlar otomatik olarak düzeltildi. Bileşenler şunlardır:
-  * Kuin-proxy
+  * Kube-proxy
   * Kubernetes ana bileşenlerine iletişim yolları sağlayan ağ tünelleri
   * Kubelet
   * Docker veya Moby Daemon

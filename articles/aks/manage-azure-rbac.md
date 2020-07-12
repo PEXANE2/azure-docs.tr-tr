@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 84800f978790a114b80c415a5e5e3dad77eaf8da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122370"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244269"
 ---
-# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes yetkilendirmesi için Azure RBAC kullanma (Önizleme)
+# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
 Bugün, [Azure Active Directory (Azure AD) ve AKS arasında tümleşik kimlik doğrulamasından](managed-aad.md)zaten yararlanabilirsiniz. Bu tümleştirme etkinleştirildiğinde, müşterilerin Azure AD kullanıcılarını, gruplarını veya hizmet sorumlularını Kubernetes RBAC 'de konu olarak kullanmasına izin verir. daha fazla bilgi için [buraya](azure-ad-rbac.md)bakın.
 Bu özellik, Kubernetes için Kullanıcı kimliklerini ve kimlik bilgilerini ayrı ayrı yönetme zorunluluğundan kurtarır. Ancak, hala Azure RBAC ve Kubernetes RBAC 'i ayrı olarak ayarlayıp yönetmeniz gerekir. AKS üzerinde kimlik doğrulama, yetkilendirme ve RBAC hakkında daha fazla bilgi için [buraya](concepts-identity.md)bakın.
@@ -122,7 +122,7 @@ Azure AD tümleştirmesi ve Kubernetes yetkilendirmesi için Azure RBAC ile bir 
 AKS aşağıdaki dört yerleşik rolü sağlar:
 
 
-| Rol                                | Description  |
+| Rol                                | Açıklama  |
 |-------------------------------------|--------------|
 | Azure Kubernetes hizmeti RBAC Görüntüleyicisi  | Bir ad alanındaki birçok nesneyi görmek için salt okuma erişimine izin verir. Rollerin veya rol bağlamalarının görüntülenmesine izin vermez. `Secrets`Gizli dizi içeriğini okumak, ad alanındaki ServiceAccount kimlik bilgilerine erişim sağladığından, ad alanındaki (ayrıcalık yükseltme bir biçimde) API erişimine izin veren bu rol görüntülemeye izin vermez  |
 | Azure Kubernetes hizmeti RBAC yazıcı | Bir ad alanındaki nesnelerin çoğuna okuma/yazma erişimi sağlar. Bu rol, rolleri veya rol bağlamalarını görüntülemeye veya değiştirmeye izin vermez. Bununla birlikte, bu rol `Secrets` ad alanındaki herhangi bir ServiceAccount olarak, bu rol, ad alanındaki herhangi bir ServiceAccount 'ın API erişim düzeylerini kazanmak için kullanılabilir. |
@@ -215,7 +215,7 @@ az aks get-credentials -g MyResourceGroup -n MyManagedCluster
 ```
 
 > [!IMPORTANT]
-> Yukarıdaki adımı gerçekleştirmek için [Azure Kubernetes hizmet kümesi Kullanıcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) yerleşik rolüne sahip olmanız gerekir.
+> Yukarıdaki adımı gerçekleştirmek için [Azure Kubernetes hizmet kümesi Kullanıcı](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) yerleşik rolüne sahip olmanız gerekir.
 
 Şimdi, kubectl 'yi, örneğin, kümedeki düğümleri listelemek için kullanabilirsiniz. İlk kez çalıştırdığınızda, oturum açmanız gerekir ve sonraki komutlar ilgili erişim belirtecini kullanır.
 

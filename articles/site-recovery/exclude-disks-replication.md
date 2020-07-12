@@ -3,12 +3,12 @@ title: Azure Site Recovery ile diskleri çoğaltmadan dışlama
 description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında tutma.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135683"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245407"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
 
@@ -26,7 +26,7 @@ Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsini
 
 **Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** | **Fiziksel sunucudan Azure 'a**
 --- | --- | --- | ---
-Yes | Yes | Yes | Yes
+Evet | Evet | Evet | Evet
 
 ## <a name="exclude-limitations"></a>Dışlama sınırlamaları
 
@@ -105,29 +105,35 @@ Bizim örneğimizde, SQL tempdb diski disk3 'dan dışlanmıştır ve Azure VM '
 1. Bir komut istemi açın.
 2. Komut isteminden kurtarma modunda SQL Server çalıştırın.
 
-        Net start MSSQLSERVER /f / T3608
+    ```console
+    Net start MSSQLSERVER /f / T3608
+    ```
 
 3. tempdb yolunu yeni yola değiştirmek için aşağıdaki sqlcmd’yi çalıştırın.
 
-        sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;     
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
-        GO
-
+    ```sql
+    sqlcmd -A -S SalesDB        **Use your SQL DBname**
+    USE master;     
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
+    GO
+    ```
 
 4. Microsoft SQL Server hizmetini durdurun.
 
-        Net stop MSSQLSERVER
+    ```console
+    Net stop MSSQLSERVER
+    ```
+
 5. Microsoft SQL Server hizmetini başlatın.
 
-        Net start MSSQLSERVER
-
-
+    ```console
+    Net start MSSQLSERVER
+    ```
 
 ### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware VM 'Leri: özgün konuma yeniden çalışma sırasında diskler
 

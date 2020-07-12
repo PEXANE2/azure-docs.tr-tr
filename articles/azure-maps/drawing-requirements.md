@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ba9edba97ce89cede54287076e50eb587af10f3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791580"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242483"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
 
 [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Bu makalede, dönüştürme API 'SI için çizim paketi gereksinimleri açıklanmaktadır. Örnek bir paket görüntülemek için örnek [Çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Çizim paketi, Autodesk 'nin AutoCAD® yazılımının yerel dosya biçimi olan [(Autodesk, Inc](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12).) bir ticari marka olan, DWG biçiminde kaydedilen çizimleri içerir.
 

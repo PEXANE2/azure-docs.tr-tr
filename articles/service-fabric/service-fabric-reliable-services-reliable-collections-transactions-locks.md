@@ -4,11 +4,12 @@ description: Azure Service Fabric güvenilir durum Yöneticisi ve güvenilir kol
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938920"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245118"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric güvenilir koleksiyonlardaki işlemler ve kilit modları
 
@@ -18,7 +19,7 @@ ms.locfileid: "76938920"
 
 * **Atomicity**: bir işlem atomik iş birimi olmalıdır. Diğer bir deyişle, tüm veri değişiklikleri gerçekleştirilir veya hiçbir şey yapılmaz.
 * **Tutarlılık**: tamamlandığında, bir işlem tüm verileri tutarlı bir durumda bırakmalıdır. Tüm iç veri yapıları işlemin sonunda doğru olmalıdır.
-* **Yalıtım**: eşzamanlı işlemler tarafından yapılan değişiklikler, diğer eş zamanlı işlemler tarafından yapılan değişikliklerden yalıtılmalıdır. Bir [ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) içindeki bir işlem için kullanılan yalıtım düzeyi, Işlemi gerçekleştiren [ıreliablestate](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) tarafından belirlenir.
+* **Yalıtım**: eşzamanlı işlemler tarafından yapılan değişiklikler, diğer eş zamanlı işlemler tarafından yapılan değişikliklerden yalıtılmalıdır. Bir [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) içindeki bir işlem için kullanılan yalıtım düzeyi, Işlemi gerçekleştiren [ıreliablestate](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) tarafından belirlenir.
 * **Dayanıklılık**: bir işlem tamamlandıktan sonra, etkileri sistemde kalıcı olarak gerçekleştirilir. Değişiklikler, sistem hatası durumunda bile devam ediyor.
 
 ### <a name="isolation-levels"></a>Yalıtım düzeyleri
@@ -67,10 +68,10 @@ Güncelleştirme kilidi, birden çok işlem, olası güncelleştirmeler için ka
 
 Kilit uyumluluğu matrisi aşağıdaki tabloda bulunabilir:
 
-| İstek \ verildi | Hiçbiri | Shared | Güncelleştir | Özel |
+| İstek \ verildi | Yok | Paylaşılan | Güncelleştirme | Özel |
 | --- |:--- |:--- |:--- |:--- |
-| Shared |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
-| Güncelleştir |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
+| Paylaşılan |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
+| Güncelleştirme |Çakışma yok |Çakışma yok |Çakışma |Çakışma |
 | Özel |Çakışma yok |Çakışma |Çakışma |Çakışma |
 
 Güvenilir koleksiyonlar API 'Lerinde zaman aşımı bağımsız değişkeni, kilitlenme algılama için kullanılır.
@@ -84,4 +85,4 @@ Bu durumda, işlemlerden biri veya her ikisi zaman aşımına uğrar. Bu senaryo
 * [Reliable Services bildirimleri](service-fabric-reliable-services-notifications.md)
 * [Reliable Services yedekleme ve geri yükleme (olağanüstü durum kurtarma)](service-fabric-reliable-services-backup-restore.md)
 * [Güvenilir durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
-* [Güvenilir koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

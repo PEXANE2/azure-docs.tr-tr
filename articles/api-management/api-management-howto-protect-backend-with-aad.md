@@ -12,11 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445517"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243418"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2.0 kullanarak API'yi koruma
 
@@ -25,7 +26,7 @@ Bu kılavuzda, Azure Active Directory (Azure AD) ile OAuth 2,0 protokolünü kul
 > [!NOTE]
 > Bu özellik, API Management **Geliştirici**, **temel**, **Standart**ve **Premium** katmanlarında kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 
@@ -145,7 +146,7 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. **V1** uç noktaları kullanırsanız, **kaynak**adlı bir gövde parametresi ekleyin. Bu parametrenin değeri için arka uç uygulamasının **uygulama kimliği** ' ni kullanın. 
 
-1. **V2** uç noktaları kullanıyorsanız, **varsayılan kapsam** alanındaki arka uç uygulaması için oluşturduğunuz kapsamı kullanın. Ayrıca, [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) `2` [uygulama bildiriminizde](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)özelliğinin değerini olarak ayarladığınızdan emin olun.
+1. **V2** uç noktaları kullanıyorsanız, **varsayılan kapsam** alanındaki arka uç uygulaması için oluşturduğunuz kapsamı kullanın. Ayrıca, [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` [uygulama bildiriminizde](../active-directory/develop/reference-app-manifest.md)özelliğinin değerini olarak ayarladığınızdan emin olun.
 
 1. Ardından, istemci kimlik bilgilerini belirtin. Bunlar, istemci uygulaması için kimlik bilgileridir.
 
@@ -155,7 +156,7 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. İstemci gizliliğini hemen takip eden, yetkilendirme kodu verme türü için **redirect_url** . Bu URL 'YI bir yere getirin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Azure Active Directory ' de istemci uygulaması kaydına geri dönün ve **kimlik doğrulaması**' nı seçin.
 
@@ -173,7 +174,7 @@ Sonraki adım, API 'niz için OAuth 2,0 Kullanıcı yetkilendirmesini etkinleşt
 
 1. **Güvenlik**altında **OAuth 2,0**' ı seçin ve daha önce yapılandırdığınız OAuth 2,0 sunucusunu seçin. 
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>API 'yi geliştirici portalından başarıyla çağırma
 
@@ -202,7 +203,7 @@ Bu noktada, bir Kullanıcı geliştirici konsolundan bir çağrı yapmaya çalı
 
 Ancak, API 'nizi belirteç olmadan veya geçersiz bir belirteçle çağırırsa ne olacak? Örneğin, üst bilgi olmadan API 'yi çağırmayı deneyin `Authorization` , çağrı devam edecektir. Bunun nedeni API Management, bu noktada erişim belirtecini doğrulamaktır. Yalnızca `Authorization` üstbilgiyi arka uç API 'sine geçirir.
 
-Her gelen isteğin erişim belirteçlerini doğrulayarak API Management istekleri önceden yetkilendirmek için [JWT Ilkesini doğrula](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT) ' yı kullanın. Bir istekte geçerli bir belirteç yoksa API Management engeller. Örneğin, aşağıdaki ilkeyi konusunun `<inbound>` ilke bölümüne ekleyin `Echo API` . Bir erişim belirtecindeki hedef kitle talebini denetler ve belirteç geçerli değilse bir hata mesajı döndürür. İlkeleri yapılandırma hakkında daha fazla bilgi için bkz. [Ilkeleri ayarlama veya düzenleme](https://docs.microsoft.com/azure/api-management/set-edit-policies).
+Her gelen isteğin erişim belirteçlerini doğrulayarak API Management istekleri önceden yetkilendirmek için [JWT Ilkesini doğrula](./api-management-access-restriction-policies.md#ValidateJWT) ' yı kullanın. Bir istekte geçerli bir belirteç yoksa API Management engeller. Örneğin, aşağıdaki ilkeyi konusunun `<inbound>` ilke bölümüne ekleyin `Echo API` . Bir erişim belirtecindeki hedef kitle talebini denetler ve belirteç geçerli değilse bir hata mesajı döndürür. İlkeleri yapılandırma hakkında daha fazla bilgi için bkz. [Ilkeleri ayarlama veya düzenleme](./set-edit-policies.md).
 
 
 ```xml
@@ -227,7 +228,7 @@ Bu kılavuzda, `Echo API` OAuth 2,0 tarafından korunan örneği çağırmak iç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory ve OAuth 2.0](../active-directory/develop/authentication-scenarios.md)hakkında daha fazla bilgi edinin.
+- [Azure Active Directory ve OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md)hakkında daha fazla bilgi edinin.
 - API Management hakkında daha fazla [videoya](https://azure.microsoft.com/documentation/videos/index/?services=api-management) göz atın.
 - Arka uç hizmetinizi güvenli hale getirmeye yönelik diğer yollar için bkz. [Karşılıklı sertifika kimlik doğrulaması](./api-management-howto-mutual-certificates.md).
 - [API Management hizmet örneği oluşturun](./get-started-create-service-instance.md).

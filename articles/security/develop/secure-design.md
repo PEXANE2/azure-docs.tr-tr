@@ -13,22 +13,23 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857166"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246818"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
 Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
 
 Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
-- Eğitim
+- Eğitiliyor
 - Gereksinimler
 - Tasarım
 
-## <a name="training"></a>Eğitim
+## <a name="training"></a>Eğitiliyor
 Bulut uygulamanızı geliştirmeye başlamadan önce Azure 'da güvenlik ve gizliliği anlamak için zaman alın. Bu adımı gerçekleştirerek, uygulamanızdaki açıktan yararlanmaya yönelik güvenlik açıklarının sayısını ve önem derecesini azaltabilirsiniz. Sürekli değişen tehdit yataya uygun şekilde tepki vermeye daha fazla hazırlanacağız.
 
 Geliştiriciler için kullanılabilen Azure hizmetlerini ve Azure 'da en iyi güvenlik uygulamalarını öğrenmek için eğitim aşamasında aşağıdaki kaynakları kullanın:
@@ -152,12 +153,12 @@ Uygulama tasarımını modelleme ve [ilerleme](https://docs.google.com/viewer?a=
 
 | Tehdit | Güvenlik özelliği | Olası Azure platformu risk azaltma |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Kandırma               | Kimlik Doğrulaması        | [HTTPS bağlantıları gerektir](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| İzinsiz Değişiklik              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)için Azure Key Vault sertifikaları kullanın. |
-| Kar            | Red olmayan       | Azure [izleme ve tanılama 'yı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
-| Bilgileri Açıklama | Gizlilik       | REST ve iletim [sırasında](../fundamentals/encryption-atrest.md) hassas verileri [in transit](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
-| Hizmet Reddi      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
-| Ayrıcalık Yükseltme | Yetkilendirme         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)kullanın.|
+| Spoofing (Kimlik Sahtekarlığı)               | Kimlik Doğrulaması        | [HTTPS bağlantıları gerektir](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Tampering (Kurcalama)              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)için Azure Key Vault sertifikaları kullanın. |
+| Repudiation (İnkar)            | İnkar edilemez       | Azure [izleme ve tanılama 'yı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
+| Information Disclosure (Bilgilerin Açığa Çıkması) | Gizlilik       | REST ve iletim [sırasında](../fundamentals/encryption-atrest.md) hassas verileri [in transit](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
+| Denial of Service (Hizmet Reddi)      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
+| Elevation of Privilege (Ayrıcalık Yükseltme) | Yetkilendirme         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)kullanın.|
 
 ### <a name="reduce-your-attack-surface"></a>Saldırı yüzeyinizi azaltma
 
@@ -208,7 +209,7 @@ Web uygulamaları geliştirmeye yönelik kimlik merkezli bir yaklaşım gelişti
 
 Özel kod yerine platform tarafından sağlanan kimlik doğrulama ve yetkilendirme mekanizmalarını kullanın. Bunun nedeni, özel kimlik doğrulama kodunun geliştirmesinin hataya yol açabilir. Ticari kod (örneğin, Microsoft 'tan) genellikle güvenlik için kapsamlı olarak gözden geçirilir. [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) , kimlik ve erişim yönetimi için Azure çözümüdür. Bu Azure AD araçları ve Hizmetleri, güvenli geliştirmeyle ilgili olarak size yardımcı olur:
 
-- [Azure AD kimlik platformu (geliştiriciler Için Azure AD)](../../active-directory/develop/about-microsoft-identity-platform.md) , geliştiricilerin kullanıcılara güvenli bir şekilde oturum açtırmış uygulamalar oluşturmak için kullandığı bir bulut kimlik hizmetidir. Azure AD, çok kiracılı uygulamalar geliştirmek isteyen tek kiracılı, iş kolu (LOB) uygulamaları ve geliştiriciler oluşturan geliştiricilere yardımcı olur. Temel oturum açma 'ya ek olarak, Azure AD kullanılarak oluşturulan uygulamalar, Azure AD platformunda oluşturulmuş Microsoft API 'Lerini ve özel API 'Leri çağırabilir. Azure AD kimlik platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
+- [Microsoft Identity platform](/azure/active-directory/develop/) , geliştiricilerin kullanıcılara güvenli bir şekilde oturum açtırmış uygulamalar oluşturmak için kullandığı bir bileşen kümesidir. Platform, çok kiracılı uygulamalar geliştirmek isteyen tek kiracılı, iş kolu (LOB) uygulamaları ve geliştiriciler oluşturan geliştiricilere yardımcı olur. Temel oturum açma 'ya ek olarak, Microsoft Identity platform kullanılarak oluşturulan uygulamalar Microsoft API 'Leri ve özel API 'Leri çağırabilir. Microsoft Identity platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) , uygulamalarınızı kullandıklarında müşterilerin nasıl kaydolup oturum açmasını ve profillerini nasıl yönetebileceğinizi denetlemek için kullanabileceğiniz bir kimlik yönetimi hizmetidir. Bu, diğer kullanıcıların yanı sıra iOS, Android ve .NET için geliştirilen uygulamaları içerir. Azure AD B2C, müşteri kimliklerini korurken bu eylemlere izin vermez.
 

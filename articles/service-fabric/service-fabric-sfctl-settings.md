@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b805b7047b00f416664a001f02f311f6b387af19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf4e843eea859fc16ed6e3bcd509785cc4db8bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76896267"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245594"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 Bu sfctl örneği için yerel ayarları yapılandırın.
@@ -17,9 +18,9 @@ Bu sfctl örneği için yerel ayarları yapılandırın.
 ## <a name="subgroups"></a>Alt
 |Atama|Açıklama|
 | --- | --- |
-| [Telemetri](service-fabric-sfctl-settings-telemetry.md) | Bu sfctl örneğine yerelde telemetri ayarlarını yapılandırın. |
+| [telemetri](service-fabric-sfctl-settings-telemetry.md) | Bu sfctl örneğine yerelde telemetri ayarlarını yapılandırın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar   
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .   
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

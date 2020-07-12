@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054398"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243690"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -22,7 +22,7 @@ Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları g
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmalıyım? 
 
- [Daha fazla çekirdek isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+ [Daha fazla çekirdek isteyin](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>AKS için düğüm başına en fazla düğüm sayısı ayarı nedir?
 
@@ -34,7 +34,7 @@ Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla dü�
 Bu hata, bir küme için kullanımda olan bir alt ağın, başarılı bir kaynak ataması için CıDR içindeki IP 'Leri artık kullanmadığını gösterir. Kubenet kümeleri için, gereksinim kümedeki her düğüm için yeterli bir IP alanıdır. Azure CNı kümeleri için, gereksinim her düğüm ve kümedeki pod için yeterli IP alanı olur.
 [Azure CNI tasarımı](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)hakkında daha fazla bilgi edinmek için IP 'lere IP atama.
 
-Bu hatalar, yetersiz alt ağ boyutu gibi sorunları proaktif olarak sunan [aks tanılamasında](https://docs.microsoft.com/azure/aks/concepts-diagnostics) de ortaya çıkmış olur.
+Bu hatalar, yetersiz alt ağ boyutu gibi sorunları proaktif olarak sunan [aks tanılamasında](./concepts-diagnostics.md) de ortaya çıkmış olur.
 
 Aşağıdaki üç (3) durum, yetersiz alt ağ boyutu hatasına neden olur:
 
@@ -197,14 +197,14 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -217,7 +217,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | YOK |
+| 1,12 ve üzeri | Yok |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
@@ -251,7 +251,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örneğin:
+* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
 
 ```yaml
 initContainers:
@@ -274,7 +274,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -293,7 +293,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -402,7 +402,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | YOK |
+| 1,14 ve üzeri | Yok |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 
@@ -410,13 +410,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

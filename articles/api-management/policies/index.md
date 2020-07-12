@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b8f97bb27b3eb45c731b20ad51e35fde9b6a394a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126917"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242976"
 ---
 # <a name="api-management-policy-samples"></a>API Management ilke örnekleri
 
@@ -34,7 +34,7 @@ ms.locfileid: "85126917"
 | [Dış yetkilendirici kullanarak istekleri yetkilendirme](./authorize-request-using-external-authorizer.md)                                                   | API erişiminin güvenliğini sağlamak için dış yetkilendiricinin nasıl kullanılacağını gösterir.                                                                                                                                                               |
 | [Google OAuth belirtecini kullanarak erişim yetkisi verme](./use-google-as-oauth-token-provider.md)                                            | OAuth belirteç sağlayıcısı olarak Google'ı kullanıp uç noktalarınıza erişim yetkisi verme işlemini gösterir.                                                                                                                                    |
 | [Application Gateway kullanırken IP Adreslerini filtreleme](./filter-ip-addresses-when-using-appgw.md) | API Management örneğine Application Gateway üzerinden erişirken ilkelerde IP'nin nasıl filtreleneceğini gösterir
-| [Paylaşılan Erişim İmzası oluşturma ve Azure depolamaya isteği iletme](./generate-shared-access-signature.md)                  | İfadeleri kullanarak [Paylaşılan Erişim İmzası](../../storage/storage-dotnet-shared-access-signature-part-1.md) oluşturma ve rewrite-uri ilkesiyle Azure depolamaya isteği iletme işlemlerini gösterir. |
+| [Paylaşılan Erişim İmzası oluşturma ve Azure depolamaya isteği iletme](./generate-shared-access-signature.md)                  | İfadeleri kullanarak [Paylaşılan Erişim İmzası](../../storage/common/storage-sas-overview.md) oluşturma ve rewrite-uri ilkesiyle Azure depolamaya isteği iletme işlemlerini gösterir. |
 | [AAD'den OAuth2 erişim belirtecini alma ve bunu arka uca iletme](./use-oauth2-for-authorization.md)                             | Ağ geçidiyle arka uç arasındaki yetkilendirme için OAuth2 kullanma örneği sağlar. AAD'den erişim belirtecini alma ve bunu arka uca iletme işlemini de gösterir.                                                    |
 | [İstek gönderme ilkesini kullanarak SAP ağ geçidinden X-CSRF belirtecini alma](./get-x-csrf-token-from-sap-gateway.md)                           | Birçok API tarafından kullanılan X-CSRF deseninin nasıl uygulandığını gösterir. Bu örnek SAP Ağ Geçidi'ne özgüdür.                                                                                                                           |
 | [İsteği, gövdesinin boyutu temelinde yönlendirme](./route-requests-based-on-size.md)                                            | İstekleri gövdelerinin boyutu temelinde yönlendirme işlemini gösterir.                                                                                                                                                       |

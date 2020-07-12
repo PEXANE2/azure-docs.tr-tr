@@ -5,14 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692572"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245934"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Güvenilir hizmet uzaktan Iletişimi için tanılama ve performans izleme
-Güvenilir ServiceRemoting çalışma zamanı, [performans sayaçlarını](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yayar. Bunlar ServiceRemoting 'in nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
+Güvenilir ServiceRemoting çalışma zamanı, [performans sayaçlarını](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)yayar. Bunlar ServiceRemoting 'in nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
 
 
 ## <a name="performance-counters"></a>Performans sayaçları
@@ -25,7 +26,7 @@ Güvenilir ServiceRemoting çalışma zamanı, aşağıdaki performans sayacı k
 
 Yukarıdaki kategorilerin her birinde bir veya daha fazla sayaç bulunur.
 
-Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Performans İzleyicisi](https://technet.microsoft.com/library/cc749249.aspx) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md) , performans sayacı verilerini toplamaya ve Azure tablolarına yüklemeye yönelik başka bir seçenektir.
+Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Performans İzleyicisi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md) , performans sayacı verilerini toplamaya ve Azure tablolarına yüklemeye yönelik başka bir seçenektir.
 
 ### <a name="performance-counter-instance-names"></a>Performans sayacı örnek adları
 Çok sayıda Serviceretıting hizmeti veya bölümü olan bir küme, çok sayıda performans sayacı örneğine sahiptir. Performans sayacı örneği adları, performans sayacı örneğinin ilişkilendirildiği belirli bölümü ve hizmet yöntemini (varsa) tanımlamaya yardımcı olabilir.
@@ -35,7 +36,7 @@ Kategori için `Service Fabric Service` , sayaç örneği adları aşağıdaki b
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Servicerepereporınstanceıd* , performans sayacı örneğinin Ilişkilendirildiği Service Fabric çoğaltma/örnek kimliğinin dize gösterimidir.
 
@@ -56,7 +57,7 @@ Kategori için `Service Fabric Service Method` , sayaç örneği adları aşağ�
 
 *Serviceruntimemethodıd* , iç kullanımı Için yapı hizmeti çalışma zamanı tarafından oluşturulan 32 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Servicerepereporınstanceıd* , performans sayacı örneğinin Ilişkilendirildiği Service Fabric çoğaltma/örnek kimliğinin dize gösterimidir.
 
@@ -91,4 +92,4 @@ Bir istemci bir hizmet proxy nesnesi aracılığıyla bir yöntemi çağırdığ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Örnek kod](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
-* [PerfView 'da EventSource sağlayıcıları](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [PerfView 'da EventSource sağlayıcıları](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

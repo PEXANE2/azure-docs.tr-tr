@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557979"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243724"
 ---
 # <a name="api-management-authentication-policies"></a>API Management kimlik doğrulaması ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,19 +48,19 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |kimlik doğrulama-temel|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Evet|YOK|
-|password|Temel kimlik bilgisinin parolasını belirtir.|Evet|YOK|
+|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Evet|Yok|
+|password|Temel kimlik bilgisinin parolasını belirtir.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 
@@ -97,21 +97,21 @@ Bu örnekte, istemci sertifikası yerleşik sertifika deposundan alınmaktansa i
 
 ### <a name="elements"></a>Öğeler  
   
-|Name|Açıklama|Gerekli|  
+|Ad|Açıklama|Gerekli|  
 |----------|-----------------|--------------|  
 |kimlik doğrulama-sertifika|Kök öğe.|Evet|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Name|Açıklama|Gerekli|Varsayılan|  
+|Ad|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|YOK|
-|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|YOK|
-|body|Bir bayt dizisi olarak istemci sertifikası.|Hayır|YOK|
-|password|İstemci sertifikası için parola.|' De belirtilen sertifika `body` parola korumalı ise kullanılır.|YOK|
+|#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
+|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
+|body|Bir bayt dizisi olarak istemci sertifikası.|Hayır|Yok|
+|password|İstemci sertifikası için parola.|' De belirtilen sertifika `body` parola korumalı ise kullanılır.|Yok|
   
 ### <a name="usage"></a>Kullanım  
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.  
   
 -   **İlke bölümleri:** gelen  
   
@@ -174,21 +174,21 @@ Sistem tarafından atanan kimlik ve birden çok kullanıcı tarafından atanan k
 
 ### <a name="elements"></a>Öğeler  
   
-|Name|Açıklama|Gerekli|  
+|Ad|Açıklama|Gerekli|  
 |----------|-----------------|--------------|  
 |kimlik doğrulama-yönetilen-kimlik |Kök öğe.|Evet|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Name|Açıklama|Gerekli|Varsayılan|  
+|Ad|Açıklama|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Evet|YOK|
+|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Evet|Yok|
 |istemci kimliği|Dize. Azure Active Directory içindeki kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI.|Hayır|sistem tarafından atanan kimlik|
-|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |Hayır|YOK|  
+|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |Hayır|Yok|  
 |yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|yanlış|  
   
 ### <a name="usage"></a>Kullanım  
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.  
   
 -   **İlke bölümleri:** gelen  
   
@@ -199,5 +199,5 @@ Sistem tarafından atanan kimlik ve birden çok kullanıcı tarafından atanan k
 
 + [API Management ilkeler](api-management-howto-policies.md)
 + [API dönüştürme](transform-api.md)
-+ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
++ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
 + [İlke örnekleri](policy-samples.md)

@@ -4,11 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS), Kubernetes kullanan ve Azure C
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789506"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244659"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
 
@@ -62,7 +63,7 @@ AKS'de aşağıdaki iki ağ modelinden birini kullanan bir küme dağıtabilirsi
 
 ### <a name="kubenet-basic-networking"></a>Kubenet (temel) ağ
 
-*Kubernetes kullanan* Networking seçeneği, aks kümesi oluşturma için varsayılan yapılandırmadır. *Kubernetes kullanan*ile, düğümler Azure sanal ağ alt ağından bir IP adresi alır. Podlar, düğümlerin Azure sanal ağ alt ağından mantıksal olarak farklı bir adres alanından IP adresi alır. Ardından podların Azure sanal ağındaki kaynaklara erişebilmesi için ağ adresi çevirisi (NAT) yapılandırması gerçekleştirilir. Trafiğin kaynak IP adresi NAT ' dır ve düğümün birincil IP adresidir.
+*Kubernetes kullanan* Networking seçeneği, aks kümesi oluşturma için varsayılan yapılandırmadır. *Kubernetes kullanan*ile, düğümler Azure sanal ağ alt ağından bir IP adresi alır. Podlar, düğümlerin Azure sanal ağ alt ağından mantıksal olarak farklı olan bir adres alanından IP adresi alır. Ardından podların Azure sanal ağındaki kaynaklara erişebilmesi için ağ adresi çevirisi (NAT) yapılandırması gerçekleştirilir. Trafiğin kaynak IP adresi NAT ' dır ve düğümün birincil IP adresidir.
 
 Düğümler [Kubernetes kullanan][kubenet] Kubernetes eklentisini kullanır. Azure platformunun sizin için sanal ağlar oluşturmasına ve yapılandırmasına izin verebilir veya AKS kümenizi mevcut bir sanal ağ alt ağına dağıtmayı seçebilirsiniz. Yine, yalnızca düğümler yönlendirilebilir bir IP adresi alır ve IP 'ler, AKS kümesi dışındaki diğer kaynaklarla iletişim kurmak için NAT kullanır. Bu yaklaşım, Pod 'nin kullanabilmesi için ağ alanınızda ayırmanız gereken IP adresi sayısını önemli ölçüde azaltır.
 
@@ -93,16 +94,16 @@ Kubernetes kullanan ve Azure CNı, AKS kümeleriniz için ağ bağlantısı sağ
 
 Kubernetes kullanan ve Azure CNı arasında aşağıdaki davranış farklılıkları vardır:
 
-| Özellik                                                                                   | Kubernetes kullanan   | Azure CNı |
+| Yetenek                                                                                   | Kubernetes kullanan   | Azure CNı |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Destekleniyor |
-| Pod-POD bağlantısı                                                                         | Destekleniyor | Destekleniyor |
+| Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Desteklenir |
+| Pod-POD bağlantısı                                                                         | Desteklenir | Desteklenir |
 | Pod-VM bağlantısı; Aynı sanal ağdaki VM                                          | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
 | Pod-VM bağlantısı; Eşlenen sanal ağdaki VM                                            | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
 | VPN veya Express Route kullanarak şirket içi erişim                                                | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
-| Hizmet uç noktaları tarafından güvenli hale getirilmiş kaynaklara erişim                                             | Destekleniyor | Destekleniyor |
-| Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Destekleniyor | Destekleniyor |
-| Varsayılan Azure DNS ve özel bölgeler                                                          | Destekleniyor | Destekleniyor |
+| Hizmet uç noktaları tarafından güvenli hale getirilmiş kaynaklara erişim                                             | Desteklenir | Desteklenir |
+| Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Desteklenir | Desteklenir |
+| Varsayılan Azure DNS ve özel bölgeler                                                          | Desteklenir | Desteklenir |
 
 Hem Kubernetes kullanan hem de Azure CNı eklentileri DNS ile ilgili olarak, AKS 'de çalışan bir Daemon kümesi olan CoreDNS tarafından sunulur. Kubernetes üzerinde CoreDNS hakkında daha fazla bilgi için bkz. [DNS hizmetini özelleştirme](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS, bilinmeyen etki alanlarını düğüm DNS sunucularına, diğer bir deyişle, AKS kümesinin dağıtıldığı Azure sanal ağının DNS işlevselliğine iletmek üzere varsayılan olarak yapılandırılır. Bu nedenle, Azure DNS ve özel bölgeler aks 'de çalışan Pod 'ler için çalışacaktır.
 
@@ -113,7 +114,7 @@ Kullandığınız ağ modelinden bağımsız olarak, hem Kubernetes kullanan hem
 * Azure platformu, bir AKS kümesi oluştururken sanal ağ kaynaklarını otomatik olarak oluşturabilir ve yapılandırabilir.
 * Sanal ağ kaynaklarını el ile oluşturup yapılandırabilir ve AKS kümenizi oluştururken bu kaynaklara iliştirebilirsiniz.
 
-Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örneğin:
+Service endpoints veya UDRs gibi yetenekler hem Kubernetes kullanan hem de Azure CNı ile desteklense de [AKS için destek ilkeleri][support-policies] , yapabileceğiniz değişiklikleri tanımlar. Örnek:
 
 * Bir AKS kümesi için sanal ağ kaynaklarını el ile oluşturursanız, kendi UDRs veya hizmet uç noktalarınızı yapılandırırken bu kaynakları destekliyoruz.
 * Azure platformu AKS kümeniz için sanal ağ kaynaklarını otomatik olarak oluşturursa, kendi UDRs veya hizmet uç noktalarınızı yapılandırmak üzere bu AKS tarafından yönetilen kaynakları el ile değiştirmek desteklenmez.
@@ -173,7 +174,7 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

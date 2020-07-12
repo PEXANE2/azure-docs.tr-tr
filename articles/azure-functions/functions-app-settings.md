@@ -3,11 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235360"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242772"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -16,6 +17,9 @@ Bir işlev uygulamasındaki uygulama ayarları, bu işlev uygulaması için tüm
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Dosyasında ve [local.settings.json](functions-run-local.md#local-settings-file) dosyasında [host.js](functions-host-json.md) başka genel yapılandırma seçenekleri vardır.
+
+> [!NOTE]  
+> Dosya üzerinde host.jsdeğiştirmek zorunda kalmadan değerleri ayarlama host.jsgeçersiz kılmak için uygulama ayarlarını kullanabilirsiniz. Bu, belirli bir ortam için ayarlarda belirli host.jsyapılandırmanız veya değiştirmeniz gereken senaryolar için yararlıdır. Bu Ayrıca, projenizin yeniden yayımlanmasını gerektirmeden ayarları host.jsdeğiştirmenize de olanak tanır. Daha fazla bilgi edinmek için [başvuruhost.jsmakalesine](functions-host-json.md#override-hostjson-values)bakın.  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -32,6 +36,42 @@ Application Insights için bağlantı dizesi. `APPLICATIONINSIGHTS_CONNECTION_ST
 |Anahtar|Örnek değer|
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|Instrumentationkey = [anahtar]; ınestionendpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; Anlık görüntü Tendpoint = [URL];|
+
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Varsayılan olarak, [işlev proxy](functions-proxies.md) 'LERI, API çağrılarını doğrudan aynı işlev uygulamasındaki işlevlere doğrudan göndermek için bir kısayol kullanır. Bu kısayol, yeni bir HTTP isteği oluşturmak yerine kullanılır. Bu ayar, bu kısayol davranışını devre dışı bırakmanızı sağlar.
+
+|Anahtar|Değer|Açıklama|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Yerel işlev uygulamasındaki bir işleve işaret eden arka uç URL 'SI olan çağrılar doğrudan işleve gönderilmez. Bunun yerine, istekler işlev uygulaması için HTTP ön ucunda yeniden yönlendirilir.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|yanlış|Yerel işlev uygulamasındaki bir işleve işaret eden arka uç URL 'SI olan çağrılar doğrudan işleve iletilir. Varsayılan değer budur. |
+
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+Bu ayar, `%2F` arka uç URL 'sine eklendiklerinde karakterlerin yol parametrelerinde eğik çizgi olarak çözülmüş olup olmadığını denetler. 
+
+|Anahtar|Değer|Açıklama|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Kodlanmış eğik çizgileri olan rota parametreleri kodu çözülür. |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|yanlış|Tüm rota parametreleri değiştirilmeden ve varsayılan davranış olarak geçirilir. |
+
+Örneğin, etki alanındaki bir işlev uygulaması için dosyadaki proxies.jsgöz önünde bulundurun `myfunction.com` .
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+
+, `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` Olarak ayarlandığında `true` , URL `example.com/api%2ftest` olarak çözümlenir `example.com/api/test` . Varsayılan olarak, URL değişmeden kalır `example.com/test%2fapi` . Daha fazla bilgi için bkz. [işlev proxy 'leri](functions-proxies.md).
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
@@ -150,7 +190,31 @@ Varsayılan değeri olan en fazla dil çalışan işlemi sayısını belirtir `1
 |---|------------|
 |IŞLEVLER \_ Worker \_ çalışma zamanı|dotnet|
 
-## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="pip_extra_index_url"></a>PıP \_ ekstra \_ Dizin \_ URL 'si
+
+Bu ayarın değeri, Python uygulamaları için özel bir paket dizin URL 'SI gösterir. Bir ek paket dizininde bulunan özel bağımlılıklar kullanarak uzak bir derlemeyi çalıştırmanız gerektiğinde bu ayarı kullanın.   
+
+|Anahtar|Örnek değer|
+|---|------------|
+|PıP \_ ekstra \_ Dizin \_ URL 'si|http://my.custom.package.repo/simple |
+
+Daha fazla bilgi edinmek için bkz. Python geliştirici başvurusunda [özel bağımlılıklar](functions-reference-python.md#remote-build-with-extra-index-url) .
+
+## <a name="scale_controller_logging_enable"></a>ÖLÇEK \_ denetleyicisi \_ günlüğü \_ Etkinleştir
+
+_Bu ayar şu an önizleme aşamasındadır._  
+
+Bu ayar Azure Işlevleri ölçek denetleyicisindeki günlüğü denetler. Daha fazla bilgi için bkz. [Ölçek denetleyicisi günlükleri](functions-monitoring.md#scale-controller-logs-preview).
+
+|Anahtar|Örnek değer|
+|-|-|
+|SCALE_CONTROLLER_LOGGING_ENABLE|Appınsights: ayrıntılı|
+
+Bu anahtarın değeri `<DESTINATION>:<VERBOSITY>` , aşağıdaki şekilde tanımlanan biçimde sağlanır:
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+## <a name="website_contentazurefileconnectionstring"></a>Web sItesI \_ CONTENTAZUREFILECONNECTIONSTRING
 
 Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılandırmasının depolandığı depolama hesabı için bağlantı dizesi. Bkz. [işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -196,47 +260,16 @@ _Yalnızca Windows._
 
 Geçerli değerler, bir dağıtım paketi dosyasının konumunu çözen bir URL ya da `1` . Olarak ayarlandığında `1` , paketin klasörde olması gerekir `d:\home\data\SitePackages` . Bu ayar ile ZIP dağıtımı kullanılırken, paket otomatik olarak bu konuma yüklenir. Önizlemede, bu ayar adlandırılmıştı `WEBSITE_RUN_FROM_ZIP` . Daha fazla bilgi için bkz. [işlevlerinizi bir paket dosyasından çalıştırma](run-functions-from-deployment-package.md).
 
-## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="website_time_zone"></a>Web sItesI \_ Saat \_ dilimi
 
-Varsayılan olarak Işlev proxy 'leri, yeni bir HTTP isteği oluşturmak yerine, proxy 'lerden doğrudan aynı İşlev Uygulaması işlevlere API çağrıları göndermek için bir kısayol kullanır. Bu ayar, bu davranışı devre dışı bırakmanızı sağlar.
+İşlev uygulamanız için saat dilimini ayarlamanıza olanak sağlar. 
 
-|Anahtar|Değer|Açıklama|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Yerel İşlev Uygulaması bir işleve işaret eden arka uç URL 'SI olan çağrılar artık doğrudan işleve gönderilmez ve bunun yerine İşlev Uygulaması için HTTP ön ucuna geri yönlendirilir|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|yanlış|Varsayılan değer budur. Yerel İşlev Uygulaması bir işleve işaret eden arka uç URL 'SI olan çağrılar, doğrudan bu Işleve iletilir|
+|Anahtar|İşletim Sistemi|Örnek değer|
+|---|--|------------|
+|Web sItesI \_ Saat \_ dilimi|Windows|Doğu Standart Saati|
+|Web sItesI \_ Saat \_ dilimi|Linux|Amerika/New_York|
 
-
-## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
-
-Bu ayar,% 2F ' nin, arka uç URL 'sine eklendiklerinde rota parametrelerinde eğik çizgi olarak çözülmüş olup olmadığını denetler. 
-
-|Anahtar|Değer|Açıklama|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Kodlanmış eğik çizgi içeren rota parametrelerinin kodu çözülür. `example.com/api%2ftest`olacak`example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|yanlış|Bu, varsayılan davranıştır. Tüm rota parametreleri değişmeden kalacak şekilde geçirilecek|
-
-### <a name="example"></a>Örnek
-
-İşte myfunction.com URL 'sindeki bir işlev uygulamasında bir örnek proxies.js
-
-```JSON
-{
-    "$schema": "http://json.schemastore.org/proxies",
-    "proxies": {
-        "root": {
-            "matchCondition": {
-                "route": "/{*all}"
-            },
-            "backendUri": "example.com/{all}"
-        }
-    }
-}
-```
-|URL kod çözme|Girdi|Çıktı|
-|-|-|-|
-|true|myfunction.com/test%2fapi|example.com/test/api
-|yanlış|myfunction.com/test%2fapi|example.com/test%2fapi|
-
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 426220f38e6ddfaaf8b24bf4f7d34473d881ae56
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906227"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245611"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin.
@@ -21,7 +22,7 @@ Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin.
 | uygulama adı | Bir hizmet için Service Fabric uygulamasının adını alır. |
 | kod-paket-listesi | Bir Service Fabric düğümünde dağıtılan kod paketlerinin listesini alır. |
 | oluşturmaya | Belirtilen Service Fabric hizmetini oluşturur. |
-| delete | Mevcut bir Service Fabric hizmetini siler. |
+| silme | Mevcut bir Service Fabric hizmetini siler. |
 | dağıtılan tür | Service Fabric kümesindeki bir düğüme dağıtılan uygulamanın belirtilen hizmet türüyle ilgili bilgileri alır. |
 | dağıtılan tür listesi | Service Fabric kümesindeki bir düğümde dağıtılan uygulamalardan hizmet türleriyle ilgili bilgileri içeren listeyi alır. |
 | açıklama | Mevcut bir Service Fabric hizmetinin açıklamasını alır. |
@@ -587,4 +588,4 @@ Verilen güncelleştirme açıklamasını kullanarak belirtilen hizmeti güncell
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

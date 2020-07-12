@@ -6,11 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981926"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245316"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -25,7 +26,7 @@ Aşağıdaki tabloda, kullanılabilir özellikler için ERT ve RPO karşılaşt�
 | **Özellik** | **Temel** | **Genel Amaçlı** | **Bellek için iyileştirilmiş** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
-| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmiyor | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
 > Silinen sunucular **geri yüklenemez.** Sunucuyu silerseniz, sunucuya ait olan tüm veritabanları da silinir ve kurtarılamaz. Sunucunuzun yanlışlıkla silinmesini önlemeye yardımcı olmak için [Azure Kaynak kilidini](../azure-resource-manager/management/lock-resources.md) kullanın.
@@ -51,6 +52,11 @@ Coğrafi geri yükleme özelliği, coğrafi olarak yedekli yedeklemeleri kullana
 
 ## <a name="cross-region-read-replicas"></a>Bölgeler arası okuma çoğaltmaları
 İş sürekliliği ve olağanüstü durum kurtarma planlamasını iyileştirmek için bölgeler arası okuma çoğaltmalarını kullanabilirsiniz. Okuma çoğaltmaları PostgreSQL 'in fiziksel çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir. Okuma çoğaltmaları, kullanılabilir bölgeler ve [okuma çoğaltmaları kavramları makalesindeki](concepts-read-replicas.md)yük devretme hakkında daha fazla bilgi edinin. 
+
+## <a name="faq"></a>SSS
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>PostgreSQL için Azure veritabanı müşteri verilerini nerede depolar?
+Varsayılan olarak, PostgreSQL için Azure veritabanı, müşteri verilerini dağıtıldığı bölgeden taşımaz veya depolamaz. Ancak, müşteriler isteğe bağlı olarak coğrafi olarak [yedekli yedeklemeleri](concepts-backup.md#backup-redundancy-options) etkinleştirmeyi veya farklı bir bölgedeki verileri depolamak için [çapraz bölge okuma çoğaltması](concepts-read-replicas.md#cross-region-replication) oluşturmayı tercih edebilir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [PostgreSQL Için Azure veritabanı 'nda otomatikleştirilmiş yedeklemeler](concepts-backup.md)hakkında daha fazla bilgi edinin. 

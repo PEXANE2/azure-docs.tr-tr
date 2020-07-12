@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0334e03f2d4f34913f2f96610868b5ffe169013
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207507"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242568"
 ---
 # <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
@@ -71,16 +71,69 @@ dataSource.setShapes(geoJsonData);
 
 **Vektör kutucuk kaynağı**
 
-Vektör kutucuk kaynağı bir vektör kutucuk katmanına nasıl erişebileceğinizi açıklar. Vektör kutucuk kaynağı oluşturmak için [Vectortilesource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) sınıfını kullanın. Vektör döşeme katmanları döşeme katmanlarına benzerdir, ancak aynı değildir. Döşeme katmanı bir raster görüntüsüdür. Vektör döşeme katmanları, PBF biçiminde sıkıştırılmış bir dosyadır. Bu sıkıştırılmış dosya, vektör eşleme verilerini ve bir veya daha fazla katmanı içerir. Dosya, her katmanın stiline bağlı olarak işlenilerek, istemci üzerinde stil oluşturulabilir. Vektör kutucuğunda bulunan veriler, işaret, çizgi ve çokgenler biçimindeki coğrafi özellikler içerir. Raster döşeme katmanları yerine vektör kutucuğu katmanlarını kullanmanın çeşitli avantajları vardır:
+Vektör kutucuk kaynağı bir vektör kutucuk katmanına nasıl erişebileceğinizi açıklar. Vektör kutucuk kaynağı oluşturmak için [Vectortilesource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) sınıfını kullanın. Vektör döşeme katmanları döşeme katmanlarına benzerdir, ancak aynı değildir. Döşeme katmanı bir raster görüntüsüdür. Vektör döşeme katmanları, **PBF** biçiminde sıkıştırılmış bir dosyadır. Bu sıkıştırılmış dosya, vektör eşleme verilerini ve bir veya daha fazla katmanı içerir. Dosya, her katmanın stiline bağlı olarak işlenilerek, istemci üzerinde stil oluşturulabilir. Vektör kutucuğunda bulunan veriler, işaret, çizgi ve çokgenler biçimindeki coğrafi özellikler içerir. Raster döşeme katmanları yerine vektör kutucuğu katmanlarını kullanmanın çeşitli avantajları vardır:
 
  - Vektör kutucuğunun dosya boyutu genellikle denk bir raster kutucuğundan çok daha küçüktür. Bu nedenle, daha az bant genişliği kullanılır. Daha düşük gecikme süresi, daha hızlı bir harita ve daha iyi bir kullanıcı deneyimi anlamına gelir.
  - Vektör kutucukları istemcide işlendiği için, üzerinde görüntülendikleri cihazın çözünürlüğüne uyarlarlar. Sonuç olarak, işlenen haritalar Crystal Clear etiketleriyle daha iyi tanımlanmış şekilde görünür.
  - Yeni stil istemciye uygulanamadığından, vektör eşlemlerdeki verilerin stilini değiştirmek, verilerin yeniden indirilmesini gerektirmez. Buna karşılık, bir raster kutucuk katmanının stilini değiştirmenin genellikle sunucudan kutucukları yükleme ve ardından yeni stili uygulama gerekir.
  - Veriler vektör biçiminde teslim edildiğinden, verileri hazırlamak için daha az sunucu tarafı işleme gerekir. Sonuç olarak, daha yeni veriler daha hızlı kullanılabilir hale getirilebilir.
 
-Vektör kaynağı kullanan tüm katmanların bir değer belirtmesi gerekir `sourceLayer` .
+Azure haritalar, açık bir standart olan [Mapbox vektör kutucuk belirtimine](https://github.com/mapbox/vector-tile-spec)uyar. Azure Maps, platformun bir parçası olarak aşağıdaki vektör kutucukları hizmetlerini sağlar:
 
-Azure haritalar, açık bir standart olan [Mapbox vektör kutucuk belirtimine](https://github.com/mapbox/vector-tile-spec)uyar.
+- Yol kutucukları [belge](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Trafik olayları [belge](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- Trafik akışı [belgeleri](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [veri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure haritalar Oluşturucusu Ayrıca özel vektör kutucuklarının oluşturma ve [kutucuk oluşturma v2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) aracılığıyla erişilebilir olmasını sağlar
+
+> [!TIP]
+> Azure haritalar işleme hizmeti 'nden Web SDK 'Sı ile vektör veya raster görüntü kutucukları kullanırken, `atlas.microsoft.com` yer tutucu ile değiştirebilirsiniz `{azMapsDomain}` . Bu yer tutucu, eşleme tarafından kullanılan aynı etki alanıyla değiştirilmelidir ve aynı kimlik doğrulama ayrıntılarını da otomatik olarak ekler. Bu, Azure Active Directory kimlik doğrulaması kullanırken işleme hizmeti ile kimlik doğrulamasını büyük ölçüde basitleştirir.
+
+Haritadaki bir vektör kutucuk kaynağından verileri göstermek için, kaynağı veri işleme katmanlarından birine bağlayın. Vektör kaynağı kullanan tüm katmanların seçeneklerde bir değer belirtmesi gerekir `sourceLayer` . Aşağıdaki kod, Azure Maps trafik akışı vektör kutucuk hizmetini bir vektör kutucuk kaynağı olarak yükler ve bir çizgi katmanını kullanarak haritada görüntüler. Bu vektör kutucuk kaynağı kaynak katmanda "trafik akışı" adlı tek bir veri kümesine sahiptir. Bu veri kümesindeki satır verilerinde, `traffic_level` rengi seçmek ve çizgilerin boyutunu ölçeklendirmek için bu kodda kullanılan adlı bir özellik vardır.
+
+```javascript
+//Create a vector tile source and add it to the map.
+var datasource = new atlas.source.VectorTileSource(null, {
+    tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
+    maxZoom: 22
+});
+map.sources.add(datasource);
+
+//Create a layer for traffic flow lines.
+var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+    //The name of the data layer within the data source to pass into this rendering layer.
+    sourceLayer: 'Traffic flow',
+
+    //Color the roads based on the traffic_level property. 
+    strokeColor: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 'red',
+        0.33, 'orange',
+        0.66, 'green'
+    ],
+
+    //Scale the width of roads based on the traffic_level property. 
+    strokeWidth: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 6,
+        1, 1
+    ]
+});
+
+//Add the traffic flow layer below the labels to make the map clearer.
+map.layers.add(flowLayer, 'labels');
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vektör döşeme çizgisi katmanı" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>vektör kutucuk çizgisi katmanına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+</iframe>
+
+<br/>
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>Bir veri kaynağını katmana bağlama
 

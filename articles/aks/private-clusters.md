@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 6/18/2020
-ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c788f2009bdc771bcdde20d1c3dbe9eafdbcffcb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374534"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244234"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -17,7 +17,7 @@ ms.locfileid: "85374534"
 
 Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından yönetilen bir Azure aboneliğinde bulunur. Müşterinin kümesi veya düğüm havuzu müşterinin aboneliğine ait. Sunucu ve küme veya düğüm havuzu, API sunucusu sanal ağındaki [Azure özel bağlantı hizmeti][private-link-service] ve müşterinin aks kümesinin alt ağında kullanıma sunulan özel bir uç nokta aracılığıyla birbirleriyle iletişim kurabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure CLı sürüm 2.2.0 veya üzeri
 
@@ -83,7 +83,7 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Özel DNS ile hub ve bağlı bileşen
 
-[Hub ve bağlı bileşen mimarileri](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) genellikle Azure 'da ağları dağıtmak için kullanılır. Bu dağıtımların çoğunda, bağlı olan sanal ağlarda DNS ayarları, şirket içi ve Azure tabanlı DNS çözümüne izin vermek üzere merkezi bir DNS ileticisine başvuracak şekilde yapılandırılmıştır. Bir AKS kümesini böyle bir ağ ortamına dağıttığınızda, hesaba alınması gereken bazı özel noktalar vardır.
+[Hub ve bağlı bileşen mimarileri](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) genellikle Azure 'da ağları dağıtmak için kullanılır. Bu dağıtımların çoğunda, bağlı olan sanal ağlarda DNS ayarları, şirket içi ve Azure tabanlı DNS çözümüne izin vermek üzere merkezi bir DNS ileticisine başvuracak şekilde yapılandırılmıştır. Bir AKS kümesini böyle bir ağ ortamına dağıttığınızda, hesaba alınması gereken bazı özel noktalar vardır.
 
 ![Özel küme merkezi ve bağlı bileşen](media/private-clusters/aks-private-hub-spoke.png)
 
@@ -116,9 +116,9 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview#limitations
+[private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
 [availability-zones]: availability-zones.md

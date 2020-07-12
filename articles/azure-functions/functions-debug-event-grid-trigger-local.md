@@ -2,20 +2,21 @@
 title: Yerel hata ayıklama Event Grid Azure Işlevleri
 description: Event Grid bir olay tarafından tetiklenen Azure işlevlerini yerel olarak hata ayıklamanın nasıl yapılacağını öğrenin
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340864"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242755"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle
 
 Bu makalede, bir depolama hesabı tarafından oluşturulan Azure Event Grid olayını işleyen yerel bir işlevde hata ayıklama işlemi gösterilmektedir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Mevcut bir işlev uygulaması oluşturma veya kullanma
 - Var olan bir depolama hesabı oluşturun veya kullanın

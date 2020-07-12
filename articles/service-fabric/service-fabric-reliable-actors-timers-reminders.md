@@ -3,11 +3,12 @@ title: Reliable Actors zamanlayıcılar ve anımsatıcılar
 description: Her birinin ne zaman kullanılacağı hakkında rehberlik dahil olmak üzere Service Fabric Reliable Actors için zamanlayıcılar ve anımsatıcılara giriş.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996363"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245958"
 ---
 # <a name="actor-timers-and-reminders"></a>Aktör zamanlayıcılar ve anımsatıcıları
 Aktör, zamanlayıcılar veya anımsatıcılar kaydederek kendi üzerinde düzenli işler zamanlayabilir. Bu makalede, zamanlayıcılar ve anımsatıcıların nasıl kullanılacağı gösterilir ve aralarındaki farklar açıklanmaktadır.
@@ -129,7 +130,7 @@ Anımsatıcılar, bir aktör üzerinde belirtilen zamanlarda kalıcı geri çağ
 > [!NOTE]
 > Anımsatıcıların güvenilirliği, aktör durumu sağlayıcısı tarafından sunulan durum güvenilirliği garantisi ile bağlantılıdır. Bu, durum kalıcılığı *yok*olarak ayarlanmış aktörler için, bir yük devretmeden sonra, anımsatıcıların tetikleneceği anlamına gelir.
 
-Bir anımsatıcıyı kaydetmek için bir aktör, [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) Aşağıdaki örnekte gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
+Bir anımsatıcıyı kaydetmek için bir aktör, [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) Aşağıdaki örnekte gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
 
 ```csharp
 protected override async Task OnActivateAsync()

@@ -5,15 +5,16 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692691"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246835"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric ile durum yönetimi
 
-Service Fabric, durum depolama için birçok farklı seçeneği destekler. Durum yönetimi desenleri ve Service Fabric kavramsal bir genel bakış için bkz. [Service Fabric kavramlar: State](/azure/service-fabric/service-fabric-concepts-state). Bu tüm kavramlar, hizmetlerinizin Service Fabric kafesin içinde veya dışında çalışmasına bakılmaksızın geçerlidir. 
+Service Fabric, durum depolama için birçok farklı seçeneği destekler. Durum yönetimi desenleri ve Service Fabric kavramsal bir genel bakış için bkz. [Service Fabric kavramlar: State](../service-fabric/service-fabric-concepts-state.md). Bu tüm kavramlar, hizmetlerinizin Service Fabric kafesin içinde veya dışında çalışmasına bakılmaksızın geçerlidir. 
 
 Service Fabric ağ ile, kolayca yeni bir uygulamayı dağıtabilir ve Azure 'da barındırılan mevcut bir veri deposuna bağlayabilirsiniz. Herhangi bir uzak veritabanını kullanmanın yanı sıra, hizmetin yerel veya uzak depolama alanını desimi etmediğine bağlı olarak verilerin depolanması için çeşitli seçenekler vardır. 
 

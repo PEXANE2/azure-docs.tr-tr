@@ -5,16 +5,17 @@ author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463178"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246193"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric kümelerinde ı, kontrollü Chaos
 Bulut altyapıları gibi büyük ölçekli dağıtılmış sistemler, doğal olarak güvenilir değildir. Azure Service Fabric, geliştiricilerin güvenilir olmayan bir altyapının üzerine güvenilir dağıtılmış hizmetler yazmasını sağlar. Güvenilir olmayan bir altyapının üzerine sağlam dağıtılmış hizmetler yazmak için, geliştiricilerin hizmetin kararlılığını test edebilmeleri gerekir, çünkü temeldeki güvenilir olmayan altyapı hatalar nedeniyle karmaşık durum geçişleri ile devam edebilir.
 
-[Hata ekleme ve küme analizi hizmeti](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (hata analizi hizmeti olarak da bilinir), geliştiricilere hizmetlerini test etmek için hata alma olanağı sağlar. [Bir bölümü yeniden başlatma](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)gibi hedeflenmiş bu sanal hatalar, en yaygın durum geçişlerini çalıştırmaya yardımcı olabilir. Ancak hedeflenen benzetimli hatalar tanımına göre gezinilmiştir ve bu nedenle yalnızca donanımdan tahmin edilen, uzun ve karmaşık durum geçişleri sırasını gösteren hataları kaçırmayabilir. Taraflı olmayan bir test için Chaos kullanabilirsiniz.
+[Hata ekleme ve küme analizi hizmeti](./service-fabric-testability-overview.md) (hata analizi hizmeti olarak da bilinir), geliştiricilere hizmetlerini test etmek için hata alma olanağı sağlar. [Bir bölümü yeniden başlatma](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)gibi hedeflenmiş bu sanal hatalar, en yaygın durum geçişlerini çalıştırmaya yardımcı olabilir. Ancak hedeflenen benzetimli hatalar tanımına göre gezinilmiştir ve bu nedenle yalnızca donanımdan tahmin edilen, uzun ve karmaşık durum geçişleri sırasını gösteren hataları kaçırmayabilir. Taraflı olmayan bir test için Chaos kullanabilirsiniz.
 
 Chaos, küme boyunca uzun süre boyunca düzenli ve araya eklemeli hataların (hem düzgün kapanma hem de düzgün şekilde değil) benzetimini yapar. Hatalı bir hata, bir Service Fabric API çağrısı kümesinden oluşur; Örneğin, yeniden başlatma çoğaltma hatası, bu bir yakın ve bir çoğaltma üzerinde açık olan bir kapatma olduğundan, kapanma hatası. Çoğaltmayı kaldırın, birincil çoğaltmayı taşıyın ve ikincil çoğaltmayı taşıyın, Chaos tarafından uygulanan diğer düzgün çalışan hatalardır. Yeniden başlatma düğümü ve kod paketini yeniden Başlat gibi düzgün olmayan hatalar işlemden çıkılıyor. 
 
@@ -24,7 +25,7 @@ Chaos 'ı hız ve hata türüyle yapılandırdıktan sonra, kümede ve hizmetini
 > Şu anki biçimde, Chaos yalnızca güvenli hatalara sahiptir; bu, dış hataların bir çekirdek kaybına karşı yokluğunda olduğunu veya veri kaybını hiçbir şekilde gerçekleşmemesi anlamına gelir.
 >
 
-Chaos çalışırken, çalışma durumunu şu anda yakalayan farklı olaylar oluşturur. Örneğin, bir ExecutingFaultsEvent, Chaos 'in bu yinelemede yürütmeye karar verdiği tüm hataları içerir. Bir ValidationFailedEvent, kümenin doğrulanması sırasında bulunan doğrulama hatasının (sistem durumu veya kararlılık sorunları) ayrıntılarını içerir. Chaos çalıştırmaları raporunu almak için GetChaosReport API 'sini (C#, Powershell veya REST) çağırabilirsiniz. Bu olaylar, iki yapılandırma tarafından dikte edilen bir kesme ilkesine sahip [güvenilir bir sözlükte](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)kalıcı hale gelir: **MaxStoredChaosEventCount** (varsayılan değer 25000) ve **Storedadctioncleanupıntervalınseconds** (varsayılan değer 3600 ' dir). Her *Storedadctioncleanupıntervalınseconds* Chaos denetimleri ve hepsi ancak en son *MaxStoredChaosEventCount* olayları, güvenilir sözlükten temizlenir.
+Chaos çalışırken, çalışma durumunu şu anda yakalayan farklı olaylar oluşturur. Örneğin, bir ExecutingFaultsEvent, Chaos 'in bu yinelemede yürütmeye karar verdiği tüm hataları içerir. Bir ValidationFailedEvent, kümenin doğrulanması sırasında bulunan doğrulama hatasının (sistem durumu veya kararlılık sorunları) ayrıntılarını içerir. Chaos çalıştırmaları raporunu almak için GetChaosReport API 'sini (C#, Powershell veya REST) çağırabilirsiniz. Bu olaylar, iki yapılandırma tarafından dikte edilen bir kesme ilkesine sahip [güvenilir bir sözlükte](./service-fabric-reliable-services-reliable-collections.md)kalıcı hale gelir: **MaxStoredChaosEventCount** (varsayılan değer 25000) ve **Storedadctioncleanupıntervalınseconds** (varsayılan değer 3600 ' dir). Her *Storedadctioncleanupıntervalınseconds* Chaos denetimleri ve hepsi ancak en son *MaxStoredChaosEventCount* olayları, güvenilir sözlükten temizlenir.
 
 ## <a name="faults-induced-in-chaos"></a>Chaos 'de bulunan hatalar
 Chaos, tüm Service Fabric kümesi genelinde hata oluşturur ve ayda veya yılda görülen hataları birkaç saat içinde sıkıştırır. Yüksek hata oranı ile araya eklemeli hataların birleşimi, aksi takdirde Kaçırılabilecek köşe durumlarını bulur. Bu Chaos, hizmetin kod kalitesindeki önemli bir Gelişe yol açar.

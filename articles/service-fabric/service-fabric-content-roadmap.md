@@ -3,12 +3,12 @@ title: Azure Service Fabric hakkında daha fazla bilgi
 description: Azure Service Fabric 'nin temel kavramları ve ana alanlarıyla ilgili bilgi edinin. Service Fabric genişletilmiş bir genel bakış sağlar ve mikro hizmetlerin nasıl oluşturulacağını açıklar.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d578d6b3e0232d0733097d68bac22af566b2083
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791859"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246271"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric hakkında bilgi edinmek istiyor musunuz?
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur.  Service Fabric, ancak büyük bir yüzey alanına sahiptir ve öğrenilmesi çok önemlidir.  Bu makalede bir Service Fabric Özeti ve temel kavramlar, programlama modelleri, uygulama yaşam döngüsü, test, kümeler ve sistem durumu izleme açıklanmaktadır. Bir giriş ve mikro hizmetler oluşturmak için Service Fabric nasıl kullanılabileceği hakkında [genel bakış](service-fabric-overview.md) ve [mikro hizmetler nelerdir?](service-fabric-overview-microservices.md) makalesini okuyun. Bu makale kapsamlı bir içerik listesi içermez, ancak Service Fabric her alanı için genel bakış ve başlangıç makalelerine bağlantı sağlar. 
@@ -87,7 +87,7 @@ Service Fabric Web ve API uygulamaları oluşturmak için birinci sınıf progra
 ## <a name="application-lifecycle"></a>Uygulama yaşam döngüsü
 Diğer platformlarda olduğu gibi, Service Fabric bir uygulama genellikle şu aşamalardan geçer: tasarım, geliştirme, test, dağıtım, yükseltme, bakım ve kaldırma. Service Fabric bulut uygulamalarının tam uygulama yaşam döngüsü için, dağıtım, günlük yönetim ve son kullanımdan kaldırma ile bakım aracılığıyla geliştirme aşamasından ilk sınıf destek sağlar. Hizmet modeli birçok farklı rolün uygulama yaşam döngüsüne bağımsız olarak katılmasına olanak sağlar. [Service Fabric uygulama yaşam döngüsü](service-fabric-application-lifecycle.md) , API 'lerin yanı sıra Service Fabric uygulama yaşam döngüsünün aşamaları boyunca farklı roller tarafından nasıl kullanıldıklarından bir genel bakış sağlar. 
 
-Tüm uygulama yaşam döngüsü [PowerShell cmdlet](/powershell/module/ServiceFabric/)'leri, [CLI komutları](service-fabric-sfctl.md), [C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)'Leri, [Java API 'leri](/java/api/overview/azure/servicefabric)ve [REST API](/rest/api/servicefabric/)'leri kullanılarak yönetilebilir. Ayrıca, [Azure Pipelines](service-fabric-set-up-continuous-integration.md) veya [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)gibi araçları kullanarak sürekli tümleştirme/sürekli dağıtım işlem hatları da ayarlayabilirsiniz.
+Tüm uygulama yaşam döngüsü [PowerShell cmdlet](/powershell/module/ServiceFabric/)'leri, [CLI komutları](service-fabric-sfctl.md), [C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)'Leri, [Java API 'leri](/java/api/overview/azure/servicefabric)ve [REST API](/rest/api/servicefabric/)'leri kullanılarak yönetilebilir. Ayrıca, [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) veya [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)gibi araçları kullanarak sürekli tümleştirme/sürekli dağıtım işlem hatları da ayarlayabilirsiniz.
 
 ## <a name="test-applications-and-services"></a>Uygulama ve hizmetleri test etme
 Gerçekten bulut ölçekli hizmetler oluşturmak için, uygulamalarınızın ve hizmetlerinizin gerçek hayatta hatalara sahip olduğunu doğrulamak önemlidir. Hata analiz hizmeti, Service Fabric oluşturulan Hizmetleri test etmek için tasarlanmıştır. [Hata analiz hizmeti](service-fabric-testability-overview.md)ile, anlamlı hatalara sahip olabilir ve uygulamalarınızda test senaryolarını tamamen çalıştırabilirsiniz. Bu hatalar ve senaryolar, bir hizmetin yaşam süresi boyunca, denetimli, güvenli ve tutarlı bir şekilde deneyilecek çok sayıda durum ve geçiş yapar ve doğrular.
@@ -112,7 +112,7 @@ Service Fabric kümeler, Windows Server veya Linux çalıştıran sanal veya fiz
 ### <a name="clusters-on-azure"></a>Azure’da kümeler
 Azure 'da Service Fabric kümeleri çalıştırmak, diğer Azure özellikleriyle ve hizmetleriyle tümleştirme sağlar. Bu, kümenin işlemlerini ve yönetimini daha kolay ve güvenilir hale getirir. Küme bir Azure Resource Manager kaynağıdır, bu nedenle kümeleri Azure 'daki diğer kaynaklar gibi modelleyebilirsiniz. Kaynak Yöneticisi ayrıca, küme tarafından kullanılan tüm kaynakların tek bir birim olarak kolay yönetimi de sağlar. Azure üzerindeki kümeler Azure tanılama ve Azure Izleyici günlükleriyle tümleşiktir. Küme düğümü türleri, [sanal makine ölçek kümeleridir](/azure/virtual-machine-scale-sets/index), bu nedenle otomatik ölçeklendirme işlevselliği yerleşik olarak bulunur.
 
-Azure 'da [Azure Portal](service-fabric-cluster-creation-via-portal.md), bir [şablondan](service-fabric-cluster-creation-via-arm.md)veya [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md)'dan bir küme oluşturabilirsiniz.
+Azure 'da [Azure Portal](service-fabric-cluster-creation-via-portal.md), bir [şablondan](service-fabric-cluster-creation-via-arm.md)veya [Visual Studio](./service-fabric-cluster-creation-via-arm.md)'dan bir küme oluşturabilirsiniz.
 
 Linux üzerinde Service Fabric, Linux üzerinde yüksek oranda kullanılabilir, yüksek düzeyde ölçeklenebilir uygulamaları Windows 'da olduğu gibi oluşturmanıza, dağıtmanıza ve yönetmenize olanak sağlar. Service Fabric çerçeveleri (Reliable Services ve Reliable Actors) C# ' ın yanı sıra Linux 'ta Java 'da (.NET Core) kullanılabilir. Ayrıca, herhangi bir dil veya çerçeveye [Konuk yürütülebilir hizmetler](service-fabric-guest-executables-introduction.md) de oluşturabilirsiniz. Docker kapsayıcılarını düzenleme de desteklenir. Docker kapsayıcıları, Service Fabric çerçeveleri kullanan Konuk yürütülebilir dosyaları veya yerel Service Fabric Hizmetleri çalıştırabilir. Daha fazla bilgi için [Linux üzerinde Service Fabric](service-fabric-deploy-anywhere.md)hakkında bilgi edinin.
 
@@ -191,7 +191,7 @@ Bu üç alanı kapsayan birden fazla ürün mevcuttur ve her biri için farklı 
 * [Küme kaynaklarını yönetmeyi ve](service-fabric-cluster-resource-manager-introduction.md)düzenlemeyi öğrenin.
 * [Service Fabric örneklerine](https://aka.ms/servicefabricsamples)bakın.
 * [Service Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.
-* Makaleler ve duyurular için [ekip blogunu](https://blogs.msdn.microsoft.com/azureservicefabric/) okuyun.
+* Makaleler ve duyurular için [ekip blogunu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) okuyun.
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png

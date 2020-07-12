@@ -5,11 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: 095746b9cf3cada9cebf7d169078eff9eb64a52d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444276"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244081"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Yakınlık yerleştirme gruplarıyla gecikme süresini azaltma (Önizleme)
 
@@ -73,7 +74,7 @@ Bir yakınlık yerleşimi grubuyla dağıttığınız ilk kaynak belirli bir ver
 
 Aşağıdaki örnek, *merkezde ABD* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturmak için [az Group Create][az-group-create] komutunu kullanır. *Myakscluster* adlı bir aks kümesi daha sonra [az aks Create][az-aks-create] komutu kullanılarak oluşturulur. 
 
-Hızlandırılmış ağ, sanal makinelerin ağ performansını önemli ölçüde geliştirir. İdeal olarak, hızlandırılmış ağ ile birlikte yakınlık yerleştirme gruplarını kullanın. Varsayılan olarak, AKS, en fazla iki veya daha fazla vCPU içeren Azure sanal makinesini içeren [desteklenen sanal makine örneklerinde](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)hızlandırılmış ağ kullanır.
+Hızlandırılmış ağ, sanal makinelerin ağ performansını önemli ölçüde geliştirir. İdeal olarak, hızlandırılmış ağ ile birlikte yakınlık yerleştirme gruplarını kullanın. Varsayılan olarak, AKS, en fazla iki veya daha fazla vCPU içeren Azure sanal makinesini içeren [desteklenen sanal makine örneklerinde](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)hızlandırılmış ağ kullanır.
 
 Yakınlık yerleştirme grubuyla yeni bir AKS kümesi oluşturun:
 
@@ -163,4 +164,3 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-

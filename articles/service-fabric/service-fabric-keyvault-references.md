@@ -3,17 +3,18 @@ title: Azure Service Fabric-Service Fabric uygulama Anahtar Kasası başvurular�
 description: Bu makalede, uygulama gizli dizileri için Service Fabric KeyVaultReference desteğinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76545492"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246172"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
 
 Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenli bir şekilde nasıl depolayabileceği yaygın bir zorluk vardır. Örneğin, kapsayıcı deposu kimlik bilgilerini anahtar kasasında depolamak ve uygulama bildiriminde buna başvurmak isteyebilirsiniz. Service Fabric KeyVaultReference, Service Fabric yönetilen kimliği kullanır ve keykasagizli dizileri başvurusunu kolaylaştırır. Bu makalenin geri kalanında, KeyVaultReference Service Fabric kullanımı ve bazı tipik kullanımlar yer almaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Uygulama için yönetilen kimlik (MıT)
     
@@ -157,4 +158,4 @@ KeyVaultReference, kapsayıcı havuzunun kimlik bilgileri için desteklenen bir 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Keykasası belgeleri](https://docs.microsoft.com/azure/key-vault/)
+* [Azure Keykasası belgeleri](../key-vault/index.yml)

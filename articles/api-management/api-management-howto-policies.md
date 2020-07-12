@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70072316"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243452"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management ilkeleri
 
@@ -58,7 +58,7 @@ Yapılandırma,, ve olarak `inbound` bölünür `backend` `outbound` `on-error` 
 </policies> 
 ```
 
-Bir isteğin işlenmesi sırasında bir hata oluşursa,, `inbound` `backend` , veya bölümlerindeki kalan adımlar `outbound` atlanır ve yürütme bölümündeki deyimlere atlar `on-error` . Bölümüne ilke deyimleri yerleştirerek `on-error` , özelliğini kullanarak hatayı gözden geçirebilir `context.LastError` , ilkeyi kullanarak hata yanıtını inceleyebilir ve özelleştirebilir `set-body` ve bir hata oluşursa ne olacağını yapılandırabilirsiniz. Yerleşik adımlar ve ilke deyimlerinin işlenmesi sırasında ortaya çıkabilecek hatalar için hata kodları vardır. Daha fazla bilgi için bkz. [API Management Ilkelerinde hata işleme](/azure/api-management/api-management-error-handling-policies).
+Bir isteğin işlenmesi sırasında bir hata oluşursa,, `inbound` `backend` , veya bölümlerindeki kalan adımlar `outbound` atlanır ve yürütme bölümündeki deyimlere atlar `on-error` . Bölümüne ilke deyimleri yerleştirerek `on-error` , özelliğini kullanarak hatayı gözden geçirebilir `context.LastError` , ilkeyi kullanarak hata yanıtını inceleyebilir ve özelleştirebilir `set-body` ve bir hata oluşursa ne olacağını yapılandırabilirsiniz. Yerleşik adımlar ve ilke deyimlerinin işlenmesi sırasında ortaya çıkabilecek hatalar için hata kodları vardır. Daha fazla bilgi için bkz. [API Management Ilkelerinde hata işleme](./api-management-error-handling-policies.md).
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>İlkeleri yapılandırma
 
@@ -66,7 +66,7 @@ Bir isteğin işlenmesi sırasında bir hata oluşursa,, `inbound` `backend` , v
 
 ## <a name="policy-reference"></a>İlke başvurusu
 
-İlke deyimlerinin ve ayarlarının tam listesi için [ilke başvurusuna](api-management-policy-reference.md) bakın.
+İlke deyimlerinin ve ayarlarının tam listesi için [ilke başvurusuna](./api-management-policies.md) bakın.
 
 ## <a name="policy-samples"></a>İlke örnekleri
 
@@ -118,17 +118,17 @@ Gelen istekleri sınırlandırmak ve yalnızca 1.2.3.4 IP adresinden yalnızca b
 İlkelerle çalışma hakkında daha fazla bilgi için bkz.
 
 + [API dönüştürme](transform-api.md)
-+ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
++ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
 + [İlke örnekleri](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

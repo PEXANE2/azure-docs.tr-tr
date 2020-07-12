@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 9aa0b6795508cb94200c486df092b867c1086316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2b2c444bb492fa6c6b945a82090e91963fb1a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906003"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245869"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
 Kafes ağ kaynaklarını alın ve silin.
@@ -18,7 +19,7 @@ Kafes ağ kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Ağ kaynağını siler. |
+| silme | Ağ kaynağını siler. |
 | list | Tüm ağ kaynaklarını listeler. |
 | göster | Verilen ada sahip ağ kaynağını alır. |
 
@@ -82,4 +83,4 @@ Verilen ada sahip ağ kaynağıyla ilgili bilgileri alır. Bilgiler, ağın aç�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

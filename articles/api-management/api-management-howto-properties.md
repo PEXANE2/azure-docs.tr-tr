@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649206"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243486"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanma
 
@@ -33,13 +34,13 @@ Her bir API Management hizmet örneği, hizmet örneği için genel olan adland�
 
 ![Adlandırılmış değerler](./media/api-management-howto-properties/named-values.png)
 
-Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-management/api-management-policy-expressions)içerebilir. Örneğin, değeri `Expression` geçerli tarih ve saati içeren bir dize döndüren bir ilke deyimidir. Adlandırılmış değer `Credential` gizli olarak işaretlenir, bu nedenle değeri varsayılan olarak görüntülenmez.
+Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](./api-management-policy-expressions.md)içerebilir. Örneğin, değeri `Expression` geçerli tarih ve saati içeren bir dize döndüren bir ilke deyimidir. Adlandırılmış değer `Credential` gizli olarak işaretlenir, bu nedenle değeri varsayılan olarak görüntülenmez.
 
-| Name       | Değer                      | Gizli dizi | Etiketler          |
+| Ad       | Değer                      | Gizli dizi | Etiketler          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Değer      | 42                         | False  | önemli sayılar |
-| Kimlik Bilgisi | ••••••••••••••••••••••     | True   | güvenlik      |
-| Expression | @ (DateTime. Now. ToString ()) | False  |               |
+| Değer      | 42                         | Yanlış  | önemli sayılar |
+| Kimlik Bilgisi | ••••••••••••••••••••••     | Doğru   | güvenlik      |
+| İfade | @ (DateTime. Now. ToString ()) | Yanlış  |               |
 
 > [!NOTE]
 > Bir API Management hizmeti içinde depolanan adlandırılmış değerler yerine, bu [örnekte](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)gösterildiği gibi [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) hizmetinde depolanan değerleri kullanabilirsiniz.
@@ -54,7 +55,7 @@ Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-manage
 
     Ad ve değer gerekli değerlerdir. Değer bir gizli dizi ise, _Bu gizli bir_ onay kutusu olup olmadığını kontrol edin. Adlandırılmış değerlerinizi organize etmenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket girin ve Kaydet ' e tıklayın.
 
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 
 Adlandırılmış değer oluşturulduktan sonra, üzerine tıklayarak düzenleyebilirsiniz. Adlandırılmış değer adını değiştirirseniz, bu adlandırılmış değere başvuruda bulunan tüm ilkeler, yeni adı kullanacak şekilde otomatik olarak güncelleştirilir.
 
@@ -109,8 +110,8 @@ Adlandırılmış değerler ilke ifadeleri içerebildiği sürece, diğer adland
 
 -   İlkelerle çalışma hakkında daha fazla bilgi edinin
     -   [API Management ilkeler](api-management-howto-policies.md)
-    -   [İlke başvurusu](/azure/api-management/api-management-policies)
-    -   [İlke ifadeleri](/azure/api-management/api-management-policy-expressions)
+    -   [İlke başvurusu](./api-management-policies.md)
+    -   [İlke ifadeleri](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
