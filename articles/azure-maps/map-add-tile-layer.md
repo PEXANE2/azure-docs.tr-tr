@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988609"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242313"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Haritaya kutucuk katmanı ekleme
 
@@ -36,6 +37,7 @@ Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına yöneli
 * `{quadkey}`-Bing Haritalar kutucuk sistem adlandırma kuralına bağlı olarak, quadkey tanımlayıcısını Döşe.
 * `{bbox-epsg-3857}`- `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
 * `{subdomain}`-Belirtilmişse, alt etki alanı değerleri için bir yer tutucu `subdomain` eklenir.
+* `{azMapsDomain}`-Etki alanını ve kutucuk isteklerinin kimlik doğrulamasını harita tarafından kullanılan değerlerle aynı olacak şekilde hizalamak için bir yer tutucudur.
 
 ## <a name="add-a-tile-layer"></a>Kutucuk katmanı ekleme
 

@@ -5,18 +5,19 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464631"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241939"
 ---
 # <a name="report-and-check-service-health"></a>Hizmet durumunu raporlama ve denetleme
 Hizmetleriniz sorunlarla karşılaştığında, olayları ve kesintilere yanıt verme ve bunları çözme imkanını sorunları hızlı bir şekilde algılamanıza bağlıdır. Hizmet kodunuzda Azure Service Fabric Health Manager sorunlarını ve başarısızlıklarını raporlayabilir, sistem durumunu denetlemek için Service Fabric sağladığı standart sistem durumu izleme araçlarını kullanabilirsiniz.
 
 Hizmetten sistem durumunu bildirebilmeniz için üç yol vardır:
 
-* [Bölüm](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) veya [Codepackageactivationcontext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) nesneleri kullanın.  
+* [Bölüm](/dotnet/api/system.fabric.istatefulservicepartition) veya [Codepackageactivationcontext](/dotnet/api/system.fabric.codepackageactivationcontext) nesneleri kullanın.  
   `Partition`Ve `CodePackageActivationContext` nesnelerini, geçerli bağlamın parçası olan öğelerin sistem durumunu raporlamak için kullanabilirsiniz. Örneğin, bir çoğaltmanın parçası olarak çalışan kod yalnızca o çoğaltma üzerinde sistem durumunu, ait olduğu bölümü ve bir parçası olan uygulamayı rapor edebilir.
 * `FabricClient` adresini kullanın.   
   `FabricClient`Küme [güvenli](service-fabric-cluster-security.md) değilse veya hizmet yönetici ayrıcalıklarıyla çalışıyorsa, hizmet kodundan sistem durumunu raporlamak için ' i kullanabilirsiniz. En gerçek dünyada senaryolar güvenli olmayan kümeler kullanmaz veya yönetici ayrıcalıkları sağlamaz. İle `FabricClient` , kümenin bir parçası olan herhangi bir varlıkta sistem durumunu rapor edebilirsiniz. Bununla birlikte, hizmet kodu yalnızca kendi sistem durumuyla ilgili raporları göndermelidir.
@@ -24,7 +25,7 @@ Hizmetten sistem durumunu bildirebilmeniz için üç yol vardır:
 
 Bu makalede, hizmet kodundan sistem durumunu raporlayan bir örnek adım adım açıklanmaktadır. Örnek ayrıca, Service Fabric tarafından belirtilen araçların sistem durumunu denetlemek için nasıl kullanılabileceğini gösterir. Bu makale, Service Fabric sistem durumu izleme yeteneklerine hızlı bir giriş yapmak için tasarlanmıştır. Daha ayrıntılı bilgi için, bu makalenin sonundaki bağlantıyla başlayan sistem durumu hakkında ayrıntılı makalelerin serisini okuyabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Aşağıdakilerin yüklü olması gerekir:
 
 * Visual Studio 2015 veya Visual Studio 2019
@@ -140,6 +141,5 @@ activationContext.ReportApplicationHealth(healthInformation);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Service Fabric sistem durumu hakkında ayrıntılı bilgi](service-fabric-health-introduction.md)
-* [Raporlama hizmeti durumu için REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [Uygulama durumunu raporlamak için REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [Raporlama hizmeti durumu için REST API](/rest/api/servicefabric/report-the-health-of-a-service)
+* [Uygulama durumunu raporlamak için REST API](/rest/api/servicefabric/report-the-health-of-an-application)

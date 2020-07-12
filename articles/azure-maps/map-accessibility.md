@@ -8,11 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648583"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242382"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
 
@@ -45,6 +46,7 @@ Haritanın Yakınlaştırılıp Yakınlaştırılıp döndürülmemiş, döndür
 - Eşleme odaklı olduğunda, bir düzey uzaklaştırmak için eksi işaretini, kısa çizgi ( `-` ) veya alt çizgi ( `_` ) kullanın.
 - Yakınlaştırma denetimini fare, dokunmatik veya klavye ile kullanma/ENTER tuşları.
 - Düğmeye basın ve basılı tutun ve Haritayı `Shift` yakınlaştırmak için bir alan çizmek üzere, haritada sol fare düğmesine basın ve sürükleyin.
+- Çok dokunmalı bir oyun kullanarak, yakınlaştırmak veya yakınlaştırmak için iki parmağınızı yukarı doğru sürükleyin.
 
 **Haritayı kaydır**
 

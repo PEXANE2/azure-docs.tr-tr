@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ac4df0b63d48e590bfdfc49f1c8b5607b4651cd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c18a09b494de7ecb639fbc5639b7162bdb02d2a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310198"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241990"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure haritalar Hava durumu kapsamı
 
@@ -87,7 +88,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Turks ve Caicos Adaları                 | ✓ |   |  ✓| 
 | ABD Küçük Harici Adaları                    | ✓ |   |  ✓| 
 | ABD Virgin Adaları                      | ✓ |   |  ✓| 
-| Birleşik Devletler                            | ✓ | ✓ |  ✓| 
+| Amerika Birleşik Devletleri                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
 
@@ -110,7 +111,7 @@ Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu
 | Çad                        | ✓               |                              |        ✓| 
 | Komorlar                     | ✓               |                              |        ✓| 
 | Kongo (KDC)                 | ✓               |                              |        ✓|
-| Fildişi Sahili               | ✓               |                              |        ✓| 
+| Fildişi Sahili (Côte d'Ivoire)               | ✓               |                              |        ✓| 
 | Cibuti                    | ✓               |                              |        ✓| 
 | Mısır                       | ✓               |                              |        ✓| 
 | Ekvator Ginesi           | ✓               |                              |        ✓| 
