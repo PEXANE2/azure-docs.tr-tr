@@ -7,11 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267639"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260168"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -75,6 +76,8 @@ Büyük RTO, Microsoft 'un bu bölgedeki tüm etkilenen müşteriler adına yük
 
 El ile yük devretme seçeneği, birincil bölgenin kapalı kalma süresi yaşamadan bağımsız olarak her zaman kullanılabilir. Bu nedenle, bu seçenek planlı yük devretme işlemleri gerçekleştirmek için kullanılabilir. Planlı Yük devretmelerin bir örnek kullanımı, düzenli yük devretme detaylarını gerçekleştirmenin bir örneğidir. Bir sözcük, planlı bir yük devretme işleminin, bu seçenek için RTO tarafından tanımlanan süre için Hub için kapalı kalma süresi ile sonuçlanmasına ve ayrıca yukarıdaki RPO tablosu tarafından tanımlanan bir veri kaybına neden olmasına neden olur. Gerçek bir olağanüstü durum oluştuğunda uçtan uca çözümlerinizi çalışır duruma getirme olanınızdan güvenle yararlanmak üzere planlı yük devretme seçeneğini düzenli aralıklarla çalıştırmak için bir test IoT Hub örneği ayarlamayı düşünebilirsiniz.
 
+18 Mayıs 2017 ' den sonra oluşturulan IoT Hub 'ları için ek ücret ödemeden el ile yük devretme kullanılabilir
+
 Adım adım yönergeler için bkz [. Öğretici: IoT Hub 'ı için el ile yük devretme gerçekleştirme](tutorial-manual-failover.md)
 
 ### <a name="running-test-drills"></a>Çalışan test ayrıntılarına ls
@@ -129,8 +132,8 @@ Bu makalede sunulan HA/DR seçeneklerinin Özeti, çözümünüz için uygun ola
 
 | HA/DR seçeneği | RTO | RPO | El ile müdahale gerektiriyor mu? | Uygulama karmaşıklığı | Ek maliyet etkisi|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Hiçbiri|Hiçbiri|
-| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Hiçbiri|
+| Microsoft tarafından başlatılan yük devretme |2-26 saat|Yukarıdaki RPO tablosuna başvurun|Hayır|Yok|Yok|
+| El ile yük devretme |10 dk-2 saat|Yukarıdaki RPO tablosuna başvurun|Evet|Çok düşük. Bu işlemi yalnızca portaldan tetiklemeniz gerekir.|Yok|
 | Çapraz bölge HA |< 1 dk|Özel HA çözümünüzün çoğaltma sıklığına bağlıdır|Hayır|Yüksek|> 1x, 1 IoT Hub 'ın maliyeti|
 
 ## <a name="next-steps"></a>Sonraki adımlar

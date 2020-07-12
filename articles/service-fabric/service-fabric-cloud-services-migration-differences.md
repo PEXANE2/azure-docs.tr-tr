@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c3d1b4d603e2dde2de8d4a95fb953744d71409
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463373"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259003"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Uygulamaları geçirmeden önce Cloud Services ve Service Fabric arasındaki farklar hakkında bilgi edinin.
 Microsoft Azure Service Fabric, yüksek düzeyde ölçeklenebilir, yüksek oranda güvenilir dağıtılmış uygulamalar için yeni nesil bulut uygulama platformudur. Dağıtılmış bulut uygulamalarının paketlenmesi, dağıtılması, yükseltilmesi ve yönetilmesi için birçok yeni özellik sunar. 
@@ -80,7 +81,7 @@ Aynı iletişim modeli Service Fabric kullanılabilir. Bu, mevcut bir Cloud Serv
 ![Doğrudan iletişim Service Fabric][8]
 
 ## <a name="parity"></a>Parity
-[Cloud Services, denetim ve kullanım kolaylığı açısından Service Fabric benzerdir, ancak artık eski bir hizmettir ve yeni geliştirme için Service Fabric önerilir](https://docs.microsoft.com/azure/app-service/overview-compare). Aşağıda bir API karşılaştırması verilmiştir:
+[Cloud Services, denetim ve kullanım kolaylığı açısından Service Fabric benzerdir, ancak artık eski bir hizmettir ve yeni geliştirme için Service Fabric önerilir](/azure/app-service/overview-compare). Aşağıda bir API karşılaştırması verilmiştir:
 
 
 | **Bulut hizmeti API 'SI** | **Service Fabric API 'SI** | **Notlar** |

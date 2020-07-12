@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224698"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259991"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
-Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
+Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Bir Azure dosya paylaşımından bağlama yaparken hata 5
@@ -65,7 +65,7 @@ Paylaşma düzeyi izinlerini güncelleştirmek için bkz. [bir kimliğe erişim 
 
 Bir Azure dosyaları veri merkezi ile bağlantı noktası 445 giden iletişim engellendiğinde sistem hatası 53 veya sistem hatası 67 oluşur. 445 numaralı bağlantı noktasından erişime izin veren veya erişimi engelleyen ISP'lerin özetini görmek için [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)'e gidin.
 
-Güvenlik duvarınızın veya ISS 'nizin bağlantı noktası 445 ' i engelleyip engellemediğini denetlemek için [Azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) aracını veya `Test-NetConnection` cmdlet 'ini kullanın. 
+Güvenlik duvarınızın veya ISS 'nizin bağlantı noktası 445 ' i engelleyip engellemediğini denetlemek için [Azfilediagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) aracını veya `Test-NetConnection` cmdlet 'ini kullanın. 
 
 `Test-NetConnection`Cmdlet 'ini kullanmak için Azure PowerShell modülünün yüklenmesi gerekir. daha fazla bilgi için bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps) . `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
 
@@ -334,7 +334,7 @@ Hata ' sistem hatası 1359 oluştu. Bir iç hata ', bir sayısal karakterle baş
 ### <a name="self-diagnostics-steps"></a>Kendi kendine Tanılama adımları
 İlk olarak, [Azure dosyaları ad kimlik doğrulamasını etkinleştirmek](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)için tüm dört adımı izlediğinizden emin olun.
 
-İkinci olarak, [depolama hesabı anahtarıyla Azure dosya paylaşımının bağlanmasını](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)deneyin. Bağlama işlemi başarısız olursa, istemciyi çalıştıran istemciyi doğrulamanıza yardımcı olmak üzere [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) Indirin, Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını tespit edin, kendi kendine düzeltmeyle ilgili yönergeler verir ve tanılama izlemelerini toplayın.
+İkinci olarak, [depolama hesabı anahtarıyla Azure dosya paylaşımının bağlanmasını](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)deneyin. Bağlama işlemi başarısız olursa, istemciyi çalıştıran istemciyi doğrulamanıza yardımcı olmak üzere [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) Indirin, Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını tespit edin, kendi kendine düzeltmeyle ilgili yönergeler verir ve tanılama izlemelerini toplayın.
 
 Üçüncü olarak, oturum açmış AD kullanıcısı ile AD yapılandırmanızda basit denetimler kümesi yürütmek için Debug-AzStorageAccountAuth cmdlet 'ini çalıştırabilirsiniz. Bu cmdlet, [AzFilesHybrid v0.1.2+ sürümünde](https://github.com/Azure-Samples/azure-files-samples/releases) desteklenir. Bu cmdlet'i hedef depolama hesabında sahip izinlerine sahip bir AD kullanıcısıyla çalıştırmanız gerekir.  
 ```PowerShell

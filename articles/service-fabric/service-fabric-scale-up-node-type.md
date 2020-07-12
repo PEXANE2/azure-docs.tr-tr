@@ -3,12 +3,12 @@ title: Azure Service Fabric düğüm türünü büyütme
 description: Bir sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmeyi öğrenin.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42e33fa87b6cf7966368481ef6d3920511919e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610702"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260453"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric kümesi birincil düğüm türünün ölçeğini artırma
 Bu makalede, sanal makine kaynaklarını artırarak Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir. Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM 'lerinin işletim sistemini yükseltebilirsiniz.  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -49,7 +49,7 @@ Ardından, Azure hesabınızda oturum açın.
 Login-AzAccount -SubscriptionId "<your subscription ID>"
 ```
 
-Bu öğreticide, kendinden imzalı bir sertifika oluşturma senaryosunda adım adım gösterilmektedir. Azure Key Vault var olan bir sertifikayı kullanmak için aşağıdaki adımı atlayın ve bunun yerine [kümeyi dağıtmak için mevcut bir sertifikayı kullanma](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster)bölümündeki adımları yansıtın.
+Bu öğreticide, kendinden imzalı bir sertifika oluşturma senaryosunda adım adım gösterilmektedir. Azure Key Vault var olan bir sertifikayı kullanmak için aşağıdaki adımı atlayın ve bunun yerine [kümeyi dağıtmak için mevcut bir sertifikayı kullanma](./upgrade-managed-disks.md#use-an-existing-certificate-to-deploy-the-cluster)bölümündeki adımları yansıtın.
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Kendinden imzalı bir sertifika oluşturma ve kümeyi dağıtma
 
@@ -251,4 +251,3 @@ Kümenin birincil düğüm türü şimdi yükseltildi. Dağıtılan tüm uygulam
 * [Bir Azure kümesini içinde veya dışarı ölçeklendirin](service-fabric-tutorial-scale-cluster.md).
 * Akıcı Azure işlem SDK 'sını kullanarak [bir Azure kümesini programlı bir şekilde ölçeklendirin](service-fabric-cluster-programmatic-scaling.md) .
 * [Tek başına kümeyi içinde veya dışarı ölçeklendirin](service-fabric-cluster-windows-server-add-remove-nodes.md).
-

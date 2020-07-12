@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430636"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258975"
 ---
 # <a name="initializer-codepackages"></a>Başlatıcı Kod Paketleri
 
@@ -50,7 +50,7 @@ Başlatıcı kod paketleri 'ni kullanarak tüm bir örneğe bakalım.
 > [!IMPORTANT]
 > Aşağıdaki örnek, [Service Fabric ve Docker kullanarak Windows kapsayıcı uygulamaları][containers-getting-started-link]oluşturma konusunda benzerlik olduğunu varsayar.
 >
-> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Aşağıdaki ServiceManifest.xml daha önce açıklanan ServiceManifest parçacığı üzerinde oluşturulur. *InitCodePackage0*, *InitCodePackage1* ve *workloadcodepackage* , kapsayıcıları temsil eden codepackages. Etkinleştirmeden sonra, *InitCodePackage0* önce yürütülür. Bir dosyaya ileti kaydeder ve çıkılıyor. Sonra, *InitCodePackage1* yürütülür ve ayrıca bir dosyaya ileti kaydeder ve çıkar. Son olarak, *Workloadcodepackage* yürütmeye başlar. Ayrıca bir iletiyi bir dosyaya kaydeder, **stdout** 'a dosyanın içeriğini çıkarır ve sonsuza kadar ping atar.
 
@@ -151,4 +151,3 @@ Hi from WorkloadCodePackage.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

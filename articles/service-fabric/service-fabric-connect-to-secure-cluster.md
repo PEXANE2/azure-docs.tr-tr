@@ -3,11 +3,12 @@ title: Azure Service Fabric kümesine güvenli bir şekilde bağlanma
 description: Service Fabric kümesine istemci erişiminin kimliğini doğrulamak ve istemcilerle küme arasındaki iletişimin güvenliğini sağlamak açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701228"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259254"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Güvenli bir kümeye bağlanma
 
@@ -29,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 . Pfx dosyanız parola korumalı değilse, son parametre için-passin pass: kullanın.
 
-İstemci sertifikasını bir pek dosyası olarak belirtmek için, bağımsız değişkeninde dosya yolunu belirtin `--pem` . Örneğin:
+İstemci sertifikasını bir pek dosyası olarak belirtmek için, bağımsız değişkeninde dosya yolunu belirtin `--pem` . Örnek:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -43,7 +44,7 @@ Bir sertifika belirtmek için, anahtar çifti `--cert` `--key` her ilgili dosyan
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için, seçeneğini belirtin `--no-verify` . Örneğin:
+Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için, seçeneğini belirtin `--no-verify` . Örnek:
 
 > [!WARNING]
 > `no-verify`Üretim Service Fabric kümelerine bağlanırken seçeneğini kullanmayın.
@@ -52,7 +53,7 @@ Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanıl
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Ayrıca, güvenilir CA sertifikaları veya ayrı sertifikalar için yollar belirtebilirsiniz. Bu yolları belirtmek için `--ca` bağımsız değişkenini kullanın. Örneğin:
+Ayrıca, güvenilir CA sertifikaları veya ayrı sertifikalar için yollar belirtebilirsiniz. Bu yolları belirtmek için `--ca` bağımsız değişkenini kullanın. Örnek:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -144,7 +145,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>FabricClient API 'Lerini kullanarak bir kümeye bağlanma
-Service Fabric SDK, küme yönetimi için [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) sınıfını sağlar. FabricClient API 'Lerini kullanmak için Microsoft. ServiceFabric NuGet paketini alın.
+Service Fabric SDK, küme yönetimi için [FabricClient](/dotnet/api/system.fabric.fabricclient) sınıfını sağlar. FabricClient API 'Lerini kullanmak için Microsoft. ServiceFabric NuGet paketini alın.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Güvenli olmayan bir kümeye bağlanma
 
@@ -162,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>İstemci sertifikası kullanarak güvenli bir kümeye bağlanma
 
-Kümedeki düğümlerin, [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)'da ayarlanmış olan [remotecommonnames özelliğinde](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) bulunan ortak adı veya DNS adı San 'da geçerli sertifikalara sahip olması gerekir. Bu işlemin ardından, istemci ve küme düğümleri arasında karşılıklı kimlik doğrulaması etkinleştirilir.
+Kümedeki düğümlerin, [FabricClient](/dotnet/api/system.fabric.fabricclient)'da ayarlanmış olan [remotecommonnames özelliğinde](/dotnet/api/system.fabric.x509credentials) bulunan ortak adı veya DNS adı San 'da geçerli sertifikalara sahip olması gerekir. Bu işlemin ardından, istemci ve küme düğümleri arasında karşılıklı kimlik doğrulaması etkinleştirilir.
 
 ```csharp
 using System.Fabric;
@@ -230,7 +231,7 @@ catch (Exception e)
 
 Aşağıdaki örnek Microsoft. IdentityModel. clients. ActiveDirectory, sürüm: 2.19.208020213 kullanır.
 
-AAD belirteci alma hakkında daha fazla bilgi için bkz. [Microsoft. IdentityModel. clients. ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
+AAD belirteci alma hakkında daha fazla bilgi için bkz. [Microsoft. IdentityModel. clients. ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025042"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259651"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Ayrılmış konaklara dağıtma
 
@@ -17,7 +18,7 @@ ms.locfileid: "82025042"
 
 Adanmış SKU, fiziksel sunucu perspektifinden iş yükü yalıtımı gerektiren kapsayıcı iş yükleri için uygundur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Adanmış SKU 'yu kullanmak için abonelik varsayılan sınırı 0 ' dır. Bu SKU 'yu üretim kapsayıcısı dağıtımlarınız için kullanmak isterseniz, sınırı artırmak için bir [Azure destek isteği][azure-support] oluşturun.
 
@@ -27,7 +28,7 @@ Adanmış SKU, fiziksel sunucu perspektifinden iş yükü yalıtımı gerektiren
 > Adanmış SKU kullanımı, yalnızca şu anda kullanıma sunulan en son API sürümünde (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin.
 >
 
-API sürüm 2019-12-01 ' den başlayarak, bir `sku` acı dağıtımı için gerekli olan dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde bir özellik vardır. Şu anda, bu özelliği ACI için bir Azure Resource Manager dağıtım şablonunun parçası olarak kullanabilirsiniz. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+API sürüm 2019-12-01 ' den başlayarak, bir `sku` acı dağıtımı için gerekli olan dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde bir özellik vardır. Şu anda, bu özelliği ACI için bir Azure Resource Manager dağıtım şablonunun parçası olarak kullanabilirsiniz. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](./container-instances-multi-container-group.md). 
 
 `sku`Özelliği aşağıdaki değerlerden birine sahip olabilir:
 * `Standard`-Hiper yönetici düzeyinde güvenliği güvence altına almaya devam eden standart acı dağıtımı seçeneği 
@@ -136,17 +137,17 @@ Masaüstünüzde dağıtım şablonu dosyasını oluşturup düzenlediyseniz, do
 az group create --name myResourceGroup --location eastus
 ```
 
-[Az Group Deployment Create][az-group-deployment-create] komutuyla şablonu dağıtın.
+[Az Deployment Group Create][az-deployment-group-create] komutuyla şablonu dağıtın.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 Birkaç saniye içinde Azure’dan bir ilk yanıt almanız gerekir. Ayrılmış bir konakta başarılı bir dağıtım gerçekleşir.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

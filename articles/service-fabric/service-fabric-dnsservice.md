@@ -3,11 +3,12 @@ title: Azure Service Fabric DNS hizmeti
 description: Kümenin içinden mikro hizmetleri keşfetmek için Service Fabric DNS hizmetini kullanın.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458037"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258901"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric'te DNS Hizmeti
 DNS hizmeti, kümenizde etkinleştirebileceğiniz ve DNS protokolünü kullanarak diğer hizmetleri keşfedebilmeniz için kullanabileceğiniz isteğe bağlı bir sistem hizmetidir. 
@@ -41,7 +42,7 @@ Portalı kullanarak bir küme oluşturduğunuzda, DNS hizmeti, **küme yapıland
 Kümenizi oluşturmak için portalını kullanmıyorsanız veya var olan bir kümeyi güncelleştiriyorsanız, bir şablonda DNS hizmetini etkinleştirmeniz gerekir:
 
 - Yeni bir küme dağıtmak için, [örnek şablonları](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) kullanabilir ya da kendi kaynak yöneticisi şablonunuzu oluşturabilirsiniz. 
-- Var olan bir kümeyi güncelleştirmek için, portaldaki kümenin kaynak grubuna giderek kümenin geçerli durumunu ve gruptaki diğer kaynakları yansıtan bir şablonla çalışmak için **Otomasyon betiği** ' ne tıklayabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubundan şablonu dışarı aktarma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
+- Var olan bir kümeyi güncelleştirmek için, portaldaki kümenin kaynak grubuna giderek kümenin geçerli durumunu ve gruptaki diğer kaynakları yansıtan bir şablonla çalışmak için **Otomasyon betiği** ' ne tıklayabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubundan şablonu dışarı aktarma](../azure-resource-manager/templates/export-template-portal.md).
 
 Şablonunuz olduktan sonra, DNS hizmetini aşağıdaki adımlarla etkinleştirebilirsiniz:
 
@@ -102,7 +103,7 @@ Kümenizi oluşturmak için portalını kullanmıyorsanız veya var olan bir kü
 3. Küme şablonunu yaptığınız değişikliklerle güncelleştirdikten sonra, bunları uygulayın ve yükseltmenin tamamlanmasını sağlayın. Yükseltme tamamlandığında, DNS sistem hizmeti kümenizde çalışmaya başlar. Hizmet adı `fabric:/System/DnsService` , ve Service Fabric Explorer 'ın **sistem** hizmeti bölümünde bulunabilir. 
 
 > [!NOTE]
-> DNS devre dışı iken etkin olarak yükseltilirken Service Fabric Explorer yeni durumu yansıtmayabilir. Çözümlemek için Azure Resource Manager şablonunuzda UpgradePolicy öğesini değiştirerek düğümleri yeniden başlatın. Daha fazla bilgi için [Service Fabric şablonu başvurusuna](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) bakın.
+> DNS devre dışı iken etkin olarak yükseltilirken Service Fabric Explorer yeni durumu yansıtmayabilir. Çözümlemek için Azure Resource Manager şablonunuzda UpgradePolicy öğesini değiştirerek düğümleri yeniden başlatın. Daha fazla bilgi için [Service Fabric şablonu başvurusuna](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) bakın.
 
 > [!NOTE]
 > Yerel bir makinede geliştirme yaparken DNS hizmetini etkinleştirmek bazı DNS ayarlarını geçersiz kılar. İnternet 'e bağlanma sorunlarıyla karşılaşırsanız DNS ayarlarınızı kontrol edin.
@@ -128,7 +129,7 @@ Uygulama dağıtıldıktan sonra, Service Fabric Gezgini 'ndeki hizmet örneği,
 
 ![hizmet uç noktaları](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-Aşağıdaki örnek, durum bilgisi olan bir hizmetin DNS adını olarak ayarlar `statefulsvc.app` . Hizmet, adlandırılmış bölümlendirme şeması kullanır. Bölüm adlarının küçük olduğunu unutmayın. Bu, DNS sorgularına hedeflenecek bölümler için gereksinimdir; daha fazla bilgi için bkz. [durum bilgisi olan hizmet bölümünde DNS sorguları yapma](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
+Aşağıdaki örnek, durum bilgisi olan bir hizmetin DNS adını olarak ayarlar `statefulsvc.app` . Hizmet, adlandırılmış bölümlendirme şeması kullanır. Bölüm adlarının küçük olduğunu unutmayın. Bu, DNS sorgularına hedeflenecek bölümler için gereksinimdir; daha fazla bilgi için bkz. [durum bilgisi olan hizmet bölümünde DNS sorguları yapma](#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -169,7 +170,7 @@ Bir bölümü hedefleyen DNS sorguları aşağıdaki gibi biçimlendirilir:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Burada:
+Konum:
 
 - *İlk-bölümlenmiş-Service-DnsName etiketi* , hizmet DNS adınızın ilk kısmıdır.
 - *PartitionPrefix* , küme bildiriminin DNSservice bölümünde veya kümenin Kaynak Yöneticisi şablonuyla ayarlanabilir bir değerdir. "--" Varsayılan değeri. Daha fazla bilgi için bkz. [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
@@ -252,4 +253,3 @@ public class ValuesController : Controller
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Connect ve hizmetlerle iletişim kurma](service-fabric-connect-and-communicate-with-services.md) ile küme içindeki hizmet iletişimi hakkında daha fazla bilgi edinin
-

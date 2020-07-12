@@ -8,7 +8,7 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Dosyaları ile verileri kalıcı hale getirme
-      href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
+      href: ../../aks/azure-files-dynamic-pv.md?toc=/azure/container-service/kubernetes/toc.json
     - name: İzleme
     - name: Spring Boot uygulamalarını dağıtma
       items:

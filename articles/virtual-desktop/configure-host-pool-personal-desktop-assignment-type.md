@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223117"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260809"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma
 
@@ -91,7 +91,7 @@ Bir kullanıcıyı Azure portal bir oturum konağına doğrudan atamak için:
 
 Kişisel masaüstü atama türünü yapılandırdığınıza göre, bir Windows sanal masaüstü istemcisinde oturum açarak Kullanıcı oturumunun bir parçası olarak test edebilirsiniz. Bu sonraki iki nasıl-TOS, tercih ettiğiniz istemciyi kullanarak bir oturuma nasıl bağlanacağınızı bildirir:
 
-- [Windows Masaüstü istemcisine bağlanma](connect-windows-7-and-10.md)
+- [Windows Masaüstü istemcisine bağlanma](connect-windows-7-10.md)
 - [Web istemcisiyle bağlanma](connect-web.md)
 - [Android istemcisiyle bağlanma](connect-android.md)
 - [iOS istemcisiyle bağlanma](connect-ios.md)

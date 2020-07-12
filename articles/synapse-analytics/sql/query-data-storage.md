@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e9a90ab7100ae9757f59c80bb8f4738772482f56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833664"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259669"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
@@ -46,7 +46,7 @@ Parquet kaynak verilerini sorgulamak için FORMAT = ' PARQUET ' kullanın
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -58,7 +58,7 @@ Parquet kaynak verilerini sorgulamak için FORMAT = ' CSV ' kullanın. CSV dosya
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -81,7 +81,7 @@ Okumak istediğiniz sütunları belirtmek için deyiminiz içinde isteğe bağl�
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (
       C1 int, 
       C2 varchar(20),
@@ -101,7 +101,7 @@ Deyimden WıTH yan tümcesini atlayarak `OPENROWSET` , hizmeti temel alınan dos
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
 En iyi performans için, [uygun gösterilen veri türlerinin](best-practices-sql-on-demand.md#check-inferred-data-types) kullanıldığından emin olun. 
@@ -118,7 +118,7 @@ Aşağıdaki kurallar geçerlidir:
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
 ```
 
 Kullanım örnekleri için [sorgu klasörlerine ve birden çok dosyaya](query-folders-multiple-csv-files.md) bakın.
@@ -179,7 +179,7 @@ Sözdizimi parçası örneği aşağıdaki gibidir:
 
 Varsayılan olarak, `OPENROWSET` IşLEVI WITH yan tümcesinde belirtilen sütun adlarıyla kaynak alan adı ve yoluyla eşleşir. Aynı kaynak Parquet dosyası içindeki farklı iç içe düzeylerde bulunan öğelere WıTH yan tümcesi aracılığıyla erişilebilir.
 
-**Döndürülen değerler**
+**Dönüş değerleri**
 
 - İşlev, Iç Içe geçmiş tür grubunda olmayan tüm Parquet türleri için, belirtilen öğeden ve belirtilen yoldaki int, Decimal ve varchar gibi bir skaler değer döndürür.
 - Yol, Iç Içe geçmiş bir türün bir öğesini işaret ediyorsa, işlev belirtilen yoldaki en üstteki öğeden başlayarak bir JSON parçası döndürür. JSON parçası varchar (8000) türündedir.
@@ -248,7 +248,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 - İç içe geçmiş sütunlara sahip örnek Parquet dosyaları
 - JSON biçimindeki kitaplar
 
-| Klasör yolu                                                  | Description                                                  |
+| Klasör yolu                                                  | Açıklama                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV biçimindeki veriler için üst klasör                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Farklı CSV biçimlerinde popülasyon veri dosyaları içeren klasörler. |

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392242"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259447"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -26,7 +26,7 @@ Bir bulut hizmeti kullandığınızda, erişimi yalnızca ihtiyacı olan kullan�
 > [!NOTE]
 > Bu makaledeki bilgiler, Azure Machine Learning Python SDK sürümü 1.0.83.1 veya üzeri ile birlikte çalışmaktadır.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-Factor Authentication desteklenir. Kimlik doğrulama işlemi şu şekildedir:
 
@@ -42,7 +42,7 @@ Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışlar
 
 Azure Machine Learning, Web Hizmetleri için iki kimlik doğrulama biçimini destekler: anahtar ve belirteç. Her Web hizmeti tek seferde yalnızca bir kimlik doğrulama biçimi etkinleştirebilir.
 
-|Kimlik doğrulama yöntemi|Açıklama|Azure Container Instances|AKS|
+|Kimlik doğrulaması yöntemi|Açıklama|Azure Container Instances|AKS|
 |---|---|---|---|
 |Anahtar|Anahtarlar statiktir ve yenilenmek zorunda değildir. Anahtarlar el ile yeniden oluşturulabilir.|Varsayılan olarak devre dışı| Varsayılan olarak etkindir|
 |Belirteç|Belirteçlerin süresi belirtilen süre geçtikten sonra ve yenilenmesi gerekiyor.| Kullanılamaz| Varsayılan olarak devre dışı |
@@ -88,14 +88,14 @@ Her çalışma alanı Ayrıca, çalışma alanıyla aynı ada sahip ilişkili bi
 
 Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-| Kaynak | İzinler |
+| Resource | İzinler |
 | ----- | ----- |
-| Çalışma alanı | Katılımcı |
+| Çalışma alanı | Katkıda Bulunan |
 | Depolama hesabı | Depolama Blobu veri Katılımcısı |
 | Key Vault | Tüm anahtarlar, gizlilikler, sertifikalara erişim |
-| Azure Container Registry | Katılımcı |
-| Çalışma alanını içeren kaynak grubu | Katılımcı |
-| Anahtar kasasını içeren kaynak grubu (çalışma alanını içeren bunlardan farklıysa) | Katılımcı |
+| Azure Container Registry | Katkıda Bulunan |
+| Çalışma alanını içeren kaynak grubu | Katkıda Bulunan |
+| Anahtar kasasını içeren kaynak grubu (çalışma alanını içeren bunlardan farklıysa) | Katkıda Bulunan |
 
 Yöneticilerin yönetilen kimliğin önceki tabloda bahsedilen kaynaklara erişimini iptal etmemenizi önermiyoruz. Yeniden eşitleme anahtarları işlemini kullanarak erişimi geri yükleyebilirsiniz.
 
@@ -111,16 +111,21 @@ Ayrıca, çalışma alanınız için Azure özel bağlantısını etkinleştireb
 
 ## <a name="data-encryption"></a>Veri şifrelemesi
 
+> [!IMPORTANT]
+> __Eğitim__sırasında üretim sınıfı şifrelemesi için, Microsoft Azure Machine Learning işlem kümesi kullanmayı önerir. Microsoft __, Microsoft__Azure Kubernetes hizmetini kullanarak üretim sınıfı şifrelemesi için önerilir.
+>
+> Azure Machine Learning işlem örneği bir geliştirme/test ortamıdır. Bunu kullanırken, dosya paylaşımında Not defterleri ve betikler gibi dosyalarınızı depolamanızı öneririz. Verileriniz bir veri deposunda depolanmalıdır.
+
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
 > [!IMPORTANT]
 > Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamayı öneririz. 
 
-`hbi_workspace`Bayrak, Microsoft 'un tanılama amacıyla topladığı veri miktarını denetler ve Microsoft yönetilen ortamlarında ek şifrelemeye izin vermez. Buna ek olarak, şunları da mümkün kılar:
+`hbi_workspace`Bayrak, Microsoft 'un tanılama amacıyla topladığı veri miktarını denetler ve Microsoft tarafından yönetilen ortamlarda ek şifrelemeye izin vermez. Ayrıca, aşağıdaki eylemleri sunar:
 
-* Bu abonelikte daha önceki kümelerin oluşturulmadığından, Amlcompute kümenizdeki yerel çalışma diskini şifrelemeye başlar. Aksi takdirde, işlem kümelerinizin karalama diskinin şifrelenmesini etkinleştirmek için bir destek bileti yükseltmeniz gerekir 
+* Azure Machine Learning işlem kümenizde, bu abonelikte daha önceki kümelerin oluşturulmadığından, yerel çalışma diskini şifrelemeye başlar. Aksi takdirde, işlem kümelerinizin karalama diskinin şifrelenmesini etkinleştirmek için bir destek bileti yükseltmeniz gerekir 
 * Çalıştırmalar arasında yerel çalışma diskinizi temizler
-* Anahtar kasanızı kullanarak depolama hesabınız, kapsayıcı kayıt defteriniz ve SSH hesabınızın kimlik bilgilerini yürütme katmanından işlem kümelerinize güvenli bir şekilde geçirir
+* Anahtar kasanızı kullanarak depolama hesabınız, kapsayıcı kayıt defteriniz ve SSH hesabınız için kimlik bilgilerini yürütme katmanından işlem kümelerinize güvenli bir şekilde geçirir
 * Temel alınan toplu iş havuzlarının AzureMachineLearningService dışında herhangi bir dış hizmet tarafından çağrılıp çağrılmaması için IP filtrelemeyi sağlar
 
 
@@ -228,7 +233,7 @@ Azure Databricks, Azure Machine Learning işlem hatları içinde kullanılabilir
 
 Azure Machine Learning, çeşitli Azure Machine Learning mikro hizmetler arasında iç iletişimin güvenliğini sağlamak için TLS kullanır. Tüm Azure depolama erişimi, güvenli bir kanal üzerinden de gerçekleşir.
 
-Puanlama uç noktası Azure Machine Learning dış çağrıların güvenliğini sağlamak için TLS kullanır. Daha fazla bilgi için bkz. [Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek IÇIN TLS kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
+Puanlama uç noktasına yapılan dış çağrıların güvenliğini sağlamak için Azure Machine Learning TLS kullanır. Daha fazla bilgi için bkz. [Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek IÇIN TLS kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault kullanma
 
@@ -322,7 +327,7 @@ Bir Azure Machine Learning çalışma alanıyla ilişkili, kaynak kodu (eğitim 
 
 [![Kod anlık görüntüsü iş akışı](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
-### <a name="training"></a>Eğitim
+### <a name="training"></a>Eğitiliyor
 
 Aşağıdaki diyagramda eğitim iş akışı gösterilmektedir.
 

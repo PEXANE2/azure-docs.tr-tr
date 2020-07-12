@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214290"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260763"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -75,7 +76,7 @@ Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden 
 
 [Yeni bir konak havuzu sağlamak Için Azure](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)marketi teklifini çalıştırmaya ulaşıncaya kadar [Azure Marketi 'ni kullanarak bir konak havuzu oluşturma](create-host-pools-azure-marketplace-2019.md) bölümündeki yönergeleri izleyin. Bu noktaya geldiğinizde, her sekme için aşağıdaki bilgileri girmeniz gerekir:
 
-### <a name="basics"></a>Temel Bilgiler
+### <a name="basics"></a>Temel bilgiler
 
 Bu bölümdeki tüm değerler, *varsayılan masaüstü kullanıcıları*dışında, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınızla eşleşmelidir:
 
@@ -129,7 +130,7 @@ Bu bölümdeki tüm parametre değerleri, ana bilgisayar havuzunu ve oturum ana 
 
 Mevcut konak havuzunuzu genişlettiyseniz, bir kullanıcı oturumunun parçası olarak test etmek için bir Windows sanal masaüstü istemcisinde oturum açabilirsiniz. Aşağıdaki istemcilerden herhangi biriyle bir oturuma bağlanabilirsiniz:
 
-- [Windows Masaüstü istemcisine bağlanma](../connect-windows-7-and-10.md)
+- [Windows Masaüstü istemcisine bağlanma](connect-windows-7-10-2019.md)
 - [Web istemcisiyle bağlanma](connect-web-2019.md)
 - [Android istemcisiyle bağlanma](connect-android-2019.md)
 - [macOS istemcisiyle bağlanma](connect-macos-2019.md)

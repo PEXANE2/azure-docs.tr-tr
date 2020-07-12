@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551786"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261083"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric uygulama ve küme en iyi uygulamaları
 
@@ -26,7 +27,7 @@ Bu makalede, Azure Service Fabric uygulamalarını ve kümelerini yönetmeye yö
 ## <a name="compute-planning-and-scaling"></a>İşlem planlama ve ölçeklendirme
 
 * [İşlem ölçekleme için en iyi uygulamalar](service-fabric-best-practices-capacity-scaling.md)
-* [İşlem kapasitesi planlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [İşlem kapasitesi planlama](./service-fabric-cluster-capacity.md)
 
 ## <a name="infrastructure-as-code"></a>Kod olarak altyapı
 
@@ -43,7 +44,7 @@ Bu makalede, Azure Service Fabric uygulamalarını ve kümelerini yönetmeye yö
 ## <a name="checklist"></a>Denetim Listesi
 
 Önceki bölümlerde önerilen uygulamaları uyguladıktan sonra, üretim hazırlığı denetim listesindeki en iyi uygulamaları tümleştirdiğinizden emin olun:
-* [Azure Service Fabric üretim hazırlığı denetim listesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+* [Azure Service Fabric üretim hazırlığı denetim listesi](./service-fabric-production-readiness-checklist.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

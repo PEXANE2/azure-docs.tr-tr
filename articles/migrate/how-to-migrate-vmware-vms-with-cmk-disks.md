@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232177"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260024"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware VM 'lerini, sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen Azure VM 'lerine geçirin
 
@@ -59,6 +59,10 @@ Sunucu geçiş portalı deneyimi, bir VM 'yi bir projede ilk kez çoğalttığı
 Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler. VM 'Leri CMK ile çoğaltmak için bir disk şifreleme kümesi oluşturacak ve bunu çoğaltma işlemine girdi olarak geçireceğiz.
 
 Azure PowerShell kullanarak bir disk şifreleme kümesi oluşturmak için [buradaki](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) örneği izleyin. Disk şifrelemesi kümesinin, sanal makinelerin geçirildiği hedef abonelikte ve geçiş için hedef Azure bölgesinde oluşturulduğundan emin olun.
+
+Disk şifreleme kümesi, yönetilen diskleri müşteri tarafından yönetilen bir anahtarla şifrelemek veya müşteri tarafından yönetilen anahtar ve bir platform anahtarı ile çift şifreleme için yapılandırılabilir. Rest 'de çift şifrelemeyi kullanmak için disk şifreleme kümesini [burada](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md)açıklandığı gibi yapılandırın.
+
+Aşağıda gösterilen örnekte, disk şifreleme kümesi, müşteri tarafından yönetilen bir anahtar kullanacak şekilde yapılandırılmıştır.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

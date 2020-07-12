@@ -3,11 +3,12 @@ title: Azure Service Fabric uygulaması paketleme
 description: Azure Service Fabric uygulaması paketleme ve bir kümeye dağıtım için hazırlanma hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701056"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260971"
 ---
 # <a name="package-an-application"></a>Uygulamaları paketleme
 
@@ -42,7 +43,7 @@ Klasörler, karşılık gelen her öğenin **ad** öznitelikleriyle eşleşecek 
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint kullanma
 
-**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örneğin:
+**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örnek:
 
 * Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.
@@ -210,7 +211,7 @@ Bu seçenekle, uygulama paketinin görüntü deposuna kopyalanması gerekmez. Bu
 `sfpkg`Dosya, ilk uygulama paketini içeren ve ". sfpkg" uzantısına sahip bir zip dosyasıdır.
 ZIP içinde, uygulama paketi sıkıştırılabilir veya sıkıştırılmamış olabilir. ZIP içindeki uygulama paketinin sıkıştırması, [daha önce belirtildiği](service-fabric-package-apps.md#compress-a-package)gibi kod, yapılandırma ve veri paketi düzeylerinde yapılır.
 
-Oluşturmak için `sfpkg` , sıkıştırılmış veya olmayan özgün uygulama paketini içeren bir klasör ile başlayın. Sonra, ". sfpkg" uzantısına sahip klasörü ZIP için herhangi bir yardımcı programı kullanın. Örneğin, [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx)kullanın.
+Oluşturmak için `sfpkg` , sıkıştırılmış veya olmayan özgün uygulama paketini içeren bir klasör ile başlayın. Sonra, ". sfpkg" uzantısına sahip klasörü ZIP için herhangi bir yardımcı programı kullanın. Örneğin, [ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_)kullanın.
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

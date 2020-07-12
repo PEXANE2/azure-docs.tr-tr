@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609936"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258646"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Küme için Azure Izleyici günlüklerini ayarlama
 
@@ -31,7 +32,7 @@ Bir kümeyi dağıttıktan sonra bir Log Analytics çalışma alanı eklemek ist
 
 2. **Service Fabric Analytics**arayın. Görüntülenen kaynağı seçin.
 
-3. **Oluştur**'u seçin.
+3. **Oluştur**’u seçin.
 
     ![Market 'te Service Fabric Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -90,7 +91,7 @@ Azure Resource Manager, bu komutun mevcut bir kaynağa yönelik bir güncelleşt
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Azure Izleyici günlüklerini Azure PowerShell ile dağıtma
 
-Log Analytics kaynağınızı komutunu kullanarak PowerShell aracılığıyla da dağıtabilirsiniz `New-AzOperationalInsightsWorkspace` . Bu yöntemi kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)yüklediğinizden emin olun. Yeni bir Log Analytics çalışma alanı oluşturmak ve buna Service Fabric çözümü eklemek için bu betiği kullanın: 
+Log Analytics kaynağınızı komutunu kullanarak PowerShell aracılığıyla da dağıtabilirsiniz `New-AzOperationalInsightsWorkspace` . Bu yöntemi kullanmak için [Azure PowerShell](/powershell/azure/install-az-ps)yüklediğinizden emin olun. Yeni bir Log Analytics çalışma alanı oluşturmak ve buna Service Fabric çözümü eklemek için bu betiği kullanın: 
 
 ```powershell
 
@@ -122,5 +123,5 @@ Ayrıca, PowerShell kullanarak diğer çözümleri ekleyebilir veya Log Analytic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Performans sayaçlarını toplamak ve kapsayıcılarınız için Docker istatistiklerini ve günlüklerini toplamak için [Log Analytics aracısını](service-fabric-diagnostics-oms-agent.md) düğümleriniz üzerine dağıtın
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../log-analytics/log-analytics-log-searches.md) özellikleriyle familiarized alın
+* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/log-query/log-query-overview.md) özellikleriyle familiarized alın
 * [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../azure-monitor/platform/view-designer.md)

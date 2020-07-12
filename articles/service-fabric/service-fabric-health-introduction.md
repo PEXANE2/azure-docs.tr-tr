@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 4a6e8b2baa400e1221ac1e8271e04cdaa912aff6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224154"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258855"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric sistem durumu izlemeye giriş
 Azure Service Fabric, zengin, esnek ve Genişletilebilir sistem durumu değerlendirmesi ve raporlama sağlayan bir sistem durumu modeli sunar. Model, küme durumunun ve üzerinde çalışan hizmetlerin neredeyse gerçek zamanlı olarak izlenmesine olanak tanır. Kolayca sistem durumu bilgilerini alabilir ve olası sorunları basamaklandırmadan ve büyük kesintilere neden olacak şekilde düzeltebilirsiniz. Tipik modelde, hizmetler raporları yerel görünümlerine göre gönderir ve bu bilgiler genel bir küme düzeyi görünüm sağlamak için toplanır.
@@ -60,7 +60,7 @@ Büyük bir bulut hizmeti tasarımı sırasında sistem durumunu raporlama ve ya
 ## <a name="health-states"></a>Sağlık durumları
 Service Fabric, bir varlığın sağlıklı olup olmadığını betimleyen üç sağlık durumu kullanır: Tamam, uyarı ve hata. Sistem durumu deposuna gönderilen herhangi bir rapor, bu durumlardan birini belirtmelidir. Sistem durumu değerlendirme sonucu, bu durumlardan biridir.
 
-Olası [sistem durumları](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) şunlardır:
+Olası [sistem durumları](/dotnet/api/system.fabric.health.healthstate) şunlardır:
 
 * **Tamam**. Varlık sağlıklı. Üzerinde veya alt öğelerinde (geçerli olduğunda) bildirilen bilinen bir sorun yoktur.
 * **Uyarı**. Varlıkta bazı sorunlar vardır, ancak yine de düzgün bir şekilde çalışabilir. Örneğin, gecikme vardır ancak herhangi bir işlevsel soruna neden olmaz. Bazı durumlarda, uyarı koşulu dış müdahale olmadan kendi kendine düzelebilir. Bu durumlarda, sistem durumu raporları tanıma işlemi yaptığını ve neye devam ettiğinin görünürlüğünü sağlar. Diğer durumlarda, uyarı koşulu Kullanıcı müdahalesi olmadan ciddi bir sorunla azalabilir.
@@ -78,13 +78,13 @@ Sistem durumu deposu, bir varlığın raporlarına ve alt öğelerine göre sağ
 Varsayılan olarak Service Fabric, üst-alt hiyerarşik ilişki için katı kurallar uygular (her şey sağlıklı olmalıdır). Alt öğelerinden birinin sağlıksız bir olayı varsa, üst öğe sağlıksız olarak değerlendirilir.
 
 ### <a name="cluster-health-policy"></a>Küme durumu ilkesi
-Küme [sistem durumu ilkesi](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy) , küme sistem durumu ve düğüm durumu durumlarını değerlendirmek için kullanılır. İlke, küme bildiriminde tanımlanabilir. Mevcut değilse, varsayılan ilke (sıfır toleranslı başarısızlık) kullanılır.
+Küme [sistem durumu ilkesi](/dotnet/api/system.fabric.health.clusterhealthpolicy) , küme sistem durumu ve düğüm durumu durumlarını değerlendirmek için kullanılır. İlke, küme bildiriminde tanımlanabilir. Mevcut değilse, varsayılan ilke (sıfır toleranslı başarısızlık) kullanılır.
 Küme durumu ilkesi şunları içerir:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Sistem durumu değerlendirmesi sırasında uyarı durumu raporlarının hata olarak değerlendirilip değerlendirilmeyeceğini belirtir. Varsayılan: false.
-* [Maxyüztunhealthyapplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek uygulamaların en fazla toleranslı yüzdesini belirtir.
-* [Maxyüztunhealthyınodes](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek düğümlerin maksimum toleranslı yüzdesini belirtir. Büyük kümelerde, bazı düğümler her zaman tamir için veya çıkış olduğundan bu yüzdenin bu yüzdeyi kabul etmek üzere yapılandırılması gerekir.
-* [Applicationtypehealthpolicymap](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Uygulama türü sistem durumu ilkesi eşlemesi, özel uygulama türlerini belirtmek için küme durumu değerlendirmesi sırasında kullanılabilir. Varsayılan olarak, tüm uygulamalar bir havuza konur ve Maxyüztunhealthuygulamaplications ile değerlendirilir. Bazı uygulama türleri farklı şekilde değerlendirilmelidir, bu, genel havuzdan alınmış olabilir. Bunun yerine, haritadaki uygulama türü adlarıyla ilişkili yüzdelerle değerlendirilir. Örneğin, bir kümede farklı türlerde binlerce uygulama vardır ve özel bir uygulama türünün birkaç denetim uygulaması örneği vardır. Denetim uygulamaları asla hata içermemelidir. Bazı hatalara sızmak için genel Maxyüztunhealthtoplications ' ı %20 olarak belirtebilirsiniz ancak "ControlApplicationType" uygulama türü için Maxyüztunhealthtoplications değerini 0 olarak ayarlayın. Bu şekilde, birçok uygulamanın bir kısmı sağlıksız ise, ancak genel sağlıksız yüzdesinin altında, küme uyarı olarak değerlendirilir. Uyarı sistem durumu, küme yükseltmesini veya hata sistem durumu tarafından tetiklenen diğer izlemeyi etkilemez. Aynı olsa da, hata içindeki bir denetim uygulaması, yükseltme yapılandırmasına bağlı olarak, küme yükseltmesini tetikleyen veya durakladığında kümeyi sağlıksız hale getirir.
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Sistem durumu değerlendirmesi sırasında uyarı durumu raporlarının hata olarak değerlendirilip değerlendirilmeyeceğini belirtir. Varsayılan: false.
+* [Maxyüztunhealthyapplications](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek uygulamaların en fazla toleranslı yüzdesini belirtir.
+* [Maxyüztunhealthyınodes](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek düğümlerin maksimum toleranslı yüzdesini belirtir. Büyük kümelerde, bazı düğümler her zaman tamir için veya çıkış olduğundan bu yüzdenin bu yüzdeyi kabul etmek üzere yapılandırılması gerekir.
+* [Applicationtypehealthpolicymap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Uygulama türü sistem durumu ilkesi eşlemesi, özel uygulama türlerini belirtmek için küme durumu değerlendirmesi sırasında kullanılabilir. Varsayılan olarak, tüm uygulamalar bir havuza konur ve Maxyüztunhealthuygulamaplications ile değerlendirilir. Bazı uygulama türleri farklı şekilde değerlendirilmelidir, bu, genel havuzdan alınmış olabilir. Bunun yerine, haritadaki uygulama türü adlarıyla ilişkili yüzdelerle değerlendirilir. Örneğin, bir kümede farklı türlerde binlerce uygulama vardır ve özel bir uygulama türünün birkaç denetim uygulaması örneği vardır. Denetim uygulamaları asla hata içermemelidir. Bazı hatalara sızmak için genel Maxyüztunhealthtoplications ' ı %20 olarak belirtebilirsiniz ancak "ControlApplicationType" uygulama türü için Maxyüztunhealthtoplications değerini 0 olarak ayarlayın. Bu şekilde, birçok uygulamanın bir kısmı sağlıksız ise, ancak genel sağlıksız yüzdesinin altında, küme uyarı olarak değerlendirilir. Uyarı sistem durumu, küme yükseltmesini veya hata sistem durumu tarafından tetiklenen diğer izlemeyi etkilemez. Aynı olsa da, hata içindeki bir denetim uygulaması, yükseltme yapılandırmasına bağlı olarak, küme yükseltmesini tetikleyen veya durakladığında kümeyi sağlıksız hale getirir.
   Haritada tanımlanan uygulama türleri için, tüm uygulama örnekleri genel uygulama havuzunda alınır. Bu uygulamalar, eşlemedeki belirli Maxyüztunhealthme plications kullanılarak uygulama türünün Toplam uygulama sayısına göre değerlendirilir. Tüm uygulamaların geri kalanı genel havuzda kalır ve Maxyüztunhealthyapplications ile değerlendirilir.
 
 Aşağıdaki örnek, bir küme bildiriminin alıntısıdır. Uygulama türü eşlemesinde girdileri tanımlamak için, parametre adının önüne "Applicationtypemaxyüztunhealthyapplications-" ve ardından uygulama türü adını ekleyin.
@@ -101,20 +101,20 @@ Aşağıdaki örnek, bir küme bildiriminin alıntısıdır. Uygulama türü eş
 ```
 
 ### <a name="application-health-policy"></a>Uygulama sistem durumu ilkesi
-[Uygulama sistem durumu ilkesi](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) , uygulamalar ve bunların alt öğeleri için olay değerlendirmesinin ve alt durum toplama işlemlerinin nasıl yapıldığını açıklar. Uygulama paketindeki **ApplicationManifest.xml**uygulama bildiriminde tanımlanabilir. Hiçbir ilke belirtilmemişse Service Fabric, bir sistem durumu raporu veya uyarı ya da hata sistem durumunda alt öğe varsa varlığın sağlıksız olduğunu varsayar.
+[Uygulama sistem durumu ilkesi](/dotnet/api/system.fabric.health.applicationhealthpolicy) , uygulamalar ve bunların alt öğeleri için olay değerlendirmesinin ve alt durum toplama işlemlerinin nasıl yapıldığını açıklar. Uygulama paketindeki **ApplicationManifest.xml**uygulama bildiriminde tanımlanabilir. Hiçbir ilke belirtilmemişse Service Fabric, bir sistem durumu raporu veya uyarı ya da hata sistem durumunda alt öğe varsa varlığın sağlıksız olduğunu varsayar.
 Yapılandırılabilir ilkeler şunlardır:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Sistem durumu değerlendirmesi sırasında uyarı durumu raporlarının hata olarak değerlendirilip değerlendirilmeyeceğini belirtir. Varsayılan: false.
-* [Maxyüztunhealthyıdeployedapplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Uygulamanın hatalı olarak değerlendirilmeden önce sağlıksız olabilecek dağıtılan uygulamaların en fazla toleranslı yüzdesini belirtir. Bu yüzde, uygulamaların kümede halen dağıtıldığı düğüm sayısına göre sağlıksız dağıtılan uygulama sayısı bölünerek hesaplanır. Hesaplama, küçük sayıda düğümde bir hata olduğunu tolerans için yukarı yuvarlar. Varsayılan yüzde: sıfır.
-* [Defaultservicetypehealthpolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Uygulamadaki tüm hizmet türleri için varsayılan sistem durumu ilkesinin yerini alan varsayılan hizmet türü sistem durumu ilkesini belirtir.
-* [Servicetypehealthpolicymap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Hizmet türü başına hizmet sistem durumu ilkelerinin haritasını sağlar. Bu ilkeler, belirtilen her hizmet türü için varsayılan hizmet türü sistem durumu ilkelerinin yerini alır. Örneğin, bir uygulamanın durum bilgisiz ağ geçidi hizmet türü ve durum bilgisi olan bir altyapı hizmeti türü varsa, değerlendirmesi için sistem durumu ilkelerini farklı şekilde yapılandırabilirsiniz. Hizmet türü başına ilke belirttiğinizde, hizmetin sistem durumunun daha ayrıntılı bir denetimini elde edebilirsiniz.
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Sistem durumu değerlendirmesi sırasında uyarı durumu raporlarının hata olarak değerlendirilip değerlendirilmeyeceğini belirtir. Varsayılan: false.
+* [Maxyüztunhealthyıdeployedapplications](/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Uygulamanın hatalı olarak değerlendirilmeden önce sağlıksız olabilecek dağıtılan uygulamaların en fazla toleranslı yüzdesini belirtir. Bu yüzde, uygulamaların kümede halen dağıtıldığı düğüm sayısına göre sağlıksız dağıtılan uygulama sayısı bölünerek hesaplanır. Hesaplama, küçük sayıda düğümde bir hata olduğunu tolerans için yukarı yuvarlar. Varsayılan yüzde: sıfır.
+* [Defaultservicetypehealthpolicy](/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Uygulamadaki tüm hizmet türleri için varsayılan sistem durumu ilkesinin yerini alan varsayılan hizmet türü sistem durumu ilkesini belirtir.
+* [Servicetypehealthpolicymap](/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Hizmet türü başına hizmet sistem durumu ilkelerinin haritasını sağlar. Bu ilkeler, belirtilen her hizmet türü için varsayılan hizmet türü sistem durumu ilkelerinin yerini alır. Örneğin, bir uygulamanın durum bilgisiz ağ geçidi hizmet türü ve durum bilgisi olan bir altyapı hizmeti türü varsa, değerlendirmesi için sistem durumu ilkelerini farklı şekilde yapılandırabilirsiniz. Hizmet türü başına ilke belirttiğinizde, hizmetin sistem durumunun daha ayrıntılı bir denetimini elde edebilirsiniz.
 
 ### <a name="service-type-health-policy"></a>Hizmet türü sistem durumu ilkesi
-[Hizmet türü sistem durumu ilkesi](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy) , hizmetlerin ve hizmetlerin alt öğelerinin nasıl değerlendirileceğini ve toplanacağını belirtir. İlke şunları içerir:
+[Hizmet türü sistem durumu ilkesi](/dotnet/api/system.fabric.health.servicetypehealthpolicy) , hizmetlerin ve hizmetlerin alt öğelerinin nasıl değerlendirileceğini ve toplanacağını belirtir. İlke şunları içerir:
 
-* [Maxyüztunhealthypartitionsperservice](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Hizmetin sağlıksız olduğu kabul edilmeden önce sağlıksız bölümlerin maksimum toleranslı yüzdesini belirtir. Varsayılan yüzde: sıfır.
-* [Maxyüztunhealthyıreplicasperpartition](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Bir bölümün sağlıksız olduğu kabul edilmeden önce sağlıksız çoğaltmaların en yüksek toleranslı yüzdesini belirtir. Varsayılan yüzde: sıfır.
-* [Maxyüztunhealthi Hizmetleri](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Uygulamanın sağlıksız olduğu kabul edilmeden önce sağlıksız hizmetlerin maksimum toleranslı yüzdesini belirtir. Varsayılan yüzde: sıfır.
+* [Maxyüztunhealthypartitionsperservice](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Hizmetin sağlıksız olduğu kabul edilmeden önce sağlıksız bölümlerin maksimum toleranslı yüzdesini belirtir. Varsayılan yüzde: sıfır.
+* [Maxyüztunhealthyıreplicasperpartition](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Bir bölümün sağlıksız olduğu kabul edilmeden önce sağlıksız çoğaltmaların en yüksek toleranslı yüzdesini belirtir. Varsayılan yüzde: sıfır.
+* [Maxyüztunhealthi Hizmetleri](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Uygulamanın sağlıksız olduğu kabul edilmeden önce sağlıksız hizmetlerin maksimum toleranslı yüzdesini belirtir. Varsayılan yüzde: sıfır.
 
 Aşağıdaki örnek, bir uygulama bildiriminin alıntısıdır:
 
@@ -179,10 +179,10 @@ Sistem durumu deposu tüm alt öğeleri değerlendirdikten sonra, sağlıksız a
 ## <a name="health-reporting"></a>Sistem durumu raporlaması
 Sistem bileşenleri, System Fabric uygulamaları ve iç/dış Watchdogs Service Fabric varlıklara göre rapor verebilir. Raporla, izlenmekte olan koşullara göre izlenen varlıkların sistem durumunu *Yereller* halinde yapar. Herhangi bir genel duruma veya toplama verilerine bakmaları gerekmez. İstenen davranış, hangi bilgilerin gönderileceğini belirlemek için birçok şeyi göz atabilmeniz gereken karmaşık organiler değildir.
 
-Sistem durumu deposuna sistem durumu verileri göndermek için, bir Raporlayıcı etkilenen varlığı belirleyip bir sistem durumu raporu oluşturur. Raporu göndermek için, veya nesneleri, PowerShell cmdlet 'leri veya REST üzerinde kullanıma sunulan [FabricClient. HealthClient. Reporthegizlilik](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API 'sini, rapor durumu API 'lerini kullanın `Partition` `CodePackageActivationContext` .
+Sistem durumu deposuna sistem durumu verileri göndermek için, bir Raporlayıcı etkilenen varlığı belirleyip bir sistem durumu raporu oluşturur. Raporu göndermek için, veya nesneleri, PowerShell cmdlet 'leri veya REST üzerinde kullanıma sunulan [FabricClient. HealthClient. Reporthegizlilik](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API 'sini, rapor durumu API 'lerini kullanın `Partition` `CodePackageActivationContext` .
 
 ### <a name="health-reports"></a>Sistem durumu raporları
-Kümedeki varlıkların her biri için [sistem durumu raporları](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) aşağıdaki bilgileri içerir:
+Kümedeki varlıkların her biri için [sistem durumu raporları](/dotnet/api/system.fabric.health.healthreport) aşağıdaki bilgileri içerir:
 
 * **SourceId**. Sistem durumu olayının Raporlayıcısı 'nı benzersiz bir şekilde tanımlayan bir dize.
 * **Varlık tanımlayıcısı**. Raporun uygulandığı varlığı tanımlar. [Varlık türüne](service-fabric-health-introduction.md#health-entities-and-hierarchy)göre farklılık gösterir:
@@ -205,7 +205,7 @@ Kümedeki varlıkların her biri için [sistem durumu raporları](https://docs.m
 Bu dört bilgi parçası--SourceId, Entity Identifier, Property ve HealthState--her sistem durumu raporu için gereklidir. SourceID dizesinin, sistem raporları için ayrılmış olan "**System.**" önekiyle başlayamaz. Aynı varlık için aynı kaynak ve özellik için yalnızca bir rapor vardır. Aynı kaynak ve özellik için birden çok rapor, sistem durumu istemci tarafında (toplu olmaları durumunda) veya sistem durumu deposu tarafında geçersiz kılınır. Değişiklik sıra numaralarına dayalıdır; daha yeni raporlar (daha yüksek sıra numaralarıyla) eski raporların yerini alır.
 
 ### <a name="health-events"></a>Sistem durumu olayları
-Dahili olarak, sistem durumu deposu raporlardan tüm bilgileri ve ek meta verileri içeren [sistem durumu olaylarını](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent)tutar. Meta veriler, raporun sistem durumu istemcisine verildiği süreyi ve sunucu tarafında değiştirilme süresini içerir. Sistem durumu olayları, [sistem durumu sorguları](service-fabric-view-entities-aggregated-health.md#health-queries)tarafından döndürülür.
+Dahili olarak, sistem durumu deposu raporlardan tüm bilgileri ve ek meta verileri içeren [sistem durumu olaylarını](/dotnet/api/system.fabric.health.healthevent)tutar. Meta veriler, raporun sistem durumu istemcisine verildiği süreyi ve sunucu tarafında değiştirilme süresini içerir. Sistem durumu olayları, [sistem durumu sorguları](service-fabric-view-entities-aggregated-health.md#health-queries)tarafından döndürülür.
 
 Eklenen meta veriler şunları içerir:
 
@@ -306,4 +306,3 @@ Durum modeli, izleme ve Tanılama için, küme ve uygulama durumunu değerlendir
 [Hizmetleri yerel olarak izleme ve tanılama](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Uygulama yükseltmesini Service Fabric](service-fabric-application-upgrade.md)
-

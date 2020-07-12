@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 9bc7a5405309e35a36b15f44a1b136b899afbb55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f59eb3296c27e64eb6a4644b2f455e3704381f49
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84119313"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260839"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Chaos test hizmetini başlatın, durdurun ve rapor edin.
@@ -130,4 +131,4 @@ Chaos 'in yeni hata yürütmesini durduruyor. Uçuş hatası, tamamlanana kadar 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

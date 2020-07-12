@@ -4,11 +4,12 @@ description: Yetenekler, kullanım örnekleri ve yaygın senaryolar da dahil olm
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78254898"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258944"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
 
@@ -21,9 +22,9 @@ Service Fabric ne yapabilecekleri ve nasıl kullanılması gerektiği hakkında 
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Service Fabric küme sertifikamı geri almak Nasıl yaparım??
 
-Uygulamanıza yapılan herhangi bir yükseltmeyi geri alma işlemi, Service Fabric kümesi çekirdeğinin değişikliği yapmadan önce sistem durumu hata algılaması gerektirir; yürütülen değişiklikler yalnızca ileri alınabilir. İzlenmeyen bir sertifika değişikliği ortaya çıktıysa, müşteri destek hizmetleri aracılığıyla yükseltme mühendisi, kümenizi kurtarmak için gerekli olabilir.  [Service Fabric uygulama yükseltmesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) [uygulama yükseltme parametreleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)uygular ve sıfır kesinti süresi yükseltme taahhüdünü sunar.  Önerilen uygulama yükseltme izlenen Modumuzdan sonra, güncelleştirme etki alanları aracılığıyla otomatik ilerleme durumu denetimleri başarılı olur ve varsayılan bir hizmetin güncelleştirilmesi başarısız olursa otomatik olarak geri döndürülüyor.
+Uygulamanıza yapılan herhangi bir yükseltmeyi geri alma işlemi, Service Fabric kümesi çekirdeğinin değişikliği yapmadan önce sistem durumu hata algılaması gerektirir; yürütülen değişiklikler yalnızca ileri alınabilir. İzlenmeyen bir sertifika değişikliği ortaya çıktıysa, müşteri destek hizmetleri aracılığıyla yükseltme mühendisi, kümenizi kurtarmak için gerekli olabilir.  [Service Fabric uygulama yükseltmesi](./service-fabric-application-upgrade.md?branch=master) [uygulama yükseltme parametreleri](./service-fabric-application-upgrade-parameters.md?branch=master)uygular ve sıfır kesinti süresi yükseltme taahhüdünü sunar.  Önerilen uygulama yükseltme izlenen Modumuzdan sonra, güncelleştirme etki alanları aracılığıyla otomatik ilerleme durumu denetimleri başarılı olur ve varsayılan bir hizmetin güncelleştirilmesi başarısız olursa otomatik olarak geri döndürülüyor.
  
-Kümeniz Kaynak Yöneticisi şablonunuzda klasik sertifika parmak Izi özelliğini kullanmaya devam ediyorsa, modern gizli dizi yönetim özelliklerinden yararlanmak için [kümeyi sertifika parmak iziyle ortak ad olarak değiştirmeniz](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)önerilir.
+Kümeniz Kaynak Yöneticisi şablonunuzda klasik sertifika parmak Izi özelliğini kullanmaya devam ediyorsa, modern gizli dizi yönetim özelliklerinden yararlanmak için [kümeyi sertifika parmak iziyle ortak ad olarak değiştirmeniz](./service-fabric-cluster-change-cert-thumbprint-to-cn.md)önerilir.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Birden çok Azure bölgesini veya kendi veri merkezlerimi kapsayan bir küme oluşturabilir miyim?
 
@@ -40,7 +41,7 @@ Göz önünde bulundurulması gereken bazı noktalar:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric düğümleri işletim sistemi güncelleştirmelerini otomatik olarak alır mi?
 
-[Sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü güncelleştirme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) genel olarak kullanılabilir özelliğini bugün kullanabilirsiniz.
+[Sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü güncelleştirme](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) genel olarak kullanılabilir özelliğini bugün kullanabilirsiniz.
 
 Azure 'da çalıştırılmayan kümeler için, Service Fabric düğümlerinizin altında işletim sistemlerinin yaması için [bir uygulama sunuyoruz](service-fabric-patch-orchestration-application.md) .
 
@@ -125,7 +126,7 @@ Hayır. Düşük öncelikli VM 'Ler desteklenmez.
 Aşağıdakiler, uygulamanızın Keykasada kimlik doğrulaması için kimlik bilgilerini alması anlamına gelir:
 
 A. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu anahtar kasasında kimlik doğrulaması yapmak için kullanabilirsiniz.
-B. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [gizli dizileri keykasasından alabilirsiniz](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+B. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [gizli dizileri keykasasından alabilirsiniz](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Uygulama tasarımı
 
@@ -176,9 +177,9 @@ Kapsayıcılar Hizmetleri ve bağımlılıklarını, her türlü ortamda tutarl�
 
 GitHub 'da Service Fabric ([güvenilir hizmetler çerçevesi](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [güvenilir aktör çerçevesi](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core tümleştirme KITAPLıKLARı](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)ve [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) açık kaynaklı parçaları vardır ve bu projelere yönelik topluluk katkılarını kabul etmiş bulunuyoruz. 
 
-[Kısa süre önce](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) Service Fabric çalışma zamanını açık kaynak olarak planladığımızda duyuruyoruz. Bu noktada, Linux derleme ve test araçlarıyla GitHub 'da [Service Fabric](https://github.com/Microsoft/service-fabric/) , depoyu kopyalayabilir, Linux için Service Fabric derleyebilir, temel testleri çalıştırabilir, sorunları açabilir ve çekme istekleri gönderebilirsiniz. Windows Build ortamını, tüm CI ortamıyla birlikte geçiş yapmak için çok çalıştık.
+[Kısa süre önce](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) Service Fabric çalışma zamanını açık kaynak olarak planladığımızda duyuruyoruz. Bu noktada, Linux derleme ve test araçlarıyla GitHub 'da [Service Fabric](https://github.com/Microsoft/service-fabric/) , depoyu kopyalayabilir, Linux için Service Fabric derleyebilir, temel testleri çalıştırabilir, sorunları açabilir ve çekme istekleri gönderebilirsiniz. Windows Build ortamını, tüm CI ortamıyla birlikte geçiş yapmak için çok çalıştık.
 
-Duyurulduğu gibi daha fazla ayrıntı için [Service Fabric blogunu](https://blogs.msdn.microsoft.com/azureservicefabric/) izleyin.
+Duyurulduğu gibi daha fazla ayrıntı için [Service Fabric blogunu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

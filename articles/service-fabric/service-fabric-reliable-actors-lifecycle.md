@@ -5,12 +5,12 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847880"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260447"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktör yaşam döngüsü, otomatik atık toplama ve el ile silme
 Bir aktör, metotlarından herhangi birine ilk kez çağrı yapıldığında etkinleştirilir. Bir aktör, yapılandırılabilir bir süre için kullanılmıyorsa devre dışı bırakılır (aktör çalışma zamanı tarafından atık olarak toplanır). Aktör ve durumu istediğiniz zaman el ile de silinebilir.
@@ -112,7 +112,7 @@ Devre dışı bırakılmış aktörlerin atık toplama işlemi yalnızca aktör 
 * [Aktör olayları](service-fabric-reliable-actors-events.md)
 * [Aktör yeniden girişi](service-fabric-reliable-actors-reentrancy.md)
 * [Aktör tanılama ve performans izleme](service-fabric-reliable-actors-diagnostics.md)
-* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Aktör API 'SI başvuru belgeleri](/previous-versions/azure/dn971626(v=azure.100))
 * [C# örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

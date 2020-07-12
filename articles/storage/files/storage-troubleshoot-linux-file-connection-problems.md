@@ -7,18 +7,18 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 4dddc2eab5004377afd6743c4722498dd5c6e2a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232279"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259993"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
 Bu makalede, Linux istemcilerinden bağlandığınızda Azure dosyalarıyla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. 
 
-Bu makaledeki sorun giderme adımlarına ek olarak, Linux istemcisinin doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) 'i kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunun algılanmasını otomatikleştirir. En iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Ayrıca, bu bilgileri [Azure dosya paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)bulabilirsiniz. Sorun giderici, Azure dosya paylaşımlarını bağlama, eşleme ve bağlama ile ilgili sorunları gidermenize yardımcı olacak adımları sağlar.
+Bu makaledeki sorun giderme adımlarına ek olarak, Linux istemcisinin doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) 'i kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunun algılanmasını otomatikleştirir. En iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Ayrıca, bu bilgileri [Azure dosya paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)bulabilirsiniz. Sorun giderici, Azure dosya paylaşımlarını bağlama, eşleme ve bağlama ile ilgili sorunları gidermenize yardımcı olacak adımları sağlar.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure dosya paylaşımında bağlantı veya bağlama yapılamaz
 

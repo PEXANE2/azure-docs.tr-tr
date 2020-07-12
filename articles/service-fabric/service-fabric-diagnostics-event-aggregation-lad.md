@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609970"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259200"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure Tanılama kullanarak olay toplama ve toplama
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "75609970"
 
 Azure Service Fabric kümesi çalıştırırken, günlükleri merkezi konumdaki tüm düğümlerden toplamak iyi bir fikirdir. Günlüklerin merkezi bir konumda olması, kümenizdeki sorunları veya bu kümede çalışan uygulama ve hizmetlerde sorunları analiz etmenize ve gidermenize yardımcı olur.
 
-Günlükleri karşıya yükleme ve toplamanın bir yolu, Azure depolama 'ya günlükleri yükleyen ve ayrıca Azure Application Insights veya Event Hubs günlükleri gönderme seçeneğine sahip Linux Azure Tanılama (LAD) uzantısını kullanmaktır. Ayrıca, olayları depolama alanından okumak ve [Azure izleyici günlükleri](../log-analytics/log-analytics-service-fabric.md) ya da başka bir günlük ayrıştırma çözümü gibi bir çözümleme platformu ürününe yerleştirmek için bir dış işlem de kullanabilirsiniz.
+Günlükleri karşıya yükleme ve toplamanın bir yolu, Azure depolama 'ya günlükleri yükleyen ve ayrıca Azure Application Insights veya Event Hubs günlükleri gönderme seçeneğine sahip Linux Azure Tanılama (LAD) uzantısını kullanmaktır. Ayrıca, olayları depolama alanından okumak ve [Azure izleyici günlükleri](./service-fabric-diagnostics-oms-setup.md) ya da başka bir günlük ayrıştırma çözümü gibi bir çözümleme platformu ürününe yerleştirmek için bir dış işlem de kullanabilirsiniz.
 
 ## <a name="log-and-event-sources"></a>Günlük ve olay kaynakları
 
@@ -42,5 +43,5 @@ Bu, LAD aracısını belirtilen günlük dosyalarını izleyecek şekilde yapıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-1. Sorunları giderirken hangi olayları incelemeniz gerektiğini daha ayrıntılı olarak anlamak için bkz. [Lttng belgeleri](https://lttng.org/docs) ve [lad kullanma](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+1. Sorunları giderirken hangi olayları incelemeniz gerektiğini daha ayrıntılı olarak anlamak için bkz. [Lttng belgeleri](https://lttng.org/docs) ve [lad kullanma](../virtual-machines/extensions/diagnostics-linux.md).
 2. Ölçümleri toplamaya, kümenizde dağıtılan kapsayıcıları izlemeye ve günlüklerinizi görselleştirmenize yardımcı olmak için [Log Analytics aracısını ayarlayın](service-fabric-diagnostics-event-analysis-oms.md) 

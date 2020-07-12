@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76904950"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260292"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Komutları onarma Yöneticisi hizmetine sorgula ve gönder.
@@ -19,7 +20,7 @@ Komutları onarma Yöneticisi hizmetine sorgula ve gönder.
 |Komut|Açıklama|
 | --- | --- |
 | Onayla-zorla | Verilen onarım görevinin onayını zorlar. |
-| delete | Tamamlanmış bir onarım görevini siler. |
+| silme | Tamamlanmış bir onarım görevini siler. |
 | list | Verilen filtrelerle eşleşen Onarım görevlerinin listesini alır. |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl RPM onaylama-zorlama
@@ -92,4 +93,4 @@ Bu API Service Fabric platformunu destekler; doğrudan kodunuzdan kullanılması
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

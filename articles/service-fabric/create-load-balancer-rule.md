@@ -3,17 +3,18 @@ title: Küme için Azure Load Balancer kuralı oluşturma
 description: Azure Service Fabric kümeniz için bağlantı noktaları açmak üzere bir Azure Load Balancer yapılandırın.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025393"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259043"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric kümesi için bağlantı noktası açma
 
 Azure Service Fabric kümeniz ile dağıtılan yük dengeleyici, trafiği bir düğümde çalışan uygulamanıza yönlendirir. Uygulamanızı farklı bir bağlantı noktası kullanacak şekilde değiştirirseniz, bu bağlantı noktasını (veya farklı bir bağlantı noktasını yönlendirmelisiniz) Azure Load Balancer.
 
-Service Fabric kümenizi Azure 'a dağıttığınızda, sizin için otomatik olarak bir yük dengeleyici oluşturulur. Yük dengeleyiciniz yoksa, bkz. [Internet 'e yönelik yük dengeleyici yapılandırma](../load-balancer/load-balancer-get-started-internet-portal.md).
+Service Fabric kümenizi Azure 'a dağıttığınızda, sizin için otomatik olarak bir yük dengeleyici oluşturulur. Yük dengeleyiciniz yoksa, bkz. [Internet 'e yönelik yük dengeleyici yapılandırma](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -24,7 +25,7 @@ Service Fabric uygulamanızın **ServiceManifest.xml** yapılandırma dosyası, 
 
 ## <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
-Bir Load Balancer kuralı, internet 'e yönelik bir bağlantı noktası açar ve trafiği, uygulamanız tarafından kullanılan iç düğümün bağlantı noktasına iletir. Yük dengeleyiciniz yoksa, bkz. [Internet 'e yönelik yük dengeleyici yapılandırma](../load-balancer/load-balancer-get-started-internet-portal.md).
+Bir Load Balancer kuralı, internet 'e yönelik bir bağlantı noktası açar ve trafiği, uygulamanız tarafından kullanılan iç düğümün bağlantı noktasına iletir. Yük dengeleyiciniz yoksa, bkz. [Internet 'e yönelik yük dengeleyici yapılandırma](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 Load Balancer kuralı oluşturmak için aşağıdaki bilgileri toplamanız gerekir:
 

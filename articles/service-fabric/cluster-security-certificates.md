@@ -4,12 +4,12 @@ description: Service Fabric kümelerinde sertifika tabanlı kimlik doğrulaması
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429674"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259030"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric kümelerinde X. 509.440 sertifika tabanlı kimlik doğrulaması
 
@@ -180,7 +180,7 @@ Daha önce, bir Service Fabric kümesinin güvenlik ayarlarının, kimlik doğru
 
 Belirtildiği gibi, sertifika doğrulama her zaman sertifikanın zincirini oluşturmayı ve değerlendirmeyi gerektirir. CA tarafından verilen sertifikalar için bu görünüşe göre basit işletim sistemi API çağrısı genellikle veren PKI 'nın çeşitli uç noktalarına giden çok sayıda giden çağrı ve yanıtları önbelleğe alma gibi işlemleri kapsar. Bir Service Fabric kümesinde sertifika doğrulama çağrılarının ön sürümü verildiğinde, PKI 'nın uç noktalarında herhangi bir sorun, kümenin veya sağ bir dökümdeki kullanılabilirliğinin düşmesine neden olabilir. Giden çağrılar gizlenemez (bunun hakkında daha fazla bilgi için bkz. SSS bölümünde aşağıda verilmiştir), başarısız olan CRL çağrılarının neden olduğu doğrulama hatalarını maskelemek için aşağıdaki ayarlar kullanılabilir.
 
-  * CrlCheckingFlag-' Güvenlik ' bölümünün altında, dize UINT öğesine dönüştürüldü. Bu ayarın değeri, zincir oluşturma davranışını değiştirerek sertifika zinciri durum hatalarını maskelemek için Service Fabric tarafından kullanılır; ' dwFlags ' parametresi olarak Win32 CryptoAPI [Certgetcertificatezincirine](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) çağrı ' ya geçirilir ve işlev tarafından kabul edilen herhangi bir geçerli bayrak birleşimine ayarlanabilir. 0 değeri, Service Fabric çalışma zamanını herhangi bir güven durumu hatasını yoksayacak şekilde zorlar. Bu, kullanımı önemli bir güvenlik pozlaması oluşturduğundan önerilmez. Varsayılan değer 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) ' dir.
+  * CrlCheckingFlag-' Güvenlik ' bölümünün altında, dize UINT öğesine dönüştürüldü. Bu ayarın değeri, zincir oluşturma davranışını değiştirerek sertifika zinciri durum hatalarını maskelemek için Service Fabric tarafından kullanılır; ' dwFlags ' parametresi olarak Win32 CryptoAPI [Certgetcertificatezincirine](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) çağrı ' ya geçirilir ve işlev tarafından kabul edilen herhangi bir geçerli bayrak birleşimine ayarlanabilir. 0 değeri, Service Fabric çalışma zamanını herhangi bir güven durumu hatasını yoksayacak şekilde zorlar. Bu, kullanımı önemli bir güvenlik pozlaması oluşturduğundan önerilmez. Varsayılan değer 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) ' dir.
 
   Ne zaman kullanılır: Yerel test için, otomatik olarak imzalanan sertifikalar veya sertifikaları desteklemek için uygun bir ortak anahtar altyapısına sahip olmayan geliştirici sertifikaları. Ayrıca, PKI 'lar arasında geçiş sırasında, AIR-gapped ortamlarında azaltma olarak da kullanılabilir.
 
@@ -257,7 +257,7 @@ Aşama 2 ' nin tamamlanması, kümenin ortak ad tabanlı sertifikalara dönüşt
 Ayrı bir makalede, sertifikaların Service Fabric bir kümeye yönetilmesi ve sağlanması konusu ele alınacaktır.
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Sorun giderme ve sık sorulan sorular
-Service Fabric kümelerinde kimlik doğrulama ile ilgili sorunların hata ayıklaması kolay olmadığından, aşağıdaki ipuçları ve ipuçları yardımcı olabilir. Araştırmalardan başlamak için en kolay yol, kümenin düğümlerinde Service Fabric olay günlüklerini incelemektir, ancak aynı zamanda yalnızca belirtileri gösterme, ancak bunların komşu bir sürümüne bağlanamama düğümlerdir. Windows 'da, anlam olayları genellikle sırasıyla ' uygulamalar ve hizmetler Logs\Microsoft-ServiceFabric\Admin ' veya ' Operational ' kanalları altında günlüğe kaydedilir. Bazen [CAPI2 günlüğünü etkinleştirmek](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), sertifika doğrulama, CRL/CTL alma vb. ile ilgili daha fazla ayrıntı yakalamak için yararlı olabilir. (yeniden oluşturma işlemini tamamladıktan sonra bunu devre dışı bırakmayı unutmayın, oldukça ayrıntılı olabilir.)
+Service Fabric kümelerinde kimlik doğrulama ile ilgili sorunların hata ayıklaması kolay olmadığından, aşağıdaki ipuçları ve ipuçları yardımcı olabilir. Araştırmalardan başlamak için en kolay yol, kümenin düğümlerinde Service Fabric olay günlüklerini incelemektir, ancak aynı zamanda yalnızca belirtileri gösterme, ancak bunların komşu bir sürümüne bağlanamama düğümlerdir. Windows 'da, anlam olayları genellikle sırasıyla ' uygulamalar ve hizmetler Logs\Microsoft-ServiceFabric\Admin ' veya ' Operational ' kanalları altında günlüğe kaydedilir. Bazen [CAPI2 günlüğünü etkinleştirmek](/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), sertifika doğrulama, CRL/CTL alma vb. ile ilgili daha fazla ayrıntı yakalamak için yararlı olabilir. (yeniden oluşturma işlemini tamamladıktan sonra bunu devre dışı bırakmayı unutmayın, oldukça ayrıntılı olabilir.)
 
 Kimlik doğrulama sorunları yaşayan bir kümede kendilerine bildirimde bulunan tipik belirtiler şunlardır: 
   - düğümler aşağı/geçiş döngüsüne 
@@ -300,5 +300,4 @@ Belirtilerin her biri farklı sorunlardan kaynaklanmış olabilir ve aynı temel
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    CAPI1 (örneğin, "Microsoft Gelişmiş RSA ve AES şifreleme sağlayıcısı") sağlayıcısını kullanarak küme sertifikasını yeniden oluşturun. Şifreleme sağlayıcıları hakkında daha fazla bilgi için bkz. [şifreleme sağlayıcılarını anlama](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers)
-
+    CAPI1 (örneğin, "Microsoft Gelişmiş RSA ve AES şifreleme sağlayıcısı") sağlayıcısını kullanarak küme sertifikasını yeniden oluşturun. Şifreleme sağlayıcıları hakkında daha fazla bilgi için bkz. [şifreleme sağlayıcılarını anlama](/windows/win32/seccertenroll/understanding-cryptographic-providers)

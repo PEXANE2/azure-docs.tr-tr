@@ -3,11 +3,12 @@ title: Uygulama için diğer Azure kaynaklarına erişim verme
 description: Bu makalede, yönetilen kimlik özellikli Service Fabric uygulamasına Azure Active Directory tabanlı kimlik doğrulamasını destekleyen diğer Azure kaynaklarına erişim izni verme açıklanmaktadır.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614802"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258950"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric uygulamasının Azure kaynaklarına yönetilen kimlik erişimi verme (Önizleme)
 
@@ -101,7 +102,7 @@ Ve sistem tarafından atanan Yönetilen kimlikler için:
     }
 ```
 
-Daha fazla ayrıntı için lütfen bkz. [kasa-güncelleştirme erişim ilkesi](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
+Daha fazla ayrıntı için lütfen bkz. [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Sistem tarafından atanan yönetilen kimlik ile Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

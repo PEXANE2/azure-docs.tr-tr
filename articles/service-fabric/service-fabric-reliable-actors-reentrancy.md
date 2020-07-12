@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645540"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260954"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors yeniden giriş
 Reliable Actors çalışma zamanı, varsayılan olarak mantıksal çağrı bağlamı tabanlı yeniden giriş yapılmasına izin verir. Bu, aktörlerin aynı çağrı bağlamı zincirinde olmaları durumunda yer almasına izin verir. Örneğin, oyuncu aktör C 'ye bir ileti gönderen aktör B 'ye bir ileti gönderir. İleti işlemenin bir parçası olarak, aktör C aktör A 'yı çağırırsa ileti yeniden alınır, bu nedenle izin verilir. Farklı bir çağrı bağlamının parçası olan diğer tüm iletiler, işleme bitene kadar aktör A 'da engellenir.
@@ -101,4 +102,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Aktör API 'si başvuru belgelerinde](https://msdn.microsoft.com/library/azure/dn971626.aspx) yeniden giriş hakkında daha fazla bilgi edinin
+* [Aktör API 'si başvuru belgelerinde](/previous-versions/azure/dn971626(v=azure.100)) yeniden giriş hakkında daha fazla bilgi edinin

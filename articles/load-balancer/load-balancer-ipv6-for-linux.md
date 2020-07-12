@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8bd62bab627beb70a8fcba276bf8c2eca309c45
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74225314"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259727"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM 'Ler için DHCPv6 'yi yapılandırma
 
@@ -37,31 +38,38 @@ Bu belgede, Linux sanal makineniz bir IPv6 adresi edinmesi için DHCPv6 'nin nas
 
 1. */Etc/DHCP/dhclient6.conf* dosyasını düzenleyin ve aşağıdaki satırı ekleyin:
 
-        timeout 10;
+    ```config
+    timeout 10;
+    ```
 
 2. Eth0 arabirimi için ağ yapılandırmasını aşağıdaki yapılandırmayla düzenleyin:
 
    * **Ubuntu 12,04 ve 14,04**' de, */etc/Network/Interfaces.exe d/ET0.cfg* dosyasını düzenleyin. 
    * **Ubuntu 16,04**' de */etc/Network/Interfaces.exe d/50-Cloud-init.exe* dosyasını düzenleyin.
 
-         iface eth0 inet6 auto
-             up sleep 5
-             up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```config
+    iface eth0 inet6 auto
+        up sleep 5
+        up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```
 
 3. IPv6 adresini Yenile:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
+
 Ubuntu 17,10 ile başlayarak, varsayılan ağ yapılandırma mekanizması [Netplan]( https://netplan.io)' dır.  Install/örneklemesi oluşturma sırasında NETPLAN şu konumdaki YAML yapılandırma dosyalarından ağ yapılandırmasını okur:/{lib, vs, Run}/Netplan/*. YAML.
 
-Lütfen yapılandırmanızda her Ethernet arabirimi için bir *dhcp6: true* ifadesini ekleyin.  Örneğin:
-  
-        network:
-          version: 2
-          ethernets:
-            eno1:
-              dhcp6: true
+Lütfen yapılandırmanızda her Ethernet arabirimi için bir *dhcp6: true* ifadesini ekleyin.  Örnek:
+
+```config
+network:
+  version: 2
+  ethernets:
+    eno1:
+      dhcp6: true
+```
 
 Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN ile ilgili başvuru bilgileri Için belirtilen ağ Daemon 'e cihazların denetimini bırakma https://netplan.io/reference
  
@@ -69,13 +77,17 @@ Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN 
 
 1. */Etc/DHCP/dhclient6.conf* dosyasını düzenleyin ve aşağıdaki satırı ekleyin:
 
-        timeout 10;
+    ```config
+    timeout 10;
+    ```
 
 2. */Etc/Network/Interfaces* dosyasını düzenleyin ve aşağıdaki yapılandırmayı ekleyin:
 
-        iface eth0 inet6 auto
-            up sleep 5
-            up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```config
+    iface eth0 inet6 auto
+        up sleep 5
+        up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```
 
 3. IPv6 adresini Yenile:
 
@@ -87,12 +99,16 @@ Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN 
 
 1. */Etc/sysconfig/Network* dosyasını düzenleyin ve aşağıdaki parametreyi ekleyin:
 
-        NETWORKING_IPV6=yes
+    ```config
+    NETWORKING_IPV6=yes
+    ```
 
 2. */Etc/sysconfig/Network-Scripts/ifcfg-ET0* dosyasını düzenleyin ve aşağıdaki iki parametreyi ekleyin:
 
-        IPV6INIT=yes
-        DHCPV6C=yes
+    ```config
+    IPV6INIT=yes
+    DHCPV6C=yes
+    ```
 
 3. IPv6 adresini Yenile:
 
@@ -112,9 +128,11 @@ Azure 'daki son SUSE Linux Enterprise Server (SLES) ve openSUSE görüntüleri, 
 
 2. */Etc/sysconfig/Network/ifcfg-ET0* dosyasını düzenleyin ve aşağıdaki parametreyi ekleyin:
 
-        DHCLIENT6_MODE='managed'
+    ```config
+    DHCLIENT6_MODE='managed'
+    
 
-3. IPv6 adresini Yenile:
+3. Renew the IPv6 address:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -126,11 +144,15 @@ Azure 'daki son SLES ve openSUSE görüntüleri, DHCPv6 ile önceden yapılandı
 
 1. */Etc/sysconfig/Network/ifcfg-ET0* dosyasını düzenleyin ve `#BOOTPROTO='dhcp4'` parametresini aşağıdaki değerle değiştirin:
 
-        BOOTPROTO='dhcp'
+    ```config
+    BOOTPROTO='dhcp'
+    ```
 
 2. */Etc/sysconfig/Network/ifcfg-ET0* dosyasına şu parametreyi ekleyin:
 
-        DHCLIENT6_MODE='managed'
+    ```config
+    DHCLIENT6_MODE='managed'
+    ```
 
 3. IPv6 adresini Yenile:
 
@@ -144,11 +166,13 @@ Azure 'daki son CoreOS görüntüleri, DHCPv6 ile önceden yapılandırılmışt
 
 1. */Etc/systemd/Network/10_dhcp. Network* dosyasını düzenleyin:
 
-        [Match]
-        eth0
+    ```config
+    [Match]
+    eth0
 
-        [Network]
-        DHCP=ipv6
+    [Network]
+    DHCP=ipv6
+    ```
 
 2. IPv6 adresini Yenile:
 

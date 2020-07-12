@@ -4,12 +4,12 @@ description: Azure Service Fabric kümesi için güvenlik senaryoları ve bunlar
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080677"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261079"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric kümesi güvenlik senaryoları
 
@@ -27,7 +27,7 @@ Düğümden düğüme güvenlik, bir kümedeki VM 'Ler veya bilgisayarlar arası
 
 ![Düğümden düğüme iletişimin diyagramı][Node-to-Node]
 
-Azure 'da çalıştırılan kümeler ve Windows üzerinde çalışan tek başına kümeler, Windows Server bilgisayarları için [sertifika güvenliği](https://msdn.microsoft.com/library/ff649801.aspx) veya [Windows güvenliği](https://msdn.microsoft.com/library/ff649396.aspx) kullanabilir.
+Azure 'da çalıştırılan kümeler ve Windows üzerinde çalışan tek başına kümeler, Windows Server bilgisayarları için [sertifika güvenliği](/previous-versions/msp-n-p/ff649801(v=pandp.10)) veya [Windows güvenliği](/previous-versions/msp-n-p/ff649396(v=pandp.10)) kullanabilir.
 
 ### <a name="node-to-node-certificate-security"></a>Düğümden düğüme Sertifika güvenliği
 
@@ -54,7 +54,7 @@ Tek başına bir Windows Server kümesi için Windows güvenliği ayarlama hakk�
 
 ![İstemciden düğüme iletişimin diyagramı][Client-to-Node]
 
-Azure 'da çalışan kümeler ve Windows üzerinde çalışan tek başına kümeler, her ikisi de [sertifika güvenliği](https://msdn.microsoft.com/library/ff649801.aspx) veya [Windows güvenliği](https://msdn.microsoft.com/library/ff649396.aspx)kullanabilir, ancak öneri, mümkün olduğunda X. 509.440 sertifika kimlik doğrulamasını kullanmaktır.
+Azure 'da çalışan kümeler ve Windows üzerinde çalışan tek başına kümeler, her ikisi de [sertifika güvenliği](/previous-versions/msp-n-p/ff649801(v=pandp.10)) veya [Windows güvenliği](/previous-versions/msp-n-p/ff649396(v=pandp.10))kullanabilir, ancak öneri, mümkün olduğunda X. 509.440 sertifika kimlik doğrulamasını kullanmaktır.
 
 ### <a name="client-to-node-certificate-security"></a>İstemciden düğüme Sertifika güvenliği
 
@@ -95,7 +95,7 @@ Kümeyi oluştururken yönetici ve Kullanıcı istemci rollerini ayarlayın. Her
 
 ## <a name="x509-certificates-and-service-fabric"></a>X. 509.440 sertifikaları ve Service Fabric
 
-X. 509.440 dijital sertifikaları genellikle istemcilerin ve sunucuların kimliğini doğrulamak için kullanılır. İletileri şifrelemek ve dijital olarak imzalamak için de kullanılır. Service Fabric, bir kümeyi güvenli hale getirmek ve uygulama güvenliği özellikleri sağlamak için X. 509.440 sertifikaları kullanır. X. 509.952 dijital sertifikaları hakkında daha fazla bilgi için bkz. [sertifikalarla çalışma](https://msdn.microsoft.com/library/ms731899.aspx). Azure 'da Service Fabric kümeler için sertifikaları yönetmek üzere [Key Vault](../key-vault/general/overview.md) kullanırsınız.
+X. 509.440 dijital sertifikaları genellikle istemcilerin ve sunucuların kimliğini doğrulamak için kullanılır. İletileri şifrelemek ve dijital olarak imzalamak için de kullanılır. Service Fabric, bir kümeyi güvenli hale getirmek ve uygulama güvenliği özellikleri sağlamak için X. 509.440 sertifikaları kullanır. X. 509.952 dijital sertifikaları hakkında daha fazla bilgi için bkz. [sertifikalarla çalışma](/dotnet/framework/wcf/feature-details/working-with-certificates). Azure 'da Service Fabric kümeler için sertifikaları yönetmek üzere [Key Vault](../key-vault/general/overview.md) kullanırsınız.
 
 Göz önünde bulundurmanız gereken bazı önemli noktalar:
 

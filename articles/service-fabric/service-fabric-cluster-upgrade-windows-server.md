@@ -5,18 +5,19 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31712ce4f661b13802d9a0f2d798c1fe87fdebf3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793151"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261011"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Kümenizde çalışan Service Fabric sürümünü yükseltme 
 
 Modern bir sistem için yükseltme özelliği, ürününüzün uzun süreli başarısına yönelik bir anahtardır. Azure Service Fabric kümesi, sahip olduğunuz bir kaynaktır. Bu makalede, tek başına kümenizde çalışan Service Fabric sürümünün nasıl yükseltileceği açıklanır.
 
 > [!NOTE]
-> Kümenizin her zaman desteklenen bir Service Fabric sürümü çalıştırmasını sağlayın. Microsoft yeni bir Service Fabric sürümü duyurusu yaparken, önceki sürüm, duyuru tarihinden itibaren en az 60 gün sonra destek sonuna kadar işaretlenir. Yeni yayınlar [Service Fabric ekip blogundan](https://blogs.msdn.microsoft.com/azureservicefabric/)duyurulur. Yeni sürüm, bu noktada seçim yapmak için kullanılabilir.
+> Kümenizin her zaman desteklenen bir Service Fabric sürümü çalıştırmasını sağlayın. Microsoft yeni bir Service Fabric sürümü duyurusu yaparken, önceki sürüm, duyuru tarihinden itibaren en az 60 gün sonra destek sonuna kadar işaretlenir. Yeni yayınlar [Service Fabric ekip blogundan](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)duyurulur. Yeni sürüm, bu noktada seçim yapmak için kullanılabilir.
 >
 >
 
@@ -65,7 +66,7 @@ Küme durumu uyarısını gördüğünüzde, kümeyi yükseltin:
     Aşağıdakine benzer bir çıktı almalısınız:
 
     ![Service Fabric sürümlerini al][getfabversions]
-3. [Başlat-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) Windows PowerShell komutunu kullanarak kullanılabilir bir sürüme küme yükseltmesi başlatın.
+3. [Başlat-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade) Windows PowerShell komutunu kullanarak kullanılabilir bir sürüme küme yükseltmesi başlatın.
 
     ```powershell
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <codeversion#> -Monitored -FailureAction Rollback
@@ -80,7 +81,7 @@ Küme durumu uyarısını gördüğünüzde, kümeyi yükseltin:
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-servicefabricclusterupgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
+    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-servicefabricclusterupgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
 
     Geri alma ile sonuçlanan sorunları düzelttikten sonra, daha önce açıklanan adımları izleyerek yükseltmeyi yeniden başlatın.
 
@@ -88,7 +89,7 @@ Küme durumu uyarısını gördüğünüzde, kümeyi yükseltin:
 Küme düğümlerinizin [Microsoft Indirme merkezi](https://download.microsoft.com)'ne internet bağlantısı yoksa, kümenizi desteklenen bir sürüme yükseltmek için bu adımları kullanın.
 
 > [!NOTE]
-> İnternet 'e bağlı olmayan bir küme çalıştırıyorsanız, yeni sürümler hakkında bilgi edinmek için [Service Fabric ekip blogunu](https://blogs.msdn.microsoft.com/azureservicefabric/) izlemeniz gerekir. Sistem, yeni sürümlerden sizi uyarmak için bir küme sistem durumu uyarısı göstermez.  
+> İnternet 'e bağlı olmayan bir küme çalıştırıyorsanız, yeni sürümler hakkında bilgi edinmek için [Service Fabric ekip blogunu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) izlemeniz gerekir. Sistem, yeni sürümlerden sizi uyarmak için bir küme sistem durumu uyarısı göstermez.  
 >
 >
 
@@ -103,7 +104,7 @@ Bir yapılandırma yükseltmesi başlamadan önce aşağıdaki özelliği *false
 "fabricClusterAutoupgradeEnabled": false,
 ```
 
-Kullanım ayrıntıları için, [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) PowerShell komutuna bakın. Yapılandırma yükseltmesini başlamadan önce JSON 'inizdeki ' clusterConfigurationVersion ' öğesini güncelleştirdiğinizden emin olun.
+Kullanım ayrıntıları için, [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) PowerShell komutuna bakın. Yapılandırma yükseltmesini başlamadan önce JSON 'inizdeki ' clusterConfigurationVersion ' öğesini güncelleştirdiğinizden emin olun.
 
 ```powershell
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
@@ -111,7 +112,7 @@ Kullanım ayrıntıları için, [Start-ServiceFabricClusterConfigurationUpgrade]
 
 ### <a name="cluster-upgrade-workflow"></a>Küme yükseltme iş akışı
 
-1. Kümedeki düğümlerden birinden [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) komutunu çalıştırın ve *targetcodeversion*' a göz önünde yararlanın.
+1. Kümedeki düğümlerden birinden [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) komutunu çalıştırın ve *targetcodeversion*' a göz önünde yararlanın.
 
 2. Güncel sürüme sahip tüm yükseltme uyumlu sürümleri listelemek ve ilişkili indirme bağlantılarından karşılık gelen paketi indirmek için Internet 'e bağlı bir makineden aşağıdakileri çalıştırın:
 
@@ -154,7 +155,7 @@ Kullanım ayrıntıları için, [Start-ServiceFabricClusterConfigurationUpgrade]
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-servicefabricclusterupgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
+    Küme sistem durumu ilkelerine uyulmazsa, yükseltme geri alınır. Start-ServiceFabricClusterUpgrade komutuna yönelik özel sistem durumu ilkeleri belirtmek için [Start-servicefabricclusterupgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)belgelerine bakın.
 
     Geri alma ile sonuçlanan sorunları düzelttikten sonra, daha önce açıklanan adımları izleyerek yükseltmeyi yeniden başlatın.
 

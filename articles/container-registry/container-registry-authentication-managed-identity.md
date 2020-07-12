@@ -3,11 +3,12 @@ title: Yönetilen kimlikle kimlik doğrulaması
 description: Kullanıcı tarafından atanan veya sistem tarafından atanan yönetilen bir Azure kimliği kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlama.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456499"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259095"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure Container Registry 'de kimlik doğrulamak için Azure yönetilen kimliği kullanma 
 
@@ -95,7 +96,7 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-### <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
+### <a name="install-the-azure-cli"></a>Azure CLI'yi yükleme
 
 Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) bölümündeki adımları izleyin. Bu makalede, sürüm 2.0.55 veya üstünü yüklediğinizden emin olun.
 
@@ -238,7 +239,7 @@ Bu makalede, Azure Container Registry ile yönetilen kimlikler kullanma hakkınd
 > * Azure Container Registry 'ye kimlik erişimi verme
 > * Yönetilen kimliği kullanarak kayıt defterine erişin ve bir kapsayıcı görüntüsü çekin
 
-* [Azure kaynakları için Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/)hakkında daha fazla bilgi edinin.
+* [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/index.yml)hakkında daha fazla bilgi edinin.
 
 
 <!-- LINKS - external -->

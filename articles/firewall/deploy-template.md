@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683712"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260637"
 ---
-# <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>Hızlı başlangıç: Kullanılabilirlik Alanları Kaynak Yöneticisi şablonuyla Azure Güvenlik duvarını dağıtma
+# <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Hızlı başlangıç: Kullanılabilirlik Alanları ARM şablonuyla Azure Güvenlik duvarını dağıtma
 
-Bu hızlı başlangıçta, Azure Güvenlik duvarını üç Kullanılabilirlik Alanları dağıtmak için bir Kaynak Yöneticisi şablonu kullanırsınız. 
+Bu hızlı başlangıçta, Azure Güvenlik duvarını üç Kullanılabilirlik Alanları dağıtmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,15 +29,17 @@ Kullanıcı tanımlı bir yol, Güvenlik Duvarı kurallarının uygulandığı g
 
 Azure Güvenlik Duvarı hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını Azure Portal kullanarak dağıtma ve yapılandırma](tutorial-firewall-deploy-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall-with-availability-zones"></a>Kullanılabilirlik Alanları ile Azure Güvenlik Duvarı oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu şablon, Azure Güvenlik duvarını desteklemek için gerekli kaynaklarla birlikte Kullanılabilirlik Alanları bir Azure Güvenlik duvarı oluşturur.
-
-### <a name="review-the-template"></a>Şablonu gözden geçirin
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
 
@@ -54,9 +56,9 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Kaynak Yöneticisi şablonunu Azure 'a dağıtın:
+ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon bir Azure Güvenlik Duvarı, ağ altyapısı ve iki sanal makine oluşturur.
 
@@ -64,9 +66,9 @@ Kaynak Yöneticisi şablonunu Azure 'a dağıtın:
 
 2. Portalda, **bölgelere sahip Azure Güvenlik Duvarı 'nın korumalı alan kurulumunu oluşturma** sayfasında, aşağıdaki değerleri yazın veya seçin:
    - **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için bir ad yazın ve **Tamam**' ı seçin. 
-   - **Sanal ağ adı**: yeni VNET için bir ad yazın. 
+   - **Sanal ağ adı**: yeni VNET için bir ad yazın.
    - **Yönetici Kullanıcı adı**: yönetici kullanıcı hesabı için bir Kullanıcı adı yazın.
-   - **Yönetici parolası**: bir yönetici parolası yazın. 
+   - **Yönetici parolası**: bir yönetici parolası yazın.
 
 3. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u ve ardından **satın al**' ı seçin. Dağıtımın tamamlanması 10 dakika veya daha uzun sürebilir.
 
@@ -78,7 +80,7 @@ Bir şablondaki güvenlik duvarının JSON sözdizimi ve özellikleri hakkında 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyacınız kalmadığında, PowerShell komutunu çalıştırarak kaynak grubunu, güvenlik duvarını ve ilgili tüm kaynakları kaldırabilirsiniz `Remove-AzResourceGroup` . *Myresourcegroup*adlı bir kaynak grubunu kaldırmak için şunu çalıştırın: 
+Artık ihtiyacınız kalmadığında, PowerShell komutunu çalıştırarak kaynak grubunu, güvenlik duvarını ve ilgili tüm kaynakları kaldırabilirsiniz `Remove-AzResourceGroup` . *Myresourcegroup*adlı bir kaynak grubunu kaldırmak için şunu çalıştırın:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup

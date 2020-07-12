@@ -3,11 +3,12 @@ title: Kapsayıcı grubu için statik IP adresi
 description: Bir sanal ağda kapsayıcı grubu oluşturun ve bir Azure Application Gateway kullanarak kapsayıcılı bir Web uygulamasına statik bir ön uç IP adresi sunun
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299171"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260779"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Bir kapsayıcı grubu için statik IP adresi kullanıma sunma
 
@@ -28,7 +29,7 @@ Uygulama ağ geçidi çalıştığı ve kapsayıcı grubu, ağın Temsilcili alt
 
 Tipik bir durumda, zaten bir Azure sanal ağınız olabilir. Bir tane yoksa, aşağıdaki örnek komutlarla gösterildiği gibi bir tane oluşturun. Sanal ağın, uygulama ağ geçidi ve kapsayıcı grubu için ayrı alt ağlara ihtiyacı vardır.
 
-Gerekiyorsa, bir Azure Kaynak grubu oluşturun. Örneğin:
+Gerekiyorsa, bir Azure Kaynak grubu oluşturun. Örnek:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
@@ -102,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-[Uygulama ağ geçidi hızlı](../application-gateway/quick-create-cli.md)başlangıçdaki adımları izleyerek sanal ağda bir uygulama ağ geçidi oluşturun. Aşağıdaki [az Network Application-Gateway Create][az-network-application-gateway-create] komutu, genel ön uç IP adresine sahip bir ağ geçidi ve arka uç kapsayıcı grubuna bir yol oluşturur. Ağ Geçidi ayarları hakkında daha fazla bilgi için [Application Gateway belgelerine](/azure/application-gateway/) bakın.
+[Uygulama ağ geçidi hızlı](../application-gateway/quick-create-cli.md)başlangıçdaki adımları izleyerek sanal ağda bir uygulama ağ geçidi oluşturun. Aşağıdaki [az Network Application-Gateway Create][az-network-application-gateway-create] komutu, genel ön uç IP adresine sahip bir ağ geçidi ve arka uç kapsayıcı grubuna bir yol oluşturur. Ağ Geçidi ayarları hakkında daha fazla bilgi için [Application Gateway belgelerine](../application-gateway/index.yml) bakın.
 
 ```azurecli
 az network application-gateway create \

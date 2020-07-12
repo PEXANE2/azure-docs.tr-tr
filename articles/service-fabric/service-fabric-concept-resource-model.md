@@ -4,12 +4,12 @@ description: Bu makalede, Azure Resource Manager kullanarak bir Azure Service Fa
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682637"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258743"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli
 
@@ -56,7 +56,7 @@ Kümenizin içindeki kaynaklara genel erişim düzeyi **özel**olarak ayarlanara
 
 * [Azure Active Directory](../storage/common/storage-auth-aad-app.md)kullanarak bloblara ve kuyruklara erişim yetkisi verin.
 * [Azure Portal RBAC](../storage/common/storage-auth-aad-rbac-portal.md)kullanarak Azure Blob ve kuyruk verilerine erişim izni verin.
-* [Paylaşılan erişim imzasını](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak erişim yetkisi verin.
+* [Paylaşılan erişim imzasını](/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak erişim yetkisi verin.
 
 Aşağıdaki ekran görüntüsündeki örnek, Bloblar için anonim okuma erişimi kullanır.
 
@@ -91,7 +91,7 @@ Artık uygulama hazırlanmıştır ve uygulamayı dağıtmak için Kaynak Yönet
 >
 >
 
-| Parametre              | Açıklama                                 | Örnek                                                      | Yorumlar                                                     |
+| Parametre              | Açıklama                                 | Örnek                                                      | Açıklamalar                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Dağıtım yaptığınız kümenin adı | SF-cluster123                                                |                                                              |
 | uygulama            | Uygulamanın adı                 | Oylama                                                       |
@@ -166,13 +166,13 @@ Aşağıdaki nedenlerden biri için zaten Service Fabric bir kümeye dağıtılm
 
 Kaynak Yöneticisi içindeki uygulama kaynak modeli kullanılarak dağıtılan bir uygulamayı silmek için:
 
-1. Uygulamanın kaynak KIMLIĞINI almak için [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) cmdlet 'ini kullanın:
+1. Uygulamanın kaynak KIMLIĞINI almak için [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) cmdlet 'ini kullanın:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Uygulama kaynaklarını silmek için [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) cmdlet 'ini kullanın:
+1. Uygulama kaynaklarını silmek için [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) cmdlet 'ini kullanın:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

@@ -3,19 +3,19 @@ title: Azure Service Fabric tek başına kümesini yükseltme
 description: Azure Service Fabric tek başına kümesinin sürümünü veya yapılandırmasını yükseltme hakkında bilgi edinin.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790652"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260980"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric tek başına Kümeyi yükseltme ve güncelleştirme
 
 Tüm modern bir sistem için, ürününüzün uzun süreli başarısını sağlamak üzere yükselme için tasarlanmaya yönelik bir anahtar vardır. Azure Service Fabric tek başına kümesi, sahip olduğunuz bir kaynaktır. Bu makalede, nelerin yükseltileceğini veya güncelleştirileceğini açıklanmaktadır.
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kümenizde çalışan yapı sürümünü denetleme
-Kümenizin her zaman [desteklenen bir Service Fabric sürümü](service-fabric-versions.md)çalıştırmasını sağlayın. Microsoft yeni bir Service Fabric sürümü duyurusu yaparken, önceki sürüm, duyuru tarihinden itibaren en az 60 gün sonra destek sonuna kadar işaretlenir. Yeni yayınlar [Service Fabric ekip blogundan](https://blogs.msdn.microsoft.com/azureservicefabric/)duyurulur. Yeni sürüm, bu noktada seçim yapmak için kullanılabilir.
+Kümenizin her zaman [desteklenen bir Service Fabric sürümü](service-fabric-versions.md)çalıştırmasını sağlayın. Microsoft yeni bir Service Fabric sürümü duyurusu yaparken, önceki sürüm, duyuru tarihinden itibaren en az 60 gün sonra destek sonuna kadar işaretlenir. Yeni yayınlar [Service Fabric ekip blogundan](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)duyurulur. Yeni sürüm, bu noktada seçim yapmak için kullanılabilir.
 
 Kümenizi, Microsoft tarafından yayımlandıklarında otomatik yapı yükseltmeleri alacak şekilde ayarlayabilir veya kümenizin açık olmasını istediğiniz desteklenen bir yapı sürümünü el ile seçebilirsiniz. Daha fazla bilgi için, [kümenizde çalışan Service Fabric sürümünü yükseltin](service-fabric-cluster-upgrade-windows-server.md).
 

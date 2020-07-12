@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a5ebd4822c5f0ff1735464bb4d5b42c436ee529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905821"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260316"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Service Fabric adları altında mağaza ve sorgu özellikleri.
@@ -18,7 +19,7 @@ Service Fabric adları altında mağaza ve sorgu özellikleri.
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Belirtilen Service Fabric özelliğini siler. |
+| silme | Belirtilen Service Fabric özelliğini siler. |
 | get | Belirtilen Service Fabric özelliğini alır. |
 | list | Verilen bir ad altındaki tüm Service Fabric özellikleriyle ilgili bilgileri alır. |
 | konur | Service Fabric özelliği oluşturur veya güncelleştirir. |
@@ -121,4 +122,4 @@ Verilen bir ad altında belirtilen Service Fabric özelliğini oluşturur veya g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

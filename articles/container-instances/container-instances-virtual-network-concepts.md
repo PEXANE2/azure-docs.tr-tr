@@ -4,12 +4,12 @@ description: Azure sanal ağına kapsayıcı grupları dağıtmaya yönelik sena
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
-ms.openlocfilehash: 77fbdb1720e571027f28b5bdca5c0e3c65c3ded2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584408"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259535"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Sanal ağ senaryoları ve kaynakları
 
@@ -67,7 +67,7 @@ Kapsayıcı grupları için kullandığınız alt ağ yalnızca kapsayıcı grup
 
 Bir ağ profili, Azure kaynakları için bir ağ yapılandırması şablonudur. Kaynak için belirli ağ özelliklerini belirtir, örneğin, dağıtılması gereken alt ağ. Bir alt ağa (ve dolayısıyla bir sanal ağa) bir kapsayıcı grubu dağıtmak için [az Container Create][az-container-create] komutunu ilk kez kullandığınızda, Azure sizin için bir ağ profili oluşturur. Daha sonra bu ağ profilini alt ağa gelecek dağıtımlar için kullanabilirsiniz. 
 
-Bir alt ağa kapsayıcı grubu dağıtmak için bir Kaynak Yöneticisi şablonu, YAML dosyası ya da bir programlama yöntemi kullanmak için, bir ağ profilinin tam Kaynak Yöneticisi kaynak KIMLIĞI sağlamanız gerekir. Daha önce [az Container Create][az-container-create]kullanılarak oluşturulmuş bir profil kullanabilir veya Kaynak Yöneticisi şablonu kullanarak bir profil oluşturabilirsiniz (bkz. [şablon örneği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) ve [başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Daha önce oluşturulmuş bir profilin KIMLIĞINI almak için [az Network Profile List][az-network-profile-list] komutunu kullanın. 
+Bir alt ağa kapsayıcı grubu dağıtmak için bir Kaynak Yöneticisi şablonu, YAML dosyası ya da bir programlama yöntemi kullanmak için, bir ağ profilinin tam Kaynak Yöneticisi kaynak KIMLIĞI sağlamanız gerekir. Daha önce [az Container Create][az-container-create]kullanılarak oluşturulmuş bir profil kullanabilir veya Kaynak Yöneticisi şablonu kullanarak bir profil oluşturabilirsiniz (bkz. [şablon örneği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) ve [başvurusu](/azure/templates/microsoft.network/networkprofiles)). Daha önce oluşturulmuş bir profilin KIMLIĞINI almak için [az Network Profile List][az-network-profile-list] komutunu kullanın. 
 
 Aşağıdaki diyagramda, Azure Container Instances için temsilci atanmış bir alt ağa birkaç kapsayıcı grubu dağıtıldı. Bir alt ağa bir kapsayıcı grubu dağıttıktan sonra, aynı ağ profilini belirterek buna ek kapsayıcı grupları dağıtabilirsiniz.
 
@@ -86,4 +86,3 @@ Aşağıdaki diyagramda, Azure Container Instances için temsilci atanmış bir 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
-

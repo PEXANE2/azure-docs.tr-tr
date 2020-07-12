@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086900"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260061"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Azure Edge bölgesi önizlemesi hakkında
 
@@ -75,6 +75,8 @@ Yaygın kullanım örnekleri şunlardır:
 Edge bölgeleri aşağıdaki işleçlerle iş ortaklığı içinde sunulacaktır:
 
 - &T (Atlanta, Dallas ve Los Angeles) 
+
+5. ağlara bağlı en iyileştirilmiş ve ölçeklenebilir uygulamalar üzerinde çalışan ISV 'Ler artık Ultra düşük gecikme süresi platformları, mobil ve bağlı senaryolar oluştururken&T ile Azure Edge bölgelerinin yeni Los Angeles önizleme konumunu kullanabilir. Güvenli, yüksek bant genişliği bağlantısından yararlanmak için erken benimseyen programına kaydolun.
 
 Daha fazla bilgi için [Edge bölgesi ekibine başvurun](https://aka.ms/EdgeZones) .
 

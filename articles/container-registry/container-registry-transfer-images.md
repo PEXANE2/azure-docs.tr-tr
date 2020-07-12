@@ -4,12 +4,12 @@ description: Azure depolama hesaplarını kullanarak bir aktarım işlem hattı 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186937"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259456"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Yapıtları başka bir kayıt defterine aktar
 
@@ -36,7 +36,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 * **Depolama hesapları** -bir abonelikte ve tercih ettiğiniz konumda kaynak ve hedef depolama hesapları oluşturun. Test amacıyla, kaynak ve hedef kayıt defterlerinden aynı abonelik veya abonelikleri kullanabilirsiniz. Platformlar arası senaryolar için genellikle her bulutta ayrı bir depolama hesabı oluşturursunuz. Gerekirse, [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) veya diğer araçlarla depolama hesapları oluşturun. 
 
   Her hesapta yapıt aktarımı için bir blob kapsayıcısı oluşturun. Örneğin, *Aktarım*adlı bir kapsayıcı oluşturun. İki veya daha fazla aktarım işlem hattı aynı depolama hesabını paylaşabilir, ancak farklı depolama kapsayıcısı kapsamları kullanmalıdır.
-* **Anahtar** kasaları-Anahtar kasaları, kaynak ve hedef depolama hesaplarına erişmek IÇIN kullanılan SAS belirteç gizli dizileri depolamak için gereklidir. Kaynak ve hedef kayıt defterlerinden aynı Azure aboneliğinde veya aboneliklerde kaynak ve hedef anahtar kasaları oluşturun. Gerekirse, [Azure CLI](../key-vault/quick-create-cli.md) veya diğer araçlarla Anahtar kasaları oluşturun.
+* **Anahtar** kasaları-Anahtar kasaları, kaynak ve hedef depolama hesaplarına erişmek IÇIN kullanılan SAS belirteç gizli dizileri depolamak için gereklidir. Kaynak ve hedef kayıt defterlerinden aynı Azure aboneliğinde veya aboneliklerde kaynak ve hedef anahtar kasaları oluşturun. Gerekirse, [Azure CLI](../key-vault/secrets/quick-create-cli.md) veya diğer araçlarla Anahtar kasaları oluşturun.
 * **Ortam değişkenleri** -bu makaledeki komutlar gibi, kaynak ve hedef ortamlar için aşağıdaki ortam değişkenlerini ayarlayın. Tüm örnekler bash kabuğu için biçimlendirilir.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -257,7 +257,7 @@ az storage blob list \
 
 Kaynak depolama hesabından hedef depolama hesabına [BLOB verileri aktarmak](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) Için AzCopy aracını veya diğer yöntemleri kullanın.
 
-Örneğin, aşağıdaki [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) komut myblob 'u kaynak hesabındaki *Aktarım* kapsayıcısından hedef hesaptaki *Aktarım* kapsayıcısına kopyalar. Blob hedef hesapta varsa, üzerine yazılır. Kimlik doğrulaması, SAS belirteçlerini kaynak ve hedef kapsayıcılar için uygun izinlerle kullanır. (Belirteç oluşturma adımları gösterilmez.)
+Örneğin, aşağıdaki [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) komut myblob 'u kaynak hesabındaki *Aktarım* kapsayıcısından hedef hesaptaki *Aktarım* kapsayıcısına kopyalar. Blob hedef hesapta varsa, üzerine yazılır. Kimlik doğrulaması, SAS belirteçlerini kaynak ve hedef kapsayıcılar için uygun izinlerle kullanır. (Belirteç oluşturma adımları gösterilmez.)
 
 ```console
 azcopy copy \
@@ -366,6 +366,3 @@ Tek kapsayıcı görüntülerini ortak bir kayıt defterine veya başka bir öze
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

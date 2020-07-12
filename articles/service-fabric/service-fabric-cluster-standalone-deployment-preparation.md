@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07e3fe14478cf45df2f02378da4e83853cf9ea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079343"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261040"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric tek başına küme dağıtımınızı planlayın ve hazırlayın
 
@@ -58,10 +59,10 @@ Bir Service Fabric kümesindeki makineler için önerilen özellikler aşağıda
 * Tüm makineler için güvenli ağ veya ağlarla bağlantı
 * Windows Server işletim sistemi yüklü (geçerli sürümler: 2012 R2, 2016, 1709 veya 1803). Service Fabric Version 6.4.654.9590 ve üzeri, Server 2019 ve 1809 sürümlerini de destekler.
 * [.NET Framework 4.5.1 veya üzeri](https://www.microsoft.com/download/details.aspx?id=40773), tam yüklemesi
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* [RemoteRegistry hizmetinin](https://technet.microsoft.com/library/cc754820) tüm makinelerde çalışıyor olması gerekir
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [RemoteRegistry hizmetinin](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) tüm makinelerde çalışıyor olması gerekir
 * **Service Fabric yükleme sürücüsü NTFS dosya sistemi olmalıdır**
-* **Windows Hizmetleri *performans günlükleri & uyarıları* ve *Windows olay günlüğü* [etkin](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))olmalıdır**.
+* **Windows Hizmetleri *performans günlükleri & uyarıları* ve *Windows olay günlüğü* [etkin](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))olmalıdır**.
 
 > [!IMPORTANT]
 > Kümeyi dağıtan ve yapılandıran küme yöneticisinin her makinede [yönetici ayrıcalıklarına](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) sahip olması gerekir. Service Fabric’i bir etki alanı denetleyicisine yükleyemezsiniz.
@@ -156,7 +157,7 @@ Passed                     : True
 Şu anda bu yapılandırma testi modülü güvenlik yapılandırmasını doğrulamaz çünkü bunun bağımsız olarak gerçekleştirilmesi gerekmez.
 
 > [!NOTE]
-> Bu modülü daha sağlam hale getirmek için sürekli geliştirmeler yapıyoruz. bu nedenle, TestConfiguration tarafından şu anda yakalanmadığınız bir hatalı veya eksik durum varsa lütfen [destek kanallarımızla](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)bize bildirin.
+> Bu modülü daha sağlam hale getirmek için sürekli geliştirmeler yapıyoruz. bu nedenle, TestConfiguration tarafından şu anda yakalanmadığınız bir hatalı veya eksik durum varsa lütfen [destek kanallarımızla](./service-fabric-support.md)bize bildirin.
 >
 >
 

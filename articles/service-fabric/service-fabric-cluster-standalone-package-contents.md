@@ -5,11 +5,12 @@ author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451840"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261016"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server için tek başına Service Fabric paketi içeriği
 [İndirilen](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric tek başına paketinde aşağıdaki dosyaları bulacaksınız:
@@ -36,11 +37,11 @@ ms.locfileid: "75451840"
 | --- | --- |
 | Üzerinde ClusterConfig.Unsecure.DevCluster.js |Kümedeki her bir düğümle ilgili bilgiler de dahil olmak üzere, güvenli olmayan, üç düğümlü, tek makineli (veya sanal makine) geliştirme kümesinin ayarlarını içeren bir küme yapılandırma örnek dosyası. |
 | Üzerinde ClusterConfig.Unsecure.MultiMachine.js |Kümedeki her makinenin bilgileri de dahil olmak üzere, güvenli olmayan, çok makineli (veya sanal makine) kümesine yönelik ayarları içeren bir küme yapılandırma örnek dosyası. |
-| Üzerinde ClusterConfig.Windows.DevCluster.js |Kümedeki her bir düğümle ilgili bilgiler de dahil olmak üzere, güvenli, üç düğümlü, tek makineli (veya sanal makine) geliştirme kümesinin tüm ayarlarını içeren bir küme yapılandırma örnek dosyası. Küme, [Windows kimlikleri](https://msdn.microsoft.com/library/ff649396.aspx)kullanılarak güvenli hale getirilir. |
-| Üzerinde ClusterConfig.Windows.MultiMachine.js |Güvenli kümede bulunan her makineyle ilgili bilgiler de dahil olmak üzere, Windows güvenliği kullanan güvenli, çok makineli (veya sanal makine) kümenin tüm ayarlarını içeren bir küme yapılandırma örneği dosyası. Küme, [Windows kimlikleri](https://msdn.microsoft.com/library/ff649396.aspx)kullanılarak güvenli hale getirilir. |
+| Üzerinde ClusterConfig.Windows.DevCluster.js |Kümedeki her bir düğümle ilgili bilgiler de dahil olmak üzere, güvenli, üç düğümlü, tek makineli (veya sanal makine) geliştirme kümesinin tüm ayarlarını içeren bir küme yapılandırma örnek dosyası. Küme, [Windows kimlikleri](/previous-versions/msp-n-p/ff649396(v=pandp.10))kullanılarak güvenli hale getirilir. |
+| Üzerinde ClusterConfig.Windows.MultiMachine.js |Güvenli kümede bulunan her makineyle ilgili bilgiler de dahil olmak üzere, Windows güvenliği kullanan güvenli, çok makineli (veya sanal makine) kümenin tüm ayarlarını içeren bir küme yapılandırma örneği dosyası. Küme, [Windows kimlikleri](/previous-versions/msp-n-p/ff649396(v=pandp.10))kullanılarak güvenli hale getirilir. |
 | Üzerinde ClusterConfig.x509.DevCluster.js |Kümedeki her bir düğümle ilgili bilgiler de dahil olmak üzere, güvenli, üç düğümlü, tek makineli (veya sanal makine) geliştirme kümesinin tüm ayarlarını içeren bir küme yapılandırma örnek dosyası. Küme, x509 sertifikaları kullanılarak güvenli hale getirilir. |
 | Üzerinde ClusterConfig.x509.MultiMachine.js |Güvenli kümedeki her bir düğümün bilgileri de dahil olmak üzere, güvenli, çok makineli (veya sanal makine) kümesine yönelik tüm ayarları içeren bir küme yapılandırma örnek dosyası. Küme, x509 sertifikaları kullanılarak güvenli hale getirilir. |
-| Üzerinde ClusterConfig.gMSA.Windows.MultiMachine.js |Güvenli kümedeki her bir düğümün bilgileri de dahil olmak üzere, güvenli, çok makineli (veya sanal makine) kümesine yönelik tüm ayarları içeren bir küme yapılandırma örnek dosyası. Küme, [Grup yönetilen hizmet hesapları](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)kullanılarak güvenli hale getirilir. |
+| Üzerinde ClusterConfig.gMSA.Windows.MultiMachine.js |Güvenli kümedeki her bir düğümün bilgileri de dahil olmak üzere, güvenli, çok makineli (veya sanal makine) kümesine yönelik tüm ayarları içeren bir küme yapılandırma örnek dosyası. Küme, [Grup yönetilen hizmet hesapları](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))kullanılarak güvenli hale getirilir. |
 
 ## <a name="cluster-configuration-samples"></a>Küme yapılandırma örnekleri
 Küme yapılandırma şablonlarının en son sürümleri GitHub sayfasında bulunabilir: [tek başına küme yapılandırma örnekleri](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).

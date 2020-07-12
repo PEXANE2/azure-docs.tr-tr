@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131301"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260029"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -50,6 +50,9 @@ X. 509.952 ile otomatik sağlamayı ayarlamak için aşağıdaki dosyalara ihtiy
 * Cihaz kimliği sertifikası ve onun özel anahtar sertifikası. Tek bir kayıt oluşturursanız cihaz kimliği sertifikası, DPS 'e yüklenir. Özel anahtar IoT Edge çalışma zamanına geçirilir.
 * En azından cihaz kimliği ve ara sertifikaları olması gereken tam bir zincir sertifikası. Tam zincir sertifikası IoT Edge çalışma zamanına geçirilir.
 * Sertifika güven zincirindeki bir ara veya kök CA sertifikası. Bu sertifika, bir grup kaydı oluşturursanız, DPS 'e yüklenir.
+
+> [!NOTE]
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
 ### <a name="use-test-certificates"></a>Test sertifikalarını kullanma
 

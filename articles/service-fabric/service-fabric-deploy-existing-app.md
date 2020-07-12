@@ -3,12 +3,12 @@ title: Mevcut bir yürütülebiliri Azure Service Fabric dağıtma
 description: Mevcut bir uygulamayı Konuk yürütülebilir dosyası olarak paketlemeyi öğrenin, bu nedenle bir Service Fabric kümesine dağıtılabilir.
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520478"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259258"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Service Fabric için mevcut bir yürütülebiliri paketleme ve dağıtma
 
@@ -76,7 +76,7 @@ Konuk yürütülebiliri el ile paketleme işlemi aşağıdaki genel adımlara da
 
 ### <a name="create-the-package-directory-structure"></a>Paket dizin yapısını oluşturma
 
-[Azure Service Fabric uygulaması paketleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)bölümünde açıklandığı gibi, dizin yapısını oluşturarak başlayabilirsiniz.
+[Azure Service Fabric uygulaması paketleme](./service-fabric-package-apps.md)bölümünde açıklandığı gibi, dizin yapısını oluşturarak başlayabilirsiniz.
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Uygulamanın kodunu ve yapılandırma dosyalarını ekleme
 

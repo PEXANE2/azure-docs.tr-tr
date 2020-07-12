@@ -24,6 +24,8 @@
   items:
     - name: Windows Sanal Masaüstü kaynaklarına bağlanma
       items:
+        - name: Windows Masaüstü istemcisine bağlanma
+          href: connect-windows-7-10-2019.md
         - name: Web istemcisiyle bağlanma
           href: connect-web-2019.md
         - name: Android istemcisiyle bağlanma

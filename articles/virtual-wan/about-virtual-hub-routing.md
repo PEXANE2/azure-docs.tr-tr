@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147387"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259185"
 ---
 # <a name="about-virtual-hub-routing"></a>Sanal merkez yönlendirmesi hakkında
 
@@ -63,6 +63,9 @@ Her sanal hub için bir **yol tablosu** da kullanılabilir. None yol tablosuna y
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Bir sanal ağ bağlantısında statik yolları yapılandırma
 
 Statik yolları yapılandırmak, bir sonraki atlama IP 'si aracılığıyla trafiği bir sanal hub 'a bağlı olan bir bağlı ağ VNet 'te sağlanan bir ağ sanal gereci (NVA) olabilecek bir mekanizma sağlar. Statik yol, bir yol adından, hedef ön eklerin listesinden ve bir sonraki atlama IP 'si ile oluşur.
+
+## <a name="reset-hub"></a><a name="route"></a>Hub 'ı Sıfırla
+Yalnızca Azure portal kullanılabilir, bu seçenek kullanıcıya rota tabloları, hub yönlendiricisi veya sanal hub kaynağı gibi başarısız kaynakları doğru bir sağlama durumuna getirmek için bir yol sağlar. Bu, kullanıcının destek için Microsoft 'a başvurmadan önce dikkate alınması gereken ek bir seçenektir. Bu işlem, bir sanal hub 'daki ağ geçitlerini sıfırlamaz. 
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Temel ve standart sanal WAN 'Lara, Ilişkilendirme ve yayma özelliği kümesinden önce rota tabloları
 

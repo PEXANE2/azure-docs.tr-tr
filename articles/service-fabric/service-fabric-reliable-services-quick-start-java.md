@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cab376318bec471fa59614e5bcc716a31dc333
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184155"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260931"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java 'da Reliable Services kullanmaya başlama
 > [!div class="op_single_selector"]
@@ -190,7 +190,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[Reliablehashmap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) , durumu hizmette güvenilir bir şekilde depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Service Fabric ve güvenilir diyez eşlemeleriyle, verileri bir dış kalıcı depoya gerek duymadan doğrudan hizmetinize kaydedebilirsiniz. Güvenilir HashMaps, verilerinizi yüksek oranda kullanılabilir hale getirir. Service Fabric, hizmetinizin birden fazla *çoğaltmasını* oluşturup yöneterek bunu gerçekleştirir. Ayrıca, bu çoğaltmaları ve bunların durum geçişlerini yönetmenin karmaşıklıklarını soyutlayan bir API sağlar.
+[Reliablehashmap](/java/api/microsoft.servicefabric.data.collections.reliablehashmap) , durumu hizmette güvenilir bir şekilde depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Service Fabric ve güvenilir diyez eşlemeleriyle, verileri bir dış kalıcı depoya gerek duymadan doğrudan hizmetinize kaydedebilirsiniz. Güvenilir HashMaps, verilerinizi yüksek oranda kullanılabilir hale getirir. Service Fabric, hizmetinizin birden fazla *çoğaltmasını* oluşturup yöneterek bunu gerçekleştirir. Ayrıca, bu çoğaltmaları ve bunların durum geçişlerini yönetmenin karmaşıklıklarını soyutlayan bir API sağlar.
 
 Güvenilir koleksiyonlar, özel türleriniz dahil olmak üzere herhangi bir Java türünü, birkaç uyarılarla saklayabilir:
 

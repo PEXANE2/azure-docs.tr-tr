@@ -3,12 +3,12 @@ title: Azure Service Fabric kümesi oluşturma
 description: Azure 'da Azure Resource Manager kullanarak güvenli bir Service Fabric kümesi ayarlamayı öğrenin.  Varsayılan bir şablon kullanarak veya kendi küme şablonunuzu kullanarak bir küme oluşturabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458309"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258753"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Service Fabric kümesi oluşturma 
 > [!div class="op_single_selector"]
@@ -33,8 +33,8 @@ Bu makalede, bir kümeyi dağıtmak için Service Fabric RM PowerShell veya Azur
 * [Azure CLı sürüm 2,0 ve üzeri][azure-CLI]
 
 Service Fabric modülleriyle ilgili başvuru belgelerini buradan bulabilirsiniz:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
-* [az SF CLı modülü](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+* [Az.ServiceFabric](/powershell/module/az.servicefabric)
+* [az SF CLı modülü](/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

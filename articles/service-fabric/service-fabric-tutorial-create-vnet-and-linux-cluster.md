@@ -4,18 +4,18 @@ description: Azure CLI kullanarak mevcut bir Azure sanal ağına Linux Service F
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611705"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260229"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure sanal ağına bir Linux Service Fabric kümesi dağıtma
 
 Bu makalede, Azure CLı ve şablon kullanarak bir [Azure sanal ağına (VNet)](../virtual-network/virtual-networks-overview.md) bir Linux Service Fabric kümesi dağıtmayı öğreneceksiniz. Öğreticiyi tamamladığınızda, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz olur. PowerShell kullanarak Windows kümesi oluşturmak için bkz. [Azure’da güvenli bir Windows kümesi oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -162,7 +162,7 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Hemen bir sonraki makaleye geçmeyecekiz, ücretlendirmeden kaçınmak için [kümeyi silmek](service-fabric-cluster-delete.md) isteyebilirsiniz.
+Hemen bir sonraki makaleye geçmeyecekiz, ücretlendirmeden kaçınmak için [kümeyi silmek](./service-fabric-tutorial-delete-cluster.md) isteyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

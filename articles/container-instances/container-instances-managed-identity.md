@@ -3,12 +3,12 @@ title: Kapsayıcı grubunda yönetilen kimliği etkinleştir
 description: Diğer Azure hizmetleriyle kimlik doğrulayabilecek Azure Container Instances yönetilen bir kimliği nasıl etkinleştirebileceğinizi öğrenin
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169791"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259634"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances ile yönetilen kimlikleri kullanma
 
@@ -392,6 +392,6 @@ Bu makalede, Azure Container Instances ' deki Yönetilen kimlikler hakkında bil
 > * Azure Anahtar Kasası 'na kimlik erişimi verme
 > * Çalışan bir kapsayıcıdan anahtar kasasına erişmek için yönetilen kimliği kullanma
 
-* [Azure kaynakları için Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/)hakkında daha fazla bilgi edinin.
+* [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/index.yml)hakkında daha fazla bilgi edinin.
 
 * Azure Container Instances 'ten bir anahtar kasasına erişmek için yönetilen kimlik kullanma hakkında bir [Azure go SDK örneğine](https://medium.com/@samkreter/c98911206328) bakın.

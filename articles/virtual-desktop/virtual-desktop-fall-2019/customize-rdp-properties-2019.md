@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bfcd6927d4a2e5e0b5314b4fb2aa26c6dc46b8f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eeab433bbbfc9db0f1c5f5546ae80434899a91dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362569"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259221"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
 
@@ -36,7 +36,7 @@ Varsayılan olarak, yayımlanan RDP dosyaları aşağıdaki özellikleri içerir
 
 |RDP özellikleri | Masaüstü Bilgisayarlar | RemoteApp uygulamaları |
 |---|---| --- |
-| Çoklu monitör modu | Etkin | YOK |
+| Çoklu monitör modu | Etkin | Yok |
 | Sürücü yeniden yönlendirmeleri etkin | Sürücüler, pano, yazıcılar, COM bağlantı noktaları, USB cihazları ve akıllı kartlar| Sürücüler, pano ve Yazıcılar |
 | Uzak ses modu | Yerel olarak oynat | Yerel olarak oynat |
 
@@ -80,5 +80,5 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 
 Artık belirli bir konak havuzu için RDP özelliklerini özelleştirdiğinize göre, bir kullanıcı oturumunun parçası olarak test etmek için bir Windows sanal masaüstü istemcisinde oturum açabilirsiniz. Bu sonraki iki nasıl-TOS, tercih ettiğiniz istemciyi kullanarak bir oturuma nasıl bağlanacağınızı bildirir:
 
-- [Windows Masaüstü istemcisine bağlanma](../connect-windows-7-and-10.md)
+- [Windows Masaüstü istemcisine bağlanma](connect-windows-7-10-2019.md)
 - [Web istemcisiyle bağlanma](connect-web-2019.md)

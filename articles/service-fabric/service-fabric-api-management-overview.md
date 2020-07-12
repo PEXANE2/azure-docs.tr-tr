@@ -5,15 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76028542"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259296"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric ve Azure API Management'a genel bakış
 
-Bulut uygulamalarının normalde kullanıcılar, cihazlar ve diğer uygulamalara tek giriş noktası sağlamak için bir ön uç ağ geçidine ihtiyacı vardır. Service Fabric, bir ağ geçidi, [ASP.NET Core uygulama](service-fabric-reliable-services-communication-aspnetcore.md)veya [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)veya [Azure API Management](https://docs.microsoft.com/azure/api-management/)gibi trafik girişi için tasarlanan başka bir hizmet gibi durum bilgisi olmayan herhangi bir hizmet olabilir.
+Bulut uygulamalarının normalde kullanıcılar, cihazlar ve diğer uygulamalara tek giriş noktası sağlamak için bir ön uç ağ geçidine ihtiyacı vardır. Service Fabric, bir ağ geçidi, [ASP.NET Core uygulama](service-fabric-reliable-services-communication-aspnetcore.md)veya [Event Hubs](../event-hubs/index.yml), [IoT Hub](../iot-hub/index.yml)veya [Azure API Management](../api-management/index.yml)gibi trafik girişi için tasarlanan başka bir hizmet gibi durum bilgisi olmayan herhangi bir hizmet olabilir.
 
 Bu makale, Azure API Management Service Fabric uygulamalarınıza yönelik bir ağ geçidi olarak kullanılmasına giriş niteliğindedir. API Management, arka uç Service Fabric hizmetlerinize zengin bir yönlendirme kuralları kümesiyle API 'Ler yayımlamanıza olanak tanıyan doğrudan Service Fabric ile tümleşir.
 
@@ -76,7 +77,7 @@ Bu örnekte, aşağıdaki formül kullanılarak dinamik olarak oluşturulan bir 
 
 - `fabric:/app/users/<username>`
 
-  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolunda belirtilen değerden oluşturulur. Örneğin:
+  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolunda belirtilen değerden oluşturulur. Örnek:
 
   - `/api/users/foo`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/foo`
   - `/api/users/bar`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/bar`
@@ -95,7 +96,7 @@ Bu örnekte, aşağıdaki formül kullanılarak dinamik olarak oluşturulan bir 
 
 - `fabric:/app/users/<username>`
 
-  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolu sağlanmış değerden oluşturulur. Örneğin:
+  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolu sağlanmış değerden oluşturulur. Örnek:
 
   - `/api/users/foo`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/foo`
   - `/api/users/bar`Hizmet örneğine yönlendirilme isteği`fabric:/app/users/bar`

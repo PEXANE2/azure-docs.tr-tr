@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905974"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260346"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Ağ gizli anahtarı kaynaklarını alın ve silin.
@@ -18,7 +19,7 @@ Ağ gizli anahtarı kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Gizli kaynağı siler. |
+| silme | Gizli kaynağı siler. |
 | list | Tüm gizli kaynakları listeler. |
 | göster | Verilen ada sahip gizli kaynağı alır. |
 
@@ -82,4 +83,4 @@ Verilen ada sahip gizli kaynakla ilgili bilgileri alır. Bilgiler, gizli dizinin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

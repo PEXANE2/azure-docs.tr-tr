@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75934217"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258719"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server’da çalışan tek başına Service Fabric kümesine düğüm ekleme veya kaldırma
 [Windows Server makinelerinde tek başına Service Fabric kümenizi](service-fabric-cluster-creation-for-windows-server.md)oluşturduktan sonra, (iş) gereksinimleriniz değişebilir ve kümenize düğüm eklemeniz ya da kaldırmanız gerekecektir. Bu makalede bunun elde edilebilmesi için ayrıntılı adımlar sağlanmaktadır. Lütfen yerel geliştirme kümelerinde düğüm Ekle/Kaldır işlevinin desteklenmediğini unutmayın.
@@ -141,5 +142,4 @@ Birincil düğümlerin yerine geçen bir düğüm, ve sonra toplu işlemlere ekl
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Tek başına Windows kümesi için yapılandırma ayarları](service-fabric-cluster-manifest.md)
 * [X509 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme](service-fabric-windows-cluster-x509-security.md)
-* [Windows çalıştıran Azure VM 'leriyle tek başına Service Fabric kümesi oluşturma](service-fabric-cluster-creation-with-windows-azure-vms.md)
-
+* [Windows çalıştıran Azure VM 'leriyle tek başına Service Fabric kümesi oluşturma](./service-fabric-cluster-creation-via-arm.md)

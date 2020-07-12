@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 70b5387e5e58bd30aa61feefc1bf4e5e98af9b1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119506"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259348"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Service Fabric kümesi oluşturma
 
@@ -24,7 +24,7 @@ Bu beş düğümlü Windows kümesi, otomatik olarak imzalanan bir sertifikayla 
 
 Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
 
-[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 * [SERVICE fabrıc SDK ve PowerShell modülünü](service-fabric-get-started.md)yükler.
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)'i yükler.
+* [Azure PowerShell](/powershell/azure/install-az-ps)'i yükler.
 
 ### <a name="download-the-sample-template-and-certificate-helper-script"></a>Örnek şablonu ve sertifika Yardımcısı betiğini indirin
 
@@ -113,7 +113,7 @@ Azure Service Fabric ile ilgili daha fazla şablon bulmak için bkz. [Azure hız
 * **adminPassword** varsayılan *genel parola* belirtecinden farklı bir değerdir
 * **certificateThumbprint**, **Sourcevaultresourceıd**ve **certificateurlvalue** tüm boş dizlardır ( `""` )
 
-Örneğin:
+Örnek:
 
 ```json
 {

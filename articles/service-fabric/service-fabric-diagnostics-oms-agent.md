@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366754"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258686"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile performans Izleme
 
@@ -22,7 +23,7 @@ Bu makale, Log Analytics aracısını kümenize bir sanal makine ölçek kümesi
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Azure CLı aracılığıyla aracı uzantısını ekleme
 
-Log Analytics aracısını kümenize eklemenin en iyi yolu, Azure CLı ile birlikte sunulan sanal makine ölçek kümesi API 'Leri aracılığıyla yapılır. Azure CLı 'yi henüz ayarlayıp, Azure portal ve [Cloud Shell](../cloud-shell/overview.md) bir örnek açın veya [Azure CLI 'yı kurun](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Log Analytics aracısını kümenize eklemenin en iyi yolu, Azure CLı ile birlikte sunulan sanal makine ölçek kümesi API 'Leri aracılığıyla yapılır. Azure CLı 'yi henüz ayarlayıp, Azure portal ve [Cloud Shell](../cloud-shell/overview.md) bir örnek açın veya [Azure CLI 'yı kurun](/cli/azure/install-azure-cli).
 
 1. Cloud Shell istendiğinde, kaynağınız ile aynı abonelikte çalıştığınızdan emin olun. Bunu ile denetleyin `az account show` ve "ad" değerinin kümenizin aboneliğiyle eşleştiğinden emin olun.
 
@@ -72,7 +73,7 @@ Artık Log Analytics aracıyı eklediğine göre, hangi performans sayaçların�
 
 3. **Gelişmiş ayarlar**' a tıklayın.
 
-4. **Veriler**' e ve ardından **Windows veya Linux performans sayaçları**' na tıklayın. Etkinleştirmek için seçebileceğiniz varsayılan sayaçların bir listesi vardır ve koleksiyon aralığını da ayarlayabilirsiniz. Ayrıca, toplanacak [ek performans sayaçları](service-fabric-diagnostics-event-generation-perf.md) ekleyebilirsiniz. Bu [makalede](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)doğru biçime başvurulur.
+4. **Veriler**' e ve ardından **Windows veya Linux performans sayaçları**' na tıklayın. Etkinleştirmek için seçebileceğiniz varsayılan sayaçların bir listesi vardır ve koleksiyon aralığını da ayarlayabilirsiniz. Ayrıca, toplanacak [ek performans sayaçları](service-fabric-diagnostics-event-generation-perf.md) ekleyebilirsiniz. Bu [makalede](/windows/win32/perfctrs/specifying-a-counter-path)doğru biçime başvurulur.
 
 5. **Kaydet**' e ve ardından **Tamam**' a tıklayın.
 
@@ -91,5 +92,5 @@ Artık Log Analytics aracıyı eklediğine göre, hangi performans sayaçların�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * İlgili [performans sayaçlarını](service-fabric-diagnostics-event-generation-perf.md)toplayın. Log Analytics aracısını belirli performans sayaçlarını toplayacak şekilde yapılandırmak için, [veri kaynaklarını yapılandırmayı](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)gözden geçirin.
-* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../log-analytics/log-analytics-alerts.md) ayarlamak Için Azure izleyici günlüklerini yapılandırma
+* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../azure-monitor/platform/alerts-overview.md) ayarlamak Için Azure izleyici günlüklerini yapılandırma
 * Alternatif olarak, Azure Tanılama uzantısı aracılığıyla performans sayaçlarını toplayabilir [ve Application Insights gönderebilirsiniz](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

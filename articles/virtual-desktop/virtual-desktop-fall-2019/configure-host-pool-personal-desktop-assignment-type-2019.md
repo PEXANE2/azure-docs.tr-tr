@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204872"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259795"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Kişisel masaüstü konak havuzu atama türünü yapılandırma
 
@@ -92,5 +92,5 @@ Oturum konağını kişisel masaüstü ana bilgisayar havuzuna eklemeniz gerekiy
 
 Kişisel masaüstü atama türünü yapılandırdığınıza göre, bir Windows sanal masaüstü istemcisinde oturum açarak Kullanıcı oturumunun bir parçası olarak test edebilirsiniz. Bu sonraki iki nasıl-TOS, tercih ettiğiniz istemciyi kullanarak bir oturuma nasıl bağlanacağınızı bildirir:
 
-- [Windows Masaüstü istemcisine bağlanma](../connect-windows-7-and-10.md)
+- [Windows Masaüstü istemcisine bağlanma](connect-windows-7-10-2019.md)
 - [Web istemcisiyle bağlanma](connect-web-2019.md)

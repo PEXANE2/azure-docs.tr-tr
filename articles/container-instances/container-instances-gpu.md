@@ -3,12 +3,12 @@ title: GPU özellikli kapsayıcı örneği dağıt
 description: GPU kaynaklarını kullanarak işlem yoğunluklu kapsayıcı uygulamaları çalıştırmak için Azure Container Instances 'ı dağıtmayı öğrenin.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169757"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259594"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU kaynaklarını kullanan kapsayıcı örneklerini dağıtma
 
@@ -209,7 +209,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örneğin:
+GPU kaynaklarının kullanılması pahalı olabileceğinden, kapsayıcılarınızın uzun süreler boyunca beklenmedik şekilde çalışmadığından emin olun. Azure portal Kapsayıcılarınızı izleyin veya [az Container Show][az-container-show] komutuyla bir kapsayıcı grubunun durumunu denetleyin. Örnek:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [YAML dosyası](container-instances-multi-container-yaml.md) veya [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanarak bir kapsayıcı grubu dağıtma hakkında daha fazla bilgi edinin.
-* Azure 'da [GPU IYILEŞTIRILMIŞ VM boyutları](../virtual-machines/linux/sizes-gpu.md) hakkında daha fazla bilgi edinin.
+* Azure 'da [GPU IYILEŞTIRILMIŞ VM boyutları](../virtual-machines/sizes-gpu.md) hakkında daha fazla bilgi edinin.
 
 
 <!-- IMAGES -->

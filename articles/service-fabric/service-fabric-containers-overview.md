@@ -3,11 +3,12 @@ title: Service Fabric ve kapsayıcılara genel bakış
 description: Mikro hizmet uygulamalarını dağıtmak için Service Fabric ve kapsayıcıların kullanımına genel bakış. Bu makalede, kapsayıcıların nasıl kullanılabileceği ve Service Fabric içindeki kullanılabilir yetenekler hakkında genel bir bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 8/8/2018
-ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458213"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259229"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric ve kapsayıcılar
 
@@ -64,7 +65,7 @@ Aşağıdaki şekilde, kullanılabilecek farklı sanallaştırma ve yalıtım d�
 
 Bir kapsayıcının iyi bir seçenek olduğu tipik örnekler aşağıda verilmiştir:
 
-* **IIS kaldırma ve kaydırma**: var olan BIR [ASP.NET MVC](https://www.asp.net/mvc) uygulamasını ASP.NET Core geçirmek yerine bir kapsayıcıya yerleştirebilirsiniz. Bu ASP.NET MVC uygulamaları Internet Information Services (IIS) bağımlıdır. Bu uygulamaları, önceden düzenlenen IIS görüntüsünden kapsayıcı görüntülerine paketleyebilir ve Service Fabric ile dağıtabilirsiniz. Windows kapsayıcıları hakkında bilgi için bkz. [Windows Server 'Da kapsayıcı görüntüleri](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
+* **IIS kaldırma ve kaydırma**: var olan BIR [ASP.NET MVC](https://www.asp.net/mvc) uygulamasını ASP.NET Core geçirmek yerine bir kapsayıcıya yerleştirebilirsiniz. Bu ASP.NET MVC uygulamaları Internet Information Services (IIS) bağımlıdır. Bu uygulamaları, önceden düzenlenen IIS görüntüsünden kapsayıcı görüntülerine paketleyebilir ve Service Fabric ile dağıtabilirsiniz. Windows kapsayıcıları hakkında bilgi için bkz. [Windows Server 'Da kapsayıcı görüntüleri](/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
 
 * **Kapsayıcıları ve Service Fabric mikro hizmetleri karıştırma**: uygulamanızın bir parçası için mevcut bir kapsayıcı görüntüsünü kullanın. Örneğin, uygulamanızın Web ön ucu için [NGINX kapsayıcısını](https://hub.docker.com/_/nginx/) ve daha yoğun arka uç hesaplaması için durum bilgisi olan hizmetleri kullanabilirsiniz.
 
@@ -89,7 +90,7 @@ Service Fabric, Kapsayıcılı mikro hizmetlerden oluşan uygulamalar oluşturma
 * Kapsayıcıda güvenlik kimlik bilgilerini ayarlama yeteneği.
 * Kapsayıcılar için farklı ağ modları seçimi.
 
-Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturma, Azure Container Registry 'da özel bir Docker kayıt defteri oluşturma ve daha fazlası gibi Azure 'da kapsayıcı desteğine yönelik kapsamlı bir genel bakış için bkz. [kapsayıcılar Için Azure](https://docs.microsoft.com/azure/containers/).
+Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturma, Azure Container Registry 'da özel bir Docker kayıt defteri oluşturma ve daha fazlası gibi Azure 'da kapsayıcı desteğine yönelik kapsamlı bir genel bakış için bkz. [kapsayıcılar Için Azure](../containers/index.yml).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -97,6 +98,6 @@ Bu makalede, çalışan kapsayıcılar için Service Fabric destek hakkında bil
 
 [Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma](service-fabric-get-started-containers-linux.md)  
 [Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma](service-fabric-get-started-containers.md)  
-[Windows kapsayıcıları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Windows kapsayıcıları hakkında daha fazla bilgi edinin](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

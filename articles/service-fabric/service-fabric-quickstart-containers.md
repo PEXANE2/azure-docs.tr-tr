@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75466273"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260503"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Hızlı başlangıç: Windows kapsayıcıları Service Fabric'e dağıtma
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure aboneliği ([ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturabilirsiniz).
 * Şunları çalıştıran bir geliştirme bilgisayarı:
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
 Service Fabric SDK’sı ve araçları, bir kapsayıcıyı Service Fabric kümesine dağıtmanıza yardımcı olan bir hizmet şablonu sağlar.
 
-Visual Studio'yu “Yönetici” olarak başlatın.  **Dosya** > **New**yeni > **Proje**' yi seçin.
+Visual Studio'yu “Yönetici” olarak başlatın.  **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
 **Service Fabric uygulama**seçin, "MyFirstContainer" olarak adlandırın ve **Oluştur**' a tıklayın.
 
@@ -76,7 +76,7 @@ Microsoft, Windows Server'ın farklı sürümleri üzerinde oluşturulmuş IIS s
 
 Hizmet bildirimi, `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016` nano sunucusu için tek bir görüntü belirtmeye devam eder.
 
-*ApplicationManifest. xml* dosyasında Ayrıca, **passwor'** i **yanlış**olarak değiştirin. Bu hesap ve parola, Docker Hub 'ında bulunan ortak kapsayıcı görüntüsü için boştur, bu nedenle boş bir parolanın şifrelenmesi bir yapı hatası üretecek için şifrelemeyi kapattık.
+Ayrıca, *ApplicationManifest.xml* dosyasında, **Passwordencrypted** **değerini false**olarak değiştirin. Bu hesap ve parola, Docker Hub 'ında bulunan ortak kapsayıcı görüntüsü için boştur, bu nedenle boş bir parolanın şifrelenmesi bir yapı hatası üretecek için şifrelemeyi kapattık.
 
 ```xml
 <RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
@@ -90,13 +90,13 @@ Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan y�
 
 Aşağıdaki betiği çalıştırmadan önce, PowerShell çalıştırmasında `Connect-AzAccount` Azure ile bir bağlantı oluşturun.
 
-Aşağıdaki betiği Pano 'ya kopyalayın ve **Windows PowerShell ISE**açın.  İçeriği boş Untitled1. ps1 penceresine yapıştırın. Sonra betikteki Değişkenler için değerler `subscriptionId`sağlayın:, `certpwd`, `certfolder`, `adminuser`, `adminpwd`, vb.  İçin `certfolder` belirttiğiniz dizin, betiği çalıştırmadan önce mevcut olmalıdır.
+Aşağıdaki betiği Pano 'ya kopyalayın ve **Windows PowerShell ISE**açın.  İçeriği boş Untitled1.ps1 penceresine yapıştırın. Sonra betikteki Değişkenler için değerler sağlayın: `subscriptionId` ,,, `certpwd` `certfolder` `adminuser` ,, vb `adminpwd` .  İçin belirttiğiniz dizin, `certfolder` betiği çalıştırmadan önce mevcut olmalıdır.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
 Değişkenleri için değerlerinizi girdikten sonra, komut dosyasını çalıştırmak için **F5** tuşuna basın.
 
-Betiği çalıştıktan ve küme oluşturulduktan sonra çıktıda bulun `ClusterEndpoint` . Örneğin:
+Betiği çalıştıktan ve küme oluşturulduktan sonra `ClusterEndpoint` çıktıda bulun. Örnek:
 
 ```powershell
 ...
@@ -105,9 +105,9 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 ### <a name="install-the-certificate-for-the-cluster"></a>Küme için sertifikayı yükler
 
-Şimdi de PFX 'yi *Currentuser\certificate* deposuna yükleyeceğiz. PFX dosyası, yukarıdaki PowerShell betiğindeki `certfolder` ortam değişkenini kullanarak belirttiğiniz dizinde olacaktır.
+Şimdi de PFX 'yi *Currentuser\certificate* deposuna yükleyeceğiz. PFX dosyası, `certfolder` Yukarıdaki PowerShell betiğindeki ortam değişkenini kullanarak belirttiğiniz dizinde olacaktır.
 
-Bu dizine geçin ve ardından `certfolder` DIZININIZDE bulunan PFX dosyasının adını ve `certpwd` değişkende belirttiğiniz parolayı değiştirerek aşağıdaki PowerShell komutunu çalıştırın. Bu örnekte, geçerli dizin, PowerShell betiğinin `certfolder` değişkeni tarafından belirtilen dizine ayarlanır. `Import-PfxCertificate` Komutun çalıştırıldığı komut:
+Bu dizine geçin ve ardından dizininizde bulunan PFX dosyasının adını `certfolder` ve değişkende belirttiğiniz parolayı değiştirerek aşağıdaki PowerShell komutunu çalıştırın `certpwd` . Bu örnekte, geçerli dizin, `certfolder` PowerShell betiğinin değişkeni tarafından belirtilen dizine ayarlanır. `Import-PfxCertificate`Komutun çalıştırıldığı komut:
 
 ```powershell
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
@@ -132,9 +132,9 @@ Uygulama hazır olduğuna göre, doğrudan Visual Studio'dan bir kümeye dağıt
 
 Çözüm Gezgini'nde **MyFirstContainer**’a sağ tıklayın ve **Yayımla**’yı seçin. Yayımla iletişim kutusu görüntülenir.
 
-Yukarıdaki `Import-PfxCertificate` komutu çalıştırdığınız zaman PowerShell penceresinde `19000` **CN =** içeriğini kopyalayın ve buna bağlantı noktası ekleyin. Örneğin, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. **Bağlantıyı bağlantı uç noktası** alanına kopyalayın. Gelecekteki bir adımda ihtiyaç duyacağınız için bu değeri unutmayın.
+Yukarıdaki komutu çalıştırdığınız zaman PowerShell penceresinde **CN =** içeriğini kopyalayın `Import-PfxCertificate` ve buna bağlantı noktası ekleyin `19000` . Örneğin, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. **Bağlantıyı bağlantı uç noktası** alanına kopyalayın. Gelecekteki bir adımda ihtiyaç duyacağınız için bu değeri unutmayın.
 
-**Gelişmiş Bağlantı Parametrelerine** tıklayıp bağlantı parametresi bilgilerini doğrulayın.  *FindValue* ve *servercertparmak izi* değerleri, önceki adımda çalıştırdığınızda `Import-PfxCertificate` yüklenen sertifikanın parmak izine uymalıdır.
+**Gelişmiş Bağlantı Parametrelerine** tıklayıp bağlantı parametresi bilgilerini doğrulayın.  *FindValue* ve *servercertparmak izi* değerleri, önceki adımda çalıştırdığınızda yüklenen sertifikanın parmak izine uymalıdır `Import-PfxCertificate` .
 
 ![Yayımla İletişim Kutusu](./media/service-fabric-quickstart-containers/publish-app.png)
 
@@ -142,13 +142,13 @@ Yukarıdaki `Import-PfxCertificate` komutu çalıştırdığınız zaman PowerSh
 
 Kümedeki her uygulamanın benzersiz bir adı olmalıdır. Ad çakışması varsa, Visual Studio projesini yeniden adlandırın ve yeniden dağıtın.
 
-Bir tarayıcı açın ve önceki adımda **bağlantı uç noktası** alanına yerleştirdiğiniz adrese gidin. İsteğe bağlı olarak, URL’nin başına düzen tanımlayıcısını (`http://`) ve sonuna bağlantı noktasını (`:80`) ekleyebilirsiniz. Örneğin, http:\//mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
+Bir tarayıcı açın ve önceki adımda **bağlantı uç noktası** alanına yerleştirdiğiniz adrese gidin. İsteğe bağlı olarak, URL’nin başına düzen tanımlayıcısını (`http://`) ve sonuna bağlantı noktasını (`:80`) ekleyebilirsiniz. Örneğin, http: \/ /mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
 
  IIS varsayılan web sayfasını görmeniz gerekir: ![IIS varsayılan web sayfası][iis-default]
 
 ## <a name="clean-up"></a>Temizleme
 
-Küme çalışırken ücretlendirmeye devam edersiniz. [Kümenizi silmeyi](service-fabric-cluster-delete.md)göz önünde bulundurun.
+Küme çalışırken ücretlendirmeye devam edersiniz. [Kümenizi silmeyi](./service-fabric-tutorial-delete-cluster.md)göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

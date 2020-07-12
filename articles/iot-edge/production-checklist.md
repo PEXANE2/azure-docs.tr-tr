@@ -4,18 +4,19 @@ description: Uygun sertifikalarla cihazlarınızı ayarlama ve gelecekteki kod g
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431916"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258783"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -37,11 +38,14 @@ IoT Edge cihazlar, bir Raspberry Pi 'den dizüstü bilgisayardan bir sunucu üze
 
 ### <a name="install-production-certificates"></a>Üretim sertifikalarını yükleme
 
-Üretimde her IoT Edge cihazda yüklü bir cihaz sertifika yetkilisi (CA) sertifikası gerekir. Bu CA sertifikası daha sonra config. YAML dosyasındaki IoT Edge çalışma zamanına bildirilmiştir. Geliştirme ve test senaryoları için, config. YAML dosyasında hiçbir sertifika bildirilirse IoT Edge çalışma zamanı geçici sertifikalar oluşturur. Ancak, bu geçici sertifikaların son tarihi üç ay sonra sona erer ve üretim senaryolarında güvenli değildir.
+Üretimde her IoT Edge cihazda yüklü bir cihaz sertifika yetkilisi (CA) sertifikası gerekir. Bu CA sertifikası daha sonra config. YAML dosyasındaki IoT Edge çalışma zamanına bildirilmiştir. Geliştirme ve test senaryoları için, config. YAML dosyasında hiçbir sertifika bildirilirse IoT Edge çalışma zamanı geçici sertifikalar oluşturur. Ancak, bu geçici sertifikaların son tarihi üç ay sonra sona erer ve üretim senaryolarında güvenli değildir. Üretim senaryolarında, kendi cihaz CA sertifikanızı otomatik olarak imzalanan bir sertifika yetkilisinden sağlamanız veya ticari bir sertifika yetkilisinden satın almanız gerekir.
+
+> [!NOTE]
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
 Cihaz CA sertifikasının rolünü anlamak için bkz. [Azure IoT Edge sertifikaları nasıl kullanır](iot-edge-certs.md).
 
-Sertifikaları bir IoT Edge cihazına yüklemek ve config. YAML dosyasından başvurmak hakkında daha fazla bilgi için bkz. [bir IoT Edge cihazına üretim sertifikalarını yüklemek](how-to-manage-device-certificates.md).
+Sertifikaları IoT Edge bir cihaza yüklemek ve config. YAML dosyasından başvurmak hakkında daha fazla bilgi için bkz. [bir IoT Edge cihazında sertifikayı yönetme](how-to-manage-device-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Bir cihaz yönetimi planına sahip olmanız
 
@@ -272,7 +276,7 @@ Kapsayıcı motoru günlük seçeneklerinde tüm kapsayıcı günlük dosyaları
 
 Bu bilgileri adlı bir dosyaya ekleyin (veya ekleyin) `daemon.json` ve cihaz platformunuzun doğru konumunu yerleştirin.
 
-| Platform | Konum |
+| Platform | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
@@ -281,7 +285,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
 
 ```yml
 "createOptions": {

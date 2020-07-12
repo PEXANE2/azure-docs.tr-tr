@@ -3,12 +3,12 @@ title: Bir kümenin Azure Service Fabric sürümünü yükseltme
 description: Küme güncelleştirme modunu ayarlama, sertifika yükseltme, uygulama bağlantı noktaları ekleme, işletim sistemi düzeltme ekleri yapma gibi bir Service Fabric kümesini çalıştıran Service Fabric kodu ve/veya yapılandırmayı yükseltin. Yükseltmeler gerçekleştirildiğinde ne bekleyebiliriz?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789609"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261054"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Kümenin Service Fabric sürümünü yükseltme
 
@@ -19,7 +19,7 @@ Kümenizi, Microsoft tarafından yayımlandıklarında otomatik yapı yükseltme
 Bu, portalda "upgradeMode" küme yapılandırmasını ayarlayarak veya dinamik bir kümede oluşturma sırasında veya sonrasında Kaynak Yöneticisi kullanarak yapabilirsiniz 
 
 > [!NOTE]
-> Kümenizin, her zaman desteklenen bir yapı sürümü çalıştırdığından emin olun. Service Fabric 'in yeni bir sürümünün yayınlanmasıyla ilgili olarak, önceki sürüm, bu tarihten en az 60 günden sonra destek sonuna kadar işaretlenir. Yeni yayınlar [Service Fabric ekip blogu '](https://blogs.msdn.microsoft.com/azureservicefabric/)na duyurulur. Yeni sürüm daha sonra seçmek üzere kullanılabilir. 
+> Kümenizin, her zaman desteklenen bir yapı sürümü çalıştırdığından emin olun. Service Fabric 'in yeni bir sürümünün yayınlanmasıyla ilgili olarak, önceki sürüm, bu tarihten en az 60 günden sonra destek sonuna kadar işaretlenir. Yeni yayınlar [Service Fabric ekip blogu '](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)na duyurulur. Yeni sürüm daha sonra seçmek üzere kullanılabilir. 
 > 
 > 
 

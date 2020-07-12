@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 880770345eb7d65850db322bd97d64c60b6681ee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906203"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260873"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
@@ -19,7 +20,7 @@ Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
 |Komut|Açıklama|
 | --- | --- |
 | oluşturmaya | Belirtilen açıklamayı kullanarak bir Service Fabric uygulaması oluşturur. |
-| delete | Mevcut bir Service Fabric uygulamasını siler. |
+| silme | Mevcut bir Service Fabric uygulamasını siler. |
 | dağıtılan | Service Fabric düğümünde dağıtılan bir uygulamayla ilgili bilgileri alır. |
 | dağıtılan-sistem durumu | Service Fabric düğümünde dağıtılan bir uygulamanın sistem durumu hakkındaki bilgileri alır. |
 | dağıtılan-liste | Bir Service Fabric düğümünde dağıtılan uygulamaların listesini alır. |
@@ -549,4 +550,4 @@ Service Fabric uygulama paketini görüntü deposuna kopyalayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

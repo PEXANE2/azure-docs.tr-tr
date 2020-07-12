@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749542"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260535"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric programlama modeline genel bakış
 
@@ -25,7 +26,7 @@ Service Fabric hizmetlerinizi yazmak ve yönetmek için birçok yol sunar. Hizme
 
 Varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinleştirir. Service Fabric Ayrıca, [kapsayıcılardaki](service-fabric-containers-overview.md)Hizmetleri dağıtabilir. Service Fabric, Windows Server 2016 ve üzeri sürümlerde Linux kapsayıcıları ve Windows kapsayıcıları dağıtımını destekler. Kapsayıcı görüntüleri, herhangi bir kapsayıcı deposundan çekilir ve makineye dağıtılabilir. Mevcut uygulamaları Konuk yürütülebilir dosyalar olarak dağıtabilir, durum bilgisiz veya durum bilgisi olan güvenilir hizmetler veya kapsayıcılarda Reliable Actors Service Fabric ve aynı uygulamadaki kapsayıcılardaki süreçler ve hizmetlerde Hizmetleri karıştırabilirsiniz.
 
-[Windows veya Linux 'ta hizmetlerinizin Kapsayıcılı hale getirme hakkında daha fazla bilgi edinin](service-fabric-deploy-container.md)
+[Windows veya Linux 'ta hizmetlerinizin Kapsayıcılı hale getirme hakkında daha fazla bilgi edinin](./service-fabric-get-started-containers.md)
 
 ## <a name="reliable-services"></a>Reliable Services
 
@@ -37,7 +38,7 @@ Service Fabric dışlamalı, Reliable Services durumu durum bilgisi olabilir, bu
 
 [Reliable Services hakkında daha fazla bilgi edinin](service-fabric-reliable-services-introduction.md) veya [ilk güvenilir hizmetinizi yazmaya](service-fabric-reliable-services-quick-start.md)başlayın.
 
-## <a name="aspnet-core"></a>ASP.NET Çekirdeği
+## <a name="aspnet-core"></a>ASP.NET Core
 
 ASP.NET Core, Web uygulamaları, IoT uygulamaları ve mobil arka uçlar gibi modern bulut tabanlı Internet 'e bağlı uygulamalar oluşturmaya yönelik açık kaynaklı, platformlar arası bir çerçevedir. Service Fabric, güvenilir koleksiyonlardan ve Service Fabric gelişmiş düzenleme özelliğinden yararlanan hem durum bilgisi olmayan hem de durum bilgisi olan ASP.NET Core uygulamaları yazmak için ASP.NET Core ile tümleşir.
 

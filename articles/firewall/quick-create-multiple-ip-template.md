@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: birden çok genel IP adresi ile Azure Güvenlik Duvarı oluşturma-Kaynak Yöneticisi şablonu'
-description: Birden çok genel IP adresi olan bir Azure Güvenlik duvarı oluşturmak için Kaynak Yöneticisi şablonunu nasıl kullanacağınızı öğrenin.
+description: Birden çok genel IP adresi olan bir Azure Güvenlik duvarı oluşturmak için Azure Resource Manager şablonu (ARM şablonu) kullanmayı öğrenin.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,30 +8,32 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e89188e7ebc979c403b86ee26c876e8c40aa208
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680551"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260568"
 ---
-# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Hızlı başlangıç: birden çok genel IP adresi ile Azure Güvenlik Duvarı oluşturma-Kaynak Yöneticisi şablonu
+# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Hızlı başlangıç: birden çok genel IP adresi-ARM şablonuyla Azure Güvenlik Duvarı oluşturma
 
-Bu hızlı başlangıçta, birden çok genel IP adresi ile bir Azure Güvenlik Duvarı dağıtmak için bir Kaynak Yöneticisi şablonu kullanırsınız. Dağıtılan güvenlik duvarında, iki Windows Server 2019 sanal makinesine RDP bağlantılarına izin veren NAT kural koleksiyonu kuralları vardır.
+Bu hızlı başlangıçta, birden çok genel IP adresi ile bir Azure Güvenlik Duvarı dağıtmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Dağıtılan güvenlik duvarında, iki Windows Server 2019 sanal makinesine RDP bağlantılarına izin veren NAT kural koleksiyonu kuralları vardır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Birden çok genel IP adresiyle Azure Güvenlik Duvarı hakkında daha fazla bilgi için, bkz. [Azure PowerShell kullanarak birden çok genel IP adresi Ile Azure Güvenlik Duvarı dağıtma](deploy-multi-public-ip-powershell.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall"></a>Azure Güvenlik Duvarı oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu şablon, Azure Güvenlik duvarını desteklemek için gerekli kaynaklarla birlikte iki genel IP adresi ile bir Azure Güvenlik duvarı oluşturur.
-
-### <a name="review-the-template"></a>Şablonu gözden geçirin
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/fw-docs-qs).
 
@@ -48,9 +50,9 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Kaynak Yöneticisi şablonu Azure 'a dağıtma:
+ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon bir Azure Güvenlik Duvarı, ağ altyapısı ve iki sanal makine oluşturur.
 

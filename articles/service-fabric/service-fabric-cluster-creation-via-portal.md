@@ -3,12 +3,12 @@ title: Azure portalında bir Service Fabric kümesi oluşturma
 description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Service Fabric kümesi ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611161"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259317"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
@@ -121,7 +121,7 @@ Küme düğümlerinizi yapılandırın. Düğüm türleri, VM boyutlarını, VM 
 ### <a name="3-security"></a>3. güvenlik
 ![Azure portal üzerindeki güvenlik yapılandırmalarının ekran görüntüsü.][BasicSecurityConfigs]
 
-Sizin için güvenli bir test kümesi ayarlamayı kolay hale getirmek için **temel** seçeneği sunuyoruz. Zaten bir sertifikanız varsa ve bunu [anahtar kasanıza](/azure/key-vault/) yüklediyseniz (ve dağıtım için anahtar kasasını etkinleştirdiyseniz), **özel** seçeneğini kullanın
+Sizin için güvenli bir test kümesi ayarlamayı kolay hale getirmek için **temel** seçeneği sunuyoruz. Zaten bir sertifikanız varsa ve bunu [anahtar kasanıza](../key-vault/index.yml) yüklediyseniz (ve dağıtım için anahtar kasasını etkinleştirdiyseniz), **özel** seçeneğini kullanın
 
 #### <a name="basic-option"></a>Temel seçenek
 Var olan bir anahtar kasasını eklemek veya yeniden kullanmak ve bir sertifika eklemek için ekranları izleyin. Sertifikanın eklenmesi zaman uyumlu bir işlemdir ve bu nedenle sertifikanın oluşturulmasını beklemeniz gerekir.
@@ -202,7 +202,7 @@ Kümenizde belirttiğiniz NodeTypes 'ın her biri, bir sanal makine ölçek küm
 Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güvenli bir kümeniz vardır. Sonra, [kümenize bağlanın](service-fabric-connect-to-secure-cluster.md) ve [uygulama gizli dizilerini yönetmeyi](service-fabric-application-secret-management.md)öğrenin.  Ayrıca [Service Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md

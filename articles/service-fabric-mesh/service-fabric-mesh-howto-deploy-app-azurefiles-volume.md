@@ -6,19 +6,20 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76718829"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260103"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure dosya tabanlı bir birimi Service Fabric bir kafes uygulamasına bağlama 
 
 Bu makalede, bir Azure dosya tabanlı birimin Service Fabric bir kafes uygulamasının bir hizmetine nasıl bağlayalacağı açıklanır.  Azure dosyaları birim sürücüsü, bir Azure dosya paylaşımının hizmet durumunu kalıcı hale getirmek için kullandığınız bir kapsayıcıya bağlanması için kullanılan bir Docker birimi sürücüsüdür. Birimler, genel amaçlı dosya depolaması sağlar ve normal disk g/ç dosya API 'Lerini kullanarak dosyaları okumanızı/yazmanızı sağlar.  Uygulama verilerini depolamaya yönelik birimler ve seçenekler hakkında daha fazla bilgi edinmek için [depolama durumunu](service-fabric-mesh-storing-state.md)okuyun.
 
-Bir hizmete bir birimi bağlamak için, Service Fabric kafes uygulamanızda bir birim kaynağı oluşturun ve sonra bu birime hizmetinize başvurun.  Birim kaynağını bildirmek ve hizmet kaynağında buna başvurmak, [YAML tabanlı kaynak dosyalarında](#declare-a-volume-resource-and-update-the-service-resource-yaml) ya da [JSON tabanlı dağıtım şablonunda](#declare-a-volume-resource-and-update-the-service-resource-json)yapılabilir. Birimi bağlamadan önce Azure dosyalarında bir Azure depolama hesabı ve bir [dosya paylaşma](/azure/storage/files/storage-how-to-create-file-share)oluşturun.
+Bir hizmete bir birimi bağlamak için, Service Fabric kafes uygulamanızda bir birim kaynağı oluşturun ve sonra bu birime hizmetinize başvurun.  Birim kaynağını bildirmek ve hizmet kaynağında buna başvurmak, [YAML tabanlı kaynak dosyalarında](#declare-a-volume-resource-and-update-the-service-resource-yaml) ya da [JSON tabanlı dağıtım şablonunda](#declare-a-volume-resource-and-update-the-service-resource-json)yapılabilir. Birimi bağlamadan önce Azure dosyalarında bir Azure depolama hesabı ve bir [dosya paylaşma](../storage/files/storage-how-to-create-file-share.md)oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!NOTE]
 > **WINDOWS RS5 geliştirme makinesinde dağıtım ile Ilgili bilinen sorun:** Azurefile birimlerinin bağlanmasını engelleyen RS5 Windows makinelerde New-SmbGlobalMapping PowerShell cmdlet 'i ile açık hata var. AzureFile tabanlı birim yerel geliştirme makinesine bağlandığında karşılaşılan örnek hata aşağıda verilmiştir.
 ```

@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 7c571136e6bef64c2024c81db85ef736f64a4e01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 835369116b07b74c666fba271476f1cba5a708b8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906064"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259944"
 ---
 # <a name="sfctl-mesh-app"></a>sfctl mesh app
 Uygulama kaynaklarını alın ve silin.
@@ -18,7 +19,7 @@ Uygulama kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Uygulama kaynağını siler. |
+| silme | Uygulama kaynağını siler. |
 | list | Tüm uygulama kaynaklarını listeler. |
 | göster | Verilen ada sahip uygulama kaynağını alır. |
 
@@ -82,4 +83,4 @@ Verilen ada sahip uygulama kaynağıyla ilgili bilgileri alır. Bilgiler, uygula
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

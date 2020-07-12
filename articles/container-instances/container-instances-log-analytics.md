@@ -4,12 +4,12 @@ description: Azure Izleyici günlüklerine Azure Container Instances içindeki k
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169740"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259612"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı grubu ve örnek günlüğü
 
@@ -29,7 +29,7 @@ Aşağıdaki bölümlerde, günlük özellikli bir kapsayıcı grubu oluşturma 
 Kapsayıcı örneklerinizde oturum açmayı etkinleştirmek için aşağıdakiler gerekir:
 
 * [Log Analytics çalışma alanı](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli) (veya [Cloud Shell](/azure/cloud-shell/overview))
+* [Azure CLI](/cli/azure/install-azure-cli) (veya [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics kimlik bilgilerini alma
 
@@ -153,7 +153,7 @@ ContainerInstanceLog_CL
 
 Azure Izleyici günlüklerinde günlükleri sorgulama ve Uyarıları yapılandırma hakkında daha fazla bilgi için bkz.:
 
-* [Azure Izleyici günlüklerinde günlük aramalarını anlama](../log-analytics/log-analytics-log-search.md)
+* [Azure Izleyici günlüklerinde günlük aramalarını anlama](../azure-monitor/log-query/log-query-overview.md)
 * [Azure İzleyici’de birleştirilmiş uyarılar](../azure-monitor/platform/alerts-overview.md)
 
 

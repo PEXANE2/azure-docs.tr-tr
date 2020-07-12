@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392582"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260187"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Sorun gidermek için sistem durum raporlarını kullanma
 Azure Service Fabric bileşenleri, kümedeki tüm varlıklarda sistem durumu raporlarını doğrudan kutudan çıkar. Sistem [durumu deposu](service-fabric-health-introduction.md#health-store) , sistem raporlarına göre varlıkları oluşturur ve siler. Ayrıca, bunları varlık etkileşimleri yakalayan bir hiyerarşide düzenler.
@@ -73,17 +74,17 @@ Düğüm durumu kapalıysa, kaldırılırsa veya bilinmiyorsa, çekirdek düğü
 * **Sonraki adımlar**: Bu uyarı kümede görünüyorsa, bunları onarmak için aşağıdaki yönergeleri izleyin: Service Fabric 6,5 veya üzeri bir sürümü çalıştıran küme Için: Azure 'da Service Fabric kümesi için, çekirdek düğüm kapatıldıktan sonra, Service Fabric onu otomatik olarak çekirdek olmayan bir düğüm olarak değiştirmeye çalışır. Bunu yapmak için, birincil düğüm türündeki çekirdek olmayan düğümlerin sayısının aşağı çekirdek düğümlerin sayısına eşit veya ondan daha büyük olduğundan emin olun. Gerekirse, bunu elde etmek için birincil düğüm türüne daha fazla düğüm ekleyin.
 Küme durumuna bağlı olarak, sorunun düzeltilmesi biraz zaman alabilir. Bu işlem tamamlandığında, uyarı raporu otomatik olarak temizlenir.
 
-Tek başına küme Service Fabric, uyarı raporunu temizlemek için tüm çekirdek düğümlerin sağlıklı olması gerekir. Çekirdek düğümlerin neden sağlıksız olduğuna bağlı olarak, farklı eylemlerin alınması gerekir: çekirdek düğüm kapalıysa, kullanıcıların bu çekirdek düğümü yukarı getirmelerini sağlar; çekirdek düğüm kaldırılırsa veya bilinmiyorsa, bu çekirdek düğümün [kümeden kaldırılması gerekir](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Tek başına küme Service Fabric, uyarı raporunu temizlemek için tüm çekirdek düğümlerin sağlıklı olması gerekir. Çekirdek düğümlerin neden sağlıksız olduğuna bağlı olarak, farklı eylemlerin alınması gerekir: çekirdek düğüm kapalıysa, kullanıcıların bu çekirdek düğümü yukarı getirmelerini sağlar; çekirdek düğüm kaldırılırsa veya bilinmiyorsa, bu çekirdek düğümün [kümeden kaldırılması gerekir](./service-fabric-cluster-windows-server-add-remove-nodes.md).
 Tüm çekirdek düğümleri sağlıklı hale geldiğinde uyarı raporu otomatik olarak temizlenir.
 
 6,5 'den eski Service Fabric sürümü çalıştıran küme için: Bu durumda, uyarı raporunun el ile temizlenmesi gerekir. **Kullanıcılar, raporu temizlemeden önce tüm çekirdek düğümlerin sağlıklı hale gelmesini sağlamalıdır**: çekirdek düğüm kapalıysa, kullanıcıların bu çekirdek düğümü yukarı getirmeleri gerekir; çekirdek düğüm kaldırılırsa veya bilinmiyorsa, bu çekirdek düğümün kümeden kaldırılması gerekir.
-Tüm çekirdek düğümleri sağlıklı olduktan sonra, [Uyarı raporunu temizlemek](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)için PowerShell 'de aşağıdaki komutu kullanın:
+Tüm çekirdek düğümleri sağlıklı olduktan sonra, [Uyarı raporunu temizlemek](/powershell/module/servicefabric/send-servicefabricclusterhealthreport)için PowerShell 'de aşağıdaki komutu kullanın:
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -646,7 +647,7 @@ HealthEvents          :
 
 - **Istatefulservicereplica. ChangeRole (P)**: en yaygın durum, hizmetin öğesinden bir görev döndürmediğinde olur `RunAsync` .
 
-Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğin:
+Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örnek:
 
 - **Ireplicator. catch Upreplicaset**: Bu uyarı iki işlemlerden birini gösterir. Yetersiz çoğaltma yok. Bu durumun bu olup olmadığını görmek için, bir veya daha fazla yeniden yapılandırma için bölümdeki çoğaltmaların çoğaltma durumuna veya System.FM sistem durumu raporuna bakın. Veya çoğaltmalar, işleme işlemleri değildir. PowerShell cmdlet 'i `Get-ServiceFabricDeployedReplicaDetail` Tüm çoğaltmaların ilerlemesini belirlemede kullanılabilir. Sorun, `LastAppliedReplicationSequenceNumber` değeri birincil değerinin arkasında olan çoğaltmalarla birlikte kalıyor `CommittedSequenceNumber` .
 
@@ -674,7 +675,7 @@ Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğ
 * **Özellik**: çoğaltma rolüne bağlı olarak **primaryreplicationqueuestatus** veya **secondaryreplicationqueuestatus**.
 
 ### <a name="slow-naming-operations"></a>Yavaş adlandırma işlemleri
-**System. NamingService** , bir adlandırma işlemi kabul edilebilir ' den daha uzun sürerse, birincil çoğaltmadaki sistem durumunu raporlar. Adlandırma işlemlerine örnek olarak [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) veya [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)verilebilir. FabricClient altında daha fazla Yöntem bulunabilir. Örneğin, [hizmet yönetimi yöntemleri](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) veya [özellik yönetimi yöntemleri](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)altında bulunabilir.
+**System. NamingService** , bir adlandırma işlemi kabul edilebilir ' den daha uzun sürerse, birincil çoğaltmadaki sistem durumunu raporlar. Adlandırma işlemlerine örnek olarak [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) veya [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)verilebilir. FabricClient altında daha fazla Yöntem bulunabilir. Örneğin, [hizmet yönetimi yöntemleri](/dotnet/api/system.fabric.fabricclient.servicemanagementclient) veya [özellik yönetimi yöntemleri](/dotnet/api/system.fabric.fabricclient.propertymanagementclient)altında bulunabilir.
 
 > [!NOTE]
 > Adlandırma hizmeti, hizmet adlarını kümedeki bir konuma çözer. Kullanıcılar bu hizmeti, hizmet adlarını ve özelliklerini yönetmek için kullanabilir. Bu, Service Fabric bölümlenmiş kalıcı bir hizmettir. Bölümlerden biri, tüm Service Fabric adları ve hizmetleriyle ilgili meta verileri içeren *yetkili sahibini*temsil eder. Service Fabric adları, *ad sahibi* bölümleri olarak adlandırılan farklı bölümlerle eşleştirilir, bu nedenle hizmet Genişletilebilir olur. [Adlandırma hizmeti](service-fabric-architecture.md)hakkında daha fazla bilgi edinin.
@@ -772,7 +773,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndir
+### <a name="download"></a>İndirme
 Uygulama paketi indirmesi başarısız olursa System. Hosting bir hata bildirir.
 
 * **SourceId**: System. Hosting
@@ -850,7 +851,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndir
+### <a name="download"></a>İndirme
 System. Hosting, hizmet paketi indirmesi başarısız olursa bir hata bildiriyor.
 
 * **SourceId**: System. Hosting
@@ -879,4 +880,3 @@ System. Hosting, düğüm kapasiteleri küme bildiriminde tanımlanmamışsa ve 
 * [Hizmetleri yerel olarak izleme ve tanılama](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Uygulama yükseltmesini Service Fabric](service-fabric-application-upgrade.md)
-

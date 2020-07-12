@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232449"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259717"
 ---
 # <a name="encrypt-deployment-data"></a>Dağıtım verilerini şifreleme
 
@@ -39,7 +39,7 @@ Belgenin geri kalanı, acı dağıtım verilerinizi anahtarınızla (müşteri t
 
 ### <a name="create-service-principal-for-aci"></a>ACI için hizmet sorumlusu oluşturma
 
-İlk adım, [Azure kiracınızın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) Azure Container Instances hizmetine izin vermek için atanmış bir hizmet sorumlusu olmasını sağlamaktır. 
+İlk adım, [Azure kiracınızın](../active-directory/develop/quickstart-create-new-tenant.md) Azure Container Instances hizmetine izin vermek için atanmış bir hizmet sorumlusu olmasını sağlamaktır. 
 
 > [!IMPORTANT]
 > Aşağıdaki komutu çalıştırmak ve başarıyla hizmet sorumlusu oluşturmak için kiracınızda hizmet sorumluları oluşturma izninizin olduğunu doğrulayın.
@@ -59,7 +59,7 @@ Hizmet sorumlusunu başarıyla oluşturabilmeniz durumunda:
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault kaynağı oluşturma
 
-[Azure Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)veya [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell)kullanarak Azure Key Vault oluşturun. 
+[Azure Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), [CLI](../key-vault/secrets/quick-create-cli.md)veya [PowerShell](../key-vault/secrets/quick-create-powershell.md)kullanarak Azure Key Vault oluşturun. 
 
 Anahtar kasanızın özellikleri için aşağıdaki yönergeleri kullanın: 
 * Ad: Benzersiz bir ad gereklidir. 
@@ -96,7 +96,7 @@ Erişim ilkesinin artık anahtar kasasının erişim ilkelerinde gösterilmesi g
 > [!IMPORTANT]
 > Dağıtım verilerinin, müşteri tarafından yönetilen bir anahtarla şifrelenmesi, şu anda kullanıma sunulan en son API sürümünde (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin. Bu sorunla karşılaşırsanız lütfen Azure desteğine ulaşın.
 
-Anahtar Kasası anahtarı ve erişim ilkesi kurulduktan sonra, aşağıdaki özellikleri acı dağıtım şablonunuza ekleyin. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Anahtar Kasası anahtarı ve erişim ilkesi kurulduktan sonra, aşağıdaki özellikleri acı dağıtım şablonunuza ekleyin. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](./container-instances-multi-container-group.md). 
 * Altında `resources` , `apiVersion` olarak ayarlayın `2019-12-01` .
 * Dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde, `encryptionProperties` aşağıdaki değerleri içeren bir ekleyin:
   * `vaultBaseUrl`: anahtar kasaınızın DNS adı, portalda Anahtar Kasası kaynağının genel bakış dikey penceresinde bulunabilir
@@ -129,7 +129,7 @@ Aşağıdaki şablon kod parçacığında dağıtım verilerini şifrelemek içi
 ]
 ```
 
-Aşağıda, öğreticideki şablondan uyarlanan tam bir şablon verilmiştir [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Aşağıda, öğreticideki şablondan uyarlanan tam bir şablon verilmiştir [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](./container-instances-multi-container-group.md). 
 
 ```json
 {
@@ -233,14 +233,14 @@ Aşağıda, öğreticideki şablondan uyarlanan tam bir şablon verilmiştir [: 
 az group create --name myResourceGroup --location eastus
 ```
 
-[Az Group Deployment Create][az-group-deployment-create] komutuyla şablonu dağıtın.
+[Az Deployment Group Create][az-deployment-group-create] komutuyla şablonu dağıtın.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 Birkaç saniye içinde Azure’dan bir ilk yanıt almanız gerekir. Dağıtım tamamlandıktan sonra ACI hizmeti tarafından kalıcı hale gelen tüm veriler, verdiğiniz anahtarla şifrelenir.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

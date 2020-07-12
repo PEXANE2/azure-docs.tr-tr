@@ -4,12 +4,12 @@ description: Durum bilgisiz ve durum bilgisi olan hizmetlerle Microsoft Azure Se
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038030"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260471"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services özelliğini kullanmaya başlayın
 
@@ -119,7 +119,7 @@ Aynı *HelloWorld* uygulamasında, uygulama projesindeki hizmetler başvuruları
 
 ![Service Fabric uygulamanıza hizmet ekleme](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-**.NET Core 2,0-> durum bilgisi olan hizmeti** seçin ve *Merhaba Dünya*dışı olduğunu adlandırın. **Tamam**'a tıklayın.
+**.NET Core 2,0-> durum bilgisi olan hizmeti** seçin ve *Merhaba Dünya*dışı olduğunu adlandırın. **Tamam** düğmesine tıklayın.
 
 ![Yeni proje iletişim kutusunu kullanarak yeni bir Service Fabric durum bilgisi olan hizmet oluşturun](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
@@ -169,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[Ireliabledictionary](https://msdn.microsoft.com/library/dn971511.aspx) , durumu hizmette güvenilir bir şekilde depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Service Fabric ve güvenilir koleksiyonlar sayesinde, bir dış kalıcı mağazaya gerek duymadan verileri doğrudan hizmetinize kaydedebilirsiniz. Güvenilir koleksiyonlar, verilerinizi yüksek oranda kullanılabilir hale getirir. Service Fabric, hizmetinizin birden fazla *çoğaltmasını* oluşturup yöneterek bunu gerçekleştirir. Ayrıca, bu çoğaltmaları ve bunların durum geçişlerini yönetmenin karmaşıklıklarını soyutlayan bir API sağlar.
+[Ireliabledictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) , durumu hizmette güvenilir bir şekilde depolamak için kullanabileceğiniz bir sözlük uygulamasıdır. Service Fabric ve güvenilir koleksiyonlar sayesinde, bir dış kalıcı mağazaya gerek duymadan verileri doğrudan hizmetinize kaydedebilirsiniz. Güvenilir koleksiyonlar, verilerinizi yüksek oranda kullanılabilir hale getirir. Service Fabric, hizmetinizin birden fazla *çoğaltmasını* oluşturup yöneterek bunu gerçekleştirir. Ayrıca, bu çoğaltmaları ve bunların durum geçişlerini yönetmenin karmaşıklıklarını soyutlayan bir API sağlar.
 
 Güvenilir koleksiyonlar, özel türleriniz dahil olmak üzere her türlü .NET türünü, birkaç uyarılarla saklayabilir:
 
-* Service Fabric, durumları düğümler arasında *çoğaltarak* ve güvenilir koleksiyonlar verilerinizi her çoğaltmada yerel diske depolar. Bu, güvenilir koleksiyonlar içinde depolanan her şeyin *seri hale getirilebilir*olması gerektiği anlamına gelir. Varsayılan olarak, güvenilir koleksiyonlar serileştirme için [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) kullanır, bu nedenle varsayılan serileştirici kullandığınızda türlerinizi [veri sözleşmesi serileştiricisi tarafından desteklendiğinden](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) emin olmak önemlidir.
+* Service Fabric, durumları düğümler arasında *çoğaltarak* ve güvenilir koleksiyonlar verilerinizi her çoğaltmada yerel diske depolar. Bu, güvenilir koleksiyonlar içinde depolanan her şeyin *seri hale getirilebilir*olması gerektiği anlamına gelir. Varsayılan olarak, güvenilir koleksiyonlar serileştirme için [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) kullanır, bu nedenle varsayılan serileştirici kullandığınızda türlerinizi [veri sözleşmesi serileştiricisi tarafından desteklendiğinden](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) emin olmak önemlidir.
 * İşlemler, güvenilir koleksiyonlar üzerinde işlem gerçekleştirdiğinizde yüksek kullanılabilirlik için çoğaltılır. Güvenilir koleksiyonlar ' da depolanan nesneler, hizmetinizdeki yerel bellekte tutulur. Bu, nesnesine yerel bir başvurunuz olduğu anlamına gelir.
   
    Bir işlemdeki güvenilir koleksiyonda bir güncelleştirme işlemi gerçekleştirmeden, bu nesnelerin yerel örneklerini muanmamak önemlidir. Bunun nedeni, yerel nesne örneklerine yapılan değişikliklerin otomatik olarak çoğaltılmaması olabilir. Nesneyi sözlüğe yeniden eklemeniz veya sözlükteki *güncelleştirme* yöntemlerinden birini kullanmanız gerekir.
@@ -212,7 +212,7 @@ Hizmetler çalışmaya başladıktan sonra, Windows için oluşturulan olay Izle
 ## <a name="next-steps"></a>Sonraki adımlar
 [Visual Studio 'da Service Fabric uygulamanızda hata ayıklama](service-fabric-debugging-your-application.md)
 
-[Kullanmaya başlayın: OWıN Self-hosting ile Web API hizmetlerini Service Fabric](service-fabric-reliable-services-communication-webapi.md)
+[Kullanmaya başlayın: OWıN Self-hosting ile Web API hizmetlerini Service Fabric](./service-fabric-reliable-services-communication-aspnetcore.md)
 
 [Güvenilir Koleksiyonlar hakkında daha fazla bilgi edinin](service-fabric-reliable-services-reliable-collections.md)
 
@@ -220,5 +220,4 @@ Hizmetler çalışmaya başladıktan sonra, Windows için oluşturulan olay Izle
 
 [Uygulama yükseltme](service-fabric-application-upgrade.md)
 
-[Reliable Services için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+[Reliable Services için geliştirici başvurusu](/previous-versions/azure/dn706529(v=azure.100))

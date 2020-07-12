@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dc9d62141a63574a6796982542cb1491108eedc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422425"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259865"
 ---
 # <a name="linux-support"></a>Linux desteği
 
@@ -42,7 +42,7 @@ SDK, Ubuntu 18,04 veya üzerini temel alan çoğu işletim sistemiyle uyumludur.
 
 SDK, masaüstü ve uzak uygulama oturumlarına yönelik birden çok bağlantıyı destekler. Aşağıdaki yeniden yönlendirmeler desteklenir:
 
-| Yönlendirme       | Destekleniyor |
+| Yönlendirme       | Desteklenir |
 | :---------------- | :-------: |
 | Klavye          | &#10004;  |
 | Fare             | &#10004;  |
@@ -69,7 +69,7 @@ Windows sanal masaüstü için bir Linux istemcisi geliştirebilmeniz için aşa
 
 Aşağıdaki istemciler için belgelerimize göz atın:
 
-- [Windows Masaüstü istemcisi](connect-windows-7-and-10.md)
+- [Windows Masaüstü istemcisi](connect-windows-7-10.md)
 - [Web istemcisi](connect-web.md)
 - [Android istemcisi](connect-android.md)
 - [macOS istemcisi](connect-macos.md)

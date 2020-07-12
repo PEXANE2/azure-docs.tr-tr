@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209360"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259885"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -44,7 +44,7 @@ Konak havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda aşağ
 
 Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 
 2. **Windows sanal masaüstü**araması yapın ve seçin.
 
@@ -78,7 +78,7 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
 Mevcut konak havuzunuzu genişlettiyseniz, bir kullanıcı oturumunun parçası olarak test etmek için bir Windows sanal masaüstü istemcisinde oturum açabilirsiniz. Aşağıdaki istemcilerden herhangi biriyle bir oturuma bağlanabilirsiniz:
 
-- [Windows Masaüstü istemcisine bağlanma](./connect-windows-7-and-10.md)
+- [Windows Masaüstü istemcisine bağlanma](./connect-windows-7-10.md)
 - [Web istemcisiyle bağlanma](./connect-web.md)
 - [Android istemcisiyle bağlanma](./connect-android.md)
 - [macOS istemcisiyle bağlanma](./connect-macos.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612396"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259901"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Sanal Masaüstü ortamı
 
@@ -50,7 +50,7 @@ Kaynakları kullanıcılara yayımlamak için, bunları uygulama gruplarına ata
 - Bir kullanıcı aynı konak havuzundaki bir masaüstü uygulama grubuna ve RemoteApp uygulama grubuna atanabilir. Ancak, kullanıcılar her oturum için yalnızca bir uygulama grubu türü başlatabilir. Kullanıcılar tek bir oturumda aynı anda her iki tür uygulama grubunu da başlatamaz.
 - Bir kullanıcı aynı konak havuzu içindeki birden çok uygulama grubuna atanabilir ve akışları her iki uygulama grubunun birikmesi olacaktır.
 
-## <a name="workspaces"></a>Çalışma Alanları
+## <a name="workspaces"></a>Çalışma alanları
 
 Çalışma alanı, Windows sanal Masaüstündeki uygulama gruplarının mantıksal gruplandırmasıdır. Her Windows sanal masaüstü uygulaması grubu, kullanıcıların bu kullanıcılara yayınlanan uzak uygulamaları ve masaüstlerini görmesini sağlamak için bir çalışma alanı ile ilişkilendirilmesi gerekir.  
 
@@ -66,7 +66,7 @@ Windows sanal masaüstü konak havuzunuzu ayarlamayı öğrenmek için bkz. [Azu
 
 Windows sanal masaüstüne nasıl bağlanacağınızı öğrenmek için aşağıdaki makalelerden birine bakın:
 
-- [Windows 10 veya Windows 7 ile bağlanma](connect-windows-7-and-10.md)
+- [Windows 10 veya Windows 7 ile bağlanma](connect-windows-7-10.md)
 - [Bir Web tarayıcısı ile bağlanma](connect-web.md)
 - [Android istemcisiyle bağlanma](connect-android.md)
 - [macOS istemcisiyle bağlanma](connect-macos.md)

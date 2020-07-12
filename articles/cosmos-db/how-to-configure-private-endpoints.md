@@ -4,14 +4,14 @@ description: Bir sanal ağda özel bir IP adresi kullanarak bir Azure Cosmos hes
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261639"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259108"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 
@@ -41,7 +41,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | Kaynak grubunu seçin.|
     | **Örnek ayrıntıları** |  |
-    | Name | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
+    | Ad | Özel uç noktanız için herhangi bir ad girin. Bu ad alındıysanız, benzersiz bir tane oluşturun. |
     |Bölge| Özel bağlantı dağıtmak istediğiniz bölgeyi seçin. Özel uç noktayı, sanal ağınızın bulunduğu aynı konumda oluşturun.|
     |||
 1. **Sonraki: kaynak**' ı seçin.
@@ -52,7 +52,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     |Bağlantı yöntemi  | **Dizinimde bir Azure kaynağına bağlan '** ı seçin. <br/><br/> Daha sonra, özel bağlantı kurmak için kaynaklarınızdan birini seçebilirsiniz. Veya sizinle paylaştığınız bir kaynak KIMLIĞI veya diğer ad kullanarak başka birisinin kaynağına bağlanabilirsiniz.|
     | Abonelik| Aboneliğinizi seçin. |
     | Kaynak türü | **Microsoft. Azumisinizsmosdb/databaseAccounts**' ı seçin. |
-    | Kaynak |Azure Cosmos hesabınızı seçin. |
+    | Resource |Azure Cosmos hesabınızı seçin. |
     |Hedef alt kaynak |Eşlemek istediğiniz Azure Cosmos DB API türünü seçin. Bu, varsayılan olarak SQL, MongoDB ve Cassandra API 'Leri için yalnızca bir seçeneğe sahiptir. Gremlin ve tablo API 'Leri için bu API 'Ler SQL API 'SI ile birlikte çalışabilen **SQL** ' i de seçebilirsiniz. |
     |||
 
@@ -65,11 +65,11 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Sanal ağ| Sanal ağınızı seçin. |
     | Alt ağ | Alt ağlarınızı seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. <br><br/> Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz. |
+    |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. <br><br/> Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz. |
     |Özel DNS bölgesi |**privatelink.documents.Azure.com**öğesini seçin. <br><br/> Özel DNS bölgesi otomatik olarak belirlenir. Azure portal kullanarak değiştiremezsiniz.|
     |||
 
-1. **İncele ve oluştur**’u seçin. **Gözden geçir + oluştur** sayfasında, Azure yapılandırmanızı doğrular.
+1. **Gözden geçir ve oluştur**’u seçin. **Gözden geçir + oluştur** sayfasında, Azure yapılandırmanızı doğrular.
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
 Bir Azure Cosmos hesabı için özel bağlantıyı onayladıysanız, Azure portal, **güvenlik duvarı ve sanal ağlar** bölmesindeki **tüm ağlar** seçeneği kullanılamaz.
@@ -398,7 +398,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örneğin:
+PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örnek:
 
 * Gremlin API hesabına hem Gremlin hem de SQL API hesaplarından erişilebilir.
 * Tablo API'si hesaba hem tablo hem de SQL API hesaplarından erişilebilir.
@@ -655,8 +655,6 @@ Bir Azure Cosmos hesabıyla özel bağlantı kullandığınızda aşağıdaki s�
 * Özel bağlantısına sahip MongoDB hesabı için bir Azure Cosmos DB API 'SI kullanırken, bazı araçlar ya da kitaplıklar, parametreleri otomatik olarak bağlantı dizesinden bir şekilde kullanıma açtıklarında çalışmayabilir `appName` . Bu parametre, hesaba özel bir uç nokta üzerinden bağlanmak için gereklidir. Visual Studio Code gibi bazı araçlar, bu parametreyi bağlantı dizesinden kaldırmaz ve bu nedenle uyumludur.
 
 * `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action`Otomatik olarak onaylanan özel uç noktalar oluşturmak için, bir ağ yöneticisine en azından Azure Cosmos hesap kapsamında izin verilmelidir.
-
-* Doğrudan mod, Çin tabanlı Azure bölgelerinde Şu anda desteklenmemektedir.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Özel DNS bölge tümleştirmesi sınırlamaları
 

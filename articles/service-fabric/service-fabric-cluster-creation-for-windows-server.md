@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827973"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259285"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
 Azure Service Fabric 'yi, Windows Server çalıştıran tüm sanal makinelerde veya bilgisayarlarda Service Fabric kümeler oluşturmak için kullanabilirsiniz. Bu, birbirine bağlı bir Windows Server bilgisayarları kümesi içeren herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir. Bu durumda, şirket içinde veya herhangi bir bulut sağlayıcısıyla olabilirsiniz. Service Fabric, tek başına Windows Server paketi olarak adlandırılan Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar. Azure 'daki geleneksel Service Fabric kümeleri yönetilen bir hizmet olarak kullanılabilir, tek başına Service Fabric kümeler self servis. Farklar hakkında daha fazla bilgi için bkz. [Azure ve tek başına Service Fabric kümelerini karşılaştırma](./service-fabric-deploy-anywhere.md).
@@ -24,10 +25,10 @@ Bu makale, Service Fabric tek başına kümesi oluşturma adımlarında size yol
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Windows Server paketi Service Fabric için destek alın
-* [Azure Service Fabric Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-service-fabric.html)Windows Server için Service Fabric tek başına paketi hakkında Topluluğa sorun.
+* [Azure Service Fabric Için Microsoft Q&soru sayfasında](/answers/topics/azure-service-fabric.html)Windows Server için Service Fabric tek başına paketi hakkında Topluluğa sorun.
 * [Service Fabric Için profesyonel destek](https://support.microsoft.com/oas/default.aspx?prid=16146)bileti açın.  [Microsoft 'Tan](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)profesyonel destek hakkında daha fazla bilgi edinin.
 * [Microsoft Premier destek](https://support.microsoft.com/en-us/premier)bir parçası olarak bu paket için de destek alabilirsiniz.
-* Daha ayrıntılı bilgi için lütfen bkz. [Azure Service Fabric destek seçenekleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+* Daha ayrıntılı bilgi için lütfen bkz. [Azure Service Fabric destek seçenekleri](./service-fabric-support.md).
 * Destek amaçlarıyla günlükleri toplamak için [Service Fabric tek başına günlük toplayıcıyı](service-fabric-cluster-standalone-package-contents.md)çalıştırın.
 
 <a id="downloadpackage"></a>
@@ -125,7 +126,7 @@ Güvenli olmayan bir kümeye bağlanmak için aşağıdaki PowerShell komutunu �
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Örneğin:
+Örnek:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -215,7 +216,7 @@ Yok.
 * [Tek başına Windows kümesi için yapılandırma ayarları](service-fabric-cluster-manifest.md)
 * [Tek başına Service Fabric kümesine düğüm ekleme veya kaldırma](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [Tek başına Service Fabric küme sürümünü yükseltme](service-fabric-cluster-upgrade-windows-server.md)
-* [Windows çalıştıran Azure VM 'leriyle tek başına Service Fabric kümesi oluşturma](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Windows çalıştıran Azure VM 'leriyle tek başına Service Fabric kümesi oluşturma](./service-fabric-cluster-creation-via-arm.md)
 * [Windows güvenliğini kullanarak Windows 'da tek başına kümeyi güvenli hale getirme](service-fabric-windows-cluster-windows-security.md)
 * [X509 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme](service-fabric-windows-cluster-x509-security.md)
 

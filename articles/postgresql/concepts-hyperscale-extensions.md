@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146423"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259068"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları – hiper ölçek (Citus)
 
@@ -144,6 +144,6 @@ Ayar, `pg_stat_statements.track` uzantı tarafından hangi deyimlerin sayıldı�
 Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, ' ye ayarlamanızı öneririz `pg_stat_statements.track` `none` . Bazı üçüncü taraf izleme Hizmetleri sorgu Performans öngörüleri sunmak için pg_stat_statements kullanabilir, bu nedenle bunun sizin için mi olduğunu doğrulayın.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink ve postgres_fdw
-Tek bir PostgreSQL sunucusundan diğerine veya aynı sunucuda başka bir veritabanına bağlanmak için dblink ve postgres_fdw kullanabilirsiniz. Alıcı sunucunun, gönderme sunucusundan güvenlik duvarı aracılığıyla bağlantılara izin verilmesi gerekir. Bu uzantıları, PostgreSQL için Azure veritabanı sunucuları arasında bağlanmak üzere kullanmak için **Azure hizmetlerine erişime Izin ver** ' i açık olarak ayarlayın. Aynı sunucuya geri dönmek için uzantıları kullanmak istiyorsanız, bu ayarı da açmanız gerekir. **Azure hizmetlerine erişime Izin ver** ayarı, **bağlantı güvenliği**altındaki postgres sunucusunun Azure Portal sayfasında bulunabilir. **Azure hizmetlerine erişime Izin ver** ' in etkinleştirilmesi, tüm Azure IP 'lerini beyaz listeler.
 
-Şu anda PostgreSQL için Azure veritabanı 'na giden bağlantılar, PostgreSQL için Azure veritabanı sunucuları için bağlantılar dışında desteklenmez.
+\_Tek bir PostgreSQL sunucusundan diğerine veya aynı sunucuda başka bir veritabanına bağlanmak için dblink ve Postgres FDW kullanabilirsiniz.  Alıcı sunucunun, gönderme sunucusundan güvenlik duvarı aracılığıyla bağlantılara izin verilmesi gerekir.  Bu uzantıları, PostgreSQL için Azure veritabanı sunucuları veya hiper ölçek (Citus) sunucu grupları arasında bağlanmak üzere kullanmak için, **Azure hizmetlerinin ve kaynaklarının bu sunucu grubuna (veya sunucusuna) erişmesine Izin ver** ' i ayarlayın.  Aynı sunucuya geri dönmek için uzantıları kullanmak istiyorsanız, bu ayarı da açmanız gerekir.
+**Azure hizmetlerinin ve kaynaklarının bu sunucu grubuna erişmesine Izin ver** ayarı, **ağ**altındaki hiper ölçek (Citus) sunucu grubunun Azure Portal sayfasında bulunabilir.  Şu anda, PostgreSQL için Azure veritabanı tek sunuculu ve hiper ölçek (Citus) ile giden bağlantılar, PostgreSQL sunucuları ve hiper ölçek (Citus) sunucu grupları için diğer Azure veritabanı bağlantıları dışında desteklenmez.
