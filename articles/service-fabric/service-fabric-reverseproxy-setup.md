@@ -4,12 +4,12 @@ description: Azure Service Fabric uygulaması için ters proxy hizmeti ayarlamay
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476679"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256339"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy ayarlama ve yapılandırma
 Ters proxy, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olan isteğe bağlı bir Azure Service Fabric hizmetidir. Daha fazla bilgi edinmek için bkz. [Azure Service Fabric 'de ters proxy](service-fabric-reverseproxy.md). Bu makalede, kümenizde ters proxy 'nin nasıl ayarlanacağı ve yapılandırılacağı gösterilir. 
@@ -37,7 +37,7 @@ Yeni bir küme için [özel bir kaynak yöneticisi şablonu oluşturabilir](serv
 
 GitHub 'daki [güvenli ters proxy örnek şablonlarında](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) bir Azure kümesi için güvenli ters proxy 'yi yapılandırmanıza yardımcı olabilecek örnek kaynak yöneticisi şablonlar bulabilirsiniz. Güvenli ters proxy 'yi bir sertifikayla yapılandırmak ve sertifika rollover 'ı işlemek amacıyla kullanılacak yönergeler ve şablonlar için, BENIOKU dosyasındaki [güvenli bir kümede https ters proxy 'Yi yapılandırma](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) konusuna bakın.
 
-Mevcut bir küme için, [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [POWERSHELL](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)veya [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli)kullanarak kümenin kaynak grubu için Kaynak Yöneticisi şablonunu dışarı aktarabilirsiniz.
+Mevcut bir küme için, [Azure Portal](../azure-resource-manager/templates/export-template-portal.md), [POWERSHELL](../azure-resource-manager/management/manage-resources-powershell.md)veya [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md)kullanarak kümenin kaynak grubu için Kaynak Yöneticisi şablonunu dışarı aktarabilirsiniz.
 
 Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adımlarla etkinleştirebilirsiniz:
 
@@ -52,7 +52,7 @@ Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adım
         }
     },
     ```
-2. [**Microsoft. ServiceFabric/kümeler**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [kaynak türü bölümündeki](../azure-resource-manager/templates/template-syntax.md)NodeType nesnelerinin her biri için bağlantı noktasını belirtin.
+2. [**Microsoft. ServiceFabric/kümeler**](/azure/templates/microsoft.servicefabric/clusters) [kaynak türü bölümündeki](../azure-resource-manager/templates/template-syntax.md)NodeType nesnelerinin her biri için bağlantı noktasını belirtin.
 
     Bağlantı noktası, Smarproxyendpointport parametre adı tarafından tanımlanır.
 
@@ -74,7 +74,7 @@ Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adım
         ...
     }
     ```
-3. Ters proxy 'nin bağlantı noktasında TLS/SSL sertifikalarını yapılandırmak için, sertifikayı **Microsoft. ServiceFabric/kümeler** [kaynak türü bölümündeki](../resource-group-authoring-templates.md) ***smarproxycertificate*** özelliğine ekleyin.
+3. Ters proxy 'nin bağlantı noktasında TLS/SSL sertifikalarını yapılandırmak için, sertifikayı **Microsoft. ServiceFabric/kümeler** [kaynak türü bölümündeki](../azure-resource-manager/templates/template-syntax.md) ***smarproxycertificate*** özelliğine ekleyin.
 
     ```json
     {
@@ -98,7 +98,7 @@ Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adım
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Küme sertifikasından farklı bir ters proxy sertifikası destekleme
- Ters proxy sertifikası, kümenin güvenliğini sağlayan sertifikadan farklıysa, daha önce belirtilen sertifikanın sanal makinede yüklü olması ve Service Fabric erişebilmesi için erişim denetim listesine (ACL) eklenmiş olması gerekir. Bu işlem, [**Microsoft. COMPUTE/virtualMachineScaleSets**](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) [kaynak türü bölümünde](../resource-group-authoring-templates.md)yapılabilir. Yükleme için sertifikayı osProfile ekleyin. Şablonun uzantı bölümü ACL 'deki sertifikayı güncelleştirebilir.
+ Ters proxy sertifikası, kümenin güvenliğini sağlayan sertifikadan farklıysa, daha önce belirtilen sertifikanın sanal makinede yüklü olması ve Service Fabric erişebilmesi için erişim denetim listesine (ACL) eklenmiş olması gerekir. Bu işlem, [**Microsoft. COMPUTE/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) [kaynak türü bölümünde](../azure-resource-manager/templates/template-syntax.md)yapılabilir. Yükleme için sertifikayı osProfile ekleyin. Şablonun uzantı bölümü ACL 'deki sertifikayı güncelleştirebilir.
 
   ```json
   {
@@ -252,50 +252,50 @@ Tek başına bir küme için ters proxy 'yi genel kullanıma sunmak istiyorsanı
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>Kaynak Yöneticisi şablonları aracılığıyla ters proxy 'yi kullanıma sunma
 
-Aşağıdaki JSON, [Azure Resource Manager şablonları aracılığıyla ters proxy 'Yi etkinleştirmek](#enable-reverse-proxy-via-azure-resource-manager-templates)için kullanılan şablona başvurur. Kaynak Yöneticisi şablonu oluşturma veya var olan bir küme için bir şablonu dışarı aktarma hakkında bilgi için belgenin bu bölümüne bakın.  Değişiklikler [**Microsoft. Network/loadBalancers**](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers) [Resource Type bölümünde](../resource-group-authoring-templates.md)yapılır.
+Aşağıdaki JSON, [Azure Resource Manager şablonları aracılığıyla ters proxy 'Yi etkinleştirmek](#enable-reverse-proxy-via-azure-resource-manager-templates)için kullanılan şablona başvurur. Kaynak Yöneticisi şablonu oluşturma veya var olan bir küme için bir şablonu dışarı aktarma hakkında bilgi için belgenin bu bölümüne bakın.  Değişiklikler [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) [Resource Type bölümünde](../azure-resource-manager/templates/template-syntax.md)yapılır.
 
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
+```json
+{
+    "apiVersion": "[variables('lbApiVersion')]",
+    "type": "Microsoft.Network/loadBalancers",
+    ...
+    ...
+    "loadBalancingRules": [
         ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
+        {
+            "name": "LBSFReverseProxyRule",
+            "properties": {
+                "backendAddressPool": {
+                    "id": "[variables('lbPoolID0')]"
+                },
+                "backendPort": "[parameters('SFReverseProxyPort')]",
+                "enableFloatingIP": "false",
+                "frontendIPConfiguration": {
+                    "id": "[variables('lbIPConfig0')]"
+                },
+                "frontendPort": "[parameters('SFReverseProxyPort')]",
+                "idleTimeoutInMinutes": "5",
+                "probe": {
+                    "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
+                },
+                "protocol": "tcp"
             }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
+        }
+    ],
+    "probes": [
+        ...
+        {
+            "name": "SFReverseProxyProbe",
+            "properties": {
+                "intervalInSeconds": 5,
+                "numberOfProbes": 2,
+                "port":     "[parameters('SFReverseProxyPort')]",
+                "protocol": "tcp"
+            }
+        }  
+    ]
+}
+```
 
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Doku ayarlarını kullanarak ters proxy davranışını özelleştirme

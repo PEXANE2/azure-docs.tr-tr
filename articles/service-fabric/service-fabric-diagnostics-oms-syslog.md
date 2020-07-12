@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645761"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258633"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 'da Linux kümesi olaylarını Service Fabric
 
@@ -25,7 +26,7 @@ Her Syslog olayında 4 bileşen vardır
 * Olanak
 * Kimlik
 * İleti
-* Severity
+* Önem Derecesi
 
 SyslogConsumer, Tesis kullanarak tüm platform olaylarını yazar `Local0` . Yapılandırma yapılandırmasını değiştirerek geçerli herhangi bir tesis için güncelleştirme yapabilirsiniz. Kullanılan kimlik `ServiceFabric` . Ileti alanı, JSON 'da serileştirilmiş tüm olayı içerir, böylece bu, çeşitli araçlarla sorgulanarak tüketilebilir. 
 
@@ -112,6 +113,6 @@ Yukarıdaki örnek bir Nodebir olaydır. Olayların tam listesini [burada](servi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Performans sayaçlarını toplamak ve kapsayıcılarınız için Docker istatistiklerini ve günlüklerini toplamak için [Log Analytics aracısını](service-fabric-diagnostics-oms-agent.md) düğümleriniz üzerine dağıtın
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../log-analytics/log-analytics-log-searches.md) özellikleriyle familiarized alın
-* [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../log-analytics/log-analytics-view-designer.md)
-* [Azure izleyici günlük tümleştirmesi Ile syslog ile tümleştirme](../log-analytics/log-analytics-data-sources-syslog.md)için başvuru.
+* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../azure-monitor/log-query/log-query-overview.md) özellikleriyle familiarized alın
+* [Azure Izleyici günlüklerinde özel görünümler oluşturmak için görünüm tasarımcısını kullanma](../azure-monitor/platform/view-designer.md)
+* [Azure izleyici günlük tümleştirmesi Ile syslog ile tümleştirme](../azure-monitor/platform/data-sources-syslog.md)için başvuru.

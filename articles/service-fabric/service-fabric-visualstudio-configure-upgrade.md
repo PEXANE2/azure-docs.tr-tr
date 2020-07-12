@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464068"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256059"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio 'da Service Fabric uygulamasının yükseltmesini yapılandırma
 Azure Service Fabric için Visual Studio Araçları, yerel veya uzak kümelerdeki yayımlamaya yönelik yükseltme desteği sağlar. Test ve hata ayıklama sırasında uygulamanızı değiştirmek yerine uygulamanızı daha yeni bir sürüme yükseltmek istediğiniz üç senaryo vardır:
@@ -56,7 +57,7 @@ Bir Service Fabric uygulamasını yükseltmek için Visual Studio Service Fabric
 3. Izleme izlemeyi geri al ' ı seçerseniz, devam etmek ve yükseltme işlemini tamamlaması için bir PowerShell konsolu 'nu el ile başlatmanız gerekir. El ile yükseltmenin nasıl çalıştığını öğrenmek için [Service Fabric uygulama yükseltme: gelişmiş konular](service-fabric-application-upgrade-advanced.md) bölümüne bakın.
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>PowerShell kullanarak bir uygulamayı yükseltme
-Service Fabric uygulamasını yükseltmek için PowerShell cmdlet 'lerini kullanabilirsiniz. Ayrıntılı bilgi için bkz. [uygulama yükseltme öğreticisi](service-fabric-application-upgrade-tutorial.md) ve [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) Service Fabric.
+Service Fabric uygulamasını yükseltmek için PowerShell cmdlet 'lerini kullanabilirsiniz. Ayrıntılı bilgi için bkz. [uygulama yükseltme öğreticisi](service-fabric-application-upgrade-tutorial.md) ve [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) Service Fabric.
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Uygulama bildirim dosyasında bir sistem durumu denetim ilkesi belirtin
 Bir Service Fabric uygulamasındaki her hizmet, varsayılan değerleri geçersiz kılan kendi sistem durumu ilkesi parametrelerine sahip olabilir. Bu parametre değerlerini uygulama bildirim dosyasında sağlayabilirsiniz.

@@ -17,11 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681756"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255787"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -101,7 +102,7 @@ Aşağıda, Hızlı Yükleme Sihirbazı sayfalarının bir özeti, toplanan kiml
 
 | Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
-| YOK |Yükleme sihirbazını çalıştıran Kullanıcı |Yerel sunucunun yöneticisi |<li>Eşitleme hizmetini çalıştırmak için olarak kullanılan ADSync hizmet hesabını oluşturur. |
+| Yok |Yükleme sihirbazını çalıştıran Kullanıcı |Yerel sunucunun yöneticisi |<li>Eşitleme hizmetini çalıştırmak için olarak kullanılan ADSync hizmet hesabını oluşturur. |
 | Azure AD'ye Bağlanma |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
 | AD DS'ye Bağlanma |Şirket içi Active Directory kimlik bilgileri |Active Directory 'de Enterprise Admins (EA) grubunun üyesi |<li>Active Directory AD DS bağlayıcı hesabı oluşturur ve buna izin verir. Bu oluşturulan hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır.</li> |
 
@@ -118,7 +119,7 @@ Aşağıda, Özel Yükleme Sihirbazı sayfalarının Özeti, toplanan kimlik bil
 
 | Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
-| YOK |Yükleme sihirbazını çalıştıran Kullanıcı |<li>Yerel sunucunun yöneticisi</li><li>Tam bir SQL Server kullanılıyorsa, kullanıcının SQL 'de Sistem Yöneticisi (SA) olması gerekir</li> |Varsayılan olarak, eşitleme altyapısı hizmet hesabı olarak kullanılan yerel hesabı oluşturur. Hesap yalnızca yönetici belirli bir hesap belirtmezse oluşturulur. |
+| Yok |Yükleme sihirbazını çalıştıran Kullanıcı |<li>Yerel sunucunun yöneticisi</li><li>Tam bir SQL Server kullanılıyorsa, kullanıcının SQL 'de Sistem Yöneticisi (SA) olması gerekir</li> |Varsayılan olarak, eşitleme altyapısı hizmet hesabı olarak kullanılan yerel hesabı oluşturur. Hesap yalnızca yönetici belirli bir hesap belirtmezse oluşturulur. |
 | Eşitleme hizmetlerini, hizmet hesabı seçeneğini yükler |AD veya yerel kullanıcı hesabı kimlik bilgileri |Kullanıcı, izinler Yükleme Sihirbazı tarafından verilir |Yönetici bir hesap belirtiyorsa, bu hesap eşitleme hizmeti için hizmet hesabı olarak kullanılır. |
 | Azure AD'ye Bağlanma |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
 | Dizinlerinizi bağlama |Azure AD 'ye bağlı her bir ormanın şirket içi Active Directory kimlik bilgileri |İzinler, etkinleştirdiğiniz özelliklere ve AD DS Bağlayıcısı hesabını oluşturma bölümünde bulunabilir. |Bu hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır. |
@@ -201,7 +202,6 @@ Açıklama:
 
 | | Yerel veritabanı</br>Express | LocalDB/LocalSQL</br>Özel | Uzak SQL</br>Özel |
 | --- | --- | --- | --- |
-| **tek başına/çalışma grubu makinesi** | Desteklenmiyor | **'NıN**</br>Yerel hesap (2008)</br>Yerel hesap |  Desteklenmiyor |
 | **etki alanına katılmış makine** | **'NıN**</br>Yerel hesap (2008) | **'NıN**</br>Yerel hesap (2008)</br>Yerel hesap</br>Etki alanı hesabı</br>sMSA, gMSA | **gMSA**</br>Etki alanı hesabı |
 | **Etki alanı denetleyicisi** | **Etki alanı hesabı** | *gMSA*</br>**Etki alanı hesabı**</br>SMSA 'yı| *gMSA*</br>**Etki alanı hesabı**|
 
@@ -259,7 +259,7 @@ Azure AD Bağlayıcısı hesabının parolasını yönetme veya sıfırlama hakk
 ## <a name="related-documentation"></a>İlgili belgeler
 Şirket [içi kimliklerinizi Azure Active Directory tümleştirme](whatis-hybrid-identity.md)hakkındaki belgeleri okumadıysanız, aşağıdaki tabloda ilgili konuların bağlantıları verilmiştir.
 
-|Konu başlığı |Bağlantı|  
+|Konu |Bağlantı|  
 | --- | --- |
 |Azure AD Connect'i indirme | [Azure AD Connect'i indirme](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Hızlı ayarları kullanarak yükleme | [Azure AD Connect'i hızlı yükleme](how-to-connect-install-express.md)|

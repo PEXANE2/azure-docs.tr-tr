@@ -8,11 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308787"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257844"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>IoT Edge cihazda sertifikaları yönetme
 
@@ -30,7 +31,7 @@ Farklı sertifika türleri ve rolleri hakkında daha fazla bilgi edinmek için b
 >[!NOTE]
 >Bu makale boyunca kullanılan "kök CA" terimi, IoT çözümünüz için Sertifika zincirinin en üst yetkili ortak sertifikasına başvurur. Bir dağıtılmış sertifika yetkilisinin sertifika kökünü veya kuruluşunuzun sertifika yetkilisinin kökünü kullanmanız gerekmez. Çoğu durumda, aslında bir ara CA genel sertifikasıdır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * [Windows](how-to-install-iot-edge-windows.md) veya [Linux](how-to-install-iot-edge-linux.md)üzerinde çalışan IoT Edge bir cihaz.
 * Bir kök sertifika yetkilisi (CA) sertifikasına sahip veya Baltimore, Verisign, DigiCert veya GlobalSign gibi güvenilir bir ticari sertifika yetkilisinden satın alınmış.
@@ -46,6 +47,9 @@ Aşağıdaki dosyaları oluşturmak için kendi sertifika yetkilinizi kullanman�
 * Cihaz CA özel anahtarı
 
 Bu makalede *kök CA 'sı* olarak adlandırdığımız, bir kuruluşun en üst sertifika yetkilisi değil. Bu, IoT Edge hub modülünün, Kullanıcı modüllerinin ve herhangi bir aşağı akış aygıtının birbirleriyle güven sağlamak için kullanacağı IoT Edge senaryoya yönelik en üst sertifika yetkilissudur.
+
+> [!NOTE]
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
 Bu sertifikalara bir örnek görmek için, [örnekler ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)bölümünde tanıtım Sertifikaları oluşturan betikleri gözden geçirin.
 
@@ -68,7 +72,7 @@ Sertifika zincirinizi IoT Edge cihaza yükleyip IoT Edge çalışma zamanını y
    * Pencerelerin`C:\ProgramData\iotedge\config.yaml`
    * 'Un`/etc/iotedge/config.yaml`
 
-1. Config. YAML içindeki **sertifika** özelliklerini IoT Edge cihazdaki sertifika ve anahtar dosyaları IÇIN dosya URI yolu olarak ayarlayın. `#`Dört satırın açıklamasını kaldırmak için, sertifika özelliklerinden önceki karakteri kaldırın. **Sertifikalarda:** Line 'ın önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun. Örneğin:
+1. Config. YAML içindeki **sertifika** özelliklerini IoT Edge cihazdaki sertifika ve anahtar dosyaları IÇIN dosya URI yolu olarak ayarlayın. `#`Dört satırın açıklamasını kaldırmak için, sertifika özelliklerinden önceki karakteri kaldırın. **Sertifikalarda:** Line 'ın önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun. Örnek:
 
    * Windows:
 
@@ -108,7 +112,7 @@ IoT Edge aygıttaki farklı sertifikaların işlevi hakkında daha fazla bilgi i
 Bu iki otomatik oluşturulan sertifika için, sertifikaların kullanım ömrü için gün sayısını yapılandırmak üzere config. YAML içinde **auto_generated_ca_lifetime_days** bayrağını ayarlama seçeneğiniz vardır.
 
 >[!NOTE]
->IoT Edge Güvenlik Yöneticisi 'nin oluşturduğu, **IoT Edge merkezi sunucu sertifikası**olan üçüncü bir otomatik oluşturulan sertifika vardır. Bu sertifika her zaman bir 90 gündür ve süresi dolmadan önce otomatik olarak yenilenir. **Auto_generated_ca_lifetime_days** değeri bu sertifikayı etkilemez.
+>IoT Edge Güvenlik Yöneticisi 'nin oluşturduğu, **IoT Edge merkezi sunucu sertifikası**olan üçüncü bir otomatik oluşturulan sertifika vardır. Bu sertifikanın her zaman 90 gün ömrü vardır, ancak süresi dolmadan önce otomatik olarak yenilenir. **Auto_generated_ca_lifetime_days** değeri bu sertifikayı etkilemez.
 
 Sertifika süre sonunu varsayılan 90 gün dışında bir şeye göre yapılandırmak için, değeri config. YAML dosyasının **Sertifikalar** bölümüne gün olarak ekleyin.
 
@@ -119,6 +123,9 @@ certificates:
   trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
   auto_generated_ca_lifetime_days: <value>
 ```
+
+> [!NOTE]
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor.
 
 Kendi cihaz CA sertifikalarınızı sağladıysanız, bu değer hala iş yükü CA sertifikası için geçerlidir, ancak ayarladığınız yaşam süresi değeri cihaz CA sertifikasının kullanım süresinden daha kısadır.
 

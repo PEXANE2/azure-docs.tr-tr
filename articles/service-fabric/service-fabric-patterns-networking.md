@@ -3,12 +3,12 @@ title: Azure Service Fabric için ağ düzenleri
 description: Service Fabric için ortak ağ düzenlerini ve Azure ağ özellikleri 'ni kullanarak küme oluşturmayı açıklar.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106619"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258534"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric ağ desenleri
 Azure Service Fabric kümenizi diğer Azure ağ özellikleriyle tümleştirebilirsiniz. Bu makalede, aşağıdaki özellikleri kullanan kümelerin nasıl oluşturulacağını göstereceğiz:
@@ -598,10 +598,9 @@ Dağıtımdan sonra kaynak grubunda iki yük dengeleyicileri görebilirsiniz. Y�
 
 ## <a name="notes-for-production-workloads"></a>Üretim iş yükleri için notlar
 
-Yukarıdaki GitHub şablonları, temel SKU 'SU olan Azure Standart Load Balancer (SLB) için varsayılan SKU ile çalışacak şekilde tasarlanmıştır. Bu SLB 'ın SLA 'sı yoktur, bu nedenle üretim iş yükleri için standart SKU 'nun kullanılması gerekir. Bunun hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](/azure/load-balancer/load-balancer-standard-overview). SLB için standart SKU kullanan herhangi bir Service Fabric kümesi, her bir düğüm türünün bağlantı noktası 443 ' de giden trafiğe izin veren bir kurala sahip olduğundan emin olmalıdır. Bu, küme kurulumunu tamamlaması için gereklidir ve bu tür bir kural olmadan herhangi bir dağıtım başarısız olur. Yukarıdaki "iç bir" yük dengeleyicinin örneğinde, bağlantı noktası 443 ' e giden trafiğe izin veren bir kuralla ek bir dış yük dengeleyici eklenmelidir.
+Yukarıdaki GitHub şablonları, temel SKU 'SU olan Azure Standart Load Balancer (SLB) için varsayılan SKU ile çalışacak şekilde tasarlanmıştır. Bu SLB 'ın SLA 'sı yoktur, bu nedenle üretim iş yükleri için standart SKU 'nun kullanılması gerekir. Bunun hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](../load-balancer/load-balancer-overview.md). SLB için standart SKU kullanan herhangi bir Service Fabric kümesi, her bir düğüm türünün bağlantı noktası 443 ' de giden trafiğe izin veren bir kurala sahip olduğundan emin olmalıdır. Bu, küme kurulumunu tamamlaması için gereklidir ve bu tür bir kural olmadan herhangi bir dağıtım başarısız olur. Yukarıdaki "iç bir" yük dengeleyicinin örneğinde, bağlantı noktası 443 ' e giden trafiğe izin veren bir kuralla ek bir dış yük dengeleyici eklenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Küme oluşturma](service-fabric-cluster-creation-via-arm.md)
 
 Dağıtımdan sonra kaynak grubunda iki yük dengeleyicileri görebilirsiniz. Yük dengeleyiciler ' e gözattığınızda genel IP adresi ve yönetim uç noktaları (bağlantı noktaları 19000 ve 19080) ortak IP adresine atanır. Ayrıca, iç yük dengeleyiciye atanan statik iç IP adresini ve uygulama uç noktasını (bağlantı noktası 80) görebilirsiniz. Her iki yük dengeleyicisi de aynı sanal makine ölçek kümesi arka uç havuzunu kullanır.
-

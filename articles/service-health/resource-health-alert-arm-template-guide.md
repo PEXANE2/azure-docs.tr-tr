@@ -3,11 +3,12 @@ title: Kaynak Durumu uyarılar oluşturmak için şablon
 description: Azure kaynaklarınızın kullanım dışı olmasına göre size bildirimde bulunan uyarıları programlı bir şekilde oluşturun.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759007"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255889"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager şablonlarını kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
@@ -20,7 +21,7 @@ Azure Kaynak Durumu, Azure kaynaklarınızın geçerli ve geçmiş sistem durumu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu sayfadaki yönergeleri izlemek için, önceden birkaç şey ayarlamanız gerekir:
 
@@ -30,45 +31,55 @@ Bu sayfadaki yönergeleri izlemek için, önceden birkaç şey ayarlamanız gere
 ## <a name="instructions"></a>Yönergeler
 1. PowerShell 'i kullanarak hesabınızı kullanarak Azure 'da oturum açın ve etkileşimde bulunmak istediğiniz aboneliği seçin
 
-        Login-AzAccount
-        Select-AzSubscription -Subscription <subscriptionId>
+    ```azurepowershell
+    Login-AzAccount
+    Select-AzSubscription -Subscription <subscriptionId>
+    ```
 
     > `Get-AzSubscription`Erişiminiz olan abonelikleri listelemek için ' i kullanabilirsiniz.
 
 2. Eylem grubunuz için tam Azure Resource Manager KIMLIĞINI bulun ve kaydedin
 
-        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```azurepowershell
+    (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```
 
 3. Kaynak Durumu uyarılar için Kaynak Yöneticisi şablonu oluşturun ve kaydedin `resourcehealthalert.json` ([aşağıdaki ayrıntılara bakın](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Bu şablonu kullanarak yeni bir Azure Resource Manager dağıtımı oluşturun
 
-        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```azurepowershell
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```
 
 5. Daha önce kopyaladığınız uyarı adını ve eylem grubu kaynak KIMLIĞINI yazmanız istenir:
 
-        Supply values for the following parameters:
-        (Type !? for Help.)
-        activityLogAlertName: <Alert Name>
-        actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```azurepowershell
+    Supply values for the following parameters:
+    (Type !? for Help.)
+    activityLogAlertName: <Alert Name>
+    actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```
 
 6. Her şey başarıyla çalıştıysa, PowerShell 'de bir onay alacaksınız
 
-        DeploymentName          : ExampleDeployment
-        ResourceGroupName       : <resourceGroup>
-        ProvisioningState       : Succeeded
-        Timestamp               : 11/8/2017 2:32:00 AM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                Name                     Type       Value
-                                ===============          =========  ==========
-                                activityLogAlertName     String     <Alert Name>
-                                activityLogAlertEnabled  Bool       True
-                                actionGroupResourceId    String     /...
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :
+    ```output
+    DeploymentName          : ExampleDeployment
+    ResourceGroupName       : <resourceGroup>
+    ProvisioningState       : Succeeded
+    Timestamp               : 11/8/2017 2:32:00 AM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                            Name                     Type       Value
+                            ===============          =========  ==========
+                            activityLogAlertName     String     <Alert Name>
+                            activityLogAlertEnabled  Bool       True
+                            actionGroupResourceId    String     /...
+
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    ```
 
 Bu işlemi tamamen otomatikleştirmeye planlarken, 5. adımdaki değerleri sorması için yalnızca Kaynak Yöneticisi şablonunu düzenlemeniz gerektiğini unutmayın.
 
@@ -160,7 +171,7 @@ Kaynak düzeyi kapsamı için kapsam bölümü şöyle görünmelidir:
 ],
 ```
 
-Örneğin, `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+Örnek: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Azure portalına giderek bu dizeyi almak için Azure kaynağınız görüntülenirken URL 'ye bakabilirsiniz.
 

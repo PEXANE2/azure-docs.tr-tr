@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392259"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258112"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
@@ -20,6 +21,8 @@ Azure dijital TWINS 'in kalbi, tüm ortamınızı temsil eden [ikizi grafiktir](
 Çalışan bir [Azure dijital TWINS örneğiniz](how-to-set-up-instance.md) olduğunda ve istemci uygulamanız için [kimlik doğrulaması](how-to-authenticate-client.md) ayarladıktan sonra, Azure dijital TWINS örneğindeki dijital TWINS ve bunların ilişkilerini oluşturmak, değiştirmek ve silmek Için [**digitaltwins API 'lerini**](how-to-use-apis-sdks.md) kullanabilirsiniz. [.Net (C#) SDK 'sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure DIGITAL TWINS CLI](how-to-use-cli.md)'yi de kullanabilirsiniz.
 
 Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [nasıl yapılır: dijital TWINS 'ı yönetme](how-to-manage-twin.md).
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>İlişki oluştur
 
@@ -229,12 +232,12 @@ Oluşturulacak bir dizi dijital TWINS ve ilişki tanımlayan aşağıdaki veri t
 | Model    | ID | Üst | İlişki adı | Diğer veriler |
 | --- | --- | --- | --- | --- |
 | sını    | Floor01 | | | … |
-| Oda    | Room10 | Floor01 | şunu içerir | … |
-| Oda    | Room11 | Floor01 | şunu içerir | … |
-| Oda    | Room12 | Floor01 | şunu içerir | … |
+| Oda    | Room10 | Floor01 | contains | … |
+| Oda    | Room11 | Floor01 | contains | … |
+| Oda    | Room12 | Floor01 | contains | … |
 | sını    | Floor02 | | | … |
-| Oda    | Room21 | Floor02 | şunu içerir | … |
-| Oda    | Room22 | Floor02 | şunu içerir | … |
+| Oda    | Room21 | Floor02 | contains | … |
+| Oda    | Room22 | Floor02 | contains | … |
 
 Aşağıdaki kod, bir elektronik tabloyu okumak ve sonuçlardan bir Azure dijital TWINS ikizi grafiği oluşturmak için [MICROSOFT Graph API](https://docs.microsoft.com/graph/overview) kullanır.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564462"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255668"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -27,12 +27,12 @@ Windows sanal masaüstündeki Microsoft ekipleri sohbet ve işbirliğini destekl
 
 Microsoft ekipleri için medya iyileştirmesi sayesinde, Windows Masaüstü istemcisi, takımlar ve toplantılar için ses ve videoyu yerel olarak işler. Windows sanal masaüstündeki Microsoft ekiplerini, iyileştirilmiş çağrı ve toplantılar olmadan diğer istemcilerle kullanmaya devam edebilirsiniz. Takımlar sohbeti ve işbirliği özellikleri tüm platformlarda desteklenir. Uzak oturumunuzdaki yerel cihazları yeniden yönlendirmek için [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini Özelleştir](#customize-remote-desktop-protocol-properties-for-a-host-pool)' e bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
 - [Ağınızı](/microsoftteams/prepare-network/) Microsoft ekipleri için hazırlayın.
-- Windows [masaüstü istemcisini](connect-windows-7-and-10.md) , Windows [Bilgisayarı üzerindeki takımlar için Microsoft ekipleri donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 veya Windows 10 IoT kurumsal cihazına yükler.
+- Windows [masaüstü istemcisini](connect-windows-7-10.md) , Windows [Bilgisayarı üzerindeki takımlar için Microsoft ekipleri donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 veya Windows 10 IoT kurumsal cihazına yükler.
 - Windows 10 çoklu oturum veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
 - Makine başına yükleme kullanarak takımlar masaüstü uygulamasını konağa yükleme. Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
 
@@ -47,7 +47,7 @@ Takımlar için medya iyileştirmesini etkinleştirmek üzere konakta aşağıda
 1. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **HKEY_LOCAL_MACHINE \Software\microsoft\ekiplerine**gidin.
 2. Takımlar anahtarı için aşağıdaki değeri oluşturun:
 
-| Name             | Tür   | Veri/değer  |
+| Ad             | Type   | Veri/değer  |
 |------------------|--------|-------------|
 | IsWVDEnvironment | DWORD  | 1           |
 

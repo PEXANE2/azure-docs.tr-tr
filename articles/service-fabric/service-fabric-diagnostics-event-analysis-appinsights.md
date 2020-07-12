@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701905"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256569"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights ile olay Analizi ve görselleştirme
 
@@ -37,7 +38,7 @@ Application Insights, içinde gelen tüm verilere yönelik sorgulama için belir
 
 ![Application Insights Isteği ayrıntıları](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Application Insights portalının yeteneklerini daha ayrıntılı incelemek için, [Application Insights Portal belgelerine](../azure-monitor/app/app-insights-dashboards.md)gidin.
+Application Insights portalının yeteneklerini daha ayrıntılı incelemek için, [Application Insights Portal belgelerine](../azure-monitor/app/overview-dashboard.md)gidin.
 
 ### <a name="configuring-application-insights-with-eventflow"></a>EventFlow ile Application Insights yapılandırma
 
@@ -66,11 +67,11 @@ Tanılama ve izlemeye yönelik daha modüler bir yaklaşıma izin verdiklerinden
 
 Olaylarınız ve günlüklerinizin çıktısı olarak Application Insights yapılandırdıktan sonra, bilgilerin Application Insights kaynağında birkaç dakika içinde gösterilmesi gerekir. Sizi Application Insights kaynak panosuna götürebileceğiniz Application Insights kaynağına gidin. Application Insights görev çubuğunda **Ara** ' ya tıklayarak aldığı en son izlemeleri görüntüleyin ve bunlara filtre uygulayabilir.
 
-*Ölçüm Gezgini* , uygulamalarınızın, hizmetlerinizin ve kümenizin rapor olabileceği ölçümlere dayalı özel panolar oluşturmaya yönelik yararlı bir araçtır. Topladığınız verileri temel alarak kendinize birkaç grafik ayarlamak için [Application Insights ölçümleri keşfetme](../azure-monitor/app/metrics-explorer.md) konusuna bakın.
+*Ölçüm Gezgini* , uygulamalarınızın, hizmetlerinizin ve kümenizin rapor olabileceği ölçümlere dayalı özel panolar oluşturmaya yönelik yararlı bir araçtır. Topladığınız verileri temel alarak kendinize birkaç grafik ayarlamak için [Application Insights ölçümleri keşfetme](../azure-monitor/platform/metrics-charts.md) konusuna bakın.
 
-**Analiz** ' e tıklamak sizi daha fazla kapsam ve seçenek ile olayları ve izlemeleri sorgulayabileceğiniz Application Insights Analytics portalına götürür. [Application Insights 'de](../azure-monitor/app/analytics.md)analizler hakkında daha fazla bilgi edinin.
+**Analiz** ' e tıklamak sizi daha fazla kapsam ve seçenek ile olayları ve izlemeleri sorgulayabileceğiniz Application Insights Analytics portalına götürür. [Application Insights 'de](../azure-monitor/log-query/log-query-overview.md)analizler hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](/azure/azure-monitor/platform/alerts-log)
+* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](../azure-monitor/platform/alerts-log.md)
 * [Application Insights akıllı algılama](../azure-monitor/app/proactive-diagnostics.md) , olası performans sorunları konusunda sizi uyarmak için Application Insights gönderilen telemetrinin proaktif analizini yapar

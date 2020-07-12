@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371656"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257517"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric olağanüstü durum kurtarma
 Yüksek kullanılabilirlik sunmaya yönelik kritik bir bölüm, hizmetlerin tüm farklı türdeki hataların varlığını sürdürmesini sağlamaktır. Bu özellikle, planlanmamış ve denetiminizin dışından oluşan hatalarda önemlidir. 
@@ -171,7 +172,7 @@ Aşağıdaki eylemler veri kaybına neden olabilir. İzlemeden önce denetleyin.
 >
 
 - `Repair-ServiceFabricPartition -PartitionId`Veya `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API 'yi kullanın. Bu API, çekirdek kaybını ve olası veri kaybını taşımak için bölüm KIMLIĞININ belirtilmesine izin verir.
-- Kümeniz, hizmetlerin bir çekirdek kaybı durumuna geçmesine neden olan ve olası _veri kaybı kabul edilebilir olduğunda_, uygun bir [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Service Fabric, `QuorumLossWaitDuration` Kurtarma gerçekleştirilmeden önce, girilen değeri (varsayılan değer sonsuzdur) bekleyecek. Beklenmedik veri kayıplarının oluşmasına neden olabileceğinden, bu *yöntemi önermiyoruz.*
+- Kümeniz, hizmetlerin bir çekirdek kaybı durumuna geçmesine neden olan ve olası _veri kaybı kabul edilebilir olduğunda_, uygun bir [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Service Fabric, `QuorumLossWaitDuration` Kurtarma gerçekleştirilmeden önce, girilen değeri (varsayılan değer sonsuzdur) bekleyecek. Beklenmedik veri kayıplarının oluşmasına neden olabileceğinden, bu *yöntemi önermiyoruz.*
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric kümesinin kullanılabilirliği
 Genel olarak Service Fabric kümesi, tek hata noktası olmayan, yüksek oranda dağıtılmış bir ortamdır. Birincil olarak, Service Fabric sistem hizmetleri daha önce sunulan yönergeleri izlediğinden, herhangi bir düğüm, kümede kullanılabilirlik veya güvenilirlik sorunlarına yol açmaz. Diğer bir deyişle, her zaman varsayılan olarak üç veya daha fazla çoğaltma ve durum bilgisiz olmayan sistem hizmetleri tüm düğümlerde çalışır. 
@@ -207,17 +208,17 @@ Tek başına Service Fabric kümelerinde ve Azure 'da, birincil düğüm türü,
 - [Test edilebilirlik çerçevesini](service-fabric-testability-overview.md)kullanarak çeşitli hataların benzetimini yapmayı öğrenin.
 - Diğer olağanüstü durum kurtarma ve yüksek kullanılabilirlik kaynaklarını okuyun. Microsoft bu konularda büyük miktarda kılavuz yayımlamıştır. Bu kaynakların bazıları diğer ürünlerde kullanılmak üzere belirli tekniklerin başvurmakla birlikte, Service Fabric bağlamına uygulayabileceğiniz birçok genel en iyi yöntem içerirler:
   - [Kullanılabilirlik denetim listesi](/azure/architecture/checklist/resiliency-per-service)
-  - [Olağanüstü durum kurtarma detayına gitme](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [Olağanüstü durum kurtarma detayına gitme](../azure-sql/database/disaster-recovery-drills.md)
   - [Azure uygulamaları için olağanüstü durum kurtarma ve yüksek kullanılabilirlik][dr-ha-guide]
 - [Service Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.
 
 
 <!-- External links -->
 
-[repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
+[repair-partition-ps]: /windows/win32/perfctrs/specifying-a-counter-path
 [azure-status-dashboard]:https://azure.microsoft.com/status/
 [azure-regions]: https://azure.microsoft.com/regions/
-[dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+[dr-ha-guide]: /previous-versions/azure/dn251004(v=azure.100)
 
 
 <!-- Images -->

@@ -5,11 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463105"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256501"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Service Fabric kullanarak ortak kod paketi hatalarını tanılayın
 
@@ -51,11 +52,11 @@ Service Fabric, kod paketinizi pek çok nedenden dolayı sonlandırmaktan soruml
 Çıkış kodu | Onaltılık değer | Kısa açıklama | Kök neden | Olası çözüm
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Bu hata bazen makinede Masaüstü yığın alanı tükenmekte olduğu anlamına gelir. Bu neden özellikle, düğümde çalışan uygulamanıza ait çok sayıda işlem varsa olabilir. | Programınız CTRL + C sinyallerine yanıt vermek üzere derlenmediyse, küme bildiriminde **EnableActivateNoWindow** ayarını etkinleştirebilirsiniz. Bu ayarı etkinleştirmek, kod paketinizin GUI penceresi olmadan çalışacağı ve CTRL + C sinyalleri almamayacak anlamına gelir. Bu eylem Ayrıca her bir işlemin kullandığı Masaüstü yığın alanı miktarını azaltır. Kod paketinizin CTRL + C sinyalleri alması gerekiyorsa, düğümünüz masaüstü yığınının boyutunu artırabilirsiniz.
-3762504530 | 0xe0434352 | YOK | Bu değer, yönetilen koddan (.NET) işlenmeyen bir özel durum için hata kodunu temsil eder. | Bu çıkış kodu, uygulamanızın işlenmemiş kalan ve işlemi sonlandıran bir özel durum yaptığını gösterir. Bu hatayı neyin tetiklediğini belirleyen ilk adım olarak uygulamanızın günlüklerinde ve döküm dosyalarında hata ayıklayın.
+3762504530 | 0xe0434352 | Yok | Bu değer, yönetilen koddan (.NET) işlenmeyen bir özel durum için hata kodunu temsil eder. | Bu çıkış kodu, uygulamanızın işlenmemiş kalan ve işlemi sonlandıran bir özel durum yaptığını gösterir. Bu hatayı neyin tetiklediğini belirleyen ilk adım olarak uygulamanızın günlüklerinde ve döküm dosyalarında hata ayıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Diğer yaygın senaryoları tanılama](service-fabric-diagnostics-common-scenarios.md)hakkında daha fazla bilgi edinin.
-* Azure izleyici günlüklerine yönelik daha ayrıntılı bir genel bakış ve [Azure izleyicisine genel bakış](../operations-management-suite/operations-management-suite-overview.md)' ı okuyarak neler sundukları.
-* Algılama ve tanılama konusunda yardım için Azure Izleyici günlükleri [uyarısı](../log-analytics/log-analytics-alerts.md) hakkında daha fazla bilgi edinin.
-* [Günlük araması ve](../log-analytics/log-analytics-log-searches.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama hakkında bilgi edinin.
+* Azure izleyici günlüklerine yönelik daha ayrıntılı bir genel bakış ve [Azure izleyicisine genel bakış](../azure-monitor/overview.md)' ı okuyarak neler sundukları.
+* Algılama ve tanılama konusunda yardım için Azure Izleyici günlükleri [uyarısı](../azure-monitor/platform/alerts-overview.md) hakkında daha fazla bilgi edinin.
+* [Günlük araması ve](../azure-monitor/log-query/log-query-overview.md) Azure izleyici günlüklerinin bir parçası olarak sunulan özellikleri sorgulama hakkında bilgi edinin.

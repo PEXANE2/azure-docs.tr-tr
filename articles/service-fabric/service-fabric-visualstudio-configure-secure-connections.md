@@ -5,11 +5,12 @@ author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464099"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256102"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Visual Studio 'dan Service Fabric kümesine güvenli bağlantıları yapılandırma
 Visual Studio 'Yu kullanarak, erişim denetim ilkeleriyle yapılandırılmış bir Azure Service Fabric kümesine güvenli bir şekilde erişme hakkında bilgi edinin.
@@ -34,9 +35,9 @@ Visual Studio 'dan bir Service Fabric projesi yayımlarsanız, bir Azure Service
 3. Projenin kısayol menüsündeki **Yayımla...** komutunu seçerek **Azure uygulaması Yayımla** iletişim kutusunu açın ve hedef kümeyi seçin. Araç otomatik olarak bağlantıyı çözümler ve güvenli bağlantı parametrelerini yayımlama profiline kaydeder.
 4. İsteğe bağlı: yayımlama profilini, güvenli bir küme bağlantısı belirtmek üzere düzenleyebilirsiniz.
    
-   Yayımlama profili XML dosyasını sertifika bilgilerini belirtecek şekilde el ile düzenlediğinizden, sertifika deposu adı, depo konumu ve sertifika parmak izini unutmayın. Sertifikanın mağaza adı ve depolama konumu için bu değerleri sağlamanız gerekir. Daha fazla bilgi için bkz. [nasıl yapılır: bir sertifikanın parmak Izini alma](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) .
+   Yayımlama profili XML dosyasını sertifika bilgilerini belirtecek şekilde el ile düzenlediğinizden, sertifika deposu adı, depo konumu ve sertifika parmak izini unutmayın. Sertifikanın mağaza adı ve depolama konumu için bu değerleri sağlamanız gerekir. Daha fazla bilgi için bkz. [nasıl yapılır: bir sertifikanın parmak Izini alma](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
    
-   Service Fabric kümesine bağlanırken kullanılacak PowerShell parametrelerini belirtmek için *Clusterconnectionparameters* parametrelerini kullanabilirsiniz. Connect-ServiceFabricCluster cmdlet 'i tarafından kabul edilen geçerli parametreler geçerlidir. Kullanılabilir parametrelerin listesi için bkz. [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) .
+   Service Fabric kümesine bağlanırken kullanılacak PowerShell parametrelerini belirtmek için *Clusterconnectionparameters* parametrelerini kullanabilirsiniz. Connect-ServiceFabricCluster cmdlet 'i tarafından kabul edilen geçerli parametreler geçerlidir. Kullanılabilir parametrelerin listesi için bkz. [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
    
    Uzak bir kümeye yayımlıyorsanız, ilgili küme için uygun parametreleri belirtmeniz gerekir. Güvenli olmayan bir kümeye bağlanma örneği aşağıda verilmiştir:
    

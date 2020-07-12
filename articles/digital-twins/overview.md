@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737130"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258011"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure dijital TWINS** , ortamların tamamına yönelik kapsamlı dijital modellerin oluşturulmasına izin veren bir IoT platformudur. Bu ortamlar binalar, oluşturucular, gruplar, enerji ağları, railler, lekeler ve daha fazlası gibi tüm şehirlerde bile olabilir. Bu dijital modeller, daha iyi ürünler, iyileştirilmiş işlemler, düşük maliyetler ve müşteri deneyimlerini ele alan Öngörüler elde etmek için kullanılabilir.
 
@@ -46,6 +43,12 @@ DTDL, [ıot Tak ve kullan (PnP)](../iot-pnp/overview-iot-plug-and-play.md) ve [T
 ### <a name="live-execution-environment"></a>Canlı yürütme ortamı
 
 Azure dijital TWINS 'deki dijital modeller gerçek dünyanın canlı, güncel temsilleridir. Özel DTDL modellerinizde ilişkileri kullanarak, TWINS 'i ortamınızı temsil eden **canlı bir grafiğe** bağlayacaksınız.
+
+Azure dijital TWINS grafınızı, [**Azure Digital TWINS Explorer**](https://github.com/Azure-Samples/digital-twins-explorer)örnek bir uygulamanın yardımıyla görüntüleyebilirsiniz.
+
+Örnek görselleştirmenin nasıl görüneceğine ilişkin bir görünüm aşağıda verilmiştir:
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Dijital TWINS 'i temsil eden düğümlerin grafiğini gösteren Azure Digital TWINS Explorer örnek uygulamasının ekran görüntüsü" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Azure dijital TWINS, bu grafiği veri işleme ve iş mantığı ile güncel tutmak için zengin bir **olay sistemi** sağlar. Bu veri işlemeyi esnek ve özelleştirilmiş yöntemlerle yönlendirmek için [Azure işlevleri](../azure-functions/functions-overview.md)gibi dış işlem kaynaklarını bağlayabilirsiniz.
 

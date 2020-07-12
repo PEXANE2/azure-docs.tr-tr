@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82129094"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255498"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -18,13 +18,13 @@ Bu makale, Azure Kubernetes Service (AKS) için başarılı bir geçiş planlay�
 
 Bu belge, aşağıdaki senaryoları desteklemeye yardımcı olmak için kullanılabilir:
 
-* [Kullanılabilirlik kümeleri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) tarafından desteklenen bir aks kümesini [sanal makine ölçek kümelerine](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) geçirme
-* AKS kümesini [Standart SKU yük dengeleyici](https://docs.microsoft.com/azure/aks/load-balancer-standard) kullanmak üzere geçirme
+* [Kullanılabilirlik kümeleri](../virtual-machines/windows/tutorial-availability-sets.md) tarafından desteklenen bir aks kümesini [sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md) geçirme
+* AKS kümesini [Standart SKU yük dengeleyici](./load-balancer-standard.md) kullanmak üzere geçirme
 * [Azure Container Service (ACS)-devre dışı bırakma 31 ocak 2020,](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) aks 'e geçiriliyor
-* [Aks altyapısından](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) aks 'e geçiş
+* [Aks altyapısından](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) aks 'e geçiş
 * Azure olmayan tabanlı Kubernetes kümelerinden AKS 'e geçiş
 
-Geçiş yaparken, hedef Kubernetes sürümünüzün AKS için desteklenen pencere kapsamında olduğundan emin olun. Daha eski bir sürüm kullanıyorsanız, bu desteklenen aralıkta olmayabilir ve yükseltme sürümlerinin AKS tarafından desteklenmesi gerekir. Daha fazla bilgi için bkz. [aks desteklenen Kubernetes sürümleri](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) .
+Geçiş yaparken, hedef Kubernetes sürümünüzün AKS için desteklenen pencere kapsamında olduğundan emin olun. Daha eski bir sürüm kullanıyorsanız, bu desteklenen aralıkta olmayabilir ve yükseltme sürümlerinin AKS tarafından desteklenmesi gerekir. Daha fazla bilgi için bkz. [aks desteklenen Kubernetes sürümleri](./supported-kubernetes-versions.md) .
 
 Kubernetes 'in daha yeni bir sürümüne geçiş yapıyorsanız, [Kubernetes sürümünü ve sürüm eğriltme destek ilkesini](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)gözden geçirin.
 
@@ -47,11 +47,11 @@ Bu makalede, için geçiş ayrıntılarını özetliyoruz:
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>Standart Load Balancer ve sanal makine ölçek kümeleri ile AKS 'ler
 
-AKS, daha düşük yönetim yüküyle benzersiz yetenekler sunan bir yönetilen hizmettir. Yönetilen bir hizmet olmanın bir sonucu olarak, AKS 'nin desteklediği bir [bölge](https://docs.microsoft.com/azure/aks/quotas-skus-regions) kümesinden seçim yapmanız gerekir. Mevcut kümenizdeki AKS 'e geçiş, AKS tarafından yönetilen denetim düzleminde sağlıklı kalması için mevcut uygulamalarınızın değiştirilmesini gerektirebilir.
+AKS, daha düşük yönetim yüküyle benzersiz yetenekler sunan bir yönetilen hizmettir. Yönetilen bir hizmet olmanın bir sonucu olarak, AKS 'nin desteklediği bir [bölge](./quotas-skus-regions.md) kümesinden seçim yapmanız gerekir. Mevcut kümenizdeki AKS 'e geçiş, AKS tarafından yönetilen denetim düzleminde sağlıklı kalması için mevcut uygulamalarınızın değiştirilmesini gerektirebilir.
 
-[Birden çok düğüm havuzu](https://docs.microsoft.com/azure/aks/use-multiple-node-pools), [KULLANıLABILIRLIK ALANLARı](https://docs.microsoft.com/azure/availability-zones/az-overview), [yetkilendirilmiş IP aralıkları](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), [küme otomatik Scaler](https://docs.microsoft.com/azure/aks/cluster-autoscaler), [aks için Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks)ve yayımlandıkları gibi diğer yeni özellikler gibi özellikleri almanızı sağlamak için [Sanal Makine Ölçek Kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets) ve [Azure Standart Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard) tarafından desteklenen aks kümelerini kullanmanızı öneririz.
+[Birden çok düğüm havuzu](./use-multiple-node-pools.md), [KULLANıLABILIRLIK ALANLARı](../availability-zones/az-overview.md), [yetkilendirilmiş IP aralıkları](./api-server-authorized-ip-ranges.md), [küme otomatik Scaler](./cluster-autoscaler.md), [aks için Azure ilkesi](../governance/policy/concepts/policy-for-kubernetes.md)ve yayımlandıkları gibi diğer yeni özellikler gibi özellikleri almanızı sağlamak için [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/index.yml) ve [Azure Standart Load Balancer](./load-balancer-standard.md) tarafından desteklenen aks kümelerini kullanmanızı öneririz.
 
-[Sanal makine kullanılabilirlik kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) tarafından desteklenen aks kümelerinde bu özelliklerin birçoğu için destek yok.
+[Sanal makine kullanılabilirlik kümeleri](../virtual-machine-scale-sets/availability.md#availability-sets) tarafından desteklenen aks kümelerinde bu özelliklerin birçoğu için destek yok.
 
 Aşağıdaki örnek, bir sanal makine ölçek kümesi tarafından desteklenen tek düğümlü havuz içeren bir AKS kümesi oluşturur. Standart yük dengeleyici kullanır. Ayrıca küme için düğüm havuzunda küme otomatik Scaler 'ı ve en az *1* ve en fazla *3* düğüm ayarlar:
 
@@ -84,25 +84,25 @@ Kümeleri geçirirken dış Azure hizmetlerinizi bağlı kalabilirsiniz. Bunlar 
 
 ## <a name="ensure-valid-quotas"></a>Geçerli kotalar olduğundan emin olun
 
-Geçiş sırasında aboneliğinize daha fazla sanal makine dağıtılacağından, Kotalarınızın ve limitlerinizin bu kaynaklar için yeterli olduğunu doğrulamanız gerekir. [VCPU kotasında](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)artış istemeniz gerekebilir.
+Geçiş sırasında aboneliğinize daha fazla sanal makine dağıtılacağından, Kotalarınızın ve limitlerinizin bu kaynaklar için yeterli olduğunu doğrulamanız gerekir. [VCPU kotasında](../azure-portal/supportability/per-vm-quota-requests.md)artış istemeniz gerekebilir.
 
-IP 'Leri tüketmemenizi sağlamak için [ağ kotaları](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) artışı istemeniz gerekebilir. Ek bilgi için bkz. [AKS için ağ ve IP aralıkları](https://docs.microsoft.com/azure/aks/configure-kubenet) .
+IP 'Leri tüketmemenizi sağlamak için [ağ kotaları](../azure-portal/supportability/networking-quota-requests.md) artışı istemeniz gerekebilir. Ek bilgi için bkz. [AKS için ağ ve IP aralıkları](./configure-kubenet.md) .
 
-Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Geçerli kotalarınızı denetlemek için, Azure portal [abonelikler dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)gidin, aboneliğinizi seçin ve ardından **kullanım + kotalar**' ı seçin.
+Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md). Geçerli kotalarınızı denetlemek için, Azure portal [abonelikler dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)gidin, aboneliğinizi seçin ve ardından **kullanım + kotalar**' ı seçin.
 
 ## <a name="high-availability-and-business-continuity"></a>Yüksek kullanılabilirlik ve Iş sürekliliği
 
-Uygulamanız kapalı kalma süresini işleyememesi durumunda yüksek kullanılabilirlik geçiş senaryoları için en iyi yöntemleri izlemeniz gerekir.  Karmaşık iş sürekliliği planlama, olağanüstü durum kurtarma ve en yüksek çalışma süresi, bu belgenin kapsamı dışındadır.  Daha fazla bilgi edinmek için [Azure Kubernetes Service 'te (AKS) iş sürekliliği ve olağanüstü durum kurtarma Için en iyi uygulamalar](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) hakkında daha fazla bilgi edinin.
+Uygulamanız kapalı kalma süresini işleyememesi durumunda yüksek kullanılabilirlik geçiş senaryoları için en iyi yöntemleri izlemeniz gerekir.  Karmaşık iş sürekliliği planlama, olağanüstü durum kurtarma ve en yüksek çalışma süresi, bu belgenin kapsamı dışındadır.  Daha fazla bilgi edinmek için [Azure Kubernetes Service 'te (AKS) iş sürekliliği ve olağanüstü durum kurtarma Için en iyi uygulamalar](./operator-best-practices-multi-region.md) hakkında daha fazla bilgi edinin.
 
 Karmaşık uygulamalar için genellikle her seferinde değil zaman içinde geçiş yapabilirsiniz. Bu, eski ve yeni ortamların ağ üzerinden iletişim kurması gerekebilecek anlamına gelir. Daha önce `ClusterIP` iletişim kurmak için Hizmetleri kullanan uygulamaların tür olarak açığa çıkarılması `LoadBalancer` ve güvenli bir şekilde sağlanması gerekebilir.
 
 Geçişi gerçekleştirmek için, istemcileri AKS üzerinde çalışan yeni hizmetlere işaret etmek isteyeceksiniz. DNS 'yi, AKS kümenizin önünde bulunan Load Balancer işaret etmek üzere güncelleştirerek trafiği yeniden yönlendirmenizi öneririz.
 
-[Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) , müşterileri Istenen Kubernetes kümesine ve uygulama örneğine yönlendirebilir.  Traffic Manager, bölgeler arasında ağ trafiği dağıtabilecek DNS tabanlı bir trafik yük dengeleyicidir.  En iyi performans ve artıklık için, tüm uygulama trafiğini AKS kümenize geçmeden önce Traffic Manager aracılığıyla doğrudan yönlendirin.  Birden çok Luster dağıtımında, müşteriler her bir AKS kümesindeki hizmetlere işaret eden bir Traffic Manager DNS adına bağlanmalıdır. Bu hizmetleri Traffic Manager uç noktaları kullanarak tanımlayın. Her uç nokta *hizmet yük DENGELEYICI IP*'dir. Ağ trafiğini bir bölgedeki Traffic Manager uç noktasından farklı bir bölgedeki uç noktaya yönlendirmek için bu yapılandırmayı kullanın.
+[Azure Traffic Manager](../traffic-manager/index.yml) , müşterileri Istenen Kubernetes kümesine ve uygulama örneğine yönlendirebilir.  Traffic Manager, bölgeler arasında ağ trafiği dağıtabilecek DNS tabanlı bir trafik yük dengeleyicidir.  En iyi performans ve artıklık için, tüm uygulama trafiğini AKS kümenize geçmeden önce Traffic Manager aracılığıyla doğrudan yönlendirin.  Birden çok Luster dağıtımında, müşteriler her bir AKS kümesindeki hizmetlere işaret eden bir Traffic Manager DNS adına bağlanmalıdır. Bu hizmetleri Traffic Manager uç noktaları kullanarak tanımlayın. Her uç nokta *hizmet yük DENGELEYICI IP*'dir. Ağ trafiğini bir bölgedeki Traffic Manager uç noktasından farklı bir bölgedeki uç noktaya yönlendirmek için bu yapılandırmayı kullanın.
 
 ![Traffic Manager ile AKS](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-[Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview) , aks kümelerine yönelik trafiği yönlendirme için başka bir seçenektir.  Azure Front Door Service, yüksek kullanılabilirliğe yönelik en iyi performans ve anında genel yük devretme için iyileştirerek, web trafiğinizin genel yönlendirmesini tanımlamanızı, yönetmenizi ve izlemenizi sağlar. 
+[Azure ön kapı hizmeti](../frontdoor/front-door-overview.md) , aks kümelerine yönelik trafiği yönlendirme için başka bir seçenektir.  Azure Front Door Service, yüksek kullanılabilirliğe yönelik en iyi performans ve anında genel yük devretme için iyileştirerek, web trafiğinizin genel yönlendirmesini tanımlamanızı, yönetmenizi ve izlemenizi sağlar. 
 
 ### <a name="considerations-for-stateless-applications"></a>Durum bilgisi olmayan uygulamalarla ilgili konular
 
@@ -113,15 +113,15 @@ Durum bilgisiz uygulama geçişi en kolay durumdur. Kaynak tanımlarınızı (YA
 Veri kaybını veya beklenmedik kapalı kalma süresini önlemek için durum bilgisi olan uygulamaların geçişini dikkatle planlayın.
 
 Azure dosyaları kullanıyorsanız, dosya payını yeni kümeye bir birim olarak bağlayabilirsiniz:
-* [Statik Azure dosyalarını birim olarak bağlama](https://docs.microsoft.com/azure/aks/azure-files-volume#mount-the-file-share-as-a-volume)
+* [Statik Azure dosyalarını birim olarak bağlama](./azure-files-volume.md#mount-the-file-share-as-a-volume)
 
 Azure yönetilen diskler kullanıyorsanız, diski yalnızca herhangi bir VM 'ye bağlı değilse bağlayabilirsiniz:
-* [Statik Azure diskini birim olarak bağlama](https://docs.microsoft.com/azure/aks/azure-disk-volume#mount-disk-as-volume)
+* [Statik Azure diskini birim olarak bağlama](./azure-disk-volume.md#mount-disk-as-volume)
 
 Bu yaklaşımlardan hiçbiri işe çalışmadıysanız, yedekleme ve geri yükleme seçeneklerini kullanabilirsiniz:
 * [Azure 'da Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-#### <a name="azure-files"></a>Azure Dosyaları
+#### <a name="azure-files"></a>Azure Dosyalar
 
 Disklerden farklı olarak, Azure dosyaları aynı anda birden çok konağa bağlanabilir. AKS kümenizde, Azure ve Kubernetes, ACS kümenizin hala kullandığı bir pod oluşturmanızı engellemez. Veri kaybını ve beklenmedik davranışı engellemek için, kümelerin aynı anda aynı dosyalara yazmayın olduğundan emin olun.
 
@@ -131,7 +131,7 @@ Uygulamanız aynı dosya paylaşımının işaret eden birden çok kopyayı bar�
 * Canlı trafiğinizi yeni AKS kümenize getirin.
 * Eski kümenin bağlantısını kesin.
 
-Boş bir paylaşımdan başlamak ve kaynak verilerin bir kopyasını oluşturmak istiyorsanız, bu [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) komutları kullanarak verilerinizi geçirebilirsiniz.
+Boş bir paylaşımdan başlamak ve kaynak verilerin bir kopyasını oluşturmak istiyorsanız, bu [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) komutları kullanarak verilerinizi geçirebilirsiniz.
 
 
 #### <a name="migrating-persistent-volumes"></a>Kalıcı birimleri geçirme
@@ -142,7 +142,7 @@ Mevcut kalıcı birimleri AKS 'e geçiriyorsanız, genellikle bu adımları taki
 * Disklerin anlık görüntülerini alın.
 * Anlık görüntülerden yeni yönetilen diskler oluşturun.
 * AKS 'de kalıcı birimler oluşturun.
-* Pod belirtimlerini, Persistentvolumeclaim (statik sağlama) yerine [mevcut birimleri kullanacak](https://docs.microsoft.com/azure/aks/azure-disk-volume) şekilde güncelleştirin.
+* Pod belirtimlerini, Persistentvolumeclaim (statik sağlama) yerine [mevcut birimleri kullanacak](./azure-disk-volume.md) şekilde güncelleştirin.
 * Uygulamanızı AKS 'e dağıtın.
 * Uygulamanızın düzgün çalıştığını doğrulayın.
 * Canlı trafiğinizi yeni AKS kümenize getirin.
@@ -158,7 +158,7 @@ Bazı açık kaynaklı araçlar, yönetilen diskler oluşturmanıza ve birimleri
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Küme yapılandırmanızın dağıtımı
 
-AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve AKS 'e dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)için Azure Pipelines kullanabilirsiniz. Mevcut dağıtım görevlerinizi kopyalayın ve `kubeconfig` Yeni AKS kümesine işaret edin.
+AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve AKS 'e dağıtmak](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)için Azure Pipelines kullanabilirsiniz. Mevcut dağıtım görevlerinizi kopyalayın ve `kubeconfig` Yeni AKS kümesine işaret edin.
 
 Bu mümkün değilse, mevcut Kubernetes kümenizdeki kaynak tanımlarını dışarı aktarın ve ardından bunları AKS 'e uygulayın. `kubectl`Nesneleri dışarı aktarmak için ' i kullanabilirsiniz.
 
@@ -184,4 +184,4 @@ Bu makalede, için geçiş ayrıntıları özetlenmektedir:
 
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml

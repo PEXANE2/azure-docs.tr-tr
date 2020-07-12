@@ -111,7 +111,7 @@
 - name: Örnekler
   items:
     - name: Kod örnekleri
-      href: 'https://docs.microsoft.com/samples/browse/'
+      href: /samples/browse/
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -491,7 +491,7 @@
             - name: ReliableDictionaryActorStateProvider’ı yapılandırma
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: ASP.NET Core hizmeti oluşturma
-          href: service-fabric-add-a-web-frontend.md
+          href: ./service-fabric-reliable-services-communication-aspnetcore.md
         - name: Linux üzerinde Apache Tomcat sunucu kapsayıcısı oluşturma
           href: service-fabric-get-started-tomcat.md
         - name: Güvenliği yapılandırma
@@ -628,7 +628,7 @@
         - name: Sürekli tümleştirme kurulumu
           items:
             - name: Azure Pipelines ile sürekli tümleştirmeyi ayarlama
-              href: service-fabric-set-up-continuous-integration.md
+              href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Jenkins kullanarak Linux uygulamalarınızı dağıtma
               href: service-fabric-cicd-your-linux-applications-with-jenkins.md
     - name: Ters proxy’yi ayarlama ve yapılandırma
@@ -897,7 +897,7 @@
     - name: Sık sorulan sorular
       href: service-fabric-common-questions.md
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
+      href: /answers/topics/azure-service-fabric.html
     - name: Azure Resource Manager Dağıtım Korkulukları
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: Fiyatlandırma

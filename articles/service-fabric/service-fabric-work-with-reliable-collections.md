@@ -3,12 +3,12 @@ title: Güvenilir Koleksiyonlar ile çalışma
 description: Azure Service Fabric uygulamasında güvenilir Koleksiyonlar ile çalışmaya yönelik en iyi uygulamaları öğrenin.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374704"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255804"
 ---
 # <a name="working-with-reliable-collections"></a>Güvenilir Koleksiyonlar ile çalışma
 Service Fabric, güvenilir koleksiyonlar aracılığıyla .NET geliştiricileri için kullanılabilen bir durum bilgisi olan programlama modeli sunar. Özellikle, Service Fabric güvenilir sözlük ve güvenilir sıra sınıfları sağlar. Bu sınıfları kullandığınızda, durumunuzun bölümlenmesi (ölçeklenebilirlik için), çoğaltılan (kullanılabilirlik için) ve bir bölüm içinde (ACID semantiği için) işlem gerçekleştirilmiş olur. Güvenilir bir sözlük nesnesinin tipik bir kullanımına bakalım ve gerçekten ne yaptığını görelim.
@@ -219,10 +219,10 @@ Ayrıca, hizmet kodu tek seferde bir yükseltme etki alanı yükseltilir. Bu ned
 Alternatif olarak, genellikle iki yükseltme olarak adlandırılan işlemleri yapabilirsiniz. İki aşamalı bir yükseltme sayesinde, hizmetinizi v1 'den v2 'ye yükseltirsiniz: v2 yeni şema değişikliğine nasıl uğratacağını bilen kodu içerir, ancak bu kod yürütülmez. V2 kodu v1 verilerini okuduğunda, üzerinde çalışır ve v1 verilerini yazar. Yükseltme tamamlandıktan sonra, yükseltme tüm etki alanlarında tamamlandıktan sonra, yükseltmenin tamamlandığı çalışan v2 örneklerine bir uyarı verebilirsiniz. (Bunu işaret etmenin bir yolu, bir yapılandırma yükseltmesini kullanıma sunmanız; bu, bu iki aşamalı yükseltme yapmayı sağlar.) Artık v2 örnekleri v1 verilerini okuyabilir, v2 verilerine dönüştürebilir, üzerinde işlem yapabilir ve V2 verisi olarak yazabilir. Diğer örnekler v2 verilerini okuduklarında, bunları dönüştürmeleri gerekmez, yalnızca üzerinde çalışır ve v2 verilerini yazar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İleri uyumlu veri sözleşmeleri oluşturma hakkında bilgi edinmek için bkz. [Ileri uyumlu veri sözleşmeleri](https://msdn.microsoft.com/library/ms731083.aspx)
+İleri uyumlu veri sözleşmeleri oluşturma hakkında bilgi edinmek için bkz. [Ileri uyumlu veri sözleşmeleri](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts)
 
-Sürüm oluşturma veri sözleşmeleri hakkında en iyi yöntemleri öğrenmek için bkz. [veri sözleşmesi sürümü oluşturma](https://msdn.microsoft.com/library/ms731138.aspx)
+Sürüm oluşturma veri sözleşmeleri hakkında en iyi yöntemleri öğrenmek için bkz. [veri sözleşmesi sürümü oluşturma](/dotnet/framework/wcf/feature-details/data-contract-versioning)
 
-Sürüm dayanıklı veri sözleşmeleri uygulama hakkında bilgi edinmek için bkz. [Sürüm dayanıklı serileştirme geri çağırmaları](https://msdn.microsoft.com/library/ms733734.aspx)
+Sürüm dayanıklı veri sözleşmeleri uygulama hakkında bilgi edinmek için bkz. [Sürüm dayanıklı serileştirme geri çağırmaları](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-Birden çok sürümde birlikte çalışabilecek bir veri yapısını nasıl sağlayabileceğinizi öğrenmek için bkz. [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)
+Birden çok sürümde birlikte çalışabilecek bir veri yapısını nasıl sağlayabileceğinizi öğrenmek için bkz. [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)

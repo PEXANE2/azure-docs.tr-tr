@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458235"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257766"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric ile bağlanma ve hizmetlerle iletişim kurma
 Service Fabric, bir hizmet, genellikle birden çok VM arasında dağıtılan bir Service Fabric kümesinde bir yerde çalışır. Hizmet sahibine veya Service Fabric göre otomatik olarak bir yerden diğerine taşınabilir. Hizmetler, belirli bir makineye veya adrese statik olarak bağlı değildir.
@@ -162,14 +163,14 @@ Azure Load Balancer ve araştırmanın düğümler üzerinde çalışan *Hizmetl
 Reliable Services Framework önceden oluşturulmuş çeşitli iletişim seçenekleriyle birlikte gelir. Kendisi için en iyi çalışma kararı, programlama modelinin, iletişim çerçevesinin ve hizmetlerinizin yazıldığı programlama dilinin seçimine bağlıdır.
 
 * **Özel protokol yok:**  Belirli bir iletişim çerçevesi seçeneğiniz yoksa, ancak hızlı bir şekilde çalışmaya başlayın, sonra, Reliable Services ve Reliable Actors için kesin olarak yazılmış uzak yordam çağrılarına izin veren [hizmet uzaktan iletişim](service-fabric-reliable-services-communication-remoting.md)kurun. Bu, hizmet iletişimini kullanmaya başlamanın en kolay ve en hızlı yoludur. Hizmet uzaktan iletişim hizmeti adresleri, bağlantı, yeniden deneme ve hata işleme çözümlemesini yönetir. Bu, hem C# hem de Java uygulamalarında kullanılabilir.
-* **Http**: dilden bağımsız ILETIŞIM için http, her türlü Service Fabric tarafından desteklenen birçok farklı dilde araçlar ve http sunucularıyla sunulan endüstri standardı bir seçenek sunar. Hizmetler, C# uygulamaları için [ASP.NET Web API 'si](service-fabric-reliable-services-communication-webapi.md) de dahil olmak üzere kullanılabilir HERHANGI bir HTTP yığınını kullanabilir. C# dilinde yazılan istemciler `ICommunicationClient` ve `ServicePartitionClient` sınıflarından yararlanarak, Java için, `CommunicationClient` `FabricServicePartitionClient` [hizmet çözümlemesi, http bağlantıları ve yeniden deneme döngüleri için](service-fabric-reliable-services-communication.md)ve sınıflarını kullanın.
+* **Http**: dilden bağımsız ILETIŞIM için http, her türlü Service Fabric tarafından desteklenen birçok farklı dilde araçlar ve http sunucularıyla sunulan endüstri standardı bir seçenek sunar. Hizmetler, C# uygulamaları için [ASP.NET Web API 'si](./service-fabric-reliable-services-communication-aspnetcore.md) de dahil olmak üzere kullanılabilir HERHANGI bir HTTP yığınını kullanabilir. C# dilinde yazılan istemciler `ICommunicationClient` ve `ServicePartitionClient` sınıflarından yararlanarak, Java için, `CommunicationClient` `FabricServicePartitionClient` [hizmet çözümlemesi, http bağlantıları ve yeniden deneme döngüleri için](service-fabric-reliable-services-communication.md)ve sınıflarını kullanın.
 * **WCF**: iletişim çerçeve'niz olarak WCF kullanan mevcut kodunuz varsa, `WcfCommunicationListener` sunucu tarafı ve `WcfCommunicationClient` istemci sınıfları için öğesini kullanabilirsiniz `ServicePartitionClient` . Bu ancak yalnızca Windows tabanlı kümelerde C# uygulamaları için kullanılabilir. Daha fazla ayrıntı için, [iletişim yığınının WCF tabanlı uygulamasıyla](service-fabric-reliable-services-communication-wcf.md)ilgili bu makaleye bakın.
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Özel protokoller ve diğer iletişim çerçeveleri kullanma
 Hizmetler, iletişim için herhangi bir protokol veya çerçeveyi, TCP yuvaları üzerinde özel bir ikili protokol mi yoksa [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) veya [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)aracılığıyla akış olayları mı kullanabilir. Service Fabric, iletişim yığınınızı bağlayabileceğiniz iletişim API 'Leri sağlar, ancak keşfedilecek ve bağlanan tüm işler sizin için soyutlandır. Daha fazla ayrıntı için [güvenilir hizmet iletişim modeliyle](service-fabric-reliable-services-communication.md) ilgili bu makaleye bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Reliable Services iletişim modelinde](service-fabric-reliable-services-communication.md)bulunan kavramlar ve API 'ler hakkında daha fazla bilgi edinin, ardından [hizmet uzaktan](service-fabric-reliable-services-communication-remoting.md) iletişim kurarak hızlı bir şekilde çalışmaya başlayın veya [Web API 'si ile owın Self-Host](service-fabric-reliable-services-communication-webapi.md)kullanarak bir iletişim dinleyicisi yazmayı öğrenmek için derinlemesine ilerleyin.
+[Reliable Services iletişim modelinde](service-fabric-reliable-services-communication.md)bulunan kavramlar ve API 'ler hakkında daha fazla bilgi edinin, ardından [hizmet uzaktan](service-fabric-reliable-services-communication-remoting.md) iletişim kurarak hızlı bir şekilde çalışmaya başlayın veya [Web API 'si ile owın Self-Host](./service-fabric-reliable-services-communication-aspnetcore.md)kullanarak bir iletişim dinleyicisi yazmayı öğrenmek için derinlemesine ilerleyin.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

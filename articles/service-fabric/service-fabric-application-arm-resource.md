@@ -3,11 +3,12 @@ title: Azure Resource Manager dağıtma ve yükseltme
 description: Azure Resource Manager şablonu kullanarak bir Service Fabric kümesine uygulamalar ve hizmetler dağıtmayı öğrenin.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75610259"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256518"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Uygulamaları ve Hizmetleri Azure Resource Manager kaynak olarak yönetme
 
@@ -260,13 +261,12 @@ ARM şablonunuzun Microsoft. ServiceFabric/kümeleri/uygulamasını kaldırmak, 
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Mevcut bir uygulamayı Kaynak Yöneticisi aracılığıyla yönetme
 
-Kümeniz zaten çalışır durumda ve Kaynak Yöneticisi Kaynakları olarak yönetmek istediğiniz bazı uygulamalar üzerinde zaten dağıtılmışsa, uygulamaları kaldırmak ve yeniden dağıtmak yerine, uygulamaların Kaynak Yöneticisi kaynakları kabul etmek için aynı API 'Leri kullanarak bir PUT çağrısı kullanabilirsiniz. Daha fazla bilgi için [Service Fabric uygulama kaynak modeli nedir?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model) bölümüne bakın.
+Kümeniz zaten çalışır durumda ve Kaynak Yöneticisi Kaynakları olarak yönetmek istediğiniz bazı uygulamalar üzerinde zaten dağıtılmışsa, uygulamaları kaldırmak ve yeniden dağıtmak yerine, uygulamaların Kaynak Yöneticisi kaynakları kabul etmek için aynı API 'Leri kullanarak bir PUT çağrısı kullanabilirsiniz. Daha fazla bilgi için [Service Fabric uygulama kaynak modeli nedir?](./service-fabric-concept-resource-model.md) bölümüne bakın.
 
 > [!NOTE]
-> Bir küme yükseltmesinin sağlıksız uygulamaları yok saymasına izin vermek için, "upgradeDescription/healthPolicy" bölümünde "Maxyüztunhealthyapplications: 100" belirtebilir; tüm ayarların ayrıntılı açıklamaları, [Service yapılar REST API küme yükseltme ilkesi belgelerinde](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)bulunur.
+> Bir küme yükseltmesinin sağlıksız uygulamaları yok saymasına izin vermek için, "upgradeDescription/healthPolicy" bölümünde "Maxyüztunhealthyapplications: 100" belirtebilir; tüm ayarların ayrıntılı açıklamaları, [Service yapılar REST API küme yükseltme ilkesi belgelerinde](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Diğer uygulamaları kümenize dağıtmak için [SERVICE fabrıc CLI](service-fabric-cli.md) veya [PowerShell](service-fabric-deploy-remove-applications.md) kullanın. 
 * [Service Fabric kümenizi yükseltme](service-fabric-cluster-upgrade.md)
-

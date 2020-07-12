@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: a45160db09b3f6bf68bda3f25e40a29a1154099d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308498"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256705"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Hızlı başlangıç: kiracı ayarlama
 
@@ -34,7 +34,7 @@ Her Azure AD kiracısı ayrıdır ve diğer Azure AD kiracılarından ayrılmı�
 * İş ve okul hesapları (Azure AD hesapları) veya Microsoft hesapları (outlook.com ve live.com gibi)
 * Sosyal ve yerel hesaplar (Azure AD B2C)
 
-Bu hızlı başlangıç, derlemek istediğiniz uygulamanın türüne bağlı olarak iki senaryoya bölünmüştür. Bir kimlik türünü hedefleme konusunda daha fazla yardıma ihtiyacınız varsa, [Microsoft kimlik platformu hakkında](about-microsoft-identity-platform.md) konusuna bakın
+Bu hızlı başlangıç, derlemek istediğiniz uygulamanın türüne bağlı olarak iki senaryoya bölünmüştür.
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>İş ve okul hesapları veya kişisel Microsoft hesapları
 

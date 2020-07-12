@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75730153"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258565"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Hızlı başlangıç: Service Fabric'e bir .NET güvenilir hizmetler uygulaması dağıtma
 
@@ -30,7 +30,7 @@ Bu uygulamayı kullanarak şunları yapmayı öğrenirsiniz:
 * Birden çok düğüm arasında uygulamanın ölçeğini genişletme
 * Toplu uygulama yükseltmesi yapma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -52,7 +52,7 @@ Bu hızlı başlangıcı tamamlamak için:
 > Bu belirli bir hızlı başlangıç için gereksiz olsa da, kümeyi oluştururken Docker 'ın çalışmasını sağlamak için en iyi yöntem olarak eklenmiştir.
 > Terminal penceresi açarak ve hata oluşup oluşmadığını görmek için `docker ps` komutunu çalıştırarak Docker'ı çalışmasını test edin. Yanıt bir hata göstermiyorsa, Docker çalışıyor ve siz de küme oluşturmaya hazırsınız demektir.
 >
-> [Kapsayıcılar için Windows 10 veya Windows Server 'ı ayarlama](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
+> [Kapsayıcılar için Windows 10 veya Windows Server 'ı ayarlama](/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Yönetici olarak yeni, yükseltilmiş bir PowerShell penceresi açın.
 2. Aşağıdaki PowerShell komutunu çalıştırarak geliştirme kümesini oluşturun:
@@ -91,7 +91,7 @@ Uygulamayı dağıtmak için **F5** tuşuna basın.
 > [!NOTE]
 > Visual Studio çıktı penceresinde, "Uygulama URL 'SI ayarlanmadı veya bir HTTP/HTTPS URL 'SI değil, bu nedenle tarayıcının uygulamaya açılmayacak" iletisini görürsünüz.  Bu ileti bir hataya işaret etmez ama tarayıcının otomatik olarak başlatılmayacağını belirtir.
 
-Dağıtım tamamlandığında, uygulamanın Web ön ucuna bakmak için bir tarayıcı `http://localhost:8080` başlatın ve açın.
+Dağıtım tamamlandığında, `http://localhost:8080` uygulamanın Web ön ucuna bakmak için bir tarayıcı başlatın ve açın.
 
 ![Uygulama ön ucu](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
@@ -161,7 +161,7 @@ Uygulamayı yükseltmek için aşağıdakileri yapın:
 
     ![Sürümü Değiştir İletişim Kutusu](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. **Service Fabric uygulaması Yayımla** iletişim kutusunda, **uygulamayı Yükselt onay kutusunu**işaretleyin.
-8.  **Hedef profili** **PublishProfiles\Local.5Node.xml** olarak değiştirin ve **bağlantı uç noktasının** **yerel küme**olarak ayarlandığından emin olun. 
+8.  **Hedef profili** **PublishProfiles\Local.5Node.xml** değiştirin ve **bağlantı uç noktasının** **yerel küme**olarak ayarlandığından emin olun. 
 9. **Uygulamayı Yükselt**' i seçin.
 
     ![Yayımla İletişim Kutusu Yükseltme Ayarı](./media/service-fabric-quickstart-dotnet/upgrade-app.png)

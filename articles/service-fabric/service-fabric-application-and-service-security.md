@@ -3,12 +3,12 @@ title: Azure Service Fabric uygulama güvenliği hakkında bilgi edinin
 description: Service Fabric 'da mikro hizmet uygulamalarının güvenli bir şekilde çalıştırılmasına genel bakış. Farklı güvenlik hesapları altında hizmetler ve başlatma betiği çalıştırmayı, kullanıcıların kimliklerini doğrulamayı ve yetkilendirmeyi, uygulama gizli dizilerini yönetmeyi, güvenli hizmet iletişimlerini yönetmeyi, API ağ geçidini kullanmayı ve bekleyen uygulama verilerini güvenli hale getirme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461438"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256586"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Uygulama ve hizmet güvenliği Service Fabric
 Mikro hizmet mimarisi [birçok avantaj](service-fabric-overview-microservices.md)getirebilir. Ancak mikro hizmetlerin güvenliğini yönetmek, bir zorluk ve geleneksel tek parçalı uygulamalar güvenliğini yönetmekten farklıdır. 
@@ -20,7 +20,7 @@ Bu makale, mikro hizmetler güvenliğine yönelik bir kılavuz değildir, çevri
 ## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 Genellikle, bir hizmet tarafından sunulan kaynakların ve API 'Lerin belirli Güvenilen Kullanıcı veya istemcilerle sınırlı olması gerekir. Kimlik doğrulaması, bir kullanıcının kimliğini güvenilir bir şekilde belirlememe işlemidir.  Yetkilendirme, API 'Leri veya hizmetleri bazı kimliği doğrulanmış kullanıcılar için kullanılabilir hale getiren işlemdir, ancak diğerleri için kullanılamaz.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 API düzeyi güven kararlarını yapmanın ilk adımı kimlik doğrulamadır. Kimlik doğrulaması, bir kullanıcının kimliğini güvenilir bir şekilde belirlememe işlemidir.  Mikro hizmet senaryolarında, kimlik doğrulaması genellikle merkezi olarak işlenir. Bir API ağ geçidi kullanıyorsanız, kimlik doğrulamasını ağ geçidine [devreedebilirsiniz](/azure/architecture/patterns/gateway-offloading) . Bu yaklaşımı kullanırsanız, ağ geçidinden gelen veya olmayan iletilerin kimliğini doğrulamak için ek güvenlik yoksa, tek tek hizmetlere doğrudan ulaşılamadığından emin olun (API ağ geçidi olmadan).
 
 Hizmetlere doğrudan erişilemiyorsa, kullanıcıların kimliğini doğrulamak için Azure Active Directory gibi bir kimlik doğrulama hizmeti veya güvenlik belirteci hizmeti (STS) görevi gören ayrılmış bir kimlik doğrulama mikro hizmeti kullanılabilir. Güven kararları, güvenlik belirteçleri veya tanımlama bilgileriyle hizmetler arasında paylaşılır. 
@@ -35,7 +35,7 @@ Kimlik doğrulamasından sonra, hizmetlerin Kullanıcı erişimini yetkilendirme
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>API ağ geçidi kullanarak erişimi kısıtlama ve güvenli hale getirme
 Bulut uygulamalarının normalde kullanıcılar, cihazlar ve diğer uygulamalara tek giriş noktası sağlamak için bir ön uç ağ geçidine ihtiyacı vardır. [API ağ geçidi](/azure/architecture/microservices/gateway) , istemciler ve hizmetler arasında yer alır ve uygulamanızın sağladığı tüm hizmetlere giriş noktasıdır. Ters proxy görevi görür ve istekleri istemcilerden hizmetlere yönlendirme. Ayrıca kimlik doğrulama ve yetkilendirme, TLS sonlandırma ve hız sınırlandırma gibi çeşitli çapraz işlemleri gerçekleştirebilir. Bir ağ geçidi dağıtmazsanız, istemcilerin istekleri doğrudan ön uç hizmetlerine gönderebilmesi gerekir.
 
-Service Fabric ağ geçidi, [ASP.NET Core bir uygulama](service-fabric-reliable-services-communication-aspnetcore.md)gibi herhangi bir durum bilgisi olmayan hizmet veya [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)veya [Azure API Management](https://docs.microsoft.com/azure/api-management)gibi trafik girişi için tasarlanan başka bir hizmet olabilir.
+Service Fabric ağ geçidi, [ASP.NET Core bir uygulama](service-fabric-reliable-services-communication-aspnetcore.md)gibi herhangi bir durum bilgisi olmayan hizmet veya [Traefik](https://docs.traefik.io/), [Event Hubs](../event-hubs/index.yml), [IoT Hub](../iot-hub/index.yml)veya [Azure API Management](../api-management/index.yml)gibi trafik girişi için tasarlanan başka bir hizmet olabilir.
 
 API Management, arka uç Service Fabric hizmetlerinize zengin bir yönlendirme kuralları kümesiyle API 'Ler yayımlamanıza olanak tanıyan doğrudan Service Fabric ile tümleşir.  Arka uç hizmetlerine erişimi güvenli hale getirebilirsiniz, azaltmayı kullanarak DOS saldırılarını engelleyebilir veya API anahtarlarını, JWT belirteçlerini, sertifikaları ve diğer kimlik bilgilerini doğrulayabilirsiniz. Daha fazla bilgi edinmek için [Azure API Management genel bakış ile Service Fabric](service-fabric-api-management-overview.md)okuyun.
 
@@ -85,7 +85,7 @@ Ters proxy ve hizmetler arasında güvenli bağlantı kurabilir ve böylece uçt
 Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Hizmet uzaktan iletişimini ( [C#](service-fabric-reliable-services-secure-communication.md) veya [Java](service-fabric-reliable-services-secure-communication-java.md)'da) veya [WCF](service-fabric-reliable-services-secure-communication-wcf.md)'yi kullanırken Güvenliği geliştirmeyi öğrenin.
 
 ## <a name="encrypt-application-data-at-rest"></a>Bekleyen uygulama verilerini şifreleme
-Azure 'da çalışan bir Service Fabric kümesindeki her [düğüm türü](service-fabric-cluster-nodetypes.md) bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)tarafından desteklenir. Azure Resource Manager şablonunu kullanarak, Service Fabric kümesini oluşturan ölçek kümelerine veri diskleri ekleyebilirsiniz.  Hizmetleriniz ekli bir veri diskine veri kaydetmişse, uygulama verilerinizi korumak için [Bu veri disklerini şifreleyebilirsiniz](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) .
+Azure 'da çalışan bir Service Fabric kümesindeki her [düğüm türü](service-fabric-cluster-nodetypes.md) bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/overview.md)tarafından desteklenir. Azure Resource Manager şablonunu kullanarak, Service Fabric kümesini oluşturan ölçek kümelerine veri diskleri ekleyebilirsiniz.  Hizmetleriniz ekli bir veri diskine veri kaydetmişse, uygulama verilerinizi korumak için [Bu veri disklerini şifreleyebilirsiniz](../virtual-machine-scale-sets/disk-encryption-powershell.md) .
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

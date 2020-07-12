@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 167ca76d0b6977a87352f8219d807949a0e4a301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392650"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256314"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Özel Service Fabric sistem durumu raporları ekleme
 Azure Service Fabric, belirli varlıklara uygun olmayan kümeyi ve uygulama koşullarını işaretlemek için tasarlanan bir [sistem durumu modeli](service-fabric-health-introduction.md) sunar. Sistem durumu modeli, sistem **durumu reporlarını** (sistem bileşenleri ve Watchdogs) kullanır. Amaç kolay ve hızlı tanılama ve onarma. Hizmet yazıcılarının sistem durumu hakkında düşünmesine ihtiyacı vardır. Özellikle, sorunların köke yakın olduğunu bayrakladığında, sistem durumunu etkileyebilecek herhangi bir koşul tarihinde bildirilmelidir. Sistem durumu bilgileri, hata ayıklama ve araştırma konusunda zaman ve çaba tasarrufu sağlayabilir. Hizmet, bulutta (özel veya Azure) bir ölçekte çalışmaya başladıktan sonra özellikle net bir şekilde belirlenir.
@@ -37,7 +38,7 @@ Belirtildiği gibi, raporlama şunları yapabilir:
 > 
 > 
 
-Sistem durumu raporlama tasarımı açık olduktan sonra, sistem durumu raporları kolayca gönderilebilir. Küme [güvenli](service-fabric-cluster-security.md) değilse veya doku istemcisinin yönetici ayrıcalıklarına sahip olması durumunda, sistem durumunu raporlamak Için [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 'ı kullanabilirsiniz. Raporlama, [FabricClient. HealthManager. Reporthegizlilik](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), POWERSHELL veya REST aracılığıyla API aracılığıyla yapılabilir. Yapılandırma, daha iyi performans için toplu iş raporlarını dönüştürür.
+Sistem durumu raporlama tasarımı açık olduktan sonra, sistem durumu raporları kolayca gönderilebilir. Küme [güvenli](service-fabric-cluster-security.md) değilse veya doku istemcisinin yönetici ayrıcalıklarına sahip olması durumunda, sistem durumunu raporlamak Için [FabricClient](/dotnet/api/system.fabric.fabricclient) 'ı kullanabilirsiniz. Raporlama, [FabricClient. HealthManager. Reporthegizlilik](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), POWERSHELL veya REST aracılığıyla API aracılığıyla yapılabilir. Yapılandırma, daha iyi performans için toplu iş raporlarını dönüştürür.
 
 > [!NOTE]
 > Rapor durumu zaman uyumludur ve yalnızca istemci tarafında doğrulama işini temsil eder. Raporun sistem durumu istemcisi tarafından kabul edildiği veya `Partition` ya da `CodePackageActivationContext` nesnelerin mağazaya uygulandığı anlamına gelir. Zaman uyumsuz olarak gönderilir ve büyük olasılıkla diğer raporlarla toplanmış olur. Sunucu üzerindeki işleme yine de başarısız olabilir: sıra numarası eskimiş, raporun uygulanması gereken varlık silinmiş, vb.
@@ -57,7 +58,7 @@ Sistem durumu raporları, yapı istemcisinin içinde yer aldığı bir sistem du
 > 
 
 İstemcideki arabelleğe alma, raporların benzersizlik düzeyini dikkate alır. Örneğin, belirli bir hatalı Raporlayıcı, aynı varlığın aynı özelliğinde saniyede 100 rapor bildiriyorsa, raporların son sürümü ile değiştirilmiştir. İstemci kuyruğunda bu tür bir rapor var. Toplu işlem yapılandırılırsa, durum yöneticisine gönderilen raporların sayısı, gönderme aralığı başına yalnızca bir tane olur. Bu rapor, varlığın en güncel durumunu yansıtan son eklenen rapordur.
-Bir `FabricClient` sistem sağlığı ile ilgili girişler için istenen değerlerle [Fabricclientsettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) geçirerek oluşturulduğunda yapılandırma parametrelerini belirtin.
+Bir `FabricClient` sistem sağlığı ile ilgili girişler için istenen değerlerle [Fabricclientsettings](/dotnet/api/system.fabric.fabricclientsettings) geçirerek oluşturulduğunda yapılandırma parametrelerini belirtin.
 
 Aşağıdaki örnek bir yapı istemcisi oluşturur ve raporların eklendiklerinde gönderilmesi gerektiğini belirtir. Yeniden denenebilecek zaman aşımları ve hatalarda, yeniden denemeler her 40 saniyede gerçekleşir.
 
@@ -71,7 +72,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-30 saniyeye ayarlanmış varsayılan yapı istemci ayarlarını tutmanız önerilir `HealthReportSendInterval` . Bu ayar, toplu işlem nedeniyle en iyi performansı sağlar. En kısa sürede gönderilmesi gereken kritik raporlar için `HealthReportSendOptions` `true` [FabricClient. Healthclient. reporthegizli](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API ' de anında kullanın. Anında raporlar toplu işlem aralığını atlar. Bu bayrağı dikkatli kullanın; mümkün olan her durumda sistem durumu istemci toplu işlem avantajlarından faydalanmak istiyoruz. Anında gönderme, yapı istemcisi kapatılırken da yararlıdır (örneğin, işlem geçersiz durumu tespit etti ve yan etkileri engellemek için kapanması gerekir). Birikmiş raporların en iyi şekilde gönderilmesini sağlar. Anında işaretle bir rapor eklendiğinde, sistem durumu istemcisi son gönderimden bu yana tüm birikmiş raporları işler.
+30 saniyeye ayarlanmış varsayılan yapı istemci ayarlarını tutmanız önerilir `HealthReportSendInterval` . Bu ayar, toplu işlem nedeniyle en iyi performansı sağlar. En kısa sürede gönderilmesi gereken kritik raporlar için `HealthReportSendOptions` `true` [FabricClient. Healthclient. reporthegizli](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API ' de anında kullanın. Anında raporlar toplu işlem aralığını atlar. Bu bayrağı dikkatli kullanın; mümkün olan her durumda sistem durumu istemci toplu işlem avantajlarından faydalanmak istiyoruz. Anında gönderme, yapı istemcisi kapatılırken da yararlıdır (örneğin, işlem geçersiz durumu tespit etti ve yan etkileri engellemek için kapanması gerekir). Birikmiş raporların en iyi şekilde gönderilmesini sağlar. Anında işaretle bir rapor eklendiğinde, sistem durumu istemcisi son gönderimden bu yana tüm birikmiş raporları işler.
 
 PowerShell aracılığıyla bir kümeyle bağlantı oluşturulduğunda aynı parametreler belirtilebilir. Aşağıdaki örnek, yerel bir kümeye bir bağlantı başlatır:
 
@@ -113,12 +114,12 @@ REST için raporlar, dahili bir doku istemcisine sahip olan Service Fabric ağ g
 ## <a name="report-from-within-low-privilege-services"></a>Düşük ayrıcalıklı hizmetler içinden rapor
 Service Fabric hizmetlerin kümeye yönetici erişimi yoksa, geçerli bağlamdaki varlıklarda sistem durumunu veya ile rapor edebilirsiniz `Partition` `CodePackageActivationContext` .
 
-* Durum bilgisi olmayan hizmetler için, geçerli hizmet örneği hakkında raporlamak üzere [Istatelessservicepartition. Reportınstancehealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) komutunu kullanın.
-* Durum bilgisi olan hizmetler için, geçerli çoğaltma hakkında raporlamak üzere [Istatefulservicepartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) komutunu kullanın.
-* Geçerli bölüm varlığını raporlamak için [IServiceProvider. ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) kullanın.
-* Geçerli uygulamayı raporlamak için [Codepackageactivationcontext. ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) kullanın.
-* Geçerli düğümde dağıtılan geçerli uygulamayı raporlamak için [Codepackageactivationcontext. Reportdeployedadpplicationhealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) komutunu kullanın.
-* Geçerli düğümde dağıtılan uygulamanın hizmet paketini raporlamak için [Codepackageactivationcontext. ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) komutunu kullanın.
+* Durum bilgisi olmayan hizmetler için, geçerli hizmet örneği hakkında raporlamak üzere [Istatelessservicepartition. Reportınstancehealth](/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) komutunu kullanın.
+* Durum bilgisi olan hizmetler için, geçerli çoğaltma hakkında raporlamak üzere [Istatefulservicepartition. ReportReplicaHealth](/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) komutunu kullanın.
+* Geçerli bölüm varlığını raporlamak için [IServiceProvider. ReportPartitionHealth](/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) kullanın.
+* Geçerli uygulamayı raporlamak için [Codepackageactivationcontext. ReportApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) kullanın.
+* Geçerli düğümde dağıtılan geçerli uygulamayı raporlamak için [Codepackageactivationcontext. Reportdeployedadpplicationhealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) komutunu kullanın.
+* Geçerli düğümde dağıtılan uygulamanın hizmet paketini raporlamak için [Codepackageactivationcontext. ReportDeployedServicePackageHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) komutunu kullanın.
 
 > [!NOTE]
 > Dahili olarak, `Partition` ve `CodePackageActivationContext` bir sistem durumu istemcisini varsayılan ayarlarla yapılandırılmış olarak tutar. [Sistem sağlığı istemcisi](service-fabric-report-health.md#health-client)için açıklandığı gibi, raporlar toplu olarak oluşturulur ve bir zamanlayıcıya gönderilir. Rapor gönderme şansı sağlamak için nesnelerin etkin tutulması gerekir.
@@ -289,7 +290,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-İstenen varlığa gitmeyen POST istekleri ile REST kullanarak sistem durumu raporları gönderin ve sistem durumu raporu açıklamasını gövdesinde olması gerekir. Örneğin, bkz. REST [kümesi durum raporları](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) veya [hizmet durumu raporları](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)gönderme. Tüm varlıklar desteklenir.
+İstenen varlığa gitmeyen POST istekleri ile REST kullanarak sistem durumu raporları gönderin ve sistem durumu raporu açıklamasını gövdesinde olması gerekir. Örneğin, bkz. REST [kümesi durum raporları](/rest/api/servicefabric/report-the-health-of-a-cluster) veya [hizmet durumu raporları](/rest/api/servicefabric/report-the-health-of-a-service)gönderme. Tüm varlıklar desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sistem durumu verilerine bağlı olarak, hizmet yazarları ve küme/uygulama yöneticileri bu bilgileri kullanmanın yollarını düşünebilir. Örneğin, sistem kesintilerini gerçekleştirmeden önce ciddi sorunları yakalamak için sistem durumuna göre uyarıları ayarlayabilir. Yöneticiler, sorunları otomatik olarak çözmek için onarım sistemlerini de ayarlayabilir.
@@ -305,4 +306,3 @@ Sistem durumu verilerine bağlı olarak, hizmet yazarları ve küme/uygulama yö
 [Hizmetleri yerel olarak izleme ve tanılama](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Uygulama yükseltmesini Service Fabric](service-fabric-application-upgrade.md)
-

@@ -5,11 +5,12 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8633a5018e6faeaca842a3ecffb4c4921358e191
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614171"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257363"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Bir hizmet için güvenli WCF tabanlı iletişimler
 Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Bu makalede, hizmet uzaktan iletişimini kullanırken güvenliğin nasıl iyileştireceğiniz ele ılırsınız.
@@ -119,4 +120,4 @@ Güvenilir hizmetler için WCF tabanlı bir iletişim yığınının nasıl ayar
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-Sonraki adım olarak, [Reliable Services içinde OWIN Ile Web API 'sini](service-fabric-reliable-services-communication-webapi.md)okuyun.
+Sonraki adım olarak, [Reliable Services içinde OWIN Ile Web API 'sini](./service-fabric-reliable-services-communication-aspnetcore.md)okuyun.

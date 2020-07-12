@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: d6522d417556104a1ece703c725f3fbeab49d683
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458978"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257808"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Service Fabric Mesh nedir?
 
@@ -42,7 +42,7 @@ Service Fabric Mesh ile şunları yapabilirsiniz:
 
 - Altyapı sağlamak veya yönetmek zorunda kalmadan uygulamaları dağıtma ve yönetme.  Service Fabric Mesh altyapıyı sizin için sağlar, yükseltir, düzeltme eki uygular ve bakımını yapar.
 - Uygulamaları kolayca paketlemek ve dağıtmak için tümleşik araçları kullanarak sürekli tümleştirmeye geçiş yapabilirsiniz.
-- Azure Resource Manager kaynaklarının tüm özelliklerinden yararlanın. Bu özelliklere örnek olarak denetim izi ve [rol tabanlı erişim denetimi](/azure/role-based-access-control/overview)dahildir. Azure 'da Service Fabric kafes hizmetine dağıttığınız tüm kaynaklar Azure Resource Manager kaynaklardır. Bu kaynaklar uygulamalar, hizmetler, gizlilikler vb. içerir.
+- Azure Resource Manager kaynaklarının tüm özelliklerinden yararlanın. Bu özelliklere örnek olarak denetim izi ve [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)dahildir. Azure 'da Service Fabric kafes hizmetine dağıttığınız tüm kaynaklar Azure Resource Manager kaynaklardır. Bu kaynaklar uygulamalar, hizmetler, gizlilikler vb. içerir.
 - Kaynakları [Azure portal](https://portal.azure.com), Resource Manager şablonları veya Azure CLI/PowerShell kitaplıklarını kullanarak dağıtabilir ve yönetebilirsiniz.
 - [Application Insights](/azure/application-insights/)'ı (veya istediğiniz bir aracı) kullanarak işlem izleme ve uyarı ayarlarını yapabilir, platformdan işlem ve tanılama izlemelerini alabilirsiniz.
 - [Application Insights](/azure/application-insights/)'ı veya istediğiniz bir aracı kullanarak uygulama modelinden gelen uygulama tanılama bilgilerine erişebilirsiniz.
@@ -50,14 +50,14 @@ Service Fabric Mesh ile şunları yapabilirsiniz:
 
 ## <a name="mission-critical-platform-capabilities"></a>Görev açısından kritik platform özellikleri
 
-Service Fabric Mesh, [Azure Kullanılabilirlik Alanları](/azure/availability-zones/az-overview)'nı ve/veya coğrafi bölge sınırlarını kullanan bir küme koleksiyonu oluşturur. Service Fabric kafesler, ölçek, donanım gereksinimleri, dayanıklılık gereksinimleri ve güvenlik ilkeleri gibi bir dizi amaç içeren uygulamaları açıklar.  Uygulama dağıtıldığında Service Fabric Mesh çalıştırmak için en uygun yeri belirler.
+Service Fabric Mesh, [Azure Kullanılabilirlik Alanları](../availability-zones/az-overview.md)'nı ve/veya coğrafi bölge sınırlarını kullanan bir küme koleksiyonu oluşturur. Service Fabric kafesler, ölçek, donanım gereksinimleri, dayanıklılık gereksinimleri ve güvenlik ilkeleri gibi bir dizi amaç içeren uygulamaları açıklar.  Uygulama dağıtıldığında Service Fabric Mesh çalıştırmak için en uygun yeri belirler.
 
 Service Fabric Mesh ile şunları yapabilirsiniz:
 
 - Yüksek kullanılabilirlik, ölçek büyütme/küçültme, bulunabilirlik, yönetim, mesaj yönlendirme, güvenilir mesajlaşma, kesintisiz yükseltme, güvenlik/gizli dizi yönetimi, olağanüstü durum kurtarma, durum yönetimi, yapılandırma yönetimi ve dağıtılmış işlem özelliklerinden faydalanabilirsiniz.
 - Uygulama oluştururken çoklu uygulama modelleri arasından seçim yapabilirsiniz.
 - Swagger tarafından oluşturulan dile özgü bağlamaları kullanarak REST uç noktaları ile sunulan platform özelliklerini kullanabilirsiniz.
-- Coğrafi güvenilirlik için uygulamaları birden fazla [Kullanılabilirlik Alanında](/azure/availability-zones/az-overview) ve bölgede dağıtabilirsiniz.
+- Coğrafi güvenilirlik için uygulamaları birden fazla [Kullanılabilirlik Alanında](../availability-zones/az-overview.md) ve bölgede dağıtabilirsiniz.
 - Azure tarafından sağlanan tüm güvenlik ve uyumluluk özelliklerinden faydalanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: 33df6b5c8c5c16a6eb896944de05068affc2b407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82bcc61d06ac519447307c1e92784f33794d5817
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062209"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258017"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Azure ile SendGrid kullanarak e-posta gönderme
 ## <a name="overview"></a>Genel Bakış
@@ -51,7 +51,7 @@ Uygulamanıza SendGrid NuGet paketini yüklemek için aşağıdakileri yapın:
 
 1. **Yeni proje** ' ye tıklayın ve bir **şablon**seçin.
 
-   ![Yeni bir proje oluşturma][create-new-project]
+   ![Yeni proje oluşturma][create-new-project]
 2. **Çözüm Gezgini**, **Başvurular**' a sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
 
    ![SendGrid NuGet paketi][SendGrid-NuGet-package]
@@ -68,30 +68,34 @@ SendGrid 'in .NET sınıf kitaplığına **SendGrid**adı verilir. Aşağıdaki 
 
 Aşağıdaki kod ad alanı bildirimlerini, içindeki SendGrid e-posta hizmetine programlı bir şekilde erişmek istediğiniz herhangi bir C# dosyasının üst kısmına ekleyin.
 
-    using SendGrid;
-    using SendGrid.Helpers.Mail;
+```csharp
+using SendGrid;
+using SendGrid.Helpers.Mail;
+```
 
 ## <a name="how-to-create-an-email"></a>Nasıl yapılır: e-posta oluşturma
 Bir e-posta iletisi oluşturmak için **Sendgridmessage** nesnesini kullanın. İleti nesnesi oluşturulduktan sonra e-posta göndericisi, e-posta alıcısı ve e-postanın konusu ve gövdesi dahil olmak üzere özellikleri ve yöntemleri ayarlayabilirsiniz.
 
 Aşağıdaki örnek, tam olarak doldurulmuş bir e-posta nesnesinin nasıl oluşturulacağını gösterir:
 
-    var msg = new SendGridMessage();
+```csharp
+var msg = new SendGridMessage();
 
-    msg.SetFrom(new EmailAddress("dx@example.com", "SendGrid DX Team"));
+msg.SetFrom(new EmailAddress("dx@example.com", "SendGrid DX Team"));
 
-    var recipients = new List<EmailAddress>
-    {
-        new EmailAddress("jeff@example.com", "Jeff Smith"),
-        new EmailAddress("anna@example.com", "Anna Lidman"),
-        new EmailAddress("peter@example.com", "Peter Saddow")
-    };
-    msg.AddTos(recipients);
+var recipients = new List<EmailAddress>
+{
+    new EmailAddress("jeff@example.com", "Jeff Smith"),
+    new EmailAddress("anna@example.com", "Anna Lidman"),
+    new EmailAddress("peter@example.com", "Peter Saddow")
+};
+msg.AddTos(recipients);
 
-    msg.SetSubject("Testing the SendGrid C# Library");
+msg.SetSubject("Testing the SendGrid C# Library");
 
-    msg.AddContent(MimeType.Text, "Hello World plain text!");
-    msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
+msg.AddContent(MimeType.Text, "Hello World plain text!");
+msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
+```
 
 **SendGrid** türü tarafından desteklenen tüm özellikler ve yöntemler hakkında daha fazla bilgi için bkz. GitHub üzerinde [SendGrid-CSharp][sendgrid-csharp] .
 
@@ -104,44 +108,48 @@ Bu kimlik bilgilerini, uygulama ayarları ' na tıklayarak ve uygulama ayarları
 
  ![Azure Uygulama ayarları][azure_app_settings]
 
- Ardından, bunlara aşağıdaki şekilde erişebilirsiniz:
+Ardından, bunlara aşağıdaki şekilde erişebilirsiniz:
 
-    var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
-    var client = new SendGridClient(apiKey);
+```csharp
+var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+var client = new SendGridClient(apiKey);
+```
 
 Aşağıdaki örneklerde, bir konsol uygulamasıyla SendGrid Web API 'sini kullanarak bir e-posta iletisinin nasıl gönderileceği gösterilmektedir.
 
-    using System;
-    using System.Threading.Tasks;
-    using SendGrid;
-    using SendGrid.Helpers.Mail;
+```csharp
+using System;
+using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
-    namespace Example
+namespace Example
+{
+    internal class Example
     {
-        internal class Example
+        private static void Main()
         {
-            private static void Main()
-            {
-                Execute().Wait();
-            }
+            Execute().Wait();
+        }
 
-            static async Task Execute()
+        static async Task Execute()
+        {
+            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var client = new SendGridClient(apiKey);
+            var msg = new SendGridMessage()
             {
-                var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
-                var client = new SendGridClient(apiKey);
-                var msg = new SendGridMessage()
-                {
-                    From = new EmailAddress("test@example.com", "DX Team"),
-                    Subject = "Hello World from the SendGrid CSharp SDK!",
-                    PlainTextContent = "Hello, Email!",
-                    HtmlContent = "<strong>Hello, Email!</strong>"
-                };
-                msg.AddTo(new EmailAddress("test@example.com", "Test User"));
-                var response = await client.SendEmailAsync(msg);
-            }
+                From = new EmailAddress("test@example.com", "DX Team"),
+                Subject = "Hello World from the SendGrid CSharp SDK!",
+                PlainTextContent = "Hello, Email!",
+                HtmlContent = "<strong>Hello, Email!</strong>"
+            };
+            msg.AddTo(new EmailAddress("test@example.com", "Test User"));
+            var response = await client.SendEmailAsync(msg);
         }
     }
-    
+}
+```
+
 ## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Nasıl yapılır: MailHelper sınıfını kullanarak ASP .NET Core API 'sinden e-posta gönderme
 
 Aşağıdaki örnek, `MailHelper` ad alanı sınıfını kullanarak ASP .NET Core API 'sinden birden çok kişiye tek bir e-posta göndermek için kullanılabilir `SendGrid.Helpers.Mail` . Bu örnekte ASP .NET Core 1,0 kullandık. 
@@ -150,86 +158,94 @@ Bu örnekte, API anahtarı, `appsettings.json` Yukarıdaki örneklerde gösteril
 
 Dosyanın içeriği şuna benzemelidir `appsettings.json` :
 
-    {
-       "Logging": {
-       "IncludeScopes": false,
-       "LogLevel": {
-       "Default": "Debug",
-       "System": "Information",
-       "Microsoft": "Information"
-         }
-       },
-     "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    }
+```csharp
+{
+   "Logging": {
+   "IncludeScopes": false,
+   "LogLevel": {
+   "Default": "Debug",
+   "System": "Information",
+   "Microsoft": "Information"
+     }
+   },
+ "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}
+```
 
 İlk olarak, aşağıdaki kodu `Startup.cs` .NET Core API projesi dosyasına eklememiz gerekir. Bu, `SENDGRID_API_KEY` `appsettings.json` API denetleyicisindeki bağımlılık ekleme 'yı kullanarak dosyadan erişebilmemiz için gereklidir. `IConfiguration`Arabirim, aşağıdaki yönteme eklendikten sonra denetleyicinin oluşturucusuna eklenebilir `ConfigureServices` . Dosya içeriği, `Startup.cs` gerekli kodu ekledikten sonra aşağıdaki gibi görünür:
 
-        public IConfigurationRoot Configuration { get; }
+```csharp
+    public IConfigurationRoot Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add mvc here
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Add mvc here
+        services.AddMvc();
+        services.AddSingleton<IConfiguration>(Configuration);
+    }
+```
 
 Denetleyicide, arabirimden ekleme sonra `IConfiguration` , `CreateSingleEmailToMultipleRecipients` `MailHelper` birden çok alıcıya tek bir e-posta göndermek için sınıfının yöntemini kullanabiliriz. Yöntemi adlı bir ek Boolean parametresini kabul eder `showAllRecipients` . Bu parametre e-posta alıcılarının e-posta üstbilgisinin to bölümünde e-posta alıcılarının her bir e-posta adresini görüp göremeyeceğini denetlemek için kullanılabilir. Denetleyicinin örnek kodu aşağıdaki gibi olmalıdır 
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using SendGrid;
-    using SendGrid.Helpers.Mail;
-    using Microsoft.Extensions.Configuration;
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Configuration;
 
-    namespace SendgridMailApp.Controllers
+namespace SendgridMailApp.Controllers
+{
+    [Route("api/[controller]")]
+    public class NotificationController : Controller
     {
-        [Route("api/[controller]")]
-        public class NotificationController : Controller
-        {
-           private readonly IConfiguration _configuration;
+       private readonly IConfiguration _configuration;
 
-           public NotificationController(IConfiguration configuration)
-           {
-             _configuration = configuration;
-           }      
-        
-           [Route("SendNotification")]
-           public async Task PostMessage()
-           {
-              var apiKey = _configuration.GetSection("SENDGRID_API_KEY").Value;
-              var client = new SendGridClient(apiKey);
-              var from = new EmailAddress("test1@example.com", "Example User 1");
-              List<EmailAddress> tos = new List<EmailAddress>
-              {
-                  new EmailAddress("test2@example.com", "Example User 2"),
-                  new EmailAddress("test3@example.com", "Example User 3"),
-                  new EmailAddress("test4@example.com","Example User 4")
-              };
-            
-              var subject = "Hello world email from Sendgrid ";
-              var htmlContent = "<strong>Hello world with HTML content</strong>";
-              var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
-              var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
-              var response = await client.SendEmailAsync(msg);
-          }
-       }
-    }
+       public NotificationController(IConfiguration configuration)
+       {
+         _configuration = configuration;
+       }      
     
+       [Route("SendNotification")]
+       public async Task PostMessage()
+       {
+          var apiKey = _configuration.GetSection("SENDGRID_API_KEY").Value;
+          var client = new SendGridClient(apiKey);
+          var from = new EmailAddress("test1@example.com", "Example User 1");
+          List<EmailAddress> tos = new List<EmailAddress>
+          {
+              new EmailAddress("test2@example.com", "Example User 2"),
+              new EmailAddress("test3@example.com", "Example User 3"),
+              new EmailAddress("test4@example.com","Example User 4")
+          };
+        
+          var subject = "Hello world email from Sendgrid ";
+          var htmlContent = "<strong>Hello world with HTML content</strong>";
+          var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
+          var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
+          var response = await client.SendEmailAsync(msg);
+      }
+   }
+}
+```
+
 ## <a name="how-to-add-an-attachment"></a>Nasıl yapılır: ek ekleme
 Ekler, **AddAttachment** yöntemini çağırarak ve eklemek istediğiniz dosya adı ve Base64 olarak kodlanmış içeriği en düşük düzeyde belirtilerek bir iletiye eklenebilir. Eklemek istediğiniz her dosya için veya **AddAttachments** yöntemini kullanarak bu yöntemi çağırarak birden çok eki dahil edebilirsiniz. Aşağıdaki örnekte, bir iletiye ek ekleme gösterilmektedir:
 
-    var banner2 = new Attachment()
-    {
-        Content = Convert.ToBase64String(raw_content),
-        Type = "image/png",
-        Filename = "banner2.png",
-        Disposition = "inline",
-        ContentId = "Banner 2"
-    };
-    msg.AddAttachment(banner2);
+```csharp
+var banner2 = new Attachment()
+{
+    Content = Convert.ToBase64String(raw_content),
+    Type = "image/png",
+    Filename = "banner2.png",
+    Disposition = "inline",
+    ContentId = "Banner 2"
+};
+msg.AddAttachment(banner2);
+```
 
 ## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Nasıl yapılır: altbilgileri, izlemeyi ve analizlerini etkinleştirmek için posta ayarlarını kullanma
 SendGrid, posta ayarlarını ve izleme ayarlarını kullanarak ek e-posta işlevselliği sağlar. Bu ayarlar, tıklama izleme, Google Analytics, abonelik izleme vb. gibi belirli işlevleri etkinleştirmek için bir e-posta iletisine eklenebilir. Uygulamaların tam listesi için bkz. [Ayarlar belgeleri][settings-documentation].
@@ -239,13 +255,19 @@ Uygulamalar, **Sendgridmessage** sınıfının bir parçası olarak uygulanan y�
 Aşağıdaki örnekler, alt bilgiyi gösterir ve izleme filtrelerini tıklama:
 
 ### <a name="footer-settings"></a>Altbilgi ayarları
-    msg.SetFooterSetting(
-                         true,
-                         "Some Footer HTML",
-                         "<strong>Some Footer Text</strong>");
+
+```csharp
+msg.SetFooterSetting(
+                     true,
+                     "Some Footer HTML",
+                     "<strong>Some Footer Text</strong>");
+```
 
 ### <a name="click-tracking"></a>İzleme ' ye tıklayın
-    msg.SetClickTracking(true);
+
+```csharp
+msg.SetClickTracking(true);
+```
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>Nasıl yapılır: ek SendGrid Hizmetleri kullanma
 SendGrid, Azure uygulamanızda ek işlevlerden yararlanmak için kullanabileceğiniz çeşitli API 'Ler ve Web kancaları sunar. Daha fazla ayrıntı için bkz. [SendGrid API başvurusu][SendGrid API documentation].

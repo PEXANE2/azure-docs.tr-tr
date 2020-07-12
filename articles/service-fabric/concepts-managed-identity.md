@@ -4,11 +4,12 @@ description: Service Fabric ile Azure için Yönetilen kimlikler kullanma hakkı
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710312"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257634"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Service Fabric ile Azure için Yönetilen kimlikler kullanma
 
@@ -23,7 +24,7 @@ Azure *kaynakları Için Yönetilen kimlikler* Azure abonelikleri IÇIN Azure AD
 
 Azure için Yönetilen kimlikler çeşitli önemli kavramlara dayalıdır:
 
-- **ISTEMCI kimliği** -Azure AD tarafından oluşturulan ve ilk sağlama sırasında bir uygulamaya ve hizmet sorumlusuna bağlı olan benzersiz bir tanımlayıcı (Ayrıca bkz. [uygulama kimliği](/azure/active-directory/develop/developer-glossary#application-id-client-id).)
+- **ISTEMCI kimliği** -Azure AD tarafından oluşturulan ve ilk sağlama sırasında bir uygulamaya ve hizmet sorumlusuna bağlı olan benzersiz bir tanımlayıcı (Ayrıca bkz. [uygulama kimliği](../active-directory/develop/developer-glossary.md#application-id-client-id).)
 
 - **Asıl kimlik** -Azure kaynağına rol tabanlı erişim sağlamak Için kullanılan yönetilen Kimliğiniz için hizmet sorumlusu NESNESININ nesne kimliği.
 

@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 4688664fea29cc07f5895e33ebfff541d61070d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f20c5180b078bc49fcf1eb35893325fa3a7fa50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392752"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256161"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric sistem durumu raporlarını görüntüleme
 Azure Service Fabric, sistem bileşenlerinin ve Watchdogs izlemedikleri yerel koşulları bildirebileceği sistem durumu varlıklarını içeren bir [sistem durumu modeli](service-fabric-health-introduction.md) sunar. [Sistem durumu deposu](service-fabric-health-introduction.md#health-store) , varlıkların sağlıklı olup olmadığını öğrenmek için tüm sistem durumu verilerini toplar.
@@ -54,10 +55,10 @@ Service Fabric Explorer ile küme görünümü:
 >
 
 ## <a name="health-queries"></a>Sistem durumu sorguları
-Service Fabric, desteklenen [varlık türlerinin](service-fabric-health-introduction.md#health-entities-and-hierarchy)her biri için sistem durumu sorgularını kullanıma sunar. [FabricClient. HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), PowerShell cmdlet 'LERI ve REST üzerindeki yöntemler kullanılarak API aracılığıyla erişilebilir. Bu sorgular, varlıkla ilgili tüm sistem durumu bilgilerini döndürür: toplu sistem durumu, varlık sistem durumu olayları, alt sistem durumu durumları (varsa), sağlıksız değerlendirmeler (varlık sağlıklı olmadığında) ve alt durum istatistikleri (varsa).
+Service Fabric, desteklenen [varlık türlerinin](service-fabric-health-introduction.md#health-entities-and-hierarchy)her biri için sistem durumu sorgularını kullanıma sunar. [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), PowerShell cmdlet 'LERI ve REST üzerindeki yöntemler kullanılarak API aracılığıyla erişilebilir. Bu sorgular, varlıkla ilgili tüm sistem durumu bilgilerini döndürür: toplu sistem durumu, varlık sistem durumu olayları, alt sistem durumu durumları (varsa), sağlıksız değerlendirmeler (varlık sağlıklı olmadığında) ve alt durum istatistikleri (varsa).
 
 > [!NOTE]
-> Sistem durumu deposunda tamamen doldurulduğu zaman bir sistem durumu varlığı döndürülür. Varlık etkin (silinmemelidir) ve bir sistem raporuna sahip olmalıdır. Hiyerarşi zincirindeki üst varlıklarının de sistem raporları olmalıdır. Bu koşullardan herhangi biri karşılanmıyorsa, sistem durumu sorguları, varlığın neden döndürülmediğini gösteren [Fabricerrorcode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) Ile bir [fabricexception](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) döndürür `FabricHealthEntityNotFound` .
+> Sistem durumu deposunda tamamen doldurulduğu zaman bir sistem durumu varlığı döndürülür. Varlık etkin (silinmemelidir) ve bir sistem raporuna sahip olmalıdır. Hiyerarşi zincirindeki üst varlıklarının de sistem raporları olmalıdır. Bu koşullardan herhangi biri karşılanmıyorsa, sistem durumu sorguları, varlığın neden döndürülmediğini gösteren [Fabricerrorcode](/dotnet/api/system.fabric.fabricerrorcode) Ile bir [fabricexception](/dotnet/api/system.fabric.fabricexception) döndürür `FabricHealthEntityNotFound` .
 >
 >
 
@@ -86,7 +87,7 @@ Küme varlığının sistem durumunu döndürür ve uygulamaların ve düğümle
 * Seçim Durum istatistiklerine doku:/sistem durumu istatistiklerini dahil etmek için filtreleyin. Yalnızca sistem durumu istatistikleri dışlanmadığı zaman geçerlidir. Varsayılan olarak, sistem durumu istatistikleri, sistem uygulaması değil yalnızca kullanıcı uygulamaları için istatistikleri içerir.
 
 ### <a name="api"></a>API
-Küme durumunu almak için bir oluşturun `FabricClient` ve **healthmanager**'da [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) yöntemini çağırın.
+Küme durumunu almak için bir oluşturun `FabricClient` ve **healthmanager**'da [GetClusterHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) yöntemini çağırın.
 
 Aşağıdaki çağrı, küme durumunu alır:
 
@@ -94,7 +95,7 @@ Aşağıdaki çağrı, küme durumunu alır:
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-Aşağıdaki kod, özel bir küme sistem durumu ilkesi ve düğüm ve uygulama filtrelerini kullanarak küme durumunu alır. Durum istatistiklerinin doku:/sistem istatistiklerini dahil edileceğini belirtir. Giriş bilgilerini içeren [Clusterhealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription)oluşturur.
+Aşağıdaki kod, özel bir küme sistem durumu ilkesi ve düğüm ve uygulama filtrelerini kullanarak küme durumunu alır. Durum istatistiklerinin doku:/sistem istatistiklerini dahil edileceğini belirtir. Giriş bilgilerini içeren [Clusterhealthquerydescription](/dotnet/api/system.fabric.description.clusterhealthquerydescription)oluşturur.
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -126,7 +127,7 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Küme durumunu almak için cmdlet [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
+Küme durumunu almak için cmdlet [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
 
 Kümenin durumu beş düğüm, sistem uygulaması ve doku:/WordCount açıklandığı şekilde yapılandırılır.
 
@@ -224,7 +225,7 @@ HealthEvents            : None
 ```
 
 ### <a name="rest"></a>REST
-Gövdede açıklanan sistem durumu ilkelerini içeren bir [get isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster) veya [POST isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) ile küme durumunu alabilirsiniz.
+Gövdede açıklanan sistem durumu ilkelerini içeren bir [get isteği](/rest/api/servicefabric/get-the-health-of-a-cluster) veya [POST isteği](/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) ile küme durumunu alabilirsiniz.
 
 ## <a name="get-node-health"></a>Düğüm durumunu al
 Düğüm varlığının sistem durumunu döndürür ve düğümde bildirilen sistem durumu olaylarını içerir. Giriş:
@@ -234,7 +235,7 @@ Düğüm varlığının sistem durumunu döndürür ve düğümde bildirilen sis
 * Seçim Hangi girişlerin ilgilenilmek gerektiğini belirten olaylar için filtreler (örneğin, yalnızca hatalar veya her iki uyarı ve hata). Tüm olaylar, filtreden bağımsız olarak, varlığın toplam durumunu değerlendirmek için kullanılır.
 
 ### <a name="api"></a>API
-API aracılığıyla düğüm durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) yöntemini çağırın.
+API aracılığıyla düğüm durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetNodeHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) yöntemini çağırın.
 
 Aşağıdaki kod, belirtilen düğüm adı için düğüm durumunu alır:
 
@@ -242,7 +243,7 @@ Aşağıdaki kod, belirtilen düğüm adı için düğüm durumunu alır:
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(nodeName);
 ```
 
-Aşağıdaki kod, belirtilen düğüm adı için düğüm durumunu alır ve [Nodehealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription)aracılığıyla olaylar filtrelemesine ve özel ilkeye geçirilir:
+Aşağıdaki kod, belirtilen düğüm adı için düğüm durumunu alır ve [Nodehealthquerydescription](/dotnet/api/system.fabric.description.nodehealthquerydescription)aracılığıyla olaylar filtrelemesine ve özel ilkeye geçirilir:
 
 ```csharp
 var queryDescription = new NodeHealthQueryDescription(nodeName)
@@ -255,7 +256,7 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-Düğüm durumunun alınacağı cmdlet [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth)' dir. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
+Düğüm durumunun alınacağı cmdlet [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth)' dir. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
 Aşağıdaki cmdlet, varsayılan sistem durumu ilkelerini kullanarak düğüm durumunu alır:
 
 ```powershell
@@ -293,7 +294,7 @@ _Node_0                     Ok
 ```
 
 ### <a name="rest"></a>REST
-Gövdede açıklanan sistem durumu ilkelerini içeren bir [get isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node) veya [Post isteğiyle](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) düğüm durumu alabilirsiniz.
+Gövdede açıklanan sistem durumu ilkelerini içeren bir [get isteği](/rest/api/servicefabric/get-the-health-of-a-node) veya [Post isteğiyle](/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) düğüm durumu alabilirsiniz.
 
 ## <a name="get-application-health"></a>Uygulama durumunu al
 Bir uygulama varlığının sistem durumunu döndürür. Dağıtılan uygulama ve hizmet alt öğelerinin sistem durumlarını içerir. Giriş:
@@ -304,7 +305,7 @@ Bir uygulama varlığının sistem durumunu döndürür. Dağıtılan uygulama v
 * Seçim Sistem durumu istatistiklerini hariç tutmak için filtreleyin. Belirtilmezse, sistem durumu istatistikleri tüm uygulama alt öğeleri için Tamam, uyarı ve hata sayısını içerir: hizmetler, bölümler, çoğaltmalar, dağıtılan uygulamalar ve dağıtılan hizmet paketleri.
 
 ### <a name="api"></a>API
-Uygulama sistem durumunu almak için, oluşturun `FabricClient` ve HealthManager 'Da [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) yöntemini çağırın.
+Uygulama sistem durumunu almak için, oluşturun `FabricClient` ve HealthManager 'Da [GetApplicationHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) yöntemini çağırın.
 
 Aşağıdaki kod, belirtilen uygulama adı (URI) için uygulama durumunu alır:
 
@@ -312,7 +313,7 @@ Aşağıdaki kod, belirtilen uygulama adı (URI) için uygulama durumunu alır:
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(applicationName);
 ```
 
-Aşağıdaki kod, [Applicationhealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription)aracılığıyla belirtilen filtre ve özel ilkelerle belirtilen uygulama adı (URI) için uygulama durumunu alır.
+Aşağıdaki kod, [Applicationhealthquerydescription](/dotnet/api/system.fabric.description.applicationhealthquerydescription)aracılığıyla belirtilen filtre ve özel ilkelerle belirtilen uygulama adı (URI) için uygulama durumunu alır.
 
 ```csharp
 HealthStateFilter warningAndErrors = HealthStateFilter.Error | HealthStateFilter.Warning;
@@ -439,7 +440,7 @@ HealthEvents                    : None
 ```
 
 ### <a name="rest"></a>REST
-Bir [get isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) ile uygulama durumu alabilirsiniz.
+Bir [get isteği](/rest/api/servicefabric/get-the-health-of-an-application) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) ile uygulama durumu alabilirsiniz.
 
 ## <a name="get-service-health"></a>Hizmet durumunu al
 Bir hizmet varlığının sistem durumunu döndürür. Bölüm sistem durumlarını içerir. Giriş:
@@ -450,7 +451,7 @@ Bir hizmet varlığının sistem durumunu döndürür. Bölüm sistem durumları
 * Seçim Sistem durumu istatistiklerini hariç tutmak için filtreleyin. Belirtilmemişse, sistem durumu istatistikleri hizmetin tüm bölümleri ve çoğaltmaları için Tamam, uyarı ve hata sayısını gösterir.
 
 ### <a name="api"></a>API
-API aracılığıyla hizmet durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) yöntemini çağırın.
+API aracılığıyla hizmet durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetServiceHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) yöntemini çağırın.
 
 Aşağıdaki örnek, belirtilen hizmet adına (URI) sahip bir hizmetin sistem durumunu alır:
 
@@ -458,7 +459,7 @@ Aşağıdaki örnek, belirtilen hizmet adına (URI) sahip bir hizmetin sistem du
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
-Aşağıdaki kod, [Servicehealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription)aracılığıyla filtre ve özel ilke belirterek belirtilen hizmet adı (URI) için hizmet durumunu alır:
+Aşağıdaki kod, [Servicehealthquerydescription](/dotnet/api/system.fabric.description.servicehealthquerydescription)aracılığıyla filtre ve özel ilke belirterek belirtilen hizmet adı (URI) için hizmet durumunu alır:
 
 ```csharp
 var queryDescription = new ServiceHealthQueryDescription(serviceName)
@@ -471,7 +472,7 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Hizmet durumunu almak için cmdlet, [Get-ServiceFabricServiceHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
+Hizmet durumunu almak için cmdlet, [Get-ServiceFabricServiceHealth](/powershell/module/servicefabric/get-servicefabricservicehealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
 
 Aşağıdaki cmdlet, varsayılan sistem durumu ilkelerini kullanarak hizmet durumunu alır:
 
@@ -511,7 +512,7 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-Bir [get isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) ile hizmet durumunu alabilirsiniz.
+Bir [get isteği](/rest/api/servicefabric/get-the-health-of-a-service) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) ile hizmet durumunu alabilirsiniz.
 
 ## <a name="get-partition-health"></a>Bölüm durumunu al
 Bölüm varlığının sistem durumunu döndürür. Çoğaltma sistem durumlarını içerir. Giriş:
@@ -522,14 +523,14 @@ Bölüm varlığının sistem durumunu döndürür. Çoğaltma sistem durumları
 * Seçim Sistem durumu istatistiklerini hariç tutmak için filtreleyin. Belirtilmemişse, sistem durumu istatistikleri, kaç yinelemenin Tamam, uyarı ve hata durumları olduğunu gösterir.
 
 ### <a name="api"></a>API
-Bölüm durumunu API aracılığıyla almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) yöntemini çağırın. İsteğe bağlı parametreleri belirtmek için [Partitionhealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription)oluşturun.
+Bölüm durumunu API aracılığıyla almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetPartitionHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) yöntemini çağırın. İsteğe bağlı parametreleri belirtmek için [Partitionhealthquerydescription](/dotnet/api/system.fabric.description.partitionhealthquerydescription)oluşturun.
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-Bölüm sistem durumunu almak için cmdlet [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
+Bölüm sistem durumunu almak için cmdlet [Get-ServiceFabricPartitionHealth](/powershell/module/servicefabric/get-servicefabricpartitionhealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
 
 Aşağıdaki cmdlet, dokunun tüm bölümlerinin sistem durumunu alır **:/WordCount/WordCountService** hizmeti ve çoğaltma sistem durumu durumlarını filtreler:
 
@@ -603,7 +604,7 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-Bir [get isteği](/rest/api/servicefabric/sfclient-api-getpartitionhealth) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) ile bölüm durumunu alabilirsiniz.
+Bir [get isteği](/rest/api/servicefabric/sfclient-api-getpartitionhealth) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) ile bölüm durumunu alabilirsiniz.
 
 ## <a name="get-replica-health"></a>Çoğaltma durumunu al
 Durum bilgisi olan bir hizmet çoğaltmasının veya durum bilgisi olmayan bir hizmet örneğinin sistem durumunu döndürür. Giriş:
@@ -613,14 +614,14 @@ Durum bilgisi olan bir hizmet çoğaltmasının veya durum bilgisi olmayan bir h
 * Seçim Hangi girişlerin ilgilenilmek gerektiğini belirten olaylar için filtreler (örneğin, yalnızca hatalar veya her iki uyarı ve hata). Tüm olaylar, filtreden bağımsız olarak, varlığın toplam durumunu değerlendirmek için kullanılır.
 
 ### <a name="api"></a>API
-API aracılığıyla çoğaltma sistem durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) yöntemini çağırın. Gelişmiş parametreleri belirtmek için, [Replicahealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription)kullanın.
+API aracılığıyla çoğaltma sistem durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetReplicaHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) yöntemini çağırın. Gelişmiş parametreleri belirtmek için, [Replicahealthquerydescription](/dotnet/api/system.fabric.description.replicahealthquerydescription)kullanın.
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-Çoğaltma durumunu alma cmdlet 'i [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
+Çoğaltma durumunu alma cmdlet 'i [Get-ServiceFabricReplicaHealth](/powershell/module/servicefabric/get-servicefabricreplicahealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
 
 Aşağıdaki cmdlet, hizmetin tüm bölümleri için birincil çoğaltmanın sistem durumunu alır:
 
@@ -646,7 +647,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Gövdesinde açıklanan sistem durumu ilkelerini içeren bir [get isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica) veya [POST isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) ile çoğaltma durumu alabilirsiniz.
+Gövdesinde açıklanan sistem durumu ilkelerini içeren bir [get isteği](/rest/api/servicefabric/get-the-health-of-a-replica) veya [POST isteği](/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) ile çoğaltma durumu alabilirsiniz.
 
 ## <a name="get-deployed-application-health"></a>Dağıtılan uygulama durumunu al
 Düğüm varlığına dağıtılan bir uygulamanın sistem durumunu döndürür. Dağıtılmış hizmet paketi sistem durumlarını içerir. Giriş:
@@ -657,7 +658,7 @@ Düğüm varlığına dağıtılan bir uygulamanın sistem durumunu döndürür.
 * Seçim Sistem durumu istatistiklerini hariç tutmak için filtreleyin. Belirtilmemişse, sistem durumu istatistikleri, dağıtılan hizmet paketlerinin sayısını Tamam, uyarı ve hata durumu durumları bölümünde gösterir.
 
 ### <a name="api"></a>API
-API aracılığıyla bir düğüme dağıtılan bir uygulamanın sistem durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) yöntemini çağırın. İsteğe bağlı parametreleri belirtmek için [Deployedadpplicationhealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)kullanın.
+API aracılığıyla bir düğüme dağıtılan bir uygulamanın sistem durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetDeployedApplicationHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) yöntemini çağırın. İsteğe bağlı parametreleri belirtmek için [Deployedadpplicationhealthquerydescription](/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)kullanın.
 
 ```csharp
 DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedApplicationHealthAsync(
@@ -705,7 +706,7 @@ HealthStatistics                   :
 ```
 
 ### <a name="rest"></a>REST
-Bir [Get isteğiyle](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [Post isteğiyle](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) dağıtılan uygulama durumu alabilirsiniz.
+Bir [Get isteğiyle](/rest/api/servicefabric/get-the-health-of-a-deployed-application) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [Post isteğiyle](/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) dağıtılan uygulama durumu alabilirsiniz.
 
 ## <a name="get-deployed-service-package-health"></a>Dağıtılan hizmet paketi durumunu al
 Dağıtılan bir hizmet paketi varlığının sistem durumunu döndürür. Giriş:
@@ -715,7 +716,7 @@ Dağıtılan bir hizmet paketi varlığının sistem durumunu döndürür. Giri�
 * Seçim Hangi girişlerin ilgilenilmek gerektiğini belirten olaylar için filtreler (örneğin, yalnızca hatalar veya her iki uyarı ve hata). Tüm olaylar, filtreden bağımsız olarak, varlığın toplam durumunu değerlendirmek için kullanılır.
 
 ### <a name="api"></a>API
-API aracılığıyla dağıtılan bir hizmet paketinin sistem durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) yöntemini çağırın. İsteğe bağlı parametreleri belirtmek için [Deployedservicepackagehealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription)kullanın.
+API aracılığıyla dağıtılan bir hizmet paketinin sistem durumunu almak için, bir oluşturun `FabricClient` ve HealthManager 'Da [GetDeployedServicePackageHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) yöntemini çağırın. İsteğe bağlı parametreleri belirtmek için [Deployedservicepackagehealthquerydescription](/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription)kullanın.
 
 ```csharp
 DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeployedServicePackageHealthAsync(
@@ -723,7 +724,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-Dağıtılan hizmet paketi sistem durumunu almak için cmdlet, [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın. Uygulamanın nerede dağıtıldığını görmek için [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) komutunu çalıştırın ve dağıtılan uygulamalara bakın. Hangi hizmet paketlerinin bir uygulamada olduğunu görmek için [Get-Servicefabricdeployedadpplicationhealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) çıktısında dağıtılan hizmet paketi alt öğelerine bakın.
+Dağıtılan hizmet paketi sistem durumunu almak için cmdlet, [Get-ServiceFabricDeployedServicePackageHealth](/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın. Uygulamanın nerede dağıtıldığını görmek için [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) komutunu çalıştırın ve dağıtılan uygulamalara bakın. Hangi hizmet paketlerinin bir uygulamada olduğunu görmek için [Get-Servicefabricdeployedadpplicationhealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) çıktısında dağıtılan hizmet paketi alt öğelerine bakın.
 
 Aşağıdaki cmdlet, **Yapı:/WordCount** uygulamasının **_Node_2**üzerinde dağıtılan **wordcountservicepkg** hizmet paketinin sistem durumunu alır. Varlık, başarılı hizmet paketi ve giriş noktası etkinleştirme ve başarılı hizmet türü kayıt için **System. Hosting** raporları içerir.
 
@@ -775,7 +776,7 @@ HealthEvents               :
 ```
 
 ### <a name="rest"></a>REST
-Bir [get isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) ile dağıtılmış hizmet paketi sistem durumunu alabilirsiniz.
+Bir [get isteği](/rest/api/servicefabric/get-the-health-of-a-service-package) veya gövdede açıklanan sistem durumu ilkelerini Içeren bir [POST isteği](/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) ile dağıtılmış hizmet paketi sistem durumunu alabilirsiniz.
 
 ## <a name="health-chunk-queries"></a>Durum öbek sorguları
 Durum öbek sorguları, giriş filtreleri başına çok düzeyli küme alt öğelerini (yinelemeli) döndürebilir. Döndürülecek alt öğeleri seçerken çok fazla esneklik sağlayan gelişmiş filtreleri destekler. Filtreler, alt öğeleri benzersiz tanımlayıcı veya diğer grup tanımlayıcıları ve/veya sistem durumları ile belirtebilir. Varsayılan olarak, her zaman ilk düzey alt öğeleri içeren sistem durumu komutlarının aksine alt öğe dahil değildir.
@@ -803,14 +804,14 @@ Küme varlığının sistem durumunu döndürür ve gerekli alt öğelerin hiyer
 * Seçim Düğümleri ve küme olaylarını değerlendirmek için kullanılan küme sistem durumu ilkesi.
 * Seçim Uygulama durumu ilkesi eşlemesi, uygulama bildirim ilkelerini geçersiz kılmak için kullanılan sistem durumu ilkeleriyle birlikte.
 * Seçim Hangi girişlerin ilgilenilmek gerektiğini belirten ve sonuçta döndürülecek olan düğüm ve uygulamalar için filtreler. Filtreler bir varlığa/varlık grubuna özeldir veya bu düzeydeki tüm varlıklar için geçerlidir. Filtre listesi, bir genel filtre ve/veya belirli tanımlayıcıların sorgu tarafından döndürülen varlıkları ince noktalı virgülle filtreler içerebilir. Boşsa, alt öğeler varsayılan olarak döndürülmez.
-  [Nodehealthstatefilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) ve [applicationhealthstatefilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter)konumundaki filtreler hakkında daha fazla bilgi edinin. Uygulama filtreleri yinelemeli olarak alt öğeler için gelişmiş filtreler belirtebilir.
+  [Nodehealthstatefilter](/dotnet/api/system.fabric.health.nodehealthstatefilter) ve [applicationhealthstatefilter](/dotnet/api/system.fabric.health.applicationhealthstatefilter)konumundaki filtreler hakkında daha fazla bilgi edinin. Uygulama filtreleri yinelemeli olarak alt öğeler için gelişmiş filtreler belirtebilir.
 
 Öbek sonucu, filtrelere yönelik alt öğeleri içerir.
 
 Şu anda, öbek sorgusu sağlıksız değerlendirmeler veya varlık olayları döndürmez. Bu ek bilgiler, mevcut küme durumu sorgusu kullanılarak elde edilebilir.
 
 ### <a name="api"></a>API
-Küme durumu öbeğini almak için, bir oluşturun `FabricClient` ve **healthmanager**'Da [Getclusterhealthchunkasync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) yöntemini çağırın. Sistem durumu ilkelerini ve gelişmiş filtreleri anlatmak için [Clusterhealthquerydescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) ' a geçiş yapabilirsiniz.
+Küme durumu öbeğini almak için, bir oluşturun `FabricClient` ve **healthmanager**'Da [Getclusterhealthchunkasync](/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) yöntemini çağırın. Sistem durumu ilkelerini ve gelişmiş filtreleri anlatmak için [Clusterhealthquerydescription](/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) ' a geçiş yapabilirsiniz.
 
 Aşağıdaki kod, gelişmiş filtrelerle küme durumu öbeğini alır.
 
@@ -856,7 +857,7 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-Küme durumunu almak için cmdlet, [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
+Küme durumunu almak için cmdlet, [Get-ServiceFabricClusterChunkHealth](/powershell/module/servicefabric/get-servicefabricclusterhealthchunk)' dır. İlk olarak, [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 'ini kullanarak kümeye bağlanın.
 
 Aşağıdaki kod, yalnızca belirli bir düğüm hariç hata durumunda olmaları durumunda düğümleri alır ve her zaman döndürülür.
 
@@ -1006,7 +1007,7 @@ ApplicationHealthStateChunks :
 ```
 
 ### <a name="rest"></a>REST
-Bir [get isteği](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) veya bir [POST isteği](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster) ile, gövdede açıklanan sistem durumu ilkelerini ve gelişmiş filtreleri içeren küme durumu öbeğini alabilirsiniz.
+Bir [get isteği](/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) veya bir [POST isteği](/rest/api/servicefabric/health-of-cluster) ile, gövdede açıklanan sistem durumu ilkelerini ve gelişmiş filtreleri içeren küme durumu öbeğini alabilirsiniz.
 
 ## <a name="general-queries"></a>Genel sorgular
 Genel sorgular, belirtilen türde Service Fabric varlıkların bir listesini döndürür. Bunlar API aracılığıyla sunulur ( **FabricClient. QueryManager**yöntemleri aracılığıyla), PowerShell cmdlet 'LERI ve Rest. Bu sorgular, birden çok bileşenden gelen alt sorguları toplar. Bunlardan biri, her bir sorgu sonucunun toplanmış sistem durumunu dolduran [sistem durumu deposudur](service-fabric-health-introduction.md#health-store).  
@@ -1021,29 +1022,29 @@ Genel sorgular bir varlık için bilinmeyen bir sistem durumu döndürmediğinde
 Varlıklar için **HealthState** içeren sorgular şunlardır:
 
 * Düğüm listesi: kümedeki liste düğümlerini döndürür (Sayfalanmış).
-  * API: [FabricClient. QueryClient. GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * API: [FabricClient. QueryClient. GetNodeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * PowerShell: Get-ServiceFabricNode
 * Uygulama listesi: kümedeki uygulamaların (Sayfalanmış) listesini döndürür.
-  * API: [FabricClient. QueryClient. GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * API: [FabricClient. QueryClient. GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * PowerShell: Get-ServiceFabricApplication
 * Hizmet listesi: bir uygulamadaki (Sayfalanmış) hizmetlerin listesini döndürür.
-  * API: [FabricClient. QueryClient. GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * API: [FabricClient. QueryClient. GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
   * PowerShell: Get-ServiceFabricService
 * Bölüm listesi: bir hizmetin (Sayfalanmış) bölümlerinin listesini döndürür.
-  * API: [FabricClient. QueryClient. GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+  * API: [FabricClient. QueryClient. GetPartitionListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * PowerShell: Get-ServiceFabricPartition
 * Çoğaltma Listesi: bir bölümdeki kopyaların (Sayfalanmış) listesini döndürür.
-  * API: [FabricClient. QueryClient. GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * API: [FabricClient. QueryClient. GetReplicaListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * PowerShell: Get-ServiceFabricReplica
 * Dağıtılan uygulama listesi: bir düğümdeki dağıtılan uygulamaların listesini döndürür.
-  * API: [FabricClient. QueryClient. Getdeployedavınpplicationlistasync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+  * API: [FabricClient. QueryClient. Getdeployedavınpplicationlistasync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * PowerShell: Get-Servicefabricdeployedadpplication
 * Dağıtılan hizmet paketi listesi: dağıtılan bir uygulamadaki hizmet paketlerinin listesini döndürür.
-  * API: [FabricClient. QueryClient. GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+  * API: [FabricClient. QueryClient. GetDeployedServicePackageListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
   * PowerShell: Get-Servicefabricdeployedadpplication
 
 > [!NOTE]
-> Bazı sorgular disk belleğine alınmış sonuçlar döndürüyor. Bu sorguların geri dönmesi [Pagedlist \<T> ](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1)öğesinden türetilmiş bir listesidir. Sonuçlar bir iletiye uymuyorsa, yalnızca bir sayfa döndürülür ve numaralandırmanın nerede durdurulduğunu izleyen bir ContinuationToken olur. Sonraki sonuçları almak için aynı sorguyu çağırmaya ve önceki sorgudan devamlılık belirtecini geçirmeye devam edin.
+> Bazı sorgular disk belleğine alınmış sonuçlar döndürüyor. Bu sorguların geri dönmesi [Pagedlist \<T> ](/dotnet/api/system.fabric.query.pagedlist-1)öğesinden türetilmiş bir listesidir. Sonuçlar bir iletiye uymuyorsa, yalnızca bir sayfa döndürülür ve numaralandırmanın nerede durdurulduğunu izleyen bir ContinuationToken olur. Sonraki sonuçları almak için aynı sorguyu çağırmaya ve önceki sorgudan devamlılık belirtecini geçirmeye devam edin.
 
 ### <a name="examples"></a>Örnekler
 Aşağıdaki kod kümedeki sağlıksız uygulamaları alır:

@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906212"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257062"
 ---
 # <a name="sfctl"></a>sfctl
 Service Fabric kümelerini ve varlıklarını yönetmeye yönelik komutlar. Bu sürüm, Service Fabric 7,0 çalışma zamanı ile uyumludur.
@@ -25,7 +26,7 @@ Komutlar, isim-fiil modelini izler. Daha fazla bilgi için bkz. alt gruplar.
 | [iletinizi](service-fabric-sfctl-compose.md) | Docker Compose uygulamalar oluşturun, silin ve yönetin. |
 | [kapsayıcı](service-fabric-sfctl-container.md) | Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın. |
 | [olayları](service-fabric-sfctl-events.md) | Olayları olay deposundan al (EventStore hizmeti zaten yüklüyse). |
-| [is](service-fabric-sfctl-is.md) | Altyapı hizmetine komutları sorgulayın ve gönderin. |
+| [eklenir](service-fabric-sfctl-is.md) | Altyapı hizmetine komutları sorgulayın ve gönderin. |
 | [mesh](service-fabric-sfctl-mesh.md) | Service Fabric kafes uygulamalarını silin ve yönetin. |
 | [düğümüne](service-fabric-sfctl-node.md) | Bir küme oluşturan düğümleri yönetin. |
 | [bölümünüzün](service-fabric-sfctl-partition.md) | Tüm hizmet için bölümleri sorgulayın ve yönetin. |
@@ -39,4 +40,4 @@ Komutlar, isim-fiil modelini izler. Daha fazla bilgi için bkz. alt gruplar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

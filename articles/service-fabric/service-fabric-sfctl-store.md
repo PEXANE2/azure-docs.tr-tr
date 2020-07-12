@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af5399be44d2946775622598c5c1db3d8355f7cd
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905617"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257079"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Küme görüntü deposunda temel dosya düzeyi işlemleri gerçekleştirin.
@@ -18,7 +19,7 @@ Küme görüntü deposunda temel dosya düzeyi işlemleri gerçekleştirin.
 
 |Komut|Açıklama|
 | --- | --- |
-| delete | Mevcut görüntü deposu içeriğini siler. |
+| silme | Mevcut görüntü deposu içeriğini siler. |
 | kök-bilgi | Görüntü deposunun kökündeki içerik bilgilerini alır. |
 | istatistik | Görüntü deposu içerik bilgilerini alır. |
 
@@ -90,4 +91,4 @@ Belirtilen contentPath konumundaki görüntü deposu içeriğiyle ilgili bilgile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
-- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.
+- [Örnek betikleri](./scripts/sfctl-upgrade-application.md)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

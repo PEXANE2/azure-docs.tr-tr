@@ -15,11 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827157"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256688"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -256,6 +257,16 @@ Nadir durumlarda Azure AD Connect hizmeti, yükseltmeyi gerçekleştirdikten son
 
 **S: Azure AD Connect daha yeni bir sürüme yükseltdiğimde risklerden emin değilim. Yükseltmeye yardım etmek için beni çağırabilir miyim?**  
 Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız varsa, [hizmet oluşturma isteği sırasında Office 365 desteği 'ne başvurmak için](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)bir destek bileti açın.
+
+## <a name="operational-best-practice"></a>İşletimsel en iyi uygulama    
+Windows Server Active Directory ve Azure Active Directory arasında eşitleme yaparken uygulamanız gereken bazı en iyi uygulamalar aşağıda verilmiştir.
+
+**Eşitlenmiş tüm hesaplar için Multi-Factor Authentication Uygula** Azure Multi-Factor Authentication, kullanıcılar için basitlik sağlarken veri ve uygulamalara erişimin korunmasına yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay kimlik doğrulama yöntemi aracılığıyla güçlü kimlik doğrulaması sunar. Kullanıcılar, bir yöneticinin yaptığı yapılandırma kararlarından dolayı MFA 'ya yönelik olarak istenebilir veya olmayabilir. MFA hakkında daha fazla bilgi için buradan okuyabilirsiniz:https://www.microsoft.com/security/business/identity/mfa?rtc=1
+
+**Azure AD Connect sunucusu güvenlik yönergelerini izleyin** Azure AD Connect sunucusu kritik kimlik verileri içerir ve [Active Directory Yönetim Katmanı modelinde](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)belgelendiği şekilde katman 0 bileşeni olarak değerlendirilmelidir. Lütfen [AADConnect sunucunuzun güvenliğini sağlamaya yönelik kılavuzlarımızı](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)inceleyin.
+
+**Sızdırılan kimlik bilgileri algılaması için PHS 'Yi etkinleştirin** Parola karması eşitleme, karma hesaplarınız için [sızdırılan kimlik bilgisi algılamayı](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) de mümkün hale getirmenizi. Microsoft, genel olarak kullanılabilen Kullanıcı adı/parola çiftlerini bulmak için koyu Web araştırmacıları ve yasalar zorlama kuruluşlarıyla birlikte çalışmaktadır. Bu çiftlerin herhangi biri kullanıcılarınızın kullanıcılarıyla eşleşiyorsa, ilişkili hesap yüksek riske taşınır. 
+
 
 ## <a name="troubleshooting"></a>Sorun giderme
 **S: Azure AD Connect nasıl yardım alabilirim?**

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6e5012d64f7370c4d81c24324522824bc88584d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690345"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255124"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management erişim kısıtlama ilkeleri
 
@@ -59,23 +60,23 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-| Name         | Açıklama                                                                                                                                   | Gerekli |
+| Ad         | Açıklama                                                                                                                                   | Gerekli |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | onay üst bilgisi | Kök öğe.                                                                                                                                 | Evet      |
 | değer        | İzin verilen HTTP üst bilgisi değeri. Birden çok değer öğesi belirtildiğinde, değerlerden herhangi biri bir eşleşme olduğunda denetim başarı olarak kabul edilir. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Name                       | Açıklama                                                                                                                                                            | Gerekli | Varsayılan |
+| Ad                       | Açıklama                                                                                                                                                            | Gerekli | Varsayılan |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| başarısız-denetim-hata-ileti | Üst bilgi yoksa veya geçersiz bir değere sahip değilse, HTTP yanıt gövdesinde döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir. | Evet      | YOK     |
-| başarısız-Check-httpcode      | Üst bilgi yoksa veya geçersiz bir değere sahip değilse döndürülecek HTTP durum kodu.                                                                                        | Evet      | YOK     |
-| üst bilgi adı                | Denetlenecek HTTP üstbilgisinin adı.                                                                                                                                  | Evet      | YOK     |
-| Yoksay-büyük harf                | True veya false olarak ayarlanabilir. Üst bilgi değeri, kabul edilebilir değerler kümesiyle karşılaştırıldığı zaman true olarak ayarlanırsa, bu durum yoksayılır.                                    | Evet      | YOK     |
+| başarısız-denetim-hata-ileti | Üst bilgi yoksa veya geçersiz bir değere sahip değilse, HTTP yanıt gövdesinde döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir. | Evet      | Yok     |
+| başarısız-Check-httpcode      | Üst bilgi yoksa veya geçersiz bir değere sahip değilse döndürülecek HTTP durum kodu.                                                                                        | Evet      | Yok     |
+| üst bilgi adı                | Denetlenecek HTTP üstbilgisinin adı.                                                                                                                                  | Evet      | Yok     |
+| Yoksay-büyük harf                | True veya false olarak ayarlanabilir. Üst bilgi değeri, kabul edilebilir değerler kümesiyle karşılaştırıldığı zaman true olarak ayarlanırsa, bu durum yoksayılır.                                    | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden
 
@@ -119,23 +120,23 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="elements"></a>Öğeler
 
-| Name       | Açıklama                                                                                                                                                                                                                                                                                              | Gerekli |
+| Ad       | Açıklama                                                                                                                                                                                                                                                                                              | Gerekli |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | hız limiti | Kök öğe.                                                                                                                                                                                                                                                                                            | Evet      |
-| API        | Ürünün içindeki API 'lerde çağrı hızı sınırı uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrısı hız limitleri bağımsız olarak uygulanır. Ya da ile API 'ye başvurulabilir `name` `id` . Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
+| api        | Ürünün içindeki API 'lerde çağrı hızı sınırı uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrısı hız limitleri bağımsız olarak uygulanır. Ya da ile API 'ye başvurulabilir `name` `id` . Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
 | çalışmasını  | Bir API içindeki işlemlerde çağrı hızı sınırı uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün, API ve işlem çağrısı hız limitleri bağımsız olarak uygulanır. İşlem ya da ile veya arasında başvuru yapılabilir `name` `id` . Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Name           | Açıklama                                                                                           | Gerekli | Varsayılan |
+| Ad           | Açıklama                                                                                           | Gerekli | Varsayılan |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | Hız sınırının uygulanacağı API 'nin adı.                                                | Evet      | YOK     |
-| aramalarda          | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` . | Evet      | YOK     |
-| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Evet      | YOK     |
+| name           | Hız sınırının uygulanacağı API 'nin adı.                                                | Evet      | Yok     |
+| aramalarda          | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` . | Evet      | Yok     |
+| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 
@@ -148,7 +149,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 `rate-limit-by-key`İlke, belirli bir süre için çağrı hızını belirtilen bir sayı ile sınırlayarak, her anahtar IÇIN API kullanım artışlarını engeller. Anahtar rastgele bir dize değerine sahip olabilir ve genellikle bir ilke ifadesi kullanılarak sağlanır. Hangi isteklerin sınıra doğru sayılması gerektiğini belirtmek için isteğe bağlı artış koşulu eklenebilir. Bu ilke tetiklendiğinde, çağıran bir `429 Too Many Requests` yanıt durum kodu alır.
 
-Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management Ile Gelişmiş istek azaltma](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
+Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management Ile Gelişmiş istek azaltma](./api-management-sample-flexible-throttling.md).
 
 > [!CAUTION]
 > Daraltma mimarisinin dağıtılmış doğası nedeniyle, hız sınırlaması hiçbir şekilde tamamen doğru değildir. Yapılandırılan ve gerçek izin verilen istek sayısı arasındaki fark, istek hacmi ve hızı, arka uç gecikmesi ve diğer faktörlere göre değişiklik gösterir.
@@ -184,22 +185,22 @@ Aşağıdaki örnekte, hız sınırı arayan IP adresine göre anahtarlanır.
 
 ### <a name="elements"></a>Öğeler
 
-| Name              | Açıklama   | Gerekli |
+| Ad              | Açıklama   | Gerekli |
 | ----------------- | ------------- | -------- |
 | oran-anahtarla sınırla | Kök öğe. | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Name                | Açıklama                                                                                           | Gerekli | Varsayılan |
+| Ad                | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| aramalarda               | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` . | Evet      | YOK     |
-| sayaç anahtarı         | Hız limiti ilkesi için kullanılacak anahtar.                                                             | Evet      | YOK     |
-| artış koşulu | İsteğin kotanın () içinde sayılmasını belirten Boole ifadesi `true` .        | Hayır       | YOK     |
-| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Evet      | YOK     |
+| aramalarda               | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` . | Evet      | Yok     |
+| sayaç anahtarı         | Hız limiti ilkesi için kullanılacak anahtar.                                                             | Evet      | Yok     |
+| artış koşulu | İsteğin kotanın () içinde sayılmasını belirten Boole ifadesi `true` .        | Hayır       | Yok     |
+| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                              | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 
@@ -231,7 +232,7 @@ Aşağıdaki örnekte, ilke yalnızca tek IP adresinden veya belirtilen IP adres
 
 ### <a name="elements"></a>Öğeler
 
-| Name                                      | Açıklama                                         | Gerekli                                                       |
+| Ad                                      | Açıklama                                         | Gerekli                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | IP filtresi                                 | Kök öğe.                                       | Evet                                                            |
 | adres                                   | Üzerinde filtreleneceği tek bir IP adresi belirtir.   | En az bir `address` veya `address-range` öğe gereklidir. |
@@ -239,14 +240,14 @@ Aşağıdaki örnekte, ilke yalnızca tek IP adresinden veya belirtilen IP adres
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Name                                      | Açıklama                                                                                 | Gerekli                                           | Varsayılan |
+| Ad                                      | Açıklama                                                                                 | Gerekli                                           | Varsayılan |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| Adres aralığı = "Address" to = "Address" | Erişimine izin vermek veya erişimi reddetmek için bir IP adresleri aralığı.                                        | `address-range`Öğe kullanıldığında gereklidir. | YOK     |
-| IP-filtre eylemi = "izin ver &#124; yasaklaın"    | Belirtilen IP adresleri ve aralıkları için çağrılara izin verilip verilmeyeceğini belirtir. | Evet                                                | YOK     |
+| Adres aralığı = "Address" to = "Address" | Erişimine izin vermek veya erişimi reddetmek için bir IP adresleri aralığı.                                        | `address-range`Öğe kullanıldığında gereklidir. | Yok     |
+| IP-filtre eylemi = "izin ver &#124; yasaklaın"    | Belirtilen IP adresleri ve aralıkları için çağrılara izin verilip verilmeyeceğini belirtir. | Evet                                                | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 -   **İlke kapsamları:** tüm kapsamlar
@@ -286,24 +287,24 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="elements"></a>Öğeler
 
-| Name      | Açıklama                                                                                                                                                                                                                                                                                  | Gerekli |
+| Ad      | Açıklama                                                                                                                                                                                                                                                                                  | Gerekli |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | kota     | Kök öğe.                                                                                                                                                                                                                                                                                | Evet      |
-| API       | Ürün içindeki API 'lerde çağrı kotası uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrı kotaları bağımsız olarak uygulanır. Ya da ile API 'ye başvurulabilir `name` `id` . Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
+| api       | Ürün içindeki API 'lerde çağrı kotası uygulamak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün ve API çağrı kotaları bağımsız olarak uygulanır. Ya da ile API 'ye başvurulabilir `name` `id` . Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır.                    | Hayır       |
 | çalışmasını | API içindeki işlemlere çağrı kotası koymak için bu öğelerden bir veya daha fazlasını ekleyin. Ürün, API ve işlem çağrısı kotaları bağımsız olarak uygulanır. İşlem ya da ile veya arasında başvuru yapılabilir `name` `id` . Her iki öznitelik de sağlanmışsa, `id` kullanılır ve `name` yok sayılır. | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Name           | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
+| Ad           | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | Kotanın uygulandığı API veya işlemin adı.                                             | Evet                                                              | YOK     |
-| bant genişliği      | İçinde belirtilen zaman aralığında izin verilen en büyük toplam kilobayt sayısı `renewal-period` . | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | YOK     |
-| aramalarda          | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` .     | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | YOK     |
-| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Evet                                                              | YOK     |
+| name           | Kotanın uygulandığı API veya işlemin adı.                                             | Evet                                                              | Yok     |
+| bant genişliği      | İçinde belirtilen zaman aralığında izin verilen en büyük toplam kilobayt sayısı `renewal-period` . | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | Yok     |
+| aramalarda          | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` .     | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | Yok     |
+| yenileme süresi | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Evet                                                              | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 -   **İlke kapsamları:** ürün
@@ -315,7 +316,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 `quota-by-key`İlke, her anahtar temelinde yenilenebilir veya yaşam süresi çağrı hacmi ve/veya bant genişliği kotası uygular. Anahtar rastgele bir dize değerine sahip olabilir ve genellikle bir ilke ifadesi kullanılarak sağlanır. Kotaya doğru hangi isteklerin sayıldığını belirtmek için isteğe bağlı artış koşulu eklenebilir. Birden çok ilke aynı anahtar değerini artırılabiliyorsa, istek başına yalnızca bir kez artırılır. Çağrı sınırına ulaşıldığında, çağıran bir `403 Forbidden` yanıt durum kodu alır.
 
-Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management Ile Gelişmiş istek azaltma](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).
+Bu ilkenin daha fazla bilgi ve örnekleri için bkz. [Azure API Management Ile Gelişmiş istek azaltma](./api-management-sample-flexible-throttling.md).
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -348,23 +349,23 @@ Aşağıdaki örnekte, kota çağıran IP adresine göre anahtarlanır.
 
 ### <a name="elements"></a>Öğeler
 
-| Name  | Açıklama   | Gerekli |
+| Ad  | Açıklama   | Gerekli |
 | ----- | ------------- | -------- |
 | kota | Kök öğe. | Evet      |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Name                | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
+| Ad                | Açıklama                                                                                               | Gerekli                                                         | Varsayılan |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bant genişliği           | İçinde belirtilen zaman aralığında izin verilen en büyük toplam kilobayt sayısı `renewal-period` . | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | YOK     |
-| aramalarda               | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` .     | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | YOK     |
-| sayaç anahtarı         | Kota ilkesi için kullanılacak anahtar.                                                                      | Evet                                                              | YOK     |
-| artış koşulu | İsteğin kotanın () içinde sayılmasını belirten Boole ifadesi `true`             | Hayır                                                               | YOK     |
-| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Evet                                                              | YOK     |
+| bant genişliği           | İçinde belirtilen zaman aralığında izin verilen en büyük toplam kilobayt sayısı `renewal-period` . | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | Yok     |
+| aramalarda               | İçinde belirtilen zaman aralığında izin verilen en fazla toplam çağrı sayısı `renewal-period` .     | Ya `calls` da `bandwidth` her ikisi de belirtilmelidir. | Yok     |
+| sayaç anahtarı         | Kota ilkesi için kullanılacak anahtar.                                                                      | Evet                                                              | Yok     |
+| artış koşulu | İsteğin kotanın () içinde sayılmasını belirten Boole ifadesi `true`             | Hayır                                                               | Yok     |
+| yenileme süresi      | Kotanın sıfırlandıktan sonraki saniye cinsinden süre.                                                  | Evet                                                              | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 -   **İlke kapsamları:** tüm kapsamlar
@@ -514,26 +515,26 @@ Bu örnek, belirteç talep değerine göre işlemlere erişim yetkisi vermek iç
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Name                            | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli                                                                         | Varsayılan                                                                           |
+| Ad                            | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                            | Gerekli                                                                         | Varsayılan                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Saat eğ                      | TimeSpan. Belirteç Verenin ve API Management örneğinin sistem saatleri arasında beklenen en uzun süreyi belirtmek için kullanın.                                                                                                                                                                                                                                                                                                               | Hayır                                                                               | 0 saniye                                                                         |
 | başarısız-doğrulama-hata-ileti | JWT doğrulamadan geçemezse HTTP yanıt gövdesine döndürülecek hata iletisi. Bu ileti, doğru bir şekilde kaçış karakteri içermelidir.                                                                                                                                                                                                                                                                                                 | Hayır                                                                               | Varsayılan hata iletisi, "JWT yok" gibi doğrulama sorununa bağlıdır. |
 | başarısız-doğrulama-httpcode      | JWT doğrulamadan geçemezse döndürülen HTTP durum kodu.                                                                                                                                                                                                                                                                                                                                                                                         | Hayır                                                                               | 401                                                                               |
-| üst bilgi adı                     | Belirteci tutan HTTP üstbilgisinin adı.                                                                                                                                                                                                                                                                                                                                                                                                         | Biri `header-name` `query-parameter-name` veya `token-value` belirtilmelidir. | YOK                                                                               |
-| sorgu parametresi-adı            | Belirteci tutan sorgu parametresinin adı.                                                                                                                                                                                                                                                                                                                                                                                                     | Biri `header-name` `query-parameter-name` veya `token-value` belirtilmelidir. | YOK                                                                               |
-| belirteç değeri                     | JWT belirteci içeren bir dize döndüren ifade                                                                                                                                                                                                                                                                                                                                                                                                     | Biri `header-name` `query-parameter-name` veya `token-value` belirtilmelidir. | YOK                                                                               |
-| kimlik                              | `id`Öğesindeki özniteliği, `key` `kid` imza doğrulaması için kullanılacak uygun anahtarı bulmak için belirteçteki taleple eşleştirilecek dizeyi (varsa) belirtmenize olanak tanır.                                                                                                                                                                                                                                           | Hayır                                                                               | YOK                                                                               |
+| üst bilgi adı                     | Belirteci tutan HTTP üstbilgisinin adı.                                                                                                                                                                                                                                                                                                                                                                                                         | Biri `header-name` `query-parameter-name` veya `token-value` belirtilmelidir. | Yok                                                                               |
+| sorgu parametresi-adı            | Belirteci tutan sorgu parametresinin adı.                                                                                                                                                                                                                                                                                                                                                                                                     | Biri `header-name` `query-parameter-name` veya `token-value` belirtilmelidir. | Yok                                                                               |
+| belirteç değeri                     | JWT belirteci içeren bir dize döndüren ifade                                                                                                                                                                                                                                                                                                                                                                                                     | Biri `header-name` `query-parameter-name` veya `token-value` belirtilmelidir. | Yok                                                                               |
+| kimlik                              | `id`Öğesindeki özniteliği, `key` `kid` imza doğrulaması için kullanılacak uygun anahtarı bulmak için belirteçteki taleple eşleştirilecek dizeyi (varsa) belirtmenize olanak tanır.                                                                                                                                                                                                                                           | Hayır                                                                               | Yok                                                                               |
 | match                           | `match`Öğesindeki özniteliği, `claim` doğrulamanın başarılı olması için, ilkedeki her talep değerinin belirteçte olması gerekip gerekmediğini belirtir. Olası değerler şunlardır:<br /><br /> - `all`-doğrulamanın başarılı olması için, ilkedeki her talep değerinin belirteçte mevcut olması gerekir.<br /><br /> - `any`-doğrulamanın başarılı olması için belirteçte en az bir talep değeri bulunmalıdır.                                                       | Hayır                                                                               | tümü                                                                               |
 | gerektir-süre sonu         | Boolean. Belirteçte bir süre sonu talebinin gerekli olup olmadığını belirtir.                                                                                                                                                                                                                                                                                                                                                                               | Hayır                                                                               | true                                                                              |
-| gerekli-düzen                  | Belirteç şemasının adı, örn. "taşıyıcı". Bu öznitelik ayarlandığında, ilke belirtilen düzenin yetkilendirme üst bilgi değerinde mevcut olduğundan emin olur.                                                                                                                                                                                                                                                                                    | Hayır                                                                               | YOK                                                                               |
+| gerekli-düzen                  | Belirteç şemasının adı, örn. "taşıyıcı". Bu öznitelik ayarlandığında, ilke belirtilen düzenin yetkilendirme üst bilgi değerinde mevcut olduğundan emin olur.                                                                                                                                                                                                                                                                                    | Hayır                                                                               | Yok                                                                               |
 | imzalı belirteçleri gerektir           | Boolean. Bir belirtecin imzalanıp imzalanmayacağını belirtir.                                                                                                                                                                                                                                                                                                                                                                                           | Hayır                                                                               | true                                                                              |
-| ayırıcı                       | Dize. Birden çok değerli talepten bir değer kümesini ayıklamak için kullanılacak bir ayırıcı (ör. ",") belirtir.                                                                                                                                                                                                                                                                                                                                          | Hayır                                                                               | YOK                                                                               |
-| url                             | Açık KIMLIK yapılandırma meta verilerinin alınabilmesi için KIMLIK yapılandırma uç noktası URL 'SI açık olmalıdır. Yanıt, URL 'de tanımlanan özelliklere göre olmalıdır: `https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` . Azure Active Directory için aşağıdaki URL 'YI kullanın: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` Dizin kiracı adınızı değiştirme, ör `contoso.onmicrosoft.com` . | Evet                                                                              | YOK                                                                               |
-| çıkış-belirteç-değişken-adı      | Dize. Başarılı belirteç doğrulamasından sonra türünden bir nesne olarak belirteç değeri alacak bağlam değişkeninin adı [`Jwt`](api-management-policy-expressions.md)                                                                                                                                                                                                                                                                                     | Hayır                                                                               | YOK                                                                               |
+| ayırıcı                       | Dize. Birden çok değerli talepten bir değer kümesini ayıklamak için kullanılacak bir ayırıcı (ör. ",") belirtir.                                                                                                                                                                                                                                                                                                                                          | Hayır                                                                               | Yok                                                                               |
+| url                             | Açık KIMLIK yapılandırma meta verilerinin alınabilmesi için KIMLIK yapılandırma uç noktası URL 'SI açık olmalıdır. Yanıt, URL 'de tanımlanan özelliklere göre olmalıdır: `https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` . Azure Active Directory için aşağıdaki URL 'YI kullanın: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` Dizin kiracı adınızı değiştirme, ör `contoso.onmicrosoft.com` . | Evet                                                                              | Yok                                                                               |
+| çıkış-belirteç-değişken-adı      | Dize. Başarılı belirteç doğrulamasından sonra türünden bir nesne olarak belirteç değeri alacak bağlam değişkeninin adı [`Jwt`](api-management-policy-expressions.md)                                                                                                                                                                                                                                                                                     | Hayır                                                                               | Yok                                                                               |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 -   **İlke kapsamları:** tüm kapsamlar
@@ -544,5 +545,5 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 -   [API Management ilkeler](api-management-howto-policies.md)
 -   [API dönüştürme](transform-api.md)
--   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
+-   İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
 -   [İlke örnekleri](policy-samples.md)

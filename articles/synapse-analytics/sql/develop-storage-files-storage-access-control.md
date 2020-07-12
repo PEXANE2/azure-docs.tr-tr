@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7df4d917ce25d644003a60b34bc0683ea75299f3
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204889"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255719"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -49,13 +49,13 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
 SAS belirtecini kullanarak erişimi etkinleştirmek için veritabanı kapsamlı veya sunucu kapsamlı kimlik bilgileri oluşturmanız gerekir.
 
-### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
+### <a name="managed-identity"></a>[Yönetilen kimlik](#tab/managed-identity)
 
 **Yönetilen kimlik** de MSI olarak bilinir. İsteğe bağlı SQL için Azure hizmetleri sağlayan Azure Active Directory (Azure AD) özelliğidir. Ayrıca, Azure AD 'de otomatik olarak yönetilen bir kimlik dağıtır. Bu kimlik, Azure Storage 'da veri erişimi isteğine yetki vermek için kullanılabilir.
 
@@ -73,9 +73,9 @@ Aşağıdaki tabloda kullanılabilir yetkilendirme türlerini bulabilirsiniz:
 
 | Yetki türü                    | *SQL kullanıcısı*    | *Azure AD kullanıcısı*     |
 | ------------------------------------- | ------------- | -----------    |
-| [Kullanıcı kimliği](?tabs=user-identity#supported-storage-authorization-types)       | Desteklenmiyor | Destekleniyor      |
-| ['LARıNıN](?tabs=shared-access-signature#supported-storage-authorization-types)       | Destekleniyor     | Destekleniyor      |
-| [Yönetilen Kimlik](?tabs=managed-identity#supported-storage-authorization-types) | Desteklenmiyor | Destekleniyor      |
+| [Kullanıcı kimliği](?tabs=user-identity#supported-storage-authorization-types)       | Desteklenmez | Desteklenir      |
+| ['LARıNıN](?tabs=shared-access-signature#supported-storage-authorization-types)       | Desteklenir     | Desteklenir      |
+| [Yönetilen kimlik](?tabs=managed-identity#supported-storage-authorization-types) | Desteklenmez | Desteklenir      |
 
 ### <a name="supported-storages-and-authorization-types"></a>Desteklenen depolama alanları ve yetkilendirme türleri
 
@@ -83,9 +83,9 @@ Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabil
 
 |                     | Blob Depolama   | ADLS 1.        | ADLS 2.     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *'LARıNıN*               | Destekleniyor      | Desteklenmiyor   | Destekleniyor     |
-| *Yönetilen kimlik* | Destekleniyor      | Destekleniyor        | Destekleniyor     |
-| *Kullanıcı kimliği*    | Destekleniyor      | Destekleniyor        | Destekleniyor     |
+| *'LARıNıN*               | Desteklenir      | Desteklenmiyor   | Desteklenir     |
+| *Yönetilen kimlik* | Desteklenir      | Desteklenir        | Desteklenir     |
+| *Kullanıcı kimliği*    | Desteklenir      | Desteklenir        | Desteklenir     |
 
 ## <a name="credentials"></a>Kimlik bilgileri
 
@@ -145,18 +145,18 @@ Aşağıdaki betik, `OPENROWSET` SAS belirtecini kullanarak Azure Storage 'daki 
 Gerçek depolama hesabı adınızla birlikte Exchange <*mystorageaccountname*> ve *mystorageaccountcontainername*> gerçek kapsayıcı adıyla <:
 
 ```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
 
-### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
+### <a name="managed-identity"></a>[Yönetilen kimlik](#tab/managed-identity)
 
 Aşağıdaki betik, `OPENROWSET` çalışma alanı yönetilen kimliği kullanarak Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur.
 
 ```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='Managed Identity'
 ```
 
@@ -189,7 +189,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
 GO
 ```
 
-### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
+### <a name="managed-identity"></a>[Yönetilen kimlik](#tab/managed-identity)
 
 Aşağıdaki betik, geçerli Azure AD kullanıcısının yönetilen hizmet kimliği olarak taklit etmek için kullanılabilecek veritabanı kapsamlı bir kimlik bilgisi oluşturur. 
 
@@ -211,7 +211,7 @@ Bu depolama alanına erişmek için hangi kimlik doğrulama yönteminin kullanı
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
           CREDENTIAL = <name of database scoped credential> 
 )
 ```
@@ -227,7 +227,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
        WITH ( FORMAT_TYPE = PARQUET)
 GO
 CREATE EXTERNAL DATA SOURCE publicData
-WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<public_container>/<path>' )
 GO
 
 CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
@@ -270,7 +270,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
 GO
 
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 

@@ -6,11 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77595374"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255226"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes hizmetine dağıtmaya yönelik GitHub eylemleri
 
@@ -22,7 +23,7 @@ AKS 'i hedefleyen bir iş akışı için, dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
-|**Kimlik Doğrulaması** | Özel bir kapsayıcı kayıt defterinde (ACR) oturum açma |
+|**Kimlik doğrulaması** | Özel bir kapsayıcı kayıt defterinde (ACR) oturum açma |
 |**Derleme** | Kapsayıcı görüntüsünü oluşturun & gönderin  |
 |**Dağıtma** | 1. hedef AKS kümesini ayarlama |
 | |2. Kubernetes kümesinde genel/Docker-Registry gizli dizisi oluşturma  |
@@ -30,7 +31,7 @@ AKS 'i hedefleyen bir iş akışı için, dosyanın üç bölümü vardır:
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/)'de [az ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
+[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth

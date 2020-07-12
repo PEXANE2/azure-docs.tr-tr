@@ -4,12 +4,12 @@ description: Mevcut bir Azure Service Fabric kümesinde Yönetilen kimlikler des
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415683"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257610"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Mevcut bir Service Fabric kümesinde yönetilen kimlik desteğini yapılandırma
 
@@ -40,7 +40,7 @@ Mevcut bir kümede yönetilen kimlik belirteci hizmetini etkinleştirmek için i
 ]
 ```
 
-Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kümede ilerledikçe her düğümde Service Fabric çalışma zamanının zorla yeniden başlatılmasını belirtmek için de değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilmiş sistem hizmetinin her düğüm üzerinde başlatılmış ve çalışır olmasını sağlar. Aşağıdaki kod parçacığında, `forceRestart` yeniden başlatmayı etkinleştirmek için gerekli olan ayardır. Kalan parametreler için aşağıda açıklanan değerleri kullanın veya küme kaynağı için zaten belirtilmiş olan mevcut özel değerleri kullanın. Fabric yükseltme Ilkesi (' upgradeDescription ') için özel ayarlar, Service Fabric kaynağında veya resources.azure.com ' yapı yükseltmeleri ' seçeneği belirlenerek Azure portalından görüntülenebilir. Yükseltme ilkesi için varsayılan seçenekler (' upgradeDescription ') PowerShell veya resources.azure.com 'dan görüntülenemez. Daha fazla bilgi için bkz. [Clusterupgradepolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) .  
+Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kümede ilerledikçe her düğümde Service Fabric çalışma zamanının zorla yeniden başlatılmasını belirtmek için de değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilmiş sistem hizmetinin her düğüm üzerinde başlatılmış ve çalışır olmasını sağlar. Aşağıdaki kod parçacığında, `forceRestart` yeniden başlatmayı etkinleştirmek için gerekli olan ayardır. Kalan parametreler için aşağıda açıklanan değerleri kullanın veya küme kaynağı için zaten belirtilmiş olan mevcut özel değerleri kullanın. Fabric yükseltme Ilkesi (' upgradeDescription ') için özel ayarlar, Service Fabric kaynağında veya resources.azure.com ' yapı yükseltmeleri ' seçeneği belirlenerek Azure portalından görüntülenebilir. Yükseltme ilkesi için varsayılan seçenekler (' upgradeDescription ') PowerShell veya resources.azure.com 'dan görüntülenemez. Daha fazla bilgi için bkz. [Clusterupgradepolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) .  
 
 ```json
 "upgradeDescription": {

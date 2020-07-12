@@ -5,22 +5,22 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846599"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258464"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors için tanılama ve performans izlemesi
-Reliable Actors Runtime, [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını ve [performans sayaçlarını](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yayar. Bunlar, çalışma zamanının nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
+Reliable Actors Runtime, [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) olaylarını ve [performans sayaçlarını](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)yayar. Bunlar, çalışma zamanının nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
 
 ## <a name="eventsource-events"></a>EventSource olayları
 Reliable Actors Runtime için EventSource sağlayıcı adı "Microsoft-ServiceFabric-aktör" ' dir. Bu olay kaynağının olayları, aktör uygulamasının [Visual Studio 'da hata ayıklaması](service-fabric-debugging-your-application.md)yapıldığında [Tanılama olayları](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) penceresinde görüntülenir.
 
-EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri şunlardır. [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md), [anlam günlüğü](https://msdn.microsoft.com/library/dn774980.aspx)ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri şunlardır. [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md), [anlam günlüğü](/previous-versions/msp-n-p/dn774980(v=pandp.10))ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-### <a name="keywords"></a>Anahtar sözcükler
+### <a name="keywords"></a>Anahtar Sözcükler
 Reliable Actors EventSource 'e ait olan tüm olaylar bir veya daha fazla anahtar sözcük ile ilişkilendirilir. Bu, toplanan olayların filtrelenmesini mümkün bir şekilde sunar. Aşağıdaki anahtar sözcük bitleri tanımlanmıştır.
 
 | Sürümleri | Açıklama |
@@ -40,7 +40,7 @@ Reliable Actors çalışma zamanı aşağıdaki performans sayacı kategorilerin
 
 Yukarıdaki kategorilerin her birinde bir veya daha fazla sayaç bulunur.
 
-Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Performans İzleyicisi](https://technet.microsoft.com/library/cc749249.aspx) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md) , performans sayacı verilerini toplamaya ve Azure tablolarına yüklemeye yönelik başka bir seçenektir.
+Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Performans İzleyicisi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md) , performans sayacı verilerini toplamaya ve Azure tablolarına yüklemeye yönelik başka bir seçenektir.
 
 ### <a name="performance-counter-instance-names"></a>Performans sayacı örnek adları
 Çok sayıda aktör hizmeti veya aktör hizmeti bölümü olan bir küme, çok sayıda aktör performans sayacı örneğine sahip olacaktır. Performans sayacı örneği adları, performans sayacı örneğinin ilişkilendirildiği belirli [bölümü](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) ve aktör yöntemini (varsa) tanımlamaya yardımcı olabilir.
@@ -50,7 +50,7 @@ Kategori için `Service Fabric Actor` , sayaç örneği adları aşağıdaki bi�
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
@@ -69,7 +69,7 @@ Kategori için `Service Fabric Actor Method` , sayaç örneği adları aşağıd
 
 *Actorsruntimemethodıd* , iç kullanımı Için yapı aktör çalışma zamanı tarafından oluşturulan 32 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
@@ -161,6 +161,6 @@ Reliable Actors Runtime, aktör etkinleştirme ve devre dışı bırakma ile ilg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Reliable Actors Service Fabric platformunu kullanma](service-fabric-reliable-actors-platform.md)
-* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Aktör API 'SI başvuru belgeleri](/previous-versions/azure/dn971626(v=azure.100))
 * [Örnek kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [PerfView 'da EventSource sağlayıcıları](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [PerfView 'da EventSource sağlayıcıları](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

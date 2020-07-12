@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79258193"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256263"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer ile kümenizi görselleştirme
 
@@ -131,7 +132,7 @@ Aşağıdaki işlemler mümkündür:
 * Bölüm yedeklemesini tetikleme ve izleme.
 * Bölüm için geri yüklemeyi tetikleme ve izleme.
 
-Yedekleme ve geri yükleme hizmeti hakkında daha fazla bilgi için [REST API başvurusuna](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)bakın.
+Yedekleme ve geri yükleme hizmeti hakkında daha fazla bilgi için [REST API başvurusuna](/rest/api/servicefabric/sfclient-index-backuprestore)bakın.
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Visual Studio 'da Service Fabric uygulamalarınızı yönetme](service-fabric-manage-application-in-visual-studio.md)
 * [PowerShell kullanarak uygulama dağıtımını Service Fabric](service-fabric-deploy-remove-applications.md)

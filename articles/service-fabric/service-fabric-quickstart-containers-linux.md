@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75372695"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258543"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Hızlı başlangıç: Linux kapsayıcıları Service Fabric'e dağıtma
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, Linux kapsayıcılarını Azure 'da bir Service Fabri
 
 ![Oylama uygulaması web sayfası][quickstartpic]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıcı tamamlamak için:
 
 Kapsayıcıları Service Fabric üzerinde dağıtmak için ayrı kapsayıcıları ve uygulamayı açıklayan bildirim dosyası (uygulama tanımı) kümesine ihtiyacınız vardır.
 
-Bir konsolunda, uygulama tanımının bir kopyasını klonlamak için git ' i kullanın; ardından dizinleri kopyanızda `Voting` dizin olarak değiştirin.
+Bir konsolunda, uygulama tanımının bir kopyasını klonlamak için git ' i kullanın; ardından dizinleri `Voting` kopyanızda dizin olarak değiştirin.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -108,7 +108,7 @@ Mozilla Firefox, Ubuntu 16,04 ' de varsayılan tarayıcıdır. Sertifikayı Fire
     ./install.sh
     ```
 
-3. Bir web tarayıcısı açın ve kümenizin Service Fabric Explorer uç noktasına gidin. Uç nokta biçimi şu şekildedir: **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**; örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Bir web tarayıcısı açın ve kümenizin Service Fabric Explorer uç noktasına gidin. Uç nokta şu biçimdedir: **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; Örneğin, `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Şimdi oylama uygulama türü ve oluşturduğunuz örnek için bir girdi olduğunu görmek için **uygulamalar** düğümünü genişletin.
 
@@ -178,8 +178,8 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Kümenizle çalışmayı tamamladıysanız, sertifikayı sertifika deposundan kaldırabilirsiniz. Örneğin:
-- Windows: [Sertifikalar MMC ek bileşenini](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) kullanın. Ek bileşeni eklerken **Kullanıcı hesabım**’ı seçtiğinizden emin olun. `Certificates - Current User\Personal\Certificates` sayfasına gidip sertifikayı kaldırın.
+Kümenizle çalışmayı tamamladıysanız, sertifikayı sertifika deposundan kaldırabilirsiniz. Örnek:
+- Windows: [Sertifikalar MMC ek bileşenini](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) kullanın. Ek bileşeni eklerken **Kullanıcı hesabım**’ı seçtiğinizden emin olun. `Certificates - Current User\Personal\Certificates` sayfasına gidip sertifikayı kaldırın.
 - Mac: Anahtarlık uygulamasını kullanın.
 - Ubuntu: Sertifikaları görüntülemek ve sertifikayı kaldırmak için kullandığınız adımları izleyin.
 

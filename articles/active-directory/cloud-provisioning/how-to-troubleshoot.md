@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360801"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256875"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Bulut sağlama sorunlarını giderme
 
@@ -22,7 +22,7 @@ Bulut sağlama birçok farklı şeyi dokunduğunda birçok farklı bağımlılı
 
 ## <a name="common-troubleshooting-areas"></a>Ortak sorun giderme alanı
 
-|Name|Açıklama|
+|Ad|Açıklama|
 |-----|-----|
 |[Aracı sorunları](#agent-problems)|Aracının doğru şekilde yüklendiğini ve Azure Active Directory (Azure AD) ile iletişim kuracağını doğrulayın.|
 |[Nesne eşitleme sorunları](#object-synchronization-problems)|Nesne eşitleme sorunlarını gidermek için sağlama günlüklerini kullanın.|
@@ -43,7 +43,7 @@ Bu öğeler Azure portal ve aracıyı çalıştıran yerel sunucu üzerinde doğ
 
 Aracının Azure tarafından görüleceği ve sağlıklı olduğundan emin olmak için aşağıdaki adımları izleyin.
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 1. Sol tarafta **Azure Active Directory**  >  **Azure AD Connect**' yı seçin. Merkezinde **Yönet sağlama (Önizleme)** öğesini seçin.
 1. **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' i seçin.
 
@@ -55,9 +55,7 @@ Aracının Azure tarafından görüleceği ve sağlıklı olduğundan emin olmak
 
 ### <a name="verify-the-port"></a>Bağlantı noktasını doğrulama
 
-Azure 'un 443 numaralı bağlantı noktasını dinlediğini ve aracınızın onunla iletişim kurabildiğini doğrulamak için aşağıdaki aracı kullanın:
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+Azure 'un 443 numaralı bağlantı noktasını dinlediğini ve aracınızın onunla iletişim kurabildiğini doğrulayın. 
 
 Bu test, aracılarınızın 443 numaralı bağlantı noktası üzerinden Azure ile iletişim kurabildiğini doğrular. Bir tarayıcı açın ve aracının yüklendiği sunucudan önceki URL 'ye gidin.
 

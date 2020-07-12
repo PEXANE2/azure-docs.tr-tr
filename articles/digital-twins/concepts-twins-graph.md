@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142409"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258208"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -21,11 +21,27 @@ Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital
 > [!TIP]
 > "Azure dijital TWINS", bu Azure hizmetine bir bütün olarak başvurur. "Digital ikizi (s)" veya yalnızca "ikizi (s)", hizmet örneğinizin içindeki bireysel ikizi düğümlerine başvurur.
 
-## <a name="creating-digital-twins"></a>Dijital TWINS oluşturma
+## <a name="digital-twins"></a>Dijital TWINS
 
 Azure dijital TWINS Örneğinizde dijital bir ikizi oluşturabilmeniz için önce hizmete bir *modelin* yüklenmiş olması gerekir. Model, diğer şeyler arasında belirli bir ikizi sahip olduğu özellikler, telemetri iletileri ve ilişkiler kümesini açıklar. Bir modelde tanımlanan bilgi türleri için bkz. [Kavramlar: özel modeller](concepts-models.md).
 
 Bir modeli oluşturup karşıya yükledikten sonra, istemci uygulamanız türün bir örneğini oluşturabilir; Bu bir dijital ikizi. Örneğin, bir *kat*modeli oluşturduktan sonra bu türü kullanan bir veya birkaç dijital TWINS oluşturabilirsiniz ( *Groundfloor*adlı bir *taban*-tür ikizi gibi, başka bir *Floor2*vb.). 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>İlişkiler: dijital TWINS 'in bir grafiği
+
+TWINS, ilişkileri tarafından bir ikizi grafiğine bağlanır. Bir ikizi 'in sahip olduğu ilişkiler, modelinin bir parçası olarak tanımlanmıştır.  
+
+Örneğin, model *tabanı* bir, *Oda*türü olarak İKI hedefleyen bir *ilişki içerebilir.* Azure dijital TWINS, bu tanım ile *herhangi bir* *tabandan* ( *Oda* alt türlerinden oluşan TWINS dahil) herhangi bir kat *ikizi ilişki oluşturmanıza* olanak sağlayacak. 
+
+Bu işlemin sonucu, bir grafikteki kenarlar (bunların ilişkileri) aracılığıyla bağlanan bir düğüm kümesidir (dijital TWINS).
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>API 'lerle oluşturma
+
+Bu bölümde, bir istemci uygulamasından dijital TWINS ve ilişkiler oluşturmak için nasıl göründüğü gösterilmektedir. Bu kavramların her birinde nelerin üzerinde olduğuna ilişkin ek bağlam sağlamak için [Digitaltwins API 'lerini](how-to-use-apis-sdks.md)kullanan .NET kod örnekleri içerir.
+
+### <a name="create-digital-twins"></a>Dijital TWINS oluşturma
 
 Aşağıda, *Oda*türünde bir ikizi örneği oluşturmak Için [Digitaltwins API 'lerini](how-to-use-apis-sdks.md) kullanan istemci kodu kod parçacığı verilmiştir.
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>İlişkiler: dijital bir TWINS grafiği oluşturma
-
-TWINS, ilişkileri tarafından bir ikizi grafiğine bağlanır. Bir ikizi 'in sahip olduğu ilişkiler, modelinin bir parçası olarak tanımlanmıştır.  
-
-Örneğin, model *tabanı* bir, *Oda*türü olarak İKI hedefleyen bir *ilişki içerebilir.* Azure dijital TWINS, bu tanım ile *herhangi bir* *tabandan* ( *Oda* alt türlerinden oluşan TWINS dahil) herhangi bir kat *ikizi ilişki oluşturmanıza* olanak sağlayacak. 
+### <a name="create-relationships"></a>İlişki oluştur
 
 Burada, *Groundfloor* adlı bir *taban*-tür dijital ikizi ve *Cafe*adlı bir *Oda*türü dijital Ikizi arasında bir ilişki oluşturmak için [digitaltwins API 'lerini](how-to-use-apis-sdks.md) kullanan bazı örnek istemci kodları verilmiştir.
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-Bu işlemin sonucu, bir grafikteki kenarlar (bunların ilişkileri) aracılığıyla bağlanan bir düğüm kümesidir (dijital TWINS).
 
 ## <a name="json-representations-of-graph-elements"></a>Grafik öğelerinin JSON gösterimleri
 

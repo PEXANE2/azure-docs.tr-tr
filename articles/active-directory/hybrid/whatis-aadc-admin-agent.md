@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f68635820125161ed4f5777e27a20de9e6fbe8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80049391"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255617"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Azure AD Connect Yönetim Aracısı nedir? 
 Azure AD Connect Yönetim Aracısı, bir Azure Active Directory Connect sunucusuna yüklenebilen yeni bir Azure Active Directory Connect bileşenidir. Bir destek talebi açtığınızda Microsoft destek mühendisine sorunları gidermeye yardımcı olan Active Directory ortamınızdan belirli verileri toplamak için kullanılır. 
@@ -30,7 +30,7 @@ Azure AD Connect yönetim aracısının ortamınızdan aldığı bilgiler herhan
 
 ## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Azure AD Connect sunucusuna Azure AD Connect yönetim aracısını yükler 
 
-Ön koşullar:
+Önkoşullar:
 1.    Azure AD Connect sunucuya yüklendi
 2.    Azure AD Connect Health sunucuya yüklendi
 
@@ -40,7 +40,7 @@ Azure AD Connect Yönetim Aracısı ikilileri AAD Connect sunucusuna yerleştiri
 
 1.    PowerShell 'i yönetici modunda aç
 2.    Uygulamanın CD 'nin bulunduğu dizine gidin "C:\Program Files\Microsoft Azure Active Directory Connect\Tools"
-3.    ConfigureAdminAgent. ps1 öğesini çalıştırın
+3.    ConfigureAdminAgent.ps1 Çalıştır
 
 İstendiğinde lütfen Azure AD Genel yönetici kimlik bilgilerinizi girin. Bu, Azure AD Connect yüklemesi sırasında girilen kimlik bilgileri ile aynı olmalıdır.
 
@@ -56,8 +56,8 @@ Microsoft Desteği mühendisi sisteminizdeki verileri değiştiremez ve herhangi
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Microsoft destek mühendisinin verilerinize erişimini istemiyorum ne yapmalıyım? 
 Aracı yüklendikten sonra, Microsoft hizmet mühendisinin bir destek çağrısı için verilerinize erişmesini istemiyorsanız, hizmet yapılandırma dosyasını aşağıda açıklandığı gibi değiştirerek işlevselliği devre dışı bırakabilirsiniz: 
 
-1.    Not defteri 'nde **C:\Program Files\Microsoft Azure AD Connect Administration Agent\AzureADConnectAdministrationAgentService.exe.config** öğesini açın.
-2.    **Userdataenabled** ayarını aşağıda gösterildiği gibi devre dışı bırakın. **Userdataenabled** ayarı varsa ve true olarak ayarlanırsa, false olarak ayarlayın. Ayar yoksa, ayarı aşağıda gösterildiği gibi ekleyin.    
+1. Not defteri 'nde **C:\Program Files\Microsoft Azure AD Connect Administration Agent\AzureADConnectAdministrationAgentService.exe.config** açın.
+2. **Userdataenabled** ayarını aşağıda gösterildiği gibi devre dışı bırakın. **Userdataenabled** ayarı varsa ve true olarak ayarlanırsa, false olarak ayarlayın. Ayar yoksa, ayarı aşağıda gösterildiği gibi ekleyin.    
 
     ```xml
     <appSettings>
@@ -66,8 +66,8 @@ Aracı yüklendikten sonra, Microsoft hizmet mühendisinin bir destek çağrıs�
     </appSettings>
     ```
 
-3.    Yapılandırma dosyasını kaydedin.
-4.    Azure AD Connect Yönetim Aracısı hizmetini aşağıda gösterildiği gibi yeniden başlatın
+3. Yapılandırma dosyasını kaydedin.
+4. Azure AD Connect Yönetim Aracısı hizmetini aşağıda gösterildiği gibi yeniden başlatın
 
 ![Yönetim Aracısı](media/whatis-aadc-admin-agent/adminagent2.png)
 

@@ -4,23 +4,24 @@ description: Azure Service Fabric üzerinde ilk Linux kapsayıcı uygulamanızı
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560640"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256416"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Bir Service Fabric kümesindeki Linux kapsayıcısında mevcut olan bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Bu makalede, Python [Flask](http://flask.pocoo.org/) web uygulaması içeren bir Docker görüntüsü oluşturma ve bunu Service Fabric kümesine dağıtma işlemlerinde size yol gösterilir. Ayrıca, kapsayıcıya alınmış uygulamanızı [Azure Container Registry](/azure/container-registry/) aracılığıyla paylaşırsınız. Bu makale Docker hakkında temel bir anlayışınızın olduğunu varsayar. [Docker’a Genel Bakış](https://docs.docker.com/engine/understanding-docker/) makalesini okuyarak Docker hakkında bilgi edinebilirsiniz.
+Bir Service Fabric kümesindeki Linux kapsayıcısında mevcut olan bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Bu makalede, Python [Flask](http://flask.pocoo.org/) web uygulaması içeren bir Docker görüntüsü oluşturma ve bunu Service Fabric kümesine dağıtma işlemlerinde size yol gösterilir. Ayrıca, kapsayıcıya alınmış uygulamanızı [Azure Container Registry](../container-registry/index.yml) aracılığıyla paylaşırsınız. Bu makale Docker hakkında temel bir anlayışınızın olduğunu varsayar. [Docker’a Genel Bakış](https://docs.docker.com/engine/understanding-docker/) makalesini okuyarak Docker hakkında bilgi edinebilirsiniz.
 
 > [!NOTE]
 > Bu makale, bir Linux geliştirme ortamı için geçerlidir.  Service Fabric kümesi çalışma zamanının ve Docker çalışma zamanının aynı işletim sisteminde çalışıyor olması gerekir.  Linux kapsayıcılarını bir Windows kümesinde çalıştıramazsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * [Service Fabric SDK’sı ve araçları](service-fabric-get-started-linux.md).
   * [Linux için Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 

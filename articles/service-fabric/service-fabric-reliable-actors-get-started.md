@@ -5,20 +5,21 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2ee5df9f0b09e30212f61e804e24086874f07f5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466260"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256280"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors kullanmaya başlama
 > [!div class="op_single_selector"]
 > * [Windows üzerinde C#](service-fabric-reliable-actors-get-started.md)
-> * [Linux üzerinde Java](service-fabric-reliable-actors-get-started-java.md)
+> * [Linux üzerinde Java](./service-fabric-create-your-first-linux-application-with-java.md)
 
 Bu makalede, Visual Studio 'da basit bir güvenilir aktör uygulamasının oluşturulması ve hata ayıklaması adım adım anlatılmaktadır. Reliable Actors hakkında daha fazla bilgi için bkz. [Service Fabric Reliable Actors giriş](service-fabric-reliable-actors-introduction.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, makinenizde ayarlanmış olan Visual Studio dahil Service Fabric geliştirme ortamına sahip olduğunuzdan emin olun. Ayrıntılar için bkz. [geliştirme ortamını ayarlama](service-fabric-get-started.md).
 
@@ -106,7 +107,7 @@ Aktör hizmetini çağırmak için basit bir konsol uygulaması oluşturun.
 
     NuGet paketi ve tüm bağımlılıkları ActorClient projesine yüklenir.
 
-5. İstemci projesi Ayrıca, arabirimler projesine bir başvuru gerektirir.  ActorClient projesinde **Bağımlılıklar** ' a sağ tıklayın ve ardından **Başvuru Ekle...** öğesine tıklayın.  **Projeler > çözüm** ' ü seçin (zaten seçili değilse) ve ardından **HelloWorld. Interfaces**' in yanındaki onay kutusunu işaretleyin.  **Tamam**'a tıklayın.
+5. İstemci projesi Ayrıca, arabirimler projesine bir başvuru gerektirir.  ActorClient projesinde **Bağımlılıklar** ' a sağ tıklayın ve ardından **Başvuru Ekle...** öğesine tıklayın.  **Projeler > çözüm** ' ü seçin (zaten seçili değilse) ve ardından **HelloWorld. Interfaces**' in yanındaki onay kutusunu işaretleyin.  **Tamam** düğmesine tıklayın.
     
     ![Başvuru Ekle iletişim kutusu][7]
 

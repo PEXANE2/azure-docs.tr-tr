@@ -4,12 +4,12 @@ description: Sertifikalarınızı bir Azure Kubernetes hizmeti (AKS) kümesinde 
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 715771c7a1704e0d39f790d018980c4b39ba351b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e48a05a36fdbd56fb78cd1394c512485b521e50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817439"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255362"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sertifikaları döndürme
 
@@ -62,7 +62,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > Tamamlanması 30 dakika sürebilir `az aks rotate-certs` . Komut tamamlanmadan önce başarısız olursa, `az aks show` kümenin durumunun *sertifika döndürme*olduğunu doğrulamak için kullanın. Küme başarısız durumdaysa, `az aks rotate-certs` sertifikalarınızı yeniden döndürmek için yeniden çalıştırın.
 
-Bir komut çalıştırarak eski sertifikaların artık geçerli olmadığını doğrulayın `kubectl` . Tarafından kullanılan sertifikaları güncelleştirmediyseniz `kubectl` bir hata görürsünüz.  Örneğin:
+Bir komut çalıştırarak eski sertifikaların artık geçerli olmadığını doğrulayın `kubectl` . Tarafından kullanılan sertifikaları güncelleştirmediyseniz `kubectl` bir hata görürsünüz.  Örnek:
 
 ```console
 $ kubectl get no
@@ -75,7 +75,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Bir komut çalıştırarak sertifikaların güncelleştirildiğini doğrulayın `kubectl` , şimdi başarılı olur. Örneğin:
+Bir komut çalıştırarak sertifikaların güncelleştirildiğini doğrulayın `kubectl` , şimdi başarılı olur. Örnek:
 
 ```console
 kubectl get no
@@ -94,5 +94,5 @@ Bu makalede, kümenizin sertifikalarını, CA 'Ları ve SAs 'yi otomatik olarak 
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
-[dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[dev-spaces]: ../dev-spaces/index.yml
 [dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

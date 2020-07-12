@@ -3,12 +3,12 @@ title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Mevcut bir Service Fabric kümesini, kümenizde çok az veya kapalı kalma süresi olmadan Azure yönetilen diskleri kullanacak şekilde yükseltme.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611637"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255906"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
@@ -16,7 +16,7 @@ ms.locfileid: "85611637"
 
 Yönetilen diskleri kullanmak için bir Service Fabric küme düğümünü yükseltmeye yönelik genel strateji şu şekilde yapılır:
 
-1. Bu düğüm türü için, ancak sanal makine ölçek kümesi dağıtım şablonunun bölümüne eklenen [Manageddisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) nesnesi ile, başka bir şekilde yinelenen bir sanal makine ölçek kümesi dağıtın `osDisk` . Yeni ölçek kümesi, müşterilerinizin geçiş sırasında hizmet kesintisi yaşamamasını sağlamak için, orijinalle aynı yük dengeleyiciye/IP 'ye bağlanmalıdır.
+1. Bu düğüm türü için, ancak sanal makine ölçek kümesi dağıtım şablonunun bölümüne eklenen [Manageddisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) nesnesi ile, başka bir şekilde yinelenen bir sanal makine ölçek kümesi dağıtın `osDisk` . Yeni ölçek kümesi, müşterilerinizin geçiş sırasında hizmet kesintisi yaşamamasını sağlamak için, orijinalle aynı yük dengeleyiciye/IP 'ye bağlanmalıdır.
 
 2. Hem özgün hem de yükseltilen ölçek kümeleri yan yana çalışırken, sistem hizmetlerinin (veya durum bilgisi olan hizmetlerin çoğaltmalarının) yeni ölçek kümesine geçişini sağlamak için özgün düğüm örneklerini tek seferde devre dışı bırakın.
 
@@ -25,7 +25,7 @@ Yönetilen diskleri kullanmak için bir Service Fabric küme düğümünü yüks
 Bu makale, yönetilen diskleri kullanmak için örnek bir kümenin birincil düğüm türünü yükseltme adımlarında size yol gösterir, ancak herhangi bir küme kapalı kalma süresini önleyerek (aşağıdaki nota bakın). Örnek test kümesinin ilk durumu, beş düğümlü tek bir ölçek kümesi tarafından desteklenen [gümüş dayanıklılığa](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)sahip bir düğüm türünden oluşur.
 
 > [!CAUTION]
-> Bu yordamı yalnızca küme DNS ( [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)erişimi gibi) üzerinde bağımlılıklara sahipseniz bir kesinti yaşanacaktır. [Ön uç hizmetleri için mimari en iyi uygulaması](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) , düğüm değiştirmeyi kesinti olmadan mümkün hale getirmek için düğüm türlerinizin önünde bazı tür [yük dengeleyiciler](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) içermelidir.
+> Bu yordamı yalnızca küme DNS ( [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)erişimi gibi) üzerinde bağımlılıklara sahipseniz bir kesinti yaşanacaktır. [Ön uç hizmetleri için mimari en iyi uygulaması](/azure/architecture/microservices/design/gateway) , düğüm değiştirmeyi kesinti olmadan mümkün hale getirmek için düğüm türlerinizin önünde bazı tür [yük dengeleyiciler](/azure/architecture/guide/technology-choices/load-balancing-overview) içermelidir.
 
 Yükseltme senaryosunu tamamlaması için kullanacağımız Azure Resource Manager [Şablonlar ve cmdlet 'leri](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) aşağıda bulabilirsiniz. Şablon değişiklikleri, aşağıdaki [birincil düğüm türü için yükseltilen ölçek kümesi dağıtma](#deploy-an-upgraded-scale-set-for-the-primary-node-type) bölümünde açıklanacaktır.
 
@@ -258,7 +258,7 @@ Dağıtım şablonu *kaynakları* bölümünde, yeni sanal makine ölçek kümes
 
 ### <a name="obtain-your-key-vault-references"></a>Key Vault başvurularınızı alın
 
-Güncelleştirilmiş yapılandırmayı dağıtmak için öncelikle Key Vault depolanan küme sertifikanız için birkaç başvuru elde edersiniz. Bu değerleri bulmanın en kolay yolu Azure portal kullanmaktır. Gerekenler:
+Güncelleştirilmiş yapılandırmayı dağıtmak için öncelikle Key Vault depolanan küme sertifikanız için birkaç başvuru elde edersiniz. Bu değerleri bulmanın en kolay yolu Azure portal kullanmaktır. Şunlara ihtiyacınız var:
 
 * **Küme sertifikanızın Key Vault URL 'SI.** Azure Portal ' Key Vault, **Certificates**  >  *istediğiniz sertifika*  >  **gizli tanımlayıcı tanımlarınızı**seçin:
 

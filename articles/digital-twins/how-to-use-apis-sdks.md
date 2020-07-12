@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8dfb35ed1944a17e0d374405bfd1feafe38fd02
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 522aed07d850dfdb2782ee8263f33bd3f42eb8c2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206428"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258041"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -27,8 +27,8 @@ Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-03-01-Pr
 Denetim düzlemi API 'Lerini kullanmak için:
 * En son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([başvuru](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview))
+  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([başvuru [otomatik olarak oluşturulan]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([başvuru [otomatik olarak oluşturulan]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [Kaynak ol](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)

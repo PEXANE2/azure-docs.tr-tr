@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392310"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258271"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -196,9 +197,14 @@ Genişletme arabirimi üst arabirimlerin tanımlarından hiçbirini değiştirem
 
 ## <a name="validating-models"></a>Modelleri doğrulama
 
-DTDL 'nin geçerli olduğundan emin olmak için model belgelerini doğrulamak üzere kullanılabilecek bir örnek vardır. DTDL ayrıştırıcısı kitaplığı üzerine kurulmuştur ve dilden bağımsızdır. Buradan bulabilirsiniz: [Dtdl Doğrulayıcı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+> [!TIP]
+> Azure dijital TWINS örneğinizi karşıya yüklemeden önce modellerinizi çevrimdışı doğrulamanız önerilir.
 
-Ya da, doğrudan nasıl kullanılacağına ilişkin bir örnek de dahil olmak üzere ayrıştırıcı Kitaplığı hakkında daha fazla bilgi için bkz. [nasıl yapılır: modelleri ayrıştırma ve doğrulama](how-to-use-parser.md).
+DTDL 'nin doğru olduğundan emin olmak için model belgelerini doğrulamak üzere dilden bağımsız bir örnek mevcuttur. Burada bulunur: [**Dtdl Doğrulayıcı örneği**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+
+DTDL doğrulayıcısı örneği, NuGet üzerinde bir istemci tarafı kitaplığı olarak kullanılabilen bir .NET DTDL ayrıştırıcısı kitaplığı üzerine kurulmuştur: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). Kitaplığı doğrudan kendi doğrulama çözümünüzü tasarlamak için de kullanabilirsiniz. Ayrıştırıcı kitaplığını kullanırken, Azure Digital TWINS 'in çalıştığı sürümle uyumlu bir sürüm kullandığınızdan emin olun. Önizleme süresince bu sürüm *3.7.0*.
+
+Kullanım örnekleri de dahil olmak üzere ayrıştırıcı Kitaplığı hakkında daha fazla bilgi edinebilirsiniz; [nasıl yapılır: modelleri ayrıştırma ve doğrulama](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

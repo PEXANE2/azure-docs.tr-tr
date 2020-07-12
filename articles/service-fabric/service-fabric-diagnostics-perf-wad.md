@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609919"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258615"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Tanılama uzantısıyla performans izleme
 
@@ -192,5 +193,5 @@ Aşağıda, Service Fabric özel performans sayaçlarından biri olan *Toplam I�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Kümeniz için daha fazla performans sayacı toplayın. Toplamanız gereken sayaçların bir listesi için bkz. [performans ölçümleri](service-fabric-diagnostics-event-generation-perf.md) .
-* Tanılama verilerini göndermek üzere ek depolama hesapları yapılandırma dahil olmak üzere, üzerinde daha fazla değişiklik yapmak için [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanın](../virtual-machines/windows/extensions-diagnostics-template.md) `WadCfg` .
+* Tanılama verilerini göndermek üzere ek depolama hesapları yapılandırma dahil olmak üzere, üzerinde daha fazla değişiklik yapmak için [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanın](../virtual-machines/extensions/diagnostics-template.md) `WadCfg` .
 * Sıfırdan bir şablon oluşturmak ve sözdiziminin doğru olduğundan emin olmak için [Wadcfg oluşturucusunu](https://azure.github.io/azure-diagnostics-tools/config-builder/) ziyaret edin. ( https://azure.github.io/azure-diagnostics-tools/config-builder/) sıfırdan bir şablon oluşturmak ve sözdiziminin doğru olduğundan emin olmak için.
