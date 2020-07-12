@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982737"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247022"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge sertifikaları nasıl kullandığını anlayın
 
@@ -24,6 +25,9 @@ Bu makalede, IoT Edge sertifikalarının üretim, geliştirme ve test senaryolar
 ## <a name="iot-edge-certificates"></a>IoT Edge sertifikaları
 
 Genellikle, üreticiler IoT Edge cihazının son kullanıcıları değildir. Bazen, son kullanıcı ya da operatör arasındaki tek ilişki, üretici tarafından oluşturulan bir genel cihazı satın alır. Diğer zamanlarda üretici, operatör için özel bir cihaz oluşturmak üzere sözleşme altında çalışmaktadır. IoT Edge sertifikası tasarımı her iki senaryoyu de hesaba getirmeye çalışır.
+
+> [!NOTE]
+> Şu anda libiothsm içindeki bir sınırlama 1 Ocak 2050 tarihinde veya sonrasında sona ermekte olan sertifikaların kullanılmasını engelliyor. Bu sınırlama, cihaz CA sertifikası, güven paketindeki tüm sertifikalar ve X. 509.440 sağlama yöntemleri için kullanılan cihaz KIMLIĞI sertifikaları için geçerlidir.
 
 Aşağıdaki şekilde sertifikaların kullanımı IoT Edge gösterilmektedir. Kök CA sertifikası ile cihaz CA sertifikası arasında, dahil edilen varlıkların sayısına bağlı olarak sıfır, bir veya çok sayıda ara imza sertifikası olabilir. Burada bir durum gösteririz.
 

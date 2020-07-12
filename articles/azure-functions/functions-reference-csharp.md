@@ -2,15 +2,15 @@
 title: Azure Işlevleri C# betik geliştirici başvurusu
 description: C# betiği kullanarak Azure Işlevleri geliştirmeyi anlayın.
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: a5497300f6b0cbf3a073681bac41adc583d869ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8041f2514f59ac2511fcd64eeb0283565a0e07a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733405"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249249"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Işlevleri C# betiği (. CSX) geliştirici başvurusu
 
@@ -236,7 +236,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 }
 ```
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Çıktıyı C# ' deki akış günlüklerinizi günlüğe kaydetmek için, [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. Bunu sizin adınızla yapmanızı öneririz `log` . `Console.Write`Azure işlevleri 'nde kullanmaktan kaçının.
 

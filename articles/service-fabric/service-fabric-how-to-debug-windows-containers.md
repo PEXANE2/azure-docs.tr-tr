@@ -4,21 +4,22 @@ description: Visual Studio 2019 kullanarak Azure Service Fabric Windows kapsayı
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701159"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247260"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Nasıl yapılır: Visual Studio 2019 kullanarak Azure Service Fabric Windows kapsayıcılarında hata ayıklama
 
 Visual Studio 2019 ile kapsayıcılardaki .NET uygulamalarında Service Fabric Hizmetleri olarak hata ayıklaması yapabilirsiniz. Bu makalede, ortamınızı nasıl yapılandıracağınız ve ardından yerel bir Service Fabric kümesinde çalışan bir kapsayıcıda bir .NET uygulamasında hata ayıklamanın nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Windows 10 ' da Windows 10 ' u Windows [kapsayıcıları çalıştıracak şekilde yapılandırmak](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) için bu hızlı başlangıcı izleyin
-* Windows Server 2016 ' de, Windows 2016 ' yi [Windows kapsayıcıları çalıştıracak şekilde yapılandırmak](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) için bu hızlı başlangıcı izleyin
-* [Windows üzerinde geliştirme ortamınızı hazırlama '](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) yı izleyerek Yerel Service Fabric ortamınızı ayarlama
+* Windows 10 ' da Windows 10 ' u Windows [kapsayıcıları çalıştıracak şekilde yapılandırmak](/virtualization/windowscontainers/quick-start/quick-start-windows-10) için bu hızlı başlangıcı izleyin
+* Windows Server 2016 ' de, Windows 2016 ' yi [Windows kapsayıcıları çalıştıracak şekilde yapılandırmak](/virtualization/windowscontainers/quick-start/quick-start-windows-server) için bu hızlı başlangıcı izleyin
+* [Windows üzerinde geliştirme ortamınızı hazırlama '](./service-fabric-get-started.md) yı izleyerek Yerel Service Fabric ortamınızı ayarlama
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>Geliştirici ortamınızı kapsayıcılara hata ayıklama için yapılandırma
 
@@ -37,7 +38,7 @@ Visual Studio 2019 ile kapsayıcılardaki .NET uygulamalarında Service Fabric H
       > `-CreateOneNodeCluster`Tek düğümlü bir küme kurmak için öğesini kullanabilirsiniz. Varsayılan olarak yerel bir beş düğümlü küme oluşturulur.
       >
 
-      Service Fabric 'deki DNS hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Service Fabric 'de DNS hizmeti](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Bir kapsayıcıda çalışan hizmetlerden Service Fabric ters proxy kullanma hakkında daha fazla bilgi edinmek için bkz. [kapsayıcılar üzerinde çalışan hizmetler Için ters proxy özel işleme](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
+      Service Fabric 'deki DNS hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Service Fabric 'de DNS hizmeti](./service-fabric-dnsservice.md). Bir kapsayıcıda çalışan hizmetlerden Service Fabric ters proxy kullanma hakkında daha fazla bilgi edinmek için bkz. [kapsayıcılar üzerinde çalışan hizmetler Için ters proxy özel işleme](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Service Fabric kapsayıcılarında hata ayıklama sırasında bilinen sınırlamalar
 

@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/10/2020
-ms.openlocfilehash: 01968335ffcaffb26cabd2a5174d00e5471409c1
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d2567a5a0374fd05f17e1153c3b2d7f3df50e0d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232041"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247005"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -28,7 +28,6 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 | [**REST API ara 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | REST API 'lerin yeni kararlı bir sürümü. Bilgi deposuna ek olarak, bu sürüm arama ilgisi ve Puanlama geliştirmeleri içerir. | Genel olarak kullanılabilir. |
 | [**Okapi BM25 ilgi algoritması**](https://en.wikipedia.org/wiki/Okapi_BM25) | Sorgu | Yeni ilgi derecelendirme algoritması, 15 Temmuz 'dan sonra oluşturulan tüm yeni arama hizmetleri için otomatik olarak kullanılır. Daha önce oluşturulan hizmetler için `similarity` Dizin alanları üzerinde özelliğini ayarlayarak kabul edebilirsiniz. | Genel olarak kullanılabilir. </br> [Arama REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) veya üstünü ya da REST API 2019-05-06 kullanın. |
 | **executionEnvironment** | Güvenlik (Dizin oluşturucular) | `private`Özel bir uç nokta üzerinden dış veri kaynaklarına yönelik tüm bağlantıları zorlamak için bu Dizin Oluşturucu yapılandırma özelliğini olarak ayarlayın. Yalnızca Azure özel bağlantı özelliğinden yararlanan Arama Hizmetleri için geçerlidir. | Genel olarak kullanılabilir. </br> Bu genel yapılandırma parametresini ayarlamak için [arama REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) ' i kullanın. |
-| [**Azure Machine Learning (AML) yeteneği**](cognitive-search-aml-skill.md) | Yapay zeka zenginleştirme| Azure Machine Learning bir Inde sınırlama uç noktasını bütünleştirmek için yeni bir yetenek türü. [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın. | Genel olarak kullanılabilir. </br> [Arama REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) veya üstünü kullanın. Portal 'da, Beceri tasarımında, Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtıldığı varsayıldığında de mevcuttur. |
 
 ### <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
 

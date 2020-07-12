@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: ed0cd51fc686735f2d9c110ce46d5904107cafc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be8ffa1b569c365c8fa9b985d2b8319b7c0731b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430608"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249844"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Azure API Management'te Rol Tabanlı Erişim Denetimini kullanma
 
-Azure API Management, API Management Hizmetleri ve varlıkları için ayrıntılı erişim yönetimini (örneğin, API 'Ler ve ilkeler) etkinleştirmek üzere Azure rol tabanlı Access Control (RBAC) kullanır. Bu makale, API Management yerleşik ve özel rollere genel bir bakış sunar. Azure portal erişim yönetimi hakkında daha fazla bilgi için, bkz. [Azure Portal erişim yönetimiyle çalışmaya başlama](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
+Azure API Management, API Management Hizmetleri ve varlıkları için ayrıntılı erişim yönetimini (örneğin, API 'Ler ve ilkeler) etkinleştirmek üzere Azure rol tabanlı Access Control (RBAC) kullanır. Bu makale, API Management yerleşik ve özel rollere genel bir bakış sunar. Azure portal erişim yönetimi hakkında daha fazla bilgi için, bkz. [Azure Portal erişim yönetimiyle çalışmaya başlama](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -29,7 +30,7 @@ Azure API Management, API Management Hizmetleri ve varlıkları için ayrıntıl
 
 API Management Şu anda üç yerleşik rol sağlar ve yakın gelecekte iki rol daha ekleyebilirler. Bu roller abonelik, kaynak grubu ve bireysel API Management örneği gibi farklı kapsamlara atanabilir. Örneğin, "API Management hizmet okuyucusu" rolünü kaynak grubu düzeyindeki bir kullanıcıya atarsanız, kullanıcının kaynak grubundaki tüm API Management örneklerine okuma erişimi vardır. 
 
-Aşağıdaki tabloda yerleşik rollerin kısa açıklamaları verilmiştir. Azure portal veya Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)ve [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)gibi diğer araçları kullanarak bu rolleri atayabilirsiniz. Yerleşik roller atama hakkında daha fazla bilgi için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Aşağıdaki tabloda yerleşik rollerin kısa açıklamaları verilmiştir. Azure portal veya Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md), [azure CLI](../role-based-access-control/role-assignments-cli.md)ve [REST API](../role-based-access-control/role-assignments-rest.md)gibi diğer araçları kullanarak bu rolleri atayabilirsiniz. Yerleşik roller atama hakkında daha fazla bilgi için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanma](../role-based-access-control/role-assignments-portal.md).
 
 | Rol          | Okuma erişimi<sup>[1]</sup> | Yazma erişimi<sup>[2]</sup> | Hizmet oluşturma, silme, ölçeklendirme, VPN ve özel etki alanı yapılandırması | Eski yayımcı portalına erişim | Açıklama
 | ------------- | ---- | ---- | ---- | ---- | ---- 
@@ -47,7 +48,7 @@ Aşağıdaki tabloda yerleşik rollerin kısa açıklamaları verilmiştir. Azur
 
 ## <a name="custom-roles"></a>Özel roller
 
-Yerleşik rollerin hiçbiri özel ihtiyaçlarınızı karşılamıyorsa, API Management varlıkları için daha ayrıntılı erişim yönetimi sağlamak üzere özel roller oluşturulabilir. Örneğin, bir API Management hizmetine salt okuma erişimi olan, ancak yalnızca belirli bir API 'ye yazma erişimi olan özel bir rol oluşturabilirsiniz. Özel roller hakkında daha fazla bilgi edinmek için bkz. [Azure RBAC 'de özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
+Yerleşik rollerin hiçbiri özel ihtiyaçlarınızı karşılamıyorsa, API Management varlıkları için daha ayrıntılı erişim yönetimi sağlamak üzere özel roller oluşturulabilir. Örneğin, bir API Management hizmetine salt okuma erişimi olan, ancak yalnızca belirli bir API 'ye yazma erişimi olan özel bir rol oluşturabilirsiniz. Özel roller hakkında daha fazla bilgi edinmek için bkz. [Azure RBAC 'de özel roller](../role-based-access-control/custom-roles.md). 
 
 > [!NOTE]
 > Azure portal bir API Management örneğini görebilmek için, bir özel rol ```Microsoft.ApiManagement/service/read``` eylemi içermelidir.

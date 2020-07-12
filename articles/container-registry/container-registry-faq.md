@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390372"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247040"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -32,7 +32,7 @@ Evet. Kayıt defteri oluşturmak için kullanabileceğiniz [bir şablon](https:/
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 'deki görüntüleri taramak için güvenlik güvenlik açığı var mı?
 
-Evet. [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), [twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) ve [deniz mavisi](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)belgelerine bakın.
+Evet. [Azure Güvenlik Merkezi](../security-center/azure-container-registry-integration.md), [twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) ve [deniz mavisi](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)belgelerine bakın.
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Kubernetes Azure Container Registry yapılandırma Nasıl yaparım??
 
@@ -314,7 +314,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örneğin:
+1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örnek:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -427,7 +427,7 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Güvenlik Duvarı
+* Güvenlik duvarı
 * Ad engelleyiciler
 * DNS hataları
 
@@ -436,8 +436,8 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Neden çekme veya gönderim isteği izin verilmeyen işlemle başarısız oluyor?
 
 İşlemlere izin verilmeyen bazı senaryolar aşağıda verilmiştir:
-* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](https://aka.ms/acr/skus) yükseltin.
-* Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) komutunu kullanabilirsiniz.
+* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](https://aka.ms/acr/skus) yükseltin.
+* Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](./container-registry-image-lock.md) komutunu kullanabilirsiniz.
 * Görüntü karantinaya alındı ise bazı işlemlere izin verilmez. [Karantina](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)hakkında daha fazla bilgi edinin.
 * Kayıt defteriniz [depolama sınırına](container-registry-skus.md#service-tier-features-and-limits)ulaşmış olabilir.
 
@@ -449,7 +449,7 @@ Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım bel
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin:<https://docs.docker.com/docker-for-windows/#proxies>

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701209"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247430"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Yerel makine geliştirme kurulumundaki hizmetleri izleme ve tanılama
 > [!div class="op_single_selector"]
@@ -21,7 +22,7 @@ ms.locfileid: "84701209"
 Hizmetlerin Kullanıcı deneyimine en düşük kesintilerle devam etmesine izin vermek için izleme, algılama, tanılama ve sorun giderme. İzleme ve tanılama, gerçek dağıtılan bir üretim ortamında önemli olmakla birlikte, verimlilik, hizmet geliştirme sırasında, gerçek dünya kurulumuna geçtiğinizde çalışmasını sağlamak için benzer bir modeli benimsemeye bağlıdır. Service Fabric, Service Developers 'ın hem tek makineli yerel geliştirme kurulumları hem de gerçek dünya üretim kümesi kurulumları üzerinde sorunsuz bir şekilde çalışması için tanılamayı uygulamasını kolaylaştırır.
 
 ## <a name="event-tracing-for-windows"></a>Windows için olay Izleme
-[Windows Için olay izleme](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW), Service Fabric iletileri izlemek için önerilen teknolojiden sorumludur. ETW kullanmanın bazı avantajları şunlardır:
+[Windows Için olay izleme](/windows/win32/etw/event-tracing-portal) (ETW), Service Fabric iletileri izlemek için önerilen teknolojiden sorumludur. ETW kullanmanın bazı avantajları şunlardır:
 
 * **ETW hızlıdır.** Kod yürütme süreleri üzerinde en az etkiyle bir izleme teknolojisi olarak oluşturulmuştur.
 * **ETW izleme, yerel geliştirme ortamları ve ayrıca gerçek dünya kümesi kurulumları arasında sorunsuz çalışır.** Bu, kodunuzu gerçek bir kümeye dağıtmaya hazırsanız izleme kodunuzu yeniden yazmanız gerekmediği anlamına gelir.
@@ -55,6 +56,5 @@ Hizmet kodunuza özel ETW izleme ekledikten sonra, tanılama olayları görünt�
 ## <a name="next-steps"></a>Sonraki adımlar
 Yerel Tanılama için yukarıdaki uygulamanıza eklediğiniz izleme kodu, uygulamanızı bir Azure kümesinde çalıştırırken bu olayları görüntülemek için kullanabileceğiniz araçlarla birlikte çalışacaktır. Araçların farklı seçeneklerini tartışan bu makalelere göz atın ve bunları nasıl ayarlayabileceğini açıklayabiliriz.
 
-* [Azure Tanılama ile günlükleri toplama](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Azure Tanılama ile günlükleri toplama](./service-fabric-diagnostics-event-aggregation-wad.md)
 * [EventFlow kullanarak olay toplama ve toplama](service-fabric-diagnostics-event-aggregation-eventflow.md)
-

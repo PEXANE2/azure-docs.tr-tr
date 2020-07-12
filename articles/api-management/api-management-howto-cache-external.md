@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: f8ca0caedd438c4ce707a044bc7fa7dd035e8983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1f3d0fd0164a37c8011dc82a95337c89e103df
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203242"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250643"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Azure API Management dış Redsıs uyumlu bir önbellek kullanın
 
@@ -105,5 +105,5 @@ Azure API Management 'de dış önbellek yapılandırıldıktan sonra, önbelle�
 * Önbelleğe alma ilkeleri hakkında daha fazla bilgi için bkz. [API Management ilke başvurusu][API Management policy reference]’nda [Önbelleğe alma ilkeleri][Caching policies].
 * Anahtar kullanım ilkesi ifadeleri hakkında daha fazla bilgi için bkz. [Azure API Management’te özel önbelleğe alma](api-management-sample-cache-by-key.md).
 
-[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-caching-policies.md

@@ -3,25 +3,26 @@ title: Gelişmiş uygulama yükseltme konuları
 description: Bu makalede, Service Fabric uygulamasını yükseltmeyle ilgili bazı gelişmiş konular ele alınmaktadır.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263100"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248093"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Uygulama yükseltmesini Service Fabric: gelişmiş konular
 
 ## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Uygulama yükseltmesi sırasında hizmet türlerini ekleme veya kaldırma
 
-Bir yükseltmenin parçası olarak yayımlanmış bir uygulamaya yeni bir hizmet türü eklenirse, yeni hizmet türü dağıtılan uygulamaya eklenir. Bu tür bir yükseltme, uygulamanın zaten bir parçası olan hizmet örneklerinden hiçbirini etkilemez, ancak yeni hizmet türünün etkin olması için eklenen hizmet türünün bir örneğinin oluşturulması gerekir (bkz. [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
+Bir yükseltmenin parçası olarak yayımlanmış bir uygulamaya yeni bir hizmet türü eklenirse, yeni hizmet türü dağıtılan uygulamaya eklenir. Bu tür bir yükseltme, uygulamanın zaten bir parçası olan hizmet örneklerinden hiçbirini etkilemez, ancak yeni hizmet türünün etkin olması için eklenen hizmet türünün bir örneğinin oluşturulması gerekir (bkz. [New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
-Benzer şekilde, hizmet türleri bir yükseltmeden bir uygulamanın parçası olarak kaldırılabilir. Ancak, yükseltme işlemine devam etmeden önce, kaldırılacak olan hizmet türünün tüm hizmet örneklerinin kaldırılması gerekir (bkz. [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
+Benzer şekilde, hizmet türleri bir yükseltmeden bir uygulamanın parçası olarak kaldırılabilir. Ancak, yükseltme işlemine devam etmeden önce, kaldırılacak olan hizmet türünün tüm hizmet örneklerinin kaldırılması gerekir (bkz. [Remove-ServiceFabricService](/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Durum bilgisi olmayan hizmet planlanmış kapalı kalma süresi sırasında bağlantı kesintilerine
 
 Uygulama/küme yükseltme veya düğüm devre dışı bırakma gibi planlı durum bilgisi olmayan örnek için bağlantılar, kullanıma alındıktan sonra kaldırılan uç nokta kaldırılır ve bu da zorla bağlantı kapanışları elde edilir.
 
-Bu durumu önlemek için, hizmet yapılandırmasında bir *örnek kapatma gecikme süresi* ekleyerek, küme içinden mevcut isteklerin ortaya çıkarılan uç noktalar üzerinde boşalmasına izin vermek üzere, *requestdrenajı* özelliğini yapılandırın. Bu, örneği kapatmadan önce gecikmeden *önce* durum bilgisiz örneği tarafından tanıtılan uç nokta kaldırılarak gerçekleştirilir. Bu gecikme, örnek gerçekten kapatmadan önce mevcut isteklerin düzgün şekilde boşaltılabilmesini sağlar. İstemciler, gecikme süresini yeniden çözümleyebilmeleri ve örneğe yeni istekler gönderilmesini önlemek için gecikmeyi başlatma sırasında geri çağırma işlevi tarafından uç nokta değişikliği hakkında bilgilendirilir. Bu istekler, uç noktaları güncelleştirmek için [ters proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) kullanan istemcilerden veya bildirim modeliyle ([Servicenocertificate ationfilterdescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) hizmet uç noktası çözümleme API 'leri kullanılarak kaynak olabilir.
+Bu durumu önlemek için, hizmet yapılandırmasında bir *örnek kapatma gecikme süresi* ekleyerek, küme içinden mevcut isteklerin ortaya çıkarılan uç noktalar üzerinde boşalmasına izin vermek üzere, *requestdrenajı* özelliğini yapılandırın. Bu, örneği kapatmadan önce gecikmeden *önce* durum bilgisiz örneği tarafından tanıtılan uç nokta kaldırılarak gerçekleştirilir. Bu gecikme, örnek gerçekten kapatmadan önce mevcut isteklerin düzgün şekilde boşaltılabilmesini sağlar. İstemciler, gecikme süresini yeniden çözümleyebilmeleri ve örneğe yeni istekler gönderilmesini önlemek için gecikmeyi başlatma sırasında geri çağırma işlevi tarafından uç nokta değişikliği hakkında bilgilendirilir. Bu istekler, uç noktaları güncelleştirmek için [ters proxy](./service-fabric-reverseproxy.md) kullanan istemcilerden veya bildirim modeliyle ([Servicenocertificate ationfilterdescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) hizmet uç noktası çözümleme API 'leri kullanılarak kaynak olabilir.
 
 ### <a name="service-configuration"></a>Hizmet yapılandırması
 
@@ -76,7 +77,7 @@ Hizmet tarafında gecikmeyi yapılandırmanın birkaç yolu vardır.
 
 ### <a name="client-configuration"></a>İstemci yapılandırması
 
-Bir uç nokta değiştiğinde bildirim almak için, istemcilerin bir geri çağırma kaydetmesi için bkz. [Servicenocertificate Ationfilterdescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+Bir uç nokta değiştiğinde bildirim almak için, istemcilerin bir geri çağırma kaydetmesi için bkz. [Servicenocertificate Ationfilterdescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
 Değişiklik bildirimi, uç noktaların değiştiği bir göstergesidir, istemcinin uç noktaları yeniden çözümlemesi gerektiğini ve yakında tanıtılmayacak olan uç noktaları kullanmamalıdır.
 
 ### <a name="optional-upgrade-overrides"></a>İsteğe bağlı yükseltme geçersiz kılmaları
@@ -93,7 +94,7 @@ Geçersiz kılınan gecikme süresi yalnızca çağrılan yükseltme örneği i�
 
 > [!NOTE]
 > * İstekleri boşaltma ayarları, Azure Yük dengeleyicinin, boşaltma yapılmakta olan uç noktalara yeni istekler göndermesini engelleyemez.
-> * Şikayet tabanlı bir çözüm mekanizması, bir hatadan sonra bir hizmet çözümlemesini tetiklediği için isteklerin düzgün boşaltılmasına neden olmaz. Daha önce açıklandığı gibi, bu, bunun yerine [Servicenocertificate. Descfilterdescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)kullanılarak Endpoint değişiklik bildirimlerine abone olmak için geliştirilmiştir.
+> * Şikayet tabanlı bir çözüm mekanizması, bir hatadan sonra bir hizmet çözümlemesini tetiklediği için isteklerin düzgün boşaltılmasına neden olmaz. Daha önce açıklandığı gibi, bu, bunun yerine [Servicenocertificate. Descfilterdescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)kullanılarak Endpoint değişiklik bildirimlerine abone olmak için geliştirilmiştir.
 > * Yükseltme, bir saldırgan daha az bir değilse ayarlar dikkate alınmayabilir, yani çoğaltmalar yükseltme sırasında uygulanmaz.
 >
 >
@@ -113,7 +114,7 @@ Geçersiz kılınan gecikme süresi yalnızca çağrılan yükseltme örneği i�
 
 *İzlenen* modda, yükseltme ilerledikçe uygulamanın sağlıklı olduğundan emin olmak için Service Fabric sistem durumu ilkeleri uygular. Sistem durumu ilkeleri ihlal edilirse, yükseltme askıya alınır veya belirtilen *FailureAction*öğesine göre otomatik olarak geri alınır.
 
-*Monitortoredmanual* modunda, uygulama yöneticisinin yükseltmenin ilerleme durumu üzerinde toplam denetimi vardır. Bu mod, özel sistem durumu değerlendirme ilkeleri uygularken veya sistem durumu izlemeyi tamamen atlamak için geleneksel olmayan yükseltmeler gerçekleştirmeye çalışırken (örn. uygulama zaten veri kayboluyor) yararlıdır. Bu modda çalışan bir yükseltme, her bir UD tamamladıktan sonra askıya alınır ve [sürdürme-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)kullanılarak açık bir şekilde sürdürülmelidir. Bir yükseltme askıya alındığında ve Kullanıcı tarafından sürdürülmeye hazırsa, yükseltme durumu *Rollforwardpending* (bkz. [upgradestate](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)) olarak gösterilir.
+*Monitortoredmanual* modunda, uygulama yöneticisinin yükseltmenin ilerleme durumu üzerinde toplam denetimi vardır. Bu mod, özel sistem durumu değerlendirme ilkeleri uygularken veya sistem durumu izlemeyi tamamen atlamak için geleneksel olmayan yükseltmeler gerçekleştirmeye çalışırken (örn. uygulama zaten veri kayboluyor) yararlıdır. Bu modda çalışan bir yükseltme, her bir UD tamamladıktan sonra askıya alınır ve [sürdürme-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)kullanılarak açık bir şekilde sürdürülmelidir. Bir yükseltme askıya alındığında ve Kullanıcı tarafından sürdürülmeye hazırsa, yükseltme durumu *Rollforwardpending* (bkz. [upgradestate](/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)) olarak gösterilir.
 
 Son olarak, hiçbir Kullanıcı girişi gerekmediği ve hiçbir uygulama sistem durumu ilkesi değerlendirilmeden bu yana hizmet geliştirme veya test sırasında hızlı yükseltme yinelemeleri gerçekleştirmek için, *tasgeli olmayan* mod modu kullanışlıdır.
 
@@ -204,11 +205,11 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>Uygulama yükseltmelerini geri alma
 
-Yükseltmeler üç moddan birinde (*izlenen, izlenemez* *veya toplanmadan*) bir şekilde geri alınabilir, ancak bunlar yalnızca *depountoredauya* *ya da*izsiz *moddan geri* alınabilir. *Izizuntoredauto* modunun geri alınması aynı şekilde, varsayılan *yükseltilebilir Dereperepsetchecktimeout* değerinin farklı olduğu özel durum ile aynı şekilde çalışıyor-bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md). *İzleme* geri alma modunun geri alınması aynı şekilde çalışır. geri alma işlemi her bir ud tamamladıktan sonra askıya alınır ve geri alma işlemine devam etmek için [sürdürme-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) kullanılarak açık bir şekilde devam etmelidir.
+Yükseltmeler üç moddan birinde (*izlenen, izlenemez* *veya toplanmadan*) bir şekilde geri alınabilir, ancak bunlar yalnızca *depountoredauya* *ya da*izsiz *moddan geri* alınabilir. *Izizuntoredauto* modunun geri alınması aynı şekilde, varsayılan *yükseltilebilir Dereperepsetchecktimeout* değerinin farklı olduğu özel durum ile aynı şekilde çalışıyor-bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md). *İzleme* geri alma modunun geri alınması aynı şekilde çalışır. geri alma işlemi her bir ud tamamladıktan sonra askıya alınır ve geri alma işlemine devam etmek için [sürdürme-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) kullanılarak açık bir şekilde devam etmelidir.
 
-*Geri alma* *Işlemi bir FailureAction* ile *izlenen* moddaki bir yükseltmenin sistem durumu Ilkeleri Ihlal edildiğinde (bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md)) veya açık olarak [Start-servicefabricapplicationrollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps)kullanarak tetiklenebilir.
+*Geri alma* *Işlemi bir FailureAction* ile *izlenen* moddaki bir yükseltmenin sistem durumu Ilkeleri Ihlal edildiğinde (bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md)) veya açık olarak [Start-servicefabricapplicationrollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps)kullanarak tetiklenebilir.
 
-Geri alma sırasında, Upgrade *Dereperepdchecktimeout* ve modunun değeri [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)kullanılarak herhangi bir zamanda değiştirilebilir.
+Geri alma sırasında, Upgrade *Dereperepdchecktimeout* ve modunun değeri [Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)kullanılarak herhangi bir zamanda değiştirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Visual Studio 'Yu kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial.md) , Visual Studio kullanarak bir uygulama yükseltme işleminde size yol gösterir.

@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249385"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Hızlı başlangıç: Azure Application Gateway-Kaynak Yöneticisi şablonuyla doğrudan web trafiği
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Hızlı başlangıç: Azure Application Gateway ARM şablonuyla doğrudan web trafiği
 
-Bu hızlı başlangıçta bir Azure Application Gateway oluşturmak için Kaynak Yöneticisi şablonu kullanırsınız. Ardından, doğru çalıştığından emin olmak için uygulama ağ geçidini test edersiniz.
+Bu hızlı başlangıçta, bir Azure Application Gateway oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Ardından, doğru çalıştığından emin olmak için uygulama ağ geçidini test edersiniz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ Bu hızlı başlangıcı [Azure Portal](quick-create-portal.md), [Azure POWERSHE
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Kolaylık sağlaması için bu şablon, genel ön uç IP 'si olan basit bir kurulum ve uygulama ağ geçidinde tek bir siteyi barındırmak için temel bir dinleyici, temel bir istek yönlendirme kuralı ve arka uç havuzundaki iki sanal makine oluşturur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
-
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/ag-docs-qs/)
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
@@ -50,10 +52,9 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : sanal makineler için iki
 - [**Microsoft. COMPUTE/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : IIS ve Web sayfalarını yapılandırmak için
 
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
-
-Kaynak Yöneticisi şablonu Azure 'a dağıtma:
+ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon, IIS çalıştıran arka uç havuzunda bir uygulama ağ geçidi, ağ altyapısı ve iki sanal makine oluşturur.
 

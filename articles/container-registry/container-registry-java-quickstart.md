@@ -5,18 +5,18 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 561c45bd13648f5f17273b478f320e9fd3d71331
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 87a4741ea8a64445c10c73bb1204aef1a2fcfaaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857594"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248807"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Hızlı başlangıç: Java kapsayıcı görüntülerini derleyin ve Azure Container Registry gönderin
 
 Bu hızlı başlangıçta, kapsayıcılı bir Java uygulamasının nasıl oluşturulacağı ve Maven JIB eklentisini kullanarak Azure Container Registry nasıl göndergörüntüleneceği gösterilmektedir. Maven ve JIB kullanımı, bir Azure Container Registry ile etkileşim kurmak için geliştirici araçları kullanmanın bir örneğidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği; henüz Azure aboneliğiniz yoksa [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz Azure hesabı](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
 * [Azure Komut Satırı Arabirimi (CLI)](/cli/azure/overview).
@@ -72,7 +72,7 @@ Ardından, aşağıdaki adımları kullanarak bir Azure Kaynak grubu ve ACR 'niz
    az account set -s <subscription ID>
    ```
 
-1. Bu öğreticide kullanılacak Azure kaynakları için bir kaynak grubu oluşturun. Aşağıdaki komutta, yer tutucuları kendi kaynak adınızla ve gibi bir konum ile değiştirdiğinizden emin olun `eastus`.
+1. Bu öğreticide kullanılacak Azure kaynakları için bir kaynak grubu oluşturun. Aşağıdaki komutta, yer tutucuları kendi kaynak adınızla ve gibi bir konum ile değiştirdiğinizden emin olun `eastus` .
 
    ```azurecli
    az group create \
@@ -104,11 +104,11 @@ Son olarak, proje yapılandırmanızı güncelleyebilir ve görüntünüzü derl
    az acr login
    ```
 
-   Komut `az configure` , `az acr` komutlarla kullanılacak varsayılan kayıt defteri adını ayarlar.
+   `az configure`Komut, komutlarla kullanılacak varsayılan kayıt defteri adını ayarlar `az acr` .
 
 1. Spring Boot uygulamanızın tamamlanmış proje dizinine (örneğin, "*C:\SpringBoot\gs-spring-boot-docker\complete*" veya "*/users/robert/SpringBoot/gs-spring-boot-docker/complete*") gidin ve *pom.xml* dosyasını metin düzenleyicide açın.
 
-1. `<properties>` *Pod. xml* dosyasındaki koleksiyonu aşağıdaki XML ile güncelleştirin. Yer tutucuyu kayıt defteri adınızla değiştirin ve değeri `<jib-maven-plugin.version>` `2.2.0`ile bir özellik veya [JIB-Maven-Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)' in daha yeni bir sürümünü ekleyin.
+1. `<properties>` *pom.xml* DOSYASıNDAKI koleksiyonu aşağıdaki XML ile güncelleştirin. Yer tutucuyu kayıt defteri adınızla değiştirin ve `<jib-maven-plugin.version>` değeri ile bir özellik `2.2.0` veya [JIB-Maven-Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)' in daha yeni bir sürümünü ekleyin.
 
    ```xml
    <properties>
@@ -118,7 +118,7 @@ Son olarak, proje yapılandırmanızı güncelleyebilir ve görüntünüzü derl
    </properties>
    ```
 
-1. Aşağıdaki örnekte `<plugins>` gösterildiği gibi, *Pok. xml* dosyasındaki koleksiyonu, `<plugin>` öğesi için `jib-maven-plugin`ve girdisi olacak şekilde güncelleştirin. Azure için resmi `mcr.microsoft.com/java/jdk:8-zulu-alpine`olarak desteklenen bir JDK içeren Microsoft Container Registry (MCR) ' den bir temel görüntü kullandığınızı unutmayın. Resmi olarak desteklenen JDKs 'e sahip diğer MCR temel görüntüleri için bkz. [Java ve JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java, JRE](https://hub.docker.com/_/microsoft-java-jre), [Java, gözetimsiz JRE](https://hub.docker.com/_/microsoft-java-jre-headless)ve [Java, JDK ve Maven](https://hub.docker.com/_/microsoft-java-maven).
+1. `<plugins>`Aşağıdaki örnekte gösterildiği gibi, *pom.xml* dosyasındaki koleksiyonu, `<plugin>` öğesinin öğesini içermesi ve için girişi olacak şekilde güncelleştirin `jib-maven-plugin` . `mcr.microsoft.com/java/jdk:8-zulu-alpine`Azure için resmi olarak desteklenen BIR JDK Içeren Microsoft Container Registry (MCR) ' den bir temel görüntü kullandığınızı unutmayın. Resmi olarak desteklenen JDKs 'e sahip diğer MCR temel görüntüleri için bkz. [Java ve JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java, JRE](https://hub.docker.com/_/microsoft-java-jre), [Java, gözetimsiz JRE](https://hub.docker.com/_/microsoft-java-jre-headless)ve [Java, JDK ve Maven](https://hub.docker.com/_/microsoft-java-maven).
 
    ```xml
    <plugin>
@@ -144,7 +144,7 @@ Son olarak, proje yapılandırmanızı güncelleyebilir ve görüntünüzü derl
 
 > [!NOTE]
 >
-> Güvenlik nedenleriyle, tarafından `az acr login` oluşturulan kimlik bilgileri yalnızca 1 saat için geçerlidir. *401 Yetkisiz* bir hata alırsanız, yeniden kimlik doğrulaması yapmak için `az acr login -n <your registry name>` komutu tekrar çalıştırabilirsiniz.
+> Güvenlik nedenleriyle, tarafından oluşturulan kimlik bilgileri `az acr login` yalnızca 1 saat için geçerlidir. *401 Yetkisiz* bir hata alırsanız, `az acr login -n <your registry name>` yeniden kimlik doğrulaması yapmak için komutu tekrar çalıştırabilirsiniz.
 
 ## <a name="verify-your-container-image"></a>Kapsayıcı görüntünüzü doğrulama
 
@@ -177,4 +177,4 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Docker üzerinde Spring Boot'u Kullanmaya Başlama](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
 * [Azure App Service’e Spring Boot Uygulaması Dağıtma](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
-* [Linux üzerinde Azure Web App’e yönelik özel Docker görüntüsü kullanma](/azure/app-service-web/app-service-linux-using-custom-docker-image)
+* [Linux üzerinde Azure Web App’e yönelik özel Docker görüntüsü kullanma](../app-service/containers/tutorial-custom-docker-image.md)

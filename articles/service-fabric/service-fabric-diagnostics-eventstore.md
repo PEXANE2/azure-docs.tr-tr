@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645744"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247651"
 ---
 # <a name="eventstore-overview"></a>EventStore 'A genel bakış
 
@@ -45,7 +46,7 @@ Olayınızda her varlık ve varlık türü için kullanılabilen olaylar için E
 * Bölüm çoğaltmaları: belirtilen belirli bir bölüm içindeki tüm çoğaltmalardan/örneklerden alınan olaylar`partitionId`
 * Bölüm çoğaltma: ve tarafından tanımlanan belirli bir çoğaltma/örnek olayları `replicaId``partitionId`
 
-API hakkında daha fazla bilgi edinmek için [Eventstore API başvurusunu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)inceleyin.
+API hakkında daha fazla bilgi edinmek için [Eventstore API başvurusunu](/rest/api/servicefabric/sfclient-index-eventsstore)inceleyin.
 
 EventStore hizmeti Ayrıca kümenizdeki olayları ilişkilendirebilme özelliğine sahiptir. Aynı anda birbirini etkilemiş olabilecek farklı varlıklardan yazılmış olaylara bakarak, EventStore hizmeti bu olayları, kümenizdeki etkinliklerin nedenlerini tanımlamaya yardımcı olmak için bağlayabilir. Örneğin, uygulamalarınızdan biri herhangi bir değişiklik yapılmadan sağlıksız hale gelirse, EventStore Ayrıca platform tarafından kullanıma sunulan diğer olaylara de bakar ve bunu bir veya olayı ile ilişkilendirilecektir `Error` `Warning` . Bu, daha hızlı hata algılama ve kök nedenler analizine yardımcı olur.
 
@@ -125,5 +126,5 @@ Azure kümeniz sürüm 6,5 veya üzeri bir sürüme yükseltilirse, EventStore o
 * [Azure Service Fabric kümelerinde EventStore API 'Lerini kullanarak](service-fabric-diagnostics-eventstore-query.md) EVENTSTORE API 'si ile çalışmaya başlama
 * EventStore- [Service Fabric olayları](service-fabric-diagnostics-event-generation-operational.md) tarafından sunulan olayların listesi hakkında daha fazla bilgi edinin
 * [Service Fabric için Service Fabric izleme ve tanılama](service-fabric-diagnostics-overview.md) 'da izleme ve tanılama 'ya genel bakış
-* API çağrılarının tam listesini görüntüleyin- [Eventstore REST API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* API çağrılarının tam listesini görüntüleyin- [Eventstore REST API başvurusu](/rest/api/servicefabric/sfclient-index-eventsstore)
 * Küme [ve platformu](service-fabric-diagnostics-event-generation-infra.md)izleme hakkında daha fazla bilgi edinin.

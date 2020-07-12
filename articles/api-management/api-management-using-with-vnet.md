@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7323793dcbbd05fc5abf032d140b2caa5975da4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674287"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249470"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -31,7 +32,7 @@ Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -70,7 +71,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     > [!IMPORTANT]
     > Bir Azure API Management örneğini bir Kaynak Yöneticisi VNET 'e dağıttığınızda, hizmet Azure API Management örnekleri dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olmalıdır. Azure API Management örneğini diğer kaynakları içeren bir Kaynak Yöneticisi VNET alt ağına dağıtmaya yönelik bir girişim yapılırsa, dağıtım başarısız olur.
 
-    Ardından **Uygula**'yı seçin. API Management örneğinizin **sanal ağ** sayfası, yeni sanal ağ ve alt ağ seçimlerinizle güncelleştirilir.
+    Sonra **Uygula**'yı seçin. API Management örneğinizin **sanal ağ** sayfası, yeni sanal ağ ve alt ağ seçimlerinizle güncelleştirilir.
 
     ![VPN seçin][api-management-setup-vpn-select]
 
@@ -102,7 +103,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 * **Özel DNS sunucusu kurulumu**: API Management hizmeti, birkaç Azure hizmetine bağlıdır. API Management, özel bir DNS sunucusu olan bir VNET 'te barındırılıyorsa, bu Azure hizmetlerinin ana bilgisayar adlarını çözmesi gerekir. Lütfen özel DNS kurulumu için [Bu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) yönergeleri izleyin. Başvuru için aşağıdaki bağlantı noktaları tablosuna ve diğer ağ gereksinimlerine bakın.
 
 > [!IMPORTANT]
-> VNET için özel bir DNS sunucusu kullanmayı planlıyorsanız, API Management bir hizmeti dağıtmaya **başlamadan önce** onu ayarlamanız gerekir. Aksi takdirde, [ağ yapılandırmasını Uygula işlemini](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates) çalıştırarak DNS sunucusunu her değiştirişinizde API Management hizmetini güncelleştirmeniz gerekir
+> VNET için özel bir DNS sunucusu kullanmayı planlıyorsanız, API Management bir hizmeti dağıtmaya **başlamadan önce** onu ayarlamanız gerekir. Aksi takdirde, [ağ yapılandırmasını Uygula işlemini](/rest/api/apimanagement/2019-12-01/apimanagementservice/applynetworkconfigurationupdates) çalıştırarak DNS sunucusunu her değiştirişinizde API Management hizmetini güncelleştirmeniz gerekir
 
 * **API Management için gereken bağlantı noktaları**: gelen ve giden trafik, API Management dağıtıldığı alt ağa [ağ güvenlik grubu][Network Security Group]kullanılarak denetlenebilir. Bu bağlantı noktalarından herhangi biri kullanılamıyorsa API Management düzgün çalışmayabilir ve erişilemez hale gelebilir. Bu bağlantı noktalarından biri veya daha fazlası engelleniyorsa, VNET ile API Management kullanırken başka bir yaygın yanlış yapılandırma sorunu vardır.
 
@@ -137,7 +138,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Genel      | <ul><li>gcs.prod.monitoring.core.windows.net (**Yeni**)</li><li>prod.warmpath.msftcloudes.com (**kullanım dışı**)</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3-black.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-red.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3-red.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
     | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > DNS bölgesi **. nsatc.net** to **. microsoftmetrics.com** ile yukarıdaki kümelerin DEĞIŞIKLIĞI, genellikle bir DNS değişiklidir. Kümenin IP adresi değişmeyecektir.
@@ -173,7 +174,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
   > [!IMPORTANT]
   > Bağlantıyı doğruladıktan sonra, alt ağa API Management dağıtılmadan önce alt ağda dağıtılan tüm kaynakları kaldırdığınızdan emin olun.
 
-* **Artımlı güncelleştirmeler**: ağınızda değişiklik yaparken, API Management hizmetinin bağlı olduğu kritik kaynaklara erişimi kaybetmediğinden emin olmak Için [networkstatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)'sine bakın. Bağlantı durumu 15 dakikada bir güncelleştirilir.
+* **Artımlı güncelleştirmeler**: ağınızda değişiklik yaparken, API Management hizmetinin bağlı olduğu kritik kaynaklara erişimi kaybetmediğinden emin olmak Için [networkstatus API](/rest/api/apimanagement/2019-12-01/networkstatus)'sine bakın. Bağlantı durumu 15 dakikada bir güncelleştirilir.
 
 * **Kaynak Gezinti bağlantıları**: Kaynak Yöneticisi Style VNET alt ağına dağıtım yaparken, API Management bir kaynak gezinti bağlantısı oluşturarak alt ağı ayırır. Alt ağ, farklı bir sağlayıcıdan bir kaynağı zaten içeriyorsa, dağıtım **başarısız**olur. Benzer şekilde, bir API Management hizmetini farklı bir alt ağa taşıdığınızda veya sildiğinizde, bu kaynak gezinti bağlantısını kaldıracağız.
 
@@ -202,7 +203,7 @@ Her ek ölçek birimi API Management için iki IP adresi gerekir.
 
 IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin verilmesi durumunda **genel** Ile işaretlenen IP adresinin, **bölgeye** özgü IP adresiyle birlikte beyaz listelenmesi gerekir.
 
-| **Azure ortamı**|   **Geli**|  **IP adresi**|
+| **Azure ortamı**|   **Bölge**|  **IP address**|
 |-----------------|-------------------------|---------------|
 | Azure Genel| Orta Güney ABD (genel)| 104.214.19.224|
 | Azure Genel| Orta Kuzey ABD (genel)| 52.162.110.80|
@@ -214,22 +215,22 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Güney Birleşik Krallık| 51.145.56.125|
 | Azure Genel| Batı Hindistan| 40.81.89.24|
 | Azure Genel| Doğu ABD| 52.224.186.99|
-| Azure Genel| Batı Avrupa| 51.145.179.78|
+| Azure Genel| West Europe| 51.145.179.78|
 | Azure Genel| Doğu Japonya| 52.140.238.179|
 | Azure Genel| Orta Fransa| 40.66.60.111|
 | Azure Genel| Doğu Kanada| 52.139.80.117|
 | Azure Genel| BAE Kuzey| 20.46.144.85|
-| Azure Genel| Güney Brezilya| 191.233.24.179|
+| Azure Genel| Brezilya Güney| 191.233.24.179|
 | Azure Genel| Güneydoğu Asya| 40.90.185.46|
 | Azure Genel| Güney Afrika Kuzey| 102.133.130.197|
 | Azure Genel| Orta Kanada| 52.139.20.34|
 | Azure Genel| Güney Kore - Güney| 40.80.232.185|
 | Azure Genel| Orta Hindistan| 13.71.49.1|
 | Azure Genel| Batı ABD| 13.64.39.16|
-| Azure Genel| Güneydoğu Avustralya| 20.40.160.107|
+| Azure Genel| Avustralya Güneydoğu| 20.40.160.107|
 | Azure Genel| Orta Avustralya| 20.37.52.67|
 | Azure Genel| Güney Hindistan| 20.44.33.246|
-| Azure Genel| Orta ABD| 13.86.102.66|
+| Azure Genel| Central US| 13.86.102.66|
 | Azure Genel| Doğu Avustralya| 20.40.125.155|
 | Azure Genel| Batı ABD 2| 51.143.127.203|
 | Azure Genel| EUAP Doğu ABD 2| 52.253.229.253|
@@ -248,12 +249,12 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Almanya Kuzey| 51.116.0.0|
 | Azure Genel| Norveç Doğu| 51.120.2.185|
 | Azure Genel| Norveç Batı| 51.120.130.134|
-| Azure China 21Vianet| Çin Kuzey (genel)| 139.217.51.16|
-| Azure China 21Vianet| Çin Doğu (genel)| 139.217.171.176|
-| Azure China 21Vianet| Kuzey Çin| 40.125.137.220|
-| Azure China 21Vianet| Doğu Çin| 40.126.120.30|
-| Azure China 21Vianet| Çin Kuzey 2| 40.73.41.178|
-| Azure China 21Vianet| Çin Doğu 2| 40.73.104.4|
+| Azure Çin 21Vianet| Çin Kuzey (genel)| 139.217.51.16|
+| Azure Çin 21Vianet| Çin Doğu (genel)| 139.217.171.176|
+| Azure Çin 21Vianet| Kuzey Çin| 40.125.137.220|
+| Azure Çin 21Vianet| Doğu Çin| 40.126.120.30|
+| Azure Çin 21Vianet| Çin Kuzey 2| 40.73.41.178|
+| Azure Çin 21Vianet| Çin Doğu 2| 40.73.104.4|
 | Azure Kamu| USGov Virginia (genel)| 52.127.42.160|
 | Azure Kamu| USGov Texas (genel)| 52.127.34.192|
 | Azure Kamu| USGov Virginia| 52.227.222.92|

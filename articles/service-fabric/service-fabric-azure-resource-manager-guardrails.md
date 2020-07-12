@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1499c57ead28bfcee90a2f224ef9c3bb1d7f58
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602712"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247833"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrayları 
 Bir Service Fabric kümesi dağıtımında, guardrayları yerinde konur, bu da geçersiz bir küme yapılandırması durumunda Azure Resource Manager dağıtımı başarısız olur. Aşağıdaki bölümler, yaygın küme yapılandırma sorunlarına ve bu sorunları azaltmak için gereken adımlara genel bir bakış sağlar. 
@@ -68,7 +68,7 @@ Yukarıdaki hata iletilerinin herhangi biri tarafından belirtilen bir dayanıkl
 
 ## <a name="seed-node-deletion"></a>Çekirdek düğüm silme 
 ### <a name="overview"></a>Genel Bakış
-Service Fabric kümenin, kümenin birincil düğüm türünde çalışan sistem hizmetleri çoğaltmaları sayısını belirlemede kullanılan bir [güvenilirlik katmanı](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) özelliği vardır. Gerekli çoğaltmaların sayısı, kümenin birincil düğüm türünde tutulması gereken düğüm sayısı alt sınırını belirleyecek. Birincil düğüm türündeki düğümlerin sayısı güvenilirlik katmanı için gerekli en düşük değerin altına gittiğinde, küme kararsız hale gelir.  
+Service Fabric kümenin, kümenin birincil düğüm türünde çalışan sistem hizmetleri çoğaltmaları sayısını belirlemede kullanılan bir [güvenilirlik katmanı](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) özelliği vardır. Gerekli çoğaltmaların sayısı, kümenin birincil düğüm türünde tutulması gereken düğüm sayısı alt sınırını belirleyecek. Birincil düğüm türündeki düğümlerin sayısı güvenilirlik katmanı için gerekli en düşük değerin altına gittiğinde, küme kararsız hale gelir.  
 
 ### <a name="error-messages"></a>Hata iletileri 
 Çekirdek düğüm kaldırma işlemi algılandı ve reddedilecek. 
@@ -79,7 +79,7 @@ Service Fabric kümenin, kümenin birincil düğüm türünde çalışan sistem 
 Birincil düğüm türü, kümenizde belirtilen güvenilirlik için yeterli sanal makineye sahip olduğundan emin olun. Sanal makine ölçek kümesini, belirtilen güvenilirlik katmanı için en az sayıda düğüm altına getirecek şekilde bir sanal makineyi kaldıracaksınız.
 * Güvenilirlik katmanı doğru şekilde belirtilmişse, güvenilirlik katmanı için gereken birincil düğüm türünde yeterli düğüme sahip olduğunuzdan emin olun. 
 * Güvenilirlik katmanı yanlış ise, herhangi bir sanal makine ölçek kümesi işlemini başlatmadan önce güvenilirlik düzeyini düşürmek için Service Fabric kaynağında bir değişiklik başlatın ve bunun tamamlanmasını bekleyin.
-* Güvenilirlik katmanı bronz ise, lütfen kümenizdeki ölçeği dikkatlice ölçeklendirmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) izleyin.
+* Güvenilirlik katmanı bronz ise, lütfen kümenizdeki ölçeği dikkatlice ölçeklendirmek için aşağıdaki [adımları](./service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * VM 'lerde veya Windows Server çalıştıran bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)

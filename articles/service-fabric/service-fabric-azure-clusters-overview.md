@@ -7,11 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbe64bdcbff5592d271c773eff1d5c99c585fcd7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234685"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248025"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 'da Service Fabric kümelerine genel bakış
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makineye veya VM 'ye küme düğümü denir. Kümeler, binlerce düğüme ölçeklendirebilir. Kümeye yeni düğümler eklerseniz, hizmet bölümü çoğaltmaları ve örneklerinin artan düğüm sayısı genelinde yeniden dengelenmesi Service Fabric. Genel uygulama performansı, bellek düşüşlerine erişim için gelişir ve çekişmeyi geliştirir. Kümedeki düğümler verimli bir şekilde kullanılmıyorsa, kümedeki düğümlerin sayısını azaltabilirsiniz. Service Fabric, her düğümdeki donanımın daha iyi kullanılmasını sağlamak için bölüm çoğaltmalarını ve örnekleri, azaltılmış düğüm sayısı genelinde yeniden dengeler.
@@ -30,14 +31,14 @@ Azure 'daki bir Service Fabric kümesi, diğer Azure kaynaklarıyla birlikte kul
 ![Service Fabric kümesi][Image]
 
 ### <a name="virtual-machine"></a>Sanal makine
-Bir kümenin parçası olan bir [sanal makine](/azure/virtual-machines/) , teknik olarak bir küme düğümü olan bir Service Fabric çalışma zamanı işlemidir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin [yerleştirme özellikleri](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)gibi özellikleri vardır. Her makine veya VM, önyükleme zamanında çalışmaya başlayan *FabricHost.exe*bir otomatik başlatma hizmetine sahiptir ve sonra düğümü oluşturan *Fabric.exe* ve *FabricGateway.exe*iki yürütülebilir dosya başlatır. Bir üretim dağıtımı, fiziksel veya sanal makine başına bir düğümdür. Test senaryoları için birden fazla *Fabric.exe* ve *FabricGateway.exe*birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz.
+Bir kümenin parçası olan bir [sanal makine](../virtual-machines/index.yml) , teknik olarak bir küme düğümü olan bir Service Fabric çalışma zamanı işlemidir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin [yerleştirme özellikleri](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)gibi özellikleri vardır. Her makine veya VM, önyükleme zamanında çalışmaya başlayan *FabricHost.exe*bir otomatik başlatma hizmetine sahiptir ve sonra düğümü oluşturan *Fabric.exe* ve *FabricGateway.exe*iki yürütülebilir dosya başlatır. Bir üretim dağıtımı, fiziksel veya sanal makine başına bir düğümdür. Test senaryoları için birden fazla *Fabric.exe* ve *FabricGateway.exe*birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz.
 
 Her VM bir sanal ağ arabirim kartı (NIC) ile ilişkilendirilir ve her NIC 'e özel bir IP adresi atanır.  Bir VM, NIC üzerinden bir sanal ağa ve yerel dengeleyiciye atanır.
 
 Bir kümedeki tüm VM 'Ler bir sanal ağa yerleştirilir.  Aynı düğüm türü/ölçek kümesindeki tüm düğümler sanal ağ üzerinde aynı alt ağa yerleştirilir.  Bu düğümler yalnızca özel IP adreslerine sahiptir ve sanal ağ dışında doğrudan adreslenebilir değildir.  İstemciler, Azure yük dengeleyici üzerinden düğümlerdeki hizmetlere erişebilir.
 
 ### <a name="scale-setnode-type"></a>Ölçek kümesi/düğüm türü
-Bir küme oluşturduğunuzda bir veya daha fazla düğüm türü tanımlarsınız.  Düğüm türündeki düğümler veya VM 'Ler, CPU sayısı, bellek, disk sayısı ve disk g/ç gibi aynı boyut ve özelliklere sahiptir.  Örneğin, bir düğüm türü, internet 'e açık bağlantı noktaları olan küçük, ön uç VM 'Ler için, başka bir düğüm türü ise verileri işleyen büyük, arka uç VM 'Ler için olabilir. Azure kümelerinde, her düğüm türü bir [sanal makine ölçek kümesi](/azure/virtual-machine-scale-sets/)ile eşlenir.
+Bir küme oluşturduğunuzda bir veya daha fazla düğüm türü tanımlarsınız.  Düğüm türündeki düğümler veya VM 'Ler, CPU sayısı, bellek, disk sayısı ve disk g/ç gibi aynı boyut ve özelliklere sahiptir.  Örneğin, bir düğüm türü, internet 'e açık bağlantı noktaları olan küçük, ön uç VM 'Ler için, başka bir düğüm türü ise verileri işleyen büyük, arka uç VM 'Ler için olabilir. Azure kümelerinde, her düğüm türü bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/index.yml)ile eşlenir.
 
 Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Azure Service Fabric kümesinde tanımladığınız her düğüm türü ayrı bir ölçek kümesi ayarlar. Service Fabric Runtime, Azure VM uzantıları kullanılarak ölçek kümesindeki her bir sanal makineye önyüklendi. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz. Ölçek kümesinde beş [yükseltme etki alanı](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) ve beş [hata etki alanı](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) bulunur ve en fazla 100 VM olabilir.  Birden fazla ölçek kümesi/düğüm türü oluşturarak 100 ' den fazla düğüm kümesi oluşturabilirsiniz.
 
@@ -47,12 +48,12 @@ Bir küme oluşturduğunuzda bir veya daha fazla düğüm türü tanımlarsını
 Daha fazla bilgi için [Service Fabric düğüm türlerini ve sanal makine ölçek kümelerini](service-fabric-cluster-nodetypes.md)okuyun.
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM örnekleri, bir [genel IP adresi](../virtual-network/public-ip-addresses.md) ve DNS etiketiyle Ilişkilendirilen bir [Azure Yük dengeleyicinin](/azure/load-balancer/load-balancer-overview)arkasına birleştirilir.  * &lt; Clustername &gt; *, DNS adı, clustername olan bir küme sağladığınızda * &lt; &gt; . &lt; Location &gt; . cloudapp.Azure.com* , ölçek kümesinin önünde yük dengeleyici Ile ilişkili DNS etiketidir.
+VM örnekleri, bir [genel IP adresi](../virtual-network/public-ip-addresses.md) ve DNS etiketiyle Ilişkilendirilen bir [Azure Yük dengeleyicinin](../load-balancer/load-balancer-overview.md)arkasına birleştirilir.  * &lt; Clustername &gt; *, DNS adı, clustername olan bir küme sağladığınızda * &lt; &gt; . &lt; Location &gt; . cloudapp.Azure.com* , ölçek kümesinin önünde yük dengeleyici Ile ilişkili DNS etiketidir.
 
 Bir kümedeki sanal makinelerin yalnızca [özel IP adresleri](../virtual-network/private-ip-addresses.md)vardır.  Yönetim trafiği ve hizmet trafiği, herkese açık yük dengeleyici aracılığıyla yönlendirilir.  Ağ trafiği bu makinelere NAT kuralları aracılığıyla yönlendirilir (istemciler belirli düğümlere/örneklere bağlanır) veya yük dengeleme kurallarına (trafik, VM 'Lerin hepsini bir kez deneme) gider.  Yük dengeleyici, DNS adı şu biçimde olan ilişkili bir genel IP 'ye sahiptir: * &lt; clustername &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Genel IP, kaynak grubundaki başka bir Azure kaynağıdır.  Bir kümede birden çok düğüm türü tanımlarsanız, her düğüm türü/ölçek kümesi için bir yük dengeleyici oluşturulur. Veya, birden çok düğüm türü için tek bir yük dengeleyici ayarlayabilirsiniz.  Birincil düğüm türü, clustername DNS etiketine sahiptir * &lt; &gt; . &lt; Location &gt; . cloudapp.Azure.com*, diğer düğüm türlerinde ise DNS etiketi * &lt; clustername &gt; - &lt; NodeType vardır &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Depolama hesapları
-Her küme düğümü türü, bir [Azure depolama hesabı](/azure/storage/common/storage-introduction) ve yönetilen diskler tarafından desteklenir.
+Her küme düğümü türü, bir [Azure depolama hesabı](../storage/common/storage-introduction.md) ve yönetilen diskler tarafından desteklenir.
 
 ## <a name="cluster-security"></a>Küme güvenliği
 Service Fabric kümesi sahip olduğunuz bir kaynaktır.  Yetkisiz kullanıcıların bunlara bağlanmasını önlemeye yardımcı olmak için kümelerinizin güvenliğini sağlamak sizin sorumluluğunuzdadır. Küme üzerinde üretim iş yüklerini çalıştırırken güvenli bir küme özellikle önemlidir. 
@@ -70,7 +71,7 @@ Daha fazla bilgi için [düğümden düğüme güvenliği](service-fabric-cluste
 Daha fazla bilgi için [istemciden düğüme güvenliği](service-fabric-cluster-security.md#client-to-node-security) okuyun
 
 ### <a name="role-based-access-control"></a>Rol Tabanlı Access Control
-Rol tabanlı Access Control (RBAC), Azure kaynaklarına ayrıntılı erişim denetimleri atamanıza olanak tanır.  Abonelikler, kaynak grupları ve kaynaklara farklı erişim kuralları atayabilirsiniz.  RBAC kuralları, daha düşük bir düzeyde geçersiz kılınmadıkça kaynak hiyerarşisi üzerinde devralınır.  Belirlenen Kullanıcı ve grupların kümenizi değiştirebilmeleri için, AAD 'nize hiçbir Kullanıcı veya kullanıcı grubunu RBAC kuralları ile atayabilirsiniz.  Daha fazla bilgi için [Azure RBAC genel bakış](/azure/role-based-access-control/overview)makalesini okuyun.
+Rol tabanlı Access Control (RBAC), Azure kaynaklarına ayrıntılı erişim denetimleri atamanıza olanak tanır.  Abonelikler, kaynak grupları ve kaynaklara farklı erişim kuralları atayabilirsiniz.  RBAC kuralları, daha düşük bir düzeyde geçersiz kılınmadıkça kaynak hiyerarşisi üzerinde devralınır.  Belirlenen Kullanıcı ve grupların kümenizi değiştirebilmeleri için, AAD 'nize hiçbir Kullanıcı veya kullanıcı grubunu RBAC kuralları ile atayabilirsiniz.  Daha fazla bilgi için [Azure RBAC genel bakış](../role-based-access-control/overview.md)makalesini okuyun.
 
 Service Fabric Ayrıca, farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlamak üzere erişim denetimini destekler. Bu, kümenin daha güvenli olmasına yardımcı olur. Bir kümeye bağlanan istemciler için iki erişim denetimi türü desteklenir: yönetici rolü ve Kullanıcı rolü.  
 
@@ -79,7 +80,7 @@ Daha fazla bilgi için [Service Fabric rol tabanlı Access Control (RBAC)](servi
 ### <a name="network-security-groups"></a>Ağ güvenlik grupları 
 Ağ güvenlik grupları (NSG 'ler) bir alt ağın, VM 'nin veya belirli bir NIC 'nin gelen ve giden trafiği denetler.  Varsayılan olarak, aynı sanal ağa birden fazla VM yerleştiriyorsa, herhangi bir bağlantı noktası üzerinden birbirleriyle iletişim kurabilir.  Makineler arasındaki iletişimleri kısıtlamak istiyorsanız, ağ kesimine veya VM 'Leri birbirinden ayırmak için NSG 'Ler tanımlayabilirsiniz.  Bir kümede birden çok düğüm türüne sahipseniz, farklı düğüm türlerine ait makinelerin birbirleriyle iletişim kurmasını engellemek için alt ağlara NSG 'ler uygulayabilirsiniz.  
 
-Daha fazla bilgi için [güvenlik grupları](/azure/virtual-network/security-overview) hakkında bilgi edinin
+Daha fazla bilgi için [güvenlik grupları](../virtual-network/security-overview.md) hakkında bilgi edinin
 
 ## <a name="scaling"></a>Ölçeklendirme
 
@@ -105,7 +106,7 @@ Bu işletim sistemlerini çalıştıran sanal makinelerde kümeler oluşturabili
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
 
-Daha fazla bilgi için bkz. [Azure 'Da desteklenen küme sürümleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems)
+Daha fazla bilgi için bkz. [Azure 'Da desteklenen küme sürümleri](./service-fabric-versions.md#supported-operating-systems)
 
 > [!NOTE]
 > Windows Server 1709 ' de Service Fabric dağıtmaya karar verirseniz, (1) uzun süreli bakım dalı olmadığından, daha sonra sürümleri taşımanız gerekebilir ve (2) kapsayıcıları dağıtırsanız, Windows Server 2016 ' de oluşturulan kapsayıcılar Windows Server 1709 üzerinde çalışmaz ve tam tersi (bunları dağıtmak için yeniden oluşturmanız gerekir).

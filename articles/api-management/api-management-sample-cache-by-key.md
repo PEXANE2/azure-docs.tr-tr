@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60780830"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249725"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API Management'ta özel önbelleğe alma
-Azure API Management hizmetinde, anahtar olarak kaynak URL 'SI kullanılarak [http yanıtı önbelleğe alma](api-management-howto-cache.md) için yerleşik destek bulunur. Anahtar, özellikler kullanılarak istek üstbilgileri tarafından değiştirilebilir `vary-by` . Bu, tüm HTTP yanıtlarının (diğer adıyla gösterimler) önbelleğe alınması için yararlıdır, ancak bazen bir gösterimin bir bölümünü önbelleğe almak için yararlıdır. Yeni [önbellek-arama-değer](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) ve [önbellek-depolama-değer](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) ilkeleri, ilke tanımlarından rastgele veri parçalarını depolama ve alma olanağı sağlar. Artık dış hizmetlerden gelen yanıtları önbelleğe sunabileceğinden, bu özellik önceden tanıtılan [gönderme isteği](/azure/api-management/api-management-advanced-policies#SendRequest) ilkesine değer de ekler.
+Azure API Management hizmetinde, anahtar olarak kaynak URL 'SI kullanılarak [http yanıtı önbelleğe alma](api-management-howto-cache.md) için yerleşik destek bulunur. Anahtar, özellikler kullanılarak istek üstbilgileri tarafından değiştirilebilir `vary-by` . Bu, tüm HTTP yanıtlarının (diğer adıyla gösterimler) önbelleğe alınması için yararlıdır, ancak bazen bir gösterimin bir bölümünü önbelleğe almak için yararlıdır. Yeni [önbellek-arama-değer](./api-management-caching-policies.md#GetFromCacheByKey) ve [önbellek-depolama-değer](./api-management-caching-policies.md#StoreToCacheByKey) ilkeleri, ilke tanımlarından rastgele veri parçalarını depolama ve alma olanağı sağlar. Artık dış hizmetlerden gelen yanıtları önbelleğe sunabileceğinden, bu özellik önceden tanıtılan [gönderme isteği](./api-management-advanced-policies.md#SendRequest) ilkesine değer de ekler.
 
 ## <a name="architecture"></a>Mimari
 API Management hizmet, birden çok birime kadar ölçeklendirerek aynı önbelleğe alınmış verilere erişmeye devam ettiğiniz için paylaşılan bir kiracı veri önbelleği kullanır. Ancak, çok bölgeli bir dağıtımla çalışırken her bir bölgenin içinde bağımsız önbellekler vardır. Önbellek bir veri deposu olarak değerlendirilmemelidir, burada bazı bilgilerin tek kaynağı olduğu yerdir. Bunu yaptıysanız ve daha sonra çok bölgeli dağıtımdan faydalanmaya karar verdiyseniz, kullanıcılara seyahat eden kullanıcılar bu önbelleğe alınmış verilere erişimi kaybedebilir.

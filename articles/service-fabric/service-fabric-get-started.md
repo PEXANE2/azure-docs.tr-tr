@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e82c7809f5a6c79b61dc0c6731a696c672f6aa97
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888096"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247345"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "84888096"
 
 Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için Service Fabric çalışma zamanını, SDK'yı ve araçları yükleyin. Ayrıca, SDK 'da bulunan [Windows PowerShell betiklerinin yürütülmesini de etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="supported-operating-system-versions"></a>Desteklenen işletim sistemi sürümleri
 
@@ -42,7 +42,7 @@ Geliştirme için şu işletim sistemi sürümleri desteklenir:
 
 ## <a name="install-the-sdk-and-tools"></a>SDK'yı ve araçları yükleme
 
-Web Platformu Yükleyicisi (WebPI), SDK ve araçları yüklemek için önerilen yoldur. WebPI kullanarak çalışma zamanı hataları alırsanız, belirli bir Service Fabric sürümü için sürüm notlarında yükleyicilerin doğrudan bağlantılarını da bulabilirsiniz. Sürüm notları, [Service Fabric ekip blogundan](https://blogs.msdn.microsoft.com/azureservicefabric/)çeşitli sürüm bildirilerinde bulunabilir.
+Web Platformu Yükleyicisi (WebPI), SDK ve araçları yüklemek için önerilen yoldur. WebPI kullanarak çalışma zamanı hataları alırsanız, belirli bir Service Fabric sürümü için sürüm notlarında yükleyicilerin doğrudan bağlantılarını da bulabilirsiniz. Sürüm notları, [Service Fabric ekip blogundan](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)çeşitli sürüm bildirilerinde bulunabilir.
 
 > [!NOTE]
 > Yerel Service Fabric geliştirme kümesi yükseltmeleri desteklenmez.

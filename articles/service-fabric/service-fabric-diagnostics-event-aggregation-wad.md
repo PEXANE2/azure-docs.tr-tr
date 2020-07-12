@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff13f8301274ebfc8b31dcbe01ef2a0fe6cd6fcc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846659"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247872"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Tanılama kullanarak olay toplama ve toplama
 > [!div class="op_single_selector"]
@@ -21,17 +21,17 @@ ms.locfileid: "85846659"
 
 Azure Service Fabric kümesi çalıştırırken, günlükleri merkezi konumdaki tüm düğümlerden toplamak iyi bir fikirdir. Günlüklerin merkezi bir konumda olması, kümenizdeki sorunları veya bu kümede çalışan uygulama ve hizmetlerde sorunları analiz etmenize ve gidermenize yardımcı olur.
 
-Günlükleri karşıya yükleme ve toplamanın bir yolu, Azure depolama 'ya günlükleri yükleyen ve ayrıca Azure Application Insights veya Event Hubs günlükleri gönderme seçeneğine sahip olan Windows Azure Tanılama (WAD) uzantısını kullanmaktır. Ayrıca, olayları depolama alanından okumak ve [Azure izleyici günlükleri](../log-analytics/log-analytics-service-fabric.md) ya da başka bir günlük ayrıştırma çözümü gibi bir çözümleme platformu ürününe yerleştirmek için bir dış işlem de kullanabilirsiniz.
+Günlükleri karşıya yükleme ve toplamanın bir yolu, Azure depolama 'ya günlükleri yükleyen ve ayrıca Azure Application Insights veya Event Hubs günlükleri gönderme seçeneğine sahip olan Windows Azure Tanılama (WAD) uzantısını kullanmaktır. Ayrıca, olayları depolama alanından okumak ve [Azure izleyici günlükleri](./service-fabric-diagnostics-oms-setup.md) ya da başka bir günlük ayrıştırma çözümü gibi bir çözümleme platformu ürününe yerleştirmek için bir dış işlem de kullanabilirsiniz.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede aşağıdaki araçlar kullanılır:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager şablonu](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager şablonu](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric platform olayları
 Service Fabric, aşağıdaki kanalların bir depolama tablosuna veya başka bir yere izleme ve Tanılama verileri göndermek için uzantısıyla önceden yapılandırıldığı birkaç [hazır olmayan günlüğe kaydetme kanalı](service-fabric-diagnostics-event-generation-infra.md)sağlar:
@@ -202,12 +202,12 @@ Uzantı tarafından doldurulan tablolar, kotaya ulaşılana kadar büyüdükçe,
 ## <a name="log-collection-configurations"></a>Günlük koleksiyonu yapılandırması
 Ek kanallara ait Günlükler koleksiyon için de kullanılabilir. Azure 'da çalışan kümeler için şablonda yapabileceğiniz en yaygın yapılandırmaların bazıları aşağıda verilmiştir.
 
-* İşletimsel kanal-temel: Service Fabric ve küme tarafından gerçekleştirilen, bir düğüm için olaylar, dağıtılan yeni bir uygulama veya yükseltme geri alma gibi işlemleri de içeren, varsayılan olarak etkinleştirilen üst düzey işlemler. Olayların listesi için [Işlemsel kanal olaylarına](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)bakın.
+* İşletimsel kanal-temel: Service Fabric ve küme tarafından gerçekleştirilen, bir düğüm için olaylar, dağıtılan yeni bir uygulama veya yükseltme geri alma gibi işlemleri de içeren, varsayılan olarak etkinleştirilen üst düzey işlemler. Olayların listesi için [Işlemsel kanal olaylarına](./service-fabric-diagnostics-event-generation-operational.md)bakın.
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* İşletimsel kanal-ayrıntılı: Bu durum raporlarını ve yük dengeleme kararlarını, ayrıca temel işletimsel kanaldaki her şeyi içerir. Bu olaylar, [Reportpartitionhealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) veya [reportload](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx)gibi sistem durumu ya da yük Raporlama API 'leri kullanılarak sistem veya kodunuz tarafından oluşturulur. Visual Studio 'nun tanılamasında bu olayları görüntülemek için Olay Görüntüleyicisi ETW sağlayıcıları listesine "Microsoft-ServiceFabric: 4:0x4000000000000008" ekleyin.
+* İşletimsel kanal-ayrıntılı: Bu durum raporlarını ve yük dengeleme kararlarını, ayrıca temel işletimsel kanaldaki her şeyi içerir. Bu olaylar, [Reportpartitionhealth](/previous-versions/azure/reference/mt645153(v=azure.100)) veya [reportload](/previous-versions/azure/reference/mt161491(v=azure.100))gibi sistem durumu ya da yük Raporlama API 'leri kullanılarak sistem veya kodunuz tarafından oluşturulur. Visual Studio 'nun tanılamasında bu olayları görüntülemek için Olay Görüntüleyicisi ETW sağlayıcıları listesine "Microsoft-ServiceFabric: 4:0x4000000000000008" ekleyin.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
@@ -296,7 +296,7 @@ Dağıtmak üzere olduğunuz yeni bir uygulamayı temsil eden yeni EventSource k
         }
 ```
 
-Performans sayaçlarını veya olay günlüklerini toplamak için, [bir Azure Resource Manager şablonu kullanarak izleme ve tanılama Ile Windows sanal makinesi oluşturma](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bölümünde verilen örnekleri kullanarak kaynak yöneticisi şablonunu değiştirin. Sonra Kaynak Yöneticisi şablonunu yeniden yayımlayın.
+Performans sayaçlarını veya olay günlüklerini toplamak için, [bir Azure Resource Manager şablonu kullanarak izleme ve tanılama Ile Windows sanal makinesi oluşturma](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)bölümünde verilen örnekleri kullanarak kaynak yöneticisi şablonunu değiştirin. Sonra Kaynak Yöneticisi şablonunu yeniden yayımlayın.
 
 ## <a name="collect-performance-counters"></a>Performans sayaçlarını topla
 
@@ -358,7 +358,7 @@ Azure tanılama 'yı doğru bir şekilde yapılandırdıktan sonra, depolama tab
 >[!NOTE]
 >Şu anda tabloya gönderilen olayları filtrelemek veya eklemek için bir yol yoktur. Olayları tablodan kaldırmak için bir işlem gerçekleştirmezseniz tablo büyümeye devam edecektir. Şu anda, [izleme örneğinde](https://github.com/Azure-Samples/service-fabric-watchdog-service)çalışan bir veri temizleme hizmeti örneği vardır ve günlükleri 30 veya 90 günlük zaman dilimi dışında depolamanız için iyi bir neden olmadıkça, kendiniz de bir tane yazmanız önerilir.
 
-* [Tanılama uzantısını kullanarak performans sayaçlarını veya günlükleri nasıl toplayacağınızı öğrenin](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Tanılama uzantısını kullanarak performans sayaçlarını veya günlükleri nasıl toplayacağınızı öğrenin](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 * [Application Insights ile olay Analizi ve görselleştirme](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Azure Izleyici günlükleri ile olay Analizi ve görselleştirme](service-fabric-diagnostics-event-analysis-oms.md)
 * [Application Insights ile olay Analizi ve görselleştirme](service-fabric-diagnostics-event-analysis-appinsights.md)

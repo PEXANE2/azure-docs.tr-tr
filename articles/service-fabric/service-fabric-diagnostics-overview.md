@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712233"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247532"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric için izleme ve tanılama
 
@@ -91,4 +92,4 @@ Seçtiğiniz her platformun önemli noktaları, Kullanıcı arabirimi, sorgulama
 * Azure [Service Fabric 'Da Windows kapsayıcıları için izleme ve tanılama](service-fabric-tutorial-monitoring-wincontainers.md)Için Azure izleyici günlüklerini ayarlama hakkında bilgi edinin.
 * [Yaygın senaryoları tanılamada](service-fabric-diagnostics-common-scenarios.md) Service Fabric örnek tanılama sorunlarını ve çözümlerini inceleyin
 * [Service Fabric tanılama iş ortaklarının](service-fabric-diagnostics-partners.md) Service Fabric ile tümleştirilen diğer tanılama ürünlerini inceleyin
-* Azure kaynakları için genel izleme önerileri hakkında bilgi edinin- [En Iyi Yöntemler-izleme ve tanılama](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Azure kaynakları için genel izleme önerileri hakkında bilgi edinin- [En Iyi Yöntemler-izleme ve tanılama](/azure/architecture/best-practices/monitoring). 

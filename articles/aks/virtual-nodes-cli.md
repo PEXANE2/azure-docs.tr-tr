@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 8ff78934005b3c0fd5fbd2b9c4d289c7b3668824
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8806390fe772491b629276b21734947a149d67e4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389930"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250694"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLı kullanarak sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -70,7 +70,7 @@ Sanal düğümler işlevselliği, ACI 'nin özellik kümesine yoğun bir şekild
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) , sanal düğüme Pod dağıtmayacak
 * Sanal düğümler, Linux pods zamanlamasını destekler. Açık kaynak [sanal Kubelet aci](https://github.com/virtual-kubelet/azure-aci) sağlayıcısını, Windows Server kapsayıcılarını acı 'ye zamanlamak için el ile yükleyebilirsiniz.
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell’i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
@@ -374,7 +374,7 @@ Sanal düğümler genellikle AKS 'deki bir ölçeklendirme çözümünün bir bi
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az aks disable-addons]: /cli/azure/aks#az-aks-disable-addons
 [aks-hpa]: tutorial-kubernetes-scale.md
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register

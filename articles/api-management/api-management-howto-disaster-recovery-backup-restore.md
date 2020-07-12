@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261015"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250473"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -67,7 +68,7 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 4. Uygulama için bir ad girin.
 5. Uygulama türü için **Yerel**' i seçin.
 6. Yeniden yönlendirme URI 'si gibi bir yer tutucu URL 'si girin `http://resources` , çünkü bu gerekli bir alandır, ancak değer daha sonra kullanılmaz. **Redirect URI** Uygulamayı kaydetmek için onay kutusuna tıklayın.
-7. **Oluştur**'a tıklayın.
+7. **Oluştur**’a tıklayın.
 
 ### <a name="add-an-application"></a>Uygulama ekleme
 
@@ -233,7 +234,7 @@ Yedekleme/geri yükleme işleminin farklı talimatları için aşağıdaki kayna
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2
-[azure api management rest api]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
+[azure api management rest api]: /rest/api/apimanagement/apimanagementrest/api-management-rest
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 [api-management-aad-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions.png
 [api-management-aad-permissions-add]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions-add.png

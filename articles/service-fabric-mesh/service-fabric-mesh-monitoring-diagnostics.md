@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498154"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248416"
 ---
 # <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
 Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Service Fabric ağ için izleme ve tanılama, üç temel tanılama verisi türüne kategorize edilir:
@@ -42,7 +43,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Ağ ortamı, kapsayıcılarınızın nasıl gerçekleştiğini gösteren bir dizi ölçüm sunar. Aşağıdaki ölçümler Azure portal ve Azure izleyici CLı aracılığıyla sunulmaktadır:
 
-| Metric | Açıklama | Birimler|
+| Ölçüm | Açıklama | Birimler|
 |----|----|----|
 | Cpukullanımı | Yüzde olarak ActualCpu/Ayrıtedcpu | % |
 | Memoryutilileştirme | Yüzde olarak ActualMem/Ayrıtedbellek | % |
@@ -50,14 +51,14 @@ Ağ ortamı, kapsayıcılarınızın nasıl gerçekleştiğini gösteren bir diz
 | Ayrılan bellek | Azure Resource Manager şablonuna göre ayrılan bellek | MB |
 | ActualCpu | CPU kullanımı | Milicore |
 | ActualMemory | Bellek kullanımı | MB |
-| ContainerStatus | 0-geçersiz: kapsayıcı durumu bilinmiyor <br> 1-bekliyor: kapsayıcı başlatılmaya zamanlandı <br> 2-başlatılıyor: kapsayıcı başlangıç sürecinde <br> 3-başlatıldı: kapsayıcı başarıyla başlatıldı <br> 4-durduruluyor: kapsayıcı durduruluyor <br> 5-durduruldu: kapsayıcı başarıyla durduruldu | YOK |
-| ApplicationStatus | 0-bilinmiyor: durum alınabilir değil <br> 1-Ready: uygulama başarıyla çalışıyor <br> 2-yükseltiliyor: sürmekte olan bir yükseltme var <br> 3-oluşturma: uygulama oluşturuluyor <br> 4-silme: uygulama siliniyor <br> 5-başarısız: uygulama dağıtılamadı | YOK |
-| ServiceStatus | 0-geçersiz: hizmetin Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | YOK |
-| Servicereperepstatus | 0-geçersiz: çoğaltmanın Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | YOK | 
-| RestartCount | Kapsayıcı yeniden başlatmaları sayısı | YOK |
+| ContainerStatus | 0-geçersiz: kapsayıcı durumu bilinmiyor <br> 1-bekliyor: kapsayıcı başlatılmaya zamanlandı <br> 2-başlatılıyor: kapsayıcı başlangıç sürecinde <br> 3-başlatıldı: kapsayıcı başarıyla başlatıldı <br> 4-durduruluyor: kapsayıcı durduruluyor <br> 5-durduruldu: kapsayıcı başarıyla durduruldu | Yok |
+| ApplicationStatus | 0-bilinmiyor: durum alınabilir değil <br> 1-Ready: uygulama başarıyla çalışıyor <br> 2-yükseltiliyor: sürmekte olan bir yükseltme var <br> 3-oluşturma: uygulama oluşturuluyor <br> 4-silme: uygulama siliniyor <br> 5-başarısız: uygulama dağıtılamadı | Yok |
+| ServiceStatus | 0-geçersiz: hizmetin Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | Yok |
+| Servicereperepstatus | 0-geçersiz: çoğaltmanın Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | Yok | 
+| RestartCount | Kapsayıcı yeniden başlatmaları sayısı | Yok |
 
 > [!NOTE]
-> ServiceStatus ve Servicereperepstatus değerleri, Service Fabric [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ile aynıdır. 
+> ServiceStatus ve Servicereperepstatus değerleri, Service Fabric [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ile aynıdır. 
 
 Her ölçüm farklı boyutlarda kullanılabilir ve bu sayede toplamaları farklı düzeylerde görebilirsiniz. Geçerli boyut listesi aşağıdaki gibidir:
 
@@ -73,7 +74,7 @@ Her boyut [Service Fabric uygulama modelinin](service-fabric-mesh-service-fabric
 
 ### <a name="azure-monitor-cli"></a>Azure Izleyici CLı
 
-Komutların tam listesi [Azure IZLEYICI CLI belgelerinden](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) edinilebilir ancak aşağıda birkaç faydalı örnek verilmiştir 
+Komutların tam listesi [Azure IZLEYICI CLI belgelerinden](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) edinilebilir ancak aşağıda birkaç faydalı örnek verilmiştir 
 
 Her örnekte, kaynak KIMLIĞI bu düzene uyar
 
@@ -117,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Service Fabric Mesh hakkında daha fazla bilgi edinmek için [Service Fabric Mesh’e genel bakış](service-fabric-mesh-overview.md) makalesini okuyun.
-* Azure Izleyici ölçümleri komutları hakkında daha fazla bilgi edinmek için [Azure IZLEYICI CLI belgelerine](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)göz atın.
+* Azure Izleyici ölçümleri komutları hakkında daha fazla bilgi edinmek için [Azure IZLEYICI CLI belgelerine](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)göz atın.

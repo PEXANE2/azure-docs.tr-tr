@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464729"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247668"
 ---
 # <a name="application-logging"></a>Uygulama günlüğüne kaydetme
 
@@ -21,11 +22,11 @@ Bu önerilerin nasıl kullanılacağına ilişkin örnekler için, bkz. [Service
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Application Insights, Service Fabric kutudan çıkan zengin bir tümleştirmeye sahiptir. Kullanıcılar, Service Fabric NuGet paketlerini ekleyebilir ve Azure portal, oluşturulup toplanan ve toplanan verileri alabilir. Ayrıca, kullanıcıların uygulamalarını tanılamak ve hatalarını ayıklamak ve uygulamalarının en çok hangi hizmetleri ve bölümlerinin kullanıldığını izlemek için kendi telemetrilerini eklemesi önerilir. SDK 'daki [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) sınıfı, uygulamalarınızda telemetri izlemek için birçok yol sunar. [Bir .NET uygulamasını izlemek ve tanılamak](service-fabric-tutorial-monitoring-aspnet.md) için öğreticimizde Application Insights 'ı nasıl işaretleyip ekleyeceğiniz hakkında bir örneğe göz atın
+Application Insights, Service Fabric kutudan çıkan zengin bir tümleştirmeye sahiptir. Kullanıcılar, Service Fabric NuGet paketlerini ekleyebilir ve Azure portal, oluşturulup toplanan ve toplanan verileri alabilir. Ayrıca, kullanıcıların uygulamalarını tanılamak ve hatalarını ayıklamak ve uygulamalarının en çok hangi hizmetleri ve bölümlerinin kullanıldığını izlemek için kendi telemetrilerini eklemesi önerilir. SDK 'daki [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) sınıfı, uygulamalarınızda telemetri izlemek için birçok yol sunar. [Bir .NET uygulamasını izlemek ve tanılamak](service-fabric-tutorial-monitoring-aspnet.md) için öğreticimizde Application Insights 'ı nasıl işaretleyip ekleyeceğiniz hakkında bir örneğe göz atın
 
 ## <a name="eventsource"></a>EventSource
 
-Visual Studio 'daki bir şablondan bir Service Fabric çözümü oluşturduğunuzda, **EventSource**ile türetilmiş bir sınıf (**Serviceeventsource** veya **ActorEventSource**) oluşturulur. Uygulamanız veya hizmetiniz için olaylar ekleyebileceğiniz bir şablon oluşturulur. **EventSource** adı benzersiz **olmalıdır** ve MyCompany-Solution projesinden varsayılan şablon dizesinden yeniden adlandırılması gerekir &lt; &gt; - &lt; &gt; . Aynı adı kullanan birden çok **EventSource** tanımının olması çalışma zamanında soruna neden olur. Her bir tanımlı olay benzersiz bir tanımlayıcıya sahip olmalıdır. Bir tanımlayıcı benzersiz değilse, bir çalışma zamanı hatası oluşur. Bazı kuruluşlar, ayrı geliştirme takımları arasında çakışmaları önlemek için tanımlayıcıların değer aralıklarını yeniden atayabilir. Daha fazla bilgi için bkz. [Vance 'in blogu](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) veya [MSDN belgeleri](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Visual Studio 'daki bir şablondan bir Service Fabric çözümü oluşturduğunuzda, **EventSource**ile türetilmiş bir sınıf (**Serviceeventsource** veya **ActorEventSource**) oluşturulur. Uygulamanız veya hizmetiniz için olaylar ekleyebileceğiniz bir şablon oluşturulur. **EventSource** adı benzersiz **olmalıdır** ve MyCompany-Solution projesinden varsayılan şablon dizesinden yeniden adlandırılması gerekir &lt; &gt; - &lt; &gt; . Aynı adı kullanan birden çok **EventSource** tanımının olması çalışma zamanında soruna neden olur. Her bir tanımlı olay benzersiz bir tanımlayıcıya sahip olmalıdır. Bir tanımlayıcı benzersiz değilse, bir çalışma zamanı hatası oluşur. Bazı kuruluşlar, ayrı geliştirme takımları arasında çakışmaları önlemek için tanımlayıcıların değer aralıklarını yeniden atayabilir. Daha fazla bilgi için bkz. [Vance 'in blogu](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource) veya [MSDN belgeleri](/previous-versions/msp-n-p/dn774985(v=pandp.20)).
 
 ## <a name="aspnet-core-logging"></a>Günlüğe kaydetme ASP.NET Core
 

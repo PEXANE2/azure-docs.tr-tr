@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6706d9c1c683cdf46fe42822cad67a49a69843a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 277bdc19635231628cea8c308b30c57b129dc364
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389828"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250711"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -77,7 +77,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Azure Portal sol üst köşesinde **kaynak oluştur**  >  **Kubernetes hizmeti**' ni seçin.
 
-**Temel bilgiler** sayfasında, aşağıdaki seçenekleri yapılandırın:
+**Temel Bilgiler** sayfasında aşağıdaki seçenekleri yapılandırın:
 
 - *PROJE AYRINTILARI*: Bir Azure aboneliği seçtikten sonra bir Azure kaynak grubu seçin veya *myResourceGroup* adıyla yeni bir tane oluşturun. **Kubernetes kümesi adı** alanına *myAKSCluster* gibi bir ad girin.
 - *KÜME AYRINTILARI*: AKS kümesi için bölge, Kubernetes sürümü ve DNS adı ön eki seçin.
@@ -94,7 +94,7 @@ Varsayılan olarak, bir Azure Active Directory hizmet sorumlusu oluşturulur. Bu
 
 Küme, Gelişmiş ağ için de yapılandırılır. Sanal düğümler kendi Azure sanal ağ alt ağını kullanacak şekilde yapılandırılır. Bu alt ağ, AKS kümesi arasında Azure kaynaklarını bağlama izinlerine temsilci seçti. Henüz temsilci alt ağınız yoksa, Azure portal Azure sanal ağını ve alt ağını sanal düğümlerle kullanılmak üzere oluşturur ve yapılandırır.
 
-**İncele ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin.
+**Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin.
 
 AKS kümesinin oluşturulması ve kullanıma hazır olması birkaç dakika sürer.
 
@@ -235,7 +235,7 @@ Sanal düğümler, AKS 'teki bir ölçeklendirme çözümünün bir bileşenidir
 [acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
-[aks-network]: ./networking-overview.md
+[aks-network]: ./configure-azure-cni.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md

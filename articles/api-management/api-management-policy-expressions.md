@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 40ea26a2394b7ca093f1bba2456ebf5ef116cd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695819"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249827"
 ---
 # <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
 Bu makalede C# 7 ' de ilke ifadeleri sözdizimi anlatılmaktadır. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
@@ -26,7 +27,7 @@ Daha fazla bilgi için:
 
 - Bkz. arka uç hizmetinize bağlam bilgilerini sağlama. [Sorgu dizesi ayarla parametresini](api-management-transformation-policies.md#SetQueryStringParameter) kullanın ve bu bilgileri sağlamak için [http üst bilgi ilkelerini ayarlayın](api-management-transformation-policies.md#SetHTTPheader) .
 - Belirteç taleplerine göre işlemlere erişimi önceden yetkilendirmek için bkz. [JWT](api-management-access-restriction-policies.md#ValidateJWT) ilkesini nasıl kullanacağınızı öğrenin.
-- İlkelerin nasıl değerlendirileceğini ve bu değerlendirmelerinin sonuçlarını görmek için [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) izlemesini nasıl kullanacağınızı öğrenin.
+- İlkelerin nasıl değerlendirileceğini ve bu değerlendirmelerinin sonuçlarını görmek için [API denetçisi](./api-management-howto-api-inspector.md) izlemesini nasıl kullanacağınızı öğrenin.
 - API Management yanıtı önbelleğe almayı yapılandırmak için, bkz. bir [önbellekten al](api-management-caching-policies.md#GetFromCache) ve [önbellek ilkelerine depola](api-management-caching-policies.md#StoreToCache) ilkeleri kullanma. Desteklenen hizmetin yönergesinde belirtilen arka uç hizmetinin yanıt önbelleklemesi ile eşleşen bir süre ayarlayın `Cache-Control` .
 - Bkz. içerik filtrelemeyi gerçekleştirme. [Denetim akışını](api-management-advanced-policies.md#choose) ve [gövde ilkelerini ayarla](api-management-transformation-policies.md#SetBody) ' yı kullanarak arka uçta alınan yanıttan veri öğelerini kaldırın.
 - İlke deyimlerini indirmek için bkz. [api-Management-Samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub deposu.
@@ -73,7 +74,7 @@ Tek deyim ifadeleri içine alınmıştır `@(expression)` , burada `expression` 
 ## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>İlke ifadelerinde izin verilen .NET Framework türleri
 Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve üyelerini listelemektedir.
 
-|Tür|Desteklenen Üyeler|
+|Type|Desteklenen Üyeler|
 |--------------|-----------------------|
 |Üzerinde Newtonsoft.Js. Biçime|Tümü|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|
@@ -155,7 +156,7 @@ Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve 
 |System. Security. Cryptography. SymmetricAlgorithm|Tümü|
 |System. Security. Cryptography. X509Certificates. PublicKey|Tümü|
 |System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Tümü|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Ad|
 |System. Security. Cryptography. X509Certificates. X509Certificate|Tümü|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Tümü|
 |System. Security. Cryptography. X509Certificates. X509ContentType|Tümü|
@@ -209,7 +210,7 @@ Adlı bir değişken `context` , her ilke [ifadesinde](api-management-policy-exp
 
 |Bağlam değişkeni|İzin verilen Yöntemler, Özellikler ve parametre değerleri|
 |----------------------|-------------------------------------------------------|
-|bağlam|[API](#ref-context-api): [ıapi](#ref-iapi)<br /><br /> [Dağıtım](#ref-context-deployment)<br /><br /> Geçen: zaman damgası ve geçerli saat değeri arasındaki TimeSpan-Time aralığı<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [İşlem](#ref-context-operation)<br /><br /> [Ürün](#ref-context-product)<br /><br /> [İstek](#ref-context-request)<br /><br /> RequestId: Guid-benzersiz istek tanımlayıcısı<br /><br /> [Yanıtıyla](#ref-context-response)<br /><br /> [Abonelik](#ref-context-subscription)<br /><br /> Zaman damgası: DateTime-isteğin alındığı zaman içinde nokta<br /><br /> İzleme: bool-izlemenin açık veya kapalı olup olmadığını gösterir <br /><br /> [Kullanıcı](#ref-context-user)<br /><br /> [Değişkenler](#ref-context-variables): IReadOnlyDictionary<dize, nesne><br /><br /> void trace (ileti: dize)|
+|bağlam|[API](#ref-context-api): [ıapi](#ref-iapi)<br /><br /> [Dağıtım](#ref-context-deployment)<br /><br /> Geçen: zaman damgası ve geçerli saat değeri arasındaki TimeSpan-Time aralığı<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [İşlem](#ref-context-operation)<br /><br /> [Ürün](#ref-context-product)<br /><br /> [İstek](#ref-context-request)<br /><br /> RequestId: Guid-benzersiz istek tanımlayıcısı<br /><br /> [Response](#ref-context-response)<br /><br /> [Abonelik](#ref-context-subscription)<br /><br /> Zaman damgası: DateTime-isteğin alındığı zaman içinde nokta<br /><br /> İzleme: bool-izlemenin açık veya kapalı olup olmadığını gösterir <br /><br /> [Kullanıcı](#ref-context-user)<br /><br /> [Değişkenler](#ref-context-variables): IReadOnlyDictionary<dize, nesne><br /><br /> void trace (ileti: dize)|
 |<a id="ref-context-api"></a>bağlam. 'Sindeki|Kimlik: dize<br /><br /> IsCurrentRevision: bool<br /><br />  Ad: dize<br /><br /> Yol: dize<br /><br /> Düzeltme: dize<br /><br /> ServiceUrl: [Iurl](#ref-iurl)<br /><br /> Sürüm: dize |
 |<a id="ref-context-deployment"></a>bağlam. Dağıtmak|Bölge: dize<br /><br /> HizmetAdı: dize<br /><br /> Sertifikalar: IReadOnlyDictionary<dize, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>bağlam. LastError|Kaynak: dize<br /><br /> Neden: dize<br /><br /> İleti: dize<br /><br /> Kapsam: dize<br /><br /> Bölüm: dize<br /><br /> Yol: dize<br /><br /> PolicyId: dize<br /><br /> Bağlam hakkında daha fazla bilgi için. LastError, bkz. [hata işleme](api-management-error-handling-policies.md).|
@@ -251,5 +252,5 @@ Adlı bir değişken `context` , her ilke [ifadesinde](api-management-policy-exp
 
 + [API Management ilkeler](api-management-howto-policies.md)
 + [API dönüştürme](transform-api.md)
-+ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
++ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
 + [İlke örnekleri](policy-samples.md)

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430719"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250541"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management'ta geliştirici hesaplarını yönetmek için grup oluşturma ve kullanma
 
@@ -33,11 +34,11 @@ Bu sistem gruplarına ek olarak, yöneticiler özel gruplar oluşturabilir veya 
 
 Bu kılavuzda, bir API Management örneğinin yöneticilerinin yeni gruplar ekleme ve bunları ürünlerle ve geliştiricilerle ilişkilendirme işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-Yayımcı portalındaki grupları oluşturma ve yönetmeye ek olarak, API Management REST API [Grup](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) varlığını kullanarak gruplarınızı oluşturabilir ve yönetebilirsiniz.
+Yayımcı portalındaki grupları oluşturma ve yönetmeye ek olarak, API Management REST API [Grup](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) varlığını kullanarak gruplarınızı oluşturabilir ve yönetebilirsiniz.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki görevleri tamamlar: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 
@@ -97,7 +98,7 @@ Geliştirici ve grup arasında ilişkilendirme eklendikten sonra **Kullanıcıla
 ## <a name="next-steps"></a><a name="next-steps"> </a>Sonraki adımlar
 
 * Bir gruba bir geliştirici eklendikten sonra, bu grup ile ilişkili ürünleri görüntüleyebilir ve bunlara abone olabilirler. Daha fazla bilgi için bkz. [Azure 'da ürün oluşturma ve yayımlama API Management][How create and publish a product in Azure API Management],
-* Yayımcı portalındaki grupları oluşturma ve yönetmeye ek olarak, API Management REST API [Grup](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) varlığını kullanarak gruplarınızı oluşturabilir ve yönetebilirsiniz.
+* Yayımcı portalındaki grupları oluşturma ve yönetmeye ek olarak, API Management REST API [Grup](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) varlığını kullanarak gruplarınızı oluşturabilir ve yönetebilirsiniz.
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

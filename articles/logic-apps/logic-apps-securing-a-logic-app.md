@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 07/03/2020
-ms.openlocfilehash: 769d82cae6b5f9039587018ba5a7cde407f74e4c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 902c48f2edcca6eb25958a9f22d6760faf1fcbc2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964252"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248722"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -30,7 +30,7 @@ Azure Logic Apps erişimi daha fazla denetlemek ve gizli verileri korumak için 
 
 Azure 'da güvenlik hakkında daha fazla bilgi için şu konulara bakın:
 
-* [Azure şifrelemeye genel bakış](../security/fundamentals/encryption-overview.md)
+* [Azure'da şifrelemeye genel bakış](../security/fundamentals/encryption-overview.md)
 * [Azure veri şifreleme-Rest](../security/fundamentals/encryption-atrest.md)
 * [Azure Güvenlik Karşılaştırması](../security/benchmarks/overview.md)
 
@@ -110,7 +110,7 @@ Gövdesinde, `KeyType` ya da olarak özelliğini ekleyin `Primary` `Secondary` .
 
 ### <a name="enable-azure-active-directory-oauth"></a>Azure Active Directory OAuth 'ı etkinleştir
 
-Mantıksal uygulamanız bir [istek tetikleyicisi](../connectors/connectors-native-reqres.md)ile başlıyorsa, istek tetikleyicisine gelen çağrılar için bir yetkilendirme ilkesi oluşturarak [Azure Active Directory açma kimlik DOĞRULAMASıNı](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) etkinleştirebilirsiniz. Bu kimlik doğrulamasını etkinleştirmeden önce şu hususları gözden geçirin:
+Mantıksal uygulamanız bir [istek tetikleyicisi](../connectors/connectors-native-reqres.md)ile başlıyorsa, istek tetikleyicisine gelen çağrılar için bir yetkilendirme ilkesi oluşturarak [Azure Active Directory açma kimlik DOĞRULAMASıNı](/azure/active-directory/develop/) (Azure AD OAuth) etkinleştirebilirsiniz. Bu kimlik doğrulamasını etkinleştirmeden önce şu hususları gözden geçirin:
 
 * Mantıksal uygulamanıza gelen bir çağrı yalnızca Azure AD OAuth veya [paylaşılan erişim imzaları (SAS)](#sas)olmak üzere yalnızca bir yetkilendirme şeması kullanabilir. Yalnızca Istek tetikleyicisi için desteklenen OAuth belirteçleri için yalnızca [taşıyıcı türü](../active-directory/develop/active-directory-v2-protocols.md#tokens) yetkilendirme şemaları desteklenir.
 
@@ -309,7 +309,7 @@ Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görü
 
 1. **Erişim denetimi yapılandırması**  >  **izin verilen gelen IP adresleri**altında **belirli IP aralıkları**' nı seçin.
 
-1. İçerik **Için IP aralıkları**altında girişler ve çıkışlardan IÇERIĞE erişebilen IP adresi aralıklarını belirtin. 
+1. İçerik **Için IP aralıkları**altında girişler ve çıkışlardan IÇERIĞE erişebilen IP adresi aralıklarını belirtin.
 
    Geçerli bir IP aralığı şu biçimleri kullanır: *x. x. x. x/x* veya *x. x. x. x-x. x. x.* x
 
@@ -462,7 +462,8 @@ Farklı ortamlara dağıtırsanız, iş akışı tanımınızdaki bu ortamlara g
 Örneğin, [Azure Active Directory açık kimlik doğrulaması](#azure-active-directory-oauth-authentication) (Azure AD OAuth) ile http eylemlerinin kimliğini doğruladıysanız, kimlik doğrulaması için kullanılan istemci kimliğini ve istemci gizli anahtarını kabul eden parametreleri tanımlayabilir ve gizlemelisiniz. Mantıksal uygulamanızda bu parametreleri tanımlamak için `parameters` mantıksal uygulamanızın iş akışı tanımının ve dağıtım için Kaynak Yöneticisi şablonun bölümünü kullanın. Mantıksal uygulamanızı düzenlenirken veya çalıştırma geçmişini görüntülerken görüntülenmesini istemediğiniz parametre değerlerinin güvenli hale getirilmesine yardımcı olmak için, veya türünü kullanarak parametreleri tanımlayın `securestring` `secureobject` ve kodlamayı gereken şekilde kullanın. Bu türe sahip parametreler kaynak tanımıyla döndürülmez ve dağıtımdan sonra kaynak görüntülenirken erişilebilir değildir. Çalışma zamanı sırasında bu parametre değerlerine erişmek için, `@parameters('<parameter-name>')` iş akışı tanımınızın içindeki ifadeyi kullanın. Bu ifade yalnızca çalışma zamanında değerlendirilir ve [Iş akışı Tanım Dili](../logic-apps/logic-apps-workflow-definition-language.md)tarafından açıklanmıştır.
 
 > [!NOTE]
-> İstek üstbilgisinde veya gövdede bir parametre kullanırsanız, mantıksal uygulamanızın çalıştırma geçmişini ve giden HTTP isteğini görüntülediğinizde bu parametre görülebilir. İçerik erişim ilkelerinizi da uygun şekilde ayarladığınızdan emin olun. Ayrıca, çalıştırma geçmişinizdeki girdileri ve çıkışları gizlemek için [gizleme](#obfuscate) de kullanabilirsiniz. Yetkilendirme üstbilgileri, girişler veya çıktılar aracılığıyla hiçbir şekilde görünmez. Bu nedenle, bir gizli dizi kullanılırsa gizli anahtar alınmaz.
+> İstek üstbilgisinde veya gövdede bir parametre kullanırsanız, mantıksal uygulamanızın çalıştırma geçmişini ve giden HTTP isteğini görüntülediğinizde bu parametre görülebilir. İçerik erişim ilkelerinizi da uygun şekilde ayarladığınızdan emin olun.
+> Ayrıca, çalıştırma geçmişinizdeki girdileri ve çıkışları gizlemek için [gizleme](#obfuscate) de kullanabilirsiniz. Yetkilendirme üstbilgileri, girişler veya çıktılar aracılığıyla hiçbir şekilde görünmez. Bu nedenle, bir gizli dizi kullanılırsa gizli anahtar alınmaz.
 
 Daha fazla bilgi için bu konudaki aşağıdaki bölümlere bakın:
 
@@ -680,7 +681,7 @@ Mantıksal uygulamanızdan çağrı veya istek alan uç noktaların güvenli hal
   * [OAuth kimlik doğrulamasını Active Directory](#azure-active-directory-oauth-authentication)
 
   * [Yönetilen kimlik doğrulaması](#managed-identity-authentication)
-  
+
   Daha fazla bilgi için bu konunun ilerleyen kısımlarında [giden çağrılara kimlik doğrulaması ekleme](#add-authentication-outbound) bölümüne bakın.
 
 * Mantıksal uygulama IP adreslerinden erişimi kısıtlayın.
@@ -727,7 +728,8 @@ Mantıksal uygulamanızdan çağrı veya istek alan uç noktaların güvenli hal
 HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. Bu uç noktalara giden çağrılar veya istekler göndermek için kullandığınız bazı Tetikleyiciler ve eylemler üzerinde bir kimlik doğrulama türü belirtebilirsiniz. Mantıksal uygulama tasarımcısında, bir kimlik doğrulama türü seçmeyi destekleyen Tetikleyiciler ve eylemler bir **kimlik doğrulama** özelliğine sahiptir. Ancak, bu özellik her zaman varsayılan olarak görünmeyebilir. Bu durumlarda, tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **kimlik doğrulaması**' nı seçin.
 
 > [!IMPORTANT]
-> Mantıksal uygulamanızın işleyeceği hassas bilgileri korumak için, güvenli parametreleri kullanın ve verileri gerektiği şekilde kodlayın. Parametreleri kullanma ve güvenliğini sağlama hakkında daha fazla bilgi için bkz. [parametre girdilerine erişim](#secure-action-parameters).
+> Mantıksal uygulamanızın işleyeceği hassas bilgileri korumak için, güvenli parametreleri kullanın ve verileri gerektiği şekilde kodlayın.
+> Parametreleri kullanma ve güvenliğini sağlama hakkında daha fazla bilgi için bkz. [parametre girdilerine erişim](#secure-action-parameters).
 
 Bu tabloda, bir kimlik doğrulama türünü seçebileceğiniz Tetikleyiciler ve eylemlerde kullanılabilir olan kimlik doğrulama türleri tanımlanmaktadır:
 
@@ -748,8 +750,8 @@ Bu tabloda, bir kimlik doğrulama türünü seçebileceğiniz Tetikleyiciler ve 
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik Doğrulaması** | `type` | Evet | Temel | Kullanılacak kimlik doğrulaması türü |
-| **Nitelen** | `username` | Evet | <*Kullanıcı adı*>| Hedef hizmet uç noktasına erişim doğrulaması için Kullanıcı adı |
+| **Kimlik doğrulaması** | `type` | Evet | Temel | Kullanılacak kimlik doğrulaması türü |
+| **Kullanıcı adı** | `username` | Evet | <*Kullanıcı adı*>| Hedef hizmet uç noktasına erişim doğrulaması için Kullanıcı adı |
 | **Parola** | `password` | Evet | <*parolayı*> | Hedef hizmet uç noktasına erişim doğrulaması için parola |
 ||||||
 
@@ -779,7 +781,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik Doğrulaması** | `type` | Evet | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
+| **Kimlik doğrulaması** | `type` | Evet | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
 | **Türk** | `pfx` | Evet | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik <p><p>PFX dosyasını Base64 kodlamalı biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell kullanabilirsiniz: <p>1. sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. işlevi kullanarak sertifika içeriğini dönüştürün `ToBase64String()` ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Parola** | `password`| Hayır | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
@@ -814,11 +816,11 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory açma kimlik doğrulaması
 
-Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkilendirme ilkeleri ayarladıktan](#enable-oauth) sonra gelen çağrıların kimliğini doğrulamak Için [Azure Active Directory açma kimlik doğrulaması](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) kullanabilirsiniz. Seçmeniz için **Active Directory OAuth** kimlik doğrulaması türünü sağlayan diğer tüm tetikleyiciler ve eylemler için şu özellik değerlerini belirtin:
+Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkilendirme ilkeleri ayarladıktan](#enable-oauth) sonra gelen çağrıların kimliğini doğrulamak Için [Azure Active Directory açma kimlik doğrulaması](/azure/active-directory/develop/) (Azure AD OAuth) kullanabilirsiniz. Seçmeniz için **Active Directory OAuth** kimlik doğrulaması türünü sağlayan diğer tüm tetikleyiciler ve eylemler için şu özellik değerlerini belirtin:
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik Doğrulaması** | `type` | Evet | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
+| **Kimlik doğrulaması** | `type` | Evet | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
 | **Yetkili** | `authority` | Hayır | <*URL-for-Authority-Token-Issuer*> | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
 | **Kiracı** | `tenant` | Evet | <*Kiracı KIMLIĞI*> | Azure AD kiracısı için kiracı KIMLIĞI |
 | **Hedef kitle** | `audience` | Evet | <*kaynaktan yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin,`https://management.core.windows.net/` |
@@ -872,7 +874,7 @@ Ham kimlik doğrulamasını destekleyen tetikleyici veya eylemde, bu özellik de
 
 | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik Doğrulaması** | `type` | Evet | Ham | Kullanılacak kimlik doğrulaması türü |
+| **Kimlik doğrulaması** | `type` | Evet | Ham | Kullanılacak kimlik doğrulaması türü |
 | **Değer** | `value` | Evet | <*Yetkilendirme-üst bilgi-değer*> | Kimlik doğrulaması için kullanılacak yetkilendirme üst bilgisi değeri |
 ||||||
 
@@ -907,8 +909,8 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
    | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Kimlik Doğrulaması** | `type` | Evet | **Yönetilen Kimlik** <br>veya <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
-   | **Yönetilen Kimlik** | `identity` | Evet | * **Sistem tarafından atanan yönetilen kimlik** <br>veya <br>`SystemAssigned` <p><p>* <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanılacak yönetilen kimlik |
+   | **Kimlik doğrulaması** | `type` | Evet | **Yönetilen kimlik** <br>veya <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
+   | **Yönetilen kimlik** | `identity` | Evet | * **Sistem tarafından atanan yönetilen kimlik** <br>veya <br>`SystemAssigned` <p><p>* <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanılacak yönetilen kimlik |
    | **Hedef kitle** | `audience` | Evet | <*hedef-kaynak KIMLIĞI*> | Erişmek istediğiniz hedef kaynağın kaynak KIMLIĞI. <p>Örneğin, `https://storage.azure.com/` tüm depolama hesapları için kimlik doğrulaması için [erişim belirteçlerini](../active-directory/develop/access-tokens.md) geçerli hale getirir. Bununla birlikte, belirli bir depolama hesabı gibi bir kök hizmeti URL 'SI de belirtebilirsiniz `https://fabrikamstorageaccount.blob.core.windows.net` . <p>**Note**: **hedef kitle** özelliği bazı tetikleyicilere veya eylemlere gizlenmiş olabilir. Bu özelliği görünür hale getirmek için tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **hedef kitle**' i seçin. <p><p>**Önemli**: Bu hedef kaynak kimliğinin, tüm gerekli eğik çizgiler de dahil olmak üzere Azure AD 'nin beklediği değerle *tam olarak eşleştiğinden* emin olun. Bu nedenle, `https://storage.azure.com/` tüm Azure Blob depolama hesapları için kaynak kimliği sonunda eğik çizgi gerekir. Ancak, belirli bir depolama hesabının kaynak KIMLIĞI, sonunda eğik çizgi gerektirmez. Bu kaynak kimliklerini bulmak için bkz. [Azure AD 'yi destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 

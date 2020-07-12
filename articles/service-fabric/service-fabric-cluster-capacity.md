@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 774b114a47958b173f891ed13d423f9b051ee37c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610549"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247794"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 
@@ -26,7 +26,7 @@ Bu makale, bu alanların her biri için önemli karar noktalarında size kılavu
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>Küme düğümü türlerinin ilk sayısı ve özellikleri
 
-*Düğüm türü* , kümedeki bir dizi düğüm (sanal makine) için boyut, sayı ve özellikleri tanımlar. Bir Service Fabric kümesinde tanımlanan her düğüm türü, bir [sanal makine ölçek kümesi](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)ile eşlenir.
+*Düğüm türü* , kümedeki bir dizi düğüm (sanal makine) için boyut, sayı ve özellikleri tanımlar. Bir Service Fabric kümesinde tanımlanan her düğüm türü, bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/overview.md)ile eşlenir.
 
 Her düğüm türü ayrı bir ölçek kümesi olduğundan, bağımsız olarak yukarı veya aşağı ölçeklendirilebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri vardır. Düğüm türleri ve sanal makine ölçek kümeleri arasındaki ilişki hakkında daha fazla bilgi için bkz. [küme düğümü türleri Service Fabric](service-fabric-cluster-nodetypes.md).
 
@@ -34,7 +34,7 @@ Her küme, Service Fabric platform özellikleri sağlayan kritik sistem hizmetle
 
 **Birincil olmayan düğüm türleri** , uygulama rollerini ( *ön uç* ve *arka uç* hizmetleri gibi) tanımlamak ve bir küme içindeki hizmetleri fiziksel olarak yalıtmak için kullanılabilir. Service Fabric kümeler, birincil olmayan sıfır veya daha fazla düğüm türüne sahip olabilir.
 
-Birincil düğüm türü, `isPrimary` Azure Resource Manager dağıtım şablonundaki düğüm türü tanımı altındaki özniteliği kullanılarak yapılandırılır. Düğüm türü özelliklerinin tam listesi için [Nodetypedescription nesnesine](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) bakın. Örneğin kullanım için, [Service Fabric küme örneklerindeki](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) dosya *AzureDeploy.js* açın ve nesne arama *sayfasında bulun* `nodetTypes` .
+Birincil düğüm türü, `isPrimary` Azure Resource Manager dağıtım şablonundaki düğüm türü tanımı altındaki özniteliği kullanılarak yapılandırılır. Düğüm türü özelliklerinin tam listesi için [Nodetypedescription nesnesine](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) bakın. Örneğin kullanım için, [Service Fabric küme örneklerindeki](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) dosya *AzureDeploy.js* açın ve nesne arama *sayfasında bulun* `nodetTypes` .
 
 ### <a name="node-type-planning-considerations"></a>Düğüm türü planlama konuları
 
@@ -79,7 +79,7 @@ Aşağıdaki tabloda Service Fabric dayanıklılık katmanları, gereksinimleri 
 > Bronz dayanıklılık sayesinde, otomatik işletim sistemi görüntüsü yükseltmesi kullanılamaz. [Düzeltme Eki düzenleme uygulaması](service-fabric-patch-orchestration-application.md) (yalnızca Azure 'da barındırılan kümeler için tasarlanan) gümüş veya daha fazla dayanıklılık düzeyi için *önerilmemekle* birlikte, Windows güncelleştirmelerini Service Fabric yükseltme etki alanlarına göre otomatik hale getirmek için tek seçeneğiniz vardır.
 
 > [!IMPORTANT]
-> Dayanıklılık düzeyinden bağımsız olarak, bir sanal makine ölçek kümesi üzerinde [ayırmayı kaldırma](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) işlemi çalıştırıldığında küme yok edilir.
+> Dayanıklılık düzeyinden bağımsız olarak, bir sanal makine ölçek kümesi üzerinde [ayırmayı kaldırma](/rest/api/compute/virtualmachinescalesets/deallocate) işlemi çalıştırıldığında küme yok edilir.
 
 ### <a name="bronze"></a>Bronz
 
@@ -89,7 +89,7 @@ Bronz dayanıklılık ile çalışan düğüm türleri hiçbir ayrıcalık alama
 
 Sıklıkla ölçeklendirmeyi düşündüğünüz durum bilgisi olan hizmetleri barındıran tüm düğüm türleri için gümüş veya altın dayanıklılık kullanın ve dağıtım işlemlerinin, işlemi basitleştirmek için ne kadar gecikmesini ve kapasitesini azaltmak istediğinizi unutmayın. Ölçek Genişletme senaryoları, dayanıklılık katmanı seçiminizi etkilememelidir.
 
-#### <a name="advantages"></a>Yararları
+#### <a name="advantages"></a>Avantajlar
 
 * Ölçek Genişletme işlemleri için gerekli adımların sayısını azaltır (düğüm devre dışı bırakma ve Remove-ServiceFabricNodeState otomatik olarak çağrılır).
 * Yerinde VM boyutu değiştirme işlemleri ve Azure altyapı işlemleri nedeniyle veri kaybı riskini azaltır.

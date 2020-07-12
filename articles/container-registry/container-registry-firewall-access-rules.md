@@ -3,11 +3,12 @@ title: Güvenlik Duvarı erişim kuralları
 description: ("Beyaz listeye") REST API ve veri uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83850003"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246988"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
@@ -132,7 +133,7 @@ Portalı kullanarak veri uç noktalarını etkinleştirmek için:
 1. Kapsayıcı Kayıt defterinize gidin.
 1. **Ağ**  >  **genel erişimini**seçin.
 1. **Adanmış veri uç noktası etkinleştir** onay kutusunu seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Veri uç noktası veya uç noktalar portalda görüntülenir.
 
@@ -182,7 +183,7 @@ Bir güvenlik duvarının arkasındaki Microsoft Container Registry (MCR) öğes
 
 * [Ağ güvenliği için En Iyi Azure uygulamaları](../security/fundamentals/network-best-practices.md) hakkında bilgi edinin
 
-* Azure sanal ağındaki [güvenlik grupları](/azure/virtual-network/security-overview) hakkında daha fazla bilgi edinin
+* Azure sanal ağındaki [güvenlik grupları](../virtual-network/security-overview.md) hakkında daha fazla bilgi edinin
 
 * Bir kapsayıcı kayıt defteri için [özel bağlantı](container-registry-private-link.md) ayarlama hakkında daha fazla bilgi edinin
 
@@ -198,4 +199,3 @@ Bir güvenlik duvarının arkasındaki Microsoft Container Registry (MCR) öğes
 
 [az-acr-update]: /cli/azure/acr#az-acr-update
 [az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
-

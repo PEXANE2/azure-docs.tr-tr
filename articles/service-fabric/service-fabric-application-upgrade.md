@@ -3,11 +3,12 @@ title: Uygulama yükseltmesini Service Fabric
 description: Bu makalede, yükseltme modlarını seçme ve sistem durumu denetimleri gerçekleştirme dahil olmak üzere Service Fabric uygulamasını yükseltmeye yönelik bir giriş sunulmaktadır.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710329"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248008"
 ---
 # <a name="service-fabric-application-upgrade"></a>Uygulama yükseltmesini Service Fabric
 Azure Service Fabric uygulaması, bir hizmet koleksiyonudur. Yükseltme sırasında, Service Fabric yeni [uygulama bildirimini](service-fabric-application-and-service-manifests.md) önceki sürümle karşılaştırır ve uygulamadaki hangi hizmetlerin güncelleştirme gerektirdiğini belirler. Service Fabric, hizmet bildirimlerinde sürüm numaralarını önceki sürümdeki sürüm numaralarıyla karşılaştırır. Bir hizmet değiştirilmemiştir, bu hizmet yükseltilmemiştir.
@@ -36,7 +37,7 @@ Uygulama yükseltme için önerdiğimiz mod, yaygın olarak kullanılan mod olan
 İzlenmeyen el ile modu, bir güncelleştirme etki alanındaki her yükseltmeden sonra, sonraki güncelleştirme etki alanındaki yükseltmeyi açmak için el ile müdahale gerektirir. Service Fabric sistem durumu denetimi yapılmaz. Yönetici, sonraki güncelleştirme etki alanında yükseltmeyi başlatmadan önce sistem durumunu veya durum denetimlerini gerçekleştirir.
 
 ## <a name="upgrade-default-services"></a>Varsayılan Hizmetleri yükselt
-[Uygulama bildiriminde](service-fabric-application-and-service-manifests.md) tanımlanan bazı varsayılan hizmet parametreleri, uygulama yükseltmesinin bir parçası olarak da yükseltilebilir. Yükseltmenin bir parçası olarak yalnızca [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) aracılığıyla değiştirilmesini destekleyen hizmet parametreleri değiştirilebilir. Uygulama yükseltme sırasında varsayılan Hizmetleri değiştirmenin davranışı aşağıdaki gibidir:
+[Uygulama bildiriminde](service-fabric-application-and-service-manifests.md) tanımlanan bazı varsayılan hizmet parametreleri, uygulama yükseltmesinin bir parçası olarak da yükseltilebilir. Yükseltmenin bir parçası olarak yalnızca [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) aracılığıyla değiştirilmesini destekleyen hizmet parametreleri değiştirilebilir. Uygulama yükseltme sırasında varsayılan Hizmetleri değiştirmenin davranışı aşağıdaki gibidir:
 
 1. Yeni uygulama bildiriminde, kümede zaten bulunmayan varsayılan hizmetler oluşturulur.
 2. Önceki ve yeni uygulama bildirimlerinde bulunan varsayılan hizmetler güncellenir. Yeni uygulama bildirimindeki varsayılan hizmetin parametreleri var olan hizmetin parametrelerinin üzerine yazar. Varsayılan bir hizmetin güncelleştirilmesi başarısız olursa uygulama yükseltme otomatik olarak geri alınacaktır.

@@ -3,16 +3,17 @@ title: Service Catalog ile yönetilen uygulama yayımlama
 description: Kuruluşunuzun üyelerine yönelik bir Azure yönetilen uygulaması oluşturmayı gösterir.
 author: tfitzmac
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609366"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249045"
 ---
-# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Hızlı başlangıç: yönetilen uygulama tanımı oluşturma ve yayımlama
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Hızlı Başlangıç: Yönetilen uygulama tanımı oluşturma ve yayımlama
 
 Bu hızlı başlangıçta [Azure yönetilen uygulamalarla](overview.md)çalışmaya giriş sunulmaktadır. Kuruluşunuzun üyeleri için tasarlanan yönetilen bir uygulama oluşturabilir ve yayımlayabilirsiniz.
 
@@ -20,15 +21,15 @@ Yönetilen bir uygulamayı hizmet kataloğunuza yayımlamak için şunları yapm
 
 * Yönetilen uygulama ile dağıtılacak kaynakları tanımlayan bir şablon oluşturun.
 * Yönetilen uygulamayı dağıtırken portal için kullanıcı arabirimi öğeleri tanımlayın.
-* Gerekli şablon dosyalarını içeren bir .zip paketi oluşturun.
+* Gerekli şablon dosyalarını içeren bir _. zip_ paketi oluşturun.
 * Kullanıcının aboneliğindeki kaynak grubuna hangi kullanıcı, grup veya uygulamanın erişmesi gerektiğine karar verin.
-* .zip paketini işaret eden ve kimlik için erişim isteyen yönetilen uygulama tanımını oluşturun.
+* _. Zip_ paketine işaret eden ve kimlik erişimi isteyen yönetilen uygulama tanımını oluşturun.
 
 ## <a name="create-the-arm-template"></a>ARM şablonunu oluşturma
 
-Her yönetilen uygulama tanımı **mainTemplate.json** adlı bir dosya içerir. Bu dosyanın içinde, dağıtılacak Azure kaynaklarını tanımlarsınız. Şablon, düzenli bir Azure Resource Manager (ARM) şablonundan farklı değildir.
+Her yönetilen uygulama tanımı _mainTemplate.json_ adlı bir dosya içerir. Bu dosyanın içinde, dağıtılacak Azure kaynaklarını tanımlarsınız. Şablon, düzenli bir ARM şablonundan farklı değildir.
 
-**mainTemplate.json** adlı bir dosya oluşturun. Bu ad büyük/küçük harfe duyarlıdır.
+_mainTemplate.json_ adlı bir dosya oluşturun. Bu ad büyük/küçük harfe duyarlıdır.
 
 Aşağıdaki JSON’u dosyanıza ekleyin. Depolama hesabı oluşturma parametrelerini tanımlar ve depolama hesabının özelliklerini belirtir.
 
@@ -73,13 +74,13 @@ Aşağıdaki JSON’u dosyanıza ekleyin. Depolama hesabı oluşturma parametrel
 }
 ```
 
-mainTemplate.json dosyasını kaydedin.
+_mainTemplate.js_ dosyaya kaydedin.
 
 ## <a name="define-your-create-experience"></a>Oluşturma deneyiminizi tanımlama
 
-Yayımcı olarak, yönetilen uygulamayı oluşturmak için Portal deneyimini tanımlarsınız. **Createuıdefinition. JSON** dosyası Portal arabirimini oluşturur. Kullanıcıların, açılan liste, metin kutuları ve parola kutuları dahil olmak üzere [Denetim öğelerini](create-uidefinition-elements.md) kullanarak her bir parametre için giriş nasıl sağlayacağınızı tanımlarsınız.
+Yayımcı olarak, yönetilen uygulamayı oluşturmak için Portal deneyimini tanımlarsınız. Dosyadaki _createUiDefinition.js_ Portal arabirimini oluşturur. Kullanıcıların, açılan liste, metin kutuları ve parola kutuları dahil olmak üzere [Denetim öğelerini](create-uidefinition-elements.md) kullanarak her bir parametre için giriş nasıl sağlayacağınızı tanımlarsınız.
 
-**Createuıdefinition. JSON** adlı bir dosya oluşturun (Bu ad büyük/küçük harfe duyarlıdır)
+_ÜzerindecreateUiDefinition.js_ adlı bir dosya oluşturun (Bu ad büyük/küçük harfe duyarlıdır)
 
 Aşağıdaki Başlatıcı JSON dosyasını dosyaya ekleyin ve kaydedin.
 
@@ -136,7 +137,7 @@ Daha fazla bilgi için bkz. [Createuıdefinition ile çalışmaya başlama](crea
 
 ## <a name="package-the-files"></a>Dosyaları paketleme
 
-İki dosyayı app.zip adlı bir .zip dosyasına ekleyin. İki dosya, .zip dosyasının kök düzeyinde olmalıdır. Dosyaları bir klasöre yerleştirirseniz, yönetilen uygulama tanımını oluştururken gerekli dosyaların mevcut olmadığını belirten bir hata alırsınız.
+_app.zip_adlı bir _. zip_ dosyasına iki dosya ekleyin. İki dosya, _. zip_ dosyasının kök düzeyinde olmalıdır. Dosyaları bir klasöre yerleştirirseniz, yönetilen uygulama tanımını oluştururken gerekli dosyaların mevcut olmadığını belirten bir hata alırsınız.
 
 Paketi, tüketilebileceği erişilebilir bir konuma yükleyin. Depolama hesabı için benzersiz bir ad sağlamanız gerekir.
 
@@ -291,7 +292,7 @@ Yukarıdaki örnekte kullanılan parametrelerden bazıları şunlardır:
 * **kaynak grubu**: yönetilen uygulama tanımının oluşturulduğu kaynak grubunun adı.
 * **kilit düzeyi**: yönetilen kaynak grubuna yerleştirilmiş kilit türü. Müşterinin bu kaynak grubunda istenmeyen işlemler gerçekleştirmesini engeller. ReadOnly şu anda desteklenen tek kilit düzeyidir. ReadOnly belirtildiğinde müşteri yalnızca yönetilen kaynak grubunda mevcut olan kaynakları okuyabilir. Yönetilen kaynak grubuna erişim izni verilen yayımcı kimlikleri kilitli olmaz.
 * **authorizations**: Yönetilen kaynak grubuna izin vermek için kullanılan sorumlu kimliğini ve rol tanımı kimliğini açıklar. `<principalId>:<roleDefinitionId>` biçiminde belirtilir. Birden fazla değer kullanacaksanız `<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>` biçiminde belirtin. Değerler virgülle ayrılır.
-* **paket dosyası URI 'si**: gerekli dosyaları içeren bir. zip paketinin konumu.
+* **paket dosyası URI 'si**: gerekli dosyaları içeren bir _. zip_ paketinin konumu.
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Yönetilen uygulama tanımı için kendi depolama alanınızı getirin
 
@@ -317,7 +318,7 @@ Yönetilen uygulama tanımınızın depolama hesabınıza dağıtılabilmesi iç
 1. **Seç**' in altında, **gereç kaynak sağlayıcısı** rolünü arayın ve seçin.
 1. Rol atamasını kaydedin.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Yönetilen uygulama tanımını ARM şablonuyla dağıtma 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Yönetilen uygulama tanımını ARM şablonuyla dağıtma
 
 Paketlenmiş yönetilen uygulamanızı, tanım dosyaları kendi depolama hesabınızda depolanan ve tutulan hizmet kataloğunda yeni bir yönetilen uygulama tanımı olarak dağıtmak için aşağıdaki ARM şablonunu kullanın:
    
@@ -391,9 +392,9 @@ Paketlenmiş yönetilen uygulamanızı, tanım dosyaları kendi depolama hesabı
 }
 ```
 
-ApplicationDefintion 'un özelliklerine **Storageaccountıd** adlı yeni bir özellik ekledik ve tanımınızı kendi değeri olarak depolamak istediğiniz depolama hesabı kimliğini sağlayın:
+Özelliklerinizi adlı yeni bir özellik ekledik `storageAccountId` `applicationDefinitions` ve tanımınızı kendi değeri olarak depolamak istediğiniz depolama hesabı kimliğini sağlayın:
 
-Uygulama tanımı dosyalarının, **applicationdefinitions**başlıklı bir kapsayıcıda, belirtilen depolama hesabınıza kaydedildiğini doğrulayabilirsiniz.
+Uygulama tanımı dosyalarının, başlıklı bir kapsayıcıda belirtilen depolama hesabınızda kaydedildiğini doğrulayabilirsiniz `applicationDefinitions` .
 
 > [!NOTE]
 > Ek güvenlik için, yönetilen bir uygulama tanımı oluşturmak için [şifreleme etkin olan bir Azure depolama hesabı blobu](../../storage/common/storage-service-encryption.md)içinde depolama alanı tanımlayabilirsiniz. Tanım içerikleri, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izinlerine sahip kullanıcılar, hizmet kataloğunda tanımı görebilir.

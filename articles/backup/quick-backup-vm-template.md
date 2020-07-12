@@ -5,26 +5,26 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d6fb73801f0f460daf2ed70f8dc88187e41ea887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458854"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248943"
 ---
-# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Azure 'da Kaynak Yöneticisi şablonuyla bir sanal makineyi yedekleme
+# <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Hızlı başlangıç: ARM şablonuyla Azure 'da bir sanal makineyi yedekleme
 
-[Azure Backup](backup-overview.md) , şirket içi makineleri ve uygulamaları ve Azure VM 'lerini yedekler. Bu makalede, bir Azure VM 'yi Kaynak Yöneticisi şablonuyla ve Azure PowerShell nasıl yedekleyeceğiniz gösterilmektedir. Bu hızlı başlangıç, bir kurtarma hizmetleri Kasası oluşturmak için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanmaktadır. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi belgeleri](/azure/azure-resource-manager/) ve [şablon başvurusu](/azure/templates/microsoft.recoveryservices/allversions).
+[Azure Backup](backup-overview.md) , şirket içi makineleri ve uygulamaları ve Azure VM 'lerini yedekler. Bu makalede bir Azure VM 'yi bir Azure Resource Manager şablonuyla (ARM şablonu) ve Azure PowerShell nasıl yedekleyeceğiniz gösterilmektedir. Bu hızlı başlangıç, bir kurtarma hizmetleri Kasası oluşturmak için ARM şablonu dağıtma işlemine odaklanmaktadır. ARM şablonları geliştirme hakkında daha fazla bilgi için [Azure Resource Manager belgelerine](/azure/azure-resource-manager/) ve [şablon başvurusuna](/azure/templates/microsoft.recoveryservices/allversions)bakın.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Alternatif olarak, [Azure PowerShell](./quick-backup-vm-powershell.md), [Azure CLI](quick-backup-vm-cli.md)veya [Azure Portal](quick-backup-vm-portal.md)kullanarak bir VM 'yi yedekleyebilirsiniz.
+[Kurtarma Hizmetleri Kasası](backup-azure-recovery-services-vault-overview.md) , Azure VM 'leri gibi korunan kaynaklar için yedekleme verilerini depolayan bir mantıksal kapsayıcıdır. Bir yedekleme işi çalıştırıldığında, kurtarma hizmetleri kasasının içinde bir kurtarma noktası oluşturur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz. Alternatif olarak, [Azure PowerShell](./quick-backup-vm-powershell.md), [Azure CLI](quick-backup-vm-cli.md)veya [Azure Portal](quick-backup-vm-portal.md)kullanarak bir VM 'yi yedekleyebilirsiniz.
 
-## <a name="create-a-vm-and-recovery-services-vault"></a>VM ve kurtarma hizmetleri Kasası oluşturma
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
 
-[Kurtarma Hizmetleri Kasası](backup-azure-recovery-services-vault-overview.md) , Azure VM 'leri gibi korunan kaynaklar için yedekleme verilerini depolayan bir mantıksal kapsayıcıdır. Bir yedekleme işi çalıştırıldığında, kurtarma hizmetleri kasasının içinde bir kurtarma noktası oluşturur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-create-vm-and-configure-backup%2Fazuredeploy.json)
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Bu şablon, koruma için DefaultPolicy ile yapılandırılmış basit Windows VM ve kurtarma hizmetleri kasasını dağıtmanıza olanak tanır.
 
@@ -39,9 +39,9 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. COMPUTE/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. RecoveryServices/kasa**](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults)
-- [**Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/korunabilir**](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults/backupfabrics/protectioncontainers/protecteditems)
+- [**Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/korunabilir**](/azure/templates/microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems)
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Şablonu dağıtmak için **dene** ' yi seçerek Azure Cloud Shell açın ve sonra aşağıdaki PowerShell betiğini kabuk penceresine yapıştırın. Kodu yapıştırmak için kabuk penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
@@ -59,7 +59,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-Azure PowerShell, bu hızlı başlangıçta Kaynak Yöneticisi şablonunu dağıtmak için kullanılır. [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), [Azure CLı](../azure-resource-manager/templates/deploy-cli.md)ve [REST API](../azure-resource-manager/templates/deploy-rest.md) , şablon dağıtmak için de kullanılabilir.
+Azure PowerShell, bu hızlı başlangıçta ARM şablonunu dağıtmak için kullanılır. [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), [Azure CLı](../azure-resource-manager/templates/deploy-cli.md)ve [REST API](../azure-resource-manager/templates/deploy-rest.md) , şablon dağıtmak için de kullanılabilir.
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
@@ -71,7 +71,7 @@ Azure PowerShell, bu hızlı başlangıçta Kaynak Yöneticisi şablonunu dağı
 
 Yedekleme işini izlemek için bkz. [yedekleme Işini izleme](./quick-backup-vm-powershell.md#monitor-the-backup-job).
 
-## <a name="clean-up-the-deployment"></a>Dağıtımı temizle
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık VM 'yi yedeklemeniz gerekmiyorsa, temizleyebilirsiniz.
 
@@ -93,4 +93,4 @@ Bu hızlı başlangıçta bir Kurtarma Hizmetleri kasası oluşturdunuz, bir san
 
 - Azure portal VM 'Leri [nasıl yedekleyeceğinizi öğrenin](tutorial-backup-vm-at-scale.md) .
 - Bir VM 'yi hızlıca geri yüklemeyi [öğrenin](tutorial-restore-disk.md)
-- Kaynak Yöneticisi şablonları oluşturmayı [öğrenin](../azure-resource-manager/templates/template-tutorial-create-first-template.md) .
+- ARM şablonları oluşturmayı [öğrenin](../azure-resource-manager/templates/template-tutorial-create-first-template.md) .

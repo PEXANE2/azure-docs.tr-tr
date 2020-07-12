@@ -2,13 +2,13 @@
 title: Dağıtım geçmişi silme işlemleri
 description: Azure Resource Manager dağıtım geçmişinden dağıtımları otomatik olarak silme işlemini açıklar. Geçmiş 800 sınırını aşmaya yakın olduğunda dağıtımlar silinir.
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981665"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248999"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Dağıtım geçmişinden otomatik silme işlemleri
 
@@ -23,16 +23,18 @@ Azure Resource Manager, sınıra yaklaşmanıza karşı, en kısa süre önce ge
 
 ## <a name="when-deployments-are-deleted"></a>Dağıtımlar silindiğinde
 
-Dağıtımlar 790 dağıtıma ulaştığınızda dağıtım geçmişinizden silinir. Azure Resource Manager gelecekteki dağıtımlar için yer açmak üzere en eski dağıtımlar kümesini siler. Geçmişinizin çoğu değişmeden kalır. En eski dağıtımlar önce her zaman silinir.
+775 veya daha fazla dağıtıma ulaştığınızda, bu dağıtımlar geçmişinizden silinir. Azure Resource Manager, geçmiş 750 tarihine kadar dağıtımları siler. En eski dağıtımlar önce her zaman silinir.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Dağıtım geçmişinden silme işlemleri":::
+
+> [!NOTE]
+> Başlangıç numarası (775) ve bitiş numarası (750) değişikliğe tabidir.
+>
+> Kaynak grubunuz zaten 800 sınırında ise, bir sonraki dağıtımınız hata vererek başarısız olur. Otomatik silme işlemi hemen başlatılır. Kısa bir bekleme sonrasında dağıtımınızı yeniden deneyebilirsiniz.
 
 Dağıtıma ek olarak, [durum işlemini](template-deploy-what-if.md) çalıştırdığınızda veya bir dağıtımı doğrulamak için de silmeleri tetiklersiniz.
 
 Bir dağıtıma geçmişle aynı adı verdiğinizde, geçmişteki yerini sıfırladınız. Dağıtım, geçmişteki en son yere gider. Ayrıca bir hatadan sonra [Bu dağıtıma geri](rollback-on-error.md) döndüğünüzde bir dağıtımın yerini sıfırlayabilirsiniz.
-
-> [!NOTE]
-> Kaynak grubunuz zaten 800 sınırında ise, bir sonraki dağıtımınız hata vererek başarısız olur. Otomatik silme işlemi hemen başlatılır. Kısa bir bekleme sonrasında dağıtımınızı yeniden deneyebilirsiniz.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Otomatik silme işlemleri devre dışı
 

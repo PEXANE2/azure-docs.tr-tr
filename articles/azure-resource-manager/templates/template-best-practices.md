@@ -2,13 +2,13 @@
 title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/10/2020
+ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058070"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248926"
 ---
 # <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamaları
 
@@ -160,7 +160,7 @@ Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken ya
 
 Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken aşağıdaki yönergeleri kullanın:
 
-* Bir özelliği paylaşması gereken kaynaklar arasında örtük bir bağımlılık ayarlamak için **başvuru** işlevini kullanın ve kaynak adını geçirin. `dependsOn`Örtük bir bağımlılığı zaten tanımladıysanız açık bir öğe eklemeyin. Bu yaklaşım, gereksiz bağımlılıklara sahip olma riskini azaltır.
+* Bir özelliği paylaşması gereken kaynaklar arasında örtük bir bağımlılık ayarlamak için **başvuru** işlevini kullanın ve kaynak adını geçirin. `dependsOn`Örtük bir bağımlılığı zaten tanımladıysanız açık bir öğe eklemeyin. Bu yaklaşım, gereksiz bağımlılıklara sahip olma riskini azaltır. Örtük bağımlılık ayarlamaya ilişkin bir örnek için bkz. [örtük bağımlılık](define-resource-dependency.md#reference-and-list-functions).
 
 * Alt kaynağı üst kaynağına bağımlı olarak ayarlayın.
 

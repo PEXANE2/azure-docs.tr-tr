@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610124"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247243"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric düğüm türünü kaldırma
 Bu makalede, var olan bir düğüm türünü kümeden kaldırarak bir Azure Service Fabric kümesinin nasıl ölçeklendiriyapılacağı açıklanır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir. Bir Service Fabric kümesi oluşturduktan sonra, düğüm türünü (sanal makine ölçek kümesi) ve tüm düğümlerini kaldırarak bir kümeyi yatay olarak ölçeklendirebilirsiniz.  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -20,7 +20,7 @@ Bu makalede, var olan bir düğüm türünü kümeden kaldırarak bir Azure Serv
 > Bir üretim kümesinden düğüm türünü kaldırmak için bu yaklaşımı kullanmak, sıklıkla kullanılması önerilmez. Düğüm türünün arkasındaki sanal makine ölçek kümesi kaynağını sildiği için bu, tehlikeli bir komuttur. 
 
 ## <a name="durability-characteristics"></a>Dayanıklılık özellikleri
-Remove-AzServiceFabricNodeType kullanılırken güvenlik, hızlara göre önceliklendirilir. Düğüm türü gümüş veya altın [dayanıklılık düzeyi](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)olmalıdır, nedeni:
+Remove-AzServiceFabricNodeType kullanılırken güvenlik, hızlara göre önceliklendirilir. Düğüm türü gümüş veya altın [dayanıklılık düzeyi](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)olmalıdır, nedeni:
 - Bronz durum bilgilerini kaydetme hakkında garanti vermez.
 - Gümüş ve altın dayanıklılık, ölçek kümesinde yapılan değişiklikleri yakalar.
 - Altın Ayrıca ölçek kümesi altında Azure güncelleştirmeleri üzerinde denetim elde etmenizi sağlar.
@@ -175,6 +175,6 @@ Bronz olan bir düğüm türü kaldırılırken, düğüm türündeki tüm düğ
     - Dağıtımın tamamlanmasını bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Küme [dayanıklılığı özellikleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)hakkında daha fazla bilgi edinin.
+- Küme [dayanıklılığı özellikleri](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)hakkında daha fazla bilgi edinin.
 - [Düğüm türleri ve sanal makine ölçek kümeleri](service-fabric-cluster-nodetypes.md)hakkında daha fazla bilgi edinin.
 - [Service Fabric kümesi ölçeklendirme](service-fabric-cluster-scaling.md)hakkında daha fazla bilgi edinin.

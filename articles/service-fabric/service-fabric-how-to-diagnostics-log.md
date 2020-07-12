@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614375"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247226"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric uygulamanıza günlük kaydı ekleme
 
@@ -95,7 +96,7 @@ Yapılandırılmış ve genel bir izleme karma bir şekilde kullanılması iyi b
 
 ASP.NET Core günlüğü ([Microsoft. Extensions. Logging NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Logging)), uygulamanız için standart bir günlüğe kaydetme API 'si sağlayan bir günlük çerçevesidir. Diğer günlük arka uçları için destek, ASP.NET Core günlüğe takılabilir. Bu, çok sayıda kodu değiştirmek zorunda kalmadan, uygulamanızda günlüğe kaydetme için çok çeşitli destek sağlar.
 
-1. İşaretlemek istediğiniz projeye **Microsoft. Extensions. Logging** NuGet paketini ekleyin. Ayrıca, tüm sağlayıcı paketlerini ekleyin. Daha fazla bilgi için bkz. [oturum açma ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+1. İşaretlemek istediğiniz projeye **Microsoft. Extensions. Logging** NuGet paketini ekleyin. Ayrıca, tüm sağlayıcı paketlerini ekleyin. Daha fazla bilgi için bkz. [oturum açma ASP.NET Core](/aspnet/core/fundamentals/logging).
 2. Hizmet dosyanıza **Microsoft. Extensions. Logging** için bir **using** yönergesi ekleyin.
 3. Hizmet sınıfınız içinde özel bir değişken tanımlayın.
 
@@ -166,13 +167,3 @@ Bazı üçüncü taraf sağlayıcılar, [Serilog](https://serilog.net/), [NLog](
 
 - [Service Fabric 'de uygulama izleme](service-fabric-diagnostics-event-generation-app.md)hakkında daha fazla bilgi edinin.
 - [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) ve [Windows Azure tanılama](service-fabric-diagnostics-event-aggregation-wad.md)ile günlüğe kaydetme hakkında bilgi edinin.
-
-
-
-
-
-
-
-
-
-

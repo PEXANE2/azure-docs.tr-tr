@@ -4,11 +4,12 @@ description: Azure Service Fabric üzerinde ilk Windows kapsayıcı uygulamanız
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560658"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247413"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 
@@ -16,7 +17,7 @@ ms.locfileid: "84560658"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Bu makalede, Python [Flask](http://flask.pocoo.org/) Web uygulaması Içeren bir Docker görüntüsü oluşturma ve bunu bir Azure Service Fabric kümesine dağıtma işlemi adım adım açıklanmaktadır. Ayrıca, kapsayıcıya alınmış uygulamanızı [Azure Container Registry](/azure/container-registry/) aracılığıyla paylaşırsınız. Bu makale Docker hakkında temel bir anlayışınızın olduğunu varsayar. [Docker’a Genel Bakış](https://docs.docker.com/engine/understanding-docker/) makalesini okuyarak Docker hakkında bilgi edinebilirsiniz.
+Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygulamayı çalıştırmak için uygulamanızda herhangi bir değişiklik yapılması gerekmez. Bu makalede, Python [Flask](http://flask.pocoo.org/) Web uygulaması Içeren bir Docker görüntüsü oluşturma ve bunu bir Azure Service Fabric kümesine dağıtma işlemi adım adım açıklanmaktadır. Ayrıca, kapsayıcıya alınmış uygulamanızı [Azure Container Registry](../container-registry/index.yml) aracılığıyla paylaşırsınız. Bu makale Docker hakkında temel bir anlayışınızın olduğunu varsayar. [Docker’a Genel Bakış](https://docs.docker.com/engine/understanding-docker/) makalesini okuyarak Docker hakkında bilgi edinebilirsiniz.
 
 > [!NOTE]
 > Bu makale Windows geliştirme ortamı için geçerlidir.  Service Fabric kümesi çalışma zamanının ve Docker çalışma zamanının aynı işletim sisteminde çalışıyor olması gerekir.  Windows kapsayıcılarını bir Linux kümesinde çalıştıramazsınız.
@@ -24,7 +25,7 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şunları çalıştıran bir geliştirme bilgisayarı:
   * Visual Studio 2015 veya Visual Studio 2019.
@@ -332,7 +333,7 @@ Bir tarayıcıyı açın ve `http://containercluster.westus2.cloudapp.azure.com:
 
 ## <a name="clean-up"></a>Temizleme
 
-Küme çalışırken size ücret yansımaya devam edebilir, bu nedenle [kümenizi silmeyi](service-fabric-cluster-delete.md) düşünün.
+Küme çalışırken size ücret yansımaya devam edebilir, bu nedenle [kümenizi silmeyi](./service-fabric-tutorial-delete-cluster.md) düşünün.
 
 Görüntüyü kapsayıcı kayıt defterine gönderdikten sonra, yerel görüntüyü geliştirme bilgisayarınızdan silebilirsiniz:
 
@@ -343,15 +344,15 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğu
 
-Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örneğin:
+Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örnek:
  
 - Windows Server sürüm 1709 kullanılarak oluşturulan Windows Server kapsayıcıları, Windows Server sürüm 2016 çalıştıran bir konakta çalışmıyor. 
 - Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, Hyper-V yalıtım modunda yalnızca Windows Server sürüm 1709 çalıştıran bir konakta çalışır. 
 - Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcılarıyla, kapsayıcı işletim sistemi ve ana bilgisayar işletim sistemi düzeltmesinin Windows Server 2016 çalıştıran bir konakta işlem yalıtım modunda çalışırken aynı olduğundan emin olmak gerekebilir.
  
-Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örneğin:
+Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örnek:
 
 - Küme düğümlerinizin işletim sistemi ile uyumlu bir işletim sistemi ile kapsayıcıları dağıttığınızdan emin olun.
 - Kapsayıcı uygulamanız için belirtilen yalıtım modunun, dağıtıldığı düğümde kapsayıcı işletim sistemi desteğiyle tutarlı olduğundan emin olun.

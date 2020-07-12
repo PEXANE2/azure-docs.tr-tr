@@ -3,11 +3,12 @@ title: Azure Service Fabric uygulamalarını ve hizmetlerini açıklama
 description: Service Fabric uygulamaları ve hizmetleri anlatmak için bildirimlerin nasıl kullanıldığını açıklar.
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349974"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248229"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Uygulama ve hizmet bildirimlerini Service Fabric
 Bu makalede, ApplicationManifest.xml ve ServiceManifest.xml dosyalarını kullanarak uygulama ve hizmetlerin Service Fabric nasıl tanımlandığı ve sürümü oluşturulduğu açıklanmaktadır.  Daha ayrıntılı örnekler için bkz. [uygulama ve hizmet bildirimi örnekleri](service-fabric-manifest-examples.md).  Bu bildirim dosyaları için XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
@@ -62,7 +63,7 @@ Hizmet bildirimi, hizmet türünü ve sürümü bildirimli olarak tanımlar. Hiz
 
 **Giriş noktası** tarafından belirtilen yürütülebilir dosya genellikle uzun süre çalışan hizmet ana bilgisayarı. **Setupentrypoint** , diğer herhangi bir giriş noktasından önce Service Fabric (genellikle *LocalSystem* hesabı) ile aynı kimlik bilgileriyle çalışan ayrıcalıklı bir giriş noktasıdır.  Ayrı bir kurulum giriş noktasının varlığı, hizmet ana bilgisayarını uzun süreler boyunca yüksek ayrıcalıklarla çalıştırmak zorunda kalmaktan kaçınır. **Giriş noktası** tarafından belirtilen yürütülebilir dosya, **setupentrypoint** başarıyla çıktıktan sonra çalıştırılır. İşlem sonlandırıldığında veya kilitlenirse, sonuçta elde edilen işlem izlenir ve yeniden başlatılır ( **Setupentrypoint**ile yeniden başlar).  
 
-**Setupentrypoint** kullanmaya yönelik tipik senaryolar, hizmet başlamadan önce bir yürütülebilir dosya çalıştırdığınızda veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirdiğinizde yapılır. Örneğin:
+**Setupentrypoint** kullanmaya yönelik tipik senaryolar, hizmet başlamadan önce bir yürütülebilir dosya çalıştırdığınızda veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirdiğinizde yapılır. Örnek:
 
 * Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Bu, yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.
@@ -156,7 +157,7 @@ Hizmet bildirimleri gibi, **Sürüm** öznitelikleri yapılandırılmamış dize
 
 **Sertifikalar** (önceki örnekte ayarlı değil), [https uç noktalarını kurmak](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) veya [uygulama bildiriminde gizli dizileri şifrelemek](service-fabric-application-secret-management.md)için kullanılan sertifikaları bildirir.
 
-**Yerleştirme kısıtlamaları** , hizmetlerin nerede çalışacağını tanımlayan deyimlerdir. Bu deyimler bir veya daha fazla düğüm özelliği için seçtiğiniz ayrı hizmetlere iliştirilir. Daha fazla bilgi için bkz. [yerleştirme kısıtlamaları ve Node özelliği sözdizimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
+**Yerleştirme kısıtlamaları** , hizmetlerin nerede çalışacağını tanımlayan deyimlerdir. Bu deyimler bir veya daha fazla düğüm özelliği için seçtiğiniz ayrı hizmetlere iliştirilir. Daha fazla bilgi için bkz. [yerleştirme kısıtlamaları ve Node özelliği sözdizimi](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)
 
 **İlkeler** (önceki örnekte ayarlı değil), uygulamaların Service Fabric çalışma zamanına erişimi olup olmadığı dahil olmak üzere, uygulama düzeyinde ayarlanacak günlük toplama, [varsayılan farklı çalıştır](service-fabric-application-runas-security.md), [sağlık](service-fabric-health-introduction.md#health-policies)ve [güvenlik erişim](service-fabric-application-runas-security.md) ilkelerini açıklar.
 
@@ -191,6 +192,3 @@ For more information about other features supported by application manifests, re
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-
-
-

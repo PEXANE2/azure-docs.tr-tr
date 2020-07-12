@@ -3,11 +3,12 @@ title: Mevcut bir yürütülebiliri Azure 'da paketleyin Service Fabric
 description: Mevcut bir uygulamayı Konuk yürütülebilir dosyası olarak paketleme hakkında bilgi edinin. bu nedenle bir Service Fabric kümesine dağıtılabilir.
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457824"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247396"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Service Fabric için mevcut bir yürütülebiliri dağıtın
 Azure Service Fabric hizmet olarak Node.js, Java veya C++ gibi herhangi bir tür kodu çalıştırabilirsiniz. Service Fabric Konuk yürütülebilir dosyaları olan bu hizmet türlerine başvurur.
@@ -64,8 +65,7 @@ ApplicationPackageRoot, uygulamayı tanımlayan ApplicationManifest.xml dosyası
 ## <a name="next-steps"></a>Sonraki adımlar
 İlgili bilgi ve görevler için aşağıdaki makalelere bakın.
 * [Konuk tarafından yürütülebilir bir uygulama dağıtma](service-fabric-deploy-existing-app.md)
-* [Konuk tarafından yürütülebilir birden çok uygulama dağıtma](service-fabric-deploy-multiple-apps.md)
+* [Konuk tarafından yürütülebilir birden çok uygulama dağıtma](./service-fabric-deploy-existing-app.md)
 * [Visual Studio kullanarak ilk Konuk yürütülebilir uygulamanızı oluşturma](quickstart-guest-app.md)
 * Paketleme aracının ön sürümüne bir bağlantı dahil olmak üzere, [Konuk yürütülebilir dosyası paketleme ve dağıtma örneği](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [REST kullanarak adlandırma hizmeti üzerinden iletişim kuran iki konuk yürütülebilir dosya (C# ve NodeJS) örneği](https://github.com/Azure-Samples/service-fabric-containers)
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80347098"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250201"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management'ta istemci sertifikası kimlik doğrulamasını kullanarak arka uç hizmetlerinin güvenliğini sağlama
 
@@ -46,7 +46,7 @@ Yeni bir istemci sertifikasını karşıya yüklemek için aşağıdaki adımlar
 3. **+ Ekle** düğmesine tıklayın.
     ![İstemci sertifikası Ekle](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Sertifikaya gözatıp KIMLIĞINI ve parolasını belirtin.
-5. **Oluştur**'a tıklayın.
+5. **Oluştur**’a tıklayın.
 
 > [!NOTE]
 > Sertifika **. pfx** biçiminde olmalıdır. Otomatik olarak imzalanan sertifikalara izin verilir.
@@ -86,24 +86,24 @@ Sertifika bir API tarafından kullanılıyorsa, bir uyarı ekranı görüntülen
 
 ## <a name="self-signed-certificates"></a>Otomatik olarak imzalanan sertifikalar
 
-Otomatik olarak imzalanan sertifikalar kullanıyorsanız, API Management arka uç sistemiyle iletişim kurması için sertifika zinciri doğrulamasını devre dışı bırakmanız gerekir. Aksi takdirde, 500 hata kodu döndürür. Bunu yapılandırmak için [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (yeni arka uç için) veya [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (mevcut arka uç Için) PowerShell cmdlet 'lerini kullanabilir ve `-SkipCertificateChainValidation` parametresini olarak ayarlayabilirsiniz `True` .
+Otomatik olarak imzalanan sertifikalar kullanıyorsanız, API Management arka uç sistemiyle iletişim kurması için sertifika zinciri doğrulamasını devre dışı bırakmanız gerekir. Aksi takdirde, 500 hata kodu döndürür. Bunu yapılandırmak için [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) (yeni arka uç için) veya [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) (mevcut arka uç Için) PowerShell cmdlet 'lerini kullanabilir ve `-SkipCertificateChainValidation` parametresini olarak ayarlayabilirsiniz `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: ../api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
-[API Management policy reference]: api-management-policy-reference.md
-[Caching policies]: api-management-policy-reference.md#caching-policies
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-policies.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[Azure API Management REST API Certificate entity]: https://msdn.microsoft.com/library/azure/dn783483.aspx
+[Azure API Management REST API Certificate entity]: ./api-management-caching-policies.md
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 [to configure certificate authentication in Azure WebSites refer to this article]: ../app-service/app-service-web-configure-tls-mutual-auth.md
 

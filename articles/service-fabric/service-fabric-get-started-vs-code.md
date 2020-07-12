@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b34893b64ac3533406f33c45583a911b70ae42af
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692607"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247447"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code için Service Fabric
 
@@ -20,14 +21,14 @@ Bu makalede, uzantının gereksinimlerine ve kurulumuna ilişkin bir genel bakı
 > [!IMPORTANT]
 > Service Fabric Java uygulamaları Windows makinelerde geliştirilebilir, ancak yalnızca Azure Linux kümelerine dağıtılabilir. Java uygulamalarında hata ayıklama Windows üzerinde desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tüm ortamlarda aşağıdaki önkoşulların yüklü olması gerekir.
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/)
-* [Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
+* [Service Fabric SDK](./service-fabric-get-started.md)
 * Yeumman Generıcılar--uygulamanız için uygun oluşturucuları yükler
 
    ```sh

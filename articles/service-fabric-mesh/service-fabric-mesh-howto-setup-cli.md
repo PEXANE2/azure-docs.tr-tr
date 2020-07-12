@@ -5,11 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707983"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248552"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama
 Service Fabric ağ komut satırı arabirimi (CLı), kaynakları yerel olarak ve Azure Service Fabric ağı 'nda dağıtmak ve yönetmek için gereklidir. Nasıl ayarlanacağı aşağıda verilmiştir.
@@ -43,7 +44,7 @@ Kullanılabilecek üç tür CLı bulunur ve bunlar aşağıdaki tabloda özetlen
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLı 'yi (sfctl) yükler 
 
-[SERVICE fabrıc CLI 'Yi ayarlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)yönergelerini izleyin. **Sfctl** modülü, kaynak modeline bağlı olarak, yerel makinenizde Service Fabric kümelerine göre uygulama dağıtımı için kullanılabilir. 
+[SERVICE fabrıc CLI 'Yi ayarlama](../service-fabric/service-fabric-cli.md)yönergelerini izleyin. **Sfctl** modülü, kaynak modeline bağlı olarak, yerel makinenizde Service Fabric kümelerine göre uygulama dağıtımı için kullanılabilir. 
 
 ## <a name="install-the-maven-cli"></a>Maven CLı 'yı yükler 
 

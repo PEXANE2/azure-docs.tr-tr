@@ -4,11 +4,12 @@ description: Service Fabric içindeki bulut uygulamalarının kategorilerine gen
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
-ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76024747"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248178"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric uygulama senaryoları
 
@@ -16,7 +17,7 @@ Azure Service Fabric, birçok iş uygulaması ve hizmeti türünü yazıp çalı
 
 Service Fabric benzersiz mimarisi, uygulamalarınızda neredeyse gerçek zamanlı veri analizi, bellek içi hesaplama, paralel işlemler ve olay işleme işlemlerini gerçekleştirmenize olanak sağlar. Değişen kaynak gereksinimlerinize bağlı olarak uygulamalarınızı kolayca ölçeklendirebilir veya dışarı aktarabilirsiniz.
 
-Uygulamalar oluşturmaya yönelik tasarım kılavuzu için [Azure Service Fabric mikro hizmet mimarisini](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) ve [Service Fabric kullanarak uygulama tasarımı için en iyi yöntemleri](service-fabric-best-practices-applications.md)okuyun.
+Uygulamalar oluşturmaya yönelik tasarım kılavuzu için [Azure Service Fabric mikro hizmet mimarisini](/azure/architecture/reference-architectures/microservices/service-fabric) ve [Service Fabric kullanarak uygulama tasarımı için en iyi yöntemleri](service-fabric-best-practices-applications.md)okuyun.
 
 Aşağıdaki uygulama türleri için Service Fabric platformunu kullanmayı göz önünde bulundurun:
 
@@ -24,7 +25,7 @@ Aşağıdaki uygulama türleri için Service Fabric platformunu kullanmayı göz
 
     Service Fabric kullanarak IoT Hizmetleri oluşturan müşteriler, [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL yapımı](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider Elektrik](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)ve [kafes sistemleri](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions)içerir.
 
-* **Oyun ve oturum tabanlı etkileşimli uygulamalar**: Service Fabric, uygulamanızın çevrimiçi oyun veya anlık mesajlaşma gibi düşük gecikmeli okuma ve yazma işlemleri gerektirmesi durumunda yararlıdır. Service Fabric, ayrı bir mağaza veya önbellek oluşturmak zorunda kalmadan bu etkileşimli ve durum bilgisi olan uygulamalar oluşturmanıza olanak sağlar. [Oyun hizmetlerinde Service Fabric kullanma](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)hakkında tasarım kılavuzu için [Azure oyun çözümlerini](https://azure.microsoft.com/solutions/gaming/) ziyaret edin.
+* **Oyun ve oturum tabanlı etkileşimli uygulamalar**: Service Fabric, uygulamanızın çevrimiçi oyun veya anlık mesajlaşma gibi düşük gecikmeli okuma ve yazma işlemleri gerektirmesi durumunda yararlıdır. Service Fabric, ayrı bir mağaza veya önbellek oluşturmak zorunda kalmadan bu etkileşimli ve durum bilgisi olan uygulamalar oluşturmanıza olanak sağlar. [Oyun hizmetlerinde Service Fabric kullanma](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)hakkında tasarım kılavuzu için [Azure oyun çözümlerini](https://azure.microsoft.com/solutions/gaming/) ziyaret edin.
 
     Oyun Hizmetleri olan müşteriler [sonraki oyunları](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) ve [daha fazlasını](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/)içerir. Etkileşimli oturumları olan müşteriler [, Hololens ile birlikte](https://customers.microsoft.com/story/honeywell-manufacturing-hololens)yer alır.
 
@@ -67,7 +68,7 @@ Durum bilgisi olmayan hizmetler kullanan uygulama aşağıda verilmiştir: ![][I
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) ve [Reliable Actors](service-fabric-reliable-actors-get-started.md) programlama modelleriyle durum bilgisiz ve durum bilgisi olmayan hizmetler oluşturmaya başlayın.
-* [Azure 'da mikro hizmetler oluşturma](https://docs.microsoft.com/azure/architecture/microservices/)konusunda rehberlik için Azure mimari Merkezi ziyaret edin.
+* [Azure 'da mikro hizmetler oluşturma](/azure/architecture/microservices/)konusunda rehberlik için Azure mimari Merkezi ziyaret edin.
 * Uygulama tasarım kılavuzu için [Azure Service Fabric uygulama ve küme en iyi uygulamalarına](service-fabric-best-practices-overview.md) gidin.
 
 * Ayrıca bkz:

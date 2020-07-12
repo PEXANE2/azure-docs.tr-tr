@@ -6,11 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e078f81db75dd6b89a65ff2d00bb2805ea912d0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676428"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249147"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Tanılama uzantısı şeması
 Azure Tanılama uzantısı, Azure Izleyici 'de Konuk işletim sisteminden ve Azure işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows sanal makinelerinde ve diğer işlem kaynaklarında tanılama uzantısının yapılandırılması için kullanılan şemanın ayrıntıları yer alır.
@@ -75,7 +76,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |----------------|-----------------|  
 | **Overallquocontainer MB** | Azure Tanılama tarafından toplanan çeşitli tanılama verileri türleri tarafından tüketilen en fazla yerel disk alanı miktarı. Varsayılan ayar 4096 MB 'dir.<br />
 |**useProxyServer** | Proxy sunucusu ayarlarını IE ayarlarında ayarlandığı şekilde kullanmak için Azure Tanılama yapılandırın.|
-|**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Havuzları destekleyen tüm alt öğeler için tanılama verilerini de göndermek üzere bir havuz konumunu işaret eder. Havuz örneği Application Insights veya Event Hubs.|  
+|**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Havuzları destekleyen tüm alt öğeler için tanılama verilerini de göndermek üzere bir havuz konumunu işaret eder. Havuz örneği Application Insights veya Event Hubs. Event Hubs ' ye yüklenen olayların bir kaynak KIMLIĞINE sahip olmasını istiyorsanız *ölçümler* öğesinin altına *RESOURCEID* özelliğini eklemeniz gerekir. |  
 
 
 <br /> <br />
@@ -188,7 +189,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  Hızlı sorgular için iyileştirilmiş bir performans sayacı tablosu oluşturmanıza olanak sağlar. **PerformanceCounters** öğesinde tanımlanan her performans sayacı, performans sayacı tablosuna ek olarak ölçümler tablosunda depolanır.  
 
- **RESOURCEID** özniteliği gereklidir.  Azure Tanılama dağıttığınız sanal makinenin veya sanal makine ölçek kümesinin kaynak KIMLIĞI. [Azure Portal](https://portal.azure.com) **RESOURCEID** 'yi alın. **Browse**  ->  **Resource Groups**  ->  ** Ada \><** kaynak gruplarına gözatamıyorum ' ı seçin. **Özellikler** kutucuğuna tıklayın ve değeri **kimlik** alanından kopyalayın.  
+ **RESOURCEID** özniteliği gereklidir.  Azure Tanılama dağıttığınız sanal makinenin veya sanal makine ölçek kümesinin kaynak KIMLIĞI. [Azure Portal](https://portal.azure.com) **RESOURCEID** 'yi alın. **Browse**  ->  **Resource Groups**  ->  ** Ada \><** kaynak gruplarına gözatamıyorum ' ı seçin. **Özellikler** kutucuğuna tıklayın ve değeri **kimlik** alanından kopyalayın.  Bu RESOURCEID özelliği, hem özel ölçümler göndermek hem de Event Hubs gönderilen verilere RESOURCEID özelliği eklemek için kullanılır. Event Hubs ' ye yüklenen olayların bir kaynak KIMLIĞINE sahip olmasını istiyorsanız *ölçümler* öğesinin altına *RESOURCEID* özelliğini eklemeniz gerekir.
 
 |Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
@@ -208,7 +209,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |Alt Öğe|Açıklama|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Aşağıdaki öznitelikler gereklidir:<br /><br /> - **onay belirticisi** -performans sayacının adı. Örneğin, `\Processor(_Total)\% Processor Time`. Ana bilgisayarınızdaki performans sayaçlarının listesini almak için komutunu çalıştırın `typeperf` .<br /><br /> - **örnekler,** sayacın ne sıklıkta örnekleneceği.<br /><br /> İsteğe bağlı öznitelik:<br /><br /> **Unit** -sayacın ölçü birimi. Değerler [UnitType sınıfında](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) kullanılabilir |
-|**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Bir havuz konumunu işaret eder ve tanılama verilerini de gönderir. Örneğin, Azure Izleyici veya Event Hubs.|    
+|**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Bir havuz konumunu işaret eder ve tanılama verilerini de gönderir. Örneğin, Azure Izleyici veya Event Hubs. Event Hubs ' ye yüklenen olayların bir kaynak KIMLIĞINE sahip olmasını istiyorsanız *ölçümler* öğesinin altına *RESOURCEID* özelliğini eklemeniz gerekir.|    
 
 
 
@@ -222,7 +223,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Alt Öğe|Açıklama|  
 |-------------------|-----------------|  
-|**DataSource**|Toplanacak Windows olay günlükleri. Gerekli öznitelik:<br /><br /> **ad** -toplanacak Windows olaylarını açıklayan XPath sorgusu. Örneğin:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Tüm olayları toplamak için "*" belirtin |
+|**DataSource**|Toplanacak Windows olay günlükleri. Gerekli öznitelik:<br /><br /> **ad** -toplanacak Windows olaylarını açıklayan XPath sorgusu. Örnek:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Tüm olayları toplamak için "*" belirtin |
 |**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Havuzları destekleyen tüm alt öğeler için tanılama verilerini de göndermek üzere bir havuz konumunu işaret eder. Havuz örneği Application Insights veya Event Hubs.|  
 
 
@@ -236,9 +237,9 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |Öznitelik|Tür|Açıklama|  
 |---------------|----------|-----------------|  
 |**Bufferquocontainer MB**|**unsignedInt**|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer, 0'dur.|  
-|**scheduledTransferLogLevelFilter**|**string**|İsteğe bağlı. Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**ve tüm günlükleri aktarır. Diğer olası değerler (en fazla bilgi sırasıyla) **verbose**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
+|**scheduledTransferLogLevelFilter**|**dizisinde**|İsteğe bağlı. Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**ve tüm günlükleri aktarır. Diğer olası değerler (en fazla bilgi sırasıyla) **verbose**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
 |**scheduledTransferPeriod**|**sürenin**|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
-|**yapma** |**string**| 1,5 'ye eklendi. İsteğe bağlı. Bir havuz konumunu işaret eder ve tanılama verilerini de gönderir. Örneğin, Application Insights veya Event Hubs.|  
+|**yapma** |**dizisinde**| 1,5 'ye eklendi. İsteğe bağlı. Bir havuz konumunu işaret eder ve tanılama verilerini de gönderir. Örneğin, Application Insights veya Event Hubs. Event Hubs ' ye yüklenen olayların bir kaynak KIMLIĞINE sahip olmasını istiyorsanız *ölçümler* öğesinin altına *RESOURCEID* özelliğini eklemeniz gerekir.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
@@ -294,8 +295,8 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Öznitelikler|Tür|Açıklama|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**ve tüm günlükleri aktarır. Diğer olası değerler (en fazla bilgi sırasıyla) **verbose**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
-|**ada**|**string**|İfade edilecek kanalın benzersiz adı|  
+|**logLevel**|**dizisinde**|Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**ve tüm günlükleri aktarır. Diğer olası değerler (en fazla bilgi sırasıyla) **verbose**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
+|**ada**|**dizisinde**|İfade edilecek kanalın benzersiz adı|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig öğesi
@@ -326,7 +327,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 *Publicconfig* ve *privateconfig* , çoğu JSON kullanım durumunda farklı değişkenler olarak geçirildikleri için ayrılmıştır. Bu durumlarda Kaynak Yöneticisi şablonları, PowerShell ve Visual Studio sayılabilir.
 
 > [!NOTE]
-> Ortak Yapılandırma Azure Izleyici havuzu tanımının iki özelliği, *RESOURCEID* ve *bölgesi*vardır. Bunlar yalnızca klasik VM 'Ler ve klasik bulut hizmetleri için gereklidir. Bu özellikler diğer kaynaklar için kullanılmamalıdır.
+> Ortak Yapılandırma Azure Izleyici havuzu tanımının iki özelliği, *RESOURCEID* ve *bölgesi*vardır. Bunlar yalnızca klasik VM 'Ler ve klasik bulut hizmetleri için gereklidir. *Region* özelliği diğer kaynaklar için kullanılmamalıdır. *RESOURCEıD* özelliği, ARM VM 'lerinde, Event Hubs yüklenen günlüklerde RESOURCEID alanını doldurmak için kullanılır.
 
 ```json
 "PublicConfig" {

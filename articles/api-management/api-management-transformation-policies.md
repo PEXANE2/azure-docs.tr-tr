@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81260913"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249613"
 ---
 # <a name="api-management-transformation-policies"></a>API Management dönüştürme ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -68,20 +69,20 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |JSON-XML|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|apply|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -Always-her zaman dönüştürme uygula.<br />-Content-Type-JSON-yalnızca Response Content-Type üstbilgisi JSON varlığını gösteriyorsa Dönüştür.|Evet|YOK|
+|apply|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -Always-her zaman dönüştürme uygula.<br />-Content-Type-JSON-yalnızca Response Content-Type üstbilgisi JSON varlığını gösteriyorsa Dönüştür.|Evet|Yok|
 |göz önünde bulundurun-üst bilgi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -true-istek kabul üst bilgisinde XML isteniyorsa dönüştürmeyi Uygula.<br />-false-dönüştürmeyi her zaman Uygula.|Hayır|true|
 |ayrıştırma tarihi|`false`Date değerleri ayarlandığında, dönüştürme sırasında yalnızca kopyalanır|Hayır|true|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, hata üzerine
 
@@ -112,20 +113,20 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |XML-JSON|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|denetlenmesi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -JavaScript kullanımı kolay-dönüştürülen JSON, JavaScript geliştiricilerine kolay bir form içerir.<br />-Direct-dönüştürülmüş JSON orijinal XML belgesinin yapısını yansıtır.|Evet|YOK|
-|apply|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -her zaman daima Dönüştür.<br />-Content-Type-XML-yalnızca Response Content-Type üstbilgisi XML varlığını gösteriyorsa Dönüştür.|Evet|YOK|
+|denetlenmesi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -JavaScript kullanımı kolay-dönüştürülen JSON, JavaScript geliştiricilerine kolay bir form içerir.<br />-Direct-dönüştürülmüş JSON orijinal XML belgesinin yapısını yansıtır.|Evet|Yok|
+|apply|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -her zaman daima Dönüştür.<br />-Content-Type-XML-yalnızca Response Content-Type üstbilgisi XML varlığını gösteriyorsa Dönüştür.|Evet|Yok|
 |göz önünde bulundurun-üst bilgi|Özniteliğin aşağıdaki değerlerden birine ayarlanması gerekir.<br /><br /> -true-istek Accept üst bilgisinde JSON isteniyorsa dönüştürme uygulayın.<br />-false-dönüştürmeyi her zaman Uygula.|Hayır|true|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, hata üzerine
 
@@ -148,19 +149,19 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |bul ve Değiştir|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|Kaynak|Aranacak dize.|Evet|YOK|
-|-|Değişim dizesi. Arama dizesini kaldırmak için sıfır uzunluğunda bir değiştirme dizesi belirtin.|Evet|YOK|
+|Kaynak|Aranacak dize.|Evet|Yok|
+|-|Değişim dizesi. Arama dizesini kaldırmak için sıfır uzunluğunda bir değiştirme dizesi belirtin.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -186,12 +187,12 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |yeniden yönlendirme-içerik-URL 'ler|Kök öğe.|Evet|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden
 
@@ -213,7 +214,7 @@ veya
 ```
 
 > [!NOTE]
-> Arka uç varlıkları, Yönetim [API 'si](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)aracılığıyla yönetilebilir.
+> Arka uç varlıkları, Yönetim [API 'si](/rest/api/apimanagement/2019-12-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)aracılığıyla yönetilebilir.
 
 ### <a name="example"></a>Örnek
 
@@ -259,24 +260,24 @@ Bu örnekte ilke, bir Service Fabric arka ucuna, bölüm anahtarı olarak UserID
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |küme arka uç hizmeti|Kök öğe.|Evet|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|taban URL 'si|Yeni arka uç hizmeti temel URL 'SI.|Bunlardan biri `base-url` `backend-id` mevcut olmalıdır.|YOK|
-|arka uç kimliği|Yönlendirileceği arka ucun tanımlayıcısı. (Arka uç varlıkları [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)aracılığıyla yönetilir.)|Bunlardan biri `base-url` `backend-id` mevcut olmalıdır.|YOK|
-|BT-bölüm-anahtar|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. Ad çözümleme hizmetinden belirli bir bölümü çözümlemek için kullanılır.|Hayır|YOK|
-|SF-Replication-Type|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. İsteğin bir bölümün birincil veya ikincil çoğaltmaya gitmesi gerekip gerekmediğini denetler. |Hayır|YOK|
-|SF-Resolve-koşul|Yalnızca arka uç bir Service Fabric hizmeti olduğunda geçerlidir. Service Fabric arka uca çağrının yeni çözümlenerek tekrarlanması gerektiğini belirleyen koşul.|Hayır|YOK|
-|SF-Service-örnek-adı|Yalnızca arka uç bir Service Fabric hizmeti olduğunda geçerlidir. Çalışma zamanında hizmet örneklerinin değiştirilmesine izin verir. |Hayır|YOK|
-|SF-Listener-adı|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. Service Fabric Reliable Services, bir hizmette birden çok dinleyici oluşturmanıza olanak sağlar. Bu öznitelik, bir arka uç güvenilir hizmeti birden fazla dinleyiciye sahip olduğunda belirli bir dinleyiciyi seçmek için kullanılır. Bu öznitelik belirtilmemişse API Management, ad olmadan bir dinleyici kullanmayı dener. Adı olmayan bir dinleyici, yalnızca bir dinleyici içeren Reliable Services için tipik bir addır. |Hayır|YOK|
+|taban URL 'si|Yeni arka uç hizmeti temel URL 'SI.|Bunlardan biri `base-url` `backend-id` mevcut olmalıdır.|Yok|
+|arka uç kimliği|Yönlendirileceği arka ucun tanımlayıcısı. (Arka uç varlıkları [API](/rest/api/apimanagement/2019-12-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)aracılığıyla yönetilir.)|Bunlardan biri `base-url` `backend-id` mevcut olmalıdır.|Yok|
+|BT-bölüm-anahtar|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. Ad çözümleme hizmetinden belirli bir bölümü çözümlemek için kullanılır.|Hayır|Yok|
+|SF-Replication-Type|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. İsteğin bir bölümün birincil veya ikincil çoğaltmaya gitmesi gerekip gerekmediğini denetler. |Hayır|Yok|
+|SF-Resolve-koşul|Yalnızca arka uç bir Service Fabric hizmeti olduğunda geçerlidir. Service Fabric arka uca çağrının yeni çözümlenerek tekrarlanması gerektiğini belirleyen koşul.|Hayır|Yok|
+|SF-Service-örnek-adı|Yalnızca arka uç bir Service Fabric hizmeti olduğunda geçerlidir. Çalışma zamanında hizmet örneklerinin değiştirilmesine izin verir. |Hayır|Yok|
+|SF-Listener-adı|Yalnızca arka uç bir Service Fabric hizmeti olduğunda ve ' arka uç kimliği ' kullanılarak belirtildiğinde geçerlidir. Service Fabric Reliable Services, bir hizmette birden çok dinleyici oluşturmanıza olanak sağlar. Bu öznitelik, bir arka uç güvenilir hizmeti birden fazla dinleyiciye sahip olduğunda belirli bir dinleyiciyi seçmek için kullanılır. Bu öznitelik belirtilmemişse API Management, ad olmadan bir dinleyici kullanmayı dener. Adı olmayan bir dinleyici, yalnızca bir dinleyici içeren Reliable Services için tipik bir addır. |Hayır|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, arka uç
 
@@ -395,13 +396,13 @@ Bu örnekte ilke, bir Service Fabric arka ucuna, bölüm anahtarı olarak UserID
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |gövde kümesi|Kök öğe. Gövde metnini veya gövde döndüren ifadeleri içerir.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |şablon|Set Body ilkesinin çalışacağı şablon oluşturma modunu değiştirmek için kullanılır. Şu anda desteklenen tek değer:<br /><br />-sıvı-Set Body ilkesi likit şablon oluşturma altyapısını kullanacaktır |Hayır||
 
@@ -446,7 +447,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç
 
@@ -509,20 +510,20 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Set-Header|Kök öğe.|Evet|
 |değer|Ayarlanacak üst bilginin değerini belirtir. Aynı ada sahip birden çok üstbilgi için ek `value` öğeler ekleyin.|Hayır|
 
 ### <a name="properties"></a>Özellikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |var-eylem|Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır.|Hayır|override|
-|name|Ayarlanacak üst bilginin adını belirtir.|Evet|YOK|
+|name|Ayarlanacak üst bilginin adını belirtir.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -564,20 +565,20 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |Set-Query-Parameter|Kök öğe.|Evet|
 |değer|Ayarlanacak sorgu parametresi değerini belirtir. Aynı ada sahip birden çok sorgu parametresi için ek `value` öğeler ekleyin.|Evet|
 
 ### <a name="properties"></a>Özellikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Ad|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |var-eylem|Sorgu parametresi önceden belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-var olan parametrenin değerini değiştirir.<br />-Skip-var olan sorgu parametresi değerinin yerini almaz.<br />-Append-değeri varolan sorgu parametresi değerine ekler.<br />-Delete-sorgu parametresini istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, sorgu parametresi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır.|Hayır|override|
-|name|Ayarlanacak sorgu parametresinin adını belirtir.|Evet|YOK|
+|name|Ayarlanacak sorgu parametresinin adını belirtir.|Evet|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, arka uç
 
@@ -643,7 +644,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |yeniden yazma-URI|Kök öğe.|Evet|
 
@@ -651,11 +652,11 @@ OriginalUrl.
 
 |Öznitelik|Açıklama|Gerekli|Varsayılan|
 |---------------|-----------------|--------------|-------------|
-|şablon|Herhangi bir sorgu dizesi parametresine sahip gerçek Web hizmeti URL 'SI. İfadeler kullanılırken, tüm değer bir ifade olmalıdır.|Evet|YOK|
+|şablon|Herhangi bir sorgu dizesi parametresine sahip gerçek Web hizmeti URL 'SI. İfadeler kullanılırken, tüm değer bir ifade olmalıdır.|Evet|Yok|
 |kopya-eşleşmeyen-params|Gelen istekteki sorgu parametrelerinin özgün URL şablonunda mevcut değil olarak yeniden yazma şablonu tarafından tanımlanan URL 'ye eklenip eklenmeyeceğini belirtir|Hayır|true|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 
@@ -712,14 +713,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Ad|Açıklama|Gerekli|
 |----------|-----------------|--------------|
 |XSL dönüştürme|Kök öğe.|Evet|
 |parametre|Dönüşümde kullanılan değişkenleri tanımlamak için kullanılır|Hayır|
 |xsl: StyleSheet|Kök stil sayfası öğesi. İçinde tanımlanan tüm öğeler ve öznitelikler standart [XSLT belirtimine](https://www.w3.org/TR/xslt) uyar|Evet|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
+ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#sections) ve [kapsamlarda](./api-management-howto-policies.md#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden
 
@@ -730,5 +731,5 @@ OriginalUrl.
 Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 + [API Management ilkeler](api-management-howto-policies.md)
-+ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
++ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](./api-management-policies.md)
 + [İlke örnekleri](policy-samples.md)

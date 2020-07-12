@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7be1e90d10a84465d6416f2c13a6e4b6855077b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76713138"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250082"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management'ta istemci sertifikası kimlik doğrulamasını kullanarak API'lerin güvenliğini sağlama
 
 API Management, istemci sertifikaları kullanarak API 'lere (yani API Management istemci) erişimi güvenli hale getirme yeteneği sağlar. İlke ifadelerini kullanarak, gelen sertifikayı doğrulayabilir ve istenen değerlere göre sertifika özelliklerini denetleyebilirsiniz.
 
-İstemci sertifikaları kullanarak bir API 'nin arka uç hizmetine erişimin güvenliğini sağlama hakkında bilgi için (örneğin, arka uca API Management), bkz. [istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) getirme
+İstemci sertifikaları kullanarak bir API 'nin arka uç hizmetine erişimin güvenliğini sağlama hakkında bilgi için (örneğin, arka uca API Management), bkz. [istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale](./api-management-howto-mutual-certificates.md) getirme
 
 > [!IMPORTANT]
 > Geliştirici, temel, standart veya Premium katmanlarda HTTP/2 üzerinden istemci sertifikaları almak ve doğrulamak için aşağıda gösterildiği gibi "özel etki alanları" dikey penceresinde "istemci sertifikası anlaş" ayarını açmanız gerekir.
@@ -98,5 +99,5 @@ Aşağıdaki örnek, API Management yüklenen sertifikalara karşı bir istemci 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--   [İstemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale getirme](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [Sertifikaları karşıya yükleme](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [İstemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale getirme](./api-management-howto-mutual-certificates.md)
+-   [Sertifikaları karşıya yükleme](./api-management-howto-mutual-certificates.md)

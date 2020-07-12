@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0eed2328aca78402c5f4691bb9b3d07d4f36472e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205645"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250235"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Bölgeler arasında Azure API Management geçirme
 API Management örneklerini bir Azure bölgesinden diğerine geçirmek için [yedekleme ve geri yükleme](api-management-howto-disaster-recovery-backup-restore.md) özelliğini kullanabilirsiniz. Kaynak ve hedef bölgelerde aynı API Management fiyatlandırma katmanını seçmeniz gerekir. 
 
 > [!NOTE]
-> Yedekleme ve geri yükleme farklı bulut türleri arasında geçiş yaparken çalışmaz. Bu şekilde, kaynağı [bir şablon olarak](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-portal#export-resource-groups-to-templates)dışarı aktarmanız gerekir. Ardından, hedef Azure bölgesi için, aktarılmış şablonu uyarlayın ve kaynağı yeniden oluşturun. 
+> Yedekleme ve geri yükleme farklı bulut türleri arasında geçiş yaparken çalışmaz. Bu şekilde, kaynağı [bir şablon olarak](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)dışarı aktarmanız gerekir. Ardından, hedef Azure bölgesi için, aktarılmış şablonu uyarlayın ve kaynağı yeniden oluşturun. 
 
 ## <a name="option-1-use-a-different-api-management-instance-name"></a>Seçenek 1: farklı bir API Management örnek adı kullanın
 
@@ -47,4 +47,4 @@ API Management örneklerini bir Azure bölgesinden diğerine geçirmek için [ye
 ## <a name="next-steps"></a><a name="next-steps"> </a>Sonraki adımlar
 * Yedekleme ve geri yükleme özelliği hakkında daha fazla bilgi için bkz. [olağanüstü durum kurtarmayı uygulama](api-management-howto-disaster-recovery-backup-restore.md).
 * Geçiş Azure kaynakları hakkında daha fazla bilgi için bkz. [Azure çapraz bölge geçiş kılavuzu](https://github.com/Azure/Azure-Migration-Guidance).
-* [Bulut harcamalarınızı iyileştirin ve saklayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+* [Bulut harcamalarınızı iyileştirin ve saklayın](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

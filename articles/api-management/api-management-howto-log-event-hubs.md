@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871264"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250303"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure Event Hubs olayları Azure 'da günlüğe kaydetme API Management
 Azure Event Hubs, bağlı cihazlarınız ve uygulamalarınız tarafından üretilen oldukça büyük miktardaki verileri işleyip analiz edebilmeniz için saniye başına milyonlarca olayı işleyebilen ileri düzeyde ölçeklenebilir bir veri alım sistemidir. Event Hubs, bir olay ardışık düzeni için "ön kapı" olarak görev yapar ve veriler bir olay hub 'ına toplandıktan sonra herhangi bir gerçek zamanlı analiz sağlayıcısı veya toplu işlem/depolama bağdaştırıcısı kullanılarak dönüştürülebilir ve depolanabilir. Event Hubs olay akışı üretimlerini bu olayların tüketilmesinden ayırır, böylece olay tüketicileri olaylara kendi zamanlamalarında erişebilir.
@@ -26,12 +27,12 @@ Bu makale, [azure API Management Event Hubs videoyla tümleştirmenize](https://
 
 ## <a name="create-an-azure-event-hub"></a>Azure Olay Hub’ı oluşturma
 
-Olay Hub 'ı oluşturma ve Olay Hub 'ından olayları göndermeniz ve almanız gereken bağlantı dizelerini alma hakkında ayrıntılı adımlar için, bkz. [Azure Portal kullanarak bir Event Hubs ad alanı ve bir olay hub 'ı oluşturma](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+Olay Hub 'ı oluşturma ve Olay Hub 'ından olayları göndermeniz ve almanız gereken bağlantı dizelerini alma hakkında ayrıntılı adımlar için, bkz. [Azure Portal kullanarak bir Event Hubs ad alanı ve bir olay hub 'ı oluşturma](../event-hubs/event-hubs-create.md).
 
 ## <a name="create-an-api-management-logger"></a>API Management günlükçüsü oluşturma
-Artık bir olay hub 'ına sahip olduğunuza göre, bir sonraki adım, olayları Olay Hub 'ına kaydetmek için API Management hizmetinizde bir [günlükçü](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) yapılandırmaktır.
+Artık bir olay hub 'ına sahip olduğunuza göre, bir sonraki adım, olayları Olay Hub 'ına kaydetmek için API Management hizmetinizde bir [günlükçü](/rest/api/apimanagement/2019-12-01/logger) yapılandırmaktır.
 
-API Management Günlükçüler [API Management REST API](https://aka.ms/apimapi)kullanılarak yapılandırılır. Ayrıntılı istek örnekleri için bkz. [Günlükçüler oluşturma](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate).
+API Management Günlükçüler [API Management REST API](https://aka.ms/apimapi)kullanılarak yapılandırılır. Ayrıntılı istek örnekleri için bkz. [Günlükçüler oluşturma](/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
 ## <a name="configure-log-to-eventhub-policies"></a>Günlük-eventhub ilkelerini yapılandırma
 
@@ -68,7 +69,7 @@ Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet** ' e t�
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Event Hubs Azure Stream Analytics kullanarak günlüğü önizleyin
 
-[Azure Stream Analytics sorguları](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics)kullanarak Event Hubs oturum açma önizlemesini yapabilirsiniz. 
+[Azure Stream Analytics sorguları](../event-hubs/process-data-azure-stream-analytics.md)kullanarak Event Hubs oturum açma önizlemesini yapabilirsiniz. 
 
 1. Azure portal, günlükçü 'nin olayları gönderdiği Olay Hub 'ına gidin. 
 2. **Özellikler**altında **işlem verileri** sekmesini seçin.
@@ -78,11 +79,11 @@ Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet** ' e t�
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Event Hubs hakkında daha fazla bilgi
   * [Azure Event Hubs kullanmaya başlama](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [EventProcessorHost bulunan iletiler alma](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [EventProcessorHost bulunan iletiler alma](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Event Hubs programlama kılavuzu](../event-hubs/event-hubs-programming-guide.md)
 * API Management ve Event Hubs tümleştirmesi hakkında daha fazla bilgi edinin
-  * [Günlükçü varlık başvurusu](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
-  * [günlük-eventhub ilke başvurusu](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Günlükçü varlık başvurusu](/rest/api/apimanagement/2019-12-01/logger)
+  * [günlük-eventhub ilke başvurusu](./api-management-advanced-policies.md#log-to-eventhub)
   * [Azure API Management, Event Hubs ve Moesif ile API 'lerinizi izleme](api-management-log-to-eventhub-sample.md)  
 * [Azure Application Insights ile tümleştirme](api-management-howto-app-insights.md) hakkında daha fazla bilgi edinin
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric uygulama gizli dizilerini yönetme
 description: Service Fabric uygulamasındaki gizli değerlerin güvenliğini nasıl sağlayacağınızı öğrenin (platformdan bağımsız).
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583243"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248127"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında şifreli gizli dizileri yönetme
 Bu kılavuz, Service Fabric uygulamasında gizli dizileri yönetme adımlarında size yol gösterir. Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir.
@@ -99,7 +99,7 @@ Settings.xml değerleri geçersiz kılmak için, ApplicationManifest.xml hizmet 
 
 Şimdi, uygulamanın bir örneği oluşturulurken değer bir *uygulama parametresi* olarak belirtilebilir. Bir yapı sürecinde kolay tümleştirme için, bir uygulama örneğinin oluşturulması PowerShell kullanılarak betikleştirilmiş veya C# dilinde yazılabilir.
 
-PowerShell kullanarak, parametresi `New-ServiceFabricApplication` komut için bir [karma tablo](https://technet.microsoft.com/library/ee692803.aspx)olarak sağlanır:
+PowerShell kullanarak, parametresi `New-ServiceFabricApplication` komut için bir [karma tablo](/previous-versions/windows/it-pro/windows-powershell-1.0/ee692803(v=technet.10))olarak sağlanır:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}

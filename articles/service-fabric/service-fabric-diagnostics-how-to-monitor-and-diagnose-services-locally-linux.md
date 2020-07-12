@@ -3,11 +3,12 @@ title: Linux 'ta Azure Service Fabric uygulamalarında hata ayıklama
 description: Yerel bir Linux geliştirme makinesinde Service Fabric hizmetlerinizi izlemeyi ve tanılamayı öğrenin.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991339"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247566"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Yerel bir Linux makine geliştirme kurulumunda hizmetleri izleme ve tanılama
 
@@ -131,4 +132,4 @@ public static TextWriter Out = Console.Out;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uygulamanıza eklenen izleme kodu aynı zamanda uygulamanızın bir Azure kümesinde tanılamaları ile de birlikte kullanılabilir. Araçların farklı seçeneklerini tartışan ve bunların nasıl ayarlanacağını anlatan bu makalelere göz atın.
-* [Azure Tanılama ile günlükleri toplama](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Azure Tanılama ile günlükleri toplama](./service-fabric-diagnostics-event-aggregation-lad.md)

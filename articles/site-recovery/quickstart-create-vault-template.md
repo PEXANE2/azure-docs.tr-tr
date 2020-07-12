@@ -1,33 +1,31 @@
 ---
 title: Azure Resource Manager şablonu kullanarak bir Azure kurtarma hizmetleri Kasası oluşturmak için hızlı başlangıç.
-description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak Azure kurtarma hizmetleri Kasası oluşturmayı öğreneceksiniz.
+description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak Azure kurtarma hizmetleri Kasası oluşturmayı öğreneceksiniz (ARM şablonu).
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217294"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248834"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak bir kurtarma hizmetleri Kasası oluşturma
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir kurtarma hizmetleri Kasası oluşturma
 
-Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir kurtarma hizmetleri kasasının nasıl ayarlanacağı açıklanır. [Azure Site Recovery](site-recovery-overview.md) hizmeti, iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur. böylece, planlı ve plansız kesintiler sırasında iş uygulamalarınızın çevrimiçi kalması sağlanır. Site Recovery, şirket içi makinelerin ve Azure sanal makinelerinin (VM) çoğaltma, yük devretme ve kurtarma gibi olağanüstü durum kurtarma işlemlerini yönetir.
+Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak bir kurtarma hizmetleri kasasının nasıl ayarlanacağı açıklanmaktadır. [Azure Site Recovery](site-recovery-overview.md) hizmeti, iş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur. böylece, planlı ve plansız kesintiler sırasında iş uygulamalarınızın çevrimiçi kalması sağlanır. Site Recovery, şirket içi makinelerin ve Azure sanal makinelerinin (VM) çoğaltma, yük devretme ve kurtarma gibi olağanüstü durum kurtarma işlemlerini yönetir.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
 Etkin bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
-
-Yok.
-
-## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
 
@@ -42,13 +40,13 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 Daha fazla Azure Kurtarma Hizmetleri şablonu için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Şablonu dağıtmak için **abonelik**, **kaynak grubu**ve **kasa adı** gereklidir.
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt** görüntüsünü seçin.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri seçin veya girin:
 
