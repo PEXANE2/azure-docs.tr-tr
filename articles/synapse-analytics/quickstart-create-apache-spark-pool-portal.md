@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure portal kullanarak Apache Spark Havuzu (Önizleme) oluşturma
+title: 'Hızlı başlangıç: Azure portal kullanarak Apache Spark Havuzu (Önizleme) oluşturma'
 description: Bu kılavuzdaki adımları izleyerek Azure portal kullanarak yeni bir Apache Spark havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2b199848e6c84370bd9d8711eed25dbf6c3f4dfa
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 959ad0413c83389aef6a7607c1239043e242b75b
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194944"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274365"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Apache Spark Havuzu (Önizleme) oluşturma
 
@@ -27,14 +27,14 @@ Bu hızlı başlangıçta, bir Synapse çalışma alanında bir Apache Spark hav
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın
+[Azure portalında](https://portal.azure.com/) oturum açın
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin 
 1. Arama çubuğuna hizmet adı (veya doğrudan kaynak adı) yazarak Apache Spark havuzunun oluşturulacağı SYNAPSE çalışma alanına gidin.
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     ![Yeni bir Apache Spark havuzu oluşturmak için komutu etrafında kırmızı bir kutu ile SYNAPSE çalışma alanına genel bakış](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-01.png)
 2. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
-    |Ayar | Önerilen değer | Description |
+    |Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
     | **Apache Spark havuzu adı** | Geçerli bir havuz adı | Bu, Apache Spark havuzunun sahip olacağı addır. |
     | **Düğüm boyutu** | Küçük (4 vCPU/32 GB) | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarlayın |
@@ -67,7 +67,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 4. **Sonraki: Etiketler**' i seçin. Etiket eklemeyin.
     ![Apache Spark havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
 
-5. **İncele ve oluştur**’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
 
 6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun ve **Oluştur**' u seçin.
     ![Apache Spark havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)

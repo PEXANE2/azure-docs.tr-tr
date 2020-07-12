@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77123234"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277982"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Genel kullanılabilirlik ve önizleme karşılaştırması
 
@@ -22,16 +22,16 @@ Aşağıdaki tabloda Azure Time Series Insights genel kullanım (GA) ve önizlem
 
 | | GA | Önizleme |
 | --- | --- | ---|
-| Birinci sınıf vatandaşlık | Olay merkezli | Zaman serisi merkezli |
-| Anlam mantık yürütme | Alt düzey (başvuru verileri) | Üst düzey (modeller) |
-| Veri bağlamı | Cihaz dışı düzeyi | Cihaz ve cihaz dışı düzeyi |
-| İşlem mantığı depolaması | Hayır | Modelin tür değişkenlerinde depolanan bölümü |
-| Depolama ve erişim denetimi | Hayır | Model aracılığıyla etkinleştirildi |
-| Toplamalar/örnekleme | Hayır | Olay ağırlıklı ve zaman ağırlıklı |
-| Sinyal yeniden oluşturma | Hayır | İlişkilendirme |
-| Türetilmiş zaman serisinin üretimi | Hayır | Evet, birleştirmeler ve birleşimler |
-| Dil esnekliği | Birleştirilemeyen | Birleştirilebilir |
-| İfade dili | Koşul dizesi | Zaman serisi ifadeleri (koşul dizeleri, değerler, ifadeler ve işlevler) |
+| **Birinci sınıf vatandaşlık** | Olay merkezli | Zaman serisi merkezli |
+| **Anlam mantık yürütme** | Alt düzey (başvuru verileri) | Üst düzey (modeller) |
+| **Veri bağlamı** | Cihaz dışı düzeyi | Cihaz ve cihaz dışı düzeyi |
+| **İşlem mantığı depolaması** | Hayır | Modelin tür değişkenlerinde depolanan bölümü |
+| **Depolama ve erişim denetimi** | Hayır | Model aracılığıyla etkinleştirildi |
+| **Toplamalar/örnekleme** | Hayır | Olay ağırlıklı ve zaman ağırlıklı |
+| **Sinyal yeniden oluşturma** | Hayır | İlişkilendirme |
+| **Türetilmiş zaman serisinin üretimi** | Hayır | Evet, birleştirmeler ve birleşimler |
+| **Dil esnekliği** | Birleştirilemeyen | Birleştirilebilir |
+| **İfade dili** | Koşul dizesi | Zaman serisi ifadeleri (koşul dizeleri, değerler, ifadeler ve işlevler) |
 
 ### <a name="property-limits"></a>Özellik sınırları
 

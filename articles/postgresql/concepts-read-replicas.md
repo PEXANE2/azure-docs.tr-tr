@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368013"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276660"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -142,11 +142,11 @@ Bir çoğaltmaya yük devretmek istediğinizde,
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Bu bölümde çoğaltma oku özelliği hakkında dikkat edilecek noktalar özetlenmektedir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Okuma çoğaltmaları ve [mantıksal kod çözme](concepts-logical.md) , bilgi Için doğrudan Postgres yazma günlüğüne (Wal) bağlıdır. Bu iki özellik, Postgres 'den farklı günlük düzeylerine sahip olmalıdır. Mantıksal kod çözme, okuma Çoğaltmalarından daha yüksek bir günlüğe kaydetme düzeyine sahip olmalıdır.
 
 Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parametresini kullanın. Azure çoğaltma desteğinin üç ayar seçeneği vardır:
@@ -161,12 +161,14 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 Bir okuma çoğaltması, PostgreSQL için yeni bir Azure veritabanı sunucusu olarak oluşturulur. Var olan bir sunucu bir çoğaltmaya yapılamaz. Başka bir okuma çoğaltmasının çoğaltmasını oluşturamazsınız.
 
 ### <a name="replica-configuration"></a>Çoğaltma yapılandırması
-Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
+Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, depolama ve yedekleme saklama süresi dahil olmak üzere çeşitli ayarlar değiştirilebilir.
+
+Aşağıdaki koşullarda, sanal çekirdekler ve fiyatlandırma katmanı da çoğaltma üzerinde değiştirilebilir:
+* PostgreSQL, `max_connections` okuma çoğaltmasındaki parametrenin değerini ana değerden büyük veya ona eşit olacak şekilde gerektirir; Aksi takdirde, çoğaltma başlatılmaz. PostgreSQL için Azure veritabanı 'nda `max_connections` parametre değeri SKU 'su (sanal çekirdek ve Fiyatlandırma Katmanı) temel alır. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'Nda sınırlamalar](concepts-limits.md). 
+* Temel fiyatlandırma katmanından veya temel alınan ölçekleme desteklenmez
 
 > [!IMPORTANT]
 > Ana ayar yeni bir değere güncellenmadan önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
-
-PostgreSQL, `max_connections` okuma çoğaltmasındaki parametrenin değerini ana değerden büyük veya ona eşit olacak şekilde gerektirir; Aksi takdirde, çoğaltma başlatılmaz. PostgreSQL için Azure veritabanı 'nda `max_connections` parametre değeri SKU 'yu temel alır. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'Nda sınırlamalar](concepts-limits.md). 
 
 Yukarıda açıklanan sunucu değerlerini güncelleştirmeye çalışırsanız, ancak sınırlara bağlı kalmazsanız bir hata alırsınız.
 

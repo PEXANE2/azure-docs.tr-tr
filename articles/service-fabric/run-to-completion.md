@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
-ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431299"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261207"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
@@ -45,7 +45,7 @@ RunToCompletion semantiğini kullanarak komple bir örneğe bakalım.
 > [!IMPORTANT]
 > Aşağıdaki örnek, [Service Fabric ve Docker kullanarak Windows kapsayıcı uygulamaları][containers-getting-started-link]oluşturma konusunda benzerlik olduğunu varsayar.
 >
-> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Aşağıdaki ServiceManifest.xml, kapsayıcıları temsil eden iki CodePackage oluşan bir ServicePackage 'i açıklar. *RunToCompletionCodePackage1* yalnızca **stdout** 'a bir ileti kaydeder ve çıkılıyor. *RunToCompletionCodePackage2* bir süre için geri döngü adresine ping atar ve sonra **0**, **1** veya **2**çıkış kodu ile çıkar.
 
@@ -129,8 +129,7 @@ Geçerli RunToCompletion desteği için aşağıdaki noktaların not edilmelidir
 [application-and-service-manifests-link]: service-fabric-application-and-service-manifests.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
 [deployed-service-package-working-with-link]: service-fabric-hosting-model.md#work-with-a-deployed-service-package
-[deployed-code-package-link]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
-[deployed-service-package-link]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[fabric-client-link]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient
-[deployed-service-package-fabricclient-link]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync
-
+[deployed-code-package-link]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[deployed-service-package-link]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[fabric-client-link]: /dotnet/api/system.fabric.fabricclient
+[deployed-service-package-fabricclient-link]: /dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync

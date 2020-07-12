@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81677470"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273923"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Ekip veri bilimi Işlemi sürüyor: Azure HDInsight Hadoop kümelerini kullanma
 Bu kılavuzda, [ekip veri bilimi işlemini (TDSP)](overview.md) uçtan uca bir senaryoda kullanırız. Genel kullanıma açık [NYC Taxi](https://www.andresmh.com/nyctaxitrips/) veri kümesinden verileri depolamak, araştırmak ve özellik mühendislerini ve verileri aşağı [örneklemek için bir Azure HDInsight Hadoop kümesi](https://azure.microsoft.com/services/hdinsight/) kullanırız. İkili ve çok sınıflı sınıflandırmayı ve gerileme tahmine dayalı görevleri işlemek için Azure Machine Learning ile veri modelleri oluşturacağız. 
@@ -28,21 +29,32 @@ Ayrıca, 1 TB 'lık veri kümesini kullanan yönergede sunulan görevleri gerçe
 NYC TAXI seyahat verileri yaklaşık 20 GB sıkıştırılmış virgülle ayrılmış değerler (CSV) dosyası (~ 48 GB sıkıştırılmamış) olur. 173.000.000 ' den fazla ayrı geziye sahiptir ve her seyahat için ücretli olan Fares 'yi içerir. Her seyahat kaydı için alma ve bırakma konumu ve saati, anonimleştirilmiş Hack (sürücü) lisans numarası ve numara (TAXI 'nin benzersiz KIMLIĞI) bulunur. Veriler, 2013 yılında yapılan tüm döngüleri kapsamakta ve her ay için aşağıdaki iki veri kümelerinde sunulmaktadır:
 
 - Trip_data CSV dosyaları seyahat ayrıntıları içeriyor: pascuların sayısı, seçme ve açılan noktaları, seyahat süresi ve seyahat uzunluğu. Aşağıda birkaç örnek kayıt verilmiştir:
-   
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+
+  `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 - Trip_fare CSV dosyaları her seyahat için ödenen tarifeli havayolu ayrıntılarını içerir: ödeme türü, tarifeli havayolu miktarı, ek ücret, vergiler, ipuçları ve Tolls ve ödenen toplam tutar. Aşağıda birkaç örnek kayıt verilmiştir:
-   
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+
+  `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar \_ alanlardan oluşur: medtalon, Hack \_ lisansı ve toplama \_ tarih saati. Belirli bir yolculuğa uygun tüm ayrıntıları almak için bu üç anahtardan birine katılmanız yeterlidir.
 
@@ -50,16 +62,18 @@ Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar 
 Gerekli işlem görevlerinin açıklanmasına yardımcı olmak için veri analizinden göre yapmak istediğiniz tahmine yönelik türü belirleme. İşte bu kılavuzda, tüm *tıp \_ miktarına*bağlı olarak ele aldığımız tahmin sorunlarına yönelik üç örnek verilmiştir:
 
 - **İkili sınıflandırma**: bir tıp bir seyahat için ödenip ödenmediğini tahmin edin. Diğer bir deyişle, $0 'den büyük bir *İpucu \_ miktarı* pozitif bir örnektir, ancak bir $0 *İpucu \_ miktarı* negatif bir örnektir.
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0
+
+  - Sınıf 0: tip_amount = $0
+  - Sınıf 1: tip_amount > $0
+
 - **Birden çok Lass sınıflandırması**: seyahat için ödenen ipucu tutarlarının aralığını tahmin edin. *İpucu \_ miktarını* beş sınıfa bölyoruz:
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0 and tip_amount <= $5
-        Class 2: tip_amount > $5 and tip_amount <= $10
-        Class 3: tip_amount > $10 and tip_amount <= $20
-        Class 4: tip_amount > $20
+
+  - Sınıf 0: tip_amount = $0
+  - Sınıf 1: tip_amount > $0 ve tip_amount <= $5
+  - Sınıf 2: tip_amount > $5 ve tip_amount <= $10
+  - Sınıf 3: tip_amount > $10 ve tip_amount <= $20
+  - Sınıf 4: tip_amount > $20
+
 - **Regresyon görevi**: seyahat için ödenen ipucunun miktarını tahmin edin.  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>Gelişmiş analiz için bir HDInsight Hadoop kümesi ayarlama
@@ -89,7 +103,9 @@ Burada, AzCopy kullanarak verileri içeren dosyaları nasıl aktaracağımız a�
 
 1. Komut istemi penceresinde, aşağıdaki AzCopy komutlarını çalıştırarak *\<path_to_data_folder>* istenen hedefle değiştirin:
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```console
+    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```
 
 1. Kopyalama tamamlandığında, seçilen veri klasöründe toplam 24 daraltılmış dosya görürsünüz. İndirilen dosyaları yerel makinenizde aynı dizine ayıklayın. Sıkıştırılmamış dosyaların bulunduğu klasörü bir yere göz önünde alın. Bu klasöre aşağıda gösterildiği gibi başvurulur *\<path\_to\_unzipped_data\_files\>* .
 
@@ -110,11 +126,15 @@ Bir komut isteminden veya bir Windows PowerShell penceresinde aşağıdaki iki A
 
 Bu komut, seyahat verilerini Hadoop kümesinin varsayılan kapsayıcısındaki ***nyctaxitripraw*** dizinine yükler.
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```
 
 Bu komut, tarifeli havayolu verilerini Hadoop kümesinin varsayılan kapsayıcısındaki ***nyctaxifareraw*** dizinine yükler.
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```
 
 Verilerin artık BLOB depolama alanında olması ve HDInsight kümesi içinde tüketilmeye hazır olması gerekir.
 
@@ -130,9 +150,11 @@ Bu kılavuzda, aslında SQL benzeri bir sorgu dili olan [Hive](https://hive.apac
 
 Kümeyi araştırmacı veri analizi için hazırlamak üzere [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) 'Dan ilgili Hive betiklerini içeren '. HQL ' dosyalarını baş düğümde bir yerel dizine (C:\Temp) indirin. Kümenin baş düğümü içinden komut istemi ' ni açın ve aşağıdaki iki komutu çalıştırın:
 
-    set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
+```console
+set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
-    @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+```
 
 Bu iki komut, bu kılavuzda gereken tüm '. HQL ' dosyalarını baş düğümdeki ***C:\temp&#92;*** yerel dizinine indirir.
 
@@ -145,7 +167,9 @@ Bu iki komut, bu kılavuzda gereken tüm '. HQL ' dosyalarını baş düğümdek
 Şimdi NYC TAXI veri kümesi için Hive tabloları oluşturmaya hazırsınız.
 Hadoop kümesinin baş düğümünde, baş düğümün masaüstündeki Hadoop komut satırını açın. Aşağıdaki komutu çalıştırarak Hive dizinini girin:
 
-    cd %hive_home%\bin
+```console
+cd %hive_home%\bin
+```
 
 > [!NOTE]
 > Bu izlenecek yolda bulunan tüm Hive komutlarını Hive bin/Dizin isteminden çalıştırın. Bu, tüm yol sorunlarını otomatik olarak işler. Bu izlenecek yolda "Hive Dizin istemi", "Hive bin/Dizin istemi" ve "Hadoop komut satırı" terimlerini kullanıyoruz.
@@ -154,48 +178,52 @@ Hadoop kümesinin baş düğümünde, baş düğümün masaüstündeki Hadoop ko
 
 Hive Dizin isteminde, Hive veritabanını ve tablolarını oluşturan baş düğümün Hadoop komut satırında aşağıdaki komutu çalıştırın:
 
-    hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```console
+hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```
 
 Burada, **Nyctaxidb**Hive veritabanını oluşturan ** \_ \_ \_ DB \_ ve \_ Tables. HQL** dosyasının içeriği ve **seyahat** ve **tarifeli havayolu**tabloları oluşturulur.
 
-    create database if not exists nyctaxidb;
+```hiveql
+create database if not exists nyctaxidb;
 
-    create external table if not exists nyctaxidb.trip
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double)  
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.trip
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    rate_code string,
+    store_and_fwd_flag string,
+    pickup_datetime string,
+    dropoff_datetime string,
+    passenger_count int,
+    trip_time_in_secs double,
+    trip_distance double,
+    pickup_longitude double,
+    pickup_latitude double,
+    dropoff_longitude double,
+    dropoff_latitude double)  
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
 
-    create external table if not exists nyctaxidb.fare
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        pickup_datetime string,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double)
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.fare
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    pickup_datetime string,
+    payment_type string,
+    fare_amount double,
+    surcharge double,
+    mta_tax double,
+    tip_amount double,
+    tolls_amount double,
+    total_amount double)
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+```
 
 Bu Hive betiği iki tablo oluşturur:
 
@@ -212,64 +240,80 @@ Bu yordamlarla ilgili ek yardıma ihtiyacınız varsa veya alternatif olanları 
 
 NYC TAXI veri kümesinde, daha hızlı işleme ve sorgu sürelerini etkinleştirmek için kullandığımız ayda bir doğal bölümlendirme vardır. Aşağıdaki PowerShell komutları (Hadoop komut satırı kullanılarak Hive dizininden verilir), aya göre bölümlenen seyahat ve tarifeli havayolu Hive tablolarına veri yükler.
 
-    for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```powershell
+for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```
 
 **Sample \_ Hive, \_ \_ \_ \_ partitions. HQL dosyasına göre yükleme verileri** aşağıdaki **yükleme** komutlarını içerir:
 
-    LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
-    LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```hiveql
+LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
+LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```
 
 Araştırma sürecinde burada kullanılan Hive sorgularının sayısı yalnızca bir veya iki bölüme bakmayı içerir. Ancak bu sorgular tüm veri kümesi genelinde çalıştırılabilir.
 
 ### <a name="show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>HDInsight Hadoop kümesindeki veritabanlarını gösterme
 HDInsight Hadoop kümesinde oluşturulan veritabanlarını Hadoop komut satırı penceresinde göstermek için, Hadoop komut satırı içinde aşağıdaki komutu çalıştırın:
 
-    hive -e "show databases;"
+```console
+hive -e "show databases;"
+```
 
 ### <a name="show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>**Nyctaxidb** veritabanında Hive tablolarını gösterme
 **Nyctaxidb** veritabanındaki tabloları göstermek Için, Hadoop komut satırında aşağıdaki komutu çalıştırın:
 
-    hive -e "show tables in nyctaxidb;"
+```console
+hive -e "show tables in nyctaxidb;"
+```
 
 Aşağıdaki komutu çalıştırarak tabloların bölümlendiğini doğrulayabiliriz:
 
-    hive -e "show partitions nyctaxidb.trip;"
+```console
+hive -e "show partitions nyctaxidb.trip;"
+```
 
 Beklenen çıkış şu şekildedir:
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 2.075 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 2.075 seconds, Fetched: 12 row(s)
+```
 
 Benzer şekilde, aşağıdaki komutu çalıştırarak tarifeli havayolu tablosunun bölümlenmiş olduğundan emin olabilirsiniz:
 
-    hive -e "show partitions nyctaxidb.fare;"
+```console
+hive -e "show partitions nyctaxidb.fare;"
+```
 
 Beklenen çıkış şu şekildedir:
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 1.887 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 1.887 seconds, Fetched: 12 row(s)
+```
 
 ## <a name="data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Hive 'de veri araştırması ve özellik Mühendisliği
 > [!NOTE]
@@ -295,15 +339,21 @@ Verilerin nasıl göründüğünü görmek için, her tablodan 10 kayıt inceley
 
 İlk ayın seyahat tablosunda ilk 10 kaydı almak için:
 
-    hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```
 
 İlk ayın tarifeli havayolu tablosundaki ilk 10 kaydı almak için:
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```
 
 Önceki sorguda küçük bir değişiklik ile uygun bir şekilde görüntülemek için kayıtları bir dosyaya kaydedebilirsiniz:
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```
 
 ### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Araştırma: 12 bölümden her birinde kayıt sayısını görüntüleme
 > [!NOTE]
@@ -313,65 +363,81 @@ Verilerin nasıl göründüğünü görmek için, her tablodan 10 kayıt inceley
 
 Bu, gün sayısının takvim yılı sırasında değişiklik gösterdiği bir sayıdır. Aya göre gruplandırma, gidiş dağılımını gösterir.
 
-    hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```
 
 Bu komut aşağıdaki çıktıyı üretir:
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 283.406 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 283.406 seconds, Fetched: 12 row(s)
+```
 
 Burada ilk sütun month, ikincisi ise o aya ait gidiş dönüş sayısıdır.
 
 Ayrıca, Hive Dizin isteminde aşağıdaki komutu çalıştırarak seyahat veri kümizdeki toplam kayıt sayısını da saybiliriz:
 
-    hive -e "select count(*) from nyctaxidb.trip;"
+```console
+hive -e "select count(*) from nyctaxidb.trip;"
+```
 
 Bu komut şunları verir:
 
-    173179759
-    Time taken: 284.017 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 284.017 seconds, Fetched: 1 row(s)
+```
 
 Seyahat veri kümesi için gösterilenlere benzer komutları kullanarak, kayıt sayısını doğrulamak için tarifeli havayolu veri kümesinin Hive Dizin isteminden Hive sorguları yayımlayabiliriz.
 
-    hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```
 
 Bu komut bu çıktıyı oluşturur:
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 253.955 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 253.955 seconds, Fetched: 12 row(s)
+```
 
 Her iki veri kümesi için de tam olarak aynı gidiş dönüş sayısı döndürülür ve verilerin doğru şekilde yüklendiği ilk doğrulamayı sağlar.
 
 Hive Dizin isteminde aşağıdaki komutu kullanarak tarifeli havayolu veri kümesindeki toplam kayıt sayısını saymanız gerekir:
 
-    hive -e "select count(*) from nyctaxidb.fare;"
+```console
+hive -e "select count(*) from nyctaxidb.fare;"
+```
 
 Bu komut şunları verir:
 
-    173179759
-    Time taken: 186.683 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 186.683 seconds, Fetched: 1 row(s)
+```
 
 Her iki tablodaki kayıtların toplam sayısı aynı zamanda, verilerin doğru şekilde yüklendiğinden ikinci bir doğrulama sağlamak için de aynıdır.
 
@@ -383,31 +449,39 @@ Her iki tablodaki kayıtların toplam sayısı aynı zamanda, verilerin doğru �
 
 Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalons (TAXI numaraları) tanımlar. Bölümlenmiş tablo erişiminizden sorgu avantajları, Bölüm değişkeninin **aya**göre belirlenir. Sorgu sonuçları, ' de baş düğümdeki querbir yerel dosyaya, **quergı put. tsv**dosyasına yazılır `C:\temp` .
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 İnceleme için ** \_ \_ \_ \_ \_ medtalon. HQL dosyasına göre örnek Hive seyahat sayısı** içeriği aşağıda verilmiştir.
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 NYC TAXI veri kümesindeki medalon, benzersiz bir cab tanımlıyor. Belirli bir süre içinde belirli sayıda gidiş 'tan daha fazlasını yaptığını isteyerek hangi Cabs 'nin karşılaştırılanmasının ne olduğunu belirleyebilirsiniz. Aşağıdaki örnek, ilk üç ayda yüz 'dan fazla bir dönüşten daha fazla olan Cabs 'yi tanımlar ve sorgu sonuçlarını **C:\temp\quer47put.exe**yerel dosyasına kaydeder.
 
 İnceleme için ** \_ \_ \_ \_ \_ medtalon. HQL dosyasına göre örnek Hive seyahat sayısı** içeriği aşağıda verilmiştir.
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 Hive Dizin isteminde aşağıdaki komutu çalıştırın:
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Araştırma: medtalon ve Hack lisansınıza göre seyahat dağılımı
 > [!NOTE]
@@ -419,18 +493,22 @@ Bir veri kümesini araştırırken, genellikle değer gruplarının dağıtımla
 
 ** \_ \_ \_ \_ \_ \_ License. HQL dosyası tarafından** , tarifeli havayolu veri kümesini ve **hack_license** **ve her** birleşimin sayısını döndüren örnek Hive seyahat sayısı. İçerik şu şekildedir:
 
-    SELECT medallion, hack_license, COUNT(*) as trip_count
-    FROM nyctaxidb.fare
-    WHERE month=1
-    GROUP BY medallion, hack_license
-    HAVING trip_count > 100
-    ORDER BY trip_count desc;
+```hiveql
+SELECT medallion, hack_license, COUNT(*) as trip_count
+FROM nyctaxidb.fare
+WHERE month=1
+GROUP BY medallion, hack_license
+HAVING trip_count > 100
+ORDER BY trip_count desc;
+```
 
 Bu sorgu, sıralı dönüşlere göre sıralanan cab ve sürücü kombinasyonlarını döndürür.
 
 Hive Dizin isteminde şunu çalıştırın:
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```
 
 Sorgu sonuçları, **C:\temp\quer, put.exe**adlı yerel bir dosyaya yazılır.
 
@@ -444,17 +522,20 @@ Araştırmacı veri analizinin ortak amacı, geçersiz veya hatalı kayıtları 
 
 İnceleme için **örnek \_ Hive \_ Quality \_ Assessment. HQL** dosyasının içeriği aşağıda verilmiştir.
 
-        SELECT COUNT(*) FROM nyctaxidb.trip
-        WHERE month=1
-        AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
-        OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
-
+```hiveql
+    SELECT COUNT(*) FROM nyctaxidb.trip
+    WHERE month=1
+    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
+```
 
 Hive Dizin isteminde şunu çalıştırın:
 
-    hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```console
+hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```
 
 Bu komutta yer alan *-S* bağımsız değişkeni Hive harita/azaltma işlerinin durum ekranı çıktısını bastırır. Bu komut, Hive sorgu çıkışının ekran yazdırmasını daha okunaklı hale getiren yararlı olur.
 
@@ -471,17 +552,21 @@ Bu komutta yer alan *-S* bağımsız değişkeni Hive harita/azaltma işlerinin 
 
 Aşağıdaki **örnek \_ Hive \_ eğimli \_ frekansları. HQL** dosyası çalıştırılacak komutu gösterir:
 
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
+```hiveql
+SELECT tipped, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tipped;
+```
 
 Hive Dizin isteminde şunu çalıştırın:
 
-    hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```
 
 
 ### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>Araştırma: birden çok Lass ayarında sınıf dağıtımları
@@ -492,20 +577,24 @@ Hive Dizin isteminde şunu çalıştırın:
 
 [Tahmin görevleri örnekleri](hive-walkthrough.md#mltasks) bölümünde özetlenen birden çok Lass sınıflandırma sorunu için, bu veri kümesi aynı zamanda verilen ipuçlarının miktarını tahmin etmek için kendisini doğal bir sınıflandırmayla da özetler. Sorgudaki tıp aralıklarını tanımlamak için depo gözleri kullanabiliriz. Çeşitli tıp aralıklarına yönelik sınıf dağıtımlarını almak için, **örnek \_ Hive \_ İpucu \_ aralığı \_ frekansları. HQL** dosyasını kullanın. İçeriği burada bulabilirsiniz.
 
-    SELECT tip_class, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount=0, 0,
-            if(tip_amount>0 and tip_amount<=5, 1,
-            if(tip_amount>5 and tip_amount<=10, 2,
-            if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tip_class;
+```hiveql
+SELECT tip_class, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount=0, 0,
+        if(tip_amount>0 and tip_amount<=5, 1,
+        if(tip_amount>5 and tip_amount<=10, 2,
+        if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tip_class;
+```
 
 Hadoop komut satırı konsolundan aşağıdaki komutu çalıştırın:
 
-    hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```
 
 ### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Araştırma: iki Boylam-Enlem konumu arasındaki doğrudan mesafeyi hesaplama
 > [!NOTE]
@@ -517,24 +606,26 @@ Hadoop komut satırı konsolundan aşağıdaki komutu çalıştırın:
 
 Gerçek seyahat mesafesi ile iki boylam-Latitude noktaları arasındaki [Haversinüsü](https://en.wikipedia.org/wiki/Haversine_formula) arasındaki karşılaştırmayı görmek için ("harika daire" mesafesini), Hive içinde bulunan trigonometrik işlevleri kullanabilirsiniz:
 
-    set R=3959;
-    set pi=radians(180);
+```hiveql
+set R=3959;
+set pi=radians(180);
 
-    insert overwrite directory 'wasb:///queryoutputdir'
+insert overwrite directory 'wasb:///queryoutputdir'
 
-    select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-    ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-     *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-     *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-     /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-     +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
-     pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
-    from nyctaxidb.trip
-    where month=1
-    and pickup_longitude between -90 and -30
-    and pickup_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90;
+select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+ *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+ *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+ /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
+ +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
+ pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
+from nyctaxidb.trip
+where month=1
+and pickup_longitude between -90 and -30
+and pickup_latitude between 30 and 90
+and dropoff_longitude between -90 and -30
+and dropoff_latitude between 30 and 90;
+```
 
 Yukarıdaki sorguda, R, mil 'deki dünya yarıçapdır ve Pi, radyana dönüştürülür. Boylam-Enlem noktaları, NYC alanından uzak değerleri kaldıracak şekilde filtrelenmiştir.
 
@@ -542,20 +633,25 @@ Bu durumda, sonuçları **querbir putdir**adlı dizine yazdık. Aşağıdaki kom
 
 Hive Dizin isteminde şunu çalıştırın:
 
-    hdfs dfs -mkdir wasb:///queryoutputdir
+```hiveql
+hdfs dfs -mkdir wasb:///queryoutputdir
 
-    hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
-
+hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
+```
 
 Sorgu sonuçları, Hadoop kümesinin varsayılan kapsayıcısı altında dokuz Azure Blob 'a (**quer0,0,putdir/000000 yazın \_ 0-quer0,0,putdir** **/000008 \_ 0**) yazılır.
 
 Ayrı Blobların boyutunu görmek için Hive Dizin isteminde aşağıdaki komutu çalıştırın:
 
-    hdfs dfs -ls wasb:///queryoutputdir
+```hiveql
+hdfs dfs -ls wasb:///queryoutputdir
+```
 
 Belirli bir dosyanın içeriğini görmek için, **000000 yazın \_ 0**deyin, Hadoop 'ın `copyToLocal` komutunu kullanın.
 
-    hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```hiveql
+hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```
 
 > [!WARNING]
 > `copyToLocal`büyük dosyalar için çok yavaş olabilir ve bunlarla birlikte kullanılması önerilmez.  
@@ -588,130 +684,134 @@ Sorgu daha sonra sorgu sonuçlarının Azure Machine Learning Studio sığması 
 
 Machine Learning ' de model oluşturmaya yönelik verileri hazırlayan ** \_ \_ \_ \_ AML \_ Full. HQL** dosyasının içeriği aşağıda verilmiştir:
 
-        set R = 3959;
-        set pi=radians(180);
+```hiveql
+set R = 3959;
+set pi=radians(180);
 
-        create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
 
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        pickup_hour string,
-        pickup_week string,
-        weekday string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double,
-        direct_distance double,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double,
-        tipped string,
-        tip_class string
-        )
-        row format delimited fields terminated by ','
-        lines terminated by '\n'
-        stored as textfile;
+medallion string,
+hack_license string,
+vendor_id string,
+rate_code string,
+store_and_fwd_flag string,
+pickup_datetime string,
+dropoff_datetime string,
+pickup_hour string,
+pickup_week string,
+weekday string,
+passenger_count int,
+trip_time_in_secs double,
+trip_distance double,
+pickup_longitude double,
+pickup_latitude double,
+dropoff_longitude double,
+dropoff_latitude double,
+direct_distance double,
+payment_type string,
+fare_amount double,
+surcharge double,
+mta_tax double,
+tip_amount double,
+tolls_amount double,
+total_amount double,
+tipped string,
+tip_class string
+)
+row format delimited fields terminated by ','
+lines terminated by '\n'
+stored as textfile;
 
-        --- now insert contents of the join into the above internal table
+--- now insert contents of the join into the above internal table
 
-        insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
-        select
-        t.medallion,
-        t.hack_license,
-        t.vendor_id,
-        t.rate_code,
-        t.store_and_fwd_flag,
-        t.pickup_datetime,
-        t.dropoff_datetime,
-        hour(t.pickup_datetime) as pickup_hour,
-        weekofyear(t.pickup_datetime) as pickup_week,
-        from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-        t.passenger_count,
-        t.trip_time_in_secs,
-        t.trip_distance,
-        t.pickup_longitude,
-        t.pickup_latitude,
-        t.dropoff_longitude,
-        t.dropoff_latitude,
-        t.direct_distance,
-        f.payment_type,
-        f.fare_amount,
-        f.surcharge,
-        f.mta_tax,
-        f.tip_amount,
-        f.tolls_amount,
-        f.total_amount,
-        if(tip_amount>0,1,0) as tipped,
-        if(tip_amount=0,0,
-        if(tip_amount>0 and tip_amount<=5,1,
-        if(tip_amount>5 and tip_amount<=10,2,
-        if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
+insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
+select
+t.medallion,
+t.hack_license,
+t.vendor_id,
+t.rate_code,
+t.store_and_fwd_flag,
+t.pickup_datetime,
+t.dropoff_datetime,
+hour(t.pickup_datetime) as pickup_hour,
+weekofyear(t.pickup_datetime) as pickup_week,
+from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
+t.passenger_count,
+t.trip_time_in_secs,
+t.trip_distance,
+t.pickup_longitude,
+t.pickup_latitude,
+t.dropoff_longitude,
+t.dropoff_latitude,
+t.direct_distance,
+f.payment_type,
+f.fare_amount,
+f.surcharge,
+f.mta_tax,
+f.tip_amount,
+f.tolls_amount,
+f.total_amount,
+if(tip_amount>0,1,0) as tipped,
+if(tip_amount=0,0,
+if(tip_amount>0 and tip_amount<=5,1,
+if(tip_amount>5 and tip_amount<=10,2,
+if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
 
-        from
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        rate_code,
-        store_and_fwd_flag,
-        pickup_datetime,
-        dropoff_datetime,
-        passenger_count,
-        trip_time_in_secs,
-        trip_distance,
-        pickup_longitude,
-        pickup_latitude,
-        dropoff_longitude,
-        dropoff_latitude,
-        ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-        *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-        *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-        +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
-        rand() as sample_key
+from
+(
+select
+medallion,
+hack_license,
+vendor_id,
+rate_code,
+store_and_fwd_flag,
+pickup_datetime,
+dropoff_datetime,
+passenger_count,
+trip_time_in_secs,
+trip_distance,
+pickup_longitude,
+pickup_latitude,
+dropoff_longitude,
+dropoff_latitude,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+*${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
++cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
+rand() as sample_key
 
-        from nyctaxidb.trip
-        where pickup_latitude between 30 and 90
-            and pickup_longitude between -90 and -30
-            and dropoff_latitude between 30 and 90
-            and dropoff_longitude between -90 and -30
-        )t
-        join
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        pickup_datetime,
-        payment_type,
-        fare_amount,
-        surcharge,
-        mta_tax,
-        tip_amount,
-        tolls_amount,
-        total_amount
-        from nyctaxidb.fare
-        )f
-        on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-        where t.sample_key<=0.01
+from nyctaxidb.trip
+where pickup_latitude between 30 and 90
+    and pickup_longitude between -90 and -30
+    and dropoff_latitude between 30 and 90
+    and dropoff_longitude between -90 and -30
+)t
+join
+(
+select
+medallion,
+hack_license,
+vendor_id,
+pickup_datetime,
+payment_type,
+fare_amount,
+surcharge,
+mta_tax,
+tip_amount,
+tolls_amount,
+total_amount
+from nyctaxidb.fare
+)f
+on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
+where t.sample_key<=0.01
+```
 
 Bu sorguyu Hive Dizin isteminden çalıştırmak için:
 
-    hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```console
+hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```
 
 Artık, Machine Learning [veri alma][import-data] modülü kullanılarak erişilebilen **nyctaxidb. nyctaxi_downsampled_dataset**iç tablosuna sahipsiniz. Ayrıca, bu veri kümesini Machine Learning modelleri oluşturmak için de kullanabiliriz.  
 
@@ -739,7 +839,9 @@ Machine Learning [veri Içeri aktarma][import-data] modülünde Hive sorguları 
 
 Burada, **D. db** veritabanındaki **bir tablonun iç tablo olup** olmadığı nasıl saptanamıyor. Hive Dizin isteminde aşağıdaki komutu çalıştırın:
 
-    hdfs dfs -ls wasb:///D.db/T
+```hiveql
+hdfs dfs -ls wasb:///D.db/T
+```
 
 Tablo bir iç tablo ise ve doldurulduğundan, içeriğinin burada gösterilmesi gerekir.
 

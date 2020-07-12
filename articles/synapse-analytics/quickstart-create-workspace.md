@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-SYNAPSE çalışma alanı oluşturma
+title: 'Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma'
 description: Bu kılavuzdaki adımları izleyerek bir Synapse çalışma alanı oluşturun.
 services: synapse-analytics
 author: pimorano
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e5896d1eabaf43afcbab7513d7abb0b1de4efe51
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: a069ee40c2db99b05e9620cf83c06c49cc9e29fc
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656695"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274246"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma
 
@@ -22,13 +22,13 @@ Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma a
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın
+[Azure portalında](https://portal.azure.com/) oturum açın
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma
 
@@ -38,12 +38,12 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ![Yeni Azure SYNAPSE çalışma alanı vurgulanmış olan komut.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
 3. **Azure SYNAPSE çalışma alanı** formunu aşağıdaki bilgilerle doldurun:
 
-    | Ayar | Önerilen değer | Description |
+    | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
     | **Abonelik** | *Aboneliğiniz* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
     | **Kaynak grubu** | *Herhangi bir kaynak grubu* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
     | **Çalışma alanı adı** | mysampleworkspace | Bağlantı uç noktaları için de kullanılacak olan çalışma alanının adını belirtir.|
-    | **Geli** | Doğu ABD 2 | Çalışma alanının konumunu belirtir.|
+    | **Bölge** | Doğu ABD 2 | Çalışma alanının konumunu belirtir.|
     | **Data Lake Storage 2. Nesil** | Hesabı`storage account name` </br> Dosya sistemi:`root file system to use` | Birincil depolama ve kullanılacak dosya sistemi olarak kullanılacak ADLS 2. depolama hesabı adını belirtir.|
     ||||
 

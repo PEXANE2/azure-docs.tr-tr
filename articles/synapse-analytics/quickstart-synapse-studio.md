@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE Studio 'Yu kullanma (Önizleme)
+title: "Hızlı başlangıç: SYNAPSE Studio 'Yu kullanma"
 description: Bu hızlı başlangıçta, SYNAPSE Studio kullanarak çeşitli dosya türlerini sorgulamak için ne kadar kolay olduğunu göreceksiniz ve öğrenirsiniz.
 services: synapse-analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 182c6a20af51508c357079b9542b2bda695fdae4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658522"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276065"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanma (Önizleme)
 
@@ -26,15 +26,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [Azure portalında](https://portal.azure.com/) oturum açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure SYNAPSE çalışma alanı ve ilişkili depolama hesabı oluşturun](quickstart-create-workspace.md).
 
-## <a name="launch-synapse-studio"></a>SYNAPSE Studio 'Yu Başlat
+## <a name="launch-synapse-studio"></a>Synapse Studio'yu başlatma
 
 Azure portal Azure SYNAPSE çalışma alanınızda, **SYNAPSE Studio 'Yu Başlat**' a tıklayın.
 
-![SYNAPSE Studio 'Yu Başlat](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
+![Synapse Studio'yu başlatma](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
 
 Alternatif olarak, [Azure SYNAPSE Analytics](https://web.azuresynapse.net) ' i tıklatarak ve uygun kiracı, abonelik ve çalışma alanı değerlerini sağlayarak SYNAPSE Studio 'yu başlatabilirsiniz.
 

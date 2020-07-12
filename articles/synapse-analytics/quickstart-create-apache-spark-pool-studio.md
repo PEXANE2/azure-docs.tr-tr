@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-SYNAPSE Studio kullanarak Apache Spark Havuzu (Önizleme) oluşturma
+title: "Hızlı başlangıç: SYNAPSE Studio 'Yu kullanarak Apache Spark Havuzu (Önizleme) oluşturma"
 description: Bu kılavuzdaki adımları izleyerek SYNAPSE Studio kullanarak yeni bir Apache Spark havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c945e56aa0b6f851f54cf7679276558190b4bc10
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 87fcbef5a3cedab3142fe9ad47c68752515fdd2e
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194986"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274348"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanarak Apache Spark Havuzu (Önizleme) oluşturma
 
@@ -27,14 +27,14 @@ Bu hızlı başlangıçta SYNAPSE Studio kullanarak bir Synapse çalışma alan�
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](./quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın
+[Azure portalında](https://portal.azure.com/) oturum açın
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin
 
@@ -61,7 +61,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 1. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
-    | Ayar | Önerilen değer | Description |
+    | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
     | **Apache Spark havuzu adı** | contosospark | Bu, Apache Spark havuzunun sahip olacağı addır. |
     | **Düğüm boyutu** | Küçük (4 vCPU/32 GB) | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarlayın |

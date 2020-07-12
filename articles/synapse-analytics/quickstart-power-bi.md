@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Power BI çalışma alanını bir Synapse çalışma alanına bağlama
+title: 'Hızlı başlangıç: Power BI çalışma alanını bir Synapse çalışma alanına bağlama'
 description: Bu kılavuzdaki adımları izleyerek bir Power BI çalışma alanını Azure SYNAPSE Analytics çalışma alanına bağlayın.
 services: synapse-analytics
 author: jocaplan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3317410408754519bcd8b52e78dee4a81b3ab070
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f9ae7b74c17bb330c2c7aa99903c62d4701f0a52
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609497"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274195"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Hızlı başlangıç: Power BI çalışma alanını bir Synapse çalışma alanına bağlama
 
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
     ![Power BI bağlı hizmet kurulumu görüntüleniyor.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>SYNAPSE Studio 'da Power BI çalışma alanını görüntüleme
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 15cdd4c53105998488d2ae1f544e34c1e07a157a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 549fd9851ffce4459e16b4d84f368234bfdf207d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82147138"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275827"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -137,7 +137,7 @@ Aşağıdaki yönergelerde, [Azure Sanal ağınızı](https://docs.microsoft.com
 
 5. [Azure NetApp Files IÇIN NFS birimi oluşturma](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)bölümündeki yönergeleri izleyerek Azure NetApp Files birimleri dağıtın.  
 
-   Birimleri dağıtmakta olduğunuz gibi, **Nfsv 4.1** sürümünü seçtiğinizden emin olun. Şu anda, NFSv 4.1 'e erişim ek beyaz listeleme gerektirir. Birimleri belirlenen Azure NetApp Files [alt ağına](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)dağıtın. Azure NetApp birimlerinin IP adresleri otomatik olarak atanır. 
+   Birimleri dağıtmakta olduğunuz gibi, **Nfsv 4.1** sürümünü seçtiğinizden emin olun. Şu anda, NFSv 4.1 erişimi bir izin verilenler listesine eklenmelidir. Birimleri belirlenen Azure NetApp Files [alt ağına](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)dağıtın. Azure NetApp birimlerinin IP adresleri otomatik olarak atanır. 
    
    Azure NetApp Files kaynaklarının ve Azure VM 'lerinin aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında olması gerektiğini unutmayın. Örneğin, **HN1**-Data-Mnt00001, **HN1**-log-mnt00001 ve benzeri, birim adları ve NFS://10.23.1.5/**HN1**-Data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001, vb., Azure NetApp Files birimlerinin dosya yollarıdır.  
 

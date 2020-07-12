@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811418"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273481"
 ---
 # <a name="azure-customer-data-protection"></a>Azure müşteri verileri koruması   
-Microsoft Operasyon ve destek personelinin müşteri verilerine erişimi varsayılan olarak reddedilir. Müşteri verilerine erişim verildiğinde, liderlik onayı gereklidir ve sonra erişim dikkatlice yönetilir ve günlüğe kaydedilir. Erişim denetimi gereksinimleri aşağıdaki Azure Güvenlik Ilkesiyle belirlenir:
+Microsoft Operasyon ve destek personelinin müşteri verilerine erişimi varsayılan olarak reddedilir. Bir destek durumuyla ilgili verilere erişim izni verildiğinde, yalnızca Uyumluluk ve Gizlilik İlkemize göre denetlenen ve belirtilen ilkeler kullanılarak tam zamanında (JıT) bir model kullanılarak verilir.  Erişim denetimi gereksinimleri aşağıdaki Azure Güvenlik Ilkesiyle belirlenir:
 
 - Varsayılan olarak müşteri verilerine erişim yoktur.
 - Müşteri sanal makinelerinde (VM) Kullanıcı veya yönetici hesabı yok.
@@ -39,12 +40,9 @@ Azure, müşterilere hem varsayılan hem de müşteri seçenekleri olarak güçl
 
 **REST veri koruması**: müşteriler, Azure 'da depolanan verilerin standartlarına uygun şekilde şifrelendiğinden emin olmanın sorumluluğundadır. Azure, müşterilere ihtiyaçlarını en iyi şekilde karşılayan çözümü seçme esnekliği sunarak çok çeşitli şifreleme özellikleri sunmaktadır. Azure Key Vault, müşterilerin verileri şifrelemek için bulut uygulamaları ve Hizmetleri tarafından kullanılan anahtarların denetimini kolayca korumasına yardımcı olur. Azure disk şifrelemesi, müşterilerin VM 'Leri şifrelemesini sağlar. Azure Depolama Hizmeti Şifrelemesi, bir müşterinin depolama hesabına yerleştirilmiş tüm verileri şifrelemeyi mümkün hale getirir.
 
-**Aktarım sırasında veri koruması**: müşteriler, kendi VM 'leri ve son kullanıcılar arasındaki trafik için şifrelemeyi etkinleştirebilir. Azure, geçiş sırasında, iki sanal ağ arasındaki gibi şirket içi ve dışarıdan veri aktarımı içindeki verileri ve dışarıdan verileri korur. Azure, şu arasındaki iletişimleri şifrelemek için CESG/NCSC tarafından önerilen 2.048 bit RSA/SHA256 şifreleme anahtarları ile endüstri standardı Aktarım Katmanı Güvenliği (TLS) 1,2 veya üzeri protokol kullanır:
+**Aktarım sırasında veri koruması**: Microsoft, müşteriler tarafından Azure ağı dahilinde ve dışarıdan son kullanıcıya dışarıdan geçiş sırasında verilerin güvenliğini sağlamak için kullanılabilecek çeşitli seçenekler sunar.  Bunlar arasında sanal özel ağlar (IPSec/ıKE şifrelemesi kullanılarak), Aktarım Katmanı Güvenliği (TLS) 1,2 veya üzeri (Application Gateway veya Azure ön kapılı Azure bileşenleri aracılığıyla), doğrudan Azure sanal makinelerinde (Windows IPSec veya SMB gibi) protokoller ve daha fazlası bulunur. 
 
-- Müşteri ve bulut.
-- Azure sistemleri ve veri merkezleri arasında dahili olarak.
-
-**Şifreleme**: depolamada ve aktarımda verilerin şifrelenmesi, verilerin gizliliğini ve bütünlüğünü sağlamak için en iyi uygulama olarak müşteriler tarafından dağıtılabilir. Müşterilerin Azure bulut hizmetlerini, internet 'ten gelen iletişimleri ve hatta Azure 'da barındırılan VM 'Leri arasında korumak için TLS kullanması için kolay bir şekilde yapılandırır.
+Ayrıca, MACsec (veri bağlantı katmanında bir IEEE standardı) kullanılarak "varsayılan olarak şifreleme" özelliği, müşteri verilerinin gizliliğini ve bütünlüğünü sağlamak için Azure veri merkezleri arasında tüm Azure trafiği gezilerinde etkinleştirilir. 
 
 **Veri artıklığı**: Microsoft, bir veri merkezine yönelik bir Simi saldırı veya fiziksel hasar olması durumunda verilerin korunmasını sağlar. Müşteriler şunları kabul edebilir:
 

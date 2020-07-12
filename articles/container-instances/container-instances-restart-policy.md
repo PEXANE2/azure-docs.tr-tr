@@ -3,12 +3,12 @@ title: Bir kez çalıştır görevi için yeniden başlatma ilkesi
 description: Derleme, test veya görüntü işleme işlerinde olduğu gibi, tamamlama için çalışan görevleri yürütmek üzere Azure Container Instances nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80131503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261343"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Yeniden başlatma ilkeleriyle kapsayıcılı görevleri çalıştırma
 
@@ -22,7 +22,7 @@ Bu makalede sunulan örneklerde Azure CLı kullanılır. [Yerel olarak][azure-cl
 
 Azure Container Instances ' de bir [kapsayıcı grubu](container-instances-container-groups.md) oluşturduğunuzda, üç yeniden başlatma ilkesi ayarlarından birini belirtebilirsiniz.
 
-| Yeniden başlatma ilkesi   | Description |
+| Yeniden başlatma ilkesi   | Açıklama |
 | ---------------- | :---------- |
 | `Always` | Kapsayıcı grubundaki kapsayıcılar her zaman yeniden başlatılır. Bu, kapsayıcı oluşturulurken yeniden başlatma ilkesi belirtilmezse uygulanan **varsayılan** ayardır. |
 | `Never` | Kapsayıcı grubundaki kapsayıcılar hiçbir zaman yeniden başlatılmaz. Kapsayıcılar en fazla bir kez çalışır. |
@@ -90,13 +90,13 @@ az container logs --resource-group myResourceGroup --name mycontainer
  ('HAMLET', 386)]
 ```
 
-Bu örnek, komut dosyasının STDOUT 'a gönderdiği çıktıyı gösterir. Ancak Kapsayıcılı görevleriniz, daha sonra almak üzere çıkışını kalıcı depolamaya yazabilir. Örneğin, bir [Azure dosya paylaşımında](container-instances-mounting-azure-files-volume.md).
+Bu örnek, komut dosyasının STDOUT 'a gönderdiği çıktıyı gösterir. Ancak Kapsayıcılı görevleriniz, daha sonra almak üzere çıkışını kalıcı depolamaya yazabilir. Örneğin, bir [Azure dosya paylaşımında](./container-instances-volume-azure-files.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Birkaç kapsayıcı içeren büyük bir veri kümesini toplu işleme gibi görev tabanlı senaryolar, çalışma zamanında özel [ortam değişkenlerinden](container-instances-environment-variables.md) veya [komut satırlarından](container-instances-start-command.md) faydalanabilir.
 
-Tamamlanmayı çalıştıran kapsayıcılarınızın çıkışını kalıcı hale getirme hakkında daha fazla bilgi için, bkz. [Azure Container Instances bir Azure dosya paylaşma bağlama](container-instances-mounting-azure-files-volume.md).
+Tamamlanmayı çalıştıran kapsayıcılarınızın çıkışını kalıcı hale getirme hakkında daha fazla bilgi için, bkz. [Azure Container Instances bir Azure dosya paylaşma bağlama](./container-instances-volume-azure-files.md).
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

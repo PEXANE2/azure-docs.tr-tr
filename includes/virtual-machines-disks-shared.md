@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83868010"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277981"
 ---
 Azure paylaşılan diskler (Önizleme), Azure yönetilen disklere yönelik olarak birden çok sanal makineye (VM) aynı anda bir yönetilen disk iliştirmeyi sağlayan yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
 
@@ -41,7 +41,7 @@ Paylaşılan yönetilen diskler, SMB/NFS kullanılarak erişilebilen tam olarak 
 
 WSFC üzerinde çalışan bazı popüler uygulamalar şunlardır:
 
-- SQL Server Yük Devretme Kümesi Örnekleri (FCI)
+- [Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - Genişleme Dosya Sunucusu (SoFS)
 - Genel Kullanıma Yönelik Dosya Sunucusu (IW iş yükü)
 - Uzak Masaüstü Sunucusu Kullanıcı Profili Diski (RDS UPD)
@@ -87,7 +87,12 @@ Ultra diskler, toplam iki kısıtlamak için ek bir kısıtlama sağlar. Bu nede
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Ayırma tutucusu, kayıtlı ve diğerleri için salt okunur veya okuma/yazma erişimini gösteren bir tablo görüntüsü.":::
 
-## <a name="ultra-disk-performance-throttles"></a>Ultra disk performansı azaltıcı Les
+## <a name="performance-throttles"></a>Performans azaltıcı Les
+
+### <a name="premium-ssd-performance-throttles"></a>Premium SSD performans azaltıcı Les
+Premium SSD ile disk ıOPS ve aktarım hızı sabittir, örn. P30 ıOPS 5000. Bu değer, diskin 2 VM veya 5 VM arasında paylaşılıp paylaşılmadığını sürdürür. Disk sınırlarına tek bir VM 'den ulaşılabilir veya iki ya da daha fazla VM 'ye ayrılabilir. 
+
+### <a name="ultra-disk-performance-throttles"></a>Ultra disk performansı azaltıcı Les
 
 Ultra diskler, değiştirilebilir öznitelikler sunarak ve bunları değiştirmenize izin vererek performansınızı ayarlamanıza olanak tanıyan benzersiz bir özelliktir. Varsayılan olarak, yalnızca iki değiştirilebilir öznitelik vardır ancak paylaşılan Ultra diskler iki ek özniteliğe sahiptir.
 
@@ -111,23 +116,23 @@ Aşağıdaki formüllerde, Kullanıcı tarafından değiştirilebilir oldukları
     - Tek bir diskin verimlilik limiti, sağlanan her ıOPS için 256 KiB/sn ve disk başına en fazla 2000 MBps olur
     - Her bir sağlanan ıOPS için en düşük değer 1 MB/sn olan her bir disk için en az garanti edilen iş hacmi 4KiB/sn 'dir
 
-### <a name="examples"></a>Örnekler
+#### <a name="examples"></a>Örnekler
 
 Aşağıdaki örneklerde, kısıtlama 'nin paylaşılan Ultra disklerle özel olarak nasıl çalışabildiğiyle ilgili birkaç senaryo gösterilmektedir.
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Küme Paylaşılan birimlerini kullanan iki düğümlü küme
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Küme Paylaşılan birimlerini kullanan iki düğümlü küme
 
 Aşağıda, kümelenmiş paylaşılan birimleri kullanarak 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, her iki VM için aynı anda diske yazma erişimi vardır ve bu da iki VM 'de ve salt okunur kısıtlama kullanılmakta olan okuma kısıtlaması ile sonuçlanır.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV iki düğümlü Ultra örnek":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Küme paylaşma birimleri olmayan iki düğümlü küme
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Küme paylaşma birimleri olmayan iki düğümlü küme
 
 Aşağıda, kümelenmiş paylaşılan birimleri kullanmayan 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bu durum, yalnızca birincil VM için ve salt okunur kısıtlama yalnızca ikincil tarafından kullanılan okuma kısıtlaması ile sonuçlanır.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV iki düğüm hiçbir CSV Ultra disk örneği":::
 
-#### <a name="four-node-linux-cluster"></a>Dört düğümlü Linux kümesi
+##### <a name="four-node-linux-cluster"></a>Dört düğümlü Linux kümesi
 
 Aşağıda, tek bir yazıcı ve üç genişleme okuyucuları içeren 4 düğümlü Linux kümesine bir örnek verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bu durum, birincil VM için özel olarak kullanılan okuma kısıtlaması ve ikincil VM 'Ler tarafından bölünen salt okunur kısıtlama ile sonuçlanır.
 

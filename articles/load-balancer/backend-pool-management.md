@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113981"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273770"
 ---
 # <a name="backend-pool-management"></a>Arka uç havuzu yönetimi
 Arka uç havuzu, yük dengeleyicinin kritik bir bileşenidir. Arka uç havuzu, belirli bir yük dengeleme kuralı için trafik sunacak kaynak grubunu tanımlar.
@@ -22,9 +22,9 @@ Arka uç havuzunu yapılandırmanın iki yolu vardır:
 * Ağ arabirimi kartı (NIC)
 * Birleşik IP adresi ve sanal ağ (VNET) kaynak KIMLIĞI
 
-Sanal makineler ve sanal makine ölçek kümeleri kullanırken arka uç havuzunuzu NIC ile yapılandırın. Bu yöntem, kaynağınız ile arka uç havuzu arasındaki en doğrudan bağlantıyı oluşturur. 
+Mevcut sanal makineleri ve sanal makine ölçek kümelerini kullanırken arka uç havuzunuzu NIC ile yapılandırın. Bu yöntem, kaynağınız ile arka uç havuzu arasındaki en doğrudan bağlantıyı oluşturur. 
 
-Kapsayıcı veya Kubernetes pods gibi bir NIC 'nin kullanılamadığı senaryolarda, arka uç havuzunuzu IP adresine ve VNET KIMLIĞI birleşimine göre yapılandırın.
+Arka uç havuzunuzu daha sonra sanal makineler ve sanal makine ölçek kümeleri oluşturmayı planladığınız bir IP adresi aralığıyla önceden ayırırken, arka uç havuzunuzu IP adresine ve VNET KIMLIĞI birleşimine göre yapılandırın.
 
 Bu makalenin yapılandırma bölümleri şu şekilde odaklanacaktır:
 
@@ -249,7 +249,7 @@ JSON istek gövdesi:
 Yük dengeleyici ve sanal makineler dağıtmak ve ağ arabirimi aracılığıyla sanal makineleri arka uç havuzuna eklemek için bu [hızlı başlangıç Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) izleyin.
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>IP adresi ve sanal ağ ile arka uç havuzunu yapılandırma
-Kapsayıcılarla senaryolarda veya IP 'Ler ile önceden doldurulmuş bir arka uç havuzu ile IP ve sanal ağ kullanın.
+Önceden doldurulmuş arka uç havuzlarıyla birlikte IP ve sanal ağ kullanın.
 
 Tüm arka uç havuzu yönetimi, aşağıdaki örneklerde vurgulanan şekilde doğrudan arka uç havuzu nesnesi üzerinde yapılır.
 
@@ -407,7 +407,7 @@ az vm create \
 Bir arka uç havuzu isteği ile arka uç havuzu oluşturun ve arka uç adreslerini tanımlayın. PUT isteğinin JSON gövdesinde arka uç adreslerini şu şekilde yapılandırın:
 
 * Adres adı
-* IP adresi
+* IP address
 * Sanal ağ KIMLIĞI 
 
 ```

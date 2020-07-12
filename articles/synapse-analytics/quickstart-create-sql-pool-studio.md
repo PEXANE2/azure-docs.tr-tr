@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-SYNAPSE Studio 'Yu kullanarak bir Synapse SQL Havuzu (Önizleme) oluşturma
+title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak SYNAPSE SQL Havuzu (Önizleme) oluşturma'
 description: Bu kılavuzdaki adımları izleyerek SYNAPSE Studio kullanarak yeni bir Synapse SQL havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f93eb55b888c58ad111bd67b2011ba9c996b16bb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960274"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274280"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak SYNAPSE SQL Havuzu (Önizleme) oluşturma
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın
+[Azure portalında](https://portal.azure.com/) oturum açın
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin
 
@@ -59,7 +59,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 1. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
-    | Ayar | Önerilen değer | Description |
+    | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
     | **SQL havuzu adı** | contosoedw | Bu, SQL havuzunun sahip olacağı addır. |
     | **Performans düzeyi** | DW100c | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarlayın |

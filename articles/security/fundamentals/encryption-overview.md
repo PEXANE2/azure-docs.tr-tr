@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276541"
 ---
-# <a name="azure-encryption-overview"></a>Azure şifrelemeye genel bakış
+# <a name="azure-encryption-overview"></a>Azure'da şifrelemeye genel bakış
 
 Bu makalede, Microsoft Azure ' de şifrelemenin nasıl kullanıldığına ilişkin bir genel bakış sunulmaktadır. Bekleyen şifreleme, uçuşta şifreleme ve Azure Key Vault ile anahtar yönetimi dahil olmak üzere, şifrelemenin ana bölgelerini ele alır. Her bölüm daha ayrıntılı bilgi için bağlantılar içerir.
 
@@ -116,9 +117,13 @@ Verileri şifrelemek ve şifrelerini çözmek için üç tür anahtar kullanıl�
 
 Azure, verileri bir konumdan diğerine taşırken verilerin özel tutulması için birçok mekanizma sunar.
 
-### <a name="tlsssl-encryption-in-azure"></a>Azure 'da TLS/SSL şifrelemesi
+### <a name="data-link-layer-encryption-in-azure"></a>Azure 'da veri bağlantısı katmanı şifreleme
 
-Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde verileri korumak için [Aktarım Katmanı Güvenliği](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) protokolünü kullanır. Microsoft veri merkezleri, Azure hizmetlerine bağlanan istemci sistemleriyle bir TLS bağlantısı anlaşmasına sahiptir. TLS, güçlü kimlik doğrulaması, ileti gizliliği ve bütünlük (ileti izinsiz değişikliği, yakalama ve forgery), birlikte çalışabilirlik, algoritma esnekliği ve dağıtım ve kullanım kolaylığı sağlar.
+Azure müşteri [trafiği, Microsoft](https://1.ieee802.org/security/802-1ae/) tarafından denetlenmediği (veya Microsoft 'un adına), fiziksel sınırların dışındaki veri merkezleri arasında her taşınamadığında, ana ağ donanımının tamamında noktadan noktaya (MACsec olarak da bilinir) kullanan bir veri bağlantısı katmanı şifreleme yöntemi uygulanır.  Paketler gönderilmeden önce cihazlarda şifrelenir ve şifresi çözülür, böylece fiziksel "ortadaki adam" veya gözetleme/kablolu dokunma saldırıları engellenir.  Bu teknoloji ağ donanımının kendisi üzerinde tümleştirildiği için, ölçülebilir bağlantı gecikme süresi artışına sahip Ağ donanımında satır hızı şifrelemesi sağlar.  Bu MACsec şifrelemesi, bir bölgedeki veya bölgelerin içindeki tüm Azure trafiği gezileri için varsayılan olarak açık olur ve müşterilerin etkinleştirilmesi için müşterinin bölümünde herhangi bir işlem yapılması gerekmez. 
+
+### <a name="tls-encryption-in-azure"></a>Azure 'da TLS şifreleme
+
+Microsoft, müşterilere bulut hizmetleri ve müşteriler arasında seyahat edildiğinde verileri korumak için [Aktarım Katmanı Güvenliği](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) protokolünü kullanma olanağı sunar. Microsoft veri merkezleri, Azure hizmetlerine bağlanan istemci sistemleriyle bir TLS bağlantısı anlaşmasına sahiptir. TLS, güçlü kimlik doğrulaması, ileti gizliliği ve bütünlük (ileti izinsiz değişikliği, yakalama ve forgery), birlikte çalışabilirlik, algoritma esnekliği ve dağıtım ve kullanım kolaylığı sağlar.
 
 [Kusursuz Iletme gizliliği](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS), müşterilerin istemci sistemleri ile Microsoft bulut hizmetleri arasındaki bağlantıları benzersiz anahtarlara karşı korur. Bağlantılar Ayrıca RSA tabanlı 2.048 bit şifreleme anahtar uzunluklarını kullanır. Bu bileşim, birisinin aktarım aşamasında olan verileri kesmesini ve erişimini zorlaştırır.
 
@@ -140,7 +145,7 @@ Varsayılan olarak, bir paylaşım veya sunucu için SMB şifrelemesi açık old
 
 ## <a name="in-transit-encryption-in-vms"></a>VM 'lerde geçiş içi şifreleme
 
-Windows çalıştıran VM 'Ler arasında geçiş yapılan veriler, bağlantının doğasına bağlı olarak çeşitli yollarla şifrelenir.
+Windows çalıştıran VM 'Ler arasında geçiş yapılan veriler, bağlantının doğasına bağlı olarak çeşitli yollarla şifrelenebilir.
 
 ### <a name="rdp-sessions"></a>RDP oturumları
 
@@ -180,7 +185,7 @@ Azure sanal ağlarına Noktadan siteye VPN bağlantıları hakkında daha fazla 
 
 Azure portal, PowerShell veya Azure CLı kullanarak bir sanal ağa siteden siteye VPN bağlantısı yapılandırabilirsiniz.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 [Azure portal siteden siteye bağlantı oluşturma](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

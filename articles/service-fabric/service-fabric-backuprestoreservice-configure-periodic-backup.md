@@ -5,11 +5,12 @@ author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75610157"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261227"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
 
@@ -157,23 +158,23 @@ Bu uygulamaların veri yedekleme gereksinimlerinin şu şekilde olduğunu varsay
 
 Bu veri yedekleme gereksinimlerini karşılamak için, BP_5 BP_1 yedekleme ilkeleri oluşturulur ve yedekleme aşağıdaki gibi etkinleştirilir.
 1. MyApp_A
-    1. Sıklık tabanlı yedekleme zamanlaması olan _BP_1_yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore1_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Uygulama yedekleme](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 'sini etkinleştir ' i kullanarak uygulama _MyApp_A_ için bu ilkeyi etkinleştirin. Bu eylem, _güvenilir durum bilgisi olan hizmetlerin_ tüm bölümleri ve uygulama _MyApp_A_ait _Reliable Actors_ için yedekleme ilkesi _BP_1_ kullanarak veri yedeklemesini sağlar.
+    1. Sıklık tabanlı yedekleme zamanlaması olan _BP_1_yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore1_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Uygulama yedekleme](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 'sini etkinleştir ' i kullanarak uygulama _MyApp_A_ için bu ilkeyi etkinleştirin. Bu eylem, _güvenilir durum bilgisi olan hizmetlerin_ tüm bölümleri ve uygulama _MyApp_A_ait _Reliable Actors_ için yedekleme ilkesi _BP_1_ kullanarak veri yedeklemesini sağlar.
 
-    2. Sıklık 1 saat olarak ayarlandığı sıklık tabanlı yedekleme zamanlamasıyla _BP_2_yedekleme ilkesi oluşturun. ve _BackupStore1_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcA3_ için bu ilkeyi etkinleştirin. Bu eylem, otomatik olarak etkinleştirilen ilke _BP_1_ , bu bölümler için _BP_2_ yedekleme Ilkesi 'ni kullanarak Service _SvcA3_ 'in tüm bölümleri tarafından veri yedeklemeye _BP_2_ .
+    2. Sıklık 1 saat olarak ayarlandığı sıklık tabanlı yedekleme zamanlamasıyla _BP_2_yedekleme ilkesi oluşturun. ve _BackupStore1_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcA3_ için bu ilkeyi etkinleştirin. Bu eylem, otomatik olarak etkinleştirilen ilke _BP_1_ , bu bölümler için _BP_2_ yedekleme Ilkesi 'ni kullanarak Service _SvcA3_ 'in tüm bölümleri tarafından veri yedeklemeye _BP_2_ .
 
-    3. Sıklık tabanlı yedekleme zamanlaması olan _BP_3_yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore2_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcA1_P2_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcA1_P2_için _BP_3_ açık olarak etkinleştirilen _BP_1_ yayılan ilkeyi geçersiz kılar.
+    3. Sıklık tabanlı yedekleme zamanlaması olan _BP_3_yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore2_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcA1_P2_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcA1_P2_için _BP_3_ açık olarak etkinleştirilen _BP_1_ yayılan ilkeyi geçersiz kılar.
 
 2. MyApp_B
-    1. Zamanlama sıklığı türünün haftalık olarak ayarlandığı, çalıştırma günleri pazar olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla yedekleme ilkesi oluşturun _BP_4_. Depolama konumu _BackupStore1_kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcB1_ için bu ilkeyi etkinleştirin. Bu eylem, Service _SvcB1_'in tüm bölümleri için yedekleme ilkesi _BP_4_ kullanarak veri yedeklemeyi mümkün bir şekilde sunar.
+    1. Zamanlama sıklığı türünün haftalık olarak ayarlandığı, çalıştırma günleri pazar olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla yedekleme ilkesi oluşturun _BP_4_. Depolama konumu _BackupStore1_kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcB1_ için bu ilkeyi etkinleştirin. Bu eylem, Service _SvcB1_'in tüm bölümleri için yedekleme ilkesi _BP_4_ kullanarak veri yedeklemeyi mümkün bir şekilde sunar.
 
-    2. Zamanlama sıklığı türünün günlük olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla _BP_5_yedekleme ilkesi oluşturun. Depolama konumu _BackupStore1_kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcB2_P1_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcB2_P1_için yedekleme ilkesi _BP_5_ kullanarak veri yedeklemeye izin vermez.
+    2. Zamanlama sıklığı türünün günlük olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla _BP_5_yedekleme ilkesi oluşturun. Depolama konumu _BackupStore1_kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcB2_P1_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcB2_P1_için yedekleme ilkesi _BP_5_ kullanarak veri yedeklemeye izin vermez.
 
 Aşağıdaki diyagramda açık olarak etkinleştirilen yedekleme ilkeleri ve yayılmış yedekleme ilkeleri gösterilmektedir.
 
 ![Service Fabric uygulama hiyerarşisi][0]
 
 ## <a name="disable-backup"></a>Yedeklemeyi devre dışı bırak
-Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bırakılabilir. Bir _uygulamada_ etkinleştirilen yedekleme Ilkesi yalnızca [uygulama yedekleme API 'Sini devre dışı bırak](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) kullanılarak aynı _uygulamada_ devre dışı bırakılabilir, bir _hizmette_ etkinleştirilen yedekleme ilkesi, [Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API 'sini devre dışı bırakma kullanılarak aynı _hizmette_ devre dışı bırakılabilir ve bir _bölümde_ etkinleştirilen yedekleme ilkesi, [bölüm yedeklemesini devre dışı bırakma](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 'si kullanılarak aynı _bölümde_ devre dışı bırakılabilir.
+Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bırakılabilir. Bir _uygulamada_ etkinleştirilen yedekleme Ilkesi yalnızca [uygulama yedekleme API 'Sini devre dışı bırak](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) kullanılarak aynı _uygulamada_ devre dışı bırakılabilir, bir _hizmette_ etkinleştirilen yedekleme ilkesi, [Service Backup](/rest/api/servicefabric/sfclient-api-disableservicebackup) API 'sini devre dışı bırakma kullanılarak aynı _hizmette_ devre dışı bırakılabilir ve bir _bölümde_ etkinleştirilen yedekleme ilkesi, [bölüm yedeklemesini devre dışı bırakma](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 'si kullanılarak aynı _bölümde_ devre dışı bırakılabilir.
 
 * Bir _uygulama_ için yedekleme ilkesini devre dışı bırakmak, yedekleme Ilkesinin güvenilir durum bilgisi olan hizmet bölümlerine veya güvenilir aktör bölümlerine yayılmasının sonucu olarak oluşan tüm düzenli veri yedeklemelerini durduruyor.
 
@@ -191,19 +192,19 @@ Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bı
 ## <a name="suspend--resume-backup"></a>Askıya al & yedeklemeyi sürdürür
 Belirli durumlar, verilerin düzenli olarak yedeklenme için geçici olarak askıya alma talebinde bulunabilir. Bu tür durumlarda, gereksinime bağlı olarak, yedekleme API 'sini bir _uygulama_, _hizmet_veya _bölümde_kullanabilirsiniz. Düzenli yedekleme askıya alma, uygulama hiyerarşisinin uygulandığı noktadan sonra alt ağacı üzerinde geçişlidir. 
 
-* [Askıya alma, uygulama yedeklemesi](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API 'sini kullanarak bir _uygulamaya_ uygulandığında, verilerin düzenli olarak yedeklenmesi için bu uygulamadaki tüm hizmetler ve bölümler askıya alınır.
+* [Askıya alma, uygulama yedeklemesi](/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API 'sini kullanarak bir _uygulamaya_ uygulandığında, verilerin düzenli olarak yedeklenmesi için bu uygulamadaki tüm hizmetler ve bölümler askıya alınır.
 
-* [Askıya alma hizmeti yedekleme](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API 'sini kullanan bir _hizmette_ , askıya alma tamamlandığında, verilerin düzenli olarak yedeklenmesi için bu hizmetin altındaki tüm bölümler askıya alınır.
+* [Askıya alma hizmeti yedekleme](/rest/api/servicefabric/sfclient-api-suspendservicebackup) API 'sini kullanan bir _hizmette_ , askıya alma tamamlandığında, verilerin düzenli olarak yedeklenmesi için bu hizmetin altındaki tüm bölümler askıya alınır.
 
-* [Askıya alma, Bölüm yedekleme](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API 'sini kullanarak bir _bölüme_ uygulandığında, verilerin düzenli olarak yedeklenmesi için bu hizmetin altındaki bölümleri askıya alır.
+* [Askıya alma, Bölüm yedekleme](/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API 'sini kullanarak bir _bölüme_ uygulandığında, verilerin düzenli olarak yedeklenmesi için bu hizmetin altındaki bölümleri askıya alır.
 
 Askıya alma gereksinimi bittikten sonra, ilgili yedekleme API 'SI kullanılarak düzenli veri yedeklemesi geri yüklenebilir. Düzenli yedekleme, askıya alındığı yerde aynı _uygulama_, _hizmet_veya _bölümde_ sürdürülmelidir.
 
-* Bir _uygulamaya_askıya alma uygulanmışsa, [uygulama yedekleme](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 'sini sürdürür kullanılarak devam edilmelidir. 
+* Bir _uygulamaya_askıya alma uygulanmışsa, [uygulama yedekleme](/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 'sini sürdürür kullanılarak devam edilmelidir. 
 
-* Askıya alma _hizmeti bir hizmette_uygulanmışsa, [hizmet yedekleme](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 'si kullanılarak devam edilmelidir.
+* Askıya alma _hizmeti bir hizmette_uygulanmışsa, [hizmet yedekleme](/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 'si kullanılarak devam edilmelidir.
 
-* Bir _bölüme_askıya alma uygulanmışsa, [bölüm yedekleme](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 'si kullanılarak devam edilmelidir.
+* Bir _bölüme_askıya alma uygulanmışsa, [bölüm yedekleme](/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 'si kullanılarak devam edilmelidir.
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>Yedeklemeleri askıya al ve devre dışı bırak arasındaki fark
 Belirli bir uygulama, hizmet veya bölüm için yedeklemeler artık gerekli olmadığında yedeklemeyi devre dışı bırak kullanılmalıdır. Bunlardan biri, temiz yedeklemeler parametresi ile birlikte devre dışı bırakma ve tüm mevcut yedeklemelerin de silindiği anlamına gelir. Ancak, yerel disk tam veya karşıya yükleme, bilinen ağ sorunu nedeniyle başarısız olduğunda yedeklemeleri geçici olarak kapatmak istediği senaryolarda askıya alma kullanılır. 
@@ -216,7 +217,7 @@ Hizmet bölümü, beklenmeyen hatalardan dolayı verileri kaybedebilir. Örneği
 Service Fabric, bölümün veri kaybına neden olduğunu algıladığında, `OnDataLossAsync` bölüm üzerinde arabirim yöntemini çağırır ve veri kaybını sağlamak için bölümün gerekli eylemi yerine gelmesini bekler. Bu durumda, bölümdeki etkin yedekleme ilkesinde `AutoRestoreOnDataLoss` bayrak ayarlandıysa, `true` geri yükleme Bu bölüm için kullanılabilir en son yedekleme kullanılarak otomatik olarak tetiklenir.
 
 ## <a name="get-backup-configuration"></a>Yedekleme yapılandırmasını al
-Ayrı API 'Ler, bir _uygulama_, _hizmet_ve _bölüm_ kapsamında yedekleme yapılandırma bilgilerini almak için kullanılabilir hale getirilir. [Uygulama yedekleme yapılandırma bilgilerini alın](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [hizmet yedekleme yapılandırma bilgilerini alın](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)ve [bölüm yedekleme yapılandırma bilgilerini al](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) , bu API 'ler sırasıyla bu API 'lerdir. Genellikle, bu API 'Ler, yedekleme ilkesinin uygulandığı kapsam ve yedekleme askıya alma ayrıntıları için geçerli yedekleme ilkesini döndürür. Aşağıda, bu API 'lerin döndürülen sonuçları hakkında kısa bir açıklama verilmiştir.
+Ayrı API 'Ler, bir _uygulama_, _hizmet_ve _bölüm_ kapsamında yedekleme yapılandırma bilgilerini almak için kullanılabilir hale getirilir. [Uygulama yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [hizmet yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)ve [bölüm yedekleme yapılandırma bilgilerini al](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) , bu API 'ler sırasıyla bu API 'lerdir. Genellikle, bu API 'Ler, yedekleme ilkesinin uygulandığı kapsam ve yedekleme askıya alma ayrıntıları için geçerli yedekleme ilkesini döndürür. Aşağıda, bu API 'lerin döndürülen sonuçları hakkında kısa bir açıklama verilmiştir.
 
 - Uygulama yedekleme yapılandırma bilgisi: uygulamada uygulanan yedekleme ilkesinin ayrıntılarını ve uygulamaya ait hizmetlere ve bölümlere yönelik tüm ridden ilkelerini sağlar. Ayrıca, uygulama ve BT hizmetleri ve bölümleri için askıya alınma bilgilerini içerir.
 
@@ -232,13 +233,13 @@ Bu API 'Ler Ayrıca sonuçların sayfalandırmayı destekler, _MaxResults_ param
 
 Desteklenen çeşitler hakkında kısa bilgiler aşağıda verilmiştir.
 
-- [Uygulama yedekleme listesini al](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): belirtilen Service Fabric uygulamasına ait her bölüm için kullanılabilen yedeklemelerin listesini döndürür.
+- [Uygulama yedekleme listesini al](/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): belirtilen Service Fabric uygulamasına ait her bölüm için kullanılabilen yedeklemelerin listesini döndürür.
 
-- [Hizmet yedekleme listesini al](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): verilen Service Fabric hizmetine ait her bölüm için kullanılabilen yedeklemelerin listesini döndürür.
+- [Hizmet yedekleme listesini al](/rest/api/servicefabric/sfclient-api-getservicebackuplist): verilen Service Fabric hizmetine ait her bölüm için kullanılabilen yedeklemelerin listesini döndürür.
  
-- [Bölüm yedekleme listesini al](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): belirtilen bölüm için kullanılabilen yedeklemelerin listesini döndürür.
+- [Bölüm yedekleme listesini al](/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): belirtilen bölüm için kullanılabilen yedeklemelerin listesini döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Yedekleme geri yükleme REST API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Yedekleme geri yükleme REST API başvurusu](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

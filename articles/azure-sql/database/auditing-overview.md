@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 26569606ce2aeb9d645f82e474b728cc4044ca93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250953"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276320"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,7 +79,7 @@ Varsayılan denetim ilkesi, tüm eylemleri ve aşağıdaki eylem grubu kümesini
 Azure SQL veritabanı ve Azure SYNAPSE Audit, bir denetim kaydındaki karakter alanları için 4000 karakter veri depolar. Denetlenebilir bir eylemden döndürülen **ifade** veya **data_sensitivity_information** değerleri 4000 'den fazla karakter içeriyorsa, ilk 4000 karakterden sonraki tüm veriler **kesilir ve denetlenmeyecektir**.
 Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması açıklanmaktadır.
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 2. **SQL veritabanınızda** veya **SQL Server** bölmesindeki güvenlik başlığı altında bulunan **denetime** gidin.
 3. Sunucu denetim ilkesi ayarlamayı tercih ediyorsanız, veritabanı denetimi sayfasında **sunucu ayarlarını görüntüle** bağlantısını seçebilirsiniz. Daha sonra sunucu denetimi ayarlarını görüntüleyebilir veya değiştirebilirsiniz. Sunucu denetim ilkeleri, bu sunucudaki tüm mevcut ve yeni oluşturulan veritabanları için geçerlidir.
 
@@ -93,7 +93,7 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Depolama hedefine yönelik denetim
 
-Bir depolama hesabına denetim günlükleri yazmayı yapılandırmak için **depolama** ve açık **depolama ayrıntıları**' nı seçin. Günlüklerin kaydedileceği Azure Depolama hesabını seçin ve ardından bekletme dönemini seçin. Ardından **Tamam**'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
+Bir depolama hesabına denetim günlükleri yazmayı yapılandırmak için **depolama** ve açık **depolama ayrıntıları**' nı seçin. Günlüklerin kaydedileceği Azure Depolama hesabını seçin ve ardından bekletme dönemini seçin. Daha sonra, **Tamam**'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
 
 - Saklama dönemi için varsayılan değer 0 ' dır (sınırsız saklama). Bu değeri, depolama hesabını denetim için yapılandırırken **depolama ayarları** ' nda **bekletme (gün)** kaydırıcısını taşıyarak değiştirebilirsiniz.
   - Saklama süresini 0 ' dan (sınırsız saklama) başka herhangi bir değere değiştirirseniz, lütfen bekletme 'nin yalnızca bekletme değeri değiştirildikten sonra yazılan günlüklere uygulanacağını unutmayın (bekletme etkin olduktan sonra bile, bekletme olarak sınırsız olarak ayarlandığında zaman içinde yazılır).
@@ -116,6 +116,8 @@ Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak 
 
    ![Loganalticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
+Azure Izleyici günlükleri çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
+   
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Olay Hub 'ı hedefine yönelik denetim
 
 > [!WARNING]
@@ -130,7 +132,7 @@ Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hu
 
 Denetim günlüklerini Azure Izleyici günlüklerine yazmayı seçtiyseniz:
 
-- [Azure Portal](https://portal.azure.com)kullanın. İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' yi seçin.
+- [Azure portalını](https://portal.azure.com) kullanın. İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' yi seçin.
 
     ![Denetim günlüklerini görüntüle](./media/auditing-overview/auditing-view-audit-logs.png)
 
@@ -160,7 +162,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 
 - Denetim günlükleri, kurulum sırasında seçtiğiniz hesapta toplanır. [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bir araç kullanarak denetim günlüklerini inceleyebilirsiniz. Azure depolama 'da denetim günlükleri, **sqldbauditlogs**adlı bir kapsayıcı içinde blob dosyaları koleksiyonu olarak kaydedilir. Depolama klasörlerinin, adlandırma kurallarının ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [SQL veritabanı denetim günlüğü biçimi](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- [Azure Portal](https://portal.azure.com)kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
+- [Azure portalını](https://portal.azure.com) kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
 
     ![Gezinti bölmesi](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 

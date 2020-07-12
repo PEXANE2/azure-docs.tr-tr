@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106637"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274552"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
@@ -39,7 +39,7 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 
 2. Sunucu menüsünden **çoğaltma**' yı seçin. Azure çoğaltma desteği en az **çoğaltmaya**ayarlanmışsa, okuma çoğaltmaları oluşturabilirsiniz. 
 
-3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**'i seçin.
+3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**’i seçin.
 
    ![PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet](./media/howto-read-replicas-portal/set-replica-save.png)
 
@@ -78,15 +78,15 @@ Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
 6. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin.
 
-Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
-
-> [!IMPORTANT]
-> Ana sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
-
 Okuma çoğaltması oluşturulduktan sonra **çoğaltma** penceresinden görüntülenebilir:
 
 ![Çoğaltma penceresinde yeni çoğaltmayı görüntüleme](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> [Okuma çoğaltmasına genel bakış konusunun Konular bölümünü](concepts-read-replicas.md#considerations)gözden geçirin.
+>
+> Ana sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
 
 ## <a name="stop-replication"></a>Çoğaltmayı durdurma
 Bir ana sunucu ve bir okuma çoğaltması arasındaki çoğaltmayı durdurabilirsiniz.

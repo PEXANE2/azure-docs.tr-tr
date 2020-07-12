@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: b8da326ea48133d2029f385fc55450c00aecf656
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: de74258cadcdf81da211561a84ff06927830e690
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106620"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274416"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLı 'dan okuma çoğaltmaları oluşturun ve yönetin REST API
 
@@ -61,7 +61,7 @@ Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
 [Az Postgres Server Replication Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) komutu aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Description  |
+| Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | name | mydemoserver-çoğaltma | Oluşturulan yeni çoğaltma sunucusunun adı. |
@@ -84,9 +84,9 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 
 `azure.replication_support`Parametreyi genel amaçlı veya bellek Için iyileştirilmiş ana sunucuda **çoğaltma** olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
 
-Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
-
 > [!IMPORTANT]
+> [Okuma çoğaltmasına genel bakış konusunun Konular bölümünü](concepts-read-replicas.md#considerations)gözden geçirin.
+>
 > Ana sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
 
 ### <a name="list-replicas"></a>Çoğaltmaları Listele

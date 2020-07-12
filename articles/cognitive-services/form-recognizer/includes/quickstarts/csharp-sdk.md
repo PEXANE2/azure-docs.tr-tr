@@ -9,15 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: c4a8950e5aaa56f739fb3f6f780fbcfef80e2ec6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b46e115b6360b161a1b2ad9b176f3afbfaf27d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035750"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277862"
 ---
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
@@ -134,7 +135,7 @@ Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerek
 * Bir makbuz görüntüsünün URL 'sini de almak için yukarıdaki yöntemi kullanın veya belirtilen örnek görüntü URL 'sini kullanın.
 
 > [!NOTE]
-> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)ilgili yöntemlere bakın.
+> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)ilgili yöntemlere bakın.
 
 ```csharp
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
@@ -170,7 +171,7 @@ Belirli bir URI 'deki bir dosyanın içeriğini tanımak için **Startrecognizec
 private static async Task<Guid> GetContent(
     FormRecognizerClient recognizerClient, string invoiceUri)
 {
-    Response<IReadOnlyList<FormPage>> formPages = await recognizerClient
+    Response<FormPageCollection> formPages = await recognizerClient
         .StartRecognizeContentFromUri(new Uri(invoiceUri))
         .WaitForCompletionAsync();
 ```

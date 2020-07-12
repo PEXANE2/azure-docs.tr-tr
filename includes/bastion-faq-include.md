@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82780325"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276132"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Hangi bölgeler kullanılabilir?
 
@@ -48,6 +48,10 @@ Hem RDP hem de SSH, kullanım tabanlı bir protokoldür. Oturumların yüksek ku
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Hangi tarayıcılar destekleniyor?
 
 Windows üzerinde Microsoft Edge tarayıcısını veya Google Chrome 'u kullanın. Apple Mac için Google Chrome tarayıcısı ' nı kullanın. Microsoft Edge Kmıum, sırasıyla hem Windows hem de Mac 'te desteklenir.
+
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Azure, müşteri verilerini nerede depolar?
+
+Azure savunma, müşteri verilerini dağıtıldığı bölgenin dışına taşımaz veya depolamaz.
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>Bir sanal makineye erişmek için gereken roller nelerdir?
 

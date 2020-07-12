@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
-ms.date: 05/06/2020
+ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94f9aca38ebe6fef50b555fa0d5b09050d996366
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: f9aa0214712704c1a80f73ae3fd05929f7245eb3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230630"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274160"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
@@ -93,6 +93,11 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
    > [!NOTE]
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
    
+    > [!IMPORTANT]
+    > **Depolama** **blobu veri** sahibini, KATKıDA bulunan veya Reader RBAC rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır. 
+
+    ![Yük için RBAC izni veriliyor](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+
 4. Şimdi "yönetilen kimlik" belirten kopyalama ifadesini çalıştırabilirsiniz:
 
     ```sql
@@ -104,14 +109,15 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
     )
     ```
 
-> [!IMPORTANT]
->
-> - **Depolama** **blobu veri** sahibini, KATKıDA bulunan veya Reader RBAC rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır. 
-
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory kimlik doğrulaması (AAD)
 #### <a name="steps"></a>Adımlar
 
 1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. AAD kullanıcısına **Depolama Blobu veri sahibi, katkıda bulunan veya Reader** RBAC rolü atayın. 
+
+    > [!IMPORTANT]
+    > **Depolama** **blobu veri** sahibini, KATKıDA bulunan veya Reader RBAC rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır.
+
+    ![Yük için RBAC izni veriliyor](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Aşağıdaki [belgelere](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)gıderek Azure AD kimlik doğrulamasını yapılandırın. 
 
@@ -125,9 +131,6 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
     )
     ```
 
-> [!IMPORTANT]
->
-> - **Depolama** **blobu veri** sahibini, KATKıDA bulunan veya Reader RBAC rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır. 
 
 ## <a name="e-service-principal-authentication"></a>E. Hizmet sorumlusu kimlik doğrulaması
 #### <a name="steps"></a>Adımlar

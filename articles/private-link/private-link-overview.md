@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c1246c2d3a58ad29503c0767b5c4af303d1f0c54
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3814711f090a7d996271f8fa5bef9ff1394d135a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957495"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276592"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -43,12 +43,12 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Desteklenen hizmetler  |Kullanılabilir bölgeler | Diğer konular | Durum  |
 |:-------------------|:-----------------|:----------------|:--------|
 |Standart Azure Load Balancer arkasındaki özel bağlantı Hizmetleri | Tüm ortak bölgeler  | Standart Load Balancer destekleniyor | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Azure Depolama       |  Tüm ortak bölgeler       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints)  |
+| Azure Storage       |  Tüm ortak bölgeler       |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints)  |
 | Azure Data Lake Storage Gen2        |  Tüm ortak bölgeler      |  Hesap türü Genel Amaçlı v2 'de desteklenir | GA <br/> [Daha fazla bilgi edinin](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Veritabanı         | Tüm ortak bölgeler      |  Ara sunucu [bağlantı ilkesi](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) için desteklenir | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure SYNAPSE Analytics (SQL veri ambarı)| Tüm ortak bölgeler |  Ara sunucu [bağlantı ilkesi](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) için desteklenir |GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
 |Azure Cosmos DB|  Tüm ortak bölgeler | |GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler      |  | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  PostgreSQL için Azure veritabanı-tek sunucu         | Tüm ortak bölgeler      | Genel Amaçlı ve Meomry Iyileştirilmiş fiyatlandırma katmanları için desteklenir | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  MySQL için Azure Veritabanı         | Tüm ortak bölgeler      |  | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  MariaDB için Azure Veritabanı         | Tüm ortak bölgeler      |  | GA <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  Azure Key Vault         | Tüm ortak bölgeler      |  | GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
@@ -61,7 +61,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Azure Service Bus | Tüm ortak bölgeler  | Azure Service Bus Premium katmanıyla desteklenir. [Katmanlar için tıklayın](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure Geçişi | Tüm ortak bölgeler      |  | Önizleme <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Tüm ortak bölgeler       |  | GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | Tüm ortak bölgeler      |  | Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Web Apps | Tüm ortak bölgeler      | PremiumV2 Windows ve Linux ve elastik Premium Işlevleriyle desteklenir  | Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure Machine Learning | DOĞU ABD, BATı ABD 2, ORTA GÜNEY ABD      |  | Önizleme   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Otomasyonu  | Tüm ortak bölgeler |  | Önizleme | |
 | Azure IoT Hub | Tüm ortak bölgeler    |  | GA   <br/> [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |

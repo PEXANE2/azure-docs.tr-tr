@@ -5,26 +5,29 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 92ab8e006ab7fef3c7e856cc34467b4510055174
+ms.openlocfilehash: 542d0bcea6cfae2af2918d699952d4c054bd68cb
 ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275895"
+ms.locfileid: "86277679"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
 
 >[!IMPORTANT]
->Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../deploy-windows-7-virtual-machine.md)bakın.
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)bakın.
+>
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Windows sanal masaüstü üzerinde bir Windows 7 sanal makinesi (VM) dağıtma işlemi, Windows 'un sonraki sürümlerini çalıştıran VM 'lerden biraz farklıdır. Bu kılavuzda, Windows 7 ' nin nasıl dağıtılacağı açıklanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell-2019.md) ' daki yönergeleri izleyin. Bundan sonra, Masaüstü uygulama grubuna bir veya daha fazla kullanıcı atamak için [Azure Marketi 'nde konak havuzları oluşturma](create-host-pools-azure-marketplace-2019.md#optional-assign-additional-users-to-the-desktop-application-group) ' daki yönergeleri izleyin.
+Başlamadan önce, bir konak havuzu oluşturmak için [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin. Portalı kullanıyorsanız, [Azure Portal kullanarak bir konak havuzu oluşturmak için](create-host-pools-azure-marketplace.md)adım 1 ' den 9 ' a kadar olan yönergeleri izleyin. Bundan sonra boş bir konak havuzu oluşturmak için **gözden geçir + oluştur** ' u seçin. 
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Windows 7 sanal makinesini yapılandırma
 
@@ -35,10 +38,10 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
 1. Azure portal oturum açın ve Windows 7 Enterprise görüntüsünü arayın ya da kendi özelleştirilmiş Windows 7 Enterprise (x64) görüntünüzü karşıya yükleyin.
 2. Windows 7 Enterprise ile bir veya birden çok sanal makineyi konak işletim sistemi olarak dağıtın. Sanal makinelerin Uzak Masaüstü Protokolü (RDP) izin ver (TCP/3389 bağlantı noktası) olduğundan emin olun.
 3. RDP kullanarak Windows 7 Enterprise konağına bağlanın ve dağıtımınızı yapılandırırken tanımladığınız kimlik bilgileriyle kimlik doğrulaması yapın.
-4. Ana bilgisayara RDP ile bağlanırken kullandığınız hesabı "uzak masaüstü kullanıcısı" grubuna ekleyin. Bunu yapmazsanız, Active Directory etki alanınıza katladıktan sonra VM 'ye bağlanamadınız.
+4. Ana bilgisayara RDP ile bağlanırken kullandığınız hesabı "uzak masaüstü kullanıcısı" grubuna ekleyin. Hesabı eklememeniz durumunda, Active Directory etki alanınıza ekledikten sonra VM 'ye bağlanamadınız.
 5. SANAL makinenizde Windows Update gidin.
 6. Tüm Windows güncelleştirmelerini önemli kategoride yükler.
-7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) yüklüyor.
+7. Tüm Windows güncelleştirmelerini Isteğe bağlı kategoride (dil paketleri hariç) yükler. Bu işlem, bu yönergeleri tamamlayabilmeniz için ihtiyaç duyduğunuz Uzak Masaüstü Protokolü 8,0 güncelleştirmesini ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) yüklüyor.
 8. Yerel Grup İlkesi Düzenleyicisi açın ve **Computer Configuration**  >  **Administrative Templates**  >  **Windows Components**  >  **Remote Desktop Services**  >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **uzak oturum ortamı**Uzak Masaüstü Hizmetleri Windows bileşenleri Yönetim Şablonları bilgisayar yapılandırması ' na gidin.
 9. Uzak Masaüstü Protokolü 8,0 ilkesini etkinleştirin.
 10. Bu sanal makineyi Active Directory etki alanınıza ekleyin.
@@ -48,16 +51,19 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
      shutdown /r /t 0
      ```
 
-12. Kayıt belirteci almak için [buradaki](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) yönergeleri izleyin.
+12. Kayıt belirteci almak için [buradaki](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) yönergeleri izleyin.
+      
+      - Azure portal kullanmayı tercih ediyorsanız, VM 'yi eklemek istediğiniz konak havuzunun genel bakış sayfasına gidebilir ve burada bir belirteç oluşturabilirsiniz.
+  
 13. Windows [7 Için Windows sanal masaüstü aracısını indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. Windows [7 Için Windows sanal masaüstü Aracısı Yöneticisi 'Ni indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Windows sanal masaüstü Aracısı yükleyicisini açın ve yönergeleri izleyin. İstendiğinde, 12. adımda oluşturduğunuz kayıt anahtarını verin.
 16. Windows sanal masaüstü Aracısı yöneticisini açın ve yönergeleri izleyin.
 17. İsteğe bağlı olarak, VM 'ye doğrudan Uzak Masaüstü Protokolü erişimi kaldırmak için TCP/3389 bağlantı noktasını engelleyin.
-18. İsteğe bağlı olarak, .NET Framework 'ün en az sürüm 4.7.2 olduğunu doğrulayın. Özel bir görüntü oluşturuyorsanız bu özellikle önemlidir.
+18. İsteğe bağlı olarak, .NET Framework 'ün en az sürüm 4.7.2 olduğunu doğrulayın. Özel bir görüntü oluşturuyorsanız, iskekinizi güncelleştirme özellikle önemlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Windows sanal masaüstü dağıtımınız artık kullanıma hazırdır. Başlamak için [Windows sanal masaüstü istemcisinin en son sürümünü indirin](https://aka.ms/wvd/clients/windows) .
 
-Windows sanal masaüstündeki Windows 7 ' de bilinen sorunların ve sorun giderme yönergelerinin bir listesi için, Windows [sanal masaüstündeki Windows 7 sanal makinelerinde sorun](troubleshoot-windows-7-vm.md)giderme makalesindeki sorun giderme makalemizi inceleyin.
+Windows sanal masaüstündeki Windows 7 ' de bilinen sorunların ve sorun giderme yönergelerinin bir listesi için, Windows [sanal masaüstündeki Windows 7 sanal makinelerinde sorun](./virtual-desktop-fall-2019/troubleshoot-windows-7-vm.md)giderme makalesindeki sorun giderme makalemizi inceleyin.

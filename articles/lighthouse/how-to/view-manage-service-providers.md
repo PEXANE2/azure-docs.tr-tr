@@ -1,14 +1,14 @@
 ---
 title: Hizmet sağlayıcılarını görüntüleme ve yönetme
 description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı teklifleri ve Temsilcili kaynaklar hakkındaki bilgileri görüntülemek için Azure portal hizmet sağlayıcıları sayfasını kullanabilir.
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111635"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273787"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme
 
@@ -19,7 +19,7 @@ Azure portal **hizmet sağlayıcıları** sayfasına erişmek için, müşteri *
 > [!NOTE]
 > **Hizmet sağlayıcıları** sayfasını görüntülemek için, müşterinin kiracısındaki bir kullanıcının [okuyucu yerleşik rolüne](../../role-based-access-control/built-in-roles.md#reader) (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olması gerekir.
 >
-> Teklifler eklemek, kaynakları devretmek ve teklifleri kaldırmak için, kullanıcının abonelik için [sahip yerleşik rolüne](../../role-based-access-control/built-in-roles.md#owner) sahip olması gerekir.
+> Teklifleri eklemek veya güncelleştirmek, kaynak atamak ve teklifleri kaldırmak için, kullanıcının abonelik için [yerleşik rolüne](../../role-based-access-control/built-in-roles.md#owner) sahip olması gerekir.
 
 **Hizmet sağlayıcılar** sayfasının yalnızca, Azure açık thouse aracılığıyla Müşterinin aboneliklerine veya kaynak gruplarına erişimi olan hizmet sağlayıcılarıyla ilgili bilgileri gösterdiğini unutmayın. Müşteri, müşterinin kaynaklarına erişmek için Azure Use kullanmayan ek hizmet sağlayıcılarıyla çalışıyorsa, bu hizmet sağlayıcılarıyla ilgili bilgiler burada gösterilmez.
 

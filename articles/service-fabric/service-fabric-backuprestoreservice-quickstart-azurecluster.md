@@ -5,11 +5,12 @@ author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a99a936b3e6cf53c30c0264b70046008dab283c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712471"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261255"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme
 > [!div class="op_single_selector"]
@@ -44,7 +45,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 - Yedeklemeleri geçici olarak askıya al
 - Yedeklemelerin bekletme yönetimi (yakında)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Yapı sürümü 6,4 veya üzeri bir küme Service Fabric. Azure kaynak şablonu kullanarak Service Fabric kümesi oluşturma adımları için bu [makaleye](service-fabric-cluster-creation-via-arm.md) başvurun.
 * Yedeklemeleri depolamak üzere depolamaya bağlanmak için gereken gizli dizileri şifrelemek için X. 509.440 sertifikası. X. 509.952 sertifikası alma veya oluşturma hakkında bilgi edinmek için [makaleye](service-fabric-cluster-creation-via-arm.md) bakın.
 * Service Fabric SDK 3,0 veya üzeri sürümleri kullanılarak oluşturulmuş güvenilir durum bilgisi olan uygulamayı Service Fabric. .NET Core 2,0 'yi hedefleyen uygulamalar için, uygulama Service Fabric SDK sürümü 3,1 veya üzeri kullanılarak oluşturulmalıdır.
@@ -303,7 +304,7 @@ Service Fabric Explorer yedeklemeleri görüntülemek için bir bölüme gidin v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Düzenli aralıklarla yedekleme yapılandırmasını anlama](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Yedekleme geri yükleme REST API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Yedekleme geri yükleme REST API başvurusu](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png

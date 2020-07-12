@@ -5,11 +5,12 @@ author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a6260c176165af5ced5ce275b9e4b365707d77
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75526252"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261248"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Tek başına Service Fabric düzenli yedekleme ve geri yükleme
 > [!div class="op_single_selector"]
@@ -43,7 +44,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 - Yedeklemeleri geçici olarak askıya al
 - Yedeklemelerin bekletme yönetimi (yakında)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Yapı sürümü 6,4 veya üzeri bir küme Service Fabric. Gerekli paketi indirme adımları için bu [makaleye](service-fabric-cluster-creation-for-windows-server.md) bakın.
 * Yedeklemeleri depolamak üzere depolamaya bağlanmak için gereken gizli dizileri şifrelemek için X. 509.440 sertifikası. Otomatik olarak imzalanan bir X. 509.440 sertifikası edinmeyi veya oluşturmayı öğrenmek için [makaleye](service-fabric-windows-cluster-x509-security.md) bakın.
 
@@ -287,7 +288,7 @@ Service Fabric Explorer yedeklemeleri görüntülemek için bir bölüme gidin v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Düzenli aralıklarla yedekleme yapılandırmasını anlama](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Yedekleme geri yükleme REST API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Yedekleme geri yükleme REST API başvurusu](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png

@@ -7,11 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325142"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261377"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
@@ -23,9 +24,9 @@ ms.locfileid: "84325142"
 
 * Başka bir mantıksal uygulamadan bir HTTPS çağrısını alın ve yanıtlayın.
 
-Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek için [Azure Active Directory açma kimlik doğrulamasını](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) destekler. Bu kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için [Azure Logic Apps Azure AD OAuth kimlik doğrulamasını etkinleştirme ' deki güvenli erişim ve verilere](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)bakın.
+Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek için [Azure Active Directory açma kimlik doğrulamasını](/azure/active-directory/develop/) (Azure AD OAuth) destekler. Bu kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için [Azure Logic Apps Azure AD OAuth kimlik doğrulamasını etkinleştirme ' deki güvenli erişim ve verilere](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -156,7 +157,7 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
          "account": {
             "name": "Contoso",
             "ID": "12345",
-            "address": { 
+            "address": {
                "number": "1234",
                "street": "Anywhere Street",
                "city": "AnyTown",
@@ -171,9 +172,9 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 1. Gelen çağrının, belirtilen şemadan eşleşen bir istek gövdesine sahip olup olmadığını denetlemek için şu adımları izleyin:
 
    1. Istek tetikleyicisinin başlık çubuğunda üç nokta düğmesini (**...**) seçin.
-   
+
    1. Tetikleyicinin ayarlarında, **şema doğrulamasını**açın ve **bitti**' yi seçin.
-   
+
       Gelen çağrının istek gövdesi şemanıza eşleşmezse, tetikleyici bir `HTTP 400 Bad Request` hata döndürür.
 
 1. Ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
@@ -258,7 +259,7 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
 
    Istek tetikleyicisi kolaylık sağlaması için bu örnekte daraltılır.
 
-1. Yanıt iletisi için gereken tüm değerleri ekleyin. 
+1. Yanıt iletisi için gereken tüm değerleri ekleyin.
 
    Bazı alanlarda, kutularının içine tıklanması dinamik içerik listesini açar. Daha sonra iş akışındaki önceki adımlardan bulunan mevcut çıkışları temsil eden belirteçleri seçebilirsiniz. Önceki örnekte belirtilen şemadan özellikler artık dinamik içerik listesinde görünür.
 
@@ -270,7 +271,7 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
 
    ![Üstbilgiler-metin görünümüne geç](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   Yanıt eyleminde ayarlayabileceğiniz özellikler hakkında daha fazla bilgi bulabilirsiniz. 
+   Yanıt eyleminde ayarlayabileceğiniz özellikler hakkında daha fazla bilgi bulabilirsiniz.
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
@@ -281,7 +282,7 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
 
 1. Yanıt gövdesi için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
 
-1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin. 
+1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,13 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 07/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0402ed6177ca7f9d10cbb7d2a81352af0108b828
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 4627cc83de70f596ae4917d0449f785a33bf720f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027950"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261357"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için PHP kullanma
 <a name="HOLTop"></a>
@@ -23,7 +24,7 @@ Bu makalede, [dil algılama](#Detect), yaklaşım [Çözümleme](#SentimentAnaly
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -382,7 +383,7 @@ $path = '/text/analytics/v3.0/entities/recognition/general';
 function GetEntities ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
-        "Content-Length: " . Length($data) . "\r\n" .
+        "Content-Length: " . strlen($data) . "\r\n" .
         "Ocp-Apim-Subscription-Key: $key\r\n";
     $data = json_encode ($data);
 

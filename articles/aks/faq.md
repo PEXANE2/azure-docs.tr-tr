@@ -3,11 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300935"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275725"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -136,7 +137,7 @@ AKS aracı düğümleri standart Azure sanal makineleri olarak faturalandırıl�
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kümemi Azure kiracılar arasında taşıyabilir/geçirebilir miyim?
 
-Bu `az aks update-credentials` komut, BIR AKS kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](https://docs.microsoft.com/azure/aks/update-credentials) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
+Bu `az aks update-credentials` komut, BIR AKS kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](./update-credentials.md) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Abonelikler arasında kümemi taşıyabilir/geçirebilir miyim?
 
@@ -144,7 +145,11 @@ Abonelikler arasında küme hareketi şu anda desteklenmiyor.
 
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS kümelerimi geçerli Azure aboneliğinden diğerine taşıyabilir miyim? 
 
-AKS kümenizi ve bunun ilişkili kaynaklarını Azure abonelikleri arasında taşıma desteklenmez.
+AKS kümenizi ve ilişkili kaynaklarını Azure abonelikleri arasında taşıma desteklenmez.
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>AKS kümemi veya AKS altyapı kaynaklarından diğer kaynak gruplarına taşıyabilir veya onları yeniden adlandırabilir miyim?
+
+AKS kümenizi ve ilişkili kaynaklarını taşıma veya yeniden adlandırma desteklenmez.
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>Kümemin neden bu kadar uzun sürüyor? 
 
@@ -164,11 +169,11 @@ En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) ha
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Bir yükseltme çalıştırdım, ancak şu anda My Pod çökme döngülerinde ve hazırlık araştırmaları başarısız oldu mu?
 
-Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
+Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md) ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, bağlama PVC 'leri vb. sağlayamaz. 
 
-Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
+Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md) ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Sanal makine ölçek kümesi API 'Lerini el ile ölçeklendirmek için kullanabilir miyim?
 
@@ -189,9 +194,9 @@ Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklen
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

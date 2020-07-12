@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure portal kullanarak bir Synapse SQL Havuzu (Önizleme) oluşturun
+title: 'Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL Havuzu (Önizleme) oluşturma'
 description: Bu kılavuzdaki adımları izleyerek Azure portal kullanarak yeni bir Synapse SQL havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 966ca099c44ba8b0f2d3241c391f4d7a101afb26
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 768b559ddaf7364726cb26a34d12f357d4126426
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955106"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274263"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL Havuzu (Önizleme) oluşturma
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın
+[Azure portalında](https://portal.azure.com/) oturum açın
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin
 
@@ -46,7 +46,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ![Yeni bir SQL havuzu oluşturmak için komutu etrafında kırmızı bir kutu ile SYNAPSE çalışma alanına genel bakış.](media/quickstart-create-sql-pool/create-sql-pool-portal-01.png)
 2. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
-    | Ayar | Önerilen değer | Description |
+    | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
     | **SQL havuzu adı** | Geçerli bir ad | SQL havuzunun adı. |
     | **Performans düzeyi** | DW100c | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarla |
@@ -60,8 +60,8 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 4. SQL havuzunu veri olmadan sağlamak için **hiçbiri** ' ni seçin. Varsayılan harmanlamayı seçili bırakın.
 ![SQL havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
-5. **İncele ve oluştur**’u seçin.
-6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur**'u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
+6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur**’u seçin.
 ![SQL havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Bu noktada kaynak sağlama akışı başlar.

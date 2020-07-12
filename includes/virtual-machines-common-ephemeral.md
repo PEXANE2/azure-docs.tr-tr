@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d8d712e4eecb930b52a519a1aaddf97c744a24ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6a400ae798245cc4912724c16840421d5282b3a0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218107"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277790"
 ---
 Geçici işletim sistemi diskleri, yerel sanal makine (VM) depolama alanı üzerinde oluşturulur ve uzak Azure depolama 'ya kaydedilmez. Kısa ömürlü işletim sistemi diskleri, uygulamaların tek tek VM hatalarından dayanıklı olduğu, ancak VM dağıtım zamanından daha fazla etkilediği veya tek tek sanal makine örneklerinin yeniden oluşturulduğu durum bilgisiz iş yükleri için iyi çalışır. Kısa ömürlü IŞLETIM sistemi diski ile işletim sistemi diskine daha hızlı okuma/yazma gecikme süresi ve daha hızlı VM yeniden görüntüsü alırsınız. 
  
@@ -33,7 +33,7 @@ Kalıcı ve kısa ömürlü işletim sistemi diskleri arasındaki önemli farkl�
 |                             | Kalıcı işletim sistemi diski                          | Kısa Ömürlü İşletim Sistemi Diski                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **İşletim sistemi diski için boyut sınırı**      | 2 TiB                                                                                        | VM boyutu için önbellek boyutu veya 2TiB, hangisi daha küçüktür. **GiB 'deki önbellek boyutu**için bkz. [DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)ve [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
-| **Desteklenen VM boyutları**          | Tümü                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, ı                                               |
+| **Desteklenen VM boyutları**          | Tümü                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, LSv2, d gibi Premium depolamayı destekleyen VM boyutları                                               |
 | **Disk türü desteği**           | Yönetilen ve yönetilmeyen işletim sistemi diski                                                                | Yalnızca yönetilen işletim sistemi diski                                                               |
 | **Bölge desteği**              | Tüm bölgeler                                                                                  | Tüm bölgeler                              |
 | **Veri kalıcılığı**            | IŞLETIM sistemi diskine yazılan işletim sistemi diski verileri Azure depolama 'da depolanıyor                                  | İşletim sistemi diskine yazılan veriler yerel VM depolama alanında depolanır ve Azure Storage 'da kalıcı değildir. |

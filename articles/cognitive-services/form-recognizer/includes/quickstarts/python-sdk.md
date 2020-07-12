@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: e5debf66b91ebd73bb4a4972a907ef7a283f0044
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3300bd53be36e34ff32267605352d6f80923724e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965936"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277687"
 ---
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -90,7 +90,7 @@ form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
 > [!NOTE]
-> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
+> Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
 
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
 * Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
@@ -408,7 +408,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 Form tanıyıcı istemci kitaplığı, [Azure Core](https://aka.ms/azsdk-python-azure-core)'da tanımlanan özel durumları yükseltir.
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Bu kitaplık günlüğe kaydetmek için [Standart günlük kitaplığını](https://docs.python.org/3/library/logging.html) kullanır. HTTP oturumları (URL 'Ler, üstbilgiler vb.) hakkındaki temel bilgiler BILGI düzeyinde günlüğe kaydedilir.
 

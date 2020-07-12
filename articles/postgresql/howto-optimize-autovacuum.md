@@ -5,18 +5,20 @@ author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116377"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274518"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda oto vakum 'yi iyileştirin-tek sunucu
+
 Bu makalede, bir PostgreSQL için Azure veritabanı sunucusu üzerinde oto 'nin nasıl etkili bir şekilde iyileştirileceği açıklanır.
 
 ## <a name="overview-of-autovacuum"></a>Oto vakum 'ye Genel Bakış
+
 PostgreSQL, daha fazla veritabanı eşzamanlılık sağlamak için çok sürümlü eşzamanlılık denetimi (MVCC) kullanır. Her güncelleştirme bir INSERT ve delete ile sonuçlanır ve her silme işlemi, silinmek üzere işaretlenmiş satırlarda oluşur. Geçici işaret, daha sonra temizlenecek atılacak başlıkları tanımlar. Bu görevleri gerçekleştirmek için PostgreSQL bir vakum işi çalıştırır.
 
 Bir vakum işi el ile veya otomatik olarak tetiklenebilir. Veritabanı ağır güncelleştirme veya silme işlemleri yaşdığında, daha eski olmayan tanımlama grupları mevcuttur. Veritabanı boştayken daha az ölü tanımlama grubu mevcuttur. Veritabanı yükü ağır olduğunda, vakum işlerinin *el ile* uygun hale gelmesini sağlayan çok daha sık bir işlem yapmanız gerekir.
@@ -36,6 +38,7 @@ Zaman zaman Vakum yoksa, biriken atılacak tanımlama grupları şu şekilde ola
 - Artan g/ç.
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>Oluşan şişirmeyi ile oto vakum sorguları izleyin
+
 Aşağıdaki örnek sorgu, XYZ adlı bir tablodaki ölü ve canlı tanımlama gruplarının sayısını belirlemek için tasarlanmıştır:
 
 ```sql
@@ -43,7 +46,9 @@ SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRa
 ```
 
 ## <a name="autovacuum-configurations"></a>Oto vakum yapılandırması
+
 Oto vakum 'yi denetleyen yapılandırma parametreleri, iki önemli soruya verilen yanıtlara göre yapılır:
+
 - Ne zaman başlaması gerekir?
 - Başladıktan sonra ne kadar temiz olmalıdır?
 
@@ -55,10 +60,10 @@ autovacuum_vacuum_threshold|Herhangi bir tabloda vakum işleminin tetiklenmesi i
 autovacuum_vacuum_scale_factor|Bir vakum işleminin tetiklenmesi saptarken autovacuum_vacuum_threshold eklenecek tablo boyutunun bir bölümünü belirtir. Varsayılan değer, tablo boyutunun yüzde 20 ' si olan 0,2 ' dir. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|0,2
 autovacuum_vacuum_cost_limit|Otomatik Vakum işlemlerinde kullanılan maliyet sınırı değerini belirtir. -1 belirtilirse, varsayılan değer olan normal vacuum_cost_limit değeri kullanılır. Birden fazla çalışan varsa, bu değer çalışan bir oto çalışıya çalışanları arasında orantılı olarak dağıtılır. Her çalışan limitlerinin toplamı, bu değişkenin değerini aşamaz. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|-1
 autovacuum_vacuum_cost_delay|Otomatik Vakum işlemlerinde kullanılan maliyet gecikmesi değerini belirtir. -1 belirtilirse, normal vacuum_cost_delay değeri kullanılır. Varsayılan değer 20 milisaniyedir. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın. Tek tek tabloların ayarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.|20 MS
-autovacuum_nap_time|Herhangi bir veritabanı üzerinde, oto vakum çalıştırmaları arasındaki en küçük gecikmeyi belirtir. Her turunda, Daemon, veritabanı ve sorunlar vakum ' i inceler ve bu veritabanındaki tablolar için gerektiğinde komutları çözümler. Gecikme saniye cinsinden ölçülür ve varsayılan değer bir dakikadır (1 dk). Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın.|15 s
-autovacuum_max_workers|Herhangi bir anda çalışabilen, oto olmayan bir başlatıcı dışında, oto Vakum işlem sayısının üst sınırını belirtir. Varsayılan değer üç ' dir. Bu parametreyi yalnızca sunucu başlangıcında ayarlayın.|3
+autovacuum_naptime | Herhangi bir veritabanı üzerinde, oto vakum çalıştırmaları arasındaki en küçük gecikmeyi belirtir. Her turunda, Daemon, veritabanı ve sorunlar vakum ' i inceler ve bu veritabanındaki tablolar için gerektiğinde komutları çözümler. Gecikme saniye cinsinden ölçülür. Bu parametreyi yalnızca PostgreSQL. conf dosyasında veya sunucu komut satırında ayarlayın.| 15 s
+autovacuum_max_workers | Herhangi bir anda çalışabilen, oto olmayan bir başlatıcı dışında, oto Vakum işlem sayısının üst sınırını belirtir. Varsayılan değer üç ' dir. Bu parametreyi yalnızca sunucu başlangıcında ayarlayın.|3
 
-Tek tek tabloların ayarlarını geçersiz kılmak için tablo depolama parametrelerini değiştirin. 
+Tek tek tabloların ayarlarını geçersiz kılmak için tablo depolama parametrelerini değiştirin.
 
 ## <a name="autovacuum-cost"></a>Oto vakum maliyeti
 
@@ -82,12 +87,14 @@ Yüzde 20 ' nin varsayılan ölçek faktörü, düşük bir ölü tanımlama gru
 PostgreSQL ile, bu parametreleri tablo düzeyinde veya örnek düzeyinde ayarlayabilirsiniz. Bugün, bu parametreleri yalnızca PostgreSQL için Azure veritabanı 'nda tablo düzeyinde ayarlayabilirsiniz.
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>Oto vakum maliyetini tahmin etme
+
 Oto vakum çalıştırmak "maliyetlidir" ve vakum işlemlerinin çalışma zamanının denetlenmesine yönelik parametreler vardır. Aşağıdaki parametreler, çalışma vakum maliyetini tahmin etmeye yardımcı olur:
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-Vakum işlemi, kullanılmayan tanımlama grupları için fiziksel sayfaları ve denetimleri okur. Shared_buffers her sayfanın maliyeti 1 (vacuum_cost_page_hit) olarak kabul edilir. Diğer tüm sayfalar, yok sayılma grupları varsa 20 (vacuum_cost_page_dirty), yok sayılma başlıkları yoksa 10 (vacuum_cost_page_miss) olarak kabul edilir. İşlem autovacuum_vacuum_cost_limit aştığında vakum işlemi durduruluyor. 
+Vakum işlemi, kullanılmayan tanımlama grupları için fiziksel sayfaları ve denetimleri okur. Shared_buffers her sayfanın maliyeti 1 (vacuum_cost_page_hit) olarak kabul edilir. Diğer tüm sayfalar, yok sayılma grupları varsa 20 (vacuum_cost_page_dirty), yok sayılma başlıkları yoksa 10 (vacuum_cost_page_miss) olarak kabul edilir. İşlem autovacuum_vacuum_cost_limit aştığında vakum işlemi durduruluyor.
 
 Sınıra ulaşıldığında, işlem yeniden başlatılmadan önce autovacuum_vacuum_cost_delay parametresi tarafından belirtilen süre için uyku moduna geçer. Sınıra ulaşılırsa, oto, autovacuum_nap_time parametresi tarafından belirtilen değerden sonra başlar.
 
@@ -99,7 +106,7 @@ PostgreSQL ile, bu parametreleri tablo düzeyinde veya örnek düzeyinde ayarlay
 
 ## <a name="optimize-autovacuum-per-table"></a>Her tablo için oto vakum 'ı iyileştirme
 
-Tablo başına önceki tüm yapılandırma parametrelerini yapılandırabilirsiniz. İşte bir örnek:
+Tablo başına önceki tüm yapılandırma parametrelerini yapılandırabilirsiniz. Aşağıda bir örnek verilmiştir:
 
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB için Azure SYNAPSE bağlantısına bağlanma
+title: 'Hızlı başlangıç: Azure Cosmos DB için Azure SYNAPSE bağlantısına bağlanma'
 description: SYNAPSE bağlantısı ile bir Azure Cosmos DB SYNAPSE çalışma alanına bağlama
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81cc7745790c7a89576dc5d0ff925dbaff2b2334
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 56b018326e8673e6ac9e625a5732a08238f982fd
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700388"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274331"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısına bağlanma
 
 Bu makalede, SYNAPSE link ile Azure SYNAPSE Analytics Studio 'dan bir Azure Cosmos DB veritabanına nasıl erişebileceğiniz açıklanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure Cosmos DB hesabını çalışma alanınıza bağlanmadan önce, ihtiyacınız olan birkaç şey vardır.
 
@@ -48,7 +48,7 @@ Veri Nesne Gezgini, aşağıdaki adımları uygulayarak bir Azure Cosmos DB veri
 5. Bağlı hizmeti adlandırın. Ad Nesne Gezgini görüntülenir ve veritabanı ve kapsayıcılara bağlanmak için SYNAPSE çalışma zamanları tarafından kullanılır. Kolay bir ad kullanmanızı öneririz.
 6. **Cosmos DB hesap adı** ve **veritabanı adını** seçin
 7. Seçim Hiçbir bölge belirtilmemişse, SYNAPSE çalışma zamanı işlemleri, analitik deponun etkinleştirildiği en yakın bölgeye yönlendirilir. Ancak, kullanıcılarınızın analitik depoya Cosmos DB erişmesini istediğiniz bölgeyi el ile ayarlayabilirsiniz. **Ek bağlantı özellikleri** ' ni ve ardından **Yeni**' yi seçin. **Özellik adı**altında, ***preferredregion*** yazın ve **değeri** Istediğiniz bölgeye ayarlayın (örnek: WestUS2, sözcükler ve sayılar arasında boşluk yoktur)
-8. ***Oluştur*** ' u seçin
+8. ***Oluştur***’u seçin
 
 Azure Cosmos DB veritabanları Azure Cosmos DB bölümünde **bağlantılı** sekmenin altında görünür. Bir HTAP 'ın etkin Azure Cosmos DB kapsayıcısını yalnızca OLTP kapsayıcısından aşağıdaki simgelerle ayırt edebilirsiniz:
 
