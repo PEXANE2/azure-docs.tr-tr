@@ -4,11 +4,12 @@ description: Kubernetes 'in temel kümesini ve iş yükü bileşenlerini ve bunl
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336629"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251867"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -37,7 +38,7 @@ Bir Kubernetes kümesi iki bileşene ayrılmıştır:
 
 ## <a name="control-plane"></a>Kontrol düzlemi
 
-Bir AKS kümesi oluşturduğunuzda, otomatik olarak bir denetim düzlemi oluşturulup yapılandırılır. Bu denetim düzlemi, kullanıcıdan soyutlandığından yönetilen bir Azure kaynağı olarak sağlanır. Denetim düzlemi için herhangi bir maliyet yoktur, yalnızca AKS kümesinin bir parçası olan düğümler vardır.
+Bir AKS kümesi oluşturduğunuzda, otomatik olarak bir denetim düzlemi oluşturulup yapılandırılır. Bu denetim düzlemi, kullanıcıdan soyutlandığından yönetilen bir Azure kaynağı olarak sağlanır. Denetim düzlemi için herhangi bir maliyet yoktur, yalnızca AKS kümesinin bir parçası olan düğümler vardır. Denetim düzlemi ve kaynakları yalnızca kümeyi oluşturduğunuz bölgede bulunur.
 
 Denetim düzlemi aşağıdaki temel Kubernetes bileşenlerini içerir:
 
@@ -72,7 +73,7 @@ Farklı bir konak işletim sistemi, kapsayıcı çalışma zamanı kullanmanız 
 
 ### <a name="resource-reservations"></a>Kaynak ayırmaları
 
-Düğüm kaynakları, kümenin bir parçası olarak düğüm işlevini yapmak için AKS tarafından kullanılır. Bu, AKS 'te kullanıldığında, düğümünüz için toplam kaynak ve kaynak ayırıcılar tablosu arasında bir tutarsızlık oluşturabilir. Bu, Kullanıcı tarafından dağıtılan pods 'lerin istek ve sınırlarını ayarlarken dikkat etmeniz önemlidir.
+Düğüm kaynakları, kümenin bir parçası olarak düğüm işlevini yapmak için AKS tarafından kullanılır. Bu kullanım, AKS 'te kullanıldığında düğümünüz toplam kaynakları ile kaynak ayrıdüğüm arasında bir tutarsızlık oluşturabilir. Bu bilgiler, Kullanıcı tarafından dağıtılan pods 'lerin isteklerini ve sınırlarını ayarlarken dikkat etmeniz açısından önemlidir.
 
 Bir düğümün allocatable kaynaklarını bulmak için şunu çalıştırın:
 ```kubectl
@@ -85,7 +86,7 @@ Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bi
 >[!NOTE]
 > Container Insights (OMS) gibi AKS eklentilerinin kullanılması ek düğüm kaynakları kullanacaktır.
 
-- **CPU** Ile ayrılmış CPU, ek özellikleri çalıştırmak nedeniyle daha az ayrılamayabilir CPU türüne ve küme yapılandırmasına bağımlıdır
+- **CPU** 'ya ayrılmış CPU düğüm türüne ve küme yapılandırmasına bağımlıdır, bu da ek özelliklerin çalıştırılması nedeniyle daha az ayrılamayabilir
 
 | Konaktaki CPU çekirdekleri | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
@@ -93,7 +94,7 @@ Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bi
 
 - **Bellek** -aks tarafından kullanılan bellek, iki değerin toplamını içerir.
 
-1. Kubelet arka plan programı, kapsayıcı oluşturma ve sonlandırmayı yönetmek için tüm Kubernetes aracı düğümlerine yüklenir. AKS ' de varsayılan olarak, bu arka plan programı aşağıdaki çıkarma kuralına sahiptir: *bellek. kullanılabilir<750Mı*, bu da bir düğümün her zaman en az 750 mi ayrıma göre olması gerektiği anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altındaysa, kubelet konak makinede belleği boşaltmak ve korumak için çalışan bir yığından birini sonlandırır. Kullanılabilir bellek, 750Mı eşiğinin ötesinde azaldıkça bu bir reaktif eylemdir.
+1. Kubelet arka plan programı, kapsayıcı oluşturma ve sonlandırmayı yönetmek için tüm Kubernetes aracı düğümlerine yüklenir. AKS ' de varsayılan olarak, bu arka plan programı aşağıdaki çıkarma kuralına sahiptir: *bellek. kullanılabilir<750Mı*, bu da bir düğümün her zaman en az 750 mi ayrıma göre olması gerektiği anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altındaysa, kubelet konak makinede belleği boşaltmak ve korumak için çalışan bir yığından birini sonlandırır. Bu eylem, kullanılabilir bellek, 750Mı eşiğinin ötesinde daha fazla azaldıkça tetiklenir.
 
 2. İkinci değer, kubelet arka plan programının düzgün çalışması için (Kuto-ayrılmış) bellek ayırmalarının gerileme hızıdır.
     - ilk 4 GB belleğin %25 ' i
@@ -102,7 +103,7 @@ Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bi
     - sonraki 112 GB belleğin %6 ' ından (128 GB 'a kadar)
     - 128 GB üzerinde herhangi bir belleğin %2 ' i
 
-Yukarıdaki bellek ve CPU ayırması kuralları, küme durumu için kritik olan bazı barındırma sistemi bilgisayarları dahil olmak üzere, aracı düğümlerinin sağlıklı tutulması için kullanılır. Bu ayırma kuralları, düğümün bir Kubernetes kümesinin parçası olmasaydı daha az ayrılanmasa belleği ve CPU 'YU rapormasına neden olur. Yukarıdaki kaynak ayırmaları değiştirilemez.
+Yukarıdaki bellek ve CPU ayırması kuralları, küme durumu için kritik olan bazı barındırma sistemi bilgisayarları dahil olmak üzere, aracı düğümlerinin sağlıklı tutulması için kullanılır. Ayrıca, bu ayırma kuralları düğümün bir Kubernetes kümesinin parçası olmaması durumunda daha az ayrılanmayan belleği ve CPU 'ya rapor vermesine neden olur. Yukarıdaki kaynak ayırmaları değiştirilemez.
 
 Örneğin, bir düğüm 7 GB sunuyorsa, bu, 750Mı sabit çıkarma eşiği dahil olmak üzere bellek ayırıcıdan oluşan %34 ' ı rapor eder.
 
@@ -152,7 +153,7 @@ Pod oluşturduğunuzda, belirli miktarda CPU veya bellek kaynağı istemek için
 
 Daha fazla bilgi için bkz. [Kubernetes Pod][kubernetes-pods] ve [Kubernetes Pod yaşam döngüsü][kubernetes-pod-lifecycle].
 
-Pod, mantıksal bir kaynaktır, ancak kapsayıcı (ler) uygulama iş yüklerinin çalıştığı yerdir. Kubernetes 'in sağladığı yüksek kullanılabilirlik ve artıklık özelliklerinden bazıları genellikle kısa ömürlü, atılabilir kaynaklardır ve tek bir zamanlanmış Pod tarafından kaçırılabilirdi. Bunun yerine, Pod genellikle dağıtım denetleyicisi gibi Kubernetes *denetleyicileri*tarafından dağıtılır ve yönetilir.
+Pod, mantıksal bir kaynaktır, ancak kapsayıcı (ler) uygulama iş yüklerinin çalıştığı yerdir. Kubernetes 'in sağladığı yüksek kullanılabilirlik ve artıklık özelliklerinden bazıları genellikle kısa ömürlü, atılabilir kaynaklardır ve tek bir zamanlanmış Pod tarafından kaçırılabilirdi. Bunun yerine, Pod 'ler, dağıtım denetleyicisi gibi Kubernetes *denetleyicileri*tarafından dağıtılır ve yönetilir.
 
 ## <a name="deployments-and-yaml-manifests"></a>Dağıtımlar ve YAML bildirimleri
 
@@ -162,9 +163,9 @@ Pads yapılandırmalarını, kullanılan kapsayıcı görüntüsünü veya bağl
 
 AKS 'teki çoğu durum bilgisiz uygulamaların, tek tek DS zamanlaması yerine dağıtım modelini kullanması gerekir. Kubernetes, küme içinde gerekli sayıda çoğaltmanın çalıştığından emin olmak için dağıtımların durumunu ve durumunu izleyebilir. Yalnızca tek tek Pod 'yi zamanladığınızda, bir sorunla karşılaştıklarında, düğüm yeniden başlatılmaz ve geçerli düğümleri bir sorunla karşılaştığında sağlıklı düğümlerde yeniden planlanmazlar.
 
-Bir uygulama, yönetim kararlarının yapılabilmesi için her zaman kullanılabilir bir örnek çekirdeği gerektiriyorsa, bu özelliği bir güncelleştirme işleminin kesintiye uğramasını istemezsiniz. *Pod kesinti bütçeleri* , bir güncelleştirme veya düğüm yükseltmesi sırasında bir dağıtımda kaç çoğaltmanın alınacağını belirlemek için kullanılabilir. Örneğin, dağıtımınızda *5* çoğaltmalarınız varsa, tek seferde yalnızca bir çoğaltmanın silinmesini/yeniden zamanlanmasını sağlamak için *4* ' ün Pod kesintisini tanımlayabilirsiniz. Pod kaynak limitleriyle birlikte, en iyi uygulama, her zaman en az sayıda çoğaltma olmasını gerektiren uygulamalarda Pod kesinti bütçeleri tanımlamaktır.
+Bir uygulama, yönetim kararlarının yapılabilmesi için her zaman kullanılabilir bir örnek çekirdeği gerektiriyorsa, bu özelliği bir güncelleştirme işleminin kesintiye uğramasını istemezsiniz. *Pod kesinti bütçeleri* , bir güncelleştirme veya düğüm yükseltmesi sırasında bir dağıtımda kaç çoğaltmanın alınacağını belirlemek için kullanılabilir. Örneğin, dağıtımınızda *beş (5)* çoğaltmalarınız varsa, tek seferde yalnızca bir çoğaltmanın silinmesini/yeniden zamanlanmasını sağlamak için *4* ' ün Pod kesintisini tanımlayabilirsiniz. Pod kaynak limitleriyle birlikte, en iyi uygulama, her zaman en az sayıda çoğaltma olmasını gerektiren uygulamalarda Pod kesinti bütçeleri tanımlamaktır.
 
-Dağıtımlar genellikle veya ile oluşturulur ve yönetilir `kubectl create` `kubectl apply` . Bir dağıtım oluşturmak için, YAML (YAML Aini biçimlendirme dili) biçiminde bir bildirim dosyası tanımlarsınız. Aşağıdaki örnek NGıNX Web sunucusunun temel bir dağıtımını oluşturur. Dağıtım, oluşturulacak *3* çoğaltma ve bağlantı noktası *80* ' nin kapsayıcıda açık olduğunu belirtir. Kaynak istekleri ve sınırları, CPU ve bellek için de tanımlanır.
+Dağıtımlar genellikle veya ile oluşturulur ve yönetilir `kubectl create` `kubectl apply` . Bir dağıtım oluşturmak için, YAML (YAML Aini biçimlendirme dili) biçiminde bir bildirim dosyası tanımlarsınız. Aşağıdaki örnek NGıNX Web sunucusunun temel bir dağıtımını oluşturur. Dağıtım, oluşturulacak *üç (3)* yinelemeyi belirtir ve bağlantı noktası *80* ' nin kapsayıcıda açık olmasını gerektirir. Kaynak istekleri ve sınırları, CPU ve bellek için de tanımlanır.
 
 ```yaml
 apiVersion: apps/v1
@@ -237,7 +238,7 @@ Daha fazla bilgi için bkz. [Kubernetes DaemonSets][kubernetes-daemonset].
 > [!NOTE]
 > [Sanal düğümler eklentisi](virtual-nodes-cli.md#enable-virtual-nodes-addon)kullanılıyorsa, DaemonSets sanal düğümde Pod oluşturmaz.
 
-## <a name="namespaces"></a>Ad alanları
+## <a name="namespaces"></a>Ad Alanları
 
 Pod ve dağıtımlar gibi Kubernetes kaynakları, mantıksal olarak bir *ad alanı*halinde gruplandırılır. Bu gruplandırmalar, bir AKS kümesini mantıksal olarak bölmek ve kaynakları oluşturmak, görüntülemek veya yönetmek için erişimi kısıtlamak için bir yol sağlar. Örneğin, iş gruplarını ayırmak için ad alanları oluşturabilirsiniz. Kullanıcılar yalnızca atanan ad alanları içindeki kaynaklarla etkileşime girebilirler.
 

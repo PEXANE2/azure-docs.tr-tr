@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2942c015ba9265d7f2c597ced2321a7789c28576
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75426631"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253398"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Reliable Services ile Java 'da hizmet uzaktan iletişimi
 > [!div class="op_single_selector"]
@@ -82,8 +83,8 @@ Remoting Framework, hizmette oluşturulan özel durumları istemciye yayar. Bu n
 ServiceProxy oluşturma hafif bir işlemdir, bu sayede ihtiyacınız olan kadar oluşturabilirsiniz. Hizmet proxy örnekleri, gerektiği sürece yeniden kullanılabilir. Bir uzak yordam çağrısı bir özel durum oluşturursa, yine de aynı proxy örneğini yeniden kullanabilirsiniz. Her ServiceProxy, iletileri kablo üzerinden göndermek için kullanılan bir iletişim istemcisi içerir. Uzaktan aramalar çağrılırken, iletişim istemcisinin geçerli olup olmadığını anlamak için iç denetimler gerçekleştirilir. Bu denetimlerin sonuçlarına bağlı olarak, iletişim istemcisi gerektiğinde yeniden oluşturulur. Bu nedenle, bir özel durum oluşursa, yeniden oluşturmanız gerekmez `ServiceProxy` .
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory ömrü
-[Fabricserviceproxyfactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) , farklı uzaktan iletişim arabirimleri için ara sunucu oluşturan bir fabrikadır. `ServiceProxyBase.create`Proxy oluşturmak IÇIN API kullanıyorsanız, Framework bir oluşturur `FabricServiceProxyFactory` .
-[Serviceremotingclientfactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) özelliklerini geçersiz kılmanız gerektiğinde el ile bir tane oluşturmak yararlı olur.
+[Fabricserviceproxyfactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) , farklı uzaktan iletişim arabirimleri için ara sunucu oluşturan bir fabrikadır. `ServiceProxyBase.create`Proxy oluşturmak IÇIN API kullanıyorsanız, Framework bir oluşturur `FabricServiceProxyFactory` .
+[Serviceremotingclientfactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) özelliklerini geçersiz kılmanız gerektiğinde el ile bir tane oluşturmak yararlı olur.
 Fabrika, pahalı bir işlemdir. `FabricServiceProxyFactory`iletişim istemcilerinin önbelleğini korur.
 En iyi yöntem, mümkün olduğunca uzun süre önbelleğe alma yöntemidir `FabricServiceProxyFactory` .
 
@@ -93,7 +94,7 @@ Service API tarafından oluşturulan tüm uzak özel durum, istemciye RuntimeExc
 ServiceProxy, için oluşturulduğu hizmet bölümünün tüm yük devretme özel durumunu işler. Yük devretme özel durumları (geçici olmayan özel durumlar) varsa uç noktaları yeniden çözer ve çağrıyı doğru uç noktayla yeniden dener. Yük devretme özel durumu için yeniden deneme sayısı sonsuz.
 Geçişli Entexcepler söz konusu olduğunda yalnızca çağrıyı yeniden dener.
 
-Varsayılan yeniden deneme parametreleri, [Operationretrysettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings)tarafından kısımları.
+Varsayılan yeniden deneme parametreleri, [Operationretrysettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings)tarafından kısımları.
 Bu değerleri, OperationRetrySettings nesnesini ServiceProxyFactory oluşturucusuna geçirerek yapılandırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

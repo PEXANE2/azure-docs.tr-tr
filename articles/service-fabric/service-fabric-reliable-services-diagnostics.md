@@ -5,14 +5,15 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699830"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253125"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Durum Bilgisi Olan Reliable Services için tanılama işlevi
-Azure Service Fabric durum bilgisi olan Reliable Services StatefulServiceBase sınıfı, hizmette hata ayıklamak, çalışma zamanının nasıl çalıştığı hakkında Öngörüler sağlamak ve sorun gidermeye yardımcı olmak için kullanılan [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını yayar.
+Azure Service Fabric durum bilgisi olan Reliable Services StatefulServiceBase sınıfı, hizmette hata ayıklamak, çalışma zamanının nasıl çalıştığı hakkında Öngörüler sağlamak ve sorun gidermeye yardımcı olmak için kullanılan [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) olaylarını yayar.
 
 ## <a name="eventsource-events"></a>EventSource olayları
 Durum bilgisi olan Reliable Services StatefulServiceBase sınıfının EventSource adı "Microsoft-ServiceFabric-Services" dır. Bu olay kaynağının olayları, hizmetin [Visual Studio 'da hata ayıklaması](service-fabric-debugging-your-application.md)yapıldığında [Tanılama olayları](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) penceresinde görüntülenir.
@@ -45,11 +46,11 @@ Reliable Services çalışma zamanı aşağıdaki performans sayacı kategoriler
 | Işlem çoğaltıcı Service Fabric |Azure Service Fabric Işlemsel çoğaltıcıya özel sayaçlar |
 | Service Fabric TStore |Azure Service Fabric TStore 'a özel sayaçlar |
 
-Service Fabric Işlem Çoğaltıcısı, [güvenilir durum Yöneticisi](service-fabric-reliable-services-reliable-collections-internals.md) tarafından, belirli bir [çoğaltmalar](service-fabric-concepts-replica-lifecycle.md)kümesi içindeki işlemleri çoğaltmak için kullanılır.
+Service Fabric Işlem Çoğaltıcısı, [güvenilir durum Yöneticisi](./service-fabric-reliable-services-introduction.md) tarafından, belirli bir [çoğaltmalar](service-fabric-concepts-replica-lifecycle.md)kümesi içindeki işlemleri çoğaltmak için kullanılır.
 
-Service Fabric TStore, anahtar-değer çiftlerini depolamak ve almak için [güvenilir koleksiyonlarda](service-fabric-reliable-services-reliable-collections-internals.md) kullanılan bir bileşendir.
+Service Fabric TStore, anahtar-değer çiftlerini depolamak ve almak için [güvenilir koleksiyonlarda](./service-fabric-reliable-services-introduction.md) kullanılan bir bileşendir.
 
-Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Performans İzleyicisi](https://technet.microsoft.com/library/cc749249.aspx) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md) , performans sayacı verilerini toplamaya ve Azure tablolarına yüklemeye yönelik başka bir seçenektir.
+Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Performans İzleyicisi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md) , performans sayacı verilerini toplamaya ve Azure tablolarına yüklemeye yönelik başka bir seçenektir.
 
 ### <a name="performance-counter-instance-names"></a>Performans sayacı örnek adları
 Çok sayıda güvenilir hizmet veya güvenilir hizmet bölümü olan bir küme, çok sayıda işlem çoğaltıcı performans sayacı örneğine sahip olacaktır. Bu Ayrıca, TStore performans sayaçları için de kullanılır, ancak aynı zamanda kullanılan güvenilir sözlüklerin ve güvenilir sıraların sayısıyla çarpılır. Performans sayacı örneği adları, TStore durumunda performans sayacı örneğinin ilişkilendirildiği belirli [bölümü](service-fabric-concepts-partitioning.md), hizmet çoğaltmasını ve durum sağlayıcısını tanımlamaya yardımcı olabilir.
@@ -59,7 +60,7 @@ Kategori için `Service Fabric Transactional Replicator` , sayaç örneği adlar
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" biçim belirticisi ile birlikte oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" biçim belirticisi ile birlikte oluşturulur.
 
 *Servicefabricreplicaıd* , güvenilir bir hizmetin belirli bir çoğaltmasından ILIŞKILI olan kimliğidir. Benzersizlik sağlamak ve aynı bölüm tarafından oluşturulan diğer performans sayacı örnekleriyle çakışmadan kaçınmak için, çoğaltma KIMLIĞI performans sayacı örneği adına dahil edilir. Çoğaltmalarla ilgili daha fazla ayrıntı ve güvenilir hizmetlerde rolü [burada](service-fabric-concepts-replica-lifecycle.md)bulabilirsiniz.
 
@@ -74,7 +75,7 @@ Kategori için `Service Fabric TStore` , sayaç örneği adları aşağıdaki bi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" biçim belirticisi ile birlikte oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" biçim belirticisi ile birlikte oluşturulur.
 
 *Servicefabricreplicaıd* , güvenilir bir hizmetin belirli bir çoğaltmasından ILIŞKILI olan kimliğidir. Benzersizlik sağlamak ve aynı bölüm tarafından oluşturulan diğer performans sayacı örnekleriyle çakışmadan kaçınmak için, çoğaltma KIMLIĞI performans sayacı örneği adına dahil edilir. Çoğaltmalarla ilgili daha fazla ayrıntı ve güvenilir hizmetlerde rolü [burada](service-fabric-concepts-replica-lifecycle.md)bulabilirsiniz.
 
@@ -115,4 +116,4 @@ Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Servi
 | Kopyalama disk aktarımı bayt/sn | Bir mağaza kopyası sırasında okunan disk bayt sayısı (birincil çoğaltmadaki) veya saniye başına yazılan (ikincil bir çoğaltmada).|
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[PerfView 'da EventSource sağlayıcıları](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+[PerfView 'da EventSource sağlayıcıları](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

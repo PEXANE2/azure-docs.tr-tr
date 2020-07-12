@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: d904be260db8fe6170f57d438d3be6d306864d89
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ed4f69ea3c994d9d1cc71e26e35b8d2b6021982
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725117"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251428"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -33,31 +33,31 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
 1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
-2. **Containers**  >   **Kubernetes hizmeti**kapsayıcıları ' nı seçin.
+2. **Kapsayıcılar** >  **Kubernetes Hizmeti** seçeneklerini belirleyin.
 
-3. **Temel bilgiler** sayfasında, aşağıdaki seçenekleri yapılandırın:
+3. **Temel Bilgiler** sayfasında aşağıdaki seçenekleri yapılandırın:
     - **Proje ayrıntıları**: bir Azure **aboneliği**seçin, sonra *Myresourcegroup*gibi bir Azure **kaynak grubu**seçin veya oluşturun.
-    - **Küme ayrıntıları**: *Myakscluster*gibi bir **Kubernetes küme adı**girin. AKS kümesi için bir **bölge**, **Kubernetes sürümü**ve **DNS adı ön eki** seçin.
+    - **Küme ayrıntıları**: *Myakscluster*gibi bir **Kubernetes küme adı**girin. AKS kümesi için bir **Bölge**, **Kubernetes sürümü** ve **DNS adı ön eki** seçin.
     - **Birincil düğüm havuzu**: aks düğümleri IÇIN bir VM **düğüm boyutu** seçin. Bir AKS kümesi dağıtıldıktan sonra *VM boyutu değiştirilemez* . 
             -Kümeye dağıtılacak düğüm sayısını seçin. Bu hızlı başlangıç **Düğüm sayısı** değerini *1* olarak belirleyin. Küme dağıtıldıktan sonra düğüm sayısı *ayarlanabilir*.
     
     ![AKS kümesi oluşturma - temel bilgileri sağlama](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    **İleri ' yi seçin: tamamlandığında ölçeklendirin** .
+    Tamamlandığında **Sonraki: Ölçek** seçeneğini belirleyin.
 
 4. **Ölçek** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
     > [!CAUTION]
     > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu alana ulaşırsanız, azaltma için lütfen [buraya](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) gidin.
 
-5. **Kimlik doğrulama** sayfasında, aşağıdaki seçenekleri yapılandırın:
-    - **Hizmet sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu**ile bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir tane kullanmak için *hizmet sorumlusu Yapılandır* ' ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
-    - Kubernetes rol tabanlı erişim denetimleri (RBAC) seçeneğini etkinleştirin. Bu, AKS kümenizde dağıtılan Kubernetes kaynaklarına erişim üzerinde daha ayrıntılı denetim sağlar.
+5. **Kimlik Doğrulaması** sayfasında aşağıdaki seçenekleri yapılandırın:
+    - **Hizmet Sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu** olarak bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir hizmet sorumlusunu kullanmak için *Hizmet sorumlusu yapılandır*’ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
+    - Kubernetes rol tabanlı erişim denetimleri (RBAC) için seçeneği etkinleştirin. Böylece, AKS kümenizde görüntülenen Kubernetes kaynaklarına erişim konusunda daha ayrıntılı denetim sunulur.
 
     Alternatif olarak, bir hizmet sorumlusu yerine yönetilen bir kimlik de kullanabilirsiniz. Daha fazla bilgi için bkz. [Yönetilen kimlikler kullanma](use-managed-identity.md) .
 
-Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. **Gözden geçir + oluştur** ' a tıklayın ve doğrulama tamamlandığında **Oluştur** ' a tıklayın.
+Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. Doğrulama tamamlandığında **İncele ve oluştur**’a ve sonra **Oluştur**’a tıklayın.
 
-AKS kümesini oluşturmak birkaç dakika sürer. Dağıtımınız tamamlandığında **Kaynağa Git ' e**tıklayın veya *MYRESOURCEGROUP*gibi aks kümesi kaynak grubuna gidin ve *myakscluster*gibi aks kaynağını seçin. AKS kümesi panosu, aşağıdaki örnekte olduğu gibi gösterilir:
+AKS kümesinin oluşturulması birkaç dakika sürer. Dağıtımınız tamamlandığında **Kaynağa Git ' e**tıklayın veya *MYRESOURCEGROUP*gibi aks kümesi kaynak grubuna gidin ve *myakscluster*gibi aks kaynağını seçin. AKS kümesi panosu, aşağıdaki örnekte olduğu gibi gösterilir:
 
 ![Azure portalda örnek AKS panosu](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -232,7 +232,7 @@ Azure portalında bu verilerin doldurulması birkaç dakika sürebilir. Azure Vo
 
 1. Sol taraftaki **izleme** altında **Öngörüler** ' i seçin.
 1. Üst taraftan **+ Filtre Ekle**'yi seçin
-1. *Ad alanı* özelliğini ve ardından *\<kube-system hariç tümünü\> seçin*
+1. Özellik olarak *ad alanı* ' nı seçin ve ardından şunu seçin*\<All but kube-system\>*
 1. **Kapsayıcılar** bölümünü görüntüleyin.
 
 Aşağıdaki örnekte olduğu gibi *azure-vote-back* ve *azure-vote-front* kapsayıcıları görüntülenir:
@@ -280,11 +280,11 @@ AKS hakkında daha fazla bilgi ve dağıtım örneği için tam kod açıklamas�
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
-[aks-monitor]: ../monitoring/monitoring-container-health.md
+[aks-monitor]: ../azure-monitor/insights/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services

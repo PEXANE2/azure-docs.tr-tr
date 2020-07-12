@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551837"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253686"
 ---
 # <a name="infrastructure-as-code"></a>Kod olarak altyapı
 
@@ -43,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric kaynakları
 
-Uygulamaları ve Hizmetleri, Service Fabric kümenize Azure Resource Manager aracılığıyla dağıtabilirsiniz. Ayrıntılar için bkz. [Uygulamaları ve hizmetleri Azure Resource Manager kaynak olarak yönetme](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) . Aşağıda, Kaynak Yöneticisi Şablon kaynaklarınıza dahil etmek üzere uygulamaya özgü kaynaklar Service Fabric en iyi uygulamadır.
+Uygulamaları ve Hizmetleri, Service Fabric kümenize Azure Resource Manager aracılığıyla dağıtabilirsiniz. Ayrıntılar için bkz. [Uygulamaları ve hizmetleri Azure Resource Manager kaynak olarak yönetme](./service-fabric-application-arm-resource.md) . Aşağıda, Kaynak Yöneticisi Şablon kaynaklarınıza dahil etmek üzere uygulamaya özgü kaynaklar Service Fabric en iyi uygulamadır.
 
 ```json
 {
@@ -72,7 +73,7 @@ Uygulamaları ve Hizmetleri, Service Fabric kümenize Azure Resource Manager ara
 }
 ```
 
-Azure Resource Manager kullanarak uygulamanızı dağıtmak için önce [bir sfpkg](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) Service Fabric uygulama paketi oluşturmanız gerekir. Aşağıdaki Python betiği bir sfpkg oluşturma örneğidir:
+Azure Resource Manager kullanarak uygulamanızı dağıtmak için önce [bir sfpkg](./service-fabric-package-apps.md#create-an-sfpkg) Service Fabric uygulama paketi oluşturmanız gerekir. Aşağıdaki Python betiği bir sfpkg oluşturma örneğidir:
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -90,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure sanal makine Işletim sistemi otomatik yükseltme yapılandırması 
-Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir işlemdir ve Azure Service Fabric kümeleri ana bilgisayar düzeltme eki yönetimi için [sanal makine ölçek kümesi otomatik Işletim sistemi yükseltmesini](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) kullanmanız önerilir; Düzeltme Eki düzenleme uygulaması, POA 'nın Azure 'da barındırılmasına yönelik olarak Azure 'da barındırılması için tasarlanan alternatif bir çözümdür ve Azure 'da POA 'nın sanal makine Işletim sistemi otomatik yükseltmesini tercih etmek için sık karşılaşılan bir neden olabilir. Otomatik işletim sistemi yükseltmesini etkinleştirmek için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonu özellikleri aşağıda verilmiştir:
+Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir işlemdir ve Azure Service Fabric kümeleri ana bilgisayar düzeltme eki yönetimi için [sanal makine ölçek kümesi otomatik Işletim sistemi yükseltmesini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) kullanmanız önerilir; Düzeltme Eki düzenleme uygulaması, POA 'nın Azure 'da barındırılmasına yönelik olarak Azure 'da barındırılması için tasarlanan alternatif bir çözümdür ve Azure 'da POA 'nın sanal makine Işletim sistemi otomatik yükseltmesini tercih etmek için sık karşılaşılan bir neden olabilir. Otomatik işletim sistemi yükseltmesini etkinleştirmek için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonu özellikleri aşağıda verilmiştir:
 
 ```json
 "upgradePolicy": {

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 672a5afe36449aaa486ca6980f510ba52cf6daf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361583"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250966"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes hizmeti (AKS) çalışma süresi SLA 'Sı
 
@@ -40,7 +40,7 @@ Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücr
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sürüm 2.8.0 veya üstünü yükler
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) sürüm 2.8.0 veya üstünü yükler
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Çalışma süresi SLA 'Sı ile yeni bir küme oluşturma
 

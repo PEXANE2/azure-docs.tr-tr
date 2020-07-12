@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254754"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management'ı Azure Application Insights ile Tümleştirme
 
 Azure API Management, birden çok platformda uygulama oluşturup yöneten web geliştiricileri için genişletilebilir bir hizmet olan Azure Application Insights ile kolay tümleştirme sağlar. Bu kılavuzda, bu tür tümleştirmenin her adımında izlenecek yol gösterilmektedir ve API Management hizmet örneğiniz üzerindeki performans etkisini azaltmaya yönelik stratejiler açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu izlemek için bir Azure API Management örneğine sahip olmanız gerekir. Henüz bir hesabınız yoksa, önce [öğreticiyi](get-started-create-service-instance.md) doldurun.
 
@@ -36,7 +37,7 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 2. **+ Ekle**'ye tıklayın.  
     ![Uygulama öngörüleri oluştur](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Formu doldur. **Uygulama türü**olarak **genel** ' i seçin.
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Azure Application Insights ile Azure API Management hizmet örneği arasında bağlantı oluşturma
 
@@ -45,12 +46,12 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 3. **+ Ekle**'ye tıklayın.  
     ![App Insights günlükçüsü](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Daha önce oluşturulan **Application Insights** örneğini seçin ve kısa bir açıklama sağlayın.
-5. **Oluştur**'a tıklayın.
+5. **Oluştur**’a tıklayın.
 6. Bir izleme anahtarı ile Azure Application Insights günlükçüsü oluşturdunuz. Artık listede görünmelidir.  
     ![App Insights günlükçüsü](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Sahnenin arkasında, Application Insights örneğinin Izleme anahtarını içeren API Management örneğiniz için bir [günlükçü](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) varlığı oluşturulur.
+> Sahnenin arkasında, Application Insights örneğinin Izleme anahtarını içeren API Management örneğiniz için bir [günlükçü](/rest/api/apimanagement/2019-12-01/logger/createorupdate) varlığı oluşturulur.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>API 'niz için Application Insights günlüğe kaydetmeyi etkinleştirme
 
@@ -69,11 +70,11 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 > **Gövde alanının ilk baytlarında** **0** varsayılan değerini geçersiz kılmak, API 'nizin performansını önemli ölçüde azaltabilir.
 
 > [!NOTE]
-> Sahnenin arkasında, API düzeyinde ' ApplicationInsights ' adlı bir [Tanılama](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) varlığı oluşturulur.
+> Sahnenin arkasında, API düzeyinde ' ApplicationInsights ' adlı bir [Tanılama](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) varlığı oluşturulur.
 
 | Ayar adı                        | Değer türü                        | Açıklama                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Etkinleştir                              | boole                           | Bu API 'nin günlüğe kaydetmenin etkinleştirilip etkinleştirilmeyeceğini belirtir.                                                                                                                                                                                                                                                                                                |
+| Etkinleştirme                              | boole                           | Bu API 'nin günlüğe kaydetmenin etkinleştirilip etkinleştirilmeyeceğini belirtir.                                                                                                                                                                                                                                                                                                |
 | Hedef                         | Azure Application Insights günlükçüsü | Kullanılacak Azure Application Insights günlükçüsü belirtir                                                                                                                                                                                                                                                                                           |
 | Örnekleme (%)                        | decimal                           | 0 ile 100 (yüzde) arasında değerler. <br/> Azure Application Insights hangi istek yüzdesinin günlüğe kaydedileceğini belirtir. %0 örnekleme, %100 örnekleme, günlüğe kaydedilen tüm isteklerin olduğu anlamına gelen sıfır istek günlüğe kaydedilir. <br/> Bu ayar, Azure Application Insights isteklerin günlüğe kaydedilmesini azaltmaya yönelik performans etkilerini azaltmak için kullanılır (aşağıdaki bölümüne bakın). |
 | Her zaman günlüğe kaydetme hataları                   | boole                           | Bu ayar seçilirse, **örnekleme** ayarından bağımsız olarak tüm başarısızlıklar Azure Application Insights kaydedilir.                                                                                                                                                                                                                  |
@@ -125,5 +126,5 @@ Başarısız istek bir istek ve şu şekilde:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/)hakkında daha fazla bilgi edinin.
++ [Azure Application Insights](/azure/application-insights/)hakkında daha fazla bilgi edinin.
 + [Azure Event Hubs oturum açmayı](api-management-howto-log-event-hubs.md)göz önünde bulundurun.

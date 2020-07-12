@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202885"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253703"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2,0, Azure Active Directory B2C ve Azure API Management ile SPA arka ucunu koruyun
 
@@ -458,7 +458,7 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
 Yukarıdaki adımlar, API Management Azure AD B2C birçok farklı kullanılmasına izin vermek için uyarlanmıştır ve düzenlenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Active Directory ve OAuth 2.0](../active-directory/develop/authentication-scenarios.md)hakkında daha fazla bilgi edinin.
+* [Azure Active Directory ve OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md)hakkında daha fazla bilgi edinin.
 * API Management hakkında daha fazla [videoya](https://azure.microsoft.com/documentation/videos/index/?services=api-management) göz atın.
 * Arka uç hizmetinizi güvenli hale getirmeye yönelik diğer yollar için bkz. [Karşılıklı sertifika kimlik doğrulaması](api-management-howto-mutual-certificates.md).
 * [API Management hizmet örneği oluşturun](get-started-create-service-instance.md).

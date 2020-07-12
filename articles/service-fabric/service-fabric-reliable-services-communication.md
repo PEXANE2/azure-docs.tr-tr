@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462961"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253193"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services iletişim API 'Lerini kullanma
 Platform olarak Azure Service Fabric, hizmetler arasındaki iletişim hakkında tamamen bağımsızdır. Her protokol ve yığın, UDP 'den HTTP 'ye kadar kabul edilebilir. Hizmetlerin nasıl iletişim kurması gerektiğini seçmek için hizmet geliştiricisi 'nin bir daha vardır. Reliable Services uygulama çerçevesi, yerleşik iletişim yığınlarının yanı sıra özel iletişim bileşenlerinizi oluşturmak için kullanabileceğiniz API 'Ler sağlar.
@@ -187,7 +188,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Service Fabric, istemcilerin ve diğer hizmetlerin bu adresi hizmet adına göre sormasını sağlayan API 'Ler sağlar. Hizmet adresi statik olmadığı için bu önemlidir. Hizmetler, kaynak Dengeleme ve kullanılabilirlik amaçlarıyla küme içinde taşınır. Bu, istemcilerin bir hizmetin dinleme adresini çözümlemesine izin veren mekanizmadır.
 
 > [!NOTE]
-> İletişim dinleyicisi yazma hakkında tam bir yol için, bkz. C# için [OWIN Self hosting Ile Web API services Service Fabric](service-fabric-reliable-services-communication-webapi.md) . Java IÇIN kendi http sunucu uygulamanızı yazabilirsiniz, bkz. konumundaki yankı sunucusu uygulaması örneği https://github.com/Azure-Samples/service-fabric-java-getting-started .
+> İletişim dinleyicisi yazma hakkında tam bir yol için, bkz. C# için [OWIN Self hosting Ile Web API services Service Fabric](./service-fabric-reliable-services-communication-aspnetcore.md) . Java IÇIN kendi http sunucu uygulamanızı yazabilirsiniz, bkz. konumundaki yankı sunucusu uygulaması örneği https://github.com/Azure-Samples/service-fabric-java-getting-started .
 >
 >
 
@@ -206,7 +207,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örneğin:
+Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örnek:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");

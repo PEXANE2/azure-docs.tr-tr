@@ -3,11 +3,12 @@ title: Kaynak günlüklerini toplama & analiz etme
 description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure Container Registry kaynak günlüğü olaylarını kaydedin ve çözümleyin.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343192"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252496"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
 
@@ -141,10 +142,9 @@ ContainerRegistryLoginEvents
 
 Günlükleri Log Analytics veya alternatif olarak göndermenin yanı sıra, bir Azure Depolama hesabını günlük hedefi olarak seçmek da yaygın bir senaryodur. Azure depolama 'da günlükleri arşivlemek için Tanılama ayarları aracılığıyla arşivlemeyi etkinleştirmeden önce bir depolama hesabı oluşturun.
 
-Ayrıca, tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-what-is-event-hubs.md)akışla aktarabilirsiniz. Event Hubs, saniye başına milyonlarca olayı alabilir ve bu sayede herhangi bir gerçek zamanlı analiz sağlayıcısını kullanarak dönüştürebilir ve depolayabilirler. 
+Ayrıca, tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-about.md)akışla aktarabilirsiniz. Event Hubs, saniye başına milyonlarca olayı alabilir ve bu sayede herhangi bir gerçek zamanlı analiz sağlayıcısını kullanarak dönüştürebilir ve depolayabilirler. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Log Analytics](../azure-monitor/log-query/get-started-portal.md) kullanma ve [günlük sorguları](../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
 * Azure 'un farklı katmanlarında kullanılabilen platform günlükleri hakkında bilgi edinmek için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md) .
-

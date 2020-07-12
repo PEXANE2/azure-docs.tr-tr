@@ -4,30 +4,32 @@ description: Bu hızlı başlangıçta, sanal makineleri işletim sistemine gör
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969816"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252377"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak paylaşılan sorgu oluşturma
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak paylaşılan sorgu oluşturma
 
 Kaynak Grafiği sorguları, _özel bir sorgu_ veya _paylaşılan sorgu_olarak kaydedilebilir. Özel bir sorgu bireyler portalı profiline kaydedilir ve başkaları tarafından görülemez. Paylaşılan sorgu, izinler ve rol tabanlı erişim aracılığıyla başkalarıyla paylaşılabilecek Kaynak Yöneticisi nesnesidir. Paylaşılan sorgu, kaynak bulmanın ortak ve tutarlı bir şekilde yürütülmesini sağlar. Bu hızlı başlangıç, paylaşılan bir sorgu oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanır.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'da paylaşılan bir sorgu oluşturmak için ARM şablonunu dağıtma" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
 ## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="create-a-shared-query"></a>Paylaşılan sorgu oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta, _işletim sistemi tarafından Count VM 'ler_adlı bir paylaşılan sorgu oluşturacaksınız. Bu sorguyu SDK 'da veya kaynak Graph Explorer ile portalda denemek için bkz. [OS türlerine göre örnek sayısı sanal makineleri](./samples/starter.md#count-os).
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/) alınmıştır.
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
 
 :::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
 
@@ -35,7 +37,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablo
 
 - [Microsoft. ResourceGraph/sorgular](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 > [!NOTE]
 > Azure Kaynak Grafiği hizmeti ücretsizdir. Daha fazla bilgi için bkz. [Azure Kaynak grafiğine genel bakış](./overview.md).
@@ -46,11 +48,11 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablo
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Name | Değer |
+   | Ad | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
    | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. |
-   | Konum | Bir bölge seçin. Örneğin **Orta ABD**. |
+   | Location | Bir bölge seçin. Örneğin **Orta ABD**. |
    | Sorgu adı | Varsayılan değer **sayısı VM 'lerini işletim sistemi olarak**bırakın. |
    | Sorgu kodu | Varsayılan değeri bırakın`Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
    | Sorgu açıklaması | **Bu paylaşılan sorgunun tüm sanal makine kaynaklarını saydığı ve işletim sistemi türüne göre özetlediği** varsayılan değeri bırakın. |

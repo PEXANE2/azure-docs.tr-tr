@@ -12,21 +12,22 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 1d6773b4daac256234c33bf50fb3736d585ac505
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75481002"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254699"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde dağıtılan mikro hizmetlerle Azure API Management kullanma
 
-Mikro hizmetler, API 'Leri oluşturmak için mükemmeldir. [Azure Kubernetes hizmeti](https://azure.microsoft.com/services/kubernetes-service/) (aks) sayesinde, bulutta [mikro hizmet tabanlı bir mimariyi](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/microservices) hızlıca dağıtabilir ve çalıştırabilirsiniz. Daha sonra, mikro hizmetlerinizi iç ve dış tüketim için API olarak yayımlamak üzere [Azure API Management](https://aka.ms/apimrocks) (API Management) özelliğinden yararlanabilirsiniz. Bu makalede, AKS ile API Management dağıtma seçenekleri açıklanmaktadır. Kubernetes, API Management ve Azure ağı hakkında temel bilgileri varsayar. 
+Mikro hizmetler, API 'Leri oluşturmak için mükemmeldir. [Azure Kubernetes hizmeti](https://azure.microsoft.com/services/kubernetes-service/) (aks) sayesinde, bulutta [mikro hizmet tabanlı bir mimariyi](/azure/architecture/guide/architecture-styles/microservices) hızlıca dağıtabilir ve çalıştırabilirsiniz. Daha sonra, mikro hizmetlerinizi iç ve dış tüketim için API olarak yayımlamak üzere [Azure API Management](https://aka.ms/apimrocks) (API Management) özelliğinden yararlanabilirsiniz. Bu makalede, AKS ile API Management dağıtma seçenekleri açıklanmaktadır. Kubernetes, API Management ve Azure ağı hakkında temel bilgileri varsayar. 
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 Mikro Hizmetleri tüketim için API 'Ler olarak yayımlarken, mikro hizmetler ve bunları kullanan istemciler arasındaki iletişimin yönetilmesi zor olabilir. Kimlik doğrulama, yetkilendirme, azaltma, önbelleğe alma, dönüştürme ve izleme gibi çok sayıda çapraz kesme sorunu vardır. Bu sorunlar, mikro hizmetlerin iç veya dış istemcilere sunulmadığına bakılmaksızın geçerlidir. 
 
-[API ağ geçidi](https://docs.microsoft.com/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) modelinde bu sorunlar ele alınmaktadır. Bir API ağ geçidi, mikro hizmetlerden bir ön kapı görevi görür, mikro hizmetinizdeki istemcileri ayırır, ek bir güvenlik katmanı ekler ve çapraz kesme sorunlarını işleme yükünü ortadan kaldırarak mikro hizmetlerinizin karmaşıklığını azaltır. 
+[API ağ geçidi](/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) modelinde bu sorunlar ele alınmaktadır. Bir API ağ geçidi, mikro hizmetlerden bir ön kapı görevi görür, mikro hizmetinizdeki istemcileri ayırır, ek bir güvenlik katmanı ekler ve çapraz kesme sorunlarını işleme yükünü ortadan kaldırarak mikro hizmetlerinizin karmaşıklığını azaltır. 
 
 [Azure API Management](https://aka.ms/apimrocks) , API ağ geçidi ihtiyaçlarınızı çözmeye yönelik anahtar bir çözümdür. Mikro hizmetleriniz için hızlı bir şekilde tutarlı ve modern bir ağ geçidi oluşturabilir ve bunları API olarak yayımlayabilirsiniz. Tam yaşam döngüsü API yönetimi çözümü olarak, API bulma, API yaşam döngüsü yönetimi ve API Analytics için bir self servis geliştirici portalı dahil ek yetenekler de sağlar.
 
@@ -52,7 +53,7 @@ AKS kümesi her zaman bir sanal ağ (VNet) içinde dağıtıldığında, VNet 't
 
 ### <a name="option-1-expose-services-publicly"></a>Seçenek 1: Hizmetleri herkese açık kullanıma sunma
 
-AKS kümesindeki hizmetler, NodePort, LoadBalancer veya ExternalName [hizmet türleri](https://docs.microsoft.com/azure/aks/concepts-network) kullanılarak herkese açık bir şekilde sunulabilir. Bu durumda, hizmetlere doğrudan genel İnternet üzerinden erişilebilir. Kümenin önüne API Management dağıttıktan sonra, mikro hizmetlerde kimlik doğrulaması uygulayarak tüm gelen trafiğin API Management gitmesinden emin olunması gerekir. Örneğin, API Management kümeye yapılan her istekte bir erişim belirteci içerebilir. Her mikro hizmet, isteği işlemeden önce belirteci doğrulamaktan sorumludur. 
+AKS kümesindeki hizmetler, NodePort, LoadBalancer veya ExternalName [hizmet türleri](../aks/concepts-network.md) kullanılarak herkese açık bir şekilde sunulabilir. Bu durumda, hizmetlere doğrudan genel İnternet üzerinden erişilebilir. Kümenin önüne API Management dağıttıktan sonra, mikro hizmetlerde kimlik doğrulaması uygulayarak tüm gelen trafiğin API Management gitmesinden emin olunması gerekir. Örneğin, API Management kümeye yapılan her istekte bir erişim belirteci içerebilir. Her mikro hizmet, isteği işlemeden önce belirteci doğrulamaktan sorumludur. 
 
 
 Bu, özellikle mikro hizmetlerinize kimlik doğrulama mantığınızı uyguladıysanız, AKS 'in önüne API Management dağıtmak için en kolay seçenektir. 
@@ -72,7 +73,7 @@ Larını
 
 1. seçenek daha kolay olabilir, ancak yukarıda bahsedilen gibi önemli dezavantajları vardır. API Management bir örnek küme VNet 'inde yer alıyorsa, karşılıklı TLS kimlik doğrulaması (mTLS), trafiğin güvenli ve güvenilir bir şekilde ve bir AKS kümesi API Management arasında her iki yönde de güvenilir olmasını sağlamaya yönelik sağlam bir yoldur. 
 
-Karşılıklı TLS kimlik doğrulaması, API Management tarafından [yerel olarak desteklenir](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) ve bir giriş denetleyicisi (Fig. 3) [yüklenerek](https://docs.microsoft.com/azure/aks/ingress-own-tls) Kubernetes 'te etkinleştirilebilir. Sonuç olarak, kimlik doğrulaması, mikro hizmetleri kolaylaştıran giriş denetleyicisinde gerçekleştirilir. Ayrıca, kümeye yalnızca API Management erişiminin olduğundan emin olmak için, API Management IP adreslerini giriş olarak izin verilenler listesine ekleyebilirsiniz.  
+Karşılıklı TLS kimlik doğrulaması, API Management tarafından [yerel olarak desteklenir](./api-management-howto-mutual-certificates.md) ve bir giriş denetleyicisi (Fig. 3) [yüklenerek](../aks/ingress-own-tls.md) Kubernetes 'te etkinleştirilebilir. Sonuç olarak, kimlik doğrulaması, mikro hizmetleri kolaylaştıran giriş denetleyicisinde gerçekleştirilir. Ayrıca, kümeye yalnızca API Management erişiminin olduğundan emin olmak için, API Management IP adreslerini giriş olarak izin verilenler listesine ekleyebilirsiniz.  
 
  
 ![Giriş denetleyicisi aracılığıyla yayımlama](./media/api-management-aks/ingress-controller.png)
@@ -96,7 +97,7 @@ API 'Lere erişim için bir abonelik anahtarı almak üzere bir abonelik gerekir
 
 Bazı durumlarda, mevzuata kısıtlamalar veya katı güvenlik gereksinimleri olan müşteriler, genel kullanıma sunulan uç noktalar nedeniyle 1. ve 2. seçenek önemli çözümler bulabilir. Diğer bir deyişle, AKS kümesi ve mikro hizmetleri kullanan uygulamalar aynı VNet içinde bulunabilir, bu nedenle tüm API trafiği VNet içinde kalacak şekilde kümeyi genel kullanıma sunmak için bir neden yoktur. Bu senaryolar için API Management küme VNet 'ine dağıtabilirsiniz. [API Management Premium katmanı](https://aka.ms/apimpricing) , VNET dağıtımını destekler. 
 
-[Sanal ağa API Management dağıtmanın](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) iki modu vardır: dış ve iç. 
+[Sanal ağa API Management dağıtmanın](./api-management-using-with-vnet.md) iki modu vardır: dış ve iç. 
 
 API tüketicileri küme VNet 'inde yer alıyorsa, dış mod (Fig. 4) kullanılmalıdır. Bu modda API Management ağ geçidi, küme VNet 'e eklenir, ancak dış yük dengeleyici aracılığıyla genel İnternet 'ten erişilebilir. Hala dış istemcilerin mikro hizmetleri kullanmasına izin verirken kümeyi tamamen gizlemeye yardımcı olur. Ayrıca, ağ trafiğini kısıtlamak için ağ güvenlik grupları (NSG) gibi Azure ağ yeteneklerini de kullanabilirsiniz.
 
@@ -119,10 +120,5 @@ Larını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [AKS 'teki uygulamalar Için ağ kavramları](https://docs.microsoft.com/azure/aks/concepts-network) hakkında daha fazla bilgi edinin
-* [Sanal ağlarla API Management kullanma](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) hakkında daha fazla bilgi edinin
-
-
-
-
-
+* [AKS 'teki uygulamalar Için ağ kavramları](../aks/concepts-network.md) hakkında daha fazla bilgi edinin
+* [Sanal ağlarla API Management kullanma](./api-management-using-with-vnet.md) hakkında daha fazla bilgi edinin

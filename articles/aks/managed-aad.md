@@ -7,12 +7,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/08/2020
 ms.author: thomasge
-ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b30c5b0e81f4748d5e94c05d016be83163c1e78e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166510"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251136"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-yönetilen Azure Active Directory Tümleştirmesi (Önizleme)
 
@@ -71,13 +71,13 @@ Diğer işletim sistemleri için [Bu yönergeleri](https://kubernetes.io/docs/ta
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı**olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -131,7 +131,7 @@ Küme birkaç dakika içinde oluşturulur.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Azure AD özellikli bir kümeye erişme
 
-Aşağıdaki adımları uygulamak için [Azure Kubernetes hizmet kümesi Kullanıcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) yerleşik rolüne sahip olmanız gerekir.
+Aşağıdaki adımları uygulamak için [Azure Kubernetes hizmet kümesi Kullanıcı](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) yerleşik rolüne sahip olmanız gerekir.
 
 Kümeye erişmek için Kullanıcı kimlik bilgilerini alın:
  
@@ -150,7 +150,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-Kümeleriniz için ek güvenlik grupları yapılandırmak üzere [rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/aks/azure-ad-rbac) yapılandırın.
+Kümeleriniz için ek güvenlik grupları yapılandırmak üzere [rol tabanlı Access Control (RBAC)](./azure-ad-rbac.md) yapılandırın.
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Azure AD ile erişim sorunlarını giderme
 
@@ -159,7 +159,7 @@ Kümeleriniz için ek güvenlik grupları yapılandırmak üzere [rol tabanlı A
 
 Kümenize erişimi olan geçerli bir Azure AD grubuna erişim olmadan kalıcı olarak engelleniyorsa, doğrudan kümeye erişmek için yönetici kimlik bilgilerini almaya devam edebilirsiniz.
 
-Bu adımları uygulamak için [Azure Kubernetes hizmet kümesi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role) yerleşik rolüne erişiminizin olması gerekir.
+Bu adımları uygulamak için [Azure Kubernetes hizmet kümesi Yöneticisi](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role) yerleşik rolüne erişiminizin olması gerekir.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
@@ -180,7 +180,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-rbac-integration]: manage-azure-rbac.md
@@ -195,4 +195,3 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
-

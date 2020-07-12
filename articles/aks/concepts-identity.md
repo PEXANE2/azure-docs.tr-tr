@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 55fd27d473bd47fd3321bdb2e730e4ef2d35352f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 560f7b958e04b55a7d642c9f95750812b86d32bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106195"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251731"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -83,7 +83,7 @@ Kubernetes kümesinin içinden, kimlik doğrulama belirteçlerini doğrulamak i�
 
 Yukarıdaki grafikte gösterildiği gibi, API sunucusu AKS Web kancası sunucusunu çağırır ve aşağıdaki adımları gerçekleştirir:
 
-1. Azure AD istemci uygulaması, [OAuth 2,0 cihaz yetkilendirme verme akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)ile kullanıcılar oturum açmak için kubectl tarafından kullanılır.
+1. Azure AD istemci uygulaması, [OAuth 2,0 cihaz yetkilendirme verme akışı](../active-directory/develop/v2-oauth2-device-code.md)ile kullanıcılar oturum açmak için kubectl tarafından kullanılır.
 2. Azure AD, bir access_token, id_token ve bir refresh_token sağlar.
 3. Kullanıcı, kubeconfig 'ten bir access_token kubectl 'ye bir istek yapar.
 4. Kubectl, access_token Apıver 'e gönderir.
@@ -138,7 +138,7 @@ Bu özellik, örneğin, kullanıcılara yalnızca abonelikler arasında AKS kayn
 
 AKS, aşağıdaki dört yerleşik rolü sağlar. Bunlar, [Kubernetes yerleşik rollerine](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) benzerdir, ancak crds 'yi destekleme gibi birkaç farklılık vardır. Her bir yerleşik rol tarafından izin verilen eylemlerin tam listesi için lütfen [buraya](../role-based-access-control/built-in-roles.md)bakın.
 
-| Rol                                | Description  |
+| Rol                                | Açıklama  |
 |-------------------------------------|--------------|
 | Azure Kubernetes hizmeti RBAC Görüntüleyicisi  | Bir ad alanındaki birçok nesneyi görmek için salt okuma erişimine izin verir. Rollerin veya rol bağlamalarının görüntülenmesine izin vermez. `Secrets`Gizli dizi içeriğini okumak, ad alanındaki `ServiceAccount` kimlik bilgilerine erişim sağladığından, `ServiceAccount` ad alanında (ayrıcalık yükseltme) bir biçimde API erişimine izin veren bu rol görüntülemeye izin vermez  |
 | Azure Kubernetes hizmeti RBAC yazıcı | Bir ad alanındaki nesnelerin çoğuna okuma/yazma erişimi sağlar. Bu rol, rolleri veya rol bağlamalarını görüntülemeye veya değiştirmeye izin vermez. Bununla birlikte, bu rol `Secrets` ad alanındaki herhangi bir ServiceAccount olarak, bu rol, ad alanındaki herhangi bir ServiceAccount 'ın API erişim düzeylerini kazanmak için kullanılabilir. |

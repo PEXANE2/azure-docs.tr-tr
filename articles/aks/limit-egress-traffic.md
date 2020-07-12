@@ -6,18 +6,18 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
 author: palma21
-ms.openlocfilehash: 6aed6c84439e65646c15367cdad3bf13c5573256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831742"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251323"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
 Bu makalede, Azure Kubernetes hizmetinden (AKS) giden trafiği güvenli hale getirmeye olanak tanıyan gerekli ayrıntılar sağlanmaktadır. Temel AKS dağıtımı için küme gereksinimlerini ve isteğe bağlı eklentiler ve özellikler için ek gereksinimleri içerir. [Azure Güvenlik Duvarı ile bu gereksinimlerin nasıl yapılandırılacağı hakkında daha fazla bir örnek](#restrict-egress-traffic-using-azure-firewall)sunulacaktır. Bununla birlikte, bu bilgileri herhangi bir giden kısıtlama yöntemine veya gerecine uygulayabilirsiniz.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 AKS kümeleri bir sanal ağa dağıtılır. Bu ağ yönetilebilecek (AKS tarafından oluşturulan) veya özel (önceden Kullanıcı tarafından önceden yapılandırılmış). Her iki durumda da, kümenin söz konusu sanal ağın dışındaki hizmetlerde **giden** bağımlılıkları vardır (hizmetin gelen bağımlılığı yoktur).
 
@@ -46,7 +46,7 @@ Aşağıdaki ağ ve FQDN/uygulama kuralları bir AKS kümesi için gereklidir, A
 
 Gerekli ağ kuralları ve IP adresi bağımlılıkları şunlardır:
 
-| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanım  |
+| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Veya* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
 | **`*:9000`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Veya* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
@@ -58,7 +58,7 @@ Gerekli ağ kuralları ve IP adresi bağımlılıkları şunlardır:
 
 Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
-| Hedef FQDN                 | Bağlantı noktası            | Kullanım      |
+| Hedef FQDN                 | Bağlantı noktası            | Kullanın      |
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri ilk taraf görüntülerini/grafiklerini içerir (örneğin, coreDNS, vb.). Bu görüntüler, ölçek ve yükseltme işlemleri de dahil olmak üzere kümenin doğru oluşturulması ve çalışması için gereklidir.  |
@@ -73,7 +73,7 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 Gerekli ağ kuralları ve IP adresi bağımlılıkları şunlardır:
 
-| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanım  |
+| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Veya* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
 | **`*:9000`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Veya* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
@@ -86,7 +86,7 @@ Gerekli ağ kuralları ve IP adresi bağımlılıkları şunlardır:
 
 Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
-| Hedef FQDN                               | Bağlantı noktası            | Kullanım      |
+| Hedef FQDN                               | Bağlantı noktası            | Kullanın      |
 |------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin. |
@@ -102,7 +102,7 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 Gerekli ağ kuralları ve IP adresi bağımlılıkları şunlardır:
 
-| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanım  |
+| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Veya* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
 | **`*:9000`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Veya* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
@@ -114,7 +114,7 @@ Gerekli ağ kuralları ve IP adresi bağımlılıkları şunlardır:
 
 Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
-| Hedef FQDN                                        | Bağlantı noktası            | Kullanım      |
+| Hedef FQDN                                        | Bağlantı noktası            | Kullanın      |
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri ilk taraf görüntülerini/grafiklerini içerir (örneğin, coreDNS, vb.). Bu görüntüler, ölçek ve yükseltme işlemleri de dahil olmak üzere kümenin doğru oluşturulması ve çalışması için gereklidir. |
@@ -129,7 +129,7 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 Aşağıdaki FQDN/uygulama kuralları isteğe bağlıdır, ancak AKS kümeleri için önerilir:
 
-| Hedef FQDN                                                               | Bağlantı noktası          | Kullanım      |
+| Hedef FQDN                                                               | Bağlantı noktası          | Kullanın      |
 |--------------------------------------------------------------------------------|---------------|----------|
 | **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | Bu adres, Linux küme düğümlerinin gerekli güvenlik düzeltme eklerini ve güncelleştirmelerini indirmesini sağlar. |
 
@@ -141,7 +141,7 @@ Bu FQDN 'lerin engellenmesini/izin vermeyi seçerseniz düğümler yalnızca bir
 
 GPU etkin olan AKS kümeleri için aşağıdaki FQDN/uygulama kuralları gereklidir:
 
-| Hedef FQDN                        | Bağlantı noktası      | Kullanım      |
+| Hedef FQDN                        | Bağlantı noktası      | Kullanın      |
 |-----------------------------------------|-----------|----------|
 | **`nvidia.github.io`**                  | **`HTTPS:443`** | Bu adres, GPU tabanlı düğümlerde doğru sürücü yükleme ve işlem için kullanılır. |
 | **`us.download.nvidia.com`**            | **`HTTPS:443`** | Bu adres, GPU tabanlı düğümlerde doğru sürücü yükleme ve işlem için kullanılır. |
@@ -153,7 +153,7 @@ GPU etkin olan AKS kümeleri için aşağıdaki FQDN/uygulama kuralları gerekli
 
 Windows Server tabanlı düğüm havuzlarını kullanmak için aşağıdaki FQDN/uygulama kuralları gereklidir:
 
-| Hedef FQDN                                                           | Bağlantı noktası      | Kullanım      |
+| Hedef FQDN                                                           | Bağlantı noktası      | Kullanın      |
 |----------------------------------------------------------------------------|-----------|----------|
 | **`onegetcdn.azureedge.net, go.microsoft.com`**                            | **`HTTPS:443`** | Windows ile ilgili ikili dosyaları yüklemek için |
 | **`*.mp.microsoft.com, www.msftconnecttest.com, ctldl.windowsupdate.com`** | **`HTTP:80`**   | Windows ile ilgili ikili dosyaları yüklemek için |
@@ -168,7 +168,7 @@ Kapsayıcılar için Azure Izleyici 'ye erişim sağlamanın iki seçeneği vard
 
 Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
-| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanım  |
+| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureMonitor:443`**  | TCP           | 443      | Bu uç nokta, ölçüm verilerini ve günlükleri Azure Izleyici 'ye ve Log Analytics göndermek için kullanılır. |
 
@@ -176,7 +176,7 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 Aşağıdaki FQDN/uygulama kuralları, kapsayıcılar için Azure Izleyicisi etkinleştirilmiş olan AKS kümeleri için gereklidir:
 
-| FQDN                                    | Bağlantı noktası      | Kullanım      |
+| FQDN                                    | Bağlantı noktası      | Kullanın      |
 |-----------------------------------------|-----------|----------|
 | dc.services.visualstudio.com | **`HTTPS:443`**    | Bu uç nokta, Azure Izleyici kullanarak ölçümler ve izleme telemetri için kullanılır. |
 | *.ods.opinsights.azure.com    | **`HTTPS:443`**    | Bu uç nokta, Azure Izleyici tarafından günlük analizi verilerini almak için kullanılır. |
@@ -189,7 +189,7 @@ Güvenlik duvarınızı veya güvenlik yapılandırmanızı, aşağıdaki FQDN '
 
 #### <a name="required-network-rules"></a>Gerekli ağ kuralları
 
-| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanım  |
+| Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureDevSpaces`**  | TCP           | 443      | Bu uç nokta, ölçüm verilerini ve günlükleri Azure Izleyici 'ye ve Log Analytics göndermek için kullanılır. |
 
@@ -197,7 +197,7 @@ Güvenlik duvarınızı veya güvenlik yapılandırmanızı, aşağıdaki FQDN '
 
 Azure Dev Spaces etkin olan AKS kümeleri için aşağıdaki FQDN/uygulama kuralları gereklidir:
 
-| FQDN                                    | Bağlantı noktası      | Kullanım      |
+| FQDN                                    | Bağlantı noktası      | Kullanın      |
 |-----------------------------------------|-----------|----------|
 | `cloudflare.docker.com` | **`HTTPS:443`** | Bu adres, Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için kullanılır |
 | `gcr.io` | **`HTTPS:443`** | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
@@ -213,7 +213,7 @@ Azure Dev Spaces etkin olan AKS kümeleri için aşağıdaki FQDN/uygulama kural
 
 Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama kuralları gereklidir.
 
-| FQDN                                          | Bağlantı noktası      | Kullanım      |
+| FQDN                                          | Bağlantı noktası      | Kullanın      |
 |-----------------------------------------------|-----------|----------|
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır. (Şu anda AKS 'deki önizlemededir) |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. (Şu anda AKS 'deki önizlemededir) |
@@ -239,7 +239,7 @@ Dağıtımın örnek mimarisi aşağıda verilmiştir:
   * AKS aracı düğümlerinden gelen istekler, AKS kümesinin dağıtıldığı alt ağa yerleştirilmiş bir UDR 'yi izler.
   * Azure Güvenlik Duvarı, sanal ağdan genel bir IP ön ucunda yer kalmadı
   * Genel internet veya diğer Azure hizmetlerine erişim, güvenlik duvarı ön uç IP adresinden ve bu adresten akışa akar
-  * İsteğe bağlı olarak, AKS denetim düzlemi erişimi, güvenlik duvarı genel ön uç IP adresini içeren [API sunucusu tarafından YETKILENDIRILMIŞ IP aralıkları](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)tarafından korunur.
+  * İsteğe bağlı olarak, AKS denetim düzlemi erişimi, güvenlik duvarı genel ön uç IP adresini içeren [API sunucusu tarafından YETKILENDIRILMIŞ IP aralıkları](./api-server-authorized-ip-ranges.md)tarafından korunur.
 * İç trafik
   * İsteğe bağlı olarak, [genel bir Load Balancer](load-balancer-standard.md) buna ek olarak, iç trafik Için bir [iç Load Balancer](internal-lb.md) kullanabilirsiniz. Bu, kendi alt ağında da ayırabilirsiniz.
 
@@ -353,7 +353,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> AKS API sunucusuna, [YETKILENDIRILMIŞ IP adresi aralıklarıyla](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)güvenli erişim kullanırsanız, güvenlik DUVARı genel IP 'SINI yetkili IP aralığına eklemeniz gerekir.
+> AKS API sunucusuna, [YETKILENDIRILMIŞ IP adresi aralıklarıyla](./api-server-authorized-ip-ranges.md)güvenli erişim kullanırsanız, güvenlik DUVARı genel IP 'SINI yetkili IP aralığına eklemeniz gerekir.
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Azure Güvenlik Duvarı için bir atlama ile UDR oluşturma
 
@@ -389,7 +389,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-Azure Güvenlik Duvarı hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Duvarı belgeleri](https://docs.microsoft.com/azure/firewall/overview) .
+Azure Güvenlik Duvarı hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Duvarı belgeleri](../firewall/overview.md) .
 
 ### <a name="associate-the-route-table-to-aks"></a>Yol tablosunu AKS ile ilişkilendir
 
@@ -722,7 +722,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>Azure Güvenlik Duvarı 'na bir DNAT kuralı ekleme
 
 > [!IMPORTANT]
-> Çıkış trafiğini kısıtlamak ve tüm çıkış trafiğini zorlamak için Kullanıcı tanımlı yol (UDR) oluşturmak üzere Azure Güvenlik Duvarı 'nı kullandığınızda, giriş trafiğine doğru şekilde izin vermek için güvenlik duvarında uygun bir DNAT kuralı oluşturduğunuzdan emin olun. Azure Güvenlik Duvarı 'nı bir UDR ile kullanmak, asimetrik yönlendirme nedeniyle giriş kurulumunu keser. (AKS alt ağının, güvenlik duvarının özel IP adresine giden bir varsayılan yolu varsa, ancak türü: LoadBalancer) ortak yük dengeleyici veya Kubernetes hizmeti kullanıyorsanız bu sorun oluşur. Bu durumda, gelen yük dengeleyici trafiği genel IP adresi aracılığıyla alınır, ancak döndürülen yol güvenlik duvarının özel IP adresinden geçer. Güvenlik duvarı durum bilgisi olduğundan, güvenlik duvarı kurulu bir oturumun farkında olmadığından döndürülen paketi bırakır. Azure Güvenlik duvarını giriş veya hizmet yük dengeleyicinizle tümleştirmeyi öğrenmek için bkz. Azure [güvenlik duvarını azure standart Load Balancer tümleştirme](https://docs.microsoft.com/azure/firewall/integrate-lb).
+> Çıkış trafiğini kısıtlamak ve tüm çıkış trafiğini zorlamak için Kullanıcı tanımlı yol (UDR) oluşturmak üzere Azure Güvenlik Duvarı 'nı kullandığınızda, giriş trafiğine doğru şekilde izin vermek için güvenlik duvarında uygun bir DNAT kuralı oluşturduğunuzdan emin olun. Azure Güvenlik Duvarı 'nı bir UDR ile kullanmak, asimetrik yönlendirme nedeniyle giriş kurulumunu keser. (AKS alt ağının, güvenlik duvarının özel IP adresine giden bir varsayılan yolu varsa, ancak türü: LoadBalancer) ortak yük dengeleyici veya Kubernetes hizmeti kullanıyorsanız bu sorun oluşur. Bu durumda, gelen yük dengeleyici trafiği genel IP adresi aracılığıyla alınır, ancak döndürülen yol güvenlik duvarının özel IP adresinden geçer. Güvenlik duvarı durum bilgisi olduğundan, güvenlik duvarı kurulu bir oturumun farkında olmadığından döndürülen paketi bırakır. Azure Güvenlik duvarını giriş veya hizmet yük dengeleyicinizle tümleştirmeyi öğrenmek için bkz. Azure [güvenlik duvarını azure standart Load Balancer tümleştirme](../firewall/integrate-lb.md).
 
 
 Gelen bağlantıyı yapılandırmak için, Azure Güvenlik Duvarı 'na bir DNAT kuralı yazılması gerekir. Kümenizin bağlantısını test etmek için, güvenlik duvarı ön uç genel IP adresi için iç hizmet tarafından sunulan iç IP 'ye yönlendirmek üzere bir kural tanımlanır.

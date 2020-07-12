@@ -1,13 +1,14 @@
 ---
 title: Azure Işlevleri C# Geliştirici Başvurusu
 description: C# kullanarak Azure Işlevleri geliştirmeyi anlayın.
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697196"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254376"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
 
@@ -137,7 +138,7 @@ Yapı işlemi, derleme klasöründeki bir işlev klasöründe bir *function.js* 
 
 Bu dosyanın amacı, [Tüketim planındaki kararları ölçeklendirirken](functions-scale.md#how-the-consumption-and-premium-plans-work)kullanılacak ölçek denetleyicisine bilgi sağlamaktır. Bu nedenle, dosya yalnızca tetikleyici bilgisine sahiptir, giriş veya çıkış bağlamaları değildir.
 
-Dosyada oluşturulan *function.js* , `configurationSource` çalışma zamanına yapılandırma *function.js* yerine bağlama için .net öznitelikleri kullanmasını söyleyen bir özelliği içerir. İşte bir örnek:
+Dosyada oluşturulan *function.js* , `configurationSource` çalışma zamanına yapılandırma *function.js* yerine bağlama için .net öznitelikleri kullanmasını söyleyen bir özelliği içerir. Aşağıda bir örnek verilmiştir:
 
 ```json
 {
@@ -235,7 +236,7 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Çıktıyı C# ' deki akış günlüklerinizi günlüğe kaydetmek için, [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. `log`Aşağıdaki örnekte olduğu gibi, adını yazmanız önerilir:  
 
@@ -377,7 +378,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örneğin:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örnek:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

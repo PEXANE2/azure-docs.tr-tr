@@ -15,16 +15,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75442537"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254597"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management, Event Hubs ve Moesif ile API 'lerinizi izleme
 [API Management hizmeti](api-management-key-concepts.md) , HTTP API 'NIZE gönderilen http isteklerinin işlenmesini iyileştirmek için birçok özellik sağlar. Ancak, isteklerin ve yanıtların varlığı geçicidir. İstek yapılır ve arka uç API 'nize API Management hizmeti üzerinden akar. API 'niz isteği ve bir yanıt akışını API tüketicisine geri işler. API Management hizmeti, API 'Lerle ilgili bazı önemli istatistikleri Azure portal panosunda görüntülemeye devam eder, ancak bundan sonra Ayrıntılar kayboluyor.
 
-API Management hizmetinde eventhub ' ı kullanarak, bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-what-is-event-hubs.md)istekten ve yanıttan herhangi bir ayrıntıyı gönderebilirsiniz. API 'lerinize gönderilen HTTP iletilerinden olay oluşturmak isteyebileceğiniz çeşitli nedenler vardır. Güncelleştirmelerin, kullanım analizlerinin denetim izi, özel durum uyarısı ve üçüncü taraf tümleştirmeler bazı örneklere dahildir.
+API Management hizmetinde eventhub ' ı kullanarak, bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-about.md)istekten ve yanıttan herhangi bir ayrıntıyı gönderebilirsiniz. API 'lerinize gönderilen HTTP iletilerinden olay oluşturmak isteyebileceğiniz çeşitli nedenler vardır. Güncelleştirmelerin, kullanım analizlerinin denetim izi, özel durum uyarısı ve üçüncü taraf tümleştirmeler bazı örneklere dahildir.
 
 Bu makalede, tüm HTTP isteği ve yanıt iletisini yakalama, bir olay hub 'ına gönderme ve bu iletiyi HTTP günlüğü ve izleme hizmetleri sağlayan bir üçüncü taraf hizmetine geçirme işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -47,7 +48,7 @@ Bir olay hub 'ı, olay verilerini basit bir dize olarak kabul eder. Bu dizenin i
 
 Alternatif bir seçenek, `application/http` http belirtiminde [RFC 7230](https://tools.ietf.org/html/rfc7230)' de açıklandığı gibi medya türünü kullanmaktır. Bu medya türü, gerçekte HTTP iletilerini kablo üzerinden göndermek için kullanılan biçimi kullanır, ancak tüm ileti başka bir HTTP isteğinin gövdesine yerleştirilebilir. Bizim örneğimizde, Event Hubs göndermek için İletimizin olarak gövdeyi kullanacağız. Kolayca, bu biçimi ayrıştırabilen ve bunu yerel ve nesnelere dönüştürebilen [Microsoft ASP.NET Web apı 2,2 istemci](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) kitaplıklarında bulunan bir Ayrıştırıcı vardır `HttpRequestMessage` `HttpResponseMessage` .
 
-Bu iletiyi oluşturabilmeniz için Azure API Management 'deki C# tabanlı [ilke ifadelerinden](/azure/api-management/api-management-policy-expressions) faydalanması gerekiyor. Azure Event Hubs HTTP istek iletisi gönderen ilke aşağıda verilmiştir.
+Bu iletiyi oluşturabilmeniz için Azure API Management 'deki C# tabanlı [ilke ifadelerinden](./api-management-policy-expressions.md) faydalanması gerekiyor. Azure Event Hubs HTTP istek iletisi gönderen ilke aşağıda verilmiştir.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -296,7 +297,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 , `MoesifHttpMessageProcessor` Http olay verilerini hizmetine göndermeyi kolaylaştıran bir [Moesif Için C# API kitaplığı](https://www.moesif.com/docs/api?csharp#events) avantajlarından yararlanır. Moesif Toplayıcı API 'sine HTTP verileri göndermek için bir hesap ve uygulama kimliği gereklidir. [Moesif 'in Web sitesinde](https://www.moesif.com) bir hesap oluşturup _sağ üst menü_  ->  _uygulama kurulumuna_giderek bir moesif uygulama kimliği alırsınız.
 
 ## <a name="complete-sample"></a>Tüm örnek
-Örnek için [kaynak kodu](https://github.com/dgilling/ApimEventProcessor) ve testler GitHub ' da bulunur. Örneği kendiniz çalıştırmak için bir [API Management hizmeti](get-started-create-service-instance.md), [bağlı bir olay hub](api-management-howto-log-event-hubs.md)'ı ve bir [depolama hesabı](../storage/common/storage-create-storage-account.md) gerekir.   
+Örnek için [kaynak kodu](https://github.com/dgilling/ApimEventProcessor) ve testler GitHub ' da bulunur. Örneği kendiniz çalıştırmak için bir [API Management hizmeti](get-started-create-service-instance.md), [bağlı bir olay hub](api-management-howto-log-event-hubs.md)'ı ve bir [depolama hesabı](../storage/common/storage-account-create.md) gerekir.   
 
 Örnek, yalnızca Olay Hub 'ından gelen olayları dinleyen basit bir konsol uygulamasıdır, bunları bir Moesıya `EventRequestModel` ve `EventResponseModel` nesnelerine dönüştürür ve ardından onları Moesif Collector API 'sine iletir.
 
@@ -310,9 +311,9 @@ Azure API Management hizmeti, API 'lerinize ve API 'lerinize seyahat eden HTTP t
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Event Hubs hakkında daha fazla bilgi
   * [Azure Event Hubs kullanmaya başlama](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [EventProcessorHost bulunan iletiler alma](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [EventProcessorHost bulunan iletiler alma](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Event Hubs programlama kılavuzu](../event-hubs/event-hubs-programming-guide.md)
 * API Management ve Event Hubs tümleştirmesi hakkında daha fazla bilgi edinin
   * [Azure Event Hubs olayları Azure 'da günlüğe kaydetme API Management](api-management-howto-log-event-hubs.md)
-  * [Günlükçü varlık başvurusu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [günlük-eventhub ilke başvurusu](/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Günlükçü varlık başvurusu](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [günlük-eventhub ilke başvurusu](./api-management-advanced-policies.md#log-to-eventhub)

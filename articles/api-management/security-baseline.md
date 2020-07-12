@@ -7,23 +7,24 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5640a42c0fdcb0bd958011db28c19854b16a547
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83736084"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252768"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management için Azure Güvenlik temeli
 
 API Management için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
-Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
+Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](../security/benchmarks/overview.md)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
 
-Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Ağ güvenliği
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: sanal ağınızda Ağ güvenlik gruplarını veya Azure Güvenlik duvarını kullanarak kaynakları koruyun
 
@@ -33,11 +34,11 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https:
 
 API Management dağıtıldığı alt ağa gelen ve giden trafik, ağ güvenlik grubu kullanılarak denetlenebilir.
 
-* [Sanal ağlar ile Azure API Management’ı kullanma](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Sanal ağlar ile Azure API Management’ı kullanma](./api-management-using-with-vnet.md)
 
-* [Azure API Management hizmetini iç sanal ağ ile kullanma](https://docs.microsoft.com/azure/api-management/api-management-using-with-internal-vnet)
+* [Azure API Management hizmetini iç sanal ağ ile kullanma](./api-management-using-with-internal-vnet.md)
 
-* [Application Gateway ile iç VNET 'te API Management tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Application Gateway ile iç VNET 'te API Management tümleştirme](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -49,11 +50,11 @@ API Management dağıtıldığı alt ağa gelen ve giden trafik, ağ güvenlik g
 
 Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olması gereken bir bağlantı noktası kümesi vardır. Bu bağlantı noktalarından herhangi biri kullanılamıyorsa API Management düzgün çalışmayabilir ve erişilemez hale gelebilir.
 
-* [Azure API Management için NSG yapılandırmasını anlama](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Azure API Management için NSG yapılandırmasını anlama](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [NSG akış günlüklerini etkinleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG akış günlüklerini etkinleştirme](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Trafik Analizi etkinleştirme ve kullanma](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Trafik Analizi etkinleştirme ve kullanma](../network-watcher/traffic-analytics.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -70,9 +71,9 @@ Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olmas�
 
 Note: Bu özellik, API Management Premium ve geliştirici katmanlarında kullanılabilir.
 
-* [Application Gateway ile iç VNET 'te API Management tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Application Gateway ile iç VNET 'te API Management tümleştirme](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Azure Application Gateway anlama](https://docs.microsoft.com/azure/application-gateway/)
+* [Azure Application Gateway anlama](../application-gateway/index.yml)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -93,13 +94,13 @@ Dağıtılmış hizmet reddi (DDoS) saldırılarını korumak için API Manageme
 
 Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
 
-* [Application Gateway ile iç VNET 'te API Management tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Application Gateway ile iç VNET 'te API Management tümleştirme](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Azure Application Gateway anlama](https://docs.microsoft.com/azure/application-gateway/)
+* [Azure Application Gateway anlama](../application-gateway/index.yml)
 
-* [Azure DDoS koruma standardını yapılandırma](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [Azure DDoS koruma standardını yapılandırma](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/threat-protection.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -111,11 +112,11 @@ Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimle
 
 Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olması gereken bir bağlantı noktası kümesi vardır. Bu bağlantı noktalarından herhangi biri kullanılamıyorsa API Management düzgün çalışmayabilir ve erişilemez hale gelebilir.
 
-* [Azure API Management için NSG yapılandırmasını anlama](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Azure API Management için NSG yapılandırmasını anlama](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [NSG akış günlüklerini etkinleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG akış günlüklerini etkinleştirme](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Trafik Analizi etkinleştirme ve kullanma](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Trafik Analizi etkinleştirme ve kullanma](../network-watcher/traffic-analytics.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -134,9 +135,9 @@ Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olmas�
 
 Note: Bu özellik, API Management Premium ve geliştirici katmanlarında kullanılabilir.
 
-* [Application Gateway ile iç VNET 'te API Management tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Application Gateway ile iç VNET 'te API Management tümleştirme](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Azure Application Gateway WAF 'yi anlayın](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure Application Gateway WAF 'yi anlayın](../web-application-firewall/ag/ag-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -155,13 +156,13 @@ Dahili modda, API Management önünde bir Azure Application Gateway yapılandır
 
 Note: Bu özellik, API Management Premium ve geliştirici katmanlarında kullanılabilir.
 
-* [Özel API 'Leri dış tüketicilere sunma](https://docs.microsoft.com/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
+* [Özel API 'Leri dış tüketicilere sunma](/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
 
-* [VNET içinde API Management kullanma](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [VNET içinde API Management kullanma](./api-management-using-with-vnet.md)
 
-* [Azure Application Gateway Azure Web uygulaması güvenlik duvarı](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure Application Gateway Azure Web uygulaması güvenlik duvarı](../web-application-firewall/ag/ag-overview.md)
 
-* [Azure Application Gateway anlama](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Azure Application Gateway anlama](../application-gateway/overview.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -173,9 +174,9 @@ Note: Bu özellik, API Management Premium ve geliştirici katmanlarında kullan�
 
 Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olması gereken bir bağlantı noktası kümesi vardır. Bu bağlantı noktalarından herhangi biri kullanılamıyorsa API Management düzgün çalışmayabilir ve erişilemez hale gelebilir.
 
-* [Hizmet etiketlerini anlama ve kullanma](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Hizmet etiketlerini anlama ve kullanma](../virtual-network/service-tags-overview.md)
 
-* [API Management için gereken bağlantı noktaları](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [API Management için gereken bağlantı noktaları](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -188,9 +189,9 @@ Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olmas�
 
 Ayrıca, Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint oluşturma](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint oluşturma](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -200,11 +201,11 @@ Ayrıca, Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBA
 
 **Rehberlik**: ağ güvenlik grupları (NSG 'ler) ve ağ güvenliği ve trafik akışıyla ilgili diğer kaynaklar için Etiketler kullanın. Bireysel NSG kuralları için "Açıklama" alanını kullanarak ağa//veya ağ trafiğine izin veren tüm kuralların iş gereksinimini ve/veya süresini (vb.) belirtebilirsiniz.
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-* [Sanal ağ oluşturma](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
-* [Güvenlik Yapılandırması ile NSG oluşturma](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Güvenlik Yapılandırması ile NSG oluşturma](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -214,9 +215,9 @@ Ayrıca, Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBA
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure API Management dağıtımlarınızla ilişkili ağ kaynaklarında yapılan değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Azure Izleyici 'de uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -224,7 +225,7 @@ Ayrıca, Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBA
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: onaylanan zaman eşitleme kaynaklarını kullanın
 
@@ -242,15 +243,15 @@ Azure Izleyici 'nin yanı sıra Azure API Management bir veya birkaç Azure Appl
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf güvenlik olayına ve olay yönetimine (SıEM) isteğe bağlı olarak, etkinleştirin ve yerleşik verileri etkinleştirin.
 
-* [Tanılama ayarlarını yapılandırma](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-in-azure-portal)
+* [Tanılama ayarlarını yapılandırma](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
 
-* [Azure Sentinel 'i ekleme](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
 * [Azure Izleyici ve üçüncü taraf SıEM tümleştirmesi ile çalışmaya başlama](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-* [Özel günlük ve analiz işlem hattı oluşturma](https://docs.microsoft.com/azure/api-management/api-management-howto-log-event-hubs)
+* [Özel günlük ve analiz işlem hattı oluşturma](./api-management-howto-log-event-hubs.md)
 
-* [Azure Application Insights ile tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Azure Application Insights ile tümleştirme](./api-management-howto-app-insights.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -262,9 +263,9 @@ Azure Izleyici 'nin yanı sıra Azure API Management bir veya birkaç Azure Appl
 
 Veri düzlemi denetim günlüğü için, tanılama günlükleri, denetim ve sorun giderme amacıyla önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Tanılama günlükleri, etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynaklarınız üzerinde gerçekleştirilen işlemler hakkında bilgi sağlar. Tanılama günlükleri, kaynağınızın kendisi tarafından gerçekleştirilen işlemler hakkında bilgi sağlar.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
 
-* [Azure API Management için tanılama ayarlarını etkinleştirme](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [Azure API Management için tanılama ayarlarını etkinleştirme](./api-management-howto-use-azure-monitor.md#activity-logs)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -282,9 +283,9 @@ Veri düzlemi denetim günlüğü için, tanılama günlükleri, denetim ve soru
 
 **Kılavuz**: Azure izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
-* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Log Analytics çalışma alanları için günlük saklama parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Günlükleri bir Azure depolama hesabına arşivleme](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)
+* [Günlükleri bir Azure depolama hesabına arşivleme](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -296,13 +297,13 @@ Veri düzlemi denetim günlüğü için, tanılama günlükleri, denetim ve soru
 
 İsteğe bağlı olarak, API Management Azure Application Insights ile tümleştirin ve birincil veya ikincil izleme, izleme, raporlama ve uyarı aracı olarak kullanın.
 
-* [Azure API Management için günlükleri izleme ve gözden geçirme](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor)
+* [Azure API Management için günlükleri izleme ve gözden geçirme](./api-management-howto-use-azure-monitor.md)
 
-* [Azure Izleyici 'de özel sorgular gerçekleştirme](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
 
-* [Log Analytics çalışma alanını anlayın](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Log Analytics çalışma alanını anlayın](../azure-monitor/log-query/get-started-portal.md)
 
-* [Azure Application Insights ile tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Azure Application Insights ile tümleştirme](./api-management-howto-app-insights.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -318,17 +319,17 @@ Beklenmeyen bir şey olduğunda size bilgi vermek için ölçüm uyarıları olu
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz.
 
-* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
 
-* [Azure API Management için tanılama ayarlarını etkinleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [Azure API Management için tanılama ayarlarını etkinleştirme](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [Yetkisiz istek için bir uyarı kuralı yapılandırma](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#set-up-an-alert-rule-for-unauthorized-request)
+* [Yetkisiz istek için bir uyarı kuralı yapılandırma](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule-for-unauthorized-request)
 
-* [Azure API Management örneğinin kapasite ölçümlerini görüntüleme](https://docs.microsoft.com/azure/api-management/api-management-capacity)
+* [Azure API Management örneğinin kapasite ölçümlerini görüntüleme](./api-management-capacity.md)
 
-* [Azure Application Insights ile tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Azure Application Insights ile tümleştirme](./api-management-howto-app-insights.md)
 
-* [Azure Sentinel 'i ekleme](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -360,7 +361,7 @@ Beklenmeyen bir şey olduğunda size bilgi vermek için ölçüm uyarıları olu
 
 ## <a name="identity-and-access-control"></a>Kimlik ve erişim denetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve erişim denetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve erişim denetimi](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
@@ -372,15 +373,15 @@ Ayrıca, API Management API Management Kullanıcı sisteminde yerleşik bir Yön
 
 Yönetim hesaplarının yönetimi ve bakımı için Azure Güvenlik Merkezi 'nin önerilerini izleyin.
 
-* [Azure API Management'te Rol Tabanlı Erişim Denetimini kullanma](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Azure API Management'te Rol Tabanlı Erişim Denetimini kullanma](./api-management-role-based-access-control.md)
 
-* [Azure API Management örneği altında kullanıcıların listesini alma](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Azure API Management örneği altında kullanıcıların listesini alma](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [Azure AD 'de PowerShell ile bir dizin rolüne atanan kullanıcıların listesini alma](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
+* [Azure AD 'de PowerShell ile bir dizin rolüne atanan kullanıcıların listesini alma](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
 
-* [Azure AD 'de PowerShell ile dizin rolü tanımı alma](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
+* [Azure AD 'de PowerShell ile dizin rolü tanımı alma](/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
 
-* [Azure Güvenlik Merkezi 'nden kimlik ve erişim önerilerini anlayın](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-identity)
+* [Azure Güvenlik Merkezi 'nden kimlik ve erişim önerilerini anlayın](../security-center/recommendations-reference.md#recs-identity)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -392,7 +393,7 @@ Yönetim hesaplarının yönetimi ve bakımı için Azure Güvenlik Merkezi 'nin
 
 API 'lere erişimi güvenli hale getirmenin bir yolu olan Azure API Management abonelikleri, bununla birlikte, oluşturulan bir çift abonelik anahtarı ile birlikte gelir. Müşteriler bu abonelik anahtarlarını dilediğiniz zaman yeniden oluşturabilir.
 
-* [Azure API Management aboneliklerini anlama](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)
+* [Azure API Management aboneliklerini anlama](./api-management-subscriptions.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -407,9 +408,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
-* [Kimlik ve erişim (Önizleme) izlemek için Azure Güvenlik Merkezi 'ni kullanma](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Kimlik ve erişim (Önizleme) izlemek için Azure Güvenlik Merkezi 'ni kullanma](../security-center/security-center-identity-access.md)
 
-* [Azure Ilkesini kullanma](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini kullanma](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -419,11 +420,11 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 **Rehberlik**: Azure API Management, Azure AD tarafından sunulan SSO özelliklerinden yararlanmak üzere Geliştirici Portalında kullanıcıların kimliğini doğrulamak için bir kimlik sağlayıcısı olarak Azure Active Directory faydalanabilecek şekilde yapılandırılabilir. Yeni geliştirici portalı kullanıcıları, yapılandırıldıktan sonra ilk kez Azure AD ile kimlik doğrulaması yaparak ve ardından portalda kaydolma işlemini tamamladıktan sonra, kimlik doğrulamasından sonra, bir kez kullanıma hazır kayıt işlemini tercih edebilir.
 
-* [Azure API Management'ta geliştirici hesaplarını yetkilendirmek için Azure Active Directory kullanın](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [Azure API Management'ta geliştirici hesaplarını yetkilendirmek için Azure Active Directory kullanın](./api-management-howto-aad.md)
 
 Alternatif olarak, oturum açma/kaydolma işlemi, temsilciyle daha da özelleştirilebilir. Temsili, geliştirici portalındaki yerleşik işlevselliği kullanmanın aksine, geliştirici oturum açma/kaydolma ve ürün aboneliklerinizi işlemek için mevcut Web sitenizi kullanmanıza olanak sağlar. Web sitenizin kullanıcı verilerine sahip olması ve bu adımların doğrulanmasını özel bir şekilde gerçekleştirmesini sağlar.
 
-* [Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme](https://docs.microsoft.com/azure/api-management/api-management-howto-setup-delegation)
+* [Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme](./api-management-howto-setup-delegation.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -433,9 +434,9 @@ Alternatif olarak, oturum açma/kaydolma işlemi, temsilciyle daha da özelleşt
 
 **Rehberlik**: Azure ACTIVE DIRECTORY (AD) MULTI-Factor AUTHENTICATION (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
 
-* [Azure 'da MFA 'yı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](../security-center/security-center-identity-access.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -445,9 +446,9 @@ Alternatif olarak, oturum açma/kaydolma işlemi, temsilciyle daha da özelleşt
 
 **Kılavuz**: Azure kaynaklarını açmak ve yapılandırmak için yapılandırılmış MULTI-Factor AUTHENTICATION (MFA) ile ayrıcalıklı erişim iş istasyonları (Paw) kullanın.
 
-* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Azure 'da MFA 'yı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -459,9 +460,9 @@ Alternatif olarak, oturum açma/kaydolma işlemi, temsilciyle daha da özelleşt
 
 Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın.
 
-* [Privileged Identity Management dağıtma (PıM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management dağıtma (PıM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD risk algılamalarını anlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD risk algılamalarını anlama](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -471,7 +472,7 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 **Rehberlik**: IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından Azure Portal erişimine izin vermek Için, koşullu erişim adlı konum kullanın.
 
-* [Azure 'da adlandırılmış konumları yapılandırma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure 'da adlandırılmış konumları yapılandırma](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -485,11 +486,11 @@ Azure Active Directory kullanarak Geliştirici hesaplarının kimliğini doğrul
 
 Azure Active Directory (AD) ile OAuth 2,0 protokolünü kullanarak API 'lerinizi korumak için Azure API Management örneğinizi yapılandırın.
 
-* [API Management Azure 'da Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [API Management Azure 'da Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme](./api-management-howto-aad.md)
 
-* [Azure Active Directory ve API Management ile OAuth 2,0 kullanarak bir API 'yi koruma](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Azure Active Directory ve API Management ile OAuth 2,0 kullanarak bir API 'yi koruma](./api-management-howto-protect-backend-with-aad.md)
 
-* [AAD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [AAD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -503,13 +504,13 @@ Müşteriler API Management Kullanıcı hesaplarının envanterini tutabilir ve 
 
 Yöneticiler özel gruplar oluşturabilir veya ilişkili Azure Active Directory kiracılarındaki dış gruplardan yararlanabilir. Özel ve dış gruplar, geliştiricilere görünürlük ve API ürünlerine erişim sağlayan sistem gruplarıyla birlikte kullanılabilir.
 
-* [Azure API Management'ta kullanıcı hesaplarını yönetme](https://docs.microsoft.com/azure/api-management/api-management-howto-create-or-invite-developers)
+* [Azure API Management'ta kullanıcı hesaplarını yönetme](./api-management-howto-create-or-invite-developers.md)
 
-* [API Management kullanıcıların listesini alma](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [API Management kullanıcıların listesini alma](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [Azure API Management'ta geliştirici hesaplarını yönetmek için grup oluşturma ve kullanma](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)
+* [Azure API Management'ta geliştirici hesaplarını yönetmek için grup oluşturma ve kullanma](./api-management-howto-create-groups.md)
 
-* [Azure kimlik erişimi Incelemelerini kullanma](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure kimlik erişimi Incelemelerini kullanma](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -527,17 +528,17 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturun ve denetim 
 
 İlkeyi kullanarak API Management gelişmiş izlemeyi yapılandırın `log-to-eventhub` , güvenlik çözümlemesi için gereken ek bağlam bilgilerini yakalayın ve Azure Sentinel veya üçüncü taraf SIEM 'ye gönderin.
 
-* [API Management Azure 'da Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [API Management Azure 'da Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme](./api-management-howto-aad.md)
 
-* [Azure Active Directory ve API Management ile OAuth 2,0 kullanarak bir API 'yi koruma](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Azure Active Directory ve API Management ile OAuth 2,0 kullanarak bir API 'yi koruma](./api-management-howto-protect-backend-with-aad.md)
 
-* [API Management erişim kısıtlama ilkeleri](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies)
+* [API Management erişim kısıtlama ilkeleri](./api-management-access-restriction-policies.md)
 
-* [Azure AD günlüklerini Azure Izleyici ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure AD günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Yerleşik Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Yerleşik Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [API 'lerin gelişmiş izlenmesi](https://docs.microsoft.com/azure/api-management/api-management-log-to-eventhub-sample)
+* [API 'lerin gelişmiş izlenmesi](./api-management-log-to-eventhub-sample.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -547,11 +548,11 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturun ve denetim 
 
 **Rehberlik**: denetim düzleminde hesap oturum açma davranışı sapması (Azure Portal) için, otomatik yanıtları Kullanıcı kimlikleriyle ilgili şüpheli eylemlere yönelik olarak yapılandırmak için Azure ACTIVE DIRECTORY (ad) kimlik koruması ve risk algılama özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-* [Azure AD riskli oturum açma işlemlerini görüntüleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel 'i ekleme](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -561,7 +562,7 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturun ve denetim 
 
 **Rehberlik**: Şu anda kullanılamıyor; Müşteri Kasası Azure API Management için şu anda desteklenmiyor.
 
-* [Müşteri Kasası tarafından desteklenen hizmetler listesi](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Müşteri Kasası tarafından desteklenen hizmetler listesi](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -569,13 +570,13 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturun ve denetim 
 
 ## <a name="data-protection"></a>Veri koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın.
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -585,13 +586,13 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturun ve denetim 
 
 **Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Azure API Management örnekleri, sanal ağ (VNet)/subnet ile ayrılmalıdır ve uygun şekilde etiketlenemez.
 
-* [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-* [Sanal ağlar ile Azure API Management’ı kullanma](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Sanal ağlar ile Azure API Management’ı kullanma](./api-management-using-with-vnet.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -603,7 +604,7 @@ Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturun ve denetim 
 
 Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -613,13 +614,13 @@ Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri ve
 
 **Rehberlik**: yönetim DÜZLEMI çağrıları TLS üzerinden Azure Resource Manager üzerinden yapılır. Geçerli bir JSON Web belirteci (JWT) gerekiyor. Veri düzlemi çağrıları TLS ve desteklenen kimlik doğrulama mekanizmalarından biri (örneğin, istemci sertifikası veya JWT) ile güvenli hale getirilmiş olabilir.
 
-* [Azure API Management veri korumayı anlama](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [Azure API Management veri korumayı anlama](./api-management-security-controls.md#data-protection)
 
-* [Azure API Management TLS ayarlarını yönetme](https://docs.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
+* [Azure API Management TLS ayarlarını yönetme](./api-management-howto-manage-protocols-ciphers.md)
 
-* [Azure Active Directory ile Azure API Management API 'Lerini koruma](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Azure Active Directory ile Azure API Management API 'Lerini koruma](./api-management-howto-protect-backend-with-aad.md)
 
-* [Azure Active Directory B2C ile Azure API Management API 'Lerini koruma](https://docs.microsoft.com/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c)
+* [Azure Active Directory B2C ile Azure API Management API 'Lerini koruma](./howto-protect-backend-frontend-azure-ad-b2c.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -631,7 +632,7 @@ Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri ve
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -641,7 +642,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Kılavuz**: Azure API Management erişimini denetlemek için rol tabanlı erişim denetimi kullanın. Azure API Management, API Management Hizmetleri ve varlıkları için ayrıntılı erişim yönetimini (örneğin, API 'Ler ve ilkeler) etkinleştirmek üzere Azure rol tabanlı Access Control (RBAC) kullanır.
 
-* [Azure API Management'te Rol Tabanlı Erişim Denetimini kullanma](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Azure API Management'te Rol Tabanlı Erişim Denetimini kullanma](./api-management-role-based-access-control.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -653,7 +654,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-* [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -663,7 +664,7 @@ Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri ve
 
 **Rehberlik**: sertifikalar, anahtarlar ve gizli dizi değerleri gibi hassas veriler hizmet tarafından yönetilen hizmet örneği anahtarları için şifrelenir. Tüm şifreleme anahtarları hizmet örneği başına alınır ve hizmet yönetilir.
 
-* [Azure API Management ile bekleyen veri korumasını/şifrelemeyi anlayın](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [Azure API Management ile bekleyen veri korumasını/şifrelemeyi anlayın](./api-management-security-controls.md#data-protection)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -673,9 +674,9 @@ Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri ve
 
 **Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, üretim Azure işlevleri uygulamalarına ve diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-* [Azure etkinlik günlüğü olayları için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Azure Izleyici ve Azure etkinlik günlüğü 'Nü Azure 'da kullanma API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor)
+* [Azure Izleyici ve Azure etkinlik günlüğü 'Nü Azure 'da kullanma API Management](./api-management-howto-use-azure-monitor.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -683,7 +684,7 @@ Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri ve
 
 ## <a name="vulnerability-management"></a>Güvenlik açığı yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
@@ -691,7 +692,7 @@ Microsoft, Azure API Management için temel altyapıyı yönetir ve müşteri ve
 
 Microsoft tarafından taranan ve düzeltme eki uygulanan temel platform. Hizmet yapılandırması ile ilgili güvenlik açıklarını azaltmak için kullanılabilen güvenlik denetimlerini gözden geçirin.
 
-* [Azure API Management kullanılabilen güvenlik denetimlerini anlama](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [Azure API Management kullanılabilen güvenlik denetimlerini anlama](./api-management-security-controls.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -727,7 +728,7 @@ Microsoft tarafından taranan ve düzeltme eki uygulanan temel platform. Hizmet 
 
 Microsoft tarafından taranan ve düzeltme eki uygulanan temel platform. Hizmet yapılandırması ile ilgili güvenlik açıklarını azaltmak için müşterinin kullanabildiği güvenlik denetimlerini gözden geçirmesi için müşteri.
 
-* [Azure API Management kullanılabilen güvenlik denetimlerini anlama](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [Azure API Management kullanılabilen güvenlik denetimlerini anlama](./api-management-security-controls.md)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -735,7 +736,7 @@ Microsoft tarafından taranan ve düzeltme eki uygulanan temel platform. Hizmet 
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve varlık yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: Azure varlık bulmayı kullanma
 
@@ -743,11 +744,11 @@ Microsoft tarafından taranan ve düzeltme eki uygulanan temel platform. Hizmet 
 
 Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri doğru Azure Resource Manager kaynak oluşturmanız ve kullanılması kesinlikle önerilir.
 
-* [Azure Kaynak Graf ile sorgu oluşturma](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-* [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -757,7 +758,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 **Kılavuz**: Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -771,11 +772,11 @@ Ayrıca, aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneli
 - İzin verilmeyen kaynak türleri
 - İzin verilen kaynak türleri
 
-* [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-* [Yönetim Grupları oluşturma](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Yönetim Grupları oluşturma](../governance/management-groups/create.md)
 
-* [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -797,9 +798,9 @@ Ayrıca, aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneli
 
 Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph ile sorgu oluşturma](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -835,9 +836,9 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 - İzin verilmeyen kaynak türleri
 - İzin verilen kaynak türleri
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Ilkesiyle belirli bir kaynak türünü reddetme](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -855,9 +856,9 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 **Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" yapılandırarak kullanıcıların Azure Resource Manager etkileşime geçmesini sınırlamak üzere Azure koşullu erişimini yapılandırın.
 
-* [Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma](../role-based-access-control/conditional-access-azure-management.md)
 
-* [Azure API Management rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Azure API Management rol tabanlı erişim denetimi](./api-management-role-based-access-control.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -881,15 +882,15 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 ## <a name="secure-configuration"></a>Güvenli yapılandırma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
 **Kılavuz**: Azure Ilkesi ile Azure API Management hizmetiniz için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure API Management hizmetlerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Apimanaize" ad alanındaki Azure Ilke diğer adlarını kullanın.
 
-* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -907,9 +908,9 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 **Kılavuz**: Azure Ilkesi ile Azure API Management hizmetleriniz için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure API Management örneklerinin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Apimanaitimi" ad alanındaki Azure Ilke diğer adlarını kullanın. Azure kaynaklarınızın tamamında güvenli ayarları zorlamak için Azure ilkesi [reddetme] ve [dağıtım yoksa dağıt] kullanın.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilke efektlerini anlama](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Ilke efektlerini anlama](../governance/policy/concepts/effects.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -927,11 +928,11 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 **Kılavuz**: özel Azure ilke tanımları kullanıyorsanız Azure devops veya Azure Repos kullanarak Azure API Management hizmeti yapılandırmanızı güvenli bir şekilde depolayın ve yönetin.
 
-* [Azure DevOps 'da dosyaları depolama](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps 'da dosyaları depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos belgeleri](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos belgeleri](/azure/devops/repos/index?view=azure-devops)
 
-* [Azure API Management DevOps kaynak setini anlayın](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [Azure API Management DevOps kaynak setini anlayın](./api-management-security-controls.md#configuration-management)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -949,9 +950,9 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 **Kılavuz**: Azure Ilkesi ile Azure API Management hizmetleriniz için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure API Management örneklerinin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Apimanaitimi" ad alanındaki Azure Ilke diğer adlarını kullanın. Azure kaynaklarınızın tamamında güvenli ayarları zorlamak için Azure ilkesi [reddetme] ve [dağıtım yoksa dağıt] kullanın.
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilke efektlerini anlama](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Ilke efektlerini anlama](../governance/policy/concepts/effects.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -971,11 +972,11 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 Ayrıca Azure Ilkesi ile Azure API Management hizmetleriniz için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure API Management örneklerinin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Apimanaitimi" ad alanındaki Azure Ilke diğer adlarını kullanın. Azure kaynaklarınızın tamamında güvenli ayarları zorlamak için Azure ilkesi [reddetme] ve [dağıtım yoksa dağıt] kullanın.
 
-* [Azure API Management DevOps kaynak setini anlayın](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [Azure API Management DevOps kaynak setini anlayın](./api-management-security-controls.md#configuration-management)
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Ilke efektlerini anlama](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Ilke efektlerini anlama](../governance/policy/concepts/effects.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -993,7 +994,7 @@ Ayrıca Azure Ilkesi ile Azure API Management hizmetleriniz için standart güve
 
 **Rehberlik**: sertifikaları yönetmek için Key Vault kullanın ve onları tekrar Döndür olarak ayarlayın. Özel etki alanı SSL sertifikasını yönetmek için Azure Key Vault kullanıyorsanız, sertifikanın gizli değil, sertifika olarak Key Vault yerleştirildiğinden emin olun.
 
-* [Key Vault anahtar dönüşü için kılavuzlarla özel etki alanı adları ayarlama](https://docs.microsoft.com/azure/api-management/configure-custom-domain)
+* [Key Vault anahtar dönüşü için kılavuzlarla özel etki alanı adları ayarlama](./configure-custom-domain.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1003,9 +1004,9 @@ Ayrıca Azure Ilkesi ile Azure API Management hizmetleriniz için standart güve
 
 **Rehberlik**: API Management örneğinizin Azure Key Vault gibi DIĞER Azure AD korumalı kaynaklarına kolayca ve güvenli bir şekilde erişmesini sağlamak için Azure ACTIVE DIRECTORY (ad) tarafından oluşturulan yönetilen hizmet kimliği kullanın.
 
-* [API Management örneği için yönetilen kimlik oluşturma](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
+* [API Management örneği için yönetilen kimlik oluşturma](./api-management-howto-use-managed-service-identity.md)
 
-* [Yönetilen kimlikle kimlik doğrulama için ilke](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+* [Yönetilen kimlikle kimlik doğrulama için ilke](./api-management-authentication-policies.md#ManagedIdentity)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1023,7 +1024,7 @@ Ayrıca Azure Ilkesi ile Azure API Management hizmetleriniz için standart güve
 
 ## <a name="malware-defense"></a>Kötü amaçlı yazılımdan koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanma
 
@@ -1057,7 +1058,7 @@ Microsoft 'un kötü amaçlı yazılımdan koruma özelliği, Azure hizmetlerini
 
 ## <a name="data-recovery"></a>Veri kurtarma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli Otomatik yedeklemeli UPS sağlayın
 
@@ -1065,9 +1066,9 @@ Microsoft 'un kötü amaçlı yazılımdan koruma özelliği, Azure hizmetlerini
 
 API Management hizmet yedekleme ve geri yükleme özellikleri, olağanüstü durum kurtarma stratejisi uygulamak için gereken yapı taşlarını sağlar. Yedekleme ve geri yükleme işlemleri, el ile veya otomatik gerçekleştirilebilir.
 
-* [API Management veri düzlemi birden çok bölgeye nasıl dağıtılır](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
+* [API Management veri düzlemi birden çok bölgeye nasıl dağıtılır](./api-management-howto-deploy-multi-region.md)
 
-* [Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 * [API Management yedekleme işlemini çağırma](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
@@ -1083,9 +1084,9 @@ API Management hizmet yedekleme ve geri yükleme özellikleri, olağanüstü dur
 
 Yönetilen kimlikler, Azure Key Vault API Management özel etki alanı adları için sertifika almak üzere kullanılabilir. Azure Key Vault içinde depolanan tüm sertifikaları yedekleyin.
 
-* [Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Azure Key Vault sertifikalarını yedekleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Azure Key Vault sertifikalarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1095,9 +1096,9 @@ Yönetilen kimlikler, Azure Key Vault API Management özel etki alanı adları i
 
 **Rehberlik**: hizmetin ve yedeklemelerdeki sertifikaların bir test geri yüklemesini gerçekleştirerek yedeklemeleri doğrulayın.
 
-* [API Management geri yükleme işlemini çağırma](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
+* [API Management geri yükleme işlemini çağırma](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-* [Azure Key Vault sertifikalarını geri yükleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Azure Key Vault sertifikalarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1107,13 +1108,13 @@ Yönetilen kimlikler, Azure Key Vault API Management özel etki alanı adları i
 
 **Kılavuz**: Azure API Management, yedeklemeleri müşterinin sahip olduğu Azure depolama hesaplarına yazar. Yedeklemenizi korumak için Azure Storage güvenlik önerilerini izleyin.
 
-* [Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [BLOB depolama için güvenlik önerisi](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+* [BLOB depolama için güvenlik önerisi](../storage/blobs/security-recommendations.md)
 
 Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin.
 
-* [Key Vault 'da geçici silme özelliğini etkinleştirme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Key Vault 'da geçici silme özelliğini etkinleştirme](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1121,7 +1122,7 @@ Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için K
 
 ## <a name="incident-response"></a>Olay yanıtı
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: olay yanıtı kılavuzu oluşturma
 
@@ -1143,9 +1144,9 @@ Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için K
 
 Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) etiketleri kullanarak Azure kaynaklarını açıkça tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun. Olayın gerçekleştiği Azure kaynakları ve ortamının önem derecesine bağlı olarak, uyarıların düzeltilmesine öncelik vermek sizin sorumluluğunuzdadır.
 
-* [Azure Güvenlik Merkezi'nde güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 
-* [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1165,7 +1166,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 **Rehberlik**: Microsoft Güvenlik Yanıt MERKEZI (MSRC), verilerinize izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse, Microsoft tarafından sizinle iletişim kurmak için güvenlik olayı iletişim bilgileri kullanılacaktır. Sorunların çözümlendiğinden emin olmak için gerçesonra olayları gözden geçirin.
 
-* [Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -1175,9 +1176,9 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 **Kılavuz**: Azure kaynaklarına yönelik riskleri belirlemenize yardımcı olmak Için sürekli dışarı aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Azure Güvenlik Merkezi veri bağlayıcısını kullanarak uyarıları Azure Sentinel 'e akışını sağlayabilirsiniz.
 
-* [Sürekli dışarı aktarmayı yapılandırma](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Sürekli dışarı aktarmayı yapılandırma](../security-center/continuous-export.md)
 
-* [Uyarıları Azure Sentinel 'e akış](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Uyarıları Azure Sentinel 'e akış](../sentinel/connect-azure-security-center.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1187,7 +1188,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 **Rehberlik**: güvenlik uyarılarında ve önerilerinde "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek Için Azure Güvenlik Merkezi 'Nde Iş akışı Otomasyonu özelliğini kullanın.
 
-* [Iş akışı otomasyonu ve Logic Apps yapılandırma](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Iş akışı otomasyonu ve Logic Apps yapılandırma](../security-center/workflow-automation.md)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1195,7 +1196,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Sızma testleri ve red team alıştırmaları
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini yapın ve 60 gün içinde tüm kritik güvenlik bulgularını düzeltdiğinizden emin olun
 
@@ -1209,5 +1210,5 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik kıyaslaması](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

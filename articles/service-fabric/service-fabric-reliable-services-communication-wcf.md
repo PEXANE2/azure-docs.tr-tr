@@ -5,11 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433857"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253244"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services için WCF tabanlı iletişim yığını
 Reliable Services Framework, hizmet yazarlarının kendi hizmetleri için kullanmak istedikleri iletişim yığınını seçmesine olanak sağlar. [CreateServiceReplicaListeners veya Createserviceınstancelisteners](service-fabric-reliable-services-communication.md) metotlarından döndürülen **ıcommunicationlistener** aracılığıyla seçtikleri iletişim yığınını yükleyebilir. Framework, WCF tabanlı iletişim kullanmak isteyen hizmet yazarları için Windows Communication Foundation (WCF) temelinde iletişim yığınının bir uygulamasını sağlar.
@@ -115,6 +116,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Reliable Services uzaktan iletişim ile uzak yordam çağrısı](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services 'de OWIN ile Web API 'SI](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services 'de OWIN ile Web API 'SI](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services için iletişimin güvenliğini sağlama](service-fabric-reliable-services-secure-communication-wcf.md)
-

@@ -9,17 +9,18 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82854103"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254291"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Şirket içinde barındırılan ağ geçidini Kubernetes'e dağıtma
 
 Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bileşenini bir Kubernetes kümesine dağıtma adımları açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 - Bir Kubernetes kümesi oluşturun.
@@ -64,7 +65,7 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
 ### <a name="access-token"></a>Erişim belirteci
 Geçerli bir erişim belirteci olmadan, şirket içinde barındırılan bir ağ geçidi, ilişkili API Management hizmetinin uç noktasından yapılandırma verilerine erişemez ve bu verileri indiremez. Erişim belirteci en fazla 30 gün geçerli olabilir. Yeniden oluşturulması gerekir ve küme, süresi dolmadan önce el ile veya Otomasyon yoluyla, yeni bir belirteçle yapılandırılmalıdır. 
 
-Belirteç yenilemeyi otomatikleştirdiğiniz zaman, yeni bir belirteç oluşturmak için [Bu YÖNETIM API işlemini](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway/generatetoken) kullanın. Kubernetes gizliliklerini yönetme hakkında bilgi için bkz. [Kubernetes Web sitesi](https://kubernetes.io/docs/concepts/configuration/secret).
+Belirteç yenilemeyi otomatikleştirdiğiniz zaman, yeni bir belirteç oluşturmak için [Bu YÖNETIM API işlemini](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) kullanın. Kubernetes gizliliklerini yönetme hakkında bilgi için bkz. [Kubernetes Web sitesi](https://kubernetes.io/docs/concepts/configuration/secret).
 
 ### <a name="namespace"></a>Ad Alanı
 Kubernetes [ad alanları](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) , birden fazla takım, proje veya uygulama arasında tek bir kümeyi bölmek için yardım sağlar. Ad alanları, kaynaklar ve adlar için bir kapsam sağlar. Bunlar, bir kaynak kotası ve erişim denetimi ilkeleriyle ilişkilendirilebilir.

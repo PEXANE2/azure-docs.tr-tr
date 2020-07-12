@@ -12,11 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83004737"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252904"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -28,7 +29,7 @@ Azure API Management hizmet örneği oluşturduğunuzda, Azure bu alt etki alan�
 > [!WARNING]
 > Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri özel bir etki alanı adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetolmadıkları sertifikanın özelliklerine, bu önerilen bir uygulama değildir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -70,14 +71,14 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     > Joker karakter etki alanı adları, örn. `*.contoso.com` Tüketim katmanı hariç tüm katmanlarda desteklenir.
 
     > [!TIP]
-    > Sertifikaları yönetmek ve bunları autorenew olarak ayarlamak [için Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) kullanmanızı öneririz.
-    > Özel etki alanı TLS/SSL sertifikasını yönetmek için Azure Key Vault kullanırsanız, sertifikanın _gizli_değil, [ _sertifika_olarak](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)Key Vault yerleştirildiğinden emin olun.
+    > Sertifikaları yönetmek ve bunları autorenew olarak ayarlamak [için Azure Key Vault](../key-vault/certificates/about-certificates.md) kullanmanızı öneririz.
+    > Özel etki alanı TLS/SSL sertifikasını yönetmek için Azure Key Vault kullanırsanız, sertifikanın _gizli_değil, [ _sertifika_olarak](/rest/api/keyvault/createcertificate/createcertificate)Key Vault yerleştirildiğinden emin olun.
     >
     > Bir TLS/SSL sertifikası getirmek için API Management, sertifikayı içeren Azure Key Vault liste ve parolaları al izinlerine sahip olmalıdır. Azure portal kullanırken, tüm gerekli yapılandırma adımları otomatik olarak tamamlanır. Komut satırı araçları veya yönetim API 'SI kullanılırken, bu izinlerin el ile verilmesi gerekir. Bu iki adımda yapılır. İlk olarak, yönetilen kimliğin etkin olduğundan emin olmak için API Management örnekte Yönetilen kimlikler sayfasını kullanın ve bu sayfada gösterilen asıl kimliği bir yere göz önünde yapın. İkincisi, izin listesini verin ve sertifikayı içeren Azure Key Vault bu asıl kimliğe gizli dizi izinleri alın.
     >
     > Sertifika autorenew olarak ayarlandıysa API Management hizmetin herhangi bir kesinti süresi olmadan en son sürümü otomatik olarak seçer (API Management katmanınızda, geliştirici katmanı hariç tüm katmanlarda SLA-i. e.).
 
-1. Uygula'ya tıklayın.
+1. Uygula’ya tıklayın.
 
     > [!NOTE]
     > Sertifikayı atama işlemi, dağıtımın boyutuna bağlı olarak 15 dakika veya daha fazla sürebilir. Geliştirici SKU 'SU kapalı, temel ve daha yüksek SKU 'Ların kapalı kalma süresi yoktur.

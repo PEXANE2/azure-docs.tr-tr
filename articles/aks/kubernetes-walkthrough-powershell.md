@@ -4,12 +4,12 @@ description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, uygulama
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 74a71bdc4c9aef9a6964f0c9120a902262a50526
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207150"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251493"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak bir Azure Kubernetes hizmet kümesi dağıtma
 
@@ -21,7 +21,7 @@ Windows Server düğüm havuzu oluşturma hakkında daha fazla bilgi edinmek iç
 
 Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -37,7 +37,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Azure Kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [New-AzResourceGroup][new-azresourcegroup] cmdlet 'ini kullanarak bir kaynak grubu oluşturun.
+[Azure Kaynak grubu](../azure-resource-manager/management/overview.md) , Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [New-AzResourceGroup][new-azresourcegroup] cmdlet 'ini kullanarak bir kaynak grubu oluşturun.
 
 Aşağıdaki örnek **eastus** bölgesinde **myresourcegroup** adlı bir kaynak grubu oluşturur.
 
@@ -57,12 +57,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>AKS kümesi oluşturma
 
-`ssh-keygen`BIR SSH anahtar çifti oluşturmak için komut satırı yardımcı programını kullanın. Daha fazla ayrıntı için bkz. [hızlı adımlar: Azure 'Da Linux VM 'ler IÇIN SSH genel-özel anahtar çifti oluşturma ve kullanma](/azure/virtual-machines/linux/mac-create-ssh-keys).
+`ssh-keygen`BIR SSH anahtar çifti oluşturmak için komut satırı yardımcı programını kullanın. Daha fazla ayrıntı için bkz. [hızlı adımlar: Azure 'Da Linux VM 'ler IÇIN SSH genel-özel anahtar çifti oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md).
 
 Bir AKS kümesi oluşturmak için [New-AzAks][new-azaks] cmdlet 'ini kullanın. Aşağıdaki örnekte, bir düğüm ile **myAKSCluster** adlı bir küme oluşturulmuştur. Kapsayıcılar için Azure Izleyici de varsayılan olarak etkinleştirilmiştir. Bu, tamamlanacak birkaç dakika sürer.
 
 > [!NOTE]
-> AKS kümesi oluştururken, AKS kaynaklarını depolamak için otomatik olarak ikinci bir kaynak grubu oluşturulur. Daha fazla bilgi için bkz. [neden AKS ile iki kaynak grubu oluşturulur?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
+> AKS kümesi oluştururken, AKS kaynaklarını depolamak için otomatik olarak ikinci bir kaynak grubu oluşturulur. Daha fazla bilgi için bkz. [neden AKS ile iki kaynak grubu oluşturulur?](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```azurepowershell-interactive
 New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -266,7 +266,7 @@ AKS hakkında daha fazla bilgi ve dağıtım örneği için tam kod açıklamas�
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 

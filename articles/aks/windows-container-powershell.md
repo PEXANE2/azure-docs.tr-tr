@@ -4,12 +4,12 @@ description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, PowerShe
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207966"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250932"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>PowerShell kullanarak bir Azure Kubernetes Service (AKS) kümesi üzerinde Windows Server kapsayıcısı oluşturma
 
@@ -19,7 +19,7 @@ Azure Kubernetes hizmeti (AKS), kümelerinizi hızlı bir şekilde dağıtmanız
 
 Bu makalede, Kubernetes kavramlarının temel bir şekilde anlaşıldığı varsayılır. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -47,7 +47,7 @@ Windows Server düğüm havuzları için aşağıdaki ek sınırlamalar geçerli
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Azure Kaynak grubu](/azure/azure-resource-manager/resource-group-overview) , Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [New-AzResourceGroup][new-azresourcegroup] cmdlet 'ini kullanarak bir kaynak grubu oluşturun.
+[Azure Kaynak grubu](../azure-resource-manager/management/overview.md) , Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [New-AzResourceGroup][new-azresourcegroup] cmdlet 'ini kullanarak bir kaynak grubu oluşturun.
 
 Aşağıdaki örnek **eastus** konumunda **myResourceGroup** adlı bir kaynak grubu oluşturur.
 
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-`ssh-keygen`BIR SSH anahtar çifti oluşturmak için komut satırı yardımcı programını kullanın. Daha fazla ayrıntı için bkz. [hızlı adımlar: Azure 'Da Linux VM 'ler IÇIN SSH genel-özel anahtar çifti oluşturma ve kullanma](/azure/virtual-machines/linux/mac-create-ssh-keys).
+`ssh-keygen`BIR SSH anahtar çifti oluşturmak için komut satırı yardımcı programını kullanın. Daha fazla ayrıntı için bkz. [hızlı adımlar: Azure 'Da Linux VM 'ler IÇIN SSH genel-özel anahtar çifti oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md).
 
 Windows Server kapsayıcıları için düğüm havuzlarını destekleyen bir AKS kümesi çalıştırmak için, kümenizin [Azure CNI][azure-cni-about] (Gelişmiş) ağ eklentisini kullanan bir ağ ilkesi kullanması gerekir. Gerekli alt ağ aralıklarını ve ağ konularını planlamaya yardımcı olacak daha ayrıntılı bilgi için bkz. [Azure CNI ağını yapılandırma][use-advanced-networking]. **Myakscluster**adlı bir aks kümesi oluşturmak Için aşağıdaki [New-AzAks][new-azaks] cmdlet 'ini kullanın. Aşağıdaki örnek, mevcut değilse gerekli ağ kaynaklarını oluşturur.
 

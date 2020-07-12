@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205124"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254393"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service’e dağıtma
 
@@ -36,7 +36,7 @@ Bu makalede, Azure [Kubernetes hizmetine](https://azure.microsoft.com/services/k
 5. **Dağıtım betikleri**altında **Kubernetes** 'in seçildiğinden emin olun.
 6. Dosyayı indirmek için **dağıtım** ' nın yanındaki **<ağ geçidi-adı>. yıml** dosya bağlantısı ' nı seçin.
 7. Bağlantı noktası eşlemelerini ve kapsayıcı adını, gereken şekilde değiştirin.
-8. Senaryonuza bağlı olarak, [hizmet türünü](https://docs.microsoft.com/azure/aks/concepts-network#services)değiştirmeniz gerekebilir. Varsayılan değer: `NodePort`.
+8. Senaryonuza bağlı olarak, [hizmet türünü](../aks/concepts-network.md#services)değiştirmeniz gerekebilir. Varsayılan değer: `NodePort`.
 9. Komutu panoya kaydetmek için **Dağıt** metin kutusunun sağ ucunda bulunan **Kopyala** simgesini seçin `kubectl` .
 10. Komutu Terminal (veya komut) penceresine yapıştırın. Komutun indirilen ortam dosyasının geçerli dizinde mevcut olmasını beklediğini unutmayın.
 ```console
@@ -63,10 +63,6 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Şirket içinde barındırılan ağ geçidi hakkında daha fazla bilgi edinmek için bkz. [Azure API Management Self-barındırılan ağ geçidine genel bakış](self-hosted-gateway-overview.md)
-* [Azure Kubernetes hizmeti](https://docs.microsoft.com/azure/aks/intro-kubernetes) hakkında daha fazla bilgi edinin
+* [Azure Kubernetes hizmeti](../aks/intro-kubernetes.md) hakkında daha fazla bilgi edinin
 * [Buluttaki günlükleri yapılandırmayı ve kalıcı hale getirme hakkında](how-to-configure-cloud-metrics-logs.md) bilgi edinin
 * * [Günlükleri yerel olarak yapılandırma ve kalıcı hale getirme hakkında](how-to-configure-local-metrics-logs.md) bilgi edinin
-
-
-
-

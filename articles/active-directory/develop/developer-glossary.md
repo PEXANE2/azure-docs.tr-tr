@@ -12,11 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91094285aa50641f62527326bab121adcf026a9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308635"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252071"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
 
@@ -116,7 +117,7 @@ Daha fazla bilgi için bkz. [Microsoft Identity platform belirteci başvurusu][A
 
 ## <a name="microsoft-identity-platform"></a>Microsoft kimlik platformu
 
-Microsoft Identity Platform, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler. Daha fazla bilgi için bkz. [Microsoft Identity platform hakkında](about-microsoft-identity-platform.md) .
+Microsoft Identity Platform, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
 
 ## <a name="multi-tenant-application"></a>çok kiracılı uygulama
 
@@ -157,7 +158,7 @@ Kaynak sunucu API 'Leri kullanıma sunar ve OAuth 2,0 yetkilendirme çerçevesin
 
 Bir istemci uygulaması gibi, kaynak uygulamanın kimlik yapılandırması da bir Azure AD kiracısında [kayıt](#application-registration) yoluyla oluşturulur ve hem uygulama hem de hizmet sorumlusu nesnesi sağlanır. Microsoft Graph API 'SI gibi bazı Microsoft tarafından sağlanan API 'Ler, sağlama sırasında tüm kiracılarda önceden kaydedilmiş hizmet sorumlularına sahip olarak kullanılabilir hale getirilir.
 
-## <a name="roles"></a>roles
+## <a name="roles"></a>roller
 
 [Kapsamlar](#scopes)gibi roller, [kaynak sunucunun](#resource-server) korunan kaynaklarına erişimi yönetebilmeleri için bir yol sağlar. İki tür vardır: bir "Kullanıcı" rolü, kaynağa erişmesi gereken kullanıcılar/gruplar için rol tabanlı erişim denetimi uygular, ancak bir "uygulama" rolü erişim gerektiren [istemci uygulamalar](#client-application) için aynısını uygular.
 

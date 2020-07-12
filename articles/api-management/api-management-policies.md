@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128727"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252869"
 ---
 # <a name="api-management-policies"></a>API Management ilkeleri
 Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](api-management-howto-policies.md).  
@@ -50,19 +50,19 @@ Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlk
     -   [Set değişkeni](api-management-advanced-policies.md#set-variable) -daha sonra erişim için adlandırılmış bağlam değişkeninde bir değeri kalıcı hale getirin.  
     -   [Set Request Yöntemi](api-management-advanced-policies.md#SetRequestMethod) -bir Istek için http yöntemini değiştirmenize izin verir.  
     -   [Durum kodu ayarla](api-management-advanced-policies.md#SetStatus) -http durum kodunu belirtilen değere dönüştürür.  
-    -   [Trace](api-management-advanced-policies.md#Trace) - [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına, Application Insights Telemetriler ve kaynak günlüklerine özel izlemeler ekler.  
+    -   [Trace](api-management-advanced-policies.md#Trace) - [API denetçisi](./api-management-howto-api-inspector.md) çıktısına, Application Insights Telemetriler ve kaynak günlüklerine özel izlemeler ekler.  
     -   [Bekleme](api-management-advanced-policies.md#Wait) -devam etmeden önce, kapalı [gönderme isteği](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)veya [Denetim akışı](api-management-advanced-policies.md#choose) ilkelerinin tamamlanmasını bekler.  
 -   [Kimlik doğrulama ilkeleri](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   Temel kimlik doğrulaması kullanarak arka uç hizmeti ile temel kimlik doğrulaması [Ile kimlik](api-management-authentication-policies.md#Basic) doğrulaması yapın.  
     -   [İstemci sertifikası Ile kimlik doğrulama](api-management-authentication-policies.md#ClientCertificate) -istemci sertifikaları kullanarak arka uç hizmetiyle kimlik doğrulaması yapın.  
-    -   Yönetilen [kimlik Ile kimlik doğrulama](api-management-authentication-policies.md#ManagedIdentity) - [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)kullanarak arka uç hizmetiyle kimlik doğrulaması yapın.  
+    -   Yönetilen [kimlik Ile kimlik doğrulama](api-management-authentication-policies.md#ManagedIdentity) - [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md)kullanarak arka uç hizmetiyle kimlik doğrulaması yapın.  
 -   [Önbelleğe alma ilkeleri](api-management-caching-policies.md#CachingPolicies)  
     -   [Önbellekten al](api-management-caching-policies.md#GetFromCache) -önbellek araması yapın ve kullanılabilir olduğunda geçerli bir önbelleğe alınmış yanıt döndürür.  
     -   [Önbellekte depola](api-management-caching-policies.md#StoreToCache) -belirtilen önbellek denetimi yapılandırmasına göre yanıtı önbelleğe alır.  
     -   [Önbellekten değer al](api-management-caching-policies.md#GetFromCacheByKey) -önbelleğe alınmış bir öğeyi anahtara göre alır.  
     -   [Önbellekte depolama değeri](api-management-caching-policies.md#StoreToCacheByKey) -bir öğeyi bir anahtarla önbelleğe saklayın.  
     -   [Önbellekten değer kaldır](api-management-caching-policies.md#RemoveCacheByKey) -önbellekteki bir öğeyi anahtarla kaldırın.  
--   [Çapraz etki alanı ilkeleri](api-management-cross-domain-policies.md#CrossDomainPolicies)  
+-   [Etki alanları arası ilkeler](api-management-cross-domain-policies.md#CrossDomainPolicies)  
     -   [Etki alanları arası çağrılara Izin ver](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -API 'Yi Adobe Flash ve Microsoft Silverlight tarayıcı tabanlı istemcilerden erişilebilir hale getirir.  
     -   [CORS](api-management-cross-domain-policies.md#CORS) -tarayıcı tabanlı istemcilerden etki alanları arası çağrılara izin vermek için bir işleme veya bir API 'ye çıkış noktaları arası kaynak PAYLAŞıMı (CORS) desteği ekler.  
     -   [JSONP](api-management-cross-domain-policies.md#JSONP) -JavaScript tarayıcı tabanlı istemcilerden etki alanları arası çağrılara izin vermek için, doldurma (JSONP) desteğiyle birlikte bir Işleme veya API 'yi ekler.  

@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433879"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253295"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Reliable Services Ile C# ' de hizmet uzaktan iletişimi
 
@@ -64,7 +65,7 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> Hizmet arabirimindeki bağımsız değişkenler ve dönüş türleri herhangi bir basit, karmaşık veya özel tür olabilir, ancak .NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx)tarafından seri hale getirilebilir olmaları gerekir.
+> Hizmet arabirimindeki bağımsız değişkenler ve dönüş türleri herhangi bir basit, karmaşık veya özel tür olabilir, ancak .NET [DataContractSerializer](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)tarafından seri hale getirilebilir olmaları gerekir.
 >
 >
 
@@ -88,19 +89,19 @@ Hizmet proxy 'si oluşturma hafif bir işlemdir, bu sayede ihtiyacınız olan ka
 
 ### <a name="service-proxy-factory-lifetime"></a>Hizmet proxy 'si fabrikası ömrü
 
-[Serviceproxyfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) , farklı uzaktan iletişim arabirimleri için proxy örnekleri oluşturan bir fabrikadır. `ServiceProxyFactory.CreateServiceProxy`Bir proxy oluşturmak IÇIN API kullanıyorsanız, çerçeve bir tek hizmet proxy 'si oluşturur.
-[Iviceremotingclientfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) özelliklerini geçersiz kılmanız gerektiğinde bir el ile oluşturmak yararlı olur.
+[Serviceproxyfactory](/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) , farklı uzaktan iletişim arabirimleri için proxy örnekleri oluşturan bir fabrikadır. `ServiceProxyFactory.CreateServiceProxy`Bir proxy oluşturmak IÇIN API kullanıyorsanız, çerçeve bir tek hizmet proxy 'si oluşturur.
+[Iviceremotingclientfactory](/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) özelliklerini geçersiz kılmanız gerektiğinde bir el ile oluşturmak yararlı olur.
 Fabrika oluşturma maliyetli bir işlemdir. Hizmet proxy fabrikası, iletişim istemcisinin dahili bir önbelleğini tutar.
 En iyi yöntem, hizmet proxy fabrikasını mümkün olduğunca uzun süre önbelleğe alma yöntemidir.
 
 ## <a name="remoting-exception-handling"></a>Uzaktan iletişim özel durum işleme
 
-Hizmet API 'SI tarafından oluşturulan tüm uzak özel durumlar istemciye AggregateException olarak geri gönderilir. Uzak özel durumlar, DataContract tarafından seri hale getirilebilir. Bunlar yoksa, proxy API 'si, içinde serileştirme hatasıyla [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) oluşturur.
+Hizmet API 'SI tarafından oluşturulan tüm uzak özel durumlar istemciye AggregateException olarak geri gönderilir. Uzak özel durumlar, DataContract tarafından seri hale getirilebilir. Bunlar yoksa, proxy API 'si, içinde serileştirme hatasıyla [ServiceException](/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) oluşturur.
 
 Hizmet proxy 'si, için oluşturulduğu hizmet bölümünün tüm yük devretme özel durumlarını işler. Yük devretme özel durumları (geçici olmayan özel durumlar) varsa uç noktaları yeniden çözer ve çağrıyı doğru uç noktayla yeniden dener. Yük devretme özel durumları için yeniden deneme sayısı sonsuz.
 Geçici özel durumlar oluşursa, ara sunucu çağrıyı yeniden dener.
 
-Varsayılan yeniden deneme parametreleri [Operationretrysettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings)tarafından sağlanır.
+Varsayılan yeniden deneme parametreleri [Operationretrysettings](/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings)tarafından sağlanır.
 
 Kullanıcı bu değerleri, OperationRetrySettings nesnesini ServiceProxyFactory oluşturucusuna geçirerek yapılandırabilir.
 
@@ -160,7 +161,7 @@ Bu adımlar, açık v2 sınıfları kullanarak v2 yığınını kullanmak için 
    </Resources>
    ```
 
-2. Ad alanından [Fabrictransportserviceremotinglistener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` .
+2. Ad alanından [Fabrictransportserviceremotinglistener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` .
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +177,7 @@ Bu adımlar, açık v2 sınıfları kullanarak v2 yığınını kullanmak için 
     }
    ```
 
-3. İstemcileri oluşturmak için ad alanından [Fabrictransportserviceremotingclientfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) komutunu kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` .
+3. İstemcileri oluşturmak için ad alanından [Fabrictransportserviceremotingclientfactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) komutunu kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` .
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +256,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
     }
    ```
 
-3. Uzaktan iletişim arabirimlerine bir [derleme özniteliği](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) ekleyin.
+3. Uzaktan iletişim arabirimlerine bir [derleme özniteliği](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) ekleyin.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -267,7 +268,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>V2 (arabirim ile uyumlu) sürümü için bir dinleyici/istemci fabrikası oluşturmak üzere açık uzaktan iletişim sınıfları kullanın
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Hizmet bildiriminde "ServiceEndpointV2_1" adlı bir uç nokta kaynağı ekleyin.
 
@@ -279,7 +280,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
    </Resources>
    ```
 
-2. [Remoting v2 dinleyicisini](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)kullanın. Kullanılan varsayılan hizmet uç noktası kaynak adı "ServiceEndpointV2_1" dir. Hizmet bildiriminde tanımlanmalıdır.
+2. [Remoting v2 dinleyicisini](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)kullanın. Kullanılan varsayılan hizmet uç noktası kaynak adı "ServiceEndpointV2_1" dir. Hizmet bildiriminde tanımlanmalıdır.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +298,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
     }
    ```
 
-3. V2 [istemci fabrikası](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)' nu kullanın.
+3. V2 [istemci fabrikası](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)' nu kullanın.
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -356,7 +357,7 @@ Bu adım, hizmetin yalnızca v2 dinleyicisine dinlediğinden emin olmanızı sa�
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Uzaktan, Sarmalanan bir ileti ile özel serileştirme kullanma
 
 Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm parametreleri içeren tek bir Sarmalanan nesne oluşturacağız.
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. `IServiceRemotingMessageSerializationProvider`Özel serileştirme için uygulama sağlamak üzere arabirimini uygulayın.
     Bu kod parçacığı, uygulamanın nasıl göründüğünü gösterir.
@@ -548,6 +549,6 @@ Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm pa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Reliable Services 'de OWIN ile Web API 'SI](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services 'de OWIN ile Web API 'SI](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services ile iletişim Windows Communication Foundation](service-fabric-reliable-services-communication-wcf.md)
 * [Reliable Services için güvenli iletişim](service-fabric-reliable-services-secure-communication.md)

@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639641"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253346"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric ASP.NET Core Reliable Services
 
@@ -19,7 +20,7 @@ Bu makale, **Microsoft. ServiceFabric. AspNetCore** kullanarak Service Fabric Re
 
 Service Fabric ASP.NET Core giriş Öğreticisi ve geliştirme ortamınızı ayarlama hakkında yönergeler için bkz. [öğretici: bir uygulamayı ASP.NET Core Web API ön uç hizmeti ve durum bilgisi olan bir arka uç hizmeti Ile oluşturma ve dağıtma](service-fabric-tutorial-create-dotnet-app.md).
 
-Bu makalenin geri kalanında ASP.NET Core zaten bildiğiniz varsayılmaktadır. Aksi takdirde, lütfen [ASP.NET Core temellerini](https://docs.microsoft.com/aspnet/core/fundamentals/index)okuyun.
+Bu makalenin geri kalanında ASP.NET Core zaten bildiğiniz varsayılmaktadır. Aksi takdirde, lütfen [ASP.NET Core temellerini](/aspnet/core/fundamentals/index)okuyun.
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>Service Fabric ortamında ASP.NET Core
 
@@ -93,7 +94,7 @@ Bu nedenle, hem Kestrel hem de HTTP.sys `ICommunicationListener` uygulamaları g
 ## <a name="httpsys-in-reliable-services"></a>Reliable Services HTTP.sys
 **Microsoft. ServiceFabric. AspNetCore. HttpSys** NuGet paketini içeri aktararak Reliable Services HTTP.sys kullanabilirsiniz. Bu paket `HttpSysCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `HttpSysCommunicationListener`Web sunucusu olarak HTTP.sys kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
 
-HTTP.sys, [WINDOWS http sunucu API 'si](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx)üzerine kurulmuştur. Bu API, HTTP isteklerini işlemek ve bunları Web uygulamaları çalıştıran işlemlere yönlendirmek için **HTTP.sys** çekirdek sürücüsünü kullanır. Bu, aynı fiziksel veya sanal makinedeki birden çok işlemin aynı bağlantı noktasında Web uygulamalarını barındırarak benzersiz bir URL yolu veya ana bilgisayar adıyla ayırt etmesine olanak tanır. Bu özellikler, aynı kümede birden çok Web sitesini barındırmak için Service Fabric yararlıdır.
+HTTP.sys, [WINDOWS http sunucu API 'si](/windows/win32/http/http-api-start-page)üzerine kurulmuştur. Bu API, HTTP isteklerini işlemek ve bunları Web uygulamaları çalıştıran işlemlere yönlendirmek için **HTTP.sys** çekirdek sürücüsünü kullanır. Bu, aynı fiziksel veya sanal makinedeki birden çok işlemin aynı bağlantı noktasında Web uygulamalarını barındırarak benzersiz bir URL yolu veya ana bilgisayar adıyla ayırt etmesine olanak tanır. Bu özellikler, aynı kümede birden çok Web sitesini barındırmak için Service Fabric yararlıdır.
 
 >[!NOTE]
 >HTTP.sys uygulama yalnızca Windows platformunda çalışmaktadır.
@@ -132,9 +133,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>Uç nokta yapılandırması
 
-`Endpoint`HTTP.sys dahil olmak üzere WINDOWS http sunucu API 'sini kullanan Web sunucuları için bir yapılandırma gerekir. Windows HTTP sunucu API 'sini kullanan Web sunucularının öncelikle HTTP.sys URL 'lerini (Bu genellikle [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) aracıyla gerçekleştirilir) ayırmalıdır. 
+`Endpoint`HTTP.sys dahil olmak üzere WINDOWS http sunucu API 'sini kullanan Web sunucuları için bir yapılandırma gerekir. Windows HTTP sunucu API 'sini kullanan Web sunucularının öncelikle HTTP.sys URL 'lerini (Bu genellikle [netsh](/windows/win32/http/netsh-commands-for-http) aracıyla gerçekleştirilir) ayırmalıdır. 
 
-Bu eylem, hizmetlerinizin varsayılan olarak sahip olmadığı yükseltilmiş ayrıcalıklar gerektirir. ServiceManifest.xml içindeki yapılandırmanın özelliği için "http" veya "https" seçenekleri, `Protocol` `Endpoint` özellikle de Service Fabric çalışma zamanının HTTP.sys ADıNA bir URL 'ye kaydetmesini bildirmek için kullanılır. Bunu, [*güçlü joker karakter*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL önekini kullanarak yapar.
+Bu eylem, hizmetlerinizin varsayılan olarak sahip olmadığı yükseltilmiş ayrıcalıklar gerektirir. ServiceManifest.xml içindeki yapılandırmanın özelliği için "http" veya "https" seçenekleri, `Protocol` `Endpoint` özellikle de Service Fabric çalışma zamanının HTTP.sys ADıNA bir URL 'ye kaydetmesini bildirmek için kullanılır. Bunu, [*güçlü joker karakter*](/windows/win32/http/urlprefix-strings) URL önekini kullanarak yapar.
 
 Örneğin, `http://+:80` bir hizmet için ayırmak üzere ServiceManifest.xml ' de aşağıdaki yapılandırmayı kullanın:
 
@@ -190,7 +191,7 @@ Bir yapılandırma tarafından ayrılan dinamik bir bağlantı noktası `Endpoin
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services Kestrel
 **Microsoft. ServiceFabric. AspNetCore. Kestrel** NuGet paketini içeri aktararak Reliable Services 'de Kestrel kullanabilirsiniz. Bu paket `KestrelCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `KestrelCommunicationListener`Web sunucusu olarak Kestrel kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
 
-Kestrel, ASP.NET Core için platformlar arası Web sunucusudur. HTTP.sys aksine, Kestrel merkezi bir uç nokta Yöneticisi kullanmaz. Ayrıca, HTTP.sys aksine, Kestrel birden çok işlem arasında bağlantı noktası paylaşmayı desteklemez. Her bir Kestrel örneğinin benzersiz bir bağlantı noktası kullanması gerekir. Kestrel hakkında daha fazla bilgi için [uygulama ayrıntılarına](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)bakın.
+Kestrel, ASP.NET Core için platformlar arası Web sunucusudur. HTTP.sys aksine, Kestrel merkezi bir uç nokta Yöneticisi kullanmaz. Ayrıca, HTTP.sys aksine, Kestrel birden çok işlem arasında bağlantı noktası paylaşmayı desteklemez. Her bir Kestrel örneğinin benzersiz bir bağlantı noktası kullanması gerekir. Kestrel hakkında daha fazla bilgi için [uygulama ayrıntılarına](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)bakın.
 
 ![Kestrel diyagramı][4]
 
@@ -334,7 +335,7 @@ HTTPS için, bir uç noktanın, ServiceManifest.xml ' de belirtilen bir bağlant
 
 
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric yapılandırma sağlayıcısı
-ASP.NET Core içindeki uygulama yapılandırması, yapılandırma sağlayıcısı tarafından belirlenen anahtar-değer çiftlerini temel alır. Genel ASP.NET Core yapılandırma desteği hakkında daha fazla bilgi edinmek için [ASP.NET Core yapılandırma](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) makalesini okuyun.
+ASP.NET Core içindeki uygulama yapılandırması, yapılandırma sağlayıcısı tarafından belirlenen anahtar-değer çiftlerini temel alır. Genel ASP.NET Core yapılandırma desteği hakkında daha fazla bilgi edinmek için [ASP.NET Core yapılandırma](/aspnet/core/fundamentals/configuration/) makalesini okuyun.
 
 Bu bölümde, Service Fabric yapılandırma sağlayıcısının NuGet paketini içeri aktararak ASP.NET Core yapılandırma ile nasıl tümleştirildiğini açıklanmaktadır `Microsoft.ServiceFabric.AspNetCore.Configuration` .
 
@@ -447,7 +448,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>Yapılandırma güncelleştirmeleri
-Service Fabric yapılandırma sağlayıcısı da yapılandırma güncelleştirmelerini destekler. `IOptionsMonitor`Değişiklik bildirimlerini almak için ASP.NET Core kullanabilir ve sonra `IOptionsSnapshot` yapılandırma verilerini yeniden yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [ASP.NET Core seçenekleri](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+Service Fabric yapılandırma sağlayıcısı da yapılandırma güncelleştirmelerini destekler. `IOptionsMonitor`Değişiklik bildirimlerini almak için ASP.NET Core kullanabilir ve sonra `IOptionsSnapshot` yapılandırma verilerini yeniden yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [ASP.NET Core seçenekleri](/aspnet/core/fundamentals/configuration/options).
 
 Bu seçenekler varsayılan olarak desteklenir. Yapılandırma güncelleştirmelerini etkinleştirmek için başka bir kodlama gerekmez.
 
@@ -473,7 +474,7 @@ Kestrel, dış, internet 'e yönelik HTTP uç noktalarını kullanıma sunan ön
 | --- | --- | --- |
 | Web sunucusu | Kestrel | Kestrel, Windows ve Linux genelinde desteklendiğinden tercih edilen Web sunucusudur. |
 | Bağlantı noktası yapılandırması | static | ServiceManifest.xml yapılandırmasında iyi bilinen bir statik bağlantı noktası `Endpoints` , https için 80, http veya 443 için gibi yapılandırılmalıdır. |
-| Servicefabricıntegrationoptions | Hiçbiri | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
+| Servicefabricıntegrationoptions | Yok | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
 | Örnek Sayısı | -1 | Tipik kullanım durumlarında, örnek sayısı ayarı *-1*olarak ayarlanmalıdır. Bu, bir yük dengeleyiciden trafik alan tüm düğümlerde bir örnek kullanılabilmesi için yapılır. |
 
 Birden fazla dışarıdan sunulan hizmet aynı düğüm kümesini paylaşıyorsa, benzersiz ancak kararlı bir URL yoluyla HTTP.sys kullanabilirsiniz. Bunu, ıwebhost yapılandırılırken belirtilen URL 'YI değiştirerek gerçekleştirebilirsiniz. Bunun yalnızca HTTP.sys için geçerli olduğunu unutmayın.

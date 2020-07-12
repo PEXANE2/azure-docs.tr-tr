@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690209"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254665"
 ---
 # <a name="about-api-management"></a>API Management hakkında
 
@@ -38,26 +38,26 @@ Yöneticiler API Management’i kullanmak için API'ler oluşturur. Her API bir 
 
 Sistem aşağıdaki bileşenlerden oluşur:
 
-* **API ağ geçidi** şunları yapan uç noktadır:
+* **API ağ geçidi** şu şekilde olur:
   
   * API çağrılarını kabul eder ve bunları arka uçlarınıza yönlendirir.
   * API anahtarları, JWT belirteçleri, sertifikaları ve diğer kimlik bilgilerini doğrular.
-  * Kullanım kotalarını ve oran limitlerini uygular.
-  * Kod değişiklikleri olmadan API'nizi anında dönüştürür.
-  * Ayarlandığında arka uç yanıtlarını önbelleğe kaydeder.
+  * Kullanım kotalarını ve hız sınırlarını zorunlu tutar.
+  * Kod değişikliklerine gerek kalmadan API'nizi hemen dönüştürür.
+  * Ayarlanan arka uç yanıtlarını önbelleğe alır.
   * Analiz amaçlı çağrı meta verilerini günlüğe kaydeder.
-* **Azure portal**, API programınızı ayarladığınız yönetim arabirimidir. Bunu şunlar için kullanın:
+* **Azure Portal** , API programınızı ayarladığınız yönetim arabirimidir. Bunu şunlar için kullanın:
   
   * API şeması tanımlama ya da içeri aktarma.
   * API'leri ürünler halinde paketleme.
   * API’lerde kota veya dönüşüm gibi ilkeler ayarlama.
-  * Analizlerden öngörüler edinme
+  * Analizlerden içgörüler elde etme.
   * Kullanıcıları yönetme.
 * **Geliştirici Portalı** geliştiriciler için ana web varlığı görevi görür ve burada şunları yapabilir:
   
   * API belgelerini okuma.
-  * Etkileşimli konsol üzerinden bir API’yi deneme.
-  * Bir hesap oluşturma ve API anahtarlarını almak için abone olma.
+  * Etkileşimli konsol üzerinden bir API'yi deneme.
+  * Hesap oluşturma ve API anahtarlarını almak için abone olma.
   * Kendi kullanımlarına ilişkin analize erişme.
 
 Daha fazla bilgi için bkz. [Bulut tabanlı API Management: API'lerin Gücünden Yararlanma](https://j.mp/ms-apim-whitepaper) PDF teknik incelemesi. API Management hakkında CITO Research tarafından hazırlanan tanıtım amaçlı bu teknik inceleme şunları içerir: 
@@ -102,7 +102,7 @@ Daha fazla bilgi için bkz. [Geliştirici oluşturma ve davet etme][How to creat
 ## <a name="policies"></a><a name="policies"> </a> İlkeler
 İlkeler, Azure portalın API’nin davranışını yapılandırma yoluyla değiştirmesini sağlayan güçlü API Management özellikleridir. İlkeler, bir API isteği veya yanıtı üzerinde sırayla yürütülen deyimlerin bir koleksiyonudur. Sık kullanılan deyimler, XML’den JSON’a biçim dönüştürmeyi ve bir geliştiriciden gelen çağrıların sayısını sınırlamak üzere çağrı hızını sınırlamayı ve çeşitli ilkeleri içerir.
 
-İlke ifadeleri herhangi bir API Management ilkesinde, ilke aksini belirtmedikçe, öznitelik değerleri ya da metin değerleri olarak kullanılabilir. [Akışı denetle](/azure/api-management/api-management-advanced-policies#choose) ve [Değişken ayarla](/azure/api-management/api-management-advanced-policies#set-variable) gibi bazı ilkeler ilke ifadelerini temel alır. Daha fazla bilgi için bkz. [Gelişmiş ilkeler](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) ve [İlke ifadeleri](/azure/api-management/api-management-policy-expressions).
+İlke ifadeleri herhangi bir API Management ilkesinde, ilke aksini belirtmedikçe, öznitelik değerleri ya da metin değerleri olarak kullanılabilir. [Akışı denetle](./api-management-advanced-policies.md#choose) ve [Değişken ayarla](./api-management-advanced-policies.md#set-variable) gibi bazı ilkeler ilke ifadelerini temel alır. Daha fazla bilgi için bkz. [Gelişmiş ilkeler](./api-management-advanced-policies.md#AdvancedPolicies) ve [İlke ifadeleri](./api-management-policy-expressions.md).
 
 
 API Management ilkelerinin tam listesi için bkz. [İlke başvurusu][Policy reference]. İlkeleri yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [API Management ilkeleri][API Management policies]. Hız sınırı ve kota ilkeleri içeren bir ürün oluşturmaya ilişkin öğretici için bkz. [Gelişmiş ürün ayarları oluşturma ve yapılandırma][How create and configure advanced product settings].
@@ -135,17 +135,13 @@ API Management hakkında daha fazla bilgi için Microsoft Ignite 2017 konferans�
 [Policies]: #policies
 [Developer portal]: #developer-portal
 
-[How to create APIs]: api-management-howto-create-apis.md
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create APIs]: ./import-and-publish.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 [How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
-[Policy reference]: api-management-policy-reference.md
+[Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md
 [Create an API Management service instance]: get-started-create-service-instance.md
-
-
-
-

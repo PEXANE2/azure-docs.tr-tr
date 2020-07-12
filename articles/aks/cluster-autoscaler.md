@@ -4,11 +4,12 @@ description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730025"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252037"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme
 
@@ -144,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örneğin:
+Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örnek:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -161,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS kümesi oluştururken küme otomatik Scaler profilini ayarlama
 
-Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örneğin:
+Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örnek:
 
 ```azurecli-interactive
 az aks create \
@@ -212,7 +213,7 @@ AKS, küme otomatik denetimini sizin adınıza yönetir ve yönetilen denetim d�
 
 Günlükleri küme otomatik Scaler 'dan Log Analytics gönderilecek şekilde yapılandırmak için aşağıdaki adımları izleyin.
 
-1. Küme otomatik Scaler günlüklerini Log Analytics 'e göndermek için kaynak günlükleri için bir kural ayarlayın. [Yönergeler burada ayrıntılı olarak verilmiştir](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs), `cluster-autoscaler` "Günlükler" için seçenekler seçerken kutuyu kontrol edin.
+1. Küme otomatik Scaler günlüklerini Log Analytics 'e göndermek için kaynak günlükleri için bir kural ayarlayın. [Yönergeler burada ayrıntılı olarak verilmiştir](./view-master-logs.md#enable-resource-logs), `cluster-autoscaler` "Günlükler" için seçenekler seçerken kutuyu kontrol edin.
 1. Azure portal aracılığıyla kümenizdeki "Günlükler" bölümüne tıklayın.
 1. Aşağıdaki örnek sorguyu Log Analytics olarak girin:
 

@@ -5,11 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645523"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253176"
 ---
 # <a name="configure-stateful-reliable-services"></a>Durum bilgisi olan güvenilir Hizmetleri yapılandırma
 Güvenilir hizmetler için iki yapılandırma ayarı kümesi vardır. Bir küme, diğer küme belirli bir güvenilir hizmete özel olduğu sürece kümedeki tüm güvenilir hizmetler için geneldir.
@@ -18,7 +19,7 @@ Güvenilir hizmetler için iki yapılandırma ayarı kümesi vardır. Bir küme,
 Küresel olarak güvenilir hizmet yapılandırması, Ktlgünlükçü bölümünün altındaki kümenin küme bildiriminde belirtilir. Paylaşılan günlük konumunun ve boyutunun ve günlük kaydı tarafından kullanılan genel bellek sınırlarının yapılandırılmasına izin verir. Küme bildirimi, kümedeki tüm düğümlere ve hizmetlere uygulanan ayarları ve konfigürasyonları tutan tek bir XML dosyasıdır. Dosya genellikle ClusterManifest.xml olarak adlandırılır. Get-ServiceFabricClusterManifest PowerShell komutunu kullanarak kümenizin küme bildirimini görebilirsiniz.
 
 ### <a name="configuration-names"></a>Yapılandırma adları
-| Name | Birim | Varsayılan değer | Açıklamalar |
+| Ad | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
 | Writebuffermemorypoolminimumınkb |KB |8388608 |Günlükçü yazma arabelleği bellek havuzu için çekirdek modunda ayrılacak en az KB sayısı. Bu bellek havuzu, diske yazmadan önce durum bilgilerini önbelleğe almak için kullanılır. |
 | WriteBufferMemoryPoolMaximumInKB |KB |Sınırsız |Günlükçü yazma arabelleği bellek havuzunun büyüyebileceği maksimum boyut. |
@@ -99,23 +100,23 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Yapılandırma adları
-| Name | Birim | Varsayılan değer | Açıklamalar |
+| Ad | Birim | Varsayılan değer | Açıklamalar |
 | --- | --- | --- | --- |
 | Batchval Gementınterval |Saniye |0,015 |Birincili çoğaltıcının, birincil öğesine bir onay göndermeden önce bir işlem aldıktan sonra beklediği zaman aralığı. Bu Aralık dahilinde işlenen işlemler için gönderilecek diğer tüm onaylar bir yanıt olarak gönderilir. |
-| ReplicatorEndpoint |YOK |Varsayılan değer yok--gerekli parametre |Birincil/ikincil çoğaltıcıların, çoğaltma kümesindeki diğer çoğaltıcılar ile iletişim kurmak için kullanacağı IP adresi ve bağlantı noktası. Bu, hizmet bildiriminde bir TCP kaynak uç noktasına başvurmalıdır. Hizmet bildiriminde uç nokta kaynakları tanımlama hakkında daha fazla bilgi edinmek için [hizmet bildirimi kaynaklarına](service-fabric-service-manifest-resources.md) bakın. |
+| ReplicatorEndpoint |Yok |Varsayılan değer yok--gerekli parametre |Birincil/ikincil çoğaltıcıların, çoğaltma kümesindeki diğer çoğaltıcılar ile iletişim kurmak için kullanacağı IP adresi ve bağlantı noktası. Bu, hizmet bildiriminde bir TCP kaynak uç noktasına başvurmalıdır. Hizmet bildiriminde uç nokta kaynakları tanımlama hakkında daha fazla bilgi edinmek için [hizmet bildirimi kaynaklarına](service-fabric-service-manifest-resources.md) bakın. |
 | MaxPrimaryReplicationQueueSize |İşlem sayısı |8192 |Birincil kuyruktaki en fazla işlem sayısı. Birincil çoğaltıcı tüm ikincil replica'lerden onay aldıktan sonra bir işlem serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
 | MaxSecondaryReplicationQueueSize |İşlem sayısı |16384 |İkincil kuyruktaki en fazla işlem sayısı. Bir işlem, durumu Kalıcılık aracılığıyla yüksek oranda kullanılabilir olduktan sonra serbest bırakılır. Bu değer 64 ' den büyük ve 2 ' nin üssü olmalıdır. |
 | CheckpointThresholdInMB |MB |50 |Durum denetim noktası olan günlük dosyası alanı miktarı. |
 | Maxrecordsizeınkb |KB |1024 |Çoğaltıcının günlüğe yazabileceği en büyük kayıt boyutu. Bu değer 4 ' ün katı ve 16 ' dan büyük olmalıdır. |
 | Minlogsizeınmb |MB |0 (sistem tarafından belirlenen) |İşlem günlüğünün en küçük boyutu. Bu ayarın altındaki bir boyuta kadar günlüğe Bu günlüğün kesilmesini izin verilmez. 0, çoğaltıcının en düşük günlük boyutunu belirleyeceğini belirtir. Bu değerin artırılması, kısmen kopya ve artımlı yedeklemeler yapma olasılığını artırarak, ilgili günlük kayıtlarının kesilme olasılığı düşürüldü. |
-| TruncationThresholdFactor |Çarpan |2 |Günlüğün ne boyutta olduğunu belirler, kesilme tetiklenecek. Kesme eşiği, TruncationThresholdFactor tarafından çarpılan Minlogsizeınmb tarafından belirlenir. TruncationThresholdFactor 1 ' den büyük olmalıdır. Minlogsizeınmb * TruncationThresholdFactor, Maxstreamsizeınmb 'den küçük olmalıdır. |
-| Kısıtlar Lingthresholdfactor |Çarpan |4 |Günlüğün ne boyutta olduğunu belirler, çoğaltmanın ne kadar kısıtlanacağını belirler. Azaltma eşiği (MB cinsinden), en fazla ((Minlogsizeınmb * kısıtlar Lingthresholdfactor), (Checkpointthresholdınmb * kısıtlar Lingthresholdfactor)) tarafından belirlenir. Azaltma eşiği (MB), kesme eşiğinden büyük olmalıdır (MB cinsinden). Kesme eşiği (MB), Maxstreamsizeınmb 'den küçük olmalıdır. |
+| TruncationThresholdFactor |Faktör |2 |Günlüğün ne boyutta olduğunu belirler, kesilme tetiklenecek. Kesme eşiği, TruncationThresholdFactor tarafından çarpılan Minlogsizeınmb tarafından belirlenir. TruncationThresholdFactor 1 ' den büyük olmalıdır. Minlogsizeınmb * TruncationThresholdFactor, Maxstreamsizeınmb 'den küçük olmalıdır. |
+| Kısıtlar Lingthresholdfactor |Faktör |4 |Günlüğün ne boyutta olduğunu belirler, çoğaltmanın ne kadar kısıtlanacağını belirler. Azaltma eşiği (MB cinsinden), en fazla ((Minlogsizeınmb * kısıtlar Lingthresholdfactor), (Checkpointthresholdınmb * kısıtlar Lingthresholdfactor)) tarafından belirlenir. Azaltma eşiği (MB), kesme eşiğinden büyük olmalıdır (MB cinsinden). Kesme eşiği (MB), Maxstreamsizeınmb 'den küçük olmalıdır. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |Belirli bir yedekleme günlüğü zincirindeki yedekleme günlüklerinin en büyük birikmiş boyutu (MB cinsinden). Artımlı yedekleme, ilgili tam yedeklemenin bu boyuttan daha büyük olması nedeniyle birikmiş yedekleme günlüklerinin oluşmasına neden olacak bir yedekleme günlüğü üretilebileceğinden, artımlı yedekleme istekleri başarısız olur. Bu gibi durumlarda, kullanıcının tam yedekleme yapması gerekir. |
 | Sharedlogıd |GUID |"" |Bu çoğaltmayla kullanılan paylaşılan günlük dosyasını tanımlamak için kullanılacak benzersiz bir GUID belirtir. Genellikle, hizmetler bu ayarı kullanmamalıdır. Ancak, Sharedlogıd belirtilmişse, SharedLogPath de belirtilmelidir. |
 | SharedLogPath |Tam nitelikli yol adı |"" |Bu çoğaltmanın paylaşılan günlük dosyasının oluşturulacağı tam yolu belirtir. Genellikle, hizmetler bu ayarı kullanmamalıdır. Ancak SharedLogPath belirtilmişse Sharedlogıd de belirtilmelidir. |
 | Yavaş Apimonitoringduration |Saniye |300 |Yönetilen API çağrıları için izleme aralığını ayarlar. Örnek: Kullanıcı, yedekleme geri çağırma işlevi sağladı. Aralık geçtikten sonra, sistem durumu yöneticisine bir uyarı sistem durumu raporu gönderilir. |
 | LogTruncationIntervalSeconds |Saniye |0 |Her yinelemede günlük kesilmesi başlatılacak yapılandırılabilir Aralık. Günlük boyutunun yalnızca günlük boyutu yerine zamana göre kesildiğinden emin olmak için kullanılır. Bu ayar ayrıca, güvenilir sözlükte silinen girdilerin temizlenmeye zorlar. Bu nedenle, silinen öğelerin zamanında temizlendiğinden emin olmak için kullanılabilir. |
-| EnableStableReads |Boole |False |Kararlı okuma özelliğinin etkinleştirilmesi, ikincil çoğaltmaların çekirdek erişimi olan değerleri döndürmesini kısıtlar. |
+| EnableStableReads |Boole |Yanlış |Kararlı okuma özelliğinin etkinleştirilmesi, ikincil çoğaltmaların çekirdek erişimi olan değerleri döndürmesini kısıtlar. |
 
 ### <a name="sample-configuration-via-code"></a>Kod aracılığıyla örnek yapılandırma
 ```csharp
@@ -183,5 +184,4 @@ Bir hizmetin, düğümün varsayılan paylaşılan günlüğünden ayrı bir pay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Visual Studio 'da Service Fabric uygulamanızda hata ayıklama](service-fabric-debugging-your-application.md)
-* [Reliable Services için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [Reliable Services için geliştirici başvurusu](/previous-versions/azure/dn706529(v=azure.100))

@@ -6,29 +6,29 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: de94e40a8d34a62f4233878f8057649c8fb2c0e4
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: e2e511a8c3cd9f474d3cfb71d9ebdee9cfc48826
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126034"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253669"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Hızlı başlangıç: Azure 'da bir Java Spring Boot uygulaması dağıtma Service Fabric
 
 Bu hızlı başlangıçta, Linux veya MacOS 'ta tanıdık komut satırı araçlarını kullanarak Azure Service Fabric bir Java Spring Boot uygulaması dağıtırsınız. Azure Service Fabric; mikro hizmetleri ve kapsayıcıları dağıtmayı ve yönetmeyi sağlayan bir dağıtılmış sistemler platformudur. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
-- [Java ortamı](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) ve [yeumman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-- [Service Fabric SDK & Service Fabric komut satırı arabirimi (CLı)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Java ortamı](./service-fabric-get-started-linux.md#set-up-java-development) ve [yeumman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK & Service Fabric komut satırı arabirimi (CLı)](./service-fabric-get-started-linux.md#installation-methods)
 - [Git](https://git-scm.com/downloads)
 
 #### <a name="macos"></a>[MacOS](#tab/macos)
 
-- [Java ortamı ve Yeumman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-- [Service Fabric SDK & Service Fabric komut satırı arabirimi (CLı)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Java ortamı ve Yeumman](./service-fabric-get-started-mac.md#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK & Service Fabric komut satırı arabirimi (CLı)](./service-fabric-cli.md#cli-mac)
 - [Git](https://git-scm.com/downloads)
 
 --- 
@@ -113,7 +113,7 @@ Bu aşamada, Spring Boot Kullanmaya Başlama örneği için Service Fabric’e d
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-    Mac kullanıyorsanız Docker görüntüsünden yerel kümeyi başlatın (burada Mac için yerel kümenizi ayarlama [önkoşullarına](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric) uyduğunuz varsayılır). 
+    Mac kullanıyorsanız Docker görüntüsünden yerel kümeyi başlatın (burada Mac için yerel kümenizi ayarlama [önkoşullarına](./service-fabric-get-started-mac.md#create-a-local-container-and-set-up-service-fabric) uyduğunuz varsayılır). 
 
     ```bash
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster

@@ -3,12 +3,12 @@ title: Yönetilen kimliği bir uygulamayla kullanma
 description: Azure hizmetlerine erişmek için Azure Service Fabric uygulama kodunda yönetilen kimlikler kullanma.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461574"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253652"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma
 
@@ -48,7 +48,7 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 ```
 burada:
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | IDENTITY_ENDPOINT ortam değişkeni aracılığıyla sunulan Service Fabric uygulamalar için yönetilen kimlik uç noktası. |
@@ -70,7 +70,7 @@ Content-Type: application/json
 ```
 burada:
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | `token_type` | Belirtecin türü; Bu durumda, bu belirtecin sunucu (' taşıyıcı ') belirtecin amaçlanan konusu olduğu anlamına gelen bir "taşıyıcı" erişim belirteci. |
 | `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
@@ -332,7 +332,7 @@ HTTP yanıt üst bilgisinin ' durum kodu ' alanı, isteğin başarı durumunu be
 
 Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına sahip bir JSON nesnesi içerir:
 
-| Öğe | Description |
+| Öğe | Açıklama |
 | ------- | ----------- |
 | kod | Hata kodu. |
 | correlationId | Hata ayıklama için kullanılabilen bir bağıntı KIMLIĞI. |
@@ -371,7 +371,7 @@ Azaltma nedeniyle başarısız olan isteklerin üstel geri alma ile yeniden dene
 | 5 | 16 saniye bekleyip yeniden deneyin |
 
 ## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak kimlikleri
-Bkz. Azure AD [kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-msi.md) destekleyen Azure Hizmetleri, Azure AD 'yi destekleyen kaynakların listesi ve bunların Ilgili kaynak kimlikleri.
+Bkz. Azure AD [kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) destekleyen Azure Hizmetleri, Azure AD 'yi destekleyen kaynakların listesi ve bunların Ilgili kaynak kimlikleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Sistem tarafından atanan yönetilen kimlik ile Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

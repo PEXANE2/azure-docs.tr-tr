@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77083509"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253091"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services özelliğine genel bakış
 
@@ -36,7 +37,7 @@ Reliable Services, uygulamanız için önemli olanları ifade etmenize yardımc�
   * [Güvenilir koleksiyonları](service-fabric-reliable-services-reliable-collections.md) kullanın
   * Birçok farklı özelliğe, hepsi de birkaç programlama dilinde birinci sınıf programlama modelinden erişin.
 * Diğer tanıdık programlama modelleri gibi kendi kodunuzu çalıştırmak için basit bir model. Kodunuzun iyi tanımlanmış bir giriş noktası ve kolayca yönetilen yaşam döngüsü vardır.
-* Takılabilir iletişim modeli. [Web API 'si](service-fabric-reliable-services-communication-webapi.md), WebSockets, özel TCP protokolleri veya başka herhangi bir şeyı içeren http gibi istediğiniz taşımayı kullanın. Reliable Services, kullanabileceğiniz bazı harika kullanıma hazır seçenekler sağlar veya kendi kendinize sağlayabilirsiniz.
+* Takılabilir iletişim modeli. [Web API 'si](./service-fabric-reliable-services-communication-aspnetcore.md), WebSockets, özel TCP protokolleri veya başka herhangi bir şeyı içeren http gibi istediğiniz taşımayı kullanın. Reliable Services, kullanabileceğiniz bazı harika kullanıma hazır seçenekler sağlar veya kendi kendinize sağlayabilirsiniz.
 * Durum bilgisi olan hizmetler için Reliable Services programlama modeli, [güvenilir koleksiyonlar](service-fabric-reliable-services-reliable-collections.md)kullanarak durumlarınızın durumunu tutarlı ve güvenilir bir şekilde depolamanıza olanak tanır. Güvenilir koleksiyonlar, C# koleksiyonları kullanan herkese tanıdık olan, yüksek oranda kullanılabilir ve güvenilir bir koleksiyon sınıfları kümesidir. Geleneksel olarak, hizmetler, güvenilir durum yönetimi için dış sistemler için gerekli. Güvenilir koleksiyonlar sayesinde, yüksek oranda kullanılabilir dış depolardan beklemeniz için kullandığınız aynı yüksek kullanılabilirliğe ve güvenilirliğe sahip olarak, durumunuzu daha sonra saklayabilirsiniz. Bu model, çalışması gereken işlem ve durumu birlikte konumlandırdığı için gecikmeyi de artırır.
 
 ## <a name="what-makes-reliable-services-different"></a>Ne Reliable Services farklı yapar
@@ -52,7 +53,7 @@ Reliable Services, Service Fabric aşağıdakileri sağladığından daha önce 
 
 Hizmetinizin durum bilgisiz veya durumsuz olup olmadığı Reliable Services, kodunuzu hızlıca takmanızı ve başlamanıza olanak tanıyan basit bir yaşam döngüsü sağlar.  Yeni bir hizmet alma ve çalıştırma için iki yöntem uygulamanız gerekir:
 
-* **CreateServiceReplicaListeners/Createserviceınstancelisteners** -bu yöntem, hizmetin kullanmak istediği iletişim yığınlarını tanımladığı yerdir. [Web API 'si](service-fabric-reliable-services-communication-webapi.md)gibi iletişim yığını, hizmet için dinleme uç noktasını veya uç noktalarını tanımlar (istemcilerin hizmete nasıl ulaştıklarında). Ayrıca, görüntülenen iletilerin hizmet kodunun geri kalanı ile nasıl etkileşime gireceğini tanımlar.
+* **CreateServiceReplicaListeners/Createserviceınstancelisteners** -bu yöntem, hizmetin kullanmak istediği iletişim yığınlarını tanımladığı yerdir. [Web API 'si](./service-fabric-reliable-services-communication-aspnetcore.md)gibi iletişim yığını, hizmet için dinleme uç noktasını veya uç noktalarını tanımlar (istemcilerin hizmete nasıl ulaştıklarında). Ayrıca, görüntülenen iletilerin hizmet kodunun geri kalanı ile nasıl etkileşime gireceğini tanımlar.
 * **RunAsync** -bu yöntem, hizmetinizin iş mantığını çalıştırdığı ve hizmetin kullanım ömrü boyunca çalışması gereken arka plan görevlerinin çalıştırılacağı yerdir. Belirtilen iptal belirteci, işin ne zaman durması gerektiğini belirten bir sinyaltir. Örneğin, hizmetin iletileri güvenilir bir kuyruktan çekmek ve onları işlemesi gerekiyorsa, bu işin gerçekleştiği yerdir.
 
 İlk kez güvenilir hizmetler hakkında bilgi edinmek istiyorsanız, okumaya devam edin! Güvenilir hizmetlerin yaşam döngüsüne yönelik ayrıntılı bir anlatım arıyorsanız [Reliable Services yaşam döngüsüne genel bakış](service-fabric-reliable-services-lifecycle.md)' a bakın.
@@ -67,7 +68,7 @@ Reliable Services modelinin hem durum bilgisi olmayan hem de durum bilgisi olan 
 
 Örneğin, belleği olmayan bir Hesaplayıcı düşünün ve aynı anda gerçekleştirilecek tüm hüküm ve işlemleri alır.
 
-Bu durumda, hizmetin `RunAsync()` `runAsync()` yapması gereken arka plan görev işlemesi olmadığından hizmetin (C#) veya (Java) boş olabilir. Hesaplayıcı hizmeti oluşturulduğunda, `ICommunicationListener` `CommunicationListener` bazı bağlantı noktaları üzerinde bir dinleme uç noktası açan bir (C#) veya (Java) (örneğin, [Web API](service-fabric-reliable-services-communication-webapi.md)) döndürür. Bu dinleme uç noktası, farklı hesaplama yöntemlerine (örneğin, "Ekle (N1, N2)") kadar ana bilgisayarın ortak API 'sini tanımlar.
+Bu durumda, hizmetin `RunAsync()` `runAsync()` yapması gereken arka plan görev işlemesi olmadığından hizmetin (C#) veya (Java) boş olabilir. Hesaplayıcı hizmeti oluşturulduğunda, `ICommunicationListener` `CommunicationListener` bazı bağlantı noktaları üzerinde bir dinleme uç noktası açan bir (C#) veya (Java) (örneğin, [Web API](./service-fabric-reliable-services-communication-aspnetcore.md)) döndürür. Bu dinleme uç noktası, farklı hesaplama yöntemlerine (örneğin, "Ekle (N1, N2)") kadar ana bilgisayarın ortak API 'sini tanımlar.
 
 İstemciden bir çağrı yapıldığında, uygun yöntem çağrılır ve Hesaplayıcı hizmeti, belirtilen verilerde işlemleri gerçekleştirir ve sonucu döndürür. Herhangi bir durum depolamaz.
 
