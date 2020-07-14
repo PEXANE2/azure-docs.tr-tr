@@ -5,6 +5,8 @@
   items:
     - name: Uygulama yönetimi nedir?
       href: what-is-application-management.md
+    - name: Çoklu oturum açma (SSO) nedir?
+      href: what-is-single-sign-on.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Uygulamalarınızı görüntüleme
@@ -19,6 +21,8 @@
       href: delete-application-portal.md
 - name: Öğreticiler
   items:
+    - name: Galeride listelenmeyen bir uygulama ekleme
+      href: add-non-gallery-app.md
     - name: 'Tümleşik galeri uygulamaları (örneğin ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Uygulama Ara Sunucusu üzerinden şirket içi uygulama ekleme
@@ -46,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: Çoklu oturum açma
           items:
-            - name: Çoklu oturum açma nedir?
-              href: what-is-single-sign-on.md
             - name: Çok kiracılı uygulamanız için SSO’yu etkinleştirme
               href: isv-sso-content.md
             - name: Çok kiracılı uygulamalara yönelik Azure kiracısı oluşturma
@@ -103,10 +105,6 @@
   items:
     - name: Bulut uygulamaları ve çoklu oturum açma
       items:
-        - name: Bulut uygulaması ekleme
-          items:
-            - name: Galeri dışı uygulama ekleme
-              href: add-non-gallery-app.md
         - name: Çoklu oturum açmayı yapılandırma
           items:
             - name: SAML tabanlı çoklu oturum açmayı yapılandırma
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: Uygulamaya kullanıcı veya grup atama
               href: assign-user-or-group-access-portal.md
+            - name: Uygulamalara verilen izinleri gözden geçirme
+              href: manage-application-permissions.md
             - name: Uygulamalarım üzerinde koleksiyonlar oluşturma
               href: access-panel-collections.md
             - name: Self servis uygulama erişimini kullanma

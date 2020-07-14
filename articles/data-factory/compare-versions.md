@@ -103,7 +103,7 @@ Geçerli sürümde V1’e kıyasla daha fazla veri deposuna ve daha fazla veri d
 ## <a name="support-for-on-demand-spark-cluster"></a>İsteğe bağlı Spark kümesi desteği
 Geçerli sürüm, isteğe bağlı Azure HDInsight Spark kümesi oluşturulmasını destekler. İsteğe bağlı bir Spark kümesi oluşturmak için, steğe bağlı HDInsight bağlı servis tanımınızdaki küme türünü Spark olarak belirtin. Ardından, işlem hattınızdaki Spark etkinliğini bu bağlı hizmeti kullanacak biçimde yapılandırabilirsiniz. 
 
-Çalışma zamanında, etkinlik yürütüldüğünde, Data Factory hizmeti otomatik olarak Spark kümesini oluşturur. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Çalışma zamanında, etkinlik yürütüldüğünde, Data Factory hizmeti otomatik olarak Spark kümesini oluşturur. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Data Factory'nin geçerli sürümündeki Spark etkinliği](transform-data-using-spark.md)
 - [İsteğe bağlı Azure HDInsight bağlı hizmeti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)
@@ -132,7 +132,7 @@ Geçerli sürüm için güncelleştirilmiş olan SDK'lar V1 istemcileriyle uyuml
 
 | | Sürüm 2 | Sürüm 1 |
 | ------ | -- | -- | 
-| **Azure portalındaki** | [Evet](quickstart-create-data-factory-portal.md) | Hayır |
+| **Azure Portal** | [Evet](quickstart-create-data-factory-portal.md) | Hayır |
 | **Azure PowerShell** | [Evet](quickstart-create-data-factory-powershell.md) | [Evet](data-factory-build-your-first-pipeline-using-powershell.md) |
 | **.NET SDK** | [Evet](quickstart-create-data-factory-dot-net.md) | [Evet](data-factory-build-your-first-pipeline-using-vs.md) |
 | **REST API** | [Evet](quickstart-create-data-factory-rest-api.md) | [Evet](data-factory-build-your-first-pipeline-using-rest-api.md) |

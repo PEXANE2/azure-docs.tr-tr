@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d4b36f00bad8c06c2f62794fa03a85120af79965
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557385"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232517"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma
 
@@ -109,7 +109,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Önbelleğin amacı gereksiz işlemden kaçınmaktır, ancak dizin oluşturucunun algılamadığı bir yeteneğe değişiklik yapmayı (örneğin, özel bir beceri gibi harici koddaki bir şeyi değiştirme) varsayalım.
 
-Bu durumda, bu yeteneğin çıktısına bağımlılığı olan tüm aşağı akış becerileri de dahil olmak üzere belirli bir yeteneğin yeniden işlenmesini zorlamak için [sıfırlama becerileri](https://docs.microsoft.com/rest/api/searchservice/reset-skills) kullanabilirsiniz. Bu API, yeniden işlenmek üzere geçersiz kılınmaları ve işaretlenmesi gereken yetenekler listesini içeren bir POST isteğini kabul eder. Yeteneklerini sıfırladıktan sonra, işlem hattını çağırmak için Dizin oluşturucuyu çalıştırın.
+Bu durumda, bu yeteneğin çıktısına bağımlılığı olan tüm aşağı akış becerileri de dahil olmak üzere belirli bir yeteneğin yeniden işlenmesini zorlamak için [sıfırlama becerileri](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) kullanabilirsiniz. Bu API, yeniden işlenmek üzere geçersiz kılınmaları ve işaretlenmesi gereken yetenekler listesini içeren bir POST isteğini kabul eder. Yeteneklerini sıfırladıktan sonra, işlem hattını çağırmak için Dizin oluşturucuyu çalıştırın.
 
 ## <a name="change-detection"></a>Değişiklik algılama
 
@@ -152,13 +152,13 @@ Artımlı işleme, Beceri tanımınızı değerlendirir ve hangi yeteneklerin ye
 
 REST API sürüm `2020-06-30-Preview` , Dizin oluşturucularda ek özellikler aracılığıyla artımlı zenginleştirme sağlar. Becerileri ve veri kaynakları genel kullanıma sunulan sürümü kullanabilir. Başvuru belgelerinin yanı sıra, API 'Leri çağırma hakkındaki ayrıntılar için bkz. [artımlı zenginleştirme için önbelleğe almayı yapılandırma](search-howto-incremental-index.md) .
 
-+ [Dizin Oluşturucu oluştur (api-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [Dizin Oluşturucu oluştur (api-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
 
-+ [Dizin oluşturucuyu güncelleştir (api-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [Dizin oluşturucuyu güncelleştir (api-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
 
 + [Güncelleştirme beceri (api-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (ISTEKTE yeni URI parametresi)
 
-+ [Becerileri sıfırlama (api-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
++ [Becerileri sıfırlama (api-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
 
 + Veritabanı Dizin oluşturucular (Azure SQL, Cosmos DB). Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/update-data-source) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında olarak ayarlanması gereken, **ıgnoreresetrequirement**isteği üzerinde yeni bir parametreyi destekler `true` . 
 

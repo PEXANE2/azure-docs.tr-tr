@@ -3,7 +3,7 @@ title: Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedeklem
 description: Azure ortamınızda Oracle Database 12c veritabanını nasıl yedekleyeceğinizi ve kurtaracağınızı öğrenin.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
+author: rgardler
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687013"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224460"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve kurtarma
 
@@ -171,7 +172,7 @@ Uygulamayla tutarlı yedeklemeler Azure Backup yeni bir özelliktir. VM anlık g
 
 4. JSON dosyasını düzenleyin.
 
-    Dosyasındaki VMSnapshotScriptPluginConfig.jsve parametrelerini içerecek şekilde düzenleyin `PreScriptLocation` `PostScriptlocation` . Örneğin:
+    Dosyasındaki VMSnapshotScriptPluginConfig.jsve parametrelerini içerecek şekilde düzenleyin `PreScriptLocation` `PostScriptlocation` . Örnek:
 
     ```output
     {
@@ -285,11 +286,11 @@ Daha fazla bilgi için bkz. [Linux VM 'ler Için uygulamayla tutarlı yedekleme]
 
     ![Kurtarma Hizmetleri kasaları yedekleme sayfası](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  **Yedekleme hedefi** dikey penceresinde, varsayılan **Azure** ve **sanal makine**değerlerini kullanın. **Tamam**'a tıklayın.
+5.  **Yedekleme hedefi** dikey penceresinde, varsayılan **Azure** ve **sanal makine**değerlerini kullanın. **Tamam** düğmesine tıklayın.
 
     ![Kurtarma Hizmetleri kasaları ayrıntı sayfası](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  **Yedekleme ilkesi**Için **DefaultPolicy**kullanın veya **Yeni ilke oluştur**' u seçin. **Tamam**'a tıklayın.
+6.  **Yedekleme ilkesi**Için **DefaultPolicy**kullanın veya **Yeni ilke oluştur**' u seçin. **Tamam** düğmesine tıklayın.
 
     ![Kurtarma Hizmetleri kasaları yedekleme ilkesi ayrıntı sayfası](./media/oracle-backup-recovery/recovery_service_06.png)
 

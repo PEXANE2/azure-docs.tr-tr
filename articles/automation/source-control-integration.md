@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828891"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229627"
 ---
 # <a name="use-source-control-integration"></a>Kaynak denetimi tümleştirmesini kullanma
 
@@ -25,7 +26,7 @@ Azure Otomasyonu üç tür kaynak denetimi destekler:
 * Azure Repos (git)
 * Azure Repos (TFVC)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kaynak denetimi deposu (GitHub veya Azure Repos)
 * [Farklı Çalıştır hesabı](manage-runas-account.md)
@@ -72,8 +73,7 @@ Azure portal kullanarak kaynak denetimini yapılandırmak için bu yordamı kull
 
 ### <a name="configure-source-control-in-powershell"></a>PowerShell 'de kaynak denetimini yapılandırma
 
-Azure Otomasyonu 'nda kaynak denetimi yapılandırmak için PowerShell de kullanabilirsiniz. Bu işlem için PowerShell cmdlet 'lerini kullanmak için bir kişisel erişim belirteci (PAT) gereklidir. Kaynak denetimi bağlantısını oluşturmak için [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) cmdlet 'ini kullanın. Bu cmdlet, PAT için güvenli bir dize gerektirir. Güvenli dize oluşturma hakkında bilgi edinmek için bkz. [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+Azure Otomasyonu 'nda kaynak denetimi yapılandırmak için PowerShell de kullanabilirsiniz. Bu işlem için PowerShell cmdlet 'lerini kullanmak için bir kişisel erişim belirteci (PAT) gereklidir. Kaynak denetimi bağlantısını oluşturmak için [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) cmdlet 'ini kullanın. Bu cmdlet, PAT için güvenli bir dize gerektirir. Güvenli dize oluşturma hakkında bilgi edinmek için bkz. [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
 Aşağıdaki alt bölümlerde, GitHub, Azure Repos (git) ve Azure Repos (TFVC) için kaynak denetimi bağlantısının PowerShell oluşturması gösterilmektedir. 
 
@@ -122,7 +122,7 @@ Aşağıdaki tabloda, GitHub için gereken en düşük PAT izinleri tanımlanmak
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos için en düşük PAT izinleri
 
-Aşağıdaki liste Azure Repos için gereken en düşük PAT izinlerini tanımlar. Azure Repos bir PAT oluşturma hakkında daha fazla bilgi için bkz. [kişisel erişim belirteçleriyle erişim kimlik doğrulaması](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
+Aşağıdaki liste Azure Repos için gereken en düşük PAT izinlerini tanımlar. Azure Repos bir PAT oluşturma hakkında daha fazla bilgi için bkz. [kişisel erişim belirteçleriyle erişim kimlik doğrulaması](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
 
 | Kapsam  |  Erişim türü  |
 |---------| ----------|
@@ -195,14 +195,14 @@ Kaynak denetim deposundan bağlantıyı kesmek için:
 
 ## <a name="handle-encoding-issues"></a>Kodlama sorunlarını işle
 
-Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları birden çok kişi düzenliyorsanız, kodlama sorunları oluşabilir. Bu durumla ilgili daha fazla bilgi edinmek için bkz. [kodlama sorunlarının yaygın nedenleri](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
+Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları birden çok kişi düzenliyorsanız, kodlama sorunları oluşabilir. Bu durumla ilgili daha fazla bilgi edinmek için bkz. [kodlama sorunlarının yaygın nedenleri](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>PAT 'yi güncelleştirme
 
 Şu anda, kaynak denetimindeki PAT 'yi güncelleştirmek için Azure portal kullanamazsınız. PAT süreniz dolduğunda veya iptal edildiğinde, kaynak denetimini şu yollarla yeni bir erişim belirteciyle güncelleştirebilirsiniz:
 
-* [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)kullanın.
-* [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet 'ini kullanın.
+* [REST API](/rest/api/automation/sourcecontrol/update)kullanın.
+* [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet 'ini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4d698375488d4dac551f0028883fc4e18a10d8ef
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323538"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232143"
 ---
-# <a name="add-security-headers-with-rules-engine"></a>Kural altyapısına güvenlik üstbilgileri ekleme
+# <a name="add-security-headers-with-rules-engine"></a>Kural Altyapısı ile Güvenlik üst bilgisi ekleme
 
 HTTP Strict-Transport-Security (HSTS), X-XSS-Protection, Content-Security-Policy veya X-Frame-Options gibi tarayıcı tabanlı güvenlik açıklarını engellemek için güvenlik üst bilgilerini uygulayın. Güvenlik tabanlı öznitelikler, tanımlama bilgileriyle de tanımlanabilir.
 
-Aşağıdaki örnek, kurallarınızın altyapı yapılandırmanızın ilişkilendirildiği yolda tanımlanan yol ile eşleşen tüm gelen isteklere Içerik-güvenlik-Ilke üst bilgisi nasıl ekleneceğini gösterir. Burada, yalnızca güvenilir sitemizdeki betiklerin **https://apis.contoso.com** uygulamamızda çalışmasına izin veririz.
+Aşağıdaki örnek, kurallarınızın altyapı yapılandırmanızın ilişkilendirildiği yolda tanımlanan yol ile eşleşen tüm gelen isteklere Içerik-güvenlik-Ilke üst bilgisi nasıl ekleneceğini gösterir. Burada, yalnızca güvenilir sitemizdeki betiklerin **https://apiphany.portal.azure-api.net** uygulamamızda çalışmasına izin veririz.
 
 ## <a name="add-a-content-security-policy-header-in-azure-portal"></a>Azure portal Içerik-Güvenlik Ilkesi üst bilgisi ekleme
 
@@ -33,7 +33,7 @@ Aşağıdaki örnek, kurallarınızın altyapı yapılandırmanızın ilişkilen
 
 3. Bu üst bilgiyi bu rotaya yönelik tüm gelen isteklere yanıt olarak **eklemek için, bu üstbilgiyi Ekle olarak** ayarlayın.
 
-4. Üst bilgi adını ekleyin: **Content-Security-Policy** ve bu üstbilginin kabul etmesi gereken değerleri tanımlayın. Bu senaryoda, *"Script-src ' Self ' öğesini seçtik https://apis.contoso.com .*
+4. Üst bilgi adını ekleyin: **Content-Security-Policy** ve bu üstbilginin kabul etmesi gereken değerleri tanımlayın. Bu senaryoda, *"Script-src ' Self ' öğesini seçtik https://apiphany.portal.azure-api.net .*
 
 5. Yapılandırmanıza istediğiniz kuralların tümünü ekledikten sonra tercih ettiğiniz rotaya gidip kural motoru yapılandırmanızı yol kuralınız ile ilişkilendirmeyin. Kuralın çalışmasını sağlamak için bu adım gereklidir. 
 

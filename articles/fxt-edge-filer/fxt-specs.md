@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846726"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231308"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer özellikleri
 
@@ -34,7 +34,7 @@ Sürücü numaraları, sürücüler arasındaki alana yazdırılır. Azure FXT E
 
 ![FXT kasadaki bir sabit sürücü bölmesinin fotoğrafı, sürücü numaralarını ve kapasite etiketlerini gösterir](media/fxt-drives-photo.png)
 
-| Sürücü numaraları    |  Kullanım   |  Belirtimler |
+| Sürücü numaraları    |  Kullanın   |  Belirtimler |
 |------------------|--------|-----------------|
 | 0, 1             | İşletim Sistemi     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Veriler   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
@@ -46,7 +46,7 @@ Azure FXT Edge Filer, standart 19 "ekipman rafıyla uyum sağlayacak şekilde ta
 
 <!-- 10x2.5 inches version -->
 
-| Filer boyutları           |                          |
+| Filer boyutları            | Değer                    |
 |-----------------------------|--------------------------|
 | Height                      | 42,8 mm (1,68 inç)    |
 | Genişlik (raf kulakları dahil) | 482,0 mm (18,97 inç)  |
@@ -56,7 +56,7 @@ Azure FXT Edge Filer, standart 19 "ekipman rafıyla uyum sağlayacak şekilde ta
 | Derinlemesine önde bir ön ödeme yapmak için derinlik rafı, kasa olmadan | 22,0 mm (0,87 inç)  |
 | Derinlemesine, ön ödemeli, kasa    | 35,84 mm (1,41 inç) |
 
-| Ağırlık | |
+| Ağırlık | Değer |
 |-----------------|----------------------|
 | Düğüm ağırlığı (paketsiz, aksesuarlar olmadan) | 40 lbs (18,1 kg) |
 | Net ağırlığı (Donatılar dahil olmak üzere paketlemeden) | 51 lbs (23,1 kg)|
@@ -67,7 +67,7 @@ Azure FXT Edge Filer, standart 19 "ekipman rafıyla uyum sağlayacak şekilde ta
 | Paket boyutu | Milimetre | Cm |
 |-------------------|-------------|--------|
 | Height            | 311,2       | 12,25 " |
-| Genişlik             | 642,8       | 25,31 " |
+| Width             | 642,8       | 25,31 " |
 | Uzunluk            | 1.051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Güç ve ısı belirtimleri
@@ -160,7 +160,7 @@ Bu bölüm, donanımın çevresel ortamı için belirtim sağlar.
 
 Azure FXT Edge filigran, listelenen yönetmeliklere uyar. 
 
-| Kategori       | Yasal belirtim | 
+| Category       | Yasal belirtim | 
 |----------------|--------------------------|
 | Genel güvenlik | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/ıEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
 | EMC            | FCC A, ıCES-003  <br>EN 55032:2012/CıSPPR 32:2012  <br>EN 55032:2015/CıSPPR 32:2015  <br>EN 55024:2010 + A1:2015/CıSPPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/ıEC 61000-3-2:2014 (sınıf D)   <br>EN 61000-3-3:2013/ıEC 61000-3-3:2013 |

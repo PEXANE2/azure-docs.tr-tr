@@ -23,7 +23,7 @@
     - name: Windows Sanal Masaüstü kaynaklarına bağlanma
       items:
         - name: Windows Masaüstü istemcisine bağlanma
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Web istemcisiyle bağlanma
           href: connect-web.md
         - name: Android istemcisiyle bağlanma
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Bir Windows 7 sanal makinesi dağıtma
+          href: deploy-windows-7-virtual-machine.md
         - name: GPU tabanlı bir oturum konağı dağıtma
           href: configure-vm-gpu.md
         - name: Mevcut konak havuzunu genişletme
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: Kavramlar
   items:
+    - name: Güvenli URL listesi
+      href: safe-url-list.md
     - name: Windows Sanal Masaüstü ortamı
       href: environment-setup.md
     - name: Kullanıcı bağlantı gecikmesini belirleme

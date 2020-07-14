@@ -3,19 +3,19 @@ title: Azure IoT Central cihaz bağlantısı | Microsoft Docs
 description: Bu makalede, Azure IoT Central cihaz bağlantısıyla ilgili temel kavramlar tanıtılmaktadır
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710448"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224774"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central 'e bağlanın
 
@@ -72,19 +72,40 @@ Cihazlarınızı IoT Central uygulamanıza bağlamak ve IoT 'e veri göndermek �
 
 Bir üretim ortamında, X. 509.440 sertifikalarının kullanılması, IoT Central için önerilen cihaz kimlik doğrulama mekanizmasıdır. Daha fazla bilgi için bkz. [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](../../iot-hub/iot-hub-x509ca-overview.md).
 
-Bir cihaza X. 509.952 sertifikası bağlanmadan önce, uygulamanızda bir ara veya kök X. 509.440 sertifikası ekleyin ve doğrulayın. Cihazların kök veya ara sertifikadan oluşturulan yaprak X. 509.440 sertifikalarını kullanması gerekir.
+Bir cihazı bir X. 509.440 sertifikası ile uygulamanıza bağlamak için:
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Kök veya ara sertifika ekleme ve doğrulama
+1. **Sertifikalar (X. 509.440)** kanıtlama türünü kullanan bir *kayıt grubu* oluşturun.
+2. Kayıt grubunda bir ara veya kök X. 509.440 sertifikası ekleyin ve doğrulayın.
+3. Kayıt grubundaki kök veya ara sertifikadan oluşturulan yaprak X. 509.440 sertifikalarını kullanan cihazları kaydedin ve bağlayın.
 
-**Yönetim > cihaz bağlantısı ' na gidin > birincil sertifikayı yönetin** ve cihaz sertifikalarını oluşturmak Için kullandığınız X. 509.440 kökünü veya ara sertifikasını ekleyin.
+### <a name="create-an-enrollment-group"></a>Kayıt grubu oluşturma
 
-![Bağlantı ayarları](media/concepts-get-connected/manage-x509-certificate.png)
+[Kayıt grubu](../../iot-dps/concepts-service.md#enrollment) , aynı kanıtlama türünü paylaşan bir cihaz grubudur. Desteklenen iki kanıtlama türü X. 509.440 sertifikalardır ve SAS:
 
-Sertifika sahipliğinin doğrulanması, sertifikayı karşıya yükleyen kişinin sertifikanın özel anahtarına sahip olmasını sağlar. Sertifikayı doğrulamak için:
+- X. 509.440 kayıt grubunda, IoT Central bağlanan tüm cihazlar, kayıt grubundaki kök veya ara sertifikadan oluşturulan yaprak X. 509.440 sertifikalarını kullanır.
+- SAS kayıt grubunda, IoT Central bağlanan tüm cihazlar kayıt grubundaki SAS belirtecinden oluşturulan bir SAS belirtecini kullanır.
 
-  1. Kod oluşturmak için **doğrulama kodu** ' nun yanındaki düğmeyi seçin.
-  1. Önceki adımda oluşturduğunuz doğrulama koduyla bir X. 509.952 doğrulama sertifikası oluşturun. Sertifikayı bir. cer dosyası olarak kaydedin.
-  1. İmzalı doğrulama sertifikasını karşıya yükleyin ve **Doğrula**' yı seçin. Doğrulama başarılı olduğunda sertifika **doğrulanmış** olarak işaretlenir.
+Her IoT Central uygulamasındaki iki varsayılan kayıt grubu, IoT cihazları için bir tane ve bir diğeri de Azure IoT Edge cihazlar için SAS kayıt gruplarıdır. Bir X. 509.952 kayıt grubu oluşturmak için, **cihaz bağlantısı** sayfasına gidin ve **+ kayıt grubu Ekle**' yi seçin:
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="X. 509.952 kayıt grubu Ekle ekran görüntüsü":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>Kök veya ara X. 509.440 sertifikası ekleme ve doğrulama
+
+Kayıt grubunuza bir kök veya ara sertifika eklemek ve doğrulamak için:
+
+1. Az önce oluşturduğunuz X. 509.952 kayıt grubuna gidin. Hem birincil hem de ikincil X. 509.952 sertifikalarını ekleme seçeneğiniz vardır. **+ Birincil Yönet**' i seçin.
+
+1. **Birincil sertifika sayfasında**, birincil X. 509.440 sertifikanızı karşıya yükleyin. Bu, kök veya ara sertifikasıdır:
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Birincil sertifika ekran görüntüsü":::
+
+1. Kullanmakta olduğunuz araçta bir doğrulama kodu oluşturmak için **doğrulama kodunu** kullanın. Ardından doğrulama sertifikasını karşıya yüklemek için **Doğrula** ' yı seçin.
+
+1. Doğrulama başarılı olduğunda aşağıdaki onayı görürsünüz:
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Doğrulanan birincil sertifika ekran görüntüsü":::
+
+Sertifika sahipliğinin doğrulanması, sertifikayı karşıya yükleyen kişinin sertifikanın özel anahtarına sahip olmasını sağlar.
 
 Bir güvenlik ihlali varsa veya birincil sertifikanız süresi dolacak şekilde ayarlandıysa, kapalı kalma süresini azaltmak için ikincil sertifikayı kullanın. Birincil sertifikayı güncelleştirdiğinizde ikincil sertifikayı kullanarak cihaz sağlamaya devam edebilirsiniz.
 
@@ -92,7 +113,7 @@ Bir güvenlik ihlali varsa veya birincil sertifikanız süresi dolacak şekilde 
 
 X. 509.440 sertifikalarını kullanarak cihazları toplu bağlamak için, önce [cihaz kimliklerini ve cihaz adlarını içeri aktarmak](howto-manage-devices.md#import-devices)üzere bir CSV dosyası kullanarak uygulamanıza cihazları kaydedin. Cihaz kimliklerinin hepsi küçük olmalıdır.
 
-Karşıya yüklenen kök veya ara sertifikayı kullanarak cihazlarınız için X. 509.440 yaprak sertifikaları oluşturun. Yaprak sertifikalarındaki değer olarak **CIHAZ kimliğini** kullanın `CNAME` . Cihaz kodunuz, uygulamanız için **kimlik kapsamı** değeri, **cihaz kimliği**ve karşılık gelen cihaz sertifikası gerektirir.
+X. 509.952 kayıt grubunuza yüklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için X. 509.440 yaprak sertifikaları oluşturun. Yaprak sertifikalarındaki değer olarak **CIHAZ kimliğini** kullanın `CNAME` . Cihaz kodunuz, uygulamanız için **kimlik kapsamı** değeri, **cihaz kimliği**ve karşılık gelen cihaz sertifikası gerektirir.
 
 #### <a name="sample-device-code"></a>Örnek cihaz kodu
 
@@ -122,9 +143,9 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Kayıt olmadan SAS belirteçleri kullanan cihazları bağlama
 
-1. IoT Central uygulamasının grup birincil anahtarını kopyalayın:
+1. Grup birincil anahtarını **SAS-IoT-Devices** kayıt grubundan kopyalayın:
 
-    ![Uygulama grubu birincil SAS anahtarı](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Birincil anahtarı SAS-IoT-Devices kayıt grubundan grupla":::
 
 1. Cihaz SAS anahtarlarını oluşturmak için [DPS-keygen](https://www.npmjs.com/package/dps-keygen) aracını kullanın. Önceki adımda grup birincil anahtarını kullanın. Cihaz kimlikleri küçük harf olmalıdır:
 
@@ -145,7 +166,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Kayıt olmadan X. 509.440 sertifikalarını kullanan cihazları bağlama
 
-1. IoT Central uygulamanıza [bir kök veya ara X. 509.440 sertifikası ekleyin ve doğrulayın](#connect-devices-using-x509-certificates) .
+1. [Bir kayıt grubu oluşturun](#create-an-enrollment-group) ve ardından IoT Central uygulamanıza [bir kök veya ara X. 509.440 sertifikası ekleyin ve doğrulayın](#add-and-verify-a-root-or-intermediate-x509-certificate) .
 
 1. IoT Central uygulamanıza eklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için yaprak sertifikaları oluşturun. Yaprak sertifikalarda, büyük/küçük harf cihaz kimliklerini kullanın `CNAME` .
 

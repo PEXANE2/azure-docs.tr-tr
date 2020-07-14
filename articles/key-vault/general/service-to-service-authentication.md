@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855089"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232619"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
@@ -27,7 +27,7 @@ Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yap
 
 `Microsoft.Azure.Services.AppAuthentication`Kitaplık kimlik doğrulamasını otomatik olarak yönetir, bu da kimlik bilgileriniz yerine çözümünüze odaklanmanıza olanak tanır. Microsoft Visual Studio, Azure CLı veya Azure AD Tümleşik kimlik doğrulamasıyla yerel geliştirmeyi destekler. Yönetilen bir kimliği destekleyen bir Azure kaynağına dağıtıldığında, kitaplık otomatik olarak [Azure kaynakları için Yönetilen kimlikler](../../active-directory/msi-overview.md)kullanır. Kod veya yapılandırma değişikliği gerekli değildir. Kitaplık Ayrıca, yönetilen bir kimlik olmadığında veya geliştiricinin güvenlik bağlamı yerel geliştirme sırasında belirlenemediğinde Azure AD [istemci kimlik bilgilerinin](../../azure-resource-manager/resource-group-authenticate-service-principal.md) doğrudan kullanımını destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) veya [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
@@ -39,7 +39,7 @@ Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yap
 
 1. **Tools**  >  **NuGet Package Manager**  >  Projenize [Microsoft. Azure. Services. appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasanuget](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) paketlerine başvurular eklemek için Araçlar NuGet Paket Yöneticisi**çözüm için NuGet Paketlerini Yönet** ' i seçin.
 
-1. Aşağıdaki kodu ekleyin:
+1. Şu kodu ekleyin:
 
     ``` csharp
     using Microsoft.Azure.Services.AppAuthentication;
@@ -226,17 +226,20 @@ Hizmet sorumlusu kimlik doğrulaması için bir istemci sertifikası kullanmak i
 
 ## <a name="connection-string-support"></a>Bağlantı dizesi desteği
 
-Varsayılan olarak, `AzureServiceTokenProvider` bir belirteci almak için birden çok yöntem kullanır.
+Varsayılan olarak, `AzureServiceTokenProvider` bir belirteci almak için aşağıdaki kimlik doğrulama yöntemlerini sırayla dener:
 
-İşlemi denetlemek için, `AzureServiceTokenProvider` oluşturucuya geçirilmiş veya *AzureServicesAuthConnectionString* ortam değişkeninde belirtilen bir bağlantı dizesi kullanın.
+- [Azure kaynakları için yönetilen bir kimlik](../..//active-directory/managed-identities-azure-resources/overview.md)
+- Visual Studio kimlik doğrulaması
+- [Azure CLı kimlik doğrulaması](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Tümleşik Windows kimlik doğrulaması](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
-Aşağıdaki seçenekler desteklenir:
+İşlemi denetlemek için, `AzureServiceTokenProvider` oluşturucuya geçirilmiş veya *AzureServicesAuthConnectionString* ortam değişkeninde belirtilen bir bağlantı dizesi kullanın.  Aşağıdaki seçenekler desteklenir:
 
-| Bağlantı dizesi seçeneği | Senaryo | Yorumlar|
+| Bağlantı dizesi seçeneği | Senaryo | Açıklamalar|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Yerel geliştirme | `AzureServiceTokenProvider`belirteci almak için AzureCli kullanır. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Yerel geliştirme | `AzureServiceTokenProvider`belirteci almak için Visual Studio 'Yu kullanır. |
-| `RunAs=CurrentUser` | Yerel geliştirme | `AzureServiceTokenProvider`belirteci almak için Azure AD Tümleşik kimlik doğrulamasını kullanır. |
+| `RunAs=CurrentUser` | Yerel geliştirme | .NET Core 'da desteklenmez. `AzureServiceTokenProvider`belirteci almak için Azure AD Tümleşik kimlik doğrulamasını kullanır. |
 | `RunAs=App` | [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`belirteci almak için yönetilen bir kimlik kullanır. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure kaynakları için Kullanıcı tarafından atanan kimlik](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider`belirteci almak için Kullanıcı tarafından atanan bir kimlik kullanır. |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Özel Hizmetler kimlik doğrulaması | `KeyVaultCertificateSecretIdentifier`Sertifikanın gizli tanımlayıcısı. |

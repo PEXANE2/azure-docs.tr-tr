@@ -257,6 +257,8 @@
           href: private-clusters.md
         - name: Diskler için BYOK
           href: azure-disk-customer-managed-keys.md
+        - name: Konak temelli şifrelemeyi etkinleştirme
+          href: enable-host-encryption.md
     - name: İzleme ve günlüğe kaydetme
       items:
         - name: Kapsayıcılar için Azure İzleyici
@@ -282,9 +284,9 @@
         - name: Kubernetes panosunu kullanma
           href: kubernetes-dashboard.md
         - name: Windows Server kapsayıcılarına yönelik Dockerfiles oluşturma
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: Windows Server kapsayıcılarına yönelik Dockerfiles’ı en iyi duruma getirme
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Uygulamaları geliştirme ve çalıştırma
       items:
         - name: Visual Studio Code aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)

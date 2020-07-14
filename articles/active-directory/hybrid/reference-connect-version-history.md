@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550123"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230392"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -26,11 +26,11 @@ Bu makale, yayımlanan sürümleri izlemenize ve değişikliklerin en son sürü
 
 Bu tablo, ilgili konuların listesidir:
 
-Konu başlığı |  Ayrıntılar
+Konu |  Ayrıntılar
 --------- | --------- |
 Azure AD Connect yükseltme adımları | [Önceki bir sürümden en son](how-to-upgrade-previous-version.md) Azure AD Connect sürüme yükseltmek için farklı yöntemler.
 Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için bkz. [hesaplar ve izinler](reference-connect-accounts-permissions.md#upgrade).
-İndir| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
+İndirme| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Azure AD Connect yeni bir sürümünü serbest bırakmak, hizmetin işlem işlevlerini sağlamak için çeşitli kalite denetimi adımı gerektiren bir işlemdir ve bu işlemden sonra yeni bir yayının sürüm numarası ve yayın durumu en son durumu yansıtacak şekilde güncelleştirilir.
@@ -47,6 +47,22 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 >Eşitleme için Azure AD Connect etkinleştirdiyseniz, eski sürümlerden birini çalıştırırken yakında kullanım dışı bırakılıklar hakkında sizi uyaran sistem durumu bildirimlerini almaya hemen başlayacaksınız.
 >
 >Azure AD Connect en son sürüme nasıl yükselteceğiniz hakkında daha fazla bilgi edinmek için lütfen [Bu makaleye](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) bakın.
+
+## <a name="15420"></a>1.5.42.0
+
+### <a name="release-status"></a>Yayın durumu
+07/10/2020: indirilmek üzere yayınlandı
+
+### <a name="functional-changes"></a>İşlevsel değişiklikler
+Bu sürüm, mevcut bir Azure AD Connect sunucusunun yapılandırmasını ' a dışarı aktarma işlevselliğinin genel önizlemesini içerir. Ardından, özgün sunucunun bir kopyasını oluşturmak için yeni bir Azure AD Connect sunucusu yüklenirken kullanılabilen JSON dosyası.
+
+Bu yeni özelliğin ayrıntılı bir açıklaması [Bu makalede](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config) bulunabilir
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+- Yükseltme sırasında yerelleştirilmiş derlemelerde yerel DB boyutuyla ilgili yanlış bir uyarı olacağı bir hata düzeltildi.
+- Hesap adı/etki alanı adı takas için uygulama olaylarında yanlış bir hata olduğu bir hata düzeltildi.
+- Azure AD Connect DC 'ye yüklenemediğinde bir hata düzeltildi, "üye bulunamadı" hatası veriliyor.
+
 
 ## <a name="15300"></a>1.5.30.0
 
@@ -215,8 +231,8 @@ Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkışt�
 > Bu sorunu gidermek için **ADSync** modülünü içeri aktarmanız ve sonra `Set-ADSyncDirSyncConfiguration` Azure AD Connect sunucusunda PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
 >
 >1. PowerShell 'i erişiminizin engellenmediğinden modunda açın.
->2. `Import-Module "ADSync"` öğesini çalıştırın.
->3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` öğesini çalıştırın.
+>2. Şu komutu çalıştırın: `Import-Module "ADSync"`.
+>3. Şu komutu çalıştırın: `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`.
  
 ### <a name="release-status"></a>Yayın durumu 
 
@@ -569,7 +585,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Name                          | Access               | Uygulanan Öğe
+Type     | Ad                          | Erişim               | Uygulanan Öğe
 ---------|-------------------------------|----------------------|--------------|
 İzin Ver    | SİSTEM                        | Tam Denetim         | Bu nesne  |
 İzin Ver    | Enterprise Admins             | Tam Denetim         | Bu nesne  |

@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/19/2020
+ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392684"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232160"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -25,21 +26,18 @@ Bu makalede, Azure Resource Manager şablonları kullanarak Azure Machine Learni
 
 Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 * CLı 'dan bir şablon kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) ya da [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir.
 
-## <a name="resource-manager-template"></a>Resource Manager şablonu
+## <a name="workspace-resource-manager-template"></a>Çalışma alanı Kaynak Yöneticisi şablonu
 
-Aşağıdaki Kaynak Yöneticisi şablonu, bir Azure Machine Learning çalışma alanı ve ilişkili Azure kaynakları oluşturmak için kullanılabilir:
-
-[!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
+Bu belge boyunca kullanılan Azure Resource Manager şablonu, Azure hızlı başlangıç şablonları GitHub deposunun [201-Machine-Learning-Advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) dizininde bulunabilir.
 
 Bu şablon aşağıdaki Azure hizmetlerini oluşturur:
 
-* Azure Kaynak Grubu
 * Azure Depolama Hesabı
 * Azure Key Vault
 * Azure Application Insights
@@ -48,13 +46,13 @@ Bu şablon aşağıdaki Azure hizmetlerini oluşturur:
 
 Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışma alanı için çeşitli hizmetler gereklidir.
 
-Örnek şablonda iki parametre vardır:
+Örnek şablonda iki **gerekli** parametre vardır:
 
-* Kaynak grubunun ve hizmetlerin oluşturulacağı **konum** .
+* Kaynakların oluşturulacağı **konum** .
 
     Şablon, çoğu kaynak için seçtiğiniz konumu kullanacaktır. Özel durum, diğer hizmetlerin bulunduğu tüm konumlarda kullanılamayan Application Insights hizmetidir. Kullanılabilir olmayan bir konum seçerseniz, hizmet Orta Güney ABD konumunda oluşturulur.
 
-* Azure Machine Learning çalışma alanının kolay adı olan **çalışma alanı adı**.
+* Azure Machine Learning çalışma alanının kolay adı olan **Çalışmaalanıadı**.
 
     > [!NOTE]
     > Çalışma alanı adı büyük/küçük harfe duyarlıdır.
@@ -74,7 +72,82 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 * [Azure Resource Manager şablonlarıyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft. MachineLearningServices kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-### <a name="advanced-template"></a>Gelişmiş şablon
+## <a name="deploy-template"></a>Şablon dağıtma
+
+Şablonunuzu dağıtmak için bir kaynak grubu oluşturmanız gerekir.
+
+Grafik Kullanıcı arabirimini kullanmayı tercih ediyorsanız [Azure Portal](#use-the-azure-portal) bölümüne bakın.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az group create --name "examplegroup" --location "eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroup -Name "examplegroup" -Location "eastus"
+```
+
+---
+
+Kaynak grubunuz başarıyla oluşturulduktan sonra, aşağıdaki komutla şablonu dağıtın:
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" location="eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus"
+```
+
+---
+
+Varsayılan olarak, şablonun bir parçası olarak oluşturulan tüm kaynaklar yenidir. Ancak, var olan kaynakları kullanma seçeneğiniz de vardır. Şablona ek parametreler sağlayarak, mevcut kaynakları kullanabilirsiniz. Örneğin, var olan bir depolama hesabını kullanmak istiyorsanız **Storageaccountoption** değerini **mevcut** olarak ayarlayın ve depolama hesabınızın adını **storageAccountName** parametresinde belirtin.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      storageAccountOption="existing" \
+      storageAccountName="existingstorageaccountname"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -storageAccountOption "existing" `
+  -storageAccountName "existingstorageaccountname"
+```
+
+---
+
+## <a name="deploy-an-encrypted-workspace"></a>Şifrelenmiş bir çalışma alanı dağıtma
 
 Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl oluşturulacağını göstermektedir:
 
@@ -86,6 +159,7 @@ Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md
 
 > [!IMPORTANT]
 > Bu şablonu kullanmadan önce aboneliğinizin karşılaması gereken bazı özel gereksinimler vardır:
+>
 > * __Azure Machine Learning__ uygulaması Azure aboneliğiniz için __katkıda bulunan__ olmalıdır.
 > * Şifreleme anahtarı içeren bir Azure Key Vault var olmalıdır.
 > * __Azure Cosmos DB__ uygulamasına __Get__, __Wrap__ve __sarmalama__ erişimini sağlayan Azure Key Vault bir erişim ilkeniz olması gerekir.
@@ -93,110 +167,482 @@ Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md
 
 __Azure Machine Learning uygulamayı katkıda bulunan olarak eklemek için__aşağıdaki komutları kullanın:
 
-1. CLı 'dan Azure 'da kimlik doğrulaması yapmak için aşağıdaki komutu kullanın:
+1. Azure hesabınızda oturum açın ve abonelik KIMLIĞINIZI alın. Bu abonelik, Azure Machine Learning çalışma alanınızı içeren bir aynı olmalıdır.  
 
-    ```azurecli-interactive
-    az login
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az account list --query '[].[name,id]' --output tsv
     ```
-    
-    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
+
+    > [!TIP]
+    > Başka bir abonelik seçmek için komutunu kullanın `az account set -s <subscription name or ID>` ve geçiş yapılacak abonelik adını veya kimliğini belirtin. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzSubscription
+    ```
+
+    > [!TIP]
+    > Başka bir abonelik seçmek için komutunu kullanın `Az-SetContext -SubscriptionId <subscription ID>` ve geçiş yapılacak abonelik adını veya kimliğini belirtin. Abonelik seçimi hakkında daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0).
+
+    ---
 
 1. Azure Machine Learning uygulamasının nesne KIMLIĞINI almak için aşağıdaki komutu kullanın. Değer, Azure aboneliklerinizin her biri için farklı olabilir:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
+    ```
+
+    ---
     Bu komut, GUID olan nesne KIMLIĞINI döndürür.
 
-1. Aboneliğinize katkıda bulunan nesne KIMLIĞINI eklemek için aşağıdaki komutu kullanın. `<object-ID>`Önceki ADıMDAN GUID ile değiştirin. `<subscription-ID>`Azure aboneliğinizin adı veya kimliğiyle değiştirin:
+1. Aboneliğinize katkıda bulunan nesne KIMLIĞINI eklemek için aşağıdaki komutu kullanın. `<object-ID>`Hizmet sorumlusunun nesne kimliğiyle değiştirin. `<subscription-ID>`Azure aboneliğinizin adı veya kimliğiyle değiştirin:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
     ```
 
-__Azure Key Vault bir anahtar eklemek Için__ __Azure CLI kullanarak Key Vault yönetme__ makalesindeki anahtar [Kasası ' nda anahtar, gizli dizi veya sertifika ekleme](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault) bölümündeki bilgileri kullanın.
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
+    ```
+
+    ---
+
+1. Mevcut bir Azure Key Vault bir anahtar oluşturmak için aşağıdaki komutlardan birini kullanın. `<keyvault-name>`Anahtar kasasının adıyla değiştirin. `<key-name>`Anahtar için kullanılacak adla değiştirin:
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
+    ```
+    --- 
 
 __Anahtar kasasına bir erişim ilkesi eklemek için aşağıdaki komutları kullanın__:
 
 1. Azure Cosmos DB uygulamasının nesne KIMLIĞINI almak için aşağıdaki komutu kullanın. Değer, Azure aboneliklerinizin her biri için farklı olabilir:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
     ```
-    
-    Bu komut, GUID olan nesne KIMLIĞINI döndürür.
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
+    ```
+    ---
+
+    Bu komut, GUID olan nesne KIMLIĞINI döndürür. Daha sonra Kaydet
 
 1. İlkeyi ayarlamak için aşağıdaki komutu kullanın. `<keyvault-name>`Varolan Azure Key Vault adıyla değiştirin. `<object-ID>`Önceki ADıMDAN GUID ile değiştirin:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
     ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    
+    ```azurepowershell
+    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
+    ```
+    ---    
 
 __To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliği) ve `resource_cmk_uri` (anahtar URI) parametrelerinin değerlerini almak için aşağıdaki adımları kullanın:
 
 1. Key Vault KIMLIĞI almak için aşağıdaki komutu kullanın:
 
-    ```azurecli-interactive
-    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv
     ```
 
-    Bu komut şuna benzer bir değer döndürür `/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault` .
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
+    ```
+    ---
+
+    Bu komut şuna benzer bir değer döndürür `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
 
 1. Müşteri tarafından yönetilen anahtar için URI değerini almak üzere aşağıdaki komutu kullanın:
 
-    ```azurecli-interactive
-    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
+    ```
+    ---
+
     Bu komut şuna benzer bir değer döndürür `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-__Örnek şablon__
-
-:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+Yukarıdaki adımları başarılı bir şekilde tamamladıktan sonra, şablonunuzu normalde yaptığınız gibi dağıtın. Müşteri tarafından yönetilen anahtarların kullanımını etkinleştirmek için aşağıdaki parametreleri ayarlayın:
 
-1. [Özel şablondan kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)bölümündeki adımları izleyin. __Şablonu Düzenle__ ekranına geldiğinizde, şablonu bu belgeden yapıştırın.
-1. Şablonu kullanmak için __Kaydet__ ' i seçin. Aşağıdaki bilgileri sağlayın ve listelenen hüküm ve koşulları kabul edin:
+* **Encryption_status** **etkin**.
+* **cmk_keyvault** `cmk_keyvault` önceki adımlarda elde edilen değere cmk_keyvault.
+* **resource_cmk_uri** `resource_cmk_uri` önceki adımlarda elde edilen değere resource_cmk_uri.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      encryption_status="Enabled" \
+      cmk_keyvault="/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" \
+      resource_cmk_uri="https://mykeyvault.vault.azure.net/keys/mykey/{guid}" \
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -encryption_status "Enabled" `
+  -cmk_keyvault "/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" `
+  -resource_cmk_uri "https://mykeyvault.vault.azure.net/keys/mykey/{guid}"
+```
+---
+
+Müşteri tarafından yönetilen bir anahtar kullanırken Azure Machine Learning, Cosmos DB örneğini içeren ikincil bir kaynak grubu oluşturur. Daha fazla bilgi için bkz. [rest-Cosmos DB şifreleme](concept-enterprise-security.md#encryption-at-rest).
+
+Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_data** parametresini **true**olarak ayarlayasağlamaktır. Bunu yaptığınızda, şunları yapar:
+
+* , Aboneliğinizde daha önceki kümelerin oluşturulmadığından Azure Machine Learning işlem kümeleri için yerel karalama diskini şifrelemeye başlar. Abonelikte daha önce bir küme oluşturduysanız, işlem kümelerinizde etkin olan boş disk şifrelemesini sağlamak için bir destek bileti açın.
+* Çalıştırmalar arasındaki yerel karalama diskini temizler.
+* Anahtar Kasası 'nı kullanarak depolama hesabı, kapsayıcı kayıt defteri ve SSH hesabı için kimlik bilgilerini yürütme katmanından işlem kümelerinize güvenli bir şekilde geçirir.
+* Temel alınan toplu iş havuzlarının AzureMachineLearningService dışında herhangi bir dış hizmet tarafından çağrılıp çağrılmaması için IP filtrelemeyi sağlar.
+
+  Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
+
+## <a name="deploy-workspace-behind-a-virtual-network"></a>Çalışma alanını bir sanal ağın arkasına dağıtma
+
+`vnetOption`Parametre değerini ya da olarak ayarlayarak `new` , bir `existing` sanal ağın arkasındaki bir çalışma alanı tarafından kullanılan kaynakları oluşturabilirsiniz.
+
+> [!IMPORTANT]
+> Kapsayıcı kayıt defteri için yalnızca ' Premium ' SKU desteklenir.
+
+> [!IMPORTANT]
+> Application Insights, bir sanal ağın arkasında dağıtımı desteklemez.
+
+### <a name="only-deploy-workspace-behind-private-endpoint"></a>Çalışma alanını yalnızca özel uç nokta arkasında dağıt
+
+İlişkili kaynaklarınız bir sanal ağın arkasında değilse, **privateEndpointType** `AutoAproval` `ManualApproval` çalışma alanını özel bir uç noktanın arkasında dağıtmak için privateendpointtype parametresini veya olarak ayarlayabilirsiniz.
+
+> [!IMPORTANT]
+> Dağıtım yalnızca özel uç noktaları destekleyen bölgelerde geçerlidir.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+### <a name="use-a-new-virtual-network"></a>Yeni bir sanal ağ kullan
+
+Yeni bir sanal ağın arkasındaki bir kaynağı dağıtmak için, **Vnetoption** 'yi ilgili kaynak için sanal ağ ayarlarıyla birlikte **Yeni** olarak ayarlayın. Aşağıdaki dağıtımda, depolama hesabı kaynağıyla yeni bir sanal ağın arkasındaki bir çalışma alanının nasıl dağıtılacağı gösterilmektedir.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+Alternatif olarak, bir sanal ağın arkasında bir veya daha fazla bağımlı kaynak dağıtabilirsiniz.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -keyVaultBehindVNet "true" `
+  -containerRegistryBehindVNet "true" `
+  -containerRegistryOption "new" `
+  -containerRegistrySku "Premium"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with a new virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      privateEndpointType="AutoApproval"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -privateEndpointType "AutoApproval"
+```
+
+--- -->
+
+### <a name="use-an-existing-virtual-network--resources"></a>Mevcut bir sanal ağ & kaynaklarını kullan
+
+Mevcut ilişkili kaynaklarla bir çalışma alanı dağıtmak için **Vnetoption** parametresini alt ağ parametreleriyle birlikte **var** olarak ayarlamanız gerekir. Ancak, dağıtımdan **önce** her bir kaynak için sanal ağda hizmet uç noktaları oluşturmanız gerekir. Yeni sanal ağ dağıtımları gibi, kaynaklarınızın bir sanal ağın arkasında veya tümü olabilir.
+
+> [!IMPORTANT]
+> Alt ağda `Microsoft.Storage` hizmet uç noktası olmalıdır
+
+> [!IMPORTANT]
+> Alt ağlar özel uç noktaların oluşturulmasına izin vermez. Alt ağı etkinleştirmek için özel uç noktayı devre dışı bırakın.
+
+1. Kaynaklar için hizmet uç noktalarını etkinleştirin.
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.Storage"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.KeyVault"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.ContainerRegistry"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.ContainerRegistry" | Set-AzVirtualNetwork
+    ```
+
+    ---
+
+1. Çalışma alanını dağıtma
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="examplegroup" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium" \
+      subnetName="examplesubnet" \
+      subnetOption="existing"
+      privateEndpointType="AutoApproval"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -Name "exampledeployment" `
+      -ResourceGroupName "examplegroup" `
+      -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+      -workspaceName "exampleworkspace" `
+      -location "eastus" `
+      -vnetOption "existing" `
+      -vnetName "examplevnet" `
+      -vnetResourceGroupName "examplegroup" `
+      -storageAccountBehindVNet "true"
+      -keyVaultBehindVNet "true" `
+      -containerRegistryBehindVNet "true" `
+      -containerRegistryOption "new" `
+      -containerRegistrySku "Premium" `
+      -subnetName "examplesubnet" `
+      -subnetOption "existing"
+      -privateEndpointType "AutoApproval"
+    ```
+    ---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with an existing virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="rg" \
+      privateEndpointType="AutoApproval" \
+      subnetName="subnet" \
+      subnetOption="existing"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "existing" `
+  -vnetName "examplevnet" `
+  -vnetResourceGroupName "rg"
+  -privateEndpointType "AutoApproval"
+  -subnetName "subnet"
+  -subnetOption "existing"
+```
+
+--- -->
+
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+
+1. [Özel şablondan kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)bölümündeki adımları izleyin. __Şablon seçin__ ekranına geldiğinizde, açılan listeden **201-Machine-Learning-Advanced** şablonunu seçin.
+1. Şablonu kullanmak için __şablon seç__ ' i seçin. Dağıtım senaryonuza bağlı olarak aşağıdaki gerekli bilgileri ve diğer parametreleri sağlayın.
 
    * Abonelik: Bu kaynaklar için kullanılacak Azure aboneliğini seçin.
    * Kaynak grubu: hizmetleri içeren bir kaynak grubu seçin veya oluşturun.
+   * Bölge: kaynakların oluşturulacağı Azure bölgesini seçin.
    * Çalışma alanı adı: oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Yalnızca alfasayısal karakterler ve '-' içerebilir.
    * Konum: kaynakların oluşturulacağı konumu seçin.
+1. __Gözden geçir ve oluştur__’u seçin.
+1. __Gözden geçir + oluştur__ ekranında, listelenen hüküm ve koşulları kabul edin ve __Oluştur__' u seçin.
 
 Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
-
-## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
-
-Bu örnekte, şablonu geçerli dizinde adlı bir dosyaya kaydettiğiniz varsayılır `azuredeploy.json` :
-
-```powershell
-New-AzResourceGroup -Name examplegroup -Location "East US"
-new-azresourcegroupdeployment -name exampledeployment `
-  -resourcegroupname examplegroup -location "East US" `
-  -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
-```
-
-Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md) [SAS belirteci ve Azure PowerShell ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
-
-## <a name="use-the-azure-cli"></a>Azure CLI kullanma
-
-Bu örnekte, şablonu geçerli dizinde adlı bir dosyaya kaydettiğiniz varsayılır `azuredeploy.json` :
-
-```azurecli-interactive
-az group create --name examplegroup --location "East US"
-az group deployment create \
-  --name exampledeployment \
-  --resource-group examplegroup \
-  --template-file azuredeploy.json \
-  --parameters workspaceName=exampleworkspace location=eastus sku=basic
-```
-
-Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıtma](../azure-resource-manager/templates/deploy-cli.md) ve [SAS BELIRTECI ve Azure clı ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -216,7 +662,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 * Key Vault erişim ilkelerini inceleyin ve sonra şablonun özelliğini ayarlamak için bu ilkeleri kullanın `accessPolicies` . Erişim ilkelerini görüntülemek için aşağıdaki Azure CLı komutunu kullanın:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
@@ -287,7 +733,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
     Key Vault KIMLIĞINI almak için özgün şablon çalıştırmasının çıkışına başvurabilirsiniz veya Azure CLı 'yi kullanabilirsiniz. Aşağıdaki komut, Key Vault kaynak KIMLIĞINI almak için Azure CLı kullanma örneğidir:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
     ```
 

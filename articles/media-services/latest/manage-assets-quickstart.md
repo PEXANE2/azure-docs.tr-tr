@@ -46,7 +46,7 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
     * [Filtreler](filters-concept.md)
 * İçeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana DRM sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay) şifreleyerek koruyabilirsiniz. Azure portal hızlı başlangıç [ile Içerik şifreleme](encrypt-content-quickstart.md) içerik korumasının nasıl yapılandırılacağını gösterir.
         
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

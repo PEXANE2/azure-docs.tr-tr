@@ -56,3 +56,7 @@
               href: ./servers/manage-vm-extensions.md
             - name: Aracıyı yönetme
               href: ./servers/manage-agent.md
+        - name: Sorun giderme
+          items:
+            - name: Aracı bağlantı sorunları
+              href: ./servers/troubleshoot-agent-onboard.md

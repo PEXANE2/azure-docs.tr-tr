@@ -1,5 +1,5 @@
 ---
-title: Kimlik doğrulaması
+title: Kimlik Doğrulaması
 titleSuffix: Azure Cognitive Services
 description: 'Azure bilişsel hizmetler kaynağına yönelik bir isteğin kimlik doğrulamasının üç yolu vardır: abonelik anahtarı, bir taşıyıcı belirteç veya bir çoklu hizmet aboneliği. Bu makalede her bir yöntem ve bir istek oluşturma hakkında bilgi edineceksiniz.'
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146958"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232755"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama
 
@@ -81,14 +81,21 @@ Her istekte, üst bilgi olarak abonelik anahtarı sağlanır `Ocp-Apim-Subscript
 
 Bu bölgelerde çoklu hizmet kimlik doğrulaması desteklenir:
 
-| | | |
-|-|-|-|
-| `australiaeast` | `brazilsouth` | `canadacentral` |
-| `centralindia` | `eastasia` | `eastus` |
-| `japaneast` | `northeurope` | `southcentralus` |
-| `southeastasia` | `uksouth` | `westcentralus` |
-| `westeurope` | `westus` | `westus2` |
-
+- `australiaeast`
+- `brazilsouth`
+- `canadacentral`
+- `centralindia`
+- `eastasia`
+- `eastus`
+- `japaneast`
+- `northeurope`
+- `southcentralus`
+- `southeastasia`
+- `uksouth`
+- `westcentralus`
+- `westeurope`
+- `westus`
+- `westus2`
 
 ### <a name="sample-requests"></a>Örnek istekler
 
@@ -141,13 +148,21 @@ curl -v -X POST \
 
 Bu çoklu hizmet bölgeleri belirteç değişimini destekler:
 
-| | | |
-|-|-|-|
-| `australiaeast` | `brazilsouth` | `canadacentral` |
-| `centralindia` | `eastasia` | `eastus` |
-| `japaneast` | `northeurope` | `southcentralus` |
-| `southeastasia` | `uksouth` | `westcentralus` |
-| `westeurope` | `westus` | `westus2` |
+- `australiaeast`
+- `brazilsouth`
+- `canadacentral`
+- `centralindia`
+- `eastasia`
+- `eastus`
+- `japaneast`
+- `northeurope`
+- `southcentralus`
+- `southeastasia`
+- `uksouth`
+- `westcentralus`
+- `westeurope`
+- `westus`
+- `westus2`
 
 Bir kimlik doğrulama belirteci aldıktan sonra, her istekte onu üst bilgi olarak geçirmeniz gerekir `Authorization` . Bu, çevirmen hizmetine örnek bir çağrıdır:
 

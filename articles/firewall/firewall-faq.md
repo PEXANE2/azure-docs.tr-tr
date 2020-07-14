@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078434"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232092"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -88,7 +88,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örneğin:
+Örnek:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -223,3 +223,7 @@ Ağ güvenlik duvarının standart bir davranışı, TCP bağlantılarının etk
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Azure Güvenlik duvarını genel bir IP adresi olmadan dağıtabilir miyim?
 
 Hayır, şu anda Azure Güvenlik duvarını genel bir IP adresiyle dağıtmanız gerekir.
+
+## <a name="where-does-azure-firewall-store-customer-data"></a>Azure Güvenlik Duvarı müşteri verilerini nerede depolar?
+
+Azure Güvenlik Duvarı, müşteri verilerini dağıtıldığı bölgenin dışına taşımaz veya depolamaz.

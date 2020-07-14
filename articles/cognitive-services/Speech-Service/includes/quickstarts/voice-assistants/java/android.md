@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671043"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226390"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -36,9 +36,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 ## <a name="create-user-interface"></a>Kullanıcı arabirimi oluşturma
 
-Bu bölümde, uygulama için temel bir kullanıcı arabirimi (UI) oluşturacağız. Ana etkinliği açıp başlatalım: `activity_main.xml`. Temel şablon, uygulamanın adına sahip bir başlık çubuğu ve "Hello World!" `TextView` iletisiyle birlikte bulunur.
+Bu bölümde, uygulama için temel bir kullanıcı arabirimi (UI) oluşturacağız. Ana etkinliği açıp başlatalım: `activity_main.xml` . Temel şablon, uygulamanın adına sahip bir başlık çubuğu ve `TextView` "Hello World!" iletisiyle birlikte bulunur.
 
-Sonra, öğesinin `activity_main.xml` içeriğini aşağıdaki kodla değiştirin:
+Sonra, öğesinin içeriğini `activity_main.xml` aşağıdaki kodla değiştirin:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -89,17 +89,17 @@ Sonra, öğesinin `activity_main.xml` içeriğini aşağıdaki kodla değiştiri
 
 Bu XML, bot 'unuzla etkileşim kurmak için basit bir kullanıcı arabirimi tanımlar.
 
-- `button` Öğesi bir etkileşim başlatır ve tıklandığında `onBotButtonClicked` yöntemi çağırır.
-- `recoText` Öğesi, bot 'unuzla konuşurken konuşmadan metne sonuçları görüntüler.
-- `activityText` Öğesi, bot 'ınızdan en son bot Framework etkinliğinin JSON yükünü görüntüler.
+- `button`Öğesi bir etkileşim başlatır ve `onBotButtonClicked` tıklandığında yöntemi çağırır.
+- `recoText`Öğesi, bot 'unuzla konuşurken konuşmadan metne sonuçları görüntüler.
+- `activityText`Öğesi, bot 'ınızdan en son bot Framework ETKINLIĞININ JSON yükünü görüntüler.
 
 UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
-![](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
+![Bot Kullanıcı arabiriminizle konuşmanızın nasıl görüneceğine ilişkin ekran görüntüsü.](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Öğesini `MainActivity.java`açın ve içeriğini şu kodla değiştirin:
+1. `MainActivity.java`Öğesini açın ve içeriğini şu kodla değiştirin:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -241,25 +241,25 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
     }
    ```
 
-   * Yöntemi `onCreate` , mikrofon ve internet izinleri isteyen kodu içerir.
+   * `onCreate`Yöntemi, mikrofon ve internet izinleri isteyen kodu içerir.
 
    * `onBotButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Düğme, bot ile tek bir etkileşimi ("Aç") tetikler.
 
-   * `registerEventListeners` Yöntemi, gelen etkinliklerin `DialogServiceConnector` ve temel işlenmesi tarafından kullanılan olayları gösterir.
+   * `registerEventListeners`Yöntemi, `DialogServiceConnector` gelen etkinliklerin ve temel işlenmesi tarafından kullanılan olayları gösterir.
 
 1. Aynı dosyada, yapılandırma dizelerini kaynaklarla eşleşecek şekilde değiştirin:
 
     * `YourSpeechSubscriptionKey` değerini abonelik anahtarınızla değiştirin.
 
-    * Aboneliğiniz `YourServiceRegion` ile ilişkili [bölge](~/articles/cognitive-services/speech-service/regions.md) Ile değiştirin yalnızca bir konuşma hizmeti bölgesi alt kümesi şu anda doğrudan hat konuşma ile desteklenmektedir. Daha fazla bilgi için bkz. [bölgeler](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
+    * `YourServiceRegion`Aboneliğiniz ile ilişkili [bölge](~/articles/cognitive-services/speech-service/regions.md) ile değiştirin yalnızca bir konuşma hizmeti bölgesi alt kümesi şu anda doğrudan hat konuşma ile desteklenmektedir. Daha fazla bilgi için bkz. [bölgeler](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
 
-## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
 1. Android cihazınızı geliştirme bilgisayarınıza bağlayın. Cihazda [geliştirme modunu ve USB hata ayıklamasını](https://developer.android.com/studio/debug/dev-options) etkinleştirdiğinizden emin olun.
 
-1. Uygulamayı derlemek için CTRL + F9 tuşlarına basın veya menü çubuğunda projeyi **Oluştur ' u seçin.** > **Make Project**
+1. Uygulamayı derlemek için CTRL + F9 tuşlarına basın veya menü çubuğunda projeyi **Oluştur ' u seçin**  >  **Make Project** .
 
-1. Uygulamayı başlatmak için SHIFT + F10 tuşlarına basın **veya çalıştırmayı Çalıştır** > **' uygulama '** yı seçin.
+1. Uygulamayı başlatmak için SHIFT + F10 tuşlarına basın **veya çalıştırmayı Çalıştır**  >  **' uygulama '** yı seçin.
 
 1. Görüntülenen dağıtım hedefi penceresinde Android cihazınızı seçin.
 

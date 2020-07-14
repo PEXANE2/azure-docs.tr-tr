@@ -8,11 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564653"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232075"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights’ı Uzaktan İzleme ile tümleştirme
 
@@ -23,7 +24,7 @@ Uzaktan Izleme çözümü Hızlandırıcısı artık Time Series Insights otomat
 > [!NOTE]
 > Time Series Insights Azure Çin bulutu 'nda Şu anda kullanılamıyor. Azure Çin bulutu 'ndaki yeni uzaktan Izleme çözümü Hızlandırıcısı dağıtımları tüm depolama için Cosmos DB kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır hakkında daha fazla bir uzaktan Izleme çözümü dağıtmış olmanız gerekir:
 
@@ -61,13 +62,13 @@ Sonra, Time Series Insights uzaktan Izleme çözümünüze ek bir kaynak olarak 
     | Ortam Adı | Aşağıdaki ekran görüntüsünde **contorosrmtsi**adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı seçin. |
     | Abonelik | Açılan listeden Azure aboneliğinizi seçin. |
     | Kaynak grubu | **Mevcut olanı kullanın**. Var olan uzaktan Izleme kaynak grubunuzun adını seçin. |
-    | Konum | **Doğu ABD**kullandık. Mümkünse, ortamınızı uzaktan Izleme çözümünüz ile aynı bölgede oluşturun. |
+    | Location | **Doğu ABD**kullandık. Mümkünse, ortamınızı uzaktan Izleme çözümünüz ile aynı bölgede oluşturun. |
     | Sku |**S1** |
     | Kapasite | **1** |
 
     ![Time Series Insights oluştur](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. **Oluştur**'a tıklayın. Ortamın oluşturulması biraz zaman alabilir.
+1. **Oluştur**’a tıklayın. Ortamın oluşturulması biraz zaman alabilir.
 
 ## <a name="create-event-source"></a>Olay kaynağı oluşturma
 
@@ -100,7 +101,7 @@ IoT Hub 'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki ad
 
     ![Olay kaynağı oluştur](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 ## <a name="configure-the-data-access-policy"></a>Veri erişim ilkesini yapılandırma
 
@@ -243,7 +244,7 @@ Time Series Insights tümleştirmesini tamamlayabilmeniz için, güncelleştiril
 
 `standard`Yukarıdaki güncelleştirilmiş mikro hizmetler için dağıtım ortamını yapılandırın
 
-1. Komut satırında komutunu çalıştırın `kubectl proxy` . Daha fazla bilgi için bkz. [Kubernetes API 'sine erişme](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
+1. Komut satırında komutunu çalıştırın `kubectl proxy` . Daha fazla bilgi için bkz. [Kubernetes API 'sine erişme](https://kubernetes.io/docs/reference/access-authn-authz/).
 
 1. Kubernetes yönetim konsolunu açın.
 

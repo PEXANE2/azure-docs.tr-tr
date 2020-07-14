@@ -477,6 +477,8 @@
                   items:
                     - name: Sanal makineden
                       href: ../image-version-vm-cli.md
+                    - name: VHD veya anlık görüntüden
+                      href: ../image-version-snapshot-cli.md
                     - name: Yönetilen görüntüden geçiş yapma
                       href: ../image-version-managed-image-cli.md
                     - name: Başka bir galeriden kopyalama
@@ -499,6 +501,8 @@
                   items:
                     - name: Sanal makineden
                       href: ../image-version-vm-powershell.md
+                    - name: VHD veya anlık görüntüden
+                      href: ../image-version-snapshot-powershell.md
                     - name: Yönetilen görüntüden geçiş yapma
                       href: ../image-version-managed-image-powershell.md
                     - name: Başka bir galeriden kopyalama
@@ -547,6 +551,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Görüntüleri bulma ve kullanma
           href: cli-ps-findimage.md
+        - name: Satın alma planı bilgileri
+          href: ../marketplace-images.md
         - name: VM’yi yönetilen görüntüye yakalama
           href: capture-image.md
         - name: Packer ile görüntü derleme
@@ -945,6 +951,16 @@
           href: disks-incremental-snapshots-portal.md
         - name: Yönetilmeyen diskleri yedekleme
           href: incremental-snapshots.md
+        - name: Şifreleme
+          items:
+            - name: Konakta şifrelemeyi etkinleştirme - CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - Portal
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme
+              href: disks-enable-double-encryption-at-rest-cli.md
         - name: Geçiş ve dönüştürme
           items:
             - name: Azure Site Recovery ile Premium depolamaya geçiş

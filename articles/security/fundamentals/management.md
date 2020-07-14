@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981316"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224715"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
 Azure aboneleri yönetim iş istasyonları, geliştirici PC’leri ve hatta göreve özel izinleri bulunan ayrıcalıklı son kullanıcı cihazları dahil birden fazla cihazda kendi bulut ortamlarını yönetebilir. Bazı durumlarda, yönetim işlevleri [Azure portal](https://azure.microsoft.com/features/azure-portal/) gibi web tabanlı konsollar aracılığıyla gerçekleştirilir Diğer durumlarda, Sanal Özel Ağlar (VPN), Terminal Hizmetleri, istemci uygulaması protokolleri ya da (programlı olarak) Azure Service Management API (SMAPI) üzerinden şirket için sistemlerden Azure’a bağlantılar olabilir. Ayrıca, istemci uç noktaları ya da etki alanına katılmış veya yalıtılmış ve yönetilmeyen olabilir, tabletler veya akıllı telefonlar gibi.
 
 Çoklu erişim ve yönetim özellikleri zengin seçenekler sunsa da, bu değişkenlik bulut dağıtımına önemli bir risk ekleyebilir. Yönetim eylemlerini yönetmek, izlemek ve denetlemek güç olabilir. Bu değişkenlik bulut hizmetlerini yönetmek için kullanılan istemci uç noktalarına düzenlenmemiş erişim aracılığıyla güvenlik tehditlerine neden olabilir. Altyapı geliştirme ve yönetme amacıyla genel ya da kişisel iş istasyonlarını kullanmak, web’e gözatma (örneğin, su kaynağı saldırıları) ya da e-posta (örneğin, sosyal mühendislik ve kimlik avı) gibi öngörülemeyen tehdit vektörlerini açar.
 
-![](./media/management/typical-management-network-topology.png)
+![Bir tehditten bir saldırı bağlayabilmenin farklı yollarını gösteren bir diyagram.](./media/management/typical-management-network-topology.png)
 
 Çok değişken uç noktalardan Azure arabirimlerine (SMAPI gibi) erişimi uygun şekilde yönetmek üzere güvenlik ilkeleri ve mekanizmaları oluşturmayı zorlaştırdığından, saldırı potansiyeli bu tür ortamlarda artar.
 
@@ -137,7 +138,7 @@ Sıkı erişim denetimleri içeren ilke uygulama yönetici eylemlerini yönetebi
 ## <a name="client-configuration"></a>İstemci yapılandırması
 Sağlamlaştırılmış iş istasyonu için üç temel yapılandırma öneririz. Bunlar arasındaki en büyük fark, tüm seçeneklerde benzer güvenlik profili sağlarken, maliyet, kullanılabilirlik ve erişilebilirliktir. Aşağıdaki tabloda her birinin avantajları ve risklerinin kısa bir çözümlemesini sağlar. (“kurumsal PC” ifadesinin, rollerden bağımsız olarak, tüm etki alanı kullanıcıları için dağıtılabilecek standart masaüstü PC yapılandırması anlamına geldiğini unutmayın.)
 
-| Yapılandırma | Yararları | Simgeler |
+| Yapılandırma | Avantajlar | Dezavantajlar |
 | --- | --- | --- |
 | Tek başına sağlamlaştırılmış iş istasyonu |Sıkı denetlenen iş istasyonu |ayrılmış masaüstü bilgisayarlar için daha yüksek maliyet |
 | - | Azaltılmış uygulama açıkları riski |Artan yönetim çabası |
@@ -156,12 +157,12 @@ Tek başına sağlamlaştırılmış iş istasyonu ile, yöneticiler yönetim g�
 
 (Aşağıda gösterilen) tek başına sağlamlaştırılmış iş istasyonu senaryosunda, Windows Güvenlik Duvarı (veya Microsoft dışı istemci güvenlik duvarı) RDP gibi, gelen bağlantıları engellemek üzere yapılandırılmıştır. Yönetici sağlamlaştırılmış iş istasyonunda oturum açabilir ve VPN Azure Sanal Ağı ile VPN bağlantısı oluşturduktan sonra Azure’a bağlanan bir RDP oturumu başlatabilir, kurumsal PC’de oturum açamaz ve sağlamlaştırılmış iş istasyonunun kendisine bağlanmak için RDP kullanamaz.
 
-![](./media/management/stand-alone-hardened-workstation-topology.png)
+![Tek başına sağlamlaştırılmış iş istasyonu senaryosunu gösteren diyagram.](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>Sanal makine olarak kurumsal PC
 Ayrı bir tek başına sağlamlaştırılmış iş istasyonunun engelleyici ya da kullanışsız maliyeti olması durumunda, sağlamlaştırılmış is istasyonu yönetim dışı görevleri gerçekleştirmek için bir sanal makine barındırabilir.
 
-![](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![Yönetici olmayan görevleri gerçekleştirmek için bir sanal makineyi barındıran sıkı iş istasyonunu gösteren diyagram.](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 Sistem Yönetimi ve diğer günlük iş görevleri için bir iş istasyonu kullanarak oluşabilecek çeşitli güvenlik risklerini önlemek için, sağlamlaştırılmış iş istasyonuna Windows Hyper-V sanal makinesi dağıtabilirsiniz. Bu sanal makine kurumsal PC olarak kullanılabilir. Kurumsal PC ortamı, saldırı yüzeyini azaltan ve önemli yönetim görevleri ile birlikte bulunan kullanıcının günlük etkinliklerini (örneğin, e-posta) kaldıran, Ana Bilgisayardan yalıtılmış durumda kalabilir.
 

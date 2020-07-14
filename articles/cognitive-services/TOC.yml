@@ -5,6 +5,8 @@
   items:
     - name: Bilişsel Hizmetler nedir?
       href: Welcome.md
+    - name: Bilişsel Hizmetler belgelerindeki yenilikler
+      href: whats-new-docs.md
     - name: Bilişsel Hizmetler ve Makine öğrenmesi
       href: cognitive-services-and-machine-learning.md
     - name: Bilişsel Hizmetler’e yönelik özel alt etki alanları
@@ -64,6 +66,24 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Hizmeti (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: Big Data
+  items:
+    - name: Büyük Veri için Bilişsel Hizmetler
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: Başlarken
+      href: ./big-data/getting-started.md
+    - name: Örnekler
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: Tarifler
+      items:
+        - name: 'Tarif: Anomali Algılayıcısı'
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 'Tarif: Art Gezgini'
+          href: ./big-data/recipes/art-explorer.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

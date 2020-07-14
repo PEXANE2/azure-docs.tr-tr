@@ -434,6 +434,8 @@
                   items:
                     - name: Sanal makineden
                       href: ../image-version-vm-powershell.md
+                    - name: VHD veya anlık görüntüden
+                      href: ../image-version-snapshot-powershell.md
                     - name: Yönetilen görüntüden geçiş yapma
                       href: ../image-version-managed-image-powershell.md
                     - name: Başka bir galeriden kopyalama
@@ -454,6 +456,8 @@
                   items:
                     - name: Sanal makineden
                       href: ../image-version-vm-cli.md
+                    - name: VHD veya anlık görüntüden
+                      href: ../image-version-snapshot-cli.md
                     - name: Yönetilen görüntüden geçiş yapma
                       href: ../image-version-managed-image-cli.md
                     - name: Başka bir galeriden kopyalama
@@ -508,6 +512,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Görüntüleri bulma ve kullanma
           href: cli-ps-findimage.md
+        - name: Satın alma planı bilgileri
+          href: ../marketplace-images.md
         - name: VM’yi karşıya yükleme işlemine hazırlama
           href: prepare-for-upload-vhd-image.md
         - name: VM görüntüsü yakalama
@@ -853,10 +859,18 @@
           href: disks-incremental-snapshots-portal.md
         - name: Yönetilmeyen diskleri yedekleme
           href: incremental-snapshots.md
+        - name: Şifreleme
+          items:
+            - name: Konak temelli şifrelemeyi etkinleştirme - PowerShell
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - PowerShell
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - Portal
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme
+              href: disks-enable-double-encryption-at-rest-powershell.md
         - name: Geçiş ve dönüştürme
           items:
-            - name: Sunucu tarafı şifrelemesine dönüştürme
-              href: disks-ade-sse-conversion-powershell.md
             - name: Standart ve Premium arasında disk dönüştürme
               href: convert-disk-storage.md
             - name: Azure Site Recovery ile Premium depolamaya geçiş
