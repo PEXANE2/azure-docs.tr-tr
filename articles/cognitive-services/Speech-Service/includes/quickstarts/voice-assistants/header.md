@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, zaten yazdığınız ve yapılandırdığınız bir b
 
 Birkaç önkoşulu karşıladıktan sonra, özel sesli yardımcınızı bağlamak yalnızca birkaç adım sürer:
 > [!div class="checklist"]
-> * Abonelik anahtarınızdan ve bölgenizde bir `BotFrameworkConfig` nesne oluşturun.
-> * Yukarıdaki `BotFrameworkConfig` nesneyi `DialogServiceConnector` kullanarak bir nesne oluşturun.
-> * `DialogServiceConnector` Nesnesini kullanarak tek bir söyme için dinleme sürecini başlatın.
-> * `ActivityReceivedEventArgs` Döndürülen ' i inceleyin.
+> * `BotFrameworkConfig`Abonelik anahtarınızdan ve bölgenizde bir nesne oluşturun.
+> * `DialogServiceConnector`Yukarıdaki nesneyi kullanarak bir nesne oluşturun `BotFrameworkConfig` .
+> * Nesnesini kullanarak `DialogServiceConnector` tek bir söyme için dinleme sürecini başlatın.
+> * Döndürülen ' i inceleyin `ActivityReceivedEventArgs` .
