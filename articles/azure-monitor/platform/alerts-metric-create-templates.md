@@ -5,13 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 6/2/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299375"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187583"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -1520,7 +1521,9 @@ Bu bölümde, tek bir kuralla birden çok kaynağı izlemek üzere üç senaryon
 
 > [!NOTE]
 >
-> Birden çok kaynağı izleyen bir ölçüm uyarı kuralında yalnızca bir koşula izin verilir.
+> Birden çok kaynağı izleyen bir ölçüm uyarı kuralında aşağıdaki sınırlamalar geçerlidir:
+> - Uyarı kuralının kapsamı, seçili kaynak türünde en az bir kaynak içermelidir.
+> - Uyarı kuralında yalnızca bir koşul bulunabilir.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Bir veya daha fazla kaynak grubunda bulunan tüm sanal makinelerde statik eşik uyarısı
 

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836694"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186019"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Azure Otomasyonu için PowerShell Iş akışını öğrenin
 
@@ -20,7 +21,7 @@ Bir iş akışı Windows PowerShell söz dizimi ile yazıldığı ve Windows Pow
 > [!NOTE]
 > PowerShell Iş akışı betiği, bir Windows PowerShell betiğine çok benzer ancak yeni bir kullanıcı için kafa karıştırıcı olabilecek bazı önemli farklılıklar içerir. Bu nedenle, runbook 'larınızı PowerShell Iş akışı kullanarak yalnızca [kontrol noktaları](#use-checkpoints-in-a-workflow)kullanmanız gerekiyorsa yazmanızı öneririz. 
 
-Bu makaledeki konuların tüm ayrıntıları için bkz. [Windows PowerShell Iş akışını kullanmaya](https://technet.microsoft.com/library/jj134242.aspx)başlama.
+Bu makaledeki konuların tüm ayrıntıları için bkz. [Windows PowerShell Iş akışını kullanmaya](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))başlama.
 
 ## <a name="use-workflow-keyword"></a>Workflow anahtar sözcüğünü kullanma
 
@@ -45,9 +46,9 @@ PowerShell Iş akışı kodu, birkaç önemli değişiklik haricinde PowerShell 
 
 Etkinlik, bir sırada gerçekleştirilen bir iş akışındaki belirli bir görevdir. Windows PowerShell Workflow birçok Windows PowerShell cmdlet'ini bir iş akışı içinde çalıştıklarında otomatik olarak etkinliklere dönüştürür. Runbook 'inizdeki bu cmdlet 'lerden birini belirttiğinizde, ilgili etkinlik Windows Workflow Foundation tarafından çalıştırılır. 
 
-Bir cmdlet 'e karşılık gelen bir etkinlik yoksa, Windows PowerShell Iş akışı cmdlet 'i bir [InlineScript](#use-inlinescript) etkinliğinde otomatik olarak çalıştırır. Bazı cmdlet 'ler hariç tutulur ve bir InlineScript bloğuna açıkça eklemediğiniz takdirde bir iş akışında kullanılamaz. Daha fazla bilgi için bkz. [betik Iş akışlarında etkinlikleri kullanma](https://technet.microsoft.com/library/jj574194.aspx).
+Bir cmdlet 'e karşılık gelen bir etkinlik yoksa, Windows PowerShell Iş akışı cmdlet 'i bir [InlineScript](#use-inlinescript) etkinliğinde otomatik olarak çalıştırır. Bazı cmdlet 'ler hariç tutulur ve bir InlineScript bloğuna açıkça eklemediğiniz takdirde bir iş akışında kullanılamaz. Daha fazla bilgi için bkz. [betik Iş akışlarında etkinlikleri kullanma](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11)).
 
-İş akışı etkinlikleri çalışmalarını yapılandıran ortak parametreler kümesini paylaşır. Bkz. [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+İş akışı etkinlikleri çalışmalarını yapılandıran ortak parametreler kümesini paylaşır. Bkz. [about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters).
 
 ### <a name="positional-parameters"></a>Konumsal parametreler
 
@@ -150,7 +151,7 @@ InlineScript etkinlikleri belirli iş akışlarında kritik olabilir, ancak iş 
 * Bir InlineScript bloğu içinde [paralel yürütme](#use-parallel-processing) kullanamazsınız.
 * InlineScript, InlineScript bloğunun tüm uzunluğu için Windows PowerShell oturumunu tutduğundan, iş akışının ölçeklenebilirliğini etkiler.
 
-InlineScript kullanma hakkında daha fazla bilgi için bkz. [bir Iş akışında Windows PowerShell komutlarını çalıştırma](https://technet.microsoft.com/library/jj574197.aspx) ve [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
+InlineScript kullanma hakkında daha fazla bilgi için bkz. [bir Iş akışında Windows PowerShell komutlarını çalıştırma](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11)) ve [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript).
 
 ## <a name="use-parallel-processing"></a>Paralel işleme kullan
 
@@ -260,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-[Askıya alma Iş akışı](https://technet.microsoft.com/library/jj733586.aspx) etkinliğini veya son kontrol noktasından sonra Kullanıcı adı kimlik bilgileri kalıcı olmadığından, kimlik bilgilerini null olarak ayarlamanız ve ardından `Suspend-Workflow` veya denetim noktası çağrıldıktan sonra bunları varlık deposundan yeniden almanız gerekir.  Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+[Askıya alma Iş akışı](/powershell/module/psworkflow/about/about_suspend-workflow) etkinliğini veya son kontrol noktasından sonra Kullanıcı adı kimlik bilgileri kalıcı olmadığından, kimlik bilgilerini null olarak ayarlamanız ve ardından `Suspend-Workflow` veya denetim noktası çağrıldıktan sonra bunları varlık deposundan yeniden almanız gerekir.  Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Aşağıdaki aynı kodda PowerShell Iş akışı runbook 'larınızda bu durumun nasıl işleneceği gösterilmektedir.
 
@@ -289,9 +290,9 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir. Hizmet sorumlusu ile yapılandırılmış bir farklı çalıştır hesabı kullanarak kimlik doğrulaması yapıyorsanız, bu cmdlet 'lerin kullanılması gerekli değildir.
+> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir. Hizmet sorumlusu ile yapılandırılmış bir farklı çalıştır hesabı kullanarak kimlik doğrulaması yapıyorsanız, bu cmdlet 'lerin kullanılması gerekli değildir.
 
-Denetim noktalarıyla ilgili daha fazla bilgi için bkz. [Betik İş Akışına Denetim Noktaları Ekleme](https://technet.microsoft.com/library/jj574114.aspx).
+Denetim noktalarıyla ilgili daha fazla bilgi için bkz. [Betik İş Akışına Denetim Noktaları Ekleme](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

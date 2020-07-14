@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 635a8fc5409e18da9529763b06e4a531a36d0156
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80518257"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169213"
 ---
 # <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 'da birlikte çalışabilirlik: veri düzlemi Analizi
 
@@ -29,13 +29,15 @@ Veri düzlemi analizi, bir yerel ağdan (LAN veya sanal ağ) bir topoloji içind
 
 Sanal ağ (VNet) eşlemesi, eşlenen iki VNET arasında ağ köprüsü işlevine öykünür. Hub VNet 'ten sanal ağ VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.11.30.4
+  1     2 ms     1 ms     1 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Aşağıdaki şekilde, Merkez VNet 'in ve Azure ağ Izleyicisi 'nin perspektifinden bağlı olan VNet 'in grafik bağlantı görünümü gösterilmektedir:
 
@@ -46,15 +48,17 @@ Aşağıdaki şekilde, Merkez VNet 'in ve Azure ağ Izleyicisi 'nin perspektifin
 
 Hub VNet 'ten şube VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms     1 ms     1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     2 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms     1 ms     1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     2 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme işlemi sırasında, ilk atlama hub VNet 'in Azure VPN Gateway içindeki VPN ağ geçidindir. İkinci atlama, şube VNet 'in VPN ağ geçididir. Şube VNet 'in VPN ağ geçidinin IP adresi hub VNet 'te tanıtılmıyor. Üçüncü atlama, şube VNet 'teki VM 'dir.
 
@@ -70,16 +74,18 @@ Aynı bağlantı için aşağıdaki şekilde, ağ izleyicilerinde kılavuz gör�
 
 Hub VNet 'ten şirket içi konum 1 ' deki bir VM 'ye bir sanal ağ üzerinden izleme işlemi çıkışı aşağıda gösterilmiştir:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     2 ms     2 ms     2 ms  10.2.30.10
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     2 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolunda ilk atlama, Microsoft kurumsal bir yönlendirici (MSEE) için Azure ExpressRoute ağ geçidi tünel uç noktasıdır. İkinci ve üçüncü atlama müşteri kenarı (CE) yönlendiricisidir ve şirket içi konum 1 LAN IP 'lardır. Bu IP adresleri hub VNet 'te tanıtılmaz. Dördüncü atlama, şirket içi konum 1 ' deki VM 'dir.
 
@@ -88,16 +94,18 @@ Bu izleme yolunda ilk atlama, Microsoft kurumsal bir yönlendirici (MSEE) için 
 
 Hub VNet 'ten şirket içi konum 2 ' deki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
-    C:\Users\rb>tracert 10.1.31.10
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    76 ms    75 ms    75 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
+  1    76 ms    75 ms    75 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolunda ilk atlama, bir MSEE ExpressRoute ağ geçidi tünel uç noktasıdır. İkinci ve üçüncü atlama, CE yönlendiricisidir ve şirket içi konum 2 LAN IP 'lardır. Bu IP adresleri hub VNet 'te tanıtılmaz. Dördüncü atlama, şirket içi konum 2 ' deki VM 'dir.
 
@@ -105,15 +113,17 @@ Bu izleme yolunda ilk atlama, bir MSEE ExpressRoute ağ geçidi tünel uç nokta
 
 Bir hub VNet 'ten uzak VNet 'teki bir VM 'ye bir sanal ağ üzerinden izleme işlemi çıkışı aşağıda gösterilmiştir:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    69 ms  10.17.30.4
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolunda ilk atlama, bir MSEE ExpressRoute ağ geçidi tünel uç noktasıdır. İkinci atlama, uzak VNet 'in ağ geçidi IP 'dır. İkinci atlama IP aralığı, hub VNet 'te tanıtılmaz. Üçüncü atlama, uzak VNet 'teki VM 'dir.
 
@@ -125,27 +135,31 @@ Bağlı olan VNet, hub VNet 'in ağ görünümünü paylaşır. VNet eşlemesi i
 
 Bağlı olan VNet 'ten hub VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet"></a>Dal VNet 'in yolu
 
 Bağlı olan VNet 'ten şube VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms    <1 ms    <1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme işlemi sırasında, ilk atlama hub VNet 'in VPN ağ geçidindir. İkinci atlama, şube VNet 'in VPN ağ geçididir. Şube VNet 'in VPN ağ geçidinin IP adresi hub/bağlı ağ VNet içinde tanıtılmıyor. Üçüncü atlama, şube VNet 'teki VM 'dir.
 
@@ -153,16 +167,18 @@ Bu izleme işlemi sırasında, ilk atlama hub VNet 'in VPN ağ geçidindir. İki
 
 Bağlı olan VNet 'ten şirket içi konum 1 ' deki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+  1    24 ms     2 ms     3 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     3 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli bitiş noktasıdır ve bir MSEE. İkinci ve üçüncü atlama, CE yönlendiricisidir ve şirket içi konum 1 LAN IP 'lardır. Bu IP adresleri hub/bağlı ağ VNet 'inde tanıtılmaz. Dördüncü atlama, şirket içi konum 1 ' deki VM 'dir.
 
@@ -170,17 +186,18 @@ Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli
 
 Bağlı olan VNet 'ten şirket içi konum 2 ' deki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    C:\Users\rb>tracert 10.1.31.10
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+  1    76 ms    75 ms    76 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-      1    76 ms    75 ms    76 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
-
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli bitiş noktasıdır ve bir MSEE. İkinci ve üçüncü atlama, CE yönlendiricisidir ve şirket içi konum 2 LAN IP 'lardır. Bu IP adresleri hub/bağlı ağ sanal ağları 'nda tanıtılmaz. Dördüncü atlama, şirket içi konum 2 ' deki VM 'dir.
 
@@ -188,15 +205,17 @@ Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli
 
 Bağlı olan VNet 'ten uzak VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.10.30.133
-      2     *        *        *     Request timed out.
-      3    71 ms    70 ms    70 ms  10.17.30.4
+  1     2 ms     1 ms     1 ms  10.10.30.133
+  2     *        *        *     Request timed out.
+  3    71 ms    70 ms    70 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli bitiş noktasıdır ve bir MSEE. İkinci atlama, uzak VNet 'in ağ geçidi IP 'dır. İkinci atlama IP aralığı, hub/bağlı ağ VNet 'te tanıtılmaz. Üçüncü atlama, uzak VNet 'teki VM 'dir.
 
@@ -206,15 +225,17 @@ Bu izleme yolu 'nda ilk atlama, Merkez VNet 'in ExpressRoute ağ geçidi tüneli
 
 Şube VNet 'ten hub VNet 'teki bir VM 'ye olan izleme işlemi çıkışı şurada gösterilmiştir:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlama, hub VNet 'in VPN ağ geçidindir. Hub VNet 'in VPN ağ geçidinin IP adresi uzak VNet 'te tanıtılmıyor. Üçüncü atlama, hub VNet 'teki VM 'dir.
 
@@ -222,15 +243,17 @@ Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlam
 
 Şube VNet 'ten sanal ağ VNet 'teki bir VM 'ye olan izleme işlemi çıkışı şurada gösterilmiştir:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     1 ms    <1 ms     1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     2 ms  10.11.30.4
+  1     1 ms    <1 ms     1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlama, hub VNet 'in VPN ağ geçidindir. Hub VNet 'in VPN ağ geçidinin IP adresi uzak VNet 'te tanıtılmıyor. Üçüncü atlama, bağlı olan VNet 'teki VM 'dir.
 
@@ -238,17 +261,19 @@ Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlam
 
 Şube VNet 'ten şirket içi konum 1 ' deki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.2.30.125
-      4     *        *        *     Request timed out.
-      5     3 ms     3 ms     3 ms  10.2.30.10
+  1     1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.2.30.125
+  4     *        *        *     Request timed out.
+  5     3 ms     3 ms     3 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlama, hub VNet 'in VPN ağ geçidindir. Hub VNet 'in VPN ağ geçidinin IP adresi uzak VNet 'te tanıtılmıyor. Üçüncü atlama, birincil CE yönlendiricisinde VPN tüneli sonlandırma noktasıdır. Dördüncü atlama, şirket içi konum 1 ' in iç IP adresidir. Bu LAN IP adresi, CE yönlendiricisinin dışında tanıtılmaz. Beşinci atlama, şirket içi konum 1 ' deki hedef VM 'dir.
 
@@ -256,27 +281,29 @@ Bu izleme yolu 'nda ilk atlama, şube VNet 'in VPN ağ geçididir. İkinci atlam
 
 Denetim düzlemi analizinde anlatıldığı gibi, şube VNet 'in şirket içi konum 2 ' ye veya ağ yapılandırması başına uzak VNet 'e görünürlüğü yoktur. Aşağıdaki ping sonuçları şunları onaylayın: 
 
-    C:\Users\rb>ping 10.1.31.10
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Pinging 10.1.31.10 with 32 bytes of data:
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-    C:\Users\rb>ping 10.17.30.4
+C:\Users\rb>ping 10.17.30.4
 
-    Pinging 10.17.30.4 with 32 bytes of data:
+Pinging 10.17.30.4 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.17.30.4:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.17.30.4:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ## <a name="data-path-from-on-premises-location-1"></a>Şirket içi konumdan veri yolu 1
 
@@ -284,17 +311,19 @@ Denetim düzlemi analizinde anlatıldığı gibi, şube VNet 'in şirket içi ko
 
 Şirket içi konum 1 ' den Merkez VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     2 ms     2 ms     2 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     2 ms     2 ms     2 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Bu izleme için, ilk iki atlama şirket içi ağın bir parçasıdır. Üçüncü atlama, CE yönlendiricisinin yüzlerine yönelik birincil MSEE arabirimidir. Dördüncü atlama, hub VNet 'in ExpressRoute ağ geçidindir. Hub VNet 'in ExpressRoute ağ geçidinin IP aralığı, şirket içi ağa tanıtılmaz. Beşinci atlama hedef VM 'dir.
 
@@ -306,15 +335,17 @@ Aşağıdaki şekilde, ExpressRoute aracılığıyla hub VNet 'teki VM 'ye yöne
 
 Daha önce anlatıldığı gibi, test kurulumu, şirket içi konum 1 ile hub VNet arasında ExpressRoute için yedekleme bağlantısı olarak siteden siteye VPN kullanır. Yedekleme veri yolunu test etmek için şirket içi konum 1 birincil CE yönlendirici ve ilgili MSEE arasında bir ExpressRoute bağlantı hatasına yol açalım. Bir ExpressRoute bağlantı başarısızlığını yapmak için, MSEE 'yi sunan CE arabirimini kapatın:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Aşağıdaki şekilde, ExpressRoute bağlantısı kapatıldığında siteden siteye VPN bağlantısı aracılığıyla hub VNet 'teki VM 'ye yönelik şirket içi konum 1 VM bağlantısının topoloji görünümü gösterilmektedir:
 
@@ -326,17 +357,19 @@ Aşağıdaki şekilde, ExpressRoute bağlantısı kapatıldığında siteden sit
 
 Veri yolu analizini, bağlı olan VNet 'e doğru yapmak için ExpressRoute birincil bağlantısını geri getirelim:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     3 ms     2 ms     2 ms  10.11.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     3 ms     2 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Veri yolu analizinin geri kalanı için birincil ExpressRoute 1 bağlantısını getirin.
 
@@ -344,46 +377,52 @@ Veri yolu analizinin geri kalanı için birincil ExpressRoute 1 bağlantısını
 
 Şirket içi konum 1 ' den şube VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-on-premises-location-2"></a>Şirket içi konumun yolu 2
 
 [Denetim düzlemi analizinde][Control-Analysis]tartıştığımız gibi, şirket içi konum 1 ' in ağ yapılandırmasına göre şirket içi konum 2 ' ye görünürlüğü yoktur. Aşağıdaki ping sonuçları şunları onaylayın: 
 
-    C:\Users\rb>ping 10.1.31.10
-    
-    Pinging 10.1.31.10 with 32 bytes of data:
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Request timed out.
-    ...
-    Request timed out.
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Request timed out.
+...
+Request timed out.
+
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ### <a name="path-to-the-remote-vnet"></a>Uzak VNet 'in yolu
 
 Şirket içi konum 1 ' den uzak VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2     2 ms     5 ms     7 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5    69 ms    70 ms    69 ms  10.17.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2     2 ms     5 ms     7 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5    69 ms    70 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ## <a name="data-path-from-on-premises-location-2"></a>Şirket içi konumdan veri yolu 2
 
@@ -391,32 +430,36 @@ Veri yolu analizinin geri kalanı için birincil ExpressRoute 1 bağlantısını
 
 Şirket içi konum 2 ' den Merkez VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.4
-      3    <1 ms    <1 ms    <1 ms  192.168.31.22
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.4
+  3    <1 ms    <1 ms    <1 ms  192.168.31.22
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Bağlı olan VNet 'in yolu
 
 Şirket içi konum 2 ' den bağlı olan VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı burada gösterilmektedir:
 
-    C:\Windows\system32>tracert 10.11.30.4
+```console
+C:\Windows\system32>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
-      1    <1 ms    <1 ms     1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.0
-      3    <1 ms    <1 ms    <1 ms  192.168.31.18
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.11.30.4
+Tracing route to 10.11.30.4 over a maximum of 30 hops
+  1    <1 ms    <1 ms     1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.0
+  3    <1 ms    <1 ms    <1 ms  192.168.31.18
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Şube VNet 'in yolu, şirket içi konum 1 ve uzak VNet
 
@@ -428,29 +471,33 @@ Veri yolu analizinin geri kalanı için birincil ExpressRoute 1 bağlantısını
 
 Uzak VNet 'ten hub VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    65 ms    65 ms    65 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    68 ms  10.10.30.4
+  1    65 ms    65 ms    65 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    68 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Bağlı olan VNet 'in yolu
 
 Uzak VNet 'ten bağlı olan VNet 'teki bir VM 'ye yönelik izleme işlemi çıkışı şurada gösterilmiştir:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    71 ms    69 ms    69 ms  10.11.30.4
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    71 ms    69 ms    69 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Şube VNet 'in ve şirket içi konumun yolu 2
 
@@ -460,17 +507,18 @@ Uzak VNet 'ten bağlı olan VNet 'teki bir VM 'ye yönelik izleme işlemi çık�
 
 Uzak VNet 'ten şirket içi konum 1 ' deki bir VM 'ye yapılan izleme işlemi çıkışı şurada gösterilmektedir:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    69 ms    69 ms    69 ms  10.2.30.10
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    69 ms    69 ms    69 ms  10.2.30.10
 
-    Trace complete.
-
+Trace complete.
+```
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Kademeli olarak ExpressRoute ve siteden siteye VPN bağlantısı
 

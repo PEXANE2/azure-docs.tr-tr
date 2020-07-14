@@ -39,12 +39,34 @@
       href: ../../application-gateway/security-baseline.md
     - name: Otomasyon güvenlik temeli
       href: ../../automation/security-baseline.md
+    - name: Azure Backup güvenlik temeli
+      href: ../../backup/security-baseline.md
     - name: Redis için Azure Cache güvenlik temeli
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Data Box güvenlik temeli
+      href: ../../databox/security-baseline.md
+    - name: Azure Veri Gezgini güvenlik temeli
+      href: /azure/data-explorer/security-baseline
+    - name: Azure Data Factory güvenlik temeli
+      href: ../../data-factory/security-baseline.md
+    - name: MySQL için Azure Veritabanı güvenlik temeli
+      href: ../../mysql/security-baseline.md
+    - name: MariaDB için Azure Veritabanı güvenlik temeli
+      href: ../../mariadb/security-baseline.md
+    - name: PostgreSQL için Azure Veritabanı güvenlik temeli
+      href: ../../postgresql/security-baseline.md
+    - name: Azure Databricks güvenlik temeli
+      href: ../../azure-databricks/security-baseline.md
+    - name: Azure İşlevleri güvenlik temeli
+      href: ../../azure-functions/security-baseline.md
     - name: Azure İlkesi güvenlik temeli
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-    - name: Yedekleme güvenlik temeli
-      href: ../../backup/security-baseline.md
+    - name: Azure Kaynak Grafı güvenlik temeli
+      href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure SQL Veritabanı güvenlik temeli
+      href: ../../sql-database/security-baseline.md
+    - name: Azure Depolama güvenlik temeli
+      href: ../../storage/common/security-baseline.md
     - name: Batch güvenlik temeli
       href: ../../batch/security-baseline.md
     - name: Bilişsel Hizmetler güvenlik temeli
@@ -57,39 +79,19 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Müşteri Kasası güvenlik temeli
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Data Box güvenlik temeli
-      href: ../../databox/security-baseline.md
-    - name: Veri Gezgini güvenlik temeli
-      href: /azure/data-explorer/security-baseline
-    - name: Data Factory güvenlik temeli
-      href: ../../data-factory/security-baseline.md
-    - name: Databricks güvenlik temeli
-      href: ../../azure-databricks/security-baseline.md
     - name: Event Hubs güvenlik temeli
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute güvenlik temeli
       href: ../../expressroute/security-baseline.md
-    - name: İşlevler güvenlik temeli
-      href: ../../azure-functions/security-baseline.md
     - name: HDInsight güvenlik temeli
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault güvenlik temeli
       href: ../../key-vault/security-baseline.md
     - name: Logic Apps güvenlik temeli
       href: ../../logic-apps/security-baseline.md
-    - name: MariaDB güvenlik temeli
-      href: ../../mariadb/security-baseline.md
-    - name: MySQL güvenlik temeli
-      href: ../../mysql/security-baseline.md
     - name: Ağ İzleyicisi güvenlik temeli
       href: ../../network-watcher/security-baseline.md
-    - name: PostgreSQL güvenlik temeli
-      href: ../../postgresql/security-baseline.md
-    - name: SQL Veritabanı güvenlik temeli
-      href: ../../sql-database/security-baseline.md
     - name: Stream Analytics temeli
       href: ../../stream-analytics/security-baseline.md
-    - name: Depolama güvenlik temeli
-      href: ../../storage/common/security-baseline.md
     - name: Synapse Analytics güvenlik temeli
       href: ../../synapse-analytics/security-baseline.md

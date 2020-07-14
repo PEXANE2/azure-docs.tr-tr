@@ -4,19 +4,19 @@ description: include dosyası
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218266"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221654"
 ---
-Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
+Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
-- Görüntülerin yönetilen genel çoğaltması.
+- Görüntülerin genel çoğaltması.
 - Daha kolay yönetim için görüntülerin sürümü oluşturma ve gruplama.
 - Kullanılabilirlik Alanları destekleyen bölgelerde bölge yedekli depolama (ZRS) hesaplarıyla yüksek düzeyde kullanılabilir görüntüler. ZRS, ZGen hatalarıyla karşı daha iyi esnekliği sunar.
 - Premium depolama desteği (Premium_LRS).
@@ -33,7 +33,7 @@ Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir
 
 | Kaynak | Açıklama|
 |----------|------------|
-| **Görüntü kaynağı** | Bu, bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılabilecek bir kaynaktır. Görüntü kaynağı, başka bir görüntü galerisinde [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images), yönetilen bir görüntü, anlık görüntü veya görüntü sürümü olan mevcut BIR Azure VM olabilir. |
+| **Görüntü kaynağı** | Bu, bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılabilecek bir kaynaktır. Görüntü kaynağı, başka bir görüntü galerisinde [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images), yönetilen bir görüntü, anlık görüntü, VHD veya görüntü sürümü olan mevcut BIR Azure VM olabilir. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
 | **Görüntü tanımı** | Görüntü tanımları bir galeri içinde oluşturulur ve görüntü ve bu dosyayı dahili olarak kullanmaya yönelik gereksinimler hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, sürüm notları ve en düşük ve en yüksek bellek gereksinimleri olduğunu içerir. Bu, bir görüntü türünün tanımıdır. |
 | **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
@@ -52,7 +52,7 @@ Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**
 |---|---|---|---|
 |myImage1|Contoso|Finance|Arka uç|
 |myImage2|Contoso|Finance|Ön uç|
-|myImage3|Test Etme|Finance|Ön uç|
+|myImage3|Sınama|Finance|Ön uç|
 
 Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market görüntüsünün en son sürümünü almak için Azure PowerShell ' de [Azure Market görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, TEKLIF ve SKU 'yu nasıl belirteceğinize benzer. Her görüntü tanımının bu değerlerin benzersiz bir kümesine sahip olması gerekir.
 
@@ -68,6 +68,7 @@ Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımın
 * En düşük ve en yüksek vCPU ve bellek önerileri-görüntünüz vCPU ve bellek önerileri içeriyorsa, bu bilgileri görüntü tanımınıza ekleyebilirsiniz.
 * İzin verilmeyen disk türleri-sanal makinenizin depolama gereksinimleriyle ilgili bilgiler sağlayabilirsiniz. Örneğin, görüntü standart HDD disklerine uygun değilse, bunları izin vermeme listesine eklersiniz.
 * Hyper-V oluşturma-görüntünün bir gen 1 veya Gen 2 Hyper-V VHD 'sinden oluşturulup oluşturulmayacağını belirtebilirsiniz.
+* Market görüntüleri için satın alma planı bilgileri- `-PurchasePlanPublisher ` , `-PurchasePlanName` , ve `-PurchasePlanProduct` . Satın alma planı bilgileri hakkında daha fazla bilgi için bkz. [Azure Marketi 'nde görüntüleri bulma](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) ve [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](../articles/virtual-machines/marketplace-images.md).
 
 ## <a name="generalized-and-specialized-images"></a>Genelleştirilmiş ve özelleştirilmiş görüntüler
 
@@ -82,11 +83,7 @@ Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi du
 
 ## <a name="regional-support"></a>Bölgesel destek
 
-Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için aboneliğinizi beyaz listeye almanız gerekir. Beyaz liste istemek için şuraya gidin:https://azure.microsoft.com/global-infrastructure/australia/contact/
-
-> Avustralya Orta, Çin Doğu, Güney Hindistan, Batı Avrupa, Avustralya Orta 2, Çin Doğu 2, Güneydoğu Asya, UK Güney, Avustralya Doğu, Çin Kuzey, Japonya Doğu, UK Batı, Avustralya Güneydoğu, Çin Kuzey 2, Japonya Batı, US DOD orta, Brezilya Güney, Doğu Asya, Kore Orta, US DOD Doğu, Kanada Orta, Doğu ABD, Kore Güney, US Gov Arizona, Kanada Doğu, Doğu ABD 2, Orta Kuzey ABD , US Gov Teksas, Orta Hindistan, Doğu ABD 2 EUAP, Kuzey Avrupa, US Gov Virginia, Orta ABD, Fransa Orta, Orta Güney ABD, Batı Hindistan, Orta ABD EUAP, Fransa Güney, Orta Batı ABD, Batı ABD, Batı ABD 2 |
-
-
+Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için aboneliğinizi beyaz listeye almanız gerekir. Beyaz liste istemek için şuraya gidin:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Sınırlar 
 
@@ -233,13 +230,7 @@ Evet. Sahip olduğunuz görüntü türlerine göre 3 senaryo vardır.
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Özel bir diskten görüntü sürümü oluşturabilir miyim?
 
-Evet, görüntü olarak özelleştirilmiş diskler için destek önizleme aşamasındadır. Portal, PowerShell veya API kullanarak yalnızca özelleştirilmiş bir görüntüden VM oluşturabilirsiniz. 
-
-
-[Özelleştirilmiş bir sanal makinenin görüntüsünü oluşturmak Için PowerShell 'i](../articles/virtual-machines/image-version-vm-powershell.md)kullanın.
-
-[Windows](../articles/virtual-machines/linux/shared-images-portal.md) veya [Linux] (..) oluşturmak için portalını kullanın. /makalenles/Virtual-, ines/Linux/Shared-images-Portal.exe) görüntüsü. 
-
+Evet, [CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md), [PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)veya API kullanarak özelleştirilmiş görüntüden bir VM oluşturabilir. 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Paylaşılan görüntü Galerisi kaynağını oluşturulduktan sonra farklı bir aboneliğe taşıyabilir miyim?
 

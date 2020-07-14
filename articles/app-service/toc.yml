@@ -176,6 +176,8 @@
               href: configure-authentication-provider-microsoft.md
             - name: Twitter ile kimlik doğrulaması
               href: configure-authentication-provider-twitter.md
+            - name: OpenID Connect sağlayıcısıyla kimlik doğrulaması (Önizleme)
+              href: configure-authentication-provider-openid-connect.md
         - name: Gelişmiş kimlik doğrulaması
           href: app-service-authentication-how-to.md
         - name: Erişimi kısıtlama

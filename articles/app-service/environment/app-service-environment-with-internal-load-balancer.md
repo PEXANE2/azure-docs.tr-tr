@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833112"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220822"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Ortamı ile Iç Load Balancer kullanma
 
@@ -54,7 +54,7 @@ ILB ATıCı oluşturmak, normal olarak bir AO oluşturmaktan daha farklı değil
 7. Bir alt etki alanı adı belirtin (Bu ad, bu Ao 'da oluşturulan uygulamalar için kullanılan alt etki alanıdır).
 8. **Tamam** ' ı ve ardından **Oluştur**' u seçin.
 
-![][1]
+![ILB ATıCı oluşturmak için kullanılan ekranları gösterir.][1]
 
 Sanal ağ bölmesinde, bir dış VIP veya Iç VIP arasında seçim yapmanızı sağlayan bir VNet yapılandırma seçeneği vardır. Varsayılan seçenek Dış’tır. Dış olarak ayarlandıysa Ao 'niz internet 'e erişilebilir bir VIP kullanır. İç’i seçerseniz ASE’niz sanal ağınızın içindeki bir IP adresinde bulunan ILB ile yapılandırılır. 
 
@@ -68,9 +68,9 @@ ILB Ao 'da bir uygulama oluşturmak, genellikle bir uygulama oluşturmak için d
 3. Aboneliğinizi seçin.
 4. Kaynak grubunu seçin veya oluşturun.
 5. App Service planı (ASP) seçin veya oluşturun. Yeni bir ASP oluşturuyorsanız, konum olarak ATıCı ' ı seçin ve ASP 'nizin oluşturulmasını istediğiniz çalışan havuzunu seçin. ASP 'yi oluşturduğunuzda, konum ve çalışan havuzu olarak ATıCı 'nizi seçersiniz. Uygulamanın adını belirttiğinizde, uygulama adınızın altındaki alt etki alanının, Ao 'nizin alt etki alanı ile değiştirildiğini görürsünüz. 
-6. **Oluştur**'u seçin. Uygulamanın panonuzda gösterilmesini istiyorsanız **panoya sabitle** onay kutusunu seçtiğinizden emin olun. 
+6. **Oluştur**’u seçin. Uygulamanın panonuzda gösterilmesini istiyorsanız **panoya sabitle** onay kutusunu seçtiğinizden emin olun. 
 
-![][2]
+![Azure portal bir ıLB Ao 'da bir uygulamanın nasıl oluşturulacağını gösterir.][2]
 
 Uygulama adı altında, alt etki alanı adı Ao 'nizin alt etki alanını yansıtacak şekilde güncelleştirilir. 
 
@@ -79,11 +79,11 @@ Bir ILB ASE, ILB olmayan ASE’den biraz farklıdır. Zaten belirtildiği gibi, 
 
 Ao 'nizi oluşturduktan sonra, alt etki alanının belirttiğiniz alt etki alanını gösterdiğini ve **ayar** menüsünde **ILB sertifikası**adlı yeni bir öğe olduğunu fark edeceksiniz. ASE, HTTPS sınamasını kolaylaştıran kendinden imzalı bir sertifika ile oluşturulur. Portal, HTTPS için kendi sertifikanızı sağlamanız gerektiğini söyler, ancak bunun yerine alt etki alanınızın bulunduğu bir sertifikaya sahip olmanız önerilir. 
 
-![][3]
+![ATıCı 'nizi oluştururken belirttiğiniz alt etki alanını gösterir.][3]
 
 Yalnızca bir sertifika oluşturmaya çalışıyorsanız ve sertifika oluşturmayı bilmiyorsanız, otomatik olarak imzalanan bir sertifika oluşturmak için IIS MMC konsol uygulamasını kullanabilirsiniz. Oluşturulduktan sonra, bir. pfx dosyası olarak dışarı aktarabilir ve ardından ıLB sertifikası Kullanıcı arabiriminde karşıya yükleyebilirsiniz. Otomatik olarak imzalanan bir sertifikayla güvenliği sağlanmış bir siteye eriştiğinizde, tarayıcınız, sertifikayı doğrulayamadığı için eriştiğiniz sitenin güvenli olduğunu belirten bir uyarı verir. Bu uyarıyı önlemek istiyorsanız, alt etki alanıyla eşleşen ve tarayıcınız tarafından tanınan bir güven zincirine sahip olan, doğru şekilde imzalanmış bir sertifikaya sahip olmanız gerekir.
 
-![][6]
+![Otomatik olarak imzalanan sertifika oluşturmak için IIS MMC konsol uygulamasını nasıl kullanacağınızı gösterir.][6]
 
 Akışı kendi sertifikalarınız ile denemek ve ASE 'nize hem HTTP hem de HTTPS erişimini test etmek istiyorsanız:
 
@@ -98,7 +98,7 @@ Akışı kendi sertifikalarınız ile denemek ve ASE 'nize hem HTTP hem de HTTPS
 
 ILB 'nizin IP adresi, sanal IP adresi olarak özelliklerinde listelenir.
 
-![][4]
+![ILB 'nizin IP adresinin, sanal IP adresi olarak özelliklerinde listelendiğini gösterir.][4]
 
 ## <a name="using-an-ilb-ase"></a>ILB Ao kullanma
 #### <a name="network-security-groups"></a>Ağ Güvenlik Grupları
@@ -108,7 +108,7 @@ Erişimi daha fazla kısıtlamak için NSG 'leri kullanmak istiyorsanız, ASE 'n
 
 NSG 'lerinizi yapılandırmak için, Azure tarafından ATıCı 'nizi yönetmek üzere kullanılan IP adresini bilmeniz gerekir. Bu IP adresi Ayrıca, internet istekleri yapıyorsa Ao 'ınızdan giden IP adresidir. ASE 'nizin giden IP adresi, ASE 'nizin ömrü boyunca statik kalır. ATıCı 'nizi silip yeniden oluşturursanız, yeni bir IP adresi alırsınız. IP adresini bulmak için **Ayarlar-> Özellikler** ' e gidin ve **giden IP adresini**bulun. 
 
-![][5]
+![AŞIRIN giden IP adresini nerede bulabileceğinizi gösterir.][5]
 
 #### <a name="general-ilb-ase-management"></a>Genel ıLB ATıCı yönetimi
 ILB Ao 'nun yönetilmesi büyük ölçüde genellikle bir AO 'nın yönetilmesine benzer. Daha fazla ASP örneği barındırmak için çalışan havuzlarınızı ölçeklendirmeli ve artan sayıda HTTP/HTTPS trafiğini işleyecek ön uç sunucularınızı ölçeklendirebilirsiniz. Ao 'un yapılandırmasını yönetme hakkında genel bilgi için, bkz. [App Service ortamı yapılandırma][ASEConfig]. 

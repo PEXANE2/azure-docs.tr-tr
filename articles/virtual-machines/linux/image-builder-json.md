@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135079"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221213"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -61,7 +61,7 @@ Bu, temel şablon biçimidir:
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>Konum
+## <a name="location"></a>Location
 
 Konum, özel görüntünün oluşturulacağı bölgedir. Image Builder önizlemesi için aşağıdaki bölgeler desteklenir:
 
@@ -71,7 +71,7 @@ Konum, özel görüntünün oluşturulacağı bölgedir. Image Builder önizleme
 - Batı ABD
 - Batı ABD 2
 - Kuzey Avrupa
-- Batı Avrupa
+- West Europe
 
 
 ```json
@@ -150,6 +150,9 @@ API, görüntü derlemesi için kaynağı tanımlayan bir ' SourceType ' gerekti
 - Platformımage-kaynak görüntünün Market görüntüsü olduğunu gösterdi.
 - Managedımage-normal yönetilen görüntüden itibaren bunu kullanın.
 - Parça sürümü-bu, paylaşılan bir görüntü galerisinde kaynak olarak bir görüntü sürümü kullanırken kullanılır.
+
+> [!NOTE]
+> Var olan Windows özel görüntülerini kullanırken, Sysprep komutunu tek bir Windows görüntüsünde 8 kez çalıştırabilirsiniz. daha fazla bilgi için [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) belgelerine bakın.
 
 ### <a name="iso-source"></a>ISO kaynağı
 Şu anda [kendi abonelik görüntülerini](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)getiren bu işlevselliği Image Builder 'dan kullanımdan kaldıracağız. lütfen aşağıdaki zaman çizelgelerini gözden geçirin:
@@ -468,7 +471,10 @@ Azure görüntü Oluşturucu üç dağıtım hedefini destekler:
 - **Sharedimage** -paylaşılan görüntü Galerisi.
 - Depolama hesabında **VHD** VHD.
 
-Aynı yapılandırmadaki her iki hedef türüne bir görüntü dağıtabilirsiniz, lütfen [örneklere](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)bakın.
+Aynı yapılandırma içindeki hedef türlerin her ikisine de bir görüntü dağıtabilirsiniz.
+
+> [!NOTE]
+> Varsayılan AıB Sysprep komutu "/Mode: VM" içermez, ancak bu, HyperV rolünün yüklü olduğu görüntüleri oluştururken gerekli olabilir. Bu komut bağımsız değişkenini eklemeniz gerekiyorsa, Sysprep komutunu geçersiz kılmanız gerekir.
 
 ' Ye dağıtım yapmak için birden fazla hedefe sahip olabilirsiniz, görüntü Oluşturucu, sorgulanarak erişilebilen her dağıtım hedefi için bir durum tutar `runOutputName` .  , `runOutputName` Bu dağıtım hakkında bilgi için gönderi dağıtımını sorgulayabilir. Örneğin, VHD konumunu veya görüntü sürümünün çoğaltılacağı bölgeleri veya SıG görüntü sürümü oluşturulmasını sorgulayabilirsiniz. Bu, her dağıtım hedefinin bir özelliğidir. `runOutputName`Her dağıtım hedefi için benzersiz olmalıdır. İşte bu, paylaşılan görüntü Galerisi dağıtımını sorgulmıştır:
 

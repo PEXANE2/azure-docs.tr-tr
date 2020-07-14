@@ -14,30 +14,52 @@
               href: data-box-quickstart-portal.md
         - name: Öğreticiler
           items:
-            - name: 1 - Sipariş
-              href: data-box-deploy-ordered.md
-            - name: 2 - Ayarlama
-              href: data-box-deploy-set-up.md
-            - name: 3 - Bağlanma ve kopyalama
+            - name: Verileri Azure'a içeri aktarma
               items:
-                - name: SMB aracılığıyla
-                  href: data-box-deploy-copy-data.md
-                - name: NFS aracılığıyla
-                  href: data-box-deploy-copy-data-via-nfs.md
-                - name: REST aracılığıyla
-                  href: data-box-deploy-copy-data-via-rest.md
-                - name: Veri kopyalama hizmeti aracılığıyla
-                  href: data-box-deploy-copy-data-via-copy-service.md
-                - name: Yönetilen disklere
-                  href: data-box-deploy-copy-data-from-vhds.md
-            - name: '4 - İade etme, karşıya yükleme, doğrulama'
-              href: data-box-deploy-picked-up.md
+                - name: 1 - Sipariş
+                  href: data-box-deploy-ordered.md
+                - name: 2 - Ayarlama
+                  href: data-box-deploy-set-up.md
+                - name: 3 - Bağlanma ve kopyalama
+                  items:
+                    - name: SMB aracılığıyla
+                      href: data-box-deploy-copy-data.md
+                    - name: NFS aracılığıyla
+                      href: data-box-deploy-copy-data-via-nfs.md
+                    - name: REST aracılığıyla
+                      href: data-box-deploy-copy-data-via-rest.md
+                    - name: Veri kopyalama hizmeti aracılığıyla
+                      href: data-box-deploy-copy-data-via-copy-service.md
+                    - name: Yönetilen disklere
+                      href: data-box-deploy-copy-data-from-vhds.md
+                - name: '4 - İade etme, karşıya yükleme, doğrulama'
+                  href: data-box-deploy-picked-up.md
+            - name: Verileri Azure'dan dışarı aktarma
+              items:
+                - name: 1 - Sipariş
+                  href: data-box-deploy-export-ordered.md
+                - name: 2 - Ayarlama
+                  href: data-box-deploy-set-up.md
+                - name: 3 - Bağlanma ve kopyalama
+                  items:
+                    - name: SMB aracılığıyla
+                      href: data-box-deploy-export-copy-data.md
+                    - name: NFS aracılığıyla
+                      href: data-box-deploy-export-copy-data-via-nfs.md
+                - name: 4 - Döndürme
+                  href: data-box-deploy-export-picked-up.md
         - name: Kavramlar
           items:
             - name: Güvenlik yönergelerini okuyun
               href: data-box-safety.md
             - name: İzleme ve günlüğe kaydetmeyi gözden geçirme
-              href: data-box-logs.md
+              items:
+                - name: Siparişleri içeri aktarmak için
+                  href: data-box-logs.md
+                - name: Siparişleri dışarı aktarmak için
+                  href: data-box-export-logs.md
+            - name: Denetim günlüklerini görüntüleme
+              href: data-box-audit-logs.md
             - name: Gereksinimleri inceleme
               items:
                 - name: Data Box için
@@ -64,6 +86,8 @@
               href: data-box-portal-customer-managed-shipping.md
             - name: Müşteri tarafından yönetilen anahtarı etkinleştirme
               href: data-box-customer-managed-encryption-key-portal.md
+            - name: Müşteri Kasası'nı kullanma
+              href: data-box-customer-lockbox.md
             - name: Verileri blob katmanına taşıma
               href: data-box-how-to-set-data-tier.md
             - name: Cihazın kablolarını bağlama

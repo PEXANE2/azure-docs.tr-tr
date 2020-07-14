@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254336"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186767"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
 
@@ -144,7 +144,7 @@ Farklı istek türleri için farklı arka uç havuzları oluşturabilirsiniz. Ö
 
 Varsayılan olarak, bir uygulama ağ geçidi, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve sağlıksız olanları otomatik olarak kaldırır. Ardından, sağlıksız örnekleri izler ve kullanılabilir hale geldiğinde ve sistem durumu araştırmalarına yanıt verdiklerinde yeniden sağlıklı arka uç havuzuna ekler.
 
-Varsayılan sistem durumu araştırması izlemeyi kullanmanın yanı sıra, sistem durumu araştırmasını uygulamanızın gereksinimlerine uyacak şekilde de özelleştirebilirsiniz. Özel yoklamalar, sistem durumu izleme üzerinde daha ayrıntılı denetim sağlar. Özel yoklamalar kullanırken, araştırma aralığını, test edilecek URL 'yi ve yolu, arka uç havuzu örneği sağlıksız olarak işaretlenmeden önce kaç tane başarısız yanıt kabul edeceğini yapılandırabilirsiniz. Her bir arka uç havuzunun sistem durumunu izlemek için özel araştırmaları yapılandırmanızı öneririz.
+Varsayılan sistem durumu araştırması izlemeyi kullanmanın yanı sıra, sistem durumu araştırmasını uygulamanızın gereksinimlerine uyacak şekilde de özelleştirebilirsiniz. Özel yoklamalar, sistem durumu izleme üzerinde daha ayrıntılı denetim sağlar. Özel yoklamalar kullanırken, arka uç havuzu örneğini sağlıksız, özel durum kodları ve yanıt gövdesi eşleşmesi vb. işaretlemeden önce özel bir ana bilgisayar adı, URL yolu, araştırma aralığı ve kaç başarısız yanıt kabul edeceğini yapılandırabilirsiniz. Her bir arka uç havuzunun sistem durumunu izlemek için özel araştırmaları yapılandırmanızı öneririz.
 
 Daha fazla bilgi için bkz. [uygulama ağ geçidinizin durumunu izleme](../application-gateway/application-gateway-probe-overview.md).
 
@@ -152,6 +152,6 @@ Daha fazla bilgi için bkz. [uygulama ağ geçidinizin durumunu izleme](../appli
 
 Uygulama ağ geçidi oluşturma:
 
-* [Azure portal](quick-create-portal.md)
+* [Azure portalında](quick-create-portal.md)
 * [Azure PowerShell kullanarak](quick-create-powershell.md)
 * [Azure CLı kullanarak](quick-create-cli.md)

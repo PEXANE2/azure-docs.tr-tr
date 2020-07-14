@@ -211,12 +211,18 @@
                   href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
                 - name: Azure CLI
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Depolama hesabı için altyapı şifrelemesini etkinleştirme
+          href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json
         - name: Güvenlik duvarlarını ve sanal ağları yapılandırma
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Güvenli aktarım gerektir
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Depolama istemcisi için güvenli TLS'yi etkinleştirme
-          href: ../common/storage-security-tls.md
+        - name: Aktarım Katmanı Güvenliği'ni (TLS) yapılandırma
+          items:
+            - name: Depolama hesabı için en düşük TLS sürümünü yapılandırma
+              href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: İstemci uygulaması için TLS'yi yapılandırma
+              href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Aktarma
       items:
         - name: Kullanmaya başlama - AzCopy

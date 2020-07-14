@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84606896"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187192"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
@@ -203,7 +204,7 @@ Bu hata şu durumlarda oluşabilir:
 Azure 'da kimlik doğrulaması yapılıp kalmadığını ve seçmek istediğiniz aboneliğe erişimi olup olmadığınızı belirlemek için aşağıdaki adımları izleyin:
 
 1. Betiğinizin tek başına çalıştığından emin olmak için, Azure Otomasyonu dışında test edin.
-1. Cmdlet 'ini çalıştırmadan önce betiğin [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet 'ini çalıştırdığından emin olun `Select-*` .
+1. Cmdlet 'ini çalıştırmadan önce betiğin [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet 'ini çalıştırdığından emin olun `Select-*` .
 1. `Disable-AzContextAutosave –Scope Process`Runbook 'un başlangıcına ekleyin. Bu cmdlet, tüm kimlik bilgilerinin yalnızca geçerli runbook 'un yürütülmesine uygulanmasını sağlar.
 1. Hala hata iletisini görüyorsanız, için parametresini ekleyerek kodunuzu değiştirin `AzContext` `Connect-AzAccount` ve ardından kodu yürütün.
 
@@ -400,7 +401,7 @@ Akış nesneler içeriyorsa, `Start-AzAutomationRunbook` Çıkış akışını d
 
 ### <a name="resolution"></a>Çözüm
 
-Bir yoklama mantığı uygulayın ve çıktıyı almak için [Get-Azautomationjoi put](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 'ini kullanın. Bu mantığın bir örneği burada tanımlanmıştır:
+Bir yoklama mantığı uygulayın ve çıktıyı almak için [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 'ini kullanın. Bu mantığın bir örneği burada tanımlanmıştır:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -485,7 +486,7 @@ Bu hata, çok sayıda [ayrıntılı akışı](../automation-runbook-output-and-m
 Bu hatayı çözmek için aşağıdakilerden birini yapın:
 
 * Runbook 'u düzenleyin ve yaydığı iş akışlarının sayısını azaltın.
-* Cmdlet 'i çalıştırırken alınacak akış sayısını azaltın. Bunu yapmak için `Stream` [Get-Azautomationjoi put](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 'inin parametresinin değerini yalnızca çıkış akışlarını almak üzere ayarlayabilirsiniz. 
+* Cmdlet 'i çalıştırırken alınacak akış sayısını azaltın. Bunu yapmak için `Stream` [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 'inin parametresinin değerini yalnızca çıkış akışlarını almak üzere ayarlayabilirsiniz. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Senaryo: ayrılan kota aşıldığı için Runbook işi başarısız oldu
 
@@ -558,7 +559,7 @@ Bu hata, bir Azure korumalı alanında çalışan runbook 'ların [tam dil modun
 
 Bu hatayı çözmek için iki yol vardır:
 
-* [Başlangıç-iş](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)kullanmak yerine, runbook 'u başlatmak için [Start-azautomationrunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) kullanın.
+* [Başlangıç-iş](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)kullanmak yerine, runbook 'u başlatmak için [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) kullanın.
 * Bir karma runbook çalışanında runbook 'u çalıştırmayı deneyin.
 
 Bu davranış ve Azure Otomasyonu runbook 'larının diğer davranışları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
@@ -587,8 +588,8 @@ Diğer bir çözüm, runbook 'u [alt runbook 'lar](../automation-child-runbooks.
 
 Alt runbook senaryosunu etkinleştiren PowerShell cmdlet 'leri şunlardır:
 
-* [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Bu cmdlet bir runbook başlatmanızı ve bu runbook'a parametre iletmenizi sağlar.
-* [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Alt runbook tamamlandıktan sonra gerçekleştirilmesi gereken işlemler varsa, bu cmdlet her çocuk için iş durumunu denetlemenizi sağlar.
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Bu cmdlet bir runbook başlatmanızı ve bu runbook'a parametre iletmenizi sağlar.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Alt runbook tamamlandıktan sonra gerçekleştirilmesi gereken işlemler varsa, bu cmdlet her çocuk için iş durumunu denetlemenizi sağlar.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Senaryo: get_SerializationSettings yöntemi hakkında iş akışlarında hata
 
@@ -651,7 +652,7 @@ Bu sorunun olası nedenleri şunlardır:
 
 #### <a name="not-using-a-run-as-account"></a>Farklı Çalıştır hesabı kullanmıyor
 
-Key Vault erişmek için bir farklı çalıştır hesabı kullandığınızdan emin olmak için [Adım 5-Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) ' ye uyun.
+Key Vault erişmek için bir farklı çalıştır hesabı kullandığınızdan emin olmak için [Adım 5-Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources) ' ye uyun.
 
 #### <a name="insufficient-permissions"></a>Yetersiz izinler
 
@@ -660,7 +661,7 @@ Farklı Çalıştır hesabınızın Key Vault erişmek için yeterli izinlere sa
 ## <a name="recommended-documents"></a>Önerilen belgeler
 
 * [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
-* [Azure Otomasyonu 'nda runbook başlatma](../automation-starting-a-runbook.md)
+* [Azure Otomasyonu 'nda runbook başlatma](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

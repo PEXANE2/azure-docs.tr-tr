@@ -6,11 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100000"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186155"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
@@ -23,7 +24,7 @@ Azure Automation’da, otomasyon hesabı kapsamında kullanıcılara, gruplara v
 | **Role** | **Açıklama** |
 |:--- |:--- |
 | Sahip |Sahip rolü, Otomasyon hesabını yönetmek için diğer kullanıcılara, gruplara ve uygulamalara erişim sağlamak dahil olmak üzere Otomasyon hesabı içindeki tüm kaynaklara ve eylemlere erişim sağlar. |
-| Katılımcı |Katılımcı rolü, başka kullanıcının Otomasyon hesabına erişim izinlerini değiştirme dışında her şeyi yönetmenizi sağlar. |
+| Katkıda Bulunan |Katılımcı rolü, başka kullanıcının Otomasyon hesabına erişim izinlerini değiştirme dışında her şeyi yönetmenizi sağlar. |
 | Okuyucu |Okuyucu rolü, Otomasyon hesabında tüm kaynakları görmenizi sağlar; ancak değişiklik yapamazsınız. |
 | Otomasyon Operatörü |Otomasyon Işletmeni rolü, runbook adını ve özelliklerini görüntülemenize ve bir Otomasyon hesabındaki tüm runbook 'lar için iş oluşturmanıza ve yönetmenize olanak sağlar. Bu rol, kimlik bilgileri varlıkları ve Runbook 'ları gibi Otomasyon hesabı kaynaklarınızı görüntülenmesini veya değiştirilmesini, ancak kuruluşunuzun üyelerinin bu runbook 'ları yürütmesine izin vermeyi hala sağlamak istiyorsanız yararlıdır. |
 |Automation Iş Işleci|Otomasyon Iş Işletmeni rolü, bir Otomasyon hesabındaki tüm runbook 'lar için iş oluşturmanıza ve yönetmenize olanak sağlar.|
@@ -46,7 +47,7 @@ Bir sahip, erişim dahil her şeyi yönetebilir. Aşağıdaki tabloda rol için 
 |---|---|
 |Microsoft. Automation/automationAccounts/|Tüm türlerin kaynaklarını oluşturun ve yönetin.|
 
-### <a name="contributor"></a>Katılımcı
+### <a name="contributor"></a>Katkıda Bulunan
 
 Katkıda bulunan, erişim dışında her şeyi yönetebilir. Aşağıdaki tabloda rol için verilen ve Reddedilen izinler gösterilmektedir:
 
@@ -310,7 +311,7 @@ Otomasyon hesabını yönetmesiz veya kuruluş için artık çalışan bir kulla
 
 Ayrıca, aşağıdaki [Azure PowerShell cmdlet 'lerini](../role-based-access-control/role-assignments-powershell.md)kullanarak bir Otomasyon hesabına rol tabanlı erişimi de yapılandırabilirsiniz:
 
-[Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) , Azure Active Directory bulunan tüm RBAC rollerini listeler. `Name`Belirli bir rolün gerçekleştirebileceği tüm eylemleri listelemek için bu cmdlet 'i parametresiyle birlikte kullanabilirsiniz.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) , Azure Active Directory bulunan tüm RBAC rollerini listeler. `Name`Belirli bir rolün gerçekleştirebileceği tüm eylemleri listelemek için bu cmdlet 'i parametresiyle birlikte kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -329,7 +330,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-Azroleatama](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) , belirtilen KAPSAMDAKI Azure AD RBAC rol atamalarını listeler. Hiçbir parametre olmadan bu cmdlet, abonelik altında yapılan tüm rol atamalarını döndürür. `ExpandPrincipalGroups`Belirtilen kullanıcı için erişim atamalarını ve kullanıcının ait olduğu grupları listelemek için parametresini kullanın.
+[Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) , belirtilen KAPSAMDAKI Azure AD RBAC rol atamalarını listeler. Hiçbir parametre olmadan bu cmdlet, abonelik altında yapılan tüm rol atamalarını döndürür. `ExpandPrincipalGroups`Belirtilen kullanıcı için erişim atamalarını ve kullanıcının ait olduğu grupları listelemek için parametresini kullanın.
 
 **Örnek:** Bir Otomasyon hesabı içindeki tüm kullanıcıları ve rollerinin listesini listelemek için aşağıdaki cmdlet 'i kullanın.
 
@@ -351,7 +352,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-Kullanıcılara, gruplara ve uygulamalara belirli bir kapsama erişim atamak için [New-Azroleatama](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) kullanın.
+Kullanıcılara, gruplara ve uygulamalara belirli bir kapsama erişim atamak için [New-Azroleatama](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) kullanın.
     
 **Örnek:** Otomasyon hesabı kapsamındaki bir kullanıcı için "Otomasyon Işleci" rolünü atamak için aşağıdaki komutu kullanın.
 
@@ -373,7 +374,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Belirli bir kapsamdaki belirtilen kullanıcı, Grup veya uygulamanın erişimini kaldırmak için [Remove-Azroleatama](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) komutunu kullanın.
+Belirli bir kapsamdaki belirtilen kullanıcı, Grup veya uygulamanın erişimini kaldırmak için [Remove-Azroleatama](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) komutunu kullanın.
 
 **Örnek:** Kullanıcıyı Otomasyon hesabı kapsamındaki otomasyon operatörü rolünden kaldırmak için aşağıdaki komutu kullanın.
 

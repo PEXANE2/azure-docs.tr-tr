@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 2edf2b61f46e3638af3c2291932a6ab1c1cf23e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 8862de0ba36d0731fff0e47ab51f828ff69af201
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100908"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220431"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
 
@@ -51,7 +51,7 @@ Kopyalama etkinliği için bu blob Storage Bağlayıcısı şunları destekler:
 >[!IMPORTANT]
 >Azure Storage güvenlik duvarı ayarlarında **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver** seçeneğini etkinleştirip blob depolamaya bağlanmak için Azure tümleştirme çalışma zamanını kullanmak istiyorsanız, [yönetilen kimlik kimlik doğrulamasını](#managed-identity)kullanmanız gerekir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -88,7 +88,7 @@ Data Factory, depolama hesabı anahtarı kimlik doğrulaması için aşağıdaki
 >[!NOTE]
 >"AzureStorage" tür bağlı hizmetini kullanıyorsanız, hala olduğu gibi desteklenmektedir. Ancak, yeni "AzureBlobStorage" bağlı hizmet türünü ileride kullanmanızı öneririz.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -155,7 +155,7 @@ Data Factory, paylaşılan erişim imzası kimlik doğrulamasını kullanmak iç
 >[!NOTE]
 >"AzureStorage" tür bağlı hizmetini kullanıyorsanız, hala olduğu gibi desteklenmektedir. Ancak, yeni "AzureBlobStorage" bağlı hizmet türünü ileride kullanmanızı öneririz.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -242,7 +242,7 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 >[!NOTE]
 >Hizmet sorumlusu kimlik doğrulaması, önceki "AzureStorage" türü bağlı hizmeti değil, yalnızca "AzureBlobStorage" türüne bağlı hizmet tarafından desteklenir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -293,7 +293,7 @@ Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 > [!NOTE]
 > Azure Kaynak kimlik doğrulaması için Yönetilen kimlikler, önceki "AzureStorage" türü bağlı hizmeti değil, yalnızca "AzureBlobStorage" türünde bağlı hizmet tarafından desteklenir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -326,7 +326,7 @@ Aşağıdaki özellikler, `location` Biçim tabanlı bir veri kümesindeki ayarl
 | folderPath | Verilen kapsayıcı altındaki klasörün yolu. Klasörü filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirleyin. | Hayır       |
 | fileName   | Verilen kapsayıcı ve klasör yolu altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirleyin. | Hayır       |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -382,7 +382,7 @@ Aşağıdaki özellikler, Azure Blob depolama için, `storeSettings` Biçim taba
 > [!NOTE]
 > Parquet/delimited metin biçimi için, sonraki bölümde bahsedilen kopyalama etkinliği kaynağı için **Blobsource** türü, geriye dönük uyumluluk için olduğu gibi hala desteklenmektedir. Data Factory yazma Kullanıcı arabirimi bu yeni türleri oluşturmaya geçene kadar yeni modeli kullanmanızı öneririz.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -436,7 +436,7 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı bir kopya havuzunda ay
 | Blocksizeınmb | Blok bloblarına veri yazmak için kullanılan blok boyutunu megabayt cinsinden belirtin. [Blok Blobları hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)daha fazla bilgi edinin. <br/>İzin verilen değer *4 MB ile 100 MB arasındadır*. <br/>Varsayılan olarak Data Factory, blok boyutunu kaynak depolama türü ve verilerinize göre otomatik olarak belirler. Blob depolamaya ikili olmayan kopya için, varsayılan blok boyutu 100 MB 'tır, bu nedenle en fazla 4,95 TB veri olabilir. Özellikle, işlem zaman aşımı veya performans sorunlarına neden olan kötü ağ bağlantılarıyla şirket içinde barındırılan tümleştirme çalışma zamanını kullandığınızda verileriniz büyük olmadığında en iyi durumda olmayabilir. Açıkça bir blok boyutu belirtebilirsiniz, bu da `blockSizeInMB*50000` verileri depolamaya yetecek büyüklükte bir değer sağlar. Aksi takdirde kopyalama etkinliği çalıştırması başarısız olur. | Hayır |
 | maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | Hayır       |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -512,10 +512,12 @@ Dosyaları Amazon S3, Azure Blob Storage veya Azure Data Lake Storage 2. Azure D
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
 Veri akışlarındaki verileri dönüştürürken, aşağıdaki biçimlerde Azure Blob depolamadan dosyaları okuyabilir ve yazabilirsiniz:
-* [JSON](format-json.md#mapping-data-flow-properties)
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties)
-* [Parquet](format-parquet.md#mapping-data-flow-properties).
+* [Delta](format-delta.md#mapping-data-flow-properties)
+* [Excel](format-excel.md#mapping-data-flow-properties)
+* [JSON](format-json.md#mapping-data-flow-properties)
+* [Parquet](format-parquet.md#mapping-data-flow-properties)
 
 Biçimlendirme özel ayarları, bu biçimdeki belgelerde bulunur. Daha fazla bilgi için bkz. eşleme veri akışı ve [Havuz dönüşümünde](data-flow-sink.md) [kaynak dönüştürme](data-flow-source.md) veri akışında.
 
@@ -627,7 +629,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 >[!TIP]
 >Tüm Blobları bir klasör altına kopyalamak için yalnızca **FolderPath** ' i belirtin.<br>Belirli bir ada sahip tek bir blobu kopyalamak için dosya adı için klasör **bölümü ve dosya adı Için** **FolderPath** belirtin.<br>Bir klasör altındaki Blobların bir alt kümesini kopyalamak için, klasör bölümü ve **dosya adı** için bir joker karakter filtresi içeren **FolderPath** öğesini belirtin. 
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -665,7 +667,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. **Özyinelemeli** değeri **true** olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın.<br/>İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir. | Hayır |
 | maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -705,7 +707,7 @@ Havuz dönüşümünde, bir kapsayıcıya veya Azure Blob depolama alanındaki b
 | copyBehavior | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya veya blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. | Hayır |
 | maxConcurrentConnections | Depolamaya yönelik eşzamanlı bağlantı sayısı. Yalnızca veri deposuyla eş zamanlı bağlantıları sınırlandırmak istediğinizde belirtin. | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

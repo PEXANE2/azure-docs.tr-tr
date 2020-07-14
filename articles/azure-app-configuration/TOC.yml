@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: Olayları özel bir uç noktaya yönlendirme
       href: howto-app-configuration-event.md
+    - name: Yapılandırma deposunu otomatik olarak yedekleme
+      href: howto-backup-config-store.md
     - name: En iyi uygulamalar
       href: howto-best-practices.md
 - name: Başvuru

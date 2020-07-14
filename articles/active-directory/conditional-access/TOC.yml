@@ -104,6 +104,18 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: SSS
           href: faqs.md
+- name: Başvuru
+  items:
+    - name: Beta Graph API'leri
+      items:
+        - name: conditionalAccessPolicy API'si
+          href: /graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta
+        - name: namedLocation API'si
+          href: /graph/api/resources/namedlocation?view=graph-rest-beta
+        - name: countryNamedLocation API'si
+          href: /graph/api/resources/countrynamedlocation?view=graph-rest-beta
+        - name: ipNamedLocation API'si
+          href: /graph/api/resources/ipnamedlocation?view=graph-rest-beta
 - name: Kaynaklar
   items:
     - name: Azure geri bildirim forumu

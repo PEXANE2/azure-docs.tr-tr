@@ -22,7 +22,7 @@ ms.locfileid: "86223916"
 
 Bu hızlı başlangıç, Azure Active Directory (Azure AD) kiracınıza eklenmiş bir uygulamayı silmek için Azure portal kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD kiracınızdan bir uygulamayı silmek için şunlar gerekir:
 

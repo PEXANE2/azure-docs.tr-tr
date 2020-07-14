@@ -6,15 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74129422"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184982"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Coğrafi çoğaltmayı ayarlama
 
-Coğrafi çoğaltma, Redsıs örnekleri için iki Premium katman Azure önbelleğinin bağlanmasına yönelik bir mekanizma sağlar. Birincil bağlı önbellek ve diğeri ikincil bağlantılı önbellek olarak bir önbellek seçilir. İkincil bağlantılı önbellek salt okunurdur ve birincil önbelleğe yazılan veriler ikincil bağlantılı önbelleğe çoğaltılır. Bu işlev, Azure bölgeleri arasında bir önbelleği çoğaltmak için kullanılabilir. Bu makale, Redsıs örnekleri için Premium katman Azure önbelleğiniz için Coğrafi çoğaltmayı yapılandırmaya yönelik bir kılavuz sağlar.
+Coğrafi çoğaltma, Redsıs örnekleri için iki Premium katman Azure önbelleğinin bağlanmasına yönelik bir mekanizma sağlar. Birincil bağlı önbellek ve diğeri ikincil bağlantılı önbellek olarak bir önbellek seçilir. İkincil bağlantılı önbellek salt okunurdur ve birincil önbelleğe yazılan veriler ikincil bağlantılı önbelleğe çoğaltılır. Birincil ve ikincil önbellek örnekleri arasındaki veri aktarımı TLS ile korunmaktadır. Coğrafi çoğaltma, iki Azure bölgesini kapsayan bir önbellek ayarlamak için kullanılabilir. Bu makale, Redsıs örnekleri için Premium katman Azure önbelleğiniz için Coğrafi çoğaltmayı yapılandırmaya yönelik bir kılavuz sağlar.
+
+> [!NOTE]
+> Coğrafi çoğaltma, olağanüstü durum kurtarma çözümü olarak tasarlanmıştır. Varsayılan olarak, uygulamanız birincil bölgeye yazılır ve bu bölgeden okundu. Bu, isteğe bağlı olarak ikincil bölgeden okunacak şekilde yapılandırılabilir. Coğrafi çoğaltma, uygulamanızın geri kalanı birincil bölgede kalırsa bölgeler arasında eklenen ağ gecikmesinden kaynaklanan sorunlar nedeniyle otomatik yük devretme sağlamaz. İkincil önbelleğin bağlantısını kaldırarak yük devretmeyi yönetmeniz ve başlatmanız gerekir. Bu, bunu yeni birincil örnek olarak yükseltir.
 
 ## <a name="geo-replication-prerequisites"></a>Coğrafi çoğaltma önkoşulları
 

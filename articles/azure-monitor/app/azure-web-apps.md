@@ -3,12 +3,12 @@ title: Azure App Services performansını izleme | Microsoft Docs
 description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733473"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169944"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -58,13 +58,13 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
  
  Her yol için toplanan verilerin bir özeti aşağıda verilmiştir:
         
-|  | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
+| Veriler | .NET temel koleksiyonu | Önerilen .NET koleksiyonu |
 | --- | --- | --- |
-| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
-| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
-| Ana işlem tarafından işlenmeyen özel durumları toplar | Yes |Yes |
-| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Yes |Yes |
-| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Yes |
+| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Evet |Evet |
+| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Evet |Evet |
+| Ana işlem tarafından işlenmeyen özel durumları toplar | Evet |Evet |
+| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Evet |Evet |
+| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Evet |
 
 3. Daha önce applicationinsights.config dosyası aracılığıyla denetleyebilmeniz gereken örnekleme gibi ayarları yapılandırmak için artık karşılık gelen bir ön ek ile uygulama ayarları aracılığıyla aynı ayarlarla etkileşime geçebilirsiniz. 
 
@@ -116,9 +116,9 @@ Python App Service tabanlı Web uygulamaları, şu anda otomatik aracı/uzantı 
 * **Ayarları** seçin > * * * * uygulama ayarları * * * *
    * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
 
-     Ada`APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     Değer:`true`
+     Değer: `true`
 
    * Ayarları **Kaydedin** ve uygulamanızı **Yeniden başlatın**.
 
@@ -137,7 +137,7 @@ Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
 
      ada`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     Değer:`false`
+     Değer: `false`
 
    * Ayarları **Kaydedin** ve uygulamanızı **Yeniden başlatın**.
 

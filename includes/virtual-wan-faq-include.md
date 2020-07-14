@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565986"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143924"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -25,7 +25,7 @@ Sanal WAN iki şekilde gelir: temel ve standart. Temel sanal WAN 'da, hub 'lar d
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Sanal WAN 'da Kullanılabilirlik Alanları ve dayanıklılık nasıl işlenir?
 
-Sanal WAN, hub 'ın içinde kullanıma sunulan bir hub ve hizmet koleksiyonudur. Kullanıcı, ihtiyaçlarına göre çok sayıda sanal WAN olabilir. Bir sanal WAN hub 'ında VPN, ExpressRoute vb. gibi birden çok hizmet vardır. Bölge Kullanılabilirlik Alanları destekliyorsa, bu hizmetlerin her biri bir Kullanılabilirlik Alanları bölgesinde dağıtılır. Bir bölge, hub 'daki ilk dağıtımdan sonra bir kullanılabilirlik bölgesi haline gelirse, Kullanıcı ağ geçitlerini yeniden oluşturabilir ve bu da bir kullanılabilirlik alanı dağıtımı tetikleyecektir. Tüm ağ geçitleri bir hub 'da etkin-etkin olarak sağlanır ve bir hub içinde yerleşik olarak bulunan dayanıklılık vardır. Kullanıcılar bölgeler arasında dayanıklılık istiyorlarsa birden çok hub 'a bağlanabilir. Sanal WAN kavramı küresel olsa da, gerçek sanal WAN kaynağı Kaynak Yöneticisi tabanlıdır ve bölgesel olarak dağıtılır. Sanal WAN bölgesinin kendisi bir sorun oluşturverilirse, bu sanal WAN 'daki tüm Hub 'lar olduğu gibi çalışmaya devam eder, ancak sanal WAN bölgesi kullanılabilir olana kadar Kullanıcı yeni hub 'lar oluşturamayacak.
+Sanal WAN, hub 'ın içinde kullanıma sunulan bir hub ve hizmet koleksiyonudur. Kullanıcı, ihtiyacı olan çok sayıda sanal WAN olabilir. Bir sanal WAN hub 'ında VPN, ExpressRoute vb. gibi birden çok hizmet vardır. Bu hizmetlerin her biri (Azure Güvenlik Duvarı dışında) bir Kullanılabilirlik Alanları bölgesinde dağıtılır, yani bölge Kullanılabilirlik Alanları destekler. Bir bölge, hub 'daki ilk dağıtımdan sonra bir kullanılabilirlik bölgesi haline gelirse, Kullanıcı ağ geçitlerini yeniden oluşturabilir ve bu da bir kullanılabilirlik alanı dağıtımı tetikleyecektir. Tüm ağ geçitleri bir hub 'da etkin-etkin olarak sağlanır ve bir hub içinde yerleşik olarak bulunan dayanıklılık vardır. Kullanıcılar bölgeler arasında dayanıklılık istiyorlarsa birden çok hub 'a bağlanabilir. Sanal WAN kavramı küresel olsa da, gerçek sanal WAN kaynağı Kaynak Yöneticisi tabanlıdır ve bölgesel olarak dağıtılır. Sanal WAN bölgesinin kendisi bir sorun oluşturverilirse, bu sanal WAN 'daki tüm Hub 'lar olduğu gibi çalışmaya devam eder, ancak sanal WAN bölgesi kullanılabilir olana kadar Kullanıcı yeni hub 'lar oluşturamayacak.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure sanal WAN Kullanıcı VPN (Noktadan siteye) hangi istemciyi destekler?
 

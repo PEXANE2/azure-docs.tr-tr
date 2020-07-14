@@ -40,6 +40,8 @@
       items:
         - name: Bağlantı hatları ve eşleme hakkında
           href: expressroute-circuit-peerings.md
+        - name: Bağlantı hattı bant genişliğini yükseltme hakkında
+          href: about-upgrade-circuit-bandwidth.md
         - name: Devreleri klasikten Resource Manager’a taşıma
           href: expressroute-move.md
     - name: ExpressRoute üzerinden BFD

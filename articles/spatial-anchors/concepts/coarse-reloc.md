@@ -8,11 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844403"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202374"
 ---
 # <a name="coarse-relocalization"></a>Kaba yeniden yerelleştirme
 
@@ -119,13 +120,11 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 Daha sonra, ne kadar kaba yeniden yerelleştirme için kullanmak istediğiniz sensöre karar vermeniz gerekir. Bu karar, geliştirmekte olduğunuz uygulamaya özeldir, ancak aşağıdaki tablodaki önerilerin size iyi bir başlangıç noktası vermesi gerekir:
 
-
-|             | Inkapıların | Dış kapılar |
-|-------------|---------|----------|
-| YUVASı         | Kapalı | Açık |
-| WiFi        | Açık | Açık (isteğe bağlı) |
-| BLO işaretleri | Açık (uyarılar ile isteğe bağlı olarak aşağıya bakın) | Kapalı |
-
+|                 | Inkapıların | Dış kapılar |
+|-----------------|---------|----------|
+| **YUVASı**         | Kapalı | Açık |
+| **WiFi**        | Açık | Açık (isteğe bağlı) |
+| **BLO işaretleri** | Açık (uyarılar ile isteğe bağlı olarak aşağıya bakın) | Kapalı |
 
 ### <a name="enabling-gps"></a>GPS etkinleştiriliyor
 
@@ -657,12 +656,11 @@ Aşağıdaki tabloda her algılayıcı türü için beklenen arama alanı tahmin
 
 Aşağıdaki tabloda, desteklenen her platformda toplanan algılayıcı verileri, platforma özel uyarılarla birlikte özetlenmektedir:
 
-
-|             | HoloLens | Android | iOS |
-|-------------|----------|---------|-----|
-| YUVASı         | YOK | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
-| WiFi        | Her 3 saniyede bir taramanın yaklaşık bir hızda desteklenir | Destekleniyor. WiFi taramaları, API düzeyi 28 ile başlayarak 2 dakikada bir 4 çağrı ile kısıtlanır. Android 10 ' dan azaltma, Geliştirici ayarları menüsünden devre dışı bırakılabilir. Daha fazla bilgi için bkz. [Android belgeleri][5]. | Yok-ortak API yok |
-| BLO işaretleri | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı |
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **YUVASı**         | Yok | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
+| **WiFi**        | Her 3 saniyede bir taramanın yaklaşık bir hızda desteklenir | Destekleniyor. WiFi taramaları, API düzeyi 28 ile başlayarak 2 dakikada bir 4 çağrı ile kısıtlanır. Android 10 ' dan azaltma, Geliştirici ayarları menüsünden devre dışı bırakılabilir. Daha fazla bilgi için bkz. [Android belgeleri][5]. | Yok-ortak API yok |
+| **BLO işaretleri** | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

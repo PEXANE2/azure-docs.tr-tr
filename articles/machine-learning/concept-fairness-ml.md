@@ -1,5 +1,5 @@
 ---
-title: Makine öğrenimi modellerinde eşitliği sorunlarını değerlendirme ve azaltma
+title: Machine Learning modellerinde eşitliği sorunlarını değerlendirme ve azaltma (Önizleme)
 titleSuffix: Azure Machine Learning
 description: Machine Learning modellerinde eşitliği hakkında bilgi edinin ve Fairlearn Python paketinin fairer modellerini oluşturmanıza nasıl yardımcı olabileceğini öğrenin.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: c4e9b8386c8341d076a69e2e81b5e92f296153ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611790"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207299"
 ---
-# <a name="build-fairer-machine-learning-models"></a>Derleme fairer makine öğrenimi modelleri
+# <a name="build-fairer-machine-learning-models-preview"></a>Derleme fairer makine öğrenimi modelleri (Önizleme)
 
 Machine Learning 'de eşitliği hakkında bilgi edinin ve [Fairlearn](https://fairlearn.github.io/) açık kaynaklı Python paketinin daha dengeli modeller oluşturmanıza nasıl yardımcı olabileceğini öğrenin. Eşitliği sorunlarını anlamak ve makine öğrenimi modellerini oluştururken eşitliği değerlendirmek için çaba harcadıysanız, dengeli olmayan sonuçlar üreten modeller oluşturabilirsiniz. 
 

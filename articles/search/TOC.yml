@@ -72,6 +72,8 @@
           href: cognitive-search-tutorial-blob-python.md
     - name: Beceri kümesinde hata ayıklama
       href: cognitive-search-tutorial-debug-sessions.md
+    - name: Özel çözümleyici oluşturma
+      href: tutorial-create-custom-analyzer.md
     - name: Power Apps’ten sorgulama
       href: search-howto-powerapps.md
 - name: Örnekler

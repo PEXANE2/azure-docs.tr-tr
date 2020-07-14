@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800537"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202245"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Araması API'si yanıt yapısı ve yanıt türleri  
 
@@ -294,9 +294,9 @@ Matematik ifadesi aşağıdaki sembolleri içerebilir:
 |------------|-----------------|
 |+|Toplama|
 |-|Çıkarma|
-|/|Bölüm|
+|/|Bölme|
 |*|Çarpma|
-|^|Üs|
+|^|Güç|
 |!|Faktöriyel|
 |.|Ondalık|
 |()|Öncelik gruplandırması|
@@ -435,7 +435,7 @@ Bing, kullanıcının farklı bir şeyi aramak için tasarlanmış olabileceğin
 
 Bing Web Araması API'si yanıtları aşağıdaki üst bilgileri içerebilir:
 
-|||
+| Üst bilgi | Açıklama |
 |-|-|
 |`X-MSEdge-ClientID`|Bing 'in kullanıcıya atadığı benzersiz KIMLIK|
 |`BingAPIs-Market`|İsteği yerine getirmek için kullanılan Pazar|

@@ -7,13 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 35f92afea9f9e8da3cf1eeefa81cac0cb712843a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2802445bbb80a4412787362a3ee9aaee4adcd40
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734631"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223508"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure Active Directory Domain Services Kaynak Yöneticisi 'ye geçirin
 
@@ -45,7 +46,7 @@ Geçiş işlemi, klasik bir sanal ağda çalışan mevcut bir yönetilen etki al
 Yönetilen bir etki alanını geçirmeye yönelik bazı yaygın senaryolar aşağıdaki örnekleri içerir.
 
 > [!NOTE]
-> Başarılı bir geçiş işlemi onaylayapana kadar klasik sanal ağı dönüştürmeyin. Sanal ağı dönüştürmek, geçiş ve doğrulama aşamaları sırasında herhangi bir sorun varsa, yönetilen etki alanını geri alma veya geri yükleme seçeneğini kaldırır.
+> Başarılı bir geçiş işlemi onaylaana kadar klasik sanal ağı dönüştürmeyin. Sanal ağı dönüştürmek, geçiş ve doğrulama aşamaları sırasında herhangi bir sorun varsa, yönetilen etki alanını geri alma veya geri yükleme seçeneğini kaldırır.
 
 ### <a name="migrate-azure-ad-ds-to-an-existing-resource-manager-virtual-network-recommended"></a>Azure AD DS 'yi var olan bir Kaynak Yöneticisi sanal ağa geçirme (önerilir)
 
@@ -97,13 +98,15 @@ Bir yönetilen etki alanını hazırlarken ve geçirdikten sonra, kimlik doğrul
 
 Yönetilen bir etki alanı için etki alanı denetleyicisi IP adresleri geçişten sonra değişir. Bu değişiklik, Güvenli LDAP uç noktası için genel IP adresini içerir. Yeni IP adresleri, Kaynak Yöneticisi sanal ağındaki yeni alt ağın adres aralığının içindedir.
 
-Geri alma durumunda IP adresleri geri alındıktan sonra değişebilir.
+Geri almanız gerekirse, IP adresleri geri alındıktan sonra değişebilir.
 
 Azure AD DS, genellikle adres aralığındaki kullanılabilir ilk iki IP adresini kullanır, ancak bu garanti edilmez. Şu anda geçişten sonra kullanılacak IP adreslerini belirtemezsiniz.
 
 ### <a name="downtime"></a>Downtime
 
-Geçiş işlemi, etki alanı denetleyicilerinin bir süre çevrimdışı olmasını içerir. Azure AD DS Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçirildiğinde etki alanı denetleyicilerine erişilemez. Ortalama süre kapalı kalma süresi 1 ile 3 saat arasında. Bu süre, etki alanı denetleyicilerinin ilk etki alanı denetleyicisinin yeniden çevrimiçi duruma geldiği sırada çevrimdışına alındığı zamana göre belirlenir. Bu ortalama, ikinci etki alanı denetleyicisinin çoğaltılması için geçen süreyi veya Kaynak Yöneticisi dağıtım modeline ek kaynakların geçirilmesi için gereken süreyi içermez.
+Geçiş işlemi, etki alanı denetleyicilerinin bir süre çevrimdışı olmasını içerir. Azure AD DS Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçirildiğinde etki alanı denetleyicilerine erişilemez.
+
+Ortalama süre kapalı kalma süresi 1 ile 3 saat arasında. Bu süre, etki alanı denetleyicilerinin ilk etki alanı denetleyicisinin yeniden çevrimiçi duruma geldiği sırada çevrimdışına alındığı zamana göre belirlenir. Bu ortalama, ikinci etki alanı denetleyicisinin çoğaltılması için geçen süreyi veya Kaynak Yöneticisi dağıtım modeline ek kaynakların geçirilmesi için gereken süreyi içermez.
 
 ### <a name="account-lockout"></a>Hesap kilitleme
 
@@ -142,11 +145,11 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 
 | Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Downtime  | Geri alma/geri yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | YOK |
+| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | Yok |
 | [2. adım-yönetilen etki alanını geçiş için hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
 | [3. adım-yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
-| [5. adım-Isteğe bağlı yapılandırma adımları](#optional-post-migration-configuration-steps) | Azure portal ve VM 'Ler | YOK | Kesinti süresi gerekli değildir | YOK |
+| [5. adım-Isteğe bağlı yapılandırma adımları](#optional-post-migration-configuration-steps) | Azure portal ve VM 'Ler | Yok | Kesinti süresi gerekli değildir | Yok |
 
 > [!IMPORTANT]
 > Ek kapalı kalma süresini önlemek için, geçiş işlemine başlamadan önce bu geçiş makalesinin ve kılavuzunun hepsini okuyun. Geçiş işlemi, Azure AD DS etki alanı denetleyicilerinin bir süre için kullanılabilirliğini etkiler. Kullanıcılar, hizmetler ve uygulamalar geçiş işlemi sırasında yönetilen etki alanında kimlik doğrulaması yapamaz.
@@ -206,7 +209,7 @@ Yönetilen etki alanını geçişe hazırlamak için aşağıdaki adımları izl
 
 ## <a name="migrate-the-managed-domain"></a>Yönetilen etki alanını geçirme
 
-Hazırlanan ve yedeklenen yönetilen etki alanı ile etki alanı geçirilebilir. Bu adım, Kaynak Yöneticisi dağıtım modelini kullanarak Azure AD Domain Services etki alanı denetleyicisi sanal makinelerini yeniden oluşturur. Bu adımın tamamlanması 1-3 saat sürebilir.
+Hazırlanan ve yedeklenen yönetilen etki alanı ile etki alanı geçirilebilir. Bu adım, Kaynak Yöneticisi dağıtım modelini kullanarak Azure AD DS etki alanı denetleyicisi VM 'lerini yeniden oluşturur. Bu adımın tamamlanması 1-3 saat sürebilir.
 
 `Migrate-Aadds` *-COMMIT* parametresini kullanarak cmdlet 'ini çalıştırın. *Aaddscontoso.com*gibi önceki bölümde hazırlanan kendi yönetilen etki alanınız için *-manageddomainfqdn* sağlayın:
 
@@ -247,10 +250,12 @@ Kaynak Yöneticisi dağıtım modeliyle, yönetilen etki alanı için ağ kaynak
 
 En az bir etki alanı denetleyicisi kullanılabilir olduğunda, VM 'lerle ağ bağlantısı için aşağıdaki yapılandırma adımlarını uygulayın:
 
-* **DNS sunucusu ayarlarını Güncelleştir** Kaynak Yöneticisi sanal ağ üzerindeki diğer kaynakların yönetilen etki alanını çözümleyip kullanmasına izin vermek için DNS ayarlarını, yeni etki alanı denetleyicilerinin IP adresleriyle güncelleştirin. Azure portal bu ayarları sizin için otomatik olarak yapılandırabilir. Kaynak Yöneticisi sanal ağını yapılandırma hakkında daha fazla bilgi için bkz. [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme][update-dns].
+* **DNS sunucusu ayarlarını Güncelleştir** Kaynak Yöneticisi sanal ağ üzerindeki diğer kaynakların yönetilen etki alanını çözümleyip kullanmasına izin vermek için DNS ayarlarını, yeni etki alanı denetleyicilerinin IP adresleriyle güncelleştirin. Azure portal bu ayarları sizin için otomatik olarak yapılandırabilir.
+
+    Kaynak Yöneticisi sanal ağını yapılandırma hakkında daha fazla bilgi için bkz. [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme][update-dns].
 * **Etki alanına katılmış VM 'Leri yeniden başlatma** -Azure AD DS etki alanı DENETLEYICILERI için DNS sunucusu IP adresleri değiştiğinde, etki alanına katılmış tüm VM 'leri yeniden başlatarak yeni DNS sunucusu ayarlarını kullanın. Uygulamalar veya VM 'Ler DNS ayarlarını el ile yapılandırdıysa, Azure portal gösterilen etki alanı denetleyicilerinin yeni DNS sunucusu IP adresleriyle el ile güncelleştirin.
 
-Artık sanal ağ bağlantısını ve ad çözümlemesini test edin. Kaynak Yöneticisi sanal ağa bağlı veya onunla eşlenmeye yönelik bir VM 'de aşağıdaki ağ iletişim testlerini deneyin:
+Artık sanal ağ bağlantısını ve ad çözümlemesini test edin. Kaynak Yöneticisi sanal ağa bağlı bir VM 'de veya bu ağa eşlendikten sonra aşağıdaki ağ iletişim testlerini deneyin:
 
 1. Etki alanı denetleyicilerinden birinin IP adresine ping atabiliyor olup olmadığını denetleyin, örneğin`ping 10.1.0.4`
     * Etki alanı denetleyicilerinin IP adresleri, Azure portal yönetilen etki alanının **Özellikler** sayfasında gösterilir.
@@ -269,7 +274,7 @@ Azure AD DS, etki alanı denetleyicilerindeki olayları sorun gidermeye ve gör�
 
 Günlüklerde gösterilen önemli bilgileri izlemek için şablonları kullanabilirsiniz. Örneğin, denetim günlüğü çalışma kitabı şablonu, yönetilen etki alanındaki olası hesap kilitlenmelerini izleyebilir.
 
-### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services e-posta bildirimlerini yapılandırma
+### <a name="configure-email-notifications"></a>E-posta bildirimlerini yapılandırma
 
 Yönetilen etki alanında bir sorun algılandığında bildirim almak için Azure portal e-posta bildirimi ayarlarını güncelleştirin. Daha fazla bilgi için bkz. [bildirim ayarlarını yapılandırma][notifications].
 
@@ -296,7 +301,7 @@ Geçiş sürecinde belirli bir noktaya kadar, yönetilen etki alanını geri alm
 
 ### <a name="roll-back"></a>Geri al
 
-Adım 2 ' de Geçişe hazırlanmak üzere PowerShell cmdlet 'ini çalıştırdığınızda bir hata oluşursa, adım 3 ' te yönetilen etki alanı özgün yapılandırmaya geri dönebilir. Bu geri alma, başlangıçtaki klasik sanal ağı gerektirir. IP adreslerinin geri alma işleminin ardından hala değişebileceğini unutmayın.
+Adım 2 ' de Geçişe hazırlanmak üzere PowerShell cmdlet 'ini çalıştırdığınızda bir hata oluşursa, adım 3 ' te yönetilen etki alanı özgün yapılandırmaya geri dönebilir. Bu geri alma, başlangıçtaki klasik sanal ağı gerektirir. IP adresleri geri alma işleminden sonra hala değişebilir.
 
 `Migrate-Aadds` *-Abort* parametresini kullanarak cmdlet 'ini çalıştırın. *Aaddscontoso.com*gibi önceki bir bölümde hazırlanan kendi yönetilen etki alanınız için *-Manageddomainfqdn* ve *Myclassicvnet*gibi klasik sanal ağ adını sağlayın:
 

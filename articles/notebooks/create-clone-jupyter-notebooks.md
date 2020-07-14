@@ -3,12 +3,12 @@ title: Jupyıter not defterlerini oluşturma ve kopyalama-Azure Notebooks önizl
 description: Azure Notebooks Preview projeleri, başka bir kaynaktan yeni veya kopya oluşturabileceğiniz bir not defteri ve ilgili dosya koleksiyonunu yönetir.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831293"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181514"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede proje oluşturma ve kopyalama
 
@@ -35,7 +35,7 @@ Panoda yapabilecekleriniz, Kullanıcı KIMLIĞININ sahibi olan hesapla oturum a�
 | **Terminal** | Sahip | Proje sunucusunu başlatır ve ardından bu sunucu için bash terminaliyle yeni bir tarayıcı penceresi açar. |
 | **+ Yeni proje** | Sahip | Yeni bir proje oluşturur. Bkz. [Yeni proje oluşturma](#create-a-new-project). |
 | **GitHub deposunu karşıya yükle** | Sahip | GitHub 'dan bir projeyi içeri aktarır. [GitHub 'dan bir projeyi Içeri aktarın](#import-a-project-from-github). |
-| **Kopyalama** | Herkes | Seçili bir projeyi kendi hesabınıza kopyalar. Henüz yoksa oturum açmanızı ister. Bkz. [projeyi kopyalama](#clone-a-project). |
+| **Oluşturulacak** | Herkes | Seçili bir projeyi kendi hesabınıza kopyalar. Henüz yoksa oturum açmanızı ister. Bkz. [projeyi kopyalama](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Başlatma rozetini edinin
 
@@ -53,7 +53,7 @@ Azure Notebooks projeniz yoksa, aşağıdaki şablonları kullanarak doğrudan G
 [![Azure Notebooks](https://notebooks.azure.com/launch.png)](https://notebooks.azure.com/import/gh/<GitHub_username>/<repository_name>)
 ```
 
-## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+## <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 **+ Yeni proje** komutunu kullandığınızda Azure Notebooks **Yeni bir proje oluştur** açılır penceresi görüntüler. Bu açılan pencerede, aşağıdaki bilgileri girin ve ardından **Oluştur**' u seçin:
 
@@ -61,20 +61,40 @@ Azure Notebooks projeniz yoksa, aşağıdaki şablonları kullanarak doğrudan G
 | --- | --- |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. Örneğin, "Not Defterim projem". |
 | Proje Kimliği | Bir projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı (form olur `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
-| Ortak | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
+| Genel | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
 | Bu projeyi bir BENIOKU ile Başlat | Ayarlanırsa, projede varsayılan bir *README.MD* dosyası oluşturur. İsterseniz, projeniz için belgeler sağladığınız bir *README.MD* dosyası. |
 
 ### <a name="reserved-project-ids"></a>Ayrılmış proje kimlikleri
 
 Aşağıdaki ayrılmış sözcükler kendileri proje kimliği olarak kullanılamaz. Bununla birlikte, bu ayrılmış sözcükler, daha uzun proje kimliklerinin bir parçası olarak kullanılabilir.
 
-| | | | | | |
-| --- | --- | --- | --- | --- | --- |
-| hakkında | account | yönetim | API | blog | sınıf |
-| içerik | pano | Keşfet | SSS | Yardım | html |
-| giriş sayfası | içeri aktar | kitaplık | yönetim | new | Mini |
-| not defterleri | pdf | preview | Fiyat | profil | search |
-| durum | destek | test | | | |
+- hakkında
+- account
+- yönetim
+- api
+- blog
+- sınıf
+- içerik
+- pano
+- Keşfet
+- SSS
+- Yardım
+- html
+- giriş sayfası
+- içeri aktar
+- kitaplık
+- yönetim
+- new
+- Mini
+- not defterleri
+- pdf
+- preview
+- Fiyat
+- profil
+- search
+- durum
+- destek
+- test
 
 Bu sözcüklerden birini proje KIMLIĞI olarak kullanmaya çalışırsanız, **Yeni proje oluştur** ve **proje ayarları** açılır pencere sayısı "kitaplık kimliği ayrılmış bir tanımlayıcıdır."
 
@@ -90,7 +110,7 @@ Tüm genel GitHub deposunu, herhangi bir veri ve *README.MD* dosyası dahil olma
 | Yinelemeli olarak Kopyala | GitHub depoları birden çok alt depo içerebilir. Üst depoyu ve tüm alt öğelerini kopyalamak istiyorsanız bu seçeneği ayarlayın. Bir deponun çok sayıda alt öğesi olması mümkün olduğundan, ihtiyacınız olduğunu bilmiyorsanız bu seçeneği açık bırakın. |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. |
 | Proje Kimliği | Bir projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı (form olur `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
-| Ortak | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
+| Genel | Ayarlanırsa, bağlantıya sahip olan kişilerin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
 
 Bir depoyu GitHub 'dan içeri aktarmak Ayrıca geçmişini içeri aktarır. Yeni değişiklikleri yürütmek, GitHub 'dan değişiklikleri çekmek vb. için terminaldeki standart git komutlarını kullanabilirsiniz.
 

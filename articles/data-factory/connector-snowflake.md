@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 347f37fb999656a1c4951f01a75a392887b5b882
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/09/2020
+ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045680"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220312"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar/veya kar tanesi arasında veri kopyalama
 
@@ -36,7 +36,7 @@ Kopyalama etkinliği için, bu kar tanesi bağlayıcı aşağıdaki işlevleri d
 - En iyi performansı elde etmek için kar tanesine ait [kopyayı [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) komutuna kullanan kar grubundan verileri kopyalayın.
 - En iyi performansı elde etmek için, kar \ ' ın [[tablo]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) komutuna kadar olan verileri kar düzeyine kopyalayın. Azure 'da kar.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -52,7 +52,7 @@ Aşağıdaki özellikler, bir kar tanesi bağlantılı hizmeti için desteklenir
 | Dizisi | [Tam hesap adını](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (bölge ve bulut platformunu tanımlayan ek segmentler dahil), Kullanıcı adını, parolayı, veritabanını ve ambarı yapılandırın. Kar tanesi örneğine bağlanmak için JDBC bağlantı dizesini belirtin. Parolayı Azure Key Vault de yerleştirebilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki örneklere ve [Azure Key Vault 'de mağaza kimlik bilgileri](store-credentials-in-key-vault.md) ' ne bakın.| Evet      |
 | connectVia       | Veri deposuna bağlanmak için kullanılan [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanını kullanır. | Hayır       |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -60,7 +60,7 @@ Aşağıdaki özellikler, bir kar tanesi bağlantılı hizmeti için desteklenir
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>(optional)"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ Aşağıdaki özellikler, bir kar tanesi bağlantılı hizmeti için desteklenir
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>(optional)",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 
@@ -106,9 +106,9 @@ Aşağıdaki özellikler, kar tanesi veri kümesi için desteklenir.
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | tür      | Veri kümesinin Type özelliği, **kar tablosu**olarak ayarlanmalıdır. | Evet                         |
 | manızı | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
-| tablo | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
+| table | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -156,18 +156,23 @@ Havuz veri deprenizin ve formatı bu bölümde açıklanan ölçütlere uyuyorsa
 
 - **Havuz bağlantılı hizmeti** , **paylaşılan erişim imzası** kimlik doğrulaması ile [**Azure Blob depolama**](connector-azure-blob-storage.md) .
 
-- **Havuz veri biçimi** , aşağıdaki yapılandırmalara sahip olan **Parquet** veya **sınırlandırılmış metindir**:
+- **Havuz veri biçimi** , aşağıdaki yapılandırmalara **sahip Parquet**, **ayrılmış metin**veya **JSON** 'dir:
 
-   - **Parquet** biçimi için, sıkıştırma codec 'i **none**, **Snappy**veya **LZO**olur.
-   - **Sınırlandırılmış metin** biçimi için:
-     - `rowDelimiter`**\r\n**veya herhangi bir tek karakter.
-     - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
-     - `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
-     - `quoteChar`**çift tırnak**, **tek tırnak**veya **boş dize** (quote char yok).
-- Kopyalama etkinliği kaynağında `additionalColumns` belirtilmedi.
+    - **Parquet** biçimi için, sıkıştırma codec 'i **none**, **Snappy**veya **LZO**olur.
+    - **Sınırlandırılmış metin** biçimi için:
+        - `rowDelimiter`**\r\n**veya herhangi bir tek karakter.
+        - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
+        - `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
+        - `quoteChar`**çift tırnak**, **tek tırnak** veya **boş dize** (quote char yok).
+    - **JSON** biçimi için doğrudan kopyalama yalnızca kaynak kar tablosu veya sorgu sonucunun yalnızca tek bir sütuna sahip olduğu ve bu sütunun veri türü **değişken**, **nesne**veya **dizi**olduğu durumu destekler.
+        - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
+        - `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
+        - `filePattern`kopyalama etkinliği havuzu varsayılan olarak bırakılır veya **Setofobjects**olarak ayarlanır.
+
+- Kopyalama etkinliği kaynağı ' nda `additionalColumns` belirtilmedi.
 - Sütun eşleme belirtilmedi.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -218,7 +223,7 @@ Bu özelliği kullanmak için, Azure depolama hesabına ara hazırlama olarak ba
 > [!NOTE]
 > Hazırlama Azure Blob depolama bağlı hizmeti, kar tanesi kopyalama komutunun gerektirdiği şekilde paylaşılan erişim imzası kimlik doğrulaması kullanmalıdır. 
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -282,15 +287,19 @@ Kaynak veri deprenizin ve biçimlendirmeniz bu bölümde açıklanan ölçütler
 
 - **Kaynak bağlı hizmet** , **paylaşılan erişim imzası** kimlik doğrulaması ile [**Azure Blob deposıdır**](connector-azure-blob-storage.md) .
 
-- **Kaynak veri biçimi** , aşağıdaki yapılandırmalara sahip **Parquet** veya **Delimited metindir**:
+- **Kaynak veri biçimi** , aşağıdaki yapılandırmalara sahip **Parquet**, **sınırlandırılmış metin**veya **JSON** ' dır:
 
-   - **Parquet** biçimi için, sıkıştırma codec 'i **none** veya **Snappy**olur.
+    - **Parquet** biçimi için, sıkıştırma codec 'i **none**veya **Snappy**.
 
-   - **Sınırlandırılmış metin** biçimi için:
-     - `rowDelimiter`**\r\n**veya herhangi bir tek karakter. Satır sınırlayıcısı "\r\n" değilse, `firstRowAsHeader` **false**olması ve `skipLineCount` belirtilmemişse belirtilmemiş olması gerekir.
-     - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
-     - `encodingName`Varsayılan olarak bırakılır veya "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32AS", "BIG5", "EUC-JP", "EUC-KR", "GB18030", "ISO-2022-JP", "ISO-2022-KR", "olarak ayarlanır. ISO-8859-1", "ISO-8859-2", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255".
-     - `quoteChar`**çift tırnak**, **tek tırnak**veya **boş dize** (quote char yok).
+    - **Sınırlandırılmış metin** biçimi için:
+        - `rowDelimiter`**\r\n**veya herhangi bir tek karakter. Satır sınırlayıcısı "\r\n" değilse, `firstRowAsHeader` **false**olması ve `skipLineCount` belirtilmemişse belirtilmemiş olması gerekir.
+        - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
+        - `encodingName`Varsayılan olarak bırakılır veya "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32AS", "BIG5", "EUC-JP", "EUC-KR", "GB18030", "ISO-2022-JP", "ISO-2022-KR", "olarak ayarlanır. ISO-8859-1", "ISO-8859-2", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255".
+        - `quoteChar`**çift tırnak**, **tek tırnak** veya **boş dize** (quote char yok).
+    - **JSON** biçimi için doğrudan kopyalama yalnızca havuz kar tanesi tablosunun yalnızca tek bir sütuna sahip olduğu ve bu sütunun veri türü **değişken**, **nesne**veya **dizi**olduğu durumu destekler.
+        - `compression`**sıkıştırma**, **gzip**, **bzip2**veya **söndür**olamaz.
+        - `encodingName`Varsayılan olarak bırakılır veya **UTF-8**olarak ayarlanır.
+        - Sütun eşleme belirtilmedi.
 
 - Kopyalama etkinliği kaynağı: 
 
@@ -298,7 +307,7 @@ Kaynak veri deprenizin ve biçimlendirmeniz bu bölümde açıklanan ölçütler
    - Kaynağınız bir klasörse, `recursive` true olarak ayarlanır.
    - `prefix`, `modifiedDateTimeStart` , `modifiedDateTimeEnd` belirtilmedi.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -348,7 +357,7 @@ Bu özelliği kullanmak için, Azure depolama hesabına ara hazırlama olarak ba
 > [!NOTE]
 > Hazırlama Azure Blob depolama bağlı hizmetinin, kar tanesi kopyalama komutunun gerektirdiği şekilde paylaşılan erişim imzası kimlik doğrulamasını kullanması gerekir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

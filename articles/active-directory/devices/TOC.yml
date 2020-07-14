@@ -79,6 +79,10 @@
       href: enterprise-state-roaming-group-policy-settings.md
     - name: Enterprise State Roaming Windows ayarları
       href: enterprise-state-roaming-windows-settings-reference.md
+    - name: Graph API’si
+      items:
+        - name: Cihaz kimliği API'si
+          href: /graph/api/resources/device?view=graph-rest-1.0
 - name: Kaynaklar
   items:
     - name: Azure geri bildirim forumu

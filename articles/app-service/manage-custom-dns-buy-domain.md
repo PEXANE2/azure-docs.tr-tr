@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535715"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220729"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için bir özel etki alanı adı satın alma
 
@@ -59,7 +59,7 @@ App Service planı **F1** katmanında değilse, **Ölçek artırma** sayfasını
 
 Ücretsiz olmayan katmanlardan birini seçin (**D1**, **B1**, **B2**, **B3** veya **Üretim** kategorisindeki herhangi bir katmanı). Ek seçenekler için **Ek seçeneklere bakın**’a tıklayın.
 
-**Uygula**'ya tıklayın.
+**Uygula**’ya tıklayın.
 
 ![Fiyatlandırma katmanını denetleyin](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -78,11 +78,11 @@ Azure App Service etki alanları hakkında fiyatlandırma bilgileri için [App S
 ### <a name="launch-buy-domains"></a>Satın alma etki alanlarını Başlat
 **Uygulama hizmetleri** sekmesinde uygulamanızın adına tıklayın, **Ayarlar**' ı seçin ve ardından **özel etki alanları** ' nı seçin.
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Vurgulanan özel etki alanlarını gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 **Özel etki alanları** sayfasında, **etki alanı satın al**' a tıklayın.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![Alan Al vurgulanmış ' i gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > **App Service etki alanları** bölümünü göremiyorsanız, Azure hesabınızdaki harcama limitini kaldırmanız gerekir (bkz. [Önkoşullar](#prerequisites)).
@@ -93,7 +93,7 @@ Azure App Service etki alanları hakkında fiyatlandırma bilgileri için [App S
 
 **App Service etki** alanı sayfasında, **etki alanı ara** kutusuna satın almak istediğiniz etki alanı adını yazın ve yazın `Enter` . Önerilen kullanılabilir etki alanları, metin kutusunun hemen altında gösterilir. Satın almak istediğiniz bir veya daha fazla etki alanını seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![Etki alanı arama kutusunu gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > Aşağıdaki [üst düzey etki alanları](https://wikipedia.org/wiki/Top-level_domain) App Service etki alanları tarafından desteklenir: _com_, _net_, _Co.uk_, _org_, _nl_, _in_, _biz_, _org.uk_ve _Co.in_.
@@ -106,9 +106,9 @@ Gerekli tüm alanları mümkün olduğunca fazla doğrulukta doldurmanız öneml
 
 Ardından, etki alanınız için istenen seçenekleri seçin. Açıklamalar için aşağıdaki tabloya bakın:
 
-| Ayar | Önerilen Değer | Description |
+| Ayar | Önerilen Değer | Açıklama |
 |-|-|-|
-|Gizlilik koruması | Etkinleştir | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
+|Gizlilik koruması | Etkinleştirme | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
 | Varsayılan konak adlarını ata | **www** ve**\@** | İsterseniz istenen konak adı bağlamalarını seçin. Etki alanı satın alma işlemi tamamlandığında, uygulamanıza seçili ana bilgisayar adları üzerinden erişilebilir. Uygulama [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)arkasındaysa, Traffic Manager bir kaydı desteklemediği için kök etki alanını (@) atama seçeneğini görmezsiniz. Etki alanı satın alma işlemi tamamlandıktan sonra ana bilgisayar adı atamaları üzerinde değişiklik yapabilirsiniz. |
 
 ### <a name="accept-terms-and-purchase"></a>Koşulları kabul edin ve satın alın
@@ -122,19 +122,19 @@ Hüküm ve ücretleri gözden geçirmek için **yasal koşullar** ' a tıklayın
 
 **App Service etki alanı** sayfasına dönün, **Tamam**' a tıklayın. İşlem devam ederken aşağıdaki bildirimleri görürsünüz:
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![Sürmekte olan doğrulama iletisini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![Satın alma işleminin başarılı olduğunu belirten bir ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>Ana bilgisayar adlarını test etme
 
 Uygulamanıza varsayılan ana bilgisayar adları atadıysanız, seçili her konak adı için bir başarı bildirimi de görürsünüz.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Seçili her konak adı için başarı bildirimini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 Ayrıca, özel **ana bilgisayar adları** bölümünde **özel etki alanları** sayfasında seçili konak adlarını görürsünüz.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![Özel etki alanları sayfasının özel ana bilgisayar adları bölümünde seçilen ana bilgisayar adlarını gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > Özel etki alanınız için **güvenli olmayan** bir etiket, henüz bir TLS/SSL sertifikasına bağlı olmadığı ve bir tarayıcıdan özel etki ALANıNA yönelik https isteğinin, tarayıcıya bağlı olarak bir hata veya uyarı alacağı anlamına gelir. TLS bağlamasını yapılandırmak için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
@@ -154,11 +154,11 @@ App Service etki alanını başka bir uygulama için de atayabilirsiniz. Adımla
 ### <a name="launch-add-hostname"></a>Ana bilgisayar adı Ekle 'yi Başlat
 **Uygulama hizmetleri** sayfasında, konak adlarını atamak istediğiniz uygulamanın adını seçin, **Ayarlar**' ı seçin ve ardından **özel etki alanları**' nı seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Vurgulanan özel etki alanlarını gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Satın alınan etki alanının **App Service etki alanları** bölümünde listelendiğinden emin olun, ancak seçmeyin. 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![App Service etki alanları bölümünde satın alınan etki alanınızı gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > Aynı abonelikteki tüm App Service etki alanları uygulamanın **özel etki alanları** sayfasında gösterilir. Etki alanınız uygulamanın aboneliğinden ise, ancak uygulamanın **özel etki alanları** sayfasında göremiyorsanız, **özel etki alanları** sayfasını yeniden açmayı deneyin veya Web sayfasını yenileyin. Ayrıca, ilerleme veya oluşturma hatalarıyla ilgili Azure portal en üstündeki bildirim zili ' nı kontrol edin.
@@ -180,14 +180,14 @@ Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya her
 
 İşlem tamamlandığında, atanan ana bilgisayar adı için bir başarı bildirimi görürsünüz.  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Atanan ana bilgisayar adı için başarı bildirimini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>Konak adı Ekle ' ye kapat
 **Konak adı Ekle** sayfasında, uygulamanıza istediğiniz diğer ana bilgisayar adını atayın. İşiniz bittiğinde **konak adı Ekle** sayfasını kapatın.
 
 Şimdi uygulamanızın **özel etki alanları** sayfasında yeni atanan ana bilgisayar adını görmeniz gerekir.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![Uygulamanızın özel etki alanları sayfasında yeni atanan ana bilgisayar adlarını gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>Ana bilgisayar adlarını test etme
 
@@ -201,15 +201,15 @@ Otomatik yenilemeyi devre dışı bırakmak istiyorsanız veya etki alanınızı
 
 **Uygulama hizmetleri** sekmesinde uygulamanızın adına tıklayın, **Ayarlar**' ı seçin ve ardından **özel etki alanları**' nı seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Vurgulanan özel etki alanlarını gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 **App Service etki alanları** bölümünde, yapılandırmak istediğiniz etki alanını seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![App Service etki alanları bölümünde satın alınan etki alanınızı gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 Etki alanının sol gezinti noktasından **etki alanı yenileme**' yi seçin. Etki alanınızı otomatik olarak yenilemeyi durdurmak için **kapalı**' yı ve ardından **Kaydet**' i seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![Etki alanınızı otomatik olarak yenileme seçeneğini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 Etki alanınızı el ile yenilemek için **etki alanını Yenile**' yi seçin. Ancak, bu düğme, [etki alanının süre sonundan 90 gün önce](#when-domain-expires)etkin değildir.
 
@@ -237,7 +237,7 @@ Azure 'da, bir App Service etki alanı için DNS kayıtları [Azure DNS](https:/
 
 Azure Portal, sol menüden **tüm hizmetler**  >  **App Service etki alanları**' nı seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![App Service etki alanlarının nereye erişebileceğini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Yönetilecek etki alanını seçin. 
 
@@ -245,7 +245,7 @@ Yönetilecek etki alanını seçin.
 
 Etki alanının sol menüsünde **DNS bölgesi**' ni seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![DNS bölgesinin nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 Bu eylem Azure DNS App Service etki alanının [DNS bölgesi](../dns/dns-zones-records.md) sayfasını açar. DNS kayıtlarını düzenleme hakkında daha fazla bilgi için, bkz. [Azure portal DNS bölgeleri yönetme](../dns/dns-operations-dnszones-portal.md).
 
@@ -257,7 +257,7 @@ App Service etki alanını satın aldıktan sonra, satın alma işlemini tam ger
 
 Azure Portal, sol menüden **tüm hizmetler**  >  **App Service etki alanları**' nı seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![App Service etki alanlarının nereye erişebileceğini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 İptal etmek veya silmek istediğiniz etki alanını seçin. 
 
@@ -265,13 +265,13 @@ Azure Portal, sol menüden **tüm hizmetler**  >  **App Service etki alanları**
 
 Etki alanının sol menüsünde **konak adı bağlamaları**' nı seçin. Tüm Azure hizmetlerinden konak adı bağlamaları burada listelenmiştir.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![Konak adı bağlamaları sayfasını gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 Tüm konak adı bağlamaları silinene kadar App Service etki alanını silemezsiniz.
 
 ' İ seçerek her bir konak adı bağlamayı Sil **...**  >  **Silin**. Tüm bağlamalar silindikten sonra **Kaydet**' i seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![Hostname bağlamalarının nerede silineceğini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>İptal et veya Sil
 
@@ -279,7 +279,7 @@ Etki alanının sol menüsünde **genel bakış**' ı seçin.
 
 Satın alınan etki alanındaki iptal süresi dolmuşsa, **satınalmayı Iptal et**' i seçin. Aksi takdirde, bunun yerine bir **Sil** düğmesi görürsünüz. Etki alanını para iadesi olmadan silmek için **Sil**' i seçin.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![Satın alınan bir etki alanının nerede silineceğini veya iptal edildiğini gösteren ekran görüntüsü.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 İşlemi onaylamak için **Evet**' i seçin.
 

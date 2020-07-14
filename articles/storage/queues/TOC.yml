@@ -164,6 +164,8 @@
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Hesap için şifreleme anahtarı modelini denetleme
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Depolama hesabı için altyapı şifrelemesini etkinleştirme
+              href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: İstemci tarafında şifrelemeyi yapılandırma
           items:
             - name: .NET
@@ -178,8 +180,12 @@
               href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Güvenli aktarım gerektir
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Aktarım Katmanı Güvenliğini etkinleştirme
-              href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Aktarım Katmanı Güvenliği'ni (TLS) yapılandırma
+              items:
+                - name: Depolama hesabı için en düşük TLS sürümünü yapılandırma
+                  href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: İstemci uygulaması için TLS'yi yapılandırma
+                  href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Veri yedekliğini yönetme
       items:
         - name: Verilerin nasıl çoğaltıldığını değiştirme

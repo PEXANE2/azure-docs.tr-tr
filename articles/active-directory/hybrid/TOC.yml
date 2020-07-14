@@ -106,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: Azure AD Connect Federasyon’u veya diğer Özel ayarları yükleme
           href: how-to-connect-install-custom.md
+        - name: Yapılandırma ayarlarını içeri ve dışarı aktarma
+          href: how-to-connect-import-export-config.md
         - name: Azure AD Connect’i Geçişli Kimlik Doğrulaması (PTA) ile yükleme
           href: how-to-connect-pta-quick-start.md
         - name: Azure AD Connect Health’i yükleme

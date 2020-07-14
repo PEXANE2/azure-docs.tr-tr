@@ -44,6 +44,14 @@
       href: troubleshooting-identity-protection-faq.md
 - name: Başvuru
   items:
+    - name: Graph API’si
+      items:
+        - name: riskDetection API'si
+          href: /graph/api/resources/riskdetection?view=graph-rest-v1.0
+        - name: riskyUsers API'si
+          href: /graph/api/resources/riskyuser?view=graph-rest-v1.0
+        - name: signIn API'si
+          href: /graph/api/resources/signin?view=graph-rest-v1.0
     - name: Sözlük
       href: reference-identity-protection-glossary.md
 - name: Kaynaklar
