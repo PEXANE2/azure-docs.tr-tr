@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702610"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207215"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama
 
@@ -141,12 +141,12 @@ Aşağıdaki tablolarda fatura bölümleri bağlamında görevleri tamamlamak i�
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>Fatura bölümü izinlerini ve özelliklerini yönetme
 
-|Görevler|Fatura bölümü sahibi|Fatura bölümü katkıda bulunanı|Fatura bölümü okuyucusu|Azure aboneliği oluşturucusu|Faturalama hesabı sahibi|Faturalama hesabı katkıda bulunanı|Faturalama hesabı okuyucusu | |
-|---|---|---|---|---|---|---|---|---|
-|Fatura bölümü üzerindeki tüm izinleri görüntüleme|✔|✔|✔|✔|✔|✔|✔| |
-|Diğer kullanıcılara fatura bölümünü görüntüleme ve yönetme izinleri verme|✔|✘|✘|✘|✘|✘|✘| |
-|Fatura bölümü özelliklerini görüntüleme|✔|✔|✔|✔|✔|✔|✔| |
-|Fatura bölümü özelliklerini güncelleştirme|✔|✔|✘|✘|✘|✘|✘|✘|
+|Görevler|Fatura bölümü sahibi|Fatura bölümü katkıda bulunanı|Fatura bölümü okuyucusu|Azure aboneliği oluşturucusu|Faturalama hesabı sahibi|Faturalama hesabı katkıda bulunanı|Faturalama hesabı okuyucusu |
+|---|---|---|---|---|---|---|---|
+|Fatura bölümü üzerindeki tüm izinleri görüntüleme|✔|✔|✔|✔|✔|✔|✔|
+|Diğer kullanıcılara fatura bölümünü görüntüleme ve yönetme izinleri verme|✔|✘|✘|✘|✘|✘|✘|
+|Fatura bölümü özelliklerini görüntüleme|✔|✔|✔|✔|✔|✔|✔|
+|Fatura bölümü özelliklerini güncelleştirme|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>Fatura bölümü için ürünleri yönetme
 
@@ -176,7 +176,7 @@ Aşağıdaki tabloda abonelik bağlamında görevleri tamamlamak için ihtiyacı
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Azure portalında yerleşik rolleri yönetme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
