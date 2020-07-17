@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 04343f684539307957cd635822ba1ba5a1ce24c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313782"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201089"
 ---
-# <a name="get-started-with-azure-data-box"></a>Azure Data Box’ı kullanmaya başlayın 
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Azure’a verileri içeri aktarmak için Azure Data Box kullanmaya başlama
 
 ::: zone target="docs"
 
-Bu hızlı başlangıçta Azure portalı kullanarak Azure Data Box'ı dağıtma adımları anlatılmaktadır. Adımlar kablolama, yapılandırma ve Azure'a yükleyebilmesi için verileri Data Box'a kopyalama işlemlerinden oluşur. Hızlı başlangıç Azure portalında ve cihazın yerel web kullanıcı arabiriminde gerçekleştirilir.
+Bu hızlı başlangıçta bir içeri aktarma siparişi için Azure portalı kullanarak Azure Data Box'ı dağıtma adımları anlatılmaktadır. Adımlar kablolama, yapılandırma ve Azure'a yükleyebilmesi için verileri Data Box'a kopyalama işlemlerinden oluşur. Hızlı başlangıç adımları Azure portalında ve cihazın yerel web kullanıcı arabiriminde gerçekleştirilir.
 
 Ayrıntılı adım adım dağıtım ve izleme yönergeleri için, [Öğretici: Azure Data Box sipariş etme](data-box-deploy-ordered.md) bölümüne gidin
 
@@ -28,7 +28,7 @@ Ayrıntılı adım adım dağıtım ve izleme yönergeleri için, [Öğretici: A
 
 ::: zone target="chromeless"
 
-Bu kılavuzda Azure portalı kullanarak Azure Data Box'ı dağıtma adımları anlatılmaktadır. Bu adımlar önkoşulları gözden geçirmeyi, kablo bağlantısını yapıp cihazınıza bağlanmayı ve verilerinizi Azure'a yükleyebilmek için cihazınıza kopyalamayı içerir.
+Bu kılavuzda içeri aktarma için Azure portalı kullanarak Azure Data Box'ı dağıtma adımları anlatılmaktadır. Bu adımlar önkoşulları gözden geçirmeyi, kablo bağlantısını yapıp cihazınıza bağlanmayı ve verilerinizi Azure'a yükleyebilmek için cihazınıza kopyalamayı içerir.
 
 ::: zone-end
 

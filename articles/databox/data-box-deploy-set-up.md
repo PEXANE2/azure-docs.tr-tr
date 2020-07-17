@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 850144e4835b43e219fa059bbc1c92bb3ef412f4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200511"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205240"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Öğretici: Azure Data Box’ınız için kabloları bağlama ve bağlanma
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Öğretici: Azure Data Box için kabloları bağlama ve bağlanma
 
 ::: zone-end
 
@@ -38,21 +38,23 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Data Box’ınızın kablolarını bağlama
 > * Data Box’ınıza bağlanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. [Öğretici: Azure Data Box sipariş etme](data-box-deploy-ordered.md) konusunu tamamladınız.
-2. Data Box’ınızı teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu. 
+1. Azure Data Box siparişi verdiniz.
+    - İçeri aktarma siparişi için bkz. [Öğretici: Azure Data Box sipariş etme](data-box-deploy-ordered.md) bölümünü tamamladınız.
+    - Dışarı aktarma siparişi için bkz. [Öğretici: Azure Data Box sipariş etme](data-box-deploy-export-ordered.md) bölümüne gidin
+1. Data Box’ınızı teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu. 
     - Cihazın üzerindeki etiketin altındaki şeffaf bölüme yerleştirilmiş bir sevkiyat etiketi vardır. Bu etiketi iade için kullanmak üzere saklayın.
     - Avrupa'daki bazı bölgelerde cihaz bir kutu içinde gönderilebilir. Cihazı paketten çıkarın ve iade gönderimi için kutuyu saklayın.
-3. [Data Box güvenlik yönergelerini](data-box-safety.md) gözden geçirdiniz.
-4. 100 TB depolama cihazınızla birlikte kullanılacak bir topraklanmış güç kablosu aldınız.
-5. Data Box üzerinden kopyalamak istediğiniz verileri içeren bir ana bilgisayarınız var. Ana bilgisayarınız:
+1. [Data Box güvenlik yönergelerini](data-box-safety.md) gözden geçirdiniz.
+1. 100 TB depolama cihazınızla birlikte kullanılacak bir topraklanmış güç kablosu aldınız.
+1. Data Box’ınıza veri kopyalamak (içeri aktarma siparişi) veya Data Box’tan veri kopyalamak (dışarı aktarma siparişi) için kullanılan bir ana bilgisayarınız var. Ana bilgisayarınız:
     - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
     - Yüksek hızlı ağa bağlısınız. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanılabilir ancak kopyalama hızı etkilenir. 
-6. Data Box’ı yerleştirebileceğiniz düz bir yüzeye erişiminiz olmalıdır. Cihazı standart bir rafa yerleştirmek istiyorsanız, veri merkezi rafınızda bir 7U yuvası olmalıdır. Cihazı düz veya dik şekilde rafa yerleştirebilirsiniz.
-7. Data Box'ınızı ana bilgisayara bağlamak için aşağıdaki kabloları temin ettiniz.
+1. Data Box’ı yerleştirebileceğiniz düz bir yüzeye erişiminiz olmalıdır. Cihazı standart bir rafa yerleştirmek istiyorsanız, veri merkezi rafınızda bir 7U yuvası olmalıdır. Cihazı düz veya dik şekilde rafa yerleştirebilirsiniz.
+1. Data Box'ınızı ana bilgisayara bağlamak için aşağıdaki kabloları temin ettiniz.
     - Bir veya daha fazla 10 GbE SFP+ Twinax bakır ya da SFP+ fiber optik kablo (DATA 1, DATA 2 ağ arabirimleri ile kullanın). Data Box; PCI Express 3.0 ağ arabirimi ile birlikte Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Bağdaştırıcılara sahiptir; bu nedenle bu arabirimle uyumlu kablolar çalışmalıdır. Örneğin, şirket içi testlerde bir SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M kablo kullanılmıştır. Daha fazla bilgi için bkz. [Desteklenen Mellanox kablo ve anahtarlarının listesi](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Bir RJ-45 CAT 6 ağ kablosu (MGMT ağ arabirimi ile kullanın)
     - Bir RJ-45 CAT 6A VEYA bir RJ-45 CAT 6 ağ kablosu (sırasıyla 10 Gb/sn veya 1 Gb/sn olarak yapılandırılmış DATA 3 ağ arabirimi ile birlikte kullanın)
@@ -135,7 +137,7 @@ Yerel web kullanıcı arabirimi ve portal kullanıcı arabirimini kullanarak cih
 
 Veri ağı arabirimleri yapılandırıldıktan sonra DATA 1 - DATA 3 arabirimlerinden herhangi birinin IP adresini kullanarak `https://<IP address of a data network interface>` adresinden yerel web arabirimine erişebilirsiniz. 
 
-Cihaz kurulumu tamamlandıktan sonra cihaz paylaşımlarına bağlanabilir ve verileri bilgisayarınızdan cihaza kopyalayabilirsiniz. 
+Cihaz kurulumu tamamlandıktan sonra cihaz paylaşımlarına bağlanabilir ve verileri kopyalayabilirsiniz. 
 
 ::: zone-end
 
@@ -143,7 +145,7 @@ Cihaz kurulumu tamamlandıktan sonra cihaz paylaşımlarına bağlanabilir ve ve
 
 ## <a name="connect-your-device"></a>Cihazınızı bağlama
 
-1. Cihaz parolasını almak için **Azure portalında**[Genel > Cihaz ayrıntıları](https://portal.azure.com)'na gidin.
+1. Cihaz parolasını almak için [Azure portalında](https://portal.azure.com)**Genel > Cihaz ayrıntıları**'na gidin.
 2. Data Box'a bağlanmak için kullandığınız bilgisayardaki Ethernet bağdaştırıcısına 192.168.100.5 statik IP adresini ve 255.255.255.0 alt ağını atayın. Cihazın yerel web kullanıcı arabirimine `https://192.168.100.10` adresinden erişin. Siz cihazı açtıktan sonra bağlantı kurulması 5 dakika kadar sürebilir. 
 3. Azure portalından alınan parolayı kullanarak oturum açın. Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata görürsünüz. Web sayfasına ilerlemek için tarayıcıya özel yönergeleri izleyin.
 4. Varsayılan olarak, 10 Gb/sn (veya 1 Gb/sn) veri arabirimi için ağ ayarları DHCP olarak yapılandırılır. Gerekirse, bu arabirimi statik olarak yapılandırabilir ve bir IP adresi sağlayabilirsiniz. 
@@ -161,10 +163,15 @@ Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 > * Data Box’ınızın kablolarını bağlama
 > * Data Box’ınıza bağlanma
 
-Data Box'ınıza verileri kopyalama hakkında bilgi edinmek için sonraki öğreticiye geçin.
+Verileri kopyalama hakkında bilgi edinmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Data Box'a verilerinizi kopyalama](./data-box-deploy-copy-data.md)
+> [İçeri aktarma siparişi için Azure Data Box'a verilerinizi kopyalama](./data-box-deploy-copy-data.md)
+
+Veya
+
+> [!div class="nextstepaction"]
+> [Dışarı aktarma siparişi için Azure Data Box'tan verilerinizi kopyalama](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 

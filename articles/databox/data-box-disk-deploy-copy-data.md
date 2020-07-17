@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214335"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231548"
 ---
 ::: zone target="docs"
 
@@ -111,7 +111,7 @@ Bilgisayarınızla Data Box Disk arasında bağlantı kurmak ve veri kopyalamak 
     |/NFL                | Dosya adlarının günlüğü alınmayacağını belirtir.        |
     |/NDL                | Dizin adlarının günlüğü alınmayacağını belirtir.        |
     |/FFT                | FAT dosya sürelerini (iki saniyelik duyarlık) kullanır.        |
-    |/Günlük:\<Günlük Dosyası>     | Durum çıkışını günlük dosyasına yazar (var olan günlük dosyasının üzerine yazar).         |
+    |/Log:\<Log File>     | Durum çıkışını günlük dosyasına yazar (var olan günlük dosyasının üzerine yazar).         |
 
     Her birinde birden fazla işin çalıştığı birden fazla disk kullanılabilir.
 
@@ -273,7 +273,7 @@ Veri kopyalama işlemi tamamlandıktan sonra verilerinizi doğrulamaya geçebili
 
 Verileri kopyalamak için Split Copy aracını kullanmadıysanız verilerinizi doğrulamanız gerekir. Verileri doğrulamak için aşağıdaki adımları uygulayın.
 
-1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın.
+1. Sağlama toplamı doğrulaması için sürücünüzün *DataBoxDiskImport* klasöründe `DataBoxDiskValidation.cmd` komutunu çalıştırın. Bu yalnızca Windows ortamında kullanılabilir. Linux kullanıcılarının diske kopyalanan kaynak verilerinin [önkoşulları](https://docs.microsoft.com/azure/databox/data-box-disk-limits) karşıladığını doğrulaması gerekir.
     
     ![Data Box Diski doğrulama aracı çıktısı](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

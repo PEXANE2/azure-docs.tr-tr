@@ -8,22 +8,28 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686418"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252462"
 ---
-# <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Hızlı Başlangıç: Bir Azure Resource Manager şablonuyla bütçe oluşturma
+# <a name="quickstart-create-a-budget-with-an-arm-template"></a>Hızlı Başlangıç: ARM şablonuyla bütçe oluşturma
 
-Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. Bütçeler, maliyetleri önceden yönetmek için diğer kullanıcıları harcamaları konusunda bilgilendirmenize ve zaman içindeki harcamayı izlemenize yardımcı olur. Oluşturduğunuz bütçe eşikleri aşıldığında bildirimler tetiklenir. Kaynaklarınızın hiçbiri etkilenmez ve tüketiminiz durdurulmaz. Bütçeleri kullanarak maliyet analizi sırasında harcamaları karşılaştırabilir ve izleyebilirsiniz. Bu hızlı başlangıçta, Resource Manager şablonu kullanılarak nasıl bütçe oluşturulacağı gösterilir.
+Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. Bütçeler, maliyetleri önceden yönetmek için diğer kullanıcıları harcamaları konusunda bilgilendirmenize ve zaman içindeki harcamayı izlemenize yardımcı olur. Oluşturduğunuz bütçe eşikleri aşıldığında bildirimler tetiklenir. Kaynaklarınızın hiçbiri etkilenmez ve tüketiminiz durdurulmaz. Bütçeleri kullanarak maliyet analizi sırasında harcamaları karşılaştırabilir ve izleyebilirsiniz. Bu hızlı başlangıçta, Azure Resource Manager şablonu (ARM şablonu) kullanılarak nasıl bütçe oluşturulacağı gösterilir.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Resource Manager şablonu yalnızca Kurumsal Anlaşmalar (EA) kapsamındaki Azure aboneliklerini destekler. Diğer abonelik türleri şablon tarafından desteklenmez.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+ARM şablonu yalnızca Kurumsal Anlaşmalar (EA) kapsamındaki Azure aboneliklerini destekler. Diğer abonelik türleri şablon tarafından desteklenmez.
 
 Bütçe oluşturmak ve yönetmek için katkıda bulunan izninizin olması gerekir. EA abonelikleri ve kaynak grupları için ayrı bütçeler oluşturabilirsiniz. Ancak EA ödeme hesapları için bütçe oluşturamazsınız. Azure EA aboneliklerinde bütçeleri görüntülemek için okuma yetkisine sahip olmanız gerekir.
 
@@ -39,11 +45,9 @@ Aşağıdaki Azure izinleri veya kapsamları abonelik başına kullanıcı ve gr
 
 Maliyet Yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [Maliyet Yönetimi verilerine erişim atama](assign-access-acm-data.md).
 
-## <a name="create-a-budget"></a>Bütçe oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/create-budget) alınmıştır.
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/create-budget) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
@@ -51,7 +55,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablo
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets): Azure bütçesi oluşturma.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir bütçe oluşturur.
 
