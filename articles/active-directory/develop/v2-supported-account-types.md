@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583093"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518139"
 ---
 # <a name="supported-account-types"></a>Desteklenen hesap türleri
 
@@ -45,7 +45,6 @@ Bazı hesap türleri belirli kimlik doğrulama akışlarıyla kullanılamaz. Ör
 - Daemon uygulamaları yalnızca Azure AD kuruluşları ile kullanılabilir. Microsoft kişisel hesaplarını işlemek için Daemon uygulamalarını kullanmayı denemek mantıklı değildir. Yönetici onayı hiçbir şekilde verilmeyecektir.
 - Tümleşik Windows kimlik doğrulaması akışını yalnızca iş veya okul hesaplarıyla (kuruluşunuzda veya herhangi bir kuruluşta) kullanabilirsiniz. Tümleşik Windows kimlik doğrulaması etki alanı hesaplarıyla çalışarak, makinelerin etki alanına katılmış veya Azure AD 'ye katılmış olmasını gerektirir. Bu akış kişisel Microsoft hesapları için anlamlı değildir.
 - [Kaynak sahibi parola kimlik bilgileri verme](./v2-oauth-ropc.md) (Kullanıcı adı/parola) kişisel Microsoft hesaplarıyla kullanılamaz. Kişisel Microsoft hesapları, kullanıcının her oturum açma oturumunda kişisel kaynaklara erişmesini gerektirir. Bu davranış, etkileşimli olmayan akışlarla uyumlu değildir.
-- Cihaz kod akışı kişisel Microsoft hesaplarıyla çalışmaz.
 
 ## <a name="account-types-in-national-clouds"></a>Ulusal bulutlarda hesap türleri
 

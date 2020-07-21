@@ -4,12 +4,12 @@ description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516065"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 
@@ -20,7 +20,7 @@ Etkinlik günlüğü uyarıları, uyarıda belirtilen koşullara uyan yeni bir e
 Bu uyarılar Azure kaynaklarına yöneliktir ve bir Azure Resource Manager şablonu kullanılarak oluşturulabilir. Ayrıca, Azure portal oluşturulabilir, güncelleştirilemeyebilir veya silinebilirler. Genellikle, Azure aboneliğinizdeki kaynaklarda belirli değişiklikler gerçekleştiğinde bildirim almak için etkinlik günlüğü uyarıları oluşturursunuz. Uyarılar genellikle belirli kaynak grupları veya kaynakları kapsamlandırılır. Örneğin, **Myüretim resourcegroup** örnek kaynak grubundaki herhangi bir sanal makine silindiğinde bildirim almak isteyebilirsiniz. Ya da aboneliğinizdeki bir kullanıcıya herhangi bir yeni rol atanmışsa bildirim almak isteyebilirsiniz.
 
 > [!IMPORTANT]
-> Hizmet durumu bildirimi uyarıları, etkinlik günlüğü uyarısı oluşturma arabirimi aracılığıyla oluşturulamıyor. Hizmet durumu bildirimlerini oluşturma ve kullanma hakkında daha fazla bilgi edinmek için bkz. [hizmet durumu bildirimlerinde etkinlik günlüğü uyarıları alma](alerts-activity-log-service-notifications.md).
+> Hizmet durumu bildirimi uyarıları, etkinlik günlüğü uyarısı oluşturma arabirimi aracılığıyla oluşturulamıyor. Hizmet durumu bildirimlerini oluşturma ve kullanma hakkında daha fazla bilgi edinmek için bkz. [hizmet durumu bildirimlerinde etkinlik günlüğü uyarıları alma](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 Uyarı kuralları oluştururken, aşağıdakilerden emin olun:
 
@@ -28,6 +28,7 @@ Uyarı kuralları oluştururken, aşağıdakilerden emin olun:
 - Ölçütler, uyarının yapılandırıldığı düzey, durum, arayan, kaynak grubu, kaynak KIMLIĞI veya kaynak türü olay kategorisi olmalıdır.
 - Uyarı yapılandırması JSON öğesinde "anyOf" koşulu veya iç içe geçmiş koşullar yoktur. Temel olarak, daha fazla "allOf" veya "anyOf" koşulları olmadan yalnızca bir "allOf" koşuluna izin verilir.
 - Kategori "Yönetici" olduğunda, uyarısında yukarıdaki ölçütlerden en az birini belirtmeniz gerekir. Etkinlik günlüklerinde her olay oluşturulduğunda etkinleştiren bir uyarı oluşturmeyebilirsiniz.
+- Etkinlik günlüğü uyarı kategorisinde olaylar için uyarılar oluşturulamıyor.
 
 ## <a name="azure-portal"></a>Azure portal
 
@@ -101,7 +102,7 @@ Aşağıdaki yordamı kullanın.
     Bir kuralı etkinleştirebilir, devre dışı bırakabilir, düzenleyebilir veya silebilirsiniz. Etkinlik günlüğü kurallarını yönetme hakkında daha fazla bilgi edinin.
 
 
-Bir etkinlik günlüğünde hangi uyarı kurallarının oluşturulabileceği koşullarını anlamak için basit bir benzerleme vurguladı, [Azure Portal Etkinlik günlüğü](activity-log-view.md#azure-portal)aracılığıyla olayları keşfetmeye veya filtrelemeye yöneliktir. **Azure izleyici-etkinlik günlüğü** ekranında, gerekli olayı filtreleyebilir veya bulabilir ve ardından **etkinlik günlüğü uyarısı Ekle** düğmesini kullanarak bir uyarı oluşturabilirsiniz. Ardından, daha önce gösterilen 4 ile 7 arasındaki adımları uygulayın.
+Bir etkinlik günlüğünde hangi uyarı kurallarının oluşturulabileceği koşullarını anlamak için basit bir benzerleme vurguladı, [Azure Portal Etkinlik günlüğü](./activity-log.md#view-the-activity-log)aracılığıyla olayları keşfetmeye veya filtrelemeye yöneliktir. **Azure izleyici-etkinlik günlüğü** ekranında, gerekli olayı filtreleyebilir veya bulabilir ve ardından **etkinlik günlüğü uyarısı Ekle** düğmesini kullanarak bir uyarı oluşturabilirsiniz. Ardından, daha önce gösterilen 4 ile 7 arasındaki adımları uygulayın.
     
  ![Etkinlik günlüğünden uyarı Ekle](media/alerts-activity-log/add-activity-log.png)
     
@@ -243,7 +244,7 @@ Aşağıdaki alanlar, koşullar alanları için Azure Resource Manager şablonun
 > Yeni etkinlik günlüğü uyarı kuralının etkin olması 5 dakikaya kadar sürebilir.
 
 ## <a name="rest-api"></a>REST API 
-[Azure Izleyici etkinlik günlüğü uyarıları API 'si](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) bir REST API. Azure Resource Manager REST API tam uyumludur. PowerShell aracılığıyla Kaynak Yöneticisi cmdlet 'i veya Azure CLı kullanılarak kullanılabilir.
+[Azure Izleyici etkinlik günlüğü uyarıları API 'si](/rest/api/monitor/activitylogalerts) bir REST API. Azure Resource Manager REST API tam uyumludur. PowerShell aracılığıyla Kaynak Yöneticisi cmdlet 'i veya Azure CLı kullanılarak kullanılabilir.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -262,29 +263,29 @@ Burada sampleActivityLogAlert.parameters.js, uyarı kuralı oluşturmak için ge
 
 Etkinlik günlüğü uyarıları için kullanılabilir adanmış PowerShell cmdlet 'leri vardır:
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert): yeni bir etkinlik günlüğü uyarısı oluşturur veya var olan bir etkinlik günlüğü uyarısını güncelleştirir.
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert): bir veya daha fazla etkinlik günlüğü uyarı kaynağını alır.
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert): var olan bir etkinlik günlüğü uyarısını etkinleştirir ve etiketlerini ayarlar.
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): var olan bir etkinlik günlüğü uyarısını devre dışı bırakır ve etiketlerini ayarlar.
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert): bir etkinlik günlüğü uyarısını kaldırır.
+- [Set-AzActivityLogAlert](/powershell/module/az.monitor/set-azactivitylogalert): yeni bir etkinlik günlüğü uyarısı oluşturur veya var olan bir etkinlik günlüğü uyarısını güncelleştirir.
+- [Get-AzActivityLogAlert](/powershell/module/az.monitor/get-azactivitylogalert): bir veya daha fazla etkinlik günlüğü uyarı kaynağını alır.
+- [Enable-AzActivityLogAlert](/powershell/module/az.monitor/enable-azactivitylogalert): var olan bir etkinlik günlüğü uyarısını etkinleştirir ve etiketlerini ayarlar.
+- [Disable-AzActivityLogAlert](/powershell/module/az.monitor/disable-azactivitylogalert): var olan bir etkinlik günlüğü uyarısını devre dışı bırakır ve etiketlerini ayarlar.
+- [Remove-AzActivityLogAlert](/powershell/module/az.monitor/remove-azactivitylogalert): bir etkinlik günlüğü uyarısını kaldırır.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
-Ayarla [az Monitor Activity-Log Alert](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) altında ADANMıŞ Azure CLI komutları, etkinlik günlüğü uyarı kurallarını yönetmek için kullanılabilir.
+Ayarla [az Monitor Activity-Log Alert](/cli/azure/monitor/activity-log/alert) altında ADANMıŞ Azure CLI komutları, etkinlik günlüğü uyarı kurallarını yönetmek için kullanılabilir.
 
 Yeni bir etkinlik günlüğü uyarı kuralı oluşturmak için bu sırayla aşağıdaki komutları kullanın:
 
-1. [az Monitor etkinlik-günlük uyarısı oluştur](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create): yeni bir etkinlik günlüğü uyarı kuralı kaynağı oluşturun.
-1. [az Monitor Activity-Log uyarı Scope](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope): oluşturulan etkinlik günlüğü uyarı kuralı için kapsam ekleyin.
-1. [az Monitor etkinlik-günlük Uyarı eylemi-grup](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group): etkinlik günlüğü uyarı kuralına bir eylem grubu ekleyin.
+1. [az Monitor etkinlik-günlük uyarısı oluştur](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create): yeni bir etkinlik günlüğü uyarı kuralı kaynağı oluşturun.
+1. [az Monitor Activity-Log uyarı Scope](/cli/azure/monitor/activity-log/alert/scope): oluşturulan etkinlik günlüğü uyarı kuralı için kapsam ekleyin.
+1. [az Monitor etkinlik-günlük Uyarı eylemi-grup](/cli/azure/monitor/activity-log/alert/action-group): etkinlik günlüğü uyarı kuralına bir eylem grubu ekleyin.
 
-Bir etkinlik günlüğü uyarı kuralı kaynağını almak için [az Monitor Activity-Log uyarı Show](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
-)Azure CLI komutunu kullanın. Bir kaynak grubundaki tüm etkinlik günlüğü uyarı kuralı kaynaklarını görüntülemek için [az Monitor Activity-Log uyarı List](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)' i kullanın.
-Etkinlik günlüğü uyarı kuralı kaynakları Azure CLı komutu kullanılarak kaldırılabilir, [az Monitor Activity-Log Alert Delete](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
+Bir etkinlik günlüğü uyarı kuralı kaynağını almak için [az Monitor Activity-Log uyarı Show](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+)Azure CLI komutunu kullanın. Bir kaynak grubundaki tüm etkinlik günlüğü uyarı kuralı kaynaklarını görüntülemek için [az Monitor Activity-Log uyarı List](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)' i kullanın.
+Etkinlik günlüğü uyarı kuralı kaynakları Azure CLı komutu kullanılarak kaldırılabilir, [az Monitor Activity-Log Alert Delete](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Etkinlik günlükleri için Web kancası şeması](../../azure-monitor/platform/activity-log-alerts-webhook.md)hakkında bilgi edinin.
 - [Etkinlik günlüklerine genel bakış](../../azure-monitor/platform/activity-log-alerts.md)konusunu okuyun.
 - [Eylem grupları](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.  
-- [Hizmet durumu bildirimleri](../../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Hizmet durumu bildirimleri](../../service-health/service-notifications.md)hakkında bilgi edinin.

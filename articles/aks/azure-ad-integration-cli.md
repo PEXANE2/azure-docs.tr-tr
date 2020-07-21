@@ -1,25 +1,28 @@
 ---
-title: Azure Active Directory'yi Azure Kubernetes Service ile tümleştirme
-description: Azure CLı 'yı kullanarak Azure Kubernetes Service (AKS) kümesi oluşturma ve Azure Active Directory etkin yapma hakkında bilgi edinin
+title: Azure Active Directory Azure Kubernetes hizmeti ile tümleştirme (eski)
+description: Azure CLı 'yı kullanarak Azure Kubernetes Service (AKS) kümesi (eski) oluşturma ve Azure Active Directory etkin yapma hakkında bilgi edinin
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252088"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518037"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLı 'yı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme (eski)
 
 Azure Kubernetes hizmeti (AKS), Kullanıcı kimlik doğrulaması için Azure Active Directory (AD) kullanacak şekilde yapılandırılabilir. Bu yapılandırmada, bir Azure AD kimlik doğrulama belirteci kullanarak bir AKS kümesinde oturum açabilirsiniz. Küme işleçleri Ayrıca, bir kullanıcının kimliğine veya dizin grubu üyeliğine bağlı olarak Kubernetes rol tabanlı erişim denetimi 'ni (RBAC) yapılandırabilir.
 
 Bu makalede, gerekli Azure AD bileşenlerini oluşturma, ardından Azure AD özellikli bir kümeyi dağıtma ve AKS kümesinde temel RBAC rolü oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
 Bu makalede kullanılan tam örnek betik için bkz. Azure [CLI örnekleri-Azure AD Ile AKS tümleştirmesi][complete-script].
+
+> [!Important]
+> AKS, sunucu veya istemci uygulamasını yönetmenizi gerektirmeyen, geliştirilmiş, gelişmiş bir [Azure AD][managed-aad] deneyimine sahiptir. Geçirmek istiyorsanız [buradaki][managed-aad-migrate]yönergeleri izleyin.
 
 ## <a name="the-following-limitations-apply"></a>Aşağıdaki sınırlamalar geçerlidir:
 
@@ -280,3 +283,5 @@ Kimlik ve kaynak denetiminde en iyi uygulamalar için bkz. [AKS 'de kimlik doğr
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[managed-aad]: managed-aad.md
+[managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration

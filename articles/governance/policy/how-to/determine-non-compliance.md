@@ -3,12 +3,12 @@ title: Uyumsuzluk nedenlerini belirleme
 description: Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Uyumsuzluğun ne olduğunu öğrenin.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512036"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -80,7 +80,7 @@ Bu ayrıntılar, bir kaynağın Şu anda uyumsuz olduğunu, ancak kaynağın uyu
 
 Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](../concepts/definition-structure.md#conditions) eşler:
 
-|Nedeni | Koşul |
+|Neden | Koşul |
 |-|-|
 |Geçerli değer, anahtar olarak hedef değeri içermelidir. |containsKey veya notcontainskey **değil** |
 |Geçerli değer hedef değer içermelidir. |notcontains içerir veya **içermez** |
@@ -133,7 +133,7 @@ Install-Module Az.GuestConfiguration
 Aşağıdaki komutu kullanarak, bir VM için tüm konuk atamalarının geçerli durumunu görüntüleyebilirsiniz:
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
 ```
 
 ```output
@@ -146,7 +146,7 @@ Audit that an application is not installed inside Windows VMs.            {[Inst
 Yalnızca VM 'nin neden _uyumsuz_olduğunu açıklayan _neden_ ifadesini görüntülemek için, yalnızca Child özelliğini döndürün.
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
 ```
 
 ```output

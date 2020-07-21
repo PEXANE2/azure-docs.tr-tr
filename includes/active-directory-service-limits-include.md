@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: active-directory
 author: curtand
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: d906a3dd072770a05b818fd3ca8de359b8427728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19952b807fcd315ca579454ce082895af929c2e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80986653"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515906"
 ---
 Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamalarını ve diğer hizmet sınırlarını burada bulabilirsiniz.
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamaların
 |Uygulama bildirimi |Uygulama bildiriminde en fazla 1200 giriş eklenebilir. |
 | Gruplar |<ul><li>Bir Kullanıcı, bir Azure AD kuruluşunda en fazla 250 grup oluşturabilir.</li><li>Bir Azure AD kuruluşunda en fazla 5000 dinamik grup olabilir.<li>Tek bir grubun sahibi olarak en fazla 100 kullanıcı atanabilir.</li><li>Herhangi bir sayıda Azure AD kaynağı tek bir grubun üyesi olabilir.</li><li>Bir kullanıcı, herhangi bir sayıda grubun üyesi olabilir.</li><li>Bir grupta, Azure AD Connect kullanarak şirket içi Active Directory'den Azure Active Directory'ye eşitleyebileceğiniz üye sayısı 50.000 ile sınırlıdır.</li><li>Azure AD 'de iç içe gruplar tüm senaryolarda desteklenmez</li></ul><br/> Şu anda, iç içe gruplar ile desteklenen senaryolar aşağıda verilmiştir.<ul><li> Bir grup, başka bir grubun üyesi olarak eklenebilir ve gruba iç içe geçme elde edebilirsiniz.</li><li> Grup üyeliği talepleri (bir uygulama, belirteç içindeki Grup üyeliği taleplerini alacak şekilde yapılandırıldığında, oturum açan kullanıcının üyesi olduğu iç içe gruplar dahil edilir)</li><li>Koşullu erişim (bir gruba koşullu erişim ilkesi kapsamı kullanılırken)</li><li>Self servis parola sıfırlamaya erişimi sınırlandırma</li><li>Hangi kullanıcıların Azure AD JOIN ve cihaz kaydı yapabileceği sınırlandırma</li></ul><br/>Aşağıdaki senaryolar iç içe gruplar için desteklenmez:<ul><li> Uygulama rolü ataması (bir uygulamaya Grup atama desteklenir, ancak hem erişim hem de sağlama için, doğrudan atanan grup içinde iç içe gruplar erişime sahip olmaz)</li><li>Grup tabanlı lisanslama (bir grubun tüm üyelerine otomatik olarak lisans atama)</li><li>Office 365 grupları.</li></ul> |
 | Uygulama Ara Sunucusu | <ul><li>Her uygulama proxy uygulaması için saniyede en fazla 500 işlem</li><li>Azure AD kuruluşu için saniye başına en fazla 750 işlem</li></ul><br/>Bir işlem, benzersiz bir kaynak için tek bir http isteği ve yanıtı olarak tanımlanır. Kısıtlandığınızda, istemciler bir 429 yanıtı (çok fazla istek) alır. |
-| Erişim Paneli |<ul><li>Erişim Paneli'nde kullanıcı başına görülebilecek uygulama sayısı sınırı yoktur. Bu, Azure AD Premium veya Enterprise Mobility Suite lisansları atanmış kullanıcılar için geçerlidir.</li><li>Erişim Paneli'nde her kullanıcı için en fazla 10 uygulama kutucuğu görülebilir. Bu sınır Azure AD Ücretsiz Lisans planına lisans atanmış kullanıcılar için geçerlidir. Uygulama kutucuklarına Box, Salesforce veya Dropbox örnek verilebilir. Bu sınır yönetici hesapları için geçerli değildir.</li></ul> |
+| Erişim Paneli |Atanan lisanslardan bağımsız olarak Kullanıcı başına erişim panelinde görülemeyen uygulama sayısıyla ilgili bir sınır yoktur.  |
 | Raporlar | Herhangi bir raporda en fazla 1.000 satır görüntülenebilir veya indirilebilir. Bunun üzerindeki veriler kesilir. |
 | Yönetim birimleri | Bir Azure AD kaynağı 30 ' dan fazla yönetim birimi olmayan bir üye olabilir. |
 | Yönetici rolleri ve izinleri | <ul><li>Bir grup, [sahip](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)olarak eklenemez.</li><li>Bir grup [role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)atanamaz.</li><li>Yönetici olmayan kullanıcıların tüm dizin bilgilerine erişimini devre dışı bırakmak için kullanıcıların diğer Kullanıcı dizin bilgilerini okuma yeteneği, Azure AD kuruluş genelinde anahtar dışında kısıtlanamaz (önerilmez). [Burada](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)varsayılan izinler hakkında daha fazla bilgi.</li><li>Yönetici rolü üyelik eklemeleri ve geri alma işlemleri yürürlüğe girmeden önce 15 dakika kadar sürebilir veya oturum kapatıp oturum açıp oturum açabilirsiniz.</li></ul> |

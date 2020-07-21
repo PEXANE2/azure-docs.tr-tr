@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60510131"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512648"
 ---
 # <a name="default-insights-tag"></a>Varsayılan Öngörüler etiketi
 
@@ -278,7 +278,7 @@ Tarifler, görüntüde gösterilen yiyecek oluşturmak için bir yemek tarifi i�
 
 ## <a name="imagebyid-insight"></a>Imagebyıd Insight
 
-Imagebyıd Insight, için öngörülerinizi istediğiniz bir `Image` nesne sağlar:
+Imagebyıd Insight, `Image` için öngörülerinizi istediğiniz bir nesne sağlar:
 
 ```json
       {
@@ -313,7 +313,7 @@ Imagebyıd Insight, için öngörülerinizi istediğiniz bir `Image` nesne sağl
 
 ## <a name="productvisualsearch-insight"></a>ProductVisualSearch öngörüleri
 
-ProductVisualSearch öngörüleri, Orijinal görüntüde gösterilen ürünlere görsel olarak benzeyen ürünlerin görüntülerinin bir listesini sağlar. `insightsMetadata` Alanı, ürünü ve ürünün fiyatını satın alabileceğiniz teklifler hakkında bilgiler içerebilir.
+ProductVisualSearch öngörüleri, Orijinal görüntüde gösterilen ürünlere görsel olarak benzeyen ürünlerin görüntülerinin bir listesini sağlar. `insightsMetadata`Alanı, ürünü ve ürünün fiyatını satın alabileceğiniz teklifler hakkında bilgiler içerebilir.
 
 ```json
       {
@@ -425,4 +425,12 @@ Documentlevelönerilere ilişkin Öngörüler, görüntünün içeriğine göre 
 
 Bing 'in Visual Insights 'ın nasıl görüntüleneceğini görmek için [Bing Insights kullanımı örneklerine](bing-insights-usage.md) göz atın.
 
-İlk isteğinizi hızlıca kullanmaya başlamak için hızlı başlangıçlara bakın: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+İlk isteğinizi hızla kullanmaya başlamak için hızlı başlangıçlara bakın:
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md).

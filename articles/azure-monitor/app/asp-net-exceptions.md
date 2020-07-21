@@ -3,13 +3,14 @@ title: Azure Application Insights ile ilgili sorunları ve özel durumları tan�
 description: ASP.NET uygulamalarından gelen özel durumları, istek telemetriyle birlikte yakalayın.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892351"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517221"
 ---
-# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile web uygulamalarınızda özel durumları tanılama
+# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile Web uygulamalarınızda özel durumları tanılama
 Canlı Web uygulamanızdaki özel durumlar [Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından raporlanır. Nedenleri hızlı bir şekilde tanılamanıza olanak tanımak için hem istemci hem de sunucudaki başarısız istekleri özel durumlarla ve diğer olaylarla ilişkilendirebileceğinizi unutmayın.
 
 ## <a name="set-up-exception-reporting"></a>Özel durum raporlamayı ayarlama
@@ -18,7 +19,7 @@ Canlı Web uygulamanızdaki özel durumlar [Application Insights](../../azure-mo
   * Azure VM ve Azure sanal makine ölçek kümesi IIS tarafından barındırılan uygulamalar: [uygulama Izleme uzantısını](../../azure-monitor/app/azure-vm-vmss-apps.md) ekleme
   * Uygulama kodunuza [APPLICATION INSIGHTS SDK](../../azure-monitor/app/asp-net.md) 'yı yükleyip
   * IIS Web sunucuları: [Application Insights aracıyı](../../azure-monitor/app/monitor-performance-live-website-now.md)Çalıştır; veya
-  * Java Web Apps: [Java aracısını](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) etkinleştirme
+  * Java Web Apps: [Java aracısını](./java-in-process-agent.md) etkinleştirme
 * Tarayıcı özel durumlarını yakalamak için Web sayfalarınıza [JavaScript kod parçacığını](../../azure-monitor/app/javascript.md) yükler.
 * Bazı uygulama çerçeveleri veya bazı ayarlarla daha fazla özel durum yakalamak için bazı ek adımlar gerçekleştirmeniz gerekir:
   * [Web formları](#web-forms)
@@ -27,7 +28,7 @@ Canlı Web uygulamanızdaki özel durumlar [Application Insights](../../azure-mo
   * [Web API 2. *](#web-api-2x)
   * [WCF](#wcf)
 
-  Bu makale, kod örneği perspektifinden .NET Framework uygulamalarına özel olarak odaklanılmıştır. .NET Framework için çalışan yöntemlerin bazıları .NET Core SDK artık kullanılmıyor. .NET Core uygulamanız varsa [.NET Core SDK belgelerine](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) bakın.
+  Bu makale, kod örneği perspektifinden .NET Framework uygulamalarına özel olarak odaklanılmıştır. .NET Framework için çalışan yöntemlerin bazıları .NET Core SDK artık kullanılmıyor. .NET Core uygulamanız varsa [.NET Core SDK belgelerine](./asp-net-core.md) bakın.
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Visual Studio kullanarak özel durumları tanılama
 Hata ayıklamaya yardımcı olması için Visual Studio 'da uygulama çözümünü açın.
@@ -93,7 +94,7 @@ Bu olayları görmek için, sol menüden [Ara](../../azure-monitor/app/diagnosti
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Özel durumları ve ilgili tanılama verilerini yakalama
 İlk olarak, portalda hatalara neden olan tüm özel durumların portalda görmezsiniz. Herhangi bir tarayıcı özel durumu görürsünüz (Web sayfalarınızda [JavaScript SDK 'sını](../../azure-monitor/app/javascript.md) kullanıyorsanız). Ancak, çoğu sunucu özel durumu IIS tarafından yakalanır ve bunları görmek için bir kod yazmanız gerekir.
 
-Seçenekleriniz şunlardır:
+Şunları yapabilirsiniz:
 
 * Özel durumları raporlamak için özel durum işleyicilerinde kod ekleyerek **özel durumları açıkça günlüğe kaydedin** .
 * ASP.NET çerçevesini yapılandırarak **özel durumları otomatik olarak yakalayın** . Gerekli eklemeler farklı çerçeve türleri için farklıdır.
@@ -213,7 +214,7 @@ Denetleyicilerden kaynaklanan işlenmemiş özel durumlar genellikle 500 "Iç su
 ### <a name="prior-versions-support"></a>Önceki sürümler desteği
 Web SDK 2,5 (ve öncesi) Application Insights MVC 4 (ve öncesi) kullanıyorsanız, özel durumları izlemek için aşağıdaki örneklere bakın.
 
-[CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) yapılandırması Ise `Off` , [http modülünün](https://msdn.microsoft.com/library/ms178468.aspx) toplaması için özel durumlar kullanılabilir olacaktır. Ancak, `RemoteOnly` (varsayılan) veya ise, `On` özel durum temizlenir ve Application Insights otomatik olarak toplanacaktır. [System. Web. Mvc. HandleErrorAttribute sınıfını](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)geçersiz kılarak ve AŞAĞıDAKI farklı MVC sürümleri ([GitHub kaynağı](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) için gösterildiği gibi geçersiz kılınan sınıfı uygulayarak bu hatayı çözebilirsiniz:
+[CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) yapılandırması Ise `Off` , [http modülünün](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) toplaması için özel durumlar kullanılabilir olacaktır. Ancak, `RemoteOnly` (varsayılan) veya ise, `On` özel durum temizlenir ve Application Insights otomatik olarak toplanacaktır. [System. Web. Mvc. HandleErrorAttribute sınıfını](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)geçersiz kılarak ve AŞAĞıDAKI farklı MVC sürümleri ([GitHub kaynağı](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) için gösterildiği gibi geçersiz kılınan sınıfı uygulayarak bu hatayı çözebilirsiniz:
 
 ```csharp
     using System;

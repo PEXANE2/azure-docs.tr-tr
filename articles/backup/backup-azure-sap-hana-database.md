@@ -3,11 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667327"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513889"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -15,7 +16,7 @@ SAP HANA veritabanları, düşük kurtarma noktası hedefi (RPO) ve uzun süreli
 
 Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarının Azure Backup kurtarma hizmetleri kasasına nasıl yedekleneceği gösterilmektedir.
 
-Bu makalede şunları yapmayı öğreneceksiniz:
+Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Kasa oluşturma ve yapılandırma
@@ -24,13 +25,13 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 > * İsteğe bağlı yedekleme işi çalıştırma
 
 >[!NOTE]
->RHEL için SAP HANA yedekleme önizlemesine (7,4, 7,6, 7,7 veya 8,1 [) başlayın.](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) Daha fazla sorgu için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>RHEL için SAP HANA yedekleme önizlemesine (7,4, 7,6, 7,7 veya 8,1 [) başlayın.](./tutorial-backup-sap-hana-db.md) Daha fazla sorgu için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 >[!NOTE]
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
 >Önizlemeye kaydolmak için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Önkoşulları](tutorial-backup-sap-hana-db.md#prerequisites) ve [ön kayıt betiği](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) , yedekleme için veritabanını ayarlama bölümlerine bakın.
 
@@ -40,7 +41,7 @@ Tüm işlemler için, bir Azure VM üzerinde çalışan bir SAP HANA veritabanı
 
 Aşağıdaki tabloda bağlantı kurmak için kullanabileceğiniz çeşitli alternatifler listelenmektedir:
 
-| **Seçeneği**                        | **Üstünlü**                                               | **Dezavantajlar**                                            |
+| **Seçenek**                        | **Avantajlar**                                               | **Dezavantajlar**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Özel uç noktalar                 | Sanal ağ içindeki özel IP 'Lerde yedeklemelere izin ver  <br><br>   Ağ ve kasa tarafında ayrıntılı denetim sağlama | Standart özel uç nokta [maliyetleri](https://azure.microsoft.com/pricing/details/private-link/) |
 | NSG hizmet etiketleri                  | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi   <br><br>   Ek maliyet yok | Yalnızca NSG 'ler ile kullanılabilir  <br><br>    Hizmetin tamamına erişim sağlar |
@@ -52,17 +53,17 @@ Bu seçenekleri kullanma hakkında daha fazla ayrıntı aşağıdaki şekilde pa
 
 #### <a name="private-endpoints"></a>Özel uç noktalar
 
-Özel uç noktalar, bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde bağlanmanıza olanak tanır. Özel uç nokta, kasanızın VNET adres alanından bir IP kullanır. Sanal ağın ve kasadaki kaynaklarınız arasındaki ağ trafiği, sanal ağınız üzerinden ve Microsoft omurga ağında özel bir bağlantı üzerinden dolaşır. Bu, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. [Azure Backup için](https://docs.microsoft.com/azure/backup/private-endpoints)özel uç noktalar hakkında daha fazla bilgi edinin.
+Özel uç noktalar, bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde bağlanmanıza olanak tanır. Özel uç nokta, kasanızın VNET adres alanından bir IP kullanır. Sanal ağın ve kasadaki kaynaklarınız arasındaki ağ trafiği, sanal ağınız üzerinden ve Microsoft omurga ağında özel bir bağlantı üzerinden dolaşır. Bu, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. [Azure Backup için](./private-endpoints.md)özel uç noktalar hakkında daha fazla bilgi edinin.
 
 #### <a name="nsg-tags"></a>NSG etiketleri
 
-Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izin vermek için *AzureBackup* Service etiketini kullanın. Azure Backup etiketine ek olarak, *Azure AD* ve *Azure depolama*için benzer [NSG kuralları](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) oluşturarak kimlik doğrulama ve veri aktarımı için de bağlantıya izin vermeniz gerekir.  Aşağıdaki adımlar Azure Backup etiketi için bir kural oluşturma işlemini anlatmaktadır:
+Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izin vermek için *AzureBackup* Service etiketini kullanın. Azure Backup etiketine ek olarak, *Azure AD* ve *Azure depolama*için benzer [NSG kuralları](../virtual-network/security-overview.md#service-tags) oluşturarak kimlik doğrulama ve veri aktarımı için de bağlantıya izin vermeniz gerekir.  Aşağıdaki adımlar Azure Backup etiketi için bir kural oluşturma işlemini anlatmaktadır:
 
 1. **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
 
 1. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
 
-1. **Ekle**'yi seçin. [Güvenlik kuralı ayarları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
+1. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
 
 1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle** ' ye tıklayın.
 
@@ -70,7 +71,7 @@ Benzer şekilde, Azure depolama ve Azure AD için NSG giden güvenlik kuralları
 
 #### <a name="azure-firewall-tags"></a>Azure Güvenlik Duvarı etiketleri
 
-Azure Güvenlik duvarı kullanıyorsanız, *AzureBackup* [Azure Güvenlik Duvarı FQDN etiketini](https://docs.microsoft.com/azure/firewall/fqdn-tags)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup tüm giden erişimleri sağlar.
+Azure Güvenlik duvarı kullanıyorsanız, *AzureBackup* [Azure Güvenlik Duvarı FQDN etiketini](../firewall/fqdn-tags.md)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup tüm giden erişimleri sağlar.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Hizmet IP aralıklarına erişime izin ver
 
@@ -84,7 +85,7 @@ Sunucularınızdaki gerekli hizmetlere erişime izin vermek için aşağıdaki F
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure depolama | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | [Bu makaleye](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) göre 56 ve 59 bölümlerinde FQDN 'lere erişime izin ver |
+| Azure AD      | [Bu makaleye](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) göre 56 ve 59 bölümlerinde FQDN 'lere erişime izin ver |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Trafiği yönlendirmek için bir HTTP proxy sunucusu kullanma
 
@@ -172,7 +173,7 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
 7. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam** ' ı tıklatın.
 8. İşlem günlüğü yedekleme ilkesi eklemek için **günlük yedeklemesi** ' ni seçin,
-    * **Günlük yedeklemesi**' nde **Etkinleştir**' i seçin.  Tüm günlük yedeklemelerini SAP HANA yönettiğinden bu devre dışı bırakılamaz.
+    * **Günlük yedeklemesi**' nde **Etkinleştir**' i seçin.  Tüm günlük yedeklemelerini SAP HANA yönettiğinden, bu devre dışı bırakılamaz.
     * Sıklık ve bekletme denetimlerini ayarlayın.
 
     > [!NOTE]
@@ -190,7 +191,7 @@ Yedeklemeler, ilke zamanlamasına uygun olarak çalışır. İsteğe bağlı bir
 
 1. Kasa menüsünde, **yedekleme öğeleri**' ne tıklayın.
 2. **Yedekleme öğeleri**' nde, SAP HANA VERITABANıNı çalıştıran VM 'yi seçin ve **Şimdi Yedekle**' ye tıklayın.
-3. **Şimdi Yedekle**' de, gerçekleştirmek istediğiniz yedekleme türünü seçin. Ardından **Tamam**'a tıklayın. Bu yedekleme, bu yedekleme öğesiyle ilişkili ilkeye göre saklanacaktır.
+3. **Şimdi Yedekle**' de, gerçekleştirmek istediğiniz yedekleme türünü seçin. Daha sonra, **Tamam**'a tıklayın. Bu yedekleme, bu yedekleme öğesiyle ilişkili ilkeye göre saklanacaktır.
 4. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri**  >  **devam**ediyor. Veritabanınızın boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup etkin bir veritabanında SAP HANA Studio yedeklemesini çalıştırma
@@ -198,17 +199,19 @@ Yedeklemeler, ilke zamanlamasına uygun olarak çalışır. İsteğe bağlı bir
 Azure Backup ile yedeklenen bir veritabanının yerel yedeklemesini (HANA Studio 'Yu kullanarak) almak istiyorsanız aşağıdakileri yapın:
 
 1. Veritabanının tamamlaması için herhangi bir tam veya günlük yedeklemesi bekleyin. SAP HANA Studio/Kokpit içindeki durumu denetleyin.
-2. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
-3. Bunu yapmak için **SystemDB**  >  **yapılandırması**  >  **veritabanı**  >  **filtresi Seç (günlük)** öğesine çift tıklayın.
-4. **Enable_auto_log_backup** **Hayır**olarak ayarlayın.
-5. **Log_backup_using_backint** **false**olarak ayarlayın.
-6. Veritabanının isteğe bağlı tam yedeklemesini yapın.
-7. Tam yedekleme ve Katalog yedeklemesinin bitmesini bekleyin.
-8. Önceki ayarları Azure için geri döndürür:
+1. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
+1. Bunu yapmak için **SystemDB**  >  **yapılandırması**  >  **veritabanı**  >  **filtresi Seç (günlük)** öğesine çift tıklayın.
+1. **Enable_auto_log_backup** **Hayır**olarak ayarlayın.
+1. **Log_backup_using_backint** **false**olarak ayarlayın.
+1. **Catalog_backup_using_backint** **false**olarak ayarlayın.
+1. Veritabanının isteğe bağlı tam yedeklemesini yapın.
+1. Tam yedekleme ve Katalog yedeklemesinin bitmesini bekleyin.
+1. Önceki ayarları Azure için geri döndürür:
     * **Enable_auto_log_backup** **Evet**olarak ayarlayın.
     * **Log_backup_using_backint** **true**olarak ayarlayın.
+    * **Catalog_backup_using_backint** **true**olarak ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM 'lerinde çalışan SAP HANA veritabanlarını geri yüklemeyi](https://docs.microsoft.com/azure/backup/sap-hana-db-restore) öğrenin
-* [Kullanarak yedeklenen SAP HANA veritabanlarını yönetmeyi öğrenin Azure Backup](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* [Azure VM 'lerinde çalışan SAP HANA veritabanlarını geri yüklemeyi](./sap-hana-db-restore.md) öğrenin
+* [Kullanarak yedeklenen SAP HANA veritabanlarını yönetmeyi öğrenin Azure Backup](./sap-hana-db-manage.md)

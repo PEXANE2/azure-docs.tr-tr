@@ -1,18 +1,18 @@
 ---
-title: Azure Izleyici ile Azure kaynağını izleme
-description: Azure Izleyici 'de Azure kaynağı için verileri nasıl toplayacağınızı ve analiz edeceğinizi öğrenin.
+title: Azure Izleyici ile Azure sanal makinesini izleme
+description: Azure Izleyici 'de bir Azure sanal makinesi için verileri nasıl toplayacağınızı ve analiz edeceğinizi öğrenin.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805113"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516405"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Azure sanal makinesini Izleme
 [Azure izleyici](../overview.md) , Azure sanal makinelerinden oluşturulan verilerin veri toplamaya başlar. Bu hızlı başlangıçta, bir Azure sanal makinesi için otomatik olarak toplanan verileri ve Azure portal nasıl görüntüleyekullanacağınızı gösteren kısa bir adım adım bulacaksınız. Daha sonra VM 'niz için [VM'ler için Azure izleyici](../insights/vminsights-overview.md) ETKINLEŞTIREREK, sanal makine üzerindeki aracıların süreçler ve bunların bağımlılıkları dahil Konuk işletim sisteminden veri toplayıp analiz etmesine olanak sağlar.
@@ -48,7 +48,7 @@ Konak VM 'si için ölçümler ve etkinlik günlükleri toplanırken, Konuk işl
 
 6. SANAL makinelerinizi aboneliğinizdeki eklendi olan diğer VM 'lerle görürsünüz. Aboneliğinizdeki eklendi olmayan sanal makineleri görüntülemek istiyorsanız **izlenmiyor** sekmesini seçin.
 
-    ![başlarken](media/quick-monitor-azure-vm/get-started.png)
+    ![Kullanmaya başlayın](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
@@ -107,4 +107,4 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
 Bu hızlı başlangıçta, bir sanal makine için VM'ler için Azure İzleyici etkinleştirdi ve Log Analytics çalışma alanını Konuk işletim sistemine yönelik olayları toplayacak şekilde yapılandırdınız. Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/get-started-portal.md)

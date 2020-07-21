@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513390"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518598"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -78,7 +79,7 @@ Azure depolama uygulamalarında uçtan uca sorun giderme kılavuzu için bkz. [A
 ## <a name="introduction"></a><a name="introduction"></a>Giriş
 Bu kılavuzda, Azure depolama Istemci kitaplığı 'nda Azure Depolama Analizi, istemci tarafı günlüğe kaydetme gibi özelliklerin yanı sıra Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve gidermek için diğer üçüncü taraf araçları nasıl kullanabileceğiniz gösterilmektedir.
 
-![][1]
+![İstemci uygulamaları ile Azure depolama hizmetleri arasındaki bilgi akışını gösteren diyagram.][1]
 
 Bu kılavuz, birincil olarak Azure depolama hizmetleri ve bu tür çevrimiçi hizmetler yönetmekten sorumlu BT profesyonelleri kullanan çevrimiçi hizmetler geliştiricileri tarafından okunmalıdır. Bu kılavuzun amaçları şunlardır:
 
@@ -117,7 +118,7 @@ Sağlıklı olduklarından ve beklendiği gibi çalıştığından emin olmak i�
 
 Aşağıdaki görüntüde yer alan grafikler, saatlik ölçümler için gerçekleşen ortalama, etkinlikteki ani artışları nasıl gizleyebileceğinizi gösterir. Saatlik ölçümler, sabit bir istek oranını göstermek üzere görünür, ancak dakika ölçümleri gerçekten gerçekleşirken dalgalanmalar ortaya çıkar.
 
-![][3]
+![Saatlik ölçümler için gerçekleşen ortalama ortalamasını gösteren grafikler, etkinlikteki ani artışları gizleyebilir.][3]
 
 Bu bölümün geri kalanında, izlemeniz gereken ölçümler ve nedenleri açıklanmaktadır.
 
@@ -347,7 +348,7 @@ Sorununuz, depolama hizmetlerinden birinin kullanılabilirliğiyle bağlantılı
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Ölçümler yüksek AverageE2ELatency ve düşük AverageServerLatency gösteriyor
 [Azure Portal](https://portal.azure.com) izleme aracından aşağıdaki çizimde, **AverageE2ELatency** 'in **averageserverlatency**'ın önemli ölçüde yüksek olduğu bir örnek gösterilir.
 
-![][4]
+![Azure portal, AverageE2ELatency 'in AverageServerLatency 'den önemli ölçüde daha yüksek olduğu bir örnek gösteren bir örnektir.][4]
 
 Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** ölçüsünü hesaplar ve **averageserverlatency**'ın aksine istemcinin verileri göndermek ve depolama hizmetinden onay almak için geçen süreyi de içerir. Bu nedenle, **AverageE2ELatency** ve **averageserverlatency** arasındaki fark, istemci uygulamanın yavaş yanıt vermesi ya da ağdaki koşullar nedeniyle olabilir.
 
@@ -497,7 +498,7 @@ SAS belirteçleri oluşturmak için Depolama İstemcisi Kitaplığı’nı kulla
 * [İstemci tarafı JavaScript kodunun nesneye erişim izni yok]
 * [Ağ hatası]
 
-#### <a name="the-client-or-another-process-previously-deleted-the-object"></a><a name="client-previously-deleted-the-object"></a>İstemci veya başka bir işlem daha önce nesneyi silmiş
+#### <a name="the-client-or-another-process-previously-deleted-the-object"></a><a name="client-previously-deleted-the-object"></a>İstemci veya başka bir işlem daha önce nesneyi sildi
 İstemcinin bir depolama hizmetindeki verileri okumaya, güncelleştirmeye veya silmeye çalıştığı senaryolarda, bu durumda, depolama hizmetinden söz konusu nesneyi silen önceki bir işlemin sunucu tarafı günlüklerinde tanımlanması daha kolay olur. Günlük verileri genellikle başka bir kullanıcının veya işlemin nesneyi sildiği gösterir. Sunucu tarafı depolama günlüğü günlüğünde, işlem türü ve istenen-nesne-anahtar sütunları, bir istemcinin bir nesneyi sildiği zamanı gösterir.
 
 İstemcinin bir nesne eklemeye çalıştığı senaryoda, bu, istemcinin yeni bir nesne oluşturduğu için bir HTTP 404 (bulunamadı) yanıtı ile sonuçlanmasının hemen açık olmaması olabilir. Ancak, istemci bir blob oluşturuyor ise blob kapsayıcısını bulabilmelidir, istemci bir ileti oluşturuyor, bir kuyruk bulabilmelidir ve istemci bir satır ekliyor ve bu tabloyu bulabilmelidir.
@@ -506,7 +507,7 @@ SAS belirteçleri oluşturmak için Depolama İstemcisi Kitaplığı’nı kulla
 
 Depolama Istemci kitaplığı tarafından oluşturulan aşağıdaki istemci tarafı günlüğü, istemci oluşturduğu blob için kapsayıcıyı bulamadığında sorun olduğunu gösterir. Bu günlük aşağıdaki depolama işlemlerinin ayrıntılarını içerir:
 
-| İstek Kimliği | Çalışma |
+| Request ID | İşlem |
 | --- | --- |
 | 07b26a5d-... |Blob kapsayıcısını silmek için **Deleteifexists** yöntemi. Bu işlemin kapsayıcının varlığını denetlemek için bir **Head** isteği içerdiğine unutmayın. |
 | e2d06d78... |Blob kapsayıcısını oluşturmak için **Createifnotexists** yöntemi. Bu işlemin kapsayıcının varlığını denetleyen bir **baş** isteği içerdiğine unutmayın. **Baş** bir 404 iletisi döndürür, ancak devam eder. |
@@ -514,7 +515,7 @@ Depolama Istemci kitaplığı tarafından oluşturulan aşağıdaki istemci tara
 
 Günlük girişleri:
 
-| İstek Kimliği | İşlem metni |
+| Request ID | İşlem metni |
 | --- | --- |
 | 07b26a5d-... |İçin zaman uyumlu istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD............ x-MS-Client-Request-id: 07b26a5d-.... x-MS-Date: Tue, 03 Haz 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
@@ -557,7 +558,7 @@ Günlük girişleri:
 
 Bu örnekte, günlük istemcisinin, **Uploadfromstream** yönteminden (de8b1c3c-...) Isteklerle **Createifnotexists** yönteminden (istek kimliği e2d06d78...) istek olduğunu gösterir. Bu araya ekleme, istemci uygulaması bu yöntemleri zaman uyumsuz olarak çağırdığından oluşur. Bu kapsayıcıdaki bir blob 'a herhangi bir veriyi karşıya yüklemeyi denemeden önce kapsayıcıyı oluşturduğundan emin olmak için istemcideki zaman uyumsuz kodu değiştirin. En ideal olarak, tüm Kapsayıcılarınızı önceden oluşturmalısınız.
 
-#### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>Paylaşılan Erişim İmzası (SAS) yetkilendirme sorunu
+#### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>Paylaşılan erişim Imzası (SAS) yetkilendirme sorunu
 İstemci uygulaması, işlem için gerekli izinleri içermeyen bir SAS anahtarı kullanmayı denerse, depolama hizmeti istemciye bir HTTP 404 (bulunamadı) iletisi döndürür. Aynı zamanda, ölçümlerde **Sasauthorizationerror** için sıfır olmayan bir değer görürsünüz.
 
 Aşağıdaki tabloda, depolama günlüğü günlük dosyasından örnek bir sunucu tarafı günlüğü iletisi gösterilmektedir:
@@ -578,7 +579,7 @@ Aşağıdaki tabloda, depolama günlüğü günlük dosyasından örnek bir sunu
 
 İstemci uygulamanızın izin verilmeyen bir işlem gerçekleştirmeye çalıştığını araştırın.
 
-#### <a name="client-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>İstemci tarafı JavaScript kodunun nesneye erişim izni yok
+#### <a name="client-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>İstemci tarafı JavaScript kodunun nesnesine erişim izni yok
 Bir JavaScript istemcisi kullanıyorsanız ve depolama hizmeti HTTP 404 iletileri döndürüyorsa, tarayıcıda aşağıdaki JavaScript hatalarını kontrol edersiniz:
 
 ```
@@ -726,7 +727,7 @@ Fiddler 'ı başlattıktan sonra, yerel makinenizde HTTP ve HTTPS trafiği yakal
 
 Fiddler 'in yakaladığı trafik miktarını sınırlamak için **Filtreler** sekmesinde yapılandırdığınız filtreleri kullanabilirsiniz. Aşağıdaki ekran görüntüsünde, yalnızca **contosoemaildist.Table.Core.Windows.net** depolama uç noktasına gönderilen trafiği yakalayan bir filtre gösterilmektedir:
 
-![][5]
+![Yalnızca contosoemaildist.table.core.windows.net depolama uç noktasına gönderilen trafiği yakalayan bir filtre gösteren ekran görüntüsü.][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>Ek 2: ağ trafiğini yakalamak için Wireshark kullanma
 [Wireshark](https://www.wireshark.org/) , çok çeşitli ağ protokolleri için ayrıntılı paket bilgilerini görüntülemenize olanak tanıyan bir ağ protokol çözümleyicisidir.
@@ -738,18 +739,18 @@ Aşağıdaki yordamda, Azure Depolama hesabınızdaki tablo hizmetine Wireshark 
 3. **Yakalama seçenekleri**' ne tıklayın.
 4. **Yakalama filtresi** metin kutusuna bir filtre ekleyin. Örneğin, **host contosoemaildist.Table.Core.Windows.net** , Wireshark ' yi yalnızca **contosoemaildist** depolama hesabındaki tablo hizmeti uç noktasına veya sunucudan gönderilen paketleri yakalamaya alacak şekilde yapılandırır. [Yakalama filtrelerinin tüm listesini](https://wiki.wireshark.org/CaptureFilters)inceleyin.
 
-   ![][6]
+   ![Yakalama filtresi metin kutusuna bir filtrenin nasıl ekleneceğini gösteren ekran görüntüsü.][6]
 5. **Başlat**'a tıklayın. Wireshark şimdi, yerel makinenizde istemci uygulamanızı kullanırken tablo hizmeti uç noktasına gönderilen tüm paketleri yakalar.
 6. İşiniz bittiğinde, ana menüden **yakala** ' ya ve ardından **Durdur**' a tıklayın.
 7. Yakalanan verileri bir Wireshark yakalama dosyasına kaydetmek için, ana menüdeki **Dosya** ' ya ve ardından **Kaydet**' e tıklayın.
 
 WireShark, **packetlist** penceresinde var olan tüm hataları vurgulayacaktır. Ayrıca, hataların ve uyarıların özetini görüntülemek için **uzman bilgisi** penceresini ( **Çözümle**ve ardından **uzman bilgileri**' ne tıklayın) kullanabilirsiniz.
 
-![][7]
+![Hataların ve uyarıların özetini görüntüleyebileceğiniz uzman bilgisi penceresini gösteren ekran görüntüsü.][7]
 
 Ayrıca, TCP verilerini, TCP verilerine sağ tıklayıp **TCP akışını izle**' yi seçerek Inceleyerek, TCP verilerini görüntülemeyi tercih edebilirsiniz. Bu, döküm dosyanızı yakalama filtresi olmadan yakaladıysanız yararlı olur. Daha fazla bilgi için bkz. [TCP akışları](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
-![][8]
+![Uygulama katmanı tarafından görülen TCP verilerinin nasıl görüntüleneceğini gösteren ekran görüntüsü.][8]
 
 > [!NOTE]
 > Wireshark kullanma hakkında daha fazla bilgi için bkz. [Wireshark Users Guide](https://www.wireshark.org/docs/wsug_html_chunked).
@@ -782,11 +783,11 @@ Microsoft Message Analyzer 'daki yerleşik **Web proxy** Izlemesi Fiddler 'a day
 
 Aşağıdaki ekran görüntüsünde, **DiagnosisTypes** sütununda bazı **bilgilendirici** Iletilerle örnek bir **yerel bağlantı katmanı** izlemesi gösterilmektedir. **DiagnosisTypes** sütunundaki bir simgeye tıkladığınızda iletinin ayrıntıları gösterilir. Bu örnekte, istemciden bir onay almadığı için sunucu #305 yeniden aktarılan ileti:
 
-![][9]
+![DiagnosisTypes sütununda bazı bilgilendirici iletilerle örnek bir yerel bağlantı katmanı izlemesi gösteren ekran görüntüsü][9]
 
 Microsoft Message Analyzer 'da izleme oturumu oluştururken, izlemede gürültü miktarını azaltmak için filtreler belirtebilirsiniz. İzlemeyi tanımladığınız **yakalama/izleme** sayfasında, **Microsoft-Windows-NDIS-packetcapture**' ın yanındaki **Yapılandır** bağlantısına tıklayın. Aşağıdaki ekran görüntüsünde, üç depolama hizmetinin IP adresleri için TCP trafiğini filtreleyen bir yapılandırma gösterilmektedir:
 
-![][10]
+![Üç depolama hizmetinin IP adresleri için TCP trafiğini filtreleyen bir yapılandırmayı gösteren ekran görüntüsü.][10]
 
 Microsoft Message Analyzer yerel bağlantı katmanı izleme hakkında daha fazla bilgi için bkz. [Microsoft-PEF-NDIS-PacketCapture sağlayıcısı](https://technet.microsoft.com/library/jj659264.aspx).
 

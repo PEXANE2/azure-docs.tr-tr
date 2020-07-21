@@ -3,11 +3,13 @@ title: Service Bus atılacak ileti sıraları | Microsoft Docs
 description: Azure Service Bus içindeki atılacak ileti kuyruklarını açıklar. Service Bus kuyrukları ve konu abonelikleri, atılacak ileti sırası adlı ikincil bir alt sıra sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 62db4e71d99d1242cfbb69bdb7979bf9e5dc67ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337578"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511220"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus atılacak ileti sıralarına genel bakış
 
@@ -56,7 +58,7 @@ Bu davranış devre dışı bırakılamaz, ancak [Maxdeliverycount](/dotnet/api/
 
 [Queuedescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) veya [Subscriptiondescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) özelliği **true** olarak ayarlandığında (varsayılan değer **false**ise), süresi dolan tüm iletiler DLQ 'a taşınır ve `TTLExpiredException` neden kodu belirlenir.
 
-Süre dolabilecek iletiler yalnızca, ana kuyruktan veya abonelikten çeken en az bir etkin alıcı olduğunda DLCı 'ler için temizlenir ve taşınır. Bu davranış tasarıma göre yapılır.
+Süre dolan iletiler yalnızca, ana kuyruktan veya abonelikte en az bir adet etkin alıcı olduğunda DLCı 'ye taşınır ve ayrıca [Ertelenen iletiler](./message-deferral.md) temizlenmez ve zaman aşımına erdikten sonra atılacak ileti kuyruğuna taşınamaz. Bu yetki kaldırıldığında davranışlar tasarıma göre yapılır.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Abonelik kuralları işlenirken hatalar oluştu
 

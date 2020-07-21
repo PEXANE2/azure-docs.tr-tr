@@ -8,20 +8,20 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: b639b382e69be30c2f04471e0a253ef5d7c7b4e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125779"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519618"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
 Azure Güvenlik Merkezi 'nde birçok farklı kaynak türü için çeşitli uyarılar vardır. Güvenlik Merkezi, Azure 'da dağıtılan ve ayrıca şirket içi ve hibrit bulut ortamlarında dağıtılan kaynaklar için uyarı oluşturur.
 
-Güvenlik uyarıları, gelişmiş algılamalar tarafından tetiklenir ve yalnızca Azure Güvenlik Merkezi 'nin standart katmanında kullanılabilir. Ücretsiz deneme sürümü mevcuttur. [Güvenlik İlkesi](security-center-pricing.md) bölümündeki Fiyatlandırma Katmanı’ndan yükseltme yapabilirsiniz. Fiyatlandırma hakkında daha fazla bilgi almak için [Güvenlik Merkezi sayfasını](https://azure.microsoft.com/pricing/details/security-center/) ziyaret edin.
+Güvenlik uyarıları, gelişmiş algılamalar tarafından tetiklenir ve yalnızca Azure Güvenlik Merkezi 'nin standart katmanında kullanılabilir. Ücretsiz deneme sürümü mevcuttur. **Fiyatlandırma & ayarları** sayfasından yükseltebilirsiniz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/)hakkında daha fazla bilgi edinin.
 
 ## <a name="responding-to-todays-threats"></a>Bugünün tehditlerine <a name="respond-threats"> </a> yanıt verme
 

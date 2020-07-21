@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 240a261f8dd401f36ef763e4c1274a1c0760f2dd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81768121"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515657"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
 
@@ -39,7 +40,7 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
 | Çalışma alanı   | çalışma alanı    | 2017-03-15-Önizleme |
-| Arama      | Savedaramalarındaki aramalar | 2015-03-20 |
+| Arayın      | Savedaramalarındaki aramalar | 2015-03-20 |
 | Veri kaynağı | kaynağı   | 2015-11-01-Önizleme |
 | Çözüm    | çözümler     | 2015-11-01-Önizleme |
 
@@ -152,7 +153,7 @@ Kapasite ayırma için, SKU `CapacityReservation` ve özellik IÇIN GB cinsinden
    >* "ad": "Capacityreservatıon",
    >* "capacityReservationLevel": 100
 
-2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Parametreleri satır içi değerler olarak geçirmek yerine bir [Kaynak Yöneticisi Parameters dosyası](../../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) başvurusunu gözden geçirin. 
+2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Parametreleri satır içi değerler olarak geçirmek yerine bir [Kaynak Yöneticisi Parameters dosyası](../../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) başvurusunu gözden geçirin. 
 
 3. Bu dosyayı yerel bir klasöre **deploylaworkspacetemplate.js** olarak kaydedin.
 

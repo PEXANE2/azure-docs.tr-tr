@@ -4,15 +4,16 @@ description: Azure dosya paylaşımları yedeklenirken destek ayarlarının ve s
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5670f4702a8e8d199b9762d87793a053cf6e53b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806881"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514569"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi için destek matrisi
 
-Azure dosya paylaşımlarını yedeklemek için [Azure Backup hizmetini](https://docs.microsoft.com/azure/backup/backup-overview) kullanabilirsiniz. Bu makale, Azure Backup ile Azure dosya paylaşımlarını yedeklerken destek ayarlarını özetler.
+Azure dosya paylaşımlarını yedeklemek için [Azure Backup hizmetini](./backup-overview.md) kullanabilirsiniz. Bu makale, Azure Backup ile Azure dosya paylaşımlarını yedeklerken destek ayarlarını özetler.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
@@ -22,7 +23,7 @@ Azure dosya paylaşımları yedeklemesi, **şunlar hariç** tüm bölgelerde kul
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>Yanlışlıkla silme koruması için desteklenen bölgeler
 
-Orta Batı ABD, Avustralya Güney Doğu, Kanada Orta
+Orta Batı ABD, Avustralya Güney Doğu, Kanada Orta, Orta Batı ABD, Hindistan Güney, Orta Kuzey ABD, Japonya Doğu, Brezilya Güney, Orta Güney ABD, Avustralya Doğu, Doğu ABD, Doğu ABD 2
 
 ## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 
@@ -37,10 +38,10 @@ Orta Batı ABD, Avustralya Güney Doğu, Kanada Orta
 
 | Dosya paylaşma türü                                   | Destek   |
 | -------------------------------------------------- | --------- |
-| Standart                                           | Destekleniyor |
-| Büyük                                              | Destekleniyor |
-| Premium                                            | Destekleniyor |
-| Azure dosya eşitleme hizmeti ile bağlantılı dosya paylaşımları | Destekleniyor |
+| Standart                                           | Desteklenir |
+| Büyük                                              | Desteklenir |
+| Premium                                            | Desteklenir |
+| Azure dosya eşitleme hizmeti ile bağlantılı dosya paylaşımları | Desteklenir |
 
 ## <a name="protection-limits"></a>Koruma sınırları
 

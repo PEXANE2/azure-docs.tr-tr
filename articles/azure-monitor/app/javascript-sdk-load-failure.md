@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a76ed65ebc1c56232d4fa42c6df20f619fe14ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229542"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517068"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web uygulamaları için SDK yükleme hatası giderme
 
@@ -63,7 +63,7 @@ Aynı zamanda, NPM paketleri çözümü aracılığıyla SDK kullanılırken de 
 
 Ayrıca, Application Insights SDK 'Yı eklemek için [NPM paketlerini](#use-npm-packages-to-embed-the-application-insight-sdk) kullanmayı deneyebilirsiniz.
 
-Aralıklı ağ bağlantısı başarısızlığını en aza indirmek için, tüm CDN dosyalarında Cache-Control üst bilgilerini uyguladık. böylece, son kullanıcının tarayıcısı SDK 'nın geçerli sürümünü indirdikten sonra indirmesi gerekmez ve tarayıcı daha önce elde edilen kopyayı yeniden kullanacaktır (bkz. [önbelleğe alma nasıl çalışır](https://docs.microsoft.com/azure/cdn/cdn-how-caching-works)). Önbelleğe alma denetimi başarısız olursa veya yeni bir sürüm varsa, son kullanıcının tarayıcısının güncelleştirilmiş sürümü indirmesi gerekir. Bu nedenle, denetim hatası senaryosunda _"gürültü"_ için bir arka plan düzeyi veya yeni bir yayın gerçekleştiğinde ve genel kullanıma SUNULDUĞUNDA (CDN 'e dağıtılır) geçici bir ani bir işlem görebilirsiniz.
+Aralıklı ağ bağlantısı başarısızlığını en aza indirmek için, tüm CDN dosyalarında Cache-Control üst bilgilerini uyguladık. böylece, son kullanıcının tarayıcısı SDK 'nın geçerli sürümünü indirdikten sonra indirmesi gerekmez ve tarayıcı daha önce elde edilen kopyayı yeniden kullanacaktır (bkz. [önbelleğe alma nasıl çalışır](../../cdn/cdn-how-caching-works.md)). Önbelleğe alma denetimi başarısız olursa veya yeni bir sürüm varsa, son kullanıcının tarayıcısının güncelleştirilmiş sürümü indirmesi gerekir. Bu nedenle, denetim hatası senaryosunda _"gürültü"_ için bir arka plan düzeyi veya yeni bir yayın gerçekleştiğinde ve genel kullanıma SUNULDUĞUNDA (CDN 'e dağıtılır) geçici bir ani bir işlem görebilirsiniz.
  
 ## <a name="application-insights-cdn-outage"></a>CDN kesintisi Application Insights
 

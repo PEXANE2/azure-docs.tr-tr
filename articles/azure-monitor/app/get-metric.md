@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927913"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517153"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET ve .NET Core 'da özel ölçüm koleksiyonu
 
@@ -21,7 +22,7 @@ ms.locfileid: "82927913"
 
 `TrackMetric()`bir ölçümü belirten ham telemetri gönderir. Her bir değer için tek bir telemetri öğesi gönderilmesi verimsiz bir öğedir. `TrackMetric()`, `TrackMetric(item)` telemetri başlatıcılarının ve işlemcilerin tam SDK ardışık düzeninde gezindiğinden performans açısından da verimsiz olur. Farklı olarak `TrackMetric()` , `GetMetric()` yerel ön toplamasını sizin için işler ve sonra yalnızca bir dakikalık sabit bir aralıkta toplanmış bir özet ölçümü gönderir. Bu nedenle, bazı özel metrikleri ikinci veya hatta milisaniyelik düzeyde yakından izlemeniz gerekiyorsa, bunu yalnızca her dakika izlemenin yalnızca depolama ve ağ trafiği maliyetlerini alırken yapabilirsiniz. Bu Ayrıca, toplanan bir ölçüm için gönderilmesi gereken toplam telemetri öğesi sayısının büyük ölçüde azaltılmasından dolayı, kısıtlama riskini önemli ölçüde azaltır.
 
-Application Insights, ve ile toplanan özel ölçümler `TrackMetric()` , `GetMetric()` [örneklemeye](https://docs.microsoft.com/azure/azure-monitor/app/sampling)tabi değildir. Önemli ölçümleri örnekleme, bu ölçümler etrafında derleyebileceğiniz uyarı, güvenilmez hale gelebileceği senaryolara yol açabilir. Özel ölçümlerinizi hiçbir zaman örnekleyerek, genellikle uyarı eşikleriniz ihlal edildiğinde bir uyarının tetikleneceği şekilde emin olabilirsiniz.  Ancak, özel ölçümler örneklenolmadığından, bazı olası sorunlar vardır.
+Application Insights, ve ile toplanan özel ölçümler `TrackMetric()` , `GetMetric()` [örneklemeye](./sampling.md)tabi değildir. Önemli ölçümleri örnekleme, bu ölçümler etrafında derleyebileceğiniz uyarı, güvenilmez hale gelebileceği senaryolara yol açabilir. Özel ölçümlerinizi hiçbir zaman örnekleyerek, genellikle uyarı eşikleriniz ihlal edildiğinde bir uyarının tetikleneceği şekilde emin olabilirsiniz.  Ancak, özel ölçümler örneklenolmadığından, bazı olası sorunlar vardır.
 
 Her saniye bir ölçümde eğilimleri izlemeniz gerekiyorsa veya daha da ayrıntılı bir aralıkta bu, şunlar olabilir:
 
@@ -29,16 +30,16 @@ Her saniye bir ölçümde eğilimleri izlemeniz gerekiyorsa veya daha da ayrınt
 - Ağ trafiği/performans yükü artar. (Bazı senaryolarda bu, hem parasal hem de uygulama performans maliyeti olabilir.)
 - Alım azaltma riski. (Uygulamanız kısa bir zaman aralığında çok yüksek bir telemetri gönderdiğinde Azure Izleyici hizmeti ("kısıtlar") veri noktalarını bırakır.)
 
-Daraltma, örnekleme gibi belirli bir konudur, bir uyarının tetiklenmesi koşulu yerel olarak gerçekleşeceğinden ve daha sonra gönderilen çok fazla veri olduğu için alma uç noktasında bırakıldıklarından, azaltma kaçırılmış uyarılara yol açabilir. Bu, `TrackMetric()` kendi yerel toplama mantığınızı gerçekleştirmediğiniz takdirde .net ve .NET Core 'un kullanılmasını önermiyoruz. Belirli bir süre boyunca bir olay meydana gelen her örneği izlemeye çalışıyorsanız, [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) daha iyi bir uyum olduğunu fark edebilirsiniz. Özel ölçümlerin aksine, özel olayların örneklemeye tabi olduğunu aklınızda bulundurun. `TrackMetric()`Kendi yerel ön toplamalarınızı yazmadan bile kullanabilirsiniz, ancak bunu yaparsanız, bunların farkında olun.
+Daraltma, örnekleme gibi belirli bir konudur, bir uyarının tetiklenmesi koşulu yerel olarak gerçekleşeceğinden ve daha sonra gönderilen çok fazla veri olduğu için alma uç noktasında bırakıldıklarından, azaltma kaçırılmış uyarılara yol açabilir. Bu, `TrackMetric()` kendi yerel toplama mantığınızı gerçekleştirmediğiniz takdirde .net ve .NET Core 'un kullanılmasını önermiyoruz. Belirli bir süre boyunca bir olay meydana gelen her örneği izlemeye çalışıyorsanız, [`TrackEvent()`](./api-custom-events-metrics.md#trackevent) daha iyi bir uyum olduğunu fark edebilirsiniz. Özel ölçümlerin aksine, özel olayların örneklemeye tabi olduğunu aklınızda bulundurun. `TrackMetric()`Kendi yerel ön toplamalarınızı yazmadan bile kullanabilirsiniz, ancak bunu yaparsanız, bunların farkında olun.
 
 Özet içinde, `GetMetric()` ön toplama işlemi yaptığı için önerilen yaklaşım, tüm iz () çağrılarındaki değerleri toplar ve her dakikada bir Özet/toplama gönderir. Bu, daha az veri noktası göndererek maliyet ve performans yükünü önemli ölçüde azaltabilir, ancak yine de tüm ilgili bilgileri toplarken.
 
 > [!NOTE]
-> Yalnızca .NET ve .NET Core SDK 'larının bir GetMetric () yöntemi vardır. Java kullanıyorsanız, [mikro ölçüm ölçümlerini](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) veya kullanabilirsiniz `TrackMetric()` . Python için, [Opencensus. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) ' i kullanarak özel ölçümler gönderebilirsiniz. JavaScript ve Node.js için kullanmaya devam edersiniz `TrackMetric()` , ancak önceki bölümde özetlenen uyarıları aklınızda bulundurun.
+> Yalnızca .NET ve .NET Core SDK 'larının bir GetMetric () yöntemi vardır. Java kullanıyorsanız, [mikro ölçüm ölçümlerini](./micrometer-java.md) veya kullanabilirsiniz `TrackMetric()` . Python için, [Opencensus. stats](./opencensus-python.md#metrics) ' i kullanarak özel ölçümler gönderebilirsiniz. JavaScript ve Node.js için kullanmaya devam edersiniz `TrackMetric()` , ancak önceki bölümde özetlenen uyarıları aklınızda bulundurun.
 
 ## <a name="getting-started-with-getmetric"></a>GetMetric ile çalışmaya başlama
 
-Örneklerimizde, temel bir .NET Core 3,1 çalışan hizmeti uygulaması kullanacağız. Bu örneklerle kullanılan test ortamını tam olarak çoğaltmak isterseniz, temel bir çalışan hizmeti proje şablonuna Application Insights eklemek için [izleme çalışan hizmeti makalesinin](https://docs.microsoft.com/azure/azure-monitor/app/worker-service#net-core-30-worker-service-application) 1-6 adımlarını izleyin. Bu kavramlar, SDK 'nın Web Apps ve konsol uygulamaları dahil kullanılabileceği tüm genel uygulamalar için geçerlidir.
+Örneklerimizde, temel bir .NET Core 3,1 çalışan hizmeti uygulaması kullanacağız. Bu örneklerle kullanılan test ortamını tam olarak çoğaltmak isterseniz, temel bir çalışan hizmeti proje şablonuna Application Insights eklemek için [izleme çalışan hizmeti makalesinin](./worker-service.md#net-core-30-worker-service-application) 1-6 adımlarını izleyin. Bu kavramlar, SDK 'nın Web Apps ve konsol uygulamaları dahil kullanılabileceği tüm genel uygulamalar için geçerlidir.
 
 ### <a name="sending-metrics"></a>Ölçümleri gönderme
 
@@ -110,7 +111,7 @@ Günlükler (Analiz) deneyiminde Application Insights kaynağını inceliyoruz, 
 > [!NOTE]
 > Ham telemetri öğesi bir açık Sum özelliği/alanı içermediği sırada sizin için bir tane oluşturuyoruz. Bu durumda, `value` ve `valueSum` özelliği aynı şeyi temsil eder.
 
-Ayrıca, portalın [_ölçümler_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) bölümünde özel ölçüm telemetrinize de erişebilirsiniz. Hem [günlük tabanlı hem de özel ölçüm](pre-aggregated-metrics-log-metrics.md)olarak. (Aşağıdaki ekran görüntüsü, günlük tabanlı bir örnektir.) ![Ölçüm Gezgini görünümü](./media/get-metric/metrics-explorer.png)
+Ayrıca, portalın [_ölçümler_](../platform/metrics-charts.md) bölümünde özel ölçüm telemetrinize de erişebilirsiniz. Hem [günlük tabanlı hem de özel ölçüm](pre-aggregated-metrics-log-metrics.md)olarak. (Aşağıdaki ekran görüntüsü, günlük tabanlı bir örnektir.) ![Ölçüm Gezgini görünümü](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Yüksek aktarım hızı kullanımı için önbelleğe alma ölçümü başvurusu
 
@@ -301,8 +302,8 @@ SeverityLevel.Error);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çalışan hizmeti uygulamalarını izleme hakkında [daha fazla bilgi edinin ](https://docs.microsoft.com/azure/azure-monitor/app/worker-service).
-* [Günlük tabanlı ve önceden toplanmış ölçümler](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)hakkında daha fazla bilgi için.
-* [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* Çalışan hizmeti uygulamalarını izleme hakkında [daha fazla bilgi edinin ](./worker-service.md).
+* [Günlük tabanlı ve önceden toplanmış ölçümler](./pre-aggregated-metrics-log-metrics.md)hakkında daha fazla bilgi için.
+* [Ölçüm Gezgini](../platform/metrics-getting-started.md)
 * [ASP.NET Core uygulamalar](asp-net-core.md) için Application Insights etkinleştirme
 * [ASP.NET uygulamaları](asp-net.md) için Application Insights etkinleştirme

@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555242"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511407"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına özel çözümleyiciler ekleme
 
@@ -145,7 +146,7 @@ Bir çözümleyici 'nin metin olarak belirteçlere nasıl bölüneceğini görme
      "text": "Vis-à-vis means Opposite"
   }
 ```
-**Yanıtıyla**
+**Response**
 ```
   {
     "tokens": [
@@ -199,17 +200,17 @@ Aşağıdaki tablolarda, bir dizin tanımının çözümleyiciler, simgeler, bel
 
 #### <a name="predefined-analyzers"></a>Önceden tanımlanmış çözümleyiciler
 
-|||  
-|-|-|  
-|Name|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
+| Tür | Açıklama |
+| ---- | ----------- |  
+|Ad|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
 |Tür|Çözümleyici, desteklenen çözümleyiciler listesinden bir tür. Aşağıdaki [çözümleyiciler](#AnalyzerTable) tablosunda **analyzer_type** sütununa bakın.|  
 |Seçenekler|Aşağıdaki [çözümleyiciler](#AnalyzerTable) tablosunda listelenen önceden tanımlanmış bir çözümleyici 'nin geçerli seçenekleri olmalıdır.|  
 
 #### <a name="custom-analyzers"></a>Özel çözümleyiciler
 
-|||  
-|-|-|  
-|Name|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
+| Tür | Açıklama |
+| ---- | ----------- |  
+|Ad|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
 |Tür|"#Microsoft. Azure. Search. CustomAnalyzer" olmalıdır.|  
 |CharFilters|[Char filtreleri](#char-filters-reference) tablosunda ya da dizin tanımında belirtilen özel bir Char filtresinde listelenen önceden tanımlanmış char filtrelerinden birini ayarlayın.|  
 |Belirteç ayırıcı|Gereklidir. Aşağıdaki [belirteç ayırıcı](#Tokenizers) tablosunda listelenen önceden tanımlanmış belirteçden birine ya da dizin tanımında belirtilen özel bir Simgeleştirici 'a ayarlayın.|  
@@ -224,9 +225,9 @@ Aşağıdaki tablolarda, bir dizin tanımının çözümleyiciler, simgeler, bel
 
  Bir Char filtresi, giriş metnini Simgeleştirici tarafından işlenmeden önce hazırlamak için kullanılır. Örneğin, belirli karakterleri veya sembolleri değiştirebilir. Özel bir çözümleyici 'de birden çok char filtresi olabilir. Char filtreleri listelendikleri sırada çalışır.  
 
-|||  
-|-|-|  
-|Name|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
+| Tür | Açıklama |
+| ---- | ----------- | 
+|Ad|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
 |Tür|Desteklenen karakter filtreleri listesinden char filtresi türü. Aşağıdaki [karakter filtreleri](#char-filters-reference) tablosunda **char_filter_type** sütununa bakın.|  
 |Seçenekler|Belirli bir [char filtre](#char-filters-reference) türünün geçerli seçenekleri olmalıdır.|  
 
@@ -237,9 +238,9 @@ Aşağıdaki tablolarda, bir dizin tanımının çözümleyiciler, simgeler, bel
  Özel çözümleyici başına tam olarak bir Simgeleştirici belirtebilirsiniz. Birden fazla belirteç Oluşturucu gerekirse, birden çok özel çözümleyici oluşturabilir ve bunları Dizin şemanızda alan temelinde atayabilirsiniz.  
 Özel çözümleyici, varsayılan veya özelleştirilmiş seçeneklerle önceden tanımlanmış bir belirteç ayırıcı kullanabilir.  
 
-|||  
-|-|-|  
-|Name|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
+| Tür | Açıklama |
+| ---- | ----------- | 
+|Ad|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
 |Tür|Desteklenen Simgeleştirici listesinden Tokenizer adı. Aşağıdaki [Simgeleyiciler](#Tokenizers) tablosunda **tokenizer_type** sütununa bakın.|  
 |Seçenekler|Aşağıdaki [belirteç ayırıcı](#Tokenizers) tablosunda listelenen belirli bir Simgeleştirici türünün geçerli seçenekleri olmalıdır.|  
 
@@ -248,9 +249,9 @@ Aşağıdaki tablolarda, bir dizin tanımının çözümleyiciler, simgeler, bel
  Belirteç filtresi, bir Simgeleştirici tarafından oluşturulan belirteçleri filtrelemek veya değiştirmek için kullanılır. Örneğin, tüm karakterleri küçük harfe dönüştüren küçük harfli bir filtre belirtebilirsiniz.   
 Özel bir çözümleyici 'de birden çok belirteç filtresi kullanabilirsiniz. Belirteç filtreleri listelendikleri sırada çalışır.  
 
-|||  
-|-|-|  
-|Name|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
+| Tür | Açıklama |
+| ---- | ----------- |  
+|Ad|Yalnızca harf, rakam, boşluk, tire veya alt çizgi içermelidir, yalnızca alfasayısal karakterlerle başlayıp bitebilirler ve 128 karakterle sınırlıdır.|  
 |Tür|Desteklenen belirteç filtreleri listesinden belirteç filtresi adı. Aşağıdaki [belirteç filtreleri](#TokenFilters) tablosunda **token_filter_type** sütununa bakın.|  
 |Seçenekler|Belirli bir belirteç filtresi türünün [belirteç filtreleri](#TokenFilters) olmalıdır.|  
 

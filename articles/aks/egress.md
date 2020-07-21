@@ -5,20 +5,22 @@ description: Azure Kubernetes Service (AKS) kümesinde çıkış trafiği için 
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205776"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517782"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de çıkış trafiği için statik bir genel IP adresi kullanın
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki *temel* SKU yük dengeleyiciye çıkış trafiği için statik BIR genel IP adresi kullanın
 
-Varsayılan olarak, bir Azure Kubernetes Service (AKS) kümesinden çıkış IP adresi rastgele atanır. Örneğin, dış hizmetlere erişim için bir IP adresi belirlemeniz gerektiğinde bu yapılandırma ideal değildir. Bunun yerine, hizmet erişimi için beyaz listeye eklenebilir statik bir IP adresi atamanız gerekebilir.
+Varsayılan olarak, bir Azure Kubernetes Service (AKS) kümesinden çıkış IP adresi rastgele atanır. Örneğin, dış hizmetlere erişim için bir IP adresi belirlemeniz gerektiğinde bu yapılandırma ideal değildir. Bunun yerine, hizmet erişimi için bir izin verilenler listesine eklenmek üzere statik bir IP adresi atamanız gerekebilir.
 
 Bu makalede, bir AKS kümesinde çıkış trafiği ile kullanmak üzere statik bir genel IP adresi oluşturma ve kullanma işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
+
+Bu makalede, Azure temel Load Balancer kullandığınızı varsaymaktadır.  [Azure Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)kullanmanızı öneririz. [aks çıkış trafiğini denetlemek](https://docs.microsoft.com/azure/aks/limit-egress-traffic)için daha gelişmiş özellikler de kullanabilirsiniz.
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
@@ -105,7 +107,7 @@ Statik ortak IP adresinin kullanıldığını doğrulamak için, gibi DNS arama 
 Başlangıç ve temel bir *deni* Pod 'a iliştirme:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 Kapsayıcının içinden bir Web sitesine erişmek için, `apt-get` kapsayıcıya yüklemek için kullanın `curl` .

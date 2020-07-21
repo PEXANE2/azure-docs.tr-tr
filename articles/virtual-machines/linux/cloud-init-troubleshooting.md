@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042093"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510982"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Cloud-init ile VM sağlama sorunlarını giderme
 
@@ -21,17 +21,17 @@ Sağlama yapmak için Cloud-init ' i kullanarak genelleştirilmiş özel görün
 
 Bazı örnekler, sağlama sorunları:
 - VM, 40 dakika boyunca ' oluşturma ' ile takılmış ve VM oluşturma işlemi başarısız olarak işaretlendi
-- CustomData işlenmedi
+- `CustomData`işlenmiyor
 - Kısa ömürlü disk takılamaz
 - Kullanıcılar oluşturulmaz veya Kullanıcı erişimi sorunları vardır
 - Ağ iletişimi doğru ayarlanmadı
 - Dosya veya bölüm hatasını takas etme
 
-Bu makalede, Cloud-init sorunlarını giderme adımları anlatılmaktadır. Daha ayrıntılı bilgi için bkz. [Cloud-init derin DIVE](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive).
+Bu makalede, Cloud-init sorunlarını giderme adımları anlatılmaktadır. Daha ayrıntılı bilgi için bkz. [Cloud-init derin DIVE](./cloud-init-deep-dive.md).
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>1. Adım: bir dağıtımı customData olmadan test etme
+## <a name="step-1-test-the-deployment-without-customdata"></a>1. Adım: dağıtımı olmadan test etme`customData`
 
-Cloud-init, VM oluşturulduğunda kendisine geçirilen customData öğesini kabul edebilir. Öncelikle bu, dağıtımlarla ilgili herhangi bir soruna neden olmadığından emin olmalısınız. Herhangi bir yapılandırmaya geçmeden VM 'yi sağlamayı deneyin. VM 'yi sağlayamazsa, geçirdiğiniz yapılandırmanın uygulanamamakta olduğunu fark ederseniz, [Adım 4]()' e geçin. 
+Cloud-init kabul edebilir `customData` , sanal makine oluşturulduğunda buna geçirilir. Öncelikle bu, dağıtımlarla ilgili herhangi bir soruna neden olmadığından emin olmalısınız. Herhangi bir yapılandırmaya geçmeden VM 'yi sağlamayı deneyin. VM 'yi sağlayamazsa, geçirdiğiniz yapılandırmanın uygulanamamakta olduğunu fark ederseniz, [Adım 4]()' e geçin. 
 
 ## <a name="step-2-review-image-requirements"></a>2. Adım: görüntü gereksinimlerini gözden geçirme
 VM sağlama başarısızlığının birincil nedeni, işletim sistemi görüntüsünün Azure 'da çalışmaya yönelik önkoşulları karşılamamasına neden olur. Azure 'da sağlamaya çalışmadan önce görüntülerinizin doğru şekilde hazırlandığından emin olun. 
@@ -39,15 +39,16 @@ VM sağlama başarısızlığının birincil nedeni, işletim sistemi görüntü
 
 Aşağıdaki makalelerde, Azure 'da desteklenen çeşitli Linux dağıtımlarını hazırlama adımları gösterilmektedir:
 
-- [CentOS Tabanlı Dağıtımlar](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SLES ve openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Diğerleri: onaylı olmayan dağıtımlar](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS Tabanlı Dağıtımlar](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES ve openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
+- [Diğerleri: onaylı olmayan dağıtımlar](create-upload-generic.md)
 
-[Desteklenen Azure Cloud-init görüntüleri](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)için Linux dağıtımları, görüntüyü Azure 'da doğru şekilde sağlamak için gereken tüm paketleri ve konfigürasyonları zaten vardır. SANAL makinenizin kendi seçkin görüntüsünden oluşturmamakta olduğunu fark ederseniz, isteğe bağlı customData ile Cloud-init için yapılandırılmış desteklenen bir Azure Marketi görüntüsünü deneyin. CustomData, bir Azure Market görüntüsü ile düzgün çalışıyorsa, bu durumda, seçkin resimde bir sorun olabilir.
+[Desteklenen Azure Cloud-init görüntüleri](./using-cloud-init.md)için Linux dağıtımları, görüntüyü Azure 'da doğru şekilde sağlamak için gereken tüm paketleri ve konfigürasyonları zaten vardır. SANAL makinenizin kendi seçkin görüntüsünden oluşturmamakta olduğunu fark ederseniz, isteğe bağlı olarak Cloud-init için yapılandırılmış desteklenen bir Azure Marketi görüntüsünü deneyin `customData` . `customData`Bir Azure Marketi görüntüsüyle doğru çalışıyorsa, bu durumda, seçkin görüntüde bir sorun olabilir.
 
 ## <a name="step-3-collect--review-vm-logs"></a>3. Adım: VM günlüklerini toplama & İnceleme
 
@@ -55,11 +56,11 @@ VM sağlamadığında, Azure, 20 dakika boyunca ' oluşturma ' durumu gösterir 
 
 VM çalışırken, sağlanmasının neden başarısız olduğunu anlamak için VM 'deki günlüklere ihtiyacınız olacak.  VM sağlamasının neden başarısız olduğunu anlamak için VM 'yi durdurmayın. VM 'yi çalışır durumda tutun. Günlükleri toplamak için, başarısız VM 'yi çalışır durumda tutmanız gerekir. Günlükleri toplamak için aşağıdaki yöntemlerden birini kullanın:
 
-- [Seri Konsol](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+- [Seri Konsol](./serial-console-grub-single-user-mode.md)
 
-- VM oluşturmadan önce [önyükleme tanılamayı etkinleştirin](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) ve önyükleme sırasında bunları [görüntüleyin](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) .
+- VM oluşturmadan önce [önyükleme tanılamayı etkinleştirin](./tutorial-monitor.md#enable-boot-diagnostics) ve önyükleme sırasında bunları [görüntüleyin](./tutorial-monitor.md#view-boot-diagnostics) .
 
-- İşletim sistemi diskini eklemek ve bağlamak için [az VM Repair çalıştırın](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands) , bu da bu günlükleri toplamanıza olanak tanır:
+- İşletim sistemi diskini eklemek ve bağlamak için [az VM Repair çalıştırın](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) , bu da bu günlükleri toplamanıza olanak tanır:
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -107,7 +108,7 @@ Bir hata veya uyarı bulduktan sonra, Cloud-init ' in hata veya uyarı vermeden 
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-[Seri konsoluna](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)erişiminiz varsa, Cloud-init ' nin çalıştırmaya çalıştığı komutu yeniden çalıştırmayı deneyebilirsiniz.
+[Seri konsoluna](./serial-console-grub-single-user-mode.md)erişiminiz varsa, Cloud-init ' nin çalıştırmaya çalıştığı komutu yeniden çalıştırmayı deneyebilirsiniz.
 
 Günlüğe kaydetme, `/var/log/cloud-init.log` /etc/Cloud/Cloud.exe içinde de yeniden yapılandırılabilir ve 05_logging. cfg. Cloud-init günlüğü hakkında daha fazla bilgi için [Cloud-init belgelerine](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)bakın. 
 
@@ -132,4 +133,4 @@ Cloud-init ' teki tüm hatalar önemli bir sağlama hatasına neden olmaz. Örne
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hala Cloud-init 'nin yapılandırmayı çalıştırmadığından yalıtılamadıysanız, her bir Cloud-init aşamasında ne olacağı ve modüllerin ne zaman çalıştığı hakkında daha yakından bakmanız gerekir. Daha fazla bilgi için bkz. [Cloud-init yapılandırmasını daha ayrıntılı hale döndürme](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive) . 
+Hala Cloud-init 'nin yapılandırmayı çalıştırmadığından yalıtılamadıysanız, her bir Cloud-init aşamasında ne olacağı ve modüllerin ne zaman çalıştığı hakkında daha yakından bakmanız gerekir. Daha fazla bilgi için bkz. [Cloud-init yapılandırmasını daha ayrıntılı hale döndürme](./cloud-init-deep-dive.md) . 

@@ -3,12 +3,12 @@ title: Azure Event Hubs özel durumlar
 description: Bu makale, Azure Event Hubs mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a93daa88c468a22838a6f9012f0c4622447f5555
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314613"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512376"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs mesajlaşma özel durumları-.NET
 Bu bölümde, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
@@ -19,10 +19,10 @@ Event Hubs .NET API 'Leri, aşağıdaki kategorilere ayrılan özel durumlar olu
 
  - Kullanıcı kodlama hatası: 
  
-   - [System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)
-   - [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)
-   - [System. Operationolaydexception](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)
-   - [System. Runtime. Serialization. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)
+   - [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)
+   - [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1)
+   - [System. Operationolaydexception](/dotnet/api/system.operationcanceledexception?view=netcore-3.1)
+   - [System. Runtime. Serialization. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)
    
    Genel eylem: devam etmeden önce kodu gidermeyi deneyin.
  
@@ -30,7 +30,7 @@ Event Hubs .NET API 'Leri, aşağıdaki kategorilere ayrılan özel durumlar olu
  
    - [Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
    - [Microsoft. Azure. EventHubs. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
-   - [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)
+   - [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)
    
    Genel eylem: yapılandırmanızı gözden geçirin ve gerekirse değiştirin.
    
@@ -45,7 +45,7 @@ Event Hubs .NET API 'Leri, aşağıdaki kategorilere ayrılan özel durumlar olu
  
  - Diğer özel durumlar: 
  
-   - [System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)
+   - [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)
    - [System. TimeoutException](#timeoutexception)
    - [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
    - [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
@@ -57,11 +57,11 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri ve gerçekle�
 
 | Özel durum türü | Açıklama/neden/örnekler | Önerilen eylem | Otomatik/anında yeniden denemeye göz atma |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Sunucu, belirtilen süre içinde, [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)tarafından denetlenen istenen işleme yanıt vermedi. Sunucu istenen işlemi tamamlamış olabilir. Bu özel durum, ağ veya diğer altyapı gecikmelerinden kaynaklanabilir. |Tutarlılık için sistem durumunu kontrol edin ve gerekirse yeniden deneyin.<br /> Bkz. [TimeoutException](#timeoutexception). | Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |İstenen Kullanıcı işlemine sunucu veya hizmet içinde izin verilmiyor. Ayrıntılar için özel durum iletisine bakın. Örneğin, ileti [Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modunda alınmışsa, [tamamlanmış](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) bu özel durumu oluşturur. | Kodu ve belgeleri denetleyin. İstenen işlemin geçerli olduğundan emin olun. | Yeniden deneme yardımcı olmayacaktır. |
-| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | Zaten kapatılmış, durdurulmuş veya atılmış bir nesne üzerinde bir işlemi çağırmak için bir girişimde bulunuldu. Nadir durumlarda, çevresel işlem zaten atıldı. | Kodu denetleyin ve çıkarılan bir nesne üzerinde işlemleri çağırmadığına emin olun. | Yeniden deneme yardımcı olmayacaktır. |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nesnesi belirteç alamadı, belirteç geçersiz veya belirteç işlemi yapmak için gereken talepleri içermiyor. | Belirteç sağlayıcısının doğru değerlerle oluşturulduğundan emin olun. Access Control Service yapılandırmasını denetleyin. | Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
-| [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | Yönteme sağlanan bir veya daha fazla bağımsız değişken geçersiz. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) için sağlanan URI yol kesimi (ler) içeriyor. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) için sağlanan URI şeması geçersiz. Özellik değeri 32 KB 'den büyük. | Çağıran kodu denetleyin ve bağımsız değişkenlerin doğru olduğundan emin olun. | Yeniden deneme, yardım etmez. |
+| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) |Sunucu, belirtilen süre içinde, [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)tarafından denetlenen istenen işleme yanıt vermedi. Sunucu istenen işlemi tamamlamış olabilir. Bu özel durum, ağ veya diğer altyapı gecikmelerinden kaynaklanabilir. |Tutarlılık için sistem durumunu kontrol edin ve gerekirse yeniden deneyin.<br /> Bkz. [TimeoutException](#timeoutexception). | Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |İstenen Kullanıcı işlemine sunucu veya hizmet içinde izin verilmiyor. Ayrıntılar için özel durum iletisine bakın. Örneğin, ileti [Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modunda alınmışsa, [tamamlanmış](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) bu özel durumu oluşturur. | Kodu ve belgeleri denetleyin. İstenen işlemin geçerli olduğundan emin olun. | Yeniden deneme yardımcı olmayacaktır. |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) | Zaten kapatılmış, durdurulmuş veya atılmış bir nesne üzerinde bir işlemi çağırmak için bir girişimde bulunuldu. Nadir durumlarda, çevresel işlem zaten atıldı. | Kodu denetleyin ve çıkarılan bir nesne üzerinde işlemleri çağırmadığına emin olun. | Yeniden deneme yardımcı olmayacaktır. |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nesnesi belirteç alamadı, belirteç geçersiz veya belirteç işlemi yapmak için gereken talepleri içermiyor. | Belirteç sağlayıcısının doğru değerlerle oluşturulduğundan emin olun. Access Control Service yapılandırmasını denetleyin. | Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) | Yönteme sağlanan bir veya daha fazla bağımsız değişken geçersiz. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) için sağlanan URI yol kesimi (ler) içeriyor. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) için sağlanan URI şeması geçersiz. Özellik değeri 32 KB 'den büyük. | Çağıran kodu denetleyin ve bağımsız değişkenlerin doğru olduğundan emin olun. | Yeniden deneme, yardım etmez. |
 | [Microsoft. ServiceBus. Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft. Azure. EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | İşlemle ilişkili varlık yok veya silinmiş. | Varlığın mevcut olduğundan emin olun. | Yeniden deneme, yardım etmez. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | İstemci, Olay Hub 'ına bir bağlantı kuramıyor. |Sağlanan ana bilgisayar adının doğru olduğundan ve konağın erişilebilir olduğundan emin olun. | Yeniden dene, aralıklı bağlantı sorunları olup olmadığı konusunda yardımcı olabilir. |
 | [Microsoft. ServiceBus. Messaging Serverbusyıexception](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft. Azure. EventHubs Serverbusonexception](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Hizmet şu anda isteği işleyemiyor. | İstemci bir süre bekleyip işlemi yeniden deneyin. <br /> Bkz. [Serverbusyıexception](#serverbusyexception). | İstemci belirli bir aralıktan sonra yeniden deneyebilir. Yeniden deneme farklı bir özel durumla sonuçlanırsa, bu özel durumun yeniden deneme davranışını denetleyin. |
@@ -80,7 +80,7 @@ Bu özel durum, müşteri başına grup düzeyinde en fazla alıcı sayısı (5)
 Event Hubs Olay Hub 'ı başına 20 Tüketici grubu sınırı vardır. Daha fazla oluşturmaya çalıştığınızda bir [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)alırsınız. 
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) , Kullanıcı tarafından başlatılan bir işlemin işlem zaman aşımından daha uzun sürdüğünü gösterir. 
+[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) , Kullanıcı tarafından başlatılan bir işlemin işlem zaman aşımından daha uzun sürdüğünü gösterir. 
 
 Event Hubs için zaman aşımı, bağlantı dizesinin parçası olarak veya [Servicebusconnectionstringbuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder)aracılığıyla belirtilir. Hata iletisinin kendisi farklılık gösterebilir, ancak her zaman geçerli işlem için belirtilen zaman aşımı değerini içerir. 
 
@@ -120,6 +120,6 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Event Hubs genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay Hub 'ı oluşturma](event-hubs-create.md)
+* [Event Hubs genel bakış](./event-hubs-about.md)
+* [Olay Hub'ı oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)

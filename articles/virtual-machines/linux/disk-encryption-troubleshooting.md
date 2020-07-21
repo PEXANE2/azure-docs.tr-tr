@@ -8,13 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970471"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510489"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure disk şifrelemesi sorun giderme kılavuzu
+# <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Linux VM 'Leri için Azure disk şifrelemesi sorun giderme kılavuzu
 
 Bu kılavuz BT uzmanları, bilgi güvenliği analistleri ve kuruluşları tarafından Azure disk şifrelemesi kullanan bulut yöneticileri içindir. Bu makale, disk şifrelemesiyle ilgili sorunları gidermenize yardımcı olur.
 
@@ -110,5 +111,5 @@ CLı ile Azure disk şifrelemesini devre dışı bırakmak için [az VM Encrypti
 
 Bu belgede, Azure disk şifrelemesi 'nde bazı yaygın sorunlar ve bu sorunları nasıl giderebileceğiniz hakkında daha fazla bilgi edindiniz. Bu hizmet ve özellikleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/security-center-apply-disk-encryption.md)
-- [Bekleyen Azure veri şifrelemesi](../../security/fundamentals/encryption-atrest.md)
+- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/security-center-virtual-machine-protection.md)
+- [Azure bekleyen verileri şifreleme](../../security/fundamentals/encryption-atrest.md)

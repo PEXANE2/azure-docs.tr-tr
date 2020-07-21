@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b22c653d25dc23bbcb249344affaf83a07f190af
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024917"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518767"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için RBAC rolü atamak üzere Azure portal kullanın
 
@@ -83,7 +83,7 @@ Kullanıcılarınızın Azure portal bloblara erişebilmeleri gerekiyorsa, bu ku
 
 Kullanıcının Azure portal bloblara erişebilmeleri için **okuyucu** rolünü atamak için aşağıdaki adımları izleyin. Bu örnekte, atama depolama hesabı kapsamıdır:
 
-1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
+1. [Azure portalında](https://portal.azure.com) depolama hesabınıza gidin.
 1. Depolama hesabının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
 1. **Rol ataması Ekle** penceresinde **okuyucu** rolünü seçin. 
 1. **Erişim ata** ALANıNDAN **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.

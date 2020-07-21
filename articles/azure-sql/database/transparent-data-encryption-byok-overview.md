@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985318"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514739"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ Sunucunun, 1. & lt; 1} içinde depolanan TDE koruyucusunu kullanabilmesi için, 
 
 - **unwrapKey** -korumayı kaldırmak için (şifre çözme) dek
 
-Anahtar Kasası Yöneticisi ayrıca [Anahtar Kasası denetim olaylarının günlüğe kaydedilmesini etkinleştirerek](../../azure-monitor/insights/azure-key-vault.md)daha sonra denetlenebilir.
+Anahtar Kasası Yöneticisi ayrıca [Anahtar Kasası denetim olaylarının günlüğe kaydedilmesini etkinleştirerek](../../azure-monitor/insights/key-vault-insights-overview.md)daha sonra denetlenebilir.
 
 Sunucu, AKV 'den bir TDE koruyucusu kullanacak şekilde yapılandırıldığında, sunucu her bir TDE etkin veritabanının DEK i şifreleme için anahtar kasasına gönderir. Anahtar Kasası, daha sonra Kullanıcı veritabanında depolanan şifreli DEK ' i döndürür.
 

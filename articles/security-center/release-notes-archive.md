@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 19a6764b68a7a06f9777bac94c9f34aaf09aec0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970697"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519617"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -135,7 +135,7 @@ Sanal makinelere yüklenen uygulamalar, genellikle sanal makine ihlaline neden o
 
 Azure Güvenlik Merkezi 'nin tehdit koruması ve IaaS VM 'lerinde çalıştırılan SQL DB değerlendirmesi için destek artık önizleme aşamasındadır.
 
-[Güvenlik açığı değerlendirmesi](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) , olası veritabanı güvenlik açıklarını düzeltebileceğiniz, izleyebileceğiniz ve bu sorunları gidermenize yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Azure güvenli puanınızın bir parçası olarak güvenlik duruşunuzu görünürlük sağlar ve güvenlik sorunlarını giderme ve veritabanınızın geliştirilmesine yönelik adımları içerir.
+[Güvenlik açığı değerlendirmesi](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) olası veritabanı güvenlik açıklarını keşfetmenizi ve izlemenizi sağlamanın yanı sıra bunları gidermeye yardımcı olan yapılandırması kolay bir hizmettir. Azure güvenli puanınızın bir parçası olarak güvenlik duruşunuzu görünürlük sağlar ve güvenlik sorunlarını giderme ve veritabanınızın geliştirilmesine yönelik adımları içerir.
 
 [Gelişmiş tehdit koruması](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) , SQL Server 'a erişmeye veya yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. Veritabanınızı sürekli şüpheli etkinlikler için izler ve anormal veritabanı erişim desenlerinde eyleme dayalı güvenlik uyarıları sağlar. Bu uyarılar, tehdidi araştırmak ve azaltmak için şüpheli etkinlik ayrıntılarını ve önerilen eylemleri sağlar.
 

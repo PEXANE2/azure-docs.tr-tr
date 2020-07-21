@@ -8,11 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889695"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517884"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -155,7 +156,9 @@ Azure, etkinlik günlüğünü varsayılan olarak oluşturur. Günlükler, Azure
 
 ### <a name="access-log"></a>Erişim günlüğü
 
-Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, her bir Application Gateway örneği üzerinde etkinleştirdiyseniz oluşturulur. Veriler, günlüğü etkinleştirdiğinizde belirttiğiniz depolama hesabında depolanır. Her Application Gateway erişimi, v1 için aşağıdaki örnekte gösterildiği gibi JSON biçiminde günlüğe kaydedilir:
+Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, her bir Application Gateway örneği üzerinde etkinleştirdiyseniz oluşturulur. Veriler, günlüğü etkinleştirdiğinizde belirttiğiniz depolama hesabında depolanır. Her Application Gateway erişimi, aşağıda gösterildiği gibi JSON biçiminde günlüğe kaydedilir. 
+
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>Application Gateway Standard ve WAF SKU (v1) için
 
 |Değer  |Açıklama  |
 |---------|---------|
@@ -199,7 +202,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
     }
 }
 ```
-Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir:
+#### <a name="for-application-gateway-and-waf-v2-sku"></a>Application Gateway ve WAF v2 SKU 'SU için
 
 |Değer  |Açıklama  |
 |---------|---------|
@@ -220,7 +223,10 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 |Sunucu yönlendirmeli| Application Gateway 'in isteği yönlendiren arka uç sunucusu.|
 |serverStatus| Arka uç sunucusunun HTTP durum kodu.|
 |serverResponseLatency| Arka uç sunucusundan gelen yanıtın gecikmesi.|
-|konak| İsteğin ana bilgisayar üstbilgisinde listelenen adres.|
+|konak| İsteğin ana bilgisayar üstbilgisinde listelenen adres. Yeniden yazan, bu alan güncelleştirilmiş ana bilgisayar adını içerir|
+|originalRequestUriWithArgs| Bu alan, özgün istek URL 'sini içerir |
+|requestUri| Bu alan, Application Gateway yeniden yazma işleminden sonraki URL 'YI içerir |
+|originalHost| Bu alan, özgün istek ana bilgisayar adını içerir
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -261,7 +267,7 @@ Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her 
 |Healthyıhostcount     | Arka uç havuzundaki sağlıklı ana bilgisayar sayısı.        |
 |Unhealthyıhostcount     | Arka uç havuzundaki sağlıksız ana bilgisayar sayısı.        |
 |Istek sayısı     | Hizmet verilen istek sayısı.        |
-|dönemlerinde | Örneğinden istekleri sunan arka uca yapılan isteklerin ortalama gecikme süresi (milisaniye cinsinden). |
+|gecikme süresi | Örneğinden istekleri sunan arka uca yapılan isteklerin ortalama gecikme süresi (milisaniye cinsinden). |
 |failedRequestCount| Başarısız istek sayısı.|
 |aktarım hızı| Son günlüğün bu yana saniye başına bayt cinsinden ölçülen ortalama aktarım hızı.|
 
@@ -302,7 +308,7 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
 |ruleSetVersion     | Kural kümesi sürümü kullanıldı. Kullanılabilir değerler 2.2.9 ve 3,0 ' dir.     |
 |RuleId     | Tetikleme olayının kural KIMLIĞI.        |
 |message     | Tetikleme olayı için Kullanıcı dostu ileti. Ayrıntılar bölümünde daha fazla ayrıntı sağlanır.        |
-|action     |  İstek üzerinde gerçekleştirilen eylem. Kullanılabilir değerler eşleşiyor ve engellendi.      |
+|eylem     |  İstek üzerinde gerçekleştirilen eylem. Kullanılabilir değerler eşleşiyor ve engellendi.      |
 |Site     | Günlüğün oluşturulduğu site. Şu anda, kurallar genel olduğundan yalnızca küresel olarak listelenir.|
 |bilgileri     | Tetikleme olayının ayrıntıları.        |
 |Ayrıntılar. ileti     | Kuralın açıklaması.        |

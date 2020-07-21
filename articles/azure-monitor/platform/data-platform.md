@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81457272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515538"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Izleyici veri platformu
 
@@ -23,7 +23,7 @@ Günümüzün bulut ve şirket içi hizmetlere dayalı dağıtılmış uygulamal
 [Azure izleyici](../overview.md) , çeşitli kaynaklardan veri toplar ve bunları analiz, görselleştirme ve uyarı için kullanılabilecek ortak bir veri platformuna toplar. Birden fazla kaynaktaki verilerin üzerine tutarlı bir deneyim sunar. Bu, tüm izlenen kaynaklarda ve hatta verilerini Azure Izleyici 'de depolayan diğer hizmetlerden gelen verilerle birlikte ayrıntılı öngörüler sağlar.
 
 
-![Azure İzleyici’ye genel bakış](media/data-platform/overview.png)
+![Azure İzleyici'ye genel bakış](media/data-platform/overview.png)
 
 ## <a name="observability-data-in-azure-monitor"></a>Azure Izleyici 'de verileri Observability
 Ölçümler, Günlükler ve dağıtılmış izlemeler, yaygın olarak Observability 'in üç paragraf adı olarak adlandırılır. Bunlar, izlenen bir sistemin yeterli Observability sağlamak için bir izleme aracının toplaması ve analiz edilmesi gereken farklı veri türleridir. Observability birden çok ve daha fazla şekilde verilerle ilişkilendirerek ve izlenen tüm kaynak kümesi genelinde veri toplanarak elde edilebilir. Azure Izleyici birden fazla kaynaktaki verileri birlikte depoladığından, veriler ortak bir araç kümesi kullanılarak bağıntılı ve analiz edilebilir. Ayrıca, diğer hizmetlere yönelik verilerin barındırılmasına ek olarak, verileri birden çok Azure aboneliği ve kiracılar arasında da ilişkilendirir.
@@ -49,7 +49,7 @@ Azure Izleyici 'deki Günlükler, güçlü bir analiz altyapısı ve [zengin sor
 > Azure Izleyici günlüklerini ve Azure 'da günlük verilerinin kaynaklarını ayırt etmek önemlidir. Örneğin, Azure 'daki abonelik düzeyi olayları, Azure Izleyici menüsünden görüntüleyebileceğiniz bir [etkinlik günlüğüne](platform-logs-overview.md) yazılır. Çoğu kaynak, işletimsel bilgileri farklı konumlara iletebilmeniz için bir [kaynak günlüğüne](platform-logs-overview.md) yazar. Azure Izleyici günlükleri, tüm kaynak kümesinde derin analiz sağlamak üzere diğer izleme verileriyle birlikte etkinlik günlüklerini ve kaynak günlüklerini toplayan bir günlük veri platformudur.
 
 
- Azure portal [Log Analytics](../log-query/portals.md) ile [günlük sorgularıyla](../log-query/log-query-overview.md) etkileşimli olarak çalışabilir veya sonuçları diğer verilerle birlikte görselleştirme için bir [Azure panosuna](../learn/tutorial-app-dashboards.md) ekleyebilirsiniz. Ayrıca, bir zamanlama sorgusunun sonuçlarına dayalı olarak bir uyarı tetikleyecek [günlük uyarıları](alerts-log.md) da oluşturabilirsiniz.
+ Azure portal [Log Analytics](../log-query/log-query-overview.md) ile [günlük sorgularıyla](../log-query/log-query-overview.md) etkileşimli olarak çalışabilir veya sonuçları diğer verilerle birlikte görselleştirme için bir [Azure panosuna](../learn/tutorial-app-dashboards.md) ekleyebilirsiniz. Ayrıca, bir zamanlama sorgusunun sonuçlarına dayalı olarak bir uyarı tetikleyecek [günlük uyarıları](alerts-log.md) da oluşturabilirsiniz.
 
 Azure izleyici ['Deki günlüklerde](data-platform-logs.md)bulunan veri kaynaklarını Içeren Azure izleyici günlükleri hakkında daha fazla bilgi edinin.
 
@@ -67,7 +67,7 @@ Aşağıdaki tabloda Azure Izleyici 'de ölçümler ve Günlükler karşılaşt�
 
 | Öznitelik  | Ölçümler | Günlükler |
 |:---|:---|:---|
-| Yararları | Uyarı gibi neredeyse gerçek zamanlı senaryolara sahip hafif ve yetenekli senaryolar. Sorunların hızlı algılanması için idealdir. | Zengin sorgu diliyle çözümlendi. Derin analiz ve temel nedeni tanımlama için idealdir. |
+| Avantajlar | Uyarı gibi neredeyse gerçek zamanlı senaryolara sahip hafif ve yetenekli senaryolar. Sorunların hızlı algılanması için idealdir. | Zengin sorgu diliyle çözümlendi. Derin analiz ve temel nedeni tanımlama için idealdir. |
 | Veriler | Yalnızca sayısal değerler | Metin veya sayısal veriler |
 | Yapı | Örnek saat, izlenen kaynak ve sayısal bir değer dahil olmak üzere standart özellikler kümesi. Bazı ölçümler, daha fazla tanım için birden çok boyut içerir. | Günlük türüne göre benzersiz özellik kümesi. |
 | Koleksiyon | Düzenli aralıklarla toplanır. | , Olayların oluşturulması için bir kayıt tetiklemesi olarak toplanabilir. |
@@ -81,7 +81,7 @@ Her türü dolduran farklı veri kaynaklarının listesi için bkz. Azure izleyi
 
 
 ## <a name="stream-data-to-external-systems"></a>Dış sistemlere veri akışı
-İzleme verilerini çözümlemek için Azure 'daki araçların kullanılmasına ek olarak, onu güvenlik bilgileri ve olay yönetimi (SıEM) ürünü gibi bir dış araca iletme gereksinimine sahip olabilirsiniz. Bu iletme, genellikle [Azure Event Hubs](/azure/event-hubs/)aracılığıyla izlenen kaynaklardan doğrudan yapılır. Bazı kaynaklar, gerekli verileri almak için mantıksal uygulama gibi başka bir işlem de kullanabilmeniz sırasında, verileri doğrudan bir olay hub 'ına gönderecek şekilde yapılandırılabilir. Ayrıntılar için bkz. [bir dış araçla tüketim Için Azure izleme verilerini bir olay hub 'ına akış](stream-monitoring-data-event-hubs.md) .
+İzleme verilerini çözümlemek için Azure 'daki araçların kullanılmasına ek olarak, onu güvenlik bilgileri ve olay yönetimi (SıEM) ürünü gibi bir dış araca iletme gereksinimine sahip olabilirsiniz. Bu iletme, genellikle [Azure Event Hubs](../../event-hubs/index.yml)aracılığıyla izlenen kaynaklardan doğrudan yapılır. Bazı kaynaklar, gerekli verileri almak için mantıksal uygulama gibi başka bir işlem de kullanabilmeniz sırasında, verileri doğrudan bir olay hub 'ına gönderecek şekilde yapılandırılabilir. Ayrıntılar için bkz. [bir dış araçla tüketim Için Azure izleme verilerini bir olay hub 'ına akış](stream-monitoring-data-event-hubs.md) .
 
 
 

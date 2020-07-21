@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1be80defd7a4291d1224d5b0cb9f9e833dcf9af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460129"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510523"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Yalıtılmış bir ağda Azure disk şifrelemesi
 
@@ -43,7 +43,7 @@ Uygulanan tüm ağ güvenlik grubu ayarları, uç noktanın disk şifrelemesi i�
 
 Azure [ad (önceki sürüm) Ile Azure disk şifrelemesi](disk-encryption-overview-aad.md)kullanıyorsanız, tüm kaldırmalar Için [Azure Active Directory kitaplığının](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) el ile yüklenmesi gerekir ( [yukarıda listelenen](#package-management)bir dağıtım için uygun paketlere ek olarak).
 
-Şifreleme, [Azure AD kimlik bilgileriyle](disk-encryption-linux-aad.md)etkinleştirildiğinde, hedef VM hem Azure Active Directory uç noktalarına hem de Key Vault uç noktalarına bağlantı kurulmasına izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları, [Office 365 URL 'leri ve IP adresi aralıkları](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) belgelerinin 56 ve 59 bölümlerinde saklanır. Key Vault yönergeler, [bir güvenlik duvarının arkasındaki Azure Key Vault erişme](../../key-vault/general/access-behind-firewall.md)hakkındaki belgelerde sunulmaktadır.
+Şifreleme, [Azure AD kimlik bilgileriyle](disk-encryption-linux-aad.md)etkinleştirildiğinde, hedef VM hem Azure Active Directory uç noktalarına hem de Key Vault uç noktalarına bağlantı kurulmasına izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları, [Office 365 URL 'leri ve IP adresi aralıkları](/office365/enterprise/urls-and-ip-address-ranges) belgelerinin 56 ve 59 bölümlerinde saklanır. Key Vault yönergeler, [bir güvenlik duvarının arkasındaki Azure Key Vault erişme](../../key-vault/general/access-behind-firewall.md)hakkındaki belgelerde sunulmaktadır.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 
@@ -52,4 +52,4 @@ Sanal makine, yalnızca VM içinden erişilebilen iyi bilinen yönlendirilemeyen
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure disk şifrelemesi sorunlarını giderme](disk-encryption-troubleshooting.md) için daha fazla adım görüntüleyin
-- [Bekleyen Azure veri şifrelemesi](../../security/fundamentals/encryption-atrest.md)
+- [Azure bekleyen verileri şifreleme](../../security/fundamentals/encryption-atrest.md)

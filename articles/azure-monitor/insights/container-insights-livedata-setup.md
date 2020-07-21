@@ -4,12 +4,12 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullan
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d60836af350e9af99355db9a7cc140a949d1492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337936"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516473"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
@@ -19,7 +19,7 @@ Bu özellik günlüklere, olaylara ve ölçümlere erişimi denetlemek için aş
 
 - Kubernetes RBAC yetkilendirmesi etkin olmayan AKS
 - Kubernetes RBAC yetkilendirmesi ile AKS etkin
-    - Küme rolü bağlama ** [Clustermonitoringuser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0) ile yapılandırılan aks 'ler**
+    - Küme rolü bağlama ** [Clustermonitoringuser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0) ile yapılandırılan aks 'ler**
 - Azure Active Directory (AD) SAML tabanlı çoklu oturum açma ile AKS etkin
 
 Bu yönergeler, Kubernetes kümenize yönetim erişiminin yanı sıra Kullanıcı kimlik doğrulaması için Azure Active Directory (AD) kullanmak üzere yapılandırılıyorsa, Azure AD 'ye yönetici erişimi gerektirir.
@@ -108,7 +108,7 @@ Azure AD istemci kaydı, Azure portal yetkilendirme sayfalarını güvenilir bir
 Kubernetes 'te gelişmiş güvenlik kurulumu hakkında daha fazla bilgi için [Kubernetes belgelerini](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)gözden geçirin.
 
 >[!NOTE]
->Yeni bir RBAC etkin küme oluşturuyorsanız, bkz. [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme](../../aks/azure-ad-integration.md) ve Azure AD kimlik doğrulamasını yapılandırma adımlarını izleyin. İstemci uygulamasını oluşturma adımları sırasında, bu bölümdeki bir notta, aşağıdaki 3. adımda belirtilenler için Azure Izleyici için oluşturmanız gereken iki yeniden yönlendirme URL 'Si vurgulanmaktadır.
+>Yeni bir RBAC etkin küme oluşturuyorsanız, bkz. [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme](../../aks/azure-ad-integration-cli.md) ve Azure AD kimlik doğrulamasını yapılandırma adımlarını izleyin. İstemci uygulamasını oluşturma adımları sırasında, bu bölümdeki bir notta, aşağıdaki 3. adımda belirtilenler için Azure Izleyici için oluşturmanız gereken iki yeniden yönlendirme URL 'Si vurgulanmaktadır.
 
 ### <a name="client-registration-reconfiguration"></a>İstemci kaydı yeniden yapılandırması
 

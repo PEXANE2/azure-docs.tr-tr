@@ -13,23 +13,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267265"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515062"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Hızlı başlangıç: bağlanmak ve sorgulamak için Visual Studio Code kullanma 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 [Visual Studio Code](https://code.visualstudio.com/docs) , Linux, MacOS ve Windows için bir grafik kod düzenleyicisidir. SQL Server örneği, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'teki bir veritabanını sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler. Bu hızlı başlangıçta, Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak için Visual Studio Code kullanacaksınız ve sonra verileri sorgulamak, eklemek, güncelleştirmek ve silmek için Transact-SQL deyimlerini çalıştırmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure SQL veritabanı veya Azure SQL yönetilen örneği içindeki bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
-  || Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
+  | Eylem | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
   |:--- |:--- |:---|
   | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -43,7 +43,7 @@ ms.locfileid: "84267265"
   > [!IMPORTANT]
   > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. SQL yönetilen örneği ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
 
-## <a name="install-visual-studio-code"></a>Visual Studio Code'u yükleme
+## <a name="install-visual-studio-code"></a>Visual Studio Code’u yükleme
 
 En son [Visual Studio Code](https://code.visualstudio.com/Download) yüklediğinizden ve [MSSQL uzantısını](https://aka.ms/mssql-marketplace)yüklediğinizden emin olun. MSSQL uzantısını yükleme hakkında yönergeler için, bkz. [yükleme Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) ve [MSSQL Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
 
@@ -74,7 +74,7 @@ Hiçbir özel yapılandırma gerekmez.
 
 Azure SQL veritabanı 'na bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -92,7 +92,7 @@ Visual Studio Code, MSSQL komutlarını ve T-SQL IntelliSense 'i etkinleştirmek
 
 4. Açılan **dil modunu seç** açılan menüsünde **SQL**' i seçin.
 
-## <a name="connect-to-your-database"></a>Veritabanınıza bağlanın
+## <a name="connect-to-your-database"></a>Veritabanınıza bağlanma
 
 Sunucunuza bağlantı kurmak için Visual Studio Code kullanın.
 

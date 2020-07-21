@@ -4,11 +4,12 @@ description: Azure Izleyici başvurusu, Azure Kaynak günlükleri için destekle
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515402"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen Kategoriler
 
@@ -376,7 +377,7 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 |Appbrowserzamanlamalar|Tarayıcı zamanlamaları|
 |AppDependencies|Bağımlılıklar|
 |AppEvents|Olaylar|
-|AppExceptions|Özel durumlar|
+|AppExceptions|Özel Durumlar|
 |Appölçümler|Ölçümler|
 |AppPageViews|Sayfa görünümleri|
 |AppPerformanceCounters|Performans sayaçları|
@@ -711,6 +712,6 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * [Kaynak günlükleri hakkında daha fazla bilgi edinin](../../azure-monitor/platform/platform-logs-overview.md)
-* [**Event Hubs** için kaynak kaynağı günlüklerini akışla](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Azure Izleyici REST API kullanarak kaynak günlüğü tanılama ayarlarını değiştirme](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Azure depolama 'daki günlükleri Log Analytics ile analiz etme](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [**Event Hubs** için kaynak kaynağı günlüklerini akışla](./resource-logs.md#send-to-azure-event-hubs)
+* [Azure Izleyici REST API kullanarak kaynak günlüğü tanılama ayarlarını değiştirme](/rest/api/monitor/diagnosticsettings)
+* [Azure depolama 'daki günlükleri Log Analytics ile analiz etme](./resource-logs.md#send-to-log-analytics-workspace)

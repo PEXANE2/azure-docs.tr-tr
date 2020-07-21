@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure ön kapı kuralları altyapısı eşleştirme koşulları
 description: Bu makalede, Azure ön kapı kuralları altyapısından kullanılabilen çeşitli eşleşme koşullarının bir listesi sunulmaktadır.
 services: frontdoor
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: d42b6b56f0cdd1f6ef2ea45b21a027f1b4c56b1c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321999"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512172"
 ---
-# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure ön kapı kuralları altyapısı eşleştirme koşulları
+# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door Kural Altyapısı Eşleştirme Koşulları
 
 [AFD kural altyapısında](front-door-rules-engine.md) bir kural sıfır veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, AFD kural altyapısında kullanabileceğiniz eşleştirme koşullarına ilişkin ayrıntılı açıklamalar sağlanmaktadır.
 
@@ -178,7 +178,7 @@ Operatör | Dosya adı | Örnek dönüştürme
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Operatör | Değer | Örnek dönüştürme
+İşleç | Değer | Örnek dönüştürme
 ---------|-------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -186,7 +186,7 @@ Operatör | Değer | Örnek dönüştürme
 
 Standart işleç listesinden değerleri kabul eden kurallar için aşağıdaki işleçler geçerlidir:
 
-- Herhangi biri
+- Herhangi bir
 - Eşittir 
 - Contains 
 - Şununla başlar 

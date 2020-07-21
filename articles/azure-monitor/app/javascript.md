@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464581"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517119"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -103,7 +104,7 @@ Her yapılandırma seçeneği, yukarıdaki yeni bir satırda gösterilir. [iste�
 
 Kullanılabilir yapılandırma seçenekleri şunlardır 
 
-| Name | Tür | Açıklama
+| Ad | Tür | Description
 |------|------|----------------
 | src | dize **[gerekli]** | SDK 'nın yükleneceği yerin tam URL 'SI. Bu değer, dinamik olarak eklenen bir betiğin/etiketin "src" özniteliği için kullanılır &lt; &gt; . Genel CDN konumunu veya kendi özel olarak barındırılan birini kullanabilirsiniz.
 | name | dize *[isteğe bağlı]* | Başlatılmış SDK için genel ad, varsayılan Appınsights olarak belirlenmiştir. ```window.appInsights```Bu nedenle, başlatılmış örneğe bir başvuru olacaktır. Note: bir ad değeri sağlarsanız veya bir önceki örnek atanmak üzere görünüyorsa (Appınsi\dk genel adı aracılığıyla), bu ad değeri aynı zamanda genel ad alanında olarak tanımlanır ```window.appInsightsSDK=<name value>``` , bu da SDK başlatma kodunun doğru kod parçacığı çatısı ve proxy yöntemlerinin başlatılmasını ve güncelleştirilmesini sağlamak için gereklidir.
@@ -114,7 +115,7 @@ Kullanılabilir yapılandırma seçenekleri şunlardır
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
 
-Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bu modüller şunlardır:
+Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bunlara
 
 - Uygulamanızdaki bilgiler dahil **yakalanamayan özel durumlar**
     - Yığın izleme
@@ -152,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Name | Varsayılan | Açıklama |
+| Name | Varsayılan | Description |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -185,14 +186,14 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | ıconlanapidisabled | true | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir |
 | Onunloaddisableişaret | yanlış | Varsayılan yanlış. sekme kapatıldığında SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak kalan tüm telemetrileri gönderir |
 | SDK uzantısı | null | SDK uzantısının adını ayarlar. Yalnızca alfabetik karakterlere izin verilir. Uzantı adı ' AI. Internal. sdkVersion ' etiketinin öneki olarak eklenir (örneğin, ' ext_javascript: 2.0.0 '). Varsayılan değer null. |
-| isBrowserLinkTrackingEnabled | yanlış | Varsayılan değer false’tur. Doğru ise, SDK tüm [tarayıcı bağlantısı](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) isteklerini izler. |
+| isBrowserLinkTrackingEnabled | yanlış | Varsayılan değer false’tur. Doğru ise, SDK tüm [tarayıcı bağlantısı](/aspnet/core/client-side/using-browserlink) isteklerini izler. |
 | appId | null | Uygulama kimliği, istemci tarafında sunucu tarafı istekleri ile oluşan AJAX bağımlılıkları arasındaki bağıntı için kullanılır. Işaret API 'SI etkinleştirildiğinde, otomatik olarak kullanılamaz, ancak yapılandırmada el ile ayarlanabilir. Varsayılan değer null |
 | enableCorsCorrelation | yanlış | Doğru ise, SDK giden AJAX bağımlılıklarını sunucu tarafındaki ilgili isteklerle ilişkilendirmek için tüm CORS isteklerine iki üst bilgi (' Istek-kimliği ' ve ' Istek-bağlam ') ekler. Varsayılan değer false şeklindedir |
 | namePrefix | tanımlayan | LocalStorage ve tanımlama bilgisi adı için ad soneki olarak kullanılacak isteğe bağlı bir değer.
 | Enableoto Routetracking | yanlış | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri ( `example.com/foo#bar` ) de yeni sayfa görünümleri olarak kaydedilir.
 | enableRequestHeaderTracking | yanlış | True ise, AJAX & getirme isteği üst bilgileri izlenir, varsayılan değer false 'dur.
 | enableResponseHeaderTracking | yanlış | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir, varsayılan değer false 'dur.
-| distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır. Örneğe [buraya](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)bakın.
+| distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır. Örneğe [buraya](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)bakın.
 | enableAjaxErrorStatusText | yanlış | Varsayılan yanlış. Doğru ise, başarısız AJAX isteklerinde bağımlılık olayına yanıt hatası veri metnini ekleyin.
 | enableAjaxPerfTracking | yanlış | Varsayılan yanlış. Daha fazla tarayıcı penceresi aramak ve dahil olmak üzere izin vermek için bayrak. bildirilen Ajax (XHR ve fetch) tarafından bildirilen ölçümlerde performans zamanlamaları.
 | maxAjaxPerfLookupAttempts | 3 | Varsayılan olarak 3 ' e döner. Pencerenin aranacağı en fazla sayı. performans zamanlamaları (varsa), tüm tarayıcılar pencereyi doldurmadığından bu gereklidir. XHR isteğinin sonunu ve getirme isteklerini raporlamadan önce bu, tamamlandıktan sonra eklenir.
@@ -210,34 +211,34 @@ Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol
 
 ## <a name="configuration-autotrackpagevisittime"></a>Yapılandırma: oto Trackpagevisittime
 
-Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı [özel ölçüm](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) olarak gönderildiği süre `PageVisitTime` . Bu özel ölçüm, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "günlük tabanlı ölçüm" olarak görüntülenebilir.
+Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı [özel ölçüm](../platform/metrics-custom-overview.md) olarak gönderildiği süre `PageVisitTime` . Bu özel ölçüm, [Ölçüm Gezgini](../platform/metrics-getting-started.md) "günlük tabanlı ölçüm" olarak görüntülenebilir.
 
 ## <a name="react-extensions"></a>Tepki verme uzantıları
 
-| Uzantıları |
+| Uzantılar |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [Yerel olarak tepki verme](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Tarayıcı/istemci tarafı verilerini keşfet
 
 Bir tarayıcı/istemci tarafı verileri, **ölçümler** 'e giderek ve ilgilendiğiniz ölçümleri tek bir ekleyerek görüntüleyebilirsiniz:
 
-![](./media/javascript/page-view-load-time.png)
+![Bir Web uygulaması için ölçüm verilerinin grafik görünümünü gösteren Application Insights ölçümler sayfasının ekran görüntüsü.](./media/javascript/page-view-load-time.png)
 
 Ayrıca, portaldaki tarayıcı deneyimi aracılığıyla JavaScript SDK 'sindeki verilerinizi görüntüleyebilirsiniz.
 
 **Tarayıcı** ' yı seçin ve ardından **hatalara** veya **performans**' ı seçin.
 
-![](./media/javascript/browser.png)
+![Web uygulamanız için görüntüleyebileceğiniz ölçülere tarayıcı hatalarının veya tarayıcı performansının nasıl ekleneceğini gösteren Application Insights tarayıcı sayfasının ekran görüntüsü.](./media/javascript/browser.png)
 
 ### <a name="performance"></a>Performans
 
-![](./media/javascript/performance-operations.png)
+![Bir Web uygulaması için Işlem ölçümlerinin grafik ekranların gösterildiği Application Insights performans sayfasının ekran görüntüsü.](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>Bağımlılıklar
 
-![](./media/javascript/performance-dependencies.png)
+![Bir Web uygulaması için bağımlılık ölçümlerinin grafik görüntülenmesini gösteren Application Insights performans sayfasının ekran görüntüsü.](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>Analiz
 
@@ -270,7 +271,7 @@ dataset
 
 1. "Uçtan uca işlem ayrıntılarını" görüntülemek için Azure portal bir özel durum telemetrisi öğesi seçin
 2. Hangi kaynak haritalarının bu çağrı yığınına karşılık geldiğini belirler. Kaynak eşlemesinin bir yığın çerçevesinin kaynak dosyasıyla eşleşmesi gerekir, ancak şununla sondan düzeltildi`.map`
-3. Kaynak haritalarını Azure portal çağrı yığınına sürükleyip bırakın![](https://i.imgur.com/Efue9nU.gif)
+3. Kaynak haritalarını, ![ bir yapı klasöründen bir derleme klasöründen Azure Portal yığın üzerine çağrı yığınına sürükleyip bırakma hakkında bir animasyonlu görüntüde Azure Portal çağrı yığınına sürükleyip bırakın.](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web temel
 

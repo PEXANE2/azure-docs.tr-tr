@@ -10,11 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79458078"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513030"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Bash için hızlı başlangıç Azure Cloud Shell
 
@@ -25,7 +26,7 @@ Bu belge [Azure portal](https://ms.portal.azure.com/)Azure Cloud Shell Bash 'in 
 
 ## <a name="start-cloud-shell"></a>Cloud Shell'i Başlatma
 1. Azure portal üst gezintiden **Cloud Shell** başlatın. <br>
-![](media/quickstart/shell-icon.png)
+![Azure portal Azure Cloud Shell başlatmayı gösteren ekran görüntüsü.](media/quickstart/shell-icon.png)
 
 2. Depolama hesabı ve Microsoft Azure dosyaları paylaşma oluşturmak için bir abonelik seçin.
 3. "Depolama oluştur" u seçin
@@ -35,7 +36,7 @@ Bu belge [Azure portal](https://ms.portal.azure.com/)Azure Cloud Shell Bash 'in 
 
 ### <a name="select-the-bash-environment"></a>Bash ortamını seçin
 Ortam açılan pencerenin sol tarafındaki ortamın açılır penceresinin olduğunu kontrol edin `Bash` . <br>
-![](media/quickstart/env-selector.png)
+![Azure Cloud Shell için bash ortamının nasıl seçileceğini gösteren ekran görüntüsü.](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Aboneliğinizi ayarlama
 1. Erişiminiz olan abonelikleri listeleyin.
@@ -43,10 +44,11 @@ Ortam açılan pencerenin sol tarafındaki ortamın açılır penceresinin oldu�
    az account list
    ```
 
-2. Tercih ettiğiniz aboneliği ayarlayın: <br>
-```azurecli-interactive
-az account set --subscription 'my-subscription-name'
-```
+2. Tercih ettiğiniz aboneliği ayarlayın:
+
+   ```azurecli-interactive
+   az account set --subscription 'my-subscription-name'
+   ```
 
 > [!TIP]
 > Aboneliğiniz, kullanılarak gelecekteki oturumlarınız için hatırlanır `/home/<user>/.azure/azureProfile.json` .
@@ -72,7 +74,7 @@ Bu VM 'deki Kullanıcı adınız, Cloud Shell ($) ' de kullanılan Kullanıcı a
 ### <a name="ssh-into-your-linux-vm"></a>Linux sanal makinenize SSH
 1. Azure portal arama çubuğunda VM adınızı arayın.
 2. VM adınızı ve genel IP adresini almak için "Bağlan" a tıklayın. <br>
-   ![](media/quickstart/sshcmd-copy.png)
+   ![S S H kullanarak bir Linux V M 'ye bağlanmayı gösteren ekran görüntüsü.](media/quickstart/sshcmd-copy.png)
 
 3. Cmd ile sanal makinenize SSH `ssh` .
    ```
@@ -80,7 +82,7 @@ Bu VM 'deki Kullanıcı adınız, Cloud Shell ($) ' de kullanılan Kullanıcı a
    ```
 
 SSH bağlantısı kurulduktan sonra Ubuntu karşılama istemi ' ni görmeniz gerekir. <br>
-![](media/quickstart/ubuntu-welcome.png)
+![S S H bağlantısını kurduktan sonra Ubuntu başlatma ve hoş geldiniz isteminin gösterildiği ekran görüntüsü.](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Temizleme 
 1. SSH oturumunuzla çıkış yapın.

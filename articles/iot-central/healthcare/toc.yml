@@ -52,41 +52,47 @@
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Yönetim
       items:
-        - name: Uygulama ayarlarını değiştirme
-          href: ../core/howto-administer.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Uygulamanızı dışarı aktarma
-          href: ../core/howto-use-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Kullanıcıları ve rolleri yönetme
-          href: ../core/howto-manage-users-roles.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Faturanızı yönetme
-          href: ../core/howto-view-bill.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Uygulama kullanıcı arabirimini özelleştirme
-          href: ../core/howto-customize-ui.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Panonuza kutucuklar ekleme
-          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Azure portalından yönetme
-          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Azure CLI’den yönetme
-          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Azure PowerShell’den yönetme
-          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: CSP portalından yönetme
-          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-    - name: Kişiselleştirme
-      items:
-        - name: Azure IoT Central kişisel panolarını oluşturma
-          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Kişisel tercihlerinizi yönetme
-          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Canlı sohbeti açma/kapatma
-          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+        - name: Uygulamanızı yönetme
+          items:
+            - name: Uygulama ayarlarını değiştirme
+              href: ../core/howto-administer.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Kullanıcıları ve rolleri yönetme
+              href: ../core/howto-manage-users-roles.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Faturanızı yönetme
+              href: ../core/howto-view-bill.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Uygulama kullanıcı arabirimini özelleştirme
+              href: ../core/howto-customize-ui.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Uygulamanızı dışarı aktarma
+              href: ../core/howto-use-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Uygulamanın durumunu izleme
+              href: ../core/howto-monitor-application-health.md
+            - name: Uygulamanız hakkında
+              href: ../core/howto-get-app-info.md
+        - name: Başka yerlerden yönetme
+          items:
+            - name: Azure portalından yönetme
+              href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Azure CLI’den yönetme
+              href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Azure PowerShell’den yönetme
+              href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Programlama yoluyla yönetme
+              href: ../core/howto-manage-iot-central-programmatically.md
+            - name: CSP portalından yönetme
+              href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+        - name: Kişiselleştirme
+          items:
+            - name: Kişisel tercihlerinizi yönetme
+              href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Canlı sohbeti açma/kapatma
+              href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri
       href: /azure/iot-fundamentals/iot-support-help
     - name: Azure IoT hizmetleri
       items:
-        - name: IoT Hub’ı
+        - name: IoT Hub
           href: /azure/iot-hub
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
@@ -100,14 +106,14 @@
           href: /azure/iot-pnp
         - name: Azure Haritalar
           href: /azure/azure-maps
-        - name: Zaman Serisi Öngörüleri
+        - name: Time Series Insights
           href: /azure/time-series-insights
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Müşteri verisi istekleri
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Desteklenen tarayıcılar

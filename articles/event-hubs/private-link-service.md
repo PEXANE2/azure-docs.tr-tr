@@ -3,17 +3,17 @@ title: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi öğrenin
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312832"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512273"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure Event Hubs Azure özel bağlantısı ile tümleştirme
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
 
-Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
+Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan hizmeti etkin bir şekilde sanal ağınıza getiren özel bir IP adresi kullanır. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/private-link-overview.md)
 
@@ -38,7 +38,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
@@ -58,10 +58,13 @@ Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir 
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.
-5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları** sekmesini seçin. 
-6. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
 
-    ![Görüntü](./media/private-link-service/private-link-service-3.png)
+    > [!NOTE]
+    > **Ağ** sekmesini yalnızca **Standart** veya **adanmış** ad alanları için görürsünüz. 
+1. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları** sekmesini seçin. 
+1. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
+
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Ağ sayfası-özel uç nokta bağlantıları sekmesi-özel uç nokta bağlantısı ekle":::
 7. **Temel bilgiler** sayfasında, aşağıdaki adımları izleyin: 
     1. Özel uç noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
     2. Özel uç nokta kaynağı için **kaynak grubunu** seçin.
@@ -194,7 +197,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
 |--|--|--|
 | Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
@@ -203,7 +206,7 @@ Dört sağlama durumu vardır:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
-1. Azure Portal’da oturum açın.
+1. Azure portalında oturum açın.
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Yönetmek istediğiniz **ad alanını** seçin.
 4. **Ağ** sekmesini seçin.

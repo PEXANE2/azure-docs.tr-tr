@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80545622"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511849"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin
 
@@ -38,7 +38,7 @@ Yüksek düzeyde bir dağıtım bildirimi, istenen özellikleriyle yapılandır�
 
 Her dağıtım bildiriminde iki modül gereklidir: `$edgeAgent` , ve `$edgeHub` . Bu modüller, IoT Edge cihazını ve üzerinde çalışan modülleri yöneten IoT Edge çalışma zamanının bir parçasıdır. Bu modüller hakkında daha fazla bilgi için bkz. [IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
-İki çalışma zamanı modülünün yanı sıra, bir IoT Edge cihazında çalıştırmak için en fazla 20 modül ekleyebilirsiniz.
+İki çalışma zamanı modülünün yanı sıra, bir IoT Edge cihazında çalıştırmak için en fazla 30 modül ekleyebilirsiniz.
 
 Yalnızca IoT Edge çalışma zamanını (edgeAgent ve edgeHub) içeren bir dağıtım bildirimi geçerlidir.
 
@@ -141,7 +141,7 @@ Modüller, IoT SDK 'larını kullanarak, kendi iletileri için ModuleClient sın
 
 Kaynak özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
-| Kaynak | Description |
+| Kaynak | Açıklama |
 | ------ | ----------- |
 | `/*` | Tüm modülden veya yaprak cihazlardan gelen cihazdan buluta iletiler veya ikizi değişiklik bildirimleri |
 | `/twinChangeNotifications` | Herhangi bir modülden veya yaprak cihazdan gelen herhangi bir ikizi değişikliği (bildirilen Özellikler) |

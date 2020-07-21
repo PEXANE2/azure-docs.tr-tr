@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515232"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de Azure Stream Analytics işi oluşturma (Önizleme) 
 
@@ -39,12 +39,12 @@ Ayrıca, Azure SQL Edge, SQL Server veya Azure SQL veritabanı bir çıkış ak�
 
 Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aşağıdaki veri kaynaklarını destekler.
 
-| Veri kaynağı türü | Girdi | Çıktı | Açıklama |
+| Veri kaynağı türü | Girdi | Çıktı | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
-| Azure Blob depolama | N | E | Azure depolama hesabındaki bir bloba veri yazmak için veri kaynağı. |
-| Kafka | E | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel veya AMD sürümlerinde kullanılabilir. Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
+| SQL Veritabanı | H | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
+| Azure Blob depolama | H | E | Azure depolama hesabındaki bir bloba veri yazmak için veri kaynağı. |
+| Kafka | E | H | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel veya AMD sürümlerinde kullanılabilir. Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Örnek: Azure IoT Edge hub 'ı için dış akış giriş/çıkış nesnesi oluşturma
 
@@ -153,7 +153,7 @@ SELECT
 Timestamp as [Time],
 [Temperature] As [Temperature],
 GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''Score'') as ChangePointScore,
-GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly,
+GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly
 INTO TemperatureAnomalies FROM MyEdgeHubInput2;
 '
 go

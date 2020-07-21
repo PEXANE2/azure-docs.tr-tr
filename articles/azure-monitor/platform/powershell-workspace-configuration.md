@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: bf94631c821c8a7ba5e2870af0bf1ecfd268e888
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203582"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515453"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanı oluşturma ve yapılandırma
 Bu makale, Azure Izleyici 'de bir Log Analytics çalışma alanı oluşturmayı ve yapılandırmayı gösteren iki kod örneği sunar.  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> Özel bir günlük için yapılandırmayı tanımlayan **Customlograwjson** parametresinin biçimi karmaşık olabilir. Mevcut bir özel günlüğün yapılandırmasını almak için [Get-Azoperationalınsightsdatasource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) komutunu kullanın. **Properties** özelliği, **Customlograwjson** parametresi için gereken yapılandırmadır.
+> Özel bir günlük için yapılandırmayı tanımlayan **Customlograwjson** parametresinin biçimi karmaşık olabilir. Mevcut bir özel günlüğün yapılandırmasını almak için [Get-Azoperationalınsightsdatasource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) komutunu kullanın. **Properties** özelliği, **Customlograwjson** parametresi için gereken yapılandırmadır.
 
 Yukarıdaki örnekte regexDelimiter, \\ yeni satır için "n" olarak tanımlandı. Günlük sınırlayıcısı de bir zaman damgası olabilir.  Desteklenen biçimler şunlardır:
 
@@ -212,14 +212,13 @@ Yukarıdaki örnekte regexDelimiter, \\ yeni satır için "n" olarak tanımland�
 | `yyyy-MM-ddTHH:mm:ss` <br> T, sabit bir harf T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Son 14 gün içinde silinen bir çalışma alanı oluşturduğunuzda ve [geçici silme durumunda](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)işlem, çalışma alanı yapılandırmanıza bağlı olarak farklı bir sonuca sahip olabilir:
+Son 14 gün içinde silinen bir çalışma alanı oluşturduğunuzda ve [geçici silme durumunda](./delete-workspace.md#soft-delete-behavior)işlem, çalışma alanı yapılandırmanıza bağlı olarak farklı bir sonuca sahip olabilir:
 1. Silinen çalışma alanında aynı çalışma alanı adı, kaynak grubu, abonelik ve bölge sağlarsanız, çalışma alanınız veri, yapılandırma ve bağlı aracılar dahil kurtarılacak.
 2. Aynı çalışma alanı adını, ancak farklı kaynak grubunu, aboneliği veya bölgeyi kullanıyorsanız, *' Workspace-Name ' çalışma alanı adı benzersiz değil*veya *Çakışma*olduğunda bir hata alırsınız. Geçici silme işlemini geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek ve aynı ada sahip yeni bir çalışma alanı oluşturmak için, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:
-   * Çalışma alanınızı [kurtarın](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
-   * Çalışma alanınızı [kalıcı olarak silme](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   * Çalışma alanınızı [kurtarın](./delete-workspace.md#recover-workspace)
+   * Çalışma alanınızı [kalıcı olarak silme](./delete-workspace.md#permanent-workspace-delete)
    * Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluştur
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* PowerShell 'i Log Analytics yapılandırması için kullanma hakkında daha fazla bilgi için [Log Analytics PowerShell cmdlet 'Lerini gözden geçirin](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
-
+* PowerShell 'i Log Analytics yapılandırması için kullanma hakkında daha fazla bilgi için [Log Analytics PowerShell cmdlet 'Lerini gözden geçirin](/powershell/module/az.operationalinsights/) .

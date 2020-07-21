@@ -3,12 +3,12 @@ title: ServiceNow ile Azure hizmet durumu uyarılarını gönderme
 description: ServiceNow örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 96c181991fc962b08e777a55d891b881fc1bdba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519087"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Web kancalarını kullanarak ServiceNow ile Azure hizmet durumu uyarıları gönderme
 
@@ -147,7 +147,7 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Azure portal ServiceNow kullanarak uyarı oluşturma
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
-1. Yeni bir eylem grubuyla bir uyarı oluşturmak için [Bu makaledeki](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 1 ' den 8 ' e kadar olan adımları izleyin.
+1. Yeni bir eylem grubuyla bir uyarı oluşturmak için [Bu makaledeki](./alerts-activity-log-service-notifications-portal.md) 1 ' den 8 ' e kadar olan adımları izleyin.
 
 1. **Eylem**listesinde tanımlayın:
 
@@ -195,5 +195,5 @@ Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını Serv
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
 - [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
-- [Hizmet durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Hizmet durumu bildirimleri](./service-notifications.md)hakkında bilgi edinin.
 - [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.

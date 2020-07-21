@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) ' de Azure diskleriyle kalıcı bir birimi dinamik olarak oluşturmayı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751350"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518020"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) Azure diskleriyle kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
@@ -31,14 +31,14 @@ Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış ol
 
 Depolama sınıfı, bir depolama biriminin kalıcı bir birimle dinamik olarak nasıl oluşturulduğunu tanımlamak için kullanılır. Kubernetes Depolama sınıfları hakkında daha fazla bilgi için bkz. [Kubernetes Depolama sınıfları][kubernetes-storage-classes].
 
-Her bir AKS kümesi, Azure diskleriyle çalışacak şekilde yapılandırılmış iki önceden oluşturulmuş depolama sınıfı içerir:
+Her bir AKS kümesi, Azure diskleriyle çalışmak üzere yapılandırılmış dört adet önceden oluşturulmuş depolama sınıfı içerir:
 
-* *Varsayılan* depolama sınıfı standart bir Azure diski sağlar.
-    * Standart depolama, HDD 'Ler tarafından desteklenir ve performans sağlarken düşük maliyetli depolama sağlar. Standart diskler uygun maliyetli bir geliştirme ve test iş yükü için idealdir.
+* *Varsayılan* depolama sınıfı standart bir SSD Azure diski sağlar.
+    * Standart depolama, standart SSD 'Ler tarafından desteklenir ve hala güvenilir performans sağlarken uygun maliyetli depolama sunar. 
 * *Yönetilen-Premium* depolama sınıfı, Premium bir Azure diski sağlar.
     * Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. Kümenizdeki AKS düğümleri Premium Depolama kullanıyorsa, *yönetilen-Premium* sınıfını seçin.
     
-Varsayılan depolama sınıflarından birini kullanırsanız, depolama sınıfı oluşturulduktan sonra birim boyutunu güncelleştiremezsiniz. Bir depolama sınıfı oluşturulduktan sonra birim boyutunu güncelleştirebilmek için, satırı `allowVolumeExpansion: true` varsayılan depolama sınıflarından birine ekleyin veya size ait özel depolama sınıfınızı oluşturabilirsiniz. Var olan bir depolama sınıfını komutunu kullanarak düzenleyebilirsiniz `kubectl edit sc` . 
+Varsayılan depolama sınıflarından birini kullanırsanız, depolama sınıfı oluşturulduktan sonra birim boyutunu güncelleştiremezsiniz. Bir depolama sınıfı oluşturulduktan sonra birim boyutunu güncelleştirebilmek için, satırı `allowVolumeExpansion: true` varsayılan depolama sınıflarından birine ekleyin veya size ait özel depolama sınıfınızı oluşturabilirsiniz. Bir PVC 'nin boyutunu azaltmak için (veri kaybını engellemek için) desteklenmediğini unutmayın. Var olan bir depolama sınıfını komutunu kullanarak düzenleyebilirsiniz `kubectl edit sc` . 
 
 Örneğin, 4 TiB boyutundaki bir disk kullanmak istiyorsanız, `cachingmode: None` [disk önbelleği 4 TİB ve daha büyük diskler için desteklenmediğinden](../virtual-machines/windows/premium-storage-performance.md#disk-caching)tanımlayan bir depolama sınıfı oluşturmanız gerekir.
 
@@ -151,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>Ultra diskler kullanma
+Ultra disk 'ten yararlanmak için bkz. [Azure Kubernetes Service (AKS) üzerinde Ultra diskler kullanma](use-ultra-disks.md).
 
 ## <a name="back-up-a-persistent-volume"></a>Kalıcı bir birimi yedekleme
 
@@ -284,3 +287,11 @@ Azure disklerini kullanarak Kubernetes kalıcı birimleri hakkında daha fazla b
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

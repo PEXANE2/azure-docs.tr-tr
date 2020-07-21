@@ -4,11 +4,12 @@ description: Bir etkinlik günlüğü uyarısı etkinleşdiğinde bir Web kancas
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db12f352ec79a3112eada68d82279c9e0343a04
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669055"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516167"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -213,7 +214,7 @@ POST işleminde yer alan JSON yükü, yükün Data. Context. activityLog. eventS
 }
 ```
 
-Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrıntıları için bkz. [hizmet durumu bildirimleri](../../azure-monitor/platform/service-notifications.md). Ayrıca, [mevcut sorun yönetimi çözümlerinizle hizmet durumu Web kancası bildirimlerini nasıl yapılandıracağınızı](../../service-health/service-health-alert-webhook-guide.md)öğrenin.
+Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrıntıları için bkz. [hizmet durumu bildirimleri](../../service-health/service-notifications.md). Ayrıca, [mevcut sorun yönetimi çözümlerinizle hizmet durumu Web kancası bildirimlerini nasıl yapılandıracağınızı](../../service-health/service-health-alert-webhook-guide.md)öğrenin.
 
 ### <a name="resourcehealth"></a>ResourceHealth
 
@@ -291,4 +292,3 @@ Tüm diğer etkinlik günlüğü uyarılarıyla ilgili belirli şema ayrıntıla
 * Bir [Azure uyarısından Twilio aracılığıyla SMS göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.
 * Bir [Azure uyarısından bir bolluk iletisi göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.
 * Azure [uyarısından bir Azure kuyruğuna ileti göndermek için bir mantıksal uygulama kullanın](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Bu örnek, ölçüm uyarıları içindir, ancak etkinlik günlüğü uyarısıyla çalışacak şekilde değiştirilebilir.
-

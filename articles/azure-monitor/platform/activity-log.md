@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082310"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516150"
 ---
 # <a name="azure-activity-log"></a>Azure etkinlik günlüğü
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform Günlüğliğidir](platform-logs-overview.md) . Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
@@ -43,9 +43,9 @@ Olayla ilişkili herhangi bir değişiklik varsa, seçebileceğiniz değişiklik
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>Etkinlik günlüğü olaylarını almak için diğer Yöntemler
 Etkinlik günlüğü olaylarına aşağıdaki yöntemleri kullanarak da erişebilirsiniz.
 
-- PowerShell 'den etkinlik günlüğünü almak için [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet 'ini kullanın. Bkz. [Azure Izleyici PowerShell örnekleri](../samples/powershell-samples.md#retrieve-activity-log).
-- CLı 'dan etkinlik günlüğünü almak için [az Monitor Activity-Log](https://docs.microsoft.com/cli/azure/monitor/activity-log) kullanın.  Bkz. [Azure IZLEYICI CLI örnekleri](../samples/cli-samples.md#view-activity-log).
-- REST istemcisinden etkinlik günlüğünü almak için [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/) kullanın. 
+- PowerShell 'den etkinlik günlüğünü almak için [Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet 'ini kullanın. Bkz. [Azure Izleyici PowerShell örnekleri](../samples/powershell-samples.md#retrieve-activity-log).
+- CLı 'dan etkinlik günlüğünü almak için [az Monitor Activity-Log](/cli/azure/monitor/activity-log) kullanın.  Bkz. [Azure IZLEYICI CLI örnekleri](../samples/cli-samples.md#view-activity-log).
+- REST istemcisinden etkinlik günlüğünü almak için [Azure izleyici REST API](/rest/api/monitor/) kullanın. 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>Log Analytics çalışma alanına gönderme
@@ -58,9 +58,9 @@ Etkinlik günlüğü olaylarına aşağıdaki yöntemleri kullanarak da erişebi
 - Etkinlik günlüğü girdilerini 90 günden daha uzun bir süre için depolayın.
 - Log Analytics çalışma alanında depolanan etkinlik günlüğü verileri için veri alımı veya veri saklama ücreti alınmaz.
 
-Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](diagnostic-settings.md) . Etkinlik günlüğünü herhangi bir tek abonelikten beş çalışma alanına gönderebilirsiniz. Kiracılar arasında günlüklerin toplanması için [Azure açık Thouse](/azure/lighthouse)gerekir.
+Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](diagnostic-settings.md) . Etkinlik günlüğünü herhangi bir tek abonelikten beş çalışma alanına gönderebilirsiniz. Kiracılar arasında günlüklerin toplanması için [Azure açık Thouse](../../lighthouse/index.yml)gerekir.
 
-Log Analytics çalışma alanındaki etkinlik günlüğü verileri, [Log Analytics](../log-query/get-started-portal.md)bir [günlük sorgusuyla](../log-query/log-query-overview.md) alabileceğiniz, *AzureActivity* adlı bir tabloda depolanır. Bu tablonun yapısı, [günlük girişinin kategorisine](activity-log-schema.md)bağlı olarak değişir. Tablo özelliklerinin açıklaması için bkz. [Azure izleyici veri başvurusu](https://docs.microsoft.com/azure/azure-monitor/reference/tables/azureactivity).
+Log Analytics çalışma alanındaki etkinlik günlüğü verileri, [Log Analytics](../log-query/get-started-portal.md)bir [günlük sorgusuyla](../log-query/log-query-overview.md) alabileceğiniz, *AzureActivity* adlı bir tabloda depolanır. Bu tablonun yapısı, [günlük girişinin kategorisine](activity-log-schema.md)bağlı olarak değişir. Tablo özelliklerinin açıklaması için bkz. [Azure izleyici veri başvurusu](/azure/azure-monitor/reference/tables/azureactivity).
 
 Örneğin, her bir kategorinin etkinlik günlüğü kayıtlarının sayımını görüntülemek için aşağıdaki sorguyu kullanın.
 
@@ -201,7 +201,7 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
 
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | Name |Yes |Günlük profilinizin adı. |
+    | Ad |Yes |Günlük profilinizin adı. |
     | Storageaccountıd |No |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
     | Servicebusruleıd |No |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Konum |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
@@ -277,11 +277,11 @@ Aşağıdaki tablodaki sütunlar güncelleştirilmiş şemada kullanımdan kald�
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | Etkinlik alt durumu | ActivitySubstatusValue |
-| ThrottledRequests     | OperationNameValue     |
+| OperationName     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> Bazı durumlarda, bu sütunlardaki değerler tüm büyük harfle olabilir. Bu sütunları içeren bir sorgunuz varsa, büyük/küçük harfe duyarsız bir karşılaştırma yapmak için [= ~ işlecini](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) kullanmanız gerekir.
+> Bazı durumlarda, bu sütunlardaki değerler tüm büyük harfle olabilir. Bu sütunları içeren bir sorgunuz varsa, büyük/küçük harfe duyarsız bir karşılaştırma yapmak için [= ~ işlecini](/azure/kusto/query/datatypes-string-operators) kullanmanız gerekir.
 
 Güncelleştirilmiş şemada *AzureActivity* 'e aşağıdaki sütun eklenmiştir:
 

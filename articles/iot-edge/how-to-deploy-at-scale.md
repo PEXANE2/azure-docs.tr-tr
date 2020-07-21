@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512019"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure portal kullanarak ölçekli IoT Edge modüllerini dağıtın
 
@@ -61,7 +61,7 @@ Dağıtım oluşturmak için beş adım vardır. Aşağıdaki bölümler her bir
 
 ### <a name="step-2-modules"></a>2. Adım: modüller
 
-Bir dağıtıma en fazla 20 modül ekleyebilirsiniz. Modül olmadan bir dağıtım oluşturursanız, hedef cihazlardan tüm geçerli modüller kaldırılır.
+Bir dağıtıma en fazla 30 modül ekleyebilirsiniz. Modül olmadan bir dağıtım oluşturursanız, hedef cihazlardan tüm geçerli modüller kaldırılır.
 
 Dağıtımlarda, IoT Edge Aracısı ve IoT Edge hub modülleri için ayarları yönetebilirsiniz. İki çalışma zamanı modülünü yapılandırmak için **çalışma zamanı ayarları** ' nı seçin. Katmanlı dağıtımda, çalışma zamanı modülleri dahil edilmez, bu nedenle yapılandırılamaz.
 
@@ -139,7 +139,7 @@ Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgiler
 
 1. **Ölçüm ölçütü**için bir sorgu girin. Sorgu IoT Edge hub modülünün ikizi [bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)temel alır. Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-   Örnek:
+   Örneğin:
 
    ```sql
    SELECT deviceId FROM devices
@@ -209,7 +209,7 @@ Bir dağıtımı sildiğinizde, dağıtılan tüm cihazlar bir sonraki en yükse
 
 1. Silmek istediğiniz dağıtımı seçmek için onay kutusunu kullanın.
 1. **Sil**’i seçin.
-1. Bir istem, bu işlemin bu dağıtımı silineceğini ve tüm cihazlar için önceki duruma geri dönmeyeceğini size bildirir.Düşük önceliğe sahip bir dağıtım uygulanacaktır.Başka bir dağıtım hedeflendiyse hiçbir modül kaldırılmaz. Cihazınızdan tüm modülleri kaldırmak istiyorsanız, sıfır modüllerle bir dağıtım oluşturun ve aynı cihazlara dağıtın.Devam etmek için **Evet** ' i seçin.
+1. Bir istem, bu işlemin bu dağıtımı silineceğini ve tüm cihazlar için önceki duruma geri dönmeyeceğini size bildirir.Düşük önceliğe sahip bir dağıtım uygulanacaktır.Başka bir dağıtım hedeflendiyse hiçbir modül kaldırılmaz. Cihazınızdan tüm modülleri kaldırmak istiyorsanız, sıfır modüllerle bir dağıtım oluşturun ve aynı cihazlara dağıtın.Devam etmek için **Evet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

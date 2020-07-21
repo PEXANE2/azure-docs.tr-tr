@@ -3,11 +3,12 @@ title: İleti oturumlarını Azure Service Bus | Microsoft Docs
 description: Bu makalede, sınırsız sayıda ilişkili ileti dizisinin Birleşik ve sıralı işlenmesini sağlamak üzere oturumların nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341181"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511305"
 ---
 # <a name="message-sessions"></a>İleti oturumları
 Microsoft Azure Service Bus oturumlar, sınırsız sayıda ilgili ileti dizisinin birleşme ve sıralı işlenmesini sağlar. Oturumlar **ilk içinde, ilk çıkar (FIFO)** ve **istek-yanıt** desenlerinde kullanılabilir. Bu makalede, Service Bus kullanırken bu desenleri uygulamak için oturumların nasıl kullanılacağı gösterilmektedir. 
@@ -30,7 +31,7 @@ Service Bus oturum özelliği, C# ve Java API 'Lerinde [Messagesession](/dotnet/
 
 Portalda bayrağı aşağıdaki onay kutusuyla ayarlayın:
 
-![][2]
+![Oturumları etkinleştir seçeneği belirlenmiş ve kırmızı renkle özetlenen kuyruk oluştur iletişim kutusunun ekran görüntüsü.][2]
 
 > [!NOTE]
 > Bir kuyrukta veya abonelikte Oturumlar etkinleştirildiğinde, istemci uygulamalar ***artık*** normal iletileri gönderemez/alamaz. Tüm iletilerin bir oturumun parçası olarak gönderilmesi (oturum kimliği ayarlanarak) ve oturum alarak alınmalıdır.
@@ -41,7 +42,7 @@ Kuyruk ve abonelik istemcilerinde oturum için API 'Ler mevcuttur. Oturum ve mes
 
 Oturumlar, sıralı teslimi korurken ve garanti edilirken, araya eklemeli ileti akışlarının eşzamanlı olarak birden çok kullanımını sağlar.
 
-![][1]
+![Oturumlar özelliğinin sıralı teslimi nasıl koruyagösteren bir diyagram.][1]
 
 İstemci tarafından oturum kabul eden bir [Messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) alıcısı oluşturulur. İstemci, C# ' de [queueclient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) veya [Queueclient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) çağırır. Reaktif geri çağırma modelinde bir oturum işleyicisi kaydeder.
 
@@ -77,8 +78,8 @@ Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğund
 
 | Senaryo | İletinin teslim sayısı arttırılır |
 |----------|---------------------------------------------|
-| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Evet |
-| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | Hayır |
+| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Yes |
+| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | No |
 | Oturum kabul edildi, iletiler tamamlandı, sonra oturum açık olarak kapalı | Yok (Standart akışdır. Buradan iletiler oturumdan kaldırılır) |
 
 ## <a name="request-response-pattern"></a>İstek-yanıt deseninin

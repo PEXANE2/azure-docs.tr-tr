@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995131"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518428"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Koşullu erişim: konuma göre erişimi engelleyin
 
@@ -42,17 +43,15 @@ Koşullu erişim 'deki konum koşulu hakkında daha fazla bilgi için, [Azure Ac
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
-   1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
+1. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **tüm bulut uygulamaları**' nı seçin.
 1. **Koşulların**bulunduğu  >  **konum**.
    1. **Yapılandır** 'ı **Evet** olarak ayarla
-   1. **Seçili konumların** seçimini **Ekle**
+   1. **Dahil et**altında **Seçili konumlar** ' ı seçin.
    1. Kuruluşunuz için oluşturduğunuz engellenen konumu seçin.
-   1. Bitti **bitti ' ye**tıklayın  >  **Done**  >  **Done**.
-1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
-1. **Erişim denetimleri**  >  **bloğu**altında, **Seç**' i seçin.
+   1. **Seç**’e tıklayın.
+1. **Erişim denetimleri** altında > **erişimi engelle**' yi seçin ve **Seç**' i seçin.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
+1. Koşullu erişim Ilkesi oluşturmak için **Oluştur** ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

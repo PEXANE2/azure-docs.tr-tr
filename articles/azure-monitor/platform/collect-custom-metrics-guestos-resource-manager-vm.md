@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650552"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515793"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için bir Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 Azure sanal makinelerinin Konuk işletim sistemindeki performans verileri, diğer [Platform ölçümleri](../insights/monitor-azure-resource.md#monitoring-data)gibi otomatik olarak toplanmaz. Bir REST API neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim de dahil olmak üzere Azure Izleyici ölçümlerinin tüm özellikleriyle kullanılabilmesi için, Azure Izleyici [Tanılama uzantısı](diagnostics-extension-overview.md) ' nı ölçüm veritabanına toplayın. Bu makalede, bir Windows sanal makinesi için bir Kaynak Yöneticisi şablonu kullanarak ölçüm veritabanına Konuk işletim sistemi performans ölçümleri gönderme işlemi açıklanır. 
@@ -22,11 +23,11 @@ Azure sanal makinelerinin Konuk işletim sistemindeki performans verileri, diğe
 
 Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir.
+- Aboneliğinizin [Microsoft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md)'a kayıtlı olması gerekir.
 
-- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklemiş olmanız gerekir.
+- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](../../cloud-shell/overview.md) yüklemiş olmanız gerekir.
 
 - VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](metrics-custom-overview.md#supported-regions)olması gerekir. 
 
@@ -285,4 +286,3 @@ Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Özel ölçümler](metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
-

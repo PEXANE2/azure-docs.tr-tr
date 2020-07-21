@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82181741"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518190"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Leri çağıran bir Web uygulaması: uygulama için belirteç alma
 
@@ -50,6 +50,7 @@ public class HomeController : Controller
 Aşağıda, `HomeController` Microsoft Graph çağrısı yapılacak bir belirteç alan eylemi için basitleştirilmiş kod verilmiştir:
 
 ```csharp
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,6 +66,8 @@ public async Task<IActionResult> Profile()
 
 Bu senaryo için gereken kodu daha iyi anlamak için, [MS-Identity-aspnetcore-WebApp-öğreticisi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) öğreticisinin 2. aşama ([2-1-Web uygulaması çağrı Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) adımına bakın.
 
+`AuthorizeForScopes`Denetleyici eyleminin üstündeki öznitelik (veya Razor şablonu kullanıyorsanız Razor sayfası), Microsoft. Identity. Web tarafından sağlanır. Gerektiğinde kullanıcıdan onay istenmesini ve artımlı olarak alınmasını sağlar.
+
 Farklı karmaşık çeşitlemeler vardır, örneğin:
 
 - Çeşitli API 'Ler çağırma.
@@ -79,6 +82,36 @@ ASP.NET için kod ASP.NET Core gösterilen koda benzerdir:
 - Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin üyesinin kiracı KIMLIĞINI ve kullanıcı KIMLIĞINI ayıklar `ClaimsPrincipal` . (ASP.NET kullanımları `HttpContext.User` .)
 - Buradan, bir MSAL.NET `IConfidentialClientApplication` nesnesi oluşturur.
 - Son olarak, `AcquireTokenSilent` Gizli istemci uygulamasının yöntemini çağırır.
+- Etkileşim gerekliyse, Web uygulamasının kullanıcıyı sınaması (oturum açması) ve daha fazla talep istemesi gerekir.
+
+Aşağıdaki kod parçacığı [MS-Identity-ASPNET-WebApp-openıdconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.NET MVC kod örneğindeki [HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) öğesinden ayıklanır:
+
+```C#
+public async Task<ActionResult> ReadMail()
+{
+    IConfidentialClientApplication app = MsalAppBuilder.BuildConfidentialClientApplication();
+    AuthenticationResult result = null;
+    var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetMsalAccountId());
+    string[] scopes = { "Mail.Read" };
+
+    try
+    {
+        // try to get token silently
+        result = await app.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false);
+    }
+    catch (MsalUiRequiredException)
+    {
+        ViewBag.Relogin = "true";
+        return View();
+    }
+
+    // More code here
+    return View();
+}
+```
+
+Ayrıntılar için bkz. [BuildConfidentialClientApplication ()](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs) ve [Getmsalaccountıd](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Utils/ClaimPrincipalExtension.cs#L38) için kod örneği
+
 
 # <a name="java"></a>[Java](#tab/java)
 

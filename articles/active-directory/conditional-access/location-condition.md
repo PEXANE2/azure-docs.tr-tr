@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253231"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518445"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
 
@@ -194,7 +194,7 @@ Bir bulut proxy 'si olduğunda, etki alanına katılmış bir cihaz istemek içi
 
 ### <a name="api-support-and-powershell"></a>API desteği ve PowerShell
 
-API ve PowerShell, adlandırılmış konumlar için henüz desteklenmiyor.
+Adlandırılmış konumlar için Graph API önizleme sürümü kullanılabilir. daha fazla bilgi için, [Namedlocation API 'sine](/graph/api/resources/namedlocation?view=graph-rest-beta)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

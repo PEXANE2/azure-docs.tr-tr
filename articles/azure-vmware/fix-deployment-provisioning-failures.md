@@ -3,11 +3,12 @@ title: Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili yard
 description: AVS dağıtımı veya sağlama hatalarıyla ilgili bir hizmet isteği sağlamak için Azure VMware çözümünüz (AVS) özel bulutunuzda gereken bilgileri alma.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 3032c01d48617347c454d71498571b0e6b789e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986895"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514586"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili yardım alın
 
@@ -71,7 +72,7 @@ ExpressRoute KIMLIĞINI yeni destek isteğindeki ilgili alana yapıştırın. Da
 
 ## <a name="create-your-support-request"></a>Destek isteğinizi oluşturun
 
-Destek isteğinizi oluşturma konusunda genel yönergeler için bkz. [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+Destek isteğinizi oluşturma konusunda genel yönergeler için bkz. [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 Aşağıda, AVS dağıtımı veya sağlama hatalarıyla ilgili bir SR oluşturmaya özgü ek rehberlik verilmiştir.
 

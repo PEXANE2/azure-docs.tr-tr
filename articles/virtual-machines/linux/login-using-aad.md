@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80366485"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510438"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-Uzantı VM 'ye başarıyla yüklendikten sonra, *başarılı* olan *provisioningstate* gösterilmektedir. VM 'nin uzantıyı yüklemesi için çalışan bir VM aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [VM aracısına genel bakış](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
+Uzantı VM 'ye başarıyla yüklendikten sonra, *başarılı* olan *provisioningstate* gösterilmektedir. VM 'nin uzantıyı yüklemesi için çalışan bir VM aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [VM aracısına genel bakış](../extensions/agent-windows.md).
 
 ## <a name="configure-role-assignments-for-the-vm"></a>VM için rol atamalarını yapılandırma
 
@@ -138,7 +138,7 @@ az role assignment create \
 
 Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında daha fazla bilgi için bkz. [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)veya [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanma.
 
-Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması için çok faktörlü kimlik doğrulaması gerektirecek şekilde Azure AD 'yi yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Bulutta Azure Multi-Factor Authentication kullanmaya başlama](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması için çok faktörlü kimlik doğrulaması gerektirecek şekilde Azure AD 'yi yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Bulutta Azure Multi-Factor Authentication kullanmaya başlama](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Linux sanal makinesinde oturum açma
 

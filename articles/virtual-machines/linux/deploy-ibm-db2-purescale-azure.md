@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968889"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510746"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale dağıtma
 
@@ -18,14 +19,14 @@ Bu makalede, bir kurumsal müşterinin son zamanlarda z/OS üzerinde çalışan 
 
 Geçiş için kullanılan adımları izlemek için GitHub 'daki [DB2onAzure](https://aka.ms/db2onazure) deposundaki yükleme betiklerine bakın. Bu betikler tipik, orta ölçekli çevrimiçi işlem işleme (OLTP) iş yükünün mimarisini temel alır.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Bu mimariyi dağıtmak için GitHub 'daki [DB2onAzure](https://aka.ms/db2onazure) deposunda bulunan Deploy.sh betiğini indirip çalıştırın.
 
 Depoda Ayrıca bir Grafana panosu ayarlamak için betikler de bulunur. Eklentiyi DB2 ile birlikte bulunan açık kaynaklı izleme ve uyarı sistemini sorgulamak için kullanabilirsiniz.
 
 > [!NOTE]
-> İstemcideki deploy.sh betiği özel SSH anahtarları oluşturur ve bunları HTTPS üzerinden Dağıtım şablonuna geçirir. Daha fazla güvenlik için gizli dizileri, anahtarları ve parolaları depolamak üzere [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) kullanmanızı öneririz.
+> İstemcideki deploy.sh betiği özel SSH anahtarları oluşturur ve bunları HTTPS üzerinden Dağıtım şablonuna geçirir. Daha fazla güvenlik için gizli dizileri, anahtarları ve parolaları depolamak üzere [Azure Key Vault](../../key-vault/general/overview.md) kullanmanızı öneririz.
 
 ## <a name="how-the-deployment-script-works"></a>Dağıtım betiği nasıl kullanılır?
 

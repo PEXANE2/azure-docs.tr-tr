@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112995"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512672"
 ---
-# <a name="release-notes"></a>Sürüm notları
+# <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
 ## <a name="text-to-speech-2020-july-release"></a>Metinden konuşmaya 2020-Temmuz sürümü
 
@@ -217,7 +217,7 @@ Sağlıklı olun!
 - JavaScript: `FromHost API` Şirket içi kapsayıcılar ve bağımsız bulutlarla kullanım kolaylığı sağlamak için desteği eklendi. [Belgelere bakın](speech-container-howto.md).
 - JavaScript: artık orgads ' `NODE_TLS_REJECT_UNAUTHORIZED` dan bir katkı için teşekkürler [orgads](https://github.com/orgads). [Ayrıntılara bakın](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - `OpenSSL`, 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutunuz `OpenSSL` sistemdeki dizine yüklenmemişse kesintiye neden olabilir `/usr/lib/ssl` . Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
 - C# için döndürülen veri türünü, `WordLevelTimingResult.Offset` `int` `long` `WordLevelTimingResults` konuşma verileri 2 dakikadan uzun olduğunda erişime izin verecek şekilde değiştirdik.
@@ -258,7 +258,7 @@ Sağlıklı olun!
 - `KeywordRecognizer`NuGet ve Unity paketleri aracılığıyla Windows (UWP), Android ve iOS desteği eklendi
 - Zaman uyumsuz toplu işlemlerdeki konuşma dökümü için uzak konuşma Java API 'SI eklendi.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Konuşma taşıma işlevleri ad alanı altına taşındı `Microsoft.CognitiveServices.Speech.Transcription` .
 - Görüşmenin bir parçası olan yöntemler yeni `Conversation` sınıfa taşınır.
@@ -565,7 +565,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - İOS üzerinde amaç-C desteği. [İOS Için hedef C hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)öğreticimize göz atın.
 - Tarayıcıda JavaScript desteği. [JavaScript hızlı](quickstart-js-browser.md)başlangıçmıza göz atın.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Bu sürümle birlikte, bir dizi Son değişiklik yapılmıştır.
   Ayrıntılar için [Bu sayfaya](https://aka.ms/csspeech/breakingchanges_1_0_0) bakın.
@@ -584,7 +584,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 - Bağlantı hatalarıyla ilgili ek hata ayrıntısı bilgilerini kullanıma sunun.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Java 'da (Android), `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` işlev artık bir yol parametresi gerektirmez. Artık tüm desteklenen platformlarda yol otomatik olarak algılanır.
 - `EndpointUrl`Java ve C# ' de özelliğin get-erişimcisi kaldırılmıştır.
@@ -613,7 +613,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 - Tanınma sonucu daha fazla alan içeriyor. Bunlar, tanınan metnin ses başlangıcından ve süresinden (her ikisi de her ikisi de) ve tanınma durumunu temsil eden ek değerlere (örneğin, ve) göre denkleştirilir `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Fabrika örnekleri oluşturmak için AuthorizationToken 'ı destekleme.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 - Tanıma olayları: olay `NoMatch` türü `Error` olayla birleştirildi.
 - C# ' de SpeechOutputFormat, `OutputFormat` C++ ile hizalı kalmak için olarak yeniden adlandırıldı.

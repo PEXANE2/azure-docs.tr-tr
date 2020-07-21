@@ -10,11 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214001"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518513"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -61,8 +62,8 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 |    Depolama hesabı türü    |    Desteklenen bölgeler    |    Desteklenen hizmetler    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Güneydoğu Asya<br /> Batı Avrupa<br /> ABD Doğu    |    Yalnızca blok Blobları    |
-|    Dosya depolama    | Güneydoğu Asya<br /> Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure dosyaları    |
+|    BlockBlobStorage<sup>1</sup>    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu    |    Yalnızca blok Blobları    |
+|    Dosya depolama    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure dosyaları    |
 
 <sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
 <sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -159,8 +160,8 @@ Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün ge�
 
 | Kesinti senaryosu                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Evet                             | Evet                              | Evet                                  | Evet                                 |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Evet                              | Evet<sup>1</sup>                                  | Evet                                  |
+| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                 |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | No                              | Yes                              | Evet<sup>1</sup>                                  | Yes                                  |
 | Birincil bölgede bölge genelinde bir kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Evet<sup>1</sup>                                  | Evet<sup>1</sup>                                  |
 | Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
 

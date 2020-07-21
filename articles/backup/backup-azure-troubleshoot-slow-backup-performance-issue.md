@@ -3,12 +3,12 @@ title: Dosya ve klasörlerin yavaş yedeklenmesinde sorun giderme
 description: Azure Backup performans sorunlarının nedenini tanılamanıza yardımcı olması için sorun giderme kılavuzu sağlar
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7bdda02b837cc2312b997b23ba7b714ca7ebb41a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513858"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 
@@ -95,7 +95,7 @@ Aşağıdaki göstergeler, bir sonraki adımlarda performans sorunlarını ve bu
 * **Kullanıcı arabirimi, veri aktarımının ilerlemesini gösteriyor**. Veriler hala aktarılmakta. Ağ bant genişliği veya veri boyutu gecikmelere neden olabilir.
 * **UI veri aktarımı için ilerlemeyi gösterilmiyor**. C:\Program Files\Microsoft Azure Recovery Services \Temp dizininde bulunan günlükleri açın ve sonra günlüklerde FileProvider:: EndData girdisini kontrol edin. Bu giriş, veri aktarımının bittiğini ve Katalog işleminin gerçekleştiğini belirtir. Yedekleme işlerini iptal etmeyin. Bunun yerine, Katalog işleminin bitmesini biraz daha uzun süre bekleyin. Sorun devam ederse [Azure desteği](https://portal.azure.com/#create/Microsoft.Support)'ne başvurun.
 
-Büyük diskleri yedeklemeye çalışıyorsanız, ilk yedekleme için [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) kullanmanız önerilir (ilk çoğaltma).  Data Box kullanamıyoruz, ağ üzerinden uzun veri aktarımları sırasında ortamınızda gerçekleşen tüm geçici ağ sorunları yedekleme hatalarıyla sonuçlanır.  Bu hatalara karşı koruma sağlamak için, ilk yedeklemelerinize birkaç klasör ekleyebilirsiniz ve tüm klasörler başarıyla Azure 'a yedeklenene kadar daha fazla klasör eklemeye devam edebilirsiniz.  Sonraki artımlı yedeklemeler nispeten daha hızlı olacaktır.
+Büyük diskleri yedeklemeye çalışıyorsanız, ilk yedekleme için [Azure Data Box](./offline-backup-azure-data-box.md) kullanmanız önerilir (ilk çoğaltma).  Data Box kullanamıyoruz, ağ üzerinden uzun veri aktarımları sırasında ortamınızda gerçekleşen tüm geçici ağ sorunları yedekleme hatalarıyla sonuçlanır.  Bu hatalara karşı koruma sağlamak için, ilk yedeklemelerinize birkaç klasör ekleyebilirsiniz ve tüm klasörler başarıyla Azure 'a yedeklenene kadar daha fazla klasör eklemeye devam edebilirsiniz.  Sonraki artımlı yedeklemeler nispeten daha hızlı olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

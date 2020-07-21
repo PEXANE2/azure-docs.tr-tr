@@ -3,11 +3,12 @@ title: MABS ile bir SharePoint grubunu Azure 'a yedekleme
 description: SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Backup Sunucusu kullanın. Bu makalede, SharePoint grubunuzu istenen verilerin Azure 'da depolanabilmesi için yapılandırma bilgileri sağlanmaktadır. Korumalı SharePoint verilerini diskten veya Azure 'dan geri yükleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234798"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514246"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -17,7 +18,7 @@ MABS ile SharePoint 'ten Azure 'a yedekleme, SharePoint 'i (Data Protection Mana
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint desteklenen sürümleri ve ilgili koruma senaryoları
 
-Desteklenen SharePoint sürümlerinin ve bunları yedeklemek için gereken MABS sürümlerinin listesi için bkz [. mabs koruma matrisi](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)
+Desteklenen SharePoint sürümlerinin ve bunları yedeklemek için gereken MABS sürümlerinin listesi için bkz [. mabs koruma matrisi](./backup-mabs-protection-matrix.md)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -29,7 +30,7 @@ Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız 
 
 * MABS, genişleme dosya sunucusu (SOFS) paylaşımlarında barındırılan SharePoint SQL Server veritabanlarının yedeklemesini sağlamıyor.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturun, kasa kimlik bilgilerini indirin, Azure Backup Aracısı yükleyin ve Azure Backup Sunucusu kasaya kaydedin.
 
@@ -99,7 +100,7 @@ SharePoint grubunu yedeklemek için ConfigureSharePoint.exe kullanarak SharePoin
 
 1. **Çevrimiçi saklama Ilkesini belirtin**kısmında günlük/haftalık/aylık/yıllık yedeklerden oluşturulan kurtarma noktalarının Azure 'da nasıl korunacağını belirtebilirsiniz.
 
-1. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl yapılacağını belirtin. Ağ üzerinden çoğaltma veya çevrimdışı yedekleme (çevrimdışı dengeli dağıtım) yapabilirsiniz. Çevrimdışı yedekleme Azure İçe Aktarma özelliğini kullanır. [Daha fazla bilgi edinin](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+1. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl yapılacağını belirtin. Ağ üzerinden çoğaltma veya çevrimdışı yedekleme (çevrimdışı dengeli dağıtım) yapabilirsiniz. Çevrimdışı yedekleme Azure İçe Aktarma özelliğini kullanır. [Daha fazla bilgi edinin](./backup-azure-backup-import-export.md).
 
 1. **Özet** sayfasında, ayarlarınızı gözden geçirin. **Grup Oluştur**' a tıkladıktan sonra, verilerin ilk çoğaltması oluşur. İşlem tamamlandığında, koruma grubunun durumu **durum** sayfasında **Tamam** olarak gösterilir. Ardından, koruma grupları ayarlarına uygun olarak yedekleme gerçekleşir.
 
@@ -208,7 +209,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**' a tıklayın.
+    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**’a tıklayın.
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. İçerik veritabanı yapısını almak için MABS **Kurtarma** sekmesinde gösterilen SharePoint nesnesine tıklayın. Öğeye sağ tıklayın ve ardından **kurtar**' a tıklayın.

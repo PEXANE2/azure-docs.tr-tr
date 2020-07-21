@@ -9,11 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512988"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 'de PowerShell için hızlı başlangıç
 
@@ -26,11 +27,11 @@ Bu belge [Azure portal](https://portal.azure.com/)Cloud Shell ' de PowerShell 'i
 
 1. Azure portal üst gezinti çubuğundan **Cloud Shell** düğmesine tıklayın
 
-   ![](media/quickstart-powershell/shell-icon.png)
+   ![Azure portal Azure Cloud Shell başlatmayı gösteren ekran görüntüsü.](media/quickstart-powershell/shell-icon.png)
 
 2. Açılır listeden PowerShell ortamını seçin ve Azure Drive 'da olursunuz`(Azure:)`
 
-   ![](media/quickstart-powershell/environment-ps.png)
+   ![Azure Cloud Shell için PowerShell ortamının nasıl seçileceğini gösteren ekran görüntüsü.](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>PowerShell komutlarını çalıştır
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a9541eb3b7c662b43de0d3a609ecec4fe2621ca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78208551"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519414"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
 
@@ -58,25 +59,19 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](secur
 
 * Güvenlik Merkezi, **Get-MprotComputerStatus** çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
 
-    * Aşağıdaki özelliklerden en az biri false şeklindedir:
+  * Aşağıdaki özelliklerden en az biri false şeklindedir:
 
-            **AMServiceEnabled**
+    * **AMServiceEnabled**
+    * **AntispywareEnabled**
+    * **RealTimeProtectionEnabled**
+    * **BehaviorMonitorEnabled**
+    * **Ioavprotectionenabled**
+    * **OnAccessProtectionEnabled**
 
-            **AntispywareEnabled**
-    
-            **RealTimeProtectionEnabled**
-    
-            **BehaviorMonitorEnabled**
-    
-            **IoavProtectionEnabled**
-    
-            **OnAccessProtectionEnabled**
-          
-    * Aşağıdaki Imza güncelleştirmelerinden biri veya her ikisi 7 ' ye eşit veya daha büyükse. 
+  * Aşağıdaki Imza güncelleştirmelerinden biri veya her ikisi 7 ' ye eşit veya daha büyükse. 
 
-            **AntispywareSignatureAge**
-    
-            **AntivirusSignatureAge**
+    * **AntispywareSignatureAge**
+    * **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Eğilim mikro
 

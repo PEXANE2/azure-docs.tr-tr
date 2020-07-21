@@ -8,19 +8,20 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8c854a503e3c949be0165d9dda046e0169686c67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434149"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517306"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator ınkapımaps için dinamik stil uygulama
 
 Azure haritalar Creator [özelliği durum hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate) , ınkapımap veri özelliklerinin dinamik özelliklerine göre stiller uygulamanıza olanak tanır.  Örneğin, hizmet toplantısı odalarını, doluluk durumunu yansıtmak için belirli bir renkle işleyebilirsiniz. Bu makalede, iç hat eşleme özelliklerinin [özellik durum hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate) ve [ınkapılı web modülü](how-to-use-indoor-module.md)ile dinamik olarak nasıl işleneceğini göstereceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure Haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 3. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)
 4. [Örnek çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirin.
@@ -65,7 +66,7 @@ Sonraki bölümde, Office 'in doluluk *durumunu* olarak ayarlayacağız `UNIT26`
 
  Şimdi iki ofisin durumunu güncelleştireceğiz `UNIT26` ve `UNIT27` :
 
-1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** 'e tıklayın
+1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın
 
 2. Durumu güncelleştirmek için [özellik güncelleştirme DURUMLARı API](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) 'sini kullanın. Stateset KIMLIĞINI ve `UNIT26` iki birimden birini geçirin. Azure Maps abonelik anahtarınızı ekleyin. Durumu güncelleştirmek için bir **Post** isteğinin URL 'si aşağıda verilmiştir:
 

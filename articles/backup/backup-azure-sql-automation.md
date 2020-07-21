@@ -4,12 +4,12 @@ description: Azure Backup ve PowerShell kullanarak Azure VM 'lerinde SQL veritab
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 862455175497fe5496c7eea459c32772074671ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5b62b05c36afac078ccc7aeb7ed0e7259072fc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255152"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513804"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
@@ -88,13 +88,13 @@ Kurtarma Hizmetleri Kasası oluşturmak için bu adımları izleyin.
 
 Kurtarma Hizmetleri Kasası bir Kaynak Yöneticisi kaynağıdır, bu nedenle onu bir kaynak grubuna yerleştirmeniz gerekir. Var olan bir kaynak grubunu kullanabilir veya **New-AzResourceGroup** cmdlet 'i ile bir kaynak grubu oluşturabilirsiniz. Bir kaynak grubu oluşturduğunuzda, kaynak grubu için adı ve konumu belirtin.
 
-1. Kasa, bir kaynak grubuna yerleştirilir. Mevcut bir kaynak grubunuz yoksa, [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0)ile yeni bir tane oluşturun. Bu örnekte, Batı ABD bölgesinde yeni bir kaynak grubu oluşturacağız.
+1. Kasa, bir kaynak grubuna yerleştirilir. Mevcut bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile yeni bir tane oluşturun. Bu örnekte, Batı ABD bölgesinde yeni bir kaynak grubu oluşturacağız.
 
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
 
-2. Kasayı oluşturmak için [New-Azrecoveryserviceskasa](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) cmdlet 'ini kullanın. Kaynak grubu için kullanılan kasa için aynı konumu belirtin.
+2. Kasayı oluşturmak için [New-Azrecoveryserviceskasa](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) cmdlet 'ini kullanın. Kaynak grubu için kullanılan kasa için aynı konumu belirtin.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
@@ -102,8 +102,8 @@ Kurtarma Hizmetleri Kasası bir Kaynak Yöneticisi kaynağıdır, bu nedenle onu
 
 3. Kasa depolaması için kullanılacak artıklık türünü belirtin.
 
-    * [Yerel olarak yedekli depolama](../storage/common/storage-redundancy-lrs.md) veya coğrafi olarak [yedekli depolama](../storage/common/storage-redundancy-grs.md)kullanabilirsiniz.
-    * Aşağıdaki örnek, **testkasasının** [set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd Için **-BackupStorageRedundancy** seçeneğini **geoyedekli**olarak ayarlar.
+    * [Yerel olarak yedekli depolama](../storage/common/storage-redundancy.md) veya coğrafi olarak [yedekli depolama](../storage/common/storage-redundancy.md)kullanabilirsiniz.
+    * Aşağıdaki örnek, **testkasasının** [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd Için **-BackupStorageRedundancy** seçeneğini **geoyedekli**olarak ayarlar.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -112,7 +112,7 @@ Kurtarma Hizmetleri Kasası bir Kaynak Yöneticisi kaynağıdır, bu nedenle onu
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Bir abonelikteki kasaları görüntüleme
 
-Abonelikteki tüm kasaları görüntülemek için [Get-Azrecoveryserviceskasasını](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)kullanın.
+Abonelikteki tüm kasaları görüntülemek için [Get-Azrecoveryserviceskasasını](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault)kullanın.
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -135,7 +135,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Kasa nesnesini bir değişkende depolayın ve kasa bağlamını ayarlayın.
 
 * Birçok Azure Backup cmdlet 'i, giriş olarak kurtarma hizmetleri Kasası nesnesini gerektirir, bu nedenle kasa nesnesini bir değişkende depolamak yararlıdır.
-* Kasa bağlamı, kasada korunan veri türüdür. [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0)ile ayarlayın. Bağlam ayarlandıktan sonra, sonraki tüm cmdlet 'ler için geçerli olur.
+* Kasa bağlamı, kasada korunan veri türüdür. [Set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)ile ayarlayın. Bağlam ayarlandıktan sonra, sonraki tüm cmdlet 'ler için geçerli olur.
 
 Aşağıdaki örnek, **testkasası**için kasa bağlamını ayarlar.
 
@@ -156,9 +156,9 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 Yedekleme ilkesi yedeklemeler için zamanlamayı ve yedekleme kurtarma noktalarının ne kadar süreyle tutulacağını belirtir:
 
 * Yedekleme ilkesi en az bir bekletme ilkesiyle ilişkilendirilir. Bir bekletme ilkesi, bir kurtarma noktasının silinmeden önce ne kadar süreyle saklanacağını tanımlar.
-* [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0)kullanarak varsayılan yedekleme ilkesi bekletmesini görüntüleyin.
-* [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)kullanarak varsayılan yedekleme ilkesi zamanlamasını görüntüleyin.
-* Yeni bir yedekleme ilkesi oluşturmak için [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) cmdlet 'ini kullanırsınız. Zamanlama ve bekletme ilkesi nesnelerini girin.
+* [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject)kullanarak varsayılan yedekleme ilkesi bekletmesini görüntüleyin.
+* [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject)kullanarak varsayılan yedekleme ilkesi zamanlamasını görüntüleyin.
+* Yeni bir yedekleme ilkesi oluşturmak için [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) cmdlet 'ini kullanırsınız. Zamanlama ve bekletme ilkesi nesnelerini girin.
 
 Varsayılan olarak, bir başlangıç saati zamanlama Ilkesi nesnesinde tanımlanmıştır. Başlangıç saatini istenen başlangıç saatine dönüştürmek için aşağıdaki örneği kullanın. İstenen başlangıç saati UTC biçiminde de olmalıdır. Aşağıdaki örnek, günlük yedeklemeler için istenen başlangıç zamanının 01:00. UTC olduğunu varsayar.
 
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>SQL VM 'yi kaydetme
 
-Azure VM yedeklemeleri ve Azure dosya paylaşımları için yedekleme hizmeti bu Azure Resource Manager kaynaklarına bağlanabilir ve ilgili ayrıntıları getirir. SQL bir Azure VM içindeki bir uygulama olduğundan, yedekleme hizmeti uygulamaya erişmek ve gerekli ayrıntıları getirmek için izne ihtiyaç duyuyor. Bunu yapmak için, bir kurtarma hizmetleri kasasıyla SQL uygulamasını içeren Azure VM 'yi *' kaydetmeniz '* gerekir. Bir SQL VM 'yi bir kasaya kaydettikten sonra, SQL veritabanlarını yalnızca bu kasaya koruyabilirsiniz. VM 'yi kaydettirmek için [register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS cmdlet 'ini kullanın.
+Azure VM yedeklemeleri ve Azure dosya paylaşımları için yedekleme hizmeti bu Azure Resource Manager kaynaklarına bağlanabilir ve ilgili ayrıntıları getirir. SQL bir Azure VM içindeki bir uygulama olduğundan, yedekleme hizmeti uygulamaya erişmek ve gerekli ayrıntıları getirmek için izne ihtiyaç duyuyor. Bunu yapmak için, bir kurtarma hizmetleri kasasıyla SQL uygulamasını içeren Azure VM 'yi *' kaydetmeniz '* gerekir. Bir SQL VM 'yi bir kasaya kaydettikten sonra, SQL veritabanlarını yalnızca bu kasaya koruyabilirsiniz. VM 'yi kaydettirmek için [register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) PS cmdlet 'ini kullanın.
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -207,7 +207,7 @@ Komut bu kaynağın bir ' yedekleme kapsayıcısı ' döndürür ve durum ' kayd
 
 ### <a name="fetching-sql-dbs"></a>SQL DB 'Leri getiriliyor
 
-Kayıt tamamlandığında, yedekleme hizmeti VM 'deki tüm kullanılabilir SQL bileşenlerini listeleyebilir. Henüz bu kasaya yedeklenmek üzere tüm SQL bileşenlerini görüntülemek için [Get-Azrecoveryservicesbackupkorunabilir TableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet 'ini kullanın
+Kayıt tamamlandığında, yedekleme hizmeti VM 'deki tüm kullanılabilir SQL bileşenlerini listeleyebilir. Henüz bu kasaya yedeklenmek üzere tüm SQL bileşenlerini görüntülemek için [Get-Azrecoveryservicesbackupkorunabilir TableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PS cmdlet 'ini kullanın
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $targetVault.ID
@@ -221,7 +221,7 @@ $SQLDB = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemTy
 
 ### <a name="configuring-backup"></a>Yedeklemeyi yapılandırma
 
-Gerekli SQL DB ve bu ilkenin yedeklenmesi gereken ilkeye sahip olduğumuz için, bu SQL VERITABANı için yedeklemeyi yapılandırmak üzere [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) cmdlet 'ini kullanabilirsiniz.
+Gerekli SQL DB ve bu ilkenin yedeklenmesi gereken ilkeye sahip olduğumuz için, bu SQL VERITABANı için yedeklemeyi yapılandırmak üzere [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) cmdlet 'ini kullanabilirsiniz.
 
 ```output
 Enable-AzRecoveryServicesBackupProtection -ProtectableItem $SQLDB -Policy $NewSQLPolicy
@@ -237,7 +237,7 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 
 ### <a name="fetching-new-sql-dbs"></a>Yeni SQL DB 'Leri getiriliyor
 
-Makine kaydedildikten sonra Backup hizmeti, daha sonra kullanılabilir olan veritabanları ayrıntılarını getirir. Kullanıcı daha sonra kayıtlı makineye SQL DBs/SQL örnekleri eklerse, tüm korumasız veritabanlarını (yeni eklenen olanlar dahil) yeniden almak için yedekleme hizmetini el ile yeni bir ' sorgulama ' gerçekleştirecek şekilde tetiklemeniz gerekir. SQL VM üzerinde [Initialize-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Initialize-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet 'ini kullanarak yeni bir sorgu gerçekleştirin. Komut işlem tamamlanana kadar bekler. Daha sonra, en son korumasız SQL bileşenlerinin listesini almak için [Get-Azrecoveryservicesbackupkorunabilir öğe](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet 'ini kullanın
+Makine kaydedildikten sonra Backup hizmeti, daha sonra kullanılabilir olan veritabanları ayrıntılarını getirir. Kullanıcı daha sonra kayıtlı makineye SQL DBs/SQL örnekleri eklerse, tüm korumasız veritabanlarını (yeni eklenen olanlar dahil) yeniden almak için yedekleme hizmetini el ile yeni bir ' sorgulama ' gerçekleştirecek şekilde tetiklemeniz gerekir. SQL VM üzerinde [Initialize-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) PS cmdlet 'ini kullanarak yeni bir sorgu gerçekleştirin. Komut işlem tamamlanana kadar bekler. Daha sonra, en son korumasız SQL bileşenlerinin listesini almak için [Get-Azrecoveryservicesbackupkorunabilir öğe](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PS cmdlet 'ini kullanın
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -250,7 +250,7 @@ Bunlardan biri yeni DBs 'yi el ile algılamak istemiyor, [aşağıda](#enable-au
 
 ## <a name="enable-autoprotection"></a>Oto korumayı etkinleştir
 
-Kullanıcı, gelecekte eklenen tüm veritabanları belirli bir ilkeyle otomatik olarak korunduğu için yedeklemeyi yapılandırabilir. Oto korumayı etkinleştirmek için [Enable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS cmdlet 'ini kullanın.
+Kullanıcı, gelecekte eklenen tüm veritabanları belirli bir ilkeyle otomatik olarak korunduğu için yedeklemeyi yapılandırabilir. Oto korumayı etkinleştirmek için [Enable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection) PS cmdlet 'ini kullanın.
 
 Yönerge gelecek tüm veritabanlarını yedekleyebileceğinizden, işlem bir SQLInstance düzeyinde yapılır.
 
@@ -270,7 +270,7 @@ Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şek
 
 SQL DBs 'yi geri yüklemeden önce [burada](restore-sql-database-azure-vm.md#prerequisites) bahsedilen önkoşulları denetleyin.
 
-İlk olarak [Get-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 'ini kullanarak ılgılı yedeklenen SQL DB 'yi getirin.
+İlk olarak [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PS cmdlet 'ini kullanarak ılgılı yedeklenen SQL DB 'yi getirin.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -282,7 +282,7 @@ Yukarıda özetlenen Kullanıcı, yedeklenen SQL VERITABANıNı tam/fark kopyas�
 
 #### <a name="fetch-distinct-recovery-points"></a>Ayrı kurtarma noktalarını getir
 
-Yedeklenen SQL DB için farklı (tam/fark) kurtarma noktaları getirmek üzere [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryPoint?view=azps-1.5.0) komutunu kullanın.
+Yedeklenen SQL DB için farklı (tam/fark) kurtarma noktaları getirmek üzere [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) komutunu kullanın.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
@@ -307,7 +307,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 
 #### <a name="fetch-point-in-time-recovery-point"></a>Fetch-In-Time kurtarma noktası
 
-Kullanıcı VERITABANıNı belirli bir noktaya geri yüklemek isterse [Get-Azrecoveryservicesbackuprecoverylogzincirps](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) cmdlet 'ini kullanın. Cmdlet 'i, bu SQL yedekleme öğesi için bozuk ve sürekli bir günlük zincirinin başlangıç ve bitiş zamanlarını temsil eden tarihlerin listesini döndürür. İstenen zaman noktası bu Aralık içinde olmalıdır.
+Kullanıcı VERITABANıNı belirli bir noktaya geri yüklemek isterse [Get-Azrecoveryservicesbackuprecoverylogzincirps](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) cmdlet 'ini kullanın. Cmdlet 'i, bu SQL yedekleme öğesi için bozuk ve sürekli bir günlük zincirinin başlangıç ve bitiş zamanlarını temsil eden tarihlerin listesini döndürür. İstenen zaman noktası bu Aralık içinde olmalıdır.
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
@@ -335,7 +335,7 @@ SQL DB geri yükleme durumunda aşağıdaki geri yükleme senaryoları desteklen
 * SQL DB 'yi başka bir SQL VM 'deki başka bir SQL örneğine yeni bir VERITABANı olarak geri yükleme-Alternateworkloadresstore
 * SQL DB 'yi. bak dosyaları olarak geri yükleme-RestoreAsFiles
 
-İlgili kurtarma noktasını (farklı veya günlük zaman) geçirdikten sonra, kurtarma yapılandırma nesnesini istenen kurtarma planına göre getirmek için [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 'ini kullanın.
+İlgili kurtarma noktasını (farklı veya günlük zaman) geçirdikten sonra, kurtarma yapılandırma nesnesini istenen kurtarma planına göre getirmek için [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PS cmdlet 'ini kullanın.
 
 #### <a name="original-workload-restore"></a>Özgün iş yükü geri yükleme
 
@@ -406,7 +406,7 @@ Geri yükleme için kullanılması gereken belirli bir tam vermek istiyorsanız 
 $FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
 ```
 
-[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 'inden elde edilen son kurtarma noktası yapılandırma nesnesi, geri yükleme için tüm ilgili bilgileri içerir ve aşağıda gösterildiği gibi.
+[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PS cmdlet 'inden elde edilen son kurtarma noktası yapılandırma nesnesi, geri yükleme için tüm ilgili bilgileri içerir ve aşağıda gösterildiği gibi.
 
 ```output
 TargetServer         : <SQL server name>
@@ -461,7 +461,7 @@ PointInTime          : 1/1/0001 12:00:00 AM
 
 ### <a name="restore-with-relevant-configuration"></a>İlgili yapılandırmayla geri yükleme
 
-İlgili kurtarma yapılandırma nesnesi alındıktan ve doğrulandıktan sonra geri yükleme işlemini başlatmak için [restore-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Restore-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 'ini kullanın.
+İlgili kurtarma yapılandırma nesnesi alındıktan ve doğrulandıktan sonra geri yükleme işlemini başlatmak için [restore-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) PS cmdlet 'ini kullanın.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $targetVault.ID
@@ -479,7 +479,7 @@ MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM
 
 ### <a name="on-demand-backup"></a>İsteğe bağlı yedekleme
 
-Bir VERITABANı için yedekleme etkinleştirildikten sonra, Kullanıcı [Backup-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Backup-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 'INI kullanarak veritabanı için isteğe bağlı bir yedekleme da tetiklenebilir. Aşağıdaki örnek, bir SQL DB 'de sıkıştırma etkinken tam yedeklemeyi tetikler ve tam yedekleme 60 gün boyunca korunur.
+Bir VERITABANı için yedekleme etkinleştirildikten sonra, Kullanıcı [Backup-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) PS cmdlet 'INI kullanarak veritabanı için isteğe bağlı bir yedekleme da tetiklenebilir. Aşağıdaki örnek, bir SQL DB 'de sıkıştırma etkinken tam yedeklemeyi tetikler ve tam yedekleme 60 gün boyunca korunur.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>Yedekleme öğeleri için ilkeyi değiştirme
 
-Kullanıcı, Policy1 ' den Policy2 ' ye yedeklenen öğe ilkesini değiştirebilir. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) komutunu kullanın.
+Kullanıcı, Policy1 ' den Policy2 ' ye yedeklenen öğe ilkesini değiştirebilir. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) komutunu kullanın.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -517,7 +517,7 @@ master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 ### <a name="edit-an-existing-backup-policy"></a>Var olan bir yedekleme ilkesini Düzenle
 
-Var olan bir ilkeyi düzenlemek için [set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-3.8.0) komutunu kullanın.
+Var olan bir ilkeyi düzenlemek için [set-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) komutunu kullanın.
 
 ```powershell
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
@@ -544,7 +544,7 @@ Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManag
 
 #### <a name="retain-data"></a>Verileri tutma
 
-Kullanıcı korumayı durdurmayı istiyorsa, [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS cmdlet 'ini kullanabilirler. Bu, zamanlanmış yedeklemeleri durdurur, ancak şu anda yedeklenene kadar yedeklenen veriler sürekli olarak korunur.
+Kullanıcı korumayı durdurmayı istiyorsa, [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS cmdlet 'ini kullanabilirler. Bu, zamanlanmış yedeklemeleri durdurur, ancak şu anda yedeklenene kadar yedeklenen veriler sürekli olarak korunur.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -561,7 +561,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="disable-auto-protection"></a>Otomatik korumayı devre dışı bırak
 
-Bir SQLInstance üzerinde otomatik koruma yapılandırıldıysa, Kullanıcı [Disable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS cmdlet 'ini kullanarak bunu devre dışı bırakabilir.
+Bir SQLInstance üzerinde otomatik koruma yapılandırıldıysa, Kullanıcı [Disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) PS cmdlet 'ini kullanarak bunu devre dışı bırakabilir.
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
@@ -570,7 +570,7 @@ Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMa
 
 #### <a name="unregister-sql-vm"></a>SQL VM kaydını sil
 
-Bir SQL Server 'ın tüm veritabanları [artık korunmuyorsa ve yedekleme verisi](#delete-backup-data)yoksa, kullanıcı SQL sanal makinesinin kaydını bu kasadan silmeyi sağlayabilir. Yalnızca Kullanıcı, veritabanlarını başka bir kasaya koruyabilir. SQL VM kaydını silmek için [Unregister-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS cmdlet 'ini kullanın.
+Bir SQL Server 'ın tüm veritabanları [artık korunmuyorsa ve yedekleme verisi](#delete-backup-data)yoksa, kullanıcı SQL sanal makinesinin kaydını bu kasadan silmeyi sağlayabilir. Yalnızca Kullanıcı, veritabanlarını başka bir kasaya koruyabilir. SQL VM kaydını silmek için [Unregister-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) PS cmdlet 'ini kullanın.
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -581,19 +581,19 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Azure Backup yalnızca SQL Backup 'daki Kullanıcı tarafından tetiklenen işleri izlediğine dikkat edin. Zamanlanan yedeklemeler (günlük yedeklemeleri dahil) portalda/PowerShell 'de görünmez. Ancak, herhangi bir zamanlanan iş başarısız olursa, portalda bir [yedekleme uyarısı](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) oluşturulur ve gösterilir. Tüm zamanlanmış işleri ve ilgili diğer bilgileri izlemek için [Azure izleyici 'Yi kullanın](backup-azure-monitoring-use-azuremonitor.md) .
 
-Kullanıcılar, yedekleme gibi zaman uyumsuz işlerin [çıkışında](#on-demand-backup) döndürülen JobId ile isteğe bağlı/kullanıcı tarafından tetiklenen işlemleri izleyebilir. İşi ve ayrıntılarını izlemek için [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS cmdlet 'ini kullanın.
+Kullanıcılar, yedekleme gibi zaman uyumsuz işlerin [çıkışında](#on-demand-backup) döndürülen JobId ile isteğe bağlı/kullanıcı tarafından tetiklenen işlemleri izleyebilir. İşi ve ayrıntılarını izlemek için [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PS cmdlet 'ini kullanın.
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ```
 
-İsteğe bağlı işlerin ve bunların durumlarının listesini Azure Backup hizmetten almak için [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS cmdlet 'ini kullanın. Aşağıdaki örnek, tüm sürmekte olan SQL işlerini döndürür.
+İsteğe bağlı işlerin ve bunların durumlarının listesini Azure Backup hizmetten almak için [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) PS cmdlet 'ini kullanın. Aşağıdaki örnek, tüm sürmekte olan SQL işlerini döndürür.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
 ```
 
-Devam eden bir işi iptal etmek için [stop-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Stop-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS cmdlet 'ini kullanın.
+Devam eden bir işi iptal etmek için [stop-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) PS cmdlet 'ini kullanın.
 
 ## <a name="managing-sql-always-on-availability-groups"></a>SQL Always on kullanılabilirlik gruplarını yönetme
 
@@ -608,6 +608,6 @@ SQL Always on kullanılabilirlik grupları için, kullanılabilirlik grubunun (A
 * SQL-Server-0-korunabilir öğe türü altındaki varsayılan SQL DBs (Master, model, msdb), SQLDatabase olarak
 * SQL-Server-1-korunabilir öğe türü altındaki herhangi bir varsayılan SQL DBs (Master, model, msdb), SQLDatabase olarak
 
-[yedekleme kapsayıcıları listelendiğinde](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)SQL-Server-0, SQL-Server-1 da "AzureVMAppContainer" olarak listelenecektir.
+[yedekleme kapsayıcıları listelendiğinde](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer)SQL-Server-0, SQL-Server-1 da "AzureVMAppContainer" olarak listelenecektir.
 
 Yalnızca [yedeklemeyi etkinleştirmek](#configuring-backup) için ilgili veritabanını getirin ve isteğe bağlı [yedekleme](#on-demand-backup) ve [geri yükleme PS cmdlet 'leri](#restore-sql-dbs) aynıdır.

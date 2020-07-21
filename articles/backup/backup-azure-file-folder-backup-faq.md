@@ -1,18 +1,18 @@
 ---
-title: Dosya ve klasörleri yedekleme-sık sorulan sorular
+title: Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı – SSS
 description: Azure Backup ile dosya ve klasörleri yedekleme hakkında sık sorulan sorulara yöneliktir.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056183"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514076"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>Dosya ve klasörleri yedekleme hakkında sık sorulan sorular
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Sık sorulan sorular-Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
 
-Bu makalede, [Azure Backup](backup-overview.md) hizmetindeki MICROSOFT Azure kurtarma HIZMETLERI (mars) aracısıyla dosya ve klasörlerin yedeklenmesiyle ilgili sık karşılaşılan sorular yanıtlanmaktadır.
+Bu makalede, [Azure Backup](backup-overview.md) hizmetinde MICROSOFT Azure kurtarma HIZMETLERI (mars) aracısıyla veri yedekleme hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="configure-backups"></a>Yedeklemeleri yapılandırma
 
@@ -74,11 +74,11 @@ Bir Windows makinesini yeniden adlandırdığınızda, şu anda yapılandırılm
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Yedekleme için en fazla dosya yolu uzunluğu nedir?
 
-MARS Aracısı NTFS kullanır ve [Windows API 'siyle](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths)sınırlı olan FilePath length belirtimini kullanır. Korumak istediğiniz dosyalar izin verilen değerden uzunsa, üst klasörü veya disk sürücüsünü yedekleyin.  
+MARS Aracısı NTFS kullanır ve [Windows API 'siyle](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths)sınırlı olan FilePath length belirtimini kullanır. Korumak istediğiniz dosyalar izin verilen değerden uzunsa, üst klasörü veya disk sürücüsünü yedekleyin.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Dosya yollarında hangi karakterlere izin veriliyor?
 
-MARS Aracısı NTFS kullanır ve dosya adlarında/yollarında [desteklenen karakterlere](/windows/desktop/FileIO/naming-a-file#naming-conventions) izin verir.
+MARS Aracısı NTFS kullanır ve dosya adlarında/yollarında [desteklenen karakterlere](/windows/win32/FileIO/naming-a-file#naming-conventions) izin verir.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>"Azure yedeklemeleri bu sunucu için yapılandırılmamış" uyarısı görünür
 
@@ -95,7 +95,7 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 
 * Önbellek klasörü birimlerinde toplam yedekleme verileri boyutunun en az% 5-10 ' ü eşit olan boş alan bulunmalıdır.
 * Birimde %5 ' ten az boş alan varsa, birim boyutunu artırın veya [Bu adımları](#how-do-i-change-the-cache-location-for-the-mars-agent)izleyerek önbellek klasörünü yeterli alana sahip bir birime taşıyın.
-* Windows sistem durumunu yedeklemenizin, önbellek klasörünü içeren birimde ek 30-35 GB boş alan olması gerekir.
+* Windows sistem durumunu yedeklemeniz durumunda önbellek klasörünü içeren birimde ek 30-35 GB boş alan gerekir.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Karalama klasörünün geçerli ve erişilebilir olup olmadığını denetleme
 
@@ -141,7 +141,7 @@ Bu uyarı, bir yedekleme ilkesi yapılandırdığınız halde, yerel sunucuda de
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Önbellek klasörünün desteklenmeyen öznitelikleri var mı?
 
-Aşağıdaki öznitelikler veya bunların bileşimleri, önbellek klasörü için desteklenmez:
+Önbellek klasörü için aşağıdaki öznitelikler veya birleşimleri desteklenmez:
 
 * Şifreli
 * Yinelenenleri kaldırma işlemi uygulanmış
@@ -165,17 +165,17 @@ Azure Backup Aracısı, geri yükleme sırasında yedeklenen verilerin şifresin
 
 | Özgün makine <br> *(yedeklemelerin alındığı kaynak makine)* | Deyimi | Kullanılabilir seçenekler |
 | --- | --- | --- |
-| Kullanılabilir |Mesi |Özgün makineniz (yedeklemelerin alındığı yer) kullanılabilir ve aynı kurtarma hizmetleri kasasıyla kaydedilmişse, bu [adımları](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)izleyerek parolayı yeniden oluşturabilirsiniz.  |
+| Kullanılabilir |Mesi |Özgün makineniz (yedeklemelerin alındığı yer) kullanılabilir ve aynı kurtarma hizmetleri kasasıyla kaydedilmişse, bu [adımları](./backup-azure-manage-mars.md#re-generate-passphrase)izleyerek parolayı yeniden oluşturabilirsiniz.  |
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |
 
 Aşağıdaki koşulları göz önünde bulundurun:
 
-* Aracıyı, ile aynı orijinal makineye kaldırır ve yeniden kaydedersiniz
-  * *Aynı parola*, yedeklenen verilerinizi geri yükleyebileceksiniz.
-  * *Farklı bir parola*, yedeklenen verilerinizi geri yükleyemezsiniz.
-* Aracıyı ile *farklı bir makineye* yüklerseniz
-  * *Aynı parola* (özgün makinede kullanılır), daha sonra yedeklenen verilerinizi geri yükleyebileceksiniz.
-  * *Farklı parola*, yedeklenen verilerinizi geri yükleyemezsiniz.
+* Aracıyı kaldırarak ve ile aynı orijinal makineye yeniden kaydettiğinizde
+  * *Aynı parola*, yedeklenen verilerinizi geri yükleyebilirsiniz.
+  * *Farklı bir parola*, daha sonra yedeklenen verilerinizi geri alamazsınız.
+* Aracıyı, ile *farklı bir makineye* yüklerseniz
+  * *Aynı parola* (özgün makinede kullanılır), daha sonra yedeklenen verilerinizi geri yükleyebilirsiniz.
+  * *Farklı parola*, yedeklenen verilerinizi geri alamazsınız.
 * Özgün makineniz bozuksa (parolayı MARS konsolu aracılığıyla yeniden üretmeyi önler), ancak MARS Aracısı tarafından kullanılan orijinal karalama klasörünü geri yükleyebilir veya erişebilirsiniz, ardından geri yükleme yapabilirsiniz (parolayı unuttuysanız). Daha fazla yardım için müşteri desteğine başvurun.
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Özgün makinemi (yedeklemelerin alındığı) kaybetmem durumunda kurtarma Nasıl yaparım??
@@ -184,7 +184,7 @@ Aşağıdaki koşulları göz önünde bulundurun:
 
 | Özgün makine | Deyimi | Kullanılabilir seçenekler |
 | --- | --- | --- |
-| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. **Recovery Option**  >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini**başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
+| Mesi |Kullanılabilir |MARS aracısını, özgün makinenin kaydı sırasında sağladınız aynı parola ile başka bir makineye yükleyebilir ve kaydedebilirsiniz. **Recovery Option**  >  Geri yükleme işlemini gerçekleştirmek için kurtarma seçeneğini**başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
 | Mesi |Mesi |Verilerin kurtarılması mümkün değil veya veriler kullanılamıyor |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Yedekleme işlerim uzun süredir başarısız olmuş veya çalışmıyor. Saklama süresini geçti. Hala geri yükleme yapabilir miyim?

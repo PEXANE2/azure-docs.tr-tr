@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515504"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Tanılama sorunlarını giderme
 Bu makalede Azure Tanılama kullanımı ile ilgili sorun giderme bilgileri açıklanmaktadır. Azure Tanılama hakkında daha fazla bilgi için bkz. [Azure tanılama genel bakış](diagnostics-extension-overview.md).
@@ -49,7 +50,7 @@ Bazı önemli günlüklerin ve yapıtların yolları aşağıda verilmiştir. Be
 | **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \Wad0107\configuration\monk\thost. <seq_num>. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Ölçüm verileri Azure portal görünmüyor
-Azure Tanılama, Azure portal görüntülenebilecek ölçüm verileri sağlar. Portalda verileri görmekte sorun yaşıyorsanız, \* ilgili ölçüm kayıtlarının orada olup olmadığını ve Microsoft. Insights [kaynak sağlayıcısının](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) kayıtlı olduğundan emin olmak için Azure tanılama depolama hesabındaki wadmetric tablosuna bakın.
+Azure Tanılama, Azure portal görüntülenebilecek ölçüm verileri sağlar. Portalda verileri görmekte sorun yaşıyorsanız, \* ilgili ölçüm kayıtlarının orada olup olmadığını ve Microsoft. Insights [kaynak sağlayıcısının](../../azure-resource-manager/management/resource-providers-and-types.md) kayıtlı olduğundan emin olmak için Azure tanılama depolama hesabındaki wadmetric tablosuna bakın.
 
 Burada, tablonun **Partitionkey** 'ı kaynak kimliği, sanal makine veya sanal makine ölçek kümesidir. **Rowkey** ölçüm adıdır (performans sayacı adı olarak da bilinir).
 
@@ -164,7 +165,7 @@ ETW olaylarını tutan Azure Storage tablolarının tabloları aşağıdaki kod 
             tableName = "WAD" + eventDestination;
 ```
 
-Örnek aşağıda verilmiştir:
+Aşağıda bir örnek verilmiştir:
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -296,4 +297,3 @@ Sanal makinelerdeki Portal deneyimi, varsayılan olarak belirli performans saya�
 - Depolama alanındaki verilerin Ingilizce 'de sayaç adları olup olmadığı. Sayaç adları Ingilizce değilse, Portal ölçüm grafiği bunu tanıyamaz. **Risk azaltma**: makinenin dilini sistem hesapları için İngilizce olarak değiştirin. Bunu yapmak için, **Denetim Masası**  >  **bölgesi**  >  **Yönetim**  >  **kopyası ayarları**' nı seçin. Ardından, özel dilin sistem hesabına uygulanmaması için **hoş geldiniz ekranının ve sistem hesaplarının** seçimini kaldırın.
 
 - Performans sayacı adlarında joker karakterler ( \* ) kullanıyorsanız, Portal, performans sayaçları Azure depolama havuzuna gönderildiğinde yapılandırılan ve toplanan sayacı ilişkilendiremez. **Risk azaltma**: Ana anlamlı karakter ve portalın () genişletmesine sahip olduğunuzdan emin olmak için \* performans Sayaçlarınızı Azure izleyici havuzuna yönlendirin.
-

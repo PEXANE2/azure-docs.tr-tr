@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055893"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516796"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Izleyici ile Active Directory çoğaltma durumunu izleme
 
@@ -52,7 +52,7 @@ Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye ba
 ## <a name="ad-replication-status-data-collection-details"></a>Veri toplama ayrıntılarını AD Çoğaltma Durumu
 Aşağıdaki tabloda, verilerin AD Çoğaltma Durumu için nasıl toplandığı hakkında veri toplama yöntemleri ve diğer ayrıntılar gösterilmektedir.
 
-| platform | Doğrudan aracı | SCOM Aracısı | Azure Depolama | SCOM gerekli mi? | Yönetim grubu aracılığıyla gönderilen SCOM Aracısı verileri | toplama sıklığı |
+| platform | Doğrudan aracı | SCOM Aracısı | Azure Storage | SCOM gerekli mi? | Yönetim grubu aracılığıyla gönderilen SCOM Aracısı verileri | toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |Beş günde bir |
 
@@ -62,7 +62,7 @@ Aşağıdaki tabloda, verilerin AD Çoğaltma Durumu için nasıl toplandığı 
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-AD Çoğaltma Durumu kutucuğu Şu anda kaç tane çoğaltma hatası olduğunu gösterir. **Kritik çoğaltma hataları** , Active Directory ormanınızın [kaldırılma süresinin](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) %75 ' ının üzerinde veya üstünde olan hatalardır.
+AD Çoğaltma Durumu kutucuğu Şu anda kaç tane çoğaltma hatası olduğunu gösterir. **Kritik çoğaltma hataları** , Active Directory ormanınızın [kaldırılma süresinin](/previous-versions/windows/it-pro/windows-server-2003/cc784932(v=ws.10)) %75 ' ının üzerinde veya üstünde olan hatalardır.
 
 ![AD Çoğaltma Durumu kutucuğu](./media/ad-replication-status/oms-ad-replication-tile.png)
 

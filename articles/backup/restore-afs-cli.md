@@ -3,15 +3,16 @@ title: Azure CLı ile Azure dosya paylaşımlarını geri yükleme
 description: Azure CLı kullanarak kurtarma hizmetleri kasasındaki yedeklenen Azure dosya paylaşımlarını geri yükleme hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24939d020ba61c633eb382654a9260aa3729a271
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80757100"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513668"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLı ile Azure dosya paylaşımlarını geri yükleme
 
-Azure CLı, Azure kaynaklarını yönetmek için bir komut satırı deneyimi sağlar. Azure kaynaklarını kullanmak için özel otomasyon oluşturmaya yönelik harika bir araçtır. Bu makalede, Azure CLı kullanılarak [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yükleneceği açıklanmaktadır. Bu adımları [Azure PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-afs-automation) veya [Azure portalı](backup-afs.md) ile de gerçekleştirebilirsiniz.
+Azure CLı, Azure kaynaklarını yönetmek için bir komut satırı deneyimi sağlar. Azure kaynaklarını kullanmak için özel otomasyon oluşturmaya yönelik harika bir araçtır. Bu makalede, Azure CLı kullanılarak [Azure Backup](./backup-overview.md) tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yükleneceği açıklanmaktadır. Bu adımları [Azure PowerShell](./backup-azure-afs-automation.md) veya [Azure portalı](backup-afs.md) ile de gerçekleştirebilirsiniz.
 
 Bu makalenin sonuna kadar, Azure CLı ile aşağıdaki işlemleri gerçekleştirmeyi öğreneceksiniz:
 
@@ -24,9 +25,9 @@ Bu makalenin sonuna kadar, Azure CLı ile aşağıdaki işlemleri gerçekleştir
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yı yerel ortamda yüklemek ve kullanmak için Azure CLI sürüm 2.0.18 veya üzeri çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+CLI'yı yerel ortamda yüklemek ve kullanmak için Azure CLI sürüm 2.0.18 veya üzeri çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, zaten Azure Backup tarafından yedeklenen bir Azure dosya paylaşımınız olduğu varsayılır. Bir tane yoksa, dosya paylaşımınızla ilgili yedeklemeyi yapılandırmak için bkz. [CLI Ile Azure dosya paylaşımlarını](backup-afs-cli.md) yedekleme. Bu makalede aşağıdaki kaynakları kullanırsınız:
 
@@ -39,7 +40,7 @@ Bu makalede açıklanan farklı geri yükleme türlerini denemek için dosya pay
 
 ## <a name="fetch-recovery-points-for-the-azure-file-share"></a>Azure dosya paylaşımının kurtarma noktalarını getir
 
-Yedeklenen dosya paylaşımının tüm kurtarma noktalarını listelemek için [az Backup RecoveryPoint List](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) cmdlet 'ini kullanın.
+Yedeklenen dosya paylaşımının tüm kurtarma noktalarını listelemek için [az Backup RecoveryPoint List](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) cmdlet 'ini kullanın.
 
 Aşağıdaki örnek, *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımının kurtarma noktaları listesini getirir.
 
@@ -74,14 +75,14 @@ Name                Time                        Consistency
 
 Geri yükleme işlemlerini gerçekleştirmek için aşağıdaki parametreleri tanımlayın:
 
-* **--Container-Name**: yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) komutunu kullanın.
-* **--öğe-adı**: geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) komutunu kullanın.
+* **--Container-Name**: yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) komutunu kullanın.
+* **--öğe-adı**: geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) komutunu kullanın.
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>Tam bir paylaşımın özgün konumuna geri yükleme
 
 Özgün bir konuma geri yüklediğinizde, hedefle ilgili parametreleri belirtmeniz gerekmez. Yalnızca **çakışmayı çözümle** sağlanmalıdır.
 
-Aşağıdaki örnek, özgün konumdaki *azurefiles* dosya paylaşımının geri yüklenmesi için geri yükleme modu ile [az Backup Restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) cmdlet 'ini, *originallocation* olarak ayarlanmış şekilde kullanır. [Azure dosya paylaşımının kurtarma noktalarını getir](#fetch-recovery-points-for-the-azure-file-share)bölümünde elde ettiğiniz 932883129628959823 kurtarma noktasını kullanırsınız:
+Aşağıdaki örnek, özgün konumdaki *azurefiles* dosya paylaşımının geri yüklenmesi için geri yükleme modu ile [az Backup Restore restore-azurefileshare](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) cmdlet 'ini, *originallocation* olarak ayarlanmış şekilde kullanır. [Azure dosya paylaşımının kurtarma noktalarını getir](#fetch-recovery-points-for-the-azure-file-share)bölümünde elde ettiğiniz 932883129628959823 kurtarma noktasını kullanırsınız:
 
 ```azurecli-interactive
 az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
@@ -93,7 +94,7 @@ Name                                  ResourceGroup
 6a27cc23-9283-4310-9c27-dcfb81b7b4bb  azurefiles
 ```
 
-Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 ### <a name="restore-a-full-share-to-an-alternate-location"></a>Tam bir paylaşıma alternatif bir konuma geri yükleme
 
@@ -104,7 +105,7 @@ Bu seçeneği, bir dosya paylaşımının alternatif bir konuma geri yüklenmesi
 * **--target-Folder**: verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasör değerlerini boş bir dize olarak verin.
 * **--Resolve-Conflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip**kabul eder.
 
-Aşağıdaki örnek, *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımının *afaccount1* depolama hesabındaki *azurefiles1 "* dosya paylaşımında geri yüklenmesi için [az Backup Restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) WITH restore Mode with *alternatelocation* olarak kullanır.
+Aşağıdaki örnek, *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımının *afaccount1* depolama hesabındaki *azurefiles1 "* dosya paylaşımında geri yüklenmesi için [az Backup Restore restore-azurefileshare](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) WITH restore Mode with *alternatelocation* olarak kullanır.
 
 ```azurecli-interactive
 az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
@@ -116,7 +117,7 @@ Name                                  ResourceGroup
 babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 ```
 
-Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 ## <a name="item-level-recovery"></a>Öğe düzeyinde kurtarma
 
@@ -124,18 +125,18 @@ babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 
 Geri yükleme işlemlerini gerçekleştirmek için aşağıdaki parametreleri tanımlayın:
 
-* **--Container-Name**: yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) komutunu kullanın.
-* **--öğe-adı**: geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) komutunu kullanın.
+* **--Container-Name**: yedeklenen orijinal dosya paylaşımından barındıran depolama hesabının adı. Kapsayıcının adını veya kolay adını almak için [az Backup Container List](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) komutunu kullanın.
+* **--öğe-adı**: geri yükleme işlemi için kullanmak istediğiniz yedeklenen orijinal dosya paylaşımının adı. Yedeklenen öğenin adını veya kolay adını almak için [az Backup Item List](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) komutunu kullanın.
 
 Kurtarmak istediğiniz öğeler için aşağıdaki parametreleri belirtin:
 
-* **SourceFilePath**: dosya paylaşımında, bir dize olarak geri yüklenecek dosyanın mutlak yolu. Bu yol, [az Storage File Download](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-download) veya [az Storage File CLI Show](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-show) CLI komutlarında kullanılan yoldur.
+* **SourceFilePath**: dosya paylaşımında, bir dize olarak geri yüklenecek dosyanın mutlak yolu. Bu yol, [az Storage File Download](/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-download) veya [az Storage File CLI Show](/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-show) CLI komutlarında kullanılan yoldur.
 * **Sourcefiletype**: bir dizin veya dosya seçili olup olmadığını seçin. **Dizini** veya **dosyayı**kabul eder.
 * **ResolveConflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip**kabul eder.
 
 ### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Tek tek dosyaları veya klasörleri özgün konumlarına geri yükleme
 
-Belirli dosyaları veya klasörleri özgün konumlarına geri yüklemek için, geri yükleme modu ile [az Backup Restore restore-azurefiles](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) cmdlet 'ini, *originallocation* olarak ayarlayın.
+Belirli dosyaları veya klasörleri özgün konumlarına geri yüklemek için, geri yükleme modu ile [az Backup Restore restore-azurefiles](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) cmdlet 'ini, *originallocation* olarak ayarlayın.
 
 Aşağıdaki örnek, *RestoreTest.txt* dosyasını özgün konumuna geri yükler: *azurefiles* dosya paylaşma.
 
@@ -149,11 +150,11 @@ Name                                  ResourceGroup
 df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
-Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 ### <a name="restore-individual-files-or-folders-to-an-alternate-location"></a>Tek tek dosyaları veya klasörleri alternatif bir konuma geri yükleme
 
-Belirli dosya veya klasörleri alternatif bir konuma geri yüklemek için, [az Backup Restore restore-azurefiles](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) cmdlet 'ini restore modu *alternatelocation* olarak ayarlayın ve hedefle ilgili aşağıdaki parametreleri belirtin:
+Belirli dosya veya klasörleri alternatif bir konuma geri yüklemek için, [az Backup Restore restore-azurefiles](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) cmdlet 'ini restore modu *alternatelocation* olarak ayarlayın ve hedefle ilgili aşağıdaki parametreleri belirtin:
 
 * **--target-Storage-Account**: yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
 * **--target-File-Share**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşma.
@@ -171,7 +172,7 @@ Name                                  ResourceGroup
 df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
-Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Birden çok dosyayı veya klasörü orijinal veya alternatif konuma geri yükleme
 
@@ -191,7 +192,7 @@ Name                                          ResourceGroup
 649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
 ```
 
-Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Çıkışdaki **ad** özniteliği, geri yükleme işlemi için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 Birden çok öğeyi alternatif bir konuma geri yüklemek isterseniz, [tek tek dosyaları veya klasörleri farklı bir konuma geri yükle](#restore-individual-files-or-folders-to-an-alternate-location) bölümünde açıklandığı gibi hedefle ilgili parametreleri belirterek yukarıdaki komutu kullanın.
 

@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969556"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511135"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLı ile tamamen bir Linux sanal makinesi oluşturma
 Azure 'da hızlı bir şekilde bir sanal makine (VM) oluşturmak için, gerekli destekleyici kaynakları oluşturmak üzere varsayılan değerleri kullanan tek bir Azure CLı komutu kullanabilirsiniz. Sanal ağ, genel IP adresi ve ağ güvenlik grubu kuralları gibi kaynaklar otomatik olarak oluşturulur. Üretim kullanımıyla ortamınızda daha fazla denetim için bu kaynakları daha önce oluşturabilir ve ardından sanal makinelerinizi bunlara ekleyebilirsiniz. Bu makalede, bir sanal makine oluşturma ve tek tek destekleyen kaynakların her biri için size kılavuzluk eder.
@@ -549,13 +550,13 @@ Varsayılan NGıNX sitesini eylem bölümünde görmek için Web tarayıcınız�
 ![VM 'nizin varsayılan NGıNX sitesi](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Şablon olarak dışarı aktar
-Artık aynı parametrelerle veya bununla eşleşen bir üretim ortamıyla ek bir geliştirme ortamı oluşturmak isterseniz ne olur? Kaynak Yöneticisi, ortamınız için tüm parametreleri tanımlayan JSON şablonları kullanır. Bu JSON şablonuna başvurarak tüm ortamları oluşturursunuz. JSON [şablonlarını el ile](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oluşturabilir veya var olan bir ortamı, sızın için JSON şablonu oluşturmak üzere dışarı aktarabilirsiniz. Kaynak grubunuzu aşağıdaki gibi dışarı aktarmak için [az Group Export](/cli/azure/group) kullanın:
+Artık aynı parametrelerle veya bununla eşleşen bir üretim ortamıyla ek bir geliştirme ortamı oluşturmak isterseniz ne olur? Kaynak Yöneticisi, ortamınız için tüm parametreleri tanımlayan JSON şablonları kullanır. Bu JSON şablonuna başvurarak tüm ortamları oluşturursunuz. JSON [şablonlarını el ile](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) oluşturabilir veya var olan bir ortamı, sızın için JSON şablonu oluşturmak üzere dışarı aktarabilirsiniz. Kaynak grubunuzu aşağıdaki gibi dışarı aktarmak için [az Group Export](/cli/azure/group) kullanın:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Bu komut, `myResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. Komutuna parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz `--include-parameter-default-value` `az group export` . Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten [bir dosya parameters.jsoluşturun](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Bu komut, `myResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. Komutuna parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz `--include-parameter-default-value` `az group export` . Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten [bir dosya parameters.jsoluşturun](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) .
 
 Şablonunuzda bir ortam oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment) ' ı aşağıdaki gibi kullanın:
 
@@ -565,7 +566,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-[Şablonlardan dağıtma hakkında daha fazla](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bilgi edinmek isteyebilirsiniz. Ortamları artımlı olarak güncelleştirme, parametreler dosyasını kullanma ve şablonları tek bir depolama konumundan erişme hakkında bilgi edinin.
+[Şablonlardan dağıtma hakkında daha fazla](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json)bilgi edinmek isteyebilirsiniz. Ortamları artımlı olarak güncelleştirme, parametreler dosyasını kullanma ve şablonları tek bir depolama konumundan erişme hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık birden çok ağ bileşeni ve VM ile çalışmaya başlamaya hazırsınız. Bu örnek ortamı, burada tanıtılan temel bileşenleri kullanarak uygulamanızı oluşturmak için kullanabilirsiniz.

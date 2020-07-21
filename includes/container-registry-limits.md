@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -8,32 +8,33 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512631"
 ---
 | Kaynak | Temel | Standart | Premium |
 |---|---|---|---|
 | Dahil edilen depolama<sup>1</sup> (gib) | 10 | 100 | 500 |
 | Depolama sınırı (TiB) | 20| 20 | 20 |
 | Maksimum görüntü katmanı boyutu (GiB) | 200 | 200 | 200 |
-| Dakikada ReadOps<sup>2, 3</sup> | 1000 | 3,000 | 10,000 |
+| Dakikada ReadOps<sup>2, 3</sup> | 1.000 | 3.000 | 10,000 |
 | Dakikada WriteOps<sup>2, 4</sup> | 100 | 500 | 2.000 |
 | İndirme bant genişliği MBps<sup>2</sup> | 30 | 60 | 100 |
 | Karşıya yükleme bant genişliği MBps<sup>2</sup> | 10 | 20 | 50 |
 | Web Kancaları | 2 | 10 | 500 |
-| Coğrafi çoğaltma | YOK | YOK | [Destek][geo-replication] |
-| İçerik güveni | YOK | YOK | [Destek][content-trust] |
-| Özel uç noktalarla özel bağlantı | YOK | YOK | [Destek][plink] |
-| Hizmet uç noktası VNet erişimi | YOK | YOK | [Önizleme][vnet] |
-| Müşteri tarafından yönetilen anahtarlar | YOK | YOK | [Destek][cmk] |
-| Depo kapsamlı izinler | YOK | YOK | [Önizleme][token]|
-| &bull;Simgelerini | YOK | YOK | 20.000 |
-| &bull;Kapsam eşlemeleri | YOK | YOK | 20.000 |
-| &bull;Kapsam başına depo eşleme | YOK | YOK | 500 |
+| Coğrafi çoğaltma | Yok | Yok | [Desteklenir][geo-replication] |
+| İçerik güveni | Yok | Yok | [Desteklenir][content-trust] |
+| Özel uç noktalarla özel bağlantı | Yok | Yok | [Desteklenir][plink] |
+| &bull;Özel uç noktalar | Yok | Yok | 10 |
+| Hizmet uç noktası VNet erişimi | Yok | Yok | [Önizleme][vnet] |
+| Müşteri tarafından yönetilen anahtarlar | Yok | Yok | [Desteklenir][cmk] |
+| Depo kapsamlı izinler | Yok | Yok | [Önizleme][token]|
+| &bull;Simgelerini | Yok | Yok | 20.000 |
+| &bull;Kapsam eşlemeleri | Yok | Yok | 20.000 |
+| &bull;Kapsam başına depo eşleme | Yok | Yok | 500 |
 
 
 <sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama için, depolama sınırına kadar, GiB başına ek bir günlük ücret ödersiniz. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].

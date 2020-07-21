@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d8c7ce62f7c592c396fa1ea7a7f5e7dc7df2dc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517595"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure haritalar arama hizmetlerini kullanarak bir konum arayın
 
@@ -29,7 +29,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki adımları tamamlayabilmeniz için öncelikle bir Azure haritalar hesabı oluşturmanız ve hesap abonelik anahtarını eşleirsiniz. Hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
+Bu makaledeki adımları tamamlayabilmeniz için öncelikle bir Azure haritalar hesabı oluşturmanız ve hesap abonelik anahtarını eşleirsiniz. Hesap [oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 Bu makale, REST çağrıları oluşturmak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanır. Tercih ettiğiniz herhangi bir API geliştirme ortamını kullanabilirsiniz.
 
@@ -57,7 +57,7 @@ Geocode 'a yönelik bir adres kümesine sahipseniz, tek bir API çağrısında b
 
 | Anahtar | Değer | 
 |------------------|-------------------------| 
-| api-sürümü | 1.0 | 
+| api-sürümü | 1,0 | 
 | abonelik-anahtar | \<your Azure Maps key\> | 
 | sorgu | 400 geniş St, Seattle, WA 98109 | 
 
@@ -107,7 +107,7 @@ Azure Maps[ ,](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) K
 
     | Anahtar | Değer |
     |------------------|-------------------------|
-    | api-sürümü | 1.0 |
+    | api-sürümü | 1,0 |
     | abonelik-anahtar | \<your Azure Maps key\> |
     | sorgu | Pizza |
 
@@ -161,7 +161,7 @@ Geriye doğru coğrafi koda sahip bir koordinat konumları kümesine sahipseniz,
   
     | Anahtar | Değer |
     |------------------|-------------------------|
-    | api-sürümü | 1.0 |
+    | api-sürümü | 1,0 |
     | abonelik-anahtar | \<your Azure Maps key\> |
     | sorgu | 47.591180,-122,332700 |
   
@@ -219,7 +219,7 @@ Geriye doğru coğrafi koda sahip bir koordinat konumları kümesine sahipseniz,
   
     | Anahtar | Değer |
     |------------------|-------------------------|
-    | api-sürümü | 1.0 |
+    | api-sürümü | 1,0 |
     | abonelik-anahtar | \<your Azure Maps key\> |
     | sorgu | 47.591180,-122,332700 |
   

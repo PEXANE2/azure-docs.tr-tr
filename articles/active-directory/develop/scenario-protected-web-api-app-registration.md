@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868838"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518283"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
 
@@ -28,15 +29,15 @@ Bir uygulamayı kaydetmeye yönelik ortak adımlar için bkz. [hızlı başlang�
 
 Microsoft Identity platform uç noktası, v 1.0 belirteçlerini ve v 2.0 belirteçlerini verebilir. Bu belirteçler hakkında daha fazla bilgi için bkz. [erişim belirteçleri](access-tokens.md).
 
-Kabul edilen belirteç sürümü, uygulamanızı oluştururken seçtiğiniz **Desteklenen hesap türleri** değerine bağlıdır.
+API 'nizin kabul edebileceği belirteç sürümü, Azure portal Web API uygulaması kaydınızı oluştururken **Desteklenen hesap türleri** seçimine bağlıdır.
 
-- **Desteklenen hesap türlerinin** değeri **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com) hesaplardır**, kabul edilen belirteç sürümü v 2.0 ' dır.
-- Aksi takdirde, kabul edilen belirteç sürümü v 1.0 'dır.
+- **Desteklenen hesap türlerinin** değeri **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com) hesaplardır**, kabul edilen belirteç sürümü v 2.0 olmalıdır.
+- Aksi takdirde, kabul edilen belirteç sürümü v 1.0 olabilir.
 
 Uygulamayı oluşturduktan sonra, aşağıdaki adımları izleyerek kabul edilen belirteç sürümünü belirleyebilir veya değiştirebilirsiniz:
 
 1. Azure portal, uygulamanızı seçin ve ardından **bildirim**' ı seçin.
-1. Bildirimde **Accesstokenacceptedversion** özelliğini bulun. Özelliğin varsayılan değeri 2 ' dir.
+1. Bildirimde **Accesstokenacceptedversion** özelliğini bulun.
 1. Değer, Web API 'sinin kabul ettiği belirteç sürümünün Azure Active Directory (Azure AD) olduğunu belirtir.
     - Değer 2 ise, Web API 'SI v 2.0 belirteçlerini kabul eder.
     - Değer **null**ise, Web API 'si v 1.0 belirteçlerini kabul eder.
@@ -51,7 +52,7 @@ Kullanıcı etkileşimli olarak oturum açmamış olduğundan Web API 'Lerinin y
 
 ## <a name="exposed-api"></a>Sunulan API
 
-Web API 'Lerine özgü diğer ayarlar, sunulan API ve sunulan kapsamlardır.
+Web API 'Lerine özgü diğer ayarlar, sunulan API ve sunulan kapsamlar ya da uygulama rolleridir.
 
 ### <a name="application-id-uri-and-scopes"></a>Uygulama KIMLIĞI URI 'SI ve kapsamları
 
@@ -63,7 +64,7 @@ Uygulama kaydı sırasında şu parametreleri tanımlamanız gerekir:
 - Bir veya daha fazla kapsam
 - Bir veya daha fazla uygulama rolü
 
-Varsayılan olarak, uygulama kayıt portalı Kaynak URI 'sini kullanmanızı önerir `api://{clientId}` . Bu URI benzersizdir ancak insanlar okunabilir değil. URI 'yi değiştirirseniz, yeni değerin benzersiz olduğundan emin olun.
+Varsayılan olarak, uygulama kayıt portalı Kaynak URI 'sini kullanmanızı önerir `api://{clientId}` . Bu URI benzersizdir ancak insanlar okunabilir değil. URI 'yi değiştirirseniz, yeni değerin benzersiz olduğundan emin olun. Uygulama kayıt portalı, [yapılandırılmış bir yayımcı etki alanı](howto-configure-publisher-domain.md) kullanmanızı sağlayacaktır
 
 İstemci uygulamalarında kapsamlar, *temsilci izinleri* olarak görünür ve uygulama rolleri, Web API 'niz için *Uygulama izinleri* olarak gösterilir.
 
@@ -71,6 +72,8 @@ Kapsamlar, uygulamanızın kullanıcılarına sunulan izin penceresinde de gör�
 
 - Bir kullanıcı tarafından görüldüğü gibi.
 - Bir kiracı yöneticisi tarafından görüldüğü gibi, yönetici onayı de verebilir.
+
+Uygulama rolleri bir kullanıcı tarafından alınamaz (kendi adına Web API 'sini çağıran bir uygulama tarafından kullanıldığından). Bir kiracı yöneticisinin, uygulama rollerini açığa çıkaran Web API 'nizin istemci uygulamalarını onaylaması gerekir. Ayrıntılar için [yönetici onayı](v2-admin-consent.md) konusuna bakın
 
 ### <a name="exposing-delegated-permissions-scopes"></a>Temsilci izinleri gösterme (kapsamlar)
 
@@ -146,7 +149,7 @@ Bu artırılmış güvenliği eklemek için:
    >
    > Ancak, önceki bölümde açıklandığı gibi, Web API 'niz uygulamanın kiracı yöneticisi tarafından yetkilendirilen doğru rolün olduğunu her zaman doğrulayabilirler. API, erişim belirtecinin bir rol talebine sahip olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak bu doğrulamayı gerçekleştirir. Önceki JSON örneğinde, değeri `access_as_application` .
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

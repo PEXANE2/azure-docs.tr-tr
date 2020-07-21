@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891655"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511169"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla istenen durum yapılandırma uzantısı
 
-Bu makalede, [Istenen durum yapılandırması (DSC) uzantı işleyicisi](dsc-overview.md)için Azure Resource Manager şablonu açıklanmaktadır. Örneklerin birçoğu, Azure Otomasyonu ile birlikte çalışmak için **Registrationurl** 'Yi (dize olarak sunulur) ve **Registrationkey** ( [PSCredential](/dotnet/api/system.management.automation.pscredential)olarak sunulur) kullanır. Bu değerleri alma hakkında daha fazla bilgi için bkz. [Azure Otomasyonu durum yapılandırması ile yönetimi için makineleri ekleme-güvenli kayıt](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration).
+Bu makalede, [Istenen durum yapılandırması (DSC) uzantı işleyicisi](dsc-overview.md)için Azure Resource Manager şablonu açıklanmaktadır. Örneklerin birçoğu **Registrationurl** 'Yi (dize olarak sunulur) ve **Registrationkey** (Azure Otomasyonu ile birlikte eklemek Için bir [PSCredential](/dotnet/api/system.management.automation.pscredential) olarak sunulur) kullanır. Bu değerleri alma hakkında daha fazla bilgi için bkz. [Azure Otomasyonu durum yapılandırması ile yönetimi için makineleri ekleme-güvenli kayıt](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration).
 
 > [!NOTE]
 > Biraz farklı şema örnekleriyle karşılaşabilirsiniz. Þemada değişiklik, Ekim 2016 sürümünde oluştu. Ayrıntılar için bkz. [önceki bir biçimden güncelleştirme](#update-from-a-previous-format).
@@ -176,7 +177,7 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 
 ## <a name="details"></a>Ayrıntılar
 
-| Özellik adı | Tür | Açıklama |
+| Özellik adı | Tür | Description |
 | --- | --- | --- |
 | Settings. wmfVersion |string |Sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin **en son** olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler **4,0**, **5,0**, **5,1**ve **en son**değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en**sonuncusudur. |
 | settings.configacation. URL |string |DSC yapılandırması. zip dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, **protectedSettings.configurationUrlSasToken** özelliğini SAS belirtecinizin değerine ayarlayın. **settings.configuration. Script** veya **settings.configuration. Function** tanımlanırsa bu özellik gereklidir. Bu özellikler için herhangi bir değer verilmezse, uzantı konum Configuration Manager (LCM) meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
@@ -195,7 +196,7 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 Aşağıdaki değerler hakkında daha fazla bilgi için bkz. [yerel Configuration Manager temel ayarları](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Yalnızca aşağıdaki tabloda listelenen LCM özelliklerini yapılandırmak için DSC Uzantısı varsayılan yapılandırma komut dosyasını kullanabilirsiniz.
 
-| Özellik adı | Tür | Açıklama |
+| Özellik adı | Tür | Description |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Gerekli özellik. Bir düğüm için bir PowerShell kimlik bilgisi nesnesinin parolası olarak Azure Automation hizmetine kaydolmak üzere kullanılan anahtarı belirtir. Bu değer, Otomasyon hesabına yönelik **ListKeys 'i al** yöntemi kullanılarak otomatik olarak bulunabilir.  [Örneğe](#example-using-referenced-azure-automation-registration-values)bakın. |
 | settings.configurationArguments. RegistrationUrl |string |Gerekli özellik. Düğümün kaydolmaya çalıştığı Otomasyon uç noktasının URL 'sini belirtir. Bu değer, Otomasyon hesabında **başvuru** yöntemi kullanılarak otomatik olarak bulunabilir. |
@@ -203,9 +204,9 @@ Yalnızca aşağıdaki tabloda listelenen LCM özelliklerini yapılandırmak iç
 | settings.configurationArguments.ConfigurationMode |string |LCM modunu belirtir. Geçerli seçenekler **Applyonly**, **Applyandmonitor**ve **applyandadutocorrect**içerir.  Varsayılan değer **Applyandmonitor**' dır. |
 | settings.configurationArguments. RefreshFrequencyMins | Int32 | LCM 'nin güncelleştirmeler için Otomasyon hesabını ne sıklıkta kontrol etmek için deneme sayısını belirtir.  Varsayılan değer **30**' dur.  Minimum değer **15**' tir. |
 | settings.configurationArguments.ConfigUrationmodefısmins | Int32 | LCM 'nin geçerli yapılandırmayı ne sıklıkta doğrulayacağını belirtir. Varsayılan değer **15**' tir. Minimum değer **15**' tir. |
-| settings.configurationArguments. Rebootnodeifgerekiyordu | boole | Bir DSC işlemi istediğinde bir düğümün otomatik olarak yeniden başlatılıp başlatılmayacağını belirtir. Varsayılan değer **false**'dur. |
+| settings.configurationArguments. Rebootnodeifgerekiyordu | boolean | Bir DSC işlemi istediğinde bir düğümün otomatik olarak yeniden başlatılıp başlatılmayacağını belirtir. Varsayılan değer **false**'dur. |
 | settings.configurationArguments. ActionAfterReboot | string | Bir yapılandırma uygulanırken yeniden başlatmanın ardından ne olacağını belirtir. Geçerli seçenekler **devam yapılandırması** ve **durma yapılandırması**. Varsayılan değer **devam yapılandırması**' dır. |
-| settings.configurationArguments. AllowModuleOverwrite | boole | LCM 'nin düğümdeki mevcut modüllerin üzerine yazmayacağını belirtir. Varsayılan değer **false**'dur. |
+| settings.configurationArguments. AllowModuleOverwrite | boolean | LCM 'nin düğümdeki mevcut modüllerin üzerine yazmayacağını belirtir. Varsayılan değer **false**'dur. |
 
 ## <a name="settings-vs-protectedsettings"></a>ayarlar ve protectedSettings karşılaştırması
 

@@ -3,16 +3,16 @@ title: Azure Data Box kullanarak çevrimdışı yedekleme
 description: MARS aracısından bir kurtarma hizmetleri kasasına çevrimdışı olan büyük ilk yedekleme verilerini temel alarak Azure Data Box nasıl kullanabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160964"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513702"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup
 
-Büyük ilk Microsoft Azure Kurtarma Hizmetleri (MARS) yedeklemelerinizi bir kurtarma hizmetleri kasasına çevrimdışı olarak (ağ kullanmadan) temel almak için [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) kullanabilirsiniz. Bu işlem, büyük miktarlarda yedekleme verilerinin yüksek gecikmeli bir ağ üzerinden çevrimiçi olarak harcanmasına neden olacak zaman ve ağ bant genişliğini kaydeder. Bu geliştirme şu anda önizleme aşamasındadır. Azure Data Box tabanlı çevrimdışı yedekleme [, Azure içeri/dışarı aktarma hizmeti 'ni temel alan çevrimdışı yedekleme](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)üzerinde iki ayrı avantaj sağlar:
+Büyük ilk Microsoft Azure Kurtarma Hizmetleri (MARS) yedeklemelerinizi bir kurtarma hizmetleri kasasına çevrimdışı olarak (ağ kullanmadan) temel almak için [Azure Data Box](../databox/data-box-overview.md) kullanabilirsiniz. Bu işlem, büyük miktarlarda yedekleme verilerinin yüksek gecikmeli bir ağ üzerinden çevrimiçi olarak harcanmasına neden olacak zaman ve ağ bant genişliğini kaydeder. Bu geliştirme şu anda önizleme aşamasındadır. Azure Data Box tabanlı çevrimdışı yedekleme [, Azure içeri/dışarı aktarma hizmeti 'ni temel alan çevrimdışı yedekleme](./backup-azure-backup-import-export.md)üzerinde iki ayrı avantaj sağlar:
 
 - Azure ile uyumlu disklerinizi ve bağlayıcılarınızı temin etmeniz gerekmez. Azure Data Box seçili [Data Box SKU 'su](https://azure.microsoft.com/services/databox/data/)ile ilişkili diskleri sevk eder.
 - Azure Backup (MARS Aracısı), Azure Data Box desteklenen SKU 'Lara doğrudan yedekleme verileri yazabilir. Bu özellik, ilk yedekleme verileriniz için bir hazırlama konumu sağlamanıza yönelik gereksinimi ortadan kaldırır. Ayrıca, bu verileri disklere göre biçimlendirmek ve kopyalamak için yardımcı programlara gerek kalmaz.
@@ -25,7 +25,7 @@ Bu makalede, büyük ilk yedekleme verilerini MARS aracısından bir kurtarma hi
 
 Azure Data Box kullanarak MARS aracısından verileri temel alan işlem, aşağıdaki Windows SKU 'Larında desteklenir.
 
-| **İşletim Sistemi**                                 | **SKU**                                                      |
+| **İşletim sistemi**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **İş İstasyonu**                        |                                                              |
 | Windows 10 64 bit                     | Enterprise, Pro, Home                                       |
@@ -47,8 +47,8 @@ Azure Data Box kullanarak MARS aracısından verileri temel alan işlem, aşağ�
 
 | Yedekleme veri boyutu (MARS tarafından sıkıştırma sonrası) * sunucu başına | Desteklenen Azure Data Box SKU 'SU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7,2 TB                                                    | [Azure Data Box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| >7,2 TB ve <= 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| <= 7,2 TB                                                    | [Azure Data Box disk](../databox/data-box-disk-overview.md) |
+| >7,2 TB ve <= 80 TB * *                                      | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 * Tipik sıkıştırma ücretleri %10 ile %20 arasında değişir. <br>
 * * Tek bir MARS sunucusu için 80 TB 'den fazla ilk yedekleme verisi olmasını bekleliyorsanız, iletişim kurun [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
@@ -113,7 +113,7 @@ Azure PowerShell, MSI dosyası kullanılarak da yüklenmiş olabilir. Kaldırmak
 
 ### <a name="order-and-receive-the-data-box-device"></a>Data Box cihazı sıralama ve alma
 
-MARS Aracısı 'nı kullanarak çevrimdışı yedeklemeyi tetiklemeniz için, MARS ve Azure Data Box kullanan çevrimdışı yedekleme işlemi, Data Box cihazların teslim edilmiş durumda olmasını gerektirir. Gereksiniminize yönelik en uygun SKU 'YU sıralamak için bkz. [yedekleme veri boyutu ve desteklenen Data Box SKU 'lar](#backup-data-size-and-supported-data-box-skus). Öğreticideki adımları izleyin: Data Box cihazlarınızı sıralamak ve almak için [Azure Data Box diski sıralama](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) .
+MARS Aracısı 'nı kullanarak çevrimdışı yedeklemeyi tetiklemeniz için, MARS ve Azure Data Box kullanan çevrimdışı yedekleme işlemi, Data Box cihazların teslim edilmiş durumda olmasını gerektirir. Gereksiniminize yönelik en uygun SKU 'YU sıralamak için bkz. [yedekleme veri boyutu ve desteklenen Data Box SKU 'lar](#backup-data-size-and-supported-data-box-skus). Öğreticideki adımları izleyin: Data Box cihazlarınızı sıralamak ve almak için [Azure Data Box diski sıralama](../databox/data-box-disk-deploy-ordered.md) .
 
 > [!IMPORTANT]
 > **Hesap türü**Için *blobstorage* ' ı seçmeyin. MARS Aracısı, *Blobstorage* seçildiğinde desteklenmeyen sayfa bloblarını destekleyen bir hesap gerektirir. Azure Data Box işiniz için hedef depolama hesabı oluşturduğunuzda, **Hesap türü** olarak **Storage v2 'yi (genel amaçlı v2)** seçin.
@@ -124,7 +124,7 @@ MARS Aracısı 'nı kullanarak çevrimdışı yedeklemeyi tetiklemeniz için, MA
 
 1. MARS aracısının önceki tüm yüklemelerini kaldırdığınızdan emin olun.
 1. [Bu Web sitesinden](https://aka.ms/azurebackup_agent)en son Mars aracısını indirin.
-1. *MARSAgentInstaller.exe*çalıştırın ve yalnızca yedeklemelerin depolanmasını Istediğiniz kurtarma hizmetleri kasasında [aracıyı yüklemek ve kaydetmek](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) için *yalnızca* adımları uygulayın.
+1. *MARSAgentInstaller.exe*çalıştırın ve yalnızca yedeklemelerin depolanmasını Istediğiniz kurtarma hizmetleri kasasında [aracıyı yüklemek ve kaydetmek](./install-mars-agent.md#install-and-register-the-agent) için *yalnızca* adımları uygulayın.
 
    > [!NOTE]
    > Kurtarma Hizmetleri Kasası, Azure Data Box işle aynı abonelikte olmalıdır.
@@ -137,14 +137,14 @@ Sipariş ettiğiniz Azure Data Box SKU 'suna bağlı olarak, aşağıdaki uygun 
 
 ### <a name="set-up-azure-data-box-disks"></a>Azure Data Box diskleri ayarlama
 
-Bir veya daha fazla Azure Data Box disk sipariş ederseniz (her biri 8 TB 'a kadar), [Data Box diskinizin paketini açmak, bağlanmak ve kilidini açmak](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up)için burada bahsedilen adımları izleyin.
+Bir veya daha fazla Azure Data Box disk sipariş ederseniz (her biri 8 TB 'a kadar), [Data Box diskinizin paketini açmak, bağlanmak ve kilidini açmak](../databox/data-box-disk-deploy-set-up.md)için burada bahsedilen adımları izleyin.
 
 >[!NOTE]
 >MARS aracısına sahip sunucu bir USB bağlantı noktasına sahip olmayabilir. Bu durumda, Azure Data Box diskinizi başka bir sunucuya veya istemciye bağlayabilirsiniz ve cihazın kökünü bir ağ paylaşma olarak kullanıma sunabilirsiniz.
 
 ### <a name="set-up-azure-data-box"></a>Azure Data Box ayarlama
 
-Bir Azure Data Box örneği (100 TB 'a kadar) sipariş ederseniz, [Data Box örneğinizi ayarlamak için](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)buradaki adımları izleyin.
+Bir Azure Data Box örneği (100 TB 'a kadar) sipariş ederseniz, [Data Box örneğinizi ayarlamak için](../databox/data-box-deploy-set-up.md)buradaki adımları izleyin.
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Azure Data Box örneğinizi yerel bir sistem olarak bağlama
 
@@ -160,8 +160,8 @@ NFS protokolünü kullanarak Data Box cihazınızı yerel bir sistem olarak bağ
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   Önceki komutun sonucu olarak açılan komut penceresi yerel sistem bağlamında olur. Azure Sayfa Blobu paylaşımından bir ağ sürücüsü olarak Windows Server 'a bağlama adımlarını yürütmek için bu komut penceresini kullanın.
-1. Sunucunuzu bir Data Box cihazına NFS aracılığıyla bağlamak için [Data Box bağlanma](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) bölümündeki adımları izleyin. Azure sayfa Blobları payını bağlamak için yerel sistem komut isteminde aşağıdaki komutu çalıştırın.
+   Önceki komut nedeniyle açılan komut penceresi yerel sistem bağlamında. Azure Sayfa Blobu paylaşımından bir ağ sürücüsü olarak Windows Server 'a bağlama adımlarını yürütmek için bu komut penceresini kullanın.
+1. Sunucunuzu bir Data Box cihazına NFS aracılığıyla bağlamak için [Data Box bağlanma](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) bölümündeki adımları izleyin. Azure sayfa Blobları payını bağlamak için yerel sistem komut isteminde aşağıdaki komutu çalıştırın.
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
@@ -238,9 +238,9 @@ Verilerin yedeklenmesi tamamlandıktan sonra, MARS aracısında buna benzeyen bi
 
 Bu bölümde, verilerin yedeklenmesi Azure Data Box Disk başarılı olduktan sonra gerçekleştirilecek adımlar açıklanmaktadır.
 
-- [Azure Data Box diskini Azure 'a göndermek](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)için bu makaledeki adımları izleyin. Azure Data Box 100-TB bir cihaz kullandıysanız, [Azure Data Box cihazını Azure 'a](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)göndermek için aşağıdaki adımları izleyin.
+- [Azure Data Box diskini Azure 'a göndermek](../databox/data-box-disk-deploy-picked-up.md)için bu makaledeki adımları izleyin. Azure Data Box 100-TB bir cihaz kullandıysanız, [Azure Data Box cihazını Azure 'a](../databox/data-box-deploy-picked-up.md)göndermek için aşağıdaki adımları izleyin.
 
-- Azure portal [Data Box Işini izleyin](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) . Azure Data Box işi tamamlandıktan sonra, MARS Aracısı verileri depolama hesabından otomatik olarak kurtarma hizmetleri kasasından bir sonraki zamanlanmış yedekleme sırasında taşımalıdır. Ardından, bir kurtarma noktası başarıyla oluşturulduysa yedekleme işini *Iş tamamlandı* olarak işaretler.
+- Azure portal [Data Box Işini izleyin](../databox/data-box-disk-deploy-upload-verify.md) . Azure Data Box işi tamamlandıktan sonra, MARS Aracısı verileri depolama hesabından otomatik olarak kurtarma hizmetleri kasasından bir sonraki zamanlanmış yedekleme sırasında taşımalıdır. Ardından, bir kurtarma noktası başarıyla oluşturulduysa yedekleme işini *Iş tamamlandı* olarak işaretler.
 
     >[!NOTE]
     >MARS Aracısı, yedeklemeleri ilke oluşturma sırasında zamanlandığı zamanlarda tetikler. Bu işler, iş tamamlanana kadar "Azure Data Box işin tamamlanmasını bekleniyor" bayrağı.
@@ -249,7 +249,7 @@ Bu bölümde, verilerin yedeklenmesi Azure Data Box Disk başarılı olduktan so
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Microsoft Azure Backup (MAB) Aracısı kiracınızda sizin için bir Azure Active Directory (Azure AD) uygulaması oluşturur. Bu uygulama, çevrimdışı bir dengeli dağıtım ilkesi yapılandırdığınızda oluşturulup karşıya yüklenen kimlik doğrulaması için bir sertifika gerektirir. Sertifikayı oluşturmak ve Azure AD uygulamasına yüklemek için Azure PowerShell kullanırız.
+Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı kiracınızda sizin için bir Azure Active Directory (Azure AD) uygulaması oluşturur. Bu uygulama, çevrimdışı bir dengeli dağıtım ilkesi yapılandırdığınızda oluşturulup karşıya yüklenen kimlik doğrulaması için bir sertifika gerektirir. Sertifikayı oluşturmak ve Azure AD uygulamasına yüklemek için Azure PowerShell kullanırız.
 
 ### <a name="problem"></a>Sorun
 

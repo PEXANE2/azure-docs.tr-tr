@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628285"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519346"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -45,7 +46,7 @@ Güvenlik Merkezi 'nin dosya bütünlüğü Izleme, Windows dosyaları, Windows 
 Güvenlik Merkezi, içinde FIM 'yi kolayca etkinleştirebilmeniz için varlıkların izlenmesini öneriyor. Ayrıca, izlemek üzere kendi FIM ilkelerinizi veya varlıklarınızı tanımlayabilirsiniz. Bu izlenecek yol size nasıl yapılacağını gösterir.
 
 > [!NOTE]
-> Dosya bütünlüğü Izleme (FIM) özelliği Windows ve Linux bilgisayarları ve VM 'Leri için çalışarak, güvenlik merkezi 'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md). FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .
+> Dosya bütünlüğü Izleme (FIM) özelliği, Windows ve Linux bilgisayarları ve VM 'Leri için çalışarak Güvenlik Merkezi 'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md). FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .
 
 FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değişiklik İzleme çözümünü kullanır. Dosya bütünlüğü Izleme etkinleştirildiğinde, **çözüm**türünde bir **değişiklik izleme** kaynağınız olur. Veri toplama sıklığı ayrıntılarını, Azure Değişiklik İzleme için [Değişiklik izleme verileri toplama ayrıntıları](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) konusunda bulabilirsiniz.
 
@@ -107,7 +108,7 @@ Her çalışma alanı için aşağıdaki bilgiler sağlanır:
 Bir çalışma alanı için aşağıdaki düğmeler de görüntülenebilir:
 
 - ![Simgeyi etkinleştir][3] FIM 'nin çalışma alanı için etkinleştirilmediğini belirtir. Çalışma alanının seçilmesi, çalışma alanının altındaki tüm makinelerde FIM 'yi etkinleştirmenizi sağlar.
-- ![Planı Yükselt simgesi ][4] , çalışma alanının veya aboneliğin Güvenlik Merkezi 'Nin standart katmanı altında çalışmadığını gösterir. FIM özelliğini kullanmak için aboneliğinizin standart çalıştırması gerekir.  Çalışma alanının seçilmesi standart sürümüne yükseltmenizi sağlar. Standart katman ve yükseltme hakkında daha fazla bilgi edinmek için bkz. [Güvenlik Merkezi 'Nin standart katmanını gelişmiş güvenlik Için yükseltme](security-center-pricing.md).
+- ![Planı Yükselt simgesi ][4] , çalışma alanının veya aboneliğin Güvenlik Merkezi 'nin standart katmanı altında çalışmadığını gösterir. FIM özelliğini kullanmak için aboneliğinizin standart çalıştırması gerekir.  Çalışma alanının seçilmesi standart sürümüne yükseltmenizi sağlar. Standart katman ve yükseltme hakkında daha fazla bilgi edinmek için bkz. [Güvenlik Merkezi 'nin standart katmanını gelişmiş güvenlik Için yükseltme](security-center-pricing.md).
 - Boş (düğme yok), FIM 'nin çalışma alanında zaten etkinleştirildiği anlamına gelir.
 
 **Dosya bütünlüğü izleme**altında, söz konusu çalışma alanı için FIM 'yi etkinleştirmek üzere bir çalışma alanı seçebilir, bu çalışma alanı Için dosya bütünlüğü izleme panosunu görüntüleyebilir veya çalışma alanını standart olarak [yükseltebilirsiniz](security-center-pricing.md) .
@@ -194,7 +195,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![İzlenecek yeni bir öğe ekleyin][14]
 
-3. **Ekle**'yi seçin. **Değişiklik izleme Için Ekle** açılır.
+3. **Add (Ekle)** seçeneğini belirleyin. **Değişiklik izleme Için Ekle** açılır.
 
    ![İstenen bilgileri girin][15]
 
@@ -218,7 +219,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![Etkin ayarını false olarak ayarla][19]
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>Joker karakterler kullanılarak klasör ve yol izleme
 

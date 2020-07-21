@@ -7,13 +7,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79284921"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511951"
 ---
-# <a name="use-ip-filters"></a>IP filtrelerini kullanma
+# <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS IP bağlantı filtrelerini kullanma
 
 Güvenlik, tüm IoT çözümlerinin önemli bir yönüdür. Bazen, güvenlik yapılandırmanızın bir parçası olarak cihazların bağlanabileceği IP adreslerini açıkça belirtmeniz gerekir. Azure IoT Hub cihaz sağlama hizmeti 'nin (DPS) *IP filtresi* özelliği, belirli IPv4 adreslerinden gelen trafiği reddetme veya kabul etme kurallarını yapılandırmanızı sağlar.
 

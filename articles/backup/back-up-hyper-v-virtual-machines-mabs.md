@@ -3,12 +3,12 @@ title: MABS ile Hyper-V sanal makinelerini yedekleme
 description: Bu makale, Microsoft Azure Backup sunucusu (MABS) kullanarak sanal makinelerin yedeklenmesi ve kurtarılması için prosedürleri içerir.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514568"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -155,4 +155,4 @@ Yedeklenen bir sanal makineyi kurtardığınızda, sanal makineyi ve özgül kur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Backup Sunucusu’ndan veri kurtarma](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)
+[Azure Backup Sunucusu’ndan veri kurtarma](./backup-azure-alternate-dpm-server.md)

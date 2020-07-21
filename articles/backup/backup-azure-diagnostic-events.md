@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 description: Bu makalede, Azure Backup için eski ve yeni tanılama olaylarının nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: be99b73a4dac12c9e70e4cb8a85f34b97f5c42d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7dbc6d97cd923c75a25eadccef2c2292b10deb41
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854817"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514160"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 
@@ -29,15 +29,15 @@ Azure Backup aşağıdaki tanılama olaylarını sağlar. Her olay, belirli bir 
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-[Eski Event](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) AzureBackupReport kullanıyorsanız, en erken yukarıdaki olayları kullanmaya geçmeniz önerilir.
+[Eski Event](#legacy-event) AzureBackupReport kullanıyorsanız, en erken yukarıdaki olayları kullanmaya geçmeniz önerilir.
 
-Daha fazla bilgi için bkz. [Azure Backup tanılama olayları Için veri modeli](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model).
+Daha fazla bilgi için bkz. [Azure Backup tanılama olayları Için veri modeli](./backup-azure-reports-data-model.md).
 
 Bu olayların verileri bir depolama hesabına, bir Log Analytics çalışma alanına veya bir olay hub 'ına gönderilebilir. Bu verileri bir Log Analytics çalışma alanına gönderiyorsanız, **Tanılama ayarları** ekranında **kaynağa özgü** geçişi seçin. Daha fazla bilgi için aşağıdaki bölümlere bakın.
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>Tanılama ayarlarını Log Analytics kullanma
 
-Artık, yedekleme için adanmış Log Analytics tablolarına kasa Tanılama verileri göndermek için Azure Backup kullanabilirsiniz. Bu tablolar [kaynağa özgü tablolar](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)olarak adlandırılır.
+Artık, yedekleme için adanmış Log Analytics tablolarına kasa Tanılama verileri göndermek için Azure Backup kullanabilirsiniz. Bu tablolar [kaynağa özgü tablolar](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)olarak adlandırılır.
 
 Kasa tanılama verilerinizi Log Analytics göndermek için:
 
@@ -45,30 +45,30 @@ Kasa tanılama verilerinizi Log Analytics göndermek için:
 1. Tanılama ayarına bir ad verin.
 1. **Log Analytics gönder** onay kutusunu seçin ve bir Log Analytics çalışma alanı seçin.
 1. Geçiş sırasında **kaynak** ' ı seçin ve aşağıdaki altı olayı seçin: **Coreazurebackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**ve **AddonAzureBackupProtectedInstance**.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
    ![Kaynağa özgü mod](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
 Veriler Log Analytics çalışma alanına akar, bu olayların her biri için ayrılmış tablolar çalışma alanınızda oluşturulur. Bu tablolardan herhangi birini doğrudan sorgulayabilirsiniz. Gerekirse, bu tablolar arasında birleşimler veya birleşimler da yapabilirsiniz.
 
 > [!IMPORTANT]
-> CoreAzureBackup, AddonAzureBackupJobs, AddonAzureBackupAlerts, AddonAzureBackupPolicy, AddonAzureBackupStorage ve AddonAzureBackupProtectedInstance altı olay *yalnızca* [yedekleme raporlarında](https://docs.microsoft.com/azure/backup/configure-reports)kaynağa özgü modda desteklenir. *Azure tanılama modunda bu altı olay için veri göndermeye çalışırsanız, yedekleme raporlarında hiçbir veri görünmez.*
+> CoreAzureBackup, AddonAzureBackupJobs, AddonAzureBackupAlerts, AddonAzureBackupPolicy, AddonAzureBackupStorage ve AddonAzureBackupProtectedInstance altı olay *yalnızca* [yedekleme raporlarında](./configure-reports.md)kaynağa özgü modda desteklenir. *Azure tanılama modunda bu altı olay için veri göndermeye çalışırsanız, yedekleme raporlarında hiçbir veri görünmez.*
 
 ## <a name="legacy-event"></a>Eski olay
 
 Geleneksel olarak, bir kasaya yönelik yedeklemeyle ilgili tüm Tanılama verileri AzureBackupReport adlı tek bir olayda yer alır. Burada açıklanan altı olay, AzureBackupReport ' de yer alan tüm verilerin bir ayrıştırma bölümünde verilmiştir.
 
-Şu anda, kullanıcıların bu olay üzerinde var olan özel sorgulara sahip olduğu durumlarda geriye dönük uyumluluk için AzureBackupReport olayını desteklemeye devam ediyoruz. Özel günlük uyarıları ve özel görselleştirmeler örnekleri aşağıda verilmiştir. * [Yeni olaylara](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) mümkün olduğunca erken geçiş yapmanızı öneririz*. Yeni olaylar:
+Şu anda, kullanıcıların bu olay üzerinde var olan özel sorgulara sahip olduğu durumlarda geriye dönük uyumluluk için AzureBackupReport olayını desteklemeye devam ediyoruz. Özel günlük uyarıları ve özel görselleştirmeler örnekleri aşağıda verilmiştir. * [Yeni olaylara](#diagnostics-events-available-for-azure-backup-users) mümkün olduğunca erken geçiş yapmanızı öneririz*. Yeni olaylar:
 
 * Günlük sorgularında verilerin daha kolay çalışmasını sağlayın.
 * Şemaların ve yapısının daha iyi keşfedilmesini sağlayın.
 * Alma gecikmesi ve sorgu süreleriyle performansı geliştirir.
 
-*Azure tanılama modundaki eski olay, sonunda kullanım dışı olacaktır. Yeni olayların seçilmesi, daha sonraki bir tarihte karmaşık geçişlere karşı kaçınmanıza yardımcı olur*. Log Analytics kullanan [raporlama çözümünüz](https://docs.microsoft.com/azure/backup/configure-reports) , eski olaydaki verileri desteklemeye da durdurur.
+*Azure tanılama modundaki eski olay, sonunda kullanım dışı olacaktır. Yeni olayların seçilmesi, daha sonraki bir tarihte karmaşık geçişlere karşı kaçınmanıza yardımcı olur*. Log Analytics kullanan [raporlama çözümünüz](./configure-reports.md) , eski olaydaki verileri desteklemeye da durdurur.
 
 ### <a name="steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace"></a>Log Analytics çalışma alanı için yeni tanılama ayarlarına geçme adımları
 
-1. Eski olayı ve ait oldukları abonelikleri kullanarak Log Analytics çalışma alanlarına hangi kasaların veri gönderdiğini belirler. Bu kasaları ve abonelikleri belirlemek için aşağıdaki çalışma alanlarını çalıştırın.
+1. Eski olayı ve ait oldukları abonelikleri kullanarak Log Analytics çalışma alanlarına hangi kasaların veri gönderdiğini belirler. Bu kasaları ve abonelikleri belirlemek için çalışma alanlarınızın her birinde aşağıdaki sorguyu çalıştırın.
 
     ````Kusto
     let RangeStart = startofday(ago(3d));
@@ -84,7 +84,7 @@ Geleneksel olarak, bir kasaya yönelik yedeklemeyle ilgili tüm Tanılama verile
         | project ResourceId, Category};
         // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
     let CombinedVaultTable = (){
-        CombinedTable | union isfuzzy = true
+        union isfuzzy = true
         (VaultUnderAzureDiagnostics() ),
         (VaultUnderResourceSpecific() )
         | distinct ResourceId, Category};
@@ -96,7 +96,11 @@ Geleneksel olarak, bir kasaya yönelik yedeklemeyle ilgili tüm Tanılama verile
     | project ResourceId, SubscriptionId, VaultName
     ````
 
-1. Belirtilen kapsamdaki tüm kasalara yönelik yeni bir tanılama ayarı eklemek için Azure Backup [yerleşik Azure ilke tanımlarını](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) kullanın. Bu ilke, bir tanılama ayarı olmayan ya da yalnızca eski bir tanılama ayarına sahip olmayan kasalara yeni bir tanılama ayarı ekler. Bu ilke, bir kerede bir abonelik veya kaynak grubuna atanabilir. İlkenin atandığı her abonelik için sahip erişiminizin olması gerekir.
+    Aşağıda, çalışma alanlarından birinde çalıştırılan sorgunun bir ekran görüntüsü verilmiştir:
+
+    ![Çalışma alanı sorgusu](./media/backup-azure-diagnostics-events/workspace-query.png)
+
+2. Belirtilen kapsamdaki tüm kasalara yönelik yeni bir tanılama ayarı eklemek için Azure Backup [yerleşik Azure ilke tanımlarını](./azure-policy-configure-diagnostics.md) kullanın. Bu ilke, bir tanılama ayarı olmayan ya da yalnızca eski bir tanılama ayarına sahip olmayan kasalara yeni bir tanılama ayarı ekler. Bu ilke, bir kerede bir abonelik veya kaynak grubuna atanabilir. İlkenin atandığı her abonelik için sahip erişiminizin olması gerekir.
 
 Yeni tablolardaki verileri kullanmak üzere tüm özel sorgularınızı geçirene kadar, AzureBackupReport için ayrı tanılama ayarlarına ve altı yeni olaya sahip olmak isteyebilirsiniz. Aşağıdaki görüntüde iki tanılama ayarı olan bir kasaya ait bir örnek gösterilmektedir. **Setting1**adlı ilk ayar, bir AzureBackupReport olayının verilerini Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir. **Setting2**adlı ikinci ayar, altı yeni Azure Backup olayının verilerini kaynağa özgü moddaki bir Log Analytics çalışma alanına gönderir.
 
@@ -114,7 +118,7 @@ Azure Backup ve Azure Site Recovery olaylar aynı kurtarma hizmetleri kasasında
 
 ![Site Recovery olaylar](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 
-Özetlersek:
+Özetlemek gerekirse:
 
 * Azure Tanılama ile ayarlanmış Log Analytics tanılama zaten varsa ve üzerine özel sorgular yazdıysanız, sorgularınızı yeni olaylardan verileri kullanmak üzere geçirene kadar bu ayarı *değişmeden* tutun.
 * Önerdiğimiz gibi yeni tablolara da eklemek istiyorsanız, **Yeni** bir tanılama ayarı oluşturun, **kaynağa özel**' i seçin ve altı yeni olayı seçin.
@@ -126,4 +130,4 @@ Aşağıdaki görüntüde, bir kasa için üç tanılama ayarı olan bir kullan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Tanılama olayları için Log Analytics veri modelini öğrenin](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+[Tanılama olayları için Log Analytics veri modelini öğrenin](./backup-azure-reports-data-model.md)

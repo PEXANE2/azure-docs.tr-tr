@@ -3,11 +3,12 @@ title: Azure Application Insights 'de akıllı algılama | Microsoft Docs
 description: Application Insights, uygulama telemetrinizin otomatik derin analizini yapar ve olası sorunlar hakkında sizi uyarır.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700846"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516881"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights'da Akıllı Algılama
  Akıllı algılama, Web uygulamanızdaki olası performans sorunlarını ve hata bozuklumlarını otomatik olarak uyarır. Uygulamanızın [Application Insights](../../azure-monitor/app/app-insights-overview.md)için gönderdiği Telemetriyi proaktif analizini gerçekleştirir. Hata hızlarındaki ani bir artış veya istemci ya da sunucu performansındaki anormal desenler varsa, bir uyarı alırsınız. Bu özelliğin yapılandırması yok. Uygulamanız yeterli telemetri gönderdiğinde çalışır.
@@ -33,7 +34,7 @@ Akıllı algılama, şu gibi çeşitli sorunları algılar ve bildirir:
 
 * [Akıllı algılama-hata bozuklukları](../../azure-monitor/app/proactive-failure-diagnostics.md). Makinenizde, yük ve diğer faktörlerle ilişkili, başarısız isteklerin beklenen oranını ayarlamak için makine öğrenimi kullanıyoruz. Hata oranı beklenen zarfın dışında kaldığında bir uyarı göndereceğiz.
 * [Akıllı algılama-performans Bozuklulıkları](../../azure-monitor/app/proactive-performance-diagnostics.md). Bir işlemin veya bağımlılık süresinin yanıt süresinin geçmiş taban çizgisine kıyasla veya yanıt süresi ya da sayfa yükleme sırasında anormal bir model tanımlıyoruz bildirimleri alırsınız.   
-* Genel azalmaları ve sorunlar, [izleme performansında azalma](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [bellek sızıntısı](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [olağandışı artış, özel durum hacminde](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) ve [güvenlik önleme desenlerinde](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* Genel azalmaları ve sorunlar, [izleme performansında azalma](./proactive-trace-severity.md), [bellek sızıntısı](./proactive-potential-memory-leak.md), [olağandışı artış, özel durum hacminde](./proactive-exception-volume.md) ve [güvenlik önleme desenlerinde](./proactive-application-security-detection-pack.md).
 
 (Her bildirimdeki yardım bağlantıları sizi ilgili makalelere götürür.)
 
@@ -43,7 +44,7 @@ _Önizleme_olarak işaretlenen kurallar dışında tüm akıllı algılama kural
 
 Belirli bir akıllı algılama kuralı için e-posta bildirimlerini yapılandırmak, akıllı algılama **ayarları** dikey penceresi açılarak ve kural **düzenleme** dikey penceresini açacak olan kuralı seçerek yapılabilir.
 
-Alternatif olarak, Azure Resource Manager şablonları kullanarak yapılandırmayı değiştirebilirsiniz. Daha fazla ayrıntı için [bkz. Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) .
+Alternatif olarak, Azure Resource Manager şablonları kullanarak yapılandırmayı değiştirebilirsiniz. Daha fazla ayrıntı için [bkz. Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme](./proactive-arm-config.md) .
 
 ## <a name="video"></a>Video
 
@@ -60,4 +61,3 @@ Akıllı algılama tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor o
 
 * [El ile yapılandırılmış ölçüm uyarıları](../../azure-monitor/platform/alerts-log.md)
 * [Kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md) 
-

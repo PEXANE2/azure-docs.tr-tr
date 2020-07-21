@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056795"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518784"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede rotalar
 
@@ -37,9 +37,9 @@ Aşağıdaki tabloda, bir dizi ön uç JavaScript çerçevesi ve kitaplığı i�
 |Çerçeve/kitaplık | Konum  |
 |---------|----------|
 | Angular | _varlıklar_   |
-| React   | _geneldir_  |
-| Svelte  | _geneldir_   |
-| Vue     | _geneldir_ |
+| React   | _genel_  |
+| Svelte  | _genel_   |
+| Vue     | _genel_ |
 
 ## <a name="defining-routes"></a>Rotaları tanımlama
 
@@ -47,10 +47,10 @@ Yollar dosyada _routes.js_ , özelliğindeki yol kuralları dizisi olarak tanım
 
 | Rule özelliği  | Gerekli | Varsayılan değer | Yorum                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Evet      | yok          | Çağıran tarafından istenen yol deseninin.<ul><li>[Joker karakterler](#wildcards) rota yollarının sonunda desteklenir. Örneğin, Route _admin/ \* _ , _yönetici_ yolu altındaki herhangi bir rota ile eşleşir.<li>Yolun varsayılan dosyası _index.html_'dir.</ul>|
-| `serve`        | Hayır       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar. Dosya yolu ve adı, istenen yoldan farklı olabilir. Bir `serve` değer tanımlanmamışsa, istenen yol kullanılır. QueryString parametreleri desteklenmiyor; `serve`değerler gerçek dosyalara işaret etmelidir.  |
-| `allowedRoles` | Hayır       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetlere](authentication-authorization.md)göre rollerle ilişkilendirilir.</ul> |
-| `statusCode`   | Hayır       | 200           | İstek için [http durum kodu](https://wikipedia.org/wiki/List_of_HTTP_status_codes) yanıtı. |
+| `route`        | Yes      | yok          | Çağıran tarafından istenen yol deseninin.<ul><li>[Joker karakterler](#wildcards) rota yollarının sonunda desteklenir. Örneğin, Route _admin/ \* _ , _yönetici_ yolu altındaki herhangi bir rota ile eşleşir.<li>Yolun varsayılan dosyası _index.html_'dir.</ul>|
+| `serve`        | No       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar. Dosya yolu ve adı, istenen yoldan farklı olabilir. Bir `serve` değer tanımlanmamışsa, istenen yol kullanılır. QueryString parametreleri desteklenmiyor; `serve`değerler gerçek dosyalara işaret etmelidir.  |
+| `allowedRoles` | No       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetlere](authentication-authorization.md)göre rollerle ilişkilendirilir.</ul> |
+| `statusCode`   | No       | 200           | İstek için [http durum kodu](https://wikipedia.org/wiki/List_of_HTTP_status_codes) yanıtı. |
 
 ## <a name="securing-routes-with-roles"></a>Rollerle olan yolların güvenliğini sağlama
 
@@ -295,7 +295,7 @@ Aşağıdaki örneklerde bir istek bir kuralla eşleştiğinde ne olacağı aç�
 | _/Unknown-klasörü_ | _/custom-404.html_ dosyası sunulur. |
 | `.custom`Uzantılı dosyalar | MIME türü ile birlikte sunulur `text/html` |
 
-- Tüm yanıtlar, `content-security-policy` değerine sahip olan üst bilgileri içerir `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
+Tüm yanıtlar, `content-security-policy` değerine sahip olan üst bilgileri içerir `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
 
 <sup>1</sup> API işlevleri için yol kuralları yalnızca yeniden [yönlendirmeleri](#redirects) destekler ve [yolların rollerle güvenliğini sağlama](#securing-routes-with-roles).
 

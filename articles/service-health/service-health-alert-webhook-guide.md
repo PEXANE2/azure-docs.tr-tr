@@ -4,12 +4,12 @@ description: Mevcut sorun yönetimi sisteminize hizmet durumu olayları hakkınd
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518937"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Sorun yönetim sistemleri için sistem durumu bildirimlerini yapılandırmak için Web kancası kullanın
 
@@ -58,7 +58,7 @@ En düşük ve en yüksek öneme sahip olan yükteki **Level** özelliği *bilgi
 ## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Etkilenen Hizmetleri, olay kapsamını tespit etmek için ayrıştırın
 Hizmet durumu uyarıları, birden çok bölgedeki ve hizmetlerde sorunlar hakkında bilgi verebilir. Tüm ayrıntıları almak için değerini ayrıştırmalıdır `impactedServices` .
 
-İçinde olan içerik, atlamadığınızda, düzenli olarak ayrıştırılabilecek başka bir JSON nesnesi içeren kaçış [JSON](https://json.org/) dizesidir. Örnek:
+İçinde olan içerik, atlamadığınızda, düzenli olarak ayrıştırılabilecek başka bir JSON nesnesi içeren kaçış [JSON](https://json.org/) dizesidir. Örneğin:
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
@@ -96,7 +96,7 @@ Bu örnekte, için sorunlar gösterilmektedir:
 
 ## <a name="test-your-webhook-integration-via-an-http-post-request"></a>HTTP POST isteği aracılığıyla Web kancası tümleştirmenizi test etme
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Göndermek istediğiniz hizmet durumu yükünü oluşturun. [Azure etkinlik günlüğü uyarıları Için Web kancalarında](../azure-monitor/platform/activity-log-alerts-webhook.md)örnek bir hizmet durumu Web kancası yüküne bakın.
 
@@ -115,5 +115,5 @@ Bu örnekte, için sorunlar gösterilmektedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
-- [Hizmet durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Hizmet durumu bildirimleri](./service-notifications.md)hakkında bilgi edinin.
 - [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.

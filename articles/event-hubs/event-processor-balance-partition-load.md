@@ -3,12 +3,12 @@ title: Birden çok örnek arasında bölüm yükünü dengeleme-Azure Event Hubs
 description: Olay işlemcisi ve Azure Event Hubs SDK kullanarak, uygulamanızın birden çok örneğinde bölüm yükünün nasıl dengeleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff68408be15d8160ea7ecd878a05441d82700f99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314985"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512325"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Uygulamanızın birden çok örneği arasında bölüm yükünü dengeleme
 Olay işleme uygulamanızı ölçeklendirmek için, uygulamanın birden çok örneğini çalıştırabilir ve yükün kendileri arasında dengelenmesi sağlayabilirsiniz. Eski sürümlerde, [Eventprocessorhost](event-hubs-event-processor-host.md) , alma sırasında programınızın birden çok örneği ve kontrol noktası olayları arasındaki yükü dengelemenize izin verildi. Yeni sürümlerde (5,0 sonraki sürümler), **Eventprocessorclient** (.net ve Java) veya **Eventhubconsumerclient** (Python ve JavaScript) aynı şekilde yapmanıza olanak sağlar. Geliştirme modeli olayları kullanarak daha basit hale getirilir. Bir olay işleyicisini kaydederek ilgilendiğiniz olaylara abone olursunuz.
@@ -16,7 +16,7 @@ Olay işleme uygulamanızı ölçeklendirmek için, uygulamanın birden çok ör
 Bu makalede, bir olay hub 'ından olayları okumak için birden çok örnek kullanmanın örnek bir senaryosu açıklanmakta ve daha sonra aynı Olay Hub 'ını ve tüketici grubunu kullanan diğer tüketicilerle yük dengelemenize olanak tanıyan olay işlemcisi istemcisinin özellikleri hakkında ayrıntılı bilgi verir.
 
 > [!NOTE]
-> Event Hubs Ölçeklendirilecek anahtar bölümlenmiş tüketicilerinin fikrine yöneliktir. [Rekabet tüketicilerinin](https://msdn.microsoft.com/library/dn568101.aspx) deseninin aksine, bölümlenmiş tüketici deseninin çekişme sorunlarını ortadan kaldırarak ve uçtan uca paralellik için kolaylaştırarak yüksek ölçeklenmesini sağlar.
+> Event Hubs Ölçeklendirilecek anahtar bölümlenmiş tüketicilerinin fikrine yöneliktir. [Rekabet tüketicilerinin](/previous-versions/msp-n-p/dn568101(v=pandp.10)) deseninin aksine, bölümlenmiş tüketici deseninin çekişme sorunlarını ortadan kaldırarak ve uçtan uca paralellik için kolaylaştırarak yüksek ölçeklenmesini sağlar.
 
 ## <a name="example-scenario"></a>Örnek senaryo
 
@@ -75,7 +75,7 @@ Bir olay işlemcisinin bir bölümden bağlantısı kesilirse, başka bir örnek
 Denetim noktası bir olayı işlenen olarak işaretlemek için gerçekleştirildiğinde, denetim noktası deposundaki bir giriş, olayın kayması ve sıra numarası ile eklenir veya güncelleştirilir. Kullanıcılar, denetim noktasını güncelleştirme sıklığından önce karar almalıdır. Başarılı bir şekilde işlenen her olayın ardından güncelleştirme, temel alınan denetim noktası deposuna bir yazma işlemi tetiklediği için performans ve maliyet etkilerine sahip olabilir. Ayrıca, her bir olayın denetim noktası, bir Service Bus sırasının bir olay hub 'ından daha iyi bir seçenek olabileceği sıraya alınmış mesajlaşma deseninin bir göstergesi olduğunu gösteriyor. Event Hubs arkasındaki düşünce, harika ölçekte "en az bir kez" teslim almanızı öneririz. Aşağı akış sistemlerinizi ıdempotent yaparak, aynı olayların birden çok kez alınmasına neden olan hatalardan veya yeniden başlatmaları kurtarmak kolaydır.
 
 > [!NOTE]
-> Azure Blob Storage 'ı, Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 
+> Azure Blob Storage 'ı, Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) veya [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)

@@ -6,13 +6,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: c19b3410e106aaf5fed53aba45d06eac6dd9d601
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e19f74c40bbeb83c9230e620c4488778823ef99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970737"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510812"
 ---
-# <a name="azure-dedicated-hosts"></a>Azure ayrılmış Konakları
+# <a name="azure-dedicated-hosts-for-virtual-machines"></a>Sanal makineler için Azure ayrılmış Konakları
 
 Azure adanmış ana bilgisayar, bir veya daha fazla sanal makineyi bir Azure aboneliğine ayrılmış olarak barındırabilecek fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, kaynak olarak sağlanmış olan veri merkezlerimizde kullanılan fiziksel sunuculardır. Bir bölge, kullanılabilirlik alanı ve hata etki alanı içinde adanmış konaklar sağlayabilirsiniz. Daha sonra, gereksinimlerinizi en iyi şekilde karşılayan her yapılandırma için VM 'Leri doğrudan sağlanan konaklarınıza yerleştirebilirsiniz.
 

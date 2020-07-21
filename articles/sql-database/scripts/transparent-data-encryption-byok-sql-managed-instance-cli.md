@@ -11,11 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 271f68a57a4490032e318da57b4b37aac09a1410
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08f0531a99a7e0af42332e349989ce12722be42c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518801"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Yönetilen bir örnekteki Saydam Veri Şifrelemesi, Azure Key Vault kendi anahtarınızı kullanarak yönetin
 
@@ -25,7 +26,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure
 
 ## <a name="sample-script"></a>Örnek betik
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Mevcut bir yönetilen örnek, bkz. Azure [CLI kullanarak Azure SQL yönetilen örneği oluşturma](sql-database-create-configure-managed-instance-cli.md).
 
@@ -55,7 +56,7 @@ az group delete --name $resource
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
-| | |
+| Komut | Açıklama |
 |---|---|
 | [az SQL DB](/cli/azure/sql/db) | Veritabanı komutları. |
 | [az SQL yük devretme-Grup](/cli/azure/sql/failover-group) | Yük devretme grubu komutları. |

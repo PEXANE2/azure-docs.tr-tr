@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170335"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513515"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -22,11 +22,11 @@ Günde yalnızca bir tam yedeklemeyi destekliyoruz. Değişiklik yedeklemesi ve 
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Başarılı yedekleme işleri sonucunda uyarı oluşturulur mu?
 
-Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca başarısız olan yedekleme işleri için gönderilir. Portal uyarıları için ayrıntılı davranış [burada](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)belgelenmiştir. Ancak, başarılı işler için bile uyarı almak istiyorsanız [Azure İzleyicisi](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)'ni kullanabilirsiniz.
+Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca başarısız olan yedekleme işleri için gönderilir. Portal uyarıları için ayrıntılı davranış [burada](./backup-azure-monitoring-built-in-monitor.md)belgelenmiştir. Ancak, başarılı işler için bile uyarı almak istiyorsanız [Azure İzleyicisi](./backup-azure-monitoring-use-azuremonitor.md)'ni kullanabilirsiniz.
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Yedekleme Işleri menüsünde zamanlanmış yedekleme işlerini görebilir miyim?
 
-Yedekleme Işi menüsü, yalnızca geçici yedekleme işlerini gösterir. Zamanlanan işler için [Azure izleyici](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)'yi kullanın.
+Yedekleme Işi menüsü, yalnızca geçici yedekleme işlerini gösterir. Zamanlanan işler için [Azure izleyici](./backup-azure-monitoring-use-azuremonitor.md)'yi kullanın.
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>Gelecekteki veritabanları yedekleme için otomatik olarak eklenir mi?
 
@@ -51,7 +51,7 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>SAP HANA SDC 'den MDC 'ye geçirdikten sonra yedeklemeler çalışır mi?
 
-Sorun giderme kılavuzunun [Bu bölümüne](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) bakın.
+Sorun giderme kılavuzunun [Bu bölümüne](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) bakın.
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Azure HANA yedekleme, sanal bir makine değil sanal IP 'ye (yük dengeleyici) göre ayarlanabilir mi?
 
@@ -111,7 +111,7 @@ Ardından, düğüm 1 ' de tam yedekleme tetiklenir ve bu işlem tamamlandıktan
 
 ### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>My Database 'in geri yüklenmesini istiyorum HANA sistemini neden göremiyorum?
 
-Hedef SAP HANA örneğine geri yükleme için tüm önkoşulların karşılanıp karşılanmadığını denetleyin. Daha fazla bilgi için bkz. [Önkoşullar-Azure VM 'de SAP HANA veritabanlarını geri yükleme](https://docs.microsoft.com/azure/backup/sap-hana-db-restore#prerequisites).
+Hedef SAP HANA örneğine geri yükleme için tüm önkoşulların karşılanıp karşılanmadığını denetleyin. Daha fazla bilgi için bkz. [Önkoşullar-Azure VM 'de SAP HANA veritabanlarını geri yükleme](./sap-hana-db-restore.md#prerequisites).
 
 ### <a name="why-is-the-overwrite-db-restore-failing-for-my-database"></a>Veritabanım için üzerine yazma DB geri yüklemesi neden başarısız oluyor?
 
@@ -127,4 +127,4 @@ Evet, SLES üzerinde çalışan bir HANA veritabanında tetiklenen akış yedekl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure VM 'lerinde çalışan [SAP HANA veritabanlarını nasıl yedekleyeceğinizi](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database) öğrenin.
+Azure VM 'lerinde çalışan [SAP HANA veritabanlarını nasıl yedekleyeceğinizi](./backup-azure-sap-hana-database.md) öğrenin.

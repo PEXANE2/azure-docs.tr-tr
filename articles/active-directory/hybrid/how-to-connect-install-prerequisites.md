@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 11d5c1bb133f0aea241fbc55f96ab5f8818e5ed6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223933"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518122"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu konu, Azure AD Connect için önkoşulları ve donanım gereksinimlerini açıklamaktadır.
@@ -34,7 +34,7 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
   * [Azure Portal](https://portal.azure.com).
   * [Office portalı](https://portal.office.com).  
 * Azure AD 'de kullanmayı planladığınız [etki alanını ekleyin ve doğrulayın](../active-directory-domains-add-azure-portal.md) . Örneğin, kullanıcılarınız için contoso.com kullanmayı planlıyorsanız, bu etki alanının doğrulandığından ve yalnızca contoso.onmicrosoft.com varsayılan etki alanını kullandığınızdan emin olun.
-* Bir Azure AD kiracısı varsayılan 50.000 nesnelerine izin verir. Etki alanınızı doğruladıktan sonra sınır, 300k nesnelerine yükseltilir. Azure AD 'de daha fazla nesne gerekiyorsa, sınırın daha da artması için bir destek talebi açmanız gerekir. 500 ' den fazla nesne gerekiyorsa, Office 365, Azure AD Temel, Azure AD Premium veya Enterprise Mobility ve Security gibi bir lisansa sahip olmanız gerekir.
+* Bir Azure AD kiracısı varsayılan 50.000 nesnelerine izin verir. Etki alanınızı doğruladıktan sonra sınır, 300k nesnelerine yükseltilir. Azure AD 'de daha fazla nesne gerekiyorsa, sınırın daha da artması için bir destek talebi açmanız gerekir. 500 ' den fazla nesne gerekiyorsa, Office 365, Azure AD Premium veya Enterprise Mobility ve Security gibi bir lisansa sahip olmanız gerekir.
 
 ### <a name="prepare-your-on-premises-data"></a>Şirket içi verilerinizi hazırlama
 * Azure AD ve Office 365 ile eşitlemeden önce dizininizde bulunan yinelemeler ve biçimlendirme sorunları gibi hataları belirlemek için [ıddüzeltmesini](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) kullanın.
@@ -56,7 +56,7 @@ Active Directory ortamınızı güvenli hale getirmek hakkında daha fazla bilgi
 
 #### <a name="installation-prerequisites"></a>Yükleme önkoşulları 
 
-- Azure AD Connect, etki alanına katılmış bir Windows Server 2012 veya sonraki bir sürüme yüklenmelidir. Bu sunucunun bir etki alanı denetleyicisi olması önemle önerilir. 
+- Azure AD Connect, etki alanına katılmış bir Windows Server 2012 veya sonraki bir sürüme yüklenmelidir. 
 - Azure AD Connect, 2019 öncesi Small Business Server veya Windows Server Essentials üzerine yüklenemez (Windows Server Essentials 2019 desteklenir). Sunucu, Windows Server Standard veya daha iyi bir using olmalıdır.  
 - Azure AD Connect sunucuda tam GUI yüklü olmalıdır. Windows Server Core üzerinde Azure AD Connect yüklemek desteklenmez. 
 - ADFS yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız, Azure AD Connect sunucusu PowerShell döküm grup ilkesi etkin olmamalıdır. Eşitleme yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız PowerShell dökümünü etkinleştirebilirsiniz. 

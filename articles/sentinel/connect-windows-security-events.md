@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555717"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519280"
 ---
 # <a name="connect-windows-security-events"></a>Windows güvenlik olaylarını bağlama 
 
@@ -87,7 +87,29 @@ Azure Sentinel 'de Windows Güvenlik olaylarınızı toplamak için:
 
 Günlüklerinizin Log Analytics görünmeye başlaması 20 dakika kadar sürebilir. 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>Anormal RDP oturum açma algılaması için güvenlik olayları bağlayıcısını yapılandırma
 
+> [!IMPORTANT]
+> Anomalous RDP oturum açma algılaması Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Sentinel, anormal Uzak Masaüstü Protokolü (RDP) oturum açma etkinliğini belirlemek için, güvenlik olayları verilerine makine öğrenimi (ML) uygulayabilir. Senaryolar şunlardır:
+
+- **Olağan DıŞı IP** -IP adresi nadiren veya son 30 gün içinde hiç gözlemlenmedi
+
+- **Olağan dışı coğrafi konum** -IP adresi, şehir, ülke ve ASN nadiren veya son 30 gün içinde hiç gözlemlenmedi
+
+- **Yeni Kullanıcı** -yeni bir Kullanıcı, bir IP adresi ve coğrafi konumdan oturum açtığında, her ikisinin de 30 günden önceki verilere göre görülmemelidir.
+
+**Yapılandırma yönergeleri**
+
+1. **Güvenlik olayları** veri BAĞLAYıCıSı aracılığıyla RDP oturum açma verilerini (olay kimliği 4624) toplamalısınız. Azure Sentinel 'de akışı yapmak için "hiçbiri" nin yanı sıra bir [olay kümesini](#event-sets) seçtiğinizden emin olun.
+
+1. Azure Sentinel portalından **analiz**' e ve ardından **kural şablonları** sekmesine tıklayın. **(Önizleme) anormal RDP oturum açma algılaması** kuralını seçin ve **durum** kaydırıcısını **etkin**olarak taşıyın.
+
+    > [!NOTE]
+    > Makine öğrenimi algoritması, Kullanıcı davranışının temel profilini oluşturmak için 30 günlük veri gerektirdiğinden, herhangi bir olay algılanabilmesi için 30 günlük güvenlik olayları verilerinin toplanmasına izin vermelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Windows Güvenlik olaylarını Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

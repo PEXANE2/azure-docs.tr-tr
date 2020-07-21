@@ -3,11 +3,12 @@ title: Azure Backup Sunucusu ile Modern Yedekleme Alanı kullanma
 description: Azure Backup Sunucusu yeni özellikler hakkında bilgi edinin. Bu makalede, yedekleme sunucusu yüklemenizin nasıl yükseltileceği açıklanır.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172371"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513719"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
 
@@ -17,7 +18,7 @@ Azure Backup Sunucusu v2 ve üzeri, %50 depolama tasarrufu sağlayan Modern Yede
 > Modern Yedekleme Alanı kullanmak için Windows Server 2019 üzerinde Windows Server 2016 veya v3 üzerinde Backup Server v2 veya v3 ' i çalıştırmanız gerekir.
 > Yedekleme sunucusu v2 'yi Windows Server 'ın önceki bir sürümünde çalıştırırsanız, Azure Backup Sunucusu Modern Yedekleme Alanı avantajlarından yararlanabilir. Bunun yerine, yedekleme sunucusu v1 ile çalıştığı için iş yüklerini korur. Daha fazla bilgi için yedekleme sunucusu sürüm [koruması matrisine](backup-mabs-protection-matrix.md)bakın.
 >
-> Gelişmiş yedekleme performanslarını elde etmek için Windows Server 2019 ' de katmanlı depolama ile MABS v3 'i dağıtmanız önerilir. Katmanlı depolamayı yapılandırma adımları için lütfen "[katmanlı depolama Ile MB ayarlama" ADLı](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)DPM makalesine başvurun.
+> Gelişmiş yedekleme performanslarını elde etmek için Windows Server 2019 ' de katmanlı depolama ile MABS v3 'i dağıtmanız önerilir. Katmanlı depolamayı yapılandırma adımları için lütfen "[katmanlı depolama Ile MB ayarlama" ADLı](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)DPM makalesine başvurun.
 
 ## <a name="volumes-in-backup-server"></a>Yedekleme sunucusundaki birimler
 
@@ -102,13 +103,13 @@ Modern Yedekleme Depolama Alanı kullanmak için koruma gruplarını güncelleş
 
 1. Yönetici Konsolu **koruma** özelliğini seçin. **Koruma grubu üyesi** listesinde, üyeye sağ tıklayın ve sonra **üyenin korumasını durdur**' u seçin.
 
-   ![Üyenin korumasını durdur](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Üyenin korumasını durdur](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. **Gruptan Kaldır** iletişim kutusunda, depolama havuzu için kullanılan disk alanını ve kullanılabilir boş alanı gözden geçirin. Varsayılan, diskteki kurtarma noktalarını bırakmak ve ilişkilendirildikleri bekletme ilkesine göre sürelerinin dolmasına izin vermektir. **Tamam**'a tıklayın.
+2. **Gruptan Kaldır** iletişim kutusunda, depolama havuzu için kullanılan disk alanını ve kullanılabilir boş alanı gözden geçirin. Varsayılan, diskteki kurtarma noktalarını bırakmak ve ilişkilendirildikleri bekletme ilkesine göre sürelerinin dolmasına izin vermektir. **Tamam** düğmesine tıklayın.
 
    Kullanılan disk alanını hemen boş depolama havuzuna döndürmek istiyorsanız, bu üyeyle ilişkili yedekleme verilerini (ve kurtarma noktalarını) silmek için **diskte çoğaltmayı Sil** onay kutusunu seçin.
 
-   ![Gruptan Kaldır iletişim kutusu](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Gruptan Kaldır iletişim kutusu](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Modern Yedekleme Alanı kullanan bir koruma grubu oluşturun. Korumasız veri kaynaklarını dahil edin.
 
@@ -120,7 +121,7 @@ Disk depolama eklemek için:
 
 1. Yönetici Konsolu **Yönetim**  >  **disk depolama**  >  **Ekle**' yi seçin.
 
-    ![Disk Depolama iletişim kutusu Ekle](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Disk Depolama iletişim kutusu Ekle](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. **Disk depolama Ekle** iletişim kutusunda, **Disk Ekle**' yi seçin.
 

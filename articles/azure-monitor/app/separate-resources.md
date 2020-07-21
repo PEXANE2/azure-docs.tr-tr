@@ -3,12 +3,12 @@ title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşı
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516728"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
@@ -35,7 +35,7 @@ Her Application Insights kaynak, kullanıma hazır olan ölçümler ile gelir. T
 
 ### <a name="other-things-to-keep-in-mind"></a>Göz önünde bulundurmanız gereken diğer şeyler
 
--   Anlamlı değerlerin [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) özniteliğine ayarlandığından emin olmak için özel kod eklemeniz gerekebilir. Bu öznitelik için anlamlı değerler ayarlanmaksızın, Portal deneyimlerinden *hiçbiri* çalışmayacak.
+-   Anlamlı değerlerin [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) özniteliğine ayarlandığından emin olmak için özel kod eklemeniz gerekebilir. Bu öznitelik için anlamlı değerler ayarlanmaksızın, Portal deneyimlerinden *hiçbiri* çalışmayacak.
 - Service Fabric uygulamalar ve klasik bulut hizmetleri için SDK otomatik olarak Azure rol ortamından okur ve bunları ayarlar. Diğer tüm uygulama türleri için büyük olasılıkla bunu açıkça ayarlamanız gerekecektir.
 -   Canlı ölçüm deneyimi, rol adına göre bölmeyi desteklemez.
 
@@ -76,7 +76,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="create-additional-application-insights-resources"></a>Ek Application Insights kaynakları oluşturma
 
-Bir Application Insights kaynağı oluşturmak için [kaynak oluşturma kılavuzunu](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)izleyin.
+Bir Application Insights kaynağı oluşturmak için [kaynak oluşturma kılavuzunu](./create-new-resource.md)izleyin.
 
 ### <a name="getting-the-instrumentation-key"></a>İzleme anahtarını alma
 İzleme anahtarı, oluşturduğunuz kaynağı tanımlar.

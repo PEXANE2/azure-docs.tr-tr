@@ -4,11 +4,12 @@ description: Bu makalede, REST API kullanarak kasasının yapılandırmasını g
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248235"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513124"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
 
@@ -24,7 +25,7 @@ Bu nedenle, senaryoya bağlı olarak belirli bir kasa için geçici silme devre 
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API kullanarak geçici silme durumunu getirme
 
-Varsayılan olarak, yeni oluşturulan tüm kurtarma hizmetleri kasasında geçici silme durumu etkinleştirilir. Bir kasadaki geçici silme durumunu getirmek/güncelleştirmek için, yedekleme kasasının config ile ilgili [REST API belgesini](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) kullanın
+Varsayılan olarak, yeni oluşturulan tüm kurtarma hizmetleri kasasında geçici silme durumu etkinleştirilir. Bir kasadaki geçici silme durumunu getirmek/güncelleştirmek için, yedekleme kasasının config ile ilgili [REST API belgesini](/rest/api/backup/backupresourcevaultconfigs) kullanın
 
 Bir kasadaki geçici silme işleminin geçerli durumunu getirmek için aşağıdaki *alma* işlemini kullanın
 
@@ -42,9 +43,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ' GET ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Name  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
-|200 TAMAM     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
+|200 TAMAM     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 
 ##### <a name="example-response"></a>Örnek yanıt
 
@@ -80,14 +81,14 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır
 
-Daha fazla ayrıntı için [REST API belgelerine](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
+Daha fazla ayrıntı için [REST API belgelerine](/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
 
-|Name  |Gerekli  |Tür  |Açıklama  |
+|Name  |Gerekli  |Tür  |Description  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
-|etiketler     |         | Nesne        |     Kaynak etiketleri    |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
+|tags     |         | Nesne        |     Kaynak etiketleri    |
 
 #### <a name="example-request-body"></a>Örnek istek gövdesi
 
@@ -106,9 +107,9 @@ Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirme
 
 ' PATCH ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Name  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
-|200 TAMAM     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
+|200 TAMAM     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 
 ##### <a name="example-response"></a>Örnek yanıt
 

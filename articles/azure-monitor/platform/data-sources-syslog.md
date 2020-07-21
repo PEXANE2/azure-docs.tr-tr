@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: cce74358a206c7103d537ba80c62d6561606b818
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242041"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515521"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure İzleyici'de Syslog veri kaynakları
 Syslog, Linux için ortak olan bir olay günlüğü protokolüdür. Uygulamalar yerel makinede depolanabilecek veya bir Syslog toplayıcısına teslim edilen iletileri gönderir. Linux için Log Analytics Aracısı yüklendiğinde, iletileri aracıya iletmek için yerel Syslog Daemon programını yapılandırır. Aracı daha sonra iletiyi ilgili kaydın oluşturulduğu Azure Izleyici 'ye gönderir.  
@@ -90,7 +90,6 @@ Yapılandırma dosyasının bölümünü kaldırarak bir tesisi kaldırabilirsin
 user.error    @127.0.0.1:25224
 ```
 
-
 #### <a name="syslog-ng"></a>Syslog-ng
 Syslog-NG için yapılandırma dosyası, **/etc/syslog-ng/Syslog-ng.exe**yolunda yer aldığı bir konumdur.  Varsayılan içerikleri aşağıda gösterilmiştir. Bu, tüm tesisler ve tüm önem dereceleri için yerel aracıdan gönderilen syslog iletilerini toplar.   
 
@@ -163,17 +162,16 @@ Log Analytics Aracısı, 25224 numaralı bağlantı noktasındaki yerel istemcid
 
 * Floentd yapılandırma dosyası, içinde bulunan yeni bir dosya olmalıdır `/etc/opt/microsoft/omsagent/conf/omsagent.d` ve **bağlantı noktası** girdisindeki değeri özel bağlantı noktası numaranız ile değiştirin.
 
-    ```config
+    ```xml
     <source>
-      type syslog
-      port %SYSLOG_PORT%
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
+        type syslog
+        port %SYSLOG_PORT%
+        bind 127.0.0.1
+        protocol_type udp
+        tag oms.syslog
     </source>
     <filter oms.syslog.**>
-      type filter_syslog
-    </filter>
+        type filter_syslog
     ```
 
 * Rsyslog için, içinde bulunan yeni bir yapılandırma dosyası oluşturmanız `/etc/rsyslog.d/` ve% SYSLOG_PORT% değerini özel bağlantı noktası numaranız ile değiştirmeniz gerekir.  
@@ -221,7 +219,7 @@ Syslog kayıtları bir **Syslog** türüne sahiptir ve aşağıdaki tabloda bulu
 ## <a name="log-queries-with-syslog-records"></a>Syslog kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, syslog kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | Syslog |Tüm syslogs 'lar. |
 | Syslog &#124; WHERE ıitylevel = = "Error" |Tüm Syslog kayıtları hata önem derecesine sahip. |

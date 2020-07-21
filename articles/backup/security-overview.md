@@ -3,11 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce6d8a43b48be5189f0459c9f82c69354f40689f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653794"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513210"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -15,17 +16,17 @@ Verilerinizi korumak için uygulayabileceğiniz en önemli adımlardan biri, gü
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Kimlik ve Kullanıcı erişiminin yönetimi ve denetimi
 
-Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Azure Backup, [Azure rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)kullanarak ayrıntılı erişim aracılığıyla yönetilen işlemleri denetlemenize olanak sağlar. RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
+Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Azure Backup, [Azure rol tabanlı Access Control (RBAC)](./backup-rbac-rs-vault.md)kullanarak ayrıntılı erişim aracılığıyla yönetilen işlemleri denetlemenize olanak sağlar. RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
 
-Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç [yerleşik rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) sağlar:
+Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç [yerleşik rol](../role-based-access-control/built-in-roles.md) sağlar:
 
 * Yedek katkıda bulunan-kurtarma hizmetleri kasasını silme ve başkalarına erişim verme dışında yedeklemeler oluşturmak ve yönetmek için
 * Yedekleme Işleci-katkıda bulunan her şey, yedeklemenin kaldırılması ve yedekleme ilkelerinin yönetilmesi dışında
 * Yedekleme okuyucusu-tüm yedekleme yönetimi işlemlerini görüntüleme izinleri
 
-[Azure Backup yönetmek Için rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)hakkında daha fazla bilgi edinin.
+[Azure Backup yönetmek Için rol tabanlı erişim denetimi](./backup-rbac-rs-vault.md)hakkında daha fazla bilgi edinin.
 
-Azure Backup, güvenlik açıklarını engellemek, algılamak ve yanıtlamak için hizmette yerleşik olarak bulunan çeşitli güvenlik denetimlerine sahiptir. [Azure Backup için güvenlik denetimleri](https://docs.microsoft.com/azure/backup/backup-security-controls)hakkında daha fazla bilgi edinin.
+Azure Backup, güvenlik açıklarını engellemek, algılamak ve yanıtlamak için hizmette yerleşik olarak bulunan çeşitli güvenlik denetimlerine sahiptir. [Azure Backup için güvenlik denetimleri](./backup-security-controls.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="separation-between-guest-and-azure-storage"></a>Konuk ve Azure depolama arasındaki ayrım
 
@@ -37,9 +38,9 @@ Azure VM 'lerinin yedeklenmesi, sanal makinenizin diskinden kurtarma hizmetleri 
 
 ## <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
-Artık verilerinizi bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde yedeklemek için [Özel uç noktaları](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) kullanabilirsiniz. Özel uç nokta, kasalarınızın VNET adres alanından bir IP kullanır, bu nedenle sanal ağlarınızı tüm genel IP 'Lerde kullanıma sunabilmeniz gerekmez. Özel uç noktalar, Azure sanal makinelerinizin içinde çalışan SQL ve SAP HANA veritabanlarınızı yedeklemek ve geri yüklemek için kullanılabilir. Ayrıca, MARS Aracısı kullanılarak şirket içi sunucularınız için de kullanılabilir.
+Artık verilerinizi bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde yedeklemek için [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanabilirsiniz. Özel uç nokta, kasalarınızın VNET adres alanından bir IP kullanır, bu nedenle sanal ağlarınızı tüm genel IP 'Lerde kullanıma sunabilmeniz gerekmez. Özel uç noktalar, Azure sanal makinelerinizin içinde çalışan SQL ve SAP HANA veritabanlarınızı yedeklemek ve geri yüklemek için kullanılabilir. Ayrıca, MARS Aracısı kullanılarak şirket içi sunucularınız için de kullanılabilir.
 
-[Azure Backup için](https://docs.microsoft.com/azure/backup/private-endpoints)özel uç noktalar hakkında daha fazla bilgi edinin.
+[Azure Backup için](./private-endpoints.md)özel uç noktalar hakkında daha fazla bilgi edinin.
 
 ## <a name="encryption-of-data-in-transit-and-at-rest"></a>Yoldaki ve bekleyen verilerin şifrelenmesi
 
@@ -47,7 +48,7 @@ Artık verilerinizi bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kas
 
 * Yedekleme verileri Microsoft tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Ayrıca, kurtarma hizmetleri kasasındaki yedeklenen yönetilen disk VM 'lerinizi, Azure Key Vault depolanan [müşteri tarafından yönetilen anahtarları](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) kullanarak şifreleyebilirsiniz. Bu şifrelemeyi etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
 
-* Azure Backup, işletim sistemi/veri disklerinin Azure disk şifrelemesi (ADE) ile şifrelenmiş olduğu Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. [Şifrelenmiş Azure VM 'leri ve Azure Backup hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+* Azure Backup, işletim sistemi/veri disklerinin Azure disk şifrelemesi (ADE) ile şifrelenmiş olduğu Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. [Şifrelenmiş Azure VM 'leri ve Azure Backup hakkında daha fazla bilgi edinin](./backup-azure-vms-encryption.md).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>İstemeden silme işleminden yedekleme verilerinin korunması
 
@@ -55,15 +56,15 @@ Azure Backup, silme işleminden sonra bile yedekleme verilerini korumaya yardım
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Şüpheli etkinliğin izlenmesi ve uyarıları
 
-Azure Backup, Azure Backup ilgili olaylara yönelik eylemleri görüntülemek ve yapılandırmak için [yerleşik izleme ve uyarı özellikleri](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) sağlar. [Yedekleme raporları](https://docs.microsoft.com/azure/backup/configure-reports) , Kullanım Takibi, yedeklemelerin denetlenmesi ve geri yüklemeleri ve farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri belirlemek için tek bir dura hedefi olarak görev yapar. Azure Backup izleme ve raporlama araçlarının kullanılması, sizi meydana geldiğinde yetkisiz, şüpheli veya kötü amaçlı etkinliklere karşı uyarabilir.
+Azure Backup, Azure Backup ilgili olaylara yönelik eylemleri görüntülemek ve yapılandırmak için [yerleşik izleme ve uyarı özellikleri](./backup-azure-monitoring-built-in-monitor.md) sağlar. [Yedekleme raporları](./configure-reports.md) , Kullanım Takibi, yedeklemelerin denetlenmesi ve geri yüklemeleri ve farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri belirlemek için tek bir dura hedefi olarak görev yapar. Azure Backup izleme ve raporlama araçlarının kullanılması, sizi meydana geldiğinde yetkisiz, şüpheli veya kötü amaçlı etkinliklere karşı uyarabilir.
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Karma yedeklemeleri korumaya yardımcı olan güvenlik özellikleri
 
-Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunlardır:
+Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunları içerir:
 
-* Bir parolayı değiştirme gibi kritik bir işlem gerçekleştirildiğinde ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilmesini sağlamaktır. [Saldırıları engelleyen özellikler hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks).
+* Bir parolayı değiştirme gibi kritik bir işlem gerçekleştirildiğinde ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilmesini sağlamaktır. [Saldırıları engelleyen özellikler hakkında daha fazla bilgi edinin](./backup-azure-security-feature.md#prevent-attacks).
 
-* Silinen yedekleme verileri, silme tarihinden itibaren ek 14 gün boyunca tutulur. Bu, belirli bir süre içindeki verilerin kurtarılabilmesini sağlar; bu nedenle bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı koruma sağlamak için daha fazla sayıda en düşük kurtarma noktası tutulur. [Silinen yedekleme verilerini kurtarma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
+* Silinen yedekleme verileri, silme tarihinden itibaren ek 14 gün boyunca tutulur. Bu, belirli bir süre içindeki verilerin kurtarılabilmesini sağlar; bu nedenle bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı koruma sağlamak için daha fazla sayıda en düşük kurtarma noktası tutulur. [Silinen yedekleme verilerini kurtarma hakkında daha fazla bilgi edinin](./backup-azure-security-feature.md#recover-deleted-backup-data).
 
 * Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı kullanılarak yedeklenen veriler için, verilerin Azure Backup yüklenmeden önce şifrelenmesini ve yalnızca Azure Backup 'den indirildikten sonra şifresinin çözülmesi sağlamak için bir parola kullanılır. Parola ayrıntıları yalnızca parolayı oluşturan kullanıcı ve onunla yapılandırılmış aracı için kullanılabilir. Hiçbir şey iletilmez veya hizmetle paylaşılmaz. Bu, yanlışlıkla sunulan tüm veriler (örneğin, ağda ortadaki adam saldırısı gibi), parola olmadan kullanılamaz ve parola ağda gönderilmediğinde, verilerinizin güvenliğini tam olarak sağlar.
 

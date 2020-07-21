@@ -4,16 +4,17 @@ description: Klasik uyarılar kullanım dışı bırakılıyor. Uyarılar, Azure
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114498"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515963"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure'daki klasik uyarılar nedir?
 
 > [!NOTE]
-> Bu makalede, klasik eski ölçüm uyarılarının nasıl oluşturulacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](../../azure-monitor/platform/alerts-overview.md)desteklemektedir. Klasik uyarılar [kullanımdan](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda. 
+> Bu makalede, klasik eski ölçüm uyarılarının nasıl oluşturulacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](../../azure-monitor/platform/alerts-overview.md)desteklemektedir. Klasik uyarılar [kullanımdan](./monitoring-classic-retirement.md)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda. 
 >
 
 Uyarılar, veriler üzerinde koşullar yapılandırmanıza ve koşullar en son izleme verileriyle eşleşiyorsa bildirimde bulunulmasına olanak tanır.
@@ -88,7 +89,7 @@ Uyarı kuralları ve bunları kullanarak yapılandırma hakkında bilgi alın:
 * [Azure Portal aracılığıyla klasik ölçüm uyarılarını](alerts-classic-portal.md) yapılandırma
 * [Klasik ölçüm uyarılarını yapılandırma PowerShell](alerts-classic-portal.md)
 * [Klasik ölçüm uyarılarını yapılandırma komut satırı arabirimi (CLI)](alerts-classic-portal.md)
-* [Klasik ölçüm uyarılarını Yapılandırma Azure izleyici REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Klasik ölçüm uyarılarını Yapılandırma Azure izleyici REST API](/rest/api/monitor/alertrules)
 * [Etkinlik günlüğü](platform-logs-overview.md) hakkında daha fazla bilgi edinin
 * [Etkinlik günlüğü uyarılarını Azure Portal aracılığıyla](activity-log-alerts.md) yapılandırma
 * [Etkinlik günlüğü uyarılarını Kaynak Yöneticisi aracılığıyla](alerts-activity-log.md) yapılandırma

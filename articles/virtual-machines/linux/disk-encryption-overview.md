@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e4843ad71455f8e478ef74ee71975c1dbf2925
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601284"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510574"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi 
 
@@ -26,7 +26,7 @@ Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk t
 > [!WARNING]
 > - Bir VM 'yi şifrelemek için Azure AD ile Azure disk şifrelemesi 'ni daha önce kullandıysanız, VM 'nizi şifrelemek için bu seçeneği kullanmaya devam etmeniz gerekir. Ayrıntılar için bkz. [Azure AD ile Azure disk şifrelemesi (önceki sürüm)](disk-encryption-overview-aad.md) . 
 > - Bazı öneriler veri, ağ veya işlem kaynak kullanımını artırabilir, bu da ek lisans veya abonelik maliyetlerine neden olur. Desteklenen bölgelerde Azure 'da kaynak oluşturmak için geçerli bir etkin Azure aboneliğiniz olması gerekir.
-> - 2. nesil VM 'Ler Azure disk şifrelemesini desteklemez. Ayrıntılar için bkz. [Azure 'da 2. nesil sanal makineler Için destek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) .
+> - 2. nesil VM 'Ler Azure disk şifrelemesini desteklemez. Ayrıntılar için bkz. [Azure 'da 2. nesil sanal makineler Için destek](../windows/generation-2.md) .
 
 Linux için Azure disk şifrelemesi temellerini yalnızca birkaç dakika içinde [Azure CLI hızlı başlangıç Ile LINUX VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md) veya [Azure PowerShell hızlı başlangıç Ile Linux VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)hakkında bilgi edinebilirsiniz.
 
@@ -63,6 +63,7 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 | Canonical | Ubuntu 16.04 | 16,04-GÜNLÜK-LTS | Kurallı: UbuntuServer: 16.04-DAILY-LTS: latest | İşletim sistemi ve veri diski |
 | Canonical | Ubuntu 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kurallı: UbuntuServer: 14.04.5-LTS: latest | İşletim sistemi ve veri diski |
 | Canonical | Ubuntu 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | 14.04.5-GÜNLÜK-LTS | Kurallı: UbuntuServer: 14.04.5-DAILY-LTS: latest | İşletim sistemi ve veri diski |
+| RedHat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7,7 | 7,7 | RedHat: RHEL: 7.7: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7,7 | 7-LVM | RedHat: RHEL: 7-LVM: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
 | RedHat | RHEL 7,6 | 7,6 | RedHat: RHEL: 7.6: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
@@ -95,7 +96,7 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 
 Azure disk şifrelemesi, sistemde dm-crypt ve VFAT modüllerinin bulunmasını gerektirir. VFAT 'i varsayılan görüntüden kaldırmak veya devre dışı bırakmak, sistemin anahtar birimini okumasını ve sonraki yeniden başlatmalarda disklerin kilidini açmak için gereken anahtarı almasını engeller. VFAT modülünü sistemden kaldırmak veya veri sürücülerindeki işletim sistemi bağlama noktalarını/klasörlerini genişletmeyi zorlamak için sistem sağlamlaştırma adımları Azure disk şifrelemesi ile uyumlu değildir. 
 
-Şifrelemeyi etkinleştirmeden önce, şifrelenecek veri disklerinin/etc/fstabnda doğru şekilde listelenmesi gerekir. Giriş oluştururken "NOFAIL" seçeneğini kullanın ve kalıcı bir cihaz adı seçin ("/dev/sdX" biçimindeki cihaz adları yeniden başlatmalar genelinde aynı disk ile ilişkilendirilemeyebilir, özellikle şifrelemeden sonra, bu davranış hakkında daha fazla bilgi için bkz.: [LINUX VM cihaz adı değişiklikleri sorunlarını giderme](troubleshoot-device-names-problems.md)).
+Şifrelemeyi etkinleştirmeden önce, şifrelenecek veri disklerinin/etc/fstabnda doğru şekilde listelenmesi gerekir. Giriş oluştururken "NOFAIL" seçeneğini kullanın ve kalıcı bir cihaz adı seçin ("/dev/sdX" biçimindeki cihaz adları yeniden başlatmalar genelinde aynı disk ile ilişkilendirilemeyebilir, özellikle şifrelemeden sonra, bu davranış hakkında daha fazla bilgi için bkz.: [LINUX VM cihaz adı değişiklikleri sorunlarını giderme](../troubleshooting/troubleshoot-device-names-problems.md)).
 
 /Etc/fstab ayarlarının bağlama için doğru yapılandırıldığından emin olun. Bu ayarları yapılandırmak için, Mount-a komutunu çalıştırın veya VM 'yi yeniden başlatın ve bu şekilde uzak yeniden bağlama 'yı tetikleyin. Bu tamamlandıktan sonra, sürücünün hala bağlı olduğunu doğrulamak için lsblk komutunun çıkışını kontrol edin. 
 
@@ -135,7 +136,7 @@ Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yay
 | Terminoloji | Tanım |
 | --- | --- |
 | Azure Key Vault | Key Vault, Federal bilgi Işleme standartları (FIPS) tarafından doğrulanan donanım güvenlik modüllerini temel alan bir şifreleme, anahtar yönetim hizmetidir. Bu standartlar, şifreleme anahtarlarınızı ve hassas gizli dizileri korumaya yardımcı olur. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
-| Azure CLI | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|
+| Azure CLI’si | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|
 | DM-Crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) , Linux sanal makinelerinde disk şifrelemeyi etkinleştirmek Için kullanılan Linux tabanlı, saydam disk şifreleme alt sistemidir. |
 | Anahtar şifreleme anahtarı (KEK) | Gizli anahtarı korumak veya kaydırmak için kullanabileceğiniz asimetrik anahtar (RSA 2048). Donanım güvenlik modülü (HSM) korumalı bir anahtar veya yazılımla korunan anahtar sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
 | PowerShell cmdlet'leri | Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'leri](/powershell/azure/overview). |
@@ -145,9 +146,7 @@ Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yay
 
 - [Hızlı başlangıç-Azure CLı ile Linux VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md)
 - [Hızlı başlangıç-Azure PowerShell ile Linux VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)
-- [Linux VM'lerinde Azure Disk Şifrelemesi senaryoları](disk-encryption-linux.md)
+- [Linux VM’lerde Azure Disk Şifrelemesi senaryoları](disk-encryption-linux.md)
 - [Azure disk şifrelemesi önkoşulları CLı betiği](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure disk şifrelemesi önkoşulları PowerShell betiği](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Azure Disk Şifrelemesi için anahtar kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md)
-
-

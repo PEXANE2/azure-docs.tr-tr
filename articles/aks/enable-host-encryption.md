@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde konak tabanlı şifreleme
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244319"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517731"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes hizmeti (AKS) üzerinde ana bilgisayar tabanlı şifreleme (Önizleme)
 
@@ -27,18 +27,18 @@ Bu özellik yalnızca küme oluşturma veya düğüm havuzu oluşturma zamanınd
 
 - `aks-preview`CLI uzantısının v 0.4.55 veya üzeri yüklü olduğundan emin olun
 - `EncryptionAtHost`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.Compute` .
-- `EncryptionAtHost`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.ContainerService` .
+- `EnableEncryptionAtHostPreview`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.ContainerService` .
 
 ### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost`Önizleme özelliklerini Kaydet
 
-Konak tabanlı şifreleme kullanan bir AKS kümesi oluşturmak için `EncryptionAtHost` aboneliğinizdeki Özellik bayrağını etkinleştirmeniz gerekir.
+Konak tabanlı şifreleme kullanan bir AKS kümesi oluşturmak için `EnableEncryptionAtHostPreview` `EncryptionAtHost` aboneliğinizdeki ve özellik bayraklarını etkinleştirmeniz gerekir.
 
 `EncryptionAtHost`Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 
-az feature register --namespace "Microsoft.ContainerService"  --name "EncryptionAtHost"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
@@ -46,7 +46,7 @@ Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-fea
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EncryptionAtHost')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Hazırlanıyor, `Microsoft.ContainerService` `Microsoft.Compute` [az Provider Register][az-provider-register] komutunu kullanarak ve kaynak sağlayıcılarının kaydını yenileyin:
@@ -63,7 +63,7 @@ az provider register --namespace Microsoft.ContainerService
 > - [AKS destek Ilkeleri](support-policies.md)
 > - [Azure desteği SSS](faq.md)
 
-### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
+### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme
 
 Ana bilgisayar tabanlı şifrelemeyi bir AKS kümesi oluşturmak için en son *aks-Preview* CLI uzantısına ihtiyacınız vardır. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükler veya [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 

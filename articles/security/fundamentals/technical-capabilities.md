@@ -2,24 +2,20 @@
 title: Azure 'da güvenlik teknik özellikleri-Microsoft Azure
 description: Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı bulutta korumanıza yardımcı olan güvenlik hizmetlerine giriş.
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845350"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519329"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -72,7 +68,7 @@ Temel Azure kimlik yönetimi özellikleri aşağıda verilmiştir:
 
 - Çoklu oturum açma
 
-- Multi-factor authentication
+- Çok faktörlü kimlik doğrulaması
 
 - Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 
@@ -94,7 +90,7 @@ Birçok kuruluş, son kullanıcı üretkenliği için Office 365, Box ve Salesfo
 
 Kullanıcıların birden çok Kullanıcı adı ve parola kümesini yönetmesi gerekmez, uygulama erişimi kuruluş gruplarına ve çalışanların durumlarına göre otomatik olarak sağlanabilir veya etkinleştirilebilir. Azure AD, kullanıcıların SaaS uygulamaları genelinde erişimini merkezi olarak yönetmenizi sağlayan [güvenlik ve erişim idare denetimleri sunmaktadır](../../active-directory/active-directory-enterprise-apps-manage-sso.md) .
 
-#### <a name="multi-factor-authentication"></a>Multi-factor authentication
+#### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulaması
 
 [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
 
@@ -169,77 +165,11 @@ RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan 
 Buluttaki veri korumasına yönelik anahtarlardan biri, verilerinizin gerçekleşebileceği olası durumlara ve bu durum için hangi denetimlerin kullanılabilir olduğuna göre belirlenir. Azure veri güvenliği ve şifreleme en iyi uygulamaları için, öneriler aşağıdaki verilerin durumları etrafında olacaktır.
 
 - Rest: buna, fiziksel medyada statik olarak bulunan tüm bilgi depolama nesneleri, kapsayıcılar ve türler, manyetik veya optik disk olmak üzere dahildir.
-
 - Geçiş içi: veriler, bir hizmet veri yolu (Şirket içinden buluta veya ExpressRoute gibi karma bağlantılar da dahil olmak üzere) arasında bileşenler, konumlar veya programlar arasında aktarıldığında, bu, hareket halindeyken olduğu gibi düşünülebilir.
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
-Bekleme sırasında şifrelemeyi sağlamak için aşağıdakilerden her birini yapın:
-
-Verileri şifrelemek için aşağıdaki tabloda ayrıntılı olarak önerilen şifreleme modellerinden en az birini destekler.
-
-| Şifreleme modelleri |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| Sunucu şifreleme | Sunucu şifreleme | Sunucu şifreleme | İstemci şifrelemesi
-| Hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme | Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme | Şirket içi müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme |
-| • Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir <br> • Microsoft anahtarları yönetir <br>• Tam bulut işlevselliği | • Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir<br>• Müşteri, anahtarları Azure Key Vault aracılığıyla denetler<br>• Tam bulut işlevselliği | • Azure kaynak sağlayıcıları şifreleme ve şifre çözme işlemlerini gerçekleştirir <br>• Müşteri, şirket içi anahtarları denetler <br> • Tam bulut işlevselliği| • Azure hizmetleri şifresi çözülen verileri göremez <br>• Müşteriler anahtarları şirket içinde (veya diğer güvenli depolarda) tutar. Anahtarlar Azure hizmetleri için kullanılamaz <br>• Azaltılmış bulut işlevselliği|
-
-### <a name="enabling-encryption-at-rest"></a>Bekleyen şifrelemeyi etkinleştirme
-
-**Veri mağazalarınızın tüm konumlarını belirler**
-
-Şifreleme hedefi, bekleyen verilerin şifrelenmesi için kullanılır. Bunun yapılması, önemli verilerin veya tüm kalıcı konumların eksik olma olasılığını ortadan kaldırır. Uygulamanız tarafından depolanan tüm verileri numaralandırın.
-
-> [!Note]
-> Yalnızca "uygulama verileri" veya "PII" değil, uygulamayla ilgili, hesap meta verileri (abonelik eşlemeleri, sözleşme bilgileri, PII) dahil tüm veriler değil.
-
-Verileri depolamak için hangi mağazaların kullandığınızı göz önünde bulundurun. Örneğin:
-
-- Harici depolama (örneğin, SQL Azure, belge DB, Hdınsights, Data Lake vb.)
-
-- Geçici depolama (kiracı verilerini içeren herhangi bir yerel önbellek)
-
-- Bellek içi önbellek (sayfa dosyasına konulamıyor.)
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Azure 'da Rest desteğiyle mevcut şifrelemeden yararlanın
-
-Kullandığınız her mağaza için, bekleyen destek ' de var olan şifrelemeden yararlanın.
-
-- Azure depolama: [bekleyen veriler Için bkz. azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md),
-
-- SQL Azure: bkz. [Saydam veri şifrelemesi (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
-
-- VM & yerel disk depolama ([Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md))
-
-VM ve yerel disk depolaması için desteklenen yerlerde Azure disk şifrelemesi 'ni kullanın:
-
-#### <a name="iaas"></a>IaaS
-
-IaaS VM (Windows veya Linux) Hizmetleri, müşteri verilerini içeren birimleri şifrelemek için [Azure disk şifrelemesi](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) kullanmalıdır.
-
-#### <a name="paas-v2"></a>PaaS v2
-
-PaaS v2 'de Service Fabric kullanılarak çalışan hizmetler, PaaS v2 VM 'lerini şifrelemek için sanal makine ölçek kümesi [VMSS] için Azure disk şifrelemesi 'ni kullanabilir.
-
-#### <a name="paas-v1"></a>PaaS v1
-
-Azure disk şifrelemesi Şu anda PaaS v1 'de desteklenmiyor. Bu nedenle, bekleyen verileri bekleyen bir şekilde şifrelemek için uygulama düzeyinde şifrelemeyi kullanmanız gerekir.  Bu, uygulama verileri, geçici dosyalar, Günlükler ve kilitlenme dökümleri dahil değildir ancak bunlarla sınırlı değildir.
-
-Çoğu hizmet, bir depolama kaynak sağlayıcısı şifrelemesini denemelidir. Bazı hizmetlerin açık şifreleme yapması gerekir, örneğin, tüm kalıcı anahtar malzemeleri (sertifikalar, kök/ana anahtarlar) Key Vault içinde depolanmalıdır.
-
-Müşteri tarafından yönetilen anahtarlarla hizmet tarafı şifrelemeyi desteklemeniz gerekirse, müşterinin anahtarı bize alması için bir yol olması gerekir. Azure Key Vault (AKV) ile tümleştirerek bunu yapmanın desteklenen ve önerilen yolu. Bu durumda, müşteriler Azure Key Vault anahtarlarını ekleyebilir ve yönetebilir. Müşteri, [Key Vault Ile çalışmaya](https://go.microsoft.com/fwlink/?linkid=521402)başlama yoluyla Akv 'yi nasıl kullanacağınızı öğrenebilirsiniz.
-
-Azure Key Vault ile tümleştirmek için, şifre çözme için gerektiğinde AKTARıLAN bir anahtarı istemek üzere kod eklersiniz.
-
-- Bkz. [Azure Key Vault –](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/) adım adım, Akv ile tümleştirme hakkında bilgi için.
-
-Müşteri tarafından yönetilen anahtarları destekederseniz, müşterinin hangi Key Vault (veya Key Vault URI) kullanılacağını belirtmesi için bir UX sağlamanız gerekir.
-
-Bekleyen şifreleme ana bilgisayar, altyapı ve kiracı verilerinin şifrelenmesini içerdiğinden, sistem hatası veya kötü amaçlı etkinlik nedeniyle anahtarların kaybolması, tüm şifreli verilerin kaybedilmesi anlamına gelebilir. Bu nedenle, Rest çözümünde şifrelemenin sistem arızalarına ve kötü amaçlı etkinliklere dayanıklı bir olağanüstü durum kurtarma hikayesi olması önemlidir.
-
-Bekleme sırasında şifrelemeyi uygulayan hizmetler genellikle şifreleme anahtarları veya veriler, ana bilgisayar sürücüsünde şifrelenmemiş olarak (örneğin, ana bilgisayar işletim sisteminin sayfa dosyasında) açık olarak kalır. Bu nedenle, hizmetler için Konak biriminin şifrelendiğinden emin olunması gerekir. Bu Işlem ekibinin kolaylaştırmasını kolaylaştırmak için, konak şifrelemenin dağıtımını etkinleştirdi. Bu, Konak biriminin şifrelenmesi için, DCM hizmeti ve aracısına yönelik [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP ve uzantıları kullanır.
-
-Çoğu hizmet standart Azure VM 'lerinde uygulanır. Bu tür hizmetler, Işlem mümkün olduğunda [ana bilgisayar şifrelemesini](../azure-security-disk-encryption-overview.md) otomatik olarak almalıdır. Işlem yönetilen kümeler üzerinde çalışan hizmetler için, Windows Server 2016 kullanıma alındığı için konak şifreleme otomatik olarak etkinleştirilir.
+Bekleyen şifreleme, [Azure veri şifreleme-bekleyen](encryption-atrest.md)' de ayrıntılı olarak ele alınmıştır.
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 
@@ -409,7 +339,7 @@ Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetini
 
 Güvenlik Merkezi, olası güvenlik açıklarını tanımlamak için Azure kaynaklarınızın güvenlik durumunu inceler. Gerekli denetimlerin yapılandırılması işlemi boyunca bir öneri listesi size rehberlik eder.
 
-Örnekler arasında şunlar yer almaktadır:
+Örneklere şunlar dahildir:
 
 - Kötü amaçlı yazılımı tanımlama ve kaldırmada yardım etmesi için kötü amaçlı yazılımdan koruma yazılımı hazırlama
 

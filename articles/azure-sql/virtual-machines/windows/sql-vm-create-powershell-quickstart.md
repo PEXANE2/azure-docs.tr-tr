@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e821c650bae7694070624aeebe7fcc3482f7a3b9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667419"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514620"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile Windows sanal makinesinde SQL Server oluşturma
 
@@ -89,7 +89,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
       -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $PipName
    ```
 
-1. Ağ güvenlik grubu oluşturun. Uzak masaüstü (RDP) ve SQL Server bağlantılarına izin vermek için kuralları yapılandırın.
+1. Ağ güvenlik grubu oluşturma. Uzak masaüstü (RDP) ve SQL Server bağlantılarına izin vermek için kuralları yapılandırın.
 
    ```powershell
    # Rule to allow remote desktop (RDP)
@@ -147,13 +147,34 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    > [!TIP]
    > VM'nin oluşturulması birkaç dakika sürer.
 
-## <a name="install-the-sql-iaas-agent"></a>SQL IaaS Aracısı 'nı yükler
+## <a name="register-with-sql-vm-rp"></a>SQL VM RP ile kaydolma 
 
-Portal tümleştirmesi ve SQL VM özelliklerini kullanabilmek için [SQL Server IaaS Aracısı Uzantısı](sql-server-iaas-agent-extension-automate-management.md)'nı yükleyin. Aracıyı yeni VM 'ye yüklemek için VM oluşturulduktan sonra aşağıdaki komutu çalıştırın.
+Portal tümleştirmesi ve SQL VM özellikleri almak için, [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kaydolmanız gerekir.
 
-   ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
-   ```
+Tam işlevselliği almak için kaynak sağlayıcısına tam modda kaydolmanız gerekir. Ancak bunu yapmak SQL Server hizmetini yeniden başlatır, bu nedenle önerilen yaklaşım basit modda kaydolmalıdır ve bakım penceresi sırasında tam olarak yükseltilir. 
+
+İlk olarak, SQL Server VM basit modda kaydedin: 
+
+```powershell-interactive
+# Get the existing compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+        
+# Register SQL VM with 'Lightweight' SQL IaaS agent
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+  -LicenseType PAYG -SqlManagementType LightWeight
+```
+
+Ardından, bir bakım penceresi sırasında tam moda yükseltin: 
+
+```powershell-interactive
+# Get the existing Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+      
+# Register with SQL VM resource provider in full mode
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+```
+
+
 
 ## <a name="remote-desktop-into-the-vm"></a>VM'ye uzak masaüstü bağlantısı kurma
 

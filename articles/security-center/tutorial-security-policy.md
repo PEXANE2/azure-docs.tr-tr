@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024889"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519363"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -32,7 +33,7 @@ Azure Güvenlik Merkezi, seçtiğiniz ilkelere göre güvenlik önerilerini sağ
 
 Güvenlik Merkezi güvenlik ilkeleriyle çalışma için aşağıdaki seçenekleri sunar:
 
-* **Yerleşik varsayılan Ilkeyi görüntüleyin ve düzenleyin** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, tüm güvenlik merkezi kayıtlı aboneliklerine (ücretsiz veya standart katmanlara) ' ASC default ' adlı yerleşik bir girişim otomatik olarak atanır. Bu girişimi özelleştirmek için, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](security-center-policy-definitions.md) listesine bakın.
+* **Yerleşik varsayılan Ilkeyi görüntüleyin ve düzenleyin** -Güvenlik Merkezi 'ni etkinleştirdiğinizde, tüm güvenlik merkezi kayıtlı aboneliklerine (ücretsiz veya standart fiyatlandırma katmanları) ' ASC default ' adlı yerleşik bir girişim otomatik olarak atanır. Bu girişimi özelleştirmek için, içindeki ilkeleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz. Kullanıma hazır seçenekleri anlamak için [yerleşik güvenlik ilkeleri](security-center-policy-definitions.md) listesine bakın.
 
 * **Kendi özel Ilkelerinizi ekleyin** -aboneliğinize uygulanan güvenlik girişimlerini özelleştirmek istiyorsanız, bunu Güvenlik Merkezi içinde yapabilirsiniz. Daha sonra, makineleriniz oluşturduğunuz ilkeleri izleyememesi durumunda öneriler alacaksınız. Özel ilkeler oluşturma ve atama hakkında yönergeler için bkz. [özel güvenlik Ilkeleri kullanma](custom-security-policies.md).
 
@@ -85,14 +86,18 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 Azure Ilke portalından, REST API aracılığıyla veya Windows PowerShell kullanarak güvenlik ilkelerini düzenleyebilirsiniz.
 
-Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen yerleşik roller sağlayan Rol Tabanlı Erişim Denetimi'ni (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişimi olan kaynaklarla ilgili bilgileri görürler. Bu, kullanıcılara kaynak aboneliğine *sahip*, *katkıda*bulunan veya *okuyucu* rolünün atandığı anlamına gelir. Bu rollerin yanı sıra, iki özel güvenlik merkezi rolü vardır:
+Güvenlik Merkezi, Azure kullanıcılarına, gruplarına ve hizmetlerine atayabileceğiniz yerleşik roller sağlayan rol tabanlı Access Control (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişebildikleri kaynaklarla ilgili bilgileri görürler. Kullanıcılara, kaynağın aboneliğine *sahip*, *katkıda bulunan*veya *okuyucu* rolünün atandığı anlamına gelir. Ayrıca iki özel güvenlik merkezi rolü de vardır:
 
-- **Güvenlik okuyucusu**: öneriler, uyarılar, ilke ve sistem durumunu içeren, ancak değişiklik yapaistemler Için Güvenlik Merkezi 'ne yönelik görünüm haklarına sahiptir.
-- **Güvenlik Yöneticisi**: *güvenlik okuyucusu*ile aynı görünüm haklarına sahip olan ve ayrıca güvenlik ilkesini güncelleştirebilir ve öneriler ile uyarıları kapatabilir.
+- **Güvenlik okuyucusu**: öneriler, uyarılar, ilke ve sistem durumu gibi güvenlik merkezi öğelerini görüntüleme haklarına sahiptir. Değişiklik yapılamıyor.
+- **Güvenlik Yöneticisi**: *güvenlik okuyucusu*ile aynı görünüm haklarına sahiptir. Ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları kapatabilir.
 
 
-## <a name="disable-security-policies"></a>Güvenlik ilkelerini devre dışı bırak
-Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri üretiyorsa, öneriyi gönderen ilke tanımını devre dışı bırakarak bunu durdurabilirsiniz.
+## <a name="disable-security-policies-and-disable-recommendations"></a>Güvenlik ilkelerini devre dışı bırakma ve önerileri devre dışı bırakma
+
+Güvenlik girişimimiz ortamınız için önemli olmayan bir öneri tetiklerse, bu önerinin yeniden görüntülenmesini engelleyebilirsiniz. Bir öneriyi devre dışı bırakmak için, öneriyi üreten ilkeyi devre dışı bırakın.
+
+Devre dışı bırakmak istediğiniz öneri, güvenlik merkezi 'nin mevzuat uyumluluk araçlarıyla uyguladığınız bir yasal düzenleme standardı için gerekliyse görünmeye devam eder. Yerleşik girişimde bir ilkeyi devre dışı bıraksanız bile, mevzuata standart girişim içindeki bir ilke uyumluluk için gerekliyse öneriyi tetikleyecektir. Yasal standart girişimlerden ilkeleri devre dışı bırakamıyoruz.
+
 Öneriler hakkında daha fazla bilgi için bkz. [güvenlik önerilerini yönetme](security-center-recommendations.md).
 
 1. Güvenlik Merkezi 'nde, **ilke & uyumluluk** bölümünde **güvenlik ilkesi**' ni seçin.
@@ -116,7 +121,7 @@ Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri üretiyo
 
    ![ilkeyi devre dışı bırak](./media/tutorial-security-policy/disable-policy.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
    > [!NOTE]
    > İlke devre dışı bırakma değişikliklerinin etkili olması 12 saate kadar sürebilir.
@@ -124,7 +129,7 @@ Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri üretiyo
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede güvenlik ilkeleri hakkında bilgi edindiniz. İlgili bilgiler için aşağıdaki makalelere bakın:
+Bu makalede güvenlik ilkeleri açıklanmaktadır. İlgili bilgiler için aşağıdaki makalelere bakın:
 
 * PowerShell kullanarak ilkelerin nasıl ayarlanacağı hakkında yönergeler için bkz [. hızlı başlangıç: Azure PowerShell modülünü kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](../governance/policy/assign-policy-powershell.md)
 

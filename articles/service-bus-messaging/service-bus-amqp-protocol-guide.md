@@ -3,12 +3,12 @@ title: Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0 | Microsof
 description: Azure Service Bus ve Event Hubs AMQP 1,0 ifadelerine ve açıklamasına yönelik protokol Kılavuzu
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186920"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511322"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0
 
@@ -48,7 +48,7 @@ AMQP 'nin nasıl çalıştığı hakkında bilgi edinmek için en yetkili Kaynak
 
 AMQP, iletişim programları *kapsayıcılarını*çağırır; Bunlar, bu kapsayıcıların içindeki iletişim kuran varlıklar olan *düğümleri*içerir. Kuyruk böyle bir düğüm olabilir. AMQP çoğullama için izin veriyor, bu nedenle düğümler arasındaki birçok iletişim yolu için tek bir bağlantı kullanılabilir; Örneğin, bir uygulama istemcisi aynı anda bir kuyruktan alabilir ve aynı ağ bağlantısı üzerinden başka bir sıraya de gönderebilir.
 
-![][1]
+![Kapsayıcılar arasındaki oturumları ve bağlantıları gösteren diyagram.][1]
 
 Ağ bağlantısı bu nedenle kapsayıcıya bağlanır. Alıcı rolündeki kapsayıcı tarafından, gelen TCP bağlantılarını dinleyen ve kabul eden bir kapsayıcıya giden TCP yuvası bağlantısı kuran istemci rolünde kapsayıcı tarafından başlatılır. Bağlantı el sıkışması, protokol sürümü için anlaşma, aktarım düzeyi güvenliği (TLS/SSL) ve bağlantı kapsamındaki bir kimlik doğrulama/yetkilendirme el sıkışması ve SASL 'yi temel alır.
 
@@ -84,7 +84,7 @@ Bu bağlantı noktaları güvenlik duvarı tarafından engelleniyorsa, bir .NET 
 
 AMQP iletileri bağlantılar üzerinden aktarır. Bağlantı, bir oturum üzerinden oluşturulan ve iletilerin bir yönde aktarılmasını sağlayan bir iletişim yoludur; Aktarım durumu anlaşması bağlantının üzerinde ve bağlı taraflar arasında çift yönlü olur.
 
-![][2]
+![İki kapsayıcı arasında bağlantı bağlantısını gösteren bir oturum gösteren ekran görüntüsü.][2]
 
 Bağlantılar, her zaman kapsayıcı tarafından herhangi bir zamanda ve var olan bir oturum üzerinden oluşturulabilir, bu da, aktarım ve aktarım yolunun başlatılması, yuva bağlantısını oluşturan tarafın özel bir ayrıcalıksıdır.
 
@@ -100,7 +100,7 @@ Bağlanan istemci, bağlantı oluşturmak için yerel bir düğüm adı kullanma
 
 Bir bağlantı kurulduktan sonra iletiler bu bağlantı üzerinden aktarılabilir. AMQP 'de bir aktarım, bir iletiyi gönderenden bir bağlantı üzerinden alıcıya taşıyan bir açık protokol hareketi ( *Aktarım* performansı) ile yürütülür. Bir aktarım "kapatıldığı" anlamına gelir, yani her iki taraf da bu aktarımın sonucunu bir paylaşılan olarak öğrenmiş olur.
 
-![][3]
+![Gönderen ve alıcı ile bunun sonucunda elde edilen bir ileti arasındaki aktarımı gösteren bir diyagram.][3]
 
 En basit durumda, gönderen iletileri "önceden kapatılmış" olarak, istemcinin sonuç ile ilgilenmediği ve alıcının işlemin sonucu hakkında herhangi bir geri bildirim sağlamayan anlamına gelir. Bu mod, AMQP protokol düzeyinde Service Bus desteklenir, ancak istemci API 'Lerinden hiçbirinde gösterilmez.
 
@@ -120,7 +120,7 @@ Olası yinelenen göndermeleri dengelemek için Service Bus, kuyruklar ve konula
 
 Daha önce ele alınan oturum düzeyi akış denetim modelinin yanı sıra, her bağlantının kendi akış denetim modeli vardır. Oturum düzeyi akış denetimi, kapsayıcının çok fazla çerçeveyi aynı anda işlemesini korumasından korur, bağlantı düzeyi akış denetimi, uygulamayı bir bağlantıdan işlemek istediği kaç ileti ve ne zaman ücretlendirdiğine koyar.
 
-![][4]
+![Kaynak, hedef, kaynak bağlantı noktası, hedef bağlantı noktası ve protokol adını gösteren günlüğün ekran görüntüsü. En zorlu satırda 10401 (0x28 A 1) hedef bağlantı noktası siyah olarak özetlenmiştir.][4]
 
 Bir bağlantı üzerinde, aktarımlar yalnızca gönderenin yeterli *bağlantı kredisi*olduğunda gerçekleşebilir. Bağlantı kredisi, bir bağlantı kapsamındaki *akış* kullanımını kullanan alıcı tarafından ayarlanan bir sayaçtır. Gönderene bağlantı kredisi atandığında, iletileri teslim ederek bu kredisi kullanmaya çalışır. Her ileti teslimi kalan bağlantı kredisi 1 ' i azaltır. Bağlantı kredisi kullanıldığında, teslimler durur.
 
@@ -222,10 +222,10 @@ Uygulamanın tanımlaması gereken herhangi bir özelliği AMQP 'nin `applicatio
 | --- | --- | --- |
 | ileti kimliği |Bu ileti için uygulama tanımlı, serbest biçimli tanımlayıcı. Yinelenen algılama için kullanılır. |[Ileti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Uygulama tanımlı kullanıcı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |Service Bus API 'SI aracılığıyla erişilemez. |
-| - |Uygulama tanımlı hedef tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Amaç](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| şöyle değiştirin: |Uygulama tanımlı hedef tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Hedef](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |Uygulama tanımlı ileti amacı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[Etiketle](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Yanıtla |Uygulama tanımlı yanıt yolu göstergesi, Service Bus tarafından yorumlanmaz. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Uygulama tanımlı bağıntı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Uygulama tanımlı bağıntı tanımlayıcısı, Service Bus tarafından yorumlanmaz. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | içerik türü |Service Bus tarafından Yorumlanmayan gövde için uygulama tanımlı içerik türü göstergesi. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | İçerik kodlama |Service Bus tarafından Yorumlanmayan gövde için uygulama tanımlı içerik kodlama göstergesi. |Service Bus API 'SI aracılığıyla erişilemez. |
 | mutlak-süre sonu |İletinin süresinin dolacağını bildirir. Girişte (üst bilgi TTL 'SI gözlemlenmiştir) yoksayıldı, çıkışta yetkilidir. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -359,10 +359,10 @@ Protokol hareketi, yönetim belirtimi tarafından tanımlanan bir istek/yanıt d
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| çalışmasını |Hayır |string |**Put belirteci** |
-| tür |Hayır |string |Yerleştirmekte olan belirtecin türü. |
-| name |Hayır |string |Belirtecin uygulandığı "hedef kitle". |
-| dolmadan |Evet |timestamp |Belirtecin süre sonu zamanı. |
+| çalışmasını |No |string |**Put belirteci** |
+| tür |No |string |Yerleştirmekte olan belirtecin türü. |
+| name |No |string |Belirtecin uygulandığı "hedef kitle". |
+| dolmadan |Yes |timestamp |Belirtecin süre sonu zamanı. |
 
 *Name* özelliği, belirtecin ilişkilendirilacağı varlığı tanımlar. Service Bus kuyruk veya konu/abonelik yoludur. *Type* özelliği, belirteç türünü tanımlar:
 
@@ -378,8 +378,8 @@ Yanıt iletisinde aşağıdaki *uygulama özellikleri* değerleri bulunur
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| durum kodu |Hayır |int |HTTP yanıt kodu **[RFC2616]**. |
-| durum-açıklama |Evet |string |Durumun açıklaması. |
+| durum kodu |No |int |HTTP yanıt kodu **[RFC2616]**. |
+| durum-açıklama |Yes |string |Durumun açıklaması. |
 
 İstemci, *yerleştirme belirtecini* sürekli olarak ve mesajlaşma altyapısındaki herhangi bir varlık için çağırabilir. Belirteçler, geçerli istemcinin kapsamına alınır ve geçerli bağlantıya bağlanır, yani bağlantı düşerse sunucu tüm korunan belirteçleri bırakır.
 

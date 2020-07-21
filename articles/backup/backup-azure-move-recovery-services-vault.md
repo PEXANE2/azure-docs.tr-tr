@@ -3,12 +3,13 @@ title: Azure Backup kurtarma hizmetleri kasalarını taşıma
 description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma yönergeleri.
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 40ef55fa3b86856051b840c5d88ab8fadae3b7c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368235"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514110"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -16,7 +17,7 @@ Bu makalede, Azure abonelikleri arasında Azure Backup için yapılandırılmı�
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Orta Kuzey ABD, Doğu ABD, Doğu ABD2, Güney Orta ABD, Orta Batı ABD, Batı orta ABD2, Batı ABD, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Kuzey , Güney Afrika Batı, UK Güney ve UK Batı.
+Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Orta Kuzey ABD, Doğu ABD, Doğu ABD 2, Orta Güney ABD, Orta Batı ABD, Orta Batı ABD 2, Batı ABD, Batı ABD 2, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Kuzey Avrupa , Batı Avrupa, Güney Afrika Kuzey, Güney Afrika Batı, UK Güney ve UK Batı.
 
 ## <a name="unsupported-regions"></a>Desteklenmeyen bölgeler
 
@@ -24,7 +25,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Kurtarma Hizmetleri kasasını taşımaya yönelik önkoşullar
 
-- Kaynak grupları arasında kasa taşıma sırasında, hem kaynak hem de hedef kaynak grupları, yazma ve silme işlemlerini önleyecek şekilde kilitlidir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bakın.
+- Kaynak grupları arasında kasa taşıma sırasında, hem kaynak hem de hedef kaynak grupları, yazma ve silme işlemlerini önleyecek şekilde kilitlidir. Daha fazla bilgi için bu [makaleye](../azure-resource-manager/management/move-resource-group-and-subscription.md)bakın.
 - Yalnızca yönetici aboneliğinin bir kasayı taşıma izinleri vardır.
 - Kasaların abonelikler arasında taşınması için, hedef aboneliğin kaynak abonelikle aynı kiracıda bulunması ve durumunun etkinleştirilmesi gerekir.
 - Hedef kaynak grubunda yazma işlemleri gerçekleştirmek için izninizin olması gerekir.
@@ -34,7 +35,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 - VM 'nin kasayla taşınıp taşınmadığı veya değil, VM 'yi her zaman kasadaki Korunan yedekleme geçmişinden geri yükleyebilirsiniz.
 - Azure disk şifrelemesi, anahtar kasasının ve VM 'Lerin aynı Azure bölgesinde ve abonelikte bulunmasını gerektirir.
 - Bir sanal makineyi yönetilen disklere taşımak için, bu [makaleye](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)bakın.
-- Klasik model aracılığıyla dağıtılan kaynakları taşımaya yönelik seçenekler, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşıdığınıza bağlı olarak farklılık gösterir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bakın.
+- Klasik model aracılığıyla dağıtılan kaynakları taşımaya yönelik seçenekler, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşıdığınıza bağlı olarak farklılık gösterir. Daha fazla bilgi için bu [makaleye](../azure-resource-manager/management/move-resource-group-and-subscription.md)bakın.
 - Kasa için tanımlanan yedekleme ilkeleri, kasalardan abonelikler arasında veya yeni bir kaynak grubuna taşındıktan sonra tutulur.
 - Yalnızca aşağıdaki yedekleme öğesi türlerinden herhangi birini içeren bir kasayı taşıyabilirsiniz. Aşağıda listelenmeyen türlerin yedekleme öğelerinin durdurulması ve verilerin kasadan taşınmadan önce kalıcı olarak silinmesi gerekir.
   - Azure Sanal Makineler
@@ -45,7 +46,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 
 > [!NOTE]
 > Azure bölgeleri arasında Azure Backup için kurtarma hizmetleri kasalarının taşınması desteklenmez.<br><br>
-> **Azure Site Recovery**kullanarak olağanüstü durum kurtarma için herhangi bir VM (Azure IaaS, Hyper-V, VMware) veya fiziksel makine yapılandırdıysanız taşıma işlemi engellenir. Azure Site Recovery için kasa taşımak istiyorsanız, kasaların el ile taşınmasını öğrenmek için [Bu makaleyi](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) gözden geçirin.
+> **Azure Site Recovery**kullanarak olağanüstü durum kurtarma için herhangi bir VM (Azure IaaS, Hyper-V, VMware) veya fiziksel makine yapılandırdıysanız taşıma işlemi engellenir. Azure Site Recovery için kasa taşımak istiyorsanız, kasaların el ile taşınmasını öğrenmek için [Bu makaleyi](../site-recovery/move-vaults-across-regions.md) gözden geçirin.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Kurtarma Hizmetleri kasasını farklı kaynak grubuna taşımak için Azure portal kullanın
 
@@ -146,4 +147,4 @@ Yeni bir aboneliğe geçmek için `--destination-subscription-id` parametresini 
 
 Kaynak grupları ve abonelikler arasında birçok farklı kaynak türünü taşıyabilirsiniz.
 
-Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md).

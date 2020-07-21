@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 12/13/2018
+ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b19dc7a85fafa1a4d875c84db9bbefabb3cd5a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d22b0100074a230451e5c6b3967fa5dbc8ae3f56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77651618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515922"
 ---
 Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri listelenmektedir. Service Bus yönelik fiyatlandırma ve diğer kotalar hakkında daha fazla bilgi için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -22,7 +22,7 @@ Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri lis
 | Azure aboneliği başına en fazla temel veya standart ad alanı sayısı |Ad Alanı |Ek temel veya standart ad alanları için sonraki istekler Azure portal tarafından reddedilir. |100|
 | Azure aboneliği başına en fazla Premium ad alanı sayısı |Ad Alanı |Ek Premium ad alanları için sonraki istekler Portal tarafından reddedilir. |100 |
 | Kuyruk veya konu boyutu |Varlık |Sıra veya konu oluşturulduktan sonra tanımlanır. <br/><br/> Sonraki gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |1, 2, 3, 4 GB veya 5 GB.<br /><br />Premium SKU 'sunda ve [bölümlendirme](/azure/service-bus-messaging/service-bus-partitioning) ETKINLEŞTIRILMIŞ standart SKU 'da en büyük sıra veya konu boyutu 80 GB 'tır. |
-| Bir ad alanındaki eşzamanlı bağlantı sayısı |Ad Alanı |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. REST işlemleri, eşzamanlı TCP bağlantılarına doğru sayılmaz. |NetMessaging: 1.000.<br /><br />AMQP: 5.000. |
+| Bir ad alanındaki eşzamanlı bağlantı sayısı |Ad Alanı |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. REST işlemleri, eşzamanlı TCP bağlantılarına doğru sayılmaz. |NET mesajlaşma: 1.000.<br /><br />AMQP: 5.000. |
 | Bir kuyruk, konu veya abonelik varlığındaki eşzamanlı alma isteği sayısı |Varlık |Sonraki alma istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. Bu kota, bir konudaki tüm abonelikler arasında eş zamanlı alma işlemlerinin Birleşik sayısı için geçerlidir. |5.000 |
 | Ad alanı başına konu veya kuyruk sayısı |Ad Alanı |Ad alanındaki yeni bir konunun veya kuyruğun oluşturulması için sonraki istekler reddedilir. Sonuç olarak, [Azure Portal][Azure portal]ile yapılandırıldıysa bir hata iletisi oluşturulur. Yönetim API 'sinden çağrılırsa, çağıran kod tarafından bir özel durum alınır. |Temel veya Standart katman için 10.000. Bir ad alanındaki konuların ve kuyrukların toplam sayısı 10.000 ' e eşit veya ondan küçük olmalıdır. <br/><br/>Premium katmanı için, 1.000 ileti birimi başına (MU). Maksimum sınır 4.000 ' dir. |
 | Ad alanı başına [bölümlenmiş konuların veya kuyrukların](/azure/service-bus-messaging/service-bus-partitioning) sayısı |Ad Alanı |Ad alanındaki yeni bir bölümlenmiş konunun veya kuyruğun oluşturulması için sonraki istekler reddedilir. Sonuç olarak, [Azure Portal][Azure portal]ile yapılandırıldıysa bir hata iletisi oluşturulur. Yönetim API 'sinden çağrılırsa, **QuotaExceededException** özel durumu çağıran kod tarafından alınır. |Temel ve Standart katmanlar: 100.<br/><br/>Bölümlenmiş varlıklar [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) katmanda desteklenmez.<br/><br />Her bölümlenmiş kuyruk veya konu, ad alanı başına 1.000 varlık kotasına doğru sayılır. |
@@ -31,7 +31,7 @@ Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri lis
 | [ILETI kimliğinin](/dotnet/api/microsoft.azure.servicebus.message.messageid) en büyük boyutu | Varlık |- | 128 |
 | İleti [oturumu kimliğinin](/dotnet/api/microsoft.azure.servicebus.message.sessionid) en büyük boyutu | Varlık |- | 128 |
 | Bir kuyruk, konu veya abonelik varlığı için ileti boyutu |Varlık |Bu kotaları aşan gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |En büyük ileti boyutu: [Standart katman](../articles/service-bus-messaging/service-bus-premium-messaging.md)IÇIN 256 KB, [Premium katman](../articles/service-bus-messaging/service-bus-premium-messaging.md)için 1 MB. <br /><br />Sistem yükü nedeniyle, bu sınır bu değerlerden küçüktür.<br /><br />En büyük üst bilgi boyutu: 64 KB.<br /><br />Özellik paketinde en fazla üstbilgi özelliği sayısı: **byte/int. MaxValue**.<br /><br />Özellik paketinde özelliğin en büyük boyutu: Açık sınır yok. Üst bilgi boyutuyla sınırlıdır. |
-| Bir kuyruk, konu veya abonelik varlığı için ileti özelliği boyutu |Varlık | **SerializationException** özel durumu oluşturuldu. |Her özellik için en büyük ileti özelliği boyutu 32.000 ' dir. Tüm özelliklerin birikimli boyutu 64.000 ' i aşamaz. Bu sınır, hem Kullanıcı özelliklerine hem de [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [etiket](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)ve [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)gibi sistem özelliklerine sahip olan [brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)öğesinin tüm üstbilgisine uygulanır. |
+| Bir kuyruk, konu veya abonelik varlığı için ileti özelliği boyutu |Varlık | Özel durum `SerializationException` oluşturulur. |Her özellik için en büyük ileti özelliği boyutu 32.000 ' dir. Tüm özelliklerin birikimli boyutu 64.000 ' i aşamaz. Bu sınır, hem Kullanıcı özelliklerine hem de [sıra numarası](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [ETIKET](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)ve [ileti kimliği](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)gibi sistem özelliklerine sahip olan [aracılı ileti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)üstbilgisinin tamamına uygulanır. |
 | Konu başına abonelik sayısı |Varlık |Konu için ek abonelikler oluşturmaya yönelik sonraki istekler reddedilir. Sonuç olarak, Portal üzerinden yapılandırıldıysa bir hata iletisi gösterilir. Yönetim API 'sinden çağrılırsa, çağıran kod tarafından bir özel durum alınır. |Standart katman için konu başına 2.000. |
 | Konu başına SQL filtresi sayısı |Varlık |Konu üzerinde ek filtreler oluşturmaya yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |2.000 |
 | Konu başına bağıntı filtresi sayısı |Varlık |Konu üzerinde ek filtreler oluşturmaya yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |100.000 |

@@ -3,17 +3,18 @@ title: Kayıt defteri hizmeti katmanları ve özellikleri
 description: Azure Container Registry temel, standart ve Premium hizmet katmanlarında (SKU 'Lar) Özellikler ve sınırlar hakkında bilgi edinin.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 35f5d4ebd4a2b427aadc6e82e265a7da9b6409f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66cb5d7c3cdca45f7a44f0f23bfa449d5ade6dbf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683444"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512630"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry hizmet katmanları
 
 Azure Container Registry birden çok hizmet katmanında (STB olarak da bilinir) kullanılabilir. Bu katmanlar, Azure 'daki özel Docker kayıt defterinizin kapasitesini ve kullanım düzenlerini hizalamak için öngörülebilir fiyatlandırma ve çeşitli seçenekler sağlar.
 
-| Katman | Açıklama |
+| Katman | Description |
 | --- | ----------- |
 | **Temel** | Azure Container Registry hakkında bilgi edinen geliştiriciler için düşük maliyetli bir giriş noktası. Temel kayıt defterleri standart ve Premium ile aynı programlı yeteneklere sahiptir (Azure Active Directory [kimlik doğrulaması tümleştirmesi](container-registry-authentication.md#individual-login-with-azure-ad), [görüntü silme][container-registry-delete]ve [Web kancaları][container-registry-webhook]gibi). Ancak, dahil edilen depolama ve görüntü üretimi en düşük kullanım senaryoları için uygundur. |
 | **Standart** | Standart kayıt defterleri, artırılmış dahil edilen depolama ve görüntü işleme özelliklerine sahip temel ile aynı özellikleri sunar. Standart kayıt defterleri, çoğu üretim senaryosu gereksinimlerini karşılayabilir. |
@@ -23,7 +24,7 @@ Temel, standart ve Premium katmanları, programlama özelliklerini de sağlar. A
 
 ## <a name="service-tier-features-and-limits"></a>Hizmet katmanı özellikleri ve sınırları
 
-Aşağıdaki tabloda temel, standart ve Premium hizmet katmanlarının özellikleri ve limitleri ayrıntılı olarak verilmiştir.
+Aşağıdaki tabloda temel, standart ve Premium hizmet katmanlarının özelliklerinin ve kayıt defteri sınırlarının ayrıntıları verilmiştir.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
@@ -31,7 +32,7 @@ Aşağıdaki tabloda temel, standart ve Premium hizmet katmanlarının özellikl
 
 Bir kayıt defterinin hizmet katmanını Azure CLı ile veya Azure portal değiştirebilirsiniz. Geçiş yaptığınız katman gerekli maksimum depolama kapasitesine sahip olduğu sürece katman arasında serbestçe geçiş yapabilirsiniz. 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı 'deki hizmet katmanları arasında gezinmek için [az ACR Update][az-acr-update] komutunu kullanın. Örneğin, Premium 'a geçmek için:
 

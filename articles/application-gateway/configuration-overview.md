@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254676"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517867"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -25,7 +25,7 @@ Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk iki
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure sanal ağı ve adanmış alt ağ
 
@@ -146,7 +146,7 @@ Yeni bir dinleyici oluşturduğunuzda [ *temel* ve *Çoklu site*](https://docs.m
 
 - Tüm isteklerinizin (herhangi bir etki alanı için) kabul edilmesini ve arka uç havuzlara iletilmesini istiyorsanız temel ' yı seçin. [Temel dinleyiciyle bir uygulama ağ geçidi oluşturmayı](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)öğrenin.
 
-- İstekleri *konak* üstbilgisine veya ana bilgisayar adına göre farklı arka uç havuzlara iletmek istiyorsanız, gelen istekle eşleşen bir ana bilgisayar adı da belirtmeniz gereken çok siteli dinleyici ' i seçin. Bunun nedeni, Application Gateway aynı genel IP adresi ve bağlantı noktasında birden fazla Web sitesini barındırmak için HTTP 1,1 ana bilgisayar üst bilgilerini temel alır.
+- İstekleri *konak* üstbilgisine veya ana bilgisayar adlarına göre farklı arka uç havuzlarıyla iletmek istiyorsanız, Ayrıca, gelen istekle eşleşen bir ana bilgisayar adı belirtmeniz gereken çok siteli dinleyici ' i seçin. Bunun nedeni, Application Gateway aynı genel IP adresi ve bağlantı noktasında birden fazla Web sitesini barındırmak için HTTP 1,1 ana bilgisayar üst bilgilerini temel alır. Daha fazla bilgi için bkz. [Application Gateway kullanarak birden çok site barındırma](multiple-site-overview.md).
 
 #### <a name="order-of-processing-listeners"></a>İşleme dinleyicileri sırası
 
@@ -279,12 +279,16 @@ Yeniden yönlendirme hakkında daha fazla bilgi için bkz.
 - [PowerShell kullanarak trafiği dış siteye yönlendirme](redirect-external-site-powershell.md)
 - [CLı kullanarak trafiği dış siteye yönlendirme](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>HTTP üstbilgisi ayarını yeniden yazın
+### <a name="rewrite-http-headers-and-url"></a>HTTP üstbilgilerini ve URL 'YI yeniden yaz
 
-Bu ayar, istek ve yanıt paketleri istemci ile arka uç havuzları arasında hareket ederken HTTP isteği ve yanıt üst bilgilerini ekler, kaldırır veya günceller. Daha fazla bilgi için bkz.
+Yeniden yazma kurallarını kullanarak, HTTP (S) isteği ve yanıt üst bilgilerini ekleyebilir, kaldırabilir veya güncelleştirebilir, istek ve yanıt paketleri uygulama ağ geçidi aracılığıyla istemci ile arka uç havuzları arasında hareket edebilir.
 
- - [HTTP üstbilgilerini yeniden yazma genel bakış](rewrite-http-headers.md)
+Üst bilgiler ve URL parametreleri statik değerlere veya diğer üst bilgilere ve sunucu değişkenlerine ayarlanabilir. Bu, istemci IP adreslerini ayıklama, arka uç hakkındaki hassas bilgileri kaldırma, daha fazla güvenlik ekleme vb. gibi önemli kullanım durumlarının sağlanmasına yardımcı olur.
+Daha fazla bilgi için bkz.
+
+ - [HTTP üstbilgilerini yeniden yazma genel bakış](rewrite-http-headers-url.md)
  - [HTTP üstbilgisini yeniden yazmayı yapılandırma](rewrite-http-headers-portal.md)
+ - [URL yeniden yazmayı yapılandırma](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP ayarları
 
@@ -357,7 +361,7 @@ Bu ayar özel bir [araştırmayı](application-gateway-probe-overview.md#custom-
 > [!NOTE]
 > Özel araştırma, karşılık gelen HTTP ayarı açıkça bir dinleyiciyle ilişkilendirilmediği takdirde arka uç havuzunun sistem durumunu izlemez.
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Arka uç adresinden ana bilgisayar adını seçin
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>Arka uç adresinden ana bilgisayar adını seçin
 
 Bu yetenek, istekteki *ana bilgisayar* üst bilgisini arka uç havuzunun ana bilgisayar adına dinamik olarak ayarlar. Bir IP adresi veya FQDN kullanır.
 
@@ -384,7 +388,7 @@ Arka uç havuzunu dört tür arka uç üyesine işaret edebilirsiniz: belirli bi
 
 Bir arka uç havuzu oluşturduktan sonra, bir veya daha fazla istek yönlendirme kuralıyla ilişkilendirmeniz gerekir. Ayrıca, uygulama ağ geçidinizdeki her bir arka uç havuzu için sistem durumu araştırmalarını da yapılandırmanız gerekir. İstek yönlendirme kuralı koşulu karşılandığında, Application Gateway trafiği ilgili arka uç havuzundaki sağlıklı sunuculara (sistem durumu araştırmaları tarafından belirlendiği şekilde) iletir.
 
-## <a name="health-probes"></a>Sistem durumu araştırmaları
+## <a name="health-probes"></a>Durum yoklamaları
 
 Bir Application Gateway, varsayılan olarak arka uçtaki tüm kaynakların sistem durumunu izler. Ancak sistem durumu izleme üzerinde daha fazla denetim sağlamak için her bir arka uç HTTP ayarı için özel bir araştırma oluşturmanız önemle tavsiye ederiz. Özel bir araştırmanın nasıl yapılandırılacağını öğrenmek için bkz. [özel durum araştırma ayarları](application-gateway-probe-overview.md#custom-health-probe-settings).
 

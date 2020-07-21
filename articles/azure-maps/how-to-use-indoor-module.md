@@ -8,19 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434205"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517476"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
 Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azure Maps ınkapısı* modülü, Azure haritalar Oluşturucu 'da oluşturulan ınkapıların işlemesini sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)
 3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 4. `tilesetId` `statesetId` [Inkapılı haritalar oluşturma öğreticisini](tutorial-creator-indoor-maps.md)tamamlayarak bir ve, alın.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511186"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM 'de çalışan SQL Server için Azure Backup
 
@@ -26,7 +26,7 @@ Desteklenen senaryolar listesi için Azure Backup tarafından desteklenen [deste
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 
-Azure Backup, bir proxy sunucu veya listelenen IP aralıklarını dağıtmak için NSG etiketlerini destekler; yöntemlerin her biri hakkında ayrıntılı bilgi edinmek için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity)bakın.
+Azure Backup, bir proxy sunucu veya listelenen IP aralıklarını dağıtmak için NSG etiketlerini destekler; yöntemlerin her biri hakkında ayrıntılı bilgi edinmek için bu [makaleye](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity)bakın.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -102,7 +102,7 @@ Sanal makinede SQL Server yedeklemeyi etkinleştirerek bir sanal makineye AzureB
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-Kurtarma Hizmetleri kasasıyla SQL uygulamasını içeren Azure VM 'yi ' kaydetmeniz ' gerekir. Kayıt sırasında, AzureBackupWindowsWorkload uzantısı VM 'ye yüklenir. VM 'yi kaydettirmek için [register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) cmdlet 'ini kullanın.
+Kurtarma Hizmetleri kasasıyla SQL uygulamasını içeren Azure VM 'yi ' kaydetmeniz ' gerekir. Kayıt sırasında, AzureBackupWindowsWorkload uzantısı VM 'ye yüklenir. VM 'yi kaydettirmek için [register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) cmdlet 'ini kullanın.
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -113,5 +113,5 @@ Komut bu kaynağın bir **yedekleme kapsayıcısını** döndürür ve durum **k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure SQL Server VM yedekleme sorunlarını giderme yönergeleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot)
-- Azure sanal makinelerinde (VM 'Ler) çalışan ve Azure Backup hizmetini kullanan SQL Server veritabanlarının yedeklenmesi hakkında [genel sorular](https://docs.microsoft.com/azure/backup/faq-backup-sql-server) .
+- Azure SQL Server VM yedekleme sorunlarını giderme yönergeleri hakkında [daha fazla bilgi edinin](../../backup/backup-sql-server-azure-troubleshoot.md)
+- Azure sanal makinelerinde (VM 'Ler) çalışan ve Azure Backup hizmetini kullanan SQL Server veritabanlarının yedeklenmesi hakkında [genel sorular](../../backup/faq-backup-sql-server.md) .

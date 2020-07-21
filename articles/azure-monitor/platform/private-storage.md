@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184506"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515436"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Izleyici 'de günlük alımı için müşterinin sahip olduğu depolama hesapları
 
-Azure Izleyici, [özel Günlükler](data-sources-custom-logs.md) ve bazı [Azure günlükleri](azure-storage-iis-table.md)gibi bazı veri türlerinin alma işlemindeki depolama hesaplarını kullanır. Alma işlemi sırasında, Günlükler önce bir depolama hesabına gönderilir ve daha sonra Log Analytics veya Application Insights. Alma sırasında verileriniz üzerinde denetim istiyorsanız, hizmet tarafından yönetilen depolama yerine kendi depolama hesaplarınızı kullanabilirsiniz. Kendi depolama hesabınızı kullanmak, alma sırasında günlüklerin erişim, içerik, şifreleme ve bekletme işlemi üzerinde denetim sahibi olmanızı sağlar. Bu, kendi depolama alanınızı veya KCG 'LERI getir olarak adlandırdık. 
+Azure Izleyici, [özel Günlükler](data-sources-custom-logs.md) ve bazı [Azure günlükleri](./diagnostics-extension-logs.md)gibi bazı veri türlerinin alma işlemindeki depolama hesaplarını kullanır. Alma işlemi sırasında, Günlükler önce bir depolama hesabına gönderilir ve daha sonra Log Analytics veya Application Insights. Alma sırasında verileriniz üzerinde denetim istiyorsanız, hizmet tarafından yönetilen depolama yerine kendi depolama hesaplarınızı kullanabilirsiniz. Kendi depolama hesabınızı kullanmak, alma sırasında günlüklerin erişim, içerik, şifreleme ve bekletme işlemi üzerinde denetim sahibi olmanızı sağlar. Bu, kendi depolama alanınızı veya KCG 'LERI getir olarak adlandırdık. 
 
 KCG gerektiren bir senaryo, özel bağlantılar aracılığıyla ağ yalıtımına sahiptir. VNet kullanılırken, ağ yalıtımı genellikle gereksinimdir ve genel internet erişimi sınırlıdır. Bu gibi durumlarda, günlük alma için Azure Izleyici hizmeti depolamaya erişmek tamamen engelleniyor veya hatalı bir uygulama olarak kabul edilir. Bunun yerine, günlüklerin VNet içindeki bir müşterinin sahip olduğu veya kolayca erişilebilen bir depolama hesabı aracılığıyla kullanılması gerekir.
 
@@ -23,9 +23,9 @@ Başka bir senaryo, müşteri tarafından yönetilen anahtarlarla günlüklerin 
 
 ## <a name="data-types-supported"></a>Desteklenen veri türleri
 
-Bir depolama hesabından alınan veri türleri şunlardır. Bu türlerin alımı hakkında daha fazla bilgi için bkz. [Azure tanılama uzantısından Azure Izleyici günlüklerine veri toplama](azure-storage-iis-table.md) .
+Bir depolama hesabından alınan veri türleri şunlardır. Bu türlerin alımı hakkında daha fazla bilgi için bkz. [Azure tanılama uzantısından Azure Izleyici günlüklerine veri toplama](./diagnostics-extension-logs.md) .
 
-| Type | Tablo bilgileri |
+| Tür | Tablo bilgileri |
 |:-----|:------------------|
 | IIS günlükleri | Blob: wad-IIS-LogFiles|
 |Windows olay günlükleri | Tablo: WADWindowsEventLogsTable |
@@ -54,7 +54,7 @@ Bağlantıların oluşturulması ve kaldırılması için kullanılabilecek tek 
 ## <a name="command-line-and-rest-api"></a>Komut satırı ve REST API
 
 ### <a name="command-line"></a>Komut satırı
-Bağlı depolama hesapları oluşturmak ve yönetmek için [az Monitor Log Analytics Workspace Linked-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)' ı kullanın. Bu komut, depolama hesaplarının bir çalışma alanından bağlanıp bağlantısını kesebilir ve bağlı depolama hesaplarını listeleyebilir.
+Bağlı depolama hesapları oluşturmak ve yönetmek için [az Monitor Log Analytics Workspace Linked-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage)' ı kullanın. Bu komut, depolama hesaplarının bir çalışma alanından bağlanıp bağlantısını kesebilir ve bağlı depolama hesaplarını listeleyebilir.
 
 ### <a name="request-and-cli-values"></a>İstek ve CLı değerleri
 

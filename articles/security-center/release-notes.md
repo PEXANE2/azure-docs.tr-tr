@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 997b7b1442d29c4daa4e47c89a7f53d46c3b8c81
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: e8dc2edf19279aff05e5d5be6096505acf1b3438
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969594"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519616"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -33,6 +33,9 @@ Bu sayfa düzenli olarak güncelleştirildiğinden, sık sık ziyaret edin. Alt�
 
 Temmuz ayında güncelleştirmeler şunları içerir:
 - [Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [SQL gelişmiş veri güvenliği için altı ilke kullanım dışı](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure depolama için tehdit koruması Azure dosyaları ve Azure Data Lake Storage 2. içerecek şekilde genişletildi (Önizleme)
 
@@ -41,6 +44,23 @@ Azure depolama için tehdit koruması, Azure depolama hesaplarınızdaki zararl�
 Verileriniz, blob kapsayıcıları, dosya paylaşımları veya veri Lakes olarak depolanıp saklanmadığı için korunabilir. 
 
 [Azure depolama için tehdit koruması](threat-protection.md#threat-protection-for-azure-storage-)hakkında daha fazla bilgi edinin.
+
+
+### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>SQL gelişmiş veri güvenliği için altı ilke kullanım dışı
+
+SQL makinelerinde gelişmiş veri güvenliği ile ilgili altı ilke kullanım dışı bırakılıyor:
+
+- Gelişmiş tehdit koruması türleri SQL yönetilen örneği gelişmiş veri güvenliği ayarları içinde ' All ' olarak ayarlanmalıdır
+- Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda ' tümü ' olarak ayarlanmalıdır
+- SQL yönetilen örneği için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir
+- SQL Server için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir
+- SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda yöneticilere ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir
+- SQL Server Gelişmiş veri güvenliği ayarları 'nda Yöneticiler ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir
+
+[Yerleşik ilkeler](security-center-policy-definitions.md)hakkında daha fazla bilgi edinin.
+
+
+
 
 
 ## <a name="june-2020"></a>Haziran 2020

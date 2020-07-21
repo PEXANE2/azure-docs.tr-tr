@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855950"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519723"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezinde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı.
@@ -42,7 +42,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 
 3. **Veri toplamayı**seçin.
 4. Otomatik **sağlama altında,** otomatik sağlamayı etkinleştirmek için **Açık** ' ı seçin.
-5. **Kaydet**'i seçin. Aracı, 15 dakika içinde tüm VM 'Lere dağıtılır. 
+5. **Kaydet**’i seçin. Aracı, 15 dakika içinde tüm VM 'Lere dağıtılır. 
 
 >[!TIP]
 > Bir çalışma alanının sağlanması gerekiyorsa, aracı yüklemesi 25 dakikaya kadar sürebilir.
@@ -78,7 +78,7 @@ Güvenlik Merkezi tarafından oluşturulan bir çalışma alanı seçmek için:
 1. Güvenlik Merkezi, abonelik için ayarlanan fiyatlandırma katmanı uyarınca çalışma alanında bir güvenlik merkezi çözümünü otomatik olarak etkinleştirir. 
 
 > [!NOTE]
-> Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının Log Analytics fiyatlandırma katmanı, güvenlik merkezi faturalandırmasını etkilemez. Güvenlik Merkezi faturaları her zaman bir çalışma alanına yüklenmiş olan Güvenlik Merkezi ilkelerine ve çözümlerine göre belirlenir. Güvenlik Merkezi, Ücretsiz katmanında varsayılan çalışma alanında *SecurityCenterFree* çözümünü etkinleştirir. Güvenlik Merkezi, Standart katmanda varsayılan çalışma alanında *Security* çözümünü etkinleştirir.
+> Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının Log Analytics fiyatlandırma katmanı, güvenlik merkezi faturalandırmasını etkilemez. Güvenlik Merkezi faturaları her zaman bir çalışma alanına yüklenmiş olan Güvenlik Merkezi ilkelerine ve çözümlerine göre belirlenir. Güvenlik Merkezi, Ücretsiz katmanında varsayılan çalışma alanında *SecurityCenterFree* çözümünü etkinleştirir. Güvenlik Merkezi, Standart katman için varsayılan çalışma alanında *güvenlik* çözümüne izin vermez.
 > Log Analytics veri depolama, veri depolama için ek ücretler gerektirebilir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 Mevcut Log Analytics Hesapları hakkında daha fazla bilgi için bkz. [var olan Log Analytics müşterileri](./faq-azure-monitor-logs.md).
@@ -106,7 +106,7 @@ Mevcut bir Log Analytics çalışma alanını seçmek için:
    >
    >
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 4. **Kaydet**' i seçtikten sonra, daha önce varsayılan bir çalışma alanına bağlı olan Izlenen VM 'leri yeniden yapılandırmak isteyip istemediğiniz sorulur.
 
    - Yeni çalışma alanı ayarlarının yalnızca yeni VM 'Lere uygulanmasını istiyorsanız **Hayır** ' ı seçin. Yeni çalışma alanı ayarları yalnızca yeni aracı yüklemeleri için geçerlidir; Log Analytics Aracısı yüklü olmayan yeni bulunan VM 'Ler.
@@ -184,7 +184,7 @@ Her bir küme için güvenlik ve uygulama dolabı olay kimliklerinin tamamen bir
 
 Filtreleme ilkenizi seçmek için:
 1. **Veri toplama** sayfasında, **güvenlik olayları**altında filtreleme ilkenizi seçin.
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
    ![Filtreleme ilkesi seçin][5]
 
@@ -217,7 +217,7 @@ Bu ayarı güvenlik ilkesinde devre dışı bırakarak, her zaman kaynaklardan o
 1. Güvenlik Merkezi ana menüsüne dönüp güvenlik ilkesi ' ni seçin.
 2. Otomatik sağlamayı devre dışı bırakmak istediğiniz aboneliğin satırındaki **Ayarları Düzenle** ' ye tıklayın.
 3. **Güvenlik ilkesi – veri toplama** sayfasında, **Otomatik sağlama** altında **kapalı**' yı seçin.
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
    ![Otomatik sağlamayı devre dışı bırak][6]
 

@@ -1,18 +1,19 @@
 ---
-title: Azure portal eylem grupları oluşturma ve yönetme
+title: Azure portalında eylem gruplarını oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 6/5/2020
+ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465261"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516184"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
 
 E-posta veya SMS ile bir kişiye bildirimde bulunan bir eylem yapılandırdığınızda, bunlar eylem grubuna eklendiğini belirten bir onay alırlar.
@@ -69,7 +70,7 @@ Bir eylem grubu oluşturduktan sonra, **izleme** bölmesinde **Uyarılar** giri�
 ## <a name="action-specific-information"></a>Eyleme özgü bilgiler
 
 > [!NOTE]
-> Aşağıdaki öğelerin her birinde sayısal limitleri [izlemek Için abonelik hizmeti sınırlarına](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) bakın.  
+> Aşağıdaki öğelerin her birinde sayısal limitleri [izlemek Için abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits) bakın.  
 
 ### <a name="automation-runbook"></a>Otomasyon Runbook'u
 Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md) bakın.
@@ -87,7 +88,7 @@ E-postalar aşağıdaki e-posta adreslerinden gönderilir. E-posta filtrelemesin
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
 
-### <a name="email-azure-resource-manager-role"></a>E-posta Azure Resource Manager Rolü
+### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager Rolüne E-posta Gönder
 Abonelik rolü üyelerine e-posta gönderin. E-posta yalnızca rolün **Azure AD Kullanıcı** üyelerine gönderilir. Azure AD gruplarına veya hizmet sorumlularına e-posta gönderilmez.
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
@@ -106,21 +107,21 @@ Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir.
 Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
 ### <a name="secure-webhook"></a>Güvenli Web Kancası
-Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../../active-directory/develop/v2-overview.md).
 
-1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
-    - Korumalı API 'nizi bir Daemon uygulaması tarafından çağrılacak şekilde yapılandırın.
+1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. [korumalı Web API 'si: uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration).
+    - Korumalı API 'nizi [bir Daemon uygulaması tarafından çağrılacak](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)şekilde yapılandırın.
     
-1. Azure AD uygulamanızı kullanmak için eylem gruplarını etkinleştirin.
+2. Azure AD uygulamanızı kullanmak için eylem gruplarını etkinleştirin.
 
     > [!NOTE]
-    > Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) bir üyesi olmanız gerekir.
+    > Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) bir üyesi olmanız gerekir.
     
     - PowerShell betiğinin Connect-AzureAD çağrısını Azure AD kiracı KIMLIĞINIZI kullanacak şekilde değiştirin.
     - PowerShell betiğinin değişken $myAzureADApplicationObjectId Azure AD uygulamanızın nesne KIMLIĞINI kullanacak şekilde değiştirin.
     - Değiştirilen betiği çalıştırın.
     
-1. Eylem grubu güvenli Web kancası eylemini yapılandırın.
+3. Eylem grubu güvenli Web kancası eylemini yapılandırın.
     - Betikten $myApp. ObjectID değerini kopyalayın ve Web kancası eylem tanımındaki uygulama nesne KIMLIĞI alanına girin.
     
     ![Güvenli Web kancası eylemi](./media/action-groups/action-groups-secure-webhook.png)
@@ -252,4 +253,4 @@ Bir eylem grubunda sınırlı sayıda Web kancası eylemi olabilir.
 * [ITSM Bağlayıcısı](../../azure-monitor/platform/itsmc-overview.md)hakkında daha fazla bilgi edinin.
 * Uyarıların [hız sınırlaması](../../azure-monitor/platform/alerts-rate-limiting.md) hakkında daha fazla bilgi edinin.
 * [Etkinlik günlüğü uyarılarına genel bir bakış](../../azure-monitor/platform/alerts-overview.md)elde edin ve uyarıları alma hakkında bilgi edinin.  
-* [Bir hizmet durumu bildirimi gönderildiğinde uyarıların nasıl yapılandırılacağını](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)öğrenin.
+* [Bir hizmet durumu bildirimi gönderildiğinde uyarıların nasıl yapılandırılacağını](../../service-health/alerts-activity-log-service-notifications-portal.md)öğrenin.

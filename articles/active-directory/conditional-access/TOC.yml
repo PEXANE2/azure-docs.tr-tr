@@ -47,8 +47,6 @@
       href: controls.md
     - name: Klasik ilke geçişleri
       href: policy-migration.md
-    - name: Ana hat koruma ilkeleri
-      href: concept-baseline-protection.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:

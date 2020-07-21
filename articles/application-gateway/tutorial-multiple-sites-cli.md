@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806261"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517918"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLı kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 > * Etki alanınızda bir CNAME kaydı oluşturma
 
-![Çok siteli yönlendirme örneği](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Çok siteli Application Gateway":::
 
 İsterseniz, [Azure PowerShell](tutorial-multiple-sites-powershell.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>Arka uç dinleyicileri ekleme
+### <a name="add-listeners"></a>Dinleyiciler ekleme
 
-[az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) kullanarak gereken arka uç dinleyicilerini ekleyin.
+[Az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)kullanılarak trafiği yönlendirmek için gereken dinleyicileri ekleyin.
+
+>[!NOTE]
+> Application Gateway veya WAF v2 SKU 'SU ile dinleyici başına 5 adede kadar ana bilgisayar adı yapılandırabilir ve ana bilgisayar adında joker karakterler kullanabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
+>Azure CLı kullanarak bir dinleyicide birden çok konak adı ve joker karakter kullanmak için yerine kullanmanız gerekir `--host-names` `--host-name` . Ana bilgisayar adları ile, en fazla 5 ana bilgisayar adını virgülle ayrılmış değerler olarak belirtebilirsiniz. Örneğin, `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

@@ -3,12 +3,12 @@ title: Azure Pipelines ve Azure Application Insights ile DevOps yayın işlem ha
 description: Application Insights ile sürekli izlemeyi hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652761"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517136"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Yayın ardışık düzenine sürekli izleme ekleme
 
@@ -101,4 +101,4 @@ Dağıtım kapısı davranışını ve diğer sürüm adımlarını yayın günl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Pipelines hakkında daha fazla bilgi için [Azure Pipelines belgelerine](https://docs.microsoft.com/azure/devops/pipelines)bakın.
+Azure Pipelines hakkında daha fazla bilgi için [Azure Pipelines belgelerine](/azure/devops/pipelines)bakın.

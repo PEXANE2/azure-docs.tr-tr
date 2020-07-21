@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 06/04/2020
-ms.openlocfilehash: 340f4310da5131ea0d2576e7c77d8f6cd0a731b3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/20/2020
+ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983140"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515145"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -101,7 +101,7 @@ Bir veritabanı için maksimum veri boyutuna kadar yedekleme depolama tüketimi 
 
 ## <a name="backup-retention"></a>Yedekleri bekletme
 
-Tüm yeni, geri yüklenen ve kopyalanmış veritabanları için, Azure SQL veritabanı ve Azure SQL yönetilen örneği, en son 7 gün içinde varsayılan olarak veri için yeterli yedeklemeler sağlar. Hiper ölçekli veritabanları hariç olmak üzere, 1-35 gün aralığında veritabanı başına [yedekleme saklama süresini değiştirebilirsiniz](#change-the-pitr-backup-retention-period) . [Yedekleme depolama tüketimi](#backup-storage-consumption)bölümünde açıklandığı gibi, ınvr 'yi etkinleştirmek için depolanan yedeklemeler saklama süresinden daha eski olabilir.
+Tüm yeni, geri yüklenen ve kopyalanmış veritabanları için, Azure SQL veritabanı ve Azure SQL yönetilen örneği, en son 7 gün içinde varsayılan olarak veri için yeterli yedeklemeler sağlar. Hiper ölçekli veritabanları hariç olmak üzere, 1-35 gün aralığında her etkin veritabanı için [yedekleme saklama süresini değiştirebilirsiniz](#change-the-pitr-backup-retention-period) . [Yedekleme depolama tüketimi](#backup-storage-consumption)bölümünde açıklandığı gibi, ınvr 'yi etkinleştirmek için depolanan yedeklemeler saklama süresinden daha eski olabilir. Yalnızca Azure SQL yönetilen örneği için, 0-35 gün aralığında bir veritabanı silindikten sonra, yedek saklama oranını ayarlamak mümkündür. 
 
 Bir veritabanını silerseniz, sistem yedeklemeleri, belirli bir saklama süresi ile çevrimiçi bir veritabanı için olduğu gibi korur. Silinen bir veritabanı için yedekleme saklama süresini değiştiremezsiniz.
 
@@ -192,7 +192,7 @@ Varsayılan yedek saklama süresini Azure portal, PowerShell veya REST API kulla
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Azure portal kullanarak, yedek yedekleme saklama süresini değiştirin
 
-Azure portal kullanarak yedek saklama süresini değiştirmek için, saklama süresini değiştirmek istediğiniz veritabanları ile sunucuya veya yönetilen örneğe gidin. 
+Azure portal kullanarak etkin veritabanlarının ara yedek saklama süresini değiştirmek için, saklama süresini değiştirmek istediğiniz veritabanlarında sunucuya veya yönetilen örneğe gidin. 
 
 #### <a name="sql-database"></a>[SQL Veritabanı](#tab/single-database)
 
@@ -214,9 +214,54 @@ SQL yönetilen örneği için yedek saklama ile ilgili değişiklikler, tek bir 
 > [!IMPORTANT]
 > PowerShell Azurerd modülü, SQL veritabanı ve SQL yönetilen örneği tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Daha fazla bilgi için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module içindeki komutlar için bağımsız değişkenler Azurerd modüllerindekilerle oldukça benzerdir.
 
+#### <a name="sql-database"></a>[SQL Veritabanı](#tab/single-database)
+
+Etkin Azure SQL veritabanları için yedek yedekleme bekletmesini değiştirmek için aşağıdaki PowerShell örneğini kullanın.
+
 ```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
+
+#### <a name="sql-managed-instance"></a>[SQL Yönetilen Örnek](#tab/managed-instance)
+
+**Tek bir etkin** SQL yönetilen örnek veritabanları için yedek yedekleme bekletmesini değiştirmek Için aşağıdaki PowerShell örneğini kullanın.
+
+```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
+```
+
+**Tüm etkin** SQL yönetilen örnek veritabanlarının ara yedek saklama süresini değiştirmek Için aşağıdaki PowerShell örneğini kullanın.
+
+```powershell
+# SET new PITR backup retention period for ALL active databases
+# Valid backup retention must be between 1 and 35 days
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
+```
+
+**Ayrı olarak silinen** bir SQL yönetilen örnek veritabanı için, ara yedek saklama süresini değiştirmek Için aşağıdaki PowerShell örneğini kullanın.
+ 
+```powershell
+# SET new PITR backup retention on an individual deleted database
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database.
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+**Tüm silinen** SQL yönetilen örnek veritabanlarının ara yedek saklama süresini değiştirmek Için aşağıdaki PowerShell örneğini kullanın.
+
+```powershell
+# SET new PITR backup retention for ALL deleted databases
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+Sıfır (0) gün bekletme, yedeklemenin hemen silindiğini ve silinen bir veritabanı için artık saklanmayacak olduğunu gösterir.
+Yedek saklama, silinen bir veritabanı için azaltıldıktan sonra artık arttırılmayacaktır.
+
+---
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>REST API kullanarak, yedek yedekleme saklama süresini değiştirin
 
@@ -260,3 +305,4 @@ Daha fazla bilgi için bkz. [yedekleme bekletme REST API](https://docs.microsoft
 - [PowerShell 'i kullanarak bir veritabanını zaman içinde bir noktaya geri yükleme](scripts/restore-database-powershell.md)hakkında daha fazla bilgi alın.
 - Azure Blob depolamada Azure portal kullanarak otomatik yedeklemelerin uzun süreli bekletmesini yapılandırma, yönetme ve geri yükleme hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak uzun süreli yedek saklama Işlemlerini yönetme](long-term-backup-retention-configure.md).
 - PowerShell kullanarak Azure Blob depolamada otomatik yedeklemelerin uzun süreli bekletmesini yapılandırma, yönetme ve geri yükleme hakkında daha fazla bilgi için bkz. [PowerShell kullanarak uzun süreli yedek saklama 'Yı yönetme](long-term-backup-retention-configure.md).
+- Azure SQL yönetilen örneği için yedekleme depolama tutma ve maliyetlerinin ince ayar yapma hakkında bilgi edinmek için bkz. [yönetilen örnekteki yedekleme depolama maliyetlerini ayarlama](https://aka.ms/mi-backup-tuning).

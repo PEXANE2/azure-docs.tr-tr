@@ -3,11 +3,12 @@ title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
 description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb47453140c7659ca2f5e6da2e40d9d78405f8e7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200684"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517102"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -25,13 +26,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | `Unique value` | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
+   | **Ad**      | `Unique value` | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
    | **Kaynak Grubu**     | `myResourceGroup`      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
-   | **Geli** | `East US` | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
+   | **Bölge** | `East US` | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
    | **Kaynak modu** | `Classic` veya `Workspace-based` | Çalışma alanı tabanlı kaynaklar şu anda genel önizlemededir ve Application Insights telemetrinizi ortak bir Log Analytics çalışma alanına göndermenizi sağlar. Daha fazla bilgi için [çalışma alanı tabanlı kaynaklardaki makaleye](create-workspace-resource.md)bakın.
 
 > [!NOTE]
-> Aynı kaynak adını farklı kaynak grupları arasında kullanabilmeniz mümkün olsa da, genel olarak benzersiz bir ad kullanılması yararlı olabilir. Bu, gerekli sözdizimini basitleştirdiği için [çapraz kaynak sorguları gerçekleştirmeyi](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) planlıyorsanız yararlı olabilir.
+> Aynı kaynak adını farklı kaynak grupları arasında kullanabilmeniz mümkün olsa da, genel olarak benzersiz bir ad kullanılması yararlı olabilir. Bu, gerekli sözdizimini basitleştirdiği için [çapraz kaynak sorguları gerçekleştirmeyi](../log-query/cross-workspace-query.md#identifying-an-application) planlıyorsanız yararlı olabilir.
 
 Gerekli alanlara uygun değerleri girin ve ardından **gözden geçir + oluştur**' u seçin.
 
@@ -92,7 +93,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Bu cmdlet 'in tam PowerShell belgeleri için ve izleme anahtarını alma hakkında bilgi edinmek için [Azure PowerShell belgelerine](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)danışın.
+Bu cmdlet 'in tam PowerShell belgeleri için ve izleme anahtarını alma hakkında bilgi edinmek için [Azure PowerShell belgelerine](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)danışın.
 
 ### <a name="azure-cli-preview"></a>Azure CLı (Önizleme)
 
@@ -149,12 +150,12 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Bu komutla ilgili tam Azure CLı belgeleri için ve izleme anahtarını alma hakkında bilgi edinmek için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Bu komutla ilgili tam Azure CLı belgeleri için ve izleme anahtarını alma hakkında bilgi edinmek için bkz. [Azure CLI belgeleri](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Tanılama Araması](../../azure-monitor/app/diagnostic-search.md)
 * [Ölçümleri keşfetme](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics sorguları yazma](../../azure-monitor/app/analytics.md)
+* [Analytics sorguları yazma](../log-query/log-query-overview.md)
 
 <!--Link references-->
 

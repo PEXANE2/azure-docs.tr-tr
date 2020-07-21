@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519288"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -90,7 +91,7 @@ Ek bilgi ve seçenekler için **Görünüm** ' ü seçin:
 Güvenlik Merkezi, Azure 'da çalışan ancak güvenlik merkezi 'ne bağlı olmayan güvenlik çözümlerini otomatik olarak bulur ve **bulunan çözümler** bölümünde çözümleri görüntüler. Bu çözümler [Azure AD kimlik koruması](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)ve iş ortağı çözümleri gibi Azure çözümlerini içerir.
 
 > [!NOTE]
-> Güvenlik Merkezi’nin Standart katmanı, bulunan çözümler özelliği için abonelik düzeyinde gereklidir. Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) .
+> Güvenlik Merkezi 'nin standart katmanı, bulunan çözümler özelliğinin abonelik düzeyinde gereklidir. Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [fiyatlandırma](security-center-pricing.md) .
 >
 
 Güvenlik Merkezi ile tümleştirilecek ve güvenlik uyarıları hakkında bildirim almak için bir çözüm altında **Bağlan** ' ı seçin.

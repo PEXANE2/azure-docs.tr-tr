@@ -3,11 +3,12 @@ title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9891be5eded94c64a6cc256b99510a9c0c673daf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718334"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514178"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -23,7 +24,7 @@ Makale şunları sağlar:
 
 ## <a name="why-back-up-dpm-to-azure"></a>DPM neden Azure 'a yedeklenir?
 
-[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) , dosya ve uygulama verilerini yedekler. DPM, Azure Backup ile Şu şekilde etkileşime girer:
+[System Center DPM](/system-center/dpm/dpm-overview) , dosya ve uygulama verilerini yedekler. DPM, Azure Backup ile Şu şekilde etkileşime girer:
 
 - **Fiziksel sunucuda veya şirket IÇI VM 'de çalışan DPM** — disk ve bant yedeklemeye ek olarak verileri Azure 'Daki bir yedekleme kasasına yedekleyebilirsiniz.
 - **Azure VM üzerinde çalışan DPM** — güncelleştirme 3 veya sonraki sürümleriyle System Center 2012 R2 'den DPM 'Yi BIR Azure sanal makinesinde dağıtabilirsiniz. SANAL makineye bağlı Azure disklerine veri yedekleyebilir veya verileri bir yedekleme kasasına yedeklemek için Azure Backup kullanabilirsiniz.
@@ -42,12 +43,12 @@ Fiziksel sunucuda DPM | System Center 2012 SP1 veya üzeri; System Center 2012 R
 Hyper-V VM üzerinde DPM | System Center 2012 SP1 veya üzeri; System Center 2012 R2.
 VMware VM üzerinde DPM | Güncelleştirme paketi 5 veya sonraki sürümleri ile System Center 2012 R2.
 Bileşenler | DPM sunucusunda Windows PowerShell ve .NET Framework 4,5 yüklü olmalıdır.
-Desteklenen uygulamalar | DPM 'nin neleri yedekleyebileceklerini [öğrenin](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) .
+Desteklenen uygulamalar | DPM 'nin neleri yedekleyebileceklerini [öğrenin](/system-center/dpm/dpm-protection-matrix) .
 Desteklenen dosya türleri | Bu dosya türleri Azure Backup: şifreli (yalnızca tam yedeklemeler) ile yedeklenebilir. Sıkıştırılmış (artımlı yedeklemeler desteklenir); Seyrek (artımlı yedeklemeler desteklenir); Sıkıştırılmış ve seyrek (seyrek olarak kabul edilir).
 Desteklenmeyen dosya türleri | Büyük/küçük harfe duyarlı dosya sistemlerindeki sunucular; sabit bağlantılar (atlandı); yeniden ayrıştırma noktaları (atlandı); şifrelenmiş ve sıkıştırılmış (atlandı); şifrelenmiş ve seyrek (atlandı); Sıkıştırılmış akış; akışı Ayrıştır.
 Yerel depolama | Yedeklemek istediğiniz her makinenin, yedeklenmekte olan verilerin boyutunun en az %5 ' i kadar yerel boş depolama alanı olmalıdır. Örneğin, 100 GB veri yedeklenirken karalama konumunda en az 5 GB boş alan gerekir.
 Kasa depolaması | Bir Azure Backup kasasına yedekleyebileceğiniz veri miktarına yönelik bir sınır yoktur, ancak bir veri kaynağının boyutu (örneğin bir sanal makine veya veritabanı) 54.400 GB 'ı aşmamalıdır.
-Azure ExpressRoute | Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi ile birlikte yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.<br/><br/> **Ortak eşleme ile**: aşağıdaki etki alanlarına/adreslere erişim sağlayın:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Microsoft eşlemesi ile**aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>-Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).<br/><br/>**Note**: genel eşleme, yeni devreler için kullanım dışıdır.
+Azure ExpressRoute | Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi ile birlikte yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.<br/><br/> **Ortak eşleme ile**: aşağıdaki etki alanlarına/adreslere erişim sağlayın:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Microsoft eşlemesi ile**aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>-Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](../expressroute/expressroute-routing.md).<br/><br/>**Note**: genel eşleme, yeni devreler için kullanım dışıdır.
 Azure Backup aracısı | DPM, System Center 2012 SP1 üzerinde çalışıyorsa, DPM SP1 için paketi 2 veya sonraki bir sürümü çalıştırın. Bu, aracı yüklemesi için gereklidir.<br/><br/> Bu makalede, Microsoft Azure kurtarma hizmeti (MARS) Aracısı olarak da bilinen Azure Backup aracısının en son sürümünün nasıl dağıtılacağı açıklanır. Daha önceki bir sürümü dağıttıysanız yedeklemenin beklendiği gibi çalıştığından emin olmak için en son sürüme güncelleştirin.
 
 Başlamadan önce Azure Backup özelliği etkinleştirilmiş bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. [Azure Backup fiyatlandırması](https://azure.microsoft.com/pricing/details/backup/)hakkında bilgi edinin.
@@ -60,7 +61,7 @@ Coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seç
 
 - Varsayılan olarak, kasanız coğrafi olarak yedekli depolamaya sahiptir.
 - Kasa birincil yedeklemenizin varsa, seçeneği coğrafi olarak yedekli depolama olarak ayarlayın. Gerçekten dayanıklı olmayan bir ucuz seçeneği istiyorsanız yerel olarak yedekli depolamayı yapılandırmak için aşağıdaki yordamı kullanın.
-- [Azure depolama](../storage/common/storage-redundancy.md)ve [coğrafi](../storage/common/storage-redundancy-grs.md) olarak yedekli ve [yerel olarak yedekli](../storage/common/storage-redundancy-lrs.md) depolama seçenekleri hakkında bilgi edinin.
+- [Azure depolama](../storage/common/storage-redundancy.md)ve [coğrafi](../storage/common/storage-redundancy.md) olarak yedekli ve [yerel olarak yedekli](../storage/common/storage-redundancy.md) depolama seçenekleri hakkında bilgi edinin.
 - Depolama ayarlarını ilk yedeklemeden önce değiştirin. Zaten bir öğe yedeklediyseniz, depolama ayarlarını değiştirmeden önce kasada yedeklemeyi durdurun.
 
 Depolama çoğaltma ayarını düzenlemek için:
@@ -130,7 +131,7 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>DPM sunucusunu kasaya kaydetme
 
-1. DPM Yönetici Konsolu > **yönetimi**'nde **çevrimiçi**' ya tıklayın. **Kaydol**’u seçin. Sunucu kaydetme Sihirbazı 'Nı açar.
+1. DPM Yönetici Konsolu > **yönetimi**'nde **çevrimiçi**' ya tıklayın. **Kaydet**’i seçin. Sunucu kaydetme Sihirbazı 'Nı açar.
 2. **Ara sunucu yapılandırması**' nda, proxy ayarlarını gereken şekilde belirtin.
 
     ![Ara sunucu yapılandırması](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
@@ -164,7 +165,7 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
 
 7. DPM sunucusunu kasaya kaydetmek için **Kaydet** ' e tıklayın.
 
-Sunucu kasaya başarıyla kaydolduktan sonra, Microsoft Azure yedeklemeye başlamaya başlamaya hazırsınız. İş yüklerini Azure 'a yedeklemek için DPM konsolundaki koruma grubunu yapılandırmanız gerekir. Koruma gruplarını dağıtmayı [öğrenin](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) .
+Sunucu kasaya başarıyla kaydolduktan sonra, Microsoft Azure yedeklemeye başlamaya başlamaya hazırsınız. İş yüklerini Azure 'a yedeklemek için DPM konsolundaki koruma grubunu yapılandırmanız gerekir. Koruma gruplarını dağıtmayı [öğrenin](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) .
 
 ## <a name="troubleshoot-vault-credentials"></a>Kasa kimlik bilgileri sorunlarını giderme
 

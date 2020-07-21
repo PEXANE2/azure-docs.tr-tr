@@ -3,11 +3,12 @@ title: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olara
 description: Belirli bir kapsamda oluşturulan tüm VM 'Lerde yedeklemeyi otomatik olarak etkinleştirmek için Azure Ilkesi 'ni nasıl kullanacağınızı açıklayan bir makale
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77584277"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514229"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 
@@ -17,7 +18,7 @@ Bugün Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konu
 
 ## <a name="supported-scenarios"></a>Desteklenen Senaryolar
 
-* Yerleşik ilke şu anda yalnızca Azure VM 'Leri için desteklenmektedir. Kullanıcılar, atama sırasında belirtilen bekletme ilkesinin bir VM bekletme ilkesi olduğundan emin olunması gerekir. Bu ilke tarafından desteklenen tüm VM SKU 'Larını görmek için [Bu](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) belgeye başvurun.
+* Yerleşik ilke şu anda yalnızca Azure VM 'Leri için desteklenmektedir. Kullanıcılar, atama sırasında belirtilen bekletme ilkesinin bir VM bekletme ilkesi olduğundan emin olunması gerekir. Bu ilke tarafından desteklenen tüm VM SKU 'Larını görmek için [Bu](./backup-azure-policy-supported-skus.md) belgeye başvurun.
 
 * İlke her seferinde tek bir konuma ve aboneliğe atanabilir. Konumlar ve abonelikler arasında VM 'Lere yönelik yedeklemeyi etkinleştirmek için, her bir konum ve abonelik birleşimi için bir tane olmak üzere, ilke atamasının birden çok örneğinin oluşturulması gerekir.
 
@@ -47,7 +48,7 @@ Bugün Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konu
 
 > [!NOTE]
 >
-> Azure Ilkesi, [Düzeltme](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)kullanılarak mevcut VM 'lerde de kullanılabilir.
+> Azure Ilkesi, [Düzeltme](../governance/policy/how-to/remediate-resources.md)kullanılarak mevcut VM 'lerde de kullanılabilir.
 
 > [!NOTE]
 >
@@ -55,4 +56,4 @@ Bugün Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konu
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[Azure Ilkesi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/governance/policy/overview)
+[Azure Ilkesi hakkında daha fazla bilgi edinin](../governance/policy/overview.md)

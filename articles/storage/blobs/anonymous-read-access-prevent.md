@@ -1,34 +1,34 @@
 ---
 title: Kapsayıcılara ve bloblara anonim genel okuma erişimini engelleyin
 titleSuffix: Azure Storage
-description: ''
+description: Bir depolama hesabına karşı Anonim istekleri çözümlemeyi ve tüm depolama hesabı veya tek bir kapsayıcı için anonim erişimin nasıl önleyeceğinizi öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 90d7cd65bbc07524391f34fe0efce2b044664cef
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518733"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve bloblara anonim genel okuma erişimini engelleyin
 
-Azure depolama 'daki kapsayıcılara ve bloblara anonim genel okuma erişimi, verileri paylaşmanın kolay bir yoludur, ancak bir güvenlik riski de sunabilir. Anonim erişim bozacağından ' i etkinleştirmek ve verilerinize anonim erişimin nasıl değerlendirileceğini anlamak önemlidir. İşlemsel karmaşıklık, insan hatası veya genel olarak erişilebilen verilere karşı kötü amaçlı saldırı maliyetli veri ihlallerine neden olabilir. Microsoft, yalnızca uygulama senaryonuz için gerektiğinde anonim erişimi etkinleştirmenizi önerir.
+Azure depolama 'daki kapsayıcılara ve bloblara anonim genel okuma erişimi, verileri paylaşmanın kolay bir yoludur, ancak bir güvenlik riski de sunabilir. Anonim erişim bozacağından ' i yönetmeniz ve verilerinize anonim erişimin nasıl değerlendirileceğini anlamak önemlidir. İşlemsel karmaşıklık, insan hatası veya genel olarak erişilebilen verilere karşı kötü amaçlı saldırı maliyetli veri ihlallerine neden olabilir. Microsoft, yalnızca uygulama senaryonuz için gerektiğinde anonim erişimi etkinleştirmenizi önerir.
 
-Varsayılan olarak, bir depolama hesabı, kullanıcıya kapsayıcılara ve bloblara genel erişimi yapılandırmak için uygun izinlere sahip bir kullanıcı sağlar. Bu işlevi depolama hesabı düzeyinde devre dışı bırakabilirsiniz. böylece, hesaptaki kapsayıcılar ve Bloblar genel erişim için yapılandırılamaz.
+Varsayılan olarak, uygun izinlere sahip bir kullanıcı kapsayıcılara ve bloblara genel erişimi yapılandırabilir. Depolama hesabı düzeyinde tüm genel erişimin engellenmesini sağlayabilirsiniz. Depolama hesabı için genel blob erişimine izin vermemek için, hesaptaki kapsayıcılar genel erişim için yapılandırılamaz. Ortak erişim için önceden yapılandırılmış olan tüm kapsayıcılar, anonim istekleri artık kabul etmez. Daha fazla bilgi için bkz. [kapsayıcılar ve Bloblar için anonim genel okuma erişimini yapılandırma](anonymous-read-access-configure.md).
 
 Bu makalede, bir depolama hesabına karşı anonim isteklerin nasıl çözümleneceği ve tüm depolama hesabı veya tek bir kapsayıcı için anonim erişimin nasıl engelleneceği açıklanmaktadır.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>İstemci uygulamalarından gelen Anonim istekleri Algıla
 
-Bir depolama hesabı için genel okuma erişimini devre dışı bıraktığınızda, istekleri, genel erişim için yapılandırılmış olan kapsayıcılara ve bloblara reddetmeniz önerilir. Bir depolama hesabı için genel erişimin devre dışı bırakılması, bu depolama hesabındaki tüm kapsayıcılar için genel erişim ayarlarını geçersiz kılar. Depolama hesabı için genel erişim devre dışı bırakıldığında, bu hesaba yönelik ileride yapılacak anonim istekler başarısız olur.
+Bir depolama hesabı için genel okuma erişimine izin vermemeniz durumunda, istekleri, genel erişim için yapılandırılmış olan kapsayıcılara ve bloblara reddetmeniz önerilir. Bir depolama hesabı için genel erişime izin vermemek, bu depolama hesabındaki tüm kapsayıcılar için genel erişim ayarlarını geçersiz kılar. Depolama hesabı için genel erişime izin verilse, bu hesaba yönelik ileride yapılacak anonim istekler başarısız olur.
 
-Genel erişimin devre dışı bırakılmasını, istemci uygulamalarını nasıl etkileyebileceğini anlamak için, Microsoft bu hesap için günlüğe kaydetmeyi ve ölçümleri etkinleştirmenizi ve zaman aralığı boyunca anonim isteklerin desenlerini çözümlemeyi önerir. Depolama hesabına yönelik anonim isteklerin sayısını öğrenmek için ölçümleri kullanın ve hangi kapsayıcıların adsız olarak erişildiğini öğrenmek için günlükleri kullanın.
+Genel erişimin istemci uygulamalarını nasıl etkileyebileceğini anlamak için, Microsoft bu hesap için günlüğe kaydetmeyi ve ölçümleri etkinleştirmenizi ve zaman aralığı boyunca anonim isteklerin desenlerini çözümlemeyi önerir. Depolama hesabına yönelik anonim isteklerin sayısını öğrenmek için ölçümleri kullanın ve hangi kapsayıcıların adsız olarak erişildiğini öğrenmek için günlükleri kullanın.
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Ölçüm Gezgini ile anonim istekleri izleme
 
@@ -92,7 +92,7 @@ Azure Izleyici 'de Azure depolama günlüklerinde bulunan alanların bir başvur
 
 Azure Izleyici 'de Azure depolama günlükleri, bir depolama hesabına istek yapmak için kullanılan yetkilendirme türünü içerir. Günlük sorgunuzda, anonim istekleri görüntülemek için **AuthenticationType** özelliğini filtreleyin.
 
-Blob depolamaya yönelik anonim istekler için son 7 güne ait günlükleri almak için Log Analytics çalışma alanınızı açın. Sonra, aşağıdaki sorguyu yeni bir günlük sorgusuna yapıştırın ve çalıştırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Blob depolamaya yönelik anonim istekler için son 7 güne ait günlükleri almak için Log Analytics çalışma alanınızı açın. Sonra, aşağıdaki sorguyu yeni bir günlük sorgusuna yapıştırın ve çalıştırın:
 
 ```kusto
 StorageBlobLogs
@@ -106,13 +106,13 @@ Ayrıca, bu sorguya bağlı olarak, anonim istekler hakkında bildirim almak iç
 
 Depolama hesabınızdaki kapsayıcılara ve bloblara Anonim istekleri değerlendirdikten sonra, genel erişimi sınırlamak veya engellemek için işlem yapabilirsiniz. Depolama hesabınızdaki bazı kapsayıcıların genel erişim için kullanılabilir olması gerekiyorsa, Depolama hesabınızdaki her bir kapsayıcı için genel erişim ayarını yapılandırabilirsiniz. Bu seçenek, genel erişim üzerinde en ayrıntılı denetimi sağlar. Daha fazla bilgi için bkz. [bir kapsayıcı için genel erişim düzeyini ayarlama](anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
-Gelişmiş güvenlik için, tüm depolama hesabı için genel erişimi devre dışı bırakabilirsiniz. Bir depolama hesabı için genel erişim ayarı, bu hesaptaki kapsayıcıların bağımsız ayarlarını geçersiz kılar. Bir depolama hesabı için genel erişimi devre dışı bıraktığınızda, genel erişime izin verecek şekilde yapılandırılmış tüm kapsayıcılara artık anonim olarak erişilemez. Daha fazla bilgi için bkz. [depolama hesabı için genel okuma erişimini etkinleştirme veya devre dışı bırakma](anonymous-read-access-configure.md#enable-or-disable-public-read-access-for-a-storage-account).
+Gelişmiş güvenlik için, tüm depolama hesabı için genel erişime izin vermemeyi sağlayabilirsiniz. Bir depolama hesabı için genel erişim ayarı, bu hesaptaki kapsayıcıların bağımsız ayarlarını geçersiz kılar. Bir depolama hesabı için genel erişime izin vermemek istediğinizde, herkese açık erişime izin verecek şekilde yapılandırılmış tüm kapsayıcılara artık anonim olarak erişilemez. Daha fazla bilgi için bkz. [depolama hesabı için genel okuma erişimine Izin verme veya bu erişimi engelleme](anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
 
-Senaryonuz belirli kapsayıcıların genel erişim için kullanılabilir olmasını gerektiriyorsa, bu kapsayıcıları ve bloblarını genel erişim için ayrılan depolama hesaplarına taşımak önerilir. Daha sonra diğer depolama hesapları için genel erişimi devre dışı bırakabilirsiniz.
+Senaryonuz belirli kapsayıcıların genel erişim için kullanılabilir olmasını gerektiriyorsa, bu kapsayıcıları ve bloblarını genel erişim için ayrılan depolama hesaplarına taşımak önerilir. Bundan sonra, diğer depolama hesapları için genel erişime izin vermeyebilirsiniz.
 
 ### <a name="verify-that-public-access-to-a-blob-is-not-permitted"></a>Bir bloba genel erişime izin verilmediğini doğrulama
 
-Belirli bir Blobun genel erişiminin reddedildiğini doğrulamak için blobu URL 'SI aracılığıyla indirmeyi deneyebilirsiniz. İndirme başarılı olursa blobu hala herkese açık olarak kullanılabilir olur. Depolama hesabı için genel erişim devre dışı bırakıldığından blob herkese açık bir şekilde erişilemezse, bu depolama hesabında genel erişime izin verilmediğini belirten bir hata iletisi görürsünüz.
+Belirli bir bloba yönelik ortak erişime izin verilmedikçe emin olmak için blobu URL 'SI aracılığıyla indirmeyi deneyebilirsiniz. İndirme başarılı olursa blobu hala herkese açık olarak kullanılabilir olur. Depolama hesabı için genel erişime izin verilmediğinden blob herkese açık bir şekilde erişilemezse, bu depolama hesabında genel erişime izin verilmediğini belirten bir hata iletisi görürsünüz.
 
 Aşağıdaki örnek, bir blob 'u URL aracılığıyla indirmeyi denemek için PowerShell 'in nasıl kullanılacağını gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -124,7 +124,7 @@ Invoke-WebRequest -Uri $url -OutFile $downloadTo -ErrorAction Stop
 
 ### <a name="verify-that-modifying-the-containers-public-access-setting-is-not-permitted"></a>Kapsayıcının ortak erişim ayarını değiştirmeye izin verilmediğini doğrula
 
-Depolama hesabı için ortak erişim devre dışı bırakıldıktan sonra kapsayıcının genel erişim ayarının değiştirilemeyeceğini doğrulamak için, ayarı değiştirmeyi deneyebilirsiniz. Depolama hesabı için genel erişim devre dışıysa kapsayıcının ortak erişim ayarını değiştirmek başarısız olur.
+Depolama hesabı için ortak erişime izin verdikten sonra kapsayıcının genel erişim ayarının değiştirilemeyeceğini doğrulamak için, ayarı değiştirmeyi deneyebilirsiniz. Depolama hesabı için genel erişime izin verilmedikçe kapsayıcının ortak erişim ayarını değiştirmek başarısız olur.
 
 Aşağıdaki örnek, bir kapsayıcının ortak erişim ayarını değiştirmeye çalışmak için PowerShell 'in nasıl kullanılacağını gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -141,10 +141,10 @@ Set-AzStorageContainerAcl -Context $ctx -Container $containerName -Permission Bl
 
 ### <a name="verify-that-creating-a-container-with-public-access-enabled-is-not-permitted"></a>Ortak erişime sahip bir kapsayıcı oluşturmaya izin verilmediğini doğrulayın
 
-Depolama hesabı için genel erişim devre dışıysa, ortak erişim etkin olan yeni bir kapsayıcı oluşturabileceksiniz. Doğrulamak için, ortak erişim etkinleştirilmiş bir kapsayıcı oluşturmayı deneyebilirsiniz.
+Depolama hesabı için genel erişime izin verilmediğinde, ortak erişim etkin olan yeni bir kapsayıcı oluşturabileceksiniz. Doğrulamak için, ortak erişim etkinleştirilmiş bir kapsayıcı oluşturmayı deneyebilirsiniz.
 
 Aşağıdaki örnek, ortak erişim etkinleştirilmiş bir kapsayıcı oluşturmayı denemek için PowerShell 'in nasıl kullanılacağını gösterir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
- 
+
 ```powershell
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"

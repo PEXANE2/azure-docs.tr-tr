@@ -3,15 +3,19 @@ title: Bir SharePoint sitesini Application Insights ile izleme
 description: Yeni bir izleme anahtarı ile yeni bir uygulamayı izlemeye başlama
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221060"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516898"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Bir SharePoint sitesini Application Insights ile izleme
+
 Azure Application Insights, uygulamalarınızın kullanılabilirliğini, performansını ve kullanımını izler. Burada, bir SharePoint sitesi için nasıl ayarlayacağınızı öğreneceksiniz.
+
+> [!NOTE]
+> Güvenlik sorunları nedeniyle, bu makalede açıklanan betiği SharePoint modern UX içindeki Web sayfalarına doğrudan ekleyemezsiniz. Alternatif olarak, SharePoint sitelerinize Application Insights yüklemek için kullanabileceğiniz özel bir uzantı oluşturmak üzere [SharePoint Framework 'ü (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. [Appınsights 'ın sıfırdan yüklenmiş bir SPFx uzantı çözümü oluşturma](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) veya [örneği görüntüleme](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample). 
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 [Azure portalında](https://portal.azure.com) yeni bir Application Insights kaynağı oluşturun. Uygulama türü olarak ASP.NET’i seçin.
@@ -137,5 +141,3 @@ function onRequestFail(sender, args) {
 * Diğer uygulama türleri için [Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 <!--Link references-->
-
-

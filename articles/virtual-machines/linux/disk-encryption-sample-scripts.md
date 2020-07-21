@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510506"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Şifrelemesi örnek betikleri 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi örnek betikleri
 
 Bu makalede önceden şifrelenen VHD 'ler ve diğer görevler için örnek betikler sağlanmaktadır.
 
@@ -45,13 +45,13 @@ Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanı
 
 |Parametre|Açıklama|Girilmesi?|
 |------|------|------|
-|$resourceGroupName| Anahtar kasasının ait olduğu kaynak grubunun adı.  Mevcut değilse, bu ada sahip yeni bir kaynak grubu oluşturulur.| True|
-|$keyVaultName|Şifreleme anahtarlarının yerleştirileceği anahtar kasasının adı. Bu ada sahip yeni bir kasa, mevcut değilse oluşturulur.| True|
-|$location|Anahtar kasasının konumu. Şifrelenecek anahtar kasası ve VM 'Lerin aynı konumda olduğundan emin olun. `Get-AzLocation` komutu ile bir konum listesi alın.|True|
-|$subscriptionId|Kullanılacak Azure aboneliğinin tanımlayıcısı.  Abonelik Kimliğinizi `Get-AzSubscription` komutu ile alabilirsiniz.|True|
-|$aadAppName|Anahtar kasasına gizli diziler yazmak için kullanılacak Azure AD uygulamasının adı. Bu ada sahip bir uygulama yoksa yeni bir uygulama oluşturulur. Bu uygulama zaten varsa, aadClientSecret parametresini betiğe geçirin.|False|
-|$aadClientSecret|Daha önce oluşturulan Azure AD uygulamasının istemci gizli anahtarı.|False|
-|$keyEncryptionKeyName|Anahtar Kasası 'nda isteğe bağlı anahtar şifreleme anahtarının adı. Bu ada sahip yeni bir anahtar, yoksa oluşturulur.|False|
+|$resourceGroupName| Anahtar kasasının ait olduğu kaynak grubunun adı.  Mevcut değilse, bu ada sahip yeni bir kaynak grubu oluşturulur.| Doğru|
+|$keyVaultName|Şifreleme anahtarlarının yerleştirileceği anahtar kasasının adı. Bu ada sahip yeni bir kasa, mevcut değilse oluşturulur.| Doğru|
+|$location|Anahtar kasasının konumu. Şifrelenecek anahtar kasası ve VM 'Lerin aynı konumda olduğundan emin olun. `Get-AzLocation` komutu ile bir konum listesi alın.|Doğru|
+|$subscriptionId|Kullanılacak Azure aboneliğinin tanımlayıcısı.  Abonelik Kimliğinizi `Get-AzSubscription` komutu ile alabilirsiniz.|Doğru|
+|$aadAppName|Anahtar kasasına gizli diziler yazmak için kullanılacak Azure AD uygulamasının adı. Bu ada sahip bir uygulama yoksa yeni bir uygulama oluşturulur. Bu uygulama zaten varsa, aadClientSecret parametresini betiğe geçirin.|Yanlış|
+|$aadClientSecret|Daha önce oluşturulan Azure AD uygulamasının istemci gizli anahtarı.|Yanlış|
+|$keyEncryptionKeyName|Anahtar Kasası 'nda isteğe bağlı anahtar şifreleme anahtarının adı. Bu ada sahip yeni bir anahtar, yoksa oluşturulur.|Yanlış|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD uygulaması olmadan VM 'Leri şifreleme veya şifrelerini çözme
@@ -186,7 +186,7 @@ Aşağıdaki adımları uygulayarak dağıtım yüklemesi sırasında şifreleme
 
    ![Ubuntu 16,04 kurulumu-önyüklemede parola sağla](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. [Bu yönergeleri](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)kullanarak VM 'yi Azure 'a yükleme için hazırlayın. Henüz son adımı çalıştırmayın (VM 'nin sağlamasını kaldırma).
+6. [Bu yönergeleri](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json)kullanarak VM 'yi Azure 'a yükleme için hazırlayın. Henüz son adımı çalıştırmayın (VM 'nin sağlamasını kaldırma).
 
 Aşağıdaki adımları uygulayarak şifrelemeyi Azure ile çalışacak şekilde yapılandırın:
 
@@ -262,7 +262,7 @@ Dağıtım yüklemesi sırasında şifrelemeyi yapılandırmak için aşağıdak
 
    ![openSUSE 13,2 kurulumu-önyüklemede parola sağla](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. [Azure için BIR SLES veya openSUSE sanal makinesi hazırlama](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)bölümündeki YÖNERGELERI izleyerek VM 'yi Azure 'a yüklemek üzere hazırlayın. Henüz son adımı çalıştırmayın (VM 'nin sağlamasını kaldırma).
+3. [Azure için BIR SLES veya openSUSE sanal makinesi hazırlama](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131)bölümündeki YÖNERGELERI izleyerek VM 'yi Azure 'a yüklemek üzere hazırlayın. Henüz son adımı çalıştırmayın (VM 'nin sağlamasını kaldırma).
 
 Şifrelemeyi Azure ile çalışacak şekilde yapılandırmak için aşağıdaki adımları uygulayın:
 1. /Etc/Dracut.conf 'yi düzenleyin ve aşağıdaki satırı ekleyin:
@@ -339,7 +339,7 @@ Dağıtım yüklemesi sırasında şifrelemeyi yapılandırmak için aşağıdak
 
    ![CentOS 7 kurulumu-önyükleme sırasında parola girin](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. [Azure Için CentOS tabanlı bir sanal makine hazırlama](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)konusundaki "CentOS 7.0 +" yönergelerini kullanarak VM 'yi Azure 'a yükleme için hazırlayın. Henüz son adımı çalıştırmayın (VM 'nin sağlamasını kaldırma).
+5. [Azure Için CentOS tabanlı bir sanal makine hazırlama](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70)konusundaki "CentOS 7.0 +" yönergelerini kullanarak VM 'yi Azure 'a yükleme için hazırlayın. Henüz son adımı çalıştırmayın (VM 'nin sağlamasını kaldırma).
 
 6. Artık VM 'nin sağlamasını yapabilir ve VHD 'nizi Azure 'a yükleyebilirsiniz.
 
@@ -371,7 +371,7 @@ Dağıtım yüklemesi sırasında şifrelemeyi yapılandırmak için aşağıdak
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   -
+   şöyle değiştirin:
    ```bash
     if [ 1 ]; then
    ```
@@ -439,7 +439,7 @@ Anahtar kasasında gizli dizi ayarlamak için [set-AzKeyVaultSecret](/powershell
 `$secretUrl` [Kek kullanmadan işletim sistemi diski eklemek](#without-using-a-kek)için bir sonraki adımda kullanın.
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Disk şifrelemesi gizli anahtarı bir KEK ile şifrelendi
-Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtarını kullanarak isteğe bağlı olarak şifreleyebilirsiniz. Anahtar şifreleme anahtarını kullanarak parolayı ilk kez şifrelemek için wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 'sini kullanın. Bu Wrap işleminin çıktısı Base64 URL kodlamalı bir dizedir ve cmdlet 'ini kullanarak bir gizli dizi olarak karşıya yükleyebilirsiniz [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) .
+Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtarını kullanarak isteğe bağlı olarak şifreleyebilirsiniz. Anahtar şifreleme anahtarını kullanarak parolayı ilk kez şifrelemek için wrap [API](/rest/api/keyvault/wrapkey) 'sini kullanın. Bu Wrap işleminin çıktısı Base64 URL kodlamalı bir dizedir ve cmdlet 'ini kullanarak bir gizli dizi olarak karşıya yükleyebilirsiniz [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) .
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

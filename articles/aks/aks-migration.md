@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255498"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518054"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -51,7 +51,7 @@ AKS, daha düşük yönetim yüküyle benzersiz yetenekler sunan bir yönetilen 
 
 [Birden çok düğüm havuzu](./use-multiple-node-pools.md), [KULLANıLABILIRLIK ALANLARı](../availability-zones/az-overview.md), [yetkilendirilmiş IP aralıkları](./api-server-authorized-ip-ranges.md), [küme otomatik Scaler](./cluster-autoscaler.md), [aks için Azure ilkesi](../governance/policy/concepts/policy-for-kubernetes.md)ve yayımlandıkları gibi diğer yeni özellikler gibi özellikleri almanızı sağlamak için [Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/index.yml) ve [Azure Standart Load Balancer](./load-balancer-standard.md) tarafından desteklenen aks kümelerini kullanmanızı öneririz.
 
-[Sanal makine kullanılabilirlik kümeleri](../virtual-machine-scale-sets/availability.md#availability-sets) tarafından desteklenen aks kümelerinde bu özelliklerin birçoğu için destek yok.
+[Sanal makine kullanılabilirlik kümeleri](../virtual-machines/availability.md#availability-sets) tarafından desteklenen aks kümelerinde bu özelliklerin birçoğu için destek yok.
 
 Aşağıdaki örnek, bir sanal makine ölçek kümesi tarafından desteklenen tek düğümlü havuz içeren bir AKS kümesi oluşturur. Standart yük dengeleyici kullanır. Ayrıca küme için düğüm havuzunda küme otomatik Scaler 'ı ve en az *1* ve en fazla *3* düğüm ayarlar:
 
@@ -121,7 +121,7 @@ Azure yönetilen diskler kullanıyorsanız, diski yalnızca herhangi bir VM 'ye 
 Bu yaklaşımlardan hiçbiri işe çalışmadıysanız, yedekleme ve geri yükleme seçeneklerini kullanabilirsiniz:
 * [Azure 'da Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-#### <a name="azure-files"></a>Azure Dosyalar
+#### <a name="azure-files"></a>Azure Dosyaları
 
 Disklerden farklı olarak, Azure dosyaları aynı anda birden çok konağa bağlanabilir. AKS kümenizde, Azure ve Kubernetes, ACS kümenizin hala kullandığı bir pod oluşturmanızı engellemez. Veri kaybını ve beklenmedik davranışı engellemek için, kümelerin aynı anda aynı dosyalara yazmayın olduğundan emin olun.
 

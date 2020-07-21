@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223304"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518716"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
@@ -33,6 +33,10 @@ Azure Site Recovery, Azure Backup gibi birinci taraf Microsoft hizmetlerinin yan
 * Uygulamayla uyumlu Artımlı anlık görüntü yönetimi: uygulamalar, verilerin maliyetli bir şekilde çoğaltılmasını etkilemeden uygulama kontrol noktalarını kaydetmek için sayfa blob anlık görüntüleri ve REST API 'Lerinden yararlanabilir. Azure depolama, tüm Blobun kopyalanmasını gerektirmeyen sayfa Blobları için yerel anlık görüntüleri destekler. Bu genel anlık görüntü API 'leri, anlık görüntüler arasında değişimleri erişimini ve kopyalanmasını da sağlar.
 * Şirket içi veri kaynağından buluta dinamik olarak uygulama ve veri geçişi: şirket içi VM çalışmaya devam ederken doğrudan bir Azure sayfa blobuna yazmak için REST API 'Lerini kullanın. Hedef yakalandıktan sonra, bu verileri kullanarak Azure VM 'ye hızlı bir şekilde yük devreleyebilirsiniz. Bu şekilde, VM 'yi kullanmaya devam ederken veri geçişinin arka planda oluşması ve yük devretme için gereken kapalı kalma süresi kısa (dakika) olacağı için sanal makinelerinizi Şirket içinden buluta, en az kapalı kalma süresine geçirebilirsiniz.
 * Eşzamanlılık denetimi desteğiyle birden çok okuyucular ve tek yazıcı gibi senaryolara izin veren [SAS tabanlı](../common/storage-sas-overview.md) paylaşılan erişim.
+
+## <a name="pricing"></a>Fiyatlandırma
+
+Sayfa Blobları ile sunulan depolama türlerinin her ikisi de kendi fiyatlandırma modeline sahiptir. Premium sayfa Blobları yönetilen diskler fiyatlandırma modelini izler, ancak standart sayfa Blobları kullanılan boyutta ve her bir işlemle faturalandırılır. Daha fazla bilgi için bkz. [Azure sayfa Blobları fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 ## <a name="page-blob-features"></a>Sayfa blobu özellikleri
 

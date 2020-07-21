@@ -8,25 +8,25 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945639"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510455"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Bir VHD 'yi Azure 'a yükleme veya yönetilen bir diski başka bir bölgeye kopyalama-Azure CLı
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [AzCopy ile v10 arasındaki 'ın](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)en son sürümünü indirin.
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
 - Şirket içinden bir VHD yüklemeyi planlıyorsanız: [Azure için hazırlanan](../windows/prepare-for-upload-vhd-image.md)sabıt boyutlu VHD, yerel olarak depolanır.
 - Ya da bir kopyalama eylemi gerçekleştirmek istiyorsanız Azure 'da yönetilen bir disk.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Bir GUI aracılığıyla disk yüklemeyi tercih ediyorsanız, Azure Depolama Gezgini kullanarak bunu yapabilirsiniz. Ayrıntılar için bkz. [Azure yönetilen diskleri yönetmek için Azure Depolama Gezgini kullanma](disks-use-storage-explorer-managed-disks.md)
 
@@ -34,7 +34,7 @@ VHD 'nizi Azure 'a yüklemek için, bu karşıya yükleme işlemi için yapılan
 
 Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 
-- ReadToUpload, diskin karşıya yüklemeyi almaya çalıştığı ancak [güvenli erişim imzası](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) üretilmediği anlamına gelir.
+- ReadToUpload, diskin karşıya yüklemeyi almaya çalıştığı ancak [güvenli erişim imzası](../../storage/common/storage-sas-overview.md) (SAS) üretilmediği anlamına gelir.
 - ActiveUpload, bu, diskin karşıya yükleme almaya ve SAS üretilmeye hazırlanmasıdır.
 
 > [!NOTE]
@@ -132,4 +132,3 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bir VHD 'yi yönetilen diske başarıyla yüklediğinize göre, diski mevcut bir sanal makineye bir [veri diski](add-disk.md) olarak ekleyebilir veya [diski bir VM 'ye bir sanal makineye iliştirebilirsiniz](upload-vhd.md#create-the-vm), yeni bir VM oluşturabilirsiniz. 
-

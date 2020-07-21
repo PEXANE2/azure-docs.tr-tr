@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma, Swift konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma, Swift-konuşma hizmeti (iOS)'
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'sını kullanarak iOS 'ta Swift 'ta konuşmayı tanımayı öğrenin
+description: Bilişsel hizmetler konuşma SDK 'sını kullanarak bir iOS cihazı için Swift 'ta konuşmayı tanımak üzere bir uygulama oluşturmayı öğrenin.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 95c69aad24ff10b49bdc09411553e6ed43bfdccd
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4a66b1581049b90a419a1b62ba837fc832fd748
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391443"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512746"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak iOS 'ta Swift 'ta konuşmayı tanıma
 
@@ -23,7 +23,7 @@ Hızlı başlangıçlara [konuşma birleştirme](~/articles/cognitive-services/S
 
 Bu makalede, bir mikrofondan metne kaydedilen konuşmayı oluşturmak için Azure bilişsel hizmetler konuşma SDK 'sını kullanarak Swift 'ta bir iOS uygulaması oluşturmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 

@@ -3,12 +3,13 @@ title: Azure Service Bus-ileti erteleme
 description: Bu makalede Azure Service Bus iletilerinin teslimini erteleme açıklanır. İleti sıra veya abonelikte kalır ancak bir kenara ayrılır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341215"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511288"
 ---
 # <a name="message-deferral"></a>İleti erteleme
 
@@ -19,6 +20,9 @@ Deferral, iş akışı işleme senaryoları için özel olarak oluşturulan bir 
 Basit bir tanım örneği, eşleşen satın alma siparişi mağazadan öne çıkan sisteme yayılmadan önce bir sistemde, bir dış ödeme sağlayıcısından ödeme bildiriminin bir sistemde göründüğü bir sipariş işleme sırasıdır. Bu durumda, karşılama sistemi, ilişkilendirilecek bir sipariş olana kadar ödeme bildirimini işlemeye erteleyebilirsiniz. Farklı kaynaklardaki iletilerin bir iş akışını ileriye doğru bir şekilde iletmekte olduğu buluşma senaryolarında gerçek zamanlı yürütme sırası gerçekten doğru olabilir, ancak sonuçları yansıtan iletiler sıra dışına çıkabilir.
 
 Sonuç olarak, alma sırasındaki iletileri, işleme için bir ileti deposunda güvenli durumda bırakarak, bu iletileri işlenmek üzere yeniden sıralama konusunda yardımcı olur.
+
+> [!NOTE]
+> Ertelenmiş iletiler, [süreleri dolduktan sonra](./service-bus-dead-letter-queues.md#exceeding-timetolive)otomatik olarak atılacak ileti kuyruğuna taşınmaz. Bu davranış tasarıma göre yapılır.
 
 ## <a name="message-deferral-apis"></a>İleti erteleme API 'Leri
 

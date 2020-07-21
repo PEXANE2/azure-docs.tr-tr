@@ -4,11 +4,12 @@ description: Bu makalede, şirket içi Windows Server 'lar için sistem durumu y
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969569"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513863"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Sistem durumu yedeklemesi sorunlarını giderme
 
@@ -19,11 +20,11 @@ Bu makalede, sistem durumu yedeklemesini kullanırken içinde karşılaşabilece
 Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğrulamayı gerçekleştirmenizi öneririz:
 
 - [Microsoft Azure Kurtarma Hizmetleri (MARS) aracısının güncel olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [MARS aracısı ile Azure arasında ağ bağlantısı sağlandığından emin olun](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [MARS aracısı ile Azure arasında ağ bağlantısı sağlandığından emin olun](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Kurtarma Hizmetleri'nin çalıştığından emin olun (Hizmet konsolunda). Gerekirse yeniden başlatın ve işlemi yeniden deneyin
-- [Boş klasör konumunda %5-10 oranında kullanılabilir alan olduğundan emin olun](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [Azure Backup ile çakışan başka bir işlem veya virüsten koruma yazılımı olup olmadığını kontrol edin](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
-- [Zamanlanmış yedekleme başarısız oluyor ancak el ile yedekleme çalışıyor](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
+- [Boş klasör konumunda %5-10 oranında kullanılabilir alan olduğundan emin olun](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Azure Backup ile çakışan başka bir işlem veya virüsten koruma yazılımı olup olmadığını kontrol edin](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [Zamanlanmış yedekleme başarısız oluyor ancak el ile yedekleme çalışıyor](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - İşletim sisteminizde en son güncelleştirmelerin yüklü olduğundan emin olun
 - [Desteklenmeyen özniteliklerin ve desteklenmeyen özniteliklere sahip dosyaların yedeklemeden dışlandığından emin olun](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Korumalı sistemdeki **Sistem Saatinin** doğru saat dilimine göre yapılandırıldığından emin olun <br>
@@ -32,14 +33,14 @@ Sistem durumu yedeklemesine sorun gidermeye başlamadan önce aşağıdaki doğr
   - Aracının sunucuda kaldırıldığından ve portaldan silindiğinden emin olun <br>
   - Sunucu kaydedilirken kullanılan parolayı kullanın <br>
 - Bu bir çevrimdışı yedekleme ise, çevrimdışı yedekleme işlemine başlamadan önce Azure PowerShell Version 3.7.0 'in hem kaynak hem de kopya bilgisayara yüklendiğinden emin olun
-- [Azure sanal makinesinde Yedekleme aracısının ne zaman çalıştığını göz önünde bulundurun](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
+- [Azure sanal makinesinde Yedekleme aracısının ne zaman çalıştığını göz önünde bulundurun](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>Sınırlama
 
 - Sistem Durumu kurtarmayı kullanarak farklı donanımda kurtarma işlemi yapılması Microsoft tarafından önerilmez
 - Sistem durumu yedeklemesi Şu anda "Şirket içi" Windows sunucularını desteklemektedir. Bu işlev, Azure VM 'Leri için kullanılamaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Backup ile sistem durumu yedeklemesine sorun gidermeye başlamadan önce, aşağıdaki önkoşul denetimini gerçekleştirin.  
 
@@ -91,7 +92,7 @@ Yerel SISTEMIN Windows 'un yüklü olduğu birimde bulunan **sistem birimi bilgi
 
 Aşağıdaki hizmetlerin çalışır durumda olduğundan emin olun:
 
-**Hizmet adı** | **Başlangıç türü**
+**Hizmet Adı** | **Başlangıç türü**
 --- | ---
 Uzak yordam çağrısı (RPC) | Automatic
 COM+ olay sistemi (EventSystem) | Automatic
@@ -136,7 +137,7 @@ Windows Server Yedekleme durumunu doğrulamak için aşağıdaki adımları ger�
 
 | Belirti | Çözüm
 | -- | --
-| -MARS Aracısı şu hata iletisiyle başarısız oldu: gölge kopya birimi sistem dosyalarını içeren birimlerde yetersiz disk alanı nedeniyle büyümediği için yedekleme başarısız oldu <br/><br/> -Volsnap sistem olay günlüklerinde şu hata/uyarı günlüğü var: "c birimi üzerinde yeterli disk alanı yoktu: Bu hata nedeniyle c: biriminin gölge kopyalarının gölge kopya depolama alanını büyütmek için | -Yedekleme devam ederken gölge kopyaların büyümesine yetecek kadar alan olması için olay günlüğündeki vurgulanan birimde yer açın <br/><br/> -Gölge kopya alanı yapılandırılırken, gölge kopya için kullanılan alan miktarını kısıtlayabiliriz. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage) bakın
+| -MARS Aracısı şu hata iletisiyle başarısız oldu: gölge kopya birimi sistem dosyalarını içeren birimlerde yetersiz disk alanı nedeniyle büyümediği için yedekleme başarısız oldu <br/><br/> -Volsnap sistem olay günlüklerinde şu hata/uyarı günlüğü var: "c birimi üzerinde yeterli disk alanı yoktu: Bu hata nedeniyle c: biriminin gölge kopyalarının gölge kopya depolama alanını büyütmek için | -Yedekleme devam ederken gölge kopyaların büyümesine yetecek kadar alan olması için olay günlüğündeki vurgulanan birimde yer açın <br/><br/> -Gölge kopya alanı yapılandırılırken, gölge kopya için kullanılan alan miktarını kısıtlayabiliriz. Daha fazla bilgi için bu [makaleye](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage) bakın
 
 ### <a name="efi-partition-locked"></a>EFı bölümü kilitli
 

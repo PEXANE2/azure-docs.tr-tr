@@ -13,12 +13,12 @@ ms.date: 06/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 453efd7735c6843ccdaf8dfd86b18d0b2ef8b06d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8ff8ced1723a3cdc969b4a951c31ea1da2d3093
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518306"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
 
@@ -47,7 +47,7 @@ Hizmet sorumlusu, tek bir Kiracıdaki veya dizindeki genel uygulama nesnesinin y
 
 Bir uygulamaya bir Kiracıdaki kaynaklara erişim izni verildiğinde (kayıt veya [onay](developer-glossary.md#consent)sağlandığında), bir hizmet sorumlusu nesnesi oluşturulur. [Azure PowerShell](howto-authenticate-service-principal-powershell.md), Azure clı, [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), [Azure Portal][AZURE-Portal]ve diğer araçları kullanarak bir kiracıda hizmet sorumlusu nesnesi de oluşturabilirsiniz.  Portalı kullanırken, bir uygulamayı kaydettiğinizde bir hizmet sorumlusu otomatik olarak oluşturulur.
 
-Portaldaki **Kurumsal uygulamalar** dikey penceresi, bir Kiracıdaki hizmet sorumlularını listelemek ve yönetmek için kullanılır. Bir hizmet sorumlusunun izinlerini, Kullanıcı onaylı izinleri, kullanıcıların bu izni, oturum açma bilgilerini ve daha fazlasını yapmış olduğunu görebilirsiniz.
+Portaldaki **Kurumsal uygulamalar** dikey penceresi, bir Kiracıdaki hizmet sorumlularını listelemek ve yönetmek için kullanılır. Hizmet sorumlusunun izinlerini, Kullanıcı onaylı izinleri, hangi kullanıcıların onay, oturum açma bilgileri ve daha fazlasını yapmış olduğunu görebilirsiniz.
 
 Microsoft Graph [ServicePrincipal varlığı][MS-Graph-Sp-Entity] , bir hizmet sorumlusu nesnesinin özelliklerine ilişkin şemayı tanımlar.
 

@@ -4,15 +4,15 @@ description: Ao ağ trafiği ve ağ güvenlik grupları ve Kullanıcı tanımlı
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/29/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477677"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517863"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamında ağ konusunda dikkat edilmesi gerekenler #
 
@@ -53,7 +53,7 @@ Atıcı 'yi barındırmak için kullanılan alt ağın boyutu Ao dağıtıldıkt
 
 ASE 'nin çalışması için, ASE 'nin şu bağlantı noktalarının açık olması gerekir:
 
-| Kullanım | Başlangıç | Alıcı |
+| Kullanın | Kaynak | Amaç |
 |-----|------|----|
 | Yönetim | Yönetim adreslerini App Service | Ao alt ağı: 454, 455 |
 |  ATıCı iç iletişimi | Ao alt ağı: tüm bağlantı noktaları | Ao alt ağı: tüm bağlantı noktaları
@@ -69,7 +69,7 @@ Azure Yük Dengeleyici ile Ao alt ağı arasındaki iletişim için, açılması
 
 Kendi kendinize sorun için ihtiyacınız olan diğer bağlantı noktaları uygulama bağlantı noktalardır:
 
-| Kullanım | Bağlantı noktaları |
+| Kullanın | Bağlantı noktaları |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -112,7 +112,7 @@ Ao işlevsel bağımlılıklara ek olarak, Portal deneyimiyle ilgili birkaç ek 
 -   İşlevler
 -   Günlük akışı
 -   Kudu
--   Uzantıları
+-   Uzantılar
 -   İşlem Gezgini
 -   Konsol
 
@@ -153,20 +153,22 @@ NSG 'ler Azure portal veya PowerShell aracılığıyla yapılandırılabilir. Bu
 Bir NSG 'de bir Alto işlevi için gerekli girişler trafiğe izin versin:
 
 **Gelen**
-* 454.455 bağlantı noktalarında AppServiceManagement IP hizmet etiketinden
-* 16001 numaralı bağlantı noktasındaki yük dengeleyiciden
+* 454.455 bağlantı noktalarında AppServiceManagement IP hizmeti etiketinden TCP
+* 16001 numaralı bağlantı noktasındaki yük dengeleyiciden TCP
 * Ao alt ağından tüm bağlantı noktalarında as alt ağına
 
 **Giden**
-* 123 numaralı bağlantı noktasındaki tüm IP 'lere
-* 80, 443 bağlantı noktasındaki tüm IP 'lere
-* 1433 bağlantı noktalarında AzureSQL IP hizmet etiketine
-* 12000 numaralı bağlantı noktasındaki tüm IP 'lere
+* 123 numaralı bağlantı noktasındaki tüm IP 'lere UDP
+* 80, 443 bağlantı noktasındaki tüm IP 'lere TCP
+* 1433 bağlantı noktalarında AzureSQL IP hizmet etiketine TCP
+* 12000 numaralı bağlantı noktasındaki tüm IP 'lere TCP
 * Tüm bağlantı noktalarında as alt ağına
 
-DNS 'ye trafik, NSG kurallarından etkilenmediğinden DNS bağlantı noktasının eklenmesi gerekmez. Bu bağlantı noktaları, uygulamalarınızın başarılı bir şekilde kullanılması için gereken bağlantı noktalarını içermez. Normal uygulama erişimi bağlantı noktaları şunlardır:
+Bu bağlantı noktaları, uygulamalarınızın başarılı bir şekilde kullanılması için gereken bağlantı noktalarını içermez. Örnek olarak, uygulamanızın bağlantı noktası 3306 ' de bir MySQL sunucusu çağırması gerekebilir DNS bağlantı noktası, bağlantı noktası 53, DNS 'ye trafik, NSG kurallarından etkilenmemektedir. 123 numaralı bağlantı noktasındaki ağ zaman Protokolü (NTP), işletim sistemi tarafından kullanılan zaman eşitleme protokolüdür. NTP uç noktaları, uygulama hizmetlerine özgü değildir, işletim sistemiyle farklılık gösterebilir ve iyi tanımlanmış adresler listesinde değildir. Zaman eşitleme sorunlarını engellemek için, bağlantı noktası 123 üzerindeki tüm adreslere UDP trafiğine izin vermeniz gerekir. 12000 numaralı bağlantı noktasına giden TCP trafiği, sistem desteği ve analizine yöneliktir. Uç noktalar dinamiktir ve iyi tanımlanmış bir adres kümesinde değildir.
 
-| Kullanım | Bağlantı noktaları |
+Normal uygulama erişimi bağlantı noktaları şunlardır:
+
+| Kullanın | Bağlantı noktaları |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -194,7 +196,7 @@ Zorlamalı tünel, VNet 'iniz içindeki yolları ayarladığınızda giden trafi
 Portalda bir AO oluşturduğunuzda, Ao ile oluşturulan alt ağda bir rota tabloları kümesi de oluşturur.  Bu yollar yalnızca giden trafiği doğrudan internet 'e göndermek için de kullanılır.  
 Aynı rotaları el ile oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portalına gidin. **Ağ**  >  **yolu tabloları**' nı seçin.
+1. Azure portala gidin. **Ağ**  >  **yolu tabloları**' nı seçin.
 
 2. Sanal ağınız ile aynı bölgede yeni bir rota tablosu oluşturun.
 

@@ -3,12 +3,12 @@ title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights verileri görmüyor musunuz? Buradan deneyin.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221043"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517179"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -42,7 +42,7 @@ ms.locfileid: "86221043"
 *Çözüm Gezgini var olan bir projeye sağ tıkladığımda, hiçbir Application Insights seçeneği görmüyorum.*
 
 * Tüm .NET projesi türleri araçlar tarafından desteklenmez. Web ve WCF projeleri desteklenir. Masaüstü veya hizmet uygulamaları gibi diğer proje türleri için de [projenize el ile bir APPLICATION INSIGHTS SDK ekleyebilirsiniz](../../azure-monitor/app/windows-desktop.md).
-* [Visual Studio 2013 güncelleştirme 3 veya sonraki bir sürüme](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)sahip olduğunuzdan emin olun. Application Insights SDK 'sını sağlayan geliştirici Analizi araçlarıyla önceden yüklenmiş olarak gelir.
+* [Visual Studio 2013 güncelleştirme 3 veya sonraki bir sürüme](/visualstudio/releasenotes/vs2013-update3-rtm-vs)sahip olduğunuzdan emin olun. Application Insights SDK 'sını sağlayan geliştirici Analizi araçlarıyla önceden yüklenmiş olarak gelir.
 * **Araçlar**, **Uzantılar ve güncelleştirmeler** ' i seçin ve **Developer Analytics Tools** yüklendiğini ve etkinleştirildiğini denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
 * Yeni proje iletişim kutusunu açın ve ASP.NET Web uygulaması ' nı seçin. Burada Application Insights seçeneği görürseniz araçlar yüklenir. Aksi takdirde, Developer Analytics Tools kaldırıp yeniden yüklemeyi deneyin.
 
@@ -132,7 +132,7 @@ Onar
   * Visual Studio Çözüm Gezgini, projeye sağ tıklayın ve Application Insights, Yapılandır ' ı seçin. Doğru kaynağa telemetri göndermek için uygulamayı sıfırlayın.
   * Eşleşen anahtarları bulamıyorsanız, portalda ' de olduğu gibi Visual Studio 'da aynı oturum açma kimlik bilgilerini kullanıp kullanınızdan emin olun.
 * [Microsoft Azure giriş panosunda](https://portal.azure.com), hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
-* Ayrıca [durum blogumuzu](https://blogs.msdn.microsoft.com/servicemap-status/)inceleyin.
+* Ayrıca [durum blogumuzu](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog)inceleyin.
 * [Sunucu tarafı SDK](../../azure-monitor/app/api-custom-events-metrics.md) için, örneklerdeki veya içindeki izleme anahtarını değiştirebilen herhangi bir kod yazdınız `TelemetryClient` `TelemetryContext` mı? Ya da çok fazla filtreleme olabilecek bir [filtre veya örnekleme yapılandırması](../../azure-monitor/app/api-filtering-sampling.md) mı yazdınız?
 * ApplicationInsights.config düzenlediyseniz, [TelemetryInitializers ve TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)yapılandırmasını dikkatle kontrol edin. Yanlış adlı bir tür veya parametre SDK 'nın veri gönderememesine neden olabilir.
 
@@ -154,7 +154,7 @@ Durum İzleyicisi 'ni ve [Azure Cloud Services](../../azure-monitor/app/app-insi
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Uygulamayı sunucuma yayımladığım için hiçbir (sunucu) veri yok
 * Tüm Microsoft 'un gerçekten kopyalamadığını denetleyin. Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ile birlikte sunucuda ApplicationInsights dll 'Leri
 * Güvenlik duvarınızdaki [bazı TCP bağlantı noktalarını açmanız](../../azure-monitor/app/ip-addresses.md)gerekebilir.
-* Şirket ağınızı göndermek için bir proxy kullanmanız gerekiyorsa, Web.config [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) 'yi ayarlayın
+* Şirket ağınızı göndermek için bir proxy kullanmanız gerekiyorsa, Web.config [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) 'yi ayarlayın
 * Windows Server 2008: şu güncelleştirmeleri yüklediğinizden emin olun: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Verileri görmek için kullandım, ancak durdu
@@ -170,7 +170,7 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 5 2018 Şubat 'de Istemci IP adresinin günlüğe kaydedilmesini kaldırdığımız duyurulmuştur. Bu, coğrafi konumu etkilemez.
 
 > [!NOTE]
-> IP adresinin ilk 3 sekizlisinin olması gerekiyorsa özel bir öznitelik eklemek için bir [telemetri başlatıcısı](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) kullanabilirsiniz.
+> IP adresinin ilk 3 sekizlisinin olması gerekiyorsa özel bir öznitelik eklemek için bir [telemetri başlatıcısı](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) kullanabilirsiniz.
 > Bu, 5 Şubat 2018’den önce toplanan verileri etkilemez.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Kullanıcı telemetrisinde yanlış coğrafi veriler
@@ -206,9 +206,9 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 
 ### <a name="net-core"></a>.NET Core
 
-1. NuGet 'den [Microsoft. Aspnet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) paketini yükler. Yüklediğiniz sürüm, geçerli yüklü sürümü ile eşleşmelidir`Microsoft.ApplicationInsights`
+1. NuGet 'den [ASP.NET Core paketi için APPLICATION INSIGHTS SDK NuGet paketini](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) yükler. Yüklediğiniz sürüm, yüklü olan geçerli sürümüyle eşleşmelidir `Microsoft.ApplicationInsights` .
 
-Microsoft. ApplicationInsights. AspNetCore 'un en son sürümü 2.8.2 'dir ve Microsoft. ApplicationInsights sürüm 2.11.2 'e başvurur. Bu nedenle, yüklenecek Microsoft. AspNet. ApplicationInsights. HostingStartup sürümünün 2.11.2 olması gerekir
+   Microsoft. ApplicationInsights. AspNetCore 'un en son sürümü 2.14.0 'dir ve Microsoft. ApplicationInsights sürüm 2.14.0 'e başvurur. Bu nedenle, yüklenecek Microsoft. ApplicationInsights. AspNetCore sürümü 2.14.0 olmalıdır.
 
 2. `ConfigureServices`Sınıfında yöntemini değiştirin `Startup.cs` .:
 
@@ -249,7 +249,7 @@ Daha fazla bilgi için,
 
 ## <a name="collect-logs-with-dotnet-trace"></a>DotNet-Trace ile günlükleri toplama
 
-Özellikle Linux tabanlı ortamlarda yararlı olabilecek sorun gidermeye yönelik Günlükler toplamanın alternatif bir yöntemi[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+Özellikle Linux tabanlı ortamlarda yararlı olabilecek sorun gidermeye yönelik Günlükler toplamanın alternatif bir yöntemi[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -260,4 +260,4 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 Kaldırma [makalesinde](../../azure-monitor/app/remove-application-insights.md)sağladığı adımları Izleyerek Visual Studio 'da Application Insights kaldırmayı öğrenin.
 
 ## <a name="still-not-working"></a>Hala çalışmıyor...
-* [Microsoft Q&Application Insights için soru sayfası](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+* [Microsoft Q&Application Insights için soru sayfası](/answers/topics/azure-monitor.html)

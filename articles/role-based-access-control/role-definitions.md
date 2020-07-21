@@ -15,11 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996610"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511645"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure rol tanımlarını anlama
 
@@ -27,7 +28,7 @@ Bir Azure rolünün nasıl çalıştığını anlamaya çalışıyorsanız veya 
 
 ## <a name="role-definition"></a>Rol tanımı
 
-*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca *rol* olarak da adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca, temel alınan verilerle ilgili olarak izin verilen işlemler veya işlemlerden çıkarılan işlemleri de listeleyebilir.
+*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca bir *rol*olarak adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca, temel alınan verilerle ilgili olarak izin verilen işlemler veya işlemlerden çıkarılan işlemleri de listeleyebilir.
 
 Aşağıda, Azure PowerShell kullanılarak görüntülenmediğinde rol tanımındaki özelliklerin bir örneği gösterilmektedir:
 
@@ -79,7 +80,7 @@ Aşağıdaki tabloda rol özelliklerinin anlamı açıklanmaktadır.
 
 Bir `{action}` işlem dizesinin bölümü, bir kaynak türü üzerinde gerçekleştirebileceğiniz işlem türünü belirtir. Örneğin, içinde aşağıdaki alt dizeleri görürsünüz `{action}` :
 
-| Eylem alt dizesi    | Açıklama         |
+| Eylem alt dizesi    | Description         |
 | ------------------- | ------------------- |
 | `*` | Joker karakter karakteri dize ile eşleşen tüm işlemlere erişim verir. |
 | `read` | Okuma işlemlerini (GET) etkinleştirilir. |
@@ -89,7 +90,7 @@ Bir `{action}` işlem dizesinin bölümü, bir kaynak türü üzerinde gerçekle
 
 ### <a name="role-definition-example"></a>Rol tanımı örneği
 
-İşte Azure PowerShell ve Azure CLı 'de gösterildiği gibi [katkıda](built-in-roles.md#contributor) bulunan rol tanımı. `Actions` altındaki joker karakter (`*`) işlemi, bu role atanan sorumlunun tüm eylemleri gerçekleştirebileceğini gösterir veya başka bir deyişle her şeyi yönetebilir. Bu, Azure yeni kaynak türleri ekledikçe gelecekte tanımlanacak eylemleri de içerir. `NotActions` altındaki işlemler `Actions` işlemlerinden çıkarılır. [Katkıda Bulunan](built-in-roles.md#contributor) rolünde, `NotActions` bu rolün kaynakları erişimi yönetme becerisini kaldırır ve kaynaklara erişim atar.
+İşte Azure PowerShell ve Azure CLı 'de gösterildiği gibi [katkıda](built-in-roles.md#contributor) bulunan rol tanımı. `Actions` altındaki joker karakter (`*`) işlemi, bu role atanan sorumlunun tüm eylemleri gerçekleştirebileceğini gösterir veya başka bir deyişle her şeyi yönetebilir. Bu, Azure yeni kaynak türleri ekledikçe gelecekte tanımlanacak eylemleri de içerir. `NotActions` altındaki işlemler `Actions` işlemlerinden çıkarılır. [Katkıda](built-in-roles.md#contributor) bulunan rolü söz konusu olduğunda, `NotActions` Bu rolün kaynaklara erişimi yönetme ve ayrıca Azure Blueprint atamalarını yönetme yeteneğini ortadan kaldırır.
 
 Azure PowerShell içinde gösterildiği gibi katkıda bulunan rolü:
 
@@ -280,7 +281,7 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 `Actions`İzin, rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirler. Azure Kaynak sağlayıcılarının güvenli kılınabilir işlemlerini tanımlayan bir işlem dizeleri koleksiyonudur. Burada, ' de kullanılabilen yönetim işlemlerine ilişkin bazı örnekler verilmiştir `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | İşlem dizesi    | Açıklama         |
+> | İşlem dizesi    | Description         |
 > | ------------------- | ------------------- |
 > | `*/read` | Tüm Azure Kaynak sağlayıcılarının tüm kaynak türleri için okuma işlemlerine erişim izni verir.|
 > | `Microsoft.Compute/*` | Microsoft. COMPUTE kaynak sağlayıcısındaki tüm kaynak türleri için tüm işlemlere erişim verir.|
@@ -301,7 +302,7 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 `DataActions`İzin, rolün bu nesne içindeki verilerinize yapılmasına izin verdiği veri işlemlerini belirler. Örneğin, bir kullanıcının depolama hesabına yönelik blob veri okuma erişimi varsa, bu depolama hesabındaki Blobları okuyabilirler. İşte kullanılabilecek veri işlemlerine ilişkin bazı örnekler aşağıda verilmiştir `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | İşlem dizesi    | Açıklama         |
+> | İşlem dizesi    | Description         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blob veya Blobların listesini döndürür. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Blob yazma sonucunu döndürür. |
@@ -336,6 +337,6 @@ Yerleşik roller `AssignableScopes` kök kapsamına ( `"/"` ) ayarlı. Kök kaps
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure yerleşik rolleri](built-in-roles.md)
-* [Azure özel rolleri](custom-roles.md)
+* [Yerleşik Azure rolleri](built-in-roles.md)
+* [Özel Azure rolleri](custom-roles.md)
 * [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

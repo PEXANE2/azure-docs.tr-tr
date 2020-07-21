@@ -3,17 +3,18 @@ title: System Center Data Protection Manager sorunlarını giderme
 description: Bu makalede, System Center Data Protection Manager kullanırken karşılaşabileceğiniz sorunlara yönelik çözümler bulun.
 ms.topic: troubleshooting
 ms.date: 01/30/2019
-ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75664759"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513821"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager sorunlarını giderme
 
 Bu makalede Data Protection Manager kullanırken karşılaşabileceğiniz sorunlara yönelik çözümler açıklanmaktadır.
 
-System Center Data Protection Manager için en son sürüm notları için bkz. [System Center belgeleri](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). [Bu matristeki](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)Data Protection Manager için destek hakkında daha fazla bilgi edinebilirsiniz.
+System Center Data Protection Manager için en son sürüm notları için bkz. [System Center belgeleri](/system-center/dpm/dpm-release-notes). [Bu matristeki](/system-center/dpm/dpm-protection-matrix)Data Protection Manager için destek hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="error-replica-is-inconsistent"></a>Hata: çoğaltma tutarsız
 

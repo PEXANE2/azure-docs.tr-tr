@@ -4,12 +4,12 @@ description: Azure Backup hizmetine genel bir bakış sağlar ve iş süreklili�
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513532"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -43,8 +43,8 @@ Azure Backup, bu önemli avantajları sunar:
 - **Kısa ve uzun süreli verileri koruyun**: kısa süreli ve uzun süreli veri saklama Için [Kurtarma Hizmetleri kasalarını](backup-azure-recovery-services-vault-overview.md) kullanabilirsiniz.
 - **Otomatik depolama yönetimi** - Karma ortamlar genelde heterojen depolamaya (bazıları şirket içi, bazıları ise bulutta olan) ihtiyaç duyar. Azure Backup, şirket içi depolama cihazlarını kullanma maliyeti yoktur. Azure Backup, yedekleme alanını otomatik olarak ayırıp yönetir ve "kullandıkça öde" modelini kullanır. Böylece yalnızca kullandığınız depolama alanı için ödeme yaparsınız. Fiyatlandırma hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/backup) .
 - **Birden çok depolama seçeneği** Azure Backup depolama/verilerinizi yüksek oranda kullanılabilir tutmak için iki tür çoğaltma sunar.
-  - [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy-lrs.md) verilerinizi üç kez çoğaltır (verilerinizin üç kopyasını oluşturur) bir veri merkezinde bulunan bir depolama ölçek birimi. Verilerin tüm kopyaları aynı bölgenin içinde yer alır. LRS, verilerinizi yerel donanım hatalarına karşı korumak için düşük maliyetli bir seçenektir.
-  - [Coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy-grs.md) , varsayılan ve önerilen çoğaltma seçeneğidir. GRS, verilerinizi ikincil bir bölgeye (kaynak verilerin birincil konumundan yüzlerce kilometre uzakta) kopyalar. GRS 'nin maliyeti LRS 'den fazladır, ancak bölgesel bir kesinti olsa bile, verileriniz için GRS daha yüksek düzeyde dayanıklılık sağlar.
+  - [Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md) verilerinizi üç kez çoğaltır (verilerinizin üç kopyasını oluşturur) bir veri merkezinde bulunan bir depolama ölçek birimi. Verilerin tüm kopyaları aynı bölgenin içinde yer alır. LRS, verilerinizi yerel donanım hatalarına karşı korumak için düşük maliyetli bir seçenektir.
+  - [Coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md) , varsayılan ve önerilen çoğaltma seçeneğidir. GRS, verilerinizi ikincil bir bölgeye (kaynak verilerin birincil konumundan yüzlerce kilometre uzakta) kopyalar. GRS 'nin maliyeti LRS 'den fazladır, ancak bölgesel bir kesinti olsa bile, verileriniz için GRS daha yüksek düzeyde dayanıklılık sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
