@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d66c690c3a0ba638a92150c9aa1dbb0dc2a41268
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562075"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506171"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure İşlev Proxy'leri çalışın
 
@@ -30,7 +30,7 @@ Bu bölümde, Işlevler portalında bir ara sunucu oluşturma konusu gösterilme
 3. Ara sunucunuz için bir ad sağlayın.
 4. **Yönlendirme şablonunu** ve **http yöntemlerini**belirterek bu işlev uygulamasında gösterilen uç noktayı yapılandırın. Bu parametreler, [http tetikleyicilerinin]kurallarına göre davranır.
 5. **Arka uç URL 'sini** başka bir uç noktaya ayarlayın. Bu uç nokta, başka bir işlev uygulamasındaki bir işlev veya başka bir API olabilir. Değerin statik olması gerekmez ve [özgün istemci isteğinden] [uygulama ayarlarına] ve parametrelerine başvurabilir.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 
 Proxy 'niz artık işlev uygulamanızda yeni bir uç nokta olarak var. Bir istemci perspektifinden, Azure Işlevlerinde bir HttpTrigger ile eşdeğerdir. Proxy URL 'sini kopyalayıp en sevdiğiniz HTTP istemcisiyle test ederek yeni proxy 'nizi deneyebilirsiniz.
 
@@ -89,7 +89,7 @@ Yanıt parametreleri, istemciye olan yanıtı değiştirmenin bir parçası olar
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Başvuru uygulama ayarları
 
-Ayrıca, ayar adını yüzde işaretleri (%) ile çevreleyerek [işlev uygulaması için tanımlanan uygulama ayarlarına](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) başvurabilirsiniz.
+Ayrıca, ayar adını yüzde işaretleri (%) ile çevreleyerek [işlev uygulaması için tanımlanan uygulama ayarlarına](./functions-how-to-use-azure-function-app-settings.md) başvurabilirsiniz.
 
 Örneğin, bir arka uç URL 'SI *https://%ORDER_PROCESSING_HOST%/api/orders* "% ORDER_PROCESSING_HOST%" değerini ORDER_PROCESSING_HOST ayarı değeriyle değiştirdi.
 
@@ -110,7 +110,7 @@ Güvenlik nedenleriyle, hizmetinizi çağıran herkesin izleme oluşturmasına i
 
 ## <a name="advanced-configuration"></a>Gelişmiş yapılandırma
 
-Yapılandırdığınız proxy 'ler, bir işlev uygulama dizininin kökünde bulunan dosyası *proxies.js* depolanır. Bu dosyayı el ile düzenleyebilir ve Işlevlerin desteklediği [dağıtım yöntemlerinden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) birini kullandığınızda uygulamanızın bir parçası olarak dağıtabilirsiniz. 
+Yapılandırdığınız proxy 'ler, bir işlev uygulama dizininin kökünde bulunan dosyası *proxies.js* depolanır. Bu dosyayı el ile düzenleyebilir ve Işlevlerin desteklediği [dağıtım yöntemlerinden](./functions-continuous-deployment.md) birini kullandığınızda uygulamanızın bir parçası olarak dağıtabilirsiniz. 
 
 > [!TIP] 
 > Dağıtım yöntemlerinden birini görmüyorsanız, portaldaki *proxies.js* dosya ile de çalışabilirsiniz. İşlev uygulamanıza gidin, **platform özellikleri**' ni seçin ve ardından **App Service Düzenleyicisi**' yi seçin. Bunu yaptığınızda, işlev uygulamanızın tüm dosya yapısını görüntüleyebilir ve sonra değişiklikler yapabilirsiniz.
@@ -243,8 +243,8 @@ Değerler uygulama ayarlarına, özgün istemci isteğinden parametrelere ve ark
 > [!NOTE] 
 > Bu örnekte, yanıt gövdesi doğrudan ayarlanır, bu nedenle hiçbir `backendUri` özellik gerekmez. Örnek, sahte işlem API 'leri için Azure işlev proxy'leri nasıl kullanabileceğinizi gösterir.
 
-[Azure portalındaki]: https://portal.azure.com
-[HTTP Tetikleyicileri]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[Azure Portal]: https://portal.azure.com
+[HTTP Tetikleyicileri]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [RequestOverrides nesnesi tanımlama]: #requestOverrides

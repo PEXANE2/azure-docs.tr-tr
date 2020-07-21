@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422598"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509095"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Azure VM sorunlarını gidermek için uzak araçları kullanma
 
@@ -31,7 +31,7 @@ Bir Azure sanal makinesinde (VM) sorunları giderirken, Uzak Masaüstü Protokol
 
 ## <a name="remote-cmd"></a>Uzak CMD
 
-[PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)'yi indirin. Aşağıdaki komutu çalıştırarak VM 'ye bağlanın:
+[PsExec](/sysinternals/downloads/psexec)'yi indirin. Aşağıdaki komutu çalıştırarak VM 'ye bağlanın:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
@@ -251,9 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- ENTER-PSSession cmdlet 'i hakkında daha fazla bilgi için bkz. [-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
-- Klasik dağıtım modelini kullanarak Windows için özel Betik uzantısı hakkında daha fazla bilgi için bkz. [Windows Için özel Betik uzantısı](../extensions/custom-script-classic.md).
+- ENTER-PSSession cmdlet 'i hakkında daha fazla bilgi için bkz. [-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1).
+- Klasik dağıtım modelini kullanarak Windows için özel Betik uzantısı hakkında daha fazla bilgi için bkz. [Windows Için özel Betik uzantısı](../extensions/custom-script-windows.md).
 - PsExec, [Padstools paketinin](https://download.sysinternals.com/files/PSTools.zip)bir parçasıdır.
-- Padstools Suite hakkında daha fazla bilgi için bkz. [padstools](https://docs.microsoft.com/sysinternals/downloads/pstools).
-
-
+- Padstools Suite hakkında daha fazla bilgi için bkz. [padstools](/sysinternals/downloads/pstools).

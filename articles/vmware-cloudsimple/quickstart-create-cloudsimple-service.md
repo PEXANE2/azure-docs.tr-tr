@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14df0f131aaef8a4c24e2d1eb242a9b440e7c7b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868026"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507599"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Hızlı başlangıç-CloudSimple hizmeti tarafından Azure VMware çözümü oluşturma
 
@@ -37,7 +38,7 @@ Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın.  CloudSimple hizmeti b
 
 ## <a name="create-the-service"></a>Hizmeti oluşturma
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple hizmeti**için arama yapın.
 
     ![CloudSimple hizmeti ara](media/create-cloudsimple-service-search.png)
@@ -54,7 +55,7 @@ Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın.  CloudSimple hizmeti b
 
     ![CloudSimple hizmeti oluşturma](media/create-cloudsimple-service.png)
 
-9. **Tamam**'a tıklayın.
+9. **Tamam** düğmesine tıklayın.
 
 Hizmet oluşturulur ve hizmetler listesine eklenir.
 
@@ -62,7 +63,7 @@ Hizmet oluşturulur ve hizmetler listesine eklenir.
 
 CloudSimple özel bulut ortamı için Kullandıkça Öde kapasitesini ayarlamak için, önce Azure portal düğümleri sağlayın.
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple düğümleri**için arama yapın.
 
     ![CloudSimple düğümlerinde arama yapın](media/create-cloudsimple-node-search.png)
@@ -81,9 +82,9 @@ CloudSimple özel bulut ortamı için Kullandıkça Öde kapasitesini ayarlamak 
 11. Sağlanacak düğüm sayısını seçin.
 12. **Gözden geçir + oluştur**' u seçin.
 13. Ayarları gözden geçirin. Ayarları değiştirmek için **önceki**'ni tıklatın.
-14. **Oluştur**'u seçin.
+14. **Oluştur**’u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Özel bulut oluşturma ve ortamı yapılandırma](quickstart-create-private-cloud.md)
-* [Cloudsimple hizmeti](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service) hakkında daha fazla bilgi edinin
+* [Cloudsimple hizmeti](./cloudsimple-service.md) hakkında daha fazla bilgi edinin

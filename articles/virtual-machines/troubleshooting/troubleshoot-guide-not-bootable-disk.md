@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80300985"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509044"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Önyükleme hatası – bu önyüklenebilir bir disk değil
 
@@ -27,7 +27,7 @@ Bu makalede, diskin bir Azure sanal makinesinde (VM) önyüklenebilir olmadığ�
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde, ' this önyüklenebilir disk değil ' iletisi ile bir istem görüntülediğini görürsünüz. Lütfen bir önyüklenebilir disket yerleştirip yeniden denemek için herhangi bir tuşa basın... '.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde, ' this önyüklenebilir disk değil ' iletisi ile bir istem görüntülediğini görürsünüz. Lütfen bir önyüklenebilir disket yerleştirip yeniden denemek için herhangi bir tuşa basın... '.
 
    Şekil 1
 
@@ -52,7 +52,7 @@ Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölü
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
 2. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
 ### <a name="set-partition-status-to-active"></a>Bölüm durumunu etkin olarak ayarla
@@ -148,4 +148,4 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için aşağıdaki
 
 ### <a name="rebuild-the-original-vm"></a>Özgün VM 'yi yeniden oluşturma
 
-VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

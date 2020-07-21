@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982008"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506579"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -336,6 +336,58 @@ Birden çok etki alanı tabanlı (ana bilgisayar tabanlı) yönlendirme için ç
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>. Pfx dosya parolamda özel karakterler kullanabilir miyim?
 
 Hayır,. pfx dosya parolanda yalnızca alfasayısal karakterler kullanın.
+
+### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>EV sertifikam, DigiCert tarafından verilir ve ara sertifikam iptal edildi. Nasıl yaparım? Application Gateway sertifikamı yenilesin mi?
+
+Sertifika yetkilisi (CA) tarayıcı üyeleri son yayınlanan raporlar, müşteriler, Microsoft ve genel olarak güvenilen CA 'Lar için sektör standartları ile uyumlu olmayan daha fazla teknoloji topluluğu tarafından verilen CA satıcıları tarafından verilen birden çok sertifikayı ayrıntılandıran raporlar.Uyumlu olmayan CA 'Larla ilgili raporlar şurada bulunabilir:  
+
+* [Hata 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
+* [Hata 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
+
+Sektörün uyumluluk gereksinimlerine göre, CA satıcıları uyumlu olmayan CA 'Ları iptal etmeyi ve müşterilere sertifikalarının yeniden verilmesini gerektiren uyumlu CA 'ları vermeyi başladık.Microsoft, Azure hizmetlerine yönelik olası etkiyi en aza indirmek için bu satıcılarla yakından işbirliği yapıyor, **ancak "kendi sertifikasını getir" (BYOC) senaryolarında kullanılan kendi kendine verilen sertifika veya sertifikalarınız, beklenmedik şekilde iptal edilmesinden hala devam**etmektedir.
+
+Uygulamanız tarafından kullanılan sertifikaların iptal edilip edilmediğini denetlemek için, [DigiCert duyurusu](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) ve [sertifika iptal izleyici](https://misissued.com/#revoked)başvurusu. Sertifikalarınız iptal edildiyse veya iptal edildiğinde, uygulamalarınızda kullanılan CA satıcısından yeni sertifikalar istemeniz gerekir. Sertifikaların beklenmedik şekilde iptal edildiği veya iptal edilmiş bir sertifikayı güncelleştirme nedeniyle, uygulamanızın kullanılabilirliğinin kesintiye uğramasını önlemek için, BYOC 'yi destekleyen çeşitli Azure hizmetlerinin düzeltme bağlantıları için lütfen Azure Updates gönderimize bakın:https://azure.microsoft.com/updates/certificateauthorityrevocation/
+
+Application Gateway belirli bilgiler için aşağıya bakın-
+
+İptal edilen Ida tarafından verilen bir sertifika kullanıyorsanız, uygulamanızın kullanılabilirliği kesintiye uğramış olabilir ve uygulamanıza bağlı olarak, aşağıdakiler dahil ancak bunlarla sınırlı olmamak üzere çeşitli hata iletileri alabilirsiniz: 
+
+1.  Geçersiz sertifika/iptal edilmiş sertifika
+2.  Bağlantı zaman aşımına uğradı
+3.  HTTP 502
+
+Bu sorun nedeniyle uygulamanızın kesintiye uğramasını önlemek veya iptal edilen bir CA 'yı yeniden vermek için aşağıdaki eylemleri gerçekleştirmeniz gerekir: 
+
+1.  Sertifikalarınızı yeniden verme hakkında sertifika sağlayıcınıza başvurun
+2.  Yeniden verildikten sonra Azure Application Gateway/WAF 'deki sertifikalarınızı, tüm [güven zinciriyle](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (yaprak, ara, kök sertifika) güncelleştirin. Sertifikanıza veya Application Gateway HTTP ayarlarına göre sertifikanızı nerede kullandığınızı temel alarak, sertifikaları güncelleştirmek ve daha fazla bilgi için bahsedilen belge bağlantılarını denetlemek için aşağıdaki adımları izleyin.
+3.  Yeniden verilen sertifikayı kullanmak için arka uç uygulama sunucularınızı güncelleştirin. Kullandığınız arka uç sunucusuna bağlı olarak, sertifika güncelleştirme adımlarınız farklılık gösterebilir. Lütfen satıcınızdan belgeleri denetleyin.
+
+Dinleyicinizdeki sertifikayı güncelleştirmek için:
+
+1.  [Azure Portal](https://portal.azure.com/), Application Gateway kaynağını açın
+2.  Sertifikanıza ilişkin dinleyici ayarlarını açın
+3.  "Seçili Sertifikayı Yenile veya Düzenle" seçeneğine tıklayın
+4.  Yeni PFX sertifikanızı parolayla karşıya yükleyin ve Kaydet ' e tıklayın.
+5.  Web sitesine erişin ve sitenin beklendiği gibi çalışıp çalışmadığını doğrulayın daha fazla bilgi [için belgeleri inceleyin](https://docs.microsoft.com/azure/application-gateway/renew-certificates).
+
+Application Gateway dinleyicinizdeki Azure Keykasasındaki sertifikalara başvuruyorsanız, hızlı bir değişiklik için aşağıdaki adımları öneririz:
+
+1.  [Azure Portal](https://portal.azure.com/), Application Gateway Ilişkili Azure keykasası ayarlarınıza gidin
+2.  Deponuzda yeniden yayımlanan sertifikayı ekleyin/içeri aktarın. Nasıl yapılır hakkında daha fazla [bilgi için belgelere bakın.](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)
+3.  Sertifika içeri aktarıldıktan sonra, Application Gateway dinleyici ayarlarınıza gidin ve "Key Vault sertifika seçin" altında "sertifika" açılan düğmesine tıklayın ve son eklenen sertifikayı seçin
+4.  Application Gateway Key Vault sertifikalarla TLS sonlandırma hakkında daha fazla bilgi Için Kaydet ' e tıklayın, [burada](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)belgeleri kontrol edin.
+
+
+HTTP ayarlarınızda sertifikayı güncelleştirmek için:
+
+Application Gateway/WAF hizmetinin v1 SKU 'sunu kullanıyorsanız, yeni sertifikayı arka uç kimlik doğrulama sertifikanız olarak yüklemeniz gerekir.
+1.  [Azure Portal](https://portal.azure.com/), Application Gateway kaynağını açın
+2.  Sertifikanıza ilişkin HTTP ayarlarını açın
+3.  "Sertifika ekle" seçeneğine tıklayın ve yeniden yayımlanan sertifikayı karşıya yükleyin ve Kaydet ' e tıklayın.
+4.  Eski sertifikayı daha sonra "..." öğesine tıklayarak kaldırabilirsiniz. Eski sertifikanın yanındaki Seçenekler düğmesi ve Sil ' i seçin ve Kaydet ' e tıklayın.
+Daha fazla bilgi [için belgelere bakın](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers).
+
+Application Gateway/WAF hizmetinin v2 SKU 'sunu kullanıyorsanız, v2 SKU 'SU "güvenilen kök sertifikalar" kullandığından ve burada herhangi bir işlem yapılması gerekmiyorsa, yeni sertifikayı HTTP ayarlarında karşıya yüklemeniz gerekmez.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>AKS için yapılandırma girişi denetleyicisi
 

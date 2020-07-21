@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084337"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508891"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Uzak Masaüstü Hizmetleri bir Azure VM üzerinde başlamıyor
 
@@ -218,7 +218,7 @@ Bu sorunu gidermek için seri konsolu 'nu kullanın. Ya da VM 'nin işletim sist
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM 'sine iliştirme
 
-1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](./troubleshoot-recovery-disks-portal-windows.md).
 2. Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın. Disk Yönetimi konsolunda, eklenen diskin **çevrimiçi** olarak işaretlendiğinden emin olun. Bağlı işletim sistemi diskine atanan sürücü harfini unutmayın.
 3. Yükseltilmiş bir komut istemi örneği açın (**yönetici olarak çalıştır**). Ardından aşağıdaki betiği çalıştırın. Bağlı işletim sistemi diskine atanan sürücü harfinin **F**olduğunu varsayıyoruz. Bunu sanal makinenizde uygun değerle değiştirin. 
 
@@ -234,7 +234,7 @@ Bu sorunu gidermek için seri konsolu 'nu kullanın. Ya da VM 'nin işletim sist
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
+4. [İşletim sistemi diskini ayırın ve VM 'yi yeniden oluşturun](./troubleshoot-recovery-disks-portal-windows.md). Sonra sorunun çözümlenip çözümlenmediğini denetleyin.
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 

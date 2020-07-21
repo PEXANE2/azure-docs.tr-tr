@@ -1,5 +1,5 @@
 ---
-title: Azure 'da SAP çoklu SID yapılandırması oluşturma | Microsoft Docs
+title: Azure 'da SAP yüksek kullanılabilirlik çoklu SID yapılandırması oluşturma
 description: Windows sanal makinelerinde yüksek kullanılabilirliğe sahip SAP NetWeaver çok SID yapılandırmasına kılavuz
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 553abc0a221950d81f3ee8591875507d0b6a2f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e2055d194e1836ebc0b2e1181ca49794bc4a3b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508019"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver çoklu SID yapılandırması oluşturma
 
@@ -454,7 +455,7 @@ Bu makalede, var olan bir Windows Server Yük Devretme Kümelemesi (WSFC) kümes
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Windows VM 'lerde ve bu diyagramda gösterildiği gibi [yüksek kullanılabilirliğe sahıp SAP NetWeaver için kılavuzda][sap-ha-guide] açıklandığı gibi, BIR SAP ascs/SCS örneği için kullanılan bir wsfc kümesini zaten yapılandırdınız.
 
 ![Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği][sap-ha-guide-figure-6001]

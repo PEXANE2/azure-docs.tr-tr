@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507582"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory
 
@@ -50,9 +51,9 @@ Bu kılavuzda, şirket içinde veya aboneliklerinizde sanal makineler çalışt�
 
 Active Directory etki alanınızı ayarlarken aşağıdaki tablodaki bilgileri kullanın.
 
-| **Seçeneği** | **Açıklama** |
+| **Seçenek** | **Açıklama** |
 |------------|-----------------|
-| **Adı** | Kimlik kaynağının adı. |
+| **Ad** | Kimlik kaynağının adı. |
 | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad. |
 | **Etki alanı adı** | Etki alanının FQDN 'SI, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
 | **Etki alanı diğer adı** | Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
@@ -60,7 +61,7 @@ Active Directory etki alanınızı ayarlarken aşağıdaki tablodaki bilgileri k
 | **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br>Biçimini kullanın  `ldap://hostname:port`    `ldaps://hostname:port` . Bağlantı noktası genellikle LDAP bağlantıları için 389 ve LDAPS bağlantıları için 636 ' dir. Birden çok etki alanı denetleyicisi dağıtımı Active Directory için, bağlantı noktası genellikle LDAP için 3268 ve LDAPS için 3269 ' dir.<br><br> `ldaps://`   Birincil veya IKINCIL LDAP URL 'sinde kullandığınızda Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
 | **İkincil sunucu URL 'SI** | Yük devretme için kullanılan ikincil etki alanı denetleyicisi LDAP sunucusunun adresi. |
 | **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız,  `ldaps://` URL metin kutusuna yazdıktan sonra Sertifika Seç düğmesi görünür   . İkincil bir URL gerekli değildir. |
-| **Nitelen** | Etki alanındaki, kullanıcılar ve gruplar için temel DN 'ye yönelik en az salt okuma erişimi olan bir kullanıcının KIMLIĞI. |
+| **Kullanıcı adı** | Etki alanındaki, kullanıcılar ve gruplar için temel DN 'ye yönelik en az salt okuma erişimi olan bir kullanıcının KIMLIĞI. |
 | **Parola** | Kullanıcı adı tarafından belirtilen kullanıcının parolası. |
 
 Önceki tabloda yer alan bilgilere sahip olduğunuzda, vCenter 'da çoklu oturum açma kimlik kaynağı olarak şirket içi Active Directory ekleyebilirsiniz.
@@ -79,7 +80,7 @@ Yeni bir Active Directory orman ve etki alanı ayarlamak için şunlar gerekir:
 * Yeni Active Directory orman ve etki alanı için etki alanı denetleyicileri olarak kullanmak üzere Microsoft Windows Server çalıştıran bir veya daha fazla sanal makine.
 * Ad çözümlemesi için DNS hizmetini çalıştıran bir veya daha fazla sanal makine.
 
-Ayrıntılı adımlar için bkz. [Yeni bir Windows Server 2012 Active Directory ormanı yüklemeyi](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) .
+Ayrıntılı adımlar için bkz. [Yeni bir Windows Server 2012 Active Directory ormanı yüklemeyi](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) .
 
 > [!TIP]
 > Hizmetlerin yüksek kullanılabilirliği için, birden çok etki alanı denetleyicisi ve DNS sunucusu ayarlamayı öneririz.
@@ -93,7 +94,7 @@ Mevcut bir Active Directory ormanında yeni bir Active Directory etki alanı kur
 * Active Directory ormanınızın bulunduğu konumdan siteye VPN bağlantısı.
 * Mevcut Active Directory ormanınızın adını çözümlemek için DNS sunucusu.
 
-Ayrıntılı adımlar için bkz. [Yeni Windows Server 2012 Active Directory alt veya ağaç etki alanı yüklemesi](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
+Ayrıntılı adımlar için bkz. [Yeni Windows Server 2012 Active Directory alt veya ağaç etki alanı yüklemesi](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
 
 Active Directory etki alanını ayarladıktan sonra, yeni Active Directory için [vCenter 'a bir kimlik kaynağı ekleyebilirsiniz](#add-an-identity-source-on-vcenter) .
 

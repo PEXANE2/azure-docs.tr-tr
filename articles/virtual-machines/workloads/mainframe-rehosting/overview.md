@@ -10,11 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507888"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure sanal makinelerinde Ana bilgisayar yeniden barındırma
 
@@ -69,11 +70,11 @@ Başlamak için:
 
 IBM DB2 pureScale ortamı, Azure için bir veritabanı kümesi sağlar. Bu, özgün ortamla aynı değildir, ancak Paralel Sysplex kurulumunda çalışan z/ç için IBM DB2 olarak benzer kullanılabilirlik ve ölçek sunar.
 
-Başlamak için bkz. [Azure 'Da IBM DB2 pureScale](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
+Başlamak için bkz. [Azure 'Da IBM DB2 pureScale](../../linux/ibm-db2-purescale-azure.md).
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Ana bilgisayar iş yüklerini Azure altyapısına hizmet olarak (IaaS) geçirdiğinizde, Azure VM 'Leri dahil olmak üzere çeşitli isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları arasından seçim yapabilirsiniz. Azure, bir dizi [Linux](/azure/virtual-machines/linux/overview) ve [Windows](/azure/virtual-machines/windows/overview) VM sunar.
+Ana bilgisayar iş yüklerini Azure altyapısına hizmet olarak (IaaS) geçirdiğinizde, Azure VM 'Leri dahil olmak üzere çeşitli isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları arasından seçim yapabilirsiniz. Azure, bir dizi [Linux](../../linux/overview.md) ve [Windows](../../windows/overview.md) VM sunar.
 
 ### <a name="compute"></a>İşlem
 
@@ -85,21 +86,21 @@ Azure işlem gücü favorably, ana bilgisayarın kapasitesine göre karşılaşt
 
 Azure taahhüt tabanlı hizmet düzeyi sözleşmeleri (SLA 'Lar) sağlar. Birden çok-nines kullanılabilirliği varsayılandır ve SLA 'Lar hizmetlerin yerel veya coğrafi tabanlı çoğaltmasıyla iyileştirilebilir. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
 
-VM gibi Azure IaaS ile belirli sistem işlevleri, Yük Devretme Kümelemesi örnekleri ve kullanılabilirlik kümeleri gibi yük devretme desteği sağlar. Azure platformu hizmet olarak platform (PaaS) kaynaklarını kullandığınızda, Platform yük devretmeyi otomatik olarak işler. [Azure SQL veritabanı](/azure/sql-database/sql-database-technical-overview) ve [Azure Cosmos DB](/azure/cosmos-db/introduction)örnekler de vardır.
+VM gibi Azure IaaS ile belirli sistem işlevleri, Yük Devretme Kümelemesi örnekleri ve kullanılabilirlik kümeleri gibi yük devretme desteği sağlar. Azure platformu hizmet olarak platform (PaaS) kaynaklarını kullandığınızda, Platform yük devretmeyi otomatik olarak işler. [Azure SQL veritabanı](../../../azure-sql/database/sql-database-paas-overview.md) ve [Azure Cosmos DB](../../../cosmos-db/introduction.md)örnekler de vardır.
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 
-Ana bilgisayarlar genellikle ölçeği büyütme, bulut ortamları ölçeği genişletme. Azure, gereksinimlerinizi karşılayacak bir dizi [Linux](/azure/virtual-machines/linux/sizes) ve [Windows](/azure/virtual-machines/windows/sizes) boyutu sunar. Bulut Ayrıca, tam Kullanıcı belirtimleriyle eşleşecek şekilde ölçeği artırır veya küçültün. Kullanım tabanlı bir faturalandırma modeli kapsamında isteğe bağlı olarak işlem gücü, depolama ve hizmet [ölçeği](/azure/architecture/best-practices/auto-scaling) .
+Ana bilgisayarlar genellikle ölçeği büyütme, bulut ortamları ölçeği genişletme. Azure, gereksinimlerinizi karşılayacak bir dizi [Linux](../../linux/sizes.md) ve [Windows](../../windows/sizes.md) boyutu sunar. Bulut Ayrıca, tam Kullanıcı belirtimleriyle eşleşecek şekilde ölçeği artırır veya küçültün. Kullanım tabanlı bir faturalandırma modeli kapsamında isteğe bağlı olarak işlem gücü, depolama ve hizmet [ölçeği](/azure/architecture/best-practices/auto-scaling) .
 
 ### <a name="storage"></a>Depolama
 
-Bulutta, esnek ve ölçeklenebilir bir depolama seçenekleriniz vardır ve yalnızca ihtiyacınız olanlar için ödeme yaparsınız. [Azure depolama](/azure/storage/common/storage-introduction) , veri nesneleri için yüksek düzeyde ölçeklenebilir bir nesne deposu, bulut için bir dosya sistemi hizmeti, güvenilir bir mesajlaşma deposu ve bir NoSQL deposu sunar. VM 'Ler için, yönetilen ve yönetilmeyen diskler kalıcı ve güvenli disk depolama alanı sağlar.
+Bulutta, esnek ve ölçeklenebilir bir depolama seçenekleriniz vardır ve yalnızca ihtiyacınız olanlar için ödeme yaparsınız. [Azure depolama](../../../storage/common/storage-introduction.md) , veri nesneleri için yüksek düzeyde ölçeklenebilir bir nesne deposu, bulut için bir dosya sistemi hizmeti, güvenilir bir mesajlaşma deposu ve bir NoSQL deposu sunar. VM 'Ler için, yönetilen ve yönetilmeyen diskler kalıcı ve güvenli disk depolama alanı sağlar.
 
 [Ana bilgisayar depolamayı Azure 'a taşımayı](./concepts/mainframe-storage-azure.md)öğrenin.
 
 ### <a name="backup-and-recovery"></a>Yedekleme ve kurtarma
 
-Kendi olağanüstü durum kurtarma sitenizin saklanması pahalı bir önerde olabilir. Azure, yerel veya bölgesel düzeylerde [yedekleme](/azure/backup/backup-introduction-to-azure-backup), [Kurtarma](/azure/site-recovery/site-recovery-overview)ve [Artıklık](/azure/storage/common/storage-redundancy) için kolay ve ekonomik ve uygun maliyetli seçeneklere sahiptir veya coğrafi artıklık aracılığıyla yapılır.
+Kendi olağanüstü durum kurtarma sitenizin saklanması pahalı bir önerde olabilir. Azure, yerel veya bölgesel düzeylerde [yedekleme](../../../backup/backup-overview.md), [Kurtarma](../../../site-recovery/site-recovery-overview.md)ve [Artıklık](../../../storage/common/storage-redundancy.md) için kolay ve ekonomik ve uygun maliyetli seçeneklere sahiptir veya coğrafi artıklık aracılığıyla yapılır.
 
 ## <a name="azure-government-for-mainframe-migrations"></a>Ana bilgisayar geçişleri için Azure Kamu
 
@@ -117,7 +118,7 @@ Ayrıca bkz:
 
 - [Anabilgisayar konuları hakkında teknik incelemeler](mainframe-white-papers.md)
 - [Ana bilgisayar geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Sorun giderme](/azure/virtual-machines/troubleshooting/)
+- [Sorun giderme](../../troubleshooting/index.yml)
 - [Azure geçişine Demystifying ana bilgisayar](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

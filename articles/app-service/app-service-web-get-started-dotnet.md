@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d489ed9dbf9b8075951258e0841675877e11be38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205804"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506800"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -18,7 +18,7 @@ Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Cor
 
 İşiniz bittiğinde, bir App Service barındırma planından ve dağıtılan bir Web uygulamasına sahip bir App Service içeren bir Azure Kaynak grubunuz olacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
 - Bu hızlı başlangıçta Windows üzerinde App Service bir uygulama dağıtılır. _Linux_ üzerinde App Service'e dağıtım yapmak için bkz. [Linux üzerinde App Service'te .NET Core web uygulaması oluşturma](./containers/quickstart-dotnetcore.md).
@@ -42,7 +42,7 @@ Aşağıdaki adımları izleyerek Visual Studio 'da bir ASP.NET Core Web uygulam
 
    ![Web uygulaması projenizi yapılandırma](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. Azure 'a herhangi bir türde ASP.NET Core Web uygulaması dağıtabilirsiniz, ancak bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. **Kimlik doğrulamasının** **kimlik doğrulaması yok**olarak ayarlandığından ve başka bir seçeneğin seçilolmadığından emin olun. Ardından **Oluştur**' u seçin.
+1. Azure 'a herhangi bir türde ASP.NET Core Web uygulaması dağıtabilirsiniz, ancak bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. **Kimlik doğrulamasının** **kimlik doğrulaması yok**olarak ayarlandığından ve başka bir seçeneğin seçilolmadığından emin olun. Ardından **Oluştur**’u seçin.
 
    ![Yeni bir ASP.NET Core Web uygulaması oluşturma](./media/app-service-web-get-started-dotnet/create-aspnet-core-web-app.png) 
    
@@ -153,3 +153,8 @@ Bir .NET Core uygulaması oluşturmayı ve bir SQL veritabanına bağlamayı ö�
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core uygulamasını yapılandırma](configure-language-dotnetcore.md)
+
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
+
+> [!div class="nextstepaction"]
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

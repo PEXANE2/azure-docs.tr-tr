@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672455"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505712"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde metin verilerini ayrıştırma
-Azure Izleyici tarafından toplanan bazı günlük verileri, tek bir özellikte birden fazla bilgi parçası içerecektir. Bu verilerin birden çok özelliğe çözümlenmesi, sorgularda kullanmayı kolaylaştırır. Ortak bir örnek, tek bir özellikte birden fazla değeri olan bir günlük girişinin tamamını toplayan [özel bir günlüğlük](../../log-analytics/log-analytics-data-sources-custom-logs.md) örneğidir. Farklı değerler için ayrı özellikler oluşturarak, her biri üzerinde arama ve toplama yapabilirsiniz.
+Azure Izleyici tarafından toplanan bazı günlük verileri, tek bir özellikte birden fazla bilgi parçası içerecektir. Bu verilerin birden çok özelliğe çözümlenmesi, sorgularda kullanmayı kolaylaştırır. Ortak bir örnek, tek bir özellikte birden fazla değeri olan bir günlük girişinin tamamını toplayan [özel bir günlüğlük](../platform/data-sources-custom-logs.md) örneğidir. Farklı değerler için ayrı özellikler oluşturarak, her biri üzerinde arama ve toplama yapabilirsiniz.
 
 Bu makalede, verilerin alındığı ve bir sorguda alındığı zaman, her biri için göreli avantajları karşılaştıran Azure Izleyici 'de günlük verilerinin ayrıştırılmasına yönelik farklı seçenekler açıklanmaktadır.
 
@@ -22,7 +23,7 @@ Bu makalede, verilerin alındığı ve bir sorguda alındığı zaman, her biri 
 Verileri bir sorgu ile analiz edilirken veri toplandığında ya da sorgu zamanında veri alma sırasında verileri ayrıştırabilirsiniz. Her strateji aşağıda açıklandığı gibi benzersiz avantajlara sahiptir.
 
 ### <a name="parse-data-at-collection-time"></a>Toplama sırasında verileri Ayrıştır
-Verileri toplama zamanında ayrıştırdığınızda, tabloda yeni özellikler oluşturan [özel alanları](../../log-analytics/log-analytics-custom-fields.md) yapılandırırsınız. Sorguların herhangi bir ayrıştırma mantığı içermesi gerekmez ve bu özellikleri tablodaki diğer herhangi bir alan olarak kullanmanız yeterlidir.
+Verileri toplama zamanında ayrıştırdığınızda, tabloda yeni özellikler oluşturan [özel alanları](../platform/custom-fields.md) yapılandırırsınız. Sorguların herhangi bir ayrıştırma mantığı içermesi gerekmez ve bu özellikleri tablodaki diğer herhangi bir alan olarak kullanmanız yeterlidir.
 
 Bu yöntemin avantajları şunlardır:
 

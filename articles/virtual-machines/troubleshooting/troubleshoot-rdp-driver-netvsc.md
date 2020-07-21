@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057979"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509010"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>netvsc.sys nedeniyle Azure 'da Windows 10 veya Windows Server 2016 VM 'ye uzaktan bağlanılamıyor
 
@@ -69,7 +69,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 ### <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma
 
-1. [Sistem diskini bir kurtarma VM 'Sine bağlayın](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Sistem diskini bir kurtarma VM 'Sine bağlayın](./troubleshoot-recovery-disks-portal-windows.md).
 
 2. Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın.
 
@@ -114,7 +114,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [Sistem diskini ayırın ve VM 'yi yeniden oluşturun](../windows/troubleshoot-recovery-disks-portal.md).
+16. [Sistem diskini ayırın ve VM 'yi yeniden oluşturun](./troubleshoot-recovery-disks-portal-windows.md).
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 

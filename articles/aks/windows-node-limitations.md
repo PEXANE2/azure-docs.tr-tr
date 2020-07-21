@@ -5,12 +5,12 @@ description: Azure Kubernetes Service 'te (AKS) Windows Server düğüm havuzlar
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a86d6f0fe942a72a96c504a61d5030624f161cd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339880"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507021"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -44,7 +44,11 @@ Bir AKS kümesindeki ana düğümler (denetim düzlemi) hizmet tarafından barı
 
 ## <a name="what-network-plug-ins-are-supported"></a>Hangi ağ eklentileri destekleniyor?
 
-Windows node havuzlarıyla AKS kümelerinin Azure CNı (Gelişmiş) ağ modelini kullanması gerekir. Kubenet (temel) ağı desteklenmez. Ağ modellerindeki farklılıklar hakkında daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için ağ kavramları][azure-network-models]. -Azure CNı ağ modeli, IP adresi yönetimi için ek planlama ve dikkat edilecek noktalar gerektirir. Azure CNı 'nin nasıl planlanacağı ve uygulanacağı hakkında daha fazla bilgi için bkz. [AKS 'de Azure CNI ağını yapılandırma][configure-azure-cni].
+Windows node havuzlarıyla AKS kümelerinin Azure CNı (Gelişmiş) ağ modelini kullanması gerekir. Kubenet (temel) ağı desteklenmez. Ağ modellerindeki farklılıklar hakkında daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için ağ kavramları][azure-network-models]. Azure CNı ağ modeli, IP adresi yönetimi için ek planlama ve dikkat edilecek noktalar gerektirir. Azure CNı 'nin nasıl planlanacağı ve uygulanacağı hakkında daha fazla bilgi için bkz. [AKS 'de Azure CNI ağını yapılandırma][configure-azure-cni].
+
+## <a name="is-preserving-the-client-source-ip-supported"></a>İstemci kaynak IP 'si destekleniyor mu?
+
+Şu anda, [istemci kaynak IP koruması][client-source-ip] Windows düğümlerinde desteklenmez.
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Maksimum değeri değiştirebilir miyim? düğüm başına düşen öğe sayısı?
 
@@ -103,6 +107,14 @@ Grup tarafından yönetilen hizmet hesapları (gMSA) desteği şu anda AKS 'de k
 
 Evet, ancak Azure Izleyici, Windows kapsayıcılarından günlükleri (stdout, stderr) ve ölçümleri toplamak için genel önizlemede bulunabilir. Ayrıca, bir Windows kapsayıcısından stdout günlüklerinin canlı akışına de ekleyebilirsiniz.
 
+## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>Windows düğümlerine sahip bir kümedeki hizmet sayısıyla ilgili sınırlamalar var mı?
+
+Windows düğümlerine sahip bir küme, bağlantı noktası tükenmesi ile karşılaşmadan önce yaklaşık 500 hizmete sahip olabilir.
+
+## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Kubernetes web panosunu Windows kapsayıcılarıyla kullanabilir miyim?
+
+Evet, [Kubernetes web panosunu][kubernetes-dashboard] Windows kapsayıcıları hakkındaki bilgilere erişmek için kullanabilirsiniz, ancak şu anda *kubectl exec* 'i çalışan bir Windows kapsayıcısına doğrudan Kubernetes Web panosundan çalıştıramazsınız. Çalışan Windows kapsayıcınıza bağlanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service (AKS) küme Windows Server düğümlerine bakım veya sorun giderme IÇIN RDP Ile bağlanma][windows-rdp].
+
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Desteklenmeyen bir özelliğe ihtiyacım varsa ne olur?
 
 AKS 'de Windows 'a ihtiyacınız olan tüm özellikleri getirmek için çok çalıştık, ancak boşluklar yaşarsanız açık kaynaklı, yukarı akış [aks-motor][aks-engine] projesi, Windows desteği dahil olmak üzere Azure 'Da Kubernetes 'in kolay ve tamamen özelleştirilebilir bir yolunu sağlar. Lütfen kendi [aks yol haritasını][aks-roadmap]inceleyin.
@@ -132,3 +144,6 @@ AKS 'de Windows Server kapsayıcıları kullanmaya başlamak için [AKS 'de Wind
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
 [azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[client-source-ip]: concepts-network.md#ingress-controllers
+[kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-rdp]: rdp.md

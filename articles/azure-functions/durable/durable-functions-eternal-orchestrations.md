@@ -3,14 +3,14 @@ title: Dayanıklı İşlevler-Azure 'da Eternal düzenlemeleri
 description: Azure işlevleri için dayanıklı işlevler uzantısını kullanarak dış düzenlemeleri uygulamayı öğrenin.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478808"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506375"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de Eternal düzenlemeleri (Azure Işlevleri)
 
@@ -22,7 +22,7 @@ ms.locfileid: "80478808"
 
 ## <a name="resetting-and-restarting"></a>Sıfırlama ve yeniden başlatma
 
-Sonsuz döngüler kullanmak yerine, düzenleyici işlevleri `ContinueAsNew` `continueAsNew` [düzenleme tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger)(.net) veya (JavaScript) yöntemini çağırarak durumlarını sıfırlar. Bu yöntem, bir sonraki Orchestrator işlevi oluşturma için yeni giriş haline gelen tek bir JSON-Serializable parametresi alır.
+Sonsuz döngüleri kullanmak yerine, `ContinueAsNew` düzenleme tetikleyicisi bağlamasının (.net), `continueAsNew` (JavaScript) veya `continue_as_new` (Python) yöntemini [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)çağırarak Orchestrator işlevleri durumlarını sıfırlar. Bu yöntem, bir sonraki Orchestrator işlevi oluşturma için yeni giriş haline gelen tek bir JSON-Serializable parametresi alır.
 
 `ContinueAsNew`Çağrıldığında, örnek çıkış yapmadan önce bir iletiyi kendisine sıraya alır. İleti, örneği yeni giriş değeri ile yeniden başlatır. Aynı örnek KIMLIĞI tutulur, ancak Orchestrator işlevinin geçmişi etkin bir şekilde kesilir.
 
@@ -70,13 +70,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("DoCleanup")
+
+    # sleep for one hour between cleanups
+    next_cleanup = context.current_utc_datetime + timedelta(hours = 1)
+    yield context.create_timer(next_cleanup)
+
+    context.continue_as_new(None)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Bu örnek ve Zamanlayıcı tarafından tetiklenen bir işlev arasındaki fark, temizleme tetikleme sürelerinin bir zamanlamaya göre değil, burada yer alır. Örneğin, bir işlevi her saat yürüten bir CRON zamanlaması, bunu 1:00, 2:00, 3:00 vb. ve büyük olasılıkla çakışma sorunları halinde çalıştıracaktır. Bu örnekte, temizleme işlemi 30 dakika sürüyorsa, 1:00, 2:30, 4:00, vb. olarak zamanlanır.
 
 ## <a name="starting-an-eternal-orchestration"></a>Dış düzenleme başlatılıyor
 
-`StartNewAsync` `startNew` Diğer düzenleme işlevlerine benzer şekilde, dış bir düzenleme başlatmak için (.net) veya (JavaScript) yöntemini kullanın.  
+`StartNewAsync` `startNew` `start_new` Diğer düzenleme işlevlerine benzer şekilde, dış bir düzenleme başlatmak için (.net), (JavaScript), (Python) metodunu kullanın.  
 
 > [!NOTE]
 > Tek bir dış Orchestration 'un çalıştığından emin olmanız gerekiyorsa, düzenleme başlatılırken aynı örneği korumak önemlidir `id` . Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
@@ -115,6 +134,19 @@ module.exports = async function (context, req) {
     return client.createCheckStatusResponse(context.bindingData.req, instanceId);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    instance_id = 'StaticId'
+
+    await client.start_new('Periodic_Cleanup_Loop', instance_id, None)
+
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+
+```
 
 ---
 
@@ -122,7 +154,7 @@ module.exports = async function (context, req) {
 
 Bir Orchestrator işlevinin sonunda tamamlanması gerekiyorsa, tüm yapmanız gereken çağrı *yapmamalıdır* `ContinueAsNew` ve işlevin çıkmasına izin vermez.
 
-Orchestrator işlevi sonsuz bir döngüde ve durdurulması gerekiyorsa, `TerminateAsync` `terminate` bunu durdurmak için [Orchestration istemci bağlamasının](durable-functions-bindings.md#orchestration-client) (.net) veya (JavaScript) metodunu kullanın. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
+Orchestrator işlevi sonsuz bir döngüde ve durdurulması gerekiyorsa, `TerminateAsync` `terminate` `terminate` bunu durdurmak için [Orchestration istemci bağlamasının](durable-functions-bindings.md#orchestration-client) (.net), (JavaScript) veya (Python) metodunu kullanın. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

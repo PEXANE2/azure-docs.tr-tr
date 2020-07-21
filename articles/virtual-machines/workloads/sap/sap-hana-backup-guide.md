@@ -12,11 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507837"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA için yedekleme Kılavuzu
 
@@ -24,11 +25,11 @@ ms.locfileid: "78255249"
 
 Azure sanal makinelerinde çalışan SAP HANA için yedekleme kılavuzu yalnızca Azure 'a özgü konuları tanımlıyor. Genel SAP HANA yedeklemeyle ilgili öğeler için SAP HANA belgelerini denetleyin. İlke veritabanı yedekleme stratejilerini, nedenleri ve bir ses ve geçerli yedekleme stratejisi hakkında bilgi sahibi olmanız ve şirketinizin yedekleme prosedürü, bekletme süresi ve geri yükleme yordamının elde etmesinin gerekli olduğu gereksinimlerin farkında olmanız beklenir.
 
-SAP HANA, Azure M serisi gibi çeşitli Azure VM türlerinde resmi olarak desteklenir. SAP HANA sertifikalı Azure VM 'lerinin ve HANA büyük örnek birimlerinin tüm listesi için [sertifikalı IaaS platformları bulun](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)' i inceleyin. Microsoft Azure, SAP HANA fiziksel sunucularda sanallaştırılmamış bir şekilde çalıştığı birimlerin sayısını sağlar. Bu hizmet, [Hana büyük örnekleri](hana-overview-architecture.md)olarak adlandırılır. Bu kılavuz, HANA büyük örnekleri için Yedekleme süreçlerini ve araçları kapsamaz. Ancak Azure sanal makinelerle sınırlı olacak. HANA büyük örneklerle yedekleme/geri yükleme işlemlerine ilişkin ayrıntılar için [hLi yedekleme ve geri yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)makalesini okuyun.
+SAP HANA, Azure M serisi gibi çeşitli Azure VM türlerinde resmi olarak desteklenir. SAP HANA sertifikalı Azure VM 'lerinin ve HANA büyük örnek birimlerinin tüm listesi için [sertifikalı IaaS platformları bulun](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)' i inceleyin. Microsoft Azure, SAP HANA fiziksel sunucularda sanallaştırılmamış bir şekilde çalıştığı birimlerin sayısını sağlar. Bu hizmet, [Hana büyük örnekleri](hana-overview-architecture.md)olarak adlandırılır. Bu kılavuz, HANA büyük örnekleri için Yedekleme süreçlerini ve araçları kapsamaz. Ancak Azure sanal makinelerle sınırlı olacak. HANA büyük örneklerle yedekleme/geri yükleme işlemlerine ilişkin ayrıntılar için [hLi yedekleme ve geri yükleme](./hana-backup-restore.md)makalesini okuyun.
 
 Bu makalenin konusu, Azure sanal makinelerinde SAP HANA için üç yedekleme olasılıkdır:
 
-- [Azure Backup Hizmetleri](https://docs.microsoft.com/azure/backup/backup-overview) aracılığıyla Hana yedeklemesi 
+- [Azure Backup Hizmetleri](../../../backup/backup-overview.md) aracılığıyla Hana yedeklemesi 
 - Azure Linux sanal makinesindeki dosya sistemine HANA yedeklemesi (bkz. [SAP HANA Azure Backup dosya düzeyinde](sap-hana-backup-file-level.md))
 - Azure Depolama Blobu anlık görüntü özelliğini el ile veya Azure Backup hizmeti kullanarak depolama anlık görüntülerini temel alan HANA yedeklemesi
 
@@ -36,18 +37,18 @@ Bu makalenin konusu, Azure sanal makinelerinde SAP HANA için üç yedekleme ola
 SAP HANA, üçüncü taraf yedekleme araçlarının doğrudan SAP HANA tümleştirilmesine olanak sağlayan bir yedekleme API 'SI sunmaktadır. Azure Backup hizmeti veya [Commkasa](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/) gibi ürünler, SAP HANA veritabanını tetiklemek veya günlük yedeklerini yinelemek için bu özel arabirimi kullanıyor. 
 
 
-Azure 'da hangi SAP yazılımlarını desteklebileceğinize ilişkin bilgiler, [Azure dağıtımları Için HANGI SAP yazılımlarının desteklenmiş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)makalesinde bulunabilir.
+Azure 'da hangi SAP yazılımlarını desteklebileceğinize ilişkin bilgiler, [Azure dağıtımları Için HANGI SAP yazılımlarının desteklenmiş](./sap-supported-product-on-azure.md)makalesinde bulunabilir.
 
 ## <a name="azure-backup-service"></a>Azure Backup hizmeti
 
 Gösterilen ilk senaryo, Azure Backup hizmetin bir `backint` SAP HANA veritabanından bir akış yedeklemesi gerçekleştirmek için SAP HANA arabirimini kullandığı bir senaryodur. Ya da uygulamayla tutarlı bir disk anlık görüntüsü oluşturmak ve bir tane Azure Backup hizmetine aktarıldıklarından Azure Backup hizmeti için daha genel bir yetenek kullanın.
 
-Azure Backup, [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)adlı özel SAP HANA arabirimini kullanarak SAP HANA için yedekleme çözümü olarak tümleştirilir ve sertifikalandırilmiştir. Çözüm hakkında daha fazla ayrıntı için, özellikleri ve kullanılabilir olduğu Azure bölgeleri, [Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi Için destek matrisi](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)makalesini okuyun. HANA için Azure Backup hizmeti hakkında ayrıntılar ve ilkeler için, [Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkındaki](https://docs.microsoft.com/azure/backup/sap-hana-db-about)makaleyi okuyun. 
+Azure Backup, [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)adlı özel SAP HANA arabirimini kullanarak SAP HANA için yedekleme çözümü olarak tümleştirilir ve sertifikalandırilmiştir. Çözüm hakkında daha fazla ayrıntı için, özellikleri ve kullanılabilir olduğu Azure bölgeleri, [Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi Için destek matrisi](../../../backup/sap-hana-backup-support-matrix.md#scenario-support)makalesini okuyun. HANA için Azure Backup hizmeti hakkında ayrıntılar ve ilkeler için, [Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkındaki](../../../backup/sap-hana-db-about.md)makaleyi okuyun. 
 
-Azure Backup hizmetin faydalanma olasılığı, Azure Premium Depolama 'nın disk anlık görüntülerini kullanarak uygulamayla tutarlı bir yedekleme oluşturmaktır. [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd) ve [Azure NetApp FILES](https://azure.microsoft.com/services/netapp/) gibi diğer Hana sertifikalı Azure depolama, Azure Backup hizmet aracılığıyla bu tür bir anlık görüntüyü desteklememektedir. Şu makaleler okunuyor:
+Azure Backup hizmetin faydalanma olasılığı, Azure Premium Depolama 'nın disk anlık görüntülerini kullanarak uygulamayla tutarlı bir yedekleme oluşturmaktır. [Azure Ultra disk](../../linux/disks-enable-ultra-ssd.md) ve [Azure NetApp FILES](https://azure.microsoft.com/services/netapp/) gibi diğer Hana sertifikalı Azure depolama, Azure Backup hizmet aracılığıyla bu tür bir anlık görüntüyü desteklememektedir. Şu makaleler okunuyor:
 
-- [Azure’da sanal makine yedekleme altyapınızı planlama](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
-- [Azure Linux VM 'lerinin uygulamayla tutarlı yedeklemesi](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) 
+- [Azure’da sanal makine yedekleme altyapınızı planlama](../../../backup/backup-azure-vms-introduction.md)
+- [Uygulama ile tutarlı Azure Linux VM yedekleri](../../../backup/backup-azure-linux-app-consistent.md) 
 
 Bu etkinlik sırası oluşur:
 
@@ -103,7 +104,7 @@ Tablo tutarlılık denetimiyle ilgili bilgiler ayrıca, [tablo ve Katalog tutarl
 
 SAP&#39;t, depolama anlık görüntüsüne göre HANA yedeklemesini tercih edebilir. Profesyonelleri ve dezavantajlarını listeler. bu nedenle, bir diğeri duruma ve kullanılabilir depolama teknolojisine bağlı olarak hangisinin kullanılacağını belirleyebilir (bkz. [yedekleme ve kurtarma stratejinizi planlama](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
 
-Azure 'da, Azure Blob anlık görüntüsü&#39;özelliğinin birden çok diskte dosya sistemi tutarlılığı sunduğuna dikkat edin (bkz. [PowerShell ile blob anlık görüntüleri kullanma](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). 
+Azure 'da, Azure Blob anlık görüntüsü&#39;özelliğinin birden çok diskte dosya sistemi tutarlılığı sunduğuna dikkat edin (bkz. [PowerShell ile blob anlık görüntüleri kullanma](/archive/blogs/cie/using-blob-snapshots-with-powershell)). 
 
 Bunlara ek olarak, bu makalede açıklandığı gibi BLOB anlık görüntüleri ile sık sık çalışırken faturalandırma etkilerini anlamak gerekir: [anlık görüntülerin nasıl tahakkuk ettirildiğini anlama](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— Azure sanal diskleri 'ni kullanarak açık olarak&#39;t.
 

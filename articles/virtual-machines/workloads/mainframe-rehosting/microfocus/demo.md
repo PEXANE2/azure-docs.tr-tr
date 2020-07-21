@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80411067"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508058"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Developer 4,0 için Micro Focus CICS BankDemo ayarlama
 
@@ -273,7 +273,7 @@ Tebrikler! Artık Azure 'da Micro Focus Enterprise Server kullanarak bir CICS Ap
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da Docker kapsayıcılarında kurumsal sunucu çalıştırma](run-enterprise-server-container.md)
-- [Ana bilgisayar geçişi-Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Sorun giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Ana bilgisayar geçişi-Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [Sanal Makineler](../../../linux/overview.md)
+- [Sorun giderme](../../../troubleshooting/index.yml)
 - [Azure geçişine Demystifying ana bilgisayar](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

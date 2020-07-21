@@ -12,11 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
-ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124797"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509367"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure’da VM’leri oluştururken, yeniden başlatırken ve yeniden boyutlandırırken ortaya çıkan ayırma hatalarında sorun giderme
 
@@ -78,7 +79,7 @@ Kullanılabilirlik alanları kullanıyorsanız, bölge dahilinde istenen VM boyu
 
 Ayırma isteğiniz büyükse (500 çekirdekten fazla), isteği daha küçük dağıtımlara bölmek için aşağıdaki bölümlerdeki kılavuza bakın.
 
-[VM 'yi yeniden dağıtmaya](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)çalışın. VM 'nin yeniden dağıtılması, VM 'yi bölge içindeki yeni bir kümeye ayırır.
+[VM 'yi yeniden dağıtmaya](./redeploy-to-new-node-windows.md)çalışın. VM 'nin yeniden dağıtılması, VM 'yi bölge içindeki yeni bir kümeye ayırır.
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Daha eski VM boyutları (Av1, Dv1, DSv1, D15v2, DS15v2, vb.) için ayırma hataları
 
@@ -93,7 +94,7 @@ Azure altyapısını genişlettiğimiz gibi, en son sanal makine türlerini dest
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Daha büyük dağıtımlar (500 çekirdekten fazla) için ayırma hataları
 
-İstenen VM boyutu örneklerinin sayısını azaltın ve dağıtım işlemini yeniden deneyin. Ayrıca, daha büyük dağıtımlar için [Azure sanal makine ölçek kümelerini](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)değerlendirmek isteyebilirsiniz. Sanal makine örneklerinin sayısı isteğe bağlı olarak veya tanımlı bir zamanlamaya göre otomatik olarak artabilir veya azalabilir ve dağıtımlar birden fazla kümeye yayılabilecek olduğundan, başarılı bir ayırma şansınız olur. 
+İstenen VM boyutu örneklerinin sayısını azaltın ve dağıtım işlemini yeniden deneyin. Ayrıca, daha büyük dağıtımlar için [Azure sanal makine ölçek kümelerini](../../virtual-machine-scale-sets/index.yml)değerlendirmek isteyebilirsiniz. Sanal makine örneklerinin sayısı isteğe bağlı olarak veya tanımlı bir zamanlamaya göre otomatik olarak artabilir veya azalabilir ve dağıtımlar birden fazla kümeye yayılabilecek olduğundan, başarılı bir ayırma şansınız olur. 
 
 ## <a name="background-information"></a>Arka plan bilgileri
 ### <a name="how-allocation-works"></a>Ayırma nasıl kullanılır?
@@ -104,5 +105,3 @@ Azure veri merkezlerindeki sunucular kümelere bölünmüştür. Normalde, birde
 Bir ayırma isteği bir kümeye sabitlendiğinde, kullanılabilir kaynak havuzu daha küçük olduğundan, ücretsiz kaynakları bulmasının daha büyük bir olasılığı vardır. Ayrıca, ayırma isteğiniz bir kümeye sabitlenir ancak istediğiniz kaynak türü bu küme tarafından desteklenmiyorsa, kümede boş kaynaklar olsa bile isteğiniz başarısız olur. Aşağıdaki diyagram 3, tek aday kümenin ücretsiz kaynakları olmadığından, sabitlenmiş bir ayırmanın başarısız olduğu durumu gösterir. Diyagram 4 ' te, küme boş kaynaklara sahip olsa bile, tek aday kümesi istenen VM boyutunu desteklemediğinden, sabitlenmiş bir ayırmanın başarısız olduğu durum gösterilmektedir.
 
 ![Sabitlenmiş ayırma hatası](./media/virtual-machines-common-allocation-failure/Allocation2.png)
-
-

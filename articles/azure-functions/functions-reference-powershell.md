@@ -4,11 +4,12 @@ description: PowerShell kullanarak işlevleri geliştirmeyi anlayın.
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697281"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506137"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -18,7 +19,7 @@ Bir PowerShell Azure işlevi (işlev), tetiklendiğinde yürütülen bir PowerSh
 
 Diğer işlev türleri gibi, PowerShell betik işlevleri de dosyada tanımlanan tüm giriş bağlamalarının adlarıyla eşleşen parametreleri alır `function.json` . `TriggerMetadata`İşlevi Başlatan tetikleyicide ek bilgiler içeren bir parametre de geçirilir.
 
-Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. İlk PowerShell işlevinizi oluşturmak için [PowerShell için hızlı başlangıç işlevleri](functions-create-first-function-powershell.md) de tamamlanmış olmalıdır.
+Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. İlk PowerShell işlevinizi oluşturmak için [PowerShell için hızlı başlangıç işlevleri](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) de tamamlanmış olmalıdır.
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
@@ -124,7 +125,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Çağırmak için geçerli parametreler aşağıda verilmiştir `Push-OutputBinding` :
 
-| Name | Tür | Konum | Açıklama |
+| Ad | Tür | Konum | Description |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Dize | 1 | Ayarlamak istediğiniz çıkış bağlamasının adı. |
 | **`-Value`** | Nesne | 2 | Ayarlamak istediğiniz çıkış bağlamasının değeri, işlem hattı ByValue 'dan kabul edilir. |
@@ -295,7 +296,7 @@ Betiğe geçirilen istek nesnesi, `HttpRequestContext` aşağıdaki özelliklere
 
 | Özellik  | Açıklama                                                    | Tür                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | İsteğin gövdesini içeren bir nesne. `Body`, verileri temel alan en iyi türe serileştirilir. Örneğin, veriler JSON ise, bir Hashtable olarak geçirilir. Veriler bir dizeyse, bir dize olarak geçirilir. | nesne |
+| **`Body`**    | İsteğin gövdesini içeren bir nesne. `Body`, verileri temel alan en iyi türe serileştirilir. Örneğin, veriler JSON ise, bir Hashtable olarak geçirilir. Veriler bir dizeyse, bir dize olarak geçirilir. | object |
 | **`Headers`** | İstek üst bilgilerini içeren bir sözlük.                | Sözlük<dize, dize><sup>*</sup> |
 | **`Method`** | İsteğin HTTP yöntemi.                                | string                    |
 | **`Params`**  | İsteğin yönlendirme parametrelerini içeren nesne. | Sözlük<dize, dize><sup>*</sup> |
@@ -310,7 +311,7 @@ Geri göndermeniz gereken yanıt nesnesi, `HttpResponseContext` aşağıdaki öz
 
 | Özellik      | Açıklama                                                 | Tür                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Yanıtın gövdesini içeren bir nesne.           | nesne                    |
+| **`Body`**  | Yanıtın gövdesini içeren bir nesne.           | object                    |
 | **`ContentType`** | Yanıt için içerik türünü ayarlamanın kısa bir tarafı. | string                    |
 | **`Headers`** | Yanıt üst bilgilerini içeren bir nesne.               | Sözlük veya Hashtable   |
 | **`StatusCode`**  | Yanıtın HTTP durum kodu.                       | dize veya tamsayı             |
@@ -419,7 +420,7 @@ requirements.psd1 dosyasını güncelleştirdiğinizde, bir yeniden başlatmanı
 
 Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz içinde başlar `MDMaxBackgroundUpgradePeriod` ve yükseltme işlemi yaklaşık olarak içinde tamamlanır `MDNewSnapshotCheckPeriod` .
 
-| İşlev Uygulaması ayarı              | Varsayılan değer             | Açıklama                                         |
+| İşlev Uygulaması ayarı              | Varsayılan değer             | Description                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma ve sonrasında PowerShell Galerisi modül yükseltmelerini denetlemeyi başlatır `MDMaxBackgroundUpgradePeriod` . PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması içinde tamamlanır `MDNewSnapshotCheckPeriod` . Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |

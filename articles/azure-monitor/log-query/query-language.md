@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631793"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505746"
 ---
-# <a name="azure-monitor-log-queries"></a>Azure Izleyici günlük sorguları
+# <a name="azure-monitor-log-queries"></a>Azure İzleyici günlük sorguları
 
 Azure Izleyici günlükleri Azure Veri Gezgini kurulmuştur ve Azure Izleyici günlük sorguları aynı kusto sorgu dilinin bir sürümünü kullanır. [Kusto sorgu dili belgeleri](/azure/kusto/query) , dilin tüm ayrıntılarına sahiptir ve Azure izleyici günlük sorgularını yazmak için birincil kaynağınız olmalıdır. Bu sayfa, dilin Azure Izleyici uygulamasıyla nasıl sorgu yazılacağını ve farklılıkları hakkında bilgi almak için diğer kaynaklara bağlantılar sağlar.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 - [Azure izleyici 'yi kullanmaya başlama Log Analytics](get-started-portal.md) , sorgu yazma ve sonuçlarla çalışma ile ilgili bir ders olan Azure Portal.
 - [Azure izleyici günlük sorgularını kullanmaya başlama](get-started-queries.md) , Azure izleyici günlük verilerini kullanarak sorgu yazma dersi.
@@ -27,7 +27,7 @@ Azure Izleyici günlükleri Azure Veri Gezgini kurulmuştur ve Azure Izleyici g�
 ## <a name="concepts"></a>Kavramlar
 
 - [Azure izleyici 'de günlük verilerini analiz etmek](../../azure-monitor/log-query/log-query-overview.md) , günlük sorgularına kısa bir genel bakış sağlar ve Azure izleyici günlük verilerinin nasıl yapılandırıldığını açıklar.
-- [Azure izleyici 'de günlük verilerini görüntüleme ve çözümleme](../../azure-monitor/log-query/portals.md) , günlük sorguları oluşturup çalıştırdığınız portalları açıklar.
+- [Azure izleyici 'de günlük verilerini görüntüleme ve çözümleme](./log-query-overview.md) , günlük sorguları oluşturup çalıştırdığınız portalları açıklar.
 
 ## <a name="reference"></a>Başvuru
 

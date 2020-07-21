@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f4846947b18adb1d3f33f1d46482b5c02ee831e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309841"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509163"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>GRUB ve SySRq erişimine sahip olmanızı sağlamak, size büyük bir süre aşağı kaydetme
 
@@ -36,11 +37,11 @@ VM kurtarması gerçekleştirme nedenleri çok daha vardır ve şu gibi senaryol
    - Karıştırılmış SSHD yapılandırma dosyaları
    - Ağ yapılandırması
 
- [Burada](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console) ayrıntılı olarak daha fazla sayıda senaryo
+ [Burada](./serial-console-linux.md#common-scenarios-for-accessing-the-serial-console) ayrıntılı olarak daha fazla sayıda senaryo
 
 GRUB 'ye ve Azure 'da dağıtılan sanal makinelerinizdeki Seri konsol erişebildiğinizi doğrulayın. 
 
-Seri konsol ' i yeni kullanıyorsanız [Bu bağlantıya](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/)başvurun.
+Seri konsol ' i yeni kullanıyorsanız [Bu bağlantıya](./serial-console-linux.md)başvurun.
 
 > [!TIP]
 > Değişiklik yapmadan önce dosyaların yedeklerini aldığınızdan emin olun
@@ -345,7 +346,7 @@ GRUB menüsü, yapılandırılmış zaman aşımı = 15 ' in ESC tuşuna basmas�
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 SP1
-Her resmi [Belgeler](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles) Için yast önyükleme yükleyicisine kullanın
+Her resmi [Belgeler](./serial-console-grub-single-user-mode.md#grub-access-in-suse-sles) Için yast önyükleme yükleyicisine kullanın
 
 Ya da/etc/default/grub öğesine Ekle/Değiştir aşağıdaki parametreleri:
 
@@ -429,7 +430,7 @@ VM 'yi yeniden başlatma
 Alternatif olarak, VM 'ye tek bir kullanıcı veya acil durum modunda erişmeniz gerekebilir. Önyüklemek veya ok tuşlarını kullanarak kesintiye uğratmak istediğiniz çekirdeği seçin.
 Çekirdek önyükleme satırına **tek** veya **1** anahtar sözcüğünü ekleyerek istediğiniz modu girin. RHEL sistemlerinde **RD. Break**' i de ekleyebilirsiniz.
 
-Tek kullanıcı moduna erişme hakkında daha fazla bilgi için [Bu belgeye](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) bakın 
+Tek kullanıcı moduna erişme hakkında daha fazla bilgi için [Bu belgeye](./serial-console-grub-single-user-mode.md#general-single-user-mode-access) bakın 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)

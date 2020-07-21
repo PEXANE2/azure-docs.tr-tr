@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: eeb43247253386d6dd58a4c35ef0cba15a991b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ad1c3bfd7a7bb3dba36790d8dae0f503ba938c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086207"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508636"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Kısıtlanmış vCPU özellikli VM boyutları
 
@@ -24,12 +24,11 @@ ms.locfileid: "82086207"
 
 
 ## <a name="other-sizes"></a>Diğer boyutlar
-- [İşlem için iyileştirilmiş](../windows/sizes-compute.md)
-- [Bellek için iyileştirilmiş](sizes-memory.md)
-- [Depolama için iyileştirilmiş](sizes-storage.md)
-- [GPU](sizes-gpu.md)
-- [Yüksek performanslı işlem](sizes-hpc.md)
+- [İşlem için iyileştirilmiş](../sizes-compute.md)
+- [Bellek için iyileştirilmiş](../sizes-memory.md)
+- [Depolama için iyileştirilmiş](../sizes-storage.md)
+- [GPU](../sizes-gpu.md)
+- [Yüksek performanslı işlem](../sizes-hpc.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
-
+Azure [işlem birimlerinin (ACU)](../acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

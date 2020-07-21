@@ -1,16 +1,16 @@
 ---
-title: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
+title: Azure'da HTTP isteklerine yanıt veren işlev oluşturma
 description: Komut satırından bir işlev oluşturmayı ve ardından yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma için yayımlamayı öğrenin.
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506358"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -40,7 +40,7 @@ Bu makalenin [Visual Studio Code tabanlı bir sürümü](functions-create-first-
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Maven, tercih edilmemiş geliştirme aracınız değilse, [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ fikir](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
+> Maven, tercih edilmemiş geliştirme aracınız değilse, [Gradle](./functions-create-first-java-gradle.md), [IntelliJ fikir](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -101,7 +101,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister.   
 İstendiğinde aşağıdaki değerleri sağlayın:
 
-| İstem | Değer | Description |
+| İstem | Değer | Açıklama |
 | ------ | ----- | ----------- |
 | **groupId** | `com.fabrikam` | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) takip eden tüm projelerde projenizi benzersiz bir şekilde tanımlayan bir değer. |
 | **ArtifactId** | `fabrikam-functions` | Bir sürüm numarası olmadan jar adı olan bir değer. |
@@ -139,7 +139,7 @@ Bu klasör, [local.settings.js](functions-run-local.md#local-settings-file) ve [
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-Dönüş nesnesi, bir [Okobjectresult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) veya [Badrequestobjectresult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) olarak bir yanıt Iletisi döndüren bir [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) . Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp).
+Dönüş nesnesi, bir [Okobjectresult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) veya [Badrequestobjectresult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) olarak bir yanıt Iletisi döndüren bir [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) . Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=csharp).
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -169,7 +169,7 @@ Ayrıca, bu, işleviniz için bir birim testi de oluşturur. Bağlama eklemek ve
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. function.jsolarak tanımlanan dönüş nesnesi, `$return` [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. *function.json* Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. function.jsolarak tanımlanan dönüş nesnesi, `$return` [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. *function.json* Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -179,7 +179,7 @@ Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json*olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json*olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](./functions-bindings-http-webhook.md?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"

@@ -3,12 +3,12 @@ title: Azure Işlevlerinde bağlantıları yönetme
 description: Statik bağlantı istemcileri kullanarak Azure Işlevlerinde performans sorunlarından kaçınmaya nasıl engel olabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab59d82ad4b11e4ac5179ef727392a83bb263e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846771"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506001"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Işlevlerinde bağlantıları yönetme
 
@@ -24,8 +24,7 @@ Sorun giderirken, işlev uygulamanız için Application Insights etkinleştirdi�
 
 ## <a name="static-clients"></a>Statik istemciler
 
-Gerekenden daha fazla bağlantı tutmaya kaçınmak için, her bir işlev çağrısında yeni bir tane oluşturmak yerine istemci örneklerini yeniden kullanın. İşlevinizi yazmak isteyebileceğiniz herhangi bir dil için istemci bağlantılarını yeniden kullanmanızı öneririz. Örneğin, [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [Documentclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)ve Azure Storage istemcileri gibi .NET istemcileri, tek bir statik istemci kullanırsanız bağlantıları yönetebilir.
+Gerekenden daha fazla bağlantı tutmaya kaçınmak için, her bir işlev çağrısında yeni bir tane oluşturmak yerine istemci örneklerini yeniden kullanın. İşlevinizi yazmak isteyebileceğiniz herhangi bir dil için istemci bağlantılarını yeniden kullanmanızı öneririz. Örneğin, [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1), [Documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient)ve Azure Storage istemcileri gibi .NET istemcileri, tek bir statik istemci kullanırsanız bağlantıları yönetebilir.
 
 Azure Işlevleri uygulamasında hizmete özel bir istemci kullanırken izlenecek bazı yönergeler aşağıda verilmiştir:
 
@@ -39,7 +38,7 @@ Bu bölümde, işlev kodunuzda istemcileri oluşturmak ve kullanmak için en iyi
 
 ### <a name="httpclient-example-c"></a>HttpClient örneği (C#)
 
-Statik bir [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) örneği oluşturan C# işlev kodu örneği aşağıda verilmiştir:
+Statik bir [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) örneği oluşturan C# işlev kodu örneği aşağıda verilmiştir:
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +51,7 @@ public static async Task Run(string input)
 }
 ```
 
-.NET 'teki [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) hakkında sık sorulan sorular "İstemcimin atılmalıdır mi?" Genel olarak, `IDisposable` bunları kullanarak işiniz bittiğinde uygulayan nesneleri atıyorsunuz. Ancak, işlev sona erdiğinde bu işlemi yapmadığınızda, bir statik istemciyi atmayın. Statik istemcinin uygulamanızın süresini gerçek zamanlı olarak istiyor.
+.NET 'teki [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) hakkında sık sorulan sorular "İstemcimin atılmalıdır mi?" Genel olarak, `IDisposable` bunları kullanarak işiniz bittiğinde uygulayan nesneleri atıyorsunuz. Ancak, işlev sona erdiğinde bu işlemi yapmadığınızda, bir statik istemciyi atmayın. Statik istemcinin uygulamanızın süresini gerçek zamanlı olarak istiyor.
 
 ### <a name="http-agent-examples-javascript"></a>HTTP Aracısı örnekleri (JavaScript)
 
@@ -76,8 +75,7 @@ http.request(options, onResponseCallback);
 
 ### <a name="documentclient-code-example-c"></a>DocumentClient kod örneği (C#)
 
-[Documentclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) bir Azure Cosmos DB örneğine bağlanır. Azure Cosmos DB belge, [Uygulamanızın ömrü boyunca tek bir Azure Cosmos db istemci kullanmanızı](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage)önerir. Aşağıdaki örnek, bir işlevinde bunu yapmak için bir model gösterir:
+[Documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient) bir Azure Cosmos DB örneğine bağlanır. Azure Cosmos DB belge, [Uygulamanızın ömrü boyunca tek bir Azure Cosmos db istemci kullanmanızı](../cosmos-db/performance-tips.md#sdk-usage)önerir. Aşağıdaki örnek, bir işlevinde bunu yapmak için bir model gösterir:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -126,14 +124,13 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient bağlantıları
 
-İşlev kodunuz, bir SQL ilişkisel veritabanına bağlantı kurmak için SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) için .NET Framework veri sağlayıcısı kullanabilir. Bu aynı zamanda, [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)gibi ADO.NET kullanan veri çerçeveleri için temel sağlayıcıdır. [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) ve [documentclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) bağlantılarından farklı olarak, ADO.NET varsayılan olarak bağlantı havuzu uygular. Ancak hala bağlantı dışında çalışmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [SQL Server bağlantı havuzu (ADO.net)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+İşlev kodunuz, bir SQL ilişkisel veritabanına bağlantı kurmak için SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) için .NET Framework veri sağlayıcısı kullanabilir. Bu aynı zamanda, [Entity Framework](/ef/ef6/)gibi ADO.NET kullanan veri çerçeveleri için temel sağlayıcıdır. [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) ve [documentclient](/dotnet/api/microsoft.azure.documents.client.documentclient) bağlantılarından farklı olarak, ADO.NET varsayılan olarak bağlantı havuzu uygular. Ancak hala bağlantı dışında çalışmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [SQL Server bağlantı havuzu (ADO.net)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Entity Framework gibi bazı veri çerçeveleri, genellikle bir yapılandırma dosyasının **connectionStrings** bölümünden bağlantı dizelerini alır. Bu durumda, işlev uygulaması ayarlarınızın **bağlantı dizeleri** koleksiyonuna ve yerel projenizdeki [local.settings.jsdosyasına](functions-run-local.md#local-settings-file) açıkça SQL veritabanı bağlantı dizelerini eklemeniz gerekir. İşlev kodunuzda [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 'ın bir örneğini oluşturuyorsanız, bağlantı dizesi değerini diğer Bağlantılarınızdaki **uygulama ayarlarında** depolamanız gerekir.
+> Entity Framework gibi bazı veri çerçeveleri, genellikle bir yapılandırma dosyasının **connectionStrings** bölümünden bağlantı dizelerini alır. Bu durumda, işlev uygulaması ayarlarınızın **bağlantı dizeleri** koleksiyonuna ve yerel projenizdeki [local.settings.jsdosyasına](functions-run-local.md#local-settings-file) açıkça SQL veritabanı bağlantı dizelerini eklemeniz gerekir. İşlev kodunuzda [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) 'ın bir örneğini oluşturuyorsanız, bağlantı dizesi değerini diğer Bağlantılarınızdaki **uygulama ayarlarında** depolamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Statik istemcileri neden önerdiğimiz hakkında daha fazla bilgi için bkz. [Hatalı örnek oluşturma kötü modeli](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+Statik istemcileri neden önerdiğimiz hakkında daha fazla bilgi için bkz. [Hatalı örnek oluşturma kötü modeli](/azure/architecture/antipatterns/improper-instantiation/).
 
 Daha fazla Azure Işlevleri performans ipucu için bkz. [Azure işlevlerinin performansını ve güvenilirliğini iyileştirme](functions-best-practices.md).

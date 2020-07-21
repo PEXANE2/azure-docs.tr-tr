@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 1ab2861f73d66987230c9e3398227c8e80665e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56ee4b9e541aa4b374acbb59cf64da34046a06c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769617"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509078"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure sanal makineler önyükleme hatalarında sorun giderme
 
@@ -34,6 +35,6 @@ Bu makalede, Microsoft Azure ' de bir Windows sanal makinesi (VM) başlattığı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Önyükleme tanılamaları](boot-diagnostics.md)
-- [VM seri konsolu](../windows/serial-console.md)
-- [İşletim sistemi diskini bir kurtarma VM 'sine ekleyerek bir Windows sanal makinesi sorunlarını giderme](../windows/troubleshoot-recovery-disks.md)
+- [Önyükleme tanılaması](boot-diagnostics.md)
+- [VM seri konsolu](./serial-console-windows.md)
+- [İşletim sistemi diskini bir kurtarma VM 'sine ekleyerek bir Windows sanal makinesi sorunlarını giderme](./troubleshoot-recovery-disks-windows.md)

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508874"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM için sistemin yeniden başlatılmasını anlama
 
@@ -33,7 +34,7 @@ Kullanılabilirlik kümeleri hakkında daha fazla bilgi için bkz [. VM 'lerin k
 
 ## <a name="resource-health-information"></a>Kaynak Durumu bilgileri
 
-Azure Kaynak Durumu, bireysel Azure kaynaklarının sistem durumunu ortaya çıkaran ve sorun giderme sorunları için eyleme dönüştürülebilir rehberlik sağlayan bir hizmettir. Sunuculara veya altyapı öğelerine doğrudan erişmek mümkün olmayan bir bulut ortamında, Kaynak Durumu amacı, sorun giderme sırasında harcadığınız süreyi azaltmaktır. Özellikle, bu, sorunun kökünün uygulamada mı yoksa Azure platformunun içindeki bir olayda mi olduğunu belirlemek için harcadığınız süreyi azaltmaktır. Daha fazla bilgi için bkz. [kaynak durumu anlama ve kullanma](../../resource-health/resource-health-overview.md).
+Azure Kaynak Durumu, bireysel Azure kaynaklarının sistem durumunu ortaya çıkaran ve sorun giderme sorunları için eyleme dönüştürülebilir rehberlik sağlayan bir hizmettir. Sunuculara veya altyapı öğelerine doğrudan erişmek mümkün olmayan bir bulut ortamında, Kaynak Durumu amacı, sorun giderme sırasında harcadığınız süreyi azaltmaktır. Özellikle, bu, sorunun kökünün uygulamada mı yoksa Azure platformunun içindeki bir olayda mi olduğunu belirlemek için harcadığınız süreyi azaltmaktır. Daha fazla bilgi için bkz. [kaynak durumu anlama ve kullanma](../../service-health/resource-health-overview.md).
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>VM 'nin yeniden başlatılmasına neden olabilecek eylemler ve olaylar
 
@@ -45,8 +46,8 @@ Ancak bazı güncelleştirmeler için yeniden başlatma gerekir. Bu gibi durumla
 
 Azure planlı bakımın ne olduğunu ve Linux sanal makinelerinizin kullanılabilirliğini nasıl etkileyebileceğini anlamak için burada listelenen makalelere bakın. Makaleler Azure planlı bakım işlemi ve etkiyi daha da azaltmak için planlı bakımın nasıl zamanlanacağı hakkında arka plan bilgileri sağlar.
 
-- [Azure’da VM’ler için planlı bakım](../windows/planned-maintenance.md)
-- [Azure sanal makinelerinde planlı bakımı zamanlama](../windows/classic/planned-maintenance-schedule.md)
+- [Azure’da VM’ler için planlı bakım](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
+- [Azure sanal makinelerinde planlı bakımı zamanlama](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
 
 ### <a name="memory-preserving-updates"></a>Bellek koruma güncelleştirmeleri
 
@@ -71,7 +72,7 @@ Genellikle VM 'nin yeniden başlatılmasına neden olan diğer senaryolar, birde
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Güvenlik Merkezi ve Windows Update
 
-Azure Güvenlik Merkezi, eksik işletim sistemi güncelleştirmeleri için günlük Windows ve Linux VM 'lerini izler. Güvenlik Merkezi, Windows VM 'de hangi hizmetin yapılandırıldığına bağlı olarak Windows Update veya Windows Server Update Services (WSUS) ' dan kullanılabilen güvenlik ve kritik güncelleştirmeler listesini alır. Güvenlik Merkezi, Linux sistemleri için en son güncelleştirmeleri de denetler. SANAL makinenizde bir sistem güncelleştirmesi eksikse, Güvenlik Merkezi, sistem güncelleştirmelerini uygulamanızı önerir. Bu sistem güncelleştirmelerinin uygulaması, Azure portal Güvenlik Merkezi aracılığıyla denetlenir. Bazı güncelleştirmeler uygulandıktan sonra, VM yeniden başlatmaları gerekebilir. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde sistem güncelleştirmelerini uygulama](../../security-center/security-center-apply-system-updates.md).
+Azure Güvenlik Merkezi, eksik işletim sistemi güncelleştirmeleri için günlük Windows ve Linux VM 'lerini izler. Güvenlik Merkezi, Windows VM 'de hangi hizmetin yapılandırıldığına bağlı olarak Windows Update veya Windows Server Update Services (WSUS) ' dan kullanılabilen güvenlik ve kritik güncelleştirmeler listesini alır. Güvenlik Merkezi, Linux sistemleri için en son güncelleştirmeleri de denetler. SANAL makinenizde bir sistem güncelleştirmesi eksikse, Güvenlik Merkezi, sistem güncelleştirmelerini uygulamanızı önerir. Bu sistem güncelleştirmelerinin uygulaması, Azure portal Güvenlik Merkezi aracılığıyla denetlenir. Bazı güncelleştirmeler uygulandıktan sonra, VM yeniden başlatmaları gerekebilir. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde sistem güncelleştirmelerini uygulama](../../security-center/security-center-virtual-machine-protection.md).
 
 Şirket içi sunucular gibi, Azure, bu makinelerin kullanıcıları tarafından yönetilmesi amaçlanan için Windows Update güncelleştirmeleri Windows VM 'lerine itelemez. Ancak, otomatik Windows Update ayarını etkin bırakmanız önerilir. Güncelleştirmelerin Windows Update otomatik olarak yüklenmesi Ayrıca güncelleştirmeler uygulandıktan sonra yeniden başlatma işleminin oluşmasına neden olabilir. Daha fazla bilgi için bkz. [WINDOWS Update SSS](https://support.microsoft.com/help/12373/windows-update-faq).
 
@@ -114,7 +115,7 @@ Kapatılma süresi beş dakika kadar kısa olabilir, ancak önemli ölçüde uzu
 
 **GÇ sınırlarını aşma**
 
-G/ç istekleri sürekli kısıtlandığı için VM 'Ler, saniye başına g/ç işlemi (ıOPS) birimi disk için g/ç sınırlarını aştığından geçici olarak devre dışı olabilir. (Standart disk depolaması 500 ıOPS ile sınırlıdır.) Bu sorunu azaltmak için, iş yüküne bağlı olarak disk şeritleme veya Konuk VM 'nin içindeki depolama alanını yapılandırma ' yı kullanın. Ayrıntılar için bkz. [Azure VM 'Leri En Iyi depolama performansı Için yapılandırma](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+G/ç istekleri sürekli kısıtlandığı için VM 'Ler, saniye başına g/ç işlemi (ıOPS) birimi disk için g/ç sınırlarını aştığından geçici olarak devre dışı olabilir. (Standart disk depolaması 500 ıOPS ile sınırlıdır.) Bu sorunu azaltmak için, iş yüküne bağlı olarak disk şeritleme veya Konuk VM 'nin içindeki depolama alanını yapılandırma ' yı kullanın. 
 
 ### <a name="other-incidents"></a>Diğer olaylar
 

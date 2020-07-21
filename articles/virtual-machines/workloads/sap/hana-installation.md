@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117130"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507854"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
 
@@ -41,11 +42,11 @@ HANA yüklemesine başlamadan önce aşağıdakileri doğrulayın:
 
 Microsoft 'tan HANA büyük örnek birimini aldıktan sonra, aşağıdaki ayarları doğrulayın ve gereken şekilde ayarlayın.
 
-**İlk adım** , Hana büyük örneğini aldıktan ve örneklere erişim ve bağlantı kurmaya başladıktan sonra örneklerin doğru SKU ve işletim sistemi ile görüntülenip görüntülenmeyeceğini Azure Portal iade ediyor. Denetimleri gerçekleştirmek için gerekli adımlar için [Azure Portal aracılığıyla Azure Hana büyük örnekler denetimini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal) okuyun.
+**İlk adım** , Hana büyük örneğini aldıktan ve örneklere erişim ve bağlantı kurmaya başladıktan sonra örneklerin doğru SKU ve işletim sistemi ile görüntülenip görüntülenmeyeceğini Azure Portal iade ediyor. Denetimleri gerçekleştirmek için gerekli adımlar için [Azure Portal aracılığıyla Azure Hana büyük örnekler denetimini](./hana-li-portal.md) okuyun.
 
 **İkinci adım** , Hana büyük örneğini aldıktan ve örneklere erişim ve bağlantı kurmaya başladıktan sonra örnek işletim sistemini işletim sistemi sağlayıcınıza kaydetmedir. Bu adım, SUSE Linux işletim sistemini Azure 'da bir VM 'ye dağıtılan SUSE SMT örneğine kaydetmeyi içerir. 
 
-HANA büyük örnek birimi bu SMT örneğine bağlanabilir. (Daha fazla bilgi için bkz. [SUSE Linux IÇIN smt Server ayarlama](hana-setup-smt.md)). Alternatif olarak, kırmızı hat işletim sisteminin bağlanmanız gereken Red Hat abonelik Yöneticisi 'ne kayıtlı olması gerekir. Daha fazla bilgi için bkz. Azure 'da [SAP HANA nedir (büyük örnekler)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+HANA büyük örnek birimi bu SMT örneğine bağlanabilir. (Daha fazla bilgi için bkz. [SUSE Linux IÇIN smt Server ayarlama](hana-setup-smt.md)). Alternatif olarak, kırmızı hat işletim sisteminin bağlanmanız gereken Red Hat abonelik Yöneticisi 'ne kayıtlı olması gerekir. Daha fazla bilgi için bkz. Azure 'da [SAP HANA nedir (büyük örnekler)?](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json). 
 
 Bu adım, müşterinin sorumluluğu olan işletim sistemine yönelik düzeltme eki uygulama için gereklidir. SUSE için, SMT [yüklemesi](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)hakkında bu sayfada smt yükleme ve yapılandırma belgelerini bulun.
 
@@ -126,10 +127,10 @@ Sonuç olarak, Azure VM 'lerde çalışan SAP uygulama sunucuları tarafından v
 ## <a name="networking"></a>Ağ
 Aşağıdaki belgelerde açıklandığı gibi, Azure sanal ağlarınızı tasarlama ve bu sanal ağları HANA büyük örneklerine bağlama bölümündeki önerileri izletireceğiz varsayılmaktadır:
 
-- [Azure 'da SAP HANA (büyük örnek) genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Azure 'da SAP HANA (büyük örnek) genel bakış ve mimari](./hana-overview-architecture.md)
 - [Azure 'da SAP HANA (büyük örnekler) altyapı ve bağlantı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Tek birimlerin ağıyla ilgili bazı ayrıntılar vardır. Her HANA büyük örnek birimi iki veya üç NIC bağlantı noktasına atanan iki veya üç IP adresiyle birlikte gelir. HANA genişleme yapılandırmalarında ve HANA sistem çoğaltma senaryosunda üç IP adresi kullanılır. Birimin NIC 'sine atanan IP adreslerinden biri, [Azure 'daki SAP HANA (büyük örnekler) genel bakış ve mimaride](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)AÇıKLANAN sunucu IP havuzunun dışındadır.
+Tek birimlerin ağıyla ilgili bazı ayrıntılar vardır. Her HANA büyük örnek birimi iki veya üç NIC bağlantı noktasına atanan iki veya üç IP adresiyle birlikte gelir. HANA genişleme yapılandırmalarında ve HANA sistem çoğaltma senaryosunda üç IP adresi kullanılır. Birimin NIC 'sine atanan IP adreslerinden biri, [Azure 'daki SAP HANA (büyük örnekler) genel bakış ve mimaride](./hana-overview-architecture.md)AÇıKLANAN sunucu IP havuzunun dışındadır.
 
 Mimarinizin Ethernet ayrıntıları hakkında daha fazla bilgi için bkz. [HLI desteklenen senaryolar](hana-supported-scenario.md).
 
@@ -264,7 +265,3 @@ Mimarinizin depolama düzeni hakkında daha fazla bilgi edinmek için, [HLI dest
 
 
  
-
-
-
-

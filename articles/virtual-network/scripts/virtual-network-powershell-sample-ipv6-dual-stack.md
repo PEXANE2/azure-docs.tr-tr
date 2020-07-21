@@ -12,13 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dfc6da8dcf33f49ceb203b32e81033fd81fa329
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201402"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507497"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
+# <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>Azure PowerShell betiği örneği ile sanal ağda IPv6 uç noktalarını yapılandırma (Önizleme)
 
 Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir yük dengeleyici, çift IP yapılandırması, çift ağ güvenlik grubu kuralları ve çift genel IP içeren NIC 'Ler içeren VM 'Ler içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir.
 
@@ -26,7 +27,7 @@ Azure [Cloud Shell](https://shell.azure.com/powershell)’den veya yerel bir Pow
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure 'da bir çift yığın uygulamasını dağıtmadan önce, aşağıdaki Azure PowerShell kullanarak bu önizleme özelliği için aboneliğinizi yalnızca bir kez yapılandırmanız gerekir:
 
 Aşağıdaki gibi kaydolun:

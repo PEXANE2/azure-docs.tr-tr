@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920186"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510081"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
 
 VM sağlama, Azure 'un konak adı, Kullanıcı adı, parola vb. gibi sanal makine oluşturma parametre değerlerini geçi, ve önyükleme yaptığı sürece VM için kullanılabilir hale getirme işlemidir. ' Sağlama Aracısı ' bu değerleri kullanır, VM 'yi yapılandırır ve tamamlandığında rapor gönderir. 
 
-Azure, [bulut-init](https://cloudinit.readthedocs.io)ve [Azure Linux Aracısı (wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)olmak üzere iki sağlama aracısını destekler.
+Azure, [bulut-init](https://cloudinit.readthedocs.io)ve [Azure Linux Aracısı (wala)](../extensions/agent-linux.md)olmak üzere iki sağlama aracısını destekler.
 
 ## <a name="cloud-init-overview"></a>Cloud-init genel bakış
 [Cloud-init](https://cloudinit.readthedocs.io) , Linux VM 'yi ilk kez önyüklediğinde bir Linux sanal makinesini özelleştirmek için yaygın olarak kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. İlk önyükleme işlemi sırasında Cloud-init çağrıldığından, yapılandırmanızı uygulamak için başka bir adım veya gerekli aracı yoktur.  Dosyalarınızı veya diğer girdileri doğru şekilde biçimlendirme hakkında daha fazla bilgi için `#cloud-config` bkz. [Cloud-init belge sitesi](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`dosyalar, Base64 olarak kodlanmış metin dosyalarıdır.
@@ -46,7 +46,7 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet | Evet-paket sürümünden destek: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | YOK |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | Yok |
 |RedHat 7,7 (Gen1)|RHEL |7,7 | 7.7.2020051912 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | evet | Evet-paket sürümünden destek: *18.5 -6. EL7*|
@@ -61,7 +61,7 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | YOK |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Not: Bu bir önizleme **görüntüsüdür ve artık kullanılmamalıdır,** bu, 1 Eylül 2020 ' den kaldırılacak) | Yok |
 |OpenLogic 7,7 |CentOS | 7,7 |7.7.2020062400 |evet | Evet-paket sürümünden destek:`18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7-Gen2 |7.7.2020062401 |evet | Evet-paket sürümünden destek:`18.5-6.el7.centos.5`|
 |OpenLogic 7,7 |CentOS-HPC | 7,7 |7.6.2020062600 |evet | Evet-paket sürümünden destek:`18.5-6.el7.centos.5`|
@@ -106,7 +106,7 @@ Bu SLES görüntüleri Cloud-init kullanılarak sağlanacak şekilde güncelleş
 Şu anda Azure Stack, Cloud-init özellikli görüntülerin sağlanması destekleyecektir.
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Cloud-init ve Linux Aracısı (WALA) arasındaki fark nedir?
-WALA, VM 'Leri sağlamak ve yapılandırmak ve [Azure uzantılarını](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)işlemek için kullanılan bir Azure platforma özgü aracıdır. 
+WALA, VM 'Leri sağlamak ve yapılandırmak ve [Azure uzantılarını](../extensions/features-linux.md)işlemek için kullanılan bir Azure platforma özgü aracıdır. 
 
 Mevcut Cloud-init müşterilerinin geçerli Cloud-init betiklerini kullanmasına izin vermek için VM 'Leri yapılandırma görevini geliştirdik ve zengin Cloud-init yapılandırma işlevselliğinden faydalanmak için yeni müşteriler. Linux sistemlerini yapılandırmaya yönelik Cloud-init betiklerine mevcut yatırımlarınızın varsa, Cloud-init işlemini etkinleştirmek için **ek ayarlar gerekmez** . 
 

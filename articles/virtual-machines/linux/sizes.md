@@ -9,14 +9,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 568f4189c55b49aa6f3e2d4e86582165a4a89cdd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: eef0304248c7cc9a1bf63e06247f86d607afce46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510115"
 ---
-# <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure'daki Linux sanal makinesi boyutları
+# <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makine boyutları
 
 Bu makalede, Linux uygulamalarınızı ve iş yüklerinizi çalıştırmak için kullanabileceğiniz Azure sanal makineleri için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. Bu makale [Windows sanal makineleri](../windows/sizes.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)için de kullanılabilir.
 
@@ -31,16 +31,16 @@ Bu makalede, Linux uygulamalarınızı ve iş yüklerinizi çalıştırmak için
 
 - Çeşitli boyutlardaki fiyatlar hakkında daha fazla bilgi için bkz. [sanal makine fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux). 
 - Azure bölgelerindeki VM boyutlarının kullanılabilirliği için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services/).
-- Azure VM 'lerinde genel sınırları görmek için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-subscription-service-limits.md).
+- Azure VM 'lerinde genel sınırları görmek için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Azure [işlem birimlerinin (ACU)](../acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
 
 ## <a name="rest-api"></a>REST API
 
 VM boyutlarını sorgulamak için REST API kullanma hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-- [Yeniden boyutlandırma için kullanılabilir sanal makine boyutlarını Listele](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
-- [Bir abonelik için kullanılabilir sanal makine boyutlarını listeleyin](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
-- [Kullanılabilirlik kümesindeki kullanılabilir sanal makine boyutlarını listeleme](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+- [Yeniden boyutlandırma için kullanılabilir sanal makine boyutlarını Listele](/rest/api/compute/virtualmachines/listavailablesizes)
+- [Bir abonelik için kullanılabilir sanal makine boyutlarını listeleyin](/rest/api/compute/resourceskus/list)
+- [Kullanılabilirlik kümesindeki kullanılabilir sanal makine boyutlarını listeleme](/rest/api/compute/availabilitysets/listavailablesizes)
 
 ## <a name="acu"></a>ACU
 

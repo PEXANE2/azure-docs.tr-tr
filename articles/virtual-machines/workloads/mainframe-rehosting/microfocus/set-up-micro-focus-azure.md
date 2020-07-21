@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561073"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507906"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler
 
@@ -29,7 +29,7 @@ Bu kurulum, Azure Marketi 'nden Windows Server 2016 görüntüsünü çalıştı
 
 Enterprise Server için karşılık gelen geliştirme ortamı, Microsoft Visual Studio 2017 veya üzeri, Visual Studio Community (indirme için ücretsiz) veya çakışan küreler üzerinde çalışan Enterprise Developer ' dır. Bu makalede, Visual Studio 2017 veya üzeri yüklü bir Windows Server 2016 sanal makinesi kullanılarak nasıl dağıtılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce Şu önkoşullara göz atın:
 
@@ -42,7 +42,7 @@ Başlamadan önce Şu önkoşullara göz atın:
     > [!Note]
     > Sanal makinelerinize erişimi denetlemek için birkaç seçenek vardır:
     > -   En iyi uygulama, [Azure](https://azure.microsoft.com/services/azure-bastion/)Savunma kurulumu kullanmaktır.
-    > -   [Siteden siteye sanal özel ağ (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell) tüneli.
+    > -   [Siteden siteye sanal özel ağ (VPN)](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) tüneli.
     > -   Bir sıçrama kutusu VM 'si.
 
 ## <a name="install-enterprise-server"></a>Enterprise Server’ı yükleme
@@ -125,8 +125,8 @@ Enterprise Developer yüklendiğinde, Azure 'da bir Micro Focus geliştirme ve t
 
 **Sonraki adımlar**
 
--   [BankDemo uygulamasını ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+-   [BankDemo uygulamasını ayarlama](./demo.md)
 
--   [Docker kapsayıcılarında kurumsal sunucu Çalıştır](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+-   [Docker kapsayıcılarında kurumsal sunucu Çalıştır](./run-enterprise-server-container.md)
 
--   [Ana bilgisayar uygulaması geçişi](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [Ana bilgisayar uygulaması geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

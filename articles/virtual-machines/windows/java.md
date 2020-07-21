@@ -8,11 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f73abe108ca9c33a8ec6865a760400d16393e51
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232968"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508500"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -464,5 +465,4 @@ Bu konsol uygulamasının başlangıçtan sonuna kadar tam olarak çalıştırı
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Java Için Azure kitaplıklarını](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)kullanma hakkında daha fazla bilgi edinin.
-
+* [Java Için Azure kitaplıklarını](/java/azure/java-sdk-azure-overview)kullanma hakkında daha fazla bilgi edinin.

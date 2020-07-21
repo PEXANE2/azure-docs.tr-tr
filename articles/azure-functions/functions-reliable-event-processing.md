@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676140"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506035"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Işlevleri güvenilir olay işleme
 
@@ -69,7 +70,7 @@ Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar d
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) , C# uygulamaları için esnekliği ve geçici hata işleme kitaplığı örneğidir.
 
-Önceden karmaşıklu C# sınıf kitaplıklarıyla çalışırken, [özel durum filtreleri](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) işlenmeyen bir özel durum oluştuğunda kodu çalıştırmanızı sağlar.
+Önceden karmaşıklu C# sınıf kitaplıklarıyla çalışırken, [özel durum filtreleri](/dotnet/csharp/language-reference/keywords/try-catch) işlenmeyen bir özel durum oluştuğunda kodu çalıştırmanızı sağlar.
 
 Özel durum filtrelerinin nasıl kullanılacağını gösteren örnekler, [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) deposunda bulunabilir.
 
@@ -130,4 +131,4 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 - [Azure Işlevleri hata işleme](./functions-bindings-error-pages.md)
 - [Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
-- [Azure Logic Apps ile tümleşen bir işlev oluşturma](./functions-twitter-email.md)
+- [Azure Logic Apps ile tümleşik bir işlev oluşturma](./functions-twitter-email.md)

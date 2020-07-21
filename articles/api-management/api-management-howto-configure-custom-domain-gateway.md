@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203194"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506817"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -41,7 +41,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 ## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>API Management hizmetinize özel etki alanı sertifikası ekleme
 
 1. **Güvenlik**altında **Sertifikalar** ' ı seçin.
-2. **+ Ekle** öğesini seçin.
+2. **+ Ekle**'yi seçin.
 3. Sertifika için **kimlik** alanına bir kaynak adı girin.
 4. Sertifikayı içeren dosyayı seçin (. PFX) **sertifika** alanını veya yanındaki klasör simgesini seçerek.
 5. **Parola** alanına sertifika parolasını girin.
@@ -49,7 +49,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidiniz için özel bir etki alanı adı ayarlamak üzere Azure portal kullanın
 
-1. **Ayarlar**altında **ağ geçitlerini** seçin.
+1. **Dağıtım ve altyapı**altında **ağ geçitlerini** seçin.
 2. Etki alanı adını yapılandırmak istediğiniz şirket içinde barındırılan ağ geçidini seçin.
 3. **Ayarlar**altında **ana bilgisayar adları** ' nı seçin.
 4. **+ Ekle** ' yi seçin

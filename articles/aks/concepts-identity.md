@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 560f7b958e04b55a7d642c9f95750812b86d32bc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7739320fa23bf4469548f61486da1a5ee6110da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251731"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507173"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -73,7 +73,7 @@ AKS kümelerinin güvenliği Azure Active Directory (AD) Tümleştirmesi ile gel
 
 Azure AD ile tümleşik AKS kümeleri sayesinde, kullanıcılara veya gruplara bir ad alanı veya küme genelinde Kubernetes kaynaklarına erişim izni verebilirsiniz. Bir yapılandırma bağlamı elde etmek için `kubectl` , Kullanıcı [az aks Get-Credentials][az-aks-get-credentials] komutunu çalıştırabilir. Bir Kullanıcı daha sonra AKS kümesiyle etkileşime geçtiğinde `kubectl` Azure AD kimlik bilgileriyle oturum açması istenir. Bu yaklaşım Kullanıcı hesabı yönetimi ve parola kimlik bilgileri için tek bir kaynak sağlar. Kullanıcı yalnızca küme yöneticisi tarafından tanımlanan kaynaklara erişebilir.
 
-Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için [açık KIMLIK bağlantısı belgeleri] [Açık kimlik-Connect] bölümüne bakın. Kubernetes kümesinin içinden, kimlik doğrulama belirteçlerini doğrulamak için [Web kancası belirteci kimlik doğrulaması][webhook-token-docs] kullanılır. Web kancası belirteci kimlik doğrulaması, AKS kümesinin bir parçası olarak yapılandırılır ve yönetilir.
+Azure AD kimlik doğrulaması, OpenID Connect ile AKS kümelerine sağlanır. OpenID Connect, OAuth 2,0 protokolünün üstünde oluşturulmuş bir kimlik katmanıdır. OpenID Connect hakkında daha fazla bilgi için bkz. [Açık kimlik bağlantısı belgeleri][openid-connect]. Kubernetes kümesinin içinden, kimlik doğrulama belirteçlerini doğrulamak için [Web kancası belirteci kimlik doğrulaması][webhook-token-docs] kullanılır. Web kancası belirteci kimlik doğrulaması, AKS kümesinin bir parçası olarak yapılandırılır ve yönetilir.
 
 Kubernetes kümesinin içinden, kimlik doğrulama belirteçlerini doğrulamak için Web kancası belirteci kimlik doğrulaması kullanılır. Web kancası belirteci kimlik doğrulaması, AKS kümesinin bir parçası olarak yapılandırılır ve yönetilir.
 
@@ -109,7 +109,7 @@ Daha fazla bilgi için bkz. [Azure RBAC nedir?][azure-rbac]
 
 Bir AKS kümesini tam olarak çalıştırmak için iki erişim düzeyi gereklidir: 
 1. [Azure aboneliğinizdeki AKS kaynağına erişin](#azure-rbac-to-authorize-access-to-the-aks-resource). Bu işlem, AKS API 'Lerini kullanarak kümenizi ölçeklendirmeyi veya yükseltmeyi denetlemenizi sağlar ve kubeconfig 'nizi çekin.
-2. Kubernetes API 'sine erişim. Bu erişim, [KUBERNETES RBAC](#kubernetes-role-based-access-controls-rbac) (Geleneksel) tarafından denetlenir veya [Azure RBAC ile Kubernetes YETKILENDIRMESI için aks ile tümleştirilir](#azure-rbac-for-kubernetes-authorization-preview)
+2. Kubernetes API 'sine erişim. Bu erişim, [KUBERNETES RBAC](#kubernetes-role-based-access-controls-rbac) (Geleneksel) tarafından denetlenir veya [Azure RBAC Ile Kubernetes YETKILENDIRMESI için aks ile tümleştirilir](#azure-rbac-for-kubernetes-authorization-preview)
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>AKS kaynağına erişimi yetkilendirmek için Azure RBAC
 

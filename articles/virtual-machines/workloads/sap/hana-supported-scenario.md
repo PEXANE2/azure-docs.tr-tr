@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617176"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507956"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA büyük örnekleri için desteklenen senaryolar
 Bu makalede, HANA büyük örnekler (HLI) için desteklenen senaryolar ve mimari ayrıntıları açıklanmaktadır.
@@ -194,7 +195,7 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- Birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- Birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](./hana-overview-architecture.md).
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>Depolama çoğaltması kullanan DR ile tek düğüm
  
@@ -231,9 +232,9 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](./hana-overview-architecture.md).
 - DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
+- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](./hana-overview-high-availability-disaster-recovery.md).
 - *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
 
 
@@ -280,9 +281,9 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](./hana-overview-architecture.md).
 - DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](./hana-overview-high-availability-disaster-recovery.md). 
 - DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
 - *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
 
@@ -332,7 +333,7 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](./hana-overview-architecture.md).
 - STONITH: bir SBD, STONITH kurulumu için yapılandırılmıştır. Ancak, STONITH kullanımı isteğe bağlıdır.
 
 
@@ -386,11 +387,11 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](./hana-overview-architecture.md).
 - STONITH: bir SBD, STONITH kurulumu için yapılandırılmıştır. Ancak, STONITH kullanımı isteğe bağlıdır.
 - DR sitesinde: birincil ve ikincil düğüm çoğaltması için *iki depolama birimi kümesi gereklidir* .
 - DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](./hana-overview-high-availability-disaster-recovery.md). 
 - DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
 - *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
 
@@ -554,7 +555,7 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
 -  DR sitesinde: birimler ve bağlama noktaları ("HANA yüklemesi için gereklidir" olarak işaretlenir), DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
-- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- DR sitesinde: veri, günlük yedeklemeleri ve paylaşılan birimler ("depolama çoğaltması" olarak işaretlenir), üretim sitesinden anlık görüntü aracılığıyla çoğaltılır. Bu birimler yalnızca yük devretme sırasında bağlanır. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma yük devretme yordamı](./hana-overview-high-availability-disaster-recovery.md). 
 - *SKU türü ı sınıfı* için önyükleme birimi Dr düğümüne çoğaltılır.
 
 
@@ -593,9 +594,9 @@ Aşağıdaki bağlama noktaları, HLI birimlerinde (birincil ve DR) önceden yap
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](./hana-overview-architecture.md).
 - Birincil düğüm, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
 
 
 
@@ -643,11 +644,11 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
-- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS için: birim boyutu dağıtımı, bellekteki veritabanı boyutunu temel alır. Birden çok SID ortamında bellekteki veritabanı boyutlarının desteklendiğini öğrenmek için bkz. [genel bakış ve mimari](./hana-overview-architecture.md).
 - DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır (DR sitesinde "ÜRETIM örneği" olarak işaretlenir). 
 - DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
 - Birincil düğüm, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma 
  
@@ -692,7 +693,7 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
 - DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır ("ÜRETIM DR örneği" olarak işaretlenir). 
 - Birincil site düğümü, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>HSR ile yüksek kullanılabilirlik ve olağanüstü durum kurtarma (maliyet için iyileştirilmiş)
  
@@ -741,7 +742,7 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 - DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır ("ÜRETIM DR örneği" olarak işaretlenir). 
 - DR sitesinde: qa örnek yüklemesi için veri, günlük yedeklemeleri, günlük ve paylaşılan birimler ("QA örnek yüklemesi" olarak işaretlenir) yapılandırılır.
 - Birincil site düğümü, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
 
 ## <a name="scale-out-with-dr-using-hsr"></a>HSR kullanarak DR ile ölçeklendirme
  
@@ -788,9 +789,9 @@ Aşağıdaki bağlama noktaları önceden yapılandırılmıştır:
 - /Usr/SAP/SID,/Hana/Shared/sıdöğesine yönelik sembolik bir bağlantıdır.
 - DR sitesinde: birimler ve bağlama noktaları, DR HLI biriminde üretim HANA örneği yüklemesi için yapılandırılır. 
 - Birincil site düğümü, HANA sistem çoğaltmasını kullanarak DR düğümüyle eşitlenir. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) , bölge ağlarınızla özel bir ağ oluşturmak üzere ExpressRoute devreleri birbirine bağlamak için kullanılır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- HANA büyük örnekleri için [altyapı ve bağlantı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- HANA büyük örnekleri için [yüksek kullanılabilirlik ve olağanüstü durum kurtarma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- HANA büyük örnekleri için [altyapı ve bağlantı](./hana-overview-infrastructure-connectivity.md)
+- HANA büyük örnekleri için [yüksek kullanılabilirlik ve olağanüstü durum kurtarma](./hana-overview-high-availability-disaster-recovery.md)

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80ece5b0704869c31ab0656eed922b3f21ba9928
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996417"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505763"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -43,7 +44,7 @@ Windows için Log Analytics aracısını yüklemeden önce, Log Analytics çalı
 5. **Çalışma alanı kimliği** ve **birincil anahtar**olan en sevdiğiniz düzenleyiciye kopyalayıp yapıştırın.    
    
 ## <a name="configure-agent-to-use-tls-12"></a>Aracıyı TLS 1,2 kullanacak şekilde yapılandırma
-Windows Aracısı ve Log Analytics hizmeti arasındaki iletişimde [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokolünün kullanımını yapılandırmak için, aracı sanal makineye yüklenmeden önce veya daha sonra etkinleştirmek üzere aşağıdaki adımları izleyebilirsiniz.
+Windows Aracısı ve Log Analytics hizmeti arasındaki iletişimde [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) protokolünün kullanımını yapılandırmak için, aracı sanal makineye yüklenmeden önce veya daha sonra etkinleştirmek üzere aşağıdaki adımları izleyebilirsiniz.
 
 >[!NOTE]
 >Windows Server 2008 SP2 x64 çalıştıran bir VM 'yi TLS 1,2 kullanmak üzere yapılandırıyorsanız, önce aşağıdaki adımları gerçekleştirmeden önce aşağıdaki [SHA-2 kod imzalama desteği güncelleştirmesini](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) yüklemeniz gerekir. 
@@ -57,7 +58,7 @@ Windows Aracısı ve Log Analytics hizmeti arasındaki iletişimde [TLS 1,2](htt
     * **Etkin** [değer = 1]
     * **DisabledByDefault** [değer = 0]  
 
-Varsayılan olarak devre dışı olduğu gibi, .NET Framework 4,6 veya üstünü güvenli şifrelemeyi destekleyecek şekilde yapılandırın. [Güçlü şifreleme](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) , TLS 1,2 gibi daha güvenli ağ protokolleri kullanır ve güvenli olmayan protokolleri engeller. 
+Varsayılan olarak devre dışı olduğu gibi, .NET Framework 4,6 veya üstünü güvenli şifrelemeyi destekleyecek şekilde yapılandırın. [Güçlü şifreleme](/dotnet/framework/network-programming/tls#schusestrongcrypto) , TLS 1,2 gibi daha güvenli ağ protokolleri kullanır ve güvenli olmayan protokolleri engeller. 
 
 1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319**.  
 2. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun.  
@@ -66,7 +67,7 @@ Varsayılan olarak devre dışı olduğu gibi, .NET Framework 4,6 veya üstünü
 5. Ayarların etkili olması için sistemi yeniden başlatın. 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>Kurulum sihirbazını kullanarak aracı yükleme
-Aşağıdaki adımlar, bilgisayarınızda aracı için Kurulum Sihirbazı 'nı kullanarak Azure ve Azure Kamu bulutundaki Log Analytics aracısını yükleyip yapılandırır. Aracıyı bir System Center Operations Manager yönetim grubuna da raporlamak üzere nasıl yapılandıracağınızı öğrenmek istiyorsanız, bkz. [Aracı Kurulum Sihirbazı ile Operations Manager aracısını dağıtma](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
+Aşağıdaki adımlar, bilgisayarınızda aracı için Kurulum Sihirbazı 'nı kullanarak Azure ve Azure Kamu bulutundaki Log Analytics aracısını yükleyip yapılandırır. Aracıyı bir System Center Operations Manager yönetim grubuna da raporlamak üzere nasıl yapılandıracağınızı öğrenmek istiyorsanız, bkz. [Aracı Kurulum Sihirbazı ile Operations Manager aracısını dağıtma](/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
 
 1. Log Analytics çalışma alanınızda, daha önce gidilen **Windows sunucuları** sayfasında, Windows işletim sisteminin işlemci mimarisine bağlı olarak indirmek Için uygun **Windows aracısını indir** sürümünü seçin.   
 2. Aracıyı bilgisayarınıza yüklemek için Kurulum'u çalıştırın.
@@ -119,7 +120,7 @@ Aşağıdaki tabloda, Automation DSC kullanılarak dağıtıldığında de dahil
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Otomasyonu 'nda DSC 'yi kullanarak aracı 'nı yükler
 
-Aracıyı Azure Automation DSC kullanarak yüklemek için aşağıdaki betik örneğini kullanabilirsiniz.   Bir Otomasyon hesabınız yoksa, Automation DSC kullanmadan önce gerekli bir Otomasyon hesabı oluşturmaya yönelik gereksinimleri ve adımları anlamak için bkz. [Azure Otomasyonu ile çalışmaya başlama](/azure/automation/) .  Automation DSC hakkında bilgi sahibi değilseniz [Automation DSC kullanmaya](../../automation/automation-dsc-getting-started.md)başlama konusunu inceleyin.
+Aracıyı Azure Automation DSC kullanarak yüklemek için aşağıdaki betik örneğini kullanabilirsiniz.   Bir Otomasyon hesabınız yoksa, Automation DSC kullanmadan önce gerekli bir Otomasyon hesabı oluşturmaya yönelik gereksinimleri ve adımları anlamak için bkz. [Azure Otomasyonu ile çalışmaya başlama](../../automation/index.yml) .  Automation DSC hakkında bilgi sahibi değilseniz [Automation DSC kullanmaya](../../automation/automation-dsc-getting-started.md)başlama konusunu inceleyin.
 
 Aşağıdaki örnek, değeri tarafından tanımlanan 64 bitlik aracıyı yüklenmektedir `URI` . Ayrıca, URI değerini değiştirerek 32 bit sürümünü de kullanabilirsiniz. Her iki sürümün URI 'Leri şunlardır:
 
@@ -132,7 +133,7 @@ Aşağıdaki örnek, değeri tarafından tanımlanan 64 bitlik aracıyı yüklen
 
 Aracı paketinin 32-bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir ve yayımlanan yeni sürümler de benzersiz bir değer içermelidir.  Ürün kodu, bir uygulamanın veya ürünün asıl kimliği olan ve Windows Installer **ProductCode** özelliği tarafından temsil EDILEN bir GUID 'dir.  `ProductId` **MMAgent.ps1** betikteki değerin ürün kodu 32-bit veya 64-bit aracı yükleyicisi paketinden eşleşmelidir.
 
-Ürün kodunu aracı yüklemesi paketinden doğrudan almak için, Windows yazılım geliştirme seti 'nin bir bileşeni olan Windows Installer geliştiricilerin veya Microsoft değerli bir profesyonel (MVP) tarafından yazılmış [örnek bir betikten](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) sonra PowerShell kullanarak [Windows SDK bileşenlerinden](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) Orca.exe kullanabilirsiniz.  Her iki yaklaşım için, önce MMASetup yükleme paketinden **MOMagent.msi** dosyasını ayıklamanız gerekir.  Bu, [komut satırını kullanarak aracıyı Install](#install-the-agent-using-the-command-line)bölümünün altındaki ilk adımda gösterilmektedir.  
+Ürün kodunu aracı yüklemesi paketinden doğrudan almak için, Windows yazılım geliştirme seti 'nin bir bileşeni olan Windows Installer geliştiricilerin veya Microsoft değerli bir profesyonel (MVP) tarafından yazılmış [örnek bir betikten](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) sonra PowerShell kullanarak [Windows SDK bileşenlerinden](/windows/win32/msi/platform-sdk-components-for-windows-installer-developers) Orca.exe kullanabilirsiniz.  Her iki yaklaşım için, önce MMASetup yükleme paketinden **MOMagent.msi** dosyasını ayıklamanız gerekir.  Bu, [komut satırını kullanarak aracıyı Install](#install-the-agent-using-the-command-line)bölümünün altındaki ilk adımda gösterilmektedir.  
 
 1. XPSDesiredStateConfiguration DSC modülünü [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) Azure Automation 'a aktarın.  
 2.    *OPSINSIGHTS_WS_ID* ve *OPSINSIGHTS_WS_KEY*için Azure Otomasyonu değişken varlıkları oluşturun. *OPSINSIGHTS_WS_ID* Log Analytics çalışma alanı kimliğinize ayarlayın ve *OPSINSIGHTS_WS_KEY* çalışma alanınızın birincil anahtarına ayarlayın.

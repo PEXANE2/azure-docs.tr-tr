@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707768"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508041"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB Serisi sanal makinelere genel bakış
 
@@ -65,6 +65,6 @@ Aşağıdaki diyagramda, Azure Hiper Yöneticisi ve HB Serisi VM için ayrılan 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure 'da [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) ve [WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) için HPC VM boyutları hakkında daha fazla bilgi edinin.
+* Azure 'da [Linux](../../sizes-hpc.md) ve [WINDOWS](../../sizes-hpc.md) için HPC VM boyutları hakkında daha fazla bilgi edinin.
 
-* Azure 'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
+* Azure 'da [HPC](/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 6fb9f691afc8874b19ca4575408027357f07cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833545"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505780"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics Pano görselleştirmelerinizi yükseltme
 
@@ -25,7 +25,7 @@ Bu yeni görselleştirme teknolojisi, sorgu sonuç kümesi etrafında yeni ve ge
 
 Azure panoları, tüm Azure Surface alanının durumunu görselleştirebileceğiniz bir yoldur. Bunlar, Azure 'un durumu için tek bir cam bölmesi sağlamak ve sık görülen eylemlere yönelik çeşitli kısayollara izin vermek için tasarlanmıştır. 
 
-Daha fazla bilgi için bkz. [Azure panoları](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)
+Daha fazla bilgi için bkz. [Azure panoları](../../azure-portal/azure-portal-dashboards.md)
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>Log Analytics Pano parçalarını yükseltme
@@ -62,13 +62,13 @@ Görselleştirmeler yükseltildikten sonra, değişikliğin etkili olması için
 
 Bir ilk kabul etme süresi bittikten sonra, Log Analytics ekibi sistemdeki tüm panoları yükseltir. Tüm Azure panoları hizalamak, ekibin Pano genelinde daha fazla görselleştirme ve deneyim geliştirmesi sağlamasına olanak sağlar.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Panoya sabitlenmiş Log Analytics görselleştirmeler, en iyi deneyim için tasarlanan bazı özel davranışlara sahiptir. Bir görselleştirmeyi panoya sabitleyerek aşağıdaki tasarım konularını gözden geçirin.
 
 ### <a name="query-time-scope---30-day-limit"></a>Sorgu süresi kapsamı-30 günlük sınır
 
-Panolar birden çok sorgudan birden çok görselleştirme içerebildiği için, tek bir sabitlenmiş sorgunun zaman kapsamı 30 gün ile sınırlıdır. Tek bir sorgu yalnızca 30 güne eşit veya daha küçük bir zaman aralığı üzerinde çalışabilir. Bu sınırlama, makul bir pano yükleme süresi sağlamaktır.
+Panolar birden çok sorgudan gelen birden çok görselleştirme içerebildiğinden, sabitlenmiş tek sorgunun zaman kapsamı 30 günle sınırlıdır. Tek bir sorgu yalnızca 30 güne eşit veya daha küçük bir zaman aralığı üzerinde çalışabilir. Bu sınırlama, makul bir pano yükleme süresi sağlamaktır.
 
 ### <a name="query-data-values---25-values-and-other-grouping"></a>Sorgu verileri değerleri-25 değer ve diğer gruplandırma
 

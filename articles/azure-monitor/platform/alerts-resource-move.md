@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505491"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Hedef kaynakları farklı bir Azure bölgesine hareket ettirildiğinde uyarı kurallarını veya eylem kurallarını güncelleştirme
 
-Bu makalede, diğer Azure kaynaklarını bölgeler arasında taşıdığınızda mevcut [uyarı kurallarının](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) ve [eylem kurallarının](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) neden etkilenmiş olabileceği ve bu sorunları nasıl tanımlayacağınız ve giderecağınız açıklanır. Kaynak taşıma hakkında daha fazla bilgi için ana [kaynak taşıma belgelerini](https://docs.microsoft.com/azure/azure-resource-manager/management/move-region) kontrol edin ve bir taşıma işlemi tasarlama denetim listesi
+Bu makalede, diğer Azure kaynaklarını bölgeler arasında taşıdığınızda mevcut [uyarı kurallarının](./alerts-overview.md) ve [eylem kurallarının](./alerts-action-rules.md) neden etkilenmiş olabileceği ve bu sorunları nasıl tanımlayacağınız ve giderecağınız açıklanır. Kaynak taşıma hakkında daha fazla bilgi için ana [kaynak taşıma belgelerini](../../azure-resource-manager/management/move-region.md) kontrol edin ve bir taşıma işlemi tasarlama denetim listesi
 
 ## <a name="why-the-problem-exists"></a>Sorun neden var?
 
-Uyarı kuralları ve eylem kuralları diğer Azure kaynaklarına başvurur. [Azure VM 'leri](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate), [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-move-resources-across-regions)ve [Azure depolama](https://docs.microsoft.com/azure/storage/common/storage-account-move)örnekleri aşağıda verilmiştir. Bu kuralların başvurduğu kaynakları taşıdığınızda, başvurdukları kaynakları bulamadığı için kuralların doğru çalışmayı durdurması olasıdır.
+Uyarı kuralları ve eylem kuralları diğer Azure kaynaklarına başvurur. [Azure VM 'leri](../../site-recovery/azure-to-azure-tutorial-migrate.md), [Azure SQL](../../azure-sql/database/move-resources-across-regions.md)ve [Azure depolama](../../storage/common/storage-account-move.md)örnekleri aşağıda verilmiştir. Bu kuralların başvurduğu kaynakları taşıdığınızda, başvurdukları kaynakları bulamadığı için kuralların doğru çalışmayı durdurması olasıdır.
 
 Hedef kaynakları taşıdıktan sonra kurallarınızın çalışmayı durdurmasına neden olabilecek iki temel neden vardır:
 
@@ -94,20 +94,20 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
 
 ### <a name="change-scope-of-a-rule-using-rest-api"></a>REST API kullanarak bir kuralın kapsamını değiştirme
 
-1. Mevcut kuralı al ([ölçüm uyarıları](https://docs.microsoft.com/rest/api/monitor/metricalerts/get), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/get))
-2. Kapsamı değiştirme ([etkinlik günlüğü uyarıları](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/update))
-3. Kuralı yeniden Dağıt ([ölçüm uyarıları](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/createorupdate))
+1. Mevcut kuralı al ([ölçüm uyarıları](/rest/api/monitor/metricalerts/get), [etkinlik günlüğü uyarıları](/rest/api/monitor/activitylogalerts/get))
+2. Kapsamı değiştirme ([etkinlik günlüğü uyarıları](/rest/api/monitor/activitylogalerts/update))
+3. Kuralı yeniden Dağıt ([ölçüm uyarıları](/rest/api/monitor/metricalerts/createorupdate), [etkinlik günlüğü uyarıları](/rest/api/monitor/activitylogalerts/createorupdate))
 
 ### <a name="change-scope-of-a-rule-using-powershell"></a>PowerShell kullanarak bir kuralın kapsamını değiştirme
 
-1. Mevcut kuralı ([ölçüm uyarıları](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert), [Eylem kuralları](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Get-AzActionRule)) alın.
+1. Mevcut kuralı ([ölçüm uyarıları](/powershell/module/az.monitor/get-azmetricalertrulev2), [etkinlik günlüğü uyarıları](/powershell/module/az.monitor/get-azactivitylogalert), [Eylem kuralları](/powershell/module/az.alertsmanagement/get-azactionrule)) alın.
 2. Kapsamı değiştirin. Gerekirse, iki kurala ayırın (yukarıda belirtilen bazı ölçüm uyarıları durumları için geçerlidir).
-3. Kuralı yeniden dağıtın ([ölçüm uyarıları](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert), [Eylem kuralları](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)).
+3. Kuralı yeniden dağıtın ([ölçüm uyarıları](/powershell/module/az.monitor/add-azmetricalertrulev2), [etkinlik günlüğü uyarıları](/powershell/module/az.monitor/enable-azactivitylogalert), [Eylem kuralları](/powershell/module/az.alertsmanagement/set-azactionrule)).
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Azure CLı kullanarak bir kuralın kapsamını değiştirme
 
-1.  Mevcut kuralı al ([ölçüm uyarıları](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
-2.  Kural kapsamını doğrudan güncelleştirme ([ölçüm uyarıları](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope))
+1.  Mevcut kuralı al ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+2.  Kural kapsamını doğrudan güncelleştirme ([ölçüm uyarıları](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [etkinlik günlüğü uyarıları](/cli/azure/monitor/activity-log/alert/scope))
 3.  Gerekirse, iki kurala ayırın (yukarıda belirtilen bazı ölçüm uyarıları durumları için geçerlidir).
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678520"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510047"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Planlı bakım bildirimlerini işleme
 
@@ -24,7 +25,7 @@ Azure sanal makine konak altyapısının güvenilirlik, performans ve güvenliğ
 
 Yeniden başlatma gerektiren planlı bakım dalgaları 'nda zamanlanır. Her bir dalga, farklı kapsama (bölgelere) sahiptir.
 
-- Bir dalga, müşterilere yönelik bir bildirimle başlar. Varsayılan olarak, bildirim hizmet yöneticisine ve ortak yöneticilere gönderilir. [Etkinlik günlüğü uyarılarını](../service-health/alerts-activity-log-service-notifications.md)kullanarak e-posta, SMS ve Web kancaları gibi daha fazla alıcı ve mesajlaşma seçeneği ekleyebilirsiniz.  
+- Bir dalga, müşterilere yönelik bir bildirimle başlar. Varsayılan olarak, bildirim hizmet yöneticisine ve ortak yöneticilere gönderilir. [Etkinlik günlüğü uyarılarını](../service-health/alerts-activity-log-service-notifications-portal.md)kullanarak e-posta, SMS ve Web kancaları gibi daha fazla alıcı ve mesajlaşma seçeneği ekleyebilirsiniz.  
 - Bir bildirim alındıktan sonra, bir *self servis penceresi* kullanılabilir hale getirilir. Bu pencere sırasında, sanal makinelerinizin hangilerinin etkilendiğini sorgulayabilir ve kendi zamanlama gereksinimlerinize göre bakım başlatabilirsiniz. Self servis penceresi genellikle yaklaşık 35 gündür.
 - Self Servis penceresinden sonra, *Zamanlanmış bir bakım penceresi* başlar. Bu pencere sırasında, Azure tarafından zamanlama ve gerekli bakım sanal makinenize uygulanıyor. 
 
@@ -75,7 +76,7 @@ Y **:** Azure platformunda yapılan güncelleştirmelerin ve yükseltmelerin bü
 
 Y **:** Bir kullanılabilirlik kümesinde veya sanal makine ölçek kümelerinde dağıtılan sanal makinelerin güncelleştirme etki alanları (UD) kavramı vardır. Azure, bakım gerçekleştirirken UD kısıtlamasına sahiptir ve sanal makineleri farklı bir UD 'den (aynı Kullanılabilirlik kümesi içinde) yeniden başlatmaz.  Azure, sonraki sanal makine grubuna geçmeden önce en az 30 dakika bekler. 
 
-Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için kullanılabilirlik](./linux/availability.md).
+Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sanal makineler Için kullanılabilirlik](availability.md).
 
 **S: planlı bakım hakkında bilgi almak Nasıl yaparım? mı?**
 
@@ -121,4 +122,3 @@ Y **:** Bakım için yeniden dağıtmayı tamamladıktan sonra sanal makineyi ba
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) veya [portalını](maintenance-notifications-portal.md)kullanarak planlı Bakımı işleyebilirsiniz.
-

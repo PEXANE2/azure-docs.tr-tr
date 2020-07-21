@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80674107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506307"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Hızlı başlangıç: Kotlin ve Maven ile ilk işlevinizi oluşturma
 
@@ -19,13 +19,13 @@ Bu makale, Azure Işlevleri 'ne bir Kotlin işlev projesi derlemek ve yayımlama
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kotlin kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
 - [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
 
 > [!IMPORTANT]
@@ -43,7 +43,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Komutu çalıştırmaya ilişkin sorunlarla karşılaşıyorsanız, hangi `maven-archetype-plugin` sürümün kullanıldığını göz atın. Komutunu dosyası olmayan `.pom` boş bir dizinde çalıştırdığınız Için, Maven 'nizi eski bir sürümden yükselttiyseniz eski sürümünün `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` bir eklentisini kullanmaya çalışıyor olabilir. Bu durumda, `maven-archetype-plugin` dizini silmeyi ve komutu yeniden çalıştırmayı deneyin.
+> Komutu çalıştırmaya ilişkin sorunlarla karşılaşıyorsanız, hangi `maven-archetype-plugin` sürümün kullanıldığını göz atın. Komutunu dosyası olmayan boş bir dizinde çalıştırdığınız için `.pom` , `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` Maven 'nizi eski bir sürümden yükselttiyseniz eski sürümünün bir eklentisini kullanmaya çalışıyor olabilir. Bu durumda, `maven-archetype-plugin` dizini silmeyi ve komutu yeniden çalıştırmayı deneyin.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
@@ -79,7 +79,7 @@ Aşağıdaki `com.fabrikam.functions` ve `fabrikam-functions` tanımlayıcılar�
 [INFO] Parameter: artifactId, Value: fabrikam-function
 </pre>
 
-Maven, şu örnekte _artifactId_ adlı yeni bir klasörde proje dosyalarını oluşturur: `fabrikam-functions`. Projedeki çalıştırılmaya hazır olarak oluşturulan bu kod, isteğin gövdesini yankılayan [HTTP tetiklemeli](/azure/azure-functions/functions-bindings-http-webhook) basit bir işlevdir:
+Maven, şu örnekte _artifactId_ adlı yeni bir klasörde proje dosyalarını oluşturur: `fabrikam-functions`. Projedeki çalıştırılmaya hazır olarak oluşturulan bu kod, isteğin gövdesini yankılayan [HTTP tetiklemeli](./functions-bindings-http-webhook.md) basit bir işlevdir:
 
 ```kotlin
 class Function {
@@ -185,7 +185,7 @@ Dağıtım tamamlandığında, Azure işlev uygulamanıza erişmek için kullana
 Azure’da çalışan işlev uygulamasını `cURL` kullanarak test edin. Önceki adımdan kendi işlev uygulamanız için dağıtılan URL ile eşleşmek üzere aşağıdaki örnekten URL’yi değiştirmeniz gerekir.
 
 > [!NOTE]
-> **Erişim haklarını** ' a ayarladığınızdan emin olun `Anonymous`. Varsayılan düzeyini seçtiğinizde `Function`, işlev uç noktanıza erişmek için isteklerde [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) sunmak gerekir.
+> **Erişim haklarını** ' a ayarladığınızdan emin olun `Anonymous` . Varsayılan düzeyini seçtiğinizde `Function` , işlev uç noktanıza erişmek için isteklerde [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) sunmak gerekir.
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions

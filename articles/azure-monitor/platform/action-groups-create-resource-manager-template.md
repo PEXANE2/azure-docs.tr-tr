@@ -7,20 +7,21 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a97fd56f1dc3409666ad86e81a7ac74fee076fa1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669089"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505695"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Kaynak Yöneticisi şablonuyla bir eylem grubu oluşturma
-Bu makalede, eylem gruplarını yapılandırmak için bir [Azure Resource Manager şablonunun](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) nasıl kullanılacağı gösterilmektedir. Şablonları kullanarak, belirli uyarı türlerinde yeniden kullanılabilen eylem gruplarını otomatik olarak ayarlayabilirsiniz. Bu eylem grupları, bir uyarı tetiklendiğinde tüm doğru taraflara bildirimde bulunduğundan emin olur.
+Bu makalede, eylem gruplarını yapılandırmak için bir [Azure Resource Manager şablonunun](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanılacağı gösterilmektedir. Şablonları kullanarak, belirli uyarı türlerinde yeniden kullanılabilen eylem gruplarını otomatik olarak ayarlayabilirsiniz. Bu eylem grupları, bir uyarı tetiklendiğinde tüm doğru taraflara bildirimde bulunduğundan emin olur.
 
 Temel adımlar şunlardır:
 
 1. Eylem grubunun nasıl oluşturulacağını açıklayan bir JSON dosyası olarak şablon oluşturun.
 
-2. [Herhangi bir dağıtım yöntemini](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)kullanarak şablonu dağıtın.
+2. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/templates/deploy-powershell.md)kullanarak şablonu dağıtın.
 
 İlk olarak, eylem tanımlarının şablonda sabit kodlandığı bir eylem grubu için bir Kaynak Yöneticisi şablonu oluşturma işlemi anlatılmaktadır. İkincisi, şablon dağıtıldığında, Web kancası yapılandırma bilgilerini giriş parametresi olarak alan bir şablonun nasıl oluşturulacağını açıklamaktadır.
 
@@ -165,4 +166,3 @@ Kaynak Yöneticisi şablonu kullanarak bir eylem grubu oluşturmak için, türü
 * [Eylem grupları](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
 * [Uyarılar](alerts-overview.md)hakkında daha fazla bilgi edinin.
 * [Kaynak Yöneticisi şablonu kullanarak uyarı](../../azure-monitor/platform/alerts-activity-log.md)eklemeyi öğrenin.
-

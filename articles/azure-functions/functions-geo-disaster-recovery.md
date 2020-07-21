@@ -4,11 +4,12 @@ description: Azure Işlevlerinde artıklık ve yük devretme için coğrafi böl
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080238"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506290"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Işlevleri coğrafi olağanüstü durum kurtarma
 
@@ -21,7 +22,7 @@ Azure Işlevleri belirli bir bölgede çalışır.  Daha yüksek kullanılabilir
 * Etkin/etkin. Her iki bölge de etkin ve olayları alıyor (yinelenen veya rotalıo). Etkin/etkin, HTTPS işlevleri için Azure ön kapısının birleşimiyle önerilir.
 * Etkin/Pasif. Bir bölge etkin ve olayları alıyor, ancak ikincil boşta kalır.  Yük devretme gerekli olduğunda, ikincil bölge etkinleştirilir ve işleme alır.  Bu, Service Bus ve Event Hubs gibi HTTP olmayan işlevler için önerilir.
 
-Çok bölgeli dağıtımlar hakkında daha fazla bilgi için [birden çok bölgede uygulama çalıştırmayı](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) okuyun.
+Çok bölgeli dağıtımlar hakkında daha fazla bilgi için [birden çok bölgede uygulama çalıştırmayı](/azure/architecture/reference-architectures/app-service-web-app/multi-region) okuyun.
 
 ## <a name="activeactive-for-https-functions"></a>HTTPS işlevleri için etkin/etkin
 

@@ -3,12 +3,12 @@ title: Azure Işlevleri C# Geliştirici Başvurusu
 description: C# kullanarak Azure Işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254376"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506528"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
 
@@ -202,6 +202,28 @@ Ana araçları NPM kullanarak yüklerseniz, Visual Studio tarafından kullanıla
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+İşlev uygulamanızı [Readytorun ikilileri](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)olarak derleyebilirsiniz. ReadyToRun, bir [Tüketim planında](functions-scale.md#consumption-plan)çalışırken [soğuk başlatmanın](functions-scale.md#cold-start) etkisini azaltmaya yardımcı olmak için başlangıç performansını iyileştirebilecek bir süre öncesi derleme biçimidir.
+
+ReadyToRun, .NET 3,0 ' de kullanılabilir ve [Azure işlevleri çalışma zamanının 3,0 sürümünü](functions-versions.md)gerektirir.
+
+Projenizi ReadyToRun olarak derlemek için, ve öğelerini ekleyerek proje dosyanızı güncelleştirin `<PublishReadyToRun>` `<RuntimeIdentifier>` . Aşağıda Windows 32-bit işlev uygulamasına yayımlama yapılandırması verilmiştir.
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun Şu anda çapraz derlemeyi desteklemiyor. Uygulamanızı dağıtım hedefi ile aynı platformda derlemeniz gerekir. Ayrıca, işlev uygulamanızda yapılandırılan "bit genişliği" ile ilgilenyin. Örneğin, Azure 'daki işlev uygulamanız Windows 64-bit ise, uygulamanızı `win-x64` [çalışma zamanı tanımlayıcısı](/dotnet/core/rid-catalog)olarak Windows üzerinde derlemeniz gerekir.
+
+Uygulamanızı komut satırından ReadyToRun ile de oluşturabilirsiniz. Daha fazla bilgi için, `-p:PublishReadyToRun=true` içindeki seçeneğine bakın [`dotnet publish`](/dotnet/core/tools/dotnet-publish) .
+
 ## <a name="supported-types-for-bindings"></a>Bağlamalar için desteklenen türler
 
 Her bağlamanın kendi desteklenen türleri vardır; Örneğin, bir blob tetikleyici özniteliği bir dize parametresine, bir POCO parametresine, `CloudBlockBlob` parametreye veya desteklenen başka birkaç türden birine uygulanabilir. [BLOB bağlamaları için bağlama başvuru makalesi](functions-bindings-storage-blob-trigger.md#usage) , desteklenen tüm parametre türlerini listeler. Daha fazla bilgi için, bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md) ve [her bağlama türü için bağlama başvurusu belgeleri](functions-triggers-bindings.md#next-steps).
@@ -236,9 +258,9 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
-Çıktıyı C# ' deki akış günlüklerinizi günlüğe kaydetmek için, [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. `log`Aşağıdaki örnekte olduğu gibi, adını yazmanız önerilir:  
+Çıktıyı C# ' deki akış günlüklerinizi günlüğe kaydetmek için, [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. `log`Aşağıdaki örnekte olduğu gibi, adını yazmanız önerilir:  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +279,7 @@ public static class SimpleExample
 
 ## <a name="async"></a>Zaman Uyumsuz
 
-Bir işlevi [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)yapmak için `async` anahtar sözcüğünü kullanın ve bir `Task` nesne döndürün.
+Bir işlevi [zaman uyumsuz](/dotnet/csharp/programming-guide/concepts/async/)yapmak için `async` anahtar sözcüğünü kullanın ve bir `Task` nesne döndürün.
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 Uygulama ayarları, hem yerel olarak hem de Azure 'da çalışırken ortam değişkenlerinden okunabilir. Yerel olarak geliştirme yaparken, uygulama ayarları `Values` dosyadaki *local.settings.js* koleksiyonundan gelir. Yerel ve Azure her iki ortamda da `GetEnvironmentVariable("<app setting name>")` adlandırılmış uygulama ayarının değerini alır. Örneğin, yerel olarak çalışırken, dosyasında *local.settings.js* içeriyorsa "Sitem adı" döndürülür `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` .
 
-[System.Configuration.ConfigurationManager. AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) özelliği, uygulama ayarı değerlerini almaya yönelik ALTERNATIF bir API 'dir, ancak `GetEnvironmentVariable` burada gösterildiği gibi kullanmanızı öneririz.
+[System.Configuration.ConfigurationManager. AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) özelliği, uygulama ayarı değerlerini almaya yönelik ALTERNATIF bir API 'dir, ancak `GetEnvironmentVariable` burada gösterildiği gibi kullanmanızı öneririz.
 
 ## <a name="binding-at-runtime"></a>Çalışma zamanında bağlama
 
@@ -378,7 +400,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örnek:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örneğin:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

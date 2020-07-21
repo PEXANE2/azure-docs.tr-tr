@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: rogardle
-ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224443"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507871"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
@@ -55,13 +55,13 @@ Desteklenen Oracle Linux görüntülerde Azure 'da kurumsal uygulamaları çalı
 
 * Azure 'da ve fiziksel sunucularınızda Oracle Linux sanal makinelerinize yönelik olağanüstü durum kurtarmayı düzenlemek ve yönetmek için [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) kullanın. 
 
-* Azure [VMware çözümünü](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) veya [Flashgrid ufuk kümesini](https://www.flashgrid.io/oracle-rac-in-azure/)kullanarak Azure 'Da Oracle gerçek uygulama kümelerini (RAC) etkinleştirin.
+* Azure [VMware çözümünü](../../../vmware-cloudsimple/oracle-real-application-clusters.md) veya [Flashgrid ufuk kümesini](https://www.flashgrid.io/oracle-rac-in-azure/)kullanarak Azure 'Da Oracle gerçek uygulama kümelerini (RAC) etkinleştirin.
 
 ## <a name="backup-oracle-workloads"></a>Oracle Iş yüklerini yedekleme
 
-* [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) kullanarak Oracle VM 'lerinizi yedekleme
+* [Azure Backup](../../../backup/backup-overview.md) kullanarak Oracle VM 'lerinizi yedekleme
 
-* Oracle Database Oracle RMAN kullanarak yedekleyin ve isteğe bağlı olarak [Azure Blob sigortası](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) kullanarak [yüksek düzeyde yedekli bir Azure Blob depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-redundancy) takın ve ek dayanıklılık için RMAN yedeklemelerinizi bu depoya yazın.
+* Oracle Database Oracle RMAN kullanarak yedekleyin ve isteğe bağlı olarak [Azure Blob sigortası](../../../storage/blobs/storage-how-to-mount-container-linux.md) kullanarak [yüksek düzeyde yedekli bir Azure Blob depolama hesabı](../../../storage/common/storage-redundancy.md) takın ve ek dayanıklılık için RMAN yedeklemelerinizi bu depoya yazın.
 
 ## <a name="integration-of-azure-with-oci"></a>OCı ile Azure tümleştirmesi
 
@@ -89,7 +89,7 @@ Ayrıca, Azure 'da OCı ve diğer Azure hizmetleriyle bağlantı sağlayan özel
 Azure 'da çalışan Oracle yazılımıyla birlikte Oracle Database Cloud Services (özerk veritabanı, RAC, sınavı verileri, DBaaS, tek düğüm) kullanın. [OCI veritabanı seçenekleri](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)hakkında daha fazla bilgi edinin. 
  
 
-## <a name="licensing"></a>Lisans
+## <a name="licensing"></a>Lisanslama
 
 Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" modelini temel alır. Oracle yazılımını kullanmak için doğru lisansa sahip olduğunuz ve Oracle ile geçerli bir destek sözleşmenizin olduğu varsayılır. Oracle 'ın Şirket içinden Azure 'a lisans taşınabilirlik garantisi vardır. Bkz. Oracle-Azure [SSS](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html).
 

@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dde784e2f67266b2f6c6ccd7da20f01546bbda7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697349"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506494"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Işlevleri bağlama uzantılarını kaydetme
 
@@ -28,7 +29,7 @@ Aşağıdaki tablo, bağlamaları ne zaman ve nasıl kaydedeceğinizi gösterir.
 |Azure portal|Automatic|Automatic|
 |Non-.NET dilleri veya yerel Azure Core araçları geliştirme|Automatic|[Azure Functions Core Tools ve uzantı paketleri kullanma](#extension-bundles)|
 |Visual Studio kullanarak C# sınıf kitaplığı|[NuGet araçlarını kullanma](#vs)|[NuGet araçlarını kullanma](#vs)|
-|Visual Studio Code kullanarak C# sınıf kitaplığı|YOK|[.NET Core CLI kullan](#vs-code)|
+|Visual Studio Code kullanarak C# sınıf kitaplığı|Yok|[.NET Core CLI kullan](#vs-code)|
 
 ## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Yerel geliştirme için uzantı paketleri
 
@@ -48,7 +49,7 @@ Uzantı paketlerini kullanmak için, dosyadaki *host.js* aşağıdaki girişi i�
 
 ## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>\#Visual Studio ile C sınıfı kitaplığı
 
-**Visual Studio**'da, aşağıdaki örnekte gösterildiği gibi [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) komutunu kullanarak paket yöneticisi konsolundan paketleri yükleyebilirsiniz:
+**Visual Studio**'da, aşağıdaki örnekte gösterildiği gibi [Install-Package](/nuget/tools/ps-ref-install-package) komutunu kullanarak paket yöneticisi konsolundan paketleri yükleyebilirsiniz:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -62,7 +63,7 @@ Belirli bir bağlama için kullanılan paketin adı, söz konusu bağlamaya ili�
 
 ## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>Visual Studio Code ile C# sınıf kitaplığı
 
-**Visual Studio Code**' de, bir C# sınıf kitaplığı projesi için paketleri, .NET Core CLI [DotNet Add Package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) komutunu kullanarak komut isteminden yükler. Aşağıdaki örnek nasıl bağlama ekleneceğini gösterir:
+**Visual Studio Code**' de, bir C# sınıf kitaplığı projesi için paketleri, .NET Core CLI [DotNet Add Package](/dotnet/core/tools/dotnet-add-package) komutunu kullanarak komut isteminden yükler. Aşağıdaki örnek nasıl bağlama ekleneceğini gösterir:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>

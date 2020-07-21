@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170403"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506240"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -137,7 +137,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 
 Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 
-| Ayar adı                 | Açıklama                                                                               | Örnek değerler                        |
+| Ayar adı                 | Description                                                                               | Örnek değerler                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Işlevlerin çalışma zamanının iç sıraya alma için kullandığı bir depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~2`                                  |
@@ -309,7 +309,7 @@ Premium planı, tüketim planıyla aynı ölçeklendirmeyi sunar, ancak adanmı�
 
 ### <a name="create-a-premium-plan"></a>Premium planı oluşturma
 
-Premium plan, "ServerFarm" kaynağının özel bir türüdür. `EP1` `EP2` `EP3` `Name` `sku` [Açıklama nesnesindeki](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)Özellik değeri için, veya öğesini kullanarak belirtebilirsiniz.
+Premium plan, "ServerFarm" kaynağının özel bir türüdür. `EP1` `EP2` `EP3` `Name` `sku` [Açıklama nesnesindeki](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)Özellik değeri için, veya öğesini kullanarak belirtebilirsiniz.
 
 ```json
 {
@@ -516,7 +516,7 @@ Linux uygulamaları altında bir özelliği de içermelidir `linuxFxVersion` `si
 }
 ```
 
-[Özel bir kapsayıcı görüntüsü dağıtıyorsanız](./functions-create-function-linux-custom-image.md), bunu ile belirtmeniz `linuxFxVersion` ve resminizin çekilme olanağı sağlayan yapılandırmayı [kapsayıcılar için Web App](/azure/app-service/containers)gibi bir yapılandırma dahil etmeniz gerekir. Ayrıca, `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false` uygulama içeriğiniz kapsayıcının kendisinde sağlandığı için olarak olarak ayarlayın:
+[Özel bir kapsayıcı görüntüsü dağıtıyorsanız](./functions-create-function-linux-custom-image.md), bunu ile belirtmeniz `linuxFxVersion` ve resminizin çekilme olanağı sağlayan yapılandırmayı [kapsayıcılar için Web App](../app-service/containers/index.yml)gibi bir yapılandırma dahil etmeniz gerekir. Ayrıca, `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false` uygulama içeriğiniz kapsayıcının kendisinde sağlandığı için olarak olarak ayarlayın:
 
 ```json
 {

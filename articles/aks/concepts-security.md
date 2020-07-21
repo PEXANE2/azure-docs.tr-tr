@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244541"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507106"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service’teki (AKS) uygulamalar ve kümeler için güvenlik kavramları
 
@@ -54,9 +54,9 @@ Kubernetes ortamları, AKS veya başka bir yerde, şu anda çok kiracılı olmay
 
 ### <a name="compute-isolation"></a>İşlem yalıtımı
 
- Belirli iş yükleri, uyumluluk ve mevzuat gereksinimleri nedeniyle diğer müşteri iş yüklerinden yüksek ölçüde yalıtım gerektirebilir. Azure, bu iş yükleri için bir AKS kümesinde aracı düğümleri olarak kullanılabilecek [yalıtılmış sanal makineler](../virtual-machines/linux/isolation.md)sağlar. Bu yalıtılmış sanal makineler belirli bir donanım türüne ayrılmıştır ve tek bir müşteriye atanır. 
+ Belirli iş yükleri, uyumluluk ve mevzuat gereksinimleri nedeniyle diğer müşteri iş yüklerinden yüksek ölçüde yalıtım gerektirebilir. Azure, bu iş yükleri için bir AKS kümesinde aracı düğümleri olarak kullanılabilecek [yalıtılmış sanal makineler](../virtual-machines/isolation.md)sağlar. Bu yalıtılmış sanal makineler belirli bir donanım türüne ayrılmıştır ve tek bir müşteriye atanır. 
 
- Bu yalıtılmış sanal makineleri bir AKS kümesiyle birlikte kullanmak için, bir AKS kümesi oluştururken **veya düğüm havuzu** eklerken [burada](../virtual-machines/linux/isolation.md) listelenen yalıtılmış sanal makine boyutlarından birini seçin.
+ Bu yalıtılmış sanal makineleri bir AKS kümesiyle birlikte kullanmak için, bir AKS kümesi oluştururken **veya düğüm havuzu** eklerken [burada](../virtual-machines/isolation.md) listelenen yalıtılmış sanal makine boyutlarından birini seçin.
 
 
 ## <a name="cluster-upgrades"></a>Küme yükseltmeleri
@@ -81,6 +81,8 @@ Daha fazla bilgi için bkz. [AKS kümesini yükseltme][aks-upgrade-cluster].
 ### <a name="azure-network-security-groups"></a>Azure ağ güvenlik grupları
 
 Azure, sanal ağlardaki trafik akışını filtrelemek için ağ güvenlik grubu kurallarını kullanır. Bu kurallar, kaynaklara erişim izni verilen veya reddedilen kaynak ve hedef IP aralıklarını, bağlantı noktalarını ve protokolleri tanımlar. Kubernetes API sunucusuna TLS trafiğine izin vermek için varsayılan kurallar oluşturulur. Yük dengeleyiciler, bağlantı noktası eşleştirmeleri veya giriş rotaları ile hizmetler oluştururken, AKS, trafiği uygun şekilde akışa almak için ağ güvenlik grubunu otomatik olarak değiştirir.
+
+AKS kümeniz için kendi alt ağınızı sağladığınız ve trafik akışını değiştirmek istediğiniz durumlarda, AKS tarafından yönetilen alt ağ düzeyinde ağ güvenlik grubunu değiştirmeyin. Yük dengeleyici erişimi, denetim düzleğiyle iletişim ve [Çıkış][aks-limit-egress-traffic]gibi, küme yönetimi için gereken trafikle müdahale olmadıkları sürece trafik akışını değiştirmek için ek alt ağ düzeyi ağ güvenlik grupları oluşturabilirsiniz.
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes ağ ilkesi
 
@@ -123,6 +125,7 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135265"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509061"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Fstab hataları nedeniyle Linux sanal makinesi sorunlarını giderme
 
-Bir Azure Linux sanal makinesine (VM) Secure Shell (SSH) bağlantısı kullanarak bağlanamazsınız. [Azure Portal](https://portal.azure.com/) [önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) özelliğini çalıştırdığınızda aşağıdaki örneklere benzeyen günlük girdileri görürsünüz:
+Bir Azure Linux sanal makinesine (VM) Secure Shell (SSH) bağlantısı kullanarak bağlanamazsınız. [Azure Portal](https://portal.azure.com/) [önyükleme tanılama](./boot-diagnostics.md) özelliğini çalıştırdığınızda aşağıdaki örneklere benzeyen günlük girdileri görürsünüz:
 
 ## <a name="examples"></a>Örnekler
 
@@ -106,8 +106,8 @@ Bu sorunu çözmek için, Azure sanal makineler için seri konsol kullanarak VM 
 
 ### <a name="using-single-user-mode"></a>Tek Kullanıcı modunu kullanma
 
-1. [Seri konsoluna](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)bağlanın.
-2. Tek kullanıcılı mod [Tek Kullanıcı modu](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode) almak için seri konsol kullanın
+1. [Seri konsoluna](./serial-console-linux.md)bağlanın.
+2. Tek kullanıcılı mod [Tek Kullanıcı modu](../linux/serial-console-grub-single-user-mode.md) almak için seri konsol kullanın
 3. VM, tek kullanıcı modunda önyüklendikten sonra. En sevdiğiniz metin düzenleyiciyi kullanarak fstab dosyasını açın. 
 
    ```
@@ -140,7 +140,7 @@ Bu sorunu çözmek için, Azure sanal makineler için seri konsol kullanarak VM 
 
 ### <a name="using-root-password"></a>Kök parola kullanma
 
-1. [Seri konsoluna](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)bağlanın.
+1. [Seri konsoluna](./serial-console-linux.md)bağlanın.
 2. Yerel bir Kullanıcı ve parola kullanarak sistemde oturum açın.
 
    > [!Note]
@@ -188,7 +188,7 @@ Bu sorunu çözmek için, Azure sanal makineler için seri konsol kullanarak VM 
 
 ## <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma
 
-1. VM 'nin sistem diskini bir kurtarma VM 'sine (çalışmakta olan herhangi bir Linux VM) veri diski olarak ekleyin. Bunu yapmak için [CLI komutlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM 'sinin kurulumunu otomatik hale getirebilirsiniz.
+1. VM 'nin sistem diskini bir kurtarma VM 'sine (çalışmakta olan herhangi bir Linux VM) veri diski olarak ekleyin. Bunu yapmak için [CLI komutlarını](./troubleshoot-recovery-disks-linux.md) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM 'sinin kurulumunu otomatik hale getirebilirsiniz.
 
 2. Sistem diskini kurtarma sanal makinesine bir veri diski olarak bağladığınızda, değişiklik yapmadan önce fstab dosyasını yedekleyin ve ardından fstab dosyasını düzeltmek için sonraki adımları uygulayın.
 
@@ -217,7 +217,7 @@ Bu sorunu çözmek için, Azure sanal makineler için seri konsol kullanarak VM 
    > * Her satırdaki alanlar sekme veya boşluk ile ayrılır. Boş satırlar yok sayılır. İlk karakter olarak numara işareti (#) olan satırlar açıklamalardır. Açıklamalı çizgiler fstab dosyasında kalabilir, ancak işlenmeyecektir. Satırları kaldırmak yerine, emin olduğunuz fstab satırlarını açıklamanızı öneririz.
    > * VM 'nin kurtarılmasına ve başlaması için, dosya sistemi bölümlerinin yalnızca gerekli bölümler olması gerekir. VM, ek açıklamalı bölümler hakkında uygulama hatalarıyla karşılaşabilir. Ancak, VM ek bölümler olmadan başlamalıdır. Açıklamalı tüm çizgileri daha sonra açıklama ekleyebilirsiniz.
    > * Dosya sistemi bölümünün UUID 'sini kullanarak Azure VM 'lerine veri diskleri bağlamanız önerilir. Örneğin, aşağıdaki komutu çalıştırın:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Dosya sisteminin UUID 'sini öğrenmek için blkıd komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için Man blkıd komutunu çalıştırın. Kurtarmak istediğiniz diskin artık yeni bir VM 'ye bağlı olduğuna dikkat edin. UUID 'ler tutarlı olmalıdır, ancak cihaz bölüm kimlikleri (örneğin, "/dev/sda1") bu VM 'de farklı. Sistem dışı bir VHD 'de bulunan özgün başarısız VM 'nin dosya sistemi bölümleri, [CLI komutları kullanılarak](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)kurtarma sanal makinesi için kullanılamaz.
+   > * Dosya sisteminin UUID 'sini öğrenmek için blkıd komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için Man blkıd komutunu çalıştırın. Kurtarmak istediğiniz diskin artık yeni bir VM 'ye bağlı olduğuna dikkat edin. UUID 'ler tutarlı olmalıdır, ancak cihaz bölüm kimlikleri (örneğin, "/dev/sda1") bu VM 'de farklı. Sistem dışı bir VHD 'de bulunan özgün başarısız VM 'nin dosya sistemi bölümleri, [CLI komutları kullanılarak](./troubleshoot-recovery-disks-linux.md)kurtarma sanal makinesi için kullanılamaz.
    > * NOFAIL seçeneği, dosya sistemi bozuksa veya dosya sistemi başlangıçta mevcut olmasa bile VM 'nin başlamasını sağlar. Sanal makinenin başlaması gerekmeyen bölümlerde hata oluşması durumunda başlatma işleminin devam etmesini sağlamak için fstab dosyasında NOFAIL seçeneğini kullanmanızı öneririz.
 
 7. VM 'nin doğru şekilde başlamasını sağlamak için fstab dosyasındaki yanlış veya gereksiz satırları değiştirin veya not edin.
@@ -240,5 +240,5 @@ Bu sorunu çözmek için, Azure sanal makineler için seri konsol kullanarak VM 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure CLı 2,0 ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Azure portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux VM sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [Azure CLı 2,0 ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme](./troubleshoot-recovery-disks-linux.md)
+* [Azure portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux VM sorunlarını giderme](./troubleshoot-recovery-disks-portal-linux.md)

@@ -4,26 +4,26 @@ description: Düzenli aralıklarla satırları temizlemek için Azure SQL verita
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254285"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506102"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına bağlanma
 
-Bu makalede, Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına veya Azure SQL yönetilen örneğine bağlanan zamanlanmış bir iş oluşturma işlemi gösterilmektedir. İşlev kodu, veritabanındaki bir tablodaki satırları temizler. Yeni C# işlevi, Visual Studio 2019 ' de önceden tanımlanmış bir Zamanlayıcı tetikleyici şablonu temel alınarak oluşturulur. Bu senaryoyu desteklemek için, işlev uygulamasında bir uygulama ayarı olarak bir veritabanı bağlantı dizesi de ayarlamanız gerekir. Azure SQL yönetilen örneği için, Azure Işlevlerinden bağlanabilmek için [genel uç noktanın etkinleştirilmesi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) gerekir. Bu senaryo, veritabanında bir toplu işlem kullanır. 
+Bu makalede, Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına veya Azure SQL yönetilen örneğine bağlanan zamanlanmış bir iş oluşturma işlemi gösterilmektedir. İşlev kodu, veritabanındaki bir tablodaki satırları temizler. Yeni C# işlevi, Visual Studio 2019 ' de önceden tanımlanmış bir Zamanlayıcı tetikleyici şablonu temel alınarak oluşturulur. Bu senaryoyu desteklemek için, işlev uygulamasında bir uygulama ayarı olarak bir veritabanı bağlantı dizesi de ayarlamanız gerekir. Azure SQL yönetilen örneği için, Azure Işlevlerinden bağlanabilmek için [genel uç noktanın etkinleştirilmesi](../azure-sql/managed-instance/public-endpoint-configure.md) gerekir. Bu senaryo, veritabanında bir toplu işlem kullanır. 
 
 C# işlevleriyle çalışırken ilk deneyiminize sahipseniz, [Azure Işlevleri C# Geliştirici başvurusunu](functions-dotnet-class-library.md)okumalısınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Sürüm 2. x veya çalışma zamanının sonraki bir sürümünü hedefleyen bir yerel işlev uygulaması oluşturmak için [Visual Studio kullanarak ilk işlevinizi oluşturma](functions-create-your-first-function-visual-studio.md) makalesindeki adımları izleyin. Ayrıca, projenizi Azure 'da bir işlev uygulamasına yayımlamalısınız.
 
 + Bu makalede, AdventureWorksLT örnek veritabanındaki **SalesOrderHeader** tablosunda toplu temizleme işlemini yürüten bir Transact-SQL komutu gösterilmektedir. AdventureWorksLT örnek veritabanını oluşturmak için [Azure Portal kullanarak Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)makalesindeki adımları uygulayın.
 
-+ Bu hızlı başlangıç için kullandığınız bilgisayarın genel IP adresi için [sunucu düzeyinde bir güvenlik duvarı kuralı](../sql-database/sql-database-get-started-portal-firewall.md) eklemeniz gerekir. Bu kural, SQL veritabanı örneğine yerel bilgisayarınızdan erişebiliyor olması gerekir.  
++ Bu hızlı başlangıç için kullandığınız bilgisayarın genel IP adresi için [sunucu düzeyinde bir güvenlik duvarı kuralı](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) eklemeniz gerekir. Bu kural, SQL veritabanı örneğine yerel bilgisayarınızdan erişebiliyor olması gerekir.  
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 

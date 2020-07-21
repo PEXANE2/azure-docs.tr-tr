@@ -7,11 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658186"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508619"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
@@ -34,7 +35,7 @@ Yönetilmeyen diskler kullanan mevcut Windows sanal makinelerinizi (VM) varsa, [
 ## <a name="convert-single-instance-vms"></a>Tek örnekli VM 'Leri dönüştürme
 Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen disklere nasıl dönüştürüleceği ele alınmaktadır. (Sanal makinelerleriniz bir kullanılabilirlik kümesinde ise, sonraki bölüme bakın.) 
 
-1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak VM 'yi serbest bırakın. Aşağıdaki örnek, adlı kaynak grubunda adlı VM 'yi kaldırır `myVM` `myResourceGroup` : 
+1. [Stop-AzVM](/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak VM 'yi serbest bırakın. Aşağıdaki örnek, adlı kaynak grubunda adlı VM 'yi kaldırır `myVM` `myResourceGroup` : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +43,7 @@ Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) cmdlet 'INI kullanarak VM 'yi yönetilen disklere dönüştürün. Aşağıdaki işlem, işletim sistemi diski ve veri diskleri dahil olmak üzere önceki VM 'yi dönüştürür ve sanal makineyi başlatır:
+2. [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) cmdlet 'INI kullanarak VM 'yi yönetilen disklere dönüştürün. Aşağıdaki işlem, işletim sistemi diski ve veri diskleri dahil olmak üzere önceki VM 'yi dönüştürür ve sanal makineyi başlatır:
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -54,7 +55,7 @@ Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen
 
 Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik kümesinde ise, önce kullanılabilirlik kümesini yönetilen bir kullanılabilirlik kümesine dönüştürmeniz gerekir.
 
-1. [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 'ini kullanarak kullanılabilirlik kümesini dönüştürün. Aşağıdaki örnek, adlı kaynak grubunda adlı kullanılabilirlik kümesini güncelleştirir `myAvailabilitySet` `myResourceGroup` :
+1. [Update-AzAvailabilitySet](/powershell/module/az.compute/update-azavailabilityset) cmdlet 'ini kullanarak kullanılabilirlik kümesini dönüştürün. Aşağıdaki örnek, adlı kaynak grubunda adlı kullanılabilirlik kümesini güncelleştirir `myAvailabilitySet` `myResourceGroup` :
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -71,7 +72,7 @@ Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik 
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. Kullanılabilirlik kümesindeki VM 'Leri serbest bırakın ve dönüştürün. Aşağıdaki betik, [stop-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak her VM 'yi ayırır, [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)kullanarak dönüştürür ve dönüştürme işleminin ayrı olarak otomatik olarak yeniden başlatır:
+2. Kullanılabilirlik kümesindeki VM 'Leri serbest bırakın ve dönüştürün. Aşağıdaki betik, [stop-azvm](/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak her VM 'yi ayırır, [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk)kullanarak dönüştürür ve dönüştürme işleminin ayrı olarak otomatik olarak yeniden başlatır:
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -107,4 +108,3 @@ Geçiş tamamlandıktan sonra VM durdurulur ve yeniden başlatılır.
 [Standart yönetilen diskleri Premium 'a Dönüştür](convert-disk-storage.md)
 
 [Anlık görüntüler](snapshot-copy-managed-disk.md)kullanarak VM 'nin salt okunurdur bir kopyasını alın.
-

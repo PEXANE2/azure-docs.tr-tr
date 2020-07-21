@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373368"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509112"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows durma hatası-#0x000000EF "kritik Işlem died"
 
@@ -27,13 +27,13 @@ Bu makalede, bir Azure VM 'de önyükleme sırasında kritik bir işlemin bulund
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde Ileti *kritik işlemiyle*ilgili hata *#0x000000EF* görüntülediğini görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde Ileti *kritik işlemiyle*ilgili hata *#0x000000EF* görüntülediğini görürsünüz.
 
 !["Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatabilirsiniz. (% #% Tamam) Daha fazla bilgi edinmek istiyorsanız, daha sonra çevrimiçi olarak bu hata için arama yapabilirsiniz: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>Nedeni
 
-Genellikle bunun nedeni, önyükleme sırasında kritik bir sistem işlemi başarısız olur. Kritik işlem sorunları hakkında daha fazla bilgiyi "[hata denetimi 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)" adresinde bulabilirsiniz.
+Genellikle bunun nedeni, önyükleme sırasında kritik bir sistem işlemi başarısız olur. Kritik işlem sorunları hakkında daha fazla bilgiyi "[hata denetimi 0xEF: CRITICAL_PROCESS_DIED](/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)" adresinde bulabilirsiniz.
 
 ## <a name="solution"></a>Çözüm
 
@@ -49,7 +49,7 @@ Genellikle bunun nedeni, önyükleme sırasında kritik bir sistem işlemi başa
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) kullanın.
 2. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
 ### <a name="fix-any-os-corruption"></a>Tüm işletim sistemi bozulmasını düzeltin
@@ -61,7 +61,7 @@ Genellikle bunun nedeni, önyükleme sırasında kritik bir sistem işlemi başa
 
    * < önyükleme DISK sürücüsü >, onarım sanal makinesinin (genellikle "C:") önyükleme birimidir ve bozuk DISK sürücüsüne < >, bozuk VM 'den eklenen diskin sürücü harfi olacaktır. Büyük/küçüktür sembollerinin yanı sıra bunlar içindeki metni, örneğin "< metin >" yazın ve uygun harfle değiştirin.
 
-3. Sonra, VM 'yi yeniden birleştirmek ve önyükleme olup olmadığını görmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+3. Sonra, VM 'yi yeniden birleştirmek ve önyükleme olup olmadığını görmek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.
 4. VM hala önaçılmadığından, bellek dökümü dosyasını toplamaya devam edin.
 
 ### <a name="collect-the-memory-dump-file"></a>Bellek dökümü dosyasını toplayın
@@ -70,7 +70,7 @@ SFC çalıştırıldıktan sonra sorun devam ederse, sorunun nedenini öğrenmek
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>İşletim sistemi diskini yeni bir onarım VM 'sine iliştirme
 
-1. Yeni bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) kullanın.
+1. Yeni bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) kullanın.
 2. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Döküm dosyasını bulma ve destek bileti gönderme
@@ -128,4 +128,4 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için aşağıdaki
 
 ### <a name="rebuild-the-original-vm"></a>Özgün VM 'yi yeniden oluşturma
 
-VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

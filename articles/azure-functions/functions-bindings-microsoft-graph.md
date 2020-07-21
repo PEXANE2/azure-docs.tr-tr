@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322524"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506545"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Işlevleri için Microsoft Graph bağlamaları
 
@@ -58,7 +59,7 @@ Visual Studio kullanıyorsanız, [Bu makalede daha önce listelenen NuGet paketl
 
 ### <a name="configuring-authentication--authorization"></a>Kimlik doğrulama/Yetkilendirme yapılandırma
 
-Bu makalede özetlenen bağlamalar, kullanılacak bir kimlik gerektirir. Bu, Microsoft Graph izinleri ve denetim etkileşimini zorlayasağlar. Kimlik, uygulamanıza veya uygulamaya erişen bir kullanıcı olabilir. Bu kimliği yapılandırmak için, Azure Active Directory [App Service kimlik doğrulaması/yetkilendirme](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) ayarlayın. Ayrıca, işlevlerinizin gerektirdiği tüm kaynak izinlerini istemeniz gerekir.
+Bu makalede özetlenen bağlamalar, kullanılacak bir kimlik gerektirir. Bu, Microsoft Graph izinleri ve denetim etkileşimini zorlayasağlar. Kimlik, uygulamanıza veya uygulamaya erişen bir kullanıcı olabilir. Bu kimliği yapılandırmak için, Azure Active Directory [App Service kimlik doğrulaması/yetkilendirme](../app-service/overview-authentication-authorization.md) ayarlayın. Ayrıca, işlevlerinizin gerektirdiği tüm kaynak izinlerini istemeniz gerekir.
 
 > [!Note] 
 > Microsoft Graph uzantısı yalnızca Azure AD kimlik doğrulamasını destekler. Kullanıcıların bir iş veya okul hesabıyla oturum açması gerekir.
@@ -204,7 +205,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Token` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan bir kimlik doğrulama belirteci girişi bağlama kullanma](#token-input-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `token` .|
@@ -339,7 +340,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Excel` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Required-Excel tablosu için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo girişi bağlama kullanma](#excel-input-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `excel` .|
@@ -501,7 +502,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Excel` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo çıkış bağlamayı kullanma](#excel-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `excel` .|
@@ -647,7 +648,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `OneDrive` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya girişi bağlama kullanma](#onedrive-input-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `onedrive` .|
@@ -795,7 +796,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `OneDrive` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya çıkış bağlamayı kullanma](#onedrive-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `onedrive` .|
@@ -946,7 +947,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Outlook` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `outlook` .|
@@ -982,7 +983,7 @@ Web kancaları Microsoft Graph olaylara tepki verir. Web kancalarını desteklem
 - [Microsoft Graph Web kancası abonelik girişi bağlama](#webhook-input) , mevcut abonelikleri listeetmenize ve isteğe bağlı olarak bunları yenilemenize olanak tanır.
 - [Microsoft Graph Web kancası aboneliği çıkış bağlaması](#webhook-output) , Web kancası abonelikleri oluşturmanıza veya silmenizi sağlar.
 
-Bağlamaların kendileri Azure AD izinleri gerektirmez, ancak tepki vermek istediğiniz kaynak türüyle ilgili izinler istemeniz gerekir. Her kaynak türü için gereken izinlerin bir listesi için, bkz. [abonelik izinleri](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
+Bağlamaların kendileri Azure AD izinleri gerektirmez, ancak tepki vermek istediğiniz kaynak türüyle ilgili izinler istemeniz gerekir. Her kaynak türü için gereken izinlerin bir listesi için, bkz. [abonelik izinleri](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
 Web kancaları hakkında daha fazla bilgi için bkz. [Microsoft Graph Web kancalarıyla çalışma].
 
@@ -1089,7 +1090,7 @@ module.exports = function (context) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhook` .|
@@ -1241,7 +1242,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookSubscription` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhookSubscription` .|
@@ -1382,7 +1383,7 @@ module.exports = function (context, req) {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `GraphWebhookSubscription` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**ada**| yok |Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
 |**türüyle**| yok |Gerekli-olarak ayarlanmalıdır `graphWebhookSubscription` .|

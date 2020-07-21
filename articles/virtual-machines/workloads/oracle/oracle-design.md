@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507939"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure 'da Oracle veritabanı tasarlama ve uygulama
 
@@ -43,17 +43,17 @@ ms.locfileid: "86224579"
 
 Aşağıdaki tabloda, şirket içi uygulama ve bir Oracle veritabanının Azure uygulamasıyla ilgili bazı farklılıklar listelenmiştir.
 
-> 
-> |  | **Şirket içi uygulama** | **Azure uygulama** |
-> | --- | --- | --- |
-> | **Ağ** |LAN/WAN  |SDN (yazılım tanımlı ağ)|
-> | **Güvenlik grubu** |IP/bağlantı noktası kısıtlama araçları |[Ağ güvenlik grubu (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Esnekliği** |MTBF (hataların arasındaki ortalama süre) |MTTR (ortalama kurtarma süresi)|
-> | **Planlı bakım** |Düzeltme eki uygulama/yükseltme|[Kullanılabilirlik kümeleri](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Azure tarafından yönetilen düzeltme eki/yükseltmeler) |
-> | **Kaynak** |Ayrılmış  |Diğer istemcilerle paylaşılıyor|
-> | **Bölgeler** |Veri merkezleri |[Bölge çiftleri](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Depolama** |SAN/fiziksel diskler |[Azure tarafından yönetilen depolama](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Ölçeklendirme** |Dikey Ölçek |Yatay ölçeklendirme|
+
+|  | Şirket içi uygulama | Azure uygulama |
+| --- | --- | --- |
+| **Ağ** |LAN/WAN  |SDN (yazılım tanımlı ağ)|
+| **Güvenlik grubu** |IP/bağlantı noktası kısıtlama araçları |[Ağ güvenlik grubu (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+| **Esnekliği** |MTBF (hataların arasındaki ortalama süre) |MTTR (ortalama kurtarma süresi)|
+| **Planlı bakım** |Düzeltme eki uygulama/yükseltme|[Kullanılabilirlik kümeleri](../../windows/infrastructure-example.md) (Azure tarafından yönetilen düzeltme eki/yükseltmeler) |
+| **Kaynak** |Ayrılmış  |Diğer istemcilerle paylaşılıyor|
+| **Bölgeler** |Veri merkezleri |[Bölge çiftleri](../../regions.md#region-pairs)|
+| **Depolama** |SAN/fiziksel diskler |[Azure tarafından yönetilen depolama](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **Ölçeklendirme** |Dikey Ölçek |Yatay ölçeklendirme|
 
 
 ### <a name="requirements"></a>Gereksinimler
@@ -116,11 +116,11 @@ Aşağıdaki diyagramda, okuma ve yazma toplam g/ç sayısı gösterilmektedir. 
 
 #### <a name="2-choose-a-vm"></a>2. bir VM seçin
 
-AWR raporundan topladığınız bilgilere bağlı olarak, bir sonraki adım gereksinimlerinize uyan benzer boyuttaki bir VM 'yi seçmek. Kullanılabilir VM 'lerin bir listesini [bellek için iyileştirilmiş](../../linux/sizes-memory.md)makalesinde bulabilirsiniz.
+AWR raporundan topladığınız bilgilere bağlı olarak, bir sonraki adım gereksinimlerinize uyan benzer boyuttaki bir VM 'yi seçmek. Kullanılabilir VM 'lerin bir listesini [bellek için iyileştirilmiş](../../sizes-memory.md)makalesinde bulabilirsiniz.
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. ACU 'ya dayalı benzer bir VM Serisi ile sanal makine boyutlandırmasına ince ayar yapın
 
-VM 'yi seçtikten sonra, VM için ACU 'ya dikkat edin. Gereksinimlerinize daha uygun olan ACU değerine göre farklı bir VM seçebilirsiniz. Daha fazla bilgi için bkz. [Azure işlem birimi](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
+VM 'yi seçtikten sonra, VM için ACU 'ya dikkat edin. Gereksinimlerinize daha uygun olan ACU değerine göre farklı bir VM seçebilirsiniz. Daha fazla bilgi için bkz. [Azure işlem birimi](../../acu.md).
 
 ![ACU birimleri sayfasının ekran görüntüsü](./media/oracle-design/acu_units.png)
 
@@ -143,8 +143,8 @@ Ağ bant genişliği gereksinimlerinize göre, aralarından seçim yapabileceği
 
 - Ağ gecikmesi, şirket içi dağıtıma kıyasla daha yüksektir. Ağ gidiş dönüşlerini düşürmek performansı önemli ölçüde iyileştirebilir.
 - Gidiş-gelişleri azaltmak için, yüksek işlemlere sahip uygulamaları veya aynı sanal makinede "geveze" uygulamalarını birleştirin.
-- Daha iyi ağ performansı için, [hızlandırılmış ağ](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) Ile sanal makineleri kullanın.
-- Belirli Linux dağıtımları için [kesme/EŞLEMEYI kaldır desteğini](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)etkinleştirmeyi düşünün.
+- Daha iyi ağ performansı için, [hızlandırılmış ağ](../../../virtual-network/create-vm-accelerated-networking-cli.md) Ile sanal makineleri kullanın.
+- Belirli Linux dağıtımları için [kesme/EŞLEMEYI kaldır desteğini](../../linux/configure-lvm.md#trimunmap-support)etkinleştirmeyi düşünün.
 - [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 'ı ayrı bir sanal makineye yükler.
 - Çok büyük sayfalar Linux üzerinde varsayılan olarak etkinleştirilmemiştir. Büyük sayfaları etkinleştirmeyi ve Oracle DB ayarlamayı düşünün `use_large_pages = ONLY` . Bu, performansı artırmaya yardımcı olabilir. [Burada](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)daha fazla bilgi bulabilirsiniz.
 
@@ -187,7 +187,7 @@ G/ç gereksinimlerinden oluşan net bir resme sahip olduktan sonra, bu gereksini
 - G/ç 'yi (hem veri hem de dizinler için) azaltmak için veri sıkıştırmayı kullanın.
 - Yineleme günlüklerini, sistemi ve temps 'yi ayırın ve ayrı veri disklerinde TS 'yi geri alın.
 - Herhangi bir uygulama dosyasını varsayılan işletim sistemi disklerine yerleştirmeyin (/dev/sda). Bu diskler hızlı VM önyükleme süreleri için en iyi duruma getirilmemiştir ve uygulamanız için iyi performans sağlamabilirler.
-- Premium depolamada, d serisi VM 'Ler kullanırken, yeniden yineleme diski üzerinde [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) etkinleştirin.
+- Premium depolamada, d serisi VM 'Ler kullanırken, yeniden yineleme diski üzerinde [yazma Hızlandırıcısı](../../linux/how-to-enable-write-accelerator.md) etkinleştirin.
 
 ### <a name="disk-cache-settings"></a>Disk önbelleği ayarları
 

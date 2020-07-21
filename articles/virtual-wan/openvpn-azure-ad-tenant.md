@@ -3,21 +3,21 @@ title: 'Kullanıcı VPN bağlantıları için Azure AD kiracısı: Azure AD kiml
 description: Azure AD kimlik doğrulaması kullanarak VNet 'nize bağlanmak için Azure sanal WAN Kullanıcı VPN 'yi (Noktadan siteye) kullanabilirsiniz
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 76c65d194d03dd1b7ff4cc2f3b45d84ff7909968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88437dc03772348ebbe0d179afc7fd4ddd24bd9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753368"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507565"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Kullanıcı VPN OpenVPN Protokolü bağlantıları için Azure Active Directory kiracı oluşturma
+# <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Azure Active Directory kiracıyı Kullanıcı VPN OpenVPN Protokolü bağlantıları için hazırla
 
-Sanal ağınıza bağlanırken sertifika tabanlı kimlik doğrulama veya RADIUS kimlik doğrulaması kullanabilirsiniz. Ancak, açık VPN protokolünü kullandığınızda Azure Active Directory kimlik doğrulamasını da kullanabilirsiniz. Bu makale, sanal WAN Kullanıcı VPN (Noktadan siteye) açık VPN kimlik doğrulaması için bir Azure AD kiracısı ayarlamanıza yardımcı olur.
+Sanal hub 'ınıza Ikev2 protokolü üzerinden bağlanırken, sertifika tabanlı kimlik doğrulaması veya RADIUS kimlik doğrulaması kullanabilirsiniz. Ancak, OpenVPN protokolünü kullandığınızda Azure Active Directory kimlik doğrulamasını da kullanabilirsiniz. Bu makale, OpenVPN kimlik doğrulaması kullanarak sanal WAN Kullanıcı VPN (Noktadan siteye) için bir Azure AD kiracısı ayarlamanıza yardımcı olur.
 
 > [!NOTE]
 > Azure AD kimlik doğrulaması yalnızca OpenVPN &reg; Protokolü bağlantıları için desteklenir.
@@ -25,7 +25,7 @@ Sanal ağınıza bağlanırken sertifika tabanlı kimlik doğrulama veya RADIUS 
 
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Azure AD kiracısı oluşturma
 
-[Yeni kiracı oluşturma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) makalesindeki adımları kullanarak BIR Azure AD kiracısı oluşturun:
+Bir Azure AD kiracınız olduğunu doğrulayın. Bir Azure AD kiracınız yoksa, [Yeni bir kiracı oluşturma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) makalesindeki adımları kullanarak bir tane oluşturabilirsiniz:
 
 * Kuruluş adı
 * İlk etki alanı adı
@@ -36,26 +36,17 @@ Sanal ağınıza bağlanırken sertifika tabanlı kimlik doğrulama veya RADIUS 
 
 ## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. Azure AD kiracı kullanıcıları oluşturun
 
-Sonra, iki kullanıcı hesabı oluşturun. Bir genel yönetici hesabı ve bir ana Kullanıcı hesabı oluşturun. Ana Kullanıcı hesabı, ana ekleme hesabınız (hizmet hesabı) olarak kullanılır. Bir Azure AD Kiracı Kullanıcı hesabı oluşturduğunuzda, oluşturmak istediğiniz kullanıcı türü için Dizin rolünü ayarlayın.
+Ardından, yeni oluşturulan Azure AD kiracısında bir genel yönetici hesabı ve bir kullanıcı hesabı olmak üzere iki kullanıcı hesabı oluşturun. Kullanıcı hesabı, OpenVPN kimlik doğrulamasını test etmek için kullanılabilir ve Azure VPN uygulama kaydına onay vermek için genel yönetici hesabı kullanılır. Bir Azure AD Kullanıcı hesabı oluşturduktan sonra, yönetici izinlerini devretmek için kullanıcıya bir **Dizin rolü** atarsınız.
 
-Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makaledeki](../active-directory/fundamentals/add-users-azure-active-directory.md) adımları kullanın. Hesap türlerini oluşturmak için **Dizin rolünü** değiştirdiğinizden emin olun:
+Azure AD kiracınız için iki kullanıcı oluşturmak üzere [Bu makaledeki](../active-directory/fundamentals/add-users-azure-active-directory.md) adımları kullanın. Oluşturulan hesaplardan birindeki **Dizin rolünü** **genel yöneticiye**değiştirdiğinizden emin olun.
 
-* Genel Yönetici
-* Kullanıcı
+## <a name="3-grant-consent-to-the-azure-vpn-app-registration"></a><a name="enable-authentication"></a>3. Azure VPN uygulama kaydına izin verin
 
-## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. VPN Gateway 'de Azure AD kimlik doğrulamasını etkinleştirme
+1. Azure portalında **genel yönetici** rolüne atanan bir kullanıcı olarak oturum açın.
 
-1. Kimlik doğrulaması için kullanmak istediğiniz dizinin dizin KIMLIĞINI bulun. Active Directory sayfasının Özellikler bölümünde listelenir.
+2. Ardından, kuruluşunuz için yönetici onayı verin, Azure VPN uygulamasının oturum açmasını ve Kullanıcı profillerini okumasını sağlar. Tarayıcınızın adres çubuğuna dağıtım konumunuza ait URL 'YI kopyalayıp yapıştırın:
 
-    ![Dizin KIMLIĞI](./media/openvpn-create-azure-ad-tenant/directory-id.png)
-
-2. Dizin kimliği'ni kopyalayın.
-
-3. Azure portal, **genel yönetici** rolüne atanan bir kullanıcı olarak oturum açın.
-
-4. Sonra, yönetici onayı verin. Tarayıcınızın adres çubuğuna dağıtım konumunuza ait URL 'YI kopyalayıp yapıştırın:
-
-    Ortak
+    Genel
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -79,20 +70,18 @@ Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makalede
     https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
-5. İstenirse **genel yönetici** hesabını seçin.
+3. İstenirse **genel yönetici** hesabını seçin.
 
     ![Dizin KIMLIĞI](./media/openvpn-create-azure-ad-tenant/pick.png)
 
-6. İstendiğinde **kabul et** ' i seçin.
+4. İstendiğinde **kabul et** ' i seçin.
 
     ![Kabul Et](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-7. Azure AD 'nizin altında, **Kurumsal uygulamalarda**LISTELENEN **Azure VPN** ' yi görürsünüz.
+5. Azure AD 'nizin altında, **Kurumsal uygulamalarda**, artık LISTELENEN **Azure VPN** 'yi görmeniz gerekir.
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
 
-8. Azure AD kimlik doğrulamasını Kullanıcı VPN için yapılandırın ve Azure ['A Noktadan siteye bağlantı Için Azure AD kimlik doğrulamasını yapılandırma](virtual-wan-point-to-site-azure-ad.md) bölümündeki adımları izleyerek sanal bir hub 'a atayın
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal ağınıza bağlanmak için bir VPN istemci profili oluşturmanız ve yapılandırmanız ve bunu bir sanal hub ile ilişkilendirmeniz gerekir. Bkz. Azure [Ile Noktadan siteye bağlantı Için Azure AD kimlik doğrulamasını yapılandırma](virtual-wan-point-to-site-azure-ad.md).
+Azure AD kimlik doğrulaması 'nı kullanarak sanal ağlarınıza bağlanmak için bir kullanıcı VPN yapılandırması oluşturmanız ve bunu bir sanal hub ile ilişkilendirmeniz gerekir. Bkz. Azure [Ile Noktadan siteye bağlantı Için Azure AD kimlik doğrulamasını yapılandırma](virtual-wan-point-to-site-azure-ad.md).

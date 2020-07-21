@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199903"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505797"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme  
 
@@ -19,17 +20,17 @@ ms.locfileid: "83199903"
 
 Daha önce Azure Izleyici ile, verileri yalnızca geçerli çalışma alanından çözümleyebilirsiniz ve aboneliğinizde tanımlanan birden çok çalışma alanında sorgulama yeteneğinizi sınırlı olursunuz.  Ayrıca, yalnızca Application Insights veya Visual Studio 'dan Application Insights doğrudan Web tabanlı uygulamanızdan toplanan telemetri öğelerini arayabilirsiniz. Bu, işletimsel ve uygulama verilerinin birlikte yerel olarak analiz edilmesi için de bir zorluk yaptı.
 
-Artık yalnızca birden fazla Log Analytics çalışma alanında değil, aynı zamanda aynı kaynak grubundaki belirli bir Application Insights uygulamasından, başka bir kaynak grubunda veya başka bir abonelikte da sorgulama yapabilirsiniz. Bu, verilerinizin sistem genelinde bir görünümünü sağlar. Bu tür sorguları yalnızca [Log Analytics](portals.md)için gerçekleştirebilirsiniz.
+Artık yalnızca birden fazla Log Analytics çalışma alanında değil, aynı zamanda aynı kaynak grubundaki belirli bir Application Insights uygulamasından, başka bir kaynak grubunda veya başka bir abonelikte da sorgulama yapabilirsiniz. Bu, verilerinizin sistem genelinde bir görünümünü sağlar. Bu tür sorguları yalnızca [Log Analytics](./log-query-overview.md)için gerçekleştirebilirsiniz.
 
 ## <a name="cross-resource-query-limits"></a>Çapraz kaynak sorgu limitleri 
 
 * Tek bir sorguya dahil edebilirsiniz Application Insights kaynak ve Log Analytics çalışma alanlarının sayısı 100 ile sınırlıdır.
 * Görünüm tasarımcısında çapraz kaynak sorgusu desteklenmez. Log Analytics bir sorgu yazabilir ve [günlük sorgusunu görselleştirmek](../learn/tutorial-logs-dashboards.md)için Azure panosuna sabitleyebilirsiniz. 
-* Log uyarılarındaki çapraz kaynak sorgusu, yeni [Scheduledqueryrules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Azure Izleyici, [eski günlük uyarıları API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)'sinden geçiş yapmadığınız takdirde, varsayılan olarak, Azure Portal ' dan yeni günlük uyarı kuralları oluşturmak için [eskı Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullanır. Anahtar sonrasında, yeni API Azure portal yeni uyarı kuralları için varsayılan olur ve çapraz kaynak sorgu günlüğü uyarı kuralları oluşturmanıza olanak sağlar. [Scheduledqueryrules API 'si için Azure Resource Manager şablonunu](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) kullanarak anahtarı yapmadan, çapraz kaynak sorgu günlüğü uyarı kuralları oluşturabilirsiniz, ancak bu uyarı kuralı Azure Portal değil, [SCHEDULEDQUERYRULES API 'si](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) ile yönetilebilir.
+* Log uyarılarındaki çapraz kaynak sorgusu, yeni [Scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Azure Izleyici, [eski günlük uyarıları API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)'sinden geçiş yapmadığınız takdirde, varsayılan olarak, Azure Portal ' dan yeni günlük uyarı kuralları oluşturmak için [eskı Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullanır. Anahtar sonrasında, yeni API Azure portal yeni uyarı kuralları için varsayılan olur ve çapraz kaynak sorgu günlüğü uyarı kuralları oluşturmanıza olanak sağlar. [Scheduledqueryrules API 'si için Azure Resource Manager şablonunu](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) kullanarak anahtarı yapmadan, çapraz kaynak sorgu günlüğü uyarı kuralları oluşturabilirsiniz, ancak bu uyarı kuralı Azure Portal değil, [SCHEDULEDQUERYRULES API 'si](/rest/api/monitor/scheduledqueryrules) ile yönetilebilir.
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Log Analytics çalışma alanlarında ve Application Insights sorgulama
-Sorgunuzdaki başka bir çalışma alanına başvurmak için, [*çalışma alanı*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) tanımlayıcısını kullanın ve Application Insights bir uygulama için [*uygulama*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression) tanımlayıcısı ' nı kullanın.  
+Sorgunuzdaki başka bir çalışma alanına başvurmak için, [*çalışma alanı*](./workspace-expression.md) tanımlayıcısını kullanın ve Application Insights bir uygulama için [*uygulama*](./app-expression.md) tanımlayıcısı ' nı kullanın.  
 
 ### <a name="identifying-workspace-resources"></a>Çalışma alanı kaynaklarını tanımlama
 Aşağıdaki örnekler, *ContosoRetail-It*adlı bir çalışma alanındaki Update tablosundan güncelleştirme tablosundan özetlenen günlük sayısını döndürmek için Log Analytics çalışma alanları genelinde sorguları gösterir. 

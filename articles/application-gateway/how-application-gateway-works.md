@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250239"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506562"
 ---
 # <a name="how-an-application-gateway-works"></a>Uygulama ağ geçidi nasıl kullanılır?
 
@@ -62,7 +62,7 @@ Uygulama ağ geçidi, istekleri arka uca iletmadan önce tüm isteklere dört ek
 
 X-iletilen-proto için geçerli değerler HTTP veya HTTPS 'DIR. X ile iletilen bağlantı noktası, isteğin uygulama ağ geçidine ulaştığı bağlantı noktasını belirtir. X-orijinal-ana bilgisayar üstbilgisi, isteğin ulaştığı orijinal ana bilgisayar üst bilgisini içerir. Bu üstbilgi, trafik arka uca yönlendirilmeden önce gelen ana bilgisayar üstbilgisinin değiştirildiği Azure Web sitesi tümleştirmesinde yararlı olur. Oturum benzeşimi bir seçenek olarak etkinleştirilmişse, ağ geçidi ile yönetilen bir benzeşim tanımlama bilgisi ekler.
 
-Application Gateway 'i, [HTTP üstbilgilerini yeniden yaz](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) veya bir yol geçersiz kılma AYARı kullanarak URI yolunu değiştirmek üzere üstbilgileri değiştirmek için yapılandırabilirsiniz. Bununla birlikte, bunu yapmak için yapılandırılmadığı takdirde, tüm gelen istekler arka uca alınır.
+Application Gateway 'i, istek ve yanıt üst bilgilerini ve URL 'yi [yeniden yaz](rewrite-http-headers-url.md) ve bir yol geçersiz kılma AYARı kullanarak URI yolunu değiştirmek için yapılandırabilirsiniz. Bununla birlikte, bunu yapmak için yapılandırılmadığı takdirde, tüm gelen istekler arka uca alınır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

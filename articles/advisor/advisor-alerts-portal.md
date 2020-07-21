@@ -3,18 +3,18 @@ title: Azure portal kullanarak yeni öneriler için Azure Advisor uyarıları ol
 description: Yeni öneri için Azure Advisor uyarıları oluşturma
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568948"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507225"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure portal kullanarak yeni önerilerle Azure Advisor uyarıları oluşturun 
 
 Bu makalede, Azure Advisor 'ın Azure portal kullanarak yeni öneriler için nasıl uyarı ayarlanacağı gösterilmektedir. 
 
-Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [Azure etkinlik günlüğünde](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)bir olay depolanır. Bu olaylara yönelik uyarıları, önerisine özgü uyarılar oluşturma deneyimini kullanarak Azure Advisor 'dan ayarlayabilirsiniz. Uyarıları almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz. 
+Azure Advisor kaynaklarınızdan biri için yeni bir öneri algıladığında, [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md)bir olay depolanır. Bu olaylara yönelik uyarıları, önerisine özgü uyarılar oluşturma deneyimini kullanarak Azure Advisor 'dan ayarlayabilirsiniz. Uyarıları almak istediğiniz kaynakları belirtmek için bir abonelik ve isteğe bağlı olarak bir kaynak grubu seçebilirsiniz. 
 
 Aşağıdaki özellikleri kullanarak öneri türlerini de belirleyebilirsiniz:
 
@@ -57,7 +57,7 @@ Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları o
 
     ![Danışman uyarı eylem grubu](./media/advisor-alerts/create6.png)
 
-7. **Eylem grupları** bölümünde, önceden oluşturduğunuz bir eylem grubunu kullanmak Için **Varolanı Ekle** ' yi seçin veya yeni bir [eylem grubu](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)ayarlamak için **Yeni oluştur** ' u seçin. 
+7. **Eylem grupları** bölümünde, önceden oluşturduğunuz bir eylem grubunu kullanmak Için **Varolanı Ekle** ' yi seçin veya yeni bir [eylem grubu](../azure-monitor/platform/action-groups.md)ayarlamak için **Yeni oluştur** ' u seçin. 
 
     ![Danışman uyarısı varolanı Ekle](./media/advisor-alerts/create7.png)
 
