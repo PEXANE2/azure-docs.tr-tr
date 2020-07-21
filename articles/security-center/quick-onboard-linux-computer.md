@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72c0c33c973219a9701c8a7c8d45324681e14850
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529786"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Hızlı başlangıç: Linux bilgisayarlarını Azure Güvenlik Merkezi’ne ekleme
 Azure aboneliklerinizi ekledikten sonra, Azure dışında çalışan Linux kaynakları için güvenlik merkezini, örneğin şirket içi veya diğer bulutlarda, bir aracı sağlayarak etkinleştirebilirsiniz. Aracıya Log Analytics Aracısı denir, ancak OMS Aracısı olarak da bilinir.
 
 Bu hızlı başlangıçta aracının bir Linux bilgisayara nasıl yükleneceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
 Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart fiyatlandırma katmanında olmanız gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi 'nin standardını ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Yeni Linux bilgisayarı ekleme
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açın.
-2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
+1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi-genel bakış** açılır.
 
    ![Güvenlik Merkezi’ne genel bakış][2]
 
 3. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
-4. **Kullanmaya** başlayın sekmesini seçin. ![kullanmaya başlayın][3]
+4. **Kullanmaya** başlayın sekmesini seçin. ![ Kullanmaya başlayın][3]
 
 5. **Yeni Azure olmayan bilgisayarlar ekleme** atında **Yapılandır**’a tıklayın, Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
 
@@ -56,7 +56,7 @@ Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart fiya
 
    ![Aracıyı yükleme][5]
 
-Aracının günlükleri şurada bulunabilir: */var/SeçenekKodu/Microsoft/omsagent/\<Workspace ID>/log/*
+Aracının günlükleri şurada bulunabilir: */var/seçenek/Microsoft/omsagent/ \<workspace id> /log/*
 
   ![Aracı günlükleri][6]
 

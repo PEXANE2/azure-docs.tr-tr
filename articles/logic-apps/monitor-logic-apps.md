@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82732011"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536261"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama
 
@@ -48,11 +48,11 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
 
    | Durum | Açıklama |
    |--------|-------------|
-   | **İptal Edildi** | İş akışı çalışıyor ancak iptal isteği alındı |
-   | **Başaramadı** | En az bir eylem başarısız oldu ve hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı |
+   | **Yürütüldükten** | İş akışı çalışıyor ancak iptal isteği alındı |
+   | **Başarısız** | En az bir eylem başarısız oldu ve hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı |
    | **Çalışıyor** | İş akışı şu anda çalışıyor. <p>Bu durum, kısıtlanmış iş akışları için veya geçerli fiyatlandırma planı nedeniyle da görünebilir. Daha fazla bilgi için [fiyatlandırma sayfasındaki eylem sınırlarına](https://azure.microsoft.com/pricing/details/logic-apps/)bakın. [Tanılama günlüğü](../logic-apps/monitor-logic-apps.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi alabilirsiniz. |
-   | **Başarılı oldu** | Tüm eylemler başarılı oldu. <p>**Unutmayın**: belirli bir eylemde herhangi bir hata meydana gelirse, iş akışındaki sonraki bir eylem bu hatayı işledi. |
-   | **Bekleniyor** | İş akışı başlatılmamış veya örneğin, hala çalışmakta olan önceki bir iş akışı nedeniyle duraklatıldı. |
+   | **Başarılı** | Tüm eylemler başarılı oldu. <p>**Unutmayın**: belirli bir eylemde herhangi bir hata meydana gelirse, iş akışındaki sonraki bir eylem bu hatayı işledi. |
+   | **Bekliyor** | İş akışı başlatılmamış veya örneğin, hala çalışmakta olan önceki bir iş akışı nedeniyle duraklatıldı. |
    |||
 
 1. Belirli bir çalıştırmaya ilişkin adımları ve diğer bilgileri gözden geçirmek için, çalışma **geçmişi**altında, o çalıştırmayı seçin.
@@ -71,7 +71,7 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
 
    ![Çalıştırmada her bir adımla ilgili ayrıntıları gözden geçirin](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   Örneğin, [Logic Apps için REST API](https://docs.microsoft.com/rest/api/logic)kullandığınızda ihtiyacınız olabilecek ÇALıŞTıRMANıN **bağıntı kimliği** özelliğini alabilirsiniz.
+   Örneğin, [Logic Apps için REST API](/rest/api/logic)kullandığınızda ihtiyacınız olabilecek ÇALıŞTıRMANıN **bağıntı kimliği** özelliğini alabilirsiniz.
 
 1. Belirli bir adım hakkında daha fazla bilgi edinmek için iki seçenekten birini belirleyin:
 
@@ -118,9 +118,9 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
    | Durum | Açıklama |
    |--------|-------------|
-   | **Başaramadı** | Bir hata oluşmuştur. Başarısız bir tetikleyici için oluşturulan hata iletilerini gözden geçirmek için, bu tetikleyici denemesini seçin ve **çıktılar**' i seçin. Örneğin, geçerli olmayan girişler bulabilirsiniz. |
+   | **Başarısız** | Bir hata oluşmuştur. Başarısız bir tetikleyici için oluşturulan hata iletilerini gözden geçirmek için, bu tetikleyici denemesini seçin ve **çıktılar**' i seçin. Örneğin, geçerli olmayan girişler bulabilirsiniz. |
    | **Atlandı** | Tetikleyici bitiş noktasını denetledi ancak hiç veri bulmadı. |
-   | **Başarılı oldu** | Tetikleyici bitiş noktasını denetledi ve kullanılabilir verileri buldu. Genellikle, bu durum yanında "tetiklenen" bir durum da görünür. Aksi takdirde, tetikleyici tanımında karşılanmayan bir koşul veya `SplitOn` komut olabilir. <p>Bu durum el ile tetikleyici, yineleme tetikleyicisi veya yoklama tetikleyicisi için uygulanabilir. Bir tetikleyici başarıyla çalıştırılabilir, ancak eylemler işlenmeyen hatalar üretmediğinde, çalıştırma yine de başarısız olabilir. |
+   | **Başarılı** | Tetikleyici bitiş noktasını denetledi ve kullanılabilir verileri buldu. Genellikle, bu durum yanında "tetiklenen" bir durum da görünür. Aksi takdirde, tetikleyici tanımında karşılanmayan bir koşul veya `SplitOn` komut olabilir. <p>Bu durum el ile tetikleyici, yineleme tetikleyicisi veya yoklama tetikleyicisi için uygulanabilir. Bir tetikleyici başarıyla çalıştırılabilir, ancak eylemler işlenmeyen hatalar üretmediğinde, çalıştırma yine de başarısız olabilir. |
    |||
 
    > [!TIP]
@@ -138,7 +138,7 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
 ## <a name="set-up-monitoring-alerts"></a>İzleme uyarılarını ayarlama
 
-Belirli ölçümleri temel alan veya mantıksal uygulamanızın eşiklerini aşan uyarıları almak için [Azure izleyici 'de uyarıları](../azure-monitor/platform/alerts-overview.md)ayarlayın. [Azure 'da ölçümler](../monitoring-and-diagnostics/monitoring-overview-metrics.md)hakkında bilgi edinin. [Azure izleyici](../log-analytics/log-analytics-overview.md)'yi kullanmadan uyarıları ayarlamak için aşağıdaki adımları izleyin.
+Belirli ölçümleri temel alan veya mantıksal uygulamanızın eşiklerini aşan uyarıları almak için [Azure izleyici 'de uyarıları](../azure-monitor/platform/alerts-overview.md)ayarlayın. [Azure 'da ölçümler](../azure-monitor/platform/data-platform.md)hakkında bilgi edinin. [Azure izleyici](../azure-monitor/log-query/log-query-overview.md)'yi kullanmadan uyarıları ayarlamak için aşağıdaki adımları izleyin.
 
 1. Mantıksal uygulama menünüzde **izleme**altında **Uyarılar**  >  **Yeni uyarı kuralı**' nı seçin.
 

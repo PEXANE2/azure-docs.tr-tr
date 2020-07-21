@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253346"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529310"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric ASP.NET Core Reliable Services
 
@@ -470,11 +470,11 @@ Kestrel, dış, internet 'e yönelik HTTP uç noktalarını kullanıma sunan ön
  
 İnternet 'e sunulduğunda, durum bilgisi olmayan bir hizmet, yük dengeleyici aracılığıyla erişilebilen iyi bilinen ve kararlı bir uç nokta kullanmalıdır. Bu URL 'YI uygulamanızın kullanıcılarına sağlarsınız. Aşağıdaki yapılandırmayı öneririz:
 
-|  |  | **Notlar** |
-| --- | --- | --- |
+| Tür | Öneri | Notlar |
+| ---- | -------------- | ----- |
 | Web sunucusu | Kestrel | Kestrel, Windows ve Linux genelinde desteklendiğinden tercih edilen Web sunucusudur. |
 | Bağlantı noktası yapılandırması | static | ServiceManifest.xml yapılandırmasında iyi bilinen bir statik bağlantı noktası `Endpoints` , https için 80, http veya 443 için gibi yapılandırılmalıdır. |
-| Servicefabricıntegrationoptions | Yok | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
+| Servicefabricıntegrationoptions | Hiçbiri | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
 | Örnek Sayısı | -1 | Tipik kullanım durumlarında, örnek sayısı ayarı *-1*olarak ayarlanmalıdır. Bu, bir yük dengeleyiciden trafik alan tüm düğümlerde bir örnek kullanılabilmesi için yapılır. |
 
 Birden fazla dışarıdan sunulan hizmet aynı düğüm kümesini paylaşıyorsa, benzersiz ancak kararlı bir URL yoluyla HTTP.sys kullanabilirsiniz. Bunu, ıwebhost yapılandırılırken belirtilen URL 'YI değiştirerek gerçekleştirebilirsiniz. Bunun yalnızca HTTP.sys için geçerli olduğunu unutmayın.
@@ -495,8 +495,8 @@ Birden fazla dışarıdan sunulan hizmet aynı düğüm kümesini paylaşıyorsa
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Yalnızca iç durum bilgisi olmayan ASP.NET Core hizmeti
 Yalnızca küme içinden çağrılan durum bilgisi olmayan hizmetler, birden çok hizmet arasında ortak işlem sağlamak için benzersiz URL 'Ler ve dinamik olarak atanmış bağlantı noktaları kullanmalıdır. Aşağıdaki yapılandırmayı öneririz:
 
-|  |  | **Notlar** |
-| --- | --- | --- |
+| Tür | Öneri | Notlar |
+| ---- | -------------- | ----- |
 | Web sunucusu | Kestrel | Durum bilgisi olmayan hizmetler için HTTP.sys kullanabilseniz de, Kestrel birden çok hizmet örneğinin bir konağı paylaşmasına izin veren en iyi sunucu olur.  |
 | Bağlantı noktası yapılandırması | dinamik olarak atandı | Durum bilgisi olan bir hizmetin birden fazla çoğaltması bir konak işlemini veya ana bilgisayar işletim sistemini paylaşabilir ve bu nedenle benzersiz bağlantı noktalarına gerek duyar. |
 | Servicefabricıntegrationoptions | UseUniqueServiceUrl 'Si | Dinamik bağlantı noktası atama ile bu ayar, daha önce açıklanan kimlik sorununa engel olur. |
@@ -505,8 +505,8 @@ Yalnızca küme içinden çağrılan durum bilgisi olmayan hizmetler, birden ço
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Yalnızca iç durum bilgisi olan ASP.NET Core hizmeti
 Yalnızca küme içinden çağrılan durum bilgisi olan hizmetler, birden çok hizmet arasında ortak işlem sağlamak için dinamik olarak atanmış bağlantı noktaları kullanmalıdır. Aşağıdaki yapılandırmayı öneririz:
 
-|  |  | **Notlar** |
-| --- | --- | --- |
+| Tür | Öneri | Notlar |
+| ---- | -------------- | ----- |
 | Web sunucusu | Kestrel | , `HttpSysCommunicationListener` Çoğaltmaların bir konak işlemini paylaştığı durum bilgisi olmayan hizmetler tarafından kullanılmak üzere tasarlanmamıştır. |
 | Bağlantı noktası yapılandırması | dinamik olarak atandı | Durum bilgisi olan bir hizmetin birden fazla çoğaltması bir konak işlemini veya ana bilgisayar işletim sistemini paylaşabilir ve bu nedenle benzersiz bağlantı noktalarına gerek duyar. |
 | Servicefabricıntegrationoptions | UseUniqueServiceUrl 'Si | Dinamik bağlantı noktası atama ile bu ayar, daha önce açıklanan kimlik sorununa engel olur. |

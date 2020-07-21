@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b3ea9f07475affca76c8a3ff71de61abcadde8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74228136"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529718"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>İOS 13 için Azure Notification Hubs güncelleştirmeleri
 
@@ -57,7 +58,7 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Bu geçiş sırasında size yardımcı olmak için, Azure Notification Hubs küme olmayan bir bildirim algıladığında `apns-push-type` , hizmet bildirim isteğinden gönderim türünü belirler ve değeri otomatik olarak ayarlar. Gerekli üstbilgiyi ayarlamak için Azure Notification Hubs belirteç tabanlı kimlik doğrulaması kullanacak şekilde yapılandırmanız gerektiğini unutmayın; daha fazla bilgi için bkz. [APNs Için belirteç tabanlı (http/2) kimlik doğrulaması](notification-hubs-push-notification-http2-token-authentification.md).
+Bu geçiş sırasında size yardımcı olmak için, Azure Notification Hubs küme olmayan bir bildirim algıladığında `apns-push-type` , hizmet bildirim isteğinden gönderim türünü belirler ve değeri otomatik olarak ayarlar. Gerekli üstbilgiyi ayarlamak için Azure Notification Hubs belirteç tabanlı kimlik doğrulaması kullanacak şekilde yapılandırmanız gerektiğini unutmayın; daha fazla bilgi için bkz. [APNs Için belirteç tabanlı (http/2) kimlik doğrulaması](./notification-hubs-push-notification-http2-token-authentication.md).
 
 ## <a name="apns-priority"></a>APNS önceliği
 

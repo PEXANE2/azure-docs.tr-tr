@@ -143,6 +143,8 @@
           href: cluster-security-certificates.md
         - name: Service Fabric’te sertifika yönetimi
           href: cluster-security-certificate-management.md
+        - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
+          href: security-baseline.md
     - name: Terminoloji
       href: service-fabric-technical-overview.md
     - name: Uygulamalar oluşturma

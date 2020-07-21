@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a5829057aed913ea824cbd2fd6b52369b5e70d88
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801860"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536530"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma
 
@@ -37,7 +37,7 @@ Etkin bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](http
 
 Bu hızlı başlangıçtaki birçok adımı tamamlamak için Azure CLI kullanacaksınız. Azure IoT de ek işlevleri etkinleştirmek için bir uzantıya sahiptir.
 
-Azure IoT uzantısını cloud shell örneğine ekleyin.
+Cloud Shell örneğine Azure IoT uzantısını ekleyin.
 
    ```azurecli-interactive
    az extension add --name azure-iot
@@ -45,7 +45,7 @@ Azure IoT uzantısını cloud shell örneğine ekleyin.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bulut kaynakları:
 
@@ -55,7 +55,7 @@ Bulut kaynakları:
    az group create --name IoTEdgeResources --location westus2
    ```
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
@@ -63,7 +63,7 @@ Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
 IoT Hub’ın ücretsiz düzeyi bu hızlı başlangıç için kullanılabilir. Geçmişte IoT Hub kullandıysanız ve zaten oluşturulmuş bir hub 'ınız varsa, bu IoT Hub 'ını kullanabilirsiniz.
 
-Aşağıdaki kod, **IoTEdgeResources** kaynak grubunda ücretsiz bir **F1** hub’ı oluşturur. `{hub_name}`IoT Hub 'ınız için benzersiz bir adla değiştirin.
+Aşağıdaki kod, **ıotedgereso,** kaynak grubunda ücretsiz bir **F1** hub oluşturur. `{hub_name}`IoT Hub 'ınız için benzersiz bir adla değiştirin. IoT Hub oluşturmak birkaç dakika sürebilir.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -77,17 +77,17 @@ Yeni oluşturulan IoT hub'ına bir IoT Edge cihazı kaydedin.
 
 ![Diyagram-IoT Hub kimliği olan bir cihazı kaydetme](./media/quickstart-linux/register-device.png)
 
-IoT Edge cihazınız için, IoT Hub 'ınız ile iletişim kurabilmesi için bir cihaz kimliği oluşturun. Cihaz kimliği bulutta kalır ve fiziksel cihazla cihaz kimliği arasında bağlantı kurmak için benzersiz bir bağlantı dizesi kullanılır.
+IoT Edge cihazınız için, IoT Hub 'ınız ile iletişim kurabilmesi için bir cihaz kimliği oluşturun. Cihaz kimliği bulutta kalır ve fiziksel cihazla cihaz kimliği arasında bağlantı kurmak için benzersiz bir bağlantı dizesi kullanmanız gerekir.
 
 IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğinden, bu kimliği bayrağıyla IoT Edge bir cihaz için olacak şekilde bildirin `--edge-enabled` .
 
-1. Azure Cloud Shell'de aşağıdaki komutu girerek hub'ınızda **myEdgeDevice** adlı bir cihaz oluşturun.
+1. Azure Cloud Shell, hub 'ınızdaki **Myedgedevice** adlı bir cihaz oluşturmak için aşağıdaki komutu girin.
 
    ```azurecli-interactive
    az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
    ```
 
-   İothubowner ilke anahtarları hakkında bir hata alırsanız, Cloud Shell 'nizin Azure-IoT uzantısının en son sürümünü çalıştırdığından emin olun.
+   İothubowner ilke anahtarları hakkında bir hata alırsanız, Cloud Shell Azure-IoT uzantısının en son sürümünü çalıştırdığından emin olun.
 
 2. Fiziksel cihazınızı IoT Hub içindeki kimliğiyle bağlayan cihazınız için bağlantı dizesini görüntüleyin. IoT Hub 'ınızın adını, cihazınızın adını ve iki arasındaki bağlantıların kimliğini doğrulayan paylaşılan bir anahtarı içerir. IoT Edge cihazınızı ayarlarken sonraki bölümde bu bağlantı dizesine yeniden başvuracağız.
 
@@ -103,7 +103,7 @@ IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğin
 
 ![Diyagram-çalışma zamanını cihazda Başlat](./media/quickstart-linux/start-runtime.png)
 
-IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Üç bileşeni vardır. *IoT Edge güvenlik arka plan programı* , IoT Edge aracısını başlatarak IoT Edge bir cihaz her önyüklendiğinde ve cihazı önyükleme başlatılır. *IoT Edge aracısı*, IoT Edge hub'ı dahil olmak üzere IoT Edge cihazındaki modüllerin dağıtımını ve izlenmesini kolaylaştırır. *IoT Edge hub'ı* IoT Edge cihazındaki modüller ve cihaz ile IoT Hub'ı arasındaki iletişimi yönetir.
+IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Üç bileşeni vardır. *IoT Edge güvenlik arka plan programı* , IoT Edge aracısını başlatarak IoT Edge bir cihaz her önyüklendiğinde ve cihazı önyükleme başlatılır. *IoT Edge Aracısı* , IoT Edge hub 'ı da dahil olmak üzere IoT Edge cihazdaki modüllerin dağıtılmasını ve izlenmesini kolaylaştırır. *IoT Edge hub* , IoT Edge cihazdaki modüller arasındaki iletişimleri ve cihaz ile IoT Hub yönetir.
 
 Çalışma zamanı yapılandırması sırasında cihaz bağlantı dizesi sağlamanız gerekir. Bu, Azure CLı 'dan aldığınız dizedir. Bu dize, fiziksel cihazınızı Azure'daki IoT Edge cihaz kimliğiyle ilişkilendirir.
 
@@ -113,7 +113,7 @@ Bu bölüm, yeni bir sanal makine oluşturmak ve buna IoT Edge çalışma zaman�
 
 Önceden oluşturulmuş [ıotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) şablonuna dayalı IoT Edge cihazınızı oluşturmak IÇIN aşağıdaki CLI komutunu kullanın.
 
-* Bash veya Cloud Shell kullanıcıları için aşağıdaki komutu bir metin düzenleyicisine kopyalayın, yer tutucu metnini bilgilerinizi ile değiştirin, sonra bash veya Cloud Shell pencerenize kopyalayın:
+* Bash veya Cloud Shell kullanıcılar için, aşağıdaki komutu bir metin düzenleyicisine kopyalayın, yer tutucu metnini bilgilerinizi ile değiştirin ve sonra bash veya Cloud Shell pencerenize kopyalayın:
 
    ```azurecli-interactive
    az deployment group create \
@@ -190,7 +190,7 @@ Sanal makinenize bağlandıktan sonra, çalışma zamanının IoT Edge cihazın�
 
    ![Cihazınızda bir modülü görüntüleme](./media/quickstart-linux/iotedge-list-1.png)
 
-IoT Edge cihazınız yapılandırıldı. Bulutta dağıtılan modülleri çalıştırmak için hazır.
+Artık IoT Edge cihazınız yapılandırıldı. Bulutta dağıtılan modülleri çalıştırmak için hazır.
 
 ## <a name="deploy-a-module"></a>Modül dağıtma
 
@@ -233,10 +233,19 @@ IoT Edge öğreticilerine devam etmek istiyorsanız bu hızlı başlangıçta ka
 
 Sanal makinenizi ve IoT hub’ınızı yeni bir kaynak grubunda oluşturduysanız, bu grubu ve ilişkili tüm kaynaklarını silebilirsiniz. Tutmak istediğiniz bir şey olduğundan emin olmak için kaynak grubunun içeriğini iki kez kontrol edin. Tüm grubu silmek istemiyorsanız, bunun yerine tek tek kaynakları silebilirsiniz.
 
-**IoTEdgeResources** grubunu kaldırın.
+> [!IMPORTANT]
+> Silinen kaynak grupları geri alınamaz.
+
+**IoTEdgeResources** grubunu kaldırın. Bir kaynak grubunun silinmesi birkaç dakika sürebilir.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+Kaynak gruplarının listesini görüntüleyerek, kaynak grubunun kaldırıldığını doğrulayabilirsiniz.
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

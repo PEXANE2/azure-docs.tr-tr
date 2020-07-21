@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223467"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536122"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -96,6 +96,22 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
     ```bash
     automl_setup
     ```
+    
+* **KeyError: yerel işlem veya Azure Databricks kümesinde oto ml çalıştırırken ' marka '**
+
+    10 Haziran 2020 ' den sonra yeni bir ortam oluşturulduysa, SDK 1.7.0 veya daha önceki bir sürümü kullanılarak, bu hata,, Kopyala-cpuınfo paketindeki bir güncelleştirme nedeniyle başarısız olabilir. (Önbelleğe alınan eğitim görüntülerinin kullanıldığı için, denemeleri Haziran 2020 tarihinde veya öncesinde oluşturulan ortamlar etkilenmemiştir.) Bu sorunu geçici olarak çözmek için aşağıdaki iki adımdan birini gerçekleştirin:
+    
+    * SDK sürümünü 1.8.0 veya üzeri olarak güncelleştirin (Bu ayrıca des-cpuınfo 'yu 5.0.0 ' ye düşürült):
+    
+      ```bash
+      pip install --upgrade azureml-sdk[automl]
+      ```
+    
+    * Yüklü olan Kopyala-cpuınfo sürümünün 5.0.0 'e düşürme:
+    
+      ```bash
+      pip install py-cpuinfo==5.0.0
+      ```
   
 * **Hata iletisi: ' PyYAML ' kaldırılamıyor**
 
@@ -146,6 +162,12 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 > Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
 
 * **Azure Portal**: çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal **genel bakış** sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekiyorsa, doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidin ve çalışma alanı adını arayın.
+
+* **Azure Machine Learning Studio Web portalındaki desteklenen tarayıcılar**: işletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
+  * Microsoft Edge (yeni Microsoft Edge, en son sürüm. Microsoft Edge eski değil)
+  * Safari (en so sürüm, yalnızca Mac)
+  * Chrome (en son sürüm)
+  * Firefox (en son sürüm)
 
 ## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
@@ -217,9 +239,16 @@ Veri kayması izleyicileri için sınırlamalar ve bilinen sorunlar:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı
 
-Bilinen sorunlar:
+* **Uzun süreli işlem hazırlama süresi:**
 
-* **Uzun süreli işlem hazırlama süresi**: bir işlem hedefine ilk kez bağlanırken veya oluşturduğunuzda birkaç dakika veya daha uzun bir süre olabilir. 
+Bir işlem hedefine ilk kez bağlandığınızda ya da daha uzun bir süre sonra bu işlem birkaç dakika olabilir. 
+
+Model veri toplayıcısından, verilerin BLOB depolama hesabınıza gelmesi için 10 dakika kadar sürebilir (genellikle daha az). Aşağıdaki hücrelerin çalışmasını sağlamak için 10 dakika bekleyin.
+
+```python
+import time
+time.sleep(600)
+```
 
 ## <a name="train-models"></a>Modelleri eğitme
 

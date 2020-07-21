@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146556"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536394"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -441,9 +441,9 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 Bu örnekte, yapılandırma aşağıdaki ayarları belirtir:
 
-* Model Python gerektirir.
-* Dağıtılan hizmete gönderilen Web isteklerini işlemek için kullanılan [giriş betiği](#script).
-* Çıkarımı için gereken Python paketlerini açıklayan Conda dosyası.
+* Modelin Python gerektirdiğini
+* Dağıtılan hizmete gönderilen Web isteklerini işlemek için kullanılan [giriş betiği](#script)
+* Çıkarım için gereken Python paketlerini açıklayan Conda dosyası
 
 Bir çıkarım yapılandırmasıyla özel bir Docker görüntüsü kullanma hakkında daha fazla bilgi için bkz. [özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md).
 
@@ -537,7 +537,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="deploy-to-target"></a>Hedefe dağıt
 
-Dağıtım, modelleri dağıtmak için çıkarım yapılandırma dağıtımı yapılandırmasını kullanır. Dağıtım işlemi, işlem hedefi ne olursa olsun benzerdir. Aks kümesine bir başvuru sağlamanız gerektiğinden AKS 'e dağıtım biraz farklıdır.
+Dağıtım, modelleri dağıtmak için çıkarım yapılandırma dağıtımı yapılandırmasını kullanır. Dağıtım işlemi, işlem hedefi ne olursa olsun benzerdir. Azure Kubernetes hizmetine (AKS) dağıtım, AKS kümesine bir başvuru sağlamanız gerektiğinden biraz farklıdır.
 
 ### <a name="choose-a-compute-target"></a>İşlem hedefi seçin
 
@@ -608,13 +608,13 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Açıklama | Son durum?
+| Web hizmeti durumu | Description | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | Hayır |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
-| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
-| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
+| Kta | Hizmet, dağıtım sürecinde. | No |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
+| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
+| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>İşlem örneği Web hizmeti (geliştirme/test)
 
@@ -629,7 +629,7 @@ Bkz. [Azure Container Instances dağıtma](how-to-deploy-azure-container-instanc
 Bkz. [Azure Kubernetes hizmetine dağıtma](how-to-deploy-azure-kubernetes-service.md).
 
 ### <a name="ab-testing-controlled-rollout"></a>A/B testi (kontrollü dağıtım)
-Daha fazla bilgi için bkz. [ml modellerinin kontrollü dağıtımı](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) .
+Daha fazla bilgi için bkz. [ml modellerinin denetimli dağıtımı](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) . daha fazla bilgi için.
 
 ## <a name="consume-web-services"></a>Web hizmetlerini kullanma
 
@@ -878,7 +878,7 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 ### <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel biçimi
 TensorFlow modellerinin, kod olmayan model dağıtımıyla çalışmak için **savedmodel biçiminde** kaydedilmesi gerekir.
 
-SavedModel oluşturma hakkında bilgi için lütfen [Bu bağlantıya](https://www.tensorflow.org/guide/saved_model) bakın.
+SavedModel oluşturma hakkında bilgi için [Bu bağlantıya](https://www.tensorflow.org/guide/saved_model) bakın.
 
 ```python
 from azureml.core import Model
@@ -914,6 +914,12 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+Bir modeli öğrenmek için bkz. [Web hizmeti olarak dağıtılan Azure Machine Learning modelini](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)kullanma. Birçok ONNX projesi, hizmet tarafından beklenen veri biçiminin daha kolay olduğunu anlamak için, sıkı mağaza eğitimi ve doğrulama verilerine sahip prototip dosyalarını kullanır. Bir model geliştiricisi olarak, geliştiricileriniz için belgeleyebilirsiniz:
+
+* Giriş biçimi (JSON veya ikili)
+* Giriş veri şekli ve türü (örneğin, [100100, 3] şeklinin bir dizisi)
+* Etki alanı bilgileri (örneğin, bir görüntü için, renk alanı, bileşen sırası ve değerlerin normalleştirilmiş olup olmadığı)
+
 Pytorch kullanıyorsanız, bu [modelleri pytorch 'den ONNX 'e aktarmak](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) , dönüştürme ve sınırlamalara ilişkin ayrıntıları içerir. 
 
 ### <a name="scikit-learn-models"></a>Scikit-modelleri öğrenme
@@ -939,7 +945,7 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-NOTE: predict_proba destekleyen modeller, varsayılan olarak bu yöntemi kullanacaktır. Bunu tahmin etmek için bunu geçersiz kılmak üzere, posta gövdesini aşağıda gösterildiği gibi değiştirebilirsiniz:
+NOTE: predict_proba destekleyen modeller varsayılan olarak bu yöntemi kullanacaktır. Bunu tahmin etmek için bunu geçersiz kılmak üzere, posta gövdesini aşağıda gösterildiği gibi değiştirebilirsiniz:
 ```python
 import json
 
@@ -998,7 +1004,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Bir paket oluşturduktan sonra, `package.pull()` görüntüyü yerel Docker ortamınıza çekmek için ' i kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örnek: 
+Bir paket oluşturduktan sonra, `package.pull()` görüntüyü yerel Docker ortamınıza çekmek için ' i kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örneğin: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -1227,7 +1233,7 @@ def run(request):
 * [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
-* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma](how-to-consume-web-service.md)
+* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma](how-to-consume-web-service.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Model dağıtımları için olay uyarıları ve Tetikleyicileri oluşturma](how-to-use-event-grid.md)

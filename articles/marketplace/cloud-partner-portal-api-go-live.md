@@ -4,18 +4,20 @@ description: Go Live API 'SI teklifi canlı Listeleme işlemini başlatır.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: f356291662851172a3c6917b44891ce901546dfa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5c5448a853447a0eacc8d974a5b00d5d1e8f4be2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535952"
 ---
 # <a name="go-live"></a>Canlı git
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Bu API, bir uygulamayı üretime iletme işlemini başlatır. Bu işlem genellikle uzun süredir çalışır. Bu çağrı, API 'yi [Yayımla](./cloud-partner-portal-api-publish-offer.md) işlemindeki bildirim e-posta listesini kullanır.
 
@@ -24,7 +26,7 @@ Bu API, bir uygulamayı üretime iletme işlemini başlatır. Bu işlem genellik
 ## <a name="uri-parameters"></a>URI parametreleri
 --------------
 
-|  **Adı**      |   **Açıklama**                                                           | **Veri türü** |
+|  **Ad**      |   **Açıklama**                                                           | **Veri türü** |
 |  --------      |   ---------------                                                           | ------------- |
 | PublisherId    | Örneğin alma teklifi için yayımcı tanımlayıcısı`contoso`       |  Dize       |
 | OfferId        | Alma teklifinin teklif tanımlayıcısı                                   |  Dize       |
@@ -34,7 +36,7 @@ Bu API, bir uygulamayı üretime iletme işlemini başlatır. Bu işlem genellik
 ## <a name="header"></a>Üst bilgi
 ------
 
-|  **Adı**       |     **Değer**       |
+|  **Ad**       |     **Değer**       |
 |  ---------      |     ----------      |
 | İçerik Türü    | `application/json`  |
 | Yetkilendirme   | `Bearer YOUR_TOKEN` |
@@ -54,7 +56,7 @@ Bu API, bir uygulamayı üretime iletme işlemini başlatır. Bu işlem genellik
 
 ### <a name="response-header"></a>Yanıt Üst Bilgisi
 
-|  **Adı**             |      **Değer**                                                            |
+|  **Ad**             |      **Değer**                                                            |
 |  --------             |      ----------                                                           |
 | Konum    |  Bu işlemin durumunu almak için göreli yol            |
 |  |  |

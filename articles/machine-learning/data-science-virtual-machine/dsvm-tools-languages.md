@@ -11,11 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3ab058d76186f73fa1a985d7e8af38dbd7a6f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557462"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536190"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen diller 
 
@@ -23,7 +24,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 ## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 Edition)
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Python 2,7 ve 3,7 |
 | Desteklenen DSVM sürümleri      | Windows Server 2016     |
@@ -67,13 +68,14 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 ## <a name="python-linux-edition"></a>Python (Linux sürümü)
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Python 2,7 ve 3,5 |
 | Desteklenen DSVM sürümleri      | Linux   |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | İki genel `conda` ortam oluşturulur: <br /> * `root`konumunda bulunan ortam `/anaconda/` Python 2,7 ' dir. <br/> * `py35`konumunda bulunan ortam `/anaconda/envs/py35` Python 3,5 ' dir.       |
 | Örneklere bağlantılar      | Python için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | PySpark, R, Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma    
 
 * Bir terminalde Çalıştır:
@@ -105,13 +107,14 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 ## <a name="r"></a>R
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Microsoft R Open 3. x (CRAN-R ile %100 uyumlu)<br /> Microsoft R Server 9. x geliştirici sürümü (bir kurumsal özellikli ölçeklenebilir R platformu)|
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | Pencerelerin`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />'Un`/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Örneklere bağlantılar      | R için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | Parlak r, Python, Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma    
 
 **Windows**:
@@ -153,13 +156,14 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 ## <a name="julia"></a>Julia
 
-|    |           |
+| Kategori | Değer |
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | 0.6 |
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | Windows: yüklendi`C:\JuliaPro-VERSION`<br /> Linux: yüklendi`/opt/JuliaPro-VERSION`    |
 | Örneklere bağlantılar      | Julia için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | Python, R      |
+
 ### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma    
 
 **Windows**:

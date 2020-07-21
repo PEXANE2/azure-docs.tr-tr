@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 71d55471de6fc8681f19a56cd67bb9ba7390e026
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248811"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530191"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri gönderme
 
@@ -38,10 +38,10 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İOS uygulamanızı değiştirme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, Bildirim Hub 'ınızı [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-get-started.md)konusunda açıklandığı gibi oluşturduğunuzu ve yapılandırdığınızı varsaymaktadır. Bu öğretici Ayrıca [güvenli gönderim (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) öğreticisinin önkoşuludur.
-Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalışmaya başlama Mobile Apps](../app-service-mobile/app-service-mobile-ios-get-started-push.md)bakın.
+Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalışmaya başlama Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)bakın.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -483,7 +483,7 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
 
     ![iOS test uygulaması][2]
 
-3. Kayıt başarısını bildiren bir açılır pencere görmeniz gerekir. **Tamam**'a tıklayın.
+3. Kayıt başarısını bildiren bir açılır pencere görmeniz gerekir. **Tamam** düğmesine tıklayın.
 
     ![iOS test bildirimi görüntülendi][3]
 

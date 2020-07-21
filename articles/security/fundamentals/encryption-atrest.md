@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd54c8f7e8a3784672f5364efc6f6b51186f911d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454688"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529293"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -137,7 +137,7 @@ Microsoft tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, hizmeti
 
 Hizmet tarafından yönetilen anahtarlarla sunucu tarafı şifreleme kullanıldığında, anahtar oluşturma, depolama ve hizmet erişiminin hepsi hizmet tarafından yönetilir. Genellikle, temel Azure kaynak sağlayıcıları veri şifreleme anahtarlarını verilere yakın bir depoda depolar ve anahtar şifreleme anahtarları güvenli bir dahili depoda depolanırken hızlı bir şekilde kullanılabilir ve erişilebilir olur.
 
-**Üstünlü**
+**Avantajlar**
 
 - Basit kurulum
 - Microsoft, anahtar döndürme, yedekleme ve artıklığı yönetir
@@ -165,7 +165,7 @@ Bekleyen verileri şifrelemek veya şifrelerini çözmek için bir anahtar almak
 >[!NOTE]
 >Key Vault yetkilendirmesi hakkında daha fazla ayrıntı için, [Azure Key Vault belgelerindeki](../../key-vault/general/secure-your-key-vault.md)anahtar kasasının güvenliğini sağlama sayfasına bakın.
 
-**Üstünlü**
+**Avantajlar**
 
 - Kullanılan anahtarlar üzerinde tam denetim – şifreleme anahtarları, müşterinin denetiminde müşterinin Key Vault yönetilir.
 - Birden çok hizmeti tek bir ana öğe ile şifreleme yeteneği
@@ -186,7 +186,7 @@ Bazı Azure Hizmetleri, ana bilgisayarı kendi anahtarınızı (HYOK) anahtar y�
 
 Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme kullanıldığında, anahtarlar müşteri tarafından yapılandırılan bir sistemde tutulur. Bu modeli destekleyen Azure Hizmetleri, müşterinin sağladığı anahtar deposuyla güvenli bir bağlantı kurmak için bir yol sağlar.
 
-**Üstünlü**
+**Avantajlar**
 
 - Kullanılan kök anahtar üzerinde tam denetim – şifreleme anahtarları müşterinin sunduğu bir mağaza tarafından yönetilir
 - Birden çok hizmeti tek bir ana öğe ile şifreleme yeteneği
@@ -258,9 +258,8 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 
 #### <a name="encryption-model-and-key-management-table"></a>Şifreleme modeli ve anahtar yönetimi tablosu
 
-|                                  |                    | **Şifreleme modeli ve anahtar yönetimi** |                    |
+| Ürün, özellik veya hizmet | Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı   | Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı | İstemci-yönetilen anahtarı kullanarak istemci tarafı  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı**     | **Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**             | **İstemci-yönetilen anahtarı kullanarak istemci tarafı**      |
 | **Yapay Zeka ve Makine Öğrenmesi**      |                    |                    |                    |
 | Azure Bilişsel Arama           | Yes                | Yes                | -                  |
 | Azure Bilişsel Hizmetler         | Yes                | Yes                | -                  |
@@ -275,7 +274,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Translator Metin Çevirisi                  | Yes                | Yes                | -                  |
 | Power BI                         | Yes                | Önizleme, RSA 2048 bit | -                  |
 | **Analiz**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | Yok\*            | -                  |
+| Azure Stream Analytics           | Yes                | yok\*            | -                  |
 | Event Hubs                       | Yes                | Evet, tüm RSA uzunlukları. | -                  |
 | İşlevler                        | Yes                | Evet, tüm RSA uzunlukları. | -                  |
 | Azure Analysis Services          | Yes                | -                  | -                  |
@@ -313,7 +312,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Tablo Depolama                    | Yes                | Yes                | Yes                |
 | Azure Cosmos DB                  | Yes                | Yes                | -                  |
 | Azure Databricks                 | Yes                | Yes                | -                  |
-| Azure Veritabanı Geçiş Hizmeti | Yes                | Yok\*              | -                  |
+| Azure Veritabanı Geçiş Hizmeti | Yes                | yok\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Yes                | -                  | Yes                |
 | Azure Repos                      | Yes                | -                  | Yes                |
@@ -346,7 +345,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Dosya Eşitleme                        | Yes                | Evet, RSA 2048 bit  | -                  |
 | Kuyruk Depolama                    | Yes                | Yes                | Yes                |
 | Avere vFXT                       | Yes                | -                  | -                  |
-| Redis için Azure Önbelleği            | Yes                | Yok\*              | -                  |
+| Redis için Azure Cache            | Yes                | yok\*              | -                  |
 | Azure NetApp Files               | Yes                | Yes                | -                  |
 | Arşiv Depolama                  | Yes                | Evet, RSA 2048 bit  | -                  |
 | StorSimple                       | Yes                | Evet, RSA 2048 bit  | Yes                |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135724"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528987"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure sanal makineleri için bölgeyi bölgeye olağanüstü durum kurtarmaya etkinleştirme
 
@@ -22,6 +22,7 @@ Bu makalede, Azure sanal makinelerini aynı Azure bölgesindeki bir kullanılabi
 >
 >- Site Recovery Şu anda Portal aracılığıyla bölge olağanüstü durum kurtarmaya yönelik kurtarma planlarını desteklememektedir. Bölgenin olağanüstü durum kurtarma için kurtarma planlarından yararlanmak için lütfen PowerShell veya REST API kullanın. 
 >- Bölge için olağanüstü durum kurtarma desteği şu anda iki bölgeyle sınırlı: Güneydoğu Asya ve UK Güney.  
+>- Site Recovery, müşteri verileri, sistem olağanüstü durum kurtarma için bölge kullanırken dağıtıldığı bölgenin dışına taşımaz veya depolamaz. Müşteriler, bir kurtarma hizmetleri kasasını tercih ettikleri farklı bir bölgeden seçebilirler. Kurtarma Hizmetleri Kasası meta veriler içeriyor ancak gerçek müşteri verisi yok.
 
 Site Recovery hizmeti, planlı ve plansız kesintiler sırasında iş uygulamalarınızı çalışır durumda tutarak iş sürekliliği ve olağanüstü durum kurtarma stratejinize katkıda bulunur. Bölgesel kesintiler varsa uygulamalarınızın çalışır durumda tutulması için önerilen olağanüstü durum kurtarma seçeneğidir.
 
@@ -67,14 +68,14 @@ Sanal makinelerinize bölge olağanüstü durum kurtarmaya dağıtım yapmadan �
 
 |Özellik  | Support bildirisi  |
 |---------|---------|
-|Klasik VM'ler   |     Desteklenmiyor    |
-|ARM VM 'Leri    |    Destekleniyor    |
-|Azure disk şifrelemesi v1 (AAD ile çift geçiş)     |     Destekleniyor |
-|Azure disk şifrelemesi v2 (AAD olmadan tek pass)    |    Destekleniyor    |
-|Yönetilmeyen diskler    |    Desteklenmiyor    |
-|Yönetilen diskler    |    Destekleniyor    |
-|Müşteri tarafından yönetilen anahtarlar    |    Destekleniyor    |
-|Yakınlık yerleştirme grupları    |    Destekleniyor    |
+|Klasik VM'ler   |     Desteklenmez    |
+|ARM VM 'Leri    |    Desteklenir    |
+|Azure disk şifrelemesi v1 (AAD ile çift geçiş)     |     Desteklenir |
+|Azure disk şifrelemesi v2 (AAD olmadan tek pass)    |    Desteklenir    |
+|Yönetilmeyen diskler    |    Desteklenmez    |
+|Yönetilen diskler    |    Desteklenir    |
+|Müşteri tarafından yönetilen anahtarlar    |    Desteklenir    |
+|Yakınlık yerleştirme grupları    |    Desteklenir    |
 |Yedeklemeye birlikte çalışabilirlik    |    Dosya düzeyinde yedekleme ve geri yükleme desteklenir. Disk ve VM düzeyinde yedekleme ve geri yükleme desteklenmez.    |
 |Sık erişimli Ekle/Kaldır    |    Bölgeler bölge çoğaltmasına etkinleştirildikten sonra, diskler eklenebilir. Bölgeyi bölge çoğaltmaya etkinleştirdikten sonra disklerin kaldırılması desteklenmez.    | 
 

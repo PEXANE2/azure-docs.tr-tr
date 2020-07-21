@@ -5,34 +5,30 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 7666ee1a81c2ed93ee5e246b3ec79f056f9d63ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536632"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Hava durumu ortaklarından Hava durumu verileri alın
 
-Azure Farmker, bir Docker tabanlı bağlayıcı çerçevesi kullanarak hava durumu veri sağlayıcılarınızın Hava durumu verilerini taşımanıza yardımcı olur. Bu çerçeveyi kullanarak, hava durumu veri sağlayıcıları Farmker 'Lar ile tümleştirilebilen bir Docker uygular. Şu anda aşağıdaki Hava durumu veri sağlayıcıları desteklenir:
+Azure Farmker, bir Docker tabanlı bağlayıcı çerçevesi kullanarak hava durumu veri sağlayıcılardan Hava durumu verilerini taşımanıza yardımcı olur. Bu çerçeveyi kullanarak, hava durumu veri sağlayıcıları Farmker 'Lar ile tümleştirilebilen bir Docker uygular. Şu anda yalnızca [DTN](https://www.dtn.com/dtn-content-integration/) Hava durumu veri sağlayıcısı destekleniyor.
 
-  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
-
-  [DTN](https://www.dtn.com/dtn-content-integration/)
-
-Hava durumu verileri, eyleme dönüştürülebilir içgörüler oluşturmak ve Farmtları üzerinde AI/ML modelleri oluşturmak için kullanılabilir.
+Hava durumu verileri, eyleme dönüştürülebilir içgörüler oluşturmak ve Farmtempts 'de AI ya da ML modelleri oluşturmak için kullanılabilir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Hava durumu verilerini almak için, Farmtts 'yi yüklediğinizden emin olun. **Hava durumu tümleştirmesi sürüm 1.2.11 veya üzeri sürümlerde desteklenir**. Azure Farmtts 'yi yüklemek için bkz. [Farmtempts 'Yi Install](https://aka.ms/farmbeatsinstalldocumentation).
+Hava durumu verilerini almak için, [Farmtts 'yi yüklediğinizden](https://aka.ms/farmbeatsinstalldocumentation)emin olun. Hava durumu tümleştirmesi, 1.2.11 ve üzeri sürümlerde desteklenir. 
 
 ## <a name="enable-weather-integration-with-farmbeats"></a>Farmtempolar ile hava durumu tümleştirmesini etkinleştirme
 
-Farmtts veri hub 'ında Hava durumu verilerini almaya başlamak için aşağıdaki adımları izleyin:
+Farmrets veri hub 'ında Hava durumu verilerini almaya başlamak için:
 
-1. Farmtts Data hub Swagger (https://farmbeatswebsite-api.azurewebsites.net/swagger)
+1. Farmrets veri hub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger)'nize gidin.
 
-2. /Partner API 'sine gidin ve aşağıdaki giriş yüküne sahip bir POST isteği oluşturun:
+2. /Partner API 'sine gidin ve sonra bir POST isteği yapın. Aşağıdaki giriş yükünü kullanın:
 
    ```json
    {  
@@ -64,7 +60,7 @@ Farmtts veri hub 'ında Hava durumu verilerini almaya başlamak için aşağıda
    Örneğin, DTN 'den Hava durumu verileri almak için aşağıdaki yükü kullanın. Ad ve açıklamayı tercihlerinize göre değiştirebilirsiniz.
 
    > [!NOTE]
-   > Aşağıdaki adım bir API anahtarı gerektirir, lütfen DTN aboneliğiniz için aynısını almak üzere DTN ile iletişime geçin.
+   > Aşağıdaki adım bir API anahtarı gerektirir. DTN aboneliğiniz için bir anahtar almak üzere DTN ile iletişim kurun.
 
    ```json
    {
@@ -88,28 +84,28 @@ Farmtts veri hub 'ında Hava durumu verilerini almaya başlamak için aşağıda
    ```
 
    > [!NOTE]
-   > Iş ortağı nesnesi hakkında daha fazla bilgi için bkz. [ek](get-weather-data-from-weather-partner.md#appendix)
+   > İş ortağı nesnesi hakkında daha fazla bilgi için bu makaledeki [ek](get-weather-data-from-weather-partner.md#appendix) bölümüne bakın.
 
    Önceki adımda, Docker 'ın müşterinin Farmker ortamında çalışmasını sağlamak için kaynaklar sağlanacak.  
 
-   Yukarıdaki kaynakları sağlamak yaklaşık 10-15 dakika sürer.
+   Kaynakların sağlanması yaklaşık 10 ila 15 dakika sürer.
 
-3. 2. adımda oluşturduğunuz/partner nesnesinin durumunu denetleyin. Bunu yapmak için,/partner API 'sinde bir GET isteği yapın ve iş ortağı nesnesinin **durumunu** denetleyin. Farmtler iş ortağını başarıyla sağlar, durum **etkin**olarak ayarlanır.
+3. Önceki adımda oluşturduğunuz/partner nesnesinin durumunu denetleyin. Durumu denetlemek için,/partner API 'sinde bir GET isteği yapın ve iş ortağı nesnesinin durumunu kontrol edin. Farmtts, iş ortağını başarıyla sağlar, durum **etkin**olarak ayarlanır.
 
-4. /JobType API ' ye gidin ve aynı üzerinde bir GET isteği yapın. 2. adımda Iş ortağı ekleme sürecinin bir parçası olarak oluşturulan hava durumu işlerini denetleyin. Hava durumu işlerinde **ardışık düzen adı** alanı şu biçimde olacaktır: "iş ortağı-name_partner-type_job-adı".
+4. /JobType API 'sinde, bir GET isteği yapın. Daha önce oluşturduğunuz Hava durumu işlerini iş ortağı ek sürecinde denetleyin. Hava durumu işlerinde **ardışık düzen adı** alanı şu biçimdedir: **iş ortağı-name_partner-type_job-adı**.
 
-5. Artık Farmtts örneğinizin etkin bir hava durumu veri ortağı vardır ve belirli bir konum (Enlem/Boylam) ve tarih aralığı için hava durumu verileri istemek üzere işleri çalıştırabilirsiniz. İş türleri, hava durumu işlerini çalıştırmak için gereken parametrelerin ayrıntılarına sahip olacaktır.
+      Artık Farmtts örneğinizin etkin bir hava durumu veri ortağı vardır. Belirli bir konum (Enlem ve Boylam) ve bir tarih aralığı için hava durumu verileri istemek üzere işleri çalıştırabilirsiniz. İş türleri, hava durumu işlerini çalıştırmak için gereken parametrelerin ayrıntılarına sahip olacaktır.
 
-   Örneğin, DTN için şu JobType 'lar oluşturulacak:
+      Örneğin, DTN için aşağıdaki iş türleri oluşturulacaktır:
    
-   - get_dtn_daily_observations (bir konum ve zaman aralığı için günlük gözlemlerinizi al)
-   - get_dtn_daily_forecasts (bir konum ve zaman aralığı için günlük tahminleri al)
-   - get_dtn_hourly_observations (bir konum ve zaman aralığı için saatlik gözlemleri al)
-   - get_dtn_hourly_forecasts (bir konum ve zaman aralığı için saatlik Tahminleri Al)
+      - **get_dtn_daily_observations**: bir konum ve zaman aralığı için günlük gözlemlerini alın.
+      - **get_dtn_daily_forecasts**: bir konum ve zaman aralığı için günlük tahminleri alın.
+      - **get_dtn_hourly_observations**: bir konum ve zaman aralığı için saatlik gözlemler alın.
+      - **get_dtn_hourly_forecasts**: bir konum ve zaman aralığı için saatlik tahminleri alın.
 
-6. JobType (s) öğesinin **kimliğini** ve parametrelerini bir yere göz önünde alın.
+6. İş türlerinin KIMLIĞINI ve parametrelerini bir yere unutmayın.
 
-7. /Jobs API 'ye gidin ve aşağıdaki giriş yüküne sahip/Jobs üzerinde bir POST isteği yapın:
+7. /Jobs API 'sine gidin ve/Job üzerinde bir POST isteği yapın. Aşağıdaki giriş yükünü kullanın:
 
    ```json
     {
@@ -141,19 +137,17 @@ Farmtts veri hub 'ında Hava durumu verilerini almaya başlamak için aşağıda
    }
    ```
 
-8. Yukarıdaki adım, iş ortağı Docker 'da tanımlanan ve hava durumu verilerini Farmcts 'ye alacak şekilde çalıştırır. İş üzerinde bir GET isteği yaparak işin durumunu denetleyebilir ve yanıtta **CurrentState** araması yapabilirsiniz. Tamamlandıktan sonra, currentState **başarılı**olarak ayarlanır.
+8. Önceki adımda, iş ortağı Docker 'da tanımlanan ve hava durumu verilerinde, ham parçalara göre tanımlanan Hava durumu işleri çalıştırılır. /Job üzerinde bir GET isteği yaparak işin durumunu denetleyebilirsiniz. Yanıtta, **CurrentState**için arama yapın. Bitirdiğinizde, **CurrentState** **başarılı**olarak ayarlanır.
 
 ## <a name="query-ingested-weather-data"></a>Sorgu alınan hava durumu verileri
 
-Hava durumu işleri tamamlandıktan sonra, veri merkezi REST API 'Lerini kullanarak modeller veya eyleme dönüştürülebilir içgörüler oluşturmak için alınan hava durumu verilerini sorgulayabilirsiniz.
+Hava durumu işleri tamamlandıktan sonra, Farmınts veri hub 'ı REST API 'Lerini kullanarak modeller veya eyleme dönüştürülebilir içgörüler oluşturmak için alınan hava durumu verilerini sorgulayabilirsiniz.
 
-### <a name="query-using-rest-api"></a>REST API kullanarak sorgulama
+Bir Farmtts REST API kullanarak hava durumu verilerini sorgulamak için:
 
-REST API kullanarak hava durumu verilerini sorgulamak için aşağıdaki adımları izleyin:
+1. Farmrets Datahub [Swagger](https://yourdatahub.azurewebsites.net/swagger)' de,/dalgalı Iş datalocation API 'sine gidin ve bir get isteği yapın. Yanıt, işin çalıştırıldığı konum (Enlem ve Boylam) için oluşturulan/dalgalı therdatalocation nesnelerini içerir. Nesnelerin **kimliği** ve **dalgalı veri modukapağını** bir yere dikkat edin.
 
-1. Farmkörler veri merkezi Swagger ( https://yourdatahub.azurewebsites.net/swagger) ,/dalgalı iş DATALOCATION API 'sine gidin ve bır get isteği yapın. Yanıtta, işin bir parçası olarak belirtilen konum (Enlem/Boylam) için/dalgalı işlem datalocation nesneleri oluşturulur. Nesne (ler) in **kimliğini** ve **dalgalı veri modetiğine** dikkat edin.
-
-2. Adım 1 ' de belirtildiği gibi, **dalgalı veri ModelId** için/dalgalı therdatamodel API 'sinde Get/{ID} yapın. "Hava durumu veri modeli", alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları içerir. Örneğin, hava durumu **veri modeli** nesnesi içindeki **Hava durumu ölçümü** , hangi hava durumu bilgilerinin desteklenmekte olduğunu ve hangi tür ve birimler hakkında ayrıntılı bilgiler içerir. Örneğin:
+2. Daha önce yaptığınız gibi **dalgalı veri ModelId** için/dalgalı therdatamodel API 'SINDE bir get/{ID} isteği yapın. Hava durumu veri modeli, alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları gösterir. Örneğin, hava durumu veri modeli nesnesinde, hava durumu ölçüsü, hava durumu bilgilerinin hangi türlerde ve birimlerde desteklenmekte olduğunu ayrıntılarıyla ayrıntılardır. Örneğin:
 
    ```json
    {
@@ -168,7 +162,7 @@ REST API kullanarak hava durumu verilerini sorgulamak için aşağıdaki adımla
 
    Hava durumu veri modeli için GET/{id} çağrısından gelen yanıtı bir yere unutmayın.
 
-3. **Telemetri** API 'sine gidin ve aşağıdaki giriş yüküne sahıp bir post isteği oluşturun:
+3. Telemetri API 'sine gidin ve bir POST isteği yapın. Aşağıdaki giriş yükünü kullanın:
 
    ```json
    {
@@ -180,7 +174,7 @@ REST API kullanarak hava durumu verilerini sorgulamak için aşağıdaki adımla
    }
    ```
 
-4. Belirtilen zaman aralığı için kullanılabilir hava durumu verilerini içeren yanıt şöyle görünür:
+    Yanıt, belirtilen zaman aralığı için kullanılabilir hava durumu verilerini gösterir:
 
    ```json
    {
@@ -209,28 +203,28 @@ REST API kullanarak hava durumu verilerini sorgulamak için aşağıdaki adımla
    }
    ```
 
-Yukarıdaki örnekte, yanıtın iki zaman damgalarına ilişkin veriler, ölçü adı ("sıcaklık") ve raporlanan Hava durumu verilerinin iki zaman damgalarıyla birlikte verileri vardır. Bildirilen değerlerin türünü ve birimini yorumlamak için ilgili hava durumu veri modeline (yukarıdaki 2. adım bölümünde açıklandığı gibi) başvurmanız gerekir.
+Yukarıdaki örnekte, yanıt iki zaman damgalarına ait verileri gösterir. Ayrıca, iki zaman damgalarına bildirilen Hava durumu verilerinin ölçü adını (sıcaklık) ve değerlerini gösterir. Bildirilen değerlerin türünü ve birimini yorumlamak için ilgili hava durumu veri modeli ' ne bakın.
 
 ## <a name="troubleshoot-job-failures"></a>İş hatalarında sorun giderme
 
-İş hatalarıyla ilgili sorunları gidermek için iş günlüklerini kontrol edebilirsiniz. Lütfen aynı [adımları](troubleshoot-azure-farmbeats.md#weather-data-job-failures) izleyin.
+İş hatalarıyla ilgili sorunları gidermek için [iş günlüklerini denetleyin](troubleshoot-azure-farmbeats.md#weather-data-job-failures).
 
 
 ## <a name="appendix"></a>Ek
 
 |        İş Ortağı   |  Ayrıntılar   |
 | ------- | -------             |
-|     DockerDetails-GörüntüAdı         |          Docker görüntü adı. Örneğin, docker.io/mydockerimage (görüntü hub.docker.com) veya myazureacr.azurecr.io/mydockerimage (Azure Container Registry resim) ve benzeri. Hiçbir kayıt defteri sağlanmazsa varsayılan değer hub.docker.com      |
-|          DockerDetails-ImageTag             |         Docker görüntüsünün etiket adı. Varsayılan değer "en son"     |
-|  DockerDetails-kimlik bilgileri      |  Özel Docker 'a erişim için kimlik bilgileri. Bu, iş ortağı tarafından müşteriye sunulacaktır   |
-|  DockerDetails-azureBatchVMDetails-batchVMSKU     |    Azure Batch VM SKU 'SU. Kullanılabilir tüm Linux sanal makineleri için [buraya](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bakın. Geçerli değerler şunlardır: "küçük", ' Extrabüyük ', ' büyük ', ' A8 ', ' A9 ', ' Medium ', ' a5 ', ' a6 ', ' a7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' a10 ', ' a11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ', ' STANDARD_D2_V3 '. **Varsayılan değer "standard_d2_v2"**  |
-|    DockerDetails-azureBatchVMDetails ile ayrılmış bilgisayar düğümleri   |  Hayır. toplu iş havuzu için ayrılmış bilgisayar düğümleri. Varsayılan değer 1 ' dir. |
+|     DockerDetails-GörüntüAdı         |          Docker görüntü adı. Örneğin, docker.io/mydockerimage (görüntü hub.docker.com) veya myazureacr.azurecr.io/mydockerimage (Azure Container Registry resim) ve benzeri. Hiçbir kayıt defteri sağlanmazsa varsayılan değer hub.docker.com ' dir.      |
+|          DockerDetails-ImageTag             |         Docker görüntüsünün etiket adı. Varsayılan değer "en son" dır.     |
+|  DockerDetails-kimlik bilgileri      |  Özel Docker 'a erişim için kimlik bilgileri. İş ortağı kimlik bilgilerini sağlar.   |
+|  DockerDetails-azureBatchVMDetails-batchVMSKU     |    Azure Batch VM SKU 'SU. Daha fazla bilgi için bkz. [tüm kullanılabilir Linux sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <BR> <BR> Geçerli değerler şunlardır ' küçük ', ' Extrabüyük ', ' Large ', ' A8 ', ' A9 ', ' Medium ', ' a5 ', ' a6 ', ' a7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' a10 ', ' a11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ' ve ' STANDARD_D2_V3 '. *Varsayılan değer ' STANDARD_D2_V2 '.*  |
+|    DockerDetails-azureBatchVMDetails ile ayrılmış bilgisayar düğümleri   |  Toplu işlem havuzu başına adanmış bilgisayar düğümü sayısı. Varsayılan değer 1’dir. |
 |    DockerDetails-azureBatchVMDetails-nodeAgentSKUID          |    Azure Batch düğüm Aracısı SKU KIMLIĞI. Şu anda yalnızca "Batch. Node. Ubuntu 18,04" Batch düğüm Aracısı destekleniyor.    |
-| DockerDetails-partnerCredentials | Docker 'da iş ortağı API 'sini çağırma için kimlik bilgileri. Ortağın, bu bilgileri, desteklenen kimlik doğrulama mekanizmasına bağlı olarak müşterilerine vermesi gerekir. Kullanıcı adı/parola veya API anahtarları. |
-| partnerType | "Hava durumu" (Farmtörlerde diğer iş ortağı türleri "algılayıcı" ve "Imagery")  |
-|  name   |   Farmtempts sisteminde ortağın istenen adı   |
-|  açıklama |  Açıklama   |
+| DockerDetails-partnerCredentials | Docker 'da iş ortağı API 'sini çağırma için kimlik bilgileri. İş ortağı, desteklenen yetkilendirme mekanizmasına bağlı olarak bu bilgileri sağlar; Örneğin, Kullanıcı adı ve parola veya API anahtarları. |
+| partnerType | "Hava durumu". Farmtts 'teki diğer iş ortağı türleri "algılayıcı" ve "Imagery" dir.  |
+|  name   |   Farmtts sisteminde ortağın istenen adı.   |
+|  açıklama |  Açıklama.   |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure Farmtts örneğinden gelen algılayıcı verilerini sorguladınız. Şimdi, gruplar için [haritalar oluşturmayı](generate-maps-in-azure-farmbeats.md#generate-maps) öğrenin.
+Azure Farmtts örneğinizden sensör verilerini sorguladığınıza göre, gruplar için [haritalar oluşturmayı](generate-maps-in-azure-farmbeats.md#generate-maps) öğrenin.

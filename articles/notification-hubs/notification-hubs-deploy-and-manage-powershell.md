@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d45b98f291a7524dac2927fc74c5dc52400209f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529990"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell kullanarak Bildirim Hub 'larını dağıtma ve yönetme
 
@@ -31,11 +32,11 @@ Bu makalede, PowerShell kullanarak Azure Notification Hubs oluşturma ve yönetm
 - Bildirim Hub 'ı oluşturma
 - Kimlik bilgilerini ayarla
 
-Ayrıca, Bildirim Hub 'larınız için yeni bir Service Bus ad alanı oluşturmanız gerekiyorsa bkz. [PowerShell ile Service Bus yönetme](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
+Ayrıca, Bildirim Hub 'larınız için yeni bir Service Bus ad alanı oluşturmanız gerekiyorsa bkz. [PowerShell ile Service Bus yönetme](../service-bus-messaging/service-bus-manage-with-ps.md).
 
 Bildirim Hub 'Larının yönetimi, Azure PowerShell eklenen cmdlet 'ler tarafından doğrudan desteklenmez. PowerShell 'den en iyi yaklaşım Microsoft.Azure.NotificationHubs.dll derlemesine başvurmalıdır. Derleme, [Microsoft Azure Notification Hubs NuGet paketiyle](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)dağıtılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure, abonelik tabanlı bir platformdur. Abonelik edinme hakkında daha fazla bilgi için bkz. [satın alma seçenekleri], [üye teklifleri]veya [ücretsiz deneme].
 - Azure PowerShell olan bir bilgisayar. Yönergeler için bkz. [Azure PowerShell yükleyip yapılandırma].
@@ -147,9 +148,9 @@ else
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [Service Bus’ı PowerShell ile yönetme](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [PowerShell betiği kullanarak Service Bus kuyrukları, konuları ve abonelikleri oluşturma](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-- [PowerShell betiği kullanarak Service Bus ad alanı ve Olay Hub 'ı oluşturma](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+- [Service Bus’ı PowerShell ile yönetme](../service-bus-messaging/service-bus-manage-with-ps.md)
+- [PowerShell betiği kullanarak Service Bus kuyrukları, konuları ve abonelikleri oluşturma](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+- [PowerShell betiği kullanarak Service Bus ad alanı ve Olay Hub 'ı oluşturma](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 
 Kullanıma sunulan bazı betikler de indirilebilir:
 
@@ -159,7 +160,7 @@ Kullanıma sunulan bazı betikler de indirilebilir:
 [Üye teklifleri]: https://azure.microsoft.com/pricing/member-offers/
 [Ücretsiz Deneme]: https://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell'i yükleme ve yapılandırma]: /powershell/azureps-cmdlets-docs
-[Notification Hubs için .NET API]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
-[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
-[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule
+[Notification Hubs için .NET API]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure/get-azuresbnamespace
+[New-AzureSBNamespace]: /powershell/module/servicemanagement/azure/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: /powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

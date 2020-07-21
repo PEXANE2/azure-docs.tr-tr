@@ -3,13 +3,14 @@ title: Azure hizmet durumu bildirimleri nelerdir?
 description: Hizmet durumu bildirimleri Microsoft Azure tarafından yayınlanan hizmet durumu iletilerini görüntülemenize izin verir.
 ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77653977"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529021"
 ---
-# <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure portalını kullanarak hizmet durumu bildirimlerini görüntüleme
+# <a name="use-the-azure-portal-to-view-service-health-notifications"></a>Hizmet durumu bildirimlerini görüntülemek için Azure portal kullanma
 
 Hizmet durumu bildirimleri Azure tarafından yayımlanır ve aboneliğinizdeki kaynaklarla ilgili bilgiler içerir. Bu bildirimler, etkinlik günlüğü olaylarının alt sınıfıdır ve etkinlik günlüğünde da bulunabilir. Hizmet durumu bildirimleri, sınıfa bağlı olarak bilgilendirici veya işlem yapılabilir olabilir.
 
@@ -23,7 +24,7 @@ Hizmet durumu bildirimleri Azure tarafından yayımlanır ve aboneliğinizdeki k
 
 Her hizmet durumu bildirimi, kapsamlarınızla ilgili ayrıntıları ve kaynaklarınızın etkisini içerir. Ayrıntılar şunları içerir:
 
-Özellik adı | Açıklama
+Özellik adı | Description
 -------- | -----------
 lardan | Şu değerlerden biri: **yönetici** veya **işlem**.
 correlationId | Genellikle dize biçimindeki bir GUID. Aynı eyleme ait olan olaylar genellikle aynı Bağıntıkimliği 'ı paylaşır.

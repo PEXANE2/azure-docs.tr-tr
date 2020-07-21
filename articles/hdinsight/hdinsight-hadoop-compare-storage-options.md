@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce1c6bdfb38e37c18a18cf970d2dd08683967da3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610709"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536757"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
 
@@ -32,10 +32,10 @@ Aşağıdaki tabloda farklı HDInsight sürümleriyle desteklenen Azure depolama
 | Depolama hizmeti | Hesap türü | Ad alanı türü | Desteklenen hizmetler | Desteklenen performans katmanları | Desteklenen erişim katmanları | HDInsight sürümü | Küme türü |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Genel amaçlı v2 | Hiyerarşik (dosya sistemi) | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Spark 2,1 ve 2,2 dışında tümü|
-|Azure Depolama| Genel amaçlı v2 | Nesne | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Tümü |
-|Azure Depolama| Genel amaçlı v1 | Nesne | Blob | Standart | Yok | Tümü | Tümü |
-|Azure Depolama| BLOB depolama * * | Nesne | Blok Blobu | Standart | Sık erişimli, seyrek erişimli Arşiv | Tümü | Tümü |
-|Azure Data Lake Storage 1. Nesil| Yok | Hiyerarşik (dosya sistemi) | Yok | Yok | Yok | yalnızca 3,6 | HBase dışında tümü |
+|Azure Storage| Genel amaçlı v2 | Nesne | Blob | Standart | Sık erişimli, seyrek erişimli Arşiv | 3.6 + | Tümü |
+|Azure Storage| Genel amaçlı v1 | Nesne | Blob | Standart | Yok | Tümü | Tümü |
+|Azure Storage| BLOB depolama * * | Nesne | Blok Blobu | Standart | Sık erişimli, seyrek erişimli Arşiv | Tümü | Tümü |
+|Azure Data Lake Storage Gen1| Yok | Hiyerarşik (dosya sistemi) | Yok | Yok | Yok | yalnızca 3,6 | HBase dışında tümü |
 
 * * HDInsight kümeleri için yalnızca ikincil depolama hesapları BlobStorage türünde olabilir ve Sayfa Blobu desteklenen bir depolama seçeneği değildir.
 
@@ -45,7 +45,7 @@ Azure depolama erişim katmanları hakkında daha fazla bilgi için bkz [. Azure
 
 Birincil ve isteğe bağlı ikincil depolama için hizmet birleşimlerini kullanarak kümeler oluşturabilirsiniz. Aşağıdaki tabloda, HDInsight 'ta Şu anda desteklenen küme depolama yapılandırmalarının özeti verilmiştir:
 
-| HDInsight sürümü | Birincil depolama alanı | İkincil depolama | Destekleniyor |
+| HDInsight sürümü | Birincil depolama alanı | İkincil depolama | Desteklenir |
 |---|---|---|---|
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 2. Nesil | No |
@@ -55,7 +55,7 @@ Birincil ve isteğe bağlı ikincil depolama için hizmet birleşimlerini kullan
 | 3,6 | Data Lake Storage 1. Nesil | Data Lake Storage 1. Nesil | Yes |
 | 3,6 | Data Lake Storage 1. Nesil | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
 | 3,6 | Data Lake Storage 1. Nesil | Data Lake Storage 2. Nesil | No |
-| 4.0 | Data Lake Storage 1. Nesil | Herhangi biri | No |
+| 4.0 | Data Lake Storage 1. Nesil | Herhangi bir | No |
 | 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 1. Nesil | No |
 
 * = Bu, bir veya birden çok Data Lake Storage 2. hesabı olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
@@ -63,6 +63,12 @@ Birincil ve isteğe bağlı ikincil depolama için hizmet birleşimlerini kullan
 > [!NOTE]
 > Spark 2,1 veya 2,2 kümelerinde birincil depolama Data Lake Storage 2. desteklenmez.
 
+## <a name="data-replication"></a>Veri çoğaltma
+
+Azure HDInsight, müşteri verilerini depolamaz. Bir küme için depolamanın birincil yolu, ilişkili depolama hesaplarıdır. Kümenizi mevcut bir depolama hesabına ekleyebilir veya küme oluşturma işlemi sırasında yeni bir depolama hesabı oluşturabilirsiniz. Yeni bir hesap oluşturulursa, yerel olarak yedekli depolama (LRS) hesabı olarak oluşturulur ve [Güven Merkezi](https://azuredatacentermap.azurewebsites.net)'nde belirtilenler dahil olmak üzere bölge içi veri yerleşimi gereksinimlerini karşılar.
+
+HDInsight ile ilişkili depolama hesabının LRS veya [Güven Merkezi](https://azuredatacentermap.azurewebsites.net)'nde belirtilen başka bir depolama seçeneği olduğundan emin olarak HDInsight 'ın verileri tek bir bölgede depolamak için düzgün yapılandırıldığını doğrulayabilirsiniz.
+ 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Depolama’ya genel bakış](./overview-azure-storage.md)

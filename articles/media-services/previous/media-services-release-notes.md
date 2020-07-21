@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b25d6c33aa2bd50cbf96fb09f0de03354d24f2da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057305"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530380"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -29,10 +29,10 @@ Bu sürüm notları, önceki sürümlerden ve bilinen sorunlardan değişiklikle
 
 Sizi etkileyen sorunları gidermeye odaklanabilmeniz için müşterilerimizden haberdar olmak istiyoruz. Bir sorunu bildirmek veya soru sormak için [Azure Media Services MSDN Forumu] içinde bir gönderi gönderin. 
 
-## <a name="known-issues"></a><a id="issues"/>Bilinen sorunlar
-### <a name="media-services-general-issues"></a><a id="general_issues"/>Media Services genel sorunlar
+## <a name="known-issues"></a><a name="issues"></a>Bilinen sorunlar
+### <a name="media-services-general-issues"></a><a name="general_issues"></a>Media Services genel sorunlar
 
-| Sorun | Açıklama |
+| Sorun | Description |
 | --- | --- |
 | REST API birkaç ortak HTTP üst bilgisi sağlanmaz. |REST API kullanarak Media Services uygulamalar geliştirirseniz, bazı ortak HTTP üst bilgi alanlarının (ISTEMCI-Istek KIMLIĞI, Istek KIMLIĞI ve RETURN-CLIENT-REQUEST-ID dahil) desteklenmediğini fark edersiniz. Üst bilgiler gelecekteki bir güncelleştirmeye eklenecektir. |
 | Yüzde kodlamalı izin verilmez. |Media Services, akış içeriği için URL 'Ler oluştururken IAssetFile.Name özelliğinin değerini kullanır (örneğin, `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Bu nedenle, yüzde kodlamalı izin verilmez. Ad özelliğinin değeri, Şu sayıda [kodlamaya ayrılan karakterlerden](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)herhangi birini içeremez:! * ' ();: @ &= + $,/?% # [] ". Ayrıca, dosya adı uzantısı için yalnızca bir "." olabilir. |
@@ -43,7 +43,7 @@ Sizi etkileyen sorunları gidermeye odaklanabilmeniz için müşterilerimizden h
 | Media Services .NET SDK nesneleri serileştirilemiyor ve sonuç olarak Redsıs için Azure Cache ile birlikte çalışmaz. |Redin için Azure önbelleğine eklemek üzere SDK AssetCollection nesnesini serileştirmenize çalışırsanız, bir özel durum oluşturulur. |
 |REST API, bir varlık veya hesap düzeyi filtresi almaya çalışırken "filtreye REST API 'nin bu sürümü tarafından erişilemeyeceğini" belirten bir hata iletisiyle yanıt verir.|Filtre, filtreyi almayı denemek için kullanılandan daha yeni bir API sürümüyle oluşturulmuş veya değiştirilmiş. Bu durum, müşteri tarafından kullanılan kod veya araçlar tarafından iki API sürümü kullanılıyorsa meydana gelebilir.  Buradaki en iyi çözüm, kodu veya araçları, daha yeni veya iki API sürümünü kullanacak şekilde yükseltmek için kullanılır.|
 
-## <a name="rest-api-version-history"></a><a id="rest_version_history"/>REST API sürümü geçmişi
+## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API sürümü geçmişi
 Media Services REST API sürümü geçmişi hakkında daha fazla bilgi için [Azure Media Services REST API'si başvurusuna]bakın.
 
 ## <a name="february-2020"></a>Şubat 2020
@@ -99,7 +99,7 @@ En son hizmet sürümü sayesinde, bir Iş başarısız olduğunda hizmet taraf�
 > Media Services Azure Access Control Service kimlik doğrulama anahtarları desteğini kullanımdan kaldırır. 22 Haziran 2018 ' de, Access Control Service anahtarlarını kullanarak kod aracılığıyla Media Services arka ucu ile kimlik doğrulaması yapamayacaktır. Kodunuzu [Azure AD tabanlı kimlik doğrulaması](media-services-use-aad-auth-to-access-ams-api.md)başına Azure Active Directory (Azure AD) kullanacak şekilde güncelleştirmeniz gerekir. Azure portal bu değişiklik hakkındaki uyarıları izleyin.
 
 ### <a name="updates-for-october-2017"></a>2017 Ekim güncelleştirmeleri
-#### <a name="sdks"></a>SDK’lar
+#### <a name="sdks"></a>SDK
 * .NET SDK, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Azure AD 'ye daha hızlı geçiş yapmak için, Access Control Service kimlik doğrulaması desteği Nuget.org üzerindeki en son .NET SDK 'sinden kaldırılmıştır. 
 * JAVA SDK 'Sı, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Java SDK 'sına Azure AD kimlik doğrulaması desteği eklenmiştir. Java SDK 'sını Media Services ile kullanma hakkında daha fazla bilgi için bkz [. Java istemci SDK 'sını kullanmaya başlama Azure Media Services](media-services-java-how-to-use.md)
 
@@ -159,7 +159,7 @@ Bu özellikler hakkında daha fazla bilgi için bkz. [Streamingendpoint](https:/
 
  Artık Media Services, Hizmetleri için telemetri/ölçüm verilerine erişmek üzere kullanabilirsiniz. Canlı Kanal, akış uç noktası ve arşiv varlıkları için telemetri verilerini toplamak üzere Media Services geçerli sürümünü kullanabilirsiniz. Daha fazla bilgi için bkz. [telemetri Media Services](media-services-telemetry-overview.md).
 
-## <a name="july-2016-release"></a><a id="july_changes16"/>Temmuz 2016 sürümü
+## <a name="july-2016-release"></a><a name="july_changes16"></a>Temmuz 2016 sürümü
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Bildirim dosyası güncelleştirmeleri (*. ISM) tarafından oluşturulan görevler
 Bir kodlama görevi Media Encoder Standard veya Medya Kodlayıcısı Premium 'a gönderildiğinde, kodlama görevi çıkış varlığı içinde bir [akış bildirim dosyası](media-services-deliver-content-overview.md) (*. ISM) oluşturur. En son hizmet sürümü ile bu akış bildirimi dosyasının sözdizimi güncelleştirildi.
 
@@ -462,16 +462,16 @@ Aşağıdaki Media Services PowerShell cmdlet 'leri artık [Azure SDK araçları
 
 * Get-Azudüzeltmelere Aservices 
 
-    Örneğin, `Get-AzureMediaServicesAccount`
+    Örnek: `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    Örneğin, `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
+    Örnek: `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    Örneğin, `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
+    Örnek: `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
-    Örneğin, `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
+    Örnek: `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
 
 ## <a name="june-2013-release"></a><a id="june_changes_13"></a>Haziran 2013 sürümü
 ### <a name="media-services-changes"></a><a name="june_13_general_changes"></a>Media Services değişiklikler

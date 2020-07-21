@@ -4,18 +4,20 @@ description: Teklifin geçerli durumunu almak için API.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114083"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535884"
 ---
 # <a name="retrieve-offer-status"></a>Teklif durumunu alma
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Teklifin geçerli durumunu alır.
 
@@ -23,13 +25,12 @@ Teklifin geçerli durumunu alır.
 
 ## <a name="uri-parameters"></a>URI parametreleri
 
-|  **Adı**       |   **Açıklama**                            |  **Veri türü** |
+|  **Ad**       |   **Açıklama**                            |  **Veri türü** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  PublisherId    | Yayımcı tanımlayıcı, örneğin`Contoso`  |     Dize     |
 |  OfferId        | Teklifi benzersiz bir şekilde tanımlayan GUID      |     Dize     |
 |  api-sürümü    | En son API sürümü                        |     Tarih       |
 |  |  |
-
 
 ## <a name="header"></a>Üst bilgi
 
@@ -41,7 +42,6 @@ Teklifin geçerli durumunu alır.
 |  |  |
 
 ## <a name="body-example"></a>Gövde örneği
-
 
 ### <a name="response"></a>Yanıt
 
@@ -116,10 +116,9 @@ Teklifin geçerli durumunu alır.
   }
 ```
 
-
 ### <a name="response-body-properties"></a>Yanıt gövdesi özellikleri
 
-|  **Adı**             |    **Açıklama**                                                                             |
+|  **Ad**             |    **Açıklama**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  durum               | Teklifin durumu. Olası değerler listesi için bkz. [teklif durumu](#offer-status) aşağıdaki. |
 |  sayısı             | Teklifle ilişkili ileti dizisi                                                    |
@@ -147,20 +146,20 @@ Teklifin geçerli durumunu alır.
 
 ### <a name="offer-status"></a>Teklif durumu
 
-|  **Adı**                    |    **Açıklama**                                       |
+|  **Ad**                    |    **Açıklama**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  Neveryayınlandı              | Teklif hiç yayımlanmadı.                          |
 |  NotStarted                  | Teklif yenidir ve başlatılmamaktadır.                            |
 |  WaitingForPublisherReview   | Teklif, yayımcı onayını bekliyor.                 |
 |  Çalışıyor                     | Teklif gönderimi işleniyor.                     |
-|  Başarılı oldu                   | Teklif gönderimi işlemeyi tamamladı.               |
+|  Başarılı                   | Teklif gönderimi işlemeyi tamamladı.               |
 |  İptal edildi                    | Teklif Gönderimi iptal edildi.                           |
 |  Başarısız                      | Teklif gönderimi başarısız oldu.                                 |
 |  |  |
 
 ### <a name="step-status"></a>Adım durumu
 
-|  **Adı**                    |    **Açıklama**                           |
+|  **Ad**                    |    **Açıklama**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | Adım başlatılmadı.                        |
 |  Ediyor                  | Adım çalışıyor.                             |

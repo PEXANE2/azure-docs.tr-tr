@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8c13dc43f4b7c66bd804fd9ec016f5e1a467bd8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086628"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536774"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -23,7 +23,7 @@ ms.locfileid: "86086628"
 
 HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Müşterilerin Python ortamını özelleştirmesi gerekebilir. Dış Python paketleri veya başka bir Python sürümü yükleme gibi. Burada, HDInsight 'ta Apache Spark kümeleri için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). HDInsight üzerinde zaten bir Spark kümeniz yoksa, küme oluşturma sırasında betik eylemleri çalıştırabilirsiniz. [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
 
@@ -47,11 +47,11 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
 HDInsight Spark kümesi, Anaconda yüklemesiyle oluşturulur. Kümede, Anaconda Python 2,7 ve Python 3,5 olmak üzere iki Python yüklemesi vardır. Aşağıdaki tabloda Spark, Livy ve Jupyıter için varsayılan Python ayarları gösterilmektedir.
 
-| |Python 2,7|Python 3,5|
+|Ayar |Python 2,7|Python 3,5|
 |----|----|----|
 |Yol|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Varsayılan olarak 2,7 ayarlanır|YOK|
-|Livy|Varsayılan olarak 2,7 ayarlanır|YOK|
+|Spark sürümü|Varsayılan olarak 2,7 ayarlanır|Yok|
+|Livy sürümü|Varsayılan olarak 2,7 ayarlanır|Yok|
 |Jupyter|PySpark çekirdeği|PySpark3 çekirdeği|
 
 ## <a name="safely-install-external-python-packages"></a>Dış Python paketlerini güvenle yükler

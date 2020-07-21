@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f14f5412b701ce055713fee347175c2dffd5c5b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77912061"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529426"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Gelişmiş güvenlik için Azure Güvenlik Merkezi Standart sürümüne ekleme
 Karma bulut iş yükleriniz için gelişmiş güvenlik yönetimi ve tehdit koruması avantajlarından yararlanmak için Güvenlik Merkezi standardına yükseltin. Standart ücretsiz deneyebilirsiniz. Daha fazla bilgi için Güvenlik Merkezi [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
@@ -47,7 +48,7 @@ Bir aboneliği veya çalışma alanını standart olarak yükseltmek için:
    -    Deneme sürümü için uygun olmayan abonelikler ve çalışma alanlarını yükseltebilirsiniz.
    -    Deneme sürümünüzü başlatmak için uygun çalışma alanlarını ve abonelikleri seçebilirsiniz.
 3.  Seçili aboneliklerde deneme sürümünüzü başlatmak için **Deneme sürümünü başlat**’a tıklayın.
-  ![Abonelik seçin](./media/security-center-onboarding/select-subscription.png)
+  ![Abonelik seçme](./media/security-center-onboarding/select-subscription.png)
 
 
    > [!NOTE]

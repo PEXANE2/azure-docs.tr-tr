@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 8cfa7a7b251f2aa74230d8883a0335582387aa06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 749a2366438bd1abfef4ca0cf2a195f23529d6a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602525"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536309"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -44,6 +44,10 @@ Machine Learning modeli iş akışı genellikle bu diziyi izler:
 
 Bu araçları Azure Machine Learning için kullanın:
 
+> [!IMPORTANT]
+> Aşağıda işaretlenmiş araçlar (Önizleme) Şu anda genel önizlemede.
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 +  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Önizleme) ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
 + [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)ile makine öğrenimi etkinliklerinizi otomatikleştirin.
@@ -62,7 +66,7 @@ Bu araçları Azure Machine Learning için kullanın:
             * [Yapılandırmayı Çalıştır](#run-configurations)
             * [Anlık Görüntü](#snapshots)
             * [Git izleme](#github-tracking-and-integration)
-            * [Açmak](#logging)
+            * [Günlüğe Kaydetme](#logging)
     * [ML işlem hatları](#ml-pipelines)
     * [Modeller](#models)
         * [Ortamlar](#environments)

@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76907987"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536286"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Logic Apps'te Azure İzleyici günlüklerini ayarlama ve B2B iletileri için tanılama verilerini toplama
 
-Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini ayarladıktan sonra, bu iş ortakları AS2, x12 ve EDIOLGU gibi protokolleri kullanarak iletiler değiş tokuş edebilir. Bu iletişimin istediğiniz şekilde çalıştığından emin olmak için, tümleştirme hesabınız için [Azure izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ayarlayabilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bir [Log Analytics çalışma alanında](../azure-monitor/platform/resource-logs-collect-workspace.md)olayları tetikleme, çalıştırma olayları ve eylem olayları gibi çalışma zamanı verileri ve olayları hakkında verileri kaydedebilir ve kaydedebilirsiniz. İletiler için günlüğe kaydetme, şu gibi bilgiler de toplar:
+Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini ayarladıktan sonra, bu iş ortakları AS2, x12 ve EDIOLGU gibi protokolleri kullanarak iletiler değiş tokuş edebilir. Bu iletişimin istediğiniz şekilde çalıştığından emin olmak için, tümleştirme hesabınız için [Azure izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ayarlayabilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bir [Log Analytics çalışma alanında](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)olayları tetikleme, çalıştırma olayları ve eylem olayları gibi çalışma zamanı verileri ve olayları hakkında verileri kaydedebilir ve kaydedebilirsiniz. İletiler için günlüğe kaydetme, şu gibi bilgiler de toplar:
 
 * İleti sayısı ve durumu
 * Durum bildirimleri
@@ -29,7 +30,7 @@ Bu makalede, tümleştirme hesabınız için Azure Izleyici günlüğe kaydetmen
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Log Analytics çalışma alanı. Log Analytics çalışma alanınız yoksa, [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin.
 
@@ -162,7 +163,7 @@ Mantıksal uygulamanız çalıştıktan sonra, Log Analytics çalışma alanın�
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../log-analytics/log-analytics-log-searches.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -183,13 +184,13 @@ Her AS2 iletisi için özellik açıklamaları aşağıda verilmiştir.
 |----------|-------------|
 | **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir AS2 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| **Mantıksal uygulama** | AS2 eylemlerinin ayarlandığı mantıksal uygulama |
+| **Mantıksal Uygulama** | AS2 eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | AS2 ileti durumu <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. Hiçbir MDN ayarlanmadı. <br>Success = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanır ve alınır ya da MDN gönderilir. <br>Failed = geçersiz bir AS2 iletisi alındı. Hiçbir MDN ayarlanmadı. <br>Bekliyor = geçerli bir AS2 iletisi alındı veya gönderildi. MDN ayarlanmış ve MDN bekleniyor. |
 | **ONAY** | MDN ileti durumu <br>Kabul edilen = pozitif MDN alındı veya gönderildi. <br>Bekliyor = bir MDN alınması veya gönderilmesi bekleniyor. <br>Reddedildi = negatif MDN alındı veya gönderildi. <br>Gerekli değildir = MDN sözleşmede ayarlanmadı. |
 | **Yön** | AS2 ileti yönü |
 | **İzleme KIMLIĞI** | Bir mantıksal uygulamadaki tüm Tetikleyicileri ve eylemleri karşılıklı yapan KIMLIK |
 | **İleti Kimliği** | AS2 ileti başlıklarındaki AS2 ileti KIMLIĞI |
-| **İlişkin** | AS2 eyleminin iletiyi işleme zamanı |
+| **Zaman damgası** | AS2 eyleminin iletiyi işleme zamanı |
 |||
 
 <!--
@@ -216,7 +217,7 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 |----------|-------------|
 | **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya bir x12 sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| **Mantıksal uygulama** | X12 eylemlerinin ayarlandığı mantıksal uygulama |
+| **Mantıksal Uygulama** | X12 eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | X12 ileti durumu <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir x12 iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir x12 iletisi alındı veya gönderildi. <br>Bekliyor = geçerli bir x12 iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | **ONAY** | İşlev ACK (997) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
 | **Yön** | X12 ileti yönü |
@@ -224,7 +225,7 @@ Her x12 iletisi için özellik açıklamaları aşağıda verilmiştir.
 | **İleti türü** | EDI x12 ileti türü |
 | **ICN** | X12 iletisi için değişim denetim numarası |
 | **TSCN** | X12 iletisi için Işlem kümesi denetim numarası |
-| **İlişkin** | X12 eyleminin iletiyi işleme zamanı |
+| **Zaman damgası** | X12 eyleminin iletiyi işleme zamanı |
 |||
 
 <!--
@@ -251,7 +252,7 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 |----------|-------------|
 | **Gönderen** | **Alma ayarlarında**belirtilen Konuk iş ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen ana bilgisayar ortağı |
 | **Alıcı** | **Alma ayarlarında**belirtilen ana bilgisayar ortağı veya BIR edıolgu sözleşmesi Için **gönderme ayarları** 'nda belirtilen Konuk iş ortağı |
-| **Mantıksal uygulama** | EDIOLGU eylemlerinin ayarlandığı mantıksal uygulama |
+| **Mantıksal Uygulama** | EDIOLGU eylemlerinin ayarlandığı mantıksal uygulama |
 | **Durum** | EDIOLGU iletisi durumu <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. Ayarlanmış işlevsel ACK yok. <br>Success = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlev ACK ayarlanır ve alınır ya da işlevsel bir ACK gönderilir. <br>Başarısız = geçersiz bir EDıOLGU iletisi alındı veya gönderildi <br>Bekliyor = geçerli bir EDIOLGU iletisi alındı veya gönderildi. İşlevsel ack ayarlanır ve işlevsel bir ACK beklenmektedir. |
 | **ONAY** | İşlev ACK (conı) durumu <br>Kabul edildi = pozitif bir işlevsel ACK alındı veya gönderildi. <br>Reddedildi = negatif bir işlevsel ACK alındı veya gönderildi. <br>Bekliyor = işlevsel bir ACK bekleniyor ancak alınmadı. <br>Bekliyor = bir işlev ACK oluşturuldu ancak iş ortağına gönderilemiyor. <br>Gerekli değil = Işlev ACK ayarlanmadı. |
 | **Yön** | EDIOLGU iletisi yönü |
@@ -259,7 +260,7 @@ Her EDIOLGU iletisi için özellik açıklamaları aşağıda verilmiştir.
 | **İleti türü** | EDIOLGU ileti türü |
 | **ICN** | EDIOLGU iletisi için değişim denetim numarası |
 | **TSCN** | EDIOLGU iletisi için Işlem kümesi denetim numarası |
-| **İlişkin** | EDIOLGU eyleminin iletiyi işleme zamanı |
+| **Zaman damgası** | EDIOLGU eyleminin iletiyi işleme zamanı |
 |||
 
 <!--

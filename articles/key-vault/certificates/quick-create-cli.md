@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure Key Vault bir sertifikayı ayarlama ve alma'
+title: 'Hızlı başlangıç: & görüntüleme Azure Key Vault sertifikaları ayarlama-Azure CLı'
 description: Azure CLı kullanarak Azure Key Vault bir sertifikanın nasıl ayarlanacağını ve alınacağını gösteren hızlı başlangıç
 services: key-vault
 author: msmbaldwin
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d8107d26405423da6bb5d85ab79b83edce95d179
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e845ce859994aaac7d225ce3411c280582300408
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423729"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536496"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -74,7 +74,7 @@ Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu se
 az keyvault certificate create --vault-name "Contoso-Vault2" -n ExampleCertificate -p "$(az keyvault certificate get-default-policy)"
 ```
 
-Artık Azure Key Vault ' a eklediğiniz sertifikaya, URI 'sini kullanarak başvurabilirsiniz. Geçerli **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** sürümü almak için kullanın. 
+Artık Azure Key Vault ' a eklediğiniz sertifikaya, URI 'sini kullanarak başvurabilirsiniz. **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate**Geçerli sürümü almak için kullanın. 
 
 Daha önce depolanan sertifikayı görüntülemek için:
 

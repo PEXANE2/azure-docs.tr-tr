@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300799"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529040"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
@@ -48,7 +49,7 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
 2. **Tanılama ayarları**' nda bir ad belirtin ve kutuyu **Log Analytics gönder**' i işaretleyin.
 3. Azure Izleyici günlük aboneliğini ve Log Analytics çalışma alanını seçin.
 4. Geçiş **Azure tanılama** seçin.
-5. Günlük listesinden, **Azuresterecovery**ön ekine sahip tüm günlükleri seçin. Ardından **Tamam**'a tıklayın.
+5. Günlük listesinden, **Azuresterecovery**ön ekine sahip tüm günlükleri seçin. Daha sonra, **Tamam**'a tıklayın.
 
     ![Çalışma alanını seçme](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -67,8 +68,8 @@ Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDia
 7. Yükleme tamamlandıktan sonra, Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın. **Veri** sayfasına gidin ve **Windows performans sayaçları**' na tıklayın. 
 8. Aşağıdaki iki sayacı 300 saniyelik örnek aralığıyla eklemek için **' + '** düğmesine tıklayın:
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics (*) \SourceVmChurnRate
+    - ASRAnalytics (*) \SourceVmThrpRate
 
 Dalgalanma ve karşıya yükleme hızı verileri, çalışma alanına beslemeyi başlatacak.
 

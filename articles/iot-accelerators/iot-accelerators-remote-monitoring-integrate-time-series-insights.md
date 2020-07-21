@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232075"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536615"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights’ı Uzaktan İzleme ile tümleştirme
 
@@ -62,11 +62,11 @@ Sonra, Time Series Insights uzaktan Izleme çözümünüze ek bir kaynak olarak 
     | Ortam Adı | Aşağıdaki ekran görüntüsünde **contorosrmtsi**adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı seçin. |
     | Abonelik | Açılan listeden Azure aboneliğinizi seçin. |
     | Kaynak grubu | **Mevcut olanı kullanın**. Var olan uzaktan Izleme kaynak grubunuzun adını seçin. |
-    | Location | **Doğu ABD**kullandık. Mümkünse, ortamınızı uzaktan Izleme çözümünüz ile aynı bölgede oluşturun. |
+    | Konum | **Doğu ABD**kullandık. Mümkünse, ortamınızı uzaktan Izleme çözümünüz ile aynı bölgede oluşturun. |
     | Sku |**S1** |
     | Kapasite | **1** |
 
-    ![Time Series Insights oluştur](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
+    ![Time Series Insights oluşturma](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
 1. **Oluştur**’a tıklayın. Ortamın oluşturulması biraz zaman alabilir.
 
@@ -244,7 +244,7 @@ Time Series Insights tümleştirmesini tamamlayabilmeniz için, güncelleştiril
 
 `standard`Yukarıdaki güncelleştirilmiş mikro hizmetler için dağıtım ortamını yapılandırın
 
-1. Komut satırında komutunu çalıştırın `kubectl proxy` . Daha fazla bilgi için bkz. [Kubernetes API 'sine erişme](https://kubernetes.io/docs/reference/access-authn-authz/).
+1. Komut satırında komutunu çalıştırın `kubectl proxy` . Daha fazla bilgi için bkz. [Kubernetes API 'sine erişme](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server).
 
 1. Kubernetes yönetim konsolunu açın.
 

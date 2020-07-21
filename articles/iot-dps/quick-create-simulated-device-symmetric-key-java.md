@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b54f216850b77473ea8c272311e3f135f256518
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76941405"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536513"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Hızlı Başlangıç: Simetrik anahtarlar ile bir simülasyon cihazı sağlama
+# <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Hızlı başlangıç: simetrik anahtarlarla IoT Hub için sanal cihaz sağlama
 
 Bu hızlı başlangıçta, Windows geliştirme makinesi üzerinde bir cihaz simülatörü oluşturmayı ve çalıştırmayı öğreneceksiniz. Bu sanal cihazı, bir cihaz sağlama hizmeti (DPS) örneğiyle kimlik doğrulamak için bir simetrik anahtar kullanmak ve bir IoT Hub 'ına atanmak üzere yapılandıracaksınız. [Java için Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) 'larının örnek kodu, sağlamayı Başlatan cihaz için bir önyükleme sırasının benzetimini yapmak üzere kullanılacaktır. Cihaz, bir DPS hizmet örneğiyle bireysel bir kayda göre tanınacaktır ve bir IoT Hub 'ına atanır.
 
@@ -32,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Makinenizde [Java SE Development Kit 8](https://aka.ms/azure-jdks) veya sonraki bir sürümünün yüklü olduğundan emin olun.
 
@@ -111,7 +111,7 @@ Bu bölümde, cihazın önyükleme sırasını DPS örneğinize göndermek için
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample
     ```
 
-4. Örnek oluşturun ve ardından oluşturulan. jar `target` dosyasını yürütmek için klasöre gidin.
+4. Örnek oluşturun ve ardından `target` oluşturulan. jar dosyasını yürütmek için klasöre gidin.
 
     ```cmd/sh
     mvn clean install

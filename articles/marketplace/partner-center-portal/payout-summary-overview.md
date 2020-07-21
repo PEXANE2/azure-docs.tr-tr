@@ -1,18 +1,18 @@
 ---
 title: Ödeme özetine genel bakış-Azure Marketi
 description: Ödeme Özeti, teklifiniz ile kazanabileceğiniz paradan ilgili ayrıntıları gösterir. Ayrıca, ödemeleri ne zaman alacağınız ve ne kadar ücret ödetireceğiz size bilgi verir.
-ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.service: marketplace
+ms.topic: article
 author: mingshen
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118486"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535969"
 ---
 # <a name="payout-summary-overview"></a>Ödeme özetine genel bakış
 
@@ -42,19 +42,6 @@ Bunlar, ödeme raporuna erişmek için roller ve izinlerdir:
 | Vergi profili | Güncelleştirebilir | Erişim yok | Erişim yok | Erişim yok | Güncelleştirebilir | Erişim yok |
 | Ödeme özeti | Görüntüleyebilir | Erişim yok | Erişim yok | Erişim yok | Görüntüleyebilir | Erişim yok  |
 | | | | | | | |
-
-## <a name="payout-report-differences"></a>Ödeme raporu farklılıkları
-
-Bunlar, Bulut İş Ortağı Portalı (eski) ve Iş Ortağı Merkezi (yeni) arasındaki ödeme raporundaki farklardır:
-
-| Bulut İş Ortağı Portalı | İş Ortağı Merkezi |
-| --- | --- |
-| **Bağlantı**:https://cloudpartner.azure.com/ | **Bağlantı**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory vehttps://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Gezinti**: Öngörüler ödemede sunulan ödeme raporlaması | **Gezinti**: Iş Ortağı Merkezi – ödeme simgesi içinde sunulan ödeme raporlaması |
-| **Kapsam**:<ul><li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olur.</li><li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir.</li></ul> | **Kapsam**:<ul><li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li><li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li><li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.</li></ul> |
-| **İşlem ödeme için hazır değil**: Faturalandırma sürüyor | **İşlem ödeme için hazır değil**: sonraki tahmini ödeme: ödeme durumu işlenmemiş durumda. |
-| **Ödeme durumu**: yok | **Ödeme durumu**:<ul><li>İşlenmemiş: kazanç ödeme için uygun.</li><li>Yakında: kazanç, yayımcıya bir sonraki aylık ödeyde gönderilir.</li><li>Gönderildi: ödeme, bankanızla gönderilmiştir.</li></ul> |
-| | |
 
 ## <a name="payment-schedules"></a>Ödeme zamanlamaları
 

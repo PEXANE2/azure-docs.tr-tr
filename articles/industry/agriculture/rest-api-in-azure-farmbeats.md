@@ -1,23 +1,20 @@
 ---
-title: Referanslar
-description: ''
+title: Azure Farmtempts API 'Leri
+description: JSON tabanlı yanıtlara sahip standartlaştırılmış bir Retıl arabirimi ile agricultürel işletmeler sağlayan Azure Farmtıts API 'Leri hakkında bilgi edinin.
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488044"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536581"
 ---
-# <a name="references"></a>Referanslar
+# <a name="azure-farmbeats-apis"></a>Azure Farmtempts API 'Leri
 
-Bu makalede, Azure Farmtts API 'Leri açıklanmaktadır.
-
-## <a name="rest-api"></a>REST API
-
-Azure Farmstats API 'Leri, Azure Farmtts yeteneklerini kullanmanıza yardımcı olmak üzere JSON tabanlı yanıtlara sahip standart bir Retıl arabirimi sayesinde, örneğin:
+Bu makalede, Azure Farmtts API 'Leri açıklanmaktadır. Azure Farmstats API 'Leri, Azure Farmtts yeteneklerini kullanmanıza yardımcı olmak üzere JSON tabanlı yanıtlara sahip standart bir Retıl arabirimi sayesinde, örneğin:
 
 - Algılayıcı, kamera, drbir, hava durumu, uydu ve seçkin zemin verileri almak için API 'Ler.
 - Ortak veri sağlayıcıları genelinde verilerin normalleştirilmesi ve bağlamı oluşturma.
@@ -32,7 +29,7 @@ Farmtts API 'Leri Swagger teknik belgelerini içerir. Tüm API 'Ler ve bunların
 
 Aşağıdaki tabloda, Farmrets veri hub 'ında bulunan tüm nesneler ve kaynaklar özetlenmektedir:
 
-| Nesneler ve kaynaklar | Açıklama
+| Nesneler ve kaynaklar | Description
 --- | ---|
 Çiftlik | Grup, Farmtts sistemi içinde ilgilendiğiniz fiziksel bir konuma karşılık gelir. Her grubun bir grup adı ve benzersiz bir grup KIMLIĞI vardır. |
 Cihaz  | Cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir. Her cihazın benzersiz bir cihaz KIMLIĞI vardır. Bir cihaz genellikle Grup KIMLIĞI olan bir gruba sağlanır.
@@ -55,14 +52,14 @@ RoleAssignment  |Roleatama, bir rolün Kullanıcı veya hizmet sorumlusu atamas�
 
 JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilden bağımsız ortak bir veri biçimidir. Daha fazla bilgi için [JSON Web sitesine](https://www.json.org/)bakın.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
 REST API HTTP istekleri Azure Active Directory (Azure AD) ile korunur.
 REST API 'Lerine kimliği doğrulanmış bir istek yapmak için, API 'yi çağırabilmeniz için istemci kodu geçerli kimlik bilgileriyle kimlik doğrulaması gerektirir. Kimlik doğrulaması, Azure AD tarafından çeşitli aktörler arasında düzenlenir. Kimlik doğrulaması kanıtı olarak istemcinize bir erişim belirteci sağlar. Belirteç daha sonra REST API isteklerinin HTTP yetkilendirme üstbilgisinde gönderilir. Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. geliştiriciler için [Azure Active Directory](https://portal.azure.com) .
 
 Erişim belirtecinin sonraki API isteklerinde gönderilmesi gerekir, başlık bölümünde şöyle olur:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -110,7 +107,7 @@ REST GET çağrıları için, istek URI 'sinde bir veya daha fazla sorgu paramet
 
 Azure Farmrets veri hub 'ı API 'Leri, standart HTTP hatalarını döndürür. En yaygın hata kodları şunlardır:
 
- |Hata kodu             | Açıklama |
+ |Hata kodu             | Description |
  |---                    | --- |
  |200                    | Başarılı |
  |201                    | Oluşturma (post) başarılı |
@@ -152,7 +149,7 @@ Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama 
     - Bir ad girin.
     - **Yalnızca bu kuruluş dizinindeki hesapları (tek kiracı)** seçin.
     - Alanların geri kalanında varsayılan değerleri kullanın.
-    - **Kaydol**’u seçin.
+    - **Kaydet**’i seçin.
 
 3. Yeni ve var olan uygulama kaydına **genel bakış** bölmesinde şunları yapın:
 
@@ -181,6 +178,6 @@ Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama 
 
 Üstbilgi bölümündeki sonraki API isteklerinde şu şekilde göndermek için erişim belirtecini kullanın:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bb75405a1cd1e282023936673aa73be25556e0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529361"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -41,7 +41,7 @@ Bu güçlüklere karşı kendinizi korumanıza yardımcı olmak için, Güvenlik
 
 -   **Tehditlere karşı koruma**: güvenlik merkezi iş yüklerinizi değerlendirir ve tehdit önleme önerilerini ve güvenlik uyarılarını yükseltir.
 
--   **Daha hızlı ulaşın**: Güvenlik Merkezi 'nde, her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, Güvenlik Merkezi dağıtımı kolaydır ve Azure hizmetleriyle otomatik sağlama ve koruma olanağı tanır.
+-   **Daha hızlı güvenlik sağlama**: Güvenlik Merkezi'nde her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, Güvenlik Merkezi dağıtımı kolaydır ve Azure hizmetleriyle otomatik sağlama ve koruma olanağı tanır.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
@@ -53,7 +53,7 @@ Ayrıca, Güvenlik Merkezi, Azure dışı sunucuları ve bulutta veya şirket i�
 
 Aracılardan ve Azure 'dan toplanan olaylar, iş yüklerinizin güvende olduğundan ve güvenlik uyarılarında emin olmak için izlemeniz gereken özel öneriler (sağlamlaştırma görevleri) sağlamak için Güvenlik analizi altyapısına bağıntılı. Kötü amaçlı saldırıların iş yüklerinizde gerçekleşmediklerinden emin olmak için bu uyarıları mümkün olan en kısa sürede araştırmanız gerekir.
 
-Güvenlik Merkezi 'ni etkinleştirdiğinizde güvenlik merkezi 'nde yerleşik güvenlik ilkesi, güvenlik merkezi kategorisi altında yerleşik bir girişim olarak Azure Ilkesine yansıtılır. Yerleşik girişim, tüm güvenlik merkezi kayıtlı aboneliklerine (ücretsiz veya standart katmanlara) otomatik olarak atanır. Yerleşik girişim yalnızca denetim ilkelerini içerir. Azure Ilkesindeki Güvenlik Merkezi ilkeleri hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md).
+Güvenlik Merkezi 'ni etkinleştirdiğinizde güvenlik merkezi 'nde yerleşik güvenlik ilkesi, güvenlik merkezi kategorisi altında yerleşik bir girişim olarak Azure Ilkesine yansıtılır. Yerleşik girişim, tüm güvenlik merkezi kayıtlı aboneliklerine (ücretsiz veya standart fiyatlandırma katmanları) otomatik olarak atanır. Yerleşik girişim yalnızca denetim ilkelerini içerir. Azure Ilkesindeki Güvenlik Merkezi ilkeleri hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md).
 
 ## <a name="strengthen-security-posture"></a>Güvenlik duruşunu güçlendirme
 

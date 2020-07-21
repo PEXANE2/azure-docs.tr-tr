@@ -3,11 +3,12 @@ title: Web kancalarını kullanarak OpsGenie ile Azure hizmet durumu uyarıları
 description: OpsGenie örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654146"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529106"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Web kancalarını kullanarak OpsGenie ile Azure hizmet durumu uyarıları gönderme
 
@@ -36,7 +37,7 @@ Bu makalede, bir Web kancası kullanarak OpsGenie ile Azure hizmet durumu uyarı
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Azure portal OpsGenie kullanarak uyarı oluşturma
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
-1. [Azure Portal kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma](../azure-monitor/platform/alerts-activity-log-service-notifications.md)bölümünde 1 ile 8 arasındaki adımları izleyin.
+1. [Azure Portal kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma](./alerts-activity-log-service-notifications-portal.md)bölümünde 1 ile 8 arasındaki adımları izleyin.
 
 1. **Eylem**listesinde tanımlayın:
 
@@ -84,5 +85,5 @@ Bu makalede, bir Web kancası kullanarak OpsGenie ile Azure hizmet durumu uyarı
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
 - [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
-- [Hizmet durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Hizmet durumu bildirimleri](./service-notifications.md)hakkında bilgi edinin.
 - [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.

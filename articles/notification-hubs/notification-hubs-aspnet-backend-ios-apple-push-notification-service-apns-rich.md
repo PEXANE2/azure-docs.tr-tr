@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae4b984d0ce66dec2a32b3431301ed97fe2c3fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71212196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530143"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs zengin gönderim
 
@@ -31,7 +31,7 @@ Kullanıcıları anlık zengin içerikle birlikte kullanmak için, bir uygulama 
 
 Bu öğretici iOS 7 & 8 ile uyumludur.
 
-  ![][IOS1]
+  ![Üç ekran görüntüsü: Gönder düğmesine sahip bir uygulama ekranı, bir cihazdaki başlangıç ekranı ve geri düğmesi olan bir Windows logosu.][IOS1]
 
 Yüksek düzeyde:
 
@@ -49,7 +49,7 @@ Yüksek düzeyde:
 3. Çözüm Gezgini **tüm dosyaları göster** ' e tıklayın ve **projeye dahil**etmek için klasöre sağ tıklayın.
 4. Görüntü seçiliyken Özellikler penceresi yapı eylemini **gömülü kaynağa**değiştirin.
 
-    ![][IOS2]
+    ![Çözüm Gezgini ekran görüntüsü. Görüntü dosyası seçilidir ve Özellikler bölmesinde, gömülü kaynak derleme eylemi olarak listelenir.][IOS2]
 5. İçinde `Notifications.cs` , aşağıdaki using ifadesini ekleyin:
 
     ```csharp
@@ -137,7 +137,7 @@ Yüksek düzeyde:
     }
     ```
 8. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web sitesine yeniden dağıtacağız. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
-9. Yayımlama hedefi olarak Azure Web sitesini seçin. Azure hesabınızla oturum açın ve var olan veya yeni bir Web sitesini seçin ve **bağlantı** SEKMESINDE **hedef URL** özelliğini bir yere göz önünde koyun. Bu öğreticide daha sonra *arka uç uç* noktanız olarak bu URL 'ye başvuracağız. **Yayımla**’ta tıklayın.
+9. Yayımlama hedefi olarak Azure Web sitesini seçin. Azure hesabınızla oturum açın ve var olan veya yeni bir Web sitesini seçin ve **bağlantı** SEKMESINDE **hedef URL** özelliğini bir yere göz önünde koyun. Bu öğreticide daha sonra *arka uç uç* noktanız olarak bu URL 'ye başvuracağız. **Yayımla**’ya tıklayın.
 
 ## <a name="modify-the-ios-project"></a>İOS projesini değiştirme
 
@@ -146,12 +146,12 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
 1. İOS projenizi açın ve **hedefler** bölümünde ana uygulama hedeflerinize giderek uzak bildirimleri etkinleştirin.
 2. **Yetenekler**' e tıklayın, **arka plan modlarını**açın ve **uzak bildirimler** onay kutusunu işaretleyin.
 
-    ![][IOS3]
+    ![Yetenek ekranını gösteren iOS projesinin ekran görüntüsü. Arka plan modları açıktır ve uzaktan bildirimler onay kutusu seçilidir.][IOS3]
 3. `Main.storyboard`' İ açın ve Kullanıcı öğreticisini [bilgilendirdiğinizden](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) bir görünüm denetleyicinizin (Bu öğreticide giriş görünümü denetleyicisi olarak adlandırılır) olduğundan emin olun.
 4. Görsel taslağınızı bir **Gezinti denetleyicisi** ekleyin ve ana görünüm denetleyicisine sürükleyip sürükleyerek gezintinin **kök görünümünü** yapın. **Ilk görünüm denetleyicisinin** öznitelikler denetçisinde yalnızca gezinti denetleyicisi için seçildiğinden emin olun.
 5. Görsel taslağa bir **Görünüm denetleyicisi** ekleyin ve bir **görüntü görünümü**ekleyin. Bu, bildirim üzerine tıklayarak kullanıcıların daha fazla bilgi edinmeleri için göreceği sayfasıdır. Görsel taslağınızı aşağıdaki gibi görünmelidir:
 
-    ![][IOS4]
+    ![Görsel taslağın ekran görüntüsü. Üç uygulama ekranı görünür: bir gezinti görünümü, bir giriş görünümü ve bir görüntü görünümü.][IOS4]
 6. Film şeridi ' ndeki **Giriş görünümü denetleyicisine** tıklayın ve kimlik denetçisi altında **özel sınıfı** ve **film şeridi kimliği** olarak **homeviewcontroller** olduğundan emin olun.
 7. Görüntü görüntüleme denetleyicisi için **ımageviewcontroller**ile aynı yapın.
 8. Ardından, az önce oluşturduğunuz Kullanıcı arabirimini işlemek için **ımageviewcontroller** başlıklı yeni bir görünüm denetleyicisi sınıfı oluşturun.

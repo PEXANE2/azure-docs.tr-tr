@@ -17,12 +17,12 @@ ms.date: 03/23/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: f5b59d1669d89c73b93199d1f833da149003d399
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8ac964c62ac4b30e9280e4ae921297ba860d7c2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80159345"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529939"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Azure Notification Hubs nedir?
 
@@ -48,7 +48,7 @@ Birkaç popüler platformda anında iletme bildirimleri hakkında daha fazla bil
 
 - [Android](https://developer.android.com/guide/topics/ui/notifiers/notifications.html)
 - [iOS](https://developer.apple.com/notifications/)
-- [Windows](https://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
+- [Windows](/previous-versions/windows/apps/hh779725(v=win.10))
 
 ## <a name="how-do-push-notifications-work"></a>Anında iletme bildirimleri nasıl çalışır?
 
@@ -71,7 +71,7 @@ Anında iletme bildirimleri göndermek, uygulamanın ana iş mantığı ile ilgi
 
 - **Platform bağımlılığı**
   - Arka uç, farklı platformlardaki cihazlara bildirim göndermek için karmaşık ve donanımdan korumaya yönelik platforma bağımlı mantık gerektirir, ancak PNSes birleştirilmiş değildir.
-- **Ölçek**
+- **Ölçeklendirme**
   - Her uygulama başlatıldığında cihaz belirteçlerinin her PNS Kılavuzu için yenilenmesi gerekir. Arka uç, belirteçlerin güncel tutulması için büyük miktarda trafik ve veritabanı erişimi ile ilgilidir. Cihaz sayısı yüzlerce, binlerce veya milyonlarca büyüdüğünde, bu altyapıyı oluşturma ve sürdürme maliyeti çok büyük olur.
   - Çoğu PNS, birden fazla cihaza yayın yapmayı desteklemez. Bir milyon cihaza basit bir yayın yapılması, PNS’lere yönelik bir milyon çağrı ile sonuçlanır. Bu miktarda trafiğin en düşük gecikme ile ölçeklendirilmesi sıradan bir işlem değildir.
 - **Yönlendirme**
@@ -91,7 +91,7 @@ Notification Hubs, kullanıma hazırlamış itme motorunuz aşağıdaki avantajl
   - Cihaz tanıtıcısı yönetimi tek yerden yürütülür.
 - **Arka uçlar arası**
   - Bulut veya şirket içi.
-  - .NET, Node. js, Java, Python, vb.
+  - .NET, Node.js, Java, Python vb.
 - **Zengin teslim düzeni kümesi**
   - Bir veya daha fazla platforma yayın: tek bir API çağrısıyla platformlar arasında milyonlarca cihaza anında yayın yapabilirsiniz.
   - Cihaza gönderme: Bildirimlerle tek cihazları hedefleyebilirsiniz.
@@ -120,16 +120,16 @@ Notification Hubs, kullanıma hazırlamış itme motorunuz aşağıdaki avantajl
 
 [How customers are using Notification Hubs]: https://azure.microsoft.com/services/notification-hubs
 [Notification Hubs tutorials and guides]: https://azure.microsoft.com/documentation/services/notification-hubs
-[iOS]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started
-[Android]: https://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started
-[Windows Universal]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started
-[Windows Phone]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-phone-get-started
-[Kindle]: https://azure.microsoft.com/documentation/articles/notification-hubs-kindle-get-started
-[Xamarin.iOS]: https://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-ios-get-started
-[Xamarin.Android]: https://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
-[Microsoft.WindowsAzure.Messaging.NotificationHub]: https://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
-[Microsoft.ServiceBus.Notifications]: https://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-[App Service Mobile Apps]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/
+[iOS]: ./notification-hubs-push-notification-fixer.md
+[Android]: ./notification-hubs-android-push-notification-google-gcm-get-started.md
+[Windows Universal]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Windows Phone]: ./notification-hubs-windows-mobile-push-notifications-mpns.md
+[Kindle]: ./notification-hubs-android-push-notification-google-fcm-get-started.md
+[Xamarin.iOS]: ./xamarin-notification-hubs-ios-push-notification-apns-get-started.md
+[Xamarin.Android]: ./xamarin-notification-hubs-push-notifications-android-gcm.md
+[Microsoft.WindowsAzure.Messaging.NotificationHub]: /previous-versions/azure/reference/dn339221(v=azure.100)
+[Microsoft.ServiceBus.Notifications]: /previous-versions/azure/
+[App Service Mobile Apps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [templates]: notification-hubs-templates-cross-platform-push-messages.md
 [Azure portal]: https://portal.azure.com
 [tags]: (https://msdn.microsoft.com/library/azure/dn530749.aspx)

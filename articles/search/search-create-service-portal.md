@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562534"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529633"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
@@ -27,11 +27,11 @@ PowerShell’i mi tercih ediyorsunuz? Azure Resource Manager [hizmet şablonunu]
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Aşağıdaki hizmet özellikleri hizmetin kullanım ömrü boyunca sabitlenmiştir ve bunların değiştirilmesi yeni bir hizmet gerektirir. Bir hizmet oluşturduğunuzda, nasıl kullanacağınızı düşünün:
+Aşağıdaki hizmet özellikleri, hizmetin kullanım ömrü boyunca düzeltilir; bunlardan herhangi birini değiştirmek yeni bir hizmet gerektirir. Düzeltildiklerinden, her bir özelliği doldururken kullanım etkilerini göz önünde bulundurun:
 
-* ad (hizmet adları için [Bu önerileri](#name-the-service) gözden geçirin)
-* katman (ücretsiz, temel, standart [faturalandırmayı etkiler](search-sku-tier.md) ve kapasite üzerinde yukarı bir sınır ayarlar)
-* bölge (ilgili hizmetlere sahip bir konum seçin. Bilişsel hizmetler veya Azure Machine Learning tümleştirme için aynı bölgedeki Hizmetleri birlikte bulma işlemi bir gereksinimdir.
+* hizmet adı URL uç noktasının bir parçası olur (faydalı hizmet adları için[ipuçları gözden geçirin](#name-the-service) ).
+* hizmet katmanı, [faturalandırmayı etkiler](search-sku-tier.md) ve kapasite üzerinde yukarı bir sınır ayarlar.
+* hizmet bölgesi belirli senaryoların kullanılabilirliğini tespit edebilir. Bilgi madenciliği ve AI zenginleştirme ile ilgileniyorsanız, bilişsel hizmetler ve muhtemelen Azure Bilişsel Arama ile aynı bölgede Azure Machine Learning gerekir.
 
 ## <a name="subscribe-free-or-paid"></a>Abone olma (ücretsiz veya ücretli)
 
@@ -41,7 +41,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 ## <a name="find-azure-cognitive-search"></a>Azure Bilişsel Arama bulun
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
 

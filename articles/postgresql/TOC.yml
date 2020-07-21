@@ -114,7 +114,7 @@
               href: concepts-data-encryption-postgresql.md
             - name: Altyapıyı çift şifreleme
               href: concepts-infrastructure-double-encryption.md
-            - name: Güvenlik temeli
+            - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
               href: security-baseline.md
         - name: İş sürekliliği
           items:
@@ -183,6 +183,8 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL yapılandırma
               href: concepts-hyperscale-ssl-connection-security.md
+            - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
+              href: postgresql-hyperscale-security-baseline.md
         - name: İş sürekliliği
           items:
             - name: Yedekleme ve geri yükleme

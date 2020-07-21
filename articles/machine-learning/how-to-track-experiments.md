@@ -3,20 +3,21 @@ title: ML denemeleri & ölçümlerini günlüğe kaydet
 titleSuffix: Azure Machine Learning
 description: Azure ML denemeleri izleyin ve model oluşturma işlemini iyileştirmek için çalışma ölçümlerini izleyin. Eğitim betiğe günlük kaydı ekleyin ve bir çalıştırmanın günlüğe kaydedilmiş sonuçlarını görüntüleyin.  Run. log, Run. start_logging veya ScriptRunConfig kullanın.
 services: machine-learning
-author: sdgilley
-ms.author: sgilley
-ms.reviewer: sgilley
+author: likebupt
+ms.author: keli19
+ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 07/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a4f58423206a812dd94cc14d32aa52114c147d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675211"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536375"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -107,7 +108,7 @@ Bu örnek, yukarıdaki temel sköğren Ridge model üzerinde genişletilir. Bu, 
 
 Tasarımcı denemeleri günlük mantığını eklemek için __Python betiği yürütme__ modülünü kullanın. Bu iş akışını kullanarak herhangi bir değeri günlüğe kaydedebilirsiniz, ancak farklı çalışmalardan model performansını izlemek için __model değerlendir__ modülünden ölçümleri günlüğe kaydetmek yararlı olur.
 
-1. Bir __Python betik__ modülünü, __değerlendirme modeli__ modülünüzün çıkışına bağlayın.
+1. Bir __Python betik__ modülünü, __değerlendirme modeli__ modülünüzün çıkışına bağlayın. __Modeli değerlendir__ 2 modelin değerlendirme sonuçlarını alabilir. Aşağıdaki örnek, üst çalışma düzeyinde 2 çıkış bağlantı noktası ölçümlerinin nasıl günlüğe alınacağını gösterir. 
 
     ![Model modülünü değerlendirmek için Python betik modülünü yürütmeyi bağlama](./media/how-to-track-experiments/designer-logging-pipeline.png)
 
@@ -115,23 +116,29 @@ Tasarımcı denemeleri günlük mantığını eklemek için __Python betiği yü
 
     ```python
     # dataframe1 contains the values from Evaluate Model
-    def azureml_main(dataframe1 = None, dataframe2 = None):
+    def azureml_main(dataframe1=None, dataframe2=None):
         print(f'Input pandas.DataFrame #1: {dataframe1}')
-
+    
         from azureml.core import Run
-
+    
         run = Run.get_context()
-
-        # Log the mean absolute error to the current run to see the metric in the module detail pane.
-        run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
-
+    
         # Log the mean absolute error to the parent run to see the metric in the run details page.
         # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
         # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
-        run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+
+        # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
+        run.parent.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
+
+        # Log right output port result of Evaluate Model.
+        run.parent.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
     
         return dataframe1,
     ```
+
+1. İşlem hattı çalıştırması tamamlandıktan sonra, *Mean_Absolute_Error* deneme sayfasında görebilirsiniz.
+
+    ![Model modülünü değerlendirmek için Python betik modülünü yürütmeyi bağlama](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
 
 ## <a name="manage-a-run"></a>Bir çalıştırmayı yönetme
 

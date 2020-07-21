@@ -1,6 +1,6 @@
 ---
 title: Azure özel bağlantısında özel bağlantı hizmeti oluşturma
-description: Bu hızlı başlangıçta, bir özel bağlantı hizmeti oluşturmak için bir Azure Resource Manager şablonu kullanırsınız.
+description: Bu hızlı başlangıçta, bir özel bağlantı hizmeti oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: c9ed628501e8fa02b816a1564b91620404dfc379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a3c7245a4e6c69e87791ca3364ad588b82572c6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529616"
 ---
-# <a name="quickstart-create-a-private-link-service-by-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak özel bağlantı hizmeti oluşturma
+# <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak özel bağlantı hizmeti oluşturma
 
-Bu hızlı başlangıçta, bir özel bağlantı hizmeti oluşturmak için bir Azure Resource Manager şablonu kullanırsınız.
+Bu hızlı başlangıçta, bir özel bağlantı hizmeti oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Bu hızlı başlangıcı [Azure Portal](create-private-link-service-portal.md), [Azure POWERSHELL](create-private-link-service-powershell.md)veya [Azure CLI](create-private-link-service-cli.md)kullanarak da tamamlayabilirsiniz.
 
-## <a name="prerequisite"></a>Önkoşul
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Etkin aboneliği olan bir Azure hesabınızın olması gerekir. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-link-service"></a>Özel bağlantı hizmeti oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu şablon bir özel bağlantı hizmeti oluşturur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-privatelink-service/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
@@ -48,13 +50,13 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicIpAddresses): her bir sanal makine için bir tane olmak üzere ıkı genel IP adresi vardır.
 - [**Microsoft. Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints): hizmete erişmek için özel uç nokta.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Azure Resource Manager şablonunu Azure 'a dağıtma:
+ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt**' ı seçin. Şablon bir sanal makine, standart yük dengeleyici, özel bağlantı hizmeti, Özel uç nokta, ağ ve doğrulanacak bir sanal makine oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
 
 2. Kaynak grubunuzu seçin veya oluşturun.
 3. Sanal Makine Yöneticisi Kullanıcı adını ve parolasını yazın.
@@ -63,7 +65,7 @@ Azure Resource Manager şablonunu Azure 'a dağıtma:
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
 > [!NOTE]
-> Azure Resource Manager şablonu, sanal makine myConsumerVm<b>{UniqueId}</b> kaynağı için benzersiz bir ad oluşturur. **{UniqueId}** için üretilen değeri değiştirin.
+> ARM şablonu, sanal makine myConsumerVm<b>{UniqueId}</b> kaynağı için benzersiz bir ad oluşturur. **{UniqueId}** için üretilen değeri değiştirin.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
@@ -73,7 +75,7 @@ Azure Resource Manager şablonunu Azure 'a dağıtma:
 
 2.  **Bağlan**'ı seçin. **Sanal makineye bağlan** açılır.
 
-3.  **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
+3.  **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
 
 4.  İndirilen .rdp dosyasını açın.
 
@@ -95,7 +97,7 @@ Azure Resource Manager şablonunu Azure 'a dağıtma:
 Özel uç nokta kullanılarak VM 'den http hizmetine nasıl bağlanaöğreneceksiniz.
 
 1.  _Myconsumervm {UniqueId}_ Uzak masaüstüne gidin.
-2.  Bir tarayıcı açın ve özel uç nokta adresini girin: http://10.0.0.5/ .
+2.  Bir tarayıcı açın ve özel uç nokta adresini girin: `http://10.0.0.5/` .
 3.  Varsayılan IIS sayfası görüntülenir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

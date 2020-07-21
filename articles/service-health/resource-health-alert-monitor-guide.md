@@ -3,11 +3,12 @@ title: Azure portalını kullanarak Kaynak Durumu Uyarıları oluşturma
 description: Azure kaynaklarınızın kullanılamadığı durumlarda size bildirimde bulunan Azure portal kullanarak uyarı oluşturun.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85218077"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529225"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portalı kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
@@ -18,7 +19,7 @@ Azure Kaynak Durumu, Azure kaynaklarınızın geçerli ve geçmiş sistem durumu
 > [!NOTE]
 > Kaynak Durumu uyarılar Şu anda önizlemededir.
 
-Kaynak sistem durumu bildirimleri [Azure etkinlik günlüğünde](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview) , etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verildiğinde, kaynak sistem durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır.
+Kaynak sistem durumu bildirimleri [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md) , etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verildiğinde, kaynak sistem durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır.
 Azure kaynağı, Azure aboneliğinize kaynak sistem durumu bildirimleri gönderdiğinde bir uyarı alabilirsiniz. Uyarıyı temel alarak yapılandırabilirsiniz:
 
 * Abonelik etkilendi.
@@ -34,9 +35,9 @@ Ayrıca, uyarının kime gönderileceğini de yapılandırabilirsiniz:
 * Mevcut bir eylem grubu seçin.
 * Yeni bir eylem grubu oluşturun (gelecekteki uyarılar için kullanılabilir).
 
-Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
 
-Azure Resource Manager şablonları kullanarak kaynak durumu bildirim uyarılarını yapılandırma hakkında daha fazla bilgi için, bkz. [Kaynak Yöneticisi Templates](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide).
+Azure Resource Manager şablonları kullanarak kaynak durumu bildirim uyarılarını yapılandırma hakkında daha fazla bilgi için, bkz. [Kaynak Yöneticisi Templates](./resource-health-alert-arm-template-guide.md).
 Azure portal kullanarak uyarı Kaynak Durumu
 
 ## <a name="resource-health-alert-using-azure-portal"></a>Azure portalını kullanarak uyarı Kaynak Durumu
@@ -58,12 +59,12 @@ Azure portal kullanarak uyarı Kaynak Durumu
     1. **Uyarı kuralı adı**: yeni uyarı kuralının adı.
     2. **Açıklama**: yeni uyarı kuralının açıklaması.
     3. **Uyarıyı kaynak grubuna kaydet**: Bu yeni kuralı kaydetmek istediğiniz kaynak grubunu seçin.
-7. **Eylem grubu**altında, açılan menüden, bu yeni uyarı kuralına atamak istediğiniz eylem grubunu belirtin. Ya da [Yeni bir eylem grubu oluşturun](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) ve yeni kurala atayın. Yeni bir grup oluşturmak için + **Yeni Grup**' u seçin.
+7. **Eylem grubu**altında, açılan menüden, bu yeni uyarı kuralına atamak istediğiniz eylem grubunu belirtin. Ya da [Yeni bir eylem grubu oluşturun](../azure-monitor/platform/action-groups.md) ve yeni kurala atayın. Yeni bir grup oluşturmak için + **Yeni Grup**' u seçin.
 8. Kuralları oluşturduktan sonra etkinleştirmek için, **oluşturma sırasında kuralı etkinleştir** **seçeneğini belirleyin.**
 9. **Uyarı kuralı oluştur**’u seçin.
 
 Etkinlik günlüğü için yeni uyarı kuralı oluşturulur ve pencerenin sağ üst köşesinde bir onay iletisi görüntülenir.
-Bir kuralı etkinleştirebilir, devre dışı bırakabilir, düzenleyebilir veya silebilirsiniz. [Etkinlik günlüğü kurallarını yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#view-and-manage-in-the-azure-portal)hakkında daha fazla bilgi edinin.
+Bir kuralı etkinleştirebilir, devre dışı bırakabilir, düzenleyebilir veya silebilirsiniz. [Etkinlik günlüğü kurallarını yönetme](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -74,6 +75,6 @@ Kaynak Durumu hakkında daha fazla bilgi edinin:
 
 Hizmet durumu uyarıları oluşturma:
 
-* [Hizmet durumu için uyarıları yapılandırma](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+* [Hizmet durumu için uyarıları yapılandırma](./alerts-activity-log-service-notifications-portal.md) 
 * [Azure etkinlik günlüğü olay şeması](../azure-monitor/platform/activity-log-schema.md)
-* [Resource Manager şablonlarını kullanarak kaynak sistem durumu uyarılarını yapılandırma](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Resource Manager şablonlarını kullanarak kaynak sistem durumu uyarılarını yapılandırma](./resource-health-alert-arm-template-guide.md)

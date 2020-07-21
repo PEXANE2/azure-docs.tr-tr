@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 3db3d619118be74ec1429ace70f580558c0a6c9d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134361"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528953"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure 'da Hyper-V olağanüstü durum kurtarma Azure Site Recovery Dağıtım Planlayıcısı hakkında
 
@@ -70,7 +70,7 @@ Araç aşağıdaki bilgileri sağlar:
 
 ## <a name="support-matrix"></a>Destek matrisi
 
-| | **Vmware’den Azure’a** |**Hyper-V'den Azure'a**|**Azure-Azure arası**|**Hyper-V’den ikincil siteye**|**VMware’den ikincil siteye**
+|**Kategoriler** | **Vmware’den Azure’a** |**Hyper-V'den Azure'a**|**Azure-Azure arası**|**Hyper-V’den ikincil siteye**|**VMware’den ikincil siteye**
 --|--|--|--|--|--
 Desteklenen senaryolar |Yes|Yes|Hayır|Evet*|No
 Desteklenen Sürüm | vCenter 6,7, 6,5, 6,0 veya 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
@@ -90,19 +90,24 @@ Araç, Hyper-V için üç ana aşama içerir: VM listesini alma, profil oluştur
  |
 
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>TrustedHosts listesine sunucu ekleme adımları
-1.  Aracın dağıtılacağı VM’nin, TrustedHosts listesinde profili oluşturulacak tüm konaklara sahip olması gerekir. İstemciyi Trustedhosts listesine eklemek için aşağıdaki komutu VM’deki yükseltilmiş bir PowerShell üzerinden çalıştırın. VM, Windows Server 2012 R2 veya Windows Server 2016 olabilir. 
+1. Aracın dağıtılacağı VM’nin, TrustedHosts listesinde profili oluşturulacak tüm konaklara sahip olması gerekir. İstemciyi Trustedhosts listesine eklemek için aşağıdaki komutu VM’deki yükseltilmiş bir PowerShell üzerinden çalıştırın. VM, Windows Server 2012 R2 veya Windows Server 2016 olabilir. 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
-
-1.  Profili oluşturulması gereken her Hyper-V Konağı aşağıdakilere sahip olmalıdır:
+   ```powershell
+   set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+   ```
+1. Profili oluşturulması gereken her Hyper-V Konağı aşağıdakilere sahip olmalıdır:
 
     a. Aracın TrustedHosts listesi içinde çalıştırılacağı VM. Hyper-V konağındaki yükseltilmiş bir PowerShell üzerinden aşağıdaki komutu çalıştırın.
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```powershell
+      set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```
 
     b. Etkinleştirilmiş durumda PowerShell uzaktan iletişimi.
 
-            Enable-PSRemoting -Force
+      ```powershell
+      Enable-PSRemoting -Force
+      ```
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>Dağıtım planlayıcısı aracını indirme ve ayıklama
 

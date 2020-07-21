@@ -3,22 +3,22 @@ title: VM görüntüleri için paylaşılan erişim imzası URI 'SI-Azure Market
 description: Azure Marketi 'nde sanal sabit diskleriniz (VHD) için bir paylaşılan erişim imzası (SAS) URI 'SI oluşturun.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 04/09/2020
-ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121733"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536156"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM Görüntünüz için paylaşılan erişim imzası URI 'SI alın
 
 Bu makalede, her bir sanal sabit disk (VHD) için paylaşılan erişim imzası (SAS) Tekdüzen Kaynak tanımlayıcısı (URI) oluşturma açıklanır.
 
-Yayımlama işlemi sırasında, planlarınızla ilişkili her bir VHD için bir URI sağlamanız gerekir. Bu planlar daha önce SKU 'Lar veya stok tutma birimleri olarak adlandırılmıştı. Sertifika işlemi sırasında Microsoft 'un bu VHD 'lere erişmesi gerekir. Bu URI 'yi Iş Ortağı Merkezi 'ndeki **planlar** sekmesinde girersiniz.
+Yayımlama işlemi sırasında, planlarınızla ilişkili her VHD için bir URI sağlamanız gerekir (daha önce SKU 'Lar adı verilir). Sertifika işlemi sırasında Microsoft 'un bu VHD 'lere erişmesi gerekir. Bu URI 'yi Iş Ortağı Merkezi 'ndeki **planlar** sekmesinde girersiniz.
 
 VHD 'niz için SAS URI 'Leri oluştururken şu gereksinimleri izleyin:
 
@@ -110,7 +110,7 @@ SAS adresi (URL) oluşturmak için kullanılan iki ortak araç vardır:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-Yayımlamayı planladığınız SKU 'lardaki her VHD için bu adımları tekrarlayın.
+Yayımlayacağınız planlardaki her VHD için bu adımları tekrarlayın.
 
 ## <a name="verify-the-sas-uri"></a>SAS URI 'sini doğrulama
 

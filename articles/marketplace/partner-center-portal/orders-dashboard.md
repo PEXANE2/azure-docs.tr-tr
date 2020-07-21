@@ -3,14 +3,14 @@ title: Ticari Market Analytics 'te iş ortağı merkezi siparişleri panosu
 description: Market teklif siparişleriniz hakkındaki analitik raporlara grafik ve indirilebilir bir biçimde nasıl erişebileceğinizi öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118367"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536139"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Siparişler panosu
 
@@ -29,12 +29,9 @@ Iş ortağı merkezi analiz araçları 'ndaki **siparişler panosuna** erişmek 
 - [Coğrafya tarafından siparişler](#orders-by-geography)
 - [Tekliflere göre siparişler](#orders-by-offers)
 - [Site başına ve bilgisayar başına düşen sipariş eğilimi](#orders-trend-per-site-versus-per-seat)
-- [SKU 'Lara göre siparişler](#orders-by-skus)
+- [Planlara göre siparişler](#orders-by-plans)
 - [Siparişler ve koltuk eğilimi](#orders-and-seats-trend)
 - [Sipariş Ayrıntıları tablosu](#order-details-table)
-
-> [!NOTE]
-> Analiz raporlarının Bulut İş Ortağı Portalı (CPP) ve Iş Ortağı Merkezi 'ndeki yeni ticari Market programında nasıl görüntüleneceği arasında farklılıklar vardır. Belirli bir şekilde, CPP içindeki **satıcı öngörülerinin** , kullanım tabanlı tekliflere ve kullanım tabanlı olmayan tekliflere yönelik verileri görüntüleyen bir **siparişler & kullanım** sekmesi vardır. Iş Ortağı Merkezi 'nde, **siparişler** sayfasının SaaS teklifleri için ayrı bir sekmesi vardır.
 
 ## <a name="order-dashboard-details"></a>Pano ayrıntılarını Sırala
 
@@ -76,16 +73,16 @@ Bu **siparişler** , halka grafik sunarak, teklif adlarına göre siparişleri (
 
 **Site başına ve bilgisayar** başına halka grafik, müşteriler tarafından satın alınan her site SaaS siparişi için ve Kullanıcı başına SaaS siparişlerinin dökümünü temsil eder (Bu grafik iptal edilen siparişleri içerir). Sütun grafiği, her site SaaS için ve müşteriler tarafından satın alınan her bilgisayar SaaS siparişi için eğilimi temsil eder (Bu grafik iptal edilen siparişleri içerir).
 
-### <a name="orders-by-skus"></a>SKU 'Lara göre siparişler
+### <a name="orders-by-plans"></a>Planlara göre siparişler
 
-**SKU 'lara göre siparişler** grafiği, tüm teklifleriniz Için stok tutma BIRIMI (SKU) düzeyinde siparişlerin eğilimini temsil eder (iptal edilen siparişler dahildir). Halka grafik, ilk beş SKU siparişinin dökümünü temsil eder ve sütun grafiği, ilk beş SKU 'nun siparişlerinin eğilimini temsil eder.
+Plana **göre siparişler** grafiği, tüm teklifleriniz için plan düzeyinde siparişlerin eğilimini temsil eder (iptal edilen siparişler dahildir). Halka grafik, ilk beş plan siparişlerinin dökümünü temsil eder ve sütun grafiği, ilk beş plana ait siparişlerin eğilimini temsil eder.
 
 ### <a name="orders-and-seats-trend"></a>Siparişler ve koltuk eğilimi
 
 **Siparişler ve koltuk eğilimi** grafiği en yüksek sipariş sayısı ile ilk 50 teklifi sunar. Bunlar bir öncü panoda görüntülenir ve en yüksek sıra sayısına ve sıra yüzdesine göre sıralanır.
 
-- **SKU 'lara göre siparişler**: grafikteki en üstteki beş SKU 'nun sıra sayısı dökümünü görüntülemek için bir teklif seçin.
-- **SKU 'lara göre**bilgisayar sayısı: Ilk beş SKU için bir koltuk için aylık eğilim. Seçtiğiniz teklif bir bilgisayar başına teklif değilse, bu alan grafiğinde herhangi bir veri görmezsiniz.
+- **Planlara göre siparişler** – grafikteki en üstteki beş plan için sıra sayısı dökümünü görüntülemek üzere bir teklif seçin.
+- **Planlara göre** bilgisayar sayısı: ilk beş plan için bir koltuk için aylık eğilim. Seçtiğiniz teklif bir bilgisayar başına teklif değilse, bu alan grafiğinde herhangi bir veri görmezsiniz.
 
 ### <a name="canceled-orders-by-offers"></a>Tekliflere göre iptal edilen siparişler
 

@@ -4,46 +4,42 @@ description: Yayımcı ad alanı altındaki tekliflerin özetlenen listesini alm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: ab5f09d0d81d8a6aa526576faea0b11a6536381a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 22d22feb3931f466647c2c4d94bdf924568f2dc5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113488"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535901"
 ---
-<a name="retrieve-offers"></a>Teklifleri alma
-===============
+# <a name="retrieve-offers"></a>Teklifleri alma
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI parametreleri
---------------
+## <a name="uri-parameters"></a>URI parametreleri
 
-| **Adı**         |  **Açıklama**                         |  **Veri türü** |
+| **Ad**         |  **Açıklama**                         |  **Veri türü** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  PublisherId     | Yayımcı tanımlayıcı, örneğin`contoso` |   Dize    |
 |  api-sürümü     | En son API sürümü                    |    Tarih        |
 |  |  |
 
+## <a name="header"></a>Üst bilgi
 
-<a name="header"></a>Üst bilgi
-------
-
-|  **Adı**        |         **Değer**       |
+|  **Ad**        |         **Değer**       |
 |  --------------- |       ----------------  |
 |  İçerik Türü    | `application/json`      |
 |  Yetkilendirme   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
-
-<a name="body-example"></a>Gövde örneği
-------------
+## <a name="body-example"></a>Gövde örneği
 
 ### <a name="response"></a>Yanıt
 
@@ -66,7 +62,7 @@ Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 
 ### <a name="response-body-properties"></a>Yanıt gövdesi özellikleri
 
-|  **Adı**       |       **Açıklama**                                                                                                  |
+|  **Ad**       |       **Açıklama**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  Offertypeıd    | Teklifin türünü tanımlar                                                                                           |
 |  PublisherId    | Yayımcıyı benzersiz bir şekilde tanımlayan tanımlayıcı                                                                      |
@@ -76,7 +72,6 @@ Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 |  tanım     | İş yükünün gerçek tanımının özetlenen görünümünü içerir. Ayrıntılı bir tanım almak için, belirli bir [teklifi al](./cloud-partner-portal-api-retrieve-specific-offer.md) API 'sini kullanın. |
 |  changedTime    | Teklifin en son değiştirildiği UTC saati                                                                              |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
@@ -88,16 +83,15 @@ Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 |  404      | `Not found`-Belirtilen varlık yok.                                                                 |
 |  |  |
 
-
 ### <a name="offer-status"></a>Teklif durumu
 
-|  **Adı**                    | **Açıklama**                                  |
+|  **Ad**                    | **Açıklama**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  Neveryayınlandı              | Teklif hiç yayımlanmadı.                  |
 |  NotStarted                  | Teklif yenidir ancak başlatılmamış.                 |
 |  WaitingForPublisherReview   | Teklif, yayımcı onayını bekliyor.         |
 |  Çalışıyor                     | Teklif gönderimi işleniyor.             |
-|  Başarılı oldu                   | Teklif gönderimi işlemeyi tamamladı.       |
+|  Başarılı                   | Teklif gönderimi işlemeyi tamamladı.       |
 |  İptal edildi                    | Teklif Gönderimi iptal edildi.                   |
 |  Başarısız                      | Teklif gönderimi başarısız oldu.                         |
 |  |  |
