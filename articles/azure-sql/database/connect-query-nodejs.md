@@ -24,7 +24,7 @@ ms.locfileid: "86504555"
 
 Bu hızlı başlangıçta, bir veritabanına bağlanmak ve verileri sorgulamak için Node.js kullanırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
