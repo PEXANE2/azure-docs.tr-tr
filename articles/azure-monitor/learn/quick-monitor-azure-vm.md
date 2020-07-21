@@ -48,7 +48,7 @@ Konak VM 'si için ölçümler ve etkinlik günlükleri toplanırken, Konuk işl
 
 6. SANAL makinelerinizi aboneliğinizdeki eklendi olan diğer VM 'lerle görürsünüz. Aboneliğinizdeki eklendi olmayan sanal makineleri görüntülemek istiyorsanız **izlenmiyor** sekmesini seçin.
 
-    ![Kullanmaya başlayın](media/quick-monitor-azure-vm/get-started.png)
+    ![başlarken](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma

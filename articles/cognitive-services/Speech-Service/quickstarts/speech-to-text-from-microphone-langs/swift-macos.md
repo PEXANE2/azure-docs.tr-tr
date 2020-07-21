@@ -23,7 +23,7 @@ Hızlı başlangıçlara [konuşma birleştirme](~/articles/cognitive-services/S
 
 Bu makalede, bir mikrofondan metne kaydedilen konuşmayı oluşturmak için bilişsel hizmetler konuşma SDK 'sını kullanarak Swift 'ta macOS uygulaması oluşturmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
 

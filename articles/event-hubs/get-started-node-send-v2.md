@@ -16,7 +16,7 @@ Bu hızlı başlangıçta, **Azure/Event-Hub 5** JavaScript paketini kullanarak 
 > [!IMPORTANT]
 > Bu hızlı başlangıç, en son Azure/Olay-Hub sürümü 5 paketini kullanır. Eski Azure/Olay-Hub 'ları sürüm 2 paketini kullanan hızlı bir başlangıç için bkz. [Azure/Event-hub sürüm 2 kullanarak olay gönderme ve alma](event-hubs-node-get-started-send.md). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure Event Hubs 'yi yeni kullanıyorsanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:

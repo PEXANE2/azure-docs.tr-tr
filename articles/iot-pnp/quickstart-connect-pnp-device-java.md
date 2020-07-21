@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, örnek bir IoT Tak ve Kullan cihaz uygulamasının na
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Java, 8 gerekir. Ayrıca Maven 3 ' ü yüklemeniz gerekir.
 

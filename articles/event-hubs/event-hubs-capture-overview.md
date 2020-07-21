@@ -3,12 +3,12 @@ title: Akış olaylarını yakala-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs aracılığıyla olayları akışını yakalamanızı sağlayan yakalama özelliğine bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: be5a8bed06f5df0ffcee66c277f8ba5fa1a1bf74
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985267"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522134"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
 Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) alanında Event Hubs akış verilerini otomatik olarak yakalamanızı veya tercih ettiğiniz bir zaman veya boyut aralığı belirtme esnekliğine sahip olan [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabı. Yakalama ayarı hızlıdır, çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs yakalama, akış verilerini Azure 'a yüklemenin en kolay yoludur ve veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
@@ -89,7 +89,7 @@ Eksiksiz bir uçtan uca örnek, akış üzerinde ölçek deposunda mevcuttur:
 
 - [HDInsight: Azure Storage 'daki adres dosyaları][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Azure Blob depolama][Azure Databricks: Azure Blob Storage]
-- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
+- [Azure Kubernetes Service](../aks/spark-job.md) 
 
 ### <a name="use-avro-tools"></a>Avro araçlarını kullanma
 
@@ -152,7 +152,7 @@ Azure portal ve Azure Resource Manager şablonunu kullanarak bu özelliği etkin
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/

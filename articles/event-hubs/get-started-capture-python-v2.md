@@ -28,7 +28,7 @@ Bu hızlı başlangıçta:
 > * Bir Python betiği kullanarak Olay Hub 'ınıza veri gönderme.
 > * Başka bir Python betiği kullanarak Event Hubs yakalamadan dosyaları okuyun ve işleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - PıP yüklü ve güncelleştirilmiş Python 2,7 ve 3,5 ya da üzeri.  
 - Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .  
