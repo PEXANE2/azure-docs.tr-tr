@@ -4,12 +4,12 @@ description: Bu öğretici, Azure PowerShell kullanarak birden fazla Azure VM 'y
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171777"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513226"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Azure VM’lerini PowerShell ile yedekleme
 
@@ -48,7 +48,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 [Kurtarma Hizmetleri Kasası](backup-azure-recovery-services-vault-overview.md) , Azure VM 'leri gibi korunan kaynaklar için yedekleme verilerini depolayan bir mantıksal kapsayıcıdır. Bir yedekleme işi çalıştırıldığında, kurtarma hizmetleri kasasının içinde bir kurtarma noktası oluşturur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
 
 * Bu öğreticide, kasayı, yedeklemek istediğiniz VM ile aynı kaynak grubunda ve konumda oluşturursunuz.
-* Azure Backup, yedeklenen veriler için depolamayı otomatik olarak işler. Kasa, varsayılan olarak [coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy-grs.md)kullanır. Coğrafi yedeklilik, yedeklenen verilerin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
+* Azure Backup, yedeklenen veriler için depolamayı otomatik olarak işler. Kasa, varsayılan olarak [coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanır. Coğrafi yedeklilik, yedeklenen verilerin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
 
 Kasayı aşağıdaki gibi oluşturun:
 

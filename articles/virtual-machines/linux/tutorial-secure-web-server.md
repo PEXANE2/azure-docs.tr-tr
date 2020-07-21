@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460486"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501781"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Öğretici: Azure 'daki bir Linux sanal makinesinde bulunan ve Key Vault depolanan TLS/SSL sertifikaları ile Web sunucusunun güvenliğini sağlama
 Web sunucularının güvenliğini sağlamak için, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS), sertifika Web trafiğini şifrelemek için kullanılabilir. Bu TLS/SSL sertifikaları Azure Key Vault depolanabilir ve Azure 'da Linux sanal makinelerine (VM 'Ler) sertifikaların güvenli bir şekilde dağıtılmasına izin verebilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -30,7 +30,7 @@ Web sunucularının güvenliğini sağlamak için, daha önce Güvenli Yuva Katm
 > * VM oluşturma ve NGINX web sunucusunu yükleme
 > * Sertifikayı VM 'ye ekleme ve NGıNX 'i TLS bağlaması ile yapılandırma
 
-Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](../../cloud-shell/overview.md)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -48,7 +48,7 @@ Key Vault ve sertifikalarını oluşturabilmek için [az group create](/cli/azur
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Ardından, [az keyvault create](/cli/azure/keyvault) ile bir Key Vault oluşturun ve bu anahtarın VM dağıtırken kullanılmasını etkinleştirin. Her Key Vault için benzersiz bir ad gerekir ve tüm harfler küçük olmalıdır. Aşağıdaki örnekteki * \<mykeykasası>* kendi benzersiz Key Vault adınızla değiştirin:
+Ardından, [az keyvault create](/cli/azure/keyvault) ile bir Key Vault oluşturun ve bu anahtarın VM dağıtırken kullanılmasını etkinleştirin. Her Key Vault için benzersiz bir ad gerekir ve tüm harfler küçük olmalıdır. *\<mykeyvault>* Aşağıdaki örnekte, kendi benzersiz Key Vault adınızla değiştirin:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -135,7 +135,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Güvenli web uygulamasını sınama
-Artık bir Web tarayıcısı açıp adres çubuğuna *https:\/\/\<publicıpaddress>* girebilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https: \/ \/ \<publicIpAddress> * yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-secure-web-server/browser-warning.png)
 

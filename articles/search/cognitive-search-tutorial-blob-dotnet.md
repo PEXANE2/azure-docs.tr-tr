@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 25df5f37f8aef55bc025b579ec48a2fab7dd6b72
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 0ad3e6dbb63d7c89919d6d341bd62c5d57960a43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080168"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511662"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
 
@@ -30,7 +30,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](h
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -560,10 +560,13 @@ Bu bölümde, aranabilir dizine dahil edilecek alanları ve her bir alana ilişk
 
 Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
-| alan adları: | `id`       | içerik   | languageCode | keyPhrases         | organizations     |
-|--------------|----------|-------|----------|--------------------|-------------------|
-| field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
-
+| Alan adları | Alan türleri |
+| --- | --- |
+| kimlik | Edm.String |
+| içerik | Edm.String |
+| languageCode | Edm.String |
+| keyPhrases | List<Edm.String> |
+| organizations | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>Demoındex sınıfı oluşturma
 
@@ -842,7 +845,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Aşağıdaki kodu `Main` içine ekleyin. İlk try-catch, her alanın adı, türü ve öznitelikleri ile dizin tanımını döndürür. İkincisi, `Select` örneğin sonuçlara dahil edilecek alanları belirten parametreli bir sorgudur `organizations` . Bir arama dizesi, `"*"` tek bir alanın tüm içeriğini döndürür.
+Aşağıdaki kodu öğesine ekleyin `Main` . İlk try-catch, her alanın adı, türü ve öznitelikleri ile dizin tanımını döndürür. İkincisi, `Select` örneğin sonuçlara dahil edilecek alanları belirten parametreli bir sorgudur `organizations` . Bir arama dizesi, `"*"` tek bir alanın tüm içeriğini döndürür.
 
 ```csharp
 //Verify content is returned after indexing is finished
@@ -897,7 +900,7 @@ Son olarak, daha fazla yineleme için sonuçların nasıl test edileceğini ve s
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Bir projenin sonunda kendi aboneliğinizde çalışırken, artık ihtiyaç duyulmadığınızda kaynakları kaldırmak iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki tüm kaynaklar veya kaynak grupları bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

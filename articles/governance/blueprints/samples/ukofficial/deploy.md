@@ -1,13 +1,14 @@
 ---
 title: UK resmi & UK NHS şema örnekleri dağıt
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Birleşik Krallık resmi ve UK NHS şeması örnekleri için adımları dağıtın.
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 2ac2d17c08b3f585f86d1b2d339c3c7cf52844ce
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a4512eb982943664afc8217c5332e5e3b6e62fc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037180"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521454"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK resmi ve UK NHS şema örneklerini dağıtın
 
@@ -61,7 +62,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel Bilgiler
+   - Temel bilgiler
 
      - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
@@ -90,7 +91,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
-Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
+Yapıt adı|Yapıt türü|Parametre adı|Description|
 |-|-|-|-|
 |UK RESMI veya UK NHS için Blueprint girişimi|İlke ataması |Tanılama günlüklerini denetlemeye yönelik kaynak türleri (Ilke: Birleşik Krallık RESMI veya UK NHS için Blueprint girişimi) |Tanılama günlük ayarı 'nın etkin olup olmadığını denetlemek için kaynak türlerinin listesi.  Kabul edilebilir değerler için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../../../../azure-monitor/platform/resource-logs-schema.md). |
 |\[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[ Önizleme \] : Linux sanal makineleri Için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |

@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fcf8eb8cd110fab4f1fc85a317f1dd491d21c091
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170284"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529956"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Öğretici: Notification Hubs kullanarak Windows Phone uygulamalara anında iletme bildirimleri gönderin
 
@@ -43,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Windows Phone uygulaması oluşturma
 > * Bildirim test gönderimi
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Mobil geliştirme bileşenleri ile Visual Studio 2015 Express](https://www.visualstudio.com/vs/older-downloads/)
@@ -65,7 +65,7 @@ Bu öğreticiyi tamamlamak Windows Phone 8 uygulamalarına ilişkin diğer tüm 
     Hub'ınız şimdi oluşturuldu ve Windows Phone için kimliği doğrulanmamış bildirim göndermek üzere yapılandırıldı.
 
     > [!NOTE]
-    > Bu öğretici, MPNS'yi kimlik doğrulamasız modda kullanır. MPNS kimlik doğrulamasız mod, her bir kanala gönderebileceğiniz bildirimlerle ilgili kısıtlamalara sahiptir. Notification Hubs, sertifikanızı karşıya yüklemenize olanak sağlayarak [MPNS kimlik doğrulamalı mod](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx)'u destekler.
+    > Bu öğretici, MPNS'yi kimlik doğrulamasız modda kullanır. MPNS kimlik doğrulamasız mod, her bir kanala gönderebileceğiniz bildirimlerle ilgili kısıtlamalara sahiptir. Notification Hubs, sertifikanızı karşıya yüklemenize olanak sağlayarak [MPNS kimlik doğrulamalı mod](/previous-versions/windows/apps/ff941099(v=vs.105))'u destekler.
 
 ## <a name="create-a-windows-phone-application"></a>Windows Phone uygulaması oluşturma
 
@@ -117,7 +117,7 @@ Bu bölümde, bildirim hub’ınıza kendi kendine kaydolan bir Windows Phone uy
     ```
 
    > [!NOTE]
-   > Değer, `MyPushChannel` [httpnotificationchannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) koleksiyonundaki mevcut bir kanalı aramak için kullanılan bir dizindir. Bu koleksiyonda bir tane bulunmuyorsa bu adla yeni bir giriş oluşturun.
+   > Değer, `MyPushChannel` [httpnotificationchannel](/previous-versions/ff402781(v=vs.110)) koleksiyonundaki mevcut bir kanalı aramak için kullanılan bir dizindir. Bu koleksiyonda bir tane bulunmuyorsa bu adla yeni bir giriş oluşturun.
 
     Hub 'ınızın adını ve önceki bölümde not ettiğiniz adlı bağlantı dizesini ekleyin `DefaultListenSharedAccessSignature` .
     Bu kod, MPNS'den uygulamanın kanal URI'sini alır ve ardından bu kanal URI'sini bildirim hub'ınıza kaydeder. Bu kod ayrıca uygulama her başlatıldığında kanal URI'sinin bildirim hub'ınıza kaydedilmesini garanti eder.
@@ -174,10 +174,10 @@ Bu basit örnekte, tüm Windows Phone 8 cihazlarınıza anında iletme bildiriml
 [213]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[MPNS authenticated mode]: https://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[MPNS authenticated mode]: /previous-versions/windows/apps/ff941099(v=vs.105)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[toast catalog]: https://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[tile catalog]: https://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[toast catalog]: /previous-versions/windows/apps/jj662938(v=vs.105)
+[tile catalog]: /previous-versions/windows/apps/hh202948(v=vs.105)
 [Notification Hubs - Windows Phone Silverlight eğiticisi]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari

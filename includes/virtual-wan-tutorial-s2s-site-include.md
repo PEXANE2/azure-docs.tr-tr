@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ac23912b12bc6c7fcd40d7433cb4e2d257eeb5d0
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562954"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525194"
 ---
 1. Sanal WAN 'nizin portal sayfasında, **bağlantı** bölümünde, VPN siteleri sayfasını açmak için **VPN siteleri** ' ni seçin.
 2. **VPN siteleri** sayfasında **+Site oluştur**’a tıklayın.
 
-   ![Temel Bilgiler](./media/virtual-wan-tutorial-site-include/basics.png "Temel Bilgiler")
+   ![Temel bilgiler](./media/virtual-wan-tutorial-site-include/basics.png "Temel bilgiler")
 3. **VPN sitesi oluştur** sayfasında, **temel bilgiler** sekmesinde aşağıdaki alanları doldurun:
 
     * **Bölge** -daha önce konum olarak adlandırılır. Bu, içinde bu site kaynağını oluşturmak istediğiniz konumdur.
     * **Ad** -şirket içi sitenize başvurmak istediğiniz addır.
     * **Cihaz satıcısı** -VPN cihaz satıcısının adı (örneğin: Citrix, Cisco, Barbcuda). Bunun yapılması, Azure ekibinin daha sonra ek iyileştirme olanakları eklemek veya sorunu gidermenize yardımcı olmak için ortamınızı daha iyi anlamasına yardımcı olabilir.
-    * **Sınır Ağ Geçidi Protokolü** -etkinleştir, siteden tüm bağlantıların BGP 'yi etkin hale etkinleşeceği anlamına gelir. Bağlantı bölümündeki VPN sitesinden her bir bağlantı için BGP bilgilerini son olarak ayarlayacaksınız. Sanal WAN üzerinde BGP 'yi yapılandırmak, Azure sanal ağ geçidi VPN üzerinde BGP 'yi yapılandırmaya eşdeğerdir. Şirket içi BGP eşi adresiniz, cihaza VPN 'nizin genel IP adresi veya VPN sitesinin VNet adres alanı ile aynı olmamalıdır. BGP eşi IP 'niz için VPN cihazında farklı bir IP adresi kullanın. Bu aygıttaki geri döngü arabirimine atanmış bir adres olabilir. Ancak, bir APIPA (169.254. x. x) adresi olamaz. Bu adresi, konumu temsil eden ilgili VPN sitesinde belirtin. BGP önkoşulları için bkz. [Azure VPN Gateway Ile BGP hakkında](../articles/vpn-gateway/vpn-gateway-bgp-overview.md). VPN sitesi BGP ayarı etkinleştirildikten sonra, BGP parametrelerini (bağlantı IP 'si ve AS # olarak eşleme) güncelleştirmek üzere her zaman bir VPN bağlantısını düzenleyebilirsiniz.
+    * **Sınır Ağ Geçidi Protokolü** -etkinleştir, siteden tüm bağlantıların BGP 'yi etkin hale etkinleşeceği anlamına gelir. Bağlantı bölümündeki VPN sitesinden her bir bağlantı için BGP bilgilerini son olarak ayarlayacaksınız. Sanal WAN üzerinde BGP 'yi yapılandırmak, Azure sanal ağ geçidi VPN üzerinde BGP 'yi yapılandırmaya eşdeğerdir. Şirket içi BGP eşi adresiniz, cihaza VPN 'nizin genel IP adresi veya VPN sitesinin VNet adres alanı ile aynı olmamalıdır. BGP eşi IP 'niz için VPN cihazında farklı bir IP adresi kullanın. Bu, cihazdaki geri döngü arabirimine atanmış bir adres olabilir. Bu adresi, konumu temsil eden ilgili VPN sitesinde belirtin. BGP önkoşulları için bkz. [Azure VPN Gateway Ile BGP hakkında](../articles/vpn-gateway/vpn-gateway-bgp-overview.md). VPN sitesi BGP ayarı etkinleştirildikten sonra, BGP parametrelerini (bağlantı IP 'si ve AS # olarak eşleme) güncelleştirmek üzere her zaman bir VPN bağlantısını düzenleyebilirsiniz.
     * **Özel adres alanı** -şirket içi SITENIZDE bulunan IP adres alanı. Bu adres alanını hedefleyen trafik yerel sitenize yönlendirilir. Bu, site için BGP etkinleştirilmediğinde gereklidir.
     * **Hub 'lar** -sitenizin bağlanmasını istediğiniz Merkez. Bir site yalnızca VPN Gateway olan hublara bağlanabilir. Bir hub görmüyorsanız, önce o hub 'da bir VPN Ağ Geçidi oluşturun.
 4. Daldaki fiziksel bağlantılarla ilgili bilgi eklemek için **Bağlantılar** ' ı seçin. Bir sanal WAN iş ortağı CPE cihazınız varsa, bu bilgilerin Azure ile birlikte kullanıma alınıp ayarlanmalarını sağlamak için BT 'nin sistemlerine ait olan şube bilgileri karşıya yükleme işleminin bir parçası olarak bu bilgileri inceleyin.

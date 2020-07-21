@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7c84c705da99bd6f04a6737a1c781b905cbeaad6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100490"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508245"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Öğretici: Windows sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -52,7 +52,7 @@ Güvenlik Merkezi veri toplama aracısı tüm sanal makinelere yüklenir ve veri
 
 ## <a name="set-up-a-security-policy"></a>Güvenlik ilkesi ayarlama
 
-Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı ve önerilerde bulunduğu öğeleri tanımlamak için kullanılır. Farklı Azure kaynaklarına farklı güvenlik ilkeleri uygulayabilirsiniz. Varsayılan olarak Azure kaynakları tüm ilke öğelerine karşı değerlendirilse de, tüm Azure kaynakları için veya bir kaynak grubu için tek tek ilke öğelerini kapatabilirsiniz. Güvenlik Merkezi güvenlik ilkeleri hakkında ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi’nde güvenlik ilkelerini ayarlama](../../security-center/security-center-policies.md). 
+Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı ve önerilerde bulunduğu öğeleri tanımlamak için kullanılır. Farklı Azure kaynaklarına farklı güvenlik ilkeleri uygulayabilirsiniz. Varsayılan olarak Azure kaynakları tüm ilke öğelerine karşı değerlendirilse de, tüm Azure kaynakları için veya bir kaynak grubu için tek tek ilke öğelerini kapatabilirsiniz. Güvenlik Merkezi güvenlik ilkeleri hakkında ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi’nde güvenlik ilkelerini ayarlama](../../security-center/tutorial-security-policy.md). 
 
 Aboneliğin tümüne bir güvenlik ilkesi oluşturmak için:
 
@@ -105,7 +105,7 @@ Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının 
 Fiyatlandırma katmanını değiştirmek için:  
 
 1. Güvenlik Merkezi panosunda **Güvenlik ilkesi**’ne tıklayın ve sonra aboneliğinizi seçin.
-2. **Fiyatlandırma katmanı**'nı seçin.
+2. **Fiyatlandırma katmanını**seçin.
 3. **Standart**'ı ve dikey pencerenin en üstünden **Kaydet**'i seçin.
 
 

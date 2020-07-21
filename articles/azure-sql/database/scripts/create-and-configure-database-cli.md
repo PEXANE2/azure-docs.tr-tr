@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: de554f48297c228df9345a6e822096d05b85652f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cb8850adaf638aca3ed69c3939916e132f66062d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196870"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504572"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Azure CLı kullanarak tek bir veritabanı oluşturun ve bir güvenlik duvarı kuralı yapılandırın
 
@@ -48,7 +48,7 @@ az group delete --name $resource
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
-| | |
+| Komut | Açıklama |
 |---|---|
 | [az sql server](/cli/azure/sql/server#az-sql-server-create) | Sunucu komutları |
 | [az SQL Server güvenlik duvarı](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Sunucu güvenlik duvarı komutları. |

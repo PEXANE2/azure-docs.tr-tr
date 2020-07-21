@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 857bddaad32ea98635f5fbd2f8202975fb033b70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8703e62aa7880fdddc347fa96edc213d9d54eab2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459449"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501186"
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Azure'da bir Windows sanal makinesi şifreleme
 
@@ -47,18 +47,18 @@ Bu betik bir kaynak grubu, Azure Key Vault, hizmet sorumlusu, sanal makine ve t�
 
 | Komut | Notlar |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault) | Şifreleme anahtarları gibi güvenli verileri depolamak için bir Azure Key Vault oluşturur. |
-| [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key) | Key Vault içinde bir şifreleme anahtarı oluşturur. |
-| [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp) | Güvenli bir şekilde kimlik doğrulamak ve şifreleme anahtarlarına erişimi denetlemek üzere bir Azure Active Directory hizmet sorumlusu oluşturur. |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault) | Key Vault üzerinde hizmet sorumlusuna şifreleme anahtarları için erişim verecek izinleri ayarlar. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve NSG’ye bağlar. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
-| [az vm encryption enable](https://docs.microsoft.com/cli/azure/vm/encryption) | Hizmet sorumlusu kimlik bilgilerini ve şifreleme anahtarını kullanarak VM üzerinde şifrelemeyi etkinleştirir. |
-| [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | VM şifreleme işleminin durumunu gösterir. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az keyvault create](/cli/azure/keyvault) | Şifreleme anahtarları gibi güvenli verileri depolamak için bir Azure Key Vault oluşturur. |
+| [az keyvault key create](/cli/azure/keyvault/key) | Key Vault içinde bir şifreleme anahtarı oluşturur. |
+| [az ad sp create-for-rbac](/cli/azure/ad/sp) | Güvenli bir şekilde kimlik doğrulamak ve şifreleme anahtarlarına erişimi denetlemek üzere bir Azure Active Directory hizmet sorumlusu oluşturur. |
+| [az keyvault set-policy](/cli/azure/keyvault) | Key Vault üzerinde hizmet sorumlusuna şifreleme anahtarları için erişim verecek izinleri ayarlar. |
+| [az vm create](/cli/azure/vm) | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve NSG’ye bağlar. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
+| [az vm encryption enable](/cli/azure/vm/encryption) | Hizmet sorumlusu kimlik bilgilerini ve şifreleme anahtarını kullanarak VM üzerinde şifrelemeyi etkinleştirir. |
+| [az vm encryption show](/cli/azure/vm/encryption) | VM şifreleme işleminin durumunu gösterir. |
+| [az group delete](/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek sanal makine CLI betiği örnekleri, [Azure Windows VM belgeleri](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%windows%2ftoc.json) içinde bulunabilir.

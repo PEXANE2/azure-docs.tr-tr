@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 82131ab4e1f990af25c669131e20c789a0f74dcf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808387"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518666"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Öğretici-Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme
 
@@ -27,7 +27,7 @@ Azure Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](../../
 
 Azure depolama için istemci tarafı şifreleme hakkında genel bilgi için bkz. [Istemci tarafı şifreleme ve Microsoft Azure depolama için Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
@@ -50,7 +50,7 @@ Azure depolama için istemci tarafı şifrelemeye genel bakış için bkz. [Iste
 
 Bu öğreticiye devam etmek için aşağıdaki adımları izlemeniz gerekir: öğreticide bir [.NET Web uygulaması kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-net.md).
 
-* Bir anahtar kasası oluşturma.
+* Anahtar kasası oluşturma.
 * Anahtar kasasına bir anahtar veya gizli dizi ekleyin.
 * Azure Active Directory olan bir uygulamayı kaydedin.
 * Anahtar veya gizli anahtarı kullanmak için uygulamayı yetkilendirin.
@@ -210,7 +210,7 @@ Gizli bir simetrik anahtar olduğu için, istemci tarafı şifreleme ile gizli d
 Burada, simetrik olarak kullanılabilecek Key Vault bir gizli dizi oluşturma PowerShell 'de bir örnek verilmiştir.
 $Key sabit kodlanmış değerin yalnızca tanıtım amaçlı olduğunu lütfen unutmayın. Kendi kodunuzda bu anahtarı oluşturmak isteyeceksiniz.
 
-```csharp
+```powershell
 // Here we are making a 128-bit key so we have 16 characters.
 //     The characters are in the ASCII range of UTF8 so they are
 //    each 1 byte. 16 x 8 = 128.

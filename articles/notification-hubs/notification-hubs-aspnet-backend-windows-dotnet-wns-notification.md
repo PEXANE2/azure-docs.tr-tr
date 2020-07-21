@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e13e7c1057d5a01867b561fc7ee7d1eed1a97ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220159"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530499"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara bildirim gönderme
 
@@ -46,12 +46,12 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İstemci projesi için kodu güncelleştirme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows Platformu uygulamalarına bildirimler gönderme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) öğreticisinde oluşturduğunuz bildirim hub’ını ve Visual Studio projesini temel alır. Bu nedenle, bu öğreticiye başlamadan önce onu tamamlayın.
 
 > [!NOTE]
-> Azure App Service’te arka uç hizmetiniz olarak Mobile Apps kullanıyorsanız, bu öğreticinin [Mobile Apps sürümüne](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) bakın.
+> Azure App Service’te arka uç hizmetiniz olarak Mobile Apps kullanıyorsanız, bu öğreticinin [Mobile Apps sürümüne](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push) bakın.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ Bu bölümde, [Öğretici: Azure Notification Hubs kullanarak Evrensel Windows P
     ```
 13. **WindowsApp** projesine sağ tıklayın, **Ekle**’ye ve sonra **Sınıf**’a tıklayın. Sınıfı adlandırın `RegisterClient.cs` , ardından sınıfı oluşturmak Için **Tamam** ' a tıklayın.
 
-    Bu sınıf, anında iletme bildirimlerine kaydolmak için uygulama arka ucuyla iletişim kurmak üzere gereken REST çağrılarını sarmalar. [Uygulama arka ucunuzdan kaydetme](https://msdn.microsoft.com/library/dn743807.aspx) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum aç ve kaydet** düğmesine tıkladığınızda yerel depolama alanında depolanan bir yetkilendirme belirtecini kullanır.
+    Bu sınıf, anında iletme bildirimlerine kaydolmak için uygulama arka ucuyla iletişim kurmak üzere gereken REST çağrılarını sarmalar. [Uygulama arka ucunuzdan kaydetme](/previous-versions/azure/azure-services/dn743807(v=azure.100)) bölümünde açıklandığı gibi Bildirim Hub’ı tarafından oluşturulan *registrationId*’leri de yerel olarak depolar. **Oturum aç ve kaydet** düğmesine tıkladığınızda yerel depolama alanında depolanan bir yetkilendirme belirtecini kullanır.
 14. Aşağıdaki `using` deyimlerini RegisterClient.cs dosyasının en üst kısmına ekleyin:
 
     ```csharp
@@ -357,4 +357,4 @@ Bu öğreticide, kayıtlarıyla ilişkili etiketleri olan belirli kullanıcılar
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

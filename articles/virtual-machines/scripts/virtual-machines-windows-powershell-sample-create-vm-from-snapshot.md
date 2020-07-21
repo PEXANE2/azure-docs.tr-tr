@@ -1,5 +1,5 @@
 ---
-title: Snapshot-PowerShell örneğinden VM oluşturma
+title: Anlık görüntüden VM oluşturma (Windows)-PowerShell örneği
 description: Azure PowerShell betik örneği-anlık görüntüden VM oluşturma
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: fb10f6c2d8109d240840faf5fa864176c89f24e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f8e7f5e758c916cf7e6b96ab38607ee722152b1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75368333"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509567"
 ---
-# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>PowerShell ile anlık görüntüden sanal makine oluşturma
+# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-windows"></a>PowerShell ile anlık görüntüden sanal makine oluşturma (Windows)
 
 Bu betik bir işletim sistemi diskinin anlık görüntüsünden sanal makine oluşturur. 
 
@@ -48,15 +48,15 @@ Bu betik, anlık görüntü özelliklerini almak, anlık görüntüden yönetile
 
 | Komut | Notlar |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | Anlık görüntü adını kullanarak bir anlık görüntü alır. |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | Disk yapılandırması oluşturur. Bu yapılandırma, disk oluşturma işlemiyle birlikte kullanılır. |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | Yönetilen bir disk oluşturur. |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | Sanal makine yapılandırması oluşturur. Bu yapılandırma; sanal makine adı, işletim sistemi ve yönetici kimlik bilgileri gibi bilgileri içerir. Yapılandırma, sanal makine oluşturulurken kullanılır. |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | Yönetilen diski işletim sistemi diski olarak sanal makineye iliştirir |
-| [New-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | Genel bir IP adresi oluşturur. |
-| [New-Aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | Ağ arabirimi oluşturur. |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Bir sanal makine oluşturur. |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | Anlık görüntü adını kullanarak bir anlık görüntü alır. |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | Disk yapılandırması oluşturur. Bu yapılandırma, disk oluşturma işlemiyle birlikte kullanılır. |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | Yönetilen bir disk oluşturur. |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Sanal makine yapılandırması oluşturur. Bu yapılandırma; sanal makine adı, işletim sistemi ve yönetici kimlik bilgileri gibi bilgileri içerir. Yapılandırma, sanal makine oluşturulurken kullanılır. |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | Yönetilen diski işletim sistemi diski olarak sanal makineye iliştirir |
+| [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) | Genel bir IP adresi oluşturur. |
+| [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface) | Ağ arabirimi oluşturur. |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | Bir sanal makine oluşturur. |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery ile Azure VM 'lerini başka bir bölgeye taşıma
+title: Azure IaaS VM 'lerini Azure Site Recovery başka bir bölgeye taşıma
 description: Azure IaaS VM 'lerini bir Azure bölgesinden diğerine taşımak için Azure Site Recovery kullanın.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 09a00d2c6a889f396e5c18da29530c94a624568b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134431"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518920"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
 
@@ -34,7 +34,7 @@ Bu öğreticide şunları yapacaksınız:
 > [!NOTE]
 > Bu öğreticide, Azure sanal makinelerini bir bölgeden diğerine nasıl taşıyacağınız gösterilmektedir. Bir kullanılabilirlik kümesindeki VM 'Leri farklı bir bölgedeki bölge sabitlenmiş VM 'lere taşıyarak kullanılabilirliği iyileştirmenize gerek varsa bkz. [Azure sanal makinelerini kullanılabilirlik alanları öğreticisine taşıma](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure VM 'lerinin, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 - [Kaynak bölgesi hedef bölgesi bileşiminin desteklendiğinden](./azure-to-azure-support-matrix.md#region-support)emin olun ve hedef bölge hakkında bilinçli bir karar alın.
@@ -99,7 +99,7 @@ Site Recovery, abonelikle ve kaynak grubuyla ilişkili VM 'lerin listesini alır
 
 1. Sonraki adımda, taşımak istediğiniz VM 'yi seçin ve ardından **Tamam**' ı seçin.
 1. **Ayarlar**' da, **olağanüstü durum kurtarma**' yı seçin.
-1. **Olağanüstü durum kurtarma**  >  **Hedef bölgesini**Yapılandır bölümünde, çoğaltılacak hedef bölgeyi seçin.
+1. **Olağanüstü durumdan kurtarma yapılandırma** > **Hedef bölge** bölümünde, çoğaltma yapacağınız hedef bölgeyi seçin.
 1. Bu öğretici için diğer varsayılan ayarları kabul edin.
 1. **Çoğaltmayı etkinleştir** seçeneğini belirleyin. Bu adım VM için çoğaltmayı etkinleştirmek üzere bir iş başlatır.
 

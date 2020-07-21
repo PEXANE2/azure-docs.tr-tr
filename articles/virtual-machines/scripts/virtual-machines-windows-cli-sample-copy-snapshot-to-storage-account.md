@@ -1,5 +1,5 @@
 ---
-title: Bir anlık görüntüyü başka bir bölgedeki bir depolama hesabına kopyalama-CLı örneği
+title: Bir anlık görüntüyü başka bir bölgedeki depolama hesabına kopyalama-Windows CLı örneği
 description: Azure CLı betik örneği-aynı veya farklı bölgedeki bir depolama hesabına VHD olarak anlık görüntü gönderme/kopyalama.
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: d470c20718b007b05360ad539973cbc2a9d7ad98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2bad4f5f3bb85f062d4c17eb2d9e77cb51ab2779
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459585"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501118"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>CLı ile farklı bölgedeki bir anlık görüntüyü bir depolama hesabına aktarma/kopyalama
 
@@ -40,13 +40,13 @@ Bu betik bir yönetilen anlık görüntünün SAS URI'sini oluşturmak için aş
 
 | Komut | Notlar |
 |---|---|
-| [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot) | Temel alınan VHD dosyasını bir depolama hesabına kopyalamak veya şirket içine indirmek üzere kullanılan salt okunur SAS oluşturur  |
-| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | Bir blobu bir depolama hesabından diğerine zaman uyumsuz olarak kopyalar |
+| [az snapshot grant-access](/cli/azure/snapshot) | Temel alınan VHD dosyasını bir depolama hesabına kopyalamak veya şirket içine indirmek üzere kullanılan salt okunur SAS oluşturur  |
+| [az storage blob copy start](/cli/azure/storage/blob/copy) | Bir blobu bir depolama hesabından diğerine zaman uyumsuz olarak kopyalar |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [VHD'den yönetilen disk oluşturma](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek sanal makine ve yönetilen diskler CLı betiği örnekleri, [Azure WINDOWS VM belgelerinde](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bulunabilir.

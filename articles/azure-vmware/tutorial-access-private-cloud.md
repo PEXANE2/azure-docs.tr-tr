@@ -3,12 +3,12 @@ title: Öğretici-özel bulutunuzun nasıl erişebileceğini öğrenin
 description: Azure VMware çözümüne (AVS) özel buluta erişme hakkında bilgi edinin
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32dc5c173789996d2559eda1153b1509e10e5984
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873597"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497973"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Öğretici: Azure VMware çözümüne (AVS) özel buluta erişme hakkında bilgi edinin
 
@@ -16,7 +16,7 @@ ms.locfileid: "83873597"
 
 Bu öğreticide, önceki öğretici öğreticisinde oluşturduğunuz kaynak grubundaki bir geçiş kutusu için bir Windows sanal makinesi oluşturacaksınız [: Azure 'Da VMware özel bulutunuz için ağ Iletişimini yapılandırın](tutorial-configure-networking.md) ve vCenter oturumu açın. Bu, oluşturduğunuz sanal ağ üzerindeki bir VM 'dir ve vCenter ve NSX Manager erişimi sağlar. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * VCenter 'a bağlanmak için kullanılacak bir Windows sanal makinesi oluşturun
@@ -35,15 +35,15 @@ Alanlara gerekli bilgileri girin ve ardından **gözden geçir + oluştur**' u s
 | **Abonelik** | Bu değer, kaynak grubunun ait olduğu abonelikle zaten doldurulmuştur. |
 | **Kaynak grubu** | Bu değer, geçerli kaynak grubu için zaten doldurulmuştur. Bu, önceki bir öğreticide oluşturduğunuz kaynak grubu olmalıdır. |
 | **Sanal makine adı** | VM için benzersiz bir ad girin. |
-| **Geli** | VM 'nin coğrafi konumunu seçin. |
+| **Bölge** | VM 'nin coğrafi konumunu seçin. |
 | **Kullanılabilirlik seçenekleri** | Varsayılan değeri seçili bırakın. |
 | **Görüntü** | VM görüntüsünü seçin. |
 | **Boyut** | Varsayılan boyut değerini bırakın. |
 | **Kimlik doğrulaması türü**  | **Parola**seçin. |
-| **Nitelen** | VM 'de oturum açmak için Kullanıcı adını girin. |
+| **Kullanıcı adı** | VM 'de oturum açmak için Kullanıcı adını girin. |
 | **Parola** | VM 'de oturum açmak için parolayı girin. |
 | **Parolayı onayla** | VM 'de oturum açmak için parolayı girin. |
-| **Ortak gelen bağlantı noktaları** | **Hiçbiri** seçeneğini belirtin. Hiçbiri ' ni seçerseniz, sanal makine erişimini denetlemek için [JIT erişimini](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-) yalnızca ona erişmek istediğinizde kullanabilirsiniz.  |
+| **Genel gelen bağlantı noktaları** | **Hiçbiri** seçeneğini belirtin. Hiçbiri ' ni seçerseniz, sanal makine erişimini denetlemek için [JIT erişimini](../security-center/security-center-just-in-time.md#jit-configure) yalnızca ona erişmek istediğinizde kullanabilirsiniz.  |
 
 Uygun bilgileri girdikten sonra, **gözden geçir + oluştur**' a tıklayın. Doğrulama başarılı olduktan sonra, sanal makine oluşturma işlemini başlatmak için **Oluştur** ' u seçin.
 

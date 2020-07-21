@@ -3,16 +3,16 @@ title: 'Öğretici: CLı kullanarak yedeklenen SAP HANA DB yönetme'
 description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çalışan yedeklenen SAP HANA veritabanlarını yönetmeyi öğrenin.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 2c088c27a678a4541cbba3c4c43c9cd830c60ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 40cfb46faf993a995248d79d60c62de912bd88ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238744"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538148"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir Azure VM 'de SAP HANA veritabanlarını yönetme
 
-Azure CLı, komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu belgelerde, Azure CLı kullanarak Azure VM 'de yedeklenmiş SAP HANA veritabanının nasıl yönetileceği anlatılmaktadır. Ayrıca [, Azure Portal](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)kullanarak da bu adımları uygulayabilirsiniz.
+Azure CLı, komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu belgelerde, Azure CLı kullanarak Azure VM 'de yedeklenmiş SAP HANA veritabanının nasıl yönetileceği anlatılmaktadır. Ayrıca [, Azure Portal](./sap-hana-db-manage.md)kullanarak da bu adımları uygulayabilirsiniz.
 
 CLı komutlarını çalıştırmak için [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) kullanın.
 
@@ -38,7 +38,7 @@ Azure CLı, Azure Backup kullanılarak yedeklenen bir Azure VM üzerinde çalı�
 
 ## <a name="monitor-backup-and-restore-jobs"></a>Yedekleme ve geri yükleme işlerini izleme
 
-Tamamlanan veya çalışmakta olan işleri (yedekleme veya geri yükleme) izlemek için [az Backup Job List](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 'ini kullanın. CLı, çalışmakta [olan bir işi askıya](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) almanıza veya [bir iş tamamlanana kadar beklemeniz](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait)de sağlar.
+Tamamlanan veya çalışmakta olan işleri (yedekleme veya geri yükleme) izlemek için [az Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 'ini kullanın. CLı, çalışmakta [olan bir işi askıya](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) almanıza veya [bir iş tamamlanana kadar beklemeniz](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait)de sağlar.
 
 ```azurecli-interactive
 az backup job list --resource-group saphanaResourceGroup \
@@ -59,7 +59,7 @@ F7c68818-039f-4a0f-8d73-e0747e68a813  Restore (Log)          Completed   hxe [hx
 
 ## <a name="change-policy"></a>İlkeyi Değiştir
 
-SAP HANA yedekleme yapılandırmasını temel alan ilkeyi değiştirmek için [az Backup Policy set](https://docs.microsoft.com/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-set) cmdlet 'ini kullanın. Bu cmdlet 'teki name parametresi, ilkesi değiştirmek istediğimiz yedekleme öğesini ifade eder. Bu öğretici için, yeni bir *Newsaphanapolicy*ilkesi ile SAP HANA veritabanı *saphanadatabase; hxe; hxe* ilkesini değiştirmektir. Yeni ilkeler, [az Backup Policy Create](https://docs.microsoft.com/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet 'i kullanılarak oluşturulabilir.
+SAP HANA yedekleme yapılandırmasını temel alan ilkeyi değiştirmek için [az Backup Policy set](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-set) cmdlet 'ini kullanın. Bu cmdlet 'teki name parametresi, ilkesi değiştirmek istediğimiz yedekleme öğesini ifade eder. Bu öğretici için, yeni bir *Newsaphanapolicy*ilkesi ile SAP HANA veritabanı *saphanadatabase; hxe; hxe* ilkesini değiştirmektir. Yeni ilkeler, [az Backup Policy Create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet 'i kullanılarak oluşturulabilir.
 
 ```azurecli-interactive
 az backup item set policy --resource-group saphanaResourceGroup \
@@ -69,7 +69,7 @@ az backup item set policy --resource-group saphanaResourceGroup \
     --name saphanadatabase;hxe;hxe \
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıkış şu şekilde görünmelidir:
 
 ```output
 Name                                  Resource Group
@@ -81,7 +81,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 Bir [SAP HANA örneğini kurtarma hizmetleri Kasası Ile kaydetme](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) , bu örnekteki tüm veritabanlarını otomatik olarak bulur.
 
-Bununla birlikte, yeni veritabanlarının SAP HANA örneğine daha sonra Eklenme durumunda [az Backup korunabilir-Item Initialize](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) cmdlet 'ini kullanın. Bu cmdlet, eklenen yeni veritabanlarını bulur.
+Bununla birlikte, yeni veritabanlarının SAP HANA örneğine daha sonra Eklenme durumunda [az Backup korunabilir-Item Initialize](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) cmdlet 'ini kullanın. Bu cmdlet, eklenen yeni veritabanlarını bulur.
 
 ```azurecli-interactive
 az backup protectable-item initialize --resource-group saphanaResourceGroup \
@@ -90,7 +90,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-Daha sonra, SAP HANA örneğiniz üzerinde bulunan tüm veritabanlarını listelemek için [az Backup korunabilir-Item List](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 'ini kullanın. Ancak bu liste, yedeklemenin zaten yapılandırıldığı veritabanlarını dışlar. Yedeklenecek veritabanı bulunduğunda, [SAP HANA veritabanında yedeklemeyi etkinleştir](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)' e başvurun.
+Daha sonra, SAP HANA örneğiniz üzerinde bulunan tüm veritabanlarını listelemek için [az Backup korunabilir-Item List](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 'ini kullanın. Ancak bu liste, yedeklemenin zaten yapılandırıldığı veritabanlarını dışlar. Yedeklenecek veritabanı bulunduğunda, [SAP HANA veritabanında yedeklemeyi etkinleştir](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)' e başvurun.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -126,7 +126,7 @@ Daha ayrıntılı bir şekilde korumayı durdurmak için her bir yola göz atal�
 
 ### <a name="stop-protection-with-retain-data"></a>Verileri bekleterek korumayı durdurun
 
-Verileri bekletme ile korumayı durdurmak için [az Backup Protection Disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet 'ini kullanın.
+Verileri bekletme ile korumayı durdurmak için [az Backup Protection Disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet 'ini kullanın.
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -137,7 +137,7 @@ az backup protection disable --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıkış şu şekilde görünmelidir:
 
 ```output
 Name                                  ResourceGroup
@@ -145,11 +145,11 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Bu işlemin durumunu denetlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Bu işlemin durumunu denetlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 ### <a name="stop-protection-without-retain-data"></a>Verileri saklamadan korumayı durdur
 
-Verileri saklamadan korumayı durdurmak için [az Backup Protection Disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet 'ini kullanın.
+Verileri saklamadan korumayı durdurmak için [az Backup Protection Disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet 'ini kullanın.
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -161,7 +161,7 @@ az backup protection disable --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıkış şu şekilde görünmelidir:
 
 ```output
 Name                                  ResourceGroup
@@ -169,13 +169,13 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Bu işlemin durumunu denetlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Bu işlemin durumunu denetlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 ## <a name="resume-protection"></a>Korumayı sürdürür
 
 Verileri sakla SAP HANA veritabanının korumasını durdurduğunuzda, daha sonra korumayı sürdürebilirsiniz. Yedeklenen verileri korumazsanız korumaya devam edemeyeceksiniz.
 
-Korumayı yeniden başlatmak için [az Backup Protection özgeçmişi](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) cmdlet 'ini kullanın.
+Korumayı yeniden başlatmak için [az Backup Protection özgeçmişi](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) cmdlet 'ini kullanın.
 
 ```azurecli-interactive
 az backup protection resume --resource-group saphanaResourceGroup \
@@ -185,7 +185,7 @@ az backup protection resume --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Çıkış aşağıdakine benzer olmalıdır:
+Çıkış şu şekilde görünmelidir:
 
 ```output
 Name                                  ResourceGroup
@@ -193,10 +193,10 @@ Name                                  ResourceGroup
 b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 ```
 
-Bu işlemin durumunu denetlemek için [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
+Bu işlemin durumunu denetlemek için [az Backup Job Show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure portal kullanarak Azure VM 'de çalışan bir SAP HANA veritabanını nasıl yedekleyeceğinizi öğrenmek için bkz. [Azure VM 'Lerde yedekleme SAP HANA veritabanları](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)
+* Azure portal kullanarak Azure VM 'de çalışan bir SAP HANA veritabanını nasıl yedekleyeceğinizi öğrenmek için bkz. [Azure VM 'Lerde yedekleme SAP HANA veritabanları](./backup-azure-sap-hana-database.md)
 
-* Azure portal kullanarak Azure VM 'de çalışan yedeklenmiş SAP HANA bir veritabanını yönetmeyi öğrenmek için bkz. [Azure VM 'de yedeklenen SAP HANA veritabanlarını yönetme](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* Azure portal kullanarak Azure VM 'de çalışan yedeklenmiş SAP HANA bir veritabanını yönetmeyi öğrenmek için bkz. [Azure VM 'de yedeklenen SAP HANA veritabanlarını yönetme](./sap-hana-db-manage.md)

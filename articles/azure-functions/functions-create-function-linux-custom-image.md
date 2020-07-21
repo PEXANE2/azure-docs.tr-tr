@@ -5,18 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506392"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
 Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Azure Işlevlerine özel bir Docker kapsayıcısı olarak dağıtırsınız. İşlevleriniz belirli bir dil sürümü gerektirdiğinde veya yerleşik görüntü tarafından sağlanmayan belirli bir bağımlılığı ya da yapılandırmaya sahip olduğunda genellikle özel bir görüntü kullanırsınız.
 
-[Linux üzerinde barındırılan ilk işlevinizi oluşturma](functions-create-first-azure-function-azure-cli-linux.md)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
+[Linux üzerinde barındırılan ilk işlevinizi oluşturma](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -96,7 +96,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister.   
 İstendiğinde aşağıdaki değerleri sağlayın:
 
-| İstem | Değer | Description |
+| İstem | Değer | Açıklama |
 | ------ | ----- | ----------- |
 | **groupId** | `com.fabrikam` | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) takip eden tüm projelerde projenizi benzersiz bir şekilde tanımlayan bir değer. |
 | **ArtifactId** | `fabrikam-functions` | Bir sürüm numarası olmadan jar adı olan bir değer. |
@@ -121,7 +121,7 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new`Projenin seçtiği dile uygun bir kod dosyası ve *function. JSON*adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
+Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new`Projenin seçtiği dile uygun bir kod dosyası ve *üzerindefunction.js*adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
 
 ```
 func new --name HttpExample --template "HTTP trigger"
@@ -173,7 +173,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı açın `http://localhost:8080` ve aşağıda gösterilen yer tutucu görüntüsünü görüntülemesi gerekir. İşleviniz, Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı için görüntü bu noktada görünür, yani bu, özelliği ile birlikte *function. JSON* içinde tanımlanan bir erişim anahtarı tarafından korunur `"authLevel": "function"` . Kapsayıcı henüz Azure 'da bir işlev uygulamasına yayımlanmadı, bu nedenle anahtar henüz kullanılamıyor. Yerel kapsayıcıya karşı test etmek istiyorsanız Docker 'ı durdurun, yetkilendirme özelliğini olarak değiştirin `"authLevel": "anonymous"` , görüntüyü yeniden derleyin ve Docker 'ı yeniden başlatın. Sonra `"authLevel": "function"` *function. JSON*' da sıfırlayın. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
+Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı açın `http://localhost:8080` ve aşağıda gösterilen yer tutucu görüntüsünü görüntülemesi gerekir. Bu noktada, işleviniz Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı ve bu, özelliği ile birlikte *function.js* tanımlı bir erişim anahtarı tarafından korunduğu için görüntü bu noktada görünür `"authLevel": "function"` . Kapsayıcı henüz Azure 'da bir işlev uygulamasına yayımlanmadı, bu nedenle anahtar henüz kullanılamıyor. Yerel kapsayıcıya karşı test etmek istiyorsanız Docker 'ı durdurun, yetkilendirme özelliğini olarak değiştirin `"authLevel": "anonymous"` , görüntüyü yeniden derleyin ve Docker 'ı yeniden başlatın. Sonra `"authLevel": "function"` *function.jsüzerinde*sıfırlayın. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ![Kapsayıcının yerel olarak çalıştığını gösteren yer tutucu resim](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -289,7 +289,7 @@ Azure 'daki bir işlev uygulaması, barındırma planınızdaki işlevlerinizin 
 
 ## <a name="verify-your-functions-on-azure"></a>Azure 'da işlevlerinizi doğrulama
 
-Azure 'da işlev uygulamasına dağıtılan görüntü ile, artık işlevi HTTP istekleri aracılığıyla çalıştırabilirsiniz. *Function. JSON* tanımı özelliğini içerdiğinden `"authLevel": "function"` , önce erişim anahtarını edinmeniz ("işlev anahtarı" olarak da bilinir) ve bunu uç noktaya HERHANGI bir istekte URL parametresi olarak eklemeniz gerekir.
+Azure 'da işlev uygulamasına dağıtılan görüntü ile, artık işlevi HTTP istekleri aracılığıyla çalıştırabilirsiniz. Tanımda *function.js* özelliği içerdiğinden `"authLevel": "function"` , önce erişim anahtarını edinmeniz ("işlev anahtarı" olarak da bilinir) ve bunu uç noktaya Istek üzerine bir URL parametresi olarak eklemeniz gerekir.
 
 1. Azure portal kullanarak veya komutuyla Azure CLı kullanarak işlev URL 'sini erişim (işlev) anahtarıyla alın `az rest` .)
 
@@ -409,9 +409,7 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH et
     FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
     ```
     ::: zone-end
-
-    Temel görüntüler arasındaki farklılıklar, [App Services-özel Docker görüntüleri öğreticisinde](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)açıklanmıştır.
-
+    
 1. `docker build`Komutu tekrar kullanarak, `<docker_id>` DOCKER Kimliğiniz ile değiştirerek görüntüyü yeniden oluşturun:
 
     ```

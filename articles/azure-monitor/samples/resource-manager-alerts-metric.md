@@ -1,18 +1,18 @@
 ---
-title: Resource Manager şablonu ile ölçüm uyarısı oluşturma
-description: Ölçüm uyarısı oluşturmak için Kaynak Yöneticisi şablonu kullanmayı öğrenin.
+title: Ölçüm uyarıları için şablon örnekleri Kaynak Yöneticisi
+description: Bu makalede, Azure Izleyici 'de ölçüm uyarıları oluşturmak için kullanılan örnek Kaynak Yöneticisi şablonları sağlanmaktadır.
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854555"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515385"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarısı kuralları için Kaynak Yöneticisi şablonu örnekleri
 
@@ -20,7 +20,7 @@ Bu makalede, Azure Izleyici 'de [ölçüm uyarısı kurallarını](../platform/a
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-Ölçüm uyarı kurallarıyla kullanılabilecek kaynakların listesi için bkz. [Azure izleyici 'de ölçüm uyarıları Için desteklenen kaynaklar](../platform/alerts-metric-near-real-time.md) . Bir uyarı kuralının şema ve özelliklerinin açıklaması, [ölçüm uyarıları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)' de mevcuttur.
+Ölçüm uyarı kurallarıyla kullanılabilecek kaynakların listesi için bkz. [Azure izleyici 'de ölçüm uyarıları Için desteklenen kaynaklar](../platform/alerts-metric-near-real-time.md) . Bir uyarı kuralının şema ve özelliklerinin açıklaması, [ölçüm uyarıları-oluştur veya Güncelleştir](/rest/api/monitor/metricalerts/createorupdate)' de mevcuttur.
 
 > [!NOTE]
 > Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces` , ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
@@ -249,7 +249,7 @@ Aşağıdaki örnek tek bir ölçüt ve statik eşik kullanan bir ölçüm uyar�
 Aşağıdaki örnek tek bir ölçüt ve dinamik eşik kullanan bir ölçüm uyarı kuralı oluşturur.
 
 ### <a name="template-file"></a>Şablon dosyası
-Bu izlenecek yolun amacına uygun olarak JSON öğesini simpledynamicmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u simpledynamicmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -1094,13 +1094,13 @@ Bu örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **a
 
 Özel bir ölçümde daha gelişmiş bir statik eşik ölçümü uyarı kuralı oluşturmak için aşağıdaki şablonu kullanabilirsiniz.
 
-Azure Izleyici 'de özel ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de özel ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Azure Izleyici 'de özel ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de özel ölçümler](../platform/metrics-custom-overview.md).
 
 Özel bir ölçümde bir uyarı kuralı oluştururken, hem ölçüm adını hem de ölçüm ad alanını belirtmeniz gerekir. Henüz mevcut olmayan özel bir ölçümde uyarı kuralı oluşturverilmediği için özel ölçümün zaten bildirilmekte olduğundan emin olmanız gerekir.
 
 ### <a name="template-file"></a>Şablon dosyası
 
-Bu izlenecek yolun amacına uygun olarak JSON 'ı customstaticmetricalert. JSON olarak kaydedin.
+Bu izlenecek yolun amacına uygun olarak JSON 'u customstaticmetricalert.jsolarak kaydedin.
 
 ```json
 {
@@ -1325,7 +1325,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'ı customstaticmetricalert. JSON 
 
 >[!NOTE]
 >
-> [Özel ölçümlerinize Azure Portal aracılığıyla göz atarak](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal) belirli bir özel ölçümün ölçüm ad alanını bulabilirsiniz
+> [Özel ölçümlerinize Azure Portal aracılığıyla göz atarak](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal) belirli bir özel ölçümün ölçüm ad alanını bulabilirsiniz
 
 
 ## <a name="multiple-resources"></a>Birden çok kaynak
@@ -1348,7 +1348,7 @@ Bu bölümde, tek bir kuralla birden çok kaynağı izlemek üzere üç senaryon
 
 Bu şablon, bir veya daha fazla kaynak grubunda tüm sanal makinelerin (bir Azure bölgesindeki) yüzde CPU 'sunu izleyen bir statik eşik ölçüm uyarı kuralı oluşturur.
 
-Bu izlenecek yol için aşağıdaki JSON 'ı Resource-Group-Static. JSON olarak kaydedin.
+Bu izlenecek yol için aşağıdaki JSON 'ı all-vms-in-resource-group-static.jsolarak kaydedin.
 
 ### <a name="template-file"></a>Şablon dosyası
 

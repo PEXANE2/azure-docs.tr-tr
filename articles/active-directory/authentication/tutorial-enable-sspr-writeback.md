@@ -5,24 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/24/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518496"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Öğretici: şirket içi bir ortama Azure Active Directory self servis parola sıfırlama geri yazma özelliğini etkinleştirme
 
 Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR) ile, kullanıcılar parolalarını güncelleştirebilir veya bir Web tarayıcısı kullanarak hesaplarının kilidini açabilir. Azure AD 'nin şirket içi Active Directory Domain Services (AD DS) ortamına bağlandığı bir karma ortamda, bu senaryo parolaların iki dizin arasında farklı olmasına neden olabilir.
 
 Parola geri yazma özelliği, Azure AD 'deki parola değişikliklerini şirket içi AD DS ortamınıza geri aktarmak için kullanılabilir. Azure AD Connect, bu parola değişikliklerini Azure AD 'den mevcut bir şirket içi dizine geri göndermek için güvenli bir mekanizma sağlar.
+
+> [!IMPORTANT]
+> Bu öğreticide, self servis parola sıfırlamayı şirket içi bir ortama nasıl etkinleştireceğinizi gösteren bir yönetici gösterilmektedir. Self servis parola sıfırlama için zaten kayıtlı bir son kullanıcı varsa ve hesabınıza geri dönmek istiyorsanız adresine gidin https://aka.ms/sspr .
+>
+> BT ekibiniz kendi parolanızı sıfırlama özelliğini etkinleştirmediyseniz, ek yardım için yardım masasına ulaşın.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -31,11 +36,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure AD Connect parola geri yazma seçeneğini etkinleştirin
 > * Azure AD SSPR 'de parola geri yazmayı etkinleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-* En az bir Azure AD Premium P1 veya P2 deneme lisansı etkin çalışan bir Azure AD kiracısı.
+* En az bir Azure AD Premium P1 deneme lisansı kullanan çalışan bir Azure AD kiracısı.
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * Daha fazla bilgi için bkz. [Azure AD SSPR Için lisans gereksinimleri](concept-sspr-licensing.md).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
@@ -54,11 +59,9 @@ SSPR geri yazma ile doğru şekilde çalışmak için Azure AD Connect ' de beli
 * **Parola sıfırlama**
 * Üzerine **yazma izinleri**`lockoutTime`
 * Üzerine **yazma izinleri**`pwdLastSet`
-* "Süre sonu parola" için şu iki tarihte **genişletilmiş haklar** :
-   * Bu ormandaki *her etki alanının* kök nesnesi
-   * SSPR için kapsamda olmasını istediğiniz kullanıcı kuruluş birimleri (OU)
+* Zaten ayarlanmamışsa, o ormandaki *her etki alanının* kök nesnesinde "süre sonu olmayan parola" için **genişletilmiş haklar** .
 
-Bu izinleri atamadıysanız, geri yazma doğru şekilde yapılandırılmış gibi görünür, ancak kullanıcılar şirket içi parolalarını buluttan yönettiklerinde hatalarla karşılaşır. İzinler **Bu nesneye ve** "süre sonu parolasının kaldırılması" için tüm alt nesnelere uygulanmalıdır.  
+Bu izinleri atamadıysanız, geri yazma doğru şekilde yapılandırılmış görünebilir, ancak kullanıcılar şirket içi parolalarını buluttan yönettiklerinde hatalarla karşılaşabilirler. İzinler **Bu nesneye ve** "süre sonu parolasının kaldırılması" için tüm alt nesnelere uygulanmalıdır.  
 
 > [!TIP]
 >
@@ -74,7 +77,7 @@ Parola geri yazma işleminin gerçekleşmesi için uygun izinleri ayarlamak içi
 1. **Uygulanacak** öğe açılır listesinde, alt **Kullanıcı nesneleri**' ni seçin.
 1. *İzinler*altında, aşağıdaki seçeneğe ait kutuyu seçin:
     * **Parola sıfırlama**
-1. *Özellikler*altında, aşağıdaki seçenekler için kutuları seçin. Zaten varsayılan olarak ayarlanmış olabilecek bu seçenekleri bulmak için listeyi kaydırmanız gerekir:
+1. *Özellikler*altında, aşağıdaki seçenekler için kutuları seçin. Zaten varsayılan olarak ayarlanmış olabilecek bu seçenekleri bulmak için listeyi kaydırın:
     * **Yazma lockoutTime**
     * **PwdLastSet yazma**
 
@@ -89,13 +92,13 @@ Parola geri yazma işleminin gerçekleşmesi için uygun izinleri ayarlamak içi
 Grup ilkesini güncelleştirirseniz, güncelleştirilmiş ilkenin çoğaltılmasını bekleyin veya `gpupdate /force` komutunu kullanın.
 
 > [!Note]
-> Parolaların hemen değiştirilebilmesi için parola geri yazma özelliğinin 0 olarak ayarlanması gerekir. Ancak, kullanıcılar şirket içi ilkelere uysa ve *en az parola yaşı* sıfırdan büyük bir değere ayarlanmışsa, şirket içi ilkeler değerlendirildikten sonra parola geri yazma işlemi çalışmaya devam eder. 
+> Parolaların hemen değiştirilebilmesi için parola geri yazma özelliğinin 0 olarak ayarlanması gerekir. Ancak, kullanıcılar şirket içi ilkelere uysa ve *Minimum parola yaşı* sıfırdan büyük bir değere ayarlanmışsa, şirket içi ilkeler değerlendirildikten sonra parola geri yazma işlemi yine de geçerlidir.
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Azure AD Connect parola geri yazmayı etkinleştirme
 
 Azure AD Connect yapılandırma seçeneklerinden biri parola geri yazma içindir. Bu seçenek etkinleştirildiğinde, parola değiştirme olayları Azure AD Connect güncelleştirilmiş kimlik bilgilerini şirket içi AD DS ortamına geri eşitlemesine neden olur.
 
-Self servis parola sıfırlama geri yazmayı etkinleştirmek için öncelikle Azure AD Connect içindeki geri yazma seçeneğini etkinleştirin. Azure AD Connect sunucusundan aşağıdaki adımları uygulayın:
+SSPR geri yazmayı etkinleştirmek için öncelikle Azure AD Connect içindeki geri yazma seçeneğini etkinleştirin. Azure AD Connect sunucusundan aşağıdaki adımları uygulayın:
 
 1. Azure AD Connect sunucunuzda oturum açın ve **Azure AD Connect** Yapılandırma Sihirbazı 'nı başlatın.
 1. **Hoş Geldiniz** sayfasında, **Yapılandır**’ı seçin.
@@ -128,7 +131,7 @@ SSPR 'de parola geri yazma özelliğini etkinleştirmek için aşağıdaki adım
 
 Bu öğreticinin bir parçası olarak yapılandırdığınız SSPR geri yazma işlevini artık kullanmak istemiyorsanız, aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**arayıp seçin, **parola sıfırlama**' yı seçin ve ardından Şirket **içi tümleştirme**' i seçin.
 1. Şirket **içi dizininize yeniden parola yazma** seçeneğini *belirleyin.*
 1. **Kullanıcıların, parolasını sıfırlamadan hesapların kilidini açmalarına Izin ver** seçeneğini *belirleyin.*

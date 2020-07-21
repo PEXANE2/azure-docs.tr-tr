@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5765c2e7335183734c86f1ddd11e4fa61576740c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 600d4bdab4c7f7038cafbb8605fa2490f3bc6788
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501390"
 ---
 # <a name="create-a-highly-available-vm"></a>Yüksek oranda kullanılabilir VM oluşturma
 
@@ -48,22 +48,22 @@ Bu betik bir kaynak grubu, sanal makine, kullanılabilirlik kümesi, yük dengel
 
 | Komut | Notlar |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Bir Azure sanal ağı ve alt ağ oluşturur. |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) | Statik bir IP adresi ve ilişkili bir DNS adı ile bir genel IP adresi oluşturur. |
-| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) | Bir Azure Ağ Yükü Dengeleyici (NLB) oluşturur. |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) | Bir NLB araştırması oluşturur. NLB araştırması, NLB kümesindeki her bir VM’yi izlemek için kullanılır. Herhangi bir VM erişilemez hale gelirse trafik VM’ye yönlendirilmez. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Bir NLB kuralı oluşturur. Bu örnekte 80 numaralı bağlantı noktası için bir kural oluşturulur. NLB 'ye HTTP trafiği ulaştığında, NLB kümesindeki sanal makinelerin birindeki 80 numaralı bağlantı noktasına yönlendirilir. |
-| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) | Bir NLB Ağ Adresi Çevirisi (NAT) kuralı oluşturur.  NAT kuralları, bir NLB bağlantı noktasını VM üzerindeki bir bağlantı noktasına eşler. Bu örnekte, NLB kümesindeki her bir VM’ye giden SSH trafiği için bir NAT kuralı oluşturulur.  |
-| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) | İnternet ile sanal makine arasında güvenlik sınırı olan bir ağ güvenlik grubu (NSG) oluşturur. |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Gelen trafiğe izin veren bir NSG kuralı oluşturur. Bu örnekte 22 numaralı bağlantı noktası SSH trafiğine açılır. |
-| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) | Sanal makine kartı oluşturur ve sanal ağa, alt ağa ve NSG’ye bağlar. |
-| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Bir kullanılabilirlik kümesi oluşturur. Kullanılabilirlik kümeleri, hata oluşması durumunda tüm kümenin etkilenmemesi için sanal makineleri fiziksel kaynaklara yayarak uygulama çalışma süresi sağlar. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve NSG’ye bağlar. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az network vnet create](/cli/azure/network/vnet) | Bir Azure sanal ağı ve alt ağ oluşturur. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Statik bir IP adresi ve ilişkili bir DNS adı ile bir genel IP adresi oluşturur. |
+| [az network lb create](/cli/azure/network/lb) | Bir Azure Ağ Yükü Dengeleyici (NLB) oluşturur. |
+| [az network lb probe create](/cli/azure/network/lb/probe) | Bir NLB araştırması oluşturur. NLB araştırması, NLB kümesindeki her bir VM’yi izlemek için kullanılır. Herhangi bir VM erişilemez hale gelirse trafik VM’ye yönlendirilmez. |
+| [az network lb rule create](/cli/azure/network/lb/rule) | Bir NLB kuralı oluşturur. Bu örnekte 80 numaralı bağlantı noktası için bir kural oluşturulur. NLB 'ye HTTP trafiği ulaştığında, NLB kümesindeki sanal makinelerin birindeki 80 numaralı bağlantı noktasına yönlendirilir. |
+| [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) | Bir NLB Ağ Adresi Çevirisi (NAT) kuralı oluşturur.  NAT kuralları, bir NLB bağlantı noktasını VM üzerindeki bir bağlantı noktasına eşler. Bu örnekte, NLB kümesindeki her bir VM’ye giden SSH trafiği için bir NAT kuralı oluşturulur.  |
+| [az network nsg create](/cli/azure/network/nsg) | İnternet ile sanal makine arasında güvenlik sınırı olan bir ağ güvenlik grubu (NSG) oluşturur. |
+| [az network nsg rule create](/cli/azure/network/nsg/rule) | Gelen trafiğe izin veren bir NSG kuralı oluşturur. Bu örnekte 22 numaralı bağlantı noktası SSH trafiğine açılır. |
+| [az network nic create](/cli/azure/network/nic) | Sanal makine kartı oluşturur ve sanal ağa, alt ağa ve NSG’ye bağlar. |
+| [az vm availability-set create](/cli/azure/network/lb/rule) | Bir kullanılabilirlik kümesi oluşturur. Kullanılabilirlik kümeleri, hata oluşması durumunda tüm kümenin etkilenmemesi için sanal makineleri fiziksel kaynaklara yayarak uygulama çalışma süresi sağlar. |
+| [az vm create](/cli/azure/vm/availability-set) | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve NSG’ye bağlar. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
+| [az group delete](/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek sanal makine CLI betiği örnekleri, [Azure Linux VM belgeleri](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) içinde bulunabilir.

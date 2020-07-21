@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 663d6659acf5c1e5abc8be56156af84167c51797
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/15/2020
+ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146955"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503311"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için REST ve AI kullanma
 
@@ -30,7 +30,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [ara
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Postman masaüstü uygulaması](https://www.getpostman.com/)
@@ -175,7 +175,7 @@ Bir 403 veya 404 hatası aldıysanız, istek yapısını denetleyin: `api-versio
 
 1. İstek **gövdesi**' nde, aşağıdaki JSON tanımını kopyalayın. Bu beceri, aşağıdaki yerleşik becerilerden oluşur.
 
-   | İmde                 | Açıklama    |
+   | İmde                 | Description    |
    |-----------------------|----------------|
    | [Varlık Tanıma](cognitive-search-skill-entity-recognition.md) | Kişilerin, kuruluşların ve konumların adlarını blob kapsayıcısındaki içerikten ayıklar. |
    | [Dil Algılama](cognitive-search-skill-language-detection.md) | İçeriğin dilini algılar. |

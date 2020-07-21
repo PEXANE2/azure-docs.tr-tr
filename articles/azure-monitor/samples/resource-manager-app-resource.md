@@ -6,12 +6,12 @@ ms.topic: sample
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/08/2020
-ms.openlocfilehash: 82032c6a5ac8ec65265ffb44f896be6cea8fe4ce
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d7a8a7b7fa75d7d9bb4dc45a3432370bac4cb4d6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86210491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498653"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Application Insights kaynakları oluşturmak için şablon örnekleri Kaynak Yöneticisi
 
@@ -21,7 +21,7 @@ Bu makalede, [klasik Application Insights kaynaklarını](../app/create-new-reso
 
 ## <a name="classic-application-insights-resource"></a>Klasik Application Insights kaynağı
 
-Aşağıdaki örnek, klasik bir [Application Insights kaynağı](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)oluşturur. 
+Aşağıdaki örnek, klasik bir [Application Insights kaynağı](../app/create-new-resource.md)oluşturur. 
 
 ### <a name="template-file"></a>Şablon dosyası
 
@@ -107,7 +107,7 @@ Aşağıdaki örnek, klasik bir [Application Insights kaynağı](https://docs.mi
 
 ## <a name="workspace-based-application-insights-resource"></a>Çalışma alanı tabanlı Application Insights kaynağı 
 
-Aşağıdaki örnek, [çalışma alanı tabanlı bir Application Insights kaynağı](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)oluşturur. Çalışma alanı tabanlı Application Insights Şu anda **önizlemededir**. 
+Aşağıdaki örnek, [çalışma alanı tabanlı bir Application Insights kaynağı](../app/create-workspace-resource.md)oluşturur. Çalışma alanı tabanlı Application Insights Şu anda **önizlemededir**. 
 
 
 ### <a name="template-file"></a>Şablon dosyası

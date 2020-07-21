@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79474433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512512"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Öğretici: PowerShell kullanarak var olan bir sanal ağa HSM 'leri dağıtma
 
@@ -38,7 +38,7 @@ Bu öğretici, mevcut bir sanal ağla tümleştirildiği bir dizi HSM 'ye ve ger
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure ayrılmış HSM Azure portal Şu anda kullanılamıyor, bu nedenle hizmetle tüm etkileşim komut satırı veya PowerShell kullanılarak yapılır. Bu öğretici Azure Cloud Shell PowerShell 'i kullanacaktır. PowerShell 'i kullanmaya yeni başladıysanız başlangıç yönergelerini buradan izleyin: [Azure PowerShell kullanmaya](https://docs.microsoft.com/powershell/azure/get-started-azureps)başlayın.
 
@@ -48,7 +48,7 @@ Varsayımlar:
 - Bu kaynaklar için bir kaynak grubu oluşturdunuz ve bu öğreticide dağıtılan yeni olanlar bu gruba katılacak.
 - Yukarıdaki diyagram uyarınca gerekli sanal ağ, alt ağ ve sanal makineleri zaten oluşturdunuz ve şimdi 2 HSM 'leri Bu dağıtıma tümleştirmek istiyorsunuz.
 
-Aşağıdaki tüm yönergeler Azure Portal zaten gezindiyseniz ve Cloud Shell açtınız (portalın sağ üst köşesinde yer alan "\>\_" seçeneğini belirleyin).
+Aşağıdaki tüm yönergeler Azure portal zaten gezindiyseniz ve Cloud Shell açtınız ( \> \_ portalın sağ üst köşesinde yer alan "" seçeneğini belirleyin).
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Adanmış bir HSM sağlama
 
@@ -62,19 +62,13 @@ Yukarıda belirtildiği gibi, tüm sağlama etkinlikleri aboneliğiniz için ayr
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-Aşağıdaki komut, adanmış HSM hizmeti için gereken ağ özelliklerini doğrular.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-Her iki komut de devam etmeden önce "kayıtlı" (aşağıda gösterildiği gibi) durumunu döndürmelidir.  Bu hizmete kaydolmanız gerekiyorsa Microsoft hesabı temsilcinizle iletişime geçin.
+Devam etmeden önce, komut "kayıtlı" (aşağıda gösterildiği gibi) durumunu döndürmelidir.  Bu hizmete kaydolmadıysanız lütfen Microsoft hesabı temsilcinizle iletişime geçin.
 
 ![Abonelik durumu](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>HSM kaynakları oluşturma
 
-Bir HSM cihazı, müşterilerin sanal ağına temin edilir. Bu, bir alt ağ gereksinimini gösterir. Sanal ağ ile fiziksel cihaz arasında iletişimi etkinleştirmek için HSM 'nin bağımlılığı bir ExpressRoute ağ geçididir ve son olarak, HSM cihazına Gemalto istemci yazılımını kullanarak erişmek için bir sanal makine gerekir. Bu kaynaklar, kullanım kolaylığı için karşılık gelen parametre dosyası ile birlikte bir şablon dosyasına toplanır. Dosyalar, Microsoft 'ta HSMrequest@Microsoft.comdoğrudan iletişim kurarak kullanılabilir.
+Bir HSM cihazı, müşterilerin sanal ağına temin edilir. Bu, bir alt ağ gereksinimini gösterir. Sanal ağ ile fiziksel cihaz arasında iletişimi etkinleştirmek için HSM 'nin bağımlılığı bir ExpressRoute ağ geçididir ve son olarak, HSM cihazına Gemalto istemci yazılımını kullanarak erişmek için bir sanal makine gerekir. Bu kaynaklar, kullanım kolaylığı için karşılık gelen parametre dosyası ile birlikte bir şablon dosyasına toplanır. Dosyalar, Microsoft 'ta doğrudan iletişim kurarak kullanılabilir HSMrequest@Microsoft.com .
 
 Dosyalar alındıktan sonra, kaynaklar için tercih ettiğiniz adları eklemek üzere parametre dosyasını düzenlemeniz gerekir. Bu, satırları "değer": "" ile düzenlemeniz anlamına gelir.
 
@@ -123,7 +117,7 @@ Bu değişikliklere bir örnek aşağıdaki gibidir:
 - Damga 1 ' de HSM
 - Damga 2 ' de HSM
 
-Parametre değerleri ayarlandıktan sonra, dosyaların kullanım için Azure portal Cloud Shell dosya paylaşımında karşıya yüklenmesi gerekir. Azure Portal, "\>\_" Cloud Shell symbol sağ üst simgesine tıklayın ve bu, ekranın alt kısmını bir komut ortamı haline getirir. Bu seçenekler BASH ve PowerShell ' dir ve henüz ayarlanmamışsa BASH ' i seçmeniz gerekir.
+Parametre değerleri ayarlandıktan sonra, dosyaların kullanım için Azure portal Cloud Shell dosya paylaşımında karşıya yüklenmesi gerekir. Azure portal, " \> \_ " Cloud Shell symbol sağ üst simgesine tıklayın ve bu, ekranın alt kısmını bir komut ortamı haline getirir. Bu seçenekler BASH ve PowerShell ' dir ve henüz ayarlanmamışsa BASH ' i seçmeniz gerekir.
 
 Komut kabuğu, araç çubuğunda karşıya yükle/İndir seçeneğine sahiptir ve şablon ve parametre dosyalarını dosya paylaşımınıza yüklemek için bunu seçmeniz gerekir:
 
@@ -217,7 +211,7 @@ SSH aracı, sanal makineye bağlanmak için kullanılır. Bu komut, parametresin
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Kullanılacak parola parametre dosyasından biridir.
-Linux VM 'de oturum açtıktan sonra,>hsm_vnic kaynak \<öneki için portalda bulunan özel IP ADRESINI kullanarak HSM 'de oturum açabilirsiniz.
+Linux VM 'de oturum açtıktan sonra, kaynak hsm_vnic Portal 'da bulunan özel IP adresini kullanarak HSM 'de oturum açabilirsiniz \<prefix> .
 
 ```powershell
 
@@ -265,7 +259,7 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 Öğreticideki adımları tamamladıktan sonra, adanmış HSM kaynakları sanal ağınızda sağlanır ve kullanılabilir. Artık bu dağıtımı tercih ettiğiniz dağıtım mimariniz için gereken diğer kaynaklarla karmaşıklama eden bir pozisyonda olursunuz. Dağıtımınızı planlamaya yardımcı olma hakkında daha fazla bilgi için bkz. kavramlar belgeleri. Birincil bölgedeki iki HSM 'yi raf düzeyinde adresleyen ve bir ikincil bölgedeki iki HSM 'nin bölgesel kullanılabilirliği ele aldığı bir tasarımın olması önerilir. Bu öğreticide kullanılan şablon dosyası, iki HSM dağıtımı için temel olarak kolayca kullanılabilir, ancak parametrelerinizi karşılamak için parametrelerinin değiştirilmesini gerektirir.
 
-* [Yüksek Kullanılabilirlik](high-availability.md)
+* [Yüksek kullanılabilirlik](high-availability.md)
 * [Fiziksel güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [İzleme](monitoring.md)

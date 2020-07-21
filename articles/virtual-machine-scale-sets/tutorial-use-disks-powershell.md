@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198237"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495049"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 
@@ -44,12 +44,12 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 ### <a name="temporary-disk-sizes"></a>Geçici disk boyutları
 | Tür | Ortak boyutlar | En yüksek geçici disk boyutu (GiB) |
 |----|----|----|
-| [Genel amaçlı](../virtual-machines/windows/sizes-general.md) | A, B ve D serisi | 1600 |
-| [İşlem için iyileştirilmiş](../virtual-machines/windows/sizes-compute.md) | F serisi | 576 |
-| [Bellek için iyileştirilmiş](../virtual-machines/windows/sizes-memory.md) | D, E, G ve M serisi | 6144 |
-| [Depolama için iyileştirilmiş](../virtual-machines/windows/sizes-storage.md) | L serisi | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N serisi | 1440 |
-| [Yüksek performans](../virtual-machines/windows/sizes-hpc.md) | A ve H serisi | 2000 |
+| [Genel amaçlı](../virtual-machines/sizes-general.md) | A, B ve D serisi | 1600 |
+| [İşlem için iyileştirilmiş](../virtual-machines/sizes-compute.md) | F serisi | 576 |
+| [Bellek için iyileştirilmiş](../virtual-machines/sizes-memory.md) | D, E, G ve M serisi | 6144 |
+| [Depolama için iyileştirilmiş](../virtual-machines/sizes-storage.md) | L serisi | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N serisi | 1440 |
+| [Yüksek performans](../virtual-machines/sizes-hpc.md) | A ve H serisi | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure veri diskleri
@@ -58,12 +58,12 @@ Uygulamalar yüklemeniz ve veri depolamanız gerekirse ek veri diskleri eklenebi
 ### <a name="max-data-disks-per-vm"></a>VM başına en fazla veri diski
 | Tür | Ortak boyutlar | VM başına en fazla veri diski |
 |----|----|----|
-| [Genel amaçlı](../virtual-machines/windows/sizes-general.md) | A, B ve D serisi | 64 |
-| [İşlem için iyileştirilmiş](../virtual-machines/windows/sizes-compute.md) | F serisi | 64 |
-| [Bellek için iyileştirilmiş](../virtual-machines/windows/sizes-memory.md) | D, E, G ve M serisi | 64 |
-| [Depolama için iyileştirilmiş](../virtual-machines/windows/sizes-storage.md) | L serisi | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N serisi | 64 |
-| [Yüksek performans](../virtual-machines/windows/sizes-hpc.md) | A ve H serisi | 64 |
+| [Genel amaçlı](../virtual-machines/sizes-general.md) | A, B ve D serisi | 64 |
+| [İşlem için iyileştirilmiş](../virtual-machines/sizes-compute.md) | F serisi | 64 |
+| [Bellek için iyileştirilmiş](../virtual-machines/sizes-memory.md) | D, E, G ve M serisi | 64 |
+| [Depolama için iyileştirilmiş](../virtual-machines/sizes-storage.md) | L serisi | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N serisi | 64 |
+| [Yüksek performans](../virtual-machines/sizes-hpc.md) | A ve H serisi | 64 |
 
 
 ## <a name="vm-disk-types"></a>VM disk türleri
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>Veri disklerini hazırlama
 Oluşturulan ve ölçek kümesi sanal makine örneklerinize eklenen diskler, ham disklerdir. Bunları veri ve uygulamalarınızla kullanabilmeniz için disklerin hazırlanması gerekir. Diskleri hazırlamak için bir bölüm oluşturun, bir dosya sistemi oluşturun ve bunları bağlayın.
 
-Bir ölçek kümesindeki birden çok sanal makine örneğinde işlemi otomatikleştirmek için Azure Özel Betik Uzantısı’nı kullanabilirsiniz. Bu uzantı, örneğin, eklenen veri disklerini hazırlamak için her bir sanal makine örneğinde betikleri yerel olarak yürütebilir. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/windows/extensions-customscript.md).
+Bir ölçek kümesindeki birden çok sanal makine örneğinde işlemi otomatikleştirmek için Azure Özel Betik Uzantısı’nı kullanabilirsiniz. Bu uzantı, örneğin, eklenen veri disklerini hazırlamak için her bir sanal makine örneğinde betikleri yerel olarak yürütebilir. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/extensions/custom-script-windows.md).
 
 
 Aşağıdaki örnek, tüm ham ekli veri disklerini hazırlayan [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) ile her bir sanal makine örneği üzerinde bir GitHub örnek deposundan bir betiği yürütür:

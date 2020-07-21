@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 00c2825b78d0774d3c428978ba66c957130d3737
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509372"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499983"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,12 +32,15 @@ Bu öğreticide, DocuSign 'ı Microsoft Azure Active Directory (Azure AD) ile t�
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure AD 'de uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Çoklu oturum açma (SSO) etkin olan bir DocuSign aboneliği.
+
+> [!NOTE]
+> Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -118,7 +121,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmında **Yeni Kullanıcı**' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına **B. Simon**girin.  
-   1. **Kullanıcı adı** alanına, girin `<username>@<companydomain>.<extension>`. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin `<username>@<companydomain>.<extension>` . Örneğin: `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
    1. **Oluştur**’u seçin.
 
@@ -192,13 +195,13 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
 
     f. **Kimlik doğrulama Isteği gönderme**için **gönderi**' ı seçin.
 
-    g. **Oturumu kapatma Isteği gönderme**için **Al**' ı seçin.
+    örneğin: **Oturumu kapatma Isteği gönderme**için **Al**' ı seçin.
 
     h. **Özel öznitelik eşleme** bölümünde **Yeni eşleme Ekle**' yi seçin.
 
        ![Özel öznitelik eşleme Kullanıcı arabirimi][62]
 
-    i. Azure AD talebine eşlemek istediğiniz alanı seçin. Bu örnekte, **emadresi** talebi değeri ile eşleştirilir `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`. Bu, Azure AD 'den e-posta talebi için varsayılan talep adıdır. **Kaydet**' i seçin.
+    i. Azure AD talebine eşlemek istediğiniz alanı seçin. Bu örnekte, **emadresi** talebi değeri ile eşleştirilir `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` . Bu, Azure AD 'den e-posta talebi için varsayılan talep adıdır. **Kaydet**' i seçin.
 
        ![Özel öznitelik eşleme alanları][57]
 
@@ -223,7 +226,7 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
        
        1. **Hizmet sağlayıcısı oturum açma URL**'sini kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **URL 'yi oturum aç** kutusuna yapıştırın. **Hizmet sağlayıcı oturum açma URL** 'sinin sonunda ıdpid değerini alırsınız.
 
-       1. **Kapat**'ı seçin.
+       1. **Kapat**’ı seçin.
 
 ### <a name="create-docusign-test-user"></a>DocuSign test kullanıcısı oluştur
 

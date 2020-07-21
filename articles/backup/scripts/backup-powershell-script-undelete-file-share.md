@@ -3,12 +3,12 @@ title: PowerShell betiği-silinmiş bir dosya paylaşımının silmeyi geri al
 description: Yanlışlıkla silinen bir dosya paylaşımının silmeyi geri almak için Azure PowerShell betiğini nasıl kullanacağınızı öğrenin.
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 2eb89735a8327e782d8d8a712f4f0d59911540cc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513243"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>Yanlışlıkla silinen dosya paylaşımının silmeyi geri almak için PowerShell betiği
 
@@ -152,9 +152,9 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ## <a name="how-to-use-the-script-in-different-scenarios"></a>Betiği farklı senaryolarda kullanma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-1. Betiği çalıştırmadan önce [Bu bağlantıdan](https://docs.microsoft.com//powershell/azure/install-az-ps?view=azps-3.3.0) en son Azure PowerShell az modül yükler.
+1. Betiği çalıştırmadan önce [Bu bağlantıdan](//powershell/azure/install-az-ps) en son Azure PowerShell az modül yükler.
 2. Aşağıdaki ayrıntıları, komut dosyasının farklı parametreleri için değer olarak geçirmeniz gereken şekilde yararlı tutun:
 
     * **-SubscriptionID** -dosya paylaşımının bulunduğu aboneliğin kimliği.
@@ -164,10 +164,10 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="execution-steps"></a>Yürütme adımları
 
-1. Yukarıdaki betiği, seçtiğiniz bir adla makinenize kaydedin. Bu örnekte, bunu *silmeyi geri al. ps1* olarak kaydettik
+1. Yukarıdaki betiği, seçtiğiniz bir adla makinenize kaydedin. Bu örnekte, *Undelete.ps1* olarak kaydediyoruz
 2. Komut dosyasını gereksinimlerinize uyan senaryoya göre çalıştırın.
 
-#### <a name="scenario-1"></a>Senaryo 1
+#### <a name="scenario-1"></a>1\. Senaryo
 
 Silmeyi denediğiniz dosya paylaşımıyla aynı ada sahip birden fazla silinmiş sürüm yok.
 
@@ -179,13 +179,13 @@ Aşağıdaki örnek, depolama hesabı *afsshare*'da bulunan *Share1* dosya payla
 
 Çıktıda ileti gösterilmesi gerekir`Completed:Restore File Share`
 
-#### <a name="scenario-2"></a>Senaryo 2
+#### <a name="scenario-2"></a>2\. Senaryo
 
 Silmeyi denediğiniz dosya adı ile aynı ada sahip birden fazla silinmiş sürüm var.
 
 Aşağıdaki örnek dosya paylaşımının bir sürümünü kaldırır *Share1*
 
-##### <a name="step-1"></a>1. Adım
+##### <a name="step-1"></a>1\. Adım
 
 Dosya paylaşımının adını sağlayarak betiği aşağıdaki gibi yürütün.
 
@@ -209,4 +209,3 @@ Aşağıdaki örnek, *Share1* dosya paylaşımının *01D5d7f77acc7864* sürüm�
 ```powershell
    .\UnDelete.ps1 -ResourceGroupName afsshare-StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1 -DeletedShareVersion 01D5D7F77ACC7864
 ```
-

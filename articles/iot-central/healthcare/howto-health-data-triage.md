@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77021653"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497055"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Öğretici: Power BI sağlayıcı panosu oluşturma
 
 
 
-Sürekli hasta izleme Çözümünüzü oluştururken, hasta verilerini görselleştirmek için bir hastane ekibine yönelik bir pano da oluşturabilirsiniz. Bu öğreticide, IoT Central sürekli hasta izleme uygulaması şablonundan gerçek zamanlı Power BI bir akış panosu oluşturmayı öğreneceksiniz.
+Sürekli hasta izleme Çözümünüzü oluştururken, hasta verilerini görselleştirmek için bir hastane ekibine yönelik bir pano da oluşturabilirsiniz. Bu öğreticide, IoT Central sürekli hasta izleme uygulaması şablonundan gerçek zamanlı Power BI bir akış panosu oluşturmayı öğreneceksiniz. Kullanım örneği gerçek zamanlı verilere erişim gerektirmiyorsa, Basitleştirilmiş bir dağıtım işlemine sahip [IoT Central Power BI panosunu](../core/howto-connect-powerbi.md)kullanabilirsiniz. 
 
 >[!div class="mx-imgBorder"]
 >![Pano GIF](media/dashboard-gif-3.gif)
@@ -38,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Mantıksal uygulamanızdan Power BI veri akışı
 > * Hasta için gerçek zamanlı bir pano oluşturun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -80,8 +80,8 @@ Mantıksal uygulamanızı Azure Event Hubs bağlamak için, [azure Event Hubs ve
 |Parametre|Değer|
 |---|---|
 |İçerik türü|uygulama/json|
-|Interval|3|
-|Frequency|Saniye|
+|Aralık|3|
+|Sıklık|İkinci|
 
 Bu adımın sonunda, mantıksal uygulama Tasarlayıcıınızın şöyle görünmesi gerekir:
 
@@ -143,7 +143,7 @@ Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power
 
     |Parametre|Değer|
     |---|---|
-    |Adı|Arabirim adı|
+    |Ad|Arabirim adı|
     |Tür|Dize|
 
     **Kaydet**'e tıklayın. 

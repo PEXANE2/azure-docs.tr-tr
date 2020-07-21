@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670432"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516371"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights ile çalışma zamanı özel durumlarını bulma ve tanılama
 
@@ -27,7 +27,7 @@ Azure Application Insights, uygulamanızdan çalışma zamanı özel durumların
 > * Hatalı kodu düzeltmek için yeni iş öğesi oluşturma
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -35,12 +35,12 @@ Bu öğreticiyi tamamlamak için:
     - ASP.NET ve web geliştirme
     - Azure geliştirme
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)’ı indirin ve yükleyin.
-- [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)’ı etkinleştirme
+- [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md)’ı etkinleştirme
 - Azure’a .NET uygulaması dağıtma ve [Application Insights SDK’sını etkinleştirme](../../azure-monitor/app/asp-net.md). 
 - Bu öğretici uygulamanızdaki bir özel durumun belirlenmesini izlediğinden, geliştirme veya test ortamındaki kodunuzu özel durum oluşturacak şekilde değiştirin. 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
+Üzerinde Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
 
 ## <a name="analyze-failures"></a>Hataları analiz etme

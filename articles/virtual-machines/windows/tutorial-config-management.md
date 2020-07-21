@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ed36dc669c8b89ba4a2b7831c6eb6f8742e73730
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf01e4baf96e4403dae443fa6c98f74c571641a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508329"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
@@ -31,19 +31,19 @@ Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabilece�
 
 Cloud Shell herhangi bir kod bloğunu açmak için, bu kod bloğunun sağ üst köşesinden **dene** ' yi seçin.
 
-Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell sekmesine yapıştırın ve kodu çalıştırmak için Enter tuşunu seçin.
+Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell sekmesine yapıştırın ve kodu çalıştırmak için Enter tuşunu seçin.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 Bu öğreticide Azure izlemesi ve güncelleştirme yönetimini yapılandırmak için, Azure'da bir Windows VM'sine ihtiyacınız vardır.
 
-İlk olarak, VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+İlk olarak, VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Ardından, [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Aşağıdaki örnek, `myVM` `East US` konumunda adlı bir VM oluşturur. Henüz yoksa, kaynak grubu `myResourceGroupMonitor` ve destekleyici ağ kaynakları oluşturulur:
+Ardından, [New-azvm](/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Aşağıdaki örnek, konumunda adlı bir VM oluşturur `myVM` `East US` . Henüz yoksa, kaynak grubu `myResourceGroupMonitor` ve destekleyici ağ kaynakları oluşturulur:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -76,7 +76,7 @@ VM 'niz için Güncelleştirme Yönetimi etkinleştirmek için:
 
 Bu VM için Güncelleştirme Yönetimi etkinleştirilip etkinleştirilmeyeceğini öğrenmek için doğrulama yapılır. Doğrulama bir Log Analytics çalışma alanı, bağlantılı Otomasyon hesabı için ve çözümün çalışma alanında olup olmadığı için denetimler içerir.
 
-Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için bir [Log Analytics](../../log-analytics/log-analytics-overview.md) çalışma alanı kullanırsınız. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
+Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için bir [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) çalışma alanı kullanırsınız. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
 
 Güncelleştirme gerektiren VM 'lerde ek eylemler gerçekleştirmek için Azure Otomasyonu 'nu kullanarak runbook 'ları sanal makinelere karşı çalıştırabilirsiniz. Bu tür eylemler, güncelleştirmeleri indirmeyi veya uygulamayı içerir.
 
@@ -86,8 +86,8 @@ Doğrulama işlemi ayrıca VM 'nin Microsoft Monitoring Agent (MMA) ve otomasyon
 
 Ekleme sırasında eksik olan aşağıdaki önkoşulların herhangi biri otomatik olarak eklenir:
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) çalışma alanı
-* [Otomasyon](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) çalışma alanı
+* [Otomasyon](../../automation/index.yml)
 * VM 'de etkin olan [karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 
 Çözüm etkinleştirildikten sonra, **güncelleştirme yönetimi** penceresi açılır. Kullanılacak konumu, Log Analytics çalışma alanını ve otomasyon hesabını yapılandırın ve ardından **Etkinleştir**' i seçin. Bu seçenekler soluk görünüyorsa, VM için başka bir otomasyon çözümü etkinleştirilir ve bu çözümün çalışma alanının ve otomasyon hesabının kullanılması gerekir.
@@ -110,7 +110,7 @@ VM için yeni bir güncelleştirme dağıtımı zamanlamak üzere güncelleştir
 
 | Seçenek | Açıklama |
 | --- | --- |
-| **Adı** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
+| **Ad** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
 |**İşletim sistemi**| **Linux** veya **Windows**' u seçin.|
 | **Güncelleştirilecek gruplar** |Azure üzerinde barındırılan VM 'Ler için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek için Azure 'da barındırılan sanal makinelerin dinamik bir grubunu oluşturur. </br></br>Azure üzerinde barındırılmayan VM 'Ler için, var olan kayıtlı bir aramayı seçin. Bu aramayla, dağıtıma dahil etmek için bu VM 'lerin bir grubunu seçebilirsiniz. </br></br> Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/automation-update-management-groups.md).|
 | **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup**veya **makineler**seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |

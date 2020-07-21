@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: tracking-python
-ms.openlocfilehash: 399a5bf40cff673f96aea46997bc639865619571
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bbb784a1245ecc8d6f3d3aee45b729984568fc6c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506103"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Öğretici: PyTorch ile Azure Işlevlerine önceden eğitilen bir görüntü sınıflandırma modeli dağıtın
 
@@ -23,7 +23,7 @@ Bu makalede, bir görüntüyü içeriğine göre sınıflandırmak için öncede
 > * Bir görüntüyü 1000 ImageNet [sınıflarından](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)biri olarak sınıflandırmak için SUNUCUSUZ bir HTTP API 'si oluşturun.
 > * API 'YI bir Web uygulamasından tüketme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4 veya üzeri](https://www.python.org/downloads/release/python-374/). (Python 3.8. x ve Python 3.6. x de Azure Işlevleri ile doğrulanır.)
@@ -104,18 +104,18 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     func init --worker-runtime python
     ```
 
-    Başlatma işleminden sonra *Başlangıç* klasörü, [yerel. Settings. JSON](functions-run-local.md#local-settings-file) ve [Host. JSON](functions-host-json.md)adlı yapılandırma dosyaları dahil olmak üzere proje için çeşitli dosyaları içerir. *Local. Settings. JSON* , Azure 'dan indirilen gizli dizileri içerebildiğinden, dosya, *. gitignore* dosyasında varsayılan olarak kaynak denetiminden çıkarılır.
+    Başlatma işleminden sonra *Başlangıç* klasörü, [local.settings.js](functions-run-local.md#local-settings-file) ve [host.js](functions-host-json.md)adlı yapılandırma dosyaları dahil olmak üzere proje için çeşitli dosyalar içerir. *local.settings.json* , Azure 'dan indirilen gizli dizileri içerebildiğinden, dosya, *. gitignore* dosyasında varsayılan olarak kaynak denetiminden çıkarılır.
 
     > [!TIP]
     > Bir işlev projesi belirli bir çalışma zamanına bağlı olduğundan, projedeki tüm işlevlerin aynı dille yazılması gerekir.
 
-1. Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new`Projenin seçtiği dile uygun bir kod dosyası ve *function. JSON*adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
+1. Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new`Projenin seçtiği dile uygun bir kod dosyası ve *üzerindefunction.js*adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: işlev kodunu içeren * \_ \_ init \_ \_ .* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function. JSON*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. Python hızlı başlangıçta [Dosya Içeriğini İnceleme](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) .
+    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: işlev kodunu içeren * \_ \_ init \_ \_ .* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function.js*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. Python hızlı başlangıçta [Dosya Içeriğini İnceleme](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents) .
 
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
@@ -160,9 +160,9 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
 
     ---
 
-1. *Sınıflandır* klasörünün *Predict.py* ve *labels. txt*adlı dosyaları içerdiğini doğrulayın. Aksi takdirde, komutu *Başlangıç* klasöründe çalıştırmanızdan emin olun.
+1. *Sınıflandır* klasörünün *Predict.py* ve *labels.txt*adlı dosyaları içerdiğini doğrulayın. Aksi takdirde, komutu *Başlangıç* klasöründe çalıştırmanızdan emin olun.
 
-1. *Start/requirements. txt* dosyasını bir metin düzenleyicisinde açın ve aşağıdaki gibi görünmesi gereken yardımcı kodu için gereken bağımlılıkları ekleyin:
+1. Bir metin düzenleyicisinde *Başlat/requirements.txt* açın ve yardımcı kodu için gereken bağımlılıkları ekleyin; Bu, aşağıdaki gibi görünmelidir:
 
     ```txt
     azure-functions
@@ -172,7 +172,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     torchvision==0.6.0+cpu
     ```
 
-1. *Requirements. txt*dosyasını kaydedin, ardından bağımlılıkları yüklemek için *Başlangıç* klasöründen aşağıdaki komutu çalıştırın.
+1. *requirements.txt*kaydedin, ardından bağımlılıkları yüklemek için *Başlangıç* klasöründen aşağıdaki komutu çalıştırın.
 
 
     ```

@@ -3,12 +3,12 @@ title: PowerShell betiği-depolama hesabı için kasa bulma
 description: Depolama hesabınızın kaydedildiği kurtarma hizmetleri kasasını bulmak için bir Azure PowerShell betiği kullanmayı öğrenin.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b343b2f93ed439188c5c0238bf108064f6e132c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76775364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513260"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Bir depolama hesabının kaydedildiği kurtarma hizmetleri kasasını bulmak için PowerShell betiği
 
@@ -49,7 +49,7 @@ if(!$found)
 
 ## <a name="how-to-execute-the-script"></a>Betiği yürütme
 
-1. Yukarıdaki betiği, seçtiğiniz bir adla makinenize kaydedin. Bu örnekte, *FindRegisteredStorageAccount. ps1*olarak kaydediyoruz.
+1. Yukarıdaki betiği, seçtiğiniz bir adla makinenize kaydedin. Bu örnekte, onu *FindRegisteredStorageAccount.ps1*olarak kaydettik.
 2. Aşağıdaki parametreleri sağlayarak betiği yürütün:
 
     * **-Resourcegroupname** -depolama hesabının kaynak grubu
@@ -72,4 +72,4 @@ Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Portal Azure dosya paylaşımlarını nasıl yedekleyeceğinizi](https://docs.microsoft.com/azure/backup/backup-afs) öğrenin
+[Azure Portal Azure dosya paylaşımlarını nasıl yedekleyeceğinizi](../backup-afs.md) öğrenin

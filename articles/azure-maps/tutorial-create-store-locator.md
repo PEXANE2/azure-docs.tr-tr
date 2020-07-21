@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746058"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517561"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
-Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     
 > [!div class="checklist"]
 > * Azure Harita Denetimi API 'sini kullanarak yeni bir Web sayfası oluşturun.
@@ -33,9 +33,9 @@ Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıc
 
 [Canlı mağaza Bulucu örneğine](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) veya [kaynak koduna](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)atlayın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
+Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-azure-maps-account) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Tasarım
 
@@ -90,7 +90,7 @@ Veri kümesini uygulamada açığa çıkarmak için birçok yol vardır. Bir yak
 
 Başka bir yaklaşım, bu veri kümesini tarayıcının kolayca ayrıştırabileceği düz bir metin dosyasına dönüştürmesidir. Dosyanın kendisi, uygulamanın geri kalanı ile barındırılabilir. Bu seçenek, şeyleri basit tutar, ancak kullanıcı tüm verileri indirdiğinden daha küçük veri kümeleri için iyi bir seçenektir. Veri dosyasının boyutu 1 MB 'tan küçük olduğundan bu veri kümesi için düz metin dosyası kullanıyoruz.  
 
-Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet**' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee. txt*olarak adlandırın. 
+Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet**' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee.txt*olarak adlandırın. 
 
 <center>
 
@@ -105,7 +105,7 @@ Metin dosyasını Not defteri 'nde açarsanız, aşağıdaki şekle benzer şeki
 
 ## <a name="set-up-the-project"></a>Projeyi ayarlama
 
-Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index. html*, *index. css*ve *index. js*. Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Data* adlı bir klasör oluşturun ve klasöre *ContosoCoffee. txt* ekleyin. *Görüntüler*adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada 10 resim kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
+Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index.html*, *index. css*ve *index.js*. Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Veri* adlı bir klasör oluşturun ve klasöre *ContosoCoffee.txt* ekleyin. *Görüntüler*adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada 10 resim kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
 
 <center>
 
@@ -113,9 +113,9 @@ Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.co
 
 ## <a name="create-the-user-interface"></a>Kullanıcı arabirimini oluşturma
 
-Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
+Kullanıcı arabirimini oluşturmak için *index.html*'ye kod ekleyin:
 
-1. Aşağıdaki `meta` etiketleri `head` *index. html*dosyasına ekleyin. `charset`Etiket, (UTF-8) karakter kümesini tanımlar. `http-equiv`Internet Explorer ve Microsoft Edge 'in değeri en son tarayıcı sürümlerini kullanmasını söyler. Son etiket ise, `meta` yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
+1. Aşağıdaki `meta` etiketleri `head` *index.html*öğesine ekleyin. `charset`Etiket, (UTF-8) karakter kümesini tanımlar. `http-equiv`Internet Explorer ve Microsoft Edge 'in değeri en son tarayıcı sürümlerini kullanmasını söyler. Son etiket ise, `meta` yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
 
     ```HTML
     <meta charset="utf-8">
@@ -136,7 +136,7 @@ Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. *İndex. js* ve *index. css*öğesine başvurular ekleyin:
+1. *index.js* ve *index. css*öğesine başvurular ekleyin:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -168,7 +168,7 @@ Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
     </main>
     ```
 
-İşiniz bittiğinde *index. html* [Bu örnek index. html dosyası](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)gibi görünmelidir.
+İşiniz bittiğinde *index.html* 'nin [Bu örnek index.html dosyası](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)gibi görünmesi gerekir.
 
 Sonraki adım CSS stillerini tanımlamaktır. CSS stilleri, uygulama bileşenlerinin nasıl düzenlendiğini ve uygulamanın görünümünü tanımlar. *İndex. css* ' ye açın ve aşağıdaki kodu ekleyin. `@media`Stil, ekran genişliği 700 pikselden küçük olduğunda kullanılacak alternatif stil seçeneklerini tanımlar.  
 
@@ -379,7 +379,7 @@ Uygulamayı şimdi çalıştırın, üst bilgi, arama kutusu ve arama düğmesin
 
 ## <a name="wire-the-application-with-javascript"></a>JavaScript ile uygulamayı tel bağlantı
 
-Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek ve ayrıştırmak için JavaScript 'i eklememiz ve sonra verileri haritada işlemesi gerekir. Başlamak için *index. js* ' yi açın ve aşağıdaki adımlarda açıklandığı gibi buna kod ekleyin.
+Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek ve ayrıştırmak için JavaScript 'i eklememiz ve sonra verileri haritada işlemesi gerekir. Başlamak için *index.js* açın ve aşağıdaki adımlarda açıklandığı gibi buna kod ekleyin.
 
 1. Ayarları daha kolay güncelleştirilmesini sağlamak için genel seçenekler ekleyin. Harita, açılan pencere, veri kaynağı, simge katmanı ve HTML işaretçisi için değişkenleri tanımlayın. HTML işaretini bir arama alanının merkezini gösterecek şekilde ayarlayın. Azure haritalar arama hizmeti istemcisinin bir örneğini tanımlayın.
 
@@ -395,7 +395,7 @@ Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek 
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. *İndex. js*' ye kod ekleyin. Aşağıdaki kod eşlemeyi başlatır. Sayfa yüklemeyi bitirene kadar beklemek için bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) ekledik. Daha sonra, eşlemenin yüklenmesini izlemek için olaylar ve arama düğmesine ve Konumum düğmesine işlevsellik veririz.
+1. *index.js*kod ekleyin. Aşağıdaki kod eşlemeyi başlatır. Sayfa yüklemeyi bitirene kadar beklemek için bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) ekledik. Daha sonra, eşlemenin yüklenmesini izlemek için olaylar ve arama düğmesine ve Konumum düğmesine işlevsellik veririz.
 
    Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum yazdığında, sonra ENTER tuşuna bastığında, kullanıcının sorgusuna yönelik belirsiz bir arama başlatılır. `countrySet`Arama sonuçlarını bu ülkelere/bölgelerle sınırlamak için bir ülke/bölge ISO 2 değerleri dizisi geçirin. Ülkeleri/bölgeleri arama yapılacak şekilde sınırlamak, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
   
@@ -920,7 +920,7 @@ Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek 
     }
     ```
 
-Artık tam işlevli bir depolama Konumlayıcı vardır. Bir Web tarayıcısında mağaza Bulucu için *index. html* dosyasını açın. Kümeler haritada görüntülendiğinde, arama kutusunu kullanarak, bir küme seçerek veya tek tek konumları görmek için haritada yakınlaştırarak bir konum araması yapabilirsiniz ' ı seçin.
+Artık tam işlevli bir depolama Konumlayıcı vardır. Bir Web tarayıcısında mağaza bulucunun *index.html* dosyasını açın. Kümeler haritada görüntülendiğinde, arama kutusunu kullanarak, bir küme seçerek veya tek tek konumları görmek için haritada yakınlaştırarak bir konum araması yapabilirsiniz ' ı seçin.
 
 Kullanıcı konumumu ilk kez seçtiğinde tarayıcı, kullanıcının konumuna erişmek için izin isteyen bir güvenlik uyarısı görüntüler. Kullanıcı konumunu paylaşmayı kabul ederse, harita kullanıcının konumuna yakınlaşarak yakın kafeterler gösterilir. 
 

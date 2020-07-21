@@ -1,21 +1,22 @@
 ---
-title: Azure DevTest Labs ve Kaynak Yöneticisi şablonu kullanarak laboratuvar oluşturma
-description: Bu öğreticide, bir Azure Resource Manager şablonu kullanarak Azure DevTest Labs bir laboratuvar oluşturacaksınız. Laboratuvar Yöneticisi laboratuvar yapar, laboratuvarda VM 'Ler oluşturur ve ilkeleri yapılandırır.
-ms.topic: tutorial
+title: Azure DevTest Labs ve Azure Resource Manager şablonu kullanarak laboratuvar oluşturma
+description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure DevTest Labs bir laboratuvar oluşturacaksınız. Laboratuvar Yöneticisi laboratuvar yapar, laboratuvarda VM 'Ler oluşturur ve ilkeleri yapılandırır.
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ba4ffeec22a45c07b096b0a754d08c8230dd8f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476215"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537556"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs-resource-manager-template"></a>Öğretici: Azure DevTest Labs (Kaynak Yöneticisi şablonu) kullanarak laboratuvar ayarlama
-Bu öğreticide, bir Azure Resource Manager şablonu kullanarak Windows Server 2019 Datacenter VM ile bir laboratuvar oluşturacaksınız. 
+# <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Hızlı başlangıç: Azure DevTest Labs ARM şablonunu kullanarak laboratuvar ayarlama
+Bu hızlı başlangıçta, bir Azure Resource Manager (ARM) şablonu kullanarak Windows Server 2019 Datacenter VM ile bir laboratuvar oluşturacaksınız. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
+Bu hızlı başlangıçta aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
 > [!div class="checklist"]
 > * Şablonu gözden geçirme 
@@ -23,15 +24,17 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Şablonu doğrulama
 > * Kaynakları temizleme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Yok.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/) alınmıştır.
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-dtl-create-lab-windows-vm/azuredeploy.json" range="1-97" highlight="51-85":::
 
@@ -46,7 +49,7 @@ Daha fazla şablon örneği bulmak için bkz. [Azure hızlı başlangıç şablo
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıklayın. 
 
-[![Azure’a dağıtma](./media/create-lab-windows-vm-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 1. Daha sonra kolayca temizlemek için **Yeni bir kaynak grubu** oluşturun.
 1. Kaynak grubu için bir **konum** seçin. 
@@ -59,7 +62,7 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="Şablon dağıtma sayfası":::
 
-## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
+## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 1. Dağıtımın durumunu görmek için üstteki **Bildirimler** ' i seçin ve **devam eden dağıtım** bağlantısı ' na tıklayın.
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Dağıtım bildirimi":::
@@ -76,7 +79,7 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
     > [!IMPORTANT] 
     > Laboratuvar ve VM 'yi Azure üzerinde çalıştırmaya yönelik maliyetleri önlemek için bu sayfayı açık tutun ve sonraki bölümde yer alan yönergeleri izleyin. Laboratuvardaki VM 'ye erişimi test etmek için bir sonraki öğreticide gezinmek istiyorsanız, Bu öğreticiye geçtikten sonra kaynakları temizleyin. 
 
-## <a name="cleanup-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 1. İlk olarak, kaynak grubunu silebilmeniz için Laboratuvarı silin. Kaynak grubunu içindeki bir laboratuvara silemezsiniz. Laboratuvarı silmek için araç çubuğunda **Sil** ' i seçin. 
 
@@ -90,8 +93,7 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
     :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Kaynak grubunu Sil düğmesi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, VM ile bir laboratuvar oluşturdunuz. Laboratuvara erişme hakkında daha fazla bilgi edinmek için sonraki öğreticiye ilerleyin:
+Bu hızlı başlangıçta VM ile bir laboratuvar oluşturdunuz. Laboratuvara erişme hakkında daha fazla bilgi edinmek için sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
 > [Öğretici: Laboratuvara erişme](tutorial-use-custom-lab.md)
-

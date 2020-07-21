@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390287"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540290"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Öğretici: Azure Işlevleri özel site erişimi oluşturma
 
@@ -39,13 +39,13 @@ Aşağıdaki diyagramda oluşturulacak çözümün mimarisi gösterilmektedir:
 
 ![Özel site erişim çözümü için üst düzey mimari diyagramı](./media/functions-create-private-site-access/topology.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide IP adresleme ve alt ağ oluşturma hakkında bilgi almanız önemlidir. [Bu makaleyle, adresleme ve alt ağ oluşturma temellerini kapsayan bir](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)başlangıç yapabilirsiniz. Daha birçok makale ve video çevrimiçi olarak kullanılabilir.
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
@@ -68,7 +68,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     | [_Kaynak grubu_](../azure-resource-manager/management/overview.md) | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  Aynı kaynak grubunu kullanmak, bu öğreticiyi tamamladığınızda kaynakları temizlemeyi kolaylaştırır. |
     | _Sanal makine adı_ | myVM | VM adının kaynak grubunda benzersiz olması gerekir |
     | [_Bölge_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
-    | _Ortak gelen bağlantı noktaları_ | Hiçbiri | İnternet 'ten sanal makineye gelen bağlantı olmadığından emin olmak için **hiçbiri** ' ni seçin. SANAL makineye uzaktan erişim, Azure savunma hizmeti aracılığıyla yapılandırılır. |
+    | _Genel gelen bağlantı noktaları_ | Hiçbiri | İnternet 'ten sanal makineye gelen bağlantı olmadığından emin olmak için **hiçbiri** ' ni seçin. SANAL makineye uzaktan erişim, Azure savunma hizmeti aracılığıyla yapılandırılır. |
 
 1. Yeni bir sanal ağ yapılandırmak için _ağ_ sekmesini seçin ve **Yeni oluştur** ' u seçin.
 
@@ -82,7 +82,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | _Adı_ | myResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
+    | _Ad_ | myResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
     | _Adres aralığı_ | 10.10.0.0/16 | Sanal ağ için tek bir adres aralığı kullanın. |
     | _Alt ağ adı_ | Öğretici | Alt ağın adı. |
     | _Adres aralığı_ (alt ağ) | 10.10.1.0/24 | Alt ağ boyutu, alt ağa kaç arabirim eklenebileceğini tanımlar. Bu alt ağ, VM tarafından kullanılır. A/24 alt ağı 254 ana bilgisayar adresi sağlar. |
@@ -91,7 +91,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
 1. _Ağ_ sekmesine geri döndüğünüzde, _genel IP_için **hiçbirinin** seçili olmadığından emin olun.
 1. _Yönetim_ sekmesini seçin ve ardından _Tanılama depolama hesabı_' nda yeni **Oluştur** ' u seçerek yeni bir depolama hesabı oluşturun.
 1. _Kimlik_, _otomatik olarak kapatmalar_ve _yedekleme_ bölümleri için varsayılan değerleri bırakın.
-1. _İncele ve oluştur_’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. VM oluşturma işlemi birkaç dakika sürer.
+1. _Gözden geçir ve oluştur_’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. VM oluşturma işlemi birkaç dakika sürer.
 
 ## <a name="configure-azure-bastion"></a>Azure savunma 'yi yapılandırma
 
@@ -107,8 +107,8 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | _Adı_ | tasyon | Yeni savunma kaynağının adı |
-    | _Bölge_ | Orta Kuzey ABD | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    | _Ad_ | tasyon | Yeni savunma kaynağının adı |
+    | _Bölge_ | Orta Kuzey ABD | Size yakın bir bölge seçin ve işlevlerinizin erişebileceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
     | _Sanal ağ_ | myResourceGroup-VNET | Savunma kaynağının oluşturulacağı sanal ağ |
     | _Alt ağ_ | AzureBastionSubnet | Sanal ağınızdaki, yeni savunma ana bilgisayar kaynağının dağıtılacağı alt ağ. **AzureBastionSubnet**ad değerini kullanarak bir alt ağ oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. En az **/27** veya daha büyük (/27,/26, vb.) bir alt ağ kullanmanız gerekir. |
 
@@ -138,11 +138,11 @@ Sonraki adım, [Tüketim planını](functions-scale.md#consumption-plan)kullanar
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | _Kaynak grubu_ | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  İşlev uygulaması ve sanal makine için aynı kaynak grubunun kullanılması, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
-    | _İşlev Uygulaması adı_ | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler şunlardır-z (büyük/küçük harf duyarsız), 0-9 ve-. |
-    | _Yayımlama_ | Kod | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
+    | _Kaynak Grubu_ | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  İşlev uygulaması ve sanal makine için aynı kaynak grubunun kullanılması, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
+    | _İşlev Uygulamasının adı_ | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler şunlardır-z (büyük/küçük harf duyarsız), 0-9 ve-. |
+    | _Yayımla_ | Kod | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
     | _Çalışma zamanı yığını_ | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. |
-    | _Bölge_ | Orta Kuzey ABD | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    | _Bölge_ | Orta Kuzey ABD | Size yakın bir bölge seçin ve işlevlerinizin erişebileceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
     **Sonraki: barındırma >** düğmesini seçin.
 1. _Barındırma_ bölümü için, aşağıdaki tabloda açıklandığı gibi uygun _depolama hesabı_, _işletim sistemi_ve _planı_ seçin.
@@ -197,7 +197,7 @@ Bu öğreticideki bir sonraki adım, HTTP ile tetiklenen bir Azure Işlevi oluş
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
     * [Komut satırı](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-java-maven.md)
+    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
 
 1. Azure Işlevleri projenizi yayımlarken, bu öğreticide daha önce oluşturduğunuz işlev uygulaması kaynağını seçin.
 1. İşlevin dağıtıldığını doğrulayın.

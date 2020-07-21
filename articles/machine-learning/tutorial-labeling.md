@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536173"
 ---
-# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi (Önizleme) oluşturma 
+# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi oluşturma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu öğreticide, makine öğrenimi modelleri oluşturmak için veri olarak kullanılacak etiketleme işleminin (etiketleme olarak da anılır) nasıl yönetileceği gösterilmektedir. Azure Machine Learning içindeki veri etiketleme genel önizlemede.
@@ -36,7 +36,7 @@ Bu öğreticide, kediler ve köpekler resimlerini kullanacaksınız.  Her resim 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
@@ -102,7 +102,7 @@ Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme pro
 
 1. Veri **deposundan Create DataSet** form için aşağıdaki girişi kullanın:
 
-    1. **Temel bilgi** formunda bir ad ekleyin, burada **öğreticiyi görüntüler**.  İsterseniz bir açıklama ekleyin.  Ardından **İleri**' yi seçin.
+    1. **Temel bilgi** formunda bir ad ekleyin, burada **öğreticiyi görüntüler**.  İsterseniz bir açıklama ekleyin.  Sonra **İleri**’yi seçin.
     1. **Veri deposu seçim** formunda, **daha önce oluşturduğunuz veri deposunu**seçmek için açılan listeyi kullanın (örneğin, **tutorial_images (Azure Blob depolama)**
     1. Bundan sonra, **veri deposu seçim** formunda, git ' i seçin ve **birden çok Lass-DogsCats**' **yi seçin.**  Yol olarak **/birden çok Lass-DogsCats** kullanmak için **Kaydet** ' i seçin.
     1. Ayrıntıları onaylamak için **İleri** ' yi, sonra da **Oluştur** ' u seçerek veri kümesini oluşturun.
@@ -114,7 +114,7 @@ Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme pro
 
 Veri kümenize yeni görüntüler eklemeyi planlıyorsanız, artımlı yenileme, bu yeni görüntüleri bulacak ve projenize ekleyecek.  Bu özelliği etkinleştirdiğinizde, proje yeni görüntüleri düzenli olarak denetler.  Bu öğretici için veri deposuna yeni görüntüler eklememezsiniz, bu yüzden bu özelliği işaretlenmemiş olarak bırakın.
 
-Devam etmek için **İleri**’yi seçin.
+Devam etmek için **İleri** seçeneğini belirleyin.
 
 ### <a name="label-classes"></a>Etiket sınıfları
 
@@ -130,7 +130,7 @@ Devam etmek için **İleri**’yi seçin.
 
 1. **İleri**’yi seçin.
 
-1. **Ml yardımlı etiketleme** formunda onay kutusunu işaretlenmemiş olarak bırakın. ML yardımlı etiketleme, bu öğreticide kullandığınızdan daha fazla veri gerektirir.
+1. Kurumsal çalışma alanı kullanıyorsanız, bir **ml yardımlı etiketleme** bölümü görürsünüz.  Onay kutusunu işaretlenmemiş olarak bırakın. ML yardımlı etiketleme, bu öğreticide kullandığınızdan daha fazla veri gerektirir.
 
 1. **Create project** (Proje oluştur) öğesini seçin.
 

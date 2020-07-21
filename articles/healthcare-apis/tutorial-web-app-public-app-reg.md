@@ -9,12 +9,12 @@ ms.reviewer: mihansen
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 58e21e46edfe1d03d42bf2202bcf1f22282631a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8414a84190659ff31596bc202d29fe45eefdc588
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "84872644"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536716"
 ---
 # <a name="client-application-registration"></a>İstemci uygulama kaydı
 Önceki öğreticide, FHıR için Azure API 'nizi dağıttığınızı ve ayarlamış olursunuz. Artık FHıR kurulumu için Azure API 'niz olduğuna göre, bir ortak istemci uygulaması kaydedebiliyoruz. Daha fazla ayrıntı veya sorun giderme için [genel bir istemci uygulaması](register-public-azure-ad-client-app.md) ile ilgili nasıl yapılır Kılavuzu ' nu okuyun, ancak aşağıda bu öğreticide önemli adımları adlandırdık.
@@ -23,22 +23,37 @@ ms.locfileid: "84872644"
 1. **Uygulama kaydı**  -->  **Yeni kayıt** seçeneğini belirleyin
 1. Uygulamanızı adlandırın ve yeniden yönlendirme URI 'sini ayarlayınhttps://www.getpostman.com/oauth2/callback
 
-
-![İstemci uygulama kaydı](media/tutorial-web-app/reg-public-app.png)
+   :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Uygulama kaydetme bölmesinin ekran görüntüsü ve örnek uygulama adı ve yönlendirme URL 'SI.":::
 
 ## <a name="client-application-settings"></a>İstemci uygulaması ayarları
-İstemci uygulamanız kaydedildikten sonra, genel bakış sayfasından uygulama (istemci) KIMLIĞINI kopyalayın. İstemciye erişirken bu değere daha sonra ihtiyacınız olacak.
 
-![Uygulama KIMLIĞINI Kopyala](media/tutorial-web-app/app-id.png)
+İstemci uygulamanız kaydedildikten sonra, genel bakış sayfasından uygulama (istemci) KIMLIĞI ve kiracı KIMLIĞI ' ni kopyalayın. İstemciye erişirken bu iki değere daha sonra ihtiyacınız olacak.
 
-Ardından, doğru kimlik doğrulama seçeneklerini ayarlayın. Sol taraftaki **kimlik doğrulaması** ' nı seçin. **Erişim belirteci** ve **kimlik belirteci** kutularına bakın. Ayrıca, Bu öğreticinin dördüncü bölümünde Web uygulamanızı oluştururken hazırlık aşamasında yeniden yönlendirme URI 'sini de ayarlayabilirsiniz. Bunu yapmak için \< yeniden YÖNLENDIRME URI listesine https://Web-App-NAME>. azurewebsites.net ekleyin. [Web uygulamanızı yazdığınız](tutorial-web-app-write-web-app.md)adım sırasında farklı bir ad seçerseniz, bu seçeneği geri dönüp güncelleştirmeniz gerekir.
+:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Uygulama ve Dizin kimlikleri vurgulanmış şekilde istemci uygulama ayarları bölmesinin ekran görüntüsü.":::
 
-![Uygulama kimlik doğrulama ayarları](media/tutorial-web-app/app-authentication.png)
+### <a name="connect-with-web-app"></a>Web uygulamasıyla bağlantı
 
-Doğru kimlik doğrulamasını kurdığınıza göre, API izinlerini ayarlayın. 
-1. **API izinleri** ' ni seçin ve **izin Ekle** ' ye tıklayın.
-1. **Kuruluşumun kullandığı API 'ler**altında Azure sağlık API 'leri için arama yapın
-1. **User_impersonation** seçin ve **izin Ekle** ' ye tıklayın.
+[Web uygulamanızı](tutorial-web-app-write-web-app.md) fhır için Azure API 'sine bağlamak üzere yazdıysanız, doğru kimlik doğrulama seçeneklerini de ayarlamanız gerekir. 
+
+1. Sol taraftaki menüde, **Yönet**altında **kimlik doğrulaması**' nı seçin. 
+
+1. Yeni bir platform yapılandırması eklemek için **Web**' i seçin.
+
+1. Bu öğreticinin dördüncü bölümünde Web uygulamanızı oluştururken hazırlık aşamasında yeniden yönlendirme URI 'sini ayarlayın. Bunu yapmak için `https://\<WEB-APP-NAME>.azurewebsites.net` yeniden YÖNLENDIRME URI listesine ekleyin. [Web uygulamanızı yazdığınız](tutorial-web-app-write-web-app.md)adım sırasında farklı bir ad seçerseniz, bu seçeneği geri dönüp güncelleştirmeniz gerekir.
+
+1. **Erişim belirteci** ve **kimlik belirteci** onay kutularını seçin.
+
+   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Uygulama kimlik doğrulama ayarları dikey penceresinin, vurgulanan bir platform ekleme adımlarıyla ilgili ekran görüntüsü.":::
+
+## <a name="add-api-permissions"></a>API izinleri ekleme
+
+Doğru kimlik doğrulamasını kurdığınıza göre, API izinlerini ayarlayın:
+
+1. **API izinleri** ' ni seçin ve **izin Ekle**' ye tıklayın.
+1. **Kuruluşumun kullandığı API 'ler**altında Azure sağlık API 'leri için arama yapın.
+1. **User_impersonation** seçin ve **izin Ekle**' ye tıklayın.
+
+:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="API izinleri ekleme dikey penceresinin, API izinleri ekleme adımları ile ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Artık ortak bir istemci uygulamanız var. Sonraki öğreticide, bu uygulamaya Postman aracılığıyla test ve erişim kazanıyoruz.

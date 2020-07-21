@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a796ae32033dbc09b1f5b888ded9ea5e1f4c457e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119180"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523494"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Node.js Express uygulaması oluşturma
 
@@ -33,7 +33,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 > [!VIDEO https://www.youtube.com/embed/lIwJIYcGSUg]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticinin bu bölümüne başlatmadan önce [giriş videosunu](tutorial-develop-mongodb-nodejs.md) izlediğinizden emin olun.
 
@@ -147,11 +147,11 @@ Bu öğretici için aşağıdakiler de gereklidir:
 
 7. Tüm değiştirilmiş dosyalarınızı kaydeder. 
 
-8. Visual Studio Code’da **Hata ayıkla** düğmesine ![Visual Studio Code’da Hata ayıkla simgesi](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) ve ardından dişli düğmesine ![Visual Studio Code’da dişli düğmesi](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png) tıklayın. Yeni Launch.json dosyası Visual Studio Code’da açılır.
+8. Visual Studio Code, **Hata Ayıkla** düğmesine tıklayın :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: , dişli düğmesine tıklayın :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png"::: . Yeni Launch.json dosyası Visual Studio Code’da açılır. 
 
 8. launch.json dosyasının 11. satırında `"${workspaceFolder}\\server"` değerini `"program": "${workspaceRoot}/src/server/index.js"` ile değiştirin dosyayı kaydedin.
 
-9. Uygulamayı çalıştırmak için **Hata Ayıklamayı Başlat** düğmesine ![Visual Studio Code’da Hata ayıkla simgesi](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) tıklayın.
+9. Uygulamayı çalıştırmak için **hata ayıklamayı Başlat** düğmesine tıklayın :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png"::: .
 
     Uygulama hatasız çalışmalıdır.
 

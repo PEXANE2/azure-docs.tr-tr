@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c9bad99d0ce39fb5f179043278ca4785d726744
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d080fd3cac7a0550452908e9e0265bb2ffcb462
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Öğretici: otomatik görev uç noktası yedeklemeyle tümleştirme Azure Active Directory
 
@@ -33,9 +33,9 @@ Otomatik görev uç noktası yedeklemesini Azure AD ile tümleştirmek aşağıd
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini otomatik görev uç noktası yedeklemeyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -111,7 +111,7 @@ Azure AD çoklu oturum açmayı otomatik görev uç noktası yedeklemeyle yapıl
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [otomatik görev uç noktası yedeklemesi istemci destek ekibine](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [otomatik görev uç noktası yedeklemesi istemci destek ekibine](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açmayı otomatik görev uç noktası yedeklemeyle yapıl
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>Otomatik görev uç nokta yedeklemesini yapılandırma çoklu oturum açma
 
-**Otomatik görev uç noktası yedekleme** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [otomatik görev uç noktası yedeklemesi destek ekibine](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Otomatik görev uç noktası yedekleme** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [otomatik görev uç noktası yedeklemesi destek ekibine](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -149,12 +149,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -184,7 +184,7 @@ Bu bölümde, otomatik görev uç noktası yedeklemesine erişim vererek Britta 
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Otomatik görev uç noktası yedekleme testi Kullanıcı Oluştur
 
-Bu bölümde, otomatik görev uç noktası yedeklemesi 'nde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Otomatik görev uç nokta yedekleme platformunda kullanıcıları eklemek için [otomatik görev uç nokta yedekleme destek ekibi](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, otomatik görev uç noktası yedeklemesi 'nde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Otomatik görev uç nokta yedekleme platformunda kullanıcıları eklemek için [otomatik görev uç nokta yedekleme destek ekibi](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

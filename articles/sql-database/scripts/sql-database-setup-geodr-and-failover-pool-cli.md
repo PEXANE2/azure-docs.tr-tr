@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a272564684671e38100e5390e95129121fcbd0f8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8d0860cc5a4ee60cbf60d7b55789c518049dfb90
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019392"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528783"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda havuza alınmış bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak için CLı kullanma
 
@@ -53,7 +53,7 @@ az group delete --name $secondaryResource
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
-| | |
+| Komut | Açıklama |
 |---|---|
 | [az SQL elastik havuz](/cli/azure/sql/elastic-pool) | Elastik havuz komutları |
 | [az SQL DB Replica](/cli/azure/sql/db/replica) | Veritabanı çoğaltma komutları. |

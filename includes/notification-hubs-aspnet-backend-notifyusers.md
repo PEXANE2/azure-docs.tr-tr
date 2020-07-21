@@ -1,5 +1,5 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 description: Arka uç ASP .NET WebAPI projesi oluşturma kodunu içeren dosyayı ekleyin.
 services: notification-hubs
 author: spelluru
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192542"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530190"
 ---
 ## <a name="create-the-webapi-project"></a>WebAPI projesi oluşturma
 
@@ -30,7 +30,7 @@ Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 >
 >Denetlemek için Visual Studio’yu başlatın. **Araçlar** menüsünde **Uzantılar ve güncelleştirmeler**' i seçin. Visual Studio sürümünüz için **NuGet Paket Yöneticisi** araması yapın ve en son sürümü kullandığınızdan emin olun. Sürümünüz en son sürüm değilse, bunu kaldırın ve NuGet Paket Yöneticisi'ni yeniden yükleyin.
 
-![][B4]
+![NuGet paketi Yönet for Visual Studios Package vurgulanan Uzantılar ve güncelleştirmeler iletişim kutusunun ekran görüntüsü.][B4]
 
 > [!NOTE]
 > Web sitesi dağıtımı için Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) ' yı yüklediğinizden emin olun.
@@ -392,11 +392,11 @@ Ardından bu uygulamayı tüm cihazlardan erişilebilir kılmak için bir Azure 
 
 3. **App Service Oluştur** penceresinde Azure hesabınızı seçin. **Değişiklik türü**  >  **Web uygulaması**' nı seçin. Varsayılan **Web App Adı**’nı değiştirmeyin ve **Abonelik**, **Kaynak Grubu** ve **App Service Planı**’nı seçin.
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 5. **Özet** bölümündeki **Site URL** özelliğini not edin. Bu URL, daha sonra bu öğreticide *arka uca ait uç noktanız* olacaktır.
 
-6. **Yayımla** seçeneğini belirleyin.
+6. **Yayımla**’yı seçin.
 
 Sihirbazı tamamladıktan sonra ASP.NET web uygulamasını Azure’da yayımlar ve ardından uygulamayı varsayılan tarayıcıda açar.  Uygulamanız Azure App Services’te görüntülenebilir.
 

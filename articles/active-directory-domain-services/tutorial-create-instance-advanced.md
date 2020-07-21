@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun | Microsoft Docs
+title: Öğretici-gelişmiş yapılandırma ile Azure AD DS yönetilen etki alanı oluşturma
 description: Bu öğreticide, Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma ve Azure portal kullanarak gelişmiş yapılandırma seçeneklerini belirtme hakkında bilgi edineceksiniz.
 author: iainfoulds
 manager: daveba
@@ -9,11 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 78eef9c84bb7610b067855b22a3fa0f51bf08253
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024800"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518530"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Öğretici: Gelişmiş yapılandırma seçenekleriyle Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma
 
@@ -31,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -164,7 +165,7 @@ Azure AD DS, Azure AD 'de bulunan *Tüm* kullanıcıları ve grupları ya da yal
 
     ![Azure AD 'den Kullanıcı ve grupların tam eşitlemesini gerçekleştirme](./media/tutorial-create-instance-advanced/sync-all.png)
 
-1. **İncele ve oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 ## <a name="deploy-the-managed-domain"></a>Yönetilen etki alanını dağıtma
 

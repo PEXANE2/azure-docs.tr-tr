@@ -4,12 +4,12 @@ description: Yedekleme ve Kurtarma Hizmetleri ile Azure’da bir diskin nasıl g
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56410b5302611d5de3d72f727e1a4c36bd49ca7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 75aa06d4c99c2b9c99015acfae98c30e75209f64
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160947"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503532"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure’da bir diski geri yükleme ve kurtarılan bir VM oluşturma
 
@@ -27,7 +27,7 @@ Disk geri yüklemek ve kurtarılmış bir VM oluşturmak üzere PowerShell kulla
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.18 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için Azure Backup ile korunmuş olan bir Linux sanal makinesi gerekir. Yanlışlıkla bir sanal makineyi silme ve kurtarma işleminin benzetimini yapmak için, bir kurtarma noktasındaki diskten bir sanal makine oluşturursunuz. Azure Backup ile korunan bir Linux sanal makinesine ihtiyacınız varsa bkz. [CLI ile Azure’da bir sanal makineyi yedekleme](quick-backup-vm-cli.md).
 
@@ -43,7 +43,7 @@ Veri aktarımı tamamlandığında, anlık görüntü kaldırılır ve bir kurta
 
 Bir diski geri yüklemek için, kurtarma verileri kaynağı olarak bir kurtarma noktası seçersiniz. Varsayılan ilke her gün bir kurtarma noktası oluşturup 30 gün boyunca bunları beklettiğinden, kurtarma için belirli bir nokta seçmenize olanak sağlayan bir kurtarma noktaları kümesini tutabilirsiniz.
 
-Kullanılabilir kurtarma noktalarının listesini görmek için [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) komutunu kullanın. Diskleri kurtarmak için kurtarma noktası **adı** kullanılır. Bu öğreticide, kullanılabilir en son kurtarma noktasını istiyoruz. `--query [0].name` parametresi aşağıdaki şekilde en son kurtarma noktası adını seçer:
+Kullanılabilir kurtarma noktalarının listesini görmek için [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) komutunu kullanın. Diskleri kurtarmak için kurtarma noktası **adı** kullanılır. Bu öğreticide, kullanılabilir en son kurtarma noktasını istiyoruz. `--query [0].name` parametresi aşağıdaki şekilde en son kurtarma noktası adını seçer:
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -65,7 +65,7 @@ az backup recoverypoint list \
 
 Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yönetilen diskleri geri yüklemek istiyorsanız, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra VM 'yi geri yüklenen disklerden dağıtmak için kullanılabilecek Dağıtım şablonunu depolamak için kullanılır. Daha sonra, yönetilen disklerin içine geri yükleneceği bir hedef kaynak grubu da sağlarsınız.
 
-1. Depolama hesabı oluşturmak için [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) komutunu kullanın. Depolama hesabı adı tamamen küçük harflerden oluşmalı ve genel olarak benzersiz olmalıdır. *mystorageaccount* değerini kendi benzersiz adınızla değiştirin:
+1. Depolama hesabı oluşturmak için [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) komutunu kullanın. Depolama hesabı adı tamamen küçük harflerden oluşmalı ve genel olarak benzersiz olmalıdır. *mystorageaccount* değerini kendi benzersiz adınızla değiştirin:
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yön
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *Myrecoverypointname* değerini, önceki [az Backup RecoveryPoint List](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) komutunun çıktısında edindiğiniz kurtarma noktası adıyla değiştirin. ***Ayrıca, yönetilen disklerin geri yüklendiği hedef kaynak grubunu da sağlayın***.
+2. [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *Myrecoverypointname* değerini, önceki [az Backup RecoveryPoint List](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) komutunun çıktısında edindiğiniz kurtarma noktası adıyla değiştirin. ***Ayrıca, yönetilen disklerin geri yüklendiği hedef kaynak grubunu da sağlayın***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +109,7 @@ Yedeklenen sanal makinede yönetilmeyen diskler varsa ve diskleri kurtarma nokta
 
 Ek adımlarda, sanal makine oluşturmak için geri yüklenen disk kullanılır.
 
-1. Depolama hesabı oluşturmak için [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) komutunu kullanın. Depolama hesabı adı tamamen küçük harflerden oluşmalı ve genel olarak benzersiz olmalıdır. *mystorageaccount* değerini kendi benzersiz adınızla değiştirin:
+1. Depolama hesabı oluşturmak için [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) komutunu kullanın. Depolama hesabı adı tamamen küçük harflerden oluşmalı ve genel olarak benzersiz olmalıdır. *mystorageaccount* değerini kendi benzersiz adınızla değiştirin:
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +118,7 @@ Ek adımlarda, sanal makine oluşturmak için geri yüklenen disk kullanılır.
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *myRecoveryPointName* değerini, önceki [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) komutunun çıktısından elde ettiğiniz kurtarma noktası adıyla değiştirin:
+2. [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *myRecoveryPointName* değerini, önceki [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) komutunun çıktısından elde ettiğiniz kurtarma noktası adıyla değiştirin:
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -145,7 +145,7 @@ Yukarıda belirtildiği gibi, yönetilmeyen diskler özgün depolama hesapların
 
 ## Monitor the restore job
 
-To monitor the status of restore job, use [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-Bu sorgunun çıktısı tüm ayrıntıları verir, ancak yalnızca depolama hesabı içeriklerinde ilgileniyoruz. Azure CLı 'nin [sorgu özelliğini](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) kullanarak ilgili ayrıntıları getirebilirsiniz
+Bu sorgunun çıktısı tüm ayrıntıları verir, ancak yalnızca depolama hesabı içeriklerinde ilgileniyoruz. Azure CLı 'nin [sorgu özelliğini](/cli/azure/query-azure-cli?view=azure-cli-latest) kullanarak ilgili ayrıntıları getirebilirsiniz
 
 ```azurecli-interactive
 az backup job show \
@@ -226,7 +226,7 @@ https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName
 
 Bu nedenle, yukarıdaki örnekteki şablon adı ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` ve kapsayıcı adı```myVM-daa1931199fd4a22ae601f46d8812276```
 
-Şimdi bu kapsayıcı ve şablon için SAS belirtecini [burada](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) açıklandığı gibi alın
+Şimdi bu kapsayıcı ve şablon için SAS belirtecini [burada](../azure-resource-manager/templates/secure-template-with-sas-token.md?tabs=azure-cli#provide-sas-token-during-deployment) açıklandığı gibi alın
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -250,7 +250,7 @@ url=$(az storage blob url \
 
 ### <a name="deploy-the-template-to-create-the-vm"></a>VM 'yi oluşturmak için şablonu dağıtma
 
-Şimdi [burada](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)açıklandığı gibi, VM 'yi oluşturmak için şablonu dağıtın.
+Şimdi [burada](../azure-resource-manager/templates/deploy-cli.md)açıklandığı gibi, VM 'yi oluşturmak için şablonu dağıtın.
 
 ```azurecli-interactive
 az group deployment create \

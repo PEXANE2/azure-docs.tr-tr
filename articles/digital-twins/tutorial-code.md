@@ -7,17 +7,18 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b1039bb94626dec35eff040e023a84283d9d3a4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027881"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537436"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Leri ile kodlama
 
 Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure IoT Digital ikizi istemci kitaplığı (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)kullanılarak Azure dijital TWINS hizmetine karşı programlama hakkında bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -46,7 +47,7 @@ Bu, kodunuzun büyük bir kısmını yazacağınız bir *program.cs* dahil olmak
 Ardından, Azure dijital TWINS ile çalışmak için gereken iki bağımlılığı ekleyin:
 
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
@@ -173,7 +174,7 @@ Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js*adlı yeni bir *. J
 > Bu öğretici için Visual Studio kullanıyorsanız, yeni oluşturulan JSON dosyasını seçmek ve Özellik denetçisindeki *Çıkış Dizinine Kopyala* özelliğini, *daha yeniyse* veya *her zaman*kopyalamak üzere ayarlamak isteyebilirsiniz. Bu, öğreticinin geri kalanı sırasında program 'yu **F5** ile çalıştırdığınızda, Visual Studio 'nun varsayılan yol ile json dosyasını bulmasını sağlayacaktır.
 
 > [!TIP] 
-> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [nasıl yapılır: modellerinizi ayrıştırma ve doğrulama](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
+> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [*nasıl yapılır: modellerinizi ayrıştırma ve doğrulama*](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
 
 Daha sonra, yeni oluşturduğunuz modeli Azure dijital TWINS örneğinize yüklemek için *program.cs* 'e daha fazla kod ekleyin.
 
@@ -184,7 +185,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 ```
 
 Daha sonra, `Main` yöntem imzasını zaman uyumsuz yürütmeye izin verecek şekilde değiştirerek C# hizmet SDK 'sindeki zaman uyumsuz yöntemleri kullanmaya hazırlanın. 
@@ -530,7 +530,7 @@ namespace minimal
 ```
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
  
-Bu öğreticide kullanılan örnek, bir sonraki öğreticide yeniden kullanılabilir, [öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfedebilir](tutorial-command-line-app.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, burada ayarladığınız Azure dijital TWINS örneğini koruyabilirsiniz.
+Bu öğreticide kullanılan örnek, bir sonraki öğreticide yeniden kullanılabilir, [*öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfedebilir*](tutorial-command-line-app.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, burada ayarladığınız Azure dijital TWINS örneğini koruyabilirsiniz.
  
 Bu öğreticide oluşturulan kaynaklara artık ihtiyacınız yoksa, bunları silmek için aşağıdaki adımları izleyin.
 
@@ -560,8 +560,8 @@ Bu öğreticide, sıfırdan bir .NET konsol istemci uygulaması oluşturdunuz. B
 Örnek bir istemci uygulamasıyla yapabileceklerinizden birini araştırmak için sonraki öğreticiye geçin: 
 
 > [!div class="nextstepaction"]
-> [Öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma](tutorial-command-line-app.md)
+> [*Öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma*](tutorial-command-line-app.md)
 
 Bu öğreticide, nasıl yapılır makalelerinde daha fazla yönetim işlemi öğrenerek ya da öğreticide çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini aramaya başladığınızda bu öğreticide yazdığınız koda da eklenebilir.
-* [Nasıl yapılır: özel modelleri yönetme](how-to-manage-model.md)
-* [Kavramlar: özel modeller](concepts-models.md)
+* [*Nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md)
+* [*Kavramlar: özel modeller*](concepts-models.md)

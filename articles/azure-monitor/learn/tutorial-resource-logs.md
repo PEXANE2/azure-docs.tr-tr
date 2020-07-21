@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505848"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin
 
@@ -25,13 +25,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Günlükleri çözümlemek için basit bir günlük sorgusu oluşturma
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağınız olması gerekir. Azure aboneliğinizdeki herhangi bir kaynağı tanılama ayarlarını destekleyen bir kaynak kullanabilirsiniz. Bir kaynağın tanılama ayarlarını destekleyip desteklemediğini anlamak için Azure portal menüsüne gidin ve menünün **izleme** bölümünde bir **Tanılama ayarları** seçeneğinin olduğunu doğrulayın.
 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
+Üzerinde Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
@@ -86,10 +86,10 @@ Veriler, kusto sorgu dilinde (KQL) yazılmış bir günlük sorgusu kullanılara
    
     ![Günlükler](media/tutorial-resource-logs/logs.png)
 
-4. Örnekte gösterilen hizmet, kaynak günlüklerini **AzureDiagnostics** tablosuna yazar, ancak diğer hizmetler diğer tablolara yazabilir. Farklı Azure hizmetleri tarafından kullanılan tablolar için [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/diagnostic-logs-schema.md) bölümüne bakın.
+4. Örnekte gösterilen hizmet, kaynak günlüklerini **AzureDiagnostics** tablosuna yazar, ancak diğer hizmetler diğer tablolara yazabilir. Farklı Azure hizmetleri tarafından kullanılan tablolar için [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/resource-logs-schema.md) bölümüne bakın.
 
     > [!NOTE]
-    > Birden çok hizmet, kaynak günlüklerini AzureDiagnostics tablosuna yazar. Azure Izleyici menüsünden Log Analytics başlatırsanız, belirli hizmetinizi belirtmek için `where` `ResourceProvider` sütununa sahip bir ifade eklemeniz gerekir. Bir kaynağın menüsünden Log Analytics başlattığınızda, bu sütun gerekli olmaması için kapsam yalnızca bu kaynaktaki kayıtlar olarak ayarlanır. Örnek sorgular için hizmetin belgelerine bakın.
+    > Birden çok hizmet, kaynak günlüklerini AzureDiagnostics tablosuna yazar. Azure Izleyici menüsünden Log Analytics başlatırsanız, `where` `ResourceProvider` belirli hizmetinizi belirtmek için sütununa sahip bir ifade eklemeniz gerekir. Bir kaynağın menüsünden Log Analytics başlattığınızda, bu sütun gerekli olmaması için kapsam yalnızca bu kaynaktaki kayıtlar olarak ayarlanır. Örnek sorgular için hizmetin belgelerine bakın.
 
 
 5. Sonuçları incelemek için bir sorguyu yazın ve **Çalıştır** ' a tıklayın. 
@@ -104,4 +104,4 @@ Veriler, kusto sorgu dilinde (KQL) yazılmış bir günlük sorgusu kullanılara
 Kaynak günlüklerinin bir Log Analytics çalışma alanına nasıl toplanacağını öğrendiğinize göre, bu verileri çözümlemek için günlük sorguları yazma hakkında bir öğretici doldurun.
 
 > [!div class="nextstepaction"]
-> [Azure Izleyici 'de günlük sorgularını kullanmaya başlama](../log-query/get-started-queries.md)
+> [Azure İzleyici’de günlük sorgularını kullanmaya başlama](../log-query/get-started-queries.md)

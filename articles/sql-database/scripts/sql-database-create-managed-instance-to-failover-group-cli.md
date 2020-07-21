@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bf4e2b04c540ee5672bea6e097496ced5a0d622a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115394"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528885"
 ---
-# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL yönetilen örneği ekleme
+# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL yönetilen örneği oluşturma
 
 Bu Azure CLı örneği, iki yönetilen örnek oluşturur, bunları bir yük devretme grubuna ekler ve ardından birincil yönetilen örnekten yük devretmeyi ikinci yönetilen örneğe sınar.
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
-| | |
+| Komut | Açıklama |
 |---|---|
 | [az Network VNET](/cli/azure/network/vnet) | Sanal ağ komutları.  |
 | [az Network VNET subnet](/cli/azure/network/vnet/subnet) | Sanal ağ alt ağ komutları. |

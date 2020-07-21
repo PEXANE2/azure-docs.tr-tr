@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518548"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Öğretici: Azure Active Directory parola koruması için özel yasaklanmış parolaları yapılandırma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Özel yasaklanmış parola listesine giriş ekleme
 > * Parola değişikliklerini yasaklanmış parolayla sına
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -36,12 +36,12 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
 * Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Bu öğreticide bu hesabı kullanarak bir parola değiştirme olayını test edersiniz.
-    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../add-users-azure-active-directory.md).
+    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md).
     * Parola değiştirme işlemini yasaklanmış bir parola kullanarak test etmek için, Azure AD kiracısı [self servis parola sıfırlama için yapılandırılmalıdır](tutorial-enable-sspr.md).
 
 ## <a name="what-are-banned-password-lists"></a>Yasaklanmış parola listeleri nelerdir?
 
-Azure AD, genel yasaklanmış parola listesi içerir. Genel yasaklanmış parola listesinin içeriği herhangi bir dış veri kaynağını temel almaz. Bunun yerine, genel yasaklanmış parola listesi, Azure AD güvenlik telemetri ve analizinin devam eden sonuçlarına dayanır. Bir kullanıcı veya yönetici kimlik bilgilerini değiştirmeye veya sıfırlamaya çalıştığında, istenen parola yasaklanmış parolalar listesine göre denetlenir. Genel yasaklanmış parola listesinde bir eşleşme varsa parola değiştirme isteği başarısız olur.
+Azure AD, genel yasaklanmış parola listesi içerir. Genel yasaklanmış parola listesinin içeriği herhangi bir dış veri kaynağını temel almaz. Bunun yerine, genel yasaklanmış parola listesi, Azure AD güvenlik telemetri ve analizinin devam eden sonuçlarına dayanır. Bir kullanıcı veya yönetici kimlik bilgilerini değiştirmeye veya sıfırlamaya çalıştığında, istenen parola yasaklanmış parolalar listesine göre denetlenir. Genel yasaklanmış parola listesinde bir eşleşme varsa parola değiştirme isteği başarısız olur. Bu varsayılan genel yasaklanmış parola listesini düzenleyemezsiniz.
 
 Parolaların hangi parolalara izin verileceğini sağlamak için özel bir yasaklanmış parola listesi de tanımlayabilirsiniz. Özel yasaklanmış parola listesi, kuruluşunuzda güçlü parolalar zorlamak için genel yasaklanmış parola listesi ile birlikte kullanılır. Aşağıdaki örnekler gibi özel yasaklanmış parola listesine kuruluşa özgü terimler eklenebilir:
 
@@ -91,9 +91,9 @@ Karma bir ortamda [Azure AD parola korumasını şirket içi bir ortama da dağ�
 Özel yasaklanmış parola listesini eylem bölümünde görmek için, parolayı önceki bölümde eklediğiniz bir varyasyon olarak değiştirmeyi deneyin. Azure AD, parola değişikliğini işlemeye çalıştığında, parola, özel yasaklanmış parola listesindeki bir girdiyle eşleştirilir. Daha sonra kullanıcıya bir hata görüntülenir.
 
 > [!NOTE]
-> Bir Kullanıcı Web tabanlı portalda parolasını sıfırlayabilmeniz için, Azure AD kiracısının [self servis parola sıfırlama için yapılandırılması](tutorial-enable-sspr.md)gerekir.
+> Bir Kullanıcı Web tabanlı portalda parolasını sıfırlayabilmeniz için, Azure AD kiracısının [self servis parola sıfırlama için yapılandırılması](tutorial-enable-sspr.md)gerekir. Gerekirse, Kullanıcı daha sonra [SSPR https://aka.ms/ssprsetup için kayıt ](https://aka.ms/ssprsetup)yapabilir.
 
-1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com) **uygulamalarım** sayfasına gidin.
+1. Konumundaki **uygulamalarım** sayfasına gidin [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 1. Sağ üst köşede adınızı seçin, sonra açılır menüden **profil** ' i seçin.
 
     ![Profil seçme](media/tutorial-configure-custom-password-protection/myapps-profile.png)
@@ -108,7 +108,7 @@ Karma bir ortamda [Azure AD parola korumasını şirket içi bir ortama da dağ�
 
 Bu öğreticinin bir parçası olarak yapılandırdığınız özel yasaklanmış parola listesini artık kullanmak istemiyorsanız, aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
 1. **Yönet** menü üst bilgisi altında **kimlik doğrulama yöntemleri**' ni ve ardından **parola koruması**' nı seçin.
 1. **Özel liste Uygula** seçeneğini *Hayır*olarak ayarlayın.

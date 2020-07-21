@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault yedekleme | Microsoft Docs
+title: Azure Key Vault depolanan bir gizli dizi, anahtar veya sertifikayı yedekleyin | Microsoft Docs
 description: Azure Key Vault depolanan bir gizli anahtarı, anahtarı veya sertifikayı yedeklemeye yardımcı olması için bu belgeyi kullanın.
 services: key-vault
 author: ShaneBala-keyvault
@@ -10,111 +10,114 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 8a152e2771f0b207e81f42c6ecae2e4d14605051
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147853"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521114"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault yedekleme
 
-Bu belgede, Anahtar Kasanızda depolanan bireysel gizli dizileri, anahtarları ve sertifikaları yedeklemenin nasıl gerçekleştirileceği gösterilir. Bu yedekleme, önemli olmayan olayda anahtar kasanıza erişiminizi kaybetmeniz için size tüm Sırlarınızın çevrimdışı bir kopyasını sağlamaya yöneliktir.
+Bu belgede, Anahtar Kasanızda saklanan gizli dizileri, anahtarları ve sertifikaları nasıl yedekleyeceğiniz gösterilmektedir. Yedekleme, önemli olmayan olayda anahtar kasanıza erişiminizi kaybetmeniz için size tüm gizli dizilerinizi çevrimdışı bir şekilde bir kopyasını sağlamaya yöneliktir.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
-Key Vault, kullanılabilirliği korumak ve veri kaybını engellemek için otomatik olarak çeşitli özellikler sağlar. Bu yedekleme yalnızca Sırlarınızın yedeğini korumak için kritik bir iş gerekçe varsa denenmelidir. Gizli dizileri Anahtar Kasanızda yedeklemeniz, parolaların süre sonu veya döndürme sırasında birden çok günlük, izin ve yedek kümesi bulundurma gibi ek işlem sorunları ortaya çıkarabilir.
+Azure Key Vault, kullanılabilirliği korumanıza ve veri kaybını önlemenize yardımcı olacak özellikler otomatik olarak sağlanır. Gizli dizileri yalnızca kritik bir iş gerekçenizi yedeklemeniz durumunda yedekleyin. Anahtar Kasanızda gizli dizi yedeklemesi, parolaların süre dolduğunda veya döndürürken birden çok günlük, izin ve yedek kümesini koruma gibi işlem sorunları ortaya çıkarabilir.
 
-Key Vault, olağanüstü durum senaryolarında kullanılabilirliği korur ve bir kullanıcıdan herhangi bir müdahale olmadan eşleştirilmiş bir bölgeye istekleri otomatik olarak devreder. Daha fazla bilgi için lütfen aşağıdaki bağlantıya bakın. [Olağanüstü durum kurtarma Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)
+Key Vault olağanüstü durum senaryolarında kullanılabilirliği korur ve Kullanıcı müdahalesi olmadan eşleştirilmiş bir bölgeye istekleri otomatik olarak devreder. Daha fazla bilgi için bkz. [kullanılabilirlik ve yedeklilik Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
 
-Key Vault, yumuşak silme ve Temizleme koruması aracılığıyla Sırlarınızın yanlışlıkla ve kötü amaçlı olarak silinmesine karşı koruma sağlar. Gizli dizileri yanlışlıkla veya kötü amaçlı olarak silmeye karşı koruma istiyorsanız, lütfen anahtar kasanızda geçici silme ve Temizleme koruma özelliklerini yapılandırın. Daha fazla bilgi için lütfen aşağıdaki belgeye bakın. [Azure Key Vault kurtarma](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)
+Gizli dizileri yanlışlıkla veya kötü amaçlı olarak silmeye karşı koruma istiyorsanız, Anahtar Kasanızda geçici silme ve koruma özelliklerini temizleyin. Daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete).
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure Key Vault, şu anda tüm anahtar kasasını tek bir işlemde yedeklemek için bir yol desteklememektedir. Bir anahtar kasasının otomatik yedeklemesini gerçekleştirmek için bu belgede listelenen komutları kullanma girişimleri Microsoft veya Azure Key Vault ekibi tarafından desteklenmeyecektir.
+Key Vault Şu anda tek bir işlemde tüm anahtar kasasını yedeklemek için bir yol sağlamıyor. Bir anahtar kasasının otomatik yedeklemesini yapmak için bu belgede listelenen komutları kullanma girişimleri hatalara neden olabilir ve Microsoft veya Azure Key Vault ekibi tarafından desteklenmez. 
 
-Özel otomasyon oluşturmak için aşağıdaki belgede gösterilen komutları kullanmaya çalışmak hatalara neden olabilir.
+Ayrıca aşağıdaki sonuçları göz önünde bulundurun:
 
-* Gizli dizileri birden çok sürüme yedeklemek zaman aşımı hatalarına neden olabilir.
-* Yedekleme, bir zaman noktası anlık görüntüsü oluşturur. Yedekleme sırasında gizli dizi, şifreleme anahtarlarının eşleşmemesi nedeniyle yenilenebilir.
-* Saniyedeki istek için Anahtar Kasası hizmeti sınırlarını aşmamak, anahtar kasasının kısıtlanmasına neden olur ve yedeklemenin başarısız olmasına neden olur.
+* Birden çok sürüme sahip gizli dizileri yedeklemek zaman aşımı hatalarına neden olabilir.
+* Bir yedekleme, bir zaman noktası anlık görüntüsü oluşturur. Gizlilikler bir yedekleme sırasında yenilenebilir ve şifreleme anahtarlarının eşleşmemesi nedeniyle bu durum oluşabilir.
+* Saniyedeki istek için Anahtar Kasası hizmeti sınırlarını aşarsanız, anahtar kasanızın kısıtlanacak ve yedekleme başarısız olur.
 
 ## <a name="design-considerations"></a>Tasarım konusunda dikkat edilmesi gerekenler
 
-Anahtar Kasası 'nda (gizli, anahtar veya sertifika) depolanan bir nesneyi yedeklerken, yedekleme işlemi nesneyi şifreli bir blob olarak indirir. Bu Blobun Azure dışında şifresi çözülemiyor. Bu bloba kullanılabilir verileri almak için, blobu aynı Azure aboneliği ve Azure coğrafya içindeki bir anahtar kasasında geri yüklemeniz gerekir.
-[Azure coğrafi lıklar](https://azure.microsoft.com/global-infrastructure/geographies/)
+Gizli dizi, anahtar veya sertifika gibi bir Anahtar Kasası nesnesini yedeklerken, yedekleme işlemi nesneyi şifreli bir blob olarak indirir. Bu Blobun Azure dışından şifresi çözülemiyor. Bu bloba kullanılabilir verileri almak için, blobu aynı Azure aboneliği ve [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)içindeki bir anahtar kasasında geri yüklemeniz gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliğinde katkıda bulunan düzeyi veya daha yüksek izinler
-* Yedeklemek istediğiniz gizli dizileri içeren bir birincil anahtar Kasası
+Bir Anahtar Kasası nesnesini yedeklemek için, şunları yapmanız gerekir: 
+
+* Azure aboneliğinde katkıda bulunan düzeyi veya daha yüksek izinler.
+* Yedeklemek istediğiniz gizli dizileri içeren bir birincil anahtar Kasası.
 * Gizliliklerin geri yükleneceği ikincil Anahtar Kasası.
 
-## <a name="back-up-and-restore-with-azure-portal"></a>Azure portal yedekleme ve geri yükleme
+## <a name="back-up-and-restore-from-the-azure-portal"></a>Azure portal yedekleme ve geri yükleme
+
+Azure portal kullanarak nesneleri yedeklemek ve geri yüklemek için bu bölümdeki adımları izleyin.
 
 ### <a name="back-up"></a>Yedekleme
 
-1. Azure portalına gidin.
+1. Azure portala gidin.
 2. Anahtar kasanızı seçin.
 3. Yedeklemek istediğiniz nesneye (gizli, anahtar veya sertifika) gidin.
 
-    ![Görüntü](../media/backup-1.png)
+    ![Anahtar kasasındaki anahtarlar ayarının ve bir nesnenin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-1.png)
 
 4. Nesneyi seçin.
-5. ' Yedeği Indir ' seçeneğini belirleyin
+5. **Yedeklemeyi indir**' i seçin.
 
-    ![Görüntü](../media/backup-2.png)
+    ![Anahtar kasasında yedeği Indir düğmesinin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-2.png)
     
-6. ' Indir ' düğmesine tıklayın.
+6. **İndir**'i seçin.
 
-    ![Görüntü](../media/backup-3.png)
+    ![Anahtar kasasında Indir düğmesinin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-3.png)
     
 7. Şifrelenmiş blobu güvenli bir yerde depolayın.
 
 ### <a name="restore"></a>Geri Yükleme
 
-1. Azure portalına gidin.
+1. Azure portala gidin.
 2. Anahtar kasanızı seçin.
 3. Geri yüklemek istediğiniz nesne türüne (gizli, anahtar veya sertifika) gidin.
-4. ' Yedeği geri yükle 'Yi seçin
+4. **Yedeği geri yükle**' yi seçin.
 
-    ![Görüntü](../media/backup-4.png)
+    ![Anahtar kasasında yedeklemenin geri yükleme seçimini gösteren ekran görüntüsü.](../media/backup-4.png)
     
 5. Şifrelenmiş blob 'u depoladığınız konuma gidin.
-6. "Tamam" ı seçin.
+6. **Tamam**’ı seçin.
 
-## <a name="back-up-and-restore-with-the-azure-cli"></a>Azure CLı ile yedekleme ve geri yükleme
+## <a name="back-up-and-restore-from-the-azure-cli"></a>Azure CLı 'dan yedekleme ve geri yükleme
 
 ```azurecli
-## Login To Azure
+## Log in to Azure
 az login
 
-## Set your Subscription
+## Set your subscription
 az account set --subscription {AZURE SUBSCRIPTION ID}
 
-## Register Key Vault as a Provider
+## Register Key Vault as a provider
 az provider register -n Microsoft.KeyVault
 
-## Backup a Certificate in Key Vault
+## Back up a certificate in Key Vault
 az keyvault certificate backup --file {File Path} --name {Certificate Name} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Backup a Key in Key Vault
+## Back up a key in Key Vault
 az keyvault key backup --file {File Path} --name {Key Name} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Backup a Secret in Key Vault
+## Back up a secret in Key Vault
 az keyvault secret backup --file {File Path} --name {Secret Name} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Restore a Certificate in Key Vault
+## Restore a certificate in Key Vault
 az keyvault certificate restore --file {File Path} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Restore a Key in Key Vault
+## Restore a key in Key Vault
 az keyvault key restore --file {File Path} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Restore a Secret in Key Vault
+## Restore a secret in Key Vault
 az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Key Vault için günlüğe kaydetmeyi ve izlemeyi açın. [Günlüğe kaydetme Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/logging)
+Key Vault için [günlüğe kaydetmeyi ve izlemeyi](https://docs.microsoft.com/azure/key-vault/general/logging) açın.

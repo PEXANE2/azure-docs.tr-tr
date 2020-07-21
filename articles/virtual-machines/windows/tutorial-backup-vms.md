@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5b3d1240c621a1bcdc135825e70fe164452a428
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100439"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500404"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Öğretici: Azure'da Windows sanal makineleri için dosyaları yedekleme ve geri yükleme
 
@@ -27,7 +27,7 @@ Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Bac
 
 ## <a name="backup-overview"></a>Backup’a genel bakış
 
-Azure Backup hizmeti bir yedekleme işi başlattığında, yedekleme uzantısını zaman içinde bir noktanın anlık görüntüsü alacak şekilde tetikler. Azure Backup hizmeti [VMSnapshot uzantısını](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)kullanır. Uzantı, VM’nin çalışıyor olması durumunda ilk VM yedeklemesi sırasında yüklenir. VM çalışmıyorsa Backup hizmeti, temel alınan depolamanın anlık görüntüsünü alır (VM durduğunda herhangi bir uygulama yazma işlemi gerçekleşmediği için).
+Azure Backup hizmeti bir yedekleme işi başlattığında, yedekleme uzantısını zaman içinde bir noktanın anlık görüntüsü alacak şekilde tetikler. Azure Backup hizmeti [VMSnapshot uzantısını](../extensions/vmsnapshot-windows.md)kullanır. Uzantı, VM’nin çalışıyor olması durumunda ilk VM yedeklemesi sırasında yüklenir. VM çalışmıyorsa Backup hizmeti, temel alınan depolamanın anlık görüntüsünü alır (VM durduğunda herhangi bir uygulama yazma işlemi gerçekleşmediği için).
 
 Windows VM'lerinin anlık görüntüsü alınırken, Backup hizmeti Birim Gölge Kopyası Hizmeti (VSS) ile eşgüdümlü çalışarak sanal makine disklerinin tutarlı bir anlık görüntüsünü elde eder. Azure Backup hizmeti anlık görüntüyü aldıktan sonra veriler kasaya aktarılır. Verimliliği maksimuma çıkarmak için hizmet yalnızca bir önceki yedeklemeden itibaren değişmiş olan veri bloklarının aktarımını yapar.
 
@@ -36,7 +36,7 @@ Veri aktarımı tamamlandığında, anlık görüntü kaldırılır ve bir kurta
 ## <a name="create-a-backup"></a>Yedekleme oluşturma
 Kurtarma Hizmetleri Kasasına basit bir zamanlanmış günlük yedekleme oluşturma. 
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Sol taraftaki menüden **Sanal makineler**'i seçin. 
 1. Listeden yedekleyeceğiniz VM'yi seçin.
 1. VM dikey penceresinde, **işlemler** bölümünde, **Yedekle**' ye tıklayın. **Yedeklemeyi etkinleştir** dikey penceresi açılır.
@@ -98,12 +98,3 @@ Sanal makineleri izleme hakkında bilgi edinmek için bir sonraki öğreticiye g
 
 > [!div class="nextstepaction"]
 > [Sanal makineleri yönetme](tutorial-govern-resources.md)
-
-
-
-
-
-
-
-
-

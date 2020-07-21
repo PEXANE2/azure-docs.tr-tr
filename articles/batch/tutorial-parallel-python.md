@@ -1,16 +1,16 @@
 ---
-title: Paralel iş yükü çalıştırma
+title: Python API 'sini kullanarak paralel iş yükü çalıştırma
 description: Öğretici - Batch Python istemci kitaplığını kullanarak Azure Batch’te ffmpeg ile paralel medya dosyaları işleme
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 63515012d10739bb018de34e040465fbe337aa02
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d9f84d90c8c06cd00999b0764419fdb1c4cbe95
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561270"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497905"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Öğretici: Python API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -28,7 +28,7 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python sürüm 2.7 veya 3.3 ya da üzeri](https://www.python.org/downloads/)
 
@@ -194,7 +194,7 @@ new_pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(new_pool)
 ```
 
-### <a name="create-a-job"></a>Bir iş oluşturma
+### <a name="create-a-job"></a>İş oluşturma
 
 Bir Batch işi, üzerinde görevlerin çalıştırılacağı bir havuz ve iş için öncelik ile zamanlama gibi isteğe bağlı ayarları belirtir. Örnek, `create_job` çağrısıyla bir iş oluşturur. Bu tanımlı işlev, havuzunuzda bir iş oluşturmak üzere [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) sınıfını kullanır. [Job.add](/python/api/azure-batch/azure.batch.operations.joboperations) yöntemi, havuzu Batch hizmetine gönderir. Başlangıçta iş hiçbir görev içermez.
 

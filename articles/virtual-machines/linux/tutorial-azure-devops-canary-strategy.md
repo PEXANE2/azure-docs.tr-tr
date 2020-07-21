@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: e0fb26896b79fb23bb0f784c0f23aa3af0593c22
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871861"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510166"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için kanarya dağıtım stratejisini yapılandırma
 
@@ -29,7 +29,7 @@ Bu makalede, çok makineli dağıtımlar için kanarya stratejisini kullanan bir
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Sanal makinelerde CI/CD 'yi yapılandırma
 
-Sanal makineleri bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)hedefler olarak ekleyebilirsiniz. Daha sonra bunları çok makineli güncelleştirmeler için hedefleyebilirsiniz. Makinelere dağıttıktan sonra, dağıtım **geçmişini** bir dağıtım grubu içinde görüntüleyin. Bu görünüm VM 'den işlem hattına ve sonra işlemeye izlemenizi sağlar.
+Sanal makineleri bir [dağıtım grubuna](/azure/devops/pipelines/release/deployment-groups)hedefler olarak ekleyebilirsiniz. Daha sonra bunları çok makineli güncelleştirmeler için hedefleyebilirsiniz. Makinelere dağıttıktan sonra, dağıtım **geçmişini** bir dağıtım grubu içinde görüntüleyin. Bu görünüm VM 'den işlem hattına ve sonra işlemeye izlemenizi sağlar.
 
 ### <a name="canary-deployments"></a>Canary dağıtımları
 
@@ -47,7 +47,7 @@ Sürekli teslim seçeneğini kullanarak, Azure Portal sanal makinelerinize yöne
    ![Sürekli teslim paneli](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
 1. Dağıtım grubu, fiziksel ortamları temsil eden bir dağıtım hedefi makineleri kümesidir. Geliştirme, test, UAT ve üretim örneklere örnektir. Yeni bir dağıtım grubu oluşturabilir veya var olan bir dağıtım grubu seçebilirsiniz.
-1. Sanal makineye dağıtılacak paketi yayımlayan derleme işlem hattını seçin. Yayınlanan paketin, paketin kök klasöründeki deployscripts klasöründe Deploy. ps1 veya deploy.sh adlı bir dağıtım betiği olmalıdır. İşlem hattı bu dağıtım betiğini çalıştırır.
+1. Sanal makineye dağıtılacak paketi yayımlayan derleme işlem hattını seçin. Yayınlanan paketin, paketin kök klasöründeki deployscripts klasöründe deploy.ps1 veya deploy.sh adlı bir dağıtım betiği olmalıdır. İşlem hattı bu dağıtım betiğini çalıştırır.
 1. **Dağıtım stratejisi**' nde **Canary**' ı seçin.
 1. Kanarya dağıtımlarının parçası olacak VM 'lere "kanarya" etiketini ekleyin. Kanarya dağıtımı başarılı olduktan sonra gerçekleştirilen dağıtımların parçası olan sanal makinelere bir "üretim" etiketi ekleyin. Etiketler yalnızca belirli bir role sahip olan VM 'Leri hedefetmenize yardımcı olur.
 
@@ -67,7 +67,7 @@ Sürekli teslim seçeneğini kullanarak, Azure Portal sanal makinelerinize yöne
 
 1. İşlem hattı çalıştırmasına devam etmeden önce en az bir VM 'nin "üretim" olarak etiketlendiğinden emin olun. İşlem hattının üçüncü aşamasında, uygulamalar yalnızca "üretim" etiketine sahip olan VM 'lere dağıtılır.
 
-1. Dağıtımı betiği Yürüt görevi varsayılan olarak Deploy. ps1 veya deploy.sh dağıtım betiğini çalıştırır. Betik, yayımlanan paketin kök klasöründe yer aldığı deployscripts klasöründedir. Seçili derleme işlem hattının dağıtımı paketin kök klasöründe yayınlayıp yayımlamadığını doğrulayın.
+1. Dağıtımı betiği Yürüt görevi varsayılan olarak deploy.ps1 veya deploy.sh dağıtım betiğini çalıştırır. Betik, yayımlanan paketin kök klasöründe yer aldığı deployscripts klasöründedir. Seçili derleme işlem hattının dağıtımı paketin kök klasöründe yayınlayıp yayımlamadığını doğrulayın.
 
    ![Deployscripts klasöründe deploy.sh gösteren yapılar bölmesi](media/tutorial-deployment-strategy/package.png)
 
@@ -87,5 +87,5 @@ Azure 'ı kolay bir şekilde kullanmaya başlayın. Azure DevOps Projeleri, aşa
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [Azure DevOps Projeleri kullanarak Azure sanal makinelerine dağıtma](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Azure sanal makine ölçek kümesine uygulamanızın sürekli dağıtımını uygulama](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [Azure DevOps Projeleri kullanarak Azure sanal makinelerine dağıtma](../../devops-project/azure-devops-project-vms.md)
+- [Azure sanal makine ölçek kümesine uygulamanızın sürekli dağıtımını uygulama](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

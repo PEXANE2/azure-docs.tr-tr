@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
-ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 471690c5c0f5ebb4cea111b85cab1fe0524a36cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74039107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509732"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>LAMP yığınını yük dengeli bir sanal makine ölçek kümesine dağıtma
 
@@ -50,17 +50,17 @@ Bu betik bir kaynak grubu, sanal makine, kullanılabilirlik kümesi, yük dengel
 
 | Komut | Notlar |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Sanal makine ölçek kümesi oluşturur |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Yük dengeli uç nokta ekler |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension) | VM dağıtımında özel betik çalıştıran uzantıyı oluşturur |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss) | Ölçek kümesine uzantı uygulanmadan önce dağıtılmış VM örneklerinde özel betiği çalıştırır. |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss) | Daha fazla VM örneği ekleyerek ölçek kümesinin ölçeğini artırır. Özel betik, dağıtıldıklarında bu örnekler üzerinde çalıştırılır. |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | Örnek tarafından oluşturulan VM’lerin IP adreslerini alır. |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | Yük dengeleyici tarafından kullanılan ön uç ve arka uç bağlantı noktalarını alır. |
+| [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az vmss create](/cli/azure/vmss) | Sanal makine ölçek kümesi oluşturur |
+| [az network lb rule create](/cli/azure/network/lb/rule) | Yük dengeli uç nokta ekler |
+| [az vmss extension set](/cli/azure/vmss/extension) | VM dağıtımında özel betik çalıştıran uzantıyı oluşturur |
+| [az vmss update-instances](/cli/azure/vmss) | Ölçek kümesine uzantı uygulanmadan önce dağıtılmış VM örneklerinde özel betiği çalıştırır. |
+| [az vmss scale](/cli/azure/vmss) | Daha fazla VM örneği ekleyerek ölçek kümesinin ölçeğini artırır. Özel betik, dağıtıldıklarında bu örnekler üzerinde çalıştırılır. |
+| [az network public-ip list](/cli/azure/network/public-ip) | Örnek tarafından oluşturulan VM’lerin IP adreslerini alır. |
+| [az network lb show](/cli/azure/network/lb) | Yük dengeleyici tarafından kullanılan ön uç ve arka uç bağlantı noktalarını alır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek sanal makine CLI betiği örnekleri, [Azure Linux VM belgeleri](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) içinde bulunabilir.

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e559be82fc7c3d6b25b99319785d49e30f56287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c233ef9cfb6ded6f3d4e96b893970d4282dfc22e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460010"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526988"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux VM’leri Oluşturma ve Yönetme
 
@@ -32,13 +32,13 @@ Azure sanal makineleri tam olarak yapılandırılabilir ve esnek bir bilgi işle
 > * VM’yi yeniden boyutlandırma
 > * VM durumunu görüntüleme ve anlama
 
-Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](../../cloud-shell/overview.md)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](https://docs.microsoft.com/cli/azure/group) komutuyla bir kaynak grubu oluşturun. 
+[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. 
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir sanal makineden önce bir kaynak grubu oluşturulmalıdır. Bu örnekte, *eastus* bölgesinde *myResourceGroupVM* adlı bir kaynak grubu oluşturulur. 
 
@@ -50,7 +50,7 @@ Kaynak grubu, bu öğretici boyunca görülebileceği gibi bir VM oluşturulurke
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-[az vm create](https://docs.microsoft.com/cli/azure/vm) komutuyla bir sanal makine oluşturun. 
+[az vm create](/cli/azure/vm) komutuyla bir sanal makine oluşturun. 
 
 Bir sanal makine oluştururken, işletim sistemi görüntüsü, disk boyutlandırma ve yönetici kimlik bilgileri gibi çeşitli seçenekler bulunur. Aşağıdaki örnekte *myVM* adlı Ubuntu Server çalıştıran bir VM oluşturulur. VM’de *azureuser* adlı bir kullanıcı hesabı ve varsayılan anahtar konumunda (*~/.ssh*) mevcut değilse SSH anahtarları oluşturulur:
 
@@ -155,12 +155,12 @@ Aşağıdaki tabloda boyutlar kullanım durumlarına göre kategorilere ayrılma
 
 | Tür                     | Ortak boyutlar           |    Açıklama       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Genel amaçlı](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
-| [İşlem için iyileştirilmiş](sizes-compute.md)   | Fsv2          | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
-| [Bellek için iyileştirilmiş](sizes-memory.md)    | Esv3, Ev3, d, DSv2, Dv2  | Yüksek bellek/çekirdek. İlişkisel veritabanı, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
-| [Depolama için iyileştirilmiş](sizes-storage.md)      | Lsv2, ls              | Yüksek disk aktarım hızı ve GÇ. Büyük Veri, SQL ve NoSQL veritabanları için ideal.                                                         |
-| [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Ağır grafik işlemleri ile video düzenleme işlemleri için özel olarak hedeflenen VM’ler.       |
-| [Yüksek performans](sizes-hpc.md) | H        | İşleme düzeyi yüksek olan isteğe bağlı ağ arabirimleri (RDMA) içeren VM’lerimiz, şimdiye kadarki en güçlü CPU ile sunuluyor. |
+| [Genel amaçlı](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
+| [İşlem için iyileştirilmiş](../sizes-compute.md)   | Fsv2          | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
+| [Bellek için iyileştirilmiş](../sizes-memory.md)    | Esv3, Ev3, d, DSv2, Dv2  | Yüksek bellek/çekirdek. İlişkisel veritabanı, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
+| [Depolama için iyileştirilmiş](../sizes-storage.md)      | Lsv2, ls              | Yüksek disk aktarım hızı ve GÇ. Büyük Veri, SQL ve NoSQL veritabanları için ideal.                                                         |
+| [GPU](../sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Ağır grafik işlemleri ile video düzenleme işlemleri için özel olarak hedeflenen VM’ler.       |
+| [Yüksek performans](../sizes-hpc.md) | H        | İşleme düzeyi yüksek olan isteğe bağlı ağ arabirimleri (RDMA) içeren VM’lerimiz, şimdiye kadarki en güçlü CPU ile sunuluyor. |
 
 
 ### <a name="find-available-vm-sizes"></a>Kullanılabilir VM boyutlarını bulma
@@ -251,7 +251,7 @@ Bir Azure VM’si birçok güç durumuna sahip olabilir. Bu durum VM’nin hiper
 
 ### <a name="power-states"></a>Güç durumları
 
-| Güç Durumu | Açıklama
+| Güç Durumu | Description
 |----|----|
 | Başlatılıyor | Sanal makinenin başlatıldığını gösterir. |
 | Çalışıyor | Sanal makinenin çalıştığını gösterir. |

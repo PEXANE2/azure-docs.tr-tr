@@ -1,5 +1,5 @@
 ---
-title: Snapshot-PowerShell örneğinden yönetilen disk oluşturma
+title: Anlık görüntüden yönetilen disk oluşturma (Windows)-PowerShell örneği
 description: Azure PowerShell Betiği Örneği - Anlık görüntüden yönetilen disk oluşturma
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 5758e31fc24d366479cbebb139f1a8376330b397
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d14f78b361c0b66b86886df7ffd7abbfc72cff35
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459330"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500999"
 ---
-# <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>PowerShell ile anlık görüntüden yönetilen disk oluşturma
+# <a name="create-a-managed-disk-from-a-snapshot-with-powershell-windows"></a>PowerShell ile anlık görüntüden yönetilen disk oluşturma (Windows)
 
 Bu betik bir anlık görüntüden yönetilen disk oluşturur. İşletim sistemi anlık görüntülerinden ve veri disklerinden bir sanal makineyi geri yüklemek için bu betiği kullanın. İlgili anlık görüntülerden işletim sistemi ve veri diskleri oluşturun ve sonra yönetilen diskleri ekleyerek yeni bir sanal makine oluşturun. Ayrıca, anlık görüntülerden oluşturulan veri disklerini ekleyerek mevcut bir VM'nin veri disklerini geri yükleyebilirsiniz.
 
@@ -39,9 +39,9 @@ Bu betik bir anlık görüntüden yönetilen disk oluşturmak için aşağıdaki
 
 | Komut | Notlar |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | Anlık görüntü özelliklerini alır.  |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Disk oluşturmak için kullanılan disk yapılandırmasını oluşturur. Üst anlık görüntünün kaynak kimliğini, üst anlık görüntünün konumuyla aynı olan konumu ve depolama türünü içerir.  |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Parametre olarak geçirilen disk yapılandırmasını, disk adını ve kaynak grubu adını kullanarak bir disk oluşturur. |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | Anlık görüntü özelliklerini alır.  |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | Disk oluşturmak için kullanılan disk yapılandırmasını oluşturur. Üst anlık görüntünün kaynak kimliğini, üst anlık görüntünün konumuyla aynı olan konumu ve depolama türünü içerir.  |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | Parametre olarak geçirilen disk yapılandırmasını, disk adını ve kaynak grubu adını kullanarak bir disk oluşturur. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

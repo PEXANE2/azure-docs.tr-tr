@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77656271"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505882"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights ile uygulama durumunu izleme ve uyarma
 
@@ -24,11 +24,11 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * Uygulamanın yanıtını sürekli denetlemek için kullanılabilirlik testi oluşturma
 > * Sorun oluştuğunda yöneticilere e-posta gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
-[Application Insights kaynağı](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)oluşturun.
+[Application Insights kaynağı](./dotnetcore-quick-start.md#enable-application-insights)oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -56,7 +56,7 @@ Application Insights ' deki kullanılabilirlik testleri, uygulamanızı dünyan�
 
     ![Uyarıyı Düzenle](media/tutorial-alert/edit-alert-001.png)
 
-6. Başarısız konumları 3 ' e eşit veya daha büyük olarak ayarlayın. Uyarı eşiğinden ihlal edildiğinde kimin bildirim almasını sağlayan bir [eylem grubu](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) oluşturun.
+6. Başarısız konumları 3 ' e eşit veya daha büyük olarak ayarlayın. Uyarı eşiğinden ihlal edildiğinde kimin bildirim almasını sağlayan bir [eylem grubu](../platform/action-groups.md) oluşturun.
 
     ![Uyarı Kullanıcı arabirimini Kaydet](media/tutorial-alert/save-alert-001.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Eğitim-Azure Pipelines kullanarak Azure VM 'lerine CI/CD
-description: Bu öğreticide, YAML tabanlı Azure işlem hattını kullanarak bir Node. js uygulamasının Azure VM 'lerine sürekli tümleştirme (CI) ve sürekli dağıtımı (CD) ayarlamayı öğreneceksiniz.
+description: Bu öğreticide, YAML tabanlı Azure işlem hattını kullanarak bir Node.js uygulamasının Azure VM 'lerine sürekli tümleştirme (CI) ve sürekli dağıtımı (CD) ayarlamayı öğreneceksiniz.
 author: ushan
 tags: azure-devops-pipelines
 ms.assetid: ''
@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8aa53d4b08a4a0bdaa4e1f12169811ae88edbd2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76988337"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501883"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Öğretici: Azure DevOps Services ve Azure Pipelines kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
@@ -24,7 +24,7 @@ Sürekli tümleştirme (CI) ve sürekli dağıtım (CD) her kod yürütmesinden 
 
 Azure Pipelines, hem şirket içi hem de herhangi bir bulutta sanal makinelere dağıtımlar için tam ve tam özellikli bir CI/CD otomasyon araçları kümesi sağlar.
 
-Bu öğreticide bir YAML tabanlı CI/CD işlem hattı ayarlayarak, her biri uygulamayı çalıştırmak için Web sunucusu olarak görev yapacak şekilde Linux sanal makinelerinden oluşan bir Azure Pipelines [ortamına](https://docs.microsoft.com/azure/devops/pipelines/process/environments?view=azure-devops) kaynak olarak dağıtırsınız.
+Bu öğreticide bir YAML tabanlı CI/CD işlem hattı ayarlayarak, her biri uygulamayı çalıştırmak için Web sunucusu olarak görev yapacak şekilde Linux sanal makinelerinden oluşan bir Azure Pipelines [ortamına](/azure/devops/pipelines/process/environments?view=azure-devops) kaynak olarak dağıtırsınız.
 
 Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -37,15 +37,15 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure DevOps Services kuruluşunuzda (**https://dev.azure.com/**) oturum açın. 
+* Azure DevOps Services kuruluşunuzda () oturum açın **https://dev.azure.com/** . 
   Ücretsiz bir [Azure DevOps Services kuruluşu](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) edinebilirsiniz.
 
   > [!NOTE]
-  > Daha fazla bilgi için, bkz. [Azure DevOps Services’a bağlanma](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > Daha fazla bilgi için, bkz. [Azure DevOps Services’a bağlanma](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
 
-*  Dağıtım hedefi için bir Linux sanal makinesi gerekir.  Daha fazla bilgi için bkz. [Azure CLI ile Linux sanal makineleri oluşturma ve yönetme](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
+*  Dağıtım hedefi için bir Linux sanal makinesi gerekir.  Daha fazla bilgi için bkz. [Azure CLI ile Linux sanal makineleri oluşturma ve yönetme](./tutorial-manage-vm.md).
 
-*  Sanal makineniz için 80 numaralı gelen bağlantı noktasını açın. Daha fazla bilgi için bkz. [Azure portalını kullanarak ağ güvenlik grupları oluşturma](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic).
+*  Sanal makineniz için 80 numaralı gelen bağlantı noktasını açın. Daha fazla bilgi için bkz. [Azure portalını kullanarak ağ güvenlik grupları oluşturma](../../virtual-network/tutorial-filter-network-traffic.md).
 
 ## <a name="get-your-sample-app-code"></a>Örnek uygulama kodunuzu alın
 
@@ -69,7 +69,7 @@ https://github.com/azure-devops/fabrikam-node
 ```
 
 > [!NOTE]
-> Bu Node. js uygulaması [Yeumman](https://yeoman.io/learning/index.html)ile oluşturulmuştur. Express, bower ve grunt kullanır. Ayrıca bağımlılıklar olarak bazı npm paketlerini içerir.
+> Bu Node.js uygulama [Yeumman](https://yeoman.io/learning/index.html)ile oluşturulmuştur. Express, bower ve grunt kullanır. Ayrıca bağımlılıklar olarak bazı npm paketlerini içerir.
 > Örnek, Nginx’i ayarlayan ve uygulamayı dağıtan bir betik de içerir. Sanal makinelerde yürütülür. Betik özellikle:
 > 1. Node, Nginx ve PM2'yi yükler.
 > 2. Nginx ve PM2’yi yapılandırır.
@@ -90,14 +90,14 @@ Uygulama için kullanılan çalışma zamanı yığınına göre aşağıda aç�
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-Bir JavaScript uygulamasını veya Node. js uygulamasını yüklemek için, uygulamayı dağıtmak üzere NGINX web sunucusuna sahip bir Linux sanal makinesine ihtiyacınız vardır.
-Zaten NGINX ile bir Linux sanal makinesi yoksa, [Bu örnekteki](/azure/virtual-machines/linux/quick-create-cli)adımları kullanarak Azure 'da şimdi bir tane oluşturun.
+Bir JavaScript uygulaması veya Node.js uygulaması yüklemek için, uygulamayı dağıtmak üzere NGINX web sunucusuna sahip bir Linux VM 'si gerekir.
+Zaten NGINX ile bir Linux sanal makinesi yoksa, [Bu örnekteki](./quick-create-cli.md)adımları kullanarak Azure 'da şimdi bir tane oluşturun.
 
 * * * 
 
 ## <a name="create-an-azure-pipelines-environment-with-azure-virtual-machines"></a>Azure sanal makinelerle Azure Pipelines ortamı oluşturma
 
-Sanal makineler, [ortamlar](https://docs.microsoft.com/azure/devops/pipelines/process/environments) içinde kaynak olarak eklenebilir ve çok makineli dağıtımlar için hedeflenebilir. Ortamında dağıtım geçmişi görünümleri VM 'den işlem hattına ve sonra işlemeye izlenebilirlik sağlar.
+Sanal makineler, [ortamlar](/azure/devops/pipelines/process/environments) içinde kaynak olarak eklenebilir ve çok makineli dağıtımlar için hedeflenebilir. Ortamında dağıtım geçmişi görünümleri VM 'den işlem hattına ve sonra işlemeye izlenebilirlik sağlar.
 
 "**Ortamlar**" hub 'ında "işlem**hatları**" bölümünün içinde bir ortam oluşturabilirsiniz.
 1.  Azure DevOps kuruluşunuzda oturum açın ve projenize gidin.
@@ -163,11 +163,11 @@ Web uygulamanızı yayımlayan bir sürekli tümleştirme (CI) derleme işlem ha
     artifact: drop
 ```
 
-Daha fazla bilgi için, [Maven Ile Java uygulamanızı derleme](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)bölümünde bahsedilen adımları izleyin.
+Daha fazla bilgi için, [Maven Ile Java uygulamanızı derleme](/azure/devops/pipelines/ecosystems/java)bölümünde bahsedilen adımları izleyin.
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-**Başlangıç** şablonunu seçin ve NPM ile genel bir Node. js projesi oluşturan aşağıdaki YAML kod parçacığını kopyalayın.
+**Başlangıç** şablonunu seçin ve NPM ile genel Node.js projesi oluşturan aşağıdaki YAML kod parçacığını kopyalayın.
 
 ```YAML
 - stage: Build
@@ -196,7 +196,7 @@ Daha fazla bilgi için, [Maven Ile Java uygulamanızı derleme](https://docs.mic
       artifact: drop
 ```
 
-Daha fazla bilgi için [Gulp Ile Node. js uygulamanızı oluşturma](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript)bölümündeki adımları izleyin.
+Daha fazla bilgi için, [Gulp ile Node.js uygulamanızı oluşturma](/azure/devops/pipelines/ecosystems/javascript)bölümündeki adımları izleyin.
 
 - BT 'nin ne yaptığını görmek için ardışık düzene göz atın. Tüm varsayılan girişlerin kodunuz için uygun olduğundan emin olun.
 
@@ -208,7 +208,7 @@ Daha fazla bilgi için [Gulp Ile Node. js uygulamanızı oluşturma](https://doc
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Linux VM 'ye dağıtmak için CD adımları tanımlama
 
-1. Yukarıdaki YAML söz dizimini kullanarak daha önce sahip olduğunuz ortama ve VM kaynaklarına başvurarak, yukarıdaki işlem hattını düzenleyin ve bir [dağıtım işi](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs) dahil edin:
+1. Yukarıdaki YAML söz dizimini kullanarak daha önce sahip olduğunuz ortama ve VM kaynaklarına başvurarak, yukarıdaki işlem hattını düzenleyin ve bir [dağıtım işi](/azure/devops/pipelines/process/deployment-jobs) dahil edin:
 
    ```YAML
    jobs:  
@@ -221,13 +221,13 @@ Daha fazla bilgi için [Gulp Ile Node. js uygulamanızı oluşturma](https://doc
      strategy:
    ```
 2. Ortamdaki her bir sanal makine için tanımladığınız **etiketleri** belirterek dağıtımı almak için ortamdan belirli sanal makine kümelerini seçebilirsiniz.
-Dağıtım işi için tüm YAML şeması [aşağıda](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) verilmiştir.
+Dağıtım işi için tüm YAML şeması [aşağıda](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) verilmiştir.
 
 3. Idthor `runOnce` veya `rolling` dağıtım stratejisi olarak belirtebilirsiniz. 
 
-   `runOnce``preDeploy` `deploy`, `routeTraffic`ve `postRouteTraffic`gibi tüm yaşam döngüsü kancalarının bir kez yürütüldüğü en basit dağıtım stratejisidir. Ardından, ya `on:` `success` da `on:` `failure` yürütülür.
+   `runOnce`, ve gibi tüm yaşam döngüsü `preDeploy` `deploy` `routeTraffic` `postRouteTraffic` kancalarının bir kez yürütüldüğü en basit dağıtım stratejisidir. Ardından, ya da `on:` `success` `on:` `failure` yürütülür.
 
-   Aşağıda, için `runOnce` YAML kod parçacığı örneği verilmiştir:
+   Aşağıda, için YAML kod parçacığı örneği verilmiştir `runOnce` :
    ```YAML
    jobs:
    - deployment: VMDeploy
@@ -285,7 +285,7 @@ Dağıtım işi için tüm YAML şeması [aşağıda](https://docs.microsoft.com
                - script: echo Notify! This is on success
    ```
 
-   Bu işin her çalıştırılmasındaki dağıtım geçmişi, VM 'Leri oluşturduğunuz ve kaydettiğiniz `<environment name>` ortama göre kaydedilir.
+   Bu işin her çalıştırılmasındaki dağıtım geçmişi, `<environment name>` VM 'leri oluşturduğunuz ve kaydettiğiniz ortama göre kaydedilir.
 
 ## <a name="run-your-pipeline-and-get-traceability-views-in-environment"></a>İşlem hattınızı çalıştırın ve ortamda izlenebilirlik görünümlerini alın
 Ortamın dağıtımlar görünümü, yürütmelerin ve iş öğelerinin tam izlenebilirliği ve ortam/kaynak başına bir çapraz işlem hattı dağıtım geçmişi sağlar.
@@ -295,8 +295,8 @@ Ortamın dağıtımlar görünümü, yürütmelerin ve iş öğelerinin tam izle
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Yeni oluşturduğunuz işlem hattını [özelleştirmek](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline) için devam edebilirsiniz.
-- YAML işlem hatlarında yapabileceğiniz diğer şeyleri öğrenmek için bkz. [YAML şema başvurusu](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema).
+- Yeni oluşturduğunuz işlem hattını [özelleştirmek](/azure/devops/pipelines/customize-pipeline) için devam edebilirsiniz.
+- YAML işlem hatlarında yapabileceğiniz diğer şeyleri öğrenmek için bkz. [YAML şema başvurusu](/azure/devops/pipelines/yaml-schema).
 - LAMP (Linux, Apache, MySQL ve PHP) yığınını dağıtma hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]

@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023389"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520638"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,8 +33,9 @@ Bu makalede, aşağıdaki görevleri öğreneceksiniz:
 > * Çıkarım betiğinizi yazın.
 > * ParallelRunStep içeren bir [makine öğrenimi işlem hattı](concept-ml-pipelines.md) oluşturun ve genel test görüntülerinde Batch çıkarımı çalıştırın. 
 > * Yeni veri girişi ve parametreleriyle toplu çıkarımı çalıştırmayı yeniden gönderin. 
+> * Sonuçlara bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -158,9 +160,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>Modeli hazırlama
@@ -265,17 +265,17 @@ Artık ihtiyacınız olan her şeye sahipsiniz: veri girişleri, model, çıktı
 
 ### <a name="prepare-the-environment"></a>Ortamı hazırlama
 
-İlk olarak, betiğinizin bağımlılıklarını belirtin. Bunun yapılması, PIP paketleri yüklemenize ve ortamı yapılandırmanıza olanak tanır. Her zaman **azureml-Core** ve **azureml-dataprep [Pandas, sigortası]** paketlerini ekleyin.
+İlk olarak, betiğinizin bağımlılıklarını belirtin. Bunun yapılması, PIP paketleri yüklemenize ve ortamı yapılandırmanıza olanak tanır.
 
-Özel bir Docker görüntüsü (user_managed_dependencies = true) kullanırsanız Ayrıca, Conda yüklemiş olmanız gerekir.
+Her zaman, PIP paketi listesine **azureml-Core** ve **azureml-DataSet-Runtime [Pandas, sigortası]** dahil edin. Özel bir Docker görüntüsü (user_managed_dependencies = true) kullanırsanız Ayrıca, Conda yüklemiş olmanız gerekir.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -285,7 +285,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>ParallelRunConfig kullanarak parametreleri belirtme
 
-`ParallelRunConfig`, `ParallelRunStep` Azure Machine Learning işlem hattının içinde örnek için önemli bir yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdakiler dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
+`ParallelRunConfig`, `ParallelRunStep` Azure Machine Learning işlem hattının içinde örnek için önemli bir yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdaki girdilerin tümü de dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
 - `entry_script`: Birden çok düğümde paralel olarak çalıştırılacak yerel dosya yolu olarak bir Kullanıcı betiği. Varsa `source_directory` , göreli bir yol kullanın. Aksi takdirde, makinede erişilebilen herhangi bir yolu kullanın.
 - `mini_batch_size`: Tek bir çağrıya geçirilen mini toplu iş boyutu `run()` . (isteğe bağlı; varsayılan değer, `10` filedataset ve `1MB` TabularDataset için dosyalardır.)
     - İçin `FileDataset` , en az değeri olan dosya sayısıdır `1` . Birden çok dosyayı tek bir mini toplu işte birleştirebilirsiniz.
@@ -304,7 +304,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: `run()` Saniye cinsinden Yöntem çağırma zaman aşımı. (isteğe bağlı; varsayılan değer `60` )
 - `run_max_try`: `run()` Bir mini toplu iş için deneme sayısı üst sınırı. Bir `run()` özel durum oluşursa bir hata oluşur veya ulaşıldığında hiçbir şey döndürülmez `run_invocation_timeout` (isteğe bağlı; varsayılan değer `3` ). 
 
-,,, `mini_batch_size` , `node_count` `process_count_per_node` `logging_level` `run_invocation_timeout` , Ve `run_max_try` gibi `PipelineParameter` bir işlem hattı çalıştırmasını yeniden gönderdiğinizde parametre değerlerini ince ayar yapabilirsiniz. Bu örnekte, ve için Pipelineparametresini kullanırsınız `mini_batch_size` `Process_count_per_node` ve daha sonra bir çalıştırmayı yeniden gönderdiğinizde bu değerleri değiştirirsiniz. 
+İşlem hattı çalıştırmasını yeniden gönderdiğinizde,,,,, `mini_batch_size` `node_count` ve olarak belirtebilirsiniz, `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` Bu sayede parametre değerleri üzerinde ince ayar yapabilirsiniz. Bu örnekte, ve için Pipelineparametresini kullanırsınız `mini_batch_size` `Process_count_per_node` ve daha sonra bir çalıştırmayı yeniden gönderdiğinizde bu değerleri değiştirirsiniz. 
 
 Bu örnek, `digit_identification.py` daha önce ele alınan betiği kullandığınızı varsayar. Kendi komut dosyanızı kullanırsanız, `source_directory` ve `entry_script` parametrelerini uygun şekilde değiştirin.
 
@@ -391,6 +391,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>Sonuçları görüntüleme
+
+Yukarıdaki çalıştırmanın sonuçları, bu örnekte *ını*olarak adlandırılan pipelinedata nesnesinde belirtilen veri deposuna yazılır. Sonuçlar varsayılan blob kapsayıcısında depolanır, depolama hesabınıza gidebilir ve Depolama Gezgini aracılığıyla görüntüleyebilirsiniz, dosya yolu azureml-BlobStore-*GUID*/azureml/*RunId* / *output_dir*olur.
+
+Sonuçları görüntülemek için bu verileri de indirebilirsiniz. İlk 10 satırı görüntülemek için örnek kod aşağıda verilmiştir.
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
