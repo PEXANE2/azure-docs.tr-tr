@@ -4,13 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad3e005f65b1660bd843bf2819f41eddbed44e9c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b6829f52cb8aaac6f243d3a4a1fa7f6bc1b150d7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035757"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544855"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -24,7 +25,7 @@ Yeni, boş bir klasör oluşturun. Örneği bir web sunucusunda barındırmak is
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>JavaScript için Konuşma SDK’sını bu klasöre çıkarın
 
-Konuşma SDK’sını [.zip paketi](https://aka.ms/csspeech/jsbrowserpackage) olarak indirin ve yeni oluşturulan klasöre çıkarın. Bu, iki dosya için bir paketi, `microsoft.cognitiveservices.speech.sdk.bundle.js` ve `microsoft.cognitiveservices.speech.sdk.bundle.js.map` .
+Konuşma SDK’sını [.zip paketi](https://aka.ms/csspeech/jsbrowserpackage) olarak indirin ve yeni oluşturulan klasöre çıkarın. Bu, ve dahil olmak üzere beş dosyanın dağıtılmasına neden olur `microsoft.cognitiveservices.speech.sdk.bundle.js` `microsoft.cognitiveservices.speech.sdk.bundle.js.map` .
 İkinci dosya isteğe bağlıdır ve SDK kodunda hata ayıklamak için faydalıdır.
 
 ## <a name="create-an-indexhtml-page"></a>Bir index.html sayfası oluşturma

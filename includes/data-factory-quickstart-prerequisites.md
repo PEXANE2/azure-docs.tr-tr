@@ -1,26 +1,28 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: data-factory
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/27/2019
-ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 4d77cb8128105a40143a40e48ebe450115f7cf1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/27/2019
+ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78164322"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544428"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-subscription"></a>Azure aboneliği
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ### <a name="azure-roles"></a>Azure rolleri
+
 Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, *katkıda bulunan*, *sahip* veya *yönetici* rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır. Abonelikte sahip olduğunuz izinleri görüntülemek için [Azure Portal](https://portal.azure.com)gidin, sağ üst köşedeki Kullanıcı adınızı seçin, daha fazla seçenek için "**...**" simgesini seçin ve sonra **izinlerim**' i seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin.
 
 Data Factory için veri kümeleri, bağlı hizmetler, işlem hatları, tetikleyiciler ve tümleştirme çalışma zamanları gibi alt kaynaklar oluşturup yönetmek için aşağıdaki gereksinimlerin karşılanması gerekir:
@@ -36,10 +38,12 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 - [Azure Data Factory için roller ve izinler](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure Storage hesabı
+
 Bu hızlı başlangıçta, genel amaçlı bir Azure Depolama hesabını (özel olarak BLOB depolama) hem *kaynak* hem de *hedef* veri deposu olarak kullanırsınız. Genel amaçlı bir Azure depolama hesabınız yoksa, bir [depolama hesabı](../articles/storage/common/storage-account-create.md) oluşturmak için bkz. hesap oluşturma. 
 
 #### <a name="get-the-storage-account-name"></a>Depolama hesabı adını al
-Bu hızlı başlangıç için Azure depolama hesabınızın adına ihtiyacınız olacak. Aşağıdaki yordam, depolama hesabınızın adını almak için gereken adımları sağlar: 
+
+Bu hızlı başlangıç için Azure depolama hesabınızın adına ihtiyacınız vardır. Aşağıdaki yordam, depolama hesabınızın adını almak için gereken adımları sağlar: 
 
 1. Bir Web tarayıcısında [Azure Portal](https://portal.azure.com) gidin ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
 2. Azure Portal menüsünde **tüm hizmetler**' i ve ardından **depolama**  >  **depolama hesapları**' nı seçin. Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
@@ -48,16 +52,18 @@ Bu hızlı başlangıç için Azure depolama hesabınızın adına ihtiyacınız
 Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
 
 #### <a name="create-a-blob-container"></a>Blob kapsayıcısı oluşturma
+
 Bu bölümde, Azure Blob depolama alanında **adftutorial** adlı bir blob kapsayıcısı oluşturursunuz.
 
 1. Depolama hesabı sayfasında **genel bakış**  >  **kapsayıcıları**' nı seçin.
-2. * \< Hesap adı>*  -  **kapsayıcılar** sayfasının araç çubuğunda **kapsayıcı**' yı seçin.
-3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. * \< Hesap adı>*  -  **kapsayıcılar** sayfası, kapsayıcılar listesinde **adföğreticisi** içerecek şekilde güncelleştirilir.
+2. *\<Account name>*  -  **Kapsayıcılar** sayfasının araç çubuğunda **kapsayıcı**' yı seçin.
+3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. *\<Account name>*  -  **Kapsayıcılar** sayfası, kapsayıcılar listesinde **adföğreticisi** içerecek şekilde güncelleştirilir.
 
    ![Kapsayıcılar listesi](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Blob kapsayıcısı için bir giriş klasörü ve dosyası ekleyin
-Bu bölümde, yeni oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki içeriğe sahip **emp.txt** adlı bir dosya oluşturun:
+
+Bu bölümde, oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki içeriğe sahip **emp.txt** adlı bir dosya oluşturun:
 
 ```emp.txt
 John, Doe
@@ -66,7 +72,7 @@ Jane, Doe
 
 Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten mevcut değilse, oluşturun.) Sonra Azure portal geri dönüp şu adımları izleyin:
 
-1. Kaldığınız yerden * \< Hesap adı>*  -  **kapsayıcılar** sayfasında, güncelleştirilmiş kapsayıcı listesinden **adföğreticisi** ' ni seçin.
+1. Kaldığınız *\<Account name>*  -  **kapsayıcılar** sayfasında, güncelleştirilmiş kapsayıcı listesinden **adföğreticisi** ' ni seçin.
 
    1. Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın.
    1. Azure Portal menüsünde **tüm hizmetler**' i ve ardından **depolama**  >  **depolama hesapları**' nı seçin. Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
@@ -78,7 +84,7 @@ Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten mevcut d
 
    ![Gelişmiş bağlantı seçeneğini belirleme](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
 5. **Klasöre yükle** kutusuna **giriş**' i girin.
-6. Ardından **Yükle** düğmesini seçin. Listede **emp.txt** dosyasını ve karşıya yükleme durumunu görmeniz gerekir.
+6. **Karşıya Yükle** düğmesini seçin. Listede **emp.txt** dosyasını ve karşıya yükleme durumunu görmeniz gerekir.
 7. **BLOB yükle** sayfasını kapatmak için **Kapat** simgesini (bir **X**) seçin.
 
 **Adföğreticisi** kapsayıcı sayfasını açık tutun. Bu hızlı başlangıcın sonundaki çıktıyı doğrulamak için bu sayfayı kullanırsınız.

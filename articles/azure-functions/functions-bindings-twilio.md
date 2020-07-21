@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76715069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540273"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Işlevleri için Twilio bağlama
 
@@ -240,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek, [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamanın SMS iletisi göndermek için nasıl kullanılacağını gösterir. `to`, Ve değerlerini `from` `body` programlı olarak geçersiz kılsanız bile öznitelik tanımında gereklidir.
+Aşağıdaki örnek, [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamanın SMS iletisi göndermek için nasıl kullanılacağını gösterir. `to`, Ve değerlerini `from` `body` programlı olarak geçersiz kılsanız bile öznitelik tanımında gereklidir.
 
 ```java
 package com.function;
@@ -318,7 +319,7 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
-[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamasını,,, [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) `T` `int` `String` `byte[]` veya Pojo türü gibi herhangi bir yerel Java türü olabilecek bir parametreye yerleştirin.
+[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamasını,,, [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) `T` `int` `String` `byte[]` veya Pojo türü gibi herhangi bir yerel Java türü olabilecek bir parametreye yerleştirin.
 
 ---
 
@@ -326,14 +327,14 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `TwilioSms` .
 
-| Özellik üzerinde v1 function.js | özelliğindeki v2 function.js | Öznitelik özelliği |Açıklama|
+| Özellik üzerinde v1 function.js | özelliğindeki v2 function.js | Öznitelik özelliği |Description|
 |---------|---------|---------|----------------------|
 |**türüyle**|**türüyle**| olarak ayarlanmalıdır `twilioSms` .|
 |**Görünüm**|**Görünüm**| olarak ayarlanmalıdır `out` .|
 |**ada**|**ada**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
 |**accountSid**|**Accountsıdsetting**| **AccountSidSetting**| Bu değer, Twilio hesabı SID 'nizi () tutan bir uygulama ayarının adına ayarlanmalıdır `TwilioAccountSid` . Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi () tutan bir uygulama ayarının adına ayarlanmalıdır `TwilioAccountAuthToken` . Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAuthToken" olur. |
-|**Hedef**| Yok-kodda belirt | **Hedef**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
+|**şöyle değiştirin:**| Yok-kodda belirt | **Hedef**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
 |**Kaynak**|**Kaynak** | **Kaynak**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
 |**bölümü**|**bölümü** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS metin iletisini sabit koda almak için kullanılabilir. |  
 

@@ -5,11 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74226732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540392"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure İşlevleri Çalışma Zamanı Preview 2 ' i yükler
 
@@ -24,7 +25,7 @@ Azure İşlevleri Çalışma Zamanı Preview 2 ' yi yüklemek istiyorsanız aşa
 1. Azure İşlevleri Çalışma Zamanı Preview 2 yapılandırmasını doldurun.
 1. Azure İşlevleri Çalışma Zamanı önizlemede ilk işlevinizi oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure İşlevleri Çalışma Zamanı Önizlemeyi yüklemeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
 
@@ -70,7 +71,7 @@ Azure İşlevleri Çalışma Zamanı yüklemesini gerçekleştirmek için, yapı
 
     ![Azure İşlevleri Çalışma Zamanı Preview yapılandırma aracı][7]
 
-1. **Veritabanı** sekmesine tıklayın, bir [veritabanı ana anahtarı](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)belirtme dahil SQL Server Örneğiniz için bağlantı ayrıntılarını girin ve **Uygula**' ya tıklayın.  Azure İşlevleri Çalışma Zamanı çalışma zamanını destekleyecek bir veritabanı oluşturmak için bir SQL Server örneğine bağlantı gerekir.
+1. **Veritabanı** sekmesine tıklayın, bir [veritabanı ana anahtarı](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)belirtme dahil SQL Server Örneğiniz için bağlantı ayrıntılarını girin ve **Uygula**' ya tıklayın.  Azure İşlevleri Çalışma Zamanı çalışma zamanını destekleyecek bir veritabanı oluşturmak için bir SQL Server örneğine bağlantı gerekir.
 
     ![Azure İşlevleri Çalışma Zamanı Preview veritabanı yapılandırması][8]
 

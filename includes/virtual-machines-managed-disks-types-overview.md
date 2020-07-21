@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca8798af83108ca5e8bdfe5918a25423fd934d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84436109"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544248"
 ---
 Azure yönetilen diskler Şu anda dört disk türü sunmaktadır, her tür belirli müşteri senaryolarına yönelik olarak tasarlanmıştır.
 
@@ -21,8 +21,8 @@ Azure yönetilen diskler Şu anda dört disk türü sunmaktadır, her tür belir
 
 Aşağıdaki tabloda, ne kullanacağınıza karar vermenize yardımcı olmak üzere, Ultra diskler, Premium katı hal sürücüleri (SSD), standart SSD ve yönetilen diskler için standart sabit disk sürücüleri (HDD) karşılaştırması sunulmaktadır.
 
-|   | Ultra disk   | Premium SSD   | Standart SSD   | Standart HDD   |
-|---------|---------|---------|---------|---------|
+| Ayrıntı | Ultra disk | Premium SSD | Standart SSD | Standart HDD |
+| ------ | ---------- | ----------- | ------------ | ------------ |
 |Disk türü   |SSD   |SSD   |SSD   |HDD   |
 |Senaryo   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), üst katman veritabanları (ÖRNEĞIN, SQL, Oracle) ve diğer işlem açısından ağır iş YÜKLERI gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, az kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişim   |
 |En büyük disk boyutu   |65.536 gibibayt (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |

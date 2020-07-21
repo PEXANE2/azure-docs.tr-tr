@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 65570674f16e660c4101088cd77db433abab59a2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849979"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540341"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
 
@@ -29,7 +29,7 @@ Bu makaleye başlamadan önce, aşağıdaki gereksinimleri karşılamanız gerek
 * [Azure Depolama Gezgini](https://storageexplorer.com/)'i yükler. Depolama Gezgini, çıkış bağlamalarınız tarafından oluşturulan sıra iletilerini incelemek için kullanacağınız bir araçtır. Depolama Gezgini, macOS, Windows ve Linux tabanlı işletim sistemlerinde desteklenir.
 
 ::: zone pivot="programming-language-csharp"
-* [.NET Core CLI araçları](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)'nı yükler.
+* [.NET Core CLI araçları](/dotnet/core/tools/?tabs=netcore2x)'nı yükler.
 ::: zone-end
 
 * [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](functions-create-first-function-vs-code.md)adımları uygulayın. 

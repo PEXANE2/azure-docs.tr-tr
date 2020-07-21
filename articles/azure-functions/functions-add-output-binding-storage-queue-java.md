@@ -6,24 +6,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e5b1250170830af24ddc1f2e3b78965ebcea051e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673273"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540324"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java işlevinizi Azure depolama 'ya bağlama
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-java-maven.md) oluşturduğunuz Işlevi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
+Bu makalede, [önceki hızlı başlangıç makalesinde](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) oluşturduğunuz Işlevi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
 
-Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı `AzureWebJobsStorage`bir uygulama ayarında depolanıyor.  
+Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı bir uygulama ayarında depolanıyor `AzureWebJobsStorage` .  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaleye başlamadan önce, [Java hızlı](functions-create-first-java-maven.md)başlangıcının 1. bölümündeki adımları uygulayın.
+Bu makaleye başlamadan önce, [Java hızlı](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)başlangıcının 1. bölümündeki adımları uygulayın.
 
 ## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
 
@@ -64,7 +64,7 @@ gradle azureFunctionsRun
 ---
 
 > [!NOTE]  
-> Host. JSON içindeki uzantı paketlerini etkinleştirdiyseniz, [depolama bağlama uzantısı](functions-bindings-storage-blob.md#add-to-your-functions-app) diğer Microsoft bağlama uzantılarıyla birlikte başlangıç sırasında sizin için indirilir ve yüklenir.
+> host.jsuzantı paketlerinin etkinleştirildiğinden, [depolama bağlama uzantısı](functions-bindings-storage-blob.md#add-to-your-functions-app) diğer Microsoft bağlama uzantılarıyla birlikte başlangıç sırasında sizin için indirilir ve yüklenir.
 
 Daha önce olduğu gibi, yeni bir Terminal penceresinde kıvrımlı kullanarak işlevi komut satırından tetikleyin:
 
@@ -72,7 +72,7 @@ Daha önce olduğu gibi, yeni bir Terminal penceresinde kıvrımlı kullanarak i
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-Bu kez, çıkış bağlaması aynı zamanda depolama hesabınızda adlı `outqueue` bir kuyruk oluşturur ve bu dizeyi içeren bir ileti ekler.
+Bu kez, çıkış bağlaması aynı zamanda depolama hesabınızda adlı bir kuyruk oluşturur `outqueue` ve bu dizeyi içeren bir ileti ekler.
 
 Ardından, yeni kuyruğu görüntülemek ve bir iletinin eklendiğini doğrulamak için Azure CLı 'yi kullanırsınız. Kuyruğunuzu, [Microsoft Azure Depolama Gezgini][Azure Storage Explorer] veya [Azure Portal](https://portal.azure.com)kullanarak da görüntüleyebilirsiniz.
 
@@ -94,7 +94,7 @@ gradle azureFunctionsDeploy
 ```
 ---
 
-Yine, dağıtılan işlevi test etmek için kıvrımlı kullanabilirsiniz. Daha önce olduğu gibi, aşağıdaki `AzureFunctions` örnekte olduğu gibi POST isteğinin gövdesinde bulunan değeri URL 'ye geçirin:
+Yine, dağıtılan işlevi test etmek için kıvrımlı kullanabilirsiniz. Daha önce olduğu gibi, `AzureFunctions` Aşağıdaki örnekte olduğu gıbı POST isteğinin gövdesinde bulunan DEĞERI URL 'ye geçirin:
 
 ```bash
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions

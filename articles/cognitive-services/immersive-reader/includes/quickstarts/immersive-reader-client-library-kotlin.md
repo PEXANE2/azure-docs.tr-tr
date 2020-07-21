@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: d4d811d782acdd75550f05a8be28711be41ad343
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7db367222d96d7bc9dae48242992ee76a89c849d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038695"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544808"
 ---
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
-Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)ulaşabilirsiniz.
+Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıçta tam çalışma örneği [GitHub ' da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)kullanılabilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
-* [Git](https://git-scm.com/)
-* [Modern Okuyucu SDK 'Sı](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
+* [Git](https://git-scm.com/).
+* [Modern Okuyucu SDK 'sı](https://github.com/microsoft/immersive-reader-sdk).
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>Android projesi oluşturma
 
-Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekran okuyucu SDK 'sının](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) bir parçası olarak kullanılabilir
+Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekran okuyucu SDK 'sının](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)bir parçası olarak kullanılabilir.
 
-![Yeni Proje](../../media/android/kotlin/android-studio-create-project.png)
+![Yeni proje](../../media/android/kotlin/android-studio-create-project.png)
 
-Projeyi seçin penceresinde **boş etkinlik** ' i seçin ve ardından ' ileri ' ' ye tıklayın.
+**Projeyi seçin** penceresinde **boş etkinlik**' i seçin ve ardından **İleri**' yi seçin.
 
 ![Boş etkinlik projesi](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Projeyi yapılandırma
 
-Projeyi ' QuickstartKotlin' olarak adlandırın, bir kaydetme konumu seçin ve programlama dili olarak ' Kotlin' i seçin ve ardından ' son ' düğmesine tıklayın.
+Projeyi **Quickstartkotlin**olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Kotlin** ' ı seçin ve ardından **son**' u seçin.
 
 ![Projeyi yapılandırma](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Varlıkları ve kimlik doğrulamasını ayarlama
 
-Yeni **/varlıklar** klasörü oluştur
+Yeni bir **/varlıklar** klasörü oluşturun.
 
 ![Yeni varlıklar klasörü oluştur](../../media/android/kotlin/android-studio-assets-folder.png)
 
- Varlıklar klasörünün içinde **env** adlı bir dosya oluşturun. Aşağıdaki değerleri uygun şekilde ekleyin. Bu env dosyasını, genel olarak yapılmamalıdır gizli dizileri içerdiğinden kaynak denetimine yürütmemeyi unutmayın.
+ Varlıklar klasörünün içinde **env** adlı bir dosya oluşturun. Aşağıdaki adları ve değerleri ekleyin ve değerleri uygun şekilde sağlayın. Ortak yapılmaması gereken gizli dizileri içerdiğinden, bu env dosyasını kaynak denetimine teslim etmeyin.
 
 ![Yeni bir env dosyası oluşturma](../../media/android/kotlin/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-, Env yordamlarını (zaman uyumsuz programlama), gson (JSON ayrıştırma ve serileştirme) ve dotenv dosyalarını, env dosyasında tanımlanan değişkenlere başvuracak şekilde etkinleştirmek için **Build. Gradle** dosyasındaki mevcut bağımlılıkları aşağıdaki uygulamalarla değiştirin. Bu hızlı başlangıçta bir sonraki adımda MainActivity. kt uygularken projeyi tekrar eşitlemeniz gerekebilir.
+Aynı (zaman uyumsuz programlama), gson (JSON ayrıştırma ve serileştirme) ve dotenv 'in env dosyasında tanımlanan değişkenlere başvurması için **yapı. Gradle** dosyasındaki mevcut bağımlılıkları aşağıdaki uygulamalarla değiştirin. Bu hızlı başlangıçta bir sonraki adımda MainActivity. kt uyguladığınızda projeyi tekrar eşitlemeniz gerekebilir.
 
 ```build.gradle
 dependencies {
@@ -88,7 +88,7 @@ dependencies {
 
 ## <a name="update-app-strings-and-layout-resources"></a>Uygulama dizelerini ve düzen kaynaklarını Güncelleştir
 
-**Res/Strings/strings.xml** içeriğini uygulamada kullanılacak aşağıdaki dizelerle değiştirin.
+**Res/Strings/strings.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki dizelerle değiştirin.
 
 ![Uygulama strings.xml](../../media/android/kotlin/android-studio-strings.png)
 
@@ -106,7 +106,7 @@ dependencies {
 </resources>
 ```
 
-**Res/Layout/activity_main.xml** içindeki içeriği uygulamada kullanılacak olan XML ile değiştirin. Bu, uygulamanın kullanıcı arabirimi yerleşimidir.
+**Res/Layout/activity_main.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki XML ile değiştirin. Bu XML, uygulamanın kullanıcı arabirimi yerleşimidir.
 
 ![Uygulama activity_main.xml](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
@@ -207,7 +207,7 @@ dependencies {
 
 ## <a name="set-up-the-app-kotlin-code-javascript-interface"></a>Uygulama Kotlin kodu JavaScript arabirimini ayarlama
 
-**/Java/com.example.quickstartkotlin** klasöründe yeni bir Kotlin sınıfı oluşturun ve **webappınterface**olarak adlandırın ve ardından aşağıdaki kodu ekleyin. Bu, uygulamanın, sonraki bir adımda eklenecek HTML 'de JavaScript işlevleriyle arabirim oluşturmasını sağlar.
+**/Java/com.example.quickstartkotlin** klasöründe yeni bir Kotlin sınıfı oluşturun ve **webappınterface**olarak adlandırın. Ardından aşağıdaki kodu ekleyin. Bu kod, uygulamanın HTML 'de daha sonraki bir adımda eklenecek JavaScript işlevleriyle arabirim oluşturmasını sağlar.
 
 ![com. example. quickstartkotlin klasörü](../../media/android/kotlin/android-studio-com-folder.png)
 
@@ -262,7 +262,7 @@ class WebAppInterface(private val mContext: Context, var parentLayout: LinearLay
 
 ## <a name="set-up-the-app-kotlin-code-main-activity"></a>Uygulama Kotlin kodunu ayarlama ana etkinliği
 
-**/Java/com.example.quickstartkotlin** klasöründe, mevcut bir **MainActivity. kt** Kotlin sınıf dosyası görürsünüz. Bu, uygulama mantığının yazıldığı yerdir. İçeriğini aşağıdaki kodla değiştirin.
+**/Java/com.example.quickstartkotlin** klasöründe, mevcut bir **MainActivity. kt** Kotlin sınıf dosyası görürsünüz. Bu dosya, uygulama mantığının yazıldığı yerdir. Dosyanın içeriğini aşağıdaki kod ile değiştirin:
 
 ```MainActivity.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -290,10 +290,10 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.util.*
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 class MainActivity : AppCompatActivity() {
     private val dotEnv = dotenv {
@@ -313,10 +313,10 @@ class MainActivity : AppCompatActivity() {
         immersiveReaderButton.setOnClickListener { GlobalScope.launch { handleLoadImmersiveReaderWebView() } }
     }
 
-    // Assigns values to the objects sent to the Immersive Reader SDK
+    // Assigns values to the objects sent to the Immersive Reader SDK,
     // acquires the token and authorizes the app, then launches
     // the Web View to get the response and load the Immersive Reader
-    // When the button is clicked in HTML.
+    // when the button is clicked in HTML.
     private suspend fun handleLoadImmersiveReaderWebView() {
         val exampleActivity = this
         val subdomain = dotEnv["SUBDOMAIN"]
@@ -358,7 +358,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // The next two functions get the token from the Immersive Reader SDK
-    // and authorizes the app.
+    // and authorize the app.
     private suspend fun getImmersiveReaderTokenAsync(): String {
         return getToken()
     }
@@ -416,7 +416,7 @@ class MainActivity : AppCompatActivity() {
                   var options: Options? = null)
 
     // Only includes Immersive Reader options relevant to Android apps.
-    // For a complete list visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
+    // For a complete list, visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
     class Options(var uiLang: String? = null, // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
                   var timeout: Int? = null, // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
                   var uiZIndex: Int? = null, // Z-index of the iframe that will be created (default is 1000)
@@ -507,9 +507,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // This is where the WebAppInterface Class is used
+                // This is where the WebAppInterface Class is used.
                 // Affords a way for JavaScript to work with the app directly from
-                // the Web View's HTML
+                // the Web View's HTML.
                 val jsInterface = WebAppInterface(exampleActivity, parentLayout, contextualWebView)
                 contextualWebView.addJavascriptInterface(jsInterface, "Android")
                 contextualWebView.loadUrl("file:///android_asset/immersiveReader.html")
@@ -521,13 +521,13 @@ class MainActivity : AppCompatActivity() {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Uygulama HTML 'ini Web görünümüne ekleme
 
-Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın ve yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
+Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
 
 ![Yeni bir HTML dosyası oluştur](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
 ![HTML varlık konumu](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
-Aşağıdaki HTML ve JavaScript 'ı ekleyin. Bu, modern Okuyucu SDK 'sını uygulamaya ekler ve yazdığımız uygulama kodunu kullanarak tam ekran okuyucuyu başlatmak için kullanır.
+Aşağıdaki HTML ve JavaScript 'ı ekleyin. Bu kod, modern Okuyucu SDK 'sını uygulamaya ekler ve yazdığımız uygulama kodunu kullanarak tam ekran okuyucuyu açmak için kullanır.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -576,7 +576,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
-Uygulamanın çalışması için tam ekran okuyucusu SDK 'sına ağ çağrıları yapması gerektiğinden, uygulama izinlerinin ağ erişimine izin verecek şekilde yapılandırıldığından emin olunması gerekir. **/Manifests/AndroidManifest.xml** IÇERIĞINI aşağıdaki XML ile değiştirin.
+Uygulamanın çalışması için tam ekran okuyucu SDK 'sına ağ çağrıları yapması gerektiğinden, uygulama izinlerinin ağ erişimine izin verecek şekilde yapılandırıldığından emin olunması gerekir. **/Manifests/AndroidManifest.xml** IÇERIĞINI aşağıdaki XML ile değiştirin:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -604,12 +604,12 @@ Uygulamanın çalışması için tam ekran okuyucusu SDK 'sına ağ çağrılar�
 </manifest>
 ```
 
-## <a name="running-the-app"></a>Uygulamayı çalıştırma
+## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Uygulamayı bir cihaz öykünücüsünde çalıştırmak için Android Studio kullanın. **Tam ekran okuyucu** düğmesine tıkladığınızda, modern okuyucu uygulamasının uygulama içeriğiyle birlikte başlatılan olduğunu görürsünüz.
+Uygulamayı bir cihaz öykünücüsünde çalıştırmak için Android Studio kullanın. **Tam ekran okuyucu**' u seçtiğinizde, modern okuyucu uygulamadaki içerikle açılır.
 
 ![Tam Ekran Okuyucu](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md) keşfet
+[Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md)bulun.

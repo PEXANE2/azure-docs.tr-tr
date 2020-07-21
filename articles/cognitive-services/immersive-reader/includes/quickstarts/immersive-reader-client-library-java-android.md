@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: f1d5a5cf6fb23ce3ccf92faf75d80cbe760b9bdc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7b027ead90c0bde8611fc08f19f261c934de2e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038705"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544572"
 ---
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
-Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)ulaşabilirsiniz.
+Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıçta tam çalışma örneği [GitHub ' da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)kullanılabilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
-* [Git](https://git-scm.com/)
-* [Modern Okuyucu SDK 'Sı](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
+* [Git](https://git-scm.com/).
+* [Modern Okuyucu SDK 'sı](https://github.com/microsoft/immersive-reader-sdk).
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>Android projesi oluşturma
 
-Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekran okuyucu SDK 'sının](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) bir parçası olarak kullanılabilir
+Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekran okuyucu SDK 'sının](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)bir parçası olarak kullanılabilir.
 
-![Yeni Proje](../../media/android/java/android-studio-create-project.png)
+![Yeni proje](../../media/android/java/android-studio-create-project.png)
 
-Projeyi seçin penceresinde **boş etkinlik** ' i seçin ve ardından ' ileri ' ' ye tıklayın.
+**Projeyi seçin** penceresinde **boş etkinlik**' i seçin ve ardından **İleri**' yi seçin.
 
 ![Boş etkinlik projesi](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Projeyi yapılandırma
 
-Projeyi ' QuickstartJava ' olarak adlandırın, bir kaydetme konumu seçin ve programlama dili olarak ' Java ' seçeneğini belirleyin ve ardından ' son ' düğmesine tıklayın.
+Projeyi **Quickstartjava**olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Java** ' yı seçin ve ardından **son**' u seçin.
 
 ![Projeyi yapılandırma](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Varlıkları ve kimlik doğrulamasını ayarlama
 
-Yeni **/varlıklar** klasörü oluştur
+Yeni bir **/varlıklar** klasörü oluşturun.
 
 ![Yeni varlıklar klasörü oluştur](../../media/android/java/android-studio-assets-folder.png)
 
- Varlıklar klasörünün içinde **env** adlı bir dosya oluşturun. Aşağıdaki değerleri uygun şekilde ekleyin. Bu env dosyasını, genel olarak yapılmamalıdır gizli dizileri içerdiğinden kaynak denetimine yürütmemeyi unutmayın.
+ Varlıklar klasörünün içinde **env** adlı bir dosya oluşturun. Aşağıdaki adları ve değerleri ekleyin ve değerleri uygun şekilde sağlayın. Ortak yapılmaması gereken gizli dizileri içerdiğinden, bu env dosyasını kaynak denetimine teslim etmeyin.
 
 ![Yeni bir env dosyası oluşturma](../../media/android/java/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-Gson (JSON ayrıştırma ve serileştirme) ve dotenv 'yi, env dosyasında tanımlanan değişkenlere başvuracak şekilde etkinleştirmek için **Build. Gradle** dosyasındaki mevcut bağımlılıkları aşağıdaki uygulamalarla değiştirin. Bu hızlı başlangıçta etkinlikleri uygularken projeyi tekrar eşitlemeniz gerekebilir.
+Gson (JSON ayrıştırma ve serileştirme) ve dotenv 'yi env dosyasında tanımlanan değişkenlere başvuracak şekilde etkinleştirmek için **Build. Gradle** dosyasındaki mevcut bağımlılıkları aşağıdaki uygulamalarla değiştirin. Bu hızlı başlangıçta etkinlikleri uygularken projeyi tekrar eşitlemeniz gerekebilir.
 
 ```build.gradle
 dependencies {
@@ -84,7 +84,7 @@ dependencies {
 
 ## <a name="update-app-strings-and-layout-resources"></a>Uygulama dizelerini ve düzen kaynaklarını Güncelleştir
 
-**Res/Strings/strings.xml** içeriğini uygulamada kullanılacak aşağıdaki dizelerle değiştirin.
+**Res/Strings/strings.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki dizelerle değiştirin.
 
 ![Uygulama strings.xml](../../media/android/java/android-studio-strings.png)
 
@@ -102,7 +102,7 @@ dependencies {
 </resources>
 ```
 
-**Res/Layout/activity_main.xml** içindeki içeriği uygulamada kullanılacak olan XML ile değiştirin. Bu, uygulamanın kullanıcı arabirimi yerleşimidir.
+**Res/Layout/activity_main.xml** içindeki içeriği uygulamada kullanılacak aşağıdaki XML ile değiştirin. Bu XML, uygulamanın kullanıcı arabirimi yerleşimidir.
 
 ![Uygulama activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
 
@@ -203,7 +203,7 @@ dependencies {
 
 ## <a name="add-the-web-view-layout"></a>Web görünümü düzeni ekleme
 
-**Res/Layout/** klasöründe yeni bir düzen kaynak dosyası oluşturun ve **activity_immersive_reader**adlandırın, ardından içeriğini aşağıdaki XML ile değiştirin. Bu, sonraki adımda oluşturulacak ıractivity Java kodu tarafından kullanılacak WebView bileşenini ekler, artık tanımsızdır ve hatalara neden olur.
+**Res/Layout/** klasöründe yeni bir düzen kaynak dosyası oluşturun ve **activity_immersive_reader**adlandırın. Ardından içeriğini aşağıdaki XML ile değiştirin. Bu XML, sonraki bir adımda oluşturulacak ıractivity Java kodu tarafından kullanılacak WebView bileşenini ekler. Şimdilik, tanımsız ve hatalara neden olacak.
 
 ![Yeni düzen kaynak dosyası oluştur](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -256,9 +256,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates a new activity, finds its content and the Immersive Reader button
- * when clicked the app sends the content to the Immersive Reader SDK and
- * Launches the Immersive Reader
+ * Creates a new activity, finds its content and the Immersive Reader button.
+ * When clicked, the app sends the content to the Immersive Reader SDK and
+ * launches the Immersive Reader.
  */
 public class MainActivity extends Activity {
 
@@ -287,13 +287,13 @@ public class MainActivity extends Activity {
 }
 ```
 
-**/Java/com.example.quickstartjava** klasöründe daha fazla 16 Java Class dosyası oluşturacağız. Bu sınıfların her biri uygulama tarafından, modern Okuyucu SDK 'sını bütünleştirmek için kullanılır. Her yeni dosya ile, henüz mevcut olmayan ve daha sonra oluşturulacak kodda başvurulan birkaç sınıf vardır. Tüm sınıflar oluşturulduktan sonra, hiçbir null başvuru hatası olmamalıdır.
+**/Java/com.example.quickstartjava** klasöründe 16 daha fazla Java Class dosyası oluşturacağız. Bu sınıfların her biri uygulama tarafından, modern Okuyucu SDK 'sını bütünleştirmek için kullanılır. Her yeni dosya ile, henüz mevcut olmayan ve daha sonra oluşturulacak kodda başvurulan birkaç sınıf vardır. Tüm sınıflar oluşturulduktan sonra, null başvuru hatası olmamalıdır.
 
-Android Studio ' de klasöre sağ tıklayıp ardından ' New ' öğesini ve ardından ' Java Class ' öğesini seçerek yeni bir **ImmersiveReader. Java** Java sınıfı dosyası oluşturun. Oluşturulan her yeni Java sınıfı dosyası için aynı Java sınıfı dosyalarını oluşturmak için aynı yöntemi kullanacaksınız.
+Yeni bir **ImmersiveReader. Java** Java sınıf dosyası oluşturmak için, Android Studio klasörü üzerinde sağ tıklayın, **Yeni**' yi seçin ve ardından **Java sınıfı**' nı seçin. Bu yöntemi, oluşturduğunuz her yeni Java sınıfı dosyası için Java sınıf dosyaları oluşturmak üzere kullanacaksınız.
 
 ![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
 
-**ImmersiveReader. Java** içeriğini aşağıdaki kodla değiştirin.
+**ImmersiveReader. Java** içeriğini şu kodla değiştirin:
 
 ```ImmersiveReader.java
 /**
@@ -347,7 +347,7 @@ public class ImmersiveReader {
      * @param dataToRead - Content to be read
      * @return IRError - IRError, with following error codes:
      * a) Error.NONE in case of successful launch of Immersive Reader
-     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token.
+     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token
      * c) Error.INVALID_STATE in case of empty activity
      * d) Error.INVALID_CONTENT in case of empty list of text chunks
      */
@@ -377,7 +377,7 @@ Yeni bir **ıractivity. Java** Java sınıf dosyası oluşturun.
 
 ![Iractivity](../../media/android/java/android-studio-iractivity-java.png)
 
-**Iractivity. Java** içeriğini aşağıdaki kodla değiştirin.
+**Iractivity. Java** içeriğini şu kodla değiştirin:
 
 ```IRActivity.java
 /**
@@ -408,8 +408,8 @@ public class ImmersiveReader {
 
     /**
      * Interface to accept access token from client app.
-     * Note that it is client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
-     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string
+     * Note that it is the client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
+     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string.
      */
     @Keep
     public interface IAuthenticator {
@@ -461,7 +461,7 @@ Yeni bir **ırerror. Java** Java sınıf dosyası oluşturun.
 
 ![Irerror](../../media/android/java/android-studio-irerror-java.png)
 
-**IError. Java** içeriğini aşağıdaki kodla değiştirin.
+**IError. Java** içeriğini şu kodla değiştirin:
 
 ```IRError.java
 /**
@@ -540,7 +540,7 @@ Yeni bir **Error. Java** Java sınıf dosyası oluşturun.
 
 ![Hata](../../media/android/java/android-studio-error-java.png)
 
-**Error. Java** içeriğini aşağıdaki kodla değiştirin.
+**Error. Java** içeriğini aşağıdaki kodla değiştirin:
 
 ```Error.java
 /**
@@ -571,7 +571,7 @@ Yeni bir **Readablecontent. Java** Java sınıf dosyası oluşturun.
 
 ![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
 
-**Readablecontent. Java** içeriğini aşağıdaki kodla değiştirin.
+**Readablecontent. Java** içeriğini şu kodla değiştirin:
 
 ```ReadableContent.java
 /**
@@ -615,7 +615,7 @@ Yeni bir **ReadableTextChunk. Java** Java sınıf dosyası oluşturun.
 
 ![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
 
-**ReadableTextChunk. Java** içeriğini aşağıdaki kodla değiştirin.
+**ReadableTextChunk. Java** içeriğini şu kodla değiştirin:
 
 ```ReadableTextChunk.java
 /**
@@ -647,7 +647,7 @@ Yeni bir **ırdataş. Java** Java sınıf dosyası oluşturun.
 
 ![Irdataş](../../media/android/java/android-studio-irdataholder-java.png)
 
-**Irdataş. Java** içeriğini aşağıdaki kodla değiştirin.
+**Irdataş. Java** içeriğini şu kodla değiştirin:
 
 ```IRDataHolder.java
 /**
@@ -663,7 +663,7 @@ import androidx.annotation.Keep;
  * A thin singleton class that is used to hold the Client's IAuthenticator's implementation and the Content to be read.
  * This is required for two reasons:
  * 1) As per Android guidelines, data being passed via intent should be limited to a few KBs. Alternative is to use Singleton holder classes like this one.
- * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios
+ * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios.
  */
 
 @Keep
@@ -712,7 +712,7 @@ Yeni bir **Irak kimlik doğrulayıcısının. Java** Java sınıf dosyası oluş
 
 ![Irak kimlik doğrulayıcısının](../../media/android/java/android-studio-irauthenticator-java.png)
 
-**Irak. Java** içeriğini aşağıdaki kodla değiştirin.
+Irak ıkimlik **doğrulayıcısının. Java** içeriğini şu kodla değiştirin:
 
 ```IRAuthenticator.java
 /**
@@ -739,10 +739,10 @@ import java.net.URL;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
     private static final String LOG_TAG = "IRAuthenticator";
@@ -823,7 +823,7 @@ Yeni bir **ırlauncher. Java** Java sınıfı dosyası oluşturun.
 
 ![Irlauncher](../../media/android/java/android-studio-irlauncher-java.png)
 
-**Irlauncher. Java** içeriğini aşağıdaki kodla değiştirin.
+**Irlauncher. Java** içeriğini şu kodla değiştirin:
 
 ```IRLauncher.java
 /**
@@ -853,7 +853,7 @@ import java.util.concurrent.Callable;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Responsible for setting up the web view with appropriate bridging between JS and Java to launch the Immersive reader url for reading the content
+ * Responsible for setting up the web view with appropriate bridging between JavaScript and Java to launch the Immersive Reader url for reading the content.
  */
 
 public class IRLauncher {
@@ -876,7 +876,7 @@ public class IRLauncher {
         // Invoked in case of empty access token or empty content request to be read
         void onFailure(IRError error);
 
-        // Invoked when Immersive reader is exiting (e.g.) user pressed back in the immersive reader experience
+        // Invoked when Immersive Reader is exiting (e.g.) user pressed back in the Immersive Reader experience
         void onExit();
     }
 
@@ -981,7 +981,7 @@ public class IRLauncher {
             }
         });
 
-        // Prepare and set the WebAppInterface to hear back from the JS
+        // Prepare and set the WebAppInterface to hear back from the JavaScript
         WebAppInterface jsInterface = new WebAppInterface(new WebAppInterface.WebAppListener() {
             @Override
             public void onShowToast(String toast) {
@@ -1016,7 +1016,7 @@ Yeni bir **ırstore. Java** Java sınıf dosyası oluşturun.
 
 ![Irstore](../../media/android/java/android-studio-irstore-java.png)
 
-**Irstore. Java** içeriğini aşağıdaki kodla değiştirin.
+**Irstore. Java** içeriğini şu kodla değiştirin:
 
 ```IRStore.java
 /**
@@ -1041,7 +1041,7 @@ Yeni bir **Authenticationtask. Java** Java sınıf dosyası oluşturun.
 
 ![AuthenticationTask](../../media/android/java/android-studio-authenticationtask-java.png)
 
-**Authenticationtask. Java** içeriğini aşağıdaki kodla değiştirin.
+**Authenticationtask. Java** içeriğini şu kodla değiştirin:
 
 ```AuthenticationTask.java
 /**
@@ -1098,7 +1098,7 @@ Yeni bir **öbek. Java** Java sınıf dosyası oluşturun.
 
 ![Öbek](../../media/android/java/android-studio-chunk-java.png)
 
-**Öbek. Java** içeriğini aşağıdaki kodla değiştirin.
+**Öbek. Java** içeriğini şu kodla değiştirin:
 
 ```Chunk.java
 /**
@@ -1112,8 +1112,8 @@ import androidx.annotation.Keep;
 
 /**
  * The chunk object that will be sent to the Immersive Reader SDK.
- * The content is a string of text, the lang is a string, e.g. 'll-cc'
- * and the mimeType is also a string, e.g. 'text/plain'
+ * The content is a string of text, the lang is a string, e.g. 'll-cc',
+ * and the mimeType is also a string, e.g. 'text/plain'.
  */
 
 @Keep
@@ -1135,7 +1135,7 @@ Yeni bir **Content. Java** Java sınıf dosyası oluşturun.
 
 ![İçerik](../../media/android/java/android-studio-content-java.png)
 
-**Content. Java** içeriğini aşağıdaki kodla değiştirin.
+**Content. Java** içeriğini şu kodla değiştirin:
 
 ```Content.java
 /**
@@ -1171,7 +1171,7 @@ Yeni bir **Options. Java** Java sınıf dosyası oluşturun.
 
 ![Seçenekler](../../media/android/java/android-studio-options-java.png)
 
-**Options. Java** içeriğini aşağıdaki kodla değiştirin.
+**Options. Java** içeriğini aşağıdaki kodla değiştirin:
 
 ```Options.java
 /**
@@ -1205,7 +1205,7 @@ Yeni bir **Message. Java** Java sınıf dosyası oluşturun.
 
 ![İleti](../../media/android/java/android-studio-message-java.png)
 
-**Message. Java** içeriğini aşağıdaki kodla değiştirin.
+**Message. Java** içeriğini şu kodla değiştirin:
 
 ```Message.java
 /**
@@ -1217,7 +1217,7 @@ import androidx.annotation.Keep;
 
 /**
  * The message object that will be sent to the Immersive Reader SDK.
- * This object contains the access token, sub domain, Content and Options.
+ * This object contains the access token, sub domain, Content, and Options.
  */
 
 @Keep
@@ -1243,7 +1243,7 @@ Yeni bir **Webappınterface. Java** Java sınıf dosyası oluşturun.
 
 ![Webappınterface](../../media/android/java/android-studio-webappinterface-java.png)
 
-**Webappınterface. Java** içeriğini aşağıdaki kodla değiştirin.
+**Webappınterface. Java** içeriğini şu kodla değiştirin:
 
 ```WebAppInterface.java
 /**
@@ -1257,7 +1257,7 @@ import androidx.annotation.Keep;
 import android.webkit.JavascriptInterface;
 
 /**
- * JavaScript interface implementation passed to the WebView to enable talking between JS and Java
+ * JavaScript interface implementation passed to the WebView to enable talking between JavaScript and Java.
  */
 
 @Keep
@@ -1290,13 +1290,13 @@ public class WebAppInterface {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Uygulama HTML 'ini Web görünümüne ekleme
 
-Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın ve yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
+Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
 
 ![Yeni bir HTML dosyası oluştur](../../media/android/java/android-studio-immersive-reader-html.png)
 
 ![HTML varlık konumu](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
-Aşağıdaki HTML ve JavaScript 'ı ekleyin. Bu, modern Okuyucu SDK 'sını uygulamaya ekler ve yazdığımız uygulama kodunu kullanarak tam ekran okuyucuyu başlatmak için kullanır.
+Aşağıdaki HTML ve JavaScript 'ı ekleyin. Bu kod, modern Okuyucu SDK 'sını uygulamaya ekler ve yazdığımız uygulama kodunu kullanarak tam ekran okuyucuyu açmak için kullanır.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1353,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
 
-Uygulamanın çalışması için tam ekran okuyucusu SDK 'sına ağ çağrıları yapması gerektiğinden, uygulama izinlerinin ağ erişimine izin verecek şekilde yapılandırıldığından emin olunması gerekir. **/Manifests/AndroidManifest.xml** IÇERIĞINI aşağıdaki XML ile değiştirin.
+Uygulamanın çalışması için tam ekran okuyucu SDK 'sına ağ çağrıları yapması gerektiğinden, uygulama izinlerinin ağ erişimine izin verecek şekilde yapılandırıldığından emin olunması gerekir. **/Manifests/AndroidManifest.xml** IÇERIĞINI aşağıdaki XML ile değiştirin:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1384,12 +1384,12 @@ Uygulamanın çalışması için tam ekran okuyucusu SDK 'sına ağ çağrılar�
 </manifest>
 ```
 
-## <a name="running-the-app"></a>Uygulamayı çalıştırma
+## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Uygulamayı bir cihaz öykünücüsünde çalıştırmak için Android Studio kullanın. **Tam ekran okuyucu** düğmesine tıkladığınızda, modern okuyucu uygulamasının uygulama içeriğiyle birlikte başlatılan olduğunu görürsünüz.
+Uygulamayı bir cihaz öykünücüsünde çalıştırmak için Android Studio kullanın. **Tam ekran okuyucu**' u seçtiğinizde, modern okuyucu uygulamadaki içerikle açılır.
 
 ![Tam Ekran Okuyucu](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md) keşfet
+[Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](../../reference.md)bulun.

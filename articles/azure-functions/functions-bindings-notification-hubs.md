@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: f500e7cac7a049152057f7fc7c3349fb028a31a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97e43d2348ccbe9bf0aebfd7647f6cc34906948c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444548"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540375"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Notification Hubs
 
@@ -246,7 +247,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 Aşağıdaki tabloda, dosyasında *function.js* ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `NotificationHub` :
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** |yok| Olarak ayarlanmalıdır `notificationHub` . |
 |**Görünüm** |yok| Olarak ayarlanmalıdır `out` . | 
@@ -254,7 +255,7 @@ Aşağıdaki tabloda, dosyasında *function.js* ve özniteliğinde ayarladığı
 |**tagExpression** |**TagExpression** | Etiket ifadeleri, bu bildirimlerin etiket ifadesiyle eşleşen bildirimleri almak için kayıtlı bir cihaz kümesine teslim edilmesini belirtmenize olanak tanır.  Daha fazla bilgi için bkz. [Yönlendirme ve etiket ifadeleri](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Azure portal Bildirim Hub 'ı kaynağının adı. |
 |**bağlanma** | **ConnectionStringSetting** | Notification Hubs bağlantı dizesi içeren bir uygulama ayarının adı.  Bağlantı dizesinin, Bildirim Hub 'ınız için *Defaultfullsharedaccesssignature* değerine ayarlanması gerekir. Bu makalenin ilerleyen kısımlarında [bağlantı dizesi kurulumuna](#connection-string-setup) bakın.|
-|**platformunun** | **Platform** | Platform özelliği, bildirimin hedeflediği istemci platformunu gösterir. Varsayılan olarak, platform özelliği çıkış bağlamalarından atlanırsa, Azure Notification Hub 'ında yapılandırılmış herhangi bir platformu hedeflemek için şablon bildirimleri kullanılabilir. Şablonları genel olarak kullanma hakkında daha fazla bilgi için, bkz. [Şablonlar](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Ayarlandığında, **Platform** aşağıdaki değerlerden biri olmalıdır: <ul><li><code>apns</code>&mdash;Apple Anında İletilen Bildirim Servisi. APNS için Bildirim Hub 'ı yapılandırma ve bir istemci uygulamasında bildirimi alma hakkında daha fazla bilgi için bkz. [Azure Notification Hubs Ile iOS 'a anında iletme bildirimleri gönderme](../notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). ADM için Bildirim Hub 'ını yapılandırma ve bir bir bir uygulama için bildirim alma hakkında daha fazla bilgi için, bkz. [lütfen Notification Hubs kullanmaya](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)başlama.</li><li><code>wns</code>&mdash;Windows platformları hedefleyen [Windows Push bildirim hizmetleri](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) . Windows Phone 8,1 ve üzeri, WNS tarafından da desteklenir. Daha fazla bilgi için bkz. [Windows Evrensel platform uygulamaları için Notification Hubs kullanmaya](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)başlama.</li><li><code>mpns</code>&mdash;[Microsoft anında bildirim hizmeti](/previous-versions/windows/apps/ff402558(v=vs.105)). Bu platform Windows Phone 8 ve önceki Windows Phone platformları destekler. Daha fazla bilgi için bkz. [Azure Notification Hubs ile anında iletme bildirimleri gönderme Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**platformunun** | **Platform** | Platform özelliği, bildirimin hedeflediği istemci platformunu gösterir. Varsayılan olarak, platform özelliği çıkış bağlamalarından atlanırsa, Azure Notification Hub 'ında yapılandırılmış herhangi bir platformu hedeflemek için şablon bildirimleri kullanılabilir. Şablonları genel olarak kullanma hakkında daha fazla bilgi için, bkz. [Şablonlar](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Ayarlandığında, **Platform** aşağıdaki değerlerden biri olmalıdır: <ul><li><code>apns</code>&mdash;Apple Anında İletilen Bildirim Servisi. APNS için Bildirim Hub 'ı yapılandırma ve bir istemci uygulamasında bildirimi alma hakkında daha fazla bilgi için bkz. [Azure Notification Hubs Ile iOS 'a anında iletme bildirimleri gönderme](../notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). ADM için Bildirim Hub 'ını yapılandırma ve bir bir bir uygulama için bildirim alma hakkında daha fazla bilgi için, bkz. [lütfen Notification Hubs kullanmaya](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)başlama.</li><li><code>wns</code>&mdash;Windows platformları hedefleyen [Windows Push bildirim hizmetleri](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) . Windows Phone 8,1 ve üzeri, WNS tarafından da desteklenir. Daha fazla bilgi için bkz. [Windows Evrensel platform uygulamaları için Notification Hubs kullanmaya](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)başlama.</li><li><code>mpns</code>&mdash;[Microsoft anında bildirim hizmeti](/previous-versions/windows/apps/ff402558(v=vs.105)). Bu platform Windows Phone 8 ve önceki Windows Phone platformları destekler. Daha fazla bilgi için bkz. [Azure Notification Hubs ile anında iletme bildirimleri gönderme Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -297,10 +298,9 @@ Bu uygulama ayarının adı, *function.jsüzerinde* veya .net özniteliğinde ç
 
 | Bağlama | Başvuru |
 |---|---|
-| Bildirim Hub 'ı | [İşlemler Kılavuzu](https://docs.microsoft.com/rest/api/notificationhubs/) |
+| Bildirim Hub 'ı | [İşlemler Kılavuzu](/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)
-

@@ -1,24 +1,24 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5485475e3d8030bf85734faec53b0ff0747499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81678463"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544948"
 ---
 Cmdlet 'leri çalıştırmak için, ücretsiz bir etkileşimli kabuk olan Azure Cloud Shell kullanabilirsiniz. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Kodu kopyalamak için **Kopyala** ' yı seçin ve Cloud Shell yapıştırın. Ardından, çalıştırmak için **ENTER** ' u seçin. Cloud Shell başlamanın birkaç yolu vardır:
 
 
-|  |   |
+| Başlatma yöntemi | Ekran görüntüsü  |
 |-----------------------------------------------|---|
 | Cloud Shell’i tarayıcınızda açın. | [![https://shell.azure.com/powershell](../media/launchcloudshell.png)](https://shell.azure.com/powershell) |
 | Azure portal sağ üst köşesindeki araç çubuğunda **Cloud Shell** düğmesini seçin. | [![Portalda Cloud Shell](../media/cloud-shell-menu.png)](https://portal.azure.com) |

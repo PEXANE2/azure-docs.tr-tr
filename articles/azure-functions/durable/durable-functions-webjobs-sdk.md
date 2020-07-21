@@ -4,12 +4,12 @@ description: WebJobs SDK kullanarak Web Işlerinde çalıştırmak üzere Dayan�
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540307"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Web Işleri olarak Dayanıklı İşlevler çalıştırma
 
@@ -31,7 +31,7 @@ Bu makalede WebJobs SDK 'nın temel bilgileri, Azure Işlevleri için C# sınıf
 
 Bu makaledeki adımları gerçekleştirmek için:
 
-* **Azure geliştirme** iş yüküyle [Visual Studio 2019 ' ü yükler](https://docs.microsoft.com/visualstudio/install/) .
+* **Azure geliştirme** iş yüküyle [Visual Studio 2019 ' ü yükler](/visualstudio/install/) .
 
   Zaten Visual Studio 'ya sahipseniz, ancak bu iş yüküne sahip değilseniz **Araçlar**  >  **Al araçlar ve Özellikler**' i seçerek iş yükünü ekleyin.
 
@@ -224,7 +224,7 @@ Sunulan ana değişiklik, .NET Core 'un .NET Framework yerine kullanılması. Bi
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. .NET Core yapılandırma çerçevesini kullanarak, dosya *üzerinde birappsettings.js* depolama bağlantı dizesi ve Application Insights izleme anahtarı ayarlayın. İşte bir örnek:
+1. .NET Core yapılandırma çerçevesini kullanarak, dosya *üzerinde birappsettings.js* depolama bağlantı dizesi ve Application Insights izleme anahtarı ayarlayın. Aşağıda bir örnek verilmiştir:
 
     ```json
         {
@@ -233,7 +233,7 @@ Sunulan ana değişiklik, .NET Core 'un .NET Framework yerine kullanılması. Bi
         }
     ```
 
-1. `Main`Bunu yapmak için yöntem kodunu değiştirin. İşte bir örnek:
+1. `Main`Bunu yapmak için yöntem kodunu değiştirin. Aşağıda bir örnek verilmiştir:
 
    ```cs
    static void Main(string[] args)

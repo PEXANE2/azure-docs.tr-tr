@@ -1,28 +1,28 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a924cb42ce1c5fccde3d49fa8f9c2d402997df52
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83721401"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544141"
 ---
 >[!NOTE]
 >Ek bölgeler eklemek için çok çalıştık. Bir bölge eklendiğinde, bu listeye eklenecektir.
 >
 
 **Kuzey ve Güney Amerika**
-* Güney Brezilya
+* Brezilya Güney
 * Orta Kanada
-* Orta ABD
+* Central US
 * Doğu ABD
 * Doğu ABD 2
 * Orta Kuzey ABD
@@ -51,7 +51,7 @@ ms.locfileid: "83721401"
 * Güney Kore - Orta
 * Güney Kore - Güney
 * Güneydoğu Asya
-* Orta Hindistan
+* Central India
 * Batı Hindistan
 
 **Orta Doğu ve Afrika**
@@ -65,3 +65,6 @@ ms.locfileid: "83721401"
 * US Gov Iowa
 * US Gov Texas
 * US Gov Virginia
+
+**Azure Çin**
+* Çin Kuzey 2

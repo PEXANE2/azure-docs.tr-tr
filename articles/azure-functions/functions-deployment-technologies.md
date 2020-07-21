@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
-ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63c52b8b1ee9b9448a1ba6f78873ae6a036e3563
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735309"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540222"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -21,7 +21,7 @@ Azure Işlevleri proje kodunuzu Azure 'a dağıtmak için birkaç farklı teknol
 
 Azure Işlevleri, platformlar arası yerel geliştirme ve Windows ve Linux üzerinde barındırma desteği sunmaktadır. Şu anda üç barındırma planı kullanılabilir:
 
-+ [Mine](functions-scale.md#consumption-plan)
++ [Tüketim](functions-scale.md#consumption-plan)
 + [Premium](functions-scale.md#premium-plan)
 + [Adanmış (App Service)](functions-scale.md#app-service-plan)
 
@@ -179,7 +179,7 @@ Portal tabanlı düzenleyicide, işlev uygulamanızda olan dosyaları doğrudan 
 
 Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve diller gösterilmektedir:
 
-| | Windows tüketimi | Windows Premium | Windows ayrılmış | Linux tüketimi | Linux Premium | Linux adanmış |
+| Dil | Windows tüketimi | Windows Premium | Windows ayrılmış | Linux tüketimi | Linux Premium | Linux adanmış |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# betiği |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

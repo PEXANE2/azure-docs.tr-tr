@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 2a9f3e10d0679ac32ce7463e5b7805f607468020
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 00b55e68d0a00310340bcfc488e92ff424f50c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544848"
 ---
-Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'daki tüm <a href="https://aka.ms/speech/github-javascript">konuşma SDK JavaScript örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.
+GitHub 'da tüm <a href="https://aka.ms/speech/github-javascript">konuşma SDK JavaScript örneklerini</a> görüntüleyebilir veya indirebilirsiniz. 

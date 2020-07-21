@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92e111a6e76dbe285dd8cc7a93ce75f556142565
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335384"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540154"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritadaki trafik verilerini gösterme Android SDK
 
@@ -21,9 +21,9 @@ Akış verileri ve olay verileri, haritada görüntülenebilen iki trafik verisi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-account-with-azure-maps)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz ve bir harita yüklemeniz gerekir.
+Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-azure-maps-account)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz ve bir harita yüklemeniz gerekir.
 
-## <a name="incidents-traffic-data"></a>Olaylar trafik verileri 
+## <a name="incidents-traffic-data"></a>Olaylar trafik verileri
 
 ' İ çağırmak için aşağıdaki kitaplıkları içeri aktarmanız gerekir `setTraffic` `incidents` :
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Trafik akışı verilerini ayarlamak için aşağıdaki kod parçacığını kullanın. Önceki bölümde bulunan koda benzer şekilde, yöntemin dönüş değerini yöntemine geçiyoruz `flow` `setTraffic` . Öğesine geçirilebilecek dört değer vardır `flow` ve her bir değer `flow` ilgili değeri döndürecek şekilde tetiklenebilir. Dönüş değeri `flow` daha sonra öğesine bağımsız değişken olarak geçirilir `setTraffic` . Şu dört değer için aşağıdaki tabloya bakın:
 
-| | |
+|Akış değeri | Description|
 | :-- | :-- |
 | TrafficFlow. NONE | Harita üzerinde trafik verilerini görüntülemiyor |
 | TrafficFlow. GÖRELI | Yolun serbest akış hızına göre trafik verilerini gösterir |

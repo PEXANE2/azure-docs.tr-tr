@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efec7656675b649d365a479c184de06a67d33db0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544838"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -94,7 +95,7 @@ Müşteriler yönetilen disklerinin anlık görüntüsünü alabilir ve ardında
 
 Evet, hem yönetilmeyen hem de yönetilen diskler destekleniyor. Yeni iş yükleri için yönetilen diskler kullanmanızı ve geçerli iş yüklerinizi yönetilen disklere geçirmeyi öneririz.
 
-**Aynı VM 'de yönetilmeyen ve yönetilen diskleri birlikte bulabilir miyim?**
+**Yönetilmeyen ve yönetilen diskleri aynı VM üzerinde düzenleyebilir miyim?**
 
 Hayır.
 
@@ -157,15 +158,19 @@ Azure diskleri ayırması belirli bir bölge ve SKU (Doğu ABD 2 içinde P30 gib
 **Azure disklerimin ayırması sona erdiğinde ne olur?**    
 Süresi dolmadan 30 gün önce ve sona erme tarihinde bir süre sonra bir e-posta bildirimi alacaksınız. Ayırma süresi dolduktan sonra, dağıtılan diskler çalışmaya devam eder ve en son [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır.
 
+**Standart SSD diskleri "tek örnekli VM SLA 'Sı" destekliyor mu?**
+
+Evet, tüm disk türleri tek örnekli VM SLA 'sını destekler.
+
 ### <a name="azure-shared-disks"></a>Azure paylaşılan diskleri
 
 **Paylaşılan diskler özelliği yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
 
-Hayır, yalnızca Premium SSD tarafından yönetilen diskler için desteklenir.
+Hayır, yalnızca Ultra diskler ve Premium SSD tarafından yönetilen diskler için desteklenir.
 
 **Hangi bölgeler Paylaşılan diskleri destekler?**
 
-Şu anda yalnızca Orta Batı ABD.
+Bölgesel bilgiler için bkz. [kavramsal makalemiz](../articles/virtual-machines/linux/disks-shared.md).
 
 **Paylaşılan diskler, işletim sistemi diski olarak kullanılabilir mi?**
 
@@ -173,11 +178,11 @@ Hayır, paylaşılan diskler yalnızca veri diskleri için desteklenir.
 
 **Hangi disk boyutları Paylaşılan diskleri destekliyor?**
 
-Yalnızca P15 veya üzeri olan Premium SSD 'ler Paylaşılan diskleri destekler.
+Desteklenen boyutlar için bkz. [kavramsal makalemiz](../articles/virtual-machines/linux/disks-shared.md).
 
-**Mevcut bir Premium SSD varsa, üzerinde paylaşılan diskler etkinleştirebilirim miyim?**
+**Var olan bir diskim varsa, üzerinde paylaşılan diskler etkinleştirebilirim miyim?**
 
-API sürümü 2019-07-01 veya üzeri ile oluşturulan tüm yönetilen diskler, Paylaşılan diskleri etkinleştirebilir. Bunu yapmak için, bağlı olduğu tüm VM 'lerden diski çıkarmanız gerekir. Sonra, `maxShares` diskteki özelliğini düzenleyin.
+API sürümü 2019-07-01 veya üzeri ile oluşturulan tüm yönetilen diskler, Paylaşılan diskleri etkinleştirebilir. Bunu yapmak için, bağlı olduğu tüm VM 'lerden diski çıkarmanız gerekir. Sonra, diskteki **MAXSHARES** özelliğini düzenleyin.
 
 **Artık paylaşılan modda bir disk kullanmak istemiyorum, bunu nasıl devre dışı bırakabilirim?**
 
@@ -193,7 +198,7 @@ Hayır.
 
 **Paylaşılan disk etkin olan bir disk için konak önbelleğe almayı etkinleştirebilir miyim?**
 
-Desteklenen tek konak önbelleğe alma seçeneği ' none '.
+Desteklenen tek konak önbelleğe alma seçeneği **yok**.
 
 ## <a name="ultra-disks"></a>Ultra diskler
 
@@ -201,10 +206,10 @@ Desteklenen tek konak önbelleğe alma seçeneği ' none '.
 Disk aktarım hızını hangi şekilde ayarlayacağınızdan emin değilseniz, 16 KiB 'nin GÇ boyutunu kabul ederek ve uygulamanızı izlerken performansı buradan ayarlamanız önerilir. Formül: MB/sn cinsinden aktarım hızı = ıOPS * 16/1000.
 
 **Diskmi 40000 ıOPS olarak yapılandırdım, ancak yalnızca 12800 ıOPS görüyorum, diskin performansını neden göremiyorum?**
-Disk azaltma 'ya ek olarak, VM düzeyinde uygulanan bir GÇ azaltması vardır. Lütfen kullandığınız VM boyutunun disklerinizde yapılandırılan düzeyleri destekleyebileceğini doğrulayın. VM 'niz tarafından uygulanan GÇ limitleriyle ilgili ayrıntılar için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../articles/virtual-machines/windows/sizes.md).
+Disk azaltma 'ya ek olarak, VM düzeyinde uygulanan bir GÇ azaltması vardır. Kullandığınız VM boyutunun disklerinizde yapılandırılan düzeyleri destekleyebileceğini doğrulayın. VM 'niz tarafından uygulanan GÇ limitleriyle ilgili ayrıntılar için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../articles/virtual-machines/windows/sizes.md).
 
 **Bir ultra disk ile önbelleğe alma düzeylerini kullanabilir miyim?**
-Hayır, Ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe almayı hiçbiri olarak ayarlayın.
+Hayır, Ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe almayı **hiçbiri**olarak ayarlayın.
 
 **Var olan sanal makinenize bir ultra disk ekleyebilir miyim?**
 Belki de sanal makinenizin Ultra diskleri destekleyen bir bölge ve kullanılabilirlik alanı çifti olması gerekir. Ayrıntılar için bkz. [Ultra disklerle çalışmaya](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) başlama.
@@ -262,9 +267,6 @@ Standart SSD diskler, HDD disklerine kıyasla daha iyi gecikme, tutarlılık, ku
 **Standart SSD 'leri yönetilmeyen diskler olarak kullanabilir miyim?**
 Hayır, standart SSD diskler yalnızca yönetilen diskler olarak kullanılabilir.
 
-**Standart SSD diskleri "tek örnekli VM SLA 'Sı" destekliyor mu?**
-Hayır, standart SSD 'Lerin tek örnekli VM SLA 'Sı yoktur. Tek örnekli VM SLA 'Sı için Premium SSD diskleri kullanın.
-
 ## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere geçme
 
 **Yönetilen diskler performansında geçişin etkileri var mı?**
@@ -301,7 +303,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Evet
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -339,7 +341,7 @@ Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şif
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Evet
+Yes
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 
@@ -412,7 +414,7 @@ Azure 'un desteklediği en büyük Sayfa Blobu boyutu 8 TiB 'dir (8.191 GiB). Bi
 |Azure araçları      | Desteklenen sürümler                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Sürüm numarası 4.1.0: Haziran 2017 sürüm veya üzeri|
-|Azure CLı v1     | Sürüm numarası 0.10.13: Mayıs 2017 sürüm veya sonrası|
+|Azure CLı v1     | Sürüm numarası 0.10.13: Mayıs 2017 sürüm veya sonrası|
 |Azure CLı v2     | Sürüm numarası 2.0.12: Temmuz 2017 sürümü veya üzeri|
 |AzCopy              | Sürüm numarası 6.1.0: Haziran 2017 sürüm veya üzeri|
 
@@ -450,7 +452,41 @@ Diskin bağlı olduğu VM 'yi durdurup başlatabilir veya diskinizin bağlantıs
 
 **Tüm disk boyutlarında konak önbelleğini etkinleştirmeyi destekliyoruz.**
 
-Ana bilgisayar önbelleğe alma (salt okunur ve okuma/yazma), 4 TiB 'den küçük disk boyutlarında desteklenir. Bu, 4095 GiB 'ye kadar sağlanan tüm disklerin konak önbelleğe alma özelliğinden yararlanabilme anlamına gelir. Ana bilgisayar önbelleği 4096 GiB 'den büyük veya buna eşit disk boyutları için desteklenmez. Örneğin, 4095 GiB 'de sağlanan bir P50 Premium disk, ana bilgisayar Önbelleklerinden yararlanabilir ve 4096 GiB 'de sağlanan bir P50 diski ana bilgisayar Önbelleklerinden yararlanamaz. VM 'de önbelleğe alınan verilerle daha iyi performans artışı gözlemleyebileceğiniz daha küçük disk boyutları için önbelleğe almayı öneririz.
+Ana bilgisayar önbelleğe alma (**salt okunur** ve **okuma/yazma**), 4 TİB 'den küçük disk boyutlarında desteklenir. Bu, 4095 GiB 'ye kadar sağlanan tüm disklerin konak önbelleğe alma özelliğinden yararlanabilme anlamına gelir. Ana bilgisayar önbelleği 4096 GiB 'den büyük veya buna eşit disk boyutları için desteklenmez. Örneğin, 4095 GiB 'de sağlanan bir P50 Premium disk, ana bilgisayar Önbelleklerinden yararlanabilir ve 4096 GiB 'de sağlanan bir P50 diski ana bilgisayar Önbelleklerinden yararlanamaz. VM 'de önbelleğe alınan verilerle daha iyi performans artışı gözlemleyebileceğiniz daha küçük disk boyutları için önbelleğe almayı öneririz.
+
+## <a name="private-links-for-securely-exporting-and-importing-managed-disks"></a>Yönetilen diskleri güvenli bir şekilde dışa ve içeri aktarmaya yönelik özel bağlantılar
+
+**Yönetilen diskleri dışarı ve içeri aktarmak için özel bağlantılar kullanmanın avantajı nedir?**
+
+Yalnızca Azure sanal ağınızdan, yönetilen disklere dışarı ve içeri aktarmayı kısıtlamak için özel bağlantılardan yararlanabilirsiniz. 
+
+**Bir diskin yalnızca özel bağlantılar aracılığıyla verilebileceği veya içeri aktarılabileceği nasıl emin olabilirim?**
+
+`DiskAccessId`Özelliği bir disk erişim nesnesinin örneğine ayarlamanız ve ayrıca NetworkAccessPolicy özelliğini olarak ayarlamanız gerekir `AllowPrivate` .
+
+**Birden çok sanal ağı aynı disk erişimi nesnesine bağlayabilir miyim?**
+
+Hayır. Şu anda bir disk erişim nesnesini yalnızca bir sanal ağa bağlayabilirsiniz.
+
+**Bir sanal ağı başka bir abonelikte bulunan bir disk erişimi nesnesine bağlayabilir miyim?**
+
+Hayır. Şu anda, bir disk erişim nesnesini aynı abonelikte bir sanal ağa bağlayabilirsiniz.
+
+**Bir sanal ağı başka bir abonelikte bulunan bir disk erişimi nesnesine bağlayabilir miyim?**
+
+Hayır. Şu anda, bir disk erişim nesnesini aynı abonelikte bir sanal ağa bağlayabilirsiniz.
+
+**Aynı disk erişimi nesnesini kullanarak kaç dışarı aktarma veya içeri aktarma aynı anda oluşabilir?**
+
+5
+
+**Bir disk/anlık görüntünün SAS URI 'sini, diskle ilişkili özel uç noktanın alt ağıyla aynı alt ağda bulunan bir VM 'nin temel VHD 'sini indirmek için kullanabilir miyim?**
+
+Evet.
+
+**Bir disk/anlık görüntünün SAS URI 'sini kullanarak, disk ile ilişkilendirilmemiş özel uç noktanın alt ağıyla aynı alt ağda olmayan bir VM 'nin temel VHD 'sini indirebilir miyim?**
+
+Hayır.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
 

@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540239"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti tetikleme Bağlayıcısı
 
@@ -43,7 +43,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>Geleneksel modelle
 
-Geleneksel model, C# tarafından geliştirilen Azure Işlevi kuralına uyar. Bunu bilmiyorsanız [belgelerden](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library)bilgi edinebilirsiniz.
+Geleneksel model, C# tarafından geliştirilen Azure Işlevi kuralına uyar. Bunu bilmiyorsanız [belgelerden](./functions-dotnet-class-library.md)bilgi edinebilirsiniz.
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -168,7 +168,7 @@ def main(invocation) -> None:
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `SignalRTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle**| yok | Olarak ayarlanmalıdır `SignalRTrigger` .|
 |**Görünüm**| yok | Olarak ayarlanmalıdır `in` .|
@@ -187,7 +187,7 @@ Tetikleyici giriş türü `InvocationContext` ya da özel bir tür olarak bildir
 
 Invocationcontext, SignalR hizmetinden gönderilen iletinin tüm içeriğini içerir.
 
-|Invocationcontext içindeki Özellik | Açıklama|
+|Invocationcontext içindeki Özellik | Description|
 |------------------------------|------------|
 |Arguments| *İleti* kategorisi için kullanılabilir. [Çağırma iletisinde](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) *bağımsız değişkenler* içerir|
 |Hata| *Bağlantısı kesilmiş* olay için kullanılabilir. Bağlantı hata olmadan kapalıysa veya hata iletilerini içeriyorsa boş olabilir.|
@@ -196,7 +196,7 @@ Invocationcontext, SignalR hizmetinden gönderilen iletinin tüm içeriğini iç
 |Olay| İleti olayı.|
 |ConnectionID| İletiyi gönderen istemcinin bağlantı KIMLIĞI.|
 |UserId| İletiyi gönderen istemcinin kullanıcı kimliği.|
-|Üst bilgiler| İsteğin üst bilgileri.|
+|Üst Bilgiler| İsteğin üst bilgileri.|
 |Sorgu| İstemciler hizmete bağlandıklarında isteğin sorgusu.|
 |Talepler| İstemci talepleri.|
 
