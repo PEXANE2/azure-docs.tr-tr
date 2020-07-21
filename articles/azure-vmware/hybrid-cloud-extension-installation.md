@@ -2,19 +2,19 @@
 title: Karma bulut uzantısı 'nı (HCX) yükler
 description: Azure VMware çözümünüz (AVS) özel bulutunuz için VMware hibrit bulut uzantısı (HCX) çözümünü ayarlama
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367555"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539168"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
 Bu makalede, Azure VMWare çözümünüz (AVS) özel bulutunuz için VMWare hibrit bulut uzantısı (HCX) çözümünü ayarlama yordamlarına göz atacağız. HCX, VMware iş yüklerinizin buluta geçirilmesini ve farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla diğer bağlı siteleri sağlar.
 
-Varsayılan yükleme, HCX gelişmiş, en fazla üç dış siteyi destekler. Üçten fazla site gerekliyse, müşteriler destek aracılığıyla HCX kurumsal eklentisini etkinleştirme seçeneğine sahiptir. HCX kurumsal yüklemesi, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler sunar, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
+Varsayılan yükleme, HCX gelişmiş, en fazla üç vCenter destekler. Üçten fazla gerekliyse, müşteriler destek aracılığıyla HCX kurumsal eklentisini etkinleştirme seçeneğine sahiptir. HCX kurumsal yüklemesi, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler sunar, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
 
 
 [Başlamadan önce](#before-you-begin), [yazılım sürümü gereksinimlerinden](#software-version-requirements)ve [önkoşullardan](#prerequisites) önce ayrıntılı bir şekilde gözden geçirin. 
@@ -50,7 +50,7 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 | NSX    | Kaynaktaki mantıksal anahtarların HCX ağ uzantısı için: NSXv 6.2 + veya NSX-T 2.4 +   | NSXv 6.2 + veya NSX-T 2,4 +<br/><br/>HCX yakınlık yönlendirmesi için: NSXv 6.4 + (NSX-T ile yakınlık yönlendirmesi desteklenmez) |
 | vCloud Direktörü   | Gerekli değildir-kaynak sitede vCloud Director ile birlikte çalışabilirlik yok | Hedef ortamı vCloud Director ile tümleştirdiğinizde, en az 9.1.0.2 olur.  |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şirket içi ve AVS SDDC ER devreleri arasında küresel erişim yapılandırılmalıdır.
 
@@ -80,7 +80,7 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
     ![Şablon ayrıntılarını gözden geçirme](./media/hybrid-cloud-extension-installation/configure-template.png)
 
-1. Lisans koşullarını gözden geçirin ve kabul ediyorsanız gereken depolama ve ağ ' ı seçin. Ardından **İleri**' yi seçin.
+1. Lisans koşullarını gözden geçirin ve kabul ediyorsanız gereken depolama ve ağ ' ı seçin. Sonra **İleri**’yi seçin.
 
 1. **Şablonu Özelleştir**' de gerekli tüm bilgileri girin. 
 

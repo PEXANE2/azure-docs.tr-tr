@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f44cbd9b735839640702970a65de239b36b3f30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209810"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537046"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>ExpressRoute devre bant genişliğini yükseltme hakkında
 
@@ -34,7 +34,7 @@ Kapasite varsa, aşağıdaki yöntemleri kullanarak devreyi yükseltebilirsiniz:
 
 ExpressRoute iş ortağının yeterli kapasitesi yoksa, istenen bant genişliğine göre yapılandırılmış yeni bir devre oluşturmanız gerekir. Bağlantıyı sürdürmek için, yeni oluşturulan bağlantı sağlandıktan, eşleme yapılandırıldıktan ve (özel eşleme ile ilgili) ExpressRoute sanal ağ geçidi için bağlantı nesnesi sağlanana kadar eski devre silmeyin.
 
-ExpressRoute ortağınızda yeterli kullanılabilir kapasite yoksa, istenen eşleme konumunda ek kapasite istemeniz gerekir. Yeni kapasite sağlandıktan sonra, [yükseltme devre bant genişliği](#upgrade) bölümündeki makalelerde bulunan adımları kullanarak yeni bir devre oluşturabilir, bağlantıyı yapılandırabilir ve eski devreyi silebilirsiniz:
+ExpressRoute ortağınızda yeterli kullanılabilir kapasite yoksa, istenen eşleme konumunda ek kapasite istemeniz gerekir. Yeni kapasite sağlandıktan sonra, [yükseltme devre bant genişliği](#upgrade) bölümündeki makalelerde bulunan adımları kullanarak yeni bir devre oluşturabilir, bağlantıyı yapılandırabilir ve eski devreyi silebilirsiniz.
 
 
 ### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>Yetersiz ExpressRoute doğrudan bant genişliği

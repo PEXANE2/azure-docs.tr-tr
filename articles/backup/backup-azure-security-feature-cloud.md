@@ -3,17 +3,18 @@ title: Azure Backup için geçici silme
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84116411"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538845"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup için geçici silme
 
 Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları hakkında sorunlar artıyor. Bu güvenlik sorunları hem para hem de veri bakımından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır.
 
-Bu tür bir özellik, geçici bir DELETE. Kötü niyetli bir aktör bir yedeği silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün bekletmesi müşteriye hiçbir ücret vermez.
+Bu tür bir özellik, geçici bir DELETE. Kötü niyetli bir aktör bir yedeği silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verileri için 14 günlük ek bekletme, müşteriye hiçbir ücret vermez.
 
 Bu hizmetler için geçici silme koruması kullanılabilir:
 
@@ -28,7 +29,7 @@ Bu akış grafiği, geçici silme etkinleştirildiğinde bir yedekleme öğesini
 
 Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silme ve yeniden koruma (örneğin, bir test ortamında) için gereken 14 gün bekleyemez. Yalnızca kasa sahibi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korunan öğelerin gelecekteki tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliği devre dışı bırakmadan önce geçici olarak silinen durumunda bulunan yedekleme verileri, 14 günlük süre boyunca geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
 
- Geçici silme devre dışı bırakıldığında, özelliğin SQL Server ve SAP HANA iş yükleri dahil olmak üzere tüm iş yükleri türleri için devre dışı bırakıldığını unutmamak önemlidir. Örneğin, [SQL Server/SAP HANA önizlemesi](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview) bir abonelik için etkinleştirildikten sonra, aynı kasadaki sanal makineler için etkin tutulurken yalnızca SQL Server veya SAP HANA DBS için geçici silme devre dışı bırakılması mümkün değildir. Ayrıntılı denetim için ayrı kasa oluşturabilirsiniz.
+ Geçici silme devre dışı bırakıldığında, özelliğin SQL Server ve SAP HANA iş yükleri dahil olmak üzere tüm iş yükleri türleri için devre dışı bırakıldığını unutmamak önemlidir. Örneğin, [SQL Server/SAP HANA önizlemesi](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) bir abonelik için etkinleştirildikten sonra, aynı kasadaki sanal makineler için etkin tutulurken yalnızca SQL Server veya SAP HANA DBS için geçici silme devre dışı bırakılması mümkün değildir. Ayrıntılı denetim için ayrı kasa oluşturabilirsiniz.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal kullanarak geçici silme devre dışı bırakılıyor
 
@@ -45,7 +46,7 @@ Geçici silme devre dışı bırakmak için şu adımları izleyin:
 > [!IMPORTANT]
 > Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```En son sürümü almak için kullanın.
 
-Devre dışı bırakmak için [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS cmdlet 'ini kullanın.
+Devre dışı bırakmak için [set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS cmdlet 'ini kullanın.
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -68,7 +69,7 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. [Geçici silme özelliğini devre dışı bırakmak](#enabling-and-disabling-soft-delete)için adımları izleyin.
 
@@ -86,11 +87,11 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 
 5. Yedekleme verilerini kalıcı olarak silmek için **yedekleme verilerini sil** ' i seçin.
 
-   ![Yedekleme verilerini Sil ' i seçin](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Yedekleme verilerini Sil ' i seçin](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Kurtarma noktalarını silmek istediğinizi onaylamak için yedekleme öğesinin adını yazın.
 
-   ![Yedekleme öğesinin adını yazın](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Yedekleme öğesinin adını yazın](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
 

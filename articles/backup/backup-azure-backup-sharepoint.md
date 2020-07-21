@@ -3,12 +3,12 @@ title: DPM ile bir SharePoint grubunu Azure 'a yedekleme
 description: Bu makalede, Azure 'da bir SharePoint grubunun DPM/Azure Backup sunucu korumasına genel bakış sunulmaktadır
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 0199495e3b0eb002e58c096ed9abf05d46f43f97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 447776af7cb021fd0c3381334bf3acf258ff22ab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80054121"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539117"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM ile bir SharePoint grubunu Azure 'a yedekleme
 
@@ -18,7 +18,7 @@ SharePoint 'i DPM ile Azure 'a yedeklemek, SharePoint 'i yerel olarak DPM 'ye ye
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint desteklenen sürümleri ve ilgili koruma senaryoları
 
-Desteklenen SharePoint sürümleri ve bunları yedeklemek için gereken DPM sürümleri için bkz: [DPM ne yedekleyebilir?](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup)
+Desteklenen SharePoint sürümleri ve bunları yedeklemek için gereken DPM sürümleri için bkz: [DPM ne yedekleyebilir?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -28,19 +28,19 @@ Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız 
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturma, kasa kimlik bilgilerini indirme, Azure Backup Aracısı yükleme ve DPM/Azure Backup Sunucusu 'i kasaya kaydetme.
 
-Ek Önkoşullar ve sınırlamalar, [DPM Ile yedekleme](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) makalesinde bulunabilir.
+Ek Önkoşullar ve sınırlamalar, [DPM Ile yedekleme](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) makalesinde bulunabilir.
 
 ## <a name="configure-backup"></a>Yedeklemeyi yapılandırma
 
-SharePoint grubunu yedeklemek için ConfigureSharePoint.exe dosyasını kullanarak SharePoint için koruma yapılandırır ve ardından DPM’de bir koruma grubu oluşturursunuz. Yönergeler için bkz. DPM belgelerinde [yedeklemeyi yapılandırma](https://docs.microsoft.com//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) .
+SharePoint grubunu yedeklemek için ConfigureSharePoint.exe dosyasını kullanarak SharePoint için koruma yapılandırır ve ardından DPM’de bir koruma grubu oluşturursunuz. Yönergeler için bkz. DPM belgelerinde [yedeklemeyi yapılandırma](//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) .
 
 ## <a name="monitoring"></a>İzleme
 
-Yedekleme işini izlemek için [DPM yedeklemesini izleme](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring) bölümündeki yönergeleri izleyin.
+Yedekleme işini izlemek için [DPM yedeklemesini izleme](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring) bölümündeki yönergeleri izleyin.
 
 ## <a name="restore-sharepoint-data"></a>SharePoint verilerini geri yükleme
 
-DPM ile bir diskten bir SharePoint öğesini geri yüklemeyi öğrenmek için bkz. [SharePoint verilerini geri yükleme](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data).
+DPM ile bir diskten bir SharePoint öğesini geri yüklemeyi öğrenmek için bkz. [SharePoint verilerini geri yükleme](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data).
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>DPM kullanarak bir SharePoint veritabanını Azure 'dan geri yükleme
 
@@ -61,7 +61,7 @@ DPM ile bir diskten bir SharePoint öğesini geri yüklemeyi öğrenmek için bk
 
     ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**' a tıklayın.
+    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**’a tıklayın.
 
     ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. İçerik veritabanı yapısını almak için DPM **Kurtarma** sekmesinde gösterilen SharePoint nesnesine tıklayın. Öğeye sağ tıklayın ve ardından **kurtar**' a tıklayın.
@@ -71,7 +71,7 @@ DPM ile bir diskten bir SharePoint öğesini geri yüklemeyi öğrenmek için bk
 
 ## <a name="switching-the-front-end-web-server"></a>Ön uç Web sunucusunu değiştirme
 
-Birden fazla ön uç Web sunucunuz varsa ve DPM 'nin grubu korumak için kullandığı sunucuyu değiştirmek istiyorsanız, [ön uç Web sunucusunu değiştirme](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)bölümündeki yönergeleri izleyin.
+Birden fazla ön uç Web sunucunuz varsa ve DPM 'nin grubu korumak için kullandığı sunucuyu değiştirmek istiyorsanız, [ön uç Web sunucusunu değiştirme](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)bölümündeki yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

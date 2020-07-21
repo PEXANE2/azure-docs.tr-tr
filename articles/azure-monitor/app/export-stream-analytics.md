@@ -3,12 +3,12 @@ title: Azure Application Insights Stream Analytics kullanarak dışarı aktarma 
 description: Stream Analytics, Application Insights dışarı aktarma yaptığınız verileri sürekli olarak dönüştürebilir, filtreleyebilir ve yönlendirebilir.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224528"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539967"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights gelen verileri işlemek için Stream Analytics kullanma
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) , [Application Insights aktarılmış](export-telemetry.md)verileri işlemeye yönelik ideal bir araçtır. Stream Analytics, çeşitli kaynaklardan veri çekebilir. Verileri dönüştürebilir ve filtreleyebilir ve sonra çeşitli alıcılara yönlendirebilir.
@@ -28,7 +28,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
 1. [Azure Portal](https://portal.azure.com)aboneliğinizde bir "klasik" depolama hesabı oluşturun.
    
    ![Azure portal ' de yeni, veri, depolama ' yı seçin.](./media/export-stream-analytics/030.png)
-2. Kapsayıcı oluşturma
+2. Bir kapsayıcı oluşturma
    
     ![Yeni depolama alanında kapsayıcılar ' ı seçin, kapsayıcılar kutucuğuna tıklayın ve ardından Ekle](./media/export-stream-analytics/040.png)
 3. Depolama erişim anahtarını kopyalama
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * Export-Input, akış girişine verdiğimiz diğer addır
 * PBI-Output, tanımladığımız çıkış diğer adıdır
-* Olay adı, iç içe geçmiş bir JSON dizisinde olduğundan, [dış uygulama, GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) kullanıyoruz. Ardından Select, zaman döneminde bu adı taşıyan örneklerin sayısı ile birlikte olay adını seçer. [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) yan tümcesi, öğeleri bir dakikalık zaman dilimlerine göre gruplandırır.
+* Olay adı, iç içe geçmiş bir JSON dizisinde olduğundan, [dış uygulama, GetElements](/stream-analytics-query/apply-azure-stream-analytics) kullanıyoruz. Ardından Select, zaman döneminde bu adı taşıyan örneklerin sayısı ile birlikte olay adını seçer. [Group By](/stream-analytics-query/group-by-azure-stream-analytics) yan tümcesi, öğeleri bir dakikalık zaman dilimlerine göre gruplandırır.
 
 ### <a name="query-to-display-metric-values"></a>Ölçüm değerlerini görüntüleme sorgusu
 
@@ -212,4 +212,3 @@ Nohar ben Zeev, Stream Analytics kullanarak dışarıya aktarılmış verilerin 
 * [Sürekli dışarı aktarma](export-telemetry.md)
 * [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
 * [Uygulama Bilgileri](../../azure-monitor/app/app-insights-overview.md)
-

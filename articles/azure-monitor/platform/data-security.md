@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333354"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539355"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
-Bu belge, [Azure Güven Merkezi](../../security/fundamentals/trust-center.md)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
+Bu belge, [Azure Güven Merkezi](https://www.microsoft.com/en-us/trust-center?rtc=1)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
 
 Bu makalede verilerin Log Analytics tarafından nasıl toplandığı, işlendiği ve güvenlik altına alındığı açıklanır. Web hizmetine bağlanmak için aracıları kullanabilir, işletimsel verileri toplamak için System Center Operations Manager kullanabilir veya Log Analytics tarafından kullanılmak üzere Azure tanılama 'dan veri alabilirsiniz. 
 
@@ -42,9 +42,9 @@ Yalnızca, TLS 1,3 gibi daha yeni güvenli protokollerden otomatik olarak algıl
 |Platform/dil | Destek | Daha Fazla Bilgi |
 | --- | --- | --- |
 |Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır.  | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
-| Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
-| Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
-| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfası.  |
+| Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
+| Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
+| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](/windows-server/security/tls/tls-registry-settings) sayfası.  |
 
 ## <a name="data-segregation"></a>Veri ayırma
 Verileriniz Log Analytics hizmeti tarafından alındıktan sonra, veriler hizmet genelinde her bir bileşen üzerinde mantıksal olarak ayrı tutulur. Tüm veriler çalışma alanı başına etiketlendi. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır. Verileriniz, seçtiğiniz bölgedeki depolama kümesindeki özel bir veritabanında depolanır.
@@ -71,7 +71,7 @@ Aşağıdaki tabloda veri türü örnekleri gösterilmektedir:
 | Uyarı |Uyarı adı, uyarı açıklaması, BaseManagedEntityId, sorun KIMLIĞI, ısmonitoralert, RuleId, ResolutionState, Priority, önem derecesi, kategori, sahip, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, Timeresoliner, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Yapılandırma |CustomerID, bjecttype TID, EntityId, ManagedTypeId, Managedtypepropertyıd, CurrentValue, ChangeDate |
 | Olay |EventID, EventOriginalID, Basemanagedentityınternalıd, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Note:** Windows olay günlüğünde özel alanlarıyla olayları yazdığınızda, Log Analytics toplar. |
-| Meta veri |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, Physicalişlemcilerle, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, Lastınventorydate, HostServerNameIsVirtualMachine, IP adresi, NetbiosDomainName, Logicalişlemciler, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
+| Meta Veriler |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, Physicalişlemcilerle, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, Lastınventorydate, HostServerNameIsVirtualMachine, IP adresi, NetbiosDomainName, Logicalişlemciler, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Performans |ObjectName, CounterName, Perfmonınstancename, Performancedataıd, performanslı Cesourceınternalıd, SampleValue, Timeörneklenmiş, TimeAdded |
 | Durum |Statechangeeventıd, stateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, Monitorıd, HealthState, LastModified, Lastlıalertgenerated, DatabaseTimeModified |
 
@@ -175,4 +175,3 @@ Log Analytics çalışma alanınıza erişmek için, daha önce ayarladığını
 * Azure [VM hızlı başlangıç](../../azure-monitor/learn/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  
 
 *  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlardan veri toplamak istiyorsanız bkz. [Linux bilgisayarları Için hızlı başlangıç](../../azure-monitor/learn/quick-collect-linux-computer.md) veya [Windows bilgisayarları için hızlı başlangıç](../../azure-monitor/learn/quick-collect-windows-computer.md)
-

@@ -4,11 +4,12 @@ description: Ortak uyarı şemasını anlama, neden kullanılması gerekir ve na
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710941"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539491"
 ---
 # <a name="common-alert-schema"></a>Ortak uyarı şeması
 
@@ -51,8 +52,8 @@ Eylem grupları aracılığıyla, hem portalda hem de REST API aracılığıyla 
 > 1. Aşağıdaki uyarı türleri varsayılan olarak ortak şemayı destekler (zorunlu kabul etme gerekmez):
 >     * Akıllı algılama uyarıları
 > 1. Aşağıdaki uyarı türleri şu anda ortak şemayı desteklemiyor:
->     * [VM'ler için Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) tarafından oluşturulan uyarılar
->     * [Azure maliyet yönetimi](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario) tarafından oluşturulan uyarılar
+>     * [VM'ler için Azure izleyici](../insights/vminsights-overview.md) tarafından oluşturulan uyarılar
+>     * [Azure maliyet yönetimi](../../cost-management-billing/manage/cost-management-budget-scenario.md) tarafından oluşturulan uyarılar
 
 ### <a name="through-the-azure-portal"></a>Azure portal aracılığıyla
 
@@ -63,9 +64,9 @@ Eylem grupları aracılığıyla, hem portalda hem de REST API aracılığıyla 
 
 ### <a name="through-the-action-groups-rest-api"></a>Eylem grupları aracılığıyla REST API
 
-Ortak uyarı şemasını kabul etmek için [eylem GRUPLARı API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 'sini de kullanabilirsiniz. [Oluşturma veya güncelleştirme](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API çağrısı yaparken, aşağıdaki eylemlerden herhangi biri Için "useCommonAlertSchema" bayrağını ' true ' olarak (kabul etmek için) veya ' false ' (devre dışı) olarak ayarlayabilirsiniz (e-posta/Web kancası/mantıksal uygulama/Azure işlevi/Otomasyon Runbook 'u).
+Ortak uyarı şemasını kabul etmek için [eylem GRUPLARı API](/rest/api/monitor/actiongroups) 'sini de kullanabilirsiniz. [Oluşturma veya güncelleştirme](/rest/api/monitor/actiongroups/createorupdate) REST API çağrısı yaparken, aşağıdaki eylemlerden herhangi biri Için "useCommonAlertSchema" bayrağını ' true ' olarak (kabul etmek için) veya ' false ' (devre dışı) olarak ayarlayabilirsiniz (e-posta/Web kancası/mantıksal uygulama/Azure işlevi/Otomasyon Runbook 'u).
 
-Örneğin, [Create veya update](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API için yapılan aşağıdaki istek gövdesi şunları yapacaktır:
+Örneğin, [Create veya update](/rest/api/monitor/actiongroups/createorupdate) REST API için yapılan aşağıdaki istek gövdesi şunları yapacaktır:
 
 * "John tikan 'un e-postası" e-posta eyleminin ortak uyarı şemasını etkinleştirin
 * "Gamze Smith 'in e-postası" e-posta eyleminin ortak uyarı şemasını devre dışı bırakın
@@ -120,7 +121,4 @@ Ortak uyarı şemasını kabul etmek için [eylem GRUPLARı API](https://docs.mi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Web kancaları/Logic Apps/Azure Işlevleri/Otomasyonu runbook 'Ları için ortak uyarı şeması tanımları.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yararlanan bir mantıksal uygulama oluşturmayı öğrenin.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [Tüm uyarılarınızı işlemek için ortak uyarı şemasıyla yararlanan bir mantıksal uygulama oluşturmayı öğrenin.](./alerts-common-schema-integrations.md) 

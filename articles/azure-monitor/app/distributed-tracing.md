@@ -6,11 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892266"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540001"
 ---
 # <a name="what-is-distributed-tracing"></a>Dağıtılmış Izleme nedir?
 
@@ -20,9 +21,9 @@ Tek parçalı mimarilerde, çağrı yığınlarıyla hata ayıklamak için kulla
 
 Bu, dağıtılmış izlemenin içinde geldiği yerdir.  
 
-Dağıtılmış izleme, içinde oluşturulan bir uyarlaması performans profil oluşturucusu eklenmesiyle modern bulut ve mikro hizmet mimarileri için çağrı yığınlarının eşdeğeridir. Azure Izleyici 'de, dağıtılmış izleme verilerini tüketmeye yönelik iki deneyim sağlıyoruz. Birincisi, bir zaman boyutu eklenmiş bir çağrı yığını gibi olan [işlem tanılama](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) görünümümüzü. İşlem tanılama görünümü tek bir işlem/istek için görünürlük sağlar ve her istek için güvenilirlik sorunlarının ve performans sorunlarının kök nedenini bulmak için yararlıdır.
+Dağıtılmış izleme, içinde oluşturulan bir uyarlaması performans profil oluşturucusu eklenmesiyle modern bulut ve mikro hizmet mimarileri için çağrı yığınlarının eşdeğeridir. Azure Izleyici 'de, dağıtılmış izleme verilerini tüketmeye yönelik iki deneyim sağlıyoruz. Birincisi, bir zaman boyutu eklenmiş bir çağrı yığını gibi olan [işlem tanılama](./transaction-diagnostics.md) görünümümüzü. İşlem tanılama görünümü tek bir işlem/istek için görünürlük sağlar ve her istek için güvenilirlik sorunlarının ve performans sorunlarının kök nedenini bulmak için yararlıdır.
 
-Azure Izleyici Ayrıca, sistemlerin nasıl etkileşime gireceğini ve ortalama performans ve hata tarifelerinin ne olduğunu gösteren bir topik görünümünü göstermek için birçok işlem toplayan bir [uygulama Haritası](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) görünümü sunar. 
+Azure Izleyici Ayrıca, sistemlerin nasıl etkileşime gireceğini ve ortalama performans ve hata tarifelerinin ne olduğunu gösteren bir topik görünümünü göstermek için birçok işlem toplayan bir [uygulama Haritası](./app-map.md) görünümü sunar. 
 
 ## <a name="how-to-enable-distributed-tracing"></a>Dağıtılmış Izlemeyi etkinleştirme
 
@@ -32,16 +33,16 @@ Bir uygulamadaki hizmetler genelinde dağıtılmış izlemeyi etkinleştirmek, h
 
 .NET, .NET Core, Java, Node.js ve JavaScript 'In tüm Application Insights aracıları ve/veya SDK 'Ları, dağıtılmış izlemeyi yerel olarak destekler. Her Application Insights SDK 'Yı yükleme ve yapılandırmaya yönelik yönergeler aşağıda verilmiştir:
 
-* [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
-* [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [.NET](../learn/quick-monitor-portal.md)
+* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [Java](./java-in-process-agent.md)
+* [Node.js](../learn/nodejs-quick-start.md)
+* [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
-Uygun Application Insights SDK yüklü ve yapılandırılmış olarak, popüler çerçeveler, kitaplıklar ve teknolojiler için izleme bilgileri SDK bağımlılığı otomatik toplayıcılarına göre otomatik olarak toplanır. Desteklenen teknolojilerin tam listesi [bağımlılık otomatik toplama belgelerinde](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)bulunabilir.
+Uygun Application Insights SDK yüklü ve yapılandırılmış olarak, popüler çerçeveler, kitaplıklar ve teknolojiler için izleme bilgileri SDK bağımlılığı otomatik toplayıcılarına göre otomatik olarak toplanır. Desteklenen teknolojilerin tam listesi [bağımlılık otomatik toplama belgelerinde](./auto-collect-dependencies.md)bulunabilir.
 
- Ayrıca, tüm teknolojiler [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)üzerinde [trackdependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) çağrısı ile el ile izlenebilir.
+ Ayrıca, tüm teknolojiler [TelemetryClient](./api-custom-events-metrics.md)üzerinde [trackdependency](./api-custom-events-metrics.md) çağrısı ile el ile izlenebilir.
 
 ## <a name="enable-via-opencensus"></a>OpenCensus aracılığıyla etkinleştir
 

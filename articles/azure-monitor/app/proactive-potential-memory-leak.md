@@ -3,17 +3,18 @@ title: Bellek sızıntısı algılama-Azure Application Insights akıllı algıl
 description: Olası bellek sızıntıları için Azure Application Insights uygulamaları izleyin.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671707"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539899"
 ---
 # <a name="memory-leak-detection-preview"></a>Bellek sızıntısı algılama (Önizleme)
 
 Application Insights uygulamanızdaki her bir işlemin bellek tüketimini otomatik olarak analiz eder ve olası bellek sızıntıları veya daha fazla bellek tüketimi hakkında sizi uyarabilir.
 
-Bu özellik, uygulamanız için [performans sayaçlarını yapılandırma](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) dışında özel bir kurulum gerektirmez. Uygulamanız yeterli bellek performans sayacı telemetrisi (örneğin, özel bayt) oluşturduğunda etkindir.
+Bu özellik, uygulamanız için [performans sayaçlarını yapılandırma](./performance-counters.md) dışında özel bir kurulum gerektirmez. Uygulamanız yeterli bellek performans sayacı telemetrisi (örneğin, özel bayt) oluşturduğunda etkindir.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Bu tür akıllı algılama bildirimini ne zaman alabilirim?
 Tipik bir bildirim, bir veya daha fazla işlem ve/veya bir ya da daha fazla makinede, uygulamanızın bir parçası olan bellek tüketimine yönelik tutarlı bir artış izler. Makine öğrenimi algoritmaları, bellek sızıntısı 'nın düzeniyle eşleşen artan bellek tüketimini saptamak için kullanılır.

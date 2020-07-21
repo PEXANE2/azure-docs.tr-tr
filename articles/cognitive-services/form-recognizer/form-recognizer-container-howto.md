@@ -7,23 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: a014628a9664e33aa855cc4fbf40979236d765f9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6190653934dede1fa042beca8dbd2d7c06f43cfc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355616"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538029"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Form tanıyıcı kapsayıcıları (Önizleme) yükleyip çalıştırın
+
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Azure form tanıyıcı, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular. Değerleri ve tablo girişlerini anahtar-değer çiftleriyle ilişkilendirir ve ardından özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıkarır. 
 
 Karmaşıklığı azaltmak ve özel bir form tanıyıcı modelini iş akışı Otomasyonu sürecinizi veya başka bir uygulamayla kolayca bütünleştirmek için, basit bir REST API kullanarak modeli çağırabilirsiniz. Yalnızca beş form belgesi (ya da boş bir form ve iki doldurulmuş form) gerekli olduğundan, sonuçları hızlıca, doğru ve belirli içeriğinize göre kolayca elde edebilirsiniz. Ağır el ile müdahale veya kapsamlı veri bilimi uzmanlığı gerekli değildir. Veri etiketleme veya veri ek açıklaması gerektirmez.
-
-> [!IMPORTANT]
-> Form tanıyıcı kapsayıcıları Şu anda form tanıyıcı API 'sinin 1,0 sürümünü kullanıyor. Bunun yerine, yönetilen hizmeti kullanarak API 'nin en son sürümüne erişebilirsiniz.
 
 | İşlev | Özellikler |
 |----------|----------|
@@ -31,7 +30,7 @@ Karmaşıklığı azaltmak ve özel bir form tanıyıcı modelini iş akışı O
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Form tanıyıcı kapsayıcılarını kullanmadan önce, aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -64,14 +63,6 @@ Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve ilgili bilişsel hiz
 
 > [!IMPORTANT]
 > Bu abonelik anahtarları bilişsel hizmet API 'nize erişmek için kullanılır. Anahtarlarınızı paylaşmayın. Azure Key Vault kullanarak güvenli bir şekilde depolayın. Ayrıca, bu anahtarların düzenli olarak yeniden oluşturulması önerilir. API çağrısı yapmak için yalnızca bir anahtar gereklidir. İlk anahtarı yeniden oluştururken, hizmete devam eden erişim için ikinci anahtarı kullanabilirsiniz.
-
-## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
-
-Kapsayıcıya erişim istemek için [istek formunu](https://aka.ms/cognitivegate) doldurun ve iletin.
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
 ## <a name="the-host-computer"></a>Ana bilgisayar
 
@@ -250,7 +241,7 @@ services:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
-|Kapsayıcı|Uç Nokta|
+|Kapsayıcı|Uç Noktası|
 |--|--|
 |Form-tanıyıcı|http://localhost:5000
 

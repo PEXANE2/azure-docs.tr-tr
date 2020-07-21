@@ -6,20 +6,21 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654401"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539661"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Ağ Performansı İzleyicisi için fiyatlandırma değişiklikleri
 
-Geri bildiriminizi inceleyin ve kısa bir süre önce Azure 'daki çeşitli izleme hizmetleri için [Yeni bir fiyatlandırma deneyimi](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) sunduk. Bu makalede, kolay okunabilir bir soru ve yanıt biçiminde Azure [ağ performansı İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) ile ilgili fiyatlandırma değişiklikleri yer alır.
+Geri bildiriminizi inceleyin ve kısa bir süre önce Azure 'daki çeşitli izleme hizmetleri için [Yeni bir fiyatlandırma deneyimi](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) sunduk. Bu makalede, kolay okunabilir bir soru ve yanıt biçiminde Azure [ağ performansı İzleyicisi](../../networking/network-monitoring-overview.md) (NPM) ile ilgili fiyatlandırma değişiklikleri yer alır.
 
 Ağ Performansı İzleyicisi üç bileşenden oluşur:
-* [Performans İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Hizmet uç noktası Izleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute Izleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [Performans İzleyicisi](../../networking/network-monitoring-overview.md#performance-monitor)
+* [Hizmet uç noktası Izleyicisi](../../networking/network-monitoring-overview.md)
+* [ExpressRoute Izleyicisi](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 Aşağıdaki bölümlerde NPM bileşenlerine ilişkin fiyatlandırma değişiklikleri açıklanmaktadır.
 
@@ -111,4 +112,3 @@ Tüm ay için bir uç nokta izlemenin maliyeti için [bağlantı izleme](https:/
 ## <a name="references"></a>Başvurular
 
 [Log Analytics FIYATLANDıRMASı SSS](https://azure.microsoft.com/pricing/details/log-analytics/): SSS bölümünde, düğüm başına fiyatlandırma ve diğer fiyatlandırma ayrıntıları hakkında ücretsiz katman bilgileri bulunur.
-

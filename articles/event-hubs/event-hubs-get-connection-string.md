@@ -3,12 +3,12 @@ title: Bağlantı dizesi al-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, istemcilerin Azure Event Hubs bağlanmak için kullanabileceği bir bağlantı dizesi alma yönergeleri sağlanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320502"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537199"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs bağlantı dizesi al
 
@@ -73,5 +73,5 @@ Event Hubs için Azure CLı komutları hakkında daha fazla bilgi için bkz. [Az
 
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Event Hubs genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay Hub 'ı oluşturma](event-hubs-create.md)
+* [Event Hubs genel bakış](./event-hubs-about.md)
+* [Olay Hub'ı oluşturma](event-hubs-create.md)

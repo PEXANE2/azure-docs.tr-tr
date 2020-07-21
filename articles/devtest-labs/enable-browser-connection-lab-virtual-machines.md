@@ -1,16 +1,16 @@
 ---
-title: Azure DevTest Labs sanal makinelerde tarayıcı bağlantısını etkinleştir | Microsoft Docs
+title: Azure DevTest Labs sanal makinelerde tarayıcı bağlantısını etkinleştir
 description: DevTest Labs artık Azure savunma ile tümleşir, bu da laboratuvarın sahibi olarak tüm laboratuar sanal makinelerine erişimi bir tarayıcıdan sağlayabilir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 23fb43fa7295006d8d3784d1dbb5d80c48411431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ff55aa033ee9a024c8bc89cc9d39bc8d3ad25da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484137"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537539"
 ---
-# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştir 
+# <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs sanal makinelerde tarayıcı bağlantısını etkinleştir 
 DevTest Labs, sanal makinelerinize bir tarayıcıdan bağlanmanızı sağlayan [Azure](https://docs.microsoft.com/azure/bastion/)savunma ile tümleşir. Önce laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirmeniz gerekir.
 
 Bir laboratuvarın sahibi olarak, tüm Laboratuvar sanal makinelerine bir tarayıcıdan erişmeyi etkinleştirebilirsiniz. Ek bir istemci, aracı veya yazılım parçası gerekmez. Azure savunma, doğrudan TLS üzerinden Azure portal sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure savunma aracılığıyla bağlandığınızda, sanal makinelerinizin ortak bir IP adresi olması gerekmez. Daha fazla bilgi için bkz. Azure savunma nedir [?](../bastion/bastion-overview.md)
@@ -18,7 +18,7 @@ Bir laboratuvarın sahibi olarak, tüm Laboratuvar sanal makinelerine bir taray�
 
 Bu makalede, laboratuvar sanal makinelerinde tarayıcı bağlantısının nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Mevcut laboratuvarınızın sanal ağında bir savunma ana bilgisayarı dağıtın **(veya)** laboratuvarınızı yapılandırılmış bir sanal ağla bağlayın. 
 
 Bir savunma konağını sanal bir ağa dağıtmayı öğrenmek için bkz. [Azure savunma Konağı oluşturma](../bastion/bastion-create-host-portal.md). Savunma konağını oluştururken, laboratuvarın sanal ağını seçin. 

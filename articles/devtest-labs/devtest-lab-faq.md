@@ -2,13 +2,13 @@
 title: Azure DevTest Labs SSS | Microsoft Docs
 description: Bu makalede Azure DevTest Labs hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481672"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537515"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -200,7 +200,7 @@ Mevcut sanal makinelerinizi DevTest Labs 'e kopyalamak için:
 Evet, sanal makinelerinize birden çok disk ekleyebilirsiniz.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>DevTest Labs tarafından desteklenen Gen 2 görüntüleri mi?
-Hayır. DevTest Labs hizmeti [Gen 2 görüntülerini](../virtual-machines/windows/generation-2.md)desteklemez. Bir görüntü için hem Gen 1 hem de Gen 2 sürümleri varsa, DevTest Labs VM oluştururken görüntünün yalnızca Gen 1 sürümünü gösterir. Kullanılabilir yalnızca Gen 2 sürümü varsa bir görüntü görmezsiniz. 
+Evet. DevTest Labs hizmeti, [Gen 2 görüntülerini](../virtual-machines/windows/generation-2.md)destekler. Ancak, bir görüntü için hem Gen 1 hem de Gen 2 sürümleri varsa, DevTest Labs VM oluştururken görüntünün yalnızca Gen 1 sürümünü gösterir. Yalnızca bir gen 2 sürümü varsa görüntüyü görürsünüz. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Sınamam için bir Windows işletim sistemi görüntüsü kullanmak istersem bir MSDN aboneliği satın almam gerekiyor mu?
 Azure 'da geliştirme veya test etme için Windows istemci işletim sistemi görüntülerini (Windows 7 veya sonraki bir sürümü) kullanmak için aşağıdaki adımlardan birini uygulayın:
@@ -212,7 +212,7 @@ Her bir MSDN teklifiyle ilgili Azure kredileri hakkında daha fazla bilgi için 
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Laboratuvardaki tüm VM 'Leri silme işlemini otomatikleştirin Nasıl yaparım??
-Laboratuvar sahibi olarak, Azure portal sanal makinelerinizden VM 'Leri silebilirsiniz. Ayrıca, bir PowerShell betiği kullanarak laboratuvarınızda bulunan tüm VM 'Leri silebilirsiniz. Aşağıdaki örnekte, açıklama **değiştirmek için değerler** altında parametre değerlerini değiştirin. SubscriptionID, labResourceGroup ve labName değerlerini Azure portal laboratuvar bölmesinden alabilirsiniz.
+Laboratuvar sahibi olarak, Azure portal sanal makinelerinizden VM 'Leri silebilirsiniz. Ayrıca, bir PowerShell betiği kullanarak laboratuvarınızda bulunan tüm VM 'Leri silebilirsiniz. Aşağıdaki örnekte, açıklama **değiştirmek için değerler** altında parametre değerlerini değiştirin. `subscriptionId` `labResourceGroup` `labName` Azure Portal laboratuvar bölmesinden, ve değerlerini elde edebilirsiniz.
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -340,9 +340,9 @@ Diğer sürekli tümleştirme (CI)/sürekli teslim (CD) araç zincirleri için, 
 ## <a name="networking"></a>Ağ
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>DevTest Labs ortamım için yeni bir sanal ağ oluşturmalı ve var olan bir sanal ağı kullanıyor mıyım?
-Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurun. ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atabilmeniz için sanal ağlar/alt ağların miktarını en aza indirmek isteyebilirsiniz.
+Sanal makinelerinizin mevcut altyapıyla etkileşime ihtiyacı varsa, DevTest Labs ortamınızda var olan bir sanal ağı kullanmayı göz önünde bulundurun. ExpressRoute kullanırsanız, aboneliklerde kullanılmak üzere atanan IP adresi alanınızı parçalara atamameniz için sanal ağların/alt ağların sayısını en aza indirmek isteyebilirsiniz.
 
-Burada VNet eşleme[modelini (hub-bağlı bileşen modeli](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) de kullanmayı göz önünde bulundurun. Bu yaklaşım, abonelikler arasında VNET/subnet iletişimini mümkün bir şekilde sunar. Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir.
+Sanal ağ eşleme modelini ([hub-bağlı bileşen modeli](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) buradan kullanmayı göz önünde bulundurun. Bu yaklaşım, abonelikler arasında VNET/subnet iletişimini mümkün bir şekilde sunar. Aksi halde, her DevTest Labs ortamının kendi sanal ağı olabilir.
 
 Abonelik başına sanal ağ sayısında [sınırlar](../azure-resource-manager/management/azure-subscription-service-limits.md) vardır. Varsayılan miktar 50 ' dir, ancak bu sınır 100 olarak yükseltilebilir.
 

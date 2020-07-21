@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server ve Azure VM iş yükleri SAP HANA için geçici s
 description: Azure VM 'de SQL Server için geçici silmenin ve Azure VM iş yüklerindeki SAP HANA, yedeklemelerin daha güvenli hale gelmesini öğrenin.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791383"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538199"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 'de SQL Server ve Azure VM iş yükleri SAP HANA için geçici silme
 
@@ -99,7 +99,7 @@ Azure PowerShell kullanımı için adım sırası, yukarıda özetlenen Azure po
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Azure PowerShell kullanarak yedekleme öğesini silme
 
-[Devre dışı bırakma-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS cmdlet 'ini kullanarak yedekleme öğesini silin.
+[Devre dışı bırakma-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS cmdlet 'ini kullanarak yedekleme öğesini silin.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -117,7 +117,7 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadTy
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID -Name AppVM1
 ```
 
-Ardından, [Undo-Azrecoveryservicesbackupıtemsilinmeye](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.8.0) PS cmdlet 'ini kullanarak geri alma silme işlemini gerçekleştirin.
+Ardından, [Undo-Azrecoveryservicesbackupıtemsilinmeye](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS cmdlet 'ini kullanarak geri alma silme işlemini gerçekleştirin.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

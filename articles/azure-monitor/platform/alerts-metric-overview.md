@@ -1,15 +1,15 @@
 ---
 title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
 description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-ms.date: 07/09/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187532"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539440"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -120,6 +120,15 @@ Bu kural, son 5 dakika boyunca ortalama CPU kullanımının her örnek için bek
 
 Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnızca önemli bir sapma tanımınızda uyarı vermesi için de izin verebilir. [Dinamik eşikler gelişmiş seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
+> [!NOTE]
+>
+> Aşağıdaki durumlarda, eklenen zaman serisinin ilk değerlendirmesinin oluşma olasılığını azaltmak için *değerlendirme sıklığından*daha büyük bir *toplama ayrıntı düzeyi (süre)* seçmeyi öneririz:
+> - Birden çok boyutu izleyen ölçüm uyarısı kuralı – yeni bir boyut değer birleşimi eklendiğinde
+> - Birden çok kaynağı izleyen ölçüm uyarısı kuralı: kapsama yeni bir kaynak eklendiğinde
+> - Sürekli olarak (seyrek ölçüm) yayınlanmayan bir ölçüyü izleyen ölçüm uyarısı kuralı: ölçüm, kendisine yayılmadığı 24 saatten daha uzun bir süre sonra yayınlandığında
+
+
+
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarılarını kullanarak ölçeğe göre izleme
 
 Şimdiye kadar, tek bir Azure kaynağıyla ilgili bir veya daha fazla ölçüm zaman serisini izlemek için tek bir ölçüm uyarısının nasıl kullanılabileceğini gördünüz. Birçok kez, aynı uyarı kuralının birçok kaynağa uygulanmasını isteyebilirsiniz. Azure Izleyici aynı Azure bölgesinde bulunan kaynaklar için tek bir ölçüm uyarısı kuralıyla birden fazla kaynağın (aynı türden) izlenmesini de destekler. 
@@ -129,9 +138,9 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 | Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler  | **Evet** | Hayır | Hayır |
-| SQL Server veritabanları | **Evet** | **Evet** | Hayır |
-| SQL Server elastik havuzlar | **Evet** | **Evet** | Hayır |
-| Veri kutusu uç cihazları | **Evet** | **Evet** | Hayır |
+| SQL Server veritabanları | **Evet** | **Evet** | No |
+| SQL Server elastik havuzlar | **Evet** | **Evet** | No |
+| Veri kutusu uç cihazları | **Evet** | **Evet** | No |
 
 Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz. Örneğin, sanal makineler ile kapsamı şu şekilde belirtebilirsiniz:  
 

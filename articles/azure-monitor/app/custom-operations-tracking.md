@@ -4,12 +4,12 @@ description: Azure Application Insights .NET SDK ile özel işlemleri izleme
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82690858"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540052"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
 
@@ -213,7 +213,7 @@ Ayrıca, Application Insights işlem KIMLIĞINI depolama istek KIMLIĞIYLE iliş
 #### <a name="enqueue"></a>Alma
 Depolama kuyrukları HTTP API 'sini desteklediği için, kuyruğa sahip tüm işlemler Application Insights tarafından otomatik olarak izlenir. Çoğu durumda bu izleme yeterince olmalıdır. Ancak, müşteri tarafında bulunan izlemeleri üretici izlemelerle ilişkilendirmek için, bağıntı için HTTP protokolünde bunu yaptığımız şekilde bir bağıntı bağlamı geçirmeniz gerekir. 
 
-Bu örnek, işlemin nasıl izleneceğini gösterir `Enqueue` . Seçenekleriniz şunlardır:
+Bu örnek, işlemin nasıl izleneceğini gösterir `Enqueue` . Şunları yapabilirsiniz:
 
  - **Yeniden denemeler (varsa) bağıntılı**: hepsi, işlem olan bir ortak üst öğeye sahiptir `Enqueue` . Aksi takdirde, bunlar gelen isteğin alt öğesi olarak izlenir. Sıraya yönelik birden çok mantıksal istek varsa, hangi çağrının yeniden denenmesine neden olduğunu bulmak zor olabilir.
  - **Depolama günlüklerini ilişkilendirme (gerekiyorsa ve gerekirse)**: Bunlar Application Insights telemetri ile bağıntılı.
@@ -346,7 +346,7 @@ Benzer şekilde, diğer kuyruk işlemleri de görüntülenebilir. Bir göz atma 
 
 ### <a name="dependency-types"></a>Bağımlılık türleri
 
-Application Insights, UI deneyimlerini özelleştirmek için bağımlılık türünü kullanır. Kuyruklar için, `DependencyTelemetry` [işlem tanılama deneyimini](/azure/azure-monitor/app/transaction-diagnostics)geliştiren aşağıdaki türleri tanır:
+Application Insights, UI deneyimlerini özelleştirmek için bağımlılık türünü kullanır. Kuyruklar için, `DependencyTelemetry` [işlem tanılama deneyimini](./transaction-diagnostics.md)geliştiren aşağıdaki türleri tanır:
 - `Azure queue`Azure depolama kuyrukları için
 - `Azure Event Hubs`Azure Event Hubs için
 - `Azure Service Bus`Azure Service Bus için
@@ -425,7 +425,7 @@ public async Task RunMyTaskAsync()
 
 Disposing işlemi, işlemin durdurulmasına neden olur, bu nedenle bunu çağırmak yerine yapabilirsiniz `StopOperation` .
 
-*Uyarı*: bazı durumlarda el ile olmayan özel durum [,](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` işlemler izlenmeyebilir şekilde çağrılabilir.
+*Uyarı*: bazı durumlarda el ile olmayan özel durum [,](/dotnet/csharp/language-reference/keywords/try-finally) `finally` işlemler izlenmeyebilir şekilde çağrılabilir.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Paralel işlemler işleme ve izleme
 

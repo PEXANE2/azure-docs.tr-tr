@@ -2,13 +2,13 @@
 title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/13/2020
+ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134669"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539236"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 
@@ -85,7 +85,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
 > - [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft. Devices](#microsoftdevices)
+> - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft. DevOps](#microsoftdevops)
 > - [Microsoft. DevSpaces](#microsoftdevspaces)
 > - [Microsoft. DevTestLab](#microsoftdevtestlab)
@@ -146,7 +146,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Operationalınsights](#microsoftoperationalinsights)
 > - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
 > - [Microsoft. eşleme](#microsoftpeering)
-> - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
+> - [Microsoft. Poliyelei](#microsoftpolicyinsights)
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated)
@@ -917,7 +917,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | rezervationönerilere | Hayır | Hayır |
 > | rezervlerin Özeti | Hayır | Hayır |
 > | rezervlik işlemleri | Hayır | Hayır |
-> | etiketler | Hayır | Hayır |
+> | tags | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
 > | larındaki | Hayır | Hayır |
 > | UsageDetails | Hayır | Hayır |
@@ -1048,7 +1048,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | externalabonelikler/Boyutlar | Hayır | Hayır |
 > | externalabonelikler/tahmin | Hayır | Hayır |
 > | externalabonelikler/sorgu | Hayır | Hayır |
-> | tahmin | Hayır | Hayır |
+> | öngörme | Hayır | Hayır |
 > | işlemler | Hayır | Hayır |
 > | sorgu | Hayır | Hayır |
 > | register | Hayır | Hayır |
@@ -1395,7 +1395,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | işlemler | Hayır | Hayır |
 > | çalışma alanı | Yes | Yes |
 
-## <a name="microsoftdevices"></a>Microsoft. Devices
+## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -2188,7 +2188,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | konumlar/kullanımlar | Hayır | Hayır |
 > | konumlar/validateresourcesahiplik | Hayır | Hayır |
 > | konumlar/virtualnetworkavailableendpointservices | Hayır | Hayır |
-> | natgateway 'ler | Yes | Yes |
+> | natgateway 'ler | Hayır | Hayır |
 > | networkexperimentprofiles | Hayır | Hayır |
 > | networkıntpolicies ilkeleri | Yes | Yes |
 > | NetworkInterfaces | Yes | Yes |
@@ -2322,7 +2322,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | peeringserviceproviders | Hayır | Hayır |
 > | peeringservices | Hayır | Hayır |
 
-## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+## <a name="microsoftpolicyinsights"></a>Microsoft. Poliyelei
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
@@ -2513,7 +2513,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Abonelikler/kaynaklar | Hayır | Hayır |
 > | Abonelikler/etiket adları | Hayır | Hayır |
 > | Abonelikler/etiket adları/tagvalues | Hayır | Hayır |
-> | etiketler | Hayır | Hayır |
+> | tags | Hayır | Hayır |
 > | templatespec | Hayır | Hayır |
 > | templatespec/sürümler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
@@ -2615,7 +2615,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | dataconnectorscheckrequirements | Hayır | Hayır |
 > | varlıklar | Hayır | Hayır |
 > | entityqueries | Hayır | Hayır |
-> | olaylara | Hayır | Hayır |
+> | olaylar | Hayır | Hayır |
 > | officeconsents | Hayır | Hayır |
 > | işlemler | Hayır | Hayır |
 > | ayarlar | Hayır | Hayır |

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e68c56901616cfb2ea90fd67e5d08f09bb1adb92
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: bbd41c147b582eac2a28fdcf73a7d4dbc725f3b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987322"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538097"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılmış ve el yazısı metin Ayıkla
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görünt�
 
 ---
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Java &trade; Platform, Standard Edition geliştirme seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8)
@@ -65,7 +65,6 @@ Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görünt�
     ```
 
 1. `Main`Ortak sınıfı aşağıdaki kodla değiştirin.
-1. İsteğe bağlı olarak değerini, `language` tanımak istediğiniz dille değiştirin. Kabul edilen değerler şunlardır. Ingilizce ve "es" için "en" Ispanyolca.
 1. İsteğe bağlı olarak, değerini, `imageToAnalyze` metin çıkarmak istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
 1. Kaydedin, ardından Java projesini derleyin.
 1. Bir IDE kullanıyorsanız, `Main` yöntemini çalıştırın. Kullanmıyorsanız, bir komut istemi penceresi açın ve ardından derlenmiş sınıfı çalıştırmak için `java` komutunu kullanın. Örneğin, `java Main`.
@@ -79,15 +78,10 @@ public class Main {
     private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
     private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
 
-    // Set the language that you want to recognize
-    // Accepted values are "en" for English, or "es" for Spanish
-    private static String language = "en";  
-
     private static String uriBase = endpoint + "/vision/v3.0/read/analyze";
 
     private static String imageToAnalyze =
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
-                    "Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg";
+            "https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg";
 
     public static void main(String[] args) {
         CloseableHttpClient httpTextClient = HttpClientBuilder.create().build();
@@ -95,14 +89,12 @@ public class Main {
 
         System.out.println("Endpoint:         " + endpoint);
         System.out.println("Subscription key: " + subscriptionKey);
-        System.out.println("Language:         " + language);
 
         try {
             // This operation requires two REST API calls. One to submit the image
             // for processing, the other to retrieve the text found in the image.
 
             URIBuilder builder = new URIBuilder(uriBase);
-            builder.setParameter("language", language);
 
             // Prepare the URI for the REST API method.
             URI uri = builder.build();

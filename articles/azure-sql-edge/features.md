@@ -8,12 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 34d2ba05b00ab92066bc7fa3ccd0b7b2aa59e15c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669646"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539219"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge 'in desteklenen özellikleri (Önizleme) 
 
@@ -35,15 +36,17 @@ Azure SQL Edge, iki farklı sürüm veya yazılım planlarıyla kullanılabilir.
 
 ## <a name="operating-system"></a>İşletim sistemi
 
-Azure SQL Edge kapsayıcıları Şu anda Ubuntu 16,04 tabanlıdır ve bu nedenle yalnızca Ubuntu 16,04 (önerilen) veya Ubuntu 18,04 çalıştıran Docker konaklarında çalışmak üzere desteklenir. Azure SQL Edge, diğer işletim sistemi konakları üzerinde de çalıştırılabilir. Örneğin, bu, Linux veya Windows üzerinde (Docker CE veya Docker EE kullanarak) çalışabilir. Ancak, bu yapılandırmaların Microsoft tarafından kapsamlı bir şekilde sınanmadığını unutmayın.
+Azure SQL Edge kapsayıcıları Şu anda Ubuntu 16,04 tabanlıdır ve bu nedenle yalnızca Ubuntu 16,04 LTS (önerilen) veya Ubuntu 18,04 LTS çalıştıran Docker konaklarında çalışmak üzere desteklenir. Azure SQL Edge kapsayıcılarını diğer işletim sistemi konaklarında çalıştırmak mümkündür. Örneğin, Linux veya Windows üzerinde (Docker CE veya Docker EE kullanarak) çalışabilir, ancak Microsoft bunu yapmanızı önermez, çünkü bu yapılandırma kapsamlı bir şekilde sınanmamıştır.
 
 Azure SQL Edge Şu anda yalnızca Azure IoT Edge aracılığıyla dağıtım için desteklenir. Daha fazla bilgi için bkz. [Azure IoT Edge desteklenen sistemler](https://docs.microsoft.com/azure/iot-edge/support).
 
 Windows üzerinde Azure SQL Edge çalıştırmak için önerilen yapılandırma Windows konakta bir Ubuntu VM 'yi yapılandırmak ve ardından Linux sanal makinesi içinde Azure SQL Edge 'i çalıştırmaktır.
 
+Azure SQL Edge için önerilen ve desteklenen dosya sistemi, EXT4 ve XFS 'dir. Kalıcı birimler Azure SQL Edge veritabanı depolamasını geri yüklemek için kullanılıyorsa, temeldeki ana bilgisayar dosya sisteminin EXT4 ve XFS olması gerekir.
+
 ## <a name="hardware-support"></a>Donanım desteği
 
-Azure SQL Edge, en az bir işlemci ve konakta bir GB RAM ile Intel, AMD veya ARM 'den olabilen 64 bitlik bir işlemci gerektirir. Azure SQL Edge 'in başlangıç belleği parmak izi 500 MB 'a yakın olsa da, Edge cihazında çalışan diğer IoT Edge modüller için ek bellek gerekir.
+Azure SQL Edge, en az bir adet işlemci ve konakta bir GB RAM ile 64 bitlik bir işlemci (x64 veya ARM64) gerektirir. Azure SQL Edge 'in başlangıç belleği parmak izi 500 MB 'a yakın olsa da, Edge cihazında çalışan diğer IoT Edge modüller için ek bellek gerekir. Azure SQL Edge için gerçek bellek ve CPU gereksinimleri, işlenen veri yükünün ve hacminin karmaşıklığına göre değişir. Çözümünüz için bir donanım seçerken, Microsoft, çözümünüz için gerekli performans özelliklerinin karşılanmasını sağlamak üzere kapsamlı performans testlerini çalıştırmanızı önerir.  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge bileşenleri
 

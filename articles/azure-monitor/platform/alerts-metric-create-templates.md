@@ -1,5 +1,5 @@
 ---
-title: Resource Manager şablonu ile ölçüm uyarısı oluşturma
+title: Azure Resource Manager şablonuyla daha yeni bir ölçüm uyarısı oluşturun
 description: Ölçüm uyarısı oluşturmak için Kaynak Yöneticisi şablonu kullanmayı öğrenin.
 author: harelbr
 ms.author: harelbr
@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187583"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539474"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -27,7 +27,7 @@ Temel adımlar aşağıdaki gibidir:
 
 1. Aşağıdaki şablonlardan birini, uyarının nasıl oluşturulacağını açıklayan bir JSON dosyası olarak kullanın.
 2. Uyarıyı özelleştirmek için ilgili parametreler dosyasını bir JSON olarak düzenleyin ve kullanın.
-3. Parametresi için `metricName` , [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)' de kullanılabilen ölçümler bölümüne bakın.
+3. Parametresi için `metricName` , [Azure izleyici desteklenen ölçümler](./metrics-supported.md)' de kullanılabilen ölçümler bölümüne bakın.
 4. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/templates/deploy-powershell.md)kullanarak şablonu dağıtın.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Basit bir statik eşik ölçümü için şablon uyarısı
@@ -204,7 +204,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u simplestaticmetricalert.jsolara
 }
 ```
 
-Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](/rest/api/monitor/metricalerts/createorupdate).
 
 Parametrelerin değerlerini, komut satırında veya bir parametre dosyası aracılığıyla ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir.
 
@@ -477,7 +477,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u simpledynamicmetricalert.jsolar
 }
 ```
 
-Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Bir uyarı kuralının şema ve özelliklerine ilişkin bir açıklama [burada bulunabilir](/rest/api/monitor/metricalerts/createorupdate).
 
 Parametrelerin değerlerini, komut satırında veya bir parametre dosyası aracılığıyla ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir. 
 
@@ -1248,7 +1248,7 @@ az group deployment create \
 
 Özel bir ölçümde daha gelişmiş bir statik eşik ölçümü uyarı kuralı oluşturmak için aşağıdaki şablonu kullanabilirsiniz.
 
-Azure Izleyici 'de özel ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de özel ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Azure Izleyici 'de özel ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de özel ölçümler](./metrics-custom-overview.md).
 
 Özel bir ölçümde bir uyarı kuralı oluştururken, hem ölçüm adını hem de ölçüm ad alanını belirtmeniz gerekir. Henüz mevcut olmayan özel bir ölçümde uyarı kuralı oluşturverilmediği için özel ölçümün zaten bildirilmekte olduğundan emin olmanız gerekir.
 
@@ -1504,7 +1504,7 @@ az group deployment create \
 
 >[!NOTE]
 >
-> [Özel ölçümlerinize Azure Portal aracılığıyla göz atarak](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal) belirli bir özel ölçümün ölçüm ad alanını bulabilirsiniz
+> [Özel ölçümlerinize Azure Portal aracılığıyla göz atarak](./metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal) belirli bir özel ölçümün ölçüm ad alanını bulabilirsiniz
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Birden çok kaynağı izleyen bir ölçüm uyarısı şablonu

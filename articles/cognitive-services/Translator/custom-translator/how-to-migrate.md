@@ -9,11 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537995"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
 
@@ -129,9 +130,9 @@ Projeleriniz, seyahat ve belgeler hakkında daha ayrıntılı geçiş raporu ist
 
 Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri karşılaştırır.
 
-|   | Hub | Özel Çevirmen |
-|:-----|:----:|:----:|
-|Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
+| Özellik | Hub | Özel Çevirmen |
+| ------- | :-: | :---------------: |
+| Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
 | Metin API 'SI sürümü    | V2     | Yüklemesinde  |
 | SMT özelleştirmesi    | Evet    | Hayır |
 | NMT özelleştirmesi    | Hayır    | Evet |

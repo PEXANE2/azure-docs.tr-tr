@@ -3,12 +3,12 @@ title: Azure Event Hubs ad alanını başka bir bölgeye taşıma | Microsoft Do
 description: Bu makalede, Azure Event Hubs ad alanını geçerli bölgeden başka bir bölgeye nasıl taşıyacağınız gösterilmektedir.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b02c34b0c28420a7e27da56b107ed3925a761b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537080"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs ad alanını başka bir bölgeye taşıma
 Mevcut Event Hubs ad alanınızı bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, test için aynı yapılandırmaya sahip bir ad alanı oluşturmak isteyebilirsiniz. Ayrıca [olağanüstü durum kurtarma planlamasının](event-hubs-geo-dr.md#setup-and-failover-flow)bir parçası olarak başka bir bölgede ikincil bir ad alanı oluşturmak isteyebilirsiniz.
@@ -16,7 +16,7 @@ Mevcut Event Hubs ad alanınızı bir bölgeden diğerine taşımak istediğiniz
 > [!NOTE]
 > Bu makalede, var olan bir Event Hubs ad alanı için Azure Resource Manager şablonu dışarı aktarma ve ardından şablonu kullanarak başka bir bölgede aynı yapılandırma ayarlarına sahip bir ad alanı oluşturma işlemi gösterilmektedir. Ancak, bu işlem henüz işlenmemiş olayları taşımaz. Silmeden önce özgün ad alanındaki olayları işlemek gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
 - Önizleme özellikleri için aboneliğinizin hedef bölgede beyaz listeye eklendiğinden emin olun.
@@ -52,7 +52,7 @@ Hedef bölgede bir Event Hubs ad alanı oluşturmak için şablonu dağıtın.
 
 3. **Şablon dağıtımı**seçin.
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
 
@@ -108,5 +108,5 @@ Azure portal kullanarak bir Event Hubs ad alanını (kaynak veya hedef) silmek i
 Bu öğreticide, bir Azure Event Hubs ad alanını bir bölgeden diğerine taşımış ve kaynak kaynakları temizledi.  Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz:
 
 
-- [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM’lerini başka bir bölgeye taşıma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM’lerini başka bir bölgeye taşıma](../site-recovery/azure-to-azure-tutorial-migrate.md)

@@ -3,12 +3,12 @@ title: Azure Application Insights kaynaklar, roller ve erişim denetimi | Micros
 description: Kuruluşunuzun öngörülerinin sahipleri, katkıda bulunanlar ve okuyucular.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f40961cd824925fe6ed1b67745667121a66d2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539984"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights içindeki kaynaklar, roller ve erişim denetimi
 
@@ -59,7 +59,7 @@ Sol taraftaki menüden **erişim denetimi (IAM)** seçeneğini belirleyin.
 
 Aşağıdaki **Izin ekleme** görünümü öncelikle Application Insights kaynaklara özeldir, erişim denetimi izinlerini kaynak grupları gibi daha yüksek bir düzeyden görüntülüyorsanız, Application Insights daha fazla merkezli rol görürsünüz.
 
-Tüm Azure rol tabanlı erişim denetimi ile ilgili bilgileri görüntülemek için yerleşik roller [resmi başvuru içeriğini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanır.
+Tüm Azure rol tabanlı erişim denetimi ile ilgili bilgileri görüntülemek için yerleşik roller [resmi başvuru içeriğini](../../role-based-access-control/built-in-roles.md)kullanır.
 
 ![Erişim denetimi kullanıcı rolü listesinin ekran görüntüsü](./media/resources-roles-access-control/0003-user-roles.png)
 
@@ -69,23 +69,23 @@ Uygun olduğunda, ilişkili resmi başvuru belgelerine bağlantı veriyoruz.
 
 | Rol | Kaynak grubunda |
 | --- | --- |
-| [Sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kullanıcı erişimi de dahil olmak üzere herhangi bir şeyi değiştirebilir. |
-| [Katkıda Bulunan](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Tüm kaynaklar dahil olmak üzere herhangi bir şeyi düzenleyebilir. |
-| [Application Insights bileşeni Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights kaynaklarını düzenleyebilir. |
-| [Okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |, Herhangi bir şeyi görüntüleyebilir ancak değiştiremez. |
-| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Kullanıcıya Application Insights Snapshot Debugger özelliklerini kullanma izni verir. Bu rolün sahip veya katkıda bulunan rollerinin ne olduğunu unutmayın. |
+| [Sahibi](../../role-based-access-control/built-in-roles.md#owner) |Kullanıcı erişimi de dahil olmak üzere herhangi bir şeyi değiştirebilir. |
+| [Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) |Tüm kaynaklar dahil olmak üzere herhangi bir şeyi düzenleyebilir. |
+| [Application Insights bileşeni Katılımcısı](../../role-based-access-control/built-in-roles.md#application-insights-component-contributor) |Application Insights kaynaklarını düzenleyebilir. |
+| [Okuyucu](../../role-based-access-control/built-in-roles.md#reader) |, Herhangi bir şeyi görüntüleyebilir ancak değiştiremez. |
+| [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Kullanıcıya Application Insights Snapshot Debugger özelliklerini kullanma izni verir. Bu rolün sahip veya katkıda bulunan rollerinin ne olduğunu unutmayın. |
 | Azure hizmet dağıtımı Release Management Katılımcısı | Azure hizmet dağıtımı aracılığıyla hizmet dağıtımı için katkıda bulunan rolü. |
-| [Veri Takiger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Kişisel verileri temizlemek için özel rol. Daha fazla bilgi için [kişisel verilere yönelik kılavuzumuza](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) bakın.   |
+| [Veri Takiger](../../role-based-access-control/built-in-roles.md#data-purger) | Kişisel verileri temizlemek için özel rol. Daha fazla bilgi için [kişisel verilere yönelik kılavuzumuza](../platform/personal-data-mgmt.md) bakın.   |
 | ExpressRoute Yöneticisi | Hızlı yollar silme ve yönetme oluşturabilir.|
-| [Log Analytics Katkıda Bulunan](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma.  |
-| [Log Analytics Okuyucusu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. |
+| [Log Analytics Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma.  |
+| [Log Analytics Okuyucusu](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. |
 | masterreader | Bir kullanıcının her şeyi görüntülemesine izin verir, ancak değişiklik yapamaz. |
-| [Katkıda bulunan izleniyor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Tüm izleme verilerini okuyabilir ve izleme ayarlarını güncelleştirebilir.|
-| [Ölçüm yayımcısını izleme](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Azure kaynaklarında ölçüm yayımlamaya izin vermez. |
-| [İzleme okuyucusu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Tüm izleme verilerini okuyabilir. |
+| [Katkıda bulunan izleniyor](../../role-based-access-control/built-in-roles.md#monitoring-contributor) | Tüm izleme verilerini okuyabilir ve izleme ayarlarını güncelleştirebilir.|
+| [Ölçüm yayımcısını izleme](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher) | Azure kaynaklarında ölçüm yayımlamaya izin vermez. |
+| [İzleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) | Tüm izleme verilerini okuyabilir. |
 | Kaynak Ilkesi katılımcısı (Önizleme) | Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynak/hiyerarşiyi okuma haklarıyla, EA 'dan Kullanıcı geri alma.  |
-| [Kullanıcı Erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Bir kullanıcının, diğer kullanıcılar için Azure kaynaklarına erişimi yönetmesine izin verir.|
-| [Web sitesi Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez.|
+| [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) | Bir kullanıcının, diğer kullanıcılar için Azure kaynaklarına erişimi yönetmesine izin verir.|
+| [Web sitesi Katılımcısı](../../role-based-access-control/built-in-roles.md#website-contributor) | Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez.|
 
 ' Editing ' oluşturma, silme ve güncelleştirme içerir:
 

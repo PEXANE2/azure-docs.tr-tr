@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta Azure CLI'yi kullanarak olay hub'ı oluş
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 5d3499d6c480a3bfdbad57ffa367c5d2d326d565
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 90828a09b925fd3af774b22db3102094c1dd0c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313124"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537165"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Hızlı başlangıç: Azure CLI'yi kullanarak olay hub'ı oluşturma
 
@@ -17,7 +17,7 @@ Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan
 
 Bu hızlı başlangıçta Azure CLI’yi kullanarak olay hub'ı oluşturacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıcı tamamlamak bir Azure aboneliğinizin olması gerekir. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun][] .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -73,7 +73,7 @@ Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşt
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Git](event-hubs-go-get-started-send.md)
 - [C (yalnızca gönderme)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (yalnızca alma)](event-hubs-storm-getstarted-receive.md)

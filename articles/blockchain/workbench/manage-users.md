@@ -1,20 +1,21 @@
 ---
 title: Azure blok zinciri çalışma ekranı 'nda kullanıcıları yönetme
 description: Azure blok zinciri çalışma ekranı 'nda kullanıcıları yönetme.
-ms.date: 05/09/2019
+ms.date: 07/15/2020
 ms.topic: how-to
-ms.reviewer: brendal
-ms.openlocfilehash: 78841ca830ae56f6c07f796bdde85f6a6ba9c921
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ravastra
+ms.openlocfilehash: 541d5b2fa3d1a0cd5c4beba65cfe5ff3bdc3124a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212743"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538267"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure blok zinciri çalışma ekranı 'nda kullanıcıları yönetme
 
 Azure blok zinciri çalışma ekranı, konsorsiyumun bir parçası olan kişiler ve kuruluşlar için Kullanıcı yönetimini içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Blok zinciri çalışma ekranı dağıtımı gereklidir. Dağıtım hakkındaki ayrıntılar için bkz. [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md) .
 
@@ -24,14 +25,11 @@ Azure blok zinciri çalışma ekranı, kimlik doğrulaması, erişim denetimi ve
 
 Blok zinciri çalışma ekranı, uygulamaları ve rollere atamadan önce kullanıcıların Azure AD kiracısında mevcut olmaları gerekir. Azure AD 'ye Kullanıcı eklemek için aşağıdaki adımları kullanın:
 
-1.  [Azure portalında](https://portal.azure.com) oturum açın.
-2.  Sağ üst köşede hesabınızı seçin ve blok zinciri çalışma ekranı ile ilişkili Azure AD kiracısına geçiş yapın.
-3.  **Azure Active Directory > kullanıcıları**' nı seçin. Dizininizde bulunan kullanıcıların listesini görürsünüz.
-4.  Dizine kullanıcı eklemek için **Yeni Kullanıcı**' yı seçin. Dış kullanıcılar için **Yeni Konuk Kullanıcı**' yı seçin.
-
-    ![Yeni kullanıcı](./media/manage-users/add-ad-user.png)
-
-5.  Yeni Kullanıcı için gerekli alanları doldurun. **Oluştur**'u seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sağ üst köşede hesabınızı seçin ve blok zinciri çalışma ekranı ile ilişkili Azure AD kiracısına geçiş yapın.
+1. **Azure Active Directory > kullanıcıları**' nı seçin. Dizininizde bulunan kullanıcıların listesini görürsünüz.
+1. Dizine kullanıcı eklemek için **Yeni Kullanıcı**' yı seçin. Dış kullanıcılar için **Yeni Konuk Kullanıcı**' yı seçin.
+1. Yeni Kullanıcı için gerekli alanları doldurun. **Oluştur**’u seçin.
 
 Azure AD 'de kullanıcıları yönetme hakkında daha fazla bilgi için [Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) belgelerini ziyaret edin.
 
@@ -41,20 +39,21 @@ Kullanıcılar dizine eklendikten sonra, bir sonraki adım, hangi kullanıcılar
 
 Kullanıcıları Azure AD dizininde **yönetici** grubuna eklemek için:
 
-1.  [Azure portalında](https://portal.azure.com) oturum açın.
-2.  Sağ üst köşede hesabınızı seçerek blok zinciri ile ilişkili Azure AD kiracısında olduğunuzdan emin olun.
-3.  **Kurumsal uygulamalar > Azure Active Directory**seçin.
-4.  Blok zinciri için Azure AD istemci uygulamasını seçme çalışma ekranı
-    
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sağ üst köşede hesabınızı seçerek blok zinciri ile ilişkili Azure AD kiracısında olduğunuzdan emin olun.
+1. **Kurumsal uygulamalar > Azure Active Directory**seçin.
+1. **Uygulama türü** açılan filtresini **tüm uygulamalara** değiştirin ve **Uygula**' yı seçin.
+1. Azure blok zinciri için Azure AD istemci uygulamasını seçme çalışma ekranı
+
     ![Tüm kurumsal uygulama kayıtları](./media/manage-users/select-blockchain-client-app.png)
 
-5.  **Kullanıcı ekle > kullanıcılar ve gruplar ' ı**seçin.
-6.  **Atama Ekle** bölümünde **Kullanıcılar**’ı seçin. Yönetici olarak eklemek istediğiniz kullanıcıyı seçin veya arayın. Bitirdiğinizde **Seç** ' e tıklayın.
+1. **Kullanıcı ekle > kullanıcılar ve gruplar ' ı**seçin.
+1. **Atama Ekle** bölümünde **Kullanıcılar**’ı seçin. Yönetici olarak eklemek istediğiniz kullanıcıyı seçin veya arayın. Bitirdiğinizde **Seç** ' e tıklayın.
 
     ![Atama Ekle](./media/manage-users/add-user-assignment.png)
 
-9.  **Rolün** **yönetici** olarak ayarlandığını doğrula
-10. **Ata**'yı seçin. Eklenen kullanıcılar listede yönetici rolü atanmış olarak görüntülenir.
+1. **Rolün** **yönetici** olarak ayarlandığını doğrula
+1. **Ata**’yı seçin. Eklenen kullanıcılar listede yönetici rolü atanmış olarak görüntülenir.
 
     ![Blok zinciri istemci uygulaması kullanıcıları](./media/manage-users/blockchain-admin-list.png)
 
@@ -68,7 +67,7 @@ Konsorsiyumun parçası olan kullanıcıları ve kuruluşları yönetmek için b
 
     Üyeler her uygulamaya eklenir. Üyeler, sözleşmeleri başlatmak veya eylem gerçekleştirmek için bir veya daha fazla uygulama rolüne sahip olabilir.
 
-2. Bir uygulamanın üyelerini yönetmek için **uygulamalar** bölmesinde bir uygulama kutucuğu seçin.
+1. Bir uygulamanın üyelerini yönetmek için **uygulamalar** bölmesinde bir uygulama kutucuğu seçin.
 
     Seçilen uygulamayla ilişkili üyelerin sayısı, Üyeler kutucuğunda yansıtılır.
 
@@ -78,31 +77,31 @@ Konsorsiyumun parçası olan kullanıcıları ve kuruluşları yönetmek için b
 #### <a name="add-member-to-application"></a>Uygulamaya üye ekleme
 
 1. Geçerli üyelerin listesini göstermek için üye kutucuğunu seçin.
-2. **Üye Ekle**' yi seçin.
+1. **Üye Ekle**' yi seçin.
 
     ![Üye ekleme](./media/manage-users/application-add-members.png)
 
-3. Kullanıcının adını arayın.  Yalnızca blok zinciri çalışma ekranı kiracısında mevcut olan Azure AD kullanıcıları listelenir. Kullanıcı bulunamazsa, [Azure AD kullanıcıları eklemeniz](#add-azure-ad-users)gerekir.
+1. Kullanıcının adını arayın.  Yalnızca blok zinciri çalışma ekranı kiracısında mevcut olan Azure AD kullanıcıları listelenir. Kullanıcı bulunamazsa, [Azure AD kullanıcıları eklemeniz](#add-azure-ad-users)gerekir.
 
     ![Üye ekleme](./media/manage-users/find-user.png)
 
-4. Açılan listeden bir **rol** seçin.
+1. Açılan listeden bir **rol** seçin.
 
     ![Rol üyelerini seçin](./media/manage-users/application-select-role.png)
 
-5. İlişkili rolün bulunduğu üyeyi uygulamaya eklemek için **Ekle** ' yi seçin.
+1. İlişkili rolün bulunduğu üyeyi uygulamaya eklemek için **Ekle** ' yi seçin.
 
 #### <a name="remove-member-from-application"></a>Üyeyi uygulamadan kaldır
 
 1. Geçerli üyelerin listesini göstermek için üye kutucuğunu seçin.
-2. Kaldırmak istediğiniz kullanıcı için rol açılır listesinden **Kaldır** ' ı seçin.
+1. Kaldırmak istediğiniz kullanıcı için rol açılır listesinden **Kaldır** ' ı seçin.
 
     ![Üyeyi kaldırma](./media/manage-users/application-remove-member.png)
 
 #### <a name="change-or-add-role"></a>Rol değiştirme veya ekleme
 
 1. Geçerli üyelerin listesini göstermek için üye kutucuğunu seçin.
-2. Değiştirmek istediğiniz kullanıcının açılan düğmesine tıklayın ve yeni rolü seçin.
+1. Değiştirmek istediğiniz kullanıcının açılan düğmesine tıklayın ve yeni rolü seçin.
 
     ![Rolü değiştir](./media/manage-users/application-change-role.png)
 

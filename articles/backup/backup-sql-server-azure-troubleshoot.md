@@ -3,11 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879a7edab77bad9671bea51e0e496f3eca96ee81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538726"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -29,11 +30,11 @@ Yedekleme yapılandırması sırasında, SQL sanal makinesi ve örnekleri **VM '
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>1. Adım: VM 'lerde keşif veritabanları
 
-- VM, bulunan VM listesinde listelenmemişse ve aynı zamanda başka bir kasada SQL yedeklemesi için kayıtlı değilse, [bulma SQL Server yedekleme](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases) adımlarını izleyin.
+- VM, bulunan VM listesinde listelenmemişse ve aynı zamanda başka bir kasada SQL yedeklemesi için kayıtlı değilse, [bulma SQL Server yedekleme](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases) adımlarını izleyin.
 
 ### <a name="step-2-configure-backup"></a>2. Adım: yedeklemeyi yapılandırma
 
-- SQL VM 'nin veritabanlarını korumak için kullanılan kasada kayıtlı olduğu kasasında [yedekleme yapılandırma](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) adımlarını izleyin.
+- SQL VM 'nin veritabanlarını korumak için kullanılan kasada kayıtlı olduğu kasasında [yedekleme yapılandırma](./backup-sql-server-database-azure-vms.md#configure-backup) adımlarını izleyin.
 
 SQL VM 'nin yeni kasada kayıtlı olması gerekiyorsa, eski kasadaki kaydı kaldırılmalıdır.  Kasadan bir SQL VM kaydının silinmesi, korunan tüm veri kaynaklarının korunmasını gerektirir ve sonra yedeklenen verileri silebilirsiniz. Yedeklenen verileri silme, bozucu bir işlemdir.  SQL VM kaydını silmek için tüm önlemleri inceledikten ve gerçekleştirdikten sonra, bu VM 'yi yeni bir kasa ile kaydedin ve yedekleme işlemini yeniden deneyin.
 
@@ -59,7 +60,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 ### <a name="backup-type-unsupported"></a>Yedekleme türü desteklenmiyor
 
-| Severity | Açıklama | Olası nedenler | Önerilen eylem |
+| Önem Derecesi | Açıklama | Olası nedenler | Önerilen eylem |
 |---|---|---|---|
 | Uyarı | Bu veritabanının geçerli ayarları, ilişkili ilkede mevcut olan bazı yedekleme türlerini desteklemiyor. | <li>Ana veritabanında yalnızca tam bir veritabanı yedekleme işlemi yapılabilir. Değişiklik yedeklemesi veya işlem günlüğü yedeklemesi de mümkün değildir. </li> <li>Basit kurtarma modelindeki tüm veritabanları, işlem günlüklerinin yedeklenme izin vermez.</li> | İlkedeki tüm yedekleme türlerinin desteklendiği şekilde veritabanı ayarlarını değiştirin. Ya da, geçerli ilkeyi yalnızca desteklenen Yedekleme türlerini içerecek şekilde değiştirin. Aksi takdirde, desteklenmeyen yedekleme türleri zamanlanmış yedekleme sırasında atlanır veya isteğe bağlı yedekleme için yedekleme işi başarısız olur.
 
@@ -67,7 +68,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Bu SQL veritabanı, istenen yedekleme türünü desteklemiyor. | Veritabanı kurtarma modeli istenen yedekleme türüne izin vermediği zaman gerçekleşir. Hata aşağıdaki durumlarda oluşabilir: <br/><ul><li>Basit kurtarma modeli kullanan bir veritabanı, günlük yedeklemeye izin vermez.</li><li>Ana veritabanı için fark ve günlük yedeklerine izin verilmez.</li></ul>Daha ayrıntılı bilgi için bkz. [Kurtarma modellerini SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) belgeleri. | Basit kurtarma modelinde veritabanı için günlük yedeklemesi başarısız olursa, şu seçeneklerden birini deneyin:<ul><li>Veritabanı basit kurtarma modundaysa, günlük yedeklemelerini devre dışı bırakın.</li><li>Veritabanı kurtarma modelini tam veya toplu günlüğe kaydedilecek şekilde değiştirmek için [SQL Server belgelerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) kullanın. </li><li> Kurtarma modelini değiştirmek istemiyorsanız ve değiştirilemeyen birden çok veritabanını yedeklemek için standart bir ilkeniz varsa, hatayı yoksayın. Tam ve değişiklik yedeklemeleriniz zamanlama başına çalışacaktır. Bu durumda beklenen günlük yedeklemeleri atlanacak.</li></ul>Bu bir ana veritabanıdır ve değişiklik veya günlük yedeklemesi yapılandırdıysanız aşağıdaki adımlardan birini kullanın:<ul><li>Ana veritabanının yedekleme ilkesi zamanlamasını tam olarak değiştirmek için portalını kullanın.</li><li>Değiştirilemeyen birden çok veritabanını yedeklemek için standart bir ilkeniz varsa, hatayı yoksayın. Tam yedekleme, zamanlama başına çalışacaktır. Bu durumda beklenen değişiklik veya günlük yedeklemeleri gerçekleşmez.</li></ul> |
+| Bu SQL veritabanı, istenen yedekleme türünü desteklemiyor. | Veritabanı kurtarma modeli istenen yedekleme türüne izin vermediği zaman gerçekleşir. Hata aşağıdaki durumlarda oluşabilir: <br/><ul><li>Basit kurtarma modeli kullanan bir veritabanı, günlük yedeklemeye izin vermez.</li><li>Ana veritabanı için fark ve günlük yedeklerine izin verilmez.</li></ul>Daha ayrıntılı bilgi için bkz. [Kurtarma modellerini SQL Server](/sql/relational-databases/backup-restore/recovery-models-sql-server) belgeleri. | Basit kurtarma modelinde veritabanı için günlük yedeklemesi başarısız olursa, şu seçeneklerden birini deneyin:<ul><li>Veritabanı basit kurtarma modundaysa, günlük yedeklemelerini devre dışı bırakın.</li><li>Veritabanı kurtarma modelini tam veya toplu günlüğe kaydedilecek şekilde değiştirmek için [SQL Server belgelerini](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) kullanın. </li><li> Kurtarma modelini değiştirmek istemiyorsanız ve değiştirilemeyen birden çok veritabanını yedeklemek için standart bir ilkeniz varsa, hatayı yoksayın. Tam ve değişiklik yedeklemeleriniz zamanlama başına çalışacaktır. Bu durumda beklenen günlük yedeklemeleri atlanacak.</li></ul>Bu bir ana veritabanıdır ve değişiklik veya günlük yedeklemesi yapılandırdıysanız aşağıdaki adımlardan birini kullanın:<ul><li>Ana veritabanının yedekleme ilkesi zamanlamasını tam olarak değiştirmek için portalını kullanın.</li><li>Değiştirilemeyen birden çok veritabanını yedeklemek için standart bir ilkeniz varsa, hatayı yoksayın. Tam yedekleme, zamanlama başına çalışacaktır. Bu durumda beklenen değişiklik veya günlük yedeklemeleri gerçekleşmez.</li></ul> |
 | Aynı veritabanında çakışan bir işlem zaten çalışmakta olduğundan işlem iptal edildi. | Aynı anda çalışan [yedekleme ve geri yükleme sınırlamaları hakkında blog girişine](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) bakın.| [Yedekleme işlerini izlemek için SQL Server Management Studio (SSMS) kullanın](manage-monitor-sql-database-backup.md). Çakışan işlem başarısız olduktan sonra işlemi yeniden başlatın.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
@@ -86,7 +87,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Azure Backup SQL örneğine bağlanamıyor. | Azure Backup SQL Server örneğine bağlanamaz. | Ana nedenleri daraltmak için Azure portal hata menüsündeki ek ayrıntıları kullanın. Hatayı gidermek için [SQL Backup sorun giderme](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) bölümüne bakın.<br/><ul><li>Varsayılan SQL ayarları uzak bağlantılara izin vermezseniz ayarları değiştirin. Ayarları değiştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Oturum açma sorunları varsa, bunları gidermek için bu bağlantıları kullanın:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup SQL örneğine bağlanamıyor. | Azure Backup SQL Server örneğine bağlanamaz. | Ana nedenleri daraltmak için Azure portal hata menüsündeki ek ayrıntıları kullanın. Hatayı gidermek için [SQL Backup sorun giderme](/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) bölümüne bakın.<br/><ul><li>Varsayılan SQL ayarları uzak bağlantılara izin vermezseniz ayarları değiştirin. Ayarları değiştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:<ul><li>[MSSQLSERVER_-1](/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Oturum açma sorunları varsa, bunları gidermek için bu bağlantıları kullanın:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -98,7 +99,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Veri kaynağı için işlem günlüğü dolu olduğundan yedek alınamıyor. | Veritabanı işlem günlüğü alanı dolu. | Bu sorunu onarmak için [SQL Server belgelerine](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)bakın. |
+| Veri kaynağı için işlem günlüğü dolu olduğundan yedek alınamıyor. | Veritabanı işlem günlüğü alanı dolu. | Bu sorunu onarmak için [SQL Server belgelerine](/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)bakın. |
 
 ### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
@@ -110,7 +111,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Veritabanı çevrimdışına alınamadığından geri yükleme başarısız oldu. | Geri yükleme yaparken hedef veritabanının çevrimdışı hale getirilmesi gerekir. Azure Backup bu verileri çevrimdışına getiremedi. | Ana nedenleri daraltmak için Azure portal hata menüsündeki ek ayrıntıları kullanın. Daha fazla bilgi için bkz. [SQL Server belgeleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
+| Veritabanı çevrimdışına alınamadığından geri yükleme başarısız oldu. | Geri yükleme yaparken hedef veritabanının çevrimdışı hale getirilmesi gerekir. Azure Backup bu verileri çevrimdışına getiremedi. | Ana nedenleri daraltmak için Azure portal hata menüsündeki ek ayrıntıları kullanın. Daha fazla bilgi için bkz. [SQL Server belgeleri](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
@@ -122,7 +123,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Kurtarma için kullanılan günlük yedeklemesi toplu olarak günlüğe kaydedilen değişiklikler içeriyor. SQL yönergelerine göre rastgele bir zaman noktasında durmak için kullanılamaz. | Bir veritabanı toplu olarak günlüğe kaydedilmiş kurtarma modundayken, toplu günlüğe kaydedilen bir işlem ve sonraki günlük işlemi arasındaki veriler kurtarılamaz. | Kurtarma için farklı bir zaman noktası seçin. [Daha fazla bilgi edinin](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
+| Kurtarma için kullanılan günlük yedeklemesi toplu olarak günlüğe kaydedilen değişiklikler içeriyor. SQL yönergelerine göre rastgele bir zaman noktasında durmak için kullanılamaz. | Bir veritabanı toplu olarak günlüğe kaydedilmiş kurtarma modundayken, toplu günlüğe kaydedilen bir işlem ve sonraki günlük işlemi arasındaki veriler kurtarılamaz. | Kurtarma için farklı bir zaman noktası seçin. [Daha fazla bilgi edinin](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -164,7 +165,7 @@ Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınır
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri için giden bağlantı gerektirir.| -Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri Azure Backup giden erişime izin vermek için AzureBackup Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) izleyin.<br>-DNS 'nin Azure uç noktalarını çözümlediğinden emin olun.<br>-Sanal makinenin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır.<br>-Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen bir güvenlik duvarı/virüsten koruma/proxy olmadığından emin olun.
+VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri için giden bağlantı gerektirir.| -Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmeti, Azure depolama veya Azure Active Directory Hizmetleri Azure Backup giden erişime izin vermek için AzureBackup Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](./backup-sql-server-database-azure-vms.md#nsg-tags) izleyin.<br>-DNS 'nin Azure uç noktalarını çözümlediğinden emin olun.<br>-Sanal makinenin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır.<br>-Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen bir güvenlik duvarı/virüsten koruma/proxy olmadığından emin olun.
 
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 
@@ -190,7 +191,7 @@ Bu belirtiler aşağıdaki nedenlerden biri veya birkaçı olabilir:
 - VM silindi ve silinen VM ile aynı kaynak grubunda ve aynı ada sahip başka bir VM oluşturuldu.
 - Kullanılabilirlik grubu düğümlerinden biri, tüm yedekleme yapılandırmasını almadı. Kullanılabilirlik grubu kasaya kaydedildiğinde veya yeni bir düğüm eklendiğinde bu durum oluşabilir.
 
-Yukarıdaki senaryolarda, VM 'de bir yeniden kaydetme işlemi tetiklemeniz önerilir. Bu görevi PowerShell 'de gerçekleştirme yönergeleri için [buraya](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) bakın.
+Yukarıdaki senaryolarda, VM 'de bir yeniden kaydetme işlemi tetiklemeniz önerilir. Bu görevi PowerShell 'de gerçekleştirme yönergeleri için [buraya](./backup-azure-sql-automation.md#enable-backup) bakın.
 
 ## <a name="size-limit-for-files"></a>Dosyalar için boyut sınırı
 
@@ -208,7 +209,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -237,7 +238,7 @@ Dosyanın içeriği şu biçimde olmalıdır:
 ]
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```json
 [

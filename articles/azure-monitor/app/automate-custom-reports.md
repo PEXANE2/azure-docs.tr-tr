@@ -4,12 +4,12 @@ description: Azure Application Insights verileriyle özel günlük/haftalık/ayl
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82161524"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540086"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
@@ -31,9 +31,9 @@ Her kuruluşun benzersiz raporlama ihtiyaçları vardır, örneğin:
 
 Bir zamanlamaya göre özel raporlar oluşturmak için [programlı olarak Application Insights verileri sorgulayabilirsiniz](https://dev.applicationinsights.io/) . Aşağıdaki seçenekler hızla başlamanıza yardımcı olabilir:
 
-* [Raporları Microsoft Flow otomatikleştirin](automate-with-flow.md)
+* [Raporları Microsoft Flow otomatikleştirin](../platform/logicapp-flow-connector.md)
 * [Raporları Logic Apps otomatikleştirin](automate-with-logic-apps.md)
-* Izleme senaryosundaki "Application Insights zamanlanmış Özet" [Azure işlev](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid kullanır. 
+* Izleme senaryosundaki "Application Insights zamanlanmış Özet" [Azure işlev](../../azure-functions/functions-create-first-azure-function.md) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid kullanır. 
 
     ![Azure işlev şablonu](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Azure İşlev Uygulaması oluşturun. (Application Insights _üzerinde_ yalnızca yeni işlev uygulaması Application Insights ile izlemek istiyorsanız gereklidir)
 
-   [İşlev uygulaması oluşturmayı](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) öğrenmek Için Azure işlevleri belgelerini ziyaret edin
+   [İşlev uygulaması oluşturmayı](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) öğrenmek Için Azure işlevleri belgelerini ziyaret edin
 
 2. Yeni İşlev Uygulaması dağıtımı tamamladıktan sonra **Kaynağa Git**' i seçin.
 
@@ -83,7 +83,7 @@ availabilityResults
 4. **_Application Insights zamanlanmış Özet şablonunu_** seçin.
 
      > [!NOTE]
-     > Varsayılan olarak, işlev uygulamaları çalışma zamanı sürüm 3. x ile oluşturulur. Application Insights zamanlanmış Özet şablonunu kullanmak için [Azure işlevleri çalışma zamanı sürüm](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x ' i** hedeflemelidir. Çalışma zamanı sürümünü değiştirmek için yapılandırma > Işlev çalışma zamanı ayarları ' na gidin. ![çalışma zamanı ekran görüntüsü](./media/automate-custom-reports/change-runtime-v.png)
+     > Varsayılan olarak, işlev uygulamaları çalışma zamanı sürüm 3. x ile oluşturulur. Application Insights zamanlanmış Özet şablonunu kullanmak için [Azure işlevleri çalışma zamanı sürüm](../../azure-functions/set-runtime-version.md) **1. x ' i** hedeflemelidir. Çalışma zamanı sürümünü değiştirmek için yapılandırma > Işlev çalışma zamanı ayarları ' na gidin. ![çalışma zamanı ekran görüntüsü](./media/automate-custom-reports/change-runtime-v.png)
 
    ![Yeni Işlev Application Insights şablonu ekran görüntüsü](./media/automate-custom-reports/function-app-04.png)
 
@@ -106,7 +106,7 @@ availabilityResults
    * SendGridAPI = SendGrid API anahtarı
 
      > [!NOTE]
-     > SendGrid hesabınız yoksa, bir tane oluşturabilirsiniz. Azure Işlevleri için SendGrid 'in belgeleri [burada](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Yalnızca SendGrid 'i ayarlama ve bir API anahtarı oluşturma konusunda en az bir açıklama istiyorsanız bu makalenin sonunda verilmiştir. 
+     > SendGrid hesabınız yoksa, bir tane oluşturabilirsiniz. Azure Işlevleri için SendGrid 'in belgeleri [burada](../../azure-functions/functions-bindings-sendgrid.md). Yalnızca SendGrid 'i ayarlama ve bir API anahtarı oluşturma konusunda en az bir açıklama istiyorsanız bu makalenin sonunda verilmiştir. 
 
 8. **Tümleştirme** ' i seçin ve çıktılar altında **sendgrid ($Return)** öğesine tıklayın.
 
@@ -152,5 +152,5 @@ Bu adımlar yalnızca önceden yapılandırılmış bir SendGrid hesabınız yok
 
 * [Analiz sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
 * [Application Insights verileri programlı](https://dev.applicationinsights.io/) bir şekilde sorgulama hakkında daha fazla bilgi edinin
-* [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) hakkında daha fazla bilgi edinin.
+* [Logic Apps](../../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin.
 * [Microsoft Flow](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.

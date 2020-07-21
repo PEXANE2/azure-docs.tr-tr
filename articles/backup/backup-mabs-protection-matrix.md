@@ -3,11 +3,12 @@ title: MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 description: Bu makalede, Azure Backup Sunucusu koruduğu tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir destek matrisi sunulmaktadır.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: f950c7be28a4ff0dd0caa12d1327c2a0e2ac4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677330"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538743"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Sunucusu) v3 UR1 koruma matrisi
 
@@ -53,7 +54,7 @@ Aşağıdaki bölümlerde, MABS için koruma destek matrisi ayrıntıları veril
 
 | **İş yükü** | **Sürüm**                               | **Azure Backup Sunucusu yükleme**                      | **Desteklenen Azure Backup Sunucusu** | **Koruma ve kurtarma**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Hyper-V veya VMware konuğu olarak çalışan Linux | Fiziksel sunucu, şirket içi Hyper-V VM, VMWare 'de Windows VM | V3 UR1                             | Hyper-V Windows Server 2012 R2 veya Windows Server 2016 üzerinde çalışıyor olmalıdır. Koruma: tüm sanal makine   <br><br>   Kurtarma: Tüm sanal makine   <br><br>    Yalnızca dosya tutarlı anlık görüntüler desteklenir.    <br><br>   Desteklenen Linux dağıtımları ve sürümlerinin tüm listesi için bkz. [Azure tarafından onaylanan dağıtımların Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)makalesi. |
+| Linux        | Hyper-V veya VMware konuğu olarak çalışan Linux | Fiziksel sunucu, şirket içi Hyper-V VM, VMWare 'de Windows VM | V3 UR1                             | Hyper-V Windows Server 2012 R2 veya Windows Server 2016 üzerinde çalışıyor olmalıdır. Koruma: tüm sanal makine   <br><br>   Kurtarma: Tüm sanal makine   <br><br>    Yalnızca dosya tutarlı anlık görüntüler desteklenir.    <br><br>   Desteklenen Linux dağıtımları ve sürümlerinin tüm listesi için bkz. [Azure tarafından onaylanan dağıtımların Linux](../virtual-machines/linux/endorsed-distros.md)makalesi. |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute desteği
 
@@ -73,7 +74,7 @@ Microsoft eşlemesi ile aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk de
 * Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
 * Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)
 
-Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Ortak eşleme, yeni devreler için kullanım dışıdır.

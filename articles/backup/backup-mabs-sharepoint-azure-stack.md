@@ -3,11 +3,12 @@ title: Azure Stack bir SharePoint grubunu yedekleme
 description: Azure Stack SharePoint verilerinizi yedeklemek ve geri yüklemek için Azure Backup Sunucusu kullanın. Bu makalede, SharePoint grubunuzu istenen verilerin Azure 'da depolanabilmesi için yapılandırma bilgileri sağlanmaktadır. Korumalı SharePoint verilerini diskten veya Azure 'dan geri yükleyebilirsiniz.
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 8b9257c1d175c350df06f9421b31a9e7b8e2bb80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84657935"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538794"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack bir SharePoint grubunu yedekleme
 
@@ -31,7 +32,7 @@ Bir SharePoint grubunu Azure 'a yedeklemebilmeniz için öncelikle onaylamanız 
 
 * MABS, genişleme dosya sunucusu (SOFS) paylaşımlarında barındırılan SharePoint SQL Server veritabanlarının yedeklemesini sağlamıyor.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce, iş yüklerini korumak için [Microsoft Azure Backup kullanmaya yönelik tüm önkoşulları](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşıladığınızdan emin olun. Önkoşullar için bazı görevler şunlardır: bir yedekleme Kasası oluşturun, kasa kimlik bilgilerini indirin, Azure Backup Aracısı yükleyin ve Azure Backup Sunucusu kasaya kaydedin.
 
@@ -101,7 +102,7 @@ SharePoint grubunu yedeklemek için ConfigureSharePoint.exe kullanarak SharePoin
 
 1. **Çevrimiçi saklama Ilkesini belirtin**kısmında günlük/haftalık/aylık/yıllık yedeklerden oluşturulan kurtarma noktalarının Azure 'da nasıl korunacağını belirtebilirsiniz.
 
-1. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl yapılacağını belirtin. Ağ üzerinden çoğaltma veya çevrimdışı yedekleme (çevrimdışı dengeli dağıtım) yapabilirsiniz. Çevrimdışı yedekleme Azure İçe Aktarma özelliğini kullanır. [Daha fazla bilgi edinin](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+1. **Çevrimiçi çoğaltma Seç**' de, verilerin ilk tam çoğaltmasının nasıl yapılacağını belirtin. Ağ üzerinden çoğaltma veya çevrimdışı yedekleme (çevrimdışı dengeli dağıtım) yapabilirsiniz. Çevrimdışı yedekleme Azure İçe Aktarma özelliğini kullanır. [Daha fazla bilgi edinin](./backup-azure-backup-import-export.md).
 
 1. **Özet** sayfasında, ayarlarınızı gözden geçirin. **Grup Oluştur**' a tıkladıktan sonra, verilerin ilk çoğaltması oluşur. İşlem tamamlandığında, koruma grubunun durumu **durum** sayfasında **Tamam** olarak gösterilir. Ardından, koruma grupları ayarlarına uygun olarak yedekleme gerçekleşir.
 
@@ -210,7 +211,7 @@ Aşağıdaki örnekte, *Kurtarma SharePoint öğesi* yanlışlıkla silinmiş ve
 
     ![MABS SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**' a tıklayın.
+    Kataloglama tamamlandıktan sonra durum *başarılı*olarak değişir. **Kapat**’a tıklayın.
 
     ![MABS SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. İçerik veritabanı yapısını almak için MABS **Kurtarma** sekmesinde gösterilen SharePoint nesnesine tıklayın. Öğeye sağ tıklayın ve ardından **kurtar**' a tıklayın.

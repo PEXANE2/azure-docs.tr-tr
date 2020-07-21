@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476f1523eaf042576d38f5d2db283b525721389c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193284"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538675"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -16,7 +16,7 @@ ms.locfileid: "82193284"
 
 ## <a name="about-dpmmabs"></a>DPM/MABS hakkında
 
-[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview?view=sc-dpm-1807) , kurumsal makinelerin ve verilerin yedeklenmesini ve kurtarılmasını yapılandıran, kolaylaştıran ve yöneten bir kurumsal çözümdür. [System Center](https://www.microsoft.com/cloud-platform/system-center-pricing) ürün paketi 'nin bir parçasıdır.
+[System Center DPM](/system-center/dpm/dpm-overview) , kurumsal makinelerin ve verilerin yedeklenmesini ve kurtarılmasını yapılandıran, kolaylaştıran ve yöneten bir kurumsal çözümdür. [System Center](https://www.microsoft.com/system-center/pricing) ürün paketi 'nin bir parçasıdır.
 
 MABS, şirket içi fiziksel sunucuları, VM 'Leri ve üzerinde çalışan uygulamaları yedeklemek için kullanılabilen bir sunucu ürünüdür.
 
@@ -50,7 +50,7 @@ Daha fazla bilgi için:
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-**Senaryo** | **Aracısı** | **Konum**
+**Senaryo** | **Aracı** | **Konum**
 --- | --- | ---
 **Şirket içi makineleri/iş yüklerini yedekleme** | DPM/MABS koruma Aracısı, yedeklemek istediğiniz makinelerde çalışır.<br/><br/> DPM/MABS sunucusundaki MARS Aracısı.<br/> Bu özelliği etkinleştirmek için gereken Microsoft Azure Kurtarma Hizmetleri aracısının veya Azure Backup aracısının en düşük sürümü 2.0.8719.0 ' dir.  | DPM/MABS 'nin şirket içinde çalışıyor olması gerekir.
 
@@ -71,7 +71,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 **Senaryo** | **DPM/MABS**
 --- | ---
 **Azure VM 'de MABS** |  Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Market 'ten bir görüntüyle başlamanız önerilir.<br/><br/> Dört çekirdek ve 8 GB RAM içeren minimum Standard_A4_v2.
-**Azure VM 'de DPM** | Güncelleştirme 3 veya sonraki sürümleri ile System Center 2012 R2.<br/><br/> [System Center için gereken](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)Windows işletim sistemi.<br/><br/> Market 'ten bir görüntüyle başlamanız önerilir.<br/><br/> Dört çekirdek ve 8 GB RAM içeren minimum Standard_A4_v2.
+**Azure VM 'de DPM** | Güncelleştirme 3 veya sonraki sürümleri ile System Center 2012 R2.<br/><br/> [System Center için gereken](/system-center/dpm/prepare-environment-for-dpm#dpm-server)Windows işletim sistemi.<br/><br/> Market 'ten bir görüntüyle başlamanız önerilir.<br/><br/> Dört çekirdek ve 8 GB RAM içeren minimum Standard_A4_v2.
 **Şirket içi MABS** |  MABS v3 ve üzeri: Windows Server 2016 veya Windows Server 2019
 **Şirket içi DPM** | Fiziksel sunucu/Hyper-V VM: System Center 2012 SP1 veya üzeri.<br/><br/> VMware VM: güncelleştirme 5 veya sonraki sürümleri ile System Center 2012 R2.
 
@@ -82,8 +82,8 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 
 **Konuda** | **Ayrıntılar**
 --- | ---
-**Yükleme** | Tek amaçlı bir makineye DPM/MABS 'yi yükler.<br/><br/> DPM/MABS 'yi bir etki alanı denetleyicisine, uygulama sunucusu rolü yüklemesine sahip bir makineye, Microsoft Exchange Server veya System Center Operations Manager çalıştıran bir makineye veya bir küme düğümüne yüklemeyin.<br/><br/> [Tüm DPM sistem gereksinimlerini gözden geçirin](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Domain** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
+**Yükleme** | Tek amaçlı bir makineye DPM/MABS 'yi yükler.<br/><br/> DPM/MABS 'yi bir etki alanı denetleyicisine, uygulama sunucusu rolü yüklemesine sahip bir makineye, Microsoft Exchange Server veya System Center Operations Manager çalıştıran bir makineye veya bir küme düğümüne yüklemeyin.<br/><br/> [Tüm DPM sistem gereksinimlerini gözden geçirin](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
+**Etki alanı** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
 **Depolama** | Modern yedekleme depolaması (MB), DPM 2016/MABS v2 ve sonrasında desteklenir. MABS v1 için kullanılamaz.
 **MABS yükseltmesi** | Mabs v3 'i doğrudan yükleyebilir veya mabs v2 'den MABS v3 'e yükseltebilirsiniz. [Daha fazla bilgi edinin](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS taşınıyor** | MB kullanıyorsanız, depolama alanını korurken MABS 'i yeni bir sunucuya taşımak desteklenir.<br/><br/> Sunucu orijinalde aynı ada sahip olmalıdır. Aynı depolama havuzunu korumak istiyorsanız adı değiştiremezsiniz ve veri kurtarma noktalarını depolamak için aynı MABS veritabanını kullanabilirsiniz.<br/><br/> Geri yüklemeniz gerekeceğinden, MABS veritabanının yedeğine ihtiyacınız olacaktır.
@@ -131,13 +131,13 @@ Ortak eşleme ile: aşağıdaki etki alanlarına/adreslere erişim sağlayın:
 - `.microsoftonline.com`
 - `.windows.net`
 
-Microsoft eşlemesiyle, lütfen aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
+Microsoft eşlemesi ile aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
 - Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)
 
-Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Ortak eşleme, yeni devreler için kullanım dışıdır.
@@ -153,6 +153,13 @@ Bağlı | Süre dolma/sağlaması kaldırılmış | Diske veya Azure 'a yedeklem
 15 günden fazla bağlantı yok | Etkin | Diske veya Azure 'a yedekleme yok.<br/><br/> Diskten veya Azure 'dan geri yükleme yapabilirsiniz.
 15 günden fazla bağlantı yok | Süre dolma/sağlaması kaldırılmış | Diske veya Azure 'a yedekleme yok.<br/><br/> Aboneliğin geçerliliği dolmuşsa diskten veya Azure 'dan geri yükleme yapabilirsiniz.<br/><br/> Abonelik kullanımdan bulunursa diskten veya Azure 'dan geri yükleme yapamazsınız. Azure kurtarma noktaları silinir.
 
+## <a name="domain-and-domain-trusts-support"></a>Etki alanı ve etki alanı güvenleri desteği
+
+|Gereksinim |Ayrıntılar |
+|---------|---------|
+|Etki alanı    | DPM/MABS sunucusunun bir Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 etki alanında olması gerekir.        |
+|Etki alanı güveni   |  Ayrı ormanlar arasında orman düzeyinde, çift yönlü bir güven kurarsınız, DPM/MABS, ormanlar genelinde veri korumasını destekler.   <BR><BR>   DPM/MABS, DPM/MABS sunucu etki alanıyla çift yönlü bir güven ilişkisine sahip olan bir ormandaki etki alanlarında bulunan sunucuları ve iş istasyonlarını koruyabilir. Çalışma gruplarındaki veya güvenilmeyen etki alanlarındaki bilgisayarları korumak için bkz [. çalışma gruplarında ve güvenilmeyen etki alanlarında iş yüklerini yedekleme ve geri yükleme.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS depolama desteği
 
 DPM/MABS 'e yedeklenen veriler yerel disk depolama alanında depolanır.
@@ -161,7 +168,7 @@ DPM/MABS 'e yedeklenen veriler yerel disk depolama alanında depolanır.
 --- | ---
 **MB** | Modern yedekleme depolaması (MB), DPM 2016/MABS v2 ve sonrasında desteklenir. MABS v1 için kullanılamaz.
 **Azure VM 'de MABS depolaması** | Veriler, DPM/MABS sanal makinesine bağlı olan ve DPM/MABS üzerinde yönetilen Azure disklerinde depolanır. DPM/MABS depolama havuzu için kullanılabilecek disk sayısı, VM 'nin boyutuyla sınırlıdır.<br/><br/> A2 VM: 4 disk; A3 VM: 8 disk; A4 VM: her disk için en fazla 1 TB boyutunda 16 disk. Bu, kullanılabilir toplam yedekleme depolama havuzunu belirler.<br/><br/> Yedekleyebileceğiniz veri miktarı, eklenen disklerin sayısına ve boyutuna bağlıdır.
-**Azure VM 'de MABS veri saklama** | Verileri DPM/MABS Azure diskinde bir gün bekletmenizi ve DPM/MABS 'ten daha uzun bekletme için kasaya yedeklemenizi öneririz. Bu sayede, daha büyük miktarda veriyi Azure Backup devrederleyerek koruyabilirsiniz.
+**Azure VM 'de MABS veri saklama** | Verileri DPM/MABS Azure diskinde bir gün bekletmenizi ve DPM/MABS 'ten daha uzun bekletme için kasaya yedeklemenizi öneririz. Bu şekilde, daha büyük miktarda veriyi Azure Backup devrederleyerek koruyabilirsiniz.
 
 ### <a name="modern-backup-storage-mbs"></a>Modern yedekleme depolama alanı (MB)
 
@@ -174,11 +181,11 @@ DPM 2016/MABS v2 'den (Windows Server 2016 ' de çalışan) ve sonraki sürümle
 
 ## <a name="supported-backups-to-mabs"></a>MABS için desteklenen yedeklemeler
 
-Azure Backup Sunucusu ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [Azure Backup sunucusu koruma matrisine](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix)bakın.
+Azure Backup Sunucusu ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [Azure Backup sunucusu koruma matrisine](./backup-mabs-protection-matrix.md#protection-support-matrix)bakın.
 
 ## <a name="supported-backups-to-dpm"></a>DPM için desteklenen yedeklemeler
 
-Data Protection Manager ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [DPM 'Nin neleri yedekleyebileceği](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)makalesine başvurun.
+Data Protection Manager ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [DPM 'Nin neleri yedekleyebileceği](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)makalesine başvurun.
 
 - DPM/MABS tarafından yedeklenen kümelenmiş iş yükleri, DPM/MABS ile aynı etki alanında veya alt/güvenilen bir etki alanında olmalıdır.
 - Güvenilmeyen etki alanları veya çalışma gruplarındaki verileri yedeklemek için NTLM/sertifika kimlik doğrulaması kullanabilirsiniz.
@@ -188,4 +195,4 @@ Data Protection Manager ile koruyabileceğiniz çeşitli sunucular ve iş yükle
 - MABS mimarisi hakkında [daha fazla bilgi edinin](backup-architecture.md#architecture-back-up-to-dpmmabs) .
 - MARS Aracısı için nelerin desteklendiğini [gözden geçirin](backup-support-matrix-mars-agent.md) .
 - MABS sunucusunu [ayarlayın](backup-azure-microsoft-azure-backup.md) .
-- [DPM 'Yi ayarlayın](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180).
+- [DPM 'Yi ayarlayın](/system-center/dpm/install-dpm).

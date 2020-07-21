@@ -3,11 +3,12 @@ title: Azure dosya paylaşma yedeklemelerini PowerShell ile yönetme
 description: Azure Backup hizmeti tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için PowerShell 'in nasıl kullanılacağını öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201959"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538602"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Azure dosya paylaşma yedeklemelerini PowerShell ile yönetme
 
@@ -18,7 +19,7 @@ Bu makalede, Azure Backup hizmeti tarafından yedeklenen Azure dosya paylaşıml
 
 ## <a name="modify-the-protection-policy"></a>Koruma ilkesini değiştirme
 
-Azure dosya paylaşımının yedeklenmesi için kullanılan ilkeyi değiştirmek için [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)kullanın. İlgili yedekleme öğesini ve yeni yedekleme ilkesini belirtin.
+Azure dosya paylaşımının yedeklenmesi için kullanılan ilkeyi değiştirmek için [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection)kullanın. İlgili yedekleme öğesini ve yeni yedekleme ilkesini belirtin.
 
 Aşağıdaki örnek, **Testazurefs** koruma ilkesini, **davilyafs** 'den **monthlyafs**olarak değiştirir.
 
@@ -31,7 +32,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="track-backup-and-restore-jobs"></a>Yedekleme ve geri yükleme işlerini izleme
 
-İsteğe bağlı yedekleme ve geri yükleme işlemleri, [isteğe bağlı yedekleme çalıştırdığınızda](backup-azure-afs-automation.md#trigger-an-on-demand-backup)gösterildiği gıbı, kimlik ile birlikte bir iş döndürür. İş ilerleme durumunu ve ayrıntılarını izlemek için [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) cmdlet 'ini kullanın.
+İsteğe bağlı yedekleme ve geri yükleme işlemleri, [isteğe bağlı yedekleme çalıştırdığınızda](backup-azure-afs-automation.md#trigger-an-on-demand-backup)gösterildiği gıbı, kimlik ile birlikte bir iş döndürür. İş ilerleme durumunu ve ayrıntılarını izlemek için [Get-AzRecoveryServicesBackupJobDetails](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet 'ini kullanın.
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -70,7 +71,7 @@ Azure Backup tarafından oluşturulan temeldeki anlık görüntüler bekletilece
 
 ## <a name="stop-protection-and-retain-recovery-points"></a>Korumayı durdurun ve kurtarma noktalarını koruyun
 
-Verileri korurken korumayı durdurmak için [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) cmdlet 'ini kullanın.
+Verileri korurken korumayı durdurmak için [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) cmdlet 'ini kullanın.
 
 Aşağıdaki örnek, *afsfileshare* dosya paylaşımının korumasını durduruyor ancak tüm kurtarma noktalarını korur:
 
@@ -86,11 +87,11 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-Çıkışdaki Iş KIMLIĞI özniteliği, "korumayı Durdur" işleminin yedekleme hizmeti tarafından oluşturulan işin Iş KIMLIĞINE karşılık gelir. İşin durumunu izlemek için [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-3.3.0) cmdlet 'ini kullanın.
+Çıkışdaki Iş KIMLIĞI özniteliği, "korumayı Durdur" işleminin yedekleme hizmeti tarafından oluşturulan işin Iş KIMLIĞINE karşılık gelir. İşin durumunu izlemek için [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet 'ini kullanın.
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>Kurtarma noktalarını korumadan korumayı durdur
 
-Kurtarma noktalarını korumadan korumayı durdurmak için [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) cmdlet 'ini kullanın ve **-RemoveRecoveryPoints** parametresini ekleyin.
+Kurtarma noktalarını korumadan korumayı durdurmak için [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) cmdlet 'ini kullanın ve **-RemoveRecoveryPoints** parametresini ekleyin.
 
 Aşağıdaki örnek, kurtarma noktalarını korumadan *afsfileshare* dosya paylaşımının korumasını durduruyor:
 

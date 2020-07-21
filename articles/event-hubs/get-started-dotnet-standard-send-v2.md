@@ -3,12 +3,12 @@ title: .NET kullanarak Azure Event Hubs olay gönderme veya alma (en son)
 description: Bu makalede, Azure Event Hubs en son Azure. Messaging. EventHubs paketini kullanarak olayları gönderen/alan bir .NET Core uygulaması oluşturmak için İzlenecek yol sunulmaktadır.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8752064b59030c04e409e13baf7bf58836ce7ac7
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 9e7f40b0312798667b63c6cf5d02772307dbc2b9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320164"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537148"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs-.NET (Azure. Messaging. EventHubs) ile olayları gönderme ve olayları alma 
 Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
@@ -18,13 +18,13 @@ Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kul
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure Event Hubs yeni başladıysanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 - **Microsoft Azure aboneliği**. Azure Event Hubs dahil olmak üzere Azure hizmetlerini kullanmak için bir aboneliğiniz olması gerekir.  Mevcut bir Azure hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/free/) için kaydolabilir veya [BIR hesap oluştururken](https://azure.microsoft.com)MSDN abonesi avantajlarınızı kullanabilirsiniz.
-- **Microsoft Visual Studio 2019**. Azure Event Hubs istemci kitaplığı, C# 8,0 ' de tanıtılan yeni özelliklerden yararlanmaktadır.  Kitaplığı önceki C# dil sürümleriyle kullanmaya devam edebilirsiniz, ancak yeni sözdizimi kullanılamaz. Tam sözdizimini kullanmak için, [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0 veya üzeri ve [dil sürümü](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default) olarak ayarlanmış bir derleme yapmanız önerilir `latest` . Visual Studio kullanıyorsanız, Visual Studio 2019 ' den önceki sürümler C# 8,0 projeleri oluşturmak için gereken araçlarla uyumlu değildir. Ücretsiz topluluk sürümü de dahil olmak üzere Visual Studio 2019 [buradan](https://visualstudio.microsoft.com/vs/)indirilebilir.
+- **Microsoft Visual Studio 2019**. Azure Event Hubs istemci kitaplığı, C# 8,0 ' de tanıtılan yeni özelliklerden yararlanmaktadır.  Kitaplığı önceki C# dil sürümleriyle kullanmaya devam edebilirsiniz, ancak yeni sözdizimi kullanılamaz. Tam sözdizimini kullanmak için, [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0 veya üzeri ve [dil sürümü](/dotnet/csharp/language-reference/configure-language-version#override-a-default) olarak ayarlanmış bir derleme yapmanız önerilir `latest` . Visual Studio kullanıyorsanız, Visual Studio 2019 ' den önceki sürümler C# 8,0 projeleri oluşturmak için gereken araçlarla uyumlu değildir. Ücretsiz topluluk sürümü de dahil olmak üzere Visual Studio 2019 [buradan](https://visualstudio.microsoft.com/vs/)indirilebilir.
 - **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adım, Event Hubs türünde bir ad alanı oluşturmak için [Azure Portal](https://portal.azure.com) ve uygulamanızın Olay Hub 'ı ile iletişim kurması için gereken yönetim kimlik bilgilerini elde etmek için kullanılır. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. Ardından, makalenin yönergelerini izleyerek **Event Hubs ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bağlantı dizesini daha sonra bu hızlı başlangıçta kullanacaksınız.
 
 ## <a name="send-events"></a>Olayları gönderme 
@@ -32,7 +32,7 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol
 
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
-1. Visual Studio 2019 ' i başlatın. 
+1. Visual Studio 2019’u başlatın. 
 1. **Yeni proje oluştur**' u seçin. 
 1. **Yeni proje oluştur** iletişim kutusunda, aşağıdaki adımları uygulayın: Bu iletişim kutusunu görmüyorsanız menüdeki **Dosya** ' yı seçin, **Yeni**' yi seçin ve ardından **Proje**' yi seçin. 
     1. Programlama dili için **C#** ' ı seçin.
@@ -109,12 +109,12 @@ Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .
 
 
 > [!NOTE]
-> Azure Stack Hub üzerinde çalıştırıyorsanız, bu platform Azure 'da genel kullanıma sunulan farklı bir Depolama Blobu SDK sürümü destekleyebilir. Örneğin, [Azure Stack hub sürümü 2002 üzerinde](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2017-11-09 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için [GitHub 'da bu örneğe](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)bakın. Azure Stack hub 'ında desteklenen Azure depolama hizmeti sürümleri hakkında daha fazla bilgi için lütfen [Azure Stack hub depolama: farklar ve konular](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)bölümüne bakın.
+> Azure Stack Hub üzerinde çalıştırıyorsanız, bu platform Azure 'da genel kullanıma sunulan farklı bir Depolama Blobu SDK sürümü destekleyebilir. Örneğin, [Azure Stack hub sürümü 2002 üzerinde](/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2017-11-09 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için [GitHub 'da bu örneğe](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)bakın. Azure Stack hub 'ında desteklenen Azure depolama hizmeti sürümleri hakkında daha fazla bilgi için lütfen [Azure Stack hub depolama: farklar ve konular](/azure-stack/user/azure-stack-acs-differences)bölümüne bakın.
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure depolama ve BLOB kapsayıcısı oluşturma
 Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kullanacaksınız. Azure depolama hesabı oluşturmak için bu adımları izleyin. 
 
-1. [Azure depolama hesabı oluşturma](/azure/storage/common/storage-account-create?tabs=azure-portal)
+1. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [Bağlantı dizesini depolama hesabına al](../storage/common/storage-configure-connection-string.md)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636096"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537978"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -60,7 +60,7 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 
 Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-|Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
+|Üst bilgi| Description | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
@@ -191,7 +191,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içerir.
 
-| Parametre | Açıklama  |
+| Parametre | Description  |
 |-----------|--------------|
 |`RecognitionStatus`|Başarılı tanıma gibi durum `Success` . Sonraki tabloya bakın.|
 |`DisplayText`|Büyük harfler, noktalama, ters metin normalleştirmesinin ardından tanınan metin ("Doctor Smith" için "200" veya "Dr. Smith" için 200 gibi daha kısa formlara dönüştürme) ve küfür maskeleme. Yalnızca başarılı olduğunda sunun.|
@@ -200,7 +200,7 @@ Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içer
 
 `RecognitionStatus`Alan şu değerleri içerebilir:
 
-| Durum | Açıklama |
+| Durum | Description |
 |--------|-------------|
 | `Success` | Tanıma başarılı oldu ve `DisplayText` alan var. |
 | `NoMatch` | Ses akışında konuşma algılandı, ancak hedef dilden hiçbir sözcük eşleşmedi. Genellikle, tanınma dilinin kullanıcının konuşmadan farklı bir dil olduğu anlamına gelir. |
@@ -216,17 +216,17 @@ Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içer
 
 `NBest`Listedeki nesne şunları içerebilir:
 
-| Parametre | Açıklama |
+| Parametre | Description |
 |-----------|-------------|
 | `Confidence` | 0,0 (güven yok) ile 1,0 arasındaki girdinin Güvenirlik puanı (tam güven) |
 | `Lexical` | Tanınan metnin sözlü biçimi: tanınan gerçek sözcükler. |
 | `ITN` | Tanınan metnin, telefon numarası, sayı, kısaltmalar ("Doctor Smith" ile "Dr Smith") ve uygulanan diğer dönüşümler içeren ters metin normalleştirilmiş ("kurallı") biçimi. |
 | `MaskedITN` | İsteniyorsa, uygunsuz bir maskeleme uygulanmış ıTYPEFORM. |
 | `Display` | Tanınan metnin noktalama ve büyük harfleri eklenmiş olan görüntüleme formu. Bu parametre, `DisplayText` biçim olarak ayarlandığında belirtilen şekilde aynıdır `simple` . |
-| `AccuracyScore` | Verilen konuşmaya ait telaffuz doğruluğunu belirten puan. |
-| `FluencyScore` | Verilen konuşmayı akıcı bir şekilde belirten puan. |
-| `CompletenessScore` | Tüm girişe doğru olan sözcük oranını hesaplayarak verilen konuşmayı belirten puan. |
-| `PronScore` | Verilen konuşmayı gösteren telaffuz kalitesini belirten genel puan. Bu `AccuracyScore` , `FluencyScore` ve `CompletenessScore` ağırlığıyla hesaplanır. |
+| `AccuracyScore` | Konuşmayı telaffuz doğruluğu. Doğruluk, alfabesine 'in yerel konuşmacı söylenişi ile ne kadar yakın olduğunu gösterir. Word ve tam metin düzeyi doğruluk puanı, Fonem düzeyi doğruluk puanı ' ndan toplanır. |
+| `FluencyScore` | Verilen konuşmayı akıcı olarak. Akıcı bir şekilde, konuşmanın bir yerel konuşmacının sözcükler arasında sessiz kesmeler kullanımıyla ne kadar yakın olduğunu gösterir. |
+| `CompletenessScore` | Sözcük girişine başvuru metin girişi olarak bulunan sözcüklerin oranının hesaplanmasıyla belirlenen konuşma. |
+| `PronScore` | Verilen konuşmayı gösteren telaffuz kalitesini belirten genel puan. Bu `AccuracyScore` , `FluencyScore` ve `CompletenessScore` ağırlığıyla toplanır. |
 | `ErrorType` | Bu değer, ile karşılaştırıldığında bir sözcüğün atlanıp atlanmadığını, ekleneceğini veya hatalı bir şekilde olduğunu gösterir `ReferenceText` . Olası değerler şunlardır `None` (Yani bu sözcükte hata yok), `Omission` `Insertion` ve `Mispronunciation` . |
 
 ## <a name="sample-responses"></a>Örnek yanıtlar

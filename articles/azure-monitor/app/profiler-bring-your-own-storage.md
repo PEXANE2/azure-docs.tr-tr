@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361947"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539865"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Application Insights Profiler ve Snapshot Debugger için kendi depolama alanınızı getir (BYOS) yapılandırma
 
@@ -21,16 +21,16 @@ Application Insights Profiler veya Snapshot Debugger kullandığınızda, uygula
 Kendi depolama alanınızı getir ile, bu yapılar denetlediğiniz bir depolama hesabına yüklenir. Bu, bekleyen şifreleme ilkesini, ömür yönetimi ilkesini ve ağ erişimini kontrol ettiğiniz anlamına gelir. Bununla birlikte, bu depolama hesabıyla ilişkili maliyetlerden de sorumlu olursunuz.
 
 > [!NOTE]
-> Özel bağlantıyı etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights özel bağlantısı hakkında daha fazla bilgi için [belgelerine bakın.](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
+> Özel bağlantıyı etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights özel bağlantısı hakkında daha fazla bilgi için [belgelerine bakın.](../platform/private-link-security.md)
 >
-> Müşteri tarafından yönetilen anahtarları etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights için müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için [belgelerine bakın.](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
+> Müşteri tarafından yönetilen anahtarları etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights için müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için [belgelerine bakın.](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Depolama hesabımın erişim sıklığı nedir?
 1. Sanal makinelerinizde veya App Service çalışan aracılar, hesabınızdaki blob kapsayıcılarına yapıtları (profiller, anlık görüntüler ve semboller) karşıya yükleyecek. Bu işlem, depolama hesabınızda yeni bir blob 'a SAS (paylaşılan erişim Imzası) belirteci almak için Application Insights Profiler veya Snapshot Debugger hizmetine başvurmayı içerir.
 1. Application Insights Profiler veya Snapshot Debugger hizmeti gelen blobu analiz eder ve analiz sonuçlarını ve günlük dosyalarını blob depolamaya geri yazar. Kullanılabilir işlem kapasitesine bağlı olarak, bu işlem karşıya yüklendikten sonra herhangi bir zamanda gerçekleşebilir.
 1. Profil Oluşturucu izlemelerini veya anlık görüntü hata ayıklayıcısı analizini görüntülediğinizde, hizmet, blob depolamadan analiz sonuçlarını getirir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Depolama hesabınızı Application Insights kaynağınız ile aynı konumda oluşturmaya dikkat edin. Örn. Application Insights kaynağınız Batı ABD 2, depolama hesabınızın da Batı ABD 2 olması gerekir. 
 * Depolama hesabınızda Access Control (ıAM) Kullanıcı arabirimi aracılığıyla "Tanılama Hizmetleri güvenilen depolama erişimi" AAD uygulamasına "Depolama Blobu verileri katılımcısı" rolünü verin.
 * Özel bağlantı etkinleştirilirse, sanal ağınızdan güvenilir Microsoft hizmetimize bağlantı sağlamak için ek ayarı yapılandırın. 
@@ -60,7 +60,7 @@ Rolü ekledikten sonra, aşağıdaki Şekil 1,1 gibi "rol atamaları" bölümün
 _ ![ Şekil 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _Şekil 1,1_ 
 
-Ayrıca özel bağlantı kullanıyorsanız, sanal ağınızdan güvenilir Microsoft hizmetimize bağlantı sağlamak için bir ek yapılandırma gerekir. [Depolama ağı güvenliği belgelerine](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)bakın.
+Ayrıca özel bağlantı kullanıyorsanız, sanal ağınızdan güvenilir Microsoft hizmetimize bağlantı sağlamak için bir ek yapılandırma gerekir. [Depolama ağı güvenliği belgelerine](../../storage/common/storage-network-security.md#trusted-microsoft-services)bakın.
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>Depolama hesabınızı Application Insights kaynağına bağlama
 KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak üzere iki seçenek vardır:
@@ -73,7 +73,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak üzere i
 
 1. Az PowerShell 4.2.0 veya üstünü yüklediğinizden emin olun.
 
-    Azure PowerShell yüklemek için [resmi Azure PowerShell belgelerine](https://docs.microsoft.com/powershell/azure/install-az-ps)bakın.
+    Azure PowerShell yüklemek için [resmi Azure PowerShell belgelerine](/powershell/azure/install-az-ps)bakın.
 
 1. Application Insights PowerShell uzantısını yükler.
     ```powershell
@@ -85,7 +85,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak üzere i
     Connect-AzAccount -Subscription "{subscription_id}"
     ```
 
-    Oturum açma hakkında daha fazla bilgi için [Connect-AzAccount belgelerine](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)bakın.
+    Oturum açma hakkında daha fazla bilgi için [Connect-AzAccount belgelerine](/powershell/module/az.accounts/connect-azaccount)bakın.
 
 1. Application Insights kaynağınız ile bağlantılı önceki depolama hesabını kaldırın.
 
@@ -121,7 +121,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak üzere i
 
 1. Azure CLı 'yi yüklediğinizden emin olun.
 
-    Azure CLı 'yı yüklemek için [resmi Azure CLI belgelerine](https://docs.microsoft.com/cli/azure/install-azure-cli)bakın.
+    Azure CLı 'yı yüklemek için [resmi Azure CLI belgelerine](/cli/azure/install-azure-cli)bakın.
 
 1. Application Insights CLı uzantısını yükler.
     ```powershell
@@ -152,7 +152,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak üzere i
     ```
 
     > [!NOTE]
-    > Application Insights kaynağına bağlı depolama hesaplarında güncelleştirmeler gerçekleştirmek için [APPLICATION INSIGHTS CLI belgelerine](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)bakın.
+    > Application Insights kaynağına bağlı depolama hesaplarında güncelleştirmeler gerçekleştirmek için [APPLICATION INSIGHTS CLI belgelerine](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)bakın.
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak yapılandırma
 

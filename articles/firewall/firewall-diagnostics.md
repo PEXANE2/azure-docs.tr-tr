@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: e55f92c624ec338005cd23ba5e6063a9ca7f82c4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 82202705c5dbd4539eec4775d0844a749fd405f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262223"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537012"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme
 
@@ -90,12 +90,11 @@ Dilerseniz depolama hesabınıza bağlanabilir ve JSON erişim günlüklerini ve
 > [!TIP]
 > Visual Studio ve C# ile sabit ve değişken değerlerini değiştirme konusunda temel kavramlara hakimseniz GitHub'daki [günlük dönüştürücü araçlarını](https://github.com/Azure-Samples/networking-dotnet-log-converter) kullanabilirsiniz.
 
-## <a name="view-metrics"></a>Ölçümleri görüntüle
+## <a name="view-metrics"></a>Ölçümleri görüntüleme
 Azure Güvenlik Duvarı ' na giderek **Izleme** **ölçüm**' i seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Güvenlik duvarınızı günlükleri toplayacak şekilde yapılandırdığınıza göre, verilerinizi görüntülemek için Azure Izleyici günlüklerini keşfedebilirsiniz.
 
-> [!div class="nextstepaction"]
-> [Azure Izleyici günlüklerinde ağ izleme çözümleri](../azure-monitor/insights/azure-networking-analytics.md)
+[Azure Izleyici günlüklerinde ağ izleme çözümleri](../azure-monitor/insights/azure-networking-analytics.md)

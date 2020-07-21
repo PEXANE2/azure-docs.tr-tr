@@ -3,12 +3,12 @@ title: Azure VM’lerinde SQL Server veritabanlarını yedekleme
 description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veritabanlarını nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfd8233b9a696b5b4b1981eefa81aa9723f6431
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817542"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538979"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -28,7 +28,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
 >Önizlemeye kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir SQL Server veritabanını yedeklemek için aşağıdaki ölçütleri kontrol edin:
 
@@ -47,7 +47,7 @@ Tüm işlemler için bir SQL Server VM Azure Backup hizmeti, Azure depolama ve A
 
 Aşağıdaki tabloda bağlantı kurmak için kullanabileceğiniz çeşitli alternatifler listelenmektedir:
 
-| **Seçeneği**                        | **Üstünlü**                                               | **Dezavantajlar**                                            |
+| **Seçenek**                        | **Avantajlar**                                               | **Dezavantajlar**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Özel uç noktalar                 | Sanal ağ içindeki özel IP 'Lerde yedeklemelere izin ver  <br><br>   Ağ ve kasa tarafında ayrıntılı denetim sağlama | Standart özel uç nokta [maliyetleri](https://azure.microsoft.com/pricing/details/private-link/) |
 | NSG hizmet etiketleri                  | Aralık değişikliklerinin otomatik olarak birleştirilmesi için daha kolay yönetilmesi   <br><br>   Ek maliyet yok | Yalnızca NSG 'ler ile kullanılabilir  <br><br>    Hizmetin tamamına erişim sağlar |
@@ -59,17 +59,17 @@ Bu seçenekleri kullanma hakkında daha fazla ayrıntı aşağıdaki şekilde pa
 
 #### <a name="private-endpoints"></a>Özel uç noktalar
 
-Özel uç noktalar, bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde bağlanmanıza olanak tanır. Özel uç nokta, kasanızın VNET adres alanından bir IP kullanır. Sanal ağın ve kasadaki kaynaklarınız arasındaki ağ trafiği, sanal ağınız üzerinden ve Microsoft omurga ağında özel bir bağlantı üzerinden dolaşır. Bu, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. [Azure Backup için](https://docs.microsoft.com/azure/backup/private-endpoints)özel uç noktalar hakkında daha fazla bilgi edinin.
+Özel uç noktalar, bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kasanıza güvenli bir şekilde bağlanmanıza olanak tanır. Özel uç nokta, kasanızın VNET adres alanından bir IP kullanır. Sanal ağın ve kasadaki kaynaklarınız arasındaki ağ trafiği, sanal ağınız üzerinden ve Microsoft omurga ağında özel bir bağlantı üzerinden dolaşır. Bu, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır. [Azure Backup için](./private-endpoints.md)özel uç noktalar hakkında daha fazla bilgi edinin.
 
 #### <a name="nsg-tags"></a>NSG etiketleri
 
-Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izin vermek için *AzureBackup* Service etiketini kullanın. Azure Backup etiketine ek olarak, *Azure AD* ve *Azure depolama*için benzer [NSG kuralları](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) oluşturarak kimlik doğrulama ve veri aktarımı için de bağlantıya izin vermeniz gerekir.  Aşağıdaki adımlar Azure Backup etiketi için bir kural oluşturma işlemini anlatmaktadır:
+Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izin vermek için *AzureBackup* Service etiketini kullanın. Azure Backup etiketine ek olarak, *Azure AD* ve *Azure depolama*için benzer [NSG kuralları](../virtual-network/security-overview.md#service-tags) oluşturarak kimlik doğrulama ve veri aktarımı için de bağlantıya izin vermeniz gerekir.  Aşağıdaki adımlar Azure Backup etiketi için bir kural oluşturma işlemini anlatmaktadır:
 
 1. **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
 
 1. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
 
-1. **Ekle**'yi seçin. [Güvenlik kuralı ayarları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
+1. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
 
 1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle** ' ye tıklayın.
 
@@ -77,7 +77,7 @@ Benzer şekilde, Azure depolama ve Azure AD için NSG giden güvenlik kuralları
 
 #### <a name="azure-firewall-tags"></a>Azure Güvenlik Duvarı etiketleri
 
-Azure Güvenlik duvarı kullanıyorsanız, *AzureBackup* [Azure Güvenlik Duvarı FQDN etiketini](https://docs.microsoft.com/azure/firewall/fqdn-tags)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup tüm giden erişimleri sağlar.
+Azure Güvenlik duvarı kullanıyorsanız, *AzureBackup* [Azure Güvenlik Duvarı FQDN etiketini](../firewall/fqdn-tags.md)kullanarak bir uygulama kuralı oluşturun. Bu, Azure Backup tüm giden erişimleri sağlar.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Hizmet IP aralıklarına erişime izin ver
 
@@ -91,7 +91,7 @@ Sunucularınızdaki gerekli hizmetlere erişime izin vermek için aşağıdaki F
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure depolama | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | [Bu makaleye](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) göre 56 ve 59 bölümlerinde FQDN 'lere erişime izin ver |
+| Azure AD      | [Bu makaleye](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) göre 56 ve 59 bölümlerinde FQDN 'lere erişime izin ver |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Trafiği yönlendirmek için bir HTTP proxy sunucusu kullanma
 
@@ -107,7 +107,7 @@ Veritabanı adlarında aşağıdaki öğeleri kullanmaktan kaçının:
 * Noktalı virgül '; '
 * Eğik çizgi '/'
 
-Diğer ad, desteklenmeyen karakterler için kullanılabilir, ancak bunlardan kaçınmasını öneririz. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Diğer ad, desteklenmeyen karakterler için kullanılabilir, ancak bunlardan kaçınmasını öneririz. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](/rest/api/storageservices/understanding-the-table-service-data-model).
 
 >[!NOTE]
 >Adında "+" veya "&" gibi özel karakterler içeren veritabanları için **koruma yapılandırma** işlemi desteklenmez. Veritabanı adını değiştirebilir veya **otomatik korumayı**etkinleştirerek bu veritabanlarını başarıyla koruyabilirler.
@@ -161,11 +161,15 @@ VM üzerinde çalışan veritabanlarını bulma:
 
    ![Yedeklemeyi Yapılandır ' ı seçin](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. **Yedeklenecek öğeleri seçin**' de, tüm kayıtlı kullanılabilirlik gruplarını ve tek başına SQL Server örneklerini görürsünüz. Söz konusu örnekteki veya her zaman açık kullanılabilirlik grubundaki tüm korumasız veritabanlarının listesini genişletmek için satırın solundaki oku seçin.  
+1. Tüm kayıtlı kullanılabilirlik gruplarını ve tek başına SQL Server örnekleri görmek için **Kaynak Ekle** ' ye tıklayın.
 
-    ![Tek başına veritabanları ile tüm SQL Server örneklerini görüntüleme](./media/backup-azure-sql-database/list-of-sql-databases.png)
+    ![Kaynak Ekle ' yi seçin](./media/backup-azure-sql-database/add-resources.png)
 
-3. Korumak istediğiniz tüm veritabanları ' nı seçin ve ardından **Tamam**' ı seçin.
+1. **Yedeklenecek öğeleri seçin** ekranında, söz konusu örnekteki veya Always on kullanılabilirlik grubundaki tüm korumasız veritabanlarının listesini genişletmek için satırın solundaki oku seçin.
+
+    ![Yedeklenecek öğeleri seçin](./media/backup-azure-sql-database/select-items-to-backup.png)
+
+1. Korumak istediğiniz tüm veritabanları ' nı seçin ve ardından **Tamam**' ı seçin.
 
    ![Veritabanını koruma](./media/backup-azure-sql-database/select-database-to-protect.png)
 
@@ -174,28 +178,20 @@ VM üzerinde çalışan veritabanlarını bulma:
      * 50 'den fazla veritabanını korumak için birden çok yedekleme yapılandırın.
      * Tüm örneği veya Always on kullanılabilirlik grubunu [etkinleştirmek](#enable-auto-protection) Için, **oto koru** açılan listesinde **Açık**' ı seçin ve ardından **Tamam**' ı seçin.
 
-    > [!NOTE]
-    > [Otomatik koruma](#enable-auto-protection) özelliği, aynı anda var olan tüm veritabanlarında korumayı yalnızca bir kerede etkinleştirmez, ancak aynı zamanda bu örneğe veya kullanılabilirlik grubuna eklenen yeni veritabanlarını otomatik olarak korur.  
+         > [!NOTE]
+         > [Otomatik koruma](#enable-auto-protection) özelliği, aynı anda var olan tüm veritabanlarında korumayı yalnızca bir kerede etkinleştirmez, ancak aynı zamanda bu örneğe veya kullanılabilirlik grubuna eklenen yeni veritabanlarını otomatik olarak korur.  
 
-4. **Yedekleme ilkesini**açmak için **Tamam ' ı** seçin.
+1. **Yedekleme ilkesini**tanımlayın. Aşağıdakilerden birini yapabilirsiniz:
 
-    ![Always on kullanılabilirlik grubu için otomatik korumayı etkinleştir](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-5. **Yedekleme ilkesi**' nde bir ilke seçin ve ardından **Tamam**' ı seçin.
-
-   * Varsayılan ilkeyi HourlyLogBackup olarak seçin.
+   * Varsayılan ilkeyi *HourlyLogBackup*olarak seçin.
    * Daha önce SQL için oluşturulmuş mevcut bir yedekleme ilkesi seçin.
    * RPO ve bekletme aralığınızı temel alarak yeni bir ilke tanımlayın.
 
      ![Yedekleme ilkesi seçin](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. **Yedekleme**'de **yedeklemeyi etkinleştir**' i seçin.
+1. **Korumayı Yapılandır** işlemini göndermek ve portalın **Bildirimler** alanındaki yapılandırma Ilerlemesini izlemek için **yedeklemeyi etkinleştir** ' e tıklayın.
 
-    ![Seçilen yedekleme ilkesini etkinleştir](./media/backup-azure-sql-database/enable-backup-button.png)
-
-7. Portalın **Bildirimler** alanındaki yapılandırma ilerlemesini izleyin.
-
-    ![Bildirim alanı](./media/backup-azure-sql-database/notifications-area.png)
+   ![Yapılandırma ilerlemesini izle](./media/backup-azure-sql-database/track-configuration-progress.png)
 
 ### <a name="create-a-backup-policy"></a>Yedekleme ilkesi oluşturma
 
@@ -210,22 +206,22 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 Bir yedekleme ilkesi oluşturmak için:
 
 1. Kasada, **yedekleme ilkeleri**  >  **Ekle**' yi seçin.
-2. **Ekle**' de, ilke türünü tanımlamak IÇIN **Azure VM 'de SQL Server** ' yi seçin.
+1. **Ekle**' de, ilke türünü tanımlamak IÇIN **Azure VM 'de SQL Server** ' yi seçin.
 
    ![Yeni yedekleme ilkesi için bir ilke türü seçin](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. **İlke adı**alanına yeni ilke için bir ad girin.
-4. **Tam yedekleme ilkesinde**, bir **yedekleme sıklığı**seçin. **Günlük** veya **haftalık**seçeneklerinden birini belirleyin.
+1. **İlke adı**alanına yeni ilke için bir ad girin.
 
-   * **Günlük**için, yedekleme işinin başladığı saat ve saat dilimini seçin.
-   * **Haftalık**olarak, yedekleme işinin başladığı hafta, saat ve saat diliminin gününü seçin.
-   * **Tam yedekleme seçeneğini** kapatamadığı için tam yedekleme çalıştırın.
-   * İlkeyi görüntülemek için **tam yedekleme** ' yi seçin.
-   * Günlük tam yedeklemeler için fark yedeklemeleri oluşturamazsınız.
+    ![İlke adını girin](./media/backup-azure-sql-database/policy-name.png)
+
+1. Varsayılan ayarları değiştirmek için, karşılık gelen **düzenleme** bağlantısına, **tam yedekleme**' ye tıklayın.
+
+   * Bir **yedekleme sıklığı**seçin. **Günlük** veya **haftalık**seçeneklerinden birini belirleyin.
+   * **Günlük**için, yedekleme işinin başladığı saat ve saat dilimini seçin. Günlük tam yedeklemeler için fark yedeklemeleri oluşturamazsınız.
 
      ![Yeni yedekleme ilkesi alanları](./media/backup-azure-sql-database/full-backup-policy.png)  
 
-5. **Saklama aralığı**' nda, tüm seçenekler varsayılan olarak seçilidir. İstemediğiniz tüm Bekletme aralığı sınırlarını temizleyin ve ardından kullanılacak aralıkları ayarlayın.
+1. **Saklama aralığı**' nda, tüm seçenekler varsayılan olarak seçilidir. İstemediğiniz tüm Bekletme aralığı sınırlarını temizleyin ve ardından kullanılacak aralıkları ayarlayın.
 
     * Herhangi bir yedekleme türü (tam, değişiklik ve günlük) için en düşük saklama süresi yedi gündür.
     * Kurtarma noktaları, bekletme aralığına göre bekletme için etiketlenir. Örneğin, günlük tam yedekleme seçerseniz, her gün yalnızca bir tam yedekleme tetiklenir.
@@ -234,28 +230,28 @@ Bir yedekleme ilkesi oluşturmak için:
 
        ![Bekletme aralığı aralığı ayarları](./media/backup-azure-sql-database/retention-range-interval.png)
 
-6. **Tam yedekleme ilkesi** menüsünde, ayarları kabul etmek için **Tamam** ' ı seçin.
-7. Bir değişiklik yedekleme ilkesi eklemek için, **fark yedeklemesi**' ni seçin.
+1. Tam yedeklemeler ayarını kabul etmek için **Tamam ' ı** seçin.
+1. Varsayılan ayarları değiştirmek için **değişiklik yedeklemesine**karşılık gelen **düzenleme** bağlantısına tıklayın.
 
-   ![Bekletme aralığı aralığı ayarları ](./media/backup-azure-sql-database/retention-range-interval.png)
-    ![ , fark yedekleme ilkesi menüsünü açın](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+    * **Değişiklik yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin.
+    * Günde yalnızca bir değişiklik yedeklemesini tetikleyebilirsiniz. Değişiklik yedeklemesi, tam yedekleme ile aynı gün içinde tetiklenemez.
+    * Değişiklik yedeklemeleri, en fazla 180 gün boyunca korunabilir.
+    * Değişiklik yedeklemesi ana veritabanı için desteklenmiyor.
 
-8. **Değişiklik yedekleme ilkesinde**, sıklık ve bekletme denetimlerini açmak için **Etkinleştir** ' i seçin.
+      ![Değişiklik yedekleme ilkesi](./media/backup-azure-sql-database/differential-backup-policy.png)
 
-    * Günde yalnızca bir değişiklik yedeklemesini tetikleyebilirsiniz.
-    * Değişiklik yedeklemeleri, en fazla 180 gün boyunca korunabilir. Daha uzun bekletme için tam yedeklemeler kullanın.
+1. Varsayılan ayarları değiştirmek için **günlük yedeğine**karşılık gelen **düzenleme** bağlantısına tıklayın
 
-9. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam ' ı** seçin.
+    * **Günlük yedeklemesi**bölümünde **Etkinleştir**' i seçin ve ardından sıklık ve bekletme denetimlerini ayarlayın.
+    * Günlük yedeklemeleri her 15 dakikada bir gerçekleşebilir ve 35 güne kadar tutulabilir.
+    * Veritabanı [Basit kurtarma modelinde](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)ise, bu veritabanı için günlük yedekleme zamanlaması duraklatılır ve bu nedenle hiçbir günlük yedeklemesi tetiklenmeyecektir.
+    * Veritabanının kurtarma modeli **tam** yerine **basit**olarak değişirse, kurtarma modelindeki değişikliğin 24 saat içinde günlük yedeklemeleri duraklatılır. Benzer şekilde, kurtarma modeli **basit**olarak değişirse, kesin günlük yedeklemeleri artık veritabanı için desteklenebilir, günlük yedeklemeleri zamanlamaları, kurtarma modelindeki değişikliğin 24 saat içinde etkinleştirilir.
 
-10. İşlem günlüğü yedekleme ilkesi eklemek için **günlük yedeklemesi**' ni seçin.
-11. **Günlük yedeklemesi**bölümünde **Etkinleştir**' i seçin ve ardından sıklık ve bekletme denetimlerini ayarlayın. Günlük yedeklemeleri her 15 dakikada bir gerçekleşebilir ve 35 güne kadar tutulabilir.
-12. İlkeyi kaydetmek ve ana **yedekleme ilkesi** menüsüne dönmek için **Tamam ' ı** seçin.
+      ![Günlük yedekleme ilkesi](./media/backup-azure-sql-database/log-backup-policy.png)
 
-    ![Günlük yedekleme ilkesini düzenleme](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+1. **Yedekleme ilkesi** menüsünde, **SQL Backup sıkıştırmasını** etkinleştirilip etkinleştirilmeyeceğini seçin. Bu seçenek varsayılan olarak devre dışıdır. Etkinleştirilirse, SQL Server VDı 'a sıkıştırılmış bir yedekleme akışı gönderir. Azure Backup, bu denetimin değerine bağlı olarak, örnek düzeyi varsayılan değerleri COMPRESSION/NO_COMPRESSION yan tümcesiyle geçersiz kılar.
 
-13. **Yedekleme ilkesi** menüsünde, **SQL Backup sıkıştırmasını** etkinleştirilip etkinleştirilmeyeceğini seçin. Bu seçenek varsayılan olarak devre dışıdır. Etkinleştirilirse, SQL Server VDı 'a sıkıştırılmış bir yedekleme akışı gönderir.  Azure Backup bu denetimin değerine bağlı olarak, örnek düzeyi varsayılan değerleri COMPRESSION/NO_COMPRESSION yan tümcesiyle geçersiz kıldığını unutmayın.
-
-14. Yedekleme ilkesinde yapılan düzenlemeleri tamamladıktan sonra **Tamam**' ı seçin.
+1. Yedekleme ilkesinde yapılan düzenlemeleri tamamladıktan sonra **Tamam**' ı seçin.
 
 > [!NOTE]
 > Her günlük yedeklemesi, bir kurtarma zinciri oluşturmak için önceki tam yedeklemeye zincirlenir. Bu tam yedekleme, son günlük yedeklemenin saklama süresi sona erene kadar bekletilecektir. Bu, tüm günlüklerin kurtarılabilmesini sağlamak için ek bir süre boyunca tam yedeklemenin korunduğu anlamına gelebilir. Kullanıcının haftalık tam yedekleme, günlük fark ve 2 saatlik günlük olduğunu varsayalım. Bunların hepsi 30 gün boyunca tutulur. Ancak, haftalık tam yedekleme yalnızca bir sonraki tam yedekleme kullanılabilir olduktan sonra temizlenir/silinebilir (30 + 7 gün sonra). , Haftalık tam yedekleme 16 Kasım 'da gerçekleşir. Bekletme ilkesine göre, 16 Aralık 'a kadar saklanması gerekir. Bu tam için en son günlük yedeklemesi, 22nd tarihinde bir sonraki zamanlanmış tam önce gerçekleşir. Bu günlük, 22nd 'e kadar kullanılabilir olana kadar, 16. ve tam 6. Bu nedenle, 16. dolu, 22nd 'e kadar korunur.

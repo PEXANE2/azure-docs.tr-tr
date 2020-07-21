@@ -4,17 +4,18 @@ description: Azure 'da kaynağı özel ölçüm ile ölçeklendirmenin nasıl ya
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e744e6a91eb6fbe23a6b45f95c39b1acfdcb61f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539593"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure 'da özel ölçüm ile otomatik ölçeklendirmeyi kullanmaya başlama
 Bu makalede, Azure portal bir özel ölçüm tarafından kaynağınızın nasıl ölçekleneceğini açıklanmaktadır.
 
 Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [Azure Veri Gezgini kümesi](https://azure.microsoft.com/services/data-explorer/) için geçerlidir.   
-Tümleştirme Hizmeti Ortamı ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Tümleştirme Hizmeti Ortamı ve [API Management Hizmetleri](../../api-management/api-management-key-concepts.md).
 
 ## <a name="lets-get-started"></a>Başlamanıza izin verir
 Bu makalede, Application Insights 'ın yapılandırıldığı bir Web uygulamasına sahip olduğunuz varsayılır. Henüz bir hesabınız yoksa, [ASP.NET Web siteniz için Application Insights ayarlayabilirsiniz][1]
@@ -40,11 +41,10 @@ Tebrikler. Artık ölçek ayarınızı, Web uygulamanızı özel bir ölçüme g
 > Note: bir VMSS veya bulut hizmeti rolü ile çalışmaya başlamak için aynı adımlar geçerlidir.
 
 <!--Reference-->
-[1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net
+[1]: ../app/asp-net.md
 [2]: https://portal.azure.com
 [3]: ./media/autoscale-custom-metric/azure-monitor-launch.png
 [4]: ./media/autoscale-custom-metric/discover-autoscale-azure-monitor.png
 [5]: ./media/autoscale-custom-metric/scale-setting-new-web-app.png
 [6]: ./media/autoscale-custom-metric/scale-by-custom-metric.png
 [7]: ./media/autoscale-custom-metric/autoscale-setting-custom-metrics-ai.png
-

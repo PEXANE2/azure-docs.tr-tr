@@ -3,12 +3,12 @@ title: Language Understanding (LUIS) nedir?
 description: Language Understanding (LUIS), genel anlamı tahmin etmek ve ilgili, ayrıntılı bilgileri çekme amacıyla kullanıcının konuşmasına, doğal dil metnine özel makine öğrenimi zekası uygulayan bulut tabanlı API hizmetidir.
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675984"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538046"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
@@ -61,7 +61,7 @@ LUIS modeli, **[amaçlar](luis-concept-intent.md)** olarak adlandırılan kullan
 
 ## <a name="query-prediction-endpoint"></a>Sorgu tahmin uç noktası
 
-Uygulamanız eğitildikten ve uç noktada yayımlandıktan sonra, istemci uygulaması, tahmin [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) API 'sine bir konuşma gönderir. API, uygulamayı Analize analiz için uygular ve tahmin sonuçlarıyla bir JSON biçiminde yanıt verir.
+Uygulamanız eğitildikten ve uç noktada yayımlandıktan sonra, istemci uygulaması, tahmin [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) API 'sine bir konuşma gönderir. API, modeli Analize analiz için uygular ve tahmin sonuçlarıyla bir JSON biçiminde yanıt verir.
 
 JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı amacı içerir. Ayrıca, aşağıdaki **kişi türü** varlığı ve genel yaklaşım gibi verileri de ayıklayabilir.
 

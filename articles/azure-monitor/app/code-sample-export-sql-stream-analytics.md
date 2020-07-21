@@ -3,12 +3,12 @@ title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540103"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
 Bu makalede, [azure Application Insights][start] [sürekli dışa aktarma][export] ve [Azure Stream ANALYTICS](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure SQL veritabanı 'na nasıl taşıyacağınız gösterilmektedir. 
@@ -82,7 +82,7 @@ Sunucunun Azure hizmetlerine erişime izin verdiğinden emin olun:
 ![Azure 'a, sunuculara, sunucunuza, ayarlarınıza, güvenlik duvarına erişime Izin verin](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tablo oluşturma
-Önceki bölümde oluşturulan ve tercih ettiğiniz yönetim araclarınızın veritabanına bağlanın. Bu izlenecek yolda [SQL Server Yönetim Araçları](https://msdn.microsoft.com/ms174173.aspx) (SSMS) kullanacağız.
+Önceki bölümde oluşturulan ve tercih ettiğiniz yönetim araclarınızın veritabanına bağlanın. Bu izlenecek yolda [SQL Server Yönetim Araçları](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) kullanacağız.
 
 ![Azure SQL Veritabanı'na bağlanma](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -255,4 +255,3 @@ FROM [dbo].[PageViewsTable]
 [metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

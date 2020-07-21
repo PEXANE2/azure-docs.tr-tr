@@ -6,21 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655265"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539372"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager Azure Izleyici 'ye bağlama
 Cihaz koleksiyonu verilerini eşitlemek ve Azure Izleyici ve Azure Otomasyonu 'nda bu koleksiyonlara başvurmak için Microsoft uç nokta Configuration Manager ortamınızı Azure Izleyici 'ye bağlayabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Izleyici Configuration Manager geçerli dalı, sürüm 1606 ve üstünü destekler.
 
 >[!NOTE]
->Log Analytics bir çalışma alanıyla Configuration Manager bağlama özelliği isteğe bağlıdır ve varsayılan olarak etkinleştirilmez. Bu özelliği kullanmadan önce etkinleştirmeniz gerekir. Daha fazla bilgi için, bkz. [Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
+>Log Analytics bir çalışma alanıyla Configuration Manager bağlama özelliği isteğe bağlıdır ve varsayılan olarak etkinleştirilmez. Bu özelliği kullanmadan önce etkinleştirmeniz gerekir. Daha fazla bilgi için, bkz. [Enable optional features from updates](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Yapılandırmaya genel bakış
 
@@ -65,7 +66,7 @@ Configuration Manager hizmet bağlantı noktası site sistemi rolünü barındı
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager Log Analytics çalışma alanına bağlama
 
 >[!NOTE]
-> Log Analytics bağlantısı eklemek için, Configuration Manager ortamınızın çevrimiçi mod için yapılandırılmış bir [hizmet bağlantı noktası](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point) olması gerekir.
+> Log Analytics bağlantısı eklemek için, Configuration Manager ortamınızın çevrimiçi mod için yapılandırılmış bir [hizmet bağlantı noktası](/configmgr/core/servers/deploy/configure/about-the-service-connection-point) olması gerekir.
 
 > [!NOTE]
 > Hiyerarşinizdeki üst katman siteyi Azure Izleyici 'ye bağlamanız gerekir. Tek başına bir birincil siteyi Azure Izleyici 'ye bağlayıp ortamınıza bir merkezi yönetim sitesi eklerseniz, bağlantıyı yeni hiyerarşi içinde silip yeniden oluşturmanız gerekir.
@@ -111,7 +112,7 @@ Configuration Manager hizmet bağlantı noktası site sistemi rolünü barındı
 
 9. **Ayarları onaylayın** sayfasında seçenekleri gözden geçirin ve bağlantıyı oluşturmaya ve yapılandırmaya başlamak için **İleri** ' yi seçin.
 
-10. Yapılandırma tamamlandığında **tamamlama** sayfası görüntülenir. **Kapat**'ı seçin. 
+10. Yapılandırma tamamlandığında **tamamlama** sayfası görüntülenir. **Kapat**’ı seçin. 
 
 Configuration Manager Azure Izleyici 'ye bağladıktan sonra, koleksiyonları ekleyebilir veya kaldırabilir ve bağlantının özelliklerini görüntüleyebilirsiniz.
 

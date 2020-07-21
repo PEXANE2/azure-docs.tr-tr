@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184557"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539678"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -19,11 +19,11 @@ ms.locfileid: "86184557"
 
 Bu makale, Azure 'da Ağ Performansı İzleyicisi (NPM) hakkında sık sorulan soruları (SSS) yakalar
 
-[Ağ performansı İzleyicisi](/azure/networking/network-monitoring-overview) , ağ altyapınızın çeşitli noktaları arasındaki ağ performansını izlemenize yardımcı olan bulut tabanlı bir [karma ağ izleme](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) çözümüdür. Ayrıca [hizmet ve uygulama uç noktalarına](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) ağ bağlantısını Izlemenize ve [Azure ExpressRoute 'un performansını izlemenize](../../azure-monitor/insights/network-performance-monitor-expressroute.md)yardımcı olur. 
+[Ağ performansı İzleyicisi](../../networking/network-monitoring-overview.md) , ağ altyapınızın çeşitli noktaları arasındaki ağ performansını izlemenize yardımcı olan bulut tabanlı bir [karma ağ izleme](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) çözümüdür. Ayrıca [hizmet ve uygulama uç noktalarına](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) ağ bağlantısını Izlemenize ve [Azure ExpressRoute 'un performansını izlemenize](../../azure-monitor/insights/network-performance-monitor-expressroute.md)yardımcı olur. 
 
 Ağ Performansı İzleyicisi trafik görüntüleme, yönlendirme hataları ve geleneksel ağ izleme yöntemlerinin algılayamadığı sorunlar gibi ağ sorunlarını algılar. Bir ağ bağlantısı için bir eşik ihlal edildiğinde, çözüm uyarılar oluşturur ve size bildirir. Ayrıca ağ performans sorunlarının zamanında tespit edilmesini sağlar ve sorunun kaynağını belirli bir ağ kesimine veya cihazına yerelleştirir. 
 
-[Ağ performansı İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview) tarafından desteklenen çeşitli yetenekler hakkında daha fazla bilgi çevrimiçi olarak sunulmaktadır.
+[Ağ performansı İzleyicisi](../../networking/network-monitoring-overview.md) tarafından desteklenen çeşitli yetenekler hakkında daha fazla bilgi çevrimiçi olarak sunulmaktadır.
 
 ## <a name="set-up-and-configure-agents"></a>Aracıları ayarlama ve yapılandırma
 
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM yalnızca kaynak ve hedef IP 'Ler arasındaki temel ağ atlamalarının (anahtarlar, yönlendiriciler, sunucular vb.) IP ve ana bilgisayar adını tanımlar. Bu, tanımlanan atlamaları arasındaki gecikmeyi de belirler. Bu temel atlamaları tek tek izlemez.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Azure ile AWS arasındaki ağ bağlantısını izlemek için NPM kullanılabilir mi?
-Evet. Ayrıntılar için [NPM kullanarak Azure, AWS ve şirket içi ağları izleme](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) makalesine bakın.
+Evet. Ayrıntılar için [NPM kullanarak Azure, AWS ve şirket içi ağları izleme](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) makalesine bakın.
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute bant genişliği kullanımı gelen veya giden
 Bant genişliği kullanımı, gelen ve giden bant genişliğinin toplamıdır. Bit/sn cinsinden ifade edilir.
@@ -188,7 +188,7 @@ NPM, dünyanın herhangi bir bölümündeki ağlar arasındaki bağlantıyı, [d
 NPM, [desteklenen bölgelerden](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) birinde barındırılan bir çalışma alanından dünyanın herhangi bir bölümündeki hizmetlere bağlantıyı izleyebilir
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM 'nin ExpressRoute Izleyicisi için hangi bölgeler desteklenir?
-NPM, herhangi bir Azure bölgesinde bulunan ExpressRoute devrelerinizi izleyebilir. NPM 'ye eklemek için [desteklenen bölgelerden](/azure/expressroute/how-to-npm) birinde barındırılması gereken bir Log Analytics çalışma alanı gerekir
+NPM, herhangi bir Azure bölgesinde bulunan ExpressRoute devrelerinizi izleyebilir. NPM 'ye eklemek için [desteklenen bölgelerden](../../expressroute/how-to-npm.md) birinde barındırılması gereken bir Log Analytics çalışma alanı gerekir
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
@@ -231,7 +231,7 @@ Bu durum, ana bilgisayar güvenlik duvarı veya ara güvenlik duvarının (ağ g
 * Ana bilgisayar güvenlik duvarının gerekli bağlantı noktasındaki iletişimi engellemediğinden emin olmak için şu görünümden kaynak ve hedef düğümlerin sistem durumunu görüntüleyin: Ağ Performansı İzleyicisi-> yapılandırma-> düğümleri. 
   Sağlıksız olmaları durumunda yönergeleri görüntüleyin ve düzeltici eylem gerçekleştirin. Düğümler sağlıklı ise, b adımına geçin. öğrenin.
 * Bir ara ağ güvenlik duvarının veya Azure NSG 'nin gerekli bağlantı noktasındaki iletişimi engellemediğinden emin olmak için aşağıdaki yönergeleri kullanarak üçüncü taraf PsPing yardımcı programını kullanın:
-  * psping yardımcı programı [buradan](https://technet.microsoft.com/sysinternals/psping.aspx) indirilebilir 
+  * psping yardımcı programı [buradan](/sysinternals/downloads/psping) indirilebilir 
   * Kaynak düğümden aşağıdaki komutu çalıştırın.
     * psping-n 15 \<destination node IPAddress\> :P Ortsayı varsayılan NPM 8084 bağlantı noktasını kullanır. Bunu EnableRules.ps1 betiği kullanarak açıkça değiştirdiyseniz, kullanmakta olduğunuz özel bağlantı noktası numarasını girin). Bu, Azure makinesinden şirket içine bir ping işlemi sağlar
 * Pingler 'in başarılı olup olmadığını denetleyin. Aksi takdirde, bir ara ağ güvenlik duvarının veya Azure NSG 'nin Bu bağlantı noktasındaki trafiği engellediğini gösterir.

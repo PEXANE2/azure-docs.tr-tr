@@ -12,13 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0d60d1f76523beca6567517ef44d50b910b221
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020141"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537624"
 ---
-# <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
+# <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory sürüm 1 ardışık düzeninde özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-use-custom-activities.md)
 > * [Sürüm 2 (geçerli sürüm)](../transform-data-using-dotnet-custom-activity.md)
@@ -41,14 +42,14 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 > - Şirket içi veri kaynaklarına erişmek için özel etkinlikten bir Veri Yönetimi ağ geçidi kullanılması mümkün değildir. Şu anda [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) , Data Factory içindeki kopyalama etkinliği ve saklı yordam etkinliğini destekler.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>İzlenecek yol: özel etkinlik oluşturma
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 * Visual Studio 2012/2013/2015/2017
 * [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/) indirme ve yükleme
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch önkoşulları
 İzlenecek yolda, işlem kaynağı olarak Azure Batch kullanarak özel .NET etkinliklerinizi çalıştırırsınız. **Azure Batch** , bulutta etkin bir şekilde büyük ölçekli paralel ve yüksek performanslı bilgi Işlem (HPC) uygulamaları çalıştırmaya yönelik bir platform hizmetidir. Azure Batch, yönetilen bir **sanal makine koleksiyonunda**çalışacak işlem yoğunluğu olan işleri zamanlar ve işlerin ihtiyaçlarını karşılamak için işlem kaynaklarını otomatik olarak ölçeklendirebilir. Azure Batch hizmetine ayrıntılı bir genel bakış için [Azure Batch temel bilgiler][batch-technical-overview] makalesine bakın.
 
-Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Uygulamanız gereken adımlar:
+Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar aşağıdaki gibidir:
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir **Azure Batch hesabı** oluşturun. Yönergeler için [Azure Batch hesap oluşturma ve yönetme][batch-create-account] makalesine bakın.
 2. Azure Batch hesap adı, hesap anahtarı, URI ve havuz adı ' na göz önüne alın. Azure Batch bağlı bir hizmet oluşturmak için bunlara ihtiyacınız vardır.
@@ -98,7 +99,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
 ### <a name="procedure"></a>Yordam
 1. **.NET sınıf kitaplığı** projesi oluşturun.
    <ol type="a">
-     <li>Visual Studio’yu başlatın.</li>
+     <li>Visual Studio 'Yu başlatın.</li>
      <li><b>Dosya</b>’ya tıklayın, <b>Yeni</b>’nin üzerine gelin ve <b>Proje</b>’ye tıklayın.</li>
      <li><b>Şablonlar</b>’ı genişletin ve <b>Visual C#</b> seçeneğini belirleyin. Bu kılavuzda C# kullanıyorsunuz, ancak özel etkinlik geliştirmek için herhangi bir .NET dili kullanabilirsiniz.</li>
      <li>Sağ taraftaki proje türleri listesinden <b>sınıf kitaplığı</b> ' nı seçin. Visual Studio 'da <b>Sınıf Kitaplığı ' nı (.NET Framework)</b> seçin </li>

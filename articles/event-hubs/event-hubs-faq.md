@@ -3,12 +3,12 @@ title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320592"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537189"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -33,7 +33,7 @@ Azure Event Hubs standart katmanı, temel katmanda kullanılabilir olan özellik
 * Daha uzun olay saklama
 * Dahil edilen sayıdan daha fazla ücret ödemelerine sahip ek aracılı bağlantılar
 * Tek bir [Tüketici grubundan](event-hubs-features.md#consumer-groups) daha fazla
-* [Capture](event-hubs-capture-overview.md)
+* [Yakalama](event-hubs-capture-overview.md)
 * [Kafka tümleştirmesi](event-hubs-for-kafka-ecosystem-overview.md)
 
 Event Hubs Ayrılmış dahil olmak üzere fiyatlandırma katmanları hakkında daha fazla bilgi için [Event Hubs fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/event-hubs/)bakın.
@@ -197,7 +197,7 @@ Sonuçlar, adanmış bir Event Hubs kümesiyle neler elde edilebileceklerini siz
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Nasıl yaparım? bir Event Hubs Ayrılmış kümesi mi oluşturulsun?
 Bir [Kota artışı destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurarak Event Hubs adanmış bir küme oluşturursunuz. Genellikle, kümenin dağıtımını yapmak için iki hafta sürer ve sizin tarafınızdan kullanılmak üzere kullanıma alınır. Bu işlem, Azure portal aracılığıyla tam bir self servis olana kadar geçicidir.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 ### <a name="how-many-partitions-do-i-need"></a>Kaç bölüme ihtiyacım var?
 Bölüm sayısı, oluşturma sırasında belirtilir ve 2 ile 32 arasında olmalıdır. Bölüm sayısı değiştirilemez olmadığından, bölüm sayısını ayarlarken uzun vadeli ölçeği dikkate almanız gerekir. Bölümler, tüketen uygulamalarda gerekli aşağı akış paralelliğiyle ilişkili bir veri düzenleme mekanizmasıdır. Bir olay hub'ındaki bölüm sayısı, sahip olmayı beklediğiniz eşzamanlı okuyucu sayısıyla doğrudan ilgilidir. Bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).
@@ -261,7 +261,7 @@ Event Hubs iki tür [Tanılama günlüğünü](event-hubs-diagnostic-logs.md) de
 
 ### <a name="support-and-sla"></a>Destek ve SLA
 
-[Azure Service Bus Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-service-bus.html)aracılığıyla Event Hubs için teknik destek sunulmaktadır. Faturalandırma ve abonelik yönetim desteği ücretsiz olarak sunulmaktadır.
+[Azure Service Bus Için Microsoft Q&soru sayfası](/answers/topics/azure-service-bus.html)aracılığıyla Event Hubs için teknik destek sunulmaktadır. Faturalandırma ve abonelik yönetim desteği ücretsiz olarak sunulmaktadır.
 
 SLA 'umuz hakkında daha fazla bilgi edinmek için bkz. [hizmet düzeyi anlaşmaları](https://azure.microsoft.com/support/legal/sla/) sayfası.
 
@@ -269,6 +269,6 @@ SLA 'umuz hakkında daha fazla bilgi edinmek için bkz. [hizmet düzeyi anlaşma
 
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Event Hubs genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay Hub 'ı oluşturma](event-hubs-create.md)
+* [Event Hubs genel bakış](./event-hubs-about.md)
+* [Olay Hub'ı oluşturma](event-hubs-create.md)
 * [Event Hubs otomatik Şişir](event-hubs-auto-inflate.md)

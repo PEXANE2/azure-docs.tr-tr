@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506574"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538182"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell için özellikler & araçları
 
@@ -49,19 +49,19 @@ Azure sürücüsü Işlem, ağ, depolama vb. gibi Azure kaynakları için dosya 
 Bu kaynakları, içinde olduğunuz sürücüden bağımsız olarak yönetmek için tanıdık [Azure PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/azure) kullanmaya devam edebilirsiniz.
 Azure kaynaklarında yapılan tüm değişiklikler doğrudan Azure portal veya Azure PowerShell cmdlet 'leri aracılığıyla yapılır, Azure sürücüsüne yansıtılır.  `dir -Force`Kaynaklarınızı yenilemek için ' i çalıştırabilirsiniz.
 
-![](media/features-powershell/azure-drive.png)
+![Başlatılan Azure Cloud Shell ekran görüntüsü ve dizin kaynaklarının listesi.](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>Exchange Online 'ı yönetme
 
 Cloud Shell içindeki PowerShell, Exchange Online modülünün özel bir derlemesini içerir.  Öğesini çalıştırarak `Connect-EXOPSSession` Exchange cmdlet 'lerinizi alın.
 
-![](media/features-powershell/exchangeonline.png)
+![Connect-EXOPSSession ve Get-User komutlarını çalıştıran bir Azure Cloud Shell ekran görüntüsü.](media/features-powershell/exchangeonline.png)
 
  `Get-Command -Module tmp_*` öğesini çalıştırın
 > [!NOTE]
 > Modül adı ile başlamalıdır `tmp_` , aynı ön eke sahip modüller yüklediyseniz, cmdlet 'leri de ortaya çıkmış olur. 
 
-![](media/features-powershell/exchangeonlinecmdlets.png)
+![Get-Command-module tmp_ * komutunu çalıştıran bir Azure Cloud Shell ekran görüntüsü.](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Açık kaynak araçları ile derin tümleştirme
 
@@ -85,7 +85,7 @@ Cloud Shell, Terkform, Anbotsız ve Chef InSpec gibi açık kaynaklı araçlar i
 |Dil   |Sürüm   |
 |---|---|
 |.NET Core  |2.2.402       |
-|Başlayın         |1.9        |
+|Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |

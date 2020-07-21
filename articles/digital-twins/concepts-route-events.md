@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390797"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537538"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -46,7 +46,7 @@ Alternatif olarak, olay iletisi iletiyi gönderen kaynak ikizi KIMLIĞINI de iç
 
 İşlem kaynağının ayrıca güvenlik ve erişim izinlerini bağımsız olarak kurması gerekir.
 
-Dijital ikizi olaylarını işlemek için bir Azure işlevi ayarlama sürecinde gezinmek için bkz. [nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama](how-to-create-azure-function.md).
+Dijital ikizi olaylarını işlemek için bir Azure işlevi ayarlama sürecinde gezinmek için bkz. [*nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md).
 
 ## <a name="create-an-endpoint"></a>Uç nokta oluşturma
 
@@ -90,7 +90,7 @@ IoT Hub ve Azure dijital TWINS 'de farklı olay türleri aşağıda açıklandı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. bir olay yolunu ayarlama ve yönetme:
-* [Nasıl yapılır: uç noktaları ve yolları yönetme](how-to-manage-routes.md)
+* [*Nasıl yapılır: uç noktaları ve yolları yönetme*](how-to-manage-routes.md)
 
 Ya da Azure Digital TWINS içindeki olayları yönlendirmek için bkz. Azure Işlevleri 'ni kullanma:
-* [Nasıl yapılır: verileri işlemek için bir Azure işlevi ayarlama](how-to-create-azure-function.md)
+* [*Nasıl yapılır: verileri işlemek için bir Azure işlevi ayarlama*](how-to-create-azure-function.md)

@@ -3,11 +3,12 @@ title: Azure dosyalarını PowerShell ile geri yükleme
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azure dosyalarını geri yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23de6e1e352a1b72d1435fc65d6a59ab37d838b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201974"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538556"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure dosyalarını PowerShell ile geri yükleme
 
@@ -23,7 +24,7 @@ Dosya paylaşımının tamamını veya paylaşımdaki belirli dosyaları geri y�
 
 ## <a name="fetch-recovery-points"></a>Kurtarma noktalarını getir
 
-Yedeklenen öğenin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) komutunu kullanın.
+Yedeklenen öğenin tüm kurtarma noktalarını listelemek için [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) komutunu kullanın.
 
 Aşağıdaki betikte:
 
@@ -62,7 +63,7 @@ BackupManagementType : AzureStorage
 
 ## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Azure dosya paylaşımından alternatif bir konuma geri yükleme
 
-Seçili kurtarma noktasına geri yüklemek için [restore-Azrecoveryservicesbackupıtem öğesini](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) kullanın. Alternatif konumu tanımlamak için bu parametreleri belirtin:
+Seçili kurtarma noktasına geri yüklemek için [restore-Azrecoveryservicesbackupıtem öğesini](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) kullanın. Alternatif konumu tanımlamak için bu parametreleri belirtin:
 
 * **Targetstorageaccountname**: yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
 * **Targetfilesharename**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşımları.
@@ -85,7 +86,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ## <a name="restore-an-azure-file-to-an-alternate-location"></a>Azure dosyasını alternatif bir konuma geri yükleme
 
-Seçili kurtarma noktasına geri yüklemek için [restore-Azrecoveryservicesbackupıtem öğesini](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) kullanın. Alternatif konumu tanımlamak ve geri yüklemek istediğiniz dosyayı benzersiz olarak tanımlamak için bu parametreleri belirtin.
+Seçili kurtarma noktasına geri yüklemek için [restore-Azrecoveryservicesbackupıtem öğesini](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) kullanın. Alternatif konumu tanımlamak ve geri yüklemek istediğiniz dosyayı benzersiz olarak tanımlamak için bu parametreleri belirtin.
 
 * **Targetstorageaccountname**: yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
 * **Targetfilesharename**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşımları.
@@ -120,7 +121,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Birden çok dosyayı veya klasörü orijinal veya alternatif konuma geri yükleme
 
-Restore [-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) komutunu, geri yüklemek istediğiniz tüm dosya veya klasörlerin yolunu **multiplesourcefilepath** parametresi için bir değer olarak geçirerek kullanın.
+Restore [-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) komutunu, geri yüklemek istediğiniz tüm dosya veya klasörlerin yolunu **multiplesourcefilepath** parametresi için bir değer olarak geçirerek kullanın.
 
 ### <a name="restore-multiple-files"></a>Birden çok dosyayı geri yükleme
 

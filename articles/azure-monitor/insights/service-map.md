@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203129"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539780"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
@@ -154,7 +154,7 @@ Grup listesindeki Grup adının yanındaki üç nokta menüsüne tıklayın.
 
 Bazı süreçler makinelerde belirli rollere sahiptir: Web sunucuları, uygulama sunucuları, veritabanı vb. Bir işlemin veya sunucunun oynadığı rolü bir bakışta belirlemesine yardımcı olmak için rol simgeleriyle birlikte hizmet eşlemesi açıklıyor süreci ve makine kutuları.
 
-| Rol simgesi | Açıklama |
+| Rol simgesi | Description |
 |:--|:--|
 | ![Web sunucusu](media/service-map/role-web-server.png) | Web sunucusu |
 | ![Uygulama Sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
@@ -241,7 +241,7 @@ Hizmet Eşlemesi, seçili zaman aralığında seçili sunucu için tüm kullanı
 
 ## <a name="service-desk-integration"></a>Hizmet Masası tümleştirmesi
 
-Hizmet Eşlemesi BT Hizmet Yönetimi Bağlayıcısı tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak oluşturulur. Hizmet Eşlemesi tümleştirme "Service Desk" olarak etiketlenir. Daha fazla bilgi için bkz. [BT hizmet yönetimi Bağlayıcısı kullanarak ITSM iş öğelerini merkezi olarak yönetme](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+Hizmet Eşlemesi BT Hizmet Yönetimi Bağlayıcısı tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak oluşturulur. Hizmet Eşlemesi tümleştirme "Service Desk" olarak etiketlenir. Daha fazla bilgi için bkz. [BT hizmet yönetimi Bağlayıcısı kullanarak ITSM iş öğelerini merkezi olarak yönetme](../platform/itsmc-overview.md).
 
 **Makine hizmeti** bölmesi bölmesi seçilen zaman aralığında seçili sunucu IÇIN tüm BT hizmet yönetimi olaylarını listeler. Sunucu, geçerli öğeler varsa ve makine hizmeti bölmesi bölmesi tarafından listeleniyorsa bir simge görüntüler.
 
@@ -270,7 +270,7 @@ Aşağıdaki görüntü, **Log Analytics Içinde göster '** i seçtikten sonra 
 
 ![Makine performansı bölmesi](media/service-map/machine-performance.png)
 
-Performans verilerini görmek için [uygun Log Analytics performans sayaçlarını etkinleştirmeniz](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)gerekebilir.  Etkinleştirmek istediğiniz sayaçlar:
+Performans verilerini görmek için [uygun Log Analytics performans sayaçlarını etkinleştirmeniz](../platform/data-sources-performance-counters.md)gerekebilir.  Etkinleştirmek istediğiniz sayaçlar:
 
 Windows:
 - İşlemci (*) \\ % Işlemci zamanı
@@ -540,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST API
 
-Hizmet Eşlemesi içindeki tüm sunucu, işlem ve bağımlılık verileri, [Hizmet Eşlemesi REST API](https://docs.microsoft.com/rest/api/servicemap/)ile kullanılabilir.
+Hizmet Eşlemesi içindeki tüm sunucu, işlem ve bağımlılık verileri, [Hizmet Eşlemesi REST API](/rest/api/servicemap/)ile kullanılabilir.
 
 ## <a name="diagnostic-and-usage-data"></a>Tanılama ve kullanım verileri
 
@@ -571,7 +571,7 @@ Microsoft Bağımlılık aracısı, Microsoft Visual Studio çalışma zamanı k
 
 Aşağıdaki tabloda kod numaraları ve önerilen çözümler listelenmektedir.
 
-| Kod | Açıklama | Çözüm |
+| Kod | Description | Çözüm |
 |:--|:--|:--|
 | 0x17 | Kitaplık yükleyicisi, henüz yüklenmemiş bir Windows güncelleştirmesine ihtiyaç duyuyor. | En son kitaplık yükleyicisi günlüğüne bakın.<br><br>Bir başvurunun `Windows8.1-KB2999226-x64.msu` ardından bir satır gelmesi, `Error 0x80240017: Failed to execute MSU package,` KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows'da Evrensel C Çalışma Zamanı](https://support.microsoft.com/kb/2999226) makalesinin önkoşullar bölümündeki yönergeleri izleyin. Önkoşulları yüklemek için Windows Update'i çalıştırmanız ve sistemi birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft Bağımlılık aracısı yükleyicisini yeniden çalıştırın. |
 

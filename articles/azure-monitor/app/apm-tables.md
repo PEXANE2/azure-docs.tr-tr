@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83210547"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540120"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Çalışma alanı tabanlı kaynak değişiklikleri (Önizleme)
 
-[Çalışma alanı tabanlı Application Insights kaynaklarının](create-workspace-resource.md)kullanıma sunulmasından önce Application Insights verileri Azure izleyici 'deki diğer günlük verilerinden ayrı olarak depolandı. Her ikisi de Azure Veri Gezgini tabanlıdır ve aynı kusto sorgu dilini (KQL) kullanır. Bu, [Azure izleyici 'de günlüklerde](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)açıklanmıştır.
+[Çalışma alanı tabanlı Application Insights kaynaklarının](create-workspace-resource.md)kullanıma sunulmasından önce Application Insights verileri Azure izleyici 'deki diğer günlük verilerinden ayrı olarak depolandı. Her ikisi de Azure Veri Gezgini tabanlıdır ve aynı kusto sorgu dilini (KQL) kullanır. Bu, [Azure izleyici 'de günlüklerde](../platform/data-platform-logs.md)açıklanmıştır.
 
 Çalışma alanı tabanlı Application Insights kaynak verileri, diğer izleme verileri ve uygulama verileriyle birlikte bir Log Analytics çalışma alanında depolanır. Bu, birden çok çözüm genelinde verileri daha kolay analiz etmenize ve çalışma alanlarının özelliklerinden yararlanmasını sağlayarak yapılandırmanızı basitleştirir.
 
 ## <a name="table-structure"></a>Tablo yapısı
 
-| Eski tablo adı | Yeni tablo adı | Açıklama |
+| Eski tablo adı | Yeni tablo adı | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Kullanılabilirlik testlerinden özet veriler.|
 | Browserzamanlamalar | Appbrowserzamanlamalar | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler.|
@@ -59,7 +60,7 @@ Eski tablo: kullanılabilirlik
 |cloud_RoleName|string|Approtaname|string|
 |customDimensions|dynamic|Özellikler|Dinamik|
 |Customölçüler|dynamic|Ölçümler|Dinamik|
-|süre|real|Ort|real|
+|süre|real|DurationMs|real|
 |`id`|string|`Id`|string|
 |iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
@@ -69,7 +70,7 @@ Eski tablo: kullanılabilirlik
 |message|string|İleti|string|
 |name|string|Name|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |performanceBucket|string|PerformanceBucket|string|
@@ -110,7 +111,7 @@ Eski tablo: Browserzamanlamalar
 |name|string|Name|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |performanceBucket|string|PerformanceBucket|string|
@@ -148,7 +149,7 @@ Eski tablo: bağımlılıklar
 |customDimensions|dynamic|Özellikler|Dinamik|
 |Customölçüler|dynamic|Ölçümler|Dinamik|
 |veriler|string|Veriler|string|
-|süre|real|Ort|real|
+|süre|real|DurationMs|real|
 |`id`|string|`Id`|string|
 |iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
@@ -156,7 +157,7 @@ Eski tablo: bağımlılıklar
 |ItemType|string|Tür|Dize|
 |name|string|Name|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |performanceBucket|string|PerformanceBucket|string|
@@ -198,7 +199,7 @@ Eski tablo: customEvents
 |ItemType|string|Tür|string|
 |name|string|Name|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |SDK sürümü|string|SdkVersion|string|
@@ -233,7 +234,7 @@ Eski tablo: Customölçümler
 |ItemType|string|Tür|string|
 |name|string|Name|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |SDK sürümü|string|SdkVersion|string|
@@ -242,7 +243,7 @@ Eski tablo: Customölçümler
 |user_AccountId|string|Useraccountıd|string|
 |user_AuthenticatedId|string|Userauthenticatedıd|string|
 |user_Id|string|UserId|string|
-|değer|real|kaldırıldı||
+|value|real|kaldırıldı||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -270,7 +271,7 @@ Eski tablo: pageViews
 |cloud_RoleName|string|Approtaname|string|
 |customDimensions|dynamic|Özellikler|Dinamik|
 |Customölçüler|dynamic|Ölçümler|Dinamik|
-|süre|real|Ort|real|
+|süre|real|DurationMs|real|
 |`id`|string|`Id`|string|
 |iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
@@ -278,7 +279,7 @@ Eski tablo: pageViews
 |ItemType|string|Tür|Dize|
 |name|string|Name|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |performanceBucket|string|PerformanceBucket|string|
@@ -318,7 +319,7 @@ Eski tablo: performanceCounters
 |ItemType|string|Tür|string|
 |name|string|Name|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |SDK sürümü|string|SdkVersion|string|
@@ -327,7 +328,7 @@ Eski tablo: performanceCounters
 |user_AccountId|string|Useraccountıd|string|
 |user_AuthenticatedId|string|Userauthenticatedıd|string|
 |user_Id|string|UserId|string|
-|değer|real|Değer|real|
+|value|real|Değer|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -350,7 +351,7 @@ Eski tablo: istekler
 |cloud_RoleName|string|Approtaname|string|
 |customDimensions|dynamic|Özellikler|Dinamik|
 |Customölçüler|dynamic|Ölçümler|Dinamik|
-|süre|real|Ort|Gerçek|
+|süre|real|DurationMs|Gerçek|
 |`id`|string|`Id`|Dize|
 |iKey|string|IKey|string|
 |ItemCount|int|ItemCount|int|
@@ -358,7 +359,7 @@ Eski tablo: istekler
 |ItemType|string|Tür|Dize|
 |name|string|Name|Dize|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |performanceBucket|string|PerformanceBucket|Dize|
@@ -408,7 +409,7 @@ Eski tablo: özel durumlar
 |message|string|İleti|string|
 |method|string|Yöntem|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |outerAssembly|string|OuterAssembly|string|
@@ -452,7 +453,7 @@ Eski tablo: izlemeler
 |ItemType|string|Tür|string|
 |message|string|İleti|string|
 |operation_Id|string|OperationId|string|
-|operation_Name|string|ThrottledRequests|string|
+|operation_Name|string|OperationName|string|
 |operation_ParentId|string|Operationparentıd|string|
 |operation_SyntheticSource|string|OperationSyntheticSource|string|
 |SDK sürümü|string|SdkVersion|string|
@@ -466,4 +467,4 @@ Eski tablo: izlemeler
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ölçümleri keşfetme](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics sorguları yazma](../../azure-monitor/app/analytics.md)
+* [Analytics sorguları yazma](../log-query/log-query-overview.md)

@@ -2,12 +2,13 @@
 title: Kaynakları yeni bir aboneliğe veya kaynak grubuna taşıma
 description: Kaynakları yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 036def01ef8ae5732d372dd995ad8f425c36cad9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/15/2020
+ms.openlocfilehash: 2fe4fc956f52ab5229469e1f230aec056295f19a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057849"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539287"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni kaynak grubuna veya aboneliğe taşıma
 
@@ -16,6 +17,8 @@ Bu makalede, Azure kaynaklarını başka bir Azure aboneliğine veya aynı abone
 Taşıma işlemi sırasında hem kaynak grubu hem de hedef grup kilitlenir. Taşıma tamamlanana kadar kaynak gruplarında yazma ve silme işlemleri engellenir. Bu kilit, kaynak gruplarındaki kaynakları ekleyemez, güncelleştiremez veya silemezsiniz. Bu, kaynakların dondurulmuş olduğu anlamına gelmez. Örneğin, bir SQL Server ve veritabanını yeni bir kaynak grubuna taşırsanız, veritabanını kullanan bir uygulama kesinti yaşmaz. Hala veritabanına okuma ve yazma olabilir. Kilit en fazla dört saat için en fazla dört saat olabilir, ancak çoğu zaman çok daha az zaman tamamlanır.
 
 Bir kaynağı taşıdığınızda yalnızca onu yeni bir kaynak grubuna veya aboneliğe taşımış olursunuz. Bu işlem kaynağın konumunu değiştirmez.
+
+Azure Stack hub kullanıyorsanız, kaynakları gruplar arasında taşıyamazsınız.
 
 ## <a name="checklist-before-moving-resources"></a>Kaynakları taşımadan önce kullanılacak kontrol listesi
 

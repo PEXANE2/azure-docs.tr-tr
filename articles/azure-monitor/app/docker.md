@@ -3,16 +3,17 @@ title: Azure Application Insights Docker uygulamalarını izleme | Microsoft Doc
 description: Docker performans sayaçları, olaylar ve özel durumlar, Kapsayıcılı uygulamalardaki telemetri ile birlikte Application Insights ' de görüntülenebilir.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669616"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539933"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights (kullanım dışı) Docker uygulamalarını izleme
 
 > [!NOTE]
-> Bu çözüm kullanım dışı bırakıldı. Kapsayıcı izlemeyle ilgili mevcut yatırımlarımız hakkında daha fazla bilgi edinmek için [Azure izleyici 'yi kapsayıcılar için](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)kullanıma sunmamız önerilir.
+> Bu çözüm kullanım dışı bırakıldı. Kapsayıcı izlemeyle ilgili mevcut yatırımlarımız hakkında daha fazla bilgi edinmek için [Azure izleyici 'yi kapsayıcılar için](../insights/container-insights-overview.md)kullanıma sunmamız önerilir.
 
 [Docker](https://www.docker.com/) kapsayıcılarından gelen yaşam döngüsü olayları ve performans sayaçları Application Insights üzerinde grafiklenebilir. [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) görüntüsünü konaktaki bir kapsayıcıya yüklediğinizde, diğer görüntüler için de, ana bilgisayar için performans sayaçlarını görüntüler.
 

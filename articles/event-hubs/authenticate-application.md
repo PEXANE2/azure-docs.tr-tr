@@ -3,12 +3,12 @@ title: Azure Event Hubs kaynaklarına erişmek için bir uygulamanın kimliğini
 description: Bu makale, Azure Event Hubs kaynaklarına erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama hakkında bilgi sağlar
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 50566c9405eb203778068b61a03cb9a2d22209b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cf51daef7298ff0ad487d5a072b6126557578c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318190"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537301"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama
 Microsoft Azure, Azure Active Directory (Azure AD) tabanlı kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Event Hubs kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı `https://eventhubs.azure.net/` (Kafka istemcileri için, belirteç istemek için kaynak `https://<namespace>.servicebus.windows.net` ). Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure Event Hubs kaynaklarına istek yetkilendirmek için erişim belirtecini kullanabilir.
@@ -69,7 +69,7 @@ Event Hubs kaynaklarını yetkilendirmek için Azure AD kullanmanın ilk adımı
 
 Aşağıdaki görüntüler, bir Web uygulamasını kaydetme adımlarını göstermektedir:
 
-![Uygulamaları kaydetme](./media/authenticate-application/app-registrations-register.png)
+![Uygulamayı kaydetme](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Uygulamanızı yerel bir uygulama olarak kaydettiğinizde, yeniden yönlendirme URI 'SI için geçerli bir URI belirtebilirsiniz. Yerel uygulamalar için, bu değerin gerçek bir URL olması gerekmez. Web uygulamaları için, yeniden yönlendirme URI 'si, belirteçlerin sağlandığı URL 'YI belirttiğinden geçerli bir URI olmalıdır.
@@ -78,7 +78,7 @@ Uygulamanızı kaydettikten sonra **Ayarlar**altında **uygulama (istemci) kimli
 
 ![Kayıtlı uygulamanın uygulama KIMLIĞI](./media/authenticate-application/application-id.png)
 
-Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../active-directory/develop/quickstart-v2-register-an-app.md).
+Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../active-directory/develop/quickstart-register-app.md).
 
 
 ### <a name="create-a-client-secret"></a>İstemci parolası oluşturma   
@@ -119,4 +119,3 @@ Aşağıdaki ilgili makalelere bakın:
 - [Paylaşılan erişim Imzalarını kullanarak Azure Event Hubs istek kimliklerini doğrulama](authenticate-shared-access-signature.md)
 - [Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme](authorize-access-azure-active-directory.md)
 - [Paylaşılan erişim Imzalarını kullanarak Event Hubs kaynaklarına erişim yetkisi verme](authorize-access-shared-access-signature.md)
-

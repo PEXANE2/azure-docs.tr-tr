@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539202"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Parçalı bir çok kiracılı Azure SQL veritabanı kullanarak bir SaaS uygulamasında yeni kiracılar sağlama ve kataloglandırın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +30,7 @@ Bu makalede iki ana bölüm bulunur:
 - Sağlamayı ve kataloglamaları gerçekleştiren PowerShell betik kodunu vurgulayan [öğretici](#goto_1_tutorial) .
   - Öğretici, çok kiracılı parçalı veritabanı düzenine uyarlanan Wingtip bilet SaaS uygulamasını kullanır.
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>Veritabanı Kalıbı
 
@@ -110,7 +111,7 @@ Bu öğreticideki kiracı sağlama betikleri aşağıdaki senaryolardan her ikis
 
 Kiracı verileri daha sonra, Katalog parça eşlemesinde başlatılır ve kaydedilir. Örnek uygulamada, birden fazla kiracı içeren veritabanlarına *tenants1* veya *tenants2*gibi genel bir ad verilir. Tek bir kiracı içeren veritabanlarına kiracının adı verilir. Bir kataloğun kullanımı, veritabanına herhangi bir adın atanmasına izin verdiğinden, örnekte kullanılan belirli adlandırma kuralları, düzenin kritik bir parçası değildir.
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>Öğretici başladı
 
@@ -122,7 +123,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Birden çok kiracılı ve tek kiracılı veritabanlarına kiracı grubu sağlama
 > * Bir katalogda bir veritabanını ve kiracı eşlemesini kaydetme
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 

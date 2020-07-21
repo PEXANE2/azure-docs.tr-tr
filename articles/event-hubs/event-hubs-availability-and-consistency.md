@@ -3,12 +3,12 @@ title: Kullanılabilirlik ve tutarlılık-Azure Event Hubs | Microsoft Docs
 description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirlik ve tutarlılık sağlama.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 497a6e7430c4e6f8e29f903294ca94a4cb23012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45ca5cc5790824d6c67a47a23691c6b0cae0b9f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315770"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537216"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 
@@ -141,5 +141,5 @@ Bu örnek, olaylarınızı Olay Hub 'ınızdaki kullanılabilir bölümlerden bi
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Event Hubs hizmete genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay hub’ı oluşturma](event-hubs-create.md)
+* [Event Hubs hizmete genel bakış](./event-hubs-about.md)
+* [Olay Hub 'ı oluşturma](event-hubs-create.md)

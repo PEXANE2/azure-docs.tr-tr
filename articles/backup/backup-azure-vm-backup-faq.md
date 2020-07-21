@@ -4,15 +4,16 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800660"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538777"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
-Bu makalede, Azure VM 'Leri [Azure Backup](backup-introduction-to-azure-backup.md) hizmetiyle yedekleme hakkında sık sorulan sorular yanıtlanmaktadır.
+Bu makalede, Azure VM 'Leri [Azure Backup](./backup-overview.md) hizmetiyle yedekleme hakkında sık sorulan sorular yanıtlanmaktadır.
 
 ## <a name="backup"></a>Backup
 
@@ -82,7 +83,7 @@ Anlık görüntüler, WA özellikli diskte alınamaz. Ancak Azure Backup hizmeti
 
 Azure Backup, WA özellikli diski yedekleyebilir, ancak bunu yedekten hariç tutabilir. Ancak, WA özellikli disk hakkında bilgi yedeklenmediği için yedekleme veritabanı tutarlılığı sağlamaz. İşletim sistemi diski yedeklemesini ve WA etkin olmayan disklerin yedeklemesini istiyorsanız bu yapılandırmayla diskleri yedekleyebilirsiniz.
 
-Azure Backup, 15 dakikalık bir RPO 'ya sahip SAP HANA veritabanları için bir akış yedekleme çözümü sağlar. SAP HANA yerel API 'Lerinden yararlanan yerel bir yedekleme desteği sağlamak için SAP tarafından karşılıklı olarak sertifikalanmış. [Azure VM 'lerinde SAP HANA veritabanlarını yedekleme hakkında](https://docs.microsoft.com/azure/backup/sap-hana-db-about)daha fazla bilgi edinin.
+Azure Backup, 15 dakikalık bir RPO 'ya sahip SAP HANA veritabanları için bir akış yedekleme çözümü sağlar. SAP HANA yerel API 'Lerinden yararlanan yerel bir yedekleme desteği sağlamak için SAP tarafından karşılıklı olarak sertifikalanmış. [Azure VM 'lerinde SAP HANA veritabanlarını yedekleme hakkında](./sap-hana-db-about.md)daha fazla bilgi edinin.
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Yedekleme başlangıç zamanında, VM yedekleme ilkemdeki ayarlanmış olan zamanlanmış yedekleme zamanından maksimum gecikme süresini tahmin edebilirim?
 
@@ -128,7 +129,11 @@ Geri yükleme işlemi aynı kalır. Kurtarma noktası, sanal makinenin yönetilm
 
 PowerShell 'de bunu yapma hakkında [daha fazla bilgi edinin](backup-azure-vms-automation.md#restore-an-azure-vm) .
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Silinen VM 'yi geri yükleyebilir miyim?
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>Geri yükleme VM 'yi oluşturamazsa, geri yüklemeye dahil olan disklere ne olur?
+
+Yönetilen bir VM geri yükleme durumunda, VM oluşturma başarısız olsa bile, diskler yine de geri yüklenecektir.
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Silinen bir VM 'yi geri yükleyebilir miyim?
 
 Evet. VM 'yi silseniz bile kasadaki karşılık gelen yedekleme öğesine gidebilir ve bir kurtarma noktasından geri yükleme yapabilirsiniz.
 
@@ -142,13 +147,13 @@ Yönetilen disk Azure VM 'Leri için, kullanılabilirlik kümelerine geri yükle
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Şifrelenmiş VM için Anahtar Kasası ayarlarını değiştirdiğimiz zaman ne olur?
 
-Şifrelenmiş VM için Anahtar Kasası ayarlarını değiştirdikten sonra yedeklemeler, yeni ayrıntı kümesiyle çalışmaya devam edecektir. Ancak, değişiklikten önce bir kurtarma noktasından geri yükleme yapıldıktan sonra, VM 'yi oluşturmadan önce bir anahtar kasasındaki gizli dizileri geri yüklemeniz gerekir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)bakın.
+Şifrelenmiş VM için Anahtar Kasası ayarlarını değiştirdikten sonra yedeklemeler, yeni ayrıntı kümesiyle çalışmaya devam edecektir. Ancak, değişiklikten önce bir kurtarma noktasından geri yükleme yapıldıktan sonra, VM 'yi oluşturmadan önce bir anahtar kasasındaki gizli dizileri geri yüklemeniz gerekir. Daha fazla bilgi için bu [makaleye](./backup-azure-restore-key-secret.md)bakın.
 
-Gizli/anahtar alma işlemleri gibi işlemler bu adımı gerektirmez ve geri yüklemeden sonra aynı Keykasası kullanılabilir.
+Gizli/anahtar alma işlemleri gibi işlemler bu adımı gerektirmez ve geri yüklemeden sonra aynı Anahtar Kasası kullanılabilir.
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle, geri yüklendikten sonra sanal makineye erişebilir miyim?
 
-Evet, bir VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle VM 'ye bir kez erişirsiniz. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) bakın
+Evet, bir VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle VM 'ye bir kez erişirsiniz. Daha fazla bilgi için bu [makaleye](./backup-azure-arm-restore-vms.md#post-restore-steps) bakın
 
 ## <a name="manage-vm-backups"></a>VM yedeklemelerini yönetme
 

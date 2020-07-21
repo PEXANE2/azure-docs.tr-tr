@@ -5,17 +5,18 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82836822"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540171"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
 Canlı bir site sorunu veya kesintisi oluştuğunda, kök nedenin hızla belirlenmesi kritik öneme sahiptir. Standart izleme çözümleri sizi bir sorunla ilgili olarak uyarabilir. Bunlar, hangi bileşenin başarısız olduğunu bile gösterebilir. Ancak bu uyarı hatanın nedenini her zaman açıklamayacaktır. Sitenizde beş dakika önce çalıştık ve artık bozulmuş. Son beş dakika içinde ne değişti? Bu, uygulama değişikliği analizinin Azure Izleyici 'de yanıtlamak üzere tasarlandığına yönelik sorudır.
 
-[Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)'nin gücüyle çalışırken, değişiklik Analizi Observability artırmak ve MTTR 'i azaltmak için Azure uygulamanızın değişiklikleriyle ilgili öngörüler sağlar (ortalama onarım süresi).
+[Azure Kaynak Grafiği](../../governance/resource-graph/overview.md)'nin gücüyle çalışırken, değişiklik Analizi Observability artırmak ve MTTR 'i azaltmak için Azure uygulamanızın değişiklikleriyle ilgili öngörüler sağlar (ortalama onarım süresi).
 
 > [!IMPORTANT]
 > Değişiklik Analizi Şu anda önizleme aşamasındadır. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Bu sürüm, üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -34,7 +35,7 @@ Uygulama değişikliği analiz sorguları, Azure Resource Manager izlenen özell
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>İzlenen Özellikler değişikliklerini Azure Resource Manager
 
-[Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)'ni kullanarak, değişiklik analizi, uygulamanızı barındıran Azure kaynaklarının zaman içinde nasıl değiştiğini gösteren bir geçmiş kaydı sağlar. Yönetilen kimlikler, Platform işletim sistemi yükseltmesi ve ana bilgisayar adları gibi izlenen ayarlar algılanabilir.
+[Azure Kaynak Grafiği](../../governance/resource-graph/overview.md)'ni kullanarak, değişiklik analizi, uygulamanızı barındıran Azure kaynaklarının zaman içinde nasıl değiştiğini gösteren bir geçmiş kaydı sağlar. Yönetilen kimlikler, Platform işletim sistemi yükseltmesi ve ana bilgisayar adları gibi izlenen ayarlar algılanabilir.
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure Resource Manager proxy ayar değişiklikleri
 
@@ -58,7 +59,7 @@ Kaynak bağımlılıklarındaki değişiklikler de bir Web uygulamasında sorunl
 
 Uygulama değişikliği çözümleme hizmeti, yukarıda belirtilen veri kaynaklarından verileri hesaplar ve toplar. Kullanıcıların tüm kaynak değişikliklerinde kolayca gezinecek ve sorun giderme veya izleme bağlamında hangi değişikliğin ilgili olduğunu belirleyebilecekleri bir analiz kümesi sağlar.
 "Microsoft. ChangeAnalysis" kaynak sağlayıcısının, Azure Resource Manager izlenen özellikler için bir aboneliğe kayıtlı olması ve proxy ayarları değişiklik verilerinin kullanılabilir olması gerekir. Web uygulaması tanılama ve çözme sorunları aracını girerken veya değişiklik Analizi tek başına sekmesini getirdiğinizde, bu kaynak sağlayıcı otomatik olarak kaydedilir. Aboneliğiniz için herhangi bir performans veya maliyet uygulaması yoktur. Web uygulamaları için değişiklik analizini etkinleştirdiğinizde (veya sorunları Tanıla ve çöz aracını etkinleştirirseniz), Web uygulaması üzerinde daha fazla performans etkisi olur ve fatura maliyeti yoktur.
-Web uygulaması Konuk içi değişiklikler için, bir Web uygulaması içindeki kod dosyalarını taramak üzere ayrı etkinleştirme gerekir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan [sorunları Tanıla ve çöz araç bölümündeki değişiklik Analizi](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#application-change-analysis-in-the-diagnose-and-solve-problems-tool) bölümüne bakın.
+Web uygulaması Konuk içi değişiklikler için, bir Web uygulaması içindeki kod dosyalarını taramak üzere ayrı etkinleştirme gerekir. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan [sorunları Tanıla ve çöz araç bölümündeki değişiklik Analizi](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) bölümüne bakın.
 
 ## <a name="visualizations-for-application-change-analysis"></a>Uygulama değişikliği analizinin görselleştirmeleri
 
@@ -118,7 +119,7 @@ Aboneliğiniz çok sayıda Web uygulaması içeriyorsa, hizmeti Web uygulaması 
 
 Önkoşullar:
 
-- PowerShell az Module. [Azure PowerShell modülünü yüklerken](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0) yönergeleri izleyin
+- PowerShell az Module. [Azure PowerShell modülünü yüklerken](/powershell/azure/install-az-ps?view=azps-2.6.0) yönergeleri izleyin
 
 Şu betiği çalıştırın:
 
@@ -158,4 +159,4 @@ Bir sanal makine için sorunları tanılama ve çözme aracını ziyaret edin.  
 
 - [Azure Uygulama Hizmetleri uygulamaları](azure-web-apps.md)için Application Insights etkinleştirin.
 - [Azure VM ve Azure sanal makine ölçek kümesi için Application Insights ETKINLEŞTIRME IIS tarafından barındırılan uygulamalar](azure-vm-vmss-apps.md).
-- Power Change analizine yardımcı olan [Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/overview)hakkında daha fazla bilgi edinin.
+- Power Change analizine yardımcı olan [Azure Kaynak Grafiği](../../governance/resource-graph/overview.md)hakkında daha fazla bilgi edinin.

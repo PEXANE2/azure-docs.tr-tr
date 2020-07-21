@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945401"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539712"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -29,7 +29,7 @@ Azure [izleyici Ile Azure kaynaklarını izlemek](monitor-azure-resource.md) , A
 - Depolama ve Olay Hub 'ları gibi diğer hedeflere platform ölçümleri göndermek için bir sanal makine için [Tanılama ayarları](../platform/diagnostic-settings.md) oluşturabilirsiniz, ancak bu tanılama ayarlarını Azure Portal yapılandıramazsınız. 
 
 ## <a name="monitoring-data"></a>Verileri izleme
-Azure 'da Azure 'daki sanal makineler, aşağıdaki diyagramı gösterilen şekilde [Günlükler](../platform/data-platform-logs.md) ve [ölçümler](../platform/data-platform-metrics.md) oluşturur.
+Azure 'daki sanal makineler, aşağıdaki diyagramda gösterildiği gibi [Günlükler](../platform/data-platform-logs.md) ve [ölçümler](../platform/data-platform-metrics.md) oluşturur.
 
 ![Genel Bakış](media/monitor-vm-azure/logs-metrics.png)
 
@@ -130,15 +130,15 @@ Bir sanal makine için izleme verileri koleksiyonunu yapılandırdıktan sonra, 
 
 ![Azure portal izleme](media/monitor-vm-azure/monitor-menu.png)
 
-| Menü seçeneği | Açıklama |
+| Menü seçeneği | Description |
 |:---|:---|
 | Genel Bakış | Sanal makine konağı için [Platform ölçümlerini](../platform/data-platform-metrics.md) görüntüler. [Ölçüm Gezgini](../platform/metrics-getting-started.md)'nde bu verilerle çalışmak için bir grafiğe tıklayın. |
-| Etkinlik günlüğü | Geçerli sanal makine için filtrelenmiş [etkinlik günlüğü](../platform/activity-log-view.md) girdileri. |
+| Etkinlik günlüğü | Geçerli sanal makine için filtrelenmiş [etkinlik günlüğü](../platform/activity-log.md#view-the-activity-log) girdileri. |
 | Insights | Seçilen geçerli sanal makine için eşle [VM'ler için Azure izleyici](../insights/vminsights-overview.md) açar. |
 | Uyarılar | Geçerli sanal makine için [uyarıları](../platform/alerts-overview.md) görüntüler.  |
 | Ölçümler | [Ölçüm Gezgini](../platform/metrics-getting-started.md) ' ni geçerli sanal makineye ayarlı kapsam ile açın. |
 | Tanılama ayarları | Geçerli sanal makine için [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) etkinleştirin ve yapılandırın. |
-| Danışman önerileri | [Azure Advisor](/azure/advisor/)'ın geçerli sanal makinesine yönelik öneriler. |
+| Danışman önerileri | [Azure Advisor](../../advisor/index.yml)'ın geçerli sanal makinesine yönelik öneriler. |
 | Günlükler | [Kapsamın](../log-query/scope.md) geçerli sanal makineye ayarlandığı [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics) açın. |
 | Bağlantı İzleyicisi | Geçerli sanal makine ile diğer sanal makineler arasındaki bağlantıları izlemek için [ağ Izleyicisi bağlantı izleyicisini](../../network-watcher/connection-monitor-preview.md) açın. |
 
@@ -148,7 +148,7 @@ Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kull
 
 Ölçümler için sanal makineler tarafından kullanılan üç ad alanı vardır:
 
-| Ad Alanı | Açıklama | Gereksinim |
+| Ad Alanı | Description | Gereksinim |
 |:---|:---|:---|
 | Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. | Yapılandırma gerekmeden otomatik olarak toplanır. |
 | Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |
@@ -226,7 +226,7 @@ Event
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM), sanal makinelerde iş yüklerinin ayrıntılı bir şekilde izlenmesini sağlar. İzleme platformlarının ve uygulama için farklı stratejilerin karşılaştırması için bkz. [bulut Izleme Kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/) .
+System Center Operations Manager (SCOM), sanal makinelerde iş yüklerinin ayrıntılı bir şekilde izlenmesini sağlar. İzleme platformlarının ve uygulama için farklı stratejilerin karşılaştırması için bkz. [bulut Izleme Kılavuzu](/azure/cloud-adoption-framework/manage/monitor/) .
 
 Kullanmaya devam etmek istediğiniz mevcut bir SCOM ortamınız varsa, ek işlevsellik sağlamak için Azure Izleyici ile tümleştirilebilir. Azure Izleyici tarafından kullanılan Log Analytics Aracısı, SCOM için kullanılan ve her ikisine de veri gönderen izlenen sanal makineler olacak şekilde aynıdır. VM'ler için Azure İzleyici için aracıyı eklemeniz ve çalışma alanını yukarıda belirtilen ek verileri toplayacak şekilde yapılandırmanız gerekir, ancak sanal makineler, değişiklik yapmadan bir SCOM ortamında var olan yönetim paketlerini çalıştırmaya devam edebilir.
 
@@ -242,4 +242,3 @@ Mevcut SCOM yönetim grubunuzu Log Analytics çalışma alanınıza bağlama hak
 
 * [Günlük sorgularını kullanarak Azure Izleyici günlüklerinde verileri çözümlemeyi öğrenin.](../log-query/get-started-queries.md)
 * [Azure Izleyici 'de ölçümleri ve günlükleri kullanarak uyarılar hakkında bilgi edinin.](../platform/alerts-overview.md)
-

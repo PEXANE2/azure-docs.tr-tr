@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232092"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536978"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -22,15 +22,7 @@ Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, b
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Azure Güvenlik duvarında hangi özellikler destekleniyor?
 
-* Hizmet olarak durum bilgisi olan güvenlik duvarı
-* Kısıtlanmamış bulut ölçeklenebilirliği ile yerleşik yüksek kullanılabilirlik
-* FQDN filtreleme
-* FQDN etiketleri
-* Ağ trafiği filtreleme kuralları
-* Giden SNAT desteği
-* Gelen DNAT desteği
-* Azure abonelikleri ve sanal ağlar genelinde merkezi olarak uygulama ve ağ bağlantısı ilkeleri oluşturun, uygulayın ve günlüğe kaydedin
-* Günlüğe kaydetme ve analiz için Azure Izleyici ile tam olarak tümleşik
+Azure Güvenlik duvarı özellikleri hakkında bilgi edinmek için bkz. [Azure Güvenlik Duvarı Özellikleri](features.md).
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure Güvenlik Duvarı için tipik dağıtım modeli nedir?
 
@@ -88,7 +80,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örnek:
+Örneğin:
 
 ```azurepowershell
 # Stop an existing firewall

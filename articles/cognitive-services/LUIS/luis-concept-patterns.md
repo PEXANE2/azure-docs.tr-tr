@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538063"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Desenler tahmin doğruluğunu geliştirir
 Desenler, birkaç söylenme çok benzer olduğunda doğruluğu artırmak için tasarlanmıştır.  Bir desen, çok daha fazla sayıda daha fazla bilgi sağlamadan bir amaç için daha fazla doğruluk elde etmenizi sağlar.
@@ -26,7 +26,7 @@ Bir çalışanla ilgili olarak kurumsal grafik üzerinde rapor veren bir Insan k
 
 ![Kuruluş grafiğinin görüntüsü](./media/luis-concept-patterns/org-chart.png)
 
-|Konuşmalar|Amaç tahmin edildi|Amaç puanı|
+|İfadeler|Amaç tahmin edildi|Amaç puanı|
 |--|--|--|
 |Tom 'ın astı kim?|GetOrgChart|.30|
 |Tom 'ın astı kim?|GetOrgChart|.30|
@@ -41,7 +41,7 @@ Desenler aşağıdaki durumları çözerek:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Desenler amaç garantisi değildir
 Desenler bir tahmin teknolojileri karışımı kullanır. Bir düzende bir şablon için amaç ayarlamak, amaç tahminine dair garanti değildir ancak güçlü bir sinyaldir.
 
-<a name="patterns-do-not-improve-entity-detection"/></a>
+<a name="patterns-do-not-improve-entity-detection"></a>
 
 ## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>Desenler makine öğrenimi varlığı algılamayı iyileştirmez
 
@@ -65,7 +65,7 @@ Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içer
 
 [!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 [En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="pattern-syntax"></a>Desen söz dizimi

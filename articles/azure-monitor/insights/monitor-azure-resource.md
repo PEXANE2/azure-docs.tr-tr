@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361964"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539746"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -79,9 +79,9 @@ Azure Izleyici günlüklerine veri toplanması Log Analytics çalışma alanı g
 ## <a name="diagnostic-settings"></a>Tanılama ayarları
 Tanılama ayarları, belirli bir kaynağın kaynak günlüklerinin ve ölçümlerinin nereye gönderileceğini tanımlar. Olası hedefler şunlardır:
 
-- Güçlü günlük sorguları ve ayrıca günlük uyarıları ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için, Azure Izleyici tarafından toplanan diğer izleme verileriyle verileri analiz etmenizi sağlayan [Log Analytics çalışma alanı](../platform/resource-logs-collect-workspace.md) . 
-- Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışı için [Olay Hub 'ları](../platform/resource-logs-stream-event-hubs.md) . 
-- Denetim, statik analiz veya yedekleme için yararlı olan [Azure depolama hesabı](../platform/resource-logs-collect-storage.md) .
+- Güçlü günlük sorguları ve ayrıca günlük uyarıları ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için, Azure Izleyici tarafından toplanan diğer izleme verileriyle verileri analiz etmenizi sağlayan [Log Analytics çalışma alanı](../platform/resource-logs.md#send-to-log-analytics-workspace) . 
+- Üçüncü taraf Sıems ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışı için [Olay Hub 'ları](../platform/resource-logs.md#send-to-azure-event-hubs) . 
+- Denetim, statik analiz veya yedekleme için yararlı olan [Azure depolama hesabı](../platform/resource-logs.md#send-to-azure-storage) .
 
 Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek için [Azure 'da platform günlükleri ve ölçümleri toplamak üzere tanılama oluştur](../platform/diagnostic-settings.md) bölümündeki yordamı izleyin. Bir şablonda tanımlamak ve bir kaynağın oluşturulduğu sırada tüm izlemeyi etkinleştirmek için [Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma](../platform/diagnostic-settings-template.md) konusuna bakın.
 
@@ -114,7 +114,7 @@ Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüs
 ### <a name="activity-log"></a>Etkinlik günlüğü 
 Geçerli kaynağa ilk filtresi ayarlanmış Azure portal etkinlik günlüğündeki girdileri görüntüleyin. Etkinlik günlüğünü, oturum sorguları ve çalışma kitaplarında kullanmak üzere bir Log Analytics çalışma alanına kopyalayın. 
 
-- Etkinlik günlüğünü görüntüleme ve çeşitli yöntemler kullanılarak girişleri alma hakkında ayrıntılı bilgi için bkz. [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../platform/activity-log-view.md) .
+- Etkinlik günlüğünü görüntüleme ve çeşitli yöntemler kullanılarak girişleri alma hakkında ayrıntılı bilgi için bkz. [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../platform/activity-log.md#view-the-activity-log) .
 - Günlüğe kaydedilen belirli olaylar için Azure hizmetinize yönelik belgelere bakın.
 
 ![Etkinlik Günlüğü](media/monitor-azure-resource/activity-log.png)
@@ -125,8 +125,8 @@ Azure Izleyici günlükleri, güçlü bir sorgu aracıyla analizler için birden
 [Log Analytics](../log-query/get-started-portal.md) , tam özellikli bir sorgu dili kullanarak günlük verilerinin gelişmiş analizini gerçekleştirmenize olanak tanıyan, Azure izleyici 'nin güçlü bir özelliği olan [günlük sorgularıyla](../log-query/log-query-overview.md)çalışmanıza olanak sağlar. [Sorgu kapsamı](../log-query/scope.md#query-scope)olarak kaynağı kullanarak günlük sorgularıyla çalışmak Için bir Azure kaynağının **izleme** menüsündeki **günlüklerden** Log Analytics açın. Bu, yalnızca söz konusu kaynak için birden çok tablo genelinde verileri analiz etmenizi sağlar. Tüm kaynaklar için günlüklere erişmek üzere Azure Izleyici menüsünden **günlükleri** kullanın. 
 
 - Günlük sorgularını yazmak için kullanılan sorgu dilini kullanma hakkında bir öğretici için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../log-query/get-started-queries.md) .
-- Azure Izleyici günlüklerinde kaynak günlüklerinin nasıl toplandığını ve bir sorgudaki bunlara nasıl erişecekleri hakkında bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](../platform/resource-logs-collect-workspace.md) .
-- Kaynak günlük verilerinin Azure Izleyici günlüklerinde nasıl yapılandırıldığı hakkında bir açıklama için bkz. [koleksiyon modu](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) .
+- Azure Izleyici günlüklerinde kaynak günlüklerinin nasıl toplandığını ve bir sorgudaki bunlara nasıl erişecekleri hakkında bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](../platform/resource-logs.md#send-to-log-analytics-workspace) .
+- Kaynak günlük verilerinin Azure Izleyici günlüklerinde nasıl yapılandırıldığı hakkında bir açıklama için bkz. [koleksiyon modu](../platform/resource-logs.md#send-to-log-analytics-workspace) .
 - Azure Izleyici günlüklerinde tablosu hakkındaki ayrıntılar için her bir Azure hizmetine yönelik belgelere bakın.
 
 ![Günlükler](media/monitor-azure-resource/logs.png)
@@ -163,4 +163,4 @@ Uyarıları görüntülemek ve bu kaynakla ilgili uyarı kurallarını yönetmek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/diagnostic-logs-schema.md) .  
+* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/resource-logs-schema.md) .  

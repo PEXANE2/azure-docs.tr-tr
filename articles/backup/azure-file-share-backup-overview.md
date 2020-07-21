@@ -3,11 +3,12 @@ title: Azure dosya paylaşma yedeklemesi hakkında
 description: Azure dosya paylaşımlarını kurtarma hizmetleri kasasında nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40cb9ca0bd34fd65ab1983af6384d617db26e996
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299239"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539100"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi hakkında
 
@@ -20,7 +21,7 @@ Azure dosya paylaşma yedeklemesi, buluttaki verilerinizi koruyan ve şirket iç
 * **Yerleşik yönetim özellikleri**: yedeklemeleri zamanlayabilir ve veri ayıklama ek yükü olmadan istenen saklama süresini belirtebilirsiniz.
 * **Anında geri yükleme**: Azure dosya paylaşma yedeklemesi dosya paylaşımının anlık görüntülerini kullanır, bu nedenle yalnızca anında geri yüklemek istediğiniz dosyaları seçebilirsiniz.
 * **Uyarı ve raporlama**: yedekleme ve geri yükleme hatalarıyla ilgili uyarıları yapılandırabilir ve dosya paylaşımlarınız genelinde yedeklemeler hakkında öngörü almak için Azure Backup tarafından sunulan raporlama çözümünü kullanabilirsiniz.
-* **Dosya paylaşımlarının yanlışlıkla silinmesine karşı koruma**: Azure Backup, depolama hesabı düzeyinde [geçici silme özelliğini](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) 14 günlük bir bekletme dönemi ile sunar. Kötü amaçlı aktör dosya paylaşımından silse bile, dosya paylaşımının içerik ve kurtarma noktaları (anlık görüntüler) yapılandırılabilir bir bekletme süresi boyunca tutulur ve böylece kaynak içeriğin ve anlık görüntülerin başarılı ve tamamen kurtarılmasına izin verilmez.
+* **Dosya paylaşımlarının yanlışlıkla silinmesine karşı koruma**: Azure Backup, depolama hesabı düzeyinde [geçici silme özelliğini](../storage/files/storage-files-prevent-file-share-deletion.md) 14 günlük bir bekletme dönemi ile sunar. Kötü amaçlı aktör dosya paylaşımından silse bile, dosya paylaşımının içerik ve kurtarma noktaları (anlık görüntüler) yapılandırılabilir bir bekletme süresi boyunca tutulur ve böylece kaynak içeriğin ve anlık görüntülerin başarılı ve tamamen kurtarılmasına izin verilmez.
 
 ## <a name="architecture"></a>Mimari
 

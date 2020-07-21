@@ -8,24 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 4df5949e24e3fa59d37379c058a777c93dda2c44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5fbe316580cfa2ca280a2587536df037146e8d02
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878382"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538131"
 ---
 # <a name="deploy-the-face-container-to-azure-container-instances"></a>Yüz kapsayıcısını Azure Container Instances dağıtım
+
+> [!IMPORTANT]
+> Yüz kapsayıcı kullanıcıları için sınıra ulaşıldı. Şu anda yüz kapsayıcısı için yeni uygulamalar kabul etmiyoruz.
 
 Bilişsel [Hizmetler kapsayıcısı](../face-how-to-install-containers.md) kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)dağıtma hakkında bilgi edinin. Bu yordamda, bir Azure yüz kaynağı oluşturma işlemi gösterilir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteme
-
-[!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Create a Cognitive Services Face resource](../includes/create-face-resource.md)]
 

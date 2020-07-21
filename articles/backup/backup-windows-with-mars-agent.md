@@ -3,11 +3,12 @@ title: MARS Aracısı 'nı kullanarak Windows makinelerini yedekleme
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını kullanın.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604854"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538641"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server dosyalarını ve klasörlerini Azure 'a yedekleme
 
@@ -52,7 +53,7 @@ Bir yedekleme ilkesi oluşturmak için:
     ![Yedeklenecek öğeleri seçin](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. **Yedeklenecek öğeleri seçin** sayfasında **İleri**' yi seçin.
-1. **Yedekleme zamanlamasını belirtin** sayfasında, günlük veya haftalık yedeklemelerin ne zaman ele geçirmesine belirtin. Ardından **İleri**' yi seçin.
+1. **Yedekleme zamanlamasını belirtin** sayfasında, günlük veya haftalık yedeklemelerin ne zaman ele geçirmesine belirtin. Sonra **İleri**’yi seçin.
 
     * Bir yedekleme çekilirken bir kurtarma noktası oluşturulur.
     * Ortamınızda oluşturulan kurtarma noktası sayısı yedekleme zamanlamanıza bağlıdır.
@@ -64,7 +65,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
         ![Haftalık yedekleme zamanlaması ayarlama](./media/backup-configure-vault/week-schedule.png)
 
-1. **Bekletme Ilkesi Seç** sayfasında, verilerinizin geçmiş kopyalarının nasıl depolanacağını belirtin. Ardından **İleri**' yi seçin.
+1. **Bekletme Ilkesi Seç** sayfasında, verilerinizin geçmiş kopyalarının nasıl depolanacağını belirtin. Sonra **İleri**’yi seçin.
 
     * Bekletme ayarları hangi kurtarma noktalarının depolanacağını ve ne kadar süreyle depolanacağını belirtir.
     * Günlük bekletme ayarı için, günlük bekletme için belirtilen zamanda, en son kurtarma noktasının belirtilen gün sayısı boyunca tutulacaksınız. Ya da her ayın 30. gününde oluşturulan kurtarma noktasının 12 ay boyunca depolanması gerektiğini göstermek için bir aylık bekletme ilkesi belirtebilirsiniz.
@@ -103,7 +104,7 @@ Bir ilk yedeklemeyi ağ üzerinden otomatik olarak çalıştırabilir veya çevr
 1. Yedekleme verilerini bir hazırlama konumuna yazın.
 1. Hazırlama konumundaki verileri bir veya daha fazla SATA diskine kopyalamak için AzureOfflineBackupDiskPrep aracını kullanın.
 
-    Araç bir Azure Içeri aktarma işi oluşturur. Daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma hizmeti nedir?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)
+    Araç bir Azure Içeri aktarma işi oluşturur. Daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma hizmeti nedir?](../storage/common/storage-import-export-service.md)
 1. SATA disklerini bir Azure veri merkezine gönderin.
 
     Veri merkezinde, disk verileri bir Azure depolama hesabına kopyalanır. Azure Backup, verileri depolama hesabından kasaya kopyalar ve artımlı yedeklemeler zamanlanır.
@@ -114,7 +115,7 @@ Bir ilk yedeklemeyi ağ üzerinden otomatik olarak çalıştırabilir veya çevr
 
 Ağ azaltmayı etkinleştirerek MARS aracısının ağ bant genişliğini nasıl kullandığını kontrol edebilirsiniz. Çalışma saatleri sırasında verileri yedeklemeniz gerekiyorsa ancak yedekleme ve geri yükleme etkinliğinin kullandığı bant genişliğini denetlemek istediğinizde kısıtlama yararlı olur.
 
-Azure Backup ağ azaltma, yerel işletim sisteminde [hizmet kalitesi (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) kullanır.
+Azure Backup ağ azaltma, yerel işletim sisteminde [hizmet kalitesi (QoS)](/windows-server/networking/technologies/qos/qos-policy-top) kullanır.
 
 Yedeklemeler için ağ azaltma, Windows Server 2012 ve üzeri sürümlerde ve Windows 8 ve üzeri sürümlerde kullanılabilir. İşletim sistemleri en son hizmet paketlerini çalıştırıyor olmalıdır.
 
@@ -124,7 +125,7 @@ Ağ azaltmayı etkinleştirmek için:
 1. **Daraltma** sekmesinde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin.
 
     ![Yedekleme işlemleri için ağ daraltma ayarlama](./media/backup-configure-vault/throttling-dialog.png)
-1. Çalışma saatleri ve çalışma dışı saatler sırasında izin verilen bant genişliğini belirtin. Bant genişliği değerleri 512 kbps ile başlar ve 1.023 MBps 'e kadar gider. Sonra **Tamam**’ı seçin.
+1. Çalışma saatleri ve çalışma dışı saatler sırasında izin verilen bant genişliğini belirtin. Bant genişliği değerleri 512 kbps ile başlar ve 1.023 MBps 'e kadar gider. Ardından **Tamam**’ı seçin.
 
 ## <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma
 

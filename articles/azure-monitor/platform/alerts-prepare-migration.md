@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114420"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539559"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve runbook'larınızı klasik uyarı kurallarının geçişine hazırlama
 
@@ -27,12 +28,12 @@ Klasik uyarı kuralları () oluşturan ve yöneten API 'ler `microsoft.insights/
 
 Aşağıdaki tabloda hem klasik hem de yeni uyarılar için programlı arabirimlerin bir başvurusu verilmiştir:
 
-|         |Klasik uyarılar  |Yeni ölçüm uyarıları |
-|---------|---------|---------|
-|REST API     | [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az Monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Başvuru](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Başvuru](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager şablonu | [Klasik uyarılar için](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Yeni ölçüm uyarıları için](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| Dağıtım betiği türü | Klasik uyarılar | Yeni ölçüm uyarıları |
+| ---------------------- | -------------- | ----------------- |
+|REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI’si     | [az Monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [Başvuru](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Başvuru](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager şablonu | [Klasik uyarılar için](./alerts-enable-template.md)|[Yeni ölçüm uyarıları için](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>Bildirim yükü değişiklikleri
 
@@ -40,8 +41,8 @@ Bildirim yükü biçimi, [Klasik uyarı kuralları](alerts-webhooks.md) ve [yeni
 
 Web kancası yük alanlarını klasik biçimden yeni biçime eşlemek için aşağıdaki tabloyu kullanın:
 
-|  |Klasik uyarılar  |Yeni ölçüm uyarıları |
-|---------|---------|---------|
+| Bildirim uç noktası türü | Klasik uyarılar | Yeni ölçüm uyarıları |
+| -------------------------- | -------------- | ----------------- |
 |Uyarı etkinleştirildi veya çözüldü mı?    | **durumlarına**       | **Data. Status** |
 |Uyarı hakkında bağlamsal bilgiler     | **bağlam**        | **Data. Context**        |
 |Uyarının etkinleştirildiği veya çözümlendiği zaman damgası     | **Context. Timestamp**       | **Data. Context. Timestamp**        |
@@ -70,7 +71,7 @@ Web kancası yük alanlarını klasik biçimden yeni biçime eşlemek için aşa
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Bir mantıksal uygulamayı ölçüm Uyarısı bildirimi alacak şekilde değiştirme
 
-Klasik uyarılarla Logic Apps kullanıyorsanız, yeni ölçüm uyarıları yükünü ayrıştırmak için mantıksal uygulama kodunuzu değiştirmeniz gerekir. Şu adımları uygulayın:
+Klasik uyarılarla Logic Apps kullanıyorsanız, yeni ölçüm uyarıları yükünü ayrıştırmak için mantıksal uygulama kodunuzu değiştirmeniz gerekir. Şu adımları izleyin:
 
 1. Yeni bir mantıksal uygulama oluşturun.
 
@@ -149,11 +150,11 @@ else {
 
 ```
 
-Bir uyarı tetiklendiğinde bir sanal makineyi durduran runbook 'un tam bir örneği için bkz. [Azure Otomasyonu belgeleri](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook).
+Bir uyarı tetiklendiğinde bir sanal makineyi durduran runbook 'un tam bir örneği için bkz. [Azure Otomasyonu belgeleri](../../automation/automation-create-alert-triggered-runbook.md).
 
 ## <a name="partner-integration-via-webhooks"></a>Web kancaları aracılığıyla iş ortağı tümleştirmesi
 
-[Klasik uyarılarla tümleştirilen iş ortaklarımızın](https://docs.microsoft.com/azure/azure-monitor/platform/partners) çoğu, tümleştirmelerine göre zaten yeni ölçüm uyarılarını desteklemektedir. Yeni ölçüm uyarıları ile zaten çalışan bilinen tümleştirmeler şunlardır:
+[Klasik uyarılarla tümleştirilen iş ortaklarımızın](./partners.md) çoğu, tümleştirmelerine göre zaten yeni ölçüm uyarılarını desteklemektedir. Yeni ölçüm uyarıları ile zaten çalışan bilinen tümleştirmeler şunlardır:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)

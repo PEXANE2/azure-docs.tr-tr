@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 10ea3c68695e7e4fb4950fbcc4a190e9f1d83f49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797709"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539814"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights Kullanıcı, oturum ve olay Analizi
 
@@ -18,7 +19,7 @@ Kullanıcıların Web uygulamanızı ne zaman kullandığı, en çok hangi sayfa
 
 ![Application Insights kullanıcıların ekran görüntüsü](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Application Insights portalındaki kullanıcılar, oturumlar veya olaylar dikey penceresinde verileri henüz görmüyorsanız, [kullanım araçlarını kullanmaya nasıl başlaleyeceğinizi öğrenin](usage-overview.md).
 
@@ -56,7 +57,7 @@ Kullanıcılar, oturumlar veya olaylar raporundaki verilerin bir kopyasını pay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) veya [sayfa görünümleri](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)göndermeye başlayın.
+- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](./api-custom-events-metrics.md#trackevent) veya [sayfa görünümleri](./api-custom-events-metrics.md#page-views)göndermeye başlayın.
 - Özel olayları veya sayfa görünümlerini zaten gönderirseniz, kullanıcıların hizmetinizi nasıl kullandığını öğrenmek için kullanım araçları ' nı araştırın.
     - [Huniler](usage-funnels.md)
     - [Bekletme](usage-retention.md)

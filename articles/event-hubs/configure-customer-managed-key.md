@@ -3,12 +3,12 @@ title: Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kendi
 description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479836"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537267"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -41,7 +41,7 @@ Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için
 ## <a name="set-up-a-key-vault-with-keys"></a>Anahtarlar içeren bir Anahtar Kasası ayarlama
 Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri tarafından yönetilen anahtarı Azure Event Hubs ad alanınız ile ilişkilendirmeniz gerekir. Event Hubs yalnızca Azure Key Vault destekler. Önceki bölümde, **müşteri tarafından yönetilen anahtar seçeneğiyle şifrelemeyi** etkinleştirirseniz, anahtarın Azure Key Vault içine aktarılması gerekir. Ayrıca, anahtarlar için **yumuşak silme** ve anahtar Için de **Temizleme** yapılandırması olmalıdır. Bu ayarlar, [PowerShell](../key-vault/general/soft-delete-powershell.md) veya [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
 
-1. Yeni bir Anahtar Kasası oluşturmak için Azure Key Vault [hızlı](../key-vault/general/overview.md)başlangıcı ' nı izleyin. Varolan anahtarları içeri aktarma hakkında daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md).
+1. Yeni bir Anahtar Kasası oluşturmak için Azure Key Vault [hızlı](../key-vault/general/overview.md)başlangıcı ' nı izleyin. Varolan anahtarları içeri aktarma hakkında daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md).
 1. Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [az keykasa Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın.
 
     ```azurecli-interactive
@@ -94,7 +94,7 @@ Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek �
 ## <a name="log-schema"></a>Günlük şeması 
 Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
-| Name | Açıklama |
+| Ad | Açıklama |
 | ---- | ----------- | 
 | Silinecek | Başarısız olan görevin açıklaması. |
 | Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
@@ -419,7 +419,3 @@ Aşağıda, BYOK şifrelemesi etkinleştirildiğinde aranacak ortak hatalar kodl
 Aşağıdaki makalelere bakın:
 - [Event Hubs genel bakış](event-hubs-about.md)
 - [Key Vault genel bakış](../key-vault/general/overview.md)
-
-
-
-

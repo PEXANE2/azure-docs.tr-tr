@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740459"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539338"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights depolanan kişisel verilere yönelik kılavuz
 
@@ -66,8 +67,8 @@ Log Analytics, verilerinize bir şemayı etkilemeden, her alanı özel değerler
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Bellek içi ve aktarım verileri*: Application Insights özel durumları, istekleri, bağımlılık çağrılarını ve izlemeleri izler. Özel veriler genellikle kod ve HTTP çağrı düzeyinde toplanabilir. Bu tür verileri belirlemek için özel durumları, istekleri, bağımlılıkları ve izleme tablolarını gözden geçirin. Bu verileri gizleme olasılığı bulunan [telemetri başlatıcıları](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) 'nı kullanın.
-* *Snapshot Debugger yakalamaları*: Application Insights [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) özelliği, uygulamanızın üretim örneğinde bir özel durum yakalandığında hata ayıklama anlık görüntülerini toplamanıza olanak tanır. Anlık görüntüler, yığının her adımında yerel değişkenlerin değerlerinin yanı sıra özel durumlar için tam yığın izlemenin önde gelen listesini ortaya çıkarır. Ne yazık ki, bu özellik yapışma noktalarının seçmeli silinmesine veya anlık görüntü içindeki verilere programlı erişime izin vermez. Bu nedenle, varsayılan anlık görüntü saklama oranı uyumluluk gereksinimlerinizi karşılamıyorsa, özelliği kapatmanız önerilir.
+* *Bellek içi ve aktarım verileri*: Application Insights özel durumları, istekleri, bağımlılık çağrılarını ve izlemeleri izler. Özel veriler genellikle kod ve HTTP çağrı düzeyinde toplanabilir. Bu tür verileri belirlemek için özel durumları, istekleri, bağımlılıkları ve izleme tablolarını gözden geçirin. Bu verileri gizleme olasılığı bulunan [telemetri başlatıcıları](../app/api-filtering-sampling.md) 'nı kullanın.
+* *Snapshot Debugger yakalamaları*: Application Insights [Snapshot Debugger](../app/snapshot-debugger.md) özelliği, uygulamanızın üretim örneğinde bir özel durum yakalandığında hata ayıklama anlık görüntülerini toplamanıza olanak tanır. Anlık görüntüler, yığının her adımında yerel değişkenlerin değerlerinin yanı sıra özel durumlar için tam yığın izlemenin önde gelen listesini ortaya çıkarır. Ne yazık ki, bu özellik yapışma noktalarının seçmeli silinmesine veya anlık görüntü içindeki verilere programlı erişime izin vermez. Bu nedenle, varsayılan anlık görüntü saklama oranı uyumluluk gereksinimlerinizi karşılamıyorsa, özelliği kapatmanız önerilir.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Özel verileri dışarı aktarma ve silme
 
@@ -100,7 +101,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 
 #### <a name="log-data"></a>Günlük verileri
 
-* [Temizleme sonrası](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür 
+* [Temizleme sonrası](/rest/api/loganalytics/workspacepurge/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür 
 * Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
 
     ```
@@ -112,7 +113,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 
 #### <a name="application-data"></a>Uygulama verileri
 
-* [Temizleme sonrası](https://docs.microsoft.com/rest/api/application-insights/components/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür
+* [Temizleme sonrası](/rest/api/application-insights/components/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür
 * Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
 
    ```

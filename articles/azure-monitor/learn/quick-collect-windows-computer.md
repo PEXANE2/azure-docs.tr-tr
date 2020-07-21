@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 6435535ee14450c590a79ea68c8855c29df8bd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637877"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539644"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
@@ -112,7 +112,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için Windows olay günlü
  
 3. **Veri**’yi seçin ve ardından **Windows Olay Günlükleri**’ni seçin.  
 
-4. Günlüğün adını girerek bir olay günlüğü eklersiniz. **Sistemi**girin ve ardından artı işaretini (**+**) seçin.  
+4. Günlüğün adını girerek bir olay günlüğü eklersiniz. **Sistemi**girin ve ardından artı işaretini ( **+** ) seçin.  
 
 5. Tabloda **hata** ve **Uyarı** önem derecesi ' ni seçin.
 
@@ -134,7 +134,7 @@ Artık veri toplamayı etkinleştirdiğinizden, hedef bilgisayardan bazı verile
 
 1. Seçilen çalışma alanında, sol bölmedeki **Günlükler**' i seçin.
 
-2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' `Perf` ni yazın ve **Çalıştır**' ı seçin.
+2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' ni yazın `Perf` ve **Çalıştır**' ı seçin.
  
     ![Log Analytics günlük araması](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
@@ -165,4 +165,4 @@ Artık Windows bilgisayarınızdan işletimsel ve performans verileri topladığ
 Verileri görüntüleme ve çözümleme hakkında bilgi edinmek için öğreticiye geçin:
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](tutorial-viewdata.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/get-started-portal.md)

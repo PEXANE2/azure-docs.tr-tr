@@ -4,11 +4,12 @@ description: Ölçüm telemetrisi için Application Insights veri modeli
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671979"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540018"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Ölçüm telemetrisi: Application Insights veri modeli
 
@@ -23,7 +24,7 @@ Sistem ve işlem sayaçlarını temsil eden ölçüm:
 | **.NET adı**             | **Platformun belirsiz adı** | **REST API adı** | **Açıklama**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | İş devam ediyor... | [Processorcpuyüzdesi](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | Toplam makine CPU 'SU
-| `\Memory\Available Bytes`                 | İş devam ediyor... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Bilgisayarda çalışan işlemlerin kullanabileceği fiziksel bellek miktarını bayt cinsinden gösterir. Sıfırlanmış, ücretsiz ve bekleme belleği listelerindeki alan miktarı toplanarak hesaplanır. Boş bellek kullanıma uygun; Sıfırlı bellek, sonraki işlemlerin önceki bir işlem tarafından kullanılan verileri görmesini engellemek için sıfırlarla doldurulmuş bellek sayfalarından oluşur; bekleme belleği, bir işlemin çalışma kümesinden (fiziksel belleği) en fazla diske giden, ancak geri çekmeye hazır olan bellektir. [Bellek nesnesine](https://msdn.microsoft.com/library/ms804008.aspx) bakın
+| `\Memory\Available Bytes`                 | İş devam ediyor... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Bilgisayarda çalışan işlemlerin kullanabileceği fiziksel bellek miktarını bayt cinsinden gösterir. Sıfırlanmış, ücretsiz ve bekleme belleği listelerindeki alan miktarı toplanarak hesaplanır. Boş bellek kullanıma uygun; Sıfırlı bellek, sonraki işlemlerin önceki bir işlem tarafından kullanılan verileri görmesini engellemek için sıfırlarla doldurulmuş bellek sayfalarından oluşur; bekleme belleği, bir işlemin çalışma kümesinden (fiziksel belleği) en fazla diske giden, ancak geri çekmeye hazır olan bellektir. [Bellek nesnesine](/previous-versions/ms804008(v=msdn.10)) bakın
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | İş devam ediyor... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Uygulamayı barındıran işlemin CPU 'SU
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | İş devam ediyor... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | uygulamayı barındıran işlem tarafından kullanılan bellek
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | İş devam ediyor... | [Processıobi Tespersecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | uygulamayı barındıran işlem tarafından çalıştırılan g/ç işlemlerinin oranı
@@ -40,7 +41,7 @@ Application Insights portalında ve Kullanıcı arabiriminde görmek istediğini
 
 Ölçüm için tek değer. Toplama için bireysel ölçümlerin toplamı.
 
-## <a name="count"></a>Sayı
+## <a name="count"></a>Count
 
 Toplu ölçümün ölçüm ağırlığı. Ölçüm için ayarlanmamalıdır.
 
@@ -48,7 +49,7 @@ Toplu ölçümün ölçüm ağırlığı. Ölçüm için ayarlanmamalıdır.
 
 Toplanan ölçümün en küçük değeri. Ölçüm için ayarlanmamalıdır.
 
-## <a name="max"></a>Maks
+## <a name="max"></a>En yüksek değer
 
 Toplanan ölçümün maksimum değeri. Ölçüm için ayarlanmamalıdır.
 

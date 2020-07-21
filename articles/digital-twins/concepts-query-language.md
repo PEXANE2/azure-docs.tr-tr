@@ -7,22 +7,25 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b3ed5d6605097b31dfaa58a2d37e71d3a6702bee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187124"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537513"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure dijital TWINS için sorgu dili hakkında
 
 Azure dijital TWINS merkezinin, **dijital TWINS** ve **ilişkilerden**oluşturulan [**ikizi Graf**](concepts-twins-graph.md)olduğunu unutmayın. Bu grafik, içerdiği dijital TWINS ve ilişkiler hakkında bilgi almak için sorgulanabilir. Bu sorgular, **Azure Digital TWINS sorgu deposu dili**adlı özel bir SQL benzeri sorgu dilinde yazılır.
 
-Bir istemci uygulamasından hizmete bir sorgu göndermek için Azure Digital TWINS **sorgu API**'sini kullanırsınız. Bu, geliştiricilerin ikizi grafiğindeki dijital TWINS kümelerini ve Azure Digital TWINS senaryosuyla ilgili diğer bilgileri bulmasını ve filtre uygulamasını sağlar.
+Bir istemci uygulamasından hizmete bir sorgu göndermek için Azure Digital TWINS [**sorgu API**](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.query?view=azure-dotnet-preview)'sini kullanırsınız. Bu, geliştiricilerin ikizi grafiğindeki dijital TWINS kümelerini ve Azure Digital TWINS senaryosuyla ilgili diğer bilgileri bulmasını ve filtre uygulamasını sağlar.
 
 ## <a name="query-language-features"></a>Sorgu dili özellikleri
 
 Azure dijital TWINS, ikizi grafiğine karşı kapsamlı sorgu özellikleri sağlar. Sorgular, benzer bir sorgu dili olan SQL benzeri sözdizimi kullanılarak açıklanmış ve birçok karşılaştırılabilir özelliği [IoT Hub sorgu diline](../iot-hub/iot-hub-devguide-query-language.md) benzer.
+
+> [!NOTE]
+> Tüm Azure dijital TWINS sorgu işlemleri büyük/küçük harfe duyarlıdır.
 
 Azure Digital TWINS sorgu deposu dilinde kullanılabilen işlemler şunlardır:
 * Dijital TWINS 'in özelliklerine göre TWINS alın.
@@ -37,4 +40,4 @@ Azure Digital TWINS sorgu deposu dilinde kullanılabilen işlemler şunlardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorguları yazmayı ve bkz. [nasıl yapılır: ikizi grafiğini sorgulama](how-to-query-graph.md)hakkında istemci kodu örnekleri.
+Sorguları yazmayı ve bkz. [*nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md)hakkında istemci kodu örnekleri.

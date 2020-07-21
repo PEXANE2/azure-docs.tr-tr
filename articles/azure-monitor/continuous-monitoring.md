@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797594"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539695"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -37,7 +38,7 @@ Uygulamalar, temel aldığı altyapı olarak yalnızca güvenilir. Tüm altyapı
 - Azure kaynaklarınızın çoğunun yapılandırma olmadan [Platform ölçümlerini, etkinlik günlüklerini ve tanılama günlüklerini](platform/data-sources.md) otomatik olarak alırsınız.
 - [VM'ler için Azure izleyici](insights/vminsights-overview.md)olan VM 'ler için daha derin izlemeyi etkinleştirin.
 -  [Kapsayıcılar Için Azure izleyici](insights/container-insights-overview.md)ile aks kümelerinin daha derin izlenmesini etkinleştirin.
-- Ortamınızdaki farklı uygulamalar ve hizmetler için [izleme çözümleri](insights/solutions-inventory.md) ekleyin.
+- Ortamınızdaki farklı uygulamalar ve hizmetler için [izleme çözümleri](./monitor-reference.md) ekleyin.
 
 
 [Kod olarak altyapı](/azure/devops/learn/what-is-infrastructure-as-code) , DevOps ekiplerinin kaynak kodu için kullandığı sürüm oluşturma ile, açıklayıcı bir modelde altyapının yönetimidir. Ortamınıza güvenilirlik ve ölçeklenebilirlik ekler ve uygulamalarınızı yönetmek için kullanılan benzer süreçlerden yararlanmanızı sağlar.

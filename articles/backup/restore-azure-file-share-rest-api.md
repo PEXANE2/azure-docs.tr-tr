@@ -3,15 +3,16 @@ title: Azure dosya paylaşımlarını REST API geri yükleme
 description: Azure dosya paylaşımlarını veya belirli dosyaları Azure Backup tarafından oluşturulan bir geri yükleme noktasından geri yüklemek için REST API nasıl kullanacağınızı öğrenin
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538165"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>REST API kullanarak Azure dosya paylaşımlarını geri yükleme
 
-Bu makalede, REST API kullanılarak [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yükleneceği açıklanmaktadır.
+Bu makalede, REST API kullanılarak [Azure Backup](./backup-overview.md) tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yükleneceği açıklanmaktadır.
 
 Bu makalenin sonuna kadar, REST API kullanarak aşağıdaki işlemleri gerçekleştirmeyi öğreneceksiniz:
 
@@ -19,7 +20,7 @@ Bu makalenin sonuna kadar, REST API kullanarak aşağıdaki işlemleri gerçekle
 * Tam bir Azure dosya paylaşımının geri yüklenmesi.
 * Dosya veya klasörleri tek tek geri yükleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Daha önce geri yüklemek istediğiniz yedeklenmiş bir dosya paylaşımınız olduğunu varsayalım. Bunu yapmazsanız, bir tane oluşturmayı öğrenmek için [REST API kullanarak yedekleme Azure dosya paylaşımının](backup-azure-file-share-rest-api.md) olup olmadığını denetleyin.
 
@@ -32,7 +33,7 @@ Bu makalede, aşağıdaki kaynakları kullanacağız:
 
 ## <a name="fetch-containername-and-protecteditemname"></a>ContainerName ve korunabilir Dıtemname öğesini getir
 
-Geri yükleme ile ilgili API çağrılarının çoğu için, {containerName} ve {korunabilir} URI parametreleri için değerleri geçirmeniz gerekir. Bu parametrelerin değerlerini almak için [backupkorunabilir tableıtems alma](https://docs.microsoft.com/rest/api/backup/protecteditems/get) işleminin yanıt gövdesinde ID özniteliğini kullanın. Bizim örneğimizde, korumak istediğimiz dosya paylaşımının KIMLIĞI:
+Geri yükleme ile ilgili API çağrılarının çoğu için, {containerName} ve {korunabilir} URI parametreleri için değerleri geçirmeniz gerekir. Bu parametrelerin değerlerini almak için [backupkorunabilir tableıtems alma](/rest/api/backup/protecteditems/get) işleminin yanıt gövdesinde ID özniteliğini kullanın. Bizim örneğimizde, korumak istediğimiz dosya paylaşımının KIMLIĞI:
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -43,7 +44,7 @@ Bu nedenle değerler aşağıdaki gibi çeviri yapar:
 
 ## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Yedeklenen Azure dosya paylaşımının kurtarma noktalarını getir
 
-Yedeklenen dosya paylaşımının veya dosyalarının geri yüklenmesi için önce geri yükleme işlemini gerçekleştirmek üzere bir kurtarma noktası seçin. Yedeklenmiş bir öğenin kullanılabilir kurtarma noktaları, [Kurtarma noktası listesi](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API çağrısı kullanılarak listelenebilir. Bu, tüm ilgili değerleri içeren bir GET işlemidir.
+Yedeklenen dosya paylaşımının veya dosyalarının geri yüklenmesi için önce geri yükleme işlemini gerçekleştirmek üzere bir kurtarma noktası seçin. Yedeklenmiş bir öğenin kullanılabilir kurtarma noktaları, [Kurtarma noktası listesi](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API çağrısı kullanılarak listelenebilir. Bu, tüm ilgili değerleri içeren bir GET işlemidir.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
@@ -143,7 +144,7 @@ Kurtarma noktası, yukarıdaki yanıtta {Name} alanı ile tanımlanır.
 ## <a name="full-share-recovery-using-rest-api"></a>REST API kullanarak tam paylaşma kurtarması
 
 Özgün dosya paylaşımının tamamını veya alternatif bir konuma geri yüklemek için bu geri yükleme seçeneğini kullanın.
-Geri yükleme tetikleme bir POST isteğidir ve bu işlemi [tetikleyici geri yükleme](https://docs.microsoft.com/rest/api/backup/restores/trigger) REST API kullanarak gerçekleştirebilirsiniz.
+Geri yükleme tetikleme bir POST isteğidir ve bu işlemi [tetikleyici geri yükleme](/rest/api/backup/restores/trigger) REST API kullanarak gerçekleştirebilirsiniz.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -159,11 +160,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Azure dosya paylaşımında geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir:
 
-Name |  Tür   |   Açıklama
+Ad |  Tür   |   Description
 --- | ---- | ----
 Özellikler | AzureFileShareRestoreRequest | RestoreRequestResource özellikleri
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tüm listesi için, [tetikleyici geri yükleme REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tüm listesi için, [tetikleyici geri yükleme REST API belgesine](/rest/api/backup/restores/trigger#request-body)bakın.
 
 ### <a name="restore-to-original-location"></a>Özgün konuma geri yükle
 
@@ -218,7 +219,7 @@ Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *azurefiles* dos
 
 ### <a name="response"></a>Yanıt
 
-Geri yükleme işleminin tetiklenmesi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlem ayrı olarak izlenmesi gereken başka bir işlem oluşturur.
+Geri yükleme işleminin tetiklenmesi [zaman uyumsuz bir işlemdir](../azure-resource-manager/management/async-operations.md). Bu işlem ayrı olarak izlenmesi gereken başka bir işlem oluşturur.
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
 #### <a name="response-example"></a>Yanıt örneği
@@ -349,7 +350,7 @@ Alternatif konum kurtarma için yanıt gövdesi şöyle olacaktır:
 }
 ```
 
-Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)açıklandığı şekilde izlenmelidir.
+Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı şekilde izlenmelidir.
 
 ## <a name="item-level-recovery-using-rest-api"></a>REST API kullanarak öğe düzeyinde kurtarma
 
@@ -369,11 +370,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Azure dosya paylaşımında geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir:
 
-Name |  Tür   |   Açıklama
+Ad |  Tür   |   Description
 --- | ---- | ----
 Özellikler | AzureFileShareRestoreRequest | RestoreRequestResource özellikleri
 
-İstek gövdesinin ve diğer ayrıntıların tanımlarının tüm listesi için, [tetikleyici geri yükleme REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tüm listesi için, [tetikleyici geri yükleme REST API belgesine](/rest/api/backup/restores/trigger#request-body)bakın.
 
 ### <a name="restore-to-original-location"></a>Özgün konuma geri yükle
 

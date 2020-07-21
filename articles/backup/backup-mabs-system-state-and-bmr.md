@@ -3,12 +3,12 @@ title: Sistem durumu ve tam kurtarma koruması
 description: Sistem durumunu yedeklemek ve çıplak kurtarma (BMR) koruması sağlamak için Azure Backup Sunucusu kullanın.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192374"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538709"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Sunucusu kullanarak sistem durumunu yedekleme ve çıplak sisteme geri yükleme
 
@@ -25,21 +25,21 @@ Aşağıdaki tabloda neleri yedekleyebileceğiniz ve kurtarabileceğiniz özetle
 
 |Backup|Sorun|Azure Backup Sunucusu yedekten kurtar|Sistem durumu yedeklemesinden kurtarma|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Dosya verileri**<br /><br />Normal veri yedekleme<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp dosya verileri|E|N|N|
-|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|N|E|E|
-|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veri birimleri bozulmamış)|N|N|E|
-|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (Veri birimleri kayıp)|E|N|E<br /><br />BMR, ardından yedeklenen dosya verilerinin normal kurtarılması|
-|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp site, listeler, liste öğeleri, belgeler|E|N|N|
-|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|N|E|E|
-|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Olağanüstü durum kurtarma|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp VM|E|N|N|
-|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|N|E|E|
-|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler bozulmamış)|N|N|E|
-|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler kayıp)|N|N|E<br /><br />BMR, ardından normal Azure Backup Sunucusu kurtarma|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp uygulama verileri|E|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|N|E|E|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları bozulmamış)|N|N|E|
-|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları kayıp)|N|N|E<br /><br />BMR kurtarma, ardından normal Azure Backup Sunucusu kurtarma|
+|**Dosya verileri**<br /><br />Normal veri yedekleme<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp dosya verileri|E|H|H|
+|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
+|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veri birimleri bozulmamış)|H|H|E|
+|**Dosya verileri**<br /><br />Azure Backup Sunucusu dosya verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (Veri birimleri kayıp)|E|H|E<br /><br />BMR, ardından yedeklenen dosya verilerinin normal kurtarılması|
+|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp site, listeler, liste öğeleri, belgeler|E|H|H|
+|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
+|**SharePoint verileri**<br /><br />Azure Backup Sunucusu grubu verileri yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Olağanüstü durum kurtarma|H|H|H|
+|Windows Server 2012 R2 Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp VM|E|H|H|
+|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
+|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler bozulmamış)|H|H|E|
+|Hyper-V<br /><br />Hyper-V konağının veya konuğun yedeklemesini Azure Backup Sunucusu<br /><br />BMR/konak sistem durumu yedeklemesi|Kayıp Hyper-V konağı (VM’ler kayıp)|H|H|E<br /><br />BMR, ardından normal Azure Backup Sunucusu kurtarma|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp uygulama verileri|E|H|H|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp veya bozuk işletim sistemi|H|E|E|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları bozulmamış)|H|H|E|
+|SQL Server/Exchange<br /><br />Azure Backup Sunucusu uygulama yedeklemesi<br /><br />BMR/Sistem durumu yedeklemesi|Kayıp sunucu (veritabanı/işlem günlüğü dosyaları kayıp)|H|H|E<br /><br />BMR kurtarma, ardından normal Azure Backup Sunucusu kurtarma|
 
 ## <a name="how-system-state-backup-works"></a>Sistem durumu yedeklemesinin çalışma şekli
 
@@ -98,12 +98,12 @@ Yedekleme tamamlandığında, dosya yedekleme sunucusu bilgisayarına aktarılı
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 1. **Azure Backup sunucusu dağıtın**. Yedekleme sunucusunun doğru şekilde dağıtıldığını doğrulayın. Daha fazla bilgi için bkz.
-    * [Azure Backup Sunucusu için sistem gereksinimleri](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+    * [Azure Backup Sunucusu için sistem gereksinimleri](/system-center/dpm/install-dpm#setup-prerequisites)
     * [Yedekleme sunucusu koruma matrisi](backup-mabs-protection-matrix.md)
 
-1. **Depolamayı ayarlayın**. Yedekleme verilerini diskte, bantta ve Azure ile bulutta saklayabilirsiniz. Daha fazla bilgi için bkz. [veri depolamayı hazırlama](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage).
+1. **Depolamayı ayarlayın**. Yedekleme verilerini diskte, bantta ve Azure ile bulutta saklayabilirsiniz. Daha fazla bilgi için bkz. [veri depolamayı hazırlama](/system-center/dpm/plan-long-and-short-term-data-storage).
 
-1. **Koruma aracısını ayarlayın**. Koruma aracısını yedeklemek istediğiniz bilgisayara kurun. Daha fazla bilgi için bkz. [DPM koruma aracısını dağıtma](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
+1. **Koruma aracısını ayarlayın**. Koruma aracısını yedeklemek istediğiniz bilgisayara kurun. Daha fazla bilgi için bkz. [DPM koruma aracısını dağıtma](/system-center/dpm/deploy-dpm-protection-agent).
 
 ## <a name="back-up-system-state-and-bare-metal"></a>Sistem durumu yedeklemesi ve tam yedekleme
 
@@ -115,7 +115,7 @@ Sistem durumu ve tam yedekleme için:
 
 1. **Grup üyelerini seçin** sayfasında, bilgisayarı genişletin ve sonra **BMR** veya **sistem durumu**' nu seçin.
 
-    Farklı gruplardaki aynı bilgisayar için BMR ve sistem durumunu koruyamayacağınızı unutmayın. Ayrıca, BMR 'yi seçtiğinizde sistem durumu otomatik olarak etkinleştirilir. Daha fazla bilgi için bkz. [koruma gruplarını dağıtma](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
+    Farklı gruplardaki aynı bilgisayar için BMR ve sistem durumunu koruyamayacağınızı unutmayın. Ayrıca, BMR 'yi seçtiğinizde sistem durumu otomatik olarak etkinleştirilir. Daha fazla bilgi için bkz. [koruma gruplarını dağıtma](/system-center/dpm/create-dpm-protection-groups).
 
 1. **Veri koruma yöntemini seçin** sayfasında, kısa vadeli yedeklemenin ve uzun vadeli yedeklemenin nasıl işleneceğini seçin.
 

@@ -5,11 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864411"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538828"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -27,7 +28,7 @@ Azure VM Aracısı durdurulmuş, süresi geçmiş, tutarsız durumda veya yükl�
 - VM **durumunun** **çalıştığından** ve **aracı durumunun** **Azure portal > VM > ayarları > Özellikler > bölmesini açın** **.** VM Aracısı durdurulmuşsa veya tutarsız bir durumdaysa aracıyı yeniden başlatın<br>
   - Windows VM 'Leri için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) izleyin.<br>
   - Linux VM 'Ler için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) izleyin.
-- Tüm uzantıların **sağlama başarılı** durumunda olduğundan emin olmak için **Azure portal > VM > ayarları > > uzantıları** ' nı açın. Aksi takdirde, bu sorunu çözmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) izleyin.
+- Tüm uzantıların **sağlama başarılı** durumunda olduğundan emin olmak için **Azure portal > VM > ayarları > > uzantıları** ' nı açın. Aksi takdirde, bu sorunu çözmek için aşağıdaki [adımları](#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) izleyin.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - Anlık görüntü durumu için VM aracısı ile iletişim kurulamadı
 
@@ -51,7 +52,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Hata kodu**: usererrorvmprovisioningstatefailed<br>
 **Hata iletisi**: VM başarısız sağlama durumunda<br>
 
-Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure portal > VM > ayarları > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin. Daha fazla bilgi için bkz. [sağlama durumları](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states).
+Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure portal > VM > ayarları > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin. Daha fazla bilgi için bkz. [sağlama durumları](../virtual-machines/windows/states-lifecycle.md#provisioning-states).
 
 - VMSnapshot uzantısı hatalı durumdaysa, başarısız olan uzantıya sağ tıklayın ve kaldırın. İsteğe bağlı yedekleme tetikleyin. Bu eylem, uzantıları yeniden yükleyerek yedekleme işini çalıştıracaktır.  <br>
 - Başka herhangi bir uzantı başarısız durumdaysa, yedeklemeyi kesintiye uğratabilirler. Uzantı sorunlarının çözümlendiğinden emin olun ve yedekleme işlemini yeniden deneyin.
@@ -79,7 +80,7 @@ Bu sorunu çözmek için VM 'nin kaynak grubundaki kilidi kaldırın ve temizlem
 **Hata kodu**: usererrorkeyvaultpermissionsnotconfigured <br>
 **Hata iletisi**: yedekleme, şifrelenmiş VM 'lerin yedeklenmesi için Anahtar Kasası üzerinde yeterli izinlere sahip değil. <br>
 
-Bir yedekleme işleminin şifreli VM 'lerde başarılı olması için anahtar kasasına erişmek için gereken izinlere sahip olması gerekir. İzinler [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) veya [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)aracılığıyla ayarlanabilir.
+Bir yedekleme işleminin şifreli VM 'lerde başarılı olması için anahtar kasasına erişmek için gereken izinlere sahip olması gerekir. İzinler [Azure Portal](./backup-azure-vms-encryption.md) veya [PowerShell](./backup-azure-vms-automation.md#enable-protection)aracılığıyla ayarlanabilir.
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - Sanal makinede ağ bağlantısı olmaması nedeniyle Anlık Görüntü işlemi başarısız oldu
 
@@ -129,9 +130,9 @@ Sürmekte olan bir yedekleme işi olduğundan son yedekleme işiniz başarısız
 2. Kurtarma Hizmetleri kasaları listesinden yedeklemenin yapılandırıldığı bir kasa seçin.
 3. Kasa panosu menüsünde **yedekleme işleri** ' ne tıklayarak tüm yedekleme işlerini görüntüler.
    - Devam eden bir yedekleme işi varsa işlemin tamamlanmasını bekleyin veya yedekleme işini iptal edin.
-     - Yedekleme işini iptal etmek için yedekleme işine sağ tıklayın ve **iptal** ' e tıklayın veya [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)'i kullanın.
+     - Yedekleme işini iptal etmek için yedekleme işine sağ tıklayın ve **iptal** ' e tıklayın veya [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)'i kullanın.
    - Yedeği farklı bir kasada yeniden yapılandırdıysanız, eski kasada çalışan bir yedekleme işi olmadığından emin olun. Varsa, yedekleme işini iptal edin.
-     - Yedekleme işini iptal etmek için, yedekleme işine sağ tıklayıp **İptal**'e tıklayın veya [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) kullanın
+     - Yedekleme işini iptal etmek için, yedekleme işine sağ tıklayıp **İptal**'e tıklayın veya [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) kullanın
 4. Yedekleme işlemini yeniden deneyin.
 
 Zamanlanmış yedekleme işlemi daha uzun sürüyorsa, sonraki yedekleme yapılandırması ile çakışıyor ve [En Iyi uygulamaları](backup-azure-vms-introduction.md#best-practices), [yedekleme performansını](backup-azure-vms-introduction.md#backup-performance)ve [geri yükleme](backup-azure-vms-introduction.md#backup-and-restore-considerations)konusunu gözden geçirin.
@@ -166,7 +167,7 @@ VM Aracısı bozulmuş olabilir veya hizmet durdurulmuş olabilir. VM Aracısı 
 6. İsteğe bağlı yedekleme çalıştırın:
    - Portalda **Şimdi Yedekle**' yi seçin.
 
-Ayrıca, VM 'de [Microsoft .NET 4,5 ' nin yüklü](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) olduğunu doğrulayın. VM aracısının hizmetle iletişim kurması için .NET 4,5 gerekir.
+Ayrıca, VM 'de [Microsoft .NET 4,5 ' nin yüklü](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) olduğunu doğrulayın. VM aracısının hizmetle iletişim kurması için .NET 4,5 gerekir.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 'de yüklü olan aracı güncel değil (Linux VM 'Leri için)
 
@@ -174,7 +175,7 @@ Ayrıca, VM 'de [Microsoft .NET 4,5 ' nin yüklü](https://docs.microsoft.com/do
 
 Linux VM 'Leri için aracıyla ilgili veya uzantı ile ilgili çoğu başarısızlık, süresi geçmiş bir VM aracısını etkileyen sorunlardan kaynaklanır. Bu sorunu gidermek için aşağıdaki genel yönergeleri izleyin:
 
-1. [LINUX VM aracısını güncelleştirme](../virtual-machines/linux/update-agent.md)yönergelerini izleyin.
+1. [LINUX VM aracısını güncelleştirme](../virtual-machines/extensions/update-linux-agent.md)yönergelerini izleyin.
 
    > [!NOTE]
    > Aracıyı yalnızca bir dağıtım deposu aracılığıyla güncelleştirmenizi *önemle tavsiye* ederiz. Doğrudan GitHub 'dan aracı kodunu indirmenizi ve güncelleştirmeyi önermiyoruz. Dağıtım için en son aracı kullanılamıyorsa, nasıl yükleneceğine ilişkin yönergeler için dağıtım desteğiyle iletişim kurun. En son aracıyı denetlemek için GitHub deposundaki [Windows Azure Linux Aracısı](https://github.com/Azure/WALinuxAgent/releases) sayfasına gidin.
@@ -206,7 +207,7 @@ VM Aracısı yapılandırma dosyası seçeneklerinin tam listesi için bkz.<http
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Uygulama denetim çözümü IaaSBcdrExtension.exe engelliyor
 
-[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (veya başka bir uygulama denetimi çözümü) çalıştırıyorsanız ve kurallar yayımcı veya yol tabanlı ise, **IaaSBcdrExtension.exe** yürütülebilir dosyasının çalıştırılmasını engelleyebilirler.
+[AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (veya başka bir uygulama denetimi çözümü) çalıştırıyorsanız ve kurallar yayımcı veya yol tabanlı ise, **IaaSBcdrExtension.exe** yürütülebilir dosyasının çalıştırılmasını engelleyebilirler.
 
 #### <a name="solution"></a>Çözüm
 

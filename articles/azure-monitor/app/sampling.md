@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319643"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539831"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -21,7 +21,7 @@ Portalda ölçüm sayıları sunulduklarında, bunlar hesap örneklemesi içine 
 ## <a name="brief-summary"></a>Kısa Özet
 
 * Üç farklı örnekleme türü vardır: Uyarlamalı örnekleme, sabit fiyat örnekleme ve Alım örnekleme.
-* Uyarlamalı örnekleme, Application Insights ASP.NET ve ASP.NET Core yazılım geliştirme setlerinin (SDK) en son sürümlerinde varsayılan olarak etkindir. [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview)tarafından da kullanılır.
+* Uyarlamalı örnekleme, Application Insights ASP.NET ve ASP.NET Core yazılım geliştirme setlerinin (SDK) en son sürümlerinde varsayılan olarak etkindir. [Azure işlevleri](../../azure-functions/functions-overview.md)tarafından da kullanılır.
 * Sabit hızlı örnekleme, ASP.NET, ASP.NET Core, Java (hem aracı hem de SDK) ve Python için Application Insights SDK 'larının son sürümlerinde kullanılabilir.
 * Alma örnekleme, Application Insights hizmeti uç noktasında çalışmaktadır. Yalnızca başka bir örnekleme etkin olmadığında geçerlidir. SDK, telemetrinizi örnekleyerek alma örneklemesini devre dışı bırakılır.
 * Web uygulamaları için, özel olayları günlüğe kaydeder ve bir olay kümesinin birlikte tutulup tutulmayacağından emin olmanız gerekiyorsa, olayların aynı değere sahip olması gerekir `OperationId` .
@@ -33,10 +33,11 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 | Application Insights SDK | Uyarlamalı örnekleme destekleniyor | Sabit hızlı örnekleme destekleniyor | Alım örnekleme destekleniyor |
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| ASP.NET Çekirdeği | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
-| Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| ASP.NET Core | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
+| Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
+| Python | No | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
@@ -209,7 +210,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Azure Işlevleri için uyarlamalı örnekleme yapılandırma
 
-Azure Işlevleri 'nde çalışan uygulamalar için uyarlamalı örnekleme yapılandırmak üzere [Bu sayfadaki](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) yönergeleri izleyin.
+Azure Işlevleri 'nde çalışan uygulamalar için uyarlamalı örnekleme yapılandırmak üzere [Bu sayfadaki](../../azure-functions/functions-monitoring.md#configure-sampling) yönergeleri izleyin.
 
 ## <a name="fixed-rate-sampling"></a>Sabit fiyat örnekleme
 
@@ -481,7 +482,7 @@ Diğer örnekleme formlarını kullanma koşulları geçerli değilse, uyarlamal
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>Örnekleme işleminin çalışıp çalışmadığını bilme
 
-Gerçek örnekleme oranını nerede uygulandığını fark etmeksizin öğrenmek için, şöyle bir [analiz sorgusu](../../azure-monitor/app/analytics.md) kullanın:
+Gerçek örnekleme oranını nerede uygulandığını fark etmeksizin öğrenmek için, şöyle bir [analiz sorgusu](../log-query/log-query-overview.md) kullanın:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -586,4 +587,4 @@ ASP.NET SDK 'nın v 2.5.0-Beta2 ve ASP.NET Core SDK 'nın v 2.2.0-Beta3 öncesin
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Filtreleme](../../azure-monitor/app/api-filtering-sampling.md) , SDK 'nizin ne kadar sıkı bir şekilde denetim sağlayabilir.
-* Geliştirici ağı makalesini okuyun [Application Insights Ile Telemetriyi iyileştirin](https://msdn.microsoft.com/magazine/mt808502.aspx).
+* Geliştirici ağı makalesini okuyun [Application Insights Ile Telemetriyi iyileştirin](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).

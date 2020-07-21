@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Python uygulamasından yakalanan verileri okuma-Az
 description: "Hızlı başlangıç: Event Hubs yakalama özelliğini göstermek için Azure Python SDK 'sını kullanan betikler."
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8e6174970a6821f7541387f91b226cdebe555625
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 364ca789f560dc8fdae099b09c77946bc4ad5005
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323054"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537233"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Hızlı başlangıç: Event Hubs Capture izlenecek yol: Python (Azure-eventhub sürüm 1)
 
@@ -27,7 +27,7 @@ Bu izlenecek yolda şunları yapabilirsiniz:
 > * Bir Python betiği kullanarak Olay Hub 'ınıza veri gönderme.
 > * Başka bir Python betiği kullanarak Event Hubs yakalamadan dosyaları okuyun ve işleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Python 3,4 veya üzeri, `pip` yüklendi ve güncelleştirildi.
   
@@ -45,7 +45,7 @@ Bu izlenecek yolda şunları yapabilirsiniz:
 
 Yakalama için kullanılacak bir depolama hesabı ve kapsayıcı oluşturun. 
 
-1. [Azure Portal][Azure portal] oturum açın.
+1. [Azure portalında][Azure portal] oturum açın.
 2. Sol gezinti bölmesinde **depolama hesapları**' nı seçin ve **depolama hesapları** ekranında **Ekle**' yi seçin.
 3. Depolama hesabı oluşturma ekranında bir abonelik ve kaynak grubu seçin ve depolama hesabına bir ad verin. Diğer seçimleri varsayılan olarak bırakabilirsiniz. **Gözden geçir + oluştur**' u seçin, ayarları gözden geçirin ve ardından **Oluştur**' u seçin. 
    
@@ -190,4 +190,4 @@ Event Hubs hakkında daha fazla bilgi edinmek için bkz.:
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
 [About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md

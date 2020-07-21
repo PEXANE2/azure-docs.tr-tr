@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507084"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539627"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -30,7 +30,7 @@ VM'ler için Azure İzleyici ayarlamak için:
 * PowerShell kullanarak, belirtilen bir abonelik veya kaynak grubundaki birden fazla Azure VM 'yi, Azure Arc VM 'Leri, Azure VMSS veya Azure yay makinelerini etkinleştirin.
 * Şirket ağınızda veya diğer bulut ortamınızda barındırılan VM 'Leri veya fiziksel bilgisayarları izlemek için VM'ler için Azure İzleyici etkinleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki bölümlerde yer alan bilgileri anladığınızdan emin olun. 
 
@@ -57,7 +57,7 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 - Batı Avrupa
 - Doğu Asya
 - Güneydoğu Asya
-- Orta Hindistan
+- Central India
 - Doğu Japonya
 - Doğu Avustralya
 - Güneydoğu Avustralya
@@ -68,8 +68,8 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 
 Log Analytics bir çalışma alanınız yoksa, kaynaklardan birini kullanarak bir tane oluşturabilirsiniz:
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Azure portalındaki](../../azure-monitor/learn/quick-create-workspace.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Ayrıca, Azure portal tek bir Azure VM veya sanal makine ölçek kümesi için izlemeyi etkinleştirirken bir çalışma alanı oluşturabilirsiniz.
@@ -171,11 +171,11 @@ Karma bir ortamda, bağımlılık aracısını el ile indirip yükleyebilir veya
 
 Aşağıdaki tabloda, bir karma ortamda harita özelliğinin desteklediği bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı kaynak | Destekleniyor | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 |:--|:--|:--|
-| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| Linux aracıları | Evet | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| System Center Operations Manager yönetim grubu | Hayır | |
+| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| System Center Operations Manager yönetim grubu | No | |
 
 Bağımlılık aracısını şu konumlardan indirebilirsiniz:
 
@@ -199,7 +199,7 @@ Bu tabloda açıklanan yöntemlerden birini kullanarak VM'ler için Azure İzley
 | Tek Azure VM, Azure VMSS veya Azure Arc makinesi | [Portaldan etkinleştir](vminsights-enable-single-vm.md) | Azure portal menüden doğrudan **Öngörüler** ' i seçin. |
 | Birden çok Azure VM, Azure VMSS veya Azure Arc makinesi | [Azure Ilkesi aracılığıyla etkinleştir](vminsights-enable-at-scale-policy.md) | Bir VM veya VMSS oluşturulduğunda otomatik olarak etkinleştirmek için Azure Ilkesini kullanın. |
 | | [Azure PowerShell veya Azure Resource Manager şablonları aracılığıyla etkinleştir](vminsights-enable-at-scale-powershell.md) | Belirtilen bir abonelik veya kaynak grubu genelinde birden çok Azure VM, Azure Arc VM veya Azure VMSS 'yi etkinleştirmek için Azure PowerShell veya Azure Resource Manager şablonlarını kullanın. |
-| Karma bulut | [Karma ortam için etkinleştir](vminsights-enable-hybrid-cloud.md) | Veri merkezinizde veya diğer bulut ortamlarında barındırılan VM 'lere veya fiziksel bilgisayarlara dağıtın. |
+| Hibrit bulut | [Karma ortam için etkinleştir](vminsights-enable-hybrid-cloud.md) | Veri merkezinizde veya diğer bulut ortamlarında barındırılan VM 'lere veya fiziksel bilgisayarlara dağıtın. |
 
 ## <a name="management-packs"></a>Yönetim paketleri
 

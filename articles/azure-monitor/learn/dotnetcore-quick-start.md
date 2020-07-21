@@ -7,20 +7,20 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144860"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539763"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web Uygulamanızı İzlemeye Başlama
 
 Azure Application Insights ile web uygulamanızı kullanılabilirlik, performans ve kullanım bakımından kolayca izleyebilirsiniz. Ayrıca, bir kullanıcının bildirmesini beklemeden uygulamanızdaki hataları hızlıca tanımlayıp tespit edebilirsiniz. 
 
-Bu hızlı başlangıç, var olan bir ASP.NET Core Web uygulamasına Application Insights SDK ekleme konusunda size rehberlik eder. Visual Studio 'Yu Application Insights yapılandırma hakkında bilgi edinmek için bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)göz atın.
+Bu hızlı başlangıç, var olan bir ASP.NET Core Web uygulamasına Application Insights SDK ekleme konusunda size rehberlik eder. Visual Studio 'Yu Application Insights yapılandırma hakkında bilgi edinmek için bu [makaleye](../app/asp-net-core.md)göz atın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -36,26 +36,26 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
 Application Insights, şirket içinde veya bulutta çalışmasından bağımsız olarak İnternet’e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemeyi başlatmak için aşağıdaki adımları kullanın.
 
-1. **Kaynak** > oluştur**Geliştirici Araçları** > **Application Insights**seçin.
+1. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights**seçin.
 
    > [!NOTE]
-   >İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ' a giderek daha fazla bilgi edinebilirsiniz.
+   >İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](../app/create-new-resource.md) ' a giderek daha fazla bilgi edinebilirsiniz.
 
     Bir yapılandırma kutusu görünür. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-   | **Kaynak grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
+   | **Ad**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+   | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur**' a tıklayın.
+2. **Oluştur**’a tıklayın.
 
 
 
@@ -69,9 +69,9 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
 3. Hesabınızı ve aboneliğinizi seçin > Azure portal oluşturduğunuz **mevcut kaynağı** seçin > **Kaydet**' e tıklayın.
 
-4. **Proje** > **NuGet paketleri** > **paket kaynağını seçin: NuGet.org** > Application Insights SDK paketlerini en son kararlı sürüme**güncelleştirin** .
+4. **Proje**seçin  >  **NuGet paketleri**  >  **paket kaynağını seçin: NuGet.org**  >  Application Insights SDK paketlerini en son kararlı sürüme**güncelleştirin** .
 
-5. Uygulamanızı başlatmak için hata ayıklama**olmadan Başlat** ' ı seçin (CTRL + F5) **Debug** > 
+5. Uygulamanızı başlatmak için **hata ayıklama**  >  **olmadan Başlat** ' ı seçin (CTRL + F5)
 
     ![Application Insights’a Genel Bakış Menüsü](./media/dotnetcore-quick-start/3debug.png)
 
@@ -88,7 +88,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    ![Uygulama Eşlemesi](./media/dotnetcore-quick-start/5appmap.png)
 
-3. ](./media/dotnetcore-quick-start/006.png) **Analytics 'teki**uygulama **Analizi** simgesi ![uygulama Haritası simge görünümü ' ne tıklayın. Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. Analytics 'teki uygulama **Analizi** simgesi ![ uygulama Haritası simge ](./media/dotnetcore-quick-start/006.png) **görünümü**' ne tıklayın. Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
    ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -112,4 +112,4 @@ Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirs
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Çalışma zamanı özel durumlarını bulma ve tanılama](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [Çalışma zamanı özel durumlarını bulma ve tanılama](./tutorial-runtime-exceptions.md)

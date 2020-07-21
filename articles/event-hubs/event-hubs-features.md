@@ -3,18 +3,18 @@ title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b646c1a0730b046dd3e66a5d5324b659999f83a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537318"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
-Azure Event Hubs, düşük gecikme süresi ve yüksek güvenilirlikle büyük hacimlerdeki olayları ve verileri işleyen ve işleyen ölçeklenebilir bir olay işleme hizmetidir. Üst düzey genel bakış için bkz. [Event Hubs nedir?](event-hubs-what-is-event-hubs.md) .
+Azure Event Hubs, düşük gecikme süresi ve yüksek güvenilirlikle büyük hacimlerdeki olayları ve verileri işleyen ve işleyen ölçeklenebilir bir olay işleme hizmetidir. Üst düzey genel bakış için bkz. [Event Hubs nedir?](./event-hubs-about.md) .
 
-Bu makale, [genel bakış makalesindeki](event-hubs-what-is-event-hubs.md)bilgileri oluşturur ve Event Hubs bileşenleri ve özellikleri hakkında teknik ve uygulama ayrıntıları sağlar.
+Bu makale, [genel bakış makalesindeki](./event-hubs-about.md)bilgileri oluşturur ve Event Hubs bileşenleri ve özellikleri hakkında teknik ve uygulama ayrıntıları sağlar.
 
 ## <a name="namespace"></a>Ad Alanı
 Bir Event Hubs ad alanı, [tam etki alanı adı](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)tarafından başvurulan, bir veya daha fazla olay hub 'ı veya Kafka konu oluşturacağınız benzersiz bir kapsam kapsayıcısı sağlar. 
@@ -33,7 +33,7 @@ Bir olay hub 'ına veri gönderen herhangi bir varlık bir olay üreticisi veya 
 
 ### <a name="publishing-an-event"></a>Olay yayımlama
 
-AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs, .NET istemcilerinden gelen bir olay hub 'ına olay yayımlamaya yönelik [istemci kitaplıkları ve sınıflar](event-hubs-dotnet-framework-api-overview.md) sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (olay verileri örneği), tek bir olay veya toplu iş olmasına bakılmaksızın 1 MB 'lik bir sınıra sahiptir. Bu eşikten daha büyük yayımlama olayları hata ile sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
+AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs, .NET istemcilerinden gelen bir olay hub 'ına olay yayımlamaya yönelik [istemci kitaplıkları ve sınıflar](./event-hubs-dotnet-framework-getstarted-send.md) sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (olay verileri örneği), tek bir olay veya toplu iş olmasına bakılmaksızın 1 MB 'lik bir sınıra sahiptir. Bu eşikten daha büyük yayımlama olayları hata ile sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
 
 AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. AMQP, oturum başlatırken daha yüksek ağ maliyetlerine sahiptir, ancak HTTPS her istek için ek TLS yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
 
@@ -51,7 +51,7 @@ Event Hubs, *yayımcı ilkeleri* aracılığıyla olay yayımcıları üzerinde 
 
 Yayımcı adlarını önceden oluşturmanız gerekli değildir, ancak bunlar bağımsız yayımcı kimlikleri sağlamak amacıyla bir olayı yayımlarken kullanılan SAS belirteci ile eşleşmelidir. Yayımcı ilkelerini kullanırken **PartitionKey** değeri yayımcı adına ayarlanır. Bu hizmetin düzgün çalışması için bu değerlerin eşleşmesi gerekir.
 
-## <a name="capture"></a>Capture
+## <a name="capture"></a>Yakalama
 
 [Event Hubs yakalama](event-hubs-capture-overview.md) , akış verilerini Event Hubs otomatik olarak yakalamanızı ve bir BLOB depolama hesabı ya da bir Azure Data Lake hizmet hesabına kaydetmenizi sağlar. Azure portal yakalamayı etkinleştirebilir ve yakalama işlemini gerçekleştirmek için bir minimum boyut ve zaman penceresi belirtebilirsiniz. Event Hubs yakalama 'yı kullanarak, kendi Azure Blob depolama hesabınızı ve kapsayıcınızı ya da yakalanan verileri depolamak için kullanılan bir hizmet hesabı Azure Data Lake belirtirsiniz. Yakalanan veriler Apache avro biçiminde yazılır.
 
@@ -101,7 +101,7 @@ Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
 Bir okuyucunun bölüm bağlantısı kesilirse yeniden bağlandığında ilgili tüketici grubundaki o bölümün son okuyucusu tarafından daha önce gönderilen denetim noktasında okumaya başlar. Okuyucu bağlandığı zaman, okumayı başlatacak konumu belirtmek için Olay Hub 'ına geçişi geçirir. Bu şekilde, denetim noktası oluşturma özelliğini hem aşağı akış uygulamaları ile olayları "tamamlandı" olarak işaretlemek hem de farklı makinelerde çalışan okuyucular arasında bir yük devretme oluşması durumunda esneklik sağlamak amacıyla kullanabilirsiniz. Bu denetim noktası oluşturma işleminden daha düşük bir uzaklık belirterek daha eski verilere geri dönülebilir. Bu mekanizmayla denetim noktası oluşturma özelliği hem yük devretme esnekliği hem de olay akışı yeniden yürütmesi sağlar.
 
 > [!NOTE]
-> Azure Blob Storage 'ı, Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 
+> Azure Blob Storage 'ı, Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) veya [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)

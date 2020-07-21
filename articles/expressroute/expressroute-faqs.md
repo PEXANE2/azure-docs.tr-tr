@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537131"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -110,7 +111,7 @@ Microsoft, belirtilen ' tanıtılan genel ön eklerin ' ve ' eşdüzey ASN ' (ve
 
 ' Doğrulama gerekli ' iletisini görürseniz, genel önekleri gösteren belge (ler) i, yönlendirme kayıt defterindeki ön eklerin sahibi olarak listelenen varlık tarafından kuruluşunuza atanır ve aşağıda gösterildiği gibi bir destek bileti açarak bu belgeleri el ile doğrulama için gönderir.
 
-![](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
+!["Ortak ön ekler için sahiplik kanıtı" için yeni bir destek isteği (destek bileti) gösteren ekran görüntüsü.](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Dynamics 365 ExpressRoute 'da destekleniyor mu?
 
@@ -175,7 +176,7 @@ Daha [fazla ayrıntı IÇIN](https://docs.microsoft.com/azure/expressroute/expre
 
 Hizmet sağlayıcınız fiziksel bağlantı üzerinde iki adet Ethernet sanal devre kuramazsa yalnızca bir fiziksel bağlantınız olması gerekir. Fiziksel bağlantı (örneğin, bir optik fiber) Katman 1 (L1) cihazında (görüntüye bakın) sonlandırılır. İki Ethernet sanal devresi, biri birincil devre ve diğeri ikincil için olmak üzere farklı VLAN kimlikleriyle etiketlenebilir. Bu VLAN kimlikleri dıştaki 802.1 Q Ethernet üst bilgisinde bulunur. İç 802.1 Q Ethernet üst bilgisi (gösterilmez), belirli bir [ExpressRoute yönlendirme etki alanına](expressroute-circuit-peerings.md)eşlenir.
 
-![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
+![Bir müşteri sitesindeki ve bir ExpressRoute konumundaki anahtarlar arasında fiziksel bağlantıyı oluşturan katman 1 (L1) birincil ve Ikincil sanal devreleri vurgulayan diyagram.](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>ExpressRoute kullanarak VLAN 'lerimin birini Azure 'a genişletebilirim miyim?
 

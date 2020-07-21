@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d63d932756495584b2870c597d3332077f8e86c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671622"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539848"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights ile canlı Azure Service Fabric uygulamaları profilini yayınlama
 
@@ -25,9 +26,9 @@ Application Insights Profiler Azure Tanılama dahildir. Azure Tanılama uzantıs
 
 Ortamınızı ayarlamak için aşağıdaki işlemleri gerçekleştirin:
 
-1. Profiler .NET Framework ve .Net Core destekler. .NET Framework kullanıyorsanız, [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) veya üstünü kullandığınızdan emin olun. Dağıtılan işletim sisteminin `Windows Server 2012 R2` veya daha yeni bir sürümü olduğunu doğrulamak yeterlidir. Profiler, .NET Core 2,1 ve daha yeni uygulamaları destekler.
+1. Profiler .NET Framework ve .Net Core destekler. .NET Framework kullanıyorsanız, [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) veya üstünü kullandığınızdan emin olun. Dağıtılan işletim sisteminin `Windows Server 2012 R2` veya daha yeni bir sürümü olduğunu doğrulamak yeterlidir. Profiler, .NET Core 2,1 ve daha yeni uygulamaları destekler.
 
-1. Dağıtım şablonu dosyasında [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) uzantısını arayın.
+1. Dağıtım şablonu dosyasında [Azure tanılama](../platform/diagnostics-extension-overview.md) uzantısını arayın.
 
 1. Aşağıdaki `SinksConfig` bölümü öğesinin bir alt öğesi olarak ekleyin `WadCfg` . `ApplicationInsightsProfiler`Özellik değerini kendi Application Insights izleme anahtarınızla değiştirin:  
 
@@ -42,7 +43,7 @@ Ortamınızı ayarlamak için aşağıdaki işlemleri gerçekleştirin:
       }
       ```
 
-      Tanılama uzantısını dağıtım şablonunuza ekleme hakkında daha fazla bilgi için bkz. [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+      Tanılama uzantısını dağıtım şablonunuza ekleme hakkında daha fazla bilgi için bkz. [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma](../../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json).
 
 1. Service Fabric kümenizi Azure Resource Manager şablonunuzu kullanarak dağıtın.  
   Ayarlarınız doğruysa, Azure Tanılama uzantısı yüklendiğinde Application Insights Profiler yüklenir ve etkinleştirilir. 

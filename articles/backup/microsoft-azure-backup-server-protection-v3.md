@@ -3,11 +3,12 @@ title: V3 RTM 'nin yedekleyebilecekleri Azure Backup Sunucusu
 description: Bu makalede, v3 RTM korumalarına Azure Backup tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir koruma matrisi sunulmaktadır.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84632090"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538575"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Sunucusu v3 RTM koruma matrisi
 
@@ -34,7 +35,7 @@ Aşağıdaki matris, Azure Backup Sunucusu v3 RTM ve önceki sürümleriyle nele
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırmanız ve [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) yüklemeniz gerekir|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken)<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırmanız ve [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) yüklemeniz gerekir|Birim, paylaşım, klasör, dosya|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 R2 SP1 - Standard ve Enterprise|VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2<br />SP1 çalıştırmanız ve [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) yüklemeniz gerekir|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
-|Sunucular (32 bit ve 64 bit)|Windows Server 2008 SP2|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|Desteklenmiyor|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
+|Sunucular (32 bit ve 64 bit)|Windows Server 2008 SP2|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|Desteklenmez|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 SP2|VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Storage Server 2008|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |SQL Server|SQL Server 2019|Fiziksel sunucu <br /><br /> Şirket içi Hyper-V sanal makinesi <br /> <br /> Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken) <br /><br /> VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|Yüklemesinde|Tüm dağıtım senaryoları: Veritabanı|
@@ -74,7 +75,7 @@ Aşağıdaki matris, Azure Backup Sunucusu v3 RTM ve önceki sürümleriyle nele
 |Hyper-V konağı-MABS koruma Aracısı, Hyper-V konak sunucusu, küme veya VM üzerinde|Windows Server 2012 R2 - Datacenter ve Standard|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi|V3, V2|Koruma: Hyper-V bilgisayarları, küme paylaşılan birimleri (CSV)<br /><br />Kurtarma: Sanal makine, dosya ve klasörleri öğe düzeyinde kurtarma, birimler, sanal sabit sürücüler|
 |Hyper-V konağı-MABS koruma Aracısı, Hyper-V konak sunucusu, küme veya VM üzerinde|Windows Server 2012 - Datacenter ve Standard|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi|V3, V2|Koruma: Hyper-V bilgisayarları, küme paylaşılan birimleri (CSV)<br /><br />Kurtarma: Sanal makine, dosya ve klasörleri öğe düzeyinde kurtarma, birimler, sanal sabit sürücüler|
 |Hyper-V konağı-MABS koruma Aracısı, Hyper-V konak sunucusu, küme veya VM üzerinde|Windows Server 2008 R2 SP1 - Enterprise ve Standard|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi|V3, V2|Koruma: Hyper-V bilgisayarları, küme paylaşılan birimleri (CSV)<br /><br />Kurtarma: Sanal makine, dosya ve klasörleri öğe düzeyinde kurtarma, birimler, sanal sabit sürücüler|
-|Hyper-V konağı-MABS koruma Aracısı, Hyper-V konak sunucusu, küme veya VM üzerinde|Windows Server 2008 SP2|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi|Desteklenmiyor|Koruma: Hyper-V bilgisayarları, küme paylaşılan birimleri (CSV)<br /><br />Kurtarma: Sanal makine, dosya ve klasörleri öğe düzeyinde kurtarma, birimler, sanal sabit sürücüler|
+|Hyper-V konağı-MABS koruma Aracısı, Hyper-V konak sunucusu, küme veya VM üzerinde|Windows Server 2008 SP2|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi|Desteklenmez|Koruma: Hyper-V bilgisayarları, küme paylaşılan birimleri (CSV)<br /><br />Kurtarma: Sanal makine, dosya ve klasörleri öğe düzeyinde kurtarma, birimler, sanal sabit sürücüler|
 |VMware Sanal Makineleri|VMware vCenter/vSphere ESX/ESXi lisanslı sürüm 5.5/6.0/6.5 |Fiziksel sunucu, <br/>Şirket içi Hyper-V VM 'si, <br/> VMWare 'de Windows VM|V3, V2|Küme Paylaşılan birimlerinde (CSV), NFS ve SAN depolamada VMware VM 'Leri<br /> Dosya ve klasörlerin öğe düzeyinde kurtarılması yalnızca Windows VM 'Leri için kullanılabilir, VMware vApps desteklenmez.|
 |VMware Sanal Makineleri|[VMware vSphere lisanslı sürüm 6,7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fiziksel sunucu, <br/>Şirket içi Hyper-V VM 'si, <br/> VMWare 'de Windows VM|Yüklemesinde|Küme Paylaşılan birimlerinde (CSV), NFS ve SAN depolamada VMware VM 'Leri<br /> Dosya ve klasörlerin öğe düzeyinde kurtarılması yalnızca Windows VM 'Leri için kullanılabilir, VMware vApps desteklenmez.|
 |Linux|Hyper-V veya VMware konuğu olarak çalışan Linux|Fiziksel sunucu, <br/>Şirket içi Hyper-V VM 'si, <br/> VMWare 'de Windows VM|V3, V2|Hyper-V Windows Server 2012 R2 veya Windows Server 2016 üzerinde çalışıyor olmalıdır. Koruma: Tüm sanal makine<br /><br />Kurtarma: Tüm sanal makine <br/><br/> Yalnızca dosya tutarlı anlık görüntüler desteklenir. <br/><br/> Desteklenen Linux dağıtımları ve sürümlerinin tüm listesi için bkz. [Azure tarafından onaylanan dağıtımların Linux](../virtual-machines/linux/endorsed-distros.md)makalesi.|
@@ -97,7 +98,7 @@ Microsoft eşlemesiyle, lütfen aşağıdaki hizmetleri/bölgeleri ve ilgili top
 * Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
 * Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)
 
-Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Ortak eşleme, yeni devreler için kullanım dışıdır.

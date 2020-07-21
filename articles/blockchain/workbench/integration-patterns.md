@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizlemesinde akıllı sözl
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254642"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538386"
 ---
 # <a name="smart-contract-integration-patterns"></a>Akıllı anlaşma tümleştirme desenleri
 
@@ -134,7 +134,7 @@ Bu model genellikle aşağıdaki yaklaşım kullanılarak uygulanır:
 -   Durum değişikliği, bir aşağı akış tüketiciye olay olarak ortaya çıkmış.
 -   Aşağı akış tüketicisi olayı alır ve dış kod yürütmeyi tetikler.
 
-![Dış işleme geçiş denetimi](./media/integration-patterns/transition-external-process.png)
+![Diyagramda, bir olayın dağıtılmış muhasebeye geçmesine neden olan bir durum değişikliği sözleşmede gösterilmektedir. Blok zinciri çalışma ekranı daha sonra olayı seçer ve yayımlar.](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>Akıllı sözleşmeden denetim döndürme
 
@@ -142,7 +142,7 @@ Dış sistemi özelleştirme yeteneğinin ne olduğuna bağlı olarak, Azure blo
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Beklenen biçimde bir Azure blok zinciri çalışma ekranının doğrudan teslimi
 
-![](./media/integration-patterns/direct-delivery.png)
+![Diyagramda, blok zinciri tarafından Service Bus aracılığıyla oluşturulan dış sistemden bir P ı iletisi gösterilmektedir. Blok zinciri çalışma ekranı, aracı adına dağıtılmış bir genel muhasebeye işlem olarak bir ileti gönderir. Sözleşmeye geçirilir, burada durum değişikliğine neden olur.](./media/integration-patterns/direct-delivery.png)
 
 Bu modelde, sözleşmeye ve sonraki durum değişikliğine yönelik iletişim, önceki işlem sonrasında oluşur-
 

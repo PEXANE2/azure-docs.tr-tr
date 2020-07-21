@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847038"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537029"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute devreleri ve eşleme
 
 ExpressRoute devreleri, bir bağlantı sağlayıcısı aracılığıyla şirket içi altyapınızı Microsoft 'a bağlama. Bu makale ExpressRoute devreleri ve yönlendirme etki alanlarını/eşlemeyi anlamanıza yardımcı olur. Aşağıdaki şekilde, WAN ve Microsoft arasındaki bağlantının mantıksal bir gösterimi gösterilmektedir.
 
-![](./media/expressroute-circuit-peerings/expressroute-basic.png)
+![ExpressRoute bağlantı hattı, bağlantı sağlayıcısı aracılığıyla şirket içi altyapınızı Microsoft 'a nasıl bağlayabildiğini gösteren diyagram.](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
 > Azure genel eşlemesi kullanım dışı bırakılmıştır ve yeni ExpressRoute devreleri için kullanılamaz. Yeni devreler, Microsoft eşlemesini ve özel eşlemeyi destekler.  
@@ -42,7 +42,7 @@ Varsayılan kotalar ve sınırlar her ExpressRoute devresi için geçerlidir. Ko
 
 ExpressRoute devresi ile ilişkili birden çok yönlendirme etki alanı/eşlemesi vardır: Azure genel, Azure özel ve Microsoft. Her eşleme, yüksek kullanılabilirlik için bir çift yönlendiriciyle (etkin-etkin veya yük paylaşım yapılandırması) aynı şekilde yapılandırılır. Azure Hizmetleri, IP adresleme düzenlerini göstermek için Azure *genel* ve *Azure özel* olarak kategorize edilir.
 
-![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
+![Azure genel, Azure özel ve Microsoft eşlerinin bir ExpressRoute devresinde nasıl yapılandırıldığını gösteren diyagram.](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure özel eşlemesi
 

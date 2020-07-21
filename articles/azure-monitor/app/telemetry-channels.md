@@ -4,11 +4,12 @@ description: .NET ve .NET Core için Azure Application Insights SDK 'larda telem
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691960"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539797"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights telemetri kanalları
 
@@ -16,7 +17,7 @@ Telemetri kanalları, [Azure Application Insights SDK](../../azure-monitor/app/a
 
 ## <a name="what-are-telemetry-channels"></a>Telemetri kanalları nelerdir?
 
-Telemetri kanalları, telemetri öğelerini arabelleğe almayı ve bunları sorgulamak ve analiz etmek için depolanacağı Application Insights hizmetine göndermekten sorumludur. Telemetri kanalı arabirimini uygulayan herhangi bir sınıftır [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) .
+Telemetri kanalları, telemetri öğelerini arabelleğe almayı ve bunları sorgulamak ve analiz etmek için depolanacağı Application Insights hizmetine göndermekten sorumludur. Telemetri kanalı arabirimini uygulayan herhangi bir sınıftır [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) .
 
 `Send(ITelemetry item)`Telemetri kanalının yöntemi, tüm telemetri başlatıcıları ve telemetri işlemcileri çağrıldıktan sonra çağrılır. Bu nedenle, bir telemetri işlemcisi tarafından bırakılan tüm öğeler kanala erişmez. `Send()`genellikle öğeleri arka uca anında göndermez. Genellikle, bunları bellekte arabelleğe alır ve etkili iletim için bunları toplu halde gönderir.
 
@@ -30,7 +31,7 @@ Application Insights .NET ve .NET Core SDK 'Ları, iki yerleşik kanala sahiptir
 
     Bu kanal, Microsoft. ApplicationInsights NuGet paketinin daha büyük bir parçasıdır ve başka hiçbir şey yapılandırılmadığı zaman SDK 'nın kullandığı varsayılan kanaldır.
 
-* `ServerTelemetryChannel`: Yeniden deneme ilkelerine sahip daha gelişmiş bir kanal ve verileri yerel bir diskte depolama özelliği. Bu kanal, geçici hatalar oluşursa telemetri göndermeyi yeniden dener. Bu kanal Ayrıca, ağ kesintileri veya yüksek telemetri birimleri sırasında öğeleri diskte tutmak için yerel disk depolama alanını kullanır. Bu yeniden deneme mekanizmaları ve yerel disk depolaması nedeniyle, bu kanal daha güvenilir kabul edilir ve tüm üretim senaryolarında önerilir. Bu kanal, resmi belgelere göre yapılandırılan [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) ve [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) uygulamaları için varsayılandır. Bu kanal, uzun süre çalışan işlemlerle sunucu senaryoları için iyileştirilmiştir. [`Flush()`](#which-channel-should-i-use)Bu kanal tarafından uygulanan yöntem zaman uyumlu değil.
+* `ServerTelemetryChannel`: Yeniden deneme ilkelerine sahip daha gelişmiş bir kanal ve verileri yerel bir diskte depolama özelliği. Bu kanal, geçici hatalar oluşursa telemetri göndermeyi yeniden dener. Bu kanal Ayrıca, ağ kesintileri veya yüksek telemetri birimleri sırasında öğeleri diskte tutmak için yerel disk depolama alanını kullanır. Bu yeniden deneme mekanizmaları ve yerel disk depolaması nedeniyle, bu kanal daha güvenilir kabul edilir ve tüm üretim senaryolarında önerilir. Bu kanal, resmi belgelere göre yapılandırılan [ASP.net](./asp-net.md) ve [ASP.NET Core](./asp-net-core.md) uygulamaları için varsayılandır. Bu kanal, uzun süre çalışan işlemlerle sunucu senaryoları için iyileştirilmiştir. [`Flush()`](#which-channel-should-i-use)Bu kanal tarafından uygulanan yöntem zaman uyumlu değil.
 
     Bu kanal Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel NuGet paketi olarak gönderilir ve Microsoft. ApplicationInsights. Web ya da Microsoft. ApplicationInsights. AspNetCore NuGet paketini kullandığınızda otomatik olarak alınır.
 

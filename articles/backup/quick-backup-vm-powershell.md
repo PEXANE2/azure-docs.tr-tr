@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc
-ms.openlocfilehash: 8021ca553a1434c891bee911e85d351c61938594
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa190c670c5bdcae8bcb31d2b8d5d9bd011acae9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538607"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>PowerShell ile Azure'daki bir sanal makineyi yedekleme
 
-[Azure POWERSHELL az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) Module, komut satırından veya betiklerden Azure kaynaklarını oluşturmak ve yönetmek için kullanılır.
+[Azure POWERSHELL az](/powershell/azure/new-azureps-module-az) Module, komut satırından veya betiklerden Azure kaynaklarını oluşturmak ve yönetmek için kullanılır.
 
 [Azure Backup](backup-overview.md) , şirket içi makineleri ve uygulamaları ve Azure VM 'lerini yedekler. Bu makalede, AZ modülle bir Azure VM 'yi nasıl yedekleyeceğiniz gösterilmektedir. Alternatif olarak, [Azure CLI](quick-backup-vm-cli.md)veya [Azure Portal](quick-backup-vm-portal.md)kullanarak bir VM 'yi yedekleyebilirsiniz.
 
@@ -46,7 +46,7 @@ Kasayı oluştururken:
 
 - Kaynak grubu ve konum için, yedeklemek istediğiniz sanal makinenin kaynak grubunu ve konumunu belirtin.
 - VM oluşturmak için bu [örnek betiği](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) kullandıysanız kaynak grubu **myresourcegroup**, VM ***myvm**ve kaynaklar **westeurope** bölgedeyse.
-- Azure Backup, yedeklenen veriler için depolamayı otomatik olarak işler. Kasa, varsayılan olarak [coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy-grs.md)kullanır. Coğrafi yedeklilik, yedeklenen verilerin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
+- Azure Backup, yedeklenen veriler için depolamayı otomatik olarak işler. Kasa, varsayılan olarak [coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanır. Coğrafi yedeklilik, yedeklenen verilerin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
 
 Şimdi bir kasa oluşturun:
 
@@ -66,7 +66,7 @@ Kasayı oluştururken:
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
-3. [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty)ile kasanın depolama artıklığı yapılandırmasını (LRS/GRS) aşağıdaki gibi değiştirin:
+3. [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty)ile kasanın depolama artıklığı yapılandırmasını (LRS/GRS) aşağıdaki gibi değiştirin:
 
     ```powershell
     Get-AzRecoveryServicesVault `

@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82591661"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539610"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularına genel bakış
 Günlük sorguları, [Azure Izleyici günlüklerinde](../platform/data-platform-logs.md)toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Güçlü bir sorgu dili, birden çok tablodan veri birleştirme, büyük veri kümelerini toplama ve en az kodla karmaşık işlemler gerçekleştirmenize olanak tanır. Neredeyse her soru yanıtlanarak, destekleyici veriler toplandıkça ve analiz, doğru sorgunun nasıl oluşturulacağını anlamış olabilir.
 
-Azure Izleyici 'deki [Öngörüler](../insights/insights-overview.md) ve [çözümler](../insights/solutions-inventory.md) gibi bazı özellikler, sizi temel sorgulara açmadan günlük verilerini işler. Azure Izleyici 'nin diğer özelliklerinden tamamen yararlanmak için sorguların nasıl oluşturulduğunu ve Azure Izleyici günlüklerinde verileri etkileşimli olarak analiz etmek için bunları nasıl kullanabileceğinizi anlamanız gerekir.
+Azure Izleyici 'deki [Öngörüler](../insights/insights-overview.md) ve [çözümler](../monitor-reference.md) gibi bazı özellikler, sizi temel sorgulara açmadan günlük verilerini işler. Azure Izleyici 'nin diğer özelliklerinden tamamen yararlanmak için sorguların nasıl oluşturulduğunu ve Azure Izleyici günlüklerinde verileri etkileşimli olarak analiz etmek için bunları nasıl kullanabileceğinizi anlamanız gerekir.
 
 Azure Izleyici 'de günlük sorguları hakkında bilgi edinmek için bu makaleyi başlangıç noktası olarak kullanın. Ortak soruları yanıtlar ve daha fazla ayrıntı ve ders sağlayan diğer belgelere bağlantılar sağlar.
 
