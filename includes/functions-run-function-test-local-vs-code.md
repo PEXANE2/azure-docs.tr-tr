@@ -21,7 +21,7 @@ Visual Studio Code, Azure 'da yayımlamadan önce bu projeyi yerel geliştirme b
 
     ![Azure yerel çıktısı](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
 
-1. Temel araçlar çalışırken, sorgu dizesi içeren `?name=Functions` bir get isteği yürütmek IÇIN aşağıdaki URL 'ye gidin.
+1. Temel araçlar çalışırken, sorgu dizesi içeren bir GET isteği yürütmek için aşağıdaki URL 'ye gidin `?name=Functions` .
 
     <http://localhost:7071/api/HttpExample?name=Functions>
 

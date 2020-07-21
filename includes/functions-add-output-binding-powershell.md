@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191085"
 ---
-Çıkış bağlamayı kullanarak bir metni `Push-OutputBinding` kuyruğa yazmak için cmdlet 'ini kullanan kodu ekleyin. `msg` `if` Deyimdeki Tamam durumunu ayarlamadan önce bu kodu ekleyin.
+`Push-OutputBinding`Çıkış bağlamayı kullanarak bir metni kuyruğa yazmak için cmdlet 'ini kullanan kodu ekleyin `msg` . Deyimdeki Tamam durumunu ayarlamadan önce bu kodu ekleyin `if` .
 
 :::code language="powershell" range="18-19" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/run.ps1":::
 

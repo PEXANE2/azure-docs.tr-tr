@@ -21,7 +21,7 @@ Azure Functions Core Tools, bir Azure Işlevleri projesinde yerel olarak çalı�
 
     ![Azure yerel çıktısı](./media/functions-run-function-test-local-vs-code-ps/functions-vscode-f5.png)
 
-1. Sorgu dizesini `?name=<yourname>` bu URL 'ye ekleyin ve sonra aşağıdaki gibi, `Invoke-RestMethod` isteği yürütmek için ikinci bir PowerShell komut isteminde kullanın:
+1. Sorgu dizesini `?name=<yourname>` Bu URL 'ye ekleyin ve sonra `Invoke-RestMethod` aşağıdaki gibi, isteği yürütmek için Ikinci bir PowerShell komut isteminde kullanın:
 
     ```powershell
     PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
@@ -32,7 +32,7 @@ Azure Functions Core Tools, bir Azure Işlevleri projesinde yerel olarak çalı�
 
     <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-    Sorgu parametresi ya da gövdede bir `name` parametre geçirmeden httptrigger uç noktasını çağırdığınızda, işlev bir `BadRequest` hata döndürür. Run. ps1 içinde kodu gözden geçirdikten sonra, bu hatanın tasarım tarafından oluştuğunu görürsünüz.
+    `name`Sorgu parametresi ya da gövdede bir parametre geçirmeden HttpTrigger uç noktasını çağırdığınızda, işlev bir `BadRequest` hata döndürür. run.ps1 kodu gözden geçirdikten sonra, bu hatanın tasarım tarafından oluştuğunu görürsünüz.
 
 1. İstek hakkındaki bilgiler, **Terminal** panelinde gösterilir.
 

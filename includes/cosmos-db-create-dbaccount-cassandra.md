@@ -19,9 +19,9 @@ ms.locfileid: "77134717"
 
 2. Sol taraftaki menüde **kaynak oluştur**' u seçin.
    
-   ![Azure portal bir kaynak oluşturun](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-0.png)
+   ![Azure portalında kaynak oluşturma](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-0.png)
    
-3. **Yeni** sayfada **veritabanları** > **Azure Cosmos DB**' nı seçin.
+3. **Yeni** sayfada **veritabanları**  >  **Azure Cosmos DB**' nı seçin.
    
    ![Azure portalındaki Veritabanları bölmesi](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-1.png)
    

@@ -11,7 +11,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191104"
 ---
-Kuyruk iletisi oluşturmak `msg` `context.bindings` için çıkış bağlama nesnesi kullanan kodu ekleyin. Bu kodu `context.res` deyimden önce ekleyin.
+`msg`Kuyruk iletisi oluşturmak için çıkış bağlama nesnesi kullanan kodu ekleyin `context.bindings` . Bu kodu `context.res` deyimden önce ekleyin.
 
 :::code language="javascript" range="7" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/index.js":::
 

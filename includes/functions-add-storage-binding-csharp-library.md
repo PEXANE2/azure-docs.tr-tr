@@ -11,13 +11,13 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78190933"
 ---
-C# sınıf kitaplığı projesinde bağlamalar, işlev yönteminde bağlama öznitelikleri olarak tanımlanır. Işlevler tarafından istenen *function. JSON* dosyası, bu özniteliklere göre otomatik olarak oluşturulur.
+C# sınıf kitaplığı projesinde bağlamalar, işlev yönteminde bağlama öznitelikleri olarak tanımlanır. Işlevler için gereken dosya *function.js* , bu özniteliklere göre otomatik olarak oluşturulur.
 
-*HttpExample.cs* proje dosyasını açın ve `Run` Yöntem tanımına aşağıdaki parametreyi ekleyin:
+*HttpExample.cs* proje dosyasını açın ve Yöntem tanımına aşağıdaki parametreyi ekleyin `Run` :
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-`msg` Parametresi, işlev tamamlandığında `ICollector<T>` çıkış bağlamaya yazılan bir ileti koleksiyonunu temsil eden bir türdür. Bu durumda, çıktı adlı `outqueue`bir depolama kuyruğudur. Depolama hesabının bağlantı dizesi tarafından ayarlanır `StorageAccountAttribute`. Bu öznitelik, depolama hesabı bağlantı dizesini içeren ayarı belirtir ve sınıfı, yöntemi veya parametre düzeyinde uygulanabilir. Bu durumda, zaten varsayılan depolama hesabını `StorageAccountAttribute` kullandığınızdan atlayabilirsiniz.
+`msg`Parametresi `ICollector<T>` , işlev tamamlandığında çıkış bağlamaya yazılan bir ileti koleksiyonunu temsil eden bir türdür. Bu durumda, çıktı adlı bir depolama kuyruğudur `outqueue` . Depolama hesabının bağlantı dizesi tarafından ayarlanır `StorageAccountAttribute` . Bu öznitelik, depolama hesabı bağlantı dizesini içeren ayarı belirtir ve sınıfı, yöntemi veya parametre düzeyinde uygulanabilir. Bu durumda, `StorageAccountAttribute` zaten varsayılan depolama hesabını kullandığınızdan atlayabilirsiniz.
 
 Çalıştırma yöntemi tanımı artık aşağıdaki gibi görünmelidir:  
 

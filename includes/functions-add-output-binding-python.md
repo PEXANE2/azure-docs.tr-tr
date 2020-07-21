@@ -11,8 +11,8 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191084"
 ---
-*\\\_Httpexample\_init\_. Kopyala 'yı aşağıdaki kodla eşleşecek şekilde güncelleştirin, parametreyi işlev tanımına ve deyimin altına\_* `msg` `msg.set(name)` `if name:` ekleyin.
+*Httpexample \\ \_ \_ init \_ \_ . Kopyala* 'yı aşağıdaki kodla eşleşecek şekilde güncelleştirin, `msg` parametreyi işlev tanımına ve `msg.set(name)` deyimin altına ekleyin `if name:` .
 
 :::code language="python" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
-`msg` Parametresi, [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. `set` Yöntemi, kuyruğa bir dize iletisi yazar, bu durumda adı URL sorgu dizesinde işleve geçirilir.
+`msg`Parametresi, bir örneğidir [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) . `set`Yöntemi, kuyruğa bir dize iletisi yazar, bu durumda adı URL sorgu dizesinde işleve geçirilir.

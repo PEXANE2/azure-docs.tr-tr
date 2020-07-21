@@ -15,9 +15,9 @@ ms.locfileid: "80234139"
 
 Ayrıca, bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. Bir IoT Hub 'ınız yoksa, [oluşturmak için bu yönergeleri](../articles/iot-hub/iot-hub-create-using-cli.md)izleyin.
 
-Azure CLı 'yi yerel olarak kullanıyorsanız, önce kullanarak `az login`Azure aboneliğinizde oturum açın. Bu komutları Azure Cloud Shell çalıştırıyorsanız, otomatik olarak oturum açtınız.
+Azure CLı 'yi yerel olarak kullanıyorsanız, önce kullanarak Azure aboneliğinizde oturum açın `az login` . Bu komutları Azure Cloud Shell çalıştırıyorsanız, otomatik olarak oturum açtınız.
 
-Azure CLı 'yi yerel olarak kullanıyorsanız, `az` sürüm **2.0.73** veya üzeri olmalıdır; Azure Cloud Shell en son sürümü kullanır. Makinenizde yüklü `az --version` sürümü denetlemek için komutunu kullanın.
+Azure CLı 'yi yerel olarak kullanıyorsanız, `az` Sürüm **2.0.73** veya üzeri olmalıdır; Azure Cloud Shell en son sürümü kullanır. `az --version`Makinenizde yüklü sürümü denetlemek için komutunu kullanın.
 
 Azure CLı için Microsoft Azure IoT uzantısını örneğinize eklemek için aşağıdaki komutu çalıştırın:
 
