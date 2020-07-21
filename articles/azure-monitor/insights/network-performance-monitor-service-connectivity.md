@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690023"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498874"
 ---
 # <a name="service-connectivity-monitor"></a>Hizmet Bağlantısı İzleyicisi
 
@@ -56,7 +57,7 @@ Hizmet uç noktalarına ağ bağlantısını izlemek için testlerinizi oluştur
 
     * Outlook.office365.com veya bing.com gibi HTTP/S isteklerine yanıt veren bir hizmete bağlantıyı izlemek için **Web** ' i seçin.<br>
     * TCP isteklerine yanıt veren ancak SQL Server, FTP sunucusu veya SSH bağlantı noktası gibi HTTP/S isteklerine yanıt vermeyen bir hizmete bağlantıyı izlemek için **ağ** ' ı seçin. 
-    * Örneğin: bir BLOB depolama hesabına Web testi oluşturmak Için **Web** ' i seçin ve hedefi *yourstorageaccount*. blob.Core.Windows.net olarak girin. Benzer şekilde, [Bu bağlantıyı](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints) kullanarak diğer tablo depolama, kuyruk depolama ve Azure dosyaları için testler de oluşturabilirsiniz.
+    * Örneğin: bir BLOB depolama hesabına Web testi oluşturmak Için **Web** ' i seçin ve hedefi *yourstorageaccount*. blob.Core.Windows.net olarak girin. Benzer şekilde, [Bu bağlantıyı](../../storage/common/storage-account-overview.md#storage-account-endpoints) kullanarak diğer tablo depolama, kuyruk depolama ve Azure dosyaları için testler de oluşturabilirsiniz.
 4. Ağ gecikmesi, paket kaybı ve topoloji bulma gibi ağ ölçümleri gerçekleştirmek istemiyorsanız **ağ ölçülerini gerçekleştir** onay kutusunu temizleyin. Özellikten en yüksek avantajdan yararlanmak için seçili kalsın. 
 5. **Hedef**bölümünde, ağ bağlantısını Izlemek istediğiniz URL/FQDN/IP adresini girin.
 6. **Bağlantı noktası numarası**alanına hedef hizmetin bağlantı noktası numarasını girin. 
@@ -74,7 +75,7 @@ Hizmet uç noktalarına ağ bağlantısını izlemek için testlerinizi oluştur
 
 
 
-## <a name="walkthrough"></a>Kılavuz 
+## <a name="walkthrough"></a>İzlenecek yol 
 
 Ağ Performansı İzleyicisi Pano görünümüne gidin. Oluşturduğunuz farklı testlerin sistem durumunun özetini almak için **hizmet bağlantısı İzleyicisi** sayfasına bakın. 
 

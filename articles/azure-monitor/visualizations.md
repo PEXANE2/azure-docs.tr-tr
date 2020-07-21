@@ -6,13 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 2da0cd2ede33abe8ebbe3616192349112fb24bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0176454b38dfa88480e63fedfae175a63192eaee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797492"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498602"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Azure Izleyici 'den verileri görselleştirme
+# <a name="visualizing-data-from-azure-monitor"></a>Azure İzleyici’den verileri görselleştirme
 Bu makalede, Azure Izleyici 'de depolanan günlük ve ölçüm verilerini görselleştirmek için kullanılabilen yöntemlerin bir özeti sağlanmaktadır.
 
 Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına inmek ve desenleri belirlemek için izleme verilerinizi çözümlemenize yardımcı olabilir. Kullandığınız araca bağlı olarak, görselleştirmeleri kuruluşunuzun içindeki ve dışındaki diğer kullanıcılarla paylaşma seçeneğiniz de olabilir.
@@ -22,7 +23,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Çalışma Kitabı](media/visualizations/workbook.png)
 
-### <a name="advantages"></a>Yararları
+### <a name="advantages"></a>Avantajlar
 - Hem ölçümleri hem de günlükleri destekler.
 - , Tablodaki bir öğenin seçilmesi ilişkili grafikleri ve görselleştirmeleri dinamik olarak güncelleştirecek etkileşimli raporları etkinleştiren parametreleri destekler.
 - Belge benzeri akış.
@@ -40,7 +41,9 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Pano](media/visualizations/dashboard.png)
 
-### <a name="advantages"></a>Yararları
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
+
+### <a name="advantages"></a>Avantajlar
 - Azure ile derin tümleştirme. Görselleştirmeler, Ölçüm Gezgini, Log Analytics ve Application Insights dahil olmak üzere birden çok Azure sayfasında bulunan panolara sabitlenebilir.
 - Hem ölçümleri hem de günlükleri destekler.
 - [Ölçüm Gezgini](platform/metrics-charts.md), [günlük sorguları](log-query/log-query-overview.md)ve Application Insights ' deki [haritalar](app/app-map.md) ve kullanılabilirliğin çıktısı dahil olmak üzere birden fazla kaynaktaki verileri birleştirin.
@@ -65,7 +68,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Power BI](media/visualizations/power-bi.png)
 
-### <a name="advantages"></a>Yararları
+### <a name="advantages"></a>Avantajlar
 - Zengin görselleştirmeler.
 - Yakınlaştırma ve çapraz filtreleme dahil olmak üzere kapsamlı etkileşim.
 - Kuruluşunuz genelinde kolayca paylaşabilirsiniz.
@@ -85,7 +88,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 
 ![Grafana](media/visualizations/grafana.png)
 
-### <a name="advantages"></a>Yararları
+### <a name="advantages"></a>Avantajlar
 - Zengin görselleştirmeler.
 - Veri kaynaklarının zengin ekosistemi.
 - Yakınlaştırma dahil veri etkileşimi.
@@ -99,7 +102,7 @@ Grafikler ve grafikler gibi görselleştirmeler, sorunların ayrıntılarına in
 ## <a name="build-your-own-custom-application"></a>Kendi özel uygulamanızı oluşturun
 Azure Izleyici 'deki günlük ve ölçüm verilerinde bulunan verilere, kendi özel web sitelerinizi ve uygulamalarınızı oluşturmanıza olanak sağlayan herhangi bir REST istemcisi kullanarak API 'leri aracılığıyla erişebilirsiniz.
 
-### <a name="advantages"></a>Yararları
+### <a name="advantages"></a>Avantajlar
 - Kullanıcı arabirimi, görselleştirme, etkileşim ve özelliklerde esnekliği tamamen yapın.
 - Ölçümleri ve günlük verilerini diğer veri kaynaklarıyla birleştirin.
 
@@ -117,7 +120,7 @@ Azure Izleyici 'deki günlük ve ölçüm verilerinde bulunan verilere, kendi ö
 
 ![Görüntüle](media/visualizations/view.png)
 
-### <a name="advantages"></a>Yararları
+### <a name="advantages"></a>Avantajlar
 - Günlük verileri için zengin görselleştirmeler.
 - Diğer kaynak gruplarına ve aboneliklerine aktarmak için görünümleri dışa ve içeri aktarma.
 - Çalışma alanları ve izleme çözümleri ile Azure Izleyici yönetim modeli ile tümleşir.

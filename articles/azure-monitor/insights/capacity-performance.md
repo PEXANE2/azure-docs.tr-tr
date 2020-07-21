@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666952"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499554"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Hyper-V sanal makine kapasitesini Kapasite ve Performans çözümüyle planlayın (kullanım dışı)
 
@@ -38,14 +39,14 @@ Hyper-V sunucularınızın kapasitesini anlamanıza yardımcı olması için Izl
 
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Destek | Açıklama |
+| Bağlı Kaynak | Destek | Description |
 |---|---|---|
-| [Windows aracıları](../../azure-monitor/platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
-| [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır    | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
-| [SCOM yönetim grubu](../../azure-monitor/platform/om-agents.md) | Evet |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
-| [Azure depolama hesabı](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Hayır | Azure depolama, kapasite ve performans verilerini içermez.|
+| [Windows aracıları](../../azure-monitor/platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından kapasite ve performans veri bilgilerini toplar. |
+| [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | Çözüm, doğrudan Linux aracılarından kapasite ve performans veri bilgilerini toplamaz.|
+| [SCOM yönetim grubu](../../azure-monitor/platform/om-agents.md) | Yes |Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan kapasite ve performans verilerini toplar. SCOM aracısından Log Analytics 'e doğrudan bir bağlantı gerekli değildir.|
+| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, kapasite ve performans verilerini içermez.|
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Windows veya Operations Manager aracıları, sanal makinelere değil, Windows Server 2012 veya daha yüksek bir Hyper-V konaklarında yüklü olmalıdır.
 
@@ -108,7 +109,7 @@ Kapasite ve Performans panosunu açmak için Kapasite ve Performans kutucuğuna 
 
 Üretim hesaplama ortamları, bir kuruluştan diğerine büyük ölçüde farklılık gösterir. Ayrıca kapasite ve performans iş yükleri, sanal makinelerinizin nasıl çalıştığı ve normal olarak ne düşünbileceğinize bağlı olarak değişebilir. Performansı ölçmenize yardımcı olacak belirli yordamlar, büyük olasılıkla ortamınıza uygulanmaz. Bu nedenle, yardım için daha Genelleştirilmiş öngörülü rehberlik daha uygundur. Microsoft, performansı ölçmenize yardımcı olmak için çeşitli öngörülü rehberlik makaleleri yayımlar.
 
-Özetlemek gerekirse, çözüm, performans sayaçları dahil çeşitli kaynaklardan kapasite ve performans verilerini toplar. Çözümdeki çeşitli yüzeylerde sunulan kapasite ve performans verilerini kullanın ve sonuçları [Hyper-V makalesindeki ölçüdekilerle](https://msdn.microsoft.com/library/cc768535.aspx) karşılaştırın. Makale bir süre önce yayımlansa da ölçümler, önemli noktalar ve yönergeler hala geçerlidir. Makale, diğer yararlı kaynakların bağlantılarını içerir.
+Özetlemek gerekirse, çözüm, performans sayaçları dahil çeşitli kaynaklardan kapasite ve performans verilerini toplar. Çözümdeki çeşitli yüzeylerde sunulan kapasite ve performans verilerini kullanın ve sonuçları [Hyper-V makalesindeki ölçüdekilerle](https://www.microsoft.com/en-us/download/details.aspx?id=56495) karşılaştırın. Makale bir süre önce yayımlansa da ölçümler, önemli noktalar ve yönergeler hala geçerlidir. Makale, diğer yararlı kaynakların bağlantılarını içerir.
 
 
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
@@ -116,7 +117,7 @@ Kapasite ve Performans panosunu açmak için Kapasite ve Performans kutucuğuna 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan ve hesaplanan kapasite ve performans verilerine yönelik örnek günlük aramaları sunulmaktadır.
 
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:--- |:--- |
 | Tüm konak belleği yapılandırması | &#124;, ObjectName = = "Kapasite ve Performans" ve CounterName = = "ana bilgisayar atanmış bellek MB" &#124; özetleme MB = AVG (CounterValue) InstanceName 'e göre |
 | Tüm VM belleği yapılandırması | Performans &#124;; ObjectName = = "Kapasite ve Performans" ve CounterName = = "VM atanan bellek MB" &#124;, InstanceName 'e göre MB = AVG (CounterValue) öğesini özetler |

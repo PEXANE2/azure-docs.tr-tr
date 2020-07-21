@@ -12,11 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708816"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498432"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL yönetilen örneğini bir örnek havuzuna dağıtma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,11 +35,11 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 |Örnek havuzu kullanımını ve özelliklerini denetleme|Hayır|Evet |
 |Örnek havuzu silme|Hayır|Evet|
 |Örnek havuzu içinde yönetilen bir örnek oluşturma|Hayır|Evet|
-|Yönetilen örnek için kaynak kullanımını güncelleştirme|Evet |Yes|
-|Yönetilen örnek için kullanımı ve özellikleri denetleyin|Evet|Yes|
-|Yönetilen bir örneği havuzdan silme|Evet|Yes|
-|Havuzda bir örnek içinde veritabanı oluşturma|Evet|Yes|
-|SQL yönetilen örneğinden bir veritabanını silme|Evet|Yes|
+|Yönetilen örnek için kaynak kullanımını güncelleştirme|Yes |Yes|
+|Yönetilen örnek için kullanımı ve özellikleri denetleyin|Yes|Yes|
+|Yönetilen bir örneği havuzdan silme|Yes|Yes|
+|Havuzda bir örnek içinde veritabanı oluşturma|Yes|Yes|
+|SQL yönetilen örneğinden bir veritabanını silme|Yes|Yes|
 
 Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/):
 
@@ -55,7 +56,7 @@ PowerShell 'i kullanmak için [PowerShell Core 'un en son sürümünü yükleyip
 
 Hem havuzların hem de tek örneklerin içindeki örneklerle ilgili işlemler için, standart [yönetilen örnek komutlarını](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)kullanın, ancak bir havuzdaki bir örnek için bu komutlar kullanılırken *örnek havuzu adı* özelliği doldurulmalıdır.
 
-## <a name="deployment-process"></a>Dağıtım süreci
+## <a name="deployment-process"></a>Dağıtım işlemi
 
 Yönetilen bir örneği bir örnek havuzuna dağıtmak için, ilk olarak, sürenin [boş bir alt ağda oluşturulan tek bir örneği](sql-managed-instance-paas-overview.md#management-operations)dağıtmasıyla aynı olduğu zaman uzun süreli bir işlem olan örnek havuzunu dağıtmanız gerekir. Bundan sonra, tipik olarak beş dakikalık bir işlem yapan görece hızlı bir işlem olan bir yönetilen örneği havuza dağıtabilirsiniz. Örnek havuzu parametresi, bu işlemin bir parçası olarak açıkça belirtilmelidir.
 
@@ -99,7 +100,7 @@ $instancePool = New-AzSqlInstancePool `
   -Name "mi-pool-name" `
   -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
-  -VCore 80 `
+  -VCore 8 `
   -Edition "GeneralPurpose" `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
@@ -115,13 +116,13 @@ $instancePool = New-AzSqlInstancePool `
 Yönetilen bir örnek oluşturmak için aşağıdaki komutu yürütün:
 
 ```powershell
-$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
+$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-one-name" -VCore 2 -StorageSizeInGB 256
 ```
 
 Bir havuzun içindeki bir örneği dağıtmak birkaç dakika sürer. İlk örnek oluşturulduktan sonra, ek örnekler oluşturulabilir:
 
 ```powershell
-$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -StorageSizeInGB 512
+$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-two-name" -VCore 4 -StorageSizeInGB 512
 ```
 
 ## <a name="create-a-database"></a>Veritabanı oluşturma 

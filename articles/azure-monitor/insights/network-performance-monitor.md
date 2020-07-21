@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480887"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498976"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
 
@@ -31,7 +32,7 @@ Ağ Performansı İzleyicisi üç geniş özellik sunar:
 
 * [ExpressRoute İzleyicisi](network-performance-monitor-expressroute.md): Azure ExpressRoute üzerinden şubeleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izleyin.  
 
-[Ağ performansı İzleyicisi](https://docs.microsoft.com/azure/networking/network-monitoring-overview) tarafından desteklenen çeşitli yetenekler hakkında daha fazla bilgi çevrimiçi olarak sunulmaktadır.
+[Ağ performansı İzleyicisi](../../networking/network-monitoring-overview.md) tarafından desteklenen çeşitli yetenekler hakkında daha fazla bilgi çevrimiçi olarak sunulmaktadır.
  
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki bağlantıyı, aşağıdaki bölgelerden birinde barındırılan bir çalışma alanından izleyebilir:
@@ -43,7 +44,7 @@ NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki ba
 * Orta Batı ABD
 * Orta Kuzey ABD
 * Orta Güney ABD
-* Orta ABD
+* Central US
 * Doğu ABD
 * Doğu ABD 2
 * Batı ABD 2
@@ -55,12 +56,12 @@ NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki ba
 * Güney UK
 * Doğu Asya
 * Güney Kore - Orta
-* Orta Hindistan
+* Central India
 * ABD devleti Virginia
 * Çin Doğu 2
 
 
-ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)bulunur.
+ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](../../expressroute/how-to-npm.md?utm_swu=8117)bulunur.
 
 
 ## <a name="set-up-and-configure"></a>Ayarlama ve yapılandırma
@@ -154,7 +155,7 @@ Bir aracısının yüklü olduğu tüm düğümler **düğümler** sekmesinde li
 
 1. İzlemek veya izlemeyi durdurmak istediğiniz düğümleri seçin veya temizleyin. 
 2. **İzleme Için kullan**' ı seçin veya uygun şekilde temizleyin. 
-3. **Kaydet**'i seçin. 
+3. **Kaydet**’i seçin. 
 
 
 İstediğiniz özellikleri yapılandırın:
@@ -255,9 +256,9 @@ Ağ Performansı İzleyicisi panosu ve detaya gitme sayfaları aracılığıyla 
 
 ## <a name="alerts"></a>Uyarılar
 
-Ağ Performansı İzleyicisi, [Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)'nin uyarı yeteneklerini kullanır.
+Ağ Performansı İzleyicisi, [Azure izleyici](../platform/alerts-overview.md)'nin uyarı yeteneklerini kullanır.
 
-Bu, tüm bildirimlerin [eylem grupları](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)kullanılarak yönetildiği anlamına gelir.  
+Bu, tüm bildirimlerin [eylem grupları](../platform/action-groups.md)kullanılarak yönetildiği anlamına gelir.  
 
 Log Analytics aracılığıyla bir uyarı oluşturan NPM kullanıcısı varsa: 
 1. Sizi Azure portal yönlendirmenizi sağlayacak bir bağlantı görürsünüz. Portala erişmek için tıklayın.
@@ -268,7 +269,7 @@ Log Analytics aracılığıyla bir uyarı oluşturan NPM kullanıcısı varsa:
 Azure portal aracılığıyla bir uyarı oluşturan NPM kullanıcısı varsa:  
 1. E-postanızı doğrudan girmeyi veya eylem grupları aracılığıyla uyarı oluşturmayı seçebilirsiniz.
 2. E-postanızı doğrudan girmeyi seçerseniz, **NPM e-posta ActionGroup** adlı bir eylem grubu oluşturulur ve e-posta kimliği bu eylem grubuna eklenir.
-3. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Burada bir eylem grubu oluşturmayı öğrenebilirsiniz [.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
+3. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Burada bir eylem grubu oluşturmayı öğrenebilirsiniz [.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. Uyarı başarıyla oluşturulduktan sonra uyarılarınızı yönetmek için Uyarıları Yönet bağlantısını kullanabilirsiniz. 
 
 Her uyarı oluşturduğunuzda, NPM Azure Izleyici 'de sorgu tabanlı bir günlük uyarı kuralı oluşturur. Bu sorgu varsayılan olarak her 5 dakikada bir tetiklenir. Azure izleyici, oluşturulan ilk 250 günlük uyarı kuralı için ücret almaz ve 250 günlük uyarı kuralları sınırının üzerindeki tüm uyarı kuralları, [Azure izleyici fiyatlandırma sayfasında uyarı başına fiyatlandırmaya](https://azure.microsoft.com/pricing/details/monitor/)göre faturalandırılır.

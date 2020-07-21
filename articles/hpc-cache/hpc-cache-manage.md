@@ -1,21 +1,23 @@
 ---
 title: Azure HPC önbelleğini yönetme ve güncelleştirme
-description: Azure portal kullanarak Azure HPC önbelleğini yönetme ve güncelleştirme
+description: Azure portal veya Azure CLı kullanarak Azure HPC önbelleğini yönetme ve güncelleştirme
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 825b8a34e130286a5772363107311fe4170e8743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515556"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497241"
 ---
-# <a name="manage-your-cache-from-the-azure-portal"></a>Azure portal önbelleğinizi yönetin
+# <a name="manage-your-cache"></a>Önbelleğinizi yönetme
 
 Azure portal önbellekte Genel Bakış sayfasında, önbelleğiniz için proje ayrıntıları, önbellek durumu ve temel istatistikler gösterilmektedir. Ayrıca, önbelleği durdurmak veya başlatmak, önbelleği silmek, uzun süreli depolamaya verileri temizlemek ve yazılımı güncelleştirmek için denetimler de vardır.
+
+Bu makalede ayrıca Azure CLı ile bu temel görevlerin nasıl yapılacağı açıklanır.
 
 Genel Bakış sayfasını açmak için Azure portal ön belleği kaynağını seçin. Örneğin, **tüm kaynaklar** sayfasını yükleyin ve önbellek adına tıklayın.
 
@@ -23,7 +25,7 @@ Genel Bakış sayfasını açmak için Azure portal ön belleği kaynağını se
 
 Sayfanın üst kısmındaki düğmeler, önbelleği yönetmenize yardımcı olabilir:
 
-* **Başlatma** ve [**durdurma**](#stop-the-cache) -önbellek işlemini askıya al
+* **Başlatma** ve [**durdurma**](#stop-the-cache) -önbellek işlemini sürdürür veya askıya alır
 * [**Flush**](#flush-cached-data) -değiştirilen verileri depolama hedeflerine yazar
 * [**Yükseltme**](#upgrade-cache-software) -önbellek yazılımını güncelleştirir
 * **Yenile** -genel bakış sayfasını yeniden yükler
@@ -41,6 +43,8 @@ Etkin olmayan bir süre boyunca maliyetleri azaltmak için önbelleğin durdurul
 
 Durdurulmuş bir önbellek, istemci isteklerine yanıt vermez. Önbelleği durdurmadan önce istemcilerin bağlantısını çıkarmanız gerekir.
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 **Durdur** düğmesi etkin bir önbelleği askıya alır. Önbelleğin durumu **sağlıklı** veya **düşürülmüş**olduğunda **Durdur** düğmesi kullanılabilir.
 
 ![Durdur ile üst düğmelerin ve Durdur eylemini açıklayan ve ' devam etmek istiyor musunuz? ' adlı bir açılan iletinin ekran görüntüsü Evet (varsayılan) ve düğme yok](media/stop-cache.png)
@@ -51,6 +55,42 @@ Durdurulmuş bir önbelleği yeniden etkinleştirmek için **Başlat** düğmesi
 
 ![vurgulanacak üst düğmelerin ekran görüntüsü](media/start-cache.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+[Az HPC-Cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) komutuyla bir önbelleği geçici olarak askıya alın. Bu eylem yalnızca önbelleğin durumu **sağlıklı** veya **düşürülmüş**olduğunda geçerlidir.
+
+Önbellek, durdurulmadan önce içeriğini depolama hedeflerine otomatik olarak temizler. Bu işlem biraz zaman alabilir, ancak veri tutarlılığını sağlar.
+
+Eylem tamamlandığında, önbellek durumu **durduruldu**olarak değişir.
+
+Durdurulmuş bir önbelleği [az HPC-Cache start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start)ile yeniden etkinleştirin.
+
+Başlat veya Durdur komutunu verdiğinizde, komut satırı işlem tamamlanana kadar bir "çalışıyor" durum iletisi gösterir.
+
+```azurecli
+$ az hpc-cache start --name doc-cache0629
+ - Running ..
+```
+
+Tamamlanma sırasında ileti "tamamlandı" olarak güncelleştirilir ve dönüş kodlarını ve diğer bilgileri gösterir.
+
+```azurecli
+$ az hpc-cache start --name doc-cache0629
+{- Finished ..
+  "endTime": "2020-07-01T18:46:43.6862478+00:00",
+  "name": "c48d320f-f5f5-40ab-8b25-0ac065984f62",
+  "properties": {
+    "output": "success"
+  },
+  "startTime": "2020-07-01T18:40:28.5468983+00:00",
+  "status": "Succeeded"
+}
+```
+
+---
+
 ## <a name="flush-cached-data"></a>Önbelleğe alınmış verileri temizleme
 
 Genel Bakış sayfasındaki **Temizleme** düğmesi önbelleğin önbellekte depolanan tüm değiştirilen verileri arka uç depolama hedeflerine hemen yazmasını söyler. Önbellek verileri düzenli aralıklarla depolama hedeflerine kaydeder, bu nedenle arka uç depolama sisteminin güncel olduğundan emin olmak istemediğiniz takdirde bunu el ile yapmak gerekli değildir. Örneğin, bir depolama anlık görüntüsü almadan veya veri kümesi boyutunu kontrol etmeden önce **temizlemeyi** kullanabilirsiniz.
@@ -58,13 +98,47 @@ Genel Bakış sayfasındaki **Temizleme** düğmesi önbelleğin önbellekte dep
 > [!NOTE]
 > Temizleme işlemi sırasında önbellek, istemci isteklerine yönelik hizmeti veremez. Önbellek erişimi askıya alınır ve işlem bittikten sonra devam eder.
 
-![Flush vurgulanmış olan üst düğmelerin ve Temizleme eylemini açıklayan ve ' devam etmek istiyor musunuz? ' adlı bir açılan iletinin ekran görüntüsü Evet (varsayılan) ve düğme yok](media/hpc-cache-flush.png)
-
 Önbellek temizleme işlemini başlattığınızda, önbellek istemci isteklerini kabul etmeyi durduruyor ve Genel Bakış sayfasındaki önbellek durumu **reçeteye göre**değişir.
 
 Önbellekteki veriler uygun depolama hedeflerine kaydedilir. Ne kadar veri temizlenmesi gerektiğine bağlı olarak, işlem birkaç dakika sürebilir veya bir saat boyunca zaman alabilir.
 
 Tüm veriler depolama hedeflerine kaydedildikten sonra, önbellek otomatik olarak istemci istekleri almaya başlar. Önbellek durumu **sağlıklı**olarak döner.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Önbelleği temizlemek için, **Temizleme** düğmesine tıklayın ve sonra eylemi doğrulamak için **Evet** ' e tıklayın.
+
+![Flush vurgulanmış olan üst düğmelerin ve Temizleme eylemini açıklayan ve ' devam etmek istiyor musunuz? ' adlı bir açılan iletinin ekran görüntüsü Evet (varsayılan) ve düğme yok](media/hpc-cache-flush.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Önbelleğin tüm değiştirilen verileri depolama hedeflerine yazmasını zorlamak için [az HPC-Cache Flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) kullanın.
+
+Örnek:
+
+```azurecli
+$ az hpc-cache flush --name doc-cache0629 --resource-group doc-rg
+ - Running ..
+```
+
+Temizleme tamamlandığında bir başarı iletisi döndürülür.
+
+```azurecli
+{- Finished ..
+  "endTime": "2020-07-09T17:26:13.9371983+00:00",
+  "name": "c22f8e12-fcf0-49e5-b897-6a6e579b6489",
+  "properties": {
+    "output": "success"
+  },
+  "startTime": "2020-07-09T17:25:21.4278297+00:00",
+  "status": "Succeeded"
+}
+$
+```
+
+---
 
 ## <a name="upgrade-cache-software"></a>Yükseltme önbelleği yazılımı
 
@@ -80,7 +154,48 @@ Bir yazılım yükseltmesi kullanılabilir olduğunda, bir hafta veya el ile uyg
 
 Bitiş tarihi geçtiğinde önbelleğiniz durdurulmuşsa, önbellek bir sonraki başlatılışında otomatik olarak yazılım yükseltir. (Güncelleştirme hemen başlatılamayabilir, ancak ilk saat içinde başlatılacaktır.)
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 Yazılım güncelleştirmesini başlatmak için **Yükselt** düğmesine tıklayın. İşlem tamamlanana kadar önbellek durumu **yükseltme** olarak değişir.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Azure CLı 'da, önbellek durumu raporunun sonuna yeni yazılım bilgileri dahildir. (Denetlemek için [az HPC-Cache Show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) öğesini kullanın.) İletideki "upgradeStatus" dizesini arayın.
+
+Varsa, güncelleştirmeyi uygulamak için [az HPC-Cache Upgrade-bellenim](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware) kullanın.
+
+Hiçbir güncelleştirme kullanılamıyorsa, bu işlemin bir etkisi yoktur.
+
+Bu örnek, önbellek durumunu (güncelleştirme yok) ve Upgrade-bellenim komutunun sonuçlarını gösterir.
+
+```azurecli
+$ az hpc-cache show --name doc-cache0629
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+
+<...>
+
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.61",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-06-29T22:18:32.004822+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+$ az hpc-cache upgrade-firmware --name doc-cache0629
+$
+```
+
+---
 
 ## <a name="delete-the-cache"></a>Önbelleği silme
 
@@ -91,7 +206,35 @@ Depolama hedefleri olarak kullanılan arka uç depolama birimleri, önbelleği s
 > [!NOTE]
 > Azure HPC önbelleği, önbellek silinmeden önce, önbellekteki verileri otomatik olarak arka uç depolama sistemlerine yazar.
 >
-> Önbellekteki tüm verilerin uzun süreli depolamaya yazıldığından emin olmak için, silmeden önce [önbelleği durdurun](#stop-the-cache) . Sil düğmesine tıklamadan önce **durdurulan** durumu gösteriyor olduğundan emin olun.
+> Önbellekteki tüm verilerin uzun süreli depolamaya yazıldığından emin olmak için, silmeden önce [önbelleği durdurun](#stop-the-cache) . Silinmeden önce **durdurulan** durumu gösteriyor olduğundan emin olun.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Önbelleği durdurduktan sonra, önbelleği kalıcı olarak kaldırmak için **Sil** düğmesine tıklayın.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Önbelleği kalıcı olarak kaldırmak için [az HPC-Cache Delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) Azure CLI komutunu kullanın.
+
+Örnek:
+```azurecli
+$ az hpc-cache delete --name doc-cache0629
+ - Running ..
+
+<...>
+
+{- Finished ..
+  "endTime": "2020-07-09T22:24:35.1605019+00:00",
+  "name": "7d3cd0ba-11b3-4180-8298-d9cafc9f22c1",
+  "startTime": "2020-07-09T22:13:32.0732892+00:00",
+  "status": "Succeeded"
+}
+$
+```
+
+---
 
 ## <a name="cache-metrics-and-monitoring"></a>Önbellek ölçümleri ve izleme
 

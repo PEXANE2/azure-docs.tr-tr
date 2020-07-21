@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72025945"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499928"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler
 
@@ -56,13 +56,13 @@ Bu makalede, Azure 'da Z geliştirme ve test ortamı (zD&T) Enterprise Edition '
 
 ## <a name="create-the-base-image-and-connect"></a>Temel görüntüyü oluşturma ve bağlanma
 
-1. Azure portal, istediğiniz işletim sistemi yapılandırması ile [BIR VM oluşturun](/azure/virtual-machines/linux/quick-create-portal) . Bu makalede Ubuntu 16,04 çalıştıran bir B4ms VM (4 vCPU ve 16 GB bellek ile) varsayılır.
+1. Azure portal, istediğiniz işletim sistemi yapılandırması ile [BIR VM oluşturun](../../../linux/quick-create-portal.md) . Bu makalede Ubuntu 16,04 çalıştıran bir B4ms VM (4 vCPU ve 16 GB bellek ile) varsayılır.
 
 2. VM oluşturulduktan sonra SSH için 22 numaralı gelen bağlantı noktalarını, FTP için 21, Web sunucusu için 9443 ' yi açın.
 
 3. **Bağlan** DÜĞMESI aracılığıyla VM 'Nin **genel bakış** dikey penceresinde gösterilen SSH kimlik bilgilerini alın. **SSH** sekmesini SEÇIN ve SSH oturum açma komutunu panoya kopyalayın.
 
-4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](/azure/cloud-shell/quickstart) 'nda oturum açın ve komutu yapıştırın. ** \<user id\> SSH \@ biçiminde \<IP Address\> **olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
+4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](../../../../cloud-shell/quickstart.md) 'nda oturum açın ve komutu yapıştırın. ** \<user id\> SSH \@ biçiminde \<IP Address\> **olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Yükleme dosyasını sunucuya Kopyala
 

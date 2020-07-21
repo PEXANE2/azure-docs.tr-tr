@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 5c898721102177a0d796db3b8b0f194c4ec3efae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed1341a323d947441fa2cb3c239fcdf99c447a97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84793678"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494504"
 ---
 SQL Server veya Oracle gibi bazı veritabanı iş yükleri yüksek bellek, depolama ve g/ç bant genişliği gerektirir, ancak yüksek çekirdekli bir sayı değildir. Birçok veritabanı iş yükü CPU yoğunluklu değildir. Azure, aynı bellek, depolama ve g/ç bant genişliğini koruyarak, VM vCPU sayısını, yazılım lisanslama maliyetini azaltmak üzere kısıtlamak için belirli VM boyutları sunar.
 
@@ -74,3 +74,5 @@ SQL Server veya Oracle için ücretlendirilen lisanslama ücretleri yeni vCPU sa
 | Standard_DS13 2_v2  | 2    | DS13_v2 ile aynı |
 | Standard_DS14 8_v2  | 8    | DS14_v2 ile aynı |
 | Standard_DS14 4_v2  | 4    | DS14_v2 ile aynı |
+| Standard_M416 208s_v2 | 208    | M416s_v2 ile aynı|
+| Standard_M416 208ms_v2 | 208    | M416ms_v2 ile aynı |

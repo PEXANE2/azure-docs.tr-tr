@@ -14,21 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37a2724e28269d5f8b10d6ae7073aacc8272255b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81255762"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494777"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux için Ağ İzleyicisi Aracısı sanal makine uzantısı
 
 ## <a name="overview"></a>Genel Bakış
 
-[Azure Ağ İzleyicisi](/azure/network-watcher/) , Azure ağları için izlemeye izin veren bir ağ performansı izleme, tanılama ve analiz hizmetidir. Ağ Izleyicisi Aracısı sanal makinesi (VM) uzantısı, Azure VM 'lerde, isteğe bağlı ağ trafiğini yakalama ve diğer gelişmiş işlevsellik gibi bazı ağ Izleyicisi özellikleri için bir gereksinimdir.
+[Azure Ağ İzleyicisi](../../network-watcher/index.yml) , Azure ağları için izlemeye izin veren bir ağ performansı izleme, tanılama ve analiz hizmetidir. Ağ Izleyicisi Aracısı sanal makinesi (VM) uzantısı, Azure VM 'lerde, isteğe bağlı ağ trafiğini yakalama ve diğer gelişmiş işlevsellik gibi bazı ağ Izleyicisi özellikleri için bir gereksinimdir.
 
 Bu makalede, Linux için ağ Izleyicisi Aracısı VM uzantısı için desteklenen platformlar ve dağıtım seçenekleri ayrıntılı olarak açıklanır. Aracının yüklenmesi, sanal makinenin yeniden başlatılmasını kesintiye uğramaz veya gerektirmez. Uzantıyı dağıttığınız sanal makinelere dağıtabilirsiniz. Sanal makine bir Azure hizmeti tarafından dağıtılırsa, sanal makinede uzantıların yüklenmesine izin verilip verilmeyeceğini öğrenmek için hizmetin belgelerini denetleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -48,7 +49,7 @@ Ağ Izleyicisi Aracısı uzantısı aşağıdaki Linux dağıtımları için yap
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Bazı ağ Izleyicisi aracı işlevleri, bir VM 'nin Internet 'e bağlanmasını gerektirir. Giden bağlantılar oluşturma özelliği olmadan, bazı ağ Izleyicisi Aracısı özellikleri hatalı olabilir veya kullanılamaz hale gelebilir. Aracı gerektiren ağ Izleyicisi işlevselliği hakkında daha fazla bilgi için, bkz.[Ağ İzleyicisi belgeleri](/azure/network-watcher/).
+Bazı ağ Izleyicisi aracı işlevleri, bir VM 'nin Internet 'e bağlanmasını gerektirir. Giden bağlantılar oluşturma özelliği olmadan, bazı ağ Izleyicisi Aracısı özellikleri hatalı olabilir veya kullanılamaz hale gelebilir. Aracı gerektiren ağ Izleyicisi işlevselliği hakkında daha fazla bilgi için, bkz.[Ağ İzleyicisi belgeleri](../../network-watcher/index.yml).
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -118,4 +119,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [Ağ İzleyicisi belgelerine](/azure/network-watcher/)başvurabilirsiniz veya [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için bkz. [destek sss Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [Ağ İzleyicisi belgelerine](../../network-watcher/index.yml)başvurabilirsiniz veya [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için bkz. [destek sss Microsoft Azure](https://azure.microsoft.com/support/faq/).

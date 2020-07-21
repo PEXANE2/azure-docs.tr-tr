@@ -4,12 +4,12 @@ description: MARS aracısının yedekleme senaryolarını nasıl desteklediğini
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497956"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı hakkında
 
@@ -40,10 +40,10 @@ MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
 ## <a name="backup-process"></a>Yedekleme işlemi
 
 1. Azure portal, bir [Kurtarma Hizmetleri Kasası](install-mars-agent.md#create-a-recovery-services-vault)oluşturun ve **yedekleme hedeflerinden**dosyalar, klasörler ve sistem durumu ' nu seçin.
-2. [Kurtarma Hizmetleri Kasası kimlik bilgilerini ve Aracı yükleyicisini](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) şirket içi bir makineye indirin.
+2. [Kurtarma Hizmetleri Kasası kimlik bilgilerini ve Aracı yükleyicisini](./install-mars-agent.md#download-the-mars-agent) şirket içi bir makineye indirin.
 
-3. [Aracıyı yükleyip](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) indirilen kasa kimlik bilgilerini kullanarak makineyi kurtarma hizmetleri kasasına kaydedin.
-4. İstemcideki Aracı konsolundan, yedeklemeyi, ne zaman yedeklenmek gerektiğini, ne zaman yedeklemeniz gerektiğini (bekletme ilkesi) ve korumaya başlamak üzere [yapılandırın](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) .
+3. [Aracıyı yükleyip](./install-mars-agent.md#install-and-register-the-agent) indirilen kasa kimlik bilgilerini kullanarak makineyi kurtarma hizmetleri kasasına kaydedin.
+4. İstemcideki Aracı konsolundan, yedeklemeyi, ne zaman yedeklenmek gerektiğini, ne zaman yedeklemeniz gerektiğini (bekletme ilkesi) ve korumaya başlamak üzere [yapılandırın](./backup-windows-with-mars-agent.md#create-a-backup-policy) .
 
 ![Azure Backup aracı diyagramı](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
@@ -57,12 +57,12 @@ MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
 
 ### <a name="additional-scenarios"></a>İlave senaryolar
 
-- **Azure sanal makineler 'de belirli dosya ve klasörleri**yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
+- **Azure sanal makineler 'de belirli dosya ve klasörleri**yedekleme: Azure sanal makinelerini (VM) yedeklemeye yönelik BIRINCIL Yöntem VM 'de bir Azure Backup uzantısı kullanmaktır. Uzantı tüm VM 'yi yedekler. Bir VM içindeki belirli dosya ve klasörleri yedeklemek istiyorsanız, Azure VM 'lerine MARS Aracısı 'nı yükleyebilirsiniz. Daha fazla bilgi için bkz. [mimari: yerleşik Azure VM yedeklemesi](./backup-architecture.md#architecture-built-in-azure-vm-backup).
 
 - **Çevrimdışı dengeli dağıtım**: Azure 'a verilerin ilk tam yedeklemeleri genellikle büyük miktarda veriyi aktarır ve daha fazla ağ bant genişliği gerektirir. Sonraki yedeklemeler yalnızca Delta veya artımlı, veri miktarını aktarır. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup *çevrimdışı dağıtım*sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir. Daha fazla bilgi için bkz. [Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[MARS aracısı destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
+[MARS aracısı destek matrisi](./backup-support-matrix-mars-agent.md)
 
-[MARS Aracısı SSS](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
+[MARS Aracısı SSS](./backup-azure-file-folder-backup-faq.md)

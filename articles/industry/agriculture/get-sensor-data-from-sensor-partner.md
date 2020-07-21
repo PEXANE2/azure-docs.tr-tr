@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80398228"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497089"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -66,7 +66,13 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
     cd  
     ```
 
-6. Şu komutu çalıştırın. Bu işlem, Giriş dizininize bir komut dosyası indirir.
+6. Aşağıdaki komutu çalıştırın. Bu, Azure AD istekleri için kullanılmak üzere kimliği doğrulanmış bir hesabı bağlar
+
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+    
+7. Aşağıdaki komutu çalıştırın. Bu işlem, Giriş dizininize bir komut dosyası indirir.
 
     ```azurepowershell-interactive 
 
@@ -74,7 +80,7 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
     ```
 
-7. Aşağıdaki komut dosyasını çalıştırın. Betik, **Azure Active Directory**  >  **genel bakış** sayfasından elde edilen Kiracı kimliğini ister.
+8. Aşağıdaki betiği çalıştırın. Betik, **Azure Active Directory**  >  **genel bakış** sayfasından elde edilen Kiracı kimliğini ister.
 
     ```azurepowershell-interactive 
 
@@ -82,7 +88,7 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
     ```
 
-8. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
+9. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak cihaz verilerini tümleştirme
 
@@ -114,7 +120,7 @@ Grubunuza yönelik cihazları ve algılayıcıları görüntülemek için aşağ
 - **Düğüm**: bir veya daha fazla sensörün eklendiği cihaz.
 - **Ağ geçidi**: bir veya daha fazla düğümün eklendiği cihaz.
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, menüden **cihazlar** ' ı seçin.
   **Cihazlar** sayfası cihaz türünü, modeli, durumu, yerleştirildiği grubu ve meta verilerin son güncelleştirilme tarihini görüntüler. Varsayılan olarak, Grup sütunu *null*olarak ayarlanır. Bir gruba bir cihaz atamayı seçebilirsiniz. Daha fazla bilgi için bkz. [cihaz atama](#assign-devices).
@@ -124,7 +130,7 @@ Grubunuza yönelik cihazları ve algılayıcıları görüntülemek için aşağ
 
 ### <a name="view-sensors"></a>Algılayıcıları görüntüle
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, menüden **Algılayıcılar** ' ı seçin.
   **Algılayıcılar** sayfasında, algılayıcı türü, bağlandığı grup, ana cihaz, bağlantı noktası adı, bağlantı noktası türü ve son güncel durum hakkındaki ayrıntılar gösterilir.
@@ -153,7 +159,7 @@ Algılayıcı verileri akışını gerçekleştirdikten sonra, algılayıcıyı 
 
 ### <a name="visualize-sensor-data"></a>Algılayıcı verilerini görselleştirme
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, **gruplar** sayfasını görüntülemek Için menüden **gruplar** ' ı seçin.
 2. Algılayıcı verilerini görmek istediğiniz **grubu** seçin.
@@ -163,7 +169,7 @@ Algılayıcı verileri akışını gerçekleştirdikten sonra, algılayıcıyı 
 
 ## <a name="delete-a-sensor"></a>Algılayıcıyı silme
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, **sensör** sayfasını görüntülemek Için menüden **Algılayıcılar** ' ı seçin.
 2. Silmek istediğiniz cihazı seçin ve onay penceresinde **Sil** ' i seçin.
@@ -174,7 +180,7 @@ Bir onay iletisi, sensör başarıyla silindiğini gösterir.
 
 ## <a name="delete-devices"></a>Cihazları Sil
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. Giriş sayfasında, **cihazlar** sayfasını görüntülemek Için menüdeki **cihazlar** ' ı seçin.
 2. Silmek istediğiniz cihazı seçin ve onay penceresinde **Sil** ' i seçin.

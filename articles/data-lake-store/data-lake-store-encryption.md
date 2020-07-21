@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60878451"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497191"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. verilerin şifrelenmesi
 
@@ -52,8 +52,8 @@ Her iki modda da ana şifreleme anahtarı Azure Key Vault’ta depolanarak güve
 
 MEK’leri yönetmek için kullanılan iki modun sağladığı özelliklerin kısa bir karşılaştırması aşağıdadır.
 
-|  | Hizmet tarafından yönetilen anahtarlar | Müşteri tarafından yönetilen anahtarlar |
-| --- | --- | --- |
+| Soru | Hizmet tarafından yönetilen anahtarlar | Müşteri tarafından yönetilen anahtarlar |
+| -------- | -------------------- | --------------------- |
 |Veriler nasıl depolanır?|Depolanmadan önce her zaman şifrelenir.|Depolanmadan önce her zaman şifrelenir.|
 |Ana Şifreleme Anahtarı nerede depolanır?|Key Vault|Key Vault|
 |Key Vault dışında açıkta saklanan şifreleme anahtarı var mı? |No|Hayır|
@@ -115,7 +115,7 @@ Data Lake Storage 1. hesabını ayarlarken kendi anahtarlarınızı kullanmayı 
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>Data Lake Storage 1. içinde MEK döndürme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Data Lake Storage 1. hesabınızla ilişkili anahtarlarınızı depolayan Key Vault örneğine gidin. **Anahtarlar**’ı seçin.
 
     ![Key Vault ekran görüntüsü](./media/data-lake-store-encryption/keyvault.png)

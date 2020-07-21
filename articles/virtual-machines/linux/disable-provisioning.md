@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045765"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494522"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Linux aracısını VM 'lerden ve görüntülerden devre dışı bırakma veya kaldırma
 
 Linux aracısını kaldırmadan önce, Linux Aracısı kaldırıldıktan sonra sanal makinenin ne yapamadığını anlamanız gerekir.
 
-Azure sanal makinesi (VM) [uzantıları](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) , Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır, uzantılar Azure denetim düzlemi tarafından yüklenir ve yönetilir. Bu, Platform Uzantısı komutlarını işlemek için [Azure Linux aracısının](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ve sanal makinenin içinde uzantının doğru durumunu güvence altına aldığından emin olmanızı sağlar.
+Azure sanal makinesi (VM) [uzantıları](../extensions/overview.md) , Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır, uzantılar Azure denetim düzlemi tarafından yüklenir ve yönetilir. Bu, Platform Uzantısı komutlarını işlemek için [Azure Linux aracısının](../extensions/agent-linux.md) ve sanal makinenin içinde uzantının doğru durumunu güvence altına aldığından emin olmanızı sağlar.
 
 Azure platformu, VM yapılandırması, izleme, güvenlik ve yardımcı program uygulamalarından çok çeşitli uzantılar barındırır. Birinci ve üçüncü taraf uzantıların büyük bir seçimi vardır, uzantıların kullanıldığı anahtar senaryolara örnek olarak şunlar verilebilir:
 * Azure Backup, Izleme, disk şifreleme, güvenlik, site çoğaltma ve diğerleri gibi birinci taraf Azure hizmetlerini destekleme.
@@ -31,7 +31,7 @@ Azure platformu, VM yapılandırması, izleme, güvenlik ve yardımcı program u
 
 ## <a name="disabling-extension-processing"></a>Uzantı işleme devre dışı bırakılıyor
 
-Gereksinimlerinize bağlı olarak, uzantı işlemeyi devre dışı bırakmak için birkaç yol vardır, ancak devam etmeden önce, VM 'ye dağıtılan tüm uzantıları kaldırmanız **gerekir** ; ÖRNEĞIN, az CLI kullanarak, aşağıdakileri [listeleyebilir](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) ve [silebilirsiniz](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Gereksinimlerinize bağlı olarak, uzantı işlemeyi devre dışı bırakmak için birkaç yol vardır, ancak devam etmeden önce, VM 'ye dağıtılan tüm uzantıları kaldırmanız **gerekir** ; ÖRNEĞIN, az CLI kullanarak, aşağıdakileri [listeleyebilir](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) ve [silebilirsiniz](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ Linux Aracısı içermeyen görüntüden sanal makineyi oluşturduğunuzda, VM d
 > 
 > Yukarıdaki işlem yapmazsanız, Platform, uzantı yapılandırmasını ve zaman aşımını 40min sonra göndermeye çalışır.
 
-VM 'yi uzantılar ile dağıtmak için, [--Enable-Agent](https://docs.microsoft.com/cli/azure/vm#az-vm-create)Ile Azure CLI kullanabilirsiniz.
+VM 'yi uzantılar ile dağıtmak için, [--Enable-Agent](/cli/azure/vm#az-vm-create)Ile Azure CLI kullanabilirsiniz.
 
 ```bash
 az vm create \

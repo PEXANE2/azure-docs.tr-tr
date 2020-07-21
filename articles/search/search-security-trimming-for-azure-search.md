@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553137"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496426"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama sonuçları kırpma için güvenlik filtreleri
 
@@ -32,28 +32,31 @@ Bu makalede, aşağıdaki adımları kullanarak güvenlik filtrelemeyi nasıl ge
 >[!NOTE]
 > Asıl tanımlayıcıları alma işlemi bu belgede kapsanmıyor. Bunu kimlik hizmeti sağlayıcınızdan almalısınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede bir [Azure aboneliğiniz](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure bilişsel arama hizmeti](https://docs.microsoft.com/azure/search/search-create-service-portal)ve [Azure bilişsel arama dizininiz](https://docs.microsoft.com/azure/search/search-create-index-portal)olduğunu varsaymaktadır.  
+Bu makalede bir [Azure aboneliğiniz](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), bir[Azure bilişsel arama hizmeti](search-create-service-portal.md)ve bir [Dizin](search-what-is-an-index.md)olduğunu varsaymaktadır.  
 
 ## <a name="create-security-field"></a>Güvenlik alanı oluştur
 
 Belgeleriniz hangi grupların erişimi olduğunu belirten bir alan içermelidir. Bu bilgiler, veren olarak döndürülen sonuç kümesinden belgelerin seçildiği veya reddedildiği bir filtre ölçütü olur.
 Güvenli dosyalar dizini olduğunu ve her dosyaya farklı bir kullanıcı kümesi tarafından erişilebilmesini varsayalım.
+
 1. Alan ekleyin `group_ids` (burada herhangi bir ad seçebilirsiniz) `Collection(Edm.String)` . `filterable` `true` Arama sonuçlarının, kullanıcının sahip olduğu erişime göre filtrelenmesini sağlamak için alanın olarak ayarlanmış bir özniteliği olduğundan emin olun. Örneğin, `group_ids` alanı `["group_id1, group_id2"]` "secured_file_b" olan belge için olarak ayarlarsanız `file_name` , yalnızca "group_id1" veya "group_id2" grup kimliklerine ait olan kullanıcılar dosyaya okuma erişimine sahiptir.
+   
    Alan `retrievable` özniteliğinin, `false` arama isteğinin bir parçası olarak döndürülmemesi için olarak ayarlandığından emin olun.
+
 2. Ayrıca `file_id` `file_name` , bu örneğin sake için ve alanlarını ekleyin.  
 
-```JSON
-{
-    "name": "securedfiles",  
-    "fields": [
-        {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "file_name", "type": "Edm.String"},
-        {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
-    ]
-}
-```
+    ```JSON
+    {
+        "name": "securedfiles",  
+        "fields": [
+            {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+            {"name": "file_name", "type": "Edm.String"},
+            {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
+        ]
+    }
+    ```
 
 ## <a name="pushing-data-into-your-index-using-the-rest-api"></a>REST API kullanarak dizininizdeki verileri iletme
   

@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187719"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497072"
 ---
-# <a name="troubleshoot"></a>Sorun giderme
+# <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats sorunlarını giderme
 
 Bu makalede, yaygın Azure Farmtts sorunlarına yönelik çözümler sağlanmaktadır. Daha fazla yardım için [destek Forumumuzu](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) veya bize e-posta ile iletişim kurun farmbeatssupport@microsoft.com .
 
@@ -58,8 +58,8 @@ Aşağıdaki ayrıntılarla bizimle iletişim kurun:
 
 **Düzeltici eylem**
 
-1. Farmrets Datahub kaynak grubuna gidin.
-2. **Olay Hub 'ını** (datafeedeventhubnamespace) seçin ve ardından gelen ileti sayısını kontrol edin.
+1. Farmtts kaynak grubunuza gidin.
+2. **Olay Hub 'ı** ad alanını ("algılayıcı-iş ortağı-Eh-Namespace-xxxx") seçin, "Event Hubs" düğmesine tıklayın ve sonra iş ortağına atanan olay hub 'ında gelen ileti sayısını denetleyin
 3. Aşağıdakilerden birini yapın:
 
    - *Gelen ileti*yoksa cihaz iş ortağınızla iletişim kurun.  
@@ -285,7 +285,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Veri hub 'ında Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
 3. **Kaynak grubu** panosunda, *datahublogs \* * depolama hesabı ' nı arayın. Örneğin, *datahublogsmvxmq*.  
 4. **Ad** sütununda **, depolama hesabı panosunu görüntülemek** için depolama hesabını seçin.
@@ -297,7 +297,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Hızlandırıcı için Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmtempts Hızlandırıcı kaynak grubunu arayın.
 3. **Kaynak grubu** panosunda, *depolama \* * depolama hesabı ' nı arayın. Örneğin, *storagedop4k \* *.
 4. **Depolama hesabı** panosunu görüntülemek için **ad** sütunundaki depolama hesabını seçin.

@@ -3,11 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yap�
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801470"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498908"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
@@ -21,7 +22,7 @@ Aşağıdaki konfigürasyonlar, kapsayıcılar için Azure Izleyici ile resmi ol
 
     - Şirket içi Kubernetes
     
-    - Azure 'da AKS altyapısı ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks altyapısı](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    - Azure 'da AKS altyapısı ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks altyapısı](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
     
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) sürüm 4 ve üzeri, şirket içi veya diğer bulut ortamları.
 
@@ -33,7 +34,7 @@ Aşağıdaki konfigürasyonlar, kapsayıcılar için Azure Izleyici ile resmi ol
 
 - Erişim denetimi destekleniyor: Kubernetes RBAC ve RBAC olmayan
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -84,7 +85,7 @@ Bir şablon kullanarak kaynak dağıtma kavramı hakkında bilgi sahibi değilse
 
 - [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version` . Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version` . Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
 
 Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek için yapılandırmayı belirtir ve diğeri şunları belirtmek için yapılandırdığınız parametre değerlerini içerir:
 
@@ -201,7 +202,7 @@ DosyacontainerSolutionParams.jsiçindeki parametre değeri için gereken Log Ana
     }
     ```
 
-7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list).
+7. Adım 3 ' te kopyaladığınız değeri kullanarak **workspaceResourceId** değerlerini düzenleyin ve **WorkspaceRegion** for the Azure CLI komutunu çalıştırdıktan sonra **bölge** değerini kopyalayın [az Monitor Log-Analytics Workspace Show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list).
 
 8. Bu dosyayı yerel bir klasöre containerSolutionParams.jsolarak kaydedin.
 
@@ -346,7 +347,7 @@ Ara sunucu yapılandırma değeri aşağıdaki sözdizimine sahiptir:`[protocol:
 |proxyhost | Proxy sunucusunun adresi veya FQDN 'si |
 |port | Proxy sunucusu için isteğe bağlı bağlantı noktası numarası |
 
-Örneğin, `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
+Örnek: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
 Protokolü **http**olarak BELIRTIRSENIZ, http istekleri SSL/TLS güvenli bağlantı kullanılarak oluşturulur. Ara sunucunuzun SSL/TLS protokollerini desteklemesi gerekir.
 

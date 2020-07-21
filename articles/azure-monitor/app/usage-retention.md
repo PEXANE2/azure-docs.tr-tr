@@ -6,17 +6,18 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797744"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499316"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Application Insights ile Web uygulamaları için Kullanıcı bekletme Analizi
 
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 'de bekletme özelliği, uygulamanıza kaç Kullanıcı dönmeli ve belirli görevleri ne sıklıkta gerçekleştirdikleri ve amaçları elde ettikleri hakkında analiz etmenize yardımcı olur. Örneğin, bir oyun sitesi çalıştırırsanız, kazandıktan sonra geri dönüş sayısı ile bir oyun kaybedildikten sonra siteye geri dönen Kullanıcı numaralarını karşılaştırabilirsiniz. Bu bilgi, hem Kullanıcı deneyiminizi hem de iş stratejinizi iyileştirmenize yardımcı olabilir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Application Insights portalında bekletme aracında verileri henüz görmüyorsanız, [kullanım araçlarını kullanmaya nasıl başlaleyeceğinizi öğrenin](usage-overview.md).
 
@@ -57,12 +58,10 @@ ASP.NET sunucu kodu:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) veya [sayfa görünümleri](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)göndermeye başlayın.
+- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](./api-custom-events-metrics.md#trackevent) veya [sayfa görünümleri](./api-custom-events-metrics.md#page-views)göndermeye başlayın.
 - Özel olayları veya sayfa görünümlerini zaten gönderirseniz, kullanıcıların hizmetinizi nasıl kullandığını öğrenmek için kullanım araçları ' nı araştırın.
     - [Kullanıcılar, Oturumlar, Etkinlikler](usage-segmentation.md)
     - [Huniler](usage-funnels.md)
     - [Kullanıcı Akışları](usage-flows.md)
     - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
     - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
-
-

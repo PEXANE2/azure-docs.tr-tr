@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 1754e166cd5c5a3d7309bc8c6f6459cdd0852396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762913"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499877"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
@@ -28,7 +28,7 @@ Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panos
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu belgede açıklanan adımlarda, bir AKS kümesi oluşturduğunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılmaktadır `kubectl` . AKS kümesi oluşturmanız gerekiyorsa bkz. [aks hızlı][aks-quickstart]başlangıcı.
+Bu belgede açıklanan adımlarda, bir AKS kümesi oluşturduğunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılmaktadır `kubectl` . AKS kümesi oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure CLI kullanarak Azure Kubernetes hizmet kümesi dağıtma][aks-quickstart].
 
 Ayrıca Azure CLı sürüm 2.6.0 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 

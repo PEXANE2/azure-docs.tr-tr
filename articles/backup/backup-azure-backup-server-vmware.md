@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497922"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
@@ -24,7 +24,7 @@ Bu makalede nasıl yapılacağı açıklanmaktadır:
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Yedekleme için desteklenen vCenter/ESXi 'nin bir sürümünü çalıştırdığınızı doğrulayın. [Buradaki](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)destek matrisine bakın.
+- Yedekleme için desteklenen vCenter/ESXi 'nin bir sürümünü çalıştırdığınızı doğrulayın. [Buradaki](./backup-mabs-protection-matrix.md)destek matrisine bakın.
 - Azure Backup Sunucusu ayarladığınızdan emin olun. Yapmadıysanız, başlamadan önce [bunu yapın](backup-azure-microsoft-azure-backup.md) . En son güncelleştirmelerle Azure Backup Sunucusu çalıştırıyor olmanız gerekir.
 - Aşağıdaki ağ bağlantı noktalarının açık olduğundan emin olun:
   - MABS ve vCenter arasında TCP 443
@@ -41,7 +41,7 @@ Varsayılan olarak, Azure Backup Sunucusu HTTPS üzerinden VMware sunucularıyla
 - Azure Backup Sunucusu yedeklemeleri nasıl işlediğini anlamanız önemlidir.
   - İlk adım olarak, verileri yerel disk depolama alanına yedekler Azure Backup Sunucusu. Azure Backup Sunucusu, korunan veriler için Azure Backup Sunucusu disk kurtarma noktalarını depolayan bir depolama havuzu, bir dizi disk ve birim kullanır. Depolama havuzu doğrudan bağlı depolama (DAS), bir Fiber Kanal SAN veya Iscsı depolama cihazı veya SAN olabilir. VMware VM verilerinizin yerel yedeklemesi için yeterli depolama alanı olduğundan emin olmanız önemlidir.
   - Azure Backup Sunucusu sonra yerel disk depolamadan Azure 'a yedekler.
-  - Ne kadar depolama alanına ihtiyacınız olduğunu anlamak için [yardım alın](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) . Bilgiler DPM içindir, ancak Azure Backup Sunucusu için de kullanılabilir.
+  - Ne kadar depolama alanına ihtiyacınız olduğunu anlamak için [yardım alın](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need) . Bilgiler DPM içindir, ancak Azure Backup Sunucusu için de kullanılabilir.
 
 ### <a name="set-up-the-certificate"></a>Sertifikayı ayarlama
 

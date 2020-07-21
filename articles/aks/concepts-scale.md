@@ -4,12 +4,12 @@ description: Bkz. Azure Kubernetes hizmeti (AKS) ile yatay Pod otomatik Scaler, 
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244523"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499894"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) uygulamaları için ölçeklendirme seçenekleri
 
@@ -19,7 +19,7 @@ Bu makalede, AKS 'teki uygulamaları ölçeklendirmenize yardımcı olan temel k
 
 - [El ile ölçeklendirme](#manually-scale-pods-or-nodes)
 - [Yatay Pod otomatik Scaler (HPA)](#horizontal-pod-autoscaler)
-- [Küme otomatik Scaler](#cluster-autoscaler)
+- [Küme otomatik ölçeklendiricisi](#cluster-autoscaler)
 - [AKS ile Azure Container Instance (acı) Tümleştirmesi](#burst-to-azure-container-instances)
 
 ## <a name="manually-scale-pods-or-nodes"></a>Pod veya düğümleri el ile ölçeklendirme
@@ -48,7 +48,7 @@ Yarış olaylarını en aza indirmek için bir gecikme değeri ayarlanır. Bu de
 
 Şu anda bu coolvalues değerlerini varsayılan değerden ayarlayamıyoruz.
 
-## <a name="cluster-autoscaler"></a>Küme otomatik Scaler
+## <a name="cluster-autoscaler"></a>Küme otomatik ölçeklendiricisi
 
 Kubernetes 'in değişen Pod taleplerini, düğüm havuzundaki istenen işlem kaynaklarını temel alan düğüm sayısını ayarlayan bir küme otomatik olarak ayarlamıştır. Varsayılan olarak, küme otomatik Scaler, düğüm sayısında gerekli değişiklikler için ölçüm API sunucusunu her 10 saniyede bir denetler. Küme otomatik ölçeklendirme bir değişikliğin gerekli olduğunu belirlerse, AKS kümenizdeki düğümlerin sayısı göre artar veya azaltılır. Küme otomatik yüklemesi, Kubernetes 1,10. x veya üstünü çalıştıran RBAC özellikli AKS kümeleriyle çalışır.
 
@@ -58,7 +58,7 @@ Küme otomatik ezici, genellikle yatay Pod otomatik Scaler ile birlikte kullanı
 
 AKS 'deki küme otomatik Scaler 'ı kullanmaya başlamak için bkz. [aks üzerinde küme otomatik Scaler][aks-cluster-autoscaler].
 
-### <a name="scale-up-events"></a>Olayları ölçeklendirme
+### <a name="scale-out-events"></a>Olayları genişletme
 
 Bir düğümde istenen Pod çalıştırmak için yeterli işlem kaynağı yoksa, Pod, zamanlama sürecinde ilerleyemiyorum. Düğüm havuzu içinde ek bilgi işlem kaynakları kullanılabilir değilse Pod başlayamaz.
 
@@ -66,7 +66,7 @@ Küme otomatik yüklemesi, düğüm havuzu kaynak kısıtlamaları nedeniyle zam
 
 Uygulamanızın hızla ölçeklendirilmesi gerekiyorsa, küme otomatik Scaler tarafından dağıtılan ek düğümler zamanlanan Pod 'yi kabul edebilene kadar bazı KADS zamanlanmayı bekleyen bir durumda kalabilir. Yüksek veri bloğu taleplerine sahip uygulamalarda, sanal düğümlerle ve Azure Container Instances ölçeklendirebilirsiniz.
 
-### <a name="scale-down-events"></a>Ölçek azaltma olayları
+### <a name="scale-in-events"></a>Olaylarda ölçeklendirme
 
 Küme otomatik olarak yeni zamanlama istekleri almamış olan düğümler için pod zamanlama durumunu da izler. Bu senaryo düğüm havuzunda gerekenden daha fazla işlem kaynağı olduğunu ve düğüm sayısının Azaltılabilecek olduğunu gösterir.
 

@@ -1,14 +1,14 @@
 ---
-title: En iyi uygulamalar
+title: Önerilen uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
-ms.date: 06/22/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954158"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497786"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -146,6 +146,10 @@ Bazen Dizin sabit bağlantıları olarak adlandırılan dizin junler, görev ve 
 ### <a name="collect-the-batch-agent-logs"></a>Batch Aracısı günlüklerini toplayın
 
 Düğüm üzerinde çalışan bir düğümün veya görevlerin davranışını içeren bir sorun fark ederseniz, söz konusu düğümlerin ayırmayı kaldırma işleminden önce Batch Aracısı günlüklerini toplayın. Batch Aracısı günlükleri, Batch Hizmeti günlüklerini karşıya yükle API 'SI kullanılarak toplanabilir. Bu Günlükler, Microsoft 'a destek bileti kapsamında sağlanabilir ve sorun giderme ve çözümleme konularında yardımcı olur.
+
+### <a name="manage-os-upgrades"></a>İşletim sistemi yükseltmelerini yönetme
+
+Kullanıcı aboneliği modu Batch hesaplarında, özellikle görevler uzun süre çalışıyorsa, otomatik işletim sistemi yükseltmeleri görev ilerlemesini kesintiye uğratabilir. [Idempotent görevlerinin oluşturulması](#build-durable-tasks) , bu kesintiler nedeniyle oluşan hataları azaltmaya yardımcı olabilir. Ayrıca, [görevlerin çalıştırılmamakta olması beklenmediği durumlar için işletim sistemi görüntüsü yükseltmelerini zamanlamayı](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)öneririz.
 
 ## <a name="isolation-security"></a>Yalıtım güvenliği
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808055"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496062"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) nedir?
 
@@ -40,7 +40,7 @@ Ayrıca, Azure SYNAPSE, bu derleme ve gelişmiş analizler ile makine öğrenimi
 
 * SYNAPSE SQL, gereksinimlerinize uyacak şekilde hem **sunucusuz** hem de **sağlanan** kaynak modelleri sunarak tüketim ve faturalandırma seçenekleri sunar. Tahmin edilebilir performans ve maliyet için, SQL tablolarında depolanan veriler için işleme gücünü ayırmak üzere havuzlar sağlayın. Planlanmamış veya bursty iş yükleri için sunucusuz, her zaman kullanılabilir SQL uç noktasını kullanın.
 * Bulut veri kaynaklarından SQL tablolarına veri aktarmak için yerleşik **akış** yeteneklerini kullanın
-* T-SQL tahmın işlevini kullanarak veri puanlayıp, **makine öğrenimi** MODELLERINI kullanarak AI 'yi SQL ile tümleştirin
+* [T-SQL tahmin işlevini](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) kullanarak veri puanlayıp, **makine ÖĞRENIMI** MODELLERINI kullanarak AI 'yi SQL ile tümleştirin
 
 ### <a name="industry-standard-apache-spark"></a>Sektör standardı Apache Spark
 

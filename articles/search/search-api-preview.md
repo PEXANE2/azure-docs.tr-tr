@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/09/2020
+ms.openlocfilehash: b952d6b6fec9a1ec0dcd8af1a9566e67d3301d77
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246965"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496715"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Bilişsel Arama Önizleme özellikleri
 
-Bu makale, önizlemede olan tüm özelliklerin kapsamlı bir listesidir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu makale, genel önizlemede olan tüm özelliklerin kapsamlı bir listesidir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Genel kullanılabilirliğe geçiş yapan Önizleme özellikleri bu listeden kaldırılır. Bir özellik aşağıda listelenmiyorsa, genel kullanıma açık olduğunu varsayabilirsiniz. Genel kullanılabilirliğiyle ilgili duyurular için bkz. [hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=search) [veya yenilikler.](whats-new.md)
 
@@ -31,8 +31,8 @@ Genel kullanılabilirliğe geçiş yapan Önizleme özellikleri bu listeden kald
 | [**Özel varlık arama becerisi**](cognitive-search-skill-custom-entity-lookup.md ) | AI zenginleştirme (beceri) | Özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin gibi görünen bilişsel bir yetenek. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. | Portalda beceri düzenleyicisini kullanarak bu önizleme yeteneklerine başvurun veya api-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [Beceri (REST) oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-skillset) . |
 | [**PII algılama yeteneği**](cognitive-search-skill-pii-detection.md) | AI zenginleştirme (beceri) | Dizin oluşturma sırasında, kişisel olarak tanımlanabilir bilgileri bir giriş metinden çıkaran ve bu metni çeşitli yollarla maskeleme seçeneği sunan bilişsel bir yetenek. | Portalda beceri düzenleyicisini kullanarak bu önizleme yeteneklerine başvurun veya api-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [Beceri (REST) oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-skillset) . |
 | [**Artımlı zenginleştirme**](cognitive-search-incremental-indexing-conceptual.md) | Dizin Oluşturucu yapılandırması| Bir zenginleştirme işlem hattına önbelleğe alma ekler ve bir beceri veya başka bir nesne için bir güncelleştirme gibi hedeflenen bir değişiklik, içeriği değiştirmezse mevcut çıktıyı yeniden kullanmanıza olanak tanır. Önbelleğe alma yalnızca bir beceri tarafından üretilen zenginleştirilmiş belgeler için geçerlidir.| Api-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [Create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) kullanarak bu yapılandırma ayarını ekleyin. |
-| [**Cosmos DB Indexer: MongoDB API 'SI, Gremlin API, Cassandra API**](search-howto-index-cosmosdb.md) | Dizin Oluşturucu veri kaynağı | Cosmos DB için, SQL API 'SI genel kullanıma sunulmuştur, ancak MongoDB, Gremlin ve Cassandra API 'Leri önizlemededir. | Yalnızca Gremlin ve Cassandra için, [ilk olarak kaydolun](https://aka.ms/azure-cognitive-search/indexer-preview) ve bu sayede, arka uçta aboneliğiniz için destek etkinleştirilebilir. MongoDB veri kaynakları portalda yapılandırılabilir. Aksi takdirde, üç API için veri kaynağı yapılandırması, API-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [veri kaynağı oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-datasource) kullanılarak desteklenir. |
-|  [**Azure Data Lake Storage 2. Dizin Oluşturucu**](search-howto-index-azure-data-lake-storage.md) | Dizin Oluşturucu veri kaynağı | Data Lake Storage 2. ' den içerik ve meta verileri dizine edin.| [Kaydolma](https://aka.ms/azure-cognitive-search/indexer-preview) işlemi, arka uçta aboneliğiniz için destek etkinleştirilecek şekilde gereklidir. Bu veri kaynağına API-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [veri kaynağı oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-datasource) kullanarak erişin. |
+| [**Cosmos DB Indexer: MongoDB API 'SI, Gremlin API, Cassandra API**](search-howto-index-cosmosdb.md) | Dizin Oluşturucu veri kaynağı | Cosmos DB için, SQL API 'SI genel kullanıma sunulmuştur, ancak MongoDB, Gremlin ve Cassandra API 'Leri önizlemededir. | Yalnızca Gremlin ve Cassandra için, [ilk olarak kaydolun](https://aka.ms/azure-cognitive-search/indexer-preview) ve bu sayede, arka uçta aboneliğiniz için destek etkinleştirilebilir. MongoDB veri kaynakları portalda yapılandırılabilir. Aksi takdirde, üç API için veri kaynağı yapılandırması, API-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [veri kaynağı oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) kullanılarak desteklenir. |
+|  [**Azure Data Lake Storage 2. Dizin Oluşturucu**](search-howto-index-azure-data-lake-storage.md) | Dizin Oluşturucu veri kaynağı | Data Lake Storage 2. ' den içerik ve meta verileri dizine edin.| [Kaydolma](https://aka.ms/azure-cognitive-search/indexer-preview) işlemi, arka uçta aboneliğiniz için destek etkinleştirilecek şekilde gereklidir. Bu veri kaynağına API-Version = 2020-06 -30-Preview veya api-Version = 2019-05 -06-Preview ile [veri kaynağı oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) kullanarak erişin. |
 | [**moreLikeThis**](search-more-like-this.md) | Sorgu | Belirli bir belgeyle ilgili belgeleri bulur. Bu özellik daha önceki önizlemelerde yer aldı. | Bu sorgu parametresini, [arama belgeleri (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) çağrılarında api-Version = 2020-06 -30-preview, 2019-05-06-preview, 2016-09-01-preview veya 2017-11-11-Preview ile ekleyin. |
 
 ## <a name="calling-preview-rest-apis"></a>Önizleme REST API 'Leri çağırma

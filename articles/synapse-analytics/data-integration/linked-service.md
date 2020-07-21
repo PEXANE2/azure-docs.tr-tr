@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'te bağlı bir hizmeti sağlama ve koruma
+title: Bağlı bir hizmetin güvenliğini sağlama
 description: Yönetilen VNET ile bağlı bir hizmeti sağlamayı ve güvenliğini sağlama hakkında bilgi edinin
 services: synapse-analytics
 author: acomet
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496086"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>Bağlı bir hizmetin özel bağlantılarla güvenliğini sağlama 
 
@@ -56,7 +56,7 @@ Bu durumda, yukarıdaki bağlantıyı sınarken köprüye tıklamadınız, aşa�
 1. Yukarıda oluşturduğunuz özel uç noktayı seçin. Depolama hesabı düzeyinde özel uç noktasını onaylamanıza olanak sağlayacak bir köprü görebilirsiniz. *Alternatif olarak, Azure portal depolama hesabına doğrudan gidip **Özel uç nokta bağlantıları** dikey penceresine gidebilirsiniz.*
 1. Studio 'da oluşturduğunuz özel uç noktayı işaret edin ve **Onayla**' yı seçin.
 1. Bir açıklama ekleyin ve **Evet** ' e tıklayın.
-1. **Yönet**sekmesinin **yönetilen sanal ağlar** bölümünde SYNAPSE Studio 'ya geri dönün.
+1. **Yönet** sekmesinin **yönetilen sanal ağlar** bölümünde SYNAPSE Studio 'ya geri dönün.
 1. Onayın özel uç noktanıza yansıtılmasıyla ilgili olarak yaklaşık 1 dakika sürer.
 
 ## <a name="check-the-connection-works"></a>Bağlantının çalışıp çalışmadığını denetleyin

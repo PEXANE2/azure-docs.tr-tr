@@ -1,20 +1,21 @@
 ---
-title: Power BI tümleştirme-Azure Time Series Insights | Microsoft Docs
+title: Power BI tümleştirme-Azure Time Series Insights Gen 2 | Microsoft Docs
 description: Azure zaman serisi öngörüleri Power BI tümleştirme hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: ce566080c6ddbc4784365ceda6011c3f6612732a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: f2e1985dbc0860297b4f11b4d0a53affa26423d0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76276860"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495321"
 ---
-# <a name="connect-time-series-insights-to-power-bi"></a>Time Series Insights Power BI bağlama  
+# <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Azure Time Series Insights Gen 2 ' ye Power BI bağlama  
 
 Zaman serisi verilerinizi ilişkilendirmenize, canlı görselleştirmeler oluşturmanıza ve kuruluşunuz genelinde Öngörüler paylaşmanıza yardımcı olacak bir çözüm mi arıyorsunuz?
 
@@ -28,18 +29,18 @@ Azure Time Series Insights artık, akış verileriniz üzerinde daha güçlü g�
 
 ## <a name="summary"></a>Özet
 
-   [![Time Series Insights 'de dışarı aktarma seçeneği](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
+   [![Azure Time Series Insights 'de dışarı aktarma seçeneği](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
 Verilerinizi Power BI bağlayarak, şimdi şunları yapabilirsiniz:
 
 * Power BI tarafından desteklenen diğer veri kaynaklarıyla bağıntılar gerçekleştirin ve farklı veri görselleştirme seçeneklerinin bir konağına erişin. 
 * Zaman serisi Insight verilerinizi kullanarak Power BI panolar ve raporlar oluşturun ve bunları kuruluşunuzla paylaşabilirsiniz. 
 * Veri birlikte çalışma senaryolarının basit, kullanımı kolay bir şekilde kilidini açın ve her zamankinden daha hızlı bir şekilde Öngörüler edinin.
-* Güçlü Gelişmiş Düzenleyici kullanarak Power BI içindeki Time Series Insights verileri değiştirin.
+* Güçlü Gelişmiş Düzenleyici kullanarak Power BI içindeki Azure Time Series Insights verileri değiştirin.
 
 ## <a name="native-connector"></a>Yerel bağlayıcı
 
-Verilerinizi bağlama bir dakikadan kısa sürer. Zaman serisi Insight Explorer 'dan Power BI ' ye hızlıca aktararak, kuruluşunuzdaki herkes verileri canlı olarak değiştirebilir ve görsel olarak dönüştürebilir.
+Verilerinizi bağlama bir dakikadan kısa sürer. Görünümünüzü Azure Time Series Insights Gezgini ' nden Power BI bir hızla dışarı aktararak, kuruluşunuzdaki herkes verileri canlı olarak değiştirebilir ve görsel olarak dönüştürebilir.
 
 Yapılandırma seçenekleri, **Ham** ve **Toplam düzeyindeki** veriler arasında seçim yapma ve istediğiniz zaman aralığını seçme içerir. 
 
@@ -47,14 +48,14 @@ Veriler bağlandıktan sonra, bilgi paylaşımı olanaklarınızı daha da geli�
 
    [![Power BI örnekleri grafik oluşturma](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
 
-Adım adım ayrıntılar için [Time Series Insights Power BI bağlama](./how-to-connect-power-bi.md) konusunu okuyun.
+Adım adım ayrıntılar için [Azure Time Series Insights Power BI bağlama](./how-to-connect-power-bi.md) konusunu okuyun.
 
 ## <a name="flexible-workflow"></a>Esnek iş akışı
  
 Bağlayıcıyı iş akışınızın herhangi bir yerinden kullanın:
 
-* Time Series Insights Gezgini ' nde, görünümünüzü hızlı bir şekilde Power BI dışarı aktarabilirsiniz. 
-* Zaten Power BI kullanıyorsanız, Time Series Insights sorgu verilerini kullanarak mevcut görselleştirme senaryolarınızı güçlendirin.
+* Azure Time Series Insights Gezgini ' nde, görünümünüzü hızlı bir şekilde Power BI dışarı aktarabilirsiniz. 
+* Zaten Power BI kullanıyorsanız, verileri sorgulamak için Azure Time Series Insights kullanarak mevcut görselleştirme senaryolarınızı güçlendirin.
 
 Power BI içinde gelişmiş sorgulama ve düzen işlevselliği için Power BI Gelişmiş Düzenleyici kullanın.
 
@@ -62,6 +63,6 @@ Power BI içinde gelişmiş sorgulama ve düzen işlevselliği için Power BI Ge
 
 * [Time Series Insights Power BI bağlama](./how-to-connect-power-bi.md)konusunu okuyun.
 
-* [Power BI](https://docs.microsoft.com/power-bi/)hakkında daha fazla bilgi edinin.
-
 * [Power BI Masaüstü](https://powerbi.microsoft.com/desktop/) indirin ve verilerinizi bağlamaya başlayın.
+
+* [Power BI](https://docs.microsoft.com/power-bi/)hakkında daha fazla bilgi edinin.

@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/06/2020
-ms.openlocfilehash: 911e1de018ba7027585e19199b69eaaf116ba39a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/16/2020
+ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087121"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496953"
 ---
 # <a name="azure-resource-providers-operations"></a>Azure kaynak sağlayıcıları işlemleri
 
@@ -23,9 +23,8 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 
 ## <a name="all"></a>Tümü
 
-|  |
+| Genel |
 | --- |
-| **Genel** |
 | [Microsoft. addons](#microsoftaddons) |
 | [Microsoft. Market](#microsoftmarketplace) |
 | [Microsoft. MarketplaceApps](#microsoftmarketplaceapps) |
@@ -81,7 +80,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blok zinciri** |
+| **Blok Zinciri** |
 | [Microsoft. Blockzinciri](#microsoftblockchain) |
 | **AI + makine öğrenimi** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -89,7 +88,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. Machinöğrenim](#microsoftmachinelearning) |
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
 | **Nesnelerin İnterneti** |
-| [Microsoft. Devices](#microsoftdevices) |
+| [Microsoft.Devices](#microsoftdevices) |
 | [Microsoft. ıotcentral](#microsoftiotcentral) |
 | [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs) |
 | [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights) |
@@ -146,7 +145,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. HybridCompute](#microsofthybridcompute) |
 | [Microsoft. ManagedServices](#microsoftmanagedservices) |
 | [Microsoft. Management](#microsoftmanagement) |
-| [Microsoft.PolicyInsights](#microsoftpolicyinsights) |
+| [Microsoft. Poliyelei](#microsoftpolicyinsights) |
 | [Microsoft. Portal](#microsoftportal) |
 | [Microsoft. RecoveryServices](#microsoftrecoveryservices) |
 | [Microsoft. resources](#microsoftresources) |
@@ -3127,6 +3126,7 @@ Azure hizmeti: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/ıntegrationçalışma zamanları/durdur/eylem | Integration Runtime sonlandırır. |
 > | Microsoft. DataFactory/Factory/ıntegrationçalışma zamanları/synccredentials/Action | Belirtilen Integration Runtime ait kimlik bilgilerini eşitler. |
 > | Microsoft. DataFactory/Factory/ıntegrationçalışma zamanları/yükseltme/eylem | Belirtilen Integration Runtime yükseltir. |
+> | Microsoft. DataFactory/Factory/ıntegrationçalışma zamanları/createexpressshirinstalllink/Action | Şirket içinde barındırılan Integration Runtime için hızlı Install bağlantısı oluşturun. |
 > | Microsoft. DataFactory/Factory/Integration, çalışma zamanları/regenerateauthkey/Action | Belirtilen Integration Runtime için kimlik doğrulama anahtarlarını yeniden oluşturur. |
 > | Microsoft. DataFactory/Factory/ıntegrationçalışma zamanları/removelmürekkepler/eylem | Belirtilen Integration Runtime bağlı Integration Runtime başvurularını kaldırır. |
 > | Microsoft. DataFactory/Factory/ıntegrationçalışma zamanları/linkedIntegrationRuntime/Action | Belirtilen paylaşılan Integration Runtime bağlı Integration Runtime başvurusu oluştur. |
@@ -3158,6 +3158,12 @@ Azure hizmeti: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/işlem hatları/ardışık düzen eylemsizlik/activityçalıştırmaları/ilerlemesi/okuma | Etkinlik çalıştırmalarının Ilerlemesini alır. |
 > | Microsoft. DataFactory/Factory/işlem hatları/Sandbox/oluşturma/eylem | İşlem hattı için bir hata ayıklama çalıştırması ortamı oluşturur. |
 > | Microsoft. DataFactory/Factory/işlem hatları/Sandbox/Çalıştır/eylem | İşlem hattı için bir hata ayıklama çalıştırması oluşturur. |
+> | Microsoft. DataFactory/Factory/Privateendpointconnectionproxy/okuma | Özel uç nokta bağlantısı proxy 'Sini okuyun. |
+> | Microsoft. DataFactory/Factory/Privateendpointconnectionproxy/yazma | Özel uç nokta bağlantı proxy 'Si oluşturun veya güncelleştirin. |
+> | Microsoft. DataFactory/Factory/Privateendpointconnectionproxy/Delete | Özel uç nokta bağlantı proxy 'Sini silin. |
+> | Microsoft. DataFactory/Factory/Privateendpointconnectionproxy/doğrulama/eylem | Özel bir uç nokta bağlantı proxy 'Sini doğrulayın. |
+> | Microsoft. DataFactory/Factory/Privateendpointconnectionproxy/operationresults/Read | Özel bir uç nokta bağlantı proxy 'Si oluşturma sonuçlarını okuyun. |
+> | Microsoft. DataFactory/Factory/Privateendpointconnectionproxy/operationdurumlarının/Read | Özel bir uç nokta bağlantı proxy 'Si oluşturma durumunu okuyun. |
 > | Microsoft. DataFactory/Factory/querypipeleylemsizlik/Read | Sorgu işlem hattı çalıştırmalarının sonucunu okur. |
 > | Microsoft. DataFactory/Factory/querytriggerçalıştırmaları/okuma | Tetikleyici çalıştırmalarının sonucunu okur. |
 > | Microsoft. DataFactory/Factory/sandboxardışık düzen eylemsizlik/Read | İşlem hattının hata ayıklama çalıştırma bilgisini alır. |
@@ -4495,7 +4501,7 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/okuma | Stream Analytics Işi dönüşümünü oku |
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/yazma | Stream Analytics Işi dönüşümünü yaz |
 
-## <a name="blockchain"></a>Blok zinciri
+## <a name="blockchain"></a>Blok Zinciri
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
@@ -4880,7 +4886,7 @@ Azure hizmeti: bilişsel [Hizmetler](../cognitive-services/index.yml)
 > | Microsoft. Biliveservices/accounts/TextAnalytics/Languages/eylem | API, algılanan dili ve 0 ile 1 arasında bir sayısal puan döndürür. 1 ' e yakın puanlar, tanımlanan dilin doğru olduğunu belirten %100 belirsizlik olduğunu gösterir. Toplam 120 dil desteklenir. |
 > | Microsoft. Biliveservices/accounts/TextAnalytics/Entities/Action | API, belirli bir belgedeki bilinen varlıkların ve genel adlandırılmış varlıkların ( \" kişi \" , \" Konum \" , \" kuruluş \" vb.) listesini döndürür. |
 > | Microsoft. Biliveservices/accounts/TextAnalytics/keyphrases/Action | API, giriş metnindeki önemli konuşma noktalarını belirten dizelerin bir listesini döndürür. |
-> | Microsoft. Biliveservices/hesaplar/TextAnalytics/yaklaşım/eylem | API, 0 ile 1 arasında sayısal bir puan döndürür.<br>1'e yaklaşan puanlar olumlu yaklaşımı ve 0'a yaklaşan puanlar olumsuz yaklaşımı gösterir.<br>0,5 puanı, yaklaşım eksikliğinden (ör.<br>bir FACTOID Bildirisi). |
+> | Microsoft. Biliveservices/hesaplar/TextAnalytics/yaklaşım/eylem | API, 0 ile 1 arasında sayısal bir puan döndürür.<br>1’e yakın puanlar pozitif yaklaşımı, 0’a yakın puanlar ise negatif yaklaşımı gösterir.<br>0,5 puanı, yaklaşım eksikliğinden (ör.<br>bir FACTOID Bildirisi). |
 > | Microsoft. Biliveservices/hesaplar/VideoSearch/trbitiriliyor/eylem | Şu anda popüler videoları alın. |
 > | Microsoft. Biliveservices/hesaplar/VideoSearch/Ayrıntılar/eylem | İlgili videolar gibi bir video hakkında Öngörüler edinin. |
 > | Microsoft. Biliveservices/accounts/VideoSearch/Search/ACTION | Belirli bir sorguyla ilgili videoları alın. |
@@ -5026,7 +5032,7 @@ Azure hizmeti: [Machine Learning hizmeti](../machine-learning/index.yml)
 
 ## <a name="internet-of-things"></a>Nesnelerin interneti
 
-### <a name="microsoftdevices"></a>Microsoft. Devices
+### <a name="microsoftdevices"></a>Microsoft.Devices
 
 Azure hizmeti: [IoT Hub](../iot-hub/index.yml) [IoT Hub cihaz sağlama hizmeti](../iot-dps/index.yml)
 
@@ -5658,16 +5664,13 @@ Azure hizmeti: [Veri Kataloğu](../data-catalog/index.yml)
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
 > | --- | --- |
-> | Microsoft. DataCatalog/Register/ACTION | Veri Kataloğu kaynak sağlayıcısı için aboneliği kaydetme |
-> | Microsoft. DataCatalog/Unregister/ACTION | Veri Kataloğu kaynak sağlayıcısı aboneliğini silme |
-> | Microsoft. DataCatalog/Catalogs/Read | Veri Kataloğu kaynak sağlayıcısı için Katalog kaynağını okuyun. |
-> | Microsoft. DataCatalog/kataloglar/Write | Veri Kataloğu kaynak sağlayıcısı için Katalog kaynağı yazın. |
-> | Microsoft. DataCatalog/Catalogs/Delete | Veri Kataloğu kaynak sağlayıcısı için Katalog kaynağını silin. |
-> | Microsoft. DataCatalog/Checknameavaılabılıty/Read | Veri Kataloğu kaynak sağlayıcısı için katalog adı kullanılabilirliğini denetleyin. |
-> | Microsoft. DataCatalog/datacatalogs/Read | Veri Kataloğu kaynak sağlayıcısı için DataCatalog kaynağını okuyun. |
-> | Microsoft. DataCatalog/datacatalogs/Write | Veri Kataloğu kaynak sağlayıcısı için DataCatalog kaynağını yazın. |
-> | Microsoft. DataCatalog/datacatalogs/Delete | Veri Kataloğu kaynak sağlayıcısı için DataCatalog kaynağını silin. |
-> | Microsoft. DataCatalog/Operations/Read | Veri Kataloğu kaynak sağlayıcısındaki tüm kullanılabilir işlemleri okur. |
+> | Microsoft. DataCatalog/Checknameavaılabılıty/Action | Kiracı için katalog adı kullanılabilirliğini denetler. |
+> | Microsoft. DataCatalog/Register/ACTION | Aboneliği Microsoft. DataCatalog kaynak sağlayıcısına kaydeder. |
+> | Microsoft. DataCatalog/Unregister/ACTION | Microsoft. DataCatalog kaynak sağlayıcısından aboneliğin kaydını siler. |
+> | Microsoft. DataCatalog/Catalogs/Read | Abonelik veya kaynak grubu altındaki katalog veya katalogların özelliklerini alın. |
+> | Microsoft. DataCatalog/kataloglar/Write | Katalog oluşturur veya katalog için etiketleri ve özellikleri güncelleştirir. |
+> | Microsoft. DataCatalog/Catalogs/Delete | Kataloğu siler. |
+> | Microsoft. DataCatalog/Operations/Read | Microsoft. DataCatalog kaynak sağlayıcısında kullanılabilir işlemleri listeler. |
 
 ### <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
@@ -5986,6 +5989,7 @@ Azure hizmeti: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/Delete | Kuyruk yetkilendirme kurallarını silme işlemi |
 > | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/ListKeys/Action | Sıraya yönelik bağlantı dizesini al |
 > | Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules/regenerateKeys/ACTION | Kaynağa birincil veya Ikincil anahtarı yeniden oluştur |
+> | Microsoft. ServiceBus/namespaces/SKU/okuma | Ad alanı için desteklenen SKU 'Ları listeleyin |
 > | Microsoft. ServiceBus/namespaces/konular/yaz | Konu özelliklerini oluşturun veya güncelleştirin. |
 > | Microsoft. ServiceBus/namespaces/konular/okuma | Konu kaynağı açıklamalarının listesini al |
 > | Microsoft. ServiceBus/namespaces/konular/Sil | Konu kaynağını silme işlemi |
@@ -6925,7 +6929,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vcenters/Read | VMware vCenter özelliklerini alır |
 > | Microsoft. OffAzure/VMwareSites/vcenters/Write | VMware vCenter 'ı oluşturur veya güncelleştirir |
 
-## <a name="monitor"></a>İzleme
+## <a name="monitor"></a>İzleyici
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
@@ -6934,6 +6938,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
 > | --- | --- |
+> | Microsoft. AlertsManagement/Register/Action | Abonelik kaydı eylemi |
 > | Microsoft. AlertsManagement/Register/Action | Microsoft Uyarıları yönetimi için aboneliği kaydeder |
 > | Microsoft. AlertsManagement/actionRules/Read | Giriş filtreleri için tüm eylem kurallarını alın. |
 > | Microsoft. AlertsManagement/actionRules/Write | Belirli bir abonelikte eylem kuralı oluştur veya güncelleştir |
@@ -7306,9 +7311,9 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Operationalınsights/çalışma alanları/configurationScopes/okuma | Yapılandırma kapsamını al |
 > | Microsoft. Operationalınsights/çalışma alanları/configurationScopes/yaz | Yapılandırma kapsamını ayarla |
 > | Microsoft. Operationalınsights/çalışma alanları/configurationScopes/Sil | Yapılandırma kapsamını Sil |
-> | Microsoft. operationalınsights/çalışma alanları/dataexport/Read | Belirli veri dışa aktarma alın. |
-> | Microsoft. operationalınsights/çalışma alanları/dataexport/Write | Veri dışarı aktarma oluşturun veya güncelleştirin. |
-> | Microsoft. operationalınsights/çalışma alanları/dataexport/Delete | Belirli veri dışa aktarmayı silin. |
+> | Microsoft. operationalınsights/çalışma alanları/Datavermeler/okuma | Belirli veri dışa aktarma alın. |
+> | Microsoft. operationalınsights/çalışma alanları/Datavermeler/yazma | Veri dışarı aktarma oluşturun veya güncelleştirin. |
+> | Microsoft. operationalınsights/çalışma alanları/Datavermeler/silme | Belirli veri dışa aktarmayı silin. |
 > | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/okuma | Bir çalışma alanı altındaki veri kaynaklarını alın. |
 > | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/yazma | Bir çalışma alanında veri kaynakları oluşturun/güncelleştirin. |
 > | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/Sil | Bir çalışma alanındaki veri kaynaklarını silin. |
@@ -7361,7 +7366,9 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/AlertHistory/Read | AlertHistory tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/AmlComputeClusterEvent/okuma | AmlComputeClusterEvent tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/AmlComputeClusterNodeEvent/okuma | AmlComputeClusterNodeEvent tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/çalışma alanları/sorgu/AmlComputeCpuGpuUtilization/okuma | AmlComputeCpuGpuUtilization tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/AmlComputeJobEvent/okuma | AmlComputeJobEvent tablosundan verileri okuma |
+> | Microsoft. Operationalınsights/Workspaces/Query/AmlRunStatusChangedEvent/Read | AmlRunStatusChangedEvent tablosundan verileri oku |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/ApiManagementGatewayLogs/Read | ApiManagementGatewayLogs tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/AppAvailabilityResults/Read | AppAvailabilityResults tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/Workspaces/Query/Appbrowserzamanlamalar/okuma | Appbrowserzamanlamalar tablosundan verileri okuma |
@@ -7540,7 +7547,6 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/perf/okuma | Perf tablosundan verileri oku |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/ProtectionStatus/Read | ProtectionStatus tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/istekler/okuma | İstekler tablosundan verileri oku |
-> | Microsoft. Operationalınsights/çalışma alanları/sorgu/ReservedCommonFields/Read | ReservedCommonFields tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/Workspaces/Query/Sccmassessmentönerisi/okuma | Sccmassessmentöneriyi tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/Scomassessmentönerisi/okuma | Scomassessmentöneriyi tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/Workspaces/Query/SecurityAlert/Read | SecurityAlert tablosundan verileri okuma |
@@ -7984,7 +7990,7 @@ Azure hizmeti: [Azure şemaları](../governance/blueprints/index.yml)
 > | Microsoft. BLUEPRINT/Register/Action | Azure şemaları kaynak sağlayıcısını kaydeder |
 > | Microsoft. Blueprint/Blueprintasbir/Read | Tüm şema yapılarını okuyun |
 > | Microsoft. Blueprint/Blueprintasbir/Write | Herhangi bir şema yapıtını oluşturun veya güncelleştirin |
-> | Microsoft. Blueprint/Blueprintasbir/Delete | Herhangi bir şema yapıtını silin |
+> | Microsoft. Blueprint/Blueprintasbir/Delete | Tüm şema yapıtlarını silin |
 > | Microsoft. Blueprint/Blueprintasbir/whoisblueprınt/Action | Azure şemaları hizmet sorumlusu nesne kimliğini alın. |
 > | Microsoft. Blueprint/Blueprintasbir/atama/Read | Tüm şema yapılarını okuyun |
 > | Microsoft. Blueprint/planlar/okuma | Tüm şemaları okuyun |
@@ -7992,7 +7998,7 @@ Azure hizmeti: [Azure şemaları](../governance/blueprints/index.yml)
 > | Microsoft. BLUEPRINT/planlar/silme | Tüm şemaları silme |
 > | Microsoft. Blueprint/planlar/yapıtlar/okuma | Tüm şema yapılarını okuyun |
 > | Microsoft. Blueprint/planlar/yapıtlar/yazma | Herhangi bir şema yapıtını oluşturun veya güncelleştirin |
-> | Microsoft. Blueprint/planlar/yapıtlar/silme | Herhangi bir şema yapıtını silin |
+> | Microsoft. Blueprint/planlar/yapıtlar/silme | Tüm şema yapıtlarını silin |
 > | Microsoft. Blueprint/planlar/sürümler/okuma | Tüm şemaları okuyun |
 > | Microsoft. Blueprint/planlar/sürümler/Write | Tüm şemaları oluşturun veya güncelleştirin |
 > | Microsoft. Blueprint/planlar/sürümler/Sil | Tüm şemaları silme |
@@ -8217,7 +8223,7 @@ Azure hizmeti: [Yönetim grupları](../governance/management-groups/index.yml)
 > | Microsoft. Management/managementGroups/abonelikler/Write | Mevcut aboneliği yönetim grubuyla ilişkilendirir. |
 > | Microsoft. Management/managementGroups/abonelikler/Sil | Aboneliği yönetim grubundan kaldır. |
 
-### <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+### <a name="microsoftpolicyinsights"></a>Microsoft. Poliyelei
 
 Azure hizmeti: [Azure ilkesi](../governance/policy/index.yml)
 
@@ -8275,69 +8281,69 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 > | Eylem | Açıklama |
 > | --- | --- |
 > | Microsoft. RecoveryServices/Register/Action | Belirtilen kaynak sağlayıcısı için aboneliği kaydeder |
-> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
+> | Microsoft. recoveryservices/Locations/backupPreValidateProtection/Action |  |
+> | Microsoft. recoveryservices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
+> | Microsoft. recoveryservices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
 > | Microsoft. RecoveryServices/Locations/Allocatedamga/eylem | AllocateStamp, hizmet tarafından kullanılan iç işlemdir |
 > | Microsoft. RecoveryServices/Locations/Checknameavaılabılıty/Action | Kaynak adının kullanılabilirliğini denetle, kaynak adının kullanılabilir olup olmadığını denetlemek için bir API 'dir |
 > | Microsoft. RecoveryServices/konumlar/allocatedStamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Locations/Backupkorunabilir/Write | Yedekleme korumalı öğesi oluştur |
-> | Microsoft. RecoveryServices/Locations/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
+> | Microsoft. recoveryservices/Locations/Backupkorunabilir/Write | Yedekleme korumalı öğesi oluştur |
+> | Microsoft. recoveryservices/Locations/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
 > | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
 > | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupJobsExport/eylem | Işleri dışarı aktar |
-> | Microsoft. RecoveryServices/Vaults/backupSecurityPIN/Action | Kurtarma Hizmetleri Kasası için güvenlik PIN bilgilerini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
+> | Microsoft. recoveryservices/Vaults/backupJobsExport/eylem | Işleri dışarı aktar |
+> | Microsoft. recoveryservices/Vaults/backupSecurityPIN/Action | Kurtarma Hizmetleri Kasası için güvenlik PIN bilgilerini döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
 > | Microsoft. RecoveryServices/Vaults/Write | Kasa oluşturma işlemi, ' kasa ' türünde bir Azure kaynağı oluşturur |
 > | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
 > | Microsoft. RecoveryServices/Vaults/Delete | Kasayı Sil işlemi, ' kasa ' türündeki belirtilen Azure kaynağını siler |
-> | Microsoft. RecoveryServices/Vaults/backupconfig/Read | Kurtarma Hizmetleri Kasası için yapılandırmayı döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupconfig/Write | Kurtarma Hizmetleri Kasası için yapılandırmayı güncelleştirir. |
-> | Microsoft. RecoveryServices/Vaults/backupEncryptionConfigs/Read | Yedekleme kaynağı şifreleme yapılandırmasını alır. |
-> | Microsoft. RecoveryServices/Vaults/backupEncryptionConfigs/Write | Yedekleme kaynak şifreleme yapılandırmasını güncelleştirir |
-> | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionhedefini/silme | Yedekleme koruma hedefini silme |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionamacını/Write | Yedekleme koruma hedefi oluşturma |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/operationResults/Read | İşlemin durumunu döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/operationsStatus/Read | İşlemin durumunu döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/Delete | Kayıtlı kapsayıcıyı siler |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/sorgu/eylem | Bir kapsayıcı içindeki iş yükleri için sorgulama yap |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/okuma | Tüm kayıtlı kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/Write | Kayıtlı bir kapsayıcı oluşturur |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/operationResults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/operationsStatus/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin durumunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/korunabilir/yedekleme/eylem | Korumalı öğe için yedekleme gerçekleştirir. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Sil | Korumalı öğeyi siler |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationResults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationsStatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/provisionInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarma sağla |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı öğeler için kurtarma noktalarını alın. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/geri yükleme/eylem | Korumalı öğeler için kurtarma noktalarını geri yükleyin. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/revokeInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarmayı iptal et |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/iptal/eylem | Işi iptal et |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/Read | Tüm Iş nesnelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/operationResults/Read | Iş Işleminin sonucunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/operationsStatus/Read | Iş Işleminin durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupOperationResults/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi sonucunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Delete | Koruma Ilkesini silme |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Read | Tüm koruma Ilkelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Write | Koruma Ilkesi oluşturur |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/Read | Tüm korunabilir öğelerin listesini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupProtectionContainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
-> | Microsoft. RecoveryServices/Vaults/backupstorageconfig/Read | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupstorageconfig/Write | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını güncelleştirir. |
-> | Microsoft. RecoveryServices/Vaults/backupUsageSummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupconfig/Read | Kurtarma Hizmetleri Kasası için yapılandırmayı döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupconfig/Write | Kurtarma Hizmetleri Kasası için yapılandırmayı güncelleştirir. |
+> | Microsoft. recoveryservices/Vaults/backupEncryptionConfigs/Read | Yedekleme kaynağı şifreleme yapılandırmasını alır. |
+> | Microsoft. recoveryservices/Vaults/backupEncryptionConfigs/Write | Yedekleme kaynak şifreleme yapılandırmasını güncelleştirir |
+> | Microsoft. recoveryservices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/Backupprotectionhedefini/silme | Yedekleme koruma hedefini silme |
+> | Microsoft. recoveryservices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/Backupprotectionamacını/Write | Yedekleme koruma hedefi oluşturma |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/operationResults/Read | İşlemin durumunu döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/operationsStatus/Read | İşlemin durumunu döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/Delete | Kayıtlı kapsayıcıyı siler |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/sorgu/eylem | Bir kapsayıcı içindeki iş yükleri için sorgulama yap |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/okuma | Tüm kayıtlı kapsayıcıları döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/Write | Kayıtlı bir kapsayıcı oluşturur |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/operationResults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/operationsStatus/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin durumunu alır. |
+> | Microsoft. recoveryservices/Vaults/Backupyapılar/protectionContainers/korunabilir/yedekleme/eylem | Korumalı öğe için yedekleme gerçekleştirir. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/Sil | Korumalı öğeyi siler |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationResults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationsStatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/provisionInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarma sağla |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı öğeler için kurtarma noktalarını alın. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/geri yükleme/eylem | Korumalı öğeler için kurtarma noktalarını geri yükleyin. |
+> | Microsoft. recoveryservices/Vaults/Backupdokuları/protectionContainers/korunabilir/revokeInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarmayı iptal et |
+> | Microsoft. recoveryservices/Vaults/backupJobs/iptal/eylem | Işi iptal et |
+> | Microsoft. recoveryservices/Vaults/backupJobs/Read | Tüm Iş nesnelerini döndürür |
+> | Microsoft. recoveryservices/Vaults/backupJobs/operationResults/Read | Iş Işleminin sonucunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupJobs/operationsStatus/Read | Iş Işleminin durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupOperationResults/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi sonucunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/Delete | Koruma Ilkesini silme |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/Read | Tüm koruma Ilkelerini döndürür |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/Write | Koruma Ilkesi oluşturur |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
+> | Microsoft. recoveryservices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
+> | Microsoft. recoveryservices/Vaults/Backupkorunabilir/Read | Tüm korunabilir öğelerin listesini döndürür. |
+> | Microsoft. recoveryservices/Vaults/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupProtectionContainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
+> | Microsoft. recoveryservices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
+> | Microsoft. recoveryservices/Vaults/backupstorageconfig/Read | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını döndürür. |
+> | Microsoft. recoveryservices/Vaults/backupstorageconfig/Write | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını güncelleştirir. |
+> | Microsoft. recoveryservices/Vaults/backupUsageSummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
 > | Microsoft. RecoveryServices/Vaults/sertifikalar/yazma | Kaynak sertifikası güncelleştirme işlemi kaynak/kasa kimlik bilgisi sertifikasını güncelleştirir. |
 > | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
 > | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Write | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
@@ -8346,14 +8352,14 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
 > | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/okuma | Kurtarma Hizmetleri Kasası bildirim yapılandırmasını alır. |
 > | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/Write | Kurtarma Hizmetleri kasasına e-posta bildirimlerini yapılandırır. |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/Delete | Birkaç dakika bekleyip işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft Desteği'ne başvurun. |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/okuma | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/doğrulama/eylem | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/yazma | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Privateendpointconnectionproxy/operationsStatus/Read | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/privateEndpointConnections/Delete | Özel uç nokta isteklerini silin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
-> | Microsoft. RecoveryServices/Vaults/privateEndpointConnections/Write | Özel uç nokta isteklerini onaylayın veya reddedin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
-> | Microsoft. RecoveryServices/Vaults/privateEndpointConnections/operationsStatus/Read | Özel bir uç nokta bağlantısı için işlem durumunu döndürür. |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/Delete | Birkaç dakika bekleyip işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft Desteği'ne başvurun. |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/okuma | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/doğrulama/eylem | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/yazma | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/Privateendpointconnectionproxy/operationsStatus/Read | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. recoveryservices/Vaults/privateEndpointConnections/Delete | Özel uç nokta isteklerini silin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
+> | Microsoft. recoveryservices/Vaults/privateEndpointConnections/Write | Özel uç nokta isteklerini onaylayın veya reddedin. Bu çağrı Yedekleme Yöneticisi tarafından yapılır. |
+> | Microsoft. recoveryservices/Vaults/privateEndpointConnections/operationsStatus/Read | Özel bir uç nokta bağlantısı için işlem durumunu döndürür. |
 > | Microsoft. RecoveryServices/Vaults/registeredIdentities/Write | Hizmet kapsayıcısını Kaydet işlemi, bir kapsayıcıyı kurtarma hizmeti 'ne kaydetmek için kullanılabilir. |
 > | Microsoft. RecoveryServices/Vaults/registeredIdentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
 > | Microsoft. RecoveryServices/Kasaults/registeredIdentities/Delete | Kapsayıcı kaydını silme işlemi, bir kapsayıcının kaydını silmek için kullanılabilir. |
@@ -8469,7 +8475,7 @@ Azure hizmeti: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/Vaults/replicationVaultSettings/Read | Her birini okuyun  |
 > | Microsoft. RecoveryServices/Vaults/replicationVaultSettings/Write | Oluşturma veya güncelleştirme  |
 > | Microsoft. RecoveryServices/Vaults/replicationvCenters/Read | Tüm sanal merkezleri okuyun |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | Microsoft. recoveryservices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
 > | Microsoft. RecoveryServices/kasaults/kullanımlar/okuma | Tüm kasa kullanımlarını okuyun |
 > | Microsoft. RecoveryServices/Vaults/vaultTokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
 
@@ -8628,5 +8634,5 @@ Azure hizmeti: [Bing Haritalar](https://docs.microsoft.com/BingMaps/)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kaynak sağlayıcısını hizmetle Eşleştir](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Azure yerleşik rolleri](built-in-roles.md)
+- [Yerleşik Azure rolleri](built-in-roles.md)
 - [Bulut benimseme çerçevesi: Azure 'da kaynak erişim yönetimi](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

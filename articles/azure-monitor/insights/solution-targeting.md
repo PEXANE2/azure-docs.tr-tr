@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663241"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498687"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Izleyici 'de izleme çözümlerini hedefleme (Önizleme)
 Aboneliğinize bir izleme çözümü eklediğinizde, varsayılan olarak, Log Analytics çalışma alanınıza bağlı tüm Windows ve Linux aracılarına otomatik olarak dağıtılır.  Maliyetlerinizi yönetmek ve bir çözüm için toplanan veri miktarını belirli bir aracı kümesiyle sınırlayarak sınırlamak isteyebilirsiniz.  Bu makalede, çözümlerinize bir kapsam uygulamanıza olanak tanıyan bir özellik olan **çözüm hedeflemesi** 'nin nasıl kullanılacağı açıklanır.
@@ -37,7 +38,7 @@ Azure Izleyici 'de bir [bilgisayar grubu](../platform/computer-groups.md) oluşt
  3. Yeni bir kapsam yapılandırması oluşturmak için **Ekle** ' ye tıklayın.
  4. Kapsam yapılandırması için bir **ad** yazın.
  5. **Bilgisayar gruplarını Seç**' e tıklayın.
- 6. Oluşturduğunuz bilgisayar grubunu ve isteğe bağlı olarak yapılandırmaya eklenecek diğer grupları seçin.  **Seç**' e tıklayın.  
+ 6. Oluşturduğunuz bilgisayar grubunu ve isteğe bağlı olarak yapılandırmaya eklenecek diğer grupları seçin.  **Seç**’e tıklayın.  
  6. Kapsam yapılandırmasını oluşturmak için **Tamam** ' ı tıklatın. 
 
 
@@ -58,10 +59,10 @@ Aşağıdaki işlemi kullanarak bir kapsam yapılandırması uygulayın.
 Çözüm hedefleme ile kullanılamayan aracıların ve çözümlerin ölçütleri aşağıda verilmiştir.
 
 - Çözüm hedefleme yalnızca aracılara dağıtan çözümler için geçerlidir.
-- Çözüm hedefleme yalnızca Microsoft tarafından sunulan çözümler için geçerlidir.  [Kendi veya iş ortakları tarafından oluşturulan](solutions-creating.md)çözümlere uygulanmaz.
+- Çözüm hedefleme yalnızca Microsoft tarafından sunulan çözümler için geçerlidir.  [Kendi veya iş ortakları tarafından oluşturulan](./solutions.md)çözümlere uygulanmaz.
 - Yalnızca Azure Izleyici 'ye doğrudan bağlanan aracıları filtreleyebilirsiniz.  Çözümler, bir kapsam yapılandırmasına dahil edilip edilmeksizin bağlı Operations Manager yönetim grubunun parçası olan aracılara otomatik olarak dağıtılır.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 Çözüm hedefleme, belirtilen ölçütlere uygun olsa da aşağıdaki çözümlerle kullanılamaz.
 
 - Aracı Durumu değerlendirmesi

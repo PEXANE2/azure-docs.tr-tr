@@ -3,11 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88e7be7e2238637f1e6d5ac84abebdca0b9e1674
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727021"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497939"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -53,7 +54,7 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
     * Adın Azure aboneliği için benzersiz olması gerekir.
     * Bu, 2 ile 50 karakter içerebilir.
     * Bir harfle başlamalı ve yalnızca harf, rakam ve kısa çizgi içerebilir.
-5. Kasanın oluşturulması gereken Azure aboneliğini, kaynak grubunu ve coğrafi bölgeyi seçin. Sonra **Oluştur**' a tıklayın.
+5. Kasanın oluşturulması gereken Azure aboneliğini, kaynak grubunu ve coğrafi bölgeyi seçin. Ardından, **Oluştur**’a tıklayın.
     * Kasanın oluşturulması biraz zaman alabilir.
     * Portalın sağ üst bölümündeki durum bildirimlerini izleyin.
 
@@ -66,10 +67,10 @@ Kasa oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür.
 
 ### <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
 
-Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)kullanır.
+Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md)kullanır.
 
 * Kasa birincil yedekleme mekanizmanız ise GRS kullanmanızı öneririz.
-* Bir ucuz seçeneği için [yerel olarak yedekli depolama (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kullanabilirsiniz.
+* Bir ucuz seçeneği için [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) kullanabilirsiniz.
 
 Depolama çoğaltma türünü aşağıdaki gibi değiştirin:
 
@@ -100,7 +101,7 @@ Kasa için bir yedekleme ilkesi yapılandırın.
 
       ![Varsayılan yedekleme ilkesi](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. **Sanal makineler Seç**bölümünde, ilkeyi kullanarak yedeklemek Istediğiniz VM 'leri seçin. Ardından **Tamam**'a tıklayın.
+4. **Sanal makineler Seç**bölümünde, ilkeyi kullanarak yedeklemek Istediğiniz VM 'leri seçin. Daha sonra, **Tamam**'a tıklayın.
 
    * Seçilen VM 'Ler doğrulanacak.
    * Yalnızca kasala aynı bölgedeki VM 'Leri seçebilirsiniz.
@@ -150,7 +151,7 @@ Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını girin.
 2. **Yedekleme öğeleri**' nde **Azure sanal makine**' ye tıklayın.
 3. **Yedekleme öğeleri** listesinde üç noktaya (...) tıklayın.
 4. **Şimdi Yedekle**'ye tıklayın.
-5. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Ardından **Tamam**'a tıklayın.
+5. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Daha sonra, **Tamam**'a tıklayın.
 6. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri**  >  **devam**ediyor. VM’nizin boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
 
 ## <a name="verify-backup-job-status"></a>Yedekleme işinin durumunu doğrulama
@@ -188,7 +189,7 @@ Azure Backup, makinede çalışan Azure VM aracısına bir uzantı yükleyerek A
 **'Nın** | **Ayrıntılar**
 --- | ---
 **Windows** | 1. aracı MSI dosyasını [indirip yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) .<br/><br/> 2. makinede yönetici izinleriyle Install.<br/><br/> 3. yüklemeyi doğrulayın. VM 'deki *c:\windowsazure\packages* ' de **WaAppAgent.exe**  >  **Özellikler**' e sağ tıklayın. **Ayrıntılar** sekmesinde **ürün sürümü** 2.6.1198.718 veya üzeri olmalıdır.<br/><br/> Aracıyı güncelleştiriyorsanız, hiçbir yedekleme işlemi olmadığından emin olun ve [aracıyı yeniden yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Linux** | Dağıtım paketi deposundan bir RPM veya bir DEB paketini kullanarak uygulamasını yükler. Bu, Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin. Aracı [GitHub](https://github.com/Azure/WALinuxAgent)'da kullanılabilir ancak buradan yüklemeyi önermiyoruz.<br/><br/> Aracıyı güncelleştiriyorsanız, yedekleme işlemlerinin çalışmakta olmadığından emin olun ve ikili dosyaları güncelleştirin.
+**Linux** | Dağıtım paketi deposundan bir RPM veya bir DEB paketini kullanarak uygulamasını yükler. Bu, Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](../virtual-machines/linux/endorsed-distros.md) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin. Aracı [GitHub](https://github.com/Azure/WALinuxAgent)'da kullanılabilir ancak buradan yüklemeyi önermiyoruz.<br/><br/> Aracıyı güncelleştiriyorsanız, yedekleme işlemlerinin çalışmakta olmadığından emin olun ve ikili dosyaları güncelleştirin.
 
 >[!NOTE]
 > **Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.**

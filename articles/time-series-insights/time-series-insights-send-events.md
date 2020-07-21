@@ -5,19 +5,20 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037299"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495083"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Olayları bir olay hub 'ı kullanarak Time Series Insights ortamına gönderme
+# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Olay Hub 'ı kullanarak Azure Time Series Insights Gen1 ortamına olay gönderme
 
 Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma açıklanmaktadır. Ayrıca, olayları Event Hubs Azure Time Series Insights göndermek için örnek bir uygulamanın nasıl çalıştırılacağını açıklar. JSON biçiminde olaylar içeren bir olay hub 'ınız varsa, bu öğreticiyi atlayıp [Azure Time Series Insights](./time-series-insights-update-create-environment.md)ortamınızı görüntüleyin.
 
@@ -37,10 +38,10 @@ Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma 
 
     [![Tüketici grubu oluşturma](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
-1. Yalnızca Time Series Insights olay kaynağınız tarafından kullanılan bir tüketici grubu oluşturduğunuzdan emin olun.
+1. Yalnızca Azure Time Series Insights olay kaynağınız tarafından kullanılan bir tüketici grubu oluşturduğunuzdan emin olun.
 
     > [!IMPORTANT]
-    > Bu tüketici grubunun Azure Stream Analytics iş veya başka bir Time Series Insights ortamı gibi başka bir hizmet tarafından kullanılmadığından emin olun. Tüketici grubu başka hizmetler tarafından kullanılıyorsa, bu ortam ve diğer hizmetler için okuma işlemleri olumsuz etkilenir. Tüketici grubu olarak **$Default** kullanıyorsanız, diğer okuyucular tüketici grubunuzu kullanabilir.
+    > Bu tüketici grubunun Azure Stream Analytics iş veya başka bir Azure Time Series Insights ortamı gibi başka bir hizmet tarafından kullanılmadığından emin olun. Tüketici grubu başka hizmetler tarafından kullanılıyorsa, bu ortam ve diğer hizmetler için okuma işlemleri olumsuz etkilenir. Tüketici grubu olarak **$Default** kullanıyorsanız, diğer okuyucular tüketici grubunuzu kullanabilir.
 
 1. Menüde, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin ve ardından **Ekle**' yi seçin.
 
@@ -52,11 +53,11 @@ Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma 
 
 1. **Talep**altında **Gönder** onay kutusunu seçin.
 
-## <a name="add-a-time-series-insights-instance"></a>Time Series Insights örneği ekleme
+## <a name="add-an-azure-time-series-insights-instance"></a>Azure Time Series Insights örneği ekleme
 
-Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal verileri eklemek için örnekleri kullanır. Veriler, **zaman SERISI kimliği**kullanılarak sorgu zamanına birleştirilir. Bu makalede daha sonra kullandığımız örnek **wınıdmills projesi Için zaman serisi kimliği** `id` . Zaman serisi Insight örnekleri ve **zaman SERISI kimliği**hakkında daha fazla bilgi edinmek Için [zaman serisi modellerini](./concepts-model-overview.md)okuyun.
+Azure Time Series Insights Gen 2 ' de, zaman serisi modelini (TSM) kullanarak gelen telemetrisine bağlamsal veriler ekleyebilirsiniz. TSD 'de, etiketlerinizin veya sinyallerinizin *örnekleri* olarak başvurduğu ve bağlamsal verileri *örnek alanlarında* depolayabilmeniz gerekir. Veriler, **zaman SERISI kimliği**kullanılarak sorgu zamanına birleştirilir. Bu makalede daha sonra kullandığımız örnek **wınıdmills projesi Için zaman serisi kimliği** `id` . Örnek alanlarında veri depolama hakkında daha fazla bilgi edinmek için [zaman serisi modeline](./concepts-model-overview.md) genel bakış makalesini okuyun.
 
-### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights olay kaynağı oluşturma
+### <a name="create-a-azure-time-series-insights-event-source"></a>Azure Time Series Insights olay kaynağı oluşturma
 
 1. Bir olay kaynağı oluşturmadıysanız, [bir olay kaynağı oluşturma](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)adımlarını izleyin.
 
@@ -72,7 +73,7 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 
     [![Birincil anahtar bağlantı dizesinin değerini kopyalayın](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. https://tsiclientsample.azurewebsites.net/windFarmGen.html kısmına gidin. URL, benzetimli wındmill cihazları oluşturur ve çalıştırır.
+1. https://tsiclientsample.azurewebsites.net/windFarmGen.html öğesine gidin. URL, benzetimli wındmill cihazları oluşturur ve çalıştırır.
 1. Web sayfasındaki **Olay Hub 'ı bağlantı dizesi** kutusunda, [wındmill giriş alanına](#push-events-to-windmills-sample)kopyaladığınız bağlantı dizesini yapıştırın.
   
     [![Birincil anahtar bağlantı dizesini Olay Hub 'ı bağlantı dizesi kutusuna yapıştırın](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
@@ -80,7 +81,7 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 1. **Başlamak Için tıklayın ' ı**seçin. 
 
     > [!TIP]
-    > Windmill simülatörü Ayrıca [TIME SERIES INSIGHTS GA sorgu API 'leri](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)ile yük olarak kullanabileceğiniz JSON oluşturur.
+    > Windmill simülatörü Ayrıca [Azure TIME SERIES INSIGHTS GA sorgu API 'leri](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)ile yük olarak kullanabileceğiniz JSON oluşturur.
 
     > [!NOTE]
     > Tarayıcı sekmesi kapatılana kadar simülatör verileri gönderilmeye devam edecektir.
@@ -202,6 +203,6 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Time Series Insights Gezgini ' nde [ortamınızı görüntüleyin](https://insights.timeseries.azure.com) .
+- Azure Time Series Insights Gezgini ' nde [ortamınızı görüntüleyin](https://insights.timeseries.azure.com) .
 
 - [IoT Hub cihaz iletileri](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) hakkında daha fazla bilgi edinin

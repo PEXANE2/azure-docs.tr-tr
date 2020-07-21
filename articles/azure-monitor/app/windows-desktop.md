@@ -3,11 +3,12 @@ title: Windows masaüstü uygulamaları için kullanımı ve performansı izleme
 description: Application Insights ile Windows masaüstü uygulamanızın kullanımını ve performansını analiz edin.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718793"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499197"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasik Windows Masaüstü uygulamalarında kullanımı ve performansı izleme
 
@@ -72,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 Varsayılan olarak, bu SDK sistem yayma telemetrinin bilgisayar adını toplayıp depolar.
 
-Bilgisayar adı, dahili fatura amaçları için Application Insights [eski Kurumsal (düğüm başına) Fiyatlandırma Katmanı](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) tarafından kullanılır. Varsayılan olarak, geçersiz kılmak için bir telemetri başlatıcısı kullanırsanız `telemetry.Context.Cloud.RoleInstance` , `ai.internal.nodeName` bilgisayar adı değerini de içerecek şekilde ayrı bir özellik gönderilir. Bu değer, Application Insights telemetriyle birlikte depolanmayacak, ancak eski düğüm tabanlı faturalandırma modeliyle geriye dönük uyumluluk sağlamak için dahili olarak kullanılır.
+Bilgisayar adı, dahili fatura amaçları için Application Insights [eski Kurumsal (düğüm başına) Fiyatlandırma Katmanı](./pricing.md#legacy-enterprise-per-node-pricing-tier) tarafından kullanılır. Varsayılan olarak, geçersiz kılmak için bir telemetri başlatıcısı kullanırsanız `telemetry.Context.Cloud.RoleInstance` , `ai.internal.nodeName` bilgisayar adı değerini de içerecek şekilde ayrı bir özellik gönderilir. Bu değer, Application Insights telemetriyle birlikte depolanmayacak, ancak eski düğüm tabanlı faturalandırma modeliyle geriye dönük uyumluluk sağlamak için dahili olarak kullanılır.
 
-[Eski Kurumsal (düğüm başına) fiyatlandırma katmanındaysa](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) ve yalnızca bilgisayar adının depolanmasını geçersiz kılmanız gerekiyorsa, bir telemetri başlatıcısı kullanın:
+[Eski Kurumsal (düğüm başına) fiyatlandırma katmanındaysa](./pricing.md#legacy-enterprise-per-node-pricing-tier) ve yalnızca bilgisayar adının depolanmasını geçersiz kılmanız gerekiyorsa, bir telemetri başlatıcısı kullanın:
 
 **Aşağıdaki gibi özel Telemetryınitializer yazın.**
 
@@ -115,7 +116,7 @@ namespace CustomInitializer.Telemetry
 
 ## <a name="override-transmission-of-computer-name"></a>Bilgisayar adının aktarımını geçersiz kıl
 
-[Eski Kurumsal (düğüm başına) fiyatlandırma katmanında](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) değilseniz ve bilgisayar adı içeren herhangi bir telemetrinin gönderilmesini tamamen engellemek isterseniz, bir telemetri işlemcisi kullanmanız gerekir.
+[Eski Kurumsal (düğüm başına) fiyatlandırma katmanında](./pricing.md#legacy-enterprise-per-node-pricing-tier) değilseniz ve bilgisayar adı içeren herhangi bir telemetrinin gönderilmesini tamamen engellemek isterseniz, bir telemetri işlemcisi kullanmanız gerekir.
 
 ### <a name="telemetry-processor"></a>Telemetri işlemcisi
 
@@ -171,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> [Eski Kurumsal (düğüm başına) fiyatlandırma katmanında](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)olsanız bile, daha önce açıklandığı gibi bir telemetri işlemcisi de kullanabilirsiniz. Bu, düğüm başına fiyatlandırma için düğümleri doğru bir şekilde ayırt edememe nedeniyle, yüksek faturalandırma için olası bir işlem oluşmasına neden olur.
+> [Eski Kurumsal (düğüm başına) fiyatlandırma katmanında](./pricing.md#legacy-enterprise-per-node-pricing-tier)olsanız bile, daha önce açıklandığı gibi bir telemetri işlemcisi de kullanabilirsiniz. Bu, düğüm başına fiyatlandırma için düğümleri doğru bir şekilde ayırt edememe nedeniyle, yüksek faturalandırma için olası bir işlem oluşmasına neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Pano oluşturma](../../azure-monitor/app/overview-dashboard.md)
 * [Tanılama Araması](../../azure-monitor/app/diagnostic-search.md)
 * [Ölçümleri keşfetme](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics sorguları yazma](../../azure-monitor/app/analytics.md)
-
+* [Analytics sorguları yazma](../log-query/log-query-overview.md)

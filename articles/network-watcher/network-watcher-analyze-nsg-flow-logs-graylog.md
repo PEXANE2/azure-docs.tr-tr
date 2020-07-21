@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497123"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Ağ Izleyicisi ve gri günlük kullanarak Azure 'da ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme
 
@@ -180,7 +180,7 @@ Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir 
 2. Yapılandırma sayfasına gitmek için sağ üst gezinti çubuğundan **sistem** açılan menüsünü seçin ve ardından **girişler**' e tıklayın.
    Alternatif olarak, şuraya gidin`http://<graylog-server-ip>:9000/system/inputs`
 
-   ![Başlarken](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
+   ![Kullanmaya başlama](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
 3. Yeni girişi başlatmak için **Giriş Seç** açılan kutusunda *gelf UDP* ' yi seçin ve ardından formu doldurun. GELF, gri günlük Genişletilmiş günlük biçimini temsil eder. GELF biçimi, Grig günlüğü tarafından geliştirilmiştir. Avantajları hakkında daha fazla bilgi edinmek için bkz. gri günlük [belgeleri](https://docs.graylog.org/en/2.2/pages/gelf.html).
 
@@ -190,7 +190,7 @@ Logstash kullanarak akış günlüklerine bir bağlantı kurdığınıza ve bir 
 
    Girişi başlattıktan sonra, aşağıdaki resimde gösterildiği gibi **Yerel girişler** bölümünün altında göründüğünü görmeniz gerekir:
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![Başlattığınız girişi içeren yerel girişler bölümünü gösteren ekran görüntüsü.](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    Gri günlük ileti girişleri hakkında daha fazla bilgi edinmek için [belgelerine](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)bakın.
 

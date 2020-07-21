@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753562"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497655"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı 
 
@@ -124,7 +124,11 @@ Azure-SSIS çalışma zamanı hakkında daha fazla bilgi için aşağıdaki maka
 
 ## <a name="integration-runtime-location"></a>Tümleştirme çalışma zamanının konumu
 
-Data Factory konumu, veri fabrikası meta verilerinin depolandığı ve işlem hattı tetiklemesinin başlatıldığı konumdur. Bu arada, verileri veri depoları arasında taşımak ve işlem hizmetlerini kullanarak verileri işlemek amacıyla veri fabrikası, başka Azure bölgelerindeki veri depolarına ve işlem hizmetlerine erişebilir. Bu davranış veri uyumluluğu, verimlilik ve düşük ağ kullanım maliyetleri için [global ölçekte kullanılabilen IR](https://azure.microsoft.com/global-infrastructure/services/) aracılığıyla gerçekleştirilir.
+### <a name="relationship-between-factory-location-and-ir-location"></a>Fabrika konumu ve IR konumu arasındaki ilişki
+
+Müşteri bir Data Factory örneği oluşturduğunda, veri fabrikasının konumunu belirtmeleri gerekir. Data Factory konumu, veri fabrikası meta verilerinin depolandığı ve işlem hattı tetiklemesinin başlatıldığı konumdur. Fabrika meta verileri yalnızca müşterinin tercih ettiği bölgede depolanır ve diğer bölgelerde depolanmaz.
+
+Bu arada, verileri veri depoları arasında taşımak ve işlem hizmetlerini kullanarak verileri işlemek amacıyla veri fabrikası, başka Azure bölgelerindeki veri depolarına ve işlem hizmetlerine erişebilir. Bu davranış veri uyumluluğu, verimlilik ve düşük ağ kullanım maliyetleri için [global ölçekte kullanılabilen IR](https://azure.microsoft.com/global-infrastructure/services/) aracılığıyla gerçekleştirilir.
 
 IR Konumu arka uç işleminin konumunu tanımlar ve bu veri taşıma, etkinlik dağıtımı ve SSIS paket yürütme işlemlerinin gerçekleştirileceği konumdur. IR konumu veri fabrikasının ait olduğu konumdan farklı olabilir. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: f4f5c5d9a77353f36119b77601b88f9dab01ccc0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7eb77b9ffae49c7d8d3e5612b685e5725829898f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243622"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499792"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management 'de OAuth 2,0 kullanarak Geliştirici hesaplarını yetkilendirme
 
@@ -50,7 +50,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
     > [!NOTE]
     > Bu alanlar, OAuth 2,0 yetkilendirme sunucusunu geçerli API Management hizmet örneği içinde tanımlamak için kullanılır ve bunların değerleri OAuth 2,0 sunucusundan gelmiyor.
 
-3. **İstemci kayıt sayfası URL 'sini**girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların, hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder. Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI gibi bir yer tutucu URL veya gibi bir URL girin `https://placeholder.contoso.com` .
+3. **İstemci kayıt sayfası URL 'sini**girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder `https://contoso.com/login` . Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI gibi bir yer tutucu URL veya gibi bir URL girin `https://placeholder.contoso.com` .
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -75,6 +75,11 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
     **İstemci kimlik doğrulama yöntemlerinin** varsayılan ayarı **temel**ve **erişim belirteci gönderme yöntemi** **Yetkilendirme üst bilgisi**olur. Bu değerler formun bu bölümünde, **varsayılan kapsamla**birlikte yapılandırılır.
 
 6. **İstemci kimlik bilgileri** bölümü, OAuth 2,0 sunucunuzun oluşturma ve yapılandırma işlemi sırasında elde EDILEN **Istemci kimliğini** ve **istemci gizli**anahtarını içerir. **ISTEMCI kimliği** ve **istemci parolası** belirtildiğinde, **yetkilendirme kodu** için **redirect_uri** oluşturulur. Bu URI, OAuth 2,0 sunucu yapılandırmanızda yanıt URL 'sini yapılandırmak için kullanılır.
+
+    Yeni geliştirici portalında URI son eki şu biçimdedir:
+
+    - `/signin-oauth/code/callback/{authServerName}`yetkilendirme kodu verme akışı için
+    - `/signin-oauth/implicit/callback`örtük verme akışı için
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-04.png)
 

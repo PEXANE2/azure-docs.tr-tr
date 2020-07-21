@@ -6,11 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782577"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499469"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python ile bağımlılıkları izleme
 
@@ -85,7 +86,7 @@ conn.close()
 OpenCensus tümleştirmesiyle giden Docgo isteklerinizi izleyin `django` .
 
 > [!NOTE]
-> İzlenen tek giden Docgo istekleri bir veritabanına yapılan çağrılardır. Docgo uygulamasına yapılan istekler için bkz. [gelen istekler](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications).
+> İzlenen tek giden Docgo istekleri bir veritabanına yapılan çağrılardır. Docgo uygulamasına yapılan istekler için bkz. [gelen istekler](./opencensus-python-request.md#tracking-django-applications).
 
 `opencensus-ext-django` [Pypı](https://pypi.org/project/opencensus-ext-django/) 'den Indirip yükleyin ve `MIDDLEWARE` docgo dosyasındaki bölümüne aşağıdaki satırı ekleyin `settings.py` .
 

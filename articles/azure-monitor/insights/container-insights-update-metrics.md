@@ -2,12 +2,13 @@
 title: Ölçümler için Azure Izleyicisini güncelleştirme | Microsoft Docs
 description: Bu makalede, toplu ölçümler üzerinde araştırmayı ve uyarı vermeyi destekleyen özel ölçümler özelliğini etkinleştirmek üzere kapsayıcılar için Azure Izleyicisini nasıl güncelleştireceğinizi açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298270"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498993"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Kapsayıcılar için Azure İzleyici'yi ölçümleri etkinleştirecek şekilde güncelleştirme
 
@@ -19,23 +20,25 @@ Kapsayıcılar için Azure Izleyici, Azure Kubernetes Services (AKS) kümeleri d
 
 Bu özelliğin bir parçası olarak aşağıdaki ölçümler etkinleştirilmiştir:
 
-| Ölçüm ad alanı | Metric | Açıklama |
+| Ölçüm ad alanı | Ölçüm | Açıklama |
 |------------------|--------|-------------|
-| Öngörüler. kapsayıcı/düğümler | Cpuusagemilimetre çekirdekler, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Bunlar, *düğüm* ölçümleridir ve *ana bilgisayarı* bir boyut olarak içerir ve ayrıca<br> *ana bilgisayar* boyutu için değer olarak düğümün adı. |
-| Öngörüler. kapsayıcı/pods | Pod sayısı | Bunlar *Pod* ölçümleridir ve boyutlar-ControllerName, Kubernetes ad alanı, ad, aşama olarak şunları içerir. |
+| Öngörüler. kapsayıcı/düğümler | Cpuusagemiliçekirdekler, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | *Düğüm* ölçümleri olarak *ana bilgisayarı* bir boyut olarak içerirler. Ayrıca şunları içerir<br> *ana bilgisayar* boyutu için değer olarak düğümün adı. |
+| Öngörüler. kapsayıcı/pods | Pod Count, completedJobsCount, restartingContainerCount, oomKilledContainerCount, Pod Readypercentage | *Pod* ölçümleri olarak, Boyutlar-ControllerName, Kubernetes ad alanı, ad, aşama olarak aşağıdakileri içerirler. |
+| Öngörüler. kapsayıcı/kapsayıcılar | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-Kümeyi bu yeni özellikleri destekleyecek şekilde güncelleştirmek Azure portal, Azure PowerShell veya Azure CLı ile gerçekleştirilebilir. Azure PowerShell ve CLı ile bu küme başına veya aboneliğinizdeki tüm kümeler için bu ayarı etkinleştirebilirsiniz. Yeni AKS dağıtımları, bu yapılandırma değişikliğini ve yeteneklerini otomatik olarak içerir.
+Bu yeni özellikleri desteklemek için, sürüme **Microsoft/OMS: ciprod02212019**adlı yeni bir Kapsayıcılı aracı eklenmiştir. Yeni AKS dağıtımları otomatik olarak bu yapılandırma değişikliğini ve yeteneklerini içerir. Kümenizi bu özelliği destekleyecek şekilde güncelleştirmek Azure portal, Azure PowerShell veya Azure CLı ile gerçekleştirilebilir. Azure PowerShell ve CLı ile. Bu küme başına veya aboneliğinizdeki tüm kümeler için etkinleştirebilirsiniz.
 
 Her iki işlem de, aracı tarafından toplanan verilerin kümeler kaynağına yayımlanabilmesi için izleme **ölçümleri yayımcı** rolünü kümenin hizmet sorumlusuna veya izleme eklentisi için Kullanıcı tarafından atanmış MSI 'ye atar. Ölçümleri izlemek, yalnızca ölçümleri kaynağa iletmek için izne sahiptir, herhangi bir durumu değiştiremez, kaynağı güncelleştiremez veya herhangi bir veriyi okuyabilir. Rol hakkında daha fazla bilgi için bkz. [ölçümleri Izleme yayımcısı rolü](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce, aşağıdakileri onaylayın:
+Kümenizi güncelleştirmeden önce aşağıdakileri onaylayın:
 
 * Özel ölçümler yalnızca Azure bölgelerinin bir alt kümesinde kullanılabilir. Desteklenen bölgelerin listesi [burada](../platform/metrics-custom-overview.md#supported-regions)belgelenmiştir.
-* Düğüm koleksiyonunu ve pod özel performans ölçümlerini etkinleştirmek için AKS küme kaynağında **[sahip](../../role-based-access-control/built-in-roles.md#owner)** rolünün bir üyesisiniz. 
 
-Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version` . Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+* Düğüm koleksiyonunu ve pod özel performans ölçümlerini etkinleştirmek için AKS küme kaynağında **[sahip](../../role-based-access-control/built-in-roles.md#owner)** rolünün bir üyesisiniz.
+
+Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version` . Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Azure portal bir kümeyi yükseltme
 
@@ -121,4 +124,4 @@ Azure PowerShell kullanarak belirli bir kümeyi güncelleştirmek için aşağı
 
 ## <a name="verify-update"></a>Güncelleştirmeyi doğrula
 
-Daha önce açıklanan yöntemlerden birini kullanarak güncelleştirmeyi başlattıktan sonra, Azure Izleyici ölçümleri Gezginini kullanabilir ve **Öngörüler** tarafından listelenen **ölçüm ad** alanından emin olabilirsiniz. Varsa, bu, devam edip [ölçüm uyarılarını](../platform/alerts-metric.md) ayarlamaya veya grafiklerinizi [panolara](../../azure-portal/azure-portal-dashboards.md)sabitlemeye başlayabileceğini gösterir.  
+Daha önce açıklanan yöntemlerden birini kullanarak güncelleştirmeyi başlattıktan sonra, Azure Izleyici ölçümleri Gezginini kullanabilir ve **Öngörüler** tarafından listelenen **ölçüm ad** alanından emin olabilirsiniz. Varsa, devam edebilir, [ölçüm uyarılarını](../platform/alerts-metric.md) ayarlamaya veya grafiklerinizi [panolara](../../azure-portal/azure-portal-dashboards.md)sabitlemeye başlayabilirsiniz.  

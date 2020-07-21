@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights ' deki giriş ve düzleştirme kurallarında yaklaşan değişiklikler | Microsoft Docs
+title: Azure Time Series Insights Gen2 ' deki giriş ve düzleştirme kurallarında yaklaşan değişiklikler | Microsoft Docs
 description: Giriş kuralı değişiklikleri
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 067244aa40256e3cc76239343790974bc3c06481
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f667ca5ad82182fcf40d5c1fbb325f2ea99a7e08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495117"
 ---
 # <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>Yeni ortamlar için JSON düzleştirme ve kaçış kurallarında yakında yapılan değişiklikler
 
-Bu değişiklikler yalnızca *yeni* Azure Time Series Insights Kullandıkça Öde (PAYG) ortamları için de geçerlidir. Bu değişiklikler standart (ler) SKU ortamları için geçerlidir.
+**Bu değişiklikler yalnızca *Yeni oluşturulan* Azure Time Series Insights Gen2 ortamlarına uygulanır. Bu değişiklikler Gen1 ortamları için geçerlidir.**
 
-Azure Time Series Insights ortamınız, belirli bir adlandırma kuralları kümesini izleyerek depolama sütunlarınızı dinamik olarak oluşturur. Bir olay tamamlandığında, JSON yüküne ve özellik adlarına bir dizi kural uygulanır. JSON verilerinin düzleştirildiğinde ve depolanmasındaki değişiklikler, 2020 Temmuz 'da yeni Azure Time Series Insights Kullandıkça Öde ortamları için geçerli olacaktır. Bu değişiklik, aşağıdaki durumlarda sizi etkiler:
+Azure Time Series Insights Gen2 ortamınız, belirli bir adlandırma kuralları kümesini izleyerek depolama sütunlarınızı dinamik olarak oluşturur. Bir olay tamamlandığında, JSON yüküne ve özellik adlarına bir dizi kural uygulanır. JSON verilerinin düzleştirildiğinde ve depolanabileceği değişiklikler 2020 Temmuz 'da yeni Azure Time Series Insights Gen2 ortamları için geçerli olacaktır. Bu değişiklik, aşağıdaki durumlarda sizi etkiler:
 
 * JSON yükünüzü iç içe nesneler içeriyorsa
 *  JSON yükünüzü diziler içeriyorsa
@@ -45,15 +45,16 @@ Nesne dizileri her zaman düzleştirilir, birden çok olay üretir | Bir dizidek
 
  #### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Yükleriniz iç içe geçmiş JSON veya özel karakterler içeriyorsa ve yazma [zaman serisi model](.\time-series-insights-update-tsm.md) değişkeni ifadelerini otomatikleştirin
 
-*  Yeni giriş kurallarını eşleştirmek için [Typesbatchput](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch#typesbatchput) öğesini yürüten istemci kodunuzu güncelleştirin. Örneğin, önceki bir [zaman serisi ifadesinin](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) `"value": {"tsx": "$event.series_value.Double"}` aşağıdaki seçeneklerden birine güncelleştirilmeleri gerekir:
+*  Yeni giriş kurallarını eşleştirmek için [Typesbatchput](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) öğesini yürüten istemci kodunuzu güncelleştirin. Örneğin, önceki bir [zaman serisi ifadesinin](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) `"value": {"tsx": "$event.series_value.Double"}` aşağıdaki seçeneklerden birine güncelleştirilmeleri gerekir:
     * `"value": {"tsx": "$event.series.value.Double"}`
     * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uzun veri türü Için destek ekleme](./time-series-insights-long-data-type.md)makalesini okuyun.
+- [Gen2 depolama ve giriş Azure Time Series Insights](./time-series-insights-update-storage-ingress.md)okuyun.
 
-- [Azure Time Series Insights önizleme depolama ve](./time-series-insights-update-storage-ingress.md)giriş makalesini okuyun.
+- [Zaman serisi sorgu API 'lerini](./concepts-query-overview.md)kullanarak verilerinizi sorgulama hakkında daha fazla bilgi edinin.
+
+- [Yeni zaman serisi ifade sözdizimi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)hakkında daha fazla bilgi edinin.
 

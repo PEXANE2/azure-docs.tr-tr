@@ -3,24 +3,25 @@ title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800639"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499044"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
 Bu makalede, Kubernetes ortamlarına dağıtılan ve üzerinde barındırılan iş yüklerinin performansını izlemek üzere kapsayıcılar için Azure Izleyicisini ayarlamaya yönelik seçeneklere genel bir bakış sunulmaktadır:
 
-- [Azure Kubernetes Hizmeti (AKS)](https://docs.microsoft.com/azure/aks/)  
+- [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) sürümleri 3. x ve 4. x  
 - [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) sürüm 4. x  
 - [Yay etkin bir Kubernetes kümesi](../../azure-arc/kubernetes/overview.md)
 
 Ayrıca, üzerinde barındırılan kendi kendine yönetilen Kubernetes kümelerine dağıtılan iş yüklerinin performansını izleyebilirsiniz:
 - Azure, [aks altyapısını](https://github.com/Azure/aks-engine) kullanarak
-- AKS altyapısını kullanarak [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) veya şirket içinde.
+- AKS altyapısını kullanarak [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) veya şirket içinde.
 
 Aşağıdaki desteklenen yöntemlerden birini kullanarak yeni bir dağıtım veya bir veya daha fazla mevcut Kubernetes dağıtımı için Azure Izleyicisini etkinleştirebilirsiniz:
 
@@ -31,7 +32,7 @@ Aşağıdaki desteklenen yöntemlerden birini kullanarak yeni bir dağıtım vey
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun:
 
@@ -62,7 +63,7 @@ Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun
 
 Kapsayıcılar için Azure Izleyici, resmi olarak aşağıdaki konfigürasyonları destekler:
 
-- Ortamlar: Azure Red Hat OpenShift, Kubernetes, şirket içi ve Azure 'da AKS motoru ve Azure Stack. Daha fazla bilgi için [Azure Stack üzerindeki AKS altyapısına](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)bakın.
+- Ortamlar: Azure Red Hat OpenShift, Kubernetes, şirket içi ve Azure 'da AKS motoru ve Azure Stack. Daha fazla bilgi için [Azure Stack üzerindeki AKS altyapısına](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)bakın.
 - Kubernetes ve destek ilkesi sürümleri, [Azure Kubernetes hizmeti (AKS) ' de desteklenenlerle](../../aks/supported-kubernetes-versions.md)aynıdır. 
 
 ## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
@@ -79,7 +80,7 @@ Aşağıdaki tabloda Kapsayıcılı aracının kapsayıcılar için Azure Izleyi
 
 Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Açıklama | 
+|Aracı kaynağı|Bağlantı noktası |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.cn` | 443 | OMS ekleme |
@@ -87,7 +88,7 @@ Aşağıdaki tabloda, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapı
 
 Aşağıdaki tabloda, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir:
 
-|Aracı kaynağı|Bağlantı noktası |Açıklama | 
+|Aracı kaynağı|Bağlantı noktası |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.us` | 443 | OMS ekleme |
@@ -116,7 +117,7 @@ Kapsayıcılar için Azure Izleyicisini etkinleştirmek üzere aşağıdaki tabl
 | Yeni Kubernetes kümesi | [Azure CLı kullanarak AKS kümesi oluşturma](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLı kullanarak oluşturduğunuz yeni bir AKS kümesi için izlemeyi etkinleştirebilirsiniz. |
 | | [Terrayform kullanarak AKS kümesi oluşturma](container-insights-enable-new-cluster.md#enable-using-terraform)| Açık kaynak aracı Tertuform kullanarak oluşturduğunuz yeni bir AKS kümesi için izlemeyi etkinleştirebilirsiniz. |
 | | [Azure Resource Manager şablonu kullanarak bir OpenShift kümesi oluşturma](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Önceden yapılandırılmış bir Azure Resource Manager şablonu kullanarak oluşturduğunuz yeni bir OpenShift kümesi için izlemeyi etkinleştirebilirsiniz. |
-| | [Azure CLı kullanarak bir OpenShift kümesi oluşturma](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Azure CLı kullanarak yeni bir OpenShift kümesi dağıtırken izlemeyi etkinleştirebilirsiniz. |
+| | [Azure CLı kullanarak bir OpenShift kümesi oluşturma](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Azure CLı kullanarak yeni bir OpenShift kümesi dağıtırken izlemeyi etkinleştirebilirsiniz. |
 | Mevcut Kubernetes kümesi | [Azure CLı kullanarak bir AKS kümesinin izlenmesini etkinleştirme](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLı kullanılarak zaten dağıtılmış bir AKS kümesi için izlemeyi etkinleştirebilirsiniz. |
 | |[Tertuform kullanarak AKS kümesi için etkinleştirme](container-insights-enable-existing-clusters.md#enable-using-terraform) | Açık kaynak aracı Tertuform kullanılarak zaten dağıtılmış olan bir AKS kümesi için izlemeyi etkinleştirebilirsiniz. |
 | | [Azure Izleyici 'den AKS kümesi için etkinleştirme](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Izleyici 'de çok küme sayfasından zaten dağıtılmış olan bir veya daha fazla AKS kümesi için izlemeyi etkinleştirebilirsiniz. |

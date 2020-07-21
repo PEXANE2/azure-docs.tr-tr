@@ -9,22 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a74b77ac59ece98f1a64839fd5000f4ab5d638f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815800"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497888"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
+
+> [!IMPORTANT]
+> Yüz kapsayıcı kullanıcıları için sınıra ulaşıldı. Şu anda yüz kapsayıcısı için yeni uygulamalar kabul etmiyoruz.
 
 Azure bilişsel hizmetler, resimlerde insan yüzlerini algılayan, Docker için standartlaştırılmış bir Linux kapsayıcısı sağlar. Ayrıca, Noi 'ler ve gözler, cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri gibi yüz başlıkları dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, aynı görüntüde veya farklı resimlerde iki yüzün aynı olup olmadığını, Güvenirlik puanı kullanılarak kontrol edebilir. Yüz Ayrıca, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için yüzleri bir veritabanıyla karşılaştırabilir. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüz hizmeti kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
 
@@ -36,12 +39,6 @@ Yüz hizmeti kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları k
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteme
-
-Kapsayıcıya erişim istemek için [istek formunu](https://aka.ms/cognitivegate) doldurun ve iletin. 
-
-[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
-
 ### <a name="the-host-computer"></a>Ana bilgisayar
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
@@ -52,7 +49,7 @@ Aşağıdaki tabloda, her yüz hizmeti kapsayıcısı için ayrılacak minimum v
 
 | Kapsayıcı | Minimum | Önerilen | Saniye başına işlem<br>(En düşük, en yüksek)|
 |-----------|---------|-------------|--|
-|Yüz | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |10, 20|
+|Yüz Tanıma | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |10, 20|
 
 * Her çekirdek en az 2,6 GHz veya daha hızlı olmalıdır.
 * Saniyedeki işlem sayısı (TPS).
@@ -65,7 +62,7 @@ Yüz hizmeti için kapsayıcı görüntüleri kullanılabilir.
 
 | Kapsayıcı | Depo |
 |-----------|------------|
-| Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Yüz Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -113,9 +110,9 @@ Komuta [examples](./face-resource-container-config.md#example-docker-run-command
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
-Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
+Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar. 
 
-`http://localhost:5000`Kapsayıcı API 'leri için Konağı kullanın.
+Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın.
 
 
 <!--  ## Validate container is running -->

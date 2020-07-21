@@ -3,11 +3,12 @@ title: Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan
 description: Azure Izleyici Application Insights .NET Core/. NET Framework HTTP olmayan uygulamaları izleme.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 1f9b35022e63c4c3fe671237149602f8db465466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ae146c6c010f067973c9fbae4c90bd1116d7c21
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117886"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499214"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
@@ -17,11 +18,11 @@ Yeni SDK hiçbir telemetri koleksiyonunu kendisi yapmaz. Bunun yerine, [Dependen
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-[Çalışan hizmeti için APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , her ne kadar veya nasıl çalıştırıldıklarından BAĞıMSıZ olarak http olmayan uygulamalar için idealdir. Uygulamanız çalışıyorsa ve Azure ile ağ bağlantısı varsa telemetri toplanabilir. Application Insights izleme .NET Core 'un desteklendiği her yerde desteklenir. Bu paket, yeni sunulan [.NET Core 3,0 Worker hizmetinde](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [ASP.NET Core 2.1/2.2 'de arka plan görevlerinde](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), konsol uygulamalarında (.NET Core/.NET Framework) vb. kullanılabilir.
+[Çalışan hizmeti için APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , her ne kadar veya nasıl çalıştırıldıklarından BAĞıMSıZ olarak http olmayan uygulamalar için idealdir. Uygulamanız çalışıyorsa ve Azure ile ağ bağlantısı varsa telemetri toplanabilir. Application Insights izleme .NET Core 'un desteklendiği her yerde desteklenir. Bu paket, yeni sunulan [.NET Core 3,0 Worker hizmetinde](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [ASP.NET Core 2.1/2.2 'de arka plan görevlerinde](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), konsol uygulamalarında (.NET Core/.NET Framework) vb. kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
 
 ## <a name="using-application-insights-sdk-for-worker-services"></a>Çalışan hizmetleri için Application Insights SDK 'sını kullanma
 
@@ -122,7 +123,7 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
 Alternatif olarak, aşağıdaki ortam değişkenlerinden birinde izleme anahtarını belirtin.
 `APPINSIGHTS_INSTRUMENTATIONKEY` veya `ApplicationInsights:InstrumentationKey`
 
-Örneğin, `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
+Örnek: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 VEYA`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Web işleri olarak Web Apps dağıtılan uygulamalar için izleme anahtarını belirler.
@@ -132,7 +133,7 @@ Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Web işleri olarak Web Apps dağıt
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>Barındırılan hizmetlerle arka plan görevlerini ASP.NET Core
 
-[Bu](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) belgede ASP.NET Core 2.1/2.2 uygulamasında arka plan görevlerinin nasıl oluşturulacağı açıklanmaktadır.
+[Bu](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2) belgede ASP.NET Core 2.1/2.2 uygulamasında arka plan görevlerinin nasıl oluşturulacağı açıklanmaktadır.
 
 Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) paylaşılır
 
@@ -219,7 +220,7 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
 
 ## <a name="net-corenet-framework-console-application"></a>.NET Core/. NET Framework konsol uygulaması
 
-Bu makalenin başlangıcında bahsedildiği gibi, yeni paket, düzenli bir konsol uygulamasından bile Application Insights Telemetri sağlamak için kullanılabilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , .NET Core 2,0 veya üzeri konsol uygulamaları için ve .NET Framework 4.7.2 veya üzeri için kullanılabilir.
+Bu makalenin başlangıcında bahsedildiği gibi, yeni paket, düzenli bir konsol uygulamasından bile Application Insights Telemetri sağlamak için kullanılabilir. Bu paket [`NetStandard2.0`](/dotnet/standard/net-standard) , .NET Core 2,0 veya üzeri konsol uygulamaları için ve .NET Framework 4.7.2 veya üzeri için kullanılabilir.
 
 Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) paylaşılır
 
@@ -293,13 +294,13 @@ Bu konsol uygulaması aynı varsayılanı kullanır `TelemetryConfiguration` ve 
 
 Uygulamanızı çalıştırın. Yukarıdaki yukarıdaki tüm Yukarıdaki örnek çalışanlar, bing.com ' ye her saniye bir http çağrısı yapar ve ayrıca ILogger kullanarak birkaç günlük yayar. Bu satırlar `StartOperation` `TelemetryClient` , bir işlem oluşturmak için kullanılan (Bu örnekte `RequestTelemetry` "işlem" adlı) çağrısı içinde sarmalanır. Application Insights, bu ILogger günlüklerini (varsayılan olarak uyarı veya üstü) ve bağımlılıkları toplayacak ve `RequestTelemetry` üst-alt ilişkisiyle bağıntılı olacak. Bağıntı Ayrıca çapraz işlem/ağ sınırını da işler. Örneğin, çağrı başka bir izlenen bileşene yapılmışsa, bu üst öğeyle da bağıntılı olur.
 
-Bu özel işlemi, `RequestTelemetry` tipik bir Web uygulamasındaki gelen bir Web isteğinin eşdeğeri olarak düşünülebilir. Bir Işlemi kullanmak gerekli olmasa da, [Application Insights correlation data model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) `RequestTelemetry` üst işlem olarak davrandığı ve çalışan yinelemede oluşturulan her telemetriyi aynı işleme göre mantıksal olarak kabul edilen Application Insights bağıntı veri modeliyle en iyi şekilde uyum sağlar. Bu yaklaşım ayrıca oluşturulan tüm Telemetriyi (otomatik ve el ile) aynı olacak şekilde sağlar `operation_id` . Örnekleme temel alınarak `operation_id` örnekleme algoritması, tek bir yinelemeden Telemetriyi korur ya da bırakır.
+Bu özel işlemi, `RequestTelemetry` tipik bir Web uygulamasındaki gelen bir Web isteğinin eşdeğeri olarak düşünülebilir. Bir Işlemi kullanmak gerekli olmasa da, [Application Insights correlation data model](./correlation.md) `RequestTelemetry` üst işlem olarak davrandığı ve çalışan yinelemede oluşturulan her telemetriyi aynı işleme göre mantıksal olarak kabul edilen Application Insights bağıntı veri modeliyle en iyi şekilde uyum sağlar. Bu yaklaşım ayrıca oluşturulan tüm Telemetriyi (otomatik ve el ile) aynı olacak şekilde sağlar `operation_id` . Örnekleme temel alınarak `operation_id` örnekleme algoritması, tek bir yinelemeden Telemetriyi korur ya da bırakır.
 
 Aşağıda, Application Insights tarafından otomatik olarak toplanan tüm telemetri listelenmektedir.
 
 ### <a name="live-metrics"></a>Canlı Ölçümler
 
-[Canlı ölçümler](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) , Application Insights izlemenin doğru yapılandırılıp yapılandırılmadığını hızlı bir şekilde doğrulamak için kullanılabilir. Telemetri portalda ve analizler üzerinde görünmesinin birkaç dakika sürebilirken, canlı ölçümler çalışan işlemin neredeyse gerçek zamanlı olarak CPU kullanımını gösterir. Ayrıca Istekler, bağımlılıklar, Izlemeler vb. gibi diğer telemetrileri de gösterebilir.
+[Canlı ölçümler](./live-stream.md) , Application Insights izlemenin doğru yapılandırılıp yapılandırılmadığını hızlı bir şekilde doğrulamak için kullanılabilir. Telemetri portalda ve analizler üzerinde görünmesinin birkaç dakika sürebilirken, canlı ölçümler çalışan işlemin neredeyse gerçek zamanlı olarak CPU kullanımını gösterir. Ayrıca Istekler, bağımlılıklar, Izlemeler vb. gibi diğer telemetrileri de gösterebilir.
 
 ### <a name="ilogger-logs"></a>ILogger günlükleri
 
@@ -321,7 +322,7 @@ SDK, yukarıda açıklandığı gibi telemetri otomatik olarak toplarken, çoğu
 
 `TelemetryConfiguration`Çalışan hizmeti SDK 'sı tarafından kullanılan varsayılan yapılandırma, ASP.NET veya ASP.NET Core uygulamasında kullanılan otomatik yapılandırmaya benzerdir ve bu da Telemetriyi zenginleştirmek için kullanılan TelemetryInitializers `HttpContext` .
 
-Çalışan hizmeti için Application Insights SDK 'sını, varsayılan yapılandırmayı değiştirecek şekilde özelleştirebilirsiniz. Application Insights ASP.NET Core SDK kullanıcıları ASP.NET Core yerleşik [bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)kullanılarak yapılandırma değişikliği hakkında bilgi sahibi olabilir. WorkerService SDK 'Sı benzer ilkeleri de temel alır. `ConfigureServices()`Aşağıda açıklandığı gibi, üzerinde uygun yöntemleri çağırarak, bölümünde neredeyse tüm yapılandırma değişikliklerini yapın `IServiceCollection` .
+Çalışan hizmeti için Application Insights SDK 'sını, varsayılan yapılandırmayı değiştirecek şekilde özelleştirebilirsiniz. Application Insights ASP.NET Core SDK kullanıcıları ASP.NET Core yerleşik [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection)kullanılarak yapılandırma değişikliği hakkında bilgi sahibi olabilir. WorkerService SDK 'Sı benzer ilkeleri de temel alır. `ConfigureServices()`Aşağıda açıklandığı gibi, üzerinde uygun yöntemleri çağırarak, bölümünde neredeyse tüm yapılandırma değişikliklerini yapın `IServiceCollection` .
 
 > [!NOTE]
 > Bu SDK kullanılırken, değiştirilerek yapılandırmayı değiştirme `TelemetryConfiguration.Active` desteklenmiyor ve değişiklikler yansıtılmayacak.
@@ -361,11 +362,11 @@ En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılan
 
 ### <a name="sampling"></a>Örnekleme
 
-Çalışan hizmeti için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir. Çalışan hizmeti için örnekleme yapılandırması, [ASP.NET Core uygulamalarla](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications)aynı şekilde yapılır.
+Çalışan hizmeti için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir. Çalışan hizmeti için örnekleme yapılandırması, [ASP.NET Core uygulamalarla](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)aynı şekilde yapılır.
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers ekleme
 
-Tüm telemetri ile gönderilen özellikleri tanımlamak istediğinizde [telemetri başlatıcıları](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) 'nı kullanın.
+Tüm telemetri ile gönderilen özellikleri tanımlamak istediğinizde [telemetri başlatıcıları](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) 'nı kullanın.
 
 Kapsayıcıya yeni bir Ekle `TelemetryInitializer` `DependencyInjection` ve SDK 'yi otomatik olarak öğesine ekleyin `TelemetryConfiguration` .
 
@@ -403,7 +404,7 @@ Telemetri başlatıcıları varsayılan olarak mevcuttur. Tüm veya belirli tele
 
 ### <a name="adding-telemetry-processors"></a>Telemetri işlemcisi ekleme
 
-`TelemetryConfiguration`Üzerinde genişletme yöntemi kullanarak ' ye özel telemetri işlemcileri ekleyebilirsiniz `AddApplicationInsightsTelemetryProcessor` `IServiceCollection` . Application Insights hizmetine göndereceğiniz telemetride nelerin dahil edildiğini veya dışlandığından daha doğrudan denetim sağlamak için, [Gelişmiş filtreleme senaryolarında](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer) telemetri işlemcileri kullanırsınız. Aşağıdaki örneği kullanın.
+`TelemetryConfiguration`Üzerinde genişletme yöntemi kullanarak ' ye özel telemetri işlemcileri ekleyebilirsiniz `AddApplicationInsightsTelemetryProcessor` `IServiceCollection` . Application Insights hizmetine göndereceğiniz telemetride nelerin dahil edildiğini veya dışlandığından daha doğrudan denetim sağlamak için, [Gelişmiş filtreleme senaryolarında](./api-filtering-sampling.md#itelemetryprocessor-and-itelemetryinitializer) telemetri işlemcileri kullanırsınız. Aşağıdaki örneği kullanın.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -502,7 +503,7 @@ Visual Studio IDE ekleme Şu anda yalnızca ASP.NET/ASP.NET Core uygulamaları i
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Durum İzleyicisi gibi araçları kullanarak Application Insights izlemeyi etkinleştirebilir miyim?
 
-Hayır. [Durum İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) ve [durum İzleyicisi v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) Şu anda yalnızca ASP.NET 4. x desteğine sahiptir.
+Hayır. [Durum İzleyicisi](./monitor-performance-live-website-now.md) ve [durum İzleyicisi v2](./status-monitor-v2-overview.md) Şu anda yalnızca ASP.NET 4. x desteğine sahiptir.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Uygulamamı Linux 'ta çalıştırdım, tüm özellikler destekleniyor mu?
 
@@ -531,9 +532,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.NET Core konsol uygulaması](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2,0 veya üzeri) veya .NET Framework (4.7.2 ya da üzeri) olarak yazılmış bir konsol uygulaması kullanıyorsanız bu örneği kullanın
 
-[HostedServices Ile ASP .NET Core arka plan görevleri](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Bu örneği Asp.Net Core 2.1/2.2 ' de kullanıyorsanız ve [burada](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2) resmi olmayan kılavuza göre arka plan görevleri oluşturuyorsanız kullanın
+[HostedServices Ile ASP .NET Core arka plan görevleri](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Bu örneği Asp.Net Core 2.1/2.2 ' de kullanıyorsanız ve [burada](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2) resmi olmayan kılavuza göre arka plan görevleri oluşturuyorsanız kullanın
 
-[.NET Core 3,0 çalışan hizmeti](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) [Burada](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio#worker-service-template) resmi kılavuza göre .net Core 3,0 çalışan hizmet uygulamanız varsa bu örneği kullanın
+[.NET Core 3,0 çalışan hizmeti](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) [Burada](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0#worker-service-template) resmi kılavuza göre .net Core 3,0 çalışan hizmet uygulamanız varsa bu örneği kullanın
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 
@@ -544,4 +545,4 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * Uygulamanızın performans ve kullanımının ayrıntılı bir görünümü için kendi olay ve ölçümlerinizi göndermek üzere [API 'Yi kullanın](../../azure-monitor/app/api-custom-events-metrics.md) .
 * [Otomatik olarak izlenmeyen ek bağımlılıkları izleyin](../../azure-monitor/app/auto-collect-dependencies.md).
 * [Otomatik olarak toplanan Telemetriyi zenginleştirin veya filtreleyin](../../azure-monitor/app/api-filtering-sampling.md).
-* [ASP.NET Core bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
+* [ASP.NET Core bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection).

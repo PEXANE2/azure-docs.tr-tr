@@ -4,22 +4,18 @@ description: Farklı kopya türlerini ve kullanımını açıklar ve bir StorSim
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496154"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure portalında StorSimple Cihaz Yöneticisi'ni kullanarak bir birimi kopyalama
 
@@ -31,7 +27,7 @@ StorSimple Aygıt Yöneticisi hizmeti **Yedekleme kataloğu** dikey penceresi, e
 
  ![Yedekleme kümesi listesi](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
-## <a name="considerations-for-cloning-a-volume"></a>Birim kopyalama konuları
+## <a name="considerations-for-cloning-a-volume"></a>Birimi kopyalama konusunda dikkat edilmesi gerekenler
 
 Bir birim kopyalanırken aşağıdaki bilgileri göz önünde bulundurun.
 
@@ -51,7 +47,7 @@ Bir birim kopyalanırken aşağıdaki bilgileri göz önünde bulundurun.
 
 Aynı cihazda, başka bir cihazda, hatta yerel veya bulut anlık görüntüsü kullanarak bir bulut gerecinde bir kopya oluşturabilirsiniz.
 
-Aşağıdaki yordamda, yedekleme kataloğundan bir kopyanın nasıl oluşturulacağı açıklanmaktadır.  Kopyalama işlemini başlatmak için alternatif bir yöntem **birimler**'e gidip bir birim seçin, sonra bağlam menüsünü çağırmak ve **Kopyala**' yı seçmek için sağ tıklayın.
+Aşağıdaki yordamda, yedekleme kataloğundan bir kopyanın nasıl oluşturulacağı açıklanmaktadır.  
 
 Yedekleme kataloğundan biriminizin bir kopyasını oluşturmak için aşağıdaki adımları gerçekleştirin.
 

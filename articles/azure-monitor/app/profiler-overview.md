@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671656"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499401"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights ile Azure 'da üretim uygulamaları profilini yapın
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Uygulamanız için Application Insights Profiler etkinleştirme
@@ -29,7 +30,7 @@ Profil oluşturucuyu etkinleştirdiyseniz, ancak izlemeleri görmüyorsanız, [s
 
 ## <a name="view-profiler-data"></a>Profil oluşturucu verilerini görüntüle
 
-İzlemeleri karşıya yüklemek için profil oluşturucunun, uygulamanızın istekleri etkin bir şekilde işlemesi gerekir. Deneme yapıyorsanız, [Application Insights performans testi](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)kullanarak Web uygulamanıza istek oluşturabilirsiniz. Profil oluşturucuyu yeni etkinleştirdiyseniz, kısa bir yük testi çalıştırabilirsiniz. Yük testi çalışırken, profil [ **Oluşturucu ayarları** bölmesinde](profiler-settings.md) **Şimdi profil** düğmesini seçin. Profil Oluşturucu çalışırken, bir saatte bir kez ve iki dakikalık bir süre boyunca rastgele bir profil oluşturulur. Uygulamanız sürekli bir istek akışını işliyorsa, profil oluşturucu karşıya yüklemeleri her saat için izler.
+İzlemeleri karşıya yüklemek için profil oluşturucunun, uygulamanızın istekleri etkin bir şekilde işlemesi gerekir. Deneme yapıyorsanız, [Application Insights performans testi](/vsts/load-test/app-service-web-app-performance-test)kullanarak Web uygulamanıza istek oluşturabilirsiniz. Profil oluşturucuyu yeni etkinleştirdiyseniz, kısa bir yük testi çalıştırabilirsiniz. Yük testi çalışırken, profil [ **Oluşturucu ayarları** bölmesinde](profiler-settings.md) **Şimdi profil** düğmesini seçin. Profil Oluşturucu çalışırken, bir saatte bir kez ve iki dakikalık bir süre boyunca rastgele bir profil oluşturulur. Uygulamanız sürekli bir istek akışını işliyorsa, profil oluşturucu karşıya yüklemeleri her saat için izler.
 
 Uygulamanız bazı trafiği aldıktan sonra ve profil oluşturucunun izlemeleri karşıya yükleme zamanı varsa, görüntülenecek izlemelere sahip olmanız gerekir. Bu işlem, 5 ila 10 dakika sürebilir. İzlemeleri görüntülemek için **performans** bölmesinde **eylemleri al**' ı seçin ve ardından **Profil Oluşturucu izlemeleri** düğmesini seçin.
 

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536463"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496188"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Dosyaları ölçeklenebilirlik ve performans hedefleri
 
@@ -73,7 +74,7 @@ Azure Dosya Eşitleme için performans iki aşamada kritik öneme sahiptir:
 
 Bir aşamanın her biri için dağıtımınızı planlamaya yardımcı olmak üzere, bir sistem üzerinde yapılandırmaya sahip iç test sırasında gözlemlenen sonuçlar aşağıda verilmiştir
 
-| Sistem yapılandırması |  |
+| Sistem yapılandırması | Ayrıntılar |
 |-|-|
 | CPU | 64 MiB L3 önbellek ile 64 sanal çekirdek |
 | Bellek | 128 GiB |
@@ -81,7 +82,7 @@ Bir aşamanın her biri için dağıtımınızı planlamaya yardımcı olmak üz
 | Ağ | 1 Gbps ağ |
 | İş yükü | Genel Amaçlı dosya sunucusu|
 
-| İlk bir kerelik sağlama  |  |
+| İlk bir kerelik sağlama  | Ayrıntılar |
 |-|-|
 | Nesne sayısı | 25.000.000 nesneleri |
 | Veri kümesi boyutu| ~ 4,7 TiB |
@@ -91,7 +92,7 @@ Bir aşamanın her biri için dağıtımınızı planlamaya yardımcı olmak üz
 
 * Yeni bir sunucu uç noktası oluşturulduğunda, Azure Dosya Eşitleme Aracısı dosya içeriğini indirmez. Önce tam ad alanını eşitler ve sonra, dosyaları tamamen veya bulut katmanlaması etkinse, sunucu uç noktasında ayarlanan bulut katmanlaması ilkesi için arka plan geri yüklemeyi tetikler.
 
-| Devam eden eşitleme  |   |
+| Devam eden eşitleme  | Ayrıntılar  |
 |-|--|
 | Eşitlenen nesne sayısı| 125.000 nesneleri (%1 karmaşıklık) |
 | Veri kümesi boyutu| 50 GiB |
@@ -111,5 +112,5 @@ Dağıtımınız için genel bir kılavuz olarak birkaç şeyi göz önünde bul
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Dosyaları dağıtımı planlama](storage-files-planning.md)
-- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
+- [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)

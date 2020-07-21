@@ -6,12 +6,12 @@ ms.author: mbullwin
 author: mrbullwinkle
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: c903855dd7a550cfeef845d9c176e7ce7806a0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90743a213092aacfa10139c12f47bc11faf0d86d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947089"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498721"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>Çalışma kitabı tabanlı Öngörüler sorunlarını giderme
 
@@ -72,4 +72,4 @@ Kaydettiğiniz çalışma kitabınızdaki bir adımın adını değiştirmek iç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma kitaplarının destekleyecek şekilde tasarlanan senaryolar hakkında daha fazla bilgi edinin, var olan raporların nasıl yazıldığını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)konusunu gözden geçirin.
+Çalışma kitaplarının destekleyecek şekilde tasarlanan senaryolar hakkında daha fazla bilgi edinin, var olan raporların nasıl yazıldığını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu gözden geçirin.

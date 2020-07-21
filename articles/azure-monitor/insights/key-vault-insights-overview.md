@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945469"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498972"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme (Önizleme)
 Key Vault için Azure Izleyici (Önizleme), Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
@@ -24,7 +24,7 @@ Deneyimle karşılaşmadan önce, bilgileri nasıl sunduklarını ve görselleş
 -   Ayrıntılı analizler gerçekleştirmek için belirli bir anahtar kasasının **detaya gitme analizini** yapın.
 -    **Hangi ölçümleri** görmek istediğinizi değiştirmek, sınırlarınız ile hizalı eşikleri değiştirmek veya ayarlamak ve kendi çalışma kitabınızı kaydetmek için özelleştirebilirsiniz. Çalışma kitabındaki grafikler Azure panolarına sabitlenebilir.
 
-Key Vault için Azure Izleyici, genel bir izleme çözümü sağlamak için hem günlükleri hem de ölçümleri birleştirir. Tüm kullanıcılar ölçüm tabanlı izleme verilerine erişebilir, ancak günlük tabanlı görselleştirmelerin eklenmesi kullanıcıların [Azure Key Vault günlüğünü etkinleştirmesini](https://docs.microsoft.com/azure/key-vault/key-vault-logging)gerektirebilir.
+Key Vault için Azure Izleyici, genel bir izleme çözümü sağlamak için hem günlükleri hem de ölçümleri birleştirir. Tüm kullanıcılar ölçüm tabanlı izleme verilerine erişebilir, ancak günlük tabanlı görselleştirmelerin eklenmesi kullanıcıların [Azure Key Vault günlüğünü etkinleştirmesini](../../key-vault/general/logging.md)gerektirebilir.
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>Anahtar kasalarınızı izleme için yapılandırma
 
@@ -39,7 +39,7 @@ Key Vault için Azure Izleyici, genel bir izleme çözümü sağlamak için hem 
 
 3. Tanılama ayarları kaydedildikten sonra, Key Vault öngörülerinin altındaki tüm günlük tabanlı grafikleri ve görselleştirmeleri görüntüleyebileceksiniz. Günlüklerin doldurulmasının başlaması için birkaç dakika sürebileceğini lütfen unutmayın.
 
-4. Key Vault hizmetiniz için tanılama günlüklerini etkinleştirme hakkında daha fazla yardım için, [tam kılavuzu](https://docs.microsoft.com/azure/key-vault/key-vault-logging)okuyun.
+4. Key Vault hizmetiniz için tanılama günlüklerini etkinleştirme hakkında daha fazla yardım için, [tam kılavuzu](../../key-vault/general/logging.md)okuyun.
 
 ## <a name="view-from-azure-monitor"></a>Azure Izleyici 'den görüntüle
 
@@ -75,7 +75,7 @@ Sayfanın üst kısmında bulunan **hataların** yanı sıra arızalar sekmesi a
 
 Çalışma kitabı başarıları (2xx durum kodları), kimlik doğrulama hatalarını (401/403 durum kodları), daraltma (429 durum kodları) ve diğer hataları (4xx durum kodları) görüntüler.
 
-Durum kodlarının her birinin neyi temsil ettiğini daha iyi anlamak için, [Azure Key Vault durum ve yanıt kodlarıyla](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses)ilgili belgelerde okumanız önerilir.
+Durum kodlarının her birinin neyi temsil ettiğini daha iyi anlamak için, [Azure Key Vault durum ve yanıt kodlarıyla](../../key-vault/general/authentication-requests-and-responses.md)ilgili belgelerde okumanız önerilir.
 
 ## <a name="operations--latency-workbook"></a>İşlemler & gecikme çalışma kitabı
 
@@ -120,7 +120,7 @@ Işlemler çalışma kitabı, kullanıcıların, en üst düzey kutucuklar kulla
 Kullanıcılar, üst tablodaki belirli işlem türlerine göre görünümleri Ayrıca, kullanıcıların bir açılan bağlam bölmesinde tam işlem ayrıntılarını görüntüleyebileceği, daha düşük tabloyu dinamik olarak güncelleştiren şekilde de kapsamını belirleyebilir.
 
 >[!NOTE]
-> Kullanıcıların bu çalışma kitabını görüntülemek için tanılama ayarlarının etkin olması gerektiğini unutmayın. Tanılama ayarını etkinleştirme hakkında daha fazla bilgi edinmek için [Azure Key Vault günlüğe kaydetme](https://docs.microsoft.com/azure/key-vault/general/logging)hakkında daha fazla bilgi edinin.
+> Kullanıcıların bu çalışma kitabını görüntülemek için tanılama ayarlarının etkin olması gerektiğini unutmayın. Tanılama ayarını etkinleştirme hakkında daha fazla bilgi edinmek için [Azure Key Vault günlüğe kaydetme](../../key-vault/general/logging.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="pin-and-export"></a>PIN ve dışarı aktarma
 
@@ -164,7 +164,7 @@ Bu bölüm, Key Vault için Azure Izleyicisi 'ni (Önizleme) kullanırken karş�
 
 ### <a name="resolving-performance-issues-or-failures"></a>Performans sorunlarını veya başarısızlıklarını çözme
 
-Key Vault (Önizleme) için Azure Izleyici ile belirttiğiniz anahtar kasasıyla ilgili sorunları gidermeye yardımcı olmak için [Azure Key Vault belgelerine](https://docs.microsoft.com/azure/key-vault/)bakın.
+Key Vault (Önizleme) için Azure Izleyici ile belirttiğiniz anahtar kasasıyla ilgili sorunları gidermeye yardımcı olmak için [Azure Key Vault belgelerine](../../key-vault/index.yml)bakın.
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Neden yalnızca 200 anahtar kasalarını görebilirim?
 
@@ -208,4 +208,4 @@ Mevcut çalışma kitabını düzenleme modunun kullanımı ile düzenleyebilir 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma kitaplarının desteklemek için tasarlandıkları senaryoları, mevcut raporların yeni nasıl yazılacağını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)konusunu gözden geçirin.
+Çalışma kitaplarının desteklemek için tasarlandıkları senaryoları, mevcut raporların yeni nasıl yazılacağını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu gözden geçirin.

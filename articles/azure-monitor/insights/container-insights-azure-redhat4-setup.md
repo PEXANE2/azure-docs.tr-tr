@@ -3,11 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yap
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 veya sonraki sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi için izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 49097d96ecf58d7c5bf7d1a60ff01fc7182587c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b5644c13ac560910703454c4052e223f958014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801487"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499180"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yapılandırma
 
@@ -19,7 +20,7 @@ Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motor
 
 Bu makalede açıklanan desteklenen yöntemleri kullanarak bir veya daha fazla mevcut Azure Red Hat OpenShift v4. x dağıtımına yönelik kapsayıcılar için Azure Izleyicisini etkinleştirebilirsiniz.
 
-Var olan bir küme için [Azure CLI 'da bu Bash betiğini](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)çalıştırın.
+Var olan bir küme için [Azure CLI 'da bu Bash betiğini](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)çalıştırın.
 
 ## <a name="supported-and-unsupported-features"></a>Desteklenen ve desteklenmeyen özellikler
 
@@ -28,7 +29,7 @@ Kapsayıcılar için Azure Izleyici, Azure Red Hat OpenShift v4. x ' i [kapsayı
 - Canlı veriler (Önizleme)
 - Küme düğümlerinden ve yığınlardan [ölçümler toplama](container-insights-update-metrics.md) ve bunları Azure izleyici ölçüm veritabanında depolama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure CLı sürüm 2.0.72 veya üzeri  
 
@@ -171,4 +172,4 @@ Kapsayıcılar için Azure Izleyici 'de çok küme görünümü, **izlenmeyen k�
 
 - Kümelediğiniz Prometheus ölçümlerini hurdaya almak ve analiz etmek için bkz. [Prometheus ölçümleri koruması](container-insights-prometheus-integration.md)'nı inceleyin.
 
-- Kapsayıcılar için Azure Izleyici 'yi kullanarak kümenizi izlemeyi durdurmayı öğrenmek için bkz. [Azure Red Hat OpenShift kümenizi izlemeyi durdurma](container-insights-optout-openshift.md).
+- Kapsayıcılar için Azure Izleyici 'yi kullanarak kümenizi izlemeyi durdurmayı öğrenmek için bkz. [Azure Red Hat OpenShift kümenizi izlemeyi durdurma](./container-insights-optout-openshift-v3.md).

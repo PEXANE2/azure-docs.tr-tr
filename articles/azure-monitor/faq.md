@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499231"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -29,7 +30,7 @@ Eylül 2018 ' de, Microsoft birleştirilmiş Azure Izleyici, Log Analytics ve Ap
 Ölçüm ve etkinlik günlüklerinin toplanması gibi otomatik olarak etkinleştirilen Azure Izleyici özellikleri ücretsiz olarak sunulmaktadır. Günlük sorguları ve uyarı gibi diğer özelliklerle ilişkili bir maliyet vardır. Ayrıntılı fiyatlandırma bilgileri için bkz. [Azure izleyici fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/) .
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Azure Izleyiciyi etkinleştirmek Nasıl yaparım? mı?
-Azure Izleyici, yeni bir Azure aboneliği oluşturduğunuz anda ve [etkinlik günlüğü](platform/activity-logs-overview.md) ile Platform [ölçümleri](platform/data-platform-metrics.md) otomatik olarak toplandığında etkindir. Azure kaynaklarınızın çalışması hakkında daha ayrıntılı bilgi toplamak için [Tanılama ayarları](platform/diagnostic-settings.md) oluşturun ve belirli hizmetler için toplanan veriler hakkında ek analizler sağlamak üzere [izleme çözümleri](insights/solutions.md) ve [Öngörüler](insights/insights-overview.md) ekleyin. 
+Azure Izleyici, yeni bir Azure aboneliği oluşturduğunuz anda ve [etkinlik günlüğü](./platform/platform-logs-overview.md) ile Platform [ölçümleri](platform/data-platform-metrics.md) otomatik olarak toplandığında etkindir. Azure kaynaklarınızın çalışması hakkında daha ayrıntılı bilgi toplamak için [Tanılama ayarları](platform/diagnostic-settings.md) oluşturun ve belirli hizmetler için toplanan veriler hakkında ek analizler sağlamak üzere [izleme çözümleri](insights/solutions.md) ve [Öngörüler](insights/insights-overview.md) ekleyin. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Azure Izleyici erişimi mi Nasıl yaparım??
 Tüm Azure Izleyici özelliklerine ve verilerine, Azure portal 'daki **izleyici** menüsünden erişin. Farklı Azure hizmetleri menüsünün **izleme** bölümü, belirli bir kaynağa filtrelenen verilerle aynı araçlara erişim sağlar. Azure Izleyici verilerine, CLı, PowerShell ve bir REST API kullanan çeşitli senaryolar için de erişilebilir.
@@ -314,7 +315,7 @@ Evet, şu sunucuda yazabilirsiniz:
 
 * Tarayıcı telemetrisi: gönderenin IP adresini topladık.
 * Sunucu telemetrisi: Application Insights modülü istemci IP adresini toplar. Ayarlanırsa, toplanmaz `X-Forwarded-For` .
-* IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)bakın.
+* IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](./app/ip-collection.md)bakın.
 
 
 Öğesini, `ClientIpHeaderTelemetryInitializer` IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN ile taşınır `X-Originating-IP` . [Daha fazla bilgi edinin](https://apmtips.com/posts/2016-07-05-client-ip-address/).
@@ -327,7 +328,7 @@ Evet, şu sunucuda yazabilirsiniz:
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Bir sunucu veya cihaz Azure bağlantısı kesildiğinde Application Insights telemetrisine ne olur?
 
-Web SDK 'Sı dahil olmak üzere tüm SDK 'lerimiz "güvenilir aktarım" veya "güçlü aktarım" içerir. Sunucu veya cihaz Azure ile bağlantıyı kaybettiğinde, telemetri [yerel olarak dosya sistemi](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (sunucu SDK 'ları) veya HTML5 oturum depolama (Web SDK) üzerinde depolanır. SDK, bu Telemetriyi düzenli aralıklarla göndermek için alma hizmeti, "eski" (Günlükler için 48 saat, ölçümler için 30 dakika) olarak kabul eder. Eski telemetri atılacak. Örneğin, yerel depolama dolduğunda yeniden deneme gerçekleşmeyecektir.
+Web SDK 'Sı dahil olmak üzere tüm SDK 'lerimiz "güvenilir aktarım" veya "güçlü aktarım" içerir. Sunucu veya cihaz Azure ile bağlantıyı kaybettiğinde, telemetri [yerel olarak dosya sistemi](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) (sunucu SDK 'ları) veya HTML5 oturum depolama (Web SDK) üzerinde depolanır. SDK, bu Telemetriyi düzenli aralıklarla göndermek için alma hizmeti, "eski" (Günlükler için 48 saat, ölçümler için 30 dakika) olarak kabul eder. Eski telemetri atılacak. Örneğin, yerel depolama dolduğunda yeniden deneme gerçekleşmeyecektir.
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Kişisel veriler telemetriye gönderilebilir mi?
@@ -409,7 +410,7 @@ Azure Kaynak İzleyicisi kullanarak [PowerShell betikleri yazabilirsiniz](app/po
 
 #### <a name="querying-the-telemetry"></a>Telemetriyi sorgulama
 
-[Analiz](app/analytics.md) sorguları çalıştırmak için [REST API](https://dev.applicationinsights.io/) kullanın.
+[Analiz](./log-query/log-query-overview.md) sorguları çalıştırmak için [REST API](https://dev.applicationinsights.io/) kullanın.
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>Bir olayda nasıl uyarı ayarlayabilirim?
 
@@ -476,7 +477,7 @@ Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. 
 #### <a name="proxy-passthrough"></a>Proxy geçişi
 
 Proxy geçişi, bir makine düzeyi veya uygulama düzeyi proxy yapılandırılarak elde edilebilir.
-Daha fazla bilgi için bkz. [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)üzerinde DotNet makalesi.
+Daha fazla bilgi için bkz. [defaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)üzerinde DotNet makalesi.
  
  Örnek Web.config:
  ```xml
@@ -734,7 +735,7 @@ Bu koşulun altında, VM 'yi açıp, zaten VM 'ye yüklendikten sonra bile sol b
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorunuz burada yanıtlanmazsa, ek sorular ve yanıtlar için aşağıdaki forumlara başvurabilirsiniz.
 
-- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
-- [Uygulama Bilgileri](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Uygulama Bilgileri](/answers/topics/azure-monitor.html)
 
 Azure Izleyici hakkında genel geri bildirimde bulunmak için lütfen [geri bildirim forumunu](https://feedback.azure.com/forums/34192--general-feedback)ziyaret edin.

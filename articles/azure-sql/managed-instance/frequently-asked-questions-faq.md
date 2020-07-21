@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498466"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL yönetilen örnek hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,11 +66,11 @@ Hayır, ve şu anda SQL yönetilen örneğindeki veritabanlarının sayısını 
 **Sanal çekirdek oranına veya daha fazla CPU 'ya daha büyük RAM gibi belirli donanım gereksinimleriniz varsa nereye geçiş yapabilirim?**
 [Azure sanal makinelerinde](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) veya [Azure SQL veritabanı](../database/sql-database-paas-overview.md) belleği/CPU 'ya iyileştirilmiş SQL Server geçiş yapmayı düşünebilirsiniz.
 
-## <a name="known-issues--bugs"></a>Bilinen sorunlar & hataları
+## <a name="known-issues-and-defects"></a>Bilinen sorunlar ve hatalar
 
-**Bilinen sorunları ve hataları nerede bulabilirim?**
+**Bilinen sorunları ve kusurları nerede bulabilirim?**
 
-Hatalar ve bilinen sorunlar için bkz. [bilinen sorunlar](../database/doc-changes-updates-release-notes.md#known-issues).
+Ürün hataları ve bilinen sorunlar için bkz. [bilinen sorunlar](../database/doc-changes-updates-release-notes.md#known-issues).
 
 ## <a name="new-features"></a>Yeni özellikler
 
@@ -127,7 +127,7 @@ Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin *. contoso
 **Azure SQL veritabanı tekil veya elastik havuzdan SQL yönetilen örneği 'ne nasıl geçiş yapabilirim?**
 
 Yönetilen örnek, Azure SQL veritabanı 'nın diğer dağıtım seçenekleri olarak işlem ve depolama boyutuna göre aynı performans düzeylerini sunmaktadır. Tek bir örnekteki verileri birleştirmek istiyorsanız veya yalnızca yönetilen örnekte yalnızca desteklenen bir özelliğe ihtiyacınız varsa, dışarı aktarma/içeri aktarma (BACPAC) işlevini kullanarak verilerinizi geçirebilirsiniz. SQL yönetilen örneğine SQL veritabanı geçişi için göz önünde bulundurmanız gereken diğer yollar şunlardır: 
-- [Dış veri kaynağı]() kullanma
+- [Dış veri kaynağı](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210) kullanma
 - [SqlPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) kullanma
 - [Bcp](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) kullanma
 
@@ -349,21 +349,6 @@ Herhangi bir veri savunma riskini azaltmak için müşterilerin bir dizi güvenl
 - [SQL denetimini](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)açın ve uyarı mekanizmalarıyla tümleştirin.
 - [Tehdit algılamayı](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) [Gelişmiş VERI güvenliği (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) paketinden açın.
 
-
-## <a name="cost-saving-use-cases"></a>Maliyet tasarrufu kullanım örnekleri
-
-**SQL yönetilen örneği ile kullanım durumlarını ve sonuçta elde edilen maliyet tasarrufunu nereden bulabilirim?**
-
-SQL yönetilen örnek olay incelemeleri:
-
-- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
-- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
-
-Azure SQL yönetilen örneği dağıtmayla ilgili avantajları, maliyetleri ve riskleri daha iyi anlamak için, [Microsoft Azure SQL veritabanı yönetilen örneğin toplam ekonomik etkisi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)de vardır.
-
-
 ## <a name="dns"></a>DNS
 
 **SQL yönetilen örneği için özel bir DNS yapılandırabilir miyim?**
@@ -467,6 +452,19 @@ Azure Portal aracılığıyla yedekleme depolama maliyetini izleyebilirsiniz. Y�
 **Yönetilen örnekteki yedekleme depolama maliyetlerimi nasıl iyileştirebilirim?**
 
 Yedekleme depolama maliyetlerinizi iyileştirmek için bkz. [SQL yönetilen örneği üzerinde ince yedekleme ayarları](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935).
+
+## <a name="cost-saving-use-cases"></a>Maliyet tasarrufu kullanım örnekleri
+
+**SQL yönetilen örneği ile kullanım durumlarını ve sonuçta elde edilen maliyet tasarrufunu nereden bulabilirim?**
+
+SQL yönetilen örnek olay incelemeleri:
+
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+Azure SQL yönetilen örneği dağıtmayla ilgili avantajları, maliyetleri ve riskleri daha iyi anlamak için, [Microsoft Azure SQL veritabanı yönetilen örneğin toplam ekonomik etkisi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)de vardır.
 
 ## <a name="password-policy"></a>Parola ilkesi 
 

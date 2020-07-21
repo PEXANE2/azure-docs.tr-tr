@@ -1,18 +1,18 @@
 ---
-title: Hava durumu ortağı tümleştirmesi
+title: Hava durumu iş ortağı tümleştirmesi
 description: Bu makalede, hava durumu sağlayıcısı 'nın Farmtempts ile nasıl tümleştirileceği açıklanmaktadır
 author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: d4ceb25b9b81c831ed1b285a875742ebfaa6d24f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232653"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497004"
 ---
-# <a name="weather-partner-integration"></a>Hava durumu ortağı tümleştirmesi
+# <a name="weather-partner-integration"></a>Hava durumu iş ortağı tümleştirmesi
 
 Bu makalede, veri sağlayıcılarının API 'Lerinden yararlanarak ve bu verileri farmker 'Lara ekleyerek Farmtempts ile tümleşecek Azure Farmker **Connector** Docker bileşeni hakkında bilgi sağlanır. Veriler Farmkörler 'de kullanılabilir olduktan sonra, veri Fusion ve Machine Learning/yapay zeka modelleri oluşturmak için kullanılabilir.
 
@@ -36,10 +36,10 @@ Yukarıdaki Docker bilgilerini kullanarak müşteri, bir hava durumu ortağını
 
 Farmtts API 'Leri Swagger teknik belgelerini içerir. Tüm API 'Ler ve bunların karşılık gelen istekleri veya yanıtları hakkında bilgi için bkz. [Farmtts Swagger](https://aka.ms/farmbeatsswagger). 
 
-Farmtts yüklediyseniz, şu adreste bulunan Farmtts Swagger verilerinize erişebilirsiniz:[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger)
+Farmtts yüklediyseniz, şu adreste bulunan Farmtts Swagger verilerinize erişebilirsiniz:`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 "-Api" nin, Farmtts Web sitenizin adının sonuna ekleneceğini unutmayın.
-API uç noktası şu şekilde olacaktır:[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net)
+API uç noktası şu şekilde olacaktır:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>Datahub kitaplığı
 
@@ -134,10 +134,10 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
 
 ### <a name="details-of-the-objects"></a>Nesnelerin ayrıntıları
 
-  **Dalgalı veri modeli** |  |
+  Dalgalı veri modeli | Açıklama |
   --- | ---
   Ad  | Hava durumu veri modelinin adı |
-  Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
+  Description  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Veri sağlayıcısı tarafından tanımlanan ek özellikler. |
   Hava ölçüleri > adı  | Hava durumu ölçüsünün adı. Örneğin humidity_max |
   Dalgalı ölçüler > veri türü  | Double veya Enum. Enum ise, measureEnumDefinition gerekir |
@@ -147,8 +147,8 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
   > AggregationType  | Hiçbiri, ortalama, maksimum, en az, Standardsapma, toplam, toplam
   Hava ölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Hava ölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın. |
-  **JobType** |  |
-  Ad  | Işin adı; örneğin Get_Daily_Forecast; müşterinin Hava durumu verilerini almak için çalışacağı iş|
+  **JobType** | **Açıklama** |
+  Name  | Işin adı; örneğin Get_Daily_Forecast; müşterinin Hava durumu verilerini almak için çalışacağı iş|
   pipelineDetails > parametreler > adı  | parametrenin adı |
   pipelineDetails > parametreler > tür | String, INT, float, bool, Array seçeneklerinden biri |
   pipelineDetails > parametreler > IsRequired | Boolean gerekli parametre ise true, değilse false; Varsayılan değer true 'dur |
@@ -156,11 +156,11 @@ Bu bileşen, bir Farmher Kullanıcı, önyükleme işleminin bir parçası olara
   pipelineDetails > parametreler > açıklama | Parametrenin açıklaması |
   Özellikler  | Üreticiden ek özellikler.
   > **Programruncommand** özellikleri | Docker Run komutu-bu komut, müşteri Hava durumu işini çalıştırdığında yürütülür. |
-  **Dalgalı bir Datalocation** |  |
+  **Dalgalı bir Datalocation** | **Açıklama** |
   Dalgalı veri ModelId  | Önyükleme sırasında oluşturulan karşılık gelen dalgalı veri modelinin KIMLIĞI|
   location  | Enlem, boylam ve yükseltmeyi temsil eder |
-  Ad | Nesnenin adı |
-  Açıklama | Açıklama |
+  Name | Nesnenin adı |
+  Description | Description |
   farmId | **isteğe bağlı** İş parametresinin bir parçası olarak müşteri tarafından sunulan grubun KIMLIĞI |
   Özellikler  | Üreticiden ek özellikler.
 

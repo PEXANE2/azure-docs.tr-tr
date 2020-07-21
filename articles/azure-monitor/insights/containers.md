@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14fa6859a16dc173e75091983abee717bf813220
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499031"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Izleyici 'de kapsayıcı Izleme çözümü
 
@@ -45,7 +45,7 @@ Başlamadan önce, önkoşulları karşıladığınızdan emin olmak için aşa�
 
 Aşağıdaki tabloda, Azure Izleyici ile kapsayıcı envanteri, performansı ve günlükleri için Docker düzenleme ve işletim sistemi izleme desteği özetlenmektedir.   
 
-| | ACS | Linux | Windows | Kapsayıcı<br>Sayım | Görüntü<br>Sayım | Node<br>Sayım | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Günlük | Kapsayıcı<br>Günlük |
+|Docker düzenleme | ACS | Linux | Windows | Kapsayıcı<br>Envanter | Görüntü<br>Envanter | Düğüm<br>Envanter | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Log | Kapsayıcı<br>Log |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -105,11 +105,11 @@ Aşağıdaki tabloda, Azure Izleyici ile kapsayıcı envanteri, performansı ve 
        - [Kubernetes için Log Analytics Linux Aracısı yapılandırma](#configure-a-log-analytics-linux-agent-for-kubernetes)konusunu gözden geçirin.
        - [Kubernetes için Log Analytics Windows Aracısı yapılandırma](#configure-a-log-analytics-windows-agent-for-kubernetes)konusunu gözden geçirin.
        - Linux Kubernetes 'te Log Analytics Aracısı dağıtmak için Held kullanın.
-     - Bir Azure Container Service DC/OS kümeniz varsa, [Azure izleyici ile Azure CONTAINER SERVICE DC/OS kümesini izleme](../../container-service/dcos-swarm/container-service-monitoring-oms.md)hakkında daha fazla bilgi edinin.
+     - Bir Azure Container Service DC/OS kümeniz varsa, [Azure izleyici ile Azure CONTAINER SERVICE DC/OS kümesini izleme](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms)hakkında daha fazla bilgi edinin.
      - Docker Sısınma modu ortamınız varsa, Docker Sısınma için Log Analytics Aracısı yapılandırma hakkında daha fazla bilgi edinin.
      - Bir Service Fabric kümeniz varsa, [Azure izleyici ile kapsayıcıları izlemek](../../service-fabric/service-fabric-diagnostics-oms-containers.md)için daha fazla bilgi edinin.
 
-Windows çalıştıran bilgisayarlarda Docker altyapılarını yüklemek ve yapılandırmak hakkında daha fazla bilgi için [Windows makalesindeki Docker altyapısını](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) gözden geçirin.
+Windows çalıştıran bilgisayarlarda Docker altyapılarını yüklemek ve yapılandırmak hakkında daha fazla bilgi için [Windows makalesindeki Docker altyapısını](/virtualization/windowscontainers/manage-docker/configure-docker-daemon) gözden geçirin.
 
 > [!IMPORTANT]
 > Kapsayıcı konaklarınıza [Linux için Log Analytics aracısını](../../azure-monitor/learn/quick-collect-linux-computer.md) yüklemeden **önce** Docker çalışıyor olmalıdır. Docker 'ı yüklemeden önce aracıyı zaten yüklediyseniz, Linux için Log Analytics aracısını yeniden yüklemeniz gerekir. Docker hakkında daha fazla bilgi için bkz. [Docker Web sitesi](https://www.docker.com).
@@ -505,7 +505,7 @@ dockerd --register-service -H npipe:// -H 0.0.0.0:2375
 Start-Service docker
 ```
 
-Windows kapsayıcılarıyla kullanılan Docker Daemon yapılandırması hakkında daha fazla bilgi için bkz. [Windows 'Da Docker motoru](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Windows kapsayıcılarıyla kullanılan Docker Daemon yapılandırması hakkında daha fazla bilgi için bkz. [Windows 'Da Docker motoru](/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 #### <a name="install-windows-agents"></a>Windows aracılarını yükler
 

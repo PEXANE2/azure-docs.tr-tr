@@ -1,17 +1,17 @@
 ---
-title: Azure HPC önbellek örneği oluşturma
-description: Azure HPC önbellek örneği oluşturma
+title: Azure HPC önbelleği toplanmış ad alanını kullanma
+description: Azure HPC önbelleğiniz için sanal ad alanını planlayın
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045816"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497038"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlama
 
@@ -30,7 +30,7 @@ Azure HPC Cache bu sanal dosya sistemini yönettiği için, istemciye yönelik y
 Şablon verileri bir veri merkezinde depolanır ve bu iş için gereken bilgiler şu alt dizinlerde saklanır:
 
 * */Goldline/Templates/acme2017/sku798*
-* */Goldline/Templates/acme2017/sku980* 
+* */Goldline/Templates/acme2017/sku980*
 
 Veri merkezi depolama sistemi bu dışarı aktarmaları kullanıma sunar:
 
@@ -52,10 +52,10 @@ Bir NFS depolama hedefi, her biri benzersiz bir dışarı aktarma yoluna başvur
 
 NFS kaynak yolları aynı dışarı aktarmanın alt dizinleri olduğundan, aynı depolama hedefinden birden çok ad alanı yolu tanımlamanız gerekir.
 
-| Depolama hedef konak adı  | NFS dışarı aktarma yolu      | Alt dizin yolu | Ad alanı yolu    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku798   | /Templates/sku798 |
-| *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku980   | /Templates/sku980 |
+| Depolama hedef konak adı  | NFS dışarı aktarma yolu     | Alt dizin yolu | Ad alanı yolu    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *IP adresi veya ana bilgisayar adı* | /Goldline/Templates | acme2017/sku798   | /Templates/sku798 |
+| *IP adresi veya ana bilgisayar adı* | /Goldline/Templates | acme2017/sku980   | /Templates/sku980 |
 
 Bir istemci uygulaması, önbelleği bağlayabilir ve toplanmış ad alanı dosya yollarına, ve ' ye kolayca erişebilir ``/source`` ``/templates/sku798`` ``/templates/sku980`` .
 

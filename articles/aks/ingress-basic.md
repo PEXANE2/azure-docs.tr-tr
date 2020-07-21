@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesine temel bir NGıNX giriş de
 services: container-service
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: 6bb136b216b3d86a5aa3a7e7e609cb16b7d95db4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bb7ac1d76e93a95fedc1dfdbfd67d2b057db60e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251799"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499826"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti 'nde (AKS) giriş denetleyicisi oluşturma
 
@@ -169,7 +169,8 @@ Adlı bir dosya oluşturun `hello-world-ingress.yaml` ve aşağıdaki örnekteki
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: hello-world-ingress  
+  name: hello-world-ingress
+  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"

@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499248"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Azure Application Insights kullanım deneyimlerini etkinleştirmek için Kullanıcı bağlamı kimlikleri gönderin
 
@@ -18,10 +19,10 @@ ms.locfileid: "83797693"
 
 Application Insights, bir ürün kullanım araçları kümesi aracılığıyla kullanıcılarınızı izlemenizi ve izlemenizi sağlar:
 
-- [Kullanıcılar, Oturumlar, Etkinlikler](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-- [Huniler](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Bekletme](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohortlar
-- [Çalışma Kitapları](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Kullanıcılar, Oturumlar, Etkinlikler](./usage-segmentation.md)
+- [Huniler](./usage-funnels.md)
+- [Bekletme](./usage-retention.md) Kohortlar
+- [Çalışma Kitapları](../platform/workbooks-overview.md)
 
 Kullanıcının zaman içinde ne yaptığını izlemek için, Application Insights her kullanıcı veya oturum için bir KIMLIĞE ihtiyaç duyuyor. Aşağıdaki kimlikleri her özel olay veya sayfa görünümüne ekleyin.
 
@@ -41,11 +42,11 @@ Kullanıcı kimlikleri, kullanıcıların zaman içinde nasıl davrandığını 
 
 KIMLIK, her kullanıcıyı benzersiz bir şekilde tanımlamak için yeterince karmaşık bir GUID veya bir dize olmalıdır. Örneğin, bu uzun bir rastgele sayı olabilir.
 
-KIMLIK, kullanıcı hakkındaki kişisel tanımlama bilgilerini içeriyorsa, Kullanıcı KIMLIĞI olarak Application Insights göndermek için uygun bir değer değildir. Bu tür bir KIMLIĞI kimliği [doğrulanmış bir kullanıcı kimliği](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users)olarak gönderebilirsiniz, ancak kullanım senaryoları IÇIN Kullanıcı kimliği gereksinimini karşılamaz.
+KIMLIK, kullanıcı hakkındaki kişisel tanımlama bilgilerini içeriyorsa, Kullanıcı KIMLIĞI olarak Application Insights göndermek için uygun bir değer değildir. Bu tür bir KIMLIĞI kimliği [doğrulanmış bir kullanıcı kimliği](./api-custom-events-metrics.md#authenticated-users)olarak gönderebilirsiniz, ancak kullanım senaryoları IÇIN Kullanıcı kimliği gereksinimini karşılamaz.
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET Apps: bir ılemetrybaşlatıcısında kullanıcı bağlamını ayarlama
 
-[Burada](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)ayrıntılı olarak açıklandığı gibi bir telemetri başlatıcısı oluşturun. İstek telemetrisi aracılığıyla oturum KIMLIĞINI geçirin ve Context.User.Id ve Context.Session.Id ayarlayın.
+[Burada](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)ayrıntılı olarak açıklandığı gibi bir telemetri başlatıcısı oluşturun. İstek telemetrisi aracılığıyla oturum KIMLIĞINI geçirin ve Context.User.Id ve Context.Session.Id ayarlayın.
 
 Bu örnek, kullanıcı KIMLIĞINI oturum sonrasında süresi dolan bir tanımlayıcıya ayarlar. Mümkünse, oturumlar arasında devam eden bir kullanıcı KIMLIĞI kullanın.
 
@@ -127,7 +128,7 @@ namespace MvcWebRole.Telemetry
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) veya [sayfa görünümleri](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)göndermeye başlayın.
+- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](./api-custom-events-metrics.md#trackevent) veya [sayfa görünümleri](./api-custom-events-metrics.md#page-views)göndermeye başlayın.
 - Özel olayları veya sayfa görünümlerini zaten gönderirseniz, kullanıcıların hizmetinizi nasıl kullandığını öğrenmek için kullanım araçları ' nı araştırın.
     - [Kullanıma genel bakış](usage-overview.md)
     - [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)

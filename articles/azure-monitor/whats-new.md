@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203754"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498517"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
@@ -67,21 +67,21 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure Resource Manager şablonu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderin](learn/quick-collect-activity-log-arm.md) -yeni makale.
 
 #### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncelleştirilmiş makaleler
-- [Azure Kaynak günlüklerini depolama hesabına arşivleme](platform/resource-logs-collect-storage.md)
+- [Azure Kaynak günlüklerini depolama hesabına arşivleme](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure etkinlik günlüğü olay şeması](platform/activity-log-schema.md)
 - [Azure etkinlik günlüğü](platform/activity-log.md)
 - [Azure Izleyici CLı örnekleri](samples/cli-samples.md)
 - [Azure Izleyici PowerShell örnekleri](samples/powershell-samples.md)
 - [Azure Izleme REST API izlenecek yol](platform/rest-api-walkthrough.md)
-- [Azure kaynak günlüğü desteklenen Hizmetleri ve şemaları](platform/diagnostic-logs-schema.md)
+- [Azure kaynak günlüğü desteklenen Hizmetleri ve şemaları](./platform/resource-logs-schema.md)
 - [Azure Kaynak günlükleri](platform/resource-logs.md)
-- [Azure Izleyici 'de Azure etkinlik günlüğünü toplayın ve çözümleyin](platform/activity-log-collect.md)
-- [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](platform/resource-logs-collect-workspace.md)
+- [Azure Izleyici 'de Azure etkinlik günlüğünü toplayın ve çözümleyin](./platform/activity-log.md)
+- [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma](platform/diagnostic-settings.md)
-- [Azure etkinlik günlüğünü dışarı aktarma](platform/activity-log-export.md)
+- [Azure etkinlik günlüğünü dışarı aktarma](./platform/activity-log.md#legacy-collection-methods)
 - [Azure platformu günlüklerine genel bakış](platform/platform-logs-overview.md)
-- [Azure platformu günlüklerini bir olay hub 'ına akış](platform/resource-logs-stream-event-hubs.md)
-- [Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme](platform/activity-log-view.md)
+- [Azure platformu günlüklerini bir olay hub 'ına akış](./platform/resource-logs.md#send-to-azure-event-hubs)
+- [Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Sanal makineler
 - [Azure portal VM'ler için Azure izleyici,](insights/vminsights-enable-single-vm.md) Azure Arc 'ı içerecek şekilde güncelleştirildi.
@@ -89,7 +89,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [VM'ler için Azure İzleyici nedir?](insights/vminsights-overview.md) -Azure yayı içerecek şekilde güncelleştirildi.
 
 
-### <a name="visualizations"></a>Görselleştirmeler
+### <a name="visualizations"></a>Görsel öğeler
 - [Azure izleyici çalışma kitapları veri kaynakları](platform/workbooks-data-sources.md) -uyarılar ve özel uç noktalar bölümü eklendi.
 - [Azure izleyici çalışma kitabı tabanlı Öngörüler sorunlarını giderme](insights/troubleshoot-workbooks.md) -yeni makale.
 - [Log Analytics Pano görselleştirmelerinizi yükseltme](log-query/dashboard-upgrade.md) -yeni makale.
@@ -155,7 +155,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 
 ### <a name="insights"></a>Insights
 - [Redsıs için Azure önbelleği Için Azure izleyici (Önizleme)](insights/redis-cache-insights-overview.md) -yeni makale.
-- [Key Vault Için Azure izleyici ile Key Vault izleyin (Önizleme)](insights/key-vaults-insights-overview.md) -yeni makale.
+- [Key Vault Için Azure izleyici ile Key Vault izleyin (Önizleme)](./insights/key-vault-insights-overview.md) -yeni makale.
 
 ### <a name="logs"></a>Günlükler
 - PowerShell tarafından eklenen sorun giderme bölümü [ile Log Analytics yapılandırma & oluşturun](platform/powershell-workspace-configuration.md) .
@@ -180,7 +180,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [VM'ler için Azure izleyici genel bakışı etkinleştirin](insights/vminsights-enable-overview.md) -Ubuntu Server 'ın desteklenen sürümlerine eklenir. Log Analytics çalışma alanı için desteklenen bölgeler eklendi.
 - Kullanılabilir ölçümler için VM'ler için Azure İzleyici eklenen sınırlamalar bölümü [ile performansı grafik olarak belirleme](insights/vminsights-performance.md) .
 
-### <a name="visualizations"></a>Görselleştirmeler
+### <a name="visualizations"></a>Görsel öğeler
 - [Azure izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi Güncelleştirmesi eklendi.
 - [Azure Izleyici çalışma kitapları grupları](platform/workbooks-groups.md) -yeni makale.
 - [Azure Izleyici çalışma kitapları-JSON verilerini JSONPath Ile Dönüştür](platform/workbooks-jsonpath.md) -yeni makale.
@@ -231,7 +231,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 
 - [Azure Ölçüm Gezgini](platform/metrics-charts.md) ile eklenen toplama bölümünün gelişmiş özellikleri.
 
-### <a name="workbooks"></a>Çalışma kitapları
+### <a name="workbooks"></a>Çalışma Kitapları
 
 - [Azure Izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi şablonu eklendi.
 
@@ -280,7 +280,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 
 ### <a name="platform-logs"></a>Platform günlükleri
 
-- Azure [izleyici 'de Azure etkinlik günlüğü toplayın ve çözümleyin](platform/activity-log-collect.md) -tanılama ayarlarıyla etkinlik günlüğünü toplamayı daha iyi açıklamak için yeniden yazın.
+- Azure [izleyici 'de Azure etkinlik günlüğü toplayın ve çözümleyin](./platform/activity-log.md) -tanılama ayarlarıyla etkinlik günlüğünü toplamayı daha iyi açıklamak için yeniden yazın.
 
 ### <a name="virtual-machines"></a>Sanal makineler
 
@@ -298,7 +298,7 @@ VM'ler için Azure İzleyici genel kullanıma yönelik genel güncelleştirmeler
 - [VM'ler için Azure İzleyici günlüklerini sorgulama](insights/vminsights-log-search.md)
 - [VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme](insights/vminsights-maps.md) 
 
-### <a name="visualizations"></a>Görselleştirmeler
+### <a name="visualizations"></a>Görsel öğeler
 
 - [Azure izleyici 'den verileri görselleştirme](visualizations.md) -Görünüm Tasarımcısı 'nın planlanmış kullanım dışı bırakılmasıyla güncelleştirildi.
 
@@ -326,7 +326,7 @@ Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok gü
 
 #### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 
-- [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirin](../aks/azure-ad-integration.md) bir istemci uygulaması oluşturmak için RBAC özellikli kümeyi desteklemek üzere Azure izleyicisini, kapsayıcılar Için Azure izleyiciyi destekleyecek şekilde tümleştirin.
+- [Azure Kubernetes hizmeti ile Azure Active Directory tümleştirin](../aks/azure-ad-integration-cli.md) bir istemci uygulaması oluşturmak için RBAC özellikli kümeyi desteklemek üzere Azure izleyicisini, kapsayıcılar Için Azure izleyiciyi destekleyecek şekilde tümleştirin.
 
 #### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
 
@@ -346,7 +346,7 @@ Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok gü
 
 - [Azure izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir](platform/metrics-supported-export-diagnostic-settings.md) -null ve sıfır değerleri için davranış değişikliğine eklenen bölüm.
 
-### <a name="visualizations"></a>Görselleştirmeler
+### <a name="visualizations"></a>Görsel öğeler
 
 Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna yönelik birden çok yeni makale.
 
@@ -412,8 +412,8 @@ Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna y
 
 ### <a name="platform-logs"></a>Platform günlükleri
 
-- [Tanılama ayarlarıyla Azure etkinlik günlüğü toplama-Azure izleyici](platform/diagnostic-settings-legacy.md) -değiştirilen özelliklerle ilgili ek bilgiler.
-- [Azure etkinlik günlüğünü dışarı aktarma](platform/activity-log-export.md) -UI değişiklikleri için güncelleştirildi. 
+- [Tanılama ayarlarıyla Azure etkinlik günlüğü toplama-Azure izleyici](./platform/activity-log.md) -değiştirilen özelliklerle ilgili ek bilgiler.
+- [Azure etkinlik günlüğünü dışarı aktarma](./platform/activity-log.md#legacy-collection-methods) -UI değişiklikleri için güncelleştirildi. 
 
 ## <a name="december-2019"></a>Aralık 2019
 
@@ -450,7 +450,7 @@ Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna y
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
 
-- [Kapsayıcılar Için Azure Izleyici sık sorulan sorular](insights/container-insights-faq.md) -görüntü ve ad alanlarına soru eklendi.
+- [Kapsayıcılar Için Azure Izleyici sık sorulan sorular](./faq.md) -görüntü ve ad alanlarına soru eklendi.
 - [Azure izleyici 'de Azure SQL Analytics çözümü](insights/azure-sql.md) -güncelleştirilmiş veritabanı yönetilen örnek desteğini bekler.
 - [Kapsayıcılar Için Azure Izleyicisini yapılandırın aracı verileri toplama](insights/container-insights-agent-config.md) -enrich_container_logs için ayar eklendi.
 - [Kapsayıcılar Için Azure izleyici Ile karma Kubernetes kümelerini yapılandırma](insights/container-insights-hybrid-setup.md) sorun giderme bölümü.
@@ -474,19 +474,19 @@ Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna y
 
 Tanılama ayarları kullanılarak etkinlik günlüğünü yapılandırmaya yönelik yeni özelliğe dayalı olarak, platform günlükleri için içeriğin yeniden yapılandırmasının bir parçası olarak güncelleştirilmiş birden çok makale güncelleştirildi.
 
-- [Azure Kaynak günlüklerini depolama hesabına arşivleme](platform/resource-logs-collect-storage.md)
+- [Azure Kaynak günlüklerini depolama hesabına arşivleme](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure etkinlik günlüğü olay şeması](platform/activity-log-schema.md)
 - [Azure Izleyici hizmeti sınırları](service-limits.md)
-- [Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](platform/activity-log-collect.md)
-- [Tanılama ayarları (Önizleme) ile Azure etkinlik günlüğü toplama-Azure Izleyici](platform/diagnostic-settings-legacy.md)
+- [Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](./platform/activity-log.md)
+- [Tanılama ayarları (Önizleme) ile Azure etkinlik günlüğü toplama-Azure Izleyici](./platform/activity-log.md)
 - [Azure etkinlik günlüklerini Azure kiracılarının tamamında bir Log Analytics çalışma alanında toplayın](platform/activity-log-collect-tenants.md)
-- [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](platform/resource-logs-collect-workspace.md)
+- [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma](platform/diagnostic-settings-template.md)
 - [Azure 'da günlüklerin ve ölçümlerin toplanması için tanılama ayarı oluştur](platform/diagnostic-settings.md)
-- [Azure etkinlik günlüğünü dışarı aktarma](platform/activity-log-export.md)
+- [Azure etkinlik günlüğünü dışarı aktarma](./platform/activity-log.md#legacy-collection-methods)
 - [Azure platformu günlüklerine genel bakış](platform/platform-logs-overview.md)
 - [Azure izleme verilerini Olay Hub 'ına akış](platform/stream-monitoring-data-event-hubs.md)
-- [Azure platformu günlüklerini bir olay hub 'ına akış](platform/resource-logs-stream-event-hubs.md)
+- [Azure platformu günlüklerini bir olay hub 'ına akış](./platform/resource-logs.md#send-to-azure-event-hubs)
 
 ### <a name="quickstarts-and-tutorials"></a>Hızlı başlangıçlar ve öğreticiler
 

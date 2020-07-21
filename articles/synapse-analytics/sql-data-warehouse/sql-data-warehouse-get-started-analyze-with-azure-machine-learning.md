@@ -7,48 +7,32 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
-ms.date: 02/05/2020
+ms.date: 07/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 76a0e4660967dafec8e314fd681d05e694e562b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368201"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495851"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning ile veri çözümleme
-> [!div class="op_single_selector"]
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
-> * [SSMS](sql-data-warehouse-query-ssms.md)
-> 
-> 
 
-Bu öğretici, Azure SYNAPSE 'de depolanan verileri temel alan tahmine dayalı bir makine öğrenimi modeli oluşturmak için Azure Machine Learning kullanır. Özellikle, bir müşterinin bisiklet alma olasılığı hakkında tahminde bulunarak Adventure Works adlı bisiklet satış mağazası için hedeflenen bir pazarlama kampanyası oluşturulur.
+Bu öğretici, tahmine dayalı bir makine öğrenimi modeli oluşturmak için [Azure Machine Learning tasarımcısını](https://docs.microsoft.com/azure/machine-learning/concept-designer) kullanır. Model, Azure SYNAPSE 'de depolanan verileri temel alır. Öğreticinin senaryosu, bir müşterinin bir bisiklet satın alabileceği ya da Adventure Works 'Ün hedeflenen bir pazarlama kampanyası oluşturabileceğiniz şekilde tahmin edilmesine yönelik bir tahmin sağlamaktır.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
-> 
-> 
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide ilerleyebilmeniz için şunlar gereklidir:
 
-* AdventureWorksDW örnek verileriyle önceden yüklenmiş bir SQL Havuzu. Bunu sağlamak için [SQL havuzu oluşturma](create-data-warehouse-portal.md) konusuna bakın ve örnek verileri yüklemeyi seçin. Bir veri ambarınız olmasına karşın örnek verileriniz yoksa [örnek verileri elle yükleyebilirsiniz](load-data-from-azure-blob-storage-using-polybase.md).
+* AdventureWorksDW örnek verileriyle önceden yüklenmiş bir SQL Havuzu. Bu SQL havuzunu sağlamak için bkz. [SQL havuzu oluşturma](create-data-warehouse-portal.md) ve örnek verileri yüklemeyi seçme. Zaten bir veri ambarınız varsa ancak örnek verileriniz yoksa, [örnek verileri el ile](load-data-from-azure-blob-storage-using-polybase.md)yükleyebilirsiniz.
+* bir Azure Machine Learning çalışma alanı. Yeni bir tane oluşturmak için [Bu öğreticiyi](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) izleyin.
 
-## <a name="1-get-the-data"></a>1. verileri alın
-Veriler AdventureWorksDW veritabanında bulunan dbo.vTargetMail görünümündedir. Bu verileri okumak için:
+## <a name="get-the-data"></a>Verileri alma
 
-1. [Azure Machine Learning Studio](https://studio.azureml.net/)'da oturum açıp denemelerim öğesine tıklayın.
-2. Ekranın sol alt kısmındaki **+ Yeni** seçeneğine tıklayın ve **boş denemeler**' i seçin.
-3. Denemeniz için bir ad girin: Hedeflenen Pazarlama.
-4. Veri **girişi ve çıktı** bölümündeki **veri alma** modülünü tuvale sürükleyin.
-5. Özellikler bölmesinde SQL havuzunuzun ayrıntılarını belirtin.
-6. İstediğiniz verileri okumak için veritabanı **sorgusunu** belirtin.
+Kullanılan veriler, AdventureWorksDW ' deki dbo. vTargetMail görünümüdür. Bu öğreticide veri deposunu kullanmak için, Azure SYNAPSE Şu anda veri kümelerini desteklemediği için veriler ilk olarak Azure Data Lake Storage hesaba aktarılabilir. Azure Data Factory, [kopyalama etkinliğini](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)kullanarak verileri veri ambarından Azure Data Lake Storage dışarı aktarmak için kullanılabilir. İçeri aktarma için aşağıdaki sorguyu kullanın:
 
 ```sql
 SELECT [CustomerKey]
@@ -70,66 +54,111 @@ SELECT [CustomerKey]
 FROM [dbo].[vTargetMail]
 ```
 
-Deneme tuvali altında **Çalıştır** ' a tıklayarak denemeyi çalıştırın.
+Veriler Azure Data Lake Storage kullanılabilir olduktan sonra, [Azure Storage Services 'a bağlanmak](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)için Azure Machine Learning Içindeki veri depoları kullanılır. Bir veri deposu ve karşılık gelen bir veri kümesi oluşturmak için aşağıdaki adımları izleyin:
 
-![Denemeyi çalıştırma](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png)
+1. Azure Machine Learning Studio 'yu Azure portal 'den başlatın veya [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 
-Denemeyi çalıştırma işlemi başarıyla sonlandıktan sonra, Okuyucu modülünün altındaki çıkış bağlantı noktasına tıklayıp içeri aktarılan verileri görmek için **Visualiza (Görselleştir)** seçeneğine tıklayın.
+1. **Yönet** bölümündeki sol bölmede bulunan **veri depoları** ' na tıklayın ve ardından **Yeni veri deposu**' na tıklayın.
 
-![İçeri aktarılan verileri görüntüleme](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png)
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/datastores-tab.png" alt-text="Azure Machine Learning arabiriminin sol bölmesinin ekran görüntüsü":::
 
-## <a name="2-clean-the-data"></a>2. verileri temizleme
-Verileri temizlemek için modelle ilgili olmayan bazı sütunları kaldırın. Bunu yapmak için:
+1. Veri deposu için bir ad sağlayın, türü ' Azure Blob Storage ' olarak seçin, konum ve kimlik bilgilerini sağlayın. Ardından, **Oluştur**'u tıklatın.
 
-1. **Veri dönüştürme <** altındaki **sütun Seç** modülünü tuvale sürükleyin. Bu modülü **veri alma** modülüne bağlayın.
-2. Hangi sütunları kaldırmak istediğinizi belirtmek için Properties (Özellikler) bölmesindeki **Launch column selector (Sütun seçiciyi başlat)** öğesine tıklayın.
+1. Sonra, **varlıklar** bölümünde sol bölmedeki **veri kümeleri** ' ne tıklayın. Veri **deposundan**seçeneğini kullanarak **veri kümesi oluştur** ' u seçin.
 
-   ![Proje Columns (Proje Sütunları)](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png)
-3. Şu iki sütunu dışlayın: CustomerAlternateKey ve GeographyKey.
+1. Veri kümesinin adını belirtin ve **tablo**olarak kullanılacak türü seçin. Ardından **İleri** ' ye tıklayarak ileri ' ye tıklayın.
 
-   ![Gereksiz sütunları kaldırma](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png)
+1. **Veri deposu Seç veya Oluştur bölümünde**, **önceden oluşturulmuş veri deposu**seçeneğini belirleyin. Daha önce oluşturulan veri deposunu seçin. Ileri ' ye tıklayın ve yolu ve dosya ayarlarını belirtin. Dosyalar içeriyorsa sütun üst bilgisi belirttiğinizden emin olun.
 
-## <a name="3-build-the-model"></a>3. modeli oluşturma
-Biz verilerin %80'ini Machine Learning modelini eğitmek ve %20'sini de modeli test etmek üzere kullanacak şekilde 80'e 20 oranında böleceğiz. Bu ikili sınıflandırma sorunu için "Iki sınıf" algoritmalarından yararlanabilirsiniz.
+1. Son olarak, veri kümesini oluşturmak için **Oluştur** ' a tıklayın.
 
-1. **Split (Bölme)** modülünü tuvale sürükleyin.
-2. Özellikler bölmesinde, ilk çıkış veri kümesindeki satır kesiri için 0,8 girin.
+## <a name="configure-designer-experiment"></a>Tasarımcı denemesini yapılandırma
 
-   ![Verileri eğitim ve test kümesi olarak bölme](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png)
-3. **Two-Class Boosted Decision Tree (İki Sınıflı Gelişmiş Karar Ağacı)** modülünü tuvale sürükleyin.
-4. **Model eğitme** modülünü tuvale sürükleyin ve **iki sınıflı bir karar ağacına** (ml algoritması) bağlayarak girdileri belirtin ve (algoritmayı eğitmek Için veriler) modüllerine **ayırın** . 
+Sonra, tasarımcı yapılandırması için aşağıdaki adımları izleyin:
 
-     ![Train Model (Model Eğitme) modülünü bağlama](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png)
-5. Ardından Properties (Özellikler) bölmesindeki **Launch column selector (Sütun seçiciyi başlat)** öğesine tıklayın. Tahminde bulunulacak sütun olarak **BikeBuyer** sütununu seçin.
+1. **Yazar** bölümünün sol bölmesindeki **Tasarımcı** sekmesine tıklayın.
 
-   ![Tahminde bulunulacak sütunu seçme](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png)
+1. Yeni bir işlem hattı oluşturmak için kullanımı **kolay önceden oluşturulmuş modüller** ' i seçin.
 
-## <a name="4-score-the-model"></a>4. modeli puan edin
-Şimdi modelin test verileri üzerindeki işlevini test edeceğiz. Hangisinin daha iyi sonuç verdiğini görmek üzere kendi seçtiğimiz algoritmayla başka bir algoritmayı karşılaştıracağız.
+1. Sağdaki ayarlar bölmesinde, işlem hattının adını belirtin.
+
+1. Ayrıca, daha önce sağlanan bir kümeye tüm denemeler için bir hedef işlem kümesi seçin. Ayarlar bölmesini kapatın.
+
+## <a name="import-the-data"></a>Verileri içeri aktarma
+
+1. Arama kutusunun altındaki sol bölmedeki **veri kümeleri** alt sekmesini seçin.
+
+1. Daha önce oluşturduğunuz veri kümesini tuvale sürükleyin.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Tuval üzerindeki veri kümesi modülünün ekran görüntüsü.":::
+
+## <a name="clean-the-data"></a>Verileri temizleyin
+
+Verileri temizlemek için, modeliyle ilgili olmayan sütunları bırakın. Aşağıdaki adımları izleyin:
+
+1. Sol bölmedeki **modüller** alt sekmesini seçin.
+
+1. **Veri dönüştürme <** altındaki **sütun Seç** modülünü tuvale sürükleyin. Bu modülü **veri kümesi** modülüne bağlayın.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Tuvalde sütun seçimi modülünün ekran görüntüsü." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+
+1. Özellikler bölmesini açmak için modüle tıklayın. Hangi sütunları bırakmak istediğinizi belirtmek için sütunu Düzenle ' ye tıklayın.
+
+1. Şu iki sütunu dışlayın: CustomerAlternateKey ve GeographyKey. **Kaydet**’e tıklayın
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Bırakılan sütunları gösteren ekran görüntüsü.":::
+
+## <a name="build-the-model"></a>Modeli oluşturma
+
+Veriler makine öğrenimi modelini eğitmek için% 80-20:80 ' ü ve modeli test etmek için %20 ' i bölünür. Bu ikili sınıflandırma sorunu için "iki sınıf" algoritmaları kullanılır.
+
+1. **Bölünmüş veri** modülünü tuvale sürükleyin.
+
+1. Özellikler bölmesinde, **ilk çıkış veri kümesindeki satır kesiri**için 0,8 girin.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="0,8 bölme oranını gösteren ekran görüntüsü.":::
+
+1. **Two-Class Boosted Decision Tree (İki Sınıflı Gelişmiş Karar Ağacı)** modülünü tuvale sürükleyin.
+
+1. **Model eğitme** modülünü tuvale sürükleyin. **Iki sınıflı bir karar ağacına** (ml algoritması) bağlanarak girişleri belirtin ve verileri (algoritma üzerinde eğitme verileri) modülleri ile **ayırın** .
+
+1. Model modeli eğitimi için, Özellikler bölmesinde **etiket sütunu** seçeneğinde sütunu Düzenle ' yi seçin. Tahmin edilecek sütun olarak **Bikesatınalmacı** sütununu seçin ve **Kaydet**' i seçin.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Bikesatınalmacı etiket sütununu gösteren ekran görüntüsü.":::
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Iki sınıf artırılmış karar ağacına bağlı eğitim modeli modülünü gösteren ve veri modüllerine bölünmüş ekran görüntüsü.":::
+
+## <a name="score-the-model"></a>Modeli puanlama
+
+Şimdi modelin test verilerinde nasıl gerçekleştirileceğini test edin. Hangisinin daha iyi bir şekilde gerçekleştiğini görmek için iki farklı algoritma karşılaştırılacaktır. Aşağıdaki adımları izleyin:
 
 1. **Puanlama modeli** modülünü tuvale sürükleyin ve **modeli eğmek** ve **veri modüllerini bölmek** için bağlayın.
 
-   ![Modeli puanlama](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png)
-2. **Two-Class Bayes Point Machine (İki Sınıflı Bayes Noktası Makinesi)** modülünü deneme tuvaline sürükleyin. Bu algoritma ile Two-Class Boosted Decision Tree'nin (İki Sınıflı Gelişmiş Karar Ağacı'nın) işlevlerini karşılaştıracağız.
-3. Train Model (Model Eğitme) ve Score Model (Model Puanlama) modüllerini kopyalayıp tuvale yapıştırın.
-4. İki algoritmayı karşılaştırmak için **Evaluate Model (Model Değerlendirme)** modülünü tuvale sürükleyin.
-5. Denemeyi **çalıştırın** .
+1. **Iki sınıf Bayes ortalama Perceptron** ' i deneme tuvaline sürükleyin. Bu algoritmanın, Iki sınıf önceden artırılmış karar ağacına kıyasla nasıl gerçekleştiğini karşılaştırırsınız.
 
-   ![Denemeyi çalıştırma](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png)
-6. Evaluate Model (Model Değerlendirme) modülünün altında bulunan çıkış bağlantı noktasına ve ardından Visualize (Görselleştir) düğmesine tıklayın.
+1. Modülleri kopyalayıp yapıştırın modeli **eğitme** model ve **Puanlama modeli** .
 
-   ![Değerlendirme sonuçlarını görselleştirme](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png)
+1. İki algoritmayı karşılaştırmak için **Evaluate Model (Model Değerlendirme)** modülünü tuvale sürükleyin.
 
-Belirtilen ölçümler ROC eğrisi, duyarlık geri çağırma diyagramı ve yükseltme eğrisi. Bu ölçümlere bakarak birinci modelin ikinciye göre daha iyi sonuç verdiğini görebiliriz. İlk modelin tahmin edilen bölümüne bakmak için, puan modelinin çıkış bağlantı noktasına tıklayın ve Görselleştir ' e tıklayın.
+1. İşlem hattı çalıştırmasını ayarlamak için **Gönder** ' e tıklayın.
 
-![Puanlama sonuçlarını görselleştirme](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png)
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Tuvaldeki diğer tüm modüllerin ekran görüntüsü." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
-Test veri kümenize iki sütunun daha eklendiğini göreceksiniz.
+1. Çalıştırma tamamlandığında **modeli değerlendir** modülünü sağ tıklatın ve **değerlendirme sonuçlarını görselleştirin**' i tıklatın.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Sonuçların ekran görüntüsü.":::
+
+Belirtilen ölçümler ROC eğrisi, duyarlık geri çağırma diyagramı ve yükseltme eğrisi. Birinci modelin ikinciden daha iyi gerçekleştirildiğini görmek için bu ölçümlere bakın. İlk modelin tahmin edilen bölümüne bakmak için, puan modeli modülüne sağ tıklayın ve tahmin edilen sonuçları görmek için puanlanmış veri kümesini Görselleştir ' e tıklayın.
+
+Test veri kümenize daha fazla sütun eklendiğini göreceksiniz.
 
 * Puanlanmış Olasılıklar: müşterinin bir bisiklet alıcısı olma olasılığı.
 * Puanlanmış Etiketler: model tarafından yapılan sınıflandırma; bisiklet alıcısı (1) veya değil (0). Etiketlemeye ilişkin bu olasılık eşiği %50 olarak belirlenmiş olup ayarlanabilir.
 
-BikeBuyer (gerçek) sütununu Puanlanmış Etiketler (tahmin) ile karşılaştırarak modelin ne derece iyi sonuç verdiğini görebilirsiniz. Daha sonra bu modeli kullanarak yeni müşteriler için tahmine dayalı hale getirebilirsiniz ve bu modeli bir Web hizmeti olarak yayımlayabilir veya sonuçları Azure SYNAPSE 'e geri yazabilirsiniz.
+Modelin ne kadar iyi gerçekleştirildiğini görmek için, Bikealıcısı (gerçek) ile puanlanmış Etiketler (tahmin) sütununu karşılaştırın. Daha sonra bu modeli kullanarak yeni müşterileri tahmin edebilirsiniz. [Bu modeli bir Web hizmeti olarak yayımlayabilir](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) veya sonuçları Azure SYNAPSE 'e geri yazabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tahmine dayalı makine öğrenimi modellerinin oluşturulmasına ilişkin daha fazla bilgi edinmek için bkz. [Azure'da Machine Learning'e giriş](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+
+Azure Machine Learning hakkında daha fazla bilgi edinmek için bkz. [Azure 'da Machine Learning 'ye giriş](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+
+Veri ambarındaki yerleşik Puanlama hakkında bilgi [edinin.](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)

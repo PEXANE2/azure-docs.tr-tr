@@ -12,11 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 1d8261d05f59c7f40ba6b1e2d59d2b15ad56de95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424591"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497411"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT 'den Azure 'da SSIS paketlerini yürütme
 
@@ -26,7 +27,7 @@ Bu makalede, SQL Server Veri Araçları (SSDT) üzerindeki Azure özellikli SQL 
 
 Bu özellikle, yeni bir Azure-SSIS IR oluşturabilir veya var olan bir dosyayı SSIS projelerine iliştirebilir ve sonra paketlerinizi yürütebilirsiniz.  Proje dağıtım modelindeki SSIS kataloğuna (SSıSDB) dağıtılacak paketleri ve paket dağıtım modelindeki dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına dağıtılmasını destekliyoruz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu özelliği kullanmak için lütfen Visual Studio için SSIS projeleri uzantısı 'nı [buradan veya buradan](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) tek başına bir yükleyici olarak indirip [yükleyin.](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
 
 ## <a name="azure-enable-ssis-projects"></a>Azure-SSIS projelerini etkinleştir
@@ -81,6 +82,30 @@ Azure etkin projelerinizi SSIS 'ye bağlanarak, paketlerinizi Azure dosyalarına
    ![Azure Depolama Alanı'nı seçin](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
 4. Bağlantınızı gerçekleştirmek için **Bağlan** düğmesine tıklayın.  Seçtiğiniz Azure-SSIS IR ve Azure depolama hesabınızı SSDT Çözüm Gezgini panelinde **bağlı Azure kaynakları** düğümü altında görüntüleyeceğiz.  Ayrıca, bir menü açmak ve ardından bunu ADF Portal/uygulama ' ya tıklayarak **Start\stop\yönet** menü öğesini seçmek için, Azure-SSIS IR durumunu yenileyecektir.
+
+## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>Azure 'da yürütmeler için SSIS project\packages 'i değerlendirin
+### <a name="assess-ssis-project-or-package"></a>SSIS projesini veya paketini değerlendir
+Paketlerinizi Azure 'da yürütmeden önce, bilmeniz gereken olası geçiş engelleyicisine veya bilgilere sahip olup olmadığını değerlendirmek için paketinizi değerlendirebilirsiniz. 
+-  Tüm paketleri proje veya tek paket altında değerlendirebilirsiniz.
+
+   ![Proje ](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+    ![ değerlendirme paketini değerlendir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+
+-  Her bir değerlendirme sorununu denetlemek için değerlendirme raporu alabilir ve her bir sorun ayrıntılı açıklama ve önerisine sahip olur. Ayrıca, değerlendirme raporunu CSV dosyası olarak dışarı aktarabilirsiniz. 
+
+   ![Proje sonucunu değerlendir](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppress-assessment-rule"></a>Değerlendirme kuralını gizle
+Herhangi bir değerlendirme kuralının paketiniz için uygulanmadığından emin değilseniz, bunu bastırı seçebilirsiniz. 
+-  Değerlendirme raporundaki **değerlendirme kuralı gizlemesini Yapılandır** bağlantısını doğrudan tıklayabilirsiniz.
+
+   ![Değerlendirme kuralı gizleme ayarları](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+
+-  Ayrıca, **Azure etkin ayarları**aracılığıyla da yapılandırabilirsiniz.
+
+   ![Azure etkin ayarları](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+
+   ![Azure etkin ayarları aracılığıyla değerlendirme kuralı gizleme ayarları](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>Azure 'da SSIS paketlerini yürütme
 ### <a name="azure-enabled-setting"></a>Azure etkin ayarı
@@ -159,6 +184,9 @@ Paket yürütme ortamlarını Azure etkinleştirilmiş projelerle değiştirmek 
 6. Bu paketi Azure 'da yürütün. Geçerli Visual Studio yapılandırmasını değiştirerek ortamı kolayca yerel bir şekilde değiştirebilirsiniz.
 
    ![Visual Studio yapılandırmasını değiştirme](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
+
+## <a name="current-limitations"></a>Geçerli sınırlamalar
+-  Bu SSDT özelliği şu anda ulusal bulutu desteklemiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 SSDT 'den Azure 'da paketlerinizi çalıştırmaya memnun olduktan sonra, ADF 'yi ADF Işlem hatlarında SSIS paket etkinliklerini Yürüt olarak [çalıştırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)ve çalıştırma konusuna bakın.

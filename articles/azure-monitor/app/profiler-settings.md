@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205714"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499418"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler Yapılandır
 
@@ -32,7 +32,7 @@ Bu, şöyle görünen bir sayfa açar:
 
 **Application Insights Profiler Yapılandır** sayfası şu özelliklere sahiptir:
 
-| Özellik | Açıklama |
+| Özellik | Description |
 |-|-|
 Şimdi profil | Bu Application Insights örneğiyle bağlantılı tüm uygulamalar için profil oluşturma oturumlarını başlatır.
 Tetikleyiciler | Profil oluşturucunun çalışmasına neden olan Tetikleyicileri yapılandırmanızı sağlar. 
@@ -41,7 +41,7 @@ Son profil oluşturma oturumları | Geçmiş profil oluşturma oturumları hakk�
 ## <a name="profile-now"></a>Şimdi profil
 Bu seçenek, isteğe bağlı olarak profil oluşturma oturumu başlatabilmeniz için izin verir. Bu bağlantıya tıkladığınızda, bu Application Insights örneğine veri gönderen tüm profil oluşturucu aracıları bir profili yakalamaya başlayacaktır. 5 ila 10 dakika sonra profil oturumu aşağıdaki listede görünür.
 
-Bir kullanıcının profil oluşturucu oturumunu el ile tetiklemesi için, Application Insights bileşeni için rolünde en az "yazma" erişiminin olması gerekir. Çoğu durumda, bu erişimi otomatik olarak alır ve ek bir iş gerekmez. Sorun yaşıyorsanız, eklenecek abonelik kapsamı rolü "Application Insights bileşen katılımcısı" rolü olacaktır. [Azure izleme ile rol erişimi denetimi hakkında daha fazla](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)bilgi için bkz..
+Bir kullanıcının profil oluşturucu oturumunu el ile tetiklemesi için, Application Insights bileşeni için rolünde en az "yazma" erişiminin olması gerekir. Çoğu durumda, bu erişimi otomatik olarak alır ve ek bir iş gerekmez. Sorun yaşıyorsanız, eklenecek abonelik kapsamı rolü "Application Insights bileşen katılımcısı" rolü olacaktır. [Azure izleme ile rol erişimi denetimi hakkında daha fazla](./resources-roles-access-control.md)bilgi için bkz..
 
 ## <a name="trigger-settings"></a>Tetikleyici ayarları
 ![Tetikleyici ayarları açılır menüsü][trigger-settings-flyout]
@@ -63,7 +63,7 @@ Sayfanın bu bölümü, son profil oluşturma oturumları hakkında bilgi göste
 Tetikleyen | Oturumun nasıl başlatıldığı, bir tetikleyici, şimdi profil veya varsayılan örnekleme. 
 Uygulama Adı | Profili oluşturulan uygulamanın adı.
 Makine örneği | Profil Oluşturucu aracısının çalıştırıldığı makinenin adı.
-Timestamp | Profilin yakalandığı zaman.
+Zaman damgası | Profilin yakalandığı zaman.
 Tracee | Bireysel isteklere eklenmiş izleme sayısı.
 CPU % | Profil Oluşturucu çalışırken kullanılmakta olan CPU yüzdesi.
 Bellek | Profil Oluşturucu çalışırken kullanılmakta olan bellek yüzdesi.

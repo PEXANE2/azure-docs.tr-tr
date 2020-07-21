@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262642"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497769"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes 'i Azure Cosmos DB ile kullanma (Önizleme)
 
@@ -25,7 +25,7 @@ Azure Cosmos DB ' deki etcd API 'SI, Azure Kubernetes için arka uç deposu olar
 
 Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [genel bakış](etcd-api-introduction.md) makalesine bakın. Bu makalede, Azure 'da yerel olarak yüklenmiş ve yapılandırılmış bir etcd yerine [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) kullanan bir Kubernetes kümesini önyüklemek Için [Azure Kubernetes altyapısının](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-Engine) nasıl kullanılacağı gösterilmektedir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'nın en son sürümünü yükler. İşletim sisteminize özel Azure CLı 'yi indirebilir ve yükleme yapabilirsiniz.
 
@@ -33,7 +33,7 @@ Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [gene
 
    Azure Kubernetes altyapısı (**aks-Engine**), Azure 'Da Kubernetes kümeleri için Azure Resource Manager şablonları oluşturur. Aks-Engine 'e giriş, Orchestrator, Özellikler ve aracılar dahil olmak üzere istenen kümeyi tanımlayan bir küme tanımı dosyasıdır. Giriş dosyalarının yapısı, Azure Kubernetes hizmeti için genel API 'ye benzerdir.
 
-1. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Önizleme sürümünü şu adreste kullanmak için kaydolun: https://aka.ms/cosmosetcdapi-signup . Formu gönderdikten sonra, aboneliğiniz Azure Cosmos etcd API 'sini kullanmak için beyaz listeye alınacaktır. 
+1. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Önizleme sürümünü şu adreste kullanmak için kaydolun: https://aka.ms/cosmosetcdapi-signup . Formu gönderdikten sonra, aboneliğinizin Azure Cosmos etcd API 'sini kullanmasına izin verilir. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Kümeyi Azure Cosmos DB dağıtma
 
@@ -43,7 +43,7 @@ Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [gene
    az login 
    ```
 
-1. Birden fazla aboneliğiniz varsa, Azure Cosmos DB etcd API 'SI için beyaz listeye alınmış aboneliğe geçiş yapın. Aşağıdaki komutu kullanarak gerekli aboneliğe geçiş yapabilirsiniz:
+1. Birden fazla aboneliğiniz varsa Azure Cosmos DB etcd API 'SI için izin verilen aboneliğe geçiş yapın. Aşağıdaki komutu kullanarak gerekli aboneliğe geçiş yapabilirsiniz:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"

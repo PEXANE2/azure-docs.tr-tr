@@ -1,31 +1,30 @@
 ---
-title: Zaman serisi modeli-Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights önizlemede zaman serisi modeli hakkında bilgi edinin.
+title: Zaman serisi modeli-Azure Time Series Insights Gen2 | Microsoft Docs
+description: Azure Time Series Insights Gen2 ' de zaman serisi modeli hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5a22987b1d67f9e9f8384e5376343af2f91b5e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495389"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
+# <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 içinde zaman serisi modeli
 
-Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights önizleme ortamında kendi modellerinizi oluşturma ve güncelleştirme işlemlerinin nasıl başlatılacağı açıklanmaktadır.
+Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights Gen2 ortamında kendi modellerinizi oluşturma ve güncelleştirme işlemlerinin nasıl başlatılacağı açıklanmaktadır.
 
 > [!TIP]
 >
 > * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
-> * Zaman serisi modeli Kullanıcı arabiriminize nasıl gidebileceğinizi öğrenmek için [Azure Time Series Insights önizleme Gezgini](time-series-insights-update-explorer.md) hakkında bilgi edinin.
-> * Time Series Insights Web gezginini kullanarak [zaman serisi modeliyle çalışmayı](time-series-insights-update-how-to-tsm.md) öğrenin.
+> * Azure Time Series Insights Gen2 gezginini kullanarak [zaman serisi modeliyle nasıl çalışacağınızı](time-series-insights-update-how-to-tsm.md) öğrenin.
 
 ## <a name="summary"></a>Özet
 
@@ -58,7 +57,7 @@ Zaman serisi modeli, bu kurgusal örnekte karşılaşılan birçok senaryoya **u
 
 ### <a name="key-capabilities"></a>Temel işlevler
 
-Zaman serisi bağlamı 'nı yönetmeyi basit ve kolay hale getirmek için amaç sayesinde, zaman serisi modeli Time Series Insights önizlemede aşağıdaki özellikleri sağlar. Size yardımcı olur:
+Zaman serisi bağlamı 'nı yönetmeyi basit ve kolay hale getirmek için amaç ile zaman serisi modeli, Azure Time Series Insights Gen2 ' de aşağıdaki özellikleri sağlar. Size yardımcı olur:
 
 * Skaler işlevler, toplama işlemleri vb. kullanarak hesaplamalar veya formüller yazın ve yönetin.
 * Gezinti, arama ve başvuruyu etkinleştirmek için üst-alt ilişkilerini tanımlayın.
@@ -72,11 +71,11 @@ Zaman serisi modelinin üç çekirdek bileşeni vardır:
 * [Zaman serisi model hiyerarşileri](#time-series-model-hierarchies)
 * [Zaman serisi model türleri](#time-series-model-types)
 
-Bu bileşenler, zaman serisi modeli belirtmek ve Azure Time Series Insights verilerinizi düzenlemek için birleştirilir.
+Bu bileşenler, zaman serisi modeli belirtmek ve verilerinizi düzenlemek için birleştirilir.
 
 [![Zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-[Time Series Insights Preview](time-series-insights-update-how-to-tsm.md) arabirimi aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)aracılığıyla yönetilebilir.
+[Azure Time Series Insights Gen2 Explorer](time-series-insights-update-how-to-tsm.md)aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)aracılığıyla yönetilebilir.
 
 ## <a name="time-series-model-instances"></a>Zaman serisi model örnekleri
 
@@ -88,7 +87,7 @@ Zaman serisi model *örnekleri* , zaman serisinin kendi sanal temsilleridir.
 
 *Örnek alanları* , hiyerarşi düzeyleri ve üretici, işleç vb. değerleri içerebilen açıklayıcı bilgilerin bir koleksiyonudur.
 
-Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan sonra, örnekler otomatik olarak keşfedilir ve bir zaman serisi modelinde oluşturulur. Örnekler, zaman serisi modeli sorguları kullanılarak Time Series Insights Gezgini aracılığıyla oluşturulabilir veya güncelleştirilir.
+Azure Time Series Insights Gen2 ortamı için bir olay kaynağı yapılandırıldıktan sonra, örnekler otomatik olarak keşfedilir ve bir zaman serisi modelinde oluşturulur. Örnekler, zaman serisi modeli sorguları kullanılarak Azure Time Series Insights Gen2 Explorer aracılığıyla oluşturulabilir veya güncelleştirilir.
 
 [Contoso rüzgar grubu tanıtımı](https://insights.timeseries.azure.com/preview/samples) çeşitli canlı örnek örnekleri sunar.
 
@@ -130,15 +129,15 @@ Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan son
 ```
 
 > [!TIP]
-> Time Series Insights örneği API 'SI ve oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)okuyun.
+> Örnek API oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)okuyun.
 
 ## <a name="time-series-model-hierarchies"></a>Zaman serisi model hiyerarşileri
 
 Zaman serisi model *hiyerarşileri* , özellik adlarını ve bunların ilişkilerini belirterek örnekleri düzenler.
 
-Belirli bir Time Series Insights ortamında birden fazla hiyerarşiyi yapılandırabilirsiniz. Zaman serisi model örneği, tek bir hiyerarşiye veya birden çok hiyerarşiyle (çoktan çoğa ilişki) eşleyebilirsiniz.
+Verilen bir Azure Time Series Insights Gen2 ortamında birden çok hiyerarşi yapılandırabilirsiniz. Zaman serisi model örneği, tek bir hiyerarşiye veya birden çok hiyerarşiyle (çoktan çoğa ilişki) eşleyebilirsiniz.
 
-[Contoso rüzgar grubu demo](https://insights.timeseries.azure.com/preview/samples) istemci arabirimi standart bir örnek ve tür hiyerarşisi görüntüler.
+[Contoso rüzgar grubu tanıtımı](https://insights.timeseries.azure.com/preview/samples) , standart bir örnek ve tür hiyerarşisi görüntüler.
 
 [![Zaman serisi modeli hiyerarşisi örneği](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -187,7 +186,7 @@ Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 * `ManufactureDate`üst ve alt öğesi olan bir hiyerarşiyi tanımlar `year` `month` . Her biri `ManufactureDate` birden çok içerebilir `years` , bu da birden fazla bulunabilir `months` .
 
 > [!TIP]
-> Time Series Insights örneği API 'SI ve CRUD desteği için, [verileri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)okuyun.
+> Hiyerarşi API 'SI oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)okuyun.
 
 ### <a name="hierarchy-example"></a>Hiyerarşi örneği
 
@@ -217,13 +216,13 @@ Bu **hiyerarşinin** `building` , `floor` , ve hiyerarşisinde `room` **ınstanc
 | ID4 | "derleniyor" = "1000", "Floor" = "10"  |
 | ID5 | Hiçbir "derleme", "kat" veya "Oda" ayarlanmamış. |
 
-**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat*ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights Explorer](time-series-insights-update-explorer.md) 'ın **H1** hiyerarşisinin bir parçası olarak görüntülenir.
+**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat*ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights Gen2 Explorer 'ın](time-series-insights-update-explorer.md) **H1** hiyerarşisinin bir parçası olarak görüntülenir.
 
 Bunlar, belirtilen veri hiyerarşisine uygun olmadıkları için, *üst öğe olmayan örnekler* altında sınıflandırılmaktadır.
 
 ## <a name="time-series-model-types"></a>Zaman serisi model türleri
 
-Zaman serisi model *türleri* , hesaplamalar yapmak için değişkenler veya formüller tanımlamanıza yardımcı olur. Türler, belirli bir Time Series Insights örneğiyle ilişkilendirilir.
+Zaman serisi model *türleri* , hesaplamalar yapmak için değişkenler veya formüller tanımlamanıza yardımcı olur. Türler belirli bir örnekle ilişkilendirilir.
 
 Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir zaman serisi model örneği, *Ortalama sıcaklık*, *en az sıcaklık*ve *en fazla sıcaklık*değişkenleriyle oluşan *sıcaklık algılayıcısı*türünde olabilir.
 
@@ -232,7 +231,7 @@ Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir zaman se
 [![Zaman serisi model türü örneği](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Time Series Insights örneği API 'SI ve CRUD desteği için, [veri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> API oluşturma, okuma, güncelleştirme ve silme (CRUD) türleri için, [veri sorgulama](concepts-query-overview.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Tür özellikleri
 
@@ -266,7 +265,7 @@ Türler aşağıdaki JSON örneğine uyar:
         "Interpolated Speed": {
           "kind": "numeric",
           "value": {
-              "tsx": "$event.[speed].Double"
+              "tsx": "$event['Speed-Sensor'].Double"
           },
           "filter": null,
           "interpolation": {
@@ -276,7 +275,7 @@ Türler aşağıdaki JSON örneğine uyar:
               }
           },
           "aggregation": {
-              "tsx": "left($value)"
+              "tsx": "right($value)"
           }
         }
       }
@@ -284,114 +283,12 @@ Türler aşağıdaki JSON örneğine uyar:
   ]
 }
 ```
-
-### <a name="variables"></a>Değişkenler
-
-Time Series Insights türler, olaylar üzerinde formül ve hesaplama kurallarını belirten birçok değişkene sahip olabilir.
-
-Her değişken üç *türden*biri olabilir: *sayısal*, *kategorik*ve *Toplam*.
-
-* **Sayısal** türleri sürekli değerlerle çalışır.
-* **Kategorik** türleri tanımlanmış bir dizi farklı değer kümesiyle çalışır.
-* **Toplama** değerleri, tek bir türdeki birden çok değişkeni (tüm sayısal veya tüm kategorik) birleştirir.
-
-Aşağıdaki tabloda, her değişken türü için uygun olan özellikler görüntülenmektedir.
-
-[![Zaman serisi modeli değişken tablosu](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
-
-#### <a name="numeric-variables"></a>Sayısal değişkenler
-
-| Variable Özelliği | Açıklama |
-| --- | ---|
-| Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
-| Değişken değeri | Cihaz veya sensörlerden gelen ve zaman serisi Ifadeleri kullanılarak dönüştürülen hesaplama için kullanılan telemetri değerleri. Sayısal tür değişkenleri *Double*türünde olmalıdır.|
-| Değişken ilişkilendirme | Enterpolasyon, var olan verileri kullanarak bir sinyalin nasıl yeniden oluşturulacağını belirtir. *Adım* ve *Doğrusal* enterpolasyon seçenekleri sayısal değişkenler için kullanılabilir. |
-| Değişken toplama | *AVG*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last* ve Time-ağırlıklı (*AVG*, *Min*, *Max*, *Sum*, *Left*) işleçleri ile hesaplamayı destekler. |
-
-Değişkenler aşağıdaki JSON örneğine uyar:
-
-```JSON
-"Interpolated Speed": {
-  "kind": "numeric",
-  "value": {
-    "tsx": "$event.[speed].Double"
-  },
-  "filter": null,
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span": "P1D"
-    }
-  },
-  "aggregation": {
-    "tsx": "left($value)"
-  }
-}
-```
-
-#### <a name="categorical-variables"></a>Kategorik değişkenler
-
-| Variable Özelliği | Açıklama |
-| --- | ---|
-| Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
-| Değişken değeri | Cihazdan veya sensörlerden gelen hesaplama için kullanılan telemetri değerleri. Kategorik tür değişkenleri *Long* veya *String*olmalıdır. |
-| Değişken ilişkilendirme | Enterpolasyon, var olan verileri kullanarak bir sinyalin nasıl yeniden oluşturulacağını belirtir. *Adım* ilişkilendirme seçeneği kategorik değişkenler için kullanılabilir. |
-| Değişken kategorileri | Kategoriler cihazdan veya algılayıcılardan bir etikete gelen değerler arasında bir eşleme oluşturur. |
-| Değişken varsayılan kategorisi | Varsayılan kategori, "Categories" özelliğinde eşlenmemiş tüm değerler içindir. |
-
-Değişkenler aşağıdaki JSON örneğine uyar:
-
-```JSON
-"Status": {
-  "kind": "categorical",
-  "value": {
-     "tsx": "toLong($event.[Status].Double)"
-},
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span" : "PT1M"
-    }
-  },
-  "categories": [
-    {
-      "values": [0, 1, 2],
-      "label": "Good"
-    },
-    {
-      "values": [3],
-      "label": "Bad"
-    }
-  ],
-  "defaultCategory": {
-    "label": "Not Applicable"
-  }
-}
-```
-
-#### <a name="aggregate-variables"></a>Toplam değişkenleri
-
-| Variable Özelliği | Açıklama |
-| --- | ---|
-| Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
-| Değişken toplama | *AVG*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last*ile hesaplamayı destekler. |
-
-Değişkenler aşağıdaki JSON örneğine uyar:
-
-```JSON
-"Aggregate Speed": {
-  "kind": "aggregate",
-  "filter": null,
-  "aggregation": {
-    "tsx": "avg($event.Speed.Double)"
-  }
-}
-```
-
-Değişkenler, zaman serisi modelinin tür tanımında depolanır ve depolanan tanımı geçersiz kılmak için [sorgu API 'leri](concepts-query-overview.md) aracılığıyla satır içi olarak sağlanır.
+Zaman serisi model türlerinde, olaylar üzerinde formül ve hesaplama kurallarını belirten birçok değişken olabilir. [Zaman serisi model değişkenlerinin nasıl tanımlanacağı](./concepts-variables.md) hakkında daha fazla bilgi edinin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri sorgulama](concepts-query-overview.md) hakkında bilgi edinin
+- Modeli API 'Ler aracılığıyla düzenleme hakkında daha fazla bilgi için [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.
 
-* [Zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.
+- [Zaman serisi model değişkenleriyle](./concepts-variables.md) oluşturabileceğiniz formülleri ve hesaplamaları keşfet
+
+- Azure Time Series Insights Gen2 'de [veri sorgulama](concepts-query-overview.md) hakkında bilgi edinin

@@ -3,20 +3,20 @@ title: Kasa tanılama ayarlarını ölçekte yapılandırma
 description: Azure Ilkesini kullanarak belirli bir kapsamdaki tüm kasaları için Log Analytics tanılama ayarlarını yapılandırma
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e6ba8eb98ca1d6af9fc745d9baf3840ccd1ac224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195715"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498058"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Kasa tanılama ayarlarını ölçekte yapılandırma
 
-Azure Backup tarafından sunulan raporlama çözümü Log Analytics (LA) kullanır. Belirli bir kasadaki verilerin LA 'ya gönderilmesi için bu kasa için bir [Tanılama ayarı](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) oluşturulması gerekir.
+Azure Backup tarafından sunulan raporlama çözümü Log Analytics (LA) kullanır. Belirli bir kasadaki verilerin LA 'ya gönderilmesi için bu kasa için bir [Tanılama ayarı](./backup-azure-diagnostic-events.md) oluşturulması gerekir.
 
 Genellikle, kasa başına el ile bir tanılama ayarı eklemek çok bir görev olabilir. Ayrıca, bu kasanın raporlarını görüntüleyebilmek için oluşturulan tüm yeni kasaların tanılama ayarlarının etkinleştirilmiş olması gerekir.
 
-Tanılama ayarlarının ölçeğe göre (hedef olarak LA birlikte) oluşturulmasını basitleştirmek için, Azure Backup yerleşik bir [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/)sağlar. Bu ilke, belirli bir abonelik veya kaynak grubundaki tüm kasaları bir LA tanılama ayarı ekler. Aşağıdaki bölümler, bu ilkenin nasıl kullanılacağına ilişkin yönergeler sağlar.
+Tanılama ayarlarının ölçeğe göre (hedef olarak LA birlikte) oluşturulmasını basitleştirmek için, Azure Backup yerleşik bir [Azure ilkesi](../governance/policy/index.yml)sağlar. Bu ilke, belirli bir abonelik veya kaynak grubundaki tüm kasaları bir LA tanılama ayarı ekler. Aşağıdaki bölümler, bu ilkenin nasıl kullanılacağına ilişkin yönergeler sağlar.
 
 ## <a name="supported-scenarios"></a>Desteklenen Senaryolar
 
@@ -70,7 +70,7 @@ Düzeltme görevi, ilke tanımına göre uyumlu olmayan kasaların uygulanmasın
 * Kasa için tanılama ayarı yok.
 * Kasa için Tanılama ayarları bulunur, ancak ayarlardan hedefe göre ve geçiş içinde seçilen **kaynağa** özgü **Tüm** kaynağa özgü olaylar etkin değil.
 
-Bu nedenle, bir Kullanıcı AzureDiagnostics modunda etkin AzureBackupReport olayını içeren bir kasaya sahip olsa bile (yedekleme raporları tarafından desteklenir), kaynağa özgü mod tanılama ayarlarını oluşturmak için önerilen yöntem [olduğundan, düzeltme](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)görevi bu kasa için de geçerlidir.
+Bu nedenle, bir Kullanıcı AzureDiagnostics modunda etkin AzureBackupReport olayını içeren bir kasaya sahip olsa bile (yedekleme raporları tarafından desteklenir), kaynağa özgü mod tanılama ayarlarını oluşturmak için önerilen yöntem [olduğundan, düzeltme](./backup-azure-diagnostic-events.md#legacy-event)görevi bu kasa için de geçerlidir.
 
 Ayrıca, bir kullanıcının altı kaynağa özgü olayların yalnızca bir alt kümesiyle olan bir Kasası varsa, yedekleme raporları yalnızca altı kaynağa özgü olay etkinleştirildiğinde beklendiği gibi çalışadıklarından bu kasa için düzeltme görevi uygulanır.
 
@@ -84,6 +84,6 @@ Ayrıca, bir kullanıcının altı kaynağa özgü olayların yalnızca bir alt 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Yedekleme raporlarını nasıl kullanacağınızı öğrenin](https://docs.microsoft.com/azure/backup/configure-reports)
-* [Azure Ilkesi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/governance/policy/)
-* [Bir verme kapsamındaki tüm VM 'Lerin yedeklemesini otomatik olarak etkinleştirmek için Azure Ilkesini kullanın](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+* [Yedekleme raporlarını nasıl kullanacağınızı öğrenin](./configure-reports.md)
+* [Azure Ilkesi hakkında daha fazla bilgi edinin](../governance/policy/index.yml)
+* [Bir verme kapsamındaki tüm VM 'Lerin yedeklemesini otomatik olarak etkinleştirmek için Azure Ilkesini kullanın](./backup-azure-auto-enable-backup.md)

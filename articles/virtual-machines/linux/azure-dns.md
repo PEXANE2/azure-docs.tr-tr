@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135316"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494743"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için DNS ad çözümleme seçenekleri
 Azure, tek bir sanal ağdaki tüm sanal makineler için varsayılan olarak DNS ad çözümlemesi sağlar. Azure 'un barındırdığı sanal makinelerinizde kendi DNS hizmetlerinizi yapılandırarak kendi DNS ad çözümlemesi çözümünüzü uygulayabilirsiniz. Aşağıdaki senaryolar, durumunuza uygun olanı seçmenize yardımcı olmalıdır.
@@ -121,7 +121,7 @@ DNS iletimi, sanal ağlar arasında DNS çözümlemesini de sağlar ve şirket i
 
 Azure 'un sağladığı ad çözümlemesini kullandığınızda, iç DNS son eki, her bir sanal makineye DHCP kullanılarak sağlanır. Kendi ad çözümleme çözümünüzü kullandığınızda, bu sonek sanal makinelere sağlanmaz çünkü son ek diğer DNS mimarilerini kesintiye uğratır. Makinelere FQDN ile başvurmak veya sanal makinelerinizde son eki yapılandırmak için, soneki belirtmek üzere PowerShell 'i veya API 'yi kullanabilirsiniz:
 
-* Azure Resource Manager tarafından yönetilen sanal ağlar için, sonek [ağ arabirim kartı](https://msdn.microsoft.com/library/azure/mt163668.aspx) kaynağı aracılığıyla kullanılabilir. Ayrıca, `azure network public-ip show <resource group> <pip name>` NIC 'ın FQDN 'sini içeren genel IP 'nizin ayrıntılarını göstermek için komutunu da çalıştırabilirsiniz.
+* Azure Resource Manager tarafından yönetilen sanal ağlar için, sonek [ağ arabirim kartı](/rest/api/virtualnetwork/networkinterfaces) kaynağı aracılığıyla kullanılabilir. Ayrıca, `azure network public-ip show <resource group> <pip name>` NIC 'ın FQDN 'sini içeren genel IP 'nizin ayrıntılarını göstermek için komutunu da çalıştırabilirsiniz.
 
 Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS çözümünüzü sağlamanız gerekir.  DNS çözümünüzün şunları yapması gerekir:
 
@@ -131,6 +131,6 @@ Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS ç�
 * Dış aracılardan kaynaklanan tehditleri azaltmak için Internet 'ten erişime karşı güvenli hale getirilmesi.
 
 > [!NOTE]
-> En iyi performans için, Azure DNS sunucularında sanal makineler kullandığınızda IPv6 'Yı devre dışı bırakın ve her DNS sunucusu sanal makinesine [örnek düzeyi genel IP](../../virtual-network/virtual-networks-instance-level-public-ip.md) atayın.  
+> En iyi performans için, Azure DNS sunucularında sanal makineler kullandığınızda IPv6 'Yı devre dışı bırakın ve her DNS sunucusu sanal makinesine [örnek düzeyi genel IP](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) atayın.  
 >
 >

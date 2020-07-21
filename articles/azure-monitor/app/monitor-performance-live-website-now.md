@@ -3,17 +3,17 @@ title: Azure Application Insights ile canlı bir ASP.NET web uygulamasını izle
 description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket içinde veya VM 'lerde barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166391"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499537"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
 
 > [!IMPORTANT]
-> Durum İzleyicisi artık kullanım için önerilmez ve **1 haziran 2021** ' den Itibaren bu durum izleyici sürümü desteklenmeyecektir. Azure Izleyici Application Insights aracısıyla değiştirilmiştir (eski adıyla Durum İzleyicisi v2). Şirket [içi sunucu dağıtımları](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) veya [Azure sanal makine ve sanal makine ölçek kümesi dağıtımları](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)için belgelerimizi inceleyin.
+> Durum İzleyicisi artık kullanım için önerilmez ve **1 haziran 2021** ' den Itibaren bu durum izleyici sürümü desteklenmeyecektir. Azure Izleyici Application Insights aracısıyla değiştirilmiştir (eski adıyla Durum İzleyicisi v2). Şirket [içi sunucu dağıtımları](./status-monitor-v2-overview.md) veya [Azure sanal makine ve sanal makine ölçek kümesi dağıtımları](./azure-vm-vmss-apps.md)için belgelerimizi inceleyin.
 
 Kodunuzu değiştirmeye veya yeniden dağıtmaya gerek olmadan canlı bir web uygulamasını Azure Application Insights ile izleyebilirsiniz. [Microsoft Azure](https://azure.com) aboneliğiniz olması gerekir.
 
@@ -39,10 +39,10 @@ Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| **Özel durumları & istekleri** |Yes |Evet |
-| **[Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)** | |Evet |
+| **Özel durumları & istekleri** |Yes |Yes |
+| **[Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)** | |Yes |
 | **[Bağımlılık tanılama](../../azure-monitor/app/asp-net-dependencies.md)** |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| **[Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md)** |Yes |Evet |
+| **[Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md)** |Yes |Yes |
 | **[Özel telemetri için API][api]** |Evet |Hayır |
 | **[İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md)** |Evet |Hayır |
 | **[Sayfa görüntüleme & Kullanıcı verileri](../../azure-monitor/app/javascript.md)** |Evet |Hayır |
@@ -97,7 +97,7 @@ Bunlar, yüklemenizin başarılı olduğunu onaylamak için gerçekleştirebilec
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Application Insights başarıyla iliştirildiğini onaylamanız gerekiyorsa, applicationinsights.dll IIS tarafından yüklendiğini onaylamak için [Sysinternals tanıtıcısını](https://docs.microsoft.com/sysinternals/downloads/handle) bir komut penceresinde çalıştırabilirsiniz.
+- Application Insights başarıyla iliştirildiğini onaylamanız gerekiyorsa, applicationinsights.dll IIS tarafından yüklendiğini onaylamak için [Sysinternals tanıtıcısını](/sysinternals/downloads/handle) bir komut penceresinde çalıştırabilirsiniz.
 
   ```console
   handle.exe /p w3wp.exe
@@ -145,7 +145,7 @@ Bu sorunu [burada](https://github.com/Microsoft/ApplicationInsights-Home/issues/
 * Ayrıntılı günlükleri çıkarmak için yapılandırma dosyasını değiştirin `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` ve `<add key="TraceLevel" value="All" />` öğesine ekleyin `appsettings` .
 Ardından Durum izleyicisini yeniden başlatın.
 
-* Durum İzleyicisi bir .NET uygulaması olduğu gibi, [yapılandırma dosyasına uygun tanılamayı ekleyerek de .net izlemeyi](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)etkinleştirebilirsiniz. Örneğin, bazı senaryolarda [ağ izlemeyi yapılandırarak](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing) ağ düzeyinde neler olduğunu görmek yararlı olabilir
+* Durum İzleyicisi bir .NET uygulaması olduğu gibi, [yapılandırma dosyasına uygun tanılamayı ekleyerek de .net izlemeyi](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)etkinleştirebilirsiniz. Örneğin, bazı senaryolarda [ağ izlemeyi yapılandırarak](/dotnet/framework/network-programming/how-to-configure-network-tracing) ağ düzeyinde neler olduğunu görmek yararlı olabilir
 
 ### <a name="insufficient-permissions"></a>Yetersiz izinler
   
@@ -294,7 +294,7 @@ Durum İzleyicisi'ni kullanarak yalnızca çalışma zamanında izlediğiniz uyg
 
 * HTTP istekleri
 * Bağımlılık çağrıları
-* Özel durumlar
+* Özel Durumlar
 * Performans sayaçları
 
 Derleme zamanında zaten izlenmekte olan uygulamalar için:
@@ -311,7 +311,7 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
 
 ## <a name="download-status-monitor"></a><a name="download"></a>Durum İzleyicisi indir
 
-- Yeni [PowerShell modülünü](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) kullanın
+- Yeni [PowerShell modülünü](./status-monitor-v2-overview.md) kullanın
 - [Durum İzleyicisi yükleyicisini](https://go.microsoft.com/fwlink/?LinkId=506648) indir ve Çalıştır
 - Veya [Web Platformu Yükleyicisi](https://www.microsoft.com/web/downloads/platform.aspx) 'ni çalıştırın ve Application Insights durum İzleyicisi için arama yapın.
 
@@ -321,7 +321,7 @@ Telemetrinizi görüntüleyin:
 
 * Performans ve kullanımı izlemek için [ölçümleri keşfedin](../../azure-monitor/platform/metrics-charts.md)
 * Sorunların tanımlanması için [Olayları ve günlükleri arayın][diagnostic]
-* Daha gelişmiş sorgular için [analiz](../../azure-monitor/app/analytics.md)
+* Daha gelişmiş sorgular için [analiz](../log-query/log-query-overview.md)
 
 Daha fazla telemetri ekleyin:
 
@@ -336,6 +336,6 @@ Daha fazla telemetri ekleyin:
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

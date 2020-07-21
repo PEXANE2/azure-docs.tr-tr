@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'te SQL Pool 'a giriş
+title: Verileri bir SQL havuzuna alma
 description: Azure SYNAPSE Analytics 'te bir SQL havuzuna veri alma hakkında bilgi edinin
 services: synapse-analytics
 author: djpmsft
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: c093a424ecf085c59501ee3d480838cc30c2ebf4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f7973030b27de95b8b5dd52bdea99e03aebd675a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963045"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496120"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Verileri bir SQL havuzuna yerleştirme
 
 Bu makalede, Azure SYNAPSE Analytics kullanarak bir Azure Data Lake Gen 2 depolama hesabından bir SQL havuzuna veri alma hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: Azure Data Lake Storage Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
