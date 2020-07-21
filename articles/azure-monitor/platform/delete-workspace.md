@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ecd40d34233ba6f0b886f4b55aedf4339bf6de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505202"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
 
@@ -41,7 +41,7 @@ Geçici silme işlemi çalışma alanı kaynağını siler ve ilişkili kullanı
 > [!NOTE] 
 > Azure Otomasyonu hesabınız gibi yüklü çözümler ve bağlı hizmetler, silme sırasında çalışma alanından kalıcı olarak kaldırılır ve kurtarılamaz. Çalışma alanını önceden yapılandırılmış durumuna getirmek için kurtarma işleminden sonra bunların yeniden yapılandırılması gerekir.
 
-Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
+Bir çalışma alanını [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -64,10 +64,10 @@ Geçici silme yöntemi, aynı ayarlar ve çalışma alanı adıyla bir dağıtı
 > [!IMPORTANT]
 > Kalıcı çalışma alanı silme işlemini, geri döndürülemez bu yana dikkatli bir şekilde kullanın, çalışma alanınızı ve verilerini kurtaramayacağız.
 
-Çalışma alanınızı kalıcı olarak silmek için '-zorla ' etiketini ekleyin:
+Çalışma alanınızı kalıcı olarak silmek için '-forceDelete ' etiketini ekleyin:
 
 ```powershell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
 ```
 
 ## <a name="recover-workspace"></a>Çalışma alanını kurtar
@@ -112,6 +112,6 @@ Bir çalışma alanını silmek için en az *Log Analytics katkıda bulunan* izi
 * Bir hata iletisi alırsanız, *Bu çalışma alanı adı zaten kullanımda* veya bir çalışma alanı oluştururken *çakışıyor* olabilir:
   * Çalışma alanı adı, kuruluşunuzdaki birisi veya diğer müşteri tarafından kullanılabilir değil.
   * Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve aynı ada sahip yeni bir çalışma alanı oluşturmak için çalışma alanınızı kalıcı olarak silmek üzere, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:<br>
-     1. Çalışma alanınızı [kurtarın](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) .
-     2. Çalışma alanınızı [kalıcı olarak silin](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
+     1. Çalışma alanınızı [kurtarın](#recover-workspace) .
+     2. Çalışma alanınızı [kalıcı olarak silin](#permanent-workspace-delete) .
      3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.

@@ -3,11 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697071"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503617"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -45,14 +46,14 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 | Hata İletisi      | <span style="font-weight:normal">Belirtilen SAP HANA işlemi desteklenmiyor</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Olası nedenler**    | SAP HANA için Azure Backup, SAP HANA yerel istemcilerde (Studio/kokpit/DBA kokpiti) gerçekleştirilen artımlı yedeklemeyi ve eylemleri desteklemez |
-| **Önerilen eylem** | Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)bakın. |
+| **Önerilen eylem** | Daha fazla bilgi için [buraya](./sap-hana-backup-support-matrix.md#scenario-support)bakın. |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>Usererrorhanapoya Notsupportbackuptype
 
 | Hata İletisi      | <span style="font-weight:normal">Bu SAP HANA veritabanı istenen yedekleme türünü desteklemiyor</span>  |
 | ------------------ | ------------------------------------------------------------ |
 | **Olası nedenler**    | Azure Backup, anlık görüntüleri kullanarak artımlı yedekleme ve yedeklemeyi desteklemez |
-| **Önerilen eylem** | Daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)bakın. |
+| **Önerilen eylem** | Daha fazla bilgi için [buraya](./sap-hana-backup-support-matrix.md#scenario-support)bakın. |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
@@ -66,14 +67,14 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 | Hata İletisi      | <span style="font-weight:normal">SDC 'den MDC 'ye yükseltme algılandı</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **Olası nedenler**    | SAP HANA örneği SDC 'den MDC 'ye yükseltildi. Güncelleştirme sonrasında yedeklemeler başarısız olur. |
-| **Önerilen eylem** | Sorunu çözmek için [SDC Ile MDC yükseltmesine](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) listelenen adımları izleyin |
+| **Önerilen eylem** | Sorunu çözmek için [SDC Ile MDC yükseltmesine](#sdc-to-mdc-upgrade-with-a-change-in-sid) listelenen adımları izleyin |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>Usererrorınvalidbackintconfiguration
 
 | Hata İletisi      | <span style="font-weight:normal">Geçersiz backınt yapılandırması algılandı</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **Olası nedenler**    | Azure Backup için yedekleme parametreleri yanlış belirtildi |
-| **Önerilen eylem** | Aşağıdaki (backınt) parametrelerinin ayarlanmış olup olmadığını denetleyin:<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: false]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>KONAKTA backınt tabanlı parametreler varsa, bunları kaldırın. Parametreler, ana bilgisayar düzeyinde mevcut değilse ancak bir veritabanı düzeyinde el ile değiştirilmişse, bunları daha önce açıklandığı gibi uygun değerlere dönüştürmeniz gerekir. Ya da, [korumayı durdurun ve Azure Portal yedekleme verilerini koruyun](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) ve sonra **yedeklemeyi devam ettirir**' ı seçin. |
+| **Önerilen eylem** | Aşağıdaki (backınt) parametrelerinin ayarlanmış olup olmadığını denetleyin:<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: false]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>KONAKTA backınt tabanlı parametreler varsa, bunları kaldırın. Parametreler, ana bilgisayar düzeyinde mevcut değilse ancak bir veritabanı düzeyinde el ile değiştirilmişse, bunları daha önce açıklandığı gibi uygun değerlere dönüştürmeniz gerekir. Ya da, [korumayı durdurun ve Azure Portal yedekleme verilerini koruyun](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) ve sonra **yedeklemeyi devam ettirir**' ı seçin. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>Usererrorıncompatiblesrctargetsystemsforrestore
 
@@ -203,4 +204,4 @@ Yukarıdaki senaryolarda, VM 'de bir yeniden kaydetme işlemi tetiklemeniz öner
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi hakkında [sık sorulan soruları](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) gözden geçirin.
+- Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi hakkında [sık sorulan soruları](./sap-hana-faq-backup-azure-vm.md) gözden geçirin.

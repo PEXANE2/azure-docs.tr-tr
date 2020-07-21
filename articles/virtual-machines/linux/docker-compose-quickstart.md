@@ -6,16 +6,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a56ad3fd5999600dfc576f0a0e34ff7221267934
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970298"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502461"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Azure 'da çok kapsayıcılı bir uygulama tanımlamak ve çalıştırmak için Docker ve Compose kullanmaya başlama
 [Oluşturma](https://github.com/docker/compose)ile birden çok Docker kapsayıcılarından oluşan bir uygulamayı tanımlamak için basit bir metin dosyası kullanın. Sonra uygulamanızı, tanımlı ortamınızı dağıtmak üzere her şeyi yapan tek bir komutta çalıştırabilirsiniz. Örnek olarak, bu makalede bir Ubuntu VM üzerinde bir arka uç MariaDB SQL veritabanı ile bir WordPress blogunu hızlı bir şekilde nasıl ayarlayabileceğinizi gösterir. Ayrıca, daha karmaşık uygulamalar oluşturmak için Oluştur ' a da yararlanabilirsiniz.
 
-Bu makale, [Azure Cloud Shell](https://shell.azure.com/bash) ve [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürümü 2.0.58 kullanılarak 2/14/2019 ' de son test edilmiştir.
+Bu makale, [Azure Cloud Shell](https://shell.azure.com/bash) ve [Azure CLI](/cli/azure/install-azure-cli) sürümü 2.0.58 kullanılarak 2/14/2019 ' de son test edilmiştir.
 
 ## <a name="create-docker-host-with-azure-cli"></a>Azure CLı ile Docker Konağı oluşturma
 En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
@@ -125,4 +126,3 @@ Artık, 80 numaralı bağlantı noktasındaki VM 'ye doğrudan WordPress 'e bağ
 * Çok Kapsayıcılı uygulamalar oluşturma ve dağıtma hakkında daha fazla örnek için [oluşturma komut satırı başvurusunu](https://docs.docker.com/compose/reference/) ve [Kullanıcı kılavuzunu](https://docs.docker.com/compose/) inceleyin.
 * Docker ile bir Azure VM ve oluşturma ile ayarlanmış bir uygulama dağıtmak için kendi veya [topluluğınızdan](https://azure.microsoft.com/documentation/templates/)katkıdan bir Azure Resource Manager şablonu kullanın. Örneğin, [Docker şablonuyla bir WordPress blogu dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) , bir Ubuntu VM üzerinde bir MySQL arka ucuna sahip WordPress 'yi hızlıca dağıtmak Için Docker ve Compose kullanır.
 * Docker Compose bir Docker Sısınma kümesiyle tümleştirmeyi deneyin. Senaryolar için [Sısınma Ile oluşturma kullanma](https://docs.docker.com/compose/swarm/) konusuna bakın.
-

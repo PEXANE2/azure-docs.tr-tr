@@ -3,11 +3,13 @@ title: Çevrimdışı yedeklemeye genel bakış
 description: Çevrimdışı yedeklemenin bileşenleri hakkında bilgi edinin. Azure Içeri/dışarı aktarma hizmeti temel alınarak Azure Data Box ve çevrimdışı yedekleme tabanlı çevrimdışı yedekleme içerirler.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628340"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503634"
 ---
 # <a name="overview-of-offline-backup"></a>Çevrimdışı yedeklemeye genel bakış
 
@@ -43,7 +45,7 @@ Azure Data Box göre çevrimdışı yedekleme 'yi kullanmak için [Azure Data Bo
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti 'ni temel alan çevrimdışı yedekleme
 
-Bu seçenek Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A ve MARS Aracısı tarafından desteklenir. [Azure içeri/dışarı aktarma hizmetini](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)kullanır. Azure ile uyumlu disklerinizi ve bağlayıcılarınızı kullanarak ilk yedekleme verilerini Azure 'a aktarabilirsiniz. Bu yaklaşım, hazırlama konumu olarak bilinen geçici depolamayı sağlamanızı ve yedekleme verilerini biçimlendirmek ve müşterinin sahip olduğu disklere kopyalamak için önceden oluşturulmuş yardımcı programları kullanmayı gerektirir.
+Bu seçenek Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A ve MARS Aracısı tarafından desteklenir. [Azure içeri/dışarı aktarma hizmetini](../storage/common/storage-import-export-service.md)kullanır. Azure ile uyumlu disklerinizi ve bağlayıcılarınızı kullanarak ilk yedekleme verilerini Azure 'a aktarabilirsiniz. Bu yaklaşım, hazırlama konumu olarak bilinen geçici depolamayı sağlamanızı ve yedekleme verilerini biçimlendirmek ve müşterinin sahip olduğu disklere kopyalamak için önceden oluşturulmuş yardımcı programları kullanmayı gerektirir.
 
 Bu seçenekle yedekleme verilerinin hareketini açıklayan bir mimari burada gösterilmiştir.
 
@@ -57,9 +59,9 @@ Mimarinin özeti aşağıdadır:
 4. Azure veri merkezinde, disklerdeki veriler bir Azure depolama hesabına kopyalanır.
 5. Azure Backup, yedekleme verilerini depolama hesabından kurtarma hizmetleri kasasına kopyalar. Artımlı yedeklemeler zamanlandı.
 
-Azure Içeri/dışarı aktarma hizmeti 'ni MARS aracısına göre çevrimdışı yedeklemeyi kullanmak için, bkz. [Azure Backup çevrimdışı yedekleme iş akışı](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
+Azure Içeri/dışarı aktarma hizmeti 'ni MARS aracısına göre çevrimdışı yedeklemeyi kullanmak için, bkz. [Azure Backup çevrimdışı yedekleme iş akışı](./backup-azure-backup-import-export.md).
 
-MABS veya DPM-A ile aynı şekilde kullanmak için bkz. [DPM Için çevrimdışı yedekleme iş akışı ve Azure Backup sunucusu](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
+MABS veya DPM-A ile aynı şekilde kullanmak için bkz. [DPM Için çevrimdışı yedekleme iş akışı ve Azure Backup sunucusu](./backup-azure-backup-server-import-export.md).
 
 ## <a name="offline-backup-support-summary"></a>Çevrimdışı yedekleme desteği Özeti
 
@@ -68,11 +70,11 @@ Aşağıdaki tabloda, senaryonuza göre uygun seçimleri yapabilmek için kullan
 | **Dikkate Alınacak Nokta**                                            | **Azure Data Box göre çevrimdışı yedekleme**                     | **Azure Içeri/dışarı aktarma hizmeti 'ni temel alan çevrimdışı yedekleme**                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Azure Backup dağıtım modelleri                              | MARS Aracısı (Önizleme)                                              | MARS Aracısı, MABS, DPM-A                                           |
-| Sunucu başına (MARS) veya koruma grubu başına en fazla yedekleme verisi (MABS, DPM-A) | [Azure Data Box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) -7,2 TB <br> [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) -80 TB       | 80 TB (her biri 8 TB 'a kadar)                          |
-| Güvenlik (veri, cihaz ve hizmet)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) -AES 256 bit şifreli <br> Veri kopyalamak için [cihaz](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) -Rugged Case, tescilli, kimlik bilgisi tabanlı arabirim <br> [Hizmet](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) tarafından korunan Azure Güvenlik özellikleri | Veri-BitLocker şifreli                                 |
+| Sunucu başına (MARS) veya koruma grubu başına en fazla yedekleme verisi (MABS, DPM-A) | [Azure Data Box disk](../databox/data-box-disk-overview.md) -7,2 TB <br> [Azure Data Box](../databox/data-box-overview.md) -80 TB       | 80 TB (her biri 8 TB 'a kadar)                          |
+| Güvenlik (veri, cihaz ve hizmet)                           | [Data](../databox/data-box-security.md#data-box-data-protection) -AES 256 bit şifreli <br> Veri kopyalamak için [cihaz](../databox/data-box-security.md#data-box-device-protection) -Rugged Case, tescilli, kimlik bilgisi tabanlı arabirim <br> [Hizmet](../databox/data-box-security.md#data-box-service-protection) tarafından korunan Azure Güvenlik özellikleri | Veri-BitLocker şifreli                                 |
 | Geçici hazırlama konumu sağlama                     | Gerekli değil                                                | Tahmini yedekleme verileri boyutundan daha fazla veya eşit        |
-| Desteklenen bölgeler                                           | [Azure Data Box disk bölgeleri](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box bölgeler](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure Içeri/dışarı aktarma hizmeti bölgeleri](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Çapraz ülke gönderimi                                     | Desteklenmiyor  <br>    Kaynak adresi ve hedef Azure veri merkezi aynı ülkede/bölgede olmalıdır * | Destekleniyor                                                    |
+| Desteklenen bölgeler                                           | [Azure Data Box disk bölgeleri](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box bölgeler](../databox/data-box-disk-overview.md#region-availability) | [Azure Içeri/dışarı aktarma hizmeti bölgeleri](../storage/common/storage-import-export-service.md#region-availability) |
+| Çapraz ülke gönderimi                                     | Desteklenmez  <br>    Kaynak adresi ve hedef Azure veri merkezi aynı ülkede/bölgede olmalıdır * | Desteklenir                                                    |
 | Lojistik (teslim, taşıma, toplama)           | Tamamen Microsoft tarafından yönetilen                                     | Müşteri tarafından yönetilen                                            |
 | Fiyatlandırma                                                      | [Azure Data Box fiyatlandırması](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box disk fiyatlandırması](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure Içeri/dışarı aktarma hizmeti fiyatlandırması](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 

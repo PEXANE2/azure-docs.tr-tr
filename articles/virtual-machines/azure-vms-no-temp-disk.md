@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 413f53feedc4fee0877694e3f3a3a509c4d38001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783613"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503039"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM boyutları yerel geçici disk yok 
 Bu makalede, yerel geçici diski olmayan (yerel geçici masa olmayan) Azure VM boyutları hakkında sık sorulan soruların (SSS) yanıtları sağlanmaktadır. Bu VM boyutları hakkında daha fazla bilgi için bkz. [dv4 and Dsv4-Series (genel amaçlı Iş yükleri) Için belirtimler](dv4-dsv4-series.md) veya [Ev4 ve Esv4 serisi (bellek Için iyileştirilmiş Iş yükleri) özellikleri](ev4-esv4-series.md).
@@ -22,7 +23,7 @@ Bu makalede, yerel geçici diski olmayan (yerel geçici masa olmayan) Azure VM b
 ## <a name="what-does-no-local-temp-disk-mean"></a>Yerel geçici disk ne anlama geliyor? 
 Geleneksel olarak, küçük bir yerel disk (örneğin, D: sürücü) içeren VM boyutları (örn. Standard_D2s_v3, Standard_E48_v3) vardı. Artık bu yeni VM boyutlarıyla, küçük yerel disk artık yok; Ancak, hala Standart HDD, Premium SSD veya Ultra SSD iliştirebilirsiniz.
 
-## <a name="what-if-i-still-want-local-temp-disk"></a>Hala yerel geçici disk istiyor SEM ne yapmalıyım?
+## <a name="what-if-i-still-want-a-local-temp-disk"></a>Yine de yerel bir geçici disk istiyorum ne olursa?
 İş yükünüz yerel bir geçici disk gerektiriyorsa, yeni [Ddv4 ve Ddsv4](ddv4-ddsv4-series.md) ya da [Edv4 ve Edsv4](edv4-edsv4-series.md) VM boyutlarıdır. Bu boyutlar, önceki v3 boyutları ile karşılaştırıldığında %50 daha büyük geçici disk sunmaktadır.
 
 > [!NOTE]

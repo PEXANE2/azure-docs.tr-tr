@@ -6,23 +6,24 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676900"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501662"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Bakım denetim yapılandırmasındaki kaynakları başka bir bölgeye taşıma
 
 Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları farklı bir Azure bölgesine taşımak için bu makaleyi izleyin. Bir yapılandırmayı bir kaç nedenden dolayı taşımak isteyebilirsiniz. Örneğin, yeni bir bölgeden yararlanmak için, belirli bir bölgedeki özellikleri veya hizmetleri dağıtmak, iç ilke ve idare gereksinimlerini karşılamak veya kapasite planlamasına yanıt vermek için.
 
-Bakım denetimi, özelleştirilmiş bakım yapılandırmalarında, platform güncelleştirmelerinin [Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM 'Lerine ve Azure adanmış konaklarına nasıl uygulandığını denetlemenize olanak tanır. Bakım denetimini bölgeler arasında taşımak için birkaç senaryo vardır:
+Bakım denetimi, özelleştirilmiş bakım yapılandırmalarında, platform güncelleştirmelerinin [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) ve [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM 'Lerine ve Azure adanmış konaklarına nasıl uygulandığını denetlemenize olanak tanır. Bakım denetimini bölgeler arasında taşımak için birkaç senaryo vardır:
 
 - Bir bakım yapılandırmasıyla ilişkili kaynakları taşımak, ancak yapılandırmanın kendisi için değil, bu makaleye uyun.
 - Bakım denetimi yapılandırmanızı taşımak, ancak yapılandırmayla ilişkili kaynakları değil, [Bu yönergeleri](move-region-maintenance-configuration.md)izleyin.
 - Bakım yapılandırmasını ve bununla ilişkili kaynakları taşımak için önce [Bu yönergeleri](move-region-maintenance-configuration.md)uygulayın. Ardından, bu makaledeki yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başlamadan önce:
 
@@ -48,7 +49,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başla
     $adh | Adanmış konak adı | "myHost"
     $adhParentName | Üst kaynak adı | HostGroup
     
-2. PowerShell [Get-Azconfigurationatama](https://docs.microsoft.com/powershell/module/az.maintenance/Get-AzConfigurationAssignment?view=azps-3.5.0) komutunu kullanarak bakım yapılandırmasını almak için:
+2. PowerShell [Get-Azconfigurationatama](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) komutunu kullanarak bakım yapılandırmasını almak için:
 
     - Azure ayrılmış konakları için şunu çalıştırın:
         ```
@@ -60,7 +61,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başla
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. CLı [az Maintenance atama](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) komutunu kullanarak bakım yapılandırmasını almak için:
+3. CLı [az Maintenance atama](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) komutunu kullanarak bakım yapılandırmasını almak için:
 
     - Azure adanmış konaklar için:
 
@@ -77,7 +78,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başla
 
 ## <a name="move"></a>Taşı 
 
-1. Azure VM 'lerini yeni bölgeye taşımak için [Bu yönergeleri izleyin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) .
+1. Azure VM 'lerini yeni bölgeye taşımak için [Bu yönergeleri izleyin](../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) .
 2. Kaynaklar taşındıktan sonra, bakım yapılandırmalarının taşınmadığınıza bağlı olarak, bakım yapılandırmasını yeni bölgedeki kaynaklara uygun şekilde yeniden uygulayın. [PowerShell](../virtual-machines/maintenance-control-powershell.md) veya [CLI](../virtual-machines/maintenance-control-cli.md)kullanarak bir kaynağa bakım yapılandırması uygulayabilirsiniz.
 
 

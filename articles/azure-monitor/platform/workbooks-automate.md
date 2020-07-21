@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982148"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504929"
 ---
 # <a name="programmatically-manage-workbooks"></a>Program aracılığıyla çalışma kitaplarını yönetme
 
@@ -77,7 +78,7 @@ Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır
     }
     ```
 1. `galleries`Nesnesinde `name` ve `category` anahtarlarını değerlerinizle birlikte girin. Sonraki bölümde [Parametreler](#parameters) hakkında daha fazla bilgi edinin.
-2. Bu Azure Resource Manager şablonunu [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), [komut satırı arabirimi](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)vb. kullanarak dağıtın.
+2. Bu Azure Resource Manager şablonunu [Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), [komut satırı arabirimi](../../azure-resource-manager/templates/deploy-cli.md), [PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)vb. kullanarak dağıtın.
 3. Azure portal açın ve Azure Resource Manager şablonunda seçilen çalışma kitabı galerisine gidin. Örnek şablonda Azure Izleyici çalışma kitabı galerisine gidin:
     1. Azure portal açın ve Azure Izleyicisi ' ne gidin
     2. `Workbooks`İçindekiler tablosundan aç

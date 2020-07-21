@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99685b4d1476ee527b9eb7f1332f6a6beece669
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68834590"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499981"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 'da IBM iş yükleri
 
@@ -36,7 +37,7 @@ IBM ana bilgisayar sistemlerini Azure 'a geçirmenize yardımcı olacak kapsaml�
 
 **Sonraki adımlar**
 
-- [Ana bilgisayar geçişi: Myon ve olgular](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Ana bilgisayar geçişi: Myon ve olgular](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler](./install-ibm-z-environment.md)
 - [IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama](./demo.md)
-- [Azure 'da IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
+- [Azure 'da IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)

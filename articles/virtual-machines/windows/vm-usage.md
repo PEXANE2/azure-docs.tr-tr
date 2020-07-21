@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d480b9309c9028d8f55ab50c72a86889f320810b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773781"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500124"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure sanal makine kullanımını anlama
 Azure kullanım verilerinizi analiz ederek, güçlü tüketim öngörüleri, kuruluşunuzun tamamında daha iyi maliyet yönetimi ve ayırmayı olanaklı hale getirebilirler. Bu belge, Azure Işlem tüketimi ayrıntılarınız hakkında ayrıntılı bilgi sağlar. Genel Azure kullanımı hakkında daha fazla bilgi için [Faturanızı Anlama](../../cost-management-billing/understand/review-individual-bill.md)bölümüne gidin.
@@ -37,7 +38,7 @@ Başlamak için [kullanım ayrıntılarınızı indirin](../../cost-management-b
 | Etiketler               | Kaynağa atadığınız etikettir. Etiketleri kullanarak fatura kayıtlarını gruplayabilirsiniz. [Sanal makinelerinizi nasıl etiketleyeceğinizi öğrenin.](tag.md) Bu yalnızca Kaynak Yöneticisi VM 'Ler için kullanılabilir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{" myDepartment ":" RD "," myUser ":" myName "}"                                                                                                                                                                                                                                                                                                                        |
 | Ek Bilgi    | Hizmete özgü meta veriler. VM 'Ler için ek bilgi alanında aşağıdakini doldurduk: <ul><li>Çalıştırdığınız görüntü türüne özgü görüntü. Aşağıda, görüntü türleri altında desteklenen dizelerin tam listesini bulun.</li><li>Hizmet türü: dağıttığınız boyut.</li><li>VMName: sanal makinenizin adı. Bu yalnızca ölçek kümesi VM 'Leri için doldurulur. Ölçek kümesi VM 'Leri için VM adınızın olması gerekiyorsa, bunu yukarıdaki örnek KIMLIĞI dizesinde bulabilirsiniz.</li><li>UsageType: Bu, temsil ettiği kullanım türünü belirtir.<ul><li>Bu, temel alınan VM için Standard_D1_v2 gibi Işlem saati kullanımdır.</li><li>ComputeHR_SW, sanal makine Microsoft R Server gibi Premium yazılım kullanıyorsa Premium yazılım ücretlendirilir.</li></ul></li></ul>    | Sanal makineler {"ImageType": "kurallı", "ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "Bilgrir"}<br><br>Sanal Makine Ölçek Kümeleri {"ImageType": "kurallı", "ServiceType": "Standard_DS1_v2", "VMName": "myVM1", "UsageType": "Bilgır"}<br><br>Premium yazılım {"ImageType": "", "ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR_SW"} |
 
-## <a name="image-type"></a>Görüntü Türü
+## <a name="image-type"></a>Görüntü türü
 Azure galerisindeki bazı görüntülerde, görüntü türü ek bilgi alanında doldurulur. Bu, kullanıcıların sanal makinenize ne dağıttığlarını anlamalarına ve izlemesine olanak sağlar. Dağıttığınız görüntüye göre bu alanda doldurulan değerler şunlardır:
   - BitRock 
   - Canonical 
@@ -137,10 +138,9 @@ Premium depolama özellikli VM 'Ler, Premium olmayan depolama özellikli VM 'Ler
 
 API 'lerde VM üzerinde çalışan işletim sistemini döndürebilen 3 olası konum vardır:
 
-1) Konuk aracısını (tüm Linux VM 'Leri ve Windows VM 'leri) içeren VM 'Leri çalıştırmak, VM örnekleri görünümünde işletim sistemi adını ve işletim sistemi sürümünü gösterir. Bu her zaman doğrudur, ancak bilgilerin Konuk aracıdan geldiği gerçeğinden dolayı tüm VM 'Ler için kullanılabilir olmayacaktır. API belgelerini [burada bulabilirsiniz](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview).
-2) Bir platform görüntüsünden dağıtılan VM 'Ler, teklif veya SKU için yayımcı tarafından seçilen adlar içindeki işletim sistemi sürümünü gösterebilen görüntü ayrıntılarını içerecektir. Ancak bunlar yayımcı seçilir, bu nedenle işletim sisteminin adlandırmada keşfedilecek bir garanti yoktur. API belgelerini [burada bulabilirsiniz](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes).
-3) Her işletim sistemi diskinde belirtilen bir Windows veya Linux değeri olacaktır. Bu değer, işletim sistemi diski bir görüntüden oluşturulduğunda görüntüden devralınır. Bir işletim sistemi diski doğrudan platforma yüklendiğinde, işletim sistemi diski oluşturulduğunda işletim sistemi değeri ayarlanır. Bu değer her zaman vardır, ancak Azure platformu doğru olduğundan emin değildir. API belgelerini [burada bulabilirsiniz](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes).
+1) Konuk aracısını (tüm Linux VM 'Leri ve Windows VM 'leri) içeren VM 'Leri çalıştırmak, VM örnekleri görünümünde işletim sistemi adını ve işletim sistemi sürümünü gösterir. Bu her zaman doğrudur, ancak bilgilerin Konuk aracıdan geldiği gerçeğinden dolayı tüm VM 'Ler için kullanılabilir olmayacaktır. API belgelerini [burada bulabilirsiniz](/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview).
+2) Bir platform görüntüsünden dağıtılan VM 'Ler, teklif veya SKU için yayımcı tarafından seçilen adlar içindeki işletim sistemi sürümünü gösterebilen görüntü ayrıntılarını içerecektir. Ancak bunlar yayımcı seçilir, bu nedenle işletim sisteminin adlandırmada keşfedilecek bir garanti yoktur. API belgelerini [burada bulabilirsiniz](/rest/api/compute/images/get#operatingsystemtypes).
+3) Her işletim sistemi diskinde belirtilen bir Windows veya Linux değeri olacaktır. Bu değer, işletim sistemi diski bir görüntüden oluşturulduğunda görüntüden devralınır. Bir işletim sistemi diski doğrudan platforma yüklendiğinde, işletim sistemi diski oluşturulduğunda işletim sistemi değeri ayarlanır. Bu değer her zaman vardır, ancak Azure platformu doğru olduğundan emin değildir. API belgelerini [burada bulabilirsiniz](/rest/api/compute/virtualmachineimages/get#operatingsystemtypes).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kullanım ayrıntılarınız hakkında daha fazla bilgi edinmek için bkz [. Microsoft Azure Faturanızı Anlama.](../../cost-management-billing/understand/review-individual-bill.md)
-

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443593"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500931"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 'de Windows yeniden başlatma döngüsü
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesinde (VM) karşılaşabileceğiniz yeniden başlatma döngüsü açıklanır.
@@ -49,7 +50,7 @@ Dosya sistemi bozulması buna neden olabilir. Ancak, işletim sisteminin bozulma
 
 ## <a name="solution"></a>Çözüm
 
-Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snapshot-copy-managed-disk.md)ve [işletim sistemi DISKINI bir kurtarma VM 'sine bağlayın](../windows/troubleshoot-recovery-disks-portal.md), sonra çözüm seçeneklerini uygun şekilde uygulayın veya çözümleri tek tek deneyin.
+Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snapshot-copy-managed-disk.md)ve [işletim sistemi DISKINI bir kurtarma VM 'sine bağlayın](./troubleshoot-recovery-disks-portal-windows.md), sonra çözüm seçeneklerini uygun şekilde uygulayın veya çözümleri tek tek deneyin.
 
 ### <a name="solution-for-cause-1"></a>Neden 1 için çözüm
 
@@ -93,7 +94,7 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
 
 16. [İşletim sistemi diskinden yeni BIR VM oluşturun](../windows/create-vm-specialized.md).
 
-17. Sorun giderilirse, [Rdadgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) 'ı (WaAppAgent.exe) yeniden yüklemeniz gerekebilir.
+17. Sorun giderilirse, [Rdadgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) 'ı (WaAppAgent.exe) yeniden yüklemeniz gerekebilir.
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
@@ -112,5 +113,3 @@ VM 'yi bilinen son iyi yapılandırmaya geri yükleme, [Azure WINDOWS VM 'Yi bil
 4. Diski sorun giderme VM 'sinden kaldırın ve Azure 'un bu diski serbest bırakmasıyla ilgili 2 dakika bekleyin.
 
 5. [İşletim sistemi diskinden yeni BIR VM oluşturun](../windows/create-vm-specialized.md).
-
-

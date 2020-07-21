@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086407"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504076"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile işlemsel çoğaltma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,10 +43,10 @@ Aşağıdaki resimde gösterildiği gibi, işlemsel çoğaltma 'daki anahtar bil
 
 | Rol | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| **Publisher** | Hayır | Evet |
-| **Dağıtım** | Hayır | Evet|
-| **Çekme abonesi** | Hayır | Evet|
-| **İtme abonesi**| Evet | Yes|
+| **Publisher** | No | Evet |
+| **Dağıtım** | No | Evet|
+| **Çekme abonesi** | No | Evet|
+| **İtme abonesi**| Yes | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
 **Yayımcı** , güncelleştirmeleri dağıtıcıya göndererek bazı tablolarda (makaleler) yapılan değişiklikleri yayımlar. Yayımcı bir Azure SQL yönetilen örneği veya bir SQL Server örneği olabilir.
@@ -72,11 +72,11 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet |
-| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
+| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Yes |
+| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Yes|
 | [**Birleştirme çoğaltması**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
 | [**Eşler arası**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
+| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Evet|
 | [**Güncelleştirilebilir abonelikler**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -104,11 +104,10 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Veri eşitlemesini Işlemsel çoğaltma ile karşılaştırın
 
-| | Data Sync | İşlem Çoğaltması |
+| Kategori | Data Sync | İşlem Çoğaltması |
 |---|---|---|
-| Yararları | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan |
+| Avantajlar | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan |
 | Dezavantajlar | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
-| | | |
 
 ## <a name="common-configurations"></a>Ortak yapılandırma
 

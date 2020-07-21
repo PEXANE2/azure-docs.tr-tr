@@ -12,25 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de61403b62f80bea7872d5ab3561567ae2109590
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196775"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500077"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>SR-ıOV ile InfiniBand 'yi etkinleştirme
 
-Azure NC, ND ve H serisi VM 'lerin tümü adanmış bir InfiniBand ağı tarafından desteklenir. RDMA etkin olan tüm boyutlar, bu ağı Intel MPı kullanarak kullanabiliyor. Bazı VM dizileri, SR-ıOV aracılığıyla tüm MPı uygulamaları ve RDMA fiilleri desteğini genişletmiştir. RDMA özellikli VM 'Ler, [GPU ile iyileştirilmiş](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) ve [yüksek performanslı BILGI işlem (HPC)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) VM 'lerini içerir.
+Azure NC, ND ve H serisi VM 'lerin tümü adanmış bir InfiniBand ağı tarafından desteklenir. RDMA etkin olan tüm boyutlar, bu ağı Intel MPı kullanarak kullanabiliyor. Bazı VM dizileri, SR-ıOV aracılığıyla tüm MPı uygulamaları ve RDMA fiilleri desteğini genişletmiştir. RDMA özellikli VM 'Ler, [GPU ile iyileştirilmiş](../../sizes-gpu.md) ve [yüksek performanslı BILGI işlem (HPC)](../../sizes-hpc.md) VM 'lerini içerir.
 
 ## <a name="choose-your-installation-path"></a>Yükleme yolunuzu seçin
 
 Başlamak için en basit seçenek, kullanılabilir olduğunda, InfiniBand için önceden yapılandırılmış bir platform görüntüsü kullanmaktır:
 
-- **HPC IaaS VM 'leri** – HPC Için IaaS VM 'leri kullanmaya başlamak için en basit çözüm, zaten InfiniBand ile yapılandırılmış olan [CENTOS-HPC 7,6 VM OS görüntüsünü](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)kullanmaktır. Bu görüntü zaten InfiniBand ile yapılandırılmış olduğundan, el ile yapılandırmanız gerekmez. Uyumlu Windows sürümleri için bkz. [WINDOWS RDMA özellikli örnekler](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
+- **HPC IaaS VM 'leri** – HPC Için IaaS VM 'leri kullanmaya başlamak için en basit çözüm, zaten InfiniBand ile yapılandırılmış olan [CENTOS-HPC 7,6 VM OS görüntüsünü](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)kullanmaktır. Bu görüntü zaten InfiniBand ile yapılandırılmış olduğundan, el ile yapılandırmanız gerekmez. Uyumlu Windows sürümleri için bkz. [WINDOWS RDMA özellikli örnekler](../../sizes-hpc.md#rdma-capable-instances).
 
 - **GPU IaaS VM 'leri** : bir platform görüntüsü, [CENTOS-HPC 7,6 VM OS görüntüsü](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)dışında, GPU için iyileştirilmiş VM 'ler için önceden yapılandırılmış durumda değildir. InfiniBand ile özel bir görüntü yapılandırmak için bkz. [Mellanox OFED 'ı el ile yüklemek](#manually-install-mellanox-ofed).
 
-Özel bir VM görüntüsü veya [GPU ile iyileştirilmiş](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) bir VM kullanıyorsanız, dağıtımınıza ıbanddriverlinux veya ınfinibanddriverwindows VM uzantısını ekleyerek bunu InfiniBand ile yapılandırmanız gerekir. Bu VM uzantılarını [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)ile nasıl kullanacağınızı öğrenin.
+Özel bir VM görüntüsü veya [GPU ile iyileştirilmiş](../../sizes-gpu.md) bir VM kullanıyorsanız, dağıtımınıza ıbanddriverlinux veya ınfinibanddriverwindows VM uzantısını ekleyerek bunu InfiniBand ile yapılandırmanız gerekir. Bu VM uzantılarını [Linux](../../sizes-hpc.md#rdma-capable-instances) ve [Windows](../../sizes-hpc.md#rdma-capable-instances)ile nasıl kullanacağınızı öğrenin.
 
 ## <a name="manually-install-mellanox-ofed"></a>Mellanox 'nin el ile yüklenmesi
 
@@ -65,4 +66,4 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
+Azure 'da [HPC](/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

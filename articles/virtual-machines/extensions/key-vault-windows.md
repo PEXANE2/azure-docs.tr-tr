@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6f34ffcf836eddedfb3962471ef3c777ba7880c5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224228"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502971"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -34,7 +34,7 @@ Key Vault VM uzantısı, Windows 'un aşağıdaki sürümlerini destekler:
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, korumalı ayarlar gerektirmez. tüm ayarları ortak bilgiler olarak kabul edilir. Uzantı, izlenen sertifikaların, yoklama sıklığının ve hedef sertifika deposunun bir listesini gerektirir. Daha ayrıntılı şekilde belirtmek gerekirse:  
+Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, korumalı ayarlar gerektirmez. tüm ayarları ortak bilgiler olarak kabul edilir. Uzantı, izlenen sertifikaların, yoklama sıklığının ve hedef sertifika deposunun bir listesini gerektirir. Özellikle:  
 
 ```json
     {
@@ -71,7 +71,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 > [!NOTE]
 > Gözlemlenen sertifikalarınızın URL 'Leri form olmalıdır `https://myVaultName.vault.azure.net/secrets/myCertName` .
 > 
-> Bunun nedeni, `/secrets` yol değil, özel anahtar dahil olmak üzere tam sertifikayı döndürmektedir `/certificates` . Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Bunun nedeni, `/secrets` yol değil, özel anahtar dahil olmak üzere tam sertifikayı döndürmektedir `/certificates` . Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!NOTE]
 > ' AuthenticationSettings ' özelliği, VM 'nin birden çok atanmış kimliği olduğunda senaryolar için isteğe bağlıdır.
@@ -80,17 +80,17 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
 | tür | KeyVaultForWindows | string |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 | Pollingınterinterval bileşenleri | 3600 | string |
 | certificateStoreName | MY | string |
-| Linkonyenilemeye | yanlış | boole |
+| Linkonyenilemeye | yanlış | boolean |
 | certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | boole |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
 | Msıendpoint | http://169.254.169.254/metadata/identity | string |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |

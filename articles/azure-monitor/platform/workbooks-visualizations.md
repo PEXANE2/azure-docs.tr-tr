@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658039"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504946"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Izleyici çalışma kitabı görselleştirmeleri
 
@@ -50,7 +51,7 @@ Metin, tam biçimlendirme denetimi sağlayan bir Markaşağı denetimi aracılı
 1. **Düzenleme** araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
 2. Çalışma kitabına bir günlük sorgusu denetimi eklemek için **Sorgu Ekle** bağlantısını kullanın.
 3. Sorgu türünü **günlük**, kaynak türü (örneğin, Application Insights) ve hedeflenecek kaynakları seçin.
-4. Analizinize yönelik [KQL](https://docs.microsoft.com/azure/kusto/query/) 'yi girmek için sorgu düzenleyicisini kullanın (örneğin, isteklerin eğilimi).
+4. Analizinize yönelik [KQL](/azure/kusto/query/) 'yi girmek için sorgu düzenleyicisini kullanın (örneğin, isteklerin eğilimi).
 5. Görselleştirmeyi şunlardan birine ayarlayın: **alan**, **çubuk**, **çubuk (kategorik)**, **çizgi**, **pasta**, **dağılım**veya **zaman**.
 6. Gerekirse daha fazla parametre belirleyin; örneğin, zaman aralığı, görselleştirme, boyut, renk paleti ve gösterge.
 

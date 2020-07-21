@@ -8,11 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 15118c9c3d2d1a528c62b539ab7bdd8f174c19de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49918335dc6855726e7d8de15c01a5f15280af08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080110"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503226"
 ---
 # <a name="sentiment-cognitive-skill"></a>Yaklaşım Bilişsel Beceri
 
@@ -35,20 +36,20 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 5000 karakter olmalıdır 
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre Adı |                      |
+| Parametre Adı | Description |
 |----------------|----------------------|
 | `defaultLanguageCode` | seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/text-analytics/text-analytics-supported-languages.md) görün |
 
 ## <a name="skill-inputs"></a>Beceri girişleri 
 
-| Giriş adı | Açıklama |
+| Giriş adı | Description |
 |--------------------|-------------|
 | `text` | Çözümlenecek metin.|
 | `languageCode`    |  Seçim Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, varsayılan değer "en" olur. <br/>[Desteklenen dillerin tam listesini](../cognitive-services/text-analytics/text-analytics-supported-languages.md)görüntüleyin.|
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı | Açıklama |
+| Çıkış adı | Description |
 |--------------------|-------------|
 | `score` | Çözümlenen metnin yaklaşımını temsil eden 0 ile 1 arasında bir değer. 0 ' a yakın değerlerde negatif yaklaşım vardır, 0,5 ' a yakın nötr yaklaşım vardır ve 1 ' e yakın değerler pozitif yaklaşım vardır.|
 

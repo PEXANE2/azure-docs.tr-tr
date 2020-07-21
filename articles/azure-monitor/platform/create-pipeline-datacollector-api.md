@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055104"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505338"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Veri Toplayıcı API 'SI ile veri işlem hattı oluşturma
 
@@ -43,7 +43,7 @@ Bu makalede, verilerin nasıl oluşturulacağı veya [bir Azure Blob depolama he
 
 BLOB depolama, mantıksal uygulama veya Azure Işlevinin ayrıntılı kurulumu bu makalede özetlendiği sırada, belirli ürünlerin sayfalarında ayrıntılı yönergeler sunulmaktadır.
 
-Bu işlem hattını izlemek için, Azure Işlevi [ayrıntılarımızı](../../azure-functions/functions-monitoring.md)burada izlemek üzere Application Insights kullanırız ve mantıksal uygulama [ayrıntılarımızı burada](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)izlemek için Azure izleyici 'yi kullanırız. 
+Bu işlem hattını izlemek için, Azure Işlevi [ayrıntılarımızı](../../azure-functions/functions-monitoring.md)burada izlemek üzere Application Insights kullanırız ve mantıksal uygulama [ayrıntılarımızı burada](../../logic-apps/monitor-logic-apps-log-analytics.md)izlemek için Azure izleyici 'yi kullanırız. 
 
 ## <a name="setting-up-the-pipeline"></a>İşlem hattını ayarlama
 İşlem hattını ayarlamak için, önce blob Kapsayıcınızın oluşturulmuş ve yapılandırılmış olduğundan emin olun. Benzer şekilde, verileri göndermek istediğiniz Log Analytics çalışma alanının oluşturulduğundan emin olun.

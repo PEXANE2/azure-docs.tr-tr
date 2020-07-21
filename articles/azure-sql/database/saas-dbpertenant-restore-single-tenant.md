@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042802"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504353"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Tek bir kiracıyı kiracı başına veritabanı SaaS uygulamasıyla geri yükleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +29,7 @@ Bu öğreticide, iki veri kurtarma deseni öğrenirsiniz:
 > * Bir veritabanını bir paralel veritabanına geri yükleme (yan yana).
 > * Var olan veritabanını değiştirerek bir veritabanını yerinde geri yükleyin.
 
-|||
+| Desen | Description |
 |:--|:--|
 | Paralel veritabanına geri yükleme | Bu model, bir kiracının verilerini önceki bir noktadan incelemeye izin vermek için İnceleme, denetim ve uyumluluk gibi görevler için kullanılabilir. Kiracının geçerli veritabanı çevrimiçi ve değişmemiş durumda kalır. |
 | Yerinde geri yükleme | Bu model genellikle, bir kiracı yanlışlıkla verileri sildikten veya bozduktan sonra bir kiracıyı daha önceki bir noktaya kurtarmak için kullanılır. Özgün veritabanı satır dışı alınır ve geri yüklenen veritabanıyla değiştirilmiştir. |

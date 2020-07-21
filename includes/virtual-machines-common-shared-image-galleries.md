@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221654"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501976"
 ---
 Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -83,7 +83,7 @@ Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi du
 
 ## <a name="regional-support"></a>Bölgesel destek
 
-Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için aboneliğinizi beyaz listeye almanız gerekir. Beyaz liste istemek için şuraya gidin:https://azure.microsoft.com/global-infrastructure/australia/contact/
+Tüm ortak bölgeler hedef bölge olabilir, ancak Avustralya Orta ve Avustralya Orta 2 çoğaltmak için, aboneliğiniz izin verilenler listesine eklenmiş olması gerekir. İzin verilenler listesine bir abonelik eklendiğini istemek için şuraya gidin:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Sınırlar 
 
@@ -123,13 +123,13 @@ Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma z
 
 ![Görüntüleri nasıl çoğaltacağınızı gösteren grafik](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Erişim
+## <a name="access"></a>Access
 
 Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
 
 | Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan Görüntü Galerisi | Evet                  | Yes          | Yes                  |
+| Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
 | Görüntü Tanımı     | Hayır                   | Evet          | Yes                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
@@ -146,12 +146,12 @@ Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alın
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Açıklama
+- Description
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Açıklama
+- Description
 - Yaşam tarihi sonu
 
 Görüntü sürümü:

@@ -8,17 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7488ef45d665d95a28f69b7af887b98dd5a76376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e55d13c0b5fbf5b813f1669587836bf8b5e2d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678384"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503022"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023 ' e kadar Azure Resource Manager geçirin 
 
 2014 ' de, Azure Resource Manager için IaaS 'yi başlattınız ve bu yana özellikleri artırdık. [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) artık tam IaaS özelliklerine ve diğer geliştirmeleri içerdiğinden, Service Manager Azure 'Da IaaS VM 'lerinin yönetimini 28 Şubat 2020 tarihinde devre dışı bırakıyoruz ve bu Işlevsellik 1 Mart 2023 tarihinde tamamen kullanımdan kaldırılmıştır. 
 
-Bugün, IaaS VM 'lerinin %90 ' u Azure Resource Manager kullanıyor. IaaS kaynaklarını Azure Service Manager (ASM) aracılığıyla kullanıyorsanız, şimdi geçişinizi planlamaya başlayın ve [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)yararlanmak Için 1 Mart 2023 ' den yararlanın.
+Bugün, IaaS VM 'lerinin %90 ' u Azure Resource Manager kullanıyor. IaaS kaynaklarını Azure Service Manager (ASM) aracılığıyla kullanıyorsanız, şimdi geçişinizi planlamaya başlayın ve [Azure Resource Manager](../azure-resource-manager/management/index.yml)yararlanmak Için 1 Mart 2023 ' den yararlanın.
 
 Klasik VM 'Ler, kullanımdan kaldırma için [modern yaşam döngüsü ilkesini](https://support.microsoft.com/help/30881/modern-lifecycle-policy) takip edecektir.
 
@@ -38,10 +39,10 @@ Aşağıdaki Azure hizmetleri ve işlevleri, bu kullanımdan kaldırma tarafınd
 
 - Azure Resource Manager için geçişinizi planlamaya hemen başlayın. 
 
-- Klasik [Linux](./linux/migration-classic-resource-manager-plan.md) ve [Windows](./windows/migration-classic-resource-manager-plan.md) sanal makinelerinizi Azure Resource Manager 'e geçirme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) .
+- Klasik [Linux](./linux/migration-classic-resource-manager-plan.md) ve [Windows](./windows/migration-classic-resource-manager-plan.md) sanal makinelerinizi Azure Resource Manager 'e geçirme hakkında [daha fazla bilgi edinin](./windows/migration-classic-resource-manager-overview.md) .
 
-- Daha fazla bilgi için [Azure Resource Manager geçişe klasik ile Ilgili sık sorulan sorulara](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq) bakın
+- Daha fazla bilgi için [Azure Resource Manager geçişe klasik ile Ilgili sık sorulan sorulara](./windows/migration-classic-resource-manager-faq.md) bakın
 
-- Teknik sorular, sorunlar ve abonelik beyaz listeye [iletişim kurmak için desteğe başvurun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Teknik sorular, sorunlar ve izin verilenler listesine abonelik ekleme için [desteğe başvurun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 - SSS ve geri bildirim kapsamında bulunmayan diğer sorular için aşağıdaki yorumu inceleyin.

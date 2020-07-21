@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/27/2020
+ms.date: 07/15/2020
 ms.author: b-juche
-ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b150491fff953434062cc583566e1113947a679
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78163973"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504912"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files depolama hiyerarşisi nedir?
 
@@ -52,7 +52,6 @@ Azure NetApp Files’da birim oluşturmadan önce, sağlanan kapasite için bir 
 - Her birim tek bir havuza ait olsa da, bir havuzda birden çok birim olabilir. 
 - Birim kapasite havuzları arasında taşınamaz. <!--Within the same NetApp account, you can move a volume across pools.  -->   
   Örneğin, aşağıdaki [depolama hiyerarşisinin kavramsal diyagramında](#conceptual_diagram_of_storage_hierarchy) birimleri kapasite havuzu 1 ' den kapasite Havuzu 2 ' ye taşıyamazsınız.
-- Bir birim, tüm anlık görüntüleri silinene kadar silinemez.
 
 ## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>Depolama hiyerarşisinin kavramsal diyagramı 
 Aşağıdaki örnekte Azure aboneliği, NetApp hesapları, kapasite havuzları ve birimlerin birbirleriyle ilişkileri gösterilir.   

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186450"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505355"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -25,13 +25,13 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
  ![Telgraf aracısına genel bakış](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Özel ölçümler tüm bölgelerde desteklenmez. Desteklenen bölgeler [burada](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions) listelenmiştir
+> Özel ölçümler tüm bölgelerde desteklenmez. Desteklenen bölgeler [burada](./metrics-custom-overview.md#supported-regions) listelenmiştir
 
 ## <a name="send-custom-metrics"></a>Özel ölçümleri gönder 
 
 Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 > [!NOTE]  
 > Klasik uyarı kurallarını geçirmek ve var olan bir Linux sanal makinesini kullanmak istiyorsanız, sanal makinede sistem tarafından atanan bir kimlik ayarlanmış olduğundan emin **olun.**
@@ -44,7 +44,7 @@ Yeni bir Linux sanal makinesi oluşturun:
 1. **MyTelegrafVM**gıbı bir VM adı sağlayın.  
 1. Disk türünü **SSD**olarak bırakın. Daha sonra **azureuser**gibi bir **Kullanıcı adı**sağlayın. 
 1. **Kimlik doğrulama türü**için **parola**' yı seçin. Daha sonra bu VM 'ye SSH için kullanacağınız bir parola girin. 
-1. **Yeni kaynak grubu oluşturmayı**seçin. Daha sonra **Myresourcegroup**gibi bir ad sağlayın. **Konumunuzu**seçin. Sonra **Tamam**’ı seçin. 
+1. **Yeni kaynak grubu oluşturmayı**seçin. Daha sonra **Myresourcegroup**gibi bir ad sağlayın. **Konumunuzu**seçin. Ardından **Tamam**’ı seçin. 
 
     ![Ubuntu sanal makinesi oluşturma](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -111,7 +111,7 @@ Artık Aracı, belirtilen giriş eklentilerinden her bir ölçüm toplayacak ve 
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Telegraf ölçümlerini Azure portal çizme 
 
-1. [Azure Portal](https://portal.azure.com)açın. 
+1. [Azure portalını](https://portal.azure.com) açın. 
 
 1. Yeni **izleyici** sekmesine gidin. Ardından **ölçümler**' i seçin.  
 
@@ -137,6 +137,3 @@ Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilgili kayn
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Özel ölçümler](metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
-
-
-

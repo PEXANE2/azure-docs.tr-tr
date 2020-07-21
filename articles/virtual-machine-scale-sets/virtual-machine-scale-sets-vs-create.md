@@ -9,11 +9,12 @@ ms.subservice: visual-studio
 ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124372"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503090"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio ile sanal makine ölçek kümesi oluşturma
 
@@ -21,9 +22,9 @@ Bu makalede, bir Visual Studio kaynak grubu dağıtımı kullanarak bir Azure sa
 
 [Azure sanal makine ölçek kümeleri](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) , benzer sanal makinelerin bir koleksiyonunu otomatik ölçeklendirme ve Yük Dengeleme ile dağıtmak ve yönetmek Için bir Azure işlem kaynağıdır. [Azure Resource Manager şablonları](https://github.com/Azure/azure-quickstart-templates)kullanarak sanal makine ölçek kümeleri temin edebilir ve dağıtabilirsiniz. Azure Resource Manager şablonları Azure CLı, PowerShell, REST ve ayrıca doğrudan Visual Studio 'dan dağıtılabilir. Visual Studio, bir Azure Kaynak grubu dağıtım projesinin parçası olarak dağıtabileceğiniz örnek şablonlar kümesi sağlar.
 
-Azure Kaynak grubu dağıtımları, bir dizi ilgili Azure kaynağını tek bir dağıtım işleminde gruplamak ve yayımlamak için bir yoldur. Daha fazla bilgi için bkz. [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Azure Kaynak grubu dağıtımları, bir dizi ilgili Azure kaynağını tek bir dağıtım işleminde gruplamak ve yayımlamak için bir yoldur. Daha fazla bilgi için bkz. [Visual Studio aracılığıyla Azure Kaynak grupları oluşturma ve dağıtma](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio 'da sanal makine ölçek kümelerini dağıtmaya başlamak için aşağıdaki önkoşullara sahip olmanız gerekir:
 

@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945046"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502342"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale
 
@@ -66,7 +67,7 @@ Bu mimaride, Azure sanal makinelerinde uygulama, depolama ve veri katmanları ç
 
 -   DB2 pureScale kümesi. Azure 'da ihtiyacınız olan işlem kaynaklarının türü kuruluma göre değişir. Genel olarak, iki yaklaşımdan yararlanabilirsiniz:
 
-    -   Küçük ve orta ölçekli örneklere paylaşılan depolama alanı erişimi olan çok düğümlü, yüksek performanslı bilgi işlem (HPC) stilindeki bir ağ kullanın. Bu HPC yapılandırma türü için, Azure bellek için iyileştirilmiş E-serisi veya depolama ile iyileştirilmiş L serisi [sanal makineler](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) gereken işlem gücünü sağlar.
+    -   Küçük ve orta ölçekli örneklere paylaşılan depolama alanı erişimi olan çok düğümlü, yüksek performanslı bilgi işlem (HPC) stilindeki bir ağ kullanın. Bu HPC yapılandırma türü için, Azure bellek için iyileştirilmiş E-serisi veya depolama ile iyileştirilmiş L serisi [sanal makineler](../windows/sizes.md) gereken işlem gücünü sağlar.
 
     -   Veri altyapıları için daha az büyük sanal makine örneği kullanın. Büyük örnekler için bellek için iyileştirilmiş en büyük [d serisi](https://azure.microsoft.com/pricing/details/virtual-machines/series/) sanal makineler, ağır bellek içi iş yükleri için idealdir. DB2 çalıştırmak için kullanılan mantıksal bölümün (LPAR) boyutuna bağlı olarak, adanmış bir örneğe ihtiyacınız vardır.
 
@@ -95,11 +96,11 @@ Büyük bir DB2 pureScale kümesi, 200 terabayt (TB) veya daha fazla Premium pay
 
 IBM, bir DB2 pureScale kümesindeki tüm Üyeler için InfiniBand ağı önerir. DB2 pureScale Ayrıca, CFs için kullanılabilir yerlerde uzak doğrudan bellek erişimi (RDMA) kullanır.
 
-Kurulum sırasında, tüm sanal makineleri içeren bir Azure [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) oluşturursunuz. Genel olarak, kaynakları kendi yaşam süresine göre gruplayan ve bunları yöneteceksiniz. Bu mimarideki sanal makineler [hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)gerektirir. Tek köklü g/ç Sanallaştırması (SR-ıOV) ile bir sanal makineye tutarlı, ultra düşük ağ gecikmesi sağlayan bir Azure özelliğidir.
+Kurulum sırasında, tüm sanal makineleri içeren bir Azure [kaynak grubu](../../azure-resource-manager/management/overview.md) oluşturursunuz. Genel olarak, kaynakları kendi yaşam süresine göre gruplayan ve bunları yöneteceksiniz. Bu mimarideki sanal makineler [hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)gerektirir. Tek köklü g/ç Sanallaştırması (SR-ıOV) ile bir sanal makineye tutarlı, ultra düşük ağ gecikmesi sağlayan bir Azure özelliğidir.
 
-Her Azure sanal makinesi, alt ağları olan bir sanal ağa dağıtılır: Main, Gluster FS ön ucu (gfsfe), Gluster FS arka ucu (bfsin), DB2 pureScale (db2be) ve DB2 pureScale ön ucu (db2fe). Yükleme betiği, ana alt ağdaki sanal makinelerde birincil [NIC 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) de oluşturur.
+Her Azure sanal makinesi, alt ağları olan bir sanal ağa dağıtılır: Main, Gluster FS ön ucu (gfsfe), Gluster FS arka ucu (bfsin), DB2 pureScale (db2be) ve DB2 pureScale ön ucu (db2fe). Yükleme betiği, ana alt ağdaki sanal makinelerde birincil [NIC 'leri](./multiple-nics.md) de oluşturur.
 
-Sanal ağ içindeki ağ trafiğini kısıtlamak ve alt ağları yalıtmak için [ağ güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 'nı kullanın.
+Sanal ağ içindeki ağ trafiğini kısıtlamak ve alt ağları yalıtmak için [ağ güvenlik grupları](../../virtual-network/virtual-network-vnet-plan-design-arm.md) 'nı kullanın.
 
 Azure 'da DB2 pureScale 'in depolama için ağ bağlantısı olarak TCP/IP kullanması gerekir.
 

@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3caf8b63cbd86338bbef653e9be9916907578627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675888"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501713"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure’da sanal makineler için bakım
 
@@ -76,7 +77,7 @@ Zamanlanan bakım aşamasına kadar beklemek isterseniz, VM 'lerinizin en yükse
 
 #### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
 
-Her Azure bölgesi aynı coğrafi yakın çevre kapsamında başka bir bölgeyle eşleştirilir. Birlikte, bir bölge çifti oluşturur. Zamanlanan Bakım aşamasında, Azure yalnızca bölge çiftinin tek bölgesindeki VM 'Leri güncelleştirir. Örneğin, Orta Kuzey ABD ' de sanal makineyi güncelleştirirken, Azure Orta Güney ABD aynı anda hiçbir sanal makineyi güncelleştirmez. Ancak, Kuzey Avrupa gibi diğer bölgelerde, Doğu ABD ile aynı zamanda bakım yapılabilir. Bölge çiftlerinin nasıl çalıştığını anlamak, sanal makinelerinizi bölgeler arasında daha iyi dağıtmanıza yardımcı olabilir. Daha fazla bilgi için bkz. [Azure bölge çiftleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Her Azure bölgesi aynı coğrafi yakın çevre kapsamında başka bir bölgeyle eşleştirilir. Birlikte, bir bölge çifti oluşturur. Zamanlanan Bakım aşamasında, Azure yalnızca bölge çiftinin tek bölgesindeki VM 'Leri güncelleştirir. Örneğin, Orta Kuzey ABD ' de sanal makineyi güncelleştirirken, Azure Orta Güney ABD aynı anda hiçbir sanal makineyi güncelleştirmez. Ancak, Kuzey Avrupa gibi diğer bölgelerde, Doğu ABD ile aynı zamanda bakım yapılabilir. Bölge çiftlerinin nasıl çalıştığını anlamak, sanal makinelerinizi bölgeler arasında daha iyi dağıtmanıza yardımcı olabilir. Daha fazla bilgi için bkz. [Azure bölge çiftleri](../best-practices-availability-paired-regions.md).
 
 #### <a name="availability-sets-and-scale-sets"></a>Kullanılabilirlik kümeleri ve ölçek kümeleri
 

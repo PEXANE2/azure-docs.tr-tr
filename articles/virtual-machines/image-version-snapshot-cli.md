@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 585d3729a886f3a01dff6dcd9afdab63669c05b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225296"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502886"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan görüntü galerisinde bir VHD 'den veya anlık görüntüden görüntü oluşturma
 
@@ -69,7 +69,7 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. Bu örnekte, anlık görüntünün veya VHD 'nin kullanımda olan bir VM 'den olduğunu ve genelleştirilemez olduğunu varsayıyoruz. VHD veya anlık görüntü genelleştirilmiş bir işletim sistemi (Windows için [Sysprep veya](https://github.com/Azure/WALinuxAgent) `-deprovision` `-deprovision+user` Linux için) aldıysanız, öğesini `-OsState` olarak değiştirin `generalized` . 
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./linux/shared-image-galleries.md#image-definitions).
 
 Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun.
 
@@ -120,7 +120,7 @@ Görüntüye veri diskleri eklemek istiyorsanız, her iki `--data-snapshot-luns`
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntü sürümünü oluştururken ekleyerek görüntü sürümü çoğaltmalarınızı, bölgesel olarak [yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) alanında da saklayabilirsiniz `--storage-account-type standard_zrs` .
+> Görüntü sürümünü oluştururken ekleyerek görüntü sürümü çoğaltmalarınızı, bölgesel olarak [yedekli depolama](../storage/common/storage-redundancy.md) alanında da saklayabilirsiniz `--storage-account-type standard_zrs` .
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

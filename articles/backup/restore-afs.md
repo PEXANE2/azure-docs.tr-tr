@@ -3,15 +3,16 @@ title: Azure dosya paylaşımlarını geri yükleme
 description: Bir dosya paylaşımının tamamını veya belirli dosyaları Azure Backup tarafından oluşturulan bir geri yükleme noktasından geri yüklemek için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 5668328637ae9b5a5dd3db02085a7f15de2a2456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82980671"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503651"
 ---
 # <a name="restore-azure-file-shares"></a>Azure dosya paylaşımlarını geri yükleme
 
-Bu makalede, [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)tarafından oluşturulan bir geri yükleme noktasından bir dosya paylaşımının tamamını veya belirli dosyaları geri yüklemek için Azure Portal nasıl kullanılacağı açıklanmaktadır.
+Bu makalede, [Azure Backup](./backup-overview.md)tarafından oluşturulan bir geri yükleme noktasından bir dosya paylaşımının tamamını veya belirli dosyaları geri yüklemek için Azure Portal nasıl kullanılacağı açıklanmaktadır.
 
 Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 

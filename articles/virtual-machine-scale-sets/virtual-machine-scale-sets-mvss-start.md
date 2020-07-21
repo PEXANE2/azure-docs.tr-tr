@@ -9,14 +9,15 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: af2f000b9f9a7bf64898c46b3126cf180802b445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83198114"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503056"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Sanal Makine Ölçek Kümesi şablonları hakkında bilgi edinin
-[Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process), ilgili kaynak gruplarını dağıtmanın harika bir yoludur. Bu öğretici serisinde, temel bir ölçek kümesi şablonunun nasıl oluşturulduğu ve bu şablonun çeşitli senaryolara uyacak şekilde nasıl değiştirileceği gösterilmektedir. Tüm örnekler bu [GitHub deposundan](https://github.com/gatneil/mvss)gelir.
+[Azure Resource Manager şablonları](../azure-resource-manager/templates/overview.md#template-deployment-process), ilgili kaynak gruplarını dağıtmanın harika bir yoludur. Bu öğretici serisinde, temel bir ölçek kümesi şablonunun nasıl oluşturulduğu ve bu şablonun çeşitli senaryolara uyacak şekilde nasıl değiştirileceği gösterilmektedir. Tüm örnekler bu [GitHub deposundan](https://github.com/gatneil/mvss)gelir.
 
 Bu şablonun basit olması amaçlanmıştır. Ölçek kümesi şablonlarının daha kapsamlı örnekleri için bkz. [Azure hızlı başlangıç şablonları GitHub deposu](https://github.com/Azure/azure-quickstart-templates) ve dizeyi içeren klasörleri arama `vmss` .
 
@@ -114,7 +115,7 @@ Bu durumda, listede bir önceki örnekteki sanal ağ olmak üzere yalnızca bir 
 ## <a name="specify-scale-set-properties"></a>Ölçek kümesi özelliklerini belirtin
 Ölçek kümelerinin ölçek kümesindeki VM 'Leri özelleştirmek için birçok özelliği vardır. Bu özelliklerin tam listesi için [şablon başvurusuna](/azure/templates/microsoft.compute/virtualmachinescalesets)bakın. Bu öğretici için, yalnızca birkaç yaygın kullanılan özellik ayarlanır.
 ### <a name="supply-vm-size-and-capacity"></a>VM boyut ve kapasitesini belirtin
-Ölçek kümesinin oluşturulacak sanal makine boyutunu ("SKU adı") ve kaç tane sanal makine oluşturulacağını ("SKU kapasitesi") bilmeleri gerekir. Hangi VM boyutlarının kullanılabilir olduğunu görmek için, [VM boyutları belgelerine](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)bakın.
+Ölçek kümesinin oluşturulacak sanal makine boyutunu ("SKU adı") ve kaç tane sanal makine oluşturulacağını ("SKU kapasitesi") bilmeleri gerekir. Hangi VM boyutlarının kullanılabilir olduğunu görmek için, [VM boyutları belgelerine](../virtual-machines/windows/sizes.md)bakın.
 
 ```json
        "sku": {

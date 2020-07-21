@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: b0947d1cc4e53763c0f31444b8f3d27ba45b19a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d8e48e393f006c05e0a17b80e6f8cfe7e1d6ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82096420"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500285"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Genelleştirilmiş bir VHD'yi karşıya yükleme ve Azure’da yeni VM’ler oluştururken kullanma
 
@@ -28,9 +28,9 @@ Bu makalede, PowerShell kullanarak genelleştirilmiş bir sanal makinenin VHD 's
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Sysprep kullanarak kaynak VM 'yi Genelleştirme
 
-Henüz yapmadıysanız, VHD 'yi Azure 'a yüklemeden önce VM 'yi Sysprep yapmanız gerekir. Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkında daha fazla bilgi için bkz. [Sysprep genel bakış](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Henüz yapmadıysanız, VHD 'yi Azure 'a yüklemeden önce VM 'yi Sysprep yapmanız gerekir. Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkında daha fazla bilgi için bkz. [Sysprep genel bakış](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
 > VHD 'nizi Azure 'a ilk kez yüklemeden önce Sysprep 'i çalıştırmayı planlıyorsanız, [VM 'nizi hazırladığınızdan](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)emin olun. 
@@ -53,7 +53,7 @@ Artık bir VHD 'YI bir yönetilen diske doğrudan yükleyebilirsiniz. Yönergele
 
 
 
-VHD yönetilen diske yüklendikten sonra, yönetilen diski almak için [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) ' i kullanmanız gerekir.
+VHD yönetilen diske yüklendikten sonra, yönetilen diski almak için [Get-AzDisk](/powershell/module/az.compute/get-azdisk) ' i kullanmanız gerekir.
 
 ```azurepowershell-interactive
 $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
@@ -91,7 +91,7 @@ $image = New-AzImage `
    -Image $imageConfig
 ```
 
-## <a name="create-the-vm"></a>Sanal makine oluşturma
+## <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
 Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek *Myresourcegroup*Içindeki *myvm* adlı bir *myImage*VM oluşturur.
 
@@ -113,4 +113,3 @@ New-AzVm `
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yeni sanal makinenizde oturum açın. Daha fazla bilgi için bkz. [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)açma. 
-

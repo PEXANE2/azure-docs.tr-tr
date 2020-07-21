@@ -7,23 +7,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 86343e10f10b51f65764e16bbc1e485136bca162
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676821"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501611"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Bakım denetim yapılandırmasını başka bir bölgeye taşıma
 
 Bakım denetim yapılandırmasını farklı bir Azure bölgesine taşımak için bu makaleyi izleyin. Bir yapılandırmayı bir kaç nedenden dolayı taşımak isteyebilirsiniz. Örneğin, yeni bir bölgeden yararlanmak için, belirli bir bölgedeki özellikleri veya hizmetleri dağıtmak, iç ilke ve idare gereksinimlerini karşılamak veya kapasite planlamasına yanıt vermek için.
 
-Bakım denetimi, özelleştirilmiş bakım yapılandırmalarında, platform güncelleştirmelerinin [Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM 'Lerine ve Azure adanmış konaklarına nasıl uygulandığını denetlemenize olanak tanır. Bakım denetimini bölgeler arasında taşımak için birkaç senaryo vardır:
+Bakım denetimi, özelleştirilmiş bakım yapılandırmalarında, platform güncelleştirmelerinin [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) ve [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM 'Lerine ve Azure adanmış konaklarına nasıl uygulandığını denetlemenize olanak tanır. Bakım denetimini bölgeler arasında taşımak için birkaç senaryo vardır:
 
 - Bakım denetimi yapılandırmanızı taşımak, ancak yapılandırmayla ilişkili kaynakları değil, bu makaledeki yönergeleri izleyin.
 - Bir bakım yapılandırmasıyla ilişkili kaynakları taşımak, ancak yapılandırmanın kendisi için [Bu yönergeleri](move-region-maintenance-configuration-resources.md)izleyin.
 - Hem bakım yapılandırmasını hem de onunla ilişkili kaynakları taşımak için, önce bu makaledeki yönergeleri izleyin. Ardından, [Bu yönergeleri](move-region-maintenance-configuration-resources.md)izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir bakım denetim yapılandırmasını taşımaya başlamadan önce:
 
@@ -37,14 +38,14 @@ Bir bakım denetim yapılandırmasını taşımaya başlamadan önce:
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma 
 
-1. Her abonelikteki tüm bakım yapılandırmasını alın. Bunu yapmak için CLı [az Maintenance Configuration List](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) komutunu çalıştırın ve $SUBID abonelik Kimliğinizle değiştirin.
+1. Her abonelikteki tüm bakım yapılandırmasını alın. Bunu yapmak için CLı [az Maintenance Configuration List](/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) komutunu çalıştırın ve $SUBID abonelik Kimliğinizle değiştirin.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
     ```
 2. Abonelik içindeki yapılandırma kayıtlarının döndürülen tablo listesini gözden geçirin. Bir örneği aşağıda verilmiştir. Listeniz, belirli ortamınızın değerlerini içerir.
 
-    **Adı** | **Konum** | **Kaynak grubu**
+    **Ad** | **Konum** | **Kaynak grubu**
     --- | --- | ---
     Bakımı atla | eastus2 | yapılandırma-kaynak grubu
     IgniteDemoConfig | eastus2 | yapılandırma-kaynak grubu

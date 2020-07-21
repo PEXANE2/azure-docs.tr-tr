@@ -8,22 +8,23 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: a8531ec2a3284eac64cb900f2d95ec02b9ffdd45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678095"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501560"
 ---
-# <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>Ayrılmış bir Azure ayrılmış ana bilgisayar örneğiyle maliyetleri kaydetme
+# <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure ayrılmış ana bilgisayar ayırmaları ile maliyetleri kaydetme
 
-Ayrılmış bir Azure ayrılmış ana bilgisayar örneğine kaydetme yaptığınızda para tasarrufu sağlayabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan adanmış ana bilgisayar sayısına otomatik olarak uygulanır. İndirimleri almak için ayrılmış bir konağa bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca kullanımınızın işlem parçasını kapsar ve yazılım lisanslama maliyetlerini içerir. [Sanal makineler Için Azure adanmış konaklarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)bölümüne bakın.
+Ayrılmış bir Azure ayrılmış ana bilgisayar örneğine kaydetme yaptığınızda para tasarrufu sağlayabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan adanmış ana bilgisayar sayısına otomatik olarak uygulanır. İndirimleri almak için ayrılmış bir konağa bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca kullanımınızın işlem parçasını kapsar ve yazılım lisanslama maliyetlerini içerir. [Sanal makineler Için Azure adanmış konaklarına genel bakış](./windows/dedicated-hosts.md)bölümüne bakın.
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>Satın almadan önce doğru adanmış ana bilgisayar SKU 'sunu belirleme
 
 
 Bir ayırma satın almadan önce, hangi adanmış ana bilgisayara ihtiyacınız olduğunu belirlemelisiniz. Bir SKU, VM serisini ve türünü temsil eden ayrılmış bir konak için tanımlanır. 
 
-VM serisini belirlemek için [Windows sanal makinesi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) için desteklenen boyutlara giderek başlayın.
+VM serisini belirlemek için [Windows sanal makinesi](./windows/sizes.md) veya [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) için desteklenen boyutlara giderek başlayın.
 
 Ardından, Azure adanmış konaklarda desteklenip desteklenmediğini kontrol edin. [Azure adanmış konaklar fiyatlandırma](https://aka.ms/ADHPricing) sayfası, adanmış ana bilgisayar SKU 'LARıNıN, CPU bilgilerinin ve çeşitli fiyatlandırma seçeneklerinin (ayrılmış örnekler dahil) tüm listesini içerir.
 
@@ -39,7 +40,7 @@ Rezervasyon iskontoları şunlar için uygulanmaz:
 
 - **Bulutlar**   -Rezervasyonlar Almanya veya Çin bölgelerinde satın alınabilir.
 
-- **Yetersiz kota**   -Tek bir abonelik kapsamındaki bir ayırma, yeni ayrılmış örnek için abonelikte vCPU kotası kullanılabilir olmalıdır. Örneğin, hedef aboneliğin DSv3 serisi için 10 vCPU kota sınırı varsa, bu seriyi destekleyen bir ayırma adanmış ana bilgisayar satın alamazsınız. Rezervasyonların kota denetimi, abonelikte zaten dağıtılmış olan VM 'Leri ve ayrılmış Konakları içerir. Bu sorunu çözmek için [Kota artışı isteği oluşturabilirsiniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)   .
+- **Yetersiz kota**   -Tek bir abonelik kapsamındaki bir ayırma, yeni ayrılmış örnek için abonelikte vCPU kotası kullanılabilir olmalıdır. Örneğin, hedef aboneliğin DSv3 serisi için 10 vCPU kota sınırı varsa, bu seriyi destekleyen bir ayırma adanmış ana bilgisayar satın alamazsınız. Rezervasyonların kota denetimi, abonelikte zaten dağıtılmış olan VM 'Leri ve ayrılmış Konakları içerir. Bu sorunu çözmek için [Kota artışı isteği oluşturabilirsiniz](../azure-portal/supportability/resource-manager-core-quotas-request.md)   .
 
 - **Kapasite kısıtlamaları**   Nadir koşullarda Azure, bir bölgedeki düşük kapasiteden dolayı adanmış ana bilgisayar SKU 'Larının alt kümesi için yeni rezervasyonların satın alınmasını sınırlandırır.
 
@@ -47,7 +48,7 @@ Rezervasyon iskontoları şunlar için uygulanmaz:
 
  [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)Azure ayrılmış ana bilgisayar örneğinin ayrılmış bir örneğini satın alabilirsiniz.
 
-Rezervasyon için [veya aylık ödemeler](https://docs.microsoft.com/azure/billing/billing-monthly-payments-reservations)için ödeme yapın. Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın almak için geçerlidir:
+Rezervasyon için [veya aylık ödemeler](../cost-management-billing/reservations/prepare-buy-reservation.md)için ödeme yapın. Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın almak için geçerlidir:
 
 - En az bir EA aboneliği veya Kullandıkça Öde tarifesine sahip bir abonelik için sahip rolünde olmanız gerekir.
 
@@ -80,13 +81,13 @@ EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle se
 
 - **Tek abonelik kapsamı**   — Rezervasyon iskontosunu seçili abonelikteki eşleşen kaynaklara uygular.
 
-- **Paylaşılan kapsam**   — Fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
+- **Paylaşılan kapsam**   — Fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde tarifelerine tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
 
 ## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve ayırma kullanımı
 
 Kullanım verileriniz, kullanım için sıfır geçerli fiyata sahip olup rezervasyon indirimi alır. Her rezervasyon için rezervasyon iskontosunu hangi VM örneğinin aldığını görebilirsiniz.
 
-Kullanım verilerinde rezervasyon iskontolarının nasıl göründüğü hakkında daha fazla bilgi için bkz. EA müşterisiyseniz [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)   . Tek bir aboneliğiniz varsa, bkz. [Kullandıkça Öde aboneliğiniz Için Azure ayırma kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
+Kullanım verilerinde rezervasyon iskontolarının nasıl göründüğü hakkında daha fazla bilgi için bkz. EA müşterisiyseniz [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)   . Tek bir aboneliğiniz varsa, bkz. [Kullandıkça Öde aboneliğiniz Için Azure ayırma kullanımını anlayın](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 ## <a name="change-a-reservation-after-purchase"></a>Satın alma işleminden sonra rezervasyonu değiştirme
 
@@ -114,7 +115,7 @@ Ancak, *exchange*   değişiklik yapmak istiyorsanız bir rezervasyon alışve
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
@@ -122,26 +123,24 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız  [destek isteği ol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir ayırmayı yönetme hakkında bilgi edinmek için bkz. [Azure ayırmalarını yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance).
+Bir ayırmayı yönetme hakkında bilgi edinmek için bkz. [Azure ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure Ayrılmış Konaklarını kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure Ayrılmış Konaklarını kullanma](./windows/dedicated-hosts.md)
 
 - [Ayrılmış Konaklar Fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Azure’da Rezervasyonları Yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Azure’da Rezervasyonları Yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 
-- [Rezervasyon indiriminin nasıl uygulandığını anlama](https://docs.microsoft.com/azure/billing/billing-understand-vm-reservation-charges)
+- [Rezervasyon indiriminin nasıl uygulandığını anlama](../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
-- [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
-- [Kurumsal kaydınız için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 
-- [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](https://docs.microsoft.com/azure/billing/billing-reserved-instance-windows-software-costs)
+- [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
 
-- [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+- [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](/partner-center/azure-reservations)

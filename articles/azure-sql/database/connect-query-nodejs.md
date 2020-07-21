@@ -1,6 +1,6 @@
 ---
-title: Bir veritabanını sorgulamak için Node. js kullanma
-description: Node. js kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği içindeki bir veritabanına bağlanan ve T-SQL deyimlerini kullanarak sorgulayan bir program oluşturma.
+title: Veritabanını sorgulamak için Node.js kullanma
+description: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde veritabanına bağlanan bir program oluşturmak ve T-SQL deyimlerini kullanarak sorgulamak için Node.js nasıl kullanılır.
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
@@ -12,25 +12,25 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2 
-ms.openlocfilehash: 6860aa07d7547df6eeebf5d35fa9a921f0f9dada
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7135b3630d7b780d2c5d18f22b2a05ee6aedf8ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267387"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504555"
 ---
-# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Node. js kullanma
+# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Node.js kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu hızlı başlangıçta, bir veritabanına bağlanmak ve verileri sorgulamak için Node. js ' yi kullanırsınız.
+Bu hızlı başlangıçta, bir veritabanına bağlanmak ve verileri sorgulamak için Node.js kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  || SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
+  | Eylem | SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
   |:--- |:--- |:---|:---|
   | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -42,19 +42,19 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
   |||
 
 
-- [Node. js](https://nodejs.org)ile ilgili yazılımlar
+- [Node.js](https://nodejs.org)ilgili yazılımlar
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  Homebrew ve Node. js ' yi yükleyip, [macOS üzerinde SQL Server kullanarak Node. js uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)bölümünde **1,2** ve **1,3** adımlarını kullanarak ODBC sürücüsünü ve sqlcmd 'yi yüklersiniz.
+  Homebrew ve Node.js yükleyip, [macOS 'ta SQL Server kullanarak Node.js uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)' da **1,2** ve **1,3** adımlarını kullanarak ODBC sürücüsünü ve sqlcmd 'yi yüklemelisiniz.
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Node. js ' yi yükledikten sonra, [Ubuntu üzerinde SQL Server kullanarak Node. js uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)bölümünde **1,2** ve **1,3** adımlarını kullanarak ODBC sürücüsünü ve sqlcmd 'yi yüklersiniz.
+  Node.js yükledikten sonra, [Ubuntu 'da SQL Server kullanarak Node.js uygulamalar oluşturma](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)' da **1,2** ve **1,3** adımlarını kullanarak ODBC sürücüsünü ve sqlcmd 'yi yüklemelisiniz.
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
-  Chocolatey ve Node. js ' yi yükleyip, ardından [Windows üzerinde SQL Server kullanarak Node. js uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)bölümünde **1,2** ve **1,3** adımlarını kullanarak ODBC sürücüsünü ve sqlcmd 'yi oluşturun.
+  Chocolatey ve Node.js yükleyip [Windows üzerinde SQL Server kullanarak Node.js uygulamaları oluşturma](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)' daki **1,2** ve **1,3** adımlarını kullanarak ODBC sürücüsünü ve sqlcmd 'yi yüklersiniz.
 
   ---
 
@@ -72,7 +72,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -92,7 +92,7 @@ Komut istemini açın ve *sqltest* adlı bir klasör oluşturun. Oluşturduğunu
 
 ## <a name="add-code-to-query-the-database"></a>Veritabanını sorgulamak için kod ekleme
 
-1. En sevdiğiniz metin düzenleyicisinde *SQLtest. js*adlı yeni bir dosya oluşturun.
+1. En sevdiğiniz metin düzenleyicisinde *sqltest.js*yeni bir dosya oluşturun.
 
 1. İçeriğini aşağıdaki kodla değiştirin. Daha sonra sunucunuz, veritabanınız, Kullanıcı ve parolanız için uygun değerleri ekleyin.
 

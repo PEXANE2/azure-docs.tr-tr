@@ -12,26 +12,26 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: sqldbrb=2 
-ms.openlocfilehash: 5443955bd24ed269ebf35f974be8c0497e2bfb60
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: e8b9f12c57b2e4bf943e5fc9a9ebc2bbadef9ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267350"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504981"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanını sorgulamak için PHP kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, [php](https://php.net/manual/en/intro-whatis.php) kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği ' nde bir veritabanına bağlanma gösterilmektedir. Daha sonra verileri sorgulamak için T-SQL deyimlerini kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure SQL veritabanı veya Azure SQL yönetilen örneği içindeki bir veritabanı. Bir veritabanı oluşturup yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
-  || SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
+  | Eylem | SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
   |:--- |:--- |:---|:---|
   | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -60,7 +60,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 

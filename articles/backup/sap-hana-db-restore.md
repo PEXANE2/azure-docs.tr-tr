@@ -3,18 +3,18 @@ title: Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarının nasıl geri yükleneceğini öğrenin.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a3db88ca3c995c3c190da051dbf9df6ae5e29530
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851453"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503600"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 
 Bu makalede, Azure Backup hizmetinin bir kurtarma hizmetleri kasasına yedeklemiş olduğu bir Azure sanal makinesinde (VM) çalışan SAP HANA veritabanlarının nasıl geri yükleneceği açıklanmaktadır. Geri yüklemeler, geliştirme/test senaryoları için veya önceki bir duruma geri dönmek üzere verilerin kopyalarını oluşturmak için kullanılabilir.
 
-SAP HANA veritabanlarının nasıl yedekleneceği hakkında daha fazla bilgi için bkz. [Azure VM 'lerinde SAP HANA veritabanlarını yedekleme](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database).
+SAP HANA veritabanlarının nasıl yedekleneceği hakkında daha fazla bilgi için bkz. [Azure VM 'lerinde SAP HANA veritabanlarını yedekleme](./backup-azure-sap-hana-database.md).
 
 ## <a name="restore-to-a-point-in-time-or-to-a-recovery-point"></a>Bir zaman noktasına veya bir kurtarma noktasına geri yükleme
 
@@ -24,7 +24,7 @@ Azure Backup, Azure VM 'lerinde çalışan SAP HANA veritabanlarını şu şekil
 
 * Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesine geri yükleme yapın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakilere göz önüne alın:
 

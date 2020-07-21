@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc30275b2ee24af7bb526b3b43618c706bc027ca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81757891"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502104"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtma
 
@@ -306,7 +307,7 @@ Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle kullandığı
 ### <a name="deploy-using-azure-cli"></a>Azure CLI’yi kullanarak dağıtma
 
 > [!NOTE] 
-> Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLı sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLı sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
 Aşağıdaki örnek, OpenShift kümesini ve tüm ilgili kaynakları openkaydırıcı adlı bir kaynak grubunda myOpenShiftCluster dağıtım adı ile dağıtır. Şablona doğrudan GitHub deposundan başvurulur ve dosyada azuredeploy.parameters.jsadlı bir yerel parametre dosyası kullanılır.
 

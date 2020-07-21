@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 9f41cb11960dbe9487231f14b005376261075a83
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231514"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503821"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,12 +29,10 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | Değişiklikler | Ayrıntılar |
 | --- | --- |
 | **Günlüğü Ultra diske geçir** | Yüksek performans ve düşük gecikme süresine karşı [günlük dosyanızı bir ultra diske nasıl geçirebileceğinizi](storage-migrate-to-ultradisk.md) öğrenin. | 
-
-
+| **PowerShell kullanarak AG oluşturma** | Artık, [PowerShell](availability-group-az-commandline-configure.md) ve Azure CLI kullanarak bir kullanılabilirlik grubu oluşturulmasını basitleştirmek mümkündür. | 
 
 
 ## <a name="june-2020"></a>Haziran 2020
-
 
 | Değişiklikler | Ayrıntılar |
 | --- | --- |

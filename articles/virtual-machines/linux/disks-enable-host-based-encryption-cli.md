@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 705f9f3055d40d23c9ec5e24cfccfc0c96e114a5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236136"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502580"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>Konakta şifreleme kullanarak uçtan uca şifrelemeyi etkinleştirme-Azure CLı
 
@@ -35,7 +35,7 @@ Ayrıca, VM boyutlarını programlı bir şekilde bulabilirsiniz. Programlı ola
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoftAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle. com adresine bir e-posta gönderin.
+VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoft.comAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle e-posta gönderin.
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault ve DiskEncryptionSet oluşturma
 
@@ -77,7 +77,7 @@ az group deployment create -g <yourResourceGroupName> \
 
 Eski VM boyutları desteklenmez. Desteklenen VM boyutlarının listesini şunlardan biriyle bulabilirsiniz:
 
-[Kaynak SKU 'larını](https://docs.microsoft.com/rest/api/compute/resourceskus/list) çağırma ve `EncryptionAtHostSupported` özelliğin **true**olarak ayarlandığını denetleme.
+[Kaynak SKU 'larını](/rest/api/compute/resourceskus/list) çağırma ve `EncryptionAtHostSupported` özelliğin **true**olarak ayarlandığını denetleme.
 
 ```json
     {
@@ -98,7 +98,7 @@ Eski VM boyutları desteklenmez. Desteklenen VM boyutlarının listesini şunlar
     }
 ```
 
-Veya [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet 'ini çağırarak.
+Veya [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet 'ini çağırarak.
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

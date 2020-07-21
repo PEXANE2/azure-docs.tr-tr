@@ -1,19 +1,21 @@
 ---
-title: VM 'lerde bir Azure yönetilen diski paylaşma (Önizleme)
+title: VM 'lerde bir Azure yönetilen diski paylaşma
 description: Birden çok VM arasında Azure yönetilen disklerini paylaşma hakkında bilgi edinin.
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/16/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3792a98c4ddcab36496f7e83482f2a1382c93d0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 3ca8a93357b51ed1817bed63ee624abd9b2daa6c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81008587"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502528"
 ---
-# <a name="azure-shared-disks"></a>Azure paylaşılan diskleri
+# <a name="share-an-azure-managed-disk"></a>Azure yönetilen diski paylaşma
 
 [!INCLUDE [virtual-machines-disks-shared](../../../includes/virtual-machines-disks-shared.md)]
 

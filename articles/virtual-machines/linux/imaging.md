@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 40d028ade5429c89ce40b718c90c601dfcb0e470
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308158"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502189"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure 'da Linux görüntülerini getirme ve oluşturma
 
@@ -25,7 +25,7 @@ Bu makale, görüntü karar noktaları ve gereksinimleri hakkında konuşacak, t
 ## <a name="difference-between-managed-disks-and-images"></a>Yönetilen diskler ve görüntüler arasındaki fark
 
 
-Azure, bir VHD 'yi platforma getirmenize, [yönetilen disk](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#managed-disks)olarak kullanmanıza veya bir görüntü kaynağı olarak kullanmanıza olanak tanır. 
+Azure, bir VHD 'yi platforma getirmenize, [yönetilen disk](../windows/faq-for-disks.md#managed-disks)olarak kullanmanıza veya bir görüntü kaynağı olarak kullanmanıza olanak tanır. 
 
 Azure yönetilen diskler tek VHD 'lardır. Mevcut bir VHD 'yi alabilir ve bundan yönetilen bir disk oluşturabilir ya da sıfırdan boş bir yönetilen disk oluşturabilirsiniz. Diski VM 'ye ekleyerek yönetilen disklerden VM 'Ler oluşturabilirsiniz, ancak yalnızca bir VM 'ye sahip bir VHD kullanabilirsiniz. Herhangi bir işletim sistemi özelliğini değiştiremezsiniz; Azure yalnızca VM 'yi açmayı ve bu diski kullanmaya başlamasını dener. 
 
@@ -49,16 +49,16 @@ Azure, genelleştirilmiş ve özelleştirilmiş iki ana görüntü türü sunar.
 Genelleştirilmiş görüntü, kurulumun ilk önyüklemede tamamlanmasını gerektiren bir görüntüdür. Örneğin, ilk önyüklemede ana bilgisayar adı, Yönetici Kullanıcı ve VM 'ye özgü diğer yapılandırma ayarları ayarlanır. Bu, görüntünün birden çok kez yeniden kullanılmasını istediğinizde ve oluşturma sırasında parametreleri geçirmek istediğinizde yararlıdır. Genelleştirilmiş görüntü Azure Aracısı içeriyorsa, aracı parametreleri işleyecek ve ilk yapılandırmanın tamamlandığı platforma geri sinyaline sahip olur. Bu işleme **sağlama**adı verilir. 
 
 Sağlama, görüntüye bir hazırlayıcı eklenmesini gerektirir. İki hazıriyer vardır:
-- [Azure Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)
-- [kabuğunuzda Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+- [Azure Linux Aracısı](../extensions/agent-linux.md)
+- [kabuğunuzda Cloud-init](./using-cloud-init.md)
 
-Bunlar, görüntü oluşturmaya yönelik [önkoşullardır](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) .
+Bunlar, görüntü oluşturmaya yönelik [önkoşullardır](./create-upload-generic.md) .
 
 
 ### <a name="specialized-images"></a>Özel görüntüler
 Bunlar tamamen yapılandırılmış ve VM ve özel parametre gerektirmeyen görüntülerdir, platform yalnızca VM 'yi açık duruma getirin, VM 'nin aynı VNET 'te DNS çakışmalarını önlemek için konak içinde benzersizlik tanıtıcısı gerekir. 
 
-Bu görüntüler için sağlama aracıları gerekli değildir, ancak uzantı işleme özelliklerine sahip olmak isteyebilirsiniz. Linux aracısını yükleyebilir, ancak sağlama seçeneğini devre dışı bırakabilirsiniz. Bir sağlama aracısına gerek duymasa bile, görüntü Azure görüntüleri için [önkoşulları](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) karşılamalıdır.
+Bu görüntüler için sağlama aracıları gerekli değildir, ancak uzantı işleme özelliklerine sahip olmak isteyebilirsiniz. Linux aracısını yükleyebilir, ancak sağlama seçeneğini devre dışı bırakabilirsiniz. Bir sağlama aracısına gerek duymasa bile, görüntü Azure görüntüleri için [önkoşulları](./create-upload-generic.md) karşılamalıdır.
 
 
 ## <a name="image-storage-options"></a>Görüntü depolama seçenekleri
@@ -94,13 +94,14 @@ Yüksek düzeyde bir SıG oluşturursunuz ve şu konumda oluşturulur:
 
 ## <a name="hyper-v-generation"></a>Hyper-V oluşturma
 
-Azure; Hyper-V oluşturma 1 (Gen1) ve 2. nesil (Gen2), Gen2 en son kuşak ve Gen1 üzerinde ek işlevsellik sunmaktadır. Örneğin: daha fazla bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM). Şirket içinde çalışan 2. nesil VM 'lerde, henüz Azure 'da desteklenmeyen bazı özellikler var. Daha fazla bilgi için özellikler ve yetenekler bölümüne bakın. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)bakın. Ek işlevselliğe ihtiyacınız varsa Gen2 görüntüleri oluşturun.
+Azure; Hyper-V oluşturma 1 (Gen1) ve 2. nesil (Gen2), Gen2 en son kuşak ve Gen1 üzerinde ek işlevsellik sunmaktadır. Örneğin: daha fazla bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM). Şirket içinde çalışan 2. nesil VM 'lerde, henüz Azure 'da desteklenmeyen bazı özellikler var. Daha fazla bilgi için özellikler ve yetenekler bölümüne bakın. Daha fazla bilgi için bu [makaleye](../windows/generation-2.md)bakın. Ek işlevselliğe ihtiyacınız varsa Gen2 görüntüleri oluşturun.
 
-Hala kendi görüntünüzü oluşturmanız gerekiyorsa, [görüntü önkoşullarını](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)karşıladığından emin olun ve Azure 'a yükleyin. Dağıtıma özgü gereksinimler:
+Hala kendi görüntünüzü oluşturmanız gerekiyorsa, [görüntü önkoşullarını](./create-upload-generic.md)karşıladığından emin olun ve Azure 'a yükleyin. Dağıtıma özgü gereksinimler:
 
 
-- [CentOS tabanlı dağıtımlar](create-upload-centos.md)
+- [CentOS Tabanlı Dağıtımlar](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
 - [Oracle Linux](oracle-create-upload-vhd.md)
 - [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
 - [SLES ve openSUSE](suse-create-upload-vhd.md)
@@ -110,6 +111,3 @@ Hala kendi görüntünüzü oluşturmanız gerekiyorsa, [görüntü önkoşullar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Paylaşılan görüntü Galerisi](tutorial-custom-images.md)oluşturmayı öğrenin.
-
-
-

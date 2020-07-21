@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 686a488934d20894298f7adc80470424a60b29b3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a21fbcd04c5916e686f13e375bc1854935d1c4fe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207635"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500353"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows Sanal Makineleri hakkında sık sorulan sorular
 Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Windows sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Linux sürümü için bkz. [Linux sanal makineleri hakkında sık sorulan sorular](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -32,7 +32,7 @@ Azure depolama hesapları, işletim sistemi diski ve tüm veri diskleri için de
 ## <a name="how-can-i-access-my-virtual-machine"></a>Sanal makinime nasıl erişebilirim?
 Bir Windows sanal makinesi için Uzak Masaüstü Bağlantısı (RDP) kullanarak uzak bağlantı kurun. Yönergeler için bkz. [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sunucu bir Uzak Masaüstü Hizmetleri oturumu ana bilgisayarı olarak yapılandırılmadığı sürece en fazla iki eşzamanlı bağlantı desteklenir.  
 
-Uzak Masaüstü ile ilgili sorun yaşıyorsanız, bkz. [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Uzak Masaüstü ile ilgili sorun yaşıyorsanız, bkz. [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
 
 Hyper-V ' y i kullandıysanız, VMConnect 'e benzer bir araç arıyor olabilirsiniz. Azure, bir sanal makineye konsol erişimi desteklenmediğinden benzer bir araç sunmaz.
 

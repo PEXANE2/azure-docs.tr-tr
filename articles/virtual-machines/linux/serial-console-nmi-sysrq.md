@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758493"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501900"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq ve NMI çağrıları için seri konsol kullan
 
@@ -22,11 +23,11 @@ SysRq sırası teslim edildiğinde, çekirdek yapılandırması sistemin nasıl 
 
 Azure seri konsolu, aşağıda gösterilen komut çubuğundaki klavye simgesini kullanarak bir Azure sanal makinesine bir SysRq göndermek için kullanılabilir.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Azure seri konsolunun ekran görüntüsü. Klavye simgesi vurgulanır ve menü görünür. Bu menü bir Gönder SysRq komut öğesi içerir.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 "Send SysRq komutunu" seçtiğinizde, genel SysRq seçeneklerini sağlayan bir iletişim kutusu açılır ve iletişim kutusuna girilen bir SysRq komutları dizisi kabul edilir.  Bu, ' nin kullanarak güvenli bir yeniden başlatma gibi yüksek düzeyli bir işlem gerçekleştirmesine olanak sağlar `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Konuğa SysRq komutu Gönder iletişim kutusunun ekran görüntüsü. Komutları girme seçeneği seçilidir ve komut kutusu REISUB içerir.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 SysRq komutu durdurulmuş olan veya çekirdeği yanıt vermeyen bir durumda olan sanal makinelerde kullanılamaz. (örneğin, bir çekirdek Panic).
 
@@ -95,7 +96,7 @@ Maskelenemeyen bir kesme (NMI), bir sanal makinede yazılımın yok saymayacak b
 
 Seri konsol, aşağıda gösterilen komut çubuğundaki klavye simgesini kullanarak bir Azure sanal makinesine bir NMI göndermek için kullanılabilir. NMI teslim edildiğinde, sanal makine yapılandırması sistemin nasıl yanıt verdiğini denetler.  Linux işletim sistemleri, kilitlenme ve bellek dökümü oluşturmak için yapılandırılabilir ve işletim sistemi bir NMI alır.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Seri konsolunun ekran görüntüsü. Klavye simgesi vurgulanır ve menü görünür. Bu menü, bir gönderme maskelenemeyen kesme öğesi içerir.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 Çekirdek parametrelerini yapılandırmak için sysctl 'yi destekleyen Linux sistemleri için, aşağıdakileri kullanarak bu NMI 'yi alırken bir panik 'yi etkinleştirebilirsiniz:
 1. Bu satırı */etc/sysctl.exe* 'e ekleme <br>
@@ -120,7 +121,7 @@ Seri konsol, aşağıda gösterilen komut çubuğundaki klavye simgesini kullana
 - [Kilitlenme günlüklerini toplama](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ana seri konsol Linux belge sayfası [burada](serial-console.md)bulunur.
+* Ana seri konsol Linux belge sayfası [burada](../troubleshooting/serial-console-linux.md)bulunur.
 * IDB 'de önyükleme yapmak [ve tek kullanıcı moduna girmek](serial-console-grub-single-user-mode.md) Için seri konsol kullanın
-* Seri konsol [Windows](../windows/serial-console.md) VM 'leri için de kullanılabilir
-* [Önyükleme tanılaması](boot-diagnostics.md) hakkında daha fazla bilgi
+* Seri konsol [Windows](../troubleshooting/serial-console-windows.md) VM 'leri için de kullanılabilir
+* [Önyükleme tanılaması](../troubleshooting/boot-diagnostics.md) hakkında daha fazla bilgi

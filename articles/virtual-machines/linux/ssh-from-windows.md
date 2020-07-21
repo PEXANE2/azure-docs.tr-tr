@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fc411d3833fcd47477e7e0fe11c6da9e2114143
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390236"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502036"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 'da Windows ile SSH anahtarlarını kullanma
 
@@ -26,7 +26,7 @@ Bu makalede, Azure 'da bir Linux sanal makinesi (VM) oluşturmak ve buna bağlan
 ## <a name="windows-packages-and-ssh-clients"></a>Windows paketleri ve SSH istemcileri
 Bir *SSH istemcisi*kullanarak Azure 'Da Linux VM 'lerine bağlanır ve bunları yönetebilirsiniz. Linux veya macOS çalıştıran bilgisayarlar genellikle SSH anahtarları oluşturup yönetmek ve SSH bağlantıları oluşturmak için bir SSH komutları paketine sahiptir. 
 
-Windows bilgisayarlarda her zaman karşılaştırılabilir SSH komutları yüklü değildir. Windows 10 ' un son sürümleri, SSH anahtarları oluşturup yönetmek ve bir komut isteminden SSH bağlantısı yapmak için [OpenSSH istemci komutları](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) sağlar. Son Windows 10 sürümleri, [Linux Için Windows alt sistemi](https://docs.microsoft.com/windows/wsl/about) 'ni, bir bash kabuğu içinde yerel olarak bir SSH istemcisi gibi çalıştırmak ve erişmek için de içerir. 
+Windows bilgisayarlarda her zaman karşılaştırılabilir SSH komutları yüklü değildir. Windows 10 ' un son sürümleri, SSH anahtarları oluşturup yönetmek ve bir komut isteminden SSH bağlantısı yapmak için [OpenSSH istemci komutları](https://devblogs.microsoft.com/commandline/windows10v1803/) sağlar. Son Windows 10 sürümleri, [Linux Için Windows alt sistemi](/windows/wsl/about) 'ni, bir bash kabuğu içinde yerel olarak bir SSH istemcisi gibi çalıştırmak ve erişmek için de içerir. 
 
 Yerel olarak yükleyebileceğiniz diğer yaygın Windows SSH istemcileri aşağıdaki paketlere dahildir:
 
@@ -123,4 +123,4 @@ VM tam zamanında erişim ilkesi kullanıyorsa, VM 'ye bağlanabilmeniz için ö
 
 * SSH anahtarları oluşturmak ve Linux VM 'lerine SSH bağlantısı yapmak için Azure Cloud Shell 'de PowerShell de kullanabilirsiniz. Bkz. [PowerShell hızlı](../../cloud-shell/quickstart-powershell.md#ssh)başlangıcı.
 
-* Linux sanal makinelerinize bağlanmak için SSH kullanma konusunda zorluk yaşıyorsanız bkz. [Azure LINUX VM Ile SSH bağlantılarında sorun giderme](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Linux sanal makinelerinize bağlanmak için SSH kullanma konusunda zorluk yaşıyorsanız bkz. [Azure LINUX VM Ile SSH bağlantılarında sorun giderme](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

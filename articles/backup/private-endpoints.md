@@ -3,16 +3,16 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124264"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503770"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
-Azure Backup, [Özel uç noktaları](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)kullanarak kurtarma hizmetleri kasalarınızın verilerinizi güvenli bir şekilde yedekleyeve geri yüklemenize olanak tanır. Özel uç noktalar sanal ağınızdan bir veya daha fazla özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor.
+Azure Backup, [Özel uç noktaları](../private-link/private-endpoint-overview.md)kullanarak kurtarma hizmetleri kasalarınızın verilerinizi güvenli bir şekilde yedekleyeve geri yüklemenize olanak tanır. Özel uç noktalar sanal ağınızdan bir veya daha fazla özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor.
 
 Bu makale, Azure Backup için özel uç noktalar oluşturma sürecini anlamanıza yardımcı olur ve özel uç noktalar kullanmanın kaynaklarınızın güvenliğinin sağlanmasına yardımcı olur.
 
@@ -45,7 +45,7 @@ Bu bölüm, sanal ağlarınızdaki Azure Backup için özel uç noktalar oluştu
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-Azure Resource Manager istemcisini kullanarak kasa oluşturmayı öğrenmek için [Bu bölüme](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) bakın. Bu, yönetilen kimliği zaten etkinleştirilmiş bir kasa oluşturur. Kurtarma Hizmetleri kasaları hakkında daha fazla bilgi [edinin.](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)
+Azure Resource Manager istemcisini kullanarak kasa oluşturmayı öğrenmek için [Bu bölüme](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) bakın. Bu, yönetilen kimliği zaten etkinleştirilmiş bir kasa oluşturur. Kurtarma Hizmetleri kasaları hakkında daha fazla bilgi [edinin.](./backup-azure-recovery-services-vault-overview.md)
 
 ## <a name="enable-managed-identity-for-your-vault"></a>Kasanız için yönetilen kimliği etkinleştirin
 
@@ -111,9 +111,9 @@ Bölge kodları [listesine](https://download.microsoft.com/download/1/2/6/126a41
 
 Ulusal bölgelerdeki URL adlandırma kuralları için:
 
-- [Çin](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Almanya](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [Arasında](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Almanya](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 ### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Özel DNS bölgelerini sanal ağınızla bağlama
 
@@ -543,7 +543,7 @@ Kuyruk hizmeti () için DNS bölgesi `privatelink.queue.core.windows.net` :
 
     ![Kuyruk hizmeti için bir tür kaydı olarak FQDN ve özel IP girdisi ekleme](./media/private-endpoints/add-type-a-record-for-queue.png)
 
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 S. Var olan bir yedekleme Kasası için özel bir uç nokta oluşturabilir miyim?<br>
 A. Hayır, Özel uç noktalar yalnızca yeni yedekleme kasaları için oluşturulabilir. Bu nedenle kasada hiç öğe korunmamış olmalıdır. Aslında, özel bitiş noktaları oluşturulmadan önce herhangi bir öğeyi kasaya koruma girişimi yapılabilir.

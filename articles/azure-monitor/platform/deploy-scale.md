@@ -4,11 +4,12 @@ description: Azure Izleyici özelliklerini Azure Ilkesi kullanarak ölçekli ola
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678707"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505219"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Ilkesi 'ni kullanarak Azure Izleyici 'yi ölçekli olarak dağıtma
 Bazı Azure Izleyici özellikleri bir kez veya sınırlı sayıda yapılandırıldığında, izlemek istediğiniz her kaynak için diğerlerinin tekrarlanması gerekir. Bu makalede, izlemenin tüm Azure kaynaklarınız için tutarlı ve doğru şekilde yapılandırıldığından emin olmak üzere Azure Izleyici 'yi ölçekli olarak uygulamak için Azure Ilkesi kullanma yöntemleri açıklanmaktadır.
@@ -30,7 +31,7 @@ Azure Ilkesi, aşağıdaki tablodaki nesnelerden oluşur. Her birinin daha ayrı
 | Atama | Bir ilke tanımı veya girişimi bir kapsama atanıncaya kadar etkili olmaz. Örneğin, bu kaynakta oluşturulan tüm kaynaklara uygulamak için bir kaynak grubuna ilke atayın veya bu aboneliği Bu abonelikteki tüm kaynaklara uygulamak için bir aboneliğe uygulayın.  Daha ayrıntılı bilgi için bkz. [Azure ilke atama yapısı](../../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Izleyici için yerleşik ilke tanımları
-Azure Ilkesi, Azure Izleyici ile ilgili olarak önceden oluşturulmuş çeşitli tanımlar içerir. Bu ilke tanımlarını mevcut aboneliğinize atayabilir veya kendi özel tanımlarınızı oluşturmak için temel olarak kullanabilirsiniz. **İzleme** kategorisindeki yerleşik politiklerin tam bir listesi için bkz. Azure [ilkesi yerleşik Ilke tanımları Azure izleyici](../policy-samples.md).
+Azure Ilkesi, Azure Izleyici ile ilgili olarak önceden oluşturulmuş çeşitli tanımlar içerir. Bu ilke tanımlarını mevcut aboneliğinize atayabilir veya kendi özel tanımlarınızı oluşturmak için temel olarak kullanabilirsiniz. **İzleme** kategorisindeki yerleşik politiklerin tam bir listesi için bkz. Azure [ilkesi yerleşik Ilke tanımları Azure izleyici](../samples/policy-samples.md).
 
 İzleme ile ilgili yerleşik ilke tanımlarını görüntülemek için aşağıdakileri yapın:
 
@@ -59,7 +60,7 @@ Yerleşik bir ilkesi olmayan kaynak türleri için özel bir ilke tanımı oluş
 [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) betiği, POWERSHELL veya CLI kullanarak yükleyebileceğiniz belirli bir kaynak türü için ilke dosyaları oluşturur. Tanılama ayarları için özel bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın.
 
 
-1. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) yüklü olduğundan emin olun.
+1. [Azure PowerShell](/powershell/azure/install-az-ps) yüklü olduğundan emin olun.
 2. Aşağıdaki komutla betiği yüklersiniz:
   
     ```azurepowershell

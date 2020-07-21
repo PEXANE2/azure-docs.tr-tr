@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b13dca7f4a33a7fb9ea55a1505c26a97160d0d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82112057"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502954"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Bir VM 'de Azure Linux aracısını güncelleştirme
 
@@ -31,7 +31,7 @@ Azure 'da bir Linux sanal makinesinde [Azure Linux aracınızı](https://github.
 Önce Linux 'taki depodaki bir paketi denetlemeniz gerekir. Mevcut paketin en son sürümü olmayabilir, ancak otomatik güncelleştirme özelliğinin etkinleştirilmesi, Linux aracısının her zaman en son güncelleştirmeyi almasını sağlamaktır. Paket yöneticilerinden yükleme sorunlarıyla karşılaşmanız durumunda, çıkış satıcısından destek almanız gerekir.
 
 > [!NOTE]
-> Daha fazla bilgi için bkz. [Azure 'Da onaylama Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
+> Daha fazla bilgi için bkz. [Azure 'Da onaylama Linux dağıtımları](../linux/endorsed-distros.md)
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Azure 'da en düşük sanal makine Aracısı desteği
 Devam etmeden önce [Azure 'da sanal makine aracıları Için en düşük sürüm desteğini](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) doğrulayın.

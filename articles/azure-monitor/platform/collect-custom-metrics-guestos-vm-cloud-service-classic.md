@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124477"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505372"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Izleyici ölçüm deposunda klasik Cloud Services Konuk işletim sistemi ölçümleri gönderme 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Izleyici [Tanılama uzantısı](diagnostics-extension-overview.md)ile, bir sanal makinenin, bulut hizmetinin veya Service Fabric kümenin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplayabilirsiniz. Uzantı [birçok farklı konuma](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
+Azure Izleyici [Tanılama uzantısı](diagnostics-extension-overview.md)ile, bir sanal makinenin, bulut hizmetinin veya Service Fabric kümenin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplayabilirsiniz. Uzantı [birçok farklı konuma](./data-platform.md?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
 
 Bu makalede, Azure Izleyici ölçüm deposuna Azure klasik Cloud Services için konuk işletim sistemi performans ölçümlerini gönderme işlemi açıklanır. Tanılama sürüm 1,11 ' den başlayarak, ölçümleri doğrudan Azure Izleyici ölçümleri deposuna yazabilirsiniz; burada standart platform ölçümleri zaten toplanır. 
 
@@ -26,13 +26,13 @@ Bu konumda depolamak, platform ölçümleri için kullanabileceğiniz eylemlere 
 
 Bu makalede özetlenen işlem yalnızca Azure Cloud Services performans sayaçları için geçerlidir. Diğer özel ölçümler için çalışmaz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğinizde bir [Hizmet Yöneticisi veya ortak yönetici](../../cost-management-billing/manage/add-change-subscription-administrator.md) olmanız gerekir. 
 
-- Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir. 
+- Aboneliğinizin [Microsoft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md)'a kayıtlı olması gerekir. 
 
-- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklemiş olmanız gerekir.
+- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](../../cloud-shell/overview.md) yüklemiş olmanız gerekir.
 
 - Bulut hizmetiniz [özel ölçümleri destekleyen bir bölgede](metrics-custom-overview.md#supported-regions)olmalıdır.
 
@@ -46,7 +46,7 @@ Bu makalede özetlenen işlem yalnızca Azure Cloud Services performans sayaçla
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma 
 
-Azure Active Directory kiracınızda, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)bölümündeki yönergeleri kullanarak bir hizmet sorumlusu oluşturun. Bu işlemi yaparken aşağıdakilere göz önünde olabilirsiniz: 
+Azure Active Directory kiracınızda, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](../../active-directory/develop/howto-create-service-principal-portal.md)bölümündeki yönergeleri kullanarak bir hizmet sorumlusu oluşturun. Bu işlemi yaparken aşağıdakilere göz önünde olabilirsiniz: 
 
 - Oturum açma URL 'si için herhangi bir URL 'YI yerleştirebilirsiniz.  
 - Bu uygulama için yeni bir istemci gizli dizisi oluşturun.  
@@ -171,7 +171,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 ## <a name="plot-metrics-in-the-azure-portal"></a>Azure portal ölçümleri çizme 
 
-1. Azure portalına gidin. 
+1. Azure portala gidin. 
 
    ![Ölçümler Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
@@ -192,4 +192,3 @@ Belirli bir rol veya rol örneği tarafından kullanılan toplam belleği görü
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Özel ölçümler](metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
-

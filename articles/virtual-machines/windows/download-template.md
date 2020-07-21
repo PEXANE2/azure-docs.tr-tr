@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a648fd7f2835ca23285b69d5fed7156507b2ace
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085391"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500574"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM için şablon indirme
 Portal veya PowerShell kullanarak Azure 'da bir VM oluşturduğunuzda, sizin için otomatik olarak bir Kaynak Yöneticisi şablonu oluşturulur. Bu şablonu, bir dağıtımı hızlı bir şekilde yinelemek için kullanabilirsiniz. Şablon, bir kaynak grubundaki tüm kaynaklarla ilgili bilgiler içerir. Bu, bir sanal makine için, şablonda ağ kaynakları dahil olmak üzere o kaynak grubundaki VM 'nin desteğiyle oluşturulan her şeyi içerdiği anlamına gelir.
@@ -32,12 +32,11 @@ Portal veya PowerShell kullanarak Azure 'da bir VM oluşturduğunuzda, sizin iç
 template.jsdosyadaki dosya şablonudur.
 
 ## <a name="download-the-template-using-powershell"></a>PowerShell kullanarak şablonu indirme
-. JSON şablon dosyasını [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) cmdlet 'ini kullanarak da indirebilirsiniz. `-path`. Json dosyasının dosya adını ve yolunu sağlamak için parametresini kullanabilirsiniz. Bu örnek, **Myresourcegroup** adlı kaynak grubunun şablonunun yerel bilgisayarınızdaki **c:\users\public\downloads** klasörüne nasıl indirileceği gösterilmektedir.
+. JSON şablon dosyasını [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) cmdlet 'ini kullanarak da indirebilirsiniz. `-path`. Json dosyasının dosya adını ve yolunu sağlamak için parametresini kullanabilirsiniz. Bu örnek, **Myresourcegroup** adlı kaynak grubunun şablonunun yerel bilgisayarınızdaki **c:\users\public\downloads** klasörüne nasıl indirileceği gösterilmektedir.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şablonları kullanarak kaynak dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Template izlenecek yol](../../azure-resource-manager/resource-manager-template-walkthrough.md).
-
+Şablonları kullanarak kaynak dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Template izlenecek yol](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).

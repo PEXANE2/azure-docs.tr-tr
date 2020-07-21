@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847391"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505304"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) ' de mevcut yatırımlarınızı sürdürmek ve Azure izleyici ile genişletilmiş özellikleri kullanmak için, Operations Manager Log Analytics çalışma alanınızla tümleştirebilirsiniz. Bu, Operations Manager kullanmaya devam ederken Azure Izleyici 'de günlüklerin fırsatlarından yararlanmanızı sağlar:
+[System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) ' de mevcut yatırımlarınızı sürdürmek ve Azure izleyici ile genişletilmiş özellikleri kullanmak için, Operations Manager Log Analytics çalışma alanınızla tümleştirebilirsiniz. Bu, Operations Manager kullanmaya devam ederken Azure Izleyici 'de günlüklerin fırsatlarından yararlanmanızı sağlar:
 
 * Operations Manager ile BT hizmetlerinizin durumunu izleyebilirsiniz.
 * Olay ve sorun yönetimini destekleyen ITSM çözümlerinizle tümleştirmeyi koruyabilirsiniz.
@@ -33,7 +33,7 @@ Aşağıdaki diyagramda, yön ve bağlantı noktaları da dahil olmak üzere bir
 
 BT güvenlik ilkeleriniz ağınızdaki bilgisayarların Internet 'e bağlanmasına izin vermediğinde, yönetim sunucuları yapılandırma bilgilerini almak için Log Analytics ağ geçidine bağlanacak şekilde yapılandırılabilir ve bu çözümler etkin çözümlere göre toplanan verileri gönderir. Operations Manager yönetim grubunuzu Azure Izleyici 'ye bir Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırma hakkında daha fazla bilgi ve adımlar için, bkz. [Log Analytics ağ geçidini kullanarak bilgisayarları Azure izleyici 'ye bağlama](../../azure-monitor/platform/gateway.md).  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
 
@@ -51,7 +51,7 @@ Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
     - Güneydoğu Asya
     - Doğu Japonya
     - Güney Birleşik Krallık
-    - Orta Hindistan
+    - Central India
     - Orta Kanada
     - Batı ABD 2
 
@@ -71,16 +71,16 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 
 |Kaynak | Bağlantı noktası numarası| HTTP İncelemesini atlama|  
 |---------|------|-----------------------|  
-|**Aracısı**|||  
-|\*.ods.opinsights.azure.com| 443 |Evet|  
-|\*.oms.opinsights.azure.com| 443|Evet|  
-|\*.blob.core.windows.net| 443|Evet|  
-|\*.azure-automation.net| 443|Evet|  
+|**Aracı**|||  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Yönetim sunucusu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Evet|  
-|\*.ods.opinsights.azure.com| 443| Evet|  
-|*.azure-automation.net | 443| Evet|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Konsolu Azure Izleyici 'ye Operations Manager**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -154,7 +154,7 @@ Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, yönetim grubunda Azure Izl
 1. Operations Manager konsolunu açın ve **Yönetim** çalışma alanını seçin.
 1. **RunAs Yapılandırması** altında, **Profiller**'i seçin.
 1. **System Center Advisor Farklı Çalıştır Profili Ara Sunucusu** profilini açın.
-1. Farklı Çalıştır Profili Sihirbazı'nda, bir Farklı Çalıştır hesabı kullanmak için Ekle'ye tıklayın. [Farklı Çalıştır hesabı](https://technet.microsoft.com/library/hh321655.aspx) oluşturabilir veya mevcut bir hesabı kullanabilirsiniz. Doğrudan ara sunucuya geçiş yapmak için bu hesabın yeterli izinlere sahip olması gerekir.
+1. Farklı Çalıştır Profili Sihirbazı'nda, bir Farklı Çalıştır hesabı kullanmak için Ekle'ye tıklayın. [Farklı Çalıştır hesabı](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) oluşturabilir veya mevcut bir hesabı kullanabilirsiniz. Doğrudan ara sunucuya geçiş yapmak için bu hesabın yeterli izinlere sahip olması gerekir.
 1. Yönetilecek hesabı belirlemek için, **Seçilen bir sınıf, grup veya nesne**'yi seçin, **Seç...** düğmesine tıklayın ve ardından **Grup...** öğesine tıklayarak **Grup Araması** kutusunu açın.
 1. **Microsoft System Center Advisor İzleme Sunucusu Grubu**'nu arayın ve ardından seçin. Grubu seçtikten sonra **Grup Araması** kutusunu kapatmak için **Tamam**'a tıklayın.
 1. **Farklı Çalıştır hesabı ekle** kutusunu kapatmak için **Tamam** ' ı tıklatın.
@@ -173,7 +173,7 @@ Yapılandırma tamamlandıktan sonra Operations Manager yönetim grubu, Azure Iz
 * **Microsoft.SystemCenter. Advisor. MPUpdate** -temel Azure izleyici yönetim paketlerini güncelleştirir. Varsayılan olarak her 12 saatte bir çalıştırılır.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - Çalışma alanınızda etkinleştirilmiş olan çözüm yönetim paketlerini güncelleştirir. Varsayılan olarak her beş (5) dakikada bir çalıştırılır.
 
-Bu iki kuralı, otomatik indirmeyi devre dışı bırakarak veya yönetim sunucusunun Azure Izleyici ile ne sıklıkta eşitleyeceğini, yeni bir yönetim paketinin mevcut olup olmadığını ve indirilmesinin gerekip gerekmediğini belirleyerek geçersiz kılabilir. **Frequency** parametresini saniye cinsinden bir değerle değiştirip eşitleme zamanlamasında değişiklik yapmak veya **Enabled** parametresini değiştirip kuralları devre dışı bırakmak için, [Kuralı veya İzlemeyi Geçersiz Kılma](https://technet.microsoft.com/library/hh212869.aspx) altındaki adımları izleyin. Geçersiz kılmalarda, Operations Manager Yönetim Grubu sınıfındaki tüm nesneleri hedefleyin.
+Bu iki kuralı, otomatik indirmeyi devre dışı bırakarak veya yönetim sunucusunun Azure Izleyici ile ne sıklıkta eşitleyeceğini, yeni bir yönetim paketinin mevcut olup olmadığını ve indirilmesinin gerekip gerekmediğini belirleyerek geçersiz kılabilir. **Frequency** parametresini saniye cinsinden bir değerle değiştirip eşitleme zamanlamasında değişiklik yapmak veya **Enabled** parametresini değiştirip kuralları devre dışı bırakmak için, [Kuralı veya İzlemeyi Geçersiz Kılma](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12)) altındaki adımları izleyin. Geçersiz kılmalarda, Operations Manager Yönetim Grubu sınıfındaki tüm nesneleri hedefleyin.
 
 Üretim yönetim grubunuzdaki yönetim paketi sürümlerini denetlemek için mevcut değişiklik denetimi işleminizi takip etmeye devam etmek için, kuralları devre dışı bırakabilir ve güncelleştirmelere izin verildiğinde belirli zamanlarda etkinleştirebilirsiniz. Ortamınızda bir geliştirme veya QA yönetim grubu varsa ve İnternet'e bağlıysa, bu senaryoyu desteklemek için söz konusu yönetim grubunu Log Analytics çalışma alanıyla yapılandırabilirsiniz. Bu, Azure Izleyici yönetim paketlerinin yinelemeli sürümlerini üretim yönetim grubunuza bırakmadan önce gözden geçirmenize ve değerlendirmenize olanak tanır.
 

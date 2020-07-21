@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 4bcd2349913c1823e80d46565dfa869d9efe955f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ab95223d084436d1bf39ba557ec3b01c0b534d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260670"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503396"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Toplu yürütücü .NET kitaplığı 'nı kullanarak Azure Cosmos DB toplu işlemleri gerçekleştirin
 
@@ -27,7 +27,7 @@ Bu öğretici, belgeleri Azure Cosmos kapsayıcısında içeri aktarmak ve günc
 
 Şu anda toplu yürütücü kitaplığı yalnızca SQL API ve Gremlin API hesapları Azure Cosmos DB desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü .NET kitaplığı 'nın nasıl kullanılacağı açıklanır. Gremlin API hesaplarıyla toplu yürütücü .NET kitaplığını kullanma hakkında bilgi edinmek için bkz. [Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio 2019 ' ü henüz yüklemediyseniz [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio Kurulumu sırasında "Azure geliştirme" özelliğini etkinleştirdiğinizden emin olun.
 
@@ -41,7 +41,7 @@ Bu öğretici, belgeleri Azure Cosmos kapsayıcısında içeri aktarmak ve günc
 
 Şimdi, GitHub 'dan örnek bir .NET uygulaması indirerek kodla çalışmaya geçiş yapalım. Bu uygulama, Azure Cosmos hesabınızda depolanan veriler üzerinde toplu işlemler gerçekleştirir. Uygulamayı kopyalamak için, bir komut istemi açın, kopyalamak istediğiniz dizine gidin ve şu komutu çalıştırın:
 
-```
+```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 

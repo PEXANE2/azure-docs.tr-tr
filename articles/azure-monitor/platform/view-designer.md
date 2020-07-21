@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658498"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505099"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, özel görünümleri oluşturma ve düzenlemeyle ilgili görünüm tasarımcısına ve yordamlarına ilişkin bir genel bakış sunulmaktadır.
@@ -31,7 +32,7 @@ Görünümler, Azure portal Azure Izleyici **genel bakış** sayfasında görün
 
 Görünüm Tasarımcısı ile oluşturduğunuz görünümler aşağıdaki tabloda açıklanan öğeleri içerir:
 
-| Bölüm | Açıklama |
+| Bölüm | Description |
 |:--- |:--- |
 | Kutucuklar | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
 | Özel görünüm | Bir kutucuk seçtiğinizde gösterilir. Her görünüm bir veya daha fazla görselleştirme bölümü içerir. |
@@ -51,7 +52,7 @@ Seçenekler aşağıdaki tabloda açıklanmıştır:
 | Seçenek | Açıklama |
 |:--|:--|
 | Yenile   | En son verilerle görünümü yeniler. | 
-| Günlükler      | Günlük sorgularıyla verileri çözümlemek için [Log Analytics](../log-query/portals.md) açar. |
+| Günlükler      | Günlük sorgularıyla verileri çözümlemek için [Log Analytics](../log-query/log-query-overview.md) açar. |
 | Düzenle       | İçeriğini ve yapılandırmasını düzenlemek için Görünüm Tasarımcısı ' nda görünümü açar.  |
 | Kopyalama      | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 | Tarih aralığı | Görünümde yer alan veriler için tarih ve saat aralığı filtresini ayarlayın. Bu tarih aralığı, görünümdeki sorgularda ayarlanan herhangi bir tarih aralığından önce uygulanır.  |
@@ -100,7 +101,7 @@ Düzenleme modunda görünümlerle çalışma seçenekleri aşağıdaki tabloda 
 | İptal      | Değişikliklerinizi atar ve görünümü kapatır. |
 | Görünümü Sil | Görünümü siler. |
 | Dışarı Aktarma      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
-| İçeri Aktar      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
+| İçeri Aktarma      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
 | Kopyalama       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

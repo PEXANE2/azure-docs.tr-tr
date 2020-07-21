@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144850"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500319"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -21,30 +21,30 @@ ms.locfileid: "86144850"
 
 2. nesil VM 'ler, 1. nesil VM 'lerde desteklenmeyen önemli özellikleri destekler. Bu özellikler, artan bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM) içerir. Şirket içinde çalışan 2. nesil VM 'lerde, henüz Azure 'da desteklenmeyen bazı özellikler var. Daha fazla bilgi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
-2. nesil sanal makineler, 1. nesil VM 'Ler tarafından kullanılan BIOS tabanlı mimaride değil, yeni UEFı tabanlı önyükleme mimarisini kullanır. 1. nesil VM 'Lerle karşılaştırıldığında 2. nesil VM 'Ler geliştirilmiş önyükleme ve yükleme süreleriyle aynı olabilir. 2. nesil VM 'Lere genel bakış ve 1. nesil ve 2. nesil arasındaki farklılıklar için bkz. [Hyper-V ' d e 1. nesil veya 2 sanal makine oluşturmalıyım?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+2. nesil sanal makineler, 1. nesil VM 'Ler tarafından kullanılan BIOS tabanlı mimaride değil, yeni UEFı tabanlı önyükleme mimarisini kullanır. 1. nesil VM 'Lerle karşılaştırıldığında 2. nesil VM 'Ler geliştirilmiş önyükleme ve yükleme süreleriyle aynı olabilir. 2. nesil VM 'Lere genel bakış ve 1. nesil ve 2. nesil arasındaki farklılıklar için bkz. [Hyper-V ' d e 1. nesil veya 2 sanal makine oluşturmalıyım?](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>2. nesil VM boyutları
 
 1. nesil sanal makineler, Azure 'daki tüm VM boyutları tarafından desteklenir (Mv2 serisi VM 'Ler hariç). Azure şimdi aşağıdaki seçili VM serileri için 2. nesil destek sunuyor:
 
-* [B serisi](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [B serisi](../sizes-b-series-burstable.md)
 * [DCsv2 serisi](../dcv2-series.md)
 * [DSv2-Series](../dv2-dsv2-series.md) ve [Dsv3 serisi](../dv3-dsv3-series.md)
-* [Dasv4 serisi](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
+* [Dasv4 serisi](../dav4-dasv4-series.md)
 * [Esv3 serisi](../ev3-esv3-series.md)
-* [Easv4 serisi](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
+* [Easv4 serisi](../eav4-easv4-series.md)
 * [Fsv2 serisi](../fsv2-series.md)
-* [GS serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [GS serisi](../sizes-previous-gen.md#gs-series)
 * [HB serisi](../hb-series.md)
 * [HC serisi](../hc-series.md)
-* [LS-Serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) ve [Lsv2 serisi](../lsv2-series.md)
+* [LS-Serisi](../sizes-previous-gen.md#ls-series) ve [Lsv2 serisi](../lsv2-series.md)
 * [M serisi](../m-series.md)
 * [Mv2-serisi](../mv2-series.md)<sup>1</sup>
 * [NCv2-Series](../ncv2-series.md) ve [NCv3 serisi](../ncv3-series.md)
 * [ND serisi](../nd-series.md)
 * [NVv3 serisi](../nvv3-series.md)
 
-<sup>1</sup> Mv2 serisi, 1. nesil VM görüntülerini desteklemez ve yalnızca 2. nesil görüntülerin bir alt kümesini destekler. Ayrıntılar için lütfen bkz. [Mv2-Series belgeleri](https://docs.microsoft.com/azure/virtual-machines/mv2-series) .
+<sup>1</sup> Mv2 serisi, 1. nesil VM görüntülerini desteklemez ve yalnızca 2. nesil görüntülerin bir alt kümesini destekler. Ayrıntılar için lütfen bkz. [Mv2-Series belgeleri](../mv2-series.md) .
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketi 'nde 2. nesil VM görüntüleri
 
@@ -137,7 +137,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
 
 Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
 
@@ -213,6 +213,6 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturab
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hyper-V ' d a 2. nesil sanal makineler](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)hakkında bilgi edinin.
+* [Hyper-V ' d a 2. nesil sanal makineler](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)hakkında bilgi edinin.
 
 * [BIR VHD](prepare-for-upload-vhd-image.md) 'yi şirket Içi sistemlerden Azure 'a yüklemek için hazırlama hakkında bilgi edinin.

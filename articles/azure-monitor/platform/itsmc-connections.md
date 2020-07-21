@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83655901"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505168"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](../../azure-monitor/platform/itsmc-overview.md).
@@ -39,7 +39,7 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
 - Service Manager Web uygulaması (Web uygulaması) dağıtıldı ve yapılandırılır. Web uygulaması hakkında bilgi [burada](#create-and-deploy-service-manager-web-app-service)yer alır.
 - Karma bağlantı oluşturuldu ve yapılandırıldı. Daha fazla bilgi: [karma bağlantıyı yapılandırın](#configure-the-hybrid-connection).
 - Desteklenen Service Manager sürümleri: 2012 R2 veya 2016.
-- Kullanıcı rolü: [Gelişmiş işleç](https://technet.microsoft.com/library/ff461054.aspx).
+- Kullanıcı rolü: [Gelişmiş işleç](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
 
 ### <a name="connection-procedure"></a>Bağlantı yordamı
 
@@ -201,7 +201,7 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
 > Son tıklama Güncelleştir ' e tıklayın.
 > 2) **Bağlantının canlı kalmasını sağlamak için bir iç yordam oluşturmanız önerilir:** Belirteci yenilemek için kullanım belirtecini yenileme belirtecine göre. Lütfen yenileme belirtecinin ön bitiş saati (yenileme belirtecinin süresi dolmadan kaç gün önce önerilir) için önce aşağıdaki işlemleri gerçekleştirdiğinizden emin olun:
 >
-> 1. [ITSM Bağlayıcısı yapılandırması için el ile eşitleme işlemini tamaml](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 1. [ITSM Bağlayıcısı yapılandırması için el ile eşitleme işlemini tamaml](./itsmc-resync-servicenow.md)
 > 2. Eski yenileme belirtecine geri dönmek için eski anahtarların güvenlik nedenlerinden haberdar olması önerilmez. ServiceNow dikey penceresinde sistem OAuth için arama belirteçleri Yönet ' i seçin. OAuth adı ve sona erme tarihine göre listeden eski belirteci seçin.
 > ![KAR sistemi OAuth tanımı](media/itsmc-connections/snow-system-oauth.png)
 > 3. Erişimi Iptal et ' e tıklayın.
@@ -230,7 +230,7 @@ Bir ServiceNow bağlantısı oluşturmak için aşağıdaki yordamı kullanın:
 | --- | --- |
 | **Bağlantı adı**   | ISMC ile bağlanmak istediğiniz ServiceNow örneği için bir ad yazın.  Bu ıTSM 'de iş öğelerini yapılandırdığınızda ve ayrıntılı Log Analytics 'i görüntülemek için bu adı daha sonra Log Analytics ' de kullanırsınız. |
 | **İş ortağı türü**   | **ServiceNow**' ı seçin. |
-| **Nitelen**   | ISMC bağlantısını desteklemek için ServiceNow uygulamasında oluşturduğunuz tümleştirme Kullanıcı adını yazın. Daha fazla bilgi: [ServiceNow uygulaması kullanıcı rolü oluşturun](#create-integration-user-role-in-servicenow-app).|
+| **Kullanıcı adı**   | ISMC bağlantısını desteklemek için ServiceNow uygulamasında oluşturduğunuz tümleştirme Kullanıcı adını yazın. Daha fazla bilgi: [ServiceNow uygulaması kullanıcı rolü oluşturun](#create-integration-user-role-in-servicenow-app).|
 | **Parola**   | Bu kullanıcı adıyla ilişkili parolayı yazın. **Not**: Kullanıcı adı ve parola yalnızca kimlik doğrulama belirteçleri oluşturmak için kullanılır ve ısmc hizmetinin içinde herhangi bir yerde depolanmaz.  |
 | **Sunucu URL 'SI**   | ISMC 'a bağlamak istediğiniz ServiceNow örneğinin URL 'sini yazın. URL, ". servicenow.com" sonekiyle desteklenen bir SaaS sürümüne işaret etmelidir.|
 | **İstemci KIMLIĞI**   | Daha önce oluşturduğunuz OAuth2 kimlik doğrulaması için kullanmak istediğiniz istemci KIMLIĞINI yazın.  İstemci KIMLIĞI ve gizli anahtar oluşturma hakkında daha fazla bilgi: [OAuth kurulumu](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
@@ -248,6 +248,10 @@ Bir ServiceNow bağlantısı oluşturmak için aşağıdaki yordamı kullanın:
 - Log Analytics uyarılarından veya günlük kayıtlarından ya da bu ServiceNow örneğindeki Azure uyarılarından olaylar oluşturabilirsiniz.
 
 Daha fazla bilgi: [Azure uyarılarından ITSM iş öğeleri oluşturun](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+
+
+> [!NOTE]
+> ServiceNow 'da saat başına istekler için bir hız sınırı vardır. Limiti yapılandırmak için ServiceNow örneğinde "gelen REST API hız sınırlaması" tanımlayarak bunu kullanın.
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>ServiceNow uygulaması 'nda tümleştirme Kullanıcı rolü oluşturma
 
@@ -325,7 +329,7 @@ Bir Provance bağlantısı oluşturmak için aşağıdaki yordamı kullanın:
 | --- | --- |
 | **Bağlantı adı**   | ISMC ile bağlanmak istediğiniz Provance örneği için bir ad yazın.  Bu adı daha sonra bu ıTSM 'de iş öğelerini yapılandırdığınızda ve ayrıntılı Log Analytics 'i görüntülemek için kullanabilirsiniz. |
 | **İş ortağı türü**   | **Provance**' ı seçin. |
-| **Nitelen**   | ISMC 'a bağlanabilecek kullanıcı adını yazın.    |
+| **Kullanıcı adı**   | ISMC 'a bağlanabilecek kullanıcı adını yazın.    |
 | **Parola**   | Bu kullanıcı adıyla ilişkili parolayı yazın. **Note:** Kullanıcı adı ve parola yalnızca kimlik doğrulama belirteçleri oluşturmak için kullanılır ve ıSMC hizmetinin içinde herhangi bir yerde depolanmaz. _|
 | **Sunucu URL 'SI**   | ISMC 'a bağlamak istediğiniz Provance örneğinizin URL 'sini yazın. |
 | **İstemci KIMLIĞI**   | Bu bağlantının kimliğini doğrulamak için gereken istemci KIMLIĞINI yazın ve bu, Provance Örneğinizde oluşturduğunuz.  İstemci KIMLIĞI hakkında daha fazla bilgi için bkz. [Active Directory kimlik doğrulamasını yapılandırma](../../app-service/configure-authentication-provider-aad.md). |
@@ -376,7 +380,7 @@ Bir Provance bağlantısı oluşturmak için aşağıdaki yordamı kullanın:
 | --- | --- |
 | **Bağlantı adı**   | ISMC 'a bağlamak istediğiniz Cherwell örneği için bir ad yazın.  Bu adı daha sonra bu ıTSM 'de iş öğelerini yapılandırdığınızda ve ayrıntılı Log Analytics 'i görüntülemek için kullanabilirsiniz. |
 | **İş ortağı türü**   | **Cherwell** öğesini seçin. |
-| **Nitelen**   | ISMC 'a bağlanabilecek Cherwell Kullanıcı adını yazın. |
+| **Kullanıcı adı**   | ISMC 'a bağlanabilecek Cherwell Kullanıcı adını yazın. |
 | **Parola**   | Bu kullanıcı adıyla ilişkili parolayı yazın. **Note:** Kullanıcı adı ve parola yalnızca kimlik doğrulama belirteçleri oluşturmak için kullanılır ve ıSMC hizmetinin içinde herhangi bir yerde depolanmaz.|
 | **Sunucu URL 'SI**   | ISMC 'a bağlamak istediğiniz Cherwell örneğinizin URL 'sini yazın. |
 | **İstemci KIMLIĞI**   | Bu bağlantının kimliğini doğrulamak için, Cherwell örneğiniz içinde oluşturduğunuz istemci KIMLIĞINI yazın.   |

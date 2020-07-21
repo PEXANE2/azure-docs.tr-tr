@@ -4,11 +4,12 @@ description: Azure hizmet yönetimi (ASM) veya RDFE dağıtım modelinin Kullan�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505440"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
 
@@ -28,9 +29,9 @@ Aşağıdaki bileşenleri kullanıyorsanız, bu makale sizin için geçerlidir:
 
 - **Klasik Azure Insights SDK 'sı** - [Klasik Azure Insights SDK 'sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanıyorsanız, [.net](https://github.com/azure/azure-libraries-for-net#download) veya [Java](https://github.com/azure/azure-libraries-for-java#download)için yeni Azure izleyici SDK 'sını kullanmaya geçin. [Azure izleyici SDK 'Sı NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)indirin.
 
-- **Klasik otomatik ölçeklendirme** - [Klasik otomatik ölçeklendirme ayarları API 'lerini](https://msdn.microsoft.com/library/azure/mt348562.aspx) özel olarak oluşturulmuş araçlardan veya [Klasik Azure Insights SDK 'sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanarak arıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir.
+- **Klasik otomatik ölçeklendirme** - [Klasik otomatik ölçeklendirme ayarları API 'lerini](/previous-versions/azure/reference/mt348562(v=azure.100)) özel olarak oluşturulmuş araçlardan veya [Klasik Azure Insights SDK 'sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanarak arıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir.
 
-- **Klasik ölçümler** -özel olarak oluşturulmuş araçlardan [Klasik REST API 'Leri](https://msdn.microsoft.com/library/azure/dn510374.aspx) veya [Klasik Azure Insights SDK 'Sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) kullanarak ölçümler kullanıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir. 
+- **Klasik ölçümler** -özel olarak oluşturulmuş araçlardan [Klasik REST API 'Leri](/previous-versions/azure/reference/dn510374(v=azure.100)) veya [Klasik Azure Insights SDK 'Sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) kullanarak ölçümler kullanıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir. 
 
 Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emin değilseniz, aşağıdakilere bakın:
 
@@ -42,11 +43,11 @@ Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emi
 
 - Aşağıdaki bağlantılardan herhangi birinde belgelerde başvurulan çağrılar kullanıyorsanız, klasik eski API 'Leri kullanıyorsunuz demektir.
 
-  - [Windows. Azure. Management. Monitoring sınıf kitaplığı](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Windows. Azure. Management. Monitoring sınıf kitaplığı](/previous-versions/azure/dn510414(v=azure.100))
 
-  - [İzleme (klasik) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
+  - [İzleme (klasik) .NET](/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [Imetricoperations arabirimi](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [Imetricoperations arabirimi](/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
 ## <a name="why-you-should-switch"></a>Neden geçmeniz gerekir?
 
@@ -86,5 +87,5 @@ Sorularınız varsa bizimle iletişime geçin MonitorClassicAPIhelp@microsoft.co
 
 ## <a name="references"></a>Başvurular
 
-- [Azure Izleyici için daha yeni REST API 'Leri](https://docs.microsoft.com/rest/api/monitor/) 
+- [Azure Izleyici için daha yeni REST API 'Leri](/rest/api/monitor/) 
 - [Daha yeni Azure Izleyici SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

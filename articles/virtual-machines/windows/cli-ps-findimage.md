@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2d37e20ada2d1128f04d2df822da996338e0e6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224256"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500880"
 ---
 # <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure PowerShell ile Azure Marketi 'nde VM görüntülerini bulma ve kullanma
 
@@ -44,13 +44,13 @@ Bu tablo, belirtilen Yayımcılar ve teklifler için kullanılabilir SKU 'ların
 
 ## <a name="navigate-the-images"></a>Görüntülerde gezin
 
-Bir konumda görüntü bulmanın bir yolu [Get-Azvmımagepublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get-Azvmımageteklifinin](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer)ve [Get-Azvmımagesku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) cmdlet 'lerini sırasıyla çalıştırmak olur:
+Bir konumda görüntü bulmanın bir yolu [Get-Azvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher), [Get-Azvmımageteklifinin](/powershell/module/az.compute/get-azvmimageoffer)ve [Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku) cmdlet 'lerini sırasıyla çalıştırmak olur:
 
 1. Görüntü yayımcılarını listeleyin.
 2. Belirli bir yayımcı varsa yayımcının tekliflerini listeleyin.
 3. Belirli bir teklif varsa SKU’larını listeleyin.
 
-Daha sonra, seçilen bir SKU için, dağıtılacak sürümleri listelemek için [Get-Azvmımage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) komutunu çalıştırın.
+Daha sonra, seçilen bir SKU için, dağıtılacak sürümleri listelemek için [Get-Azvmımage](/powershell/module/az.compute/get-azvmimage) komutunu çalıştırın.
 
 1. Yayımcıları listeleyin:
 
@@ -168,7 +168,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Artık seçili yayımcı, teklif, SKU ve sürümü bir URN (:) ile ayrılmış değerler) ile birleştirebilirsiniz. `--image` [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'INI kullanarak bir VM oluşturduğunuzda bu urn parametresini parametresiyle geçirin. Görüntünün en son sürümünü almak için, isteğe bağlı olarak URN 'deki sürüm numarasını "en son" ile değiştirebilirsiniz.
+Artık seçili yayımcı, teklif, SKU ve sürümü bir URN (:) ile ayrılmış değerler) ile birleştirebilirsiniz. `--image` [New-azvm](/powershell/module/az.compute/new-azvm) cmdlet 'INI kullanarak bir VM oluşturduğunuzda bu urn parametresini parametresiyle geçirin. Görüntünün en son sürümünü almak için, isteğe bağlı olarak URN 'deki sürüm numarasını "en son" ile değiştirebilirsiniz.
 
 Bir sanal makineyi Kaynak Yöneticisi şablonuyla dağıtırsanız, Özellikler içinde görüntü parametrelerini ayrı olarak ayarlarsınız `imageReference` . Bkz. [şablon başvurusu](/azure/templates/microsoft.compute/virtualmachines).
 
@@ -235,7 +235,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>Koşulları kabul edin
 
-Lisans koşullarını görüntülemek için [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) cmdlet 'ini kullanın ve satın alma planı parametrelerini geçirin. Çıktı, Market görüntüsüne yönelik koşullara bir bağlantı sağlar ve koşulları önceden kabul edip etmeyeceğinizi gösterir. Parametre değerlerinde tüm küçük harfleri kullandığınızdan emin olun.
+Lisans koşullarını görüntülemek için [Get-AzMarketplaceterms](/powershell/module/az.marketplaceordering/get-azmarketplaceterms) cmdlet 'ini kullanın ve satın alma planı parametrelerini geçirin. Çıktı, Market görüntüsüne yönelik koşullara bir bağlantı sağlar ve koşulları önceden kabul edip etmeyeceğinizi gösterir. Parametre değerlerinde tüm küçük harfleri kullandığınızdan emin olun.
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -254,7 +254,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-Koşulları kabul etmek veya reddetmek için [set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) cmdlet 'ini kullanın. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Parametre değerlerinde tüm küçük harfleri kullandığınızdan emin olun. 
+Koşulları kabul etmek veya reddetmek için [set-AzMarketplaceterms](/powershell/module/az.marketplaceordering/set-azmarketplaceterms) cmdlet 'ini kullanın. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Parametre değerlerinde tüm küçük harfleri kullandığınızdan emin olun. 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -278,7 +278,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>Satın alma planı parametrelerini kullanarak dağıtın
 
-Bir görüntü için koşulları kabul ettikten sonra bu abonelikte bir VM dağıtabilirsiniz. Aşağıdaki kod parçacığında gösterildiği gibi, VM nesnesinin Market planı bilgilerini ayarlamak için [set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) cmdlet 'ini kullanın. VM için ağ ayarları oluşturmaya ve dağıtımı tamamlamaya yönelik bir komut dosyası için, [PowerShell betiği örneklerine](powershell-samples.md)bakın.
+Bir görüntü için koşulları kabul ettikten sonra bu abonelikte bir VM dağıtabilirsiniz. Aşağıdaki kod parçacığında gösterildiği gibi, VM nesnesinin Market planı bilgilerini ayarlamak için [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) cmdlet 'ini kullanın. VM için ağ ayarları oluşturmaya ve dağıtımı tamamlamaya yönelik bir komut dosyası için, [PowerShell betiği örneklerine](powershell-samples.md)bakın.
 
 ```powershell
 ...
@@ -317,5 +317,3 @@ Daha sonra VM yapılandırmasını ağ yapılandırma nesneleriyle birlikte `New
 Temel görüntü bilgilerini kullanarak cmdlet 'le hızlı bir şekilde sanal makine oluşturmak için `New-AzVM` bkz. [PowerShell ile Windows sanal makinesi oluşturma](quick-create-powershell.md).
 
 Paylaşılan görüntü galerisinde özel görüntüler oluşturmak üzere Azure Marketi görüntülerini kullanma hakkında daha fazla bilgi için bkz. [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](../marketplace-images.md).
-
-

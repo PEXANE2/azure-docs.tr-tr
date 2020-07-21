@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503294"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure gelişmiş tehdit algılama
 
@@ -339,14 +340,13 @@ Anomali algılama API 'SI, hizmet durumu ve KPI izleme, IoT, performans izleme v
 
 Kuruluşunuz, gölge BT’yi ortaya çıkarmaya, riskleri değerlendirmeye, ilkeleri zorunlu tutmaya, etkinlikleri araştırmaya ve tehditleri durdurmaya yardımcı olan araçlarla kritik verilerin denetimini elde tutarak buluta daha güvenli bir şekilde geçebilir.
 
-| | |
-|---|---|
+| Kategori | Açıklama |
+| -------- | ----------- |
 | Bul | Cloud App Security ile gölge BT’yi ortaya çıkarın. Bulut ortamınızdaki uygulamaları, etkinlikleri, kullanıcıları, verileri ve dosyaları bularak görünürlük kazanın. Bulutunuza bağlı olan üçüncü taraf uygulamalarını keşfedin.|
 |Araştır | Riskli uygulamaları, belirli kullanıcıları ve ağınızdaki dosyaları derinlemesine incelemek üzere bulut inceleme araçlarını kullanarak bulut uygulamalarınızı araştırın. Buluttan toplanan verilerdeki modelleri bulun. Bulutunuzu izlemek için raporlar oluşturun. |
 | Denetim | Ağ bulut trafiği üzerinde en yüksek denetim düzeyine ulaşmak için ilkeler ve uyarılar ayarlayarak riski azaltın. Kullanıcılarınızı güvenli, tasdikli bulut uygulaması alternatiflerine geçirmek için Cloud App Security’yi kullanın. |
 | Koruma | Uygulamaları tasdik etmek veya önlemek, veri kaybı engellemesini zorlamak, izinleri ve paylaşımı denetlemek ve özel raporlar ve uyarılar oluşturmak için Cloud App Security kullanın. |
 | Denetim | Ağ bulut trafiği üzerinde en yüksek denetim düzeyine ulaşmak için ilkeler ve uyarılar ayarlayarak riski azaltın. Kullanıcılarınızı güvenli, tasdikli bulut uygulaması alternatiflerine geçirmek için Cloud App Security’yi kullanın. |
-| | |
 
 
 ![Cloud App Security diyagramı](./media/threat-detection/azure-threat-detection-fig14.png)

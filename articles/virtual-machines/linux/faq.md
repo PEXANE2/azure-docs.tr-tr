@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: cda729779c333064c91152e8427ce1a05227396e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 09f34eec84deeaf76d62ae0aff881e53bf5dd13f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502410"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux Sanal Makineleri hakkında sık sorulan sorular
 Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Linux sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Windows sürümü için bkz. [hakkında sık sorulan sorular Windows sanal makineleri](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -30,7 +30,7 @@ Azure depolama hesapları, işletim sistemi diski ve tüm veri diskleri için de
 ## <a name="how-can-i-access-my-virtual-machine"></a>Sanal makinime nasıl erişebilirim?
 Secure Shell (SSH) kullanarak sanal makinede oturum açmak için bir uzak bağlantı kurun. [Windows 'dan](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [Linux ve Mac 'ten](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)nasıl bağlanacağınız hakkında yönergeler için bkz.. Varsayılan olarak, SSH en fazla 10 eş zamanlı bağlantıya izin verir. Yapılandırma dosyasını düzenleyerek bu sayıyı artırabilirsiniz.
 
-Sorun yaşıyorsanız [Secure Shell (SSH) bağlantılarında sorun giderme](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)' yi inceleyin.
+Sorun yaşıyorsanız [Secure Shell (SSH) bağlantılarında sorun giderme](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)' yi inceleyin.
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>Verileri depolamak için geçici diski (/dev/sdb1) kullanabilir miyim?
 Verileri depolamak için geçici diski (/dev/sdb1) kullanmayın. Yalnızca geçici depolama alanı için geçerlidir. Kurtarılamamış verileri kaybetme riskini alırsınız.

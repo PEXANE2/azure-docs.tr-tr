@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659294"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505321"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Izleyici günlük verilerini Power BI içine aktarın
 
@@ -20,12 +21,12 @@ ms.locfileid: "77659294"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Azure Izleyici 'deki bir [Log Analytics çalışma alanındaki](manage-access.md) verileri Power BI içine aktarmak Için, Azure izleyici 'de bir [günlük sorgusuna](../log-query/log-query-overview.md) göre Power BI ' de bir veri kümesi oluşturursunuz.  Sorgu, veri kümesinin her yenilenmesinde çalıştırılır.  Daha sonra veri kümesindeki verileri kullanan Power BI raporlar oluşturabilirsiniz.  Power BI veri kümesini oluşturmak için sorgunuzu Log Analytics [Power Query (e) dile](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)dışarı aktarabilirsiniz.  Daha sonra bunu, Power BI Desktop bir sorgu oluşturmak ve sonra bir veri kümesi olarak Power BI yayımlamak için kullanırsınız.  Bu işlemin ayrıntıları aşağıda açıklanmıştır.
+Azure Izleyici 'deki bir [Log Analytics çalışma alanındaki](manage-access.md) verileri Power BI içine aktarmak Için, Azure izleyici 'de bir [günlük sorgusuna](../log-query/log-query-overview.md) göre Power BI ' de bir veri kümesi oluşturursunuz.  Sorgu, veri kümesinin her yenilenmesinde çalıştırılır.  Daha sonra veri kümesindeki verileri kullanan Power BI raporlar oluşturabilirsiniz.  Power BI veri kümesini oluşturmak için sorgunuzu Log Analytics [Power Query (e) dile](/powerquery-m/power-query-m-language-specification)dışarı aktarabilirsiniz.  Daha sonra bunu, Power BI Desktop bir sorgu oluşturmak ve sonra bir veri kümesi olarak Power BI yayımlamak için kullanırsınız.  Bu işlemin ayrıntıları aşağıda açıklanmıştır.
 
 ![Power BI Log Analytics](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Sorguyu dışarı aktar
-Power BI veri kümesini doldurmak istediğiniz verileri döndüren bir [günlük sorgusu](../log-query/log-query-overview.md) oluşturarak başlayın.  Daha sonra bu sorguyu, Power BI Desktop tarafından kullanılabilecek [Power Query (e) dile](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) dışarı aktarabilirsiniz.
+Power BI veri kümesini doldurmak istediğiniz verileri döndüren bir [günlük sorgusu](../log-query/log-query-overview.md) oluşturarak başlayın.  Daha sonra bu sorguyu, Power BI Desktop tarafından kullanılabilecek [Power Query (e) dile](/powerquery-m/power-query-m-language-specification) dışarı aktarabilirsiniz.
 
 1. Veri kümenizin verilerini ayıklamak için [Log Analytics günlük sorgusu oluşturun](../log-query/get-started-portal.md) .
 2. **Dışarı aktarma**  >  **Power BI sorgusunu (d)** seçin.  Bu, sorguyu **PowerBIQuery.txt**adlı bir metin dosyasına dışarı aktarır. 
@@ -52,7 +53,7 @@ Power BI Desktop, Power BI yayımlanmakta olabilecek veri kümeleri ve raporlar 
 ## <a name="publish-to-power-bi"></a>Power BI'da yayımla
 Power BI yayımladığınızda bir veri kümesi ve rapor oluşturulur.  Power BI Desktop bir rapor oluşturursanız, bu, verileriniz ile yayımlanacak.  Aksi takdirde, boş bir rapor oluşturulur.  Power BI raporu değiştirebilir veya veri kümesine göre yeni bir tane oluşturabilirsiniz.
 
-1. Verilerinizi temel alan bir rapor oluşturun.  Bilgi sahibi değilseniz [Power BI Desktop belgeleri](https://docs.microsoft.com/power-bi/desktop-report-view) kullanın.  
+1. Verilerinizi temel alan bir rapor oluşturun.  Bilgi sahibi değilseniz [Power BI Desktop belgeleri](/power-bi/desktop-report-view) kullanın.  
 1. Power BI göndermek için hazırsanız **Yayımla**' ya tıklayın.  
 1. İstendiğinde Power BI hesabınızda bir hedef seçin.  Aklınızda belirli bir hedef yoksa **çalışma alanım**' ı kullanın.
 

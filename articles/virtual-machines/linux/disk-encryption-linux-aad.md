@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1349052488cb520f5866b5b0d238a223f2ceb68
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 274dda338fca1dae1940dd4a0fe66df617195544
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502631"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux sanal makinelerinde Azure AD ile Azure disk şifrelemesini etkinleştirme (önceki sürüm)
 
@@ -209,7 +209,7 @@ Bir LVM-şifreli kurulum önerilir. Aşağıdaki örneklerin tümü için, cihaz
 - VM 'yi oluşturacak veri disklerini ekleyin.
 - Bu diskleri biçimlendirin, bağlayın ve fstab dosyasına ekleyin.
 
-    1. Yeni eklenen diski biçimlendirin. Azure tarafından oluşturulan symbağlantıları burada kullanırız. Çözümlemeyin 'in kullanılması, cihaz adları değiştirme ile ilgili sorunları önler. Daha fazla bilgi için bkz. [Cihaz adı sorunlarını giderme](troubleshoot-device-names-problems.md).
+    1. Yeni eklenen diski biçimlendirin. Azure tarafından oluşturulan symbağlantıları burada kullanırız. Çözümlemeyin 'in kullanılması, cihaz adları değiştirme ile ilgili sorunları önler. Daha fazla bilgi için bkz. [Cihaz adı sorunlarını giderme](../troubleshooting/troubleshoot-device-names-problems.md).
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -265,7 +265,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 [Az VM disk Attach](add-disk.md) veya [Azure Portal aracılığıyla](attach-disk-portal.md)yeni bir veri diski ekleyebilirsiniz. Şifrelemebilmeniz için önce yeni eklenen veri diskini bağlamanız gerekir. Şifreleme sürerken sürücü kullanılamaz olacağı için veri sürücüsünün şifrelemesini istemeniz gerekir. 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>Azure CLı ile yeni eklenen bir diskte şifrelemeyi etkinleştirme
- VM daha önce "All" ile şifrelendiyse,--Volume-Type parametresi Tümü kalmalıdır. Tümü hem işletim sistemi hem de veri disklerini içerir. VM daha önce "OS" birim türüyle şifrelendiyse, hem işletim sistemi hem de yeni veri diskinin dahil edilmesini sağlamak için--Volume-Type parametresinin tümü olarak değiştirilmesi gerekir. VM yalnızca "Data" birim türüyle şifrelendiyse, burada gösterildiği gibi veri kalabilir. Yeni bir veri diski eklemek ve bir VM 'ye eklemek, şifreleme için yeterli hazırlık gerektirmez. Şifrelemeyi etkinleştirmeden önce, yeni eklenen diskin da biçimlendirilmesi ve sanal makine içinde düzgün şekilde bağlanması gerekir. Linux 'ta, diskin [kalıcı bir blok cihaz adıyla](troubleshoot-device-names-problems.md)/etc/fstab 'e bağlanması gerekir. 
+ VM daha önce "All" ile şifrelendiyse,--Volume-Type parametresi Tümü kalmalıdır. Tümü hem işletim sistemi hem de veri disklerini içerir. VM daha önce "OS" birim türüyle şifrelendiyse, hem işletim sistemi hem de yeni veri diskinin dahil edilmesini sağlamak için--Volume-Type parametresinin tümü olarak değiştirilmesi gerekir. VM yalnızca "Data" birim türüyle şifrelendiyse, burada gösterildiği gibi veri kalabilir. Yeni bir veri diski eklemek ve bir VM 'ye eklemek, şifreleme için yeterli hazırlık gerektirmez. Şifrelemeyi etkinleştirmeden önce, yeni eklenen diskin da biçimlendirilmesi ve sanal makine içinde düzgün şekilde bağlanması gerekir. Linux 'ta, diskin [kalıcı bir blok cihaz adıyla](../troubleshooting/troubleshoot-device-names-problems.md)/etc/fstab 'e bağlanması gerekir. 
 
 PowerShell sözdiziminin aksine, şifrelemeyi etkinleştirdiğinizde CLı, benzersiz bir sıra sürümü sağlamanızı gerektirmez. CLı otomatik olarak kendi benzersiz dizi sürümü değerini oluşturur ve kullanır.
 
