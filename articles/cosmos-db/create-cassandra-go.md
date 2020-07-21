@@ -29,7 +29,7 @@ ms.locfileid: "86535843"
 
 Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir. Bu hızlı başlangıçta Azure Cosmos DB bir Cassandra API hesabı oluşturarak başlayacaksınız. Daha sonra Cassandra keyspace ve tablo oluşturmak için bir go uygulaması çalıştıracak ve birkaç işlem yürütmeniz gerekir. Bu Go uygulaması, go dili için Cassandra istemcisi olan [gocql](https://github.com/gocql/gocql)kullanır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=cassandrago-docs-abhishgu). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/?WT.mc_id=cassandrago-docs-abhishgu) .
 - Bilgisayarınızda yüklü ve çalışır bir go hakkında bilgi sahibi [olun](https://golang.org/) .

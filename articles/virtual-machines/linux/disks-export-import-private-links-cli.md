@@ -31,7 +31,7 @@ NetworkAccessPolicy özelliğini, `DenyAll` herhangi bir gövdenin bir disk veya
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../../includes/virtual-machines-disks-private-links-regions.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yönetilen diskleri dışarı ve içeri aktarmak için özel uç noktaları kullanmak üzere, bu özelliği aboneliğinizde etkinleştirmeniz gerekir. mdprivatelinks@microsoftAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle. com adresine bir e-posta gönderin.
 
