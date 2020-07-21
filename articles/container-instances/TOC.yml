@@ -16,6 +16,8 @@
     - name: Kapsayıcı örneği dağıtma - ARM şablonu
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
+    - name: Kapsayıcı örneğini dağıtma - Docker CLI
+      href: container-instances-quickstart-docker-cli.md
 - name: Öğreticiler
   items:
     - name: Kapsayıcı görüntüsü oluşturma ve dağıtma
@@ -94,8 +96,10 @@
           href: container-instances-gpu.md
         - name: Sepette SSL uç noktasını etkinleştirme
           href: container-instances-container-group-ssl.md
-        - name: Statik IP adresini ortaya koyma
+        - name: App Gateway ile statik IP'yi kullanıma sunma
           href: container-instances-application-gateway.md
+        - name: Giriş ve çıkış için Azure Firewall kullanma
+          href: container-instances-egress-ip-address.md
     - name: Veri birimlerini bağlama
       items:
         - name: Azure dosya paylaşımı

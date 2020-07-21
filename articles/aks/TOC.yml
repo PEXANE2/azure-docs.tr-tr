@@ -179,6 +179,8 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
+        - name: Azure Ultra Diskleri'ni kullanma (önizleme)
+          href: use-ultra-disks.md
     - name: Ağ yapılandırması
       items:
         - name: Sanal ağ oluşturma veya mevcut bir sanal ağı kullanma
@@ -191,8 +193,6 @@
           href: internal-lb.md
         - name: Standart Load Balancer kullanma
           href: load-balancer-standard.md
-        - name: Çıkış için kullanıcı tanımlı bir yol kullanma
-          href: egress-outboundtype.md
         - name: Statik IP adresi kullanma
           href: static-ip.md
         - name: Giriş
@@ -214,8 +214,14 @@
                   href: ingress-tls.md
                 - name: Statik genel IP adresi kullanma
                   href: ingress-static-ip.md
-        - name: Çıkış trafiği
-          href: egress.md
+        - name: Çıkış
+          items:
+            - name: Küme çıkış trafiğini kısıtlama ve denetleme
+              href: limit-egress-traffic.md
+            - name: Çıkış için kullanıcı tanımlı bir yol kullanma
+              href: egress-outboundtype.md
+            - name: Temel yük dengeleyici ve statik IP adresi kullanma
+              href: egress.md
         - name: CoreDNS’i özelleştirme
           href: coredns-custom.md
     - name: Güvenlik ve kimlik doğrulaması
@@ -238,13 +244,11 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Küme kimlik bilgilerini güncelleştirme
           href: update-credentials.md
-        - name: Küme çıkış trafiğini kısıtlama ve denetleme
-          href: limit-egress-traffic.md
         - name: Azure Active Directory tümleştirmesini etkinleştirme
           items:
-            - name: AKS tarafından yönetilen AAD (önizleme)
+            - name: AKS tarafından yönetilen AAD
               href: managed-aad.md
-            - name: Azure CLI kullanma
+            - name: AAD tümleştirmesi (eski)
               href: azure-ad-integration-cli.md
         - name: Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
           href: manage-azure-rbac.md
@@ -291,8 +295,6 @@
       items:
         - name: Visual Studio Code aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
           href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
-        - name: Visual Studio aracılığıyla Kubernetes ile Yerel İşlem Kullanma (önizleme)
-          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Helm ile mevcut uygulamaları yükleme
           href: kubernetes-helm.md
         - name: OpenFaaS kullanma
@@ -383,10 +385,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: Destek ilkeleri
       href: support-policies.md
-    - name: Yol Haritası
+    - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Ürün geri bildirimi sağlama
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: AKS Yol Haritası
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: Videolar

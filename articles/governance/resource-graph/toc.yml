@@ -29,6 +29,9 @@
     - name: İlk sorgunuzu çalıştırma - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: İlk sorgunuzu çalıştırma - Ruby
+      displayName: 'gem, azure-mgmt'
+      href: ./first-query-ruby.md
     - name: İlk sorgunuzu çalıştırma - REST
       displayName: 'armclient, postman'
       href: ./first-query-rest-api.md

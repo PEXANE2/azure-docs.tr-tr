@@ -1,0 +1,56 @@
+- name: Azure Eğitim Merkezi Belgeleri
+  href: ./index.yml
+- name: Genel Bakış
+  items:
+    - name: Eğitim Merkezi nedir?
+      href: about-education-hub.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Eğitim Merkezi'ne erişme
+      href: access-education-hub.md
+    - name: Eğitim Merkezi'ni kullanmaya başlama
+      href: get-started-education-hub.md
+    - name: Kursu ayarlama ve sınıfı oluşturma
+      href: set-up-course-classroom.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Akademik Bağışınızı yönetme
+      href: hub-overview-page.md
+    - name: Ödev oluşturma ve kredi ayırma
+      href: create-assignment-allocate-credit.md
+- name: Destek
+  items:
+    - name: Hizmet masası
+      href: educator-service-desk.md
+- name: Öğretim için Azure Geliştirici Araçları
+  items:
+    - name: Genel Bakış
+      items:
+        - name: Öğretim için Azure Geliştirici Araçları nedir?
+          href: azure-dev-tools-teaching/about-program.md
+        - name: Öğrenciler için Azure
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: Öğrenciler için Azure Başlangıç
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: Hızlı Başlangıçlar
+      items:
+        - name: Aboneliği kaydetme veya yenileme
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: Erişimi ayarlama
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: Öğrencileri yönetme
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: Yazılımı indirme
+          href: azure-dev-tools-teaching/download-software.md
+    - name: Sorun giderme
+      items:
+        - name: Oturum açma hataları
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: Kaynaklar
+  items:
+    - name: SSS
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: Destek
+      href: azure-dev-tools-teaching/program-support.md

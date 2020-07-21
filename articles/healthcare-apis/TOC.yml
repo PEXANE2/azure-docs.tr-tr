@@ -19,6 +19,8 @@
       href: fhir-oss-powershell-quickstart.md
     - name: Azure için FHIR Sunucusu'nu dağıtma - CLI
       href: fhir-oss-cli-quickstart.md
+    - name: IoT bağlayıcısını dağıtma - Portal
+      href: iot-fhir-portal-quickstart.md
 - name: Öğreticiler
   expanded: false
   items:
@@ -37,6 +39,11 @@
       href: access-fhir-postman-tutorial.md
     - name: FHIR ara sunucusu üzerinde SMART kullanma
       href: use-smart-on-fhir-proxy.md
+    - name: IoT cihazlarından verileri alma
+      expanded: false
+      items:
+        - name: Azure IoT Hub aracılığıyla cihaz verilerini alma
+          href: device-data-through-iot-hub.md
 - name: Örnekler
   items:
     - name: Azure İlkesi yerleşik ilkeler
@@ -79,6 +86,8 @@
       href: enable-diagnostic-logging.md
     - name: FHIR için Azure API'sine yönelik belirteç alma - CLI
       href: get-healthcare-apis-access-token-cli.md
+    - name: IoT Bağlayıcısı'ndaki hataları giderme
+      href: iot-troubleshoot-guide.md
 - name: Kavramlar
   expanded: false
   items:
@@ -88,6 +97,13 @@
       href: azure-ad-hcapi-token-validation.md
     - name: Denetim Günlüklerine veri eklemek için Özel HTTP üst bilgileri kullanma
       href: use-custom-headers.md
+    - name: IoT Bağlayıcısı çalışmaları
+      expanded: false
+      items:
+        - name: IoT Bağlayıcısı veri akışı
+          href: iot-data-flow.md
+        - name: IoT Bağlayıcısı eşleme şablonları
+          href: iot-mapping-templates.md
 - name: Kaynaklar
   items:
     - name: SSS

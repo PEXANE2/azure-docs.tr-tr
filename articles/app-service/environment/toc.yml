@@ -46,6 +46,8 @@
       href: forced-tunnel-support.md
     - name: Güvenlik duvarı tümleştirmesi
       href: firewall-integration.md
+    - name: Bölge yedekliliği
+      href: zone-redundancy.md
 - name: Başvuru
   items:
     - name: Yönetim adresleri
@@ -83,7 +85,7 @@
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Kota Bilgileri
-      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: Hizmet güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: En iyi uygulamalar

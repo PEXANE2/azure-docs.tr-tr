@@ -6,14 +6,15 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs ve Lab Services
       href: lab-services-overview.md
+- name: Hızlı Başlangıç
+  items:
+    - name: Laboratuvar oluşturma - ARM şablonu
+      displayName: Resource Manager
+      href: create-lab-windows-vm-template.md
 - name: Öğreticiler
   items:
     - name: Laboratuvar ayarlama
-      items:
-        - name: Azure portalı kullanma
-          href: tutorial-create-custom-lab.md
-        - name: Resource Manager şablonu kullanma
-          href: create-lab-windows-vm-template.md
+      href: tutorial-create-custom-lab.md
     - name: Laboratuvara erişme
       href: tutorial-use-custom-lab.md
 - name: Örnekler
@@ -64,6 +65,10 @@
           href: devtest-lab-training-lab.md
         - name: Talep edilebilir VM’lerin kullanılmasına yönelik senaryolar
           href: devtest-lab-use-claim-capabilities.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Laboratuvar yapılandırma
@@ -122,18 +127,26 @@
           href: personal-data-delete-export.md
     - name: Sanal makineleri bir laboratuar ortamında kullanma
       items:
-        - name: VM oluşturma - Azure portalı
-          href: devtest-lab-add-vm.md
-        - name: VM Oluşturma - Azure PowerShell
-          href: devtest-lab-vm-powershell.md
-        - name: VM Oluşturma - Azure CLI
-          href: devtest-lab-vmcli.md
-        - name: VM Oluşturma - Resource Manager şablonu
-          href: devtest-lab-use-resource-manager-template.md
-        - name: Paylaşılan görüntü galerisinden bir görüntüyü kullanarak VM oluşturma
-          href: add-vm-use-shared-image.md
-        - name: Tarayıcı üzerinden sanal makinenize bağlanma
-          href: connect-virtual-machine-through-browser.md
+        - name: VM oluşturma
+          items:
+            - name: Azure portal
+              href: devtest-lab-add-vm.md
+            - name: Azure PowerShell
+              href: devtest-lab-vm-powershell.md
+            - name: Azure CLI
+              href: devtest-lab-vmcli.md
+            - name: Resource Manager şablonu
+              href: devtest-lab-use-resource-manager-template.md
+            - name: Paylaşılan görüntü galerisinden bir görüntüyü kullanarak VM oluşturma
+              href: add-vm-use-shared-image.md
+        - name: Bir VM’ye bağlanma
+          items:
+            - name: Windows VM'ye bağlanma
+              href: connect-windows-virtual-machine.md
+            - name: Linux VM'ye bağlanma
+              href: connect-linux-virtual-machine.md
+            - name: Tarayıcı üzerinden sanal makinenize bağlanma
+              href: connect-virtual-machine-through-browser.md
         - name: PowerShell veya CLI kullanarak bir sanal makineyi başlatma veya durdurma
           href: use-command-line-start-stop-virtual-machines.md
         - name: Bir VM’yi yeniden başlatma
@@ -263,6 +276,12 @@
           href: troubleshoot-vm-environment-creation-failures.md
         - name: Yapıt sorunlarını giderme
           href: devtest-lab-troubleshoot-artifact-failure.md
+    - name: İzleme
+      items:
+        - name: Etkinlik günlüklerini görüntüleme
+          href: activity-logs.md
+        - name: Etkinlik günlüğü uyarılarını oluşturma
+          href: create-alerts.md
 - name: Başvuru
   items:
     - name: CLI

@@ -194,7 +194,7 @@
               href: job-error-codes.md
     - name: Yüksek kullanılabilirlik
       items:
-        - name: Encoding
+        - name: İsteğe Bağlı Video
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
         - name: Akış

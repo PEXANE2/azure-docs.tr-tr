@@ -54,6 +54,8 @@
           items:
             - name: Batch
               href: ../../batch/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: İşlevler
+              href: ../../azure-functions/functions-create-first-function-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Linux sanal makinesi
               href: ../../virtual-machines/linux/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Sanal makine ölçek kümeleri - Linux
@@ -82,12 +84,18 @@
               href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: PostgreSQL için Veritabanı
               href: ../../postgresql/quickstart-create-postgresql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Veritabanı Geçiş Hizmeti
+              href: ../../dms/create-dms-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: SQL Veritabanı
               href: ../../azure-sql/database/single-database-create-arm-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: SQL Yönetilen Örnek
-              href: ../..//azure-sql/managed-instance/create-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../azure-sql/managed-instance/create-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Sanal Makinelerde SQL Server
+              href: ../../azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: DevOps
           items:
+            - name: DevTest Labs
+              href: ../../devtest-labs/create-lab-windows-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: İşlem hatları
               href: /azure/devops/pipelines/apps/cd/azure/deploy-arm-template?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Tümleştirme
@@ -152,6 +160,10 @@
           items:
             - name: Key Vault
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Depolama
+          items:
+            - name: Depolama hesabı
+              href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
             - name: Notification Hubs

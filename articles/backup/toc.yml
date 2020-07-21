@@ -323,11 +323,11 @@
               href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
-            - name: Azure portalındaki Azure VM’leri
+            - name: Azure VM’leri
               href: backup-azure-vms-automation.md
-            - name: Azure portalındaki DPM
+            - name: Data Protection Manager (DPM)
               href: backup-dpm-automation.md
-            - name: Azure portalındaki Windows Server
+            - name: MARS aracısını kullanan Windows Server
               href: backup-client-automation.md
             - name: Azure VM yedeklemelerindeki SQL
               href: backup-azure-sql-automation.md
@@ -422,7 +422,7 @@
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Soru-Cevap soru sayfası
-      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
+      href: /answers/topics/azure-backup.html
     - name: Fiyatlandırma hesaplayıcı
       href: azure-backup-pricing.md
     - name: Hizmet güncelleştirmeleri

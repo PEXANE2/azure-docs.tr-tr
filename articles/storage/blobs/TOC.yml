@@ -385,6 +385,8 @@
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: İstekte bir şifreleme anahtarı sağlama
                   href: storage-blob-customer-provided-key.md
+                - name: Şifreleme kapsamlarını yönetme
+                  href: encryption-scope-manage.md
                 - name: Depolama hesabı için altyapı şifrelemesini etkinleştirme
                   href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: İstemci tarafında şifrelemeyi yapılandırma
@@ -489,8 +491,6 @@
           items:
             - name: Azure portalında izleme (klasik)
               href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Sorun giderme öğreticisi (klasik)
-              href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Sorun giderme
           items:
             - name: Gecikme sorunları
@@ -554,6 +554,8 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: Depolama Gezgini sorunu giderme
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Depolama Gezgini destek ilkesi ve yaşam döngüsü
+              href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Depolama Gezgini erişilebilirliği
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure Depolama forumu

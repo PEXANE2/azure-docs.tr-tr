@@ -13,20 +13,19 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5b8c82aa420b62e3b6e68ee53352eb9f77988f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506698"
 ---
 # <a name="api-management-policy-samples"></a>API Management ilke örnekleri
 
 [İlkeler](../api-management-howto-policies.md), yayımcının API’nin davranışını yapılandırma yoluyla değiştirmesini sağlayan güçlü sistem özellikleridir. İlkeler, bir API isteği veya yanıtı üzerinde sırayla yürütülen deyimlerin bir koleksiyonudur. Aşağıdaki tabloda örneklerin bağlantıları yer alır ve her örnek için kısa bir açıklama verilir.
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Gelen ilkeleri**                                                                                                                                                 |                                                                                                                                                                                                                             |
+| Gelen ilkeleri | Açıklama |
+| ---------------- | ----------- |
 | [Arka uç API'sinin düzgün URL'ler oluşturmasını sağlamak için bir İletildi üst bilgisi ekleme](./set-header-to-enable-backend-to-construct-urls.md) | Arka uç API'sinin düzgün URL'ler oluşturmasını sağlamak için gelen isteğe İletildi üst bilgisi ekleme işlemini gösterir.                                                                                                        |
 | [Bağıntı kimliği içeren bir üst bilgi ekleme](./add-correlation-id.md)                                                             | Gelen isteğe bağıntı kimliği içeren bir üst bilgi ekleme işlemini gösterir.                                                                                                                                        |
 | [Arka uç hizmetine özellikler ekleme ve yanıtı önbelleğe alma](./cache-response.md)                                             | Arka uç hizmetine özellikler ekleme işlemini gösterir. Örneğin, hava durumu tahmini API'sinde enlem ve boylam yerine bir yer adını kabul edin.                                                                    |
@@ -40,7 +39,7 @@ ms.locfileid: "86242976"
 | [İsteği, gövdesinin boyutu temelinde yönlendirme](./route-requests-based-on-size.md)                                            | İstekleri gövdelerinin boyutu temelinde yönlendirme işlemini gösterir.                                                                                                                                                       |
 | [Arka uç hizmetine istek bağlamı bilgilerini gönderme](./send-request-context-info-to-backend-service.md)                    | Günlüğe kaydedilmesi veya işlenmesi için arka uç hizmetine bazı bağlam bilgilerinin nasıl gönderileceğini gösterir.                                                                                                                                |
 | [Yanıt önbellek süresini ayarlama](./set-cache-duration.md)                                                                          | Arka uç tarafından gönderilen Cache-Control üst bilgisindeki maxAge değerini kullanarak yanıt önbellek süresini ayarlama işlemini gösterir.                                                                                                             |
-| **Giden ilkeleri**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **Giden ilkeleri** | **Açıklama** |
 | [Yanıt içeriğini filtreleme](./filter-response-content.md)                                                                         | İstekle ilişkilendirilmiş ürün temelinde yanıt yükünden veri öğelerinin nasıl filtreleneceğini gösterir.                                                                                                        |
-| **Hata durum ilkeleri**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **Hata durum ilkeleri** | **Açıklama** |
 | [Hataları Stackify'de günlüğe kaydetme](./log-errors-to-stackify.md)                                                                           | Hataları günlüğe kaydedilmek üzere Stackify'ye göndermek üzere bir hata günlüğü ilkesi ekleme işlemini gösterir.                                                                                                                                            |
