@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119302"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520281"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modülü teklifi oluşturma, yapılandırma ve yayımlama
 
@@ -251,8 +251,8 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-1. Name
-2. Description
+1. Ad
+2. Açıklama
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
@@ -286,17 +286,17 @@ Sonraki bölüme geçmeden önce **Taslağı kaydet** ' i seçin, plana genel ba
 
 ### <a name="plan-overview"></a>Plana genel bakış
 
-Bu sekme, Iş Ortağı Merkezi 'nde aynı teklif dahilinde farklı plan seçenekleri sağlamanıza olanak tanır. Bu planlar, daha önce SKU 'Ları veya stok tutma birimleri olarak adlandırılmıştı. Planlar, genel bulutlar, kamu bulutları ve plan tarafından başvurulan görüntü gibi bulutların kullanılabildiği koşullara göre farklılık gösterebilir. Teklifinizi Market 'te listelemek için en az bir plan ayarlamanız gerekir.
+Bu sekme, Iş Ortağı Merkezi 'nde aynı teklif dahilinde farklı plan seçenekleri sağlamanıza olanak tanır. Planlar (eskiden SKU olarak adlandırılır), genel bulutlar, kamu bulutları ve plan tarafından başvurulan görüntü gibi hangi bulutların kullanılabildiği konusunda farklılık gösterebilir. Teklifinizi Market 'te listelemek için en az bir plan ayarlamanız gerekir.
 
 Planlarınızı oluşturduktan sonra **plana genel bakış** sekmesi şunları gösterir:
 
 - Plan adları
 - Fiyatlandırma modeli
-- Bulut kullanılabilirliği (küresel veya kamu)
+- Azure bölgeleri (küresel veya kamu)
 - Geçerli yayımlama durumu
 - Kullanılabilir eylemler
 
-Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı olarak farklılık gösterir. Bunlara aşağıdakiler dahildir:
+Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı olarak farklılık gösterir. Bu ölçümler şunlardır:
 
 - **Taslağı Sil**: plan durumu bir tasladır.
 - **Satışı durdur plan**: plan durumu canlı olarak yayımlandı.
@@ -312,7 +312,7 @@ Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı o
 > [!NOTE]
 > Plan KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-**Oluştur**'u seçin.
+**Oluştur**’u seçin.
 
 ### <a name="plan-setup"></a>Planı ayarla
 
@@ -329,7 +329,7 @@ IoT Edge modül teklifleri için tüm planlar otomatik olarak **Azure küresel**
 
 #### <a name="azure-government-certifications"></a>Azure Kamu sertifikaları
 
-Bu seçenek yalnızca, **bulut kullanılabilirliği**altında **Azure Kamu** seçilirse görülebilir.
+Bu seçenek yalnızca Azure **kamu** , Azure **bölgeleri**kapsamında seçili olduğunda görülebilir.
 
 Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi olan verileri işler. Örneğin, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 ve CJıS. Bu programların sertifikalarına yönelik olarak bir açıklama getirmek için, sertifikalarınızı tanımlayan en fazla 100 bağlantı sağlayabilirsiniz. Bunlar program üzerinde doğrudan veya kendi web sitenizde yer alan dökümlerinizin bağlantısı olabilir. Bu bağlantılar yalnızca Azure Kamu müşterileri tarafından görülebilir.
 

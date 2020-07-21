@@ -7,16 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: 3311d1143c0eca0c2b57e89e98dc22ab14fd9308
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4416c9f9d1c55a460cb983089706e984d90ba082
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520775"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı başlangıç: Azure Logic Apps Visual Studio ile otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma
+# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı Başlangıç: Azure Logic Apps ile otomatik görevler, işlemler ve iş akışları oluşturma - Visual Studio
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio ile uygulama, veri, sistem ve hizmetleri kurum ve kuruluşlar arasında otomatik hale getiren iş akışları oluşturabilirsiniz. Bu hızlı başlangıçta, Visual Studio 'da mantıksal uygulamalar oluşturarak ve bu uygulamaları Azure 'a dağıtarak bu iş akışlarını nasıl tasarlayıp oluşturabileceğiniz gösterilmektedir. Bu görevleri Azure portal gerçekleştirmenize rağmen, Visual Studio, mantıksal uygulamalarınızı kaynak denetimine eklemenize, farklı sürümler yayımlamanıza ve farklı dağıtım ortamları için Azure Resource Manager şablonları oluşturmanıza olanak sağlar.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio ile, kuruluşlar ve kuruluşlar genelinde uygulamaları, verileri, sistemleri ve Hizmetleri tümleştiren görevleri ve işlemleri otomatikleştirmek için iş akışları oluşturabilirsiniz. Bu hızlı başlangıçta, Visual Studio’da mantıksal uygulamalar oluşturup bu uygulamaları Azure’a dağıtarak söz konusu iş akışlarını nasıl tasarlayıp derleyebileceğiniz gösterilmektedir. Bu görevleri Azure portal gerçekleştirmenize rağmen, Visual Studio, mantıksal uygulamalarınızı kaynak denetimine eklemenize, farklı sürümler yayımlamanıza ve farklı dağıtım ortamları için Azure Resource Manager şablonları oluşturmanıza olanak sağlar.
 
 Azure Logic Apps yeni başladıysanız ve yalnızca temel kavramları istiyorsanız, [Azure Portal bir mantıksal uygulama oluşturmaya yönelik hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıcı deneyin. Logic App Designer, hem Azure portal hem de Visual Studio 'da benzer şekilde çalışır.
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
     > [!IMPORTANT]
     > Visual Studio 2019 veya 2017 yüklediğinizde, **Azure geliştirme** iş yükünü seçtiğinizden emin olun.
 
-  * [.NET için Microsoft Azure SDK (2.9.1 veya üzeri)](https://azure.microsoft.com/downloads/). [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet) hakkında daha fazla bilgi edinin.
+  * [.NET için Microsoft Azure SDK (2.9.1 veya üzeri)](https://azure.microsoft.com/downloads/). [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) hakkında daha fazla bilgi edinin.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -49,16 +49,16 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
+    Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
 
 * Ekli Mantıksal Uygulama Tasarımcısı kullanılırken web erişimi
 
   Tasarımcı Azure 'da kaynak oluşturmak ve mantıksal uygulamanızdaki bağlayıcılardan özellikleri ve verileri okumak için bir internet bağlantısı gerektirir. Örneğin, Dynamics CRM Online bağlantılarında, tasarımcı varsayılan ve özel özellikler için CRM örneğinizi denetler.
 
-* Logic Apps tarafından desteklenen Office 365 Outlook, Outlook.com veya Gmail gibi bir e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcılar listesini](https://docs.microsoft.com/connectors/)gözden geçirin. Bu örnekte Office 365 Outlook kullanılmaktadır. Farklı bir sağlayıcı kullanıyorsanız genel adımlar aynıdır, ancak kullanıcı arabirimi biraz farklı olabilir.
+* Logic Apps tarafından desteklenen Office 365 Outlook, Outlook.com veya Gmail gibi bir e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcılar listesini](/connectors/)gözden geçirin. Bu örnekte Office 365 Outlook kullanılmaktadır. Farklı bir sağlayıcı kullanıyorsanız genel adımlar aynıdır, ancak kullanıcı arabirimi biraz farklı olabilir.
 
   > [!IMPORTANT]
-  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
 <a name="create-resource-group-project"></a>
 
@@ -72,12 +72,12 @@ Başlamak için bir [Azure Kaynak Grubu projesi](../azure-resource-manager/templ
 
    !["Dosya" menüsünde "Yeni" > "Proje" öğesini seçin](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
-1. **Yüklü** altında **Visual C#** veya **Visual Basic**’i seçin. **Bulut** > **Azure Kaynak grubu**' nu seçin. Projenizi adlandırın, örneğin:
+1. **Yüklü** altında **Visual C#** veya **Visual Basic**’i seçin. **Bulut**  >  **Azure Kaynak grubu**' nu seçin. Projenizi adlandırın, örneğin:
 
    ![Azure Kaynak Grubu projesi oluşturma](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
-   > Kaynak grubu adları yalnızca harf, sayı, nokta (`.`), alt çizgi (`_`), kısa çizgi (`-`) ve parantez (`(`, `)`) içerebilir, ancak nokta (`.`) ile *bitemez* .
+   > Kaynak grubu adları yalnızca harf, sayı, nokta ( `.` ), alt çizgi ( `_` ), kısa çizgi ( `-` ) ve parantez ( `(` ,) içerebilir `)` , ancak nokta *end* () ile bitemez `.` .
    >
    > **Bulut** veya **Azure Kaynak grubu** görünmezse, VISUAL Studio için Azure SDK 'yi yüklediğinizden emin olun.
 
@@ -91,7 +91,7 @@ Başlamak için bir [Azure Kaynak Grubu projesi](../azure-resource-manager/templ
 
    ![Mantıksal Uygulama şablonunu seçme](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
-   Visual Studio projenizi oluşturduktan sonra, Çözüm Gezgini açılır ve çözümünüzü gösterir. Çözümünüzde, **logicapp. JSON** dosyası yalnızca mantıksal uygulama tanımınızı depolamaz, aynı zamanda dağıtım için kullanabileceğiniz bir Azure Resource Manager şablonudur.
+   Visual Studio projenizi oluşturduktan sonra, Çözüm Gezgini açılır ve çözümünüzü gösterir. Çözümünüzde, dosyadaki **LogicApp.js** yalnızca mantıksal uygulama tanımınızı depolamaz, ancak dağıtım için kullanabileceğiniz bir Azure Resource Manager şablonudur.
 
    ![Çözüm Gezgini yeni mantıksal uygulama çözümünü ve dağıtım dosyasını gösterir](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-solution-created.png)
 
@@ -99,7 +99,7 @@ Başlamak için bir [Azure Kaynak Grubu projesi](../azure-resource-manager/templ
 
 Azure Kaynak grubu projeniz olduğunda, mantıksal uygulamanızı **boş mantıksal uygulama** şablonuyla oluşturun.
 
-1. Çözüm Gezgini, **Logicapp. JSON** dosyasının kısayol menüsünü açın. **Mantıksal Uygulama Tasarımcısı ile Aç**’ı seçin. (Klavye: Ctrl + L)
+1. Çözüm Gezgini, dosyanın kısayol menüsündeki **LogicApp.js** açın. **Mantıksal Uygulama Tasarımcısı ile Aç**’ı seçin. (Klavye: Ctrl + L)
 
    ![Mantıksal Uygulama Tasarımcısı ile mantıksal uygulama .json dosyasını açma](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -112,11 +112,11 @@ Azure Kaynak grubu projeniz olduğunda, mantıksal uygulamanızı **boş mantık
 
    ![Azur aboneliği, kaynak grubu ve kaynak konumu seçme](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Ayar | Örnek değer | Açıklama |
+   | Ayar | Örnek değer | Description |
    | ------- | ------------- | ----------- |
    | Kullanıcı hesabı | Fabrikam <br> sophia-owen@fabrikam.com | Visual Studio 'da oturum açtığınızda kullandığınız hesap |
    | **Abonelik** | Kullandıkça Öde <br> (sophia-owen@fabrikam.com) | Azure aboneliğinizin ve ilişkili hesabın adı |
-   | **Kaynak grubu** | MyLogicApp-RG <br> (Batı ABD) | Mantıksal uygulamanızın kaynaklarını depolamaya ve dağıtmaya yönelik Azure Kaynak grubu ve konumu |
+   | **Kaynak Grubu** | MyLogicApp-RG <br> (Batı ABD) | Mantıksal uygulamanızın kaynaklarını depolamaya ve dağıtmaya yönelik Azure Kaynak grubu ve konumu |
    | **Konum** | **Kaynak grubuyla aynı** | Mantıksal uygulamanızı dağıtmaya yönelik konum türü ve belirli bir konum. Konum türü bir Azure bölgesi veya var olan bir [tümleştirme hizmeti ortamıdır (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Bu hızlı başlangıçta konum türünü **bölge** olarak ve konum ' u **kaynak grubuyla aynı**olarak ayarlanmış halde tutun. <p>**Note**: kaynak grubu projenizi oluşturduktan sonra [konum türünü ve konumunu değiştirebilirsiniz](manage-logic-apps-with-visual-studio.md#change-location), ancak farklı bir konum türü mantıksal uygulamanızı çeşitli yollarla etkiler. |
    ||||
 
@@ -144,7 +144,7 @@ Sonra, yeni bir akış öğesi göründüğünde harekete çıkan bir RSS [tetik
 
 Mantıksal uygulamanızı çalıştırıp test etmeden önce, uygulamayı Visual Studio 'dan Azure 'a dağıtın.
 
-1. Çözüm Gezgini, projenizin kısayol menüsünde**Yeni** **Dağıt** > ' ı seçin. Sorulursa Azure hesabınızla oturum açın.
+1. Çözüm Gezgini, projenizin kısayol menüsünde Yeni **Dağıt**' ı seçin  >  **New**. Sorulursa Azure hesabınızla oturum açın.
 
    ![Mantıksal uygulama dağıtımı oluşturma](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
@@ -176,15 +176,15 @@ Tebrikler, mantıksal uygulamanızı Visual Studio ile başarıyla derlediniz ve
 
 Mevcut bir Azure Kaynak grubu projeniz varsa, JSON ana hattı penceresini kullanarak bu projeye yeni bir boş mantıksal uygulama ekleyebilirsiniz.
 
-1. Çözüm Gezgini ' de `<logic-app-name>.json` dosyayı açın.
+1. Çözüm Gezgini ' de dosyayı açın `<logic-app-name>.json` .
 
-1. **Görünüm** menüsünde **diğer Windows** > **JSON ana hattı**' nı seçin.
+1. **Görünüm** menüsünde **diğer Windows**  >  **JSON ana hattı**' nı seçin.
 
 1. Şablon dosyasına bir kaynak eklemek için JSON ana hattı penceresinin üst kısmında **Kaynak Ekle** ' yi seçin. Ya da JSON ana hattı penceresinde, **kaynaklar** kısayol menüsünü açın ve **Yeni Kaynak Ekle**' yi seçin.
 
    ![JSON ana hat penceresi](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
-1. **Kaynak Ekle** iletişim kutusunda, arama kutusunda, **mantıksal uygulama**' yı bulun `logic app`ve seçin. Mantıksal uygulamanızı adlandırın ve **Ekle**' yi seçin.
+1. **Kaynak Ekle** iletişim kutusunda, arama kutusunda, mantıksal uygulama ' yı bulun `logic app` ve seçin. **Logic App** Mantıksal uygulamanızı adlandırın ve **Ekle**' yi seçin.
 
    ![Kaynak Ekle](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 

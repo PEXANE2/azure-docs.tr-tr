@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/30/2020
+ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186869"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520707"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,24 @@ Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı de
 
 __Azure Blob depolama__için çalışma alanı yönetilen kimliği, blob depolamadan veri okuyabilmesi Için bir [BLOB veri okuyucusu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) olarak da eklenir.
 
+
+### <a name="azure-machine-learning-designer-default-datastore"></a>Azure Machine Learning Designer varsayılan veri deposu
+
+Tasarımcı, çıktıyı varsayılan olarak depolamak için çalışma alanınıza bağlı depolama hesabını kullanır. Bununla birlikte, erişimi olan herhangi bir veri deposu için çıktıyı depolamak üzere belirtebilirsiniz. Ortamınız sanal ağlar kullanıyorsa, verilerinizin güvenli ve erişilebilir kalmasını sağlamak için bu denetimleri kullanabilirsiniz.
+
+Bir işlem hattı için yeni bir varsayılan depolama alanı ayarlamak için:
+
+1. İşlem hattı Taslağınızda, işlem hatlarınızın başlığının yakınında bulunan **Ayarlar dişli simgesini** seçin.
+1. **Varsayılan veri deposunu Seç**' i seçin.
+1. Yeni bir veri deposu belirtin.
+
+Ayrıca modül temelinde varsayılan veri deposunu geçersiz kılabilirsiniz. Bu, her bir modülün depolama konumu üzerinde denetim sağlar.
+
+1. Çıktısını belirtmek istediğiniz modülü seçin.
+1. **Çıkış ayarları** bölümünü genişletin.
+1. **Varsayılan çıkış ayarlarını geçersiz kıl ' ı**seçin.
+1. **Çıkış ayarlarını ayarla**' yı seçin.
+1. Yeni bir datstore belirtin.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage 2. Access Control
 
@@ -286,8 +304,8 @@ Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın 
 - NSG kurallarını kullanarak giden internet bağlantısını reddedin.
 
 - Bir __işlem örneği__ veya bir __işlem kümesi__için, giden trafiği aşağıdaki öğelerle sınırlayın:
-   - __Depolama. RegionName__ __hizmet etiketi__ kullanılarak Azure Storage. Burada `{RegionName}` bir Azure bölgesinin adıdır.
-   - Azure Container Registry, __AzureContainerRegistry. RegionName__ __hizmet etiketi__ kullanılarak. Burada `{RegionName}` bir Azure bölgesinin adıdır.
+   - Azure depolama, __depolama__ __hizmet etiketi__ kullanılarak.
+   - Azure Container Registry, __AzureContainerRegistry__ __hizmet etiketi__ kullanılarak.
    - __AzureMachineLearning__ __hizmet etiketi__ kullanılarak Azure Machine Learning
    - __AzureResourceManager__ __hizmet etiketi__ kullanılarak Azure Resource Manager
    - __AzureActiveDirectory__ __hizmet etiketi__ kullanılarak Azure Active Directory
@@ -326,11 +344,15 @@ Azure portal NSG kural yapılandırması aşağıdaki görüntüde gösterilmekt
 > run = exp.submit(est)
 > ```
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>Zorlamalı tünel için Kullanıcı tanımlı yollar
+### <a name="forced-tunneling"></a>Zorlamalı tünel oluşturma
 
-Machine Learning İşlem ile Zorlamalı tünel kullanıyorsanız, [Kullanıcı tanımlı yollar (UDRs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) işlem kaynağını içeren alt ağa ekleyin.
+Azure Machine Learning işlem ile [Zorlamalı tünel](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) kullanıyorsanız, genel İnternet ile işlem kaynağını içeren alt ağdan iletişime izin vermeniz gerekir. Bu iletişim, görev zamanlama ve Azure depolama erişimi için kullanılır.
 
-* Kaynaklarınızın bulunduğu bölgedeki Azure Batch hizmeti tarafından kullanılan her IP adresi için bir UDR oluşturun. Bu UDRs, Batch hizmetinin görev zamanlama için işlem düğümleriyle iletişim kurmasını sağlar. Ayrıca, Işlem örneklerine erişim için gerekli olduğundan, kaynakların bulunduğu Azure Machine Learning hizmeti için IP adresini de ekleyin. Batch hizmetinin ve Azure Machine Learning hizmetinin IP adreslerinin bir listesini almak için aşağıdaki yöntemlerden birini kullanın:
+Bunu yapmanın iki yolu vardır:
+
+* Bir [sanal ağ NAT](../virtual-network/nat-overview.md)kullanın. Bir NAT ağ geçidi, sanal ağınızdaki bir veya daha fazla alt ağ için giden internet bağlantısı sağlar. Bilgi için bkz. [NAT Gateway kaynaklarıyla sanal ağları tasarlama](../virtual-network/nat-gateway-resource.md).
+
+* İşlem kaynağını içeren alt ağa [Kullanıcı tanımlı yollar (UDRs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) ekleyin. Kaynaklarınızın bulunduğu bölgedeki Azure Batch hizmeti tarafından kullanılan her IP adresi için bir UDR oluşturun. Bu UDRs, Batch hizmetinin görev zamanlama için işlem düğümleriyle iletişim kurmasını sağlar. Ayrıca, Işlem örneklerine erişim için gerekli olduğundan, kaynakların bulunduğu Azure Machine Learning hizmeti için IP adresini de ekleyin. Batch hizmetinin ve Azure Machine Learning hizmetinin IP adreslerinin bir listesini almak için aşağıdaki yöntemlerden birini kullanın:
 
     * [Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com/download/details.aspx?id=56519) indirin ve dosyada `BatchNodeManagement.<region>` ve `AzureMachineLearning.<region>` Azure bölgeniz olduğu yerde arama yapın `<region>` .
 
@@ -340,14 +362,15 @@ Machine Learning İşlem ile Zorlamalı tünel kullanıyorsanız, [Kullanıcı t
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+    
+    UDRs 'yi eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve __sonraki atlama türünü__ __Internet__olarak ayarlayın. Aşağıdaki görüntüde, Azure portal bu UDR 'nin bir örneği gösterilmektedir:
 
-* Azure depolama 'ya giden trafik, şirket içi ağ gereciniz tarafından engellenmemelidir. Özellikle, URL 'Ler, ve biçiminde bulunur `<account>.table.core.windows.net` `<account>.queue.core.windows.net` `<account>.blob.core.windows.net` .
+    ![Adres ön eki için UDR örneği](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-UDRs 'yi eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve __sonraki atlama türünü__ __Internet__olarak ayarlayın. Aşağıdaki görüntüde, Azure portal bu UDR 'nin bir örneği gösterilmektedir:
+    Tanımladığınız tüm UDRs 'ye ek olarak, şirket içi ağ gereciniz aracılığıyla Azure Storage 'a giden trafiğe izin verilmelidir. Özellikle, bu trafiğin URL 'Leri şu formlarda bulunur: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` ve `<account>.blob.core.windows.net` . 
 
-![Adres ön eki için UDR örneği](./media/how-to-enable-virtual-network/user-defined-route.png)
+    Daha fazla bilgi için bkz. [Sanal ağda Azure Batch havuzu oluşturma](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
-Daha fazla bilgi için bkz. [Sanal ağda Azure Batch havuzu oluşturma](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Sanal ağda bir işlem kümesi oluşturma
 
@@ -480,6 +503,40 @@ Varsayılan olarak, AKS dağıtımlarına genel bir IP adresi atanır. Bir sanal
 
 Özel bir IP adresi, bir _iç yük dengeleyici_kullanmak üzere aks 'ler yapılandırılarak etkinleştirilir. 
 
+#### <a name="network-contributor-role"></a>Ağ katılımcısı rolü
+
+> [!IMPORTANT]
+> Daha önce oluşturduğunuz bir sanal ağ sağlayarak bir AKS kümesi oluşturur veya iliştirdiyseniz, AKS kümeniz için hizmet sorumlusu (SP) veya yönetilen kimliğe, sanal ağı içeren kaynak grubuna _ağ katılımcısı_ rolü vermelisiniz. İç yük dengeleyiciyi özel IP olarak değiştirmeye çalışmadan önce bunun yapılması gerekir.
+>
+> Kimliği ağ katılımcısı olarak eklemek için aşağıdaki adımları kullanın:
+
+1. AKS için hizmet sorumlusu veya yönetilen kimlik KIMLIĞINI bulmak için aşağıdaki Azure CLı komutlarını kullanın. `<aks-cluster-name>`Kümenin adıyla değiştirin. `<resource-group-name>` _, Aks kümesini içeren_kaynak grubunun adıyla değiştirin:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    Bu komut değerini döndürürse `msi` , yönetilen kimliğin asıl kimliğini tanımlamak için aşağıdaki komutu kullanın:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. Sanal ağınızı içeren kaynak grubunun KIMLIĞINI bulmak için aşağıdaki komutu kullanın. `<resource-group-name>` _Sanal ağı içeren_kaynak grubunun adıyla değiştirin:
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. Hizmet sorumlusu veya yönetilen kimliği bir ağ katılımcısı olarak eklemek için aşağıdaki komutu kullanın. `<SP-or-managed-identity>`Hizmet sorumlusu veya yönetilen kimlik için döndürülen kimlikle değiştirin. `<resource-group-id>`Sanal ağı içeren kaynak grubu için döndürülen kimlikle değiştirin:
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
+AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti ile iç yük dengeleyici kullanma](/azure/aks/internal-lb).
+
+#### <a name="enable-private-ip"></a>Özel IP 'yi etkinleştir
+
 > [!IMPORTANT]
 > Azure Kubernetes hizmet kümesini oluştururken özel IP 'yi etkinleştiremezsiniz. Mevcut bir kümeye güncelleştirme olarak etkinleştirilmelidir.
 
@@ -570,38 +627,6 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-__Ağ katılımcısı rolü__
-
-> [!IMPORTANT]
-> Daha önce oluşturduğunuz bir sanal ağ sağlayarak bir AKS kümesi oluşturur veya iliştirdiyseniz, AKS kümeniz için hizmet sorumlusu (SP) veya yönetilen kimliğe, sanal ağı içeren kaynak grubuna _ağ katılımcısı_ rolü vermelisiniz. İç yük dengeleyiciyi özel IP olarak değiştirmeye çalışmadan önce bunun yapılması gerekir.
->
-> Kimliği ağ katılımcısı olarak eklemek için aşağıdaki adımları kullanın:
-
-1. AKS için hizmet sorumlusu veya yönetilen kimlik KIMLIĞINI bulmak için aşağıdaki Azure CLı komutlarını kullanın. `<aks-cluster-name>`Kümenin adıyla değiştirin. `<resource-group-name>` _, Aks kümesini içeren_kaynak grubunun adıyla değiştirin:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
-    ``` 
-
-    Bu komut değerini döndürürse `msi` , yönetilen kimliğin asıl kimliğini tanımlamak için aşağıdaki komutu kullanın:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
-    ```
-
-1. Sanal ağınızı içeren kaynak grubunun KIMLIĞINI bulmak için aşağıdaki komutu kullanın. `<resource-group-name>` _Sanal ağı içeren_kaynak grubunun adıyla değiştirin:
-
-    ```azurecli-interactive
-    az group show -n <resource-group-name> --query id
-    ```
-
-1. Hizmet sorumlusu veya yönetilen kimliği bir ağ katılımcısı olarak eklemek için aşağıdaki komutu kullanın. `<SP-or-managed-identity>`Hizmet sorumlusu veya yönetilen kimlik için döndürülen kimlikle değiştirin. `<resource-group-id>`Sanal ağı içeren kaynak grubu için döndürülen kimlikle değiştirin:
-
-    ```azurecli-interactive
-    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
-    ```
-AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti ile iç yük dengeleyici kullanma](/azure/aks/internal-lb).
-
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances kullanın (ACI)
 
 Azure Container Instances, bir model dağıtıldığında dinamik olarak oluşturulur. Azure Machine Learning sanal ağ içinde ACI oluşturmak üzere etkinleştirmek için, dağıtım tarafından kullanılan alt ağ için __alt ağ temsilcisini__ etkinleştirmeniz gerekir.
@@ -630,6 +655,7 @@ Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi içi
 > Azure Container Registry (ACR) bir sanal ağın içine yerleştirilebilir, ancak aşağıdaki önkoşulları karşılamanız gerekir:
 >
 > * Azure Machine Learning çalışma alanınız Enterprise Edition olmalıdır. Yükseltme hakkında bilgi için bkz. [Enterprise Edition 'A yükseltme](how-to-manage-workspace.md#upgrade).
+> * Azure Machine Learning çalışma alanı bölgeniz [privated bağlantısı etkinleştirilmiş bölge](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)olmalıdır. 
 > * Azure Container Registry Premium sürüm olmalıdır. Yükseltme hakkında daha fazla bilgi için bkz. [SKU 'Ları değiştirme](/azure/container-registry/container-registry-skus#changing-skus).
 > * Azure Container Registry, eğitim veya çıkarım için kullanılan depolama hesabı ve işlem hedefleri ile aynı sanal ağ ve alt ağ içinde olmalıdır.
 > * Azure Machine Learning çalışma alanınızın bir [Azure Machine Learning işlem kümesi](how-to-set-up-training-targets.md#amlcompute)içermesi gerekir.
@@ -768,7 +794,7 @@ Bir sanal ağla Azure Databricks kullanma hakkında ayrıntılı bilgi için bkz
 
 Sanal bir makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip bir sanal ağda kullanmak için aşağıdaki adımları kullanın:
 
-1. Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makalelere bakın:
+1. Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
     * [Linux VM 'Ler için Azure sanal ağları oluşturma ve yönetme](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Azure sanal ağını kullanarak HDInsight 'ı genişletme](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)

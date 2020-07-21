@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641824"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520978"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
@@ -38,7 +39,7 @@ Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için şu konulara ba
 * Bu konunun örnekleri için kullanılan [Tam şablon](#full-example-template)
 * GitHub 'da [örnek hızlı başlangıç mantıksal uygulama şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
 
-Logic Apps, tümleştirme hesapları ve tümleştirme hesabı yapılarına özgü şablon kaynak bilgileri için bkz. [Microsoft. Logic Resource Types](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
+Logic Apps, tümleştirme hesapları ve tümleştirme hesabı yapılarına özgü şablon kaynak bilgileri için bkz. [Microsoft. Logic Resource Types](/azure/templates/microsoft.logic/allversions).
 
 <a name="template-structure"></a>
 
@@ -321,13 +322,13 @@ Mantıksal uygulama kaynak tanımınıza özel öznitelikler şunlardır:
 | Öznitelik | Gerekli | Tür | Description |
 |-----------|----------|------|-------------|
 | `state` | Evet | Dize | Mantıksal uygulamanızın dağıtım sırasındaki durumu, mantıksal uygulamanızın `Enabled` etkin olduğu ve mantıksal uygulamanızın etkin olmadığı `Disabled` anlamına gelir. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
-| `integrationAccount` | Hayır | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne `id` tümleştirme HESABıNıN kimliğini belirten özniteliğini içerir. |
-| `definition` | Evet | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında nesne, `parameters` mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
-| `parameters` | Hayır | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, `$connections` çalışma zamanında kullanılacak bağlantı değerlerini ayarlayan bir nesnesi içerir. |
-| `accessControl` | Hayır | Nesne | Mantıksal uygulamanıza yönelik olarak IP erişimini kısıtlama veya çalıştırma geçmişi girişleri ve çıkışları gibi güvenlik özniteliklerini belirtmek için. Daha fazla bilgi için bkz. [Logic Apps 'e güvenli erişim](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `integrationAccount` | No | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne `id` tümleştirme HESABıNıN kimliğini belirten özniteliğini içerir. |
+| `definition` | Yes | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında nesne, `parameters` mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
+| `parameters` | No | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, `$connections` çalışma zamanında kullanılacak bağlantı değerlerini ayarlayan bir nesnesi içerir. |
+| `accessControl` | No | Nesne | Mantıksal uygulamanıza yönelik olarak IP erişimini kısıtlama veya çalıştırma geçmişi girişleri ve çıkışları gibi güvenlik özniteliklerini belirtmek için. Daha fazla bilgi için bkz. [Logic Apps 'e güvenli erişim](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
-Logic Apps, tümleştirme hesapları ve tümleştirme hesabı yapılarına özgü şablon kaynak bilgileri için bkz. [Microsoft. Logic Resource Types](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
+Logic Apps, tümleştirme hesapları ve tümleştirme hesabı yapılarına özgü şablon kaynak bilgileri için bkz. [Microsoft. Logic Resource Types](/azure/templates/microsoft.logic/allversions).
 
 <a name="workflow-definition-parameters"></a>
 
@@ -909,7 +910,7 @@ Bir Azure Blob depolama bağlantısı için hesap adı ve erişim anahtarı sağ
 
 ### <a name="authenticate-connections"></a>Kimlik doğrulama bağlantıları
 
-Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışacak. Ancak, [kimlik bilgilerinizi doğrulamak](../active-directory/develop/authentication-scenarios.md)için geçerli erişim belirteçleri oluşturmak üzere herhangi bir OAuth bağlantısını yetkilendirmelisiniz. Daha fazla bilgi için bkz. [OAuth bağlantılarını yetkilendirme](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
+Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışacak. Ancak, [kimlik bilgilerinizi doğrulamak](../active-directory/develop/authentication-vs-authorization.md)için geçerli erişim belirteçleri oluşturmak üzere herhangi bir OAuth bağlantısını yetkilendirmelisiniz. Daha fazla bilgi için bkz. [OAuth bağlantılarını yetkilendirme](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
 
 Bazı bağlantılar [, Azure AD 'de kayıtlı](../active-directory/develop/quickstart-register-app.md)bir mantıksal uygulama için bağlantıları yetkilendirmek üzere bir Azure Active Directory (Azure AD) [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) kullanmayı destekler. Örneğin, bu Azure Data Lake bağlantı kaynağı tanımı, hizmet sorumlusunun bilgilerini işleyen şablon parametrelerine nasıl başvurulacağını ve şablonun bu parametreleri nasıl bildirdiğini gösterir:
 
@@ -1005,7 +1006,7 @@ Bazı bağlantılar [, Azure AD 'de kayıtlı](../active-directory/develop/quick
 Hizmet sorumluları ile çalışma hakkında daha fazla bilgi için şu konulara bakın:
 
 * [Azure portal kullanarak bir hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Azure PowerShell kullanarak bir Azure hizmet sorumlusu oluşturma](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Azure PowerShell kullanarak bir Azure hizmet sorumlusu oluşturma](/powershell/azure/create-azure-service-principal-azureps)
 * [Azure PowerShell kullanarak sertifikayla hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>

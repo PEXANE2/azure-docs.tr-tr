@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure ön kapı kuralları altyapı eylemleri
 description: Bu makalede, Azure ön kapısı kuralları altyapısında yapabileceğiniz çeşitli eylemlerin bir listesi sunulmaktadır.
 services: frontdoor
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 74c0a2617a01e8c24cd93a015b667081250657ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313996"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521505"
 ---
-# <a name="azure-front-door-rules-engine-actions"></a>Azure ön kapı kuralları altyapı eylemleri
+# <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door Kural Altyapısı Eylemleri
 
 [AFD kural altyapısında](front-door-rules-engine.md) bir kural sıfır veya daha fazla eşleşme koşulu ve eylemden oluşur. Bu makale, AFD kural altyapısında kullanabileceğiniz eylemlerin ayrıntılı açıklamalarını sağlar.
 
@@ -51,7 +51,7 @@ Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı*
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
 Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi yanıttan silinir. | Dize
 
-## <a name="route-configuration-overrides"></a>Yönlendirme yapılandırması geçersiz kılmaları 
+## <a name="route-configuration-overrides"></a>Yol yapılandırması geçersiz kılmaları 
 
 ### <a name="route-type-redirect"></a>Yol türü: yeniden yönlendirme
 
@@ -59,7 +59,7 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Alan | Description 
+Alan | Açıklama 
 ------|------------
 Yeniden yönlendirme türü | İstek sahibine döndürülecek yanıt türünü seçin: bulunan (302), taşınan (301), geçici yeniden yönlendirme (307) ve kalıcı yeniden yönlendirme (308).
 Yeniden yönlendirme protokolü | Match Isteği, HTTP, HTTPS.
@@ -73,7 +73,7 @@ Hedef parça | Yeniden Yönlendirmede kullanılacak parçayı tanımlayın. Gele
 
 İstemcileri yeni bir URL 'ye iletmek için bu eylemi kullanın. Bu eylem, URL yeniden yazılmasına ve önbelleğe almaya yönelik alt eylemleri de içerir. 
 
-Alan | Description 
+Alan | Açıklama 
 ------|------------
 Arka uç havuzu | İstekleri geçersiz kılmak ve istemcilere hizmeti sağlamak için arka uç havuzunu seçin. Bu, önceden yapılandırılmış olan tüm arka uç havuzlarınızı ön kapı profilinizde gösterir. 
 İletme Protokolü | Match Isteği, HTTP, HTTPS.
@@ -84,7 +84,7 @@ URL yeniden yazma | Bu eylemi, kaynağına yönlendiren bir isteğin yolunu yeni
 
 Arka uca iletme isteği oluştururken kullanılacak isteğe bağlı bir **özel Iletme yolunu** yapılandırmak için bu ayarı kullanın.
 
-Alan | Description 
+Alan | Açıklama 
 ------|------------
 Özel iletme yolu | İsteklerin iletileceği yolu tanımlayın. 
 

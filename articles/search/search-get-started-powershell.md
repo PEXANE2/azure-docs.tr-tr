@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 96ab2b7c8e80375f97df550ed6c83e7bb3e2f3e3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: eb7dcc0956cd9ce214ad3894aa8cc2b99beed942
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562082"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519822"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "85562082"
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [Portal](search-create-index-portal.md)
+> * [Portal](search-get-started-portal.md)
 > 
 
 Bu makalede, PowerShell ve [azure BILIŞSEL arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturma, yükleme ve sorgulama işlemi adım adım açıklanmaktadır. Bu makalede, PowerShell komutlarının etkileşimli olarak nasıl çalıştırılacağı açıklanmaktadır. Alternatif olarak, aynı işlemleri gerçekleştiren [bir PowerShell betiğini indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) .
@@ -393,7 +393,7 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 

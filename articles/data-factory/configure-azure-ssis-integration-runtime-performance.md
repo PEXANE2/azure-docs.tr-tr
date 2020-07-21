@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255543"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523324"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Yüksek performans için Azure-SSIS Integration Runtime yapılandırma
 
@@ -104,11 +104,15 @@ SSIS mühendislik ekibi tarafından resmi olmayan şirket içi sınamada, D seri
 
 Bu veriler tek bir çalışan düğümünde tek bir paket yürütmesini temsil eder. Paket, Azure Blob depolama alanından ad ve Soyadı sütunları olan 3.000.000 kaydı yükler, tam ad sütunu oluşturur ve tam adı olan kayıtları 20 karakterden uzun Azure Blob depolama alanına yazar.
 
+Y ekseni, yürütmeyi bir saat içinde tamamlanmış paketlerin sayısıdır. Lütfen bu yalnızca bir bellek kullanan paketin test sonucu olduğunu unutmayın. Paketinizin verimini bildirmek isterseniz, testi kendiniz gerçekleştirmeniz önerilir.
+
 ![SSIS Integration Runtime paketi yürütme hızı](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>Genel üretilen iş için yapılandırma
 
 Çalıştırmak için çok sayıda paketiniz varsa ve genel aktarım hızını en iyi şekilde düşünüyorsanız, senaryonuza uygun bir sanal makine türü seçmek için aşağıdaki grafikteki bilgileri kullanın.
+
+Y ekseni, yürütmeyi bir saat içinde tamamlanmış paketlerin sayısıdır. Lütfen bu yalnızca bir bellek kullanan paketin test sonucu olduğunu unutmayın. Paketinizin verimini bildirmek isterseniz, testi kendiniz gerçekleştirmeniz önerilir.
 
 ![SSIS Integration Runtime en fazla genel işleme](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

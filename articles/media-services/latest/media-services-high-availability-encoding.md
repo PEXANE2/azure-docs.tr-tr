@@ -1,9 +1,9 @@
 ---
-title: Yüksek kullanılabilirlik kodlaması Azure Media Services
-description: Bölgesel bir veri merkezi kesintisi veya hatası oluşursa ikincil Media Services hesabına yük devretmeyi öğrenin.
+title: Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik
+description: Bu makalede, VOD uygulaması için yüksek kullanılabilirliği kolaylaştırmak amacıyla kullanabileceğiniz Azure hizmetlerine genel bakış sunulmaktadır.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,53 +11,77 @@ ms.subservice: ''
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 02/24/2020
-ms.author: juliako
-ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.author: inhenkel
+ms.openlocfilehash: 9be5aa48b140ee9eb43141d6699109ef12ebf949
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78934203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520098"
 ---
-# <a name="media-services-high-availability-encoding"></a>Yüksek kullanılabilirlik kodlaması Media Services 
+# <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik
 
-Azure Media Services kodlama hizmeti, bölgesel bir toplu işlem platformudur ve şu anda tek bir bölge içinde yüksek kullanılabilirlik için tasarlanmamaktadır. Kodlama hizmeti şu anda bir bölgesel veri merkezi kesintisi veya temeldeki bileşen ya da bağımlı hizmetler (örneğin, depolama, SQL) hatası varsa hizmetin anında yük devretmesini sağlamıyor. Bu makalede, yük devretmeyle yüksek kullanılabilirliğe sahip bir mimariyi sürdürmek ve uygulamalarınız için en iyi kullanılabilirliği sağlamak üzere Media Services dağıtımı açıklanır.
+## <a name="high-availability-for-vod"></a>VOD için yüksek kullanılabilirlik
 
-Makalede açıklanan yönergeleri ve en iyi uygulamaları izleyerek, tek bir bölgede bir kesinti meydana gelirse, hataların kodlanması, gecikme süresi ve kurtarma süresini en aza indirgeme riskini düşürmeniz gerekir.
+Azure mimarisi belgelerinde [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) adlı yüksek kullanılabilirliğe sahip bir tasarım deseninin olması vardır. Ölçeklenebilirlik ve dayanıklılık sağlamak için yinelenen kaynakların farklı coğrafi bölgelere nasıl dağıtıldığını açıklar.  Yedeklilik, sistem durumu izleme, yük dengeleme ve veri yedekleme ve kurtarma gibi birçok yüksek kullanılabilirliğe sahip tasarım konularını kapsayacak şekilde bu tür bir mimari oluşturmak için Azure hizmetlerini kullanabilirsiniz.  Bu tür bir mimaride, çözümde kullanılan her bir hizmetle ilgili ayrıntıların yanı sıra, VOD uygulamanız için yüksek kullanılabilirlik mimarisi oluşturmak üzere bireysel hizmetlerin nasıl kullanılabileceği aşağıda açıklanmaktadır.
 
-## <a name="how-to-build-a-cross-regional-encoding-system"></a>Çapraz bölgesel kodlama sistemi oluşturma
+### <a name="sample"></a>Örnek
 
-* İki (veya daha fazla) Azure Media Services hesabı [oluşturun](create-account-cli-how-to.md) .
+Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik hakkında bilgi sahibi olmak için kullanabileceğiniz bir örnek vardır. Ayrıca, bir VOD senaryosu için hizmetlerin nasıl kullanıldığı hakkında daha fazla ayrıntıya gider.  Örnek, üretimde kullanılmak üzere geçerli biçimde tasarlanmamıştır.  Örnek kodu ve Benioku dosyasını dikkatle gözden geçirin, özellikle de [hata modlarında](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming) bölüm, bir üretim uygulamasıyla tümleştirmeye başlamadan önce.  Isteğe bağlı video (VOD) için yüksek kullanılabilirliğe sahip bir üretim uygulamasının, Content Delivery Network (CDN) stratejisini de dikkatle incelemesi gerekir.  [GitHub 'daki koda](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)göz atın.
 
-    İki hesabın farklı bölgelerde olması gerekir. Daha fazla bilgi için bkz. [Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
-* Medyanızı, işi göndermeyi planladığınız aynı bölgeye yükleyin. Kodlama başlatma hakkında daha fazla bilgi için bkz. bir [https URL 'sinden iş girişi oluşturma](job-input-from-http-how-to.md) veya [yerel bir dosyadan iş girişi oluşturma](job-input-from-local-file-how-to.md).
+## <a name="overview-of-services"></a>Hizmetlere genel bakış
 
-    [İşi](transforms-jobs-concept.md) başka bir bölgeye yeniden göndermeniz gerekirse, kaynak varlık kapsayıcısından verileri alternatif bölgedeki bir varlık kapsayıcısına kopyalamak Için Jobınputhttp veya [Copy-blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) ' u kullanabilirsiniz.
-* Azure Event Grid aracılığıyla her hesapta JobStateChange iletileri için abone olun. Daha fazla bilgi için bkz.
+Bu örnek mimaride kullanılan hizmetler şunlardır:
 
-    * Azure Event Grid iletilerinin bazı nedenlerle gecikildiği durumlarda geri dönüş ekleme dahil Azure Event Grid bir işin nasıl izleneceğini gösteren [Ses analizi örneği](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) .
-    * [Media Services olaylar için Azure Event Grid şemaları](media-services-event-schemas.md)
-    * [Azure Portal veya CLI aracılığıyla olaylara kaydolma](reacting-to-media-services-events.md) (aynı zamanda Eventgrid YÖNETIM SDK 'sı ile de yapabilirsiniz)
-    * [Microsoft. Azure. EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (yerel olarak Media Services olaylarını destekler).
+| Simge | Ad | Açıklama |
+| :--: | ---- | ----------- |
+|![image](media/media-services-high-availability-encoding/azure-media-services.svg)| Media Services hesabı | **Açıklama:**<br>Media Services hesap, Azure 'daki medya içeriğini yönetmek, şifrelemek, kodlamak, çözümlemek ve akışa alma için başlangıç noktasıdır. Bir Azure depolama hesabı kaynağıyla ilişkilendirilir. Hesabın ve ilişkili tüm depolamanın aynı Azure aboneliğinde olması gerekir.<br><br>**VOD kullanımı:**<br>Bunlar, video ve ses varlıklarınızı kodlamak ve sunmak için kullandığınız hizmetlerdir.  Yüksek kullanılabilirlik için, her biri farklı bir bölgede en az iki Media Services hesap ayarlarsınız. [Azure Media Services hakkında daha fazla bilgi edinin](media-services-overview.md). |
+|![image](media/media-services-high-availability-encoding/storage-account.svg)| Depolama hesabı | **Açıklama:**<br>Azure depolama hesabı, tüm Azure depolama veri nesnelerinizi içerir: Bloblar, dosyalar, kuyruklar, tablolar ve diskler. Veriler, dünyanın her yerinden HTTP veya HTTPS üzerinden erişilebilir.<br><br>Her bölgedeki her bir Media Services hesabının aynı bölgedeki bir depolama hesabı vardır.<br><br>**VOD kullanımı:**<br>VOD işleme ve akış için giriş ve çıkış verilerini saklayabilirsiniz. [Azure depolama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-introduction). |
+|![image](media/media-services-high-availability-encoding/storage-account-queue.svg)| Azure Depolama Kuyruğu | **Açıklama:**<br>Azure Kuyruk depolama, HTTP veya HTTPS kullanan kimlik doğrulaması yapılmış çağrılar aracılığıyla dünyanın her yerinden erişilebilen çok sayıda iletinin depolanması için bir hizmettir.<br><br>**VOD kullanımı:**<br>Kuyruklar, farklı modüller arasında etkinlikleri koordine etmek üzere ileti göndermek ve almak için kullanılabilir. Örnek, bir Azure depolama kuyruğu kullanır, ancak Azure, gereksinimlerinize daha uygun olabilecek Service Bus ve Service Fabric güvenilir kuyruklar gibi diğer sıra türlerini sağlar. [Azure kuyruğu hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction). |
+|![image](media/media-services-high-availability-encoding/azure-cosmos-db.svg)| Azure Cosmos DB  | **Açıklama:**<br>Azure Cosmos DB, Microsoft 'un Dünya çapında dağıtılmış, çok modelli bir veritabanı hizmetidir ve tüm dünyada birçok Azure bölgesinde işlem ve depolamayı bağımsız olarak ölçeklendirin.<br><br>**VOD kullanımı:**<br>Tablolar, iş çıkışı durum kayıtlarını depolamak ve her bir Media Services örneğinin sistem durumunu izlemek için kullanılabilir. Ayrıca Media Services API 'sine yapılan her çağrının durumunu izleyebilir/kaydedebilirsiniz. [Azure Cosmos DB hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cosmos-db/introduction).  |
+|![image](media/media-services-high-availability-encoding/managed-identity.svg)| Yönetilen Kimlik | **Açıklama:**<br>Yönetilen kimlik, Azure AD 'de otomatik olarak yönetilen bir kimlik sağlayan bir Azure AD özelliğidir. Kimlik bilgilerini kodda depolamadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanılabilir.<br><br>**VOD kullanımı:**<br>Azure Işlevleri, Key Vault bağlanmak için Media Services örneklerine kimlik doğrulaması yapmak üzere yönetilen kimlik kullanabilir. [Yönetilen kimlik hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). |
+|![image](media/media-services-high-availability-encoding/key-vault.svg)| Key Vault | **Açıklama:**<br>Azure Key Vault belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri güvenli bir şekilde depolamak ve bu erişimi sıkı şekilde denetlemek için kullanılabilir. Ayrıca, anahtar yönetim çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. Azure ve iç bağlı kaynaklarla kullanılmak üzere ortak ve özel Aktarım Katmanı Güvenlik/Güvenli Yuva Katmanı (TLS/SSL) sertifikalarını kolayca sağlayabilir, yönetebilir ve dağıtabilir. Gizli dizileri ve anahtarları yazılım veya FIPS 140-2 düzey 2 tarafından doğrulanan HSM 'ler tarafından korunabilir.<br><br>**VOD kullanımı:**<br>Key Vault, uygulamanız için hizmet sorumlusu için erişim ilkeleri ayarlamak üzere kullanılabilir.  Bağlantı dizesini depolama hesaplarına depolamak için kullanılabilir. Bağlantı dizelerini depolama hesaplarına ve Cosmos DB 'ye depolamak için Key Vault kullanırız. Ayrıca, genel küme yapılandırmasını depolamak için Key Vault de kullanabilirsiniz. Her medya hizmeti örneği için abonelik KIMLIĞINI, kaynak grubu adını ve hesap adını saklayabilirsiniz. Daha ayrıntılı bilgi için bkz. nasıl kullanıldığı. [Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/general/overview). |
+|![image](media/media-services-high-availability-encoding/function-app.svg)| Azure İşlevleri | **Açıklama:**<br>Azure Işlevleri ile uygulama altyapısı hakkında endişelenmeden küçük kod parçalarını çalıştırın ("işlevler" olarak adlandırılır). [Azure işlevleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-functions/functions-overview).<br><br>**VOD kullanımı:**<br>Azure Işlevleri, VOD uygulamanızın modüllerini barındırmak için kullanılabilir.  Bir VOD uygulaması için modüller şunları içerebilir:<br><br>**İş zamanlama modülü**<br>İş zamanlama modülü, yeni işlerin bir Media Services kümesine gönderilmesi (farklı bölgelerdeki iki veya daha fazla örnek) için olur. Her bir Media Services örneğinin sistem durumunu izler ve sonraki sağlıklı örneğe yeni bir iş gönderir.<br><br>**İş durumu modülü**<br>İş durumu modülü Azure Event Grid hizmetinden gelen iş çıkış durumu olaylarını dinliyor. Modüller geri kalanı tarafından Media Services API 'Lerin çağrı sayısını en aza indirmek için olayları olay deposuna depolar.<br><br>**Örnek sistem durumu modülü**<br>Bu modül, gönderilen işleri izler ve her bir Media Services örneğinin sistem durumunu tespit edecektir. Tamamlanmış işleri, başarısız işleri ve hiçbir şekilde tamamlanmamış işleri izler.<br><br>**Sağlama modülü**<br>Bu modül, işlenen varlıkları temin edecektir. Varlık verilerini tüm Media Services örneklerine kopyalar ve bazı Media Services örnekleri kullanılabilir durumda olmasa bile varlıkların akışını sağlamak için Azure ön kapı hizmeti 'ni ayarlar. Ayrıca akış Konumlandırıcı 'yı da ayarlar.<br><br>**İş doğrulama modülü**<br>Bu modül gönderilen her işi izler, başarısız işleri yeniden gönderin ve iş başarıyla tamamlandıktan sonra iş verilerini temizleme işlemini gerçekleştirir.  |
+|![image](media/media-services-high-availability-encoding/application-service.svg)| App Service (ve planı)  | **Açıklama:**<br>Azure App Service Web uygulamalarını, REST API 'Leri ve mobil arka uçları barındırmak için HTTP tabanlı bir hizmettir. .NET, .NET Core, Java, Ruby, Node.js, PHP veya Python 'u destekler. Uygulamalar hem Windows hem de Linux tabanlı ortamlarda çalışır ve ölçeklendirebilir.<br><br>**VOD kullanımı:**<br>Her modül bir App Service tarafından barındırılır. [App Service hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/app-service/overview). |
+|![image](media/media-services-high-availability-encoding/azure-front-door.svg)| Azure Front Door | **Açıklama:**<br>Azure ön kapısı, yüksek kullanılabilirlik için en iyi performansı ve hızlı genel yük devretmeyi iyileştirerek Web trafiğinin genel yönlendirilmesini tanımlamak, yönetmek ve izlemek için kullanılır.<br><br>**VOD kullanımı:**<br>Azure ön kapısı, trafiği akış uç noktalarına yönlendirmek için kullanılabilir. [Azure ön kapısı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/frontdoor/front-door-overview).  |
+|![image](media/media-services-high-availability-encoding/event-grid-subscription.svg)| Azure Event Grid | **Açıklama:**<br>Olay tabanlı mimariler için oluşturulan Event Grid, depolama Blobları ve kaynak grupları gibi Azure hizmetlerinden gelen olaylar için yerleşik desteğe sahiptir. Ayrıca özel konu olayları için destek içerir. Filtreler, belirli olayları farklı uç noktalara yönlendirmek için, birden çok bitiş noktasına çok noktaya yayın yapmak ve olayların güvenilir bir şekilde teslim edildiğinden emin olmak için kullanılabilir. Her bölgedeki birden çok hata etki alanında ve kullanılabilirlik alanları arasında yerel olarak yayılarak kullanılabilirliği en üst düzeye çıkarır.<br><br>**VOD kullanımı:**<br>Event Grid, tüm uygulama olaylarını izlemek ve iş durumu kalıcı hale getirmek için bunları depolamak için kullanılabilir. [Azure Event Grid hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/event-grid/overview). |
+|![image](media/media-services-high-availability-encoding/application-insights.svg)| Application Insights | **Açıklama:** <br>Azure Izleyici 'nin bir özelliği olan Application Insights, geliştiriciler ve DevOps uzmanları için genişletilebilir bir uygulama performans yönetimi (APM) hizmetidir. Canlı uygulamaları izlemek için kullanılır. Performans sorunlarını algılar ve sorunları tanılamak ve kullanıcıların bir uygulamayla neler yaptığını anlamak için analiz araçları içerir. Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır.<br><br>**VOD kullanımı:**<br>Tüm Günlükler Application Insights gönderilebilir. Başarılı bir şekilde oluşturulan iş iletilerini arayarak her işi hangi örneğin işlediğini görmek mümkündür. Benzersiz tanımlayıcı ve örnek adı bilgileri de dahil olmak üzere tüm gönderilen iş meta verilerini içerebilir. [Application Insights hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). |
+## <a name="architecture"></a>Mimari
 
-    Azure Işlevleri aracılığıyla Event Grid olaylarını da kullanabilirsiniz.
-* Bir [iş](transforms-jobs-concept.md)oluşturduğunuzda:
+Bu üst düzey diyagramda, yüksek kullanılabilirlik ve Medya Hizmetleri ile çalışmaya başlamanızı sağlamak için sunulan örneğin mimarisi gösterilmektedir.
 
+[![İsteğe bağlı video (VOD) yüksek düzey mimari diyagramı ](media/media-services-high-availability-encoding/high-availability-architecture.svg)](media/media-services-high-availability-encoding/high-availability-architecture.svg#lightbox)
+
+## <a name="best-practices"></a>Önerilen uygulamalar
+
+### <a name="regions"></a>Bölgeler
+
+* İki (veya daha fazla) Azure Media Services hesabı [oluşturun](https://review.docs.microsoft.com/azure/media-services/latest/create-account-cli-how-to) . İki hesabın farklı bölgelerde olması gerekir. Daha fazla bilgi için [Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)bölümüne bakın.
+* Medyanızı, işi göndermeyi planladığınız aynı bölgeye yükleyin. Kodlama başlatma hakkında daha fazla bilgi için bkz. bir [https URL 'sinden iş girişi oluşturma](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-http-how-to) veya [yerel bir dosyadan iş girişi oluşturma](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-local-file-how-to).
+* [İşi](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) başka bir bölgeye yeniden göndermeniz gerekirse, `JobInputHttp` `Copy-Blob` verileri kaynak varlık kapsayıcısından alternatif bölgedeki bir varlık kapsayıcısına kopyalamak için kullanabilirsiniz.
+
+### <a name="monitoring"></a>İzleme
+
+* `JobStateChange`Her hesaptaki ileti için Azure Event Grid aracılığıyla abone olun.
+    * Azure portal veya CLı aracılığıyla [olaylara kaydolma](https://review.docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events) (aynı zamanda Eventgrid YÖNETIM SDK 'sı ile de yapabilirsiniz)
+    * [Microsoft. Azure. EventGrid SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) kullanın (yerel olarak Media Services olaylarını destekler).
+    * Azure Işlevleri aracılığıyla Event Grid olaylarını da kullanabilirsiniz.
+
+    Daha fazla bilgi için:
+
+    * Azure Event Grid iletilerinin bazı nedenlerle gecikildiği durumlarda geri dönüş ekleme dahil Azure Event Grid bir işi nasıl izleyeceğinizi gösteren [Ses analizi örneğine](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) bakın.
+    * [Media Services olaylar için Azure Event Grid şemalarına](https://review.docs.microsoft.com/azure/media-services/latest/media-services-event-schemas)göz atın.
+
+* Bir [iş](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)oluşturduğunuzda:
     * Şu anda kullanılan hesapların listesinden rastgele bir hesap seçin (Bu liste normalde her iki hesabı da içerir, ancak sorunlar algılanırsa yalnızca bir hesap içerebilir). Liste boşsa, bir işlecin bir uyarı oluşturup Araştırabilmesi için bir uyarı yükseltin.
-    * Genel rehberlik, [Joi put](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset) başına bir [medya ayrılmış birimine](media-reserved-units-cli-how-to.md) Ihtiyacınız vardır (her Joi put [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) için 3 medya ayrılmış birimi önerilir).
-    * Seçilen hesap için medya ayrılmış birimlerinin (MRU) sayısını alır. Geçerli **medya ayrılmış birim** sayısı zaten en büyük değerde değilse, iş Için gereken MRU sayısını ekleyin ve hizmeti güncelleştirin. İş gönderim oranınızı yüksekse ve en yüksek düzeyde olduğunu bulmak için MRU 'yi sık sık sorguladıktan sonra, değer için makul bir zaman aşımı ile dağıtılmış bir önbellek kullanın.
-    * Esnek işlerin sayısının sayısını koruyun.
-
-* JobStateChange işleyiciniz bir işin zamanlanan duruma ulaştığı bir bildirim aldığında, zamanlama durumuna ve kullanılan bölge/hesaba giren zamanı kaydedin.
-* JobStateChange işleyiciniz bir işin işleme durumuna ulaştığı bir bildirim aldığında iş için kaydı işleme olarak işaretleyin.
-* JobStateChange işleyiciniz bir işin tamamlandı/hatalı/Iptal edildi durumuna ulaştığı bir bildirim aldığında, işin kaydını son olarak işaretleyin ve esnek iş sayısını azaltır. Seçilen hesap için medya ayrılmış birimlerinin sayısını alın ve geçerli MRU numarasını, esnek iş sayınızla karşılaştırın. Değerlendirmedeki sayımınız MRU sayısından küçükse, azaltın ve hizmeti güncelleştirin.
+    * Her bir Inflight işini ve kullanılan bölge/hesabı izlemek için bir kayıt oluşturun.
+* `JobStateChange`İşleyiciniz bir işin zamanlanan duruma ulaştığı bir bildirim aldığında, zamanlanan duruma ve kullanılan bölgeye/hesaba giren zamanı kaydedin.
+* `JobStateChange`İşleyiciniz bir işin işleme durumuna ulaştığı bir bildirim aldığında, iş için kaydı işleme olarak işaretleyin ve işlem durumuna giren süreyi kaydedin.
+* `JobStateChange`İşleyiciniz bir işin son duruma ulaştığı bir bildirim aldığında (tamamlandı/hatalı/Iptal edildi), iş için kaydı uygun şekilde işaretleyin.
 * İşlerin kayıtlarınıza düzenli olarak baktığı ayrı bir işleme sahiptir
-    
-    * Zamanlanan durumda, belirli bir bölge için makul bir süre içinde işleme durumuna kadar gelişmiş olmayan işleriniz varsa, o bölgeyi şu anda kullanılan hesapların listesinden kaldırın.  İş gereksinimlerinize bağlı olarak, bu işleri hemen iptal edip diğer bölgeye yeniden gönderebilirsiniz. Ya da bir sonraki duruma geçmek için birkaç zaman daha verebilirsiniz.
-    * Hesapta yapılandırılan medya ayrılmış birimlerinin sayısına ve gönderim hızına bağlı olarak, kuyruğa alınmış durumda sistem henüz işlenmek üzere çekilmemiştir.  Sıraya alınan durumdaki işlerin listesi bir bölgede kabul edilebilir sınırın ötesinde büyürse, bu işler iptal edilebilir ve diğer bölgeye gönderilebilir.  Ancak bu, geçerli yük için hesapta yapılandırılmış yeterli medya ayrılmış birimi olmaması belirtisi olabilir.  Gerekirse, Azure desteği aracılığıyla daha yüksek bir medya ayrılmış birim kotası isteyebilirsiniz.
-    * Hesap listesinden bir bölge kaldırılmışsa, listeye geri eklemeden önce onu kurtarma için izleyin.  Bölgesel sistem durumu, bölgedeki mevcut işler aracılığıyla (iptal edilmediğinde ve yeniden gönderiyorlarsa), hesabı bir süre sonra listeye geri ekleyerek ve Azure Media Services etkileyebilecek kesintiler hakkında Azure iletişimini izleyen operatörler tarafından izlenebilir.
-    
-MRU sayısının büyük bir dönem yukarı ve aşağı doğru olduğunu fark ederseniz, azaltma mantığını düzenli bir göreve taşıyın. , MRU 'nın güncelleştirilmesi gerekip gerekmediğini görmek için, iş öncesi bir mantıksal karşılaştırma sayısını geçerli MRU sayısına göre karşılaştırın.
+    * Zamanlanan durumda, belirli bir bölge için makul bir süre içinde işleme durumuna kadar gelişmiş olmayan işleriniz varsa, o bölgeyi şu anda kullanılan hesapların listesinden kaldırın. İş gereksinimlerinize bağlı olarak, bu işleri hemen iptal edip diğer bölgeye yeniden gönderebilirsiniz. Ya da bir sonraki duruma geçmek için birkaç zaman daha verebilirsiniz.
+    * Hesap listesinden bir bölge kaldırılmışsa, listeye geri eklemeden önce onu kurtarma için izleyin. Bölgesel sistem durumu, bölgedeki mevcut işler aracılığıyla (iptal edilmediğinde ve yeniden gönderiyorlarsa), hesabı bir süre sonra listeye geri ekleyerek ve Azure Media Services etkileyebilecek kesintiler hakkında Azure iletişimini izleyen operatörler tarafından izlenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

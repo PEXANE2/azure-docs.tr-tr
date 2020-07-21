@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75378441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524224"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak OneDrive bağlayıcıdaki dosyalara erişin ve yönetin
 
@@ -39,11 +40,11 @@ Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak i�
 
 1. Mantıksal uygulama Tasarımcısı ' nda, `onedrive` tetikleyicilerinin bir listesini almak için yazın:  
 
-   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
+   !["Microsoft tarafından yönetilen API 'Leri göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu vardır. Aşağıda dört tetikleyici listesi verilmiştir. Bunlardan ilki "OneDrive-bir dosya oluşturulduğunda" dır. İkinci "OneDrive-bir dosya değiştirildiğinde" seçilidir.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. **Bir dosya değiştirildiğinde**seçin. Bir bağlantı zaten varsa, bir klasör seçmek için seçiciyi göster düğmesini seçin.
 
-   ![](./media/connectors-create-api-onedrive/sample-folder.png)
+   !["Dosya değiştirildiğinde" başlıklı bir iletişim kutusu, ilişkili bir gözatmasına sahip "klasör" başlıklı bir kutu içerir.](./media/connectors-create-api-onedrive/sample-folder.png)
 
    Oturum açmanız istenirse, bağlantıyı oluşturmak için oturum açma ayrıntılarını girin. Bu makalede [bağlantıyı oluşturma](connectors-create-api-onedrive.md#create-the-connection) adımları listelenir.
 
@@ -51,7 +52,7 @@ Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak i�
 
 3. **Düzenle** düğmesini seçin ve **Sıklık** ve **Aralık** değerlerini ayarlayın. Örneğin, tetikleyicinin 15 dakikada bir yoklamasını istiyorsanız, **sıklığı** **dakika**olarak ayarlayın ve **aralığı** **15**olarak ayarlayın. 
 
-   ![](./media/connectors-create-api-onedrive/trigger-properties.png)
+   !["Dosya değiştirildiğinde" başlıklı bir iletişim kutusu, "klasör", "SıKLıK", "ıNTERVAL", "TIMEZONE" ve "başlangıç zamanı" etiketli beş kutuyu gösterir. "SıKLıK" ve "saat dılımı" alanları için açılan listeler bulunur.](./media/connectors-create-api-onedrive/trigger-properties.png)
 
 4. Değişikliklerinizi **kaydedin** (araç çubuğunun sol üst köşesi). Mantıksal uygulamanız kaydedilir ve otomatik olarak etkinleştirilebilir.
 
@@ -61,23 +62,23 @@ Eylem, mantıksal uygulamada tanımlanan iş akışı tarafından yürütülen b
 
 1. Artı işaretini seçin. Birkaç seçenek görürsünüz: **eylem ekleme**, **koşul ekleme**veya **daha fazla** seçenekten biri.
 
-   ![](./media/connectors-create-api-onedrive/add-action.png)
+   ![Ekran görüntüsünde dört düğme gösterilir: "+ yeni adım", "Eylem Ekle", "koşul Ekle" ve "... Daha fazla ".](./media/connectors-create-api-onedrive/add-action.png)
 
 2. **Eylem Ekle**' yi seçin.
 
 3. `onedrive`Tüm kullanılabilir eylemlerin listesini almak için arama kutusuna yazın.
 
-   ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   !["Microsoft tarafından yönetilen API 'Leri göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu vardır. Aşağıda sekiz eylemin listesi verilmiştir. Birincisi "OneDrive-dosya oluştur" ' u ve bu seçilir.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. Örneğimizde **OneDrive-dosya oluştur**' u seçin. Zaten bir bağlantı varsa, dosyayı yerleştirmek için **klasör yolunu** seçin, **dosya adını**girin ve istediğiniz **dosya içeriğini** seçin:  
 
-   ![](./media/connectors-create-api-onedrive/sample-action.png)
+   !["Dosya oluştur" başlıklı iletişim kutusu, "klasör yolu", "dosya adı" ve "klasör IÇERIĞI" etiketli üç kutuyu gösterir. "Klasör yolu" kutusunun yanında bir dizin tarama düğmesi vardır.](./media/connectors-create-api-onedrive/sample-action.png)
 
    Bağlantı bilgileri istenirse, bağlantıyı oluşturmak için bu konuda [açıklandığı gibi](#create-the-connection) ayrıntıları girin.
 
    Bu örnekte, OneDrive klasöründe yeni bir dosya oluşturacaksınız. OneDrive dosyasını oluşturmak için başka bir tetikleyiciden çıkış kullanabilirsiniz. Örneğin, *Yeni bir e-posta geldiğinde* tetikleyiciyi Office 365 Outlook ' u ekleyin. Ardından, OneDrive 'da yeni bir dosya oluşturmak için bir ForEach içindeki ekleri ve Içerik türü alanlarını kullanan OneDrive *dosya oluştur* eylemini ekleyin.
 
-   ![](./media/connectors-create-api-onedrive/foreach-action.png)
+   !["For each" başlıklı iletişim kutusunda "ekler" içeren "ÖNCEKI ADıMLARDAN çıkış SEÇIN" etiketli bir kutu bulunur. "Klasör yolu", "dosya adı" ve "dosya IÇERIĞI" şeklinde etiketlenmiş kutulara "for each" kutusunun kalanını kapsayan "dosya oluştur" iletişim kutusu vardır. ](./media/connectors-create-api-onedrive/foreach-action.png)
 
 5. Değişikliklerinizi **kaydedin** (araç çubuğunun sol üst köşesi). Mantıksal uygulamanız kaydedilir ve otomatik olarak etkinleştirilebilir.
 

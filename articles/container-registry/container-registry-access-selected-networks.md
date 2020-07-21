@@ -3,11 +3,12 @@ title: Ortak kayıt defteri erişimini yapılandırma
 description: Seçilen ortak IP adreslerinden veya adres aralıklarından bir Azure Container Registry 'ye erişimi etkinleştirmek için IP kurallarını yapılandırın.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83702078"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523834"
 ---
 # <a name="configure-public-ip-network-rules"></a>Genel IP ağ kurallarını yapılandırma
 
@@ -46,7 +47,7 @@ az acr network-rule add \
 1. **Ayarlar**altında **ağ**' ı seçin.
 1. **Ortak erişim** sekmesinde, **Seçili ağlardan**ortak erişime izin ver ' i seçin.
 1. **Güvenlik duvarı**altında, bir sanal ağdaki VM 'nın genel IP adresi gibi BIR genel IP adresi girin. Ya da VM 'nin IP adresini içeren CıDR gösteriminde bir adres aralığı girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ![Kapsayıcı kayıt defteri için güvenlik duvarı kuralını yapılandırma][acr-access-selected-networks]
 
@@ -74,7 +75,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**'i seçin.
+1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Ardından **Kaydet**’i seçin.
 
 ![Genel erişimi devre dışı bırak][acr-access-disabled]
 
@@ -97,9 +98,16 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Ortak erişimi geri yükleme-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Sonra **Kaydet**'i seçin.
+1. **Genel erişim** sekmesinde, **ortak ağ erişimine izin ver**' in altında **tüm ağlar**' ı seçin. Ardından **Kaydet**’i seçin.
 
 ![Tüm ağlardan ortak erişim][acr-access-all-networks]
+
+## <a name="troubleshoot"></a>Sorun giderme
+
+Ortak bir ağ kuralı ayarlandıysa veya kayıt defterine genel erişim reddedilirse, izin verilmeyen bir ortak ağdan kayıt defterine oturum açma girişimleri başarısız olur. Proxy 'nin bir erişim kuralı ayarlanmamışsa, bir HTTPS proxy 'sinin arkasındaki istemci erişimi de başarısız olur. Veya ile benzer bir hata iletisi görürsünüz `Error response from daemon: login attempt failed with status: 403 Forbidden` `Looks like you don't have access to registry` .
+
+Bu hatalar, bir ağ erişim kuralı tarafından izin verilen bir HTTPS proxy kullanırsanız, ancak proxy istemci ortamında düzgün şekilde yapılandırılmamışsa da oluşabilir. Hem Docker istemciniz hem de Docker Daemon 'ın proxy davranışı için yapılandırılıp yapılandırılmadığını denetleyin. Ayrıntılar için bkz. Docker belgelerindeki [http/https ara sunucusu](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) .
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

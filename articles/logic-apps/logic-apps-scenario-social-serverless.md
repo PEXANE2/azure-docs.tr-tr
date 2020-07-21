@@ -8,11 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520758"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma
 
@@ -21,7 +22,7 @@ Azure, altyapı hakkında düşünmenize gerek kalmadan, uygulamaları bulutta h
 Bu çözüm için, bu anahtar Azure bileşenlerini sunucusuz uygulamalar için kullanırsınız: [Azure işlevleri](https://azure.microsoft.com/services/functions/) ve [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Azure Logic Apps, bulutta sunucusuz bir iş akışı altyapısı sağlar ve böylece sunucusuz bileşenler arasında düzenleme yapabilir ve 200 + hizmet ve API 'lere bağlanabilirsiniz. Azure Işlevleri, bulutta sunucusuz bilgi işlem sağlar. Bu çözüm, önceden tanımlanmış anahtar sözcüklere göre müşteri bazında ara ve bayrak eklemek için Azure Işlevlerini kullanır.
 
-Bu senaryoda, müşterilerden geri bildirim bulmayı tetikleyen bir mantıksal uygulama oluşturursunuz. Müşteri geri bildirimlerine yanıt vermenize yardımcı olan bazı bağlayıcılar, Outlook.com, Office 365, araştırma maymun, Twitter ve [bir Web formundan gelen http isteği](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)içerir. Oluşturduğunuz iş akışı Twitter 'da bir diyez etiketi izler.
+Bu senaryoda, müşterilerden geri bildirim bulmayı tetikleyen bir mantıksal uygulama oluşturursunuz. Müşteri geri bildirimlerine yanıt vermenize yardımcı olan bazı bağlayıcılar, Outlook.com, Office 365, araştırma maymun, Twitter ve [bir Web formundan gelen http isteği](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form)içerir. Oluşturduğunuz iş akışı Twitter 'da bir diyez etiketi izler.
 
 [Tüm çözümü Visual Studio 'da](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) oluşturabilir ve [çözümü Azure Resource Manager şablonuyla dağıtabilirsiniz](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). Bu çözümün nasıl oluşturulacağını gösteren bir video kılavuzu için, [Bu Channel 9 videosunu izleyin](https://aka.ms/logicappsdemo). 
 
@@ -66,7 +67,7 @@ Ayrıca, verileriniz üzerinde özel işlem gerçekleştirebilmeniz için bir Az
 
 ## <a name="process-data-with-azure-functions"></a>Azure Işlevleri ile verileri işleme
 
-Bir işlev oluşturmadan önce, Azure aboneliğinizde bir işlev uygulaması oluşturun. Ayrıca, mantıksal uygulamanızın bir işlevi doğrudan çağırması için, işlevin bir HTTP tetikleyici bağlaması olması gerekir, örneğin, **Httptrigger** şablonunu kullanın. [Azure Portal ilk işlev uygulamanızı ve işlevinizi oluşturmayı](../azure-functions/functions-create-first-azure-function-azure-portal.md)öğrenin.
+Bir işlev oluşturmadan önce, Azure aboneliğinizde bir işlev uygulaması oluşturun. Ayrıca, mantıksal uygulamanızın bir işlevi doğrudan çağırması için, işlevin bir HTTP tetikleyici bağlaması olması gerekir, örneğin, **Httptrigger** şablonunu kullanın. [Azure Portal ilk işlev uygulamanızı ve işlevinizi oluşturmayı](../azure-functions/functions-create-first-azure-function.md)öğrenin.
 
 Bu senaryo için, Azure işlevinizin istek gövdesi olarak Tweet metnini kullanın. İşlev kodunuzda, Tweet metninin bir anahtar sözcük mi yoksa tümcecik mi içerdiğini belirleyen mantığı tanımlayın. İşlevi senaryo için gereken şekilde basit veya karmaşık tutun.
 İşlevin sonunda, mantıksal uygulamaya bazı verilerle bir yanıt döndürün, örneğin veya karmaşık bir nesne gibi basit bir Boole değeri `containsKeyword` .

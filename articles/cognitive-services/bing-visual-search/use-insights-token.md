@@ -11,16 +11,24 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: tracking-python
-ms.openlocfilehash: 733eec452501a829d0162b91aca9ece191d68914
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: fc589f53fc10e376479bf54ec408a95dac42db4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523970"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma
 
-Bing Görsel Arama API’si, verdiğiniz bir görüntü hakkında bilgi döndürür. Bir URL veya bir içgörü belirteci kullanarak ya da karşıya resim yükleyerek görüntüyü verebilirsiniz. Bu seçenekler hakkında daha fazla bilgi için bkz. [Bing Görsel Arama API'si nedir?](overview.md). Bu makalede, bir Öngörüler belirtecinin kullanılması gösterilmektedir. Öngörüleri almak için bir görüntüyü karşıya yüklemeyi gösteren örnekler için bkz. hızlı başlangıç ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
+Bing Görsel Arama API’si, verdiğiniz bir görüntü hakkında bilgi döndürür. Bir URL veya bir içgörü belirteci kullanarak ya da karşıya resim yükleyerek görüntüyü verebilirsiniz. Bu seçenekler hakkında daha fazla bilgi için bkz. [Bing Görsel Arama API'si nedir?](overview.md). Bu makalede, bir Öngörüler belirtecinin kullanılması gösterilmektedir. Öngörüleri almak için bir görüntüyü karşıya yüklemeyi gösteren örnekler için bkz. hızlı başlangıç:
+
+* ([C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [Node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)).
 
 Bing Görsel Arama bir görüntü belirteci veya URL gönderirseniz, aşağıda GÖNDERI gövdesine eklemeniz gereken form verileri gösterilir. Form verileri `Content-Disposition` üstbilgiyi içermeli ve `name` parametresini "knowledgeRequest" olarak ayarlamanız gerekir. Nesneyle ilgili ayrıntılar için `imageInfo` bkz. istek:
 
@@ -59,7 +67,15 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Öngörüler belirtecini kullanan örnekler için bkz. [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node.js](#use-with-nodejs)  |  [Python](#use-with-python).
+Öngörüler belirtecini kullanan örnekler için bkz.:
+
+* [C#](#use-with-c)
+
+* [Java](#use-with-java)
+
+* [Node.js](#use-with-nodejs)
+
+* [Python](#use-with-python)
 
 ## <a name="use-with-c"></a>C ile kullanma #
 

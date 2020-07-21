@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: 427b7fff7b8f76412d7bd9d63aeb64583637779c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522423"
 ---
-# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics'te U-SQL betiklerini çalıştırarak verileri dönüştürme 
+# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics üzerinde U-SQL betikleri çalıştırarak verileri işleme 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-usql-activity.md)
 > * [Güncel sürüm](transform-data-using-data-lake-analytics.md)
@@ -129,7 +129,7 @@ Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamala
 | scriptLinkedService | Komut dosyasını içeren **Azure Data Lake Store** veya **Azure depolama alanını** Data Factory 'ye bağlayan bağlantılı hizmet | Yes      |
 | Analyticsunits | İşi çalıştırmak için eşzamanlı olarak kullanılan en fazla düğüm sayısı. | No       |
 | Priority            | Önce kuyruğa alınan tüm işlerin ne kadar önce çalıştırılacağını belirler. Sayı ne kadar düşükse öncelik o kadar yüksektir. | No       |
-| parametreler          | U-SQL betiğine geçirilecek parametreler.    | No       |
+| parameters          | U-SQL betiğine geçirilecek parametreler.    | No       |
 | runtimeVersion      | Kullanılacak U-SQL altyapısının çalışma zamanı sürümü. | No       |
 | compilationMode     | <p>U-SQL derleme modu. Şu değerlerden biri olmalıdır: **anlam:** yalnızca anlam denetimleri ve gerekli sağlamlık denetimleri gerçekleştirin, **tam:** sözdizimi denetimi, iyileştirme, kod oluşturma, vb., **tekbox** gibi tam derlemeyi gerçekleştirin: tam derlemeyi, TargetType ' ın tekbox ayarıyla birlikte gerçekleştirin. Bu özellik için bir değer belirtmezseniz, sunucu en uygun derleme modunu belirler. | No |
 
@@ -178,7 +178,7 @@ Azure Data Lake Analytics hizmeti üzerinde çalışan işler için ardışık d
 }
 ```
 
-Bunun yerine dinamik Parametreler kullanmak mümkündür. Örnek: 
+Bunun yerine dinamik Parametreler kullanmak mümkündür. Örneğin: 
 
 ```json
 "parameters": {

@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628172"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522729"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Dosyaları Azure Data Factory taşıma
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, dosyaları dosya tabanlı mağazalar arasında bir klasörden diğerine taşımak için kullanabileceğiniz bir çözüm şablonu açıklanmaktadır. Bu şablonu kullanmanın yaygın senaryolarından biri: dosyalar sürekli olarak kaynak deponuzda bir giriş klasörüne bırakılır. ADF işlem hattı, bir zamanlama tetikleyicisi oluşturarak bu dosyaları kaynaktan hedef depoya düzenli olarak taşıyabilir.  ADF işlem hattının "dosyaları taşıma" yolu, her birini hedef depodaki başka bir klasöre kopyalayarak ve ardından kaynak deposundaki giriş klasöründen aynı dosyaları silerek, giriş klasöründen dosyaları alıyor.
+ADF kopyalama etkinliği, depolama depoları arasında ikili dosyalar kopyalanırken "taşıma" senaryosunda yerleşik desteğe sahiptir.  Bunu etkinleştirmenin yolu, kopyalama etkinliğinde "deleteFilesAfterCompletion" değerini doğru olarak ayarlamanıza olanak tanır. Bunu yaptığınızda, kopyalama etkinliği iş tamamlandıktan sonra veri kaynağı deposundan dosyaları siler. 
+
+Bu makalede, aynı senaryoya ulaşmak için ADF esnek denetim akışını ve kopyalama etkinliği ve silme etkinliğini kullanan başka bir yaklaşım olarak çözüm şablonu açıklanmaktadır. Bu şablonu kullanmanın yaygın senaryolarından biri: dosyalar sürekli olarak kaynak deponuzda bir giriş klasörüne bırakılır. ADF işlem hattı, bir zamanlama tetikleyicisi oluşturarak bu dosyaları kaynaktan hedef depoya düzenli olarak taşıyabilir.  ADF işlem hattının "dosyaları taşıma" yolu, her birini hedef depodaki başka bir klasöre kopyalayarak ve ardından kaynak deposundaki giriş klasöründen aynı dosyaları silerek, giriş klasöründen dosyaları alıyor.
 
 > [!NOTE]
 > Bu şablonun klasörleri taşımak yerine dosyaları taşımak için tasarlandığını unutmayın.  Veri kümesini yalnızca bir klasör yolu içerecek şekilde değiştirerek klasörü taşımak ve sonra kopyalama etkinliğini ve silme etkinliğini bir klasörü temsil eden aynı veri kümesine başvuracak şekilde kullanmak istiyorsanız, çok dikkatli olmanız gerekir. Bunun nedeni, kopyalama işlemi ve silme işlemi arasında klasöre ulaşan yeni dosyalar OLMADıĞıNDAN emin olmanızı sağlar. Kopyalama etkinliğinizi kopyalama işini tamamlamış ancak silme etkinliği henüz tamamlanmadığında, klasörde klasöre ulaşan yeni dosyalar varsa, DELETE etkinliğinin tüm klasörü silerek henüz hedefe kopyalanmamış olan bu yeni gelen dosyayı silmesi mümkündür.

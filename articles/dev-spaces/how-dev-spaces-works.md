@@ -5,11 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 536918e1b1db88dcae6985b853b3cb0a6c91a52a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307376"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522287"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
 
@@ -48,7 +49,7 @@ Yerel geliştirme bilgisayarınızı AKS kümenize bağlamaya başlamak için bk
 Takım geliştirmesi için Azure Dev Spaces kullanmaya başlamak için Azure Dev Spaces hızlı başlangıçta [Takım geliştirme][quickstart-team] bölümüne bakın.
 
 [connect]: how-to/local-process-kubernetes-vs-code.md
-[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
+[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

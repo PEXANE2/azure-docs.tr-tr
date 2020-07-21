@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996219"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523987"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2-v3 geçişine
 
@@ -49,8 +49,8 @@ Aşağıdaki v2 ve v3 yöntemleri listesi, v2 ile gelen işlevleri sağlayacak o
 | `GetLanguagesForTranslate`     | [Diller](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Algılama](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Algılama](reference/v3-0-detect.md)         |
+| `Detect`     | [Acağı](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Acağı](reference/v3-0-detect.md)         |
 | `AddTranslation`     | Özellik artık desteklenmiyor       |
 | `AddTranslationArray`    | Özellik artık desteklenmiyor          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -116,8 +116,8 @@ Microsoft Translator v3 varsayılan olarak sinir makine çevirisini kullanır. B
 
 V3 metin API 'SI ile sinir çevirisi, standart kategorilerin (SMT, konuşma, teknik, generalnn) kullanımını desteklemez.
 
-| |Uç Nokta|    GDPR Işlemci uyumluluğu|    Çevirmen hub 'ı kullan|    Özel çevirici kullan (Önizleme)|
-|:-----|:-----|:-----|:-----|:-----|
+| Sürüm | Uç Noktası | GDPR Işlemci uyumluluğu | Çevirmen hub 'ı kullan | Özel çevirici kullan (Önizleme) |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
 |Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Yes    |Hayır|
 |Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Yes|    Hayır|    Yes|
 

@@ -4,18 +4,20 @@ description: Teklif üzerindeki tüm işlemleri almak veya belirtilen operationI
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: c0611cb3cbc24e2b105cdef134e30a7c2fbdd445
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113471"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520298"
 ---
 # <a name="retrieve-operations"></a>İşlemleri alma
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belirli bir işlem al. İstemci, çalışan işlemleri filtrelemek için sorgu parametrelerini kullanabilir.
 
@@ -27,10 +29,9 @@ Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belir
 
 ```
 
-
 ## <a name="uri-parameters"></a>URI parametreleri
 
-|  **Adı**          |      **Açıklama**                                                                                           | **Veri türü** |
+|  **Ad**          |      **Açıklama**                                                                                           | **Veri türü** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  PublisherId       |  Yayımcı tanımlayıcı, örneğin`Contoso`                                                                   |  Dize       |
 |  OfferId           |  Teklif tanımlayıcısı                                                                                              |  Dize       |
@@ -40,13 +41,11 @@ Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belir
 
 ## <a name="header"></a>Üst bilgi
 
-
-|  **Adı**          |  **Değer**           |
+|  **Ad**          |  **Değer**           |
 |  ---------------   | -------------------- |
 |  İçerik Türü      | `application/json`   |
 |  Yetkilendirme     | `Bearer YOUR_TOKEN`  |
 |  |  |
-
 
 ## <a name="body-example"></a>Gövde örneği
 
@@ -170,7 +169,7 @@ Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belir
 
 ### <a name="response-body-properties"></a>Yanıt gövdesi özellikleri
 
-|  **Adı**                    |  **Açıklama**                                                                                  |
+|  **Ad**                    |  **Açıklama**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  kimlik                          | İşlemi benzersiz bir şekilde tanımlayan GUID                                                       |
 |  submissionType              | Teklif için bildirilen işlem türünü tanımlar, örneğin`Publish/GoLive`      |
@@ -182,7 +181,7 @@ Belirtilen operationId için teklif üzerindeki tüm işlemleri alır veya belir
 
 ### <a name="response-step-properties"></a>Yanıt adımı özellikleri
 
-|  **Adı**                    |  **Açıklama**                                                                                  |
+|  **Ad**                    |  **Açıklama**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | Estimatedzaman çerçevesi | Bu işlemin tahmini süresi |
 | kimlik | Adım işlemi için benzersiz tanımlayıcı |

@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e274db2983c476c2428fdd0d25f3dff9bbc5e6ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118432"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523885"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, GitHub 'dan bir örneği kopyalayarak bir profil uygu
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, tablo, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
 
@@ -120,7 +120,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portalında](https://portal.azure.com/)**Bağlantı Dizesi**’ni seçin.
 
-1. En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-dotnet/copy.png) kullanın.
+1. :::image type="icon" source="./media/create-cassandra-dotnet/copy.png":::Kullanıcı adı değerini kopyalamak için ekranın sağ tarafındaki düğmeyi kullanın.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
 

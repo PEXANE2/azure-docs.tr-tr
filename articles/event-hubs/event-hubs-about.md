@@ -3,12 +3,12 @@ title: Azure Event Hubs nedir? -Büyük veri alma hizmeti | Microsoft Docs
 description: Saniyede milyonlarca olayın eklenmesini sağlayan bir Büyük Veri akış hizmeti olan Azure Event Hubs hakkında daha fazla bilgi edinin.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314255"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522118"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — büyük bir veri akışı platformu ve olay alma hizmeti
 Azure Event Hubs, büyük bir veri akışı platformu ve olay alma hizmetidir. Saniyede milyonlarca olayı alabilir ve işleyebilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir.
@@ -44,7 +44,7 @@ Eyleme dönüştürülebilir içgörüler elde etmek için akışınızı gerçe
 
 Verilerinizi [Azure Blob depolamada](https://azure.microsoft.com/services/storage/blobs/) neredeyse gerçek zamanlı olarak [yakalayın](event-hubs-capture-overview.md) veya [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)   uzun süreli saklama veya mikro toplu işleme için Azure Data Lake Storage. Bu davranışı gerçek zamanlı analiz türetmede kullandığınız akışta elde edebilirsiniz. Olay verilerinin yakalanması hızlı bir şekilde ayarlanır. Çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
 
-Azure Event Hubs, sunucusuz mimari için [Azure İşlevleri](/azure/azure-functions/) ile de tümleştirilebilir.
+Azure Event Hubs, sunucusuz mimari için [Azure İşlevleri](../azure-functions/index.yml) ile de tümleştirilebilir.
 
 ## <a name="scalable"></a>Ölçeklenebilir
 
@@ -74,7 +74,7 @@ Azure Stack hub 'ında Event Hubs, karma bulut senaryolarına olanak tanır. Hem
 
 Event Hubs sürümleri (Azure Stack hub ve Azure üzerinde), yüksek derecede Özellik eşliği sunmaktadır. Bu eşlik, SDK 'lar, örnekler, PowerShell, CLı ve portalların benzer bir deneyim sunabileceği, birkaç fark sağlar. 
 
-Event Hubs, genel önizleme sırasında yığında ücretsizdir. Daha fazla bilgi için bkz. [Azure Stack hub 'a genel bakış Event Hubs](https://docs.microsoft.com/azure-stack/user/event-hubs-overview).
+Event Hubs, genel önizleme sırasında yığında ücretsizdir. Daha fazla bilgi için bkz. [Azure Stack hub 'a genel bakış Event Hubs](/azure-stack/user/event-hubs-overview).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -94,5 +94,3 @@ Event Hubs hakkında daha fazla bilgi edinmek için şu makalelere göz atın:
 
 - [Event Hubs özelliklerine genel bakış](event-hubs-features.md)
 - [Sık sorulan sorular](event-hubs-faq.md).
-
-

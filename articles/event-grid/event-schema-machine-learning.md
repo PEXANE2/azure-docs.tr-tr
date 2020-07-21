@@ -3,12 +3,12 @@ title: Event Grid kaynak olarak Azure Machine Learning
 description: Azure Event Grid Machine Learning Çalışma Alanı olaylar için belirtilen özellikleri açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e72123a4f609b93e191c82f11443cbb1de7d012d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181531"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522083"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Machine Learning
 
@@ -151,7 +151,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
   "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventType": "Microsoft.MachineLearningServices.RunStatusChanged",
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
@@ -186,14 +186,14 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veriler | nesne | BLOB depolama olay verileri. |
+| veriler | object | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
@@ -201,22 +201,22 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | ModelName | string | Kayıtlı olan modelin adı. |
 | ModelVersion | string | Kaydedilen modelin sürümü. |
-| ModelTags | nesne | Kaydedilen modelin etiketleri. |
-| ModelProperties | nesne | Kaydedilen modelin özellikleri. |
+| ModelTags | object | Kaydedilen modelin etiketleri. |
+| ModelProperties | object | Kaydedilen modelin özellikleri. |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. Modeldağıtıldı
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | ServiceName | string | Dağıtılan hizmetin adı. |
 | ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
   | Modelıds | string | Model kimliklerinin virgülle ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
-| ServiceTags | nesne | Dağıtılan hizmetin etiketleri. |
-| ServiceProperties | nesne | Dağıtılan hizmetin özellikleri. |
+| ServiceTags | object | Dağıtılan hizmetin etiketleri. |
+| ServiceProperties | object | Dağıtılan hizmetin özellikleri. |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
@@ -226,8 +226,8 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 | ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
 | RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
 | RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
-| RunTags | nesne | Tamamlanan çalıştırmanın etiketleri. |
-| RunProperties | nesne | Tamamlanan çalıştırmanın özellikleri. |
+| RunTags | object | Tamamlanan çalıştırmanın etiketleri. |
+| RunProperties | object | Tamamlanan çalıştırmanın özellikleri. |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. Datasetdriftalgılandı
 
@@ -250,8 +250,8 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 | ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
 | RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
 | RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
-| RunTags | nesne | Tamamlanan çalıştırmanın etiketleri. |
-| RunProperties | nesne | Tamamlanan çalıştırmanın özellikleri. |
+| RunTags | object | Tamamlanan çalıştırmanın etiketleri. |
+| RunProperties | object | Tamamlanan çalıştırmanın özellikleri. |
 | RunStatus | string | Çalıştırmanın durumu. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834501"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520809"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
@@ -53,8 +54,8 @@ Ayrıca, Microsoft sertifikası için kayıtlı bağlayıcılar da aday ekleyebi
 Özel Bağlayıcılar hakkında daha fazla bilgi için bkz. 
 
 * [Özel bağlayıcılara genel bakış](../logic-apps/custom-connector-overview.md)
-* [Web API 'Lerinden özel bağlayıcılar oluşturma](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Azure Logic Apps özel bağlayıcıları kaydetme](../logic-apps/logic-apps-custom-connector-register.md)
+* [Web API 'Lerinden özel bağlayıcılar oluşturma](/connectors/custom-connectors/create-web-api-connector)
+* [Azure Logic Apps özel bağlayıcıları kaydetme](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>Faydalı araçlar
 
@@ -172,8 +173,8 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 
 | İstek şunları içerir `triggerState` ? | API yanıtı | 
 | -------------------------------- | -------------| 
-| Hayır | Bir HTTP `202 ACCEPTED` durumu `location` `triggerState` ve geçerli saate ayarlanmış bir üstbilgi ve 15 saniyeye kadar olan bir üst bilgi döndürür `retry-after` . | 
-| Evet | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
+| No | Bir HTTP `202 ACCEPTED` durumu `location` `triggerState` ve geçerli saate ayarlanmış bir üstbilgi ve 15 saniyeye kadar olan bir üst bilgi döndürür `retry-after` . | 
+| Yes | İçin ' den sonra eklenen dosyalar için hizmetinizi kontrol edin `DateTime` `triggerState` . | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 
@@ -227,7 +228,7 @@ Kimlik doğrulamasını ayarladıktan sonra API 'niz için dağıtımı ayarlay�
 
 * Özel API 'lerle ilgili belirli yardım için, ile iletişim kurun [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 
 * Logic Apps’in geliştirilmesine yardımcı olmak için, [Logic Apps kullanıcı geri bildirim sitesinde](https://aka.ms/logicapps-wish) oy kullanın veya fikirlerinizi paylaşın. 
 

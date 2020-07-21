@@ -7,16 +7,20 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da90bbbce485616afdac5997576da99ac4d62c6f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076674"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521913"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>ExpressRoute ile yüksek kullanılabilirlik için tasarlama
 
 ExpressRoute, Microsoft kaynaklarına yönelik taşıyıcı sınıfı özel ağ bağlantısı sağlamak için yüksek kullanılabilirlik için tasarlanmıştır. Diğer bir deyişle, Microsoft ağı içindeki ExpressRoute yolunda tek bir hata noktası yoktur. Kullanılabilirliği en üst düzeye çıkarmak için, ExpressRoute devrenizin müşterisi ve hizmet sağlayıcı segmenti de yüksek kullanılabilirlik için de tasarlanmıştır. Bu makalede, ilk olarak bir ExpressRoute kullanarak sağlam ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakalım, ardından ExpressRoute bağlantı hattının yüksek oranda kullanılabilirliğini geliştirmeye yardımcı olacak ince ayar özelliklerine bakalım.
 
+>[!NOTE]
+>Bu makalede açıklanan kavramlar, sanal WAN veya bunun dışında bir ExpressRoute bağlantı hattı oluşturulduğunda geçerlidir.
+>
 
 ## <a name="architecture-considerations"></a>Mimari konuları
 

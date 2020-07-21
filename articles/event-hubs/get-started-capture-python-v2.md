@@ -3,12 +3,12 @@ title: Python uygulamasından Azure Event Hubs yakalanan verileri okuma (en son)
 description: Bu makalede, bir olay hub 'ına gönderilen verileri yakalamak ve bir Azure depolama hesabından yakalanan olay verilerini okumak için Python kodu yazma yöntemi gösterilmektedir.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 752a582e59b438f7449d6722b222969dc641880c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: eb7e8a2c1e567e474ad7d0766d9b12e5b43de3ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521879"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Azure depolama 'da Event Hubs verileri yakalayın ve Python kullanarak okuyun (Azure-eventhub sürüm 5)
 
@@ -28,14 +28,14 @@ Bu hızlı başlangıçta:
 > * Bir Python betiği kullanarak Olay Hub 'ınıza veri gönderme.
 > * Başka bir Python betiği kullanarak Event Hubs yakalamadan dosyaları okuyun ve işleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - PıP yüklü ve güncelleştirilmiş Python 2,7 ve 3,5 ya da üzeri.  
 - Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .  
 - Etkin bir Event Hubs ad alanı ve Olay Hub 'ı.
 [Ad alanında bir Event Hubs ad alanı ve bir olay hub 'ı oluşturun](event-hubs-create.md). Event Hubs ad alanının adını, Olay Hub 'ının adını ve ad alanı için birincil erişim anahtarını kaydedin. Erişim anahtarını almak için bkz. [Event Hubs bağlantı dizesi edinme](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Varsayılan anahtar adı *RootManageSharedAccessKey*' dir. Bu hızlı başlangıçta yalnızca birincil anahtar gereklidir. Bağlantı dizesine ihtiyacınız yoktur.  
 - Bir Azure depolama hesabı, depolama hesabındaki bir blob kapsayıcısı ve depolama hesabına yönelik bir bağlantı dizesi. Bu öğeleriniz yoksa şunları yapın:  
-    1. [Azure depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
+    1. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal)  
     1. [Depolama hesabında bir blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
     1. [Bağlantı dizesini depolama hesabına al](../storage/common/storage-configure-connection-string.md)
 
@@ -182,4 +182,4 @@ Bu örnekte yakalanan veriler Azure Blob depolama alanında depolanır. Bu böl�
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
 [About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521675"
 ---
 # <a name="troubleshooting-network-performance"></a>Ağ performansı sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -177,9 +177,8 @@ Test kurulumu:
 >
 >
 
-| | | | | | |
-|-|-|-|-|-|-|
-|ExpressRoute<br/>Konum|Azure<br/>Bölge|Edilen<br/>Uzaklık (km)|Gecikme süresi|1 oturum<br/>Bant genişliği|Maksimum<br/>Bant genişliği|
+| ExpressRoute<br/>Konum|Azure<br/>Bölge | Edilen<br/>Uzaklık (km) | Gecikme süresi|1 oturum<br/>Bant genişliği | Maksimum<br/>Bant genişliği |
+| ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | Batı ABD 2        |    191 km |   5 MS | 262,0 Mbits/sn |  3,74 Gbit/sn |
 | Seattle | Batı ABD          |  1.094 km |  18 MS |  82,3 Mbits/sn |  3,70 Gbit/sn |
 | Seattle | Orta ABD       |  2.357 km |  40 ms |  38,8 Mbits/sn |  2,55 Gbit/sn |

@@ -4,20 +4,20 @@ description: Teklif üzerinde sürmekte olan bir işlemi iptal etmek için API
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 06/16/2020
-ms.openlocfilehash: e65f0a8ee0a5dfafab681010006fe190cb5bad70
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 462ca525be9cf46c87acdf4025223a98afaf8e3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102761"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520383"
 ---
 # <a name="cancel-operation"></a>İşlemi iptal et
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Bu API, teklifte sürmekte olan bir işlemi iptal eder. Bu API 'ye geçiş yapmak için [OPERATIONS API 'Sini alma işlemini](./cloud-partner-portal-api-retrieve-operations.md) kullanın `operationId` . İptali genellikle zaman uyumlu bir işlemdir, ancak bazı karmaşık senaryolarda var olan bir işlemin iptal edilmesi için yeni bir işlem gerekebilir. Bu durumda, HTTP yanıt gövdesi, durumu sorgulamak için kullanılması gereken işlemin konumunu içerir.
 
@@ -27,7 +27,7 @@ Bu API, teklifte sürmekte olan bir işlemi iptal eder. Bu API 'ye geçiş yapma
 
 --------------
 
-|  **Adı**    |      **Açıklama**                                  |    **Veri türü**  |
+|  **Ad**    |      **Açıklama**                                  |    **Veri türü**  |
 | ------------ |     ----------------                                  |     -----------   |
 | PublisherId  |  Yayımcı tanımlayıcısı, örneğin,`contoso`         |   Dize          |
 | OfferId      |  Teklif tanımlayıcısı                                     |   Dize          |
@@ -37,7 +37,7 @@ Bu API, teklifte sürmekte olan bir işlemi iptal eder. Bu API 'ye geçiş yapma
 ## <a name="header"></a>Üst bilgi
 ------
 
-|  **Adı**              |  **Değer**         |
+|  **Ad**              |  **Değer**         |
 |  ---------             |  ----------        |
 |  İçerik Türü          |  uygulama/json  |
 |  Yetkilendirme         |  BELIRTECINIZI taşıyıcı |
@@ -58,7 +58,7 @@ Bu API, teklifte sürmekte olan bir işlemi iptal eder. Bu API 'ye geçiş yapma
 
 ### <a name="request-body-properties"></a>İstek gövdesi özellikleri
 
-|  **Adı**                |  **Açıklama**                                               |
+|  **Ad**                |  **Açıklama**                                               |
 |  --------                |  ---------------                                               |
 |  bildirim-e-postalar     | Yayımlama işleminin ilerleme durumunun bildirilmesi için e-posta kimliklerinin virgülle ayrılmış listesi. |
 |  |  |
@@ -75,7 +75,7 @@ Bu API, teklifte sürmekte olan bir işlemi iptal eder. Bu API 'ye geçiş yapma
 
 ### <a name="response-header"></a>Yanıt Üst Bilgisi
 
-|  **Adı**             |    **Değer**                       |
+|  **Ad**             |    **Değer**                       |
 |  ---------            |    ----------                      |
 | Konum    | Bu işlemin durumunu almak için göreli yol. |
 |  |  |

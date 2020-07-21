@@ -7,14 +7,14 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: c832634a4b9154ec800da8c8ff25c6d81c620e9f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610160"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521097"
 ---
-# <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault Azure özel bağlantısıyla tümleştirin
+# <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Key Vault, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar.
 
@@ -66,7 +66,7 @@ Artık yapılandırılmış özel uç noktayı görebileceksiniz. Artık bu öze
 
 Zaten bir anahtar kasanız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
-1. Azure Portal’da oturum açın. 
+1. Azure portalında oturum açın. 
 1. Arama çubuğuna "Anahtar Kasası" yazın
 1. Özel uç nokta eklemek istediğiniz listeden anahtar kasasını seçin.
 1. Ayarlar altında "ağ" sekmesini seçin
@@ -126,6 +126,17 @@ az network private-dns zone create --resource-group {RG} --name privatelink.vaul
 ```console
 az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
 ```
+### <a name="add-private-dns-records"></a>Özel DNS kayıtları ekleme
+```console
+# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
+az network private-dns zone list -g $rg_name
+az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
+az network private-dns record-set list -g $rg_name -z "privatelink.vaultcore.azure.net"
+
+# From home/public network, you wil get a public IP. If inside a vnet with private zone, nslookup will resolve to the private ip.
+nslookup $vault_name.vault.azure.net
+nslookup $vault_name.privatelink.vaultcore.azure.net
+```
 ### <a name="create-a-private-endpoint-automatically-approve"></a>Özel uç nokta oluştur (otomatik olarak Onayla) 
 ```console
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
@@ -144,9 +155,9 @@ az network private-endpoint show --resource-group {RG} --name {Private Endpoint 
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi sağla | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
+| Hizmet eylemi sağla | Hizmet tüketicisi özel uç nokta durumu | Description |
 |--|--|--|
-| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |

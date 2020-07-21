@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232619"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521029"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
@@ -230,12 +230,12 @@ Varsayılan olarak, `AzureServiceTokenProvider` bir belirteci almak için aşağ
 
 - [Azure kaynakları için yönetilen bir kimlik](../..//active-directory/managed-identities-azure-resources/overview.md)
 - Visual Studio kimlik doğrulaması
-- [Azure CLı kimlik doğrulaması](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Azure CLı kimlik doğrulaması](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 - [Tümleşik Windows kimlik doğrulaması](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
 İşlemi denetlemek için, `AzureServiceTokenProvider` oluşturucuya geçirilmiş veya *AzureServicesAuthConnectionString* ortam değişkeninde belirtilen bir bağlantı dizesi kullanın.  Aşağıdaki seçenekler desteklenir:
 
-| Bağlantı dizesi seçeneği | Senaryo | Açıklamalar|
+| Bağlantı dizesi seçeneği | Senaryo | Yorumlar|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Yerel geliştirme | `AzureServiceTokenProvider`belirteci almak için AzureCli kullanır. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Yerel geliştirme | `AzureServiceTokenProvider`belirteci almak için Visual Studio 'Yu kullanır. |

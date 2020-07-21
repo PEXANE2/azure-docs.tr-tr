@@ -7,11 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524174"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database bağlayıcısını kullanmaya başlama
 
@@ -29,7 +30,7 @@ Bu bağlayıcı aşağıdaki öğeleri desteklemez:
 
 Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Desteklenen Oracle sürümleri: 
     * Oracle 9 ve üstü
@@ -57,30 +58,30 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
 2. Mantıksal uygulamanızın başlangıcında, **istek/yanıt-istek** tetikleyicisi ' ni seçin: 
 
-    ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
+    ![Bir iletişim kutusu, tüm Tetiklerde arama yapmak için bir kutu içerir. Ayrıca, "Istek/yanıt-Istek" adlı ve seçim düğmesi ile gösterilen tek bir tetikleyici de vardır.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. **Kaydet**'i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
+3. **Kaydet**’i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
 
 4. **Yeni adım**’ı ve **Eylem ekle**’yi seçin. `oracle`Kullanılabilir eylemleri görmek için yazın: 
 
-    ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
+    ![Arama kutusu "Oracle" içerir. Arama "Oracle Database" etiketli bir vuruş üretir. Sekmeli bir sayfa, bir sekme "TETIKLEYICILER (0)", başka bir deyişle "eylemler (6)" gösteriliyor. Altı eylem listelenir. Bunlardan ilki "satır önizlemesini al".](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > Bu Ayrıca, tüm bağlayıcılar için kullanılabilir Tetikleyicileri ve eylemleri görmenin en hızlı yoludur. Bağlayıcı adının bir bölümünü (gibi) yazın `oracle` . Tasarımcı tüm Tetikleyicileri ve eylemleri listeler. 
 
 5. **Oracle Database-al satırı**gibi eylemlerden birini seçin. Şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçin. Oracle sunucusu adı, kimlik doğrulama yöntemi, Kullanıcı adı, parola girin ve ağ geçidini seçin:
 
-    ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
+    ![İletişim kutusu "Oracle Database-satırı al" olarak adlandırılmış olur. "Şirket içi veri ağ geçidi üzerinden Bağlan" şeklinde işaretlenmiş bir kutu vardır. Aşağıda diğer beş metin kutusu bulunur.](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
 6. Bağlandıktan sonra listeden bir tablo seçin ve tablonuza satır KIMLIĞINI girin. Tabloya tanımlayıcıyı bilmeniz gerekir. Bilmiyorsanız Oracle DB yöneticinize başvurun ve çıktıyı alın `select * from yourTableName` . Bu, size devam etmeniz için gereken bilgileri sağlar.
 
     Aşağıdaki örnekte, iş verileri bir Insan kaynakları veritabanından döndürülüyor: 
 
-    ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    !["Satırı al (Önizleme)" başlıklı iletişim kutusunda iki metin kutusu vardır: "HRJOBS" içeren ve bir açılan listeye sahip olan ve "SA_REP" içeren "satır kimliği" olan "Tablo adı".](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. Bu sonraki adımda, iş akışınızı derlemek için diğer bağlayıcılardan herhangi birini kullanabilirsiniz. Oracle 'dan veri almayı test etmek istiyorsanız, bu tür Office 365 Outlook e-posta bağlayıcılarından birini kullanarak kendinize Oracle verileriyle bir e-posta gönderin. `Subject`E-postanızı oluşturmak Için Oracle tablosundaki dinamik belirteçleri kullanın `Body` :
+7. Bu sonraki adımda, iş akışınızı derlemek için diğer bağlayıcılardan herhangi birini kullanabilirsiniz. Oracle 'dan veri almayı test etmek istiyorsanız, Office 365 Outlook gibi e-posta bağlayıcılarından birini kullanarak kendi kendinize bir e-posta gönderin. `Subject`E-postanızı oluşturmak Için Oracle tablosundaki dinamik belirteçleri kullanın `Body` :
 
-    ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
+    ![İki iletişim kutusu vardır. "E-posta kutusu gönder", e-postanın "gövde", "konu" ve "to" adresini belirtmek için kutular içerir. "Dinamik içerik Ekle" iletişim kutusu, akışın uygulama ve hizmetlerinden dinamik içerik araması sağlar.](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
 8. Mantıksal uygulamanızı **kaydedin** ve sonra **Çalıştır**' ı seçin. Tasarımcıyı kapatın ve durum için çalıştırma geçmişine bakın. Başarısız olursa, başarısız ileti satırını seçin. Tasarımcı açılır ve hangi adımın başarısız olduğunu gösterir ve ayrıca hata bilgilerini gösterir. Başarılı olursa, eklediğiniz bilgileri içeren bir e-posta almalısınız.
 
@@ -89,11 +90,11 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
 * #Oracle hashtag ' i izlemek ve bir veritabanına, sorgulanabilmeleri ve diğer uygulamalar içinde kullanmak için bu alanı yerleştirmek istiyorsunuz. Bir mantıksal uygulamada `Twitter - When a new tweet is posted` tetikleyiciyi ekleyin ve **#oracle** diyez etiketini girin. Sonra, eylemi ekleyin `Oracle Database - Insert row` ve tablonuzu seçin:
 
-    ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
+    !["Yeni bir tweet gönderildiğinde" iletişim kutusu, arama metni olarak "hashtag Oracle" ifadesini gösterir ve denetleme sıklığını belirtmenizi sağlar. Bu iletişim kutusu, eylemi seçmenize olanak sağlayan "Oracle Database" iletişim kutusuna yönlendirir.](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
 * İletiler bir Service Bus kuyruğuna gönderilir. Bu iletileri almak ve bir veritabanına koymak istiyorsunuz. Bir mantıksal uygulamada `Service Bus - when a message is received in a queue` tetikleyiciyi ekleyin ve kuyruğu seçin. Sonra, eylemi ekleyin `Oracle Database - Insert row` ve tablonuzu seçin:
 
-    ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
+    !["İleti alındığında..." iletişim kutusunda "kuyruk adı" olarak "Orders" gösterilir ve denetleme sıklığını belirtmenize olanak tanır. Bu kutu "Tablo adı" seçmenizi sağlayan "satır ekle (Önizleme)" iletişim kutusuna yol açar.](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>Sık karşılaşılan hatalar
 

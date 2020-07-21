@@ -3,19 +3,19 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519907"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
 Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Canlı video analizi için HW/SW kısıtlamalarını karşılayan bir Linux makinesi
 * [Sahip olduğunuz ayrıcalıklara](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) sahip olduğunuz Azure aboneliği
@@ -24,7 +24,7 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 * [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
     * Şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
-    * Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir.
+    * Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Canlı video analizlerini kullanmak için Azure kaynaklarını yapılandırma
 
@@ -34,7 +34,7 @@ Bkz. [özel Azure Resource Manager rolü oluşturma](create-custom-azure-resourc
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Premium akış uç noktası ayarlama
 
-Canlı video analizlerini buluta kaydetmek ve sonra yeniden oynatmak istiyorsanız, medya hizmetinizi bir [Premium akış uç noktası](../latest/streaming-endpoint-concept.md#types)kullanacak şekilde güncellemeniz gerekir.  
+Videoyu buluta sürekli kaydetmek için canlı video analizi kullanmayı ve sonra yeniden oynamadan önce [sorgu API 'lerini](playback-recordings-how-to.md#query-api) kullanmayı düşünüyorsanız, medya hizmetinizi bir [Premium akış uç noktası](../latest/streaming-endpoint-concept.md#types)kullanacak şekilde güncelleştirmenizi öneririz.  
 
 Bu, isteğe bağlı bir adımdır. Bunu yapmak için bu Azure CLı komutunu kullanabilirsiniz:
 
@@ -84,7 +84,7 @@ sudo chown -R edgeuser /var/media
 <!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 IoT Edge üzerindeki canlı video analizi, Module [ikizi yapılandırma şemasında](module-twin-configuration-schema.md)belgelenen modül ikizi özelliklerini kullanıma sunar. 
 
-### <a name="deploy-using-the-azure-portal"></a>Azure portalı kullanarak dağıtma
+### <a name="deploy-using-the-azure-portal"></a>Azure portalını kullanarak dağıtma
 
 Azure portal, dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihazına gönderme işlemlerinde size rehberlik eder.
 Cihazınızı seçin

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78cc1fe1a84f1fd596d0c581f034f312cb1a0c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260653"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523817"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 
@@ -113,7 +113,7 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>Örnek uygulama
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 * Azure geliştirme iş yüküyle Visual Studio 2019. [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) 'ı ücretsiz kullanmaya başlamanızı sağlayabilirsiniz.
 * Azure aboneliği. [Buradan ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db) oluşturabilirsiniz. Alternatif olarak, [deneme Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) Azure aboneliği olmadan ücretsiz olarak bir Cosmos veritabanı hesabı oluşturabilirsiniz.
 * **Sınırsız koleksiyona** sahip Azure Cosmos DB Gremlin API veritabanı. Bu kılavuz, [.NET ile Azure Cosmos DB Gremlin API'yi](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet) kullanmaya başlamayı göstermektedir.
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Bu depo, aşağıdaki dosyalara sahip olan GraphBulkExecutor örneğini içerir:
 
-Dosya|Açıklama
+Dosya|Description
 ---|---
 `App.config`|Uygulama ve veritabanına özgü parametreler burada belirtilir. Hedef veritabanına ve koleksiyonlara bağlanmak için bu dosyanın değiştirilmesi gerekir.
 `Program.cs`| Bu dosya, `DocumentClient` koleksiyon oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme kavramlarını kapsayan mantığı içerir.
@@ -155,6 +155,7 @@ Ayar|Açıklama
 3. Grafik veritabanını sorgulayarak sonuçları değerlendirin. `ShouldCleanupOnFinish` seçeneği true olarak ayarlanırsa veritabanı otomatik olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * NuGet paket ayrıntıları ve toplu yürütücü .NET kitaplığı sürüm notları hakkında bilgi edinmek için bkz. [toplu yürütücü SDK ayrıntıları](sql-api-sdk-bulk-executor-dot-net.md). 
 * Toplu yürütücü kullanımını daha iyi iyileştirmek için [performans ipuçlarına](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) göz atın.
 * Bu ad alanında tanımlanan sınıflar ve metotlar hakkında ayrıntılı bilgi için [BulkExecutor.Graph Başvurusu makalesini](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) gözden geçirin.

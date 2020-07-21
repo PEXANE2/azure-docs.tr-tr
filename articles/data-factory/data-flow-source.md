@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/08/2020
-ms.openlocfilehash: 8ad7cfad0a17608af6b59b712d1f0c2b72b49a61
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 07/16/2020
+ms.openlocfilehash: adbe3ceb72d88c2a6441c04d876d92ac2ab85930
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223661"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522780"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Eşleme veri akışında kaynak dönüştürme 
 
@@ -43,12 +43,12 @@ Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını i
 
 | Bağlayıcı | Biçimlendir | Veri kümesi/satır içi |
 | --------- | ------ | -------------- |
-| [Azure Blob Depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Delta (Önizleme)](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> -/✓ <br> ✓/✓ <br/> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)  <br> [Ortak veri modeli (Önizleme)](format-common-data-model.md#source-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Delta (Önizleme)](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/-<br/> -/✓ <br> ✓/- <br> -/✓ <br> ✓/✓ <br>✓/- <br/> ✓/- |
+| [Azure Blob Depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta (Önizleme)](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br>✓/-<br>-/✓<br>✓/✓<br/>✓/-<br>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties)  | ✓/-<br>✓/-<br>✓/✓<br/>✓/-<br>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Ortak veri modeli (Önizleme)](format-common-data-model.md#source-properties)<br>[Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta (Önizleme)](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br/>-/✓<br>✓/-<br>-/✓<br>✓/✓<br>✓/-<br/>✓/-<br>✓/✓ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
 Bu bağlayıcılara özgü ayarlar, **kaynak seçenekleri** sekmesinde bulunur. bu ayarlarda bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
 
@@ -87,11 +87,11 @@ Kaynağınızın doğru yapılandırıldığını doğrulamak için hata ayıkla
 
 Kaynak seçenekleri sekmesi, seçilen bağlayıcıya ve biçime özgü ayarları içerir. Daha fazla bilgi ve örnek için ilgili [bağlayıcı belgelerine](#supported-sources)başvurun.
 
-## <a name="projection"></a>Yansıtma
+## <a name="projection"></a>Projeksiyon
 
 Veri kümelerinde bulunan şemalar gibi, bir kaynaktaki projeksiyon, kaynak verilerden veri sütunlarını, türlerini ve biçimlerini tanımlar. SQL ve Parquet gibi çoğu veri kümesi türü için bir kaynaktaki projeksiyon, veri kümesinde tanımlanan şemayı yansıtacak şekilde düzeltilir. Kaynak dosyalarınız kesin olarak türsüz (örneğin, Parquet dosyaları yerine düz CSV dosyaları), kaynak dönüşümünde her bir alan için veri türlerini tanımlayabilirsiniz.
 
-![Projeksiyon sekmesindeki ayarlar](media/data-flow/source3.png "Yansıtma")
+![Projeksiyon sekmesindeki ayarlar](media/data-flow/source3.png "Projeksiyon")
 
 Metin dosyanızda tanımlı bir şema yoksa, Data Factory veri türlerini ve çıkarması için veri **türünü Algıla** ' yı seçin. Varsayılan veri biçimlerini otomatik algıla için **varsayılan biçimi tanımla** ' yı seçin.
 
@@ -103,7 +103,7 @@ Sütun veri türlerini bir aşağı akış türetilmiş sütunlu dönüşümde d
 
 **Yansıtma** sekmesindeki **şemayı içeri aktar** düğmesi, bir şema projeksiyonu oluşturmak için etkin bir hata ayıklama kümesi kullanmanıza olanak sağlar. Her kaynak türünde kullanılabilir, burada şemanın içeri aktarılması, veri kümesinde tanımlanan yansıtmayı geçersiz kılacaktır. DataSet nesnesi değiştirilmeyecektir.
 
-Bu, karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümelerinde kullanışlıdır. veri kümesinde şema tanımlarının mevcut olmasını gerektirmez. Satır içi veri kümelerinde, şema kayması olmadan sütun meta verilerine başvurmak için tek yol budur.
+Bu, avro gibi veri kümelerinde yararlıdır ve karmaşık veri yapılarını destekleyen Azure Cosmos DB, şema tanımlarının veri kümesinde mevcut olmasını gerektirmez. Satır içi veri kümelerinde, şema kayması olmadan sütun meta verilerine başvurmak için tek yol budur.
 
 ## <a name="optimize-the-source-transformation"></a>Kaynak dönüşümünü iyileştirme
 

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831594"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520910"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
 
@@ -22,7 +23,7 @@ Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu 
 
 !["Zamanlama-yinelenme" tetikleyicisi ayarlama](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki örneği takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -70,13 +71,13 @@ Mantıksal uygulamanızı dilediğiniz zaman kaydedebilirsiniz, bu nedenle işin
 
       !["Bing Haritalar-rota al" eylemini ayarlama](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      Bu parametreler hakkında daha fazla bilgi için bkz. [Rota hesaplama](https://msdn.microsoft.com/library/ff701717.aspx).
+      Bu parametreler hakkında daha fazla bilgi için bkz. [Rota hesaplama](/bingmaps/rest-services/routes/calculate-a-route).
 
       | Ayar | Değer | Açıklama |
       | ------- | ----- | ----------- |
       | **Güzergah noktası 1** | <*başından*> | Yol başlangıcının kaynağını girin. | 
       | **Güzergah noktası 2** | <*erer*> | Yolun hedefini girin. | 
-      | **Kaçının** | Hiçbiri | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Önleme** | Hiçbiri | Yollarınızın önüne geçmek için, otoyollar, Tolls gibi öğeleri girin. Olası değerler için bkz. [Rota hesaplama](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **İyileştirme** | timeWithTraffic | Rotayı iyileştirmek için bir parametre seçin (uzaklık, geçerli trafik bilgileriyle zaman vb.). Bu örnek şu değeri kullanır: "timeWithTraffic" | 
       | **Mesafe birimi** | <*tercih edin*> | Rotayı hesaplamak için mesafe birimini girin. Bu örnek şu değeri kullanır: "mil" | 
       | **Seyahat modu** | Sürüş | Yönlendirmenize ait seyahat modunu girin. Bu örnekte bu değer "Itici" kullanılmaktadır | 
@@ -387,7 +388,7 @@ Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın
 
 ## <a name="get-support"></a>Destek alma
 
-* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)ziyaret edin.
+* Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

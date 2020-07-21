@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792881"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520724"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps için şema güncelleştirmeleri-1 Haziran 2016
 
@@ -28,7 +29,7 @@ Logic Apps 'i 1 Ağustos 2015 Preview şemasından 1 Haziran 2016 şemasına yü
 
 ## <a name="scopes"></a>Kapsamlar
 
-Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbirini iç içe bir şekilde gruplamanıza olanak sağlayan kapsamları içerir. Örneğin, bir koşul başka bir koşul içerebilir. [Kapsam sözdizimi](../logic-apps/logic-apps-loops-and-scopes.md)hakkında daha fazla bilgi edinin veya bu temel kapsam örneğini gözden geçirin:
+Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbirini iç içe bir şekilde gruplamanıza olanak sağlayan kapsamları içerir. Örneğin, bir koşul başka bir koşul içerebilir. [Kapsam sözdizimi](./logic-apps-control-flow-loops.md)hakkında daha fazla bilgi edinin veya bu temel kapsam örneğini gözden geçirin:
 
 ```json
 {
@@ -54,7 +55,7 @@ Bu şema, eylemleri birlikte gruplandırmanızı sağlayan kapsamları ve birbir
 
 ## <a name="conditions-and-loops-changes"></a>Koşullar ve döngüler değişiklikleri
 
-Önceki şema sürümlerinde, koşullar ve döngüler tek bir eylemle ilişkili parametrelerdi. Bu şema bu kısıtlamayı durdurur, bu nedenle koşullar ve döngüler artık eylem türleri olarak kullanılabilir. [Döngüler ve kapsamlar](../logic-apps/logic-apps-loops-and-scopes.md), [koşullar](../logic-apps/logic-apps-control-flow-conditional-statement.md)hakkında daha fazla bilgi edinin veya bir koşul eylemi gösteren bu temel örneği gözden geçirin:
+Önceki şema sürümlerinde, koşullar ve döngüler tek bir eylemle ilişkili parametrelerdi. Bu şema bu kısıtlamayı durdurur, bu nedenle koşullar ve döngüler artık eylem türleri olarak kullanılabilir. [Döngüler ve kapsamlar](./logic-apps-control-flow-loops.md), [koşullar](../logic-apps/logic-apps-control-flow-conditional-statement.md)hakkında daha fazla bilgi edinin veya bir koşul eylemi gösteren bu temel örneği gözden geçirin:
 
 ```json
 {
@@ -130,7 +131,7 @@ Yükseltilen tanımda araç, doğru ve yanlış dal eylemlerini bir kapsam olara
 
 #### <a name="foreach-loop-with-condition"></a>Condition ile ' foreach ' döngüsü
 
-Yeni şemada, her bir döngü **için** bir öğe başına bir koşul kullanan düzeni çoğaltmak için filtre eylemini kullanabilirsiniz. Ancak, yükselttiğinizde değişiklik otomatik olarak gerçekleşir. Koşul, **her** bir döngüden önce görüntülenen, yalnızca koşulla eşleşen bir öğe dizisi döndüren ve bu diziyi **her eylem için** geçirerek bir filtre eylemi olur. Bir örnek için bkz. [döngüler ve kapsamlar](../logic-apps/logic-apps-loops-and-scopes.md).
+Yeni şemada, her bir döngü **için** bir öğe başına bir koşul kullanan düzeni çoğaltmak için filtre eylemini kullanabilirsiniz. Ancak, yükselttiğinizde değişiklik otomatik olarak gerçekleşir. Koşul, **her** bir döngüden önce görüntülenen, yalnızca koşulla eşleşen bir öğe dizisi döndüren ve bu diziyi **her eylem için** geçirerek bir filtre eylemi olur. Bir örnek için bkz. [döngüler ve kapsamlar](./logic-apps-control-flow-loops.md).
 
 ### <a name="resource-tags"></a>Kaynak etiketleri
 

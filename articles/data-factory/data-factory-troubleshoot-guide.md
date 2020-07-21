@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836167"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522865"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -122,6 +123,14 @@ Kopyalama etkinliğini kullanarak sorun giderme gibi bağlayıcı sorunları iç
 - **Neden**: hata iletileri beklenmeyen küme durumu veya belirli bir etkinlik gibi çeşitli sorunları gösterir. Genellikle, hata iletisi görüntülenmez.
 
 - **Öneri**: yok
+
+### <a name="error-code-3208"></a>Hata kodu: 3208
+
+- **İleti**:`An error occurred while sending the request.`
+
+- **Neden**: Databricks hizmetine ağ bağlantısı kesildi.
+
+- **Öneri**: şirket içinde barındırılan bir tümleştirme çalışma zamanı kullanıyorsanız, tümleştirme çalışma zamanı düğümlerinden ağ bağlantısının güvenilir olduğundan emin olun. Azure Integration Runtime kullanıyorsanız, yeniden deneme genellikle işe yarar.
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 

@@ -2,14 +2,14 @@
 title: Kaynak günlüklerini toplama & analiz etme
 description: Azure Izleyici günlüklerine Azure Container Instances içindeki kapsayıcı gruplarından kaynak günlükleri ve olay verileri gönderme hakkında bilgi edinin
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: danlep
-ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259612"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524021"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı grubu ve örnek günlüğü
 
@@ -38,11 +38,10 @@ Azure Container Instances, Log Analytics çalışma alanınıza veri göndermek 
 Log Analytics çalışma alanı KIMLIĞINI ve birincil anahtarı almak için:
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
-1. **Ayarlar**altında **Gelişmiş ayarlar** ' ı seçin.
-1. **Bağlı kaynaklar**  >  **Windows Server** (veya **Linux sunucuları**) seçin--kimlik ve anahtarlar her ikisi için de aynıdır
+1. **Ayarlar**altında **aracılar yönetimi** ' ni seçin.
 1. Şunları not edin:
-   * **ÇALıŞMA ALANı KIMLIĞI**
-   * **BIRINCIL ANAHTAR**
+   * **Çalışma Alanı Kimliği**
+   * **Birincil anahtar**
 
 ## <a name="create-container-group"></a>Kapsayıcı grubu oluştur
 
@@ -102,7 +101,9 @@ Komutu verdikten kısa bir süre sonra, Azure’dan dağıtım ayrıntılarını
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 
-Kapsayıcı grubunu dağıttıktan sonra, ilk günlük girdilerinin Azure portalında görünmesi birkaç dakika (en fazla 10) alabilir. Tablodaki kapsayıcı grubunun günlüklerini görüntülemek için `ContainerInstanceLog_CL` :
+Kapsayıcı grubunu dağıttıktan sonra, ilk günlük girdilerinin Azure portalında görünmesi birkaç dakika (en fazla 10) alabilir. 
+
+Tablodaki kapsayıcı grubunun günlüklerini görüntülemek için `ContainerInstanceLog_CL` :
 
 1. Azure portalında Log Analytics çalışma alanınıza gidin
 1. **Genel**altında **Günlükler** ' i seçin  

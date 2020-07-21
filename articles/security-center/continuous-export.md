@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519706"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
 
@@ -28,7 +29,6 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 
 
 
-
 ## <a name="availability"></a>Kullanılabilirlik
 
 - Yayın durumu: **genel olarak kullanılabilir**
@@ -36,10 +36,7 @@ Bu araçları kullanarak şunları yapabilirsiniz:
     - Dışarı aktarma yapılandırmasını içeren abonelikte **okuyucu**
     - Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**
     - Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır
-- Larının 
-    - Ticari bulutlar ✔
-    - ✔ US Gov
-    - ✘ Çin gov, diğer gov
+- Bulutlar: ✔ ticari bulutlar ✔ US Gov ✘ Çin gov, diğer gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama
@@ -142,5 +139,5 @@ Bu makalede, önerilerinizi ve uyarılarınızı sürekli dışarı aktarmaları
 
 - [Azure Event Hubs belgeleri](https://docs.microsoft.com/azure/event-hubs/)
 - [Azure Sentinel belgeleri](https://docs.microsoft.com/azure/sentinel/)
-- [Azure Izleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure İzleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
 - [İş akışı otomasyonu ve sürekli dışarı aktarma veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)

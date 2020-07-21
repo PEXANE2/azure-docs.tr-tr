@@ -6,23 +6,24 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708051"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520741"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama
 
-Çalışma zamanı sırasında mantıksal uygulamalarınız hakkında daha zengin hata ayıklama bilgileri almak için [Azure izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ayarlayıp kullanarak çalışma zamanı verileri ve olayları hakkında, olayları tetikleme, çalıştırma olayları ve [Log Analytics çalışma alanında](../azure-monitor/platform/resource-logs-collect-workspace.md)eylem olayları gibi bilgileri kaydedebilir ve kaydedebilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bu bilgileri toplayıp gözden geçirmenize yardımcı olan [günlük sorguları](../azure-monitor/log-query/log-query-overview.md) oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi [diğer Azure hizmetleriyle de kullanabilirsiniz](#extend-data).
+Çalışma zamanı sırasında mantıksal uygulamalarınız hakkında daha zengin hata ayıklama bilgileri almak için [Azure izleyici günlüklerini](../azure-monitor/platform/data-platform-logs.md) ayarlayıp kullanarak çalışma zamanı verileri ve olayları hakkında, olayları tetikleme, çalıştırma olayları ve [Log Analytics çalışma alanında](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)eylem olayları gibi bilgileri kaydedebilir ve kaydedebilirsiniz. [Azure izleyici](../azure-monitor/overview.md) , kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Azure Izleyici günlüklerini kullanarak, bu bilgileri toplayıp gözden geçirmenize yardımcı olan [günlük sorguları](../azure-monitor/log-query/log-query-overview.md) oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi [diğer Azure hizmetleriyle de kullanabilirsiniz](#extend-data).
 
 Mantıksal uygulamanız için günlük kaydı ayarlamak için, [mantıksal uygulamanızı oluştururken Log Analytics etkinleştirebilir](#logging-for-new-logic-apps)veya mevcut Logic Apps için Log Analytics çalışma alanınıza [Logic Apps yönetimi çözümünü yükleyebilirsiniz](#install-management-solution) . Bu çözüm, mantıksal uygulama çalışmalarınız için toplu bilgiler sağlar ve durum, yürütme süresi, yeniden gönderme görevi durumu ve bağıntı kimlikleri gibi belirli ayrıntıları içerir. Daha sonra, bu bilgiler için günlüğe kaydetmeyi etkinleştirmek ve sorgular oluşturmak için [Azure izleyici günlüklerini ayarlayın](#set-up-resource-logs).
 
 Bu makalede, Logic Apps oluştururken, Logic Apps yönetim çözümünün nasıl yükleneceği ve ayarlanacağı ve Azure Izleyici günlükleri için sorguları ayarlama ve oluşturma işlemlerinin nasıl Log Analytics etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Başlamadan önce bir [Log Analytics çalışma alanına](../azure-monitor/platform/resource-logs-collect-workspace.md)ihtiyacınız vardır. Çalışma alanınız yoksa [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin.
+Başlamadan önce bir [Log Analytics çalışma alanına](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)ihtiyacınız vardır. Çalışma alanınız yoksa [Log Analytics çalışma alanı oluşturmayı](../azure-monitor/learn/quick-create-workspace.md)öğrenin.
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -175,15 +176,15 @@ Mantıksal uygulamanız çalıştıktan sonra, Log Analytics çalışma alanın�
 
 Azure Izleyici günlükleriyle birlikte, mantıksal uygulamanızın tanılama verilerini diğer Azure hizmetleriyle nasıl kullanacağınızı genişletebilirsiniz, örneğin:
 
-* [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs-collect-storage.md)
-* [Azure platformu günlüklerini Azure Event Hubs akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [Azure platformu günlüklerini Azure Event Hubs akış](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
 
 Daha sonra [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) ve [Power BI](../azure-monitor/platform/powerbi.md)gibi diğer hizmetlerden telemetri ve analiz kullanarak gerçek zamanlı izleme sağlayabilirsiniz. Örneğin:
 
 * [Event Hubs veri akışı Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Stream Analytics ile akış verilerini çözümleme ve Power BI bir gerçek zamanlı analiz panosu oluşturma](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-Tanılama verilerini göndermek istediğiniz konumlara bağlı olarak, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-create-storage-account.md) veya [bir Azure Olay Hub 'ı oluşturun](../event-hubs/event-hubs-create.md). Daha sonra, bu verileri göndermek istediğiniz hedefleri seçebilirsiniz. Bekletme dönemleri yalnızca bir depolama hesabı kullandığınızda geçerlidir.
+Tanılama verilerini göndermek istediğiniz konumlara bağlı olarak, önce [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md) veya [bir Azure Olay Hub 'ı oluşturun](../event-hubs/event-hubs-create.md). Daha sonra, bu verileri göndermek istediğiniz hedefleri seçebilirsiniz. Bekletme dönemleri yalnızca bir depolama hesabı kullandığınızda geçerlidir.
 
 ![Verileri Azure depolama hesabına veya Olay Hub 'ına gönder](./media/monitor-logic-apps-log-analytics/diagnostics-storage-event-hub-log-analytics.png)
 
@@ -191,7 +192,7 @@ Tanılama verilerini göndermek istediğiniz konumlara bağlı olarak, önce [bi
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Izleyici tanılama olayları
 
-Her tanılama olayının, mantıksal uygulamanız ve bu olay hakkında, örneğin, durum, başlangıç saati, bitiş saati vb. ayrıntıları vardır. Program aracılığıyla izlemeyi, izlemeyi ve günlüğe kaydetmeyi ayarlamak için, bu bilgileri Azure Logic Apps ve [Azure izleyici REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) [için REST API](https://docs.microsoft.com/rest/api/logic) kullanabilirsiniz. Ayrıca, `clientTrackingId` `trackedProperties` içinde görüntülenen ve özelliklerini de kullanabilirsiniz. 
+Her tanılama olayının, mantıksal uygulamanız ve bu olay hakkında, örneğin, durum, başlangıç saati, bitiş saati vb. ayrıntıları vardır. Program aracılığıyla izlemeyi, izlemeyi ve günlüğe kaydetmeyi ayarlamak için, bu bilgileri Azure Logic Apps ve [Azure izleyici REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) [için REST API](/rest/api/logic) kullanabilirsiniz. Ayrıca, `clientTrackingId` `trackedProperties` içinde görüntülenen ve özelliklerini de kullanabilirsiniz. 
 
 * `clientTrackingId`: Sağlanmazsa, Azure bu KIMLIĞI otomatik olarak oluşturur ve mantıksal uygulamadan çağrılan iç içe geçmiş iş akışları dahil olmak üzere bir mantıksal uygulama çalıştırması genelinde olayları otomatik olarak oluşturur. `x-ms-client-tracking-id`Tetikleyici isteğindeki özel kimlik değeri ile bir üstbilgi geçirerek bir tetikleyicide bu kimliği el ile belirtebilirsiniz. İstek tetikleyicisi, HTTP tetikleyicisi veya Web kancası tetikleyicisi kullanabilirsiniz.
 

@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a0d3c344d19d0831dd8525ddf3311e0ce7cd682
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691768"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520826"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps'te B2B kurumsal tümleştirmeleri için tümleştirme hesabı oluşturma ve yönetme
 
@@ -32,13 +33,13 @@ Bu konu başlığı altında, bu görevlerin nasıl gerçekleştirileceği göst
 * Tümleştirme hesabınızı başka bir Azure Kaynak grubuna veya aboneliğine taşıyın.
 * Tümleştirme hesabınızı silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="create-integration-account"></a>Tümleştirme hesabı oluşturma
 
-Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)veya [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create)içindeki adımları izleyerek kullanabilirsiniz.
+Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)veya [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-create)içindeki adımları izleyerek kullanabilirsiniz.
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -56,12 +57,12 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/mod
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Adı** | Evet | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı, yalnızca harf, rakam, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
-   | **Abonelik** | Evet | <*Azure-abonelik-adı*> | Azure aboneliğinizin adı |
-   | **Kaynak grubu** | Evet | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
-   | **Fiyatlandırma Katmanı** | Evet | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps sınırları ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Konum** | Evet | <*Azure-bölge*> | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note**: bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
-   | **Log Analytics** | Hayır | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
+   | **Ad** | Yes | <*Tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı, yalnızca harf, rakam, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
+   | **Abonelik** | Yes | <*Azure-abonelik-adı*> | Azure aboneliğinizin adı |
+   | **Kaynak grubu** | Yes | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
+   | **Fiyatlandırma Katmanı** | Yes | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps sınırları ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Konum** | Yes | <*Azure-bölge*> | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note**: bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Log Analytics** | No | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
    |||||
 
 1. İşiniz bittiğinde **Oluştur**' u seçin.
@@ -129,15 +130,15 @@ Bu değişikliği yapmak için, bu bölümdeki veya [Azure CLI](#upgrade-tier-az
 
 <a name="upgrade-tier-azure-cli"></a>
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
-1. Şimdiye kadar yapmadıysanız, [Azure CLI önkoşullarını yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+1. Şimdiye kadar yapmadıysanız, [Azure CLI önkoşullarını yükleyebilirsiniz](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
-1. Azure portal Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) ortamını açın.
+1. Azure portal Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) ortamını açın.
 
    ![Azure Cloud Shell’i açma](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. Komut isteminde, [ **az Resource** komutunu](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)girin ve istediğiniz `skuName` daha yüksek katmana ayarlayın.
+1. Komut isteminde, [ **az Resource** komutunu](/cli/azure/resource?view=azure-cli-latest#az-resource-update)girin ve istediğiniz `skuName` daha yüksek katmana ayarlayın.
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -153,15 +154,15 @@ Bu değişikliği yapmak için, bu bölümdeki veya [Azure CLI](#upgrade-tier-az
 
 ### <a name="downgrade-pricing-tier"></a>Fiyatlandırma katmanını düşürme
 
-Bu değişikliği yapmak için [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)'yi kullanın.
+Bu değişikliği yapmak için [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)'yi kullanın.
 
-1. Şimdiye kadar yapmadıysanız, [Azure CLI önkoşullarını yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+1. Şimdiye kadar yapmadıysanız, [Azure CLI önkoşullarını yükleyebilirsiniz](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
-1. Azure portal Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) ortamını açın.
+1. Azure portal Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) ortamını açın.
 
    ![Azure Cloud Shell’i açma](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. Komut isteminde, [ **az Resource** komutunu](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) girin ve istediğiniz `skuName` alt katmana ayarlayın.
+1. Komut isteminde, [ **az Resource** komutunu](/cli/azure/resource?view=azure-cli-latest#az-resource-update) girin ve istediğiniz `skuName` alt katmana ayarlayın.
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -221,7 +222,7 @@ Mantıksal uygulamanızı başka bir tümleştirme hesabına bağlamak veya art�
 
 Tümleştirme hesabınızı başka bir Azure Kaynak grubuna veya Azure aboneliğine taşıyabilirsiniz. Kaynakları taşırken Azure yeni kaynak kimlikleri oluşturur, bu nedenle yeni kimlikleri kullandığınızdan emin olun ve taşınan kaynaklarla ilişkili betikleri veya araçları güncelleştirin. Aboneliği değiştirmek istiyorsanız, var olan veya yeni bir kaynak grubu da belirtmeniz gerekir.
 
-Bu görev için, bu bölümdeki veya [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-move)'deki adımları izleyerek Azure Portal kullanabilirsiniz.
+Bu görev için, bu bölümdeki veya [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-move)'deki adımları izleyerek Azure Portal kullanabilirsiniz.
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -253,7 +254,7 @@ Bu görev için, bu bölümdeki veya [Azure CLI](https://docs.microsoft.com/cli/
 
 ## <a name="delete-integration-account"></a>Tümleştirme hesabını silme
 
-Bu görev için, bu bölümdeki adımları izleyerek Azure portal kullanabilirsiniz, [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)veya [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount).
+Bu görev için, bu bölümdeki adımları izleyerek Azure portal kullanabilirsiniz, [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-delete)veya [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount).
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 

@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367593"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523528"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
 
@@ -20,9 +21,19 @@ Bu makale, Azure Cosmos DB Jeo uzamsal işlevselliğe giriş niteliğindedir. Ş
 * SQL ve LINQ 'te Azure Cosmos DB Jeo uzamsal verileri nasıl sorgulayabilirim?
 * Azure Cosmos DB uzamsal dizin oluşturmayı etkinleştirmek veya devre dışı bırakmak Nasıl yaparım??
 
+## <a name="spatial-data-use-cases"></a>Uzamsal veri kullanım örnekleri
+
+Jeo-uzamsal veriler genellikle yakınlık sorguları içerir, örneğin "geçerli konumumun yakınında tüm kahve dükleleri bul". Yaygın kullanım örnekleri şunlardır:
+
+* Belirli bulunan pazarlama girişimlerini yönlendiren coğrafi konum analizi.
+* Perakende ve sağlık gibi birden çok sektörde konum tabanlı kişiselleştirme.
+* Lojistik geliştirmesi, aktarım iyileştirmesi için.
+* Özellikle sigorta ve finans şirketleri için risk analizi.
+* Uyarılar ve bildirimler için durumsal tanıma.
+
 ## <a name="introduction-to-spatial-data"></a>Uzamsal verilere giriş
 
-Uzamsal veriler, alan içindeki nesnelerin konumunu ve şeklini tanımlar. Çoğu uygulamada, bu, dünya ve jeo uzamsal verilerdeki nesnelere karşılık gelir. Uzamsal veriler, bir kişinin konumunu, ilgi çekici veya bir şehrin veya bir Gölü sınırının veya Gölü sınırının temsil edilebilmesi için kullanılabilir. Yaygın kullanım örnekleri genellikle yakınlık sorguları içerir; örneğin, "geçerli konumumun yakınında tüm kafeterleri bul."
+Uzamsal veriler, alan içindeki nesnelerin konumunu ve şeklini tanımlar. Çoğu uygulamada, bu, dünya ve jeo uzamsal verilerdeki nesnelere karşılık gelir. Uzamsal veriler, bir kişinin konumunu, ilgi çekici veya bir şehrin veya bir Gölü sınırının veya Gölü sınırının temsil edilebilmesi için kullanılabilir.
 
 Azure Cosmos DB SQL API 'SI iki uzamsal veri türünü destekler: **geometri** veri türü ve **Coğrafya** veri türü.
 

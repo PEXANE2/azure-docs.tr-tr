@@ -7,12 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84119219"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519751"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -22,14 +23,17 @@ Bir Azure Bilişsel Arama hizmeti oluşturduğunuzda, hizmet ömrü boyunca düz
 
 ## <a name="feature-availability-by-tier"></a>Katmana göre özellik kullanılabilirliği
 
-Neredeyse her özellik ücretsiz dahil olmak üzere her katmanda kullanılabilir, ancak yeterli kapasiteye sahip değilseniz kaynak kullanımı yoğun bir özellik veya iş akışı iyi çalışmayabilir. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
-
 Aşağıdaki tabloda katman ile ilgili özellik kısıtlamaları açıklanmaktadır.
 
 | Özellik | Sınırlamalar |
 |---------|-------------|
 | [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz. |
+| [Yapay zeka zenginleştirme](search-security-manage-encryption-keys.md) | Ücretsiz katmanda çalışır, ancak önerilmez. |
 | [Müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md) | Ücretsiz katmanda kullanılamaz. |
+| [IP güvenlik duvarı erişimi](service-configure-firewall.md) | Ücretsiz katmanda kullanılamaz. |
+| [Azure özel bağlantısı ile tümleştirme](service-create-private-endpoint.md) | Ücretsiz katmanda kullanılamaz. |
+
+Birçok özellik, ücretsiz olarak da dahil olmak üzere her katmanda mevcuttur, ancak yeterli kapasiteye sahip olmadığınız takdirde Kaynak yoğunluklu Özellikler iyi çalışmayabilir. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
 
 ## <a name="tiers-skus"></a>Katmanlar (SKU 'Lar)
 
@@ -56,10 +60,10 @@ Bazı katmanlar belirli iş türleri için iyileştirilmiştir. Örneğin, **Sta
 
 Azure Bilişsel Arama 'de oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret alabilir:
 
-+ En düşük yapılandırmada (bir bölüm ve çoğaltma) 7/24 çalışan hizmetin sabit maliyeti
-+ Ölçeği artırma sırasında artımlı maliyet (çoğaltmalar veya bölümler ekleme)
++ Hizmetin, en az yapılandırmada (bir bölüm ve çoğaltma) 7/24 çalışan maliyeti
++ Kapasite (çoğaltmalar veya bölümler) ekleme
 + Bant genişliği ücretleri (giden veri aktarımı) 
-+ Bilişsel arama (AI zenginleştirme için bilişsel hizmetler iliştirme veya bilgi deposu için Azure depolama 'yı kullanma)
++ AI zenginleştirme gibi eklenti hizmetleri (AI işlemini tanımlayan becerileri içinde bilişsel hizmetler ekleme veya bilgi deposu için Azure depolama 'yı kullanma) veya bir özel sanal ağda arama hizmeti dağıtma
 
 ### <a name="service-costs"></a>Hizmet maliyetleri
 
@@ -71,7 +75,7 @@ Bir arama çözümünün maliyetini tahmin ediyorsanız, fiyatlandırma ve kapas
 
 ### <a name="bandwidth-charges"></a>Bant genişliği ücretleri
 
-[Azure bilişsel arama dizin oluşturucularının](search-indexer-overview.md) kullanılması, hizmetlerinizin konumuna bağlı olarak faturalandırmayı etkileyebilir. Azure Bilişsel Arama hizmetini verileriniz ile aynı bölgede oluşturursanız, veri çıkış ücretlerini tamamen ortadan kaldırabilirsiniz. [Bant genişliği fiyatlandırma sayfasından](https://azure.microsoft.com/pricing/details/bandwidth/)bazı bilgiler aşağıda verilmiştir:
+[Dizin oluşturucularının](search-indexer-overview.md) kullanılması, hizmetlerinizin konumuna bağlı olarak faturalandırmayı etkileyebilir. Azure Bilişsel Arama hizmetini verileriniz ile aynı bölgede oluşturursanız, veri çıkış ücretlerini tamamen ortadan kaldırabilirsiniz. [Bant genişliği fiyatlandırma sayfasından](https://azure.microsoft.com/pricing/details/bandwidth/)bazı bilgiler aşağıda verilmiştir:
 
 + Microsoft, tüm gelen verileri Azure 'daki herhangi bir hizmete veya Azure Bilişsel Arama giden veriler için ücretlendirmez.
 + Çoklu hizmet çözümlerinde, tüm hizmetler aynı bölgedeyse, bu, kablo ile kesişen veriler için ücret alınmaz.
@@ -82,7 +86,7 @@ Hizmetler farklı bölgelerde olduğunda, giden veriler için ücretler uygulan�
 
 [AI zenginleştirme](cognitive-search-concept-intro.md)için, Kullandıkça Öde Işleme için S0 fiyatlandırma katmanında Azure bilişsel arama ile aynı bölgede [faturalandırılabilir bir Azure bilişsel hizmetler kaynağı eklemeyi](cognitive-search-attach-cognitive-services.md)planlamalısınız. Bilişsel hizmetler ekleme ile ilişkili sabit bir maliyet yoktur. Yalnızca ihtiyacınız olan işleme için ödeme yaparsınız.
 
-| Çalışma | Faturalama etkisi |
+| İşlem | Faturalama etkisi |
 |-----------|----------------|
 | Belge çözme, metin ayıklama | Ücretsiz |
 | Belge çözme, görüntü ayıklama | Belgelerinizden ayıklanan görüntü sayısına göre faturalandırılır. Bir [Dizin Oluşturucu yapılandırmasında](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **ımageaction** , görüntü ayıklamayı tetikleyen parametredir. **Imageaction** "none" (varsayılan) olarak ayarlandıysa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Bilişsel Arama için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|
@@ -107,7 +111,7 @@ Fatura ücreti SU başına saatlik olarak belirlenir. Her katmanda aşamalı ola
 
 ## <a name="how-to-manage-costs"></a>Maliyetleri yönetme
 
-Aşağıdaki öneriler, maliyetleri en düşük düzeyde tutmanıza yardımcı olabilir:
+Aşağıdaki öneriler, maliyetleri düşürmenize veya maliyetleri daha etkin bir şekilde yönetmenize yardımcı olabilir:
 
 + Bant genişliği ücretlerini en aza indirmek veya ortadan kaldırmak için, aynı bölgedeki veya mümkün olduğunca az sayıda bölgede tüm kaynakları oluşturun.
 
@@ -140,7 +144,7 @@ Hizmetin kapasitesi ve maliyetleri, el ile çalışmaya devam ediyor. Katmanlar 
 
 İş gereksinimleri genellikle ihtiyaç duyacağınız dizin sayısını belirler. Örneğin, büyük bir belge deposu için genel bir dizine ihtiyacınız bulunabilir. Ya da bölge, uygulama veya iş kolu tabanlı birden çok dizine ihtiyacınız bulunabilir.
 
-Bir dizinin boyutunu öğrenmek için [bir tane oluşturmanız](search-create-index-portal.md)gerekir. Boyutu, içeri aktarılan verileri ve öneri araçları, filtrelemesini ve sıralamayı etkinleştirip etkinleştirmeyeceğinizi, dizin yapılandırmasını temel alır. Boyut üzerindeki yapılandırma etkisi hakkında daha fazla bilgi için bkz. [temel dizin oluşturma ](search-what-is-an-index.md).
+Bir dizinin boyutunu öğrenmek için [bir tane oluşturmanız](search-what-is-an-index.md)gerekir. Boyutu, içeri aktarılan verileri ve öneri araçları, filtrelemesini ve sıralamayı etkinleştirip etkinleştirmeyeceğinizi, dizin yapılandırmasını temel alır.
 
 Tam metin arama için, birincil veri yapısı, kaynak verilerden farklı özelliklere sahip olan [ters bir dizin](https://en.wikipedia.org/wiki/Inverted_index) yapısıdır. Ters bir dizin için boyut ve karmaşıklık, içeriğe göre belirlenir, bu, içinde yer alan veri miktarına göre değildir. Yüksek artıklığa sahip büyük bir veri kaynağı, yüksek oranda değişken içerik içeren küçük bir veri kümesinden daha küçük bir dizin oluşmasına neden olabilir. Bu nedenle, özgün veri kümesinin boyutuna bağlı olarak dizin boyutunu çıkarsmak nadiren mümkündür.
 
@@ -154,7 +158,7 @@ Kapasiteyi tahmin etmek için bir yaklaşım ücretsiz katmanla başlamadır. Ü
 
 + [Ücretsiz bir hizmet oluşturun](search-create-service-portal.md).
 + Küçük, temsili bir veri kümesi hazırlayın.
-+ [Portalda bir başlangıç dizini oluşturun](search-create-index-portal.md) ve boyutunu aklınızda edin. Özellikler ve özniteliklerin depolama üzerinde bir etkisi vardır. Örneğin, öneri araçları (arama-yazma sorguları) ekleme, depolama gereksinimlerini artıracaktır. Aynı veri kümesini kullanarak, Depolama gereksinimlerinin nasıl değişeceğini görmek için, her bir alanda farklı özniteliklere sahip bir dizinin birden çok sürümünü oluşturmayı deneyebilirsiniz. Daha fazla bilgi için [temel dizin oluşturma içindeki "depolama etkileri"](search-what-is-an-index.md#index-size)başlığına bakın.
++ [Portalda bir başlangıç dizini oluşturun](search-get-started-portal.md) ve boyutunu aklınızda edin. Özellikler ve özniteliklerin depolama üzerinde bir etkisi vardır. Örneğin, öneri araçları (arama-yazma sorguları) ekleme, depolama gereksinimlerini artıracaktır. Aynı veri kümesini kullanarak, Depolama gereksinimlerinin nasıl değişeceğini görmek için, her bir alanda farklı özniteliklere sahip bir dizinin birden çok sürümünü oluşturmayı deneyebilirsiniz. Daha fazla bilgi için [temel dizin oluşturma içindeki "depolama etkileri"](search-what-is-an-index.md#index-size)başlığına bakın.
 
 El ile kabaca bir tahmin sayesinde, bu miktarı iki dizin (geliştirme ve üretim) için bütçeye katmanızı ve ardından katmanınızı uygun şekilde seçmenizi sağlayabilirsiniz.
 
@@ -170,7 +174,7 @@ Adanmış kaynaklar, geliştirme sırasında dizin miktarının, boyutunun ve so
     + Büyük ölçekli dizin oluşturma ve sorgu yüklerine sahip olduğunuzu biliyorsanız, S2 veya hatta S3 ' da yüksek bir başlangıç yapın.
     + Depolama ile en Iyileştirilmiş, L1 veya L2 ile başlayın; büyük miktarda veri dizinleniyor ve sorgu yükü görece düşükse, dahili bir iş uygulamasında olduğu gibi.
 
-1. Kaynak verilerin bir dizine nasıl çevrilip dönüştürmediğine yönelik [bir başlangıç dizini oluşturun](search-create-index-portal.md) . Bu, dizin boyutunu tahmin etmenin tek yoludur.
+1. Kaynak verilerin bir dizine nasıl çevrilip dönüştürmediğine yönelik [bir başlangıç dizini oluşturun](search-what-is-an-index.md) . Bu, dizin boyutunu tahmin etmenin tek yoludur.
 
 1. Portalda [depolama, hizmet limitleri, sorgu hacmi ve gecikme süresini izleyin](search-monitor-usage.md) . Portal, saniye başına sorgular, kısıtlanmış sorgular ve arama gecikme süresi gösterir. Bu değerlerin tümü, doğru katmanı seçtiğinizden karar vermenize yardımcı olabilir. 
 

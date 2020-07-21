@@ -10,11 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c3fa56daee5d2dba98fa9fd420524a9b7e4c60ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726120"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521131"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -75,11 +76,11 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 |Dil  |Varsayılan etkin tut aralığı  |Yapılandırılabilir  |
 |---------|---------|---------|
-|Node.js     |   180 saniye      |     Hayır    |
-|Java     |    230 saniye     |     Hayır    |
+|Node.js     |   180 saniye      |     No    |
+|Java     |    230 saniye     |     No    |
 |C     | 240 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 saniye |  [Evet](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 saniye |  Hayır   |
+|Python (v2)   | 60 saniye |  No   |
 
 Aşağıdaki [MQTT belirtiminin](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)IoT Hub, etkin tutma zaman aşımı süresi, istemci canlı tutma değerinin 1,5 katından fazla. Ancak, tüm Azure hizmetleri Azure yük dengeleyici TCP boşta kalma zaman aşımı süresi olan 29,45 (1767 saniye) ile birlikte IoT Hub en fazla sunucu tarafı zaman aşımını 29,45 dakikaya (saniye) sınırlar. 
 
@@ -303,7 +304,21 @@ IoT Hub ileti almak için, bir cihazın `devices/{device_id}/messages/deviceboun
 
 Cihaz, konu filtresiyle temsil edilen cihaza özgü uç noktaya başarıyla abone olana kadar IoT Hub ileti almaz `devices/{device_id}/messages/devicebound/#` . Abonelik kurulduktan sonra cihaz, abonelik zamanından sonra kendisine gönderilen buluttan cihaza iletiler alır. Cihaz **Cleansession** bayrağı **0**olarak ayarlandıysa, abonelik farklı oturumlarda kalıcı hale getirilir. Bu durumda, cihazın bir dahaki sefer **Cleansession 0** ile bağlanması, bağlantısı kesilirken kendisine gönderilen bekleyen iletileri alır. Cihaz, **Cleansession** bayrağını **1** olarak ayarlandıysa, cihaz uç noktasına abone olana kadar IoT Hub ileti almaz.
 
-IoT Hub, **Konu adı** ile `devices/{device_id}/messages/devicebound/` veya `devices/{device_id}/messages/devicebound/{property_bag}` ileti özellikleri olduğunda iletileri teslim eder. `{property_bag}`ileti özelliklerinin URL kodlamalı anahtar/değer çiftlerini içerir. Özellik paketine yalnızca uygulama özellikleri ve Kullanıcı tarafından ayarlanabilir sistem özellikleri (örneğin, **MessageID** veya **bağıntıkimliği**) dahil edilir. Sistem özelliği adlarının öneki vardır **$** , uygulama özellikleri ön ek olmadan özgün özellik adını kullanır.
+IoT Hub, **Konu adı** ile `devices/{device_id}/messages/devicebound/` veya `devices/{device_id}/messages/devicebound/{property_bag}` ileti özellikleri olduğunda iletileri teslim eder. `{property_bag}`ileti özelliklerinin URL kodlamalı anahtar/değer çiftlerini içerir. Özellik paketine yalnızca uygulama özellikleri ve Kullanıcı tarafından ayarlanabilir sistem özellikleri (örneğin, **MessageID** veya **bağıntıkimliği**) dahil edilir. Sistem özelliği adlarının öneki vardır **$** , uygulama özellikleri ön ek olmadan özgün özellik adını kullanır. Özellik paketi biçimi hakkında daha fazla bilgi için bkz. [cihazdan buluta Iletiler gönderme](#sending-device-to-cloud-messages).
+
+Buluttan cihaza iletilerde, özellik çantasındaki değerler aşağıdaki tabloda olarak temsil edilir:
+
+| Özellik değeri | İmle | Description |
+|----|----|----|
+| `null` | `key` | Özellik paketinde yalnızca anahtar görünür |
+| boş dize | `key=` | Bu anahtar, değer olmadan eşittir işareti izler |
+| null olmayan, boş olmayan değer | `key=value` | Ardından bir eşittir işareti ve değeri |
+
+Aşağıdaki örnek, üç uygulama özelliği içeren bir özellik paketini gösterir: **Prop1** değeri ile `null` **Prop2**, boş bir dize (""); ve "bir String" değeri ile **Prop3** .
+
+```mqtt
+/?prop1&prop2=&prop3=a%20string
+```
 
 Bir cihaz uygulaması **QoS 2**ile bir konuya abone olduğunda IoT Hub, **suback** paketinde en fazla QoS düzey 1 ' i verir. Bundan sonra, IoT Hub QoS 1 kullanarak cihaza ileti teslim eder.
 
@@ -331,7 +346,7 @@ Yanıt gövdesi, aşağıdaki yanıt örneğinde gösterildiği gibi, Device iki
 
 Olası durum kodları şunlardır:
 
-|Durum | Açıklama |
+|Durum | Description |
 | ----- | ----------- |
 | 200 | Başarılı |
 | 429 | [IoT Hub azaltma](iot-hub-devguide-quotas-throttling.md) başına çok fazla istek (daraltılmış) |
@@ -424,7 +439,7 @@ MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](http
 
 IoT Hub Dağıtımınızı planlama hakkında daha fazla bilgi edinmek için bkz.:
 
-* [IoT için Azure Sertifikalı cihaz kataloğu](https://catalog.azureiotsolutions.com/)
+* [IoT için Microsoft Azure Sertifikalı cihaz kataloğu](https://catalog.azureiotsolutions.com/)
 * [Ek protokolleri destekleme](iot-hub-protocol-gateway.md)
 * [Event Hubs ile karşılaştırın](iot-hub-compare-event-hubs.md)
 * [Ölçeklendirme, HA ve DR](iot-hub-scaling.md)

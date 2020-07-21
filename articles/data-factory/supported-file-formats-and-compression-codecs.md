@@ -1,21 +1,22 @@
 ---
-title: Azure Data Factory 'de desteklenen dosya biçimleri
-description: Bu konu, Azure Data Factory dosya tabanlı bağlayıcılar tarafından desteklenen dosya biçimlerini ve sıkıştırma kodlarını açıklamaktadır.
+title: Azure Data Factory etkinlikte kopyalama etkinliğine göre desteklenen dosya biçimleri
+description: Bu konu, Azure Data Factory ' de kopyalama etkinliği tarafından desteklenen dosya biçimlerini ve sıkıştırma kodlarını açıklamaktadır.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 07/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 24edeb686136a1264d75e81fd9527feff3d17c48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c044208699bf5bebb6383cfef00bf53b744369d0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84191100"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522457"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory 'de desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri
+# <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Azure Data Factory etkinlikte kopyalama etkinliğine göre desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 *Bu makale aşağıdaki bağlayıcılar için geçerlidir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md),, [HDFS](connector-hdfs.md), [http](connector-http.md)ve [SFTP](connector-sftp.md).*

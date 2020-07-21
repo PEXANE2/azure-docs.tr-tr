@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f5f321beb873ffcd6d120e94f8416a650d0de3cf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023678"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523562"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose uygulamasını Azure Cosmos DB 'a bağlama
 
@@ -22,7 +22,7 @@ Bu öğreticide, Cosmos DB veri depolarken [Mongoose çerçevesinin](https://mon
 
 Cosmos DB, Microsoft 'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve her şey belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -157,7 +157,7 @@ Bu bölümde, MongoDB için Azure Cosmos DB API 'SI ile nasıl elde edilecek anl
             { firstName: "Patrick", gender: "male", grade: 7 }
         ],
         pets: [
-            { givenName: "Blackie" }
+            { givenName: "Buddy" }
         ],
         address: { country: "USA", state: "WA", city: "Seattle" }
     });
@@ -275,7 +275,7 @@ Burada temel bir nesne modeli oluşturuyor, ayırt edici anahtar tanımlıyor ve
            { firstName: "Patrick", gender: "male", grade: 7 }
        ],
        pets: [
-           { givenName: "Blackie" }
+           { givenName: "Buddy" }
        ],
        address: { country: "USA", state: "WA", city: "Seattle" }
       });

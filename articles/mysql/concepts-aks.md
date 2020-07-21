@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537287"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519873"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes hizmetini ve MySQL için Azure veritabanı 'nı bağlama
 
@@ -41,13 +41,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeRe
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
-## <a name="open-service-broker-for-azure"></a>Azure için Açık Hizmet Aracısı 
-[Azure Için açık hizmet Aracısı](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (osba), Azure hizmetlerini doğrudan Kubernetes veya Cloud Foundry üzerinden sağlamanıza olanak tanır. Azure için [açık bir HIZMET ARACıSı API](https://www.openservicebrokerapi.org/) uygulamasıdır.
-
-OSBA ile, MySQL için Azure veritabanı sunucusu oluşturabilir ve Kubernetes 'in yerel dilini kullanarak AKS kümenize bağlayabilirsiniz. Osba [GitHub sayfasında](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md), MySQL Için Azure veritabanı 'nı kullanma hakkında bilgi edinin. 
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Kubernetes hizmet kümesi oluşturma](../aks/kubernetes-walkthrough.md)
+- [Azure Kubernetes Service kümesi oluşturma](../aks/kubernetes-walkthrough.md)
 - [OSBA ve MySQL Için Azure veritabanı 'nı kullanarak bir hele grafiğinden WordPress yüklemeyi](../aks/integrate-azure.md) öğrenin

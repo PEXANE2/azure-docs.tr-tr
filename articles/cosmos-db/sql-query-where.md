@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceffb203ccc2cca1ff6e1c53644cde955c2e0acb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898769"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523511"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB WHERE yan tümcesi
 
@@ -104,7 +105,7 @@ Ayrıca, aşağıdaki örneklerde gösterildiği gibi, sorgularda DEĞIL Birli �
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin, değerine `SELECT * FROM Families f WHERE f.isRegistered` eşit olan özelliği IÇEREN JSON öğesini döndürür `isRegistered` `true` . ,,,,,, Veya gibi herhangi bir değer, `false` `null` `Undefined` `<number>` `<string>` `<object>` `<array>` sonucu sonuçtan dışlar.
+Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin, değerine `SELECT * FROM Families f WHERE f.isRegistered` eşit olan özelliği IÇEREN JSON öğesini döndürür `isRegistered` `true` . ,,,,,, Veya gibi herhangi bir değer, `false` `null` `Undefined` `<number>` `<string>` `<object>` `<array>` sonucu sonuçtan dışlar. Buna ek olarak, `IS_DEFINED` belirli BIR JSON özelliğinin varlığına veya yokluğuna göre sorgulamak için tür denetimi işlevini de kullanabilirsiniz. Örneğin, `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` değeri olmayan herhangi BIR JSON öğesini döndürür `isRegistered` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

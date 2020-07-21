@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0484bc393ac97dc88fed5858f736f01fc41b507a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367402"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521079"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Standart Load Balancer Azure portal kullanarak yük dengelemeyi ve giden kuralları yapılandırma
 
@@ -44,7 +44,7 @@ Bu bölümde, sanal makinelerin yükünü dengelemeye yönelik bir yük dengeley
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Myresourcegroupslb** yazın.|
     | Name                   | **myLoadBalancer**                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
-    | Tür          | **Ortak**seçeneğini belirleyin.                                        |
+    | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin. |
     | Genel IP adresi | **Yeni oluştur**’u seçin. Kullanmak istediğiniz mevcut bir genel IP varsa, **Varolanı kullan**' ı seçin.  Mevcut genel IP **Standart** SKU olmalıdır.  Temel genel IP 'Ler **Standart** SKU yük dengeleyici ile uyumlu değildir.  |
     | Genel IP adresi adı              | Metin kutusuna **Mypublicıp** yazın.|
@@ -81,11 +81,11 @@ Uygulamanızın durumunu izlemek için bir sistem durumu araştırması kullanı
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Myhealtharaştırması**girin. |
+    | Ad | **Myhealtharaştırması**girin. |
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | **80**girin.|
-    | Interval | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için **15** girin. |
-    | Sağlıksız durum eşiği | Bir VM sağlıksız kabul edilmeden önce gerçekleşmesi gereken **sağlıksız eşik** veya arka arkaya araştırma hatası sayısı için **2** ' yi seçin.|
+    | Aralık | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için **15** girin. |
+    | İyi durumda olmayan durum eşiği | Bir VM sağlıksız kabul edilmeden önce gerçekleşmesi gereken **sağlıksız eşik** veya arka arkaya araştırma hatası sayısı için **2** ' yi seçin.|
     | | |
 4. **Tamam**’ı seçin.
 
@@ -108,8 +108,8 @@ Aşağıdaki bölümde, şunu oluşturursunuz:
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Myhttprule**girin. |
-    | Protokol | **TCP**' yi seçin. |
+    | Ad | **Myhttprule**girin. |
+    | Protokol | **TCP**’yi seçin. |
     | Bağlantı noktası | **80**girin.|
     | Arka uç bağlantı noktası | **80**girin. |
     | Arka uç havuzu | **Mybackendpool**öğesini seçin.|
@@ -130,12 +130,12 @@ Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **LoadBalancerFrontEndOutbound**girin. |
+    | Ad | **LoadBalancerFrontEndOutbound**girin. |
     | IP sürümü | **IPv4** seçin. |
-    | IP türü | **IP adresi**seçin.|
-    | Genel IP adresi | **Yeni oluştur**’u seçin. **Genel IP adresi ekle**' de, **Mypublicıpoıb utbağlanacak**' yı girin.  **Tamam**’ı seçin. |
+    | IP türü | **IP adresi** veya **IP öneki**' ni seçin.|
+    | Genel IP adresi | **Yeni oluştur**’u seçin. </br> **Genel IP adresi ekle**' de, **Mypublicıpoıb utbağlanacak**' yı girin. </br> IP öneki kullanılıyorsa, **genel IP öneki ekle**' de, **myPublicIPPrefixOutbound**girin. Genel IP öneki için bir **ön ek boyutu** seçin </br> **Tamam**’ı seçin.  |
 
-4. **Ekle**'yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="create-an-outbound-backend-pool"></a>Giden arka uç havuzu oluşturma
 
@@ -155,16 +155,16 @@ Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Mbir Boundrule**girin. |
+    | Ad | **Mbir Boundrule**girin. |
     | Ön uç IP adresi | **LoadBalancerFrontEndOutbound**öğesini seçin. |
-    | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı * * 15 dakikaya taşıyın.|
+    | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15 dakikaya**taşıyın.|
     | TCP sıfırlaması | **Etkin**'i seçin.|
     | Arka uç havuzu | **Mybackendpooloutbound** seçin |
     | Bağlantı noktası ayırma-> bağlantı noktası ayırma | **Giden bağlantı noktası sayısını el ile** seçin |
     | Giden bağlantı noktaları-> seçin | **Örnek başına bağlantı noktası** seçin |
     | Giden bağlantı noktaları-örnek başına > bağlantı noktaları | **10.000**girin. |
 
-4. **Ekle**'yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

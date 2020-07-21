@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435920"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519771"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Hızlı Başlangıç: Windows bilgisayarları Azure Güvenlik Merkezi’ne ekleme
 Azure aboneliklerinizi ekledikten sonra, Azure dışında çalışan kaynaklar için güvenlik merkezini, örneğin şirket içi veya diğer bulutlarda, Log Analytics aracısını sağlayarak etkinleştirebilirsiniz.
 
 Bu hızlı başlangıçta, Log Analytics aracısının bir Windows bilgisayara nasıl yükleneceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-Bu hızlı başlangıçtaki adımlara geçmeden önce Güvenlik Merkezi’nin Standart fiyatlandırma katmanında olmanız gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi 'nin standardını ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart fiyatlandırma katmanında olmanız gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi 'nin standardını ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Yeni Windows bilgisayar ekleme
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açın.
-2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
+1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi-genel bakış** açılır.
 
    ![Güvenlik Merkezi’ne genel bakış][2]
 

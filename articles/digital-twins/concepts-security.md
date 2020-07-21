@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833173"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522270"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile Azure dijital TWINS güvenliğini sağlama
 
@@ -24,7 +24,7 @@ RBAC, Azure dijital TWINS 'e [Azure Active Directory](../active-directory/fundam
 
 Bir *güvenlik sorumlusu*için, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek izinler vermek için RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
 Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş*olması gerekir. 
 
@@ -58,7 +58,7 @@ Rolleri iki şekilde atayabilirsiniz:
 * Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz. [Azure RBAC kullanarak rol atamaları ekleme veya kaldırma ve Azure Portal](../role-based-access-control/role-assignments-portal.md))
 * bir rol eklemek veya kaldırmak için CLı komutları aracılığıyla
 
-Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için [Azure dijital TWINS öğreticisinde deneyin: uçtan uca bir çözümü bağlama](tutorial-end-to-end.md).
+Bunun nasıl yapılacağı hakkında daha ayrıntılı adımlar için [Azure dijital TWINS öğreticisinde deneyin: *uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>İzin kapsamları
 
@@ -73,6 +73,6 @@ Aşağıdaki listede, Azure dijital TWINS kaynaklarına erişimi kapsama ekleyeb
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bkz. [nasıl yapılır: istemci uygulamasında kimlik doğrulama](how-to-authenticate-client.md)ile ilgili bir örnek istemci uygulamasıyla bu adımlarda izlenecek yol.
+* Bkz. [*nasıl yapılır: istemci uygulamasında kimlik doğrulama*](how-to-authenticate-client.md)ile ilgili bir örnek istemci uygulamasıyla bu adımlarda izlenecek yol.
 
 * [Azure Için RBAC](../role-based-access-control/overview.md)hakkında daha fazla bilgi edinin.

@@ -72,6 +72,10 @@
           href: how-to-manage-routes.md
         - name: Azure Haritalar ile tümleştirme
           href: how-to-integrate-maps.md
+    - name: Sorun giderme
+      items:
+        - name: Bilinen sorunlar
+          href: troubleshoot-known-issues.md
 - name: Başvuru
   items:
     - name: Digital Twins hizmet sınırları

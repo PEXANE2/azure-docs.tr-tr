@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4235e948dba76c0b2926d9965ccd2fcb072cad62
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248484"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520792"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
-Bu makalede, Azure Logic Apps ile otomatik iş akışları oluşturma ve çalıştırmaya yönelik sınırlar ve yapılandırma ayrıntıları açıklanmaktadır. Güç otomatikleştirme için bkz. [Güç otomatikleştirmede sınırlar ve yapılandırma](https://docs.microsoft.com/flow/limits-and-config).
+Bu makalede, Azure Logic Apps ile otomatik iş akışları oluşturma ve çalıştırmaya yönelik sınırlar ve yapılandırma ayrıntıları açıklanmaktadır. Güç otomatikleştirme için bkz. [Güç otomatikleştirmede sınırlar ve yapılandırma](/flow/limits-and-config).
 
 <a name="definition-limits"></a>
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Logic Apps ile otomatik iş akışları oluşturma ve çalı�
 
 Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | İş akışı başına eylemler | 500 | Bu sınırı genişletmek için, gerektiği gibi iç içe geçmiş iş akışları ekleyebilirsiniz. |
 | Eylemler için izin verilen iç içe geçme derinliği | 8 | Bu sınırı genişletmek için, gerektiği gibi iç içe geçmiş iş akışları ekleyebilirsiniz. |
@@ -44,7 +44,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | Çalıştırma süresi | 90 gün | 366 gün | Çalıştırma [**süresi, bir**](#change-duration)çalıştırmanın başlangıç zamanı ve *Başlangıç zamanında* belirtilen sınır iş akışı ayarı kullanılarak hesaplanır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [çalışma süresini değiştirme](#change-duration). |
 | Depolama alanında bekletme Çalıştır | 90 gün | 366 gün | Çalışma [**bekletme, bir**](#change-retention)çalıştırmanın başlangıç saati ve *geçerli zamanda* belirtilen sınır iş akışı ayarı kullanılarak hesaplanır. Bir çalıştırmanın tamamlanmasının veya zaman aşımına uğrayıp, bekletme hesaplamasının her zaman çalıştırmanın başlangıç saatini kullanır. Bir çalıştırmanın süresi *geçerli* saklama sınırını aştığında, çalıştırma işlemi çalışma geçmişinden kaldırılır. <p><p>Bu ayarı değiştirirseniz, önceki sınır ne olursa olsun, geçerli sınır her zaman bekletme hesaplaması için kullanılır. Örneğin, 90 günden 30 güne kadar olan bekletme sınırını azaldıysanız, çalışma geçmişinden önceki 60 gün sonra bir çalıştırma kaldırılır. Bekletme süresini 30 günden 60 güne kadar artırırsanız, 20 gün öncesine ait bir çalıştırma, çalışma geçmişinde başka bir 40 gün boyunca kalır. <p><p>90 gün olan varsayılan sınırı değiştirmek için bkz. [depolamada çalışma bekletmesini değiştirme](#change-retention). |
@@ -81,7 +81,7 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Eşzamanlılık tetikleme | -Eşzamanlılık denetimi kapalıyken sınırsız <p><p>-25 eşzamanlılık denetimi açık olduğunda varsayılan limit, eşzamanlılık etkinleştirildikten sonra geri alamazsınız. Varsayılan değeri 1 ile 50 (dahil) arasında bir değer olarak değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>**Note**: eşzamanlılık açık olduğunda, ayırma sınırı, [toplu işleme dizileri](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Varsayılan sınırı 1 ile 50 (dahil) arasında bir değere değiştirmek için, bkz. [tetikleyici eşzamanlılık sınırını değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) veya [örnekleri sıralı olarak tetikleme](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | En fazla bekleyen çalışma | -Eşzamanlılık olmadan en az 1, en yüksek sayı 50 olur. <p><p>-Eşzamanlılık ile en az bir bekleyen çalışma sayısı 10 ve eşzamanlı çalıştırma sayısıdır (eşzamanlılık tetikleme). En büyük sayıyı, ikisi de dahil olmak üzere 100 olarak değiştirebilirsiniz. | Bu sınır, mantıksal uygulamanız zaten maksimum eşzamanlı örnekleri çalıştırıyorsa çalışmayı bekleyebilecekleri en yüksek mantıksal uygulama örneği sayısını açıklar. <p><p>Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
@@ -99,7 +99,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Çok kiracılı Logic Apps hizmeti
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Eylem: 5 dakika başına yürütme sayısı | 100.000 varsayılan sınırıdır, ancak 300.000 en yüksek limit olur. | Varsayılan sınırı değiştirmek için, bkz. [mantıksal uygulamanızı Önizlemedeki "yüksek aktarım hızı" modunda çalıştırma](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode). Ya da iş yükünü, gereken şekilde birden fazla Logic App üzerinde dağıtabilirsiniz. |
 | Eylem: eşzamanlı giden çağrılar | Yaklaşık 2.500 | Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
@@ -113,7 +113,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 [Premium Ise SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)için üretilen iş sınırları aşağıda verilmiştir:
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 |------|-------|-------|
 | Taban birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Ayda ~ 4.000 eylem yürütmelerinin sayısını sağlar; Bu, ayda ~ 160.000.000 eylem yürütmeleri | |
 | Ölçek birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Her ölçek birimi, dakikada ~ 80.000.000 daha fazla eylem yürütmeleri olan ~ 2.000 ek eylem yürütmeleri sağlayabilir | |
@@ -129,7 +129,7 @@ Normal işlemede Bu limitlerin üzerine gitmek veya bu limitlerin üzerine gideb
 
 ## <a name="gateway-limits"></a>Ağ geçidi limitleri
 
-Azure Logic Apps, ağ geçidi aracılığıyla ekleme ve güncelleştirme dahil olmak üzere yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır.
+Azure Logic Apps, ağ geçidi aracılığıyla ekleme ve güncelleştirme dahil olmak üzere yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](/data-integration/gateway/service-gateway-onprem#considerations)vardır.
 
 <a name="request-limits"></a>
 
@@ -141,7 +141,7 @@ Tek bir giden veya gelen HTTP çağrısının sınırları aşağıda verilmişt
 
 Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası isteklerini dinler, bu nedenle bu işlemler için zaman aşımı Bu limitlerden daha uzun olabilir. Daha fazla bilgi için, belirli bağlayıcının teknik ayrıntılarına ve ayrıca [Iş akışı tetikleyicilerine ve eylemlerine](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)bakın.
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | Giden istek | 120 saniye <br>(2 dakika) | 240 saniye <br>(4 dakika) | Giden istek örnekleri HTTP Tetikleyicileri tarafından yapılan çağrıları içerir. <p><p>**İpucu**: daha uzun süre çalışan işlemler için [zaman uyumsuz yoklama deseninin](../logic-apps/logic-apps-create-api-app.md#async-pattern) veya [until döngüsünün](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)kullanılması gerekir. [Çağrılabilir bir uç noktasına](logic-apps-http-endpoint.md)sahip başka bir mantıksal uygulamayı çağırdığınızda zaman aşımı sınırlarına geçici bir çözüm Için, yerleşik Azure Logic Apps eylemini kullanabilirsiniz. bunun yerine, **yerleşik olarak**bağlayıcı seçicisinde bulabilirsiniz. |
 | Gelen istek | 120 saniye <br>(2 dakika) | 240 saniye <br>(4 dakika) | Gelen istek örnekleri, istek Tetikleyicileri ve Web kancası Tetikleyicileri tarafından alınan çağrıları içerir. <p><p>**Note**: özgün arayanın yanıtı alması için, başka bir mantıksal uygulamayı iç içe geçmiş iş akışı olarak çağırmadığınız sürece yanıttaki tüm adımların sınırı içinde tamamlaması gerekir. Daha fazla bilgi için bkz. [çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md). |
@@ -151,15 +151,15 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 #### <a name="message-size"></a>İleti boyutu
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | İleti boyutu | 100 MB | 200 MB | Bu sınırı geçici olarak çözmek için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). Ancak, bazı bağlayıcılar ve API 'Ler parçalama veya varsayılan sınırı desteklemeyebilir. <p><p>-AS2, x12 ve EDIOLGU gibi bağlayıcılar kendi [B2B ileti sınırlarına](#b2b-protocol-limits)sahiptir. <br>-ISE bağlayıcıları Ise bağlayıcı limitlerini değil ıSE sınırını kullanır. |
-| Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p><p>ISE kullanıyorsanız, Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir; Örneğin, [Azure Blob Storage BAĞLAYıCıSıNıN API başvurusu](https://docs.microsoft.com/connectors/azureblob/). Öbek oluşturma hakkında daha fazla bilgi için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
+| Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p><p>ISE kullanıyorsanız, Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir; Örneğin, [Azure Blob Storage BAĞLAYıCıSıNıN API başvurusu](/connectors/azureblob/). Öbek oluşturma hakkında daha fazla bilgi için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||
 
 #### <a name="character-limits"></a>Karakter sınırları
 
-| Ad | Notlar |
+| Name | Notlar |
 |------|-------|
 | İfade değerlendirme limiti | 131.072 karakter | , `@concat()` , `@base64()` `@string()` İfadeleri bu sınırdan daha uzun olamaz. |
 | İstek URL 'SI karakter sınırı | 16.384 karakter |
@@ -169,7 +169,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 #### <a name="retry-policy"></a>Yeniden deneme ilkesi
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Yeniden deneme sayısı | 90 | Varsayılan değer 4'tür. Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
 | En fazla gecikmede yeniden dene | 1 gün | Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
@@ -180,9 +180,9 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 ### <a name="authentication-limits"></a>Kimlik doğrulama sınırları
 
-Burada, Istek tetikleyicisiyle başlayan ve Istek tetikleyicisine gelen çağrıları yetkilendirmek için [Açık kimlik doğrulaması Azure Active Directory](/azure/active-directory/develop/) (Azure AD OAuth) izin veren bir mantıksal uygulama sınırları verilmiştir:
+Burada, Istek tetikleyicisiyle başlayan ve Istek tetikleyicisine gelen çağrıları yetkilendirmek için [Açık kimlik doğrulaması Azure Active Directory](../active-directory/develop/index.yml) (Azure AD OAuth) izin veren bir mantıksal uygulama sınırları verilmiştir:
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Azure AD yetkilendirme ilkeleri | 5 | |
 | Yetkilendirme ilkesi başına talepler | 10 | |
@@ -194,7 +194,7 @@ Burada, Istek tetikleyicisiyle başlayan ve Istek tetikleyicisine gelen çağrı
 
 Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları aşağıda verilmiştir.
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | Özel bağlayıcı sayısı | Azure aboneliği başına 1000 | Azure aboneliği başına 1000 ||
 | Özel bağlayıcı için dakika başına istek sayısı | her bağlantı için dakikada 500 istek | *özel bağlayıcı* başına dakika başına 2.000 istek ||
@@ -204,7 +204,7 @@ Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları a�
 
 ## <a name="managed-identities"></a>Yönetilen kimlikler
 
-| Ad | Sınır |
+| Name | Sınır |
 |------|-------|
 | Mantıksal uygulama başına yönetilen kimlikler | Sistem tarafından atanan kimlik ya da 1 Kullanıcı tarafından atanan kimlik |
 | Bölge başına bir Azure aboneliğinde yönetilen kimliğe sahip mantıksal uygulama sayısı | 1.000 |
@@ -216,7 +216,7 @@ Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları a�
 
 Her Azure aboneliği şu tümleştirme hesabı sınırlarına sahiptir:
 
-* Azure bölgesi başına bir [ücretsiz katman](../logic-apps/logic-apps-pricing.md#integration-accounts) tümleştirme hesabı. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
+* Azure bölgesi başına bir [ücretsiz katman](../logic-apps/logic-apps-pricing.md#integration-accounts) tümleştirme hesabı. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
 
 * [Geliştirici ve Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'larda her türlü [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) tümleştirme hesapları dahil olmak üzere 1.000 toplam tümleştirme hesabı.
 
@@ -258,7 +258,7 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 | Yapıt | Sınır | Notlar |
 | -------- | ----- | ----- |
 | Bütünleştirilmiş Kod | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
-| Map (XSLT dosyası) | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanın. <p><p>**Note**: bir eşlemenin başarıyla işleyebileceğini veri veya kayıt miktarı, Azure Logic Apps ileti boyutunu ve eylem zaman aşımı sınırlarını temel alır. Örneğin, http [ileti boyutu ve zaman aşımı limitlerini](#request-limits)temel alan bir http eylemi kullanıyorsanız, işlem http zaman aşımı sınırı içinde tamamlanırsa, eşleme http ileti boyutu sınırına kadar verileri işleyebilir. |
+| Map (XSLT dosyası) | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için [Azure Logic Apps REST API haritaları](/rest/api/logic/maps/createorupdate)kullanın. <p><p>**Note**: bir eşlemenin başarıyla işleyebileceğini veri veya kayıt miktarı, Azure Logic Apps ileti boyutunu ve eylem zaman aşımı sınırlarını temel alır. Örneğin, http [ileti boyutu ve zaman aşımı limitlerini](#request-limits)temel alan bir http eylemi kullanıyorsanız, işlem http zaman aşımı sınırı içinde tamamlanırsa, eşleme http ileti boyutu sınırına kadar verileri işleyebilir. |
 | Şema | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
 ||||
 
@@ -280,7 +280,7 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 
 B2B protokolleri için uygulanan ileti boyutu sınırları aşağıda verilmiştir:
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2-100 MB<br>V1-50 MB | v2-200 MB <br>V1-50 MB | Kod çözme ve kodlama için geçerlidir |
 | X12 | 50 MB | 50 MB | Kod çözme ve kodlama için geçerlidir |
@@ -299,7 +299,7 @@ Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam ed
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Güvenlik duvarı yapılandırması: IP adresleri ve hizmet etiketleri
 
-Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, mantıksal uygulamanızın bulunduğu bölgeye göre değişir. Aynı bölgedeki *Tüm* mantıksal uygulamalar aynı IP adresi aralıklarını kullanır. **Http** ve **http + openapı** Istekleri gibi bazı [güç otomatikleştirme](https://docs.microsoft.com/power-automate/getting-started) çağrıları, doğrudan Azure Logic Apps hizmetine giderek burada listelenen IP adreslerinden gelir. Güç otomatikleştirme tarafından kullanılan IP adresleri hakkında daha fazla bilgi için bkz. [Güç otomatikleştirmede sınırlamalar ve yapılandırma](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
+Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, mantıksal uygulamanızın bulunduğu bölgeye göre değişir. Aynı bölgedeki *Tüm* mantıksal uygulamalar aynı IP adresi aralıklarını kullanır. **Http** ve **http + openapı** Istekleri gibi bazı [güç otomatikleştirme](/power-automate/getting-started) çağrıları, doğrudan Azure Logic Apps hizmetine giderek burada listelenen IP adreslerinden gelir. Güç otomatikleştirme tarafından kullanılan IP adresleri hakkında daha fazla bilgi için bkz. [Güç otomatikleştirmede sınırlamalar ve yapılandırma](/flow/limits-and-config#ip-address-configuration).
 
 > [!TIP]
 > Güvenlik kuralları oluştururken karmaşıklığı azaltmaya yardımcı olmak için, bu bölümün ilerleyen kısımlarında açıklanan her bir bölgenin Logic Apps IP adreslerini belirtmek yerine isteğe bağlı olarak [hizmet etiketleri](../virtual-network/service-tags-overview.md)kullanabilirsiniz.
@@ -308,7 +308,7 @@ Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, ma
 > * **Logicappsmanagement**: Logic Apps hizmeti IÇIN gelen IP adresi öneklerini temsil eder.
 > * **Logicapps**: Logic Apps hizmeti IÇIN giden IP adresi öneklerini temsil eder.
 
-* [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)için, [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) ve [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)(örneğin, azure depolama, SQL Server, Office 365 Outlook vb.) için sabit veya ayrılmış IP adresleri kullanılamaz.
+* [Azure Çin 21Vianet](/azure/china/)için, [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) ve [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)(örneğin, azure depolama, SQL Server, Office 365 Outlook vb.) için sabit veya ayrılmış IP adresleri kullanılamaz.
 
 * Mantıksal uygulamalarınızın doğrudan [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)ve diğer http istekleriyle yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre Logic Apps hizmeti tarafından kullanılan tüm [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **gelen** ve **giden** başlıkların altında görüntülenir ve bölgeye göre sıralanır.
 
@@ -341,8 +341,8 @@ Bu bölüm yalnızca Azure Logic Apps hizmeti için gelen IP adreslerini listele
 | Brezilya Güney | 191.235.86.199, 191.235.95.229, 191.235.94.220, 191.234.166.198 |
 | Orta Kanada | 13.88.249.209, 52.233.30.218, 52.233.29.79, 40.85.241.105 |
 | Doğu Kanada | 52.232.129.143, 52.229.125.57, 52.232.133.109, 40.86.202.42 |
-| Orta Hindistan | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
-| Central US | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
+| Central India | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
+| Orta ABD | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
 | Doğu Asya | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
 | Doğu ABD | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
 | Doğu ABD 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
@@ -363,7 +363,7 @@ Bu bölüm yalnızca Azure Logic Apps hizmeti için gelen IP adreslerini listele
 | Güney Birleşik Krallık | 51.140.79.109, 51.140.78.71, 51.140.84.39, 51.140.155.81 |
 | Batı Birleşik Krallık | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | Orta Batı ABD | 52.161.26.172, 52.161.8.128, 52.161.19.82, 13.78.137.247 |
-| West Europe | 13.95.155.53, 52.174.54.218, 52.174.49.6 |
+| Batı Avrupa | 13.95.155.53, 52.174.54.218, 52.174.49.6 |
 | Batı Hindistan | 104.211.164.112, 104.211.165.81, 104.211.164.25, 104.211.157.237 |
 | Batı ABD | 52.160.90.237, 138.91.188.137, 13.91.252.184, 157.56.160.212 |
 | Batı ABD 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67, 13.66.128.68 |
@@ -403,8 +403,8 @@ Bu bölümde Azure Logic Apps hizmeti ve yönetilen bağlayıcılar için giden 
 | Brezilya Güney | 191.235.82.221, 191.235.91.7, 191.234.182.26, 191.237.255.116, 191.234.161.168, 191.234.162.178, 191.234.161.28, 191.234.162.131 | 104.41.59.51, 191.232.38.129, 191.233.203.192 - 191.233.203.207, 191.232.191.157, 191.233.207.160 - 191.233.207.191 |
 | Orta Kanada | 52.233.29.92, 52.228.39.241, 52.228.39.244, 40.85.250.135, 40.85.250.212, 13.71.186.1, 40.85.252.47, 13.71.184.150 | 13.71.170.208 - 13.71.170.223, 52.228.33.76, 52.228.34.13, 52.228.42.205, 52.233.31.197, 52.237.24.126, 52.237.32.212, 13.71.175.160 - 13.71.175.191, 13.71.170.224 - 13.71.170.239 |
 | Doğu Kanada | 52.232.128.155, 52.229.120.45, 52.229.126.25, 40.86.203.228, 40.86.228.93, 40.86.216.241, 40.86.226.149, 40.86.217.241 | 40.69.106.240 - 40.69.106.255, 52.229.120.52, 52.229.120.178, 52.229.123.98, 52.229.126.202, 52.242.35.152, 52.242.30.112, 40.69.111.0 - 40.69.111.31 |
-| Orta Hindistan | 52.172.154.168, 52.172.186.159, 52.172.185.79, 104.211.101.108, 104.211.102.62, 104.211.90.169, 104.211.90.162, 104.211.74.145 | 52.172.211.12, 104.211.81.192 - 104.211.81.207, 104.211.98.164, 52.172.212.129, 20.43.123.0 - 20.43.123.31 |
-| Central US | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164, 52.173.241.27, 40.77.68.110, 13.89.178.64 - 13.89.178.95 |
+| Central India | 52.172.154.168, 52.172.186.159, 52.172.185.79, 104.211.101.108, 104.211.102.62, 104.211.90.169, 104.211.90.162, 104.211.74.145 | 52.172.211.12, 104.211.81.192 - 104.211.81.207, 104.211.98.164, 52.172.212.129, 20.43.123.0 - 20.43.123.31 |
+| Orta ABD | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164, 52.173.241.27, 40.77.68.110, 13.89.178.64 - 13.89.178.95 |
 | Doğu Asya | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79, 23.99.116.181, 52.175.23.169, 13.75.110.131, 104.214.164.0 - 104.214.164.31 |
 | Doğu ABD | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 40.114.40.132, 40.71.249.139, 52.188.157.160, 40.71.15.160 - 40.71.15.191 |
 | Doğu ABD 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100, 104.209.247.23, 52.225.129.144, 40.65.220.25, 40.70.151.96 - 40.70.151.127 |
@@ -425,7 +425,7 @@ Bu bölümde Azure Logic Apps hizmeti ve yönetilen bağlayıcılar için giden 
 | Güney Birleşik Krallık | 51.140.74.14, 51.140.73.85, 51.140.78.44, 51.140.137.190, 51.140.153.135, 51.140.28.225, 51.140.142.28, 51.140.158.24 | 51.140.80.51, 51.140.148.0 - 51.140.148.15, 51.140.61.124, 51.140.74.150, 51.105.77.96 - 51.105.77.127 |
 | Batı Birleşik Krallık | 51.141.54.185, 51.141.45.238, 51.141.47.136, 51.141.114.77, 51.141.112.112, 51.141.113.36, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.124.13, 51.141.52.185, 51.140.212.224 - 51.140.212.255 |
 | Orta Batı ABD | 52.161.27.190, 52.161.18.218, 52.161.9.108, 13.78.151.161, 13.78.137.179, 13.78.148.140, 13.78.129.20, 13.78.141.75 | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 13.78.132.82, 52.161.101.204, 13.71.199.192 - 13.71.199.223 |
-| West Europe | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118, 40.91.208.65, 52.166.78.89, 13.93.36.78, 13.69.71.192 - 13.69.71.223 |
+| Batı Avrupa | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118, 40.91.208.65, 52.166.78.89, 13.93.36.78, 13.69.71.192 - 13.69.71.223 |
 | Batı Hindistan | 104.211.164.80, 104.211.162.205, 104.211.164.136, 104.211.158.127, 104.211.156.153, 104.211.158.123, 104.211.154.59, 104.211.154.7 | 104.211.146.224 - 104.211.146.239, 104.211.161.203, 104.211.189.218, 104.211.189.124, 20.38.128.224 - 20.38.128.255 |
 | Batı ABD | 52.160.92.112, 40.118.244.241, 40.118.241.243, 157.56.162.53, 157.56.167.147, 104.42.49.145, 40.83.164.80, 104.42.38.32 | 40.112.243.160 - 40.112.243.175, 104.40.51.248, 104.42.122.49, 40.112.195.87, 13.93.148.62, 13.86.223.32 - 13.86.223.63 |
 | Batı ABD 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132, 13.66.210.167, 13.66.201.169, 13.77.149.159, 52.175.198.132, 13.66.246.219 | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 52.191.164.250, 13.66.164.219, 13.66.145.96 - 13.66.145.127 |

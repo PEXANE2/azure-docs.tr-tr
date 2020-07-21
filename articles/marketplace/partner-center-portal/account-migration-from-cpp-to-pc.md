@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 24ce0ff2fa5e0b023f2a0d6b92e657299518c044
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120509"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520162"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Hesabınızı Iş Ortağı Merkezi 'ne geçirme
 
@@ -27,7 +27,7 @@ Belirli bir hesap için CPP içinde sahip rolüne sahip bir kullanıcı değilse
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>Hesabınız Iş Ortağı Merkezi 'ne geçirildi
 
-CPP 'dan Iş Ortağı Merkezi 'ne geçişi tamamlanmış tüm hesaplar için Iş Ortağı Merkezi 'nde hesap yönetimi gerçekleşecektir. Kullanıcı ekleme/silme gibi değişiklikler CPP öğesine geri eşitlenir.
+Artık hesabınızı Iş Ortağı Merkezi ' nde yönetirsiniz. Kullanıcı ekleme/silme gibi değişiklikler CPP öğesine geri eşitlenir.
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>Hesabınızı henüz Iş Ortağı Merkezi 'ne geçirmemiş olabilirsiniz
 
@@ -45,7 +45,7 @@ Hesap geçiş işleminizi başlatmak için başlık üzerine tıklayın. Şu ö�
 
 ## <a name="publishers-moving-from-cpp"></a>CPP 'tan taşınan yayımcılar
 
-Hesabınız [bulut iş ortağı portalı (CPP)](https://cloudpartner.azure.com)' den geçirildiyse, yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez. Yeni Iş Ortağı Merkezi hesabınıza e-postada ve mevcut CPP hesabınızda oturum açtıktan sonra bir başlık bildiriminde özelleştirilmiş bir bağlantı almış olmanız gerekir.
+Hesabınız CPP ' den geçirildiyse, yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez. Mevcut CPP hesabınızda oturum açtıktan sonra, e-posta ve başlık bildiriminde yeni Iş Ortağı Merkezi hesabınıza özelleştirilmiş bir bağlantı almış olmanız gerekir.
 
 Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni Iş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, Iş Ortağı Merkezi 'nde [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ziyaret ederek hesabınıza geri dönebilirsiniz.
 

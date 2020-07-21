@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563706"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521658"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Güvenlik Duvarı Yöneticisi ilkesine genel bakış
 
@@ -47,8 +47,8 @@ Devralma ile, üst ilkede yapılan tüm değişiklikler otomatik olarak ilişkil
 Azure Güvenlik Duvarı hem geleneksel kuralları hem de ilkeleri destekler. Aşağıdaki tabloda ilkeleri ve kuralları karşılaştırılmaktadır:
 
 
-|         |İlke  |Kurallar  |
-|---------|---------|---------|
+| Konu | İlke  | Kurallar |
+| ------- | ------- | ----- |
 |Contains     |NAT, ağ, uygulama kuralları, özel DNS ve DNS proxy ayarları, IP grupları ve tehdit zekası ayarları (izin verilenler listesi dahil)|NAT, ağ ve uygulama kuralları, özel DNS ve DNS proxy ayarları, IP grupları ve tehdit zekası ayarları (izin verilenler listesi dahil)|
 |Koru     |Sanal hub 'lar ve sanal ağlar|Yalnızca sanal ağlar|
 |Portal deneyimi     |Güvenlik Duvarı Yöneticisi kullanarak merkezi yönetim|Tek başına güvenlik duvarı deneyimi|
