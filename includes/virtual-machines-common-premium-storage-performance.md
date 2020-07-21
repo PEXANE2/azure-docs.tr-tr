@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526052"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -39,7 +39,7 @@ Aşağıdaki formülde gösterildiği gibi, üretilen iş ve ıOPS arasında bir
 
 Bu nedenle, uygulamanızın gerektirdiği en iyi aktarım hızı ve ıOPS değerlerini belirlenmesi önemlidir. Bir diğerini iyileştirmenize çalıştığınızda, diğeri de etkilenir. Daha sonraki bir bölümde, *uygulama performansını en*iyi duruma GETIRMEK için IOPS ve aktarım hızını iyileştirme hakkında daha fazla ayrıntı inceleyeceğiz.
 
-## <a name="latency"></a>Gecikme Süresi
+## <a name="latency"></a>Gecikme süresi
 
 Gecikme süresi, bir uygulamanın tek bir istek alması, depolama disklerine gönderilmesi ve yanıtı istemciye gönderilmesi için gereken süredir. Bu, ıOPS ve aktarım hızına ek olarak uygulamanın performansına yönelik kritik bir ölçüdür. Premium Depolama diskinin gecikmesi, bir istek için bilgilerin alınması ve uygulamanıza geri iletişim kurması için gereken süredir. Premium Depolama, düşük gecikme süreleri sağlar. Premium diskler, çoğu GÇ işlemi için tek basamaklı milisaniyelik gecikme süreleri sağlamak üzere tasarlanmıştır. Premium Depolama disklerinde ReadOnly ana bilgisayar önbelleğe almayı etkinleştirirseniz çok daha düşük okuma gecikmesi sağlayabilirsiniz. Daha sonra *uygulama performansını En Iyi duruma getirme*bölümünde daha ayrıntılı bilgi Için disk önbelleğe alma ele alınacaktır.
 
@@ -73,7 +73,7 @@ Daha sonra, uygulamanızın ömrü boyunca en fazla performans gereksinimlerini 
 | GÇ istek boyutu | | | |
 | Ortalama üretilen Iş | | | |
 | En çok, Aktarım hızı | | | |
-| Min. Gecikme Süresi | | | |
+| Min. Gecikme süresi | | | |
 | Ortalama gecikme süresi | | | |
 | En çok, CPU | | | |
 | Ortalama CPU | | | |
@@ -92,12 +92,12 @@ Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucusunun 
 
 PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiziksel disk için kullanılabilir. Premium Depolama disklerini bir VM ile kullandığınızda, her bir Premium Depolama diski için fiziksel disk sayaçları ve Premium Depolama disklerinde oluşturulan her birim için mantıksal disk sayaçları bulunur. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamalısınız. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; Aksi takdirde mantıksal disk sayaçlarına bakın. Linux 'ta, Iostat komutu bir CPU ve disk kullanımı raporu oluşturur. Disk kullanımı raporu, fiziksel cihaz veya bölüm başına istatistikler sağlar. Verileri ve günlükleri ayrı disklerde içeren bir veritabanı sunucusuna sahipseniz, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve Bellek sayaçlarını açıklanmaktadır:
 
-| Sayaç | Açıklama | Sin | Iostat |
+| Sayaç | Description | Sin | Iostat |
 | --- | --- | --- | --- |
 | **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
 | **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
 | **İşleme hızı** |Saniye başına diskten okunan veya diske yazılan veri miktarı. |Disk okuma bayt/sn <br> Disk yazma bayt/sn |kB_read/s <br> kB_wrtn/s |
-| **Gecikme Süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |bekleme <br> svctd |
+| **Gecikme süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |bekleme <br> svctd |
 | **GÇ boyutu** |G/ç isteklerinin boyutu depolama disklerinde sorun verir. |Ortalama disk bayt/okuma <br> Ortalama disk bayt/yazma |avgrq-SZ |
 | **Sıra derinliği** |Depolama diskine okunmayı bekleyen bekleyen g/ç isteklerinin sayısı. |Geçerli disk sırası uzunluğu |avgqu-SZ |
 | **Biçimlendir. Bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
@@ -119,7 +119,7 @@ Aşağıdaki tabloda, performans faktörleri ve ıOPS 'yi, aktarım hızını ve
 
 VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ıOPS, aktarım hızı ve gecikme süresi hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../articles/virtual-machines/linux/sizes.md) veya [Windows VM boyutları](../articles/virtual-machines/windows/sizes.md).
 
-| | **IOPS** | **İşleme hızı** | **Gecikme Süresi** |
+| | **IOPS** | **İşleme hızı** | **Gecikme süresi** |
 | --- | --- | --- | --- |
 | **Örnek senaryo** |Saniye başına çok yüksek işlem gerektiren kurumsal OLTP uygulaması. |Büyük miktarlarda veriyi işleyen kurumsal veri ambarı uygulaması. |Çevrimiçi oyun gibi Kullanıcı isteklerine anında yanıt gerektiren neredeyse gerçek zamanlı uygulamalar. |
 | **Performans faktörleri** | &nbsp; | &nbsp; | &nbsp; |
@@ -138,11 +138,11 @@ VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ı
 GÇ isteği, uygulamanızın gerçekleştirmesi için bir giriş/çıkış işlemi birimidir. GÇ isteklerinin yapısını, rastgele veya sıralı, okuma veya yazma, küçük veya büyük olarak tanımlamak, uygulamanızın performans gereksinimlerini belirlemenize yardımcı olur. Uygulama altyapınızı tasarlarken doğru kararları vermek için GÇ isteklerinin doğasını anlamak önemlidir. Mümkün olan en iyi performansı elde etmek için IOs 'un eşit olarak dağıtılması gerekir.
 
 GÇ boyutu, daha önemli faktörlerden biridir. GÇ boyutu, uygulamanız tarafından oluşturulan giriş/çıkış işlemi isteğinin boyutudur. GÇ boyutunun, özellikle de uygulamanın elde edebildii ıOPS ve bant genişliği üzerinde performans üzerinde önemli bir etkisi vardır. Aşağıdaki formül ıOPS, GÇ boyutu ve bant genişliği/aktarım hızı arasındaki ilişkiyi gösterir.  
-    ![](media/premium-storage-performance/image1.png)
+    ![G/ç süresini gösteren bir diyagram eşit aktarım hızına eşit.](media/premium-storage-performance/image1.png)
 
 Bazı uygulamalar, bazı uygulamalar olmasa da bunun GÇ boyutunu değiştirmelerini sağlar. Örneğin, SQL Server en iyi GÇ boyutunu belirler ve bunu değiştirmek için kullanıcılara herhangi bir KBS sağlamaz. Diğer yandan, Oracle, veritabanı [ \_ blok \_ boyutu](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar ve bu, veritabanının g/ç istek boyutunu yapılandırabilirsiniz.
 
-GÇ boyutunu değiştirmenize izin verilmeyen bir uygulama kullanıyorsanız, uygulamanızla en uygun performans KPI 'sini iyileştirmek için bu makaledeki yönergeleri kullanın. Örneğin:
+GÇ boyutunu değiştirmenize izin verilmeyen bir uygulama kullanıyorsanız, uygulamanızla en uygun performans KPI 'sini iyileştirmek için bu makaledeki yönergeleri kullanın. Örneğin,
 
 * OLTP uygulaması milyonlarca küçük ve rastgele GÇ isteği oluşturur. Bu GÇ isteği türlerini işlemek için, uygulama altyapınızı daha yüksek ıOPS 'yi almak üzere tasarlamanız gerekir.  
 * Veri ambarı uygulaması büyük ve sıralı GÇ istekleri üretir. Bu GÇ isteği türlerini işlemek için, uygulama altyapınızı daha yüksek bant genişliği veya aktarım hızı sağlamak üzere tasarlamanız gerekir.
@@ -371,15 +371,15 @@ Genellikle, bir uygulama, bağlı disk başına 8-16 + bekleyen IOs ile maksimum
 
 *En iyi sıra derinliği*  
 Çok yüksek sıra derinliği değerinin de dezavantajları vardır. Sıra derinliği değeri çok yüksekse, uygulama çok yüksek ıOPS 'yi yeniden dener. Uygulamanın yeterli sağlanan ıOPS 'ye sahip kalıcı diskleri yoksa, bu uygulama gecikmeleri olumsuz etkileyebilir. Aşağıdaki formül ıOPS, gecikme süresi ve sıra derinliği arasındaki ilişkiyi gösterir.  
-    ![](media/premium-storage-performance/image6.png)
+    ![& O P S kez gecikme süresini gösteren bir diyagram sıra derinliği.](media/premium-storage-performance/image6.png)
 
 Sıra derinliğini herhangi bir yüksek değere, ancak en uygun değere göre yapılandırmamalısınız. Bu, gecikme sürelerini etkilemeden uygulama için yeterli ıOPS sunabilmelidir. Örneğin, uygulama gecikmesi 1 milisaniyeye ihtiyaç duyuyorsa, 5.000 ıOPS elde etmek için gereken sıra derinliği, QD = 5000 x 0,001 = 5 olur.
 
 *Şeritli birim için sıra derinliği*  
 Şeritli bir birim için, her diskin ayrı ayrı sıra derinliğine sahip olduğu için yüksek miktarda sıra derinliği saklayın. Örneğin, 2. sıra derinliğini veren bir uygulamayı düşünün ve Stripe içinde dört disk vardır. İki GÇ isteği iki diske gider ve kalan iki disk boşalacak. Bu nedenle, tüm disklerin meşgul olması için sıra derinliğini yapılandırın. Aşağıdaki formülde, şeritli birimlerin sıra derinliğini belirleme gösterilmektedir.  
-    ![](media/premium-storage-performance/image7.png)
+    ![Birim başına soru-cevap sayısını gösteren bir diyagram dizili birimin Q D değerine eşittir.](media/premium-storage-performance/image7.png)
 
-## <a name="throttling"></a>Azaltma
+## <a name="throttling"></a>Sınırlama
 
 Azure Premium Depolama, seçtiğiniz VM boyutlarına ve disk boyutlarına göre belirtilen ıOPS ve aktarım hızı sayısını sağlar. Uygulamanız her zaman VM 'nin veya diskin işleyebileceği Bu limitlerin üzerinde ıOPS veya aktarım hızını sorgulamaya çalıştığında, Premium depolama alanı kısıtlayıp azalmasını sağlar. Bu bildirimler uygulamanızdaki performans düşüklüğü biçiminde. Bu, daha yüksek gecikme süresi, düşük aktarım hızı veya düşük ıOPS anlamına gelebilir. Premium Depolama kısıtlama uygulamamılamaz, uygulamanız kaynakları elde edebilen bir süreyi aşarak tamamen başarısız olabilir. Bu nedenle, azaltma nedeniyle performans sorunlarından kaçınmak için her zaman uygulamanız için yeterli kaynak sağlayın. Yukarıdaki VM boyutları ve disk boyutları bölümünde açıklandığımız şeyleri dikkate alın. Sınama, uygulamanızı barındırmak için hangi kaynakların gerekli olacağını belirlemenin en iyi yoludur.
 

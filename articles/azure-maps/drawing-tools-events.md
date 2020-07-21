@@ -1,5 +1,5 @@
 ---
-title: Haritaya Çizim araç çubuğu ekleme | Microsoft Azure haritaları
+title: Çizim aracı olayları | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya Çizim araç çubuğu ekleme hakkında bilgi edineceksiniz.
 author: rbrundritt
 ms.author: richbrun
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5cbd5311c6070f59f8a5953d8b99789ab758c9c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804682"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524616"
 ---
 # <a name="drawing-tool-events"></a>Çizim aracı olayları
 
 Bir haritada çizim araçları kullanılırken, Kullanıcı haritada çizilirken belirli olaylara yanıt vermek yararlıdır. Bu tablo, sınıfının desteklediği tüm olayları listeler `DrawingManager` .
 
-| Olay | Açıklama |
+| Olay | Description |
 |-------|-------------|
 | `drawingchanged` | Bir şekildeki koordinat eklendiğinde veya değiştirildiğinde harekete geçirilir. | 
 | `drawingchanging` | Bir şekil için herhangi bir önizleme koordinatı görüntülenirken tetiklenir. Örneğin, bir koordinat sürüklenirken bu olay birden çok kez harekete geçmeyecektir. | 

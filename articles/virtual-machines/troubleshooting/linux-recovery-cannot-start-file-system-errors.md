@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76842410"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526512"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Dosya sistemi hataları nedeniyle Linux sanal makinesi sorunlarını giderme
 
@@ -74,7 +75,7 @@ Linux 'ta kullanılabilir çeşitli dosya sistemi denetleyicileri vardır. Azure
 
 ## <a name="resolution"></a>Çözüm
 
-Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) kullanarak VM 'yi acil modda önyükleyin ve dosya sistemini onarmak için bu aracı kullanın. Seri konsol VM 'niz üzerinde etkinleştirilmemişse veya işe yaramazsa, bu makaledeki [VM 'yi çevrimdışı ortamda onarma](#repair-the-vm-offline) bölümüne bakın.
+Bu sorunu çözmek için, [seri konsolunu](./serial-console-linux.md) kullanarak VM 'yi acil modda önyükleyin ve dosya sistemini onarmak için bu aracı kullanın. Seri konsol VM 'niz üzerinde etkinleştirilmemişse veya işe yaramazsa, bu makaledeki [VM 'yi çevrimdışı ortamda onarma](#repair-the-vm-offline) bölümüne bakın.
 
 ## <a name="use-the-serial-console"></a>Seri konsolu kullanma
 
@@ -82,8 +83,8 @@ Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virt
 
    > [!Note]
    > Linux için seri konsol kullanma hakkında daha fazla bilgi için bkz.:
-   > * [GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [SysRq ve NMI çağrıları için seri konsol kullan](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma](../linux/serial-console-grub-single-user-mode.md)
+   > * [SysRq ve NMI çağrıları için seri konsol kullan](./serial-console-nmi-sysrq.md)
 
 2. Güç simgesi düğmesini seçin ve ardından VM 'yi yeniden Başlat ' ı seçin. (Seri konsol etkinleştirilmemişse veya başarıyla bağlanmayacaksa, düğmesini görmezsiniz.)
 
@@ -133,7 +134,7 @@ Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virt
 
 ## <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma
 
-1. VM 'nin sistem diskini bir kurtarma VM 'sine (çalışmakta olan herhangi bir Linux VM) veri diski olarak ekleyin. Bunu yapmak için [CLI komutlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM 'sinin kurulumunu otomatik hale getirebilirsiniz.
+1. VM 'nin sistem diskini bir kurtarma VM 'sine (çalışmakta olan herhangi bir Linux VM) veri diski olarak ekleyin. Bunu yapmak için [CLI komutlarını](./troubleshoot-recovery-disks-linux.md) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM 'sinin kurulumunu otomatik hale getirebilirsiniz.
 
 2. Eklediğiniz sistem diskinin sürücü etiketini bulun. Bu durumda, eklediğiniz sistem diskinin etiketinin/dev/sdc1olduğunu varsaytık. VM 'niz için uygun değer ile değiştirin.
 
@@ -177,6 +178,5 @@ Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure CLı 2,0 ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Bir Linux VM 'sine veri diski eklemek için portalı kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
-
+* [Azure CLı 2,0 ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme](./troubleshoot-recovery-disks-linux.md)
+* [Bir Linux VM 'sine veri diski eklemek için portalı kullanma](../linux/attach-disk-portal.md)

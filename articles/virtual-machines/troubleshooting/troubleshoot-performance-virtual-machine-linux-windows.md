@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526665"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux veya Windows üzerinde Azure sanal makine performansı sorunlarını giderme
 
-Bu makalede, performans sorunlarını izleme ve gözlemleyerek sanal makine (VM) genel performans sorunlarını giderme ve oluşabilecek sorunlar için olası düzeltme sağlar. İzlemenin yanı sıra, GÇ/CPU/bellek üzerinde en iyi yöntem önerilerini ve temel sorunları içeren bir rapor sağlayabilen Perfinsıghts ' i de kullanabilirsiniz. Perfinsıghts, Azure 'da hem [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) hem de [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) VM 'leri için kullanılabilir.
+Bu makalede, performans sorunlarını izleme ve gözlemleyerek sanal makine (VM) genel performans sorunlarını giderme ve oluşabilecek sorunlar için olası düzeltme sağlar. İzlemenin yanı sıra, GÇ/CPU/bellek üzerinde en iyi yöntem önerilerini ve temel sorunları içeren bir rapor sağlayabilen Perfinsıghts ' i de kullanabilirsiniz. Perfinsıghts, Azure 'da hem [Windows](./how-to-use-perfinsights.md) hem de [Linux](./how-to-use-perfinsights-linux.md) VM 'leri için kullanılabilir.
 
 Bu makale, performans sorunlarını tanılamak için izlemeyi kullanma konusunda yol gösterecektir.
 
@@ -29,7 +30,7 @@ Bu makale, performans sorunlarını tanılamak için izlemeyi kullanma konusunda
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure ıAAS sanal makine izleme
 
-Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
+Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](../../azure-monitor/learn/tutorial-resource-logs.md). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
 
 ![İzleme etkin değil](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -100,7 +101,7 @@ Kaynak sorunları olup olmadığını belirlemek için verilerinizi gözden geç
 
 ### <a name="cpu-observe-trends"></a>CPU gözleme eğilimleri
 
-Performans sorunlarına baktığınızda eğilimleri göz önünde bulundurun ve sizi etkileyebileceğini anlayın. Sonraki bölümlerde, eğilimleri göstermek için portaldaki Izleme grafiklerini kullanacağız. Aynı zamanda aynı dönemdeki fark kaynağı davranışları arasında çapraz başvuru için de kullanışlı olabilir. Grafikleri özelleştirmek için [Azure izleyici veri platformu](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)' na tıklayın.
+Performans sorunlarına baktığınızda eğilimleri göz önünde bulundurun ve sizi etkileyebileceğini anlayın. Sonraki bölümlerde, eğilimleri göstermek için portaldaki Izleme grafiklerini kullanacağız. Aynı zamanda aynı dönemdeki fark kaynağı davranışları arasında çapraz başvuru için de kullanışlı olabilir. Grafikleri özelleştirmek için [Azure izleyici veri platformu](../../azure-monitor/platform/data-platform.md)' na tıklayın.
 
 Spıking – Spıking, zamanlanmış bir görevle/bilinen bir olayla ilişkili olabilir. Görevi tanımlayabiliyorsanız, görevin gerekli performans düzeyinde çalışıp çalışmadığını saptayın. Performans kabul edilebilir ise, kaynakları artırmanız gerekebilir.
 
@@ -119,7 +120,7 @@ Uygulamanız veya işleminiz doğru performans düzeyinde çalışmıyorsa ve %9
 
 VM 'yi artırdıysanız ve CPU hala %95 çalıştırıyorsa, bu ayarın kabul edilebilir bir düzeyde daha iyi performans veya daha yüksek uygulama performansı sunmakta olup olmadığını saptayın. Aksi takdirde, tek bir application\processdosyasında sorun giderin.
 
-Hangi işlemin CPU tüketimini yönlendirdiğini çözümlemek için [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) Için perfınsıghts kullanabilirsiniz. 
+Hangi işlemin CPU tüketimini yönlendirdiğini çözümlemek için [Windows](./how-to-use-perfinsights.md) veya [Linux](./how-to-use-perfinsights-linux.md) Için perfınsıghts kullanabilirsiniz. 
 
 ## <a name="check-for-memory-bottleneck"></a>Bellek sorunu olup olmadığını denetleyin
 
@@ -150,13 +151,13 @@ Yüksek bellek kullanımını çözümlemek için aşağıdaki görevlerden herh
 
 Daha büyük bir VM 'ye yükseltme yaptıktan sonra, hala %100 ' e kadar sabit bir artış olduğunu fark edersiniz, uygulama/işlem ve sorun giderme işlemlerini belirlemeniz gerekir.
 
-Bellek tüketimini hangi işlemin yönlendirdiğini çözümlemek için [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) Için perfınsıghts kullanabilirsiniz. 
+Bellek tüketimini hangi işlemin yönlendirdiğini çözümlemek için [Windows](./how-to-use-perfinsights.md) veya [Linux](./how-to-use-perfinsights-linux.md) Için perfınsıghts kullanabilirsiniz. 
 
 ## <a name="check-for-disk-bottleneck"></a>Disk sorunu olup olmadığını denetleyin
 
 VM 'nin depolama alt sistemini denetlemek için, VM tanılama 'daki sayaçları ve ayrıca depolama hesabı tanılamayı kullanarak Azure VM düzeyinde tanılamayı denetleyin.
 
-VM 'ye özel sorun giderme işleminde, [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)Için perfinsıghts ' i kullanarak, GÇ 'leri hangi işlemin yönlendirdiğini çözümlemeye yardımcı olabilir. 
+VM 'ye özel sorun giderme işleminde, [Windows](./how-to-use-perfinsights.md) veya [Linux](./how-to-use-perfinsights-linux.md)Için perfinsıghts ' i kullanarak, GÇ 'leri hangi işlemin yönlendirdiğini çözümlemeye yardımcı olabilir. 
 
 Bölgesel olarak yedekli ve Premium Depolama hesapları için sayaçların olmadığı unutulmamalıdır. Bu sayaçlarla ilgili sorunlar için bir destek talebi yükseltin.
 
@@ -207,7 +208,7 @@ IOPS sınırına ulaşıp ulaşmayacağını belirlemek için, depolama hesabı 
 
 Standart depolama alanındaki yeni disk teklifleriyle, ıOPS ve aktarım hızı sınırları farklı olabilir, ancak standart depolama hesabının birikimli limiti 20000 ıOPS 'dir (Premium Depolama, hesap veya disk düzeyinde farklı sınırlara sahiptir). Farklı standart depolama disk teklifleri ve disk başına sınırlar hakkında daha fazla bilgi edinin:
 
-* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](../windows/disk-scalability-targets.md).
 
 #### <a name="references"></a>Başvurular
 
@@ -223,19 +224,19 @@ VM 'ye bağlı VHD 'lerin verimlilik sınırlarını denetleyin. Okuma ve yazma 
 
 Standart depolama alanındaki yeni disk teklifleri farklı ıOPS ve verimlilik sınırlarına sahiptir (ıOPS, VHD başına gösterilmez). Disk okuma ve yazma kullanarak VM düzeyinde VHD 'ler için Birleşik üretilen iş MB/sn 'nin sınırlarına göz atın ve ardından sanal makine depolama yapılandırmanızı, son VHD limitlerini ölçeklendirmek için iyileştirin. Farklı standart depolama disk teklifleri ve disk başına sınırlar hakkında daha fazla bilgi edinin:
 
-* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](../windows/disk-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Yüksek disk kullanımı/gecikme süresi düzeltmesi
 
 Istemci gecikmesini azaltın ve son VHD sınırlarını ölçeklendirmek için VM GÇ 'yi Iyileştirin
 
-* [Azure 'da Windows için GÇ 'yi iyileştirme](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [Azure 'da Windows için GÇ 'yi iyileştirme](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/toc.json)
 
-* [Azure 'da Linux için GÇ 'yi iyileştirme](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [Azure 'da Linux için GÇ 'yi iyileştirme](/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 
 #### <a name="reduce-throttling"></a>Azaltmayı azalt
 
-Depolama hesaplarının üst sınırlarına vurma, VHD 'leri depolama hesapları arasında yeniden dengeleyin. [Azure depolama ölçeklenebilirlik ve performans hedefleri '](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/)ne bakın.
+Depolama hesaplarının üst sınırlarına vurma, VHD 'leri depolama hesapları arasında yeniden dengeleyin. [Azure depolama ölçeklenebilirlik ve performans hedefleri '](../../storage/common/scalability-targets-standard-account.md)ne bakın.
 
 ### <a name="increase-throughput-and-reduce-latency"></a>Aktarım hızını artırma ve gecikme süresini azaltma
 
@@ -243,9 +244,9 @@ Gecikme süresine duyarlı bir uygulamanız varsa ve yüksek verimlilik gerekliy
 
 Bu makaleler, belirli senaryoları tartışır:
 
-* [Azure Premium Depolamaya Geçiş](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Azure Premium Depolamaya Geçiş](../windows/migrate-to-managed-disks.md)
 
-* [SQL Server ile Azure Premium depolama kullanma](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [SQL Server ile Azure Premium depolama kullanma](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

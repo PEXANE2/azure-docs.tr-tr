@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma, amaç-C-konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma, amaç-C-konuşma hizmeti (iOS)'
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'sını kullanarak iOS 'ta hedef C 'de konuşmayı tanımayı öğrenin
+description: Bilişsel hizmetler konuşma SDK 'sını kullanarak bir iOS cihazı için hedef-C ' de konuşmayı tanımak üzere bir uygulama oluşturmayı öğrenin.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c355071c4bbaff5ddb22b2db5fc4a3a0fdb561d4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ba12f258ce7b0db60d3e7343bf12ffc28e8548ab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391562"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524293"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak iOS 'ta hedef C 'de konuşmayı tanıma
 
@@ -23,7 +23,7 @@ Hızlı başlangıçlara [konuşma birleştirme](~/articles/cognitive-services/S
 
 Bu makalede, Azure bilişsel hizmetler konuşma SDK 'sını kullanarak bir mikrofondan veya kaydedilmiş ses içeren bir dosyadan konuşmaya bir şekilde konuşma yapmak için, amaç-C ' d e bir iOS uygulaması oluşturmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 

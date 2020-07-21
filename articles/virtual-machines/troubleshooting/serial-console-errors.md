@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060699"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526444"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure seri konsolu 'nda sık karşılaşılan hatalar
 Azure seri konsolu 'nda bilinen hatalar kümesi vardır. Bu, bunlar için bu hataların ve risk azaltma adımlarının bir listesidir.
@@ -40,7 +40,7 @@ Bu VM için önyükleme tanılama depolama hesabına yazmak için gerekli izinle
 Bu VM için sağlama henüz başarılı değil. Lütfen VM 'nin tam olarak dağıtıldığından emin olun ve seri konsol bağlantısını yeniden deneyin. | VM 'niz veya sanal makine ölçek kümesi hala sağlanıyor olabilir. Bir süre bekleyip yeniden deneyin.
 Web yuvası kapalı veya açılamadı. | Uygulamasına güvenlik duvarı erişimi eklemeniz gerekebilir `*.console.azure.com` . Daha ayrıntılı ancak daha uzun bir yaklaşım, çok düzenli olarak değişen [Microsoft Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)güvenlik duvarı erişimine izin vermedir.
 Seri konsol hiyerarşik ad alanları ile Azure Data Lake Storage 2. kullanılarak depolama hesabıyla birlikte çalışmaz. | Bu, hiyerarşik ad alanları ile ilgili bilinen bir sorundur. Azaltmak için, sanal makinenizin önyükleme tanılama depolama hesabının Azure Data Lake Storage 2. kullanılarak oluşturulmadığından emin olun. Bu seçenek, yalnızca depolama hesabı oluşturma sırasında ayarlanabilir. Bu sorunu azaltmak için Azure Data Lake Storage 2. etkin olmadan ayrı bir önyükleme tanılama depolama hesabı oluşturmanız gerekebilir.
-VM 'ye yönelik seri konsol bağlantısı bir hatayla karşılaştı: ' yasak ' (SubscriptionNotEnabled)-abonelik adı tanımsız, kimlik, \<subscription id> etkin olmayan durum tanımsız | Bu sorun, bir kullanıcının ' de Cloud Shell depolama hesabı oluşturduğu abonelik devre dışı bırakılmışsa meydana gelebilir. Azaltmak için Cloud Shell başlatın ve geçerli abonelikte Cloud Shell için bir yedekleme depolama hesabı yeniden sağlamak için [gerekli adımları gerçekleştirin](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) .
+VM 'ye yönelik seri konsol bağlantısı bir hatayla karşılaştı: ' yasak ' (SubscriptionNotEnabled)-abonelik adı tanımsız, kimlik, \<subscription id> etkin olmayan durum tanımsız | Bu sorun, bir kullanıcının ' de Cloud Shell depolama hesabı oluşturduğu abonelik devre dışı bırakılmışsa meydana gelebilir. Azaltmak için Cloud Shell başlatın ve geçerli abonelikte Cloud Shell için bir yedekleme depolama hesabı yeniden sağlamak için [gerekli adımları gerçekleştirin](../../cloud-shell/persisting-shell-storage.md#unmount-clouddrive-1) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Linux VM 'leri Için Azure seri konsolu](./serial-console-linux.md) hakkında daha fazla bilgi edinin

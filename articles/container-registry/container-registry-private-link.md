@@ -2,26 +2,30 @@
 title: Özel bağlantıyı ayarla
 description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlayın ve yerel bir sanal ağdaki özel bir bağlantı üzerinden erişimi etkinleştirin. Özel bağlantı erişimi, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/26/2020
+ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509347"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523851"
 ---
-# <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Container Registry için Azure özel bağlantısını yapılandırma 
+# <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma
 
-[Azure özel bağlantısı](../private-link/private-link-overview.md)kullanarak kayıt defteri uç noktalarına sanal ağ özel IP adresleri atayarak bir kayıt defterine erişimi sınırlayın. Sanal ağ ve kayıt defteri istemcileri arasındaki ağ trafiği, sanal ağın ve Microsoft omurga ağındaki özel bir bağlantının yanı sıra, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
 
-Ayarları, kayıt defterinin ayrılmış özel IP adresine çözümleyecek şekilde, Özel uç noktanız için [DNS ayarlarını yapılandırabilirsiniz](../private-link/private-endpoint-overview.md#dns-configuration) . DNS yapılandırması ile ağdaki istemciler ve hizmetler, kayıt defterine *myregistry.azurecr.io*gibi tam etki alanı adı ile erişmeye devam edebilir.
+Kayıt noktalarına sanal ağ özel IP adresleri atayarak ve [Azure özel bağlantısı](../private-link/private-link-overview.md)' nı kullanarak bir kayıt defterine erişimi sınırlayın. Sanal ağdaki istemciler ve kayıt defterinin özel uç noktaları arasındaki ağ trafiği, genel İnternet 'ten etkilenme olasılığını ortadan kaldıran sanal ağ ve Microsoft omurga ağındaki özel bir bağlantı ile ilgilidir. Özel bağlantı Ayrıca, [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) özel eşlemesi veya bir [VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md)aracılığıyla Şirket içinden özel kayıt defteri erişimi sunar.
+
+Ayarların kayıt defterinin ayrılmış özel IP adresine çözümlenmesi için, kayıt defterinin özel uç noktaları için [DNS ayarlarını yapılandırabilirsiniz](../private-link/private-endpoint-overview.md#dns-configuration) . DNS yapılandırması ile ağdaki istemciler ve hizmetler, kayıt defterine *myregistry.azurecr.io*gibi tam etki alanı adı ile erişmeye devam edebilir. 
 
 Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry katmanları](container-registry-skus.md).
+
 
 ## <a name="things-to-know"></a>Bilinmesi gerekenler
 
 * Şu anda, Azure Güvenlik Merkezi 'ni kullanan görüntü tarama, özel bir uç noktayla yapılandırılmış bir kayıt defterinde kullanılamaz.
+* Şu anda bir kayıt defteri için en fazla 10 özel uç nokta ayarlanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.6.0 veya sonraki bir sürümü önerilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntüyü [içeri aktarın](container-registry-import-images.md) `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
@@ -219,7 +223,7 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Sanal ağ| Sanal makinenizin dağıtıldığı sanal ağı ( *Mydockervmvnet*gibi) seçin. |
     | Alt ağ | Sanal makinenizin dağıtıldığı *Mydockervmsubnet* gibi bir alt ağ seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. |
+    |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
     |Özel DNS bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
     |||
 1. Kalan kayıt defteri ayarlarını yapılandırın ve ardından **gözden geçir + oluştur**' u seçin.
@@ -262,11 +266,11 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Sanal ağ| Sanal makinenizin dağıtıldığı sanal ağı ( *Mydockervmvnet*gibi) seçin. |
     | Alt ağ | Sanal makinenizin dağıtıldığı *Mydockervmsubnet* gibi bir alt ağ seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. |
+    |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
     |Özel DNS bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
     |||
 
-1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
 Özel uç nokta oluşturulduktan sonra, özel bölgedeki DNS ayarları portaldaki **Özel uç noktalar** sayfasında görünür:
@@ -298,7 +302,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**'i seçin.
+1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Ardından **Kaydet**’i seçin.
 
 ## <a name="validate-private-link-connection"></a>Özel bağlantı bağlantısını doğrula
 

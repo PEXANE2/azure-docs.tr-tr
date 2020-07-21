@@ -4,29 +4,24 @@ description: Bir StorSimple birimini bir yedekleme kümesinden geri yüklemek i�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f0be9609dfd00e8e5dc9919b20fc42ec91ce9eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514556"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527838"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Yedekleme kümesinden StorSimple birimini geri yükleme
 
 ## <a name="overview"></a>Genel Bakış
 
 Bu öğreticide, mevcut bir yedekleme kümesi kullanılarak StorSimple 8000 serisi cihazında gerçekleştirilen geri yükleme işlemi açıklanmaktadır. Bir birimi yerel veya bulut yedeğinden geri yüklemek için **Yedekleme kataloğu** dikey penceresini kullanın. **Yedekleme kataloğu** dikey penceresi, el ile veya otomatik yedeklemeler çekilirken oluşturulan tüm yedekleme kümelerini görüntüler. Bir yedekleme kümesinden geri yükleme işlemi, veriler arka planda indirilirken birimi çevrimiçi duruma getirir.
-
-Geri yüklemeyi başlatmak için alternatif bir yöntem, **cihazlara > [cihazınız] > birimlere**gitmenize olanak sağlar. **Birimler** dikey penceresinde bir birim seçin, bağlam menüsünü çağırmak için sağ tıklayın ve ardından **geri yükle**' yi seçin.
 
 ## <a name="before-you-restore"></a>Geri yüklemeden önce
 

@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd67903223bf4c8c2117f5356bc987665217362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759437"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527039"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure 'da OKD dağıtma
 
@@ -118,7 +119,7 @@ Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle lütfen kulla
 
 
 > [!NOTE] 
-> Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLı sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLı sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Aşağıdaki örnek, OKD kümesini ve tüm ilgili kaynakları myOpenShiftCluster dağıtım adı ile openkaydırıcı Trg adlı bir kaynak grubuna dağıtır. Şablonuna, üzerinde azuredeploy.parameters.jsadlı yerel bir parametre dosyası kullanılırken doğrudan GitHub deposundan başvurulur.
 

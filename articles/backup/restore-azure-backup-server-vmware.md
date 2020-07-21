@@ -3,15 +3,16 @@ title: VMware VM’lerini Azure Backup Sunucusu ile geri yükleme
 description: VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini geri yüklemek için Azure Backup Sunucusu (MABS) kullanın.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212345"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524531"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware sanal makinelerini geri yükleme
 
-Bu makalede, VMware VM kurtarma noktalarını geri yüklemek için Microsoft Azure Backup sunucusu 'nun (MABS) nasıl kullanılacağı açıklanmaktadır. Verileri kurtarmak üzere MABS kullanımına genel bakış için bkz. [Korumalı verileri kurtarma](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server). MABS Yönetici Konsolu, kurtarılabilir verileri bulmanın iki yolu vardır-arama veya tarama. Verileri kurtarırken, verileri veya bir VM 'yi aynı konuma geri yüklemek isteyebilirsiniz. Bu nedenle, MABS, VMware VM yedeklemeleri için üç kurtarma seçeneğini destekler:
+Bu makalede, VMware VM kurtarma noktalarını geri yüklemek için Microsoft Azure Backup sunucusu 'nun (MABS) nasıl kullanılacağı açıklanmaktadır. Verileri kurtarmak üzere MABS kullanımına genel bakış için bkz. [Korumalı verileri kurtarma](./backup-azure-alternate-dpm-server.md). MABS Yönetici Konsolu, kurtarılabilir verileri bulmanın iki yolu vardır-arama veya tarama. Verileri kurtarırken, verileri veya bir VM 'yi aynı konuma geri yüklemek isteyebilirsiniz. Bu nedenle, MABS, VMware VM yedeklemeleri için üç kurtarma seçeneğini destekler:
 
 * **Özgün konum kurtarma (olr)** -KORUMALı bir VM 'yi özgün konumuna geri yüklemek için olr 'yi kullanın. Bir VM 'yi yalnızca bir disk eklenmediyse veya silinmediyse, yedekleme gerçekleşdiğinden, özgün konumuna geri yükleyebilirsiniz. Diskler eklendiyse veya silinirse, alternatif bir konum kurtarma kullanmanız gerekir.
 

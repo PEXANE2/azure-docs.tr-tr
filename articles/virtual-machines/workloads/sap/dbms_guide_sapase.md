@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273214"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525271"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
 
-Bu belgede, Azure IaaS 'de SAP aşırı dağıtıldığında göz önünde bulundurmanız gereken birkaç farklı alanı ele alır. Bu belgeye yönelik bir önkoşul olarak, Azure [sanal makineler Için Azure sanal MAKINELERI DBMS dağıtımı, SAP iş yükü](dbms_guide_general.md) ve diğer kılavuzlar için [Azure belgelerindeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)belge konularını okuduğunuzdan önce göz önünde bulundurmanız gerekir. Bu belgede, Linux ve Windows Işletim sistemlerinde çalışan SAP Ao ele alınmaktadır. Azure 'da desteklenen en düşük sürüm SAP Ade 16.0.02 (sürüm 16 destek paketi 2). En son SAP sürümünü ve en son düzeltme eki düzeyini dağıtmanız önerilir.  En düşük SAP ASE 16.0.03.07 olarak (sürüm 16 destek paketi 3 düzeltme eki düzeyi 7) önerilir.  SAP 'nin en son sürümü [hedeflenen asa 16,0 yayın zamanlaması ve CR liste bilgileri](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)bölümünde bulunabilir.
+Bu belgede, Azure IaaS 'de SAP aşırı dağıtıldığında göz önünde bulundurmanız gereken birkaç farklı alanı ele alır. Bu belgeye yönelik bir önkoşul olarak, Azure [sanal makineler Için Azure sanal MAKINELERI DBMS dağıtımı, SAP iş yükü](dbms_guide_general.md) ve diğer kılavuzlar için [Azure belgelerindeki](./get-started.md)belge konularını okuduğunuzdan önce göz önünde bulundurmanız gerekir. Bu belgede, Linux ve Windows Işletim sistemlerinde çalışan SAP Ao ele alınmaktadır. Azure 'da desteklenen en düşük sürüm SAP Ade 16.0.02 (sürüm 16 destek paketi 2). En son SAP sürümünü ve en son düzeltme eki düzeyini dağıtmanız önerilir.  En düşük SAP ASE 16.0.03.07 olarak (sürüm 16 destek paketi 3 düzeltme eki düzeyi 7) önerilir.  SAP 'nin en son sürümü [hedeflenen asa 16,0 yayın zamanlaması ve CR liste bilgileri](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)bölümünde bulunabilir.
 
 SAP uygulamaları veya yükleme medyası konumuyla sürüm desteği hakkında ek bilgiler, bu konumlardaki SAP ürün kullanılabilirliği matrisinin yanı sıra bulunur:
 
@@ -58,7 +59,7 @@ Sayfa boyutu genellikle 2048 KB 'tır. Ayrıntılar için bkz. [Linux 'ta çok b
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>SAP ate dağıtımları için VM ve disk yapısına yönelik öneriler
 
-SAP NetWeaver uygulamaları için SAP Ao, SAP [destek notunda](https://launchpad.support.sap.com/#/notes/1928533) listelenen herhangi bir sanal makine türü için desteklenir #1928533 orta büyüklükte SAP Ao veritabanı sunucuları için kullanılan tipik VM türleri Esv3 içerir.  Büyük multi-terabaytlık veritabanları, d serisi VM türlerinden faydalanabilir. SAP Ao işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. SAP ASE 'nin günlük yazma Işlemlerini gerçekleştirme yöntemi nedeniyle Yazma Hızlandırıcısı, SAP ASE ile dikkatle test edilmelidir.  [Sap destek notuna #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) inceleyin ve bir performans testi çalıştırmayı deneyin.  
+SAP NetWeaver uygulamaları için SAP Ao, SAP [destek notunda](https://launchpad.support.sap.com/#/notes/1928533) listelenen herhangi bir sanal makine türü için desteklenir #1928533 orta büyüklükte SAP Ao veritabanı sunucuları için kullanılan tipik VM türleri Esv3 içerir.  Büyük multi-terabaytlık veritabanları, d serisi VM türlerinden faydalanabilir. SAP Ao işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. SAP ASE 'nin günlük yazma Işlemlerini gerçekleştirme yöntemi nedeniyle Yazma Hızlandırıcısı, SAP ASE ile dikkatle test edilmelidir.  [Sap destek notuna #2816580](../../windows/how-to-enable-write-accelerator.md) inceleyin ve bir performans testi çalıştırmayı deneyin.  
 Yazma Hızlandırıcısı yalnızca işlem günlüğü diski için tasarlanmıştır. Disk düzeyi önbelleği NONE olarak ayarlanmalıdır. Azure Yazma Hızlandırıcısı diğer DBMS ile benzer iyileştirmeler göstermezse şaşırmayın. SAP ATıCı 'in işlem günlüğüne yazdığı yönteme bağlı olarak, Azure Yazma Hızlandırıcısı tarafından hiçbir hızlandırma olmaması olabilir.
 Veri cihazları ve günlük cihazları için ayrı diskler önerilir.  Sistem veritabanları sybgüvenlik ve `saptools` adanmış diskler gerektirmez ve SAP veritabanı verilerini ve günlük cihazlarını içeren disklere yerleştirilebilecek 
 
@@ -70,7 +71,7 @@ SAP ASE, aksi belirtilmedikçe verileri disk depolama cihazlarına sırayla yaza
 Otomatik veritabanı genişletmesinin, SAP Uyarlamalı sunucu Enterprise ve [sap desteği not#1815695](https://launchpad.support.sap.com/#/notes/1815695) [otomatik veritabanı alanı genişletmeyi yapılandırma](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) makalesinde açıklandığı şekilde yapılandırılması önerilir. 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure sanal makinesi, disk ve dosya sistemi yapılandırmalarında örnek SAP Ao 
-Aşağıdaki şablonlar hem Linux hem de Windows için örnek yapılandırma gösterir. Sanal makine ve disk yapılandırmasını onaylamadan önce, bireysel VM 'nin ağ ve depolama bant genişliği kotalarının iş gereksinimini karşılamak için yeterli olduğundan emin olun. Ayrıca, farklı Azure VM türlerinin, VM 'ye eklenebilecek farklı disk sayısı üst sınırına sahip olduğunu aklınızda bulundurun. Örneğin, bir E4s_v3 VM 48 MB/sn depolama GÇ işleme sınırına sahiptir. Veritabanı yedekleme etkinliği için gereken depolama aktarım hızı 48 MB/sn 'den fazla talep isterse, daha fazla depolama bant genişliği işleme içeren daha büyük bir VM türü kaçınılmaz. Azure depolama 'yı yapılandırırken, özellikle de [Azure Premium Depolama](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance) ile GB 'lık kapasite başına aktarım hızı ve IOPS 'nin değişiklik olduğunu göz önünde bulundurmanız gerekir. Bu konuda daha fazla bilgi için bkz. [Azure 'da disk türleri kullanılabilir](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types). Belirli Azure VM türleri için kotalar, [bellek için iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/sizes-memory) ve bu makaleye bağlı makalelerde belgelenmiştir. 
+Aşağıdaki şablonlar hem Linux hem de Windows için örnek yapılandırma gösterir. Sanal makine ve disk yapılandırmasını onaylamadan önce, bireysel VM 'nin ağ ve depolama bant genişliği kotalarının iş gereksinimini karşılamak için yeterli olduğundan emin olun. Ayrıca, farklı Azure VM türlerinin, VM 'ye eklenebilecek farklı disk sayısı üst sınırına sahip olduğunu aklınızda bulundurun. Örneğin, bir E4s_v3 VM 48 MB/sn depolama GÇ işleme sınırına sahiptir. Veritabanı yedekleme etkinliği için gereken depolama aktarım hızı 48 MB/sn 'den fazla talep isterse, daha fazla depolama bant genişliği işleme içeren daha büyük bir VM türü kaçınılmaz. Azure depolama 'yı yapılandırırken, özellikle de [Azure Premium Depolama](../../windows/premium-storage-performance.md) ile GB 'lık kapasite başına aktarım hızı ve IOPS 'nin değişiklik olduğunu göz önünde bulundurmanız gerekir. Bu konuda daha fazla bilgi için bkz. [Azure 'da disk türleri kullanılabilir](../../windows/disks-types.md). Belirli Azure VM türleri için kotalar, [bellek için iyileştirilmiş sanal makine boyutları](../../sizes-memory.md) ve bu makaleye bağlı makalelerde belgelenmiştir. 
 
 > [!NOTE]
 >  Bir DBMS sistemi Şirket içinden Azure 'a taşınırsa, sanal makine üzerinde izleme yapmanız ve CPU, bellek, ıOPS ve depolama aktarım hızını değerlendirmek önerilir. Yukarıda bahsedilen makalelerde belgelenen VM kota limitleriyle gözlemlenen en yüksek değerleri karşılaştırın
@@ -212,7 +213,7 @@ SAP yazılım sağlama Yöneticisi (SWPM), yükleme sırasında veritabanını �
 - X-büyük sistemler için UltraDisk kullanmayı düşünün 
 - `saptune`LINUX işletim sisteminde SAP-Ao çalıştırma 
 - Veritabanını DB şifrelemesiyle güvenli hale getirme-anahtarları Azure Key Vault el ile depolayın 
-- [Azure 'Da SAP 'yi doldurun denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) 
+- [Azure 'Da SAP 'yi doldurun denetim listesi](./sap-deployment-checklist.md) 
 - Günlük yedeklemesini ve tam yedeklemeyi yapılandırma 
 - HA/DR testi, yedekleme ve geri yükleme ve stres & toplu testi gerçekleştirme 
 - Otomatik veritabanı uzantısının çalıştığını Onayla 
@@ -309,5 +310,4 @@ Aylık bülten, [sap destek notunda yayımlanır #2381575](https://launchpad.sup
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure 'Da SAP iş yükleri makalesine bakın: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-
+[Azure 'Da SAP iş yükleri makalesine bakın: planlama ve dağıtım denetim listesi](./sap-deployment-checklist.md)

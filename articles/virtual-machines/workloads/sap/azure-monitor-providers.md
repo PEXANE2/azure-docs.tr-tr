@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: a7e44046de3eccab83e8315e6adea150a146e660
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 267d600270e834cf4f1f077452fda7459fac3029
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964201"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525458"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP Solutions sağlayıcıları için Azure izleyici (Önizleme)
 
@@ -82,4 +82,4 @@ Microsoft SQL Server sağlayıcıyı yapılandırmak için, SAP sistem KIMLIĞI,
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - SAP Çözümleri için ilk Azure Izleyici kaynağını oluşturun.
-- SAP Çözümleri için Azure Izleyici hakkında sorularınız mı var? [SSS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-faq) bölümüne bakın
+- SAP Çözümleri için Azure Izleyici hakkında sorularınız mı var? [SSS](./azure-monitor-faq.md) bölümüne bakın

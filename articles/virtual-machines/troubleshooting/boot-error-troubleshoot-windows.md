@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678775"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526767"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM kapatma, "yeniden başlatılıyor", "kapatılıyor" veya "Hizmetleri durduruluyor" üzerine takılmış
 
@@ -24,7 +25,7 @@ Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) yeniden baş
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde "yeniden başlatılıyor", "kapatılıyor" veya "Hizmetleri durduruluyor" iletisini görüntülüyor olabilirsiniz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde "yeniden başlatılıyor", "kapatılıyor" veya "Hizmetleri durduruluyor" iletisini görüntülüyor olabilirsiniz.
 
 ![Hizmet ekranlarını yeniden başlatma, kapatma ve durdurma](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -40,7 +41,7 @@ Windows, sistem bakım işlemlerini gerçekleştirmek ve güncelleştirmeler, ro
 
 2. Çalışan VM 'den gerekli olan dosyaları içeren diski ayırın ve diski bozuk sanal makinenize bağlayın. Bu diski **yardımcı program diskine**arıyoruz.
 
-Aşağıdaki adımları gerçekleştirmek için [seri konsol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) kullanın:
+Aşağıdaki adımları gerçekleştirmek için [seri konsol](./serial-console-windows.md) kullanın:
 
 1. Bir yönetim PowerShell açın ve durdurma sırasında yanıt vermeyi durduran hizmeti kontrol edin.
 
@@ -80,13 +81,13 @@ Değişikliklerin işlenmesi beklendikten sonra Sorun çözümlenmezse, bir bell
 
 **İşletim sistemi diskini bir kurtarma VM 'sine iliştirme**
 
-1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
 
-2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](./troubleshoot-recovery-disks-portal-windows.md).
 
 3. Kurtarma sanal makinesine uzak masaüstü.
 
-4. İşletim sistemi diski şifrelenirse, bir sonraki adıma geçmeden önce şifrelemeyi kapatmanız gerekir. Daha fazla bilgi için bkz. [önyükleme YAPıLABILEN VM 'de şifrelenmiş işletim sistemi diskinin şifresini çözme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
+4. İşletim sistemi diski şifrelenirse, bir sonraki adıma geçmeden önce şifrelemeyi kapatmanız gerekir. Daha fazla bilgi için bkz. [önyükleme YAPıLABILEN VM 'de şifrelenmiş işletim sistemi diskinin şifresini çözme](./troubleshoot-bitlocker-boot-error.md#solution).
 
 **Döküm dosyasını bul ve bir destek bileti gönder**
 
@@ -141,7 +142,7 @@ Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki beti
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden bağlayın](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+5. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden bağlayın](./troubleshoot-recovery-disks-portal-windows.md).
 
 6. VM 'yi başlatın ve seri konsoluna erişin.
 

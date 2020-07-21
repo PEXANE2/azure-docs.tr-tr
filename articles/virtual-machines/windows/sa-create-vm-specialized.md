@@ -9,11 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dc671e3aab7568da61e5dab870967d7fd2bb90f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232820"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525747"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Depolama hesabındaki özelleştirilmiş bir VHD 'den VM oluşturma
 
@@ -63,7 +64,7 @@ Bir depolama hesabı oluşturmanız gerekiyorsa, şu adımları izleyin:
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bu kaynak grubunda **mystorageaccount** adlı bir depolama hesabı oluşturun:
+2. [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bu kaynak grubunda **mystorageaccount** adlı bir depolama hesabı oluşturun:
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -71,7 +72,7 @@ Bir depolama hesabı oluşturmanız gerekiyorsa, şu adımları izleyin:
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>VHD’yi depolama hesabınıza yükleme
-Görüntüyü Depolama hesabınızdaki bir kapsayıcıya yüklemek için [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 'ini kullanın. Bu örnek, **Myvhd. vhd** dosyasını kaynağından `"C:\Users\Public\Documents\Virtual hard disks\"` **myresourcegroup** kaynak grubundaki **mystorageaccount** adlı bir depolama hesabına yükler. Dosya **myContainer** adlı kapsayıcıya yerleştirilecek ve yeni dosya adı **Myuploadedvhd. vhd**olacaktır.
+Görüntüyü Depolama hesabınızdaki bir kapsayıcıya yüklemek için [Add-AzVhd](/powershell/module/az.compute/add-azvhd) cmdlet 'ini kullanın. Bu örnek, **Myvhd. vhd** dosyasını kaynağından `"C:\Users\Public\Documents\Virtual hard disks\"` **myresourcegroup** kaynak grubundaki **mystorageaccount** adlı bir depolama hesabına yükler. Dosya **myContainer** adlı kapsayıcıya yerleştirilecek ve yeni dosya adı **Myuploadedvhd. vhd**olacaktır.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -105,14 +106,14 @@ Yeni, yinelenen bir VM oluştururken kullanmak üzere bir VHD 'yi başka bir dep
 ### <a name="before-you-begin"></a>Başlamadan önce
 Şunları yaptığınızdan emin olun:
 
-* **Kaynak ve hedef depolama hesapları**hakkında bilgi sahibi. Kaynak VM için, depolama hesabı ve kapsayıcı adlarına sahip olmanız gerekir. Genellikle kapsayıcı adı **VHD**'ler olur. Ayrıca bir hedef depolama hesabınız olması gerekir. Henüz bir hesabınız yoksa, portalı (**tüm hizmetler** > depolama hesapları > Ekle) veya [New-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bir tane oluşturabilirsiniz. 
-* [AzCopy aracını](../../storage/common/storage-use-azcopy.md)indirmiş ve yükledi. 
+* **Kaynak ve hedef depolama hesapları**hakkında bilgi sahibi. Kaynak VM için, depolama hesabı ve kapsayıcı adlarına sahip olmanız gerekir. Genellikle kapsayıcı adı **VHD**'ler olur. Ayrıca bir hedef depolama hesabınız olması gerekir. Henüz bir hesabınız yoksa, portalı (**tüm hizmetler** > depolama hesapları > Ekle) veya [New-azstorageaccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bir tane oluşturabilirsiniz. 
+* [AzCopy aracını](../../storage/common/storage-use-azcopy-v10.md)indirmiş ve yükledi. 
 
 ### <a name="deallocate-the-vm"></a>VM 'yi serbest bırakma
 Kopyalanacak VHD 'yi serbest bırakma VM 'yi serbest bırakın. 
 
 * **Portal**: **sanal makineler**  >  **myvm** > Durdur ' a tıklayın
-* **PowerShell**: **myresourcegroup**kaynak grubundaki **myvm** adlı VM 'yi durdurmak (serbest bırakmak) için [stop-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) kullanın.
+* **PowerShell**: **myresourcegroup**kaynak grubundaki **myvm** adlı VM 'yi durdurmak (serbest bırakmak) için [stop-azvm](/powershell/module/az.compute/stop-azvm) kullanın.
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -126,17 +127,17 @@ Kaynak ve hedef depolama hesaplarının URL 'Lerine ihtiyacınız vardır. URL '
 URL 'YI almak için Azure portal veya Azure PowerShell kullanabilirsiniz:
 
 * **Portal**: **>** **tüm hizmetler**  >  **depolama hesapları**  >  *depolama hesabı*  >  **Blobları** ' na tıklayın ve kaynak VHD dosyanız büyük olasılıkla **VHD** kapsayıcısında bulunur. Kapsayıcının **Özellikler** ' e tıklayın ve **URL**etiketli metni kopyalayın. Kaynak ve hedef kapsayıcıların URL 'Lerine ihtiyacınız olacaktır. 
-* **PowerShell**: **myresourcegroup**kaynak GRUBUNDAKI **myvm** adlı VM 'Nin bilgilerini almak için [Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' i kullanın. Sonuçlarda, **VHD URI 'si**için **depolama profili** bölümüne bakın. URI 'nin ilk bölümü kapsayıcının URL 'sidir ve son parça VM 'nin işletim sistemi VHD adıdır.
+* **PowerShell**: **myresourcegroup**kaynak GRUBUNDAKI **myvm** adlı VM 'Nin bilgilerini almak için [Get-azvm](/powershell/module/az.compute/get-azvm) ' i kullanın. Sonuçlarda, **VHD URI 'si**için **depolama profili** bölümüne bakın. URI 'nin ilk bölümü kapsayıcının URL 'sidir ve son parça VM 'nin işletim sistemi VHD adıdır.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
 ## <a name="get-the-storage-access-keys"></a>Depolama erişim anahtarlarını al
-Kaynak ve hedef depolama hesapları için erişim anahtarlarını bulun. Erişim anahtarları hakkında daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-create-storage-account.md).
+Kaynak ve hedef depolama hesapları için erişim anahtarlarını bulun. Erişim anahtarları hakkında daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-account-create.md).
 
 * **Portal**: **tüm hizmetler**  >  **depolama hesapları**  >  *depolama hesabı*  >  **erişim anahtarları**' na tıklayın. **KEY1**olarak etiketlenen anahtarı kopyalayın.
-* **PowerShell**: **myresourcegroup**kaynak grubundaki depolama hesabı **Mystorageaccount** depolama anahtarını almak Için [Get-azstorageaccountkey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) komutunu kullanın. **KEY1**etiketli anahtarı kopyalayın.
+* **PowerShell**: **myresourcegroup**kaynak grubundaki depolama hesabı **Mystorageaccount** depolama anahtarını almak Için [Get-azstorageaccountkey](/powershell/module/az.storage/get-azstorageaccountkey) komutunu kullanın. **KEY1**etiketli anahtarı kopyalayın.
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -308,4 +309,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yeni sanal makinenizde oturum açın. Daha fazla bilgi için bkz. [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum](connect-logon.md)açma.
-

@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244bea1aaf5457601ced9bac05c8dae43e5b9199
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759513"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527141"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtmaya yönelik genel Önkoşullar
 
@@ -62,7 +63,7 @@ Aşağıdaki örnek *eastus* konumunda *keyvaultrg* adlı bir kaynak grubu oluş
 az group create --name keyvaultrg --location eastus
 ```
 
-## <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
+## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 [Az keykasa Create](/cli/azure/keyvault) komutuyla küme için SSH anahtarlarını depolamak üzere bir Anahtar Kasası oluşturun. Anahtar Kasası adı genel olarak benzersiz olmalıdır ve şablon dağıtımı için etkinleştirilmeli ve dağıtım "KeyVaultParameterReferenceSecretRetrieveFailed" hatası ile başarısız olacak.
 
 Aşağıdaki örnek, *keyvaultrg* kaynak grubunda *keykasası* adlı bir Anahtar Kasası oluşturur:
@@ -83,7 +84,7 @@ ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 > [!NOTE]
 > SSH anahtar çiftiniz parola/parola içeremez.
 
-Windows 'da SSH anahtarları hakkında daha fazla bilgi için bkz. [Windows 'DA SSH anahtarları oluşturma](/azure/virtual-machines/linux/ssh-from-windows). OpenSSH biçiminde özel anahtarı dışarı aktardığınızdan emin olun.
+Windows 'da SSH anahtarları hakkında daha fazla bilgi için bkz. [Windows 'DA SSH anahtarları oluşturma](./ssh-from-windows.md). OpenSSH biçiminde özel anahtarı dışarı aktardığınızdan emin olun.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>SSH özel anahtarını Azure Key Vault depolama
 OpenShift dağıtımı, OpenShift ana yöneticisine güvenli erişim sağlamak için oluşturduğunuz SSH anahtarını kullanır. Dağıtımı, SSH anahtarını güvenli bir şekilde almak üzere etkinleştirmek için aşağıdaki komutu kullanarak anahtarı Key Vault ' de saklayın:
@@ -133,7 +134,7 @@ Komuttan döndürülen AppID özelliğini ve parolayı bir yere göz atın:
  > [!WARNING] 
  > Bu parolayı yeniden almak mümkün olmadığından, güvenli parolayı yazdığınızdan emin olun.
 
-Hizmet sorumluları hakkında daha fazla bilgi için bkz. [Azure CLI Ile Azure hizmet sorumlusu oluşturma](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+Hizmet sorumluları hakkında daha fazla bilgi için bkz. [Azure CLI Ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Yalnızca Kaynak Yöneticisi şablona uygulanabilir Önkoşullar
 

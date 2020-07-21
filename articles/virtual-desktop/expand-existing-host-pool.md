@@ -1,5 +1,5 @@
 ---
-title: Yeni oturum Konakları ile mevcut konak havuzunu genişletme-Azure
+title: Mevcut konak havuzunu yeni oturum Konakları ile Genişlet Spring 2020-Azure
 description: Mevcut bir konak havuzunu Windows sanal masaüstündeki yeni oturum Konakları ile genişletme.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b23cee72af7f8262fdd552c2d4c26c608b68a1e4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259885"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527617"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -31,7 +31,7 @@ Bu makalede, mevcut bir konak havuzunu yeni oturum Konakları ile nasıl genişl
 
 Başlamadan önce, aşağıdaki yöntemlerden birini kullanarak bir konak havuzu ve oturum ana bilgisayarı sanal makineleri (VM 'Ler) oluşturduğunuzdan emin olun:
 
-- [Azure portalındaki](./create-host-pools-azure-marketplace.md)
+- [Azure Portal](./create-host-pools-azure-marketplace.md)
 - [PowerShell ile ana bilgisayar havuzu oluşturma](./create-host-pools-powershell.md)
 
 Konak havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda aşağıdaki bilgilere de ihtiyacınız olacaktır:

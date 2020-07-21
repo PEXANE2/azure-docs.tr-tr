@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025138"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525050"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Jeam B&R kullanarak CloudSimple özel bulutunda iş yükü VM 'lerini yedekleme
 
@@ -135,7 +136,7 @@ Veead tarafından kullanılan bağlantı noktalarında ağ trafiğine izin verme
 
 Aşağıdaki tabloda bir bağlantı noktası listesi verilmiştir.
 
-| Simge | Açıklama | Simge | Açıklama |
+| Simge | Description | Simge | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | Yedekleme sunucusu  | vCenter  | HTTPS/TCP  | 443 |
 | Yedekleme sunucusu <br> *Veead yedeklemesini dağıtmak için gerekli & çoğaltma bileşenleri* | Yedekleme proxy 'Si  | TCP/UDP  | 135, 137-139 ve 445 |
@@ -194,7 +195,7 @@ Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Uzun süreli veri saklama için Azure Blob depolamayı yapılandırma
 
 1. Microsoft videosunda [Azure Storage Ile çalışmaya başlama](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)bölümünde açıklandığı gibi standart türde ve bir blob kapsayıcısının genel amaçlı depolama hesabı (GPv2) oluşturun.
-2. [Kapsayıcı oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-container) başvurusunda açıklandığı gibi bir Azure depolama kapsayıcısı oluşturun.
+2. [Kapsayıcı oluşturma](/rest/api/storageservices/create-container) başvurusunda açıklandığı gibi bir Azure depolama kapsayıcısı oluşturun.
 2. `azcopy`Microsoft 'Tan Linux için komut satırı yardımcı programını indirin. CentOS 7,5 ' de bash kabuğu 'nda aşağıdaki komutları kullanabilirsiniz.
 
     ```
@@ -205,7 +206,7 @@ Varsayılan ' cloudowner ' kullanıcısı, VEEAD 'yi yüklemek için özel bulut
     sudo yum -y install icu
     ```
 
-3. `azcopy`Yedekleme dosyalarını blob kapsayıcısından ve öğesinden kopyalamak için komutunu kullanın.  Ayrıntılı komutlar için bkz. [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md) .
+3. `azcopy`Yedekleme dosyalarını blob kapsayıcısından ve öğesinden kopyalamak için komutunu kullanın.  Ayrıntılı komutlar için bkz. [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-v10.md) .
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Özel bulutun vCenter konsolu: Install Veeam B&R
 
@@ -290,8 +291,8 @@ Ayrıcalıkları devre dışı bırakmak için bkz. [yükseltme ayrıcalıkları
 * [Azure portal bir Linux sanal makinesi oluşturun](../virtual-machines/linux/quick-create-portal.md)
 * [Azure portal bir Windows sanal makinesine yönetilen veri diski iliştirme](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [Azure depolama ile çalışmaya başlama-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Kapsayıcı Oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-linux.md)
+* [Kapsayıcı Oluşturma](/rest/api/storageservices/create-container)
+* [Linux üzerinde AzCopy ile veri aktarma](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>VMware başvuruları
 

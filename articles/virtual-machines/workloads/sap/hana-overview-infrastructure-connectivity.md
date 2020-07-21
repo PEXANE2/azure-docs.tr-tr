@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ecb9ab208b6ead3944455b95f7fe6baa044d35
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616916"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525118"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA (büyük örnekler) dağıtımı 
 
@@ -35,7 +36,7 @@ Microsoft, HANA büyük örnek birimlerini dağıtmak için aşağıdaki bilgile
 - Her Azure dağıtım bölgesi için:
     - Azure sanal ağlarını HANA büyük örneklerine bağlayan ER-P2P bağlantıları için bir/29 IP adresi aralığı.
     - HANA büyük örnekler sunucu IP havuzu için kullanılan A/24 CıDR bloğu.
-    - [ExpressGlobal Reach Route](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) 'u kullanarak ŞIRKET Içinden Hana büyük örnek birimlerine veya farklı Azure bölgelerindeki Hana büyük örnek birimleri arasında yönlendirme sağlamak için isteğe bağlı olarak, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu belirli Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
+    - [ExpressGlobal Reach Route](../../../expressroute/expressroute-global-reach.md) 'u kullanarak ŞIRKET Içinden Hana büyük örnek birimlerine veya farklı Azure bölgelerindeki Hana büyük örnek birimleri arasında yönlendirme sağlamak için isteğe bağlı olarak, başka bir/29 IP adresi aralığı ayırmanız gerekir. Bu belirli Aralık, daha önce tanımladığınız diğer IP adresi aralıklarıyla çakışmayabilir.
 - HANA büyük örneklerine bağlanan her Azure sanal ağının sanal ağ adres alanı özniteliğinde kullanılan IP adresi aralığı değerleri.
 - Her HANA büyük örnek sistemi için veriler:
   - Tam etki alanı adıyla ideal olarak istenen konak adı.
@@ -52,4 +53,3 @@ Microsoft tarafından dağıtıldıktan sonra HANA büyük örneklerine bağlanm
 1. [Azure VM 'lerini HANA büyük örneklerine bağlama](hana-connect-azure-vm-large-instances.md)
 2. [Sanal ağı HANA büyük örneklerine bağlama ExpressRoute](hana-connect-vnet-express-route.md)
 3. [Ek ağ gereksinimleri (isteğe bağlı)](hana-additional-network-requirements.md)
-

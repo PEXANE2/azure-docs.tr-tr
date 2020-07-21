@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373355"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526551"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows Önyükleme Yöneticisi nedeniyle Windows sanal makinesi önyükleme yapılamıyor
 
@@ -29,7 +29,7 @@ Bu makalede, Windows Önyükleme Yöneticisi 'nin bir Azure sanal makinesinin (V
 
 VM, bir Kullanıcı isteminde bekleyen bir şekilde takılırsa ve el ile talimat verilmedikçe önyükleme yapmaz.
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde başlatılacak bir Işletim sistemi seçin Iletisi Ile Windows Önyükleme Yöneticisi görüntülenir *veya bir araç seçmek için Tab tuşuna basın:*.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde başlatılacak bir Işletim sistemi seçin Iletisi Ile Windows Önyükleme Yöneticisi görüntülenir *veya bir araç seçmek için Tab tuşuna basın:*.
 
 Şekil 1
  
@@ -53,7 +53,7 @@ Hata, Windows Önyükleme Yöneticisi 'ndeki bir BCD bayrağının *displaybootm
 
 Seri konsoluna erişiminiz varsa, daha hızlı önyükleme süreleri elde etmenin iki yolu vardır. *Displaybootmenu* bekleme süresini azaltın ya da bayrağı tamamen kaldırın.
 
-1. Metin tabanlı konsola erişim kazanmak için [Windows Için Azure seri konsoluna](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) erişmek için yönergeleri izleyin.
+1. Metin tabanlı konsola erişim kazanmak için [Windows Için Azure seri konsoluna](./serial-console-windows.md) erişmek için yönergeleri izleyin.
 
    > [!NOTE]
    > Seri konsoluna erişemiyorsanız, [bir onarım VM 'Si oluşturma ve erişme](#create-and-access-a-repair-vm)konusuna atlayın.
@@ -77,7 +77,7 @@ Seri konsoluna erişiminiz varsa, daha hızlı önyükleme süreleri elde etmeni
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) kullanın.
 2. Onarım VM 'sine bağlanmak Uzak Masaüstü Bağlantısı kullanın.
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Bir onarım VM 'sinde daha hızlı önyükleme süresi için yapılandırma
@@ -154,4 +154,4 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için aşağıdaki
 
 ### <a name="rebuild-the-original-vm"></a>Özgün VM 'yi yeniden oluşturma
 
-VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

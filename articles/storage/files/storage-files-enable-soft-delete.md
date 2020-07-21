@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510813"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528392"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure dosya paylaşımlarında geçici silme özelliğini etkinleştirme
 
@@ -23,7 +23,7 @@ Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaş�
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 1. Depolama hesabınıza gidin ve **Dosya hizmeti**altında **geçici silme** ' yi seçin.
 1. **Dosya paylaşma geçici silme**için **etkin** ' i seçin.
 1. **Dosya paylaşma saklama süresini gün olarak** seçin ve seçtiğiniz bir sayıyı girin.
@@ -33,7 +33,7 @@ Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaş�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Geçici silme özelliğini etkinleştirmek için bir dosya istemcisinin hizmet özelliklerini güncelleştirmeniz gerekir. Aşağıdaki örnek, bir depolama hesabındaki tüm dosya paylaşımları için geçici silme imkanı sunar:
+Geçici silme cmdlet 'leri, az. Storage modülünün 2.1.1-Preview sürümünde kullanılabilir. Geçici silme özelliğini etkinleştirmek için bir dosya istemcisinin hizmet özelliklerini güncelleştirmeniz gerekir. Aşağıdaki örnek, bir depolama hesabındaki tüm dosya paylaşımları için geçici silme imkanı sunar:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"
@@ -70,7 +70,7 @@ Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için aşağıdaki komutu kullanın:
+Geçici silme cmdlet 'leri, az. Storage modülünün 2.1.1-Preview sürümünde kullanılabilir. Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için aşağıdaki komutu kullanın:
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -91,7 +91,7 @@ Geçici silme kullanmayı durdurmak istiyorsanız veya bir dosya paylaşımını
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Depolama hesabınızda geçici silme devre dışı bırakmak için aşağıdaki komutu kullanabilirsiniz:
+Geçici silme cmdlet 'leri, az. Storage modülünün 2.1.1-Preview sürümünde kullanılabilir. Depolama hesabınızda geçici silme devre dışı bırakmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

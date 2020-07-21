@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71088516"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526478"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Uzak Masaüstü lisans sunucusu, bir Azure VM 'ye bağlandığınızda kullanılamaz
 
@@ -122,7 +122,7 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
        telnet <FQDN / IP License Server> 135
        ```
 
-3. Ortamda Uzak Masaüstü lisans sunucusu yoksa ve isterseniz, bir [Uzak Masaüstü Lisans rol hizmeti yükleyebilirsiniz](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). Ardından [RDS lisansını yapılandırın](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383).
+3. Ortamda Uzak Masaüstü lisans sunucusu yoksa ve isterseniz, bir [Uzak Masaüstü Lisans rol hizmeti yükleyebilirsiniz](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc731765(v=ws.11)). Ardından [RDS lisansını yapılandırın](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383).
 
 4. Bir Uzak Masaüstü lisans sunucusu yapılandırıldıysa ve sağlıklı ise, Uzak Masaüstü lisans sunucusunun Cal 'Ler ile etkinleştirildiğinden emin olun.
 

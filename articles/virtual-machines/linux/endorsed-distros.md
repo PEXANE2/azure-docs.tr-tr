@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: e51eeb32ecd306986dc22d6bfa09ee95b8b87852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527396"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 
-İş ortakları, Azure Marketi 'nde Linux görüntüleri sağlar. Microsoft, onaylı dağıtım listesine daha da fazla bilgi eklemek için çeşitli Linux topluluklarıyla birlikte çalışmaktadır. Market 'ten kullanılamayan dağıtımlar için, [Linux işletim sistemini içeren bir sanal sabit disk oluşturma ve karşıya yükleme](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)konusundaki yönergeleri izleyerek her zaman kendi Linux 'u getirebilirsiniz.
+İş ortakları, Azure Marketi 'nde Linux görüntüleri sağlar. Microsoft, onaylı dağıtım listesine daha da fazla bilgi eklemek için çeşitli Linux topluluklarıyla birlikte çalışmaktadır. Market 'ten kullanılamayan dağıtımlar için, [Linux işletim sistemini içeren bir sanal sabit disk oluşturma ve karşıya yükleme](./create-upload-generic.md)konusundaki yönergeleri izleyerek her zaman kendi Linux 'u getirebilirsiniz.
 
 ## <a name="supported-distributions-and-versions"></a>Desteklenen dağıtımlar ve sürümler
 
@@ -35,17 +36,17 @@ Azure Linux Aracısı, Azure Marketi görüntülerinde önceden yüklenmiş olur
 | --- | --- | --- | --- |
 | Standart dışı bir Wave Software CentOS |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [LIS Download](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: çekirdekte |Paket: "Walınuxagent" altında [Depo](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS, 26 Mayıs 2020 itibariyle artık [yaşam süresi sona](https://coreos.com/os/eol/) erecek. |Artık kullanılamıyor | | |
-| Credavtiv tarafından ortaya çıkarıldı |8. x, 9. x |Çekirdekte |Paket: "waagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Kinvolk tarafından yataylı kapsayıcı Linux| Kararlı, kenar| | |
-| Oracle tarafından Oracle Linux |6. x, 7. x, 8. x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat ile Red Hat Enterprise Linux |6. x, 7. x, 8. x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Credavtiv tarafından ortaya çıkarıldı |8.x, 9.x |Çekirdekte |Paket: "waagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
+|Kinvolk tarafından yataylı kapsayıcı Linux| Stable, Edge| | |
+| Oracle tarafından Oracle Linux |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat ile Red Hat Enterprise Linux |6.x, 7.x, 8.x |Çekirdekte |Paket: "Walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise SUSE |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE genel bulut görüntüsü yaşam döngüsü](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |Çekirdekte |Leyebilir<p> Bulutta 11 için [: Araçlar](https://build.opensuse.org/project/show/Cloud:Tools) deposu<br>"genel bulut" modülünde "Python-Azure-Agent" altında bulunan 12 için<br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| SUSE tarafından openSUSE |openSUSE artık 15. x |Çekirdekte |Paket: [bulutta:](https://build.opensuse.org/project/show/Cloud:Tools) "Python-Azure-Agent" ın altındaki araçlar deposu <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE tarafından openSUSE |openSUSE Leap 15.x |Çekirdekte |Paket: [bulutta:](https://build.opensuse.org/project/show/Cloud:Tools) "Python-Azure-Agent" ın altındaki araçlar deposu <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Kurallı olarak Ubuntu |Ubuntu Server ve Pro. 16. x, 18. x, 20. x<p>Ubuntu 12,04 ve 14,04 için genişletilmiş destek hakkında bilgi burada bulunabilir: [Ubuntu genişletilmiş güvenlik Bakımı](https://www.ubuntu.com/esm). |Çekirdekte |Paket: "walınuxagent" altında depo Içinde <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>Görüntü güncelleştirme temposunda
 
-Azure, onaylı Linux dağıtımlarının yayımcılarının, üç aylık veya daha hızlı bir temposunda en son düzeltme ekleri ve güvenlik düzeltmeleri ile Azure Marketi 'ndeki görüntülerini düzenli olarak güncelleştirilmesini gerektirir. Azure Marketi 'ndeki güncelleştirilmiş görüntüler, bir görüntü SKU 'sunun yeni sürümleri olarak müşteriler tarafından otomatik olarak kullanılabilir. Linux görüntülerini bulma hakkında daha fazla bilgi: [Azure Marketi 'Nde LINUX VM görüntülerini bulun](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+Azure, onaylı Linux dağıtımlarının yayımcılarının, üç aylık veya daha hızlı bir temposunda en son düzeltme ekleri ve güvenlik düzeltmeleri ile Azure Marketi 'ndeki görüntülerini düzenli olarak güncelleştirilmesini gerektirir. Azure Marketi 'ndeki güncelleştirilmiş görüntüler, bir görüntü SKU 'sunun yeni sürümleri olarak müşteriler tarafından otomatik olarak kullanılabilir. Linux görüntülerini bulma hakkında daha fazla bilgi: [Azure Marketi 'Nde LINUX VM görüntülerini bulun](./cli-ps-findimage.md).
 
 ## <a name="azure-tuned-kernels"></a>Azure tarafından ayarlanan çekirdekler
 

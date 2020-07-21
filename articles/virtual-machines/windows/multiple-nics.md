@@ -7,16 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2667ff571070b2e62dcfa4af6e202f1851aa3e80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870264"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525781"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Birden çok NIC içeren bir Windows sanal makinesi oluşturma ve yönetme
 Azure 'daki sanal makinelere (VM 'Ler), birden çok sanal ağ arabirim kartı (NIC) eklenmiş olabilir. Yaygın bir senaryo, ön uç ve arka uç bağlantısı için farklı alt ağlara sahip olur. Bir VM 'de birden çok NIC 'yi birden çok alt ağa ilişkilendirebilirsiniz, ancak bu alt ağların hepsi aynı sanal ağda (vNet) bulunmalıdır. Bu makalede, birden fazla NIC 'ye eklenmiş bir VM oluşturma işlemi açıklanır. Ayrıca, mevcut bir VM 'ye NIC ekleme veya kaldırma hakkında bilgi edinebilirsiniz. Farklı [VM boyutları](sizes.md) değişen sayıda NIC destekler, bu nedenle VM 'nizi uygun şekilde boyutlandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *Myvnet*ve *myvm*' i içerir.
 
@@ -32,7 +33,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ### <a name="create-virtual-network-and-subnets"></a>Sanal ağ ve alt ağlar oluşturma
 Yaygın bir senaryo, sanal ağın iki veya daha fazla alt ağa sahip olması içindir. Diğeri arka uç trafiği için ön uç trafiği için bir alt ağ olabilir. Her iki alt ağa bağlanmak için VM 'niz üzerinde birden çok NIC kullanırsınız.
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile iki sanal ağ alt ağı tanımlayın. Aşağıdaki örnek, *Mysubnetön uç* ve *mysubnetarka ucu*için alt ağları tanımlar:
+1. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile iki sanal ağ alt ağı tanımlayın. Aşağıdaki örnek, *Mysubnetön uç* ve *mysubnetarka ucu*için alt ağları tanımlar:
 
     ```powershell
     $mySubnetFrontEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
@@ -41,7 +42,7 @@ Yaygın bir senaryo, sanal ağın iki veya daha fazla alt ağa sahip olması iç
         -AddressPrefix "192.168.2.0/24"
     ```
 
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)ile Sanal ağınızı ve alt ağlarınızı oluşturun. Aşağıdaki örnek, *Myvnet*adlı bir sanal ağ oluşturur:
+2. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile Sanal ağınızı ve alt ağlarınızı oluşturun. Aşağıdaki örnek, *Myvnet*adlı bir sanal ağ oluşturur:
 
     ```powershell
     $myVnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
@@ -53,7 +54,7 @@ Yaygın bir senaryo, sanal ağın iki veya daha fazla alt ağa sahip olması iç
 
 
 ### <a name="create-multiple-nics"></a>Birden çok NIC oluşturma
-[New-Aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)Ile iki NIC oluşturun. Ön uç alt ağına bir NIC ve arka uç alt ağına bir NIC ekleyin. Aşağıdaki örnek *myNic1* ve *MyNic2*adlı NIC 'leri oluşturur:
+[New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)Ile iki NIC oluşturun. Ön uç alt ağına bir NIC ve arka uç alt ağına bir NIC ekleyin. Aşağıdaki örnek *myNic1* ve *MyNic2*adlı NIC 'leri oluşturur:
 
 ```powershell
 $frontEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetFrontEnd'}
@@ -80,13 +81,13 @@ Genellikle, ağ trafiğini VM 'ye filtreleyecek bir [ağ güvenlik grubu](../../
     $cred = Get-Credential
     ```
 
-2. [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig)ile VM 'nizi tanımlayın. Aşağıdaki örnek, *myvm* ADLı bir VM 'yi tanımlar ve Ikiden fazla NIC 'yi destekleyen bir VM boyutu kullanır (*Standard_DS3_v2*):
+2. [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)ile VM 'nizi tanımlayın. Aşağıdaki örnek, *myvm* ADLı bir VM 'yi tanımlar ve Ikiden fazla NIC 'yi destekleyen bir VM boyutu kullanır (*Standard_DS3_v2*):
 
     ```powershell
     $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
     ```
 
-3. [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) ve [set-Azvmsourceımage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage)ile VM yapılandırmanızın geri kalanını oluşturun. Aşağıdaki örnek bir Windows Server 2016 VM oluşturur:
+3. [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) ve [set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage)ile VM yapılandırmanızın geri kalanını oluşturun. Aşağıdaki örnek bir Windows Server 2016 VM oluşturur:
 
     ```powershell
     $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
@@ -102,14 +103,14 @@ Genellikle, ağ trafiğini VM 'ye filtreleyecek bir [ağ güvenlik grubu](../../
         -Version "latest"
    ```
 
-4. [Add-Azvmnetworkınterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)ile daha önce oluşturduğunuz iki NIC 'i bağlayın:
+4. [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface)ile daha önce oluşturduğunuz iki NIC 'i bağlayın:
 
     ```powershell
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM 'nizi oluşturun:
+5. [New-azvm](/powershell/module/az.compute/new-azvm)ile VM 'nizi oluşturun:
 
     ```powershell
     New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
@@ -120,19 +121,19 @@ Genellikle, ağ trafiğini VM 'ye filtreleyecek bir [ağ güvenlik grubu](../../
 ## <a name="add-a-nic-to-an-existing-vm"></a>Mevcut bir VM 'ye bir NIC ekleme
 Var olan bir VM 'ye sanal bir NIC eklemek için VM 'yi serbest bırakın, sanal NIC 'yi ekleyin ve ardından VM 'yi başlatın. Farklı [VM boyutları](sizes.md) değişen sayıda NIC destekler, bu nedenle VM 'nizi uygun şekilde boyutlandırın. Gerekirse, [bir VM 'yi yeniden boyutlandırabilirsiniz](resize-vm.md).
 
-1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)ile VM 'yi serbest bırakın. Aşağıdaki örnek *Myresourcegroup*Içindeki *MYVM* adlı VM 'yi kaldırır:
+1. [Stop-AzVM](/powershell/module/az.compute/stop-azvm)ile VM 'yi serbest bırakın. Aşağıdaki örnek *Myresourcegroup*Içindeki *MYVM* adlı VM 'yi kaldırır:
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. [Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)ile VM 'nin var olan yapılandırmasını alın. Aşağıdaki örnek, *Myresourcegroup*Içinde *MYVM* adlı VM 'nin bilgilerini alır:
+2. [Get-azvm](/powershell/module/az.compute/get-azvm)ile VM 'nin var olan yapılandırmasını alın. Aşağıdaki örnek, *Myresourcegroup*Içinde *MYVM* adlı VM 'nin bilgilerini alır:
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. Aşağıdaki örnek, *Mysubnetarka uca*iliştirilmiş *myNic3* adlı [New-aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) ile bir sanal NIC oluşturur. Sanal NIC daha sonra *Myresourcegroup* ' de [Add-Azvmnetworkınterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)Ile *myvm* adlı VM 'ye eklenir:
+3. Aşağıdaki örnek, *Mysubnetarka uca*iliştirilmiş *myNic3* adlı [New-aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface) ile bir sanal NIC oluşturur. Sanal NIC daha sonra *Myresourcegroup* ' de [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface)Ile *myvm* adlı VM 'ye eklenir:
 
     ```powershell
     # Get info for the back end subnet
@@ -165,7 +166,7 @@ Var olan bir VM 'ye sanal bir NIC eklemek için VM 'yi serbest bırakın, sanal 
     Update-AzVM -VM $vm -ResourceGroupName "myResourceGroup"
     ```
 
-4. [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm)ile VM 'yi başlatın:
+4. [Start-AzVm](/powershell/module/az.compute/start-azvm)ile VM 'yi başlatın:
 
     ```powershell
     Start-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -176,19 +177,19 @@ Var olan bir VM 'ye sanal bir NIC eklemek için VM 'yi serbest bırakın, sanal 
 ## <a name="remove-a-nic-from-an-existing-vm"></a>Mevcut bir VM 'den bir NIC 'yi kaldırma
 Bir sanal NIC 'yi var olan bir VM 'den kaldırmak için VM 'yi serbest bırakın, sanal NIC 'yi kaldırın ve ardından VM 'yi başlatın.
 
-1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)ile VM 'yi serbest bırakın. Aşağıdaki örnek *Myresourcegroup*Içindeki *MYVM* adlı VM 'yi kaldırır:
+1. [Stop-AzVM](/powershell/module/az.compute/stop-azvm)ile VM 'yi serbest bırakın. Aşağıdaki örnek *Myresourcegroup*Içindeki *MYVM* adlı VM 'yi kaldırır:
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. [Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)ile VM 'nin var olan yapılandırmasını alın. Aşağıdaki örnek, *Myresourcegroup*Içinde *MYVM* adlı VM 'nin bilgilerini alır:
+2. [Get-azvm](/powershell/module/az.compute/get-azvm)ile VM 'nin var olan yapılandırmasını alın. Aşağıdaki örnek, *Myresourcegroup*Içinde *MYVM* adlı VM 'nin bilgilerini alır:
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. [Get-Aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface)ile NIC kaldırma hakkında bilgi alın. Aşağıdaki örnek *myNic3*hakkında bilgi alır:
+3. [Get-Aznetworkınterface](/powershell/module/az.network/get-aznetworkinterface)ile NIC kaldırma hakkında bilgi alın. Aşağıdaki örnek *myNic3*hakkında bilgi alır:
 
     ```powershell
     # List existing NICs on the VM if you need to determine NIC name
@@ -197,14 +198,14 @@ Bir sanal NIC 'yi var olan bir VM 'den kaldırmak için VM 'yi serbest bırakın
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. [Remove-Azvmnetworkınterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) ile NIC 'i kaldırın ve ardından VM 'yi [Update-azvm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm)ile güncelleştirin. Aşağıdaki örnek, önceki adımda tarafından elde edilen *myNic3* öğesini kaldırır `$nicId` :
+4. [Remove-Azvmnetworkınterface](/powershell/module/az.compute/remove-azvmnetworkinterface) ile NIC 'i kaldırın ve ardından VM 'yi [Update-azvm](/powershell/module/az.compute/update-azvm)ile güncelleştirin. Aşağıdaki örnek, önceki adımda tarafından elde edilen *myNic3* öğesini kaldırır `$nicId` :
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
         Update-AzVm -ResourceGroupName "myResourceGroup"
     ```   
 
-5. [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm)ile VM 'yi başlatın:
+5. [Start-AzVm](/powershell/module/az.compute/start-azvm)ile VM 'yi başlatın:
 
     ```powershell
     Start-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
@@ -220,7 +221,7 @@ Azure Resource Manager şablonlar, dağıtım sırasında birden çok NIC oluşt
 }
 ```
 
-Daha fazla bilgi için, bkz. [ *Copy*kullanarak birden çok örnek oluşturma](../../resource-group-create-multiple.md). 
+Daha fazla bilgi için, bkz. [ *Copy*kullanarak birden çok örnek oluşturma](../../azure-resource-manager/templates/copy-resources.md). 
 
 `copyIndex()`Bir kaynak adına bir sayı eklemek için de kullanabilirsiniz. Daha sonra *myNic1*, *MyNic2* vb. oluşturabilirsiniz. Aşağıdaki kodda dizin değeri ekleme örneği gösterilmektedir:
 
@@ -288,5 +289,3 @@ Azure, sanal makineye bağlı ilk (birincil) ağ arabirimine bir varsayılan ağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Birden çok NIC içeren bir VM oluşturmaya çalışırken [WINDOWS VM boyutlarını](sizes.md) gözden geçirin. Her VM boyutunun desteklediği en fazla NIC sayısına dikkat edin. 
-
-

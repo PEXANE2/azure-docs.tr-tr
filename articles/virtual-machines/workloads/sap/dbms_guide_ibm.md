@@ -12,11 +12,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 110e8d3be88fb2e1bd958f40d5defa23f8c679f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022616"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525407"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 
@@ -25,7 +26,7 @@ SAP Business Suite 'i LUW için IBM DB2 üzerinde çalıştırmaya ilişkin gene
 
 Azure 'da LUW için DB2 üzerinde SAP hakkında daha fazla bilgi ve güncelleştirme için bkz. SAP Note [2233094]. 
 
-, Azure 'da sunulan SAP iş yükünde çeşitli makalelerdir.  [Azure 'Da SAP iş yüküne başlamanız önerilir-kullanmaya](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) başlayın ve ardından ilgilendiğiniz alanı seçin
+, Azure 'da sunulan SAP iş yükünde çeşitli makalelerdir.  [Azure 'Da SAP iş yüküne başlamanız önerilir-kullanmaya](./get-started.md) başlayın ve ardından ilgilendiğiniz alanı seçin
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir:
 
@@ -43,7 +44,7 @@ Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'da
 | [2002167] |Red Hat Enterprise Linux 7. x: yükleme ve yükseltme |
 | [1597355] |Linux için takas boşluğu önerisi |
 
-Bir çekme isteği-bu belgeye okuma olarak, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)yükünde diğer kılavuzlar hakkında belge konularını okuduğunuzdan önce göz önünde bulundurmanız gerekir. 
+Bir çekme isteği-bu belgeye okuma olarak, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş](./get-started.md)yükünde diğer kılavuzlar hakkında belge konularını okuduğunuzdan önce göz önünde bulundurmanız gerekir. 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Linux, UNIX ve Windows sürüm desteği için IBM DB2
@@ -72,7 +73,7 @@ Alternatif olarak, Windows Storage havuzlarını (yalnızca Windows Server 2012 
 
 Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir `-LogicalSectorSizeDefault` . Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)okunabilir.
+Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](../../windows/how-to-enable-write-accelerator.md)okunabilir.
 
 ### <a name="backuprestore"></a>Yedekleme/Geri Yükleme
 LUW için IBM DB2 yedekleme/geri yükleme işlevselliği, standart Windows Server Işletim sistemleri ve Hyper-V ile aynı şekilde desteklenir.

@@ -3,12 +3,12 @@ title: Sınırlar ve sınırlar-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma Bilgi Bankası ve hizmetinin bölümleri için meta sınırlara sahiptir. Test ve yayımlamak için bilgi bankanızı bu sınırlar dahilinde tutmanız önemlidir.
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855551"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524446"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
@@ -37,7 +37,7 @@ Dosya adları aşağıdaki karakterleri içeremez:
 
 ### <a name="maximum-file-size"></a>En büyük dosya boyutu
 
-|Biçim|En büyük dosya boyutu (MB)|
+|Biçimlendir|En büyük dosya boyutu (MB)|
 |--|--|
 |`.docx`|10|
 |`.pdf`|25|
@@ -63,7 +63,7 @@ Bilgi Bankası başına en fazla meta veri alanı sayısı, **[Azure bilişsel a
 
 |**Azure Bilişsel Arama katmanı** | **Ücretsiz** | **Temel** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Soru-Cevap Oluşturma Hizmeti başına en fazla meta veri alanı (tüm KBs 'lerde)|1000|100 *|1000|1000|1000|1000|
+|Soru-Cevap Oluşturma Hizmeti başına en fazla meta veri alanı (tüm KBs 'lerde)|1.000|100 *|1.000|1.000|1.000|1.000|
 
 ### <a name="by-name-and-value"></a>Ada ve değere göre
 
@@ -79,7 +79,8 @@ Meta veri adı ve değeri için uzunluk ve kabul edilebilir karakterler aşağı
 Bilgi bankasındaki içeriğe ilişkin genel sınırlamalar:
 * Yanıt metninin uzunluğu: 25.000
 * Soru metninin uzunluğu: 1.000
-* Meta veri anahtarı/değer metninin uzunluğu: 100
+* Meta veri anahtar metninin uzunluğu: 100
+* Meta veri değeri metninin uzunluğu: 500
 * Meta veri adı için desteklenen karakterler: harfler, rakamlar ve`_`
 * Meta veri değeri için desteklenen karakterler: tümü `:` ve dışında`|`
 * Dosya adı uzunluğu: 200

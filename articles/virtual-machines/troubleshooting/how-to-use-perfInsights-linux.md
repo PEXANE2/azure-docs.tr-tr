@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79266994"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526809"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
 
@@ -43,7 +44,7 @@ Bu senaryo, sanal makinenizin depolama ve donanım yapılandırması, aşağıda
 
 - Depolama bilgileri
 
-- Azure sanal makine yapılandırması ( [azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)kullanılarak toplanır)
+- Azure sanal makine yapılandırması ( [azure Instance Metadata Service](../windows/instance-metadata-service.md)kullanılarak toplanır)
 
 - Çalışan işlemlerin, diskin, belleğin ve CPU kullanımının listesi
 
@@ -108,7 +109,7 @@ Linux sanal makinesi, işletim sistemi, blok cihazları, yüksek kaynak tüketic
   - /etc/waagent.config
   - Son beş güne ait journalctl çıkışı
 
-- [Azure sanal makine örneği meta verileri](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Azure sanal makine örneği meta verileri](../windows/instance-metadata-service.md)
 
 >[!Note]
 >[ `*` ] PCI bilgileri henüz DEMIN ve SLES dağıtımlarında toplanmadı

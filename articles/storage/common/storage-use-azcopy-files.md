@@ -7,13 +7,14 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6c621219bc424b7e0df6de286a066fd5b94af4a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a836f4ce40f4d2e0871f99122d25bb6c6f346d05
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527889"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy ve dosya depolama ile veri aktarma 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy ve dosya depolama ile verileri aktarma 
 
 AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi gerçekleştirmenizi sağlayan bir komut satırı yardımcı programıdır. Bu makale, Azure dosyaları ile çalışan örnek komutlar içerir.
 
@@ -117,7 +118,7 @@ Ayrıca, seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz `--exc
 
 #### <a name="use-wildcard-characters"></a>Joker karakter kullan
 
-Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-pattern` . Joker karakterleri içeren kısmi adlar belirtin. Bir semicolin () kullanarak adları ayırın `;` .
+Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-pattern` . Joker karakterleri içeren kısmi adlar belirtin. Adları noktalı virgül () kullanarak ayırın `;` .
 
 |    |     |
 |--------|-----------|
@@ -188,7 +189,7 @@ Tüm dosya adlarını belirtebilir veya joker karakterler (*) ile kısmi adlar k
 
 #### <a name="specify-multiple-complete-file-names"></a>Birden çok dosya adı belirtin
 
-Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-path` . Tek dosya adlarını bir semicolin () kullanarak ayırın `;` .
+Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-path` . Tek bir dosya adını noktalı virgül () kullanarak ayırın `;` .
 
 |    |     |
 |--------|-----------|
@@ -201,7 +202,7 @@ Ayrıca, seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz `--exc
 
 #### <a name="use-wildcard-characters"></a>Joker karakter kullan
 
-Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-pattern` . Joker karakterleri içeren kısmi adlar belirtin. Bir semicolin () kullanarak adları ayırın `;` .
+Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-pattern` . Joker karakterleri içeren kısmi adlar belirtin. Adları noktalı virgül () kullanarak ayırın `;` .
 
 |    |     |
 |--------|-----------|

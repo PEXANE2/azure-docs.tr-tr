@@ -8,19 +8,20 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 6ee38dd6f9a2e254c57d6f79c09eee7bccfcd0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11940a43438b72eb8a2e9391d56806744c4c27fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527821"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Azure dosya paylaşımlarının yanlışlıkla silinmesini engelle
 
-Azure depolama, artık dosya paylaşımları (Önizleme) için geçici silme olanağı sunuyor. Geçici silme, bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından yanlışlıkla silindiğinde verilerinizi kurtarmanıza olanak sağlar.
+Azure depolama, artık dosya paylaşımları (Önizleme) için geçici silme olanağı sunuyor. Geçici silme, bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından yanlışlıkla silindiğinde dosya paylaşımınızı kurtarmanızı sağlar.
 
 ## <a name="how-soft-delete-preview-works"></a>Geçici silme (Önizleme) nasıl işe yarar?
 
-Azure dosya paylaşımları için geçici silme etkinleştirildiğinde, bir dosya paylaşımı silinirse, kalıcı olarak silinmeyeceği yerine geçici olarak silinen bir duruma geçer. Geçici olarak silinen verilerin kalıcı olarak silinmeden önce kurtarılabilir olduğu süreyi yapılandırabilirsiniz.
+Azure dosya paylaşımları için geçici silme etkinleştirildiğinde, bir dosya paylaşımı silinirse, kalıcı olarak silinmeyeceği yerine geçici olarak silinen bir duruma geçer. Geçici olarak silinen verilerin kalıcı olarak silinmeden önce kurtarılabilir kalma süresini yapılandırabilir ve bu bekletme döneminde her zaman paylaşımdan geri alma işlemini geri alabilirsiniz. Geri alındıktan sonra, anlık görüntüler dahil tüm içerik içeriği silinmeden önce bulunduğu duruma geri yüklenir. Geçici silme yalnızca dosya paylaşma düzeyinde çalışır-silinen dosyalar hala kalıcı olarak silinir.
 
 Geçici silme, yeni ya da varolan dosya paylaşımlarında etkinleştirilebilir. Geçici silme Ayrıca geriye dönük olarak uyumludur; Bu nedenle, geçici silme korumalarının avantajlarından yararlanmak için uygulamalarınızda herhangi bir değişiklik yapmanız gerekmez. 
 

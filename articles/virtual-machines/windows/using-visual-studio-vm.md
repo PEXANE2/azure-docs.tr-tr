@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: ecec05da3904782199e68cfdca917a8c451edec6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1da7dabfb562ea32697745460d92ed27089878c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105989"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525543"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 'da Visual Studio görüntüleri
 Visual Studio 'Yu önceden yapılandırılmış bir Azure sanal makinesinde (VM) kullanmak, herhangi bir şey için bir şeyi çalışır duruma getirmenin bir geliştirme ortamına hızlı ve kolay bir yoludur. Farklı Visual Studio yapılandırmalarına sahip sistem görüntüleri [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)'nde kullanılabilir.
@@ -23,7 +23,7 @@ Visual Studio 'Yu önceden yapılandırılmış bir Azure sanal makinesinde (VM)
 Azure’da yeni misiniz? [Ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free).
 
 > [!NOTE]
-> Tüm abonelikler Windows 10 görüntülerini dağıtmaya uygun değildir. Daha fazla bilgi için bkz. [geliştirme ve test senaryoları Için Azure 'Da Windows Istemcisini kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
+> Tüm abonelikler Windows 10 görüntülerini dağıtmaya uygun değildir. Daha fazla bilgi için bkz. [geliştirme ve test senaryoları Için Azure 'Da Windows Istemcisini kullanma](./client-images.md)
 
 ## <a name="what-configurations-and-versions-are-available"></a>Hangi yapılandırma ve sürümler mevcuttur?
 En son ana sürümlere ait görüntüler, Visual Studio 2019, Visual Studio 2017 ve Visual Studio 2015, Azure Marketi 'nde bulunabilir.  Yayınlanan her ana sürüm için, başlangıçta "Web 'e Yayınlandı" (RTW) sürümü ve en son güncelleştirilmiş sürümleri görürsünüz.  Bu sürümlerin her biri, Visual Studio Enterprise ve Visual Studio Community sürümlerini sunar.  En son Visual Studio ve Windows güncelleştirmelerini dahil etmek için bu görüntüler en az her ay güncellenir.  Görüntülerin adları aynı olmaya devam ederken, her bir görüntünün açıklaması yüklü ürün sürümünü ve görüntünün "itibariyle" tarihini içerir.
@@ -77,9 +77,9 @@ Azure, sanal makine boyutlarının tam bir aralığını sunar. Visual Studio g�
    * Standard_D2S_v2
    * Standard_D3_v2
     
-En son makine boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](/azure/virtual-machines/windows/sizes).
+En son makine boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](./sizes.md).
 
-Azure ile, sanal makineyi yeniden boyutlandırarak başlangıç seçiminizi yeniden dengelemeniz sağlayabilirsiniz. Daha uygun bir boyuta sahip yeni bir VM sağlayabilir veya mevcut sanal makineyi farklı temel donanımla yeniden boyutlandırabilirsiniz. Daha fazla bilgi için bkz. [Windows VM 'Yi yeniden boyutlandırma](/azure/virtual-machines/windows/resize-vm).
+Azure ile, sanal makineyi yeniden boyutlandırarak başlangıç seçiminizi yeniden dengelemeniz sağlayabilirsiniz. Daha uygun bir boyuta sahip yeni bir VM sağlayabilir veya mevcut sanal makineyi farklı temel donanımla yeniden boyutlandırabilirsiniz. Daha fazla bilgi için bkz. [Windows VM 'Yi yeniden boyutlandırma](./resize-vm.md).
 
 ## <a name="after-the-vm-is-running-whats-next"></a>VM çalışmaya başladıktan sonra ne var?
 Visual Studio, "kendi lisansını getir" modelini Azure 'da izler. Özel donanım yüklemesinde olduğu gibi, ilk adımlardan biri Visual Studio yüklemenizi lisanslandır. Visual Studio 'Nun kilidini açmak için şunlardan birini yapın:
@@ -96,7 +96,7 @@ Hızlı Özet: Sistem Hazırlama Aracı 'nı (Sysprep) kullanın ve çalışan V
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(Şekil 1) Azure portal kullanıcı arabiriminden bir görüntü yakalayın.*</center>
 
-Daha fazla bilgi için bkz. [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen görüntüsünü oluşturma](/azure/virtual-machines/windows/capture-image-resource).
+Daha fazla bilgi için bkz. [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen görüntüsünü oluşturma](./capture-image-resource.md).
 
 > [!IMPORTANT]
 > VM 'yi hazırlamak için Sysprep 'ı kullanmayı unutmayın. Bu adımı kaçırırsanız Azure görüntüden bir VM sağlayamaz.

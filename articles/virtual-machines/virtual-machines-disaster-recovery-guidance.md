@@ -6,11 +6,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77115618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525832"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Azure hizmet kesintisi, Azure sanal makinelerini etkiler
 Microsoft 'ta, hizmetlerimizin ihtiyacınız olduğunda her zaman sizin için kullanılabilir olduğundan emin olmak için çok çalıştık. Denetiimizin ötesine geçmeye, planlanmamış hizmet kesintilerine neden olacak şekilde bizi etkilemekte yarar vardır.
@@ -34,7 +35,7 @@ Bu, kesintiye uğramadan önce Azure Site Recovery, Okuma Erişimli Coğrafi ola
 
 
 > [!NOTE]
-> Bu işlem üzerinde herhangi bir denetiminiz olmadığı ve yalnızca bölge genelinde hizmet kesintileri için gerçekleşmeyeceği hakkında dikkat edin. Bu nedenle, en yüksek kullanılabilirlik düzeyini elde etmek için uygulamaya özgü diğer yedekleme stratejilerine de güvenmelidir. Daha fazla bilgi için [olağanüstü durum kurtarma Için veri stratejileri](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)bölümüne bakın.
+> Bu işlem üzerinde herhangi bir denetiminiz olmadığı ve yalnızca bölge genelinde hizmet kesintileri için gerçekleşmeyeceği hakkında dikkat edin. Bu nedenle, en yüksek kullanılabilirlik düzeyini elde etmek için uygulamaya özgü diğer yedekleme stratejilerine de güvenmelidir. Daha fazla bilgi için [olağanüstü durum kurtarma Için veri stratejileri](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)bölümüne bakın.
 >
 >
 
@@ -44,7 +45,7 @@ Bu, kesintiye uğramadan önce Azure Site Recovery, Okuma Erişimli Coğrafi ola
 
 - Olağanüstü durum kurtarma ve yüksek kullanılabilirlik stratejisi uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- Bulut platformunun yeteneklerini ayrıntılı bir şekilde anlamak için bkz. [Azure dayanıklılığı teknik kılavuzu](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance).
+- Bulut platformunun yeteneklerini ayrıntılı bir şekilde anlamak için bkz. [Azure dayanıklılığı teknik kılavuzu](../data-lake-store/data-lake-store-disaster-recovery-guidance.md).
 
 
 - Yönergeler net değilse veya Microsoft 'un sizin adınıza işlem yapması istiyorsanız [müşteri desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)'ne başvurun.

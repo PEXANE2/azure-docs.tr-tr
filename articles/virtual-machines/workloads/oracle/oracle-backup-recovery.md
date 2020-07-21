@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224460"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525611"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve kurtarma
 
 Azure CLı kullanarak bir komut isteminde Azure kaynaklarını oluşturabilir ve yönetebilir ya da betikleri kullanabilirsiniz. Bu makalede Azure CLı betiklerini kullanarak bir Azure Marketi Galeri görüntüsünden Oracle Database 12c veritabanı dağıtma.
 
-Başlamadan önce, Azure CLı 'nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Başlamadan önce, Azure CLı 'nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama
 
@@ -33,7 +33,7 @@ Başlamadan önce, Azure CLı 'nin yüklü olduğundan emin olun. Daha fazla bil
 
 *   Yedekleme ve kurtarma işlemini gerçekleştirmek için, önce yüklü bir Oracle Database 12 c örneğine sahip bir Linux sanal makinesi oluşturmanız gerekir. VM oluşturmak için kullandığınız Market görüntüsü *Oracle: Oracle-Database-Ee: 12.1.0.2: latest*olarak adlandırılır.
 
-    Oracle veritabanı oluşturmayı öğrenmek için bkz. [Oracle create database hızlı](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)başlangıcı.
+    Oracle veritabanı oluşturmayı öğrenmek için bkz. [Oracle create database hızlı](./oracle-database-quick-create.md)başlangıcı.
 
 
 ### <a name="step-2-connect-to-the-vm"></a>2. Adım: VM 'ye bağlanma
@@ -172,7 +172,7 @@ Uygulamayla tutarlı yedeklemeler Azure Backup yeni bir özelliktir. VM anlık g
 
 4. JSON dosyasını düzenleyin.
 
-    Dosyasındaki VMSnapshotScriptPluginConfig.jsve parametrelerini içerecek şekilde düzenleyin `PreScriptLocation` `PostScriptlocation` . Örnek:
+    Dosyasındaki VMSnapshotScriptPluginConfig.jsve parametrelerini içerecek şekilde düzenleyin `PreScriptLocation` `PostScriptlocation` . Örneğin:
 
     ```output
     {
@@ -572,6 +572,3 @@ az group delete --name myResourceGroup
 [Öğretici: yüksek oranda kullanılabilir VM 'Ler oluşturma](../../linux/create-cli-complete.md)
 
 [VM dağıtımı Azure CLı örneklerini keşfet](../../linux/cli-samples.md)
-
-
-

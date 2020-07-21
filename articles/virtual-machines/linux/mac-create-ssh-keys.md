@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df02378e638e9883d802318eba86dbfb066cd6cb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141747"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527299"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
 
@@ -46,7 +47,7 @@ az vm create --name VMname --resource-group RGname --generate-ssh-keys
 
 Kimlik doğrulaması için SSH anahtarları kullanan bir Linux sanal makinesi oluşturmak için Azure portal, Azure CLı, Azure Resource Manager şablonları veya diğer yöntemleri kullanarak VM oluştururken SSH ortak anahtarınızı belirtin:
 
-* [Azure portal ile Linux sanal makinesi oluşturma](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure portalı ile Linux sanal makinesi oluşturma](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure CLI ile Linux sanal makinesi oluşturma](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Bir Azure şablonu kullanarak bir Linux VM oluşturma](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -95,4 +96,4 @@ VM tam zamanında erişim ilkesi kullanıyorsa, VM 'ye bağlanabilmeniz için ö
 
 * SSH anahtar çiftleri ile çalışma hakkında daha fazla bilgi için bkz. [SSH anahtar çiftleri oluşturma ve yönetme hakkında ayrıntılı adımlar](create-ssh-keys-detailed.md).
 
-* Azure VM 'lerine SSH bağlantılarıyla ilgili güçlükleriniz varsa bkz. [Azure LINUX VM Ile SSH bağlantılarında sorun giderme](troubleshoot-ssh-connection.md).
+* Azure VM 'lerine SSH bağlantılarıyla ilgili güçlükleriniz varsa bkz. [Azure LINUX VM Ile SSH bağlantılarında sorun giderme](../troubleshooting/troubleshoot-ssh-connection.md).

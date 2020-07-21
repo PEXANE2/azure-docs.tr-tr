@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77561958"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525951"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM, grub kurtarma için önyüklenir
 
@@ -33,8 +34,8 @@ Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 
 * **Bilinmeyen**hata dosyalarını alıyorsanız, bu hata önyükleme bölümünde bir dosya sistemi Bozulması veya yanlış bir çekirdek yapılandırması elde edebilir.
 
-   * Dosya sistemi sorunları için [Linux Kurtarma: dosya sistemi hataları nedeniyle LINUX VM 'ye SSH (fsck, ınomdes)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)makalesindeki adımları izleyin.
-   * Çekirdek sorunları için Linux Kurtarma makalesindeki adımları izleyin [: çekirdek sorunları ile ilgili önyükleme olmayan sorunları el ile düzeltme](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)veya [Linux Kurtarma: chroot kullanarak çekirdek sorunlarıyla ilgili önyükleme dışı sorunları çözme](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
+   * Dosya sistemi sorunları için [Linux Kurtarma: dosya sistemi hataları nedeniyle LINUX VM 'ye SSH (fsck, ınomdes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes)makalesindeki adımları izleyin.
+   * Çekirdek sorunları için Linux Kurtarma makalesindeki adımları izleyin [: çekirdek sorunları ile ilgili önyükleme olmayan sorunları el ile düzeltme](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)veya [Linux Kurtarma: chroot kullanarak çekirdek sorunlarıyla ilgili önyükleme dışı sorunları çözme](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
    
 ### <a name="error---file-not-found"></a>Hata-dosya bulunamadı
 
@@ -50,7 +51,7 @@ Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 
 ### <a name="error---no-such-partition"></a>Hata-böyle bir bölüm yok
 
-* **Böyle bir bölüm olmadığında**hata alıyorsanız, [işletim sistemi sürücüsünü GENIŞLETMEYE çalıştıktan sonra VM başlatılmaya çalışılırken "böyle bir bölüm yok" hatası](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)bölümüne bakın.
+* **Böyle bir bölüm olmadığında**hata alıyorsanız, [işletim sistemi sürücüsünü GENIŞLETMEYE çalıştıktan sonra VM başlatılmaya çalışılırken "böyle bir bölüm yok" hatası](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive)bölümüne bakın.
 
 ### <a name="error---grubcfg-file-not-found"></a>Hata-grub. cfg dosyası bulunamadı
 
@@ -68,4 +69,3 @@ Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 
 * [Azure sanal makine aracısına genel bakış](../extensions/agent-windows.md)
 * [Windows için sanal makine uzantıları ve özellikleri](../extensions/features-windows.md)
-

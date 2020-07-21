@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134590"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526750"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Zorlamalı tünel senaryosunda Windows etkinleştirme başarısız oluyor
 
@@ -53,9 +53,9 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
  
 
 > [!NOTE] 
-> Etkinleştirme, genel IP adreslerini kullanır ve standart SKU Load Balancer yapılandırmasından etkilenecek. Gereksinimler hakkında bilgi edinmek için [Azure 'Daki giden bağlantıları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) dikkatle gözden geçirin.
+> Etkinleştirme, genel IP adreslerini kullanır ve standart SKU Load Balancer yapılandırmasından etkilenecek. Gereksinimler hakkında bilgi edinmek için [Azure 'Daki giden bağlantıları](../../load-balancer/load-balancer-outbound-connections.md) dikkatle gözden geçirin.
 
-1. Azure PowerShell açın ve ardından [Azure aboneliğinizde oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Azure PowerShell açın ve ardından [Azure aboneliğinizde oturum açın](/powershell/azure/authenticate-azureps).
 2. Aşağıdaki komutları çalıştırın:
 
     ```powershell
@@ -77,7 +77,7 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Etkinleştirme sorunları olan VM 'ye gidin. KMS sunucusuna ulaşabilmesini sınamak için [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) kullanın:
+3. Etkinleştirme sorunları olan VM 'ye gidin. KMS sunucusuna ulaşabilmesini sınamak için [Psping](/sysinternals/downloads/psping) kullanın:
 
     ```console
     psping kms.core.windows.net:1688
@@ -89,7 +89,7 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Azure PowerShell açın ve ardından [Azure aboneliğinizde oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Azure PowerShell açın ve ardından [Azure aboneliğinizde oturum açın](/powershell/azure/authenticate-azureps).
 2. Aşağıdaki komutları çalıştırın:
 
     ```powershell
@@ -107,7 +107,7 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Etkinleştirme sorunları olan VM 'ye gidin. KMS sunucusuna ulaşabilmesini sınamak için [Psping](https://docs.microsoft.com/sysinternals/downloads/psping) kullanın:
+3. Etkinleştirme sorunları olan VM 'ye gidin. KMS sunucusuna ulaşabilmesini sınamak için [Psping](/sysinternals/downloads/psping) kullanın:
 
     ```console
     psping kms.core.windows.net:1688
@@ -117,7 +117,5 @@ Azure genel bulutu için KMS sunucusunun IP adresi 23.102.135.246 ' dir. DNS ad�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [KMS İstemcisi Kurulum Anahtarları](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [Etkinleştirme yöntemlerini gözden geçirme ve seçme](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [KMS İstemcisi Kurulum Anahtarları](/windows-server/get-started/kmsclientkeys)
+- [Etkinleştirme yöntemlerini gözden geçirme ve seçme](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

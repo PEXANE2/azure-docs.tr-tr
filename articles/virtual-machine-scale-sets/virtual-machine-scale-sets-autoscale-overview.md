@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856747"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527413"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleriyle otomatik ölçeklendirmeye genel bakış
 Bir Azure sanal makine ölçek kümesi, uygulamanızı çalıştıran VM örneği sayısını otomatik olarak artırabilir veya azaltabilir. Bu otomatik ve esnek davranış, uygulamanızın performansını izlemek ve iyileştirmek için yönetim ek yükünü azaltır. Olumlu bir müşteri deneyimi için kabul edilebilir performansı tanımlayan kurallar oluşturun. Bu tanımlı eşikler karşılandığında, otomatik ölçeklendirme kuralları, ölçek ayarlarınızın kapasitesini ayarlamak için işlem alır. Ayrıca, ölçek kümesi kapasitesini sabit saatlerde otomatik olarak artırmak veya azaltmak için de olayları zamanlayabilirsiniz. Bu makale, hangi performans ölçümlerinin kullanılabilir olduğunu ve hangi eylemlerin otomatik ölçeklendirmeyi gerçekleştirebileceklerini bir genel bakış sağlar.
@@ -77,14 +77,14 @@ Belirli bir ölçümü izlemek için otomatik ölçeklendirme kuralları oluştu
 | Maksimum          |
 | Toplam            |
 | Son             |
-| Sayı            |
+| Count            |
 
 Otomatik ölçeklendirme kuralları, ölçümler aşağıdaki işleçlerden biriyle tanımlanan eşiğe göre karşılaştırıldığında tetiklenir:
 
-| Operatör                 |
+| İşleç                 |
 |--------------------------|
 | Büyüktür             |
-| Büyük veya eşittir |
+| Büyüktür veya eşittir |
 | Küçüktür                |
 | Küçük veya eşittir    |
 | Eşittir                 |
@@ -137,6 +137,6 @@ Aşağıdaki araçlardan biriyle ana bilgisayar tabanlı ölçümler kullanan ot
 
 Bu genel bakış, ölçek kümesindeki sanal makine örneklerinin *sayısını* yatay olarak ölçeklendirmek ve azaltmak için otomatik ölçeklendirme kurallarını kullanma hakkında ayrıntılı bilgi sağlar. Ayrıca, sanal makine örnek *boyutunu*artırmak veya azaltmak için dikey olarak ölçeklendirebilirsiniz. Daha fazla bilgi için bkz. [Sanal Makine Ölçek Kümeleri Ile dikey otomatik ölçeklendirme](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
-VM örneklerinizi yönetme hakkında daha fazla bilgi için bkz. [Azure PowerShell ile sanal makine ölçek kümelerini yönetme](virtual-machine-scale-sets-windows-manage.md).
+VM örneklerinizi yönetme hakkında daha fazla bilgi için bkz. [Azure PowerShell ile sanal makine ölçek kümelerini yönetme](./virtual-machine-scale-sets-manage-powershell.md).
 
-Otomatik ölçeklendirme kurallarınızın tetiklenmesi durumunda uyarı oluşturma hakkında bilgi edinmek için bkz. [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../azure-monitor/platform/autoscale-webhook-email.md). [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için Denetim günlüklerini de kullanabilirsiniz](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Otomatik ölçeklendirme kurallarınızın tetiklenmesi durumunda uyarı oluşturma hakkında bilgi edinmek için bkz. [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../azure-monitor/platform/autoscale-webhook-email.md). [Azure izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için Denetim günlüklerini de kullanabilirsiniz](../azure-monitor/platform/alerts-log-webhook.md).

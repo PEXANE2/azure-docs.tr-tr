@@ -11,11 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525424"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure 'da isteğe bağlı Red Hat Enterprise Linux VM 'Ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.
@@ -85,7 +86,7 @@ Genişletilmiş güncelleştirme desteği (EUS) depoları, VM sağlamaktan sonra
 Bu yazma sırasında, RHEL <= 7,4 için EUS desteği sona ermiştir. Daha fazla bilgi için [Red Hat belgelerindeki](https://access.redhat.com/support/policy/updates/errata/#Long_Support) "genişletilmiş bakım Red Hat Enterprise Linux" bölümüne bakın.
 * RHEL 7,4 EUS desteği 31 Ağustos 2019 ' de bitiyor
 * RHEL 7,5 EUS desteği 30 Nisan 2020 ' de bitiyor
-* RHEL 7,6 EUS desteği 31 Ekim 2020 ' de bitiyor
+* RHEL 7,6 EUS desteği 31 Mayıs 2021 ' de bitiyor
 * RHEL 7,7 EUS desteği 30 Ağustos 2021 ' de bitiyor
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM 'yi EUS 'ye değiştirme (belirli bir alt sürüme yönelik sürüm kilidi)
@@ -167,7 +168,7 @@ RHEL PAYG VM 'lerinden erişimi daha fazla kısıtlamak için bir ağ yapıland�
 >Yeni Azure ABD kamu görüntüleri, Ocak 2020 itibariyle yukarıdaki Azure genel üst bilgisinde bahsedilen genel IP 'yi kullanacaktır.
 
 >[!NOTE]
->Ayrıca, Azure Almanya 'nın genel Almanya bölgelerinde kullanım dışı olduğunu unutmayın. Azure Almanya müşterileri için öneri [buradaki](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)adımları kullanarak public rhuı 'a işaret ediyor.
+>Ayrıca, Azure Almanya 'nın genel Almanya bölgelerinde kullanım dışı olduğunu unutmayın. Azure Almanya müşterileri için öneri [buradaki](#manual-update-procedure-to-use-the-azure-rhui-servers)adımları kullanarak public rhuı 'a işaret ediyor.
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUı altyapısı
 

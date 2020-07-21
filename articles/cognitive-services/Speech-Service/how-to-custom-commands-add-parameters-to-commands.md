@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362382"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524310"
 ---
 # <a name="add-parameters-to-commands"></a>Komutlara parametre ekleme
 
 Bu makalede, özel komutlara parametre eklemeyi öğreneceksiniz. Parametreler, bir görevi tamamlamaya yönelik komutlar için gereken bilgiler. Karmaşık senaryolarda parametreler, özel eylemleri tetikleyen koşulları tanımlamak için de kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * [Nasıl yapılır: basit komutlarla uygulama oluşturma](./how-to-custom-commands-create-application-with-simple-commands.md)
@@ -50,9 +50,9 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
    1. Şimdi parametre özelliklerini yapılandıracağız. Bir komutun tüm yapılandırma özelliklerinin açıklaması için, [Başvurular](./custom-commands-references.md)' a gidin. Parametresinin geri kalanını aşağıdaki şekilde yapılandırın:
       
 
-       | Yapılandırma      | Önerilen değer     | Description                                                      |
+       | Yapılandırma      | Önerilen değer     | Açıklama                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | Name               | `OnOff`           | Parametre için açıklayıcı bir ad                                                                           |
+       | Ad               | `OnOff`           | Parametre için açıklayıcı bir ad                                                                           |
        | Geneldir          | unchecked       | Bu parametre için bir değerin uygulamadaki tüm komutlara genel olarak uygulanıp uygulanmadığı belirten onay kutusu|
        | Gerekli           | checked         | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu |
        | Gerekli parametre için yanıt      |Basit düzenleyici >`On or Off?`      | Bilinmiyorsa bu parametrenin değerini sormak için bir istem |
@@ -62,8 +62,11 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
        
         
    1. Önceden tanımlanmış giriş değerlerini eklemek için, **önceden tanımlanmış bir giriş Ekle** ve **Yeni öğe** penceresinde, yukarıdaki tabloda belirtilen **adı** yazın. Bu durumda, diğer adları kullanmıyoruz, bu nedenle boş bırakabilirsiniz. 
+
     > [!div class="mx-imgBorder"]
-        > ![Parametre oluştur](media/custom-commands/create-on-off-parameter.png)
+
+    > ![Parametre oluştur](media/custom-commands/create-on-off-parameter.png)
+
    1. Parametrenin tüm yapılandırmasını kaydetmek için **Kaydet** ' i seçin.
  
  ### <a name="add-subjectdevice-parameter"></a>SubjectDevice parametresi Ekle 
@@ -115,7 +118,7 @@ Mevcut tamamlama kuralını **ConfirmationResponse**değiştirin.
 
 1. **Koşullar** bölümünde **Koşul Ekle**' yi seçin.
 1. **Yeni koşul** penceresinde, **tür** listesinde, **gerekli parametreler**' i seçin. Aşağıdaki denetim listesinde, hem **OnOff** hem de **subjectdevice**' ı işaretleyin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 1. **Eylemler** bölümünde, mevcut **konuşma yanıtı gönder** eylemini, eylemin üzerine gelerek ve Düzenle düğmesini seçerek düzenleyin. Bu kez, yeni oluşturulan **OnOff** ve **subjectdevice** parametrelerini kullanın
 
     ```

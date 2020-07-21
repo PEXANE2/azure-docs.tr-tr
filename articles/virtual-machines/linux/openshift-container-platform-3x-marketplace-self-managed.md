@@ -10,15 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759582"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527243"
 ---
 # <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 
-Azure 'da otomatik olarak yönetilen bir OpenShift kapsayıcı platformu 3,11 kümesi dağıtmak için Market Teklifini kullanmadan önce birkaç koşulun yapılandırılması gerekir.  Bir SSH anahtarı (parola olmadan), Azure Anahtar Kasası, Anahtar Kasası gizli anahtarı ve hizmet sorumlusu oluşturma yönergeleri için [OpenShift önkoşulları](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) makalesini okuyun.
+Azure 'da otomatik olarak yönetilen bir OpenShift kapsayıcı platformu 3,11 kümesi dağıtmak için Market Teklifini kullanmadan önce birkaç koşulun yapılandırılması gerekir.  Bir SSH anahtarı (parola olmadan), Azure Anahtar Kasası, Anahtar Kasası gizli anahtarı ve hizmet sorumlusu oluşturma yönergeleri için [OpenShift önkoşulları](./openshift-container-platform-3x-prerequisites.md) makalesini okuyun.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Market teklifini kullanarak dağıtma
@@ -52,7 +53,7 @@ Teklifin ayrıntılarını görüntülemek için teklifine tıklayın. Bu teklif
    ![Teklif başlığı sayfası](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
-**Temel Bilgiler**
+**Temel bilgiler**
 
 Giriş parametrelerinden herhangi biri hakkında yardım almak için, parametre adının yanında ***g*** 'nin üzerine gelin.
 

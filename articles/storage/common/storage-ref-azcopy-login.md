@@ -8,11 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219959"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527923"
 ---
 # <a name="azcopy-login"></a>azcopy oturum açma
 
@@ -39,7 +40,7 @@ azcopy login [flags]
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
 - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Örnekler
@@ -83,7 +84,7 @@ azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/
 İstemci parolasını kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini gizli tabanlı hizmet sorumlusu kimlik doğrulaması için istemci parolası AZCOPY_SPA_CLIENT_SECRET ayarlayın.
 
 ```azcopy
-azcopy login --service-principal
+azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
 ```
 
 Bir sertifika ve parola kullanarak hizmet sorumlusu olarak oturum açın. Ortam değişkenini sertifika tabanlı hizmet sorumlusu yetkilendirmesi için sertifikanın parolasıyla AZCOPY_SPA_CERT_PASSWORD ayarlayın.

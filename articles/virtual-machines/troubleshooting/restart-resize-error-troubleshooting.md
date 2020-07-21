@@ -13,11 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75965617"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526563"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure'daki bir Windows VM'yi yeniden başlatma veya yeniden boyutlandırmayla ilgili sorunları giderme
 Durdurulmuş bir Azure sanal makinesini (VM) başlatmaya veya mevcut bir Azure VM 'yi yeniden boyutlandırmaya çalıştığınızda, karşılaştığınız ortak hata bir ayırma hatasıdır. Bu hata, küme veya bölgenin kullanılabilir kaynakları yoksa veya istenen VM boyutunu destekleyemezse oluşur.
@@ -29,7 +30,7 @@ Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etk
 
 [Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)
 
-[Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../../resource-group-audit.md)
+[Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../../azure-resource-manager/management/view-activity-logs.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Sorun: Durdurulmuş VM'yi başlatırken karşılaşılan hata
 Durdurulmuş bir VM başlatmaya ve bir ayırma hatası almaya çalışırsınız.
@@ -61,5 +62,4 @@ VM 'yi yeniden boyutlandırma isteği, bulut hizmetini barındıran orijinal kü
   3. Yeniden boyutlandırılmış VM 'yi seçin ve **Başlat**' a tıklayın ve ardından durdurulan her bir VM 'yi başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure 'da yeni bir Windows VM oluştururken sorunlarla karşılaşırsanız bkz. [Azure 'da yeni bir Windows sanal makinesi oluşturmayla ilgili dağıtım sorunlarını giderme](../windows/troubleshoot-deployment-new-vm.md).
-
+Azure 'da yeni bir Windows VM oluştururken sorunlarla karşılaşırsanız bkz. [Azure 'da yeni bir Windows sanal makinesi oluşturmayla ilgili dağıtım sorunlarını giderme](./troubleshoot-deployment-new-vm-windows.md).

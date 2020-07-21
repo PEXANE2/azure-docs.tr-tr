@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039016"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524514"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUSıS Docker kapsayıcılarını yükleyip çalıştırın
 
@@ -28,7 +28,7 @@ Aşağıdaki videoda Bu kapsayıcının kullanımı gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Lusıs kapsayıcısını çalıştırmak için aşağıdaki önkoşullara göz önünde bulunur:
 
@@ -53,7 +53,7 @@ Paketlenmiş uygulamalar için yazma API 'Leri:
 
 ### <a name="container-requirements-and-recommendations"></a>Kapsayıcı gereksinimleri ve önerileri
 
-Bu kapsayıcı, ayarlar için en düşük ve önerilen değerleri destekler:
+Aşağıdaki tabloda kapsayıcı ana bilgisayarı için en düşük ve önerilen değerler listelenmiştir. Gereksinimleriniz, trafik hacmine bağlı olarak değişebilir.
 
 |Kapsayıcı| Minimum | Önerilen | TPS<br>(En düşük, en yüksek)|
 |-----------|---------|-------------|--|
@@ -239,9 +239,9 @@ Kapsayıcı ile birlikte API 'nin v2 ve [v3](luis-migration-api-v3.md) sürümle
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
-Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. Yayımlanan (hazırlama veya üretim) uygulamalarının uç noktaları, sürümlü uygulamalar için uç noktalardan _farklı_ bir rotaya sahiptir.
+Kapsayıcı REST tabanlı sorgu tahmin uç noktası API’lerini sağlar. Yayımlanan (hazırlama veya üretim) uygulamalarının uç noktaları, sürümlü uygulamalar için uç noktalardan _farklı_ bir rotaya sahiptir.
 
-`http://localhost:5000`Kapsayıcı API 'leri için Konağı kullanın.
+Kapsayıcı API’leri için `http://localhost:5000` konağını kullanın.
 
 # <a name="v3-prediction-endpoint"></a>[V3 tahmin uç noktası](#tab/v3)
 
@@ -255,9 +255,9 @@ Sorgu parametreleri, sorgu yanıtında nasıl ve neyin döndürüleceğini yapı
 |Sorgu parametresi|Tür|Amaç|
 |--|--|--|
 |`query`|string|Kullanıcının utterliği.|
-|`verbose`|boole|Tahmin edilen modeller için tüm meta verilerin döndürülüp döndürülmeyeceğini belirten bir Boole değeri. Varsayılan değer false’tur.|
-|`log`|boole|Daha sonra [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)için kullanılabilen sorguları günlüğe kaydeder. Varsayılan değer false’tur.|
-|`show-all-intents`|boole|Yalnızca tüm amaçlar veya en üst Puanlama hedefinin döndürülüp döndürülmeyeceğini belirten bir Boole değeri. Varsayılan değer false’tur.|
+|`verbose`|boolean|Tahmin edilen modeller için tüm meta verilerin döndürülüp döndürülmeyeceğini belirten bir Boole değeri. Varsayılan değer false’tur.|
+|`log`|boolean|Daha sonra [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)için kullanılabilen sorguları günlüğe kaydeder. Varsayılan değer false’tur.|
+|`show-all-intents`|boolean|Yalnızca tüm amaçlar veya en üst Puanlama hedefinin döndürülüp döndürülmeyeceğini belirten bir Boole değeri. Varsayılan değer false’tur.|
 
 # <a name="v2-prediction-endpoint"></a>[V2 tahmin uç noktası](#tab/v2)
 
@@ -272,9 +272,9 @@ Sorgu parametreleri, sorgu yanıtında nasıl ve neyin döndürüleceğini yapı
 |--|--|--|
 |`q`|string|Kullanıcının utterliği.|
 |`timezoneOffset`|sayı|Timezonekayması, önceden oluşturulmuş varlık datetimeV2 tarafından kullanılan [saat dilimini değiştirmenize](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) izin verir.|
-|`verbose`|boole|Doğru olarak ayarlandığında tüm hedefleri ve puanlarını döndürür. Varsayılan değer, yalnızca en üst amacı döndüren false ' dır.|
-|`staging`|boole|True olarak ayarlanırsa, hazırlama ortamı sonuçlarından sorgu döndürür. |
-|`log`|boole|Daha sonra [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)için kullanılabilen sorguları günlüğe kaydeder. Varsayılan değer doğru değeridir.|
+|`verbose`|boolean|Doğru olarak ayarlandığında tüm hedefleri ve puanlarını döndürür. Varsayılan değer, yalnızca en üst amacı döndüren false ' dır.|
+|`staging`|boolean|True olarak ayarlanırsa, hazırlama ortamı sonuçlarından sorgu döndürür. |
+|`log`|boolean|Daha sonra [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)için kullanılabilen sorguları günlüğe kaydeder. Varsayılan değer doğru değeridir.|
 
 ***
 

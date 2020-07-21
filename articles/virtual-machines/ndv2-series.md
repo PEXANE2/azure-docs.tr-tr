@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a5b7dea30cff70d5c45460eb8ded2fa370afa2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c298ee691b476fb58c567490ab2e62e45aba3e7c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726599"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526954"
 ---
 # <a name="updated-ndv2-series"></a>NDv2-Series güncelleştirildi
 
@@ -23,9 +24,9 @@ NDv2 örnekleri, CUDA GPU ile iyileştirilmiş hesaplama kernels ' lerini ve Mas
 
 Kritik öneme sahip olan NDv2, her iki hesaplama için de (VM başına 8 GPU) ve genişleme (birden fazla VM birlikte çalışan çok sayıda sanal makine) iş yükleri için oluşturulmuştur. NDv2 serisi artık, AI ve ML için dağıtılmış eğitim dahil olmak üzere paralel senaryolar için yüksek performanslı Kümelemeye izin veren 100-Gigabit InfiniBand EDR arka uç ağını destekler. Bu arka uç ağı, NVıDıA 'nin NCCL2 kitaplıkları tarafından çalıştırılan ve GPU 'Ların sorunsuz kümelemesine izin veren tüm önemli InfiniBand protokollerini destekler.
 
-> ND40rs_v2 VM 'de [InfiniBand etkinleştirilirken](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) lütfen 4.7-1.0.0.1 Mellanox ofed sürücüsünü kullanın.
+> ND40rs_v2 VM 'de [InfiniBand etkinleştirilirken](./workloads/hpc/enable-infiniband.md) lütfen 4.7-1.0.0.1 Mellanox ofed sürücüsünü kullanın.
 >
-> Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) ve Market görüntülerinin kullanılmasını gerektirir. 
+> Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](./windows/generation-2.md) ve Market görüntülerinin kullanılmasını gerektirir. 
 >
 > Lütfen unutmayın: GPU başına 16 GB bellek içeren ND40s_v2 artık önizleme için kullanılamaz ve güncelleştirilmiş ND40rs_v2 yerini almıştır.
 

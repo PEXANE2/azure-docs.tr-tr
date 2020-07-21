@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079896"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524497"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -57,6 +57,9 @@ Azure Portal, **kasa**  >  **Yedekleme altyapısı**  >  **depolama hesapların�
 >Kurtarma Hizmetleri Kasası, yalnızca kasaya kayıtlı tüm depolama hesaplarının kaydı kaldırıldıktan sonra silinebilir.
 
 ## <a name="common-backup-or-restore-errors"></a>Ortak yedekleme veya geri yükleme hataları
+
+>[!NOTE]
+>Yedekleme veya geri yükleme işlemleri gerçekleştirmek için yeterli izinlere sahip olduğunuzdan emin olmak için [Bu belgeye](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup) başvurun.
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>Dosya paylaşma bulunamadığı için FileShareNotFound-Işlem başarısız oldu
 
@@ -313,7 +316,7 @@ Hata kodu: UserErrorBackupAFSInDeleteState
 
 Hata Iletisi: ilişkili Azure dosya paylaşımının kalıcı olarak silindiği için yedekleme başarısız oldu
 
-Yedeklenen dosya paylaşımının kalıcı olarak silinip silinmediğini denetleyin. Yanıt Evet ise, yinelenen yedekleme hatalarından kaçınmak için dosya paylaşımının yedeklemesini durdurun. Korumayı durdurmayı öğrenmek için bkz. [Azure dosya paylaşımının korumasını durdurma](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
+Yedeklenen dosya paylaşımının kalıcı olarak silinip silinmediğini denetleyin. Yanıt Evet ise, yinelenen yedekleme hatalarından kaçınmak için dosya paylaşımının yedeklemesini durdurun. Korumayı durdurmayı öğrenmek için bkz. [Azure dosya paylaşımının korumasını durdurma](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

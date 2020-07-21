@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869327"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525101"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal CloudSimple Portal tarafından kullanılan VMware çözümüne erişin
 
@@ -20,9 +21,9 @@ ms.locfileid: "81869327"
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rollerin, CloudSimple hizmeti 'nin dağıtıldığı kaynak grubunda yapılandırılması gerekir.  Roller, CloudSimple hizmeti nesnesinde de yapılandırılabilir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesi. Yalnızca yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rolün abonelikte yapılandırılması gerekir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access) makalesi.
+Yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rollerin, CloudSimple hizmeti 'nin dağıtıldığı kaynak grubunda yapılandırılması gerekir.  Roller, CloudSimple hizmeti nesnesinde de yapılandırılabilir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](../role-based-access-control/check-access.md) makalesi. Yalnızca yerleşik **sahibi** ve **katkıda bulunan** rollerine sahip kullanıcılar cloudsimple portalına erişebilir.  Rolün abonelikte yapılandırılması gerekir.  Rolünüzü denetleme hakkında daha fazla bilgi için bkz. [rol atamalarını görüntüleme](../role-based-access-control/check-access.md) makalesi.
 
-Özel roller kullanıyorsanız, rol altında aşağıdaki işlemlerden herhangi birine sahip olmalıdır ```Actions``` .  Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  İşlemlerden herhangi biri bir parçasıysa ```NotActions``` , Kullanıcı CloudSimple portalına erişemez.
+Özel roller kullanıyorsanız, rol altında aşağıdaki işlemlerden herhangi birine sahip olmalıdır ```Actions``` .  Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).  İşlemlerden herhangi biri bir parçasıysa ```NotActions``` , Kullanıcı CloudSimple portalına erişemez.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -37,7 +38,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 
 2. **Cloudsimple Hizmetleri**için arama yapın.
 
@@ -70,5 +71,5 @@ Genel yönetici ayrıcalıklarınız varsa, kuruluşunuza izin verebilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel bulut oluşturmayı](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/) öğrenin
+* [Özel bulut oluşturmayı](./create-private-cloud.md) öğrenin
 * [Özel bir bulut ortamını yapılandırmayı](quickstart-create-private-cloud.md) öğrenin

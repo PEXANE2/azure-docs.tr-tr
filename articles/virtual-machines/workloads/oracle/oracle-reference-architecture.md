@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 9125d8d2177b9bc40bb280f414cdfb2797ccf8fe
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221621"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525526"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -37,13 +37,13 @@ Bulutta yüksek kullanılabilirlik elde etmek, her kuruluşun planlama ve tasar�
 
 Oracle Native araçlara ve sunumlarına ek olarak, Oracle [Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), Azure 'da AYARLANABILECEĞI fsfo, [parça](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)ve [altın başak](https://www.oracle.com/middleware/technologies/goldengate.html) [ile Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)gibi yüksek kullanılabilirliğe yönelik çözümler sağlar. Bu kılavuz, bu çözümlerin her biri için başvuru mimarilerini içerir.
 
-Son olarak, bulut için uygulamaları geçirirken veya oluştururken, [yeniden deneme deseni](https://docs.microsoft.com/azure/architecture/patterns/retry) ve [devre kesici deseni](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)gibi bulut Yerel desenleri eklemek için uygulama kodunuzu ince ayar önemlidir. [Bulut tasarım desenleri kılavuzunda](https://docs.microsoft.com/azure/architecture/patterns/) tanımlanan ek desenler uygulamanızın daha dayanıklı olmasını sağlayabilir.
+Son olarak, bulut için uygulamaları geçirirken veya oluştururken, [yeniden deneme deseni](/azure/architecture/patterns/retry) ve [devre kesici deseni](/azure/architecture/patterns/circuit-breaker)gibi bulut Yerel desenleri eklemek için uygulama kodunuzu ince ayar önemlidir. [Bulut tasarım desenleri kılavuzunda](/azure/architecture/patterns/) tanımlanan ek desenler uygulamanızın daha dayanıklı olmasını sağlayabilir.
 
 ### <a name="oracle-rac-in-the-cloud"></a>Bulutta Oracle RAC
 
 Oracle gerçek uygulama kümesi (RAC), bir veritabanı depolamasına (paylaşılan-tüm mimari desenler) erişen çok sayıda örneğe sahip olacak şekilde, müşterilerin yüksek bir geçiş yapmasına yardımcı olmak için Oracle tarafından sağlanan bir çözümdür. Oracle RAC, şirket içi yüksek kullanılabilirlik için de kullanılabilir olsa da, yalnızca örnek düzeyindeki hatalara karşı koruma ve raf düzeyinde ya da veri merkezi düzeyindeki hatalara karşı değil, bulutta yüksek kullanılabilirlik için yalnızca Oracle RAC kullanılamaz. Bu nedenle, Oracle, yüksek kullanılabilirlik için veritabanınızda Oracle Data Guard (tek örnekli veya RAC) kullanmanızı önerir. Müşteriler, iş açısından kritik uygulamalarını çalıştırmak için genellikle yüksek bir SLA gerektirir. Oracle RAC Şu anda Azure 'da Oracle tarafından sertifikalı veya desteklenmiyor. Ancak Azure, örnek düzeyindeki hatalara karşı korumaya yardımcı olmak için Azure gibi Kullanılabilirlik Alanları ve planlı bakım pencereleri sunmaktadır. Bunlara ek olarak müşteriler, veritabanlarını raf düzeyinde ve veri merkezi düzeyi ve coğrafi siyatik arızalardan yararlanarak yüksek performans ve dayanıklılık için Oracle veri koruyucusu, Oracle GoldenGate ve Oracle parçaları gibi teknolojileri de kullanabilir.
 
-Oracle veritabanlarını Oracle Data Guard veya GoldenGate ile birlikte birden çok [kullanılabilirlik](https://docs.microsoft.com/azure/availability-zones/az-overview) alanında çalıştırırken, müşteriler% 99,99 ' lik bir çalışma süresi SLA 'sı alabilir. Kullanılabilirlik bölgelerinin henüz mevcut olmadığı Azure bölgelerinde, müşteriler [kullanılabilirlik kümelerini](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) kullanabilir ve% 99,95 ' lik bir çalışma süresi SLA 'sı elde edebilir.
+Oracle veritabanlarını Oracle Data Guard veya GoldenGate ile birlikte birden çok [kullanılabilirlik](../../../availability-zones/az-overview.md) alanında çalıştırırken, müşteriler% 99,99 ' lik bir çalışma süresi SLA 'sı alabilir. Kullanılabilirlik bölgelerinin henüz mevcut olmadığı Azure bölgelerinde, müşteriler [kullanılabilirlik kümelerini](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) kullanabilir ve% 99,95 ' lik bir çalışma süresi SLA 'sı elde edebilir.
 
 >NOTE: Microsoft tarafından sunulan çalışma süresi SLA 'sına göre çok daha yüksek bir çalışma süresi hedefi olabilir.
 
@@ -51,7 +51,7 @@ Oracle veritabanlarını Oracle Data Guard veya GoldenGate ile birlikte birden �
 
 Görev açısından kritik uygulamalarınızı bulutta barındırırken, yüksek kullanılabilirlik ve olağanüstü durum kurtarma için tasarlamak önemlidir.
 
-Oracle Database Enterprise Edition için Oracle Data Guard olağanüstü durum kurtarma için yararlı bir özelliktir. [Eşlenmiş bir Azure bölgesinde](/azure/best-practices-availability-paired-regions) bir bekleme veritabanı örneği ayarlayabilir ve olağanüstü durum kurtarma Için Data Guard yük devretmesini ayarlayabilirsiniz. Sıfır veri kaybı için, etkin Data Guard 'a ek olarak bir Oracle Data Guard 'a yönelik eşitleme örneği dağıtmanız önerilir. 
+Oracle Database Enterprise Edition için Oracle Data Guard olağanüstü durum kurtarma için yararlı bir özelliktir. [Eşlenmiş bir Azure bölgesinde](../../../best-practices-availability-paired-regions.md) bir bekleme veritabanı örneği ayarlayabilir ve olağanüstü durum kurtarma Için Data Guard yük devretmesini ayarlayabilirsiniz. Sıfır veri kaybı için, etkin Data Guard 'a ek olarak bir Oracle Data Guard 'a yönelik eşitleme örneği dağıtmanız önerilir. 
 
 Uygulamanızın gecikmeye izin vermesi durumunda Data Guard 'ın en çok eşitleme örneğini, Oracle birincil veritabanınızın farklı bir kullanılabilirlik alanında ayarlamayı düşünün (tam test gerekir). Yineleme dosyalarınızın eşzamanlı aktarımını en fazla eşitleme örneğine ayarlamak için **maksimum kullanılabilirlik** modunu kullanın. Daha sonra bu dosyalar, bekleyen veritabanına zaman uyumsuz olarak aktarılır. 
 
@@ -79,7 +79,7 @@ Aşağıdaki diyagram, Azure 'da kullanılabilirlik alanları ile Oracle Data Gu
 
 ![Veri koruma Aracısı ile kullanılabilirlik alanlarını kullanmak Oracle Database-FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-Önceki diyagramda istemci sistemi, Web aracılığıyla Oracle arka ucu ile özel bir uygulamaya erişir. Web ön ucu, bir yük dengeleyicide yapılandırılır. Web ön ucu, çalışmayı işlemek için uygun uygulama sunucusuna bir çağrı yapar. Uygulama sunucusu birincil Oracle veritabanını sorgular. Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../../virtual-machines/windows/sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve yüksek kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
+Önceki diyagramda istemci sistemi, Web aracılığıyla Oracle arka ucu ile özel bir uygulamaya erişir. Web ön ucu, bir yük dengeleyicide yapılandırılır. Web ön ucu, çalışmayı işlemek için uygun uygulama sunucusuna bir çağrı yapar. Uygulama sunucusu birincil Oracle veritabanını sorgular. Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve yüksek kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
 
 Oracle veritabanları, yüksek kullanılabilirlik için birden fazla kullanılabilirlik bölgesine yerleştirilir. Her bölge, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge ayarlanır. Bölge içindeki kullanılabilirlik bölgelerinin fiziksel ayrımı, verileri veri merkezi hatalarından korur. Ayrıca, bir kesinti oluştuğunda veritabanını ikincil üzerinde başlatmak ve yükünü devretmek için iki kullanılabilirlik bölgesinde iki fsfo gözlemcilerin ayarlanır. 
 
@@ -113,7 +113,7 @@ Aşağıdaki diyagram, yüksek kullanılabilirlik ve olağanüstü durum kurtarm
 
 GoldenGate, kuruluş genelinde birden çok farklı platform arasında işlem düzeyindeki verilerin değişimini ve işlemesini mümkün değildir. İşlem bütünlüğü ve mevcut altyapınızdaki en az ek yük ile kaydedilmiş işlemleri hareket ettirir. Modüler mimarisi, seçili veri kayıtlarını, işlemsel değişiklikleri ve DDL 'de yapılan değişiklikleri (veri tanımlama dili) çeşitli topolojilerde ayıklama ve çoğaltma esnekliği sağlar.
 
-Oracle GoldenGate, çift yönlü çoğaltma sağlayarak veritabanınızı yüksek kullanılabilirlik için yapılandırmanızı sağlar. Bu, **çok yöneticili** veya **etkin-etkin bir yapılandırma**ayarlamanıza olanak sağlar. Aşağıdaki diyagram, Azure 'da Oracle GoldenGate etkin-etkin kurulumu için önerilen bir mimaridir. Aşağıdaki mimaride, Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../../virtual-machines/windows/sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
+Oracle GoldenGate, çift yönlü çoğaltma sağlayarak veritabanınızı yüksek kullanılabilirlik için yapılandırmanızı sağlar. Bu, **çok yöneticili** veya **etkin-etkin bir yapılandırma**ayarlamanıza olanak sağlar. Aşağıdaki diyagram, Azure 'da Oracle GoldenGate etkin-etkin kurulumu için önerilen bir mimaridir. Aşağıdaki mimaride, Oracle veritabanı, lisans maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için [Kısıtlanmış çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) olan hiper iş parçacıklı [bellek için iyileştirilmiş bir sanal makine](../../sizes-memory.md) kullanılarak yapılandırılmıştır. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanılır.
 
 ![Veri koruma Aracısı ile kullanılabilirlik alanlarını kullanmak Oracle Database-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure Otomasyonu](..
 
 ## <a name="architecture-and-design-considerations"></a>Mimari ve tasarım konuları
 
-- Lisanslama maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için Oracle Database sanal makinenizin [kısıtlı çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) ile hiper iş parçacıklı [bellek için iyileştirilmiş sanal makine](../../../virtual-machines/windows/sizes-memory.md) kullanmayı düşünün. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanın.
+- Lisanslama maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için Oracle Database sanal makinenizin [kısıtlı çekirdek vCPU 'ları](../../../virtual-machines/windows/constrained-vcpu.md) ile hiper iş parçacıklı [bellek için iyileştirilmiş sanal makine](../../sizes-memory.md) kullanmayı düşünün. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanın.
 - Yönetilen diskler kullanılırken, yeniden başlatmalar üzerinde disk/cihaz adı değişebilir. Takmaların yeniden başlatmalar arasında kalıcı olmasını sağlamak için, ad yerine cihaz UUID 'sini kullanmanız önerilir. [Burada](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)daha fazla bilgi bulabilirsiniz.
 - Bölge içi yüksek kullanılabilirlik elde etmek için kullanılabilirlik alanlarını kullanın.
 - Oracle veritabanınız için Ultra diskler (kullanılabilir olduğunda) veya Premium diskler kullanmayı düşünün.

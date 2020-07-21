@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74684141"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526886"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
 
@@ -28,7 +29,7 @@ Bu sorun giderme kılavuzu, bir Linux VM 'nin önyüklendiği senaryolarda, SSH 
 
 Etkilenen VM 'nin anlık görüntüsünü alın. 
 
-Anlık görüntü, bir **Kurtarma** VM 'sine eklenecektir. **Anlık görüntü**almak için [buradaki](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) yönergeleri izleyin.
+Anlık görüntü, bir **Kurtarma** VM 'sine eklenecektir. **Anlık görüntü**almak için [buradaki](../linux/snapshot-copy-managed-disk.md#use-azure-portal) yönergeleri izleyin.
 
 ## <a name="create-a-rescue-vm"></a>Kurtarma VM 'si oluşturma
 Genellikle aynı veya benzer Işletim sistemi sürümünün bir kurtarma VM 'si önerilir. Etkilenen VM 'nin aynı **bölgesini** ve **kaynak grubunu** kullan
@@ -208,7 +209,7 @@ Gerekirse **çekirdek**
 
 
 ### <a name="example-3---enable-serial-console"></a>Örnek 3-seri konsolu etkinleştir
-Azure seri konsoluna erişim mümkün değilse, Linux VM 'niz için GRUB yapılandırma parametrelerini doğrulayın ve bunları düzeltin. Ayrıntılı bilgiler [Bu belgede](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) bulunabilir
+Azure seri konsoluna erişim mümkün değilse, Linux VM 'niz için GRUB yapılandırma parametrelerini doğrulayın ve bunları düzeltin. Ayrıntılı bilgiler [Bu belgede](./serial-console-grub-proactive-configuration.md) bulunabilir
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Örnek 4-sorunlu LVM takas birimi ile çekirdek yükleme
 
@@ -273,4 +274,4 @@ VM çalışıyorsa disk değiştirme işlemini kapatır, disk değiştirme işle
 
  [Azure seri konsol]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[Tek Kullanıcı modu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[Tek Kullanıcı modu](./serial-console-grub-single-user-mode.md)

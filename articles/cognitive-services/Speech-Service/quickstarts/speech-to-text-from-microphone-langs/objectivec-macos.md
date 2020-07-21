@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma, amaç-C-konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma, hedef-C-konuşma hizmeti (macOS)'
 titleSuffix: Azure Cognitive Services
-description: MacOS 'ta konuşma SDK 'sını kullanarak konuşmayı nasıl anlayacağınızı öğrenin
+description: Bilişsel hizmetler konuşma SDK 'sını kullanarak macOS bilgisayarı için hedef-C ' de konuşmayı tanımak üzere bir uygulama oluşturmayı öğrenin.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: b73925165552fe428be7df465b33701eeed157cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391528"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524242"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak macOS 'ta hedef-C içindeki konuşmayı tanıma
 
@@ -23,7 +23,7 @@ Hızlı başlangıçlara [konuşma birleştirme](~/articles/cognitive-services/S
 
 Bu makalede, bir mikrofondan metne kaydedilen konuşmayı oluşturmak için Azure bilişsel hizmetler konuşma SDK 'sını kullanarak amaç-C ' d e macOS uygulaması oluşturmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629257"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526019"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>Yerel Kullanıcılar ve Gruplar ilkesi grup ilkesi uygulanırken VM yanıt vermiyor
 
@@ -26,7 +27,7 @@ Bu makalede, bir Azure sanal makinesi (VM) başlangıç sırasında bir ilke uyg
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM 'nin bir ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda ekran, "yerel kullanıcılar ve gruplar Ilkesi Grup ilkesi uygulanıyor" iletisiyle takılmış olur.
+VM 'nin bir ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda ekran, "yerel kullanıcılar ve gruplar Ilkesi Grup ilkesi uygulanıyor" iletisiyle takılmış olur.
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Grup ilkesi yerel kullanıcılar ve Gruplar ilkesi yüklemeyi uygulama ekran görüntüsü (Windows Server 2012 R2).":::
 
@@ -57,7 +58,7 @@ Sorunlu ilke aşağıda verilmiştir:
 
 ### <a name="step-1-create-and-access-a-repair-vm"></a>1. Adım: bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.
 2. Onarım sanal makinesine bağlanmak için Uzak Masaüstü Bağlantısı kullanın.
 
 ### <a name="step-2-disable-the-policy"></a>2. Adım: ilkeyi devre dışı bırakma
@@ -139,7 +140,7 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için şu betiği 
 
 ### <a name="step-4-rebuild-the-vm"></a>4. Adım: VM 'yi yeniden oluşturma
 
-VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.
 
 Sorun giderilirse, ilke artık yerel olarak devre dışıdır. Kalıcı bir çözüm için VM 'lerde CleanupProfiles ilkesini kullanmayın. Profil temiztaları gerçekleştirmek için farklı bir yöntem kullanın.
 
@@ -149,4 +150,4 @@ Bu ilkeyi kullanmayın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows Update uyguladığınızda sorunlarla karşılaşırsanız, [Windows Update uygulanırken VM 'nin "C01A001D" hatası ile yanıt vermemeye başladı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update).
+Windows Update uyguladığınızda sorunlarla karşılaşırsanız, [Windows Update uygulanırken VM 'nin "C01A001D" hatası ile yanıt vermemeye başladı](./unresponsive-vm-apply-windows-update.md).

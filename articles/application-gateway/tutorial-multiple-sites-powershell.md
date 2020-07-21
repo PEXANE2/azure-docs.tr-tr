@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b351a828c47058025247a3edd95f31dc6cc84295
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806175"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525016"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell kullanarak birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 > * Etki alanınızda bir CNAME kaydı oluşturma
 
-![Çok siteli yönlendirme örneği](./media/tutorial-multiple-sites-powershell/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Çok siteli Application Gateway":::
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -125,6 +125,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 Uygulama ağ geçidinin trafiği arka uç havuzlarına uygun şekilde yönlendirmesi için dinleyiciler gereklidir. Bu makalede, iki etki alanı için iki dinleyici oluşturacaksınız. *Contoso.com* ve *fabrikam.com* etki alanları için dinleyiciler oluşturulur.
 
 [Yeni-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) kullanarak, önceden oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktasıyla ilk dinleyiciyi oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *contosoRule* adlı temel bir kural oluşturun.
+
+>[!NOTE]
+> Application Gateway veya WAF v2 SKU 'SU ile dinleyici başına 5 adede kadar ana bilgisayar adı yapılandırabilir ve ana bilgisayar adında joker karakterler kullanabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
+>Azure PowerShell kullanarak bir dinleyicide birden çok konak adı ve joker karakter kullanmak için yerine kullanmanız gerekir `-HostNames` `-HostName` . Ana bilgisayar adları ile, virgülle ayrılmış değerler olarak 5 adede kadar konak adı belirtebilirsiniz. Örneğin, `-HostNames "*.contoso.com,*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
