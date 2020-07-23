@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 28080517a33f1bbf9bee3436493f178b60c0d161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601420"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523613"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
 
@@ -155,6 +155,12 @@ Müşteri geçiş isteklerinden bazıları, müşterinin geçerli kurumsal kayı
 Aktarılan Azure aboneliklerinin dizini, CSP ilişkisi oluşturulurken seçilen müşterinin diziniyle eşleşmelidir.
 
 Bu iki dizin eşleşmezse abonelikler aktarılamaz. Azure aboneliklerinin dizinini seçerek veya Azure aboneliklerinin dizinini müşteri CSP ilişkisi diziniyle eşleşecek şekilde değiştirerek müşteriyle yeni bir CSP satıcı ilişkisi oluşturmanız gerekir. Daha fazla bilgi için bkz. [Var olan bir aboneliği Azure AD dizininizle ilişkilendirme](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+
+### <a name="ea-subscription-in-the-non-orgnization-directory"></a>Kuruluş dışındaki dizinde EA aboneliği
+
+Kuruluş dışındaki dizinlerdeki EA abonelikleri, dirinin CSP ile bir kurumsal bayi ilişkisi olması koşuluyla aktarılabilir. Dizinin bir kurumsal bayi ilişkisi yoksa, kuruluş kullanıcısının iş ortağı ilişkisini kabul edebilecek bir *Genel Yönetici* olarak dizinde bulunduğundan emin olmanız gerekir. Kullanıcı adının etki alanı adı bölümünün varsayılan ilk etki alanı adı "[etki alanı adı]. onmicrosoft.com" veya "contoso.com" gibi doğrulanmış, federasyon olmayan bir özel etki alanı adı olmalıdır.  
+
+Yeni kullanıcıyı dizine eklemek için bkz. [Hızlı Başlangıç: Yeni kullanıcıyı AAD dizinine eklemek için Azure Active Directory’ye yeni kullanıcı ekleme](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft İş Ortağı Sözleşmesi’ne erişimi denetleme
 

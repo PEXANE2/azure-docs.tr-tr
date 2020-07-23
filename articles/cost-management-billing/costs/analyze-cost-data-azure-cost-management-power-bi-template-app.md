@@ -3,24 +3,27 @@ title: Power BI uygulamasıyla Azure maliyetlerini analiz etme
 description: Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yükleme ve kullanma adımları gösterilmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/16/2020
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bd5e2c999df180c80c58711a6428678b2bb4fefa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537927"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Kurumsal Anlaşmalar (EA) için Azure Maliyet Yönetimi Power BI uygulamasıyla maliyet analizi
 
 Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yükleme ve kullanma adımları gösterilmektedir. Uygulama, Azure maliyetlerinizi Power BI'da analiz etmenize ve yönetmenize yardımcı olur. Uygulamayı kullanarak maliyetleri ve kullanım eğilimlerini izleyebilir, maliyet iyileştirme seçeneklerini belirleyerek harcamalarınızı azaltabilirsiniz.
 
-Uygulamayı Power BI Desktop'a indirebilirsiniz. Uygulamayı olduğu gibi kullanabilir veya değiştirerek varsayılan filtreleri, görünümleri ve görselleştirmeleri ihtiyaçlarınıza göre özelleştirebilirsiniz. Ardından bunları ek verilerle birleştirebilir ve işletme maliyetinizin genel görünümünü elde etmek için özelleştirilmiş raporlar oluşturabilirsiniz.
+Uygulamayı olduğu gibi kullanabilir veya değiştirerek varsayılan filtreleri, görünümleri ve görselleştirmeleri ihtiyaçlarınıza göre özelleştirebilirsiniz. Ardından bunları ek verilerle birleştirebilir ve işletme maliyetinizin genel görünümünü elde etmek için özelleştirilmiş raporlar oluşturabilirsiniz.
 
 Azure Maliyet Yönetimi Power BI uygulaması şu anda yalnızca [Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/) sahibi müşteriler tarafından kullanılabilir.
+
+> [!NOTE]
+> Power BI şablon uygulamaları, PBIX dosyasının indirilmesini desteklemez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
