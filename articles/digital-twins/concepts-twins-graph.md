@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062053"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -23,7 +23,7 @@ Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital
 
 ## <a name="digital-twins"></a>Dijital TWINS
 
-Azure dijital TWINS Örneğinizde dijital bir ikizi oluşturabilmeniz için önce hizmete bir *modelin* yüklenmiş olması gerekir. Model, diğer şeyler arasında belirli bir ikizi sahip olduğu özellikler, telemetri iletileri ve ilişkiler kümesini açıklar. Bir modelde tanımlanan bilgi türleri için bkz. [Kavramlar: özel modeller](concepts-models.md).
+Azure dijital TWINS Örneğinizde dijital bir ikizi oluşturabilmeniz için önce hizmete bir *modelin* yüklenmiş olması gerekir. Model, diğer şeyler arasında belirli bir ikizi sahip olduğu özellikler, telemetri iletileri ve ilişkiler kümesini açıklar. Bir modelde tanımlanan bilgi türleri için bkz. [*Kavramlar: özel modeller*](concepts-models.md).
 
 Bir modeli oluşturup karşıya yükledikten sonra, istemci uygulamanız türün bir örneğini oluşturabilir; Bu bir dijital ikizi. Örneğin, bir *kat*modeli oluşturduktan sonra bu türü kullanan bir veya birkaç dijital TWINS oluşturabilirsiniz ( *Groundfloor*adlı bir *taban*-tür ikizi gibi, başka bir *Floor2*vb.). 
 
@@ -197,8 +197,8 @@ JSON nesnesi olarak biçimlendirilen bir ilişki örneği aşağıda verilmişti
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. Azure Digital Ikizi API 'Leri ile Graf öğelerini yönetme:
-* [Nasıl yapılır: dijital TWINS 'i yönetme](how-to-manage-twin.md)
-* [Nasıl yapılır: ikizi grafiğini ilişkilerle yönetme](how-to-manage-graph.md)
+* [*Nasıl yapılır: dijital TWINS 'i yönetme*](how-to-manage-twin.md)
+* [*Nasıl yapılır: ikizi grafiğini ilişkilerle yönetme*](how-to-manage-graph.md)
 
 Ya da, Azure Digital TWINS ikizi grafiğini sorgulama hakkında bilgi edinin:
-* [Kavramlar: sorgu dili](concepts-query-language.md)
+* [*Kavramlar: sorgu dili*](concepts-query-language.md)

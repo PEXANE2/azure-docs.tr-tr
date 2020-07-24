@@ -3,16 +3,16 @@ title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm�
 description: Azure 'da var olan veya yeni bir hub ve bağlı olan mimaride Azure VMware çözümü (AVS) dağıtımını tümleştirme önerileri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 82937e04fc0a5101c353702b92b6b068d027d7ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d95ed81c5188eab0dc508f5320549c4a402e151
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85375065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062923"
 ---
 # <a name="integrate-azure-vmware-solution-avs-in-a-hub-and-spoke-architecture"></a>Bir hub ve bağlı bileşen mimarisinde Azure VMware çözümünü (AVS) tümleştirme
 
-Bu makalede, Azure 'da var olan veya yeni bir [hub ve bağlı bileşen mimarisinde](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/shared-services) bir Azure VMware çözümü (AVS) dağıtımını tümleştirmeyle ilgili öneriler sağlıyoruz. 
+Bu makalede, Azure 'da var olan veya yeni bir [hub ve bağlı bileşen mimarisinde](/azure/architecture/reference-architectures/hybrid-networking/shared-services) bir Azure VMware çözümü (AVS) dağıtımını tümleştirmeyle ilgili öneriler sağlıyoruz. 
 
 Hub ve bağlı bileşen senaryosu, üzerinde iş yükleri içeren bir karma bulut ortamı olduğunu varsayar:
 
@@ -24,7 +24,7 @@ Hub ve bağlı bileşen senaryosu, üzerinde iş yükleri içeren bir karma bulu
 
 *Hub* , şirket ıçı ve AVS özel bulutunuz için merkezi bir bağlantı noktası görevi gören bir Azure sanal ağı. Sanal *ağlar, platformlar* arası ağ iletişimini etkinleştirmek için hub ile ilişkilendirilen sanal ağlardır.
 
-Şirket içi veri merkezi, AVS özel bulutu ve hub arasındaki trafik, ExpressRoute bağlantıları üzerinden geçer. Bağlı bileşen sanal ağları genellikle IaaS tabanlı iş yükleri içerir, ancak sanal ağla doğrudan tümleştirme veya [Azure özel bağlantısı](https://docs.microsoft.com/azure/private-link/) etkinleştirilmiş diğer PaaS hizmetleri olan [App Service ortamı](../app-service/environment/intro.md)gibi PaaS hizmetlerine sahip olabilir. 
+Şirket içi veri merkezi, AVS özel bulutu ve hub arasındaki trafik, ExpressRoute bağlantıları üzerinden geçer. Bağlı bileşen sanal ağları genellikle IaaS tabanlı iş yükleri içerir, ancak sanal ağla doğrudan tümleştirme veya [Azure özel bağlantısı](../private-link/index.yml) etkinleştirilmiş diğer PaaS hizmetleri olan [App Service ortamı](../app-service/environment/intro.md)gibi PaaS hizmetlerine sahip olabilir. 
 
 Diyagramda, Azure 'da ExpressRoute aracılığıyla şirket içi ve AVS 'ye bağlı bir hub ve bağlı bileşen dağıtımı örneği gösterilmektedir.
 
@@ -50,7 +50,7 @@ Mimaride aşağıdaki ana bileşenler bulunur:
 
     -   **IaaS bağlı bileşen:** IaaS bağlı bileşeni, VM kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri ve ilgili ağ bileşenleri dahil olmak üzere Azure IaaS tabanlı iş yüklerini barındıracaktır.
 
-    -   **PaaS bağlı bileşen:** PaaS bağlı, özel bir [uç nokta](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ve [özel bağlantı](https://docs.microsoft.com/azure/private-link/private-link-overview)sayesinde özel adresleme kullanarak Azure PaaS hizmetlerini barındırır.
+    -   **PaaS bağlı bileşen:** PaaS bağlı, özel bir [uç nokta](../private-link/private-endpoint-overview.md) ve [özel bağlantı](../private-link/private-link-overview.md)sayesinde özel adresleme kullanarak Azure PaaS hizmetlerini barındırır.
 
 -   **Azure Güvenlik Duvarı:** Bağlı bileşenler, şirket içi ve AVS arasındaki trafiği segmentlere ayırmak için merkezi bir parça olarak davranır.
 
@@ -58,7 +58,7 @@ Mimaride aşağıdaki ana bileşenler bulunur:
 
 ## <a name="network-and-security-considerations"></a>Ağ ve güvenlik konuları
 
-ExpressRoute bağlantıları, trafiği şirket içi, AVS ve Azure ağ yapısı arasında akışa sağlar. AVS bu bağlantıyı uygulamak için [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) kullanır.
+ExpressRoute bağlantıları, trafiği şirket içi, AVS ve Azure ağ yapısı arasında akışa sağlar. AVS bu bağlantıyı uygulamak için [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) kullanır.
 
 Şirket içi bağlantı, ExpressRoute Global Reach de kullanabilir, ancak zorunlu değildir.
 
@@ -72,11 +72,11 @@ ExpressRoute bağlantıları, trafiği şirket içi, AVS ve Azure ağ yapısı a
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="AVS 'den hub 'a sanal ağ trafiği akışı":::
 
 
-AVS [ürün BELGELERINDEKI](https://docs.microsoft.com/azure/azure-vmware/concepts-networking)AVS ağı ve ınterbağlantı kavramları hakkında daha fazla ayrıntı bulabilirsiniz.
+AVS [ürün BELGELERINDEKI](./concepts-networking.md)AVS ağı ve ınterbağlantı kavramları hakkında daha fazla ayrıntı bulabilirsiniz.
 
 ### <a name="traffic-segmentation"></a>Trafik kesimlemesi
 
-[Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/) , hub sanal ağında dağıtılan hub ve bağlı bileşen topolojisinin merkezi parçasıdır. Trafik kuralları oluşturmak ve farklı bağlı bileşenler, şirket içi ve AVS iş yükleri arasındaki iletişimi segmentlere ayırmak için Azure Güvenlik Duvarı veya başka bir Azure desteklenen ağ sanal gereci kullanın.
+[Azure Güvenlik Duvarı](../firewall/index.yml) , hub sanal ağında dağıtılan hub ve bağlı bileşen topolojisinin merkezi parçasıdır. Trafik kuralları oluşturmak ve farklı bağlı bileşenler, şirket içi ve AVS iş yükleri arasındaki iletişimi segmentlere ayırmak için Azure Güvenlik Duvarı veya başka bir Azure desteklenen ağ sanal gereci kullanın.
 
 Trafiği Azure Güvenlik Duvarı 'na yönlendirmek için yol tabloları oluşturun.  Bağlı olan sanal ağlar için, Azure Güvenlik duvarının iç arabirimine varsayılan yolu ayarlayan bir yol oluşturun, bu şekilde sanal ağdaki bir iş yükünün, güvenlik duvarının onu değerlendirebilmesi ve buna izin vermek veya reddetmek için ilgili trafik kuralını uygulamanız gerekir.  
 
@@ -104,7 +104,7 @@ Azure Application Gateway v1 ve v2, bir arka uç havuzu olarak AVS VM 'lerinde �
 
 Hub sanal ağı içindeki paylaşılan hizmet alt ağında dağıtılan bir Windows 10 veya Windows Server VM olan JumpBox ile AVS ortamına erişin.
 
-En iyi güvenlik uygulaması olarak, hub sanal ağı içinde [Microsoft Azure](https://docs.microsoft.com/azure/bastion/) savunma hizmeti dağıtın. Azure savunma, Azure 'da dağıtılan VM 'lere, bu kaynaklara genel IP adresleri sağlamaya gerek kalmadan sorunsuz RDP ve SSH erişimi sağlar. Azure savunma hizmetini sağladığınızda, seçili VM 'ye Azure portal erişebilirsiniz. Bağlantıyı kurduktan sonra, yeni bir sekme açılarak, JumpBox Desktop ' ı gösterir ve bu masaüstünden, AVS özel bulut yönetim düzlemine erişebilirsiniz.
+En iyi güvenlik uygulaması olarak, hub sanal ağı içinde [Microsoft Azure](../bastion/index.yml) savunma hizmeti dağıtın. Azure savunma, Azure 'da dağıtılan VM 'lere, bu kaynaklara genel IP adresleri sağlamaya gerek kalmadan sorunsuz RDP ve SSH erişimi sağlar. Azure savunma hizmetini sağladığınızda, seçili VM 'ye Azure portal erişebilirsiniz. Bağlantıyı kurduktan sonra, yeni bir sekme açılarak, JumpBox Desktop ' ı gösterir ve bu masaüstünden, AVS özel bulut yönetim düzlemine erişebilirsiniz.
 
 > [!IMPORTANT]
 > Sıçrama kutusu VM 'sine genel bir IP adresi vermeyin veya 3389/TCP bağlantı noktasını genel İnternet 'e sunmaz. 
@@ -137,21 +137,19 @@ Azure DNS özel bölgeler için göz önünde bulundurmanız gereken bazı nokta
 
 ## <a name="identity-considerations"></a>Kimlik konuları
 
-Kimlik açısından en iyi yaklaşım, paylaşılan hizmet alt ağını kullanarak hub üzerinde en az bir AD etki alanı denetleyicisi dağıtmaktır. Bu, her ikisi de bölge tarafından dağıtılan veya bir VM kullanılabilirlik kümesidir. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
+Kimlik açısından en iyi yaklaşım, paylaşılan hizmet alt ağını kullanarak hub üzerinde en az bir AD etki alanı denetleyicisi dağıtmaktır. Bu, her ikisi de bölge tarafından dağıtılan veya bir VM kullanılabilirlik kümesidir. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
 
 Ayrıca, sanal Sphere ortamında kimlik ve DNS kaynağı olarak hareket etmek için AVS tarafında başka bir etki alanı denetleyicisi dağıtın.
 
 VCenter ve SSO için, ** \> kimlik \> kimlik kaynaklarını yönetme**üzerinde Azure Portal bir kimlik kaynağı ayarlayın.
 
-Önerilen en iyi yöntem olarak, [ad etki alanını Azure Active Directory ile](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/azure-ad)tümleştirin.
+Önerilen en iyi yöntem olarak, [ad etki alanını Azure Active Directory ile](/azure/architecture/reference-architectures/identity/azure-ad)tümleştirin.
 
 <!-- LINKS - external -->
-[Azure Architecture Center]: https://docs.microsoft.com/azure/architecture/
+[Azure Architecture Center]: /azure/architecture/
 
-[Hub & Spoke topology]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Hub & Spoke topology]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 
-[Azure networking documentation]: https://docs.microsoft.com/azure/networking/
+[Azure networking documentation]: ../networking/index.yml
 
 <!-- LINKS - internal -->
-
-

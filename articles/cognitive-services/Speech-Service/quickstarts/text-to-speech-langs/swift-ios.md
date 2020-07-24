@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Sentezleştirme konuşma, Swift-konuşma hizmeti'
+title: "Hızlı başlangıç: iOS 'ta iOS 'ta konuşma konuşmayla Sentezleştirme"
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK 'sını kullanarak iOS 'ta bir konuşmayı nasıl sentezleyeceğinizi öğrenin
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 8ce7d963e1d4a3514a0e60435634ba4f4a9cb009
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e71717bdacbc3c6eb08fbdc8d56ec19c26a1d114
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391290"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062280"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak iOS 'ta Swift 'ta konuşma Sentezleştirme
 
 Bu makalede, bilişsel hizmetler konuşma SDK 'sını kullanarak Swift 'ta bir iOS uygulamasının nasıl oluşturulduğunu öğrenirsiniz ve metinden konuşmayı sentezleştirme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
 

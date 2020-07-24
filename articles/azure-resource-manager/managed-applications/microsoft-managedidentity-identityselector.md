@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77087550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063396"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. Managedıdentity. ıdentityselector Kullanıcı arabirimi öğesi
 
@@ -19,15 +20,15 @@ Dağıtımdaki bir kaynak için [Yönetilen kimlikler](../../active-directory/ma
 
 Denetim aşağıdaki öğelerden oluşur:
 
-![Microsoft. Managedıdentity. ıdentityselector ilk adım](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+![Microsoft. Managedıdentity. ıdentityselector ilk adım](./media/managed-application-elements/microsoft-managedidentity-identityselector-1.png)
 
 Kullanıcı **Ekle**' yi seçtiğinde aşağıdaki form açılır. Kullanıcı, kaynak için bir veya daha fazla kullanıcı tarafından atanan kimlik seçebilir.
 
-![Microsoft. Managedıdentity. ıdentityselector ikinci adım](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+![Microsoft. Managedıdentity. ıdentityselector ikinci adım](./media/managed-application-elements/microsoft-managedidentity-identityselector-2.png)
 
 Seçili kimlikler tabloda görüntülenir. Kullanıcı bu tablodan öğe ekleyebilir veya silebilir.
 
-![Microsoft. Managedıdentity. ıdentityselector üçüncü adım](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+![Microsoft. Managedıdentity. ıdentityselector üçüncü adım](./media/managed-application-elements/microsoft-managedidentity-identityselector-3.png)
 
 ## <a name="schema"></a>Şema
 

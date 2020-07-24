@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: ce6d8a43b48be5189f0459c9f82c69354f40689f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062605"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -16,7 +16,7 @@ Verilerinizi korumak için uygulayabileceğiniz en önemli adımlardan biri, gü
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Kimlik ve Kullanıcı erişiminin yönetimi ve denetimi
 
-Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Azure Backup, [Azure rol tabanlı Access Control (RBAC)](./backup-rbac-rs-vault.md)kullanarak ayrıntılı erişim aracılığıyla yönetilen işlemleri denetlemenize olanak sağlar. RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
+Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Azure Backup, [Azure rol tabanlı erişim denetimi (Azure RBAC)](./backup-rbac-rs-vault.md)kullanarak ayrıntılı erişim aracılığıyla yönetilen işlemleri denetlemenize olanak sağlar. RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
 
 Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç [yerleşik rol](../role-based-access-control/built-in-roles.md) sağlar:
 

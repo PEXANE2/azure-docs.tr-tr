@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063653"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft. COMPUTE. SizeSelector Kullanıcı arabirimi öğesi
 
@@ -19,11 +20,11 @@ Bir veya daha fazla sanal makine örneği için boyut seçmeye yönelik bir dene
 
 Kullanıcı, öğe tanımından varsayılan değerlerle bir seçici görüyor.
 
-![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft-compute-sizeselector.png)
 
 Denetim seçildikten sonra Kullanıcı, kullanılabilir boyutların genişletilmiş bir görünümünü görür.
 
-![Microsoft. COMPUTE. SizeSelector genişletildi](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
+![Microsoft. COMPUTE. SizeSelector genişletildi](./media/managed-application-elements/microsoft-compute-sizeselector-expanded.png)
 
 ## <a name="schema"></a>Şema
 

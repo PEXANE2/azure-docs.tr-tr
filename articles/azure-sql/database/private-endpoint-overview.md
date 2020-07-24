@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063261"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure özel bağlantısı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ Sonuç bir IP adresinin yukarı olduğunu gösterir; Özel uç nokta için IP ad
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) kullanarak bağlantıyı denetleme
 > [!NOTE]
-> İstemcilerinizin bağlantı dizelerinde sunucunun **tam etki alanı adını (FQDN)** kullanın. Doğrudan IP adresine yapılan oturum açma girişimleri başarısız olur. Özel uç nokta, bölgedeki SQL ağ geçidine giden trafiği yönlendirdiğinden ve oturum açma işleminin başarılı olması için FQDN 'nin belirtilmesi gerektiğinden, bu davranış tasarıma göre yapılır.
+> İstemcileriniz için bağlantı dizelerinde sunucunun **tam etki alanı adını (FQDN)** kullanın ( `<server>.database.windows.net` ). Doğrudan IP adresine yapılan veya özel bağlantı FQDN 'SI () kullanılarak yapılan oturum açma girişimleri `<server>.privatelink.database.windows.net` başarısız olur. Özel uç nokta, bölgedeki SQL ağ geçidine giden trafiği yönlendirdiğinden ve oturum açma işleminin başarılı olması için doğru FQDN 'nin belirtilmesi gerektiğinden, bu davranış tasarıma göre yapılır.
 
 [SQL veritabanına bağlanmak Için SSMS](connect-query-ssms.md)'yi kullanmak için buradaki adımları izleyin. SSMS kullanarak SQL veritabanına bağlandıktan sonra, aşağıdaki sorguyu çalıştırarak Azure VM 'nin özel IP adresinden bağlandığınızı doğrulayın:
 
