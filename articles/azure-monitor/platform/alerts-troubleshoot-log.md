@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b8edbbc397a56f4fcf5b3ae070f04ca61659d98d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045355"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları sorunlarını giderme  
 
 Bu makalede, Azure Izleyici 'de günlük uyarılarla ilgili yaygın sorunları nasıl giderecağınızı gösterilmektedir. Ayrıca, günlük uyarılarının işlevleri ve yapılandırmasıyla ilgili sık karşılaşılan sorunlara çözümler sağlar.
 
-*Günlük uyarıları* , [Azure Log Analytics çalışma](../learn/tutorial-viewdata.md) alanındaki veya [Azure Application Insights](../../azure-monitor/app/analytics.md)bir günlük sorgusuna dayalı olarak başlatılan kuralları açıklar. [Azure izleyici 'de günlük uyarılarında](../platform/alerts-unified-log.md)işlevsellik, terminoloji ve türler hakkında daha fazla bilgi edinin.
+*Günlük uyarıları* , [Azure Log Analytics çalışma](../log-query/get-started-portal.md) alanındaki veya [Azure Application Insights](../log-query/log-query-overview.md)bir günlük sorgusuna dayalı olarak başlatılan kuralları açıklar. [Azure izleyici 'de günlük uyarılarında](../platform/alerts-unified-log.md)işlevsellik, terminoloji ve türler hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Bu makalede, Azure portal tetiklenen bir uyarı kuralı gösterdiği ve ilişkili bir eylem grubu tarafından bir bildirim gerçekleştirilmediği durumlar dikkate almaz. Bu gibi durumlarda, [Azure Portal eylem grupları oluşturma ve yönetme](../platform/action-groups.md)içindeki ayrıntılara bakın.
@@ -28,7 +28,7 @@ Bu makalede, Azure Izleyici 'de günlük uyarılarla ilgili yaygın sorunları n
 
 ### <a name="data-ingestion-time-for-logs"></a>Günlükler için veri alımı süresi
 
-Bir günlük uyarısı, sorgunuzu [Log Analytics](../learn/tutorial-viewdata.md) veya [Application Insights](../../azure-monitor/app/analytics.md)göre düzenli olarak çalıştırır. Azure Izleyici, dünyanın dört bir yanındaki binlerce müşterinin birçok terabayta veri işlediği için hizmet, değişen zaman gecikmelerine açıktır. Daha fazla bilgi için bkz. [Azure izleyici günlüklerinde veri alma süresi](../platform/data-ingestion-time.md).
+Bir günlük uyarısı, sorgunuzu [Log Analytics](../log-query/get-started-portal.md) veya [Application Insights](../log-query/log-query-overview.md)göre düzenli olarak çalıştırır. Azure Izleyici, dünyanın dört bir yanındaki binlerce müşterinin birçok terabayta veri işlediği için hizmet, değişen zaman gecikmelerine açıktır. Daha fazla bilgi için bkz. [Azure izleyici günlüklerinde veri alma süresi](../platform/data-ingestion-time.md).
 
 Gecikme süresini azaltmak için sistem, gerekli verileri bulmadığında uyarı sorgusunu birden çok kez bekler ve yeniden dener. Sistem, bir bekleme süresi kümesini üstel olarak artırır. Günlük uyarısı yalnızca veriler kullanılabilir olduktan sonra tetiklenir. bu nedenle gecikme, günlük verilerinin yavaş alımı nedeniyle olabilir.
 
@@ -99,7 +99,7 @@ Bir analiz sorgusunda günlük uyarıları mantığını sağlarsınız. Analiz 
 
 ![Yürütülecek sorgu](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-**Yürütülecek sorgu** , günlük uyarı hizmetinin çalışma çalışmasıdır. Uyarıyı oluşturmadan önce uyarı sorgusu çıkışının ne olabileceğini anlamak istiyorsanız, belirtilen sorguyu ve TimeSpan 'yi [analiz portalı](../log-query/portals.md) veya [analiz API 'si](https://docs.microsoft.com/rest/api/loganalytics/)aracılığıyla çalıştırabilirsiniz.
+**Yürütülecek sorgu** , günlük uyarı hizmetinin çalışma çalışmasıdır. Uyarıyı oluşturmadan önce uyarı sorgusu çıkışının ne olabileceğini anlamak istiyorsanız, belirtilen sorguyu ve TimeSpan 'yi [analiz portalı](../log-query/log-query-overview.md) veya [analiz API 'si](/rest/api/loganalytics/)aracılığıyla çalıştırabilirsiniz.
 
 ## <a name="log-alert-was-disabled"></a>Günlük uyarısı devre dışı bırakıldı
 
@@ -181,15 +181,48 @@ Azure Izleyici 'de yapılandırmanın bir parçası olarak oluşturulan her gün
 - Sorgu [birden fazla kaynak arasında çalışacak](../log-query/cross-workspace-query.md)şekilde yazılmıştır. Ve belirtilen kaynaklardan bir veya daha fazlası artık yok.
 - [Ölçüm Ölçüm türü günlük uyarısıyla](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) yapılandırılan bir uyarı sorgusu, Norms sözdizimiyle uyumlu değil
 - Analiz platformunda veri akışı yoktu. Sorgu yürütme, belirtilen sorgu için veri bulunmadığından [bir hata veriyor](https://dev.loganalytics.io/documentation/Using-the-API/Errors) .
-- [Sorgu dilindeki](https://docs.microsoft.com/azure/kusto/query/) değişiklikler, komutlar ve işlevler için düzeltilmiş bir biçim içerir. Bu nedenle, daha önce bir uyarı kuralında sağlanmış olan sorgu artık geçerli değildir.
+- [Sorgu dilindeki](/azure/kusto/query/) değişiklikler, komutlar ve işlevler için düzeltilmiş bir biçim içerir. Bu nedenle, daha önce bir uyarı kuralında sağlanmış olan sorgu artık geçerli değildir.
 
 [Azure Advisor](../../advisor/advisor-overview.md) bu davranışla ilgili olarak sizi uyarır. Orta etki ile yüksek kullanılabilirlik kategorisi ve "izlemeyi sağlamak için günlük uyarı kuralınızı onarma" açıklaması altında, Azure Advisor 'daki belirli günlük uyarısı kuralı için bir öneri eklenmiştir.
 
 > [!NOTE]
 > Azure Advisor yedi gün boyunca bir öneri sağladıktan sonra günlük uyarı kuralında bir uyarı sorgusu yoksa, Azure Izleyici günlük uyarısını devre dışı bırakır ve kural boyutlandırılabilir bir süre (7 gün) için sürekli olarak çalışmazsa gereksiz yere faturalandırılmazsınız. Azure Izleyici günlük uyarı kuralını [Azure etkinlik günlüğünde](../../azure-resource-manager/management/view-activity-logs.md)bir olay arayarak devre dışı bıraktığınız zaman tam zamanı bulabilirsiniz.
 
+## <a name="alert-rule-quota-was-reached"></a>Uyarı kuralı kotasına ulaşıldı
+
+Abonelik ve kaynak başına günlük arama uyarı kuralları sayısı [burada](https://docs.microsoft.com/azure/azure-monitor/service-limits)açıklanan kota sınırlarına tabidir.
+
+### <a name="recommended-steps"></a>Önerilen Adımlar
+    
+Kota sınırına ulaştıysanız, aşağıdaki adımlar sorunu çözmeye yardımcı olabilir.
+
+1. Artık kullanılmayan günlük arama uyarısı kurallarını silmeyi veya devre dışı bırakmayı deneyin.
+2. Kota sınırınızın artırılmasını istiyorsanız lütfen bir destek isteği açın ve şu bilgileri sağlayın:
+
+    - Kota sınırının artırılmasını istediğiniz aboneliklerin kimlikleri
+    - Kota artışı nedeni
+    - Kota artışı için kaynak türü: **Log Analytics**, **Application Insights** ect.
+    - İstenen kota sınırı
+
+
+### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>Yeni günlük uyarı kurallarının geçerli kullanımını denetlemek için
+    
+#### <a name="from-the-azure-portal"></a>Azure portalından
+
+1. *Uyarılar* ekranını açıp *Uyarı kurallarını yönetin*'e tıklayın
+2. *Abonelik* açılan menüsünü kullanarak ilgili aboneliği filtreleyin
+3. Belirli bir kaynak grubu, kaynak türü veya kaynak için filtreleme yapmadığınızdan emin olun
+4. *Sinyal türü* açılan kutusunda ' günlük arama ' yı seçin.
+5. *Durum* açılan menüsünün "Etkin" olduğunu doğrulayın
+6. Günlük araması uyarı kurallarının toplam sayısı, kurallar listesinin üzerinde görüntülenir
+
+#### <a name="from-api"></a>API'den
+
+- PowerShell- [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST API - [Aboneliğe göre listeleme](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/listbysubscription)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da günlük uyarıları](../platform/alerts-unified-log.md)hakkında bilgi edinin.
-- [Application Insights](../../azure-monitor/app/analytics.md)hakkında daha fazla bilgi edinin.
+- [Application Insights](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.

@@ -4,11 +4,12 @@ description: Application Insights, uygulama telemetrinizin akıllı analizini ya
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045798"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
@@ -33,7 +34,7 @@ Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelm
 
 ## <a name="how-do-i-fix-it"></a>Nasıl düzeltebilirim?
 
-Bildirimler tanılama bilgilerini içerir. İşte bir örnek:
+Bildirimler tanılama bilgilerini içerir. Aşağıda bir örnek verilmiştir:
 
 
 ![Sunucu yanıt süresi düşme algılamasında bir örnek aşağıda verilmiştir](media/proactive-performance-diagnostics/server_response_time_degradation.png)
@@ -48,7 +49,7 @@ Bildirimler tanılama bilgilerini içerir. İşte bir örnek:
 
 ## <a name="configure-email-notifications"></a>E-posta bildirimlerini yapılandırma
 
-Akıllı algılama bildirimleri varsayılan olarak etkindir ve [Izleme okuyucusu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) olan ve Application Insights kaynağının bulunduğu aboneliğe [katkıda bulunan erişimi izleyen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) kullanıcılara gönderilir. Bunu değiştirmek için e-posta bildiriminde **Yapılandır** ' a tıklayın veya Application Insights akıllı algılama ayarları ' nı açın. 
+Akıllı algılama bildirimleri varsayılan olarak etkindir ve [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) olan ve Application Insights kaynağının bulunduğu aboneliğe [katkıda bulunan erişimi izleyen](../../role-based-access-control/built-in-roles.md#monitoring-contributor) kullanıcılara gönderilir. Bunu değiştirmek için e-posta bildiriminde **Yapılandır** ' a tıklayın veya Application Insights akıllı algılama ayarları ' nı açın. 
   
   ![Akıllı algılama ayarları](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -69,12 +70,12 @@ Akıllı algılamalar performans bozuklukları hakkındaki e-postalar Applicatio
 * *Kendi anomali algılama kurallarımı oluşturabilir veya mevcut kuralları özelleştirebilir miyim?*
 
   * Henüz değil, ancak şunları yapabilirsiniz:
-    * Bir metriğin bir eşiği ne zaman kesiştiği hakkında bilgi veren [uyarıları ayarlayın](/azure/azure-monitor/platform/alerts-log) .
+    * Bir metriğin bir eşiği ne zaman kesiştiği hakkında bilgi veren [uyarıları ayarlayın](../platform/alerts-log.md) .
     * [Telemetriyi](../../azure-monitor/app/export-telemetry.md) bir [veritabanına](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) veya [Power BI için](../../azure-monitor/app/export-power-bi.md )kendi kendinize analiz edebilirsiniz.
 * *Analiz ne sıklıkta gerçekleştirildi?*
 
   * Analizi, önceki günün telemetri gününde (UTC saat diliminde tam gün) çalıştırdık.
-* *Bunun için [ölçüm uyarıları](/azure/azure-monitor/platform/alerts-log)değiştirilsin mi?*
+* *Bunun için [ölçüm uyarıları](../platform/alerts-log.md)değiştirilsin mi?*
   * Hayır.  Olağan dışı olarak düşünebileceğiniz her davranışı saptamak için çalışmayız.
 
 
@@ -175,9 +176,9 @@ Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur
 * [Profil Oluşturucu](profiler.md) 
 * [Anlık görüntü hata ayıklayıcısı](../../azure-monitor/app/snapshot-debugger.md)
 * [Analiz](../../azure-monitor/log-query/get-started-portal.md)
-* [Analytics akıllı tanılama](../../azure-monitor/app/analytics.md)
+* [Analytics akıllı tanılama](../log-query/log-query-overview.md)
 
 Akıllı algılamalar tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
-* [El ile yapılandırılmış ölçüm uyarıları](/azure/azure-monitor/platform/alerts-log)
+* [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
 * [Kullanılabilirlik web testleri](../../azure-monitor/app/monitor-web-app-availability.md)

@@ -3,11 +3,12 @@ title: Sürekli video kaydı-Azure
 description: Sürekli video kaydı (CVR), videoyu bir video kaynağından sürekli kaydetme sürecini ifade eder. Bu konu, CVR 'nin ne olduğunu anlatmaktadır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043309"
 ---
 # <a name="continuous-video-recording"></a>Sürekli video kaydı  
 
@@ -33,7 +34,7 @@ IoT Edge üzerindeki canlı video analizi, sınır cihazının zaman zaman bulut
     "localMediaCacheMaximumSizeMiB": "2048",
     "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
-İkinci iki özellik dayanıklı kayıt ile ilgilidir (her ikisi de bir varlık havuz düğümü için gereken özelliklerdir). LocalMediaCachePath özelliği, varlık havuzuna, kıymete yüklemeden önce medya verilerini önbelleğe almak için bu klasör yolunu kullanmasını söyler. Edge modülünün cihazınızın yerel depolama alanını nasıl kullanabileceğini anlamak için [Bu](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module) makaleye bakabilirsiniz. LocalMediaCacheMaximumSizeMiB özelliği, varlık havuzunun ne kadar disk alanının önbellek olarak kullanılabileceğini tanımlar (1 MIB = 1024 * 1024 bayt). 
+İkinci iki özellik dayanıklı kayıt ile ilgilidir (her ikisi de bir varlık havuz düğümü için gereken özelliklerdir). LocalMediaCachePath özelliği, varlık havuzuna, kıymete yüklemeden önce medya verilerini önbelleğe almak için bu klasör yolunu kullanmasını söyler. Edge modülünün cihazınızın yerel depolama alanını nasıl kullanabileceğini anlamak için [Bu](../../iot-edge/how-to-access-host-storage-from-module.md) makaleye bakabilirsiniz. LocalMediaCacheMaximumSizeMiB özelliği, varlık havuzunun ne kadar disk alanının önbellek olarak kullanılabileceğini tanımlar (1 MIB = 1024 * 1024 bayt). 
 
 Edge modülünüzün bağlantısı çok uzun bir süredir kaybolursa ve önbellek klasöründe depolanan içerik localMediaCacheMaximumSizeMiB değerine ulaşırsa, varlık havuzu en eski verilerden başlayarak önbellekten veri atmaya başlayacaktır. Örneğin, cihaz 10:00 ' da bağlantı kesildiğinde ve önbellek, 00 ' da maksimum sınıra rastlısa, varlık havuzu 10:00 ' da kaydedilen verileri silmeye başlar. 
 

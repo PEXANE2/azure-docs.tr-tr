@@ -1,6 +1,6 @@
 ---
-title: Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin | Microsoft Docs
-description: Node. js kullanarak Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazına bağlanın ve bunlarla etkileşime geçin.
+title: Çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin-Node.js | Microsoft Docs
+description: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan önizleme cihazına bağlanmak ve bunlarla etkileşim kurmak için Node.js kullanın.
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 9962763e647faddc5a2179f304aeb3fa8ca256e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f86ae8ffefa88fe1cdfa429b7de4671422839ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75550749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044006"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (node. js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, Node. js ' nin çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için nasıl kullanılacağı gösterilmektedir.
+IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için Node.js nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Node. js gerekir. [NodeJS.org](https://nodejs.org)adresinden birden çok platform için önerilen en son sürümü indirebilirsiniz.
+Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Node.js gerekir. [NodeJS.org](https://nodejs.org)adresinden birden çok platform için önerilen en son sürümü indirebilirsiniz.
 
 Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürümünü doğrulayabilirsiniz:
 
@@ -43,9 +43,9 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="run-the-sample-device"></a>Örnek cihazı çalıştırma
 
-Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node. js ' de yazılmış bir örnek ortam algılayıcısı kullanırsınız. Aşağıdaki yönergelerde, cihazın nasıl yükleneceği ve çalıştırılacağı gösterilmektedir:
+Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node.js yazılmış bir örnek ortam algılayıcısı kullanırsınız. Aşağıdaki yönergelerde, cihazın nasıl yükleneceği ve çalıştırılacağı gösterilmektedir:
 
-1. Seçtiğiniz dizinde bir Terminal penceresi açın. [Node. js GitHub deposu Için Azure IoT örneklerini](https://github.com/azure-samples/azure-iot-samples-node) bu konuma kopyalamak için aşağıdaki komutu yürütün:
+1. Seçtiğiniz dizinde bir Terminal penceresi açın. Node.jsGitHub deposunun [Azure IoT örneklerini](https://github.com/azure-samples/azure-iot-samples-node) bu konuma kopyalamak için aşağıdaki komutu yürütün:
 
     ```cmd/sh
     git clone https://github.com/azure-samples/azure-iot-samples-node
@@ -73,7 +73,7 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node. js ' de yazıl
 
 ## <a name="run-the-sample-solution"></a>Örnek çözümü çalıştırma
 
-Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de örnek bir IoT çözümü kullanırsınız.
+Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node.js bir örnek IoT çözümü kullanırsınız.
 
 1. Başka bir Terminal penceresi açın (Bu _hizmet_ terminalinize eklenecektir). Klonlanmış deponuzdaki klasöre gidin ve **/Azure-iot-Samples-node/Digital-Twins/QuickStarts/Service** klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
 
@@ -95,7 +95,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     reported state property as online
     ```
 
-1. **/Azure-iot-Samples-node/Digital-Twins/QuickStarts/Service** klasöründe **get_digital_twin. js**dosyasını açın. `<DEVICE_ID_GOES_HERE>` Yer TUTUCUSUNU cihaz Kimliğinizle değiştirin ve dosyayı kaydedin.
+1. **/Azure-iot-Samples-node/Digital-Twins/QuickStarts/Service** klasöründe **get_digital_twin.js**dosyasını açın. `<DEVICE_ID_GOES_HERE>`Yer tutucusunu CIHAZ Kimliğinizle değiştirin ve dosyayı kaydedin.
 
 1. _Hizmet_ terminaline gidin ve cihaz bilgilerini okumak üzere örneği çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -103,7 +103,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     node get_digital_twin.js
     ```
 
-1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşene kaydırın. `state` Özelliğin _çevrimiçi_olarak raporlanmışsa görürsünüz:
+1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşene kaydırın. `state`Özelliğin _çevrimiçi_olarak raporlanmışsa görürsünüz:
 
     ```JSON
     "environmentalSensor": {
@@ -120,9 +120,9 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
 
 ### <a name="update-a-writable-property"></a>Yazılabilir bir özelliği güncelleştirme
 
-1. **Update_digital_twin_property. js**dosyasını açın.
+1. **update_digital_twin_property.js**dosyasını açın.
 
-1. Dosyanın başlangıcında, büyük yertutucuları ile tanımlanmış sabitler kümesi vardır. `<DEVICE_ID_GOES_HERE>` Yer tutucusunu gerçek cihaz Kimliğinizle değiştirin, kalan sabitleri aşağıdaki değerlerle güncelleştirin ve dosyayı kaydedin:
+1. Dosyanın başlangıcında, büyük yertutucuları ile tanımlanmış sabitler kümesi vardır. `<DEVICE_ID_GOES_HERE>`Yer tutucusunu gerçek CIHAZ Kimliğinizle değiştirin, kalan sabitleri aşağıdaki değerlerle güncelleştirin ve dosyayı kaydedin:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';
@@ -136,7 +136,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     node update_digital_twin_property.js
     ```
 
-1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. 42 'nin yeni `environmentalSensor` parlaklık değerini görmek için bileşene kaydırın.
+1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. `environmentalSensor`42 'nin yeni parlaklık değerini görmek için bileşene kaydırın.
 
     ```json
     "environmentalSensor": {
@@ -168,7 +168,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
     node get_digital_twin.js
     ```
 
-3. _Hizmet_ terminali çıkışında, `environmentalSensor` bileşen altında, güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
+3. _Hizmet_ terminali çıkışında, bileşen altında, `environmentalSensor` Güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
     
     ```json
     "environmentalSensor": {
@@ -198,9 +198,9 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Node. js ' de 
 
 ### <a name="invoke-a-command"></a>Komut çağırma
 
-1. **İnvoke_command. js**dosyasını açın.
+1. **invoke_command.js**dosyasını açın.
 
-1. Dosyanın başlangıcında, `<DEVICE_ID_GOES_HERE>` yer tutucusunu gerçek cihaz Kimliğinizle değiştirin. Kalan sabitleri aşağıdaki değerlerle güncelleştirin ve sonra dosyayı kaydedin:
+1. Dosyanın başlangıcında, `<DEVICE_ID_GOES_HERE>` yer tutucusunu gerçek CIHAZ Kimliğinizle değiştirin. Kalan sabitleri aşağıdaki değerlerle güncelleştirin ve sonra dosyayı kaydedin:
 
     ```javascript
     const interfaceInstanceName = 'environmentalSensor';

@@ -14,16 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b28e200cab2edb4c1f603e4c67264cdc1c46d7f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042856"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services kullanarak canlı akışa genel bakış
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -80,9 +81,9 @@ Aşağıdaki tabloda, Media Services desteklenen iki kanal türünü Karşılaş
 | En fazla çalışma süresi |7x24 |8 saat |
 | SLA ekleme desteği |Hayır |Evet |
 | Ad sinyali için destek |Hayır |Evet |
-| Geçiş CEA 608/708 açıklamalı alt yazılar |Evet |Yes |
-| Tekdüzen olmayan giriş GOPs desteği |Evet |Hayır – giriş sabit 2sec GOPs olmalıdır |
-| Değişken çerçeve hızı girişi desteği |Evet |Hayır – giriş sabit kare oranı olmalıdır.<br/>Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak kodlayıcı 10 kare/sn 'ye bırakamıyor. |
+| Geçiş CEA 608/708 açıklamalı alt yazılar |Yes |Yes |
+| Tekdüzen olmayan giriş GOPs desteği |Yes |Hayır – giriş sabit 2sec GOPs olmalıdır |
+| Değişken çerçeve hızı girişi desteği |Yes |Hayır – giriş sabit kare oranı olmalıdır.<br/>Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak kodlayıcı 10 kare/sn 'ye bırakamıyor. |
 | Giriş akışı kaybedildiği zaman kanalların otomatik olarak kaybolması |Hayır |12 saat sonra, çalışan bir program yoksa |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan Kanallar ile çalışma (doğrudan geçiş)
@@ -105,7 +106,7 @@ Daha fazla bilgi için bkz. [Azure Media Services ile Gerçek Zamanlı Kodlama G
 
 ### <a name="channel"></a>Kanal
 
-Media Services, [Kanal](https://docs.microsoft.com/rest/api/media/operations/channel)s 'ler canlı akış içeriğini işlemeden sorumludur. Kanal, daha sonra canlı bir transcoder için sağladığınız bir giriş uç noktası (alma URL 'SI) sağlar. Kanal Canlı geçiş aşamasından canlı giriş akışları alır ve bir veya daha fazla StreamingEndpoints aracılığıyla akış için kullanılabilir hale getirir. Kanallar Ayrıca, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar.
+Media Services, [Kanal](/rest/api/media/operations/channel)s 'ler canlı akış içeriğini işlemeden sorumludur. Kanal, daha sonra canlı bir transcoder için sağladığınız bir giriş uç noktası (alma URL 'SI) sağlar. Kanal Canlı geçiş aşamasından canlı giriş akışları alır ve bir veya daha fazla StreamingEndpoints aracılığıyla akış için kullanılabilir hale getirir. Kanallar Ayrıca, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar.
 
 Kanalı oluştururken alma URL 'sini ve önizleme URL 'sini alabilirsiniz. Bu URL 'Leri almak için kanalın başlatılmış durumda olması gerekmez. Canlı bir transleyici 'den kanala veri göndermeye başlamak için, kanalın başlatılmış olması gerekir. Canlı dönüştürücü verileri almaya başladıktan sonra, akışınızı önizleyebilirsiniz.
 
@@ -114,7 +115,7 @@ Her Media Services hesap birden çok kanal, birden çok program ve birden çok S
 Bir kanal oluştururken, izin verilen IP adreslerini aşağıdaki biçimlerden birinde belirtebilirsiniz: IPv4 adresi 4 sayı, CıDR adres aralığı.
 
 ### <a name="program"></a>Program
-Bir [Program](https://docs.microsoft.com/rest/api/media/operations/program) canlı bir akışta parçaların yayımlanmasını ve depolanmasını denetlemenize olanak sağlar. Kanallar, Programları yönetir. Kanal ve Program arasındaki ilişki, kanalın sürekli bir içerik akışının bulunduğu ve programın bu kanalda zamanlanmış bir olayı kapsadığı geleneksel medyadaki ilişkiye benzer.
+Bir [Program](/rest/api/media/operations/program) canlı bir akışta parçaların yayımlanmasını ve depolanmasını denetlemenize olanak sağlar. Kanallar, Programları yönetir. Kanal ve Program arasındaki ilişki, kanalın sürekli bir içerik akışının bulunduğu ve programın bu kanalda zamanlanmış bir olayı kapsadığı geleneksel medyadaki ilişkiye benzer.
 **ArchiveWindowLength** özelliğini ayarlayarak program için kaydedilen içeriği bekletmek istediğiniz saat sayısını belirtebilirsiniz. Bu değer en az 5 dakika, en çok 25 saat olarak ayarlanabilir.
 
 ArchiveWindowLength Ayrıca, istemcilerin geçerli canlı konumdan zaman içinde arayamayacak maksimum süreyi belirler. Olaylar belirtilen süre miktarından uzun sürebilir, ancak pencere uzunluğunun gerisine düşen içerik sürekli olarak atılır. Bu özelliğin değeri, istemci bildirimlerinin ne kadar büyüyeceğini de belirler.

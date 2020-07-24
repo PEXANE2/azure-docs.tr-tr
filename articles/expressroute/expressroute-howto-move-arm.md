@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: charwen
-ms.openlocfilehash: 5c4bbdde04176edf693fc58d172a7dcc250c495a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d094f614cbaf75158c38b86345fd5f925310d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039319"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute devrelerini klasik bilgisayardan Kaynak Yöneticisi dağıtım modeline PowerShell kullanarak taşıma
 
@@ -21,7 +22,7 @@ Hem klasik hem de Kaynak Yöneticisi dağıtım modelleri için bir ExpressRoute
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* Bilgisayarınızda hem klasik hem de az Azure PowerShell modüllerini yüklediğinizi doğrulayın. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+* Bilgisayarınızda hem klasik hem de az Azure PowerShell modüllerini yüklediğinizi doğrulayın. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/).
 * Yapılandırmaya başlamadan önce [önkoşulları](expressroute-prerequisites.md), [yönlendirme gereksinimlerini](expressroute-routing.md)ve [iş akışlarını](expressroute-workflows.md) gözden geçirdiğinizden emin olun.
 * [Bir ExpressRoute bağlantı hattını klasik ' ten Kaynak Yöneticisi taşıma](expressroute-move.md)altında sunulan bilgileri gözden geçirin. Sınırları ve sınırlamaları tam olarak anladığınızdan emin olun.
 * Devreninin klasik dağıtım modelinde tam olarak çalıştığını doğrulayın.

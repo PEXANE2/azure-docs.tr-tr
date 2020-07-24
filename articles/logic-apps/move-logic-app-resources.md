@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039168"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Mantıksal uygulama kaynaklarını diğer Azure Kaynak gruplarına, bölgelerine veya aboneliklerine taşıyın
 
@@ -27,7 +27,7 @@ Mantıksal uygulamanızı veya ilgili kaynaklarınızı başka bir Azure Kaynak 
 
 * Bir [tümleştirme hizmeti ortamını (ıSE)](connect-virtual-network-vnet-isolated-environment-overview.md) yalnızca aynı Azure bölgesinde veya Azure aboneliğinde bulunan başka bir kaynak grubuna taşıyabilirsiniz. ISE 'yi farklı bir Azure bölgesinde veya Azure aboneliğinde bulunan bir kaynak grubuna taşıyamazsınız. Ayrıca, bu tür bir taşıma işleminden sonra mantıksal uygulama iş akışlarınızda, tümleştirme hesaplarınızda, bağlantılarında ve bu durumda yer alan tüm başvuruları güncelleştirmeniz gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Taşımak istediğiniz mantıksal uygulamayı veya tümleştirme hesabını oluşturmak için kullanılan aynı Azure aboneliği
 
@@ -94,7 +94,7 @@ Azure 'daki şirket içi veri ağ geçidi kaynakları gibi bazı Azure kaynaklar
 
 Örneğin, bir mantıksal uygulamayı bir tümleştirme hesabına bağlamak için her iki kaynağın de aynı bölgede bulunması gerekir. Olağanüstü durum kurtarma gibi senaryolarda, genellikle aynı yapılandırmaya ve yapıtlara sahip tümleştirme hesapları isteyeceksiniz. Diğer senaryolarda, farklı yapılandırmalara ve yapıtlara sahip tümleştirme hesaplarına ihtiyacınız bulunabilir.
 
-Azure Logic Apps içindeki özel bağlayıcılar, aynı Azure aboneliğine ve aynı Azure Active Directory kiracısına sahip olan bağlayıcıların yazarları ve kullanıcıları tarafından görülebilir. Bu bağlayıcılar, Logic Apps 'in dağıtıldığı bölgede kullanılabilir. Daha fazla bilgi için bkz. [Kuruluşunuzda özel bağlayıcıları paylaşma](https://docs.microsoft.com/connectors/custom-connectors/share).
+Azure Logic Apps içindeki özel bağlayıcılar, aynı Azure aboneliğine ve aynı Azure Active Directory kiracısına sahip olan bağlayıcıların yazarları ve kullanıcıları tarafından görülebilir. Bu bağlayıcılar, Logic Apps 'in dağıtıldığı bölgede kullanılabilir. Daha fazla bilgi için bkz. [Kuruluşunuzda özel bağlayıcıları paylaşma](/connectors/custom-connectors/share).
 
 Visual Studio 'dan alacağınız şablon yalnızca mantıksal uygulamanız ve bağlantıları için kaynak tanımları içerir. Bu nedenle, mantıksal uygulamanız diğer kaynakları (örneğin, iş ortakları, sözleşmeler ve şemalar gibi bir tümleştirme hesabı ve B2B yapıları) kullanıyorsa, Azure portal kullanarak bu tümleştirme hesabının şablonunu dışarı aktarmanız gerekir. Bu şablon hem tümleştirme hesabı hem de yapıtları için kaynak tanımları içerir. Ancak, şablon tamamen parametreli değildir. Bu nedenle, dağıtım için kullanmak istediğiniz değerleri el ile parametreleştirebilirsiniz.
 

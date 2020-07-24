@@ -3,26 +3,25 @@ title: Sanal makine teklifleri için fiyatlandırma-Azure Marketi
 description: Sanal makine tekliflerinin Fiyatlandırmasını belirtmek için üç yöntemi açıklar.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b3d38c59d4c79e908aeef857164603a2a5160e05
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 8d6dcd7f3f86e111cfb17fb08c4faadac1552b94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039133"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>Sanal makine tekliflerinin fiyatlandırması
-==================================
+# <a name="pricing-for-virtual-machine-offers"></a>Sanal makine tekliflerinin fiyatlandırması
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri ile tümleşiktir ve Iş Ortağı Merkezi 'nde çalışmaya devam edecektir. Geçiş küçük değişiklikler sunar. Iş Ortağı Merkezi 'ne geçtikten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](./cloud-partner-portal-api-overview.md) listelenen değişiklikleri gözden geçirin. CPP API 'Leri yalnızca Iş Ortağı Merkezi 'ne geçişten önce tümleştirilmiş mevcut ürünler için kullanılmalıdır; Yeni ürünlerin Iş Ortağı Merkezi gönderme API 'Leri kullanması gerekir.
 
 Sanal makine teklifleri için fiyatlandırma belirtmek için üç yol vardır: özelleştirilmiş çekirdek fiyatlandırma, çekirdek başına fiyatlandırma ve elektronik tablo fiyatlandırması.
 
-
-<a name="customized-core-pricing"></a>Özelleştirilmiş çekirdek fiyatlandırma
------------------------
+## <a name="customized-core-pricing"></a>Özelleştirilmiş çekirdek fiyatlandırma
 
 Fiyatlandırma her bölge ve çekirdek birleşimine özgüdür. Satış listesindeki her bölge, tanımın **virtualmachinefiyatlandırma** / **regionfiyatların** bölümünde belirtilmelidir.  İsteğinizin her bir [bölgesi](#regions) için doğru para birimi kodlarını kullanın.  Aşağıdaki örnek bu gereksinimleri göstermektedir:
 
@@ -66,9 +65,7 @@ Fiyatlandırma her bölge ve çekirdek birleşimine özgüdür. Satış listesin
      }
 ```
 
-
-<a name="per-core-pricing"></a>Çekirdek başına fiyatlandırma
-----------------
+## <a name="per-core-pricing"></a>Çekirdek başına fiyatlandırma
 
 Bu durumda, yayımcılar SKU 'ları için ABD Doları cinsinden bir fiyat belirtir ve diğer tüm fiyatlar otomatik olarak oluşturulur. İstekteki **tek** parametrede çekirdek başına fiyat belirtilir.
 
@@ -84,9 +81,7 @@ Bu durumda, yayımcılar SKU 'ları için ABD Doları cinsinden bir fiyat belirt
      }
 ```
 
-
-<a name="spreadsheet-pricing"></a>Elektronik tablo fiyatlandırması
--------------------
+## <a name="spreadsheet-pricing"></a>Elektronik tablo fiyatlandırması
 
 Yayımcı Ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konumuna yükleyebilir ve sonra diğer dosya yapıtları gibi isteğe URI 'yi dahil edebilir. Daha sonra bu elektronik tablo yüklenir, belirtilen fiyat zamanlamasını değerlendirmek için çevrilir ve son olarak teklifi fiyatlandırma bilgileriyle güncelleştirir. Teklifin sonraki GET istekleri, bölge için elektronik tablo URI 'sini ve değerlendirilen fiyatları döndürür.
 
@@ -101,18 +96,15 @@ Yayımcı Ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konum
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>7/2/2019 üzerine yeni temel boyutlar eklendi
----------------------------
+## <a name="new-core-sizes-added-on-722019"></a>7/2/2019 üzerine yeni temel boyutlar eklendi
 
 VM yayımcılarının, yeni Azure sanal makine boyutlarına (çekirdek sayısına göre) yeni fiyatlara ek olarak, 2 Temmuz 2019 tarihinde bilgilendirildi.  Yeni fiyatlar, 10, 44, 48, 60, 120, 208 ve 416 temel boyutlarına yöneliktir.  Mevcut VM için, bu çekirdek boyutları için yeni fiyatlar, geçerli fiyatlara göre otomatik olarak hesaplanır.  Yayımcılar, ek fiyatları gözden geçirmek ve istediğiniz değişiklikleri yapmak için 1 Ağustos 2019 ' e kadar.  Bu tarihten sonra, yayımcı tarafından zaten yeniden yayımlanmamışsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olur.
 
-
-<a name="regions"></a>Bölgeler
--------
+## <a name="regions"></a>Bölgeler
 
 Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirtebileceğiniz farklı bölgeler ve bunlara karşılık gelen para birimi kodları gösterilmektedir.
 
-| **Geli** | **Adı**             | **Para birimi kodu** |
+| **Bölge** | **Ad**             | **Para birimi kodu** |
 |------------|----------------------|-------------------|
 | DZ         | Cezayir              | DZD               |
 | AR         | Arjantin            | ARS               |

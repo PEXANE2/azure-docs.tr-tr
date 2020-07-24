@@ -3,11 +3,12 @@ title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft D
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a0a3a5b186d57e8670201e601eee48ee858c976
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041621"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
@@ -25,7 +26,7 @@ Azure PowerShell modülünü, betikleri çalıştırmak istediğiniz makineye y�
 1. [Microsoft Web Platformu Yükleyicisi (V5 veya üzeri)](https://www.microsoft.com/web/downloads/platform.aspx)yükler.
 2. Microsoft Azure PowerShell yüklemek için kullanın.
 
-Kaynak Yöneticisi şablonlarını kullanmanın yanı sıra, program aracılığıyla Application Insights kaynaklarını yapılandırmayı kolaylaştıran zengin bir [Application Insights PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.applicationinsights)kümesi vardır. Cmdlet 'ler tarafından etkinleştirilen yetenekler şunlardır:
+Kaynak Yöneticisi şablonlarını kullanmanın yanı sıra, program aracılığıyla Application Insights kaynaklarını yapılandırmayı kolaylaştıran zengin bir [Application Insights PowerShell cmdlet 'leri](/powershell/module/az.applicationinsights)kümesi vardır. Cmdlet 'ler tarafından etkinleştirilen yetenekler şunlardır:
 
 * Application Insights kaynaklarını oluşturma ve silme
 * Application Insights kaynak listelerini ve bunların özelliklerini al
@@ -36,7 +37,7 @@ Kaynak Yöneticisi şablonlarını kullanmanın yanı sıra, program aracılığ
 
 ## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>PowerShell cmdlet 'i kullanarak Application Insights kaynakları oluşturma
 
-[New-Azapplicationınsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) cmdlet 'Ini kullanarak Azure Doğu ABD veri merkezinde yeni bir Application Insights kaynağı oluşturma işlemi aşağıda verilmiştir:
+[New-Azapplicationınsights](/powershell/module/az.applicationinsights/new-azapplicationinsights) cmdlet 'Ini kullanarak Azure Doğu ABD veri merkezinde yeni bir Application Insights kaynağı oluşturma işlemi aşağıda verilmiştir:
 
 ```PS
 New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
@@ -226,7 +227,7 @@ Cmdlet 'ler aracılığıyla ek özellikler mevcuttur:
 * `Get-AzApplicationInsightsApiKey`
 * `Get-AzApplicationInsightsContinuousExport`
 
-Bu cmdlet 'lerin parametreleri için [ayrıntılı belgelere](https://docs.microsoft.com/powershell/module/az.applicationinsights) başvurun.  
+Bu cmdlet 'lerin parametreleri için [ayrıntılı belgelere](/powershell/module/az.applicationinsights) başvurun.  
 
 ## <a name="set-the-data-retention"></a>Veri bekletmesini ayarlama
 
@@ -329,7 +330,7 @@ Set-ApplicationInsightsRetention `
 
 ## <a name="set-the-daily-cap"></a>Günlük ucunu ayarla
 
-Günlük üst sınır özelliklerini almak için [set-Azapplicationınsiıspricingplan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet 'ini kullanın: 
+Günlük üst sınır özelliklerini almak için [set-Azapplicationınsiıspricingplan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) cmdlet 'ini kullanın: 
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -358,7 +359,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Fiyatlandırma planını ayarlama 
 
-Geçerli fiyatlandırma planını almak için [set-Azapplicationınsiıspricingplan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet 'ini kullanın:
+Geçerli fiyatlandırma planını almak için [set-Azapplicationınsiıspricingplan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) cmdlet 'ini kullanın:
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -403,12 +404,12 @@ Bu, günlük üst sınırı 200 GB/gün olarak ayarlar, günlük uç sıfırlama
 
 ## <a name="add-a-metric-alert"></a>Ölçüm uyarısı Ekle
 
-Ölçüm uyarılarının oluşturulmasını otomatik hale getirmek için [ölçüm uyarıları şablonu makalesine](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) başvurun
+Ölçüm uyarılarının oluşturulmasını otomatik hale getirmek için [ölçüm uyarıları şablonu makalesine](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert) başvurun
 
 
 ## <a name="add-an-availability-test"></a>Bir kullanılabilirlik testi ekleyin
 
-Kullanılabilirlik testlerini otomatikleştirmek için [ölçüm uyarıları şablonu makalesine](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)başvurun.
+Kullanılabilirlik testlerini otomatikleştirmek için [ölçüm uyarıları şablonu makalesine](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)başvurun.
 
 ## <a name="add-more-resources"></a>Daha fazla kaynak ekleyin
 
@@ -468,7 +469,7 @@ Azure, kaynakları katı sırayla ayarlamalıdır. Bir kurulumun bir sonraki ba�
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer otomasyon makaleleri:
 
-* Şablon kullanmadan hızlı Yöntem [Application Insights oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) .
+* Şablon kullanmadan hızlı Yöntem [Application Insights oluşturun](./create-new-resource.md#creating-a-resource-automatically) .
 * [Uyarıları ayarlama](powershell-alerts.md)
 * [Web testleri oluşturma](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure Tanılama verilerini Application Insights’a gönderme](powershell-azure-diagnostics.md)

@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044531"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory Delta biçimi
 
@@ -22,6 +22,8 @@ Bu makalede, Delta biçimini kullanarak [Azure Data Lake Store Gen2](connector-a
 
 > [!NOTE]
 > Veri akışlarını eşlemek için Delta biçimi Bağlayıcısı Şu anda genel önizleme olarak kullanılabilir.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
@@ -33,11 +35,11 @@ Aşağıdaki tabloda bir Delta kaynağı tarafından desteklenen özellikler lis
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır`delta` | yes | `delta` | biçim |
-| Dosya sistemi | Delta Gölü kapsayıcı/dosya sistemi | yes | Dize | Biçimlendiri |
-| Klasör yolu | Delta Gölü doğrudan | yes | Dize | folderPath |
+| Biçimlendir | Biçim olmalıdır`delta` | evet | `delta` | biçim |
+| Dosya sistemi | Delta Gölü kapsayıcı/dosya sistemi | evet | Dize | Biçimlendiri |
+| Klasör yolu | Delta Gölü doğrudan | evet | Dize | folderPath |
 | Sıkıştırma türü | Delta tablosunun sıkıştırma türü | hayır | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| Sıkıştırma düzeyi | Sıkıştırmanın olabildiğince çabuk veya elde edilen dosyanın en iyi şekilde sıkıştırılıp tamamlanmayacağını seçin. | belirtilmişse gereklidir `compressedType` . | compressionLevel |
+| Sıkıştırma düzeyi | Sıkıştırmanın olabildiğince çabuk veya elde edilen dosyanın en iyi şekilde sıkıştırılıp tamamlanmayacağını seçin. | belirtilmişse gereklidir `compressedType` . | `Optimal` veya `Fastest` | compressionLevel |
 | Seyahat süresi | Bir Delta tablosunun daha eski bir anlık görüntüsünü sorgulamak isteyip istemediğinizi seçin | hayır | Zaman damgasına göre sorgula: zaman damgası <br> Sürüme göre sorgula: tamsayı | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>Şemayı içeri aktar
@@ -69,13 +71,13 @@ Aşağıdaki tabloda bir Delta havuzu tarafından desteklenen özellikler listel
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır`delta` | yes | `delta` | biçim |
-| Dosya sistemi | Delta Gölü kapsayıcı/dosya sistemi | yes | Dize | Biçimlendiri |
-| Klasör yolu | Delta Gölü doğrudan | yes | Dize | folderPath |
+| Biçimlendir | Biçim olmalıdır`delta` | evet | `delta` | biçim |
+| Dosya sistemi | Delta Gölü kapsayıcı/dosya sistemi | evet | Dize | Biçimlendiri |
+| Klasör yolu | Delta Gölü doğrudan | evet | Dize | folderPath |
 | Sıkıştırma türü | Delta tablosunun sıkıştırma türü | hayır | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| Sıkıştırma düzeyi | Sıkıştırmanın olabildiğince çabuk veya elde edilen dosyanın en iyi şekilde sıkıştırılıp tamamlanmayacağını seçin. | belirtilmişse gereklidir `compressedType` . | compressionLevel |
-| Vakum | Eski tablo sürümleri için bekletme eşiğini saat cinsinden belirtin. 0 veya daha az varsayılan değer 30 gündür | yes | Tamsayı | Vakum |
-| Yöntemi Güncelleştir | Delta Gölü üzerinde hangi güncelleştirme işlemlerine izin verileceğini belirtin. INSERT olmayan yöntemler için, satırları işaretlemek için önceki bir alter Row dönüşümü gerekir. | yes | `true` veya `false` | siler <br> eklenebilir <br> güncellenebilir <br> upsertable |
+| Sıkıştırma düzeyi | Sıkıştırmanın olabildiğince çabuk veya elde edilen dosyanın en iyi şekilde sıkıştırılıp tamamlanmayacağını seçin. | belirtilmişse gereklidir `compressedType` . | `Optimal` veya `Fastest` | compressionLevel |
+| Vakum | Eski tablo sürümleri için bekletme eşiğini saat cinsinden belirtin. 0 veya daha az varsayılan değer 30 gündür | evet | Tamsayı | Vakum |
+| Yöntemi Güncelleştir | Delta Gölü üzerinde hangi güncelleştirme işlemlerine izin verileceğini belirtin. INSERT olmayan yöntemler için, satırları işaretlemek için önceki bir alter Row dönüşümü gerekir. | evet | `true` veya `false` | siler <br> eklenebilir <br> güncellenebilir <br> upsertable |
 
 ### <a name="delta-sink-script-example"></a>Delta havuz betiği örneği
 

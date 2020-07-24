@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040239"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak OneDrive bağlayıcıdaki dosyalara erişin ve yönetin
 
@@ -40,7 +40,7 @@ Tetikleyici, bir mantıksal uygulamada tanımlanan iş akışını başlatmak i�
 
 1. Mantıksal uygulama Tasarımcısı ' nda, `onedrive` tetikleyicilerinin bir listesini almak için yazın:  
 
-   !["Microsoft tarafından yönetilen API 'Leri göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu vardır. Aşağıda dört tetikleyici listesi verilmiştir. Bunlardan ilki "OneDrive-bir dosya oluşturulduğunda" dır. İkinci "OneDrive-bir dosya değiştirildiğinde" seçilidir.](./media/connectors-create-api-onedrive/onedrive-1.png)
+   !["Microsoft tarafından yönetilen bir P 'yi göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu var. Aşağıda dört tetikleyici listesi verilmiştir. Bunlardan ilki "OneDrive-bir dosya oluşturulduğunda" dır. İkinci "OneDrive-bir dosya değiştirildiğinde" seçilidir.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. **Bir dosya değiştirildiğinde**seçin. Bir bağlantı zaten varsa, bir klasör seçmek için seçiciyi göster düğmesini seçin.
 
@@ -68,7 +68,7 @@ Eylem, mantıksal uygulamada tanımlanan iş akışı tarafından yürütülen b
 
 3. `onedrive`Tüm kullanılabilir eylemlerin listesini almak için arama kutusuna yazın.
 
-   !["Microsoft tarafından yönetilen API 'Leri göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu vardır. Aşağıda sekiz eylemin listesi verilmiştir. Birincisi "OneDrive-dosya oluştur" ' u ve bu seçilir.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   !["Microsoft tarafından yönetilen bir P 'yi göster" başlıklı iletişim kutusunda "OneDrive" içeren bir kutu var. Aşağıda sekiz eylemin listesi verilmiştir. Birincisi "OneDrive-dosya oluştur" ' u ve bu seçilir.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. Örneğimizde **OneDrive-dosya oluştur**' u seçin. Zaten bir bağlantı varsa, dosyayı yerleştirmek için **klasör yolunu** seçin, **dosya adını**girin ve istediğiniz **dosya içeriğini** seçin:  
 

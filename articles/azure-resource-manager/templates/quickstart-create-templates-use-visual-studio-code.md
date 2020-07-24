@@ -5,12 +5,12 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040522"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma
 
@@ -18,7 +18,7 @@ Visual Studio Code için Azure Resource Manager araçları dil desteği, kaynak 
 
 Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Resource Manager araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) yüklüyken [Visual Studio Code](https://code.visualstudio.com/)gerekir. Ayrıca, [Azure CLI](/cli/azure/?view=azure-cli-latest) veya [Azure PowerShell modülünün](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) yüklü ve kimliği doğrulanmış olması gerekir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-arm-template"></a>ARM şablonu oluşturma
 
@@ -102,7 +102,7 @@ Uzantı, mevcut şablonlarınızla bir parametre dosyası oluşturmayı kolayla�
 
 Bu eylem yeni bir parametre dosyası oluşturur ve onu oluşturulduğu şablonla eşler. Şablon seçiliyken Visual Studio Code durum çubuğunda geçerli şablon/parametre dosya eşlemesini görebilir ve değiştirebilirsiniz.
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![Visual Studio Code durum çubuğunda şablon/parametre dosya eşlemesini gösteren resim.](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 Artık parametre dosyası şablonla eşlendiğine göre, uzantı hem şablonu hem de parametre dosyasını birlikte doğrular. Bu doğrulamayı uygulamada görmek için, parametre dosyasındaki parametresine iki karakterli bir değer ekleyin `storageAccountName` ve dosyayı kaydedin.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 60bcdac0d7e19c424b007980294898638814d586
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044875"
 ---
 # <a name="what-is-a-keyword"></a>Anahtar sözcük nedir?
 
@@ -33,10 +33,13 @@ Anahtar sözcüğü, ürününüzün ses özellikli olmasını sağlayan bir kel
 
 ## <a name="get-started-with-custom-keywords"></a>Özel anahtar sözcükler ile çalışmaya başlama
 
-* Öğretici: [konuşma Studio kullanarak özel anahtar sözcük oluşturma](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
-* Öğretici: [C# kullanarak ürününüzü konuşma SDK 'sı ile sesli olarak etkinleştirme](tutorial-voice-enable-your-bot-speech-sdk.md)
-* Hızlı başlangıç: [konuşma SDK ile anahtar sözcükleri tanıma, C# kullanarak Evrensel Windows platformu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
-* Hızlı başlangıç: [Java kullanarak Android 'de konuşma SDK 'sı ile anahtar sözcükleri tanıma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
+* Bkz. temel kullanım ve tasarım desenleri için [özel anahtar sözcük temelleri](custom-keyword-basics.md) .
+* [C# kullanarak ürününüzü konuşma SDK 'sı ile nasıl etkinleştireceğinize](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="see-samples-on-github"></a>GitHub 'da örneklere bakın
+
+* [C kullanarak Evrensel Windows Platformu konuşma SDK 'Sı ile anahtar sözcükleri tanıma #](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* [Java kullanarak Android 'de konuşma SDK 'Sı ile anahtar sözcükleri tanıma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

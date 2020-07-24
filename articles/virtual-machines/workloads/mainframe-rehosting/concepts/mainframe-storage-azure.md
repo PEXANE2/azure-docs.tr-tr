@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288924"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042592"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Ana bilgisayar depolama alanını Azure 'a taşıma
 
@@ -44,7 +45,7 @@ Depolama için Azure hizmet olarak altyapı ([IaaS](https://azure.microsoft.com/
 
 Microsoft, Azure 'da barındırılan uygulamalar için petabaytlarca değer depolama alanı sunar ve çeşitli depolama seçenekleriniz vardır. Bu, yığın depolama ve arşivler için yüksek performanslı düşük maliyetli blob depolamaya kadar SSD depolama alanından bu yana uzanır. Ayrıca, Azure, bir anabilgisayar ortamında ayarlanmakta daha fazla çaba alan bir depolama için veri artıklığı seçeneği sağlar.
 
-Azure Storage, Azure [diskleri](/azure/virtual-machines/windows/managed-disks-overview), [Azure dosyaları](/azure/storage/files/storage-files-introduction)ve [Azure Blob 'ları](/azure/storage/blobs/storage-blobs-overview) olarak kullanılabilir ve aşağıdaki tabloda özetlenmiştir. [Her birinin ne zaman kullanılacağı](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)hakkında daha fazla bilgi edinin.
+Azure Storage, Azure [diskleri](../../../windows/managed-disks-overview.md), [Azure dosyaları](../../../../storage/files/storage-files-introduction.md)ve [Azure Blob 'ları](../../../../storage/blobs/storage-blobs-overview.md) olarak kullanılabilir ve aşağıdaki tabloda özetlenmiştir. [Her birinin ne zaman kullanılacağı](../../../../storage/common/storage-introduction.md)hakkında daha fazla bilgi edinin.
 
 <!-- markdownlint-disable MD033 -->
 
@@ -104,10 +105,10 @@ BLOB depolama, Azure 'da en büyük depolama birimini sağlar. Azure, depolama b
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ana bilgisayar geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure sanal makinelerinde Ana bilgisayar yeniden barındırma](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure sanal makinelerinde Ana bilgisayar yeniden barındırma](../overview.md)
 - [Anabilgisayar işlem hareketini Azure 'a taşıma](mainframe-compute-Azure.md)
-- [Azure Blob 'Ları, Azure dosyalarını veya Azure disklerini ne zaman kullanacağınızı belirleme](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Azure VM iş yükleri için yönetilen diskleri Standart SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Azure Blob 'Ları, Azure dosyalarını veya Azure disklerini ne zaman kullanacağınızı belirleme](../../../../storage/common/storage-introduction.md)
+- [Azure VM iş yükleri için yönetilen diskleri Standart SSD](../../../windows/disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM kaynakları
 

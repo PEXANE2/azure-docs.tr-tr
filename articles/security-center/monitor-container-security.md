@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801385"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038623"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>Kapsayıcılarınızın güvenliğini izleyin
 
@@ -35,13 +36,11 @@ Bu sayfada, kavramlar bölümümüzde [kapsayıcı güvenlik makalesinde](contai
 
 1. Bir görüntünün taramasını tetiklemek için, Kayıt defterinize gönderin. 
 
-    Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra), güvenlik merkezi önerilerinde bulguları kullanılabilir.
-    
+    Tarama tamamlandığında (genellikle yaklaşık 2 dakika sonra, ancak en fazla 15 dakika), bulgular aşağıdaki gibi güvenlik merkezi önerileri olarak kullanılabilir:
 
 1. Bulguları görüntülemek için **öneriler** sayfasına gidin. Sorun bulunursa aşağıdaki öneriyi görürsünüz:
 
     ![Sorunları düzeltme önerisi ](media/monitor-container-security/acr-finding.png)
-
 
 1. Öneriyi seçin. 
     Öneri ayrıntıları sayfası ek bilgilerle açılır. Bu bilgiler, güvenlik açığı bulunan görüntüler ("etkilenen kaynaklar") ve düzeltme adımlarını içeren kayıt defterlerinin listesini içerir. 

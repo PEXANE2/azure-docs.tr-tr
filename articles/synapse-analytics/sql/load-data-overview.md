@@ -1,5 +1,5 @@
 ---
-title: ETL yerine, SYNAPSE SQL havuzu için ELT tasarlayın | Microsoft Docs
+title: SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 description: ETL yerine, verileri veya SQL havuzunu yüklemek için bir ayıklama, yükleme ve dönüştürme (ELT) işlemi tasarlayın.
 services: synapse-analytics
 author: kevinvngo
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 49ffb848dbcbed72776a5d767bb4b4872978af20
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046778"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
-Geleneksel SMP veri ambarları, verileri yüklemek için bir ayıklama, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisidir. Bir ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanılmasıyla, MPP 'den yararlanabilir ve yüklemeden önce verileri dönüştürmek için gereken kaynakları ortadan kaldırabilir.
+Geleneksel SMP veri ambarları, verileri yüklemek için bir ayıklama, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisidir. Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanımı, MPP özelliğinden yararlanabilir ve yüklemeden önce verileri dönüştürmek için gereken kaynakları ortadan kaldırabilir.
 
 SQL havuzu BCP ve SQL BulkCopy API gibi PolyBase seçenekleri de dahil olmak üzere çok sayıda yükleme yöntemini destekleirken, yükleme tarihinin en hızlı ve en ölçeklenebilir yolu PolyBase aracılığıyla yapılır.  PolyBase, Azure Blob depolamada depolanan dış verilere veya T-SQL dili üzerinden Azure Data Lake Store erişen bir teknolojidir.
 
@@ -50,7 +50,7 @@ Kaynak sisteminizden veri alma, depolama konumuna bağlıdır.  Amaç, verileri 
 
 PolyBase UTF-8 ve UTF-16 kodlamalı sınırlandırılmış metin dosyalarından veri yükler. Sınırlandırılmış metin dosyalarına ek olarak, bu dosya, RC dosyası, ORC ve Parquet Hadoop dosya biçimlerini yükler. PolyBase, gzip ve Snappy sıkıştırılmış dosyalarındaki verileri de yükleyebilir. PolyBase Şu anda genişletilmiş ASCII, sabit genişlikli biçim ve WinZip, JSON ve XML gibi iç içe geçmiş biçimleri desteklemez.
 
-SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. SQL DW veri türü eşlemesine Parquet aşağıdaki şekilde verilmiştir:
+SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. SQL DW veri türü eşlemesine Parquet şu şekildedir:
 
 | **Parquet veri türü** |                      **SQL veri türü**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -58,7 +58,7 @@ SQL Server dışarı aktarıyorsanız, verileri sınırlandırılmış metin dos
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        boole        |                             bit                              |
+|        boolean        |                             bit                              |
 |        double         |                            float                             |
 |         float         |                             real                             |
 |        double         |                            etmenize                             |
@@ -95,7 +95,7 @@ Depolama hesabınızdaki verileri SQL havuzuna yüklemeden önce hazırlamanız 
 
 Veri yükleyebilmeniz için önce veri Ambarınızda dış tablolar tanımlamanız gerekir. PolyBase, Azure depolama 'daki verileri tanımlamak ve verilere erişmek için dış tabloları kullanır. Dış tablo, veritabanı görünümüne benzer. Dış tablo tablo şemasını içerir ve veri ambarının dışında depolanan verileri gösterir.
 
-Dış tabloları tanımlama, veri kaynağını, metin dosyalarının biçimini ve tablo tanımlarını belirtmeyi içerir. Bunlar, ihtiyacınız olacak T-SQL sözdizimi konulardır:
+Dış tabloları tanımlama, veri kaynağını, metin dosyalarının biçimini ve tablo tanımlarını belirtmeyi içerir. Aşağıdakiler, gereken T-SQL sözdizimi konularından aşağıda verilmiştir:
 
 - [DıŞ VERI KAYNAĞı OLUŞTUR](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

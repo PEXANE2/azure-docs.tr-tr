@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045213"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Windows sanal makinesi için Azure Izleyici ölçümleri veritabanına Konuk işletim sistemi ölçümleri gönderme (klasik)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Izleyici [Tanılama uzantısı](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) ("wad" veya "Diagnostics" olarak bilinir), bir sanal makinenin, bulut hizmetinin veya Service Fabric kümesinin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplamanıza olanak tanır. Uzantı [birçok farklı konuma](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
+Azure Izleyici [Tanılama uzantısı](./diagnostics-extension-overview.md) ("wad" veya "Diagnostics" olarak bilinir), bir sanal makinenin, bulut hizmetinin veya Service Fabric kümesinin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplamanıza olanak tanır. Uzantı [birçok farklı konuma](./data-platform.md?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
 
 Bu makalede, Azure Izleyici ölçüm veritabanına bir Windows sanal makinesi (klasik) için konuk işletim sistemi performans ölçümlerini gönderme işlemi açıklanır. Tanılama sürüm 1,11 ' den başlayarak, ölçümleri doğrudan Azure Izleyici ölçümleri deposuna yazabilirsiniz; burada standart platform ölçümleri zaten toplanır. 
 
@@ -26,13 +26,13 @@ Bu konumda depolamak, platform ölçümleri için yaptığınız aynı eylemlere
 
 Bu makalede özetlenen işlem yalnızca Windows işletim sistemini çalıştıran klasik sanal makinelerde çalışır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğinizde bir [Hizmet Yöneticisi veya ortak yönetici](../../cost-management-billing/manage/add-change-subscription-administrator.md) olmanız gerekir. 
 
-- Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir. 
+- Aboneliğinizin [Microsoft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md)'a kayıtlı olması gerekir. 
 
-- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklemiş olmanız gerekir.
+- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](../../cloud-shell/overview.md) yüklemiş olmanız gerekir.
 
 - VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](metrics-custom-overview.md#supported-regions)olması gerekir.
 
@@ -186,7 +186,7 @@ Bu uygulamaya, ölçümleri sunmak istediğiniz kaynak için "Izleme ölçümler
 
 ## <a name="plot-the-metrics-in-the-azure-portal"></a>Azure portal ölçümleri çizme
 
-1.  Azure portalına gidin. 
+1.  Azure portala gidin. 
 
 1.  Sol taraftaki menüden Izleyici ' yi seçin **.**
 
@@ -204,4 +204,3 @@ Bu uygulamaya, ölçümleri sunmak istediğiniz kaynak için "Izleme ölçümler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Özel ölçümler](metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
-

@@ -4,12 +4,12 @@ description: Web uygulamanıza yönelik başarısız isteklerin hızında olağa
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254795"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045814"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı algılama-hata bozuklukları
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) , Web uygulamanız başarısız isteklerin hızında anormal bir artış yaşıyorsa sizi neredeyse gerçek zamanlı olarak uyarır. HTTP isteklerinin veya başarısız olarak bildirilen bağımlılık çağrılarının hızında olağan dışı bir artış algılar. İstekler için, başarısız olan isteklerin genellikle 400 veya üzeri yanıt kodları vardır. Sorunu önceliklendirmenize ve tanılamanıza yardımcı olması için, uyarı ayrıntılarında hataların özelliklerinin ve ilgili uygulama verilerinin bir analizi verilmiştir. Ayrıca, daha fazla tanılama için Application Insights portalına bağlantılar da vardır. Özelliğin, normal hata oranını tahmin etmek için makine öğrenimi algoritmalarını kullandığından, kurulum veya yapılandırma gerekmez.
@@ -61,13 +61,13 @@ Uyarılar, özel makine öğrenimi algoritmız tarafından tetiklenir, bu nedenl
 
 ## <a name="configure-alerts"></a>Uyarı yapılandırma
 
-Portaldan veya Azure Resource Manager kullanarak akıllı algılama uyarı kuralını devre dışı bırakabilirsiniz ([bkz. şablon örneği](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
+Portaldan veya Azure Resource Manager kullanarak akıllı algılama uyarı kuralını devre dışı bırakabilirsiniz ([bkz. şablon örneği](./proactive-arm-config.md)).
 
-Bu uyarı kuralı, e-posta ve Web kancası eylemleri içeren "Application Insights akıllı algılama" adlı ilişkili bir [eylem grubuyla](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) oluşturulur ve uyarı tetiklendiğinde ek eylemleri tetiklemek için genişletilebilir.
+Bu uyarı kuralı, e-posta ve Web kancası eylemleri içeren "Application Insights akıllı algılama" adlı ilişkili bir [eylem grubuyla](../platform/action-groups.md) oluşturulur ve uyarı tetiklendiğinde ek eylemleri tetiklemek için genişletilebilir.
 
 > [!NOTE]
-> Bu uyarı kuralından gönderilen e-posta bildirimleri artık varsayılan olarak aboneliğin Izleme okuyucu ve katkıda bulunan rollerinin Izlenmesi ile ilişkili kullanıcılara gönderilir. Bu konuda daha fazla bilgiye [buradan](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)ulaşabilirsiniz.
-> Bu uyarı kuralından gönderilen bildirimler [ortak uyarı şemasını](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)izler.
+> Bu uyarı kuralından gönderilen e-posta bildirimleri artık varsayılan olarak aboneliğin Izleme okuyucu ve katkıda bulunan rollerinin Izlenmesi ile ilişkili kullanıcılara gönderilir. Bu konuda daha fazla bilgiye [buradan](./proactive-email-notification.md)ulaşabilirsiniz.
+> Bu uyarı kuralından gönderilen bildirimler [ortak uyarı şemasını](../platform/alerts-common-schema.md)izler.
 >
 
 Uyarılar sayfasını açın. Hata bozuklukları uyarı kuralları, el ile ayarladığınız uyarılarla birlikte eklenir ve şu anda uyarı durumunda olup olmadığını görebilirsiniz.
@@ -348,7 +348,7 @@ Hata anomali algılama, Application Insights benzer ancak farklı özellikleri t
 
 *Bazı uyarılar bilinen sorunlarla ilgilidir ve bunları almak istemiyorum.*
 
-* [Uyarı eylemi kuralları](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) gizleme özelliğini kullanabilirsiniz.
+* [Uyarı eylemi kuralları](../platform/alerts-action-rules.md) gizleme özelliğini kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu tanılama araçları uygulamanızdaki verileri incelemenize yardımcı olur:

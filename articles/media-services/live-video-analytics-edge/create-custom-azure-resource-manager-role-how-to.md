@@ -3,26 +3,27 @@ title: Özel Azure Resource Manager rolü oluşturma ve hizmet sorumlusu 'na ata
 description: Bu makalede, Azure CLı kullanarak IoT Edge üzerinde canlı video analizine yönelik özel Azure Resource Manager rol oluşturma ve hizmet sorumlusuna atama hakkında yönergeler sunulmaktadır.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261173"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043165"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Özel Azure Resource Manager rolü oluşturma ve hizmet sorumlusuna atama
 
-IoT Edge Module örneğindeki canlı video analizinin düzgün çalışması için etkin bir Azure Media Services hesabı gerekir. IoT Edge modülü ve Azure Media Service hesabı üzerindeki canlı video analizi arasındaki ilişki, bir dizi modül ikizi özelliği aracılığıyla oluşturulur. Bu ikizi özelliklerinden biri, modül örneğinin Media Services hesabında gerekli işlemleri tetiklemesine ve tetiklemesine olanak tanıyan bir [hizmet sorumlusundan](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) biridir. Uç cihazdan olası kötüye kullanımı ve/veya yanlışlıkla veri pozlamasını en aza indirmek için, bu hizmet sorumlusu en az ayrıcalığa sahip olmalıdır.
+IoT Edge Module örneğindeki canlı video analizinin düzgün çalışması için etkin bir Azure Media Services hesabı gerekir. IoT Edge modülü ve Azure Media Service hesabı üzerindeki canlı video analizi arasındaki ilişki, bir dizi modül ikizi özelliği aracılığıyla oluşturulur. Bu ikizi özelliklerinden biri, modül örneğinin Media Services hesabında gerekli işlemleri tetiklemesine ve tetiklemesine olanak tanıyan bir [hizmet sorumlusundan](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) biridir. Uç cihazdan olası kötüye kullanımı ve/veya yanlışlıkla veri pozlamasını en aza indirmek için, bu hizmet sorumlusu en az ayrıcalığa sahip olmalıdır.
 
 Bu makalede, bir hizmet sorumlusu oluşturmak için kullanılan Azure Cloud Shell olan özel Azure Resource Manager rol oluşturma adımları gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar  
+## <a name="prerequisites"></a>Önkoşullar  
 
 Bu makaleye yönelik önkoşullar aşağıdaki gibidir:
 
 * Sahip aboneliği olan Azure aboneliği.
 * Bir uygulama oluşturma ve bir role hizmet sorumlusu atama ayrıcalıklarına sahip bir Azure Active Directory.
 
-Hesabınızın yeterli izinlere sahip olup olmadığını denetlemenin en kolay yolu portalı kullanmaktır. Bkz. [Gerekli izinleri denetleme](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+Hesabınızın yeterli izinlere sahip olup olmadığını denetlemenin en kolay yolu portalı kullanmaktır. Bkz. [Gerekli izinleri denetleme](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="overview"></a>Genel Bakış  
 
@@ -48,7 +49,7 @@ Medya hizmeti hesabınız yoksa, bir tane oluşturmak için aşağıdaki adımla
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. Bir [kaynak grubu](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) ve [depolama hesabı](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)oluşturun.
+1. Bir [kaynak grubu](/cli/azure/group?view=azure-cli-latest#az-group-create) ve [depolama hesabı](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)oluşturun.
 1. Şimdi Cloud Shell ' de aşağıdaki komut şablonunu kullanarak bir Azure Media Service hesabı oluşturun:
 
     ```
@@ -84,8 +85,8 @@ Bu komut şöyle bir yanıt üretir:
 ```
 1. Parola kimlik doğrulamasıyla bir hizmet sorumlusu çıkışı, bu örnekte "AadSecret" parametresi olan parola anahtarını içerir. 
 
-    Bu değeri kopyalamadığınızdan emin olun; bu değer alınamaz. Parolayı unutursanız [hizmet sorumlusu kimlik bilgilerini sıfırlayın](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
-1. AppID ve kiracı anahtarı çıktıda sırasıyla "Aadclitıd" ve "Aadtenantıd" olarak görünür. Hizmet sorumlusu kimlik doğrulamasında kullanılır. Değerlerini kaydedin, ancak [az ad SP listesi](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list)ile herhangi bir noktada elde edilebilir.
+    Bu değeri kopyalamadığınızdan emin olun; bu değer alınamaz. Parolayı unutursanız [hizmet sorumlusu kimlik bilgilerini sıfırlayın](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
+1. AppID ve kiracı anahtarı çıktıda sırasıyla "Aadclitıd" ve "Aadtenantıd" olarak görünür. Hizmet sorumlusu kimlik doğrulamasında kullanılır. Değerlerini kaydedin, ancak [az ad SP listesi](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list)ile herhangi bir noktada elde edilebilir.
 
 ### <a name="create-a-custom-role-definition"></a>Özel bir rol tanımı oluştur  
 
@@ -170,7 +171,7 @@ Yukarıdaki komut, hizmet sorumlusu ObjectID 'yi yazdıracak.
 “objectId” : “<yourObjectId>”,
 ```
 
-Özel rolü hizmet sorumlusu ile bağlamak için [az role atama Create komut şablonu komutunu](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) kullanın:
+Özel rolü hizmet sorumlusu ile bağlamak için [az role atama Create komut şablonu komutunu](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) kullanın:
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

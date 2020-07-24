@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13ffd1eeb2df3c21a6167b056557b9141444f7c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038588"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak Azure Bilişsel Arama içeriğin geri kalanında şifreleme
 
@@ -28,7 +28,7 @@ Anahtarların tümünün aynı Key Vault olması gerekmez. Tek bir arama hizmeti
 > [!IMPORTANT] 
 > Bu özellik [REST API](https://docs.microsoft.com/rest/api/searchservice/) ve [.NET SDK 8,0-Önizleme sürümünde](search-dotnet-sdk-migration-version-9.md)kullanılabilir. Şu anda Azure portal müşterinin yönettiği şifreleme anahtarlarını yapılandırma desteği yoktur. Arama hizmeti 2019 Ocak 'tan sonra oluşturulmalıdır ve ücretsiz (paylaşılan) bir hizmet olamaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki hizmetler bu örnekte kullanılır. 
 
@@ -36,7 +36,7 @@ Aşağıdaki hizmetler bu örnekte kullanılır.
 
 + Aboneliğiniz altında [bir Azure Key Vault kaynağı oluşturun](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) veya mevcut bir kasayı bulun.
 
-+ Yapılandırma görevleri için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) kullanılır.
++ Yapılandırma görevleri için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) kullanılır.
 
 + [Postman](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) ve [.NET SDK önizlemesi](https://aka.ms/search-sdk-preview) REST API çağırmak için kullanılabilir. Şu anda müşteri tarafından yönetilen şifreleme için portal desteği yok.
 

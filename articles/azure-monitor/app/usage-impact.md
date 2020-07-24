@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041478"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights ile etki analizi
 
@@ -79,10 +80,10 @@ Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) veya [sayfa görünümleri](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)göndermeye başlayın.
+- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](./api-custom-events-metrics.md#trackevent) veya [sayfa görünümleri](./api-custom-events-metrics.md#page-views)göndermeye başlayın.
 - Özel olayları veya sayfa görünümlerini zaten gönderirseniz, kullanıcıların hizmetinizi nasıl kullandığını öğrenmek için kullanım araçları ' nı araştırın.
     - [Huniler](usage-funnels.md)
     - [Bekletme](usage-retention.md)
     - [Kullanıcı Akışları](usage-flows.md)
-    - [Çalışma Kitapları](../../azure-monitor/platform/workbooks-overview.md)
+    - [Çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md)
     - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)

@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041393"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -35,7 +35,7 @@ Bu makale, kullanılabilirlik izlemeyi kullanırken oluşabilecek yaygın sorunl
 |----|---------|
 |Bağlı olan taraf bir süre sonra düzgün bir şekilde yanıt vermediği için bağlantı girişimi başarısız oldu  | Belirli konumlardaki test aracıları bir güvenlik duvarı tarafından engelleniyor.|
 |    |Belirli IP adreslerini yeniden yönlendirme (yük dengeleyiciler, coğrafi trafik yöneticileri, Azure Express Route) aracılığıyla yapılır. 
-|    |Azure ExpressRoute kullanıyorsanız, paketlerin [asimetrik yönlendirmenin gerçekleştiği](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)durumlarda nerelerde bırakılbileceği senaryolar vardır.|
+|    |Azure ExpressRoute kullanıyorsanız, paketlerin [asimetrik yönlendirmenin gerçekleştiği](../../expressroute/expressroute-asymmetric-routing.md)durumlarda nerelerde bırakılbileceği senaryolar vardır.|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>Protokol ihlali hatası ile test hatası
 
@@ -66,11 +66,11 @@ E-postanızı doğrudan listelendiğini doğrulamak için klasik uyarılar yapı
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Web kancası bildirimi aldım mı?
 
-Web kancası bildirimini alan uygulamanın kullanılabilir olduğundan ve Web kancası isteklerini başarıyla işlediğinden emin olun. Daha fazla [bilgi için bkz](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) ..
+Web kancası bildirimini alan uygulamanın kullanılabilir olduğundan ve Web kancası isteklerini başarıyla işlediğinden emin olun. Daha fazla [bilgi için bkz](../platform/alerts-log-webhook.md) ..
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>403 yasaklanmış hata alıyorum, bu ne anlama geliyor?
 
-Bu hata, kullanılabilirlik aracılarının hedef URL 'nizin test yapmasına izin vermek için güvenlik duvarı özel durumları eklemeniz gerektiğini gösterir. İzin verilecek aracı IP adreslerinin tam listesi için, [IP özel durum makalesine](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)başvurun.
+Bu hata, kullanılabilirlik aracılarının hedef URL 'nizin test yapmasına izin vermek için güvenlik duvarı özel durumları eklemeniz gerektiğini gösterir. İzin verilecek aracı IP adreslerinin tam listesi için, [IP özel durum makalesine](./ip-addresses.md#availability-tests)başvurun.
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Protokol ihlali hatası ile aralıklı test hatası?
 
@@ -97,7 +97,7 @@ Bu iki terim birbirlerinin yerine kullanılabilir. Kullanılabilirlik testleri, 
    İki olası çözümü vardır:
 
    * Güvenlik duvarınızı, [Web testi aracılarımızın IP adreslerinden](../../azure-monitor/app/ip-addresses.md) gelen isteklere izin verecek şekilde yapılandırın.
-   * İç sunucunuzu düzenli olarak test etmek için kendi kodunuzu yazın. Kodu, güvenlik duvarınızın arkasındaki bir test sunucusunda arka plan işlemi olarak çalıştırın. Test işleminiz, temel SDK paketindeki [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API’sini kullanarak sonuçları Application Insights’a gönderebilir. Bunun için test sunucunuzun Application Insights alım uç noktası ile giden bağlantısının olması gerekir, ancak bu, gelen isteklere izin vermeye göre çok daha küçük bir güvenlik riski oluşturur. Sonuçlar kullanılabilirlik Web testleri dikey penceresinde görünür ancak deneyim Portal aracılığıyla oluşturulan testler için kullanılabilir olan yeniliklerden biraz basitleşmiş olur. Özel kullanılabilirlik testleri analiz, arama ve ölçümler ' de kullanılabilirlik sonuçları olarak da görünür.
+   * İç sunucunuzu düzenli olarak test etmek için kendi kodunuzu yazın. Kodu, güvenlik duvarınızın arkasındaki bir test sunucusunda arka plan işlemi olarak çalıştırın. Test işleminiz, temel SDK paketindeki [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API’sini kullanarak sonuçları Application Insights’a gönderebilir. Bunun için test sunucunuzun Application Insights alım uç noktası ile giden bağlantısının olması gerekir, ancak bu, gelen isteklere izin vermeye göre çok daha küçük bir güvenlik riski oluşturur. Sonuçlar kullanılabilirlik Web testleri dikey penceresinde görünür ancak deneyim Portal aracılığıyla oluşturulan testler için kullanılabilir olan yeniliklerden biraz basitleşmiş olur. Özel kullanılabilirlik testleri analiz, arama ve ölçümler ' de kullanılabilirlik sonuçları olarak da görünür.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Çok adımlı web testi yüklenemiyor
 

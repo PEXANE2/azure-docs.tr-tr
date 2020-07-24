@@ -1,6 +1,6 @@
 ---
 title: Standart katmana yükseltme-Azure Güvenlik Merkezi
-description: Bu hızlı başlangıçta, ek güvenlik kapsamı için Güvenlik Merkezinizin Standart fiyatlandırma katmanına nasıl yükseltme yapacağınız gösterilmektedir.
+description: Bu hızlı başlangıçta, ek güvenlik için Güvenlik Merkezi 'nin standart fiyatlandırma katmanına nasıl yükselteceğiniz gösterilmektedir.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038554"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Hızlı Başlangıç: Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme
-Azure Güvenlik Merkezi, hibrit bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması sağlar. Ücretsiz katman yalnızca Azure kaynaklarınız için sınırlı güvenlik sunarken Standart katman bu özellikleri şirket içine ve diğer bulutlara genişletir. Güvenlik Merkezi Standart katmanı; güvenlik açıklarını bulup gidermenize, zararlı etkinlikleri engellemek için erişim ve uygulama denetimleri uygulamanıza, analizden ve bilgilerden yararlanarak tehditleri algılamanıza ve saldırı altındayken hızlıca yanıt vermenize yardımcı olur. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+Azure Güvenlik Merkezi, hibrit bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması sağlar. Ücretsiz katman yalnızca Azure kaynaklarınız için sınırlı güvenlik sağladığından, Standart katman bu özellikleri şirket içi ve diğer bulutlara genişletir. Güvenlik Merkezi Standart katmanı; güvenlik açıklarını bulup gidermenize, zararlı etkinlikleri engellemek için erişim ve uygulama denetimleri uygulamanıza, analizden ve bilgilerden yararlanarak tehditleri algılamanıza ve saldırı altındayken hızlıca yanıt vermenize yardımcı olur. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 Bu makalede, güvenlik açıklarını ve tehditleri izlemek için, ek güvenlik için Standart katmana yükseltirsiniz ve sanal makinelerinize Log Analytics aracısını yüklersiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-Bir aboneliği Standart katmana yükseltebilmeniz için size Abonelik Sahibi, Abonelik Katkıda Bulunanı veya Güvenlik Yöneticisi rolünün atanması gerekir.
+Bir aboneliği Standart katmana yükseltmek için abonelik sahibi, abonelik katılımcısı veya güvenlik yöneticisi rolüne sahip olmanız gerekir.
 
 ## <a name="enable-your-azure-subscription"></a>Azure aboneliğinizi etkinleştirme
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açın.
-2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
+1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi-genel bakış** açılır.
 
    ![Güvenlik Merkezi’ne genel bakış][2]
 
@@ -49,12 +49,12 @@ Güvenlik Merkezi’ni başlattıktan sonraki ilk birkaç dakika içinde şunlar
 
 Güvenlik Merkezi 'Nden tam olarak yararlanabilmek için, Standart katmana yükseltmek ve Log Analytics aracıyı yüklemek üzere aşağıdaki adımları gerçekleştirmeniz gerekir.
 
-## <a name="upgrade-to-the-standard-tier"></a>Standart katmana yükseltme
-Güvenlik Merkezi hızlı başlangıçlarının ve öğreticilerinin amacı doğrultusunda Standart katmana yükseltme yapmanız gerekir. Güvenlik Merkezi standardının ücretsiz bir denemesi vardır. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). 
+## <a name="upgrade-to-the-standard-pricing-tier"></a>Standart fiyatlandırma katmanına yükseltme
+Güvenlik Merkezi hızlı başlangıç ve öğreticilerin amacı için Standart katmana yükseltmeniz gerekir. Güvenlik Merkezi standardının ücretsiz bir denemesi vardır. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
  
-   ![Kullanmaya başlayın][4]
+   ![başlarken][4]
 
 2. **Yükselt** altında, Güvenlik Merkezi, ekleme işlemi için uygun abonelikleri ve çalışma alanlarını listeler. 
    - Tüm abonelikleri ve çalışma alanlarını deneme sürümü uygunluk durumlarıyla birlikte listelemek için, genişletilebilir **Deneme sürümünüzü uygulayın**’a tıklayabilirsiniz.
@@ -75,7 +75,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 1. Güvenlik Merkezi ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
 2. Aboneliğin satırı üzerinde, ayarları değiştirmek istediğiniz aboneliğe tıklayın.
 3. **Veri Toplama** sekmesinde, **Otomatik sağlama**’yı **Açık** olarak ayarlayın.
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 ---
   ![Otomatik sağlamayı etkinleştirme][6]
 
@@ -84,19 +84,19 @@ Azure VM’lerinize ilişkin bu yeni öngörüyle Güvenlik Merkezi, sistem gün
   ![Öneriler][8]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız Standart katmanını çalıştırmaya devam edin ve otomatik sağlamayı etkinleştirilmiş halde tutun. Devam etmeyi planlamıyorsanız veya Ücretsiz katmanına dönmek istiyorsanız:
+Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, standart katmanı çalıştırmaya devam edin ve otomatik sağlamayı etkin tutun. Devam etmeyi planlamıyorsanız veya Ücretsiz katmanına dönmek istiyorsanız:
 
 1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma & ayarları**' nı seçin.
 2. Ücretsiz katmana değiştirmek istediğiniz aboneliğe tıklayın.
-3. Aboneliği Standart katmanından Ücretsiz katmanına geçirmek için **Fiyatlandırma katmanı**’nı ve **Ücretsiz**’i seçin.
-5. **Kaydet**’i seçin.
+3. **Fiyatlandırma katmanını** seçin ve standart katmandan ücretsiz katmana abonelik değiştirmek için **ücretsiz** ' ı seçin.
+5. **Kaydet**'i seçin.
 
 Otomatik sağlamayı devre dışı bırakmak istiyorsanız:
 
 1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma & ayarları**' nı seçin.
 2. Otomatik sağlamayı devre dışı bırakmak istediğiniz abonelikte temizleyin.
 3. **Veri Toplama** sekmesinde, **Otomatik sağlama**’yı **Kapalı** olarak ayarlayın.
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 >[!NOTE]
 > Otomatik sağlamayı devre dışı bırakmak, aracının sağlandığı Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
@@ -107,6 +107,11 @@ Bu hızlı başlangıçta Standart katmana yükseltmiş ve hibrit bulut iş yük
 
 > [!div class="nextstepaction"]
 > [Hızlı Başlangıç: Windows bilgisayarları Azure Güvenlik Merkezi’ne ekleme](quick-onboard-windows-computer.md)
+
+Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
+
+> [!div class="nextstepaction"]
+> [Maliyet yönetimi ile maliyetleri çözümlemeye başlayın](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

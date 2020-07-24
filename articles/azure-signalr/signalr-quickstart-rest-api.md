@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80548122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045008"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Hızlı Başlangıç: Konsol uygulamasından gerçek zamanlı iletiler yayımlama
 
@@ -19,7 +19,7 @@ Azure SignalR hizmeti, yayıncılık gibi sunucudan istemciye doğrudan iletişi
 
 Bu hızlı başlangıçta C# dilinde bir komut satırı uygulamasından bağlı istemci uygulamalarına nasıl ileti gönderebileceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
@@ -126,7 +126,7 @@ Sürüm | API Durumu | Kapı | Özel
 
 Her sürüm için kullanılabilir API'lerin listesi aşağıda verilmiştir.
 
-API | `1.0-preview` | `1.0`
+API | 1,0-Önizleme | 1,0
 --- | --- | ---
 [Tümüne yayınla](#broadcast) | **&#x2713;** | **&#x2713;**
 [Gruba yayınla](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -146,7 +146,7 @@ Bazı kullanıcılara gönder | **&#x2713;** (kullanım dışı) | `N / A`
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Herkese yayınlama
 
-Sürüm | API HTTP Yöntemi | İstek URL'si | İstek gövdesi
+Sürüm | API HTTP Yöntemi | İstek URL’si | İstek gövdesi
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>` | Yukarıdakiyle aynı
@@ -154,7 +154,7 @@ Sürüm | API HTTP Yöntemi | İstek URL'si | İstek gövdesi
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>Gruba yayınla
 
-Sürüm | API HTTP Yöntemi | İstek URL'si | İstek gövdesi
+Sürüm | API HTTP Yöntemi | İstek URL’si | İstek gövdesi
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Yukarıdakiyle aynı
@@ -162,7 +162,7 @@ Sürüm | API HTTP Yöntemi | İstek URL'si | İstek gövdesi
 <a name="send-user"> </a>
 ### <a name="sending-to-a-user"></a>Kullanıcıya gönderme
 
-Sürüm | API HTTP Yöntemi | İstek URL'si | İstek gövdesi
+Sürüm | API HTTP Yöntemi | İstek URL’si | İstek gövdesi
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>` | Yukarıdakiyle aynı
@@ -170,21 +170,21 @@ Sürüm | API HTTP Yöntemi | İstek URL'si | İstek gövdesi
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>Gruba kullanıcı ekleme
 
-Sürüm | API HTTP Yöntemi | İstek URL'si
+Sürüm | API HTTP Yöntemi | İstek URL’si
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Gruptan kullanıcı kaldırma
 
-Sürüm | API HTTP Yöntemi | İstek URL'si
+Sürüm | API HTTP Yöntemi | İstek URL’si
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="check-user-existence"> </a>
 ### <a name="check-user-existence-in-a-group"></a>Bir gruptaki Kullanıcı varlığını denetleme
 
-API Sürümü | API HTTP Yöntemi | İstek URL'si
+API Sürümü | API HTTP Yöntemi | İstek URL’si
 ---|---|---
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
@@ -197,21 +197,21 @@ Yanıt Durum Kodu | Açıklama
 <a name="remove-user-from-all-groups"> </a>
 ### <a name="remove-a-user-from-all-groups"></a>Kullanıcıları tüm gruplardan kaldır
 
-API Sürümü | API HTTP Yöntemi | İstek URL'si
+API Sürümü | API HTTP Yöntemi | İstek URL’si
 ---|---|---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
 
 <a name="send-connection"> </a>
 ### <a name="send-message-to-a-connection"></a>Bir bağlantıya ileti gönderin
 
-API Sürümü | API HTTP Yöntemi | İstek URL'si | İstek Gövdesi
+API Sürümü | API HTTP Yöntemi | İstek URL’si | İstek Gövdesi
 ---|---|---|---
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
 
 <a name="add-connection-to-group"> </a>
 ### <a name="add-a-connection-to-a-group"></a>Gruba bağlantı ekleme
 
-API Sürümü | API HTTP Yöntemi | İstek URL'si
+API Sürümü | API HTTP Yöntemi | İstek URL’si
 ---|---|---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
@@ -219,7 +219,7 @@ API Sürümü | API HTTP Yöntemi | İstek URL'si
 <a name="remove-connection-from-group"> </a>
 ### <a name="remove-a-connection-from-a-group"></a>Bir gruptan bağlantı kaldırma
 
-API Sürümü | API HTTP Yöntemi | İstek URL'si
+API Sürümü | API HTTP Yöntemi | İstek URL’si
 ---|---|---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
@@ -227,7 +227,7 @@ API Sürümü | API HTTP Yöntemi | İstek URL'si
 <a name="close-connection"> </a>
 ### <a name="close-a-client-connection"></a>İstemci bağlantısını kapatma
 
-API Sürümü | API HTTP Yöntemi | İstek URL'si
+API Sürümü | API HTTP Yöntemi | İstek URL’si
 ---|---|---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>`
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>?reason=<close-reason>`
@@ -235,14 +235,14 @@ API Sürümü | API HTTP Yöntemi | İstek URL'si
 <a name="service-health"> </a>
 ### <a name="service-health"></a>Hizmet Durumu
 
-API Sürümü | API HTTP Yöntemi | İstek URL'si
+API Sürümü | API HTTP Yöntemi | İstek URL’si
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
 Yanıt Durum Kodu | Açıklama
 ---|---
 `200` | Hizmet Iyi
-`503` | Hizmet kullanılamıyor
+`5xx` | Hizmet hatası
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

@@ -3,33 +3,46 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 11/03/2016
-ms.openlocfilehash: 8b5f72f18ee5bf9c1e4dbaaa87d6705f55b09bc5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: 27df83552b450b7657c0595d1d419001df98148c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040237"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Azure hesabı; [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturabilirsiniz
 * [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) hesabı 
 
-OneDrive hesabınızı bir mantıksal uygulamada kullanabilmeniz için, mantıksal uygulamayı OneDrive hesabınıza bağlamak üzere yetkilendirin.  Bu, Azure portal mantıksal uygulamanız dahilinde kolayca yapabilirsiniz. 
+OneDrive hesabınızı Logic Apps ile kullanabilmeniz için, Azure portal OneDrive hesabınıza bağlanmak üzere Logic Apps yetkilendirmelisiniz.
 
-Aşağıdaki adımları kullanarak mantıksal uygulamanızı OneDrive hesabınıza bağlamak için yetkilendirin:
+OneDrive hesabınıza bağlanmak üzere Logic Apps yetkilendirmek için aşağıdaki adımları izleyin:  
 
-1. Mantıksal uygulama oluşturun. Logic Apps tasarımcısında, açılan listeden **Microsoft yönetilen API 'Leri göster** ' i seçin ve arama kutusuna "OneDrive" yazın. Tetikleyiciler veya eylemlerden birini seçin:  
-   !["Microsoft tarafından yönetilen API 'Leri göster" başlıklı iletişim kutusunda "OneDrive" içeren bir arama kutusu bulunur. Aşağıda dört tetikleyici listesi verilmiştir. İlk olarak listede "OneDrive-bir dosya oluşturulduğunda" (seçili).](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Daha önce OneDrive ile herhangi bir bağlantı oluşturmadıysanız OneDrive kimlik bilgilerinizi kullanarak oturum açmanız istenir:  
-   !["OneDrive-bir dosya oluşturulduğunda" başlıklı bir iletişim kutusu, "oturum aç" etiketli bir düğmeye sahiptir.](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. **Oturum aç**' ı seçin ve Kullanıcı adınızı ve parolanızı girin. **Oturum aç '** ı seçin:  
-   !["Oturum aç" başlıklı bir iletişim kutusu, "Microsoft hesabı kullanmanızı" sağlar. "E-posta veya telefon" ve "parola" şeklinde etiketlenmiş iki metin kutusu vardır ve "Oturumumu Açık tut" etiketli bir onay kutusu ve "oturum aç" etiketli bir düğme vardır.](./media/connectors-create-api-onedrive/onedrive-3.png)   
-   
-    Bu kimlik bilgileri, mantıksal uygulamanızı OneDrive hesabınızdaki verilere bağlanmak ve verilere erişmek üzere yetkilendirmek için kullanılır. 
+1. Azure portalında oturum açın. 
+
+1. **Azure hizmetleri**altında **Logic Apps**' yi seçin. Ardından, listeden mantıksal uygulamanızın adını seçin.
+
+1. Mantıksal uygulamanızın menüsünde, **geliştirme araçları**altında **Logic App Designer** ' ı seçin.
+
+1. Logic Apps tasarımcısında, açılan listeden **Microsoft yönetilen API 'Leri göster** ' i seçin, sonra arama kutusuna *OneDrive* yazın. Kullanılacak tetikleyiciyi veya eylemi seçin:
+
+   ![Eklenecek OneDrive API eylemlerinin listesini gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/connectors-create-api-onedrive/onedrive-1.png)
+
+2. Daha önce OneDrive ile herhangi bir bağlantı oluşturmadıysanız OneDrive kimlik bilgilerinizi kullanarak oturum açmak için istemi izleyin:  
+
+   ![OneDrive API için oturum açma istemi gösteren Logic Apps Designer 'ın ekran görüntüsü.](./media/connectors-create-api-onedrive/onedrive-2.png)
+
+3. **Oturum aç**' ı seçin ve Kullanıcı adınızı ve parolanızı girin. **Oturum aç '** ı seçin: 
+
+   ![OneDrive API yetkilendirmesi için Microsoft hesabı oturum açma sayfasının ekran görüntüsü.](./media/connectors-create-api-onedrive/onedrive-3.png)   
+
+    Bu kimlik bilgileri, mantıksal uygulamanızı OneDrive hesabınızdaki verilere erişecek şekilde yetkilendirmek için kullanılır. 
+
 4. Mantıksal uygulamayı OneDrive hesabınızı kullanacak şekilde yetkilendirmek için **Evet** ' i seçin:  
-   !["Bu uygulamanın bilgilerinize erişmesine Izin ver" başlıklı iletişim kutusu Aşağıdaki dört şeyi yapmak için izin ister: 1) "otomatik olarak oturum aç", 2) "e-posta adreslerinize erişin", 3) "dosyalarınıza her zaman erişin" ve 4) "OneDrive dosyalarına erişin." İzin vermek için bir "Evet" düğmesi ve bunu reddetmek için bir "Hayır" düğmesi vardır. Bu uygulama izinlerini değiştirmek için bir bağlantı vardır.](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. Bağlantının oluşturulduğuna dikkat edin. Şimdi mantıksal uygulamanızdaki diğer adımlara ilerleyin:  
-   !["Dosya oluşturulduğunda" başlıklı bir iletişim kutusu, ilişkili bir gözatmasına sahip "klasör" başlıklı bir metin kutusuna sahiptir.](./media/connectors-create-api-onedrive/onedrive-5.png)
 
+   ![İzin verilen eylemleri gösteren Logic Apps için Microsoft hesabı yetkilendirmesi ekran görüntüsü.](./media/connectors-create-api-onedrive/onedrive-4.png)   
+   
+5. Bağlantı artık adımda listelenmiştir. Kaydet ' i seçin ve ardından mantıksal uygulamanızı oluşturmaya devam edin. 
+
+   ![OneDrive API bağlantısı ile Eylem Düzenleyicisi 'ni gösteren Logic Apps Tasarımcısı 'nın ekran görüntüsü.](./media/connectors-create-api-onedrive/onedrive-5.png)

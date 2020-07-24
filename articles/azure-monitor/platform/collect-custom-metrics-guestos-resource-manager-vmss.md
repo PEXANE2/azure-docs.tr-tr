@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045187"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows sanal makine ölçek kümesi için Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 
@@ -23,11 +24,11 @@ Bu makalede, Azure Izleyici veri deposuna bir Windows sanal makine ölçek küme
 
 Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir. 
+- Aboneliğinizin [Microsoft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md)'a kayıtlı olması gerekir. 
 
-- [Azure PowerShell](/powershell/azure) yüklemiş olmanız veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanmanız gerekir. 
+- [Azure PowerShell](/powershell/azure) yüklemiş olmanız veya [Azure Cloud Shell](../../cloud-shell/overview.md)kullanmanız gerekir. 
 
 - VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](metrics-custom-overview.md#supported-regions)olması gerekir.
 
@@ -270,7 +271,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
 
 ## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik yapın 
 
-1. Azure Portal’da oturum açın. 
+1. Azure portalında oturum açın. 
 
 1. Sol taraftaki menüde **izleyici**' yi seçin. 
 
@@ -292,5 +293,3 @@ Ayrıca, bu ölçümdeki boyutları belirli bir VM için grafik olarak veya öl�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Özel ölçümler](metrics-custom-overview.md)hakkında daha fazla bilgi edinin.
-
-

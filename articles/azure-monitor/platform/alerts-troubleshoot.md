@@ -6,11 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045252"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Izleyici uyarıları sorunlarını giderme
 
@@ -240,13 +241,13 @@ Bir [eylem kuralı](alerts-action-rules.md)oluşturmaya, güncelleştirmeye veya
 
 1. **Bir izin hatası mı alıyorsunuz?**  
 
-     [Izleme katılımcısı yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ya da eylem kurallarıyla ve uyarılarla ilgili belirli izinlere sahip olmanız gerekir.
+     [Izleme katılımcısı yerleşik rolüne](../../role-based-access-control/built-in-roles.md#monitoring-contributor)ya da eylem kurallarıyla ve uyarılarla ilgili belirli izinlere sahip olmanız gerekir.
 
 1. **Eylem kuralı parametrelerini doğrulamadınız mı?**  
 
-    [Eylem kuralı belgelerini](alerts-action-rules.md)veya [PowerShell set-azactionrule komutunu eylem kuralını](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) denetleyin. 
+    [Eylem kuralı belgelerini](alerts-action-rules.md)veya [PowerShell set-azactionrule komutunu eylem kuralını](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) denetleyin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Günlük uyarısı kullanılıyorsa, bkz. [sorun giderme günlüğü uyarıları](alert-log-troubleshoot.md).
+- Günlük uyarısı kullanılıyorsa, bkz. [sorun giderme günlüğü uyarıları](./alerts-troubleshoot-log.md).
 - Yukarıdaki kılavuzdan sorununuzu çözmişseniz olup olmadığınızı denetlemek için [Azure Portal](https://portal.azure.com) geri dönün 

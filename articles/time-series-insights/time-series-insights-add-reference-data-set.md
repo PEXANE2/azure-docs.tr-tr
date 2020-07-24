@@ -5,23 +5,24 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.custom: seodec18~~~~
-ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.custom: seodec18
+ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046624"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Time Series Insights ortamınız için Azure portal kullanarak bir başvuru veri kümesi oluşturun
+# <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Azure portal kullanarak Azure Time Series Insights Gen1 ortamınız için bir başvuru veri kümesi oluşturun
 
 Bu makalede, Azure Time Series Insights ortamınıza bir başvuru verileri kümesinin nasıl ekleneceği açıklanmaktadır. Başvuru verileri, değerleri artırmak için kaynak verilerinize katılması yararlı olur.
 
-Başvuru veri kümesi, olay kaynağınızdan olayları geliştiren öğelerin bir koleksiyonudur. Time Series Insights giriş altyapısı, olay kaynağınızdaki her bir olayı, başvuru veri kümesindeki karşılık gelen veri satırıyla birleştirir. Bu genişletilmiş olay daha sonra sorgu için kullanılabilir. Bu JOIN, başvuru veri kümesinde tanımlanan birincil anahtar sütunlara dayalıdır.
+Başvuru veri kümesi, olay kaynağınızdan olayları geliştiren öğelerin bir koleksiyonudur. Azure Time Series Insights giriş altyapısı, olay kaynağınızdaki her bir olayı, başvuru veri kümesindeki karşılık gelen veri satırıyla birleştirir. Bu genişletilmiş olay daha sonra sorgu için kullanılabilir. Bu JOIN, başvuru veri kümesinde tanımlanan birincil anahtar sütunlara dayalıdır.
 
 Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırılıp karşıya yüklendikten sonra yalnızca geçerli ve gelecekteki giriş verileri eşleştirilir ve başvuru tarihi kümesine birleştirilir.
 
@@ -35,15 +36,15 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Mevcut Azure Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Zaman Serisi Görüşleri ortamınızı seçin.
+1. Mevcut Azure Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Azure Time Series Insights ortamınızı seçin.
 
-1. **Genel bakış** sayfasını seçin. **Time Series Insights gezgin URL 'sini** bulmak ve bağlantıyı açmak için sayfanın üst kısmındaki **temel** bileşenler bölümünü genişletin.  
+1. **Genel Bakış** sayfasını seçin. **Time Series Insights gezgin URL 'sini** bulmak ve bağlantıyı açmak için sayfanın üst kısmındaki **temel** bileşenler bölümünü genişletin.  
 
    [![Essentials bölümünü Genişlet](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   Time Series Insights ortamınızın Gezginini görüntüleyin.
+   Azure Time Series Insights ortamınızın Gezginini görüntüleyin.
 
-1. Time Series Insights Gezgini 'nde ortam seçicisini genişletin. Etkin ortamı seçin. Gezgin sayfasında sağ üstteki başvuru verileri simgesini seçin.
+1. Azure Time Series Insights Gezgini 'nde ortam seçicisini genişletin. Etkin ortamı seçin. Gezgin sayfasında sağ üstteki başvuru verileri simgesini seçin.
 
    [![Başvuru verileri ekleme](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 

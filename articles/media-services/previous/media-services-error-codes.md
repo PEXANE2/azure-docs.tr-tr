@@ -14,32 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887097"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042840"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services hata kodları
 Microsoft Azure Media Services kullanırken, hizmetten Media Services desteklenmeyen eylemlere yönelik kimlik doğrulama belirteçleri süresi dolan işlemlere bağlı olarak hizmetten HTTP hata kodları alabilirsiniz. Aşağıda, Media Services tarafından döndürülebilecek **http hata kodlarının** listesi ve olası nedenleri verilmiştir.  
 
-## <a name="400-bad-request"></a>400 Hatalı Istek
+## <a name="400-bad-request"></a>400 Hatalı İstek
 İstek geçersiz bilgiler içeriyor ve aşağıdaki nedenlerden biri nedeniyle reddedildi:
 
 * Desteklenmeyen bir API sürümü belirtildi. En güncel sürüm için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
-* Media Services API sürümü belirtilmedi. API sürümünü belirtme hakkında daha fazla bilgi için bkz. [Media Services Operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* Media Services API sürümü belirtilmedi. API sürümünü belirtme hakkında daha fazla bilgi için bkz. [Media Services Operations REST API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
   > Media Services bağlanmak için .NET veya Java SDK 'larını kullanıyorsanız, Media Services bir işlem gerçekleştirmeye çalıştığınızda API sürümü sizin için belirtilir.
   > 
   > 
-* Tanımlanmamış bir özellik belirtildi. Özellik adı hata iletisidir. Yalnızca belirli bir varlığın üyesi olan özellikler belirtilebilir. Varlıkların listesi ve özellikleri için bkz. [Azure Media Services REST API'si Başvurusu](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) .
+* Tanımlanmamış bir özellik belirtildi. Özellik adı hata iletisidir. Yalnızca belirli bir varlığın üyesi olan özellikler belirtilebilir. Varlıkların listesi ve özellikleri için bkz. [Azure Media Services REST API'si Başvurusu](/rest/api/media/operations/azure-media-services-rest-api-reference) .
 * Geçersiz bir özellik değeri belirtildi. Özellik adı hata iletisidir. Geçerli özellik türleri ve değerleri için önceki bağlantıyı inceleyin.
 * Özellik değeri eksik ve gereklidir.
 * Belirtilen URL 'nin bir parçası bozuk bir değer içeriyor.
 * Bir WriteOnce özelliği güncelleştirilmeye çalışıldı.
 * Belirtilmemiş veya belirlenemediği birincil Assetdosyası olan bir giriş varlığına sahip bir Iş oluşturulmaya çalışıldı.
-* SAS Konumlandırıcı 'yı güncelleştirme girişiminde bulunuldu. SAS Konumlandırıcı yalnızca oluşturulabilir veya silinebilir. Akış Konumlandırıcı güncelleştirilemeyebilir. Daha fazla bilgi için bkz. [Konum Belirleyicisi](https://docs.microsoft.com/rest/api/media/operations/locator).
+* SAS Konumlandırıcı 'yı güncelleştirme girişiminde bulunuldu. SAS Konumlandırıcı yalnızca oluşturulabilir veya silinebilir. Akış Konumlandırıcı güncelleştirilemeyebilir. Daha fazla bilgi için bkz. [Konum Belirleyicisi](/rest/api/media/operations/locator).
 * Desteklenmeyen bir işlem veya sorgu gönderildi.
 
 ## <a name="401-unauthorized"></a>401 Yetkisiz
@@ -73,7 +74,7 @@ Aşağıdaki nedenlerden biri nedeniyle bir kaynakta isteğe izin verilmiyor:
 * Mevcut olmayan bir varlık ALıNMAYA çalışıldı.
 * Media Services hesabıyla ilişkilendirilmemiş bir depolama hesabı belirtilmesi denendi.  
 
-## <a name="409-conflict"></a>409 çakışması
+## <a name="409-conflict"></a>409 Çakışma
 Aşağıdaki nedenlerden biri nedeniyle isteğe izin verilmiyor:
 
 * Birden fazla AssetFile, varlık içinde belirtilen ada sahip.
@@ -95,10 +96,10 @@ Aşağıdaki nedenlerden biri nedeniyle isteğe izin verilmiyor:
 * Diğer beklenmeyen hata.
 
 ## <a name="503-service-unavailable"></a>503 Hizmet Kullanılamıyor
-Sunucu şu anda istekleri alamıyor. Bu hata, hizmete aşırı istek oluşmasına neden olabilir. Media Services azaltma mekanizması, hizmette aşırı istek yapan uygulamalar için kaynak kullanımını kısıtlar.
+Sunucu şu anda istekleri alamıyor. Bu hata hizmetin aşırı istek almasından kaynaklanıyor olabilir. Media Services azaltma mekanizması hizmete çok sayıda istek gönderen uygulamaların kaynak kullanımını kısıtlar.
 
 > [!NOTE]
-> 503 hatası aldığınız neden hakkında daha ayrıntılı bilgi edinmek için hata iletisini ve hata kodu dizesini kontrol edin. Bu hata her zaman daraltma anlamına gelmez.
+> 503 hatasını alma nedeniniz hakkında daha fazla bilgi edinmek için hata iletisini ve hata kodu dizesini kontrol edin. Bu hata her zaman azaltma anlamına gelmez.
 > 
 > 
 
@@ -108,7 +109,7 @@ Olası durum açıklamaları şunlardır:
 * "Sunucu meşgul. {0}Saniye başına istek sayısı daraltıldı. "
 * "Sunucu meşgul. {0}Saniyeler içinde isteklerin daha fazlası {1} kısıtlanacaktır. "
 
-Bu hatayı işlemek için üstel geri deneme mantığını kullanmanızı öneririz. Yani, ardışık hata yanıtları için yeniden denemeler arasında giderek daha uzun süre bekler.  Daha fazla bilgi için bkz. [geçici hata Işleme uygulama bloğu](https://msdn.microsoft.com/library/hh680905.aspx).
+Bu hatayı işlemek için üstel geri deneme mantığını kullanmanızı öneririz. Yani, ardışık hata yanıtları için yeniden denemeler arasında giderek daha uzun süre bekler.  Daha fazla bilgi için bkz. [geçici hata Işleme uygulama bloğu](/previous-versions/msp-n-p/hh680905(v=pandp.50)).
 
 > [!NOTE]
 > [.NET için Azure MEDIA SERVICES SDK](https://github.com/Azure/azure-sdk-for-media-services/tree/master)kullanıyorsanız, 503 hatası için yeniden deneme mantığı SDK tarafından uygulanmıştır.  
@@ -116,11 +117,10 @@ Bu hatayı işlemek için üstel geri deneme mantığını kullanmanızı öneri
 > 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Media Services yönetimi hata kodları](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Media Services yönetimi hata kodları](/rest/api/media/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

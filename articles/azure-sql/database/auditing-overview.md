@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040586"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,6 +79,9 @@ Varsayılan denetim ilkesi, tüm eylemleri ve aşağıdaki eylem grubu kümesini
 Azure SQL veritabanı ve Azure SYNAPSE Audit, bir denetim kaydındaki karakter alanları için 4000 karakter veri depolar. Denetlenebilir bir eylemden döndürülen **ifade** veya **data_sensitivity_information** değerleri 4000 'den fazla karakter içeriyorsa, ilk 4000 karakterden sonraki tüm veriler **kesilir ve denetlenmeyecektir**.
 Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması açıklanmaktadır.
 
+  > [!NOTE]
+  > Duraklatılmış bir Synapse SQL havuzunda denetim etkinleştirilmesi mümkün değildir. Denetimi etkinleştirmek için SYNAPSE SQL havuzunun duraklamasını kaldırın. [SYNAPSE SQL havuzu](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool)hakkında daha fazla bilgi edinin.
+
 1. [Azure portalına](https://portal.azure.com) gidin.
 2. **SQL veritabanınızda** veya **SQL Server** bölmesindeki güvenlik başlığı altında bulunan **denetime** gidin.
 3. Sunucu denetim ilkesi ayarlamayı tercih ediyorsanız, veritabanı denetimi sayfasında **sunucu ayarlarını görüntüle** bağlantısını seçebilirsiniz. Daha sonra sunucu denetimi ayarlarını görüntüleyebilir veya değiştirebilirsiniz. Sunucu denetim ilkeleri, bu sunucudaki tüm mevcut ve yeni oluşturulan veritabanları için geçerlidir.
@@ -119,10 +122,6 @@ Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak 
 Azure Izleyici günlükleri çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Olay Hub 'ı hedefine yönelik denetim
-
-> [!WARNING]
-> Üzerinde SQL veritabanı havuzu olan bir sunucuda denetimin etkinleştirilmesi **, SQL veritabanı havuzunun devam ettirmeye ve yeniden duraklatılmasına** neden olabilir ve bu da faturalandırma ücretlerine tabi olabilir.
-> Duraklatılmış bir SQL veritabanı havuzunda denetim etkinleştirilmesi mümkün değildir. Etkinleştirmek için, SQL veritabanı havuzunu duraklatıp.
 
 Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hub 'ı (Önizleme)** seçin ve **Olay Hub 'ı ayrıntılarını**açın. Günlüklerin yazılacağı Olay Hub 'ını seçin ve ardından **Tamam**' a tıklayın. Olay Hub 'ının, veritabanınız ve sunucunuz ile aynı bölgede olduğundan emin olun.
 

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 765deda747d46a9ee5b6913c192fa1a43c56d35d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2336916f7d47b38a12ee0418353a249b5eaa3801
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385917"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042406"
 ---
 # <a name="azure-active-directory-b2c-partners"></a>Azure Active Directory B2C iş ortakları
 
-İş ortağı ağımız, sorunsuz son kullanıcı deneyimleri oluşturmanıza yardımcı olmak için çözüm yeteneklerini genişletiyor. Azure AD B2C, çok faktörlü kimlik doğrulama yöntemlerini etkinleştirmek, güvenli müşteri kimlik doğrulamasını (SCA) etkinleştirmek, rol tabanlı Access Control gerçekleştirmek ve kimlik doğrulama ve sağlama aracılığıyla sahtekarlığı önlemek için iş ortaklarıyla tümleştirilebilir. Uygulamaları aşağıda listelenen iş ortaklarıyla tümleştirme hakkında bilgi edinmek için ayrıntılı anlatımlarımızı kullanın.
+İş ortağı ağımız, sorunsuz son kullanıcı deneyimleri oluşturmanıza yardımcı olmak için çözüm yeteneklerini genişletiyor. Azure AD B2C, çok faktörlü kimlik doğrulama yöntemlerini etkinleştirmek, güvenli müşteri kimlik doğrulamasını (SCA) etkinleştirmek, rol tabanlı Access Control gerçekleştirmek ve kimlik doğrulama ve sağlama aracılığıyla sahtekarlığı önlemek için iş ortaklarıyla tümleştirilebilir. Uygulamaları aşağıda listelenen iş ortaklarıyla tümleştirme hakkında bilgi edinmek için ayrıntılı örnek yönergemizi kullanın.
 
 >[!NOTE]
 >[GitHub 'daki Azure Active Directory B2C Community sitesi](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) , topluluktan örnek özel ilkeler de sağlar.
@@ -30,8 +30,10 @@ ms.locfileid: "85385917"
 | İş Ortağı | Açıklama ve tümleştirme izlenecek yolları  |
 | :--- | :--- |
 | ![Le](./media/partner-gallery/arkose-logo.png) | [Arkoo Labs](./partner-arkose-labs.md) , kuruluşların bot saldırılarına karşı korunmasına yardımcı olan bir sahtekarlık önleme çözümü sağlayıcısıdır, hesap, saldırıları ve sahte hesap açılışlarına karşı koruma sağlar.
+| ![Le](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) , sahtekarlık önlemek için Kullanıcı özniteliklerine dayalı risk değerlendirmeleri gerçekleştiren bir kimlik doğrulama ve sağlama sağlayıcıdır.|
 | ![Le](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) kimlik doğrulama çözümlerini, sahtekarlık önleme çözümlerini, uyumluluk çözümlerini ve diğerlerini Içeren bir kimlik doğrulama ve sağlama sağlayıcıdır.|
 | ![Le](./media/partner-gallery/itsme-logo.png) | [ıtsme](./partner-itsme.md) , kullanıcıların kart okuyucuları, parolalar, iki öğeli kimlik doğrulaması ve bırden çok PIN kodu olmadan güvenli bir şekilde oturum açmalarına olanak tanımak Için bir elektronik tanımlama, kimlik doğrulama ve güven Hizmetleri (eidas) ile uyumlu dijital kimlik çözümüdür. |
+| ![Le](./media/partner-gallery/lexisnexis-logo.png) | [Lexisnex,](./partner-lexisnexis.md) Kullanıcı kimliğini doğrulayan ve kullanıcının cihazına göre kapsamlı risk değerlendirmesi sağlayan bir profil oluşturma ve kimlik doğrulama sağlayıcısıdır. |
 | ![Le](./media/partner-gallery/trusona-logo.png) | [Truslonıntegration](./partner-trusona.md) , güvenli bir şekilde oturum açmanıza ve passwordless kimlik doğrulaması, Multi-Factor Authentication ve dijital lisans taramasını kullanmanıza yardımcı olur.|
 | ![Le](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) , çok faktörlü kimlik doğrulaması (MFA) ile SMS tek seferlik parola (OTP), zaman tabanlı bir kerelik parola (TOTP) ve anında iletme bildirimleri aracılığıyla ve ödeme hizmetleri yönergesi 2 (PSD2) için SCA gereksinimlerine uymak üzere birden çok çözüm sağlar.|
 | ![Le](./media/partner-gallery/typingdna-logo.png) | [Typingdna](./partner-typingdna.md) , Kullanıcı yazma düzenine göre kimlik doğrulama ve sağlama sağlayıcıdır, çok faktörlü kimlik doğrulamasını zorluyor kimlik doğrulama çözümleri sağlar ve ödeme hizmetleri yönergesi 2 (PSD2) için SCA gereksinimleriyle uyumlu olmaya yardımcı olur. |

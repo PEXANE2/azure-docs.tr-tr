@@ -6,18 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045511"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Izleyici günlüğü sorgu örnekleri
 Bu makalede, Azure Izleyici 'den farklı günlük verisi türlerini almak için [kusto sorgu dilini](/azure/kusto/query/) kullanan çeşitli [sorgu](log-query-overview.md) örnekleri yer almaktadır. Verileri birleştirmek ve analiz etmek için farklı yöntemler kullanılır. bu sayede, kendi gereksinimleriniz için kullanabileceğiniz farklı stratejileri belirlemek için bu örnekleri kullanabilirsiniz.  
 
-Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](https://docs.microsoft.com/azure/kusto/query/) bakın. Azure Izleyici 'de yeni başladıysanız [sorgu oluşturma konusunda bir derste](get-started-queries.md) ilerleyin.
+Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](/azure/kusto/query/) bakın. Azure Izleyici 'de yeni başladıysanız [sorgu oluşturma konusunda bir derste](get-started-queries.md) ilerleyin.
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>"Şifreleme" olarak açıklanan uygulama düzeyi olayları ara
 Bu örnek, **olay** tablosunda **EventLog** 'ın _uygulama_ ve **rendereddescription** 'un _şifreleme_içerdiği kayıtlar için arama yapar. Son 24 saat içindeki kayıtları içerir.
@@ -374,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Kullanım
 
-`Usage`Veri türü, çözüm veya veri türüne göre alınan veri hacmini izlemek için kullanılabilir. Veri hacimlerini [bilgisayara](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) veya [Azure aboneliğine, kaynak grubuna veya kaynağa](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)göre incelemeye yönelik başka teknikler de vardır.
+`Usage`Veri türü, çözüm veya veri türüne göre alınan veri hacmini izlemek için kullanılabilir. Veri hacimlerini [bilgisayara](../platform/manage-cost-storage.md#data-volume-by-computer) veya [Azure aboneliğine, kaynak grubuna veya kaynağa](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)göre incelemeye yönelik başka teknikler de vardır.
 
 #### <a name="data-volume-by-solution"></a>Çözüme göre veri hacmi
 

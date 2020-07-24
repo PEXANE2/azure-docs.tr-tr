@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ca1b8b453be433f7db428f3b256677b9945ce40
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038911"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services kavramlar 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Bu konu, en önemli Media Services kavramlara genel bakış sunar.
 
-## <a name="assets-and-storage"></a><a id="assets"/>Varlıklar ve depolama
+## <a name="assets-and-storage"></a><a name="assets"></a>Varlıklar ve depolama
 ### <a name="assets"></a>Varlıklar
-Bir [varlık](https://docs.microsoft.com/rest/api/media/operations/asset) , dijital dosyalar (video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil) ve bu dosyalarla ilgili meta veriler içerir. Dijital dosyalar bir varlığa yüklendikten sonra, Media Services Encoding ve akış iş akışlarında kullanılabilirler.
+Bir [varlık](/rest/api/media/operations/asset) , dijital dosyalar (video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil) ve bu dosyalarla ilgili meta veriler içerir. Dijital dosyalar bir varlığa yüklendikten sonra, Media Services Encoding ve akış iş akışlarında kullanılabilirler.
 
 Bir varlık, Azure depolama hesabındaki bir blob kapsayıcısına eşlenir ve varlık içindeki dosyalar bu kapsayıcıda blok Bloblar olarak depolanır. Sayfa Blobları Azure Media Services tarafından desteklenmez.
 
@@ -39,7 +39,7 @@ Bir varlık içinde karşıya yüklenecek ve depolanacak medya içeriğine karar
 * Bir varlık, bir audiogörsel dosyası için birden çok yorumlama veya düzenleme içermemelidir. Bir varlığın hatalı kullanımının bir örneği bir varlık içinde tek bir üretimden birden fazla TV bölümünü, tanıtımı veya birden çok kamera açısını depolamaya çalışıyor olabilir. Birden çok yorumlandırma veya bir audiogörsel dosyasının düzenlemelerini bir varlık içinde depolamak, iş akışında daha sonra varlık teslim etmek, veri akışı ve güvenli hale getirme sorunları oluşmasına neden olabilir.  
 
 ### <a name="asset-file"></a>Varlık dosyası
-Bir [Assetdosyası](https://docs.microsoft.com/rest/api/media/operations/assetfile) bir blob kapsayıcısında depolanan gerçek bir videoyu veya ses dosyasını temsil eder. Bir varlık dosyası her zaman bir varlıkla ilişkilendirilir ve bir varlık bir veya daha fazla dosya içerebilir. Bir varlık dosya nesnesi bir blob kapsayıcısındaki dijital dosyayla ilişkilendirilmediğinde Media Services kodlayıcı görevi başarısız olur.
+Bir [Assetdosyası](/rest/api/media/operations/assetfile) bir blob kapsayıcısında depolanan gerçek bir videoyu veya ses dosyasını temsil eder. Bir varlık dosyası her zaman bir varlıkla ilişkilendirilir ve bir varlık bir veya daha fazla dosya içerebilir. Bir varlık dosya nesnesi bir blob kapsayıcısındaki dijital dosyayla ilişkilendirilmediğinde Media Services kodlayıcı görevi başarısız olur.
 
 **Assetfile** örneği ve gerçek medya dosyası iki ayrı nesne. Maldosya örneği medya dosyası hakkındaki meta verileri içerir, ancak medya dosyası gerçek medya içeriğini içerir.
 
@@ -62,7 +62,7 @@ Depolama şifrelenmiş bir varlık teslim etmek için varlığın teslim ilkesin
 **EnvelopeEncryptionProtected** – GELIŞMIŞ ŞIFRELEME standardı (AES) ile şifrelenen http canlı akışı (veya zaten korumalı) () korumak istiyorsanız bu seçeneği kullanın. HLS 'leri zaten AES ile şifrelendiğinden karşıya yüklüyorsanız, bu, Transform Manager tarafından şifrelenmelidir.
 
 ### <a name="access-policy"></a>Erişim ilkesi
-Bir [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) , izinleri (okuma, yazma ve listeleme gibi) ve bir varlığa erişim süresini tanımlar. Genellikle bir AccessPolicy nesnesini bir varlık içinde yer alan dosyalara erişmek için kullanılacak bir Konumlandırıcı 'ya geçitirsiniz.
+Bir [AccessPolicy](/rest/api/media/operations/accesspolicy) , izinleri (okuma, yazma ve listeleme gibi) ve bir varlığa erişim süresini tanımlar. Genellikle bir AccessPolicy nesnesini bir varlık içinde yer alan dosyalara erişmek için kullanılacak bir Konumlandırıcı 'ya geçitirsiniz.
 
 >[!NOTE]
 >Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [bu](media-services-dotnet-manage-entities.md#limit-access-policies) konu başlığına bakın.
@@ -75,8 +75,8 @@ Blob kapsayıcısı bir blob kümesi gruplandırması sağlar. Blob kapsayıcıl
 > 
 > 
 
-### <a name="locators"></a><a id="locators"/>Bulucuları
-[Bulmalar](https://docs.microsoft.com/rest/api/media/operations/locator)bir varlık içinde bulunan dosyalara erişmek için bir giriş noktası sağlar. Bir istemcinin belirli bir varlığa erişimi olan izinleri ve süreyi tanımlamak için bir erişim ilkesi kullanılır. Farklı belirleyicilerinin aynı izin ve süre ayarlarını kullanarak farklı istemcilere farklı başlangıç zamanları ve bağlantı türleri sağlaması gibi, konum belirleyicilerinin bir erişim ilkesiyle çok sayıda ilişkisi olabilir. Ancak, Azure depolama hizmetleri tarafından ayarlanan bir paylaşılan erişim ilkesi kısıtlaması nedeniyle, belirli bir varlıkla aynı anda en fazla beş benzersiz konum belirleyiciyle ilişkili olamaz. 
+### <a name="locators"></a><a name="locators"></a>Bulucuları
+[Bulmalar](/rest/api/media/operations/locator)bir varlık içinde bulunan dosyalara erişmek için bir giriş noktası sağlar. Bir istemcinin belirli bir varlığa erişimi olan izinleri ve süreyi tanımlamak için bir erişim ilkesi kullanılır. Farklı belirleyicilerinin aynı izin ve süre ayarlarını kullanarak farklı istemcilere farklı başlangıç zamanları ve bağlantı türleri sağlaması gibi, konum belirleyicilerinin bir erişim ilkesiyle çok sayıda ilişkisi olabilir. Ancak, Azure depolama hizmetleri tarafından ayarlanan bir paylaşılan erişim ilkesi kısıtlaması nedeniyle, belirli bir varlıkla aynı anda en fazla beş benzersiz konum belirleyiciyle ilişkili olamaz. 
 
 Media Services iki tür Konumlandırıcı destekler: OnDemandOrigin Konumlandırıcı, medyayı akışa almak için kullanılır (örneğin, MPEG DASH, HLS veya Kesintisiz Akış) veya aşamalı olarak indirme medya ve SAS URL 'SI Konumlandırıcı, Azure depolama hizmetinden medya dosyalarını karşıya yüklemek veya indirmek için kullanılır. 
 
@@ -84,12 +84,12 @@ Media Services iki tür Konumlandırıcı destekler: OnDemandOrigin Konumlandır
 >Bir OnDemandOrigin Bulucu oluşturulurken List izni (AccessPermissions. List) kullanılmamalıdır. 
 
 ### <a name="storage-account"></a>Depolama hesabı
-Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Bir medya hizmeti hesabı, bir veya daha fazla depolama hesabıyla ilişkilendirebilir. Toplam boyutu depolama hesabı başına 500 TB altında olduğu sürece bir hesap sınırsız sayıda kapsayıcı içerebilir.  Media Services, birden fazla depolama hesabını yönetmenize olanak tanımak için SDK düzeyi araçları sağlar ve bu hesaplara ölçümler ya da rastgele dağıtım temelinde yük dengeleyebilir. Daha fazla bilgi için bkz. [Azure depolama](https://msdn.microsoft.com/library/azure/dn767951.aspx)ile çalışma. 
+Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Bir medya hizmeti hesabı, bir veya daha fazla depolama hesabıyla ilişkilendirebilir. Toplam boyutu depolama hesabı başına 500 TB altında olduğu sürece bir hesap sınırsız sayıda kapsayıcı içerebilir.  Media Services, birden fazla depolama hesabını yönetmenize olanak tanımak için SDK düzeyi araçları sağlar ve bu hesaplara ölçümler ya da rastgele dağıtım temelinde yük dengeleyebilir. Daha fazla bilgi için bkz. [Azure depolama](/previous-versions/azure/dn767951(v=azure.100))ile çalışma. 
 
 ## <a name="jobs-and-tasks"></a>İşler ve görevler
-Bir [iş](https://docs.microsoft.com/rest/api/media/operations/job) , genellikle bir ses/video sunumu işlemek için kullanılır (örneğin, dizin veya kodlama). Birden çok video işediyorsanız, her videonun kodlanması için bir iş oluşturun.
+Bir [iş](/rest/api/media/operations/job) , genellikle bir ses/video sunumu işlemek için kullanılır (örneğin, dizin veya kodlama). Birden çok video işediyorsanız, her videonun kodlanması için bir iş oluşturun.
 
-Bir iş, gerçekleştirilecek işleme ilişkin meta veriler içerir. Her iş bir atomik işleme görevi, kendi giriş varlıkları, çıkış varlıkları, medya işlemcisi ve ilişkili ayarları belirten bir veya daha fazla [görev](https://docs.microsoft.com/rest/api/media/operations/task)içerir. Bir iş içindeki görevler, bir görevin çıkış varlığı bir sonraki göreve giriş varlığı olarak verildiğinde birlikte zincirleme yapılabilir. Bu şekilde bir iş, bir medya sunusu için gereken tüm işlemleri içerebilir.
+Bir iş, gerçekleştirilecek işleme ilişkin meta veriler içerir. Her iş bir atomik işleme görevi, kendi giriş varlıkları, çıkış varlıkları, medya işlemcisi ve ilişkili ayarları belirten bir veya daha fazla [görev](/rest/api/media/operations/task)içerir. Bir iş içindeki görevler, bir görevin çıkış varlığı bir sonraki göreve giriş varlığı olarak verildiğinde birlikte zincirleme yapılabilir. Bu şekilde bir iş, bir medya sunusu için gereken tüm işlemleri içerebilir.
 
 ## <a name="encoding"></a><a id="encoding"></a>Encoding
 Azure Media Services, buluttaki medya kodlaması için birden çok seçenek sağlar.
@@ -115,14 +115,14 @@ Azure Media Services, kanal canlı akış içeriğini işlemek için bir işlem 
 * Tek bit hızlı bir akış (aşağıdaki biçimlerden birinde: RTMP veya Kesintisiz Akış (parçalanmış MP4)) Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilen kanala gönderilir. Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
 ### <a name="channel"></a>Kanal
-Media Services, [Kanal](https://docs.microsoft.com/rest/api/media/operations/channel)s 'ler canlı akış içeriğini işlemeden sorumludur. Kanal, daha sonra canlı bir transcoder için sağladığınız bir giriş uç noktası (alma URL 'SI) sağlar. Kanal Canlı geçiş aşamasından canlı giriş akışları alır ve bir veya daha fazla StreamingEndpoints aracılığıyla akış için kullanılabilir hale getirir. Kanallar Ayrıca, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar.
+Media Services, [Kanal](/rest/api/media/operations/channel)s 'ler canlı akış içeriğini işlemeden sorumludur. Kanal, daha sonra canlı bir transcoder için sağladığınız bir giriş uç noktası (alma URL 'SI) sağlar. Kanal Canlı geçiş aşamasından canlı giriş akışları alır ve bir veya daha fazla StreamingEndpoints aracılığıyla akış için kullanılabilir hale getirir. Kanallar Ayrıca, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar.
 
 Kanalı oluştururken alma URL 'sini ve önizleme URL 'sini alabilirsiniz. Bu URL 'Leri almak için kanalın başlatılmış durumda olması gerekmez. Canlı bir transleyici 'den kanala veri göndermeye başlamak için, kanalın başlatılmış olması gerekir. Canlı dönüştürücü verileri almaya başladıktan sonra, akışınızı önizleyebilirsiniz.
 
 Her Media Services hesap birden çok kanal, birden çok program ve birden çok StreamingEndpoints içerebilir. Bant genişliği ve güvenlik ihtiyaçlarına bağlı olarak, StreamingEndpoint Hizmetleri bir veya daha fazla kanala ayrılabilir. Herhangi bir Streammingendpoint herhangi bir kanaldan çekme yapabilir.
 
 ### <a name="program-event"></a>Program (olay)
-Bir [Program (olay)](https://docs.microsoft.com/rest/api/media/operations/program) canlı bir akışta parçaların yayımlanmasını ve depolanmasını denetlemenize olanak sağlar. Kanalları yönetme programları (olaylar). Kanal ve program ilişkisi, bir kanalın sabit bir içerik akışına ve bir programın bu kanalda zaman aşımına uğramış bir olay kapsamına sahip olduğu geleneksel medyaya benzerdir.
+Bir [Program (olay)](/rest/api/media/operations/program) canlı bir akışta parçaların yayımlanmasını ve depolanmasını denetlemenize olanak sağlar. Kanalları yönetme programları (olaylar). Kanal ve program ilişkisi, bir kanalın sabit bir içerik akışına ve bir programın bu kanalda zaman aşımına uğramış bir olay kapsamına sahip olduğu geleneksel medyaya benzerdir.
 **ArchiveWindowLength** özelliğini ayarlayarak program için kaydedilen içeriği bekletmek istediğiniz saat sayısını belirtebilirsiniz. Bu değer en az 5 dakika, en çok 25 saat olarak ayarlanabilir.
 
 ArchiveWindowLength Ayrıca, istemcilerin geçerli canlı konumdan zaman içinde arayamayacak maksimum süreyi belirler. Olaylar belirtilen süre miktarından uzun sürebilir, ancak pencere uzunluğunun gerisine düşen içerik sürekli olarak atılır. Bu özelliğin bu değeri, istemci bildiriminin ne kadar uzayabileceğini de belirler.
@@ -160,7 +160,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [PlayReady/Widevine ile koruma](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Sunma
-### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>Dinamik paketleme
+### <a name="dynamic-packaging"></a><a name="dynamic_packaging"></a>Dinamik paketleme
 Media Services ile çalışırken, Mezzanine dosyalarını Uyarlamalı bit hızı olan bir MP4 kümesine kodlamak ve sonra [dinamik paketleme](media-services-dynamic-packaging-overview.md)kullanarak kümeyi istenen biçime dönüştürmeniz önerilir.
 
 ### <a name="streaming-endpoint"></a>Akış uç noktası
@@ -180,7 +180,7 @@ Varsayılan olarak, Media Services hesabınızda en fazla 2 akış uç noktası 
 Yalnızca StreamingEndpoint çalışır durumda olduğunda faturalandırılırsınız.
 
 ### <a name="asset-delivery-policy"></a>Varlık teslim ilkesi
-Media Services içerik teslimi iş akışındaki adımlardan biri, akışını yapmak istediğiniz [varlıklar için teslim ilkelerini](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)yapılandırıyorsunuz. Varlık teslim ilkesi, varlığınızın nasıl sunulmasını istediğinizi Media Services söyler: varlığınızı dinamik olarak paketlemeniz gereken (örneğin, MPEG DASH, HLS, Kesintisiz Akış veya All), varlığınızı ve (zarf veya ortak şifreleme) nasıl (zarf veya ortak şifrelemeyi) bir şekilde şifrelemek isteyip istemediğiniz.
+Media Services içerik teslimi iş akışındaki adımlardan biri, akışını yapmak istediğiniz [varlıklar için teslim ilkelerini](/rest/api/media/operations/assetdeliverypolicy)yapılandırıyorsunuz. Varlık teslim ilkesi, varlığınızın nasıl sunulmasını istediğinizi Media Services söyler: varlığınızı dinamik olarak paketlemeniz gereken (örneğin, MPEG DASH, HLS, Kesintisiz Akış veya All), varlığınızı ve (zarf veya ortak şifreleme) nasıl (zarf veya ortak şifrelemeyi) bir şekilde şifrelemek isteyip istemediğiniz.
 
 Depolama şifrelenmiş bir varlığınız varsa, varlığınızın akışı, depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini kullanarak içeriğinizi akışa alabilir. Örneğin, varlığınızı Gelişmiş Şifreleme Standardı (AES) şifreleme anahtarıyla şifreli olarak sunmak için, ilke türünü DynamicEnvelopeEncryption olarak ayarlayın. Depolama şifrelemesini kaldırmak ve varlığı açık olarak akışa almak için, ilke türünü NoDynamicEncryption olarak ayarlayın.
 
@@ -190,7 +190,7 @@ Aşamalı indirme, tüm dosya indirilmeden önce medya çalmaya başlayabilmeniz
 >[!NOTE]
 >Bu kaynakların aşamalı indirme için kullanılabilir olmasını istiyorsanız şifrelenmiş varlıkların şifresini çözmeniz gerekir.
 
-Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örnek:
+Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örneğin:
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
@@ -237,4 +237,3 @@ http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

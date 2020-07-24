@@ -2,12 +2,13 @@
 title: Dağıtım modları
 description: Azure Resource Manager ile tamamlanmış veya artımlı dağıtım modunun kullanılıp kullanılmayacağını nasıl belirleyeceğiniz açıklanır.
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040422"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager Dağıtım modları
 
@@ -20,6 +21,9 @@ Varsayılan mod artımlı ' dır.
 ## <a name="complete-mode"></a>Mod Tamam
 
 Tüm modda Kaynak Yöneticisi kaynak grubunda var olan ancak şablonda belirtilmeyen kaynakları **siler** .
+
+> [!NOTE]
+> Bir şablonu tam modda dağıtmadan önce her zaman [ne yapılır işlemini](template-deploy-what-if.md) kullanın. Ne yapılır, hangi kaynakların oluşturulacağını, silineceğini veya değiştirildiğini gösterir. Kaynakları istenmeden silmeyi önlemek için ne yapılacağını kullanın.
 
 Şablonunuz, [koşul](conditional-resource-deployment.md) false olarak değerlendirildiği için dağıtılan bir kaynağı içeriyorsa, sonuç, şablonu dağıtmak için kullandığınız REST API sürümüne bağlıdır. 2019-05-10 'den önceki bir sürümü kullanıyorsanız, kaynak **silinmez**. 2019-05-10 veya sonraki bir sürümü kullanarak kaynak **silinir**. Azure PowerShell ve Azure CLı 'nın en son sürümleri, kaynağı siler.
 
@@ -49,6 +53,8 @@ Artımlı modda Kaynak Yöneticisi, kaynak grubunda var olan ancak şablonda bel
 
 > [!NOTE]
 > Var olan bir kaynağı artımlı modda yeniden dağıttığınızda tüm özellikler yeniden uygulanır. **Özellikler artımlı olarak eklenmez**. Yaygın bir yanlış anlama, şablonda belirtilmeyen özellikleri düşünmek için kullanılır. Belirli özellikleri belirtmezseniz, Kaynak Yöneticisi bu değerlerin üzerine yazarak dağıtımı yorumlar. Şablonda bulunmayan özellikler varsayılan değerlere sıfırlanır. Yalnızca güncelleştirdiklerinizle değil, kaynağın varsayılan olmayan tüm değerlerini belirtin. Şablondaki kaynak tanımı her zaman kaynağın son durumunu içerir. Mevcut bir kaynağa yönelik kısmi bir güncelleştirmeyi temsil etmez.
+>
+> Nadir durumlarda, bir kaynak için belirttiğiniz Özellikler aslında bir alt kaynak olarak uygulanır. Örneğin, bir Web uygulaması için site yapılandırma değerlerini sağladığınızda, bu değerler alt kaynak türünde uygulanır `Microsoft.Web/sites/config` . Web uygulamasını yeniden dağıtın ve site yapılandırma değerleri için boş bir nesne belirtirseniz, alt kaynak güncellenmez. Ancak, yeni site yapılandırma değerleri sağlarsanız, alt kaynak türü güncelleştirilir.
 
 ## <a name="example-result"></a>Örnek sonuç
 

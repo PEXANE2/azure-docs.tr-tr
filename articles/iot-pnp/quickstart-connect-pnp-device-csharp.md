@@ -1,5 +1,5 @@
 ---
-title: IoT Tak ve Kullan Preview örnek cihaz kodunu IoT Hub 'ye bağlayın | Microsoft Docs
+title: IoT Tak ve Kullan önizleme kodunu IoT Hub-C# ' a bağlama | Microsoft Docs
 description: C# (.net) kullanarak IoT Hub 'ına bağlanan IoT Tak ve Kullan önizlemesi örnek cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d598bbb792c071db281ebdc562402ba0198305ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77121022"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044186"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan Preview cihaz uygulamasını IoT Hub 'ye bağlama (C#)
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, örnek bir IoT Tak ve Kullan cihaz uygulamasının na
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenize .NET Core 3,0 ' i yüklemeniz gerekir. Birden çok platform için .NET Core SDK bu sürümünü [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)' i indirin.
 

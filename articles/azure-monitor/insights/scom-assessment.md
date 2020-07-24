@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045689"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Sistem Durumu Denetimi (Önizleme) çözümü ile ortamınızı iyileştirme
 
@@ -64,7 +64,7 @@ Veriler yönetim sunucusunda toplanır ve her yedi günde bir Log Analytics ilet
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics için Operations Manager farklı çalıştır hesapları
 
-Log Analytics, değer ekleme hizmetleri sağlamak için iş yükleri için yönetim paketlerinde yapılar. Her iş yükü, yönetim paketlerini bir etki alanı kullanıcı hesabı gibi farklı bir güvenlik bağlamında çalıştırmak için iş yüküne özgü ayrıcalıklar gerektirir. Ayrıcalıklı kimlik bilgileriyle Operations Manager farklı çalıştır hesabı yapılandırın. Daha fazla bilgi için, Operations Manager belgelerinde [Farklı Çalıştır hesabı oluşturma](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) konusuna bakın.
+Log Analytics, değer ekleme hizmetleri sağlamak için iş yükleri için yönetim paketlerinde yapılar. Her iş yükü, yönetim paketlerini bir etki alanı kullanıcı hesabı gibi farklı bir güvenlik bağlamında çalıştırmak için iş yüküne özgü ayrıcalıklar gerektirir. Ayrıcalıklı kimlik bilgileriyle Operations Manager farklı çalıştır hesabı yapılandırın. Daha fazla bilgi için, Operations Manager belgelerinde [Farklı Çalıştır hesabı oluşturma](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) konusuna bakın.
 
 System Center Operations Manager Sistem Durumu Denetimi için Operations Manager farklı çalıştır hesabını ayarlamak üzere aşağıdaki bilgileri kullanın.
 
@@ -82,7 +82,7 @@ Devam etmeden önce farklı çalıştır hesabının aşağıdaki gereksinimleri
 4. **Genel Özellikler** sayfasında, **Farklı Çalıştır hesap türü:** listesinde **Windows** ' u seçin.
 5. **Görünen ad** metin kutusuna bir görünen ad yazın ve isteğe bağlı olarak **Açıklama** kutusuna bir açıklama yazın ve ardından **İleri**' ye tıklayın.
 6. **Dağıtım güvenliği** sayfasında **daha güvenli**' i seçin.
-7. **Oluştur**'a tıklayın.  
+7. **Oluştur**’a tıklayın.  
 
 Farklı Çalıştır hesabı oluşturuldığına göre, yönetim grubundaki yönetim sunucularını hedeflemek ve iş akışlarının kimlik bilgileri kullanılarak çalışması için önceden tanımlanmış bir Farklı Çalıştır profiliyle ilişkilendirilmesi gerekir.  
 
@@ -147,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager Sistem Durumu Denetimi çözümünün yönetim paketi, *Microsoft System Center Operations Manager Run Health denetim kuralı*adlı bir kural içerir. Bu kural, sistem durumu denetimini çalıştırmaktan sorumludur. Kuralı etkinleştirmek ve sıklığı yapılandırmak için aşağıdaki yordamları kullanın.
 
-Varsayılan olarak, Microsoft System Center Operations Manager çalışan sistem durumu denetim kuralı devre dışıdır. Sistem durumu denetimini çalıştırmak için, kuralı bir yönetim sunucusu üzerinde etkinleştirmeniz gerekir. Aşağıdaki adımları uygulayın.
+Varsayılan olarak, Microsoft System Center Operations Manager çalışan sistem durumu denetim kuralı devre dışıdır. Sistem durumu denetimini çalıştırmak için, kuralı bir yönetim sunucusu üzerinde etkinleştirmeniz gerekir. Aşağıdaki adımları kullanın.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Belirli bir yönetim sunucusu için kuralı etkinleştirme
 

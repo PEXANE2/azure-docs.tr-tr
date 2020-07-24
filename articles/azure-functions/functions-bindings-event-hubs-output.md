@@ -6,15 +6,16 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 5d1fecddd2c82e4b0d2d67ad14d93d3459f57fb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c829f7e4dcca5aa731f505092739146c72bd293
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697585"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041718"
 ---
 # <a name="azure-event-hubs-output-binding-for-azure-functions"></a>Azure Işlevleri için Azure Event Hubs çıkış bağlaması
 
-Bu makalede Azure Işlevleri için [azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. Azure Işlevleri Event Hubs için tetikleyiciyi ve çıkış bağlamalarını destekler.
+Bu makalede Azure Işlevleri için [azure Event Hubs](../event-hubs/event-hubs-about.md) bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. Azure Işlevleri Event Hubs için tetikleyiciyi ve çıkış bağlamalarını destekler.
 
 Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](functions-bindings-event-hubs.md).
 

@@ -1,26 +1,26 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046418"
 ---
-Genel kullanıma yönelik anahtar sınırları aşağıda özetlenmiştir.
+Aşağıda Azure Time Series Insights Gen1 ' deki anahtar sınırları özetlenmektedir.
 
 ### <a name="sku-ingress-rates-and-capacities"></a>SKU giriş fiyatları ve kapasiteleri
 
-S1 ve S2 SKU giriş fiyatları ve kapasiteleri, yeni bir Time Series Insights ortamı yapılandırılırken esneklik sağlar. SKU kapasiteniz, ne olursa değil, depolanan olay veya bayt sayısına göre günlük giriş hızınızı gösterir. Giriş, *dakika başına*ölçülür ve **kısıtlama** , belirteç demeti algoritması kullanılarak uygulanır. Giriş, 1 KB 'lik bloklar halinde ölçülür. Örneğin, 0,8 KB 'lik gerçek olay bir olay olarak ölçülür ve 2,6 KB 'lik bir olay üç olay olarak sayılır.
+S1 ve S2 SKU giriş fiyatları ve kapasiteleri, yeni bir Azure Time Series Insights ortamı yapılandırılırken esneklik sağlar. SKU kapasiteniz, ne olursa değil, depolanan olay veya bayt sayısına göre günlük giriş hızınızı gösterir. Giriş, *dakika başına*ölçülür ve **kısıtlama** , belirteç demeti algoritması kullanılarak uygulanır. Giriş, 1 KB 'lik bloklar halinde ölçülür. Örneğin, 0,8 KB 'lik gerçek olay bir olay olarak ölçülür ve 2,6 KB 'lik bir olay üç olay olarak sayılır.
 
 | S1 SKU kapasitesi | Giriş oranı | Maksimum depolama kapasitesi
 | --- | --- | --- |
@@ -44,7 +44,7 @@ S2 SKU ortamları ayda önemli ölçüde daha fazla olay destekler ve önemli ö
 
 ### <a name="property-limits"></a>Özellik sınırları
 
-GA Özellik sınırları, seçilen SKU ortamına bağlıdır. Sağlanan olay özelliklerinin karşılık gelen JSON, CSV ve grafik sütunları [Time Series Insights Gezgini](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)içinde görüntülenebilir.
+Gen1 Özellik sınırları, seçilen SKU ortamına bağlıdır. Sağlanan olay özelliklerinin karşılık gelen JSON, CSV ve grafik sütunları [Azure Time Series Insights Gezgini](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)içinde görüntülenebilir.
 
 | SKU | En yüksek özellikler |
 | --- | --- |
@@ -53,11 +53,11 @@ GA Özellik sınırları, seçilen SKU ortamına bağlıdır. Sağlanan olay öz
 
 ### <a name="event-sources"></a>Olay kaynakları
 
-Örnek başına en fazla iki olay kaynağı desteklenir. 
+Örnek başına en fazla iki olay kaynağı desteklenir.
 
 * [Bir olay hub 'ı kaynağı eklemeyi](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)öğrenin.
 * [IoT Hub 'ı kaynağı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)yapılandırın.
 
 ### <a name="api-limits"></a>API sınırları
 
-Time Series Insights genel kullanım için REST API sınırları [REST API başvuru belgelerinde](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)belirtilmiştir.
+Azure Time Series Insights Gen1 için REST API sınırları [REST API başvuru belgelerinde](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)belirtilir.

@@ -4,12 +4,12 @@ description: IntelliJ FIKRINI kullanarak ilk Azure Resource Manager şablonunuzu
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bce3d8ff2662ff62e1493cb26d797619b65c2762
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040737"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ FIKRINI kullanarak ARM şablonları oluşturma ve dağıtma
 
@@ -19,15 +19,15 @@ IntelliJ FIKRINI kullanarak Azure 'a bir Azure Resource Manager (ARM) şablonu d
 
 Öğreticiyi tamamladıktan sonra bir Azure depolama hesabı dağıtırsınız. Aynı işlem, diğer Azure kaynaklarını dağıtmak için de kullanılabilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
 * Yüklü [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition veya Community Edition
 * [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) yüklü; daha fazla bilgi için [IntelliJ eklentiler yönetimi kılavuzuna](https://www.jetbrains.com/help/idea/managing-plugins.html) bakın
-* Azure Toolkit for IntelliJ için Azure hesabınızda [oturum açmış](/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions) olmalısınız
+* Azure Toolkit for IntelliJ için Azure hesabınızda [oturum açmış](/azure/developer/java/toolkit-for-intellij/sign-in-instructions) olmalısınız
 
 ## <a name="deploy-a-quickstart-template"></a>Hızlı başlangıç şablonu dağıtma
 

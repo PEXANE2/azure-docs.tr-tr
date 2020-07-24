@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524174"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039992"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database bağlayıcısını kullanmaya başlama
 
@@ -60,7 +60,7 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
     ![Bir iletişim kutusu, tüm Tetiklerde arama yapmak için bir kutu içerir. Ayrıca, "Istek/yanıt-Istek" adlı ve seçim düğmesi ile gösterilen tek bir tetikleyici de vardır.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. **Kaydet**’i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
+3. **Kaydet**'i seçin. Kaydettiğinizde, otomatik olarak bir istek URL 'SI oluşturulur. 
 
 4. **Yeni adım**’ı ve **Eylem ekle**’yi seçin. `oracle`Kullanılabilir eylemleri görmek için yazın: 
 
@@ -77,7 +77,7 @@ Bu makalede, Oracle Database bağlayıcısının bir mantıksal uygulamada nası
 
     Aşağıdaki örnekte, iş verileri bir Insan kaynakları veritabanından döndürülüyor: 
 
-    !["Satırı al (Önizleme)" başlıklı iletişim kutusunda iki metin kutusu vardır: "HRJOBS" içeren ve bir açılan listeye sahip olan ve "SA_REP" içeren "satır kimliği" olan "Tablo adı".](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    !["Satırı al (Önizleme)" başlıklı iletişim kutusunda iki metin kutusu vardır: "H R ışlerı" içeren ve bir açılan listeye sahip olan ve "S A _ REP" içeren "Row ı d".](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. Bu sonraki adımda, iş akışınızı derlemek için diğer bağlayıcılardan herhangi birini kullanabilirsiniz. Oracle 'dan veri almayı test etmek istiyorsanız, Office 365 Outlook gibi e-posta bağlayıcılarından birini kullanarak kendi kendinize bir e-posta gönderin. `Subject`E-postanızı oluşturmak Için Oracle tablosundaki dinamik belirteçleri kullanın `Body` :
 

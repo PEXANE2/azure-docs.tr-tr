@@ -4,12 +4,12 @@ description: Azure Izleyici 'deki eylem kurallarının ne olduğunu ve bunların
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045730"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (Önizleme)
 
@@ -21,14 +21,13 @@ Eylem kuralları herhangi bir Azure Resource Manager kapsamında (Azure aboneli�
 
 ### <a name="suppression-of-alerts"></a>Uyarıların gizlemesi
 
-Uyarıların oluşturduğu bildirimleri gizlemek için yararlı olduğu birçok senaryo vardır. Bu senaryolar, planlanan bir bakım penceresi sırasında çalışılmayan saatler sırasında gizlemenin gizlenme sürecinde değişir. Örneğin, **contosovm** 'den sorumlu olan ekip, **contosovm** planlanmış bakımda olduğundan yaklaşan hafta sonu için uyarı bildirimlerini bastırmak istiyor. 
+Uyarıların oluşturduğu bildirimleri gizlemek için yararlı olduğu birçok senaryo vardır. Bu senaryolar, planlanan bir bakım penceresi sırasında çalışılmayan saatler sırasında gizlemenin gizlenme sürecinde değişir. Örneğin, **contosovm** 'den sorumlu olan ekip, **contosovm** planlanmış bakımda olduğundan yaklaşan hafta sonu için uyarı bildirimlerini bastırmak istiyor.
 
 Ekip, **Contosovm** 'de yapılandırılmış olan her bir uyarı kuralını el ile devre dışı bırakabilse de (bakım sonrasında tekrar etkinleştirirseniz) basit bir işlem değildir. Eylem kuralları, göstermeme süresini esnek bir şekilde yapılandırma özelliği ile ölçeklendirerek uyarı gizleme tanımlamanıza yardımcı olur. Önceki örnekte, takım, **Contosovm** 'de, hafta sonu için tüm uyarı bildirimlerini gösteren bir eylem kuralı tanımlayabilir.
 
-
 ### <a name="actions-at-scale"></a>Ölçekteki eylemler
 
-Uyarı kuralları, uyarı oluşturulduğunda tetiklenen eylem grubunu tanımlamanıza yardımcı olmakla birlikte, müşteriler genellikle işlem kapsamları genelinde ortak bir eylem grubuna sahiptir. Örneğin, **ContosoRG** kaynak grubundan sorumlu bir ekip, büyük olasılıkla **ContosoRG**içinde tanımlanan tüm uyarı kuralları için aynı eylem grubunu tanımlayacaktır. 
+Uyarı kuralları, uyarı oluşturulduğunda tetiklenen eylem grubunu tanımlamanıza yardımcı olmakla birlikte, müşteriler genellikle işlem kapsamları genelinde ortak bir eylem grubuna sahiptir. Örneğin, **ContosoRG** kaynak grubundan sorumlu bir ekip, büyük olasılıkla **ContosoRG**içinde tanımlanan tüm uyarı kuralları için aynı eylem grubunu tanımlayacaktır.
 
 Eylem kuralları bu işlemi basitleştirmeye yardımcı olur. Eylemleri ölçekli olarak tanımlayarak, yapılandırılmış kapsamda oluşturulan herhangi bir uyarı için bir eylem grubu tetiklenebilir. Önceki örnekte, takım, içinde oluşturulan tüm uyarılar için aynı eylem grubunu tetikleyecek **ContosoRG** üzerinde bir eylem kuralı tanımlayabilir.
 
@@ -37,11 +36,13 @@ Eylem kuralları bu işlemi basitleştirmeye yardımcı olur. Eylemleri ölçekl
 
 ## <a name="configuring-an-action-rule"></a>Eylem kuralı yapılandırma
 
+### <a name="portal"></a>[Portal](#tab/portal)
+
 Azure Izleyici 'de **Uyarılar** giriş sayfasından **eylemleri Yönet** ' i seçerek özelliğe erişebilirsiniz. Ardından **Eylem kuralları (Önizleme)** öğesini seçin. Uyarılar için giriş sayfasının panosundan **Eylem kuralları (Önizleme)** seçeneğini belirleyerek kurallara erişebilirsiniz.
 
 ![Azure Izleyici giriş sayfasından eylem kuralları](media/alerts-action-rules/action-rules-landing-page.png)
 
-**+ Yeni eylem kuralı**' nı seçin. 
+**+ Yeni eylem kuralı**' nı seçin.
 
 ![Yeni eylem kuralı ekle](media/alerts-action-rules/action-rules-new-rule.png)
 
@@ -49,7 +50,7 @@ Alternatif olarak, bir uyarı kuralı yapılandırırken bir eylem kuralı oluş
 
 ![Yeni eylem kuralı ekle](media/alerts-action-rules/action-rules-alert-rule.png)
 
-Artık eylem kuralları oluşturmak için akış sayfasını görmeniz gerekir. Aşağıdaki öğeleri yapılandırın: 
+Artık eylem kuralları oluşturmak için akış sayfasını görmeniz gerekir. Aşağıdaki öğeleri yapılandırın:
 
 ![Yeni eylem kuralı oluşturma akışı](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
@@ -61,9 +62,9 @@ Artık eylem kuralları oluşturmak için akış sayfasını görmeniz gerekir. 
 
 ### <a name="filter-criteria"></a>Filtre ölçütü
 
-Ayrıca, uyarıların belirli bir alt kümesine daraltmak için filtreler tanımlayabilirsiniz. 
+Ayrıca, uyarıların belirli bir alt kümesine daraltmak için filtreler tanımlayabilirsiniz.
 
-Kullanılabilir filtreleri şunlardır: 
+Kullanılabilir filtreleri şunlardır:
 
 * **Önem derecesi**: bir veya daha fazla uyarı kümesi seçin. **Önem derecesi = Sev1** , eylem kuralının Sev1 olarak ayarlanan tüm uyarılar için geçerli olduğu anlamına gelir.
 * **Izleme hizmeti**: kaynak izleme hizmetini temel alan bir filtre. Bu filtre Ayrıca birden çok seçim olur. Örneğin, **Monitor Service = "Application Insights"** , eylem kuralının tüm Application Insights tabanlı uyarılar için geçerli olduğu anlamına gelir.
@@ -73,7 +74,7 @@ Kullanılabilir filtreleri şunlardır:
 * **Açıklama**: uyarı kuralının bir parçası olarak tanımlanan, açıklamaya karşı bir dize eşleşmesi tanımlayan bir Regex (normal ifade) eşleşir. Örneğin, **Açıklama ' prod ' içerir** açıklamalarındaki "üretim" dizesini içeren tüm uyarılarla eşleşir.
 * **Uyarı bağlamı (yük)**: bir uyarı yükünün uyarı bağlam alanlarına karşı bir dize eşleşmesi tanımlayan bir Regex eşleşmesi. Örneğin, **Uyarı bağlamı (yük) ' bilgisayar-01 ' içeriyorsa** , yükleri "bilgisayar-01" dizesini içeren tüm uyarılarla eşleşir.
 
-Bu filtreler bir diğeri ile birlikte uygulanır. Örneğin, **' = sanal makineler** ve **önem derecesi ' = Sev0**kaynak türünü ayarlarsanız, yalnızca sanal makinelerinizdeki tüm **Sev0** uyarılarını filtrelediyseniz. 
+Bu filtreler bir diğeri ile birlikte uygulanır. Örneğin, **' = sanal makineler** ve **önem derecesi ' = Sev0**kaynak türünü ayarlarsanız, yalnızca sanal makinelerinizdeki tüm **Sev0** uyarılarını filtrelediyseniz.
 
 ![Eylem kuralı filtreleri](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -92,7 +93,7 @@ Sonra, eylem kuralını uyarı gizleme veya eylem grubu desteği için yapıland
 
 #### <a name="action-group"></a>Eylem grubu
 
-Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu ekleyin ya da yeni bir tane oluşturun. 
+Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu ekleyin ya da yeni bir tane oluşturun.
 
 > [!NOTE]
 > Bir eylem kuralıyla yalnızca bir eylem grubunu ilişkilendirebilirsiniz.
@@ -104,7 +105,83 @@ Geçiş sırasında **eylem grubu** ' nu seçerseniz, var olan bir eylem grubu e
 Son olarak, eylem kuralı için aşağıdaki ayrıntıları yapılandırın:
 * Name
 * Kaydedildiği kaynak grubu
-* Description 
+* Açıklama
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Az Monitor ACTION-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) komutunu kullanarak Azure CLI ile eylem kuralları oluşturabilirsiniz.  `az monitor action-rule`Başvuru, [Azure izleyici Için bırçok Azure CLI](/cli/azure/azure-cli-reference-for-monitor)başvurusundan yalnızca biridir.
+
+### <a name="prepare-your-environment"></a>Ortamınızı hazırlama
+
+1. [Azure CLI'yi yükleme](/cli/azure/install-azure-cli)
+
+   İsterseniz, bu makaledeki adımları tamamlayabilmeniz için Azure Cloud Shell de kullanabilirsiniz.  Azure Cloud Shell, tarayıcınız aracılığıyla kullandığınız etkileşimli bir kabuk ortamıdır.  Aşağıdaki yöntemlerden birini kullanarak Cloud Shell başlatın:
+
+   - Cloud Shell giderek açın[https://shell.azure.com](https://shell.azure.com)
+
+   - [Azure Portal](https://portal.azure.com) sağ üst köşedeki menü çubuğunda bulunan **Cloud Shell** düğmesini seçin
+
+1. Giriş yapın.
+
+   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.  Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+
+    ```azurecli
+    az login
+    ```
+
+1. Uzantıyı yükler `alertsmanagement`
+
+   Bu `az monitor action-rule` komut, çekirdek Azure CLI 'nın deneysel uzantısıdır. Uzantı başvuruları hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantı kullanımı](/cli/azure/azure-cli-extensions-overview?).
+
+   ```azurecli
+   az extension add --name alertsmanagement
+   ```
+
+   Aşağıdaki uyarı beklenmektedir.
+
+   ```output
+   The installed extension `alertsmanagement` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="create-action-rules-with-the-azure-cli"></a>Azure CLı ile eylem kuralları oluşturma
+
+Gerekli ve isteğe bağlı parametreler hakkında bilgi edinmek için [az Monitor ACTION-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) IÇIN Azure CLI başvuru içeriğine bakın.
+
+Bir kaynak grubundaki bildirimleri bastırmak için bir eylem kuralı oluşturun.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --scope-type ResourceGroup \
+                              --scope /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/MyResourceGroupName \
+                              --suppression-recurrence-type Always \
+                              --alert-context Contains Computer-01 \
+                               --monitor-service Equals "Log Analytics"
+```
+
+Her hafta içinde abonelik içindeki tüm VM 'lerde tüm Sev4 uyarılarına ilişkin bildirimleri bastırmak için bir eylem kuralı oluşturun.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --severity Equals Sev4 \
+                              --target-resource-type Equals Microsoft.Compute/VirtualMachines \
+                              --suppression-recurrence-type Weekly \
+                              --suppression-recurrence 0 6 \
+                              --suppression-start-date 12/09/2018 \
+                              --suppression-end-date 12/18/2018 \
+                              --suppression-start-time 06:00:00 \
+                              --suppression-end-time 14:00:00
+
+```
+
+* * *
 
 ## <a name="example-scenarios"></a>Örnek senaryolar
 
@@ -114,7 +191,7 @@ Contoso **, her hafta sonu için tüm VM** 'Lerdeki tüm VM 'Lerde tüm Sev4 uya
 
 **Çözüm:** İle bir eylem kuralı oluşturun:
 * Kapsam = **Contososub**
-* FilTReleri
+* Filtreler
     * Önem derecesi = **Sev4**
     * Kaynak türü = **sanal makineler**
 * Yinelenme ile haftalık olarak ayarlanan gizleme ve **Cumartesi** ve **Pazar** işaretli
@@ -125,14 +202,14 @@ Contoso, **Contososub** 'da **bilgisayar-01** için oluşturulan tüm günlük u
 
 **Çözüm:** İle bir eylem kuralı oluşturun:
 * Kapsam = **Contososub**
-* FilTReleri
+* Filtreler
     * İzleme hizmeti = **Log Analytics**
     * Uyarı bağlamı (yük) **bilgisayar içeriyor-01**
 * Gizleme **Şu andan itibaren olarak ayarlandı (her zaman)**
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Senaryo 3: bir kaynak grubunda tanımlanan eylem grubu
 
-Contoso, [abonelik düzeyinde bir ölçüm uyarısı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)tanımladı. Ancak, **ContosoRG**kaynak grubundan oluşturulan uyarılar için özel olarak tetiklenecek eylemleri tanımlamak istemektedir.
+Contoso, [abonelik düzeyinde bir ölçüm uyarısı](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)tanımladı. Ancak, **ContosoRG**kaynak grubundan oluşturulan uyarılar için özel olarak tetiklenecek eylemleri tanımlamak istemektedir.
 
 **Çözüm:** İle bir eylem kuralı oluşturun:
 * Kapsam = **ContosoRG**
@@ -140,15 +217,39 @@ Contoso, [abonelik düzeyinde bir ölçüm uyarısı](https://docs.microsoft.com
 * Eylem grubu **Contosoactiongroup** olarak ayarlandı
 
 > [!NOTE]
-> *Eylem kuralları ve uyarı kuralları içinde tanımlanan eylem grupları, yinelenenleri kaldırma olmadan bağımsız olarak çalışır.* Daha önce açıklanan senaryoda, uyarı kuralı için bir eylem grubu tanımlanmışsa, eylem kuralında tanımlanan eylem grubuyla birlikte tetiklenir. 
+> *Eylem kuralları ve uyarı kuralları içinde tanımlanan eylem grupları, yinelenenleri kaldırma olmadan bağımsız olarak çalışır.* Daha önce açıklanan senaryoda, uyarı kuralı için bir eylem grubu tanımlanmışsa, eylem kuralında tanımlanan eylem grubuyla birlikte tetiklenir.
 
 ## <a name="managing-your-action-rules"></a>Eylem kurallarınızı yönetme
+
+### <a name="portal"></a>[Portal](#tab/portal)
 
 Eylem kurallarınızı liste görünümünden görüntüleyebilir ve yönetebilirsiniz:
 
 ![Eylem kuralları liste görünümü](media/alerts-action-rules/action-rules-list-view.png)
 
 Buradan eylem kurallarını etkinleştirebilir, devre dışı bırakabilir veya yanındaki onay kutusunu işaretleyerek bu kuralları ölçeklendirerek silebilirsiniz. Bir eylem kuralı seçtiğinizde, yapılandırma sayfası açılır. Sayfa, eylem kuralının tanımını güncelleştirmenize ve etkinleştirebilir veya devre dışı bırakmanızı sağlar.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLı 'dan [az Monitor ACTION-Rule](/cli/azure/ext/alertsmanagement/monitor) komutunu kullanarak eylem kurallarınızı görüntüleyebilir ve yönetebilirsiniz.
+
+Azure CLı ile eylem kurallarını yönetebilmeniz için, [bir eylem kuralını yapılandırma](#configuring-an-action-rule)bölümünde belirtilen yönergeleri kullanarak ortamınızı hazırlayın.
+
+```azurecli
+# List all action rules for a subscription
+az monitor action-rule list
+
+# Get details of an action rule
+az monitor action-rule show --resource-group MyResourceGroupName --name MyActionRuleName
+
+# Update an action rule.
+az monitor action-rule update --resource-group MyResourceGroupName --name MyActionRuleName --status Disabled
+
+# Delete an action rule.
+az monitor action-rule delete --resource-group MyResourceGroupName --name MyActionRuleName
+```
+
+* * *
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
@@ -181,12 +282,12 @@ Uyarı kuralınız için hedef kaynağı tanımladıktan sonra, **Eylemler** bö
 * Alt küme: Örneğin, tanımladığınız uyarı kuralı bir abonelikte ve eylem kuralı, abonelik içindeki bir kaynak grubunda yer alır.
 * Bir üst küme: Örneğin, tanımladığınız uyarı kuralı bir kaynak grubunda ve eylem kuralı kaynak grubunu içeren abonelikte bulunur.
 * Bir kesişim: Örneğin, tanımladığınız uyarı kuralı **VM1** ve **VM2**ve eylem kuralı **VM2** ve **VM3**üzerinde.
-    
+
 ![Çakışan eylem kuralları](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Eylem kuralı tarafından gizlenen uyarıları görebilir miyim?
 
-[Uyarılar listesi sayfasında](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances), **gizleme durumu**adlı ek bir sütun seçebilirsiniz. Bir uyarı örneği için bildirim gizlenemedi, listede bu durum gösterilir.
+[Uyarılar listesi sayfasında](./alerts-managing-alert-instances.md), **gizleme durumu**adlı ek bir sütun seçebilirsiniz. Bir uyarı örneği için bildirim gizlenemedi, listede bu durum gösterilir.
 
 ![Gizlenen uyarı örnekleri](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -200,7 +301,7 @@ Gizleme her zaman aynı kapsamda öncelik alır.
 
    `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
-VM1 ve VM3 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. **VM2**üzerindeki her uyarı için, eylem kuralları yinelenen işlemleri kaldırmadığı için eylem grubu AG1 iki kez tetiklenecektir. 
+VM1 ve VM3 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. **VM2**üzerindeki her uyarı için, eylem kuralları yinelenen işlemleri kaldırmadığı için eylem grubu AG1 iki kez tetiklenecektir.
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>İki ayrı eylem kuralına göre izlenen bir kaynaktır ve diğeri de gizleme için bir eylem aradığında ne olur? Örneğin, aşağıdaki senaryoda **VM2** :
 
@@ -208,7 +309,7 @@ VM1 ve VM3 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. **V
 
    `action rule AR2 defined for VM2 and VM3 with suppression`
 
-VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. VM2 ve VM3 üzerindeki her uyarı için Eylemler ve bildirimler bastırılır. 
+VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. VM2 ve VM3 üzerindeki her uyarı için Eylemler ve bildirimler bastırılır.
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Farklı eylem gruplarını çağıran aynı kaynak için bir uyarı kuralınız ve bir eylem kuralı tanımsam ne olur? Örneğin, aşağıdaki senaryoda **VM1** :
 
@@ -216,8 +317,8 @@ VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. VM2 ve VM3
 
    `action rule AR1 defined for VM1 with action group AG1`
 
-VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. "Rule1" uyarı kuralı tetiklendiğinde, ayrıca AG2 de tetiklenecektir. Eylem kuralları ve uyarı kuralları içinde tanımlanan eylem grupları, yinelenenleri kaldırma olmadan bağımsız olarak çalışır. 
+VM1 üzerindeki her uyarı için, eylem grubu AG1 bir kez tetiklenir. "Rule1" uyarı kuralı tetiklendiğinde, ayrıca AG2 de tetiklenecektir. Eylem kuralları ve uyarı kuralları içinde tanımlanan eylem grupları, yinelenenleri kaldırma olmadan bağımsız olarak çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da uyarılar hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)
+- [Azure 'da uyarılar hakkında daha fazla bilgi edinin](./alerts-overview.md)

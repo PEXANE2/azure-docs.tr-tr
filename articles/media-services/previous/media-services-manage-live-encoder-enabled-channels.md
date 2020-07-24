@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042816"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -174,7 +175,7 @@ Bu kanala video yayımlamasına izin verilen IP adreslerini tanımlayabilirsiniz
 Herhangi bir IP adresi belirtilmezse ve bir kural tanımı yoksa hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.
 
 ## <a name="channel-preview"></a>Kanal önizlemesi
-### <a name="preview-urls"></a>URL 'Leri Önizle
+### <a name="preview-urls"></a>Önizleme URL’leri
 Kanallar, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar.
 
 Kanalı oluştururken önizleme URL 'sini alabilirsiniz. URL 'YI almak için kanalın **çalışıyor** durumunda olması gerekmez.
@@ -216,7 +217,7 @@ Bu kanalda bulunan Live Encoder tarafından kullanılacak ön ayarı belirtir. �
 
 #### <a name="output-video-stream"></a>Çıkış video akışı
 
-| Bit hızı | Genişlik | Height | MaxFPS | Profil | Çıkış akışı adı |
+| Bit hızı | Width | Height | MaxFPS | Profil | Çıkış akışı adı |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Yüksek |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Yüksek |Video_960x540_2200kbps |
@@ -312,7 +313,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Kanal durumu | Portal Kullanıcı arabirimi göstergeleri | IP? |
 | --- | --- | --- |
 | Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
-| Çalışıyor |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |Evet |
+| Çalışıyor |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |Yes |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
 | Durduruldu |Durduruldu |Hayır |
 
@@ -321,7 +322,7 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>Önemli noktalar
+## <a name="considerations"></a><a id="Considerations"></a>Dikkat edilmesi gerekenler
 * **Standart** kodlama türünde bir kanal giriş kaynağı/katkı akışı kaybı yaşadığında, kaynak videoyu/sesi bir hata kurşun ekranı ve sessizlik ile değiştirerek bunu dengeleyerek dengeler. Kanal, giriş/katkı akışı sürdürülene kadar bir tablet görüntüsü almaya devam edecektir. Canlı bir kanalın, 2 saatten uzun süre boyunca böyle bir durumda kalmamalıdır. Bu noktanın ötesinde, giriş yeniden bağlantı üzerindeki kanalın davranışı garanti edilmez, bu durum sıfırlama komutuna yanıt olarak değildir. Kanalı durdurmanız, silmeniz ve yeni bir tane oluşturmanız gerekir.
 * Kanal veya ilişkili programları çalışıyorken giriş protokolünü değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir giriş protokolü için farklı bir kanal oluşturmalısınız.
 * Gerçek zamanlı kodlayıcıyı her yeniden yapılandırdığınızda, kanalda **Reset** yöntemini çağırın. Kanalı sıfırlamadan önce programı durdurmanız gerekir. Kanalı sıfırladıktan sonra programı yeniden başlatın.
@@ -359,11 +360,10 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [.NET SDK ile bir tek bit hızı ile Uyarlamalı bit hızında akışa canlı kodlama gerçekleştiren kanallar oluşturun](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[REST API ile kanalları yönetme](https://docs.microsoft.com/rest/api/media/operations/channel)
+[REST API ile kanalları yönetme](/rest/api/media/operations/channel)
 
 [Media Services kavramlar](media-services-concepts.md)
 
 [Azure Media Services parçalanmış MP4 canlı alma belirtimi](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-

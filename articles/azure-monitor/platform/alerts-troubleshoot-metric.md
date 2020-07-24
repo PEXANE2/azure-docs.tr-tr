@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0d569facb6c2b58222980cfa1488de3b1f5fb60f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 98cd7a4d31f4d7053426f44dd02a876759688cc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045237"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -32,11 +32,11 @@ Bir ölçüm uyarısının tetiklenmesi gerektiğini ancak Azure portal başlatm
 
 2. **Başlatıldı ancak bildirim yok** -tetiklenen uyarıyı bulup [bulacağınızı görmek için tetiklenen uyarılar listesini](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) gözden geçirin. Uyarıyı listede görebilir, ancak bazı eylemleri veya bildirimleriyle ilgili bir sorun varsa daha fazla bilgi için [buraya](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)bakın.
 
-3. **Zaten etkin** -bir uyarı almayı beklediğiniz ölçüm zaman serisinde zaten başlatılmış bir uyarı olup olmadığını kontrol edin. Ölçüm uyarıları durum bilgisine sahiptir, yani belirli bir ölçüm zaman serisinde bir uyarı tetiklendiğinde, bu zaman serisinde ek uyarıların, sorun artık gözlemlenene kadar tetiklenmeyeceği anlamına gelir. Bu tasarım seçeneği paraziti azaltır. Uyarı koşulu üç ardışık değerlendirme için karşılanmazsa uyarı otomatik olarak çözümlenir.
+3. **Zaten etkin** -bir uyarı almayı beklediğiniz ölçüm zaman serisinde zaten başlatılmış bir uyarı olup olmadığını kontrol edin. Ölçüm uyarıları durum bilgisine sahiptir, uyarı belirli bir ölçüm zaman serisine tetiklendiğinde o zaman serisindeki ek uyarılar, sorun gözlemlenmeye devam ettiği sürece tetiklenmeyecektir. Bu tasarım seçeneği paraziti azaltır. Uyarı koşulu üç ardışık değerlendirme için karşılanmazsa uyarı otomatik olarak çözümlenir.
 
 4. **Kullanılan boyutlar** - [bir ölçüm için boyut değerlerini](./alerts-metric-overview.md#using-dimensions)seçtiyseniz, uyarı kuralı her bir ölçüm zaman serisini (boyut değerlerinin birleşimiyle tanımlanan şekilde) bir eşik ihlali için izler. Ayrıca, toplam ölçüm zaman serisini (Seçili boyutlar olmadan) izlemek için, boyutları seçmeden ölçüm üzerinde ek bir uyarı kuralı yapılandırın.
 
-5. **Toplama ve zaman ayrıntı düzeyi** : ölçümü, ölçüm [grafiklerini](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)kullanarak görselleştirmeniz durumunda aşağıdakileri doğrulayın:
+5. **Toplama ve zaman ayrıntı düzeyi** -ölçümü, ölçüm [grafiklerini](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)kullanarak görselleştirmeniz halinde şunları doğrulayın:
     * Ölçüm grafiğindeki seçili **toplama** , uyarı kuralınızın **toplama türüyle** aynı
     * Seçilen **zaman ayrıntı düzeyi** , uyarı kuralınızın (ve ' otomatik ' olarak ayarlanmamış) **toplama ayrıntı düzeyi (dönemi)** ile aynıdır.
 
@@ -47,7 +47,7 @@ Bir ölçüm uyarısının tetiklenmesi gerektiğini ancak Azure portal başlatm
 1. Tetiklenen uyarıyı bulmak için [tetiklenen uyarılar listesini](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) gözden geçirin ve ayrıntılarını görüntülemek için tıklayın. Uyarının tetiklendiği sırada ölçüm grafiğini, **ölçüm değerini**ve **eşik değerini** görmek için **Bu uyarının neden başlatıldığı konusunda** belirtilen bilgileri gözden geçirin.
 
     > [!NOTE] 
-    > Dinamik Eşik koşul türünü kullanıyor ve kullanılan eşiklerin doğru olmadığını düşünüyorsanız lütfen kaş çatma simgesini kullanarak geri bildirim sağlayın. Bu geri bildirim Machine Learning algoritmik araştırmasını etkiler ve gelecekteki algılamaları artırmaya yardımcı olur.
+    > Dinamik eşikler koşul türü kullanıyorsanız ve kullanılan eşiklerin doğru olmadığını düşünüyorsanız, lütfen kaş n simgesini kullanarak geri bildirim sağlayın. Bu geri bildirim Machine Learning algoritmik araştırmasını etkiler ve gelecekteki algılamaları artırmaya yardımcı olur.
 
 2. Bir ölçüm için birden çok boyut değeri seçtiyseniz **, bir ölçüm** zaman serisinden (boyut değerlerinin birleşimi tarafından tanımlanan) buna ulaştığında uyarı tetiklenir. Ölçüm uyarılarındaki boyutları kullanma hakkında daha fazla bilgi için [buraya](./alerts-metric-overview.md#using-dimensions) bakın.
 
@@ -67,7 +67,7 @@ Bir ölçüm uyarısının tetiklenmesi gerektiğini ancak Azure portal başlatm
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Sanal makinelerin Konuk ölçümlerini uyarmak için ölçüm bulunamıyor
 
-Sanal makinelerin (örneğin, bellek, disk alanı) Konuk işletim sistemi ölçümleri hakkında uyarı almak için, bu verileri Azure Izleyici ölçümlerine toplamak üzere gerekli aracıyı yüklediğinizden emin olun:
+Sanal makinelerin Konuk işletim sistemi ölçümleri hakkında uyarı almak için (örneğin, bellek, disk alanı), bu verileri Azure Izleyici ölçümlerine toplamak için gerekli aracıyı yüklediğinizden emin olun:
 - [Windows VM'leri için](./collect-custom-metrics-guestos-resource-manager-vm.md)
 - [Linux VM'leri için](./collect-custom-metrics-linux-telegraf.md)
 
@@ -83,7 +83,7 @@ Kaynak için bazı ölçümler görülebiliyorsanız ancak belirli bir ölçüm�
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Uyarı almak için ölçüm boyutu bulunamıyor
 
-[Bir ölçümün belirli boyut değerlerini](./alerts-metric-overview.md#using-dimensions)uyarmak istiyorsanız ancak bu değerleri bulamazsanız, aşağıdakilere göz önünde bulunmaktadır:
+[Bir ölçümün belirli boyut değerlerini](./alerts-metric-overview.md#using-dimensions)uyarmak istiyorsanız ancak bu değerleri bulamazsanız, aşağıdakilere göz önünde bulunur:
 
 1. Boyut değerlerinin **Boyut değerleri** listesinde görünmesi birkaç dakika sürebilir
 1. Görüntülenen boyut değerleri son üç günde toplanan ölçüm verilerini temel alır
@@ -106,12 +106,35 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
 > [!NOTE] 
 > Ölçüm uyarısı kuralının durum bilgisiz olması, tetiklenen uyarıların çözümlenmesini önler, bu nedenle, koşulun artık karşılanmaması durumunda, başlatılan uyarılar 30 gün Bekletme süresine kadar tetiklenen bir durumda kalır.
 
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Henüz yayınlanmayan özel bir ölçüm üzerinde bir uyarı kuralı tanımlayın
+
+Ölçüm uyarısı kuralı oluştururken, ölçüm adı [Ölçüm tanımları API 'sine](https://docs.microsoft.com/rest/api/monitor/metricdefinitions/list) göre doğrulandıktan ve var olduğundan emin olur. Bazı durumlarda, özel bir ölçümde, yayılmadan önce bile bir uyarı kuralı oluşturmak istersiniz. Örneğin, (ARM şablonu kullanarak), bu ölçümü izleyen bir uyarı kuralıyla birlikte özel bir ölçümü yayan bir Application Insights kaynağı oluşturur.
+
+Özel Ölçüm tanımlarını doğrulamaya çalışırken dağıtımın başarısız olmasına engel olmak için, uyarı kuralının ölçüt bölümünde, ölçüm doğrulamasının atlanmasına neden olacak *Skipmetricvalidation* parametresini kullanabilirsiniz. ARM şablonunda bu parametrenin nasıl kullanılacağı için aşağıdaki örneğe bakın (ölçüm uyarı kuralları oluşturmak için tüm ARM şablonu örnekleri için, [buraya]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)bakın).
+
+```json
+"criteria": {
+    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+        "allOf": [
+            {
+                    "name" : "condition1",
+                        "metricName": "myCustomMetric",
+                "metricNamespace": "myCustomMetricNamespace",
+                        "dimensions":[],
+                        "operator": "GreaterThan",
+                        "threshold" : 10,
+                        "timeAggregation": "Average",
+                    "skipMetricValidation": true
+        }
+              ]
+        }
+```
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Ölçüm uyarı kuralları kotası çok küçük
 
 Abonelik başına izin verilen ölçüm uyarısı kuralı sayısı, [kota sınırlarına](../service-limits.md)tabidir.
 
-Kota sınırına ulaştıysanız aşağıdaki adımlar sorunu çözmenize yardımcı olabilir:
+Kota sınırına ulaştıysanız, aşağıdaki adımlar sorunu çözmeye yardımcı olabilir:
 1. Artık kullanılmayan ölçüm uyarısı kurallarını silmeyi veya devre dışı bırakmayı deneyin.
 
 2. Birden fazla kaynağı izleyen ölçüm uyarı kurallarına geçiş yapın. Bu özellik sayesinde, tek bir uyarı kuralı, kotayla sayılan tek bir uyarı kuralını kullanarak birden çok kaynağı izleyebilir. Bu özellik ve desteklenen kaynak türleri hakkında daha fazla bilgi için [buraya](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) bakın.
@@ -133,7 +156,7 @@ Kota sınırına ulaştıysanız aşağıdaki adımlar sorunu çözmenize yardı
 3. Belirli bir kaynak grubuna, kaynak türüne veya kaynağa filtre uyguladığınızdan emin olun
 4. **Sinyal türü** açılan kutusunda **ölçümler** ' i seçin.
 5. **Durum** açılan denetiminin **etkin** olarak ayarlandığını doğrulama
-6. Ölçüm uyarı kurallarının toplam sayısı, kurallar listesinin üzerinde görüntülenir
+6. Ölçüm uyarı kurallarının toplam sayısı, uyarı kuralları listesinin üzerinde görüntülenir
 
 ### <a name="from-api"></a>API'den
 
@@ -152,7 +175,7 @@ Kaynak Yöneticisi şablonları, REST API, PowerShell veya Azure komut satırı 
 
 ### <a name="rest-api"></a>REST API
 
-Tüm parametreleri doğru geçirdiğinizi onaylamak için [REST API kılavuzu](/rest/api/monitor/metricalerts/) gözden geçirin
+Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API kılavuzunu](/rest/api/monitor/metricalerts/) gözden geçirin
 
 ### <a name="powershell"></a>PowerShell
 
@@ -161,7 +184,7 @@ Tüm parametreleri doğru geçirdiğinizi onaylamak için [REST API kılavuzu](/
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/?view=azps-3.6.1) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1))
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 
@@ -171,13 +194,13 @@ Tüm parametreleri doğru geçirdiğinizi onaylamak için [REST API kılavuzu](/
 
 ### <a name="general"></a>Genel
 
-- `Metric not found` hatası alıyorsanız:
+- Bir `Metric not found` hata alıyorsanız:
 
    - Platform ölçümü için: ölçüm **görünen adı** değil, [Azure izleyici tarafından desteklenen ölçümler sayfasından](./metrics-supported.md) **ölçüm** adını kullandığınızdan emin olun
 
    - Özel bir ölçüm için: ölçümün zaten yayıldığından (henüz mevcut olmayan bir özel ölçüm üzerinde bir uyarı kuralı oluşturamazsınız) ve özel ölçümün ad alanını sağladığınızdan emin olun ( [burada](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)bir ARM şablonu örneğine bakın)
 
-- [Günlüklerle ilgili ölçüm uyarıları](./alerts-metric-logs.md) oluşturuyorsanız uygun bağımlılıkların dahil edildiğinden emin olun. Bkz. [örnek şablon](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+- [Günlüklerde ölçüm uyarıları](./alerts-metric-logs.md)oluşturuyorsanız, uygun bağımlılıkların eklendiğinden emin olun. Bkz. [örnek şablon](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 - Birden çok ölçüt içeren bir uyarı kuralı oluşturuyorsanız, aşağıdaki kısıtlamalara göz önünde bulabilirsiniz:
 
@@ -197,7 +220,7 @@ Tüm parametreleri doğru geçirdiğinizi onaylamak için [REST API kılavuzu](/
 
 ## <a name="naming-restrictions-for-metric-alert-rules"></a>Ölçüm uyarı kuralları için adlandırma kısıtlamaları
 
-Ölçüm uyarı kuralı adları için aşağıdaki kısıtlamalara göz önünde olun:
+Ölçüm uyarı kuralı adları için aşağıdaki kısıtlamaları göz önünde bulundurun:
 
 - Ölçüm uyarısı kural adları, oluşturulduktan sonra değiştirilemez (yeniden adlandırılamaz)
 - Ölçüm uyarısı kural adları, bir kaynak grubu içinde benzersiz olmalıdır
@@ -209,10 +232,10 @@ Tüm parametreleri doğru geçirdiğinizi onaylamak için [REST API kılavuzu](/
 
 Ölçüm uyarıları çok boyutlu ölçümler üzerinde uyarı vermeyi ve birden çok koşul tanımlamayı destekler (uyarı kuralı başına 5 koşula kadar).
 
-Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken lütfen aşağıdaki kısıtlamalara göz önünde unutmayın:
-1. Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
-2. "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
-3. Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
+Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağıdaki kısıtlamaları göz önünde bulundurun:
+- Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
+- "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
+- Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
 Örneğin:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5

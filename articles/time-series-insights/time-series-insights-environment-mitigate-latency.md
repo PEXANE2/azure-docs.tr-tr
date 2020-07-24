@@ -5,20 +5,21 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046444"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
 
 Gelen veri miktarı ortamınızın yapılandırmasını aştığında, Azure Time Series Insights gecikme süresi veya azaltma yaşayabilirsiniz.
 
@@ -26,14 +27,14 @@ Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde y
 
 Şu durumlarda gecikme süresi ve azaltma deneyiminden karşılaşabilirsiniz:
 
-- Ayrılan giriş hızınızı aşmayacak eski verileri içeren bir olay kaynağı ekleyin (Time Series Insights catch gerekecektir).
+- Ayrılan giriş hızınızı aşmayacak eski verileri içeren bir olay kaynağı ekleyin (Azure Time Series Insights catch gerekecektir).
 - Bir ortama daha fazla olay kaynağı ekleyin ve ek olaylardan bir ani artış elde edin (ortamınızın kapasitesini aşabilir).
-- Büyük miktarlarda geçmiş olayları bir olay kaynağına göndererek bir gecikme (Time Series Insights yakalamalı olması gerekir) sonucunu vermez.
+- Büyük miktarlarda geçmiş olayları bir olay kaynağına göndererek bir gecikme (Azure Time Series Insights yakalamalı olması gerekir) sonucunu vermez.
 - Başvuru verilerini telemetri ile birleştirin ve daha büyük bir olay boyutuna neden olur. İzin verilen en büyük paket boyutu 32 KB; 32 KB 'den büyük veri paketleri kesilir.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Time Series Insights veri giriş davranışı ve bunun nasıl planlanacağı hakkında bilgi edinin.</br>
+### <a name="learn-about-azure-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Azure Time Series Insights veri giriş davranışı ve bunun nasıl planlanacağı hakkında bilgi edinin.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
@@ -41,9 +42,9 @@ Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde y
 
 Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltmanıza yardımcı olabilir.
 
-1. Azure portal, Time Series Insights ortamınızı seçin. Ardından **Uyarılar**' ı seçin.
+1. Azure portal, Azure Time Series Insights ortamınızı seçin. Ardından **Uyarılar**' ı seçin.
 
-   [![Time Series Insights ortamınıza bir uyarı ekleme](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
+   [![Azure Time Series Insights ortamınıza bir uyarı ekleme](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. **+ Yeni uyarı kuralı**'nı seçin. **Kural oluştur** paneli görüntülenir. **Koşul**altında **Ekle** ' yi seçin.
 
@@ -55,7 +56,7 @@ Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltma
 
    Buradan, aşağıdaki koşullardan bazılarını kullanarak uyarılar yapılandırabilirsiniz:
 
-   |Metric  |Açıklama  |
+   |Ölçüm  |Açıklama  |
    |---------|---------|
    |**Alınan bayt sayısı**     | Olay kaynaklarından okunan ham bayt sayısı. Ham sayı genellikle özellik adını ve değerini içerir.  |  
    |**Giriş geçersiz Iletiler aldı**     | Tüm Azure Event Hubs veya Azure IoT Hub olay kaynaklarından okunan geçersiz iletilerin sayısı.      |
@@ -65,7 +66,7 @@ Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltma
    |**Alınan Ileti zaman gecikmesi alındı**   |  İleti olay kaynağında sıraya alındığı zaman ve giriş sırasında işlendiği zaman arasındaki saniye cinsinden fark.      |
    |Giriş **alınan Ileti sayısı gecikmesi**   |  Olay kaynak bölümünde en son sıraya alınan iletinin sıra numarası ve giriş olarak işlenen iletinin sıra numarası arasındaki fark.      |
 
-   **Done** (Bitti) öğesini seçin.
+   **Bitti**'yi seçin.
 
 1. İstenen sinyal mantığını yapılandırdıktan sonra, seçilen uyarı kuralını görsel olarak gözden geçirin.
 
@@ -73,7 +74,7 @@ Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltma
 
 ## <a name="throttling-and-ingress-management"></a>Daraltma ve giriş yönetimi
 
-* Kısıtladıysanız, zaman serisi öngörüleri ortamınızın, ileti olay kaynağını (Appx dizin oluşturma süresi dışında) ne kadar süreyle kullandığını bildiren *Ileti saati gecikmesi* için bir değer kaydedilir. 30-60 saniye).  
+* Kısıtladıysanız, *gelen Ileti zaman* gecikmesinin bir değeri, ileti olay kaynağını (Appx dizin oluşturma süresi dışında), iletinin ne kadar saniye Azure Time Series Insights içinde olduğunu belirten Ileti saati gecikmesi için bir değer kaydedilir. 30-60 saniye).  
 
   *Alınan Ileti sayısı gecikmesi* de bir değer içermelidir, bu da arkasında kaç ileti olduğunu belirlemenizi sağlar.  En kolay şekilde, ortamınızın kapasitesini, farkı aşmanızı sağlayacak bir boyuta artırmanız gerekir.  
 
@@ -83,7 +84,7 @@ Uyarılar, ortamınızda oluşan gecikme sorunlarını tanılamanıza ve azaltma
 
   Örneğin, üç adet S1 birimi sağlanmışsa (veya bir dakika başına 2100 olay), 2 saat boyunca >= 1900 olay için bir giriş **saklı olayları** uyarısı ayarlayabilirsiniz. Bu eşiği sürekli aşdıysanız ve bu nedenle uyarınızı tetikleyerek, büyük olasılıkla sağlanmış olursunuz.  
 
-* Kısıtladığınızı kuşkulanıyorsanız, giriş **alınan iletilerinizi** olay kaynağınızın yumurtılan iletileriyle karşılaştırabilirsiniz.  Olay Hub 'ınız giriş **alınızdan**daha büyükse, Time Series Insights muhtemelen kısıtlanıyor demektir.
+* Kısıtladığınızı kuşkulanıyorsanız, giriş **alınan iletilerinizi** olay kaynağınızın yumurtılan iletileriyle karşılaştırabilirsiniz.  Olay Hub 'ınız giriş **alınızdan**daha büyükse, Azure Time Series Insights muhtemelen kısıtlanıyor demektir.
 
 ## <a name="improving-performance"></a>Performansı artırma
 
@@ -93,6 +94,6 @@ Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün şekilde y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Time Series Insights ortamınızda sorunları tanılama ve çözme](time-series-insights-diagnose-and-solve-problems.md)hakkında bilgi edinin.
+- [Azure Time Series Insights ortamınızda sorunları tanılama ve çözme](time-series-insights-diagnose-and-solve-problems.md)hakkında bilgi edinin.
 
-- [Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.
+- [Azure Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.

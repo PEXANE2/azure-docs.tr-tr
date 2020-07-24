@@ -3,12 +3,12 @@ title: Bağlantı sorunlarını giderme-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ile ilgili bağlantı sorunlarını giderme hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039336"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Bağlantı sorunlarını giderme-Azure Event Hubs
 İstemci uygulamalarının bir olay hub 'ına bağlanamamasının çeşitli nedenleri vardır. Karşılaşabileceğiniz bağlantı sorunları kalıcı veya geçici olabilir. Sorun her zaman (kalıcı) olursa, bağlantı dizesini, kuruluşunuzun güvenlik duvarı ayarlarını, IP güvenlik ayarlarını, ağ güvenlik ayarlarını (hizmet uç noktaları, Özel uç noktaları, vb.) ve daha fazlasını denetlemek isteyebilirsiniz. Geçici sorunlar için, SDK 'nın en son sürümüne yükseltme, bırakılan paketleri denetlemeye yönelik komutları çalıştırma ve ağ izlemelerini alma sorunları gidermeye yardımcı olabilir. 
@@ -48,7 +48,7 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 ```
 
 ### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Şirket güvenlik duvarınızdaki IP adreslerine izin verildiğini doğrulayın
-Azure ile çalışırken, bazı durumlarda kurumsal güvenlik duvarınızdaki veya ara ortamınızdaki belirli IP adresi aralıklarına veya URL 'Lerine, kullanmakta olduğunuz veya kullanmaya çalıştığınız tüm Azure hizmetlerine erişim izni vermeniz gerekir. Event Hubs tarafından kullanılan IP adreslerinde trafiğe izin verildiğini doğrulayın. Azure Event Hubs tarafından kullanılan IP adresleri için: bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519) ve [hizmet etiketi-EventHub](network-security.md#service-tags).
+Azure ile çalışırken, bazı durumlarda kurumsal güvenlik duvarınızdaki veya ara ortamınızdaki belirli IP adresi aralıklarına veya URL 'Lerine, kullanmakta olduğunuz veya kullanmaya çalıştığınız tüm Azure hizmetlerine erişim izni vermeniz gerekir. Event Hubs tarafından kullanılan IP adreslerinde trafiğe izin verildiğini doğrulayın. Azure Event Hubs tarafından kullanılan IP adresleri için: bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519).
 
 Ayrıca, ad alanınız için IP adresine izin verildiğini doğrulayın. Bağlantılarınız için izin verilecek doğru IP adreslerini bulmak için şu adımları izleyin:
 
@@ -75,13 +75,16 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
     ```
 3. Üç kullanılabilirlik alanında çalışan her üç örneğin IP adresini almak için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırın. 
 
+### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Ağ güvenlik gruplarında AzureEventGrid Service etiketine izin verildiğini doğrulayın
+Uygulamanız bir alt ağ içinde çalışıyorsa ve ilişkili bir ağ güvenlik grubu varsa, Internet 'e giden veya AzureEventGrid hizmet etiketine izin verilip verilmeyeceğini doğrulayın. Bkz. [sanal ağ hizmeti etiketleri](../virtual-network/service-tags-overview.md) ve arama `EventHub` .
+
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>Uygulamanın bir sanal ağın belirli bir alt ağında çalışıyor olması gerekip gerekmediğini denetleyin
 Uygulamanızın ad alanına erişimi olan bir sanal ağ alt ağında çalıştığını doğrulayın. Yoksa, uygulamayı ad alanına erişimi olan alt ağda çalıştırın veya uygulamanın çalıştığı makinenin IP adresini [IP güvenlik duvarında](event-hubs-ip-filtering.md)ekleyin. 
 
 Bir olay hub 'ı ad alanı için bir sanal ağ hizmet uç noktası oluşturduğunuzda ad alanı yalnızca hizmet uç noktasına bağlanan alt ağdan gelen trafiği kabul eder. Bu davranış için bir özel durum vardır. Olay Hub 'ı genel uç noktasına erişimi etkinleştirmek için IP güvenlik duvarında belirli IP adresleri ekleyebilirsiniz. Daha fazla bilgi için bkz. [Ağ Hizmeti uç noktaları](event-hubs-service-endpoints.md).
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>Ad alanınız için IP güvenlik duvarı ayarlarını denetleyin
-Uygulamanın üzerinde çalıştığı makinenin IP adresinin IP güvenlik duvarı tarafından engellenmediğinden emin olun.  
+Uygulamanın üzerinde çalıştığı makinenin genel IP adresinin IP güvenlik duvarı tarafından engellenmediğinden emin olun.  
 
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Event Hubs ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
 
@@ -108,9 +111,9 @@ Daha fazla bilgi için bkz. [Azure Event Hubs ad alanı IÇIN IP güvenlik duvar
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Ad alanına yalnızca özel bir uç nokta kullanılarak erişilemeyeceğini denetle
 Event Hubs ad alanı yalnızca özel uç nokta aracılığıyla erişilebilir olacak şekilde yapılandırıldıysa, istemci uygulamanın özel uç nokta üzerinden ad alanına eriştiğini doğrulayın. 
 
-[Azure özel bağlantı hizmeti](../private-link/private-link-overview.md) , Azure Event Hubs sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar. Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
+[Azure özel bağlantı hizmeti](../private-link/private-link-overview.md) , Azure Event Hubs sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar. Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan hizmeti etkin bir şekilde sanal ağınıza getiren özel bir IP adresi kullanır. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 
-Daha fazla bilgi için bkz. [Özel uç noktaları yapılandırma](private-link-service.md). 
+Daha fazla bilgi için bkz. [Özel uç noktaları yapılandırma](private-link-service.md). Özel bir uç noktanın kullanıldığını doğrulamak için **Özel uç nokta bağlantısının çalışıp çalışmadığını doğrulama** bölümüne bakın. 
 
 ### <a name="troubleshoot-network-related-issues"></a>Ağla ilgili sorunları giderme
 Event Hubs ile ağla ilgili sorunları gidermek için aşağıdaki adımları izleyin: 
@@ -160,7 +163,7 @@ Geçici bağlantı sorunları, arka uç hizmeti yükseltmeleri ve yeniden başla
 - Uygulamaların birkaç saniye boyunca hizmetle bağlantısı kesilebilir.
 - İstekler, geçici olarak kısıtlanabilir.
 
-Uygulama kodu SDK kullanıyorsa, yeniden deneme ilkesi zaten yerleşik ve etkin durumdadır. Uygulama/iş akışına önemli bir etkisi olmadan uygulama yeniden bağlanır. Aksi takdirde, sorunların uzakta olup olmadığını görmek için birkaç dakika sonra hizmete bağlanmayı yeniden deneyin. 
+Uygulama kodu SDK kullanıyorsa, yeniden deneme ilkesi zaten yerleşik ve etkin durumdadır. Uygulama/iş akışına önemli bir etkisi olmadan uygulama yeniden bağlanır. Bu geçici hataları yakalamak, kapatmak ve sonra çağrıyı yeniden denemek, kodunuzun bu geçici sorunlara dayanıklı olmasını sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

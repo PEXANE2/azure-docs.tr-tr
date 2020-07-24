@@ -6,11 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab79a60f55fad6a45fadb6bf8890d2879caac62
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81727170"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043581"
 ---
 # <a name="options"></a>Seçenekler #
 
@@ -62,7 +63,7 @@ Width özniteliği videonun görüntü genişliğini ayarlar.
 
 `<video width="640" ...>` veya `{ "width": 640 }`
 
-### <a name="height"></a>yükseklik ###
+### <a name="height"></a>boy ###
 
 Height özniteliği videonun görüntüleme yüksekliğini ayarlar.
 
@@ -100,7 +101,7 @@ Bu seçeneği gerçek video öğesine ayarlayarak, Ana kapsayıcının tam geni�
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-Ayarın diğer özellikleri `playbackSpeed` [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) nesnesi tarafından verilir.
+Ayarın diğer özellikleri `playbackSpeed` [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) nesnesi tarafından verilir.
 
 JavaScript 'te kayıttan yürütme hızı seçeneklerini ayarlama örneği:
 

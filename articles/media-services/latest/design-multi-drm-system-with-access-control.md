@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039200"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama 
 
@@ -132,12 +133,12 @@ Aşağıdaki tabloda eşleme gösterilmektedir.
 
 | **Yapı taşı** | **Teknoloji** |
 | --- | --- |
-| **Oynatıcı** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **Player** (Oyuncu) |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **Kimlik sağlayıcısı (ıDP)** |Azure Active Directory (Azure AD) |
 | **Güvenli belirteç hizmeti (STS)** |Azure AD |
 | **DRM koruması iş akışı** |Dinamik koruma Azure Media Services |
 | **DRM lisansı verme** |* Media Services lisans teslimi (PlayReady, Widevine, FairPlay) <br/>* Axinom lisans sunucusu <br/>* Özel PlayReady lisans sunucusu |
-| **Kaynak** |Azure Media Services akış uç noktası |
+| **Tıdır** |Azure Media Services akış uç noktası |
 | **Anahtar yönetimi** |Başvuru uygulamasında gerekli değildir |
 | **İçerik yönetimi** |Bir C# konsol uygulaması |
 
@@ -213,7 +214,7 @@ Daha fazla bilgi için, [Azure Media Services ve dinamik şifrelemede JWT belirt
 Azure AD hakkında bilgi için:
 
 * Geliştirici bilgilerini [Azure Active Directory geliştirici kılavuzunda](../../active-directory/develop/v2-overview.md)bulabilirsiniz.
-* Yönetici bilgilerini, [Azure AD kiracı dizininizi yönetme](../../active-directory/fundamentals/active-directory-administer.md)bölümünde bulabilirsiniz.
+* Yönetici bilgilerini, [Azure AD kiracı dizininizi yönetme](../../active-directory/fundamentals/active-directory-whatis.md)bölümünde bulabilirsiniz.
 
 ### <a name="some-issues-in-implementation"></a>Uygulamadaki bazı sorunlar
 
@@ -281,7 +282,7 @@ Azure tarafından yalnızca Microsoft hesabı kullanıcıları tarafından eriş
 
 Azure AD Microsoft hesabı etki alanına güventiğinden, aşağıdaki etki alanlarından herhangi bir hesabı özel Azure AD kiracısına ekleyebilir ve hesabı kullanarak oturum açabilirsiniz:
 
-| **Etki alanı adı** | **Domain** |
+| **Etki alanı adı** | **Etki alanı** |
 | --- | --- |
 | **Özel Azure AD kiracı etki alanı** |somename.onmicrosoft.com |
 | **Kurumsal etki alanı** |microsoft.com |

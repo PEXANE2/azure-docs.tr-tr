@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042190"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -208,7 +209,7 @@ Günlüklerinizi karşılaştırarak bir uyarı oluşturmak için [Azure izleyic
 
 Birden çok ASE varsa, bazı ASE 'lerin başkalarından önce yükseltilmesini isteyebilirsiniz. ATıCı **HostingEnvironment Kaynak Yöneticisi** nesnesi Içinde, **upgradepreference**için bir değer ayarlayabilirsiniz. **Upgradepreference** ayarı bir şablon, ARMClient veya kullanılarak yapılandırılabilir https://resources.azure.com . Olası üç değer şunlardır:
 
-- **Hiçbiri**: Azure, Ao 'nizi belirli bir toplu iş olmadan yükseltecektir. Bu varsayılan değerdir.
+- **Hiçbiri**: Azure, Ao 'nizi belirli bir toplu iş olmadan yükseltecektir. Bu değer varsayılandır.
 - **Erken**: Ao 'niz App Service yükseltmelerin ilk yarısında yükseltilir.
 - **Geç**: Ao 'niz App Service yükseltmelerinin ikinci yarısında yükseltilir.
 
@@ -217,7 +218,7 @@ Kullanıyorsanız https://resources.azure.com , **upgradepreferences** değerini
 1. Resources.azure.com adresine gidin ve Azure hesabınızla oturum açın.
 1. Kaynakları aboneliklerle abonelikler \/ \[ abonelik adı \] \/ ResourceGroups \/ \[ kaynak grubu adı \] \/ sağlayıcılar \/ Microsoft. Web \/ hostingenvironments \/ \[ Ao adı \] .
 1. Üstteki **oku/yaz** seçeneğini belirleyin.
-1. **Düzenle**' yi seçin.
+1. **Düzenle**’yi seçin.
 1. **Yükseltme tercihini** , istediğiniz üç değerden hangisinin hangisi olduğuna göre ayarlayın.
 1. **Düzeltme Eki**seçin.
 
@@ -250,6 +251,30 @@ ATıCı 'yi silmek için:
     ![ATıCı silme][3]
 
 1. **Tamam**’ı seçin.
+
+## <a name="ase-cli"></a>ATıCı CLı
+
+Ao 'da yönetilecek komut satırı özellikleri vardır.  Az CLI komutları aşağıda belirtilmiştir.
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

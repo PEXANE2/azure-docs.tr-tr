@@ -12,11 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042623"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -28,6 +29,18 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+## <a name="june-2020"></a>Haziran 2020
+
+### <a name="search-by-topics"></a>Konulara göre ara
+
+Artık belirli konularda (yalnızca API) videoları aramak için arama API 'sini kullanabilirsiniz.
+
+Konular, `textScope` (isteğe bağlı parametre) bir parçası olarak eklenir. Ayrıntılar için bkz. [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) .  
+
+### <a name="labels-enhancement"></a>Etiket geliştirmesi
+
+Etiket etiketi yükseltildi ve artık tanımlanabilecek daha fazla görsel etiket içeriyor.
 
 ## <a name="may-2020"></a>Mayıs 2020
 
@@ -162,7 +175,7 @@ IBC 2019 ' de birden çok terfi duyurusu:
     Özel Vision ile tümleştirme yoluyla, animasyonlu içerikte grup ad tanıma karakterlerini algılama özelliği. Daha fazla bilgi için bkz. [animasyonlu karakter algılama](animated-characters-recognition.md).
 * Çoklu dil tanımlama (Genel Önizleme)
 
-    Ses kanalında birden çok dildeki segmentleri algılayın ve bunlara göre çok dilli bir döküm oluşturun. İlk destek: Ingilizce, Ispanyolca, Almanca ve Fransızca. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
+    Ses kanalında birden çok dildeki segmentleri algılayın ve bunlara göre çok dilli bir döküm oluşturun. İlk destek: Ingilizce, Ispanyolca, Almanca ve Fransızca. Daha fazla bilgi için bkz. [Çok dilli içeriği tanımlama ve transkripsiyonunu alma](multi-language-identification-transcription.md).
 * Kişiler ve konum için adlandırılmış varlık ayıklama
 
     Marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
@@ -256,4 +269,4 @@ Zaten desteklenen (SRT, VTT ve TTML) kapalı açıklamalı alt yazı biçiminin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel Bakış](video-indexer-overview.md)
+[Genel bakış](video-indexer-overview.md)

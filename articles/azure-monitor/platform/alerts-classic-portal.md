@@ -5,11 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045594"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme
 
@@ -51,7 +52,7 @@ Bir uyarı oluşturduktan sonra, bunu seçebilir ve aşağıdaki görevlerden bi
 
 ## <a name="with-azure-cli"></a>Azure CLI ile
 
-Önceki bölümlerde Azure portal kullanarak ölçüm uyarı kurallarının nasıl oluşturulacağı, görüntüleneceği ve yönetileceği açıklanmaktadır. Bu bölümde, platformlar arası [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)kullanarak nasıl yapılacağı açıklanır. Azure CLı 'yı kullanmaya başlamanın en hızlı yolu [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)kullanmaktır.
+Önceki bölümlerde Azure portal kullanarak ölçüm uyarı kurallarının nasıl oluşturulacağı, görüntüleneceği ve yönetileceği açıklanmaktadır. Bu bölümde, platformlar arası [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)kullanarak nasıl yapılacağı açıklanır. Azure CLı 'yı kullanmaya başlamanın en hızlı yolu [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)kullanmaktır.
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Bir kaynak grubundaki tüm klasik ölçüm uyarısı kurallarını al
 
@@ -87,7 +88,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 Bu bölümlerde, klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme PowerShell komutlarının nasıl kullanılacağı gösterilmektedir. Makalesindeki örneklerde, klasik ölçüm uyarıları için Azure Izleyici cmdlet 'lerini nasıl kullanabileceğiniz gösterilmektedir.
 
-1. Henüz yapmadıysanız, PowerShell 'i bilgisayarınızda çalışacak şekilde ayarlayın. Daha fazla bilgi için bkz. [PowerShell 'ı yüklemek ve yapılandırmak](/powershell/azure/overview). Ayrıca Azure izleyici [(Öngörüler) cmdlet 'Lerinde](https://docs.microsoft.com/powershell/module/az.applicationinsights)Azure izleyici PowerShell cmdlet 'lerinin tüm listesini inceleyebilirsiniz.
+1. Henüz yapmadıysanız, PowerShell 'i bilgisayarınızda çalışacak şekilde ayarlayın. Daha fazla bilgi için bkz. [PowerShell 'ı yüklemek ve yapılandırmak](/powershell/azure/). Ayrıca Azure izleyici [(Öngörüler) cmdlet 'Lerinde](/powershell/module/az.applicationinsights)Azure izleyici PowerShell cmdlet 'lerinin tüm listesini inceleyebilirsiniz.
 
 2. İlk olarak, Azure aboneliğinizde oturum açın.
 

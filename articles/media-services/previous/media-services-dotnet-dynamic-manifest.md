@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
-ms.openlocfilehash: b2099283bc3af19f7d23e5007377b8baac0066d8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: cd1272b6c49d247d58486193fcbc488d566ec1b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043043"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile Filtreler oluşturma 
 > [!div class="op_single_selector"]
@@ -40,10 +40,10 @@ Note bir filtreyi güncelleştirirseniz akış uç noktasının kuralların yeni
 ## <a name="types-used-to-create-filters"></a>Filtre oluşturmak için kullanılan türler
 Şu türler, filtre oluştururken kullanılır: 
 
-* **Imingfilter**.  Bu tür, aşağıdaki REST API [filtreye](https://docs.microsoft.com/rest/api/media/operations/filter) dayalıdır
-* **Imingassetfilter**. Bu tür, aşağıdaki REST API [Assetfilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter) öğesine dayalıdır
-* **Presentationtimerange**. Bu tür, şu REST API [Presentationtimerange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange) öğesine dayalıdır
-* **Filtertrackselectdeyimin** ve **Ifiltertrackpropertycondition**. Bu türler, şu REST API 'Lerine dayalıdır [Filtertrackselect ve FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **Imingfilter**.  Bu tür, aşağıdaki REST API [filtreye](/rest/api/media/operations/filter) dayalıdır
+* **Imingassetfilter**. Bu tür, aşağıdaki REST API [Assetfilter](/rest/api/media/operations/assetfilter) öğesine dayalıdır
+* **Presentationtimerange**. Bu tür, şu REST API [Presentationtimerange](/rest/api/media/operations/presentationtimerange) öğesine dayalıdır
+* **Filtertrackselectdeyimin** ve **Ifiltertrackpropertycondition**. Bu türler, şu REST API 'Lerine dayalıdır [Filtertrackselect ve FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>Genel Filtreleri oluştur/güncelleştir/oku/Sil
 Aşağıdaki kod, varlık filtrelerini oluşturmak, güncelleştirmek, okumak ve silmek için .NET 'in nasıl kullanılacağını gösterir.
@@ -137,4 +137,3 @@ Aşağıdaki örneklerde, akış URL 'Lerine filtrelerin nasıl ekleneceği gös
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 [Dinamik bildirimlere genel bakış](media-services-dynamic-manifest-overview.md)
-

@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041403"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent sorunlarını giderme (eski adıyla Durum İzleyicisi v2)
 
@@ -54,7 +55,7 @@ Sentomatik davranışını görmek için sorun giderme araçları 'nı kullanabi
 
 ### <a name="conflict-with-iis-shared-configuration"></a>IIS paylaşılan yapılandırmasıyla çakışma
 
-Bir Web sunucuları kümeniz varsa, [paylaşılan bir yapılandırma](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)kullanıyor olabilirsiniz.
+Bir Web sunucuları kümeniz varsa, [paylaşılan bir yapılandırma](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)kullanıyor olabilirsiniz.
 HttpModule bu paylaşılan yapılandırmaya eklenemez.
 Her bir Web sunucusunda, DLL 'yi her bir sunucunun GAC 'sine yüklemek için Etkinleştir komutunu çalıştırın.
 

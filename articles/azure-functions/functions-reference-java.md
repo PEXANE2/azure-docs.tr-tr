@@ -3,20 +3,26 @@ title: Azure Işlevleri için Java geliştirici başvurusu
 description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f1c2c3a3b6c28813cc9ecd9eb794e26e1e60d5e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057611"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041545"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
-Azure Işlevleri çalışma zamanı, [Java SE 8 LTS 'yi (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)destekler. Bu kılavuzda, Java ile Azure Işlevleri yazma hakkında bilgiler yer alır.
+Bu kılavuz, Java kullanarak Azure Işlevleri geliştirmeye yardımcı olacak ayrıntılı bilgiler içerir.
 
-Diğer dillerde olduğu gibi, bir İşlev Uygulaması bir veya daha fazla işleve sahip olabilir. Java işlevi, `public` ek açıklamayla donatılmış bir yöntemdir `@FunctionName` . Bu yöntem, bir Java işlevinin girişini tanımlar ve belirli bir pakette benzersiz olmalıdır. Java 'da yazılan bir İşlev Uygulaması birden fazla ortak yöntemi olan birden çok sınıfa sahip olabilir `@FunctionName` .
+Bir Java geliştiricisi olarak, Azure Işlevleri 'ne yeni başladıysanız, lütfen önce aşağıdaki makalelerden birini okuyun:
 
-Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. Ayrıca, aşağıdaki Işlevlerden hızlı başlangıçlardan birini gerçekleştirmeniz gerekir: [Visual Studio Code kullanarak Ilk Java Işlevinizi oluşturun](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) veya [Maven kullanarak komut satırından ilk Java işlevinizi oluşturun](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).
+| Başlarken | Kavramlar| 
+| -- | -- |  
+| <ul><li>[Visual Studio Code kullanarak Java işlevi](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Terminal/komut istemiyle Java/Maven işlevi](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Gradle kullanarak Java işlevi](functions-create-first-java-gradle.md)</li><li>[Çakışan Küreler kullanan Java işlevi](functions-create-maven-eclipse.md)</li><li>[IntelliJ FIKRINI kullanarak Java işlevi](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> |
+
+## <a name="java-function-basics"></a>Java işlevi temelleri
+
+Java işlevi, `public` ek açıklamayla donatılmış bir yöntemdir `@FunctionName` . Bu yöntem, bir Java işlevinin girişini tanımlar ve belirli bir pakette benzersiz olmalıdır. Pakette birden fazla ortak yöntemi olan birden fazla sınıf bulunabilir `@FunctionName` . Azure 'daki bir işlev uygulamasına tek bir paket dağıtılır. Azure 'da çalışırken, işlev uygulaması bireysel Java işlevleriniz için dağıtım, yürütme ve yönetim bağlamını sağlar.
 
 ## <a name="programming-model"></a>Programlama modeli 
 
@@ -48,7 +54,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Bu arşiv ETYPE kullanmaya başlamak için bkz. [Java hızlı başlangıç](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
+Bu arşiv ETYPE kullanmaya başlamak için bkz. [Java hızlı başlangıç](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java). 
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
@@ -87,7 +93,7 @@ Bir projeye birden fazla işlev yerleştirebilirsiniz. İşlevlerinizi ayrı jli
 Yöntemlerinizi giriş ve çıkışları bağlamak için [com. Microsoft. Azure. Functions. Annotation. *](/java/api/com.microsoft.azure.functions.annotation) paketinde bulunan Java ek açıklamalarını kullanın. Daha fazla bilgi için bkz. [Java başvuru belgeleri](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Azure Blob depolama, Azure kuyruk depolama veya Azure Tablo depolama tetikleyicilerini yerel olarak çalıştırmak için [local.settings.js](/azure/azure-functions/functions-run-local#local-settings-file) Azure Storage hesabı yapılandırmanız gerekir.
+> Azure Blob depolama, Azure kuyruk depolama veya Azure Tablo depolama tetikleyicilerini yerel olarak çalıştırmak için [local.settings.js](./functions-run-local.md#local-settings-file) Azure Storage hesabı yapılandırmanız gerekir.
 
 Örnek:
 
@@ -125,9 +131,58 @@ public class Function {
 
 ```
 
+## <a name="java-versions"></a>Java sürümleri
+
+_Java 11 desteği şu anda önizleme aşamasındadır_
+
+Üzerinde çalışan işlevlerin Azure 'da çalıştığı işlev uygulaması oluşturulurken kullanılan Java sürümü pom.xml dosyasında belirtilir. Maven arşiv ETYPE Şu anda bir Java 8 için pom.xml oluşturuyor ve yayımlamadan önce değiştirebilirsiniz. pom.xml Java sürümü, uygulamanızı yerel olarak geliştirmiş ve test ettiğiniz sürümle eşleşmelidir. 
+
+### <a name="supported-versions"></a>Desteklenen sürümler
+
+Aşağıdaki tabloda, işletim sistemine göre Işlevler çalışma zamanının her ana sürümü için desteklenen geçerli Java sürümleri gösterilmektedir:
+
+| İşlevler sürümü | Java sürümleri (Windows) | Java sürümleri (Linux) |
+| ----- | ----- | --- |
+| 3.x | 11 (Önizleme)<br/>240<sup>\*</sup> | 11 (Önizleme)<br/>8 |
+| 2.x | 8 | yok |
+
+<sup>\*</sup>Bu, Maven arşiv ETYPE tarafından oluşturulan pom.xml geçerli varsayılandır.
+
+### <a name="specify-the-deployment-version"></a>Dağıtım sürümünü belirtin
+
+Şu anda Maven arşiv ETYPE, Java 8 ' i hedefleyen bir pom.xml oluşturur. pom.xml ' deki aşağıdaki öğelerin, Java 11 çalıştıran bir işlev uygulaması oluşturmak için güncelleştirilmeleri gerekir.
+
+| Öğe |  Java 8 değeri | Java 11 değeri | Açıklama |
+| ---- | ---- | ---- | --- |
+| **`Java.version`** | 1.8 | 11 | Maven-derleyici-eklentisi tarafından kullanılan Java sürümü. |
+| **`JavaVersion`** | 8 | 11 | Azure 'da işlev uygulaması tarafından barındırılan Java sürümü. |
+
+Aşağıdaki örneklerde pom.xml dosyasının ilgili bölümlerinde Java 8 ayarları gösterilmektedir:
+
+#### `Java.version`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="12-19" highlight="14":::
+
+#### `JavaVersion`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="80":::
+
+> [!IMPORTANT]
+> Maven kullanılarak kod derleme sırasında kullanılan JDK dizinine JAVA_HOME ortam değişkeninin doğru şekilde ayarlanmış olması gerekir. JDK sürümünün en az ayar kadar yüksek olduğundan emin olun `Java.version` . 
+
+### <a name="specify-the-deployment-os"></a>Dağıtım işletim sistemini belirtin
+
+Maven Ayrıca, işlev uygulamanızın Azure 'da çalıştığı işletim sistemini belirtmenize imkan tanır. `os`İşletim sistemini seçmek için öğesini kullanın. 
+
+| Öğe |  Windows | Linux | Docker |
+| ---- | ---- | ---- | --- |
+| **`os`** | windows | 'un | Docker |
+
+Aşağıdaki örnekte, pom.xml dosyasının bölümündeki işletim sistemi ayarı gösterilmektedir `runtime` :
+
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="79":::
+ 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK çalışma zamanı kullanılabilirliği ve desteği 
 
-Java işlev uygulamalarının yerel geliştirmesi için Azul [sistemlerinden](https://www.azul.com/downloads/azure-only/zulu/)Azure Java 8 JDKs [Için Azul Zulu kurumsal](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) 'ı indirin ve kullanın. Azure Işlevleri, işlev uygulamalarınızı buluta dağıtırken Azul Java 8 JDK çalışma zamanını kullanır.
+Java işlev uygulamalarının yerel geliştirmesi için, [Azul sistemlerinden](https://www.azul.com/downloads/azure-only/zulu/)Azure Java JDKs [Için uygun Azul Zulu kurumsal](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) 'ı indirin ve kullanın. Azure Işlevleri, işlev Uygulamanızı buluta dağıtırken Azul Java JDK çalışma zamanı kullanır.
 
 JDKs ve Function uygulamalarıyla ilgili sorunlar için [Azure desteği](https://azure.microsoft.com/support/) , [nitelikli bir destek planıyla](https://azure.microsoft.com/support/plans/)sunulmaktadır.
 
@@ -146,7 +201,7 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 > [!IMPORTANT]  
 > Tüketim planında, özelleştirmenin çalışması için değeri 0 olan WEBSITE_USE_PLACEHOLDER ayarını da eklemeniz gerekir. Bu ayar, Java işlevleri için soğuk başlangıç sürelerini artırır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 [Azure Portal](https://portal.azure.com), ayarı eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın `JAVA_OPTS` .
 
@@ -332,9 +387,9 @@ Bu işlevi bir HttpRequest üzerinde çağırılır. Kuyruk depolamaya birden ç
 | `HttpRequestMessage<T>`  |    HTTP Tetikleyicisi     | Yöntemi, üstbilgileri veya sorguları alır |
 | `HttpResponseMessage` | HTTP çıkış bağlama | 200 dışında bir durum döndürür   |
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
-Birkaç tetikleyici, giriş verileriyle birlikte [tetikleyici meta verilerini](/azure/azure-functions/functions-triggers-bindings) gönderir. Daha fazla açıklama kullanarak `@BindingName` tetikleyici meta verilerine bağlayabilirsiniz.
+Birkaç tetikleyici, giriş verileriyle birlikte [tetikleyici meta verilerini](./functions-triggers-bindings.md) gönderir. Daha fazla açıklama kullanarak `@BindingName` tetikleyici meta verilerine bağlayabilirsiniz.
 
 
 ```Java

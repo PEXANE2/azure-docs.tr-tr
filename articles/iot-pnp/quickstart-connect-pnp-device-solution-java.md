@@ -1,5 +1,5 @@
 ---
-title: Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin | Microsoft Docs
+title: Çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin-Java | Microsoft Docs
 description: Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazına bağlanmak ve bunlarla etkileşim kurmak için Java kullanın.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 53812e68fe397b81f29869565e0e4a0640a9ef23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43136e1a09cc771f39b92a83ca4c452fc1276091
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044045"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (Java)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76964643"
 
 IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için Java 'nın nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Java, 8 gerekir. Ayrıca Maven 3 ' ü yüklemeniz gerekir.
 
@@ -88,7 +88,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Java 'da örne
 
 ### <a name="read-a-property"></a>Bir özelliği okuyun
 
-1. _Cihazı_ terminalde bağladığınızda, çıkış iletilerinden biri çevrimiçi durumunu göstermek için aşağıdaki mesajdır. Cihazın `state` çevrimiçi olup olmadığını göstermek için kullanılan özelliği, _doğru_olsun:
+1. _Cihazı_ terminalde bağladığınızda, çıkış iletilerinden biri çevrimiçi durumunu göstermek için aşağıdaki mesajdır. `state`Cihazın çevrimiçi olup olmadığını göstermek için kullanılan özelliği, _doğru_olsun:
 
     ```cmd/sh
     State of environmental sensor was set to true
@@ -100,7 +100,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Java 'da örne
     java -jar get-digital-twin/target/get-digital-twin-with-deps.jar
     ```
 
-1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşene kaydırın. `state` Özelliğin _doğru_olarak raporlanmışsa görürsünüz:
+1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşene kaydırın. `state`Özelliğin _doğru_olarak raporlanmışsa görürsünüz:
     ```JSON
     "environmentalSensor" : {
       "name" : "environmentalSensor",
@@ -131,7 +131,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Java 'da örne
     java -jar update-digital-twin/target/update-digital-twin-with-deps.jar
     ```
 
-1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. 42 'nin yeni `environmentalSensor` parlaklık değerini görmek için bileşene kaydırın.
+1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. `environmentalSensor`42 'nin yeni parlaklık değerini görmek için bileşene kaydırın.
 
     ```json
     "environmentalSensor": {
@@ -156,7 +156,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için Java 'da örne
     ```cmd/sh
     java -jar get-digital-twin/target/get-digital-twin-with-deps.jar
     ```
-3. _Hizmet_ terminali çıkışında, `environmentalSensor` bileşen altında, güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
+3. _Hizmet_ terminali çıkışında, bileşen altında, `environmentalSensor` Güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
     
     ```json
     "environmentalSensor" : {

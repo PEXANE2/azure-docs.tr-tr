@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045908"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -918,7 +918,7 @@ Karma Runbook Worker özelliğini kullanırken, sanal makinelerinizdeki güvenli
 
 * [Azure Ilke efektlerini anlama](../governance/policy/concepts/effects.md)
 
-* [Azure Resource Manager şablonu kullanarak Otomasyon hesabı dağıtma](./automation-create-account-template.md#deploy-the-template)
+* [Azure Resource Manager şablonu kullanarak Otomasyon hesabı dağıtma](./quickstart-create-automation-account-template.md#deploy-the-template)
 
 * [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-samples.md)
 
@@ -1064,7 +1064,7 @@ Karma Runbook Worker özelliğini kullanırken, herhangi bir bulutta veya şirke
 
 **Rehberlik**: kod içinde kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
 
-* [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.htm)
+* [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1124,7 +1124,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Azure Otomasyonu kaynakları için Azure Resource Manager şablonu başvurusu](/azure/templates/microsoft.automation/allversions)
 
-* [Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma](./automation-create-account-template.md)
+* [Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma](./quickstart-create-automation-account-template.md)
 
 * [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1150,7 +1150,7 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Azure Otomasyonu kaynakları için Azure Resource Manager şablonu başvurusu](/azure/templates/microsoft.automation/allversions)
 
-* [Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma](./automation-create-account-template.md)
+* [Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma](./quickstart-create-automation-account-template.md)
 
 * [Azure portal bir şablona tek ve çoklu kaynak verme](../azure-resource-manager/templates/export-template-portal.md)
 

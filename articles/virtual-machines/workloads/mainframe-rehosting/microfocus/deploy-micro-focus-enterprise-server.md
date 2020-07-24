@@ -12,16 +12,16 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 900e76fff3e5ccf88fa1e25ebea97f26e406a358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042551"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Micro Focus Enterprise Server 5,0 'i AKS 'e dağıtma
 
-Başka bir [makalede](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container), Micro Focus Enterprise Server 5,0 'ı bir Docker kapsayıcısında çalıştırmaya yönelik adımları anahatlıyorum. Bunu bir sonraki adımda, bir adım daha nasıl ele alıp Azure Kubernetes Service (AKS) için oluşturduğunuz Docker görüntüsünü nasıl dağıtacağınızı göstermek istiyorum.
+Başka bir [makalede](./run-enterprise-server-container.md), Micro Focus Enterprise Server 5,0 'ı bir Docker kapsayıcısında çalıştırmaya yönelik adımları anahatlıyorum. Bunu bir sonraki adımda, bir adım daha nasıl ele alıp Azure Kubernetes Service (AKS) için oluşturduğunuz Docker görüntüsünü nasıl dağıtacağınızı göstermek istiyorum.
 
 Azure Kubernetes hizmeti, Kubernetes tabanlı yönetilen bir Orchestration hizmetidir. Bir kapsayıcı ana bilgisayar kümesi genelinde Docker kapsayıcılarını (ve diğer kapsayıcı tabanlı uygulamaları) dağıtmanıza, ölçeklendirmenize ve yönetmenize olanak sağlar.
 

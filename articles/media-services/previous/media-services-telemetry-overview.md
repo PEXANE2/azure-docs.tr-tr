@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52b737e88e13c59d260da73c6fa37a1088cb91d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74895785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038479"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetri  
 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services (AMS), Hizmetleri için telemetri/ölçüm verilerine erişmenizi sağlar. AMS 'nin geçerli sürümü, canlı **Kanal**, **streamingendpoint**ve canlı **Arşiv** varlıkları için telemetri verilerini toplamanıza olanak tanır. 
 
@@ -50,7 +51,7 @@ Telemetri, Media Services hesabı için telemetri yapılandırdığınızda beli
 
 Telemetri verilerini aşağıdaki yollarla kullanabilirsiniz:
 
-- Verileri doğrudan Azure Tablo depolamadan (örn. depolama SDK 'sını kullanarak) okuyun. Telemetri depolama tablolarının açıklaması için [Bu](https://msdn.microsoft.com/library/mt742089.aspx) konudaki **telemetri bilgilerine** bakın.
+- Verileri doğrudan Azure Tablo depolamadan (örn. depolama SDK 'sını kullanarak) okuyun. Telemetri depolama tablolarının açıklaması için [Bu](/previous-versions/azure/mt742089(v=azure.100)) konudaki **telemetri bilgilerine** bakın.
 
 Veya
 
@@ -103,7 +104,7 @@ Tür|Tür|Streammingendpoint
 Name|Name|Streammingendpointrequestlog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceId|Hizmet Kimliği|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Ana bilgisayar adı|Uç noktanın ana bilgisayar adı|builddemoserver.origin.mediaservices.windows.net
+HostName|Uç noktanın ana bilgisayar adı|builddemoserver.origin.mediaservices.windows.net
 Durum|HTTP durumunu kaydeder|200
 ResultCode|Sonuç kodu ayrıntısı|S_OK
 Istek sayısı|Toplamada toplam istek|3
@@ -131,10 +132,10 @@ Fazla atlama sayısı|Alma sırasında örtüşme|0
 DiscontinuityCount|İzleme için süreksizlik|0
 LastTimestamp|Son alınan veri zaman damgası|1800488800
 Nonıncreasingcount|Artmayan zaman damgası nedeniyle atılan parçaların sayısı|2
-Alignedkarelerine geri dön|Ana çerçevelerin hizalanmayacağı parçaları (kalite seviyeleri arasında) almamız |True
-Alignedpresentationtime|Sunum zamanının Hizalanmadığını parçalar (kalite seviyeleri/parçalar arasında) almış olup olmadığı|True
-UnexpectedBitrate|Ses/video izleme için hesaplanmış/gerçek bit hızı > 40.000 bps ve ıncomingbit hızı = = 0 ya da ıncomingbit hızı ve gerçek bit hızı %50 oranında farklılık gösteriyorsa doğru |True
-Sağlam|Doğruysa, <br/>Fazla atlama sayısı, <br/>DiscontinuityCount, <br/>Nonıncreasingcount, <br/>Alignedana kareleri, <br/>Alignedpresentationtime, <br/>UnexpectedBitrate<br/> tümü 0 ' dır|True<br/><br/>Sağlıklı, aşağıdaki koşullardan herhangi biri tutulmamışsa yanlış döndüren bileşik bir işlevdir:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-Nonıncreasingcount > 0<br/>-Unalignedana kareleri = = true<br/>-UnalignedPresentationTime = = true<br/>-UnexpectedBitrate = = true
+Alignedkarelerine geri dön|Ana çerçevelerin hizalanmayacağı parçaları (kalite seviyeleri arasında) almamız |Doğru
+Alignedpresentationtime|Sunum zamanının Hizalanmadığını parçalar (kalite seviyeleri/parçalar arasında) almış olup olmadığı|Doğru
+UnexpectedBitrate|Ses/video izleme için hesaplanmış/gerçek bit hızı > 40.000 bps ve ıncomingbit hızı = = 0 ya da ıncomingbit hızı ve gerçek bit hızı %50 oranında farklılık gösteriyorsa doğru |Doğru
+Sağlam|Doğruysa, <br/>Fazla atlama sayısı, <br/>DiscontinuityCount, <br/>Nonıncreasingcount, <br/>Alignedana kareleri, <br/>Alignedpresentationtime, <br/>UnexpectedBitrate<br/> tümü 0 ' dır|Doğru<br/><br/>Sağlıklı, aşağıdaki koşullardan herhangi biri tutulmamışsa yanlış döndüren bileşik bir işlevdir:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-Nonıncreasingcount > 0<br/>-Unalignedana kareleri = = true<br/>-UnalignedPresentationTime = = true<br/>-UnexpectedBitrate = = true
 
 **Canlı Arşiv**
 

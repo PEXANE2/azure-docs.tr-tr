@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040215"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Verizon Premium kural altyapısından Azure CDN kullanarak HTTP davranışını geçersiz kılın
 
@@ -55,7 +55,7 @@ Kural altyapısına erişmek için, önce Azure CDN yönetim sayfasına erişmek
     ![CDN yeni kural seçenekleri](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Birden çok kuralın listelenme sırası, bunların nasıl işlendiğini etkiler. Sonraki bir kural, önceki bir kural tarafından belirtilen eylemleri geçersiz kılabilir.
+   > Birden çok kuralın listelenme sırası, bunların nasıl işlendiğini etkiler. Sonraki bir kural, önceki bir kural tarafından belirtilen eylemleri geçersiz kılabilir. Örneğin, bir istek özelliğine ve tüm isteklere erişimi reddeden bir kurala göre bir kaynağa erişime izin veren bir kuralınız varsa, ikinci kural ilk olanı geçersiz kılar. Kurallar, önceki kuralları yalnızca aynı özelliklerle etkileşime girdiklerinde geçersiz kılar.
    >
 
 3. **Ad/açıklama** metin kutusuna bir ad girin.

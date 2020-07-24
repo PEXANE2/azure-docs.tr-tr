@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64709517"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042874"
 ---
 # <a name="encoding-error-codes"></a>Kodlama hata kodları
 
-Aşağıdaki tabloda, kodlama görevi yürütülürken bir hatayla karşılaşılması durumunda döndürülebilecek hata kodları listelenmektedir.  .NET kodunuzda hata ayrıntılarını almak için [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) sınıfını kullanın. REST kodunuzda hata ayrıntılarını almak için [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API kullanın.
+Aşağıdaki tabloda, kodlama görevi yürütülürken bir hatayla karşılaşılması durumunda döndürülebilecek hata kodları listelenmektedir.  .NET kodunuzda hata ayrıntılarını almak için [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) sınıfını kullanın. REST kodunuzda hata ayrıntılarını almak için [ErrorDetail](/rest/api/media/operations/errordetail) REST API kullanın.
 
 | ErrorDetail. Code | Hatanın olası nedenleri |
 | --- | --- |

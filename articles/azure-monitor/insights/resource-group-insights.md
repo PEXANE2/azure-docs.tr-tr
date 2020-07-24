@@ -7,11 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045771"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Izleyici ile kaynak gruplarını izleme (Önizleme)
 
@@ -45,10 +46,10 @@ Kaynak grubu öngörüleri sayfası, sorunları tanılamanıza yardımcı olacak
 
    |         |          |
    | ---------------- |:-----|
-   | [**Uyarılar**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Uyarılarınızı görüntüleyin, oluşturun ve yönetin. |
-   | [**Ölçümler**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Ölçüm tabanlı verilerinizi görselleştirin ve araştırın.    |
-   | [**Etkinlik günlükleri**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Azure 'da oluşan abonelik düzeyindeki olaylar.  |
-   | [**Uygulama eşlemesi**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Performans sorunlarını veya hata etkin noktalarını belirlemek için dağıtılmış uygulamanızın topolojisine gidin. |
+   | [**Uyarılar**](../platform/alerts-overview.md)      |  Uyarılarınızı görüntüleyin, oluşturun ve yönetin. |
+   | [**Ölçümler**](../platform/data-platform.md) | Ölçüm tabanlı verilerinizi görselleştirin ve araştırın.    |
+   | [**Etkinlik günlükleri**](../platform/platform-logs-overview.md) | Azure 'da oluşan abonelik düzeyindeki olaylar.  |
+   | [**Uygulama eşlemesi**](../app/app-map.md) | Performans sorunlarını veya hata etkin noktalarını belirlemek için dağıtılmış uygulamanızın topolojisine gidin. |
 
 ## <a name="failures-and-performance"></a>Başarısızlıklar ve performans
 
@@ -116,6 +117,6 @@ Kaynak grupları için Azure Izleyici, uyarı durumunu almak için Azure Izleyic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
-- [Azure Kaynak Durumu](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Izleyici uyarıları](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Izleyici çalışma kitapları](../platform/workbooks-overview.md)
+- [Azure Kaynak Durumu](../../service-health/resource-health-overview.md)
+- [Azure İzleyici Uyarıları](../platform/alerts-overview.md)

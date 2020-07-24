@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c6b3732d0a77580c27f6cc8720b414e8e49d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982178"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038996"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Azure Media Services v3 belge güncelleştirmeleri
 
@@ -26,7 +26,7 @@ Bu makale, en son Media Services v3 belge güncelleştirmeleriyle ilgilidir.
 
 ## <a name="june-2020"></a>Haziran 2020
 
-* IoT Edge canlı video analizinin önizlemesi herkese açık oldu. [IoT Edge belgelerinde canlı video analizinin](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) ayrıntılarına bakın.
+* IoT Edge canlı video analizinin önizlemesi herkese açık oldu. [IoT Edge belgelerinde canlı video analizinin](../live-video-analytics-edge/index.yml) ayrıntılarına bakın.
 * Yeni hızlı başlangıç:
 
     * [Portal kullanarak içeriği karşıya yükleme, kodlama ve akışını yapma](manage-assets-quickstart.md)
@@ -43,5 +43,5 @@ Bu makale, en son Media Services v3 belge güncelleştirmeleriyle ilgilidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel Bakış](media-services-overview.md)
+- [Genel bakış](media-services-overview.md)
 - [Media Services v3 sürüm notları](release-notes.md)

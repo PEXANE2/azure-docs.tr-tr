@@ -1,5 +1,5 @@
 ---
-title: Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin | Microsoft Docs
+title: Çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin-C# | Microsoft Docs
 description: C# (.net) kullanarak Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazına bağlanın ve bunlarla etkileşime geçin.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 226acdda94eb88825d60e35d48bfdd476ad1339c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76963980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044084"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76963980"
 
 IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için C# ' nin (.NET ile) nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenize .NET Core (2. x. x veya 3. x. x) yüklemeniz gerekir. Birden çok platform için .NET Core SDK tercih ettiğiniz sürümünü [.NET Core](https://dotnet.microsoft.com/download/dotnet-core/)' u indirin.
 
@@ -95,7 +95,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak Için C# ' de örnek
     dotnet run
     ```
 
-1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşene kaydırın. Cihazın çevrimiçi olup olmadığını `state` göstermek için kullanılan özelliğinin, _doğru_olarak raporlandığını belirten özelliği görürsünüz:
+1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşene kaydırın. `state`Cihazın çevrimiçi olup olmadığını göstermek için kullanılan özelliğinin, _doğru_olarak raporlandığını belirten özelliği görürsünüz:
 
     ```JSON
     "environmentalSensor": {
@@ -126,7 +126,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak Için C# ' de örnek
     dotnet run
     ```
 
-1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. 42 'nin yeni `environmentalSensor` parlaklık değerini görmek için bileşene kaydırın.
+1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. `environmentalSensor`42 'nin yeni parlaklık değerini görmek için bileşene kaydırın.
 
     ```json
         "environmentalSensor": {
@@ -162,7 +162,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak Için C# ' de örnek
     cd ..\GetDigitalTwin
     dotnet run
     ```
-3. _Hizmet_ terminali çıkışında, `environmentalSensor` bileşen altında, güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
+3. _Hizmet_ terminali çıkışında, bileşen altında, `environmentalSensor` Güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
     
     ```json
     "environmentalSensor": {

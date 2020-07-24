@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f42361df438a434548b3bc9394c007ef8d4c6eb0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530397"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038979"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure isteğe bağlı medya kodlayıcılarını karşılaştırma  
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda Media Encoder Standard (MES) ve Media Encoder Premium Workf
 |Yetenek|Media Encoder Standard|Media Encoder Premium İş Akışı|
 |---|---|---|
 |Kodlama sırasında koşullu mantık Uygula<br/>(örneğin, giriş HD ise, 5,1 ses kodlayın)|Hayır|Evet|
-|Kapalı açıklamalı alt yazı|No|[Evet](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
+|Kapalı açıklamalı alt yazı|Hayır|[Evet](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
 |[Dolby &reg; Professional ses yüksekliği düzeltmesi](https://professional.dolby.com/product/broadcast/vm600/)<br/> Iletişim zekası ile&trade;|Hayır|Evet|
 |Tarama, ters telesine|Temel|Yayın kalitesi|
 |Siyah kenarlıkları Algıla ve Kaldır <br/>(pillarkutular, harf kutuları)|Hayır|Evet|
@@ -62,7 +62,7 @@ Aşağıdaki tabloda Media Encoder Standard (MES) ve Media Encoder Premium Workf
 | AVI (sıkıştırılmamış 8bit/10bit) |Yes |Yes |
 | 3GPP/3GPP2 |Evet |Hayır |
 | Kesintisiz Akış dosya biçimi (pff 1,3) |Evet |Hayır |
-| [Microsoft dijital video kaydı (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Evet |Hayır |
+| [Microsoft dijital video kaydı (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) |Evet |Hayır |
 | Matroska/webd |Evet |Hayır |
 | QuickTime (.mov) |Evet |Hayır |
 
@@ -77,37 +77,37 @@ Aşağıdaki tabloda Media Encoder Standard (MES) ve Media Encoder Premium Workf
 | MPEG-1 |Yes |Yes |
 | Windows Media videosu/VC-1 |Yes |Yes |
 | Canopus HQ/HQX |Hayır |Hayır |
-| MPEG-4 Bölüm 2 |Evet |No |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |Evet |No |
-| Apple ProRes 422 |Evet |No |
-| Apple ProRes 422 LT |Evet |No |
-| Apple ProRes 422 HQ |Evet |No |
-| Apple ProRes Proxy |Evet |No |
-| Apple ProRes 4444 |Evet |No |
-| Apple ProRes 4444 XQ |Evet |No |
+| MPEG-4 Bölüm 2 |Evet |Hayır |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |Evet |Hayır |
+| Apple ProRes 422 |Evet |Hayır |
+| Apple ProRes 422 LT |Evet |Hayır |
+| Apple ProRes 422 HQ |Evet |Hayır |
+| Apple ProRes Proxy |Evet |Hayır |
+| Apple ProRes 4444 |Evet |Hayır |
+| Apple ProRes 4444 XQ |Evet |Hayır |
 | HEVC/H. 265|Ana profil|Ana ve ana 10 profili|
 
 ## <a name="input-audio-codecs"></a>Giriş sesi codec bileşenleri
 | Giriş Ses Codec Bileşenleri | Media Encoder Standard | Media Encoder Premium İş Akışı |
 | --- | --- | --- |
-| AES (SMPTE 331M ve 302M, AES3-2003) |No |Evet |
-| Dolby &reg; E |No |Evet |
-| Dolby &reg; Digital (AC3) |No |Evet |
-| Dolby &reg; Digital Plus (E-AC3) |No |Evet |
+| AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |Evet |
+| Dolby &reg; E |Hayır |Evet |
+| Dolby &reg; Digital (AC3) |Hayır |Evet |
+| Dolby &reg; Digital Plus (E-AC3) |Hayır |Evet |
 | AAC (AAC-LC, AAC-HE ve AAC-HEv2; 5.1’e kadar) |Yes |Yes |
 | MPEG Katman 2 |Yes |Yes |
 | MP3 (MPEG-1 Ses Katmanı 3) |Yes |Yes |
 | Windows Media Ses |Yes |Yes |
 | WAV/PCM |Yes |Yes |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Evet |No |
-| [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Evet |No |
-| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Evet |No |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Evet |Hayır |
+| [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Evet |Hayır |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Evet |Hayır |
 
 ## <a name="output-containerfile-formats"></a>Çıkış kapsayıcısı/dosya biçimleri
 | Çıkış kapsayıcısı/dosya biçimleri | Media Encoder Standard | Media Encoder Premium İş Akışı |
 | --- | --- | --- |
-| Adobe &reg; Flash &reg; F4V |No |Evet |
-| MXF (OP1a, XDCAM ve AS02) |No |Evet |
+| Adobe &reg; Flash &reg; F4V |Hayır |Evet |
+| MXF (OP1a, XDCAM ve AS02) |Hayır |Evet |
 | DPP (AS11 dahil) |Hayır |Evet |
 | GXF |Hayır |Evet |
 | MPEG-4/MP4 |Yes |Yes |

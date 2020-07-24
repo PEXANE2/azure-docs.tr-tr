@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f2c823b0932db42876be6ab04ebcd82783729aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097c894594987e92038beeaf4b17a3e67538fdad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046056"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Azure AD 'den kapsamlı eşitlemeyi Azure Active Directory Domain Services olarak yapılandırma
 
@@ -39,11 +40,11 @@ Aşağıdaki tabloda kapsamlı eşitlemenin nasıl kullanılacağı özetlenmekt
 
 Kapsamlı eşitleme ayarlarını yapılandırmak için Azure portal veya PowerShell kullanın:
 
-| Eylem | | |
-|--|--|--|
-| Yönetilen bir etki alanı oluşturun ve kapsamlı eşitlemeyi yapılandırın | [Azure portalındaki](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitlemeyi değiştirme | [Azure portalındaki](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitlemeyi devre dışı bırak | [Azure portalındaki](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Eylem | Kullanın<br>Azure portalı | Kullanın<br>PowerShell |
+| ------ | ------------------- | ----------------- |
+| Yönetilen bir etki alanı oluşturun ve kapsamlı eşitlemeyi yapılandırın | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitlemeyi değiştirme | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitlemeyi devre dışı bırak | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Aşağıdaki noktalara dikkat edilmelidir:

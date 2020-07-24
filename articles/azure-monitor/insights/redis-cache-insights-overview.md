@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045863"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet (Önizleme)
 
@@ -79,7 +79,7 @@ Mavi renkle vurgulanmış Redsıs kaynak adı için Azure önbelleğini seçtiğ
 - **İsabetsiz Önbellek Okuma Sayısı**
 - **Hata Sayısı (En Fazla)**
 
-### <a name="operations"></a>İşlemler
+### <a name="operations"></a>Operations
 
 Sayfanın üst kısmında **işlemler** ' i seçtiğinizde, çalışma kitabı şablonunun **işlemler** tablosu açılır. Şu sütunları gösterir:
 
@@ -120,7 +120,7 @@ Sayfanın üst kısmında bulunan **hataların** seçtiğinizde, çalışma kita
 
 ### <a name="metric-definitions"></a>Ölçüm tanımları
 
-Bu çalışma kitaplarını oluşturan ölçüm tanımlarının tam listesi için, [kullanılabilir ölçümler ve raporlama aralıklarıyla ilgili makaleye](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)göz atın.
+Bu çalışma kitaplarını oluşturan ölçüm tanımlarının tam listesi için, [kullanılabilir ölçümler ve raporlama aralıklarıyla ilgili makaleye](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals)göz atın.
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>Redsıs kaynağı için bir Azure önbelleğinden görüntüleme
 
@@ -156,7 +156,7 @@ Azure Redis Cache için **genel bakış** çalışma kitabında, size erişim sa
 
 ## <a name="pin-export-and-expand"></a>Sabitle, dışarı aktar ve Genişlet
 
-Herhangi bir ölçüm bölümünü bir [Azure panosuna](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)sabitlemek için bölümün sağ üst kısmında raptiye simgesini seçin.
+Herhangi bir ölçüm bölümünü bir [Azure panosuna](../../azure-portal/azure-portal-dashboards.md)sabitlemek için bölümün sağ üst kısmında raptiye simgesini seçin.
 
 ![Raptiye simgesi vurgulanmış bir ölçüm bölümü](./media/cosmosdb-insights-overview/pin.png)
 
@@ -186,6 +186,6 @@ Sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sorunları algılamaya yardımcı olan otomatik uyarılar ayarlamak için [ölçüm uyarılarını](../platform/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications.md) yapılandırın.
+* Sorunları algılamaya yardımcı olan otomatik uyarılar ayarlamak için [ölçüm uyarılarını](../platform/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications-portal.md) yapılandırın.
 
 * Çalışma kitaplarının desteklediği senaryoları, raporları yazmak veya özelleştirmek ve [Azure izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu inceleyerek daha fazla bilgi edinin.

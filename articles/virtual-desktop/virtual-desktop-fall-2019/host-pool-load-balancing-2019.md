@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü konak havuzu yük dengelemesi-Azure
-description: Windows sanal masaüstü ortamı için konak havuzu Yük Dengeleme yöntemleri.
+title: Windows sanal masaüstü konak havuzu Yük Dengelemesi (sonbahar 2019)-Azure
+description: Windows sanal masaüstü (sonbahar 2019 sürümü) ortamı için konak havuzu Yük Dengeleme yöntemleri hakkında bilgi edinin.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2bfbd580d0e114cf4a135879340745107183b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046270"
 ---
-# <a name="host-pool-load-balancing-methods"></a>Ana bilgisayar havuzu yük dengeleme yöntemleri
+# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Konak havuzu Yük Dengeleme Yöntemleri (sonbahar 2019 sürümü)
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../host-pool-load-balancing.md)bakın.
