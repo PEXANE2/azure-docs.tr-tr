@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072028"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services kullanarak erişim denetimiyle içerik koruma sistemi tasarlama 
 
@@ -147,12 +148,12 @@ Aşağıdaki tabloda eşleme gösterilmektedir.
 
 | **Yapı taşı** | **Teknoloji** |
 | --- | --- |
-| **Oynatıcı** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **Player** (Oyuncu) |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **Kimlik sağlayıcısı (ıDP)** |Azure Active Directory (Azure AD) |
 | **Güvenlik belirteci hizmeti (STS)** |Azure AD |
 | **DRM koruması iş akışı** |Dinamik koruma Media Services |
 | **DRM lisansı verme** |* Media Services lisans teslimi (PlayReady, Widevine, FairPlay) <br/>* Axinom lisans sunucusu <br/>* Özel PlayReady lisans sunucusu |
-| **Kaynak** |Media Services akış uç noktası |
+| **Tıdır** |Media Services akış uç noktası |
 | **Anahtar yönetimi** |Başvuru uygulamasında gerekli değildir |
 | **İçerik yönetimi** |Bir C# konsol uygulaması |
 
@@ -226,7 +227,7 @@ Daha fazla bilgi için, [Azure Media Services ve dinamik şifrelemede JWT belirt
 Azure AD hakkında bilgi için:
 
 * Geliştirici bilgilerini [Azure Active Directory geliştirici kılavuzunda](../../active-directory/azuread-dev/v1-overview.md)bulabilirsiniz.
-* Yönetici bilgilerini, [Azure AD kiracı dizininizi yönetme](../../active-directory/fundamentals/active-directory-administer.md)bölümünde bulabilirsiniz.
+* Yönetici bilgilerini, [Azure AD kiracı dizininizi yönetme](../../active-directory/fundamentals/active-directory-whatis.md)bölümünde bulabilirsiniz.
 
 ### <a name="some-issues-in-implementation"></a>Uygulamadaki bazı sorunlar
 Uygulama sorunlarıyla ilgili yardım için aşağıdaki sorun giderme bilgilerini kullanın.
@@ -295,7 +296,7 @@ Anahtar geçişi imzalama, uygulamanızda dikkate alınması gereken önemli bir
 
 Azure AD, Azure AD kullanan uygulamalar arasında güven sağlamak için endüstri standartları kullanır. Özellikle, Azure AD ortak ve özel anahtar çiftinden oluşan bir imzalama anahtarı kullanır. Azure AD Kullanıcı hakkında bilgi içeren bir güvenlik belirteci oluşturduğunda, uygulamaya geri gönderilmeden önce Azure AD tarafından özel bir anahtarla imzalanır. Belirtecin geçerli olduğunu ve Azure AD 'den geldiğini doğrulamak için, uygulamanın belirtecin imzasını doğrulaması gerekir. Uygulama, kiracının Federasyon meta veri belgesinde bulunan Azure AD tarafından kullanıma sunulan ortak anahtarı kullanır. Bu ortak anahtar ve ondan türetilen imzalama anahtarı, Azure AD 'deki tüm kiracılar için kullanılan aynı.
 
-Azure AD anahtar geçişi hakkında daha fazla bilgi için bkz. [Azure AD 'de anahtar geçişi imzalama hakkında önemli bilgiler](../../active-directory/active-directory-signing-key-rollover.md).
+Azure AD anahtar geçişi hakkında daha fazla bilgi için bkz. [Azure AD 'de anahtar geçişi imzalama hakkında önemli bilgiler](../../active-directory/develop/active-directory-signing-key-rollover.md).
 
 [Ortak-özel anahtar çifti](https://login.microsoftonline.com/common/discovery/keys/)arasında:
 
@@ -328,7 +329,7 @@ Bir Web uygulamasının, [OAuth 2,0 istemci kimlik bilgileri verme Ile uygulama 
 * Azure AD uygulamanın kimliğini doğrular ve Web API 'sini çağırmak için kullanılan bir JWT erişim belirteci döndürür.
 * HTTPS üzerinden Web uygulaması, Web API 'sine isteğin "Authorization" başlığına sahip JWT dizesini eklemek için döndürülen JWT erişim belirtecini kullanır. Web API 'SI daha sonra JWT 'yi doğrular. Doğrulama başarılı olursa, istenen kaynağı döndürür.
 
-Bu uygulama kimliği akışında, Web API 'SI Web uygulamasının kimliğinin doğrulandığını güvendiğinde. Bu nedenle, bu modele güvenilen alt sistem denir. [Yetkilendirme akış diyagramı](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) , yetkilendirme kodu-verme akışının nasıl çalıştığını açıklar.
+Bu uygulama kimliği akışında, Web API 'SI Web uygulamasının kimliğinin doğrulandığını güvendiğinde. Bu nedenle, bu modele güvenilen alt sistem denir. [Yetkilendirme akış diyagramı](../../active-directory/azuread-dev/v1-protocols-oauth-code.md) , yetkilendirme kodu-verme akışının nasıl çalıştığını açıklar.
 
 Belirteç kısıtlaması ile lisans alımı aynı güvenilir alt sistem düzenine uyar. Media Services içindeki lisans teslimi hizmeti Web API kaynağıdır veya bir Web uygulamasının erişmesi gereken "arka uç kaynağıdır". Erişim belirteci nerede?
 
@@ -405,7 +406,7 @@ Azure tarafından yalnızca Microsoft hesabı kullanıcıları tarafından eriş
 
 Azure AD Microsoft hesabı etki alanına güventiğinden, aşağıdaki etki alanlarından herhangi bir hesabı özel Azure AD kiracısına ekleyebilir ve hesabı kullanarak oturum açabilirsiniz:
 
-| **Etki alanı adı** | **Domain** |
+| **Etki alanı adı** | **Etki alanı** |
 | --- | --- |
 | **Özel Azure AD kiracı etki alanı** |somename.onmicrosoft.com |
 | **Kurumsal etki alanı** |microsoft.com |

@@ -4,16 +4,17 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: db1814c0a27ac6d61c7353a2c66cb5a1a72688d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a17d2de24aadfbab218d2b28a157f19e2e845fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82801612"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073556"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
 
-Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
+Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](../../api-management/api-management-key-concepts.md)için geçerlidir.
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Aboneliğinizdeki otomatik ölçeklendirme ayarlarını bulma
 
@@ -44,7 +45,7 @@ Her kaynak için geçerli örnek sayısını ve otomatik ölçeklendirme durumun
   ![Yeni Web uygulaması için ölçek ayarı][5]
 1. Ölçek ayarı için bir ad girin ve ardından **Kural Ekle**' ye tıklayın. Sağ tarafta bağlam bölmesi olarak açan ölçek kuralı seçeneklerine dikkat edin. Bu, varsayılan olarak, kaynağın CPU yüzdesi yüzde 70 ' ü aşarsa, örnek sayınız 1 ' i ölçeklendirmeye yönelik seçeneği ayarlar. Varsayılan değerlerinde bırakın ve **Ekle**' ye tıklayın.
   ![Web uygulaması için ölçek ayarı oluşturma][6]
-1. Şimdi ilk ölçek kuralınızı oluşturdunuz. UX en iyi uygulamaları önerdiğine ve "kuralda en az bir ölçeğe sahip olmanız önerilir." Bunu yapmak için:
+1. Şimdi ilk ölçek kuralınızı oluşturdunuz. UX en iyi uygulamaları önerdiğine ve "kuralda en az bir ölçeğe sahip olmanız önerilir." Bunun için:
 
     a. **Kural ekle**'ye tıklayın.
 
@@ -120,7 +121,7 @@ Artık ölçeklendirmek istediğiniz örneklerin sayısını el ile ayarlayabili
 [1]:https://portal.azure.com
 [2]: ./media/autoscale-get-started/azure-monitor-launch.png
 [3]: ./media/autoscale-get-started/discover-autoscale-azure-monitor.png
-[4]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
+[4]: ../../app-service/app-service-web-get-started-dotnet.md
 [5]: ./media/autoscale-get-started/scale-setting-new-web-app.png
 [6]: ./media/autoscale-get-started/create-scale-setting-web-app.png
 [7]: ./media/autoscale-get-started/scale-in-recommendation.png
@@ -131,4 +132,3 @@ Artık ölçeklendirmek istediğiniz örneklerin sayısını el ile ayarlayabili
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
-

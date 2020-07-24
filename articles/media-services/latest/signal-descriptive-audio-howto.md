@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99e0a78ea1aed0ecf08618c919e7949c5645de5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72392195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072078"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Sinyal açıklayıcı ses parçaları
 
@@ -27,14 +27,14 @@ Bu makalede, bir videoyu kodlama, çıktı varlığına açıklayıcı ses içer
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md).
-- [Azure CLI Ile Access Azure Media Services API 'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
+- [Media Services hesabı oluşturun](./create-account-howto.md).
+- [Azure CLI Ile Access Azure Media Services API 'sindeki](./access-api-howto.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
 - [Dinamik paketlemeyi](dynamic-packaging-overview.md)gözden geçirin.
 - [Karşıya yükleme, kodlama ve akış videoları](stream-files-tutorial-with-api.md) öğreticisini gözden geçirin.
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bir giriş varlığı oluşturma ve içine yerel dosya yükleme 
 
-**CreateInputAsset** işlevi yeni bir giriş [Varlığı](https://docs.microsoft.com/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu **varlık** , kodlama işinize giriş olarak kullanılır. Media Services v3 'de, bir **işin** girişi bir **varlık**olabilir ya da HTTPS URL 'leri aracılığıyla Media Services hesabınız için kullanılabilir hale getirebilmeniz gereken içerik olabilir. 
+**CreateInputAsset** işlevi yeni bir giriş [Varlığı](/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu **varlık** , kodlama işinize giriş olarak kullanılır. Media Services v3 'de, bir **işin** girişi bir **varlık**olabilir ya da HTTPS URL 'leri aracılığıyla Media Services hesabınız için kullanılabilir hale getirebilmeniz gereken içerik olabilir. 
 
 HTTPS URL 'sinden kodlama hakkında bilgi edinmek istiyorsanız [Bu makaleye](job-input-from-http-how-to.md) bakın.  
 
@@ -43,7 +43,7 @@ Media Services v3’te dosyaları karşıya yüklemek için Azure Depolama API�
 Aşağıdaki işlev şu eylemleri gerçekleştirir:
 
 * Bir **varlık** oluşturur 
-* [Depolama alanındaki varlığın kapsayıcısına](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) yazılabilir bir [SAS URL 'si](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) alır
+* [Depolama alanındaki varlığın kapsayıcısına](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container) yazılabilir bir [SAS URL 'si](../../storage/common/storage-sas-overview.md) alır
 * SAS URL’sini kullanarak dosyayı depolamadaki kapsayıcıya yükler
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -52,7 +52,7 @@ Oluşturulan giriş varlığının adını diğer yöntemlere geçirmeniz gereki
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Kodlama işinin sonucunu depolamak için bir çıkış varlığı oluşturma
 
-Çıktı [Varlığı](https://docs.microsoft.com/rest/api/media/assets), kodlama işinizin sonucunu depolar. Aşağıdaki işlev bir çıkış varlığının nasıl oluşturulacağını gösterir.
+Çıktı [Varlığı](/rest/api/media/assets), kodlama işinizin sonucunu depolar. Aşağıdaki işlev bir çıkış varlığının nasıl oluşturulacağını gösterir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
@@ -62,7 +62,7 @@ Bu makale söz konusu olduğunda, `outputAsset.Name` değeri `SubmitJobAsync` ve
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Karşıya yüklenen dosyayı kodlayan bir dönüşüm ve iş oluşturma
 
-Media Services’te içerik kodlarken veya işlerken, kodlama ayarlarını bir tarif olarak ayarlamak yaygın bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni işler göndererek, bu tarifi kitaplığınızdaki tüm videolarınıza uygulayacaksanız. Media Services içinde tarif, **Dönüşüm** olarak adlandırılır. Daha fazla bilgi için bkz. [dönüşümler ve işler](transform-concept.md). Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar. 
+Media Services’te içerik kodlarken veya işlerken, kodlama ayarlarını bir tarif olarak ayarlamak yaygın bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni işler göndererek, bu tarifi kitaplığınızdaki tüm videolarınıza uygulayacaksanız. Media Services içinde tarif, **Dönüşüm** olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve İşler](./transforms-jobs-concept.md) konusuna bakın. Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar. 
 
 Aşağıdaki örnek, bir dönüşüm (yoksa, yoksa) oluşturur.
 
@@ -202,14 +202,14 @@ Kodlama işiniz bittiğinde, çıkış varlığı kodlama işi tarafından oluş
 
 ## <a name="get-a-streaming-locator"></a>Akış Bulucu alma
 
-Kodlama tamamlandıktan sonra sıradaki adım, çıktı Varlığındaki videoyu yürütmek için istemcilerin kullanımına sunmaktır. Bunu iki adımda gerçekleştirebilirsiniz: ilk olarak, bir [akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators)oluşturun ve ikinci olarak, istemcilerin kullanabileceği akış URL 'lerini oluşturun. 
+Kodlama tamamlandıktan sonra sıradaki adım, çıktı Varlığındaki videoyu yürütmek için istemcilerin kullanımına sunmaktır. Bunu iki adımda gerçekleştirebilirsiniz: ilk olarak, bir [akış Bulucu](/rest/api/media/streaminglocators)oluşturun ve ikinci olarak, istemcilerin kullanabileceği akış URL 'lerini oluşturun. 
 
 **Akış Bulucu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **akış Bulucu** , API çağrılarını yaptıktan hemen sonra geçerli olur ve isteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadıkça silinene kadar sürer. 
 
-Bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluştururken istenen **StreamingPolicyName** değerini belirtmeniz gerekir. Bu örnekte, temiz (şifrelenmemiş) içeriğin akışını yapacağınız için önceden tanımlı temiz akış ilkesi **PredefinedStreamingPolicy.ClearStreamingOnly** kullanılır.
+Bir [StreamingLocator](/rest/api/media/streaminglocators) oluştururken istenen **StreamingPolicyName** değerini belirtmeniz gerekir. Bu örnekte, temiz (şifrelenmemiş) içeriğin akışını yapacağınız için önceden tanımlı temiz akış ilkesi **PredefinedStreamingPolicy.ClearStreamingOnly** kullanılır.
 
 > [!IMPORTANT]
-> Özel bir [akış ilkesi](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Medya hizmeti hesabınızın akış Ilkesi girişi sayısı için bir kotası vardır. Her bir akış bulucu için yeni bir akış Ilkesi oluşturmamalısınız.
+> Özel bir [akış ilkesi](/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Medya hizmeti hesabınızın akış Ilkesi girişi sayısı için bir kotası vardır. Her bir akış bulucu için yeni bir akış Ilkesi oluşturmamalısınız.
 
 Aşağıdaki kod, benzersiz bir locatorName ile işlevi çağırdığınızı varsayar.
 
@@ -219,7 +219,7 @@ Bu konudaki örnek akışı ele alırken, aşamalı indirme yoluyla video teslim
 
 ### <a name="get-streaming-urls"></a>Akış URL'leri alma
 
-Artık [akış bulucunun](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturulduğuna göre, **Getstreamingurls**Içinde gösterildiği gibi akış URL 'lerini alabilirsiniz. URL oluşturmak için, [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
+Artık [akış bulucunun](/rest/api/media/streaminglocators) oluşturulduğuna göre, **Getstreamingurls**Içinde gösterildiği gibi akış URL 'lerini alabilirsiniz. URL oluşturmak için, [akış uç noktası](/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
 
 > [!NOTE]
 > Bu yöntemde, çıkış varlığı için **akış bulucuyu** oluştururken kullanılan locatorname öğesine ihtiyacınız vardır.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: b975ee8cebdac3855c3fca88b20c01145d11baeb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072794"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mosyon ve avantajlar
 
@@ -101,13 +101,13 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Ana düğüm yapılandırması|d/y, CPU, disk vb.|
 |Veri düğümleri yapılandırması|d/y, CPU, disk vb.|
 |Kenar düğümleri yapılandırması|d/y, CPU, disk vb.|
-|Bu şifreleme?|Evet|
+|Bu şifreleme?|Yes|
 |Yüksek Kullanılabilirlik|, Metasha, meta veri deposu HA|
 |Olağanüstü durum kurtarma/yedekleme|Yedekleme kümesi mi?|  
 |Kümeye bağımlı sistemler|SQL Server, Teradata, Power BI, MongoDB|
 |Üçüncü taraf tümleştirmeler|Tableau, Gridkazanç, Qubole, bilgiler, splunk|
 |**Konu**: **güvenlik**|||
-|Çevre güvenliği|Güvenlik Duvarları|
+|Çevre güvenliği|Güvenlik duvarları|
 |Küme kimlik doğrulama & yetkilendirmesi|Active Directory, ambarı, Cloudera Yöneticisi, kimlik doğrulaması yok|
 |Access Control|  El ile, SSH kullanıcıları|
 |Hive kimlik doğrulama & yetkilendirmesi|Sentry, LDAP, Kerberos, Ranger ile AD|
@@ -163,12 +163,12 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 
 ### <a name="azure-requirements-questionnaire"></a>Azure gereksinimleri Anketi
 
-|**Konu**: **altyapı** |||
-|---|---|---|
 |**Soru**|**Örnek**|**Yanıt**|
+|---|---|---|
+|**Konu**: **altyapı** |||
 | Tercih edilen bölge|ABD Doğu||
-|VNet tercih edildi mi?|Evet||
-|HA/DR gerekli mi?|Evet||
+|VNet tercih edildi mi?|Yes||
+|HA/DR gerekli mi?|Yes||
 |Diğer bulut hizmetleriyle tümleştirme yapılsın mı?|ADF, CosmosDB||
 |**Konu**: **veri taşıma**  |||
 |İlk yükleme tercihi|DistCp, Data Box, ADF, WANDisco||
@@ -177,25 +177,25 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |**Konu**: **izleme & uyarma** |||
 |Azure Izleme & uyarı, üçüncü taraf izlemeyi tümleştirme karşılaştırması|Azure Izleme & uyarma kullanma||
 |**Konu**: **Güvenlik tercihleri** |||
-|Özel ve korunan veri ardışık düzeni?|Evet||
-|Etki alanına katılmış küme (ESP)?|     Evet||
-|Şirket Içi AD Eşitleme buluta mı?|     Evet||
+|Özel ve korunan veri ardışık düzeni?|Yes||
+|Etki alanına katılmış küme (ESP)?|     Yes||
+|Şirket Içi AD Eşitleme buluta mı?|     Yes||
 |Eşitlenecek AD kullanıcılarının sayısı?|          100||
-|Parolalar buluta eşitlensin mi?|    Evet||
-|Yalnızca bulut kullanıcıları mı?|                 Evet||
+|Parolalar buluta eşitlensin mi?|    Yes||
+|Yalnızca bulut kullanıcıları mı?|                 Yes||
 |MFA gerekli mi?|                       Hayır|| 
-|Veri yetkilendirme gereksinimleri?|  Evet||
-|Rol tabanlı Access Control?|        Evet||
-|Denetim gerekli mi?|                  Evet||
-|Bekleyen veri şifrelemesi|          Evet||
-|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Evet||
+|Veri yetkilendirme gereksinimleri?|  Yes||
+|Rol tabanlı Access Control?|        Yes||
+|Denetim gerekli mi?|                  Yes||
+|Bekleyen veri şifrelemesi|          Yes||
+|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Yes||
 |**Konu**: **yeniden mimari tercihleri** |||
 |Tek küme, belirli küme türlerine karşı|Belirli küme türleri||
 |Birlikte bulunan depolama ve uzak depolama karşılaştırması|Uzak depolama||
 |Veriler uzaktan depolandığından daha küçük küme boyutu var mı?|Daha küçük küme boyutu||
 |Tek bir büyük küme yerine birden çok daha küçük küme kullanın mi?|Birden çok daha küçük küme kullanın||
-|Uzak bir meta veri deposu mı kullanıyorsunuz?|Evet||
-|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Evet||
+|Uzak bir meta veri deposu mı kullanıyorsunuz?|Yes||
+|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Yes||
 |İş yüklerini kaldırma|Hive işlerini Spark işleriyle değiştirme||
 |Veri düzenleme için ADF kullanılsın mı?|Hayır||
 

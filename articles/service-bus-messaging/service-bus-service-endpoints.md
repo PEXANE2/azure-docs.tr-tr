@@ -3,17 +3,19 @@ title: Azure Service Bus için sanal ağ hizmet uç noktalarını yapılandırma
 description: Bu makalede bir sanal ağa Microsoft. ServiceBus hizmet uç noktası ekleme hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 48d7f1783f197804e12a8c2d20a0c46b6efd2160
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071320"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Azure Service Bus için sanal ağ hizmet uç noktalarını yapılandırma
 
 [Sanal ağ (VNet) hizmet uç noktaları][vnet-sep] ile Service Bus tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
 
-En az bir sanal ağ alt ağ hizmeti uç noktasına bağlanacak şekilde yapılandırıldıktan sonra, ilgili Service Bus ad alanı artık herhangi bir yerden trafiği kabul etmez, ancak yetkilendirilmiş sanal ağ (ler) i. Sanal ağ perspektifinden bir Service Bus ad alanını bir hizmet uç noktasına bağlamak, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tüneli yapılandırır.
+En az bir sanal ağ alt ağ hizmeti uç noktasına bağlanacak şekilde yapılandırıldıktan sonra ilgili Service Bus ad alanı artık her yerden trafiği kabul etmez, ancak isteğe bağlı olarak belirli internet IP adreslerinden gelen trafiği kabul etmez. Sanal ağ perspektifinden bir Service Bus ad alanını bir hizmet uç noktasına bağlamak, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tüneli yapılandırır.
 
 Sonuç olarak, alt ağa ve ilgili Service Bus ad alanıyla ilişkili olan iş yükleri arasında özel ve yalıtılmış bir ilişki vardır. Bu, bir genel IP aralığında yer alan mesajlaşma hizmeti uç noktasının observable ağ adresi artma.
 
@@ -93,7 +95,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
 > ```json
 > "defaultAction": "Allow"
 > ```
-> -
+> şöyle değiştirin:
 > ```json
 > "defaultAction": "Deny"
 > ```

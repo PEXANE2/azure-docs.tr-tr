@@ -10,11 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560170"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072216"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
@@ -32,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynakları temizlemek için SILME isteklerini kullanma 
 > * Dağıtılan modellere puan vermek için anahtar tabanlı yetkilendirmeyi kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yönetici haklarına sahip olduğunuz bir **Azure aboneliği** . Bu tür bir aboneliğiniz yoksa [ücretsiz veya ücretli kişisel aboneliği](https://aka.ms/AMLFree) deneyin
 - Bir [Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -47,7 +48,7 @@ Yönetim REST isteklerinin kimliği OAuth2 örtük bir akışta doğrulanır. Bu
 - İstemci KIMLIĞINIZ (oluşturulan belirteçle ilişkilendirilecektir)
 - İstemci gizli anahtarı (korunması gerekir)
 
-[Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)bölümünde anlatıldığı şekilde hizmet sorumlunuzu oluşturma yanıtından bu değerlere sahip olmanız gerekir. Şirket aboneliğinizi kullanıyorsanız, hizmet sorumlusu oluşturma izniniz olmayabilir. Bu durumda, [ücretsiz ya da ücretli bir kişisel abonelik](https://aka.ms/AMLFree)kullanmanız gerekir.
+Hizmet sorumlunuzu oluşturma yanıtından bu değerlerin olması gerekir. Bu değerleri almak [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)bölümünde ele alınmıştır. Şirket aboneliğinizi kullanıyorsanız, hizmet sorumlusu oluşturma izniniz olmayabilir. Bu durumda, [ücretsiz ya da ücretli bir kişisel abonelik](https://aka.ms/AMLFree)kullanmanız gerekir.
 
 Bir belirteci almak için:
 
@@ -199,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Yolun, `history/v1.0` modelleri listelemeye çalışırken denemeleri listelendiğine dikkat edin `modelmanagement/v1.0` . REST API, her biri ayrı bir yol ile birkaç işlem grubuna bölünmüştür. Aşağıdaki bağlantılardan API başvuru belgeleri, çeşitli işlemler için işlemleri, parametreleri ve yanıt kodlarını listeler.
+Yolun, `history/v1.0` modelleri listelemeye çalışırken denemeleri listelendiğine dikkat edin `modelmanagement/v1.0` . REST API, her biri ayrı bir yol ile birkaç işlem grubuna bölünmüştür. 
 
-|Alan|Yol|Başvuru|
-|-|-|-|
-|Artifacts|yapıt/v 2.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Veri depolama alanları|veri deposu/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hiper parametre ayarı|Hiper sürücü/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modeller|modelmanagement/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Çalıştırma geçmişi|yürütme/v 1.0/ve History/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Alan|Yol|
+|-|-|
+|Artifacts|yapıt/v 2.0/|
+|Veri depolama alanları|veri deposu/v 1.0/|
+|Hiper parametre ayarı|Hiper sürücü/v 1.0/|
+|Modeller|modelmanagement/v 1.0/|
+|Çalıştırma geçmişi|yürütme/v 1.0/ve History/v 1.0/|
 
 Genel örüntüsünün kullanıldığı REST API keşfedebilirsiniz:
 

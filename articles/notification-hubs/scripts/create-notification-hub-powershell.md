@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
-ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 857210efdc5740defcde4187b7b04cce55215325
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071609"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>PowerShell kullanarak bir Azure Notification Hub 'ı oluşturma
 
@@ -26,7 +27,7 @@ Bu örnek PowerShell betiği, örnek bir Azure Bildirim Hub 'ı oluşturur.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği** -Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -56,4 +57,4 @@ Bu betik şu komutları kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/).

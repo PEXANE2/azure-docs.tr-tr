@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070690"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Sanal dizininizin bir yedeklemesinden kopyalayın
 
@@ -42,7 +42,7 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam**'a tıklayın.
+   c.    **Tamam** düğmesine tıklayın.
    
    ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. **Kopyala** dikey penceresinde **hedef ayarlar** ' a tıklayın ve ardından aşağıdakileri yapın:
@@ -57,7 +57,7 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
    
    e.    Bu paylaşıma yönelik yöneticileri atayın. Kopyalama işlemi tamamlandıktan sonra, dosya Gezgini ile paylaşma özelliklerini değiştirebileceksiniz.
    
-   f.    **Tamam**'a tıklayın.
+   f.    **Tamam** düğmesine tıklayın.
    
    ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -82,7 +82,7 @@ Bir yedekten kopyalamak için, Azure portal, bir paylaşımın kopyalanırken ol
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam**'a tıklayın.
+   c.    **Tamam** düğmesine tıklayın.
    
    ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. **Kopyala** dikey penceresinde, **hedef birim ayarları** ' na tıklayın ve ardından aşağıdakileri yapın::
@@ -96,7 +96,7 @@ Bir yedekten kopyalamak için, Azure portal, bir paylaşımın kopyalanırken ol
    d. **Bağlı konaklar**için **Seç**' e tıklayın.
    
    ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. **Bağlı konaklar** dikey penceresinde, var olan bir ACR arasından seçim yapın veya yeni bir ACR ekleyin. Yeni bir ACR eklemek için bir ACR adı ve ana bilgisayar ıQN 'si sağlamanız gerekir. **Seç**' e tıklayın.
+4. **Bağlı konaklar** dikey penceresinde, var olan bir ACR arasından seçim yapın veya yeni bir ACR ekleyin. Yeni bir ACR eklemek için bir ACR adı ve ana bilgisayar ıQN 'si sağlamanız gerekir. **Seç**’e tıklayın.
    
    ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. Bir kopyalama işi başlatmak için **Kopyala** ' ya tıklayın.
@@ -127,7 +127,7 @@ Her paylaşımda en son yedeklemeleri içeren bir *. Backups* klasörü bulunur.
    * Cihaz adı olarak adlandırılan **Zamanlanmış yedeklemeler** - &lt; &gt; YYYYMMDD-SSMMSS-UTC.
    * Ad-hoc-YYYYMMDD-HHMMSS-UTC olarak adlandırılan **el ile yedeklemeler** .
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![. Backups klasörünü gösteren dosya Gezgini 'nin ekran görüntüsü. Bu klasörün içinde el ile yedeklemeler klasörü seçilidir.](./media/storsimple-virtual-array-clone/image14.png)
 
 2. Silinen dosyanın en son sürümünü içeren yedeği belirler. Klasör adı, önceki durumların her birinde UTC zaman damgası içerse de, klasörün oluşturulduğu zaman, yedeklemenin başlatıldığı gerçek cihaz zamanı olur. Yedeklemeleri bulmak ve tanımlamak için klasör zaman damgasını kullanın.
 

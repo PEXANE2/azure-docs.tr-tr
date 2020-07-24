@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073687"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Izleyici 'de aracı veri kaynakları
 Azure Izleyicisinin aracılardan topladığı veriler, yapılandırdığınız veri kaynakları tarafından tanımlanır.  Aracılardan alınan veriler bir kayıt kümesiyle [günlük verileri](data-platform-logs.md) olarak depolanır.  Her veri kaynağı, her tür kendi özellik kümesine sahip olan belirli bir türün kayıtlarını oluşturur.
@@ -46,7 +47,7 @@ Veri kaynaklarını, çalışma alanı için **Gelişmiş ayarlar** ' da **veri*
 ## <a name="data-collection"></a>Veri toplama
 Veri kaynağı konfigürasyonları, birkaç dakika içinde Azure Izleyici 'ye doğrudan bağlı aracılara dağıtılır.  Belirtilen veriler aracıdan toplanır ve her bir veri kaynağına özel aralıklarla doğrudan Azure Izleyici 'ye dağıtılır.  Bu bilgiler için her bir veri kaynağına yönelik belgelere bakın.
 
-Bağlı bir yönetim grubundaki System Center Operations Manager aracıları için, veri kaynağı konfigürasyonları yönetim paketlerine çevrilir ve varsayılan olarak her 5 dakikada bir yönetim grubuna dağıtılır.  Aracı yönetim paketini diğer gibi indirir ve belirtilen verileri toplar. Veri kaynağına bağlı olarak, veriler, verileri Azure Izleyicisine ileten bir yönetim sunucusuna gönderilir veya aracı, yönetim sunucusundan geçmeden verileri Azure Izleyici 'ye gönderir. Ayrıntılar için bkz. [Azure 'da çözümleri izlemek Için veri toplama ayrıntıları](../insights/solutions-inventory.md) .  Operations Manager ve Azure Izleyicisini bağlama hakkında bilgi edinebilir ve yapılandırmanın yapılandırma [System Center Operations Manager Ile tümleştirilmesine](om-agents.md)göre değişiklik sıklığını değiştirebilirsiniz.
+Bağlı bir yönetim grubundaki System Center Operations Manager aracıları için, veri kaynağı konfigürasyonları yönetim paketlerine çevrilir ve varsayılan olarak her 5 dakikada bir yönetim grubuna dağıtılır.  Aracı yönetim paketini diğer gibi indirir ve belirtilen verileri toplar. Veri kaynağına bağlı olarak, veriler, verileri Azure Izleyicisine ileten bir yönetim sunucusuna gönderilir veya aracı, yönetim sunucusundan geçmeden verileri Azure Izleyici 'ye gönderir. Ayrıntılar için bkz. [Azure 'da çözümleri izlemek Için veri toplama ayrıntıları](../monitor-reference.md) .  Operations Manager ve Azure Izleyicisini bağlama hakkında bilgi edinebilir ve yapılandırmanın yapılandırma [System Center Operations Manager Ile tümleştirilmesine](om-agents.md)göre değişiklik sıklığını değiştirebilirsiniz.
 
 Aracı Azure Izleyici 'ye veya Operations Manager bağlanamazsa, bir bağlantı kurduğunda teslim edileceği verileri toplamaya devam edecektir.  Veri miktarı, istemcinin en büyük önbellek boyutuna ulaşırsa veya aracı 24 saat içinde bir bağlantı kuramazsa, veriler kaybolabilir.
 

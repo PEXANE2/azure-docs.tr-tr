@@ -14,11 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50be33bf0cb89c7baff58e5f8e4a2a23b9a1ecef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073284"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grupları ile tanışın
 
@@ -40,10 +41,9 @@ Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin 
 
 |  | Windows Server sürümü | SQL Server sürümü | SQL Server sürümü | WSFC çekirdek yapılandırması | Çok bölgeli DR | Çoklu alt ağ desteği | Mevcut bir AD için destek | Birden çok bölgeye sahip DR aynı bölge | AD etki alanı olmadan Dist-AG desteği | Küme olmadan Dist-AG desteği |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VM CLı](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Evet | Yes | Evet | Hayır | Hayır |
-| [Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | Görünmeyen | Bulut tanığı | Hayır | Evet | Yes | Evet | Hayır | Hayır |
-| [El ile](availability-group-manually-configure-prerequisites-tutorial.md) | Tümü | Tümü | Tümü | Tümü | Yes | Yes | Yes | Yes | Yes | Yes |
-| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+| **[SQL VM CLı](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | Görünmeyen | Bulut tanığı | Hayır | Yes | Yes | Yes | Hayır | Hayır |
+| **[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | Görünmeyen | Bulut tanığı | Hayır | Yes | Yes | Yes | Hayır | Hayır |
+| **[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | Tümü | Tümü | Tümü | Tümü | Yes | Yes | Yes | Yes | Yes | Yes |
 
 **SQL Server AlwaysOn kümesi (Önizleme)** şablonu Azure Marketi 'nden kaldırılmıştır ve artık kullanılamaz. 
 

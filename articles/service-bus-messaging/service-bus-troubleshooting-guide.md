@@ -2,12 +2,13 @@
 title: Azure Service Bus için sorun giderme kılavuzu | Microsoft Docs
 description: Bu makale, özel durum oluştuğunda gerçekleştirilecek Azure Service Bus mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071309"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus için sorun giderme kılavuzu
 Bu makale, Azure Service Bus kullanırken görebileceğiniz birkaç sorun için sorun giderme ipuçları ve öneriler sağlar. 
@@ -15,7 +16,7 @@ Bu makale, Azure Service Bus kullanırken görebileceğiniz birkaç sorun için 
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Bağlantı, sertifika veya zaman aşımı sorunları
 Aşağıdaki adımlar *. servicebus.windows.net altındaki tüm hizmetlerde bağlantı/sertifika/zaman aşımı sorunlarını gidermenize yardımcı olabilir. 
 
-- Veya [wget](https://www.gnu.org/software/wget/) 'e gidin `https://<yournamespace>.servicebus.windows.net/` . IP filtrelemesi veya sanal ağ ya da sertifika zinciri sorunları olup olmadığını denetlemeye yardımcı olur (Java SDK kullanırken en yaygın olarak).
+- Veya [wget](https://www.gnu.org/software/wget/) 'e gidin `https://<yournamespace>.servicebus.windows.net/` . Java SDK kullanırken yaygın olarak kullanılan IP filtrelemesi veya sanal ağ ya da sertifika zinciri sorunları olup olmadığını denetlemeye yardımcı olur.
 
     Başarılı bir ileti örneği:
     
@@ -53,25 +54,48 @@ Aşağıdaki adımlar *. servicebus.windows.net altındaki tüm hizmetlerde bağ
 - Önceki adımlar [Wireshark](https://www.wireshark.org/)gibi araçları kullanarak yardımcı değilse ve analiz yoksa bir ağ izlemesi elde edin. Gerekirse [Microsoft desteği](https://support.microsoft.com/) başvurun. 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Hizmet yükseltmeleri/yeniden başlatmalar ile ortaya çıkabilecek sorunlar
-Arka uç hizmeti yükseltmeleri ve yeniden başlatmaları, uygulamalarınız için aşağıdaki etkiye neden olabilir:
 
+### <a name="symptoms"></a>Belirtiler
 - İstekler, geçici olarak kısıtlanabilir.
 - Gelen iletilerde/isteklerde bir bırakma olabilir.
 - Günlük dosyasında hata iletileri bulunabilir.
 - Uygulamaların birkaç saniye boyunca hizmetle bağlantısı kesilebilir.
 
-Uygulama kodu SDK kullanıyorsa, yeniden deneme ilkesi zaten yerleşik ve etkin durumdadır. Uygulama/iş akışına önemli bir etkisi olmadan uygulama yeniden bağlanır.
+### <a name="cause"></a>Nedeni
+Arka uç hizmeti yükseltmeleri ve yeniden başlatmalar, uygulamalarınızda bu sorunlara neden olabilir.
+
+### <a name="resolution"></a>Çözüm
+Uygulama kodu SDK kullanıyorsa, yeniden deneme ilkesi yerleşik ve etkin durumdadır. Uygulama/iş akışına önemli bir etkisi olmadan uygulama yeniden bağlanır.
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>Yetkisiz erişim: gönderme talepleri gereklidir
+
+### <a name="symptoms"></a>Belirtiler 
 Bu hatayı, Kullanıcı tarafından atanan yönetilen kimliği kullanarak bir şirket içi bilgisayarda Visual Studio 'dan bir Service Bus konusuna erişmeye çalışırken görebilirsiniz.
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
+### <a name="cause"></a>Nedeni
+Kimliğin Service Bus konusuna erişim izni yok. 
+
+### <a name="resolution"></a>Çözüm
 Bu hatayı çözmek için [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) kitaplığını yükleme.  Daha fazla bilgi için bkz. [yerel geliştirme kimlik doğrulaması](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
 
 Rollere izin atamayı öğrenmek için bkz. [Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen kimliğin kimliğini doğrulama](service-bus-managed-service-identity.md).
+
+## <a name="service-bus-exception-put-token-failed"></a>Service Bus özel durum: belirteç yerleştirme başarısız oldu
+
+### <a name="symptoms"></a>Belirtiler
+Aynı Service Bus bağlantısını kullanarak 1000 'den fazla ileti göndermeye çalıştığınızda aşağıdaki hata iletisini alırsınız: 
+
+`Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
+
+### <a name="cause"></a>Nedeni
+Tek bir Service Bus ad alanına bağlantı kullanarak ileti göndermek ve almak için kullanılan belirteçlerin sayısı sınırlıdır. BT 1000. 
+
+### <a name="resolution"></a>Çözüm
+Daha fazla ileti göndermek için Service Bus ad alanına yeni bir bağlantı açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın: 

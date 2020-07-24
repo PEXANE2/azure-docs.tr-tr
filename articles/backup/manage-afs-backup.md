@@ -3,15 +3,16 @@ title: Azure dosya paylaşımı yedeklemelerini yönetme
 description: Bu makalede, Azure Backup tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için kullanılan ortak görevler açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712097"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073293"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure dosya paylaşımı yedeklemelerini yönetme
 
-Bu makalede, [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için kullanılan ortak görevler açıklanmaktadır. Kurtarma Hizmetleri kasasında yönetim görevlerini nasıl gerçekleştireceğinizi öğreneceksiniz.
+Bu makalede, [Azure Backup](./backup-overview.md)tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için kullanılan ortak görevler açıklanmaktadır. Kurtarma Hizmetleri kasasında yönetim görevlerini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
 ## <a name="monitor-jobs"></a>İşleri izleme
 
@@ -164,4 +165,4 @@ Depolama hesabının kaydını silmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [Azure dosya paylaşımları yedeklemesi sorunlarını giderme](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files).
+Daha fazla bilgi için bkz. [Azure dosya paylaşımları yedeklemesi sorunlarını giderme](./troubleshoot-azure-files.md).

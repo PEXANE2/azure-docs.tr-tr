@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072649"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te haritalarla XML’i dönüştürme
 
@@ -22,7 +23,7 @@ Mantıksal uygulamanız, Azure Logic Apps'teki kurumsal tümleştirme senaryolar
 
 Haritalar gibi tümleştirme hesapları ve yapıtlarla ilgili sınırlar için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgileri](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -42,7 +43,7 @@ Haritalar gibi tümleştirme hesapları ve yapıtlarla ilgili sınırlar için b
     | [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Bu araç, depolama hesaplarını ve BLOB kapsayıcılarını daha kolay yönetmenize yardımcı olur. Depolama Gezgini kullanmak için [Azure Depolama Gezgini indirin ve yükleyin](https://www.storageexplorer.com/). Ardından, [Depolama Gezgini kullanmaya başlama](../vs-azure-tools-storage-manage-with-storage-explorer.md)bölümündeki adımları izleyerek Depolama Gezgini depolama hesabınıza bağlanın. Daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Depolama Gezgini ile nesne depolamada blob oluşturma](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Ya da Azure portal, depolama hesabınızı bulun ve seçin. Depolama hesabı menüsünden **Depolama Gezgini**' yi seçin. |
     |||
 
-  * Haritalar için şu anda [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanarak daha büyük haritalar ekleyebilirsiniz.
+  * Haritalar için şu anda [Azure Logic Apps REST API haritaları](/rest/api/logic/maps/createorupdate)kullanarak daha büyük haritalar ekleyebilirsiniz.
 
 Haritalar oluştururken ve eklerken bir mantıksal uygulamaya ihtiyacınız yoktur. Ancak, bir eşleme kullanmak için mantıksal uygulamanız, bu eşlemeyi depoladığınız bir tümleştirme hesabına bağlanması gerekir. [Mantıksal uygulamaları tümleştirme hesaplarına bağlamayı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)öğrenin. Henüz bir Logic App yoksa [Logic Apps oluşturmayı](../logic-apps/quickstart-create-first-logic-app-workflow.md)öğrenin.
 
@@ -219,7 +220,7 @@ Haritalarınızın başvurduğu derlemeleri karşıya yükledikten sonra, eşlem
 
 ### <a name="add-maps-more-than-2-mb"></a>2 MB 'tan fazla harita ekleme
 
-Şu anda, daha büyük haritalar eklemek için [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanın.
+Şu anda, daha büyük haritalar eklemek için [Azure Logic Apps REST API haritaları](/rest/api/logic/maps/createorupdate)kullanın.
 
 <!--
 

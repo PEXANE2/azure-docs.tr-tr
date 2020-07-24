@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072826"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -35,9 +35,8 @@ Konuk yapılandırması 'nı kullanabilmeniz için önce kaynak sağlayıcısın
 Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir ve makinede sistem tarafından yönetilen bir kimlik olması gerekir. Uzantı, uygulanabilir ilke atamasını ve ilgili yapılandırma tanımını indirir. Kimlik, Konuk yapılandırma hizmetine okuduğu ve yazdığı makinenin kimliğini doğrulamak için kullanılır. Arc bağlantılı makine aracısına eklendiğinden, bu uzantı, Arc bağlantılı makineler için gerekli değildir.
 
 > [!IMPORTANT]
-> Azure sanal makinelerinde denetimleri gerçekleştirmek için konuk yapılandırma uzantısı gereklidir. Uzantıyı ölçekli olarak dağıtmak için aşağıdaki ilke tanımlarını atayın: 
->  - [Windows VM 'lerinde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [Linux VM 'lerde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Azure sanal makinelerini denetlemek için konuk yapılandırma uzantısı ve yönetilen bir kimlik gereklidir. > için konuk yapılandırma uzantısının Azure sanal makinelerinde denetimleri gerçekleştirmesi gerekir. Uzantıyı ölçekli olarak dağıtmak için şu ilke girişim atamasını yapın: uzantıyı ölçekli olarak dağıtmak >, aşağıdaki ilke tanımlarını atayın: 
+>  - [Sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için önkoşulları dağıtın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
@@ -81,10 +80,11 @@ Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak içi
 
 ## <a name="managed-identity-requirements"></a>Yönetilen kimlik gereksinimleri
 
-Uzantıyı sanal makinelere ekleyen **Deployifnotexists** ilkeleri Ayrıca, sistem tarafından atanmış bir yönetilen kimliği (yoksa) etkinleştirir.
+Girişim [dağıtım önkoşulları sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) ilke yoksa, sistem tarafından atanan bir yönetilen kimliği etkinleştirir. Girişimde kimlik oluşturmayı yöneten iki ilke tanımı vardır. İlke tanımlarındaki koşullar, Azure 'daki makine kaynağının geçerli durumuna bağlı olarak doğru davranışı güvence altına alır.
 
-> [!WARNING]
-> Sistem tarafından atanan yönetilen kimliği etkinleştiren ilkeler için kapsamdaki sanal makinelere Kullanıcı tarafından atanan yönetilen kimliği etkinleştirmemeye özen gösterin. Kullanıcı tarafından atanan kimlik değiştirilmiştir ve makinenin yanıt vermemesine neden olur.
+Makinenin Şu anda herhangi bir yönetilen kimliği yoksa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : kimliği olmayan sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+
+Makinenin Şu anda Kullanıcı tarafından atanan bir sistem kimliği varsa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : Kullanıcı tarafından atanan bir kimliğe sahip sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 

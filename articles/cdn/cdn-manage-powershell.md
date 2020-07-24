@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: ba67ea9455c8d7f077eae87f582f05b5c2672735
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7ad3034ff3730cdadcfd55765af01c97df78028
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887624"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073068"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>PowerShell ile Azure CDN yönetme
 PowerShell, Azure CDN profillerinizi ve uç noktalarını yönetmek için en esnek yöntemlerden birini sunar.  PowerShell 'i etkileşimli olarak veya yönetim görevlerini otomatikleştirmek için komut dosyaları yazarak kullanabilirsiniz.  Bu öğreticide, Azure CDN profillerinizi ve uç noktalarını yönetmek için PowerShell ile gerçekleştirebileceğiniz en yaygın görevlerden bazıları gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell 'i Azure CDN profillerinizi ve uç noktalarınızı yönetmek üzere kullanmak için Azure PowerShell modülünün yüklü olması gerekir.  Cmdlet 'ini kullanarak Azure PowerShell yüklemeyi ve Azure 'a bağlanmayı öğrenmek için `Connect-AzAccount` bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
+PowerShell 'i Azure CDN profillerinizi ve uç noktalarınızı yönetmek üzere kullanmak için Azure PowerShell modülünün yüklü olması gerekir.  Cmdlet 'ini kullanarak Azure PowerShell yüklemeyi ve Azure 'a bağlanmayı öğrenmek için `Connect-AzAccount` bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).
 
 > [!IMPORTANT]
 > `Connect-AzAccount`Azure PowerShell cmdlet 'lerini yürütmeden önce ile oturum açmalısınız.
@@ -188,7 +188,7 @@ If($availability.NameAvailable) { Write-Host "Yes, that endpoint name is availab
 Else { Write-Host "No, that endpoint name is not available." }
 ```
 
-## <a name="adding-a-custom-domain"></a>Özel etki alanını ekleme
+## <a name="adding-a-custom-domain"></a>Özel etki alanı ekleme
 `New-AzCdnCustomDomain`Varolan bir uç noktaya özel bir etki alanı adı ekler.
 
 > [!IMPORTANT]

@@ -8,18 +8,22 @@ ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9bb94ee63873dea321af252a4380a7aab10df6ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071478"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
 Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows üzerinde Python kullanarak PostgreSQL için Azure veritabanı ile çalışırsınız. Hızlı başlangıç, veritabanına bağlanmayı ve verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanmayı gösterir. Makalede, Python hakkında bilgi sahibi olduğunuz ancak PostgreSQL için Azure veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!TIP]
+> PostgreSQL ile bir Docgo uygulaması oluşturmak istiyorsanız öğreticiyi kullanıma alın ve [PostgreSQL öğreticisi ile bir docgo Web uygulaması dağıtın](../app-service/containers/tutorial-python-postgresql-app.md) .
+
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -60,7 +64,7 @@ Bu makaledeki her kod örneği için:
 1. Dosyayı çalıştırmak için, bir komut satırı arabirimindeki proje klasörünüze geçin ve `python` ardından dosya adını (örneğin,) yazın `python postgres-insert.py` .
 
 ## <a name="create-a-table-and-insert-data"></a>Tablo oluşturma ve veri ekleme
-Aşağıdaki kod örneği, [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) Işlevini kullanarak PostgreSQL Için Azure veritabanı veritabanınıza bağlanır ve VERILERI bir SQL **Insert** ifadesiyle yükler. [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) işlevi SQL sorgusunu veritabanına karşı yürütür. 
+Aşağıdaki kod örneği, [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) Işlevini kullanarak PostgreSQL Için Azure veritabanı veritabanınıza bağlanır ve VERILERI bir SQL **Insert** ifadesiyle yükler. [cursor.exeşirin](http://initd.org/psycopg/docs/cursor.html#execute) işlevi SQL sorgusunu veritabanına karşı yürütür. 
 
 ```Python
 import psycopg2
@@ -104,7 +108,7 @@ Kod başarıyla çalıştırıldığında, şu çıktıyı üretir:
 ![Komut satırı çıkışı](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>Verileri okuma
-Aşağıdaki kod örneği, PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve [imleç kullanır.](http://initd.org/psycopg/docs/cursor.html#execute) verileri okumak Için SQL **Select** ifadesiyle yürütün. Bu işlev bir sorguyu kabul eder ve [Cursor. fetchAll ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)kullanılarak yinelemek için bir sonuç kümesi döndürür. 
+Aşağıdaki kod örneği, PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve verileri okumak için SQL **Select** ifadesiyle [cursor.exeşirin](http://initd.org/psycopg/docs/cursor.html#execute) kullanır. Bu işlev bir sorguyu kabul eder ve [Cursor. fetchAll ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)kullanılarak yinelemek için bir sonuç kümesi döndürür. 
 
 ```Python
 import psycopg2
@@ -138,7 +142,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>Verileri güncelleştirme
-Aşağıdaki kod örneği PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) öğesini SQL **Update** ifadesiyle kullanarak verileri güncelleştirin. 
+Aşağıdaki kod örneği, PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve verileri güncelleştirmek için SQL **Update** ifadesiyle [cursor.exeşirin](http://initd.org/psycopg/docs/cursor.html#execute) 'yi kullanır. 
 
 ```Python
 import psycopg2
@@ -168,7 +172,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>Verileri silme
-Aşağıdaki kod örneği PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve [imleç kullanır.](http://initd.org/psycopg/docs/cursor.html#execute) daha önce eklediğiniz bir envanter öğesini sılmek Için SQL **Delete** ifadesiyle yürütün. 
+Aşağıdaki kod örneği, PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve daha önce eklediğiniz bir envanter öğesini silmek için SQL **Delete** ifadesiyle [cursor.exeşirin](http://initd.org/psycopg/docs/cursor.html#execute) 'yi kullanır. 
 
 ```Python
 import psycopg2

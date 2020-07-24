@@ -1,14 +1,14 @@
 ---
 title: Temsil edilen kaynakları ölçeklendirmeye göre izleme
 description: Azure Izleyici günlüklerini, yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl verimli bir şekilde kullanacağınızı öğrenin.
-ms.date: 07/07/2020
+ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 3be7494f929fc91e2b01bde0b4f26f7c2e4b907b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 758437fdc7a32fd5937434ce10f16a8c792423d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072726"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Temsil edilen kaynakları ölçeklendirmeye göre izleme
 
@@ -34,10 +34,11 @@ Hangi ilkelerin dağıtılacağını belirledikten sonra, [bunları uygun ölçe
 
 ## <a name="analyze-the-gathered-data"></a>Toplanan verileri analiz etme
 
-İlkelerinizi dağıttıktan sonra, veriler her bir müşteri kiracısında oluşturduğunuz Log Analytics çalışma alanlarında günlüğe kaydedilir. Tüm yönetilen müşterilerle ilgili Öngörüler elde etmek için [Azure Izleyici çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md) gibi araçları kullanarak birden çok veri kaynağından bilgi toplayabilir ve analiz edebilirsiniz.
+İlkelerinizi dağıttıktan sonra, veriler her bir müşteri kiracısında oluşturduğunuz Log Analytics çalışma alanlarında günlüğe kaydedilir. Tüm yönetilen müşterilerle ilgili Öngörüler elde etmek için [Azure Izleyici çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md) gibi araçları kullanarak birden çok veri kaynağından bilgi toplayabilir ve analiz edebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Birden çok Log Analytics çalışma alanı genelinde [güncelleştirme yönetimi günlüklerini sorgulayarak](../../automation/automation-update-management-query-logs.md) düzeltme eki uyumluluk raporlamasını Izleyen bu [MVP tarafından oluşturulan örnek çalışma kitabını](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)keşfet. 
 - [Azure izleyici](../../azure-monitor/index.yml)hakkında bilgi edinin.
 - [Azure Izleyici günlükleri](../../azure-monitor/platform/data-platform-logs.md)hakkında bilgi edinin.
 - [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637514"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073655"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -122,9 +123,9 @@ Aşağıdaki adımlar, GitHub 'da barındırılan aracıyı indirmek ve aracıy�
 
 Linux bilgisayarınızın Log Analytics için bir proxy sunucusu üzerinden iletişim kurması gerekiyorsa, bu yapılandırma komut satırında dahil ederek belirlenebilir `-p [protocol://][user:password@]proxyhost[:port]` . *Protocol* özelliği `http` , veya kabul eder `https` ve *proxyhost* özelliği proxy sunucusunun tam etki alanı adını veya IP adresini kabul eder. 
 
-Örneğin, `https://proxy01.contoso.com:30443`
+Örnek: `https://proxy01.contoso.com:30443`
 
-Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örneğin, `https://user01:password@proxy01.contoso.com:30443`
+Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parolayı belirtmeniz gerekir. Örnek: `https://user01:password@proxy01.contoso.com:30443`
 
 1. Linux bilgisayarı bir Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Bu komut aracıyı indirir, sağlama toplamını doğrular ve aracıyı yükler.
     
@@ -154,6 +155,18 @@ Her iki durumda da kimlik doğrulaması gerekliyse, Kullanıcı adını ve parol
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
+
+## <a name="supported-linux-hardening"></a>Desteklenen Linux sağlamlaştırma
+OMS aracısının Linux için özelleştirme desteği sınırlıdır. 
+
+Aşağıdakiler şu anda desteklenmektedir: 
+- FIPS
+
+Aşağıdakiler planlanmaktadır ancak henüz desteklenmemektedir:
+- CıS-SELINUX
+
+Diğer sağlamlaştırma ve özelleştirme yöntemleri, OMS Aracısı için desteklenmez veya planlanmaz.  
+
 
 ## <a name="upgrade-from-a-previous-release"></a>Önceki sürümden yükseltme
 

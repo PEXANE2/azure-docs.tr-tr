@@ -3,11 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83816107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071290"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -231,4 +232,4 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="next-steps"></a>Sonraki Adımlar
 -  Bkz. [Azure hizmet durumu panosuna giriş](service-health-overview.md) ve bunlarla ilgili daha fazla bilgi Için [Azure Kaynak durumu giriş](resource-health-overview.md) . 
 -  [Azure Kaynak Durumu hakkında sık sorulan sorular](resource-health-faq.md)
-- Sistem durumu sorunları hakkında bildirim almak için uyarıları ayarlayın. Daha fazla bilgi için bkz. [hizmet durumu olayları Için uyarıları yapılandırma](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+- Sistem durumu sorunları hakkında bildirim almak için uyarıları ayarlayın. Daha fazla bilgi için bkz. [hizmet durumu olayları Için uyarıları yapılandırma](./alerts-activity-log-service-notifications-portal.md). 

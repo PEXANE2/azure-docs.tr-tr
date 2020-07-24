@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071894"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Kesintisiz Akış Windows Mağazası uygulaması oluşturma  
 
@@ -32,7 +32,7 @@ Bu öğretici dört ders içerir:
 3. Kesintisiz Akış akışları seçin
 4. Kesintisiz Akış Izleri seçin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!NOTE]
 > Windows Mağazası projeleri sürüm 8,1 ve önceki sürümleri Visual Studio 2017 ' de desteklenmez.  Daha fazla bilgi için bkz. [Visual Studio 2017 Platform Desteği ve Uyumluluk](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
@@ -53,7 +53,7 @@ Bu derste, sorunsuz akış içeriğini oynatmak için MediaElement denetimiyle b
 
 ![Kesintisiz Akış Windows Mağazası uygulaması örneği][PlayerApplication]
 
-Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz. [Windows 8 Için harika uygulamalar geliştirme](https://msdn.microsoft.com/windows/apps/br229512.aspx). Bu ders aşağıdaki yordamları içerir:
+Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz. [Windows 8 Için harika uygulamalar geliştirme](https://developer.microsoft.com/en-us/windows/). Bu ders aşağıdaki yordamları içerir:
 
 1. Windows Mağazası projesi oluşturma
 2. Kullanıcı arabirimini tasarlama (XAML)
@@ -75,7 +75,7 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
     | Çözüm Adı |SSPlayer |
     | Çözüm için dizin oluştur |seçildiğinde |
 
-1. **Tamam**'a tıklayın.
+1. **Tamam** düğmesine tıklayın.
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Kesintisiz Akış Istemci SDK 'sına bir başvuru eklemek için
 
@@ -87,7 +87,7 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
     | Başvuru grubu |Pencereler/uzantılar |
     | Başvuru |Windows 8 ve Microsoft Visual C++ çalışma zamanı paketi için Microsoft Kesintisiz Akış Istemci SDK 'sını seçin |
 
-1. **Tamam**'a tıklayın. 
+1. **Tamam** düğmesine tıklayın. 
 
 Başvuruları ekledikten sonra, hedeflenen platformu (x64 veya x86) seçmeniz gerekir. başvuruları eklemek herhangi bir CPU platformu yapılandırması için çalışmaz.  Çözüm Gezgini 'nde, bu eklenen başvurular için sarı bir uyarı işareti görürsünüz.
 
@@ -1045,4 +1045,3 @@ Kesintisiz Akış sunusu, farklı kalite düzeyleri (bit hızları) ve çözün�
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

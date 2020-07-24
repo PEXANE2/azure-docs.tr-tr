@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81867972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073918"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
@@ -33,7 +34,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 Özel bulutlar CloudSimple portalı aracılığıyla yönetilir. Kendi yönetim etki alanında kendi vCenter Server kuruluşları vardır. Yığın adanmış düğümlerde ve yalıtılmış tam donanım düğümlerinde çalışır.
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 4. **Özel bulut oluştur** **' a tıklayarak**cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
@@ -57,7 +58,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 11. Ileri ' ye tıklayın. **İnceleme ve oluşturma**.
 12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
-13. **Oluştur**'a tıklayın.
+13. **Oluştur**’a tıklayın.
 
 Özel bulut sağlama işlemi başlar.  Özel bulutun sağlanması iki saate kadar sürebilir.
 
@@ -65,7 +66,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 Azure portal 'ten CloudSimple portalına erişebilirsiniz.  CloudSimple portalı, çoklu oturum açma (SSO) ile Azure oturum açma kimlik bilgilerinizle başlatılır.  CloudSimple portalına erişmek için **Cloudsimple hizmet Yetkilendirme** uygulamasını yetkilendirmeniz gerekir.  İzinleri verme hakkında daha fazla bilgi için bkz. [CloudSimple hizmet Yetkilendirme uygulamasına izin](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)verme.
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 4. Genel bakışta, cloudsimple portalına **Git** ' e tıklayarak cloudsimple portalı için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
@@ -113,7 +114,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
 2. **VPN Gateway**seçin.
 3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
-4. **Kullanıcıları**seçin.
+4. **Kullanıcılar**’ı seçin.
 5. **VPN yapılandırmadan indir**' e tıklayın.
 
     ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)
@@ -147,7 +148,7 @@ VLAN/subnet oluşturulacak.  Artık özel bulut vCenter 'unuzda dağıtılmış 
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Ortamınızı bir Azure sanal ağına bağlama
 
-CloudSimple, özel bulutunuz için bir ExpressRoute devresi sağlar. Azure 'daki Sanal ağınızı ExpressRoute devresine bağlayabilirsiniz. Bağlantıyı ayarlamayla ilgili tam Ayrıntılar için [ExpressRoute kullanarak Azure sanal ağ bağlantısı](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)' nda bulunan adımları izleyin.
+CloudSimple, özel bulutunuz için bir ExpressRoute devresi sağlar. Azure 'daki Sanal ağınızı ExpressRoute devresine bağlayabilirsiniz. Bağlantıyı ayarlamayla ilgili tam Ayrıntılar için [ExpressRoute kullanarak Azure sanal ağ bağlantısı](./cloudsimple-azure-network-connection.md)' nda bulunan adımları izleyin.
 
 ## <a name="sign-in-to-vcenter"></a>VCenter 'da oturum açın
 

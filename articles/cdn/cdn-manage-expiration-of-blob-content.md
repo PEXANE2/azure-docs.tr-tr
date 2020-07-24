@@ -15,17 +15,17 @@ ms.devlang: multiple
 ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073136"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN Azure Blob Storage 'ın kullanım süresini yönetme
 > [!div class="op_single_selector"]
 > * [Azure web içeriği](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob Depolama](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob depolama](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
@@ -91,7 +91,7 @@ Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) , Azure hizmetlerinizi yönetmenin en hızlı ve en güçlü yöntemlerinden biridir. `Get-AzStorageBlob`BLOB 'a başvuru almak için cmdlet 'ini kullanın, sonra `.ICloudBlob.Properties.CacheControl` özelliği ayarlayın. 
+[Azure PowerShell](/powershell/azure/) , Azure hizmetlerinizi yönetmenin en hızlı ve en güçlü yöntemlerinden biridir. `Get-AzStorageBlob`BLOB 'a başvuru almak için cmdlet 'ini kullanın, sonra `.ICloudBlob.Properties.CacheControl` özelliği ayarlayın. 
 
 Örneğin:
 

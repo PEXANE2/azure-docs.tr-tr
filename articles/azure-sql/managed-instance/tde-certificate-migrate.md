@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
-ms.date: 04/25/2019
-ms.openlocfilehash: c9a9b42d6f6d8c89847b03f5eda858c75d198c58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: ba2dd167cdf49b5f1a4b4f2dcd0edd48ea969fae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711400"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073326"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE korumalı bir veritabanının sertifikasını Azure SQL yönetilen örneği 'ne geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +34,7 @@ Hem TDE korumalı bir veritabanının hem de karşılık gelen sertifikanın sor
 > [!IMPORTANT]
 > Geçirilen bir sertifika yalnızca TDE korumalı veritabanının geri yüklenmesi için kullanılır. Geri yükleme yapıldıktan kısa süre sonra, geçirilen sertifika, örnek üzerinde ayarlamış olduğunuz TDE türüne bağlı olarak, hizmet tarafından yönetilen bir sertifika veya anahtar kasasından asimetrik bir anahtarla değiştirilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
@@ -148,7 +149,7 @@ Sertifika SQL Server yerel makine sertifika deposunda tutuluyorsa, bu, aşağıd
 2. Tüm hazırlık adımları yapıldıktan sonra, temel 64 kodlu sertifikayı hedef yönetilen örneğe yüklemek için aşağıdaki komutları çalıştırın:
 
    ```azurepowershell
-   $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
+   $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -AsByteStream
    $base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "<password>"

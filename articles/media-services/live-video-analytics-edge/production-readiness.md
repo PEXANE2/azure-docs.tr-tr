@@ -3,15 +3,16 @@ title: Üretim hazırlığı ve en iyi uygulamalar-Azure
 description: Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge modülünde nasıl yapılandırılacağı ve dağıtılacağı hakkında rehberlik sunulmaktadır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071936"
 ---
 # <a name="production-readiness-and-best-practices"></a>Üretim hazırlığı ve en iyi uygulamalar
 
-Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge modülünde nasıl yapılandırılacağı ve dağıtılacağı hakkında rehberlik sunulmaktadır. Ayrıca, IoT Edge çözümünüzü hazırlarken [IoT Edge çözümünüzü üretim makalesinde dağıtmaya yönelik hazırlanın](https://docs.microsoft.com/azure/iot-edge/production-checklist) ' i gözden geçirmeniz gerekir. 
+Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge modülünde nasıl yapılandırılacağı ve dağıtılacağı hakkında rehberlik sunulmaktadır. Ayrıca, IoT Edge çözümünüzü hazırlarken [IoT Edge çözümünüzü üretim makalesinde dağıtmaya yönelik hazırlanın](../../iot-edge/production-checklist.md) ' i gözden geçirmeniz gerekir. 
 
 > [!NOTE]
 > Kuruluşların BT departmanlarına güvenlik ile ilgili yönlere başvurmalısınız.

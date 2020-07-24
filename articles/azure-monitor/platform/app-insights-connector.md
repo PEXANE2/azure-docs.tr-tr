@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665174"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073634"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
 
@@ -41,14 +42,14 @@ Uygulama öngörüleri Bağlayıcısı çözümü, performans sorunlarını tan�
 
 Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından Application Insights Bağlayıcısı için toplanmaz. Çözüm tarafından kullanılan tüm veriler doğrudan Azure 'dan gelir.
 
-| Bağlı Kaynak | Destekleniyor | Açıklama |
+| Bağlı Kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
 | [Windows aracıları](../../azure-monitor/platform/agent-windows.md) | Hayır | Çözüm Windows aracılarından bilgi toplamaz. |
 | [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux aracılarından bilgi toplamaz. |
 | [SCOM yönetim grubu](../../azure-monitor/platform/om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
-| [Azure depolama hesabı](collect-azure-metrics-logs.md) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
+| [Azure depolama hesabı](./resource-logs.md#send-to-log-analytics-workspace) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Application Insights Bağlayıcısı bilgilerine erişmek için bir Azure aboneliğinizin olması gerekir
 - En az bir yapılandırılmış Application Insights kaynağınız olmalıdır.
@@ -193,7 +194,7 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | IsAuthenticated | True veya false |
 | OperationId | Aynı işlem KIMLIĞINE sahip öğeler portalda Ilgili öğeler olarak gösterilir. Genellikle istek KIMLIĞI |
 | Parentoperationıd | Üst işlemin KIMLIĞI |
-| ThrottledRequests |   |
+| OperationName |   |
 | SessionId | İsteğin oluşturulduğu oturumu benzersiz şekilde tanımlamak için GUID |
 | SourceSystem | ApplicationInsights |
 
@@ -251,7 +252,7 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | RequestName | Al/postala + URL tabanı |
 | RequestDuration | İstek süresinin saniye cinsinden süresi |
 | URL | Konağın dahil olmadığı isteğin URL 'SI |
-| Ana bilgisayar | Web sunucusu Konağı |
+| Konak | Web sunucusu Konağı |
 | URL tabanı | İsteğin tam URL 'SI |
 | ApplicationProtocol | Uygulama tarafından kullanılan protokol türü |
 | Istek sayısı | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |
@@ -303,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Bu betik, Azure Active Directory karşı kimlik doğrulaması için bir taşıyıcı kimlik doğrulama belirteci gerektirir. Bu belirteci almanın bir yolu [REST API belgeleri sitesindeki](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)bir makaleyi kullanmaktır. **Dene** ' ye tıklayın ve Azure aboneliğinizde oturum açın. Aşağıdaki görüntüde gösterildiği gibi, **Istek önizlemeden** taşıyıcı belirtecini kopyalayabilirsiniz.
+Bu betik, Azure Active Directory karşı kimlik doğrulaması için bir taşıyıcı kimlik doğrulama belirteci gerektirir. Bu belirteci almanın bir yolu [REST API belgeleri sitesindeki](/rest/api/loganalytics/datasources/createorupdate)bir makaleyi kullanmaktır. **Dene** ' ye tıklayın ve Azure aboneliğinizde oturum açın. Aşağıdaki görüntüde gösterildiği gibi, **Istek önizlemeden** taşıyıcı belirtecini kopyalayabilirsiniz.
 
 
 ![Taşıyıcı belirteci](media/app-insights-connector/bearer-token.png)

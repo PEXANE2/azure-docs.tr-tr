@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792427"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072575"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps 'de B2B kurumsal tümleştirme için Exchange RosettaNet iletileri
 
@@ -50,7 +51,7 @@ Aşağıda, RosettaNet belirtiminin benzersiz olduğu ve RosettaNet tabanlı tü
 
   Tek bir eylem PıP 'si için tek yanıt bir bildirim sinyali iletisidir. Bir çift eylem PıP 'si için, başlatıcı bir yanıt iletisi alır ve tek işlem ileti akışına ek olarak bir bildirim ile yanıt verir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -80,9 +81,9 @@ Tümleştirme hesabınıza bir PıP işlem yapılandırması eklemek için aşa�
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Adı** | Evet | PıP adınız |
-   | **PıP kodu** | Evet | PıP üç basamaklı kod. Daha fazla bilgi için bkz. [RosettaNet PII](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
-   | **PıP sürümü** | Evet | Seçtiğiniz PıP kodunuz temelinde kullanılabilir olan PıP sürüm numarası |
+   | **Ad** | Yes | PıP adınız |
+   | **PıP kodu** | Yes | PıP üç basamaklı kod. Daha fazla bilgi için bkz. [RosettaNet PII](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **PıP sürümü** | Yes | Seçtiğiniz PıP kodunuz temelinde kullanılabilir olan PıP sürüm numarası |
    ||||
 
    Bu PıP özellikleri hakkında daha fazla bilgi için, [RosettaNet Web sitesini](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg)ziyaret edin.
@@ -111,15 +112,15 @@ Tümleştirme hesabınıza bir PıP işlem yapılandırması eklemek için aşa�
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Adı** | Evet | Sözleşmenin adı |
-   | **Anlaşma türü** | Evet | **RosettaNet**' i seçin. |
-   | **Ana bilgisayar ortağı** | Evet | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Ana bilgisayar ortağı, sözleşmeyi yapılandıran kuruluşu temsil eder. |
-   | **Ana bilgisayar kimliği** | Evet | Ana bilgisayar ortağı için bir tanımlayıcı |
-   | **Konuk Iş ortağı** | Evet | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Konuk iş ortağı, ana bilgisayar ortağıyla iş yapan kuruluşu temsil eder. |
-   | **Konuk kimliği** | Evet | Konuk iş ortağı için bir tanımlayıcı |
+   | **Ad** | Yes | Sözleşmenin adı |
+   | **Anlaşma türü** | Yes | **RosettaNet**' i seçin. |
+   | **Ana bilgisayar ortağı** | Yes | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Ana bilgisayar ortağı, sözleşmeyi yapılandıran kuruluşu temsil eder. |
+   | **Ana bilgisayar kimliği** | Yes | Ana bilgisayar ortağı için bir tanımlayıcı |
+   | **Konuk Iş ortağı** | Yes | Bir anlaşma hem konak hem de Konuk iş ortağı gerektirir. Konuk iş ortağı, ana bilgisayar ortağıyla iş yapan kuruluşu temsil eder. |
+   | **Konuk kimliği** | Yes | Konuk iş ortağı için bir tanımlayıcı |
    | **Ayarları al** | Değişir | Bu özellikler, ana bilgisayar ortağı tarafından alınan tüm iletiler için geçerlidir |
    | **Ayarları gönder** | Değişir | Bu özellikler, ana bilgisayar ortağı tarafından gönderilen tüm iletiler için geçerlidir |  
-   | **RosettaNet PıP başvuruları** | Evet | Anlaşmanın PıP başvuruları. Tüm RosettaNet iletileri, PıP yapılandırması gerektirir. |
+   | **RosettaNet PıP başvuruları** | Yes | Anlaşmanın PıP başvuruları. Tüm RosettaNet iletileri, PıP yapılandırması gerektirir. |
    ||||
 
 1. Konuk iş ortağından gelen iletileri alma sözleşmenizi ayarlamak için, **alma ayarları**' nı seçin.
@@ -158,8 +159,8 @@ Tümleştirme hesabınıza bir PıP işlem yapılandırması eklemek için aşa�
 
       | Özellik | Gerekli | Açıklama |
       |----------|----------|-------------|
-      | **Eylem URL 'SI** |  Evet | Eylem iletilerini göndermek için kullanılacak URL. URL, hem zaman uyumlu hem de zaman uyumsuz iletiler için gerekli bir alandır. |
-      | **Bildirim URL 'SI** | Evet | Bildirim iletilerini göndermek için kullanılacak URL. URL, zaman uyumsuz iletiler için gerekli bir alandır. |
+      | **Eylem URL 'SI** |  Yes | Eylem iletilerini göndermek için kullanılacak URL. URL, hem zaman uyumlu hem de zaman uyumsuz iletiler için gerekli bir alandır. |
+      | **Bildirim URL 'SI** | Yes | Bildirim iletilerini göndermek için kullanılacak URL. URL, zaman uyumsuz iletiler için gerekli bir alandır. |
       ||||
 
 1. İş ortakları için RosettaNet PıP başvuruları ile sözleşmenizi ayarlamak için **ROSETTANET PIP başvuruları**' nı seçin. **PIP adı**altında, önceden oluşturduğunuz PIP adı ' nı seçin.
@@ -200,9 +201,9 @@ Geliştirme sürecini hızlandırmak ve tümleştirme desenleri önermek için, 
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **İleti** | Evet | Kodu çözülecek RosettaNet iletisi  |
-   | **Üst bilgiler** | Evet | RNZE sürümü olan sürüm için değerler sağlayan HTTP üstbilgileri ve iş ortakları arasındaki iletişim türünü gösteren ve zaman uyumlu veya zaman uyumsuz olabilecek yanıt türü. |
-   | **Role** | Evet | PıP 'de ana bilgisayar ortağının rolü |
+   | **İleti** | Yes | Kodu çözülecek RosettaNet iletisi  |
+   | **Üst Bilgiler** | Yes | RNZE sürümü olan sürüm için değerler sağlayan HTTP üstbilgileri ve iş ortakları arasındaki iletişim türünü gösteren ve zaman uyumlu veya zaman uyumsuz olabilecek yanıt türü. |
+   | **Role** | Yes | PıP 'de ana bilgisayar ortağının rolü |
    ||||
 
    RosettaNet kod çözme eyleminde, çıkış, diğer özelliklerle birlikte, kodlamayı kodlamak ve geri dönmek ya da bu çıktıda başka bir işlem yapmak için seçebileceğiniz **giden sinyali**içerir.
@@ -229,14 +230,14 @@ Geliştirme sürecini hızlandırmak ve tümleştirme desenleri önermek için, 
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **İleti** | Evet | Kodlanacak RosettaNet iletisi  |
-   | **Ana bilgisayar ortağı** | Evet | Ana bilgisayar iş ortağı adı |
-   | **Konuk iş ortağı** | Evet | Konuk iş ortağı adı |
-   | **PıP kodu** | Evet | PıP kodu |
-   | **PıP sürümü** | Evet | PıP sürümü |  
-   | **PıP örnek kimliği** | Evet | Bu PıP iletisi için benzersiz tanımlayıcı |  
-   | **Mesaj türü** | Evet | Kodlanacak iletinin türü |  
-   | **Role** | Evet | Ana bilgisayar ortağının rolü |
+   | **İleti** | Yes | Kodlanacak RosettaNet iletisi  |
+   | **Ana bilgisayar ortağı** | Yes | Ana bilgisayar iş ortağı adı |
+   | **Konuk iş ortağı** | Yes | Konuk iş ortağı adı |
+   | **PıP kodu** | Yes | PıP kodu |
+   | **PıP sürümü** | Yes | PıP sürümü |  
+   | **PıP örnek kimliği** | Yes | Bu PıP iletisi için benzersiz tanımlayıcı |  
+   | **Mesaj türü** | Yes | Kodlanacak iletinin türü |  
+   | **Role** | Yes | Ana bilgisayar ortağının rolü |
    ||||
 
    Kodlanmış ileti artık iş ortağına gönderilmeye hazırdır.

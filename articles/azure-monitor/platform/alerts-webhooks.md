@@ -6,11 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073588"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Izleyici 'de klasik ölçüm uyarısıyla bir Web kancası çağırma
 
@@ -25,10 +26,10 @@ Web kancası URI 'sini eklemek veya güncelleştirmek için, [Azure Portal](http
 
 ![Uyarı kuralı bölmesi Ekle](./media/alerts-webhooks/Alertwebhook.png)
 
-Ayrıca, [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)'leri, [platformlar arası CLI](../samples/cli-samples.md#work-with-alerts)veya [Azure izleyici REST API 'LERINI](https://msdn.microsoft.com/library/azure/dn933805.aspx)kullanarak bir Web kancası URI 'sine gönderilecek bir uyarı yapılandırabilirsiniz.
+Ayrıca, [Azure PowerShell cmdlet](../samples/powershell-samples.md#create-metric-alerts)'leri, [platformlar arası CLI](../samples/cli-samples.md#work-with-alerts)veya [Azure izleyici REST API 'LERINI](/rest/api/monitor/alertrules)kullanarak bir Web kancası URI 'sine gönderilecek bir uyarı yapılandırabilirsiniz.
 
 ## <a name="authenticate-the-webhook"></a>Web kancasının kimliğini doğrulama
-Web kancası, belirteç tabanlı yetkilendirme kullanarak kimlik doğrulaması yapabilir. Web kancası URI 'SI bir belirteç KIMLIĞIYLE kaydedilir. Örneğin, `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+Web kancası, belirteç tabanlı yetkilendirme kullanarak kimlik doğrulaması yapabilir. Web kancası URI 'SI bir belirteç KIMLIĞIYLE kaydedilir. Örnek: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>Yük şeması
 POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü ve şemayı içerir:
@@ -69,32 +70,32 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 
 | Alan | Zorunlu | Düzeltilen değer kümesi | Notlar |
 |:--- |:--- |:--- |:--- |
-| durum |E |Etkinleştirildi, çözümlendi |Ayarladığınız koşullara göre uyarının durumu. |
-| bağlam |E | |Uyarı bağlamı. |
-| timestamp |E | |Uyarının tetiklendiği zaman. |
-| kimlik |E | |Her uyarı kuralının benzersiz bir KIMLIĞI vardır. |
-| name |E | |Uyarı adı. |
-| açıklama |E | |Uyarının açıklaması. |
-| ConditionType 'ı seçin |E |Ölçüm, olay |İki tür uyarı desteklenir: ölçüm ve olay. Ölçüm uyarıları bir ölçüm koşulunu temel alır. Olay uyarıları, etkinlik günlüğündeki bir olaya dayalıdır. Uyarının bir ölçüye veya bir olaya dayalı olup olmadığını denetlemek için bu değeri kullanın. |
-| koşul |E | |**ConditionType** değerine göre denetlenecek belirli alanlar. |
+| durum |Y |Etkinleştirildi, çözümlendi |Ayarladığınız koşullara göre uyarının durumu. |
+| bağlam |Y | |Uyarı bağlamı. |
+| timestamp |Y | |Uyarının tetiklendiği zaman. |
+| kimlik |Y | |Her uyarı kuralının benzersiz bir KIMLIĞI vardır. |
+| name |Y | |Uyarı adı. |
+| açıklama |Y | |Uyarının açıklaması. |
+| ConditionType 'ı seçin |Y |Ölçüm, olay |İki tür uyarı desteklenir: ölçüm ve olay. Ölçüm uyarıları bir ölçüm koşulunu temel alır. Olay uyarıları, etkinlik günlüğündeki bir olaya dayalıdır. Uyarının bir ölçüye veya bir olaya dayalı olup olmadığını denetlemek için bu değeri kullanın. |
+| koşul |Y | |**ConditionType** değerine göre denetlenecek belirli alanlar. |
 | metricName |Ölçüm uyarıları için | |Kuralın izleyicilerini tanımlayan ölçümün adı. |
-| metricUnit |Ölçüm uyarıları için |Bayt, BytesPerSecond, sayı, Sayaçpersaniye, yüzde, saniye |Ölçümde izin verilen birim. Bkz. [izin verilen değerler](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricUnit |Ölçüm uyarıları için |Bayt, BytesPerSecond, sayı, Sayaçpersaniye, yüzde, saniye |Ölçümde izin verilen birim. Bkz. [izin verilen değerler](/previous-versions/azure/reference/dn802430(v=azure.100)). |
 | metricValue |Ölçüm uyarıları için | |Uyarıya neden olan ölçümün gerçek değeri. |
 | eşiği |Ölçüm uyarıları için | |Uyarının etkinleştirildiği eşik değeri. |
 | windowSize |Ölçüm uyarıları için | |Eşik temelinde uyarı etkinliğini izlemek için kullanılan süre. Değer 5 dakika ile 1 gün arasında olmalıdır. Değer ISO 8601 Duration biçiminde olmalıdır. |
-| timeAggregation |Ölçüm uyarıları için |Ortalama, son, maksimum, en az, yok, toplam |Toplanan verilerin zaman içinde birleştirilmesi gerekir. Varsayılan değer Average değeridir. Bkz. [izin verilen değerler](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
+| timeAggregation |Ölçüm uyarıları için |Ortalama, son, maksimum, en az, yok, toplam |Toplanan verilerin zaman içinde birleştirilmesi gerekir. Varsayılan değer Average değeridir. Bkz. [izin verilen değerler](/previous-versions/azure/reference/dn802410(v=azure.100)). |
 | operator |Ölçüm uyarıları için | |Geçerli ölçüm verilerini ayarlanan eşikle karşılaştırmak için kullanılan işleç. |
-| subscriptionId |E | |Azure abonelik KIMLIĞI. |
-| resourceGroupName |E | |Etkilenen kaynak için kaynak grubunun adı. |
-| resourceName |E | |Etkilenen kaynağın kaynak adı. |
-| resourceType |E | |Etkilenen kaynağın kaynak türü. |
-| resourceId |E | |Etkilenen kaynağın kaynak KIMLIĞI. |
-| resourceRegion |E | |Etkilenen kaynağın bölgesi veya konumu. |
-| Portal bağlantısı |E | |Portal kaynağı özet sayfasına doğrudan bağlantı. |
+| subscriptionId |Y | |Azure abonelik KIMLIĞI. |
+| resourceGroupName |Y | |Etkilenen kaynak için kaynak grubunun adı. |
+| resourceName |Y | |Etkilenen kaynağın kaynak adı. |
+| resourceType |Y | |Etkilenen kaynağın kaynak türü. |
+| resourceId |Y | |Etkilenen kaynağın kaynak KIMLIĞI. |
+| resourceRegion |Y | |Etkilenen kaynağın bölgesi veya konumu. |
+| Portal bağlantısı |Y | |Portal kaynağı özet sayfasına doğrudan bağlantı. |
 | properties |N |İsteğe Bağlı |Olayla ilgili ayrıntıları içeren bir anahtar/değer çiftleri kümesi. Örneğin, `Dictionary<String, String>`. Özellikler alanı isteğe bağlıdır. Özel bir kullanıcı arabirimi veya mantıksal uygulama tabanlı iş akışında, kullanıcılar yük aracılığıyla geçirilebilecek anahtar/değer çiftleri girebilir. Özel özellikleri Web kancasına geri almanın alternatif bir yolu, Web kancası URI 'sinin kendisi (sorgu parametreleri olarak) aracılığıyla yapılır. |
 
 > [!NOTE]
-> **Properties** alanını yalnızca [Azure Izleyici REST API 'leri](https://msdn.microsoft.com/library/azure/dn933805.aspx)kullanarak ayarlayabilirsiniz.
+> **Properties** alanını yalnızca [Azure Izleyici REST API 'leri](/rest/api/monitor/alertrules)kullanarak ayarlayabilirsiniz.
 >
 >
 
@@ -104,4 +105,3 @@ POST işlemi, ölçüm tabanlı tüm uyarılar için aşağıdaki JSON yükünü
 * Bir [Azure uyarısından Twilio aracılığıyla SMS iletisi göndermek için mantıksal uygulamayı nasıl kullanacağınızı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)öğrenin.
 * Bir [Azure uyarısından bir bolluk iletisi göndermek için mantıksal uygulamayı nasıl kullanacağınızı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)öğrenin.
 * Bir Azure [uyarısından Azure kuyruğuna ileti göndermek için mantıksal uygulamayı nasıl kullanacağınızı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)öğrenin.
-

@@ -5,14 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/17/2019
+ms.date: 07/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24e754a583125c962e67f849edcec8f8609746a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abf4cb33fa953ec9a257397551b3d17752fe67f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464921"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070723"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET ile Azure depolama 'da kapsayıcı oluşturma veya silme
 
@@ -34,10 +35,20 @@ Bir kapsayıcının URI 'SI şu biçimdedir:
 
 Bir kapsayıcı oluşturmak için aşağıdaki yöntemlerden birini çağırın:
 
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+- [Oluştur](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
+- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
+- [Createıfnotexists çağırmanız](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
+- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
 - [Oluştur](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [Createıfnotexists çağırmanız](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
+---
 
 Aynı ada sahip bir kapsayıcı zaten varsa **Create** ve **createasync** yöntemleri bir özel durum oluşturur.
 
@@ -46,6 +57,12 @@ Aynı ada sahip bir kapsayıcı zaten varsa **Create** ve **createasync** yönte
 Kapsayıcılar depolama hesabının hemen altında oluşturulur. Bir kapsayıcıyı diğerinin altına yerleştirmek mümkün değildir.
 
 Aşağıdaki örnek zaman uyumsuz olarak bir kapsayıcı oluşturur:
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBlobClient blobClient)
@@ -77,16 +94,23 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
     return container;
 }
 ```
+---
 
 ## <a name="create-the-root-container"></a>Kök kapsayıcısını oluşturma
 
-Kök kapsayıcı, depolama hesabınız için varsayılan kapsayıcı görevi görür. Her depolama hesabının bir kök kapsayıcısı olabilir ve bu $root adı verilmelidir *.* Kök kapsayıcıyı açıkça oluşturmanız veya silmeniz gerekir.
+Kök kapsayıcı, depolama hesabınız için varsayılan kapsayıcı görevi görür. Her depolama hesabının bir kök kapsayıcısı olabilir ve bu *$root*adı verilmelidir. Kök kapsayıcısının açık olarak oluşturulması veya silinmesi gerekir.
 
-Kök kapsayıcı adını dahil etmeden kök kapsayıcısında depolanan bir blob 'a başvurabilirsiniz. Kök kapsayıcı, depolama hesabı hiyerarşisinin en üst düzeyindeki bir bloba başvurmanızı sağlar. Örneğin, kök kapsayıcıda bulunan bir Blobun aşağıdaki şekilde başvurabilirsiniz:
+Kök kapsayıcı adını dahil etmeden kök kapsayıcısında depolanan bir blob 'a başvurabilirsiniz. Kök kapsayıcı, depolama hesabı hiyerarşisinin en üst düzeyindeki bir bloba başvurmanızı sağlar. Örneğin, kök kapsayıcıda aşağıdaki şekilde olan bir bloba başvurabilirsiniz:
 
 `https://myaccount.blob.core.windows.net/default.html`
 
 Aşağıdaki örnek, eş zamanlı olarak kök kapsayıcısını oluşturur:
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateRootContainer":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static void CreateRootContainer(CloudBlobClient blobClient)
@@ -113,23 +137,40 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
     }
 }
 ```
+---
 
 ## <a name="delete-a-container"></a>Kapsayıcı silme
 
 .NET 'teki bir kapsayıcıyı silmek için aşağıdaki yöntemlerden birini kullanın:
 
-- [Sil](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+- [Silme](/dotnet/api/azure.storage.blobs.blobcontainerclient.delete)
+- [DeleteAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteasync)
+- [Deleteıfexists](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexists)
+- [Deleteıfexistsasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexistsasync)
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+- [Silme](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
 - [Deleteıfexists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
 - [Deleteıfexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
+---
 
 **Delete** ve **DeleteAsync** yöntemleri, kapsayıcı yoksa bir özel durum oluşturur.
 
 **Deleteifexists** ve **Deleteifvartsasync** yöntemleri kapsayıcının silinip silinmediğini gösteren bir Boole değeri döndürür. Belirtilen kapsayıcı yoksa, bu yöntemler kapsayıcının silinmediğini göstermek için **false** döndürür.
 
-Bir kapsayıcıyı sildikten sonra, en az 30 saniye için aynı ada sahip bir kapsayıcı ve muhtemelen daha uzun bir kapsayıcı oluşturamazsınız. Kapsayıcı silinirken, aynı ada sahip bir kapsayıcı oluşturma girişimi, HTTP hata kodu 409 (çakışma) ile başarısız olur. Kapsayıcı silinirken, kapsayıcıda veya içerdiği bloblarda bulunan diğer işlemler 404 (bulunamadı) HTTP hata kodu ile başarısız olur.
+Bir kapsayıcıyı sildikten sonra, *en az* 30 saniye için aynı ada sahip bir kapsayıcı oluşturamazsınız. Aynı ada sahip bir kapsayıcı oluşturulmaya çalışılması, HTTP hata kodu 409 (çakışma) ile başarısız olur. Kapsayıcıda veya içerdiği bloblarda bulunan diğer işlemler, HTTP hata kodu 404 (bulunamadı) ile başarısız olur.
 
 Aşağıdaki örnek, belirtilen kapsayıcıyı siler ve kapsayıcı yoksa özel durumu işler:
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient, string containerName)
@@ -151,8 +192,15 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
     }
 }
 ```
+---
 
-Aşağıdaki örnek, belirtilen bir önek ile başlayan tüm kapsayıcıların nasıl silineceğini gösterir. Kapsayıcıda mevcut bir kira varsa, örnek kirayı keser.
+Aşağıdaki örnek, belirtilen bir önek ile başlayan tüm kapsayıcıların nasıl silineceğini gösterir.
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteContainersWithPrefixAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
@@ -163,11 +211,6 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
         foreach (var container in blobClient.ListContainers(prefix))
         {
             Console.WriteLine("\tContainer:" + container.Name);
-            if (container.Properties.LeaseState == LeaseState.Leased)
-            {
-                await container.BreakLeaseAsync(null);
-            }
-
             await container.DeleteAsync();
         }
 
@@ -181,6 +224,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
     }
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073935"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell kullanarak sanal makinelere birden çok IP adresi atama
 
@@ -33,7 +34,7 @@ Bu makalede, PowerShell kullanarak Azure Resource Manager dağıtım modeli arac
 
 Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi ile örnek VM oluşturma açıklanmaktadır. Değer değerlerini uygulamanız için gereken şekilde değiştirin.
 
-1. Bir PowerShell komut istemi açın ve bu bölümün içindeki kalan adımları tek bir PowerShell oturumunda doldurun. Zaten PowerShell 'i yükleyip yapılandırdıysanız, [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview) makalesindeki adımları uygulayın.
+1. Bir PowerShell komut istemi açın ve bu bölümün içindeki kalan adımları tek bir PowerShell oturumunda doldurun. Zaten PowerShell 'i yükleyip yapılandırdıysanız, [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/) makalesindeki adımları uygulayın.
 2. Komutuyla hesabınızda oturum açın `Connect-AzAccount` .
 3. *Myresourcegroup* ve *westus* değerini, seçtiğiniz bir ad ve konum ile değiştirin. Bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -195,7 +196,7 @@ Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi i
 
 Aşağıdaki adımları tamamlayarak Azure ağ arabirimine özel ve genel IP adresleri ekleyebilirsiniz. Aşağıdaki bölümlerde yer alan örneklerde, bu makaledeki [senaryoda](#scenario) AÇıKLANAN üç IP yapılandırmasına sahıp bir VM zaten var, ancak bunu yapmanız gerekli değildir.
 
-1. Bir PowerShell komut istemi açın ve bu bölümün içindeki kalan adımları tek bir PowerShell oturumunda doldurun. Zaten PowerShell 'i yükleyip yapılandırdıysanız, [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview) makalesindeki adımları uygulayın.
+1. Bir PowerShell komut istemi açın ve bu bölümün içindeki kalan adımları tek bir PowerShell oturumunda doldurun. Zaten PowerShell 'i yükleyip yapılandırdıysanız, [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/) makalesindeki adımları uygulayın.
 2. Aşağıdaki $Variables "Values" değerini, IP adresi eklemek istediğiniz NIC 'nin adı ve NIC 'nin bulunduğu kaynak grubu ve konuma değiştirin:
 
    ```powershell

@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 38edbfcb8800843b43678e99d6817595ccba3235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76157279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071531"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-tek sunucu
 PostgreSQL için Azure veritabanı sunucu güvenlik duvarı, hangi bilgisayarların izin olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.
@@ -64,10 +65,13 @@ PostgreSQL için Microsoft Azure veritabanına erişim beklendiği gibi davranm�
 
    * İstemci bilgisayarlarınız yerine statik IP adresleme alın ve statik IP adresini bir güvenlik duvarı kuralı olarak ekleyin.
 
-* **Sunucunun IP 'si genel gibi görünür:** PostgreSQL için Azure veritabanı sunucusuna yapılan bağlantılar, genel olarak erişilebilen bir Azure ağ geçidiyle yönlendirilir. Bununla birlikte gerçek sunucu IP'si güvenlik duvarı tarafından korunur. Daha fazla bilgi için [bağlantı mimarisi makalesi](concepts-connectivity-architecture.md) adresini ziyaret edin. 
+* **Sunucunun IP 'si genel gibi görünür:** PostgreSQL için Azure veritabanı sunucusuna yapılan bağlantılar, genel olarak erişilebilen bir Azure ağ geçidiyle yönlendirilir. Bununla birlikte gerçek sunucu IP'si güvenlik duvarı tarafından korunur. Daha fazla bilgi için [bağlantı mimarisi makalesi](concepts-connectivity-architecture.md) adresini ziyaret edin.
+
+* **Azure kaynağından izin VERILEN IP bağlantısı yapılamıyor:** **Microsoft. SQL** hizmet uç noktasının, bağlandığınız alt ağ için etkin olup olmadığını denetleyin. **Microsoft. SQL** etkinse, bu alt ağda yalnızca [VNET hizmet uç noktası kuralları](concepts-data-access-and-security-vnet.md) kullanmak istediğinizi belirtir.
+
+   Örneğin, **Microsoft. SQL** özellikli ancak karşılık gelen VNET kuralına sahip bir alt ağda Azure VM 'sinden bağlanıyorsanız aşağıdaki hatayı görebilirsiniz:`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları oluşturma makaleleri için bkz.:
 * [Azure portal kullanarak PostgreSQL için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-using-portal.md)
 * [Azure CLı kullanarak PostgreSQL için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-using-cli.md)
-- [PostgreSQL için Azure veritabanı 'ndaki VNet hizmet uç noktaları](./concepts-data-access-and-security-vnet.md)
+* [PostgreSQL için Azure veritabanı 'ndaki VNet hizmet uç noktaları](./concepts-data-access-and-security-vnet.md)

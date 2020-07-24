@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 1d1ac838befc905c3c2b860551b26928f5114e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071919"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES ön ayarlarını özelleştirerek gelişmiş kodlama gerçekleştirme 
 
@@ -30,7 +30,7 @@ Bu konuda Media Encoder Standard önayarlarının nasıl özelleştirileceği g�
 XML önayarı kullanıyorsanız, aşağıdaki XML örneklerinde gösterildiği gibi öğelerin sırasını koruduğunuzdan emin olun (örneğin, keyFrameInterval, manzara 'nin önüne gelmelidir).
 
 > [!NOTE] 
-> Media Encoder Standard Gelişmiş Media Services V2 özelliklerinin birçoğu şu anda v3 'de kullanılamaz. Daha fazla bilgi için bkz. [özellik boşlukları](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis).
+> Media Encoder Standard Gelişmiş Media Services V2 özelliklerinin birçoğu şu anda v3 'de kullanılamaz. Daha fazla bilgi için bkz. [özellik boşlukları](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Göreli boyutlar için destek
 
@@ -241,7 +241,7 @@ Bu bölümde, küçük resim üreten bir önayarın nasıl özelleştirileceği 
 </Preset>
 ```
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Aşağıdaki noktalara dikkat edilmelidir:
 

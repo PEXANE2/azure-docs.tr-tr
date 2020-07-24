@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832503"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073027"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell'e Genel Bakış
 Azure Cloud Shell, Azure kaynaklarını yönetmek için kullanabileceğiniz etkileşimli, kimliği doğrulanmış ve tarayıcı ile erişilebilen bir kabuktur.
@@ -26,7 +27,7 @@ Bu hizmet, Bash veya PowerShell ile çalışma şeklinize en uygun kabuk deneyim
 
 Aşağıya tıklayarak shell.azure.com 'tan deneyin.
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)
 
 Cloud Shell simgesini kullanarak Azure portal deneyin.
 
@@ -60,14 +61,14 @@ Cloud Shell, açık kaynak Monako düzenleyicisine bağlı olarak tümleşik bir
 
 ### <a name="integrated-with-docsmicrosoftcom"></a>Docs.microsoft.com ile tümleşik
 
-[Docs.Microsoft.com](https://docs.microsoft.com)üzerinde barındırılan belgelerden doğrudan Cloud Shell kullanabilirsiniz. [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/overview) ve [Azure CLI belgelerinde](https://docs.microsoft.com/cli/azure) tümleşiktir-tam kapsamlı kabuk deneyimini açmak için bir kod parçacığında "dene" düğmesine tıklayın. 
+[Docs.Microsoft.com](https://docs.microsoft.com)üzerinde barındırılan belgelerden doğrudan Cloud Shell kullanabilirsiniz. [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/) ve [Azure CLI belgelerinde](https://docs.microsoft.com/cli/azure) tümleşiktir-tam kapsamlı kabuk deneyimini açmak için bir kod parçacığında "dene" düğmesine tıklayın. 
 
 ### <a name="multiple-access-points"></a>Birden çok erişim noktası
 Cloud Shell, tarafından kullanılabilen esnek bir araçtır:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/)
 * [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure Hesap uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

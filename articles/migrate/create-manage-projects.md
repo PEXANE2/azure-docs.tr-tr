@@ -2,13 +2,13 @@
 title: Azure Geçişi projelerini oluşturma ve yönetme
 description: Azure geçişi 'nde projeleri bulun, oluşturun, yönetin ve silin.
 ms.topic: how-to
-ms.date: 04/19/2020
-ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071802"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Geçişi projelerini oluşturma ve yönetme
 
@@ -65,7 +65,6 @@ Aşağıdaki gibi silin:
     - Kaynak türü **Microsoft. Migrate/migrateprojects**.
     - Kaynak grubu Azure geçişi projesi tarafından özel olarak kullanılıyorsa, tüm kaynak grubunu silebilirsiniz.
 
-
 Şunlara dikkat edin:
 
 - Sildiğinizde, hem proje hem de bulunan makineler ile ilgili meta veriler silinir.
@@ -73,6 +72,7 @@ Aşağıdaki gibi silin:
 - Bir Azure Log Analytics çalışma alanıyla bağımlılık Analizi kullanıyorsanız:
     - Sunucu değerlendirmesi aracına bir Log Analytics çalışma alanı eklediyseniz, çalışma alanı otomatik olarak silinmez. Aynı Log Analytics çalışma alanı birden çok senaryo için kullanılabilir.
     - Log Analytics çalışma alanını silmek istiyorsanız, bunu el ile yapın.
+- Proje silme işlemi geri alınamaz. Silinen nesneler kurtarılamaz.
 
 ### <a name="delete-a-workspace-manually"></a>Çalışma alanını el ile silme
 

@@ -4,11 +4,12 @@ description: Azure Izleyici 'yi yönlendirin ve verileri Grafana içinde görün
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672217"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073465"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana 'de Azure hizmetlerinizi izleyin
 Artık Azure [izleyici veri kaynağı eklentisini](https://grafana.com/plugins/grafana-azure-monitor-datasource)kullanarak [Grafana](https://grafana.com/) adresinden Azure hizmetlerini ve uygulamalarını izleyebilirsiniz. Eklenti, çeşitli Günlükler ve ölçümler de dahil olmak üzere Azure Izleyici tarafından toplanan uygulama performans verilerini toplar. Daha sonra bu verileri Grafana panonuzda görüntüleyebilirsiniz.
@@ -23,7 +24,7 @@ Yerel bir Grafana sunucusu kurmak için [yerel ortamınıza Grafana indirip yük
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Azure 'da Azure Market aracılığıyla Grafana ayarlama
 1. Azure Marketi ' ne gidin ve Grafana by Grafana Labs ' i seçin.
 
-2. Adları ve ayrıntıları girin. Yeni bir kaynak grubu oluşturun. VM Kullanıcı adı, VM parolası ve Grafana Server yönetici parolası için seçtiğiniz değerleri izleyin.  
+2. Adları ve ayrıntıları girin. Yeni bir kaynak grubu oluşturma. VM Kullanıcı adı, VM parolası ve Grafana Server yönetici parolası için seçtiğiniz değerleri izleyin.  
 
 3. VM boyutu ve depolama hesabı seçin.
 
@@ -58,9 +59,9 @@ Başarıyla oturum açtıktan sonra, Azure Izleyici veri kaynağı eklentisinin 
 2. Veri kaynağı için bir ad seçin ve açılan menüden tür olarak **Azure izleyici** 'yi seçin.
 
 3. Hizmet sorumlusu oluşturma-Grafana Azure Izleyici API 'Lerine bağlanmak ve veri toplamak için Azure Active Directory hizmet sorumlusu kullanır. Azure kaynaklarınıza erişimi yönetmek için mevcut bir hizmet sorumlusu oluşturmanız veya kullanmanız gerekir.
-    * Hizmet sorumlusu oluşturmak için [Bu yönergelere](../../azure-resource-manager/resource-group-create-service-principal-portal.md) bakın. Kiracı KIMLIĞINIZI (dizin KIMLIĞI), istemci KIMLIĞINI (uygulama KIMLIĞI) ve istemci gizli anahtarını (uygulama anahtarı değeri) kopyalayın ve kaydedin.
-    * İzlemek istediğiniz abonelik, kaynak grubu veya kaynaktaki Azure Active Directory uygulamasına okuyucu rolü atamak için bkz. [role uygulama atama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) . 
-    Log Analytics API 'SI, okuyucu rolü izinlerini içeren ve buna ekleyen [Log Analytics okuyucu rolünü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)gerektirir.
+    * Hizmet sorumlusu oluşturmak için [Bu yönergelere](../../active-directory/develop/howto-create-service-principal-portal.md) bakın. Kiracı KIMLIĞINIZI (dizin KIMLIĞI), istemci KIMLIĞINI (uygulama KIMLIĞI) ve istemci gizli anahtarını (uygulama anahtarı değeri) kopyalayın ve kaydedin.
+    * İzlemek istediğiniz abonelik, kaynak grubu veya kaynaktaki Azure Active Directory uygulamasına okuyucu rolü atamak için bkz. [role uygulama atama](../../active-directory/develop/howto-create-service-principal-portal.md) . 
+    Log Analytics API 'SI, okuyucu rolü izinlerini içeren ve buna ekleyen [Log Analytics okuyucu rolünü](../../role-based-access-control/built-in-roles.md#log-analytics-reader)gerektirir.
 
 4. Kullanmak istediğiniz API 'lere bağlantı ayrıntılarını sağlayın. Tümüne veya bazılarına bağlanabilirsiniz. 
     * Azure Izleyici 'de hem ölçümlere hem de günlüklere bağlanıyorsanız, **Azure İzleyici API 'Siyle aynı ayrıntıları**seçerek aynı kimlik bilgilerini yeniden kullanabilirsiniz.
@@ -158,4 +159,3 @@ Azure 'da bir Grafana ortamı oluşturduysanız, bunları kullanıp kullanmayaca
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Izleyici ölçümlerine genel bakış](data-platform.md)
-

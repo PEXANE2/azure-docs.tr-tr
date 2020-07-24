@@ -1,32 +1,43 @@
 ---
-title: TLS-Hyperscale (Citus)-PostgreSQL için Azure veritabanı
+title: Aktarım Katmanı Güvenliği (TLS)-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
 description: PostgreSQL için Azure veritabanı-hiper ölçek (Citus) ve ilişkili uygulamaları, TLS bağlantılarını düzgün şekilde kullanacak şekilde yapılandırmak için yönergeler ve bilgiler.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 659f86a107e4b08db4ec5195635ea32d2260d677
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071467"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda TLS 'yi yapılandırma-hiper ölçek (Citus)
-Hiper ölçek (Citus) düzenleyici düğümüne yönelik istemci uygulaması bağlantıları, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS) gerektirir. Veritabanı sunucunuz ile istemci uygulamalarınız arasında TLS bağlantılarının uygulanması, sunucu ile uygulamanız arasındaki veri akışını şifreleyerek "ortadaki adam" saldırılarına karşı korunmaya yardımcı olur.
+Hiper ölçek (Citus) düzenleyici düğümü, istemci uygulamalarının Aktarım Katmanı Güvenliği (TLS) ile bağlanmasını gerektirir. Veritabanı sunucusu ile istemci uygulamaları arasında TLS kullanılması, verilerin aktarım sırasında gizli kalmasına yardımcı olur. Aşağıda açıklanan ek doğrulama ayarları Ayrıca "ortadaki adam" saldırılarına karşı koruma sunar.
 
 ## <a name="enforcing-tls-connections"></a>TLS bağlantılarını zorlama
-Azure portal aracılığıyla sağlanan PostgreSQL için Azure veritabanı sunucuları için, TLS bağlantılarının uygulanması varsayılan olarak etkindir. 
+Uygulamalar, bir bağlantının hedef veritabanını ve ayarlarını belirlemek için bir "bağlantı dizesi" kullanır. Farklı istemciler farklı ayarlar gerektirir. Ortak istemciler tarafından kullanılan bağlantı dizelerinin listesini görmek için, Azure portal sunucu grubunuzun **bağlantı dizeleri** bölümüne bakın.
 
-Benzer şekilde, Azure portal sunucunuz altındaki "bağlantı dizeleri" ayarlarında önceden tanımlanmış olan bağlantı dizeleri, TLS kullanarak veritabanı sunucunuza bağlanmak için gereken ortak diller için gerekli parametreleri içerir. TLS parametresi bağlayıcıya göre değişir; Örneğin, "SSL = true" veya "sslmode = gerektir" veya "sslmode = Required" ve diğer Çeşitlemeler.
+TLS parametreleri `ssl` ve `sslmode` bağlayıcının özelliklerine göre farklılık gösterir, örneğin `ssl=true` veya `sslmode=require` veya `sslmode=required` .
 
 ## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>Uygulamanızın veya çerçevesinin TLS bağlantılarını desteklediğinden emin olun
-Veritabanı Hizmetleri için PostgreSQL kullanan bazı uygulama çerçeveleri, yükleme sırasında varsayılan olarak TLS 'yi etkinleştirmez. PostgreSQL sunucunuz TLS bağlantılarını zorluyor, ancak uygulama TLS için yapılandırılmamışsa, uygulama veritabanı sunucunuza bağlanamadan başarısız olabilir. TLS bağlantılarının nasıl etkinleştirileceğini öğrenmek için uygulamanızın belgelerine başvurun.
+Bazı uygulama çerçeveleri, PostgreSQL bağlantıları için varsayılan olarak TLS 'yi etkinleştirmez. Bununla birlikte, güvenli bağlantı olmadan bir uygulama bir Hyperscale (Citus) düzenleyici düğümüne bağlanamaz. TLS bağlantılarının nasıl etkinleştirileceğini öğrenmek için uygulamanızın belgelerine başvurun.
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>TLS bağlantısı için sertifika doğrulaması gerektiren uygulamalar
-Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından (. cer) oluşturulan yerel bir sertifika dosyası gerektirir. PostgreSQL için Azure veritabanı 'na bağlanma sertifikası-hiper ölçek (Citus) konumunda bulunur https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Sertifika dosyasını indirin ve tercih ettiğiniz konuma kaydedin.
+Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından (. cer) oluşturulan yerel bir sertifika dosyası gerektirir. PostgreSQL için Azure veritabanı 'na bağlanma sertifikası-hiper ölçek (Citus) konumunda bulunur https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Sertifika dosyasını indirin ve tercih ettiğiniz konuma kaydedin.
+
+> [!NOTE]
+>
+> Sertifikanın özgünlüğünü denetlemek için, OpenSSL komut satırı aracını kullanarak SHA-256 parmak izini doğrulayabilirsiniz:
+>
+> ```sh
+> openssl x509 -in DigiCertGlobalRootCA.crt.pem -noout -sha256 -fingerprint
+>
+> # should output:
+> # 43:48:A0:E9:44:4C:78:CB:26:5E:05:8D:5E:89:44:B4:D8:4F:96:62:BD:26:DB:25:7F:89:34:A4:43:C7:01:61
+> ```
 
 ### <a name="connect-using-psql"></a>Psql kullanarak bağlanma
 Aşağıdaki örnek, psql komut satırı yardımcı programını kullanarak Hyperscale (Citus) Düzenleyicisi düğümüne nasıl bağlanılacağını gösterir. `sslmode=verify-full`TLS sertifikası doğrulamasını zorlamak için bağlantı dizesi ayarını kullanın. Yerel sertifika dosya yolunu `sslrootcert` parametreye geçirin.

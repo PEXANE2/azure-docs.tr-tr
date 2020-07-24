@@ -4,16 +4,17 @@ description: Microsoft Azure otomatik ölçeklendirme
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9ba94d9990e494a8d3e68bbcd7c176bb30e6ce2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073489"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure otomatik ölçeklendirmeyi genel bakış
 Bu makalede, otomatik ölçeklendirme Microsoft Azure, avantajları ve kullanmaya nasıl başladıklarından bazıları açıklanmaktadır.  
 
-Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)ve [Azure Veri Gezgini kümeleri](https://docs.microsoft.com/azure/data-explorer/)için geçerlidir.
+Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [API Management Hizmetleri](../../api-management/api-management-key-concepts.md)ve [Azure Veri Gezgini kümeleri](/azure/data-explorer/)için geçerlidir.
 
 > [!NOTE]
 > Azure 'da iki otomatik ölçeklendirme yöntemi vardır. Otomatik ölçek 'in daha eski bir sürümü, sanal makineler (kullanılabilirlik kümeleri) için geçerlidir. Bu özellik sınırlı desteğe sahiptir ve daha hızlı ve daha güvenilir otomatik ölçeklendirme desteği için sanal makine ölçek kümelerine geçiş yapmanızı öneririz. Bu makaleye, eski teknolojinin kullanımına ilişkin bir bağlantı eklenmiştir.  
@@ -37,7 +38,7 @@ Sanal Makine Ölçek Kümeleri, Azure tanılama aracılarından telemetri verile
 ## <a name="custom-metrics"></a>Özel ölçümler
 Ayrıca, uygulamanızın yayılacağı özel ölçümlerinizi de kullanabilirsiniz. Uygulamanızı, Application Insights ölçümleri gönderecek şekilde yapılandırdıysanız, ölçeklendirip ölçeklenmeyeceğini kararlamak için bu ölçülerden yararlanabilirsiniz.
 
-## <a name="time"></a>Saat
+## <a name="time"></a>Zaman
 Zamanlama tabanlı kurallar UTC 'yi temel alır. Kurallarınızı ayarlarken saat diliminizi doğru ayarlamanız gerekir.  
 
 ## <a name="rules"></a>Kurallar
@@ -73,12 +74,12 @@ Otomatik ölçeklendirme aşağıdaki terminolojiyi ve yapıyı kullanır.
 
 ![Azure otomatik ölçeklendirme ayarı, profili ve kural yapısı](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
 
-Yapılandırılabilir alanlar ve açıklamaların tam listesi [Otomatik ölçeklendirme REST API](https://msdn.microsoft.com/library/dn931928.aspx)kullanılabilir.
+Yapılandırılabilir alanlar ve açıklamaların tam listesi [Otomatik ölçeklendirme REST API](/rest/api/monitor/autoscalesettings)kullanılabilir.
 
 Kod örnekleri için bkz.
 
 * [VM Ölçek Kümeleri için Kaynak Yöneticisi şablonları kullanarak gelişmiş otomatik ölçeklendirme yapılandırması](autoscale-virtual-machine-scale-sets.md)  
-* [Otomatik ölçeklendirme REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Otomatik ölçeklendirme REST API](/rest/api/monitor/autoscalesettings)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>Yatay vs dikey ölçekleme
 Otomatik ölçeklendirme yalnızca, sanal makine örneği sayısında artış ("Out") veya azalma ("ın") olan yatay olarak ölçeklendirilir.  Yükü işlemek için büyük olasılıkla binlerce VM çalıştırmanızı sağlayan bir bulut durumunda yatay daha esnektir.
@@ -88,30 +89,29 @@ Buna karşılık dikey ölçeklendirme farklıdır. Aynı sayıda VM 'yi tutar, 
 ## <a name="methods-of-access"></a>Erişim yöntemleri
 Otomatik ölçeklendirmeyi kullanarak ayarlama
 
-* [Azure portalındaki](autoscale-get-started.md)
-* [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [Azure Portal](autoscale-get-started.md)
+* [PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 * [Platformlar arası Komut Satırı Arabirimi (CLI)](../samples/cli-samples.md#autoscale)
-* [Azure İzleyici REST API'si](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Azure İzleyici REST API'si](/rest/api/monitor/autoscalesettings)
 
 ## <a name="supported-services-for-autoscale"></a>Otomatik ölçeklendirme için desteklenen hizmetler
 | Hizmet | Şema & belgeleri |
 | --- | --- |
 | Web Apps |[Ölçeklendirme Web Apps](autoscale-get-started.md) |
 | Cloud Services |[Bulut hizmetini otomatik ölçeklendirme](../../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Sanal makineler: klasik |[Klasik sanal makine kullanılabilirlik kümelerini ölçeklendirme](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Sanal makineler: klasik |[Klasik sanal makine kullanılabilirlik kümelerini ölçeklendirme](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Sanal makineler: Windows ölçek kümeleri |[Windows 'da sanal makine ölçek kümelerini ölçeklendirme](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Sanal makineler: Linux ölçek kümeleri |[Linux 'ta sanal makine ölçek kümelerini ölçeklendirme](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Sanal makineler: Windows örneği |[VM Ölçek Kümeleri için Kaynak Yöneticisi şablonları kullanarak gelişmiş otomatik ölçeklendirme yapılandırması](autoscale-virtual-machine-scale-sets.md) |
-| API Management hizmeti|[Bir Azure API Management örneğini otomatik olarak ölçeklendirme](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
-| Azure Veri Gezgini kümeleri|[Değişen talebe uyum sağlamak için Azure Veri Gezgini kümeleri ölçeklendirmeyi yönetme](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
-| Azure App Service |[Azure App Service 'te bir uygulamayı ölçeklendirme](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
-| Logic Apps |[Tümleştirme hizmeti ortamı (ıSE) kapasitesi ekleniyor](https://docs.microsoft.com/azure/logic-apps/ise-manage-integration-service-environment#add-ise-capacity)|
+| API Management hizmeti|[Bir Azure API Management örneğini otomatik olarak ölçeklendirme](../../api-management/api-management-howto-autoscale.md)
+| Azure Veri Gezgini kümeleri|[Değişen talebe uyum sağlamak için Azure Veri Gezgini kümeleri ölçeklendirmeyi yönetme](/azure/data-explorer/manage-cluster-horizontal-scaling)|
+| Azure App Service |[Azure App Service 'te bir uygulamayı ölçeklendirme](../../app-service/manage-scale-up.md)|
+| Logic Apps |[Tümleştirme hizmeti ortamı (ıSE) kapasitesi ekleniyor](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
 ## <a name="next-steps"></a>Sonraki adımlar
 Otomatik ölçeklendirme hakkında daha fazla bilgi edinmek için, daha önce listelenen otomatik ölçeklendirme Izlenecek yolları kullanın veya aşağıdaki kaynaklara bakın:
 
 * [Azure Izleyici otomatik ölçeklendirme ortak ölçümleri](autoscale-common-metrics.md)
 * [En iyi Azure İzleyici otomatik ölçeklendirme yöntemleri](autoscale-best-practices.md)
 * [E-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](autoscale-webhook-email.md)
-* [Otomatik ölçeklendirme REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Otomatik ölçeklendirme REST API](/rest/api/monitor/autoscalesettings)
 * [Sanal Makine Ölçek Kümeleri otomatik ölçeklendirme sorunlarını giderme](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-

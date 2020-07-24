@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: 43fad6249d5c6f528353a819e03dd7401440e05d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391018"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073347"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,15 +53,15 @@ SQL yönetilen örneği 'nin temel özellikleri aşağıdaki tabloda gösterilmi
 |Özellik | Açıklama|
 |---|---|
 | Sürüm/derleme SQL Server | SQL Server veritabanı altyapısı (en son kararlı) |
-| Yönetilen otomatik yedeklemeler | Evet |
-| Yerleşik örnek ve veritabanı izleme ve ölçümler | Evet |
-| Otomatik yazılım düzeltme eki uygulama | Evet |
-| En son veritabanı altyapısı özellikleri | Evet |
+| Yönetilen otomatik yedeklemeler | Yes |
+| Yerleşik örnek ve veritabanı izleme ve ölçümler | Yes |
+| Otomatik yazılım düzeltme eki uygulama | Yes |
+| En son veritabanı altyapısı özellikleri | Yes |
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
-| VNet-Azure Resource Manager dağıtımı | Evet |
+| VNet-Azure Resource Manager dağıtımı | Yes |
 | VNet-klasik dağıtım modeli | Hayır |
-| Portal desteği | Evet|
+| Portal desteği | Yes|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Yerleşik raporlama hizmeti (SSRS) | Azure VM üzerinde [Power BI sayfalandırılmış raporlar](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) veya konak SSRS 'yi kullanın. SQL yönetilen örneği SSRS 'yi bir hizmet olarak çalıştıramıyor olsa da, Azure sanal makinesine yüklenen bir raporlama sunucusu için [SSRS Katalog veritabanlarını](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) SQL Server kimlik doğrulaması kullanılarak barındırabilirler. |
@@ -115,105 +115,7 @@ Aşağıdaki listede İş Açısından Kritik hizmet katmanının temel özellik
 
 ## <a name="management-operations"></a>Yönetim işlemleri
 
-Azure SQL yönetilen örneği, yeni yönetilen örnekleri otomatik olarak dağıtmak, örnek özelliklerini güncelleştirmek ve artık gerekli olmadığında örnekleri silmek için kullanabileceğiniz yönetim işlemleri sağlar. Bu bölümde yönetim işlemleri ve bunların tipik süreleri hakkında bilgi sağlanır.
-
-[Azure sanal ağları içindeki dağıtımları](../../virtual-network/virtual-network-for-azure-services.md) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak IÇIN, SQL yönetilen örneği, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eden [sanal kümelere](connectivity-architecture-overview.md#high-level-connectivity-architecture)bağımlıdır. Temelde, boş bir alt ağda bulunan her yönetilen örnek dağıtımı yeni bir sanal küme oluşturma ile sonuçlanır.
-
-Dağıtılmış yönetilen örneklerin sonraki işlemleri de temel alınan sanal kümede etkileri olabilir. Bu, ek sanal makinelerin dağıtımı, Yeni dağıtımlar veya mevcut yönetilen örneklere güncelleştirmeler planlarken dikkate alınması gereken bir ek yük ile birlikte, yönetim işlemlerinin süresini etkiler.
-
-Tüm yönetim işlemleri aşağıdaki gibi kategorilere ayrılabilir:
-
-- Örnek dağıtımı (yeni örnek oluşturma).
-- Örnek Güncelleştirmesi (sanal çekirdekler veya ayrılmış depolama gibi örnek özelliklerini değiştirme.
-- Örnek silme.
-
-Genellikle, sanal kümelerdeki işlemler en uzun sürer. Sanal kümelerdeki işlemlerin süresi farklılık gösterir: aşağıda, mevcut hizmet telemetri verilerine göre genellikle tahmin edebileceğiniz değerler verilmiştir:
-
-- **Sanal küme oluşturma**: Bu örnek yönetim işlemlerinde zaman uyumlu bir adımdır. **işlemlerin %90 ' i 4 saat içinde tamamlanır**.
-- **Sanal küme yeniden boyutlandırma (genişleme veya daraltma)**: genişletme zaman uyumsuz olarak (örnek yönetim işlemleri süresince etkilenmeden) zaman uyumsuz olarak gerçekleştirilir. **küme genişletmeleri %90, en az 2,5 saat içinde tamamlanır**.
-- **Sanal küme silme**: silme işlemi zaman uyumsuz bir adımdır, ancak boş bir sanal kümede [el ile de başlatılabilir](virtual-cluster-delete.md) , bu durumda eşzamanlı olarak yürütülür. **%90, sanal küme silme işleminin 1,5 saat içinde sona ermesini**.
-
-Ayrıca, örneklerin yönetimi barındırılan veritabanlarında gerçekleştirilen işlemlerden birini de içerebilir ve bu da daha uzun süreler elde edebilir:
-
-- **Azure depolama 'dan veritabanı dosyaları iliştirme**: bu, genel amaçlı hizmet katmanında Işlem (Vcore) veya depolama ölçeği artırma veya azaltma gibi zaman uyumlu bir adımdır. **Bu işlemlerin %90 ' i 5 dakika içinde tamamlanır**.
-- **Always on kullanılabilirlik grubu dengeli dağıtım**: Bu, Işlem (sanal çekirdek) veya iş açısından kritik hizmet katmanındaki depolama ölçeklendirmesinin yanı sıra hizmet katmanını Genel Amaçlı iken iş açısından kritik (veya tam tersi) olarak değiştirme gibi zaman uyumlu bir adımdır. Bu işlemin süresi toplam veritabanı boyutuyla ve geçerli veritabanı etkinliğiyle orantılıdır (etkin işlem sayısı). Bir örneği güncelleştirme sırasında veritabanı etkinliği toplam süreye önemli bir varyans getirebilir. **Bu işlemlerin %90 ' i 220 GB/saat veya daha yüksek bir süre içinde yürütülür**.
-
-Aşağıdaki tabloda işlemler ve genel toplam süreler özetlenmektedir:
-
-|Kategori  |Çalışma  |Uzun süre çalışan segment  |Tahmini süre  |
-|---------|---------|---------|---------|
-|**Dağıtım** |Boş bir alt ağdaki ilk örnek|Sanal küme oluşturma|işlemlerin %90 ' i 4 saat içinde tamamlanır.|
-|Dağıtım |Boş olmayan bir alt ağda (örneğin, gen 4 örneklerine sahip bir alt ağdaki ilk Gen 5 örneği) başka bir donanım oluşturma örneği|Sanal küme oluşturma *|işlemlerin %90 ' i 4 saat içinde tamamlanır.|
-|Dağıtım |Boş veya boş olmayan bir alt ağda 4 sanal çekirdekler için ilk örnek oluşturma|Sanal küme oluşturma * *|işlemlerin %90 ' i 4 saat içinde tamamlanır.|
-|Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., üçüncü, vb. örnek)|Sanal küme yeniden boyutlandırma|işlemin %90 ' i 2,5 saat içinde tamamlanır.|
-|**Güncelleştir** |Örnek özelliği değişikliği (yönetici parolası, Azure AD oturum açma, Azure Hibrit Avantajı bayrağı)|YOK|En fazla 1 dakika.|
-|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını iliştirme|İşlem %90, 5 dakika içinde tamamlanır.|
-|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' i 2,5 saat içinde tamamlanır.|
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
-|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 h 5 dakika içinde tamamlanır. * *|
-|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 4 saat + saat içinde tamamlanır.|
-|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm veritabanlarının (220 GB/saat) temel aldığı 2,5 saat ile sona ermesini sağlar.|
-|**Silme**|Örnek silme|Tüm veritabanları için günlük kuyruğu yedeklemesi|%90 işlem en fazla 1 dakika içinde tamamlanır.<br>Note: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silmeyi zamanlar. * * *|
-|Silme|Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak)|Sanal küme silme|İşlem %90, en fazla 1,5 saat içinde tamamlanır.|
-
-\*Sanal küme, donanım oluşturma başına oluşturulur.
-
-\*\*4-Vçekirdekler seçeneği Haziran 2019 ' de yayımlanmıştır ve yeni bir sanal küme sürümü gerektirir. Hedef alt ağda 12 Haziran 'dan önce oluşturulan örneklere sahipseniz, 4 sanal çekirdek örneği barındırmak için yeni bir sanal küme otomatik olarak dağıtılacaktır.
-
-\*\*\*12 saat geçerli yapılandırmadır, ancak gelecekte değişebilir, bu yüzden buna çok daha fazla bağımlılık yapmayın. Bir sanal kümeyi daha önce silmeniz gerekiyorsa (örneğin, alt ağı serbest bırakmak için), bkz. [yönetilen bir örneği sildikten sonra bir alt ağı silme](virtual-cluster-delete.md).
-
-### <a name="instance-availability-during-management-operations"></a>Yönetim işlemleri sırasında örnek kullanılabilirliği
-
-Güncelleştirme **işlemleri SıRASıNDA**SQL yönetilen örneği, güncelleştirmenin sonunda gerçekleşen yük devretmenin neden olduğu kısa bir kesinti dışında kullanılabilir. Genellikle, uzun süreli işlemlerin kesintiye uğramasından, [hızlandırılmış veritabanı kurtarması](../accelerated-database-recovery.md)sayesinde 10 saniyeye kadar sürer.
-
-> [!IMPORTANT]
-> Azure SQL yönetilen örneği 'nin işlem veya depolama alanını ölçeklendirmeniz veya hizmet katmanını uzun süre çalışan işlemler (veri alma, veri işleme işleri, dizin yeniden oluşturma vb.) ile aynı anda değiştirmeniz önerilmez. İşlemin sonunda gerçekleştirilecek veritabanı yük devretmesi, devam eden tüm işlemleri iptal eder.
-
-SQL yönetilen örneği, dağıtım ve silme işlemleri sırasında istemci uygulamaları için kullanılamaz.
-
-### <a name="management-operations-cross-impact"></a>Yönetim işlemleri çapraz etki
-
-Yönetilen bir örnekteki yönetim işlemleri, aynı sanal kümenin içine yerleştirilmiş örneklerin diğer yönetim işlemlerini etkileyebilir. Bu, aşağıdakileri içerir:
-
-- Bir sanal kümede **uzun süre çalışan geri yükleme işlemleri** , aynı alt ağdaki diğer örnek oluşturma veya ölçeklendirme işlemlerini beklemeye alır.<br/>**Örnek:** Uzun süre çalışan bir geri yükleme işlemi varsa ve aynı alt ağda bir oluşturma veya ölçeklendirme isteği varsa, devam etmeden önce geri yükleme işleminin tamamlanmasını bekleneceği için bu isteğin tamamlanması daha uzun sürer.
-    
-- **Sonraki bir örnek oluşturma veya ölçeklendirme** işlemi, daha önce başlatılmış bir örnek oluşturma veya sanal küme yeniden boyutlandırmayı başlatan örnek ölçeği tarafından beklemeye konur.<br/>**Örnek:** Aynı alt ağda aynı sanal küme altında birden fazla oluşturma ve/veya ölçek isteği varsa ve bunlardan biri bir sanal küme yeniden boyutlandırmasını başlatırsa, bu isteklerin devam etmeden önce yeniden boyutlandırmanın tamamlanmasını beklemek zorunda kaldıkları için, sanal küme yeniden boyutlandırmasını gerektiren 5 + dakika sonra gönderilen tüm istekler beklenenden daha uzun olur.
-
-- **5 dakikalık bir pencerede gönderilen oluşturma/ölçeklendirme işlemleri** , toplu olarak oluşturulur ve paralel olarak yürütülür.<br/>**Örnek:** 5 dakikalık bir pencerede gönderilen tüm işlemler için yalnızca bir sanal küme yeniden boyutlandırma gerçekleştirilecek (ilk işlem isteğini yürütme saatinden ölçme). İlk gönderildikten sonra başka bir istek 5 dakikadan uzun bir süre gönderilirse, yürütme başlamadan önce sanal küme yeniden boyutlandırmanın tamamlanmasını bekler.
-
-> [!IMPORTANT]
-> Devam eden başka bir işlem nedeniyle bekletilen yönetim işlemleri, devam eden koşullar karşılandıktan sonra otomatik olarak sürdürülecek. Geçici olarak duraklatılan yönetim işlemlerini sürdürmeniz için Kullanıcı eylemi gerekli değildir.
-
-### <a name="canceling-management-operations"></a>Yönetim işlemlerini iptal etme
-
-Aşağıdaki tablo belirli yönetim işlemlerini iptal etme ve genel toplam süreleri özetler:
-
-Kategori  |Çalışma  |İptal edilebilir  |Tahmini iptal süresi  |
-|---------|---------|---------|---------|
-|Dağıtım |Örnek oluşturma |Hayır |  |
-|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |Hayır |  |
-|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Sil |Örnek silme |Hayır |  |
-|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
-
-Yönetim işlemini iptal etmek için genel bakış dikey penceresine gidin ve devam eden işlemin bildirim kutusu ' na tıklayın. Sağ taraftan, devam eden işlem içeren bir ekran görünür ve işlemi iptal etmek için bir düğme olacaktır. İlk tıkladıktan sonra yeniden tıklamalısınız ve işlemi iptal etmek istediğinizi onaylamanız istenir.
-
-[![İşlemi iptal et](./media/sql-managed-instance-paas-overview/canceling-operation.png)](./media/sql-managed-instance-paas-overview/canceling-operation.png#lightbox)
-
-İptal isteği gönderildikten ve işlendikten sonra, gönderme işlemi başarılı olduysa veya yoksa bir bildirim alırsınız.
-
-Başarıyı iptal etmek durumunda, yönetim işlemi birkaç dakika içinde iptal edilir ve hata oluşur.
-
-![İşlem sonucu iptal ediliyor](./media/sql-managed-instance-paas-overview/canceling-operation-result.png)
-
-İptal isteği başarısız olursa veya iptal düğmesi etkin değilse, yönetim işleminin iptal edilemez durumuna girdiği ve birkaç dakika içinde tamamlayacağı anlamına gelir. Yönetim işlemi tamamlanana kadar yürütmeye devam eder.
-
-> [!IMPORTANT]
-> İşlemleri iptal etme işlemi şu anda yalnızca portalda destekleniyor.
+Azure SQL yönetilen örneği, yeni yönetilen örnekleri otomatik olarak dağıtmak, örnek özelliklerini güncelleştirmek ve artık gerekli olmadığında örnekleri silmek için kullanabileceğiniz yönetim işlemleri sağlar. Yönetim işlemlerinin ayrıntılı açıklaması, [yönetilen örnek yönetimi işlemlerine genel bakış](management-operations-overview.md) sayfasında bulunabilir.
 
 ## <a name="advanced-security-and-compliance"></a>Gelişmiş koruma ve uyumluluk
 
@@ -259,7 +161,7 @@ SQL yönetilen örneği, Azure AD ile tümleştirilmiş geleneksel SQL Server ve
 
 SQL yönetilen örneği, [Azure Active Directory tümleştirmeyle](../database/authentication-aad-overview.md)veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory, çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../database/authentication-mfa-ssms-configure.md) destekler.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 SQL yönetilen örnek kimlik doğrulaması, kullanıcıların veritabanına bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:  
 
@@ -288,7 +190,7 @@ Geçiş yaklaşımı SQL yedeklemelerini Azure Blob depolamaya kullanır. Bir Az
 > [!IMPORTANT]
 > Yönetilen bir örnekten yedeklemeler, yalnızca başka bir yönetilen örneğe geri yüklenebilir. SQL Server örneğine veya Azure SQL veritabanı 'na geri yüklenemez.
 
-### <a name="database-migration-service"></a>Veritabanı geçiş hizmeti
+### <a name="database-migration-service"></a>Veritabanı Geçiş Hizmeti
 
 Azure veritabanı geçiş hizmeti, birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir. Bu hizmet, mevcut üçüncü taraf ve SQL Server veritabanlarını Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure VM 'de SQL Server taşımak için gereken görevleri basitleştirir. [Veritabanı geçiş hizmeti 'ni kullanarak şirket içi VERITABANıNıZı SQL yönetilen örneği 'ne geçirme](https://aka.ms/migratetoMIusingDMS)konusuna bakın.
 

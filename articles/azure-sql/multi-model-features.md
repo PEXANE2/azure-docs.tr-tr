@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d50a9a064e6fa279d65f196c0f031e60081d86bf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073312"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği 'nin çok modelli özellikleri
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -95,9 +95,6 @@ Belge modelleri, bazı belirli senaryolarda ilişkisel modeller yerine kullanıl
 ## <a name="spatial-features"></a>Uzamsal Özellikler
 
 Uzamsal veriler, geometrik nesnelerin fiziksel konumu ve şekli hakkındaki bilgileri temsil eder. Bu nesneler, nokta konumları veya ülkeler/bölgeler, yollar veya Lakes gibi daha karmaşık nesneler olabilir.
-
-Azure SQL ürünleri ailesi, JavaScript Nesne Gösterimi [(JSON)](https://www.json.org/) biçiminde temsil edilen verileri ayrıştırmanıza ve sorgulamanızı ve ILIŞKISEL verilerinizi JSON metni olarak dışarı aktarmayı sağlar.
-
 
  Desteklenen iki uzamsal veri türü: 
 

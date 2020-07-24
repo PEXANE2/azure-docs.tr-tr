@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.author: mithigpe
+author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: deeb47b55253b9bf1659dd5eba7bc3465602583b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072233"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Yorumlenebilirlik sınıfları birden çok SDK paketi aracılığıyla kullanıl
 
 * `azureml.contrib.interpret`, önizleme ve deneyebilecek deneysel işlevleri.
 
-`pip install azureml-interpret`Ve için `pip install azureml-interpret-contrib` Genel Kullanım Için ve `pip install azureml-contrib-interpret` oto ml 'yi kullanarak yorumlenebilirliği paketlerini alın.
+`pip install azureml-interpret` `pip install azureml-contrib-interpret` Genel kullanım için ve kullanın.
 
 
 > [!IMPORTANT]

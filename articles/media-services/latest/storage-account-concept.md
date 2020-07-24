@@ -12,11 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072010"
 ---
 # <a name="azure-storage-accounts"></a>Azure Depolama hesapları
 
@@ -31,7 +32,7 @@ En son özellikler ve performans avantajlarından yararlanabilmek için GPv2 kul
 > [!NOTE]
 > Yalnızca sık erişimli erişim katmanı Azure Media Services ile kullanım için desteklenir, ancak diğer erişim katmanları etkin bir şekilde kullanılmamış içerikte depolama maliyetlerini azaltmak için kullanılabilir.
 
-Depolama hesabınız için seçebileceğiniz farklı SKU 'Lar vardır. Daha fazla bilgi için bkz. [depolama hesapları](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Depolama hesaplarıyla denemek istiyorsanız kullanın `--sku Standard_LRS` . Ancak, üretim için bir SKU seçerken, `--sku Standard_RAGRS` iş sürekliliği için coğrafi çoğaltma sağlayan göz önünde bulundurmanız gerekir.
+Depolama hesabınız için seçebileceğiniz farklı SKU 'Lar vardır. Daha fazla bilgi için bkz. [depolama hesapları](/cli/azure/storage/account?view=azure-cli-latest). Depolama hesaplarıyla denemek istiyorsanız kullanın `--sku Standard_LRS` . Ancak, üretim için bir SKU seçerken, `--sku Standard_RAGRS` iş sürekliliği için coğrafi çoğaltma sağlayan göz önünde bulundurmanız gerekir.
 
 ## <a name="assets-in-a-storage-account"></a>Depolama hesabındaki varlıklar
 
@@ -47,8 +48,8 @@ Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı
 |Şifreleme seçeneği|Açıklama|Media Services v3|
 |---|---|---|
 |Media Services depolama şifrelemesi| AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor. |Desteklenmez. <sup>(1)</sup>|
-|[Bekleyen veriler için depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Destekleniyor.|
-|[Depolama istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmiyor.|
+|[Bekleyen veriler için depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Destekleniyor.|
+|[Depolama istemci tarafı şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmez.|
 
 <sup>1</sup> Media Services v3 'de, depolama ŞIFRELEMESI (AES-256 şifrelemesi) yalnızca, varlıklarınız Media Services V2 ile oluşturulduysa, bu da v3 'in mevcut depolama şifreli varlıklarıyla çalıştığı ancak yeni olanların oluşturulmasına izin vermediği durumlarda geriye dönük uyumluluk için desteklenir.
 
@@ -65,8 +66,8 @@ Media Services hesabının bağlı depolama hesaplarına erişim sahibi olmamas�
 
 ## <a name="azure-storage-firewall"></a>Azure depolama güvenlik duvarı
 
-Azure Media Services, Azure Storage güvenlik duvarı veya [Özel uç noktaları](https://docs.microsoft.com/azure/storage/common/storage-network-security) etkin olan depolama hesaplarını desteklemez.
+Azure Media Services, Azure Storage güvenlik duvarı veya [Özel uç noktaları](../../storage/common/storage-network-security.md) etkin olan depolama hesaplarını desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Media Services hesabınıza bir depolama hesabı eklemeyi öğrenmek için bkz. [Hesap oluşturma](create-account-cli-quickstart.md).
+Media Services hesabınıza bir depolama hesabı eklemeyi öğrenmek için bkz. [Hesap oluşturma](./create-account-howto.md).

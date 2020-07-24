@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945367"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073673"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure etkinlik günlüğü olay şeması
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan herhangi bir abonelik düzeyindeki olay hakkında öngörüler sağlar. Bu makalede etkinlik günlüğü kategorileri ve her biri için şema açıklanmaktadır. 
 
 Bu şema, günlüğe nasıl eriştiğinize bağlı olarak farklılık gösterir:
  
-- Bu makalede açıklanan şemalar, [REST API](https://docs.microsoft.com/rest/api/monitor/activitylogs)etkinlik günlüğüne eriştiğinizde yapılır. Bu Ayrıca, Azure portal bir olayı görüntülerken **JSON** seçeneğini belirlediğinizde kullanılan şemadır.
+- Bu makalede açıklanan şemalar, [REST API](/rest/api/monitor/activitylogs)etkinlik günlüğüne eriştiğinizde yapılır. Bu Ayrıca, Azure portal bir olayı görüntülerken **JSON** seçeneğini belirlediğinizde kullanılan şemadır.
 - Etkinlik günlüğünü Azure depolama 'ya veya Azure Event Hubs göndermek için bir [Tanılama ayarı](diagnostic-settings.md) kullandığınızda, şema için [depolama hesabından ve Olay Hub](#schema-from-storage-account-and-event-hubs) 'larından son bölüm şemasına bakın.
-- Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için bir [Tanılama ayarı](diagnostic-settings.md) kullandığınızda şema için bkz. [Azure izleyici veri başvurusu](https://docs.microsoft.com/azure/azure-monitor/reference/) .
+- Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için bir [Tanılama ayarı](diagnostic-settings.md) kullandığınızda şema için bkz. [Azure izleyici veri başvurusu](/azure/azure-monitor/reference/) .
 
 
 ## <a name="categories"></a>Kategoriler
-Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Portal, PowerShell, CLı ve REST API etkinlik günlüğüne eriştiğinizde, her kategori ve şema hakkında daha fazla ayrıntı için aşağıdaki bölümlere bakın. [Depolama veya Event Hubs etkinlik günlüğünü akışındaki](resource-logs-stream-event-hubs.md)şema farklı olur. , Makalenin son bölümünde, [kaynak günlükleri şemasına](diagnostic-logs-schema.md) yönelik özelliklerin bir eşlemesi sağlanır.
+Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Portal, PowerShell, CLı ve REST API etkinlik günlüğüne eriştiğinizde, her kategori ve şema hakkında daha fazla ayrıntı için aşağıdaki bölümlere bakın. [Depolama veya Event Hubs etkinlik günlüğünü akışındaki](./resource-logs.md#send-to-azure-event-hubs)şema farklı olur. , Makalenin son bölümünde, [kaynak günlükleri şemasına](./resource-logs-schema.md) yönelik özelliklerin bir eşlemesi sağlanır.
 
 | Kategori | Açıklama |
 |:---|:---|
@@ -214,7 +214,7 @@ Bu kategori, Azure 'da oluşan hizmet durumu olaylarının kaydını içerir. Bu
   }
 }
 ```
-Özelliklerindeki değerler hakkında belgeler için [hizmet durumu bildirimleri](./../../azure-monitor/platform/service-notifications.md) makalesine başvurun.
+Özelliklerindeki değerler hakkında belgeler için [hizmet durumu bildirimleri](../../service-health/service-notifications.md) makalesine başvurun.
 
 ## <a name="resource-health-category"></a>Kaynak durumu kategorisi
 Bu kategori, Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu olayının kaydını içerir. Bu kategoride göreceğiniz olay türüne bir örnek, "sanal makine sistem durumu kullanılamıyor olarak değiştirildi." dır. Kaynak sistem durumu olayları şu dört sistem durumunu temsil edebilir: kullanılabilir, kullanılamaz, düşürülmüş ve bilinmiyor. Ayrıca, kaynak sistem durumu olayları, platform tarafından başlatılan veya Kullanıcı tarafından başlatılan olarak kategorize edilebilir.
@@ -793,10 +793,10 @@ Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından ger�
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>Depolama hesabı ve Olay Hub 'larının şeması
-Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akışta, veriler [kaynak günlüğü şemasını](diagnostic-logs-schema.md)izler. Aşağıdaki tabloda, yukarıdaki şemalardan kaynak günlükleri şemasına yönelik özelliklerin bir eşlemesi verilmiştir.
+Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akışta, veriler [kaynak günlüğü şemasını](./resource-logs-schema.md)izler. Aşağıdaki tabloda, yukarıdaki şemalardan kaynak günlükleri şemasına yönelik özelliklerin bir eşlemesi verilmiştir.
 
 > [!IMPORTANT]
-> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma kaynak günlükleri bir depolama hesabına arşivlendi](diagnostic-logs-append-blobs.md) .
+> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma kaynak günlükleri bir depolama hesabına arşivlendi](./resource-logs-append-blobs.md) .
 
 
 | Kaynak günlükleri şema özelliği | Etkinlik günlüğü REST API şeması özelliği | Notlar |
@@ -808,12 +808,12 @@ Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akı�
 | resultType | durum. değer | |
 | resultSignature | alt durum. değer | |
 | resultDescription | açıklama |  |
-| durationMs | YOK | Her zaman 0 |
+| durationMs | Yok | Her zaman 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | talepler ve yetkilendirme özellikleri |  |
 | Düzey | Düzey |  |
-| location | YOK | Olayın işlendiği konum. *Bu, kaynağın konumu değildir, ancak bunun yerine olayın işlendiği yerdir. Bu özellik gelecekteki bir güncelleştirmede kaldırılacaktır.* |
+| location | Yok | Olayın işlendiği konum. *Bu, kaynağın konumu değildir, ancak bunun yerine olayın işlendiği yerdir. Bu özellik gelecekteki bir güncelleştirmede kaldırılacaktır.* |
 | Özellikler | Properties. eventProperties |  |
 | Properties. eventCategory | category | Properties. eventCategory yoksa, Kategori "Administrative" dır |
 | Properties. eventName | eventName |  |
@@ -885,4 +885,3 @@ Aşağıda bu şemayı kullanan bir olay örneği verilmiştir.
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Etkinlik günlüğü hakkında daha fazla bilgi edinin](platform-logs-overview.md)
 * [Log Analytics çalışma alanına, Azure depolama 'ya veya Olay Hub 'larına etkinlik günlüğü göndermek için bir tanılama ayarı oluşturun](diagnostic-settings.md)
-

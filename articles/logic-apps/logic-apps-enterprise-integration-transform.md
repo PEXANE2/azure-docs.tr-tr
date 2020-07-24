@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792385"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072428"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te XML biçimini dönüştüren eşlemeler oluşturma
 
@@ -29,7 +30,7 @@ Dönüştürme/eşlemeyi tümleştirme hesabınıza yükledikten sonra, mantıks
 
 **Dönüştürme kullanma adımları şunlardır**:
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Bir tümleştirme hesabı oluşturun ve buna bir eşleme ekleyin  
 
@@ -37,11 +38,11 @@ Artık önkoşulları karşıladığınıza göre, mantıksal uygulamanızı olu
 
 1. Bir mantıksal uygulama oluşturun ve [bunu eşlemeyi içeren tümleştirme hesabınıza bağlayın](../logic-apps/logic-apps-enterprise-integration-accounts.md "Tümleştirme hesabını bir Logic App 'e bağlamayı öğrenin") .
 2. Mantıksal uygulamanıza **istek** tetikleyicisi ekleme  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![Istek tetikleyicisi seçiliyken "Microsoft tarafından yönetilen API 'Leri göster" açılır listesinin ekran görüntüsü. Açılan menü, Visual Studio Enterprise tümleştirme SDK 'Sı kullanılarak oluşturulan bir mantıksal uygulamadır.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Önce **Eylem Ekle** ÖĞESINI seçerek **XML dönüştürme** eylemini ekleyin   
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   ![Istek tetikleyicisi ekranında seçili "Eylem Ekle" düğmesinin gösterildiği ekran görüntüsü.](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. Tüm eylemleri kullanmak istediğiniz bir şekilde filtrelemek için, arama kutusuna *dönüştürme* sözcüğü yazın  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![Istek tetikleyicisine eklenebilmesi için "Microsoft tarafından yönetilen API 'Leri göster" açılan menüsünde XML dönüşümü eyleminin nasıl aranacağını gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. **XML dönüştürme** eylemini seçin   
 6. Dönüştürmek istediğiniz XML **içeriğini** ekleyin. HTTP isteğinde aldığınız XML verilerini **içerik**olarak kullanabilirsiniz. Bu örnekte, mantıksal uygulamayı tetikleyen HTTP isteğinin gövdesini seçin.
 
@@ -50,9 +51,9 @@ Artık önkoşulları karşıladığınıza göre, mantıksal uygulamanızı olu
  
 
 7. Dönüştürmeyi gerçekleştirmek için kullanmak istediğiniz **haritanın** adını seçin. Eşleme, tümleştirme hesabınızda zaten olmalıdır. Önceki bir adımda, mantıksal uygulama erişiminizi eşlemenizi içeren tümleştirme hesabınıza zaten verdin.      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![Istek tetikleyicisi için dönüştürme XML ekranındaki Içerik ve harita alanlarını gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Çalışmanızı kaydetme  
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![Logic Apps tasarımcısında Kaydet düğmesini gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 Bu noktada, eşlemenizi ayarlamayı tamamladınız. Gerçek bir dünya uygulamasında, dönüştürülmüş verileri SalesForce gibi bir LOB uygulamasında depolamak isteyebilirsiniz. Dönüştürmenin çıkışını Salesforce 'a göndermek için kolayca bir eylem olarak kullanabilirsiniz. 
 

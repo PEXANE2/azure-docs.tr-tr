@@ -1,6 +1,6 @@
 ---
 title: Azure özel bağlantısında özel uç nokta oluşturma
-description: Bu hızlı başlangıçta özel uç nokta oluşturmak için bir Azure Resource Manager şablonu kullanırsınız.
+description: Bu hızlı başlangıçta özel uç nokta oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071494"
 ---
-# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak özel uç nokta oluşturma
+# <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak özel uç nokta oluşturma
 
-Bu hızlı başlangıçta özel uç nokta oluşturmak için bir Azure Resource Manager şablonu kullanırsınız.
+Bu hızlı başlangıçta özel uç nokta oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Bu hızlı başlangıcı [Azure Portal](create-private-endpoint-portal.md), [Azure POWERSHELL](create-private-endpoint-powershell.md)veya [Azure CLI](create-private-endpoint-cli.md)kullanarak da tamamlayabilirsiniz.
 
-## <a name="prerequisite"></a>Önkoşul
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Etkin aboneliği olan bir Azure hesabınızın olması gerekir. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu şablon bir Azure SQL veritabanı örneği için özel bir uç nokta oluşturur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -50,9 +52,9 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 - [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): sanal makine için ağ arabirimi.
 - [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines): özel uç noktayla SQL veritabanı örneğine özel bağlantıyı test etmek için kullanılan sanal makine.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Azure Resource Manager şablonunu Azure 'a dağıtma:
+ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt**' ı seçin. Şablon özel uç nokta, SQL veritabanı örneği, ağ altyapısı ve doğrulanacak bir sanal makine oluşturur.
 
@@ -66,7 +68,7 @@ Azure Resource Manager şablonunu Azure 'a dağıtma:
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
 > [!NOTE]
-> Azure Resource Manager şablonu, myVm<b>{UniqueId}</b> kaynağı sanal MAKINESI ve SQL veritabanı SqlServer<b>{UniqueId}</b> kaynağı için benzersiz bir ad oluşturur. **{UniqueId}** için üretilen değeri değiştirin.
+> ARM şablonu, sanal makine myVm<b>{UniqueId}</b> kaynağı IÇIN ve SQL veritabanı SqlServer<b>{UniqueId}</b> kaynağı için benzersiz bir ad oluşturur. **{UniqueId}** için üretilen değeri değiştirin.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
@@ -76,7 +78,7 @@ Azure Resource Manager şablonunu Azure 'a dağıtma:
 
 2. **Bağlan**'ı seçin. **Sanal makineye bağlan** açılır.
 
-3. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
+3. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
 
 4. İndirilen .rdp dosyasını açın.
 

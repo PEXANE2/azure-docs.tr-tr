@@ -7,17 +7,18 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664924"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073578"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
 Application Insights günlük tabanlı ölçümler, izlenen uygulamalarınızın durumunu analiz etmenize, güçlü panolar oluşturmanıza ve uyarıları yapılandırmanıza olanak tanır. İki çeşit ölçüm vardır:
 
-* Sahnenin arkasındaki [günlük tabanlı ölçümler](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) , depolanan olaylardaki [kusto sorgularına](https://docs.microsoft.com/azure/kusto/query/) çevrilir.
+* Sahnenin arkasındaki [günlük tabanlı ölçümler](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) , depolanan olaylardaki [kusto sorgularına](/azure/kusto/query/) çevrilir.
 * [Standart ölçümler](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) önceden toplanmış zaman serisi olarak depolanır.
 
 Koleksiyon sırasında *Standart ölçümler* önceden toplanmış olduğundan, sorgu zamanında daha iyi performansa sahip olurlar. Bu, dinamik olarak ve gerçek zamanlı uyarı oluşturma için daha iyi bir seçenek sunar. *Günlük tabanlı ölçümler* daha fazla boyuta sahiptir. Bu, veri analizi ve geçici Tanılamalar için üst seçenek sağlar. [Ölçüm Gezgini](metrics-getting-started.md)'nde günlük tabanlı ve standart ölçümler arasında geçiş yapmak için [ad alanı seçiciyi](metrics-getting-started.md#create-your-first-metric-chart) kullanın.
@@ -78,7 +79,7 @@ availabilityResults
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Sayı|Sayı|Çalıştırma konumu, test adı, test sonucu|
+|Count|Count|Çalıştırma konumu, test adı, test sonucu|
 
 ```Kusto
 availabilityResults
@@ -97,7 +98,7 @@ Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -113,7 +114,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -129,7 +130,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -145,7 +146,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -161,7 +162,7 @@ browserTimings
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ```Kusto
 browserTimings
@@ -183,7 +184,7 @@ Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum say�
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -198,7 +199,7 @@ Başarısız bağımlılık çağrılarının sayısı.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 dependencies
@@ -213,7 +214,7 @@ Application Insights için bir özel durum kaydettiğinizde, SDK 'nın [trackexc
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -227,7 +228,7 @@ exceptions
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 requests
@@ -242,7 +243,7 @@ Bu ölçüm, sunucu özel durumlarının sayısını gösterir.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions

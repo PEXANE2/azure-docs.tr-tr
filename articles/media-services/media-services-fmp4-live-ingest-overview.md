@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958574"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072033"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services parçalanmış MP4 canlı alma belirtimi 
 
@@ -48,7 +48,7 @@ Aşağıdaki listede, Azure Media Services içine canlı alma için uygulanan ö
 1. [1] içindeki bölüm 3.3.2, canlı alma için **Streammanifestbox** adlı isteğe bağlı bir kutu tanımlar. Azure Yük dengeleyicinin yönlendirme mantığı nedeniyle, bu kutunun kullanılması kullanım dışıdır. Media Services, Box ' a geri geldiğinde bulunmamalıdır. Bu kutu varsa Media Services sessizce yoksayar.
 1. [1] içinde 3.2.3.2 içinde tanımlanan **TrackFragmentExtendedHeaderBox** kutusu her parça IÇIN mevcut olmalıdır.
 1. **TrackFragmentExtendedHeaderBox** kutusunun sürüm 2 ' nin birden fazla veri merkezinde özdeş URL 'leri olan medya kesimleri oluşturmak IÇIN kullanılması gerekir. Parça dizini alanı, Apple HLS ve dizin tabanlı MPEG-DASH gibi dizin tabanlı akış biçimlerinin çapraz Datacenter yük devretmesi için GEREKLIDIR. Platformlar arası yük devretmeyi etkinleştirmek için, parça dizininin birden çok kodlayıcıda eşitlenmesi ve arka arkaya gelen her medya parçası için Kodlayıcı yeniden başlatmaları veya hatalarda bile 1 ile artması gerekır.
-1. [1] içindeki bölüm 3.3.6, kanala (EOS) akışın son akışını göstermek için canlı Alım sonunda gönderilebilecek **MovieFragmentRandomAccessBox** (**mfra**) adlı bir kutu tanımlar. Media Services alma mantığı nedeniyle, EOS kullanımı kullanım dışıdır ve canlı alma için **mfra** kutusu gönderilmemelidir. Gönderildiyse Media Services sessizce yoksayar. Alma noktasının durumunu sıfırlamak için [Kanal sıfırlamayı](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)kullanmanızı öneririz. Ayrıca, bir sunuyu ve akışı sonlandırmak için [Program durdur](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) ' un kullanılmasını öneririz.
+1. [1] içindeki bölüm 3.3.6, kanala (EOS) akışın son akışını göstermek için canlı Alım sonunda gönderilebilecek **MovieFragmentRandomAccessBox** (**mfra**) adlı bir kutu tanımlar. Media Services alma mantığı nedeniyle, EOS kullanımı kullanım dışıdır ve canlı alma için **mfra** kutusu gönderilmemelidir. Gönderildiyse Media Services sessizce yoksayar. Alma noktasının durumunu sıfırlamak için [Kanal sıfırlamayı](/rest/api/media/operations/channel#reset_channels)kullanmanızı öneririz. Ayrıca, bir sunuyu ve akışı sonlandırmak için [Program durdur](/rest/api/media/operations/program#stop_programs) ' un kullanılmasını öneririz.
 1. İstemci bildirimlerinin boyutunu azaltmak için MP4 parça süresi sabit olmalıdır. Sabit bir MP4 parça süresi Ayrıca, yineleme etiketlerinin kullanımıyla istemci indirme buluşsal yöntemlerini geliştirir. Süre, tamsayı olmayan kare hızları için dengede dalgalanmaya BAŞLAYABILIR.
 1. MP4 parça süresi yaklaşık 2 ila 6 saniye arasında olmalıdır.
 1. MP4 parça zaman damgaları ve dizinler (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` ve `fragment_index` ) artan sırada gelmiş olmalıdır. Yinelenen parçaların Media Services dayanıklı olmasına karşın, parçaları medya zaman çizelgesine göre yeniden sıralamak sınırlı olabilir.
@@ -70,12 +70,12 @@ Ayrıntılı gereksinimler şunlardır:
 1. HTTP POST isteği akışın sonundan önce bir TCP hatasıyla sonlandığında veya zaman aşımına uğrarsa, kodlayıcı yeni bir bağlantı kullanarak yeni bir POST isteği VERMELIDIR ve önceki gereksinimleri izlemelidir. Ayrıca, kodlayıcı akıştaki her parça için önceki iki MP4 parçalarını yeniden göndermesi ve medya zaman çizelgesinde sürekliliği bildirmeden devam ETMELIDIR. Her bir parça için son iki MP4 parçasının yeniden kesilmesi, veri kaybı olmamasını sağlar. Diğer bir deyişle, bir akış hem bir ses hem de video izlemesi içeriyorsa ve geçerli POST isteği başarısız olursa, kodlayıcı, daha önce başarıyla gönderilen ses izi için son iki parçayı yeniden bağlanmalıdır ve yeniden göndermesi ve veri kaybı olmamasını sağlamak için daha önce başarıyla gönderilen video izlemesine yönelik son iki parça olmalıdır. Kodlayıcı, yeniden bağlandığında daha sonra sona erecek olan medya parçalarının "ileri" bir arabelleğini KORUMALıDıR.
 
 ## <a name="5-timescale"></a>5. zaman ölçeği
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) , **yumuşak streamingmedia** (Section 2.2.2.1), **streamelement** (Section 2.2.2.3), **StreamFragmentElement** (Bölüm 2.2.2.6) ve **livesmil** (Bölüm 2.2.7.3.1) için zaman ölçeğinin kullanımını açıklar. Zaman ölçeği değeri yoksa, kullanılan varsayılan değer 10.000.000 ' dir (10 MHz). Kesintisiz Akış biçim belirtimi diğer zaman ölçeği değerlerinin kullanımını engelmese de, çoğu Kodlayıcı uygulaması bu varsayılan değeri (10 MHz) kullanarak Kesintisiz Akış alma verileri oluşturur. [Azure Medya dinamik paketleme](media-services-dynamic-packaging-overview.md) özelliği nedeniyle, video akışları için 90-khz zaman ölçeğini ve ses akışları Için 44,1 khz veya 48,1 kHz kullanmanızı öneririz. Farklı akışlar için farklı zaman ölçeği değerleri kullanılıyorsa, akış düzeyi zaman ölçeğinin gönderilmesi gerekır. Daha fazla bilgi için bkz. [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) , **yumuşak streamingmedia** (Section 2.2.2.1), **streamelement** (Section 2.2.2.3), **StreamFragmentElement** (Bölüm 2.2.2.6) ve **livesmil** (Bölüm 2.2.7.3.1) için zaman ölçeğinin kullanımını açıklar. Zaman ölçeği değeri yoksa, kullanılan varsayılan değer 10.000.000 ' dir (10 MHz). Kesintisiz Akış biçim belirtimi diğer zaman ölçeği değerlerinin kullanımını engelmese de, çoğu Kodlayıcı uygulaması bu varsayılan değeri (10 MHz) kullanarak Kesintisiz Akış alma verileri oluşturur. [Azure Medya dinamik paketleme](./previous/media-services-dynamic-packaging-overview.md) özelliği nedeniyle, video akışları için 90-khz zaman ölçeğini ve ses akışları Için 44,1 khz veya 48,1 kHz kullanmanızı öneririz. Farklı akışlar için farklı zaman ölçeği değerleri kullanılıyorsa, akış düzeyi zaman ölçeğinin gönderilmesi gerekır. Daha fazla bilgi için bkz. [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
 ## <a name="6-definition-of-stream"></a>6. "Stream" tanımı
 Stream, canlı bir sunu oluşturmaya, akış yük devretmesini işlemeye ve artıklık senaryolarına yönelik olarak dinamik alma işlemindeki temel işlem birimidir. Akış, tek bir izleme veya birden çok parça içerebilen bir benzersiz, parçalanmış MP4 Bitstream olarak tanımlanır. Tam canlı bir sunum, canlı kodlayıcıların yapılandırmasına bağlı olarak bir veya daha fazla akış içerebilir. Aşağıdaki örneklerde, tam canlı bir sunum oluşturmak için akışları kullanmanın çeşitli seçenekleri gösterilmektedir.
 
-**Örnek:** 
+**Örneğinde** 
 
 Müşteri, aşağıdaki ses/video bitoranını içeren canlı bir akış sunumu oluşturmak istiyor:
 

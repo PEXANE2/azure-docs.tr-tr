@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.author: mithigpe
+author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3830f65a3435c1db0291811c6306ea579bf1d896
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 04d9e82c56979a459734b8732c127922361a1100
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072384"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -129,11 +129,11 @@ Toplam (genel) özellik önem değerlerini almanıza yardımcı olması için a�
 
 ```python
 
-# you can use the training data or the test data here
-global_explanation = explainer.explain_global(x_train)
+# you can use the training data or the test data here, but test data would allow you to use Explanation Exploration
+global_explanation = explainer.explain_global(x_test)
 
 # if you used the PFIExplainer in the previous step, use the next line of code instead
-# global_explanation = explainer.explain_global(x_train, true_labels=y_test)
+# global_explanation = explainer.explain_global(x_train, true_labels=y_train)
 
 # sorted feature importance values and feature names
 sorted_global_importance_values = global_explanation.get_ranked_global_values()
@@ -296,7 +296,7 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
     ```
 
 
-## <a name="visualizations"></a>Görselleştirmeler
+## <a name="visualizations"></a>Görsel öğeler
 
 Yerel Jupyter Not defterinize açıklamaları indirdikten sonra, modelinizi anlamak ve yorumlamak için görselleştirme panosunu kullanabilirsiniz.
 
@@ -354,7 +354,7 @@ Görselleştirme panosunu yüklemek için aşağıdaki kodu kullanın.
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, x_test)
+ExplanationDashboard(global_explanation, model, dataset=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da görselleştirme

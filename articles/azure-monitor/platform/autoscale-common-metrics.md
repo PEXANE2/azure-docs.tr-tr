@@ -4,11 +4,12 @@ description: Cloud Services, sanal makinelerinizi ve Web Apps otomatik ölçekle
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57bffede3b6c6c137da2feea32ad467a13f71a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073513"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Izleyici ortak ölçümleri otomatik ölçeklendirme
 
@@ -16,7 +17,7 @@ ms.locfileid: "76845571"
 
 Azure Izleyici otomatik ölçeklendirme, çalışan örneklerin sayısını telemetri verilerine (ölçümler) göre yukarı veya aşağı ölçeklendirmenize olanak tanır. Bu belge kullanmak isteyebileceğiniz ortak ölçümleri açıklar. Azure portal, ölçeklendirmek için kaynağın ölçüsünü seçebilirsiniz. Ancak, ölçeklendirmek üzere farklı bir kaynaktan herhangi bir ölçümü de seçebilirsiniz.
 
-Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir. Diğer Azure Hizmetleri farklı ölçekleme yöntemleri kullanır.
+Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](../../api-management/api-management-key-concepts.md)için geçerlidir. Diğer Azure Hizmetleri farklı ölçekleme yöntemleri kullanır.
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Kaynak Yöneticisi tabanlı VM 'Ler için işlem ölçümleri
 Varsayılan olarak, Kaynak Yöneticisi tabanlı sanal makineler ve sanal makine ölçek kümeleri temel (konak düzeyi) ölçümlerini yayar. Ayrıca, bir Azure VM ve VMSS için tanılama veri toplamayı yapılandırdığınızda, Azure tanılama uzantısı da konuk işletim sistemi performans sayaçlarını (genellikle "Konuk-işletim sistemi ölçümleri" olarak bilinir) yayar.  Tüm bu ölçümleri otomatik ölçeklendirme kurallarında kullanırsınız.
@@ -51,10 +52,10 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 | \Processor(_Total)\% Processor Time |Yüzde |
 | \Processor (_Total) \% ayrıcalıklı süre |Yüzde |
 | \Processor (_Total) \% Kullanıcı saati |Yüzde |
-| \İşlemci bilgileri (_Total) \ işlemci sıklığı |Sayı |
-| \System\Processes |Sayı |
-| \Process (_Total) \ iş parçacığı sayısı |Sayı |
-| \Process (_Total) \Tanıtıcı sayısı |Sayı |
+| \İşlemci bilgileri (_Total) \ işlemci sıklığı |Count |
+| \System\Processes |Count |
+| \Process (_Total) \ iş parçacığı sayısı |Count |
+| \Process (_Total) \Tanıtıcı sayısı |Count |
 | \ \% Kullanılan bellek kaydedilmiş bayt sayısı |Yüzde |
 | \Memory\Available Bytes |Bayt |
 | \ Bellek \ kaydedilmiş baytlar |Bayt |
@@ -70,11 +71,11 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 | \Fiziksel disk (_Total) \Disk bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk okuma bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk yazma bayt/sn |BytesPerSecond |
-| \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Sayı |
-| \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Sayı |
-| \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Sayı |
+| \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Count |
+| \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Count |
+| \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Count |
 | \LogicalDisk (_Total) \% boş alan |Yüzde |
-| \LogicalDisk (_Total) \ boş megabayt |Sayı |
+| \LogicalDisk (_Total) \ boş megabayt |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Konuk işletim sistemi ölçümleri Linux VM 'Leri
 Azure 'da bir VM oluşturduğunuzda, Tanılamalar, tanılama uzantısı kullanılarak varsayılan olarak etkinleştirilir.
@@ -118,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Saniye |
 | \ Physicaldisk\averagewritetime |Saniye |
 | \PhysicalDisk\AverageTransferTime |Saniye |
-| \ Physicaldisk\averagediskqueuelength |Sayı |
+| \ Physicaldisk\averagediskqueuelength |Count |
 | \Networkınterface\bytestransmderlenen |Bayt |
 | \NetworkInterface\BytesReceived |Bayt |
-| \Networkınterface\packetstransmderlenen |Sayı |
-| \Networkınterface\packetsalındı |Sayı |
+| \Networkınterface\packetstransmderlenen |Count |
+| \Networkınterface\packetsalındı |Count |
 | \Networkınterface\bytestotal |Bayt |
-| \Networkınterface\totalrxerrors |Sayı |
-| \NetworkInterface\TotalTxErrors |Sayı |
-| \Networkınterface\totalçarpışmalar |Sayı |
+| \Networkınterface\totalrxerrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \Networkınterface\totalçarpışmalar |Count |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>Yaygın olarak kullanılan App Service (sunucu grubu) ölçümleri
 Ayrıca, http kuyruğu uzunluğu gibi genel Web sunucusu ölçümlerine göre otomatik ölçeklendirme yapabilirsiniz. Ölçüm adı **Httpqueuelength**' dir.  Aşağıdaki bölümde, kullanılabilir sunucu grubu (App Service) ölçümleri listelenmektedir.
@@ -144,8 +145,8 @@ Bu ölçümler ile uyarı verebilir veya ölçeklendirebilirsiniz.
 | --- | --- |
 | Cpuyüzdesi |Yüzde |
 | MemoryPercentage |Yüzde |
-| DiskQueueLength |Sayı |
-| HttpQueueLength |Sayı |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |Bayt |
 | BytesSent |Bayt |
 
@@ -185,4 +186,3 @@ VM Ölçek Kümeleri için, Kaynak Yöneticisi şablonundaki otomatik ölçeklen
 > Service Bus için kaynak grubu kavramı yok, Azure Resource Manager her bölge için varsayılan bir kaynak grubu oluşturur. Kaynak grubu genellikle ' default-ServiceBus-[Region] ' biçiminde olur. Örneğin, ' default-ServiceBus-EastUS ', ' default-ServiceBus-WestUS ', ' default-ServiceBus-AustraliaEast ' vb.
 >
 >
-

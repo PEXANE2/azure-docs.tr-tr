@@ -5,14 +5,14 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 17ba8f5bbbf0ac17e0ccb6881379a511afc7c1c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073856"
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’te hazırlık ortamları ayarlama
+# <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’ta hazırlık ortamları ayarlama
 <a name="Overview"></a>
 
 Web uygulamanızı, Linux 'ta Web uygulamanızı, mobil arka uca veya API uygulamasını [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)için dağıtırken, **Standart**, **Premium**veya **yalıtılmış** App Service planı katmanında çalışırken varsayılan üretim yuvası yerine ayrı bir dağıtım yuvası kullanabilirsiniz. Dağıtım yuvaları, kendi ana bilgisayar adlarına sahip canlı uygulamalardır. Uygulama içeriği ve yapılandırma öğeleri, üretim yuvası dahil olmak üzere iki dağıtım yuvası arasında değiştirilebilir. 
@@ -262,7 +262,7 @@ Kullanıcıların beta uygulamanızı geri almasına izin vermek için, örneği
 
 Dize, `x-ms-routing-name=self` Üretim yuvasını belirtir. İstemci tarayıcısı bağlantıya eriştiğinde, üretim yuvasına yönlendirilir. Sonraki tüm istekler, `x-ms-routing-name=self` oturumu üretim yuvasına sabiteden tanımlama bilgisine sahiptir.
 
-Kullanıcıların beta uygulamanızı kabul etmesine izin vermek için, aynı sorgu parametresini üretim dışı yuva adı olarak ayarlayın. İşte bir örnek:
+Kullanıcıların beta uygulamanızı kabul etmesine izin vermek için, aynı sorgu parametresini üretim dışı yuva adı olarak ayarlayın. Aşağıda bir örnek verilmiştir:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
@@ -288,7 +288,7 @@ Uygulamanızı arayın ve seçin. **Dağıtım yuvalarına**  >  *\<slot to dele
 
 Azure PowerShell, Azure 'u, Azure App Service dağıtım yuvalarını yönetme desteği dahil olmak üzere Windows PowerShell aracılığıyla yönetmek için cmdlet 'ler sağlayan bir modüldür.
 
-Azure PowerShell yükleme ve yapılandırma hakkında bilgi edinmek ve Azure aboneliğinizle Azure PowerShell kimlik doğrulaması yapmak için bkz. [Microsoft Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview).  
+Azure PowerShell yükleme ve yapılandırma hakkında bilgi edinmek ve Azure aboneliğinizle Azure PowerShell kimlik doğrulaması yapmak için bkz. [Microsoft Azure PowerShell yükleme ve yapılandırma](/powershell/azure/).  
 
 ---
 ### <a name="create-a-web-app"></a>Web uygulaması oluşturma

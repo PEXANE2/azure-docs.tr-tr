@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d7ca3e37b107dce3f832499db45e0506c3fa64
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80350067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074020"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu
 
@@ -91,7 +91,7 @@ Başlamadan önce, önce aşağıdaki SAP notları ve incelemeleri inceleyin:
 
 Kümede yer alan sanal makinelerin tüm kaynakları çalıştırabilmeleri için boyutlandırılması gerekir, bu durumda yük devretme gerçekleşmelidir. Her SAP SID, çok düzeyli yüksek kullanılabilirlik kümesinde birbirinden bağımsız yük devredebilirler.  SBD uçumlama kullanılıyorsa, SBD cihazları birden çok küme arasında paylaşılabilir.  
 
-SAP NetWeaver yüksek kullanılabilirlik elde etmek için yüksek oranda kullanılabilir NFS paylaşımları gerektirir. Bu örnekte, SAP NFS paylaşımlarının, birden fazla SAP sistemi tarafından kullanılabilen, yüksek oranda kullanılabilir [NFS dosya sunucusu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)üzerinde barındırıldığını varsayıyoruz. Ya da paylaşımlar [Azure NetApp FILES NFS birimlerinde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)dağıtılır.  
+SAP NetWeaver yüksek kullanılabilirlik elde etmek için yüksek oranda kullanılabilir NFS paylaşımları gerektirir. Bu örnekte, SAP NFS paylaşımlarının, birden fazla SAP sistemi tarafından kullanılabilen, yüksek oranda kullanılabilir [NFS dosya sunucusu](./high-availability-guide-suse-nfs.md)üzerinde barındırıldığını varsayıyoruz. Ya da paylaşımlar [Azure NetApp FILES NFS birimlerinde](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)dağıtılır.  
 
 ![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -101,7 +101,7 @@ SAP NetWeaver yüksek kullanılabilirlik elde etmek için yüksek oranda kullan�
 > [!TIP]
 > SAP yoks/ERS 'in çoklu SID Kümelemesi, daha yüksek karmaşıklığa sahip bir çözümdür. Uygulamak daha karmaşıktır. Ayrıca bakım etkinliklerini yürütürken (işletim sistemi düzeltme eki gibi) yönetim çabasını de kapsar. Gerçek uygulamayı çalıştırmadan önce, dağıtımı ve VM 'Ler, NFS takmalar, VIP 'Ler, yük dengeleyici yapılandırması vb. gibi tüm ilgili bileşenleri dikkatle planlamak için zaman alın.  
 
-NFS sunucusu, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı sanal konak adı ve sanal IP adreslerini kullanır. Azure 'da bir sanal IP adresi kullanmak için bir yük dengeleyici gereklidir. [Standart yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)kullanmanızı öneririz.  
+NFS sunucusu, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı sanal konak adı ve sanal IP adreslerini kullanır. Azure 'da bir sanal IP adresi kullanmak için bir yük dengeleyici gereklidir. [Standart yük dengeleyici](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)kullanmanızı öneririz.  
 
 Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP sistemiyle ilgili yük dengeleyici yapılandırması gösterilmektedir. SID 'lerin her biri için her bir ASCS ve bir örnek için ayrı ön uç IP, sistem durumu araştırmaları ve yük dengeleme kuralları gerekir. YOKS/ASCS kümesinin bir parçası olan tüm VM 'Leri tek bir arka uç havuzuna atayın.  
 
@@ -147,23 +147,23 @@ Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP
 
 
 > [!Note]
-> Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+> Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ## <a name="sap-nfs-shares"></a>SAP NFS paylaşımları
 
 SAP NetWeaver, aktarım, profil dizini vb. için paylaşılan depolama alanı gerektirir. Yüksek oranda kullanılabilir SAP sisteminde, yüksek oranda kullanılabilir NFS paylaşımları olması önemlidir. SAP NFS paylaşımlarınızın mimarisine karar vermeniz gerekir. Tek bir seçenek, birden fazla SAP sistemi arasında paylaşılabilen [SUSE Linux Enterprise Server Azure VM 'Lerinde yüksek oranda KULLANILABILIR NFS kümesi][nfs-ha]oluşturmak için kullanılır. 
 
-Diğer bir seçenek de paylaşımları [Azure NetApp FILES NFS birimlerinde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)dağıtmaktır.  Azure NetApp Files, SAP NFS paylaşımları için yerleşik yüksek kullanılabilirlik alacaksınız.
+Diğer bir seçenek de paylaşımları [Azure NetApp FILES NFS birimlerinde](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)dağıtmaktır.  Azure NetApp Files, SAP NFS paylaşımları için yerleşik yüksek kullanılabilirlik alacaksınız.
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>İlk SAP sistemini kümede dağıtma
 
 SAP NFS paylaşımlarına yönelik mimarinin ne olduğuna karar verdikten sonra, ilgili belgeleri izleyerek kümedeki ilk SAP sistemini dağıtın.
 
-* Yüksek oranda kullanılabilir NFS sunucusu kullanıyorsanız, [SAP uygulamaları için SUSE Linux Enterprise Server üzerindeki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)izleyin.  
-* Azure NetApp Files NFS birimleri kullanıyorsanız, [SAP uygulamaları için Azure NetApp Files ile SuSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) izleyin
+* Yüksek oranda kullanılabilir NFS sunucusu kullanıyorsanız, [SAP uygulamaları için SUSE Linux Enterprise Server üzerindeki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](./high-availability-guide-suse.md)izleyin.  
+* Azure NetApp Files NFS birimleri kullanıyorsanız, [SAP uygulamaları için Azure NetApp Files ile SuSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](./high-availability-guide-suse-netapp-files.md) izleyin
 
 Yukarıda listelenen belgeler, gerekli altyapıları hazırlama, kümeyi oluşturma, SAP uygulamasını çalıştırmak için işletim sistemini hazırlama adımlarında size kılavuzluk eder.  
 
@@ -189,7 +189,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver yüklemesi için hazırlanma
 
-1. Yeni dağıtılan sistem (yani, **NW2**, **NW3**) için yapılandırma ' yı [Azure Portal aracılığıyla Azure Load Balancer dağıtım](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal)yönergelerini izleyerek mevcut Azure Load Balancer ekleyin. Yapılandırmanız için IP adreslerini, durum araştırma bağlantı noktalarını, Yük Dengeleme kurallarını ayarlayın.  
+1. Yeni dağıtılan sistem (yani, **NW2**, **NW3**) için yapılandırma ' yı [Azure Portal aracılığıyla Azure Load Balancer dağıtım](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal)yönergelerini izleyerek mevcut Azure Load Balancer ekleyin. Yapılandırmanız için IP adreslerini, durum araştırma bağlantı noktalarını, Yük Dengeleme kurallarını ayarlayın.  
 
 2. **[A]** ek SAP sistemleri için ad çözümlemesi ayarlayın. DNS sunucusu kullanabilir veya tüm düğümlerde değişiklik yapabilirsiniz `/etc/hosts` . Bu örnek, dosyanın nasıl kullanılacağını gösterir `/etc/hosts` .  IP adreslerini ve ana bilgisayar adlarını ortamınıza uyarlayın. 
 
@@ -236,8 +236,8 @@ Bu belgede şu şekilde varsayılmaktadır:
 
    Dosyayı `/etc/auto.direct` , kümeye dağıttığınız ek SAP sistemleri için dosya sistemleriyle güncelleştirin.  
 
-   * NFS dosya sunucusu kullanıyorsanız [buradaki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation) yönergeleri izleyin
-   * Azure NetApp Files kullanıyorsanız [buradaki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) yönergeleri izleyin 
+   * NFS dosya sunucusu kullanıyorsanız [buradaki](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation) yönergeleri izleyin
+   * Azure NetApp Files kullanıyorsanız [buradaki](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation) yönergeleri izleyin 
 
    `autofs`Yeni eklenen paylaşımları bağlamak için hizmeti yeniden başlatmanız gerekir.  
 
@@ -561,17 +561,17 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 SAP yüklemenizi şu şekilde doldurun:
 
-* [SAP NetWeaver uygulama sunucularınızı hazırlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [Bir DBMS örneği yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
-* [Birincil SAP uygulama sunucusu yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#sap-netweaver-application-server-installation)
+* [SAP NetWeaver uygulama sunucularınızı hazırlama](./high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [Bir DBMS örneği yükleme](./high-availability-guide-suse.md#install-database)
+* [Birincil SAP uygulama sunucusu yükleme](./high-availability-guide-suse.md#sap-netweaver-application-server-installation)
 * Bir veya daha fazla ek SAP uygulaması örneği yükleme
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>Çoklu SID kümesi kurulumunu test etme
 
 Aşağıdaki testler, SUSE 'in en iyi yöntemler kılavuzlarındaki test çalışmalarının bir alt kümesidir. Bunlar kolaylık sağlaması için dahil edilmiştir. Küme testlerinin tam listesi için aşağıdaki belgelere başvurun:
 
-* Yüksek oranda kullanılabilir NFS sunucusu kullanıyorsanız, [SAP uygulamaları için SUSE Linux Enterprise Server üzerindeki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)izleyin.  
-* Azure NetApp Files NFS birimleri kullanıyorsanız, [SAP uygulamaları için Azure NetApp Files ile SuSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) izleyin
+* Yüksek oranda kullanılabilir NFS sunucusu kullanıyorsanız, [SAP uygulamaları için SUSE Linux Enterprise Server üzerindeki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](./high-availability-guide-suse.md)izleyin.  
+* Azure NetApp Files NFS birimleri kullanıyorsanız, [SAP uygulamaları için Azure NetApp Files ile SuSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirliği](./high-availability-guide-suse-netapp-files.md) izleyin
 
 Her zaman SUSE en iyi yöntemler kılavuzlarını okuyun ve eklenmiş olabilecek tüm ek testleri gerçekleştirin.  
 Sunulan testler, üç adet SAP sistemi yüklü olan çok düzeyli bir küme olan iki düğümde bulunur.  

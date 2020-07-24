@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5158bbb32635ebf030879f4d0290a1feba0ec93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072921"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB verilerinde toplu işlemler yapmak için toplu yürütücü Java kitaplığını kullanma
 
@@ -43,7 +43,7 @@ Bu öğretici, Azure Cosmos DB belgelerini içeri aktarmak ve güncelleştirmek 
 
 Şimdi, GitHub 'dan örnek bir Java uygulaması indirerek kodla çalışmaya geçiş yapalım. Bu uygulama Azure Cosmos DB veri üzerinde toplu işlemler gerçekleştirir. Uygulamayı kopyalamak için, bir komut istemi açın, uygulamayı kopyalamak istediğiniz dizine gidin ve şu komutu çalıştırın:
 
-```
+```bash
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
@@ -123,13 +123,13 @@ Kopyalanmış depo, "\azure-cosmosdb-bulkexecutor-Java-getting-started\samples\b
 
 5. Toplu alma uygulamasını hazırlayın, ' MVN Clean Package ' komutunu kullanarak kaynaktan komut satırı aracını oluşturun. Bu komut hedef klasörde bir jar dosyası oluşturur:  
 
-   ```java
+   ```bash
    mvn clean package
    ```
 
 6. Hedef bağımlılıklar oluşturulduktan sonra, aşağıdaki komutu kullanarak toplu alma uygulamasını çağırabilirsiniz:  
 
-   ```java
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
@@ -186,13 +186,13 @@ Mevcut belgeleri BulkUpdateAsync API kullanarak güncelleştirebilirsiniz. Bu ö
 
 3. Toplu güncelleştirme uygulamasını hazırlayın, ' MVN Clean Package ' komutunu kullanarak kaynaktan komut satırı aracını oluşturun. Bu komut hedef klasörde bir jar dosyası oluşturur:  
 
-   ```
+   ```bash
    mvn clean package
    ```
 
 4. Hedef bağımlılıklar oluşturulduktan sonra, aşağıdaki komutu kullanarak toplu güncelleştirme uygulamasını çağırabilirsiniz:
 
-   ```
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 

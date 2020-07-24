@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519329"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071600"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -152,7 +152,7 @@ Azure 'daki erişim denetimi, faturalandırma perspektifinden başlar. [Azure He
 
 Abonelikler Ayrıca bir dizinle bir ilişkiye sahiptir. Dizin bir kullanıcı kümesi tanımlar. Bunlar, dizin oluşturan iş veya okul kullanıcıları veya dış kullanıcılar (yani, Microsoft hesapları) olabilir. Abonelikler, hizmet Yöneticisi (SA) veya ortak yönetici (CA) olarak atanmış olan dizin kullanıcılarının bir alt kümesiyle erişilebilir; Tek istisna, eski nedenlerle Microsoft hesaplarının (eski adıyla Windows Live ID), dizinde mevcut olmadan SA veya CA olarak atanabileceği durumdur.
 
-Güvenlik odaklı şirketler, çalışanların ihtiyaç duydukları tam izinleri sağlamaya odaklanmalıdır. Çok fazla izin, saldırganlar için bir hesap sunabilir. Çok az izin, çalışanların işlerini verimli bir şekilde işleyemeyeceği anlamına gelir. [Azure rol tabanlı Access Control (RBAC)](../../role-based-access-control/overview.md) , Azure için ayrıntılı erişim yönetimi sunarak bu sorunu ele almanıza yardımcı olur.
+Güvenlik odaklı şirketler, çalışanların ihtiyaç duydukları tam izinleri sağlamaya odaklanmalıdır. Çok fazla izin, saldırganlar için bir hesap sunabilir. Çok az izin, çalışanların işlerini verimli bir şekilde işleyemeyeceği anlamına gelir. Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure için ayrıntılı erişim yönetimi sunarak bu sorunu ele almanıza yardımcı olur.
 
 ![Güvenli kaynak erişimi](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 

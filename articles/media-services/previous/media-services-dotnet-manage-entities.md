@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f92281be683d7f9a4e8a820b54f9795928eb97e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071875"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK ile varlıkları ve Ilgili varlıkları yönetme
 > [!div class="op_single_selector"]
@@ -29,13 +29,13 @@ ms.locfileid: "85847073"
 > 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Bu konuda .NET ile Azure Media Services varlıkların nasıl yönetileceği gösterilmektedir.
 
 1 Nisan 2017’den itibaren, hesabınızdaki 90 günden eski olan tüm İş kayıtları, toplam kayıt sayısı üst kota sınırının altında olsa bile ilişkili Görev kayıtlarıyla birlikte otomatik olarak silinecektir. Örneğin, 1 Nisan 2017 ' de hesabınızda 31 Aralık 2016 ' den eski olan Iş kayıtları otomatik olarak silinir. İş/görev bilgilerini arşivlemek gerekirse, bu konuda açıklanan kodu kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun. 
 
@@ -429,4 +429,3 @@ Aşağıdaki kod örneği, ilke kimliğine bağlı olarak bir erişim ilkesi ba�
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

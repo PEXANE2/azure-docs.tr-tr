@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3327304916c30863bb4de4b4d18c41ba3c58270d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73e92fa505a994cc5cc2fdb3a297dfd653a596a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071820"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure portalını kullanarak Media Services hesabına dosya yükleme 
 
@@ -30,7 +30,7 @@ ms.locfileid: "84982570"
 > 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. Portalla güncel karşıya yükleme dosyaları için bkz. [içeriği karşıya yüklemek, kodlamak ve akışa almak için portalı kullanma](../latest/manage-assets-quickstart.md).<br/>Ayrıca, kullanıma alma: [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. Portalla güncel karşıya yükleme dosyaları için bkz. [içeriği karşıya yüklemek, kodlamak ve akışa almak için portalı kullanma](../latest/manage-assets-quickstart.md).<br/>Ayrıca, kullanıma alma: [Media Services v3](../latest/index.yml). Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services’de dijital dosyalar bir varlığa yüklenir. Varlık; video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar için meta veriler) içerebilir. Dosyalar yüklendiğinde, içeriğiniz sonraki işleme ve akışla aktarma faaliyetleri için güvenli bir şekilde bulutta depolanmış olur.
 
@@ -65,5 +65,3 @@ Karşıya yükleme tamamlandığında, yeni varlık **Varlıklar** bölmesinde l
 * [Karşıya yüklenen varlıklarınızı kodlamayı](media-services-portal-encode.md) öğrenin.
 
 * Yapılandırılmış kapsayıcıya gelen dosyaya göre bir kodlama işi tetiklemek için Azure İşlevleri’ni de kullanabilirsiniz. Daha fazla bilgi için [Media Services: Azure Media Services’ı Azure İşlevleri ve Logic Apps ile tümleştirme](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) örneğine bakın.
-
-

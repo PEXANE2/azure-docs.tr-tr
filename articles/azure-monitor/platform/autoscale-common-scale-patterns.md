@@ -4,16 +4,17 @@ description: Azure 'da kaynağınızın ölçeğini otomatik olarak ölçeklendi
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: adbfecd05bfd4330e7c7c972cfdb9fe7021eec31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75396102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073510"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Ortak otomatik ölçeklendirme desenlerine genel bakış
 Bu makalede, Azure 'da kaynağınızı ölçeklendirmek için kullanılan bazı yaygın desenler açıklanmaktadır.
 
-Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
+Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](../../api-management/api-management-key-concepts.md)için geçerlidir.
 
 ## <a name="lets-get-started"></a>Başlamanıza izin verir
 
@@ -61,4 +62,3 @@ Arka uca iletişim kuran bir Web ön ucuna ve API katmanına sahipsiniz.
 [3]: ./media/autoscale-common-scale-patterns/weekday-weekend-scale.png
 [4]: ./media/autoscale-common-scale-patterns/holidays-scale.png
 [5]: ./media/autoscale-common-scale-patterns/custom-metric-scale.png
-

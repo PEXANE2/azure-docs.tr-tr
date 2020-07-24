@@ -3,16 +3,16 @@ title: REST API ile Azure dosya paylaşma yedeklemesini yönetme
 description: Azure Backup tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için REST API nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184920"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073241"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Azure dosya paylaşma yedeklemesini REST API ile yönetme
 
-Bu makalede, [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için görevlerin nasıl gerçekleştirileceği açıklanır.
+Bu makalede, [Azure Backup](./backup-overview.md)tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için görevlerin nasıl gerçekleştirileceği açıklanır.
 
 ## <a name="monitor-jobs"></a>İşleri izleme
 
@@ -38,7 +38,7 @@ Yedeklemenin tetiklenmesi gibi bir işlem, yanıtta her zaman bir iş kimliği d
 }
 ```
 
-Azure dosya paylaşma yedekleme işi, **JobId** alanı tarafından tanımlanır ve [burada](https://docs.microsoft.com/rest/api/backup/jobdetails/) belirtildiği gibi bir get isteği kullanılarak izlenebilir.
+Azure dosya paylaşma yedekleme işi, **JobId** alanı tarafından tanımlanır ve [burada](/rest/api/backup/jobdetails/) belirtildiği gibi bir get isteği kullanılarak izlenebilir.
 
 ### <a name="tracking-the-job"></a>İşi izleme
 
@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Yanıt
 
-Name  | Tür  |  Description
+Ad  | Tür  |  Açıklama
 --- | --- | ----
 200 TAMAM |  JobResource  | Tamam
 
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>Korumayı durdurma ve verileri silme
 
-Korumalı bir dosya paylaşımındaki korumayı kaldırmak ve yedekleme verilerini silmek için, [burada](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)ayrıntılı olarak bir silme işlemi gerçekleştirin.
+Korumalı bir dosya paylaşımındaki korumayı kaldırmak ve yedekleme verilerini silmek için, [burada](/rest/api/backup/protecteditems/delete)ayrıntılı olarak bir silme işlemi gerçekleştirin.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

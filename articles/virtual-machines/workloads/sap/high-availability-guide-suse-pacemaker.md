@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073999"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure 'da SUSE Linux Enterprise Server Paceyapıcısı ayarlama
 
@@ -41,7 +41,7 @@ Azure çit Aracısı ek sanal makinelerin dağıtılmasını gerektirmez.
 ![SLES 'de pacemaker genel bakış](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Linux pacemaker kümelenmiş düğümlerini ve SBD cihazlarını planlarken ve dağıttığınızda, tüm küme yapılandırmasının genel güvenilirliği, dahil edilen VM 'Ler ve SBD cihazlarını barındıran VM 'Ler arasındaki yönlendirmenin [NVA 'lar](https://azure.microsoft.com/solutions/network-appliances/)gibi başka herhangi bir cihazdan geçirilmediğinden emin olmak için gereklidir. Aksi takdirde, NVA ile ilgili sorunlar ve bakım olayları, genel küme yapılandırmasının kararlılığı ve güvenilirliği üzerinde olumsuz bir etkiye sahip olabilir. Bu tür engelleri önlemek için, Linux Paceoluşturucu kümelenmiş düğümlerini ve SBD cihazlarını planlarken ve dağıttığınızda, NVA 'lar veya [Kullanıcı tanımlı yönlendirme kurallarının](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , NVA 'lar ve benzer cihazlar aracılığıyla trafiği yönlendiren yönlendirme kurallarını tanımlamayın. 
+> Linux pacemaker kümelenmiş düğümlerini ve SBD cihazlarını planlarken ve dağıttığınızda, tüm küme yapılandırmasının genel güvenilirliği, dahil edilen VM 'Ler ve SBD cihazlarını barındıran VM 'Ler arasındaki yönlendirmenin [NVA 'lar](https://azure.microsoft.com/solutions/network-appliances/)gibi başka herhangi bir cihazdan geçirilmediğinden emin olmak için gereklidir. Aksi takdirde, NVA ile ilgili sorunlar ve bakım olayları, genel küme yapılandırmasının kararlılığı ve güvenilirliği üzerinde olumsuz bir etkiye sahip olabilir. Bu tür engelleri önlemek için, Linux Paceoluşturucu kümelenmiş düğümlerini ve SBD cihazlarını planlarken ve dağıttığınızda, NVA 'lar veya [Kullanıcı tanımlı yönlendirme kurallarının](../../../virtual-network/virtual-networks-udr-overview.md) , NVA 'lar ve benzer cihazlar aracılığıyla trafiği yönlendiren yönlendirme kurallarını tanımlamayın. 
 >
 
 ## <a name="sbd-fencing"></a>SBD sınırlama
@@ -583,7 +583,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
-Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme izinlerine sahip değildir. Kümenin tüm sanal makinelerini başlatmak ve durdurmak (serbest bırakmak) için hizmet sorumlusu izinleri vermeniz gerekir. Zaten özel rolü oluşturmadıysanız, [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) veya [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) kullanarak oluşturabilirsiniz
+Hizmet sorumlusu, varsayılan olarak Azure kaynaklarınıza erişme izinlerine sahip değildir. Kümenin tüm sanal makinelerini başlatmak ve durdurmak (serbest bırakmak) için hizmet sorumlusu izinleri vermeniz gerekir. Zaten özel rolü oluşturmadıysanız, [PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) veya [Azure CLI](../../../role-based-access-control/custom-roles-cli.md) kullanarak oluşturabilirsiniz
 
 Giriş dosyası için aşağıdaki içeriği kullanın. İçeriği aboneliklerinize uyarlamanız gerekir, c276fc76-9cd4-44c9-99a7-4fd71546436e ve e91d47c4-76f3-4271-a796-21b4ecfe3624 ' i aboneliğinizin kimlikleriyle değiştirin. Yalnızca bir aboneliğiniz varsa, Astifblescopes ikinci girişi kaldırın.
 
@@ -616,7 +616,7 @@ Giriş dosyası için aşağıdaki içeriği kullanın. İçeriği aboneliklerin
 
 Son bölümde oluşturulan "Linux çit Aracısı rolü" özel rolünü hizmet sorumlusuna atayın. Sahip rolünü artık kullanmayın!
 
-1. Git[https://portal.azure.com](https://portal.azure.com)
+1. Şuraya gidin: [https://portal.azure.com](https://portal.azure.com)
 1. Tüm kaynaklar dikey penceresini açın
 1. İlk küme düğümünün sanal makinesini seçin
 1. Erişim denetimi (ıAM) öğesine tıklayın
@@ -647,11 +647,11 @@ sudo crm configure property stonith-timeout=900
 > İzleme ve sınırlama işlemleri de serileştirilir. Sonuç olarak, daha uzun süre çalışan bir izleme işlemi ve eşzamanlı geçiş olayı varsa, zaten çalışan izleme işlemi nedeniyle küme yük devretmesi için gecikme yoktur.
 
 > [!TIP]
->Azure sınır Aracısı, [Standart ILB kullanan VM 'ler Için genel uç nokta bağlantısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)' nda açıklandığı gibi ortak uç noktalara giden bağlantı kurulmasını gerektirir.  
+>Azure sınır Aracısı, [Standart ILB kullanan VM 'ler Için genel uç nokta bağlantısı](./high-availability-guide-standard-load-balancer-outbound-connections.md)' nda açıklandığı gibi ortak uç noktalara giden bağlantı kurulmasını gerektirir.  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure zamanlanan olaylar için paceoluşturucu yapılandırması
 
-Azure, [Zamanlanmış olaylar](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)sunar. Zamanlanan olaylar, meta veri hizmeti aracılığıyla sağlanır ve uygulamanın VM kapatması, VM yeniden dağıtımı vb. gibi olaylara hazırlanması için zaman sağlar. Resource Agent **[Azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** olayları, zamanlanan Azure olayları için izler. Olaylar algılanırsa, aracı etkilenen VM 'deki tüm kaynakları durdurmayı dener ve bunları kümedeki başka bir düğüme taşır. Ek pacemaker kaynaklarının yapılandırılması gerektiğini elde etmek için. 
+Azure, [Zamanlanmış olaylar](../../linux/scheduled-events.md)sunar. Zamanlanan olaylar, meta veri hizmeti aracılığıyla sağlanır ve uygulamanın VM kapatması, VM yeniden dağıtımı vb. gibi olaylara hazırlanması için zaman sağlar. Resource Agent **[Azure](https://github.com/ClusterLabs/resource-agents/pull/1161)** olayları, zamanlanan Azure olayları için izler. Olaylar algılanırsa, aracı etkilenen VM 'deki tüm kaynakları durdurmayı dener ve bunları kümedeki başka bir düğüme taşır. Ek pacemaker kaynaklarının yapılandırılması gerektiğini elde etmek için. 
 
 1. **[A]** **Azure-Events** aracısının paketinin zaten yüklü olduğundan ve güncel olduğundan emin olun. 
 

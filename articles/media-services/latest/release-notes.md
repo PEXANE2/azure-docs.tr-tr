@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072148"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -36,6 +36,20 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 >
 > Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="july-2020"></a>Temmuz 2020
+
+### <a name="live-transcriptions"></a>Canlı döküm
+
+Canlı döküm artık 19 dili ve 8 bölgeyi destekliyor.
+
+## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Media Services ve Azure AD ile içeriğinizi koruma
+
+[Azure ad kullanarak uçtan uca içerik koruması](./azure-ad-content-protection.md)adlı bir öğretici yayımladık.
+
+### <a name="high-availablity"></a>Yüksek kullanılabilirlik
+
+Media Services ve Isteğe bağlı video (VOD) hakkında [genel bakış](./media-services-high-availability-encoding.md) ve [örnek](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)ile yüksek kullanılabilirlik yayımladık.
+
 ## <a name="june-2020"></a>Haziran 2020
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge Preview sürümünde canlı video analizi
@@ -43,16 +57,6 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 IoT Edge canlı video analizinin önizlemesi herkese açık oldu. Daha fazla bilgi için bkz. [sürüm notları](../live-video-analytics-edge/release-notes.md).
 
 IoT Edge üzerindeki canlı video analizi, Media Service ailesine yönelik bir genişletmektir. Bu, kendi Edge cihazlarınızda seçtiğiniz AI modelleriyle canlı videoyu çözümlemenize ve isteğe bağlı olarak bu videoyu yakalayıp kaydetmenize olanak sağlar. Artık canlı bir video işlem hattı oluşturma ve çalıştırma karmaşıklığı hakkında endişelenmenize gerek kalmadan gerçek zamanlı video analiziyle birlikte uygulamalar oluşturabilirsiniz.
-
-### <a name="search-by-topics"></a>Konulara göre ara
-
-Artık belirli konularda (yalnızca API) videoları aramak için arama API 'sini kullanabilirsiniz.
-
-Konular, `textScope` (isteğe bağlı parametre) bir parçası olarak eklenir. Ayrıntılar için bkz. [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) .  
-
-### <a name="labels-enhancement"></a>Etiket geliştirmesi
-
-Etiket etiketi yükseltildi ve artık tanımlanabilecek daha fazla görsel etiket içeriyor.
 
 ## <a name="may-2020"></a>Mayıs 2020
 
@@ -137,7 +141,7 @@ Media Services v3, canlı etkinliklerin canlı doğrusal kodlamasının 24 saat 
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için, [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için, [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
 
 Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](../previous/migrate-indexer-v1-v2.md)konusuna bakın.
 
@@ -171,9 +175,9 @@ Haziran itibariyle önizleme özelliği yalnızca ABD Orta ve ABD Orta Batı kul
 
 ### <a name="video-subclipping"></a>Video alt kırpması
 
-Artık bir [işi](https://docs.microsoft.com/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya alt kırpabilirsiniz. 
+Artık bir [işi](/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya alt kırpabilirsiniz. 
 
-Bu işlev, [Builtınstandardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ön ayarları veya [Standardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) önayarları kullanılarak oluşturulan [dönüşümlerle](https://docs.microsoft.com/rest/api/media/transforms) birlikte kullanılır. 
+Bu işlev, [Builtınstandardencoderönayar](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ön ayarları veya [Standardencoderönayar](/rest/api/media/transforms/createorupdate#standardencoderpreset) önayarları kullanılarak oluşturulan [dönüşümlerle](/rest/api/media/transforms) birlikte kullanılır. 
 
 Örneklere bakın:
 
@@ -201,7 +205,7 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans iyileştirmeleri
+### <a name="performance-improvements"></a>Performans geliştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
@@ -212,8 +216,8 @@ Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
 ### <a name="new-presets"></a>Yeni Önayarlar
 
-* [Facedetectorönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) yerleşik çözümleyici önayarlarına eklendi.
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) , yerleşik kodlayıcı önayarlarına eklendi. Daha fazla bilgi için bkz. [içeriğe duyarlı kodlama](content-aware-encoding.md). 
+* [Facedetectorönayar](/rest/api/media/transforms/createorupdate#facedetectorpreset) yerleşik çözümleyici önayarlarına eklendi.
+* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) , yerleşik kodlayıcı önayarlarına eklendi. Daha fazla bilgi için bkz. [içeriğe duyarlı kodlama](content-aware-encoding.md). 
 
 ## <a name="march-2019"></a>Mart 2019
 
@@ -246,21 +250,21 @@ V3 API 'sinin GA sürümündeki güncelleştirmeler şunlardır:
 
 ## <a name="november-2018"></a>Kasım 2018
 
-CLı 2,0 modülü artık [Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50 için kullanılabilir.
+CLı 2,0 modülü artık [Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50 için kullanılabilir.
 
 ### <a name="new-commands"></a>Yeni komutlar
 
-- [az AMS hesabı](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az AMS varlık](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az AMS varlık-filtre](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az AMS Job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az AMS canlı-olay](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az AMS Live-Output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -medya ayrılmış birimlerini yönetmenizi sağlar. Daha fazla bilgi için bkz. [Ölçek medya ayrılmış birimleri](media-reserved-units-cli-how-to.md).
+- [az AMS hesabı](/cli/azure/ams/account?view=azure-cli-latest)
+- [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az AMS varlık](/cli/azure/ams/asset?view=azure-cli-latest)
+- [az AMS varlık-filtre](/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az AMS Job](/cli/azure/ams/job?view=azure-cli-latest)
+- [az AMS canlı-olay](/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -medya ayrılmış birimlerini yönetmenizi sağlar. Daha fazla bilgi için bkz. [Ölçek medya ayrılmış birimleri](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Yeni özellikler ve son değişiklikler
 
@@ -351,7 +355,7 @@ Apple HLS (iOS 11 +) için CMAF ve ' CBCS ' şifreleme desteği ve CMAF 'yi dest
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Video Indexer GA yayını Ağustos ayında duyuruldu. Şu anda desteklenen özellikler hakkında daha fazla bilgi için bkz. [video Indexer nedir](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
+Video Indexer GA yayını Ağustos ayında duyuruldu. Şu anda desteklenen özellikler hakkında daha fazla bilgi için bkz. [video Indexer nedir](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json). 
 
 ### <a name="plans-for-changes"></a>Değişiklik planları
 
@@ -392,6 +396,6 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel Bakış](media-services-overview.md)
+- [Genel bakış](media-services-overview.md)
 - [Media Services v3 belge güncelleştirmeleri](docs-release-notes.md)
 - [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

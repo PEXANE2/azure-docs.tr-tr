@@ -4,12 +4,12 @@ description: Azure App Service iş sürekliliği ve olağanüstü durum kurtarma
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947113"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073740"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service uygulamasını başka bir bölgeye taşıma
 
@@ -17,7 +17,7 @@ Bu makalede, Azure bölgesini tümüyle etkileyen bir olağanüstü durum sıras
 
 App Service kaynaklar bölgeye özeldir ve bölgeler arasında taşınamaz. Uygulamayı farklı bir bölgedeki yeni bir uygulamaya geri yüklemeniz ve sonra yeni uygulama için yansıtma yapılandırması veya kaynaklar oluşturmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yok. [Anlık görüntüden geri yükleme](app-service-web-restore-snapshots.md) , genellikle **Premium** katman gerektirir, ancak olağanüstü durum kurtarma modunda, etkilenen uygulamanın katmanı hangi katmanda olursa olsun, etkilenen uygulamanız için otomatik olarak etkinleştirilir.
 
@@ -43,7 +43,7 @@ Etkilenen uygulamanın Şu anda kullandığı tüm App Service kaynaklarını be
 
 1. [Azure Portal](https://portal.azure.com), etkilenen uygulamanın yönetim sayfasına gidin. Başarısız bir Azure bölgesinde, etkilenen uygulama bir uyarı metni gösterir. Uyarı metnine tıklayın.
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![Etkilenen uygulamanın sayfasının ekran görüntüsü. Durumu açıklayan ve uygulamayı geri yüklemek için bir bağlantı sağlayan bir uyarı bildirimi görünür.](media/manage-disaster-recovery/restore-start.png)
 
 1. **Yedeği geri yükle** sayfasında, geri yükleme işlemini aşağıdaki tabloya göre yapılandırın. İşiniz bittiğinde **Tamam**' a tıklayın.
 
@@ -53,7 +53,7 @@ Etkilenen uygulamanın Şu anda kullandığı tüm App Service kaynaklarını be
    | **Hedefi geri yükle** | **Var olan uygulama** | Aşağıdaki nota tıklayarak **geri yükleme hedef uygulamasını değiştirebilir** ve hedef uygulamayı seçebilirsiniz. Bir olağanüstü durum senaryosunda, anlık görüntüyü yalnızca farklı bir Azure bölgesindeki bir uygulamaya geri yükleyebilirsiniz. |
    | **Site yapılandırmasını geri yükle** | **Evet** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    ![Yedekleme geri yükleme sayfasının ekran görüntüsü. Belirli bir anlık görüntü, önceki tablonun listeleceği seçenekler ve Tamam düğmesi vurgulanır.](media/manage-disaster-recovery/restore-configure.png)
 
 3. Etkilenen uygulamayı yansıtmak için Hedef uygulamadaki [diğer her şeyi](#prepare) yapılandırın ve yapılandırmanızı doğrulayın.
 
@@ -65,7 +65,7 @@ Dosyaları yalnızca etkilenen uygulamadan geri yüklemeden kurtarmak isterseniz
 
 1. [Azure Portal](https://portal.azure.com), etkilenen uygulamanın yönetim sayfasına gidin ve **Yayımlama profilini al**' a tıklayın.
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![Etkilenen uygulamanın sayfasının ekran görüntüsü. Bir uyarı bildirimi görünür ancak vurgulanmaz. Bunun yerine yayımlama profili Al öğesi vurgulanır.](media/manage-disaster-recovery/get-publish-profile.png)
 
 1. İndirilen dosyayı açın ve adında bulunduğu yayımlama profilini bulun `ReadOnly - FTP` . Bu, olağanüstü durum kurtarma profilidir. Örneğin:
 
@@ -84,7 +84,7 @@ Dosyaları yalnızca etkilenen uygulamadan geri yüklemeden kurtarmak isterseniz
 
 1. Bağlandıktan sonra tüm */site/Wwwroot* klasörünü indirin. Aşağıdaki ekran görüntüsünde, [FileZilla](https://filezilla-project.org/)' de nasıl indirileceği gösterilmektedir.
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![Bir FileZilla dosyası hiyerarşisinin ekran görüntüsü. Wwwroot klasörü vurgulanır ve kısayol menüsü görünür olur. Bu menüde, Indirme vurgulanır.](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure 'da bir uygulamayı bir anlık görüntüden geri yükleme](app-service-web-restore-snapshots.md)

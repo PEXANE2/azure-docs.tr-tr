@@ -6,11 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073614"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
 
@@ -63,7 +64,7 @@ Depolama hesaplarında bulunan tüm klasik uyarılar, bu ölçümlerde uyarılar
 - Saskısıtlar Lingerror
 - ThrottlingError
 
-Yüzde ölçümlerinde klasik uyarı kurallarının [, eski ve yeni depolama ölçümleri arasındaki eşlemeye](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)göre geçirilmesi gerekir. Kullanılabilir yeni ölçüm mutlak bir değer olduğundan eşiklerin uygun şekilde değiştirilmesi gerekir.
+Yüzde ölçümlerinde klasik uyarı kurallarının [, eski ve yeni depolama ölçümleri arasındaki eşlemeye](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics)göre geçirilmesi gerekir. Kullanılabilir yeni ölçüm mutlak bir değer olduğundan eşiklerin uygun şekilde değiştirilmesi gerekir.
 
 Aynı işlevselliği sağlayan bir birleştirilmiş ölçüm olmadığından, Anonymouskısıtlar Lingerror 'da klasik uyarı kuralları, Saskısıtlar Lingerror ve kısıtlar Lingerror iki yeni uyarıya bölünmelidir. Eşiklerin uygun şekilde uyarlanması gerekir.
 

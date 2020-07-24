@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa99a5c78fb533d17cb7f70b3545aa9ef6439b32
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072610"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -126,7 +126,7 @@ Ayrıca modül temelinde varsayılan veri deposunu geçersiz kılabilirsiniz. Bu
 1. **Çıkış ayarları** bölümünü genişletin.
 1. **Varsayılan çıkış ayarlarını geçersiz kıl ' ı**seçin.
 1. **Çıkış ayarlarını ayarla**' yı seçin.
-1. Yeni bir datstore belirtin.
+1. Yeni bir veri deposu belirtin.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage 2. Access Control
 
@@ -429,6 +429,8 @@ except ComputeTargetException:
 ```
 
 Oluşturma işlemi tamamlandığında, bir deneyde kümeyi kullanarak modelinizi eğitebilirsiniz. Daha fazla bilgi için bkz. [eğitim için bir işlem hedefi seçme ve kullanma](how-to-set-up-training-targets.md).
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="access-data-in-a-compute-instance-notebook"></a>Işlem örneği not defterindeki verilere erişme
 
