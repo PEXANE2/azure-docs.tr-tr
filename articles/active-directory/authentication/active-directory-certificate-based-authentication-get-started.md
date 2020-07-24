@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202874"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051345"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory’de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama
 
@@ -93,7 +93,7 @@ Bir sertifika yetkilisinin şeması şu şekilde görünür:
     }
 ```
 
-Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/azure/install-adv2?view=azureadps-2.0)' yi kullanabilirsiniz:
+Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)' yi kullanabilirsiniz:
 
 1. Windows PowerShell 'i yönetici ayrıcalıklarıyla başlatın.
 2. Azure AD modülü sürüm [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) veya üstünü yükler.
@@ -104,7 +104,7 @@ Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/a
 
 İlk yapılandırma adımı olarak, kiracınızla bir bağlantı kurmanız gerekir. Kiracınızla bağlantı varsa, dizininizde tanımlı olan güvenilen sertifika yetkililerini gözden geçirebilir, ekleyebilir, silebilir ve değiştirebilirsiniz.
 
-### <a name="connect"></a>Bağlanma
+### <a name="connect"></a>Bağlan
 
 Kiracınızla bir bağlantı kurmak için [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet 'ini kullanın:
 
@@ -122,7 +122,7 @@ Dizininizde tanımlı güvenilen sertifika yetkililerini almak için [Get-AzureA
 
 ### <a name="add"></a>Ekle
 
-Güvenilen bir sertifika yetkilisi oluşturmak için [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın ve **CRLDistributionPoint** özniteliğini doğru bir değere ayarlayın:
+Güvenilen bir sertifika yetkilisi oluşturmak için [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın ve **CRLDistributionPoint** özniteliğini doğru bir değere ayarlayın:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"

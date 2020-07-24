@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kullanarak depolamaya dosya erişme
+title: İsteğe bağlı SQL 'de (Önizleme) depolama üzerindeki dosyalara erişin
 description: SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarının sorgulanmasını açıklar.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046878"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>SYNAPSE SQL 'de dış depolamaya erişme (isteğe bağlı)
 
@@ -43,7 +43,7 @@ Kullanıcı, aşağıdaki erişim kurallarını kullanarak depolamaya erişebili
 - Azure AD kullanıcısı-OPENROWSET, Azure depolama 'ya erişmek veya anonim erişimle depolama alanına erişmek için çağıranın Azure AD kimliğini kullanır.
 - SQL User – OPENROWSET, depolamaya anonim erişimle erişir.
 
-SQL sorumluları Ayrıca, SAS belirteçleriyle korunan dosyaları veya çalışma alanının yönetilen kimliğini doğrudan sorgulamak için OPENROWSET 'yi de kullanabilir. Bir SQL kullanıcısı bu işlevi çalıştırırsa, KIMLIK BILGILERINI DEĞIŞTIR iznine sahip bir Power User, işlevdeki URL ile eşleşen sunucu kapsamlı bir kimlik bilgisi oluşturmalı (depolama adı ve kapsayıcısı kullanılarak) ve bu kimlik bilgisi için OPENROWSET işlevinin çağıranı için başvurular izni verilir:
+SQL sorumluları Ayrıca, SAS belirteçleriyle korunan dosyaları veya çalışma alanının yönetilen kimliğini doğrudan sorgulamak için OPENROWSET 'yi de kullanabilir. Bir SQL kullanıcısı bu işlevi çalıştırırsa, izne sahip bir Power User, `ALTER ANY CREDENTIAL` IŞLEVDEKI URL ile eşleşen sunucu kapsamlı bir kimlik bilgisi oluşturmalı (depolama adı ve kapsayıcısı kullanılarak) ve bu kimlik bilgisi IÇIN OPENROWSET işlevinin ÇAĞıRANıNA başvurular izni verilir:
 
 ```sql
 EXECUTE AS somepoweruser
@@ -87,8 +87,8 @@ VERITABANı KAPSAMLı KIMLIK BILGILERI, başvurulan veri kaynağındaki dosyalar
 Çağıran, OPENROWSET işlevini yürütmek için aşağıdaki izinlerden birine sahip olmalıdır:
 
 - OPENROWSET yürütme izinlerinden biri:
-  - TOPLU IŞLEMI Yönet, oturum açmanın OPENROWSET işlevini yürütmesine olanak sağlar.
-  - VERITABANıNı Yönet toplu IŞLEMI, veritabanı kapsamlı kullanıcının OPENROWSET işlevini yürütmesine olanak sağlar.
+  - `ADMINISTER BULK OPERATIONS`, OPENROWSET işlevini yürütmek için oturum açma sağlar.
+  - `ADMINISTER DATABASE BULK OPERATIONS`Veritabanı kapsamlı kullanıcının OPENROWSET işlevini yürütmesine olanak sağlar.
 - Dış VERI KAYNAĞıNDA başvurulan kimlik bilgileri için VERITABANı KAPSAMLı KIMLIK bılgısıne başvurur
 
 #### <a name="accessing-anonymous-data-sources"></a>Anonim veri kaynaklarına erişme
@@ -151,13 +151,13 @@ Aşağıdaki tabloda, yukarıda listelenen işlemler için gerekli izinler liste
 
 | Sorgu | Gerekli izinler|
 | --- | --- |
-| Veri kaynağı olmadan OPENROWSET (toplu) | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` , veya SQL oturum açma, \<URL> SAS korumalı depolama IÇIN kimlik bilgilerine sahip olmalıdır: |
-| Kimlik bilgisi olmadan veri kaynağıyla OPENROWSET (toplu) | `ADMINISTER BULK ADMIN`veya `ADMINISTER DATABASE BULK ADMIN` , |
-| Kimlik bilgileriyle veri kaynağıyla OPENROWSET (toplu) | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` , veya`REFERENCES DATABASE SCOPED CREDENTIAL` |
+| Veri kaynağı olmadan OPENROWSET (toplu) | `ADMINISTER BULK OPERATIONS`, `ADMINISTER DATABASE BULK OPERATIONS` , veya SQL oturum açma, \<URL> SAS korumalı depolama IÇIN kimlik bilgilerine sahip olmalıdır: |
+| Kimlik bilgisi olmadan veri kaynağıyla OPENROWSET (toplu) | `ADMINISTER BULK OPERATIONS`veya `ADMINISTER DATABASE BULK OPERATIONS` , |
+| Kimlik bilgileriyle veri kaynağıyla OPENROWSET (toplu) | `REFERENCES DATABASE SCOPED CREDENTIAL`ve `ADMINISTER BULK OPERATIONS` bunlardan biri`ADMINISTER DATABASE BULK OPERATIONS` |
 | DıŞ VERI KAYNAĞı OLUŞTUR | `ALTER ANY EXTERNAL DATA SOURCE` ve `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | DıŞ TABLO OLUŞTUR | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` ve`ALTER ANY EXTERNAL DATA SOURCE` |
 | DıŞ TABLODAN SEÇIM YAPıN | `SELECT TABLE` ve `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| CETAS | Tablo oluşturmak için- `CREATE TABLE` , `ALTER ANY SCHEMA` , `ALTER ANY DATA SOURCE` , ve `ALTER ANY EXTERNAL FILE FORMAT` . Verileri okumak için: `ADMIN BULK OPERATIONS` `REFERENCES CREDENTIAL` `SELECT TABLE` Depolama üzerindeki her tablo/görünüm/işlev/sorgu + R/W iznine sahip |
+| CETAS | Tablo oluşturmak için- `CREATE TABLE` , `ALTER ANY SCHEMA` , `ALTER ANY DATA SOURCE` , ve `ALTER ANY EXTERNAL FILE FORMAT` . Verileri okumak için: `ADMINISTER BULK OPERATIONS` `REFERENCES CREDENTIAL` `SELECT TABLE` Depolama üzerindeki her tablo/görünüm/işlev/sorgu + R/W iznine sahip |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

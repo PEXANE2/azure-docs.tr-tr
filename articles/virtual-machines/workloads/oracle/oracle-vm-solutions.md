@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 363d26391c8ee40fb95a0b8fd92c4d94f1082b8d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2201cae66aae8c2d9d106871db0d4ebbd003f361
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221536"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052151"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
@@ -107,12 +107,12 @@ Azure NetApp Files, bulutta veritabanları gibi yüksek performanslı iş yükle
 - Genellikle görev açısından kritik kurumsal iş yükleri (SAP ve Oracle gibi) tarafından talep edilen yüksek düzeyde kullanılabilirlik, yüksek dayanıklılık ve yönetilebilirlik
 - En agresif RTO ve RPO SLA 'lara ulaşmak için hızlı ve verimli yedekleme ve kurtarma
 
-Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında çalışan tüm Flash sistemlerine®® ONTAP 'ı temel aldığı için bu yetenekler olasıdır. Sonuç olarak, diğer Azure depolama seçenekleri gibi sağlanabilen ve tüketilen ideal bir veritabanı depolama teknolojisidir. Azure NetApp Files NFS birimlerine dağıtım ve erişme hakkında daha fazla bilgi için bkz. [Azure NetApp Files belgeleri](https://docs.microsoft.com/azure/azure-netapp-files/) . Azure NetApp Files bir Oracle veritabanı çalıştırmak için en iyi yöntem önerileri için [Azure NetApp Files kullanarak Oracle 'ın Azure dağıtımı En Iyi Yöntem Kılavuzu '](https://www.netapp.com/us/media/tr-4780.pdf) na bakın.
+Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında çalışan tüm Flash sistemlerine®® ONTAP 'ı temel aldığı için bu yetenekler olasıdır. Sonuç olarak, diğer Azure depolama seçenekleri gibi sağlanabilen ve tüketilen ideal bir veritabanı depolama teknolojisidir. Azure NetApp Files NFS birimlerine dağıtım ve erişme hakkında daha fazla bilgi için bkz. [Azure NetApp Files belgeleri](../../../azure-netapp-files/index.yml) . Azure NetApp Files bir Oracle veritabanı çalıştırmak için en iyi yöntem önerileri için [Azure NetApp Files kullanarak Oracle 'ın Azure dağıtımı En Iyi Yöntem Kılavuzu '](https://www.netapp.com/us/media/tr-4780.pdf) na bakın.
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 'da & Yazılım Oracle Database lisanslama
 
 Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş hiper Iş parçacığı teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
-Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle Database iş yükleri için önerilir.
+Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](../../sizes-memory.md) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](../../linux/constrained-vcpu.md) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle Database iş yükleri için önerilir.
 
 Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
 

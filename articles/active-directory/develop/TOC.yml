@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Çekirdeği
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -343,8 +343,6 @@
               href: msal-js-use-ie-browser.md
             - name: Bilinen sorunlar - IE ve Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: Bilinen sorunlar - Safari
-              href: msal-js-known-issues-safari-browser.md
             - name: Hataları ve özel durumları işleme
               href: msal-handling-exceptions.md?tabs=javascript
             - name: Günlüğe kaydetme
@@ -462,7 +460,7 @@
       items:
         - name: Genel Bakış
           href: authentication-national-cloud.md
-        - name: Kimlik Doğrulaması
+        - name: Kimlik doğrulaması
           href: msal-national-cloud.md
     - name: Otomatik kullanıcı sağlama (SCIM)
       items:

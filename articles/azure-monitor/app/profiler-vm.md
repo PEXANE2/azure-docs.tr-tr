@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049808"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler kullanarak bir Azure sanal makinesinde veya bir sanal makine ölçek kümesinde çalışan Web uygulamaları profili oluşturma
 
@@ -24,7 +25,7 @@ Ayrıca, bu hizmetlerde Azure Application Insights Profiler dağıtabilirsiniz:
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Bir sanal makine veya sanal makine ölçek kümesi üzerinde profil oluşturucu dağıtma
 Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçek kümesinde çalışan Application Insights Profiler nasıl alınacağı gösterilmektedir. Profiler, VM 'Ler için Azure Tanılama Uzantısı ile yüklenir. Uzantıyı profil oluşturucu çalıştıracak şekilde yapılandırın ve uygulamanızda Application Insights SDK 'Yı derleyin.
 
-1. Application Insights SDK 'sını [ASP.net uygulamanıza](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)ekleyin.
+1. Application Insights SDK 'sını [ASP.net uygulamanıza](./asp-net.md)ekleyin.
 
    İsteklerinizin profillerini görüntülemek için Application Insights istek Telemetriyi göndermeniz gerekir.
 
@@ -71,7 +72,7 @@ Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçek kümes
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. Uzaktan erişim için bir sorun varsa, aşağıdaki komutu çalıştırmak için [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'yi kullanabilirsiniz:  
+   b. Uzaktan erişim için bir sorun varsa, aşağıdaki komutu çalıştırmak için [Azure CLI](/cli/azure/get-started-with-azure-cli) 'yi kullanabilirsiniz:  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"

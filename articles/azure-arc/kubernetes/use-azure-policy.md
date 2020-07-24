@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050033"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesi kullanma (Önizleme)
 
@@ -22,6 +22,10 @@ ms.locfileid: "86111278"
 Her `Microsoft.Kubernetes/connectedclusters` kaynak veya git Ops özellikli `Microsoft.ContainerService/managedClusters` kaynağın bu kaynağa uygulanmasını zorlamak Için Azure ilkesini kullanın `Microsoft.KubernetesConfiguration/sourceControlConfigurations` . Azure Ilkesini kullanmak için var olan bir ilke tanımı seçin ve bir ilke ataması oluşturun. İlke atamasını oluştururken atama için kapsamı ayarlarsınız: Bu, bir Azure Kaynak grubu veya aboneliği olacaktır. Oluşturulacak için parametreleri de ayarlarsınız `sourceControlConfiguration` . Atama oluşturulduktan sonra, Ilke altyapısı `connectedCluster` `managedCluster` kapsam içinde bulunan tüm veya kaynakları belirler ve `sourceControlConfiguration` her birine uygular.
 
 Her küme için Truth kaynakları olarak birden çok git deposu kullanıyorsanız (örneğin, merkezi BT/küme operatörü için bir depo ve uygulama ekiplerine yönelik diğer depolar), bunu, her ilke atamasını farklı bir git deposu kullanacak şekilde yapılandırılmış birden fazla ilke ataması kullanarak etkinleştirebilirsiniz.
+
+## <a name="prerequisite"></a>Önkoşul
+
+`Microsoft.Authorization/policyAssignments/write`Bu ilke atamasını oluşturmak istediğiniz kapsam (abonelik veya kaynak grubu) üzerinde izinleriniz olduğundan emin olun.
 
 ## <a name="create-a-policy-assignment"></a>İlke ataması oluşturma
 
@@ -36,13 +40,13 @@ Her küme için Truth kaynakları olarak birden çok git deposu kullanıyorsanı
 9. **İleri**’yi seçin.
 10. **Düzeltme görevi oluşturma**özelliğini etkinleştirin.
 11. **Yönetilen bir kimlik oluşturmak** ve kimliğin **katkıda** bulunan izinlerine sahip olması güvence altına alınır. İhtiyacınız olan izinler hakkında daha fazla bilgi [için bu belgeyi ve](../../governance/policy/assign-policy-portal.md) [Bu belgedeki yorumu](../../governance/policy/how-to/remediate-resources.md) inceleyin.
-12. **İncele ve oluştur**’u seçin.
+12. **Gözden geçir ve oluştur**’u seçin.
 
 İlke ataması oluşturulduktan sonra, `connectedCluster` atama kapsamında yer alan herhangi bir yeni kaynak (veya `managedCluster` Gile aracıları yüklü olan kaynak) için `sourceControlConfiguration` uygulanır. Mevcut kümeler için bir düzeltme görevini el ile çalıştırmanız gerekir. İlke atamasının etkili olması için genellikle 10-20 dakika sürer.
 
 ## <a name="verify-a-policy-assignment"></a>İlke atamasını doğrulama
 
-1. Azure portal `connectedCluster` kaynaklarınızdan birine gidin ve kenar çubuğunun **Ayarlar** bölümünde **ilkeler**' i seçin. (AKS tarafından yönetilen küme için UX henüz uygulanmadı, ancak geliyor.)
+1. Azure portal `connectedCluster` kaynaklarınızdan birine gidin ve kenar çubuğunun **Ayarlar** bölümünde **ilkeler**' i seçin. (AKS kümesi için UX henüz uygulanmadı, ancak geliyor.)
 2. Listede, yukarıda oluşturduğunuz ilke atamasını görmeniz ve **Uyumluluk durumunun** *uyumlu*olması gerekir.
 3. Kenar çubuğunun **Ayarlar** bölümünde, **Konfigürasyonlar**' ı seçin.
 4. Listede, `sourceControlConfiguration` ilke atamasının oluşturulduğunu görmeniz gerekir.

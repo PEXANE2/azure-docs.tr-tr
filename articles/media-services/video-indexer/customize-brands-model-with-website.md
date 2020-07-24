@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: 81df3897dff13823e4b97e10bc91d3a22b0e1b0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047267"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir markalar modeli özelleştirme
 
@@ -33,7 +33,7 @@ Bu konuda açıklandığı gibi, videoda algılanan özel markalar modellerini o
 
 ## <a name="edit-brands-model-settings"></a>Markalar model ayarlarını Düzenle
 
-Bing markaların veritabanından alınan markalar isteyip istemediğinizi belirleme seçeneğiniz vardır. Bu seçeneği ayarlamak için, markalar modelinizin ayarlarını düzenlemeniz gerekir. Şu adımları uygulayın:
+Bing markaların veritabanından alınan markalar isteyip istemediğinizi belirleme seçeneğiniz vardır. Bu seçeneği ayarlamak için, markalar modelinizin ayarlarını düzenlemeniz gerekir. Şu adımları izleyin:
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web sitesine gidin ve oturum açın.
 2. Hesabınızdaki bir modeli özelleştirmek için sayfanın sağ üst köşesinde bulunan **içerik modeli özelleştirmesi** düğmesini seçin.

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Bu makalede, Azure Arc özellikli Kubernetes 'e genel bakış sunulmaktadır.
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309943"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050065"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc özellikli Kubernetes önizlemesi nedir?
 
@@ -24,9 +24,8 @@ Bir Kubernetes kümesini Azure 'a bağlamak için, küme yöneticisinin aracıla
 
 Azure Arc özellikli Kubernetes, yoldaki verilerin güvenliğini sağlamak için sektör standardı SSL 'yi destekler. Ayrıca veriler, verilerin gizliliğini sağlamak için bir Azure Cosmos DB veritabanında şifreli olarak depolanır.
  
- > [!NOTE]
-> Azure Arc etkin Kubernetes önizleme aşamasındadır. Bunu üretim iş yükleri için önermiyoruz. 
-
+> [!NOTE]
+> Azure Arc etkin Kubernetes önizleme aşamasındadır. Bunu üretim iş yükleri için önermiyoruz.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar 
 
@@ -40,13 +39,12 @@ Azure Arc etkin Kubernetes bu senaryoları destekler:
 
 * Kubernetes için Azure Ilkesini kullanarak ilkeleri uygulayın. 
 
- 
 ## <a name="supported-regions"></a>Desteklenen bölgeler 
 
 Azure Arc özellikli Kubernetes Şu anda şu bölgelerde destekleniyor: 
 
 * Doğu ABD 
-* Batı Avrupa 
+* West Europe 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

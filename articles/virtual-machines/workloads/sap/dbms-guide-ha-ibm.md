@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
-ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051996"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği
 
@@ -59,7 +60,7 @@ Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 | [IBM DB2 HADR R 10,5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>Genel Bakış
-Yüksek kullanılabilirlik elde etmek için, HADR ile IBM DB2 LUW, [Azure kullanılabilirlik kümesine](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) veya [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)göre dağıtılan en az iki Azure sanal makinesine yüklenir. 
+Yüksek kullanılabilirlik elde etmek için, HADR ile IBM DB2 LUW, [Azure kullanılabilirlik kümesine](../../windows/tutorial-availability-sets.md) veya [Azure kullanılabilirlik alanları](./sap-ha-availability-zones.md)göre dağıtılan en az iki Azure sanal makinesine yüklenir. 
 
 Aşağıdaki grafiklerde iki veritabanı sunucusu Azure VM kurulumu görüntülenir. Veritabanı sunucusu Azure VM 'lerinin her ikisi de kendi depolamasına sahiptir ve çalışır. HADR 'de, Azure VM 'lerinden birindeki bir veritabanı örneği, birincil örnek rolüne sahiptir. Tüm istemciler bu birincil örneğe bağlanır. Veritabanı işlemlerinde yapılan tüm değişiklikler, DB2 işlem günlüğünde yerel olarak kalıcı hale getirilir. İşlem günlüğü kayıtları yerel olarak kalıcı olduğundan, kayıtlar TCP/IP aracılığıyla ikinci veritabanı sunucusundaki veritabanı örneğine, bekleme sunucusuna veya bekleme örneğine aktarılır. Bekleme örneği, aktarılan işlem günlüğü kayıtlarını ileri alarak yerel veritabanını güncelleştirir. Bu şekilde, bekleme sunucusu birincil sunucuyla eşitlenmiş olarak tutulur.
 
@@ -98,7 +99,7 @@ Bir IBM DB2 yapılandırması dağıtmak için aşağıdaki adımları izlemeniz
 
 Dağıtımı yürütmeden önce planlama işlemini doldurun. Planlama, Azure 'da HADR ile bir DB2 yapılandırmasına dağıtım temelini oluşturur. IDB db2 LUW planlamasının parçası olması gereken anahtar öğeleri (SAP ortamının veritabanı bölümü) aşağıdaki tabloda listelenmiştir:
 
-| Konu başlığı | Kısa açıklama |
+| Konu | Kısa açıklama |
 | --- | --- |
 | Azure kaynak gruplarını tanımlama | VM, VNet, Azure Load Balancer ve diğer kaynakları dağıttığınız kaynak grupları. Mevcut veya yeni olabilir. |
 | Sanal ağ/alt ağ tanımı | IBM DB2 ve Azure Load Balancer VM 'lerinin dağıtıldığı yer. Var olan veya yeni oluşturulmuş olabilir. |
@@ -109,7 +110,7 @@ Dağıtımı yürütmeden önce planlama işlemini doldurun. Planlama, Azure 'da
 | Azure Load Balancer | Temel veya standart (önerilir) kullanımı, DB2 veritabanı için yoklama bağlantı noktası (öneri 62500) **araştırma-bağlantı noktasıdır**. |
 | Ad çözümlemesi| Ad çözümlemenin ortamda nasıl çalıştığı. DNS hizmeti önemle önerilir. Yerel ana bilgisayarlar dosyası kullanılabilir. |
     
-Azure 'da Linux Paceyapıcısı hakkında daha fazla bilgi için bkz. [Azure 'da SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)ayarlama.
+Azure 'da Linux Paceyapıcısı hakkında daha fazla bilgi için bkz. [Azure 'da SUSE Linux Enterprise Server](./high-availability-guide-suse-pacemaker.md)ayarlama.
 
 ## <a name="deployment-on-suse-linux"></a>SUSE Linux üzerinde dağıtım
 
@@ -395,10 +396,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer'ı yapılandırma
-Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) 'sunu kullanmanızı ve ardından şunları yapmanızı öneririz.
+Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](../../../load-balancer/load-balancer-overview.md) 'sunu kullanmanızı ve ardından şunları yapmanızı öneririz.
 
 > [!NOTE]
-> Standart Load Balancer SKU 'SU, Load Balancer altındaki düğümlerden ortak IP adreslerine erişen kısıtlamalara sahiptir. [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) makalesi, bu DÜĞÜMLERIN genel IP adreslerine erişmesini sağlama yollarını açıklayarak
+> Standart Load Balancer SKU 'SU, Load Balancer altındaki düğümlerden ortak IP adreslerine erişen kısıtlamalara sahiptir. [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](./high-availability-guide-standard-load-balancer-outbound-connections.md) makalesi, bu DÜĞÜMLERIN genel IP adreslerine erişmesini sağlama yollarını açıklayarak
 
 1. Ön uç IP havuzu oluşturun:
 
@@ -482,7 +483,7 @@ JDBC URL 'sini denetlemek veya güncelleştirmek için J2EE yapılandırma arac�
 1. Sağ çerçevede, anahtar JDBC/havuz//URL ' yi seçin \<SAPSID> .
 1. JDBC URL 'sindeki ana bilgisayar adını sanal ana bilgisayar adıyla değiştirin.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. **Ekle**'yi seçin.
+1. **Ekle**’yi seçin.
 1. Değişikliklerinizi kaydetmek için sol üst köşedeki disk simgesini seçin.
 1. Yapılandırma aracını kapatın.
 1. Java örneğini yeniden başlatın.
@@ -497,8 +498,8 @@ Günlüklerin her iki düğümden de yazıldığı ortak bir NFS paylaşımını
 Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz.
 
 - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik][nfs-ha] 
-- [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (NFS paylaşımları oluşturmak için)
+- [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (NFS paylaşımları oluşturmak için)
 
 
 ## <a name="test-the-cluster-setup"></a>Küme kurulumunu test etme
@@ -878,8 +879,8 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Slaves: [ azibmdb01 ]</code></pre>
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [Azure 'da SUSE Linux Enterprise Server Paceyapıcısı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+- [SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar](./sap-high-availability-architecture-scenarios.md)
+- [Azure 'da SUSE Linux Enterprise Server Paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md)
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 78a56b6a848139c47d7934a47decb126afe00b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051589"
 ---
 # <a name="on-demand-provisioning"></a>İsteğe bağlı sağlama
 İsteğe bağlı sağlama, bir kullanıcıyı birkaç saniye içinde uygulamanıza olanak tanır. Yapılandırma sorunlarını hızla gidermek, tanımladığınız ifadeleri doğrulamak, test kapsamı filtrelerini ve çok daha fazlasını yapmak için bu özelliği kullanabilirsiniz. 
@@ -30,6 +30,8 @@ ms.locfileid: "85297537"
 5. **İsteğe bağlı sağlama**' ya tıklayın.
 6. Kullanıcı adını adı, soyadı, görünen ad, Kullanıcı asıl adı veya e-posta ile arayın.
 7. Sayfanın alt kısmındaki sağla ' yı seçin.
+
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="İsteğe bağlı bir Kullanıcı sağlayın.":::
 
 ## <a name="understanding-the-provisioning-steps"></a>Sağlama adımlarını anlama
 İsteğe bağlı sağlama özelliği, bir Kullanıcı sağlanırken sağlama hizmetinin aldığı adımları göstermeye çalışır. Genellikle bir kullanıcı sağlamak için beş adım vardır ve aşağıdaki adımlardan biri veya birkaçı, isteğe bağlı sağlama deneyiminde gösterilir.
@@ -88,6 +90,8 @@ Ayrıntıları görüntüle sayfaları, hedef sistemde eşleşen kullanıcı (le
 ### <a name="step-5-perform-action"></a>5. Adım: eylemi gerçekleştirme
 Son olarak, sağlama hizmeti kullanıcı oluşturma, güncelleştirme, silme veya atlama gibi bir eylem gerçekleştirir. 
 
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Kullanıcının başarılı bir şekilde sağlanması.":::
+
 **Ayrıntıları görüntüle**
 
 Ayrıntıları görüntüle bölümü, hedef uygulamada değiştirilen öznitelikleri görüntüler. Bu, sağlama hizmeti etkinliğinin son çıkışını ve aktarılmış öznitelikleri temsil eder. Bu adım başarısız olursa, görüntülenen öznitelikler sağlama hizmetinin değiştirme girişiminde bulunduğu öznitelikleri temsil eder.  
@@ -102,11 +106,11 @@ Ayrıntıları görüntüle bölümü, hedef uygulamada değiştirilen özniteli
 **İsteğe bağlı sağlama ne kadar sürer?** Genellikle 30 saniyeden daha az sürer. 
 
 ## <a name="known-limitations"></a>Bilinen Sınırlamalar
-Günümüzde bazı bilinen sınırlamalar vardır. Daha sonra yapılacak geliştirmeleri daha iyi önceliklendirmemiz için lütfen [UserVoice](https://aka.ms/appprovisioningfeaturerequest) 'a gönderin. Bu sınırlamaların isteğe bağlı sağlama özelliğine özgü olduğunu unutmayın. bir uygulamanın sağlama gruplarını, silmeleri, vb. özelliklerini destekleyip desteklemediğini öğrenmek için uygulama öğreticisini kontrol edin. 
+Günümüzde bazı bilinen sınırlamalar vardır. Daha sonra yapılacak geliştirmeleri daha iyi önceliklendirmemiz için lütfen [Kullanıcı seslerinde](https://aka.ms/appprovisioningfeaturerequest) gönderin. Bu sınırlamaların isteğe bağlı sağlama özelliğine özgü olduğunu unutmayın. bir uygulamanın sağlama gruplarını, silmeleri, vb. özelliklerini destekleyip desteklemediğini öğrenmek için uygulama öğreticisini kontrol edin. 
 
 * Uygulamalar Workday, AWS ve başarılı faktörleri isteğe bağlı sağlamayı desteklemez.
 * İsteğe bağlı sağlama grupları ve rolleri desteklenmez.
-* Kullanıcıları ve grupları devre dışı bırakma veya silme desteklenmez.
+* İsteğe bağlı sağlama, uygulamadan atanmamış kullanıcıların devre dışı bırakılmasını destekler, ancak Azure Active Directory devre dışı bırakılmış veya silinmiş kullanıcıların devre dışı bırakılmasını veya silinmesini desteklemez (Bu kullanıcılar bir Kullanıcı ararken görünmez).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

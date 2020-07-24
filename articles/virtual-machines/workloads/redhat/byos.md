@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052157"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -68,7 +69,7 @@ Bu belgenin geri kalanı, görüntü üzerinde hüküm sağlamak ve kabul etmek 
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Azure CLı 'deki Red Hat Gold görüntülerini kullanma
 
-Aşağıdaki yönergeler, Azure CLı kullanarak bir RHEL VM için ilk dağıtım sürecinde size yol gösterir. Bu yönergelerde, [Azure CLI 'nin yüklü](https://docs.microsoft.com/cli/azure/install-azure-cli)olduğu varsayılır.
+Aşağıdaki yönergeler, Azure CLı kullanarak bir RHEL VM için ilk dağıtım sürecinde size yol gösterir. Bu yönergelerde, [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğu varsayılır.
 
 >[!IMPORTANT]
 >Aşağıdaki tüm komutlar için yayımcı, teklif, plan ve görüntü başvurularında tüm küçük harfleri kullandığınızdan emin olun.
@@ -199,7 +200,7 @@ Azure disk şifrelemesi uygulama adımları için bkz. [Linux VM 'Lerinde Azure 
 
     Bu durumda, aboneliğinizi etkinleştirmek için Microsoft veya Red Hat ile iletişim kurun.
 
-- Bir RHEL BYOS görüntüsünden bir anlık görüntüyü değiştirir ve bu özel görüntüyü [paylaşılan görüntü galerisine](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)yayımlamayı denerseniz, anlık görüntünün özgün kaynağıyla eşleşen plan bilgilerini sağlamanız gerekir. Örneğin, komut şöyle görünebilir:
+- Bir RHEL BYOS görüntüsünden bir anlık görüntüyü değiştirir ve bu özel görüntüyü [paylaşılan görüntü galerisine](../../linux/shared-image-galleries.md)yayımlamayı denerseniz, anlık görüntünün özgün kaynağıyla eşleşen plan bilgilerini sağlamanız gerekir. Örneğin, komut şöyle görünebilir:
 
     ```azurecli
     az vm create –image \

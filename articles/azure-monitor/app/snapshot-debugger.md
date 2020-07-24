@@ -4,11 +4,12 @@ description: Üretim .NET uygulamalarında özel durumlar oluştuğunda hata ay�
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049682"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hatalarını ayıklama
 Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) üzerinde görünür.
@@ -37,7 +38,7 @@ Snapshot Debugger etkinleştirdiyseniz, anlık görüntüleri görmüyorsanız, 
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
-Anlık görüntülere erişim rol tabanlı erişim denetimi (RBAC) tarafından korunur. Bir anlık görüntüyü denetlemek için öncelikle bir abonelik sahibi tarafından gerekli role eklenmelidir.
+Anlık görüntülere erişim, rol tabanlı erişim denetimiyle (RBAC) korunur. Anlık görüntüyü incelemek için önce bir abonelik sahibi tarafından gerekli role eklenmeniz gerekir.
 
 > [!NOTE]
 > Sahipler ve katkıda bulunanlar bu role otomatik olarak sahip değildir. Anlık görüntüleri görüntülemek istiyorlarsa, kendilerini role eklemesi gerekir.
@@ -88,7 +89,7 @@ Snapshot Collector, bir [Application Insights telemetri işlemcisi](../../azure-
 Uygulamanız [Trackexception](../../azure-monitor/app/asp-net-exceptions.md#exceptions)'ı her çağırdığında, Snapshot Collector oluşturulan özel durum türünden ve oluşturma yöntemiyle BIR sorun kimliği hesaplar.
 Uygulamanız TrackException çağırdığında, ilgili sorun KIMLIĞI için bir sayaç artırılır. Sayaç `ThresholdForSnapshotting` değere ulaştığında, sorun kimliği bir koleksiyon planına eklenir.
 
-Snapshot Collector, [AppDomain. CurrentDomain. FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) olayına abone olunarak oluşturulan özel durumları da izler. Bu olay tetiklendiğinde, özel durumun sorun KIMLIĞI hesaplanır ve koleksiyon planındaki sorun kimliklerine göre karşılaştırılır.
+Snapshot Collector, [AppDomain. CurrentDomain. FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) olayına abone olunarak oluşturulan özel durumları da izler. Bu olay tetiklendiğinde, özel durumun sorun KIMLIĞI hesaplanır ve koleksiyon planındaki sorun kimliklerine göre karşılaştırılır.
 Bir eşleşme varsa, çalışan işlemin bir anlık görüntüsü oluşturulur. Anlık görüntüye benzersiz bir tanımlayıcı atanır ve özel durum bu tanımlayıcıyla damgalı olur. FirstChanceException işleyicisi döndüğünde, oluşturulan özel durum normal olarak işlenir. Sonuç olarak, özel durum TrackException yöntemine bir kez ulaşır ve bu da anlık görüntü tanımlayıcısı ile birlikte Application Insights bildirilir.
 
 Ana süreç çalışmaya devam eder ve kullanıcılara az kesintiye uğramış olan trafik sunar. Bu sırada anlık görüntü, Snapshot Uploader işlemine devredildir. Snapshot Uploader bir mini döküm oluşturur ve ilgili sembol (. pdb) dosyalarıyla birlikte Application Insights yükler.
@@ -116,7 +117,7 @@ Visual Studio 2017 sürüm 15,2 (veya üzeri), yayın derlemeleri için App Serv
 Azure Işlem ve diğer türler için, sembol dosyalarının ana uygulama. dll ' de aynı klasörde (genellikle, `wwwroot/bin` ) veya geçerli yolda kullanılabilir olduğundan emin olun.
 
 > [!NOTE]
-> Kullanılabilir farklı sembol seçenekleri hakkında daha fazla bilgi için [Visual Studio belgelerine](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Kullanılabilir farklı sembol seçenekleri hakkında daha fazla bilgi için [Visual Studio belgelerine](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 )başvurun. En iyi sonuçlar için, "tam", "taşınabilir" veya "katıştırılmış" kullanmanızı öneririz.
 
 ### <a name="optimized-builds"></a>İyileştirilmiş derlemeler
@@ -137,6 +138,6 @@ Uygulamanız için Application Insights Snapshot Debugger etkinleştirin:
 
 Application Insights Snapshot Debugger ötesinde:
  
-* Özel durum beklemeden anlık görüntüler almak için kodunuzda anlık görüntü [noktalarını ayarlayın](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) .
+* Özel durum beklemeden anlık görüntüler almak için kodunuzda anlık görüntü [noktalarını ayarlayın](/visualstudio/debugger/debug-live-azure-applications) .
 * [Web uygulamalarınızda özel durumları tanılayın,](../../azure-monitor/app/asp-net-exceptions.md) Application Insights için daha fazla özel durum görünür hale getirme açıklanmaktadır.
 * [Akıllı algılama](../../azure-monitor/app/proactive-diagnostics.md) , performans bozuklularını otomatik olarak bulur.

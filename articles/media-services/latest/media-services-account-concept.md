@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46f5644fb47b840f273ccab37da4f4743ad335f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053119"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3 hesaplarını yönetme
 
@@ -28,7 +29,7 @@ Bir Media Services hesabını yeni bir aboneliğe taşımanız gerekiyorsa, önc
 > [!NOTE]
 > Media Services v3, çok kiracılı modeli destekler.
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * Farklı bir aboneliğe geçmeden önce hesabınızdaki tüm verilerin yedeklerini oluşturun.
 * Tüm akış uç noktalarını ve canlı akış kaynaklarını durdurmanız gerekir. Kullanıcılarınız, kaynak grubu taşıma süresi boyunca içeriğinize erişemez. 
@@ -42,4 +43,4 @@ Kaynak grubu taşıma sonrasında bir Media Services hesabı ya da ilişkili bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hesap oluşturma](create-account-cli-quickstart.md)
+[Hesap oluşturma](./create-account-howto.md)

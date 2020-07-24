@@ -5,21 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826477"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051292"
 ---
-# <a name="password-management-frequently-asked-questions"></a>Parola yönetimi hakkında sık sorulan sorular
+# <a name="self-service-password-reset-frequently-asked-questions"></a>Self servis parola sıfırlama sık sorulan sorular
 
-Aşağıda, parola sıfırlama ile ilgili tüm şeyler için sık sorulan bazı sorular (SSS) verilmiştir.
+Aşağıda, self servis parola sıfırlama ile ilgili tüm şeyler için sık sorulan bazı sorular (SSS) verilmiştir.
 
 Burada yanıtlanmayan Azure Active Directory (Azure AD) ve self servis parola sıfırlama (SSPR) hakkında genel bir sorunuz varsa, [Azure Active Directory Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-active-directory.html)hakkında yardım almak için topluluğa soru sorabilirsiniz. Topluluk üyeleri; mühendisler, ürün yöneticileri, MVP 'ler ve BT uzmanlarına yönelik BT profesyonellerini içerir.
 
@@ -37,7 +38,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
 
   > **Y:** Evet. Parola sıfırlama etkin olduğu ve lisansladığı sürece, kullanıcılar, https://aka.ms/ssprsetup) kimlik doğrulama bilgilerini kaydetmek için parola sıfırlama kayıt portalına gidebilir. Kullanıcılar ayrıca erişim paneli ( https://myapps.microsoft.com) . Erişim paneli 'ne kaydolmak için profil resmini seçmesini, **profil**' i ve ardından **parola sıfırlama için kaydol** seçeneğini belirlemeniz gerekir.
   >
-  >
+  > [Birleşik kaydı](concept-registration-mfa-sspr-combined.md)etkinleştirirseniz, kullanıcılar hem SSPR hem de Azure Multi-Factor Authentication için aynı anda kayıt yapabilir.
 * **S: bir grup için parola sıfırlamayı etkinleştirdiğimde ve Kullanıcılarım için izin verme izni varsa, Kullanıcılarım için yeniden kayıt gerekli midir?**
 
   > Y **:** Eşleşen. Kimlik doğrulama verilerinin doldurulduğu kullanıcıların yeniden kaydedilmesi gerekmez.

@@ -9,16 +9,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: anzaman
-ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047243"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Video Indexer içerik modellerini özelleştirme
 
-Video Indexer, bazı modellerini özel kullanım çalışmanıza uyarlayacak şekilde özelleştirmenizi sağlar. Bu modeller [markalar](customize-brands-model-overview.md), [dili](customize-language-model-overview.md)ve [kişiyi](customize-person-model-overview.md)içerir. Video Indexer Web sitesini veya API 'YI kullanarak bu modelleri kolayca özelleştirebilirsiniz.
+Video Indexer, bazı modellerini kendinize özgü kullanım örneğine uyarlayacak şekilde özelleştirmenizi sağlar. Bu modeller [markalar](customize-brands-model-overview.md), [dili](customize-language-model-overview.md)ve [kişiyi](customize-person-model-overview.md)içerir. Video Indexer web sitesini veya API’sinin kullanarak bu modelleri kolayca özelleştirebilirsiniz.
 
 Bu makale, her özelleştirme türünün avantajlarını açıklayan makalelere bağlantılar sağlar. Makale Ayrıca her bir modelin özelleştirmesini nasıl uygulayabileceğinizi gösteren nasıl yapılır kılavuzlarıyla bağlantı sağlar.
 

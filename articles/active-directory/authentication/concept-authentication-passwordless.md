@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 105f911b97e01a4b05673fc67b51c677df15eb89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981864"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051278"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory için passwordless kimlik doğrulama seçenekleri
 
-Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika bir yoludur, ancak kullanıcılar genellikle parolalarını anımsamak için gereken ek güvenlik katmanını öğreniyor. Parola kaldırılıp, sizin veya bildiğiniz bir şey ile değiştirildiği için passwordless kimlik doğrulama yöntemleri daha uygundur.
+Multi-Factor Authentication (MFA) gibi özellikler, kuruluşunuzu güvenli hale getirmenin harika bir yoludur, ancak kullanıcılar genellikle parolalarını anımsamak için gereken ek güvenlik katmanını öğreniyor. Parola kaldırılıp, sizin veya bildiğiniz bir şey ile değiştirildiği için passwordless kimlik doğrulama yöntemleri daha uygundur.
 
-| Kimlik Doğrulaması  | Sahip olduğunuz bir şey | Sizin veya bildiğiniz bir şey |
+| Kimlik doğrulaması  | Sahip olduğunuz bir şey | Sizin veya bildiğiniz bir şey |
 | --- | --- | --- |
 | Parolasız | Windows 10 cihaz, telefon veya güvenlik anahtarı | Biyometrik veya PIN |
 
@@ -36,11 +36,11 @@ Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir
 
 ## <a name="windows-hello-for-business"></a>İş İçin Windows Hello
 
-Iş için Windows Hello, kendilerine ait Windows bılgısayar olan bilgi çalışanları için idealdir. Biyometrik ve PIN, kullanıcının BILGISAYARıNA doğrudan bağlanır, bu da sahip dışında bir kişiye erişimi engeller. Ortak anahtar altyapısı (PKI) tümleştirmesi ve çoklu oturum açma (SSO) için yerleşik destek ile Iş için Windows Hello, şirket içi ve buluttaki kurumsal kaynaklara sorunsuz bir şekilde erişmek için kullanışlı bir yöntem sağlar.
+Iş için Windows Hello, kendilerine ait Windows bılgısayar olan bilgi çalışanları için idealdir. Biyometrik ve PIN kimlik bilgileri, kullanıcının BILGISAYARıNA doğrudan bağlanır ve bu da sahip dışında bir kişiye erişimi engeller. Ortak anahtar altyapısı (PKI) tümleştirmesi ve çoklu oturum açma (SSO) için yerleşik destek ile Iş için Windows Hello, şirket içi ve buluttaki kurumsal kaynaklara sorunsuz bir şekilde erişmek için kullanışlı bir yöntem sağlar.
 
 ![Iş için Windows Hello ile Kullanıcı oturum açma örneği](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
 
-Aşağıdaki adımlarda, oturum açma işleminin Azure Active Directory nasıl çalıştığı gösterilmektedir.
+Aşağıdaki adımlarda, oturum açma işleminin Azure AD ile nasıl çalıştığı gösterilmektedir:
 
 ![Iş için Windows Hello ile Kullanıcı oturumu açma ile ilgili adımları özetleyen diyagram](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
@@ -56,11 +56,11 @@ Aşağıdaki adımlarda, oturum açma işleminin Azure Active Directory nasıl �
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması
 
-Çalışanın telefonunun parolasız kimlik doğrulama yöntemi olmasına izin verin. Microsoft Authenticator uygulamasını bir parolanın yanı sıra uygun bir Multi-Factor Authentication seçeneği olarak zaten kullanıyor olabilirsiniz. Kimlik doğrulayıcı uygulamasını passwordless seçeneği olarak da kullanabilirsiniz.
+Ayrıca, çalışanın telefonunun parolasız bir kimlik doğrulama yöntemi olmasına da izin verebilirsiniz. Microsoft Authenticator uygulamasını bir parolanın yanı sıra uygun bir Multi-Factor Authentication seçeneği olarak zaten kullanıyor olabilirsiniz. Kimlik doğrulayıcı uygulamasını passwordless seçeneği olarak da kullanabilirsiniz.
 
 ![Microsoft Authenticator uygulamayla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Authenticator uygulaması tüm iOS veya Android telefonlarına güçlü, passworddaha az bir kimlik bilgisi getirir. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenebilecek bir sayıyla eşleşen bir sayı ile eşleşen ve sonra biyometrik (dokunmatik veya yüz) veya PIN 'i (touch veya yüz) veya PIN 'ini kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. Yükleme ayrıntıları için lütfen [Microsoft Authenticator uygulamasına indirin ve yükleyin](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) .
+Authenticator uygulaması tüm iOS veya Android telefonlarına güçlü, passworddaha az bir kimlik bilgisi getirir. Kullanıcılar, telefonlarına bir bildirim alarak, ekranda görüntülenebilecek bir sayıyla eşleşen bir sayı ile eşleşen ve sonra biyometrik (dokunmatik veya yüz) veya PIN 'i (touch veya yüz) veya PIN 'ini kullanarak herhangi bir platformda veya tarayıcıda oturum açabilirler. Yükleme ayrıntıları için [Microsoft Authenticator uygulamayı indirip](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) yükleme bölümüne bakın.
 
 Kimlik doğrulayıcı uygulamasını kullanan passwordless kimlik doğrulaması, Iş için Windows Hello ile aynı temel kalıbı izler. Azure AD 'nin kullanılan Microsoft Authenticator uygulama sürümünü bulabilmesi için, kullanıcının tanımlanması gerektiğinden çok daha karmaşıktır:
 
@@ -75,11 +75,18 @@ Kimlik doğrulayıcı uygulamasını kullanan passwordless kimlik doğrulaması,
 1. Nonce özel anahtarla imzalanır ve Azure AD 'ye geri gönderilir.
 1. Azure AD ortak/özel anahtar doğrulaması gerçekleştirir ve bir belirteç döndürür.
 
+Parolasız oturum açma 'yı kullanmaya başlamak için aşağıdaki nasıl yapılır:
+
+> [!div class="nextstepaction"]
+> [Doğrulayıcı uygulamasını kullanarak passwordless işaretini etkinleştirme](howto-authentication-passwordless-phone.md)
+
 ## <a name="fido2-security-keys"></a>FIDO2 güvenlik anahtarları
 
 FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishable standartlara dayalı, passwordless kimlik doğrulama yöntemidir. Hızlı kimlik çevrimiçi (FIDO), passwordless kimlik doğrulaması için açık bir standarttır. FIDO, kullanıcıların ve kuruluşların, bir dış güvenlik anahtarı veya bir cihaza yerleşik bir platform anahtarı kullanarak bir Kullanıcı adı veya parola olmadan kendi kaynaklarında oturum açmasını sağlar.
 
-Çalışanlar, genel önizleme için güvenlik anahtarlarını kullanarak Azure AD 'ye veya karma Azure AD 'ye katılmış Windows 10 cihazlarında oturum açabilir ve bulutta ve şirket içi kaynaklarda çoklu oturum açma imkanı alabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
+Çalışanlar, Azure AD 'de veya karma Azure AD 'ye katılmış Windows 10 cihazlarında oturum açmak ve bulutta ve şirket içi kaynaklarda çoklu oturum açmayı sağlamak için güvenlik anahtarlarını kullanabilir. Kullanıcılar, desteklenen tarayıcılarda da oturum açabilirler. FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
+
+Azure AD 'de FIDO2 güvenlik anahtarları ile oturum açma Şu anda önizlemededir.
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -127,7 +134,15 @@ Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen
 
 Bir satıcısıysanız ve cihazınızı bu desteklenen cihazlar listesinde almak istiyorsanız, iletişim kurun [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) .
 
+FIDO2 güvenlik anahtarlarını kullanmaya başlamak için aşağıdaki nasıl yapılır:
+
+> [!div class="nextstepaction"]
+> [FIDO2 güvenlik anahtarlarını kullanarak passwordless imzalamayı etkinleştir](howto-authentication-passwordless-security-key.md)
+
+
 ## <a name="what-scenarios-work-with-the-preview"></a>Önizlemele hangi senaryolar çalışıyor?
+
+Azure AD parolasız oturum açma özellikleri şu anda önizleme aşamasındadır. Aşağıdaki noktalara dikkat edilmelidir:
 
 - Yöneticiler, kiracı için passwordless kimlik doğrulama yöntemlerini etkinleştirebilir
 - Yöneticiler tüm kullanıcıları hedefleyebilir veya kiracının her bir yöntemi için kullanıcıları/grupları seçebilir
@@ -162,12 +177,12 @@ Gereksinimlerinizi ve kullanıcılarınızı hangi yöntemin destekleyeceği bel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kuruluşunuzda FIDO2 güvenlik anahtarı passwordless seçeneklerini etkinleştirin](howto-authentication-passwordless-security-key.md)
+Azure AD 'de passwordless kullanmaya başlamak için aşağıdaki nasıl yapılır:
 
-[Kuruluşunuzda telefon tabanlı parolasız seçenekleri etkinleştirin](howto-authentication-passwordless-phone.md)
+* [FIDO2 güvenlik anahtarı passwordless oturum açma özelliğini etkinleştir](howto-authentication-passwordless-security-key.md)
+* [Kimlik doğrulayıcı uygulamasıyla telefon tabanlı parolasız oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>Dış bağlantılar
 
-[FıDO Alliance](https://fidoalliance.org/)
-
-[FIDO2 CTAP belirtimi](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)
+* [FıDO Alliance](https://fidoalliance.org/)
+* [FIDO2 CTAP belirtimi](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)

@@ -3,11 +3,12 @@ title: Visual Studio 'da Application Insights kaldırma-Azure Izleyici
 description: Visual Studio 'da ASP.NET ve ASP.NET Core için Application Insights SDK 'Yı kaldırma.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80805111"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049773"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Visual Studio 'da Application Insights kaldırma
 
@@ -228,4 +229,4 @@ Visual Studio ASP.NET Core şablon projesine Application Insights Telemetri ekle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İzleyici](https://docs.microsoft.com/azure/azure-monitor/overview)
+- [Azure İzleyici](../overview.md)

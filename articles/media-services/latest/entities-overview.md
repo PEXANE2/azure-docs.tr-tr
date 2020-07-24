@@ -13,18 +13,18 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053249"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
 
 Bu konu, Azure Media Services v3 varlıklarını listelerken kullanılabilen OData sorgu seçeneklerini ve sayfalandırma desteğini ele alır.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 * Türündeki varlıkların özellikleri `Datetime` her zaman UTC biçimindedir.
 * İstek gönderilmeden önce sorgu dizesindeki boşluk, URL kodlamalı olmalıdır.
@@ -64,7 +64,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Sıralama ölçütü
 
-`$orderby`Döndürülen nesneleri belirtilen parametreye göre sıralamak için kullanın. Örnek:  
+`$orderby`Döndürülen nesneleri belirtilen parametreye göre sıralamak için kullanın. Örneğin:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -158,34 +158,34 @@ Aşağıdaki tabloda, filtreleme ve sıralama seçeneklerinin farklı varlıklar
 
 |Varlık adı|Özellik adı|Filtre|Sipariş verme|
 |---|---|---|---|
-|[Varlıklar](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` ve `desc`|
+|[Varlıklar](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` ve `desc`|
 ||Properties. AlternateId |`eq`||
 ||Properties. assetId |`eq`||
 ||Özellikler. oluşturuldu| `eq`, `gt`, `lt`| `asc` ve `desc`|
-|[İçerik anahtarı ilkeleri](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+|[İçerik anahtarı ilkeleri](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 ||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 ||Properties. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 ||Properties. PolicyId|`eq`, `ne`||
-|[İşler](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` ve `desc`|
+|[İşler](/rest/api/media/jobs)| name  | `eq`            | `asc` ve `desc`|
 ||Properties. State        | `eq`, `ne`        |                         |
 ||Özellikler. oluşturuldu      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
 ||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` ve `desc`| 
-|[Akış bulucuları](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+|[Akış bulucuları](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 ||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` ve `desc`|
 ||Properties. BitişZamanı    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-|[Akış ilkeleri](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+|[Akış ilkeleri](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 ||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-|[Dönüştürmeler](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` ve `desc`|
+|[Dönüştürmeler](/rest/api/media/transforms)| name | `eq`            | `asc` ve `desc`|
 || Özellikler. oluşturuldu      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Varlıkları Listele](https://docs.microsoft.com/rest/api/media/assets/list)
-* [Içerik anahtarı Ilkelerini Listele](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [Işleri listeleme](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [Akış Ilkelerini Listele](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [Akış Konumlandırıcı listesini Listele](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Varlıkları Listele](/rest/api/media/assets/list)
+* [Içerik anahtarı Ilkelerini Listele](/rest/api/media/contentkeypolicies/list)
+* [Işleri listeleme](/rest/api/media/jobs/list)
+* [Akış Ilkelerini Listele](/rest/api/media/streamingpolicies/list)
+* [Akış Konumlandırıcı listesini Listele](/rest/api/media/streaminglocators/list)
 * [Bir dosyayı akışa alma](stream-files-dotnet-quickstart.md)
 * [Kotalar ve sınırlar](limits-quotas-constraints.md)

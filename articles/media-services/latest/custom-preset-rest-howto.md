@@ -12,18 +12,18 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65761804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053329"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Özel bir dönüşümle kodlama-REST
 
 Azure Media Services ile kodlarken, [akış dosyaları](stream-files-tutorial-with-rest.md#create-a-transform) öğreticisinde gösterildiği gibi, sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir şekilde çalışmaya başlayın. Ayrıca, belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Özel ön ayarlar oluşturulurken aşağıdaki noktalar geçerlidir:
 
@@ -32,7 +32,7 @@ Azure Media Services ile kodlarken, [akış dosyaları](stream-files-tutorial-wi
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md). <br/>Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
+- [Media Services hesabı oluşturun](./create-account-howto.md). <br/>Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 - [Azure Media Services REST API'si çağrıları Için Postman 'ı yapılandırın](media-rest-apis-with-postman.md).<br/>[Azure AD belirtecini al](media-rest-apis-with-postman.md#get-azure-ad-token)konusunun son adımını izlediğinizden emin olun. 
 
 ## <a name="define-a-custom-preset"></a>Özel bir önayar tanımlama
@@ -133,7 +133,7 @@ Bu örnekte, önce ses kodlaması ve video kodlaması için iki H264Video katman
 
 ## <a name="create-a-new-transform"></a>Yeni dönüşüm oluştur  
 
-Bu örnekte, daha önce tanımladığımız özel hazır ayarı temel alan bir **dönüşüm** oluşturacağız. Bir dönüşüm oluştururken önce, zaten mevcut olup olmadığını denetlemek için [Al](https://docs.microsoft.com/rest/api/media/transforms/get) ' ı kullanmalısınız. Dönüşüm varsa, yeniden kullanın. 
+Bu örnekte, daha önce tanımladığımız özel hazır ayarı temel alan bir **dönüşüm** oluşturacağız. Bir dönüşüm oluştururken önce, zaten mevcut olup olmadığını denetlemek için [Al](/rest/api/media/transforms/get) ' ı kullanmalısınız. Dönüşüm varsa, yeniden kullanın. 
 
 İndirdiğiniz Postman 'ın koleksiyonunda **dönüşümler ve işler** -> **Oluştur veya Güncelleştir**' i seçin.
 
@@ -151,4 +151,4 @@ Media Services belirtilen videoya veya sese dönüştürmeyi uygulamak için, o 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[DIĞER Rest işlemlerine](https://docs.microsoft.com/rest/api/media/) bakın
+[DIĞER Rest işlemlerine](/rest/api/media/) bakın

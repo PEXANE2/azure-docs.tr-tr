@@ -9,16 +9,16 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 1a186ac3bf2297de5ffc7ff478ba9b4350dae4c8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2c5e697f3dd67087582118fb6a6e083feecf549f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050085"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
-Bir Kubernetes kümesini Azure yaya bağlayın.
+Bu belge, Azure 'da AKS-Engine, Azure Stack hub 'ı üzerindeki aks-Engine, GKE, EKS ve VMware vSphere kümesi gibi bulut Yerel Bilgi Işlem altyapısı (CNCF) sertifikalı Kubernetes kümesini Azure yaya bağlama sürecini ele almaktadır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -28,7 +28,7 @@ Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
   * [Docker 'Da Kubernetes](https://kind.sigs.k8s.io/) kullanarak bir Kubernetes kümesi oluşturma (tür)
   * [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) veya [Windows](https://docs.docker.com/docker-for-windows/#kubernetes) için Docker kullanarak bir Kubernetes kümesi oluşturma
 * Yay etkinleştirilmiş Kubernetes aracılarının dağıtımı için kümedeki kümeye ve Küme Yöneticisi rolüne erişmeniz için bir kubeconfig dosyası gerekir.
-* Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır. Bu izinlere sahip olan "Kubernetes ekleme için Azure Arc" rolü, ekleme için Azure CLı ile kullanılan Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
+* Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır. "Kubernetes kümesi-Azure yay ekleme" rolü bu izinlere sahiptir ve Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
 * Connectedk8s uzantısını kullanarak kümeyi ekleme için Held 3 gereklidir. Bu gereksinimi karşılamak için [Held 3 ' ün en son sürümünü yükler](https://helm.sh/docs/intro/install) .
 * Azure Arc etkin Kubernetes CLı uzantılarını yüklemek için Azure CLı sürüm 2.3 + gereklidir. Azure CLI sürüm 2.3 + sürümüne sahip olduğunuzdan emin olmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı veya güncelleştirme 'yi en son sürüme güncelleştirin.
 * Yay etkin Kubernetes CLı uzantılarını yükler:
@@ -55,7 +55,7 @@ Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
 * Doğu ABD
-* Batı Avrupa
+* West Europe
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -64,7 +64,7 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 * 443 numaralı bağlantı noktasında TCP-->`https://:443`
 * 9418 numaralı bağlantı noktasında TCP-->`git://:9418`
 
-| Uç nokta (DNS)                                                                                               | Description                                                                                                                 |
+| Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durum ve getirme yapılandırma bilgilerini itilmesi için veri düzlemi uç noktası                                      |
@@ -169,6 +169,9 @@ AzureArcTest1  eastus      AzureArcTest
 
 Ayrıca, bu kaynağı [Azure Portal](https://portal.azure.com/)görüntüleyebilirsiniz. Portalı tarayıcınızda açtıktan sonra, komutta daha önce kullanılan kaynak adı ve kaynak grubu adı girdilerine göre kaynak grubuna ve Azure Arc etkin Kubernetes kaynağına gidin `az connectedk8s connect` .
 
+> [!NOTE]
+> Küme eklendikten sonra, küme meta verileri (küme sürümü, aracı sürümü, düğüm sayısı) için Azure portal içinde Azure Arc etkin Kubernetes kaynağının genel bakış sayfasında yüzey olarak 5 ila 10 dakika sürer.
+
 Azure Arc etkin Kubernetes, ad alanına birkaç işleç dağıtır `azure-arc` . Bu dağıtımları ve pod 'leri buradan görüntüleyebilirsiniz:
 
 ```console
@@ -204,7 +207,7 @@ Azure Arc etkin Kubernetes, kümenizde çalışan ve ad alanına dağıtılan bi
 * `deployment.apps/config-agent`: kümede ve güncelleştirmelerin uyumluluk durumunda uygulanan kaynak denetimi yapılandırma kaynakları için bağlı kümeyi izler
 * `deployment.apps/controller-manager`: işleçler operatörü ve Azure Arc bileşenleri arasındaki etkileşimleri düzenler
 * `deployment.apps/metrics-agent`: Bu aracıların en iyi performansı sergilediğinden emin olmak için diğer yay aracılarının ölçümlerini toplar
-* `deployment.apps/cluster-metadata-operator`: küme meta verilerini toplar-küme sürümü, düğüm sayısı ve yay Aracısı sürümü
+* `deployment.apps/cluster-metadata-operator`: küme meta verilerini toplar-küme sürümü, düğüm sayısı ve Azure Arc aracı sürümü
 * `deployment.apps/resource-sync-agent`: Yukarıdaki belirtilen küme meta verilerini Azure 'da eşitler
 * `deployment.apps/clusteridentityoperator`: Azure Arc etkin Kubernetes Şu anda sistem tarafından atanan kimliği desteklemektedir. clusterıdentityoperator, diğer aracıların Azure ile iletişim kurmak için kullandığı yönetilen hizmet kimliği (MSI) sertifikasını saklar.
 * `deployment.apps/flux-logs-agent`: kaynak denetimi yapılandırmasının bir parçası olarak dağıtılan Flox işleçlerinden günlükleri toplar
@@ -218,7 +221,7 @@ Azure Arc etkin Kubernetes, kümenizde çalışan ve ad alanına dağıtılan bi
   ```console
   az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
   ```
-  Bu, `Microsoft.Kubernetes/connectedCluster` kaynağı ve `sourcecontrolconfiguration` Azure 'daki ilişkili kaynakları kaldırır. Azure CLı, küme üzerinde çalışan aracıları da kaldırmak için Held kaldırma kullanır.
+  Bu komut, `Microsoft.Kubernetes/connectedCluster` Azure 'daki kaynağı ve ilişkili `sourcecontrolconfiguration` kaynakları kaldırır. Azure CLı, küme üzerinde çalışan aracıları da kaldırmak için Held kaldırma kullanır.
 
 * **Azure Portal silme**: Azure Arc etkin Kubernetes kaynağını Azure Portal üzerinde silme Işlemi, `Microsoft.Kubernetes/connectedcluster` Azure 'daki kaynağı ve ilişkili kaynakları siler `sourcecontrolconfiguration` , ancak kümede çalışan aracıları silmez. Kümede çalışan aracıları silmek için aşağıdaki komutu çalıştırın.
 

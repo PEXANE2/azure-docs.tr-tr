@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050441"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services’ı PowerShell ile yönetme
 
@@ -25,7 +26,7 @@ Sunucu oluşturma veya silme, sunucu işlemlerini askıya alma veya sürdürme v
 
 Çoğu PowerShell görevi, yönettiğiniz Analysis Services sunucuda yönetici ayrıcalıklarına sahip olmanızı gerektirir. Zamanlanmış PowerShell görevleri katılımsız işlemlerdir. Zamanlayıcı 'yı çalıştıran hesap veya hizmet sorumlusu Analysis Services sunucuda yönetici ayrıcalıklarına sahip olmalıdır. 
 
-Azure PowerShell cmdlet 'lerini kullanan sunucu işlemlerinde, hesabınız veya zamanlayıcı çalıştıran hesap, [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/overview.md)içindeki kaynak için sahip rolüne ait olmalıdır. 
+Azure PowerShell cmdlet 'leri kullanan sunucu işlemleri için, hesabınız veya zamanlayıcı çalıştıran hesap, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)içindeki kaynak için sahip rolüne de ait olmalıdır. 
 
 ## <a name="resource-and-server-operations"></a>Kaynak ve sunucu işlemleri 
 

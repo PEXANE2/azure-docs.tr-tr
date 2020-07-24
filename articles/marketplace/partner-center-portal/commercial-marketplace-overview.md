@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047592"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market portalına genel bakış
 
@@ -28,9 +28,9 @@ Kuruluşlar, kamu kurumları ve tüm boyutlardaki kuruluşlar, [Azure Marketi](h
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı geçiş
 
-İş Ortağı Merkezi, Yazılım yayımcıları ile ilişkimizin tüm yönlerini daha iyi tümleştirecek şekilde gelişiyor. Bu evriminin bir parçası olarak, tüm ticari Market teklif yönetimini [bulut iş ortağı portalı](https://cloudpartner.azure.com/) Iş ortağı merkezine geçirdik.
+İş Ortağı Merkezi, Yazılım yayımcıları ile ilişkimizin tüm yönlerini daha iyi tümleştirecek şekilde gelişiyor. Bu evriminin bir parçası olarak, tüm ticari Market teklif yönetimini Bulut İş Ortağı Portalı (CPP) ile Iş Ortağı Merkezi ' ne geçirdik.
 
-Daha önce Bulut İş Ortağı Portalı kullanan mevcut yayımcılar, Iş Ortağı Merkezi 'Nde tanıdık ancak geliştirilmiş ve sezgisel bir kullanıcı deneyimi bulur. Kullanıcılar uygun konuma sorunsuzca yönlendirilmeyecektir. Müşteriler bu iş ortağı deneyimini yükseltmeden etkilenmeyecektir.
+Daha önce CPP kullanan mevcut yayımcılar, Iş Ortağı Merkezi ile tanıdık ancak geliştirilmiş ve sezgisel bir kullanıcı deneyimi bulur. Kullanıcılar uygun konuma sorunsuzca yönlendirilmeyecektir. Müşteriler bu iş ortağı deneyimini yükseltmeden etkilenmeyecektir.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Yayımlama ve teklif yönetimi Kullanıcı deneyimi geliştirmeleri
 

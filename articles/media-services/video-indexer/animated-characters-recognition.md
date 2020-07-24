@@ -10,13 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989918"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047484"
 ---
-# <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (Önizleme)
+# <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (önizleme)
 
 Azure Media Services Video Indexer, bilişsel [Hizmetler özel vizyonu](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)ile tümleştirme yoluyla animasyonlu içerikte karakterlerin algılanmasını, gruplanmasını ve tanınmasını destekler. Bu işlev hem Portal hem de API aracılığıyla kullanılabilir.
 
@@ -68,7 +69,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 
     * Eğitim anahtarı (eğitim kaynağı için)
     * Tahmin anahtarı (tahmin kaynağı için)
-    * Uç Nokta 
+    * Uç Noktası 
     * Tahmin kaynak KIMLIĞI
     
     > [!NOTE]
@@ -133,7 +134,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
         ![İçerik modeli özelleştirmesi](./media/animated-characters-recognition/content-model-customization-tab.png)
 
      1. Eğitim olduktan sonra, bu modelle Dizinlenecek veya yeniden Dizinlenecek tüm videolar eğitilen karakterleri tanır. 
-    Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir. [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin.
+    Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir. [Özel görüntü işleme sınıflandırıcınızı iyileştirme](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)hakkında daha fazla bilgi edinin.
 
 1. Animasyonlu bir karakteri silin.
 
@@ -159,7 +160,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 1. Özel Görüntü İşleme bir hesabı bağlayın.
 
     Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşleme hesabı bağlamanız gerekir. <br/>
-    Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+    Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](../../cognitive-services/custom-vision-service/home.md).
 
     [API kullanarak özel görüntü işleme hesabınızı bağlayın](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
 1. Bir animasyonlu karakter modeli oluşturun.

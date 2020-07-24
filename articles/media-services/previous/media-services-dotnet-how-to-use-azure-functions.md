@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712505"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052831"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services ile Azure Işlevleri geliştirme
 
@@ -26,7 +27,7 @@ Bu makalede, Media Services kullanan Azure Işlevleri oluşturmaya nasıl başla
 
 Azure Media Services kullanan mevcut Azure Işlevlerini araştırmak ve dağıtmak istiyorsanız [Media Services Azure işlevleri](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)' ne bakın. Bu depo, doğrudan BLOB depolama, kodlama ve BLOB depolamaya geri içerik yazma ile ilgili içerik akışını göstermek için Media Services kullanan örnekleri içerir. Ayrıca, Web kancaları ve Azure Kuyrukları aracılığıyla iş bildirimlerinin nasıl izleneceği hakkında örnekler de içerir. Ayrıca, [Media Services Azure işlevleri](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) deposundaki örneklere göre işlevlerinizi geliştirebilirsiniz. İşlevleri dağıtmak için **Azure 'A dağıt** düğmesine basın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - İlk işlevinizin oluşturmadan önce etkin bir Azure hesabınız olması gerekir. Bir Azure hesabınız yoksa [ücretsiz hesaplar kullanılabilir](https://azure.microsoft.com/free/).
 - Azure Media Services (AMS) hesabınızda eylem gerçekleştiren veya Media Services tarafından gönderilen olayları dinlemek için Azure Işlevleri oluşturacaksanız, [burada](media-services-portal-create-account.md)açıklandığı gibi bir AMS hesabı oluşturmanız gerekir.
@@ -69,7 +70,7 @@ Bu makalede tanımlanan işlevi, uygulama ayarlarınızda aşağıdaki ortam de�
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. **Oluştur**'a tıklayın. 
+4. **Oluştur**’a tıklayın. 
 
 ## <a name="files"></a>Dosyalar
 
@@ -333,11 +334,11 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 1. **Storageconnection** ortam değişkeninde belirttiğiniz depolama hesabını seçin.
 2. **Bloblar**' a tıklayın.
-3. **+ Kapsayıcı**'ya tıklayın. Kapsayıcı **girişini**adlandırın.
+3. **+ Kapsayıcı**’ya tıklayın. Kapsayıcı **girişini**adlandırın.
 4. Karşıya **Yükle** ' ye basın ve karşıya yüklemek istediğiniz bir. MP4 dosyasına gidin.
 
 >[!NOTE]
-> Bir tüketim planında blob tetikleyicisi kullanırken, bir işlev uygulaması boşta kaldıktan sonra yeni Blobları işlerken 10 dakikalık bir gecikme olabilir. İşlev uygulaması çalışmaya başladıktan sonra Bloblar hemen işlenir. Daha fazla bilgi için bkz. [BLOB depolama Tetikleyicileri ve bağlamaları](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
+> Bir tüketim planında blob tetikleyicisi kullanırken, bir işlev uygulaması boşta kaldıktan sonra yeni Blobları işlerken 10 dakikalık bir gecikme olabilir. İşlev uygulaması çalışmaya başladıktan sonra Bloblar hemen işlenir. Daha fazla bilgi için bkz. [BLOB depolama Tetikleyicileri ve bağlamaları](../../azure-functions/functions-bindings-storage-blob.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -349,4 +350,3 @@ Ayrıca bkz. [.NET ile Media Services iş bildirimlerini izlemek Için Azure Web
 
 ## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

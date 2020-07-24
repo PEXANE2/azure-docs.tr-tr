@@ -3,20 +3,21 @@ title: Module ikizi JSON şeması-Azure
 description: Bu konu, IoT Edge üzerindeki canlı video analizlerinin Module ikizi JSON şemasını açıklar.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053066"
 ---
 # <a name="module-twin-json-schema"></a>Module ikizi JSON şeması
 
-Cihaz TWINS, meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere cihaz durum bilgilerini depolayan JSON belgelerdir. Azure IoT Hub, IoT Hub'a bağladığınız her cihaz için bir cihaz çifti tutar. Ayrıntılı açıklama için bkz. [IoT Hub modül TWINS 'ı anlama ve kullanma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)
+Cihaz TWINS, meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere cihaz durum bilgilerini depolayan JSON belgelerdir. Azure IoT Hub, IoT Hub'a bağladığınız her cihaz için bir cihaz çifti tutar. Ayrıntılı açıklama için bkz. [IoT Hub modül TWINS 'ı anlama ve kullanma](../../iot-hub/iot-hub-devguide-module-twins.md)
 
 Bu konu, IoT Edge üzerindeki canlı video analizlerinin Module ikizi JSON şemasını açıklar.
 
 > [!NOTE]
-> Media Services kaynaklarına ve Media Services API 'sine erişme yetkisi sağlamak için, önce kimliğiniz doğrulanmalıdır. Daha fazla bilgi için bkz. [Azure MEDIA SERVICES API 'Sine erişme](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api).
+> Media Services kaynaklarına ve Media Services API'sine erişim yetkisi almak için önce kimliğinizi doğrulamanız gerekir. Daha fazla bilgi için bkz. [Azure MEDIA SERVICES API 'Sine erişme](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
 ## <a name="module-twin-properties"></a>Module ikizi özellikleri
 
@@ -28,8 +29,8 @@ IoT Edge üzerindeki canlı video analizi, aşağıdaki modülün ikizi özellik
 |Azudüzeltici Aservicesarmid |Evet |Hayır |Media Services hesabı için benzersiz Azure Kaynak Yönetimi tanımlayıcısı.|
 |Aadtenantıd |Evet |Hayır |Müşteri Azure AD kiracı KIMLIĞI.|
 |Aadserviceprincıpalappıd |Yes |Yes |Müşteri Azure AD AppID oluşturdu.|
-|aadServicePrincipalCertificate |Yes<sup>*</sup>  |Evet |Müşteri Azure AD AppID sertifikası oluşturdu.|
-|aadServicePrincipalPassword |Yes<sup>*</sup>  |Evet |Müşteri Azure AD AppID parolası oluşturdu.|
+|aadServicePrincipalCertificate |Yes<sup>*</sup>  |Yes |Müşteri Azure AD AppID sertifikası oluşturdu.|
+|aadServicePrincipalPassword |Yes<sup>*</sup>  |Yes |Müşteri Azure AD AppID parolası oluşturdu.|
 |aadEndpoint |Hayır |Hayır |Buluta özel Azure AD uç noktası. <br/>Varsayılanını`https://login.microsoftonline.com` |
 |Aadresourceıd |Hayır |Hayır |Buluta özel Azure AD hedef kitlesi/kaynak KIMLIĞI <br/>Varsayılanını`https://management.core.windows.net/` |
 |armEndpoint |Hayır |Hayır |Buluta özgü Azure Kaynak uç noktasını yönetme. <br/>Varsayılanını`https://management.azure.com/` |
@@ -42,7 +43,7 @@ IoT Edge üzerindeki canlı video analizi, aşağıdaki modülün ikizi özellik
 
 <sup>*</sup>Hizmet sorumlusu sertifikası veya parola sağlamalısınız. 
 
-Dinamik özellikler modülün yeniden başlatılmasına gerek kalmadan güncelleştirilemeyebilir. [MEDIA SERVICES API 'ye erişim sağlama](../latest/access-api-cli-how-to.md) makalesindeki yönergeyi izleyerek bu özelliklerden bazıları için değerleri elde edebilirsiniz. 
+Dinamik özellikler modülün yeniden başlatılmasına gerek kalmadan güncelleştirilemeyebilir. [MEDIA SERVICES API 'ye erişim sağlama](../latest/access-api-howto.md) makalesindeki yönergeyi izleyerek bu özelliklerden bazıları için değerleri elde edebilirsiniz. 
 
 İsteğe bağlı tanılama ayarlarının rolü hakkında daha fazla bilgi için [izleme ve günlüğe kaydetme](monitoring-logging.md) hakkındaki makaleye bakın.
 

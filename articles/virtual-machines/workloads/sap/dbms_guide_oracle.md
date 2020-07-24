@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6879d11a4b47c0090f13baa0a15dcc696c8534
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051839"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
 
@@ -74,7 +74,7 @@ ms.locfileid: "86525390"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -374,10 +374,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium | Yok | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 
@@ -387,13 +387,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Hiçbiri | Kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium | Hiçbiri | Kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium | Yok | Kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium | Yok | Kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium | Hiçbiri | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -464,10 +464,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Hiçbiri | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium | Yok | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -478,13 +478,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Hiçbiri | Kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium | Hiçbiri | Kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium | Yok | Kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium | Yok | Kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium | Salt okunur | Önerilen  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Hiçbiri | Kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Yok | Kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium | Yok | Gerekli değil |
 | Oracle Home, saptrace,... | İşletim sistemi diski | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM

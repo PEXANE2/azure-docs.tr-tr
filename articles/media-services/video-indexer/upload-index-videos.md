@@ -10,43 +10,44 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77468771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052488"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
-Videoları Video Indexer API ile karşıya yüklerken aşağıdaki karşıya yükleme seçenekleriniz vardır: 
+Video Indexer API'siyle videoları karşıya yüklerken aşağıdaki karşıya yükleme seçeneklerini kullanabilirsiniz: 
 
 * Videonuzu bir URL'den karşıya yükleyin (tercih edilir).
 * video dosyasını istek gövdesinde bir bayt dizisi olarak gönderin,
-* [VARLıK kimliğini](https://docs.microsoft.com/azure/media-services/latest/assets-concept) sağlayarak mevcut Azure Media Services varlığını kullanın (yalnızca ücretli hesaplarda desteklenir).
+* [Varlık kimliğini](../latest/assets-concept.md) sağlayarak mevcut Azure Media Services varlığını kullanın (yalnızca ücretli hesaplarda desteklenir).
 
-Videonuz karşıya yüklendikten sonra Video Indexer (isteğe bağlı olarak) videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenekle, [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md)bir video Indexer hesabı oluşturursunuz. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Medya Hesabı ile ilgili ücretler için ödeme yaparsınız. 
+Videonuz karşıya yüklendikten sonra Video Indexer (isteğe bağlı olarak) videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md) bir Video Indexer hesabı oluşturulur. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Medya Hesabı ile ilgili ücretler için ödeme yaparsınız. 
 
 Makalesinde, bu seçeneklerle videolarınızı karşıya yükleme ve dizin oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir:
 
-* [Video Indexer Web sitesi](#website) 
-* [Video Indexer API 'Leri](#apis)
+* [Video Indexer web sitesi](#website) 
+* [Video Indexer API'leri](#apis)
 
-## <a name="uploading-considerations-and-limitations"></a>Konular ve sınırlamalar karşıya yükleniyor
+## <a name="uploading-considerations-and-limitations"></a>Karşıya yükleme konusunda dikkat edilmesi gerekenler ve sınırlamalar
  
-- Videonun bir adı 80 karakterden büyük olmamalıdır.
-- URL 'ye (tercih edilen) göre videonuzu karşıya yüklerken, uç noktanın TLS 1,2 (veya üzeri) ile güvenliği sağlanmalıdır.
-- URL seçeneğiyle karşıya yükleme boyutu, 30 ile sınırlıdır.
-- Sorgu dizesi URL 'sinin uzunluğu 4096 karakterle sınırlı olduğunda, istek URL 'si uzunluğu 6144 karakterle sınırlıdır.
+- Videonun adı 80 karakterden uzun olamaz.
+- Videonuzu URL’ye dayalı olarak karşıya yüklerken (tercih edilir) uç noktanın güvenliği TLS 1.2 (veya üzeri) ile sağlanmalıdır.
+- URL seçeneğiyle karşıya yükleme boyutu 30 GB ile sınırlıdır.
+- İstek URL'si uzunluğu 6144 karakterle, sorgu dizesi URL'si uzunluğu ise 4096 karakterle sınırlıdır.
 - Bayt dizisi seçeneğiyle karşıya yükleme boyutu 2 GB ile sınırlıdır.
-- Bayt dizisi seçeneği 30 dakikadan sonra zaman aşımına uğrar.
+- Bayt dizisi seçeneği 30 dakika sonra zaman aşımına uğrar.
 - Param 'da belirtilen URL 'nin `videoURL` kodlanması gerekir.
-- Dizin oluşturma Media Services varlıkların, URL 'den dizin oluşturma ile aynı sınırlaması vardır.
-- Video Indexer, tek bir dosya için maksimum süre sınırı olan 4 saattir.
-- URL 'nin erişilebilir olması gerekir (örneğin, genel bir URL). 
+- Indexing Media Services varlıklarında, URL'den dizin oluşturmayla aynı sınırlama geçerlidir.
+- Video Indexer'ın tek dosya için maksimum süre sınırı 4 saattir.
+- URL'nin erişilebilir olması gerekir (örneğin genel URL olabilir). 
 
-    Özel bir URL ise, istekte erişim belirtecinin sağlanması gerekir.
+    Bu bir özel URL'yse erişim belirteci istekte sağlanmalıdır.
 - URL, sayfanın bağlantısı gibi bir Web sayfasına değil, geçerli bir medya dosyasına işaret etmek zorunda `www.youtube.com` .
-- Ücretli bir hesapta, dakikada en fazla 50 film yükleyebilirsiniz ve dakikada 5 filmle bir deneme hesabı kullanabilirsiniz.
+- Ücretli bir hesapta dakikada 50 filme kadar ve deneme hesabında da dakikada 5 filme kadar karşıya yükleyebilirsiniz.
 
 > [!Tip]
 > .NET Framework 4.6.2 veya üzeri bir sürümünü kullanmanız önerilir. Eski .NET Framework sürümlerinde varsayılan olarak TLS 1.2 ayarı kullanılmaz.
@@ -57,15 +58,15 @@ Makalesinde, bu seçeneklerle videolarınızı karşıya yükleme ve dizin oluş
 
 Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz. [Giriş kapsayıcı/dosya biçimleri](../latest/media-encoder-standard-formats.md#input-containerfile-formats) makalesi.
 
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>Video Indexer Web sitesini kullanarak bir videoyu karşıya yükleme ve dizin oluşturma
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Video Indexer Web sitesini kullanarak bir videoyu karşıya yükleme ve dizin oluşturma
 
 > [!NOTE]
-> Videonun bir adı 80 karakterden büyük olmamalıdır.
+> Videonun adı 80 karakterden uzun olamaz.
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
 2. Karşıya video yüklemek için **Karşıya Yükle** düğme veya bağlantısına basın.
 
-    ![Karşıya Yükle](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Karşıya Yükleme](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar.
 
@@ -73,7 +74,7 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 
     Video Indexer analizi tamamladıktan sonra videonuzun bağlantısını ve videonuzda neler bulunduğunun kısa bir açıklamasını içeren bir bildirim alırsınız. Örnek: kişiler, konular, OCR’ler.
 
-## <a name="upload-and-index-with-api"></a><a id="apis"/>API ile karşıya yükleme ve Dizin
+## <a name="upload-and-index-with-api"></a><a name="apis"></a>API ile karşıya yükleme ve Dizin
 
 Videoları karşıya yüklemek ve bir URL 'ye göre dizinlemek için [video yükleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 'sini kullanın. Aşağıdaki kod örneği, bayt dizisinin nasıl karşıya yükleneceğini gösteren açıklamalı dışarı çıkan kodu içerir. 
 
@@ -92,7 +93,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Dizin oluşturma durum değişikliği: 
     - Özellikler:    
     
-        |Name|Açıklama|
+        |Ad|Açıklama|
         |---|---|
         |kimlik|Video KIMLIĞI|
         |durum|Video durumu|  
@@ -100,7 +101,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Videoda tanımlanan kişi:
   - Özellikler
     
-      |Name|Açıklama|
+      |Ad|Açıklama|
       |---|---|
       |kimlik| Video KIMLIĞI|
       |FaceID|Video dizininde görünen yüz KIMLIĞI|
@@ -141,7 +142,7 @@ Videonuz karşıya yüklendikten sonra Video Indexer, isteğe bağlı olarak vid
 
 [Videoyu karşıya yükleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) veya [Videoyu Yeniden Dizinleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API'sini kullanırken isteğe bağlı parametrelerden biri de `streamingPreset` parametresidir. `streamingPreset` parametresini `Default`, `SingleBitrate` veya `AdaptiveBitrate` olarak ayarlarsanız kodlama işlemi tetiklenir. Dizinleme ve kodlama işleri tamamlandıktan sonra video yayımlanır. Böylece videonuzun akışını da yapabilirsiniz. Video akışı yapmak istediğiniz Akış Uç Noktası **Çalışıyor** durumunda olmalıdır.
 
-Dizinleme ve kodlama işlerini çalıştırmak için [Video Indexer hesabınıza bağlı Azure Media Services hesabı](connect-to-azure.md) Ayrılmış Birimler gerektirir. Daha fazla bilgi için bkz. [Medya İşlemeyi Ölçeklendirme](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Bunlar işlem gücü kullanımı yoğun işler olduğundan S3 türü birimlerin kullanılması önemle tavsiye edilir. Ayrılmış birim sayısı, paralel olarak çalıştırılabilecek en fazla iş sayısını tanımlar. Önerilen temel kullanım 10 S3 ayrılmış birimdir. 
+Dizinleme ve kodlama işlerini çalıştırmak için [Video Indexer hesabınıza bağlı Azure Media Services hesabı](connect-to-azure.md) Ayrılmış Birimler gerektirir. Daha fazla bilgi için bkz. [Medya İşlemeyi Ölçeklendirme](../previous/media-services-scale-media-processing-overview.md). Bunlar işlem gücü kullanımı yoğun işler olduğundan S3 türü birimlerin kullanılması önemle tavsiye edilir. Ayrılmış birim sayısı, paralel olarak çalıştırılabilecek en fazla iş sayısını tanımlar. Önerilen temel kullanım 10 S3 ayrılmış birimdir. 
 
 Videonuzu yalnızca dizinlemek istiyorsanız ve kodlamayacaksanız `streamingPreset` parametresini `NoStreaming` olarak ayarlayın.
 

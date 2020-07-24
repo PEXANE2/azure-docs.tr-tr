@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'te Apache Spark-çekirdek kavramlar
+title: Apache Spark temel kavramlar
 description: Bu makalede, Azure SYNAPSE Analytics ve farklı kavramlarda Apache Spark bir giriş sunulmaktadır.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: aa1b4287899aaff9ede4832e999603773d79d28c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052329"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure SYNAPSE Analytics temel kavramları Apache Spark
 

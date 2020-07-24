@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050680"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -137,7 +137,7 @@ Müşteriler, çalışan düğümlerinde oturum açıp değiştirebilse de, değ
 
 ## <a name="network-ports-access-and-nsgs"></a>Ağ bağlantı noktaları, erişim ve NSG 'ler
 
-Yönetilen bir hizmet olarak, AKS 'nin belirli ağ ve bağlantı gereksinimleri vardır. Bu gereksinimler normal IaaS bileşenleri gereksinimlerinden daha az esnektir. AKS 'de, NSG kurallarını özelleştirme, belirli bir bağlantı noktasını engelleme (örneğin, giden bağlantı noktası 443 ' i engelleyen güvenlik duvarı kurallarını kullanma) ve beyaz listeye ekleme URL 'Leri, kümenizin desteklenemez olmasını sağlayabilir.
+Yönetilen bir hizmet olarak, AKS 'nin belirli ağ ve bağlantı gereksinimleri vardır. Bu gereksinimler normal IaaS bileşenleri gereksinimlerinden daha az esnektir. AKS 'de, NSG kurallarını özelleştirme, belirli bir bağlantı noktasını engelleme (örneğin, giden bağlantı noktası 443 ' i engelleyen güvenlik duvarı kuralları kullanma) ve bir izin verilenler listesine URL ekleme gibi işlemler, kümenizin desteklenemez olmasını sağlayabilir.
 
 > [!NOTE]
 > Şu anda AKS, çıkış trafiğini kümenizdeki tamamen kilitlemenize izin vermez. Kümenizin giden trafik için kullanabileceği URL 'Lerin ve bağlantı noktalarının listesini denetlemek için, [çıkış trafiğini sınırla](limit-egress-traffic.md)' ya bakın.

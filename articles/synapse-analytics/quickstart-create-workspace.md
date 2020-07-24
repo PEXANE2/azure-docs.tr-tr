@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a069ee40c2db99b05e9620cf83c06c49cc9e29fc
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052449"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma
 
@@ -56,7 +56,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     > [!IMPORTANT]
     > Azure SYNAPSE çalışma alanının seçili ADLS 2. hesabını okuyup yazabilbilmesi gerekir. Ayrıca, birincil depolama hesabı olarak bağlanan herhangi bir depolama hesabı için depolama hesabı oluşturma sırasında **hiyerarşik ad alanını** etkinleştirmiş olmanız gerekir.
     >
-    > ADLS 2. seçim alanlarının altında, çalışma alanının yönetilen kimliğinin seçili Data Lake Storage 2. dosya sisteminde tam erişim sağlayan **Storaqe blob veri katılımcısı** rolüne atandığını belirten bir göz vardır.
+    > ADLS 2. seçim alanlarının altında, çalışma alanının yönetilen kimliğinin seçili Data Lake Storage 2. dosya sisteminde tam erişim sağlayan **Depolama Blobu veri katılımcısı** rolüne atandığını belirten bir göz vardır.
 
 4. Seçim **Güvenlik + ağ Varsayılanları** sekmesinden herhangi birini değiştirin:
 5. Seçim **Etiketler** sekmesine Etiketler ekleyin.

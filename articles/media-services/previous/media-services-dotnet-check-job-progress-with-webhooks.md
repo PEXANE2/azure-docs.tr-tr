@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0e4d281880b3870c81352efca146ece7100be74
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052965"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>.NET ile Media Services iş bildirimlerini izlemek için Azure Web kancalarını kullanın 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 İşleri çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. Azure Web kancalarını veya [Azure kuyruk depolamayı](media-services-dotnet-check-job-progress-with-queues.md)kullanarak Media Services iş bildirimlerini izleyebilirsiniz. Bu makalede Web kancaları ile nasıl çalışılacağı gösterilmektedir.
 
@@ -42,11 +42,11 @@ Bu makalede nasıl yapılacağı gösterilmektedir
 
 Çeşitli Media Services .NET Azure Işlevlerinin (Bu makalede gösterilenler dahil) tanımlarını [buradan](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-* Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
+* Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 * Bir Media Services hesabı. Bir Media Services hesabı oluşturmak için bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
 * [Azure işlevlerinin nasıl](../../azure-functions/functions-overview.md)kullanılacağını anlama. Ayrıca, [Azure IŞLEVLERI http ve Web kancası bağlamaları](../../azure-functions/functions-bindings-http-webhook.md)' nı gözden geçirin.
 

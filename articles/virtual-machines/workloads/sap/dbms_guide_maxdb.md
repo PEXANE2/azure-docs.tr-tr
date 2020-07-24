@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842ab7a1562c731e790ba03b2fd5acdc3987a90d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051962"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 'lerinde SAP MaxDB, liveCache ve Content Server dağıtımı
 
@@ -73,7 +74,7 @@ ms.locfileid: "84022599"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -308,7 +309,7 @@ ms.locfileid: "84022599"
 
 
 
-Bu belge, Azure IaaS 'de MaxDB, liveCache ve Content Server dağıtımında dikkate alınması gereken birkaç farklı alanı ele alır. Bu belgenin bir önkoşulu olarak, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş yükündeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)diğer kılavuzlar hakkında belge konularını okuduğunuzdan de okumalısınız. 
+Bu belge, Azure IaaS 'de MaxDB, liveCache ve Content Server dağıtımında dikkate alınması gereken birkaç farklı alanı ele alır. Bu belgenin bir önkoşulu olarak, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş yükündeki](./get-started.md)diğer kılavuzlar hakkında belge konularını okuduğunuzdan de okumalısınız. 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Windows üzerinde SAP MaxDB dağıtımları için Ayrıntılar
 ### <a name="sap-maxdb-version-support-on-azure"></a>Azure 'da SAP MaxDB sürüm desteği
@@ -328,7 +329,7 @@ SAP MaxDB belgelerinin güncelleştirilmiş listesini şu SAP notunda bulabilirs
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için SAP MaxDB yapılandırma yönergeleri
 #### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Depolama yapılandırması
-SAP MaxDB için Azure Storage en iyi uygulamaları, [RDBMS dağıtımları için bir sanal makinenin Bölüm depolama yapısında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)bahsedilen genel önerileri izler.
+SAP MaxDB için Azure Storage en iyi uygulamaları, [RDBMS dağıtımları için bir sanal makinenin Bölüm depolama yapısında](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)bahsedilen genel önerileri izler.
 
 > [!IMPORTANT]
 > Diğer veritabanları gibi SAP MaxDB de veri ve günlük dosyaları içerir. Ancak, SAP MaxDB terimlerinde doğru terim "Volume" ("dosya" değil) olarak ayarlanır. Örneğin, SAP MaxDB veri birimleri ve günlük birimleri vardır. Bunları işletim sistemi disk birimleriyle karıştırmayın. 

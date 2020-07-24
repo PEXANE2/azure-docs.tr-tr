@@ -224,7 +224,7 @@
     - name: Kod örnekleri
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell cmdlet’leri
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: Microsoft Graph REST API beta
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Hizmet sınırlamaları ve kısıtlamalar

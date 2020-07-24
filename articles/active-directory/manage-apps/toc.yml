@@ -38,48 +38,44 @@
       href: application-management-fundamentals.md
     - name: Yaygın uygulama yönetim senaryoları
       href: common-scenarios.md
-    - name: Bulut uygulamaları ve çoklu oturum açma
+    - name: Bulut uygulaması tümleştirmesi planlama
       items:
-        - name: Bulut uygulaması tümleştirmesi planlama
-          items:
-            - name: Uygulama tümleştirmesini kullanmaya başlama
-              href: plan-an-application-integration.md
-            - name: Erişim bölmesi dağıtımı planlama
-              href: access-panel-deployment-plan.md
-            - name: Geliştiriciler için rehberlik
-              href: developer-guidance-for-integrating-applications.md
-        - name: Çoklu oturum açma
-          items:
-            - name: Çok kiracılı uygulamanız için SSO’yu etkinleştirme
-              href: isv-sso-content.md
-            - name: Çok kiracılı uygulamalara yönelik Azure kiracısı oluşturma
-              href: isv-tenant-multi-tenant-app.md
-            - name: Çok kiracılı federasyon seçme
-              href: isv-choose-multi-tenant-federation.md
-            - name: Çok kiracılı uygulamalara yönelik belgeler oluşturma
-              href: isv-create-sso-documentation.md
-            - name: Çoklu oturum açma dağıtımını planlama
-              href: plan-sso-deployment.md
-        - name: Tek Tıklamayla SSO
-          items:
-            - name: Tek Tıklamayla SSO nedir
-              href: one-click-sso-tutorial.md
-        - name: Uygulama güvenliği
-          items:
-            - name: Uygulama erişim seçenekleri
-              href: what-is-access-management.md
-            - name: Sertifika imzalama seçenekleri
-              href: certificate-signing-options.md
-            - name: Sertifikaları yönetme
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: Kiracı kısıtlamaları
-              href: tenant-restrictions.md
-            - name: SAML belirteci şifrelemesini yapılandırma
-              href: howto-saml-token-encryption.md
-            - name: Son kullanıcı portalları
-              href: end-user-experiences.md
-    - name: Bulut uygulama görünürlüğü ve denetimi
-      href: cloud-app-security.md
+        - name: Uygulama tümleştirmesini kullanmaya başlama
+          href: plan-an-application-integration.md
+        - name: Erişim bölmesi dağıtımı planlama
+          href: access-panel-deployment-plan.md
+        - name: Geliştiriciler için rehberlik
+          href: developer-guidance-for-integrating-applications.md
+    - name: Çoklu oturum açma
+      items:
+        - name: Çok kiracılı uygulamanız için SSO’yu etkinleştirme
+          href: isv-sso-content.md
+        - name: Çok kiracılı uygulamalara yönelik Azure kiracısı oluşturma
+          href: isv-tenant-multi-tenant-app.md
+        - name: Çok kiracılı federasyon seçme
+          href: isv-choose-multi-tenant-federation.md
+        - name: Çok kiracılı uygulamalara yönelik belgeler oluşturma
+          href: isv-create-sso-documentation.md
+        - name: Çoklu oturum açma dağıtımını planlama
+          href: plan-sso-deployment.md
+        - name: Tek tıklamayla çoklu oturum açma
+          href: one-click-sso-tutorial.md
+    - name: Uygulama güvenliği
+      items:
+        - name: Uygulama erişim seçenekleri
+          href: what-is-access-management.md
+        - name: Sertifika imzalama seçenekleri
+          href: certificate-signing-options.md
+        - name: Sertifikaları yönetme
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: Kiracı kısıtlamaları
+          href: tenant-restrictions.md
+        - name: SAML belirteci şifrelemesini yapılandırma
+          href: howto-saml-token-encryption.md
+        - name: Son kullanıcı portalları
+          href: end-user-experiences.md
+        - name: Bulut uygulama görünürlüğü ve denetimi
+          href: cloud-app-security.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
         - name: Uygulama Ara Sunucusu

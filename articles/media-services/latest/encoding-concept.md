@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053342"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video ve ses Media Services kodlama
 
@@ -28,7 +29,7 @@ Videolar genellikle, [aşamalı indirme](https://en.wikipedia.org/wiki/Progressi
 > [!IMPORTANT]
 > Media Services, iptal edilen veya hatalı işler için faturalandırılmıyor. Örneğin, %50 ilerleme durumuna ulaşan ve iptal edilen bir iş, iş dakikası %50 ' de faturalandırılmaz. Yalnızca bitmiş işler için ücretlendirilirsiniz.
 
-* Aşamalı indirme ile teslim etmek için Azure Media Services kullanarak bir dijital medya dosyasını (Mezzanine), [H.](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) ve codec bileşeniyle kodlanmış video ve [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) codec ile kodlanan ses içeren bir [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) dosyasına dönüştürebilirsiniz. Bu MP4 dosyası Depolama hesabınızdaki bir varlığa yazılır. Dosyayı doğrudan indirmek için Azure depolama API 'Lerini veya SDK 'Larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanabilirsiniz. Depolama alanında belirli bir kapsayıcı adıyla çıkış varlığı oluşturduysanız, bu konumu kullanın. Aksi takdirde, [varlık kapsayıcısı URL 'lerini listelemek](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)için Media Services kullanabilirsiniz. 
+* Aşamalı indirme ile teslim etmek için Azure Media Services kullanarak bir dijital medya dosyasını (Mezzanine), [H.](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) ve codec bileşeniyle kodlanmış video ve [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) codec ile kodlanan ses içeren bir [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) dosyasına dönüştürebilirsiniz. Bu MP4 dosyası Depolama hesabınızdaki bir varlığa yazılır. Dosyayı doğrudan indirmek için Azure depolama API 'Lerini veya SDK 'Larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanabilirsiniz. Depolama alanında belirli bir kapsayıcı adıyla çıkış varlığı oluşturduysanız, bu konumu kullanın. Aksi takdirde, [varlık kapsayıcısı URL 'lerini listelemek](/rest/api/media/assets/listcontainersas)için Media Services kullanabilirsiniz. 
 * İçeriği Uyarlamalı bit hızı akışı ile teslim etmek üzere hazırlamak için, Mezzanine dosyasının birden çok bitücret (yüksek-düşük) ile kodlanmış olması gerekir. Kaliteyi düzgün şekilde geçişini sağlamak için, bit hızı düşürüldü, videonun çözümlenmesi düşürüldü. Bu, bir çözüm (bkz. [otomatik olarak üretilen Uyarlamalı bit hızı el](autogen-bitrate-ladder.md)ile) adlı bir kodlama. Media Services kullanarak, Mezzanine dosyalarını birden çok bit hızında kodlamak için kullanabilirsiniz. Bunu yaparken, Depolama hesabınızdaki bir varlığa yazılan MP4 dosyaları ve ilişkili akış yapılandırma dosyaları kümesi alacaksınız. Daha sonra, videoyu [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) ve [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)gibi akış protokolleriyle teslim etmek Için Media Services ' de [dinamik paketleme](dynamic-packaging-overview.md) özelliğini kullanabilirsiniz. Bu, bir [akış Bulucu](streaming-locators-concept.md) oluşturmanız ve desteklenen protokollere karşılık gelen akış URL 'leri oluşturmanızı gerektirir. Bu, daha sonra özelliklerine göre cihazlara/uygulamalara devredilebilir.
 
 Aşağıdaki diyagramda, dinamik paketleme ile isteğe bağlı kodlama için iş akışı gösterilmektedir.
@@ -39,7 +40,7 @@ Bu konu, içeriğinizi Media Services v3 ile nasıl kodlayabileceğine kılavuzl
 
 ## <a name="transforms-and-jobs"></a>Dönüşümler ve işler
 
-Media Services v3 ile kodlamak için bir [dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) ve [iş](https://docs.microsoft.com/rest/api/media/jobs)oluşturmanız gerekir. Dönüştürme, kodlama ayarlarınız ve çıktılar için bir tarif tanımlar; iş, tarif eden bir örneğidir. Daha fazla bilgi için bkz. [dönüşümler ve işler](transforms-jobs-concept.md).
+Media Services v3 ile kodlamak için bir [dönüşüm](/rest/api/media/transforms) ve [iş](/rest/api/media/jobs)oluşturmanız gerekir. Dönüştürme, kodlama ayarlarınız ve çıktılar için bir tarif tanımlar; iş, tarif eden bir örneğidir. Daha fazla bilgi için [Dönüşümler ve İşler](transforms-jobs-concept.md) konusuna bakın.
 
 Media Services ile kodlarken, kodlayıcıların giriş medya dosyalarının nasıl işleneceğini söylemek için önayarları kullanın. V3 Media Services, dosyalarınızı kodlamak için standart kodlayıcı kullanırsınız. Örneğin, video çözünürlüğünü ve/veya kodlanmış içerikte istediğiniz ses kanalı sayısını belirtebilirsiniz.
 
@@ -71,9 +72,9 @@ Giriş videosu bir medya hizmeti varlığı olarak depolanabilir, bu durumda bir
 
 ### <a name="creating-job-input-with-subclipping"></a>Alt kırpmayla iş girişi oluşturma
 
-Bir videoyu kodlarken, kaynak dosyayı kırpmak veya kırpmak ve giriş videosunun yalnızca istenen kısmına sahip bir çıktı üretmek için de belirtebilirsiniz. Bu işlev, [Builtınstandardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ön ayarları veya [Standardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) önayarları kullanılarak oluşturulan [dönüşümlerle](https://docs.microsoft.com/rest/api/media/transforms) birlikte kullanılır.
+Bir videoyu kodlarken, kaynak dosyayı kırpmak veya kırpmak ve giriş videosunun yalnızca istenen kısmına sahip bir çıktı üretmek için de belirtebilirsiniz. Bu işlev, [Builtınstandardencoderönayar](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ön ayarları veya [Standardencoderönayar](/rest/api/media/transforms/createorupdate#standardencoderpreset) önayarları kullanılarak oluşturulan [dönüşümlerle](/rest/api/media/transforms) birlikte kullanılır.
 
-İsteğe bağlı veya Canlı Arşiv (kaydedilmiş bir olay) için tek bir klibe sahip bir [iş](https://docs.microsoft.com/rest/api/media/jobs/create) oluşturmayı belirtebilirsiniz. İş girişi bir varlık veya HTTPS URL 'SI olabilir.
+İsteğe bağlı veya Canlı Arşiv (kaydedilmiş bir olay) için tek bir klibe sahip bir [iş](/rest/api/media/jobs/create) oluşturmayı belirtebilirsiniz. İş girişi bir varlık veya HTTPS URL 'SI olabilir.
 
 > [!TIP]
 > Videoyu yeniden kodlamadan videonuzun bir alt LIP akışını yapmak istiyorsanız, [dinamik paketlemede ön filtreleme bildirimleri](filters-dynamic-manifest-overview.md)kullanmayı göz önünde bulundurun.
@@ -91,7 +92,7 @@ Media Services aşağıdaki yerleşik kodlama önayarlarını destekler:
 
 ### <a name="builtinstandardencoderpreset"></a>Builtınstandardencoderönayar
 
-[Builtınstandencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , giriş videosunu standart kodlayıcıyla kodlamak için yerleşik bir ön ayar ayarlamak üzere kullanılır.
+[Builtınstandencoderönayar](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , giriş videosunu standart kodlayıcıyla kodlamak için yerleşik bir ön ayar ayarlamak üzere kullanılır.
 
 Şu ön ayarlar şu anda destekleniyor:
 
@@ -108,15 +109,15 @@ Media Services aşağıdaki yerleşik kodlama önayarlarını destekler:
 - **Encodernamedönayar. H264SingleBitrate720p**: videonun, 4500 kbps ve 720 piksellik bir resim yüksekliği ile KODLANDıĞı bir MP4 dosyası üretir ve stereo ses, 64 kbps 'de AAC-LC codec bileşeniyle kodlanır.
 - **Encodernamedönayar. H264SingleBitrateSD**: videonun, 2200 kbps ve 480 piksellik bir resim yüksekliği ile KODLANDıĞı bir MP4 dosyası üretir ve stereo ses, 64 kbps 'de AAC-LC codec bileşeniyle kodlanır.
 
-En güncel ön ayar listesini görmek için bkz. [videoları kodlamada kullanılacak yerleşik ön ayarlar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+En güncel ön ayar listesini görmek için bkz. [videoları kodlamada kullanılacak yerleşik ön ayarlar](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 Önayarların nasıl kullanıldığını görmek için bkz. [karşıya yükleme, kodlama ve akış dosyaları](stream-files-tutorial-with-api.md).
 
 ### <a name="standardencoderpreset"></a>Standardencoderönayar
 
-[Standardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) , giriş videosunu standart kodlayıcıyla kodlarken kullanılacak ayarları açıklar. Dönüşüm önayarlarını özelleştirirken bu ön ayarı kullanın.
+[Standardencoderönayar](/rest/api/media/transforms/createorupdate#standardencoderpreset) , giriş videosunu standart kodlayıcıyla kodlarken kullanılacak ayarları açıklar. Dönüşüm önayarlarını özelleştirirken bu ön ayarı kullanın.
 
-#### <a name="considerations"></a>Önemli noktalar
+#### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Özel ön ayarlar oluşturulurken aşağıdaki noktalar geçerlidir:
 
@@ -135,7 +136,7 @@ Media Services, özel kodlama ihtiyaçlarınızı ve gereksinimlerinizi karşıl
 
 ## <a name="preset-schema"></a>Önceden ayarlanmış şema
 
-Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. Ayrıca, [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (veya diğer Media Services v3 SDK başvuru belgelerinde) önceden ayarlanmış tanımları ( **standardencoderönayar**gibi) görüntüleyebilirsiniz.
+Media Services v3 'de, Önayarlar, API 'nin kendisinde kesin olarak belirlenmiş varlıklardır. Bu nesneler için "şema" tanımını [Open API belirtiminde (veya Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)bulabilirsiniz. Ayrıca, [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (veya diğer Media Services v3 SDK başvuru belgelerinde) önceden ayarlanmış tanımları ( **standardencoderönayar**gibi) görüntüleyebilirsiniz.
 
 ## <a name="scaling-encoding-in-v3"></a>V3 'de ölçeklendirme kodlaması
 

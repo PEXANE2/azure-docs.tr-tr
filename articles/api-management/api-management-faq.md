@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243605"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050327"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management SSS
 Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını alın.
@@ -49,7 +49,7 @@ Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntem
 Bir özellik önizlemede olduğunda, özelliğin sizin için nasıl çalıştığı konusunda etkin bir şekilde geri bildirimde bulunduğumuz anlamına gelir. Önizlemedeki bir özellik işlevsel olarak tamamlanmıştır, ancak müşteri geri bildirimlerine yanıt olarak bir değişiklik yapacağız olasıdır. Üretim ortamınızda önizlemede olan bir özelliğe bağlı memenizi öneririz.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ağ geçidi ile arka uç hizmetleri arasındaki bağlantının güvenliğini nasıl sağlayabilirim?
-API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Şunları yapabilirsiniz:
+API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Seçenekleriniz şunlardır:
 
 * HTTP temel kimlik doğrulaması kullanın. Daha fazla bilgi için bkz. [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md).
 * [Azure API Management 'de istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale getirme](api-management-howto-mutual-certificates.md)bölümünde AÇıKLANDıĞı gibi TLS karşılıklı kimlik doğrulaması kullanın.
@@ -57,7 +57,7 @@ API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı 
 * API Management örneğinizi bir Azure sanal ağına bağlayın.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>API Management hizmet örneğimi yeni bir örneğe nasıl kopyalayabilirim?
-Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Şunları yapabilirsiniz:
+Yeni bir örneğe API Management bir örnek kopyalamak istiyorsanız, birkaç seçeneğiniz vardır. Seçenekleriniz şunlardır:
 
 * API Management 'de yedekleme ve geri yükleme işlevini kullanın. Daha fazla bilgi için bkz. [Azure API Management 'de hizmet yedeklemesi ve geri yükleme kullanarak olağanüstü durum kurtarma uygulama](api-management-howto-disaster-recovery-backup-restore.md).
 * [API Management REST API](/rest/api/apimanagement/)kullanarak kendi yedekleme ve geri yükleme özelliğini oluşturun. Varlıkları istediğiniz hizmet örneğinden kaydetmek ve geri yüklemek için REST API kullanın.
@@ -77,7 +77,7 @@ Yöneticiler grubuna bir kullanıcıyı nasıl ekleyebileceğiniz aşağıda bul
 2. Güncelleştirmek istediğiniz API Management örneğine sahip kaynak grubuna gidin.
 3. API Management, **API Management hizmeti katkıda bulunan** rolünü kullanıcıya atayın.
 
-Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](/powershell/azure/overview)kullanabilir. Yönetici olarak oturum açmak için şu adımları uygulayın:
+Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](/powershell/azure/)kullanabilir. Yönetici olarak oturum açmak için şu adımları uygulayın:
 
 1. `Connect-AzAccount`Oturum açmak için cmdlet 'ini kullanın.
 2. Bağlamını kullanarak hizmeti olan aboneliğin bağlamını ayarlayın `Set-AzContext -SubscriptionID <subscriptionGUID>` .
@@ -88,7 +88,7 @@ Artık yeni eklenen katkıda bulunan Azure PowerShell [cmdlet 'lerini](/powershe
 Eklemek istediğiniz ilke, ilke düzenleyicisinde soluk veya gölgeli görünüyorsa, ilke için doğru kapsamda olduğunuzdan emin olun. Her ilke açıklaması, belirli kapsamlar ve ilke bölümlerinde kullanabilmeniz için tasarlanmıştır. İlke bölümlerini ve bir ilkeye ait kapsamları gözden geçirmek için, [API Management ilkeleri](./api-management-policies.md)' nde ilkenin kullanımı bölümüne bakın.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Tek bir API 'de birden çok ortam ayarlamak Nasıl yaparım??
-Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Şunları yapabilirsiniz:
+Birden çok ortamı (örneğin, bir test ortamı ve bir üretim ortamı) ayarlamak için, tek bir API 'de iki seçeneğiniz vardır. Seçenekleriniz şunlardır:
 
 * Aynı kiracıda farklı API 'Leri barındırın.
 * Farklı kiracılarda aynı API 'Leri barındırın.

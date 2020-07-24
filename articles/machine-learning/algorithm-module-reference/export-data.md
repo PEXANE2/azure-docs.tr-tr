@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 279ba2ca5b82d7bad5b55736179f92a0146bdc84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048152"
 ---
 # <a name="export-data-module"></a>Veri modülünü dışarı aktarma
 
@@ -27,6 +28,7 @@ Bu modül verilerinizi aşağıdaki bulut veri hizmetlerine aktarmayı destekler
 - Azure Dosya Paylaşımı
 - Azure Data Lake
 - Azure Data Lake Gen2
+- Azure SQL veritabanı
 
 Verilerinizi dışarı aktarmadan önce, önce Azure Machine Learning çalışma alanınıza bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Storage hizmetlerindeki verilere erişme](../how-to-access-data.md).
 

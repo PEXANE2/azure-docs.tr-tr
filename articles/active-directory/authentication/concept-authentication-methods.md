@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83770968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051314"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -34,11 +35,11 @@ Aşağıdaki tabloda, birincil veya ikincil kimlik doğrulaması için hangi yö
 
 | Yöntem | Birincil kimlik doğrulama | İkincil kimlik doğrulaması |
 | --- | --- | --- |
-| [Parola](#password) | Evet | |
+| [Parola](#password) | Yes | |
 | [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
-| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Evet | Yalnızca MFA |
+| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
 | [OATH yazılım belirteçleri](#oath-software-tokens) | Hayır | MFA |
-| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | Evet | MFA |
+| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens-preview) | Yes | MFA |
 | [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |
 | [Sesli arama](#phone-options) | Hayır | MFA ve SSPR |
 | [Güvenlik soruları](#security-questions) | Hayır | Yalnızca SSPR |

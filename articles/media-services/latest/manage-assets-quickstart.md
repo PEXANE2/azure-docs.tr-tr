@@ -3,12 +3,12 @@ title: İçeriği karşıya yüklemek, kodlamak ve akışa almak için Portal '�
 description: Bu hızlı başlangıçta, Azure Media Services ile içeriği karşıya yüklemek, kodlamak ve akışa almak için Portal 'ın nasıl kullanılacağı gösterilir.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053359"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Hızlı başlangıç: portala karşıya içerik yükleme, kodlama ve akışla
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
 
         Şu anda Azure portal kullanılırken şunları yapabilirsiniz: bir TTML ve WebVTT kapalı açıklamalı altyazı dosyaları oluşturma. Bu biçimlerdeki dosyalar, ses ve video dosyalarını işitme engelli kişiler için erişilebilir hale getirmek için kullanılabilir. Ayrıca, İçeriğinizden anahtar sözcükleri de ayıklayabilirsiniz.
 
-        Video ve Ses dosyalarınızın içgörüleri ayıklamanızı sağlayan zengin bir deneyim için Media Services v3 ön ayarlarını kullanın ( [öğretici: Media Services v3 ile videoları analiz edin](analyze-videos-tutorial-with-api.md)). <br/>Daha ayrıntılı Öngörüler istiyorsanız [video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) doğrudan kullanın.    
+        Video ve Ses dosyalarınızın içgörüleri ayıklamanızı sağlayan zengin bir deneyim için Media Services v3 ön ayarlarını kullanın ( [öğretici: Media Services v3 ile videoları analiz edin](analyze-videos-tutorial-with-api.md)). <br/>Daha ayrıntılı Öngörüler istiyorsanız [video Indexer](../video-indexer/index.yml) doğrudan kullanın.    
 * İçeriğiniz işlendikten sonra, istemci oynatıcılara medya içeriği gönderebilirsiniz. Çıktı kıymetindeki videoların, kayıttan yürütmeye yönelik olarak kullanılabilmesini sağlamak için bir **akış Bulucu**oluşturmanız gerekir. **Akış bulucuyu**oluştururken bir **akış ilkesi**belirtmeniz gerekir. Akış **ilkeleri** , akış **Konumlandırıcıları**için akış protokollerini ve şifreleme seçeneklerini (varsa) tanımlamanıza olanak sağlar.
     
     İncelemeyi
@@ -46,7 +46,7 @@ Bu hızlı başlangıçta, Azure Media Services ile içerik yükleme, kodlama ve
     * [Filtreler](filters-concept.md)
 * İçeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana DRM sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay) şifreleyerek koruyabilirsiniz. Azure portal hızlı başlangıç [ile Içerik şifreleme](encrypt-content-quickstart.md) içerik korumasının nasıl yapılandırılacağını gösterir.
         
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

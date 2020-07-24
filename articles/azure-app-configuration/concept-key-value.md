@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050139"
 ---
 # <a name="keys-and-values"></a>Anahtarlar ve değerler
 
@@ -77,7 +77,7 @@ Etiketler içinde,, ve dışında herhangi bir Unicode karakteri `*` kullanabili
 
 Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz şekilde tanımlanır `null` . Bir model belirterek anahtar değerleri için bir uygulama yapılandırma deposu sorgulayın. Uygulama yapılandırma deposu, düzen ve bunlara karşılık gelen değerler ve özniteliklerle eşleşen tüm anahtar değerlerini döndürür. Uygulama yapılandırmasına yönelik REST API çağrılarında aşağıdaki temel desenleri kullanın:
 
-| Anahtar | |
+| Anahtar | Açıklama |
 |---|---|
 | `key`atlanır veya`key=*` | Tüm anahtarlarla eşleşir |
 | `key=abc` | **ABC** anahtar adı tam olarak eşleşir |
@@ -86,7 +86,7 @@ Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz ş
 
 Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 
-| Etiketle | |
+| Etiketle | Açıklama |
 |---|---|
 | `label`atlanır veya`label=*` | İçeren herhangi bir etiketle eşleşir.`null` |
 | `label=%00` | Eşleşir `null` etiketi |

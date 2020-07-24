@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970167"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052115"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 'da Red hat iş yükleri
 
@@ -36,7 +36,7 @@ Uygun abonelik sayısı için ayrı olarak ödeme yapmak istemiyorsanız, Kullan
 
 ### <a name="red-hat-gold-images"></a>Red Hat Gold resimleri
 
-Azure ayrıca Red Hat Gold görüntüleri (`rhel-byos`) sağlar. Bu görüntüler, var olan Red Hat aboneliklerine sahip müşteriler için yararlı olabilir ve bunları Azure 'da kullanmak isteyebilir. Mevcut Red Hat aboneliklerinizi Azure 'da kullanabilmeniz için Red Hat bulut erişimi için etkinleştirmeniz gerekir. Red Hat abonelikleriniz bulut erişimi için etkinleştirildiğinde ve uygunluk gereksinimlerini karşılarken bu görüntülere erişim otomatik olarak verilir. Bu görüntülerin kullanılması, bir müşterinin, Kullandıkça Öde görüntülerinin kullanılmasıyla ilgili bir Double faturalandırma yapmasına engel olabilir.
+Azure ayrıca Red Hat Gold görüntüleri ( `rhel-byos` ) sağlar. Bu görüntüler, var olan Red Hat aboneliklerine sahip müşteriler için yararlı olabilir ve bunları Azure 'da kullanmak isteyebilir. Mevcut Red Hat aboneliklerinizi Azure 'da kullanabilmeniz için Red Hat bulut erişimi için etkinleştirmeniz gerekir. Red Hat abonelikleriniz bulut erişimi için etkinleştirildiğinde ve uygunluk gereksinimlerini karşılarken bu görüntülere erişim otomatik olarak verilir. Bu görüntülerin kullanılması, bir müşterinin, Kullandıkça Öde görüntülerinin kullanılmasıyla ilgili bir Double faturalandırma yapmasına engel olabilir.
 * [Azure Ile bulut erişimi Için Red Hat aboneliklerinizi nasıl etkinleştireceğinizi](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)öğrenin.
 * [Azure Portal, Azure CLI veya PowerShell cmdlet 'Inde Red Hat altın görüntülerini bulmayı](./byos.md)öğrenin.
 
@@ -45,7 +45,7 @@ Azure ayrıca Red Hat Gold görüntüleri (`rhel-byos`) sağlar. Bu görüntüle
 
 ### <a name="generation-2-images"></a>2. nesil görüntüler
 
-2. nesil sanal makineler (VM 'Ler) 1. nesil VM 'lere kıyasla daha yeni özellikler sağlar. Daha fazla bilgi için 2. [nesil belgelere](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)bakın. RHEL görüntü perspektifinden ilgili önemli fark, 2. nesil VM 'Lerin BIOS üretici yazılımı arabirimi yerine UEFı kullanır. Ayrıca önyükleme sırasında ana önyükleme kaydı (MBR) yerine bir GUID bölümleme tablosu (GPT) kullanır. GPT kullanımı, diğer işlerin yanı sıra 2 TB 'tan büyük işletim sistemi disk boyutları için izin verir. Ayrıca, [Mv2 serisi VM 'ler](../../mv2-series.md) yalnızca 2. nesil görüntülerde çalışır.
+2. nesil sanal makineler (VM 'Ler) 1. nesil VM 'lere kıyasla daha yeni özellikler sağlar. Daha fazla bilgi için 2. [nesil belgelere](../../linux/generation-2.md)bakın. RHEL görüntü perspektifinden ilgili önemli fark, 2. nesil VM 'Lerin BIOS üretici yazılımı arabirimi yerine UEFı kullanır. Ayrıca önyükleme sırasında ana önyükleme kaydı (MBR) yerine bir GUID bölümleme tablosu (GPT) kullanır. GPT kullanımı, diğer işlerin yanı sıra 2 TB 'tan büyük işletim sistemi disk boyutları için izin verir. Ayrıca, [Mv2 serisi VM 'ler](../../mv2-series.md) yalnızca 2. nesil görüntülerde çalışır.
 
 RHEL 2. nesil görüntüleri Azure Marketi 'nde bulabilirsiniz. Azure CLı kullandığınızda görüntülenen tüm görüntülerin listesindeki görüntü SKU 'sunda "Gen2" öğesini arayın. 2. nesil bir VM dağıtmak için VM dağıtım işlemindeki **Gelişmiş** sekmesine gidin.
 
@@ -55,10 +55,10 @@ Azure, yalnızca Kullandıkça Öde RHEL VM 'Leri için Red Hat güncelleştirme
 
 ### <a name="rhui-update-behavior"></a>RHUı güncelleştirme davranışı
 
-RHUı Update 'e bağlı RHEL görüntüleri, bir `yum update` çalıştırıldığında RHEL 'nin en son ikincil sürümüne varsayılan olarak bağlanır. Bu davranış, üzerinde bir `yum update` işlem çalıştırıldığında rhel 7,4 VM 'SININ rhel 7,7 ' ye yükseltibileceği anlamına gelir. Bu davranış, RHUı için tasarımdır. Bu yükseltme davranışını azaltmak için, normal RHEL depolarından [genişletilmiş güncelleştirme destek depolarına](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)geçiş yapın.
+RHUı Update 'e bağlı RHEL görüntüleri, bir çalıştırıldığında RHEL 'nin en son ikincil sürümüne varsayılan olarak bağlanır `yum update` . Bu davranış, üzerinde bir işlem çalıştırıldığında RHEL 7,4 VM 'sinin RHEL 7,7 ' ye yükseltibileceği anlamına gelir `yum update` . Bu davranış, RHUı için tasarımdır. Bu yükseltme davranışını azaltmak için, normal RHEL depolarından [genişletilmiş güncelleştirme destek depolarına](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)geçiş yapın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure 'Da RHEL görüntüleri](./redhat-images.md)hakkında daha fazla bilgi edinin.
 * [Red Hat güncelleştirme altyapısı](./redhat-rhui.md)hakkında daha fazla bilgi edinin.
-* [Red Hat Gold Image`rhel-byos`() teklifi](./byos.md)hakkında daha fazla bilgi edinin.
+* [Red Hat Gold Image ( `rhel-byos` ) teklifi](./byos.md)hakkında daha fazla bilgi edinin.

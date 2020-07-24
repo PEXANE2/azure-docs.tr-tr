@@ -7,11 +7,13 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050364"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services farklı bir bölgeye taşıma
 
@@ -46,7 +48,7 @@ Bir sunucuyu farklı bir bölgeye taşımadan önce ayrıntılı bir plan oluşt
 > [!NOTE]
 > Veri kaynaklarına bağlanmak için bir şirket içi veri ağ geçidi kullanıyorsanız, ağ geçidi kaynağını da hedef sunucu bölgesine taşımanız gerekir. Daha fazla bilgi edinmek için bkz. Şirket [içi veri ağ geçidini yükleyip yapılandırma](analysis-services-gateway-install.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure depolama hesabı**: bir. abf yedekleme dosyasını depolamak için gereklidir.
 - **SQL Server Management Studio (SSMS)**: model veritabanlarını yedeklemek ve geri yüklemek için gereklidir.
@@ -193,7 +195,7 @@ Farklı bir bölgeye yeni bir sunucu kaynağı dağıtmak için, önceki bölüm
 
 3. **Şablon dağıtımı**seçin.
 
-4. **Oluştur**'u seçin.
+4. **Oluştur**’u seçin.
 
 5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
 

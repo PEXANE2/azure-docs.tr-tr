@@ -1,5 +1,5 @@
 ---
-title: Azure 'da görüntüleri Red Hat Enterprise Linux | Microsoft Docs
+title: Azure 'da kullanılabilen görüntüleri Red Hat Enterprise Linux
 description: Microsoft Azure Red Hat Enterprise Linux görüntüleri hakkında bilgi edinin
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c9c4389e2c950fe68c8be171b4c50d3d6271c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052023"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 'da bulunan Red Hat Enterprise Linux (RHEL) görüntüleri
 Azure, farklı kullanım durumları için çeşitli RHEL görüntüleri sunmaktadır.
@@ -54,10 +55,14 @@ RHEL          | 6.7      | Madde    | Linux Aracısı |
 |             | 78-Gen2  | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
 |             | 8-LVM    | LVM    | Linux Aracısı | RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.
 |             | 8-LVM-Gen2| LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.
-|             | 8        | LVM    | Linux Aracısı | RHEL 8,0 görüntüleri
+|             | 8        | LVM    | Linux Aracısı | RHEL 8,0 görüntüleri.
 |             | 8-Gen2   | LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8,0 görüntüleri.
-|             | 8.1      | LVM    | Linux Aracısı | RHEL 8,1 görüntüleri. Şu anda normal depolara eklenmiş.
+|             | 8.1      | LVM    | Linux Aracısı | RHEL 8,2 görüntüleri. Şu anda normal depolara eklenmiş.
 |             | 81gen2   | LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8,1 görüntüleri. Şu anda normal depolara eklenmiş.
+|             | 8,1-CI   | LVM    | Linux Aracısı | Sağlama Aracısı olarak Cloud-init kullanan RHEL 8,1 görüntüleri. Şu anda normal depolara eklenmiş.
+|             | 81-CI-Gen2| LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8,1 görüntüleri, sağlama Aracısı olarak Cloud-init kullanıyor. Şu anda normal depolara eklenmiş.
+|             | 8.2      | LVM    | Linux Aracısı | RHEL 8,2 görüntüleri. Şu anda normal depolara eklenmiş.
+|             | 82gen2   | LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8,1 görüntüleri. Şu anda normal depolara eklenmiş.
 RHEL-SAP      | 7.4      | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,4. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
 |             | 74sap-Gen2| LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,4. 2. nesil görüntü. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
 |             | 7,5       | LVM    | Linux Aracısı | SAP HANA ve Iş uygulamaları için RHEL 7,5. E4S depolarına bağlı olarak SAP ve RHEL için bir Premium ve temel işlem ücreti de ücretlendirilir.
@@ -84,7 +89,8 @@ RHEL-byos     |RHEL-lvm74| LVM    | Linux Aracısı | RHEL 7,4 BYOS görüntüle
 |             |RHEL-lvm75| LVM    | Linux Aracısı | RHEL 7,5 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 |             |RHEL-lvm76| LVM    | Linux Aracısı | RHEL 7,6 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 |             |RHEL-lvm77| LVM    | Linux Aracısı | RHEL 7,7 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
-|             |RHEL-lvm8 | LVM    | Linux Aracısı | RHEL 8 KCG görüntüleri (görüntü sürümü değerinde RHEL alt sürümü gösterilir), herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm8 | LVM    | Linux Aracısı | RHEL 8,0 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
+|             |RHEL-lvm81 | LVM    | Linux Aracısı | RHEL 8,1 BYOS görüntüleri, herhangi bir güncelleştirme kaynağına iliştirilmemiş bir RHEL Premium ücretlendirilmez.
 
 > [!NOTE]
 > RHEL-SAP-HANA ürün teklifi, Red Hat ile yaşam sonu olarak değerlendirilir. Mevcut dağıtımlar normal şekilde çalışmaya devam eder, ancak Red Hat müşterilerin RHEL-SAP-HANA görüntülerinden, SAP HANA depoları ve HA eklentisi de içeren RHEL-SAP-HA yansımalarına geçiş gerçekleştirmesini önerir. Red Hat 'in SAP bulut teklifleri hakkında daha fazla ayrıntıya [buradan](https://access.redhat.com/articles/3751271)ulaşabilirsiniz.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b08509bed6b26cb56caebd4dc47fc3b7ac84ce27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051511"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -60,7 +60,7 @@ Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gere
 |etiket|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|
 |durum|bkz|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
 
-Yukarıda tanımlanan şema aşağıdaki JSON yükü kullanılarak temsil edilir. Uygulama için gerekli olan özniteliklere ek olarak, JSON temsili gereken "ID," "externalId" ve "meta" özniteliklerini içerir.
+Yukarıda tanımlanan şema aşağıdaki JSON yükü kullanılarak temsil edilir. Uygulama için gerekli olan özniteliklere ek olarak, JSON temsili gereken `id` , `externalId` ve `meta` özniteliklerini içerir.
 
 ```json
 {
@@ -134,7 +134,7 @@ SCıM RFC 'de tanımlanmış birkaç uç nokta vardır. /User uç noktası ile �
 |/Group|Bir grup nesnesi üzerinde CRUD işlemleri gerçekleştirin.|
 |/ServiceProviderConfig|Desteklenen SCıM standardının özelliklerine ilişkin ayrıntıları, örneğin desteklenen kaynakları ve kimlik doğrulama yöntemini sağlar.|
 |/ResourceTypes|Her kaynakla ilgili meta verileri belirtir|
-|/Schemas|Her istemci ve hizmet sağlayıcı tarafından desteklenen öznitelik kümesi farklılık gösterebilir. Bir hizmet sağlayıcı "ad", "başlık" ve "e-postalar" içerebilir, ancak başka bir hizmet sağlayıcı "ad", "başlık" ve "phoneNumbers" kullanır. Şemalar uç noktası desteklenen özniteliklerin bulunmasına izin verir.|
+|/Schemas|Her istemci ve hizmet sağlayıcı tarafından desteklenen öznitelik kümesi farklılık gösterebilir. Bir hizmet sağlayıcı, ve ' ı içerebilir, `name` `title` `emails` ancak başka bir hizmet sağlayıcısı `name` , ve ' ı kullanır `title` `phoneNumbers` . Şemalar uç noktası desteklenen özniteliklerin bulunmasına izin verir.|
 |/Toplu|Toplu işlemler, tek bir işlemde büyük kaynak nesneleri koleksiyonu üzerinde işlemler gerçekleştirmenize olanak tanır (örneğin, büyük bir grup için üyelikleri güncelleştirme).|
 
 
@@ -149,7 +149,7 @@ SCıM 2,0 kullanıcı yönetim API 'sini destekleyen bir uygulama oluşturuyorsa
 * , [SCıM protokolünün 3,3](https://tools.ietf.org/html/rfc7644#section-3.3)bölümünde olduğu gibi, kullanıcıların ve isteğe bağlı olarak grupların oluşturulmasını destekler.  
 * , [SCıM protokolünün Bölüm 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)göre, yama istekleri olan kullanıcı veya grupların değiştirilmesini destekler.  
 * , [SCıM protokolünün bölüm başına 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)göre daha önce oluşturulmuş bir kullanıcı veya grup için bilinen bir kaynağı almayı destekler.  
-* , [SCıM protokolünün](https://tools.ietf.org/html/rfc7644#section-3.4.2)bölüm başına 3.4.2 göre Kullanıcı veya grupların sorgulanmasını destekler.  Varsayılan olarak, kullanıcılar, `id` ve tarafından sorgulanır ve grupları tarafından `username` `externalid` sorgulanır `displayName` .  
+* , [SCıM protokolünün](https://tools.ietf.org/html/rfc7644#section-3.4.2)bölüm başına 3.4.2 göre Kullanıcı veya grupların sorgulanmasını destekler.  Varsayılan olarak, kullanıcılar, `id` ve tarafından sorgulanır ve grupları tarafından `username` `externalId` sorgulanır `displayName` .  
 * , SCıM protokolünün Bölüm 3.4.2 göre, kullanıcının KIMLIĞE ve yöneticiye göre sorgulanmasını destekler.  
 * , SCıM protokolünün Bölüm 3.4.2 göre grupların KIMLIĞE ve üyeye göre sorgulanmasını destekler.  
 * Azure AD 'nin uygulamanıza kimlik doğrulaması ve yetkilendirmesi için tek bir taşıyıcı belirtecini kabul eder.
@@ -333,7 +333,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *GET/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-2"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -374,7 +374,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users al? Filter = userName EQ "varolmayan kullanıcı"*
 
-##### <a name="response"></a><a name="response-3"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-3"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -411,7 +411,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-4"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -455,7 +455,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-5"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -504,7 +504,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-14"></a>Yanıt
 
 ```json
 {
@@ -544,7 +544,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users/5171a35d82074e068ce2 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-6"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-6"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -571,7 +571,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-7"></a>Yanıt
 
 *HTTP/1.1 201 oluşturuldu*
 ```json
@@ -596,7 +596,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1 alın*
 
-##### <a name="response"></a><a name="response-8"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-8"></a>Yanıt
 *HTTP/1.1 200 TAMAM*
 ```json
 {
@@ -617,7 +617,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 ##### <a name="request"></a><a name="request-9"></a>İstek
 */Groups al? excludedAttributes = Members&Filter = displayName EQ "displayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-9"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -657,7 +657,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-10"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -680,7 +680,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-11"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -703,7 +703,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-12"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -713,7 +713,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/cdb1ce18f65944079d37 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-13"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-13"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -745,7 +745,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP aralıkları
-Azure AD sağlama hizmeti şu anda herhangi bir Azure IP aralığı altında olabilir. Hizmetin üzerinde çalıştığı IP aralıkları kümesini birleştirmek için iş devam ediyor. Bu belge, IP aralığı listesi birleştirildikten sonra güncelleştirilir. 
+Azure AD sağlama hizmeti şu anda herhangi bir Azure IP aralığı altında çalışabilir. Hizmetin üzerinde çalıştığı IP aralıkları kümesini birleştirmek için iş devam ediyor. Bu belge, IP aralığı listesi birleştirildikten sonra güncelleştirilir. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. Adım: SCıM uç noktası oluşturma
 
@@ -915,10 +915,10 @@ Geçerli bir taşıyıcı belirteci almak için belirteç denetleyicisine bir GE
 
 ***Örnek 1. Hizmeti eşleşen bir kullanıcı için sorgulama***
 
-Azure Active Directory, Azure AD 'deki bir kullanıcının Mailrumuz özniteliği ile eşleşen bir externalId öznitelik değeri olan bir kullanıcıya yönelik hizmeti sorgular. Sorgu, bu örnek gibi bir Köprü Metni Aktarım Protokolü (HTTP) isteği olarak ifade edilir. burada jbaşak, Azure Active Directory bir kullanıcının Mailtakma adı örneğidir.
+Azure Active Directory `externalId` , Azure AD 'deki bir kullanıcının Mailrumuz özniteliği ile eşleşen bir öznitelik değeri olan bir kullanıcıya yönelik hizmeti sorgular. Sorgu, bu örnek gibi bir Köprü Metni Aktarım Protokolü (HTTP) isteği olarak ifade edilir. burada jbaşak, Azure Active Directory bir kullanıcının Mailtakma adı örneğidir.
 
 >[!NOTE]
-> Bu yalnızca bir örnektir. Tüm kullanıcıların bir Mailrumuz özniteliği olmaz ve bir Kullanıcı, dizinde benzersiz olmayabilir. Ayrıca, eşleştirme için kullanılan öznitelik (Bu örnekte externalId), [Azure AD öznitelik eşlemelerinde](customize-application-attributes.md)yapılandırılabilir.
+> Bu yalnızca bir örnektir. Tüm kullanıcıların bir Mailrumuz özniteliği olmaz ve bir Kullanıcı, dizinde benzersiz olmayabilir. Ayrıca, eşleme için kullanılan öznitelik (Bu örnekte olduğu gibi), `externalId` [Azure AD öznitelik eşlemelerinde](customize-application-attributes.md)yapılandırılabilir.
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -939,7 +939,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
  Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
 ```
 
-Örnek sorguda, externalId özniteliği için verilen değere sahip olan bir kullanıcı için, QueryAsync yöntemine geçirilen bağımsız değişkenlerin değerleri şunlardır:
+Örnek sorguda, özniteliği için verilen değere sahip olan bir kullanıcı için `externalId` , QueryAsync yöntemine geçirilen bağımsız değişkenlerin değerleri şunlardır:
 
 * parametrelere. AlternateFilters. Count: 1
 * parametrelere. AlternateFilters. ElementAt (0). AttributePath: "externalId"
@@ -948,7 +948,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 ***Örnek 2. Kullanıcı sağlama***
 
-Bir kullanıcının Mailrumu özniteliği değeri ile eşleşen bir externalId özniteliği değeri olan bir kullanıcı için Web hizmetine yapılan bir sorgunun yanıtı, herhangi bir Kullanıcı döndürmüyor, sonra hizmetin Azure Active Directory bir kullanıcıya karşılık gelen bir Kullanıcı sağlaması Azure Active Directory.  Bu tür bir istek örneği aşağıda verilmiştir: 
+Bir kullanıcının Mailrumuz özniteliği değeriyle eşleşen bir öznitelik değeri olan bir kullanıcının Web hizmetine yönelik yanıtı, `externalId` hiçbir Kullanıcı döndürmez ve sonra hizmetin Azure Active Directory bir Kullanıcı sağlaması için Azure Active Directory istekleri.  Bu tür bir istek örneği aşağıda verilmiştir: 
 
 ```
  POST https://.../scim/Users HTTP/1.1
@@ -1187,11 +1187,11 @@ Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağı
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Uygulama galerisinde bağlayıcıları sağlama yetkilendirmesi
 SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü düzen tanımlamaz. Mevcut sektör standartlarının kullanımını temel alır. Azure AD sağlama istemcisi galerideki uygulamalar için iki yetkilendirme yöntemini destekler. 
 
-|Yetkilendirme Yöntemi|Artıları|Simgeler|Destek|
+|Yetkilendirme Yöntemi|Avantajlar|Dezavantajlar|Destek|
 |--|--|--|--|
 |Kullanıcı adı ve parola (Azure AD tarafından önerilmez veya desteklenmez)|Kolayca uygulanır|Güvenli olmayan- [PA $ $Word önemi yoktur](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Galeri uygulamaları için büyük/küçük harf esasına göre desteklenir. Galeri olmayan uygulamalar için desteklenmez.|
 |Uzun süreli taşıyıcı belirteci|Uzun süreli belirteçler için bir kullanıcının mevcut olması gerekmez. Yöneticiler, sağlama ayarlarken kolayca kullanılabilir.|Uzun süreli belirteçlerin, e-posta gibi güvenli olmayan yöntemler kullanmadan bir yönetici ile paylaşılması zor olabilir. |Galeri ve Galeri olmayan uygulamalar için desteklenir. |
-|OAuth yetkilendirme kodu verme|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir.  İlk yetkilendirme sırasında, bir sorumluluk düzeyi ekleyerek gerçek bir kullanıcının mevcut olması gerekir. |Bir kullanıcının mevcut olmasını gerektirir. Kullanıcı kuruluştan ayrılırsa, belirteç geçersizdir ve yetkilendirmenin yeniden tamamlanması gerekir.|Galeri uygulamaları için desteklenir. Galeri olmayan uygulamalar için destek çalışma.|
+|OAuth yetkilendirme kodu verme|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir.  İlk yetkilendirme sırasında, bir sorumluluk düzeyi ekleyerek gerçek bir kullanıcının mevcut olması gerekir. |Bir kullanıcının mevcut olmasını gerektirir. Kullanıcı kuruluştan ayrılırsa, belirteç geçersizdir ve yetkilendirmenin yeniden tamamlanması gerekir.|Galeri uygulamaları için desteklenir, ancak Galeri olmayan uygulamalar için desteklenmez. Galeri dışı yönelik destek kapsamımızda bulunur.|
 |OAuth istemci kimlik bilgileri verme|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir. Hem yetkilendirme kodu verme hem de istemci kimlik bilgileri, aynı tür erişim belirtecini oluşturur, bu nedenle bu yöntemler arasında geçiş yapmak API 'ye saydamdır.  Sağlama tamamen otomatikleştirilebilir ve yeni belirteçler Kullanıcı etkileşimi olmadan sessizce istenebilir. ||Galeri ve Galeri olmayan uygulamalar için desteklenmez. Destek kapsamımızda.|
 
 > [!NOTE]

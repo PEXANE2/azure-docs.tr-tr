@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050341"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Azure API Management şirket içinde barındırılan ağ geçidi sağlama
 
@@ -31,7 +31,7 @@ Azure API Management Örneğinizde bir ağ geçidi kaynağı sağlama, şirket i
 
 ## <a name="provision-a-self-hosted-gateway"></a>Şirket içinde barındırılan ağ geçidini sağlama
 
-1. **Ayarlar**altında **ağ geçitlerini** seçin.
+1. **Dağıtım ve altyapı**altında **ağ geçitlerini** seçin.
 2. **+ Ekle**'ye tıklayın.
 3. Ağ geçidinin **adını** ve **bölgesini** girin.
 > [!TIP]

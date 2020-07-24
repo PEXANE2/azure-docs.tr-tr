@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5f3b5c60907260a0e868d491a4d55ea3624c2bce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046791"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -49,13 +49,13 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
 SAS belirtecini kullanarak erişimi etkinleştirmek için veritabanı kapsamlı veya sunucu kapsamlı kimlik bilgileri oluşturmanız gerekir.
 
-### <a name="managed-identity"></a>[Yönetilen kimlik](#tab/managed-identity)
+### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
 **Yönetilen kimlik** de MSI olarak bilinir. İsteğe bağlı SQL için Azure hizmetleri sağlayan Azure Active Directory (Azure AD) özelliğidir. Ayrıca, Azure AD 'de otomatik olarak yönetilen bir kimlik dağıtır. Bu kimlik, Azure Storage 'da veri erişimi isteğine yetki vermek için kullanılabilir.
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda kullanılabilir yetkilendirme türlerini bulabilirsiniz:
 | ------------------------------------- | ------------- | -----------    |
 | [Kullanıcı kimliği](?tabs=user-identity#supported-storage-authorization-types)       | Desteklenmez | Desteklenir      |
 | ['LARıNıN](?tabs=shared-access-signature#supported-storage-authorization-types)       | Desteklenir     | Desteklenir      |
-| [Yönetilen kimlik](?tabs=managed-identity#supported-storage-authorization-types) | Desteklenmez | Desteklenir      |
+| [Yönetilen Kimlik](?tabs=managed-identity#supported-storage-authorization-types) | Desteklenmez | Desteklenir      |
 
 ### <a name="supported-storages-and-authorization-types"></a>Desteklenen depolama alanları ve yetkilendirme türleri
 
@@ -86,6 +86,11 @@ Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabil
 | *'LARıNıN*               | Desteklenir      | Desteklenmiyor   | Desteklenir     |
 | *Yönetilen kimlik* | Desteklenir      | Desteklenir        | Desteklenir     |
 | *Kullanıcı kimliği*    | Desteklenir      | Desteklenir        | Desteklenir     |
+
+
+> [!IMPORTANT]
+> Güvenlik duvarıyla korunan depolamaya erişirken yalnızca yönetilen kimlik kullanılabilir. [Güvenilen Microsoft hizmetlerine Izin vermeniz gerekiyor... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)bu kaynak örneği için [sistem tarafından atanan yönetilen KIMLIĞE](../../active-directory/managed-identities-azure-resources/overview.md) [bir RBAC rolünü](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) ayarlama ve açıkça atama. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan RBAC rolüne karşılık gelir.
+>
 
 ## <a name="credentials"></a>Kimlik bilgileri
 
@@ -109,11 +114,7 @@ Kimlik bilgisini kullanmak için, bir kullanıcının `REFERENCES` belirli bir k
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-Sorunsuz bir Azure AD geçiş deneyimi sağlamak için, tüm kullanıcıların varsayılan olarak kimlik bilgisini kullanma hakkı olur `UserIdentity` . Bu, Azure SYNAPSE çalışma alanı sağlama sırasında aşağıdaki deyimin otomatik olarak yürütülmesi ile elde edilir:
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+Sorunsuz bir Azure AD geçiş deneyimi sağlamak için, tüm kullanıcıların varsayılan olarak kimlik bilgisini kullanma hakkı olur `UserIdentity` .
 
 ## <a name="server-scoped-credential"></a>Sunucu kapsamlı kimlik bilgisi
 
@@ -151,7 +152,7 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-### <a name="managed-identity"></a>[Yönetilen kimlik](#tab/managed-identity)
+### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
 Aşağıdaki betik, `OPENROWSET` çalışma alanı yönetilen kimliği kullanarak Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur.
 
@@ -189,7 +190,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
 GO
 ```
 
-### <a name="managed-identity"></a>[Yönetilen kimlik](#tab/managed-identity)
+### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
 Aşağıdaki betik, geçerli Azure AD kullanıcısının yönetilen hizmet kimliği olarak taklit etmek için kullanılabilecek veritabanı kapsamlı bir kimlik bilgisi oluşturur. 
 

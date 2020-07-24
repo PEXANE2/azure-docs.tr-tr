@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987603"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048659"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Azure Service Bus ile Azure Logic Apps sıralı bir konvoy kullanarak ilgili iletileri sırayla gönderin
 
-Bağıntılı iletileri belirli bir sırada göndermeniz gerektiğinde, [Azure Service Bus bağlayıcısını](../connectors/connectors-create-api-servicebus.md)kullanarak [Azure Logic Apps](../logic-apps/logic-apps-overview.md) kullanırken [ *sıralı konvoy* düzenini](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) takip edebilirsiniz. Bağıntılı iletiler, Service Bus [oturum](../service-bus-messaging/message-sessions.md) kimliği gibi bu iletiler arasındaki ilişkiyi tanımlayan bir özelliğe sahiptir.
+Bağıntılı iletileri belirli bir sırada göndermeniz gerektiğinde, [Azure Service Bus bağlayıcısını](../connectors/connectors-create-api-servicebus.md)kullanarak [Azure Logic Apps](../logic-apps/logic-apps-overview.md) kullanırken [ *sıralı konvoy* düzenini](/azure/architecture/patterns/sequential-convoy) takip edebilirsiniz. Bağıntılı iletiler, Service Bus [oturum](../service-bus-messaging/message-sessions.md) kimliği gibi bu iletiler arasındaki ilişkiyi tanımlayan bir özelliğe sahiptir.
 
 Örneğin, "oturum 1" adlı bir oturum için 10 iletiniz olduğunu ve aynı [Service Bus kuyruğuna](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)gönderilen "oturum 2" adlı bir oturum için 5 iletiniz olduğunu varsayalım. Sıradaki iletileri işleyen bir mantıksal uygulama oluşturabilirsiniz, böylece "oturum 1" kaynağından gelen tüm iletiler tek bir tetikleyici çalıştırması tarafından işlenir ve "oturum 2" kaynağından gelen tüm iletiler sonraki tetikleyici çalıştırması tarafından işlenir.
 
@@ -28,9 +29,9 @@ Bu makalede **Service Bus oturumları şablonunu kullanarak bağıntılı sıral
 
 Bu şablonun JSON dosyasını gözden geçirmek için bkz. [GitHub: service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json).
 
-Daha fazla bilgi için bkz. [sıralı konvoy deseni-Azure mimarisi bulut tasarım desenleri](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
+Daha fazla bilgi için bkz. [sıralı konvoy deseni-Azure mimarisi bulut tasarım desenleri](/azure/architecture/patterns/sequential-convoy).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -116,7 +117,7 @@ Ayrıntılar daraltıldığında **Service Bus oturumları şablonu kullanılara
 
 ![Şablonun en üst düzey iş akışı](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| Name | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | Bu Service Bus tetikleyicisi, belirtilen tekrara göre, herhangi bir ileti için belirtilen Service Bus sırasını denetler. Kuyrukta bir ileti varsa, tetikleyici ateşlenir ve bir iş akışı örneği oluşturur ve çalıştırır. <p><p>*Peek-kilit* terimi, tetikleyicinin kuyruktan ileti almak için bir istek gönderdiği anlamına gelir. Bir ileti varsa, tetikleyici kilit süresi doluncaya kadar bu iletide başka bir işlem gerçekleşmemesi için iletiyi alır ve kilitler. Ayrıntılar için [oturumu başlatın](#initialize-session). |
 | **`Init isDone`** | Bu [ **değişken başlatma** eylemi](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable) , olarak ayarlanmış bir Boole değişkeni oluşturur `false` ve aşağıdaki koşulların doğru olduğunu gösterir: <p><p>-Oturumda daha fazla ileti okunabilir durumda değil. <br>-Geçerli iş akışı örneğinin tamamlanabilmesi için oturum kilidinin artık yenilenmesi gerekmez. <p><p>Ayrıntılar için bkz. [oturumu başlatma](#initialize-session). |
@@ -132,7 +133,7 @@ Ayrıntılar daraltıldığında **Service Bus oturumları şablonu kullanılara
 
 !["Dene" kapsam eylemi iş akışı](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| Name | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
 | **`Send initial message to topic`** | Bu eylemi, kuyruktaki oturumdan ilk iletiyi işlemek istediğiniz herhangi bir eylemle değiştirebilirsiniz. Oturum KIMLIĞI, oturumu belirtir. <p><p>Bu şablon için, bir Service Bus eylemi ilk iletiyi bir Service Bus konusuna gönderir. Ayrıntılar için bkz. [ilk Iletiyi işleme](#handle-initial-message). |
 | (paralel dal) | Bu [paralel dal eylemi](../logic-apps/logic-apps-control-flow-branches.md) iki yol oluşturur: <p><p>-Branch #1: iletiyi işlemeye devam edin. Daha fazla bilgi için bkz. [Branch #1: kuyruktaki ilk Iletiyi Tamamdır](#complete-initial-message). <p><p>-Branch #2: bir sorun yanlış olursa iletiyi bırakın ve başka bir tetikleyici çalıştırması tarafından toplama için yayın yayınlayın. Daha fazla bilgi için bkz. [Branch #2: kuyruktaki ilk Iletiyi bırakma](#abandon-initial-message). <p><p>Her iki yol daha sonra **bir kuyruktaki kapatma oturumunda ve** sonraki satırda açıklanan başarılı bir eylemde katılır. |
@@ -143,7 +144,7 @@ Ayrıntılar daraltıldığında **Service Bus oturumları şablonu kullanılara
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>Dal #1: kuyruktaki ilk iletiyi doldurun
 
-| Name | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
 | `Complete initial message in queue` | Bu Service Bus eylemi başarıyla alınan bir iletiyi tamamlandı olarak işaretler ve yeniden işlemeyi engellemek için iletiyi kuyruktan kaldırır. Ayrıntılar için bkz. [ilk Iletiyi işleme](#handle-initial-message). |
 | `While there are more messages for the session in the queue` | Bu, ileti varken veya bir saat geçtiğinde ileti almaya devam [ **edene kadar** ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) . Bu döngüdeki eylemler hakkında daha fazla bilgi için bkz. [kuyruktaki oturum için daha fazla ileti var](#while-more-messages-for-session). |
@@ -167,7 +168,7 @@ Ayrıntılar daraltıldığında kapsam eyleminde en üst düzey akış aşağı
 
 !["Catch" kapsam eylemi iş akışı](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Name | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Bu Service Bus eylem, oturum kilidinin açık kalması için kuyruktaki oturumu kapatır. Ayrıntılar için bkz. [kuyruktaki oturumu kapatma ve başarısız](#close-session-fail). |
 | **`Find failure msg from 'Try' block`** | Bu [ **filtre dizisi** eylemi](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) , `Try` belirtilen ölçütlere göre kapsam içindeki tüm eylemlerin giriş ve çıktılarından bir dizi oluşturur. Bu durumda, bu eylem durum sonucu oluşan eylemlerden çıkışları geri döndürür `Failed` . Ayrıntılar için bkz. [' TRY ' bloğundan hata Iletisi bulma](#find-failure-message). |
@@ -194,14 +195,14 @@ Ayrıntılar daraltıldığında kapsam eyleminde en üst düzey akış aşağı
 
   | Özellik | Bu senaryo için gerekli | Değer | Açıklama |
   |----------|----------------------------|-------|-------------|
-  | **Kuyruk adı** | Evet | <*sıra-adı*> | Daha önce oluşturduğunuz Service Bus kuyruğunun adı. Bu örnekte "Fabrikam-Service-Bus-Queue" kullanılmaktadır. |
-  | **Sıra türü** | Evet | **Ana** | Birincil Service Bus kuyruğunuz |
-  | **Oturum kimliği** | Evet | **Sonraki kullanılabilir** | Bu seçenek, Service Bus sırasındaki iletiden oturum KIMLIĞI temel alınarak her tetikleyici çalıştırması için bir oturum alır. Oturum, başka bir mantıksal uygulama veya başka bir istemcinin bu oturumla ilgili iletileri işleyebilmesi için de kilitlenir. İş akışının sonraki eylemleri, bu makalenin ilerleyen kısımlarında açıklandığı gibi, bu oturumla ilişkili tüm iletileri işler. <p><p>Diğer **oturum kimliği** seçenekleri hakkında daha fazla bilgi aşağıda verilmiştir: <p>- **Hiçbiri**: hiçbir oturum yok ve sıralı konvoy deseninin uygulanması için kullanılamayan varsayılan seçenektir. <p>- **Özel değer girin**: kullanmak ISTEDIĞINIZ oturum kimliğini bildiğiniz ve her zaman bu oturum kimliği için tetikleyiciyi çalıştırmak istediğiniz zaman bu seçeneği kullanın. <p>**Note**: Service Bus bağlayıcısı, Azure Service Bus ile bağlayıcı önbelleğine sınırlı sayıda benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [Azure Logic Apps ile buluttaki Exchange iletileri ve Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
-  | **Interval** | Evet | <*Aralık sayısı*> | Bir iletiyi denetlemeden önce Yinelenmeler arasındaki zaman birimi sayısı. |
-  | **Sıklık** | Evet | **İkinci**, **dakika**, **saat**, **gün**, **hafta**veya **ay** | Bir ileti denetlenirken yinelenme için zaman birimi. <p>**İpucu**: bir **saat dilimi** veya **Başlangıç saati**eklemek için **yeni parametre Ekle** listesinden bu özellikleri seçin. |
+  | **Kuyruk adı** | Yes | <*sıra-adı*> | Daha önce oluşturduğunuz Service Bus kuyruğunun adı. Bu örnekte "Fabrikam-Service-Bus-Queue" kullanılmaktadır. |
+  | **Sıra türü** | Yes | **Ana** | Birincil Service Bus kuyruğunuz |
+  | **Oturum kimliği** | Yes | **Sonraki kullanılabilir** | Bu seçenek, Service Bus sırasındaki iletiden oturum KIMLIĞI temel alınarak her tetikleyici çalıştırması için bir oturum alır. Oturum, başka bir mantıksal uygulama veya başka bir istemcinin bu oturumla ilgili iletileri işleyebilmesi için de kilitlenir. İş akışının sonraki eylemleri, bu makalenin ilerleyen kısımlarında açıklandığı gibi, bu oturumla ilişkili tüm iletileri işler. <p><p>Diğer **oturum kimliği** seçenekleri hakkında daha fazla bilgi aşağıda verilmiştir: <p>- **Hiçbiri**: hiçbir oturum yok ve sıralı konvoy deseninin uygulanması için kullanılamayan varsayılan seçenektir. <p>- **Özel değer girin**: kullanmak ISTEDIĞINIZ oturum kimliğini bildiğiniz ve her zaman bu oturum kimliği için tetikleyiciyi çalıştırmak istediğiniz zaman bu seçeneği kullanın. <p>**Note**: Service Bus bağlayıcısı, Azure Service Bus ile bağlayıcı önbelleğine sınırlı sayıda benzersiz oturum kaydedebilir. Oturum sayısı bu sınırı aşarsa, eski oturumlar önbellekten kaldırılır. Daha fazla bilgi için bkz. [Azure Logic Apps ile buluttaki Exchange iletileri ve Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
+  | **Aralık** | Yes | <*Aralık sayısı*> | Bir iletiyi denetlemeden önce Yinelenmeler arasındaki zaman birimi sayısı. |
+  | **Sıklık** | Yes | **İkinci**, **dakika**, **saat**, **gün**, **hafta**veya **ay** | Bir ileti denetlenirken yinelenme için zaman birimi. <p>**İpucu**: bir **saat dilimi** veya **Başlangıç saati**eklemek için **yeni parametre Ekle** listesinden bu özellikleri seçin. |
   |||||
 
-  Daha fazla tetikleyici bilgisi için bkz. [Service Bus-bir kuyrukta ileti alındığında (Peek-kilit)](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Tetikleyici bir [Servicebusmessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage)çıkışı verir.
+  Daha fazla tetikleyici bilgisi için bkz. [Service Bus-bir kuyrukta ileti alındığında (Peek-kilit)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Tetikleyici bir [Servicebusmessage](/connectors/servicebus/#servicebusmessage)çıkışı verir.
 
 Oturum başlatıldıktan sonra, iş akışı başlangıçta ayarlanmış bir Boole değişkeni oluşturmak için **değişkeni Başlat** eylemini kullanır `false` ve aşağıdaki koşulların doğru olduğunu gösterir: 
 
@@ -421,4 +422,4 @@ Mantıksal uygulamanızı test etmek için Service Bus kuyruğuna ileti gönderi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Service Bus bağlayıcısının Tetikleyicileri ve eylemleri](https://docs.microsoft.com/connectors/servicebus/) hakkında daha fazla bilgi edinin
+* [Service Bus bağlayıcısının Tetikleyicileri ve eylemleri](/connectors/servicebus/) hakkında daha fazla bilgi edinin

@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma '
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725610"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050081"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc etkin bir ekleme hizmeti sorumlusu oluşturma (Önizleme)
 
@@ -42,15 +43,15 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 }
 ```
 
-## <a name="assign-permissions"></a>İzin atama
+## <a name="assign-permissions"></a>İzinler atama
 
-Yeni hizmet sorumlusunu oluşturduktan sonra, "Azure Arc for Kubernetes ekleme" rolünü yeni oluşturulan sorumluya atayın. Bu, sınırlı izinleri olan yerleşik bir Azure roldür ve bu, yalnızca sorumlunun kümeleri Azure 'a kaydetmesini sağlar. Sorumlu, aboneliğin içindeki diğer kümeleri veya kaynakları güncelleştiremez, silemez veya değiştiremezler.
+Yeni hizmet sorumlusunu oluşturduktan sonra, "Kubernetes kümesi-Azure Arc ekleme" rolünü yeni oluşturulan sorumluya atayın. Bu, sınırlı izinleri olan yerleşik bir Azure roldür ve bu, yalnızca sorumlunun kümeleri Azure 'a kaydetmesini sağlar. Sorumlu, aboneliğin içindeki diğer kümeleri veya kaynakları güncelleştiremez, silemez veya değiştiremezler.
 
 Müşteriler, sınırlı yetenekler verildiğinde, bu sorumluyu birden çok küme eklemek için kolayca yeniden kullanabilir.
 
 Rol atarken uygun bağımsız değişkene geçerek izinler daha fazla sınırlı olabilir `--scope` . Bu, müşterilerin küme kaydını kısıtlayasağlar. Aşağıdaki senaryolar çeşitli parametreler tarafından desteklenir `--scope` :
 
-| Kaynak  | `scope` bağımsız değişkeni| Efekt |
+| Kaynak  | `scope` bağımsız değişkeni| Etki |
 | ------------- | ------------- | ------------- |
 | Abonelik | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Hizmet sorumlusu, belirtilen abonelikte var olan bir kaynak grubuna herhangi bir kümeyi kaydedebilir |
 | Kaynak Grubu | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Hizmet sorumlusu __yalnızca__ kaynak grubundaki kümeleri kaydedebilir`myGroup` |

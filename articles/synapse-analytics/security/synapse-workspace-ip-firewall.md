@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'te IP güvenlik duvarı kurallarını yapılandırma
+title: IP güvenlik duvarı kurallarını yapılandırma
 description: Azure SYNAPSE Analytics 'te IP güvenlik duvarı kurallarını yapılandırmanızı öğretir bir makale
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 255714fcf69a8ed72cf1f306e5aafabd49a199ca
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: a06b4e6ced437cc83fadfad000fa682264264874
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052418"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure SYNAPSE Analytics IP güvenlik duvarı kuralları (Önizleme)
 
@@ -49,4 +49,4 @@ Varsayılan yeniden yönlendirme bağlantısı ilke ayarını kullanıyorsanız,
 
 [Azure SYNAPSE çalışma alanı](../quickstart-create-workspace.md) oluşturma
 
-[Yönetilen çalışma alanı VNET](./synapse-workspace-managed-vnet.md) Ile Azure SYNAPSE çalışma alanı oluşturma
+[Yönetilen çalışma alanı sanal ağı](./synapse-workspace-managed-vnet.md) Ile Azure SYNAPSE çalışma alanı oluşturma
