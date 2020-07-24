@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 18e96f9463176b0fce04252492eea6dbede416c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6abaf10f74b29685309ed5a24a5e6b9f261014
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79531116"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074438"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Linux sanal makinesini yeni bir Azure düğümüne yeniden dağıtma
 Azure 'da bir Linux sanal makinesine (VM) SSH veya uygulama erişiminde sorun giderme sorunları yaşıyorsanız, sanal makinenin yeniden dağıtılması yardımcı olabilir. Bir VM 'yi yeniden dağıtırken, VM 'yi Azure altyapısı içindeki yeni bir düğüme taşıdığından, sonra yeniden güçlendirir. Tüm yapılandırma seçenekleriniz ve ilişkili kaynaklarınız korunur. Bu makalede, Azure CLı veya Azure portal kullanarak bir VM 'yi yeniden dağıtma gösterilmektedir.
@@ -41,7 +41,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 
-[En son Azure klasık CLI](../../cli-install-nodejs.md) 'Yı yükleyip Azure hesabınızda oturum açın. Kaynak Yöneticisi modunda olduğunuzdan emin olun ( `azure config mode arm` ).
+[En son Azure klasık CLI](/cli/azure/install-classic-cli) 'Yı yükleyip Azure hesabınızda oturum açın. Kaynak Yöneticisi modunda olduğunuzdan emin olun ( `azure config mode arm` ).
 
 Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı VM 'yi yeniden dağıtır:
 
@@ -53,5 +53,3 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sanal makinenize bağlanma sorunları yaşıyorsanız, [SSH bağlantılarında sorun giderme](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) hakkında belirli yardım veya [ayrıntılı SSH sorun giderme adımları](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bulabilirsiniz. VM 'niz üzerinde çalışan bir uygulamaya erişemiyorsanız, [uygulama sorunlarını giderme sorunlarını](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)da okuyabilirsiniz.
-
-

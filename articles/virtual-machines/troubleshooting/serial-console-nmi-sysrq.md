@@ -13,13 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250094"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074370"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq ve NMI çağrıları için seri konsol kullan
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>SysRq ve NMI çağrıları için Azure seri konsolunu kullanma
 
 ## <a name="system-request-sysrq"></a>Sistem Isteği (SysRq)
 SysRq, bir dizi önceden tanımlanmış eylemi tetikleyebilen Linux işlem sistemi çekirdeği tarafından anlaşılan bir anahtarlar dizisidir. Bu komutlar genellikle sanal makine sorun giderme veya kurtarma geleneksel yönetim aracılığıyla gerçekleştirilemediği zaman kullanılır (örneğin, VM yanıt vermiyorsa). Azure seri konsolunun SysRq özelliğinin kullanılması, SysRq anahtarına ve fiziksel bir klavyede girilen karakterlere yönelik olarak bir tuşa benzecektir.
@@ -28,11 +29,11 @@ SysRq sırası teslim edildiğinde, çekirdek yapılandırması sistemin nasıl 
 
 Azure seri konsolu, aşağıda gösterilen komut çubuğundaki klavye simgesini kullanarak bir Azure sanal makinesine bir SysRq göndermek için kullanılabilir.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Azure seri konsolunun ekran görüntüsü. Klavye simgesi vurgulanır ve menü görünür. Bu menü bir Gönder SysRq komut öğesi içerir.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 "Send SysRq komutunu" seçtiğinizde, genel SysRq seçeneklerini sağlayan bir iletişim kutusu açılır ve iletişim kutusuna girilen bir SysRq komutları dizisi kabul edilir.  Bu, ' nin kullanarak güvenli bir yeniden başlatma gibi yüksek düzeyli bir işlem gerçekleştirmesine olanak sağlar `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Konuğa SysRq komutu Gönder iletişim kutusunun ekran görüntüsü. Komutları girme seçeneği seçilidir ve komut kutusu REISUB içerir.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 SysRq komutu durdurulmuş olan veya çekirdeği yanıt vermeyen bir durumda olan sanal makinelerde kullanılamaz. (örneğin, bir çekirdek Panic).
 
@@ -101,7 +102,7 @@ Maskelenemeyen bir kesme (NMI), bir sanal makinede yazılımın yok saymayacak b
 
 Seri konsol, aşağıda gösterilen komut çubuğundaki klavye simgesini kullanarak bir Azure sanal makinesine bir NMI göndermek için kullanılabilir. NMI teslim edildiğinde, sanal makine yapılandırması sistemin nasıl yanıt verdiğini denetler.  Linux işletim sistemleri, kilitlenme ve bellek dökümü oluşturmak için yapılandırılabilir ve işletim sistemi bir NMI alır.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Seri konsolunun ekran görüntüsü. Klavye simgesi vurgulanır ve menü görünür. Bu menü, bir gönderme maskelenemeyen kesme öğesi içerir.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>NMI 'yi etkinleştir
 Çekirdek parametrelerini yapılandırmak için sysctl 'yi destekleyen Linux sistemleri için, aşağıdakileri kullanarak bu NMI 'yi alırken bir panik 'yi etkinleştirebilirsiniz:

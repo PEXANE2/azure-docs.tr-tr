@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074288"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API azaltma hatalarını giderme 
 
@@ -25,7 +26,7 @@ Azure Işlem istekleri, hizmetin genel performansı konusunda yardımcı olmak i
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager vs kaynak sağlayıcılarına göre daraltma  
 
-Azure 'un ön kapısı olarak Azure Resource Manager, tüm gelen API isteklerinin kimlik doğrulaması ve ilk sıra doğrulaması ve azaltmasından oluşur. Azure Resource Manager çağrı hızı sınırları ve ilgili tanılama yanıtı HTTP üstbilgileri [burada](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)açıklanmıştır.
+Azure 'un ön kapısı olarak Azure Resource Manager, tüm gelen API isteklerinin kimlik doğrulaması ve ilk sıra doğrulaması ve azaltmasından oluşur. Azure Resource Manager çağrı hızı sınırları ve ilgili tanılama yanıtı HTTP üstbilgileri [burada](../../azure-resource-manager/management/request-limits-and-throttling.md)açıklanmıştır.
  
 Bir Azure API istemcisi bir azaltma hatası aldığında, HTTP durumu çok fazla Istek 429 ' dir. İstek azaltma 'nın Azure Resource Manager veya CRP gibi temel bir kaynak sağlayıcısı tarafından gerçekleştirilip yapılmlamadığını anlamak için `x-ms-ratelimit-remaining-subscription-reads` get istekleri ve `x-ms-ratelimit-remaining-subscription-writes` yanıt üst bilgilerini get istekleri için inceleyin. Kalan çağrı sayısı 0 ' a yaklaşıyorsa, aboneliğin Azure Resource Manager tarafından tanımlanan genel çağrı sınırına ulaşıldı. Tüm abonelik istemcilerine göre etkinlikler birlikte sayılır. Aksi takdirde, daraltma hedef kaynak sağlayıcısından ( `/providers/<RP>` Istek URL 'sinin segmenti tarafından adreslenmiş olan) geliyor. 
 
@@ -78,8 +79,8 @@ Yukarıda gösterildiği gibi, her azaltma hatası, `Retry-After` istemcinin ist
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API çağrı hızı ve azaltma hatası Çözümleyicisi
 Işlem Kaynak sağlayıcısının API 'SI için bir sorun giderme özelliğinin önizleme sürümü kullanılabilir. Bu PowerShell cmdlet 'leri, işlem grubu (ilke) başına işlem ve kısıtlama ihlalleri başına API isteği hızı hakkında istatistikler sağlar:
--   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-Azloganaliz Tickısıt/Istek](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Export-AzLogAnalyticRequestRateByInterval](/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-Azloganaliz Tickısıt/Istek](/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 API çağrısı istatistikleri, bir aboneliğin istemcilerinin davranışına yönelik harika öngörüler sağlayabilir ve azaltmasına neden olan çağrı desenlerinin kolay tanımlanmasını sağlar.
 
@@ -99,4 +100,4 @@ PowerShell cmdlet 'leri, doğrudan istemciler tarafından kolayca çağrılabile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'daki diğer hizmetlere yönelik yeniden deneme Kılavuzu hakkında daha fazla bilgi için bkz. [belirli hizmetler Için yeniden deneme Kılavuzu](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)
+Azure 'daki diğer hizmetlere yönelik yeniden deneme Kılavuzu hakkında daha fazla bilgi için bkz. [belirli hizmetler Için yeniden deneme Kılavuzu](/azure/architecture/best-practices/retry-service-specific)

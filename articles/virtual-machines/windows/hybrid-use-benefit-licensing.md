@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074260"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı
 Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -65,7 +66,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Şablon
-Kaynak Yöneticisi şablonlarınız içinde ek bir parametre `licenseType` belirtilmesi gerekir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md) hakkında daha fazla bilgi edinebilirsiniz
+Kaynak Yöneticisi şablonlarınız içinde ek bir parametre `licenseType` belirtilmesi gerekir. [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md) hakkında daha fazla bilgi edinebilirsiniz
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -189,7 +190,7 @@ Ayrıca, ölçek kümesini güncelleştirme hakkında daha fazla yol için [bir 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure hibrit avantajı ile tasarruf etme](https://azure.microsoft.com/pricing/hybrid-use-benefit/) hakkında daha fazla bilgi edinin
 - [Azure hibrit avantajı hakkında sık sorulan sorular](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/) hakkında daha fazla bilgi edinin
-- [Windows Server Lisanslama ayrıntılı Kılavuzu için Azure hibrit avantajı](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit) hakkında daha fazla bilgi edinin
+- [Windows Server Lisanslama ayrıntılı Kılavuzu için Azure hibrit avantajı](/windows-server/get-started/azure-hybrid-benefit) hakkında daha fazla bilgi edinin
 - Windows Server Azure Hibrit Avantajı hakkında daha fazla bilgi edinin [ve Azure Site Recovery Azure 'a uygulama geçirmeyi daha da verimli hale getirin](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
-- [Azure 'Da çok kiracılı barındırma Ile Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) hakkında daha fazla bilgi edinin
+- [Azure 'Da çok kiracılı barındırma Ile Windows 10](./windows-desktop-multitenant-hosting-deployment.md) hakkında daha fazla bilgi edinin
 - [Kaynak Yöneticisi şablonlarını kullanma](../../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin

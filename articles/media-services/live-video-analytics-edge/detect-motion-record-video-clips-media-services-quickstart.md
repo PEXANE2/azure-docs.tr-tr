@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074409"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -16,7 +16,7 @@ Bu makalede, [olay tabanlı kayıt](event-based-video-recording-concept.md)için
 
 Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstart.md)başlangıcı hakkında daha fazla yer vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Azure IoT araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
@@ -655,7 +655,7 @@ Yukarıda oluşturduğunuz ve etkinleştirdiğiniz grafik örneği, gelen canlı
 
 Yukarıdaki iletilerde aşağıdaki özelliklere göz önünde
 
-* Her ileti bir "Body" bölümü ve bir "applicationProperties" bölümü içerir. Bu bölümlerin neyi temsil ettiğini anlamak için [IoT Hub oluştur ve oku](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)makalesini okuyun.
+* Her ileti bir "Body" bölümü ve bir "applicationProperties" bölümü içerir. Bu bölümlerin neyi temsil ettiğini anlamak için [IoT Hub oluştur ve oku](../../iot-hub/iot-hub-devguide-messages-construct.md)makalesini okuyun.
 * İlk ileti, RTSP kaynak düğümünün (konu) RTSP simülatörü ile bağlantı kurup sunabilediğini belirten bir tanılama olayıdır ve (sanal) canlı bir akış almaya başlayabilir.
 * ApplicationProperties 'teki "Subject" değeri, iletinin oluşturulduğu grafik topolojisinde bulunan düğüme başvurur. Bu durumda, ileti RTSP kaynak düğümünden gönderilir.
 * applicationProperties 'teki "eventType" bir tanılama olayı olduğunu gösterir.

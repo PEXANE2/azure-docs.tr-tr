@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65679c900baaf0f98a21e4b1f6b1d350c4b945c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656475"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074339"
 ---
 # <a name="azure-serial-console"></a>Azure seri konsol
 
@@ -33,7 +34,7 @@ Seri konsol, VM 'Ler ve sanal makine ölçek kümesi örnekleri için aynı şek
 VM veya sanal makine ölçek kümesi örneğindeki seri konsoluna erişmek için şunlar gerekir:
 
 - VM için önyükleme tanılamaları etkinleştirilmelidir
-- Parola kimlik doğrulaması kullanan bir kullanıcı hesabının VM içinde mevcut olması gerekir. VM erişimi uzantısının [parola sıfırlama](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) işlevini kullanarak parola tabanlı bir kullanıcı oluşturabilirsiniz. **Destek + sorun giderme** bölümünde **Parolayı Sıfırla** ' yı seçin.
+- Parola kimlik doğrulaması kullanan bir kullanıcı hesabının VM içinde mevcut olması gerekir. VM erişimi uzantısının [parola sıfırlama](../extensions/vmaccess.md#reset-password) işlevini kullanarak parola tabanlı bir kullanıcı oluşturabilirsiniz. **Destek + sorun giderme** bölümünde **Parolayı Sıfırla** ' yı seçin.
 - Seri konsoluna erişen Azure hesabının hem VM hem de [önyükleme tanılama](boot-diagnostics.md) depolama hesabı Için [sanal makine katılımcısı rolü](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) olmalıdır
 
 > [!NOTE]
@@ -44,7 +45,7 @@ VM 'Lerin ve sanal makine ölçek kümesinin seri konsoluna yalnızca Azure port
 
 ### <a name="serial-console-for-virtual-machines"></a>Sanal makineler için seri konsol
 VM 'Ler için seri konsol, Azure portal **destek + sorun giderme** bölümündeki **seri konsol** tıklamakla açıktır.
-  1. [Azure Portal](https://portal.azure.com)açın.
+  1. [Azure portalını](https://portal.azure.com) açın.
 
   1. **Tüm kaynaklara** gidin ve bir sanal makine seçin. VM 'nin genel bakış sayfası açılır.
 
@@ -54,7 +55,7 @@ VM 'Ler için seri konsol, Azure portal **destek + sorun giderme** bölümündek
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için seri konsol
 Seri konsol, ölçek kümesi içindeki her bir örnek üzerinde erişilebilir olan sanal makine ölçek kümeleri için kullanılabilir. **Seri konsol** düğmesini görmeden önce bir sanal makine ölçek kümesinin tek örneğine gitmeniz gerekir. Sanal makine ölçek kümesinde önyükleme tanılaması etkinleştirilmemişse, sanal makine ölçek kümesi modelinizi önyükleme tanılamayı etkinleştirecek şekilde güncelleştirdiğinizden emin olun ve ardından seri konsoluna erişmek için tüm örnekleri yeni modele yükseltin.
-  1. [Azure Portal](https://portal.azure.com)açın.
+  1. [Azure portalını](https://portal.azure.com) açın.
 
   1. **Tüm kaynaklara** gidin ve bir sanal makine ölçek kümesi seçin. Sanal makine ölçek kümesi için genel bakış sayfası açılır.
 
@@ -68,7 +69,7 @@ Seri konsol, ölçek kümesi içindeki her bir örnek üzerinde erişilebilir ol
 
 
 ### <a name="tls-12-in-serial-console"></a>Seri konsolundaki TLS 1,2
-Seri konsol, hizmet içindeki tüm iletişimleri güvenli hale getirmek için TLS 1,2 uçtan uca kullanır. Seri konsolun Kullanıcı tarafından yönetilen bir önyükleme tanılama depolama hesabına bağımlılığı vardır ve depolama hesabı için TLS 1,2 ayrı olarak yapılandırılmalıdır. Bunu yapmak için yönergeler [burada](https://docs.microsoft.com/azure/storage/common/storage-security-tls)bulunur.
+Seri konsol, hizmet içindeki tüm iletişimleri güvenli hale getirmek için TLS 1,2 uçtan uca kullanır. Seri konsolun Kullanıcı tarafından yönetilen bir önyükleme tanılama depolama hesabına bağımlılığı vardır ve depolama hesabı için TLS 1,2 ayrı olarak yapılandırılmalıdır. Bunu yapmak için yönergeler [burada](../../storage/common/transport-layer-security-configure-minimum-version.md)bulunur.
 
 ## <a name="advanced-uses-for-serial-console"></a>Seri konsol için gelişmiş kullanımlar
 Sanal makinenize konsol erişiminin yanı sıra aşağıdakiler için de Azure seri konsolu 'nu kullanabilirsiniz:

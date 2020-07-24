@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0588f02c6dfb557f32aae56dc742b9390c3cdbcb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ba4b8de4b8cf1d1d1b8124185a8006eb7695b21e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955089"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074498"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>PlayReady lisans şablonuyla v3 Media Services 
 
@@ -62,7 +62,7 @@ XML, [PlayReady lisans şablonu XML şeması](#schema) bölümünde tanımlanan 
 
 Media Services, PlayReady lisans şablonunu yapılandırmak için kullanabileceğiniz türler sağlar. 
 
-Aşağıdaki kod parçacığı, PlayReady lisans şablonunu yapılandırmak için .NET sınıflarını Media Services kullanır. Sınıflar, [Microsoft. Azure. Management. Media. modeller](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) ad alanında tanımlanmıştır. Kod parçacığı, PlayReady lisansının PlayRight 'ı yapılandırır. PlayRight, kullanıcıya, lisansta ve PlayRight üzerinde yapılandırılmış herhangi bir kısıtlamayla içerik konusunu kayıttan yürütmeyi sağlar (kayıttan yürütmeye özgü ilke için). Bir PlayRight üzerindeki ilkenin çoğu, içeriğin yürütülebildiğinden çıkış türlerini denetleyen çıkış kısıtlamasıyla ilgilidir. Ayrıca, belirli bir çıkış kullanıldığında yerine verilmesi gereken tüm kısıtlamaları da içerir. Örneğin, DigitalVideoOnlyContentRestriction etkinleştirilirse, DRM çalışma zamanı yalnızca videonun dijital çıkışlar üzerinde görüntülenmesine izin verir. (Analog video çıkışları içeriği geçirmeye izin verilmez.)
+Aşağıdaki kod parçacığı, PlayReady lisans şablonunu yapılandırmak için .NET sınıflarını Media Services kullanır. Sınıflar, [Microsoft. Azure. Management. Media. modeller](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) ad alanında tanımlanmıştır. Kod parçacığı, PlayReady lisansının PlayRight 'ı yapılandırır. PlayRight, kullanıcıya, lisansta ve PlayRight üzerinde yapılandırılmış herhangi bir kısıtlamayla içerik konusunu kayıttan yürütmeyi sağlar (kayıttan yürütmeye özgü ilke için). Bir PlayRight üzerindeki ilkenin çoğu, içeriğin yürütülebildiğinden çıkış türlerini denetleyen çıkış kısıtlamasıyla ilgilidir. Ayrıca, belirli bir çıkış kullanıldığında yerine verilmesi gereken tüm kısıtlamaları da içerir. Örneğin, DigitalVideoOnlyContentRestriction etkinleştirilirse, DRM çalışma zamanı yalnızca videonun dijital çıkışlar üzerinde görüntülenmesine izin verir. (Analog video çıkışları içeriği geçirmeye izin verilmez.)
 
 > [!IMPORTANT]
 > PlayReady lisansında güçlü kısıtlamalar vardır. Çıkış korumaları çok kısıtlayıcıysa, içerik bazı istemcilerde oynatılamaz olabilir. Daha fazla bilgi için bkz. [PlayReady Uyumluluk kuralları](https://www.microsoft.com/playready/licensing/compliance/).

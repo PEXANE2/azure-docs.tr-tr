@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232330"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074251"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM 'de iç içe sanallaştırmayı etkinleştirme
 
@@ -22,7 +22,7 @@ Bu makalede, bir Azure VM üzerinde Hyper-V ' i etkinleştirme ve bu konuk sanal
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>İç içe özellikli bir Azure VM oluşturma
 
-Yeni bir Windows Server 2016 Azure sanal makinesi oluşturun. İç içe geçme desteği olan sanal makine boyutlarının tüm listesi için [Azure Işlem birimi makalesine](acu.md)göz atın.
+Yeni bir Windows Server 2016 Azure sanal makinesi oluşturun. İç içe geçme desteği olan sanal makine boyutlarının tüm listesi için [Azure Işlem birimi makalesine](../acu.md)göz atın.
 
 Konuk sanal makine taleplerini desteklemeye yetecek büyüklükte bir VM boyutu seçip seçeceğini unutmayın. Bu örnekte, bir Azure VM D3_v3 boyutu kullanıyoruz. 
 
@@ -30,7 +30,7 @@ Dv3 veya Ev3 serisi sanal makinelerin bölgesel kullanılabilirliğini [burada](
 
 >[!NOTE]
 >
->Yeni bir sanal makine oluşturmayla ilgili ayrıntılı yönergeler için, bkz [. Azure PowerShell modülü Ile Windows VM 'Leri oluşturma ve yönetme](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+>Yeni bir sanal makine oluşturmayla ilgili ayrıntılı yönergeler için, bkz [. Azure PowerShell modülü Ile Windows VM 'Leri oluşturma ve yönetme](./tutorial-manage-vm.md)
     
 ## <a name="connect-to-your-azure-vm"></a>Azure VM 'nize bağlanma
 
@@ -181,4 +181,4 @@ Bu örnekte, 192.168.0.0/24 aralığında bir adres kullanacaksınız.
 Konuk sanal makinede, tarayıcınızı açın ve bir Web sayfasına gidin.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-Konuk VM 'Ler ve Azure VM 'Ler arasında şeffaf bağlantıyı etkinleştirme yönergeleri için lütfen [Bu belgeye](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)başvurun.
+Konuk VM 'Ler ve Azure VM 'Ler arasında şeffaf bağlantıyı etkinleştirme yönergeleri için lütfen [Bu belgeye](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)başvurun.

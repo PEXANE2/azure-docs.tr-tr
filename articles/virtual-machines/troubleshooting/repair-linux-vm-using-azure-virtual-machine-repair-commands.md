@@ -14,18 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: a7357ef3b0151096746e37bddd235f0db53baed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7fbe46d378d45f49a8510f9fdd01a9cae665d0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074392"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure Sanal Makine onarım komutlarını kullanarak Linux VM'sini onarma
 
 Azure 'daki Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, diskin kendisi üzerinde risk azaltma yapmanız gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini önleyen başarısız bir uygulama güncelleştirmesidir. Bu makalede, tüm hataları gidermek için Azure sanal makine onarım komutlarının, diski başka bir Linux VM 'ye bağlamak için nasıl kullanılacağı açıklanır ve ardından özgün VM 'nizi yeniden derleyin.
 
 > [!IMPORTANT]
-> * Bu makaledeki betikler yalnızca [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)kullanan VM 'ler için geçerlidir.
+> * Bu makaledeki betikler yalnızca [Azure Resource Manager](../../azure-resource-manager/management/overview.md)kullanan VM 'ler için geçerlidir.
 > * Betiğin çalışması için VM 'den giden bağlantı (bağlantı noktası 443) gereklidir.
 > * Tek seferde yalnızca bir betik çalıştırılabilir.
 > * Çalışan bir betik iptal edilemez.
@@ -38,17 +39,17 @@ Artık bir VM 'nin işletim sistemi diskini değiştirmek için Azure sanal maki
 
 VM sorununun giderilmesi için aşağıdaki adımları izleyin:
 
-1. Azure Cloud Shell'i başlatma
+1. Azure Cloud Shell’i başlatma
 2. Çalıştır az Extension Add/Update
 3. Çalıştır az VM Repair Create
 4. Risk azaltma adımlarını gerçekleştirin
 5. Çalıştır az VM Repair restore
 
-Ek belgeler ve yönergeler için bkz. [az VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair).
+Ek belgeler ve yönergeler için bkz. [az VM Repair](/cli/azure/ext/vm-repair/vm/repair).
 
 ## <a name="repair-process-example"></a>İşlemi Onar örneği
 
-1. Azure Cloud Shell'i başlatma
+1. Azure Cloud Shell’i başlatma
 
    Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Bu, önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış ortak Azure araçları içerir.
 
@@ -56,9 +57,9 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](https://docs.microsoft.com/
 
    Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, sonra kodu Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
 
-   CLI'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bu hızlı başlangıç için Azure CLI 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için ``az --version`` komutunu çalıştırın. Azure CLı 'nizi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   CLI'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bu hızlı başlangıç için Azure CLI 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için ``az --version`` komutunu çalıştırın. Azure CLı 'nizi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
    
-   Şu anda Azure portalında oturum açtığınızdan farklı bir hesapla Cloud Shell oturum açmanız gerekiyorsa ``az login`` [az Login Reference](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)kullanabilirsiniz.  Hesabınızla ilişkili abonelikler arasında geçiş yapmak için ``az account set --subscription`` [az Account set Reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)kullanabilirsiniz.
+   Şu anda Azure portalında oturum açtığınızdan farklı bir hesapla Cloud Shell oturum açmanız gerekiyorsa ``az login`` [az Login Reference](/cli/azure/reference-index?view=azure-cli-latest#az-login)kullanabilirsiniz.  Hesabınızla ilişkili abonelikler arasında geçiş yapmak için ``az account set --subscription`` [az Account set Reference](/cli/azure/account?view=azure-cli-latest#az-account-set)kullanabilirsiniz.
 
 2. Komutları ilk kez kullandıysanız `az vm repair` VM-REPAIR CLI uzantısını ekleyin.
 
@@ -98,6 +99,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sanal makinenize bağlanırken sorun yaşıyorsanız bkz. [Azure sanal makinesine YÖNELIK RDP bağlantılarında sorun giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection).
-* VM 'niz üzerinde çalışan uygulamalara erişme sorunları için bkz. [Azure 'da sanal makinelerde uygulama bağlantı sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection).
-* Kaynak Yöneticisi kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+* Sanal makinenize bağlanırken sorun yaşıyorsanız bkz. [Azure sanal makinesine YÖNELIK RDP bağlantılarında sorun giderme](./troubleshoot-rdp-connection.md).
+* VM 'niz üzerinde çalışan uygulamalara erişme sorunları için bkz. [Azure 'da sanal makinelerde uygulama bağlantı sorunlarını giderme](./troubleshoot-app-connection.md).
+* Kaynak Yöneticisi kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 92957bd078c04a9bb7ac35f9d30f042a44e10764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074134"
 ---
 # <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
 
@@ -33,11 +33,11 @@ Anlık görüntü oluşturmak için aşağıdaki adımları izleyin:
 6. Azure veri merkezi **Konumu** seçin.  
 7. **Kaynak disk**için, anlık görüntü yapılacak yönetilen diski seçin.
 8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmiyorsa **Standard_HDD**' yi seçin.
-9. **Oluştur**'u seçin.
+9. **Oluştur**’u seçin.
 
-## <a name="use-powershell"></a>PowerShell kullanma
+## <a name="use-powershell"></a>PowerShell'i kullanma
 
-Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görüntü yapılandırmasının nasıl oluşturulacağı gösterilmektedir. Ardından [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) cmdlet 'ini kullanarak diskin anlık görüntüsünü alabilirsiniz. 
+Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görüntü yapılandırmasının nasıl oluşturulacağı gösterilmektedir. Ardından [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) cmdlet 'ini kullanarak diskin anlık görüntüsünü alabilirsiniz. 
 
  
 
@@ -53,18 +53,18 @@ Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görünt�
 2. VM 'yi al:
 
    ```azurepowershell-interactive
-   $vm = get-azvm `
-   -ResourceGroupName $resourceGroupName 
-   -Name $vmName
+   $vm = Get-AzVM `
+       -ResourceGroupName $resourceGroupName `
+       -Name $vmName
    ```
 
 3. Anlık görüntü yapılandırmasını oluşturun. Bu örnekte, anlık görüntü işletim sistemi diski olur:
 
    ```azurepowershell-interactive
-   $snapshot =  New-AzSnapshotConfig 
-   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
-   -Location $location 
-   -CreateOption copy
+   $snapshot =  New-AzSnapshotConfig `
+       -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+       -Location $location `
+       -CreateOption copy
    ```
    
    > [!NOTE]
@@ -73,10 +73,10 @@ Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görünt�
 4. Anlık görüntüyü al:
 
    ```azurepowershell-interactive
-   New-AzSnapshot 
-   -Snapshot $snapshot 
-   -SnapshotName $snapshotName 
-   -ResourceGroupName $resourceGroupName 
+   New-AzSnapshot `
+       -Snapshot $snapshot `
+       -SnapshotName $snapshotName `
+       -ResourceGroupName $resourceGroupName 
    ```
 
 

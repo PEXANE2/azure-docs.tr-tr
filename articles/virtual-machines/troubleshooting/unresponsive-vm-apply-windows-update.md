@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80633963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074297"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Windows Update uygulanırken VM "C01A001D" hatası ile yanıt vermiyor
 
@@ -27,7 +27,7 @@ Bu makalede, Windows Update (KB) hata oluşturan ve bir Azure VM 'de yanıt verm
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılaması](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullanılırken, devam eden WINDOWS Update (KB) görüntülenir, ancak şu hata koduyla başarısız olur: ' C01A001D '.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılaması](./boot-diagnostics.md) kullanılırken, devam eden WINDOWS Update (KB) görüntülenir, ancak şu hata koduyla başarısız olur: ' C01A001D '.
 
 ![Yanıt vermeyen Windows Update](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
@@ -49,17 +49,17 @@ Dosya sisteminde bir çekirdek dosya oluşturulamıyor. İşletim sistemi diske 
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) izleyin.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının 1-3 adımlarını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) izleyin.
 2. Uzak Masaüstü Bağlantısı kullanarak onarım sanal makinesine bağlanın.
 
 ### <a name="free-up-space-on-the-hard-disk"></a>Sabit diskte boş alan açın
 
 Disk zaten 1 TB değilse, yeniden boyutlandırmalısınız. Disk 1 TB olduktan sonra Disk Temizleme ve sürücü birleştirmesi gerçekleştirin.
 
-1. Diskin dolu olup olmadığını denetleyin. Disk 1 TB 'nin altındaysa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+1. Diskin dolu olup olmadığını denetleyin. Disk 1 TB 'nin altındaysa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 2. Disk 1 TB olduktan sonra bir disk temizleme işlemi gerçekleştirin.
-    - [Veri diskini bozuk VM 'Den ayırın](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk).
-    - [Veri diskini çalışan BIR VM 'ye bağlayın](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+    - [Veri diskini bozuk VM 'Den ayırın](../windows/detach-disk.md).
+    - [Veri diskini çalışan BIR VM 'ye bağlayın](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
     - Boş alan boşaltmak için [Disk Temizleme aracını](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) kullanın.
 3. Yeniden boyutlandırdıktan ve temizledikten sonra sürücüyü birleştirin:
 
@@ -115,4 +115,4 @@ Disk zaten 1 TB değilse, yeniden boyutlandırmalısınız. Disk 1 TB olduktan s
 
 ### <a name="rebuild-the-vm"></a>VM 'yi yeniden oluşturma
 
-VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.
+VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) kullanın.

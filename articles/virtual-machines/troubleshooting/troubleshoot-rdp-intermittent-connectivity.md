@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: eec52fb2342ee85932a6e24aa4cb292496beccad
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 60be7c234a0166331c35eb6528eae11bfbbf518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074312"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM ile Uzak Masaüstü bağlantısı sık sık kesiliyor
 
@@ -95,7 +95,7 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
 
 ### <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma
 
-1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
+1. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](./troubleshoot-recovery-disks-portal-windows.md).
 2. İşletim sistemi diski kurtarma VM 'sine eklendikten sonra, diskin Disk Yönetimi konsolunda **çevrimiçi** olarak işaretlendiğinden emin olun. Bağlı işletim sistemi diskine atanan sürücü harfini unutmayın.
 3. Eklediğiniz işletim sistemi diskinde, **\Windows\System32\Config** klasörüne gidin. Geri almanın gerekli olması durumunda bu klasördeki tüm dosyaları yedek olarak kopyalayın.
 4. Kayıt Defteri Düzenleyicisi 'Ni (regedit.exe) başlatın.
@@ -184,8 +184,3 @@ Bu sorunu gidermek için, VM 'nin işletim sistemi diskini bir kurtarma sanal ma
 
 ## <a name="need-help"></a>Yardıma mı ihtiyacınız var? 
 Desteğe başvurun. Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-
-
-
-
-

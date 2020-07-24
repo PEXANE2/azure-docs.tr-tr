@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf1e3abc1d4fceaa6547f63346ecd64e1128eac2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4868db7df6209c620c5ae1bd9b1207072214ad35
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074215"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure’da Windows sanal makineleri
 
@@ -30,7 +30,7 @@ Azure sanal makineleri farklı amaçlarla kullanılabilir. Bazı örnekler şunl
 Uygulamanız tarafından kullanılan VM sayısı, ihtiyaçlarınıza göre ölçeklendirilebilir.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>VM oluşturmadan önce dikkat etmem gereken noktalar nelerdir?
-Azure’da uygulama altyapısı oluştururken [dikkate almanız gereken tasarım ölçütleri](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) vardır. Başlamadan önce dikkat etmeniz gereken VM özellikleri şunlardır:
+Azure’da uygulama altyapısı oluştururken [dikkate almanız gereken tasarım ölçütleri](/azure/architecture/reference-architectures/n-tier/windows-vm) vardır. Başlamadan önce dikkat etmeniz gereken VM özellikleri şunlardır:
 
 * Uygulama kaynaklarınızın adları
 * Kaynakların depolanacağı konum
@@ -47,10 +47,10 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |VM oluştururken listeden konum seçin. |
-| Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
-| REST API |[List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) işlemini kullanın. |
-| Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
+| Azure portalı |VM oluştururken listeden konum seçin. |
+| Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
+| REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
+| Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
 
 ## <a name="availability"></a>Kullanılabilirlik
 Azure, sanal makineyi tüm diskler için premium depolamayla dağıtmanız koşuluyla, tek örnekli sanal makinelerde endüstri lideri %99,9 kullanılabilirlik Hizmet Düzeyi Sözleşmesi'nin duyurusunu yaptı.  Dağıtımınızın standart %99,95 VM Hizmet Düzeyi Sözleşmesinin kapsamına girebilmesi için iş yükünüzü çalıştıran iki veya daha fazla VM’yi yine bir kullanılabilirlik kümesi içinde dağıtmanız gerekir. Bir kullanılabilirlik kümesi, VM’lerinizin Azure veri merkezlerinde birden çok hata etki alanına dağıtılmasını ve aynı zamanda dağıtımlarının farklı bakım aralıklarına sahip konaklara yapılmasını sağlar. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
@@ -73,32 +73,32 @@ Bu tabloda bir görüntünün bilgilerine nasıl erişebileceğiniz gösterilmi�
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |Bir görüntüyü kullanmak istediğinizde değerler otomatik olarak belirtilir. |
-| Azure PowerShell |[Get-Azvmımagepublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *konumu*<BR>[Get-Azvmımageteklifinin](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *konumu* -yayımcı *PublisherName*<BR>[Get-Azvmımagesku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *konumu* -yayımcı *PublisherName* -bir *offername* sunma |
-| REST API'leri |[Görüntü yayımcılarını listeleme](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Görüntü tekliflerini listeleme](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Görüntü sku’larını listeleme](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az VM image List-Publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --Location *Location*<BR>[az VM image List-teklifler](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --Location *Location* --Publisher *PublisherName*<BR>[az VM image List-SKU 'lar](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --konum *konumu* --yayımcı *PublisherName* -- *offername*|
+| Azure portalı |Bir görüntüyü kullanmak istediğinizde değerler otomatik olarak belirtilir. |
+| Azure PowerShell |[Get-Azvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *konumu*<BR>[Get-Azvmımageteklifinin](/powershell/module/az.compute/get-azvmimageoffer) -Location *konumu* -yayımcı *PublisherName*<BR>[Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku) -Location *konumu* -yayımcı *PublisherName* -bir *offername* sunma |
+| REST API'leri |[Görüntü yayımcılarını listeleme](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Görüntü tekliflerini listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Görüntü sku’larını listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
+| Azure CLI |[az VM image List-Publishers](/cli/azure/vm/image?view=azure-cli-latest) --Location *Location*<BR>[az VM image List-teklifler](/cli/azure/vm/image?view=azure-cli-latest) --Location *Location* --Publisher *PublisherName*<BR>[az VM image List-SKU 'lar](/cli/azure/vm?view=azure-cli-latest) --konum *konumu* --yayımcı *PublisherName* -- *offername*|
 
 [Kendi görüntünüzü yükleyip kullanmanız halinde](upload-generalized-managed.md) yayımcı adı, teklif ve sku kullanılmaz.
 
-### <a name="extensions"></a>Uzantılar
-VM [uzantıları](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), dağıtım sonrası yapılandırma ve otomatik görevlerle VM’nize yeni özellikler ekler.
+### <a name="extensions"></a>Uzantıları
+VM [uzantıları](../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json), dağıtım sonrası yapılandırma ve otomatik görevlerle VM’nize yeni özellikler ekler.
 
 Uzantıları kullanarak şu genel görevleri gerçekleştirebilirsiniz:
 
-* **Özel betik çalıştırma** – [Özel Betik Uzantısı](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), VM hazırlandığında kendi betiğinizi çalıştırarak iş yükü yapılandırması gerçekleştirmenize yardımcı olur.
-* **Yapılandırma dağıtma ve yönetme** – [PowerShell İstenen Durum Yapılandırması (DSC) Uzantısı](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), yapılandırma ve ortam yönetimi amacıyla bir VM üzerinde DSC kurulumu yapmanıza yardımcı olur.
-* **Tanılama verilerini toplama** – [Azure Tanılama Uzantısı](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), VM’i uygulama durumunu izlemek için kullanılabilecek tanılama verilerini toplayacak şekilde yapılandırmanıza yardımcı olur.
+* **Özel betik çalıştırma** – [Özel Betik Uzantısı](../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json), VM hazırlandığında kendi betiğinizi çalıştırarak iş yükü yapılandırması gerçekleştirmenize yardımcı olur.
+* **Yapılandırma dağıtma ve yönetme** – [PowerShell İstenen Durum Yapılandırması (DSC) Uzantısı](../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json), yapılandırma ve ortam yönetimi amacıyla bir VM üzerinde DSC kurulumu yapmanıza yardımcı olur.
+* **Tanılama verilerini toplama** – [Azure Tanılama Uzantısı](../extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json), VM’i uygulama durumunu izlemek için kullanılabilecek tanılama verilerini toplayacak şekilde yapılandırmanıza yardımcı olur.
 
 ### <a name="related-resources"></a>İlgili kaynaklar
 Bu tablodaki kaynaklar VM tarafından kullanılır ve VM oluşturulduğunda mevcut olmaları ya da oluşturulmaları gerekir.
 
 | Kaynak | Gerekli | Açıklama |
 | --- | --- | --- |
-| [Kaynak grubu](../../azure-resource-manager/management/overview.md) |Evet |VM bir kaynak grubunda yer almalıdır. |
-| [Depolama hesabı](../../storage/common/storage-create-storage-account.md) |Evet |VM, sanal sabit disklerini depolamak için bir depolama hesabına ihtiyaç duyar. |
-| [Sanal ağ](../../virtual-network/virtual-networks-overview.md) |Evet |VM’in bir sanal ağa üye olması gerekir. |
+| [Kaynak grubu](../../azure-resource-manager/management/overview.md) |Yes |VM bir kaynak grubunda yer almalıdır. |
+| [Depolama hesabı](../../storage/common/storage-account-create.md) |Yes |VM, sanal sabit disklerini depolamak için bir depolama hesabına ihtiyaç duyar. |
+| [Sanal ağ](../../virtual-network/virtual-networks-overview.md) |Yes |VM’in bir sanal ağa üye olması gerekir. |
 | [Genel IP adresi](../../virtual-network/public-ip-addresses.md) |Hayır |VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir. |
-| [Ağ arabirimi](../../virtual-network/virtual-network-network-interface.md) |Evet |VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır. |
+| [Ağ arabirimi](../../virtual-network/virtual-network-network-interface.md) |Yes |VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır. |
 | [Veri diskleri](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Hayır |VM, depolama olanaklarını genişletmek için veri disklerine sahip olabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -108,4 +108,3 @@ Bu tablodaki kaynaklar VM tarafından kullanılır ve VM oluşturulduğunda mevc
 - [Portal](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)
-

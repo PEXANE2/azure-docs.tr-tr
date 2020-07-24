@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074452"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -18,10 +18,10 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Canlı video analizi için HW/SW kısıtlamalarını karşılayan bir Linux makinesi
-* [Sahip olduğunuz ayrıcalıklara](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) sahip olduğunuz Azure aboneliği
-* [Oluşturma ve kurulum IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [IoT Edge cihazı kaydetme](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-* [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner) sahip olduğunuz Azure aboneliği
+* [Oluşturma ve kurulum IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* [IoT Edge cihazı kaydetme](../../iot-edge/how-to-register-device.md)
+* [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
     * Şu bölgelerden birini kullanın: Doğu ABD 2, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa Orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
     * Genel amaçlı v2 (GPv2) depolama hesapları kullanmanız önerilir
@@ -225,7 +225,7 @@ Dağıtımı oluşturduktan sonra IoT Hub 'ınızın IoT Edge sayfasına döners
 2.  Cihaz ayrıntılarında, BLOB depolama modülünün hem dağıtım hem de **cihaz tarafından bildirilen**olarak listelendiğini doğrulayın.
 
 Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
-Durum kodu: 200 – OK [, IoT Edge çalışma zamanının](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime) sağlıklı ve sorunsuz bir şekilde çalıştığı anlamına gelir.
+Durum kodu: 200 – OK [, IoT Edge çalışma zamanının](../../iot-edge/iot-edge-runtime.md) sağlıklı ve sorunsuz bir şekilde çalıştığı anlamına gelir.
 
 ![Durum](./media/deploy-iot-edge-device/status.png)
 

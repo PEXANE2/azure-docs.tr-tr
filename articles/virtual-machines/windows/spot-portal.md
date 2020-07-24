@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 07/17/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 6e7723a437e90807063e3c3b7af2bf068dca5b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee2ff7119c229b8a0fd94be3b85863fcb1108f58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074142"
 ---
 # <a name="deploy-spot-vms-using-the-azure-portal"></a>Azure portal kullanarak spot VM 'Leri dağıtma
 
@@ -23,8 +23,10 @@ Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir
 
 VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer, `0.05701` saat başına $0,05701 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır.
 
+VM çıkarıldığında, VM 'yi ve temel diski silme ya da VM 'yi serbest bırakma seçeneğiniz vardır ve bu sayede daha sonra yeniden başlatılabilir.
 
-## <a name="create-the-vm"></a>Sanal makine oluşturma
+
+## <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
 Spot VM 'Ler kullanan bir VM oluşturma işlemi [hızlı](quick-create-portal.md)başlangıçta ayrıntılıdır. Bir sanal makine dağıttığınızda, bir Azure spot örneği kullanmayı tercih edebilirsiniz.
 

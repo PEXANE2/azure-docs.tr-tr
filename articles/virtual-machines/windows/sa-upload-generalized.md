@@ -9,11 +9,12 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d340e37cf64961971c03af8d08a669c27d758116
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074196"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Yeni bir VM oluşturmak için genelleştirilmiş bir VHD 'yi Azure 'a yükleyin
 
@@ -33,9 +34,9 @@ Genelleştirilmiş bir VHD, tüm kişisel hesap bilgilerinizin Sysprep kullanıl
   * Sysprep kullanarak sanal makineyi genelleştirin
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Sysprep kullanarak bir Windows sanal makinesini genelleştirin
-Bu bölümde, Windows sanal makinenizi görüntü olarak kullanılmak üzere genelleştirirsiniz. Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkındaki ayrıntılar için bkz. [Sysprep İşlemini Kullanma: Giriş](https://technet.microsoft.com/library/bb457073.aspx).
+Bu bölümde, Windows sanal makinenizi görüntü olarak kullanılmak üzere genelleştirirsiniz. Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkındaki ayrıntılar için bkz. [Sysprep İşlemini Kullanma: Giriş](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
-Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emin olun. Daha fazla bilgi için bkz. [sunucu rolleri Için Sysprep desteği](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > VHD 'nizi Azure 'a ilk kez yüklemeden önce Sysprep çalıştırıyorsanız, Sysprep 'ı çalıştırmadan önce [VM 'nizi hazırladığınızdan](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) emin olun. 
@@ -46,7 +47,7 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 2. Yönetici olarak Komut İstemi penceresini açın. Dizini **%windir%\system32\sysprep**olarak değiştirip komutunu çalıştırın `sysprep.exe` .
 3. **Sistem Hazırlama Aracı** iletişim kutusunda ** Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapalı seçenekleri**' nde, **kapatır**' ı seçin.
-5. **Tamam**'a tıklayın.
+5. **Tamam** düğmesine tıklayın.
    
     ![Sysprep 'ı Başlat](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep tamamlandığında, sanal makineyi kapatır. 
@@ -62,7 +63,7 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 VHD 'YI bir Azure depolama hesabına yükleyin.
 
 ### <a name="log-in-to-azure"></a>Azure'da oturum açma
-PowerShell sürüm 1,4 veya sonraki bir sürümü yüklü değilse [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview)makalesini okuyun.
+PowerShell sürüm 1,4 veya sonraki bir sürümü yüklü değilse [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/)makalesini okuyun.
 
 1. Azure PowerShell açın ve Azure hesabınızda oturum açın. Azure hesabı kimlik bilgilerinizi girmeniz için bir açılır pencere açılır.
    
@@ -105,7 +106,7 @@ Bir depolama hesabı oluşturmanız gerekiyorsa, şu adımları izleyin:
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bu kaynak grubunda **mystorageaccount** adlı bir depolama hesabı oluşturun:
+2. [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bu kaynak grubunda **mystorageaccount** adlı bir depolama hesabı oluşturun:
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -114,7 +115,7 @@ Bir depolama hesabı oluşturmanız gerekiyorsa, şu adımları izleyin:
  
 ### <a name="start-the-upload"></a>Karşıya yüklemeyi Başlat 
 
-Görüntüyü Depolama hesabınızdaki bir kapsayıcıya yüklemek için [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 'ini kullanın. Bu örnek, **Myvhd. vhd** dosyasını kaynağından `"C:\Users\Public\Documents\Virtual hard disks\"` **myresourcegroup** kaynak grubundaki **mystorageaccount** adlı bir depolama hesabına yükler. Dosya **myContainer** adlı kapsayıcıya yerleştirilecek ve yeni dosya adı **Myuploadedvhd. vhd**olacaktır.
+Görüntüyü Depolama hesabınızdaki bir kapsayıcıya yüklemek için [Add-AzVhd](/powershell/module/az.compute/add-azvhd) cmdlet 'ini kullanın. Bu örnek, **Myvhd. vhd** dosyasını kaynağından `"C:\Users\Public\Documents\Virtual hard disks\"` **myresourcegroup** kaynak grubundaki **mystorageaccount** adlı bir depolama hesabına yükler. Dosya **myContainer** adlı kapsayıcıya yerleştirilecek ve yeni dosya adı **Myuploadedvhd. vhd**olacaktır.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -141,7 +142,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 Ağ bağlantınıza ve VHD dosyanızın boyutuna bağlı olarak, bu komutun tamamlanması biraz zaman alabilir.
 
 
-## <a name="create-a-new-vm"></a>Yeni bir VM oluşturun 
+## <a name="create-a-new-vm"></a>Yeni bir VM oluştur 
 
 Artık yeni bir VM oluşturmak için karşıya yüklenen VHD 'YI kullanabilirsiniz. 
 
@@ -216,7 +217,7 @@ Tamamlanan sanal ağ için bir değişken oluşturun.
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
-### <a name="create-the-vm"></a>Sanal makine oluşturma
+### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 Aşağıdaki PowerShell betiği, sanal makine yapılandırmalarının nasıl ayarlanacağını ve yeni yüklemenin kaynağı olarak karşıya yüklenen VM görüntüsünü nasıl kullanacağınızı gösterir.
 
 
@@ -284,5 +285,3 @@ Tamamlandığında, sanal makinelere **gözatadaki** [Azure Portal](https://port
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yeni sanal makinenizi Azure PowerShell yönetmek için bkz. [Azure Resource Manager ve PowerShell kullanarak sanal makineleri yönetme](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
